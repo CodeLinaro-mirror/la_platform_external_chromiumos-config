@@ -26,6 +26,7 @@ PATH="${cipd_root}:${PATH}"
 
 protoc -I../../ --descriptor_set_out=proto/descpb.bin \
   --include_imports \
+  src/config/api/build_config.proto \
   src/config/api/component.proto \
   src/config/api/config_bundle.proto \
   src/config/api/design.proto \
