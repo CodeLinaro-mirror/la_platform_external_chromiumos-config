@@ -25,12 +25,28 @@ ENSURE_FILE
 PATH="${cipd_root}:${PATH}"
 
 protoc -I../../ --descriptor_set_out=proto/descpb.bin \
-  --include_imports \
+  chromite/infra/proto/src/chromiumos/common.proto \
+  src/config/api/build_config.proto \
   src/config/api/component.proto \
+  src/config/api/component_id.proto \
   src/config/api/config_bundle.proto \
   src/config/api/design.proto \
+  src/config/api/design_config_id.proto \
+  src/config/api/design_id.proto \
   src/config/api/device_brand.proto \
+  src/config/api/device_brand_id.proto \
   src/config/api/hardware_topology.proto \
   src/config/api/partner.proto \
+  src/config/api/partner_id.proto \
   src/config/api/program.proto \
-  src/config/api/topology.proto
+  src/config/api/program_id.proto \
+  src/config/api/topology.proto \
+  src/third_party/chromiumos-overlay/proto/audio_config.proto \
+  src/third_party/chromiumos-overlay/proto/brand_config.proto \
+  src/third_party/chromiumos-overlay/proto/build_target_config_id.proto \
+  src/third_party/chromiumos-overlay/proto/design_variant_config.proto \
+  src/third_party/chromiumos-overlay/proto/firmware_config.proto \
+  src/platform2/bluetooth/proto/config.proto \
+  src/platform2/chromeos-config/proto/design_variant_id_scan_config.proto \
+  src/platform2/chromeos-config/proto/brand_id_scan_config.proto \
+  src/platform2/power_manager/config.proto

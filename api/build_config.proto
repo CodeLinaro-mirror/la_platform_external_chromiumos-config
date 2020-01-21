@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "src/third_party/chromiumos-overlay/proto/brand_config.proto";
+import "src/third_party/chromiumos-overlay/proto/build_target_config_id.proto";
+import "src/third_party/chromiumos-overlay/proto/design_variant_config.proto";
+
+// Specifies all configuration for a build.
+message BuildConfig {
+    // Base build target.
+    chromiumos_overlay.BuildTargetConfigId build_target_config_id = 1;
+
+    // Config for all variants supported by the build.
+    //
+    // For a "fan-in" build, many variants can be supported by the same build,
+    // e.g. the config for each variant doesn't contain confidential
+    // information, so it is acceptable for owners of different variants to see
+    // each others' configs.
+    //
+    // For a "fan-out" build, each variant will get a different build, e.g. to
+    // allow owners of variants to keep config private.
+    //
+    // Builds between these two extremes are also possible, e.g. variants A and
+    // B share a build, while variant C gets a different build.
+    repeated chromiumos_overlay.DesignVariantConfig design_variant_configs = 2;
+
+    // Branding config for all devices supported by the build.
+    //
+    // This list is not necessarily the same length as <design_variant_configs>.
+    // At runtime, a device will search this list for its payload, and configure
+    // itself based on the payload.
+    repeated chromiumos_overlay.BrandConfig brand_configs = 3;
+}
