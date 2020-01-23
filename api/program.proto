@@ -1,0 +1,38 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "src/config/api/design.proto";
+import "src/config/api/program_id.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Defines a Chromium OS program, which establishes the set of constraints and
+// guidelines for all hardware design projects developed under the given
+// program.
+//
+// Reference designs developed for a given program will be treated like any
+// other hardware design project.  They will either fully comply with the
+// prescribed program constraints or provide waivers that highlight any
+// constraint violations.
+message Program {
+  // Globally unique program identifier.
+  ProgramId id = 1;
+  // Program codename (human friendly).
+  string name = 2;
+
+  // Defines program constraints for all proposed design variants.
+  repeated Variant.Constraint variant_constraints = 3;
+
+  // Components for the given program and their corresponding qualification
+  // status.
+  repeated Component.Qualification component_quals = 4;
+}
+
+message ProgramList {
+  repeated Program value = 1;
+}

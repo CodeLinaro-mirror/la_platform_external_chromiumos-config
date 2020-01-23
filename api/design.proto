@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package chromiumos.config.api;
 
+import "src/config/api/component.proto";
 import "src/config/api/design_id.proto";
 import "src/config/api/design_variant_id.proto";
 import "src/config/api/partner_id.proto";
@@ -31,7 +32,22 @@ message Design {
   message Variant {
     DesignVariantId id = 1;
     FormFactor form_factor = 2;
-    Features features = 3;
+    Component.Memory.Class memory_class = 3;
+    Features features = 4;
+
+    message Constraint {
+      enum Level {
+        TYPE_UNKNOWN = 0;
+        REQUIRED = 1;
+        PREFERRED = 2;
+        OPTIONAL = 3;
+      }
+
+      Level level = 1;
+      repeated FormFactor form_factors = 2;
+      repeated Component.Memory.Class memory_classes = 3;
+      Features features = 4;
+    }
   }
 
   enum FormFactor {
@@ -55,7 +71,7 @@ message Design {
     // Generic feature presence indicator when there are
     // no other feature specific design characteristics.
     message General {
-      Present present = 1;
+      Present presence = 1;
     }
 
     message Fingerprint {
@@ -65,7 +81,7 @@ message Design {
         KEYBOARD_TOP_RIGHT = 2;
         KEYBOARD_BOTTOM_RIGHT = 3;
       }
-      Feature.Present present = 1;
+      Feature.Present presence = 1;
       Location location = 2;
     }
 
@@ -75,7 +91,7 @@ message Design {
         INTERNAL = 1;
         EXTERNAL = 2;
       }
-      Feature.Present present = 1;
+      Feature.Present presence = 1;
       Category category = 2;
     }
   }
