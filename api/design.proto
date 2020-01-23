@@ -1,0 +1,107 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "src/config/api/design_id.proto";
+import "src/config/api/design_variant_id.proto";
+import "src/config/api/partner_id.proto";
+import "src/config/api/program_id.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+message Design {
+  // Globally unique design identifier.
+  DesignId id = 1;
+  // Program that defines the constraints for this design.
+  ProgramId program_id = 2;
+  // ODM for the given hardware design.
+  PartnerId odm_id = 3;
+  // Design codename (human friendly).
+  string name = 4;
+
+  // Supported variants for the given hardware design.
+  repeated Variant variants = 6;
+
+  // Defines a unique hardware configuration/setup for a given hardware design
+  // and the corresponding features that will be supported for that variant.
+  message Variant {
+    DesignVariantId id = 1;
+    FormFactor form_factor = 2;
+    Features features = 3;
+  }
+
+  enum FormFactor {
+    FORM_FACTOR_UNDEFINED = 0;
+    CLAMSHELL = 1;
+    CONVERTIBLE = 2;
+    DETACHABLE = 3;
+    CHROMEBASE = 4;
+    CHROMEBOX = 5;
+    CHROMEBIT = 6;
+    CHROMESLATE = 7;
+  }
+
+  message Feature {
+    enum Present {
+      PRESENCE_UNKNOWN = 0;
+      PRESENT = 1;
+      NOT_PRESENT = 2;
+    }
+
+    // Generic feature presence indicator when there are
+    // no other feature specific design characteristics.
+    message General {
+      Present present = 1;
+    }
+
+    message Fingerprint {
+      enum Location {
+        FINGERPRINT_LOCATION_UNKNOWN = 0;
+        POWER_BUTTON_TOP_LEFT = 1;
+        KEYBOARD_TOP_RIGHT = 2;
+        KEYBOARD_BOTTOM_RIGHT = 3;
+      }
+      Feature.Present present = 1;
+      Location location = 2;
+    }
+
+    message Stylus {
+      enum Category {
+        STYLUS_CATEGORY_UNKNOWN = 0;
+        INTERNAL = 1;
+        EXTERNAL = 2;
+      }
+      Feature.Present present = 1;
+      Category category = 2;
+    }
+  }
+
+  message Features {
+    Feature.General touchscreen = 1;
+    Feature.Stylus stylus = 2;
+    Feature.Fingerprint fingerprint = 3;
+
+    Feature.General camera_front = 4;
+    Feature.General camera_rear = 5;
+
+    Feature.General accelerometer_base = 6;
+    Feature.General accelerometer_lid = 7;
+
+    Feature.General gyroscope_base = 8;
+    Feature.General gyroscope_lid = 9;
+
+    Feature.General magnetometer_base = 10;
+    Feature.General magnetometer_lid = 11;
+
+    Feature.General light_sensor_base = 12;
+    Feature.General light_sensor_lid = 13;
+  }
+}
+
+message DesignList {
+  repeated Design value = 1;
+}
