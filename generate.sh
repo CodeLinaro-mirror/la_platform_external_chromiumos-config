@@ -28,4 +28,5 @@ protoc -I../../ --descriptor_set_out=proto/descpb.bin \
   --include_imports \
   src/config/api/component.proto \
   src/config/api/design.proto \
+  src/config/api/device_brand.proto \
   src/config/api/partner.proto
