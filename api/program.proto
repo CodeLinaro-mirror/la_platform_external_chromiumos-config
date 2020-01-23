@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package chromiumos.config.api;
 
+import "src/config/api/component.proto";
 import "src/config/api/design.proto";
 import "src/config/api/program_id.proto";
 
@@ -26,7 +27,7 @@ message Program {
   string name = 2;
 
   // Defines program constraints for all proposed design variants.
-  repeated Variant.Constraint variant_constraints = 3;
+  repeated Design.Variant.Constraint variant_constraints = 3;
 
   // Components for the given program and their corresponding qualification
   // status.
