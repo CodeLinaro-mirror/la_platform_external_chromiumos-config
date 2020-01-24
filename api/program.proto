@@ -26,8 +26,8 @@ message Program {
   // Program codename (human friendly).
   string name = 2;
 
-  // Defines program constraints for all proposed design variants.
-  repeated Design.Variant.Constraint variant_constraints = 3;
+  // Defines program constraints for all proposed design configs.
+  repeated Design.Config.Constraint design_config_constraints = 3;
 
   // Components for the given program and their corresponding qualification
   // status.

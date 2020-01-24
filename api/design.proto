@@ -8,7 +8,7 @@ package chromiumos.config.api;
 
 import "src/config/api/component.proto";
 import "src/config/api/design_id.proto";
-import "src/config/api/design_variant_id.proto";
+import "src/config/api/design_config_id.proto";
 import "src/config/api/hardware_topology.proto";
 import "src/config/api/partner_id.proto";
 import "src/config/api/program_id.proto";
@@ -25,16 +25,16 @@ message Design {
   // Design codename (human friendly).
   string name = 4;
 
-  // Supported variants for the given hardware design.
-  repeated Variant variants = 6;
+  // Supported hardware configurations for a given design.
+  repeated Config configs = 6;
 
-  // Defines a unique hardware configuration/setup for a given hardware design
-  // and the corresponding features that will be supported for that variant.
-  message Variant {
+  // Defines a unique hardware configuration for a given hardware design
+  // and the corresponding hardware features that will be supported.
+  message Config {
     // The ID encoded in hardware on a device, typically in CBI.
-    DesignVariantId id = 1;
+    DesignConfigId id = 1;
 
-    // Each unique value of hardware_topology requires a unique DesignVariantId
+    // Each unique value of hardware_topology requires a unique DesignConfigId
     HardwareTopology hardware_topology = 2;
 
     // This field is generated from hardware_topology. Each Design repo can

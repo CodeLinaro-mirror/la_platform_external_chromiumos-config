@@ -10,6 +10,6 @@ option go_package = "go.chromium.org/chromiumos/config/go/api";
 
 // Uniquely identifies a hardware configuration that will be developed
 // for a given hardware design project.
-message DesignVariantId {
+message DesignConfigId {
   string value = 1;
 }
