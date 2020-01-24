@@ -25,6 +25,12 @@ message Design {
   // Design codename (human friendly).
   string name = 4;
 
+  // All of the valid Topology messages for all hardware features that are valid
+  // for this Design. Used for validation of all configs. Any Topology specified
+  // within a Config.HardwareTopology must have a matching message in this
+  // field.
+  SupportedTopologies supported_topologies = 5;
+
   // Supported hardware configurations for a given design.
   repeated Config configs = 6;
 

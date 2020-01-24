@@ -104,6 +104,42 @@ message HardwareTopology {
   Topology ddram = 16;
 }
 
+// Contains a list of all supported topologies for all hardware features with
+// a particular Design. Should contain all same fields as HardwareTopology
+message SupportedTopologies {
+  repeated Topology screen = 1;
+
+  repeated Topology form_factor = 2;
+
+  repeated Topology audio_codec = 3;
+
+  repeated Topology stylus = 4;
+
+  repeated Topology keyboard = 5;
+
+  repeated Topology thermal = 6;
+
+  repeated Topology camera = 7;
+
+  repeated Topology mic = 8;
+
+  repeated Topology accel = 9;
+
+  repeated Topology gyro = 10;
+
+  repeated Topology magnetometer = 11;
+
+  repeated Topology fingerprint = 12;
+
+  repeated Topology proximity_sensor = 13;
+
+  repeated Topology daugher_board = 14;
+
+  repeated Topology non_volatile_storage = 15;
+
+  repeated Topology ddram = 16;
+}
+
 // Each Design repo will translate HardwareTopology into
 // HardwareFeatures. It is entirely possible for different values of
 // a HardwareTopology message to generate identical verions of
