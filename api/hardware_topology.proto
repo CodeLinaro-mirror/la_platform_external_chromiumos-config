@@ -1,0 +1,244 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "src/config/api/component.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Contains hardware related system features that are tracked by Google to
+// differentiate different hardware build configurations. Generally these
+// hardware-related system features are not easily probe-able at run time. This
+// should not be used to track second sourced components that are drop in
+// replacements.
+//
+// Note the types here are strings instead of enums. The individual Design
+// repos should check that any CL landing has acceptable values for the string.
+// Most values are effectively stringly typed enums.
+message HardwareTopology {
+  // Specifies the topology for a hardware features, e.g. thermal requirements,
+  // camera, microphone, gyroscope, daughter board connection, etc.
+  message TopologyId {
+    // Short, but meaningful string that represents the topology. Blank id is
+    // not valid. Id values are validated by Design repo. TopologyId are
+    // meaningful (and scoped) to a Design.
+    string value = 1;
+  }
+
+  // Specify hardware screen topology hardware. This includes differences in
+  // size, technology, and touch screen.
+  // Example values: "NONE" (chomebox), "OLED-15", "TFT-12", "TFT-12-TOUCH"
+  TopologyId screen_topology = 1;
+
+  // Specify functional form factor type of hardware. This includes different
+  // functions like clamshell, convertible, tablet, detachable, chromebox
+  // Example values: "CLAMSHELL", "TABLET", "CONVERTIBLE", "CHROMEBOX"
+  TopologyId form_factor_topology = 2;
+
+  // Specify the audio codec topology.
+  // Example values: "RT5682"
+  TopologyId audio_codec = 3;
+
+  // Specify the stylus topology. This includes differences in stylus presence,
+  // garage type, or technology type.
+  // Example values: "NONE", "GARAGED-USI", "EXTERNAL-EMR"
+  TopologyId stylus_topology = 4;
+
+  // TODO(before-submit): Renumber to not leave out 5
+
+  // Specify the internal topology. This includes differences in presence,
+  // key layout, or backlight functionality.
+  // Example values: "NONE", "DEFAULT", "DEFAULT-BL", "NO-PWR-BL"
+  TopologyId keyboard_toplogy = 6;
+
+  // Specify which thermal toplogy. This includes any differnce that would
+  // require new thermal tuning parameters.
+  // Example values: "DEFAULT",  "LARGE-CHASIS", "LARGE-CHASIS-HIGH-PERF"
+  TopologyId thermal_topology = 7;
+
+  // Specify the camera toplogy.  This includes differences in count,
+  // location, camera features, or drivers.
+  // Example values: "NONE", "2A1B", "1A1B1D-ARC"
+  TopologyId camera_toplogy = 8;
+
+  // Specify the microphone toplogy. This includes differences in count,
+  // location, and drivers.
+  // Example values: "NONE", "2C", "2C-ARRAY"
+  TopologyId mic_toplogy = 9;
+
+  // Specify the accelerometer toplogy. This includes differences in count,
+  // location, and drivers.
+  // Example values: "NONE", "1LID1Base", "1LID-LSM-1BASE-BMI"
+  TopologyId accel_toplogy = 10;
+
+  // Specify the gyroscope toplogy. This includes differences in count,
+  // location, and drivers.
+  // Example values: "NONE", "1LID", "1BASE-L3GD"
+  TopologyId gyro_toplogy = 11;
+
+  // Specify the magnetometer/eCompass toplogy. This includes differences in
+  // count, location, and drivers.
+  // Example values: "NONE", "1BASE-BMM"
+  TopologyId magnetometer_toplogy = 12;
+
+  // Specify the fingerprint sensor toplogy. This includes differences in
+  // count, location, and drivers.
+  // Example values: "NONE", "1C-ELAN"
+  TopologyId fingerprint_toplogy = 13;
+
+  // Specify the proximity sensor toplogy. This includes differences in
+  // count, location, and drivers.
+  // Example values: "NONE", "1B-ELAN"
+  TopologyId proximity_sensor_toplogy = 14;
+
+  // Specify the daugher board toplogy. Every unique daughter board should have
+  // a unique ID based on function
+  // Example values: "NONE", "1C1A", "HDMI-1A", "LTE"
+  TopologyId daugher_board_toplogy = 15;
+
+  // Specify the non-volatile storage toplogy. This includes differences in
+  // required tuning parameters or drivers.
+  // Example values: "EMMC", "NVME"
+  TopologyId non_volatile_storage_toplogy = 16;
+
+  // Specify the ddram toplogy. This includes differences in speed, channel
+  // count, size. This does not include different vendors of memory unless
+  // special driver consideration is required. Each unique ID value here should
+  // map to a specific resistor strappping configuration on the SoC.
+  // Example values: "DUAL-8GB-2400",
+  TopologyId ddram_toplogy = 17;
+}
+
+// Each Design repo will translate HardwareTopology into
+// HardwareFeatures. It is entirely possible for different values of
+// a HardwareTopology message to generate identical verions of
+// HardwareFeatures. For example, multiple different sensor
+// topologies (caused by placement differences) may have the same normalized
+// HardwareFeatures. This HardwareFeatures message drives the rest of the
+// configuration system
+message HardwareFeatures {
+  // TODO(before-submit): Add comments to all fields
+
+  UsbcSupport usbc = 1;
+  message UsbcSupport {
+    int32 count = 1;
+    // TODO(remove-before-submit): Future field could be USB-4 compatiable
+  }
+
+  UsbaSupport usba = 2;
+  message UsbaSupport {
+    int32 count = 1;
+  }
+
+  LteSupport lte = 3;
+  message LteSupport {
+    bool present = 1;
+  }
+
+  HdmiSupport hdmi = 4;
+  message HdmiSupport {
+    bool present = 1;
+  }
+
+  FirmwareConfiguration fw_config = 5;
+  message FirmwareConfiguration {
+    int32 value = 1;
+  }
+
+  AudioSupport audio = 6;
+  message AudioSupport {
+    AudioCodec audio_codec = 1;
+    enum AudioCodec {
+      AUDIO_CODEC_UNKNOWN = 0; // Also used for non-public audio codecs
+      RT5682 = 1;
+    }
+  }
+
+  CameraSupport camera = 7;
+  message CameraSupport {
+    bool has_a_panel_camera = 1; // Front camera
+    bool has_b_panel_camera = 2; // User facing camera
+    
+    // TODO(remove-before-submit): Count could be a future properties
+  }
+
+  AccelerometerSupport accelerometer = 8;
+  message AccelerometerSupport {
+    bool has_lid_accelerometer = 1;
+    bool has_base_accelerometer = 2;
+  }
+
+  GyroscopeSupport gyroscope = 9;
+  message GyroscopeSupport {
+    bool has_lid_gryoscope = 1;
+    bool has_base_gryoscope = 2;
+  }
+
+  MagnetometerSupport magnetometer = 10;
+  message MagnetometerSupport {
+    bool has_lid_magnetometer = 1;
+    bool has_base_magnetometer = 2;
+  }
+
+  LighSensorSupport light_sensor = 11;
+  message LighSensorSupport {
+    bool has_lid_lightsensor = 1;
+    bool has_base_lightsensor = 2;
+  }
+
+  ScreenSupport screen = 12;
+  message ScreenSupport {
+    int32 inch_millis = 1;
+
+    bool supports_touch = 2;
+  }
+
+  FormFactorSupport form_factor = 13;
+  message FormFactorSupport {
+    FormFactor form_factor = 1;
+    enum FormFactor {
+      FORM_FACTOR_UNKNOWN = 0;
+      CLAMSHELL = 1;
+      CONVERTIBLE = 2;
+      DETACHABLE = 3;
+      CHROMEBASE = 4;
+      CHROMEBOX = 5;
+      CHROMEBIT = 6;
+      CHROMESLATE = 7;
+    }
+  }
+
+  StylusSupport stylus = 14;
+  message StylusSupport {
+    Stylus stylus = 1;
+    enum Stylus {
+      STYLUS_UNKNOWN = 0;
+      NONE = 1;
+      INTERNAL = 2; // Garaged stylus
+      EXTERNAL = 3; // Non-garaged stylus
+    }
+
+    // TODO(remove-before-submit): Can add technology type in future if needed
+  }
+
+  TouchSupport touch = 15;
+  message TouchSupport {
+    bool has_touch = 1;
+  }
+
+  KeyboardSupport keyboard = 16;
+  message KeyboardSupport {
+    bool has_internal_keyboard = 1;
+    bool has_backlight = 2;
+    bool has_power_button = 3;
+  }
+
+  MemorySupport memory = 17;
+  message MemorySupport {
+    Component.Memory.Class class = 1;
+  } 
+}
