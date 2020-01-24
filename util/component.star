@@ -31,6 +31,21 @@ def _create_bt(vendor_id, product_id, bcd_device):
   )
   return comp
 
+_qual_status = struct(
+    REQUESTED = comp_pb.Component.Qualification.REQUESTED,
+    TECHNICALLY_QUALIFIED = comp_pb.Component.Qualification.TECHNICALLY_QUALIFIED,
+    QUALIFIED = comp_pb.Component.Qualification.QUALIFIED,
+)
+
+def _create_qual(component_id, status = _qual_status.REQUESTED):
+  return comp_pb.Component.Qualification(
+      component_id = component_id,
+      status = status,
+  )
+
+def _create_quals(component_ids, status = _qual_status.REQUESTED):
+  return [_create_qual(id, status) for id in component_ids]
+
 def _create_list(comps):
   return comp_pb.ComponentList(value = comps)
 
@@ -39,4 +54,7 @@ comp = struct(
     create_soc_model = _create_soc_model,
     create_bt = _create_bt,
     create_list = _create_list,
+    create_qual = _create_qual,
+    create_quals = _create_quals,
+    qual_status = _qual_status,
 )
