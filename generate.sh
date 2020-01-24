@@ -33,4 +33,5 @@ protoc -I../../ --descriptor_set_out=proto/descpb.bin \
   src/config/api/device_brand.proto \
   src/config/api/hardware_topology.proto \
   src/config/api/partner.proto \
-  src/config/api/program.proto
+  src/config/api/program.proto \
+  src/config/api/topology.proto

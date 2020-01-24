@@ -1,0 +1,33 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "src/config/api/component.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Represents a specific hardware topology option for a hardware feature, e.g.
+// camera, microphone, gyroscope, daughter board connection. For ecample. one
+// camera topology would be represented by a unique instance of this Topology
+// message.
+//
+// All Topology instances are scoped to a particular Design.
+message Topology {
+  // Short, but meaningful string that represents the topology. Blank id is
+  // not valid. Id values are validated by Design repo. Ids are
+  // meaningful within a Design. Ids are scoped and unique within a
+  // particular hardware features for a Design. For example, it is valid to have
+  // a "NONE" id for both the camera and micropohne hardware feature within the
+  // same Design.
+  string id = 1;
+
+  // Map of human readable descriptions in various languages. Maps language
+  // code, e.g. "EN" or "ZH", to description of topology. These descriptions can
+  // be displayed to factory operators to select the correct options that
+  // applies to the board they are assembling.
+  map<string, string> description = 2;
+}
