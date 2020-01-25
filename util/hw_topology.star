@@ -13,19 +13,18 @@ _FF = struct(
     CHROMESLATE = hw_topo_pb.HardwareFeatures.FormFactor.CHROMESLATE,
 )
 
-def _create_features(form_factors = [_FF.CLAMSHELL,_FF.CONVERTIBLE]):
-  hw_features = []
-  for ff in form_factors:
-    hw_features.append(hw_topo_pb.HardwareFeatures(
-        form_factor = hw_topo_pb.HardwareFeatures.FormFactor(
-            form_factor = ff,
-        ),
+def _create_design_features(form_factor = _FF.CLAMSHELL):
+  return hw_topo_pb.HardwareFeatures(
+      form_factor=hw_topo_pb.HardwareFeatures.FormFactor(
+          form_factor=form_factor,
       ),
-    )
+  )
 
-  return hw_features
+def _create_features(form_factors = [_FF.CLAMSHELL,_FF.CONVERTIBLE]):
+  return [_create_design_features(ff) for ff in form_factors]
 
 hw_topo = struct(
+    create_design_features = _create_design_features,
     create_features = _create_features,
     ff = _FF,
 )
