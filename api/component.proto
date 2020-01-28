@@ -53,7 +53,9 @@ message Component {
     message Class {
       Type type = 1;
       int32 speed_mhz = 2;
-      int32 size_mb = 3;
+      int32 size_megabytes = 3;
+      // Any new fields here should be messages or enums that can differentiate
+      // the unspecified value from the 0-value (or the 0-value is not valid)
     }
 
     enum Type {

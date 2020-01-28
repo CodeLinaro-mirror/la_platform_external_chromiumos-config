@@ -5,6 +5,8 @@ load("@proto//src/config/api/design.proto", design_pb = "chromiumos.config.api")
 load("@proto//src/config/api/design_config_id.proto", config_id_pb = "chromiumos.config.api")
 load("@proto//src/config/api/design_id.proto", design_id_pb = "chromiumos.config.api")
 
+load("//config/util/hw_topology.star", hw_topo = "hw_topo")
+
 _CONSTRAINT = struct(
     REQUIRED = design_pb.Design.Config.Constraint.REQUIRED,
     PREFERRED = design_pb.Design.Config.Constraint.PREFERRED,
@@ -18,12 +20,13 @@ def _create_constraints(hw_features, level = _CONSTRAINT.REQUIRED):
   return [design_pb.Design.Config.Constraint(
       level=level, features=hw_feature) for hw_feature in hw_features]
 
-def _create_config(design_id, config_id, hw_features=None, hw_topology=None):
-  design_config_id = config_id_pb.DesignConfigId(
-      value="%s:%s" % (design_id.value, config_id))
-  return design_pb.Design.Config(id=design_config_id,
-                                 hardware_features=hw_features,
-                                 hardware_topology=hw_topology,)
+def _create_config(design_id, config_id, base_hw_features = None, hardware_topology=None):
+  result = design_pb.Design.Config()
+  result.id.value = "%s:%s" % (design_id.value, config_id)
+  result.hardware_topology = hardware_topology
+  result.hardware_features = hw_topo.convert_to_hw_features(
+    base_hw_features, hardware_topology)
+  return result
 
 def _create_design_id(name):
   return design_id_pb.DesignId(value=name)

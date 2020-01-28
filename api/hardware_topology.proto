@@ -6,7 +6,6 @@ syntax = "proto3";
 
 package chromiumos.config.api;
 
-import "src/config/api/component.proto";
 import "src/config/api/topology.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
@@ -59,17 +58,17 @@ message HardwareTopology {
   // Specify the microphone toplogy. This includes differences in count,
   // location, and drivers.
   // Example Ids: "NONE", "2C", "2C-ARRAY"
-  Topology mic = 8;
+  Topology microphone = 8;
 
   // Specify the accelerometer toplogy. This includes differences in count,
   // location, and drivers.
   // Example Ids: "NONE", "1LID1Base", "1LID-LSM-1BASE-BMI"
-  Topology accel = 9;
+  Topology accelerometer = 9;
 
   // Specify the gyroscope toplogy. This includes differences in count,
   // location, and drivers.
   // Example Ids: "NONE", "1LID", "1BASE-L3GD"
-  Topology gyro = 10;
+  Topology gyroscope = 10;
 
   // Specify the magnetometer/eCompass toplogy. This includes differences in
   // count, location, and drivers.
@@ -89,176 +88,17 @@ message HardwareTopology {
   // Specify the daugher board toplogy. Every unique daughter board should have
   // a unique ID based on function
   // Example Ids: "NONE", "1C1A", "HDMI-1A", "LTE"
-  Topology daugher_board = 14;
+  Topology daughter_board = 14;
 
   // Specify the non-volatile storage toplogy. This includes differences in
   // required tuning parameters or drivers.
   // Example Ids: "EMMC", "NVME"
   Topology non_volatile_storage = 15;
 
-  // Specify the ddram toplogy. This includes differences in speed, channel
+  // Specify the ram toplogy. This includes differences in speed, channel
   // count, size. This does not include different vendors of memory unless
   // special driver consideration is required. Each unique ID value here should
   // map to a specific resistor strappping configuration on the SoC.
   // Example Ids: "DUAL-8GB-2400",
-  Topology ddram = 16;
-}
-
-// Contains a list of all supported topologies for all hardware features with
-// a particular Design. Should contain all same fields as HardwareTopology
-message SupportedTopologies {
-  repeated Topology screen = 1;
-
-  repeated Topology form_factor = 2;
-
-  repeated Topology audio_codec = 3;
-
-  repeated Topology stylus = 4;
-
-  repeated Topology keyboard = 5;
-
-  repeated Topology thermal = 6;
-
-  repeated Topology camera = 7;
-
-  repeated Topology mic = 8;
-
-  repeated Topology accel = 9;
-
-  repeated Topology gyro = 10;
-
-  repeated Topology magnetometer = 11;
-
-  repeated Topology fingerprint = 12;
-
-  repeated Topology proximity_sensor = 13;
-
-  repeated Topology daugher_board = 14;
-
-  repeated Topology non_volatile_storage = 15;
-
-  repeated Topology ddram = 16;
-}
-
-// Each Design repo will translate HardwareTopology into
-// HardwareFeatures. It is entirely possible for different values of
-// a HardwareTopology message to generate identical verions of
-// HardwareFeatures. For example, multiple different sensor
-// topologies (caused by placement differences) may have the same normalized
-// HardwareFeatures. This HardwareFeatures message drives the rest of the
-// configuration system
-message HardwareFeatures {
-  UsbC usb_c = 1;
-  message UsbC {
-    int32 count = 1;
-  }
-
-  UsbA usb_a = 2;
-  message UsbA {
-    int32 count = 1;
-  }
-
-  Lte lte = 3;
-  message Lte {
-    bool present = 1;
-  }
-
-  Hdmi hdmi = 4;
-  message Hdmi {
-    bool present = 1;
-  }
-
-  FirmwareConfiguration fw_config = 5;
-  message FirmwareConfiguration {
-    int32 value = 1;
-  }
-
-  Audio audio = 6;
-  message Audio {
-    AudioCodec audio_codec = 1;
-    enum AudioCodec {
-      AUDIO_CODEC_UNKNOWN = 0;  // Also used for non-public audio codecs
-      RT5682 = 1;
-    }
-  }
-
-  Camera camera = 7;
-  message Camera {
-    bool has_a_panel_camera = 1;  // Front camera
-    bool has_b_panel_camera = 2;  // User facing camera
-  }
-
-  Accelerometer accelerometer = 8;
-  message Accelerometer {
-    bool has_lid_accelerometer = 1;
-    bool has_base_accelerometer = 2;
-  }
-
-  Gyroscope gyroscope = 9;
-  message Gyroscope {
-    bool has_lid_gryoscope = 1;
-    bool has_base_gryoscope = 2;
-  }
-
-  Magnetometer magnetometer = 10;
-  message Magnetometer {
-    bool has_lid_magnetometer = 1;
-    bool has_base_magnetometer = 2;
-  }
-
-  LighSensor light_sensor = 11;
-  message LighSensor {
-    bool has_lid_lightsensor = 1;
-    bool has_base_lightsensor = 2;
-  }
-
-  Screen screen = 12;
-  message Screen {
-    int32 inch_millis = 1;
-
-    bool supports_touch = 2;
-  }
-
-  FormFactor form_factor = 13;
-  message FormFactor {
-    FormFactor form_factor = 1;
-    enum FormFactor {
-      FORM_FACTOR_UNKNOWN = 0;
-      CLAMSHELL = 1;
-      CONVERTIBLE = 2;
-      DETACHABLE = 3;
-      CHROMEBASE = 4;
-      CHROMEBOX = 5;
-      CHROMEBIT = 6;
-      CHROMESLATE = 7;
-    }
-  }
-
-  Stylus stylus = 14;
-  message Stylus {
-    Stylus stylus = 1;
-    enum Stylus {
-      STYLUS_UNKNOWN = 0;
-      NONE = 1;
-      INTERNAL = 2;  // Garaged stylus
-      EXTERNAL = 3;  // Non-garaged stylus
-    }
-  }
-
-  Touch touch = 15;
-  message Touch {
-    bool has_touch = 1;
-  }
-
-  Keyboard keyboard = 16;
-  message Keyboard {
-    bool has_internal_keyboard = 1;
-    bool has_backlight = 2;
-    bool has_power_button = 3;
-  }
-
-  Memory memory = 17;
-  message Memory {
-    Component.Memory.Class class = 1;
-  }
+  Topology ram = 16;
 }
