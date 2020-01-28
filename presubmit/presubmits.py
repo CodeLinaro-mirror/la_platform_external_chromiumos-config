@@ -38,14 +38,14 @@ def CheckGenerated(input_api, output_api):
   """
   results = []
 
-  if not input_api.subprocess.call(
+  if input_api.subprocess.call(
       './generate.sh',
       shell=True,
       stdout=input_api.subprocess.PIPE,
       stderr=input_api.subprocess.PIPE):
     msg = 'Error: generate.sh failed. Please fix and try again.'
     results.append(output_api.PresubmitError(msg))
-  elif not input_api.subprocess.call(
+  elif input_api.subprocess.call(
       'git diff --exit-code',
       shell=True,
       stdout=input_api.subprocess.PIPE,
