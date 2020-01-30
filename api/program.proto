@@ -10,7 +10,7 @@ import "src/config/api/component.proto";
 import "src/config/api/design.proto";
 import "src/config/api/program_id.proto";
 
-option go_package = "go.chromium.org/chromiumos/config/go/src/config/api";
+option go_package = "go.chromium.org/chromiumos/config/go/api";
 
 // Defines a Chromium OS program, which establishes the set of constraints and
 // guidelines for all hardware design projects developed under the given

@@ -8,7 +8,7 @@ package chromiumos.config.api;
 
 import "src/config/api/component.proto";
 
-option go_package = "go.chromium.org/chromiumos/config/go/src/config/api";
+option go_package = "go.chromium.org/chromiumos/config/go/api";
 
 // Represents a specific hardware topology option for a hardware feature, e.g.
 // camera, microphone, gyroscope, daughter board connection. For ecample. one

@@ -6,7 +6,7 @@ syntax = "proto3";
 
 package chromiumos.config.api;
 
-option go_package = "go.chromium.org/chromiumos/config/go/src/config/api";
+option go_package = "go.chromium.org/chromiumos/config/go/api";
 
 // Uniquely identifies any contributing partner to any of the chromiumos
 // projects.

@@ -8,7 +8,7 @@ package chromiumos.config.api;
 
 import "src/config/api/partner_id.proto";
 
-option go_package = "go.chromium.org/chromiumos/config/go/src/config/api";
+option go_package = "go.chromium.org/chromiumos/config/go/api";
 
 // Defines contributing partners participating in the design, execution,
 // and support of chromiumos projects.
