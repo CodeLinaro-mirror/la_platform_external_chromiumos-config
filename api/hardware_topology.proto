@@ -8,7 +8,7 @@ package chromiumos.config.api;
 
 import "src/config/api/topology.proto";
 
-option go_package = "go.chromium.org/chromiumos/config/go/api";
+option go_package = "go.chromium.org/chromiumos/config/go/src/config/api";
 
 // Contains hardware related system features that are tracked by Google to
 // differentiate distinct hardware build configurations. Generally these

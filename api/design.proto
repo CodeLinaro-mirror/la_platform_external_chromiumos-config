@@ -14,7 +14,7 @@ import "src/config/api/partner_id.proto";
 import "src/config/api/program_id.proto";
 import "src/config/api/topology.proto";
 
-option go_package = "go.chromium.org/chromiumos/config/go/api";
+option go_package = "go.chromium.org/chromiumos/config/go/src/config/api";
 
 message Design {
   // Globally unique design identifier.

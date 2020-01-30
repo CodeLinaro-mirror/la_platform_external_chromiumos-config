@@ -12,7 +12,7 @@ import "src/config/api/device_brand.proto";
 import "src/config/api/partner.proto";
 import "src/config/api/program.proto";
 
-option go_package = "go.chromium.org/chromiumos/config/go/api";
+option go_package = "go.chromium.org/chromiumos/config/go/src/config/api";
 
 // Defines a config payload that can be generated from a given config git
 // repo.  Based on the distributed nature of the config, these bundles are then

@@ -10,7 +10,7 @@ import "src/config/api/design_id.proto";
 import "src/config/api/device_brand_id.proto";
 import "src/config/api/partner_id.proto";
 
-option go_package = "go.chromium.org/chromiumos/config/go/api";
+option go_package = "go.chromium.org/chromiumos/config/go/src/config/api";
 
 // Defines device branding characteristics for each unique Chromium OS device
 // brand.
