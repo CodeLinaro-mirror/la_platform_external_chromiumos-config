@@ -101,4 +101,18 @@ message HardwareTopology {
   // map to a specific resistor strappping configuration on the SoC.
   // Example Ids: "DUAL-8GB-2400",
   Topology ram = 16;
+
+  // Specify the wifi toplogy. This includes differences in communication bus.
+  // Example Ids: "CNVI-JPEAK", "PCI-REALTEK"
+  Topology wifi = 17;
+
+  // Specify the LTE sub-board toplogy. This includes presence or absence of
+  // dedicated sub-board. This is sepearate from the main daughter board.
+  // Example Ids: "CNVI-JPEAK", "PCI-REALTEK"
+  Topology lte_board = 18;
+
+  // Specify the SD card reader toplogy. This only includes presence of SD card
+  // reader on system or not
+  // Example Ids: "NONE", "PRESENT"
+  Topology sd_reader = 19;
 }

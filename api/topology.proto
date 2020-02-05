@@ -47,6 +47,9 @@ message Topology {
     DAUGHTER_BOARD = 14;
     NON_VOLATILE_STORAGE = 15;
     RAM = 16;
+    WIFI = 17;
+    LTE_BOARD = 18;
+    SD_READER = 19;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -126,6 +129,8 @@ message HardwareFeatures {
     enum AudioCodec {
       AUDIO_CODEC_UNKNOWN = 0;  // Also used for non-public audio codecs
       RT5682 = 1;
+      ALC5682I = 2;
+      ALC5682 = 3;
     }
   }
 
@@ -186,7 +191,7 @@ message HardwareFeatures {
   Screen screen = 12;
   message Screen {
     // Screen since in milli-inches. Would be 0 for systems without screen
-    Count inch_millis = 1;
+    Count milliinch = 1;
 
     // If touch support is present on system
     Present touch_support = 2;
