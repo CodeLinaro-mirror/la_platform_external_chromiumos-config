@@ -238,6 +238,6 @@ message HardwareFeatures {
   // Memory properties of system
   Memory memory = 16;
   message Memory {
-    Component.Memory.Class class = 1;
+    Component.Memory.Profile profile = 1;
   }
 }
