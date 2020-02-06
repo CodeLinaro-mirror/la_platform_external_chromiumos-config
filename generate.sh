@@ -44,9 +44,8 @@ protoc -I../../ --descriptor_set_out=proto/descpb.bin \
   src/third_party/chromiumos-overlay/proto/audio_config.proto \
   src/third_party/chromiumos-overlay/proto/brand_config.proto \
   src/third_party/chromiumos-overlay/proto/build_target_config_id.proto \
-  src/third_party/chromiumos-overlay/proto/design_variant_config.proto \
+  src/third_party/chromiumos-overlay/proto/design_config_build_payload.proto \
   src/third_party/chromiumos-overlay/proto/firmware_config.proto \
   src/platform2/bluetooth/proto/config.proto \
-  src/platform2/chromeos-config/proto/design_variant_id_scan_config.proto \
-  src/platform2/chromeos-config/proto/brand_id_scan_config.proto \
+  src/platform2/chromeos-config/proto/identity_scan_config.proto \
   src/platform2/power_manager/config.proto
