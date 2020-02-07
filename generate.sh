@@ -45,7 +45,7 @@ protoc -I../../ --descriptor_set_out=proto/descpb.bin \
   src/config/api/topology.proto \
   src/third_party/chromiumos-overlay/proto/audio_config.proto \
   src/third_party/chromiumos-overlay/proto/brand_config.proto \
-  src/third_party/chromiumos-overlay/proto/build_target_config_id.proto \
+  src/third_party/chromiumos-overlay/proto/build_target_id.proto \
   src/third_party/chromiumos-overlay/proto/design_config_build_payload.proto \
   src/third_party/chromiumos-overlay/proto/firmware_config.proto \
   src/platform2/bluetooth/proto/config.proto \

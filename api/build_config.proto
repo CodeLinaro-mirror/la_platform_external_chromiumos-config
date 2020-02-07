@@ -3,13 +3,13 @@ syntax = "proto3";
 package chromiumos.config.api;
 
 import "src/third_party/chromiumos-overlay/proto/brand_config.proto";
-import "src/third_party/chromiumos-overlay/proto/build_target_config_id.proto";
+import "src/third_party/chromiumos-overlay/proto/build_target_id.proto";
 import "src/third_party/chromiumos-overlay/proto/design_config_build_payload.proto";
 
 // Specifies all configuration for a build.
 message BuildConfig {
   // Base build target.
-  chromiumos_overlay.BuildTargetConfigId build_target_config_id = 1;
+  chromiumos_overlay.BuildTargetId build_target_id = 1;
 
   // Config for all unique hw design configs supported by the build.
   //
