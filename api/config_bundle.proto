@@ -11,6 +11,7 @@ import "src/config/api/design.proto";
 import "src/config/api/device_brand.proto";
 import "src/config/api/partner.proto";
 import "src/config/api/program.proto";
+import "src/config/api/build_config.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
@@ -19,11 +20,15 @@ option go_package = "go.chromium.org/chromiumos/config/go/api";
 // eventually stitched together to drive build config payloads or any
 // infra/analysis related access/processing.
 message ConfigBundle {
+  // Chrome OS program and hw design project config
   PartnerList partners = 1;
   ComponentList components = 2;
   ProgramList programs = 3;
   DesignList designs = 4;
   DeviceBrandList device_brands = 5;
+
+  // Software config for each unique hw design config
+  BuildConfigList build_configs = 6;
 }
 
 message ConfigBundleList {

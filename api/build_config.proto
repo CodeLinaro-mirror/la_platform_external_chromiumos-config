@@ -32,3 +32,7 @@ message BuildConfig {
   // itself based on the payload.
   repeated chromiumos_overlay.BrandConfig brand_configs = 3;
 }
+
+message BuildConfigList {
+  repeated BuildConfig value = 1;
+}
