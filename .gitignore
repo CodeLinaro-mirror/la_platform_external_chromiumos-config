@@ -1,2 +1,4 @@
 .cipd_bin
 proto/descpb.bin
+*_pb2.py
+*.pyc

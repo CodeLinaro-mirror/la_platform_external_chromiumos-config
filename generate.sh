@@ -25,6 +25,7 @@ ENSURE_FILE
 PATH="${cipd_root}:${PATH}"
 
 protoc -I../../ --descriptor_set_out=proto/descpb.bin \
+  --python_out=payload_utils/bindings \
   chromite/infra/proto/src/chromiumos/common.proto \
   src/config/api/build_config.proto \
   src/config/api/component.proto \
