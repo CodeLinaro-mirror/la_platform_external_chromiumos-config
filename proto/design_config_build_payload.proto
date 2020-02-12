@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package chromiumos_config;
+
+option go_package = "go.chromium.org/chromiumos/config/go/src/config/proto";
+
+import "src/config/proto/audio/audio_config.proto";
+import "src/config/proto/firmware_config.proto";
+import "src/config/proto/bluetooth/config.proto";
+import "src/config/proto/identity/identity_scan_config.proto";
+import "src/config/proto/power_manager/config.proto";
+
+// TODO(shapiroc): Delete after config is migrated.
+message DesignConfigBuildPayload {
+  chromeos_config.IdentityScanConfig.DesignConfigId scan_config = 1;
+
+  firmware.FirmwareConfig firmware = 2;
+
+  bluetooth.BluetoothConfig bluetooth_config = 3;
+
+  power_manager.PowerManagerConfig power_manager_config = 4;
+
+  AudioConfig audio_config = 5;
+}

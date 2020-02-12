@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package chromiumos_config;
+
+option go_package = "go.chromium.org/chromiumos/config/go/src/config/proto";
+
+import "src/config/proto/identity/identity_scan_config.proto";
+
+// TODO(shapiroc): Delete after config is migrated.
+message BrandConfig {
+  chromeos_config.IdentityScanConfig.BrandId scan_config = 1;
+  string wallpaper = 2;
+}
