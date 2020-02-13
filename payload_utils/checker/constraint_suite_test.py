@@ -1,0 +1,69 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+"""Tests for constraint_suite."""
+
+import unittest
+
+from bindings.src.config.api.config_bundle_pb2 import ConfigBundle
+from bindings.src.config.api.design_pb2 import DesignList, Design
+from bindings.src.config.api.program_pb2 import ProgramList, Program
+
+from checker.constraint_suite import (ConstraintSuite,
+                                      InvalidConstraintSuiteError)
+
+
+class ValidConstraintSuite(ConstraintSuite):
+  """A valid constraint suite, that defines two checks."""
+
+  def _helper_method(self):
+    assert False, "helper_method should never be called"
+
+  def check_program_valid(self, program_config, project_config):
+    if program_config.programs.value[0].name != 'TestProgram1':
+      raise AssertionError("Program name must be 'TestProgram1'")
+
+  def check_project_valid(self, program_config, project_config):
+    if project_config.designs.value[0].name != 'TestDesign1':
+      raise AssertionError("Design name must be 'TestDesign1'")
+
+
+class InvalidConstraintSuite(ConstraintSuite):
+  """An invalid constraint suite, that defines no checks."""
+
+  def helper_method1(self):
+    pass
+
+  def helper_method2(self):
+    pass
+
+
+class ConstraintSuiteTest(unittest.TestCase):
+
+  def test_runs_checks(self):
+    """Tests running checks on a project that fulfills constraints."""
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[Program(name='TestProgram1')]))
+    project_config = ConfigBundle(
+        designs=DesignList(value=[Design(name='TestDesign1')]))
+
+    ValidConstraintSuite().run_checks(
+        program_config=program_config, project_config=project_config)
+
+  def test_runs_checks_fails_constraint(self):
+    """Tests running checks on a project that violates constraints."""
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[Program(name='TestProgram2')]))
+    project_config = ConfigBundle(
+        designs=DesignList(value=[Design(name='TestDesign1')]))
+
+    with self.assertRaisesRegex(AssertionError,
+                                "Program name must be 'TestProgram1'"):
+      ValidConstraintSuite().run_checks(
+          program_config=program_config, project_config=project_config)
+
+  def test_runs_checks_invalid_suite(self):
+    """Tests creating a ConstraintSuite with no checks."""
+    with self.assertRaisesRegex(InvalidConstraintSuiteError,
+                                'No checks found on.*InvalidConstraintSuite'):
+      InvalidConstraintSuite()
