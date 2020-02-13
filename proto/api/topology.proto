@@ -6,7 +6,7 @@ syntax = "proto3";
 
 package chromiumos.config.api;
 
-import "src/config/api/component.proto";
+import "src/config/proto/api/component.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 

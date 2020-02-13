@@ -4,7 +4,7 @@ package chromiumos_config;
 
 option go_package = "go.chromium.org/chromiumos/config/go/src/config/proto";
 
-import "src/config/proto/identity/identity_scan_config.proto";
+import "src/config/proto/chromeos-config/identity_scan_config.proto";
 
 // TODO(shapiroc): Delete after config is migrated.
 message BrandConfig {

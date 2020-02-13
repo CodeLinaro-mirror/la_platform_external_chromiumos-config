@@ -10,6 +10,6 @@ load("@stdlib//internal/descpb.star", "wellknown_descpb")
 
 protos = proto.new_descriptor_set(
     name = "chromiumos",
-    blob = io.read_file("descpb.bin"),
+    blob = io.read_file("bindings/descpb.bin"),
     deps = [wellknown_descpb],
 )

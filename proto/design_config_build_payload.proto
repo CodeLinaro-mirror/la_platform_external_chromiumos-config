@@ -4,10 +4,10 @@ package chromiumos_config;
 
 option go_package = "go.chromium.org/chromiumos/config/go/src/config/proto";
 
-import "src/config/proto/audio/audio_config.proto";
+import "src/config/proto/audio_config.proto";
 import "src/config/proto/firmware_config.proto";
 import "src/config/proto/bluetooth/config.proto";
-import "src/config/proto/identity/identity_scan_config.proto";
+import "src/config/proto/chromeos-config/identity_scan_config.proto";
 import "src/config/proto/power_manager/config.proto";
 
 // TODO(shapiroc): Delete after config is migrated.
