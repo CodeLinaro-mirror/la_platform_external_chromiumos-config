@@ -31,6 +31,6 @@ PATH="${cipd_root}:${PATH}"
 protos=(proto/**/*.proto)
 protos=( ${protos[@]/#/src/config/} )
 
-protoc -I../../ --descriptor_set_out=starlark/bindings/descpb.bin \
+protoc -I../../ --descriptor_set_out=util/bindings/descpb.bin \
   --python_out=payload_utils/bindings \
   "${protos[@]}"
