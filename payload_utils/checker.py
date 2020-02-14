@@ -7,7 +7,11 @@
 import argparse
 import os
 
+from checker import constraint_suite_discovery
 from checker import io_utils
+
+COMMON_CHECKS_PATH = os.path.join(
+    os.path.dirname(__file__), 'checker', 'common_checks')
 
 
 def argument_parser():
@@ -34,8 +38,20 @@ def main():
   project_config = io_utils.read_repo_config(args.project)
   program_config = io_utils.read_repo_config(args.program)
 
-  print('Read project config: {}'.format(project_config))
-  print('Read program config: {}'.format(program_config))
+  constraint_suite_directories = [
+      COMMON_CHECKS_PATH,
+      os.path.join(args.program, 'checks'),
+      os.path.join(args.project, 'checks')
+  ]
+
+  constraint_suites = []
+  for directory in constraint_suite_directories:
+    constraint_suites.extend(
+        constraint_suite_discovery.discover_suites(directory))
+
+  for suite in constraint_suites:
+    suite.run_checks(
+        program_config=program_config, project_config=project_config, verbose=1)
 
 
 if __name__ == '__main__':

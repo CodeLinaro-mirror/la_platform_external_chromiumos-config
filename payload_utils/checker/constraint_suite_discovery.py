@@ -33,7 +33,9 @@ def _prepend_to_pythonpath(directory: str):
 
 def discover_suites(
     directory: str,
-    pattern: str = 'check*.py') -> List[constraint_suite.ConstraintSuite]:
+    pattern: str = 'check*.py',
+    exclude_pattern: str = '*test.py'
+) -> List[constraint_suite.ConstraintSuite]:
   """Returns instances of all ConstraintSuites defined in a directory.
 
   All files matching pattern in directory are dynamically loaded (pattern must
@@ -43,13 +45,19 @@ def discover_suites(
 
   Args:
     directory: Directory to search. Note that the search is not recursive.
-    pattern: Filename pattern to match. Must specify Python files.
+    pattern: Filename pattern to match. Must be compatible with the glob module.
+      Must specify Python files.
+    exclude_pattern: Filename pattern to exclude. Must be compatible with the
+      glob module. If a file matches both pattern and exclude_pattern, it will
+      be excluded.
   """
   if not pattern.endswith('.py'):
     raise ValueError('pattern must end with ".py"')
 
   # Sort discovered modules, so suites can be run in this order.
-  module_files = sorted(glob.glob(os.path.join(directory, pattern)))
+  module_files = sorted(
+      set(glob.glob(os.path.join(directory, pattern))) -
+      set(glob.glob(os.path.join(directory, exclude_pattern))))
 
   # Convert file names -> module names. This means strip the '.py' and get only
   # the filename (directory will be added to path so the modules can be loaded).

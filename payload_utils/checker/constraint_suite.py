@@ -50,13 +50,19 @@ class ConstraintSuite:
     if not self._checks:
       raise InvalidConstraintSuiteError('No checks found on %s' % type(self))
 
-  def run_checks(self, program_config: config_bundle_pb2.ConfigBundle,
-                 project_config: config_bundle_pb2.ConfigBundle):
+  def run_checks(self,
+                 program_config: config_bundle_pb2.ConfigBundle,
+                 project_config: config_bundle_pb2.ConfigBundle,
+                 verbose: int = 0):
     """Runs all of the checks on an instance.
 
     Args:
       program_config: The program's config, to pass to each check.
       project_config: The project's config, to pass to each check.
+      verbose: Verbosity mode, 0: silent, >= 1: print name of check.
     """
     for method in self._checks:
+      if verbose:
+        # TODO(crbug.com/1051187): Improve logging and failure reporting.
+        print('Running {}.{}'.format(self.__class__.__name__, method.__name__))
       method(program_config=program_config, project_config=project_config)
