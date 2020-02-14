@@ -5,9 +5,9 @@
 
 import unittest
 
-from bindings.src.config.api.config_bundle_pb2 import ConfigBundle
-from bindings.src.config.api.design_pb2 import DesignList, Design
-from bindings.src.config.api.program_pb2 import ProgramList, Program
+from bindings.src.config.proto.api.config_bundle_pb2 import ConfigBundle
+from bindings.src.config.proto.api.design_pb2 import DesignList, Design
+from bindings.src.config.proto.api.program_pb2 import ProgramList, Program
 
 from checker.constraint_suite import (ConstraintSuite,
                                       InvalidConstraintSuiteError)

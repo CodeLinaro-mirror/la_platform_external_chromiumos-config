@@ -5,7 +5,7 @@
 
 import inspect
 
-from bindings.src.config.api import config_bundle_pb2
+from bindings.src.config.proto.api import config_bundle_pb2
 
 
 class InvalidConstraintSuiteError(Exception):

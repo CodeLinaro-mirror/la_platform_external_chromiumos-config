@@ -5,7 +5,7 @@
 
 import os
 
-from bindings.src.config.api import config_bundle_pb2
+from bindings.src.config.proto.api import config_bundle_pb2
 
 
 def read_repo_config(repo_path: str) -> config_bundle_pb2.ConfigBundle:
