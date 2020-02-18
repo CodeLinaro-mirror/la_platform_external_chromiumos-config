@@ -81,14 +81,14 @@ def _create_form_factor(id, description, form_factor):
     hardware_feature = hw_features,
   )
 
-def _create_audio_codec(id, description, codec):
+def _create_audio(id, description, codec):
   hw_features = topo_pb.HardwareFeatures()
 
   hw_features.audio.audio_codec = codec
 
   return topo_pb.Topology(
     id = id,
-    type = topo_pb.Topology.AUDIO_CODEC,
+    type = topo_pb.Topology.AUDIO,
     description = { "EN": description},
     hardware_feature = hw_features,
     )
@@ -277,15 +277,12 @@ def _create_sd_reader(id, description):
 
 def _create_hardware_topology(screen = None,
     form_factor = None,
-    audio_codec = None,
+    audio = None,
     stylus = None,
     keyboard = None,
     thermal = None,
     camera = None,
-    microphone = None,
-    accelerometer = None,
-    gyroscope = None,
-    magnetometer = None,
+    accelerometer_gyroscope_magnetometer = None,
     fingerprint = None,
     proximity_sensor = None,
     daughter_board = None,
@@ -302,8 +299,8 @@ def _create_hardware_topology(screen = None,
   if form_factor and form_factor.type != topo_pb.Topology.FORM_FACTOR:
     fail("Invalid form factor topology")
 
-  if audio_codec and audio_codec.type != topo_pb.Topology.AUDIO_CODEC:
-    fail("Invalid audio_codec topology")
+  if audio and audio.type != topo_pb.Topology.AUDIO:
+    fail("Invalid audio topology")
 
   if stylus and stylus.type != topo_pb.Topology.STYLUS:
     fail("Invalid stylus topology")
@@ -317,17 +314,8 @@ def _create_hardware_topology(screen = None,
   if camera and camera.type != topo_pb.Topology.CAMERA:
     fail("Invalid camera topology")
 
-  if microphone and microphone.type != topo_pb.Topology.MICROPHONE:
-    fail("Invalid microphone topology")
-
-  if accelerometer and accelerometer.type != topo_pb.Topology.ACCELEROMETER:
-    fail("Invalid accelerometer topology")
-
-  if gyroscope and gyroscope.type != topo_pb.Topology.GYROSCOPE:
-    fail("Invalid gyroscope topology")
-
-  if magnetometer and magnetometer.type != topo_pb.Topology.MAGNETOMETER:
-    fail("Invalid magnetometer topology")
+  if accelerometer_gyroscope_magnetometer and accelerometer_gyroscope_magnetometer.type != topo_pb.Topology.ACCELEROMETER_GYROSCOPE_MAGNETOMETER:
+    fail("Invalid accelerometer/gyroscope/magnetometer topology")
 
   if fingerprint and fingerprint.type != topo_pb.Topology.FINGERPRINT:
     fail("Invalid fingerprint topology")
@@ -356,15 +344,12 @@ def _create_hardware_topology(screen = None,
   return hw_topo_pb.HardwareTopology(
     screen = screen,
     form_factor = form_factor,
-    audio_codec = audio_codec,
+    audio = audio,
     stylus = stylus,
     keyboard = keyboard,
     thermal = thermal,
     camera = camera,
-    microphone = microphone,
-    accelerometer = accelerometer,
-    gyroscope = gyroscope,
-    magnetometer = magnetometer,
+    accelerometer_gyroscope_magnetometer = accelerometer_gyroscope_magnetometer,
     fingerprint = fingerprint,
     proximity_sensor = proximity_sensor,
     daughter_board = daughter_board,
@@ -407,8 +392,8 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     result.keyboard = copy.keyboard.hardware_feature.keyboard
 
   # Handle all possible audio features attributes
-  if copy.audio_codec.hardware_feature.audio != topo_pb.HardwareFeatures.Audio():
-    result.audio = copy.audio_codec.hardware_feature.audio
+  if copy.audio.hardware_feature.audio != topo_pb.HardwareFeatures.Audio():
+    result.audio = copy.audio.hardware_feature.audio
 
   # Handle all possible camera features attributes
   if copy.camera.hardware_feature.camera != topo_pb.HardwareFeatures.Camera():
@@ -454,7 +439,7 @@ hw_topo = struct(
     create_features = _create_features,
     create_screen = _create_screen,
     create_form_factor = _create_form_factor,
-    create_audio_codec = _create_audio_codec,
+    create_audio = _create_audio,
     create_stylus = _create_stylus,
     create_keyboard = _create_keyboard,
     create_thermal = _create_thermal,

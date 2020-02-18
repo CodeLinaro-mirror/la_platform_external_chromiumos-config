@@ -17,102 +17,71 @@ option go_package = "go.chromium.org/chromiumos/config/go/api";
 // This SHOULD NOT be used to track second sourced components that are drop in
 // replacements.
 //
-// Note the types here are strings instead of enums. The individual Design
-// repos should check that any CL landing has acceptable values for the string.
+// Note the types here are Topology values instead of enums. The individual
+// Design repos should check that any CL landing has acceptable Topology values.
 // Most values are effectively stringly typed enums.
 message HardwareTopology {
-  // Specify hardware screen topology hardware. This includes differences in
-  // size, technology, and touch screen.
-  // Example Ids: "NONE" (chomebox), "OLED-15", "TFT-12", "TFT-12-TOUCH"
+  // Specify hardware screen topology hardware.
+  // See ./hardware_topology.md#screen for more information.
   Topology screen = 1;
 
-  // Specify functional form factor type of hardware. This includes different
-  // functions like clamshell, convertible, tablet, detachable, chromebox
-  // Example Ids: "CLAMSHELL", "TABLET", "CONVERTIBLE", "CHROMEBOX"
+  // Specify functional form factor type of hardware.
+  // See ./hardware_topology.md#form-factor for more information.
   Topology form_factor = 2;
 
   // Specify the audio codec topology.
-  // Example Ids: "RT5682"
-  Topology audio_codec = 3;
+  // See ./hardware_topology.md#audio for more information
+  Topology audio = 3;
 
-  // Specify the stylus topology. This includes differences in stylus presence,
-  // garage type, or technology type.
-  // Example Ids: "NONE", "GARAGED-USI", "EXTERNAL-EMR"
+  // Specify the stylus topology.
+  // See ./hardware_topology.md#stylus for more information.
   Topology stylus = 4;
 
-  // Specify the internal topology. This includes differences in presence,
-  // key layout, or backlight functionality.
-  // Example Ids: "NONE", "DEFAULT", "DEFAULT-BL", "NO-PWR-BL"
+  // Specify the internal keyboard topology.
+  // See ./hardware_topology.md#keyboard for more information.
   Topology keyboard = 5;
 
-  // Specify which thermal toplogy. This includes any differnce that would
-  // require new thermal tuning parameters.
-  // Example Ids: "DEFAULT",  "LARGE-CHASIS", "LARGE-CHASIS-HIGH-PERF"
+  // Specify which thermal topology.
+  // See ./hardware_topology.md#thermal for more information.
   Topology thermal = 6;
 
-  // Specify the camera toplogy.  This includes differences in count,
-  // location, camera features, or drivers.
-  // Example Ids: "NONE", "2A1B", "1A1B1D-ARC"
+  // Specify the camera topology.
+  // See ./hardware_topology.md#camera for more information.
   Topology camera = 7;
 
-  // Specify the microphone toplogy. This includes differences in count,
-  // location, and drivers.
-  // Example Ids: "NONE", "2C", "2C-ARRAY"
-  Topology microphone = 8;
+  // Specify the accelerometer/gyroscope/magetometer topology.
+  // See ./hardware_topology.md#sensor for more information.
+  Topology accelerometer_gyroscope_magnetometer = 8;
 
-  // Specify the accelerometer toplogy. This includes differences in count,
-  // location, and drivers.
-  // Example Ids: "NONE", "1LID1Base", "1LID-LSM-1BASE-BMI"
-  Topology accelerometer = 9;
+  // Specify the fingerprint sensor topology.
+  // See ./hardware_topology.md#fingerprint-sensor for more information.
+  Topology fingerprint = 9;
 
-  // Specify the gyroscope toplogy. This includes differences in count,
-  // location, and drivers.
-  // Example Ids: "NONE", "1LID", "1BASE-L3GD"
-  Topology gyroscope = 10;
+  // Specify the proximity sensor topology.
+  // See ./hardware_topology.md#sensor for more information.
+  Topology proximity_sensor = 10;
 
-  // Specify the magnetometer/eCompass toplogy. This includes differences in
-  // count, location, and drivers.
-  // Example Ids: "NONE", "1BASE-BMM"
-  Topology magnetometer = 11;
+  // Specify the daugher board topology.
+  // See ./hardware_topology.md#daughter-board for more information.
+  Topology daughter_board = 11;
 
-  // Specify the fingerprint sensor toplogy. This includes differences in
-  // count, location, and drivers.
-  // Example Ids: "NONE", "1C-ELAN"
-  Topology fingerprint = 12;
+  // Specify the non-volatile storage topology.
+  // See ./hardware_topology.md#non_volatile-storage for more information.
+  Topology non_volatile_storage = 12;
 
-  // Specify the proximity sensor toplogy. This includes differences in
-  // count, location, and drivers.
-  // Example Ids: "NONE", "1B-ELAN"
-  Topology proximity_sensor = 13;
+  // Specify the ram topology.
+  // See ./hardware_topology.md#ram for more information.
+  Topology ram = 13;
 
-  // Specify the daugher board toplogy. Every unique daughter board should have
-  // a unique ID based on function
-  // Example Ids: "NONE", "1C1A", "HDMI-1A", "LTE"
-  Topology daughter_board = 14;
+  // Specify the wifi topology.
+  // See ./hardware_topology.md#wifi for more information.
+  Topology wifi = 14;
 
-  // Specify the non-volatile storage toplogy. This includes differences in
-  // required tuning parameters or drivers.
-  // Example Ids: "EMMC", "NVME"
-  Topology non_volatile_storage = 15;
+  // Specify the LTE sub-board topology.
+  // See ./hardware_topology.md#lte-board for more information.
+  Topology lte_board = 15;
 
-  // Specify the ram toplogy. This includes differences in speed, channel
-  // count, size. This does not include different vendors of memory unless
-  // special driver consideration is required. Each unique ID value here should
-  // map to a specific resistor strappping configuration on the SoC.
-  // Example Ids: "DUAL-8GB-2400",
-  Topology ram = 16;
-
-  // Specify the wifi toplogy. This includes differences in communication bus.
-  // Example Ids: "CNVI-JPEAK", "PCI-REALTEK"
-  Topology wifi = 17;
-
-  // Specify the LTE sub-board toplogy. This includes presence or absence of
-  // dedicated sub-board. This is sepearate from the main daughter board.
-  // Example Ids: "CNVI-JPEAK", "PCI-REALTEK"
-  Topology lte_board = 18;
-
-  // Specify the SD card reader toplogy. This only includes presence of SD card
-  // reader on system or not
-  // Example Ids: "NONE", "PRESENT"
-  Topology sd_reader = 19;
+  // Specify the SD card reader topology.
+  // See ./hardware_topology.md#sd-reader for more information.
+  Topology sd_reader = 16;
 }

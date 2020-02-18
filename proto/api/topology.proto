@@ -30,26 +30,23 @@ message Topology {
   // HardwareTopology message
   Type type = 2;
   enum Type {
-    TYPE_UNKNOWN =0;
+    TYPE_UNKNOWN = 0;
     SCREEN = 1;
     FORM_FACTOR = 2;
-    AUDIO_CODEC = 3;
+    AUDIO = 3;
     STYLUS = 4;
     KEYBOARD = 5;
     THERMAL = 6;
     CAMERA = 7;
-    MICROPHONE = 8;
-    ACCELEROMETER = 9;
-    GYROSCOPE = 10;
-    MAGNETOMETER = 11;
-    FINGERPRINT = 12;
-    PROXIMITY_SENSOR = 13;
-    DAUGHTER_BOARD = 14;
-    NON_VOLATILE_STORAGE = 15;
-    RAM = 16;
-    WIFI = 17;
-    LTE_BOARD = 18;
-    SD_READER = 19;
+    ACCELEROMETER_GYROSCOPE_MAGNETOMETER = 8;
+    FINGERPRINT = 9;
+    PROXIMITY_SENSOR = 10;
+    DAUGHTER_BOARD = 11;
+    NON_VOLATILE_STORAGE = 12;
+    RAM = 13;
+    WIFI = 14;
+    LTE_BOARD = 15;
+    SD_READER = 16;
   }
 
   // Map of human readable descriptions in various languages. Maps language
