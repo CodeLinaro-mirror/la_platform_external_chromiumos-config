@@ -20,12 +20,10 @@ class ValidConstraintSuite(ConstraintSuite):
     assert False, "helper_method should never be called"
 
   def check_program_valid(self, program_config, project_config):
-    if program_config.programs.value[0].name != 'TestProgram1':
-      raise AssertionError("Program name must be 'TestProgram1'")
+    self.assertEqual(program_config.programs.value[0].name, 'TestProgram1')
 
   def check_project_valid(self, program_config, project_config):
-    if project_config.designs.value[0].name != 'TestDesign1':
-      raise AssertionError("Design name must be 'TestDesign1'")
+    self.assertEqual(project_config.designs.value[0].name, 'TestDesign1')
 
 
 class InvalidConstraintSuite(ConstraintSuite):
@@ -58,7 +56,7 @@ class ConstraintSuiteTest(unittest.TestCase):
         designs=DesignList(value=[Design(name='TestDesign1')]))
 
     with self.assertRaisesRegex(AssertionError,
-                                "Program name must be 'TestProgram1'"):
+                                "'TestProgram2' != 'TestProgram1'"):
       ValidConstraintSuite().run_checks(
           program_config=program_config, project_config=project_config)
 
@@ -67,3 +65,10 @@ class ConstraintSuiteTest(unittest.TestCase):
     with self.assertRaisesRegex(InvalidConstraintSuiteError,
                                 'No checks found on.*InvalidConstraintSuite'):
       InvalidConstraintSuite()
+
+  def test_has_delegated_assertions(self):
+    """Tests that ConstraintSuites have assertion methods."""
+    constraint_suite = ValidConstraintSuite()
+    self.assertTrue(hasattr(constraint_suite, 'assertTrue'))
+    with self.assertRaisesRegex(AssertionError, "1 != 2"):
+      constraint_suite.assertEqual(1, 2)

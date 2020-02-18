@@ -16,5 +16,4 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
     """Checks all project ids are consistent with the program."""
     program_id = program_config.programs.value[0].id
     for design in project_config.designs.value:
-      if program_id != design.program_id:
-        raise AssertionError("Expected program id to match design's program id")
+      self.assertEqual(program_id, design.program_id)

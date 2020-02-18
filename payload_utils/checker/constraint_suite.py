@@ -4,6 +4,7 @@
 """Defines ConstraintSuite, which is subclassed to define constraints."""
 
 import inspect
+import unittest
 
 from bindings.src.config.proto.api import config_bundle_pb2
 
@@ -21,6 +22,10 @@ class ConstraintSuite:
   "program_config". A check method is considered failed iff it raises an
   Exception.
 
+  Assertion methods similar to those on unittest.TestCase are available, e.g.
+  "assertEqual". See DELEGATED_ASSERTIONS attribute for full list of assertion
+  methods.
+
   A ConstraintSuite subclass should group related constraints. For example a
   suite to check form factor constraints could look like:
 
@@ -36,6 +41,19 @@ class ConstraintSuite:
   initialization.
   """
 
+  DELEGATED_ASSERTIONS = [
+      'assertEqual', 'assertNotEqual', 'assertTrue', 'assertFalse'
+  ]
+
+  def __add_delegated_assertions(self):
+    """Adds assertion methods to self.
+
+    Assertion methods just call corresponding method on unittest.TestCase.
+    """
+    for assertion_name in self.DELEGATED_ASSERTIONS:
+      assertion = getattr(unittest.TestCase(), assertion_name)
+      setattr(self, assertion_name, assertion)
+
   def __init__(self):
     super().__init__()
 
@@ -49,6 +67,8 @@ class ConstraintSuite:
 
     if not self._checks:
       raise InvalidConstraintSuiteError('No checks found on %s' % type(self))
+
+    self.__add_delegated_assertions()
 
   def run_checks(self,
                  program_config: config_bundle_pb2.ConfigBundle,
