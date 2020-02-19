@@ -1,0 +1,16 @@
+# Python3 venvs require the python3-venv apt package, which currently isn't
+# installed on ChromeOS GCE images. Use vpython in the meantime.
+#
+# TODO(crbug.com/1051187): Remove when crrev.com/i/2584132 is live in images.
+
+python_version: "3"
+
+wheel: <
+  name: "infra/python/wheels/protobuf-py2_py3"
+  version: "version:3.6.1"
+>
+
+wheel: <
+  name: "infra/python/wheels/six-py2_py3"
+  version: "version:1.10.0"
+>
