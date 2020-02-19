@@ -41,7 +41,6 @@ def main():
   constraint_suite_directories = [
       COMMON_CHECKS_PATH,
       os.path.join(args.program, 'checks'),
-      os.path.join(args.project, 'checks')
   ]
 
   constraint_suites = []
