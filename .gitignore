@@ -3,6 +3,7 @@ util/bindings/descpb.bin
 *_pb2.py
 *.pyc
 .venv
+.pytype
 
 # Ignore nested protocol buffer repos but include
 # direct protocol buffer definition directories.
