@@ -6,9 +6,9 @@ syntax = "proto3";
 
 package chromiumos.config.api;
 
-import "src/config/proto/api/design_id.proto";
-import "src/config/proto/api/device_brand_id.proto";
-import "src/config/proto/api/partner_id.proto";
+import "api/design_id.proto";
+import "api/device_brand_id.proto";
+import "api/partner_id.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 

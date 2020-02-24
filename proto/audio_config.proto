@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "go.chromium.org/chromiumos/config/go/src/config/proto";
+option go_package = "go.chromium.org/chromiumos/config/go";
 
 package chromiumos_config;
 

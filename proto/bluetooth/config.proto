@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package bluetooth;
 
+option go_package = "go.chromium.org/chromiumos/config/go/bluetooth";
+
 message BluetoothConfig {
   // Enable powerd suspend management callbacks.
   bool enable_suspend_management = 1;

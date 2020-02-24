@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package chromeos_config;
 
+option go_package = "go.chromium.org/chromiumos/config/go/chromeos_config";
+
 // Defines how devices are probed at runtime to dynamically
 // determine the correct configuration payload.
 message IdentityScanConfig {

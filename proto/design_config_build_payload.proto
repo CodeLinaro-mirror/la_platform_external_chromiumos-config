@@ -2,13 +2,13 @@ syntax = "proto3";
 
 package chromiumos_config;
 
-option go_package = "go.chromium.org/chromiumos/config/go/src/config/proto";
+option go_package = "go.chromium.org/chromiumos/config/go";
 
-import "src/config/proto/audio_config.proto";
-import "src/config/proto/firmware_config.proto";
-import "src/config/proto/bluetooth/config.proto";
-import "src/config/proto/chromeos-config/identity_scan_config.proto";
-import "src/config/proto/power_manager/config.proto";
+import "audio_config.proto";
+import "firmware_config.proto";
+import "bluetooth/config.proto";
+import "chromeos_config/identity_scan_config.proto";
+import "power_manager/config.proto";
 
 // TODO(shapiroc): Delete after config is migrated.
 message DesignConfigBuildPayload {

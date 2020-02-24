@@ -1,8 +1,8 @@
 load("//config/util/bindings/proto.star", "protos")
 protos.register()
 
-load("@proto//src/config/proto/api/program.proto", program_pb = "chromiumos.config.api")
-load("@proto//src/config/proto/api/program_id.proto", program_id_pb = "chromiumos.config.api")
+load("@proto//api/program.proto", program_pb = "chromiumos.config.api")
+load("@proto//api/program_id.proto", program_id_pb = "chromiumos.config.api")
 
 
 def _create(name, component_quals = None, constraints = None):

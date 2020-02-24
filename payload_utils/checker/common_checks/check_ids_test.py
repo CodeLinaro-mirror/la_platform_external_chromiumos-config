@@ -7,10 +7,10 @@ import unittest
 
 from checker.common_checks.check_ids import IdConstraintSuite
 
-from bindings.src.config.proto.api.config_bundle_pb2 import ConfigBundle
-from bindings.src.config.proto.api.design_pb2 import Design, DesignList
-from bindings.src.config.proto.api.program_pb2 import Program, ProgramList
-from bindings.src.config.proto.api.program_id_pb2 import ProgramId
+from bindings.api.config_bundle_pb2 import ConfigBundle
+from bindings.api.design_pb2 import Design, DesignList
+from bindings.api.program_pb2 import Program, ProgramList
+from bindings.api.program_id_pb2 import ProgramId
 
 
 class CheckIdsTest(unittest.TestCase):

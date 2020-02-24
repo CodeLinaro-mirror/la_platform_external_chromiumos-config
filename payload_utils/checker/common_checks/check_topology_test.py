@@ -7,10 +7,10 @@ import unittest
 
 from checker.common_checks.check_topology import TopologyConstraintSuite
 
-from bindings.src.config.proto.api.config_bundle_pb2 import ConfigBundle
-from bindings.src.config.proto.api.design_pb2 import Design, DesignList
-from bindings.src.config.proto.api.hardware_topology_pb2 import HardwareTopology
-from bindings.src.config.proto.api.topology_pb2 import (HardwareFeatures,
+from bindings.api.config_bundle_pb2 import ConfigBundle
+from bindings.api.design_pb2 import Design, DesignList
+from bindings.api.hardware_topology_pb2 import HardwareTopology
+from bindings.api.topology_pb2 import (HardwareFeatures,
                                                         Topology)
 
 

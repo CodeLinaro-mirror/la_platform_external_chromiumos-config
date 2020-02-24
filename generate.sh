@@ -11,6 +11,7 @@ shopt -s globstar
 
 # Versions of packages to get from CIPD.
 CIPD_PROTOC_VERSION='v3.6.1'
+CIPD_PROTOC_GEN_GO_VERSION='v1.3.2'
 
 # Move to this script's directory.
 cd "$(dirname "$0")"
@@ -23,14 +24,20 @@ cipd ensure \
   -ensure-file - \
   <<ENSURE_FILE
 infra/tools/protoc/\${platform} protobuf_version:${CIPD_PROTOC_VERSION}
+chromiumos/infra/tools/protoc-gen-go version:${CIPD_PROTOC_GEN_GO_VERSION}
 ENSURE_FILE
 
 PATH="${cipd_root}:${PATH}"
 
-# Collect all the protos and add a src/config prefix.
+# Collect all the protos.
 protos=(proto/**/*.proto)
-protos=( ${protos[@]/#/src/config/} )
 
-protoc -I../../ --descriptor_set_out=util/bindings/descpb.bin \
+protoc -Iproto --descriptor_set_out=util/bindings/descpb.bin \
   --python_out=payload_utils/bindings \
   "${protos[@]}"
+
+# Go files need to be processed individually until this is fixed:
+# https://github.com/golang/protobuf/issues/39
+for proto in "${protos[@]}"; do
+  protoc -Iproto --go_out=paths=source_relative:go "${proto}"
+done

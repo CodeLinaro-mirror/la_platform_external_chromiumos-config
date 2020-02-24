@@ -2,9 +2,11 @@ syntax = "proto3";
 
 package chromiumos.config.api;
 
-import "src/config/proto/brand_config.proto";
-import "src/config/proto/build_target_id.proto";
-import "src/config/proto/design_config_build_payload.proto";
+import "brand_config.proto";
+import "build_target_id.proto";
+import "design_config_build_payload.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
 
 // Specifies all configuration for a build.
 message BuildConfig {

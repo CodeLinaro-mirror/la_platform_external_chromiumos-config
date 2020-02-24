@@ -1,9 +1,9 @@
 load("//config/util/bindings/proto.star", "protos")
 protos.register()
 
-load("@proto//src/config/proto/api/design.proto", design_pb = "chromiumos.config.api")
-load("@proto//src/config/proto/api/design_config_id.proto", config_id_pb = "chromiumos.config.api")
-load("@proto//src/config/proto/api/design_id.proto", design_id_pb = "chromiumos.config.api")
+load("@proto//api/design.proto", design_pb = "chromiumos.config.api")
+load("@proto//api/design_config_id.proto", config_id_pb = "chromiumos.config.api")
+load("@proto//api/design_id.proto", design_id_pb = "chromiumos.config.api")
 
 load("//config/util/hw_topology.star", hw_topo = "hw_topo")
 

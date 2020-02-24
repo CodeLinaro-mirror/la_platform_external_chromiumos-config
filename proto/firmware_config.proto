@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package firmware;
 
-option go_package = "go.chromium.org/chromiumos/config/go/src/third_party/chromiumos-overlay/proto";
+option go_package = "go.chromium.org/chromiumos/config/go";
 
 // The type of a firmware binary.
 message FirmwareType {

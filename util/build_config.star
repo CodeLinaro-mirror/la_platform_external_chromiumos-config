@@ -1,13 +1,13 @@
 load("//config/util/bindings/proto.star", "protos")
 protos.register()
 
-load("@proto//src/config/proto/api/build_config.proto", bc_pb = "chromiumos.config.api")
-load("@proto//src/config/proto/chromeos-config/identity_scan_config.proto", id_scan_pb = "chromeos_config")
-load("@proto//src/config/proto/audio_config.proto", audio_pb = "chromiumos_config")
-load("@proto//src/config/proto/build_target_id.proto", bt_id_pb = "chromiumos_config")
-load("@proto//src/config/proto/brand_config.proto", brand_pb = "chromiumos_config")
-load("@proto//src/config/proto/firmware_config.proto", fw_pb = "firmware")
-load("@proto//src/config/proto/design_config_build_payload.proto", bp_pb = "chromiumos_config")
+load("@proto//api/build_config.proto", bc_pb = "chromiumos.config.api")
+load("@proto//chromeos_config/identity_scan_config.proto", id_scan_pb = "chromeos_config")
+load("@proto//audio_config.proto", audio_pb = "chromiumos_config")
+load("@proto//build_target_id.proto", bt_id_pb = "chromiumos_config")
+load("@proto//brand_config.proto", brand_pb = "chromiumos_config")
+load("@proto//firmware_config.proto", fw_pb = "firmware")
+load("@proto//design_config_build_payload.proto", bp_pb = "chromiumos_config")
 
 _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,

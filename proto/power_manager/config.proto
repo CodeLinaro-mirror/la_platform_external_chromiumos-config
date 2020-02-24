@@ -3,6 +3,8 @@ syntax = "proto3";
 
 package power_manager;
 
+option go_package = "go.chromium.org/chromiumos/config/go/power_manager";
+
 import "google/protobuf/duration.proto";
 import "google/protobuf/wrappers.proto";
 
