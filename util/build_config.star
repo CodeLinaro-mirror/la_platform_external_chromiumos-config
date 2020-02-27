@@ -1,13 +1,13 @@
 load("//config/util/bindings/proto.star", "protos")
 protos.register()
 
-load("@proto//api/build_config.proto", bc_pb = "chromiumos.config.api")
-load("@proto//chromeos_config/identity_scan_config.proto", id_scan_pb = "chromeos_config")
-load("@proto//audio_config.proto", audio_pb = "chromiumos_config")
-load("@proto//build_target_id.proto", bt_id_pb = "chromiumos_config")
-load("@proto//brand_config.proto", brand_pb = "chromiumos_config")
-load("@proto//firmware_config.proto", fw_pb = "firmware")
-load("@proto//design_config_build_payload.proto", bp_pb = "chromiumos_config")
+load("@proto//api/software/build_config.proto", bc_pb = "chromiumos.config.api.software")
+load("@proto//api/software/chromeos_config/identity_scan_config.proto", id_scan_pb = "chromiumos.config.api.software.chromeos_config")
+load("@proto//api/software/audio_config.proto", audio_pb = "chromiumos.config.api.software")
+load("@proto//api/software/build_target_id.proto", bt_id_pb = "chromiumos.config.api.software")
+load("@proto//api/software/brand_config.proto", brand_pb = "chromiumos.config.api.software")
+load("@proto//api/software/firmware_config.proto", fw_pb = "chromiumos.config.api.software")
+load("@proto//api/software/software_config.proto", bp_pb = "chromiumos.config.api.software")
 
 _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,
@@ -31,10 +31,10 @@ def _create_fw_config(ro=None, rw=None, ec=None):
                               ec_ro_payload=ec,)
 
 
-def _create(build_target, design_config_payloads = None, brand_payloads = None):
+def _create(build_target, software_configs = None, brand_payloads = None):
   bt_id = bt_id_pb.BuildTargetId(value = build_target)
   return bc_pb.BuildConfig(build_target_id=bt_id,
-                           build_payloads=design_config_payloads,
+                           software_configs=software_configs,
                            brand_configs=brand_payloads,)
 
 
@@ -51,12 +51,12 @@ def _create_brand_config(wallpaper, whitelabel_tag = None):
 
 
 def _create_x86_identity(smbios_name_match, fw_sku = 255):
-  return id_scan_pb.IdentityScanConfig.DesignConfigId(
+  return id_scan_pb.IdentityScanConfig.SoftwareConfigId(
       smbios_name_match=smbios_name_match,
       firmware_sku=fw_sku,)
 
 def _create_arm_identity(dt_compatible_match, fw_sku = 255):
-  return id_scan_pb.IdentityScanConfig.DesignConfigId(
+  return id_scan_pb.IdentityScanConfig.SoftwareConfigId(
       device_tree_compatible_match=dt_compatible_match,
       firmware_sku=fw_sku,)
 
@@ -69,12 +69,12 @@ def _create_audio(card_name, card_config_file = None, dsp_file = None, ucm_file 
 
 
 
-def _create_build_payload(scan_config,
+def _create_software_config(scan_config,
                     firmware=None,
                     bt=None,
                     power=None,
                     audio=None,):
-  return bp_pb.DesignConfigBuildPayload(
+  return bp_pb.SoftwareConfig(
       scan_config=scan_config,
       firmware=firmware,
       bluetooth_config=bt,
@@ -89,7 +89,7 @@ build_config = struct(
     create_brand_config = _create_brand_config,
     create_x86_identity = _create_x86_identity,
     create_arm_identity = _create_arm_identity,
-    create_build_payload = _create_build_payload,
+    create_software_config = _create_software_config,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,
     fw_type = _FW_TYPE,
