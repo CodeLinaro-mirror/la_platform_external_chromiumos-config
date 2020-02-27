@@ -4,9 +4,14 @@
 
 syntax = "proto3";
 
-package chromiumos.config.api;
+package chromiumos.config.api.software;
 
 import "api/software_config_id.proto";
+import "api/software/audio_config.proto";
+import "api/software/firmware_config.proto";
+import "api/software/bluetooth/config.proto";
+import "api/software/chromeos_config/identity_scan_config.proto";
+import "api/software/power_manager/config.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
@@ -22,6 +27,16 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 message SoftwareConfig {
   // Globally unique software config identifier.
   SoftwareConfigId id = 1;
+
+  chromeos_config.IdentityScanConfig.SoftwareConfigId scan_config = 2;
+
+  FirmwareConfig firmware = 3;
+
+  bluetooth.BluetoothConfig bluetooth_config = 4;
+
+  power_manager.PowerManagerConfig power_manager_config = 5;
+
+  AudioConfig audio_config = 6;
 }
 
 message SoftwareConfigList {

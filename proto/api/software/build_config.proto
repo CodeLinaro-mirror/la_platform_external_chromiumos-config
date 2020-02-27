@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package chromiumos.config.api.software;
+
+import "api/software/brand_config.proto";
+import "api/software/build_target_id.proto";
+import "api/software/software_config.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+// Specifies all configuration for a build.
+message BuildConfig {
+  // BuildTarget this config is being passed to.
+  BuildTargetId build_target_id = 1;
+
+  // Defines all of the software configs supported by a given build.
+  //
+  // For a "fan-in" build, many design configs can be supported by the same
+  // build, e.g. the config for each design config doesn't contain confidential
+  // information, so it is acceptable for owners of different variants to see
+  // each others' configs.
+  //
+  // For a "fan-out" build, each config will get a different build, e.g. to
+  // allow owners of variants to keep config private.
+  //
+  // Builds between these two extremes are also possible, e.g. configs A and
+  // B share a build, while configs C gets a different build.
+  repeated SoftwareConfig software_configs = 2;
+
+  // Branding config for all devices supported by the build.
+  //
+  // This list is not necessarily the same length as <build_payloads>.
+  // At runtime, a device will search this list for its payload, and configure
+  // itself based on the payload.
+  repeated BrandConfig brand_configs = 3;
+}
+
+message BuildConfigList {
+  repeated BuildConfig value = 1;
+}
