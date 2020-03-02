@@ -11,7 +11,6 @@ import "api/design.proto";
 import "api/device_brand.proto";
 import "api/partner.proto";
 import "api/program.proto";
-import "api/build_config.proto";
 import "api/software/build_config.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
@@ -28,11 +27,10 @@ message ConfigBundle {
   DesignList designs = 4;
   DeviceBrandList device_brands = 5;
 
-  // TODO(shapiroc): Delete post migration
-  BuildConfigList build_configs = 6;
-
   // Software config for each unique hw design config
   repeated software.BuildConfig all_build_configs = 7;
+
+  reserved 6;
 }
 
 message ConfigBundleList {
