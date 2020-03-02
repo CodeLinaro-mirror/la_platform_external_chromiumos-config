@@ -9,22 +9,15 @@
    through to the end of the "Get the Source" section. This guide walks you
    through installing prerequisites and syncing the public Chromium OS source
    code.
-1. Do a one off clone of your project into the source tree:
+1. Verify the name of your $PROGRAM and $PROJECT with your local representative
+   or Google contact. These values will be used in the command below.
+1. Run the following command to sync your $PROGRAM and $PROJECT from within your
+   chromiumos checkout:
 
-   ```shell
-   git clone https://chrome-internal.googlesource.com/chromeos/project/$program/$project src/project/$program/$project
+   ```
+   setup_project.sh $PROGRAM $PROJECT
    ```
 
-1. Make a symlink to include your local manifest:
-
-   ```shell
-   mkdir -p .repo/local_manifests
-   ln -sr src/project/$program/$project/local_manifest.xml .repo/local_manifests/$project.xml
-   ```
-
-1. Do a one time force sync to get the repo up to date with the newly included
-   local manifest:
-
-   ```shell
-   repo sync --force-sync -j48
-   ```
+   This command will execute a number of steps including checking out your
+   project, symlinking a local manifest, and finally doing a full chromiumos
+   sync.
