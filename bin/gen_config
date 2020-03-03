@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Used to generate program and project configuration. Expects to be able
+# to find the protocol buffer generating script in the directory with the
+# config file at config/generate.sh and expects to be able to find the
+# lucicfg binary on the path from depot_tools.
+
+# Exit if any command fails.
+set -e
+
+function usage() {
+  echo "Usage: $0 <config_file>" >&2
+  echo "  where <config_file> is a program's or project's main" >&2
+  echo "  configuration file, typically config.star" >&2
+  exit 1
+}
+
+if [[ $# -ne 1 ]]; then
+  usage
+fi
+
+readonly file_path="${1}"
+readonly config_file=$(basename "${file_path}")
+readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
+
+# Hitting some relative links so change to the directory.
+cd "${config_dir}"
+
+if ! config/generate.sh; then
+  echo 'blew up generating proto descriptors'
+  exit 1
+fi
+
+lucicfg generate "${config_file}"
