@@ -12,6 +12,18 @@ import "api/program_id.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
+// Defines how space in firmware configuration is allocated.
+//
+// Every FirmwareConfiguration must specify a mask that aligns with a segment.
+// No segments in a program can overlap.
+message FirmwareConfigurationSegment {
+  // Human-readable name describing the segment, e.g. "Daughter board".
+  string name = 1;
+
+  // The mask of valid bits that could be used by this type of Topology.
+  uint32 mask = 2;
+}
+
 // Defines a Chromium OS program, which establishes the set of constraints and
 // guidelines for all hardware design projects developed under the given
 // program.
@@ -32,6 +44,9 @@ message Program {
   // Components for the given program and their corresponding qualification
   // status.
   repeated Component.Qualification component_quals = 4;
+
+  // Firmware segment allocations for the given program.
+  repeated FirmwareConfigurationSegment firmware_configuration_segments = 5;
 }
 
 message ProgramList {
