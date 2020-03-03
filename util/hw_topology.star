@@ -54,7 +54,10 @@ def _convert_to_fw_config(mask, value):
   if shifted_value & mask != shifted_value:
     fail("Specified value %d out of range [0, %d]" % (value, mask / lsb_bit_set))
 
-  return shifted_value
+  return topo_pb.HardwareFeatures.FirmwareConfiguration(
+    value = shifted_value,
+    mask = mask,
+  )
 
 def _create_screen(id, description, inches, touch):
   hw_features = topo_pb.HardwareFeatures()
@@ -120,7 +123,7 @@ def _create_keyboard(id, description, internal_keyboard, backlight, pwr_btn_pres
 def _create_thermal(id, description, fw_mask, thermal_id):
   hw_features = topo_pb.HardwareFeatures()
 
-  hw_features.fw_config.value = _convert_to_fw_config(fw_mask, thermal_id)
+  hw_features.fw_config = _convert_to_fw_config(fw_mask, thermal_id)
 
   return topo_pb.Topology(
     id = id,
@@ -206,7 +209,7 @@ def _create_proximity_sensor(id, description):
 def _create_daughter_board(id, description, fw_mask, db_id, usbc_count = 0, usba_count = 0, lte_support = False, hdmi_support = False):
   hw_features = topo_pb.HardwareFeatures()
 
-  hw_features.fw_config.value = _convert_to_fw_config(fw_mask, db_id)
+  hw_features.fw_config = _convert_to_fw_config(fw_mask, db_id)
   hw_features.usb_c.count.value = usbc_count
   hw_features.usb_a.count.value = usba_count
   hw_features.lte.present = _bool_to_present(lte_support)
@@ -368,6 +371,10 @@ def _accumulate_presence(existing_present, new_present):
   else:
     return existing_present
 
+def _accumulate_fw_config(existing_fw_config, new_fw_config):
+  existing_fw_config.value += new_fw_config.value
+  existing_fw_config.mask += new_fw_config.mask
+
 def _convert_to_hw_features(base_hw_features, hardware_topology):
   # Start with a empty default if None was provided
   if not base_hw_features:
@@ -404,10 +411,10 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     result.lte.present = _accumulate_presence(result.lte.present, copy.lte_board.hardware_feature.lte.present)
 
   # Handle all possible thermal features attributes
-  result.fw_config.value += copy.thermal.hardware_feature.fw_config.value
+  _accumulate_fw_config(result.fw_config ,copy.thermal.hardware_feature.fw_config)
 
   # Handle all possible daughter board hardware features attributes
-  result.fw_config.value += copy.daughter_board.hardware_feature.fw_config.value
+  _accumulate_fw_config(result.fw_config ,copy.daughter_board.hardware_feature.fw_config)
 
   if copy.daughter_board.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
     result.usb_c.count.value += copy.daughter_board.hardware_feature.usb_c.count.value

@@ -115,7 +115,11 @@ message HardwareFeatures {
   // firmware configuration value.
   FirmwareConfiguration fw_config = 5;
   message FirmwareConfiguration {
+    // The firmware configuration value
     uint32 value = 1;
+
+    // The mask of valid bits that could be used by above value
+    uint32 mask = 2;
   }
 
   // Audio properties of system
