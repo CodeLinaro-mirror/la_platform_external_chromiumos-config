@@ -55,3 +55,37 @@ def CheckGenerated(input_api, output_api):
     results.append(output_api.PresubmitError(msg))
 
   return results
+
+def CheckGenConfig(input_api, output_api, config_file='config.star'):
+  """Runs a gen_config as a presubmit check.
+
+  Runs the gen_config script as a presubmit check checking for successful
+  exit and no diff generated.
+
+  Args:
+    input_api: InputApi, provides information about the change.
+    output_api: OutputApi, provides the mechanism for returning a response.
+    config_file: str, file to generate from, defaults to config.star.
+
+  Returns:
+    list of PresubmitError, or empty list if no errors.
+  """
+  results = []
+
+  # TODO: get on path for recipes, for now expect to find at
+  # config/bin/gen_config
+  if input_api.subprocess.call(
+      ['./config/bin/gen_config', config_file],
+      stdout=input_api.subprocess.PIPE,
+      stderr=input_api.subprocess.PIPE):
+    msg = 'Error: gen_config failed. Please fix and try again.'
+    results.append(output_api.PresubmitError(msg))
+  elif input_api.subprocess.call(
+      ['git', 'diff', '--exit-code'],
+      stdout=input_api.subprocess.PIPE,
+      stderr=input_api.subprocess.PIPE):
+    msg = ('Error: Running generate.sh produced a diff. Please '
+           'run the script, amend your changes, and try again.')
+    results.append(output_api.PresubmitError(msg))
+
+  return results
