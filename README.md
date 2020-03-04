@@ -21,3 +21,22 @@
    This command will execute a number of steps including checking out your
    project, symlinking a local manifest, and finally doing a full chromiumos
    sync.
+
+# Working with Projects for Partners
+
+After setting up your project you'll want to note the location of several
+important repositories within the checkout:
+
+*   src/config: The repository that contains this README.md file. This repository
+    contains the higher level framework including protocol buffer definitions,
+    configuration language constructs, constraint checking code, and binaries
+    for performing tasks.
+*   src/program/$PROGRAM: The repository that defines the program of your
+    project. This repository defines the constraints that your project follows.
+*   src/project/$PROGRAM/$PROJECT: The repository that defines your project.
+    This repository defines your project design under the constraints of the
+    program it belongs to.
+
+Partners will rarely propose changes to src/config and occasionally propose
+changes to src/program/$PROGRAM. The bulk of a partner's work will occur in
+in src/project/$PROGRAM/$PROJECT.
