@@ -42,7 +42,8 @@ class ConstraintSuite:
   """
 
   DELEGATED_ASSERTIONS = [
-      'assertEqual', 'assertNotEqual', 'assertTrue', 'assertFalse'
+      'assertEqual', 'assertNotEqual', 'assertTrue', 'assertFalse', 'assertIn',
+      'assertNotIn'
   ]
 
   def __add_delegated_assertions(self):
