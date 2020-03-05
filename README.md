@@ -8,19 +8,31 @@
 1. Follow the [Chromium OS Quick Start Guide](http://www.chromium.org/chromium-os/quick-start-guide)
    through to the end of the "Get the Source" section. This guide walks you
    through installing prerequisites and syncing the public Chromium OS source
-   code.
+   code into a $SOURCE_REPO directory. This step pulls down a lot of code and
+   could take up to an hour.
 1. Verify the name of your $PROGRAM and $PROJECT with your local representative
    or Google contact. These values will be used in the command below.
 1. Run the following command to sync your $PROGRAM and $PROJECT from within your
-   chromiumos checkout:
+   chromiumos checkout in the $SOURCE_REPO/src/config directory:
 
    ```
-   setup_project.sh $PROGRAM $PROJECT
+   ./setup_project.sh $PROGRAM $PROJECT
    ```
 
    This command will execute a number of steps including checking out your
-   project, symlinking a local manifest, and finally doing a full chromiumos
-   sync.
+   program and project and other related repositories, symlinking a local
+   manifest, and finally doing a full chromiumos sync.
+1. The $SOURCE_REPO/src/config/bin directory contains utilties for working with
+   your project. Add the directory to the end of your PATH. You will probably
+   want to add this configuration in your ~/.bashrc file or other appropriate
+   location so you don't have to repeatedly set the PATH:
+
+   ```
+   export PATH=$PATH:$SOURCE_REPO/src/config/bin
+   ```
+
+If you got to this point without an error you are set up to start working on
+your project.
 
 # Working with Projects for Partners
 
