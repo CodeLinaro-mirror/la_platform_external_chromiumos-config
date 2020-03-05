@@ -23,11 +23,17 @@ class IoUtilsTest(unittest.TestCase):
 
     os.mkdir(os.path.join(self.repo_path, 'generated'))
 
-    with open(
-        os.path.join(self.repo_path, 'generated', 'config.binaryproto'),
-        'wb') as f:
+    self.config_path = os.path.join(self.repo_path, 'generated',
+                                    'config.binaryproto')
+    with open(self.config_path, 'wb') as f:
       f.write(self.config.SerializeToString())
 
-  def test_read_repo_config(self):
+  def test_read_config(self):
     """Tests the binary proto can be read."""
-    self.assertEqual(io_utils.read_repo_config(self.repo_path), self.config)
+    self.assertEqual(io_utils.read_config(self.config_path), self.config)
+
+  def test_read_config_repo_path(self):
+    """Tests that the binary proto can be read when a repo path is passed."""
+    with self.assertWarnsRegex(FutureWarning,
+                               'Passing a path to a repo root is deprecated'):
+      self.assertEqual(io_utils.read_config(self.repo_path), self.config)

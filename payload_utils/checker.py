@@ -19,14 +19,18 @@ def argument_parser():
   parser.add_argument(
       '--program',
       required=True,
-      help=('Path to the root of the program repo'
-            ' e.g. .../chromiumos/src/program/program1'),
+      help=('Path to the program config binary proto e.g. '
+            '.../chromiumos/src/program/program1/generated/config.binaryproto. '
+            'Note that passing a path to the repo root is deprecated, and will '
+            'raise a warning.'),
       metavar='PATH')
   parser.add_argument(
       '--project',
       required=True,
-      help=('Path to the root of the project repo'
-            ' e.g. .../chromiumos/src/project/program1/project1'),
+      help=('Path to the project config binary proto e.g. '
+            '.../chromiumos/src/project/project1/generated/config.binaryproto. '
+            'Note that passing a path to the repo root is deprecated, and will '
+            'raise a warning.'),
       metavar='PATH')
   return parser
 
@@ -35,8 +39,8 @@ def main():
   parser = argument_parser()
   args = parser.parse_args()
 
-  project_config = io_utils.read_repo_config(args.project)
-  program_config = io_utils.read_repo_config(args.program)
+  project_config = io_utils.read_config(args.project)
+  program_config = io_utils.read_config(args.program)
 
   constraint_suite_directories = [
       COMMON_CHECKS_PATH,
