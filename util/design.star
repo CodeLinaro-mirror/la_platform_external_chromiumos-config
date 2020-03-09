@@ -43,6 +43,12 @@ def _create_design(id, program_id, odm_id, configs = None):
 def _create_design_list(designs):
   return design_pb.DesignList(value=designs)
 
+def _generate(config):
+  def _generate_impl(ctx):
+    ctx.output["config.cfg"] = proto.to_jsonpb(config)
+    ctx.output["config.binaryproto"] = proto.to_wirepb(config)
+  lucicfg.generator(impl = _generate_impl)
+
 design = struct(
     create_constraint = _create_constraint,
     create_constraints = _create_constraints,
@@ -51,4 +57,5 @@ design = struct(
     create_design = _create_design,
     create_design_list = _create_design_list,
     constraint = _CONSTRAINT,
+    generate = _generate,
 )
