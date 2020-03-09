@@ -5,6 +5,7 @@ load("@proto//api/design.proto", design_pb = "chromiumos.config.api")
 load("@proto//api/design_config_id.proto", config_id_pb = "chromiumos.config.api")
 load("@proto//api/design_id.proto", design_id_pb = "chromiumos.config.api")
 
+load("//config/util/generate.star", generate = "generate")
 load("//config/util/hw_topology.star", hw_topo = "hw_topo")
 
 _CONSTRAINT = struct(
@@ -43,12 +44,6 @@ def _create_design(id, program_id, odm_id, configs = None):
 def _create_design_list(designs):
   return design_pb.DesignList(value=designs)
 
-def _generate(config):
-  def _generate_impl(ctx):
-    ctx.output["config.cfg"] = proto.to_jsonpb(config)
-    ctx.output["config.binaryproto"] = proto.to_wirepb(config)
-  lucicfg.generator(impl = _generate_impl)
-
 design = struct(
     create_constraint = _create_constraint,
     create_constraints = _create_constraints,
@@ -57,5 +52,5 @@ design = struct(
     create_design = _create_design,
     create_design_list = _create_design_list,
     constraint = _CONSTRAINT,
-    generate = _generate,
+    generate = generate.generate,
 )

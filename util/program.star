@@ -5,6 +5,8 @@ protos.register()
 load("@proto//api/program.proto", program_pb = "chromiumos.config.api")
 load("@proto//api/program_id.proto", program_id_pb = "chromiumos.config.api")
 
+load("//config/util/generate.star", generate = "generate")
+
 def _create_firmware_configuration_segment(name, mask):
     return program_pb.FirmwareConfigurationSegment(
         name = name,
@@ -28,4 +30,5 @@ program = struct(
     create = _create,
     create_list = _create_list,
     create_firmware_configuration_segment = _create_firmware_configuration_segment,
+    generate = generate.generate,
 )
