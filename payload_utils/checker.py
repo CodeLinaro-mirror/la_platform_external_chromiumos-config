@@ -19,18 +19,16 @@ def argument_parser():
   parser.add_argument(
       '--program',
       required=True,
-      help=('Path to the program config binary proto e.g. '
-            '.../chromiumos/src/program/program1/generated/config.binaryproto. '
-            'Note that passing a path to the repo root is deprecated, and will '
-            'raise a warning.'),
+      help=(
+          'Path to the program config binary proto e.g. '
+          '.../chromiumos/src/program/program1/generated/config.binaryproto.'),
       metavar='PATH')
   parser.add_argument(
       '--project',
       required=True,
-      help=('Path to the project config binary proto e.g. '
-            '.../chromiumos/src/project/project1/generated/config.binaryproto. '
-            'Note that passing a path to the repo root is deprecated, and will '
-            'raise a warning.'),
+      help=(
+          'Path to the project config binary proto e.g. '
+          '.../chromiumos/src/project/project1/generated/config.binaryproto.'),
       metavar='PATH')
   return parser
 
