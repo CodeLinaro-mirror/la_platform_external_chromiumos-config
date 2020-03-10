@@ -52,3 +52,51 @@ important repositories within the checkout:
 Partners will rarely propose changes to src/config and occasionally propose
 changes to src/program/$PROGRAM. The bulk of a partner's work will occur in
 in src/project/$PROGRAM/$PROJECT.
+
+## Making Configuration Changes for your Project
+
+Configuration changes are made to a project by adjusting the
+[Starlark](https://docs.bazel.build/versions/master/skylark/language.html)
+configuration definition in
+$SOURCE_REPO/src/project/$PROGRAM/$PROJECT/config.star and then running the
+gen_config script (added to the PATH above). An example session updating
+project configuration follows:
+
+```
+cd $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/
+$EDITOR config.star
+# Adjust contents of config.star and save.
+gen_config config.star
+```
+
+This will cause the generation of configuration payloads that can be found
+at:
+
+*   $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/config.binaryproto
+*   $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/config.cfg
+
+These files represent the same configuration, one is in binary format and
+is used in production. The binary format is more flexible and allows easier
+evolution of the schema. The second is in text format. The text format is
+intended to allow the user to easily eyeball the effects of changes.
+
+To submit the changes the user first commits the files and then submits
+them to commit queue (CQ):
+
+```
+git add .
+git commit
+# Add commit message with BUG= and TEST= directives
+repo upload .
+```
+
+This will result in a reviewable CL in
+[gerrit](https://chrome-internal-review.googlesource.com/). The exact URL will
+for your CL will be output when the CL is uploaded. The CL will need to be
+approved and pass CQ. Details on working with CLs and the progression through
+review and CQ can be found in the
+[Chromium OS Contributing Guide](https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md)
+and more specifically in the
+[Going through review](https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Going-through-review)
+section. CQ verifies that you have correctly generated your configuration
+payload and that you have not violated the program's constraints.
