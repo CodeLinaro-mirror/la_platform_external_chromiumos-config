@@ -74,16 +74,10 @@ def CheckGenConfig(input_api, output_api, config_file='config.star'):
 
   # TODO: get on path for recipes, for now expect to find at
   # config/bin/gen_config
-  if input_api.subprocess.call(
-      ['./config/bin/gen_config', config_file],
-      stdout=input_api.subprocess.PIPE,
-      stderr=input_api.subprocess.PIPE):
+  if input_api.subprocess.call(['./config/bin/gen_config', config_file]):
     msg = 'Error: gen_config failed. Please fix and try again.'
     results.append(output_api.PresubmitError(msg))
-  elif input_api.subprocess.call(
-      ['git', 'diff', '--exit-code'],
-      stdout=input_api.subprocess.PIPE,
-      stderr=input_api.subprocess.PIPE):
+  elif input_api.subprocess.call(['git', 'diff', '--exit-code']):
     msg = ('Error: Running generate.sh produced a diff. Please '
            'run the script, amend your changes, and try again.')
     results.append(output_api.PresubmitError(msg))
