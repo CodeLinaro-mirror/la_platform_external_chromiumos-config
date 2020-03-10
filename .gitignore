@@ -1,6 +1,6 @@
 .cipd_bin
 util/bindings/descpb.bin
-*_pb2.py
+payload_utils/bindings/api/*
 *.pyc
 .venv
 .pytype
