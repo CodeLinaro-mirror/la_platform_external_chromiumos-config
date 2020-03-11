@@ -14,6 +14,7 @@ load("//config/util/program.star", program_util = "program")
 
 _CONFIG = config_bundle_pb.ConfigBundle(
     components = program.components,
+    build_targets = program.build_targets,
     programs = program_util.create_list([program.fake]),)
 
 program_util.generate(_CONFIG)

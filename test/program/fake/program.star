@@ -10,6 +10,7 @@ load("//config/util/component.star", "comp")
 load("//config/util/design.star", "design")
 load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/program.star", program_util = "program")
+load("//config/util/build_target.star", bt_util = "build_target")
 
 _FAKE_SOC = comp.create_soc_model(
     family=comp.create_soc_family(name="FAKE_FAMILY"),
@@ -45,7 +46,10 @@ _FAKE = program_util.create(
     constraints = _FEATURE_CONSTRAINTS,
 )
 
+_BUILD_TARGETS = [bt_util.create("fake")]
+
 program = struct(
     fake = _FAKE,
     components = _COMPONENTS,
+    build_targets = _BUILD_TARGETS
 )
