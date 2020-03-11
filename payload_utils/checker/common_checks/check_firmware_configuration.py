@@ -53,3 +53,69 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
             self.assertIn(
                 mask, masks, 'Unexpected mask for topology {}'.format(
                     topology_pb2.Topology.Type.Name(topology.type)))
+
+  def check_firmware_configuration_value_collision(
+      self, program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle):
+    """Checks that a given firmware value is only used by a single topology.
+
+    More precisely: For a given project, each FirmwareConfiguration.value is
+    used by exactly one (Topology.id, Topology.type) pair.
+
+    For example, the following is a violation:
+
+        thermal: <
+          id: "DEFAULT_THERMAL"
+          type: THERMAL
+          hardware_feature: <
+            fw_config: <
+              value: 11
+            >
+          >
+        >
+        screen: <
+          id: "DEFAULT_SCREEN"
+          type: SCREEN
+          hardware_feature: <
+            fw_config: <
+              value: 11
+            >
+          >
+        >
+
+    because both ("DEFAULT_THERMAL", THERMAL) and ("DEFAULT_SCREEN", SCREEN) use
+    value 16.
+    """
+    del program_config
+
+    # Map from FirmwareConfiguration.value -> (Topology.id, Topology.type).
+    value_to_topo = {}
+
+    for design in project_config.designs.value:
+      for config in design.configs:
+        for topology in proto_utils.get_all_fields(config.hardware_topology):
+          fw_value = topology.hardware_feature.fw_config.value
+          if not fw_value:
+            continue
+
+          # Topologies must set id and type.
+          self.assertTrue(topology.id)
+          self.assertTrue(topology.type)
+          topo_key = (topology.id, topology.type)
+
+          prev_topo_key = value_to_topo.get(fw_value)
+          if prev_topo_key:
+            self.assertEqual(
+                topo_key,
+                prev_topo_key,
+                msg=(
+                    'Topologies ({id1}, {type1}) and ({id2}, {type2}) both use'
+                    ' firmware value {fw_value}'
+                ).format(
+                    id1=topo_key[0],
+                    type1=topology_pb2.Topology.Type.Name(topo_key[1]),
+                    id2=prev_topo_key[0],
+                    type2=topology_pb2.Topology.Type.Name(prev_topo_key[1]),
+                    fw_value=fw_value))
+          else:
+            value_to_topo[fw_value] = topo_key
