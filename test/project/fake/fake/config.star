@@ -7,10 +7,12 @@ load("@proto//api/config_bundle.proto", config_bundle_pb = "chromiumos.config.ap
 
 load("//config/util/build_config.star", bc = "build_config")
 load("//config/util/design.star", design = "design")
+load("//config/util/device_brand.star", device_brand = "device_brand")
 load("//config/util/partner.star", partner = "partner")
 load("//program_fake/program.star", program = "program")
 
 _FAKE_ODM = partner.create("FAKE-ODM")
+_FAKE_OEM = partner.create("FAKE-OEM")
 
 _PARTNERS = partner.create_list([_FAKE_ODM])
 
@@ -22,6 +24,13 @@ _DESIGN = design.create_design(
     id=_DESIGN_ID,
     program_id=program.fake.id,
     odm_id=_FAKE_ODM.id,
+)
+
+_DEVICE_BRAND = device_brand.create(
+    brand_name = "Fake ChromeOS Device Brandname",
+    design_id = _DESIGN_ID,
+    oem_id = _FAKE_OEM.id,
+    brand_code = 'AAAA',
 )
 
 _AUDIO_CARD = "fake-audio-card"
@@ -47,6 +56,7 @@ _BUILD_CONFIG = bc.create(
 _CONFIG = config_bundle_pb.ConfigBundle(
     partners=_PARTNERS,
     designs=design.create_design_list([_DESIGN]),
+    device_brands=device_brand.create_list([_DEVICE_BRAND]),
     build_configs=[_BUILD_CONFIG],
 )
 
