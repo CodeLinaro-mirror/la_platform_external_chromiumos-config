@@ -6,6 +6,7 @@ protos.register()
 load("@proto//api/config_bundle.proto", config_bundle_pb = "chromiumos.config.api")
 
 load("//config/util/build_config.star", bc = "build_config")
+load("//config/util/brand_config.star", brand_config = "brand_config")
 load("//config/util/design.star", design = "design")
 load("//config/util/device_brand.star", device_brand = "device_brand")
 load("//config/util/partner.star", partner = "partner")
@@ -50,7 +51,11 @@ _BUILD_CONFIG = bc.create(
                 ec=bc.create_fw_payload(
                     name="Fake", fw_type=bc.fw_type.EC, major_version=11111),
             )),
-    ]
+    ],
+    brand_configs=[
+        brand_config.create(device_brand_id=_DEVICE_BRAND.id,
+                            wallpaper='fake-wallpaper'),
+    ],
 )
 
 _CONFIG = config_bundle_pb.ConfigBundle(

@@ -31,11 +31,11 @@ def _create_fw_config(ro=None, rw=None, ec=None):
                               ec_ro_payload=ec,)
 
 
-def _create(build_target, software_configs = None, brand_payloads = None):
+def _create(build_target, software_configs = None, brand_configs = None):
   bt_id = bt_id_pb.BuildTargetId(value = build_target)
   return bc_pb.BuildConfig(build_target_id=bt_id,
                            software_configs=software_configs,
-                           brand_configs=brand_payloads,)
+                           brand_configs=brand_configs,)
 
 
 def _create_list(build_configs):
