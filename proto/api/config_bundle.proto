@@ -28,7 +28,7 @@ message ConfigBundle {
   DeviceBrandList device_brands = 5;
 
   // Software config for each unique hw design config
-  repeated software.BuildConfig all_build_configs = 7;
+  repeated software.BuildConfig build_configs = 7;
 
   reserved 6;
 }
