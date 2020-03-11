@@ -11,6 +11,7 @@ import "api/design.proto";
 import "api/device_brand.proto";
 import "api/partner.proto";
 import "api/program.proto";
+import "api/software/build_target.proto";
 import "api/software/build_config.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
@@ -27,6 +28,7 @@ message ConfigBundle {
   DesignList designs = 4;
   DeviceBrandList device_brands = 5;
 
+  repeated software.BuildTarget build_targets = 8;
   // Software config for each unique hw design config
   repeated software.BuildConfig build_configs = 7;
 
