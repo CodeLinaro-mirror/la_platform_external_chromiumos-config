@@ -21,8 +21,14 @@ def _create_constraints(hw_features, level = _CONSTRAINT.REQUIRED):
   return [design_pb.Design.Config.Constraint(
       level=level, features=hw_feature) for hw_feature in hw_features]
 
-def _create_config(design_id, config_id, base_hw_features = None, hardware_topology=None):
+
+def _create_config(design_id,
+                   config_id,
+                   sw_config_id=None,
+                   base_hw_features=None,
+                   hardware_topology=None):
   result = design_pb.Design.Config()
+  result.software_config_id = sw_config_id
   result.id.value = "%s:%s" % (design_id.value, config_id)
   result.hardware_topology = hardware_topology
   result.hardware_features = hw_topo.convert_to_hw_features(

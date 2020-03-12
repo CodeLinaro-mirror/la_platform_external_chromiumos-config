@@ -1,13 +1,14 @@
 load("//config/util/bindings/proto.star", "protos")
 protos.register()
 
+load("@proto//api/software_config_id.proto", sc_id_pb = "chromiumos.config.api")
 load("@proto//api/software/build_config.proto", bc_pb = "chromiumos.config.api.software")
 load("@proto//api/software/chromeos_config/identity_scan_config.proto", id_scan_pb = "chromiumos.config.api.software.chromeos_config")
 load("@proto//api/software/audio_config.proto", audio_pb = "chromiumos.config.api.software")
 load("@proto//api/software/build_target_id.proto", bt_id_pb = "chromiumos.config.api.software")
 load("@proto//api/software/brand_config.proto", brand_pb = "chromiumos.config.api.software")
 load("@proto//api/software/firmware_config.proto", fw_pb = "chromiumos.config.api.software")
-load("@proto//api/software/software_config.proto", bp_pb = "chromiumos.config.api.software")
+load("@proto//api/software/software_config.proto", sc_pb = "chromiumos.config.api.software")
 
 _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,
@@ -74,7 +75,12 @@ def _create_software_config(scan_config,
                     bt=None,
                     power=None,
                     audio=None,):
-  return bp_pb.SoftwareConfig(
+  platform_name = (scan_config.smbios_name_match or
+                   scan_config.device_tree_compatible_match)
+  sc_id = sc_id_pb.SoftwareConfigId(
+      value="%s:%d" % (platform_name, scan_config.firmware_sku))
+  return sc_pb.SoftwareConfig(
+      id=sc_id,
       scan_config=scan_config,
       firmware=firmware,
       bluetooth_config=bt,
