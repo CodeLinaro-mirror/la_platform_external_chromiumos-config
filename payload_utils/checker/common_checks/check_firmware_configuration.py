@@ -84,7 +84,7 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
         >
 
     because both ("DEFAULT_THERMAL", THERMAL) and ("DEFAULT_SCREEN", SCREEN) use
-    value 16.
+    value 11.
     """
     del program_config
 
