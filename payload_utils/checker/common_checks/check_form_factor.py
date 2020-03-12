@@ -1,0 +1,59 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+"""Constraint checks related to form factors."""
+
+from typing import Iterable
+
+from checker import constraint_suite
+from checker import config_bundle_utils
+
+from bindings.api import config_bundle_pb2
+from bindings.api import design_pb2
+from bindings.api import program_pb2
+from bindings.api import topology_pb2
+
+
+def get_form_factor_constraints(
+    program: program_pb2.Program
+) -> Iterable[design_pb2.Design.Config.Constraint]:
+  """Returns all Constraints on FormFactor."""
+  return [
+      c for c in program.design_config_constraints
+      if c.features.form_factor.form_factor
+  ]
+
+
+class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
+  """Constraint checks related to form factors."""
+
+  def check_form_factor(self, program_config: config_bundle_pb2.ConfigBundle,
+                        project_config: config_bundle_pb2.ConfigBundle):
+    """Checks a project uses a form factor allowed by a program."""
+    program = config_bundle_utils.get_program(program_config)
+    allowed_form_factors = []
+    # Alias the FormFactor.Name fn. to increase readability. This fn. is used to
+    # produce human-readable error messages.
+    form_factor_name = topology_pb2.HardwareFeatures.FormFactor.FormFactor.Name
+
+    for constraint in get_form_factor_constraints(program):
+      allowed_form_factors.append(
+          form_factor_name(constraint.features.form_factor.form_factor))
+
+    for design in project_config.designs.value:
+      for config in design.configs:
+        self.assertIn(
+            form_factor_name(config.hardware_features.form_factor.form_factor),
+            allowed_form_factors)
+
+  def check_form_factor_required(
+      self, program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle):
+    """Checks all form factor constraints are REQUIRED."""
+    del project_config
+    program = config_bundle_utils.get_program(program_config)
+
+    for constraint in program.design_config_constraints:
+      self.assertEqual(constraint.level,
+                       design_pb2.Design.Config.Constraint.REQUIRED,
+                       'FormFactor constraints must be REQUIRED.')

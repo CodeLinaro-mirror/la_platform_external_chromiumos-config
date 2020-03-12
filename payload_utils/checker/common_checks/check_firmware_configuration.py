@@ -5,6 +5,7 @@
 
 import itertools
 
+from checker import config_bundle_utils
 from checker import constraint_suite
 from checker import proto_utils
 
@@ -25,10 +26,8 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
     2. Check that each mask defined in a FirmwareConfiguration aligns with a
     segment.
     """
-    if len(program_config.programs.value) != 1:
-      raise NotImplementedError('Expect exactly 1 program')
-
-    segments = program_config.programs.value[0].firmware_configuration_segments
+    segments = config_bundle_utils.get_program(
+        program_config).firmware_configuration_segments
     # Collect all masks defined by segments.
     masks = set()
 
@@ -108,14 +107,13 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
             self.assertEqual(
                 topo_key,
                 prev_topo_key,
-                msg=(
-                    'Topologies ({id1}, {type1}) and ({id2}, {type2}) both use'
-                    ' firmware value {fw_value}'
-                ).format(
-                    id1=topo_key[0],
-                    type1=topology_pb2.Topology.Type.Name(topo_key[1]),
-                    id2=prev_topo_key[0],
-                    type2=topology_pb2.Topology.Type.Name(prev_topo_key[1]),
-                    fw_value=fw_value))
+                msg=('Topologies ({id1}, {type1}) and ({id2}, {type2}) both use'
+                     ' firmware value {fw_value}').format(
+                         id1=topo_key[0],
+                         type1=topology_pb2.Topology.Type.Name(topo_key[1]),
+                         id2=prev_topo_key[0],
+                         type2=topology_pb2.Topology.Type.Name(
+                             prev_topo_key[1]),
+                         fw_value=fw_value))
           else:
             value_to_topo[fw_value] = topo_key

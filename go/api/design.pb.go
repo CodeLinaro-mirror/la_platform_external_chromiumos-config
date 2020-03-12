@@ -208,7 +208,42 @@ func (m *Design_Config) GetHardwareFeatures() *HardwareFeatures {
 	return nil
 }
 
-// TODO, should this be moved into Design or Program? This isn't used here
+// Constraints on HardwareFeatures.
+//
+// Each Constraint should specify exactly one HardwareFeature to constrain.
+// Constraints are OR'd across the same type of HardwareFeatures, and AND'd
+// across different types of HardwareFeatures. For example, the following
+// specifies CLAMSHELL or CONVERTIBLE form factors are allowed, and the
+// screen must have touch support:
+//
+//   design_config_constraints: <
+//     level: REQUIRED
+//     features: <
+//       form_factor: <
+//         form_factor: CLAMSHELL
+//       >
+//     >
+//   >
+//   design_config_constraints: <
+//     level: REQUIRED
+//     features: <
+//       form_factor: <
+//         form_factor: CONVERTIBLE
+//       >
+//     >
+//   >
+//   design_config_constraints: <
+//     level: REQUIRED
+//     features: <
+//       screen: <
+//         touch_support: PRESENT
+//       >
+//     >
+//   >
+//
+// TODO: Formalize constraint definitions further, e.g. what are the
+// semantics of level?
+// TODO: should this be moved into Design or Program? This isn't used here
 type Design_Config_Constraint struct {
 	Level                Design_Config_Constraint_Level `protobuf:"varint,1,opt,name=level,proto3,enum=chromiumos.config.api.Design_Config_Constraint_Level" json:"level,omitempty"`
 	Features             *HardwareFeatures              `protobuf:"bytes,2,opt,name=features,proto3" json:"features,omitempty"`
