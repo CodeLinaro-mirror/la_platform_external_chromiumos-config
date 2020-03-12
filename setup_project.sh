@@ -5,9 +5,6 @@
 
 # Setup a project.
 
-# Exit if any command fails, print commands and their arguments.
-set -ex
-
 function bail() {
   echo "${1}"
   exit 1
@@ -18,12 +15,15 @@ function usage() {
   exit 1
 }
 
-# Move to this script's directory.
-cd "$(dirname "$0")"
-
 if [[ $# -ne 2 ]]; then
   usage
 fi
+
+# Exit if any command fails, print commands and their arguments.
+set -ex
+
+# Move to this script's directory.
+cd "$(dirname "$0")"
 
 program="${1}"
 project="${2}"
