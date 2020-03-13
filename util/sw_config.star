@@ -2,11 +2,8 @@ load("//config/util/bindings/proto.star", "protos")
 protos.register()
 
 load("@proto//api/software_config_id.proto", sc_id_pb = "chromiumos.config.api")
-load("@proto//api/software/build_config.proto", bc_pb = "chromiumos.config.api.software")
 load("@proto//api/software/chromeos_config/identity_scan_config.proto", id_scan_pb = "chromiumos.config.api.software.chromeos_config")
 load("@proto//api/software/audio_config.proto", audio_pb = "chromiumos.config.api.software")
-load("@proto//api/software/build_target_id.proto", bt_id_pb = "chromiumos.config.api.software")
-load("@proto//api/software/brand_config.proto", brand_pb = "chromiumos.config.api.software")
 load("@proto//api/software/firmware_config.proto", fw_pb = "chromiumos.config.api.software")
 load("@proto//api/software/software_config.proto", sc_pb = "chromiumos.config.api.software")
 
@@ -31,26 +28,6 @@ def _create_fw_config(ro=None, rw=None, ec=None):
                               main_rw_payload=rw,
                               ec_ro_payload=ec,)
 
-
-def _create(build_target, software_configs = None, brand_configs = None):
-  bt_id = bt_id_pb.BuildTargetId(value = build_target)
-  return bc_pb.BuildConfig(build_target_id=bt_id,
-                           software_configs=software_configs,
-                           brand_configs=brand_configs,)
-
-
-def _create_list(build_configs):
-  return bc_pb.BuildConfigList(value=build_configs)
-
-def _create_brand_config(wallpaper, whitelabel_tag = None):
-  scan_config = None
-  if whitelabel_tag:
-    scan_config = id_scan_pb.IdentityScanConfig.BrandId(
-        whitelabel_tag=whitelabel_tag,)
-  return brand_pb.BrandConfig(scan_config=scan_config,
-                             wallpaper=wallpaper,)
-
-
 def _create_x86_identity(smbios_name_match, fw_sku = 255):
   return id_scan_pb.IdentityScanConfig.SoftwareConfigId(
       smbios_name_match=smbios_name_match,
@@ -69,12 +46,11 @@ def _create_audio(card_name, card_config_file = None, dsp_file = None, ucm_file 
                               ucm_file=ucm_file,)
 
 
-
-def _create_software_config(scan_config,
-                    firmware=None,
-                    bt=None,
-                    power=None,
-                    audio=None,):
+def _create(scan_config,
+            firmware=None,
+            bt=None,
+            power=None,
+            audio=None,):
   platform_name = (scan_config.smbios_name_match or
                    scan_config.device_tree_compatible_match)
   sc_id = sc_id_pb.SoftwareConfigId(
@@ -88,14 +64,11 @@ def _create_software_config(scan_config,
       audio_config=audio,
   )
 
-build_config = struct(
+sw_config = struct(
     create = _create,
-    create_list = _create_list,
     create_audio = _create_audio,
-    create_brand_config = _create_brand_config,
     create_x86_identity = _create_x86_identity,
     create_arm_identity = _create_arm_identity,
-    create_software_config = _create_software_config,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,
     fw_type = _FW_TYPE,

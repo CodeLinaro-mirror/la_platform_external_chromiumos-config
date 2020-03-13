@@ -17,8 +17,9 @@ from api import design_pb2 as api_dot_design__pb2
 from api import device_brand_pb2 as api_dot_device__brand__pb2
 from api import partner_pb2 as api_dot_partner__pb2
 from api import program_pb2 as api_dot_program__pb2
+from api.software import brand_config_pb2 as api_dot_software_dot_brand__config__pb2
 from api.software import build_target_pb2 as api_dot_software_dot_build__target__pb2
-from api.software import build_config_pb2 as api_dot_software_dot_build__config__pb2
+from api.software import software_config_pb2 as api_dot_software_dot_software__config__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -26,9 +27,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n\x17\x61pi/config_bundle.proto\x12\x15\x63hromiumos.config.api\x1a\x13\x61pi/component.proto\x1a\x10\x61pi/design.proto\x1a\x16\x61pi/device_brand.proto\x1a\x11\x61pi/partner.proto\x1a\x11\x61pi/program.proto\x1a\x1f\x61pi/software/build_target.proto\x1a\x1f\x61pi/software/build_config.proto\"\xb5\x03\n\x0c\x43onfigBundle\x12\x34\n\x08partners\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.PartnerList\x12\x38\n\ncomponents\x18\x02 \x01(\x0b\x32$.chromiumos.config.api.ComponentList\x12\x34\n\x08programs\x18\x03 \x01(\x0b\x32\".chromiumos.config.api.ProgramList\x12\x32\n\x07\x64\x65signs\x18\x04 \x01(\x0b\x32!.chromiumos.config.api.DesignList\x12=\n\rdevice_brands\x18\x05 \x01(\x0b\x32&.chromiumos.config.api.DeviceBrandList\x12\x42\n\rbuild_targets\x18\x08 \x03(\x0b\x32+.chromiumos.config.api.software.BuildTarget\x12\x42\n\rbuild_configs\x18\x07 \x03(\x0b\x32+.chromiumos.config.api.software.BuildConfigJ\x04\x08\x06\x10\x07\"F\n\x10\x43onfigBundleList\x12\x32\n\x05value\x18\x01 \x03(\x0b\x32#.chromiumos.config.api.ConfigBundleB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n\x17\x61pi/config_bundle.proto\x12\x15\x63hromiumos.config.api\x1a\x13\x61pi/component.proto\x1a\x10\x61pi/design.proto\x1a\x16\x61pi/device_brand.proto\x1a\x11\x61pi/partner.proto\x1a\x11\x61pi/program.proto\x1a\x1f\x61pi/software/brand_config.proto\x1a\x1f\x61pi/software/build_target.proto\x1a\"api/software/software_config.proto\"\x85\x04\n\x0c\x43onfigBundle\x12\x34\n\x08partners\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.PartnerList\x12\x38\n\ncomponents\x18\x02 \x01(\x0b\x32$.chromiumos.config.api.ComponentList\x12\x34\n\x08programs\x18\x03 \x01(\x0b\x32\".chromiumos.config.api.ProgramList\x12\x32\n\x07\x64\x65signs\x18\x04 \x01(\x0b\x32!.chromiumos.config.api.DesignList\x12=\n\rdevice_brands\x18\x05 \x01(\x0b\x32&.chromiumos.config.api.DeviceBrandList\x12\x42\n\rbuild_targets\x18\x08 \x03(\x0b\x32+.chromiumos.config.api.software.BuildTarget\x12H\n\x10software_configs\x18\t \x03(\x0b\x32..chromiumos.config.api.software.SoftwareConfig\x12\x42\n\rbrand_configs\x18\n \x03(\x0b\x32+.chromiumos.config.api.software.BrandConfigJ\x04\x08\x06\x10\x07J\x04\x08\x07\x10\x08\"F\n\x10\x43onfigBundleList\x12\x32\n\x05value\x18\x01 \x03(\x0b\x32#.chromiumos.config.api.ConfigBundleB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
-  dependencies=[api_dot_component__pb2.DESCRIPTOR,api_dot_design__pb2.DESCRIPTOR,api_dot_device__brand__pb2.DESCRIPTOR,api_dot_partner__pb2.DESCRIPTOR,api_dot_program__pb2.DESCRIPTOR,api_dot_software_dot_build__target__pb2.DESCRIPTOR,api_dot_software_dot_build__config__pb2.DESCRIPTOR,])
+  dependencies=[api_dot_component__pb2.DESCRIPTOR,api_dot_design__pb2.DESCRIPTOR,api_dot_device__brand__pb2.DESCRIPTOR,api_dot_partner__pb2.DESCRIPTOR,api_dot_program__pb2.DESCRIPTOR,api_dot_software_dot_brand__config__pb2.DESCRIPTOR,api_dot_software_dot_build__target__pb2.DESCRIPTOR,api_dot_software_dot_software__config__pb2.DESCRIPTOR,])
 
 
 
@@ -83,8 +84,15 @@ _CONFIGBUNDLE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='build_configs', full_name='chromiumos.config.api.ConfigBundle.build_configs', index=6,
-      number=7, type=11, cpp_type=10, label=3,
+      name='software_configs', full_name='chromiumos.config.api.ConfigBundle.software_configs', index=6,
+      number=9, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='brand_configs', full_name='chromiumos.config.api.ConfigBundle.brand_configs', index=7,
+      number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -101,8 +109,8 @@ _CONFIGBUNDLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=218,
-  serialized_end=655,
+  serialized_start=254,
+  serialized_end=771,
 )
 
 
@@ -132,8 +140,8 @@ _CONFIGBUNDLELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=657,
-  serialized_end=727,
+  serialized_start=773,
+  serialized_end=843,
 )
 
 _CONFIGBUNDLE.fields_by_name['partners'].message_type = api_dot_partner__pb2._PARTNERLIST
@@ -142,7 +150,8 @@ _CONFIGBUNDLE.fields_by_name['programs'].message_type = api_dot_program__pb2._PR
 _CONFIGBUNDLE.fields_by_name['designs'].message_type = api_dot_design__pb2._DESIGNLIST
 _CONFIGBUNDLE.fields_by_name['device_brands'].message_type = api_dot_device__brand__pb2._DEVICEBRANDLIST
 _CONFIGBUNDLE.fields_by_name['build_targets'].message_type = api_dot_software_dot_build__target__pb2._BUILDTARGET
-_CONFIGBUNDLE.fields_by_name['build_configs'].message_type = api_dot_software_dot_build__config__pb2._BUILDCONFIG
+_CONFIGBUNDLE.fields_by_name['software_configs'].message_type = api_dot_software_dot_software__config__pb2._SOFTWARECONFIG
+_CONFIGBUNDLE.fields_by_name['brand_configs'].message_type = api_dot_software_dot_brand__config__pb2._BRANDCONFIG
 _CONFIGBUNDLELIST.fields_by_name['value'].message_type = _CONFIGBUNDLE
 DESCRIPTOR.message_types_by_name['ConfigBundle'] = _CONFIGBUNDLE
 DESCRIPTOR.message_types_by_name['ConfigBundleList'] = _CONFIGBUNDLELIST

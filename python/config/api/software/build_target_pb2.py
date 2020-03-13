@@ -12,7 +12,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from api.software import build_target_id_pb2 as api_dot_software_dot_build__target__id__pb2
+from api import build_target_id_pb2 as api_dot_build__target__id__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n\x1f\x61pi/software/build_target.proto\x12\x1e\x63hromiumos.config.api.software\x1a\"api/software/build_target_id.proto\"\xea\x01\n\x0b\x42uildTarget\x12\x39\n\x02id\x18\x01 \x01(\x0b\x32-.chromiumos.config.api.software.BuildTargetId\x12\x14\n\x0coverlay_name\x18\x02 \x01(\t\x12K\n\x03\x61rc\x18\x03 \x01(\x0b\x32>.chromiumos.config.api.software.BuildTarget.ArcBuildProperties\x1a=\n\x12\x41rcBuildProperties\x12\x0e\n\x06\x64\x65vice\x18\x01 \x01(\t\x12\x17\n\x0f\x66irst_api_level\x18\x02 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n\x1f\x61pi/software/build_target.proto\x12\x1e\x63hromiumos.config.api.software\x1a\x19\x61pi/build_target_id.proto\"\xe1\x01\n\x0b\x42uildTarget\x12\x30\n\x02id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.BuildTargetId\x12\x14\n\x0coverlay_name\x18\x02 \x01(\t\x12K\n\x03\x61rc\x18\x03 \x01(\x0b\x32>.chromiumos.config.api.software.BuildTarget.ArcBuildProperties\x1a=\n\x12\x41rcBuildProperties\x12\x0e\n\x06\x64\x65vice\x18\x01 \x01(\t\x12\x17\n\x0f\x66irst_api_level\x18\x02 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
   ,
-  dependencies=[api_dot_software_dot_build__target__id__pb2.DESCRIPTOR,])
+  dependencies=[api_dot_build__target__id__pb2.DESCRIPTOR,])
 
 
 
@@ -60,8 +60,8 @@ _BUILDTARGET_ARCBUILDPROPERTIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=277,
-  serialized_end=338,
+  serialized_start=259,
+  serialized_end=320,
 )
 
 _BUILDTARGET = _descriptor.Descriptor(
@@ -104,12 +104,12 @@ _BUILDTARGET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=104,
-  serialized_end=338,
+  serialized_start=95,
+  serialized_end=320,
 )
 
 _BUILDTARGET_ARCBUILDPROPERTIES.containing_type = _BUILDTARGET
-_BUILDTARGET.fields_by_name['id'].message_type = api_dot_software_dot_build__target__id__pb2._BUILDTARGETID
+_BUILDTARGET.fields_by_name['id'].message_type = api_dot_build__target__id__pb2._BUILDTARGETID
 _BUILDTARGET.fields_by_name['arc'].message_type = _BUILDTARGET_ARCBUILDPROPERTIES
 DESCRIPTOR.message_types_by_name['BuildTarget'] = _BUILDTARGET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
