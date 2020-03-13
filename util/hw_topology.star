@@ -30,6 +30,13 @@ _MEMORY = struct(
       LP_DDR4 = comp_pb.Component.Memory.LP_DDR4,
 )
 
+_FP_LOC = struct(
+  POWER_BUTTON_TOP_LEFT = topo_pb.HardwareFeatures.Fingerprint.POWER_BUTTON_TOP_LEFT,
+  KEYBOARD_BOTTOM_LEFT = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_BOTTOM_LEFT,
+  KEYBOARD_BOTTOM_RIGHT = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_BOTTOM_RIGHT,
+  KEYBOARD_TOP_RIGHT  = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_TOP_RIGHT,
+)
+
 def _create_design_features(form_factor = _FF.CLAMSHELL):
   return topo_pb.HardwareFeatures(
       form_factor=topo_pb.HardwareFeatures.FormFactor(
@@ -186,8 +193,10 @@ def _create_magnetometer(id, description):
     hardware_feature = hw_features,
     )
 
-def _create_fingerprint(id, description):
+def _create_fingerprint(id, description, location):
   hw_features = topo_pb.HardwareFeatures()
+
+  hw_features.fingerprint.location = location
 
   return topo_pb.Topology(
     id = id,
@@ -398,6 +407,10 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
   if copy.keyboard.hardware_feature.keyboard != topo_pb.HardwareFeatures.Keyboard():
     result.keyboard = copy.keyboard.hardware_feature.keyboard
 
+  # Handle all possible fingerprint hardware features attributes
+  if copy.fingerprint.hardware_feature.fingerprint != topo_pb.HardwareFeatures.Fingerprint():
+    result.fingerprint = copy.fingerprint.hardware_feature.fingerprint
+
   # Handle all possible audio features attributes
   if copy.audio.hardware_feature.audio != topo_pb.HardwareFeatures.Audio():
     result.audio = copy.audio.hardware_feature.audio
@@ -468,4 +481,5 @@ hw_topo = struct(
     ff = _FF,
     audio_codec = _AUDIO_CODEC,
     memory = _MEMORY,
+    fp_loc = _FP_LOC,
 )

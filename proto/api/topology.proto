@@ -246,4 +246,18 @@ message HardwareFeatures {
   message Memory {
     Component.Memory.Profile profile = 1;
   }
+
+  // Fingerprint properties of system
+  Fingerprint fingerprint = 17;
+  message Fingerprint {
+    // Location of fingerprint sensor
+    Location location = 1;
+    enum Location {
+      LOCATION_UNKNOWN = 0;
+      POWER_BUTTON_TOP_LEFT = 1;
+      KEYBOARD_BOTTOM_LEFT = 2;
+      KEYBOARD_BOTTOM_RIGHT = 3;
+      KEYBOARD_TOP_RIGHT = 4;
+    }
+  }
 }
