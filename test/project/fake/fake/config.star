@@ -25,13 +25,15 @@ _DESIGN_ID = design.create_design_id(_REF_DESIGN_NAME)
 _BASE_HW_FEATURE = hw_topo.create_base_hw_feature(usbc_count = 1, usba_count = 1)
 _CLAMSHELL = hw_topo.create_form_factor("CLAMSHELL", "Device can only rotate 200 degrees", hw_topo.ff.CLAMSHELL)
 
-_AUDIO_CARD = "fake-audio-card"
+_AUDIO_CARD = "fakeaudiocard"
 
 _SW_CONFIG = sc.create(
     scan_config=sc.create_x86_identity(
         smbios_name_match="Fake",
         fw_sku=0x7fffffff),
     audio=sc.create_audio(card_name=_AUDIO_CARD,
+                          card_config_file="audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
+                          dsp_file="audio/%s/dsp.ini" % _AUDIO_CARD,
                           ucm_file="audio/%s/HiFi.conf" % _AUDIO_CARD),
     firmware=sc.create_fw_config(
         ro=sc.create_fw_payload(
