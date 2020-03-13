@@ -10,6 +10,7 @@ load("@proto//api/software/software_config.proto", sc_pb = "chromiumos.config.ap
 _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,
     EC = fw_pb.FirmwareType.EC,
+    PD = fw_pb.FirmwareType.PD,
 )
 
 def _create_fw_payload(name=None,
@@ -23,10 +24,12 @@ def _create_fw_payload(name=None,
       version=fw_pb.Version(major=major_version, minor=minor_version),
   )
 
-def _create_fw_config(ro=None, rw=None, ec=None):
+def _create_fw_config(ro=None, rw=None, ec=None, ec_extras=None, pd=None):
   return fw_pb.FirmwareConfig(main_ro_payload=ro,
                               main_rw_payload=rw,
-                              ec_ro_payload=ec,)
+                              ec_ro_payload=ec,
+                              ec_extras = ec_extras,
+                              pd_ro_payload=pd,)
 
 def _create_x86_identity(smbios_name_match, fw_sku = 255):
   return id_scan_pb.IdentityScanConfig.SoftwareConfigId(

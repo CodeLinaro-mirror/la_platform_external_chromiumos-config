@@ -10,6 +10,7 @@ message FirmwareType {
     UNKNOWN = 0;
     MAIN = 1;
     EC = 2;
+    PD = 3;
   }
 }
 
@@ -44,4 +45,10 @@ message FirmwareConfig {
 
   // The embedded controller read-only firmware.
   FirmwarePayload ec_ro_payload = 3;
+
+  // Extra EC build targets to build/include in the EC firmware.
+  repeated string ec_extras = 4;
+
+  // The libpayload read-only firmware
+  FirmwarePayload pd_ro_payload = 5;
 }

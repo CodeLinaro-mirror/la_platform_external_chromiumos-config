@@ -38,8 +38,15 @@ _SW_CONFIG = sc.create(
     firmware=sc.create_fw_config(
         ro=sc.create_fw_payload(
             name="Fake", major_version=11111),
-        ec=sc.create_fw_payload(
-            name="Fake", fw_type=sc.fw_type.EC, major_version=11111),
+        rw=sc.create_fw_payload(
+            name="Fake", major_version=11111),
+        ec=sc.create_fw_payload(name="Fake_EC",
+                                fw_type=sc.fw_type.EC,
+                                major_version=11111,
+                                minor_version=2),
+        ec_extras=["fake-ec-extra1", "fake-ec-extra2", ],
+        pd=sc.create_fw_payload(
+            name="Fake_PD", fw_type=sc.fw_type.PD, major_version=11111),
     )
 )
 
