@@ -16,7 +16,7 @@ load("//program_fake/program.star", program = "program")
 _FAKE_ODM = partner.create("FAKE-ODM")
 _FAKE_OEM = partner.create("FAKE-OEM")
 
-_PARTNERS = partner.create_list([_FAKE_ODM])
+_PARTNERS = partner.create_list([_FAKE_ODM, _FAKE_OEM])
 
 _REF_DESIGN_NAME = "FAKE-REF-DESIGN"
 
