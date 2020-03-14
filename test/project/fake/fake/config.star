@@ -51,6 +51,12 @@ _SW_CONFIG = sc.create(
     )
 )
 
+_FP = hw_topo.create_fingerprint(
+    id="AA_BB",
+    description="Fingerprint sensor",
+    location=hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT,
+    board="fake-fingerprint-board")
+
 _HW_DESIGN_CONFIG = design.create_config(
   design_id = _DESIGN_ID,
   config_id = "1",
@@ -58,6 +64,7 @@ _HW_DESIGN_CONFIG = design.create_config(
   base_hw_features = _BASE_HW_FEATURE,
   hardware_topology = hw_topo.create_hardware_topology(
     form_factor = _CLAMSHELL,
+    fingerprint = _FP,
   ),
 )
 

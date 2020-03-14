@@ -252,6 +252,9 @@ message HardwareFeatures {
   message Fingerprint {
     // Location of fingerprint sensor
     Location location = 1;
+    // Fingerprint board used.
+    string board = 2;
+
     enum Location {
       LOCATION_UNKNOWN = 0;
       POWER_BUTTON_TOP_LEFT = 1;

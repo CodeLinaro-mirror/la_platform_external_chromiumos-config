@@ -193,10 +193,12 @@ def _create_magnetometer(id, description):
     hardware_feature = hw_features,
     )
 
-def _create_fingerprint(id, description, location):
+def _create_fingerprint(id, description, location, board=None):
   hw_features = topo_pb.HardwareFeatures()
 
   hw_features.fingerprint.location = location
+  if board:
+    hw_features.fingerprint.board = board
 
   return topo_pb.Topology(
     id = id,
