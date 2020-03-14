@@ -12,7 +12,7 @@ def _create(name,
   overlay_name = overlay_name or name
   return bt_pb.BuildTarget(
     id = bt_id_pb.BuildTargetId(value = name),
-    overlay_name = name,
+    overlay_name = overlay_name,
     arc = bt_pb.BuildTarget.ArcBuildProperties(
       device = arc_device or "%s_cheets" % name,
       first_api_level = first_api_level,

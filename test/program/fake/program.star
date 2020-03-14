@@ -46,7 +46,7 @@ _FAKE = program_util.create(
     constraints = _FEATURE_CONSTRAINTS,
 )
 
-_BUILD_TARGETS = [bt_util.create("fake")]
+_BUILD_TARGETS = [bt_util.create("fake", "overlay-fake-private")]
 
 program = struct(
     fake = _FAKE,
