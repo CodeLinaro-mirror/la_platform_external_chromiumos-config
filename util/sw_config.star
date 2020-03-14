@@ -15,11 +15,13 @@ _FW_TYPE = struct(
 
 def _create_fw_payload(name=None,
                        fw_type=_FW_TYPE.MAIN,
+                       build_target_name=None,
                        major_version=0,
                        minor_version=0,):
+  build_target_name = build_target_name or name
   return fw_pb.FirmwarePayload(
-      build_target_name=name,
       firmware_image_name=name,
+      build_target_name=build_target_name,
       type=fw_type,
       version=fw_pb.Version(major=major_version, minor=minor_version),
   )

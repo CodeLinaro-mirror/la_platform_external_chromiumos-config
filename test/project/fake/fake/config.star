@@ -38,16 +38,20 @@ _SW_CONFIG = sc.create(
                           ucm_master_file="audio/%s/%s.conf" % (_AUDIO_CARD, _AUDIO_CARD)),
     firmware=sc.create_fw_config(
         ro=sc.create_fw_payload(
-            name="Fake", major_version=11111),
+            name="Fake", build_target_name="fake", major_version=11111),
         rw=sc.create_fw_payload(
-            name="Fake", major_version=11111),
+            name="Fake", build_target_name="fake", major_version=11111),
         ec=sc.create_fw_payload(name="Fake_EC",
+                                build_target_name="fake",
                                 fw_type=sc.fw_type.EC,
                                 major_version=11111,
                                 minor_version=2),
         ec_extras=["fake-ec-extra1", "fake-ec-extra2", ],
         pd=sc.create_fw_payload(
-            name="Fake_PD", fw_type=sc.fw_type.PD, major_version=11111),
+            name="Fake_PD",
+            build_target_name="fake",
+            fw_type=sc.fw_type.PD,
+            major_version=11111),
     )
 )
 
