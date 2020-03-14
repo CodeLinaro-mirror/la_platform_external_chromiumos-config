@@ -25,4 +25,7 @@ message AudioConfig {
   // Path to the UCM file. Note that this is the UCM verb file (e.g.
   // "HiFi.conf"), NOT the UCM master file (e.g. <sound card name>.conf).
   string ucm_file = 4;
+
+  // Path to the UCM master file (e.g. <sound card name>.conf).
+  string ucm_master_file = 5;
 }

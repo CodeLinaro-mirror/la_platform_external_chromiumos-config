@@ -42,11 +42,16 @@ def _create_arm_identity(dt_compatible_match, fw_sku = 255):
       firmware_sku=fw_sku,)
 
 
-def _create_audio(card_name, card_config_file = None, dsp_file = None, ucm_file = None):
+def _create_audio(card_name,
+                  card_config_file=None,
+                  dsp_file=None,
+                  ucm_file=None,
+                  ucm_master_file=None):
   return audio_pb.AudioConfig(card_name=card_name,
                               card_config_file=card_config_file,
                               dsp_file=dsp_file,
-                              ucm_file=ucm_file,)
+                              ucm_file=ucm_file,
+                              ucm_master_file=ucm_master_file)
 
 
 def _create(scan_config,
