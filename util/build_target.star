@@ -4,7 +4,12 @@ protos.register()
 load("@proto//api/build_target_id.proto", bt_id_pb = "chromiumos.config.api")
 load("@proto//api/software/build_target.proto", bt_pb = "chromiumos.config.api.software")
 
-def _create(name, arc_device = None, first_api_level = '28'):
+
+def _create(name,
+            overlay_name=None,
+            arc_device=None,
+            first_api_level='28'):
+  overlay_name = overlay_name or name
   return bt_pb.BuildTarget(
     id = bt_id_pb.BuildTargetId(value = name),
     overlay_name = name,
