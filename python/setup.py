@@ -4,7 +4,6 @@
 
 from distutils.core import setup
 
-
 setup(name='config',
       version='1.0',
       description='Module to access Config API python proto bindings',
@@ -13,4 +12,7 @@ setup(name='config',
           'api/*.py',
           'api/software/*.py',
           'api/software/**/*.py',
+          'test/*.py',
+          'test/fake_program/*',
+          'test/fake_project/*',
       ]},)
