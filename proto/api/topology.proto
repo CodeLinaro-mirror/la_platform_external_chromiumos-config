@@ -202,8 +202,8 @@ message HardwareFeatures {
   FormFactor form_factor = 13;
   message FormFactor {
     // Form factory of system
-    FormFactor form_factor = 1;
-    enum FormFactor {
+    FormFactorType form_factor = 1;
+    enum FormFactorType {
       FORM_FACTOR_UNKNOWN = 0;
       CLAMSHELL = 1;
       CONVERTIBLE = 2;
@@ -219,8 +219,8 @@ message HardwareFeatures {
   Stylus stylus = 14;
   message Stylus {
     // Type of stylus
-    Stylus stylus = 1;
-    enum Stylus {
+    StylusType stylus = 1;
+    enum StylusType {
       STYLUS_UNKNOWN = 0;
       NONE = 1;
       INTERNAL = 2;  // Garaged stylus

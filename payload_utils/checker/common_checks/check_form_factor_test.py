@@ -19,9 +19,9 @@ FormFactor = HardwareFeatures.FormFactor
 Screen = HardwareFeatures.Screen
 Config = Design.Config
 # pylint: enable=invalid-name
-CLAMSHELL = HardwareFeatures.FormFactor.FormFactor.CLAMSHELL
-CONVERTIBLE = HardwareFeatures.FormFactor.FormFactor.CONVERTIBLE
-DETACHABLE = HardwareFeatures.FormFactor.FormFactor.DETACHABLE
+CLAMSHELL = HardwareFeatures.FormFactor.FormFactorType.CLAMSHELL
+CONVERTIBLE = HardwareFeatures.FormFactor.FormFactorType.CONVERTIBLE
+DETACHABLE = HardwareFeatures.FormFactor.FormFactorType.DETACHABLE
 
 
 class CheckFormFactorTest(unittest.TestCase):

@@ -34,7 +34,8 @@ class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
     allowed_form_factors = []
     # Alias the FormFactor.Name fn. to increase readability. This fn. is used to
     # produce human-readable error messages.
-    form_factor_name = topology_pb2.HardwareFeatures.FormFactor.FormFactor.Name
+    form_factor_name = (
+        topology_pb2.HardwareFeatures.FormFactor.FormFactorType.Name)
 
     for constraint in get_form_factor_constraints(program):
       allowed_form_factors.append(
