@@ -124,16 +124,10 @@ def _create_stylus(id, description):
     hardware_feature = hw_features,
     )
 
-def _create_keyboard(id, description, backlight, pwr_btn_present, internal_keyboard = None, kb_type = None):
+def _create_keyboard(id, description, backlight, pwr_btn_present, kb_type):
   hw_features = topo_pb.HardwareFeatures()
 
-  if internal_keyboard or kb_type == _KB_TYPE.INTERNAL:
-    hw_features.keyboard.keyboard_type = _KB_TYPE.INTERNAL
-  elif kb_type:
-    hw_features.keyboard.keyboard_type = kb_type
-  else:
-    hw_features.keyboard.keyboard_type = _KB_TYPE.NONE
-
+  hw_features.keyboard.keyboard_type = kb_type
   hw_features.keyboard.backlight = _bool_to_present(backlight)
   hw_features.keyboard.power_button = _bool_to_present(pwr_btn_present)
 
