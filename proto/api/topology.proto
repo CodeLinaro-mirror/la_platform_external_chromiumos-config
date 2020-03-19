@@ -231,8 +231,14 @@ message HardwareFeatures {
   // Keyboard properties of system
   Keyboard keyboard = 15;
   message Keyboard {
-    // If internal keyboard is present on system
-    Present internal_keyboard = 1;
+    // Type of keyboard present on system
+    KeyboardType keyboard_type = 1;
+    enum KeyboardType {
+      KEYBOARD_TYPE_UNKNOWN = 0;
+      INTERNAL = 1;   // E.g. Clamshell/Convertible
+      NONE = 2;       // E.g. Chromebox
+      DETACHABLE = 3; // E.g. Tablet with detachable keyboard
+    }
 
     // If keyboard backlight is present on system
     Present backlight = 2;

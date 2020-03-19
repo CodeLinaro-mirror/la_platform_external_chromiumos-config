@@ -42,6 +42,12 @@ _STORAGE = struct(
   NVME = topo_pb.HardwareFeatures.Storage.NVME,
 )
 
+_KB_TYPE = struct(
+  NONE = topo_pb.HardwareFeatures.Keyboard.NONE,
+  INTERNAL = topo_pb.HardwareFeatures.Keyboard.INTERNAL,
+  DETACHABLE = topo_pb.HardwareFeatures.Keyboard.DETACHABLE,
+)
+
 def _create_design_features(form_factor = _FF.CLAMSHELL):
   return topo_pb.HardwareFeatures(
       form_factor=topo_pb.HardwareFeatures.FormFactor(
@@ -118,10 +124,16 @@ def _create_stylus(id, description):
     hardware_feature = hw_features,
     )
 
-def _create_keyboard(id, description, internal_keyboard, backlight, pwr_btn_present):
+def _create_keyboard(id, description, backlight, pwr_btn_present, internal_keyboard = None, kb_type = None):
   hw_features = topo_pb.HardwareFeatures()
 
-  hw_features.keyboard.internal_keyboard = _bool_to_present(internal_keyboard)
+  if internal_keyboard or kb_type == _KB_TYPE.INTERNAL:
+    hw_features.keyboard.keyboard_type = _KB_TYPE.INTERNAL
+  elif kb_type:
+    hw_features.keyboard.keyboard_type = kb_type
+  else:
+    hw_features.keyboard.keyboard_type = _KB_TYPE.NONE
+
   hw_features.keyboard.backlight = _bool_to_present(backlight)
   hw_features.keyboard.power_button = _bool_to_present(pwr_btn_present)
 
@@ -492,4 +504,5 @@ hw_topo = struct(
     memory = _MEMORY,
     fp_loc = _FP_LOC,
     storage = _STORAGE,
+    kb_type = _KB_TYPE,
 )
