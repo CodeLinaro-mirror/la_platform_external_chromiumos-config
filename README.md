@@ -100,3 +100,21 @@ and more specifically in the
 [Going through review](https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Going-through-review)
 section. CQ verifies that you have correctly generated your configuration
 payload and that you have not violated the program's constraints.
+
+### A Note on Cq-Depends
+
+For security and privacy, the CQ verifiers that check config changes are only
+given read access on a specific project. For example, a verifier checking the
+config of `project1` cannot read the repo containing `project2`'s config. **This
+means that `Cq-Depends` groups affecting multiple projects are not allowed.**
+
+In the above example, say `project1` and `project2` are both under `programA`,
+and a `Cq-Depends` group contains changes to `project1` and `programA`. The
+change to `programA` can potentially break `project2`'s config, so the CQ
+verifier for `project2` must be run; however, this CQ verifier does not have
+read access on `project1`'s config, so it will fail to read the change to
+`project1`.
+
+Since the CQ verifiers only need to checkout a small subset of repos and run
+checks on configs, their total runtime should be less than 5 minutes, making
+`Cq-Depends` less nececessary.
