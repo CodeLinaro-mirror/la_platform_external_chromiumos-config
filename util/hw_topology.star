@@ -37,6 +37,11 @@ _FP_LOC = struct(
   KEYBOARD_TOP_RIGHT  = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_TOP_RIGHT,
 )
 
+_STORAGE = struct(
+  EMMC = topo_pb.HardwareFeatures.Storage.EMMC,
+  NVME = topo_pb.HardwareFeatures.Storage.NVME,
+)
+
 def _create_design_features(form_factor = _FF.CLAMSHELL):
   return topo_pb.HardwareFeatures(
       form_factor=topo_pb.HardwareFeatures.FormFactor(
@@ -233,8 +238,10 @@ def _create_daughter_board(id, description, fw_mask, db_id, usbc_count = 0, usba
     hardware_feature = hw_features,
     )
 
-def _create_non_volatile_storage(id, description):
+def _create_non_volatile_storage(id, description, storage_type):
   hw_features = topo_pb.HardwareFeatures()
+
+  hw_features.storage.storage_type = storage_type
 
   return topo_pb.Topology(
     id = id,
@@ -484,4 +491,5 @@ hw_topo = struct(
     audio_codec = _AUDIO_CODEC,
     memory = _MEMORY,
     fp_loc = _FP_LOC,
+    storage = _STORAGE,
 )

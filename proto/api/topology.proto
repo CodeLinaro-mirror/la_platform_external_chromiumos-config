@@ -263,4 +263,15 @@ message HardwareFeatures {
       KEYBOARD_TOP_RIGHT = 4;
     }
   }
+
+  // Non-volatile storage properties of system
+  Storage storage = 18;
+  message Storage {
+    StorageType storage_type = 1;
+    enum StorageType {
+      STORAGE_TYPE_UNKNOWN = 0;
+      EMMC = 1;
+      NVME = 2;
+    }
+  }
 }
