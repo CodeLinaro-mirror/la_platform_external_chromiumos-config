@@ -18,8 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='api/build_target_id.proto',
   package='chromiumos.config.api',
   syntax='proto3',
-  serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n\x19\x61pi/build_target_id.proto\x12\x15\x63hromiumos.config.api\"\x1e\n\rBuildTargetId\x12\r\n\x05value\x18\x01 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
+  serialized_pb=_b('\n\x19\x61pi/build_target_id.proto\x12\x15\x63hromiumos.config.api\"\x1e\n\rBuildTargetId\x12\r\n\x05value\x18\x01 \x01(\tB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
 )
 
 

@@ -6,6 +6,7 @@ package software
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	api "go.chromium.org/chromiumos/config/go/api"
 	math "math"
 )
 
@@ -23,7 +24,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // Defines a portage overlay target and corresponding parameters that will be
 // used during the build and apply to all devices supported by a given build.
 type BuildTarget struct {
-	Id *BuildTargetId `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id *api.BuildTargetId `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Portage overlay name
 	OverlayName          string                          `protobuf:"bytes,2,opt,name=overlay_name,json=overlayName,proto3" json:"overlay_name,omitempty"`
 	Arc                  *BuildTarget_ArcBuildProperties `protobuf:"bytes,3,opt,name=arc,proto3" json:"arc,omitempty"`
@@ -57,7 +58,7 @@ func (m *BuildTarget) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BuildTarget proto.InternalMessageInfo
 
-func (m *BuildTarget) GetId() *BuildTargetId {
+func (m *BuildTarget) GetId() *api.BuildTargetId {
 	if m != nil {
 		return m.Id
 	}

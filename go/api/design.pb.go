@@ -6,7 +6,6 @@ package api
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	software "go.chromium.org/chromiumos/config/go/api/software"
 	math "math"
 )
 
@@ -62,7 +61,7 @@ type Design struct {
 	// Design codename (human friendly).
 	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// Specifies which software build will support this design.
-	BuildTargetId *software.BuildTargetId `protobuf:"bytes,7,opt,name=build_target_id,json=buildTargetId,proto3" json:"build_target_id,omitempty"`
+	BuildTargetId *BuildTargetId `protobuf:"bytes,7,opt,name=build_target_id,json=buildTargetId,proto3" json:"build_target_id,omitempty"`
 	// Supported hardware configurations for a given design.
 	Configs              []*Design_Config `protobuf:"bytes,6,rep,name=configs,proto3" json:"configs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
@@ -123,7 +122,7 @@ func (m *Design) GetName() string {
 	return ""
 }
 
-func (m *Design) GetBuildTargetId() *software.BuildTargetId {
+func (m *Design) GetBuildTargetId() *BuildTargetId {
 	if m != nil {
 		return m.BuildTargetId
 	}
