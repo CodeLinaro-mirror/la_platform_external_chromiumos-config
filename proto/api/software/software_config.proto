@@ -11,7 +11,7 @@ import "api/software/audio_config.proto";
 import "api/software/firmware_config.proto";
 import "api/software/bluetooth/config.proto";
 import "api/software/chromeos_config/identity_scan_config.proto";
-import "api/software/power_manager/config.proto";
+import "api/software/power_config.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
@@ -34,7 +34,7 @@ message SoftwareConfig {
 
   bluetooth.BluetoothConfig bluetooth_config = 4;
 
-  power_manager.PowerManagerConfig power_manager_config = 5;
+  PowerConfig power_config = 5;
 
   AudioConfig audio_config = 6;
 }

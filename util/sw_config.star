@@ -5,6 +5,7 @@ load("@proto//api/software_config_id.proto", sc_id_pb = "chromiumos.config.api")
 load("@proto//api/software/chromeos_config/identity_scan_config.proto", id_scan_pb = "chromiumos.config.api.software.chromeos_config")
 load("@proto//api/software/audio_config.proto", audio_pb = "chromiumos.config.api.software")
 load("@proto//api/software/firmware_config.proto", fw_pb = "chromiumos.config.api.software")
+load("@proto//api/software/power_config.proto", pc_pb = "chromiumos.config.api.software")
 load("@proto//api/software/software_config.proto", sc_pb = "chromiumos.config.api.software")
 
 _FW_TYPE = struct(
@@ -56,6 +57,10 @@ def _create_audio(card_name,
                               ucm_master_file=ucm_master_file)
 
 
+def _create_power(preferences):
+  return pc_pb.PowerConfig(preferences=preferences)
+
+
 def _create(scan_config,
             firmware=None,
             bt=None,
@@ -70,7 +75,7 @@ def _create(scan_config,
       scan_config=scan_config,
       firmware=firmware,
       bluetooth_config=bt,
-      power_manager_config=power,
+      power_config=power,
       audio_config=audio,
   )
 
@@ -81,5 +86,6 @@ sw_config = struct(
     create_arm_identity = _create_arm_identity,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,
+    create_power = _create_power,
     fw_type = _FW_TYPE,
 )

@@ -52,6 +52,12 @@ _SW_CONFIG = sc.create(
             build_target_name="fake",
             fw_type=sc.fw_type.PD,
             major_version=11111),
+    ),
+    power = sc.create_power(
+        preferences = {
+            'battery_poll_interval_initial_ms': '1000',
+            'disable_dark_resume': '0',
+        }
     )
 )
 
