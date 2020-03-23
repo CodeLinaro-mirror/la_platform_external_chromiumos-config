@@ -7,7 +7,7 @@ syntax = "proto3";
 package chromiumos.config.api;
 
 import "api/design_id.proto";
-import "api/device_brand_id.proto";
+import "api/software/device_brand_id.proto";
 import "api/partner_id.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
@@ -16,7 +16,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/api";
 // brand.
 message DeviceBrand {
   // Globally unique device brand identifier.
-  DeviceBrandId id = 1;
+  software.DeviceBrandId id = 1;
   // Hardware design used for the given brand.
   DesignId design_id = 2;
   // OEM for the given device brand.

@@ -6,7 +6,7 @@ syntax = "proto3";
 
 package chromiumos.config.api.software;
 
-import "api/software_config_id.proto";
+import "api/software/software_config_id.proto";
 import "api/software/audio_config.proto";
 import "api/software/firmware_config.proto";
 import "api/software/bluetooth/config.proto";

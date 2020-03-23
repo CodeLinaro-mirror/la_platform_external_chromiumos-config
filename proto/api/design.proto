@@ -6,13 +6,13 @@ syntax = "proto3";
 
 package chromiumos.config.api;
 
-import "api/build_target_id.proto";
+import "api/software/build_target_id.proto";
 import "api/design_config_id.proto";
 import "api/design_id.proto";
 import "api/hardware_topology.proto";
 import "api/partner_id.proto";
 import "api/program_id.proto";
-import "api/software_config_id.proto";
+import "api/software/software_config_id.proto";
 import "api/topology.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
@@ -31,7 +31,7 @@ message Design {
   string name = 4;
 
   // Specifies which software build will support this design.
-  BuildTargetId build_target_id = 7;
+  software.BuildTargetId build_target_id = 7;
 
   // Supported hardware configurations for a given design.
   repeated Config configs = 6;
@@ -44,7 +44,7 @@ message Design {
 
     // Determines what software configuration will be selected from the current
     // build installed on the device.
-    SoftwareConfigId software_config_id = 4;
+    software.SoftwareConfigId software_config_id = 4;
 
     // Each unique value of hardware_topology requires a unique DesignConfigId
     HardwareTopology hardware_topology = 2;

@@ -6,7 +6,7 @@ syntax = "proto3";
 
 package chromiumos.config.api.software;
 
-option go_package = "go.chromium.org/chromiumos/config/go/api/software/power";
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
 // Defines configuration settings for power management.
 // For more details, see:

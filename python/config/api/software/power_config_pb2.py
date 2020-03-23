@@ -18,8 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='api/software/power_config.proto',
   package='chromiumos.config.api.software',
   syntax='proto3',
-  serialized_options=_b('Z7go.chromium.org/chromiumos/config/go/api/software/power'),
-  serialized_pb=_b('\n\x1f\x61pi/software/power_config.proto\x12\x1e\x63hromiumos.config.api.software\"\x94\x01\n\x0bPowerConfig\x12Q\n\x0bpreferences\x18\x01 \x03(\x0b\x32<.chromiumos.config.api.software.PowerConfig.PreferencesEntry\x1a\x32\n\x10PreferencesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x39Z7go.chromium.org/chromiumos/config/go/api/software/powerb\x06proto3')
+  serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
+  serialized_pb=_b('\n\x1f\x61pi/software/power_config.proto\x12\x1e\x63hromiumos.config.api.software\"\x94\x01\n\x0bPowerConfig\x12Q\n\x0bpreferences\x18\x01 \x03(\x0b\x32<.chromiumos.config.api.software.PowerConfig.PreferencesEntry\x1a\x32\n\x10PreferencesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x33Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
 )
 
 

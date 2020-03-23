@@ -4,7 +4,7 @@ package chromiumos.config.api.software;
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
-import "api/build_target_id.proto";
+import "api/software/build_target_id.proto";
 
 // Defines a portage overlay target and corresponding parameters that will be
 // used during the build and apply to all devices supported by a given build.

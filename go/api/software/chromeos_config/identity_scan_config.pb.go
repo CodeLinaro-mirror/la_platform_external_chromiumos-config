@@ -53,7 +53,7 @@ func (m *IdentityScanConfig) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_IdentityScanConfig proto.InternalMessageInfo
 
-// Scanning config based on: config/api/software_config_id.proto
+// Scanning config based on: config/api/software/software_config_id.proto
 type IdentityScanConfig_SoftwareConfigId struct {
 	// Types that are valid to be assigned to FirmwareNameMatch:
 	//	*IdentityScanConfig_SoftwareConfigId_SmbiosNameMatch
