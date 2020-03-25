@@ -339,7 +339,7 @@ type Topology struct {
 	// be displayed to factory operators to select the correct options that
 	// applies to the board they are assembling.
 	Description map[string]string `protobuf:"bytes,3,rep,name=description,proto3" json:"description,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Specifiy the subset of hardware features that this hardware topology
+	// Specify the subset of hardware features that this hardware topology
 	// provides
 	HardwareFeature      *HardwareFeatures `protobuf:"bytes,4,opt,name=hardware_feature,json=hardwareFeature,proto3" json:"hardware_feature,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
@@ -401,7 +401,7 @@ func (m *Topology) GetHardwareFeature() *HardwareFeatures {
 }
 
 // Each Topology message specifies what that topology means in a 1st class
-// queriable way. Each Topology will only the subset of hardware features that
+// queryable way. Each Topology will only the subset of hardware features that
 // are applicable to that value.
 // The DesignConfig layer will combine all of the Topology messages
 // HardwareFeature messages into a wholistic view of the hardware design
@@ -1102,9 +1102,9 @@ func (m *HardwareFeatures_Magnetometer) GetBaseMagnetometer() HardwareFeatures_P
 }
 
 type HardwareFeatures_LightSensor struct {
-	// If lid lightsensor is present on system
+	// If lid light sensor is present on system
 	LidLightsensor HardwareFeatures_Present `protobuf:"varint,1,opt,name=lid_lightsensor,json=lidLightsensor,proto3,enum=chromiumos.config.api.HardwareFeatures_Present" json:"lid_lightsensor,omitempty"`
-	// If base lightsensor is present on system
+	// If base light sensor is present on system
 	BaseLightsensor      HardwareFeatures_Present `protobuf:"varint,2,opt,name=base_lightsensor,json=baseLightsensor,proto3,enum=chromiumos.config.api.HardwareFeatures_Present" json:"base_lightsensor,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
 	XXX_unrecognized     []byte                   `json:"-"`

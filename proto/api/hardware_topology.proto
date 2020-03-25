@@ -61,7 +61,7 @@ message HardwareTopology {
   // See ./hardware_topology.md#sensor for more information.
   Topology proximity_sensor = 10;
 
-  // Specify the daugher board topology.
+  // Specify the daughter board topology.
   // See ./hardware_topology.md#daughter-board for more information.
   Topology daughter_board = 11;
 

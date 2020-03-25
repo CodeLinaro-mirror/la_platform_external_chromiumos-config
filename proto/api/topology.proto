@@ -55,13 +55,13 @@ message Topology {
   // applies to the board they are assembling.
   map<string, string> description = 3;
 
-  // Specifiy the subset of hardware features that this hardware topology
+  // Specify the subset of hardware features that this hardware topology
   // provides
   HardwareFeatures hardware_feature = 4;
 }
 
 // Each Topology message specifies what that topology means in a 1st class
-// queriable way. Each Topology will only the subset of hardware features that
+// queryable way. Each Topology will only the subset of hardware features that
 // are applicable to that value.
 // The DesignConfig layer will combine all of the Topology messages
 // HardwareFeature messages into a wholistic view of the hardware design
@@ -181,10 +181,10 @@ message HardwareFeatures {
   // LightSensor properties of system.
   LightSensor light_sensor = 11;
   message LightSensor {
-    // If lid lightsensor is present on system
+    // If lid light sensor is present on system
     Present lid_lightsensor = 1;
 
-    // If base lightsensor is present on system
+    // If base light sensor is present on system
     Present base_lightsensor = 2;
   }
 

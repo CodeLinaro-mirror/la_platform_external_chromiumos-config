@@ -61,7 +61,7 @@ type HardwareTopology struct {
 	// Specify the proximity sensor topology.
 	// See ./hardware_topology.md#sensor for more information.
 	ProximitySensor *Topology `protobuf:"bytes,10,opt,name=proximity_sensor,json=proximitySensor,proto3" json:"proximity_sensor,omitempty"`
-	// Specify the daugher board topology.
+	// Specify the daughter board topology.
 	// See ./hardware_topology.md#daughter-board for more information.
 	DaughterBoard *Topology `protobuf:"bytes,11,opt,name=daughter_board,json=daughterBoard,proto3" json:"daughter_board,omitempty"`
 	// Specify the non-volatile storage topology.

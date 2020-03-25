@@ -32,7 +32,7 @@ type MfgConfig struct {
 	Id *MfgConfigId `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Name of 2nd sourced PCB Vendor.
 	PcbVendor string `protobuf:"bytes,2,opt,name=pcb_vendor,json=pcbVendor,proto3" json:"pcb_vendor,omitempty"`
-	// Ram part number. The characterstics are encoded in HardwareTopology.
+	// Ram part number. The characteristics are encoded in HardwareTopology.
 	RamPartNumber        string   `protobuf:"bytes,3,opt,name=ram_part_number,json=ramPartNumber,proto3" json:"ram_part_number,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

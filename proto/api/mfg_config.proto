@@ -24,6 +24,6 @@ message MfgConfig {
   // Name of 2nd sourced PCB Vendor.
   string pcb_vendor = 2;
 
-  // Ram part number. The characterstics are encoded in HardwareTopology.
+  // Ram part number. The characteristics are encoded in HardwareTopology.
   string ram_part_number = 3;
 }
