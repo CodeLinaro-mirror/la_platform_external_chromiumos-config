@@ -1,0 +1,17 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("//config/util/component.star", comp = "comp")
+
+VENDOR_ID = "00E0"
+VERSION = "0400"
+
+def _model(model):
+  return comp.create_bt(VENDOR_ID, model, VERSION)
+
+intel_bt = struct(
+    model = _model,
+)
+
+
