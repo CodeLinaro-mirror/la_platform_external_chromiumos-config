@@ -4,7 +4,7 @@ package chromiumos.config.api.software;
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
-import "api/software/device_brand_id.proto";
+import "api/device_brand_id.proto";
 import "api/software/chromeos_config/identity_scan_config.proto";
 
 // Contains all of the device-brand-specific configuration that can be

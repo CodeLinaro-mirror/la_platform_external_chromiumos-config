@@ -1,7 +1,7 @@
 load("//config/util/bindings/proto.star", "protos")
 protos.register()
 
-load("@proto//api/build_target_id.proto", bt_id_pb = "chromiumos.config.api")
+load("@proto//api/software/build_target_id.proto", bt_id_pb = "chromiumos.config.api.software")
 load("@proto//api/software/build_target.proto", bt_pb = "chromiumos.config.api.software")
 
 

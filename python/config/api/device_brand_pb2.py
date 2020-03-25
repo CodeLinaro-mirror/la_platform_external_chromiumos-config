@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 from api import design_id_pb2 as api_dot_design__id__pb2
-from api.software import device_brand_id_pb2 as api_dot_software_dot_device__brand__id__pb2
+from api import device_brand_id_pb2 as api_dot_device__brand__id__pb2
 from api import partner_id_pb2 as api_dot_partner__id__pb2
 
 
@@ -22,9 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n\x16\x61pi/device_brand.proto\x12\x15\x63hromiumos.config.api\x1a\x13\x61pi/design_id.proto\x1a\"api/software/device_brand_id.proto\x1a\x14\x61pi/partner_id.proto\"\xd6\x01\n\x0b\x44\x65viceBrand\x12\x39\n\x02id\x18\x01 \x01(\x0b\x32-.chromiumos.config.api.software.DeviceBrandId\x12\x32\n\tdesign_id\x18\x02 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x30\n\x06oem_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x12\n\nbrand_code\x18\x04 \x01(\t\x12\x12\n\nbrand_name\x18\x05 \x01(\t\"D\n\x0f\x44\x65viceBrandList\x12\x31\n\x05value\x18\x01 \x03(\x0b\x32\".chromiumos.config.api.DeviceBrandB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n\x16\x61pi/device_brand.proto\x12\x15\x63hromiumos.config.api\x1a\x13\x61pi/design_id.proto\x1a\x19\x61pi/device_brand_id.proto\x1a\x14\x61pi/partner_id.proto\"\xcd\x01\n\x0b\x44\x65viceBrand\x12\x30\n\x02id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.DeviceBrandId\x12\x32\n\tdesign_id\x18\x02 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x30\n\x06oem_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x12\n\nbrand_code\x18\x04 \x01(\t\x12\x12\n\nbrand_name\x18\x05 \x01(\t\"D\n\x0f\x44\x65viceBrandList\x12\x31\n\x05value\x18\x01 \x03(\x0b\x32\".chromiumos.config.api.DeviceBrandB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
-  dependencies=[api_dot_design__id__pb2.DESCRIPTOR,api_dot_software_dot_device__brand__id__pb2.DESCRIPTOR,api_dot_partner__id__pb2.DESCRIPTOR,])
+  dependencies=[api_dot_design__id__pb2.DESCRIPTOR,api_dot_device__brand__id__pb2.DESCRIPTOR,api_dot_partner__id__pb2.DESCRIPTOR,])
 
 
 
@@ -83,8 +83,8 @@ _DEVICEBRAND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=129,
-  serialized_end=343,
+  serialized_start=120,
+  serialized_end=325,
 )
 
 
@@ -114,11 +114,11 @@ _DEVICEBRANDLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=345,
-  serialized_end=413,
+  serialized_start=327,
+  serialized_end=395,
 )
 
-_DEVICEBRAND.fields_by_name['id'].message_type = api_dot_software_dot_device__brand__id__pb2._DEVICEBRANDID
+_DEVICEBRAND.fields_by_name['id'].message_type = api_dot_device__brand__id__pb2._DEVICEBRANDID
 _DEVICEBRAND.fields_by_name['design_id'].message_type = api_dot_design__id__pb2._DESIGNID
 _DEVICEBRAND.fields_by_name['oem_id'].message_type = api_dot_partner__id__pb2._PARTNERID
 _DEVICEBRANDLIST.fields_by_name['value'].message_type = _DEVICEBRAND

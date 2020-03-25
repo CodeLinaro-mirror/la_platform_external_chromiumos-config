@@ -4,9 +4,9 @@
 
 syntax = "proto3";
 
-package chromiumos.config.api.software;
+package chromiumos.config.api;
 
-option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+option go_package = "go.chromium.org/chromiumos/config/go/api";
 
 // Uniquely identifies a Chromium OS device brand.
 message DeviceBrandId {

@@ -12,7 +12,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from api.software import device_brand_id_pb2 as api_dot_software_dot_device__brand__id__pb2
+from api import device_brand_id_pb2 as api_dot_device__brand__id__pb2
 from api.software.chromeos_config import identity_scan_config_pb2 as api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2
 
 
@@ -21,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n\x1f\x61pi/software/brand_config.proto\x12\x1e\x63hromiumos.config.api.software\x1a\"api/software/device_brand_id.proto\x1a\x37\x61pi/software/chromeos_config/identity_scan_config.proto\"\xc2\x01\n\x0b\x42randConfig\x12?\n\x08\x62rand_id\x18\x01 \x01(\x0b\x32-.chromiumos.config.api.software.DeviceBrandId\x12_\n\x0bscan_config\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.software.chromeos_config.IdentityScanConfig.BrandId\x12\x11\n\twallpaper\x18\x03 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n\x1f\x61pi/software/brand_config.proto\x12\x1e\x63hromiumos.config.api.software\x1a\x19\x61pi/device_brand_id.proto\x1a\x37\x61pi/software/chromeos_config/identity_scan_config.proto\"\xb9\x01\n\x0b\x42randConfig\x12\x36\n\x08\x62rand_id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.DeviceBrandId\x12_\n\x0bscan_config\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.software.chromeos_config.IdentityScanConfig.BrandId\x12\x11\n\twallpaper\x18\x03 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
   ,
-  dependencies=[api_dot_software_dot_device__brand__id__pb2.DESCRIPTOR,api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2.DESCRIPTOR,])
+  dependencies=[api_dot_device__brand__id__pb2.DESCRIPTOR,api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2.DESCRIPTOR,])
 
 
 
@@ -68,11 +68,11 @@ _BRANDCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=161,
-  serialized_end=355,
+  serialized_start=152,
+  serialized_end=337,
 )
 
-_BRANDCONFIG.fields_by_name['brand_id'].message_type = api_dot_software_dot_device__brand__id__pb2._DEVICEBRANDID
+_BRANDCONFIG.fields_by_name['brand_id'].message_type = api_dot_device__brand__id__pb2._DEVICEBRANDID
 _BRANDCONFIG.fields_by_name['scan_config'].message_type = api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2._IDENTITYSCANCONFIG_BRANDID
 DESCRIPTOR.message_types_by_name['BrandConfig'] = _BRANDCONFIG
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)

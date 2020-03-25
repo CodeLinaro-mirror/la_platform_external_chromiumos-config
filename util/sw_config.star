@@ -1,7 +1,7 @@
 load("//config/util/bindings/proto.star", "protos")
 protos.register()
 
-load("@proto//api/software_config_id.proto", sc_id_pb = "chromiumos.config.api")
+load("@proto//api/software/software_config_id.proto", sc_id_pb = "chromiumos.config.api.software")
 load("@proto//api/software/chromeos_config/identity_scan_config.proto", id_scan_pb = "chromiumos.config.api.software.chromeos_config")
 load("@proto//api/software/audio_config.proto", audio_pb = "chromiumos.config.api.software")
 load("@proto//api/software/firmware_config.proto", fw_pb = "chromiumos.config.api.software")
