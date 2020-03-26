@@ -6,7 +6,6 @@ load("@proto//api/software/audio_config.proto", audio_pb = "chromiumos.config.ap
 load("@proto//api/software/firmware_config.proto", fw_pb = "chromiumos.config.api.software")
 load("@proto//api/software/power_config.proto", pc_pb = "chromiumos.config.api.software")
 load("@proto//api/software/software_config.proto", sc_pb = "chromiumos.config.api.software")
-load("@proto//api/software/software_config_id.proto", sc_id_pb = "chromiumos.config.api.software")
 
 _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,
@@ -33,12 +32,6 @@ def _create_fw_config(ro=None, rw=None, ec=None, ec_extras=None, pd=None):
                               ec_ro_payload=ec,
                               ec_extras = ec_extras,
                               pd_ro_payload=pd,)
-
-# TODO(shapiroc): Delete once migrated to _create_x86_id_scan
-def _create_x86_identity(smbios_name_match, fw_sku = 255):
-  return id_scan_pb.IdentityScanConfig.SoftwareConfigId(
-      smbios_name_match=smbios_name_match,
-      firmware_sku=fw_sku,)
 
 def _create_x86_id_scan(smbios_name_match, fw_sku = 255):
   return id_scan_pb.IdentityScanConfig.DesignConfigId(
@@ -67,22 +60,15 @@ def _create_power(preferences):
   return pc_pb.PowerConfig(preferences=preferences)
 
 
-def _create(scan_config=None, # TODO(shapiroc): Remove once migrated to id_scan_config
-            design_config_id=None,
+def _create(design_config_id=None,
             id_scan_config=None,
             firmware=None,
             bt=None,
             power=None,
             audio=None,):
-  platform_name = (scan_config.smbios_name_match or
-                   scan_config.device_tree_compatible_match)
-  sc_id = sc_id_pb.SoftwareConfigId(
-      value="%s:%d" % (platform_name, scan_config.firmware_sku))
   return sc_pb.SoftwareConfig(
-      id=sc_id,
       design_config_id=design_config_id,
       id_scan_config=id_scan_config,
-      scan_config=scan_config,
       firmware=firmware,
       bluetooth_config=bt,
       power_config=power,
@@ -92,7 +78,6 @@ def _create(scan_config=None, # TODO(shapiroc): Remove once migrated to id_scan_
 sw_config = struct(
     create = _create,
     create_audio = _create_audio,
-    create_x86_identity = _create_x86_identity,
     create_x86_id_scan = _create_x86_id_scan,
     create_arm_id_scan = _create_arm_id_scan,
     create_fw_payload = _create_fw_payload,

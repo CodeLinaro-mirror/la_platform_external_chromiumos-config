@@ -62,9 +62,6 @@ _DEVICE_BRAND = device_brand.create(
 _AUDIO_CARD = "fakeaudiocard"
 
 _SW_CONFIG = sc.create(
-    scan_config=sc.create_x86_identity(
-        smbios_name_match="Fake",
-        fw_sku=0x7fffffff),
     design_config_id=_HW_DESIGN_CONFIG.id,
     id_scan_config=sc.create_x86_id_scan(
         smbios_name_match="Fake",
