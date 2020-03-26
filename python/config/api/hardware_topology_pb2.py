@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n\x1b\x61pi/hardware_topology.proto\x12\x15\x63hromiumos.config.api\x1a\x12\x61pi/topology.proto\"\xed\x06\n\x10HardwareTopology\x12/\n\x06screen\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x34\n\x0b\x66orm_factor\x18\x02 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12.\n\x05\x61udio\x18\x03 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12/\n\x06stylus\x18\x04 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x31\n\x08keyboard\x18\x05 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x30\n\x07thermal\x18\x06 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12/\n\x06\x63\x61mera\x18\x07 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12M\n$accelerometer_gyroscope_magnetometer\x18\x08 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x34\n\x0b\x66ingerprint\x18\t \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x39\n\x10proximity_sensor\x18\n \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x37\n\x0e\x64\x61ughter_board\x18\x0b \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12=\n\x14non_volatile_storage\x18\x0c \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12,\n\x03ram\x18\r \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12-\n\x04wifi\x18\x0e \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x32\n\tlte_board\x18\x0f \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x32\n\tsd_reader\x18\x10 \x01(\x0b\x32\x1f.chromiumos.config.api.TopologyB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n\x1b\x61pi/hardware_topology.proto\x12\x15\x63hromiumos.config.api\x1a\x12\x61pi/topology.proto\"\xa7\x07\n\x10HardwareTopology\x12/\n\x06screen\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x34\n\x0b\x66orm_factor\x18\x02 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12.\n\x05\x61udio\x18\x03 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12/\n\x06stylus\x18\x04 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x31\n\x08keyboard\x18\x05 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x30\n\x07thermal\x18\x06 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12/\n\x06\x63\x61mera\x18\x07 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12M\n$accelerometer_gyroscope_magnetometer\x18\x08 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x34\n\x0b\x66ingerprint\x18\t \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x39\n\x10proximity_sensor\x18\n \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x37\n\x0e\x64\x61ughter_board\x18\x0b \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12=\n\x14non_volatile_storage\x18\x0c \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12,\n\x03ram\x18\r \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12-\n\x04wifi\x18\x0e \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x32\n\tlte_board\x18\x0f \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x32\n\tsd_reader\x18\x10 \x01(\x0b\x32\x1f.chromiumos.config.api.Topology\x12\x38\n\x0fmotherboard_usb\x18\x11 \x01(\x0b\x32\x1f.chromiumos.config.api.TopologyB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[api_dot_topology__pb2.DESCRIPTOR,])
 
@@ -146,6 +146,13 @@ _HARDWARETOPOLOGY = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='motherboard_usb', full_name='chromiumos.config.api.HardwareTopology.motherboard_usb', index=16,
+      number=17, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -159,7 +166,7 @@ _HARDWARETOPOLOGY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=75,
-  serialized_end=952,
+  serialized_end=1010,
 )
 
 _HARDWARETOPOLOGY.fields_by_name['screen'].message_type = api_dot_topology__pb2._TOPOLOGY
@@ -178,6 +185,7 @@ _HARDWARETOPOLOGY.fields_by_name['ram'].message_type = api_dot_topology__pb2._TO
 _HARDWARETOPOLOGY.fields_by_name['wifi'].message_type = api_dot_topology__pb2._TOPOLOGY
 _HARDWARETOPOLOGY.fields_by_name['lte_board'].message_type = api_dot_topology__pb2._TOPOLOGY
 _HARDWARETOPOLOGY.fields_by_name['sd_reader'].message_type = api_dot_topology__pb2._TOPOLOGY
+_HARDWARETOPOLOGY.fields_by_name['motherboard_usb'].message_type = api_dot_topology__pb2._TOPOLOGY
 DESCRIPTOR.message_types_by_name['HardwareTopology'] = _HARDWARETOPOLOGY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

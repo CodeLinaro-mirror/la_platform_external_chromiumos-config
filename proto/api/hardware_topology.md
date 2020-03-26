@@ -188,3 +188,13 @@ Changes that require new topology
 Changes that do not require new topology
 
 * Second sourced component changes that do not affect FW
+
+## Motherboard USB
+
+Changes that require new topology
+
+* Swapping out USB ICs like TCPCs, PPCs, SSMUXs, or retimers
+
+Changes that do not require new topology
+
+* Adding/Removing isolation diodes on USB lines

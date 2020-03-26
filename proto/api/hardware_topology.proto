@@ -84,4 +84,8 @@ message HardwareTopology {
   // Specify the SD card reader topology.
   // See ./hardware_topology.md#sd-reader for more information.
   Topology sd_reader = 16;
+
+  // Specify the motherboard USB topology
+  // See ./hardware_topology.md#motherboard-usb for more information.
+  Topology motherboard_usb = 17;
 }

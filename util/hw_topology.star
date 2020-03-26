@@ -88,7 +88,7 @@ def _create_screen(id, description, inches, touch):
     type = topo_pb.Topology.SCREEN,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_form_factor(id, description, form_factor):
   hw_features = topo_pb.HardwareFeatures()
@@ -112,7 +112,7 @@ def _create_audio(id, description, codec):
     type = topo_pb.Topology.AUDIO,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_stylus(id, description):
   hw_features = topo_pb.HardwareFeatures()
@@ -122,7 +122,7 @@ def _create_stylus(id, description):
     type = topo_pb.Topology.STYLUS,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_keyboard(id, description, backlight, pwr_btn_present, kb_type):
   hw_features = topo_pb.HardwareFeatures()
@@ -136,7 +136,7 @@ def _create_keyboard(id, description, backlight, pwr_btn_present, kb_type):
     type = topo_pb.Topology.KEYBOARD,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_thermal(id, description, fw_mask, thermal_id):
   hw_features = topo_pb.HardwareFeatures()
@@ -148,7 +148,7 @@ def _create_thermal(id, description, fw_mask, thermal_id):
     type = topo_pb.Topology.THERMAL,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_camera(id, description, has_a_panel_camera, has_b_panel_camera, count):
   hw_features = topo_pb.HardwareFeatures()
@@ -162,7 +162,7 @@ def _create_camera(id, description, has_a_panel_camera, has_b_panel_camera, coun
     type = topo_pb.Topology.CAMERA,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_microphone(id, description):
   hw_features = topo_pb.HardwareFeatures()
@@ -172,7 +172,7 @@ def _create_microphone(id, description):
     type = topo_pb.Topology.MICROPHONE,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_accelerometer(id, description):
   hw_features = topo_pb.HardwareFeatures()
@@ -182,7 +182,7 @@ def _create_accelerometer(id, description):
     type = topo_pb.Topology.ACCELEROMETER,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_gyroscope(id, description):
   hw_features = topo_pb.HardwareFeatures()
@@ -192,7 +192,7 @@ def _create_gyroscope(id, description):
     type = topo_pb.Topology.GYROSCOPE,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_magnetometer(id, description):
   hw_features = topo_pb.HardwareFeatures()
@@ -202,7 +202,7 @@ def _create_magnetometer(id, description):
     type = topo_pb.Topology.MAGNETOMETER,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_fingerprint(id, description, location, board=None):
   hw_features = topo_pb.HardwareFeatures()
@@ -216,7 +216,7 @@ def _create_fingerprint(id, description, location, board=None):
     type = topo_pb.Topology.FINGERPRINT,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_proximity_sensor(id, description):
   hw_features = topo_pb.HardwareFeatures()
@@ -226,7 +226,7 @@ def _create_proximity_sensor(id, description):
     type = topo_pb.Topology.PROXIMITY_SENSOR,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_daughter_board(id, description, fw_mask, db_id, usbc_count = 0, usba_count = 0, lte_support = False, hdmi_support = False):
   hw_features = topo_pb.HardwareFeatures()
@@ -242,7 +242,7 @@ def _create_daughter_board(id, description, fw_mask, db_id, usbc_count = 0, usba
     type = topo_pb.Topology.DAUGHTER_BOARD,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_non_volatile_storage(id, description, storage_type):
   hw_features = topo_pb.HardwareFeatures()
@@ -254,7 +254,7 @@ def _create_non_volatile_storage(id, description, storage_type):
     type = topo_pb.Topology.NON_VOLATILE_STORAGE,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_ram(id, description, gigabytes, type, speed_mhz):
   hw_features = topo_pb.HardwareFeatures()
@@ -268,7 +268,7 @@ def _create_ram(id, description, gigabytes, type, speed_mhz):
     type = topo_pb.Topology.RAM,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_wifi(id, description):
   hw_features = topo_pb.HardwareFeatures()
@@ -278,7 +278,7 @@ def _create_wifi(id, description):
     type = topo_pb.Topology.WIFI,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_lte_board(id, description, lte_present):
   hw_features = topo_pb.HardwareFeatures()
@@ -290,7 +290,7 @@ def _create_lte_board(id, description, lte_present):
     type = topo_pb.Topology.LTE_BOARD,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
 
 def _create_sd_reader(id, description):
   hw_features = topo_pb.HardwareFeatures()
@@ -300,7 +300,25 @@ def _create_sd_reader(id, description):
     type = topo_pb.Topology.SD_READER,
     description = { "EN": description},
     hardware_feature = hw_features,
-    )
+  )
+
+def _create_motherboard_usb(id, description, fw_mask = None, mlb_usb_id = None, usbc_count = 0, usba_count = 0):
+  hw_features = topo_pb.HardwareFeatures()
+
+  # Encoding motherboard usb topology into fw_config is optional. There may
+  # only be a single MLB usb topology.
+  if fw_mask or mlb_usb_id:
+    hw_features.fw_config = _convert_to_fw_config(fw_mask, mlb_usb_id)
+
+  hw_features.usb_c.count.value = usbc_count
+  hw_features.usb_a.count.value = usba_count
+
+  return topo_pb.Topology(
+    id = id,
+    type = topo_pb.Topology.MOTHERBOARD_USB,
+    description = { "EN": description},
+    hardware_feature = hw_features,
+  )
 
 def _create_hardware_topology(screen = None,
     form_factor = None,
@@ -317,7 +335,9 @@ def _create_hardware_topology(screen = None,
     ram = None,
     wifi = None,
     lte_board = None,
-    sd_reader = None):
+    sd_reader = None,
+    motherboard_usb = None,
+  ):
 
   # Only allow form_factor topologies for form factors
   if screen and screen.type != topo_pb.Topology.SCREEN:
@@ -368,6 +388,9 @@ def _create_hardware_topology(screen = None,
   if sd_reader and sd_reader.type != topo_pb.Topology.SD_READER:
     fail("Invalid lte board topology")
 
+  if motherboard_usb and motherboard_usb.type != topo_pb.Topology.MOTHERBOARD_USB:
+    fail("Invalid motherboard usb board topology")
+
   return hw_topo_pb.HardwareTopology(
     screen = screen,
     form_factor = form_factor,
@@ -385,6 +408,7 @@ def _create_hardware_topology(screen = None,
     wifi = wifi,
     lte_board = lte_board,
     sd_reader = sd_reader,
+    motherboard_usb = motherboard_usb,
   )
 
 def _accumulate_presence(existing_present, new_present):
@@ -460,6 +484,15 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
   if copy.ram.hardware_feature.memory != topo_pb.HardwareFeatures.Memory():
     result.memory = copy.ram.hardware_feature.memory
 
+  # Handle all possible motherboard usb features attributes
+  _accumulate_fw_config(result.fw_config, copy.motherboard_usb.hardware_feature.fw_config)
+
+  if copy.motherboard_usb.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
+    result.usb_c.count.value += copy.motherboard_usb.hardware_feature.usb_c.count.value
+
+  if copy.motherboard_usb.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
+    result.usb_a.count.value += copy.motherboard_usb.hardware_feature.usb_a.count.value
+
   return result
 
 def _create_base_hw_feature(usbc_count, usba_count):
@@ -491,6 +524,7 @@ hw_topo = struct(
     create_wifi = _create_wifi,
     create_lte_board = _create_lte_board,
     create_sd_reader = _create_sd_reader,
+    create_motherboard_usb = _create_motherboard_usb,
     create_hardware_topology = _create_hardware_topology,
     convert_to_hw_features = _convert_to_hw_features,
     ff = _FF,
