@@ -424,12 +424,7 @@ def _accumulate_fw_config(existing_fw_config, new_fw_config):
   existing_fw_config.mask += new_fw_config.mask
 
 def _convert_to_hw_features(base_hw_features, hardware_topology):
-  # Start with a empty default if None was provided
-  if not base_hw_features:
-    base_hw_features = topo_pb.HardwareFeatures()
-
-  # Start with a copy of the base hardware features, so we don't change it
-  result = proto.from_textpb(topo_pb.HardwareFeatures, proto.to_textpb(base_hw_features))
+  result = topo_pb.HardwareFeatures()
 
   # Need to make deep-copy otherwise we change the has_ message serialization
   copy = proto.from_textpb(hw_topo_pb.HardwareTopology, proto.to_textpb(hardware_topology))
@@ -495,14 +490,7 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
 
   return result
 
-def _create_base_hw_feature(usbc_count, usba_count):
-  result = topo_pb.HardwareFeatures()
-  result.usb_c.count.value = usbc_count
-  result.usb_a.count.value = usba_count
-  return result
-
 hw_topo = struct(
-    create_base_hw_feature = _create_base_hw_feature,
     create_design_features = _create_design_features,
     create_features = _create_features,
     create_screen = _create_screen,
