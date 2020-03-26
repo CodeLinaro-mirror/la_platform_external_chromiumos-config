@@ -13,7 +13,6 @@ _sym_db = _symbol_database.Default()
 
 
 from api import design_config_id_pb2 as api_dot_design__config__id__pb2
-from api.software import software_config_id_pb2 as api_dot_software_dot_software__config__id__pb2
 from api.software import audio_config_pb2 as api_dot_software_dot_audio__config__pb2
 from api.software import firmware_config_pb2 as api_dot_software_dot_firmware__config__pb2
 from api.software.bluetooth import config_pb2 as api_dot_software_dot_bluetooth_dot_config__pb2
@@ -26,9 +25,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n\"api/software/software_config.proto\x12\x1e\x63hromiumos.config.api.software\x1a\x1a\x61pi/design_config_id.proto\x1a%api/software/software_config_id.proto\x1a\x1f\x61pi/software/audio_config.proto\x1a\"api/software/firmware_config.proto\x1a#api/software/bluetooth/config.proto\x1a\x37\x61pi/software/chromeos_config/identity_scan_config.proto\x1a\x1f\x61pi/software/power_config.proto\"\x89\x05\n\x0eSoftwareConfig\x12?\n\x10\x64\x65sign_config_id\x18\x07 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12i\n\x0eid_scan_config\x18\x08 \x01(\x0b\x32Q.chromiumos.config.api.software.chromeos_config.IdentityScanConfig.DesignConfigId\x12@\n\x08\x66irmware\x18\x03 \x01(\x0b\x32..chromiumos.config.api.software.FirmwareConfig\x12S\n\x10\x62luetooth_config\x18\x04 \x01(\x0b\x32\x39.chromiumos.config.api.software.bluetooth.BluetoothConfig\x12\x41\n\x0cpower_config\x18\x05 \x01(\x0b\x32+.chromiumos.config.api.software.PowerConfig\x12\x41\n\x0c\x61udio_config\x18\x06 \x01(\x0b\x32+.chromiumos.config.api.software.AudioConfig\x12@\n\x02id\x18\x01 \x01(\x0b\x32\x30.chromiumos.config.api.software.SoftwareConfigIdB\x02\x18\x01\x12l\n\x0bscan_config\x18\x02 \x01(\x0b\x32S.chromiumos.config.api.software.chromeos_config.IdentityScanConfig.SoftwareConfigIdB\x02\x18\x01\"S\n\x12SoftwareConfigList\x12=\n\x05value\x18\x01 \x03(\x0b\x32..chromiumos.config.api.software.SoftwareConfigB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n\"api/software/software_config.proto\x12\x1e\x63hromiumos.config.api.software\x1a\x1a\x61pi/design_config_id.proto\x1a\x1f\x61pi/software/audio_config.proto\x1a\"api/software/firmware_config.proto\x1a#api/software/bluetooth/config.proto\x1a\x37\x61pi/software/chromeos_config/identity_scan_config.proto\x1a\x1f\x61pi/software/power_config.proto\"\xe5\x03\n\x0eSoftwareConfig\x12?\n\x10\x64\x65sign_config_id\x18\x07 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12i\n\x0eid_scan_config\x18\x08 \x01(\x0b\x32Q.chromiumos.config.api.software.chromeos_config.IdentityScanConfig.DesignConfigId\x12@\n\x08\x66irmware\x18\x03 \x01(\x0b\x32..chromiumos.config.api.software.FirmwareConfig\x12S\n\x10\x62luetooth_config\x18\x04 \x01(\x0b\x32\x39.chromiumos.config.api.software.bluetooth.BluetoothConfig\x12\x41\n\x0cpower_config\x18\x05 \x01(\x0b\x32+.chromiumos.config.api.software.PowerConfig\x12\x41\n\x0c\x61udio_config\x18\x06 \x01(\x0b\x32+.chromiumos.config.api.software.AudioConfigJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03\"S\n\x12SoftwareConfigList\x12=\n\x05value\x18\x01 \x03(\x0b\x32..chromiumos.config.api.software.SoftwareConfigB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
   ,
-  dependencies=[api_dot_design__config__id__pb2.DESCRIPTOR,api_dot_software_dot_software__config__id__pb2.DESCRIPTOR,api_dot_software_dot_audio__config__pb2.DESCRIPTOR,api_dot_software_dot_firmware__config__pb2.DESCRIPTOR,api_dot_software_dot_bluetooth_dot_config__pb2.DESCRIPTOR,api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2.DESCRIPTOR,api_dot_software_dot_power__config__pb2.DESCRIPTOR,])
+  dependencies=[api_dot_design__config__id__pb2.DESCRIPTOR,api_dot_software_dot_audio__config__pb2.DESCRIPTOR,api_dot_software_dot_firmware__config__pb2.DESCRIPTOR,api_dot_software_dot_bluetooth_dot_config__pb2.DESCRIPTOR,api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2.DESCRIPTOR,api_dot_software_dot_power__config__pb2.DESCRIPTOR,])
 
 
 
@@ -82,20 +81,6 @@ _SOFTWARECONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='id', full_name='chromiumos.config.api.software.SoftwareConfig.id', index=6,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='scan_config', full_name='chromiumos.config.api.software.SoftwareConfig.scan_config', index=7,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -108,8 +93,8 @@ _SOFTWARECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=334,
-  serialized_end=983,
+  serialized_start=295,
+  serialized_end=780,
 )
 
 
@@ -139,8 +124,8 @@ _SOFTWARECONFIGLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=985,
-  serialized_end=1068,
+  serialized_start=782,
+  serialized_end=865,
 )
 
 _SOFTWARECONFIG.fields_by_name['design_config_id'].message_type = api_dot_design__config__id__pb2._DESIGNCONFIGID
@@ -149,8 +134,6 @@ _SOFTWARECONFIG.fields_by_name['firmware'].message_type = api_dot_software_dot_f
 _SOFTWARECONFIG.fields_by_name['bluetooth_config'].message_type = api_dot_software_dot_bluetooth_dot_config__pb2._BLUETOOTHCONFIG
 _SOFTWARECONFIG.fields_by_name['power_config'].message_type = api_dot_software_dot_power__config__pb2._POWERCONFIG
 _SOFTWARECONFIG.fields_by_name['audio_config'].message_type = api_dot_software_dot_audio__config__pb2._AUDIOCONFIG
-_SOFTWARECONFIG.fields_by_name['id'].message_type = api_dot_software_dot_software__config__id__pb2._SOFTWARECONFIGID
-_SOFTWARECONFIG.fields_by_name['scan_config'].message_type = api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2._IDENTITYSCANCONFIG_SOFTWARECONFIGID
 _SOFTWARECONFIGLIST.fields_by_name['value'].message_type = _SOFTWARECONFIG
 DESCRIPTOR.message_types_by_name['SoftwareConfig'] = _SOFTWARECONFIG
 DESCRIPTOR.message_types_by_name['SoftwareConfigList'] = _SOFTWARECONFIGLIST
@@ -172,6 +155,4 @@ _sym_db.RegisterMessage(SoftwareConfigList)
 
 
 DESCRIPTOR._options = None
-_SOFTWARECONFIG.fields_by_name['id']._options = None
-_SOFTWARECONFIG.fields_by_name['scan_config']._options = None
 # @@protoc_insertion_point(module_scope)

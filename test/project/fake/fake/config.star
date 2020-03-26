@@ -41,9 +41,6 @@ _HW_DESIGN_CONFIG = design.create_config(
   ),
 )
 
-# TODO(shapiroc): Delete once proto converter migrated off software_config_id
-_HW_DESIGN_CONFIG.software_config_id.value = "Fake:2147483647"
-
 _DESIGN = design.create_design(
     id=_DESIGN_ID,
     program_id=program.fake.id,

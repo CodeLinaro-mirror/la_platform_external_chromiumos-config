@@ -19,58 +19,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software.chromeos_config',
   syntax='proto3',
   serialized_options=_b('ZAgo.chromium.org/chromiumos/config/go/api/software/chromeos_config'),
-  serialized_pb=_b('\n7api/software/chromeos_config/identity_scan_config.proto\x12.chromiumos.config.api.software.chromeos_config\"\xc3\x02\n\x12IdentityScanConfig\x1a\x84\x01\n\x10SoftwareConfigId\x12\x1b\n\x11smbios_name_match\x18\x01 \x01(\tH\x00\x12&\n\x1c\x64\x65vice_tree_compatible_match\x18\x02 \x01(\tH\x00\x12\x14\n\x0c\x66irmware_sku\x18\x03 \x01(\rB\x15\n\x13\x66irmware_name_match\x1a\x82\x01\n\x0e\x44\x65signConfigId\x12\x1b\n\x11smbios_name_match\x18\x01 \x01(\tH\x00\x12&\n\x1c\x64\x65vice_tree_compatible_match\x18\x02 \x01(\tH\x00\x12\x14\n\x0c\x66irmware_sku\x18\x03 \x01(\rB\x15\n\x13\x66irmware_name_match\x1a!\n\x07\x42randId\x12\x16\n\x0ewhitelabel_tag\x18\x01 \x01(\tBCZAgo.chromium.org/chromiumos/config/go/api/software/chromeos_configb\x06proto3')
+  serialized_pb=_b('\n7api/software/chromeos_config/identity_scan_config.proto\x12.chromiumos.config.api.software.chromeos_config\"\xbc\x01\n\x12IdentityScanConfig\x1a\x82\x01\n\x0e\x44\x65signConfigId\x12\x1b\n\x11smbios_name_match\x18\x01 \x01(\tH\x00\x12&\n\x1c\x64\x65vice_tree_compatible_match\x18\x02 \x01(\tH\x00\x12\x14\n\x0c\x66irmware_sku\x18\x03 \x01(\rB\x15\n\x13\x66irmware_name_match\x1a!\n\x07\x42randId\x12\x16\n\x0ewhitelabel_tag\x18\x01 \x01(\tBCZAgo.chromium.org/chromiumos/config/go/api/software/chromeos_configb\x06proto3')
 )
 
 
 
-
-_IDENTITYSCANCONFIG_SOFTWARECONFIGID = _descriptor.Descriptor(
-  name='SoftwareConfigId',
-  full_name='chromiumos.config.api.software.chromeos_config.IdentityScanConfig.SoftwareConfigId',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='smbios_name_match', full_name='chromiumos.config.api.software.chromeos_config.IdentityScanConfig.SoftwareConfigId.smbios_name_match', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='device_tree_compatible_match', full_name='chromiumos.config.api.software.chromeos_config.IdentityScanConfig.SoftwareConfigId.device_tree_compatible_match', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='firmware_sku', full_name='chromiumos.config.api.software.chromeos_config.IdentityScanConfig.SoftwareConfigId.firmware_sku', index=2,
-      number=3, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='firmware_name_match', full_name='chromiumos.config.api.software.chromeos_config.IdentityScanConfig.SoftwareConfigId.firmware_name_match',
-      index=0, containing_type=None, fields=[]),
-  ],
-  serialized_start=131,
-  serialized_end=263,
-)
 
 _IDENTITYSCANCONFIG_DESIGNCONFIGID = _descriptor.Descriptor(
   name='DesignConfigId',
@@ -115,8 +68,8 @@ _IDENTITYSCANCONFIG_DESIGNCONFIGID = _descriptor.Descriptor(
       name='firmware_name_match', full_name='chromiumos.config.api.software.chromeos_config.IdentityScanConfig.DesignConfigId.firmware_name_match',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=266,
-  serialized_end=396,
+  serialized_start=131,
+  serialized_end=261,
 )
 
 _IDENTITYSCANCONFIG_BRANDID = _descriptor.Descriptor(
@@ -145,8 +98,8 @@ _IDENTITYSCANCONFIG_BRANDID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=398,
-  serialized_end=431,
+  serialized_start=263,
+  serialized_end=296,
 )
 
 _IDENTITYSCANCONFIG = _descriptor.Descriptor(
@@ -159,7 +112,7 @@ _IDENTITYSCANCONFIG = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_IDENTITYSCANCONFIG_SOFTWARECONFIGID, _IDENTITYSCANCONFIG_DESIGNCONFIGID, _IDENTITYSCANCONFIG_BRANDID, ],
+  nested_types=[_IDENTITYSCANCONFIG_DESIGNCONFIGID, _IDENTITYSCANCONFIG_BRANDID, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -169,16 +122,9 @@ _IDENTITYSCANCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=108,
-  serialized_end=431,
+  serialized_end=296,
 )
 
-_IDENTITYSCANCONFIG_SOFTWARECONFIGID.containing_type = _IDENTITYSCANCONFIG
-_IDENTITYSCANCONFIG_SOFTWARECONFIGID.oneofs_by_name['firmware_name_match'].fields.append(
-  _IDENTITYSCANCONFIG_SOFTWARECONFIGID.fields_by_name['smbios_name_match'])
-_IDENTITYSCANCONFIG_SOFTWARECONFIGID.fields_by_name['smbios_name_match'].containing_oneof = _IDENTITYSCANCONFIG_SOFTWARECONFIGID.oneofs_by_name['firmware_name_match']
-_IDENTITYSCANCONFIG_SOFTWARECONFIGID.oneofs_by_name['firmware_name_match'].fields.append(
-  _IDENTITYSCANCONFIG_SOFTWARECONFIGID.fields_by_name['device_tree_compatible_match'])
-_IDENTITYSCANCONFIG_SOFTWARECONFIGID.fields_by_name['device_tree_compatible_match'].containing_oneof = _IDENTITYSCANCONFIG_SOFTWARECONFIGID.oneofs_by_name['firmware_name_match']
 _IDENTITYSCANCONFIG_DESIGNCONFIGID.containing_type = _IDENTITYSCANCONFIG
 _IDENTITYSCANCONFIG_DESIGNCONFIGID.oneofs_by_name['firmware_name_match'].fields.append(
   _IDENTITYSCANCONFIG_DESIGNCONFIGID.fields_by_name['smbios_name_match'])
@@ -191,13 +137,6 @@ DESCRIPTOR.message_types_by_name['IdentityScanConfig'] = _IDENTITYSCANCONFIG
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 IdentityScanConfig = _reflection.GeneratedProtocolMessageType('IdentityScanConfig', (_message.Message,), dict(
-
-  SoftwareConfigId = _reflection.GeneratedProtocolMessageType('SoftwareConfigId', (_message.Message,), dict(
-    DESCRIPTOR = _IDENTITYSCANCONFIG_SOFTWARECONFIGID,
-    __module__ = 'api.software.chromeos_config.identity_scan_config_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.chromeos_config.IdentityScanConfig.SoftwareConfigId)
-    ))
-  ,
 
   DesignConfigId = _reflection.GeneratedProtocolMessageType('DesignConfigId', (_message.Message,), dict(
     DESCRIPTOR = _IDENTITYSCANCONFIG_DESIGNCONFIGID,
@@ -217,7 +156,6 @@ IdentityScanConfig = _reflection.GeneratedProtocolMessageType('IdentityScanConfi
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.chromeos_config.IdentityScanConfig)
   ))
 _sym_db.RegisterMessage(IdentityScanConfig)
-_sym_db.RegisterMessage(IdentityScanConfig.SoftwareConfigId)
 _sym_db.RegisterMessage(IdentityScanConfig.DesignConfigId)
 _sym_db.RegisterMessage(IdentityScanConfig.BrandId)
 

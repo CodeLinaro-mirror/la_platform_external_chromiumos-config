@@ -7,7 +7,6 @@ syntax = "proto3";
 package chromiumos.config.api.software;
 
 import "api/design_config_id.proto";
-import "api/software/software_config_id.proto";
 import "api/software/audio_config.proto";
 import "api/software/firmware_config.proto";
 import "api/software/bluetooth/config.proto";
@@ -38,10 +37,7 @@ message SoftwareConfig {
 
   AudioConfig audio_config = 6;
 
-  // TODO(shapiroc): Delete once clients use DesignConfigId
-  SoftwareConfigId id = 1 [deprecated = true];
-  chromeos_config.IdentityScanConfig.SoftwareConfigId scan_config = 2
-      [deprecated = true];
+  reserved 1, 2;
 }
 
 message SoftwareConfigList {

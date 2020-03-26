@@ -7,15 +7,6 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software/chromeos_
 // Defines how devices are probed at runtime to dynamically
 // determine the correct configuration payload.
 message IdentityScanConfig {
-  // TODO(shapiroc): Delete once clients are migrated to DesignConfigId
-  message SoftwareConfigId {
-    oneof firmware_name_match {
-      string smbios_name_match = 1;
-      string device_tree_compatible_match = 2;
-    }
-    uint32 firmware_sku = 3;
-  }
-
   // Scan config to identify a unique DesignConfigId, which determines
   // which SoftwareConfig will be used.
   message DesignConfigId {
