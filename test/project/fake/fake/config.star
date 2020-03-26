@@ -25,10 +25,48 @@ _DESIGN_ID = design.create_design_id(_REF_DESIGN_NAME)
 _BASE_HW_FEATURE = hw_topo.create_base_hw_feature(usbc_count = 1, usba_count = 1)
 _CLAMSHELL = hw_topo.create_form_factor("CLAMSHELL", "Device can only rotate 200 degrees", hw_topo.ff.CLAMSHELL)
 
+_FP = hw_topo.create_fingerprint(
+    id="AA_BB",
+    description="Fingerprint sensor",
+    location=hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT,
+    board="fake-fingerprint-board")
+
+_HW_DESIGN_CONFIG = design.create_config(
+  design_id = _DESIGN_ID,
+  config_id = "1",
+  base_hw_features = _BASE_HW_FEATURE,
+  hardware_topology = hw_topo.create_hardware_topology(
+    form_factor = _CLAMSHELL,
+    fingerprint = _FP,
+  ),
+)
+
+# TODO(shapiroc): Delete once proto converter migrated off software_config_id
+_HW_DESIGN_CONFIG.software_config_id.value = "Fake:2147483647"
+
+_DESIGN = design.create_design(
+    id=_DESIGN_ID,
+    program_id=program.fake.id,
+    odm_id=_FAKE_ODM.id,
+    build_target="fake",
+    configs=[_HW_DESIGN_CONFIG,],
+)
+
+_DEVICE_BRAND = device_brand.create(
+    brand_name = "Fake ChromeOS Device Brandname",
+    design_id = _DESIGN_ID,
+    oem_id = _FAKE_OEM.id,
+    brand_code = 'AAAA',
+)
+
 _AUDIO_CARD = "fakeaudiocard"
 
 _SW_CONFIG = sc.create(
     scan_config=sc.create_x86_identity(
+        smbios_name_match="Fake",
+        fw_sku=0x7fffffff),
+    design_config_id=_HW_DESIGN_CONFIG.id,
+    id_scan_config=sc.create_x86_id_scan(
         smbios_name_match="Fake",
         fw_sku=0x7fffffff),
     audio=sc.create_audio(card_name=_AUDIO_CARD,
@@ -59,38 +97,6 @@ _SW_CONFIG = sc.create(
             'disable_dark_resume': '0',
         }
     )
-)
-
-_FP = hw_topo.create_fingerprint(
-    id="AA_BB",
-    description="Fingerprint sensor",
-    location=hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT,
-    board="fake-fingerprint-board")
-
-_HW_DESIGN_CONFIG = design.create_config(
-  design_id = _DESIGN_ID,
-  config_id = "1",
-  sw_config_id = _SW_CONFIG.id,
-  base_hw_features = _BASE_HW_FEATURE,
-  hardware_topology = hw_topo.create_hardware_topology(
-    form_factor = _CLAMSHELL,
-    fingerprint = _FP,
-  ),
-)
-
-_DESIGN = design.create_design(
-    id=_DESIGN_ID,
-    program_id=program.fake.id,
-    odm_id=_FAKE_ODM.id,
-    build_target="fake",
-    configs=[_HW_DESIGN_CONFIG,],
-)
-
-_DEVICE_BRAND = device_brand.create(
-    brand_name = "Fake ChromeOS Device Brandname",
-    design_id = _DESIGN_ID,
-    oem_id = _FAKE_OEM.id,
-    brand_code = 'AAAA',
 )
 
 _CONFIG = config_bundle_pb.ConfigBundle(

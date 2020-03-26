@@ -42,10 +42,6 @@ message Design {
     // The ID encoded in hardware on a device, typically in CBI.
     DesignConfigId id = 1;
 
-    // Determines what software configuration will be selected from the current
-    // build installed on the device.
-    software.SoftwareConfigId software_config_id = 4;
-
     // Each unique value of hardware_topology requires a unique DesignConfigId
     HardwareTopology hardware_topology = 2;
 
@@ -100,6 +96,10 @@ message Design {
       Level level = 1;
       HardwareFeatures features = 2;
     }
+
+    // TODO(shapiroc): Delete this once clients use
+    // SoftwareConfig.design_config_id instead.
+    software.SoftwareConfigId software_config_id = 4 [deprecated = true];
   }
 }
 
