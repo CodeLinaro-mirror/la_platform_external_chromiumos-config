@@ -6,7 +6,6 @@ syntax = "proto3";
 
 package chromiumos.config.api;
 
-import "api/software/build_target_id.proto";
 import "api/design_config_id.proto";
 import "api/design_id.proto";
 import "api/hardware_topology.proto";
@@ -28,9 +27,6 @@ message Design {
 
   // Design codename (human friendly).
   string name = 4;
-
-  // Specifies which software build will support this design.
-  software.BuildTargetId build_target_id = 7;
 
   // Supported hardware configurations for a given design.
   repeated Config configs = 6;
@@ -96,7 +92,7 @@ message Design {
       HardwareFeatures features = 2;
     }
 
-    reserved 4;
+    reserved 4, 7;
   }
 }
 

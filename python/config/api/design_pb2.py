@@ -12,7 +12,6 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from api.software import build_target_id_pb2 as api_dot_software_dot_build__target__id__pb2
 from api import design_config_id_pb2 as api_dot_design__config__id__pb2
 from api import design_id_pb2 as api_dot_design__id__pb2
 from api import hardware_topology_pb2 as api_dot_hardware__topology__pb2
@@ -26,9 +25,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n\x10\x61pi/design.proto\x12\x15\x63hromiumos.config.api\x1a\"api/software/build_target_id.proto\x1a\x1a\x61pi/design_config_id.proto\x1a\x13\x61pi/design_id.proto\x1a\x1b\x61pi/hardware_topology.proto\x1a\x14\x61pi/partner_id.proto\x1a\x14\x61pi/program_id.proto\x1a\x12\x61pi/topology.proto\"\xcc\x05\n\x06\x44\x65sign\x12+\n\x02id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x34\n\nprogram_id\x18\x02 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x30\n\x06odm_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x46\n\x0f\x62uild_target_id\x18\x07 \x01(\x0b\x32-.chromiumos.config.api.software.BuildTargetId\x12\x35\n\x07\x63onfigs\x18\x06 \x03(\x0b\x32$.chromiumos.config.api.Design.Config\x1a\x9f\x03\n\x06\x43onfig\x12\x31\n\x02id\x18\x01 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\x1a\xd3\x01\n\nConstraint\x12\x44\n\x05level\x18\x01 \x01(\x0e\x32\x35.chromiumos.config.api.Design.Config.Constraint.Level\x12\x39\n\x08\x66\x65\x61tures\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"D\n\x05Level\x12\x10\n\x0cTYPE_UNKNOWN\x10\x00\x12\x0c\n\x08REQUIRED\x10\x01\x12\r\n\tPREFERRED\x10\x02\x12\x0c\n\x08OPTIONAL\x10\x03J\x04\x08\x04\x10\x05\":\n\nDesignList\x12,\n\x05value\x18\x01 \x03(\x0b\x32\x1d.chromiumos.config.api.DesignB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n\x10\x61pi/design.proto\x12\x15\x63hromiumos.config.api\x1a\x1a\x61pi/design_config_id.proto\x1a\x13\x61pi/design_id.proto\x1a\x1b\x61pi/hardware_topology.proto\x1a\x14\x61pi/partner_id.proto\x1a\x14\x61pi/program_id.proto\x1a\x12\x61pi/topology.proto\"\x8a\x05\n\x06\x44\x65sign\x12+\n\x02id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x34\n\nprogram_id\x18\x02 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x30\n\x06odm_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x35\n\x07\x63onfigs\x18\x06 \x03(\x0b\x32$.chromiumos.config.api.Design.Config\x1a\xa5\x03\n\x06\x43onfig\x12\x31\n\x02id\x18\x01 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\x1a\xd3\x01\n\nConstraint\x12\x44\n\x05level\x18\x01 \x01(\x0e\x32\x35.chromiumos.config.api.Design.Config.Constraint.Level\x12\x39\n\x08\x66\x65\x61tures\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"D\n\x05Level\x12\x10\n\x0cTYPE_UNKNOWN\x10\x00\x12\x0c\n\x08REQUIRED\x10\x01\x12\r\n\tPREFERRED\x10\x02\x12\x0c\n\x08OPTIONAL\x10\x03J\x04\x08\x04\x10\x05J\x04\x08\x07\x10\x08\":\n\nDesignList\x12,\n\x05value\x18\x01 \x03(\x0b\x32\x1d.chromiumos.config.api.DesignB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
-  dependencies=[api_dot_software_dot_build__target__id__pb2.DESCRIPTOR,api_dot_design__config__id__pb2.DESCRIPTOR,api_dot_design__id__pb2.DESCRIPTOR,api_dot_hardware__topology__pb2.DESCRIPTOR,api_dot_partner__id__pb2.DESCRIPTOR,api_dot_program__id__pb2.DESCRIPTOR,api_dot_topology__pb2.DESCRIPTOR,])
+  dependencies=[api_dot_design__config__id__pb2.DESCRIPTOR,api_dot_design__id__pb2.DESCRIPTOR,api_dot_hardware__topology__pb2.DESCRIPTOR,api_dot_partner__id__pb2.DESCRIPTOR,api_dot_program__id__pb2.DESCRIPTOR,api_dot_topology__pb2.DESCRIPTOR,])
 
 
 
@@ -57,8 +56,8 @@ _DESIGN_CONFIG_CONSTRAINT_LEVEL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=864,
-  serialized_end=932,
+  serialized_start=756,
+  serialized_end=824,
 )
 _sym_db.RegisterEnumDescriptor(_DESIGN_CONFIG_CONSTRAINT_LEVEL)
 
@@ -97,8 +96,8 @@ _DESIGN_CONFIG_CONSTRAINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=721,
-  serialized_end=932,
+  serialized_start=613,
+  serialized_end=824,
 )
 
 _DESIGN_CONFIG = _descriptor.Descriptor(
@@ -141,8 +140,8 @@ _DESIGN_CONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=523,
-  serialized_end=938,
+  serialized_start=415,
+  serialized_end=836,
 )
 
 _DESIGN = _descriptor.Descriptor(
@@ -181,14 +180,7 @@ _DESIGN = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='build_target_id', full_name='chromiumos.config.api.Design.build_target_id', index=4,
-      number=7, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='configs', full_name='chromiumos.config.api.Design.configs', index=5,
+      name='configs', full_name='chromiumos.config.api.Design.configs', index=4,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -206,8 +198,8 @@ _DESIGN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=222,
-  serialized_end=938,
+  serialized_start=186,
+  serialized_end=836,
 )
 
 
@@ -237,8 +229,8 @@ _DESIGNLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=940,
-  serialized_end=998,
+  serialized_start=838,
+  serialized_end=896,
 )
 
 _DESIGN_CONFIG_CONSTRAINT.fields_by_name['level'].enum_type = _DESIGN_CONFIG_CONSTRAINT_LEVEL
@@ -252,7 +244,6 @@ _DESIGN_CONFIG.containing_type = _DESIGN
 _DESIGN.fields_by_name['id'].message_type = api_dot_design__id__pb2._DESIGNID
 _DESIGN.fields_by_name['program_id'].message_type = api_dot_program__id__pb2._PROGRAMID
 _DESIGN.fields_by_name['odm_id'].message_type = api_dot_partner__id__pb2._PARTNERID
-_DESIGN.fields_by_name['build_target_id'].message_type = api_dot_software_dot_build__target__id__pb2._BUILDTARGETID
 _DESIGN.fields_by_name['configs'].message_type = _DESIGN_CONFIG
 _DESIGNLIST.fields_by_name['value'].message_type = _DESIGN
 DESCRIPTOR.message_types_by_name['Design'] = _DESIGN
