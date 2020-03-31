@@ -27,10 +27,6 @@ _BT_COMPS = [_FAKE_BT_COMP]
 
 _QUALIFIED_COMPS = _SOC_MODELS + _BT_COMPS
 
-_COMPONENTS = comp.create_list(
-    _QUALIFIED_COMPS,
-)
-
 _QUAL_CONSTRAINTS = comp.create_quals(
     [comp.id for comp in _QUALIFIED_COMPS],
     comp.qual_status.QUALIFIED,
@@ -50,6 +46,6 @@ _BUILD_TARGETS = [bt_util.create("fake", "overlay-fake-private")]
 
 program = struct(
     fake = _FAKE,
-    components = _COMPONENTS,
+    components = _QUALIFIED_COMPS,
     build_targets = _BUILD_TARGETS
 )

@@ -5,7 +5,7 @@
 
 import os
 
-from bindings.api import config_bundle_pb2
+from bindings.payload import config_bundle_pb2
 
 
 def read_config(path: str) -> config_bundle_pb2.ConfigBundle:

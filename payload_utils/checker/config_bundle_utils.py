@@ -3,7 +3,7 @@
 # found in the LICENSE file.
 """ConfigBundle-related helper functions."""
 
-from bindings.api import config_bundle_pb2
+from bindings.payload import config_bundle_pb2
 from bindings.api import program_pb2
 
 

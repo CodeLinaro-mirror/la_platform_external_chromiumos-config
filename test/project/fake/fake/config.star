@@ -1,10 +1,6 @@
 #!/usr/bin/env lucicfg
 
-load("//config/util/bindings/proto.star", "protos")
-protos.register()
-
-load("@proto//api/config_bundle.proto", config_bundle_pb = "chromiumos.config.api")
-
+load("//config/util/config_bundle.star", config_bundle = "config_bundle")
 load("//config/util/sw_config.star", sc = "sw_config")
 load("//config/util/brand_config.star", brand_config = "brand_config")
 load("//config/util/design.star", design = "design")
@@ -16,7 +12,7 @@ load("//program_fake/program.star", program = "program")
 _FAKE_ODM = partner.create("FAKE-ODM")
 _FAKE_OEM = partner.create("FAKE-OEM")
 
-_PARTNERS = partner.create_list([_FAKE_ODM, _FAKE_OEM])
+_PARTNERS = [_FAKE_ODM, _FAKE_OEM]
 
 _REF_DESIGN_NAME = "FAKE-REF-DESIGN"
 
@@ -92,10 +88,10 @@ _SW_CONFIG = sc.create(
     )
 )
 
-_CONFIG = config_bundle_pb.ConfigBundle(
+_CONFIG = config_bundle.create(
     partners=_PARTNERS,
-    designs=design.create_design_list([_DESIGN]),
-    device_brands=device_brand.create_list([_DEVICE_BRAND]),
+    designs=[_DESIGN],
+    device_brands=[_DEVICE_BRAND],
     software_configs=[_SW_CONFIG,],
     brand_configs=[
         brand_config.create(device_brand_id=_DEVICE_BRAND.id,

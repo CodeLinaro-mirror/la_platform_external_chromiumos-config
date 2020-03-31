@@ -21,12 +21,10 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Defines a config payload that can be generated from a given config git
-// repo.  Based on the distributed nature of the config, these bundles are then
-// eventually stitched together to drive build config payloads or any
-// infra/analysis related access/processing.
+// TODO(shapiroc): Delete after migrating all clients to
+// payload/config_bundle.proto
+// This resolves the circular deps issue between hw/sw config.
 type ConfigBundle struct {
-	// Chrome OS program and hw design project config
 	Partners             *PartnerList               `protobuf:"bytes,1,opt,name=partners,proto3" json:"partners,omitempty"`
 	Components           *ComponentList             `protobuf:"bytes,2,opt,name=components,proto3" json:"components,omitempty"`
 	Programs             *ProgramList               `protobuf:"bytes,3,opt,name=programs,proto3" json:"programs,omitempty"`

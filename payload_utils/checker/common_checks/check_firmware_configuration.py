@@ -9,7 +9,7 @@ from checker import config_bundle_utils
 from checker import constraint_suite
 from checker import proto_utils
 
-from bindings.api import config_bundle_pb2
+from bindings.payload import config_bundle_pb2
 from bindings.api import topology_pb2
 
 

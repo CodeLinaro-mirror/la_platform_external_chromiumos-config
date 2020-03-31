@@ -4,17 +4,13 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-load("//config/util/bindings/proto.star", "protos")
-protos.register()
-
-load("@proto//api/config_bundle.proto", config_bundle_pb = "chromiumos.config.api")
-
 load("//program.star", program = "program")
+load("//config/util/config_bundle.star", config_bundle = "config_bundle")
 load("//config/util/program.star", program_util = "program")
 
-_CONFIG = config_bundle_pb.ConfigBundle(
+_CONFIG = config_bundle.create(
     components = program.components,
     build_targets = program.build_targets,
-    programs = program_util.create_list([program.fake]),)
+    programs = [program.fake],)
 
 program_util.generate(_CONFIG)

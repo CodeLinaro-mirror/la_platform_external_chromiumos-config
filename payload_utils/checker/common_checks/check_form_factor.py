@@ -8,7 +8,7 @@ from typing import Iterable
 from checker import constraint_suite
 from checker import config_bundle_utils
 
-from bindings.api import config_bundle_pb2
+from bindings.payload import config_bundle_pb2
 from bindings.api import design_pb2
 from bindings.api import program_pb2
 from bindings.api import topology_pb2

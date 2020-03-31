@@ -7,7 +7,7 @@ import unittest
 
 from checker.common_checks.check_form_factor import FormFactorConstraintSuite
 
-from bindings.api.config_bundle_pb2 import ConfigBundle
+from bindings.payload.config_bundle_pb2 import ConfigBundle
 from bindings.api.design_pb2 import Design, DesignList
 from bindings.api.program_pb2 import Program, ProgramList
 from bindings.api.topology_pb2 import HardwareFeatures

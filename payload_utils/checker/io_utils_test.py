@@ -9,7 +9,7 @@ import unittest
 
 from checker import io_utils
 
-from bindings.api.config_bundle_pb2 import ConfigBundle
+from bindings.payload.config_bundle_pb2 import ConfigBundle
 from bindings.api.program_pb2 import ProgramList, Program
 
 

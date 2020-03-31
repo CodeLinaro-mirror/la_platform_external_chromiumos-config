@@ -12,7 +12,7 @@ import sys
 
 from collections import namedtuple
 
-from config.api import config_bundle_pb2
+from config.payload import config_bundle_pb2
 from config.api import device_brand_pb2
 from config.api.software import brand_config_pb2
 
