@@ -45,7 +45,6 @@ _DESIGN = design.create_design(
     id=_DESIGN_ID,
     program_id=program.fake.id,
     odm_id=_FAKE_ODM.id,
-    build_target="fake",
     configs=[_HW_DESIGN_CONFIG,],
 )
 

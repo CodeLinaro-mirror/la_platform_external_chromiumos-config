@@ -1,7 +1,6 @@
 load("//config/util/bindings/proto.star", "protos")
 protos.register()
 
-load("@proto//api/software/build_target_id.proto", bt_id_pb = "chromiumos.config.api.software")
 load("@proto//api/design.proto", design_pb = "chromiumos.config.api")
 load("@proto//api/design_config_id.proto", config_id_pb = "chromiumos.config.api")
 load("@proto//api/design_id.proto", design_id_pb = "chromiumos.config.api")
@@ -38,16 +37,11 @@ def _create_design_id(name):
   return design_id_pb.DesignId(value=name)
 
 
-def _create_design(id, program_id, odm_id,
-                   build_target=None, configs=None):
-  build_target_id = None
-  if build_target:
-    build_target_id = bt_id_pb.BuildTargetId(value=build_target)
+def _create_design(id, program_id, odm_id, configs=None):
   return design_pb.Design(
       id=id,
       program_id=program_id,
       odm_id=odm_id,
-      build_target_id=build_target_id,
       name=id.value,
       configs=configs,
   )
