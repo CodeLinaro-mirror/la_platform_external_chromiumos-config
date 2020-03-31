@@ -25,27 +25,30 @@ set -ex
 # Move to this script's directory.
 cd "$(dirname "$0")"
 
-program="${1}"
-project="${2}"
+readonly program="${1}"
+readonly project="${2}"
 
-project_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
-project_src="../../src/project/${program}/${project}"
+readonly project_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
+readonly project_src="../../src/project/${program}/${project}"
+
+readonly local_manifests_dir="../../.repo/local_manifests"
+readonly symlink="${local_manifests_dir}/${project}.xml"
 
 if [[ -d "${project_src}" ]]; then
-  bail "${project_src} already exists, exiting."
+  # If ${project_src} is already present the user is likely running
+  # a second time when their first run failed. Users would do this
+  # when they found they didn't have adequate permissions on a first
+  # run. In this case we wipe the artifacts from the previous run and
+  # try again.
+  echo "Founding existing ${project_src} checkout, removing."
+  rm -rf "${project_src}"
+  rm -f "${symlink}"
 fi
 
 git clone "${project_url}" "${project_src}"
 
-local_manifests_dir="../../.repo/local_manifests"
-
 if [[ ! -d  "${local_manifests_dir}" ]]; then
   mkdir -p "${local_manifests_dir}"
-fi
-
-symlink="${local_manifests_dir}/${project}.xml"
-if [[ -e "${symlink}" ]]; then
-  bail "${symlink} already exists, exiting."
 fi
 
 local_manifest="${project_src}/local_manifest.xml"
