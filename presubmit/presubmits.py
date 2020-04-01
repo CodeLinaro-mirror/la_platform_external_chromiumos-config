@@ -78,7 +78,7 @@ def CheckGenConfig(input_api, output_api, config_file='config.star'):
     msg = 'Error: gen_config failed. Please fix and try again.'
     results.append(output_api.PresubmitError(msg))
   elif input_api.subprocess.call(['git', 'diff', '--exit-code']):
-    msg = ('Error: Running generate.sh produced a diff. Please '
+    msg = ('Error: Running gen_config produced a diff. Please '
            'run the script, amend your changes, and try again.')
     results.append(output_api.PresubmitError(msg))
 
