@@ -179,7 +179,7 @@ def _BuildAudio(config):
         audio.card_config_file, '%s/%s/%s' % (cras_path, project_name, card)))
   if audio.dsp_file:
     files.append(
-        _File(audio.ucm_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
+        _File(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
   return {
       'main': {
           'cras-config-dir': project_name,

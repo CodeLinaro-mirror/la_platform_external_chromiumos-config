@@ -7,7 +7,7 @@ load("//config/util/design.star", design = "design")
 load("//config/util/device_brand.star", device_brand = "device_brand")
 load("//config/util/hw_topology.star", hw_topo = "hw_topo")
 load("//config/util/partner.star", partner = "partner")
-load("//program_fake/program.star", program = "program")
+load("//program/program.star", program = "program")
 
 _FAKE_ODM = partner.create("FAKE-ODM")
 _FAKE_OEM = partner.create("FAKE-OEM")
