@@ -55,7 +55,8 @@ class MainTest(unittest.TestCase):
           ['diff', expected_file, output_file]).returncode != 0
 
       regen_cmd = ('To regenerate the expected output, run:\n'
-                   '\tpython3 -m cros_config_host.cros_config_proto_converter '
+                   '\tcd payload_utils && '
+                   'python3 -m cros_config_proto_converter '
                    '-c %s '
                    '-p %s '
                    '-o %s ' % (
