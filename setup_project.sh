@@ -11,11 +11,14 @@ function bail() {
 }
 
 function usage() {
-  echo "Usage: $0 <program> <project>" >&2
+  echo "Usage: $0 <program> [<project>]" >&2
+  echo "  for setups with a single repo for the program with" >&2
+  echo "  projects in subdirectories, only the program argument" >&2
+  echo "  is provided." >&2
   exit 1
 }
 
-if [[ $# -ne 2 ]]; then
+if [[ $# -eq 0  ]] || [[ $# -gt 2 ]]; then
   usage
 fi
 
@@ -26,32 +29,39 @@ set -ex
 cd "$(dirname "$0")"
 
 readonly program="${1}"
+# Will be empty if this is a single program repository project.
 readonly project="${2}"
 
-readonly project_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
-readonly project_src="../../src/project/${program}/${project}"
-
 readonly local_manifests_dir="../../.repo/local_manifests"
-readonly symlink="${local_manifests_dir}/${project}.xml"
 
-if [[ -d "${project_src}" ]]; then
-  # If ${project_src} is already present the user is likely running
+if [[ -z "${project}" ]]; then
+  readonly clone_url="https://chrome-internal.googlesource.com/chromeos/program/${program}"
+  readonly clone_src="../../src/program/${program}"
+  readonly symlink="${local_manifests_dir}/${program}.xml"
+else
+  readonly clone_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
+  readonly clone_src="../../src/project/${program}/${project}"
+  readonly symlink="${local_manifests_dir}/${project}.xml"
+fi
+
+if [[ -d "${clone_src}" ]]; then
+  # If ${clone_src} is already present the user is likely running
   # a second time when their first run failed. Users would do this
   # when they found they didn't have adequate permissions on a first
   # run. In this case we wipe the artifacts from the previous run and
   # try again.
-  echo "Founding existing ${project_src} checkout, removing."
-  rm -rf "${project_src}"
+  echo "Founding existing ${clone_src} checkout, removing."
+  rm -rf "${clone_src}"
   rm -f "${symlink}"
 fi
 
-git clone "${project_url}" "${project_src}"
+git clone "${clone_url}" "${clone_src}"
 
 if [[ ! -d  "${local_manifests_dir}" ]]; then
   mkdir -p "${local_manifests_dir}"
 fi
 
-local_manifest="${project_src}/local_manifest.xml"
+local_manifest="${clone_src}/local_manifest.xml"
 if [[ ! -e "${local_manifest}" ]]; then
   bail "Expected local manifest ${local_manifest} does not exist, exiting."
 fi

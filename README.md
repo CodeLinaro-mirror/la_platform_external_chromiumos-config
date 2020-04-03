@@ -1,5 +1,13 @@
 # Project Setup for Partners
 
+Note: There are two different types of configurations for partners. It is
+important to know which type you are working with. One type of configuration
+places the program and projects in separate repositories. The second type of
+configuration places the program and projects in a single repository. This
+difference results in slight differences in how you work with these types of
+configurations and where you find key files and execute commands. The
+instructions below attempt to make this distinction clear.
+
 1. Before beginning verify that you have appropriate permissions to work with
    the project. This will usually mean having membership in the partner domain
    account that is configured for your project. Inquire with your local
@@ -11,12 +19,19 @@
    code into a $SOURCE_REPO directory. This step pulls down a lot of code and
    could take up to an hour.
 1. Verify the name of your $PROGRAM and $PROJECT with your local representative
-   or Google contact. These values will be used in the command below.
+   or Google contact. These values will be used in the command below. For single
+   repository configurations with projects directly in the program's
+   subdirectories you will only get the $PROGRAM. Example commands for both
+   separate repo and single repo variants will be shown below.
 1. Run the following command to sync your $PROGRAM and $PROJECT from within your
    chromiumos checkout in the $SOURCE_REPO/src/config directory:
 
    ```
+   # For separate $PROGRAM $PROJECT repo configurations:
    ./setup_project.sh $PROGRAM $PROJECT
+
+   # For single $PROGRAM repo configurations:
+   ./setup_project.sh $PROGRAM
    ```
 
    This command will execute a number of steps including checking out your
@@ -63,22 +78,32 @@ gen_config script (added to the PATH above). An example session updating
 project configuration follows:
 
 ```
+# For separate $PROGRAM $PROJECT repo configurations:
 cd $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/
+$EDITOR config.star
+# Adjust contents of config.star and save.
+gen_config config.star
+
+# For single $PROGRAM repo configurations:
+cd $SOURCE_REPO/src/program/$PROGRAM/${project subdir}
 $EDITOR config.star
 # Adjust contents of config.star and save.
 gen_config config.star
 ```
 
-This will cause the generation of configuration payloads that can be found
-at:
+For separate $PROGRAM $PROJECT repo configurations this will cause the
+generation of payloads that can be found at:
+
 
 *   $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/config.binaryproto
 *   $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/config.cfg
+*   $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/project/project-config.json
 
-These files represent the same configuration, one is in binary format and
-is used in production. The binary format is more flexible and allows easier
-evolution of the schema. The second is in text format. The text format is
-intended to allow the user to easily eyeball the effects of changes.
+For single $PROGRAM repo configurations those payloads will be found at:
+
+*   $SOURCE_REPO/src/program/$PROGRAM/${project subdir}/generated/config.binaryproto
+*   $SOURCE_REPO/src/program/$PROGRAM/${project subdir}/generated/config.cfg
+*   $SOURCE_REPO/src/program/$PROGRAM/${project subdir}/generated/project/project-config.json
 
 To submit the changes the user first commits the files and then submits
 them to commit queue (CQ):
