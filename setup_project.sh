@@ -55,7 +55,13 @@ if [[ -d "${clone_src}" ]]; then
   rm -f "${symlink}"
 fi
 
+# We only need the local_manifest.xml but have to clone to get it.
+# Removing the rest of what we clone before we do the sync prevents
+# a confusing error message from being shown to the user. The
+# --force-sync below actually causes it to not be a problem, but we'd
+# rather avoid the user having to interpret the error.
 git clone "${clone_url}" "${clone_src}"
+find "${clone_src}" -mindepth 1 ! -name local_manifest.xml -exec rm -rf {} +
 
 if [[ ! -d  "${local_manifests_dir}" ]]; then
   mkdir -p "${local_manifests_dir}"
