@@ -28,4 +28,7 @@ message AudioConfig {
 
   // Path to the UCM master file (e.g. <sound card name>.conf).
   string ucm_master_file = 5;
+
+  // UCM suffix, if any.
+  string ucm_suffix = 6;
 }

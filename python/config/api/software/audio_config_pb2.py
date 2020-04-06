@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n\x1f\x61pi/software/audio_config.proto\x12\x1e\x63hromiumos.config.api.software\"w\n\x0b\x41udioConfig\x12\x11\n\tcard_name\x18\x01 \x01(\t\x12\x18\n\x10\x63\x61rd_config_file\x18\x02 \x01(\t\x12\x10\n\x08\x64sp_file\x18\x03 \x01(\t\x12\x10\n\x08ucm_file\x18\x04 \x01(\t\x12\x17\n\x0fucm_master_file\x18\x05 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n\x1f\x61pi/software/audio_config.proto\x12\x1e\x63hromiumos.config.api.software\"\x8b\x01\n\x0b\x41udioConfig\x12\x11\n\tcard_name\x18\x01 \x01(\t\x12\x18\n\x10\x63\x61rd_config_file\x18\x02 \x01(\t\x12\x10\n\x08\x64sp_file\x18\x03 \x01(\t\x12\x10\n\x08ucm_file\x18\x04 \x01(\t\x12\x17\n\x0fucm_master_file\x18\x05 \x01(\t\x12\x12\n\nucm_suffix\x18\x06 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
 )
 
 
@@ -67,6 +67,13 @@ _AUDIOCONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ucm_suffix', full_name='chromiumos.config.api.software.AudioConfig.ucm_suffix', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -79,8 +86,8 @@ _AUDIOCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=67,
-  serialized_end=186,
+  serialized_start=68,
+  serialized_end=207,
 )
 
 DESCRIPTOR.message_types_by_name['AudioConfig'] = _AUDIOCONFIG

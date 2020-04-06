@@ -174,24 +174,35 @@ def _BuildAudio(config):
     return {}
   audio = config.sw_config.audio_config
   card = audio.card_name
+  card_with_suffix = audio.card_name
+  if audio.ucm_suffix:
+    card_with_suffix += '.' + audio.ucm_suffix
   files = []
   if audio.ucm_file:
-    files.append(_File(audio.ucm_file, '%s/%s/HiFi.conf' % (alsa_path, card)))
+    files.append(_File(
+        audio.ucm_file,
+        '%s/%s/HiFi.conf' % (alsa_path, card_with_suffix)))
   if audio.ucm_master_file:
     files.append(_File(
-        audio.ucm_master_file, '%s/%s/%s.conf' % (alsa_path, card, card)))
+        audio.ucm_master_file,
+        '%s/%s/%s.conf' % (alsa_path, card_with_suffix, card_with_suffix)))
   if audio.card_config_file:
     files.append(_File(
         audio.card_config_file, '%s/%s/%s' % (cras_path, project_name, card)))
   if audio.dsp_file:
     files.append(
         _File(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
-  return {
+
+  result = {
       'main': {
           'cras-config-dir': project_name,
           'files': files,
       }
   }
+  if audio.ucm_suffix:
+    result['main']['ucm_suffix'] = audio.ucm_suffix
+
+  return result
 
 
 def _BuildIdentity(hw_scan_config, program, brand_scan_config=None):

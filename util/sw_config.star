@@ -63,7 +63,8 @@ def _create_audio(
         card_config_file = None,
         dsp_file = None,
         ucm_file = None,
-        ucm_master_file = None):
+        ucm_master_file = None,
+        ucm_suffix = None):
     """Builds an AudioConfig proto."""
     return audio_pb.AudioConfig(
         card_name = card_name,
@@ -71,6 +72,7 @@ def _create_audio(
         dsp_file = dsp_file,
         ucm_file = ucm_file,
         ucm_master_file = ucm_master_file,
+        ucm_suffix = ucm_suffix,
     )
 
 def _create_power(preferences):

@@ -89,11 +89,11 @@
             "cras-config-dir": "fake-ref-design",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/HiFi.conf",
                 "source": "audio/fakeaudiocard/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/fakeaudiocard.2mic.conf",
                 "source": "audio/fakeaudiocard/fakeaudiocard.conf"
               },
               {
@@ -104,7 +104,8 @@
                 "destination": "/etc/cras/fake-ref-design/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               }
-            ]
+            ],
+            "ucm_suffix": "2mic"
           }
         },
         "brand-code": "AAAA",

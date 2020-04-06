@@ -130,6 +130,7 @@ _SW_CONFIG_2 = sc.create(
         dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
         ucm_file = "audio/%s/HiFi.conf" % _AUDIO_CARD,
         ucm_master_file = "audio/%s/%s.conf" % (_AUDIO_CARD, _AUDIO_CARD),
+        ucm_suffix = "2mic",
     ),
     firmware = sc.create_fw_config(
         ro = sc.create_fw_payload(
