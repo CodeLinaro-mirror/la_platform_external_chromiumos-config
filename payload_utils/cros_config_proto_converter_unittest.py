@@ -16,6 +16,11 @@ import cros_config_proto_converter
 
 from config.test import fake_config
 
+from config.api.software.build_target_pb2 import BuildTarget
+from config.api.software.firmware_config_pb2 import (FirmwareConfig,
+                                                     FirmwarePayload)
+from config.api.software.software_config_pb2 import SoftwareConfig
+
 
 THIS_DIR = os.path.dirname(__file__)
 
@@ -114,6 +119,34 @@ class TransformBuildConfigsTest(unittest.TestCase):
 
     with self.assertRaisesRegex(Exception, 'Multiple software configs'):
       cros_config_proto_converter._TransformBuildConfigs(duplicate_config)
+
+  def testBuildFirmwareNoImages(self):
+    """Tests that when no firmware images are provided, 'no-firmware' is True.
+    """
+    config = cros_config_proto_converter.Config(
+        program=None,
+        hw_design=None,
+        odm=None,
+        hw_design_config=None,
+        device_brand=None,
+        oem=None,
+        sw_config=SoftwareConfig(
+            firmware=FirmwareConfig(
+                main_ro_payload=FirmwarePayload(
+                    build_target_name='testproject'))),
+        brand_config=None,
+        build_target=BuildTarget(overlay_name='testproject'),
+    )
+
+    self.assertDictEqual(
+        cros_config_proto_converter._BuildFirmware(config), {
+            'bcs-overlay': 'testproject',
+            'build-targets': {
+                'depthcharge': 'testproject',
+                'coreboot': 'testproject'
+            },
+            'no-firmware': True
+        })
 
 
 if __name__ == '__main__':

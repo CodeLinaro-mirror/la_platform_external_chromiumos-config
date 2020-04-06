@@ -139,7 +139,7 @@ def _BuildFirmware(config):
       ec_ro.firmware_image_name,
       pd_ro.firmware_image_name,
   )):
-    result['no-firmware']: True
+    result['no-firmware'] = True
 
   _Set(_FwBcsPath(main_ro), result, 'main-ro-image')
   _Set(_FwBcsPath(main_rw), result, 'main-rw-image')
