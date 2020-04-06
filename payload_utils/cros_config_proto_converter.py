@@ -107,10 +107,6 @@ def _FwBuildTarget(payload):
 
 
 def _BuildFirmware(config):
-  if not config.sw_config.firmware:
-    return {
-        'no-firmware': True,
-    }
   fw = config.sw_config.firmware
   main_ro = fw.main_ro_payload
   main_rw = fw.main_rw_payload
@@ -133,12 +129,22 @@ def _BuildFirmware(config):
   result = {
       'bcs-overlay': config.build_target.overlay_name,
       'build-targets': build_targets,
-      'image-name': main_ro.firmware_image_name.lower(),
   }
-  _Set(_FwBcsPath(fw.main_ro_payload), result, 'main-ro-image')
-  _Set(_FwBcsPath(fw.main_rw_payload), result, 'main-rw-image')
-  _Set(_FwBcsPath(fw.ec_ro_payload), result, 'ec-ro-image')
-  _Set(_FwBcsPath(fw.pd_ro_payload), result, 'pd-ro-image')
+
+  _Set(main_ro.firmware_image_name.lower(), result, 'image-name')
+
+  if not any((
+      main_ro.firmware_image_name,
+      main_rw.firmware_image_name,
+      ec_ro.firmware_image_name,
+      pd_ro.firmware_image_name,
+  )):
+    result['no-firmware']: True
+
+  _Set(_FwBcsPath(main_ro), result, 'main-ro-image')
+  _Set(_FwBcsPath(main_rw), result, 'main-rw-image')
+  _Set(_FwBcsPath(ec_ro), result, 'ec-ro-image')
+  _Set(_FwBcsPath(pd_ro), result, 'pd-ro-image')
 
   return result
 
