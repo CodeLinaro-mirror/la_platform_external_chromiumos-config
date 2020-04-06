@@ -82,7 +82,7 @@ def _BuildArc(config):
 
 
 def _BuildFingerprint(hw_topology):
-  if hw_topology.fingerprint:
+  if hw_topology.HasField('fingerprint'):
     fp = hw_topology.fingerprint.hardware_feature.fingerprint
     location = fp.Location.DESCRIPTOR.values_by_number[fp.location].name
     result = {
