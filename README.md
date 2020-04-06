@@ -105,7 +105,22 @@ For single $PROGRAM repo configurations those payloads will be found at:
 *   $SOURCE_REPO/src/program/$PROGRAM/${project subdir}/generated/config.cfg
 *   $SOURCE_REPO/src/program/$PROGRAM/${project subdir}/generated/project/project-config.json
 
-To submit the changes the user first commits the files and then submits
+Before uploading the changes for review you should check to see if your
+changes pass constraint checks. You can do that by running the check_config
+script from within your project's root directory:
+
+```
+# For separate $PROGRAM $PROJECT repo configurations:
+cd $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/
+check_config
+
+# For single $PROGRAM repo configurations:
+cd $SOURCE_REPO/src/program/$PROGRAM/${project subdir}
+check_config
+```
+
+If your changes pass the contraint checks you are ready to submit your
+CL. To submit the changes the user first commits the files and then submits
 them to commit queue (CQ):
 
 ```

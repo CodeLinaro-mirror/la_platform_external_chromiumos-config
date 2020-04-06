@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Used to run the constrain checks on project configuration. Assumes that
+# it is running in a project directory where the program constraints:
+#   ./program/generated/config.binaryproto
+# and project configuration:
+#   ./generated/config.binaryproto
+# can be found.
+
+# Exit if any command fails.
+set -e
+
+function usage() {
+  echo "Usage: $0" >&2
+  echo "  where you are assumed to be in a project's root directory and" >&2
+  echo "  and program and project config are in the standard locations," >&2
+  echo "  that is:" >&2
+  echo "    ./program/generated/config.binaryproto" >&2
+  echo "    ./generated/config.binaryproto" >&2
+  exit 1
+}
+
+if [[ $# -ne 0  ]]; then
+  usage
+fi
+
+# Create and activate venv.
+/usr/bin/python3 -m venv .venv
+source .venv/bin/activate
+
+# Install requirements.
+pip install -r config/requirements.txt -q
+
+if ! ./config/payload_utils/checker.py \
+  --program ./program/generated/config.binaryproto \
+  --project ./generated/config.binaryproto; then
+  echo 'checker.py constraint checks failed'
+  exit 1
+fi
+
+deactivate
