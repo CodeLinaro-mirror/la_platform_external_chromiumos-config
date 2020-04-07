@@ -63,7 +63,7 @@
           "signature-id": "fake-ref-design"
         },
         "identity": {
-          "platform-name": "Fake",
+          "platform-name": "FAKE_PROGRAM",
           "sku-id": 2147483647,
           "smbios-name-match": "Fake"
         },
@@ -135,7 +135,7 @@
           "signature-id": "fake-ref-design"
         },
         "identity": {
-          "platform-name": "Fake",
+          "platform-name": "FAKE_PROGRAM",
           "sku-id": 2,
           "smbios-name-match": "Fake"
         },

@@ -194,12 +194,13 @@ def _BuildAudio(config):
   }
 
 
-def _BuildIdentity(hw_scan_config, brand_scan_config=None):
+def _BuildIdentity(hw_scan_config, program, brand_scan_config=None):
   identity = {}
   _Set(hw_scan_config.firmware_sku, identity, 'sku-id')
   _Set(hw_scan_config.smbios_name_match, identity, 'smbios-name-match')
-  # Platform name is a redundant relic of mosys
-  _Set(hw_scan_config.smbios_name_match, identity, 'platform-name')
+  # 'platform-name' is needed to support 'mosys platform name'. Clients should
+  # longer require platform name, but set it here for backwards compatibility.
+  _Set(program.name, identity, 'platform-name')
   # ARM architecture
   _Set(hw_scan_config.device_tree_compatible_match, identity,
        'device-tree-compatible-match')
@@ -295,6 +296,7 @@ def _TransformBuildConfig(config):
   result = {
       'identity': _BuildIdentity(
           config.sw_config.id_scan_config,
+          config.program,
           config.brand_config.scan_config),
       'name': config.hw_design.name.lower(),
   }
