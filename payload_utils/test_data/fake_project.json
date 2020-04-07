@@ -9,7 +9,7 @@
             "marketing-name": "Fake ChromeOS Device Brandname",
             "metrics-tag": "fake-ref-design",
             "oem": "FAKE-OEM",
-            "product": "fake-ref-design"
+            "product": "fake"
           }
         },
         "audio": {
@@ -81,7 +81,7 @@
             "marketing-name": "Fake ChromeOS Device Brandname",
             "metrics-tag": "fake-ref-design",
             "oem": "FAKE-OEM",
-            "product": "fake-ref-design"
+            "product": "fake"
           }
         },
         "audio": {

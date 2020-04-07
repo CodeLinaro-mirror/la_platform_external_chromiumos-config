@@ -72,7 +72,7 @@ def _BuildArc(config):
         'first-api-level': config.build_target.arc.first_api_level,
         'marketing-name': config.device_brand.brand_name,
         'metrics-tag': config.hw_design.name.lower(),
-        'product': config.hw_design.name.lower(),
+        'product': config.build_target.id.value,
     }
     if config.oem:
       build_properties['oem'] = config.oem.name
