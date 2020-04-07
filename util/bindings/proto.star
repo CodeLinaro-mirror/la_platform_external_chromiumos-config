@@ -1,6 +1,6 @@
-# Loads proto descriptors, including imports, of this repo into
-# lucicfg proto registry, so protos can be imported as
-# load("@proto//...").
+"""Loads proto descriptors, including imports, of this repo into lucicfg proto
+registry, so protos can be imported as load("@proto//...").
+"""
 
 lucicfg.check_version("1.8.6", "Please update depot_tools")
 

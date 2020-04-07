@@ -13,10 +13,10 @@ load("//config/util/program.star", program_util = "program")
 load("//config/util/build_target.star", bt_util = "build_target")
 
 _FAKE_SOC = comp.create_soc_model(
-    family=comp.create_soc_family(name="FAKE_FAMILY"),
-    model="FAKE_MODEL",
-    cores=2,
-    id="FAKE_MODEL_2",
+    family = comp.create_soc_family(name = "FAKE_FAMILY"),
+    model = "FAKE_MODEL",
+    cores = 2,
+    id = "FAKE_MODEL_2",
 )
 
 _SOC_MODELS = [_FAKE_SOC]
@@ -47,5 +47,5 @@ _BUILD_TARGETS = [bt_util.create("fake", "overlay-fake-private")]
 program = struct(
     fake = _FAKE,
     components = _QUALIFIED_COMPS,
-    build_targets = _BUILD_TARGETS
+    build_targets = _BUILD_TARGETS,
 )

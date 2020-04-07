@@ -1,15 +1,22 @@
-load("//config/util/bindings/proto.star", "protos")
-protos.register()
+"""Functions related to partner configs.
+
+See proto definitions for descriptions of arguments.
+"""
 
 load("@proto//api/partner.proto", partner_pb = "chromiumos.config.api")
 load("@proto//api/partner_id.proto", partner_id_pb = "chromiumos.config.api")
+load("//config/util/bindings/proto.star", "protos")
+
+protos.register()
 
 def _create(name):
-  partner_id  = partner_id_pb.PartnerId(value = name)
-  return partner_pb.Partner(id = partner_id, name=name)
+    """Builds a Partner proto."""
+    partner_id = partner_id_pb.PartnerId(value = name)
+    return partner_pb.Partner(id = partner_id, name = name)
 
 def _create_list(partners):
-  return partner_pb.PartnerList(value=partners)
+    """Builds a PartnerList proto."""
+    return partner_pb.PartnerList(value = partners)
 
 partner = struct(
     create = _create,

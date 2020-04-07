@@ -1,12 +1,15 @@
-load("//config/util/bindings/proto.star", "protos")
-protos.register()
+"""Functions related to designs.
+
+See proto definitions for descriptions of arguments.
+"""
 
 load("@proto//api/design.proto", design_pb = "chromiumos.config.api")
-load("@proto//api/design_config_id.proto", config_id_pb = "chromiumos.config.api")
 load("@proto//api/design_id.proto", design_id_pb = "chromiumos.config.api")
+load("//config/util/generate.star", "generate")
+load("//config/util/hw_topology.star", "hw_topo")
+load("//config/util/bindings/proto.star", "protos")
 
-load("//config/util/generate.star", generate = "generate")
-load("//config/util/hw_topology.star", hw_topo = "hw_topo")
+protos.register()
 
 _CONSTRAINT = struct(
     REQUIRED = design_pb.Design.Config.Constraint.REQUIRED,
@@ -15,39 +18,48 @@ _CONSTRAINT = struct(
 )
 
 def _create_constraint(hw_features, level = _CONSTRAINT.REQUIRED):
-  return design_pb.Design.Config.Constraint(level=level, features=hw_features,)
+    """Builds a Design.Config.Constraint proto."""
+    return design_pb.Design.Config.Constraint(level = level, features = hw_features)
 
 def _create_constraints(hw_features, level = _CONSTRAINT.REQUIRED):
-  return [design_pb.Design.Config.Constraint(
-      level=level, features=hw_feature) for hw_feature in hw_features]
+    """Builds a Design.Config.Constrain proto for each of hw_features."""
+    return [design_pb.Design.Config.Constraint(
+        level = level,
+        features = hw_feature,
+    ) for hw_feature in hw_features]
 
-
-def _create_config(design_id,
-                   config_id,
-                   base_hw_features=None,
-                   hardware_topology=None):
-  result = design_pb.Design.Config()
-  result.id.value = "%s:%s" % (design_id.value, config_id)
-  result.hardware_topology = hardware_topology
-  result.hardware_features = hw_topo.convert_to_hw_features(
-    base_hw_features, hardware_topology)
-  return result
+def _create_config(
+        design_id,
+        config_id,
+        base_hw_features = None,
+        hardware_topology = None):
+    """Builds a Design.Config proto."""
+    result = design_pb.Design.Config()
+    result.id.value = "%s:%s" % (design_id.value, config_id)
+    result.hardware_topology = hardware_topology
+    result.hardware_features = hw_topo.convert_to_hw_features(
+        base_hw_features,
+        hardware_topology,
+    )
+    return result
 
 def _create_design_id(name):
-  return design_id_pb.DesignId(value=name)
+    """Builds a DesignId proto."""
+    return design_id_pb.DesignId(value = name)
 
-
-def _create_design(id, program_id, odm_id, configs=None):
-  return design_pb.Design(
-      id=id,
-      program_id=program_id,
-      odm_id=odm_id,
-      name=id.value,
-      configs=configs,
-  )
+def _create_design(id, program_id, odm_id, configs = None):
+    """Builds a Design proto."""
+    return design_pb.Design(
+        id = id,
+        program_id = program_id,
+        odm_id = odm_id,
+        name = id.value,
+        configs = configs,
+    )
 
 def _create_design_list(designs):
-  return design_pb.DesignList(value=designs)
+    """Builds a DesignList proto."""
+    return design_pb.DesignList(value = designs)
 
 design = struct(
     create_constraint = _create_constraint,

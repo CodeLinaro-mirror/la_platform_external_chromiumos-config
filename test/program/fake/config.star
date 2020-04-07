@@ -4,13 +4,14 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-load("//program.star", program = "program")
-load("//config/util/config_bundle.star", config_bundle = "config_bundle")
+load("//program.star", "program")
+load("//config/util/config_bundle.star", "config_bundle")
 load("//config/util/program.star", program_util = "program")
 
 _CONFIG = config_bundle.create(
     components = program.components,
     build_targets = program.build_targets,
-    programs = [program.fake],)
+    programs = [program.fake],
+)
 
 program_util.generate(_CONFIG)
