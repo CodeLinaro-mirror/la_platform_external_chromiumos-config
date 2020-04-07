@@ -170,7 +170,7 @@ def _BuildAudio(config):
   alsa_path = '/usr/share/alsa/ucm'
   cras_path = '/etc/cras'
   project_name = config.hw_design.name.lower()
-  if not config.sw_config.audio_config:
+  if not config.sw_config.HasField('audio_config'):
     return {}
   audio = config.sw_config.audio_config
   card = audio.card_name
