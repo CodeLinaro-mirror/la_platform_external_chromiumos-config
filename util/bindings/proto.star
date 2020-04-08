@@ -13,3 +13,6 @@ protos = proto.new_descriptor_set(
     blob = io.read_file("descpb.bin"),
     deps = [wellknown_descpb],
 )
+
+# We register here so that users don't have to.
+protos.register()

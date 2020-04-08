@@ -4,9 +4,6 @@ See proto definitions for descriptions of arguments.
 """
 
 load("//config/util/bindings/proto.star", "protos")
-
-protos.register()
-
 load("@proto//payload/config_bundle.proto", config_bundle_pb = "chromiumos.config.payload")
 load("//config/util/component.star", "comp")
 load("//config/util/design.star", "design")

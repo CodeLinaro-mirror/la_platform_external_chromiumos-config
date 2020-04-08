@@ -4,9 +4,6 @@ See proto definitions for descriptions of arguments.
 """
 
 load("//config/util/bindings/proto.star", "protos")
-
-protos.register()
-
 load("@proto//api/partner.proto", partner_pb = "chromiumos.config.api")
 load("@proto//api/partner_id.proto", partner_id_pb = "chromiumos.config.api")
 

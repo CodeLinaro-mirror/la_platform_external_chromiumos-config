@@ -3,9 +3,6 @@
 # found in the LICENSE file.
 
 load("//config/util/bindings/proto.star", "protos")
-
-protos.register()
-
 load("//config/util/component.star", "comp")
 load("//config/util/design.star", "design")
 load("//config/util/hw_topology.star", "hw_topo")

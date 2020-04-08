@@ -4,8 +4,6 @@
 
 load("//config/proto/proto.star", "protos")
 
-protos.register()
-
 def _defaults():
     pass  # TODO: generate defaults
 
