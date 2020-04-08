@@ -3,11 +3,12 @@
 See proto definitions for descriptions of arguments.
 """
 
-load("@proto//api/component.proto", comp_pb = "chromiumos.config.api")
-load("@proto//api/component_id.proto", comp_id_pb = "chromiumos.config.api")
 load("//config/util/bindings/proto.star", "protos")
 
 protos.register()
+
+load("@proto//api/component.proto", comp_pb = "chromiumos.config.api")
+load("@proto//api/component_id.proto", comp_id_pb = "chromiumos.config.api")
 
 def _create_soc_family(name, arch = comp_pb.Component.Soc.X86_64):
     """Builds a Component.Soc.Family proto."""

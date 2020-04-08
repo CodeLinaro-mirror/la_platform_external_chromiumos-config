@@ -3,12 +3,13 @@
 See proto definitions for descriptions of arguments.
 """
 
-load("@proto//api/program.proto", program_pb = "chromiumos.config.api")
-load("@proto//api/program_id.proto", program_id_pb = "chromiumos.config.api")
-load("//config/util/generate.star", "generate")
 load("//config/util/bindings/proto.star", "protos")
 
 protos.register()
+
+load("@proto//api/program.proto", program_pb = "chromiumos.config.api")
+load("@proto//api/program_id.proto", program_id_pb = "chromiumos.config.api")
+load("//config/util/generate.star", "generate")
 
 def _create_firmware_configuration_segment(name, mask):
     """Builds a FirmwareConfigurationSegment proto."""
