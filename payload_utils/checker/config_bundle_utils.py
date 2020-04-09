@@ -3,8 +3,8 @@
 # found in the LICENSE file.
 """ConfigBundle-related helper functions."""
 
-from bindings.payload import config_bundle_pb2
-from bindings.api import program_pb2
+from config.payload import config_bundle_pb2
+from config.api import program_pb2
 
 
 def get_program(

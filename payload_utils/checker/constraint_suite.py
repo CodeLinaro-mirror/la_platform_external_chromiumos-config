@@ -6,7 +6,7 @@
 import inspect
 import unittest
 
-from bindings.payload import config_bundle_pb2
+from config.payload import config_bundle_pb2
 
 
 class InvalidConstraintSuiteError(Exception):

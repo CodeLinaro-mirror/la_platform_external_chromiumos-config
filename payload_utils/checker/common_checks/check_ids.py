@@ -5,7 +5,7 @@
 
 from checker import constraint_suite
 
-from bindings.payload import config_bundle_pb2
+from config.payload import config_bundle_pb2
 
 
 class IdConstraintSuite(constraint_suite.ConstraintSuite):

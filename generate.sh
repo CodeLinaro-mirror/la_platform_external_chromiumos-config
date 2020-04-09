@@ -32,9 +32,6 @@ PATH="${cipd_root}:${PATH}"
 # Collect all the protos.
 protos=(proto/**/*.proto)
 
-# TODO(shapiroc): Move payload_utils to use static bindings
-protoc -Iproto --python_out=payload_utils/bindings "${protos[@]}"
-
 protoc -Iproto --descriptor_set_out=util/bindings/descpb.bin \
   --python_out=python/config "${protos[@]}"
 

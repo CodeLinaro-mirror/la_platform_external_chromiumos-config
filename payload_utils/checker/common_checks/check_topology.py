@@ -6,8 +6,8 @@
 from checker import constraint_suite
 from checker import proto_utils
 
-from bindings.payload import config_bundle_pb2
-from bindings.api import topology_pb2
+from config.payload import config_bundle_pb2
+from config.api import topology_pb2
 
 
 class TopologyConstraintSuite(constraint_suite.ConstraintSuite):

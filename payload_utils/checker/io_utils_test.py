@@ -9,8 +9,8 @@ import unittest
 
 from checker import io_utils
 
-from bindings.payload.config_bundle_pb2 import ConfigBundle
-from bindings.api.program_pb2 import ProgramList, Program
+from config.payload.config_bundle_pb2 import ConfigBundle
+from config.api.program_pb2 import ProgramList, Program
 
 
 class IoUtilsTest(unittest.TestCase):

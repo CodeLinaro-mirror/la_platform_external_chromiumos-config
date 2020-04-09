@@ -8,12 +8,12 @@ import unittest
 from checker.common_checks.check_firmware_configuration import (
     FirmwareConfigurationConstraintSuite)
 
-from bindings.payload.config_bundle_pb2 import ConfigBundle
-from bindings.api.design_pb2 import Design, DesignList
-from bindings.api.program_pb2 import (Program, ProgramList,
+from config.payload.config_bundle_pb2 import ConfigBundle
+from config.api.design_pb2 import Design, DesignList
+from config.api.program_pb2 import (Program, ProgramList,
                                       FirmwareConfigurationSegment)
-from bindings.api.hardware_topology_pb2 import HardwareTopology
-from bindings.api.topology_pb2 import HardwareFeatures, Topology
+from config.api.hardware_topology_pb2 import HardwareTopology
+from config.api.topology_pb2 import HardwareFeatures, Topology
 
 # Alias a few nested classes to make creating test objects less verbose
 # pylint: disable=invalid-name

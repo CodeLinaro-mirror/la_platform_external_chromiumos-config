@@ -7,10 +7,10 @@ import unittest
 
 from checker.common_checks.check_form_factor import FormFactorConstraintSuite
 
-from bindings.payload.config_bundle_pb2 import ConfigBundle
-from bindings.api.design_pb2 import Design, DesignList
-from bindings.api.program_pb2 import Program, ProgramList
-from bindings.api.topology_pb2 import HardwareFeatures
+from config.payload.config_bundle_pb2 import ConfigBundle
+from config.api.design_pb2 import Design, DesignList
+from config.api.program_pb2 import Program, ProgramList
+from config.api.topology_pb2 import HardwareFeatures
 
 # Alias a few nested classes to make creating test objects less verbose
 # pylint: disable=invalid-name
