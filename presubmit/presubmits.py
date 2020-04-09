@@ -79,7 +79,12 @@ def CheckGenConfig(input_api, output_api, config_file='config.star'):
     results.append(output_api.PresubmitError(msg))
   elif input_api.subprocess.call(['git', 'diff', '--exit-code']):
     msg = ('Error: Running gen_config produced a diff. Please '
-           'run the script, amend your changes, and try again.')
+           'resync your chromiumos checkout, run the gen_config '
+           'script, amend your changes, and try again. Repos '
+           'needing resyncing could include: '
+           'chromiumos/config, '
+           'chromeos/program/<your program>, '
+           'chromeos/project/<your program>/<your project>')
     results.append(output_api.PresubmitError(msg))
 
   return results
