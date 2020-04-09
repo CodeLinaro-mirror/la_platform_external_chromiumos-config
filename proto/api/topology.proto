@@ -163,10 +163,10 @@ message HardwareFeatures {
   Gyroscope gyroscope = 9;
   message Gyroscope {
     // If lid gyroscope is present on system
-    Present lid_gryoscope = 1;
+    Present lid_gyroscope = 1;
 
-    // If base gryoscope is present on system
-    Present base_gryoscope = 2;
+    // If base gyroscope is present on system
+    Present base_gyroscope = 2;
   }
 
   // Magnetometer properties of system.

@@ -51,6 +51,24 @@ _KB_TYPE = struct(
     DETACHABLE = topo_pb.HardwareFeatures.Keyboard.DETACHABLE,
 )
 
+_STYLUS = struct(
+    NONE = topo_pb.HardwareFeatures.Stylus.NONE,
+    INTERNAL = topo_pb.HardwareFeatures.Stylus.INTERNAL,
+    EXTERNAL = topo_pb.HardwareFeatures.Stylus.EXTERNAL,
+)
+
+def _accumulate_fw_config(existing_fw_config, new_fw_config):
+    if existing_fw_config.mask & new_fw_config.mask:
+        fail("FW_CONFIG masks cannot overlap! 0x%x and 0x%x" %
+            (existing_fw_config.mask, new_fw_config.mask))
+
+    existing_fw_config.value += new_fw_config.value
+    existing_fw_config.mask += new_fw_config.mask
+
+def _accumulate_fw_configs(result_hw_features, fw_configs):
+    for fw_config in fw_configs:
+        _accumulate_fw_config(result_hw_features.fw_config, fw_config)
+
 def _create_design_features(form_factor = _FF.CLAMSHELL):
     """Builds a HardwareFeatures proto with form_factor."""
     return topo_pb.HardwareFeatures(
@@ -70,19 +88,20 @@ def _bool_to_present(value):
     else:
         return topo_pb.HardwareFeatures.NOT_PRESENT
 
-def _convert_to_fw_config(mask, value):
+# TODO(jettrink): move up in refactor CL
+def _make_fw_config(mask, id):
     """Builds a HardwareFeatures.FirmwareConfiguration proto.
 
-    Takes a 32-bit mask for the field and a field value. Shifts the field value
+    Takes a 32-bit mask for the field and an id. Shifts the id
     into the mask region and checks that the value fits within the bit mask.
     """
     lsb_bit_set = (~mask + 1) & mask
-    shifted_value = value * lsb_bit_set
-    if shifted_value & mask != shifted_value:
-        fail("Specified value %d out of range [0, %d]" % (value, mask // lsb_bit_set))
+    shifted_id = id * lsb_bit_set
+    if shifted_id & mask != shifted_id:
+        fail("Specified id %d out of range [0, %d]" % (id, mask // lsb_bit_set))
 
     return topo_pb.HardwareFeatures.FirmwareConfiguration(
-        value = shifted_value,
+        value = shifted_id,
         mask = mask,
     )
 
@@ -100,11 +119,13 @@ def _create_screen(id, description, inches, touch):
         hardware_feature = hw_features,
     )
 
-def _create_form_factor(id, description, form_factor):
+def _create_form_factor(id, description, form_factor, fw_configs = []):
     """Builds a Topology proto for a form factor."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.form_factor.form_factor = form_factor
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -126,9 +147,13 @@ def _create_audio(id, description, codec):
         hardware_feature = hw_features,
     )
 
-def _create_stylus(id, description):
+def _create_stylus(id, description, stylus_type, fw_configs = []):
     """Builds a Topology proto for a stylus."""
     hw_features = topo_pb.HardwareFeatures()
+
+    hw_features.stylus.stylus = stylus_type
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -137,13 +162,15 @@ def _create_stylus(id, description):
         hardware_feature = hw_features,
     )
 
-def _create_keyboard(id, description, backlight, pwr_btn_present, kb_type):
+def _create_keyboard(id, description, backlight, pwr_btn_present, kb_type, fw_configs = []):
     """Builds a Topology proto for a keyboard."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.keyboard.keyboard_type = kb_type
     hw_features.keyboard.backlight = _bool_to_present(backlight)
     hw_features.keyboard.power_button = _bool_to_present(pwr_btn_present)
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -152,11 +179,15 @@ def _create_keyboard(id, description, backlight, pwr_btn_present, kb_type):
         hardware_feature = hw_features,
     )
 
-def _create_thermal(id, description, fw_mask, thermal_id):
+def _create_thermal(id, description, fw_mask = None, thermal_id = None, fw_configs = []):
     """Builds a Topology proto for thermal."""
     hw_features = topo_pb.HardwareFeatures()
 
-    hw_features.fw_config = _convert_to_fw_config(fw_mask, thermal_id)
+    # TODO(jettrink): Remove direct fw_mask and use fw_configs instead
+    if fw_mask or thermal_id:
+        hw_features.fw_config = _make_fw_config(fw_mask, thermal_id)
+    else:
+        _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -191,35 +222,22 @@ def _create_microphone(id, description):
         hardware_feature = hw_features,
     )
 
-def _create_accelerometer(id, description):
-    """Builds a Topology proto for an accelerometer."""
+def _create_sensor(id, description, fw_configs = [], lid_accel_present = None,
+    base_gryo_present = None):
+    """Builds a Topology proto for accelerometer/gyroscrope/magnometer sensors."""
     hw_features = topo_pb.HardwareFeatures()
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    if lid_accel_present:
+        hw_features.accelerometer.lid_accelerometer = _bool_to_present(lid_accel_present)
+
+    if base_gryo_present:
+        hw_features.gyroscope.base_gyroscope = _bool_to_present(base_gryo_present)
 
     return topo_pb.Topology(
         id = id,
-        type = topo_pb.Topology.ACCELEROMETER,
-        description = {"EN": description},
-        hardware_feature = hw_features,
-    )
-
-def _create_gyroscope(id, description):
-    """Builds a Topology proto for a gyroscope."""
-    hw_features = topo_pb.HardwareFeatures()
-
-    return topo_pb.Topology(
-        id = id,
-        type = topo_pb.Topology.GYROSCOPE,
-        description = {"EN": description},
-        hardware_feature = hw_features,
-    )
-
-def _create_magnetometer(id, description):
-    """Builds a Topology proto for a magnetometer."""
-    hw_features = topo_pb.HardwareFeatures()
-
-    return topo_pb.Topology(
-        id = id,
-        type = topo_pb.Topology.MAGNETOMETER,
+        type = topo_pb.Topology.ACCELEROMETER_GYROSCOPE_MAGNETOMETER,
         description = {"EN": description},
         hardware_feature = hw_features,
     )
@@ -250,11 +268,16 @@ def _create_proximity_sensor(id, description):
         hardware_feature = hw_features,
     )
 
-def _create_daughter_board(id, description, fw_mask, db_id, usbc_count = 0, usba_count = 0, lte_support = False, hdmi_support = False):
+def _create_daughter_board(id, description, fw_mask = None, db_id = None, fw_configs = [], usbc_count = 0, usba_count = 0, lte_support = False, hdmi_support = False):
     """Builds a Topology proto for a daughter board."""
     hw_features = topo_pb.HardwareFeatures()
 
-    hw_features.fw_config = _convert_to_fw_config(fw_mask, db_id)
+    # TODO(jettrink): Remove direct fw_mask and use fw_configs instead
+    if fw_mask or db_id:
+        hw_features.fw_config = _make_fw_config(fw_mask, db_id)
+    else:
+        _accumulate_fw_configs(hw_features, fw_configs)
+
     hw_features.usb_c.count.value = usbc_count
     hw_features.usb_a.count.value = usba_count
     hw_features.lte.present = _bool_to_present(lte_support)
@@ -267,11 +290,13 @@ def _create_daughter_board(id, description, fw_mask, db_id, usbc_count = 0, usba
         hardware_feature = hw_features,
     )
 
-def _create_non_volatile_storage(id, description, storage_type):
+def _create_non_volatile_storage(id, description, storage_type, fw_configs = []):
     """Builds a Topology proto for non-volatile storage."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.storage.storage_type = storage_type
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -319,9 +344,11 @@ def _create_lte_board(id, description, lte_present):
         hardware_feature = hw_features,
     )
 
-def _create_sd_reader(id, description):
+def _create_sd_reader(id, description, fw_configs = []):
     """Builds a Topology proto for a SD reader."""
     hw_features = topo_pb.HardwareFeatures()
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -330,14 +357,15 @@ def _create_sd_reader(id, description):
         hardware_feature = hw_features,
     )
 
-def _create_motherboard_usb(id, description, fw_mask = None, mlb_usb_id = None, usbc_count = 0, usba_count = 0):
+def _create_motherboard_usb(id, description, fw_mask = None, mlb_usb_id = None, fw_configs = [], usbc_count = 0, usba_count = 0):
     """Builds a Topology proto for a motherboard."""
     hw_features = topo_pb.HardwareFeatures()
 
-    # Encoding motherboard usb topology into fw_config is optional. There may
-    # only be a single MLB usb topology.
+    # TODO(jettrink): Remove direct fw_mask and use fw_configs instead
     if fw_mask or mlb_usb_id:
-        hw_features.fw_config = _convert_to_fw_config(fw_mask, mlb_usb_id)
+        hw_features.fw_config = _make_fw_config(fw_mask, mlb_usb_id)
+    else:
+        _accumulate_fw_configs(hw_features, fw_configs)
 
     hw_features.usb_c.count.value = usbc_count
     hw_features.usb_a.count.value = usba_count
@@ -449,10 +477,6 @@ def _accumulate_presence(existing_present, new_present):
     else:
         return existing_present
 
-def _accumulate_fw_config(existing_fw_config, new_fw_config):
-    existing_fw_config.value += new_fw_config.value
-    existing_fw_config.mask += new_fw_config.mask
-
 def _convert_to_hw_features(base_hw_features, hardware_topology):
     """Converts a HardwareTopology proto to a HardwareFeatures proto."""
     result = topo_pb.HardwareFeatures()
@@ -464,11 +488,30 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     if copy.screen.hardware_feature.screen != topo_pb.HardwareFeatures.Screen():
         result.screen = copy.screen.hardware_feature.screen
 
+    # Handle all possible sd reader hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.sd_reader.hardware_feature.fw_config)
+
     # Handle all possible form factor hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.form_factor.hardware_feature.fw_config)
+
     if copy.form_factor.hardware_feature.form_factor != topo_pb.HardwareFeatures.FormFactor():
         result.form_factor = copy.form_factor.hardware_feature.form_factor
 
+    # Handle all possible non volatile storage hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.non_volatile_storage.hardware_feature.fw_config)
+
+    if copy.non_volatile_storage.hardware_feature.storage != topo_pb.HardwareFeatures.Storage():
+        result.storage = copy.non_volatile_storage.hardware_feature.storage
+
+    # Handle all possible stylus hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.stylus.hardware_feature.fw_config)
+
+    if copy.stylus.hardware_feature.stylus != topo_pb.HardwareFeatures.Stylus():
+        result.stylus = copy.stylus.hardware_feature.stylus
+
     # Handle all possible keyboard hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.keyboard.hardware_feature.fw_config)
+
     if copy.keyboard.hardware_feature.keyboard != topo_pb.HardwareFeatures.Keyboard():
         result.keyboard = copy.keyboard.hardware_feature.keyboard
 
@@ -519,6 +562,18 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     if copy.motherboard_usb.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
         result.usb_a.count.value += copy.motherboard_usb.hardware_feature.usb_a.count.value
 
+    # Handle all possible sensor attributes
+    _accumulate_fw_config(result.fw_config, copy.accelerometer_gyroscope_magnetometer.hardware_feature.fw_config)
+
+    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.accelerometer != topo_pb.HardwareFeatures.Accelerometer():
+        result.accelerometer = copy.accelerometer_gyroscope_magnetometer.hardware_feature.accelerometer
+
+    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.gyroscope != topo_pb.HardwareFeatures.Gyroscope():
+        result.gyroscope = copy.accelerometer_gyroscope_magnetometer.hardware_feature.gyroscope
+
+    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.magnetometer != topo_pb.HardwareFeatures.Magnetometer():
+        result.magnetometer = copy.accelerometer_gyroscope_magnetometer.hardware_feature.magnetometer
+
     return result
 
 hw_topo = struct(
@@ -532,9 +587,7 @@ hw_topo = struct(
     create_thermal = _create_thermal,
     create_camera = _create_camera,
     create_microphone = _create_microphone,
-    create_accelerometer = _create_accelerometer,
-    create_gyroscope = _create_gyroscope,
-    create_magnetometer = _create_magnetometer,
+    create_sensor = _create_sensor,
     create_fingerprint = _create_fingerprint,
     create_proximity_sensor = _create_proximity_sensor,
     create_daughter_board = _create_daughter_board,
@@ -546,10 +599,12 @@ hw_topo = struct(
     create_motherboard_usb = _create_motherboard_usb,
     create_hardware_topology = _create_hardware_topology,
     convert_to_hw_features = _convert_to_hw_features,
+    make_fw_config = _make_fw_config,
     ff = _FF,
     audio_codec = _AUDIO_CODEC,
     memory = _MEMORY,
     fp_loc = _FP_LOC,
     storage = _STORAGE,
     kb_type = _KB_TYPE,
+    stylus = _STYLUS,
 )
