@@ -4,11 +4,26 @@ See proto definitions for descriptions of arguments.
 """
 
 load("//config/util/bindings/proto.star", "protos")
-load("@proto//api/software/chromeos_config/identity_scan_config.proto", id_scan_pb = "chromiumos.config.api.software.chromeos_config")
-load("@proto//api/software/audio_config.proto", audio_pb = "chromiumos.config.api.software")
-load("@proto//api/software/firmware_config.proto", fw_pb = "chromiumos.config.api.software")
-load("@proto//api/software/power_config.proto", pc_pb = "chromiumos.config.api.software")
-load("@proto//api/software/software_config.proto", sc_pb = "chromiumos.config.api.software")
+load(
+    "@proto//chromiumos/config/api/software/chromeos_config/identity_scan_config.proto",
+    id_scan_pb = "chromiumos.config.api.software.chromeos_config",
+)
+load(
+    "@proto//chromiumos/config/api/software/audio_config.proto",
+    audio_pb = "chromiumos.config.api.software",
+)
+load(
+    "@proto//chromiumos/config/api/software/firmware_config.proto",
+    fw_pb = "chromiumos.config.api.software",
+)
+load(
+    "@proto//chromiumos/config/api/software/power_config.proto",
+    pc_pb = "chromiumos.config.api.software",
+)
+load(
+    "@proto//chromiumos/config/api/software/software_config.proto",
+    sc_pb = "chromiumos.config.api.software",
+)
 
 _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,

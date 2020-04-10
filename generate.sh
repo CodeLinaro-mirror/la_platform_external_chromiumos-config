@@ -33,10 +33,18 @@ PATH="${cipd_root}:${PATH}"
 protos=(proto/**/*.proto)
 
 protoc -Iproto --descriptor_set_out=util/bindings/descpb.bin \
-  --python_out=python/config "${protos[@]}"
+  --python_out=python "${protos[@]}"
 
+
+# Go bindings are already namespaced under go.chromium.org/chromiumos/config/go
+# We remove the "chromiumos/config" prefix from local path to avoid redundant
+# namespaceing.
+readonly GO_TEMP_DIR=$(mktemp -d)
+trap "rm -rf ${GO_TEMP_DIR}" EXIT
 # Go files need to be processed individually until this is fixed:
 # https://github.com/golang/protobuf/issues/39
 for proto in "${protos[@]}"; do
-  protoc -Iproto --go_out=paths=source_relative:go "${proto}"
+  protoc -I"proto" --go_out=paths=source_relative:"${GO_TEMP_DIR}" \
+    "${proto}"
 done
+cp -rf "${GO_TEMP_DIR}"/chromiumos/config/* go/

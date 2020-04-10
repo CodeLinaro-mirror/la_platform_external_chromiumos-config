@@ -4,8 +4,14 @@ See proto definitions for descriptions of arguments.
 """
 
 load("//config/util/bindings/proto.star", "protos")
-load("@proto//api/partner.proto", partner_pb = "chromiumos.config.api")
-load("@proto//api/partner_id.proto", partner_id_pb = "chromiumos.config.api")
+load(
+    "@proto//chromiumos/config/api/partner.proto",
+    partner_pb = "chromiumos.config.api",
+)
+load(
+    "@proto//chromiumos/config/api/partner_id.proto",
+    partner_id_pb = "chromiumos.config.api",
+)
 
 def _create(name):
     """Builds a Partner proto."""

@@ -5,7 +5,7 @@
 
 import os
 
-from config.payload import config_bundle_pb2
+from chromiumos.config.payload import config_bundle_pb2
 
 
 def read_config(path: str) -> config_bundle_pb2.ConfigBundle:

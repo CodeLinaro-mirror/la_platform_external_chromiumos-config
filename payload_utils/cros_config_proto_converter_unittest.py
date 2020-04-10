@@ -13,14 +13,13 @@ import unittest
 
 import cros_config_proto_converter
 
+from chromiumos.config.test import fake_config
 
-from config.test import fake_config
-
-from config.api.software.build_target_pb2 import BuildTarget
-from config.api.design_pb2 import Design
-from config.api.software.firmware_config_pb2 import (FirmwareConfig,
-                                                     FirmwarePayload)
-from config.api.software.software_config_pb2 import SoftwareConfig
+from chromiumos.config.api.software.build_target_pb2 import BuildTarget
+from chromiumos.config.api.design_pb2 import Design
+from chromiumos.config.api.software.firmware_config_pb2 import (
+    FirmwareConfig, FirmwarePayload)
+from chromiumos.config.api.software.software_config_pb2 import SoftwareConfig
 
 
 THIS_DIR = os.path.dirname(__file__)

@@ -4,8 +4,14 @@ See proto definitions for descriptions of arguments.
 """
 
 load("//config/util/bindings/proto.star", "protos")
-load("@proto//api/component.proto", comp_pb = "chromiumos.config.api")
-load("@proto//api/component_id.proto", comp_id_pb = "chromiumos.config.api")
+load(
+    "@proto//chromiumos/config/api/component.proto",
+    comp_pb = "chromiumos.config.api",
+)
+load(
+    "@proto//chromiumos/config/api/component_id.proto",
+    comp_id_pb = "chromiumos.config.api",
+)
 
 def _create_soc_family(name, arch = comp_pb.Component.Soc.X86_64):
     """Builds a Component.Soc.Family proto."""

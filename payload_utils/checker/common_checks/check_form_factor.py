@@ -8,10 +8,10 @@ from typing import Iterable
 from checker import constraint_suite
 from checker import config_bundle_utils
 
-from config.payload import config_bundle_pb2
-from config.api import design_pb2
-from config.api import program_pb2
-from config.api import topology_pb2
+from chromiumos.config.payload import config_bundle_pb2
+from chromiumos.config.api import design_pb2
+from chromiumos.config.api import program_pb2
+from chromiumos.config.api import topology_pb2
 
 
 def get_form_factor_constraints(

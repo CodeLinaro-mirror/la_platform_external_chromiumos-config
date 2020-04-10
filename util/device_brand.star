@@ -4,8 +4,14 @@ See proto definitions for descriptions of arguments.
 """
 
 load("//config/util/bindings/proto.star", "protos")
-load("@proto//api/device_brand.proto", db_pb = "chromiumos.config.api")
-load("@proto//api/device_brand_id.proto", db_id_pb = "chromiumos.config.api")
+load(
+    "@proto//chromiumos/config/api/device_brand.proto",
+    db_pb = "chromiumos.config.api",
+)
+load(
+    "@proto//chromiumos/config/api/device_brand_id.proto",
+    db_id_pb = "chromiumos.config.api",
+)
 
 DEFAULT_BRAND_CODE = "ZZCR"
 

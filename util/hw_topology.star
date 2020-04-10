@@ -4,9 +4,18 @@ See proto definitions for descriptions of arguments.
 """
 
 load("//config/util/bindings/proto.star", "protos")
-load("@proto//api/topology.proto", topo_pb = "chromiumos.config.api")
-load("@proto//api/hardware_topology.proto", hw_topo_pb = "chromiumos.config.api")
-load("@proto//api/component.proto", comp_pb = "chromiumos.config.api")
+load(
+    "@proto//chromiumos/config/api/topology.proto",
+    topo_pb = "chromiumos.config.api",
+)
+load(
+    "@proto//chromiumos/config/api/hardware_topology.proto",
+    hw_topo_pb = "chromiumos.config.api",
+)
+load(
+    "@proto//chromiumos/config/api/component.proto",
+    comp_pb = "chromiumos.config.api",
+)
 
 _FF = struct(
     CLAMSHELL = topo_pb.HardwareFeatures.FormFactor.CLAMSHELL,

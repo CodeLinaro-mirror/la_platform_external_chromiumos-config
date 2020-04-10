@@ -4,8 +4,14 @@ See proto definitions for descriptions of arguments.
 """
 
 load("//config/util/bindings/proto.star", "protos")
-load("@proto//api/design.proto", design_pb = "chromiumos.config.api")
-load("@proto//api/design_id.proto", design_id_pb = "chromiumos.config.api")
+load(
+    "@proto//chromiumos/config/api/design.proto",
+    design_pb = "chromiumos.config.api",
+)
+load(
+    "@proto//chromiumos/config/api/design_id.proto",
+    design_id_pb = "chromiumos.config.api",
+)
 load("//config/util/generate.star", "generate")
 load("//config/util/hw_topology.star", "hw_topo")
 

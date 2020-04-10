@@ -5,9 +5,9 @@
 
 import unittest
 
-from config.payload.config_bundle_pb2 import ConfigBundle
-from config.api.design_pb2 import DesignList, Design
-from config.api.program_pb2 import ProgramList, Program
+from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
+from chromiumos.config.api.design_pb2 import DesignList, Design
+from chromiumos.config.api.program_pb2 import ProgramList, Program
 
 from checker.constraint_suite import (ConstraintSuite,
                                       InvalidConstraintSuiteError)

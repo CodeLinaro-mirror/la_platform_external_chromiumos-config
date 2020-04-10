@@ -7,10 +7,10 @@ import unittest
 
 from checker.common_checks.check_form_factor import FormFactorConstraintSuite
 
-from config.payload.config_bundle_pb2 import ConfigBundle
-from config.api.design_pb2 import Design, DesignList
-from config.api.program_pb2 import Program, ProgramList
-from config.api.topology_pb2 import HardwareFeatures
+from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
+from chromiumos.config.api.design_pb2 import Design, DesignList
+from chromiumos.config.api.program_pb2 import Program, ProgramList
+from chromiumos.config.api.topology_pb2 import HardwareFeatures
 
 # Alias a few nested classes to make creating test objects less verbose
 # pylint: disable=invalid-name

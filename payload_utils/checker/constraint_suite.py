@@ -6,7 +6,7 @@
 import inspect
 import unittest
 
-from config.payload import config_bundle_pb2
+from chromiumos.config.payload import config_bundle_pb2
 
 
 class InvalidConstraintSuiteError(Exception):

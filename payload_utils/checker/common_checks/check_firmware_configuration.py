@@ -9,8 +9,8 @@ from checker import config_bundle_utils
 from checker import constraint_suite
 from checker import proto_utils
 
-from config.payload import config_bundle_pb2
-from config.api import topology_pb2
+from chromiumos.config.payload import config_bundle_pb2
+from chromiumos.config.api import topology_pb2
 
 
 class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):

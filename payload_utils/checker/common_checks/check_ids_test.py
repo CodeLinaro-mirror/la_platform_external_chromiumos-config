@@ -7,10 +7,10 @@ import unittest
 
 from checker.common_checks.check_ids import IdConstraintSuite
 
-from config.payload.config_bundle_pb2 import ConfigBundle
-from config.api.design_pb2 import Design, DesignList
-from config.api.program_pb2 import Program, ProgramList
-from config.api.program_id_pb2 import ProgramId
+from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
+from chromiumos.config.api.design_pb2 import Design, DesignList
+from chromiumos.config.api.program_pb2 import Program, ProgramList
+from chromiumos.config.api.program_id_pb2 import ProgramId
 
 
 class CheckIdsTest(unittest.TestCase):

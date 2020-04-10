@@ -4,16 +4,16 @@
 
 from distutils.core import setup
 
-setup(name='config',
+setup(name='chromiumos',
       version='1.0',
       description='Module to access Config API python proto bindings',
-      packages=['config'],
-      package_data={'config': [
-          'api/*.py',
-          'api/software/*.py',
-          'api/software/**/*.py',
-          'payload/*.py',
-          'test/*.py',
-          'test/fake_program/*',
-          'test/fake_project/*',
+      packages=['chromiumos'],
+      package_data={'chromiumos': [
+          'config/api/*.py',
+          'config/api/software/*.py',
+          'config/api/software/**/*.py',
+          'config/payload/*.py',
+          'config/test/*.py',
+          'config/test/fake_program/*',
+          'config/test/fake_project/*',
       ]},)
