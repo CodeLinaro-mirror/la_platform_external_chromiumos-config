@@ -57,6 +57,22 @@ _STYLUS = struct(
     EXTERNAL = topo_pb.HardwareFeatures.Stylus.EXTERNAL,
 )
 
+def _make_fw_config(mask, id):
+    """Builds a HardwareFeatures.FirmwareConfiguration proto.
+
+    Takes a 32-bit mask for the field and an id. Shifts the id
+    into the mask region and checks that the value fits within the bit mask.
+    """
+    lsb_bit_set = (~mask + 1) & mask
+    shifted_id = id * lsb_bit_set
+    if shifted_id & mask != shifted_id:
+        fail("Specified id %d out of range [0, %d]" % (id, mask // lsb_bit_set))
+
+    return topo_pb.HardwareFeatures.FirmwareConfiguration(
+        value = shifted_id,
+        mask = mask,
+    )
+
 def _accumulate_fw_config(existing_fw_config, new_fw_config):
     if existing_fw_config.mask & new_fw_config.mask:
         fail("FW_CONFIG masks cannot overlap! 0x%x and 0x%x" %
@@ -89,23 +105,6 @@ def _bool_to_present(value):
         return topo_pb.HardwareFeatures.PRESENT
     else:
         return topo_pb.HardwareFeatures.NOT_PRESENT
-
-# TODO(jettrink): move up in refactor CL
-def _make_fw_config(mask, id):
-    """Builds a HardwareFeatures.FirmwareConfiguration proto.
-
-    Takes a 32-bit mask for the field and an id. Shifts the id
-    into the mask region and checks that the value fits within the bit mask.
-    """
-    lsb_bit_set = (~mask + 1) & mask
-    shifted_id = id * lsb_bit_set
-    if shifted_id & mask != shifted_id:
-        fail("Specified id %d out of range [0, %d]" % (id, mask // lsb_bit_set))
-
-    return topo_pb.HardwareFeatures.FirmwareConfiguration(
-        value = shifted_id,
-        mask = mask,
-    )
 
 def _create_screen(id, description, inches, touch, fw_configs = []):
     """Builds a Topology proto for a screen."""
@@ -510,20 +509,17 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     if copy.screen.hardware_feature.screen != topo_pb.HardwareFeatures.Screen():
         result.screen = copy.screen.hardware_feature.screen
 
-    # Handle all possible sd reader hardware features attributes
-    _accumulate_fw_config(result.fw_config, copy.sd_reader.hardware_feature.fw_config)
-
     # Handle all possible form factor hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.form_factor.hardware_feature.fw_config)
 
     if copy.form_factor.hardware_feature.form_factor != topo_pb.HardwareFeatures.FormFactor():
         result.form_factor = copy.form_factor.hardware_feature.form_factor
 
-    # Handle all possible non volatile storage hardware features attributes
-    _accumulate_fw_config(result.fw_config, copy.non_volatile_storage.hardware_feature.fw_config)
+    # Handle all possible audio features attributes
+    _accumulate_fw_config(result.fw_config, copy.audio.hardware_feature.fw_config)
 
-    if copy.non_volatile_storage.hardware_feature.storage != topo_pb.HardwareFeatures.Storage():
-        result.storage = copy.non_volatile_storage.hardware_feature.storage
+    if copy.audio.hardware_feature.audio != topo_pb.HardwareFeatures.Audio():
+        result.audio = copy.audio.hardware_feature.audio
 
     # Handle all possible stylus hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.stylus.hardware_feature.fw_config)
@@ -537,68 +533,14 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     if copy.keyboard.hardware_feature.keyboard != topo_pb.HardwareFeatures.Keyboard():
         result.keyboard = copy.keyboard.hardware_feature.keyboard
 
-    # Handle all possible fingerprint hardware features attributes
-    _accumulate_fw_config(result.fw_config, copy.fingerprint.hardware_feature.fw_config)
-
-    if copy.fingerprint.hardware_feature.fingerprint != topo_pb.HardwareFeatures.Fingerprint():
-        result.fingerprint = copy.fingerprint.hardware_feature.fingerprint
-
-    # Handle all possible proximity sensor hardware features attributes
-    _accumulate_fw_config(result.fw_config, copy.proximity_sensor.hardware_feature.fw_config)
-
-    # Handle all possible audio features attributes
-    _accumulate_fw_config(result.fw_config, copy.audio.hardware_feature.fw_config)
-
-    if copy.audio.hardware_feature.audio != topo_pb.HardwareFeatures.Audio():
-        result.audio = copy.audio.hardware_feature.audio
+    # Handle all possible thermal features attributes
+    _accumulate_fw_config(result.fw_config, copy.thermal.hardware_feature.fw_config)
 
     # Handle all possible camera features attributes
     _accumulate_fw_config(result.fw_config, copy.camera.hardware_feature.fw_config)
 
     if copy.camera.hardware_feature.camera != topo_pb.HardwareFeatures.Camera():
         result.camera = copy.camera.hardware_feature.camera
-
-    # Handle all possible lte board attributes
-    _accumulate_fw_config(result.fw_config, copy.lte_board.hardware_feature.fw_config)
-
-    if copy.lte_board.hardware_feature.lte != topo_pb.HardwareFeatures.Lte():
-        result.lte.present = _accumulate_presence(result.lte.present, copy.lte_board.hardware_feature.lte.present)
-
-    # Handle all possible thermal features attributes
-    _accumulate_fw_config(result.fw_config, copy.thermal.hardware_feature.fw_config)
-
-    # Handle all possible daughter board hardware features attributes
-    _accumulate_fw_config(result.fw_config, copy.daughter_board.hardware_feature.fw_config)
-
-    if copy.daughter_board.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
-        _accumulate_usbc(result.usb_c, copy.daughter_board.hardware_feature.usb_c)
-        
-    if copy.daughter_board.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
-        _accumulate_usba(result.usb_a, copy.daughter_board.hardware_feature.usb_a)
-
-    if copy.daughter_board.hardware_feature.lte != topo_pb.HardwareFeatures.Lte():
-        _accumulate_lte(result.lte, copy.daughter_board.hardware_feature.lte)
-
-    if copy.daughter_board.hardware_feature.hdmi != topo_pb.HardwareFeatures.Hdmi():
-        _accumulate_hdmi(result.hdmi, copy.daughter_board.hardware_feature.hdmi)
-
-    # Handle all possible ram hardware features attributes
-    _accumulate_fw_config(result.fw_config, copy.ram.hardware_feature.fw_config)
-
-    if copy.ram.hardware_feature.memory != topo_pb.HardwareFeatures.Memory():
-        result.memory = copy.ram.hardware_feature.memory
-
-    # Handle all possible wifi hardware features attributes
-    _accumulate_fw_config(result.fw_config, copy.wifi.hardware_feature.fw_config)
-
-    # Handle all possible motherboard usb features attributes
-    _accumulate_fw_config(result.fw_config, copy.motherboard_usb.hardware_feature.fw_config)
-
-    if copy.motherboard_usb.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
-        _accumulate_usbc(result.usb_c, copy.motherboard_usb.hardware_feature.usb_c)
-        
-    if copy.motherboard_usb.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
-        _accumulate_usba(result.usb_a, copy.motherboard_usb.hardware_feature.usb_a)
 
     # Handle all possible sensor attributes
     _accumulate_fw_config(result.fw_config, copy.accelerometer_gyroscope_magnetometer.hardware_feature.fw_config)
@@ -614,6 +556,63 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
 
     if copy.accelerometer_gyroscope_magnetometer.hardware_feature.light_sensor != topo_pb.HardwareFeatures.LightSensor():
         result.light_sensor = copy.accelerometer_gyroscope_magnetometer.hardware_feature.light_sensor
+
+    # Handle all possible fingerprint hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.fingerprint.hardware_feature.fw_config)
+
+    if copy.fingerprint.hardware_feature.fingerprint != topo_pb.HardwareFeatures.Fingerprint():
+        result.fingerprint = copy.fingerprint.hardware_feature.fingerprint
+
+    # Handle all possible proximity sensor hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.proximity_sensor.hardware_feature.fw_config)
+
+    # Handle all possible daughter board hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.daughter_board.hardware_feature.fw_config)
+
+    if copy.daughter_board.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
+        _accumulate_usbc(result.usb_c, copy.daughter_board.hardware_feature.usb_c)
+
+    if copy.daughter_board.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
+        _accumulate_usba(result.usb_a, copy.daughter_board.hardware_feature.usb_a)
+
+    if copy.daughter_board.hardware_feature.lte != topo_pb.HardwareFeatures.Lte():
+        _accumulate_lte(result.lte, copy.daughter_board.hardware_feature.lte)
+
+    if copy.daughter_board.hardware_feature.hdmi != topo_pb.HardwareFeatures.Hdmi():
+        _accumulate_hdmi(result.hdmi, copy.daughter_board.hardware_feature.hdmi)
+
+    # Handle all possible non volatile storage hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.non_volatile_storage.hardware_feature.fw_config)
+
+    if copy.non_volatile_storage.hardware_feature.storage != topo_pb.HardwareFeatures.Storage():
+        result.storage = copy.non_volatile_storage.hardware_feature.storage
+
+    # Handle all possible ram hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.ram.hardware_feature.fw_config)
+
+    if copy.ram.hardware_feature.memory != topo_pb.HardwareFeatures.Memory():
+        result.memory = copy.ram.hardware_feature.memory
+
+    # Handle all possible wifi hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.wifi.hardware_feature.fw_config)
+
+    # Handle all possible lte board attributes
+    _accumulate_fw_config(result.fw_config, copy.lte_board.hardware_feature.fw_config)
+
+    if copy.lte_board.hardware_feature.lte != topo_pb.HardwareFeatures.Lte():
+        result.lte.present = _accumulate_presence(result.lte.present, copy.lte_board.hardware_feature.lte.present)
+
+    # Handle all possible sd reader hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.sd_reader.hardware_feature.fw_config)
+
+    # Handle all possible motherboard usb features attributes
+    _accumulate_fw_config(result.fw_config, copy.motherboard_usb.hardware_feature.fw_config)
+
+    if copy.motherboard_usb.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
+        _accumulate_usbc(result.usb_c, copy.motherboard_usb.hardware_feature.usb_c)
+
+    if copy.motherboard_usb.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
+        _accumulate_usba(result.usb_a, copy.motherboard_usb.hardware_feature.usb_a)
 
     return result
 
