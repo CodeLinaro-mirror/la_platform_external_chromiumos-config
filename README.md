@@ -15,8 +15,10 @@ configs.
 
 ## Project Setup for Partners
 
-Googlers should have the project and program config repos as part of the
-internal-manifest checkout. Partners will do a public checkout and then add
+**Googlers should have the project and program config repos as part of the
+internal-manifest checkout and should not run these steps.**
+
+Partners will do a public checkout and then add
 config repos for the projects and programs they are working on.
 
 Note: There are two different types of configurations for partners. It is
@@ -56,17 +58,20 @@ instructions below attempt to make this distinction clear.
    This command will execute a number of steps including checking out your
    program and project and other related repositories, symlinking a local
    manifest, and finally doing a full chromiumos sync.
-1. The `$SOURCE_REPO/src/config/bin` directory contains utilties for working with
-   your project. Add the directory to the end of your `PATH`. You will probably
-   want to add this configuration in your `~/.bashrc` file or other appropriate
-   location so you don't have to repeatedly set the `PATH`:
-
-   ```
-   export PATH=$PATH:$SOURCE_REPO/src/config/bin
-   ```
 
 If you got to this point without an error you are set up to start working on
 your project.
+
+## Adding Utilities to Your `PATH`
+
+The `$SOURCE_REPO/src/config/bin` directory contains utilties for working with
+your project. Add the directory to the end of your `PATH`. You will probably
+want to add this configuration in your `~/.bashrc` file or other appropriate
+location so you don't have to repeatedly set the `PATH`:
+
+```
+export PATH=$PATH:$SOURCE_REPO/src/config/bin
+```
 
 ## Working with Projects for Partners
 
