@@ -1,0 +1,152 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.test.dut.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/dut/v1;dut";
+
+// Specification of Device Under Test for test execution.
+message DeviceUnderTest {
+  Peripheral peripheral = 1;
+}
+
+// Peripheral attachments of a device under test that can be referenced by test
+// metadata for specifying test requirements.
+message Peripheral {
+  Servo servo = 1;
+  Chameleon chameleon = 2;
+  RPM rpm = 3;
+  repeated ExternalCamera external_cameras = 4;
+  Audio audio = 5;
+  Wifi wifi = 6;
+  Touch touch = 7;
+  Camerabox camerabox = 8;
+  repeated Cable cables = 9;
+  Cellular cellular = 10;
+}
+
+// Peripherals related to audio input and output from the Device.
+message Audio {
+  // Device is housed in an audio box to record / replay audio
+  // for audio testing.
+  bool audio_box = 1;
+  // Device is connected to Atrus speakermic.
+  bool atrus = 2;
+}
+
+// A cable connecting the device to audio, printer and other peripherals.
+message Cable {
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    AUDIOJACK = 1;
+    USBAUDIO = 2;
+    USBPRINTING = 3;
+    HDMIAUDIO = 4;
+  }
+  Type type = 1;
+}
+
+// A steady and controllable camera box environment for the device, used by
+// camera test automation. http://go/cros-camera-box
+message Camerabox {
+  // Facing of DUT's camera to be tested whose FOV should cover chart tablet's
+  // screen.
+  enum Facing {
+    FACING_UNSPECIFIED = 0;
+    // DUT's back camera faces the chart tablet.
+    BACK = 1;
+    // DUT's front camera faces to chart tablet.
+    FRONT = 2;
+  }
+  Facing facing = 1;
+}
+
+message Cellular {
+  enum Operator {
+    OPERATOR_UNSPECIFIED = 0;
+    ATT = 1;
+    VERIZON = 2;
+    TMOBILE = 3;
+  }
+  // Cellular operators supported by the SIM installed in the device.
+  repeated Operator operators = 1;
+}
+
+// See https://sites.google.com/a/google.com/cros-chameleon/home
+message Chameleon {
+  enum Peripheral {
+    PREIPHERAL_UNSPECIFIED = 0;
+    BT_HID = 1;
+    DP = 2;
+    DP_HDMI = 3;
+    VGA = 4;
+    HDMI = 5;
+    BT_BLE_HID = 6;
+    BT_A2DP_SINK = 7;
+    BT_PEER = 8;
+  }
+  repeated Peripheral peripherals = 1;
+  // Indicate if there's an audio_board in the chameleon.
+  bool audio_board = 2;
+}
+
+// External camera connected to the device.
+message ExternalCamera {
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    // camera Huddly GO
+    HUDDLY = 1;
+    // camera Logitech PTZ Pro 2
+    PTZPRO2 = 2;
+  }
+  Type type = 1;
+}
+
+// Remote power management capability for the device.
+message RPM {
+  bool present = 1;
+}
+
+// Servo control of the device.
+message Servo {
+  bool present = 1;
+}
+
+message Touch {
+  // Has touch monitor mimo.
+  bool mimo = 1;
+}
+
+// Wifi environment of the device.
+message Wifi {
+  enum Environment {
+    ENVIRONMENT_UNSPECIFIED = 0;
+    // Device is setup without any special wifi environment.
+    STANDARD = 1;
+    // Device is inside a hermetic wifi cell.
+    WIFI_CELL = 2;
+    // Device is setup in a chaos environment. It's a special settings for
+    // running wifi interop tests.
+    CHAOS = 3;
+    // In an environment where the AP is 802.11ax compliant.
+    // Context: crbug.com/1044786
+    ROUTER_802_11AX = 4;
+  }
+  Environment environment = 1;
+  WifiAntenna antenna = 2;
+}
+
+message WifiAntenna {
+  // DUT's WiFi antenna's connection.
+  enum Connection {
+    CONNECTION_UNSPECIFIED = 0;
+    // WIFI antenna is connected conductively.
+    CONDUCTIVE = 1;
+    // WIFI antenna is connected over-the-air.
+    OTA = 2;
+  }
+  Connection connection = 1;
+}
