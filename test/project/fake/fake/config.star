@@ -19,10 +19,25 @@ _REF_DESIGN_NAME = "FAKE-REF-DESIGN"
 _DESIGN_ID = design.create_design_id(_REF_DESIGN_NAME)
 
 _DB_FW_MASK = 0x0000000f
+_CAMERA_FW_MASK = 0x000000f0
 
-_CLAMSHELL = hw_topo.create_form_factor("CLAMSHELL", "Device can only rotate 200 degrees", hw_topo.ff.CLAMSHELL)
-_MLB_USB = hw_topo.create_motherboard_usb("1C1A", "1 Type-A and C", usbc_count = 1, usba_count = 1)
-_DB = hw_topo.create_daughter_board("1C1A", "Daugher board with 1 Type-A and C", usbc_count = 1, usba_count = 1, fw_mask = _DB_FW_MASK, db_id = 2)
+_SCREEN = hw_topo.create_screen("SCREEN", "Default screen", inches = 15, touch = False)
+_FORM_FACTOR = hw_topo.create_form_factor("FORM_FACTOR", "Default form_factor", hw_topo.ff.CLAMSHELL)
+_AUDIO = hw_topo.create_audio("AUDIO", "Default audio", codec = hw_topo.audio_codec.RT5682)
+_STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
+_KEYBOARD = hw_topo.create_keyboard("KEYBOARD", "Default keyboard", backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE)
+_THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
+_CAMERA = hw_topo.create_camera("CAMERA", "Default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 2)])
+_SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor")
+_FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake-fingerprint-board")
+_PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
+_DAUGHTER_BOARD = hw_topo.create_daughter_board("DAUGHTER_BOARD", "Default daughter_board", fw_configs = [hw_topo.make_fw_config(_DB_FW_MASK, 1)])
+_NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
+_RAM = hw_topo.create_ram("RAM", "Default ram", gigabytes = 16, type = hw_topo.memory.DDR3, speed_mhz = 3600)
+_WIFI = hw_topo.create_wifi("WIFI", "Default wifi")
+_LTE_BOARD = hw_topo.create_lte_board("LTE_BOARD", "Default lte_board", lte_present = True)
+_SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
+_MOTHERBOARD_USB = hw_topo.create_motherboard_usb("MOTHERBOARD_USB", "Default motherboard_usb")
 
 _FP = hw_topo.create_fingerprint(
     id = "AA_BB",
@@ -35,9 +50,23 @@ _HW_DESIGN_CONFIG = design.create_config(
     design_id = _DESIGN_ID,
     config_id = "1",
     hardware_topology = hw_topo.create_hardware_topology(
-        motherboard_usb = _MLB_USB,
-        form_factor = _CLAMSHELL,
-        fingerprint = _FP,
+        screen = _SCREEN,
+        form_factor = _FORM_FACTOR,
+        audio = _AUDIO,
+        stylus = _STYLUS,
+        keyboard = _KEYBOARD,
+        thermal = _THERMAL,
+        camera = _CAMERA,
+        accelerometer_gyroscope_magnetometer = _SENSOR,
+        fingerprint = _FINGERPRINT,
+        proximity_sensor = _PROXIMITY_SENSOR,
+        daughter_board = _DAUGHTER_BOARD,
+        non_volatile_storage = _NON_VOLATILE_STORAGE,
+        ram = _RAM,
+        wifi = _WIFI,
+        lte_board = _LTE_BOARD,
+        sd_reader = _SD_READER,
+        motherboard_usb = _MOTHERBOARD_USB,
     ),
 )
 
@@ -45,10 +74,23 @@ _HW_DESIGN_CONFIG_2 = design.create_config(
     design_id = _DESIGN_ID,
     config_id = "2",
     hardware_topology = hw_topo.create_hardware_topology(
-        motherboard_usb = _MLB_USB,
-        form_factor = _CLAMSHELL,
-        fingerprint = _FP,
-        daughter_board = _DB,
+        screen = _SCREEN,
+        form_factor = _FORM_FACTOR,
+        audio = _AUDIO,
+        stylus = _STYLUS,
+        keyboard = _KEYBOARD,
+        thermal = _THERMAL,
+        camera = _CAMERA,
+        accelerometer_gyroscope_magnetometer = _SENSOR,
+        fingerprint = _FINGERPRINT,
+        proximity_sensor = _PROXIMITY_SENSOR,
+        daughter_board = _DAUGHTER_BOARD,
+        non_volatile_storage = _NON_VOLATILE_STORAGE,
+        ram = _RAM,
+        wifi = _WIFI,
+        lte_board = _LTE_BOARD,
+        sd_reader = _SD_READER,
+        motherboard_usb = _MOTHERBOARD_USB,
     ),
 )
 

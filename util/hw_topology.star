@@ -82,8 +82,10 @@ def _create_features(form_factors = [_FF.CLAMSHELL, _FF.CONVERTIBLE]):
     return [_create_design_features(ff) for ff in form_factors]
 
 def _bool_to_present(value):
-    """Returns PRESENT if value is true, else NOT_PRESENT."""
-    if value:
+    """Returns correct value of present enum depending on value"""
+    if value == None:
+        return topo_pb.HardwareFeatures.PRESENT_UNKNOWN
+    elif value:
         return topo_pb.HardwareFeatures.PRESENT
     else:
         return topo_pb.HardwareFeatures.NOT_PRESENT
@@ -105,12 +107,14 @@ def _make_fw_config(mask, id):
         mask = mask,
     )
 
-def _create_screen(id, description, inches, touch):
+def _create_screen(id, description, inches, touch, fw_configs = []):
     """Builds a Topology proto for a screen."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.screen.milliinch.value = inches * 1000
     hw_features.screen.touch_support = _bool_to_present(touch)
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -134,11 +138,13 @@ def _create_form_factor(id, description, form_factor, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_audio(id, description, codec):
+def _create_audio(id, description, codec, fw_configs = []):
     """Builds a Topology proto for audio."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.audio.audio_codec = codec
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -196,28 +202,20 @@ def _create_thermal(id, description, fw_mask = None, thermal_id = None, fw_confi
         hardware_feature = hw_features,
     )
 
-def _create_camera(id, description, has_a_panel_camera, has_b_panel_camera, count):
+def _create_camera(id, description, fw_configs = [], has_a_panel_camera = None, has_b_panel_camera = None, count = 0):
     """Builds a Topology proto for a camera."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.camera.a_panel_camera = _bool_to_present(has_a_panel_camera)
-    hw_features.camera.b_panel_camera = _bool_to_present(has_a_panel_camera)
-    hw_features.camera.count.value = count
+    hw_features.camera.b_panel_camera = _bool_to_present(has_b_panel_camera)
+    if count:
+        hw_features.camera.count.value = count
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
         type = topo_pb.Topology.CAMERA,
-        description = {"EN": description},
-        hardware_feature = hw_features,
-    )
-
-def _create_microphone(id, description):
-    """Builds a Topology proto for a microphone."""
-    hw_features = topo_pb.HardwareFeatures()
-
-    return topo_pb.Topology(
-        id = id,
-        type = topo_pb.Topology.MICROPHONE,
         description = {"EN": description},
         hardware_feature = hw_features,
     )
@@ -242,13 +240,15 @@ def _create_sensor(id, description, fw_configs = [], lid_accel_present = None,
         hardware_feature = hw_features,
     )
 
-def _create_fingerprint(id, description, location, board = None):
+def _create_fingerprint(id, description, location, board = None, fw_configs = []):
     """Builds a Topology proto for a fingerprint reader."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.fingerprint.location = location
     if board:
         hw_features.fingerprint.board = board
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -257,9 +257,11 @@ def _create_fingerprint(id, description, location, board = None):
         hardware_feature = hw_features,
     )
 
-def _create_proximity_sensor(id, description):
+def _create_proximity_sensor(id, description, fw_configs = []):
     """Builds a Topology proto for a proximity sensor."""
     hw_features = topo_pb.HardwareFeatures()
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -305,13 +307,15 @@ def _create_non_volatile_storage(id, description, storage_type, fw_configs = [])
         hardware_feature = hw_features,
     )
 
-def _create_ram(id, description, gigabytes, type, speed_mhz):
+def _create_ram(id, description, gigabytes, type, speed_mhz, fw_configs = []):
     """Builds a Topology proto for RAM."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.memory.profile.type = type
     hw_features.memory.profile.speed_mhz = speed_mhz
     hw_features.memory.profile.size_megabytes = gigabytes * 1024
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -320,9 +324,11 @@ def _create_ram(id, description, gigabytes, type, speed_mhz):
         hardware_feature = hw_features,
     )
 
-def _create_wifi(id, description):
+def _create_wifi(id, description, fw_configs = []):
     """Builds a Topology proto for a WiFi chip."""
     hw_features = topo_pb.HardwareFeatures()
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -331,11 +337,13 @@ def _create_wifi(id, description):
         hardware_feature = hw_features,
     )
 
-def _create_lte_board(id, description, lte_present):
+def _create_lte_board(id, description, lte_present, fw_configs = []):
     """Builds a Topology proto for a LTE board."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.lte.present = _bool_to_present(lte_present)
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -477,6 +485,18 @@ def _accumulate_presence(existing_present, new_present):
     else:
         return existing_present
 
+def _accumulate_usbc(existing_usbc, new_usbc):
+    existing_usbc.count.value += new_usbc.count.value
+
+def _accumulate_usba(existing_usba, new_usba):
+    existing_usba.count.value += new_usba.count.value
+
+def _accumulate_lte(existing_lte, new_lte):
+    existing_lte.present = _accumulate_presence(existing_lte.present, new_lte.present)
+
+def _accumulate_hdmi(existing_hdmi, new_hdmi):
+    existing_hdmi.present = _accumulate_presence(existing_hdmi.present, new_hdmi.present)
+
 def _convert_to_hw_features(base_hw_features, hardware_topology):
     """Converts a HardwareTopology proto to a HardwareFeatures proto."""
     result = topo_pb.HardwareFeatures()
@@ -485,6 +505,8 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     copy = proto.from_textpb(hw_topo_pb.HardwareTopology, proto.to_textpb(hardware_topology))
 
     # Handle all possible screen hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.screen.hardware_feature.fw_config)
+
     if copy.screen.hardware_feature.screen != topo_pb.HardwareFeatures.Screen():
         result.screen = copy.screen.hardware_feature.screen
 
@@ -516,18 +538,29 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
         result.keyboard = copy.keyboard.hardware_feature.keyboard
 
     # Handle all possible fingerprint hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.fingerprint.hardware_feature.fw_config)
+
     if copy.fingerprint.hardware_feature.fingerprint != topo_pb.HardwareFeatures.Fingerprint():
         result.fingerprint = copy.fingerprint.hardware_feature.fingerprint
 
+    # Handle all possible proximity sensor hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.proximity_sensor.hardware_feature.fw_config)
+
     # Handle all possible audio features attributes
+    _accumulate_fw_config(result.fw_config, copy.audio.hardware_feature.fw_config)
+
     if copy.audio.hardware_feature.audio != topo_pb.HardwareFeatures.Audio():
         result.audio = copy.audio.hardware_feature.audio
 
     # Handle all possible camera features attributes
+    _accumulate_fw_config(result.fw_config, copy.camera.hardware_feature.fw_config)
+
     if copy.camera.hardware_feature.camera != topo_pb.HardwareFeatures.Camera():
         result.camera = copy.camera.hardware_feature.camera
 
     # Handle all possible lte board attributes
+    _accumulate_fw_config(result.fw_config, copy.lte_board.hardware_feature.fw_config)
+
     if copy.lte_board.hardware_feature.lte != topo_pb.HardwareFeatures.Lte():
         result.lte.present = _accumulate_presence(result.lte.present, copy.lte_board.hardware_feature.lte.present)
 
@@ -538,29 +571,34 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     _accumulate_fw_config(result.fw_config, copy.daughter_board.hardware_feature.fw_config)
 
     if copy.daughter_board.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
-        result.usb_c.count.value += copy.daughter_board.hardware_feature.usb_c.count.value
-
+        _accumulate_usbc(result.usb_c, copy.daughter_board.hardware_feature.usb_c)
+        
     if copy.daughter_board.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
-        result.usb_a.count.value += copy.daughter_board.hardware_feature.usb_a.count.value
+        _accumulate_usba(result.usb_a, copy.daughter_board.hardware_feature.usb_a)
 
     if copy.daughter_board.hardware_feature.lte != topo_pb.HardwareFeatures.Lte():
-        result.lte.present = _accumulate_presence(result.lte.present, copy.daughter_board.hardware_feature.lte.present)
+        _accumulate_lte(result.lte, copy.daughter_board.hardware_feature.lte)
 
     if copy.daughter_board.hardware_feature.hdmi != topo_pb.HardwareFeatures.Hdmi():
-        result.hdmi.present = _accumulate_presence(result.hdmi.present, copy.daughter_board.hardware_feature.hdmi.present)
+        _accumulate_hdmi(result.hdmi, copy.daughter_board.hardware_feature.hdmi)
 
     # Handle all possible ram hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.ram.hardware_feature.fw_config)
+
     if copy.ram.hardware_feature.memory != topo_pb.HardwareFeatures.Memory():
         result.memory = copy.ram.hardware_feature.memory
+
+    # Handle all possible wifi hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.wifi.hardware_feature.fw_config)
 
     # Handle all possible motherboard usb features attributes
     _accumulate_fw_config(result.fw_config, copy.motherboard_usb.hardware_feature.fw_config)
 
     if copy.motherboard_usb.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
-        result.usb_c.count.value += copy.motherboard_usb.hardware_feature.usb_c.count.value
-
+        _accumulate_usbc(result.usb_c, copy.motherboard_usb.hardware_feature.usb_c)
+        
     if copy.motherboard_usb.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
-        result.usb_a.count.value += copy.motherboard_usb.hardware_feature.usb_a.count.value
+        _accumulate_usba(result.usb_a, copy.motherboard_usb.hardware_feature.usb_a)
 
     # Handle all possible sensor attributes
     _accumulate_fw_config(result.fw_config, copy.accelerometer_gyroscope_magnetometer.hardware_feature.fw_config)
@@ -574,6 +612,9 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     if copy.accelerometer_gyroscope_magnetometer.hardware_feature.magnetometer != topo_pb.HardwareFeatures.Magnetometer():
         result.magnetometer = copy.accelerometer_gyroscope_magnetometer.hardware_feature.magnetometer
 
+    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.light_sensor != topo_pb.HardwareFeatures.LightSensor():
+        result.light_sensor = copy.accelerometer_gyroscope_magnetometer.hardware_feature.light_sensor
+
     return result
 
 hw_topo = struct(
@@ -586,7 +627,6 @@ hw_topo = struct(
     create_keyboard = _create_keyboard,
     create_thermal = _create_thermal,
     create_camera = _create_camera,
-    create_microphone = _create_microphone,
     create_sensor = _create_sensor,
     create_fingerprint = _create_fingerprint,
     create_proximity_sensor = _create_proximity_sensor,

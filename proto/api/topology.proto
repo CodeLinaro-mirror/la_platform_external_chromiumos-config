@@ -149,7 +149,7 @@ message HardwareFeatures {
     Count count = 3;
   }
 
-  // Camera properties of system.
+  // Accelerometer properties of system.
   Accelerometer accelerometer = 8;
   message Accelerometer {
     // If lid accelerometer is present on system

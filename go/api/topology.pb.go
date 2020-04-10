@@ -431,7 +431,7 @@ type HardwareFeatures struct {
 	Audio *HardwareFeatures_Audio `protobuf:"bytes,6,opt,name=audio,proto3" json:"audio,omitempty"`
 	// Camera properties of system.
 	Camera *HardwareFeatures_Camera `protobuf:"bytes,7,opt,name=camera,proto3" json:"camera,omitempty"`
-	// Camera properties of system.
+	// Accelerometer properties of system.
 	Accelerometer *HardwareFeatures_Accelerometer `protobuf:"bytes,8,opt,name=accelerometer,proto3" json:"accelerometer,omitempty"`
 	// Gyroscope properties of system.
 	Gyroscope *HardwareFeatures_Gyroscope `protobuf:"bytes,9,opt,name=gyroscope,proto3" json:"gyroscope,omitempty"`
