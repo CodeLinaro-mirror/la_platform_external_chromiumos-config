@@ -146,6 +146,12 @@ def _BuildFirmware(config):
   _Set(_FwBcsPath(ec_ro), result, 'ec-ro-image')
   _Set(_FwBcsPath(pd_ro), result, 'pd-ro-image')
 
+  _Set(
+      config.hw_design_config.hardware_features.fw_config.value,
+      result,
+      'firmware-config',
+  )
+
   return result
 
 

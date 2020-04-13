@@ -17,6 +17,7 @@ import cros_config_proto_converter
 from config.test import fake_config
 
 from config.api.software.build_target_pb2 import BuildTarget
+from config.api.design_pb2 import Design
 from config.api.software.firmware_config_pb2 import (FirmwareConfig,
                                                      FirmwarePayload)
 from config.api.software.software_config_pb2 import SoftwareConfig
@@ -127,7 +128,7 @@ class TransformBuildConfigsTest(unittest.TestCase):
         program=None,
         hw_design=None,
         odm=None,
-        hw_design_config=None,
+        hw_design_config=Design.Config(),
         device_brand=None,
         oem=None,
         sw_config=SoftwareConfig(
