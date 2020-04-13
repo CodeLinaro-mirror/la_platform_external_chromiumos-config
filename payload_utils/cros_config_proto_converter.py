@@ -200,7 +200,7 @@ def _BuildAudio(config):
       }
   }
   if audio.ucm_suffix:
-    result['main']['ucm_suffix'] = audio.ucm_suffix
+    result['main']['ucm-suffix'] = audio.ucm_suffix
 
   return result
 
