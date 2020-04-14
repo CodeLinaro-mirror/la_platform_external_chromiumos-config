@@ -53,6 +53,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 33,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -105,7 +106,7 @@
                 "source": "audio/fakeaudiocard/dsp.ini"
               }
             ],
-            "ucm_suffix": "2mic"
+            "ucm-suffix": "2mic"
           }
         },
         "brand-code": "AAAA",
@@ -126,6 +127,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 33,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",

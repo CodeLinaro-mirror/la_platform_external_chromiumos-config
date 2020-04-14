@@ -129,6 +129,7 @@ class TransformBuildConfigsTest(unittest.TestCase):
         odm=None,
         hw_design_config=Design.Config(),
         device_brand=None,
+        device_signer_config=None,
         oem=None,
         sw_config=SoftwareConfig(
             firmware=FirmwareConfig(

@@ -22,6 +22,7 @@ Config = namedtuple('Config',
                      'odm',
                      'hw_design_config',
                      'device_brand',
+                     'device_signer_config',
                      'oem',
                      'sw_config',
                      'brand_config',
@@ -156,13 +157,12 @@ def _BuildFirmware(config):
 
 
 def _BuildFwSigning(config):
-  if not config.sw_config.firmware:
-    return {}
-  # TODO(shapiroc): Source signing config from separate private repo
-  return {
-      'key-id': 'DEFAULT',
-      'signature-id': config.hw_design.name.lower(),
-  }
+  if config.sw_config.firmware and config.device_signer_config:
+    return {
+        'key-id': config.device_signer_config.key_id,
+        'signature-id': config.hw_design.name.lower(),
+    }
+  return {}
 
 
 def _File(source, destination):
@@ -279,12 +279,20 @@ def _TransformBuildConfigs(config):
         else:
           raise Exception('Software config is required for: %s' % design_id)
 
+        program = _Lookup(hw_design.program_id, programs)
+        signer_configs = dict(
+            [(x.brand_id.value, x) for x in program.device_signer_configs])
+        device_signer_config = None
+        if signer_configs:
+          device_signer_config = _Lookup(device_brand.id, signer_configs)
+
         transformed_config = _TransformBuildConfig(Config(
-            program=_Lookup(hw_design.program_id, programs),
+            program=program,
             hw_design=hw_design,
             odm=_Lookup(hw_design.odm_id, partners),
             hw_design_config=hw_design_config,
             device_brand=device_brand,
+            device_signer_config=device_signer_config,
             oem=_Lookup(device_brand.oem_id, partners),
             sw_config=sw_config,
             brand_config=brand_config,
