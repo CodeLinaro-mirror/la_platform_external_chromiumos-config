@@ -33,10 +33,13 @@ _FEATURE_CONSTRAINTS = design.create_constraints(
     hw_topo.create_features(),
 )  # Default for now
 
+_SIGNER_CONFIG = [program_util.create_signer_config('AAAA', 'DEFAULT')]
+
 _FAKE = program_util.create(
     name = "FAKE_PROGRAM",
     component_quals = _QUAL_CONSTRAINTS,
     constraints = _FEATURE_CONSTRAINTS,
+    device_signer_configs = _SIGNER_CONFIG,
 )
 
 _BUILD_TARGETS = [bt_util.create("fake", "overlay-fake-private")]

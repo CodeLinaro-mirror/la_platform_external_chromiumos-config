@@ -15,6 +15,7 @@ _sym_db = _symbol_database.Default()
 from api import component_pb2 as api_dot_component__pb2
 from api import design_pb2 as api_dot_design__pb2
 from api import program_id_pb2 as api_dot_program__id__pb2
+from api import device_brand_id_pb2 as api_dot_device__brand__id__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -22,9 +23,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n\x11\x61pi/program.proto\x12\x15\x63hromiumos.config.api\x1a\x13\x61pi/component.proto\x1a\x10\x61pi/design.proto\x1a\x14\x61pi/program_id.proto\":\n\x1c\x46irmwareConfigurationSegment\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04mask\x18\x02 \x01(\r\"\xc0\x02\n\x07Program\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12R\n\x19\x64\x65sign_config_constraints\x18\x03 \x03(\x0b\x32/.chromiumos.config.api.Design.Config.Constraint\x12G\n\x0f\x63omponent_quals\x18\x04 \x03(\x0b\x32..chromiumos.config.api.Component.Qualification\x12\\\n\x1f\x66irmware_configuration_segments\x18\x05 \x03(\x0b\x32\x33.chromiumos.config.api.FirmwareConfigurationSegment\"<\n\x0bProgramList\x12-\n\x05value\x18\x01 \x03(\x0b\x32\x1e.chromiumos.config.api.ProgramB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n\x11\x61pi/program.proto\x12\x15\x63hromiumos.config.api\x1a\x13\x61pi/component.proto\x1a\x10\x61pi/design.proto\x1a\x14\x61pi/program_id.proto\x1a\x19\x61pi/device_brand_id.proto\":\n\x1c\x46irmwareConfigurationSegment\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04mask\x18\x02 \x01(\r\"\\\n\x12\x44\x65viceSignerConfig\x12\x36\n\x08\x62rand_id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.DeviceBrandId\x12\x0e\n\x06key_id\x18\x02 \x01(\t\"\x8a\x03\n\x07Program\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12R\n\x19\x64\x65sign_config_constraints\x18\x03 \x03(\x0b\x32/.chromiumos.config.api.Design.Config.Constraint\x12G\n\x0f\x63omponent_quals\x18\x04 \x03(\x0b\x32..chromiumos.config.api.Component.Qualification\x12\\\n\x1f\x66irmware_configuration_segments\x18\x05 \x03(\x0b\x32\x33.chromiumos.config.api.FirmwareConfigurationSegment\x12H\n\x15\x64\x65vice_signer_configs\x18\x06 \x03(\x0b\x32).chromiumos.config.api.DeviceSignerConfig\"<\n\x0bProgramList\x12-\n\x05value\x18\x01 \x03(\x0b\x32\x1e.chromiumos.config.api.ProgramB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
-  dependencies=[api_dot_component__pb2.DESCRIPTOR,api_dot_design__pb2.DESCRIPTOR,api_dot_program__id__pb2.DESCRIPTOR,])
+  dependencies=[api_dot_component__pb2.DESCRIPTOR,api_dot_design__pb2.DESCRIPTOR,api_dot_program__id__pb2.DESCRIPTOR,api_dot_device__brand__id__pb2.DESCRIPTOR,])
 
 
 
@@ -62,8 +63,46 @@ _FIRMWARECONFIGURATIONSEGMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=105,
-  serialized_end=163,
+  serialized_start=132,
+  serialized_end=190,
+)
+
+
+_DEVICESIGNERCONFIG = _descriptor.Descriptor(
+  name='DeviceSignerConfig',
+  full_name='chromiumos.config.api.DeviceSignerConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='brand_id', full_name='chromiumos.config.api.DeviceSignerConfig.brand_id', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='key_id', full_name='chromiumos.config.api.DeviceSignerConfig.key_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=192,
+  serialized_end=284,
 )
 
 
@@ -109,6 +148,13 @@ _PROGRAM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='device_signer_configs', full_name='chromiumos.config.api.Program.device_signer_configs', index=5,
+      number=6, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -121,8 +167,8 @@ _PROGRAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=166,
-  serialized_end=486,
+  serialized_start=287,
+  serialized_end=681,
 )
 
 
@@ -152,16 +198,19 @@ _PROGRAMLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=488,
-  serialized_end=548,
+  serialized_start=683,
+  serialized_end=743,
 )
 
+_DEVICESIGNERCONFIG.fields_by_name['brand_id'].message_type = api_dot_device__brand__id__pb2._DEVICEBRANDID
 _PROGRAM.fields_by_name['id'].message_type = api_dot_program__id__pb2._PROGRAMID
 _PROGRAM.fields_by_name['design_config_constraints'].message_type = api_dot_design__pb2._DESIGN_CONFIG_CONSTRAINT
 _PROGRAM.fields_by_name['component_quals'].message_type = api_dot_component__pb2._COMPONENT_QUALIFICATION
 _PROGRAM.fields_by_name['firmware_configuration_segments'].message_type = _FIRMWARECONFIGURATIONSEGMENT
+_PROGRAM.fields_by_name['device_signer_configs'].message_type = _DEVICESIGNERCONFIG
 _PROGRAMLIST.fields_by_name['value'].message_type = _PROGRAM
 DESCRIPTOR.message_types_by_name['FirmwareConfigurationSegment'] = _FIRMWARECONFIGURATIONSEGMENT
+DESCRIPTOR.message_types_by_name['DeviceSignerConfig'] = _DEVICESIGNERCONFIG
 DESCRIPTOR.message_types_by_name['Program'] = _PROGRAM
 DESCRIPTOR.message_types_by_name['ProgramList'] = _PROGRAMLIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -172,6 +221,13 @@ FirmwareConfigurationSegment = _reflection.GeneratedProtocolMessageType('Firmwar
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.FirmwareConfigurationSegment)
   ))
 _sym_db.RegisterMessage(FirmwareConfigurationSegment)
+
+DeviceSignerConfig = _reflection.GeneratedProtocolMessageType('DeviceSignerConfig', (_message.Message,), dict(
+  DESCRIPTOR = _DEVICESIGNERCONFIG,
+  __module__ = 'api.program_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.DeviceSignerConfig)
+  ))
+_sym_db.RegisterMessage(DeviceSignerConfig)
 
 Program = _reflection.GeneratedProtocolMessageType('Program', (_message.Message,), dict(
   DESCRIPTOR = _PROGRAM,
