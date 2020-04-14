@@ -211,6 +211,15 @@ def _BuildAudio(config):
   return result
 
 
+def _BuildCamera(hw_topology):
+  if hw_topology.HasField('camera'):
+    camera = hw_topology.camera.hardware_feature.camera
+    result = {}
+    if camera.count.value:
+      result['count'] = camera.count.value
+    return result
+
+
 def _BuildIdentity(hw_scan_config, program, brand_scan_config=None):
   identity = {}
   _Set(hw_scan_config.firmware_sku, identity, 'sku-id')
@@ -329,6 +338,8 @@ def _TransformBuildConfig(config):
   _Set(_BuildArc(config), result, 'arc')
   _Set(_BuildAudio(config), result, 'audio')
   _Set(config.device_brand.brand_code, result, 'brand-code')
+  _Set(_BuildCamera(
+      config.hw_design_config.hardware_topology), result, 'camera')
   _Set(_BuildFirmware(config), result, 'firmware')
   _Set(_BuildFwSigning(config), result, 'firmware-signing')
   _Set(_BuildFingerprint(

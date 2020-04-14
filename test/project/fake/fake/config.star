@@ -27,7 +27,7 @@ _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", codec = hw_topo.audio_co
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
 _KEYBOARD = hw_topo.create_keyboard("KEYBOARD", "Default keyboard", backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE)
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
-_CAMERA = hw_topo.create_camera("CAMERA", "Default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 2)])
+_CAMERA = hw_topo.create_camera("CAMERA", "Default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 2)], count = 1)
 _SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor")
 _FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake-fingerprint-board")
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")

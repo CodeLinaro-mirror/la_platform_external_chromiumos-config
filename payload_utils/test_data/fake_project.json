@@ -36,6 +36,9 @@
           }
         },
         "brand-code": "AAAA",
+        "camera": {
+          "count": 1
+        },
         "fingerprint": {
           "board": "fake-fingerprint-board",
           "sensor-location": "keyboard-bottom-left"
@@ -110,6 +113,9 @@
           }
         },
         "brand-code": "AAAA",
+        "camera": {
+          "count": 1
+        },
         "fingerprint": {
           "board": "fake-fingerprint-board",
           "sensor-location": "keyboard-bottom-left"
