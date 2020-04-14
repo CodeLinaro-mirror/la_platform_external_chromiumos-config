@@ -178,6 +178,17 @@ and more specifically in the
 section. CQ verifies that you have correctly generated your configuration
 payload and that you have not violated the program's constraints.
 
+### CQ Verifier Access for Partners
+
+Some CQ verifiers will be visible to partners, for example the verifiers of the
+project and program configs. Visible builds will appear as links on the Gerrit
+page for your CL. The builds are displayed with [Milo](https://g3doc.corp.google.com/company/teams/chrome/ops/luci/milo.md?cl=head) (LUCI's UI).
+
+**Note on stdout log access**: [LogDog](https://g3doc.corp.google.com/company/teams/chrome/ops/luci/logdog/index.md?cl=head) (LUCI's logging service)
+currently doesn't support partner access. Thus, stdout logs for key steps of the
+build are mirrored to per-project Google Storage buckets. The Google Storage
+mirrored logs appear as links like "stdout (GS mirror)" on the Milo page.
+
 ## Making Bulk Changes Across Repos
 
 Program and project config are spread across repos, so changes and refactors
