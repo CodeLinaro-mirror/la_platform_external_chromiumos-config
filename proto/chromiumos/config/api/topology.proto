@@ -268,6 +268,7 @@ message HardwareFeatures {
       KEYBOARD_BOTTOM_LEFT = 2;
       KEYBOARD_BOTTOM_RIGHT = 3;
       KEYBOARD_TOP_RIGHT = 4;
+      NOT_PRESENT = 5;
     }
   }
 
