@@ -49,9 +49,17 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
         for topology in proto_utils.get_all_fields(config.hardware_topology):
           mask = topology.hardware_feature.fw_config.mask
           if mask:
-            self.assertIn(
-                mask, masks, 'Unexpected mask for topology {}'.format(
-                    topology_pb2.Topology.Type.Name(topology.type)))
+            # Don't use assertIn so the error message can have binary mask
+            # values.
+            if mask not in masks:
+              raise AssertionError(
+                  'Unexpected mask {:b} for topology {}. Expected one of: {}'
+                  .format(
+                      mask,
+                      topology_pb2.Topology.Type.Name(topology.type),
+                      ', '.join('{:b}'.format(m) for m in masks),
+                  ),
+              )
 
   def check_firmware_configuration_value_collision(
       self, program_config: config_bundle_pb2.ConfigBundle,

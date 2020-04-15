@@ -110,8 +110,9 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
             ]),
         ]))
 
-    with self.assertRaisesRegex(AssertionError,
-                                'Unexpected mask for topology SCREEN'):
+    with self.assertRaisesRegex(
+        AssertionError,
+        'Unexpected mask 11 for topology SCREEN. Expected one of: 1, 110'):
       FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
           program_config=program_config, project_config=project_config)
 
