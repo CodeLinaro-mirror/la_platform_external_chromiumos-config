@@ -22,20 +22,23 @@ option go_package = "go.chromium.org/chromiumos/config/go/payload";
 // eventually stitched together to drive build config payloads or any
 // infra/analysis related access/processing.
 message ConfigBundle {
-  // Chrome OS program and hw design project config
+  // TODO(chromium:1071116): Remove List fields after clients/config migrated
   api.PartnerList partners = 1;
   api.ComponentList components = 2;
   api.ProgramList programs = 3;
   api.DesignList designs = 4;
   api.DeviceBrandList device_brands = 5;
 
+  // Chrome OS program and hw design project config
+  repeated api.Partner partner_list = 11;
+  repeated api.Component component_list = 12;
+  repeated api.Program program_list = 13;
+  repeated api.Design design_list = 14;
+  repeated api.DeviceBrand device_brand_list = 15;
+
   repeated api.software.BuildTarget build_targets = 8;
   repeated api.software.SoftwareConfig software_configs = 9;
   repeated api.software.BrandConfig brand_configs = 10;
 
   reserved 6, 7;
-}
-
-message ConfigBundleList {
-  repeated ConfigBundle value = 1;
 }
