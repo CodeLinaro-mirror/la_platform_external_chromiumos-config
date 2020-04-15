@@ -12,6 +12,9 @@ from checker import proto_utils
 from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api import topology_pb2
 
+def _topo_to_string(topo):
+  return '{}:{}'.format(topology_pb2.Topology.Type.Name(topo.type), topo.id)
+
 
 class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
   """Constraint checks related to firmware configuration."""
@@ -28,8 +31,6 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
     """
     segments = config_bundle_utils.get_program(
         program_config).firmware_configuration_segments
-    # Collect all masks defined by segments.
-    masks = set()
 
     for segment_a, segment_b in itertools.combinations(segments, 2):
       overlap = segment_a.mask & segment_b.mask
@@ -39,8 +40,11 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
               segment_a.name, segment_b.name, segment_a.mask, segment_b.mask,
               overlap))
 
-      masks.add(segment_a.mask)
-      masks.add(segment_b.mask)
+    # Collect all masks defined by segments. This ensures if there is only
+    # one mask we capture it
+    masks = []
+    for segment in segments:
+      masks.append(segment.mask)
 
     # For every topology that defines a FirmwareConfiguration, check the mask
     # aligns with a segment.
@@ -48,18 +52,22 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
       for config in design.configs:
         for topology in proto_utils.get_all_fields(config.hardware_topology):
           mask = topology.hardware_feature.fw_config.mask
-          if mask:
-            # Don't use assertIn so the error message can have binary mask
-            # values.
-            if mask not in masks:
-              raise AssertionError(
-                  'Unexpected mask {:b} for topology {}. Expected one of: {}'
-                  .format(
-                      mask,
-                      topology_pb2.Topology.Type.Name(topology.type),
-                      ', '.join('{:b}'.format(m) for m in masks),
-                  ),
-              )
+          for fw_mask in masks:
+            overlap = mask & fw_mask
+            if (overlap):
+              self.assertEqual(overlap, fw_mask,
+                'Topology {} with fw_config mask 0x{:08X} did not specify the '
+                'complete fw_config field with mask 0x{:08X}'.format(
+                  _topo_to_string(topology),
+                   topology.hardware_feature.fw_config.mask, fw_mask))
+              # Remove the valid fw_mask to keep track of any extra mask in
+              # the topology value
+              mask -= overlap
+          # After looping through all valid fw_config masks, ensure that topo's
+          # value is empty
+          self.assertEqual(mask, 0,
+            'Topology {} specifies fw_mask that is not known 0x{:08X}'.format(
+              _topo_to_string(topology), mask))
 
   def check_firmware_configuration_value_collision(
       self, program_config: config_bundle_pb2.ConfigBundle,

@@ -77,13 +77,15 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
       FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
           program_config=program_config, project_config=None)
 
-  def test_check_firmware_configuration_masks_invalid(self):
-    """Tests check_firmware_configuration_masks with an invalid mask."""
+  def test_check_firmware_configuration_multiple_masks_in_use(self):
+    """Tests check_firmware_configuration_masks with that a topology using
+    multiple fw_config fields.
+    """
     program_config = ConfigBundle(
         programs=ProgramList(value=[
             Program(firmware_configuration_segments=[
-                FirmwareConfigurationSegment(name='screen', mask=0b0001),
-                FirmwareConfigurationSegment(name='form_factor', mask=0b0110),
+                FirmwareConfigurationSegment(name='screen_a', mask=0b0001),
+                FirmwareConfigurationSegment(name='screen_b', mask=0b1110),
             ])
         ]))
 
@@ -93,26 +95,83 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
                 Config(
                     hardware_topology=HardwareTopology(
                         screen=Topology(
+                            id="DEFAULT",
                             type=Topology.SCREEN,
                             hardware_feature=HardwareFeatures(
                                 fw_config=FirmwareConfiguration(
-                                    value=0b0000,
-                                    mask=0b0011,
-                                ))),
-                        form_factor=Topology(
-                            type=Topology.FORM_FACTOR,
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(
-                                    value=0b0010,
-                                    mask=0b0110,
+                                    value=0b0001,
+                                    mask=0b1111,
                                 ))),
                     ))
             ]),
         ]))
 
-    with self.assertRaisesRegex(
-        AssertionError,
-        'Unexpected mask 11 for topology SCREEN. Expected one of: 1, 110'):
+    FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
+        program_config=program_config, project_config=project_config)
+
+  def test_check_firmware_configuration_incomplete_mask(self):
+    """Tests check_firmware_configuration_masks with an incomplete mask."""
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[
+            Program(firmware_configuration_segments=[
+                FirmwareConfigurationSegment(name='screen_a', mask=0b0001),
+                FirmwareConfigurationSegment(name='screen_b', mask=0b1110),
+            ])
+        ]))
+
+    project_config = ConfigBundle(
+        designs=DesignList(value=[
+            Design(configs=[
+                Config(
+                    hardware_topology=HardwareTopology(
+                        screen=Topology(
+                            id="DEFAULT",
+                            type=Topology.SCREEN,
+                            hardware_feature=HardwareFeatures(
+                                fw_config=FirmwareConfiguration(
+                                    value=0b0001,
+                                    mask=0b0111,
+                                ))),
+                    ))
+            ]),
+        ]))
+
+    with self.assertRaisesRegex(AssertionError,
+                                'Topology SCREEN:DEFAULT with fw_config mask '
+                                '0x00000007 did not specify the complete '
+                                'fw_config field with mask 0x0000000E'):
+      FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
+          program_config=program_config, project_config=project_config)
+
+  def test_check_firmware_configuration_extra_mask(self):
+    """Tests check_firmware_configuration_masks with an extra mask."""
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[
+            Program(firmware_configuration_segments=[
+                FirmwareConfigurationSegment(name='screen', mask=0b0001),
+            ])
+        ]))
+
+    project_config = ConfigBundle(
+        designs=DesignList(value=[
+            Design(configs=[
+                Config(
+                    hardware_topology=HardwareTopology(
+                        screen=Topology(
+                            id="DEFAULT",
+                            type=Topology.SCREEN,
+                            hardware_feature=HardwareFeatures(
+                                fw_config=FirmwareConfiguration(
+                                    value=0b0001,
+                                    mask=0b0111,
+                                ))),
+                    ))
+            ]),
+        ]))
+
+    with self.assertRaisesRegex(AssertionError,
+                                'Topology SCREEN:DEFAULT specifies fw_mask '
+                                'that is not known 0x00000006'):
       FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
           program_config=program_config, project_config=project_config)
 
