@@ -74,7 +74,7 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 2147483647,
-          "smbios-name-match": "Fake"
+          "smbios-name-match": "FAKE-REF-DESIGN"
         },
         "name": "fake-ref-design",
         "power": {
@@ -151,7 +151,7 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 2,
-          "smbios-name-match": "Fake"
+          "smbios-name-match": "FAKE-REF-DESIGN"
         },
         "name": "fake-ref-design",
         "power": {

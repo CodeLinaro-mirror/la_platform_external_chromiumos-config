@@ -49,7 +49,7 @@ _FP = hw_topo.create_fingerprint(
 
 _HW_DESIGN_CONFIG = design.create_config(
     design_id = _DESIGN_ID,
-    config_id = "1",
+    config_id = 0x7fffffff,
     hardware_topology = hw_topo.create_hardware_topology(
         screen = _SCREEN,
         form_factor = _FORM_FACTOR,
@@ -118,8 +118,7 @@ _AUDIO_CARD = "fakeaudiocard"
 _SW_CONFIG = sc.create(
     design_config_id = _HW_DESIGN_CONFIG.id,
     id_scan_config = sc.create_x86_id_scan(
-        smbios_name_match = "Fake",
-        fw_sku = 0x7fffffff,
+        design_config_id = _HW_DESIGN_CONFIG.id,
     ),
     audio = sc.create_audio(
         card_name = _AUDIO_CARD,
@@ -174,8 +173,7 @@ _SW_CONFIG = sc.create(
 _SW_CONFIG_2 = sc.create(
     design_config_id = _HW_DESIGN_CONFIG_2.id,
     id_scan_config = sc.create_x86_id_scan(
-        smbios_name_match = "Fake",
-        fw_sku = 2,
+        design_config_id = _HW_DESIGN_CONFIG_2.id
     ),
     audio = sc.create_audio(
         card_name = _AUDIO_CARD,

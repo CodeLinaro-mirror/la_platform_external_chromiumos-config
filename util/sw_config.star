@@ -72,15 +72,56 @@ def _create_fw_config(ro = None, rw = None, ec = None, pd = None):
         pd_ro_payload = pd,
     )
 
-def _create_x86_id_scan(smbios_name_match, fw_sku = 255):
-    """Builds a IdentityScanConfig.DesignConfigId proto for x86."""
+def _create_x86_id_scan(smbios_name_match = None, fw_sku = 255, design_config_id = None):
+    """Builds a IdentityScanConfig.DesignConfigId proto for x86.
+
+    IdentityScanConfig.DesignConfigId is set based on the value of
+    DesignConfigId, i.e. DesignConfigId.value is
+    "<smbios_name_match>:<firmware_sku>".
+
+    Args:
+        smbios_name_match: Deprecated, use design_config_id instead.
+        fw_sku: Deprecated, use design_config_id instead.
+        design_config_id: A DesignConfigId proto.
+    """
+    if smbios_name_match and design_config_id:
+        fail(
+            "smbios_name_match cannot be used if design_config_id ",
+            "is used. smbios_name_match is deprecated, please use ",
+            "design_config_id.",
+        )
+
+    if design_config_id:
+        smbios_name_match, fw_sku = design_config_id.value.split(":")
+        fw_sku = int(fw_sku)
+
     return id_scan_pb.IdentityScanConfig.DesignConfigId(
         smbios_name_match = smbios_name_match,
         firmware_sku = fw_sku,
     )
 
-def _create_arm_id_scan(dt_compatible_match, fw_sku = 255):
-    """Builds a IdentityScanConfig.DesignConfigId proto for arm."""
+def _create_arm_id_scan(dt_compatible_match = None, fw_sku = 255, design_config_id = None):
+    """Builds a IdentityScanConfig.DesignConfigId proto for arm.
+
+    IdentityScanConfig.DesignConfigId is set based on the value of
+    DesignConfigId, i.e. DesignConfigId.value is
+    "<device_tree_compatible_match>:<firmware_sku>".
+
+    Args:
+        dt_compatible_match: Deprecated, use design_config_id instead.
+        fw_sku: Deprecated, use design_config_id instead.
+        design_config_id: A DesignConfigId proto.
+    """
+    if dt_compatible_match  and design_config_id:
+        fail(
+            "dt_compatible_match cannot be used if design_config_id ",
+            "is used. dt_compatible_match is deprecated, please use ",
+            "design_config_id.",
+        )
+
+    if design_config_id:
+        dt_compatible_match, fw_sku = design_config_id.value.split(":")
+        fw_sku = int(fw_sku)
     return id_scan_pb.IdentityScanConfig.DesignConfigId(
         device_tree_compatible_match = dt_compatible_match,
         firmware_sku = fw_sku,
