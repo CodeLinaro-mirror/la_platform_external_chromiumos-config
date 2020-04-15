@@ -78,7 +78,7 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
           program_config=program_config, project_config=None)
 
   def test_check_firmware_configuration_multiple_masks_in_use(self):
-    """Tests check_firmware_configuration_masks with that a topology using
+    """Tests check_firmware_configuration_masks with a topology using
     multiple fw_config fields.
     """
     program_config = ConfigBundle(
@@ -139,7 +139,8 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
     with self.assertRaisesRegex(AssertionError,
                                 'Topology SCREEN:DEFAULT with fw_config mask '
                                 '0x00000007 did not specify the complete '
-                                'fw_config field with mask 0x0000000E'):
+                                'fw_config field "screen_b" with mask '
+                                '0x0000000E'):
       FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
           program_config=program_config, project_config=project_config)
 

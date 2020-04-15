@@ -40,27 +40,22 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
               segment_a.name, segment_b.name, segment_a.mask, segment_b.mask,
               overlap))
 
-    # Collect all masks defined by segments. This ensures if there is only
-    # one mask we capture it
-    masks = []
-    for segment in segments:
-      masks.append(segment.mask)
-
     # For every topology that defines a FirmwareConfiguration, check the mask
     # aligns with a segment.
     for design in project_config.designs.value:
       for config in design.configs:
         for topology in proto_utils.get_all_fields(config.hardware_topology):
           mask = topology.hardware_feature.fw_config.mask
-          for fw_mask in masks:
-            overlap = mask & fw_mask
-            if (overlap):
-              self.assertEqual(overlap, fw_mask,
+          for seg in segments:
+            overlap = mask & seg.mask
+            if overlap:
+              self.assertEqual(overlap, seg.mask,
                 'Topology {} with fw_config mask 0x{:08X} did not specify the '
-                'complete fw_config field with mask 0x{:08X}'.format(
+                'complete fw_config field "{}" with mask 0x{:08X}'.format(
                   _topo_to_string(topology),
-                   topology.hardware_feature.fw_config.mask, fw_mask))
-              # Remove the valid fw_mask to keep track of any extra mask in
+                   topology.hardware_feature.fw_config.mask,
+                   seg.name, seg.mask))
+              # Remove the valid seg.mask to keep track of any extra mask in
               # the topology value
               mask -= overlap
           # After looping through all valid fw_config masks, ensure that topo's
