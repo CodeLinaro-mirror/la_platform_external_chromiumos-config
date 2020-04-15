@@ -48,6 +48,7 @@ message Topology {
     LTE_BOARD = 15;
     SD_READER = 16;
     MOTHERBOARD_USB = 17;
+    BLUETOOTH = 18;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -281,5 +282,12 @@ message HardwareFeatures {
       EMMC = 1;
       NVME = 2;
     }
+  }
+
+  // Bluetooth properties
+  Bluetooth bluetooth = 19;
+  message Bluetooth {
+    // Defines the specific bt component used in the design config
+    Component.Bluetooth component = 1;
   }
 }

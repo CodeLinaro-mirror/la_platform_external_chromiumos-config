@@ -88,4 +88,8 @@ message HardwareTopology {
   // Specify the motherboard USB topology
   // See ./hardware_topology.md#motherboard-usb for more information.
   Topology motherboard_usb = 17;
+
+  // Specify the bluetooth topology
+  // See ./hardware_topology.md#bluetooth for more information.
+  Topology bluetooth = 18;
 }

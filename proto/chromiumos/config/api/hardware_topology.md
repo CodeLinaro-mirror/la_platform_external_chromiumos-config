@@ -169,6 +169,16 @@ Changes that do not require new topology
 
 * Different vendor/part on same bus
 
+## Bluetooth
+
+Changes that require new topology
+
+* Changes in component (vendor_id, product_id, bcd_device)
+
+Changes that do not require new topology
+
+* None currently
+
 ## LTE Board
 
 Changes that require new topology

@@ -47,5 +47,6 @@ _BUILD_TARGETS = [bt_util.create("fake", "overlay-fake-private")]
 program = struct(
     fake = _FAKE,
     components = _QUALIFIED_COMPS,
+    bluetooth_component = _FAKE_BT_COMP,
     build_targets = _BUILD_TARGETS,
 )

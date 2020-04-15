@@ -38,6 +38,7 @@ _WIFI = hw_topo.create_wifi("WIFI", "Default wifi")
 _LTE_BOARD = hw_topo.create_lte_board("LTE_BOARD", "Default lte_board", lte_present = True)
 _SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
 _MOTHERBOARD_USB = hw_topo.create_motherboard_usb("MOTHERBOARD_USB", "Default motherboard_usb")
+_BLUETOOTH = hw_topo.create_bluetooth("BLUETOOTH", "Default bluetooth", bt_component = program.bluetooth_component.bluetooth)
 
 _FP = hw_topo.create_fingerprint(
     id = "AA_BB",
@@ -67,6 +68,7 @@ _HW_DESIGN_CONFIG = design.create_config(
         lte_board = _LTE_BOARD,
         sd_reader = _SD_READER,
         motherboard_usb = _MOTHERBOARD_USB,
+        bluetooth = _BLUETOOTH,
     ),
 )
 

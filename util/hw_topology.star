@@ -394,6 +394,21 @@ def _create_motherboard_usb(id, description, fw_mask = None, mlb_usb_id = None, 
         hardware_feature = hw_features,
     )
 
+def _create_bluetooth(id, description, bt_component, fw_configs = []):
+    """Builds a Topology proto for bluetooth."""
+    hw_features = topo_pb.HardwareFeatures()
+
+    hw_features.bluetooth.component = bt_component
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.BLUETOOTH,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
 def _create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -411,7 +426,8 @@ def _create_hardware_topology(
         wifi = None,
         lte_board = None,
         sd_reader = None,
-        motherboard_usb = None):
+        motherboard_usb = None,
+        bluetooth = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -466,6 +482,9 @@ def _create_hardware_topology(
     if motherboard_usb and motherboard_usb.type != topo_pb.Topology.MOTHERBOARD_USB:
         fail("Invalid motherboard usb board topology")
 
+    if bluetooth and bluetooth.type != topo_pb.Topology.BLUETOOTH:
+        fail("Invalid bluetooth topology")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -484,6 +503,7 @@ def _create_hardware_topology(
         lte_board = lte_board,
         sd_reader = sd_reader,
         motherboard_usb = motherboard_usb,
+        bluetooth = bluetooth,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -624,6 +644,13 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     if copy.motherboard_usb.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
         _accumulate_usba(result.usb_a, copy.motherboard_usb.hardware_feature.usb_a)
 
+    # Handle all possible bluetooth features attributes
+    _accumulate_fw_config(result.fw_config, copy.bluetooth.hardware_feature.fw_config)
+
+    if copy.bluetooth.hardware_feature.bluetooth != topo_pb.HardwareFeatures.Bluetooth():
+        result.bluetooth = copy.bluetooth.hardware_feature.bluetooth
+
+
     return result
 
 hw_topo = struct(
@@ -646,6 +673,7 @@ hw_topo = struct(
     create_lte_board = _create_lte_board,
     create_sd_reader = _create_sd_reader,
     create_motherboard_usb = _create_motherboard_usb,
+    create_bluetooth = _create_bluetooth,
     create_hardware_topology = _create_hardware_topology,
     convert_to_hw_features = _convert_to_hw_features,
     make_fw_config = _make_fw_config,
