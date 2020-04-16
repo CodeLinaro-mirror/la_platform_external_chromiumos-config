@@ -213,11 +213,20 @@ TEST=...
 "'
 
 # Upload changes with hashtag "fixbuggyvalue"
-repo upload --ht=fixbuggyvalue
+repo upload --ht=fixbuggyvalue --re=reviewer@google.com
 ```
 
 Similarly, the `gerrit` tool can apply a label to many CLs:
 
 ```
 gerrit label-cq `gerrit --raw search "owner:me hashtag:fixbuggyvalue"` 1
+```
+
+For anything where gerrit cannot accept multiple CLs, a shell loop
+can be used, for example the reviewers command:
+
+```
+for cl in `gerrit --raw search "owner:me status:open hashtag:fixit"`; do
+  gerrit -i reviewers $cl reviewer1@google.com reviewer2@google.com
+done
 ```
