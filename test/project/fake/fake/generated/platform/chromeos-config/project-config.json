@@ -55,14 +55,14 @@
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
           "build-targets": {
-            "coreboot": "fake",
-            "depthcharge": "fake",
-            "ec": "fake",
+            "coreboot": "fake-coreboot",
+            "depthcharge": "fake-depthcharge",
+            "ec": "fake-ec",
             "ec_extras": [
               "fake-ec-extra1",
               "fake-ec-extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake-libpayload"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 33,
@@ -132,14 +132,14 @@
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
           "build-targets": {
-            "coreboot": "fake",
-            "depthcharge": "fake",
-            "ec": "fake",
+            "coreboot": "fake-coreboot",
+            "depthcharge": "fake-depthcharge",
+            "ec": "fake-ec",
             "ec_extras": [
               "fake-ec-extra1",
               "fake-ec-extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake-libpayload"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 33,

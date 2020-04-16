@@ -31,6 +31,8 @@ message SoftwareConfig {
 
   FirmwareConfig firmware = 3;
 
+  FirmwareBuildConfig firmware_build_config = 9;
+
   BluetoothConfig bluetooth_config = 4;
 
   PowerConfig power_config = 5;

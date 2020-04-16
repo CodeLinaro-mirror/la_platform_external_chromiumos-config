@@ -22,8 +22,8 @@ message Version {
 
 // Specifies the location of a firmware binary.
 message FirmwarePayload {
-  // The build target the firmware was built for.
-  string build_target_name = 1;
+  // Deprecated, use FirmwareBuildConfig.BuildTargets.
+  string build_target_name = 1 [deprecated=true];
 
   // The name of the firmware image used by the firmware updater. Typically
   // the device name, but can differ when a device may have two or more
@@ -35,7 +35,15 @@ message FirmwarePayload {
   Version version = 4;
 }
 
-// Specifies different firmware payloads to use in a build.
+// Specifies different firmware payloads to use. This is used in the following
+// contexts:
+//
+// - OS images that specify BCS payloads.
+// - In the factory to flash the RO firmware.
+//
+// Building firmware is configured with the FirmwareBuildConfig message.
+//
+// TODO(crbug.com/1071918): Rename to FirmwarePayloadConfig.
 message FirmwareConfig {
   // The main read-only firmware.
   FirmwarePayload main_ro_payload = 1;
@@ -46,9 +54,42 @@ message FirmwareConfig {
   // The embedded controller read-only firmware.
   FirmwarePayload ec_ro_payload = 3;
 
-  // Extra EC build targets to build/include in the EC firmware.
-  repeated string ec_extras = 4;
+  // Deprecated, use FirmwareBuildConfig.BuildTargets.ec_extras.
+  repeated string ec_extras = 4 [deprecated=true];
 
   // The libpayload read-only firmware
   FirmwarePayload pd_ro_payload = 5;
+}
+
+
+// Config for building firmware components. This is used in the following
+// contexts:
+//
+// - Firmware builders.
+// - Local development when building from source (i.e. cros_workon start).
+// - New projects that don't yet specify BCS payloads.
+//
+// When building OS images, firmware payloads are usually pulled from BCS, as
+// specified by the FirmwareConfig message.
+message FirmwareBuildConfig {
+
+  // Build targets for building firmware components.
+  message BuildTargets {
+    // Build target for coreboot.
+    string coreboot = 1;
+
+    // Build target for depthcharge.
+    string depthcharge = 2;
+
+    // Build target for EC firmware.
+    string ec = 3;
+
+    // Extra EC build targets to build/include in the EC firmware.
+    repeated string ec_extras = 4;
+
+    // Build target for libpayload.
+    string libpayload = 5;
+  }
+
+  BuildTargets build_targets = 1;
 }

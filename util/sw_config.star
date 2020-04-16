@@ -42,13 +42,28 @@ def _create_fw_payload(
         major_version = 0,
         minor_version = 0):
     """Builds a FirmwarePayload proto."""
-    build_target_name = build_target_name or name
     return fw_pb.FirmwarePayload(
         firmware_image_name = name,
         build_target_name = build_target_name,
         type = fw_type,
         version = fw_pb.Version(major = major_version, minor = minor_version),
     )
+
+def _create_fw_build_targets(
+    coreboot = None, depthcharge = None, ec = None, ec_extras=None, libpayload = None
+    ):
+    """Builds a FirmwareBuildConfig.BuildTargets proto."""
+    return fw_pb.FirmwareBuildConfig.BuildTargets(
+        coreboot = coreboot,
+        depthcharge = depthcharge,
+        ec = ec,
+        ec_extras = ec_extras,
+        libpayload = libpayload,
+    )
+
+def _create_fw_build_config(build_targets):
+    """Builds a FirmwareBuildConfig proto."""
+    return fw_pb.FirmwareBuildConfig(build_targets = build_targets)
 
 def _create_fw_config(ro = None, rw = None, ec = None, ec_extras = None, pd = None):
     """Builds a FirmwareConfig proto."""
@@ -103,6 +118,7 @@ def _create(
         design_config_id = None,
         id_scan_config = None,
         firmware = None,
+        firmware_build_config = None,
         bluetooth = None,
         power = None,
         audio = None):
@@ -111,6 +127,7 @@ def _create(
         design_config_id = design_config_id,
         id_scan_config = id_scan_config,
         firmware = firmware,
+        firmware_build_config = firmware_build_config,
         bluetooth_config = bluetooth,
         power_config = power,
         audio_config = audio,
@@ -124,6 +141,8 @@ sw_config = struct(
     create_arm_id_scan = _create_arm_id_scan,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,
+    create_fw_build_config = _create_fw_build_config,
+    create_fw_build_targets = _create_fw_build_targets,
     create_power = _create_power,
     fw_type = _FW_TYPE,
 )

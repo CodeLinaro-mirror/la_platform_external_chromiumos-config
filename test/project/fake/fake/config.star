@@ -136,27 +136,31 @@ _SW_CONFIG = sc.create(
     firmware = sc.create_fw_config(
         ro = sc.create_fw_payload(
             name = "Fake",
-            build_target_name = "fake",
             major_version = 11111,
         ),
         rw = sc.create_fw_payload(
             name = "Fake",
-            build_target_name = "fake",
             major_version = 11111,
         ),
         ec = sc.create_fw_payload(
             name = "Fake_EC",
-            build_target_name = "fake",
             fw_type = sc.fw_type.EC,
             major_version = 11111,
             minor_version = 2,
         ),
-        ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],
         pd = sc.create_fw_payload(
             name = "Fake_PD",
-            build_target_name = "fake",
             fw_type = sc.fw_type.PD,
             major_version = 11111,
+        ),
+    ),
+    firmware_build_config = sc.create_fw_build_config(
+        build_targets = sc.create_fw_build_targets(
+            coreboot = "fake-coreboot",
+            depthcharge = "fake-depthcharge",
+            ec = "fake-ec",
+            ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],
+            libpayload = "fake-libpayload",
         ),
     ),
     power = sc.create_power(
@@ -184,27 +188,31 @@ _SW_CONFIG_2 = sc.create(
     firmware = sc.create_fw_config(
         ro = sc.create_fw_payload(
             name = "Fake",
-            build_target_name = "fake",
             major_version = 11111,
         ),
         rw = sc.create_fw_payload(
             name = "Fake",
-            build_target_name = "fake",
             major_version = 11111,
         ),
         ec = sc.create_fw_payload(
             name = "Fake_EC",
-            build_target_name = "fake",
             fw_type = sc.fw_type.EC,
             major_version = 11111,
             minor_version = 2,
         ),
-        ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],
         pd = sc.create_fw_payload(
             name = "Fake_PD",
-            build_target_name = "fake",
             fw_type = sc.fw_type.PD,
             major_version = 11111,
+        ),
+    ),
+    firmware_build_config = sc.create_fw_build_config(
+        build_targets = sc.create_fw_build_targets(
+            coreboot = "fake-coreboot",
+            depthcharge = "fake-depthcharge",
+            ec = "fake-ec",
+            ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],
+            libpayload = "fake-libpayload",
         ),
     ),
     power = sc.create_power(

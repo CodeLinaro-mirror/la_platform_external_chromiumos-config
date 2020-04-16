@@ -124,24 +124,50 @@ def _FwBuildTarget(payload):
 
 
 def _BuildFirmware(config):
-  fw = config.sw_config.firmware
-  main_ro = fw.main_ro_payload
-  main_rw = fw.main_rw_payload
-  ec_ro = fw.ec_ro_payload
-  pd_ro = fw.pd_ro_payload
+  fw_payload_config = config.sw_config.firmware
+  fw_build_config = config.sw_config.firmware_build_config
+  main_ro = fw_payload_config.main_ro_payload
+  main_rw = fw_payload_config.main_rw_payload
+  ec_ro = fw_payload_config.ec_ro_payload
+  pd_ro = fw_payload_config.pd_ro_payload
 
   build_targets = {}
-  _Set(_FwBuildTarget(main_ro), build_targets, 'depthcharge')
-  # Default to RO build target if no RW set
-  _Set(_FwBuildTarget(main_rw) or _FwBuildTarget(main_ro),
-       build_targets,
-       'coreboot')
-  _Set(_FwBuildTarget(ec_ro), build_targets, 'ec')
-  _Set(list(fw.ec_extras), build_targets, 'ec_extras')
-  # Default to EC build target if no PD set
-  _Set(_FwBuildTarget(pd_ro) or _FwBuildTarget(ec_ro),
-       build_targets,
-       'libpayload')
+
+  if fw_build_config.HasField('build_targets') and any((
+      _FwBuildTarget(main_ro),
+      _FwBuildTarget(main_rw),
+      _FwBuildTarget(ec_ro),
+      _FwBuildTarget(pd_ro),
+      fw_payload_config.ec_extras,
+  )):
+    raise ValueError(
+        'FirmwareBuildConfig.build_targets cannot be set if build_target_name '
+        'is set on any FirmwarePayload or ec_extras is set. '
+        'FirmwarePayload.build_target_name is deprecated, please use '
+        'FirmwareBuildConfig.build_targets instead.'
+    )
+
+  if fw_build_config.HasField('build_targets'):
+    _Set(fw_build_config.build_targets.depthcharge, build_targets,
+         'depthcharge')
+    _Set(fw_build_config.build_targets.coreboot, build_targets, 'coreboot')
+    _Set(fw_build_config.build_targets.ec, build_targets, 'ec')
+    _Set(
+        list(fw_build_config.build_targets.ec_extras), build_targets,
+        'ec_extras')
+    _Set(fw_build_config.build_targets.libpayload, build_targets, 'libpayload')
+  else:
+    _Set(_FwBuildTarget(main_ro), build_targets, 'depthcharge')
+    # Default to RO build target if no RW set
+    _Set(_FwBuildTarget(main_rw) or _FwBuildTarget(main_ro),
+        build_targets,
+        'coreboot')
+    _Set(_FwBuildTarget(ec_ro), build_targets, 'ec')
+    _Set(list(fw_payload_config.ec_extras), build_targets, 'ec_extras')
+    # Default to EC build target if no PD set
+    _Set(_FwBuildTarget(pd_ro) or _FwBuildTarget(ec_ro),
+        build_targets,
+        'libpayload')
 
   result = {
       'bcs-overlay': config.build_target.overlay_name,
