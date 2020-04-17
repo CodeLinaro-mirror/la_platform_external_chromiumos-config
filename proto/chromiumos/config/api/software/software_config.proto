@@ -9,7 +9,7 @@ package chromiumos.config.api.software;
 import "chromiumos/config/api/design_config_id.proto";
 import "chromiumos/config/api/software/audio_config.proto";
 import "chromiumos/config/api/software/firmware_config.proto";
-import "chromiumos/config/api/software/bluetooth/config.proto";
+import "chromiumos/config/api/software/bluetooth_config.proto";
 import "chromiumos/config/api/software/chromeos_config/identity_scan_config.proto";
 import "chromiumos/config/api/software/power_config.proto";
 
@@ -31,7 +31,7 @@ message SoftwareConfig {
 
   FirmwareConfig firmware = 3;
 
-  bluetooth.BluetoothConfig bluetooth_config = 4;
+  BluetoothConfig bluetooth_config = 4;
 
   PowerConfig power_config = 5;
 
