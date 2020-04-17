@@ -128,6 +128,11 @@ _SW_CONFIG = sc.create(
         ucm_file = "audio/%s/HiFi.conf" % _AUDIO_CARD,
         ucm_master_file = "audio/%s/%s.conf" % (_AUDIO_CARD, _AUDIO_CARD),
     ),
+    bluetooth = sc.create_bluetooth(
+        flags = {
+            "enable-suspend-management": True,
+        },
+    ),
     firmware = sc.create_fw_config(
         ro = sc.create_fw_payload(
             name = "Fake",

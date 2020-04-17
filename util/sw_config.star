@@ -13,6 +13,10 @@ load(
     audio_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/bluetooth_config.proto",
+    bt_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/config/api/software/firmware_config.proto",
     fw_pb = "chromiumos.config.api.software",
 )
@@ -87,6 +91,10 @@ def _create_audio(
         ucm_suffix = ucm_suffix,
     )
 
+def _create_bluetooth(flags):
+    """Builds a BluetoothConfig proto."""
+    return bt_pb.BluetoothConfig(flags = flags)
+
 def _create_power(preferences):
     """Builds a PowerConfig proto."""
     return pc_pb.PowerConfig(preferences = preferences)
@@ -95,7 +103,7 @@ def _create(
         design_config_id = None,
         id_scan_config = None,
         firmware = None,
-        bt = None,
+        bluetooth = None,
         power = None,
         audio = None):
     """Builds a SoftwareConfig proto."""
@@ -103,7 +111,7 @@ def _create(
         design_config_id = design_config_id,
         id_scan_config = id_scan_config,
         firmware = firmware,
-        bluetooth_config = bt,
+        bluetooth_config = bluetooth,
         power_config = power,
         audio_config = audio,
     )
@@ -111,6 +119,7 @@ def _create(
 sw_config = struct(
     create = _create,
     create_audio = _create_audio,
+    create_bluetooth = _create_bluetooth,
     create_x86_id_scan = _create_x86_id_scan,
     create_arm_id_scan = _create_arm_id_scan,
     create_fw_payload = _create_fw_payload,
