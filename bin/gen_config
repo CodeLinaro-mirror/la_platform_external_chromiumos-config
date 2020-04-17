@@ -52,11 +52,21 @@ source .venv/bin/activate
 # Install requirements.
 pip install -r config/requirements.txt -q
 
-mkdir -p generated/project
+# Check for platform generated directory and use that
+# while migrating config from /project to /platform
+# Once all projects are migrated, the else branch can be deleted.
+if [[ -d "generated/platform/chromeos-config" ]]; then
+  python3 config/payload_utils/cros_config_proto_converter.py \
+    --output generated/platform/chromeos-config/project-config.json \
+    --program_config program/generated/config.binaryproto \
+    --project_configs generated/config.binaryproto
+else
+  mkdir -p generated/project
 
-python3 config/payload_utils/cros_config_proto_converter.py \
-  --output generated/project/project-config.json \
-  --program_config program/generated/config.binaryproto \
-  --project_configs generated/config.binaryproto
+  python3 config/payload_utils/cros_config_proto_converter.py \
+    --output generated/project/project-config.json \
+    --program_config program/generated/config.binaryproto \
+    --project_configs generated/config.binaryproto
+fi
 
 deactivate
