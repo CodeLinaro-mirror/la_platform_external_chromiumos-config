@@ -35,6 +35,11 @@
             ]
           }
         },
+        "bluetooth": {
+          "flags": {
+            "enable-suspend-management": true
+          }
+        },
         "brand-code": "AAAA",
         "camera": {
           "count": 1

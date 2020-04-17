@@ -8,7 +8,9 @@
 import argparse
 import json
 import pprint
+import os
 import sys
+import re
 
 from collections import namedtuple
 
@@ -80,6 +82,20 @@ def _BuildArc(config):
   return {
       'build-properties': build_properties
   }
+
+def _BuildBluetooth(config, bluetooth_files):
+  bt_flags = config.sw_config.bluetooth_config.flags
+  # Convert to native map (from proto wrapper)
+  bt_flags_map = dict(bt_flags)
+  result = {}
+  if bt_flags_map:
+    result['flags'] = bt_flags_map
+  bt_comp = config.hw_design_config.hardware_features.bluetooth.component
+  if bt_comp.vendor_id:
+    bt_id = _BluetoothId(config.hw_design.name.lower(), bt_comp)
+    if bt_id in bluetooth_files:
+      result['config'] = bluetooth_files[bt_id]
+  return result
 
 
 def _BuildFingerprint(hw_topology):
@@ -251,7 +267,7 @@ def _Lookup(id_value, id_map):
     raise Exception(error)
 
 
-def _TransformBuildConfigs(config):
+def _TransformBuildConfigs(config, bluetooth_files={}):
   partners = dict([(x.id.value, x) for x in config.partners.value])
   programs = dict([(x.id.value, x) for x in config.programs.value])
   sw_configs = list(config.software_configs)
@@ -295,17 +311,19 @@ def _TransformBuildConfigs(config):
         if signer_configs:
           device_signer_config = _Lookup(device_brand.id, signer_configs)
 
-        transformed_config = _TransformBuildConfig(Config(
-            program=program,
-            hw_design=hw_design,
-            odm=_Lookup(hw_design.odm_id, partners),
-            hw_design_config=hw_design_config,
-            device_brand=device_brand,
-            device_signer_config=device_signer_config,
-            oem=_Lookup(device_brand.oem_id, partners),
-            sw_config=sw_config,
-            brand_config=brand_config,
-            build_target=config.build_targets[0]))
+        transformed_config = _TransformBuildConfig(
+            Config(
+                program=program,
+                hw_design=hw_design,
+                odm=_Lookup(hw_design.odm_id, partners),
+                hw_design_config=hw_design_config,
+                device_brand=device_brand,
+                device_signer_config=device_signer_config,
+                oem=_Lookup(device_brand.oem_id, partners),
+                sw_config=sw_config,
+                brand_config=brand_config,
+                build_target=config.build_targets[0]),
+            bluetooth_files)
 
         config_json = json.dumps(transformed_config,
                                  sort_keys=True,
@@ -318,11 +336,12 @@ def _TransformBuildConfigs(config):
   return list(results.values())
 
 
-def _TransformBuildConfig(config):
+def _TransformBuildConfig(config, bluetooth_files):
   """Transforms Config instance into target platform JSON schema.
 
   Args:
     config: Config namedtuple
+    bluetooth_files: Map to look up the generated bluetooth config files.
 
   Returns:
     Unique config payload based on the platform JSON schema.
@@ -337,6 +356,7 @@ def _TransformBuildConfig(config):
 
   _Set(_BuildArc(config), result, 'arc')
   _Set(_BuildAudio(config), result, 'audio')
+  _Set(_BuildBluetooth(config, bluetooth_files), result, 'bluetooth')
   _Set(config.device_brand.brand_code, result, 'brand-code')
   _Set(_BuildCamera(
       config.hw_design_config.hardware_topology), result, 'camera')
@@ -375,6 +395,47 @@ def WriteOutput(configs, output=None):
     print(json_output)
 
 
+def _BluetoothId(project_name, bt_comp):
+  return '_'.join([project_name,
+                   bt_comp.vendor_id,
+                   bt_comp.product_id,
+                   bt_comp.bcd_device])
+
+
+def WriteBluetoothConfigFiles(config, output_dir):
+  """Writes bluetooth conf files for every unique bluetooth chip.
+
+  Args:
+    config: Source ConfigBundle to process.
+    output_dir: Path to the generated output.
+  Returns:
+    dict that maps the bluetooth component id onto the file config.
+  """
+  project_gen_path = re.match(r'.*(generated.*)', output_dir).groups(1)[0]
+  result = {}
+  for hw_design in config.designs.value:
+    project_name = hw_design.name.lower()
+    for design_config in hw_design.configs:
+      bt_comp = design_config.hardware_features.bluetooth.component
+      if bt_comp.vendor_id:
+        bt_id = _BluetoothId(project_name, bt_comp)
+        result[bt_id] = {
+            'build-path': '%s/%s/bluetooth/%s.conf' % (
+                project_name, project_gen_path, bt_id),
+            'system-path': '/etc/bluetooth/%s/main.conf' % bt_id,
+        }
+        bt_content = '''[General]
+DeviceID = bluetooth:%s:%s:%s''' % (bt_comp.vendor_id,
+                                    bt_comp.product_id,
+                                    bt_comp.bcd_device)
+
+        output = '%s/bluetooth/%s.conf' % (output_dir, bt_id)
+        with open(output, 'w') as output_stream:
+          # Using print function adds proper trailing newline.
+          print(bt_content, file=output_stream)
+  return result
+
+
 def _ReadConfig(path):
   """Reads a binary proto from a file.
 
@@ -405,13 +466,14 @@ def Main(project_configs,
     program_config: Program config for the given set of projects.
     output: Output file that will be generated by the transform.
   """
-  WriteOutput(
-      _TransformBuildConfigs(
-          _MergeConfigs(
-              [_ReadConfig(program_config)] +
-              [_ReadConfig(config) for config in project_configs],)
-          ,),
-      output)
+  configs =_MergeConfigs(
+      [_ReadConfig(program_config)] +
+      [_ReadConfig(config) for config in project_configs])
+  bt_files = {}
+  # Extracts output directory through regex versus separate args
+  if output and 'generated' in output:
+    bt_files = WriteBluetoothConfigFiles(configs, os.path.dirname(output))
+  WriteOutput(_TransformBuildConfigs(configs, bt_files), output)
 
 
 def main(argv=None):
