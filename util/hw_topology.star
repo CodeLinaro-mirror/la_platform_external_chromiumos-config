@@ -31,6 +31,9 @@ _AUDIO_CODEC = struct(
     RT5682 = topo_pb.HardwareFeatures.Audio.RT5682,
     ALC5682I = topo_pb.HardwareFeatures.Audio.ALC5682I,
     ALC5682 = topo_pb.HardwareFeatures.Audio.ALC5682,
+    MAX98357 = topo_pb.HardwareFeatures.Audio.MAX98357,
+    MAX98373 = topo_pb.HardwareFeatures.Audio.MAX98373,
+    MAX98360 = topo_pb.HardwareFeatures.Audio.MAX98360,
 )
 
 _MEMORY = struct(
@@ -147,11 +150,16 @@ def _create_form_factor(id, description, form_factor, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_audio(id, description, codec, fw_configs = []):
+def _create_audio(id, description, codec = None, speaker_amp = None, headphone_codec = None, fw_configs = []):
     """Builds a Topology proto for audio."""
     hw_features = topo_pb.HardwareFeatures()
 
-    hw_features.audio.audio_codec = codec
+    if codec:
+        hw_features.audio.audio_codec = codec
+    if speaker_amp:
+        hw_features.audio.speaker_amp = speaker_amp
+    if headphone_codec:
+        hw_features.audio.headphone_codec = headphone_codec
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
