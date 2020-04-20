@@ -1,0 +1,174 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.test.tls;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/tls";
+
+import "chromiumos/config/api/test/xmlrpc/xmlrpc.proto";
+
+// Wiring APIs are implemented by TLS wiring providers for all low
+// level access to lab services.
+//
+// The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+// NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
+// "OPTIONAL" in this document are to be interpreted as described in
+// RFC 2119.
+//
+// Implementations of the service MAY leave methods unimplemented.
+//
+// All clients SHOULD pass the gRPC metadata key request_trace_id with one
+// value. The value is a unique string that is associated with the method call
+// in metrics. Clients that do not pass request_trace_id MAY be rejected so that
+// they can be fixed.
+service Wiring {
+  // Open a port on the DUT and return an address which the client can
+  // use to connect to the port on the DUT.
+  // The TLE SHOULD attempt to keep this address-to-port connection open for
+  // the duration of the RTD's runtime.
+  // The connection is not restarted if it is interrupted.
+  //
+  // If the connection from a previous call with the same arguments is
+  // still open, this RPC SHOULD do nothing and return the same
+  // response.
+  // If the previous connection was closed, the implementation SHOULD
+  // attempt to rebind and return the same address.
+  // If the implementation lost and cannot reobtain the previous
+  // address, it MAY return a new address.
+  //
+  // This RPC does NOT ensure that there is a service running on the
+  // DUT for the given port.
+  // A service running on the given port MUST NOT required for this RPC
+  // to succeed.
+  // It is not specified whether this RPC will open the given port in
+  // the DUT's firewall, if the DUT has a firewall.
+  rpc OpenDutPort(OpenDutPortRequest) returns (OpenDutPortResponse);
+
+  // SetDutPowerSupply sets the connected power state for the DUT.  It is
+  // the caller's responsibility to wait for the effects of the call
+  // to propagate, e.g. waiting in between calls to set the power OFF
+  // and ON.
+  //
+  // EXPERIMENTAL
+  rpc SetDutPowerSupply(SetDutPowerSupplyRequest)
+      returns (SetDutPowerSupplyResponse);
+
+  // CacheForDut caches some data to be accesible for the DUT.
+  // This will be made available to the DUT via a returned URL.
+  // The service will periodically return STATUS_CONTINUE messages to keep the
+  // stream alive. Implementations should use a reasonable interval (e.g., one
+  // minute) to ensure the stream does not time out. The client should continue
+  // streaming replies until getting success or failure.
+  //
+  // EXPERIMENTAL
+  rpc CacheForDut(CacheForDutRequest) returns (stream CacheForDutResponse);
+
+  // CallServoXmlRpc performs an XML-RPC call against the servo connected to a
+  // DUT.
+  //
+  // This RPC mirrors the XML-RPC specification (http://xmlrpc.com/spec.md).
+  //
+  // EXPERIMENTAL
+  rpc CallServoXmlRpc(CallServoXmlRpcRequest) returns (CallServoXmlRpcResponse);
+}
+
+message OpenDutPortRequest {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+  // port is the port to open on the DUT.
+  int32 port = 2;
+}
+message OpenDutPortResponse {
+  // address for which a port is forwarded to the DUT.
+  // TLEs SHOULD return an IPv4 or IPv6 address to avoid name
+  // resolution issues.
+  // IPv4 addresses MUST be in standard dotted decimal notation.
+  // IPv6 addresses MUST be formatted according to RFC4291, Section
+  // 2.2.  The mixed IPv4 and IPv6 form MUST NOT be used.
+  // If TLEs return a hostname, they SHOULD ensure that the hostname
+  // can be resolved by the RTD via standard name resolution
+  // facilities.
+  string address = 1;
+  // port on the address which is forwarded to the DUT.
+  int32 port = 2;
+}
+
+message SetDutPowerSupplyRequest {
+  string dut = 1;
+  enum State {
+    STATE_UNKNOWN = 0;
+    STATE_ON = 1;
+    STATE_OFF = 2;
+  }
+  State state = 2;
+}
+message SetDutPowerSupplyResponse {
+  enum Status {
+    STATUS_UNKNOWN = 0;
+    STATUS_OK = 1;
+    // STATUS_BAD_DUT indicates that the DUT is not known,
+    // or the caller does not have access to it.
+    STATUS_BAD_DUT = 2;
+    // STATUS_BAD_REQUEST indicates that the request was invalid,
+    // e.g., passing an invalid state.
+    STATUS_BAD_REQUEST = 3;
+    STATUS_NO_RPM = 4;
+    STATUS_RPM_ERROR = 5;
+  }
+  Status status = 1;
+  // reason provides human friendly context for any error status.
+  string reason = 2;
+}
+
+message CacheForDutRequest {
+  // url identifies the resource to cache.
+  // Only http, https, and gs are supported.
+  string url = 1;
+}
+message CacheForDutResponse {
+  enum Status {
+    STATUS_UNKNOWN = 0;
+    STATUS_OK = 1;
+    STATUS_CONTINUE = 2;
+    STATUS_NOT_FOUND = 3;
+    STATUS_TIMEOUT = 4;
+  }
+  Status status = 1;
+  // url is where the resource is cached at.
+  // This should be accessible to the DUT.
+  // If the host is a name, it should be resolveable by the DUT via
+  // standard name resolution facilities.
+  string url = 2;
+  // reason provides human friendly context for any error status.
+  string reason = 3;
+}
+
+message CallServoXmlRpcRequest {
+  string dut = 1;
+  string method = 2;
+  repeated xmlrpc.Value args = 3;
+}
+message CallServoXmlRpcResponse {
+  enum Status {
+    STATUS_UNKNOWN = 0;
+    STATUS_OK = 1;
+    // STATUS_BAD_DUT indicates that the DUT is not known,
+    // or the caller does not have access to it.
+    STATUS_BAD_DUT = 2;
+    // STATUS_NO_METHOD indicates that the requested method does not
+    // exist.
+    STATUS_NO_METHOD = 3;
+    STATUS_NO_SERVO = 4;
+    STATUS_SERVO_ERROR = 5;
+  }
+  Status status = 1;
+  xmlrpc.Value value = 2;
+  // fault indicates that the servo XML-RPC returned a fault.
+  // The fault value is stored in the value field.
+  bool fault = 3;
+}
