@@ -4,9 +4,13 @@
 package tls
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	xmlrpc "go.chromium.org/chromiumos/config/go/api/test/xmlrpc"
+	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -648,4 +652,300 @@ var fileDescriptor_64c10ff2acf3a7b5 = []byte{
 	0xdb, 0x1f, 0x6c, 0x7f, 0x7c, 0xd9, 0xa1, 0xb7, 0xc5, 0x2a, 0x65, 0x9d, 0xca, 0xf8, 0xf3, 0xdc,
 	0xa1, 0x43, 0xcf, 0xfd, 0xa7, 0x42, 0xfc, 0x30, 0x6f, 0xff, 0x0d, 0x00, 0x00, 0xff, 0xff, 0x19,
 	0x0f, 0xe8, 0x90, 0x17, 0x08, 0x00, 0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// WiringClient is the client API for Wiring service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type WiringClient interface {
+	// Open a port on the DUT and return an address which the client can
+	// use to connect to the port on the DUT.
+	// The TLE SHOULD attempt to keep this address-to-port connection open for
+	// the duration of the RTD's runtime.
+	// The connection is not restarted if it is interrupted.
+	//
+	// If the connection from a previous call with the same arguments is
+	// still open, this RPC SHOULD do nothing and return the same
+	// response.
+	// If the previous connection was closed, the implementation SHOULD
+	// attempt to rebind and return the same address.
+	// If the implementation lost and cannot reobtain the previous
+	// address, it MAY return a new address.
+	//
+	// This RPC does NOT ensure that there is a service running on the
+	// DUT for the given port.
+	// A service running on the given port MUST NOT required for this RPC
+	// to succeed.
+	// It is not specified whether this RPC will open the given port in
+	// the DUT's firewall, if the DUT has a firewall.
+	OpenDutPort(ctx context.Context, in *OpenDutPortRequest, opts ...grpc.CallOption) (*OpenDutPortResponse, error)
+	// SetDutPowerSupply sets the connected power state for the DUT.  It is
+	// the caller's responsibility to wait for the effects of the call
+	// to propagate, e.g. waiting in between calls to set the power OFF
+	// and ON.
+	//
+	// EXPERIMENTAL
+	SetDutPowerSupply(ctx context.Context, in *SetDutPowerSupplyRequest, opts ...grpc.CallOption) (*SetDutPowerSupplyResponse, error)
+	// CacheForDut caches some data to be accesible for the DUT.
+	// This will be made available to the DUT via a returned URL.
+	// The service will periodically return STATUS_CONTINUE messages to keep the
+	// stream alive. Implementations should use a reasonable interval (e.g., one
+	// minute) to ensure the stream does not time out. The client should continue
+	// streaming replies until getting success or failure.
+	//
+	// EXPERIMENTAL
+	CacheForDut(ctx context.Context, in *CacheForDutRequest, opts ...grpc.CallOption) (Wiring_CacheForDutClient, error)
+	// CallServoXmlRpc performs an XML-RPC call against the servo connected to a
+	// DUT.
+	//
+	// This RPC mirrors the XML-RPC specification (http://xmlrpc.com/spec.md).
+	//
+	// EXPERIMENTAL
+	CallServoXmlRpc(ctx context.Context, in *CallServoXmlRpcRequest, opts ...grpc.CallOption) (*CallServoXmlRpcResponse, error)
+}
+
+type wiringClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewWiringClient(cc *grpc.ClientConn) WiringClient {
+	return &wiringClient{cc}
+}
+
+func (c *wiringClient) OpenDutPort(ctx context.Context, in *OpenDutPortRequest, opts ...grpc.CallOption) (*OpenDutPortResponse, error) {
+	out := new(OpenDutPortResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.config.api.test.tls.Wiring/OpenDutPort", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wiringClient) SetDutPowerSupply(ctx context.Context, in *SetDutPowerSupplyRequest, opts ...grpc.CallOption) (*SetDutPowerSupplyResponse, error) {
+	out := new(SetDutPowerSupplyResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.config.api.test.tls.Wiring/SetDutPowerSupply", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wiringClient) CacheForDut(ctx context.Context, in *CacheForDutRequest, opts ...grpc.CallOption) (Wiring_CacheForDutClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Wiring_serviceDesc.Streams[0], "/chromiumos.config.api.test.tls.Wiring/CacheForDut", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &wiringCacheForDutClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Wiring_CacheForDutClient interface {
+	Recv() (*CacheForDutResponse, error)
+	grpc.ClientStream
+}
+
+type wiringCacheForDutClient struct {
+	grpc.ClientStream
+}
+
+func (x *wiringCacheForDutClient) Recv() (*CacheForDutResponse, error) {
+	m := new(CacheForDutResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *wiringClient) CallServoXmlRpc(ctx context.Context, in *CallServoXmlRpcRequest, opts ...grpc.CallOption) (*CallServoXmlRpcResponse, error) {
+	out := new(CallServoXmlRpcResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.config.api.test.tls.Wiring/CallServoXmlRpc", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// WiringServer is the server API for Wiring service.
+type WiringServer interface {
+	// Open a port on the DUT and return an address which the client can
+	// use to connect to the port on the DUT.
+	// The TLE SHOULD attempt to keep this address-to-port connection open for
+	// the duration of the RTD's runtime.
+	// The connection is not restarted if it is interrupted.
+	//
+	// If the connection from a previous call with the same arguments is
+	// still open, this RPC SHOULD do nothing and return the same
+	// response.
+	// If the previous connection was closed, the implementation SHOULD
+	// attempt to rebind and return the same address.
+	// If the implementation lost and cannot reobtain the previous
+	// address, it MAY return a new address.
+	//
+	// This RPC does NOT ensure that there is a service running on the
+	// DUT for the given port.
+	// A service running on the given port MUST NOT required for this RPC
+	// to succeed.
+	// It is not specified whether this RPC will open the given port in
+	// the DUT's firewall, if the DUT has a firewall.
+	OpenDutPort(context.Context, *OpenDutPortRequest) (*OpenDutPortResponse, error)
+	// SetDutPowerSupply sets the connected power state for the DUT.  It is
+	// the caller's responsibility to wait for the effects of the call
+	// to propagate, e.g. waiting in between calls to set the power OFF
+	// and ON.
+	//
+	// EXPERIMENTAL
+	SetDutPowerSupply(context.Context, *SetDutPowerSupplyRequest) (*SetDutPowerSupplyResponse, error)
+	// CacheForDut caches some data to be accesible for the DUT.
+	// This will be made available to the DUT via a returned URL.
+	// The service will periodically return STATUS_CONTINUE messages to keep the
+	// stream alive. Implementations should use a reasonable interval (e.g., one
+	// minute) to ensure the stream does not time out. The client should continue
+	// streaming replies until getting success or failure.
+	//
+	// EXPERIMENTAL
+	CacheForDut(*CacheForDutRequest, Wiring_CacheForDutServer) error
+	// CallServoXmlRpc performs an XML-RPC call against the servo connected to a
+	// DUT.
+	//
+	// This RPC mirrors the XML-RPC specification (http://xmlrpc.com/spec.md).
+	//
+	// EXPERIMENTAL
+	CallServoXmlRpc(context.Context, *CallServoXmlRpcRequest) (*CallServoXmlRpcResponse, error)
+}
+
+// UnimplementedWiringServer can be embedded to have forward compatible implementations.
+type UnimplementedWiringServer struct {
+}
+
+func (*UnimplementedWiringServer) OpenDutPort(ctx context.Context, req *OpenDutPortRequest) (*OpenDutPortResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method OpenDutPort not implemented")
+}
+func (*UnimplementedWiringServer) SetDutPowerSupply(ctx context.Context, req *SetDutPowerSupplyRequest) (*SetDutPowerSupplyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetDutPowerSupply not implemented")
+}
+func (*UnimplementedWiringServer) CacheForDut(req *CacheForDutRequest, srv Wiring_CacheForDutServer) error {
+	return status.Errorf(codes.Unimplemented, "method CacheForDut not implemented")
+}
+func (*UnimplementedWiringServer) CallServoXmlRpc(ctx context.Context, req *CallServoXmlRpcRequest) (*CallServoXmlRpcResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CallServoXmlRpc not implemented")
+}
+
+func RegisterWiringServer(s *grpc.Server, srv WiringServer) {
+	s.RegisterService(&_Wiring_serviceDesc, srv)
+}
+
+func _Wiring_OpenDutPort_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(OpenDutPortRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WiringServer).OpenDutPort(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.config.api.test.tls.Wiring/OpenDutPort",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WiringServer).OpenDutPort(ctx, req.(*OpenDutPortRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Wiring_SetDutPowerSupply_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetDutPowerSupplyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WiringServer).SetDutPowerSupply(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.config.api.test.tls.Wiring/SetDutPowerSupply",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WiringServer).SetDutPowerSupply(ctx, req.(*SetDutPowerSupplyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Wiring_CacheForDut_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(CacheForDutRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(WiringServer).CacheForDut(m, &wiringCacheForDutServer{stream})
+}
+
+type Wiring_CacheForDutServer interface {
+	Send(*CacheForDutResponse) error
+	grpc.ServerStream
+}
+
+type wiringCacheForDutServer struct {
+	grpc.ServerStream
+}
+
+func (x *wiringCacheForDutServer) Send(m *CacheForDutResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Wiring_CallServoXmlRpc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CallServoXmlRpcRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WiringServer).CallServoXmlRpc(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.config.api.test.tls.Wiring/CallServoXmlRpc",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WiringServer).CallServoXmlRpc(ctx, req.(*CallServoXmlRpcRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _Wiring_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "chromiumos.config.api.test.tls.Wiring",
+	HandlerType: (*WiringServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "OpenDutPort",
+			Handler:    _Wiring_OpenDutPort_Handler,
+		},
+		{
+			MethodName: "SetDutPowerSupply",
+			Handler:    _Wiring_SetDutPowerSupply_Handler,
+		},
+		{
+			MethodName: "CallServoXmlRpc",
+			Handler:    _Wiring_CallServoXmlRpc_Handler,
+		},
+	},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "CacheForDut",
+			Handler:       _Wiring_CacheForDut_Handler,
+			ServerStreams: true,
+		},
+	},
+	Metadata: "chromiumos/config/api/test/tls/wiring.proto",
 }

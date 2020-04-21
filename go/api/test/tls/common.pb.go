@@ -4,8 +4,12 @@
 package tls
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -333,4 +337,153 @@ var fileDescriptor_1b09370150fcc94a = []byte{
 	0x6e, 0x8a, 0xe1, 0x0b, 0xf6, 0x5f, 0xde, 0x2c, 0xfc, 0x67, 0xe4, 0xcd, 0xf9, 0xfb, 0xe7, 0x99,
 	0x6d, 0xd4, 0xdc, 0xba, 0x2c, 0xfd, 0xf3, 0x6a, 0x32, 0xbb, 0x77, 0x38, 0x1f, 0xa3, 0x70, 0x32,
 	0xe7, 0x3f, 0x03, 0x00, 0x00, 0xff, 0xff, 0x5e, 0xe1, 0xfd, 0xb8, 0x61, 0x03, 0x00, 0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// CommonClient is the client API for Common service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type CommonClient interface {
+	// ExecDutCommand runs a command on a DUT.
+	//
+	// The working directory is /.
+	// A tty is not spawned for the command.
+	// The user and group is root.
+	// All signals have their default dispositions and are not masked.
+	// The umask is set to 0.
+	//
+	// The environment contains:
+	//
+	//   TERM=dumb
+	//   PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin
+	//   LANG=en_US.UTF-8
+	//   USER=root
+	//   HOME=/root
+	//
+	// The environment MAY also contain SSH client variables.
+	// The environment SHALL NOT contain variables not mentioned above.
+	//
+	// If the stream is interrupted, the implementation MAY attempt to
+	// stop the command by sending SIGINT, SIGHUP, SIGTERM, or SIGKILL.
+	ExecDutCommand(ctx context.Context, in *ExecDutCommandRequest, opts ...grpc.CallOption) (Common_ExecDutCommandClient, error)
+}
+
+type commonClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewCommonClient(cc *grpc.ClientConn) CommonClient {
+	return &commonClient{cc}
+}
+
+func (c *commonClient) ExecDutCommand(ctx context.Context, in *ExecDutCommandRequest, opts ...grpc.CallOption) (Common_ExecDutCommandClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Common_serviceDesc.Streams[0], "/chromiumos.config.api.test.tls.Common/ExecDutCommand", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &commonExecDutCommandClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Common_ExecDutCommandClient interface {
+	Recv() (*ExecDutCommandResponse, error)
+	grpc.ClientStream
+}
+
+type commonExecDutCommandClient struct {
+	grpc.ClientStream
+}
+
+func (x *commonExecDutCommandClient) Recv() (*ExecDutCommandResponse, error) {
+	m := new(ExecDutCommandResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+// CommonServer is the server API for Common service.
+type CommonServer interface {
+	// ExecDutCommand runs a command on a DUT.
+	//
+	// The working directory is /.
+	// A tty is not spawned for the command.
+	// The user and group is root.
+	// All signals have their default dispositions and are not masked.
+	// The umask is set to 0.
+	//
+	// The environment contains:
+	//
+	//   TERM=dumb
+	//   PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin
+	//   LANG=en_US.UTF-8
+	//   USER=root
+	//   HOME=/root
+	//
+	// The environment MAY also contain SSH client variables.
+	// The environment SHALL NOT contain variables not mentioned above.
+	//
+	// If the stream is interrupted, the implementation MAY attempt to
+	// stop the command by sending SIGINT, SIGHUP, SIGTERM, or SIGKILL.
+	ExecDutCommand(*ExecDutCommandRequest, Common_ExecDutCommandServer) error
+}
+
+// UnimplementedCommonServer can be embedded to have forward compatible implementations.
+type UnimplementedCommonServer struct {
+}
+
+func (*UnimplementedCommonServer) ExecDutCommand(req *ExecDutCommandRequest, srv Common_ExecDutCommandServer) error {
+	return status.Errorf(codes.Unimplemented, "method ExecDutCommand not implemented")
+}
+
+func RegisterCommonServer(s *grpc.Server, srv CommonServer) {
+	s.RegisterService(&_Common_serviceDesc, srv)
+}
+
+func _Common_ExecDutCommand_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ExecDutCommandRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(CommonServer).ExecDutCommand(m, &commonExecDutCommandServer{stream})
+}
+
+type Common_ExecDutCommandServer interface {
+	Send(*ExecDutCommandResponse) error
+	grpc.ServerStream
+}
+
+type commonExecDutCommandServer struct {
+	grpc.ServerStream
+}
+
+func (x *commonExecDutCommandServer) Send(m *ExecDutCommandResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+var _Common_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "chromiumos.config.api.test.tls.Common",
+	HandlerType: (*CommonServer)(nil),
+	Methods:     []grpc.MethodDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "ExecDutCommand",
+			Handler:       _Common_ExecDutCommand_Handler,
+			ServerStreams: true,
+		},
+	},
+	Metadata: "chromiumos/config/api/test/tls/common.proto",
 }

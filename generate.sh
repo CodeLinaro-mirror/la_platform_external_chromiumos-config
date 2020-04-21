@@ -44,7 +44,8 @@ trap "rm -rf ${GO_TEMP_DIR}" EXIT
 # Go files need to be processed individually until this is fixed:
 # https://github.com/golang/protobuf/issues/39
 for proto in "${protos[@]}"; do
-  protoc -I"proto" --go_out=paths=source_relative:"${GO_TEMP_DIR}" \
+  protoc -I"proto" \
+    --go_out=plugins=grpc,paths=source_relative:"${GO_TEMP_DIR}" \
     "${proto}"
 done
 cp -rf "${GO_TEMP_DIR}"/chromiumos/config/* go/
