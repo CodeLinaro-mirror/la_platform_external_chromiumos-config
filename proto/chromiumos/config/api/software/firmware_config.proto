@@ -22,8 +22,7 @@ message Version {
 
 // Specifies the location of a firmware binary.
 message FirmwarePayload {
-  // Deprecated, use FirmwareBuildConfig.BuildTargets.
-  string build_target_name = 1 [deprecated=true];
+  reserved 1;
 
   // The name of the firmware image used by the firmware updater. Typically
   // the device name, but can differ when a device may have two or more
@@ -54,8 +53,7 @@ message FirmwareConfig {
   // The embedded controller read-only firmware.
   FirmwarePayload ec_ro_payload = 3;
 
-  // Deprecated, use FirmwareBuildConfig.BuildTargets.ec_extras.
-  repeated string ec_extras = 4 [deprecated=true];
+  reserved 4;
 
   // The libpayload read-only firmware
   FirmwarePayload pd_ro_payload = 5;

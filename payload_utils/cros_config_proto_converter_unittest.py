@@ -132,9 +132,7 @@ class TransformBuildConfigsTest(unittest.TestCase):
         device_signer_config=None,
         oem=None,
         sw_config=SoftwareConfig(
-            firmware=FirmwareConfig(
-                main_ro_payload=FirmwarePayload(
-                    build_target_name='testproject'))),
+            firmware=FirmwareConfig(main_ro_payload=FirmwarePayload())),
         brand_config=None,
         build_target=BuildTarget(overlay_name='testproject'),
     )
@@ -142,10 +140,7 @@ class TransformBuildConfigsTest(unittest.TestCase):
     self.assertDictEqual(
         cros_config_proto_converter._BuildFirmware(config), {
             'bcs-overlay': 'testproject',
-            'build-targets': {
-                'depthcharge': 'testproject',
-                'coreboot': 'testproject'
-            },
+            'build-targets': {},
             'no-firmware': True
         })
 
