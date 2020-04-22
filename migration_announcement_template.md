@@ -63,5 +63,4 @@ pick process.
 
 We understand that getting used to the new configuration management ecosystem
 may take some time, and are committed to providing the best experience possible
-for partners and Googlers. Please post suggestions and questions to the
-[Boxster user’s Google Group](https://groups.google.com/a/google.com/g/cros-boxster-users).
+for partners and Googlers.
