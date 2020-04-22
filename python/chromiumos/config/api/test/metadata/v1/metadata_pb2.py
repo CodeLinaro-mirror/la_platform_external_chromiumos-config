@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.metadata.v1',
   syntax='proto3',
   serialized_options=_b('B\rMetadataProtoZBgo.chromium.org/chromiumos/config/go/api/test/metadata/v1;metadata'),
-  serialized_pb=_b('\n5chromiumos/config/api/test/metadata/v1/metadata.proto\x12&chromiumos.config.api.test.metadata.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a+chromiumos/config/api/test/dut/v1/dut.proto\x1a-chromiumos/config/api/hardware_topology.proto\x1a$chromiumos/config/api/topology.proto\"f\n\rSpecification\x12U\n\x13remote_test_drivers\x18\x01 \x03(\x0b\x32\x38.chromiumos.config.api.test.metadata.v1.RemoteTestDriver\"\xb4\x01\n\x10RemoteTestDriver\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x44\n\x05image\x18\x02 \x01(\x0b\x32\x35.chromiumos.config.api.test.metadata.v1.BuildArtifact\x12\x0f\n\x07\x63ommand\x18\x03 \x01(\t\x12;\n\x05tests\x18\x04 \x03(\x0b\x32,.chromiumos.config.api.test.metadata.v1.Test\"&\n\rBuildArtifact\x12\x15\n\rrelative_path\x18\x01 \x01(\t\"\xf3\x01\n\x04Test\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x45\n\nattributes\x18\x02 \x03(\x0b\x32\x31.chromiumos.config.api.test.metadata.v1.Attribute\x12H\n\nconditions\x18\x03 \x03(\x0b\x32\x34.chromiumos.config.api.test.metadata.v1.DUTCondition\x12L\n\rinformational\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.test.metadata.v1.Informational\"\x19\n\tAttribute\x12\x0c\n\x04name\x18\x01 \x01(\t\"\xf7\x01\n\x0c\x44UTCondition\x12\x12\n\nexpression\x18\x01 \x01(\t\x1a\xd2\x01\n\x05Scope\x12\x41\n\x05setup\x18\x01 \x01(\x0b\x32\x32.chromiumos.config.api.test.dut.v1.DeviceUnderTest\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"{\n\rInformational\x12@\n\x07\x61uthors\x18\x01 \x03(\x0b\x32/.chromiumos.config.api.test.metadata.v1.Contact\x12(\n\x07\x64\x65tails\x18\x02 \x01(\x0b\x32\x17.google.protobuf.Struct\"7\n\x07\x43ontact\x12\x0f\n\x05\x65mail\x18\x01 \x01(\tH\x00\x12\x13\n\tmdb_group\x18\x02 \x01(\tH\x00\x42\x06\n\x04typeBSB\rMetadataProtoZBgo.chromium.org/chromiumos/config/go/api/test/metadata/v1;metadatab\x06proto3')
+  serialized_pb=_b('\n5chromiumos/config/api/test/metadata/v1/metadata.proto\x12&chromiumos.config.api.test.metadata.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a+chromiumos/config/api/test/dut/v1/dut.proto\x1a-chromiumos/config/api/hardware_topology.proto\x1a$chromiumos/config/api/topology.proto\"f\n\rSpecification\x12U\n\x13remote_test_drivers\x18\x01 \x03(\x0b\x32\x38.chromiumos.config.api.test.metadata.v1.RemoteTestDriver\"\xb4\x01\n\x10RemoteTestDriver\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x44\n\x05image\x18\x02 \x01(\x0b\x32\x35.chromiumos.config.api.test.metadata.v1.BuildArtifact\x12\x0f\n\x07\x63ommand\x18\x03 \x01(\t\x12;\n\x05tests\x18\x04 \x03(\x0b\x32,.chromiumos.config.api.test.metadata.v1.Test\"&\n\rBuildArtifact\x12\x15\n\rrelative_path\x18\x01 \x01(\t\"\x88\x02\n\x04Test\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x45\n\nattributes\x18\x02 \x03(\x0b\x32\x31.chromiumos.config.api.test.metadata.v1.Attribute\x12K\n\rdut_condition\x18\x05 \x01(\x0b\x32\x34.chromiumos.config.api.test.metadata.v1.DUTCondition\x12L\n\rinformational\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.test.metadata.v1.InformationalJ\x04\x08\x03\x10\x04R\nconditions\"\x19\n\tAttribute\x12\x0c\n\x04name\x18\x01 \x01(\t\"\xf7\x01\n\x0c\x44UTCondition\x12\x12\n\nexpression\x18\x01 \x01(\t\x1a\xd2\x01\n\x05Scope\x12\x41\n\x05setup\x18\x01 \x01(\x0b\x32\x32.chromiumos.config.api.test.dut.v1.DeviceUnderTest\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"{\n\rInformational\x12@\n\x07\x61uthors\x18\x01 \x03(\x0b\x32/.chromiumos.config.api.test.metadata.v1.Contact\x12(\n\x07\x64\x65tails\x18\x02 \x01(\x0b\x32\x17.google.protobuf.Struct\"7\n\x07\x43ontact\x12\x0f\n\x05\x65mail\x18\x01 \x01(\tH\x00\x12\x13\n\tmdb_group\x18\x02 \x01(\tH\x00\x42\x06\n\x04typeBSB\rMetadataProtoZBgo.chromium.org/chromiumos/config/go/api/test/metadata/v1;metadatab\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_struct__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_test_dot_dut_dot_v1_dot_dut__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_hardware__topology__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_topology__pb2.DESCRIPTOR,])
 
@@ -166,9 +166,9 @@ _TEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='conditions', full_name='chromiumos.config.api.test.metadata.v1.Test.conditions', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='dut_condition', full_name='chromiumos.config.api.test.metadata.v1.Test.dut_condition', index=2,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -192,7 +192,7 @@ _TEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=585,
-  serialized_end=828,
+  serialized_end=849,
 )
 
 
@@ -222,8 +222,8 @@ _ATTRIBUTE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=830,
-  serialized_end=855,
+  serialized_start=851,
+  serialized_end=876,
 )
 
 
@@ -267,8 +267,8 @@ _DUTCONDITION_SCOPE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=895,
-  serialized_end=1105,
+  serialized_start=916,
+  serialized_end=1126,
 )
 
 _DUTCONDITION = _descriptor.Descriptor(
@@ -297,8 +297,8 @@ _DUTCONDITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=858,
-  serialized_end=1105,
+  serialized_start=879,
+  serialized_end=1126,
 )
 
 
@@ -335,8 +335,8 @@ _INFORMATIONAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1107,
-  serialized_end=1230,
+  serialized_start=1128,
+  serialized_end=1251,
 )
 
 
@@ -376,15 +376,15 @@ _CONTACT = _descriptor.Descriptor(
       name='type', full_name='chromiumos.config.api.test.metadata.v1.Contact.type',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1232,
-  serialized_end=1287,
+  serialized_start=1253,
+  serialized_end=1308,
 )
 
 _SPECIFICATION.fields_by_name['remote_test_drivers'].message_type = _REMOTETESTDRIVER
 _REMOTETESTDRIVER.fields_by_name['image'].message_type = _BUILDARTIFACT
 _REMOTETESTDRIVER.fields_by_name['tests'].message_type = _TEST
 _TEST.fields_by_name['attributes'].message_type = _ATTRIBUTE
-_TEST.fields_by_name['conditions'].message_type = _DUTCONDITION
+_TEST.fields_by_name['dut_condition'].message_type = _DUTCONDITION
 _TEST.fields_by_name['informational'].message_type = _INFORMATIONAL
 _DUTCONDITION_SCOPE.fields_by_name['setup'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_dut_dot_v1_dot_dut__pb2._DEVICEUNDERTEST
 _DUTCONDITION_SCOPE.fields_by_name['hardware_topology'].message_type = chromiumos_dot_config_dot_api_dot_hardware__topology__pb2._HARDWARETOPOLOGY

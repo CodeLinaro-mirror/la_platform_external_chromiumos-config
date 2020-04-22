@@ -29,6 +29,8 @@ type Invocation struct {
 	// invocation to the surrounding Remote Test Server.
 	ProgressSinkClientConfig *ProgressSinkClientConfig `protobuf:"bytes,1,opt,name=progress_sink_client_config,json=progressSinkClientConfig,proto3" json:"progress_sink_client_config,omitempty"`
 	// Set of DUTs used for each of the requests in this invocation.
+	//
+	// Contains more than one dut if the test execution is sharded.
 	Duts []*DUT `protobuf:"bytes,2,rep,name=duts,proto3" json:"duts,omitempty"`
 	// Smallest unit of an invocation request for which results MUST be reported.
 	//

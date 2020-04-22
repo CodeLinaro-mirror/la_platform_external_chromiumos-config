@@ -20,6 +20,8 @@ message Invocation {
   ProgressSinkClientConfig progress_sink_client_config = 1;
 
   // Set of DUTs used for each of the requests in this invocation.
+  //
+  // Contains more than one dut if the test execution is sharded.
   repeated DUT duts = 2;
 
   // Smallest unit of an invocation request for which results MUST be reported.

@@ -126,6 +126,10 @@ message BuildArtifact {
 //    Remote Test Driver invocation request: test/rtd/invocation.proto
 //    Remote Test Driver progress API: test/rtd/progress.proto
 message Test {
+  // Superseded by "dut_condition".
+  reserved 3;
+  reserved "conditions";
+
   // Globally unique name for this test.
   //
   // MUST be a valid resource per https://aip.dev/122.
@@ -141,15 +145,15 @@ message Test {
   //   Test plans: test/plan/plan.proto
   repeated Attribute attributes = 2;
 
-  // Required condition to be met for each Device Under Test targeted by this
+  // Required condition to be met for the Devices Under Test targeted by this
   // test.
   //
   // Condition enforcement is an optional feature for test scheduling, i.e.,
   // some Test Lab Environments may ignore conditions entirely.
   //
-  // May be specified multiple times for tests that target more than one Device
-  // Under Test, once per required device.
-  repeated DUTCondition conditions = 3;
+  // If the test execution is sharded over multiple devices, each must satisfy
+  // this condition.
+  DUTCondition dut_condition = 5;
 
   // Metadata about the test that doesn't affect scheduling or execution.
   Informational informational = 4;
