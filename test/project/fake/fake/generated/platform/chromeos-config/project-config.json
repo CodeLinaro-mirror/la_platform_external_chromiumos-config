@@ -37,7 +37,7 @@
         },
         "bluetooth": {
           "config": {
-            "build-path": "fake-ref-design/generated/platform/chromeos-config/bluetooth/fake-ref-design_0001_0002_0003.conf",
+            "build-path": "generated/platform/chromeos-config/bluetooth/fake-ref-design_0001_0002_0003.conf",
             "system-path": "/etc/bluetooth/fake-ref-design_0001_0002_0003/main.conf"
           },
           "flags": {

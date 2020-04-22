@@ -417,8 +417,7 @@ def WriteBluetoothConfigFiles(config, output_dir):
       if bt_comp.vendor_id:
         bt_id = _BluetoothId(project_name, bt_comp)
         result[bt_id] = {
-            'build-path': '%s/%s/bluetooth/%s.conf' % (
-                project_name, project_gen_path, bt_id),
+            'build-path': '%s/bluetooth/%s.conf' % (project_gen_path, bt_id),
             'system-path': '/etc/bluetooth/%s/main.conf' % bt_id,
         }
         bt_content = '''[General]
