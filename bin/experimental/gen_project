@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Used for first time generation of the basic structure of a project.
+
+# Exit if any command fails.
+set -e
+
+function usage() {
+  echo "Usage: $0 <config dir> <program name> <program dir> <project name> <project dir>" >&2
+  echo "where" >&2
+  echo "  <config_dir> is the mount path of the chromiumos/config repo" >&2
+  echo "  <program name> is the name of the program the project belongs to" >&2
+  echo "  <program dir> is the mount path of the program repo" >&2
+  echo "  <project name> is name of the new project" >&2
+  echo "  <project dir> is directory to generate the new project config in" >&2
+  exit 1
+}
+
+if [[ $# -ne 5 ]]; then
+  usage
+fi
+
+readonly config_dir="$(realpath -e "${1}")"
+readonly program="${2}"
+readonly program_dir="$(realpath -e "${3}")"
+readonly project="${4}"
+readonly project_dir="$(realpath -e "${5}")"
+
+# Move to the project directory.
+cd "${project_dir}"
+
+ln -sr "${config_dir}" config
+
+ln -sr config/presubmit/_PRESUBMIT.cfg PRESUBMIT.cfg
+ln -sr config/presubmit/_PRESUBMIT.py PRESUBMIT.py
+
+ln -sr "${program_dir}" program
+
+cat << EOF > config.star
+#!/usr/bin/env gen_config
+
+"""Generates a ConfigBundle proto for the ${project} project."""
+
+load("//config/util/config_bundle.star", "config_bundle")
+load("//config/util/design.star", "design")
+load("//config/util/hw_topology.star", "hw_topo")
+load("//program/program.star", "program")
+load("//program/defaults.star", "defaults")
+
+_${project^^}="${project^}"
+
+_DESIGN_ID = design.create_design_id(_${project^^})
+
+_CLAMSHELL = hw_topo.create_form_factor("CLAMSHELL", "Device can only rotate 200 degrees", hw_topo.ff.CLAMSHELL)
+
+_CONFIG = design.create_config(
+    design_id = _DESIGN_ID,
+    config_id = 0x7FFFFFFF,
+    hardware_topology = hw_topo.create_hardware_topology(
+        form_factor = _CLAMSHELL,
+    ),
+)
+
+_DESIGN = design.create_design(
+    id = _DESIGN_ID,
+    program_id = program.${program}.id,
+    odm_id = None,
+    configs = [
+        _CONFIG,
+    ],
+)
+
+_SW_CONFIG = defaults.sw_config(
+    design_id = _DESIGN_ID,
+    design_config_id = _CONFIG.id,
+    ap_firmware_name = _${project^^},
+)
+
+_CONFIG_BUNDLE = config_bundle.create(
+    designs = [_DESIGN],
+    software_configs = [_SW_CONFIG],
+    device_brands = [defaults.brand(_DESIGN.id)],
+)
+
+design.generate(_CONFIG_BUNDLE)
+EOF
+
+cat << EOF > .gitignore
+.venv
+EOF
