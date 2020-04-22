@@ -1,7 +1,21 @@
 # Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-"""Constraint checks related to program and project ids."""
+"""Constraint checks related to program and project ids.
+
+A note on how some of the checks relate:
+
+- check_design_config_id_segments: Checks that a project's ids fall within the
+segment specified in the program config.
+- check_design_config_id_segments_overlap: Checks that no id segments overlap.
+- check_design_config_ids_unique: Checks that ids within a project are unique.
+
+Together, these constraints enforce uniqueness across a program. If two ids
+within a project are the same, this is rejected by
+check_design_config_ids_unique. If two ids in different projects are the same,
+at least one of them must be out of the specified segment, because no two
+segments can overlap.
+"""
 
 import itertools
 
@@ -79,3 +93,17 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
         # If a's min_id is lower than b's, a's max id must be lower than b's
         # min_id.
         self.assertLess(seg_a.max_id, seg_b.min_id, error_message)
+
+  def check_design_config_ids_unique(
+      self, program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle):
+    """Checks all project DesignConfigIds are unique."""
+    del program_config
+
+    design_config_ids = set()
+    for design in project_config.designs.value:
+      for config in design.configs:
+        self.assertNotIn(
+            config.id.value, design_config_ids,
+            "Found multiple configs with id '{}'".format(config.id.value))
+        design_config_ids.add(config.id.value)

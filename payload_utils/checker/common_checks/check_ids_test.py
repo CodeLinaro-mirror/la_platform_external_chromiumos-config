@@ -18,7 +18,6 @@ from chromiumos.config.api.program_id_pb2 import ProgramId
 # Alias a few nested classes to make creating test objects less verbose
 # pylint: disable=invalid-name
 Config = Design.Config
-
 # pylint: enable=invalid-name
 
 
@@ -259,3 +258,33 @@ class CheckIdsTest(unittest.TestCase):
         )):
       IdConstraintSuite().check_design_config_id_segments_overlap(
           program_config=program_config, project_config=None)
+
+  def test_check_design_config_ids_unique(self):
+    """Tests check_design_config_ids_unique with valid configs."""
+    project_config = ConfigBundle(
+        designs=DesignList(value=[
+            Design(configs=[
+                Config(id=DesignConfigId(value='a')),
+                Config(id=DesignConfigId(value='b')),
+            ]),
+            Design(configs=[Config(id=DesignConfigId(value='c'))]),
+        ]))
+
+    IdConstraintSuite().check_design_config_ids_unique(
+        program_config=None, project_config=project_config)
+
+  def test_check_design_config_ids_unique_violated(self):
+    """Tests check_design_config_ids_unique with valid configs."""
+    project_config = ConfigBundle(
+        designs=DesignList(value=[
+            Design(configs=[
+                Config(id=DesignConfigId(value='a')),
+                Config(id=DesignConfigId(value='b')),
+            ]),
+            Design(configs=[Config(id=DesignConfigId(value='a'))]),
+        ]))
+
+    with self.assertRaisesRegex(AssertionError,
+                                "Found multiple configs with id 'a'"):
+      IdConstraintSuite().check_design_config_ids_unique(
+          program_config=None, project_config=project_config)
