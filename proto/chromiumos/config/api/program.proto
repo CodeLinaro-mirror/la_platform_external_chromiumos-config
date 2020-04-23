@@ -8,6 +8,7 @@ package chromiumos.config.api;
 
 import "chromiumos/config/api/component.proto";
 import "chromiumos/config/api/design.proto";
+import "chromiumos/config/api/design_id.proto";
 import "chromiumos/config/api/device_brand_id.proto";
 import "chromiumos/config/api/program_id.proto";
 
@@ -23,6 +24,22 @@ message FirmwareConfigurationSegment {
 
   // The mask of valid bits that could be used by this type of Topology.
   uint32 mask = 2;
+}
+
+// A segment of DesignConfigIds allocated to a given Design.
+//
+// To ensure that DesignConfigIds are unique within a Program, a segment can be
+// allocated to each Design. For example, Design "A" gets ids [11, 20], Design
+// "B" gets ids [21, 30], etc.
+//
+// No segments in a program can overlap.
+message DesignConfigIdSegment {
+  // Design the segment applies to.
+  DesignId design_id = 1;
+
+  // Min and max DesignConfigIds the Design can use. Both are inclusive.
+  uint32 min_id = 2;
+  uint32 max_id = 3;
 }
 
 // Defines the signing key that will be used for a given device brand.
@@ -54,6 +71,9 @@ message Program {
 
   // Firmware segment allocations for the given program.
   repeated FirmwareConfigurationSegment firmware_configuration_segments = 5;
+
+  // DesignConfigId segment allocations for the given program.
+  repeated DesignConfigIdSegment design_config_id_segments = 7;
 
   repeated DeviceSignerConfig device_signer_configs = 6;
 }
