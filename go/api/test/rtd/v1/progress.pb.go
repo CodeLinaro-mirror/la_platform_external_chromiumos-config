@@ -4,9 +4,13 @@
 package rtd
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	_struct "github.com/golang/protobuf/ptypes/struct"
+	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -644,4 +648,229 @@ var fileDescriptor_5e83d657830dbeb4 = []byte{
 	0xdf, 0xf0, 0x98, 0x8b, 0xc0, 0xbc, 0x7f, 0x89, 0x04, 0x7c, 0xf1, 0x1e, 0x79, 0x2b, 0x64, 0xf7,
 	0x2a, 0xa7, 0xbe, 0x33, 0xfb, 0x7f, 0x02, 0x00, 0x00, 0xff, 0xff, 0xa4, 0x84, 0xca, 0xc8, 0x77,
 	0x06, 0x00, 0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// ProgressSinkClient is the client API for ProgressSink service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type ProgressSinkClient interface {
+	// A Remote Test Driver invocation MUST call ReportResult exactly once per
+	// request.
+	ReportResult(ctx context.Context, in *ReportResultRequest, opts ...grpc.CallOption) (*ReportResultResponse, error)
+	// A log stream from the Remote Test Driver invocation.
+	//
+	// Each call to this method MUST stream logs for a single invocation request
+	// and log file. Data for the same file may be split over multiple ReportLog
+	// calls. Data received from concurrent methods calls for the same log file
+	// may be interleved arbitrarily.
+	ReportLog(ctx context.Context, opts ...grpc.CallOption) (ProgressSink_ReportLogClient, error)
+	// Archive test artifacts to non-ephemeral storage.
+	//
+	// Different Test Lab Environments may use very different non-ephemeral
+	// storage technologies. Remote Test Servers MUST archive the artifacts to
+	// final storage synchronously and return an error if the archival fails.
+	//
+	// Note: Remote Test Drivers SHOULD use ReportLog() to report logs.
+	// ArchiveArtifact() SHOULD be used to report structured or binary data only.
+	//
+	// Remote Test Server may limit the size of artifacts that may be offloaded
+	// per request and may fail further requests with RESOURCE_EXHAUSTED.
+	ArchiveArtifact(ctx context.Context, in *ArchiveArtifactRequest, opts ...grpc.CallOption) (*ArchiveArtifactResponse, error)
+}
+
+type progressSinkClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewProgressSinkClient(cc *grpc.ClientConn) ProgressSinkClient {
+	return &progressSinkClient{cc}
+}
+
+func (c *progressSinkClient) ReportResult(ctx context.Context, in *ReportResultRequest, opts ...grpc.CallOption) (*ReportResultResponse, error) {
+	out := new(ReportResultResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.config.api.test.rtd.v1.ProgressSink/ReportResult", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *progressSinkClient) ReportLog(ctx context.Context, opts ...grpc.CallOption) (ProgressSink_ReportLogClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_ProgressSink_serviceDesc.Streams[0], "/chromiumos.config.api.test.rtd.v1.ProgressSink/ReportLog", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &progressSinkReportLogClient{stream}
+	return x, nil
+}
+
+type ProgressSink_ReportLogClient interface {
+	Send(*ReportLogRequest) error
+	CloseAndRecv() (*ReportLogResponse, error)
+	grpc.ClientStream
+}
+
+type progressSinkReportLogClient struct {
+	grpc.ClientStream
+}
+
+func (x *progressSinkReportLogClient) Send(m *ReportLogRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *progressSinkReportLogClient) CloseAndRecv() (*ReportLogResponse, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(ReportLogResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *progressSinkClient) ArchiveArtifact(ctx context.Context, in *ArchiveArtifactRequest, opts ...grpc.CallOption) (*ArchiveArtifactResponse, error) {
+	out := new(ArchiveArtifactResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.config.api.test.rtd.v1.ProgressSink/ArchiveArtifact", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ProgressSinkServer is the server API for ProgressSink service.
+type ProgressSinkServer interface {
+	// A Remote Test Driver invocation MUST call ReportResult exactly once per
+	// request.
+	ReportResult(context.Context, *ReportResultRequest) (*ReportResultResponse, error)
+	// A log stream from the Remote Test Driver invocation.
+	//
+	// Each call to this method MUST stream logs for a single invocation request
+	// and log file. Data for the same file may be split over multiple ReportLog
+	// calls. Data received from concurrent methods calls for the same log file
+	// may be interleved arbitrarily.
+	ReportLog(ProgressSink_ReportLogServer) error
+	// Archive test artifacts to non-ephemeral storage.
+	//
+	// Different Test Lab Environments may use very different non-ephemeral
+	// storage technologies. Remote Test Servers MUST archive the artifacts to
+	// final storage synchronously and return an error if the archival fails.
+	//
+	// Note: Remote Test Drivers SHOULD use ReportLog() to report logs.
+	// ArchiveArtifact() SHOULD be used to report structured or binary data only.
+	//
+	// Remote Test Server may limit the size of artifacts that may be offloaded
+	// per request and may fail further requests with RESOURCE_EXHAUSTED.
+	ArchiveArtifact(context.Context, *ArchiveArtifactRequest) (*ArchiveArtifactResponse, error)
+}
+
+// UnimplementedProgressSinkServer can be embedded to have forward compatible implementations.
+type UnimplementedProgressSinkServer struct {
+}
+
+func (*UnimplementedProgressSinkServer) ReportResult(ctx context.Context, req *ReportResultRequest) (*ReportResultResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReportResult not implemented")
+}
+func (*UnimplementedProgressSinkServer) ReportLog(srv ProgressSink_ReportLogServer) error {
+	return status.Errorf(codes.Unimplemented, "method ReportLog not implemented")
+}
+func (*UnimplementedProgressSinkServer) ArchiveArtifact(ctx context.Context, req *ArchiveArtifactRequest) (*ArchiveArtifactResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ArchiveArtifact not implemented")
+}
+
+func RegisterProgressSinkServer(s *grpc.Server, srv ProgressSinkServer) {
+	s.RegisterService(&_ProgressSink_serviceDesc, srv)
+}
+
+func _ProgressSink_ReportResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReportResultRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProgressSinkServer).ReportResult(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.config.api.test.rtd.v1.ProgressSink/ReportResult",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProgressSinkServer).ReportResult(ctx, req.(*ReportResultRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProgressSink_ReportLog_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(ProgressSinkServer).ReportLog(&progressSinkReportLogServer{stream})
+}
+
+type ProgressSink_ReportLogServer interface {
+	SendAndClose(*ReportLogResponse) error
+	Recv() (*ReportLogRequest, error)
+	grpc.ServerStream
+}
+
+type progressSinkReportLogServer struct {
+	grpc.ServerStream
+}
+
+func (x *progressSinkReportLogServer) SendAndClose(m *ReportLogResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *progressSinkReportLogServer) Recv() (*ReportLogRequest, error) {
+	m := new(ReportLogRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func _ProgressSink_ArchiveArtifact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ArchiveArtifactRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProgressSinkServer).ArchiveArtifact(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.config.api.test.rtd.v1.ProgressSink/ArchiveArtifact",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProgressSinkServer).ArchiveArtifact(ctx, req.(*ArchiveArtifactRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _ProgressSink_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "chromiumos.config.api.test.rtd.v1.ProgressSink",
+	HandlerType: (*ProgressSinkServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ReportResult",
+			Handler:    _ProgressSink_ReportResult_Handler,
+		},
+		{
+			MethodName: "ArchiveArtifact",
+			Handler:    _ProgressSink_ArchiveArtifact_Handler,
+		},
+	},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "ReportLog",
+			Handler:       _ProgressSink_ReportLog_Handler,
+			ClientStreams: true,
+		},
+	},
+	Metadata: "chromiumos/config/api/test/rtd/v1/progress.proto",
 }
