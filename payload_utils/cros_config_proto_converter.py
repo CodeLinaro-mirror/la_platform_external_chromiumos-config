@@ -16,6 +16,7 @@ from collections import namedtuple
 
 from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api import device_brand_pb2
+from chromiumos.config.api import topology_pb2
 from chromiumos.config.api.software import brand_config_pb2
 
 Config = namedtuple('Config',
@@ -101,12 +102,12 @@ def _BuildBluetooth(config, bluetooth_files):
 def _BuildFingerprint(hw_topology):
   if hw_topology.HasField('fingerprint'):
     fp = hw_topology.fingerprint.hardware_feature.fingerprint
-    location = fp.Location.DESCRIPTOR.values_by_number[fp.location].name
-    result = {
-        'sensor-location': location.lower().replace('_', '-'),
-    }
-    if fp.board:
-      result['board'] = fp.board
+    result = {}
+    if fp.location != topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT:
+      location = fp.Location.DESCRIPTOR.values_by_number[fp.location].name
+      result['sensor-location'] = location.lower().replace('_', '-')
+      if fp.board:
+        result['board'] = fp.board
     return result
 
 

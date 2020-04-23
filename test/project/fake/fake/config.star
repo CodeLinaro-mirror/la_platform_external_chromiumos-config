@@ -30,6 +30,7 @@ _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
 _CAMERA = hw_topo.create_camera("CAMERA", "Default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 2)], count = 1)
 _SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor")
 _FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake-fingerprint-board")
+_NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
 _DAUGHTER_BOARD = hw_topo.create_daughter_board("DAUGHTER_BOARD", "Default daughter_board", fw_configs = [hw_topo.make_fw_config(_DB_FW_MASK, 1)])
 _NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
@@ -84,7 +85,7 @@ _HW_DESIGN_CONFIG_2 = design.create_config(
         thermal = _THERMAL,
         camera = _CAMERA,
         accelerometer_gyroscope_magnetometer = _SENSOR,
-        fingerprint = _FINGERPRINT,
+        fingerprint = _NO_FINGERPRINT,
         proximity_sensor = _PROXIMITY_SENSOR,
         daughter_board = _DAUGHTER_BOARD,
         non_volatile_storage = _NON_VOLATILE_STORAGE,

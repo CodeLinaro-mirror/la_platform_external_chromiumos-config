@@ -125,10 +125,6 @@
         "camera": {
           "count": 1
         },
-        "fingerprint": {
-          "board": "fake-fingerprint-board",
-          "sensor-location": "keyboard-bottom-left"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
           "build-targets": {
