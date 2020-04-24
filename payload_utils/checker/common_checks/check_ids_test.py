@@ -9,8 +9,16 @@ from checker.common_checks.check_ids import IdConstraintSuite
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.design_pb2 import Design, DesignList
-from chromiumos.config.api.program_pb2 import Program, ProgramList
+from chromiumos.config.api.design_id_pb2 import DesignId
+from chromiumos.config.api.design_config_id_pb2 import DesignConfigId
+from chromiumos.config.api.program_pb2 import (DesignConfigIdSegment, Program,
+                                               ProgramList)
 from chromiumos.config.api.program_id_pb2 import ProgramId
+
+# Alias a few nested classes to make creating test objects less verbose
+# pylint: disable=invalid-name
+Config = Design.Config
+# pylint: enable=invalid-name
 
 
 class CheckIdsTest(unittest.TestCase):
@@ -46,3 +54,199 @@ class CheckIdsTest(unittest.TestCase):
     with self.assertRaises(AssertionError):
       IdConstraintSuite().check_ids_consistent(
           program_config=program_config, project_config=project_config)
+
+  def test_check_design_config_id_segments(self):
+    """Test check_design_config_id_segments with valid configs."""
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[
+            Program(design_config_id_segments=[
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='a'),
+                    min_id=11,
+                    max_id=20,
+                ),
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='b'),
+                    min_id=21,
+                    max_id=30,
+                ),
+            ])
+        ]))
+
+    project_config = ConfigBundle(
+        designs=DesignList(value=[
+            Design(
+                id=DesignId(value='a'),
+                configs=[
+                    Config(id=DesignConfigId(value='a:11')),
+                    Config(id=DesignConfigId(value='a:15')),
+                    Config(id=DesignConfigId(value='a:20')),
+                ]),
+            Design(
+                id=DesignId(value='b'),
+                configs=[
+                    Config(id=DesignConfigId(value='a:25')),
+                ]),
+        ]))
+
+    IdConstraintSuite().check_design_config_id_segments(
+        program_config=program_config, project_config=project_config)
+
+  def test_check_design_config_id_segments_violated(self):
+    """Test check_design_config_id_segments with ids out of range."""
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[
+            Program(design_config_id_segments=[
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='a'),
+                    min_id=11,
+                    max_id=20,
+                ),
+            ])
+        ]))
+
+    # Test ids on the lower boundary.
+    for id_num in (9, 10):
+      project_config = ConfigBundle(
+          designs=DesignList(value=[
+              Design(
+                  id=DesignId(value='a'),
+                  configs=[
+                      Config(id=DesignConfigId(value='a:{}'.format(id_num))),
+                  ]),
+          ]))
+
+      with self.assertRaisesRegex(
+          AssertionError,
+          'DesignConfigId must be >= 11, got {}'.format(id_num)):
+        IdConstraintSuite().check_design_config_id_segments(
+            program_config=program_config, project_config=project_config)
+
+    # Test ids on the upper boundary.
+    for id_num in (21, 22):
+      project_config = ConfigBundle(
+          designs=DesignList(value=[
+              Design(
+                  id=DesignId(value='a'),
+                  configs=[
+                      Config(id=DesignConfigId(value='a:{}'.format(id_num))),
+                  ]),
+          ]))
+
+      with self.assertRaisesRegex(
+          AssertionError,
+          'DesignConfigId must be <= 20, got {}'.format(id_num)):
+        IdConstraintSuite().check_design_config_id_segments(
+            program_config=program_config, project_config=project_config)
+
+  def test_check_design_config_id_segments_overlap(self):
+    """Test check_design_config_id_segments_overlap with valid configs."""
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[
+            Program(design_config_id_segments=[
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='a'),
+                    min_id=11,
+                    max_id=20,
+                ),
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='b'),
+                    min_id=21,
+                    max_id=30,
+                ),
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='c'),
+                    min_id=41,
+                    max_id=50,
+                ),
+            ])
+        ]))
+
+    IdConstraintSuite().check_design_config_id_segments_overlap(
+        program_config=program_config, project_config=None)
+
+  def test_check_design_config_id_segments_overlap_violated(self):
+    """Test check_design_config_id_segments_overlap with overlapping segments."""
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[
+            Program(design_config_id_segments=[
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='a'),
+                    min_id=11,
+                    max_id=20,
+                ),
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='b'),
+                    min_id=20,
+                    max_id=30,
+                ),
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='c'),
+                    min_id=31,
+                    max_id=40,
+                ),
+            ])
+        ]))
+
+    with self.assertRaisesRegex(
+        AssertionError, 'Segments {} and {} overlap'.format(
+            program_config.programs.value[0].design_config_id_segments[0],
+            program_config.programs.value[0].design_config_id_segments[1],
+        )):
+      IdConstraintSuite().check_design_config_id_segments_overlap(
+          program_config=program_config, project_config=None)
+
+    # Segments are declared in a different order.
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[
+            Program(design_config_id_segments=[
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='a'),
+                    min_id=31,
+                    max_id=40,
+                ),
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='b'),
+                    min_id=20,
+                    max_id=30,
+                ),
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='c'),
+                    min_id=11,
+                    max_id=20,
+                ),
+            ])
+        ]))
+
+    with self.assertRaisesRegex(
+        AssertionError, 'Segments {} and {} overlap'.format(
+            program_config.programs.value[0].design_config_id_segments[2],
+            program_config.programs.value[0].design_config_id_segments[1],
+        )):
+      IdConstraintSuite().check_design_config_id_segments_overlap(
+          program_config=program_config, project_config=None)
+
+    # Two segments have the same min_id.
+    program_config = ConfigBundle(
+        programs=ProgramList(value=[
+            Program(design_config_id_segments=[
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='b'),
+                    min_id=20,
+                    max_id=30,
+                ),
+                DesignConfigIdSegment(
+                    design_id=DesignId(value='a'),
+                    min_id=20,
+                    max_id=25,
+                ),
+            ])
+        ]))
+
+    with self.assertRaisesRegex(
+        AssertionError, 'Segments {} and {} overlap'.format(
+            program_config.programs.value[0].design_config_id_segments[0],
+            program_config.programs.value[0].design_config_id_segments[1],
+        )):
+      IdConstraintSuite().check_design_config_id_segments_overlap(
+          program_config=program_config, project_config=None)
