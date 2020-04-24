@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n&chromiumos/config/api/mfg_config.proto\x12\x15\x63hromiumos.config.api\x1a)chromiumos/config/api/mfg_config_id.proto\"h\n\tMfgConfig\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.MfgConfigId\x12\x12\n\npcb_vendor\x18\x02 \x01(\t\x12\x17\n\x0fram_part_number\x18\x03 \x01(\tB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n&chromiumos/config/api/mfg_config.proto\x12\x15\x63hromiumos.config.api\x1a)chromiumos/config/api/mfg_config_id.proto\"x\n\tMfgConfig\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.MfgConfigId\x12\x12\n\npcb_vendor\x18\x02 \x01(\t\x12\x17\n\x0fram_part_number\x18\x03 \x01(\t\x12\x0e\n\x06region\x18\x04 \x01(\tB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_mfg__config__id__pb2.DESCRIPTOR,])
 
@@ -55,6 +55,13 @@ _MFGCONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='region', full_name='chromiumos.config.api.MfgConfig.region', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -68,7 +75,7 @@ _MFGCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=108,
-  serialized_end=212,
+  serialized_end=228,
 )
 
 _MFGCONFIG.fields_by_name['id'].message_type = chromiumos_dot_config_dot_api_dot_mfg__config__id__pb2._MFGCONFIGID

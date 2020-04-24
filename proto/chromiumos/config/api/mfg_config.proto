@@ -26,4 +26,10 @@ message MfgConfig {
 
   // Ram part number. The characteristics are encoded in HardwareTopology.
   string ram_part_number = 3;
+
+  // Defines the market region of the device.
+  // Region determines keyboard layout, language, and timezone.
+  // For valid region codes, see:
+  // https://storage.googleapis.com/chromeos-factory-docs/sdk/regions.html#available-regions
+  string region = 4;
 }
