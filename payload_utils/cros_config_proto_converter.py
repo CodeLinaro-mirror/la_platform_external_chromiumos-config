@@ -11,12 +11,13 @@ import pprint
 import os
 import sys
 import re
+import xml.etree.ElementTree as etree
 
 from collections import namedtuple
 
-from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api import device_brand_pb2
 from chromiumos.config.api import topology_pb2
+from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api.software import brand_config_pb2
 
 Config = namedtuple('Config',
@@ -30,6 +31,10 @@ Config = namedtuple('Config',
                      'sw_config',
                      'brand_config',
                      'build_target'])
+
+ConfigFiles = namedtuple('ConfigFiles',
+                         ['bluetooth',
+                          'arc_hw_features'])
 
 
 def ParseArgs(argv):
@@ -69,7 +74,7 @@ def _Set(field, target, target_name):
     target[target_name] = field
 
 
-def _BuildArc(config):
+def _BuildArc(config, config_files):
   if config.build_target.arc:
     build_properties = {
         'device': config.build_target.arc.device,
@@ -80,9 +85,13 @@ def _BuildArc(config):
     }
     if config.oem:
       build_properties['oem'] = config.oem.name
-  return {
-      'build-properties': build_properties
-  }
+    result = {
+        'build-properties': build_properties
+    }
+    feature_id = _ArcHardwareFeatureId(config.hw_design_config)
+    if feature_id in config_files.arc_hw_features:
+      result['hardware-features'] = config_files.arc_hw_features[feature_id]
+    return result
 
 def _BuildBluetooth(config, bluetooth_files):
   bt_flags = config.sw_config.bluetooth_config.flags
@@ -265,7 +274,7 @@ def _Lookup(id_value, id_map):
     raise Exception(error)
 
 
-def _TransformBuildConfigs(config, bluetooth_files={}):
+def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {})):
   partners = dict([(x.id.value, x) for x in config.partners.value])
   programs = dict([(x.id.value, x) for x in config.programs.value])
   sw_configs = list(config.software_configs)
@@ -321,7 +330,7 @@ def _TransformBuildConfigs(config, bluetooth_files={}):
                 sw_config=sw_config,
                 brand_config=brand_config,
                 build_target=config.build_targets[0]),
-            bluetooth_files)
+            config_files)
 
         config_json = json.dumps(transformed_config,
                                  sort_keys=True,
@@ -334,12 +343,12 @@ def _TransformBuildConfigs(config, bluetooth_files={}):
   return list(results.values())
 
 
-def _TransformBuildConfig(config, bluetooth_files):
+def _TransformBuildConfig(config, config_files):
   """Transforms Config instance into target platform JSON schema.
 
   Args:
     config: Config namedtuple
-    bluetooth_files: Map to look up the generated bluetooth config files.
+    config_files: Map to look up the generated config files.
 
   Returns:
     Unique config payload based on the platform JSON schema.
@@ -352,9 +361,9 @@ def _TransformBuildConfig(config, bluetooth_files):
       'name': config.hw_design.name.lower(),
   }
 
-  _Set(_BuildArc(config), result, 'arc')
+  _Set(_BuildArc(config, config_files), result, 'arc')
   _Set(_BuildAudio(config), result, 'audio')
-  _Set(_BuildBluetooth(config, bluetooth_files), result, 'bluetooth')
+  _Set(_BuildBluetooth(config, config_files.bluetooth), result, 'bluetooth')
   _Set(config.device_brand.brand_code, result, 'brand-code')
   _Set(_BuildCamera(
       config.hw_design_config.hardware_topology), result, 'camera')
@@ -398,6 +407,81 @@ def _BluetoothId(project_name, bt_comp):
                    bt_comp.vendor_id,
                    bt_comp.product_id,
                    bt_comp.bcd_device])
+
+
+def _Feature(name, present):
+  attrib = {'name': name}
+  if present:
+    return etree.Element('feature', attrib=attrib)
+  else:
+    return etree.Element('unavailable-feature', attrib=attrib)
+
+
+def _AnyPresent(features):
+  return topology_pb2.HardwareFeatures.PRESENT in features;
+
+
+def _ArcHardwareFeatureId(design_config):
+  return design_config.id.value.lower().replace(':', '_')
+
+
+def WriteArcHardwareFeatureFiles(config, output_dir):
+  """Writes ARC hardware_feature.xml files for each config
+
+  Args:
+    config: Source ConfigBundle to process.
+    output_dir: Path to the generated output.
+  Returns:
+    dict that maps the design_config_id onto the correct file.
+  """
+  project_gen_path = re.match(r'.*(generated.*)', output_dir).groups(1)[0]
+  result = {}
+  for hw_design in config.designs.value:
+    for design_config in hw_design.configs:
+      hw_features = design_config.hardware_features
+      multi_camera = hw_features.camera.count == 2
+      touchscreen = _AnyPresent([hw_features.screen.touch_support])
+      acc = hw_features.accelerometer
+      gyro = hw_features.gyroscope
+      compass = hw_features.magnetometer
+      ls = hw_features.light_sensor
+      root = etree.Element('permissions')
+      root.extend([
+          _Feature('android.hardware.camera', multi_camera),
+          _Feature('android.hardware.camera.autofocus', multi_camera),
+          _Feature('android.hardware.sensor.accelerometer',
+                   _AnyPresent(
+                       [acc.lid_accelerometer, acc.base_accelerometer])),
+          _Feature('android.hardware.sensor.gyroscope',
+                   _AnyPresent(
+                       [gyro.lid_gyroscope, gyro.base_gyroscope])),
+          _Feature('android.hardware.sensor.compass',
+                   _AnyPresent(
+                       [compass.lid_magnetometer, compass.base_magnetometer])),
+          _Feature('android.hardware.sensor.light',
+                   _AnyPresent(
+                       [ls.lid_lightsensor, ls.base_lightsensor])),
+          _Feature('android.hardware.touchscreen', touchscreen),
+          _Feature('android.hardware.touchscreen.multitouch', touchscreen),
+          _Feature(
+              'android.hardware.touchscreen.multitouch.distinct', touchscreen),
+          _Feature(
+              'android.hardware.touchscreen.multitouch.jazzhand', touchscreen),
+      ])
+
+      feature_id = _ArcHardwareFeatureId( design_config)
+
+      file_name = 'hardware_features_%s.xml' % feature_id
+      output = '%s/arc/%s' % (output_dir, file_name)
+      etree.ElementTree(root).write(output,
+                                    encoding="utf-8",
+                                    xml_declaration=True,
+                                    method="xml")
+      result[feature_id] = {
+          'build-path': '%s/arc/%s' % (project_gen_path, file_name),
+          'system-path': '/etc/%s' % file_name,
+      }
+  return result
 
 
 def WriteBluetoothConfigFiles(config, output_dir):
@@ -466,11 +550,19 @@ def Main(project_configs,
   configs =_MergeConfigs(
       [_ReadConfig(program_config)] +
       [_ReadConfig(config) for config in project_configs])
-  bt_files = {}
-  # Extracts output directory through regex versus separate args
-  if output and 'generated' in output:
-    bt_files = WriteBluetoothConfigFiles(configs, os.path.dirname(output))
-  WriteOutput(_TransformBuildConfigs(configs, bt_files), output)
+  bluetooth_files = {}
+  arc_hw_feature_files = {}
+  output_dir = os.path.dirname(output)
+  if os.path.exists(os.path.join(output_dir, 'bluetooth')):
+    bluetooth_files = WriteBluetoothConfigFiles(configs, output_dir)
+  if os.path.exists(os.path.join(output_dir, 'arc')):
+    arc_hw_feature_files = WriteArcHardwareFeatureFiles(
+        configs, output_dir)
+  config_files = ConfigFiles(
+      bluetooth=bluetooth_files,
+      arc_hw_features=arc_hw_feature_files,
+  )
+  WriteOutput(_TransformBuildConfigs(configs, config_files), output)
 
 
 def main(argv=None):

@@ -21,7 +21,7 @@ _DESIGN_ID = design.create_design_id(_REF_DESIGN_NAME)
 _DB_FW_MASK = 0x0000000f
 _CAMERA_FW_MASK = 0x000000f0
 
-_SCREEN = hw_topo.create_screen("SCREEN", "Default screen", inches = 15, touch = False)
+_SCREEN = hw_topo.create_screen("SCREEN", "Default screen", inches = 15, touch = True)
 _FORM_FACTOR = hw_topo.create_form_factor("FORM_FACTOR", "Default form_factor", hw_topo.ff.CLAMSHELL)
 _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.audio_codec.MAX98373, headphone_codec = hw_topo.audio_codec.ALC5682I)
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)

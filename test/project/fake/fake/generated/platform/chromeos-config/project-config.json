@@ -10,6 +10,10 @@
             "metrics-tag": "fake-ref-design",
             "oem": "FAKE-OEM",
             "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "generated/platform/chromeos-config/arc/hardware_features_fake-ref-design_2147483647.xml",
+            "system-path": "/etc/hardware_features_fake-ref-design_2147483647.xml"
           }
         },
         "audio": {
@@ -95,6 +99,10 @@
             "metrics-tag": "fake-ref-design",
             "oem": "FAKE-OEM",
             "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "generated/platform/chromeos-config/arc/hardware_features_fake-ref-design_2.xml",
+            "system-path": "/etc/hardware_features_fake-ref-design_2.xml"
           }
         },
         "audio": {
