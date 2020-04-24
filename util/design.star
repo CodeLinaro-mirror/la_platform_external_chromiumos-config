@@ -14,6 +14,10 @@ load(
 )
 load("//config/util/generate.star", "generate")
 load("//config/util/hw_topology.star", "hw_topo")
+load(
+    "@proto//chromiumos/config/api/software/software_config.proto",
+    sc_pb = "chromiumos.config.api.software",
+)
 
 _CONSTRAINT = struct(
     REQUIRED = design_pb.Design.Config.Constraint.REQUIRED,
@@ -47,6 +51,41 @@ def _create_config(
     )
     return result
 
+def _append_configs(
+        sw_configs,
+        hw_configs,
+        design_id,
+        config_id,
+        base_hw_features = None,
+        hardware_topology = None,
+        firmware = None,
+        firmware_build_config = None,
+        bluetooth = None,
+        power = None,
+        audio = None):
+    """Create new Software and Hardware Design Configuration with the
+    specified properties and them append them to the sw_configs and hw_configs
+    arrays respectively. This ensures that all IDs are consistent. """
+    hw_config = design_pb.Design.Config()
+    hw_config.id.value = "%s:%s" % (design_id.value, config_id)
+    hw_config.hardware_topology = hardware_topology
+    hw_config.hardware_features = hw_topo.convert_to_hw_features(
+        base_hw_features,
+        hardware_topology,
+    )
+    hw_configs.append(hw_config)
+
+    sw_config = sc_pb.SoftwareConfig()
+    sw_config.design_config_id = hw_config.id
+    sw_config.id_scan_config.smbios_name_match = design_id.value
+    sw_config.id_scan_config.firmware_sku = config_id
+    sw_config.firmware = firmware
+    sw_config.firmware_build_config = firmware_build_config
+    sw_config.bluetooth_config = bluetooth
+    sw_config.power_config = power
+    sw_config.audio_config = audio
+    sw_configs.append(sw_config)
+
 def _create_design_id(name):
     """Builds a DesignId proto."""
     return design_id_pb.DesignId(value = name)
@@ -66,10 +105,12 @@ def _create_design_list(designs):
     return design_pb.DesignList(value = designs)
 
 design = struct(
+    append_configs = _append_configs,
     create_constraint = _create_constraint,
     create_constraints = _create_constraints,
     create_config = _create_config,
     create_design_id = _create_design_id,
+    # Deprecated. Use append_configs instead
     create_design = _create_design,
     create_design_list = _create_design_list,
     constraint = _CONSTRAINT,

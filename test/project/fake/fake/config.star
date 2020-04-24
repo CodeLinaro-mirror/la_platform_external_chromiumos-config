@@ -48,7 +48,16 @@ _FP = hw_topo.create_fingerprint(
     board = "fake-fingerprint-board",
 )
 
-_HW_DESIGN_CONFIG = design.create_config(
+_AUDIO_CARD = "fakeaudiocard"
+
+# Create empty arrays that we will continually append new configurations to
+# as we call append_configs
+_HW_CONFIGS = []
+_SW_CONFIGS = []
+
+design.append_configs(
+    hw_configs = _HW_CONFIGS,
+    sw_configs = _SW_CONFIGS,
     design_id = _DESIGN_ID,
     config_id = 0x7fffffff,
     hardware_topology = hw_topo.create_hardware_topology(
@@ -70,56 +79,6 @@ _HW_DESIGN_CONFIG = design.create_config(
         sd_reader = _SD_READER,
         motherboard_usb = _MOTHERBOARD_USB,
         bluetooth = _BLUETOOTH,
-    ),
-)
-
-_HW_DESIGN_CONFIG_2 = design.create_config(
-    design_id = _DESIGN_ID,
-    config_id = "2",
-    hardware_topology = hw_topo.create_hardware_topology(
-        screen = _SCREEN,
-        form_factor = _FORM_FACTOR,
-        audio = _AUDIO,
-        stylus = _STYLUS,
-        keyboard = _KEYBOARD,
-        thermal = _THERMAL,
-        camera = _CAMERA,
-        accelerometer_gyroscope_magnetometer = _SENSOR,
-        fingerprint = _NO_FINGERPRINT,
-        proximity_sensor = _PROXIMITY_SENSOR,
-        daughter_board = _DAUGHTER_BOARD,
-        non_volatile_storage = _NON_VOLATILE_STORAGE,
-        ram = _RAM,
-        wifi = _WIFI,
-        lte_board = _LTE_BOARD,
-        sd_reader = _SD_READER,
-        motherboard_usb = _MOTHERBOARD_USB,
-    ),
-)
-
-_DESIGN = design.create_design(
-    id = _DESIGN_ID,
-    program_id = program.fake.id,
-    odm_id = _FAKE_ODM.id,
-    configs = [
-        _HW_DESIGN_CONFIG,
-        _HW_DESIGN_CONFIG_2,
-    ],
-)
-
-_DEVICE_BRAND = device_brand.create(
-    brand_name = "Fake ChromeOS Device Brandname",
-    design_id = _DESIGN_ID,
-    oem_id = _FAKE_OEM.id,
-    brand_code = "AAAA",
-)
-
-_AUDIO_CARD = "fakeaudiocard"
-
-_SW_CONFIG = sc.create(
-    design_config_id = _HW_DESIGN_CONFIG.id,
-    id_scan_config = sc.create_x86_id_scan(
-        design_config_id = _HW_DESIGN_CONFIG.id,
     ),
     audio = sc.create_audio(
         card_name = _AUDIO_CARD,
@@ -171,10 +130,29 @@ _SW_CONFIG = sc.create(
     ),
 )
 
-_SW_CONFIG_2 = sc.create(
-    design_config_id = _HW_DESIGN_CONFIG_2.id,
-    id_scan_config = sc.create_x86_id_scan(
-        design_config_id = _HW_DESIGN_CONFIG_2.id
+design.append_configs(
+    hw_configs = _HW_CONFIGS,
+    sw_configs = _SW_CONFIGS,
+    design_id = _DESIGN_ID,
+    config_id = 2,
+    hardware_topology = hw_topo.create_hardware_topology(
+        screen = _SCREEN,
+        form_factor = _FORM_FACTOR,
+        audio = _AUDIO,
+        stylus = _STYLUS,
+        keyboard = _KEYBOARD,
+        thermal = _THERMAL,
+        camera = _CAMERA,
+        accelerometer_gyroscope_magnetometer = _SENSOR,
+        fingerprint = _NO_FINGERPRINT,
+        proximity_sensor = _PROXIMITY_SENSOR,
+        daughter_board = _DAUGHTER_BOARD,
+        non_volatile_storage = _NON_VOLATILE_STORAGE,
+        ram = _RAM,
+        wifi = _WIFI,
+        lte_board = _LTE_BOARD,
+        sd_reader = _SD_READER,
+        motherboard_usb = _MOTHERBOARD_USB,
     ),
     audio = sc.create_audio(
         card_name = _AUDIO_CARD,
@@ -222,11 +200,25 @@ _SW_CONFIG_2 = sc.create(
     ),
 )
 
+_DESIGN = design.create_design(
+    id = _DESIGN_ID,
+    program_id = program.fake.id,
+    odm_id = _FAKE_ODM.id,
+    configs = _HW_CONFIGS,
+)
+
+_DEVICE_BRAND = device_brand.create(
+    brand_name = "Fake ChromeOS Device Brandname",
+    design_id = _DESIGN_ID,
+    oem_id = _FAKE_OEM.id,
+    brand_code = "AAAA",
+)
+
 _CONFIG = config_bundle.create(
     partners = _PARTNERS,
     designs = [_DESIGN],
     device_brands = [_DEVICE_BRAND],
-    software_configs = [_SW_CONFIG, _SW_CONFIG_2],
+    software_configs = _SW_CONFIGS,
     brand_configs = [
         brand_config.create(
             device_brand_id = _DEVICE_BRAND.id,

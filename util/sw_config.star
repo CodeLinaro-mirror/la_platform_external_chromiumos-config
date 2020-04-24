@@ -172,6 +172,7 @@ def _create(
     )
 
 sw_config = struct(
+    # Deprecated. Use append_configs instead
     create = _create,
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
