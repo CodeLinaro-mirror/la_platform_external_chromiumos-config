@@ -12,6 +12,7 @@ import os
 import sys
 import re
 import xml.etree.ElementTree as etree
+import xml.dom.minidom as minidom
 
 from collections import namedtuple
 
@@ -473,10 +474,12 @@ def WriteArcHardwareFeatureFiles(config, output_dir):
 
       file_name = 'hardware_features_%s.xml' % feature_id
       output = '%s/arc/%s' % (output_dir, file_name)
-      etree.ElementTree(root).write(output,
-                                    encoding="utf-8",
-                                    xml_declaration=True,
-                                    method="xml")
+      file_content = minidom.parseString(
+          etree.tostring(root)).toprettyxml(indent='  ', encoding='utf-8')
+
+      with open(output, 'wb') as f:
+        f.write(file_content)
+
       result[feature_id] = {
           'build-path': '%s/arc/%s' % (project_gen_path, file_name),
           'system-path': '/etc/%s' % file_name,
