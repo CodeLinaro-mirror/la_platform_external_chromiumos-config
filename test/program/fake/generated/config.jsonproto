@@ -82,6 +82,42 @@
               "value": "AAAA"
             },
             "keyId": "DEFAULT"
+          },
+          {
+            "brandId": {
+              "value": "FDAA"
+            },
+            "keyId": "KEYA"
+          },
+          {
+            "brandId": {
+              "value": "FDBB"
+            },
+            "keyId": "KEYB"
+          },
+          {
+            "brandId": {
+              "value": "FDCC"
+            },
+            "keyId": "KEYC"
+          },
+          {
+            "brandId": {
+              "value": "WLAA"
+            },
+            "keyId": "KEYD"
+          },
+          {
+            "brandId": {
+              "value": "WLBB"
+            },
+            "keyId": "KEYE"
+          },
+          {
+            "brandId": {
+              "value": "WLCC"
+            },
+            "keyId": "KEYF"
           }
         ],
         "id": {

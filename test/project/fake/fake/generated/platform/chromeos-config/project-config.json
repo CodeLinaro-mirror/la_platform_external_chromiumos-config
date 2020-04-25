@@ -22,11 +22,11 @@
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
-                "source": "audio/fakeaudiocard/HiFi.conf"
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
               },
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
-                "source": "audio/fakeaudiocard/fakeaudiocard.conf"
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
                 "destination": "/etc/cras/fake-ref-design/fakeaudiocard",
@@ -59,14 +59,14 @@
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
           "build-targets": {
-            "coreboot": "fake-coreboot",
-            "depthcharge": "fake-depthcharge",
-            "ec": "fake-ec",
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
             "ec_extras": [
               "fake-ec-extra1",
               "fake-ec-extra2"
             ],
-            "libpayload": "fake-libpayload"
+            "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 33,
@@ -111,11 +111,11 @@
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/HiFi.conf",
-                "source": "audio/fakeaudiocard/HiFi.conf"
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
               },
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/fakeaudiocard.2mic.conf",
-                "source": "audio/fakeaudiocard/fakeaudiocard.conf"
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
                 "destination": "/etc/cras/fake-ref-design/fakeaudiocard",
@@ -136,14 +136,14 @@
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
           "build-targets": {
-            "coreboot": "fake-coreboot",
-            "depthcharge": "fake-depthcharge",
-            "ec": "fake-ec",
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
             "ec_extras": [
               "fake-ec-extra1",
               "fake-ec-extra2"
             ],
-            "libpayload": "fake-libpayload"
+            "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 33,
@@ -162,6 +162,498 @@
           "smbios-name-match": "FAKE-REF-DESIGN"
         },
         "name": "fake-ref-design",
+        "power": {
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_cheets",
+            "first-api-level": "28",
+            "marketing-name": "ChromeOS Device Brandname A",
+            "metrics-tag": "project-a",
+            "oem": "FAKE-OEMA",
+            "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-a_32.xml",
+            "system-path": "/etc/hardware_features_project-a_32.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project-a",
+            "files": [
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/HiFi.conf",
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/fakeaudiocard.2mic.conf",
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+              },
+              {
+                "destination": "/etc/cras/project-a/fakeaudiocard",
+                "source": "audio/fakeaudiocard/fakeaudiocard"
+              },
+              {
+                "destination": "/etc/cras/project-a/dsp.ini",
+                "source": "audio/fakeaudiocard/dsp.ini"
+              }
+            ],
+            "ucm-suffix": "2mic"
+          }
+        },
+        "bluetooth": {
+          "config": {
+            "build-path": "generated/platform/chromeos-config/bluetooth/project-a_0001_0002_0003.conf",
+            "system-path": "/etc/bluetooth/project-a_0001_0002_0003/main.conf"
+          },
+          "flags": {
+            "enable-suspend-management": true
+          }
+        },
+        "brand-code": "FDAA",
+        "camera": {
+          "count": 1
+        },
+        "fingerprint": {
+          "board": "fake-fingerprint-board",
+          "sensor-location": "keyboard-bottom-left"
+        },
+        "firmware": {
+          "bcs-overlay": "overlay-fake-private",
+          "build-targets": {
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
+            "ec_extras": [
+              "fake-ec-extra1",
+              "fake-ec-extra2"
+            ],
+            "libpayload": "fake"
+          },
+          "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 33,
+          "image-name": "fake",
+          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
+          "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
+        },
+        "firmware-signing": {
+          "key-id": "KEYA",
+          "signature-id": "project-a"
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 32,
+          "smbios-name-match": "PROJECT-A"
+        },
+        "name": "project-a",
+        "power": {
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_cheets",
+            "first-api-level": "28",
+            "marketing-name": "ChromeOS Device Brandname B",
+            "metrics-tag": "project-b",
+            "oem": "FAKE-OEMB",
+            "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-b_33.xml",
+            "system-path": "/etc/hardware_features_project-b_33.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project-b",
+            "files": [
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/HiFi.conf",
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/fakeaudiocard.2mic.conf",
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+              },
+              {
+                "destination": "/etc/cras/project-b/fakeaudiocard",
+                "source": "audio/fakeaudiocard/fakeaudiocard"
+              },
+              {
+                "destination": "/etc/cras/project-b/dsp.ini",
+                "source": "audio/fakeaudiocard/dsp.ini"
+              }
+            ],
+            "ucm-suffix": "2mic"
+          }
+        },
+        "bluetooth": {
+          "config": {
+            "build-path": "generated/platform/chromeos-config/bluetooth/project-b_0001_0002_0003.conf",
+            "system-path": "/etc/bluetooth/project-b_0001_0002_0003/main.conf"
+          },
+          "flags": {
+            "enable-suspend-management": true
+          }
+        },
+        "brand-code": "FDBB",
+        "camera": {
+          "count": 1
+        },
+        "firmware": {
+          "bcs-overlay": "overlay-fake-private",
+          "build-targets": {
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
+            "ec_extras": [
+              "fake-ec-extra1",
+              "fake-ec-extra2"
+            ],
+            "libpayload": "fake"
+          },
+          "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 33,
+          "image-name": "fake",
+          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
+          "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
+        },
+        "firmware-signing": {
+          "key-id": "KEYB",
+          "signature-id": "project-b"
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 33,
+          "smbios-name-match": "PROJECT-B"
+        },
+        "name": "project-b",
+        "power": {
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_cheets",
+            "first-api-level": "28",
+            "marketing-name": "ChromeOS Device Brandname C",
+            "metrics-tag": "project-c",
+            "oem": "FAKE-OEMC",
+            "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-c_34.xml",
+            "system-path": "/etc/hardware_features_project-c_34.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project-c",
+            "files": [
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+              },
+              {
+                "destination": "/etc/cras/project-c/fakeaudiocard",
+                "source": "audio/fakeaudiocard/fakeaudiocard"
+              },
+              {
+                "destination": "/etc/cras/project-c/dsp.ini",
+                "source": "audio/fakeaudiocard/dsp.ini"
+              }
+            ]
+          }
+        },
+        "bluetooth": {
+          "config": {
+            "build-path": "generated/platform/chromeos-config/bluetooth/project-c_0001_0002_0003.conf",
+            "system-path": "/etc/bluetooth/project-c_0001_0002_0003/main.conf"
+          },
+          "flags": {
+            "enable-suspend-management": true
+          }
+        },
+        "brand-code": "FDCC",
+        "camera": {
+          "count": 1
+        },
+        "firmware": {
+          "bcs-overlay": "overlay-fake-private",
+          "build-targets": {
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
+            "ec_extras": [
+              "fake-ec-extra1",
+              "fake-ec-extra2"
+            ],
+            "libpayload": "fake"
+          },
+          "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 33,
+          "image-name": "fake",
+          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
+          "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
+        },
+        "firmware-signing": {
+          "key-id": "KEYC",
+          "signature-id": "project-c"
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 34,
+          "smbios-name-match": "PROJECT-C"
+        },
+        "name": "project-c",
+        "power": {
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_cheets",
+            "first-api-level": "28",
+            "marketing-name": "ChromeOS Device Brandname WL-A",
+            "metrics-tag": "project-wl",
+            "oem": "FAKE-LOEMA",
+            "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-wl_64.xml",
+            "system-path": "/etc/hardware_features_project-wl_64.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project-wl",
+            "files": [
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+              },
+              {
+                "destination": "/etc/cras/project-wl/fakeaudiocard",
+                "source": "audio/fakeaudiocard/fakeaudiocard"
+              },
+              {
+                "destination": "/etc/cras/project-wl/dsp.ini",
+                "source": "audio/fakeaudiocard/dsp.ini"
+              }
+            ]
+          }
+        },
+        "brand-code": "WLAA",
+        "camera": {
+          "count": 1
+        },
+        "firmware": {
+          "bcs-overlay": "overlay-fake-private",
+          "build-targets": {
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
+            "ec_extras": [
+              "fake-ec-extra1",
+              "fake-ec-extra2"
+            ],
+            "libpayload": "fake"
+          },
+          "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 33,
+          "image-name": "fake",
+          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
+          "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
+        },
+        "firmware-signing": {
+          "key-id": "KEYD",
+          "signature-id": "project-wl"
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 64,
+          "smbios-name-match": "PROJECT-WL",
+          "whitelabel-tag": "loema"
+        },
+        "name": "project-wl",
+        "power": {
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_cheets",
+            "first-api-level": "28",
+            "marketing-name": "ChromeOS Device Brandname WL-B",
+            "metrics-tag": "project-wl",
+            "oem": "FAKE-LOEMB",
+            "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-wl_64.xml",
+            "system-path": "/etc/hardware_features_project-wl_64.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project-wl",
+            "files": [
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+              },
+              {
+                "destination": "/etc/cras/project-wl/fakeaudiocard",
+                "source": "audio/fakeaudiocard/fakeaudiocard"
+              },
+              {
+                "destination": "/etc/cras/project-wl/dsp.ini",
+                "source": "audio/fakeaudiocard/dsp.ini"
+              }
+            ]
+          }
+        },
+        "brand-code": "WLBB",
+        "camera": {
+          "count": 1
+        },
+        "firmware": {
+          "bcs-overlay": "overlay-fake-private",
+          "build-targets": {
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
+            "ec_extras": [
+              "fake-ec-extra1",
+              "fake-ec-extra2"
+            ],
+            "libpayload": "fake"
+          },
+          "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 33,
+          "image-name": "fake",
+          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
+          "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
+        },
+        "firmware-signing": {
+          "key-id": "KEYE",
+          "signature-id": "project-wl"
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 64,
+          "smbios-name-match": "PROJECT-WL",
+          "whitelabel-tag": "loemb"
+        },
+        "name": "project-wl",
+        "power": {
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_cheets",
+            "first-api-level": "28",
+            "marketing-name": "ChromeOS Device Brandname WL-C",
+            "metrics-tag": "project-wl",
+            "oem": "FAKE-LOEMC",
+            "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-wl_64.xml",
+            "system-path": "/etc/hardware_features_project-wl_64.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project-wl",
+            "files": [
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+              },
+              {
+                "destination": "/etc/cras/project-wl/fakeaudiocard",
+                "source": "audio/fakeaudiocard/fakeaudiocard"
+              },
+              {
+                "destination": "/etc/cras/project-wl/dsp.ini",
+                "source": "audio/fakeaudiocard/dsp.ini"
+              }
+            ]
+          }
+        },
+        "brand-code": "WLCC",
+        "camera": {
+          "count": 1
+        },
+        "firmware": {
+          "bcs-overlay": "overlay-fake-private",
+          "build-targets": {
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
+            "ec_extras": [
+              "fake-ec-extra1",
+              "fake-ec-extra2"
+            ],
+            "libpayload": "fake"
+          },
+          "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 33,
+          "image-name": "fake",
+          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
+          "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
+        },
+        "firmware-signing": {
+          "key-id": "KEYF",
+          "signature-id": "project-wl"
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 64,
+          "smbios-name-match": "PROJECT-WL",
+          "whitelabel-tag": "loemc"
+        },
+        "name": "project-wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
