@@ -162,14 +162,6 @@ def _BuildFirmware(config):
 
   _Set(main_ro.firmware_image_name.lower(), result, 'image-name')
 
-  if not any((
-      main_ro.firmware_image_name,
-      main_rw.firmware_image_name,
-      ec_ro.firmware_image_name,
-      pd_ro.firmware_image_name,
-  )):
-    result['no-firmware'] = True
-
   _Set(_FwBcsPath(main_ro), result, 'main-ro-image')
   _Set(_FwBcsPath(main_rw), result, 'main-rw-image')
   _Set(_FwBcsPath(ec_ro), result, 'ec-ro-image')
