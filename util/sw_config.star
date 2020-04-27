@@ -73,17 +73,7 @@ def _create_fw_config(ro = None, rw = None, ec = None, pd = None):
     )
 
 def _create_x86_id_scan(smbios_name_match = None, fw_sku = 255, design_config_id = None):
-    """Builds a IdentityScanConfig.DesignConfigId proto for x86.
-
-    IdentityScanConfig.DesignConfigId is set based on the value of
-    DesignConfigId, i.e. DesignConfigId.value is
-    "<smbios_name_match>:<firmware_sku>".
-
-    Args:
-        smbios_name_match: Deprecated, use design_config_id instead.
-        fw_sku: Deprecated, use design_config_id instead.
-        design_config_id: A DesignConfigId proto.
-    """
+    """Deprecated. Use design.append_configs"""
     if smbios_name_match and design_config_id:
         fail(
             "smbios_name_match cannot be used if design_config_id ",
@@ -101,17 +91,7 @@ def _create_x86_id_scan(smbios_name_match = None, fw_sku = 255, design_config_id
     )
 
 def _create_arm_id_scan(dt_compatible_match = None, fw_sku = 255, design_config_id = None):
-    """Builds a IdentityScanConfig.DesignConfigId proto for arm.
-
-    IdentityScanConfig.DesignConfigId is set based on the value of
-    DesignConfigId, i.e. DesignConfigId.value is
-    "<device_tree_compatible_match>:<firmware_sku>".
-
-    Args:
-        dt_compatible_match: Deprecated, use design_config_id instead.
-        fw_sku: Deprecated, use design_config_id instead.
-        design_config_id: A DesignConfigId proto.
-    """
+    """Deprecated. Use design.append_configs"""
     if dt_compatible_match  and design_config_id:
         fail(
             "dt_compatible_match cannot be used if design_config_id ",
@@ -160,7 +140,7 @@ def _create(
         bluetooth = None,
         power = None,
         audio = None):
-    """Builds a SoftwareConfig proto."""
+    """Deprecated. Use append_configs instead."""
     return sc_pb.SoftwareConfig(
         design_config_id = design_config_id,
         id_scan_config = id_scan_config,
@@ -176,7 +156,9 @@ sw_config = struct(
     create = _create,
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
+    # Deprecated. Use append_configs instead
     create_x86_id_scan = _create_x86_id_scan,
+    # Deprecated. Use append_configs instead
     create_arm_id_scan = _create_arm_id_scan,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,

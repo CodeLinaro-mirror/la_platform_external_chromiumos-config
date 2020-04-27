@@ -63,9 +63,12 @@ def _append_configs(
         bluetooth = None,
         power = None,
         audio = None):
-    """Create new Software and Hardware Design Configuration with the
-    specified properties and them append them to the sw_configs and hw_configs
-    arrays respectively. This ensures that all IDs are consistent. """
+    """Creates and appends new SW and HW configs.
+
+    Create new Software and Hardware Design Configuration with the
+    specified properties and then append them to the sw_configs and hw_configs
+    arrays respectively. This ensures that all IDs are consistent.
+    """
     hw_config = design_pb.Design.Config()
     hw_config.id.value = "%s:%s" % (design_id.value, config_id)
     hw_config.hardware_topology = hardware_topology
