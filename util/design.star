@@ -111,9 +111,9 @@ design = struct(
     append_configs = _append_configs,
     create_constraint = _create_constraint,
     create_constraints = _create_constraints,
+    # Deprecated. Use append_configs instead
     create_config = _create_config,
     create_design_id = _create_design_id,
-    # Deprecated. Use append_configs instead
     create_design = _create_design,
     create_design_list = _create_design_list,
     constraint = _CONSTRAINT,
