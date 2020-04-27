@@ -31,7 +31,8 @@ Changes will be made in the following repos:
 
 We understand that getting used to the new configuration management ecosystem
 may take some time, and are committed to providing the best experience possible
-for partners and Googlers.
+for partners and Googlers. Please contact the project TAM/SIE for issues and
+feedback, which will be relayed in timely fashion.
 
 ## Frequently Asked Questions
 
