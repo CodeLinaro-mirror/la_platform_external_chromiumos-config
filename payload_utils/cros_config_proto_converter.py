@@ -21,6 +21,8 @@ from chromiumos.config.api import topology_pb2
 from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api.software import brand_config_pb2
 
+from google.protobuf import json_format
+
 Config = namedtuple('Config',
                     ['program',
                      'hw_design',
@@ -521,15 +523,41 @@ DeviceID = bluetooth:%s:%s:%s''' % (bt_comp.vendor_id,
 
 
 def _ReadConfig(path):
-  """Reads a binary proto from a file.
+  """Reads a ConfigBundle proto from a file.
+
+  Reads a ConfigBundle proto from a file first attempting to parse as json
+  pb and falling back to parsing as binary pb.
+  TODO(crbug.com/1073530): remove binary pb fallback when transition to json pb
+  is complete.
+
+  Args:
+    path: Path to the file encoding the proto.
+  """
+  try:
+    return _ReadJsonProtoConfig(path)
+  except:
+    return _ReadBinaryProtoConfig(path)
+
+
+def _ReadJsonProtoConfig(path):
+  """Reads a json proto ConfigBundle from a file.
+
+  Args:
+    path: Path to the json proto.
+  """
+  config = config_bundle_pb2.ConfigBundle()
+  with open(path, 'r') as f:
+    return json_format.Parse(f.read(), config)
+
+
+def _ReadBinaryProtoConfig(path):
+  """Reads a binary proto ConfigBundle from a file.
 
   Args:
     path: Path to the binary proto.
   """
-  config = config_bundle_pb2.ConfigBundle()
   with open(path, 'rb') as f:
-    config.ParseFromString(f.read())
-  return config
+    return config_bundle_pb2.ConfigBundle.FromString(f.read())
 
 
 def _MergeConfigs(configs):

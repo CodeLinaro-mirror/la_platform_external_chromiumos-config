@@ -1,0 +1,786 @@
+{
+  "brandConfigs": [
+    {
+      "brandId": {
+        "value": "AAAA"
+      },
+      "wallpaper": "fake-wallpaper"
+    }
+  ],
+  "components": {},
+  "designs": {
+    "value": [
+      {
+        "configs": [
+          {
+            "hardwareFeatures": {
+              "audio": {
+                "headphoneCodec": 2,
+                "speakerAmp": 5
+              },
+              "bluetooth": {
+                "component": {
+                  "bcdDevice": "0003",
+                  "productId": "0002",
+                  "vendorId": "0001"
+                }
+              },
+              "camera": {
+                "count": {
+                  "value": 1
+                }
+              },
+              "fingerprint": {
+                "board": "fake-fingerprint-board",
+                "location": 2
+              },
+              "formFactor": {
+                "formFactor": 1
+              },
+              "fwConfig": {
+                "mask": 255,
+                "value": 33
+              },
+              "hdmi": {
+                "present": 2
+              },
+              "keyboard": {
+                "backlight": 1,
+                "keyboardType": 3,
+                "powerButton": 2
+              },
+              "lte": {
+                "present": 1
+              },
+              "memory": {
+                "profile": {
+                  "sizeMegabytes": 16384,
+                  "speedMhz": 3600,
+                  "type": 3
+                }
+              },
+              "screen": {
+                "milliinch": {
+                  "value": 15000
+                },
+                "touchSupport": 1
+              },
+              "storage": {
+                "storageType": 1
+              },
+              "stylus": {
+                "stylus": 2
+              },
+              "usbA": {
+                "count": {}
+              },
+              "usbC": {
+                "count": {}
+              }
+            },
+            "hardwareTopology": {
+              "accelerometerGyroscopeMagnetometer": {
+                "description": {
+                  "EN": "Default sensor"
+                },
+                "hardwareFeature": {},
+                "id": "SENSOR",
+                "type": 8
+              },
+              "audio": {
+                "description": {
+                  "EN": "Default audio"
+                },
+                "hardwareFeature": {
+                  "audio": {
+                    "headphoneCodec": 2,
+                    "speakerAmp": 5
+                  }
+                },
+                "id": "AUDIO",
+                "type": 3
+              },
+              "bluetooth": {
+                "description": {
+                  "EN": "Default bluetooth"
+                },
+                "hardwareFeature": {
+                  "bluetooth": {
+                    "component": {
+                      "bcdDevice": "0003",
+                      "productId": "0002",
+                      "vendorId": "0001"
+                    }
+                  }
+                },
+                "id": "BLUETOOTH",
+                "type": 18
+              },
+              "camera": {
+                "description": {
+                  "EN": "Default camera"
+                },
+                "hardwareFeature": {
+                  "camera": {
+                    "count": {
+                      "value": 1
+                    }
+                  },
+                  "fwConfig": {
+                    "mask": 240,
+                    "value": 32
+                  }
+                },
+                "id": "CAMERA",
+                "type": 7
+              },
+              "daughterBoard": {
+                "description": {
+                  "EN": "Default daughter_board"
+                },
+                "hardwareFeature": {
+                  "fwConfig": {
+                    "mask": 15,
+                    "value": 1
+                  },
+                  "hdmi": {
+                    "present": 2
+                  },
+                  "lte": {
+                    "present": 2
+                  },
+                  "usbA": {
+                    "count": {}
+                  },
+                  "usbC": {
+                    "count": {}
+                  }
+                },
+                "id": "DAUGHTER_BOARD",
+                "type": 11
+              },
+              "fingerprint": {
+                "description": {
+                  "EN": "Default fingerprint"
+                },
+                "hardwareFeature": {
+                  "fingerprint": {
+                    "board": "fake-fingerprint-board",
+                    "location": 2
+                  }
+                },
+                "id": "FINGERPRINT",
+                "type": 9
+              },
+              "formFactor": {
+                "description": {
+                  "EN": "Default form_factor"
+                },
+                "hardwareFeature": {
+                  "formFactor": {
+                    "formFactor": 1
+                  }
+                },
+                "id": "FORM_FACTOR",
+                "type": 2
+              },
+              "keyboard": {
+                "description": {
+                  "EN": "Default keyboard"
+                },
+                "hardwareFeature": {
+                  "keyboard": {
+                    "backlight": 1,
+                    "keyboardType": 3,
+                    "powerButton": 2
+                  }
+                },
+                "id": "KEYBOARD",
+                "type": 5
+              },
+              "lteBoard": {
+                "description": {
+                  "EN": "Default lte_board"
+                },
+                "hardwareFeature": {
+                  "lte": {
+                    "present": 1
+                  }
+                },
+                "id": "LTE_BOARD",
+                "type": 15
+              },
+              "motherboardUsb": {
+                "description": {
+                  "EN": "Default motherboard_usb"
+                },
+                "hardwareFeature": {
+                  "usbA": {
+                    "count": {}
+                  },
+                  "usbC": {
+                    "count": {}
+                  }
+                },
+                "id": "MOTHERBOARD_USB",
+                "type": 17
+              },
+              "nonVolatileStorage": {
+                "description": {
+                  "EN": "Default non_volatile_storage"
+                },
+                "hardwareFeature": {
+                  "storage": {
+                    "storageType": 1
+                  }
+                },
+                "id": "NON_VOLATILE_STORAGE",
+                "type": 12
+              },
+              "proximitySensor": {
+                "description": {
+                  "EN": "Default proximity_sensor"
+                },
+                "hardwareFeature": {},
+                "id": "PROXIMITY_SENSOR",
+                "type": 10
+              },
+              "ram": {
+                "description": {
+                  "EN": "Default ram"
+                },
+                "hardwareFeature": {
+                  "memory": {
+                    "profile": {
+                      "sizeMegabytes": 16384,
+                      "speedMhz": 3600,
+                      "type": 3
+                    }
+                  }
+                },
+                "id": "RAM",
+                "type": 13
+              },
+              "screen": {
+                "description": {
+                  "EN": "Default screen"
+                },
+                "hardwareFeature": {
+                  "screen": {
+                    "milliinch": {
+                      "value": 15000
+                    },
+                    "touchSupport": 1
+                  }
+                },
+                "id": "SCREEN",
+                "type": 1
+              },
+              "sdReader": {
+                "description": {
+                  "EN": "Default sd_reader"
+                },
+                "hardwareFeature": {},
+                "id": "SD_READER",
+                "type": 16
+              },
+              "stylus": {
+                "description": {
+                  "EN": "Default stylus"
+                },
+                "hardwareFeature": {
+                  "stylus": {
+                    "stylus": 2
+                  }
+                },
+                "id": "STYLUS",
+                "type": 4
+              },
+              "thermal": {
+                "description": {
+                  "EN": "Default thermal"
+                },
+                "hardwareFeature": {},
+                "id": "THERMAL",
+                "type": 6
+              },
+              "wifi": {
+                "description": {
+                  "EN": "Default wifi"
+                },
+                "hardwareFeature": {},
+                "id": "WIFI",
+                "type": 14
+              }
+            },
+            "id": {
+              "value": "FAKE-REF-DESIGN:2147483647"
+            }
+          },
+          {
+            "hardwareFeatures": {
+              "audio": {
+                "headphoneCodec": 2,
+                "speakerAmp": 5
+              },
+              "camera": {
+                "count": {
+                  "value": 1
+                }
+              },
+              "fingerprint": {
+                "location": 5
+              },
+              "formFactor": {
+                "formFactor": 1
+              },
+              "fwConfig": {
+                "mask": 255,
+                "value": 33
+              },
+              "hdmi": {
+                "present": 2
+              },
+              "keyboard": {
+                "backlight": 1,
+                "keyboardType": 3,
+                "powerButton": 2
+              },
+              "lte": {
+                "present": 1
+              },
+              "memory": {
+                "profile": {
+                  "sizeMegabytes": 16384,
+                  "speedMhz": 3600,
+                  "type": 3
+                }
+              },
+              "screen": {
+                "milliinch": {
+                  "value": 15000
+                },
+                "touchSupport": 1
+              },
+              "storage": {
+                "storageType": 1
+              },
+              "stylus": {
+                "stylus": 2
+              },
+              "usbA": {
+                "count": {}
+              },
+              "usbC": {
+                "count": {}
+              }
+            },
+            "hardwareTopology": {
+              "accelerometerGyroscopeMagnetometer": {
+                "description": {
+                  "EN": "Default sensor"
+                },
+                "hardwareFeature": {},
+                "id": "SENSOR",
+                "type": 8
+              },
+              "audio": {
+                "description": {
+                  "EN": "Default audio"
+                },
+                "hardwareFeature": {
+                  "audio": {
+                    "headphoneCodec": 2,
+                    "speakerAmp": 5
+                  }
+                },
+                "id": "AUDIO",
+                "type": 3
+              },
+              "camera": {
+                "description": {
+                  "EN": "Default camera"
+                },
+                "hardwareFeature": {
+                  "camera": {
+                    "count": {
+                      "value": 1
+                    }
+                  },
+                  "fwConfig": {
+                    "mask": 240,
+                    "value": 32
+                  }
+                },
+                "id": "CAMERA",
+                "type": 7
+              },
+              "daughterBoard": {
+                "description": {
+                  "EN": "Default daughter_board"
+                },
+                "hardwareFeature": {
+                  "fwConfig": {
+                    "mask": 15,
+                    "value": 1
+                  },
+                  "hdmi": {
+                    "present": 2
+                  },
+                  "lte": {
+                    "present": 2
+                  },
+                  "usbA": {
+                    "count": {}
+                  },
+                  "usbC": {
+                    "count": {}
+                  }
+                },
+                "id": "DAUGHTER_BOARD",
+                "type": 11
+              },
+              "fingerprint": {
+                "description": {
+                  "EN": "No finger print sensor"
+                },
+                "hardwareFeature": {
+                  "fingerprint": {
+                    "location": 5
+                  }
+                },
+                "id": "NONE",
+                "type": 9
+              },
+              "formFactor": {
+                "description": {
+                  "EN": "Default form_factor"
+                },
+                "hardwareFeature": {
+                  "formFactor": {
+                    "formFactor": 1
+                  }
+                },
+                "id": "FORM_FACTOR",
+                "type": 2
+              },
+              "keyboard": {
+                "description": {
+                  "EN": "Default keyboard"
+                },
+                "hardwareFeature": {
+                  "keyboard": {
+                    "backlight": 1,
+                    "keyboardType": 3,
+                    "powerButton": 2
+                  }
+                },
+                "id": "KEYBOARD",
+                "type": 5
+              },
+              "lteBoard": {
+                "description": {
+                  "EN": "Default lte_board"
+                },
+                "hardwareFeature": {
+                  "lte": {
+                    "present": 1
+                  }
+                },
+                "id": "LTE_BOARD",
+                "type": 15
+              },
+              "motherboardUsb": {
+                "description": {
+                  "EN": "Default motherboard_usb"
+                },
+                "hardwareFeature": {
+                  "usbA": {
+                    "count": {}
+                  },
+                  "usbC": {
+                    "count": {}
+                  }
+                },
+                "id": "MOTHERBOARD_USB",
+                "type": 17
+              },
+              "nonVolatileStorage": {
+                "description": {
+                  "EN": "Default non_volatile_storage"
+                },
+                "hardwareFeature": {
+                  "storage": {
+                    "storageType": 1
+                  }
+                },
+                "id": "NON_VOLATILE_STORAGE",
+                "type": 12
+              },
+              "proximitySensor": {
+                "description": {
+                  "EN": "Default proximity_sensor"
+                },
+                "hardwareFeature": {},
+                "id": "PROXIMITY_SENSOR",
+                "type": 10
+              },
+              "ram": {
+                "description": {
+                  "EN": "Default ram"
+                },
+                "hardwareFeature": {
+                  "memory": {
+                    "profile": {
+                      "sizeMegabytes": 16384,
+                      "speedMhz": 3600,
+                      "type": 3
+                    }
+                  }
+                },
+                "id": "RAM",
+                "type": 13
+              },
+              "screen": {
+                "description": {
+                  "EN": "Default screen"
+                },
+                "hardwareFeature": {
+                  "screen": {
+                    "milliinch": {
+                      "value": 15000
+                    },
+                    "touchSupport": 1
+                  }
+                },
+                "id": "SCREEN",
+                "type": 1
+              },
+              "sdReader": {
+                "description": {
+                  "EN": "Default sd_reader"
+                },
+                "hardwareFeature": {},
+                "id": "SD_READER",
+                "type": 16
+              },
+              "stylus": {
+                "description": {
+                  "EN": "Default stylus"
+                },
+                "hardwareFeature": {
+                  "stylus": {
+                    "stylus": 2
+                  }
+                },
+                "id": "STYLUS",
+                "type": 4
+              },
+              "thermal": {
+                "description": {
+                  "EN": "Default thermal"
+                },
+                "hardwareFeature": {},
+                "id": "THERMAL",
+                "type": 6
+              },
+              "wifi": {
+                "description": {
+                  "EN": "Default wifi"
+                },
+                "hardwareFeature": {},
+                "id": "WIFI",
+                "type": 14
+              }
+            },
+            "id": {
+              "value": "FAKE-REF-DESIGN:2"
+            }
+          }
+        ],
+        "id": {
+          "value": "FAKE-REF-DESIGN"
+        },
+        "name": "FAKE-REF-DESIGN",
+        "odmId": {
+          "value": "FAKE-ODM"
+        },
+        "programId": {
+          "value": "FAKE_PROGRAM"
+        }
+      }
+    ]
+  },
+  "deviceBrands": {
+    "value": [
+      {
+        "brandCode": "AAAA",
+        "brandName": "Fake ChromeOS Device Brandname",
+        "designId": {
+          "value": "FAKE-REF-DESIGN"
+        },
+        "id": {
+          "value": "AAAA"
+        },
+        "oemId": {
+          "value": "FAKE-OEM"
+        }
+      }
+    ]
+  },
+  "partners": {
+    "value": [
+      {
+        "id": {
+          "value": "FAKE-ODM"
+        },
+        "name": "FAKE-ODM"
+      },
+      {
+        "id": {
+          "value": "FAKE-OEM"
+        },
+        "name": "FAKE-OEM"
+      }
+    ]
+  },
+  "programs": {},
+  "softwareConfigs": [
+    {
+      "audioConfig": {
+        "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
+        "cardName": "fakeaudiocard",
+        "dspFile": "audio/fakeaudiocard/dsp.ini",
+        "ucmFile": "audio/fakeaudiocard/HiFi.conf",
+        "ucmMasterFile": "audio/fakeaudiocard/fakeaudiocard.conf"
+      },
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "FAKE-REF-DESIGN:2147483647"
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "mainRwPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "pdRoPayload": {
+          "firmwareImageName": "Fake_PD",
+          "type": 3,
+          "version": {
+            "major": 11111
+          }
+        }
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake-coreboot",
+          "depthcharge": "fake-depthcharge",
+          "ec": "fake-ec",
+          "ecExtras": [
+            "fake-ec-extra1",
+            "fake-ec-extra2"
+          ],
+          "libpayload": "fake-libpayload"
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 2147483647,
+        "smbiosNameMatch": "FAKE-REF-DESIGN"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery_poll_interval_initial_ms": "1000",
+          "disable_dark_resume": "0"
+        }
+      }
+    },
+    {
+      "audioConfig": {
+        "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
+        "cardName": "fakeaudiocard",
+        "dspFile": "audio/fakeaudiocard/dsp.ini",
+        "ucmFile": "audio/fakeaudiocard/HiFi.conf",
+        "ucmMasterFile": "audio/fakeaudiocard/fakeaudiocard.conf",
+        "ucmSuffix": "2mic"
+      },
+      "designConfigId": {
+        "value": "FAKE-REF-DESIGN:2"
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "mainRwPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "pdRoPayload": {
+          "firmwareImageName": "Fake_PD",
+          "type": 3,
+          "version": {
+            "major": 11111
+          }
+        }
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake-coreboot",
+          "depthcharge": "fake-depthcharge",
+          "ec": "fake-ec",
+          "ecExtras": [
+            "fake-ec-extra1",
+            "fake-ec-extra2"
+          ],
+          "libpayload": "fake-libpayload"
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 2,
+        "smbiosNameMatch": "FAKE-REF-DESIGN"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery_poll_interval_initial_ms": "1000",
+          "disable_dark_resume": "0"
+        }
+      }
+    }
+  ]
+}

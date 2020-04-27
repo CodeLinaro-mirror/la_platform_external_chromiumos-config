@@ -1,0 +1,94 @@
+{
+  "buildTargets": [
+    {
+      "arc": {
+        "device": "fake_cheets",
+        "firstApiLevel": "28"
+      },
+      "id": {
+        "value": "fake"
+      },
+      "overlayName": "overlay-fake-private"
+    }
+  ],
+  "components": {
+    "value": [
+      {
+        "id": {
+          "value": "FAKE_MODEL_2"
+        },
+        "soc": {
+          "cores": 2,
+          "family": {
+            "arch": 2,
+            "name": "FAKE_FAMILY"
+          },
+          "model": "FAKE_MODEL"
+        }
+      },
+      {
+        "bluetooth": {
+          "bcdDevice": "0003",
+          "productId": "0002",
+          "vendorId": "0001"
+        },
+        "id": {
+          "value": "0001:0002:0003"
+        }
+      }
+    ]
+  },
+  "designs": {},
+  "deviceBrands": {},
+  "partners": {},
+  "programs": {
+    "value": [
+      {
+        "componentQuals": [
+          {
+            "componentId": {
+              "value": "FAKE_MODEL_2"
+            },
+            "status": 3
+          },
+          {
+            "componentId": {
+              "value": "0001:0002:0003"
+            },
+            "status": 3
+          }
+        ],
+        "designConfigConstraints": [
+          {
+            "features": {
+              "formFactor": {
+                "formFactor": 1
+              }
+            },
+            "level": 1
+          },
+          {
+            "features": {
+              "formFactor": {
+                "formFactor": 2
+              }
+            },
+            "level": 1
+          }
+        ],
+        "deviceSignerConfigs": [
+          {
+            "brandId": {
+              "value": "AAAA"
+            },
+            "keyId": "DEFAULT"
+          }
+        ],
+        "id": {
+          "value": "FAKE_PROGRAM"
+        },
+        "name": "FAKE_PROGRAM"
+      }
+    ]
+  }
+}
