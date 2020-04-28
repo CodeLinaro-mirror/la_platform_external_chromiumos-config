@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Used for creating project gs buckets.
+
+# Exit if any command fails.
+set -e
+
+function usage() {
+  echo "Usage: $0 <program> <project1> ..." >&2
+  echo "where" >&2
+  echo "  <program> is the name of the program" >&2
+  echo "  <project1> is the name of a project in the program" >&2
+  echo "with projects repeated as many times as necessary." >&2
+  exit 1
+}
+
+function prompt_create() {
+  read -p "${1} (y/N) " answer
+
+  if [[ "${answer^^}" == "Y" ]]; then
+    echo 'y'
+  else
+    echo 'n'
+  fi
+}
+
+if [[ $# -lt 2 ]]; then
+  usage
+fi
+
+readonly program="${1}"
+shift
+
+for project in "$@"; do
+  bucket="gs://chromeos-${program}-${project}"
+  if [[ $(prompt_create "Create bucket ${bucket}?") == 'y' ]]; then
+    echo "Creating bucket ${bucket}."
+    gsutil mb "${bucket}"
+    gsutil iam ch serviceAccount:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com:objectAdmin "${bucket}"
+    gsutil iam ch "group:${project}-odm-external@google.com:objectViewer" "${bucket}"
+    gsutil iam ch "group:${project}-oem-external@google.com:objectViewer" "${bucket}"
+    gsutil iam ch "group:${project}-soc-external@google.com:objectViewer" "${bucket}"
+  else
+    echo "Not creating bucket ${bucket}."
+  fi
+done
