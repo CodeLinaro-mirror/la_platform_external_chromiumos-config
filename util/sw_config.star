@@ -35,6 +35,12 @@ _FW_TYPE = struct(
     PD = fw_pb.FirmwareType.PD,
 )
 
+def _create_fw_version(major_version = None, minor_version = None):
+    return fw_pb.Version(
+        major = major_version if major_version else 0,
+        minor = minor_version if major_version and minor_version else 0,
+    )
+
 def _create_fw_payload(
         name = None,
         fw_type = _FW_TYPE.MAIN,
@@ -63,6 +69,25 @@ def _create_fw_build_config(build_targets):
     """Builds a FirmwareBuildConfig proto."""
     return fw_pb.FirmwareBuildConfig(build_targets = build_targets)
 
+def _create_fw_build_config_by_names(coreboot_name, ec_name = None, depthcharge_name = None,
+    libpayload_name = None, ec_extras = None):
+    """Builds a FirmwareBuildConfig proto using common naming patterns.
+
+    Build targets are set to be coreboot_name unless they are otherwise
+    specified, e.g. depthcharge is set to coreboot_name unless
+    depthcharge_name is specified. This function is provided as a convenience,
+    as different firmware build targets often share the same name.
+    """
+    return fw_pb.FirmwareBuildConfig(
+        build_targets = fw_pb.FirmwareBuildConfig.BuildTargets(
+            coreboot = coreboot_name,
+            ec = ec_name if ec_name else coreboot_name,
+            ec_extras = ec_extras,
+            depthcharge = depthcharge_name if depthcharge_name else coreboot_name,
+            libpayload = libpayload_name if libpayload_name else coreboot_name,
+        ),
+    )
+
 def _create_fw_config(ro = None, rw = None, ec = None, pd = None):
     """Builds a FirmwareConfig proto."""
     return fw_pb.FirmwareConfig(
@@ -71,6 +96,36 @@ def _create_fw_config(ro = None, rw = None, ec = None, pd = None):
         ec_ro_payload = ec,
         pd_ro_payload = pd,
     )
+
+def _create_fw_payloads_by_names(ap_fw_name = None, ec_fw_name = None, pd_fw_name = None,
+    ap_ro_version = None, ap_rw_version = None, ec_version = None, pd_version = None):
+    """Builds a FirmwareConfig proto using common naming patterns."""
+    sc_fw_config = fw_pb.FirmwareConfig()
+    if ap_fw_name:
+        sc_fw_config.main_ro_payload = fw_pb.FirmwarePayload(
+            firmware_image_name = ap_fw_name,
+            type = _FW_TYPE.MAIN,
+            version = ap_ro_version,
+        )
+        if ap_rw_version:
+            sc_fw_config.main_rw_payload = fw_pb.FirmwarePayload(
+                firmware_image_name = ap_fw_name,
+                type = _FW_TYPE.MAIN,
+                version = ap_rw_version,
+            )
+    if ec_fw_name:
+        sc_fw_config.ec_ro_payload = fw_pb.FirmwarePayload(
+            firmware_image_name = ec_fw_name,
+            type = _FW_TYPE.EC,
+            version = ec_version,
+        )
+    if pd_fw_name:
+        sc_fw_config.pd_ro_payload = fw_pb.FirmwarePayload(
+            firmware_image_name = pd_fw_name,
+            type = _FW_TYPE.PD,
+            version = pd_version,
+        )
+    return sc_fw_config
 
 def _create_x86_id_scan(smbios_name_match = None, fw_sku = 255, design_config_id = None):
     """Deprecated. Use design.append_configs"""
@@ -119,8 +174,8 @@ def _create_audio(
         card_name = card_name,
         card_config_file = card_config_file,
         dsp_file = dsp_file,
-        ucm_file = ucm_file,
-        ucm_master_file = ucm_master_file,
+        ucm_file = ucm_file if ucm_file else ("ucm-config/%s/HiFi.conf" % card_name),
+        ucm_master_file = ucm_master_file if ucm_master_file else ("ucm-config/%s/%s.conf" % (card_name, card_name)),
         ucm_suffix = ucm_suffix,
     )
 
@@ -160,9 +215,12 @@ sw_config = struct(
     create_x86_id_scan = _create_x86_id_scan,
     # Deprecated. Use append_configs instead
     create_arm_id_scan = _create_arm_id_scan,
+    create_fw_version = _create_fw_version,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,
+    create_fw_payloads_by_names = _create_fw_payloads_by_names,
     create_fw_build_config = _create_fw_build_config,
+    create_fw_build_config_by_names = _create_fw_build_config_by_names,
     create_fw_build_targets = _create_fw_build_targets,
     create_power = _create_power,
     fw_type = _FW_TYPE,
