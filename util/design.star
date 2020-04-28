@@ -69,6 +69,11 @@ def _append_configs(
     specified properties and then append them to the sw_configs and hw_configs
     arrays respectively. This ensures that all IDs are consistent.
     """
+    # Ensure that config_id is convertable to int and is serialized as a
+    # decimal instead of a string. This makes it easier for a consumer
+    # to construct the DesignConfigId.value string correctly.
+    config_id = int(config_id)
+
     hw_config = design_pb.Design.Config()
     hw_config.id.value = "%s:%s" % (design_id.value, config_id)
     hw_config.hardware_topology = hardware_topology
