@@ -12,7 +12,7 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "generated/platform/chromeos-config/arc/hardware_features_fake-ref-design_2147483647.xml",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/arc/hardware_features_fake-ref-design_2147483647.xml",
             "system-path": "/etc/hardware_features_fake-ref-design_2147483647.xml"
           }
         },
@@ -41,7 +41,7 @@
         },
         "bluetooth": {
           "config": {
-            "build-path": "generated/platform/chromeos-config/bluetooth/fake-ref-design_0001_0002_0003.conf",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/bluetooth/fake-ref-design_0001_0002_0003.conf",
             "system-path": "/etc/bluetooth/fake-ref-design_0001_0002_0003/main.conf"
           },
           "flags": {
@@ -101,7 +101,7 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "generated/platform/chromeos-config/arc/hardware_features_fake-ref-design_2.xml",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/arc/hardware_features_fake-ref-design_2.xml",
             "system-path": "/etc/hardware_features_fake-ref-design_2.xml"
           }
         },
@@ -178,7 +178,7 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-a_32.xml",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/arc/hardware_features_project-a_32.xml",
             "system-path": "/etc/hardware_features_project-a_32.xml"
           }
         },
@@ -208,7 +208,7 @@
         },
         "bluetooth": {
           "config": {
-            "build-path": "generated/platform/chromeos-config/bluetooth/project-a_0001_0002_0003.conf",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/bluetooth/project-a_0001_0002_0003.conf",
             "system-path": "/etc/bluetooth/project-a_0001_0002_0003/main.conf"
           },
           "flags": {
@@ -268,7 +268,7 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-b_33.xml",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/arc/hardware_features_project-b_33.xml",
             "system-path": "/etc/hardware_features_project-b_33.xml"
           }
         },
@@ -298,7 +298,7 @@
         },
         "bluetooth": {
           "config": {
-            "build-path": "generated/platform/chromeos-config/bluetooth/project-b_0001_0002_0003.conf",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/bluetooth/project-b_0001_0002_0003.conf",
             "system-path": "/etc/bluetooth/project-b_0001_0002_0003/main.conf"
           },
           "flags": {
@@ -354,7 +354,7 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-c_34.xml",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/arc/hardware_features_project-c_34.xml",
             "system-path": "/etc/hardware_features_project-c_34.xml"
           }
         },
@@ -383,7 +383,7 @@
         },
         "bluetooth": {
           "config": {
-            "build-path": "generated/platform/chromeos-config/bluetooth/project-c_0001_0002_0003.conf",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/bluetooth/project-c_0001_0002_0003.conf",
             "system-path": "/etc/bluetooth/project-c_0001_0002_0003/main.conf"
           },
           "flags": {
@@ -439,7 +439,7 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-wl_64.xml",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/arc/hardware_features_project-wl_64.xml",
             "system-path": "/etc/hardware_features_project-wl_64.xml"
           }
         },
@@ -516,7 +516,7 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-wl_64.xml",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/arc/hardware_features_project-wl_64.xml",
             "system-path": "/etc/hardware_features_project-wl_64.xml"
           }
         },
@@ -593,7 +593,7 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "generated/platform/chromeos-config/arc/hardware_features_project-wl_64.xml",
+            "build-path": "sw_build_config//platform/chromeos-config/generated/arc/hardware_features_project-wl_64.xml",
             "system-path": "/etc/hardware_features_project-wl_64.xml"
           }
         },

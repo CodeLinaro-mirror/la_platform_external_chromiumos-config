@@ -63,7 +63,13 @@ config/payload_utils/convert_config_enums.py \
 # Check for platform generated directory and use that
 # while migrating config from /project to /platform
 # Once all projects are migrated, the else branch can be deleted.
-if [[ -d "generated/platform/chromeos-config" ]]; then
+if [[ -d "sw_build_config/platform/chromeos-config/generated" ]]; then
+  python3 config/payload_utils/cros_config_proto_converter.py \
+    --output sw_build_config/platform/chromeos-config/generated/project-config.json \
+    --program_config program/generated/config.binaryproto \
+    --project_configs generated/config.binaryproto
+# Remove once Volteer is migrated to above
+elif [[ -d "generated/platform/chromeos-config" ]]; then
   python3 config/payload_utils/cros_config_proto_converter.py \
     --output generated/platform/chromeos-config/project-config.json \
     --program_config program/generated/config.jsonproto \

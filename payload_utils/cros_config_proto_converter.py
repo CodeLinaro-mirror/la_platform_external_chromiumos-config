@@ -437,7 +437,6 @@ def WriteArcHardwareFeatureFiles(config, output_dir):
   Returns:
     dict that maps the design_config_id onto the correct file.
   """
-  project_gen_path = re.match(r'.*(generated.*)', output_dir).groups(1)[0]
   result = {}
   for hw_design in config.designs.value:
     for design_config in hw_design.configs:
@@ -483,7 +482,7 @@ def WriteArcHardwareFeatureFiles(config, output_dir):
         f.write(file_content)
 
       result[feature_id] = {
-          'build-path': '%s/arc/%s' % (project_gen_path, file_name),
+          'build-path': '%s/arc/%s' % (output_dir, file_name),
           'system-path': '/etc/%s' % file_name,
       }
   return result
@@ -498,7 +497,6 @@ def WriteBluetoothConfigFiles(config, output_dir):
   Returns:
     dict that maps the bluetooth component id onto the file config.
   """
-  project_gen_path = re.match(r'.*(generated.*)', output_dir).groups(1)[0]
   result = {}
   for hw_design in config.designs.value:
     project_name = hw_design.name.lower()
@@ -507,7 +505,7 @@ def WriteBluetoothConfigFiles(config, output_dir):
       if bt_comp.vendor_id:
         bt_id = _BluetoothId(project_name, bt_comp)
         result[bt_id] = {
-            'build-path': '%s/bluetooth/%s.conf' % (project_gen_path, bt_id),
+            'build-path': '%s/bluetooth/%s.conf' % (output_dir, bt_id),
             'system-path': '/etc/bluetooth/%s/main.conf' % bt_id,
         }
         bt_content = '''[General]
