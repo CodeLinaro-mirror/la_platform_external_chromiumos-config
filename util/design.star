@@ -72,6 +72,13 @@ def _append_configs(
     # Ensure that config_id is convertable to int and is serialized as a
     # decimal instead of a string. This makes it easier for a consumer
     # to construct the DesignConfigId.value string correctly.
+    #
+    # This means that specifying
+    #   config_id = "0x7fffffff"
+    #   config_id = "0x7FFFFFFF"
+    #   config_id = 0x7fffffff
+    #
+    # will all get serialized the same way, i.e. 2147483647.
     config_id = int(config_id)
 
     hw_config = design_pb.Design.Config()
