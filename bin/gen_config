@@ -66,15 +66,15 @@ config/payload_utils/convert_config_enums.py \
 if [[ -d "generated/platform/chromeos-config" ]]; then
   python3 config/payload_utils/cros_config_proto_converter.py \
     --output generated/platform/chromeos-config/project-config.json \
-    --program_config program/generated/config.binaryproto \
-    --project_configs generated/config.binaryproto
+    --program_config program/generated/config.jsonproto \
+    --project_configs generated/config.jsonproto
 else
   mkdir -p generated/project
 
   python3 config/payload_utils/cros_config_proto_converter.py \
     --output generated/project/project-config.json \
-    --program_config program/generated/config.binaryproto \
-    --project_configs generated/config.binaryproto
+    --program_config program/generated/config.jsonproto \
+    --project_configs generated/config.jsonproto
 fi
 
 deactivate
