@@ -79,6 +79,8 @@ func (m *FirmwareConfigurationSegment) GetMask() uint32 {
 // allocated to each Design. For example, Design "A" gets ids [11, 20], Design
 // "B" gets ids [21, 30], etc.
 //
+// The "unprovisioned" id 0x7FFFFFFF is exempt from this check.
+//
 // No segments in a program can overlap.
 type DesignConfigIdSegment struct {
 	// Design the segment applies to.

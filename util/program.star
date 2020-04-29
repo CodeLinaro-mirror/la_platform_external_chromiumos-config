@@ -25,6 +25,14 @@ def _create_firmware_configuration_segment(name, mask):
         mask = mask,
     )
 
+def _create_design_config_id_segment(design_id, min_id, max_id):
+    """Builds a DesignConfigIdSegment proto."""
+    return program_pb.DesignConfigIdSegment(
+        design_id = design_id,
+        min_id = min_id,
+        max_id = max_id,
+    )
+
 def _create_signer_config(device_brand_id, key_id):
     """Builds a DeviceSignerConfig proto."""
     return program_pb.DeviceSignerConfig(
@@ -37,6 +45,7 @@ def _create(
         component_quals = None,
         constraints = None,
         firmware_configuration_segments = None,
+        design_config_id_segments = None,
         device_signer_configs = None):
     """Builds a Program proto."""
     program_id = program_id_pb.ProgramId(value = name)
@@ -46,6 +55,7 @@ def _create(
         component_quals = component_quals,
         design_config_constraints = constraints,
         firmware_configuration_segments = firmware_configuration_segments,
+        design_config_id_segments = design_config_id_segments,
         device_signer_configs = device_signer_configs,
     )
 
@@ -57,6 +67,7 @@ program = struct(
     create = _create,
     create_list = _create_list,
     create_firmware_configuration_segment = _create_firmware_configuration_segment,
+    create_design_config_id_segment = _create_design_config_id_segment,
     create_signer_config = _create_signer_config,
     generate = generate.generate,
 )

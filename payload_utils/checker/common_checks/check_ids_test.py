@@ -18,6 +18,7 @@ from chromiumos.config.api.program_id_pb2 import ProgramId
 # Alias a few nested classes to make creating test objects less verbose
 # pylint: disable=invalid-name
 Config = Design.Config
+
 # pylint: enable=invalid-name
 
 
@@ -85,7 +86,15 @@ class CheckIdsTest(unittest.TestCase):
             Design(
                 id=DesignId(value='b'),
                 configs=[
-                    Config(id=DesignConfigId(value='a:25')),
+                    Config(id=DesignConfigId(value='b:25')),
+                    # Unprovisioned ids are exempt from the check.
+                    Config(id=DesignConfigId(value='b:2147483647')),
+                ]),
+            # Design 'c' doesn't have a segment.
+            Design(
+                id=DesignId(value='c'),
+                configs=[
+                    Config(id=DesignConfigId(value='c:40')),
                 ]),
         ]))
 

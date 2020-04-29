@@ -26,17 +26,27 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
       project_config: config_bundle_pb2.ConfigBundle):
     """Check that all DesignConfigIds fall within their segment."""
     program = config_bundle_utils.get_program(program_config)
-    design_map = {d.id.value: d for d in project_config.designs.value}
+    segment_map = {
+        s.design_id.value: s for s in program.design_config_id_segments
+    }
 
-    for segment in program.design_config_id_segments:
+    for design in project_config.designs.value:
+      # It is valid for designs to not have a corresponding segment.
+      segment = segment_map.get(design.id.value)
+      if not segment:
+        continue
+
       self.assertLess(segment.min_id, segment.max_id)
-      self.assertIn(segment.design_id.value, design_map)
-      design = design_map[segment.design_id.value]
 
       for config in design.configs:
         # DesignConfigIds should have the form "<name>:<id>"
         _, id_num = config.id.value.split(':')
         id_num = int(id_num)
+
+        # Unprovisioned config ids are exempt from the check.
+        if id_num == 0x7FFFFFFF:
+          continue
+
         self.assertGreaterEqual(
             id_num, segment.min_id,
             'DesignConfigId must be >= {}, got {}'.format(
