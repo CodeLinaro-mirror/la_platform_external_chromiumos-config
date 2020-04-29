@@ -37,8 +37,10 @@ Config = namedtuple('Config',
 
 ConfigFiles = namedtuple('ConfigFiles',
                          ['bluetooth',
-                          'arc_hw_features'])
+                          'arc_hw_features',
+                          'dptf_file'])
 
+DPTF_PATH = 'sw_build_config/platform/chromeos-config/thermal/dptf.dv'
 
 def ParseArgs(argv):
   """Parse the available arguments.
@@ -277,7 +279,7 @@ def _Lookup(id_value, id_map):
     raise Exception(error)
 
 
-def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {})):
+def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {}, None)):
   partners = dict([(x.id.value, x) for x in config.partners.value])
   programs = dict([(x.id.value, x) for x in config.programs.value])
   sw_configs = list(config.software_configs)
@@ -379,6 +381,7 @@ def _TransformBuildConfig(config, config_files):
       (x.replace('_', '-'),
        power_prefs[x]) for x in power_prefs)
   _Set(power_prefs_map, result, 'power')
+  _Set(config_files.dptf_file, result, 'thermal')
 
   return result
 
@@ -583,6 +586,7 @@ def Main(project_configs,
       [_ReadConfig(config) for config in project_configs])
   bluetooth_files = {}
   arc_hw_feature_files = {}
+  dptf_file = None
   output_dir = os.path.dirname(output)
   build_root_dir = output_dir
   # TODO(shapiroc): Make standard after all projects migrated to new structure
@@ -597,6 +601,14 @@ def Main(project_configs,
     # This is necessary to allow projects to share files at the program level
     # without having portage file installation collisions.
     build_root_dir = os.path.join(project_name, output_dir)
+
+    if os.path.exists(DPTF_PATH):
+      project_dptf_path = os.path.join(project_name, 'dptf.dv')
+      dptf_file = {
+          'dptf-dv': project_dptf_path,
+          'files': [_File(os.path.join(project_name, DPTF_PATH),
+                          os.path.join('/etc/dptf', project_dptf_path))]
+      }
   if os.path.exists(os.path.join(output_dir, 'bluetooth')):
     bluetooth_files = WriteBluetoothConfigFiles(
         configs, output_dir, build_root_dir)
@@ -606,6 +618,7 @@ def Main(project_configs,
   config_files = ConfigFiles(
       bluetooth=bluetooth_files,
       arc_hw_features=arc_hw_feature_files,
+      dptf_file=dptf_file
   )
   WriteOutput(_TransformBuildConfigs(configs, config_files), output)
 

@@ -88,6 +88,15 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
         }
       },
       {
@@ -165,6 +174,15 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
         }
       },
       {
@@ -255,6 +273,15 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
         }
       },
       {
@@ -341,6 +368,15 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
         }
       },
       {
@@ -426,6 +462,15 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
         }
       },
       {
@@ -503,6 +548,15 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
         }
       },
       {
@@ -580,6 +634,15 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
         }
       },
       {
@@ -657,6 +720,15 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
         }
       }
     ]
