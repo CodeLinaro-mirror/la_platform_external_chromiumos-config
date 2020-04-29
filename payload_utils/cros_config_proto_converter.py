@@ -428,12 +428,13 @@ def _ArcHardwareFeatureId(design_config):
   return design_config.id.value.lower().replace(':', '_')
 
 
-def WriteArcHardwareFeatureFiles(config, output_dir):
+def WriteArcHardwareFeatureFiles(config, output_dir, build_root_dir):
   """Writes ARC hardware_feature.xml files for each config
 
   Args:
     config: Source ConfigBundle to process.
     output_dir: Path to the generated output.
+    build_root_path: Path to the config file from portage's perspective.
   Returns:
     dict that maps the design_config_id onto the correct file.
   """
@@ -482,18 +483,19 @@ def WriteArcHardwareFeatureFiles(config, output_dir):
         f.write(file_content)
 
       result[feature_id] = {
-          'build-path': '%s/arc/%s' % (output_dir, file_name),
+          'build-path': '%s/arc/%s' % (build_root_dir, file_name),
           'system-path': '/etc/%s' % file_name,
       }
   return result
 
 
-def WriteBluetoothConfigFiles(config, output_dir):
+def WriteBluetoothConfigFiles(config, output_dir, build_root_path):
   """Writes bluetooth conf files for every unique bluetooth chip.
 
   Args:
     config: Source ConfigBundle to process.
     output_dir: Path to the generated output.
+    build_root_path: Path to the config file from portage's perspective.
   Returns:
     dict that maps the bluetooth component id onto the file config.
   """
@@ -505,7 +507,7 @@ def WriteBluetoothConfigFiles(config, output_dir):
       if bt_comp.vendor_id:
         bt_id = _BluetoothId(project_name, bt_comp)
         result[bt_id] = {
-            'build-path': '%s/bluetooth/%s.conf' % (output_dir, bt_id),
+            'build-path': '%s/bluetooth/%s.conf' % (build_root_path, bt_id),
             'system-path': '/etc/bluetooth/%s/main.conf' % bt_id,
         }
         bt_content = '''[General]
@@ -582,11 +584,25 @@ def Main(project_configs,
   bluetooth_files = {}
   arc_hw_feature_files = {}
   output_dir = os.path.dirname(output)
+  build_root_dir = output_dir
+  # TODO(shapiroc): Make standard after all projects migrated to new structure
+  if 'sw_build_config' in output_dir:
+    full_path = os.path.realpath(output)
+    project_name = re.match(r'.*project/\w*/(\w*).*', full_path).groups(1)[0]
+    # Projects don't know about each other until they are integrated into the
+    # build system.  When this happens, the files need to be able to co-exist
+    # without any collisions.  This prefixes the project name (which is how
+    # portage maps in the project), so project files co-exist and can be
+    # installed together.
+    # This is necessary to allow projects to share files at the program level
+    # without having portage file installation collisions.
+    build_root_dir = os.path.join(project_name, output_dir)
   if os.path.exists(os.path.join(output_dir, 'bluetooth')):
-    bluetooth_files = WriteBluetoothConfigFiles(configs, output_dir)
+    bluetooth_files = WriteBluetoothConfigFiles(
+        configs, output_dir, build_root_dir)
   if os.path.exists(os.path.join(output_dir, 'arc')):
     arc_hw_feature_files = WriteArcHardwareFeatureFiles(
-        configs, output_dir)
+        configs, output_dir, build_root_dir)
   config_files = ConfigFiles(
       bluetooth=bluetooth_files,
       arc_hw_features=arc_hw_feature_files,
