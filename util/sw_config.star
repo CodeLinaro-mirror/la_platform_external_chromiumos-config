@@ -36,10 +36,15 @@ _FW_TYPE = struct(
 )
 
 def _create_fw_version(major_version = None, minor_version = None):
+    """
+    Builds a firmware Version proto.
+
+    If major_version is not specified, None is returned.
+    """
     return fw_pb.Version(
-        major = major_version if major_version else 0,
-        minor = minor_version if major_version and minor_version else 0,
-    )
+        major = major_version,
+        minor = minor_version,
+    ) if major_version else None
 
 def _create_fw_payload(
         name = None,
@@ -113,9 +118,9 @@ def _create_fw_payloads_by_names(ap_fw_name = None, ec_fw_name = None, pd_fw_nam
                 type = _FW_TYPE.MAIN,
                 version = ap_rw_version,
             )
-    if ec_fw_name:
+    if ec_fw_name or ap_fw_name:
         sc_fw_config.ec_ro_payload = fw_pb.FirmwarePayload(
-            firmware_image_name = ec_fw_name,
+            firmware_image_name = ec_fw_name if ec_fw_name else ("%s_EC" % ap_fw_name),
             type = _FW_TYPE.EC,
             version = ec_version,
         )
@@ -125,7 +130,7 @@ def _create_fw_payloads_by_names(ap_fw_name = None, ec_fw_name = None, pd_fw_nam
             type = _FW_TYPE.PD,
             version = pd_version,
         )
-    return sc_fw_config
+    return sc_fw_config if ap_fw_name else None
 
 def _create_x86_id_scan(smbios_name_match = None, fw_sku = 255, design_config_id = None):
     """Deprecated. Use design.append_configs"""
