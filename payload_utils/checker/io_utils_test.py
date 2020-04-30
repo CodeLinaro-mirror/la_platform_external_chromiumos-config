@@ -12,6 +12,8 @@ from checker import io_utils
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.program_pb2 import ProgramList, Program
 
+from google.protobuf import json_format
+
 
 class IoUtilsTest(unittest.TestCase):
   """Tests for io_utils."""
@@ -24,10 +26,13 @@ class IoUtilsTest(unittest.TestCase):
     os.mkdir(os.path.join(repo_path, 'generated'))
 
     self.config_path = os.path.join(repo_path, 'generated',
-                                    'config.binaryproto')
-    with open(self.config_path, 'wb') as f:
-      f.write(self.config.SerializeToString())
+                                    'config.jsonproto')
+    json_output = json_format.MessageToJson(self.config,
+                                            sort_keys=True,
+                                            use_integers_for_enums=True)
+    with open(self.config_path, 'w') as f:
+      print(json_output, file=f)
 
   def test_read_config(self):
-    """Tests the binary proto can be read."""
+    """Tests the json proto can be read."""
     self.assertEqual(io_utils.read_config(self.config_path), self.config)
