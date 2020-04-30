@@ -66,8 +66,8 @@ config/payload_utils/convert_config_enums.py \
 if [[ -d "sw_build_config/platform/chromeos-config/generated" ]]; then
   python3 config/payload_utils/cros_config_proto_converter.py \
     --output sw_build_config/platform/chromeos-config/generated/project-config.json \
-    --program_config program/generated/config.binaryproto \
-    --project_configs generated/config.binaryproto
+    --program_config program/generated/config.jsonproto \
+    --project_configs generated/config.jsonproto
 # Remove once Volteer is migrated to above
 elif [[ -d "generated/platform/chromeos-config" ]]; then
   python3 config/payload_utils/cros_config_proto_converter.py \
