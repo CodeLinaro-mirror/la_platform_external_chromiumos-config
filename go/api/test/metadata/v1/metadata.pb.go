@@ -526,7 +526,7 @@ type DUTCondition_Scope struct {
 	// Peripherals information about the lab deployment of the device.
 	Setup *v1.DeviceUnderTest `protobuf:"bytes,1,opt,name=setup,proto3" json:"setup,omitempty"`
 	// The relationship between topology and features is described at
-	// https://chromium.googlesource.com/chromiumos/config/+/master/proto/api/hardware_topology.md
+	// https://chromium.googlesource.com/chromiumos/config/+/master/proto/chromiumos/config/api/hardware_topology.md
 	HardwareTopology     *api.HardwareTopology `protobuf:"bytes,2,opt,name=hardware_topology,json=hardwareTopology,proto3" json:"hardware_topology,omitempty"`
 	HardwareFeatures     *api.HardwareFeatures `protobuf:"bytes,3,opt,name=hardware_features,json=hardwareFeatures,proto3" json:"hardware_features,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`

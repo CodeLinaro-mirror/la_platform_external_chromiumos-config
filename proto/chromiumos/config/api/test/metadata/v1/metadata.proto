@@ -273,7 +273,7 @@ message DUTCondition {
     // Peripherals information about the lab deployment of the device.
     chromiumos.config.api.test.dut.v1.DeviceUnderTest setup = 1;
     // The relationship between topology and features is described at
-    // https://chromium.googlesource.com/chromiumos/config/+/master/proto/api/hardware_topology.md
+    // https://chromium.googlesource.com/chromiumos/config/+/master/proto/chromiumos/config/api/hardware_topology.md
     chromiumos.config.api.HardwareTopology hardware_topology = 2;
     chromiumos.config.api.HardwareFeatures hardware_features = 3;
   }
