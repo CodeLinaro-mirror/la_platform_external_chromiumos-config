@@ -11,33 +11,31 @@
       "overlayName": "overlay-fake-private"
     }
   ],
-  "components": {
-    "value": [
-      {
-        "id": {
-          "value": "FAKE_MODEL_2"
-        },
-        "soc": {
-          "cores": 2,
-          "family": {
-            "arch": 2,
-            "name": "FAKE_FAMILY"
-          },
-          "model": "FAKE_MODEL"
-        }
+  "components": [
+    {
+      "id": {
+        "value": "FAKE_MODEL_2"
       },
-      {
-        "bluetooth": {
-          "bcdDevice": "0003",
-          "productId": "0002",
-          "vendorId": "0001"
+      "soc": {
+        "cores": 2,
+        "family": {
+          "arch": 2,
+          "name": "FAKE_FAMILY"
         },
-        "id": {
-          "value": "0001:0002:0003"
-        }
+        "model": "FAKE_MODEL"
       }
-    ]
-  },
+    },
+    {
+      "bluetooth": {
+        "bcdDevice": "0003",
+        "productId": "0002",
+        "vendorId": "0001"
+      },
+      "id": {
+        "value": "0001:0002:0003"
+      }
+    }
+  ],
   "designs": {},
   "deviceBrands": {},
   "partners": {},

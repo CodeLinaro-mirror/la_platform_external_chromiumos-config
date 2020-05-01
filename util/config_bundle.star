@@ -25,7 +25,7 @@ def _create(
         brand_configs = None):
     """Builds a ConfigBundle proto."""
     return config_bundle_pb.ConfigBundle(
-        components = comp.create_list(components),
+        components = components,
         designs = design.create_design_list(designs),
         device_brands = device_brand.create_list(device_brands),
         partners = partner.create_list(partners),
