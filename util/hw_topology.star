@@ -203,15 +203,11 @@ def _create_keyboard(id, description, backlight, pwr_btn_present, kb_type, fw_co
         hardware_feature = hw_features,
     )
 
-def _create_thermal(id, description, fw_mask = None, thermal_id = None, fw_configs = []):
+def _create_thermal(id, description, fw_configs = []):
     """Builds a Topology proto for thermal."""
     hw_features = topo_pb.HardwareFeatures()
 
-    # TODO(jettrink): Remove direct fw_mask and use fw_configs instead
-    if fw_mask or thermal_id:
-        hw_features.fw_config = _make_fw_config(fw_mask, thermal_id)
-    else:
-        _accumulate_fw_configs(hw_features, fw_configs)
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id,
@@ -292,15 +288,18 @@ def _create_proximity_sensor(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_daughter_board(id, description, fw_mask = None, db_id = None, fw_configs = [], usbc_count = 0, usba_count = 0, lte_support = False, hdmi_support = False):
+def _create_daughter_board(
+        id,
+        description,
+        fw_configs = [],
+        usbc_count = 0,
+        usba_count = 0,
+        lte_support = False,
+        hdmi_support = False):
     """Builds a Topology proto for a daughter board."""
     hw_features = topo_pb.HardwareFeatures()
 
-    # TODO(jettrink): Remove direct fw_mask and use fw_configs instead
-    if fw_mask or db_id:
-        hw_features.fw_config = _make_fw_config(fw_mask, db_id)
-    else:
-        _accumulate_fw_configs(hw_features, fw_configs)
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     hw_features.usb_c.count.value = usbc_count
     hw_features.usb_a.count.value = usba_count
@@ -387,15 +386,16 @@ def _create_sd_reader(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_motherboard_usb(id, description, fw_mask = None, mlb_usb_id = None, fw_configs = [], usbc_count = 0, usba_count = 0):
+def _create_motherboard_usb(
+        id,
+        description,
+        fw_configs = [],
+        usbc_count = 0,
+        usba_count = 0):
     """Builds a Topology proto for a motherboard."""
     hw_features = topo_pb.HardwareFeatures()
 
-    # TODO(jettrink): Remove direct fw_mask and use fw_configs instead
-    if fw_mask or mlb_usb_id:
-        hw_features.fw_config = _make_fw_config(fw_mask, mlb_usb_id)
-    else:
-        _accumulate_fw_configs(hw_features, fw_configs)
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     hw_features.usb_c.count.value = usbc_count
     hw_features.usb_a.count.value = usba_count
