@@ -148,7 +148,7 @@ def main():
       repo_paths,
   )
 
-  print("Upload changes with 'repo upload --br={}'".format(args.branch))
+  print("Upload changes with 'repo upload --br={} --ht={}'".format(args.branch, args.branch))
 
 
 if __name__ == '__main__':
