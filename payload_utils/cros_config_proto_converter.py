@@ -584,7 +584,8 @@ def Main(project_configs,
   # TODO(shapiroc): Make standard after all projects migrated to new structure
   if 'sw_build_config' in output_dir:
     full_path = os.path.realpath(output)
-    project_name = re.match(r'.*project/\w*/(\w*).*', full_path).groups(1)[0]
+    project_name = re.match(
+        r'.*/(\w*)/sw_build_config/.*', full_path).groups(1)[0]
     # Projects don't know about each other until they are integrated into the
     # build system.  When this happens, the files need to be able to co-exist
     # without any collisions.  This prefixes the project name (which is how
