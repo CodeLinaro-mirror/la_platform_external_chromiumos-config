@@ -264,28 +264,30 @@ type Test struct {
 	// MUST be a valid resource per https://aip.dev/122.
 	//
 	// Pattern: remoteTestDrivers/{remoteTestDriver}/tests/{test}
-	//   where {remoteTestDriver} is the Remote Test Driver package that contains
-	//   this test.
+	//   where {remoteTestDriver} is the Remote Test Driver package that
+	//   contains this test.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Attributes are used to include tests in test plans.
 	//
 	// See Also:
 	//   Test plans: test/plan/plan.proto
 	Attributes []*Attribute `protobuf:"bytes,2,rep,name=attributes,proto3" json:"attributes,omitempty"`
-	// Required condition to be met for the Devices Under Test targeted by this
+	// Required conditions to be met for the Devices Under Test targeted by this
 	// test.
 	//
-	// Condition enforcement is an optional feature for test scheduling, i.e.,
+	// Constraint enforcement is an optional feature for test scheduling, i.e.,
 	// some Test Lab Environments may ignore conditions entirely.
 	//
 	// If the test execution is sharded over multiple devices, each must satisfy
-	// this condition.
-	DutCondition *DUTCondition `protobuf:"bytes,5,opt,name=dut_condition,json=dutCondition,proto3" json:"dut_condition,omitempty"`
+	// these conditions.
+	DutConstraint *DUTConstraint `protobuf:"bytes,6,opt,name=dut_constraint,json=dutConstraint,proto3" json:"dut_constraint,omitempty"`
 	// Metadata about the test that doesn't affect scheduling or execution.
-	Informational        *Informational `protobuf:"bytes,4,opt,name=informational,proto3" json:"informational,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
+	Informational *Informational `protobuf:"bytes,4,opt,name=informational,proto3" json:"informational,omitempty"`
+	// Will be deleted (& reserved) once all clients have migrated.
+	DutCondition         *DUTCondition `protobuf:"bytes,5,opt,name=dut_condition,json=dutCondition,proto3" json:"dut_condition,omitempty"` // Deprecated: Do not use.
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
 func (m *Test) Reset()         { *m = Test{} }
@@ -327,9 +329,9 @@ func (m *Test) GetAttributes() []*Attribute {
 	return nil
 }
 
-func (m *Test) GetDutCondition() *DUTCondition {
+func (m *Test) GetDutConstraint() *DUTConstraint {
 	if m != nil {
-		return m.DutCondition
+		return m.DutConstraint
 	}
 	return nil
 }
@@ -337,6 +339,14 @@ func (m *Test) GetDutCondition() *DUTCondition {
 func (m *Test) GetInformational() *Informational {
 	if m != nil {
 		return m.Informational
+	}
+	return nil
+}
+
+// Deprecated: Do not use.
+func (m *Test) GetDutCondition() *DUTCondition {
+	if m != nil {
+		return m.DutCondition
 	}
 	return nil
 }
@@ -386,57 +396,105 @@ func (m *Attribute) GetName() string {
 	return ""
 }
 
-// Condition to be met for each Device Under Test targeted by a test.
-type DUTCondition struct {
-	// A Common Expression Language (CEL) expression to specify DUT conditions.
+// Conditions to be met for each Device Under Test targeted by a test.
+type DUTConstraint struct {
+	// Conditions on the Chrome OS configuration payload.
+	Config *DUTConfigConstraint `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
+	// Conditions on device setup.
+	Setup                *DUTSetupConstraint `protobuf:"bytes,2,opt,name=setup,proto3" json:"setup,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
+}
+
+func (m *DUTConstraint) Reset()         { *m = DUTConstraint{} }
+func (m *DUTConstraint) String() string { return proto.CompactTextString(m) }
+func (*DUTConstraint) ProtoMessage()    {}
+func (*DUTConstraint) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25ef5aab42ff3cd3, []int{5}
+}
+
+func (m *DUTConstraint) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DUTConstraint.Unmarshal(m, b)
+}
+func (m *DUTConstraint) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DUTConstraint.Marshal(b, m, deterministic)
+}
+func (m *DUTConstraint) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DUTConstraint.Merge(m, src)
+}
+func (m *DUTConstraint) XXX_Size() int {
+	return xxx_messageInfo_DUTConstraint.Size(m)
+}
+func (m *DUTConstraint) XXX_DiscardUnknown() {
+	xxx_messageInfo_DUTConstraint.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DUTConstraint proto.InternalMessageInfo
+
+func (m *DUTConstraint) GetConfig() *DUTConfigConstraint {
+	if m != nil {
+		return m.Config
+	}
+	return nil
+}
+
+func (m *DUTConstraint) GetSetup() *DUTSetupConstraint {
+	if m != nil {
+		return m.Setup
+	}
+	return nil
+}
+
+// Conditions to be met for the Chrome OS configuration of each Device Under
+// Test targeted by a test.
+type DUTConfigConstraint struct {
+	// A Common Expression Language (CEL) expression to specify constraints on a
+	// Device Under Test's Chrome OS configuration payload. `expression` MUST
+	// evaluate to a boolean value in the evaluation context described below.
 	//
-	// Test Lab Environments may optionally support targeting test requests to
-	// Device Under Test based on DUTConditions. If this feature is supported, the
-	// Test Lab Environment MUST interpret `expression` in the scope of the
-	// protobuf message DUTCondition.Scope as defined below.
+	// Test Lab Environments may optionally support scheduling test requests on
+	// Devices Under Test that satisfy some constraints on their Chrome OS
+	// configuration.
+	// When supported, the Test Lab Environment MUST effectively evaluate
+	// `expression` with the following declarations in scope for each available
+	// Device Under Test and ensure that the test is scheduled on a Device Under
+	// Test for which `expression` evaluates to true.
 	//
-	// The full CEL spec can be found at https://github.com/google/cel-spec.
-	// This API only currently only supports a small sub-set of the CEL features,
-	// as described here. Test Lab Environments SHOULD validate the expression and
-	// reject use of unsupported features.
-	//
-	// TODO(crbug.com/1051689) Add reference to the metadata validator package.
+	// - Constant: `dut` of type DUTConfigConstraint.DUT defined below, set to the
+	//   Chrome OS configuration payload of a particular Device Under Test.
+	// - Types: Protobuf messages from `chromiumos.config.api.*`
+	//   - Additionally available with the short-hand `api.*`
 	//
 	// ## Examples
 	//
-	// Typical instructive examples of expressions are:
+	// Typical examples of expressions are:
 	//
-	// - A specific characteristic for a hardware feature, e.g.:
-	//     scope.hardware_topology.screen.milliinch.value == 14000
-	// - A specific topology for a hardware feature, e.g.:
-	//     scope.hardware_topology.form_factor.id == "fancy_clamshell"
-	// - Existence of a hardware feature, e.g.:
-	//     scope.hardware_features.lte == scope.hardware_features.PRESENT
-	// - Exclude certain hardware topologies, e.g.:
-	//     scope.hardware_topology.stylus.id != "pencil"
+	// - Must run on a device with a given screen size:
+	//     dut.hardware_features.screen.milliinch.value == 14000
+	// - Must run on a device with LTE support:
+	//     dut.hardware_features.lte == api.HardwareFeatures.Present.PRESENT
+	//     - or equivalently,
+	//       (dut.hardware_features.lte ==
+	//        chromiumos.config.api.HardwareFeatures.Present.PRESENT)
+	// - Must not run on a device with a specific form factor:
+	//     (dut.hardware_features.form_factor.form_factor !=
+	//      api.HardwareFeatures.FormFactor.CLAMSHELL)
 	//
 	// ## CEL support
 	//
+	// The full CEL spec can be found at https://github.com/google/cel-spec.
+	//
 	// Current support for `expression` evaluation is very restricted due to
-	// limitations in the scheduling platform used by Test Platform. Specifying
-	// the conditions in CEL will allow gradual lifting of support restrictions.
+	// limitations in the scheduling infrastructure used by Test Platform.
 	//
 	// As this API matures, features will be added to the scheduling
 	// infrastructure of Test Platform and restrictions here will be lifted based
 	// on requirements collected from test authors. See milestones in
-	// go/cros-f20-plan for expected feature iterations.
+	// go/cros-f20-plan for expected feature iterations. Test Lab Environments
+	// SHOULD validate the expression and reject use of unsupported features.
 	//
-	// ### Evaluation context
-	//
-	// In general, a CEL expression must be evaluated in some context that
-	// provides the basic bindings for name resolution.
-	//
-	// In this case, `expression` MUST be evaluated in a context that contains
-	//
-	// - A variable 'scope' of type DUTCondition.Scope. This variable contains the
-	//   information about a particular Device Under Test being tested for
-	//   acceptance via `expression`.
-	// - Protobuf definitions in this git project (i.e., rooted at infra/proto/).
+	// TODO(crbug.com/1051689) Add reference to the metadata validator package.
 	//
 	// ### Syntax
 	//
@@ -475,7 +533,7 @@ type DUTCondition struct {
 	//
 	// - Supported operators: !_, -_, _!=_, _&&_, _=_, _[_]
 	//   - All other operators are not supported.
-	// - All other standard functions are not supported. In particular take note:
+	// - All other standard functions are not supported. In particular:
 	//   - size() is not supported.
 	//   - string functions like endsWith() and contains() are not supported.
 	//   - type conversions like int() and string() are not supported.
@@ -486,11 +544,265 @@ type DUTCondition struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
+func (m *DUTConfigConstraint) Reset()         { *m = DUTConfigConstraint{} }
+func (m *DUTConfigConstraint) String() string { return proto.CompactTextString(m) }
+func (*DUTConfigConstraint) ProtoMessage()    {}
+func (*DUTConfigConstraint) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25ef5aab42ff3cd3, []int{6}
+}
+
+func (m *DUTConfigConstraint) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DUTConfigConstraint.Unmarshal(m, b)
+}
+func (m *DUTConfigConstraint) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DUTConfigConstraint.Marshal(b, m, deterministic)
+}
+func (m *DUTConfigConstraint) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DUTConfigConstraint.Merge(m, src)
+}
+func (m *DUTConfigConstraint) XXX_Size() int {
+	return xxx_messageInfo_DUTConfigConstraint.Size(m)
+}
+func (m *DUTConfigConstraint) XXX_DiscardUnknown() {
+	xxx_messageInfo_DUTConfigConstraint.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DUTConfigConstraint proto.InternalMessageInfo
+
+func (m *DUTConfigConstraint) GetExpression() string {
+	if m != nil {
+		return m.Expression
+	}
+	return ""
+}
+
+// The evaluation context for `expression` MUST include the Chrome OS
+// configuration payload for a particular Device Under Test as a typed
+// constant of the following type.
+type DUTConfigConstraint_DUT struct {
+	HardwareFeatures     *api.HardwareFeatures `protobuf:"bytes,1,opt,name=hardware_features,json=hardwareFeatures,proto3" json:"hardware_features,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *DUTConfigConstraint_DUT) Reset()         { *m = DUTConfigConstraint_DUT{} }
+func (m *DUTConfigConstraint_DUT) String() string { return proto.CompactTextString(m) }
+func (*DUTConfigConstraint_DUT) ProtoMessage()    {}
+func (*DUTConfigConstraint_DUT) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25ef5aab42ff3cd3, []int{6, 0}
+}
+
+func (m *DUTConfigConstraint_DUT) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DUTConfigConstraint_DUT.Unmarshal(m, b)
+}
+func (m *DUTConfigConstraint_DUT) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DUTConfigConstraint_DUT.Marshal(b, m, deterministic)
+}
+func (m *DUTConfigConstraint_DUT) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DUTConfigConstraint_DUT.Merge(m, src)
+}
+func (m *DUTConfigConstraint_DUT) XXX_Size() int {
+	return xxx_messageInfo_DUTConfigConstraint_DUT.Size(m)
+}
+func (m *DUTConfigConstraint_DUT) XXX_DiscardUnknown() {
+	xxx_messageInfo_DUTConfigConstraint_DUT.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DUTConfigConstraint_DUT proto.InternalMessageInfo
+
+func (m *DUTConfigConstraint_DUT) GetHardwareFeatures() *api.HardwareFeatures {
+	if m != nil {
+		return m.HardwareFeatures
+	}
+	return nil
+}
+
+// Conditions to be met for the setup of each Device Under Test targeted by a
+// test.
+type DUTSetupConstraint struct {
+	// A Common Expression Language (CEL) expression to specify constraints on a
+	// Device Under Test setup. `expression` MUST evaluate to a boolean value in
+	// the evaluation context described below.
+	//
+	// Test Lab Environments may optionally support scheduling test requests on
+	// Devices Under Test that satisfy some constraints on how they are setup.
+	// When supported, the Test Lab Environment MUST effectively evaluate
+	// `expression` with the following declarations in scope for each available
+	// Device Under Test and ensure that the test is scheduled on a Device Under
+	// Test for which `expression` evaluates to true.
+	//
+	// - Constant: `dut` of type DUTSetupConstraint.DUT defined below, set to the
+	//   setup configuration payload of a particular Device Under Test.
+	// - Type: Protobuf messages `chromiumos.config.api.test.dut.v1.*`, e.g.
+	//   `chromiumos.config.api.test.dut.v1.DeviceUnderTest`
+	//   - Additionally available with short-hands `DeviceUnderTest` etc.
+	//
+	// ## Examples
+	//
+	// Typical examples of expressions are:
+	//
+	// - Must run on a DUT with servo present:
+	//     dut.setup.peripheral.servo.present
+	// - Must run on a DUT which is in a camera box with a front facing camera:
+	//     dut.setup.peripheral.camerabox.facing == Camerabox.Facing.FRONT
+	//   - Or, equivalently:
+	//       (dut.setup.peripheral.camerabox.facing ==
+	//        chromiumos.config.api.test.dut.v1.Camerabox.Facing.FRONT)
+	//
+	// ## CEL support
+	//
+	// The full CEL spec can be found at https://github.com/google/cel-spec.
+	//
+	// Current support for `expression` evaluation is very restricted due to
+	// limitations in the scheduling infrastructure used by Test Platform.
+	//
+	// As this API matures, features will be added to the scheduling
+	// infrastructure of Test Platform and restrictions here will be lifted based
+	// on requirements collected from test authors. See milestones in
+	// go/cros-f20-plan for expected feature iterations. Test Lab Environments
+	// SHOULD validate the expression and reject use of unsupported features.
+	//
+	// TODO(crbug.com/1051689) Add reference to the metadata validator package.
+	//
+	// ### Syntax
+	//
+	// See full syntax definition at
+	// https://github.com/google/cel-spec/blob/master/doc/langdef.md#syntax
+	//
+	// CEL standard syntax allows expressions that evaluate to errors (e.g.,
+	// syntax allows negation of lists, which has no semantics in CEL).
+	// Thus, this spec does not attempt to restrict the syntax, but specifies what
+	// operations are unsupported to aid metadata producers. Ultimately, the
+	// reference metadata validator is the authority on what expressions are
+	// allowed.
+	//
+	// Unsupported standard CEL semantics:
+	//   - Binary arithmetic operations
+	//     e.g.: +, *, /, % ...
+	//   - Relational Operators beyond (in)equality are not supported.
+	//     e.g.: (>, <, >=, <= ...)
+	//   - Logical OR in expressions is not supported.
+	//     e.g.: (a || b), !(a && b) ...
+	//
+	// ### Macros
+	//
+	// See full macro definition at
+	// https://github.com/google/cel-spec/blob/master/doc/langdef.md#macros
+	//
+	// Supported macros: has(), e.all()
+	// Unsupported macros: e.exists(), e.exists_one(), e.map(), e.filter()
+	//
+	// ### Standard functions
+	//
+	// See full list of standard definitions at
+	// https://github.com/google/cel-spec/blob/master/doc/langdef.md#standard-definitions
+	//
+	// Most standard functions are not supported.
+	//
+	// - Supported operators: !_, -_, _!=_, _&&_, _=_, _[_]
+	//   - All other operators are not supported.
+	// - All other standard functions are not supported. In particular:
+	//   - size() is not supported.
+	//   - string functions like endsWith() and contains() are not supported.
+	//   - type conversions like int() and string() are not supported.
+	//   - reflection with type(), null_type() and dyn() is not supported.
+	Expression           string   `protobuf:"bytes,1,opt,name=expression,proto3" json:"expression,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DUTSetupConstraint) Reset()         { *m = DUTSetupConstraint{} }
+func (m *DUTSetupConstraint) String() string { return proto.CompactTextString(m) }
+func (*DUTSetupConstraint) ProtoMessage()    {}
+func (*DUTSetupConstraint) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25ef5aab42ff3cd3, []int{7}
+}
+
+func (m *DUTSetupConstraint) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DUTSetupConstraint.Unmarshal(m, b)
+}
+func (m *DUTSetupConstraint) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DUTSetupConstraint.Marshal(b, m, deterministic)
+}
+func (m *DUTSetupConstraint) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DUTSetupConstraint.Merge(m, src)
+}
+func (m *DUTSetupConstraint) XXX_Size() int {
+	return xxx_messageInfo_DUTSetupConstraint.Size(m)
+}
+func (m *DUTSetupConstraint) XXX_DiscardUnknown() {
+	xxx_messageInfo_DUTSetupConstraint.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DUTSetupConstraint proto.InternalMessageInfo
+
+func (m *DUTSetupConstraint) GetExpression() string {
+	if m != nil {
+		return m.Expression
+	}
+	return ""
+}
+
+// The evaluation context for `expression` MUST include the dut setup
+// configuration payload for a particular Device Under Test as a typed
+// constant of the following type.
+type DUTSetupConstraint_DUT struct {
+	// Peripherals information about the lab deployment of the device
+	Setup                *v1.DeviceUnderTest `protobuf:"bytes,1,opt,name=setup,proto3" json:"setup,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
+}
+
+func (m *DUTSetupConstraint_DUT) Reset()         { *m = DUTSetupConstraint_DUT{} }
+func (m *DUTSetupConstraint_DUT) String() string { return proto.CompactTextString(m) }
+func (*DUTSetupConstraint_DUT) ProtoMessage()    {}
+func (*DUTSetupConstraint_DUT) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25ef5aab42ff3cd3, []int{7, 0}
+}
+
+func (m *DUTSetupConstraint_DUT) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DUTSetupConstraint_DUT.Unmarshal(m, b)
+}
+func (m *DUTSetupConstraint_DUT) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DUTSetupConstraint_DUT.Marshal(b, m, deterministic)
+}
+func (m *DUTSetupConstraint_DUT) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DUTSetupConstraint_DUT.Merge(m, src)
+}
+func (m *DUTSetupConstraint_DUT) XXX_Size() int {
+	return xxx_messageInfo_DUTSetupConstraint_DUT.Size(m)
+}
+func (m *DUTSetupConstraint_DUT) XXX_DiscardUnknown() {
+	xxx_messageInfo_DUTSetupConstraint_DUT.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DUTSetupConstraint_DUT proto.InternalMessageInfo
+
+func (m *DUTSetupConstraint_DUT) GetSetup() *v1.DeviceUnderTest {
+	if m != nil {
+		return m.Setup
+	}
+	return nil
+}
+
+// Deprecated.
+// Use DutConstraint instead.
+// This message will be deleted once all clients have migrated.
+type DUTCondition struct {
+	Expression           string   `protobuf:"bytes,1,opt,name=expression,proto3" json:"expression,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
 func (m *DUTCondition) Reset()         { *m = DUTCondition{} }
 func (m *DUTCondition) String() string { return proto.CompactTextString(m) }
 func (*DUTCondition) ProtoMessage()    {}
 func (*DUTCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_25ef5aab42ff3cd3, []int{5}
+	return fileDescriptor_25ef5aab42ff3cd3, []int{8}
 }
 
 func (m *DUTCondition) XXX_Unmarshal(b []byte) error {
@@ -518,15 +830,8 @@ func (m *DUTCondition) GetExpression() string {
 	return ""
 }
 
-// Protocol buffer scope for interpretation of `expression`.
-//
-// Scope includes the Device Under Test features that can be targeted for test
-// targeting.
 type DUTCondition_Scope struct {
-	// Peripherals information about the lab deployment of the device.
-	Setup *v1.DeviceUnderTest `protobuf:"bytes,1,opt,name=setup,proto3" json:"setup,omitempty"`
-	// The relationship between topology and features is described at
-	// https://chromium.googlesource.com/chromiumos/config/+/master/proto/chromiumos/config/api/hardware_topology.md
+	Setup                *v1.DeviceUnderTest   `protobuf:"bytes,1,opt,name=setup,proto3" json:"setup,omitempty"`
 	HardwareTopology     *api.HardwareTopology `protobuf:"bytes,2,opt,name=hardware_topology,json=hardwareTopology,proto3" json:"hardware_topology,omitempty"`
 	HardwareFeatures     *api.HardwareFeatures `protobuf:"bytes,3,opt,name=hardware_features,json=hardwareFeatures,proto3" json:"hardware_features,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
@@ -538,7 +843,7 @@ func (m *DUTCondition_Scope) Reset()         { *m = DUTCondition_Scope{} }
 func (m *DUTCondition_Scope) String() string { return proto.CompactTextString(m) }
 func (*DUTCondition_Scope) ProtoMessage()    {}
 func (*DUTCondition_Scope) Descriptor() ([]byte, []int) {
-	return fileDescriptor_25ef5aab42ff3cd3, []int{5, 0}
+	return fileDescriptor_25ef5aab42ff3cd3, []int{8, 0}
 }
 
 func (m *DUTCondition_Scope) XXX_Unmarshal(b []byte) error {
@@ -612,7 +917,7 @@ func (m *Informational) Reset()         { *m = Informational{} }
 func (m *Informational) String() string { return proto.CompactTextString(m) }
 func (*Informational) ProtoMessage()    {}
 func (*Informational) Descriptor() ([]byte, []int) {
-	return fileDescriptor_25ef5aab42ff3cd3, []int{6}
+	return fileDescriptor_25ef5aab42ff3cd3, []int{9}
 }
 
 func (m *Informational) XXX_Unmarshal(b []byte) error {
@@ -662,7 +967,7 @@ func (m *Contact) Reset()         { *m = Contact{} }
 func (m *Contact) String() string { return proto.CompactTextString(m) }
 func (*Contact) ProtoMessage()    {}
 func (*Contact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_25ef5aab42ff3cd3, []int{7}
+	return fileDescriptor_25ef5aab42ff3cd3, []int{10}
 }
 
 func (m *Contact) XXX_Unmarshal(b []byte) error {
@@ -734,6 +1039,11 @@ func init() {
 	proto.RegisterType((*BuildArtifact)(nil), "chromiumos.config.api.test.metadata.v1.BuildArtifact")
 	proto.RegisterType((*Test)(nil), "chromiumos.config.api.test.metadata.v1.Test")
 	proto.RegisterType((*Attribute)(nil), "chromiumos.config.api.test.metadata.v1.Attribute")
+	proto.RegisterType((*DUTConstraint)(nil), "chromiumos.config.api.test.metadata.v1.DUTConstraint")
+	proto.RegisterType((*DUTConfigConstraint)(nil), "chromiumos.config.api.test.metadata.v1.DUTConfigConstraint")
+	proto.RegisterType((*DUTConfigConstraint_DUT)(nil), "chromiumos.config.api.test.metadata.v1.DUTConfigConstraint.DUT")
+	proto.RegisterType((*DUTSetupConstraint)(nil), "chromiumos.config.api.test.metadata.v1.DUTSetupConstraint")
+	proto.RegisterType((*DUTSetupConstraint_DUT)(nil), "chromiumos.config.api.test.metadata.v1.DUTSetupConstraint.DUT")
 	proto.RegisterType((*DUTCondition)(nil), "chromiumos.config.api.test.metadata.v1.DUTCondition")
 	proto.RegisterType((*DUTCondition_Scope)(nil), "chromiumos.config.api.test.metadata.v1.DUTCondition.Scope")
 	proto.RegisterType((*Informational)(nil), "chromiumos.config.api.test.metadata.v1.Informational")
@@ -745,47 +1055,54 @@ func init() {
 }
 
 var fileDescriptor_25ef5aab42ff3cd3 = []byte{
-	// 670 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x55, 0x51, 0x6f, 0xd3, 0x3a,
-	0x14, 0xbe, 0xed, 0xda, 0x75, 0x3b, 0x5b, 0xa5, 0xcd, 0x57, 0xba, 0x37, 0x9a, 0xee, 0x85, 0x29,
-	0x20, 0x98, 0x04, 0x24, 0x6a, 0xd9, 0x24, 0x24, 0x9e, 0xd6, 0x4d, 0xd0, 0x81, 0x90, 0x46, 0xda,
-	0x3d, 0x00, 0x0f, 0x95, 0x1b, 0xbb, 0xa9, 0xa5, 0x26, 0x8e, 0xec, 0x93, 0xc2, 0x7e, 0x04, 0x7f,
-	0x85, 0x57, 0x7e, 0x07, 0x3f, 0x08, 0x09, 0xd9, 0x49, 0xba, 0x76, 0xeb, 0x46, 0x79, 0xb3, 0x4f,
-	0xbe, 0xf3, 0x9d, 0xef, 0xf3, 0xb1, 0x4f, 0xe0, 0x28, 0x1c, 0x2b, 0x19, 0x8b, 0x2c, 0x96, 0xda,
-	0x0f, 0x65, 0x32, 0x12, 0x91, 0x4f, 0x53, 0xe1, 0x23, 0xd7, 0xe8, 0xc7, 0x1c, 0x29, 0xa3, 0x48,
-	0xfd, 0x69, 0x6b, 0xb6, 0xf6, 0x52, 0x25, 0x51, 0x92, 0x47, 0x57, 0x69, 0x5e, 0x9e, 0xe6, 0xd1,
-	0x54, 0x78, 0x26, 0xcd, 0x9b, 0x41, 0xa7, 0xad, 0xbd, 0xff, 0x22, 0x29, 0xa3, 0x09, 0xf7, 0x6d,
-	0xd6, 0x30, 0x1b, 0xf9, 0x1a, 0x55, 0x16, 0x62, 0xce, 0xb2, 0xf7, 0xe4, 0x8e, 0xe2, 0x2c, 0x43,
-	0x53, 0x97, 0x65, 0x25, 0xf8, 0xd9, 0x72, 0xf0, 0x98, 0x2a, 0xf6, 0x99, 0x2a, 0x3e, 0x40, 0x99,
-	0xca, 0x89, 0x8c, 0x2e, 0x0b, 0xf8, 0xc3, 0x5b, 0xb8, 0x17, 0x50, 0xee, 0x25, 0x34, 0x7b, 0x29,
-	0x0f, 0xc5, 0x48, 0x84, 0x14, 0x85, 0x4c, 0xc8, 0x18, 0xfe, 0x56, 0x3c, 0x96, 0xc8, 0x07, 0x46,
-	0xc5, 0x80, 0x29, 0x31, 0xe5, 0x4a, 0x3b, 0x95, 0xfd, 0xb5, 0x83, 0xad, 0xf6, 0x0b, 0x6f, 0x35,
-	0xdb, 0x5e, 0x60, 0x29, 0xfa, 0x5c, 0xe3, 0xa9, 0x25, 0x08, 0x76, 0xd5, 0xb5, 0x88, 0x76, 0x7f,
-	0x54, 0x60, 0xe7, 0x3a, 0x8e, 0x10, 0xa8, 0x25, 0x34, 0xe6, 0x4e, 0x65, 0xbf, 0x72, 0xb0, 0x19,
-	0xd8, 0x35, 0x79, 0x0b, 0x75, 0x11, 0xd3, 0x88, 0x3b, 0xd5, 0xfd, 0xca, 0xc1, 0x56, 0xfb, 0x68,
-	0x55, 0x11, 0x9d, 0x4c, 0x4c, 0xd8, 0xb1, 0x42, 0x31, 0xa2, 0x21, 0x06, 0x39, 0x07, 0x71, 0xa0,
-	0x11, 0xca, 0x38, 0xa6, 0x09, 0x73, 0xd6, 0x6c, 0x8d, 0x72, 0x4b, 0x3a, 0x50, 0x37, 0x14, 0xda,
-	0xa9, 0x59, 0xaf, 0x4f, 0x57, 0x2d, 0x63, 0xd4, 0x07, 0x79, 0xaa, 0x7b, 0x08, 0xcd, 0x85, 0xaa,
-	0xe4, 0x01, 0x34, 0x15, 0x9f, 0x50, 0x14, 0x53, 0x3e, 0x48, 0x29, 0x8e, 0x0b, 0x63, 0xdb, 0x65,
-	0xf0, 0x9c, 0xe2, 0xd8, 0xfd, 0x5e, 0x85, 0x9a, 0x61, 0x59, 0xea, 0xfe, 0x3d, 0x00, 0x45, 0x54,
-	0x62, 0x98, 0x21, 0xd7, 0x4e, 0xd5, 0x6a, 0x6b, 0xad, 0xaa, 0xed, 0xb8, 0xcc, 0x0c, 0xe6, 0x48,
-	0xc8, 0x07, 0x68, 0xb2, 0x0c, 0x07, 0xa1, 0x4c, 0x98, 0x30, 0x4d, 0x77, 0xea, 0xf6, 0x60, 0x0f,
-	0x57, 0x65, 0x3d, 0xbd, 0xe8, 0x9f, 0x94, 0xb9, 0xc1, 0x36, 0xcb, 0x70, 0xb6, 0x23, 0x9f, 0xa0,
-	0x29, 0x92, 0x91, 0x54, 0xb1, 0xbd, 0x4d, 0x74, 0xe2, 0xd4, 0xfe, 0xac, 0x67, 0x67, 0xf3, 0xc9,
-	0xc1, 0x22, 0xd7, 0x9b, 0xda, 0xc6, 0xda, 0x4e, 0x2d, 0x80, 0x99, 0x6e, 0xed, 0xde, 0x87, 0xcd,
-	0x99, 0xc5, 0x65, 0xa7, 0xe7, 0x7e, 0xab, 0xc2, 0xf6, 0xbc, 0x5c, 0x72, 0x0f, 0x80, 0x7f, 0x49,
-	0x15, 0xd7, 0xda, 0x18, 0xcf, 0xa1, 0x73, 0x91, 0xbd, 0x9f, 0x15, 0xa8, 0xf7, 0x42, 0x99, 0x72,
-	0xd2, 0x85, 0xba, 0xe6, 0x98, 0xa5, 0x16, 0xb4, 0xd5, 0x6e, 0xdf, 0x65, 0xc1, 0xbc, 0x52, 0x73,
-	0x30, 0x7c, 0x2a, 0x42, 0x7e, 0x91, 0x30, 0xae, 0xf2, 0x5b, 0x61, 0x09, 0x48, 0x1f, 0x76, 0x6f,
-	0xbc, 0xd2, 0xe2, 0x32, 0x3f, 0xbe, 0x85, 0xb5, 0x5b, 0xe0, 0xfb, 0x05, 0x3c, 0xd8, 0x19, 0x5f,
-	0x8b, 0x2c, 0xb0, 0x8e, 0x38, 0xc5, 0x4c, 0x71, 0x6d, 0xef, 0xf4, 0xef, 0x59, 0x5f, 0x15, 0xf0,
-	0x2b, 0xd6, 0x32, 0xe2, 0x7e, 0xad, 0x40, 0x73, 0xa1, 0x09, 0xe4, 0x0c, 0x1a, 0x34, 0xc3, 0xb1,
-	0x9c, 0x4d, 0x01, 0x7f, 0xd5, 0x66, 0x9e, 0xc8, 0x04, 0xcd, 0xd3, 0x2b, 0xf3, 0x49, 0x0b, 0x1a,
-	0x8c, 0x23, 0x15, 0x13, 0x5d, 0xd8, 0xff, 0xd7, 0xcb, 0xe7, 0xa3, 0x57, 0xce, 0x47, 0xaf, 0x67,
-	0xe7, 0x63, 0x50, 0xe2, 0xdc, 0x2e, 0x34, 0x0a, 0x1a, 0xf2, 0x0f, 0xd4, 0x79, 0x4c, 0xc5, 0x24,
-	0xef, 0x5a, 0xf7, 0xaf, 0x20, 0xdf, 0x92, 0xff, 0x61, 0x33, 0x66, 0xc3, 0x41, 0xa4, 0x64, 0x96,
-	0x5a, 0x5e, 0xf3, 0x6d, 0x23, 0x66, 0xc3, 0xd7, 0x26, 0xd2, 0x59, 0x87, 0x1a, 0x5e, 0xa6, 0xbc,
-	0xd3, 0xeb, 0x34, 0xdf, 0x15, 0xe2, 0xce, 0x4d, 0xb5, 0x8f, 0x9d, 0x48, 0xce, 0x9c, 0x78, 0x52,
-	0x45, 0xfe, 0xcd, 0x89, 0x19, 0xc9, 0xa5, 0x7f, 0x83, 0x97, 0xe5, 0x7a, 0xb8, 0x6e, 0x85, 0x3f,
-	0xff, 0x15, 0x00, 0x00, 0xff, 0xff, 0xfa, 0xab, 0xf2, 0x94, 0x47, 0x06, 0x00, 0x00,
+	// 776 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x56, 0xcd, 0x6e, 0xd3, 0x4a,
+	0x18, 0xbd, 0xce, 0x6f, 0xfb, 0xb5, 0xbe, 0x6a, 0xa7, 0xd2, 0xbd, 0x56, 0x75, 0x2f, 0x54, 0x06,
+	0x41, 0x25, 0xc0, 0x56, 0x42, 0x2b, 0x21, 0xba, 0x6a, 0x5a, 0x41, 0x0a, 0x42, 0x14, 0x27, 0xdd,
+	0x50, 0x50, 0x34, 0xb1, 0x27, 0xce, 0x48, 0xb1, 0xc7, 0x1a, 0x8f, 0x03, 0x7d, 0x00, 0x96, 0x6c,
+	0xd8, 0xf1, 0x12, 0x2c, 0x79, 0x0f, 0x1e, 0x08, 0x09, 0x8d, 0xc7, 0x76, 0x93, 0x36, 0x6d, 0x13,
+	0xc1, 0xce, 0xfe, 0x72, 0xce, 0xf9, 0xce, 0x77, 0xc6, 0x33, 0x13, 0xd8, 0x75, 0x87, 0x9c, 0x05,
+	0x34, 0x09, 0x58, 0x6c, 0xbb, 0x2c, 0x1c, 0x50, 0xdf, 0xc6, 0x11, 0xb5, 0x05, 0x89, 0x85, 0x1d,
+	0x10, 0x81, 0x3d, 0x2c, 0xb0, 0x3d, 0x6e, 0x14, 0xcf, 0x56, 0xc4, 0x99, 0x60, 0xe8, 0xde, 0x39,
+	0xcd, 0x52, 0x34, 0x0b, 0x47, 0xd4, 0x92, 0x34, 0xab, 0x80, 0x8e, 0x1b, 0x9b, 0xff, 0xf9, 0x8c,
+	0xf9, 0x23, 0x62, 0xa7, 0xac, 0x7e, 0x32, 0xb0, 0x63, 0xc1, 0x13, 0x57, 0x28, 0x95, 0xcd, 0x07,
+	0xd7, 0x34, 0xf7, 0x12, 0x21, 0xfb, 0x7a, 0x49, 0x0e, 0x7e, 0x34, 0x1b, 0x3c, 0xc4, 0xdc, 0xfb,
+	0x80, 0x39, 0xe9, 0x09, 0x16, 0xb1, 0x11, 0xf3, 0xcf, 0x32, 0xf8, 0xdd, 0x2b, 0xb4, 0xa7, 0x50,
+	0xe6, 0x19, 0xe8, 0x9d, 0x88, 0xb8, 0x74, 0x40, 0x5d, 0x2c, 0x28, 0x0b, 0xd1, 0x10, 0x36, 0x38,
+	0x09, 0x98, 0x20, 0x3d, 0xe9, 0xa2, 0xe7, 0x71, 0x3a, 0x26, 0x3c, 0x36, 0xb4, 0xad, 0xf2, 0xf6,
+	0x4a, 0xf3, 0x89, 0x35, 0xdf, 0xd8, 0x96, 0x93, 0x4a, 0x74, 0x49, 0x2c, 0x0e, 0x53, 0x01, 0x67,
+	0x9d, 0x5f, 0xa8, 0xc4, 0xe6, 0x0f, 0x0d, 0xd6, 0x2e, 0xe2, 0x10, 0x82, 0x4a, 0x88, 0x03, 0x62,
+	0x68, 0x5b, 0xda, 0xf6, 0xb2, 0x93, 0x3e, 0xa3, 0x97, 0x50, 0xa5, 0x01, 0xf6, 0x89, 0x51, 0xda,
+	0xd2, 0xb6, 0x57, 0x9a, 0xbb, 0xf3, 0x9a, 0x68, 0x25, 0x74, 0xe4, 0xed, 0x73, 0x41, 0x07, 0xd8,
+	0x15, 0x8e, 0xd2, 0x40, 0x06, 0xd4, 0x5d, 0x16, 0x04, 0x38, 0xf4, 0x8c, 0x72, 0xda, 0x23, 0x7f,
+	0x45, 0x2d, 0xa8, 0x4a, 0x89, 0xd8, 0xa8, 0xa4, 0xb3, 0x3e, 0x9c, 0xb7, 0x8d, 0x74, 0xef, 0x28,
+	0xaa, 0xb9, 0x03, 0xfa, 0x54, 0x57, 0x74, 0x07, 0x74, 0x4e, 0x46, 0x58, 0xd0, 0x31, 0xe9, 0x45,
+	0x58, 0x0c, 0xb3, 0xc1, 0x56, 0xf3, 0xe2, 0x31, 0x16, 0x43, 0xf3, 0x6b, 0x19, 0x2a, 0x52, 0x65,
+	0xe6, 0xf4, 0x6f, 0x00, 0xb0, 0x10, 0x9c, 0xf6, 0x13, 0x41, 0x62, 0xa3, 0x94, 0x7a, 0x6b, 0xcc,
+	0xeb, 0x6d, 0x3f, 0x67, 0x3a, 0x13, 0x22, 0xe8, 0x1d, 0xfc, 0xed, 0x25, 0xa2, 0xe7, 0xb2, 0x30,
+	0x16, 0x1c, 0xd3, 0x50, 0x18, 0xb5, 0xc5, 0x92, 0x3d, 0x3c, 0xe9, 0x1e, 0x14, 0x64, 0x47, 0xf7,
+	0x12, 0x71, 0xfe, 0x8a, 0x4e, 0x41, 0xa7, 0xe1, 0x80, 0xf1, 0x20, 0xfd, 0xa0, 0xf0, 0xc8, 0xa8,
+	0x2c, 0x26, 0x7e, 0x34, 0x49, 0x76, 0xa6, 0xb5, 0xd0, 0x7b, 0xd0, 0x33, 0xeb, 0x1e, 0x95, 0x25,
+	0xa3, 0x9a, 0x8a, 0xef, 0x2c, 0xe6, 0x5c, 0x71, 0x5b, 0x25, 0x43, 0x73, 0x56, 0x95, 0x79, 0x55,
+	0x79, 0x51, 0x59, 0x2a, 0xaf, 0x55, 0x1c, 0x28, 0xe4, 0x63, 0xf3, 0x36, 0x2c, 0x17, 0x21, 0xce,
+	0x5a, 0x1f, 0xf3, 0xbb, 0x06, 0xfa, 0x54, 0x1e, 0xa8, 0x03, 0x35, 0x65, 0x21, 0xc5, 0xad, 0x34,
+	0xf7, 0x16, 0x33, 0x37, 0xa0, 0xfe, 0x44, 0xb8, 0x99, 0x14, 0x3a, 0x86, 0x6a, 0x4c, 0x44, 0x12,
+	0x65, 0x9b, 0xe0, 0xe9, 0x02, 0x9a, 0x1d, 0xc9, 0x9b, 0x90, 0x54, 0x42, 0xe6, 0x17, 0x0d, 0x36,
+	0x66, 0x74, 0x44, 0xb7, 0x00, 0xc8, 0xc7, 0x88, 0x93, 0x38, 0x96, 0xf9, 0xaa, 0x51, 0x27, 0x2a,
+	0x9b, 0xa7, 0x50, 0x3e, 0x3c, 0xe9, 0xa2, 0x2e, 0xac, 0x17, 0x47, 0xcf, 0x80, 0x60, 0x91, 0x70,
+	0x12, 0x67, 0x03, 0xdf, 0xbf, 0xc2, 0x5c, 0x3b, 0xc3, 0x3f, 0xcb, 0xe0, 0xce, 0xda, 0xf0, 0x42,
+	0xc5, 0xfc, 0xa4, 0x01, 0xba, 0x6c, 0xf9, 0x46, 0x4f, 0xaf, 0x95, 0xa7, 0x76, 0x1e, 0x92, 0xf2,
+	0xd1, 0xbc, 0x2e, 0x24, 0x79, 0xb0, 0xca, 0x7c, 0xc8, 0x98, 0xba, 0xe4, 0x24, 0xf4, 0x08, 0x57,
+	0x1b, 0x59, 0x85, 0xf3, 0xad, 0x04, 0xab, 0x93, 0xdf, 0xca, 0x8d, 0x0e, 0x7e, 0x6a, 0x50, 0xed,
+	0xb8, 0x2c, 0x22, 0x7f, 0xce, 0xc4, 0x54, 0xc4, 0xf9, 0xb9, 0x9d, 0xad, 0xff, 0x4d, 0x11, 0x77,
+	0x33, 0xf8, 0x79, 0xc4, 0x79, 0x65, 0xf6, 0xc2, 0x95, 0x7f, 0x77, 0xe1, 0x3e, 0x6b, 0xa0, 0x4f,
+	0xed, 0x5c, 0x74, 0x04, 0x75, 0x9c, 0x88, 0x21, 0x2b, 0x6e, 0x0f, 0x7b, 0xde, 0x6f, 0xf6, 0x80,
+	0x85, 0x42, 0x1e, 0xd9, 0x39, 0x1f, 0x35, 0xa0, 0xee, 0x11, 0x81, 0xe9, 0x28, 0xce, 0xc6, 0xff,
+	0xd7, 0x52, 0xf7, 0xaa, 0x95, 0xdf, 0xab, 0x56, 0x27, 0xbd, 0x57, 0x9d, 0x1c, 0x67, 0xb6, 0xa1,
+	0x9e, 0xc9, 0xa0, 0x7f, 0xa0, 0x4a, 0x02, 0x4c, 0x47, 0x6a, 0xd5, 0xda, 0x7f, 0x39, 0xea, 0x15,
+	0xfd, 0x0f, 0xcb, 0x81, 0xd7, 0xef, 0xf9, 0x9c, 0x65, 0xdb, 0x4a, 0xfe, 0xb6, 0x14, 0x78, 0xfd,
+	0xe7, 0xb2, 0xd2, 0xaa, 0x41, 0x45, 0x9c, 0x45, 0xa4, 0xd5, 0x69, 0xe9, 0xaf, 0x32, 0x73, 0xc7,
+	0xb2, 0xdb, 0xdb, 0x96, 0xcf, 0x8a, 0x49, 0x2c, 0xc6, 0x7d, 0xfb, 0xf2, 0x4d, 0xeb, 0xb3, 0x99,
+	0xff, 0x22, 0xf6, 0xf2, 0xe7, 0x7e, 0x2d, 0x35, 0xfe, 0xf8, 0x57, 0x00, 0x00, 0x00, 0xff, 0xff,
+	0xcf, 0xcd, 0x6f, 0x1b, 0x7f, 0x08, 0x00, 0x00,
 }

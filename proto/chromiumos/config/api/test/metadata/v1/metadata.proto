@@ -126,7 +126,7 @@ message BuildArtifact {
 //    Remote Test Driver invocation request: test/rtd/invocation.proto
 //    Remote Test Driver progress API: test/rtd/progress.proto
 message Test {
-  // Superseded by "dut_condition".
+  // Superseded by "dut_constraint".
   reserved 3;
   reserved "conditions";
 
@@ -135,8 +135,8 @@ message Test {
   // MUST be a valid resource per https://aip.dev/122.
   //
   // Pattern: remoteTestDrivers/{remoteTestDriver}/tests/{test}
-  //   where {remoteTestDriver} is the Remote Test Driver package that contains
-  //   this test.
+  //   where {remoteTestDriver} is the Remote Test Driver package that
+  //   contains this test.
   string name = 1;
 
   // Attributes are used to include tests in test plans.
@@ -145,18 +145,21 @@ message Test {
   //   Test plans: test/plan/plan.proto
   repeated Attribute attributes = 2;
 
-  // Required condition to be met for the Devices Under Test targeted by this
+  // Required conditions to be met for the Devices Under Test targeted by this
   // test.
   //
-  // Condition enforcement is an optional feature for test scheduling, i.e.,
+  // Constraint enforcement is an optional feature for test scheduling, i.e.,
   // some Test Lab Environments may ignore conditions entirely.
   //
   // If the test execution is sharded over multiple devices, each must satisfy
-  // this condition.
-  DUTCondition dut_condition = 5;
+  // these conditions.
+  DUTConstraint dut_constraint = 6;
 
   // Metadata about the test that doesn't affect scheduling or execution.
   Informational informational = 4;
+
+  // Will be deleted (& reserved) once all clients have migrated.
+  DUTCondition dut_condition = 5 [deprecated = true];
 }
 
 // Attributes used to include tests in test plans.
@@ -169,57 +172,63 @@ message Attribute {
   string name = 1;
 }
 
-// Condition to be met for each Device Under Test targeted by a test.
-message DUTCondition {
-  // A Common Expression Language (CEL) expression to specify DUT conditions.
+// Conditions to be met for each Device Under Test targeted by a test.
+message DUTConstraint {
+  // Conditions on the Chrome OS configuration payload.
+  DUTConfigConstraint config = 1;
+  // Conditions on device setup.
+  DUTSetupConstraint setup = 2;
+}
+
+// Conditions to be met for the Chrome OS configuration of each Device Under
+// Test targeted by a test.
+message DUTConfigConstraint {
+  // A Common Expression Language (CEL) expression to specify constraints on a
+  // Device Under Test's Chrome OS configuration payload. `expression` MUST
+  // evaluate to a boolean value in the evaluation context described below.
   //
-  // Test Lab Environments may optionally support targeting test requests to
-  // Device Under Test based on DUTConditions. If this feature is supported, the
-  // Test Lab Environment MUST interpret `expression` in the scope of the
-  // protobuf message DUTCondition.Scope as defined below.
+  // Test Lab Environments may optionally support scheduling test requests on
+  // Devices Under Test that satisfy some constraints on their Chrome OS
+  // configuration.
+  // When supported, the Test Lab Environment MUST effectively evaluate
+  // `expression` with the following declarations in scope for each available
+  // Device Under Test and ensure that the test is scheduled on a Device Under
+  // Test for which `expression` evaluates to true.
   //
-  // The full CEL spec can be found at https://github.com/google/cel-spec.
-  // This API only currently only supports a small sub-set of the CEL features,
-  // as described here. Test Lab Environments SHOULD validate the expression and
-  // reject use of unsupported features.
-  //
-  // TODO(crbug.com/1051689) Add reference to the metadata validator package.
+  // - Constant: `dut` of type DUTConfigConstraint.DUT defined below, set to the
+  //   Chrome OS configuration payload of a particular Device Under Test.
+  // - Types: Protobuf messages from `chromiumos.config.api.*`
+  //   - Additionally available with the short-hand `api.*`
   //
   // ## Examples
   //
-  // Typical instructive examples of expressions are:
+  // Typical examples of expressions are:
   //
-  // - A specific characteristic for a hardware feature, e.g.:
-  //     scope.hardware_topology.screen.milliinch.value == 14000
-  // - A specific topology for a hardware feature, e.g.:
-  //     scope.hardware_topology.form_factor.id == "fancy_clamshell"
-  // - Existence of a hardware feature, e.g.:
-  //     scope.hardware_features.lte == scope.hardware_features.PRESENT
-  // - Exclude certain hardware topologies, e.g.:
-  //     scope.hardware_topology.stylus.id != "pencil"
+  // - Must run on a device with a given screen size:
+  //     dut.hardware_features.screen.milliinch.value == 14000
+  // - Must run on a device with LTE support:
+  //     dut.hardware_features.lte == api.HardwareFeatures.Present.PRESENT
+  //     - or equivalently,
+  //       (dut.hardware_features.lte ==
+  //        chromiumos.config.api.HardwareFeatures.Present.PRESENT)
+  // - Must not run on a device with a specific form factor:
+  //     (dut.hardware_features.form_factor.form_factor !=
+  //      api.HardwareFeatures.FormFactor.CLAMSHELL)
   //
   // ## CEL support
   //
+  // The full CEL spec can be found at https://github.com/google/cel-spec.
+  //
   // Current support for `expression` evaluation is very restricted due to
-  // limitations in the scheduling platform used by Test Platform. Specifying
-  // the conditions in CEL will allow gradual lifting of support restrictions.
+  // limitations in the scheduling infrastructure used by Test Platform.
   //
   // As this API matures, features will be added to the scheduling
   // infrastructure of Test Platform and restrictions here will be lifted based
   // on requirements collected from test authors. See milestones in
-  // go/cros-f20-plan for expected feature iterations.
+  // go/cros-f20-plan for expected feature iterations. Test Lab Environments
+  // SHOULD validate the expression and reject use of unsupported features.
   //
-  // ### Evaluation context
-  //
-  // In general, a CEL expression must be evaluated in some context that
-  // provides the basic bindings for name resolution.
-  //
-  // In this case, `expression` MUST be evaluated in a context that contains
-  //
-  // - A variable 'scope' of type DUTCondition.Scope. This variable contains the
-  //   information about a particular Device Under Test being tested for
-  //   acceptance via `expression`.
-  // - Protobuf definitions in this git project (i.e., rooted at infra/proto/).
+  // TODO(crbug.com/1051689) Add reference to the metadata validator package.
   //
   // ### Syntax
   //
@@ -258,22 +267,128 @@ message DUTCondition {
   //
   // - Supported operators: !_, -_, _!=_, _&&_, _=_, _[_]
   //   - All other operators are not supported.
-  // - All other standard functions are not supported. In particular take note:
+  // - All other standard functions are not supported. In particular:
   //   - size() is not supported.
   //   - string functions like endsWith() and contains() are not supported.
   //   - type conversions like int() and string() are not supported.
   //   - reflection with type(), null_type() and dyn() is not supported.
   string expression = 1;
 
-  // Protocol buffer scope for interpretation of `expression`.
+  // The evaluation context for `expression` MUST include the Chrome OS
+  // configuration payload for a particular Device Under Test as a typed
+  // constant of the following type.
+  message DUT {
+    chromiumos.config.api.HardwareFeatures hardware_features = 1;
+  }
+}
+
+// Conditions to be met for the setup of each Device Under Test targeted by a
+// test.
+message DUTSetupConstraint {
+  // A Common Expression Language (CEL) expression to specify constraints on a
+  // Device Under Test setup. `expression` MUST evaluate to a boolean value in
+  // the evaluation context described below.
   //
-  // Scope includes the Device Under Test features that can be targeted for test
-  // targeting.
-  message Scope {
-    // Peripherals information about the lab deployment of the device.
+  // Test Lab Environments may optionally support scheduling test requests on
+  // Devices Under Test that satisfy some constraints on how they are setup.
+  // When supported, the Test Lab Environment MUST effectively evaluate
+  // `expression` with the following declarations in scope for each available
+  // Device Under Test and ensure that the test is scheduled on a Device Under
+  // Test for which `expression` evaluates to true.
+  //
+  // - Constant: `dut` of type DUTSetupConstraint.DUT defined below, set to the
+  //   setup configuration payload of a particular Device Under Test.
+  // - Type: Protobuf messages `chromiumos.config.api.test.dut.v1.*`, e.g.
+  //   `chromiumos.config.api.test.dut.v1.DeviceUnderTest`
+  //   - Additionally available with short-hands `DeviceUnderTest` etc.
+  //
+  // ## Examples
+  //
+  // Typical examples of expressions are:
+  //
+  // - Must run on a DUT with servo present:
+  //     dut.setup.peripheral.servo.present
+  // - Must run on a DUT which is in a camera box with a front facing camera:
+  //     dut.setup.peripheral.camerabox.facing == Camerabox.Facing.FRONT
+  //   - Or, equivalently:
+  //       (dut.setup.peripheral.camerabox.facing ==
+  //        chromiumos.config.api.test.dut.v1.Camerabox.Facing.FRONT)
+  //
+  // ## CEL support
+  //
+  // The full CEL spec can be found at https://github.com/google/cel-spec.
+  //
+  // Current support for `expression` evaluation is very restricted due to
+  // limitations in the scheduling infrastructure used by Test Platform.
+  //
+  // As this API matures, features will be added to the scheduling
+  // infrastructure of Test Platform and restrictions here will be lifted based
+  // on requirements collected from test authors. See milestones in
+  // go/cros-f20-plan for expected feature iterations. Test Lab Environments
+  // SHOULD validate the expression and reject use of unsupported features.
+  //
+  // TODO(crbug.com/1051689) Add reference to the metadata validator package.
+  //
+  // ### Syntax
+  //
+  // See full syntax definition at
+  // https://github.com/google/cel-spec/blob/master/doc/langdef.md#syntax
+  //
+  // CEL standard syntax allows expressions that evaluate to errors (e.g.,
+  // syntax allows negation of lists, which has no semantics in CEL).
+  // Thus, this spec does not attempt to restrict the syntax, but specifies what
+  // operations are unsupported to aid metadata producers. Ultimately, the
+  // reference metadata validator is the authority on what expressions are
+  // allowed.
+  //
+  // Unsupported standard CEL semantics:
+  //   - Binary arithmetic operations
+  //     e.g.: +, *, /, % ...
+  //   - Relational Operators beyond (in)equality are not supported.
+  //     e.g.: (>, <, >=, <= ...)
+  //   - Logical OR in expressions is not supported.
+  //     e.g.: (a || b), !(a && b) ...
+  //
+  // ### Macros
+  //
+  // See full macro definition at
+  // https://github.com/google/cel-spec/blob/master/doc/langdef.md#macros
+  //
+  // Supported macros: has(), e.all()
+  // Unsupported macros: e.exists(), e.exists_one(), e.map(), e.filter()
+  //
+  // ### Standard functions
+  //
+  // See full list of standard definitions at
+  // https://github.com/google/cel-spec/blob/master/doc/langdef.md#standard-definitions
+  //
+  // Most standard functions are not supported.
+  //
+  // - Supported operators: !_, -_, _!=_, _&&_, _=_, _[_]
+  //   - All other operators are not supported.
+  // - All other standard functions are not supported. In particular:
+  //   - size() is not supported.
+  //   - string functions like endsWith() and contains() are not supported.
+  //   - type conversions like int() and string() are not supported.
+  //   - reflection with type(), null_type() and dyn() is not supported.
+  string expression = 1;
+
+  // The evaluation context for `expression` MUST include the dut setup
+  // configuration payload for a particular Device Under Test as a typed
+  // constant of the following type.
+  message DUT {
+    // Peripherals information about the lab deployment of the device
     chromiumos.config.api.test.dut.v1.DeviceUnderTest setup = 1;
-    // The relationship between topology and features is described at
-    // https://chromium.googlesource.com/chromiumos/config/+/master/proto/chromiumos/config/api/hardware_topology.md
+  }
+}
+
+// Deprecated.
+// Use DutConstraint instead.
+// This message will be deleted once all clients have migrated.
+message DUTCondition {
+  string expression = 1;
+  message Scope {
+    chromiumos.config.api.test.dut.v1.DeviceUnderTest setup = 1;
     chromiumos.config.api.HardwareTopology hardware_topology = 2;
     chromiumos.config.api.HardwareFeatures hardware_features = 3;
   }
