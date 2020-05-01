@@ -23,6 +23,9 @@ if [[ $# -ne 1 ]]; then
   usage
 fi
 
+readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
+source "${script_dir}/../setup_cipd.sh"
+
 readonly file_path="${1}"
 readonly config_file=$(basename "${file_path}")
 readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
@@ -34,6 +37,9 @@ if ! config/generate.sh; then
   echo 'blew up generating proto descriptors'
   exit 1
 fi
+
+echo "Formatting .star files with buildifier..."
+find "${config_dir}" -name "*.star" -exec buildifier {} \;
 
 lucicfg generate "${config_file}"
 
