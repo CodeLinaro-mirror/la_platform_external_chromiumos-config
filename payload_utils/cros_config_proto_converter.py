@@ -554,7 +554,6 @@ def Main(project_configs,
   dptf_file = None
   output_dir = os.path.dirname(output)
   build_root_dir = output_dir
-  # TODO(shapiroc): Make standard after all projects migrated to new structure
   if 'sw_build_config' in output_dir:
     full_path = os.path.realpath(output)
     project_name = re.match(
@@ -568,13 +567,13 @@ def Main(project_configs,
     # without having portage file installation collisions.
     build_root_dir = os.path.join(project_name, output_dir)
 
-    if os.path.exists(DPTF_PATH):
-      project_dptf_path = os.path.join(project_name, 'dptf.dv')
-      dptf_file = {
-          'dptf-dv': project_dptf_path,
-          'files': [_File(os.path.join(project_name, DPTF_PATH),
-                          os.path.join('/etc/dptf', project_dptf_path))]
-      }
+  if os.path.exists(DPTF_PATH):
+    project_dptf_path = os.path.join(project_name, 'dptf.dv')
+    dptf_file = {
+        'dptf-dv': project_dptf_path,
+        'files': [_File(os.path.join(project_name, DPTF_PATH),
+                        os.path.join('/etc/dptf', project_dptf_path))]
+    }
   if os.path.exists(os.path.join(output_dir, 'bluetooth')):
     bluetooth_files = WriteBluetoothConfigFiles(
         configs, output_dir, build_root_dir)
