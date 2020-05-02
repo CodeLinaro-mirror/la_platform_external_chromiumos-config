@@ -518,41 +518,14 @@ DeviceID = bluetooth:%s:%s:%s''' % (bt_comp.vendor_id,
 
 
 def _ReadConfig(path):
-  """Reads a ConfigBundle proto from a file.
-
-  Reads a ConfigBundle proto from a file first attempting to parse as json
-  pb and falling back to parsing as binary pb.
-  TODO(crbug.com/1073530): remove binary pb fallback when transition to json pb
-  is complete.
+  """Reads a ConfigBundle proto from a json pb file.
 
   Args:
-    path: Path to the file encoding the proto.
-  """
-  try:
-    return _ReadJsonProtoConfig(path)
-  except:
-    return _ReadBinaryProtoConfig(path)
-
-
-def _ReadJsonProtoConfig(path):
-  """Reads a json proto ConfigBundle from a file.
-
-  Args:
-    path: Path to the json proto.
+    path: Path to the file encoding the json pb proto.
   """
   config = config_bundle_pb2.ConfigBundle()
   with open(path, 'r') as f:
     return json_format.Parse(f.read(), config)
-
-
-def _ReadBinaryProtoConfig(path):
-  """Reads a binary proto ConfigBundle from a file.
-
-  Args:
-    path: Path to the binary proto.
-  """
-  with open(path, 'rb') as f:
-    return config_bundle_pb2.ConfigBundle.FromString(f.read())
 
 
 def _MergeConfigs(configs):
