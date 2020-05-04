@@ -7,7 +7,7 @@ import unittest
 
 from google.protobuf.timestamp_pb2 import Timestamp
 
-from checker import proto_utils
+from common import proto_utils
 
 
 class ProtoUtilsTest(unittest.TestCase):
