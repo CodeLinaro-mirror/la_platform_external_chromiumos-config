@@ -189,6 +189,71 @@ currently doesn't support partner access. Thus, stdout logs for key steps of the
 build are mirrored to per-project Google Storage buckets. The Google Storage
 mirrored logs appear as links like "stdout (GS mirror)" on the Milo page.
 
+## Directory Structure
+
+### chromiumos/config
+
+For contributing configuration changes for programs and projects, a familiarity
+with the follow directories in this repo is helpful:
+
+- `proto/`: Protobuf definitions for hardware configuration,
+software configuration, etc. This serves as the main API for configuring your
+project and program.
+
+- `util/`: Starlark utilities for use in program and project repos. Some
+utility functions are basic wrappers around Protobuf construction, others help
+with patterns that are common across patterns, e.g. configuring firmware
+payloads.
+
+- `test/`: A fake program and project. Useful to demonstrate the use of the
+Starlark utilities.
+
+- `bin/`: Tools needed to work in the configuration ecosystem, see the [above
+section](#Adding-Utilities-to-Your) on adding these tools to your `PATH`.
+
+- `go/`: Golang proto bindings. Used by platform code.
+
+- `python/`: Python proto bindings. Used by platform code.
+
+The following directories are likely more useful for contributors to the
+configuration and infrastructure systems:
+
+- `infra/`, `recipes/`: Needed to roll proto definitions into
+[Recipes](https://chromium.googlesource.com/infra/luci/recipes-py) repos.
+
+- `payload_utils/`: Utilities for working on configuration payloads, e.g. CQ
+checker to validate project configs.
+
+- `presubmit/`: Common files and libraries for program and project repo
+presubmits.
+
+
+### Program and Project Repos
+
+For contributing configuration changes for programs and projects, a familiarity
+with their layout patterns is helpful.
+
+- `config.star`: The main Starlark file to generate a program or project's
+configuration payload. See
+[Making Configuration Changes for your Project](#Making-Configuration-Changes-for-your-Project)
+
+- `generated/`: Generated configuration payloads.
+
+- `sw_build_config/`: Files for configuring software on the project's build.
+Contains manually-edited and generated files.
+
+- `local_manifest.xml`: Local manifest for working on the project. See
+[Project Setup for Partners](#Project-Setup-for-Partners)
+
+- `config/`: Symlink to the `chromiumos/config` repo, for importing Starlark
+utils.
+
+- `program/`: Symlink from a project repo to the corresponding program repo, for
+importing program-level Starlark functions.
+
+- `PRESUBMIT.py`, `PRESUBMIT.cfg`: Presubmit configuration files. Shared across
+all programs and projects via symlink.
+
 ## Making Bulk Changes Across Repos
 
 Program and project config are spread across repos, so changes and refactors
