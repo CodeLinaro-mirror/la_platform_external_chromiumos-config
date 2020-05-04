@@ -15,13 +15,13 @@ load(
 )
 
 def _vendor(name, vendor_id):
-  return struct(
-      name=name,
-      vendor_id=vendor_id
-  )
+    return struct(
+        name = name,
+        vendor_id = vendor_id,
+    )
 
 _VENDORS = struct(
-    ELAN=_vendor('elan', '04f3')
+    ELAN = _vendor("elan", "04f3"),
 )
 
 def _create_touchscreen_fw_path(vendor, product_id, fw_version):
@@ -30,16 +30,20 @@ def _create_touchscreen_fw_path(vendor, product_id, fw_version):
         return "%s/%s_%s.bin" % (vendor.name, product_id, fw_version)
     return None
 
-def _create_touchscreen(vendor, product_id, fw_version, fw_path=None):
+def _create_touchscreen(vendor, product_id, fw_version, fw_path = None):
     """Builds a Component.Touchsreen proto."""
     id_value = comp_id_pb.ComponentId(
-        value='_'.join([vendor.name, product_id, fw_version]))
+        value = "_".join([vendor.name, product_id, fw_version]),
+    )
     touchscreen = comp_pb.Component.Touchscreen(
-        vendor_id=vendor.vendor_id,
-        product_id=product_id,
-        fw_version=fw_version,
-        fw_path=fw_path or _create_touchscreen_fw_path(
-            vendor, product_id, fw_version)
+        vendor_id = vendor.vendor_id,
+        product_id = product_id,
+        fw_version = fw_version,
+        fw_path = fw_path or _create_touchscreen_fw_path(
+            vendor,
+            product_id,
+            fw_version,
+        ),
     )
     return comp_pb.Component(id = id_value, touchscreen = touchscreen)
 

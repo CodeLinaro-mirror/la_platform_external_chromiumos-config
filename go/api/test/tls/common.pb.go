@@ -8,8 +8,6 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -439,14 +437,6 @@ type CommonServer interface {
 	// If the stream is interrupted, the implementation MAY attempt to
 	// stop the command by sending SIGINT, SIGHUP, SIGTERM, or SIGKILL.
 	ExecDutCommand(*ExecDutCommandRequest, Common_ExecDutCommandServer) error
-}
-
-// UnimplementedCommonServer can be embedded to have forward compatible implementations.
-type UnimplementedCommonServer struct {
-}
-
-func (*UnimplementedCommonServer) ExecDutCommand(req *ExecDutCommandRequest, srv Common_ExecDutCommandServer) error {
-	return status.Errorf(codes.Unimplemented, "method ExecDutCommand not implemented")
 }
 
 func RegisterCommonServer(s *grpc.Server, srv CommonServer) {
