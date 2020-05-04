@@ -21,6 +21,28 @@ message Component {
     Bluetooth bluetooth = 4;
     Camera camera = 5;
     Touchscreen touchscreen = 6;
+    Wifi wifi = 7;
+  }
+
+  // Defines common component version identifiers based on interface standards.
+  message Interface {
+    message Usb {
+      // 4-digit hex
+      string vendor_id = 1;
+      // 4-digit hex
+      string product_id = 2;
+      // 4-digit hex
+      string bcd_device = 3;
+    }
+
+    message Pci {
+      // 4-digit hex
+      string vendor_id = 1;
+      // 4-digit hex
+      string device_id = 2;
+      // 2-digit hex
+      string revision_id = 3;
+    }
   }
 
   message Soc {
@@ -70,12 +92,9 @@ message Component {
   }
 
   message Bluetooth {
-    // 4-digit hex
-    string vendor_id = 1;
-    // 4-digit hex
-    string product_id = 2;
-    // 4-digit hex
-    string bcd_device = 3;
+    Interface.Usb usb = 4;
+
+    reserved 1, 2, 3;
   }
 
   message Camera {
@@ -104,6 +123,12 @@ message Component {
     // that will be installed when a given
     // component vendor/product is detected.
     string fw_path = 4;
+  }
+
+  message Wifi {
+    oneof interface {
+      Interface.Pci pci = 1;
+    }
   }
 
   // Record of a component level qualification and the corresponding status.

@@ -379,7 +379,12 @@ _COMPONENTS = [
     comp.create_touchscreen(
         vendor=comp.VENDORS.ELAN,
         product_id='0f11',
-        fw_version='1234')
+        fw_version='1234'),
+    comp.create_wifi(
+        vendor_id='0f22',
+        device_id='0a11',
+        revision_id='11',
+    )
 ]
 
 _CONFIG = config_bundle.create(

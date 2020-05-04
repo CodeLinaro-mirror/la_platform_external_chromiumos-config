@@ -42,6 +42,18 @@
         "productId": "0f11",
         "vendorId": "04f3"
       }
+    },
+    {
+      "id": {
+        "value": "0f22:0a11:11"
+      },
+      "wifi": {
+        "pci": {
+          "deviceId": "0a11",
+          "revisionId": "11",
+          "vendorId": "0f22"
+        }
+      }
     }
   ],
   "designs": {
@@ -56,9 +68,11 @@
               },
               "bluetooth": {
                 "component": {
-                  "bcdDevice": "0003",
-                  "productId": "0002",
-                  "vendorId": "0001"
+                  "usb": {
+                    "bcdDevice": "0003",
+                    "productId": "0002",
+                    "vendorId": "0001"
+                  }
                 }
               },
               "camera": {
@@ -143,9 +157,11 @@
                 "hardwareFeature": {
                   "bluetooth": {
                     "component": {
-                      "bcdDevice": "0003",
-                      "productId": "0002",
-                      "vendorId": "0001"
+                      "usb": {
+                        "bcdDevice": "0003",
+                        "productId": "0002",
+                        "vendorId": "0001"
+                      }
                     }
                   }
                 },
@@ -655,9 +671,11 @@
               },
               "bluetooth": {
                 "component": {
-                  "bcdDevice": "0003",
-                  "productId": "0002",
-                  "vendorId": "0001"
+                  "usb": {
+                    "bcdDevice": "0003",
+                    "productId": "0002",
+                    "vendorId": "0001"
+                  }
                 }
               },
               "camera": {
@@ -742,9 +760,11 @@
                 "hardwareFeature": {
                   "bluetooth": {
                     "component": {
-                      "bcdDevice": "0003",
-                      "productId": "0002",
-                      "vendorId": "0001"
+                      "usb": {
+                        "bcdDevice": "0003",
+                        "productId": "0002",
+                        "vendorId": "0001"
+                      }
                     }
                   }
                 },
@@ -974,9 +994,11 @@
               },
               "bluetooth": {
                 "component": {
-                  "bcdDevice": "0003",
-                  "productId": "0002",
-                  "vendorId": "0001"
+                  "usb": {
+                    "bcdDevice": "0003",
+                    "productId": "0002",
+                    "vendorId": "0001"
+                  }
                 }
               },
               "camera": {
@@ -1060,9 +1082,11 @@
                 "hardwareFeature": {
                   "bluetooth": {
                     "component": {
-                      "bcdDevice": "0003",
-                      "productId": "0002",
-                      "vendorId": "0001"
+                      "usb": {
+                        "bcdDevice": "0003",
+                        "productId": "0002",
+                        "vendorId": "0001"
+                      }
                     }
                   }
                 },
@@ -1279,9 +1303,11 @@
               },
               "bluetooth": {
                 "component": {
-                  "bcdDevice": "0003",
-                  "productId": "0002",
-                  "vendorId": "0001"
+                  "usb": {
+                    "bcdDevice": "0003",
+                    "productId": "0002",
+                    "vendorId": "0001"
+                  }
                 }
               },
               "camera": {
@@ -1365,9 +1391,11 @@
                 "hardwareFeature": {
                   "bluetooth": {
                     "component": {
-                      "bcdDevice": "0003",
-                      "productId": "0002",
-                      "vendorId": "0001"
+                      "usb": {
+                        "bcdDevice": "0003",
+                        "productId": "0002",
+                        "vendorId": "0001"
+                      }
                     }
                   }
                 },

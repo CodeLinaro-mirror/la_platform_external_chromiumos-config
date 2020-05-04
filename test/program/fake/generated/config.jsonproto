@@ -27,9 +27,11 @@
     },
     {
       "bluetooth": {
-        "bcdDevice": "0003",
-        "productId": "0002",
-        "vendorId": "0001"
+        "usb": {
+          "bcdDevice": "0003",
+          "productId": "0002",
+          "vendorId": "0001"
+        }
       },
       "id": {
         "value": "0001:0002:0003"

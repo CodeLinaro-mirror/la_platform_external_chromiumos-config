@@ -14,6 +14,29 @@ load(
     comp_id_pb = "chromiumos.config.api",
 )
 
+def _create_usb(vendor_id, product_id, bcd_device):
+    """Builds a Interface.Usb proto."""
+    usb = comp_pb.Component.Interface.Usb(
+        vendor_id=vendor_id,
+        product_id=product_id,
+        bcd_device=bcd_device,
+    )
+    component_id = comp_id_pb.ComponentId(
+        value = ":".join([vendor_id, product_id, bcd_device]))
+    return component_id, usb
+
+def _create_pci(vendor_id, device_id, revision_id):
+    """Builds a Interface.Pci proto."""
+    pci = comp_pb.Component.Interface.Pci(
+        vendor_id=vendor_id,
+        device_id=device_id,
+        revision_id=revision_id,
+    )
+
+    component_id = comp_id_pb.ComponentId(
+        value = ":".join([vendor_id, device_id, revision_id]))
+    return component_id, pci
+
 def _vendor(name, vendor_id):
     return struct(
         name = name,
@@ -66,18 +89,27 @@ def _create_soc_model(family, model, cores, id):
 
 def _create_bt(vendor_id, product_id, bcd_device):
     """Builds a Component proto for Bluetooth."""
-    component_id = comp_id_pb.ComponentId(
-        value = "%s:%s:%s" % (vendor_id, product_id, bcd_device),
+    component_id, usb = _create_usb(
+        vendor_id=vendor_id,
+        product_id=product_id,
+        bcd_device=bcd_device,
     )
-    comp = comp_pb.Component(
-        id = component_id,
-        bluetooth = comp_pb.Component.Bluetooth(
-            vendor_id = vendor_id,
-            product_id = product_id,
-            bcd_device = bcd_device,
-        ),
+    return comp_pb.Component(
+        id=component_id,
+        bluetooth=comp_pb.Component.Bluetooth(usb=usb)
     )
-    return comp
+
+def _create_wifi(vendor_id, device_id, revision_id):
+    """Builds a Component proto for Wifi."""
+    component_id, pci = _create_pci(
+        vendor_id=vendor_id,
+        device_id=device_id,
+        revision_id=revision_id,
+    )
+    return comp_pb.Component(
+        id=component_id,
+        wifi=comp_pb.Component.Wifi(pci=pci)
+    )
 
 _qual_status = struct(
     REQUESTED = comp_pb.Component.Qualification.REQUESTED,
@@ -101,6 +133,7 @@ comp = struct(
     create_soc_model = _create_soc_model,
     create_bt = _create_bt,
     create_touchscreen = _create_touchscreen,
+    create_wifi = _create_wifi,
     create_qual = _create_qual,
     create_quals = _create_quals,
     qual_status = _qual_status,

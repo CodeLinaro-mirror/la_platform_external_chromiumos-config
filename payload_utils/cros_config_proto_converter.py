@@ -105,7 +105,7 @@ def _BuildBluetooth(config, bluetooth_files):
   result = {}
   if bt_flags_map:
     result['flags'] = bt_flags_map
-  bt_comp = config.hw_design_config.hardware_features.bluetooth.component
+  bt_comp = config.hw_design_config.hardware_features.bluetooth.component.usb
   if bt_comp.vendor_id:
     bt_id = _BluetoothId(config.hw_design.name.lower(), bt_comp)
     if bt_id in bluetooth_files:
@@ -498,7 +498,7 @@ def WriteBluetoothConfigFiles(config, output_dir, build_root_path):
   for hw_design in config.designs.value:
     project_name = hw_design.name.lower()
     for design_config in hw_design.configs:
-      bt_comp = design_config.hardware_features.bluetooth.component
+      bt_comp = design_config.hardware_features.bluetooth.component.usb
       if bt_comp.vendor_id:
         bt_id = _BluetoothId(project_name, bt_comp)
         result[bt_id] = {
