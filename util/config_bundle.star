@@ -3,12 +3,12 @@
 See proto definitions for descriptions of arguments.
 """
 
+# Needed to load from @proto. Add @unused to silence lint.
 load("//config/util/bindings/proto.star", "protos")
 load(
     "@proto//chromiumos/config/payload/config_bundle.proto",
     config_bundle_pb = "chromiumos.config.payload",
 )
-load("//config/util/component.star", "comp")
 load("//config/util/design.star", "design")
 load("//config/util/device_brand.star", "device_brand")
 load("//config/util/partner.star", "partner")

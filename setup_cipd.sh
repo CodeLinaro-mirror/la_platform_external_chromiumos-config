@@ -9,6 +9,11 @@
 #   readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
 #   source "${script_dir}/setup_cipd.sh"
 
+if [[ -z "${script_dir}" ]]; then
+     echo "The script_dir variable must be set when setup_cipd.sh is called."
+     exit 1
+fi
+
 # Versions of packages to get from CIPD.
 readonly CIPD_PROTOC_VERSION='v3.6.1'
 readonly CIPD_PROTOC_GEN_GO_VERSION='v1.3.2'
@@ -25,3 +30,7 @@ infra/3pp/tools/go/\${platform} latest
 ENSURE_FILE
 PATH="${cipd_root}:${PATH}"
 PATH="${cipd_root}/bin:${PATH}"
+
+# Install buildifier (Starlark formatter) and add to PATH.
+go get github.com/bazelbuild/buildtools/buildifier
+PATH="$(go env GOPATH)/bin:${PATH}"

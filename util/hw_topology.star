@@ -3,6 +3,7 @@
 See proto definitions for descriptions of arguments.
 """
 
+# Needed to load from @proto. Add @unused to silence lint.
 load("//config/util/bindings/proto.star", "protos")
 load(
     "@proto//chromiumos/config/api/topology.proto",
@@ -89,7 +90,7 @@ def _make_fw_config(mask, id):
 def _accumulate_fw_config(existing_fw_config, new_fw_config):
     if existing_fw_config.mask & new_fw_config.mask:
         fail("FW_CONFIG masks cannot overlap! 0x%x and 0x%x" %
-            (existing_fw_config.mask, new_fw_config.mask))
+             (existing_fw_config.mask, new_fw_config.mask))
 
     existing_fw_config.value += new_fw_config.value
     existing_fw_config.mask += new_fw_config.mask
@@ -237,8 +238,12 @@ def _create_camera(id, description, fw_configs = [], has_a_panel_camera = None, 
         hardware_feature = hw_features,
     )
 
-def _create_sensor(id, description, fw_configs = [], lid_accel_present = None,
-    base_gryo_present = None):
+def _create_sensor(
+        id,
+        description,
+        fw_configs = [],
+        lid_accel_present = None,
+        base_gryo_present = None):
     """Builds a Topology proto for accelerometer/gyroscrope/magnometer sensors."""
     hw_features = topo_pb.HardwareFeatures()
 
@@ -657,7 +662,6 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
 
     if copy.bluetooth.hardware_feature.bluetooth != topo_pb.HardwareFeatures.Bluetooth():
         result.bluetooth = copy.bluetooth.hardware_feature.bluetooth
-
 
     return result
 

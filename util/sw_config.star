@@ -3,6 +3,7 @@
 See proto definitions for descriptions of arguments.
 """
 
+# Needed to load from @proto. Add @unused to silence lint.
 load("//config/util/bindings/proto.star", "protos")
 load(
     "@proto//chromiumos/config/api/software/chromeos_config/identity_scan_config.proto",
@@ -59,8 +60,11 @@ def _create_fw_payload(
     )
 
 def _create_fw_build_targets(
-    coreboot = None, depthcharge = None, ec = None, ec_extras=None, libpayload = None
-    ):
+        coreboot = None,
+        depthcharge = None,
+        ec = None,
+        ec_extras = None,
+        libpayload = None):
     """Builds a FirmwareBuildConfig.BuildTargets proto."""
     return fw_pb.FirmwareBuildConfig.BuildTargets(
         coreboot = coreboot,
@@ -74,8 +78,12 @@ def _create_fw_build_config(build_targets):
     """Builds a FirmwareBuildConfig proto."""
     return fw_pb.FirmwareBuildConfig(build_targets = build_targets)
 
-def _create_fw_build_config_by_names(coreboot_name, ec_name = None, depthcharge_name = None,
-    libpayload_name = None, ec_extras = None):
+def _create_fw_build_config_by_names(
+        coreboot_name,
+        ec_name = None,
+        depthcharge_name = None,
+        libpayload_name = None,
+        ec_extras = None):
     """Builds a FirmwareBuildConfig proto using common naming patterns.
 
     Build targets are set to be coreboot_name unless they are otherwise
@@ -102,8 +110,14 @@ def _create_fw_config(ro = None, rw = None, ec = None, pd = None):
         pd_ro_payload = pd,
     )
 
-def _create_fw_payloads_by_names(ap_fw_name = None, ec_fw_name = None, pd_fw_name = None,
-    ap_ro_version = None, ap_rw_version = None, ec_version = None, pd_version = None):
+def _create_fw_payloads_by_names(
+        ap_fw_name = None,
+        ec_fw_name = None,
+        pd_fw_name = None,
+        ap_ro_version = None,
+        ap_rw_version = None,
+        ec_version = None,
+        pd_version = None):
     """Builds a FirmwareConfig proto using common naming patterns."""
     sc_fw_config = fw_pb.FirmwareConfig()
     if ap_fw_name:
@@ -152,7 +166,7 @@ def _create_x86_id_scan(smbios_name_match = None, fw_sku = 255, design_config_id
 
 def _create_arm_id_scan(dt_compatible_match = None, fw_sku = 255, design_config_id = None):
     """Deprecated. Use design.append_configs"""
-    if dt_compatible_match  and design_config_id:
+    if dt_compatible_match and design_config_id:
         fail(
             "dt_compatible_match cannot be used if design_config_id ",
             "is used. dt_compatible_match is deprecated, please use ",

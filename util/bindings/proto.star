@@ -6,6 +6,7 @@ lucicfg.check_version("1.8.6", "Please update depot_tools")
 
 # Descriptor set providing commonly used protocol buffers such
 # as duration, field_mask, etc.. See LUCI docs.
+# buildifier: disable=load-on-top
 load("@stdlib//internal/descpb.star", "wellknown_descpb")
 
 protos = proto.new_descriptor_set(

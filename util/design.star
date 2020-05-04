@@ -3,6 +3,7 @@
 See proto definitions for descriptions of arguments.
 """
 
+# Needed to load from @proto. Add @unused to silence lint.
 load("//config/util/bindings/proto.star", "protos")
 load(
     "@proto//chromiumos/config/api/design.proto",
@@ -69,6 +70,7 @@ def _append_configs(
     specified properties and then append them to the sw_configs and hw_configs
     arrays respectively. This ensures that all IDs are consistent.
     """
+
     # Ensure that config_id is convertable to int and is serialized as a
     # decimal instead of a string. This makes it easier for a consumer
     # to construct the DesignConfigId.value string correctly.
