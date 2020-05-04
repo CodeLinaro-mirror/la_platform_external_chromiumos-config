@@ -31,6 +31,19 @@
       }
     }
   ],
+  "components": [
+    {
+      "id": {
+        "value": "elan_0f11_1234"
+      },
+      "touchscreen": {
+        "fwPath": "elan/0f11_1234.bin",
+        "fwVersion": "1234",
+        "productId": "0f11",
+        "vendorId": "04f3"
+      }
+    }
+  ],
   "designs": {
     "value": [
       {

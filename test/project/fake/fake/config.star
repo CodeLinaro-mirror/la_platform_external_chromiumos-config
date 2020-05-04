@@ -1,5 +1,6 @@
 #!/usr/bin/env lucicfg
 
+load("//config/util/component.star", "comp")
 load("//config/util/config_bundle.star", "config_bundle")
 load("//config/util/sw_config.star", sc = "sw_config")
 load("//config/util/brand_config.star", "brand_config")
@@ -374,12 +375,20 @@ _BRAND_CONFIGS = [
     ),
 ]
 
+_COMPONENTS = [
+    comp.create_touchscreen(
+        vendor=comp.VENDORS.ELAN,
+        product_id='0f11',
+        fw_version='1234')
+]
+
 _CONFIG = config_bundle.create(
     partners = _PARTNERS,
     designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_WL],
     device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C],
     software_configs = _SW_CONFIGS,
     brand_configs = _BRAND_CONFIGS,
+    components = _COMPONENTS,
 )
 
 design.generate(_CONFIG)

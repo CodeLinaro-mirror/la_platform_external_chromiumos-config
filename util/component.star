@@ -13,6 +13,35 @@ load(
     comp_id_pb = "chromiumos.config.api",
 )
 
+def _vendor(name, vendor_id):
+  return struct(
+      name=name,
+      vendor_id=vendor_id
+  )
+
+_VENDORS = struct(
+    ELAN=_vendor('elan', '04f3')
+)
+
+def _create_touchscreen_fw_path(vendor, product_id, fw_version):
+    """Applies vendor specific touch firmware naming conventions"""
+    if vendor == _VENDORS.ELAN:
+        return "%s/%s_%s.bin" % (vendor.name, product_id, fw_version)
+    return None
+
+def _create_touchscreen(vendor, product_id, fw_version, fw_path=None):
+    """Builds a Component.Touchsreen proto."""
+    id_value = comp_id_pb.ComponentId(
+        value='_'.join([vendor.name, product_id, fw_version]))
+    touchscreen = comp_pb.Component.Touchscreen(
+        vendor_id=vendor.vendor_id,
+        product_id=product_id,
+        fw_version=fw_version,
+        fw_path=fw_path or _create_touchscreen_fw_path(
+            vendor, product_id, fw_version)
+    )
+    return comp_pb.Component(id = id_value, touchscreen = touchscreen)
+
 def _create_soc_family(name, arch = comp_pb.Component.Soc.X86_64):
     """Builds a Component.Soc.Family proto."""
     return comp_pb.Component.Soc.Family(
@@ -66,7 +95,9 @@ comp = struct(
     create_soc_family = _create_soc_family,
     create_soc_model = _create_soc_model,
     create_bt = _create_bt,
+    create_touchscreen = _create_touchscreen,
     create_qual = _create_qual,
     create_quals = _create_quals,
     qual_status = _qual_status,
+    VENDORS = _VENDORS,
 )
