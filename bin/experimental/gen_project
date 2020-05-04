@@ -51,33 +51,36 @@ _DESIGN_ID = design.create_design_id(_${project^^})
 
 _CLAMSHELL = hw_topo.create_form_factor("CLAMSHELL", "Device can only rotate 200 degrees", hw_topo.ff.CLAMSHELL)
 
-_CONFIG = design.create_config(
-    design_id = _DESIGN_ID,
-    config_id = 0x7FFFFFFF,
-    hardware_topology = hw_topo.create_hardware_topology(
-        form_factor = _CLAMSHELL,
-    ),
+_FW_BUILD_CONFIG = None
+
+_AUDIO = None
+
+_SW_CONFIGS = []
+_HW_CONFIGS = []
+
+design.append_configs(
+    sw_configs=_SW_CONFIGS,
+    hw_configs=_HW_CONFIGS,
+    design_id=_DESIGN_ID,
+    config_id=0x7FFFFFFF,
+    hardware_topology=_HW_TOPO,
+    firmware_build_config=_FW_BUILD_CONFIG,
+    audio=_AUDIO,
 )
 
 _DESIGN = design.create_design(
-    id = _DESIGN_ID,
-    program_id = program.${program}.id,
-    odm_id = None,
-    configs = [
-        _CONFIG,
-    ],
+    id=_DESIGN_ID,
+    program_id=program.${program}.id,
+    odm_id=None,
+    configs=_HW_CONFIGS,
 )
 
-_SW_CONFIG = program.sw_config(
-    design_id = _DESIGN_ID,
-    design_config_id = _CONFIG.id,
-    ap_firmware_name = _${project^^},
-)
+_DEVICE_BRAND = program.brand(_DESIGN_ID)
 
 _CONFIG_BUNDLE = config_bundle.create(
-    designs = [_DESIGN],
-    software_configs = [_SW_CONFIG],
-    device_brands = [program.brand(_DESIGN.id)],
+    designs=[_DESIGN],
+    device_brands=[_DEVICE_BRAND],
+    software_configs=_SW_CONFIGS,
 )
 
 design.generate(_CONFIG_BUNDLE)
