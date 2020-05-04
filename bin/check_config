@@ -6,9 +6,9 @@
 
 # Used to run the constrain checks on project configuration. Assumes that
 # it is running in a project directory where the program constraints:
-#   ./program/generated/config.binaryproto
+#   ./program/generated/config.jsonproto
 # and project configuration:
-#   ./generated/config.binaryproto
+#   ./generated/config.jsonproto
 # can be found.
 
 # Exit if any command fails.
@@ -19,8 +19,8 @@ function usage() {
   echo "  where you are assumed to be in a project's root directory and" >&2
   echo "  and program and project config are in the standard locations," >&2
   echo "  that is:" >&2
-  echo "    ./program/generated/config.binaryproto" >&2
-  echo "    ./generated/config.binaryproto" >&2
+  echo "    ./program/generated/config.jsonproto" >&2
+  echo "    ./generated/config.jsonproto" >&2
   exit 1
 }
 
@@ -36,8 +36,8 @@ source .venv/bin/activate
 pip install -r config/requirements.txt -q
 
 if ! ./config/payload_utils/checker.py \
-  --program ./program/generated/config.binaryproto \
-  --project ./generated/config.binaryproto; then
+  --program ./program/generated/config.jsonproto \
+  --project ./generated/config.jsonproto; then
   echo 'checker.py constraint checks failed'
   exit 1
 fi
