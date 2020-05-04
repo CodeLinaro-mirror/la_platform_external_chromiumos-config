@@ -37,21 +37,6 @@ def _create_constraints(hw_features, level = _CONSTRAINT.REQUIRED):
         features = hw_feature,
     ) for hw_feature in hw_features]
 
-def _create_config(
-        design_id,
-        config_id,
-        base_hw_features = None,
-        hardware_topology = None):
-    """Builds a Design.Config proto."""
-    result = design_pb.Design.Config()
-    result.id.value = "%s:%s" % (design_id.value, config_id)
-    result.hardware_topology = hardware_topology
-    result.hardware_features = hw_topo.convert_to_hw_features(
-        base_hw_features,
-        hardware_topology,
-    )
-    return result
-
 def _append_configs(
         sw_configs,
         hw_configs,
@@ -125,8 +110,6 @@ design = struct(
     append_configs = _append_configs,
     create_constraint = _create_constraint,
     create_constraints = _create_constraints,
-    # Deprecated. Use append_configs instead
-    create_config = _create_config,
     create_design_id = _create_design_id,
     create_design = _create_design,
     create_design_list = _create_design_list,
