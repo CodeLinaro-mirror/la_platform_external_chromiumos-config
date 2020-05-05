@@ -33,4 +33,4 @@ PATH="${cipd_root}/bin:${PATH}"
 
 # Install buildifier (Starlark formatter) and add to PATH.
 go get github.com/bazelbuild/buildtools/buildifier
-PATH="$(go env GOPATH)/bin:${PATH}"
+PATH="${PATH}:$(go env GOPATH)/bin"
