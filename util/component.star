@@ -17,42 +17,49 @@ load(
 def _create_usb(vendor_id, product_id, bcd_device):
     """Builds a Interface.Usb proto."""
     usb = comp_pb.Component.Interface.Usb(
-        vendor_id=vendor_id,
-        product_id=product_id,
-        bcd_device=bcd_device,
+        vendor_id = vendor_id,
+        product_id = product_id,
+        bcd_device = bcd_device,
     )
     component_id = comp_id_pb.ComponentId(
-        value = ":".join([vendor_id, product_id, bcd_device]))
+        value = ":".join([vendor_id, product_id, bcd_device]),
+    )
     return component_id, usb
 
 def _create_pci(vendor_id, device_id, revision_id):
     """Builds a Interface.Pci proto."""
     pci = comp_pb.Component.Interface.Pci(
-        vendor_id=vendor_id,
-        device_id=device_id,
-        revision_id=revision_id,
+        vendor_id = vendor_id,
+        device_id = device_id,
+        revision_id = revision_id,
     )
 
     component_id = comp_id_pb.ComponentId(
-        value = ":".join([vendor_id, device_id, revision_id]))
+        value = ":".join([vendor_id, device_id, revision_id]),
+    )
     return component_id, pci
 
 def _create_touchscreen(
-        touch_vendor, product_id, fw_version, product_name=None):
+        touch_vendor,
+        product_id,
+        fw_version,
+        product_name = None):
     """Builds a Component.Touchsreen proto."""
     id_value = comp_id_pb.ComponentId(
-        value='_'.join([touch_vendor.partner.name, product_id, fw_version]))
+        value = "_".join([touch_vendor.partner.name, product_id, fw_version]),
+    )
     touchscreen = comp_pb.Component.Touchscreen(
-        vendor_id=touch_vendor.vendor_id,
-        product_id=product_id,
-        fw_version=fw_version,
-        fw_file_name=touch_vendor.fw_format_fn(product_id, fw_version)
+        vendor_id = touch_vendor.vendor_id,
+        product_id = product_id,
+        fw_version = fw_version,
+        fw_file_name = touch_vendor.fw_format_fn(product_id, fw_version),
     )
     return comp_pb.Component(
-        id=id_value,
-        name=product_name,
-        manufacturer_id=touch_vendor.partner.id,
-        touchscreen=touchscreen)
+        id = id_value,
+        name = product_name,
+        manufacturer_id = touch_vendor.partner.id,
+        touchscreen = touchscreen,
+    )
 
 def _create_soc_family(name, arch = comp_pb.Component.Soc.X86_64):
     """Builds a Component.Soc.Family proto."""
@@ -74,25 +81,25 @@ def _create_soc_model(family, model, cores, id):
 def _create_bt(vendor_id, product_id, bcd_device):
     """Builds a Component proto for Bluetooth."""
     component_id, usb = _create_usb(
-        vendor_id=vendor_id,
-        product_id=product_id,
-        bcd_device=bcd_device,
+        vendor_id = vendor_id,
+        product_id = product_id,
+        bcd_device = bcd_device,
     )
     return comp_pb.Component(
-        id=component_id,
-        bluetooth=comp_pb.Component.Bluetooth(usb=usb)
+        id = component_id,
+        bluetooth = comp_pb.Component.Bluetooth(usb = usb),
     )
 
 def _create_wifi(vendor_id, device_id, revision_id):
     """Builds a Component proto for Wifi."""
     component_id, pci = _create_pci(
-        vendor_id=vendor_id,
-        device_id=device_id,
-        revision_id=revision_id,
+        vendor_id = vendor_id,
+        device_id = device_id,
+        revision_id = revision_id,
     )
     return comp_pb.Component(
-        id=component_id,
-        wifi=comp_pb.Component.Wifi(pci=pci)
+        id = component_id,
+        wifi = comp_pb.Component.Wifi(pci = pci),
     )
 
 _qual_status = struct(
