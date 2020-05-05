@@ -37,38 +37,22 @@ def _create_pci(vendor_id, device_id, revision_id):
         value = ":".join([vendor_id, device_id, revision_id]))
     return component_id, pci
 
-def _vendor(name, vendor_id):
-    return struct(
-        name = name,
-        vendor_id = vendor_id,
-    )
-
-_VENDORS = struct(
-    ELAN = _vendor("elan", "04f3"),
-)
-
-def _create_touchscreen_fw_path(vendor, product_id, fw_version):
-    """Applies vendor specific touch firmware naming conventions"""
-    if vendor == _VENDORS.ELAN:
-        return "%s/%s_%s.bin" % (vendor.name, product_id, fw_version)
-    return None
-
-def _create_touchscreen(vendor, product_id, fw_version, fw_path = None):
+def _create_touchscreen(
+        touch_vendor, product_id, fw_version, product_name=None):
     """Builds a Component.Touchsreen proto."""
     id_value = comp_id_pb.ComponentId(
-        value = "_".join([vendor.name, product_id, fw_version]),
-    )
+        value='_'.join([touch_vendor.partner.name, product_id, fw_version]))
     touchscreen = comp_pb.Component.Touchscreen(
-        vendor_id = vendor.vendor_id,
-        product_id = product_id,
-        fw_version = fw_version,
-        fw_path = fw_path or _create_touchscreen_fw_path(
-            vendor,
-            product_id,
-            fw_version,
-        ),
+        vendor_id=touch_vendor.vendor_id,
+        product_id=product_id,
+        fw_version=fw_version,
+        fw_file_name=touch_vendor.fw_format_fn(product_id, fw_version)
     )
-    return comp_pb.Component(id = id_value, touchscreen = touchscreen)
+    return comp_pb.Component(
+        id=id_value,
+        name=product_name,
+        manufacturer_id=touch_vendor.partner.id,
+        touchscreen=touchscreen)
 
 def _create_soc_family(name, arch = comp_pb.Component.Soc.X86_64):
     """Builds a Component.Soc.Family proto."""
@@ -137,5 +121,4 @@ comp = struct(
     create_qual = _create_qual,
     create_quals = _create_quals,
     qual_status = _qual_status,
-    VENDORS = _VENDORS,
 )

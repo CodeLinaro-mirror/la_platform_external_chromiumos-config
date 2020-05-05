@@ -377,7 +377,7 @@ _BRAND_CONFIGS = [
 
 _COMPONENTS = [
     comp.create_touchscreen(
-        vendor=comp.VENDORS.ELAN,
+        touch_vendor=partner.touchscreen.ELAN,
         product_id='0f11',
         fw_version='1234'),
     comp.create_wifi(
