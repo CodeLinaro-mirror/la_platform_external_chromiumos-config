@@ -1,0 +1,246 @@
+{
+  "model": {
+    "fake-ref-design": {
+      "component.audio_card_name": "fakeaudiocard",
+      "component.has_accelerometer_gyroscope_magnetometer": true,
+      "component.has_daughter_board_usb_a": 0,
+      "component.has_daughter_board_usb_c": 0,
+      "component.has_front_camera": null,
+      "component.has_keyboard_backlight": true,
+      "component.has_lte": true,
+      "component.has_mother_board_usb_a": 0,
+      "component.has_mother_board_usb_c": 0,
+      "component.has_proximity_sensor": true,
+      "component.has_rear_camera": null,
+      "component.has_sd_reader": true,
+      "component.has_stylus": true,
+      "component.has_touchscreen": true,
+      "component.has_wifi": true,
+      "component.headphone_codec": "ALC5682I",
+      "component.match_sku_components": [
+        [
+          "camera",
+          "==",
+          1
+        ],
+        [
+          "touchscreen",
+          "==",
+          1
+        ],
+        [
+          "usb_host",
+          "==",
+          0
+        ],
+        [
+          "stylus",
+          "==",
+          1
+        ]
+      ],
+      "component.speaker_amp": "MAX98373",
+      "fw_config": 33
+    },
+    "project-a": {
+      "component.audio_card_name": "fakeaudiocard",
+      "component.fingerprint_board": "fake-fingerprint-board",
+      "component.has_accelerometer_gyroscope_magnetometer": true,
+      "component.has_daughter_board_usb_a": 0,
+      "component.has_daughter_board_usb_c": 0,
+      "component.has_fingerprint": true,
+      "component.has_front_camera": null,
+      "component.has_keyboard_backlight": true,
+      "component.has_lte": true,
+      "component.has_mother_board_usb_a": 0,
+      "component.has_mother_board_usb_c": 0,
+      "component.has_proximity_sensor": true,
+      "component.has_rear_camera": null,
+      "component.has_sd_reader": true,
+      "component.has_stylus": true,
+      "component.has_touchscreen": true,
+      "component.has_wifi": true,
+      "component.headphone_codec": "ALC5682I",
+      "component.match_sku_components": [
+        [
+          "camera",
+          "==",
+          1
+        ],
+        [
+          "touchscreen",
+          "==",
+          1
+        ],
+        [
+          "usb_host",
+          "==",
+          0
+        ],
+        [
+          "stylus",
+          "==",
+          1
+        ]
+      ],
+      "component.speaker_amp": "MAX98373",
+      "fw_config": 33
+    },
+    "project-b": {
+      "component.audio_card_name": "fakeaudiocard",
+      "component.fingerprint_board": "",
+      "component.has_accelerometer_gyroscope_magnetometer": true,
+      "component.has_daughter_board_usb_a": 0,
+      "component.has_daughter_board_usb_c": 0,
+      "component.has_fingerprint": false,
+      "component.has_front_camera": null,
+      "component.has_keyboard_backlight": true,
+      "component.has_lte": null,
+      "component.has_mother_board_usb_a": 0,
+      "component.has_mother_board_usb_c": 0,
+      "component.has_proximity_sensor": true,
+      "component.has_rear_camera": null,
+      "component.has_sd_reader": true,
+      "component.has_stylus": true,
+      "component.has_touchscreen": true,
+      "component.has_wifi": true,
+      "component.headphone_codec": "ALC5682I",
+      "component.match_sku_components": [
+        [
+          "camera",
+          "==",
+          1
+        ],
+        [
+          "touchscreen",
+          "==",
+          1
+        ],
+        [
+          "usb_host",
+          "==",
+          0
+        ],
+        [
+          "stylus",
+          "==",
+          1
+        ]
+      ],
+      "component.speaker_amp": "MAX98373",
+      "fw_config": 33
+    },
+    "project-c": {
+      "component.audio_card_name": "fakeaudiocard",
+      "component.fingerprint_board": "",
+      "component.has_accelerometer_gyroscope_magnetometer": true,
+      "component.has_daughter_board_usb_a": 0,
+      "component.has_daughter_board_usb_c": 0,
+      "component.has_fingerprint": false,
+      "component.has_front_camera": null,
+      "component.has_keyboard_backlight": true,
+      "component.has_lte": null,
+      "component.has_mother_board_usb_a": 0,
+      "component.has_mother_board_usb_c": 0,
+      "component.has_proximity_sensor": true,
+      "component.has_rear_camera": null,
+      "component.has_sd_reader": true,
+      "component.has_stylus": true,
+      "component.has_touchscreen": true,
+      "component.has_wifi": true,
+      "component.headphone_codec": "ALC5682I",
+      "component.match_sku_components": [
+        [
+          "camera",
+          "==",
+          1
+        ],
+        [
+          "touchscreen",
+          "==",
+          1
+        ],
+        [
+          "usb_host",
+          "==",
+          0
+        ],
+        [
+          "stylus",
+          "==",
+          1
+        ]
+      ],
+      "component.speaker_amp": "MAX98373",
+      "fw_config": 33
+    },
+    "project-wl": {
+      "component.audio_card_name": "fakeaudiocard",
+      "component.fingerprint_board": "",
+      "component.has_accelerometer_gyroscope_magnetometer": true,
+      "component.has_daughter_board_usb_a": 0,
+      "component.has_daughter_board_usb_c": 0,
+      "component.has_fingerprint": false,
+      "component.has_front_camera": null,
+      "component.has_keyboard_backlight": true,
+      "component.has_lte": null,
+      "component.has_mother_board_usb_a": 0,
+      "component.has_mother_board_usb_c": 0,
+      "component.has_proximity_sensor": true,
+      "component.has_rear_camera": null,
+      "component.has_sd_reader": true,
+      "component.has_stylus": false,
+      "component.has_touchscreen": false,
+      "component.has_wifi": true,
+      "component.headphone_codec": "ALC5682I",
+      "component.match_sku_components": [
+        [
+          "camera",
+          "==",
+          1
+        ],
+        [
+          "touchscreen",
+          "==",
+          0
+        ],
+        [
+          "usb_host",
+          "==",
+          0
+        ],
+        [
+          "stylus",
+          "==",
+          0
+        ]
+      ],
+      "component.speaker_amp": "MAX98373",
+      "fw_config": 33
+    }
+  },
+  "product_sku": {
+    "fake-ref-design": {
+      "2": {
+        "component.fingerprint_board": "",
+        "component.has_fingerprint": false
+      },
+      "2147483647": {
+        "component.fingerprint_board": "fake-fingerprint-board",
+        "component.has_fingerprint": true
+      }
+    },
+    "project-a": {
+      "32": {}
+    },
+    "project-b": {
+      "33": {}
+    },
+    "project-c": {
+      "34": {}
+    },
+    "project-wl": {
+      "64": {}
+    }
+  }
+}

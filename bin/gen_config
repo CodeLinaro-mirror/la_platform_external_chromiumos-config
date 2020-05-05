@@ -72,4 +72,11 @@ python3 config/payload_utils/cros_config_proto_converter.py \
   --program_config program/generated/config.jsonproto \
   --project_configs generated/config.jsonproto
 
+rm -rf factory/generated
+mkdir -p factory/generated
+python3 config/payload_utils/factory_config_proto_converter.py \
+  --output factory/generated/model_sku.json \
+  --program_config program/generated/config.jsonproto \
+  --project_configs generated/config.jsonproto
+
 deactivate
