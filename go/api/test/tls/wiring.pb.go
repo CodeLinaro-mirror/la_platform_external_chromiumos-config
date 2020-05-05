@@ -9,6 +9,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	xmlrpc "go.chromium.org/chromiumos/config/go/api/test/xmlrpc"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -823,6 +825,23 @@ type WiringServer interface {
 	//
 	// EXPERIMENTAL
 	CallServoXmlRpc(context.Context, *CallServoXmlRpcRequest) (*CallServoXmlRpcResponse, error)
+}
+
+// UnimplementedWiringServer can be embedded to have forward compatible implementations.
+type UnimplementedWiringServer struct {
+}
+
+func (*UnimplementedWiringServer) OpenDutPort(ctx context.Context, req *OpenDutPortRequest) (*OpenDutPortResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method OpenDutPort not implemented")
+}
+func (*UnimplementedWiringServer) SetDutPowerSupply(ctx context.Context, req *SetDutPowerSupplyRequest) (*SetDutPowerSupplyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetDutPowerSupply not implemented")
+}
+func (*UnimplementedWiringServer) CacheForDut(req *CacheForDutRequest, srv Wiring_CacheForDutServer) error {
+	return status.Errorf(codes.Unimplemented, "method CacheForDut not implemented")
+}
+func (*UnimplementedWiringServer) CallServoXmlRpc(ctx context.Context, req *CallServoXmlRpcRequest) (*CallServoXmlRpcResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CallServoXmlRpc not implemented")
 }
 
 func RegisterWiringServer(s *grpc.Server, srv WiringServer) {

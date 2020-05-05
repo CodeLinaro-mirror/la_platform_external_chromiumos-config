@@ -9,6 +9,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_struct "github.com/golang/protobuf/ptypes/struct"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -768,6 +770,20 @@ type ProgressSinkServer interface {
 	// Remote Test Server may limit the size of artifacts that may be offloaded
 	// per request and may fail further requests with RESOURCE_EXHAUSTED.
 	ArchiveArtifact(context.Context, *ArchiveArtifactRequest) (*ArchiveArtifactResponse, error)
+}
+
+// UnimplementedProgressSinkServer can be embedded to have forward compatible implementations.
+type UnimplementedProgressSinkServer struct {
+}
+
+func (*UnimplementedProgressSinkServer) ReportResult(ctx context.Context, req *ReportResultRequest) (*ReportResultResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReportResult not implemented")
+}
+func (*UnimplementedProgressSinkServer) ReportLog(srv ProgressSink_ReportLogServer) error {
+	return status.Errorf(codes.Unimplemented, "method ReportLog not implemented")
+}
+func (*UnimplementedProgressSinkServer) ArchiveArtifact(ctx context.Context, req *ArchiveArtifactRequest) (*ArchiveArtifactResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ArchiveArtifact not implemented")
 }
 
 func RegisterProgressSinkServer(s *grpc.Server, srv ProgressSinkServer) {
