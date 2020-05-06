@@ -20,6 +20,8 @@ protos=(proto/**/*.proto)
 
 protoc -Iproto --descriptor_set_out=util/bindings/descpb.bin \
   --python_out=python "${protos[@]}"
+find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
+  -exec touch '{}/__init__.py' \;
 
 
 # Go bindings are already namespaced under go.chromium.org/chromiumos/config/go
