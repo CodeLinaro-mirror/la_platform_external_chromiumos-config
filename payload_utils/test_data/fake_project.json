@@ -185,6 +185,14 @@
               {
                 "destination": "/etc/cras/project-a/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
+              },
+              {
+                "destination": "/etc/modprobe.d/alsa-project-a.conf",
+                "source": "audio/alsa-module-config/alsa-project-a.conf"
+              },
+              {
+                "destination": "/etc/cras/project-a/board.ini",
+                "source": "audio/cras-config/board.ini"
               }
             ],
             "ucm-suffix": "2mic"

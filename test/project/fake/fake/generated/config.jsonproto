@@ -2191,9 +2191,11 @@
     },
     {
       "audioConfig": {
+        "boardFile": "audio/cras-config/board.ini",
         "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
         "cardName": "fakeaudiocard",
         "dspFile": "audio/fakeaudiocard/dsp.ini",
+        "moduleFile": "audio/alsa-module-config/alsa-project-a.conf",
         "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
         "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf",
         "ucmSuffix": "2mic"

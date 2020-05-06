@@ -31,4 +31,10 @@ message AudioConfig {
 
   // UCM suffix, if any.
   string ucm_suffix = 6;
+
+  // Path to the ALSA module config file.
+  string module_file = 7;
+
+  // Path to the boards specific settings board.ini file.
+  string board_file = 8;
 }

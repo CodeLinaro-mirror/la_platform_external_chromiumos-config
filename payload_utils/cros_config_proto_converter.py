@@ -220,6 +220,12 @@ def _BuildAudio(config):
   if audio.dsp_file:
     files.append(
         _File(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
+  if audio.module_file:
+    files.append(
+        _File(audio.module_file, '/etc/modprobe.d/alsa-%s.conf' % project_name))
+  if audio.board_file:
+    files.append(
+        _File(audio.board_file, '%s/%s/board.ini' % (cras_path, project_name)))
 
   result = {
       'main': {

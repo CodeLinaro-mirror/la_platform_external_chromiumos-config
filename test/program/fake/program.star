@@ -34,14 +34,14 @@ _FEATURE_CONSTRAINTS = design.create_constraints(
 )  # Default for now
 
 _SIGNER_CONFIG = [
-        program_util.create_signer_config('AAAA', 'DEFAULT'), # Ref design
-        program_util.create_signer_config('FDAA', 'KEYA'),    # Follow up design A
-        program_util.create_signer_config('FDBB', 'KEYB'),    # Follow up design B
-        program_util.create_signer_config('FDCC', 'KEYC'),    # Follow up design C
-        program_util.create_signer_config('WLAA', 'KEYD'),    # White label A
-        program_util.create_signer_config('WLBB', 'KEYE'),    # White label B
-        program_util.create_signer_config('WLCC', 'KEYF'),    # White label C
-    ]
+    program_util.create_signer_config("AAAA", "DEFAULT"),  # Ref design
+    program_util.create_signer_config("FDAA", "KEYA"),  # Follow up design A
+    program_util.create_signer_config("FDBB", "KEYB"),  # Follow up design B
+    program_util.create_signer_config("FDCC", "KEYC"),  # Follow up design C
+    program_util.create_signer_config("WLAA", "KEYD"),  # White label A
+    program_util.create_signer_config("WLBB", "KEYE"),  # White label B
+    program_util.create_signer_config("WLCC", "KEYF"),  # White label C
+]
 
 _FAKE = program_util.create(
     name = "FAKE_PROGRAM",

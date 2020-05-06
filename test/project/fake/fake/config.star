@@ -175,6 +175,8 @@ design.append_configs(
         card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
         dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
         ucm_suffix = "2mic",
+        module_file = "audio/alsa-module-config/alsa-%s.conf" % _DESIGN_ID_A.value.lower(),
+        board_file = "audio/cras-config/board.ini",
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(

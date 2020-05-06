@@ -52,7 +52,7 @@ def _create_touchscreen(
     touchscreen = comp_pb.Component.Touchscreen(
         product_id = product_id,
         fw_version = fw_version,
-        product_series = product_series
+        product_series = product_series,
     )
     return comp_pb.Component(
         id = id_value,
