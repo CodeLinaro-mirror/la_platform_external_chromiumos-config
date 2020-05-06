@@ -97,6 +97,20 @@
               "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
             }
           ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
+            }
+          ]
         }
       },
       {
@@ -181,6 +195,20 @@
             {
               "destination": "/etc/dptf/fake/dptf.dv",
               "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
             }
           ]
         }
@@ -282,6 +310,20 @@
               "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
             }
           ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
+            }
+          ]
         }
       },
       {
@@ -375,6 +417,20 @@
             {
               "destination": "/etc/dptf/fake/dptf.dv",
               "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
             }
           ]
         }
@@ -471,6 +527,20 @@
               "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
             }
           ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
+            }
+          ]
         }
       },
       {
@@ -555,6 +625,20 @@
             {
               "destination": "/etc/dptf/fake/dptf.dv",
               "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
             }
           ]
         }
@@ -643,6 +727,20 @@
               "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
             }
           ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
+            }
+          ]
         }
       },
       {
@@ -727,6 +825,20 @@
             {
               "destination": "/etc/dptf/fake/dptf.dv",
               "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
             }
           ]
         }

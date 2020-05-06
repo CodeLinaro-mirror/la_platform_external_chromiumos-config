@@ -34,14 +34,26 @@
   "components": [
     {
       "id": {
-        "value": "elan_0f11_1234"
+        "value": "elan_01FF_1234"
       },
       "manufacturerId": {
         "value": "elan"
       },
       "touchscreen": {
         "fwVersion": "1234",
-        "productId": "0f11"
+        "productId": "01FF"
+      }
+    },
+    {
+      "id": {
+        "value": "sis_111A_1.0"
+      },
+      "manufacturerId": {
+        "value": "sis"
+      },
+      "touchscreen": {
+        "fwVersion": "1.0",
+        "productId": "111A"
       }
     },
     {
@@ -2025,6 +2037,16 @@
         "touchscreenVendor": {
           "fwFileFormat": "elants_i2c_{product_id}.bin",
           "vendorId": "04F3"
+        }
+      },
+      {
+        "id": {
+          "value": "sis"
+        },
+        "name": "sis",
+        "touchscreenVendor": {
+          "fwFileFormat": "sis_{product_id}.bin",
+          "vendorId": "0457"
         }
       }
     ]

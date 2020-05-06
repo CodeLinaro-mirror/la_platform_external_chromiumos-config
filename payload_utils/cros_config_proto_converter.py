@@ -38,9 +38,11 @@ Config = namedtuple('Config',
 ConfigFiles = namedtuple('ConfigFiles',
                          ['bluetooth',
                           'arc_hw_features',
+                          'touch_fw',
                           'dptf_file'])
 
 DPTF_PATH = 'sw_build_config/platform/chromeos-config/thermal/dptf.dv'
+TOUCH_PATH = 'sw_build_config/platform/chromeos-config/touch'
 
 def ParseArgs(argv):
   """Parse the available arguments.
@@ -271,7 +273,48 @@ def _Lookup(id_value, id_map):
     raise Exception(error)
 
 
-def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {}, None)):
+def _BuildTouchFileConfig(config, project_name):
+  partners = dict([(x.id.value, x) for x in config.partners.value])
+  files = []
+  for comp in config.components:
+    if comp.touchscreen.product_id:
+      vendor = _Lookup(comp.manufacturer_id, partners)
+      if not vendor:
+        raise Exception(
+            "Manufacturer must be set for touchscreen %s" % comp.id.value)
+
+      product_id = comp.touchscreen.product_id
+      fw_version = comp.touchscreen.fw_version
+
+      touchscreen_vendor = vendor.touchscreen_vendor
+      sym_link = touchscreen_vendor.fw_file_format.format(
+        vendor_name = vendor.name,
+        vendor_id = touchscreen_vendor.vendor_id,
+        product_id = product_id,
+        fw_version = fw_version,
+        product_series = comp.touchscreen.product_series
+      )
+
+      file_name = "%s_%s.bin" % (product_id, fw_version)
+      fw_file_path = os.path.join(TOUCH_PATH, vendor.name, file_name)
+
+      if not os.path.exists(fw_file_path):
+        raise Exception(
+            "Touchscreen fw bin file doesn't exist at: %s" % fw_file_path)
+
+      files.append({
+          "destination": "/opt/google/touch/firmware/%s_%s" % (
+              vendor.name, file_name),
+          "source": os.path.join(project_name, fw_file_path),
+          "symlink": os.path.join("/lib/firmware", sym_link),
+      })
+
+  result = {}
+  _Set(files, result, 'files')
+  return result
+
+
+def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {}, {}, None)):
   partners = dict([(x.id.value, x) for x in config.partners.value])
   programs = dict([(x.id.value, x) for x in config.programs.value])
   sw_configs = list(config.software_configs)
@@ -374,6 +417,7 @@ def _TransformBuildConfig(config, config_files):
        power_prefs[x]) for x in power_prefs)
   _Set(power_prefs_map, result, 'power')
   _Set(config_files.dptf_file, result, 'thermal')
+  _Set(config_files.touch_fw, result, 'touch')
 
   return result
 
@@ -551,6 +595,7 @@ def Main(project_configs,
       [_ReadConfig(config) for config in project_configs])
   bluetooth_files = {}
   arc_hw_feature_files = {}
+  touch_fw = {}
   dptf_file = None
   output_dir = os.path.dirname(output)
   build_root_dir = output_dir
@@ -574,6 +619,8 @@ def Main(project_configs,
         'files': [_File(os.path.join(project_name, DPTF_PATH),
                         os.path.join('/etc/dptf', project_dptf_path))]
     }
+  if os.path.exists(TOUCH_PATH):
+    touch_fw = _BuildTouchFileConfig(configs, project_name)
   if os.path.exists(os.path.join(output_dir, 'bluetooth')):
     bluetooth_files = WriteBluetoothConfigFiles(
         configs, output_dir, build_root_dir)
@@ -583,6 +630,7 @@ def Main(project_configs,
   config_files = ConfigFiles(
       bluetooth=bluetooth_files,
       arc_hw_features=arc_hw_feature_files,
+      touch_fw=touch_fw,
       dptf_file=dptf_file
   )
   WriteOutput(_TransformBuildConfigs(configs, config_files), output)
