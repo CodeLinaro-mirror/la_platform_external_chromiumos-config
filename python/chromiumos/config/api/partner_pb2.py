@@ -20,12 +20,49 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n#chromiumos/config/api/partner.proto\x12\x15\x63hromiumos.config.api\x1a&chromiumos/config/api/partner_id.proto\"Z\n\x07Partner\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x65mail_group\x18\x03 \x01(\t\"<\n\x0bPartnerList\x12-\n\x05value\x18\x01 \x03(\x0b\x32\x1e.chromiumos.config.api.PartnerB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n#chromiumos/config/api/partner.proto\x12\x15\x63hromiumos.config.api\x1a&chromiumos/config/api/partner_id.proto\"\xe8\x01\n\x07Partner\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x65mail_group\x18\x03 \x01(\t\x12L\n\x12touchscreen_vendor\x18\x04 \x01(\x0b\x32\x30.chromiumos.config.api.Partner.TouchscreenVendor\x1a>\n\x11TouchscreenVendor\x12\x11\n\tvendor_id\x18\x04 \x01(\t\x12\x16\n\x0e\x66w_file_format\x18\x05 \x01(\t\"<\n\x0bPartnerList\x12-\n\x05value\x18\x01 \x03(\x0b\x32\x1e.chromiumos.config.api.PartnerB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_partner__id__pb2.DESCRIPTOR,])
 
 
 
+
+_PARTNER_TOUCHSCREENVENDOR = _descriptor.Descriptor(
+  name='TouchscreenVendor',
+  full_name='chromiumos.config.api.Partner.TouchscreenVendor',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='vendor_id', full_name='chromiumos.config.api.Partner.TouchscreenVendor.vendor_id', index=0,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='fw_file_format', full_name='chromiumos.config.api.Partner.TouchscreenVendor.fw_file_format', index=1,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=273,
+  serialized_end=335,
+)
 
 _PARTNER = _descriptor.Descriptor(
   name='Partner',
@@ -55,10 +92,17 @@ _PARTNER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='touchscreen_vendor', full_name='chromiumos.config.api.Partner.touchscreen_vendor', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_PARTNER_TOUCHSCREENVENDOR, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -67,8 +111,8 @@ _PARTNER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=102,
-  serialized_end=192,
+  serialized_start=103,
+  serialized_end=335,
 )
 
 
@@ -98,22 +142,32 @@ _PARTNERLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=194,
-  serialized_end=254,
+  serialized_start=337,
+  serialized_end=397,
 )
 
+_PARTNER_TOUCHSCREENVENDOR.containing_type = _PARTNER
 _PARTNER.fields_by_name['id'].message_type = chromiumos_dot_config_dot_api_dot_partner__id__pb2._PARTNERID
+_PARTNER.fields_by_name['touchscreen_vendor'].message_type = _PARTNER_TOUCHSCREENVENDOR
 _PARTNERLIST.fields_by_name['value'].message_type = _PARTNER
 DESCRIPTOR.message_types_by_name['Partner'] = _PARTNER
 DESCRIPTOR.message_types_by_name['PartnerList'] = _PARTNERLIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Partner = _reflection.GeneratedProtocolMessageType('Partner', (_message.Message,), dict(
+
+  TouchscreenVendor = _reflection.GeneratedProtocolMessageType('TouchscreenVendor', (_message.Message,), dict(
+    DESCRIPTOR = _PARTNER_TOUCHSCREENVENDOR,
+    __module__ = 'chromiumos.config.api.partner_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.Partner.TouchscreenVendor)
+    ))
+  ,
   DESCRIPTOR = _PARTNER,
   __module__ = 'chromiumos.config.api.partner_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.Partner)
   ))
 _sym_db.RegisterMessage(Partner)
+_sym_db.RegisterMessage(Partner.TouchscreenVendor)
 
 PartnerList = _reflection.GeneratedProtocolMessageType('PartnerList', (_message.Message,), dict(
   DESCRIPTOR = _PARTNERLIST,

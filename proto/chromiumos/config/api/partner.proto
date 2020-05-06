@@ -19,6 +19,31 @@ message Partner {
   string name = 2;
   // Email alias used for coordinating project execution.
   string email_group = 3;
+
+  // Optional config for touchscreen vendors.
+  TouchscreenVendor touchscreen_vendor = 4;
+
+  // Defines partner config unique to touchscreen manufacturers.
+  message TouchscreenVendor {
+    // 4-digit hex vendor id assigned
+    string vendor_id = 4;
+
+    // Defines vendor-specific touchscreen file formatting
+    // conventions using any of the following fields:
+    // - vendor_name
+    // - vendor_id
+    // - product_id
+    // - fw_version
+    // - product_series
+
+    // This formatting (via python format) will be applied to the symlinks
+    // that will be present in /lib/firmware
+    // E.g.
+    // "{vendor_name}_{product_id}.bin"
+    // "{vendor_name}_{vendor_id}_{product_id}_{fw_version}.bin"
+    // "{vendor_name}_{product_series}_{product_id}.hex"
+    string fw_file_format = 5;
+  }
 }
 
 message PartnerList {

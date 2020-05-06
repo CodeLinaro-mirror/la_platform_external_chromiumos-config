@@ -43,21 +43,21 @@ def _create_touchscreen(
         touch_vendor,
         product_id,
         fw_version,
-        product_name = None):
+        product_name = None,
+        product_series = None):
     """Builds a Component.Touchsreen proto."""
     id_value = comp_id_pb.ComponentId(
-        value = "_".join([touch_vendor.partner.name, product_id, fw_version]),
+        value = "_".join([touch_vendor.name, product_id, fw_version]),
     )
     touchscreen = comp_pb.Component.Touchscreen(
-        vendor_id = touch_vendor.vendor_id,
         product_id = product_id,
         fw_version = fw_version,
-        fw_file_name = touch_vendor.fw_format_fn(product_id, fw_version),
+        product_series = product_series
     )
     return comp_pb.Component(
         id = id_value,
         name = product_name,
-        manufacturer_id = touch_vendor.partner.id,
+        manufacturer_id = touch_vendor.id,
         touchscreen = touchscreen,
     )
 

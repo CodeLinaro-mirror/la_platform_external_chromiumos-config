@@ -119,14 +119,14 @@ message Component {
 
   message Touchscreen {
     // 4-digit hex
-    string vendor_id = 1;
-    // 4-digit hex
     string product_id = 2;
     // 4-digit hex
     string fw_version = 3;
-    // Firmware file name formatted based on the vendor specific naming
-    // conventions.
-    string fw_file_name = 4;
+    // Optional product brand/series name
+    // For some vendors, this is used in the firmware naming schema
+    string product_series = 5;
+
+    reserved 1, 4;
   }
 
   message Wifi {

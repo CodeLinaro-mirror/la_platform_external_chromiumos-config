@@ -40,10 +40,8 @@
         "value": "elan"
       },
       "touchscreen": {
-        "fwFileName": "0f11_1234.bin",
         "fwVersion": "1234",
-        "productId": "0f11",
-        "vendorId": "04f3"
+        "productId": "0f11"
       }
     },
     {
@@ -2018,6 +2016,16 @@
           "value": "FAKE-LOEMC"
         },
         "name": "FAKE-LOEMC"
+      },
+      {
+        "id": {
+          "value": "elan"
+        },
+        "name": "elan",
+        "touchscreenVendor": {
+          "fwFileFormat": "elants_i2c_{product_id}.bin",
+          "vendorId": "04F3"
+        }
       }
     ]
   },

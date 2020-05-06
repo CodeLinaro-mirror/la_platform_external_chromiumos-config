@@ -19,7 +19,9 @@ _FAKE_LOEMA = partner.create("FAKE-LOEMA")
 _FAKE_LOEMB = partner.create("FAKE-LOEMB")
 _FAKE_LOEMC = partner.create("FAKE-LOEMC")
 
-_PARTNERS = [_FAKE_ODM, _FAKE_OEM, _FAKE_OEMA, _FAKE_OEMB, _FAKE_OEMC, _FAKE_LOEMA, _FAKE_LOEMB, _FAKE_LOEMC]
+_ODMS = [_FAKE_ODM]
+_OEMS = [_FAKE_OEM, _FAKE_OEMA, _FAKE_OEMB, _FAKE_OEMC, _FAKE_LOEMA, _FAKE_LOEMB, _FAKE_LOEMC]
+_COMPONENT_VENDORS = []
 
 _REF_DESIGN_NAME = "FAKE-REF-DESIGN"
 
@@ -56,11 +58,17 @@ _BLUETOOTH = hw_topo.create_bluetooth("BLUETOOTH", "Default bluetooth", bt_compo
 
 _AUDIO_CARD = "fakeaudiocard"
 
-_SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True},)
-_SC_POWER = sc.create_power( preferences = {"battery_poll_interval_initial_ms": "1000", "disable_dark_resume": "0"},)
+_SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True})
+_SC_POWER = sc.create_power(preferences = {"battery_poll_interval_initial_ms": "1000", "disable_dark_resume": "0"})
 
-def create_hardware_topology(screen = None, form_factor = None, keyboard = None,
-    fingerprint = None, stylus = None, bluetooth = None, lte_board = None):
+def create_hardware_topology(
+        screen = None,
+        form_factor = None,
+        keyboard = None,
+        fingerprint = None,
+        stylus = None,
+        bluetooth = None,
+        lte_board = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         fingerprint = fingerprint if fingerprint else _NO_FINGERPRINT,
@@ -114,7 +122,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
     power = _SC_POWER,
 )
 
@@ -143,7 +151,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
     power = _SC_POWER,
 )
 
@@ -178,7 +186,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
     power = _SC_POWER,
 )
 
@@ -211,7 +219,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
     power = _SC_POWER,
 )
 
@@ -242,7 +250,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
     power = _SC_POWER,
 )
 
@@ -268,7 +276,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"],),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
     power = _SC_POWER,
 )
 
@@ -375,20 +383,26 @@ _BRAND_CONFIGS = [
     ),
 ]
 
+def _touch_vendor(vendor):
+    if not vendor in _COMPONENT_VENDORS:
+        _COMPONENT_VENDORS.append(vendor)
+    return vendor
+
 _COMPONENTS = [
     comp.create_touchscreen(
-        touch_vendor=partner.touchscreen.ELAN,
-        product_id='0f11',
-        fw_version='1234'),
+        touch_vendor = _touch_vendor(partner.touchscreen.ELAN),
+        product_id = "0f11",
+        fw_version = "1234",
+    ),
     comp.create_wifi(
-        vendor_id='0f22',
-        device_id='0a11',
-        revision_id='11',
-    )
+        vendor_id = "0f22",
+        device_id = "0a11",
+        revision_id = "11",
+    ),
 ]
 
 _CONFIG = config_bundle.create(
-    partners = _PARTNERS,
+    partners = _ODMS + _OEMS + _COMPONENT_VENDORS,
     designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_WL],
     device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C],
     software_configs = _SW_CONFIGS,
