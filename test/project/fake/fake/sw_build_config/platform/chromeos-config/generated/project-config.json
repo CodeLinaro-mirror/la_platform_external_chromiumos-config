@@ -249,7 +249,7 @@
                 "source": "audio/fakeaudiocard/dsp.ini"
               },
               {
-                "destination": "/etc/modprobe.d/alsa-project-a.conf",
+                "destination": "/etc/modprobe.d/alsa-fake_program.conf",
                 "source": "audio/alsa-module-config/alsa-project-a.conf"
               },
               {

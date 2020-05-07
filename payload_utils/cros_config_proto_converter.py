@@ -198,6 +198,7 @@ def _BuildAudio(config):
   alsa_path = '/usr/share/alsa/ucm'
   cras_path = '/etc/cras'
   project_name = config.hw_design.name.lower()
+  program_name = config.program.name.lower()
   if not config.sw_config.HasField('audio_config'):
     return {}
   audio = config.sw_config.audio_config
@@ -222,7 +223,7 @@ def _BuildAudio(config):
         _File(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
   if audio.module_file:
     files.append(
-        _File(audio.module_file, '/etc/modprobe.d/alsa-%s.conf' % project_name))
+        _File(audio.module_file, '/etc/modprobe.d/alsa-%s.conf' % program_name))
   if audio.board_file:
     files.append(
         _File(audio.board_file, '%s/%s/board.ini' % (cras_path, project_name)))
