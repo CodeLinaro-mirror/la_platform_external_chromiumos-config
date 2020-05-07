@@ -128,4 +128,6 @@ comp = struct(
     create_qual = _create_qual,
     create_quals = _create_quals,
     qual_status = _qual_status,
+    create_usb = _create_usb,
+    create_pci = _create_pci,
 )
