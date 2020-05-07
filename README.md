@@ -227,6 +227,8 @@ checker to validate project configs.
 - `presubmit/`: Common files and libraries for program and project repo
 presubmits.
 
+- `sbin/`:  Tools admins use to create and manage programs and projects.
+Regular users should not need to use these tools.
 
 ### Program and Project Repos
 
