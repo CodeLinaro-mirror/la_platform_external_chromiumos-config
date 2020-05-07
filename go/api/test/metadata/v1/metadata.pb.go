@@ -242,13 +242,8 @@ func (m *BuildArtifact) GetRelativePath() string {
 	return ""
 }
 
-// The smallest schedulable test unit.
-//
-// A Test is an atomic schdulable unit. In particular, it is not possible to
-// modify the behaviour of a Remote Test Driver execution for a given Test by
-// supplying test arguments. See the documentation of
-// test.metadata.v1.Informational on how paramaterized tests may be in light of
-// this restriction.
+// Related Test objects may be marked as such via the Informational field. See
+// the documentation of test.metadata.v1.Informational for details.
 //
 // A single test platform request or Remote Test Driver invocation may contain
 // multiple instances of multiple Tests, but each instance of a Test MUST
