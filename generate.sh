@@ -15,6 +15,12 @@ cd "${script_dir}"
 # Uses ${script_dir}
 source "./setup_cipd.sh"
 
+# Remove files from prior python protocol buffer code generation in
+# case any .proto files have been removed.
+find python/ -type f -name '*_pb2.py' -delete
+find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
+  -exec rm -f '{}/__init__.py' \;
+
 # Collect all the protos.
 protos=(proto/**/*.proto)
 
@@ -27,6 +33,11 @@ find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
 # Go bindings are already namespaced under go.chromium.org/chromiumos/config/go
 # We remove the "chromiumos/config" prefix from local path to avoid redundant
 # namespaceing.
+
+# Remove files from prior go protocol buffer code generation in
+# case any .proto files have been removed.
+find go/ -name '*pb.go' -delete
+
 readonly GO_TEMP_DIR=$(mktemp -d)
 trap "rm -rf ${GO_TEMP_DIR}" EXIT
 # Go files need to be processed individually until this is fixed:
