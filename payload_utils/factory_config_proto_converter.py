@@ -101,7 +101,7 @@ def CastAudioCodec(value):
 
 
 
-def TransformDesignTable(firmware_config_segments, design_config, design_table):
+def TransformDesignTable(design_config, design_table):
   """Transforms config proto to model_sku."""
   # TODO(cyueh): Find out how to get all component.has_* and
   # component.match_sku_components from design_config.
@@ -153,6 +153,9 @@ def TransformDesignTable(firmware_config_segments, design_config, design_table):
        GetFeatures(topology, 'wifi'),
        'component.has_lte':
        CastPresent(GetFeatures(topology, 'lte_board', ['lte', 'present'])),
+       'component.has_tabletmode':
+       GetFeatures(topology, 'form_factor', ['form_factor', 'form_factor']) ==
+           topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE,
        })
   design_table.update(
       {'component.match_sku_components': [
@@ -167,19 +170,29 @@ def TransformDesignTable(firmware_config_segments, design_config, design_table):
       ]})
 
 
-def CreateCommonTable(common_table, project_table):
+def CreateCommonTable(project_table):
   """Extract elements which are the same among an project."""
   if not project_table:
-    return
-  project_table_list = list(project_table.items())
-  common_table.update(project_table_list[0][1])
-  for unused_design_id, config in project_table_list[1:]:
+    return {}
+  project_table_list = list(project_table.values())
+  common_table = dict(project_table_list[0])
+  for config in project_table_list[1:]:
     for key, value in config.items():
       if key in common_table and value != common_table[key]:
         del common_table[key]
-  for unused_design_id, config in project_table.items():
+  for config in project_table.values():
     for key in common_table:
       del config[key]
+  return common_table
+
+
+def ParseProjectSKU(value):
+  project_key_re = re.compile(r'^(\S+):(\d+)$')
+  match = project_key_re.match(value)
+  if not match:
+    return (None, None)
+  return (match.group(1), int(match.group(2)))
+
 
 def GetFactoryConfigs(config):
   """Writes factory conf files for every unique (project, design id).
@@ -189,41 +202,47 @@ def GetFactoryConfigs(config):
   Returns:
     dict that maps the design id onto the factory test config.
   """
-  result = {}
-  product_sku = result.setdefault('product_sku', {})
-  project_key_re = re.compile(r'^(\S+):(\d+)$')
-  firmware_config_segments = \
-      config.programs.value[0].firmware_configuration_segments
+  product_sku = {}
   # Enumerate projects.
   for hw_design in config.designs.value:
-    project_name = hw_design.id.value.lower()
+    project_name = hw_design.id.value
     project_table = product_sku.setdefault(project_name, {})
     # Enumerate design id (sku id).
     for design_config in hw_design.configs:
-      match = project_key_re.match(design_config.id.value)
-      if not match or project_name != match.group(1).lower():
+      second_project_name, sku_id = ParseProjectSKU(design_config.id.value)
+      if project_name != second_project_name:
         continue
-      design_table = project_table.setdefault(int(match.group(2)), {})
-      TransformDesignTable(firmware_config_segments,
-                           design_config, design_table)
-
+      design_table = project_table.setdefault(sku_id, {})
+      TransformDesignTable(design_config, design_table)
   # Enumerate (project, sku id).
   for sw_design in config.software_configs:
-    match = project_key_re.match(sw_design.design_config_id.value)
-    if not match:
+    project_name, sku_id = ParseProjectSKU(sw_design.design_config_id.value)
+    if project_name is None:
       continue
-    project_name = match.group(1).lower()
     project_table = product_sku.setdefault(project_name, {})
-    design_table = project_table.setdefault(int(match.group(2)), {})
+    design_table = project_table.setdefault(sku_id, {})
     design_table.update(
         {'component.audio_card_name': sw_design.audio_config.card_name})
-
-  model = result.setdefault('model', {})
+  # Create map from design id to product_name. Designs from different projects
+  # may map to the same product_name. The sets of sku id should not intersect.
+  product_names = {
+    sw_design.design_config_id.value:
+    sw_design.id_scan_config.smbios_name_match
+    for sw_design in config.software_configs}
+  # Create common table.
+  model = {}
+  new_product_sku = {}
   for project_name, project_table in product_sku.items():
-    model[project_name] = {}
-    CreateCommonTable(model[project_name], project_table)
-
-  return result
+    model[project_name.lower()] = CreateCommonTable(project_table)
+    for sku_id, content in project_table.items():
+      product_name = product_names['%s:%d' % (project_name, sku_id)]
+      product_name_table = new_product_sku.setdefault(product_name, {})
+      if sku_id in product_name_table:
+        print('The sku_id %s duplicates in product name %s'
+              % (sku_id, product_name), file=sys.stderr)
+      else:
+        product_name_table[sku_id] = content
+  return {'model': model, 'product_sku': new_product_sku}
 
 
 def _ReadConfig(path):
