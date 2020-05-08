@@ -273,6 +273,13 @@ update_manifest_internal() {
 
 create_local_manifest() {
   if [[ -n "$project" ]]; then
+    local source_manifest="${SCRIPT_DIR}/manifests/${program}_local_manifest.xml"
+    if [[ ! -f "${source_manifest}" ]]; then
+      echo "Source manifest ${source_manifest} does not exist."
+      echo "Skipping local manifest creation."
+      return
+    fi
+
     echo -e "\n## Add local_manifest.xml at  ${INTERNAL_GITILES_HOST}/${repo_path//%2f/\/}"
     cd "$WORK_DIR"
     git clone "${INTERNAL_GITILES_HOST}/${repo_path//%2f/\/}"
@@ -283,7 +290,7 @@ create_local_manifest() {
     fi
 
     git checkout -b "${program}"-"${name}"
-    cp "$SCRIPT_DIR"/"${program}"_local_manifest.xml local_manifest.xml
+    cp "${source_manifest}" local_manifest.xml
     git add local_manifest.xml
     git commit -m "Add local_manifest.xml for project. ${program}/${project}"
     git cl upload -r "chromeos-continuous-integration-team@google.com" --force
