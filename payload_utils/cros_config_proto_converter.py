@@ -474,6 +474,15 @@ def _ArcHardwareFeatureId(design_config):
   return design_config.id.value.lower().replace(':', '_')
 
 
+def _WriteArcHardwareFeatureFile(output_dir, file_name, config_content):
+  output = '%s/arc/%s' % (output_dir, file_name)
+  file_content = minidom.parseString(
+      config_content).toprettyxml(indent='  ', encoding='utf-8')
+
+  with open(output, 'wb') as f:
+    f.write(file_content)
+
+
 def WriteArcHardwareFeatureFiles(config, output_dir, build_root_dir):
   """Writes ARC hardware_feature.xml files for each config
 
@@ -485,6 +494,7 @@ def WriteArcHardwareFeatureFiles(config, output_dir, build_root_dir):
     dict that maps the design_config_id onto the correct file.
   """
   result = {}
+  configs_by_design = {}
   for hw_design in config.designs.value:
     for design_config in hw_design.configs:
       hw_features = design_config.hardware_features
@@ -518,20 +528,38 @@ def WriteArcHardwareFeatureFiles(config, output_dir, build_root_dir):
               'android.hardware.touchscreen.multitouch.jazzhand', touchscreen),
       ])
 
-      feature_id = _ArcHardwareFeatureId( design_config)
+      design_name = hw_design.name.lower()
 
-      file_name = 'hardware_features_%s.xml' % feature_id
-      output = '%s/arc/%s' % (output_dir, file_name)
-      file_content = minidom.parseString(
-          etree.tostring(root)).toprettyxml(indent='  ', encoding='utf-8')
+      # Constructs the following map:
+      # design_name -> config -> design_configs
+      # This allows any of the following file naming schemes:
+      # - All configs within a design share config (design_name prefix only)
+      # - Nobody shares (full design_name and config id prefix needed)
+      #
+      # Having shared configs when possible makes code reviews easier around
+      # the configs and makes debugging easier on the platform side.
+      config_content = etree.tostring(root)
+      arc_configs = configs_by_design.get(design_name, {})
+      design_configs = arc_configs.get(config_content, [])
+      design_configs.append(design_config)
+      arc_configs[config_content] = design_configs
+      configs_by_design[design_name] = arc_configs
 
-      with open(output, 'wb') as f:
-        f.write(file_content)
+  for design_name, unique_configs in configs_by_design.items():
+    for file_content, design_configs in unique_configs.items():
+        file_name = 'hardware_features_%s.xml' % design_name
+        if len(unique_configs) == 1:
+          _WriteArcHardwareFeatureFile(output_dir, file_name, file_content)
 
-      result[feature_id] = {
-          'build-path': '%s/arc/%s' % (build_root_dir, file_name),
-          'system-path': '/etc/%s' % file_name,
-      }
+        for design_config in design_configs:
+          feature_id = _ArcHardwareFeatureId(design_config)
+          if len(unique_configs) > 1:
+            file_name = 'hardware_features_%s.xml' % feature_id
+            _WriteArcHardwareFeatureFile(output_dir, file_name, file_content)
+          result[feature_id] = {
+              'build-path': '%s/arc/%s' % (build_root_dir, file_name),
+              'system-path': '/etc/%s' % file_name,
+          }
   return result
 
 
