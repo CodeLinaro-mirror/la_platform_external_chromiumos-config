@@ -20,6 +20,9 @@ load(
     sc_pb = "chromiumos.config.api.software",
 )
 
+# Config identifier used for an unprovisioned configuration.
+_UNPROVISIONED_CONFIG_ID = 0x7FFFFFFF
+
 _CONSTRAINT = struct(
     REQUIRED = design_pb.Design.Config.Constraint.REQUIRED,
     PREFERRED = design_pb.Design.Config.Constraint.PREFERRED,
@@ -115,4 +118,5 @@ design = struct(
     create_design_list = _create_design_list,
     constraint = _CONSTRAINT,
     generate = generate.generate,
+    UNPROVISIONED_CONFIG_ID = _UNPROVISIONED_CONFIG_ID,
 )
