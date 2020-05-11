@@ -51,6 +51,10 @@ _DESIGN_ID = design.create_design_id(_${project^^})
 
 _CLAMSHELL = hw_topo.create_form_factor("CLAMSHELL", "Device can only rotate 200 degrees", hw_topo.ff.CLAMSHELL)
 
+_HW_TOPO = hw_topo.create_hardware_topology(
+    form_factor = _CLAMSHELL,
+)
+
 _FW_BUILD_CONFIG = None
 
 _AUDIO = None
@@ -62,7 +66,7 @@ design.append_configs(
     sw_configs=_SW_CONFIGS,
     hw_configs=_HW_CONFIGS,
     design_id=_DESIGN_ID,
-    config_id=0x7FFFFFFF,
+    config_id=design.UNPROVISIONED_CONFIG_ID,
     hardware_topology=_HW_TOPO,
     firmware_build_config=_FW_BUILD_CONFIG,
     audio=_AUDIO,
