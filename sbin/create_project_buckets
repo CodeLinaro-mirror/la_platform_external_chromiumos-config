@@ -28,6 +28,14 @@ function prompt_create() {
   fi
 }
 
+function try_set_viewer() {
+  local group="${1}"
+  local bucket="${2}"
+  if ! gsutil iam ch "group:${group}:objectViewer" "${bucket}"; then
+    echo "Skipping setting objectViewer for ${group} on ${bucket}." >&2
+  fi
+}
+
 if [[ $# -lt 2 ]]; then
   usage
 fi
@@ -41,9 +49,9 @@ for project in "$@"; do
     echo "Creating bucket ${bucket}."
     gsutil mb "${bucket}"
     gsutil iam ch serviceAccount:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com:objectAdmin "${bucket}"
-    gsutil iam ch "group:${project}-odm-external@google.com:objectViewer" "${bucket}"
-    gsutil iam ch "group:${project}-oem-external@google.com:objectViewer" "${bucket}"
-    gsutil iam ch "group:${project}-soc-external@google.com:objectViewer" "${bucket}"
+    for id in odm oem soc; do
+      try_set_viewer "${project}-${id}-external@google.com" "${bucket}"
+    done
   else
     echo "Not creating bucket ${bucket}."
   fi
