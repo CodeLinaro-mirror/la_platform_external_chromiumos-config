@@ -24,8 +24,9 @@ message Component {
     Memory memory = 3;
     Bluetooth bluetooth = 4;
     Camera camera = 5;
-    Touchscreen touchscreen = 6;
+    Touch touchscreen = 6;
     Wifi wifi = 7;
+    Touch touchpad = 10;
   }
 
   // Defines common component version identifiers based on interface standards.
@@ -117,10 +118,8 @@ message Component {
     ClockType clock_type = 2;
   }
 
-  message Touchscreen {
-    // 4-digit hex
+  message Touch {
     string product_id = 2;
-    // 4-digit hex
     string fw_version = 3;
     // Optional product brand/series name
     // For some vendors, this is used in the firmware naming schema

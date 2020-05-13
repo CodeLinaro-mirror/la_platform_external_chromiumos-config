@@ -49,7 +49,7 @@ def _create_touchscreen(
     id_value = comp_id_pb.ComponentId(
         value = "_".join([touch_vendor.name, product_id, fw_version]),
     )
-    touchscreen = comp_pb.Component.Touchscreen(
+    touchscreen = comp_pb.Component.Touch(
         product_id = product_id,
         fw_version = fw_version,
         product_series = product_series,

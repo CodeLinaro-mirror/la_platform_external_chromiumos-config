@@ -293,10 +293,10 @@ def _BuildTouchFileConfig(config, project_name):
       product_id = comp.touchscreen.product_id
       fw_version = comp.touchscreen.fw_version
 
-      touchscreen_vendor = vendor.touchscreen_vendor
-      sym_link = touchscreen_vendor.fw_file_format.format(
+      touch_vendor = vendor.touch_vendor
+      sym_link = touch_vendor.fw_file_format.format(
         vendor_name = vendor.name,
-        vendor_id = touchscreen_vendor.vendor_id,
+        vendor_id = touch_vendor.vendor_id,
         product_id = product_id,
         fw_version = fw_version,
         product_series = comp.touchscreen.product_series

@@ -20,15 +20,15 @@ message Partner {
   // Email alias used for coordinating project execution.
   string email_group = 3;
 
-  // Optional config for touchscreen vendors.
-  TouchscreenVendor touchscreen_vendor = 4;
+  // Optional config for touch vendors.
+  TouchVendor touch_vendor = 4;
 
-  // Defines partner config unique to touchscreen manufacturers.
-  message TouchscreenVendor {
+  // Defines partner config unique to touch manufacturers.
+  message TouchVendor {
     // 4-digit hex vendor id assigned
     string vendor_id = 4;
 
-    // Defines vendor-specific touchscreen file formatting
+    // Defines vendor-specific touch fw file formatting
     // conventions using any of the following fields:
     // - vendor_name
     // - vendor_id

@@ -2034,7 +2034,7 @@
           "value": "elan"
         },
         "name": "elan",
-        "touchscreenVendor": {
+        "touchVendor": {
           "fwFileFormat": "elants_i2c_{product_id}.bin",
           "vendorId": "04F3"
         }
@@ -2044,7 +2044,7 @@
           "value": "sis"
         },
         "name": "sis",
-        "touchscreenVendor": {
+        "touchVendor": {
           "fwFileFormat": "sis_{product_id}.bin",
           "vendorId": "0457"
         }

@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n%chromiumos/config/api/component.proto\x12\x15\x63hromiumos.config.api\x1a(chromiumos/config/api/component_id.proto\x1a&chromiumos/config/api/partner_id.proto\"\xce\x0f\n\tComponent\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.ComponentId\x12\x39\n\x0fmanufacturer_id\x18\x08 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\t \x01(\t\x12\x33\n\x03soc\x18\x02 \x01(\x0b\x32$.chromiumos.config.api.Component.SocH\x00\x12\x39\n\x06memory\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.Component.MemoryH\x00\x12?\n\tbluetooth\x18\x04 \x01(\x0b\x32*.chromiumos.config.api.Component.BluetoothH\x00\x12\x39\n\x06\x63\x61mera\x18\x05 \x01(\x0b\x32\'.chromiumos.config.api.Component.CameraH\x00\x12\x43\n\x0btouchscreen\x18\x06 \x01(\x0b\x32,.chromiumos.config.api.Component.TouchscreenH\x00\x12\x35\n\x04wifi\x18\x07 \x01(\x0b\x32%.chromiumos.config.api.Component.WifiH\x00\x1a\x8f\x01\n\tInterface\x1a@\n\x03Usb\x12\x11\n\tvendor_id\x18\x01 \x01(\t\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\x12\n\nbcd_device\x18\x03 \x01(\t\x1a@\n\x03Pci\x12\x11\n\tvendor_id\x18\x01 \x01(\t\x12\x11\n\tdevice_id\x18\x02 \x01(\t\x12\x13\n\x0brevision_id\x18\x03 \x01(\t\x1a\x8e\x02\n\x03Soc\x12;\n\x06\x66\x61mily\x18\x01 \x01(\x0b\x32+.chromiumos.config.api.Component.Soc.Family\x12\r\n\x05model\x18\x02 \x01(\t\x12\r\n\x05\x63ores\x18\x03 \x01(\x05\x1aW\n\x06\x46\x61mily\x12?\n\x04\x61rch\x18\x01 \x01(\x0e\x32\x31.chromiumos.config.api.Component.Soc.Architecture\x12\x0c\n\x04name\x18\x02 \x01(\t\"S\n\x0c\x41rchitecture\x12\x1a\n\x16\x41RCHITECTURE_UNDEFINED\x10\x00\x12\x07\n\x03X86\x10\x01\x12\n\n\x06X86_64\x10\x02\x12\x07\n\x03\x41RM\x10\x03\x12\t\n\x05\x41RM64\x10\x04\x1a\xb4\x02\n\x06Memory\x12@\n\x07profile\x18\x01 \x01(\x0b\x32/.chromiumos.config.api.Component.Memory.Profile\x12\x13\n\x0bpart_number\x18\x02 \x01(\t\x1ap\n\x07Profile\x12:\n\x04type\x18\x01 \x01(\x0e\x32,.chromiumos.config.api.Component.Memory.Type\x12\x11\n\tspeed_mhz\x18\x02 \x01(\x05\x12\x16\n\x0esize_megabytes\x18\x03 \x01(\x05\"[\n\x04Type\x12\x12\n\x0eTYPE_UNDEFINED\x10\x00\x12\x07\n\x03\x44\x44R\x10\x01\x12\x08\n\x04\x44\x44R2\x10\x02\x12\x08\n\x04\x44\x44R3\x10\x03\x12\x08\n\x04\x44\x44R4\x10\x04\x12\x0b\n\x07LP_DDR3\x10\x05\x12\x0b\n\x07LP_DDR4\x10\x06J\x04\x08\x03\x10\x04\x1aZ\n\tBluetooth\x12;\n\x03usb\x18\x04 \x01(\x0b\x32..chromiumos.config.api.Component.Interface.UsbJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04\x1a\x88\x02\n\x06\x43\x61mera\x12\x41\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0e\x32/.chromiumos.config.api.Component.Camera.Feature\x12\x45\n\nclock_type\x18\x02 \x01(\x0e\x32\x31.chromiumos.config.api.Component.Camera.ClockType\"0\n\x07\x46\x65\x61ture\x12\x13\n\x0f\x46\x45\x41TURE_UNKNOWN\x10\x00\x12\x10\n\x0c\x41\x43TIVITY_LED\x10\x01\"B\n\tClockType\x12\x18\n\x14\x43LOCK_TYPE_UNDEFINED\x10\x00\x12\r\n\tMONOTONIC\x10\x01\x12\x0c\n\x08\x42OOTTIME\x10\x02\x1aY\n\x0bTouchscreen\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\x12\n\nfw_version\x18\x03 \x01(\t\x12\x16\n\x0eproduct_series\x18\x05 \x01(\tJ\x04\x08\x01\x10\x02J\x04\x08\x04\x10\x05\x1aR\n\x04Wifi\x12=\n\x03pci\x18\x01 \x01(\x0b\x32..chromiumos.config.api.Component.Interface.PciH\x00\x42\x0b\n\tinterface\x1a\xe7\x01\n\rQualification\x12\x38\n\x0c\x63omponent_id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.ComponentId\x12\x45\n\x06status\x18\x02 \x01(\x0e\x32\x35.chromiumos.config.api.Component.Qualification.Status\"U\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\r\n\tREQUESTED\x10\x01\x12\x19\n\x15TECHNICALLY_QUALIFIED\x10\x02\x12\r\n\tQUALIFIED\x10\x03\x42\x06\n\x04type\"@\n\rComponentList\x12/\n\x05value\x18\x01 \x03(\x0b\x32 .chromiumos.config.api.ComponentB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n%chromiumos/config/api/component.proto\x12\x15\x63hromiumos.config.api\x1a(chromiumos/config/api/component_id.proto\x1a&chromiumos/config/api/partner_id.proto\"\xfe\x0f\n\tComponent\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.ComponentId\x12\x39\n\x0fmanufacturer_id\x18\x08 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\t \x01(\t\x12\x33\n\x03soc\x18\x02 \x01(\x0b\x32$.chromiumos.config.api.Component.SocH\x00\x12\x39\n\x06memory\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.Component.MemoryH\x00\x12?\n\tbluetooth\x18\x04 \x01(\x0b\x32*.chromiumos.config.api.Component.BluetoothH\x00\x12\x39\n\x06\x63\x61mera\x18\x05 \x01(\x0b\x32\'.chromiumos.config.api.Component.CameraH\x00\x12=\n\x0btouchscreen\x18\x06 \x01(\x0b\x32&.chromiumos.config.api.Component.TouchH\x00\x12\x35\n\x04wifi\x18\x07 \x01(\x0b\x32%.chromiumos.config.api.Component.WifiH\x00\x12:\n\x08touchpad\x18\n \x01(\x0b\x32&.chromiumos.config.api.Component.TouchH\x00\x1a\x8f\x01\n\tInterface\x1a@\n\x03Usb\x12\x11\n\tvendor_id\x18\x01 \x01(\t\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\x12\n\nbcd_device\x18\x03 \x01(\t\x1a@\n\x03Pci\x12\x11\n\tvendor_id\x18\x01 \x01(\t\x12\x11\n\tdevice_id\x18\x02 \x01(\t\x12\x13\n\x0brevision_id\x18\x03 \x01(\t\x1a\x8e\x02\n\x03Soc\x12;\n\x06\x66\x61mily\x18\x01 \x01(\x0b\x32+.chromiumos.config.api.Component.Soc.Family\x12\r\n\x05model\x18\x02 \x01(\t\x12\r\n\x05\x63ores\x18\x03 \x01(\x05\x1aW\n\x06\x46\x61mily\x12?\n\x04\x61rch\x18\x01 \x01(\x0e\x32\x31.chromiumos.config.api.Component.Soc.Architecture\x12\x0c\n\x04name\x18\x02 \x01(\t\"S\n\x0c\x41rchitecture\x12\x1a\n\x16\x41RCHITECTURE_UNDEFINED\x10\x00\x12\x07\n\x03X86\x10\x01\x12\n\n\x06X86_64\x10\x02\x12\x07\n\x03\x41RM\x10\x03\x12\t\n\x05\x41RM64\x10\x04\x1a\xb4\x02\n\x06Memory\x12@\n\x07profile\x18\x01 \x01(\x0b\x32/.chromiumos.config.api.Component.Memory.Profile\x12\x13\n\x0bpart_number\x18\x02 \x01(\t\x1ap\n\x07Profile\x12:\n\x04type\x18\x01 \x01(\x0e\x32,.chromiumos.config.api.Component.Memory.Type\x12\x11\n\tspeed_mhz\x18\x02 \x01(\x05\x12\x16\n\x0esize_megabytes\x18\x03 \x01(\x05\"[\n\x04Type\x12\x12\n\x0eTYPE_UNDEFINED\x10\x00\x12\x07\n\x03\x44\x44R\x10\x01\x12\x08\n\x04\x44\x44R2\x10\x02\x12\x08\n\x04\x44\x44R3\x10\x03\x12\x08\n\x04\x44\x44R4\x10\x04\x12\x0b\n\x07LP_DDR3\x10\x05\x12\x0b\n\x07LP_DDR4\x10\x06J\x04\x08\x03\x10\x04\x1aZ\n\tBluetooth\x12;\n\x03usb\x18\x04 \x01(\x0b\x32..chromiumos.config.api.Component.Interface.UsbJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04\x1a\x88\x02\n\x06\x43\x61mera\x12\x41\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0e\x32/.chromiumos.config.api.Component.Camera.Feature\x12\x45\n\nclock_type\x18\x02 \x01(\x0e\x32\x31.chromiumos.config.api.Component.Camera.ClockType\"0\n\x07\x46\x65\x61ture\x12\x13\n\x0f\x46\x45\x41TURE_UNKNOWN\x10\x00\x12\x10\n\x0c\x41\x43TIVITY_LED\x10\x01\"B\n\tClockType\x12\x18\n\x14\x43LOCK_TYPE_UNDEFINED\x10\x00\x12\r\n\tMONOTONIC\x10\x01\x12\x0c\n\x08\x42OOTTIME\x10\x02\x1aS\n\x05Touch\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\x12\n\nfw_version\x18\x03 \x01(\t\x12\x16\n\x0eproduct_series\x18\x05 \x01(\tJ\x04\x08\x01\x10\x02J\x04\x08\x04\x10\x05\x1aR\n\x04Wifi\x12=\n\x03pci\x18\x01 \x01(\x0b\x32..chromiumos.config.api.Component.Interface.PciH\x00\x42\x0b\n\tinterface\x1a\xe7\x01\n\rQualification\x12\x38\n\x0c\x63omponent_id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.ComponentId\x12\x45\n\x06status\x18\x02 \x01(\x0e\x32\x35.chromiumos.config.api.Component.Qualification.Status\"U\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\r\n\tREQUESTED\x10\x01\x12\x19\n\x15TECHNICALLY_QUALIFIED\x10\x02\x12\r\n\tQUALIFIED\x10\x03\x42\x06\n\x04type\"@\n\rComponentList\x12/\n\x05value\x18\x01 \x03(\x0b\x32 .chromiumos.config.api.ComponentB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_component__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__id__pb2.DESCRIPTOR,])
 
@@ -56,8 +56,8 @@ _COMPONENT_SOC_ARCHITECTURE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=975,
-  serialized_end=1058,
+  serialized_start=1029,
+  serialized_end=1112,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_SOC_ARCHITECTURE)
 
@@ -98,8 +98,8 @@ _COMPONENT_MEMORY_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1272,
-  serialized_end=1363,
+  serialized_start=1326,
+  serialized_end=1417,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_MEMORY_TYPE)
 
@@ -120,8 +120,8 @@ _COMPONENT_CAMERA_FEATURE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1612,
-  serialized_end=1660,
+  serialized_start=1666,
+  serialized_end=1714,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_CAMERA_FEATURE)
 
@@ -146,8 +146,8 @@ _COMPONENT_CAMERA_CLOCKTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1662,
-  serialized_end=1728,
+  serialized_start=1716,
+  serialized_end=1782,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_CAMERA_CLOCKTYPE)
 
@@ -176,8 +176,8 @@ _COMPONENT_QUALIFICATION_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2052,
-  serialized_end=2137,
+  serialized_start=2100,
+  serialized_end=2185,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_QUALIFICATION_STATUS)
 
@@ -222,8 +222,8 @@ _COMPONENT_INTERFACE_USB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=655,
-  serialized_end=719,
+  serialized_start=709,
+  serialized_end=773,
 )
 
 _COMPONENT_INTERFACE_PCI = _descriptor.Descriptor(
@@ -266,8 +266,8 @@ _COMPONENT_INTERFACE_PCI = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=721,
-  serialized_end=785,
+  serialized_start=775,
+  serialized_end=839,
 )
 
 _COMPONENT_INTERFACE = _descriptor.Descriptor(
@@ -289,8 +289,8 @@ _COMPONENT_INTERFACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=642,
-  serialized_end=785,
+  serialized_start=696,
+  serialized_end=839,
 )
 
 _COMPONENT_SOC_FAMILY = _descriptor.Descriptor(
@@ -326,8 +326,8 @@ _COMPONENT_SOC_FAMILY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=886,
-  serialized_end=973,
+  serialized_start=940,
+  serialized_end=1027,
 )
 
 _COMPONENT_SOC = _descriptor.Descriptor(
@@ -371,8 +371,8 @@ _COMPONENT_SOC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=788,
-  serialized_end=1058,
+  serialized_start=842,
+  serialized_end=1112,
 )
 
 _COMPONENT_MEMORY_PROFILE = _descriptor.Descriptor(
@@ -415,8 +415,8 @@ _COMPONENT_MEMORY_PROFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1158,
-  serialized_end=1270,
+  serialized_start=1212,
+  serialized_end=1324,
 )
 
 _COMPONENT_MEMORY = _descriptor.Descriptor(
@@ -453,8 +453,8 @@ _COMPONENT_MEMORY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1061,
-  serialized_end=1369,
+  serialized_start=1115,
+  serialized_end=1423,
 )
 
 _COMPONENT_BLUETOOTH = _descriptor.Descriptor(
@@ -483,8 +483,8 @@ _COMPONENT_BLUETOOTH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1371,
-  serialized_end=1461,
+  serialized_start=1425,
+  serialized_end=1515,
 )
 
 _COMPONENT_CAMERA = _descriptor.Descriptor(
@@ -522,33 +522,33 @@ _COMPONENT_CAMERA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1464,
-  serialized_end=1728,
+  serialized_start=1518,
+  serialized_end=1782,
 )
 
-_COMPONENT_TOUCHSCREEN = _descriptor.Descriptor(
-  name='Touchscreen',
-  full_name='chromiumos.config.api.Component.Touchscreen',
+_COMPONENT_TOUCH = _descriptor.Descriptor(
+  name='Touch',
+  full_name='chromiumos.config.api.Component.Touch',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='product_id', full_name='chromiumos.config.api.Component.Touchscreen.product_id', index=0,
+      name='product_id', full_name='chromiumos.config.api.Component.Touch.product_id', index=0,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='fw_version', full_name='chromiumos.config.api.Component.Touchscreen.fw_version', index=1,
+      name='fw_version', full_name='chromiumos.config.api.Component.Touch.fw_version', index=1,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='product_series', full_name='chromiumos.config.api.Component.Touchscreen.product_series', index=2,
+      name='product_series', full_name='chromiumos.config.api.Component.Touch.product_series', index=2,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -566,8 +566,8 @@ _COMPONENT_TOUCHSCREEN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1730,
-  serialized_end=1819,
+  serialized_start=1784,
+  serialized_end=1867,
 )
 
 _COMPONENT_WIFI = _descriptor.Descriptor(
@@ -599,8 +599,8 @@ _COMPONENT_WIFI = _descriptor.Descriptor(
       name='interface', full_name='chromiumos.config.api.Component.Wifi.interface',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1821,
-  serialized_end=1903,
+  serialized_start=1869,
+  serialized_end=1951,
 )
 
 _COMPONENT_QUALIFICATION = _descriptor.Descriptor(
@@ -637,8 +637,8 @@ _COMPONENT_QUALIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1906,
-  serialized_end=2137,
+  serialized_start=1954,
+  serialized_end=2185,
 )
 
 _COMPONENT = _descriptor.Descriptor(
@@ -711,10 +711,17 @@ _COMPONENT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='touchpad', full_name='chromiumos.config.api.Component.touchpad', index=9,
+      number=10, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_COMPONENT_INTERFACE, _COMPONENT_SOC, _COMPONENT_MEMORY, _COMPONENT_BLUETOOTH, _COMPONENT_CAMERA, _COMPONENT_TOUCHSCREEN, _COMPONENT_WIFI, _COMPONENT_QUALIFICATION, ],
+  nested_types=[_COMPONENT_INTERFACE, _COMPONENT_SOC, _COMPONENT_MEMORY, _COMPONENT_BLUETOOTH, _COMPONENT_CAMERA, _COMPONENT_TOUCH, _COMPONENT_WIFI, _COMPONENT_QUALIFICATION, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -727,7 +734,7 @@ _COMPONENT = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=147,
-  serialized_end=2145,
+  serialized_end=2193,
 )
 
 
@@ -757,8 +764,8 @@ _COMPONENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2147,
-  serialized_end=2211,
+  serialized_start=2195,
+  serialized_end=2259,
 )
 
 _COMPONENT_INTERFACE_USB.containing_type = _COMPONENT_INTERFACE
@@ -781,7 +788,7 @@ _COMPONENT_CAMERA.fields_by_name['clock_type'].enum_type = _COMPONENT_CAMERA_CLO
 _COMPONENT_CAMERA.containing_type = _COMPONENT
 _COMPONENT_CAMERA_FEATURE.containing_type = _COMPONENT_CAMERA
 _COMPONENT_CAMERA_CLOCKTYPE.containing_type = _COMPONENT_CAMERA
-_COMPONENT_TOUCHSCREEN.containing_type = _COMPONENT
+_COMPONENT_TOUCH.containing_type = _COMPONENT
 _COMPONENT_WIFI.fields_by_name['pci'].message_type = _COMPONENT_INTERFACE_PCI
 _COMPONENT_WIFI.containing_type = _COMPONENT
 _COMPONENT_WIFI.oneofs_by_name['interface'].fields.append(
@@ -797,8 +804,9 @@ _COMPONENT.fields_by_name['soc'].message_type = _COMPONENT_SOC
 _COMPONENT.fields_by_name['memory'].message_type = _COMPONENT_MEMORY
 _COMPONENT.fields_by_name['bluetooth'].message_type = _COMPONENT_BLUETOOTH
 _COMPONENT.fields_by_name['camera'].message_type = _COMPONENT_CAMERA
-_COMPONENT.fields_by_name['touchscreen'].message_type = _COMPONENT_TOUCHSCREEN
+_COMPONENT.fields_by_name['touchscreen'].message_type = _COMPONENT_TOUCH
 _COMPONENT.fields_by_name['wifi'].message_type = _COMPONENT_WIFI
+_COMPONENT.fields_by_name['touchpad'].message_type = _COMPONENT_TOUCH
 _COMPONENT.oneofs_by_name['type'].fields.append(
   _COMPONENT.fields_by_name['soc'])
 _COMPONENT.fields_by_name['soc'].containing_oneof = _COMPONENT.oneofs_by_name['type']
@@ -817,6 +825,9 @@ _COMPONENT.fields_by_name['touchscreen'].containing_oneof = _COMPONENT.oneofs_by
 _COMPONENT.oneofs_by_name['type'].fields.append(
   _COMPONENT.fields_by_name['wifi'])
 _COMPONENT.fields_by_name['wifi'].containing_oneof = _COMPONENT.oneofs_by_name['type']
+_COMPONENT.oneofs_by_name['type'].fields.append(
+  _COMPONENT.fields_by_name['touchpad'])
+_COMPONENT.fields_by_name['touchpad'].containing_oneof = _COMPONENT.oneofs_by_name['type']
 _COMPONENTLIST.fields_by_name['value'].message_type = _COMPONENT
 DESCRIPTOR.message_types_by_name['Component'] = _COMPONENT
 DESCRIPTOR.message_types_by_name['ComponentList'] = _COMPONENTLIST
@@ -887,10 +898,10 @@ Component = _reflection.GeneratedProtocolMessageType('Component', (_message.Mess
     ))
   ,
 
-  Touchscreen = _reflection.GeneratedProtocolMessageType('Touchscreen', (_message.Message,), dict(
-    DESCRIPTOR = _COMPONENT_TOUCHSCREEN,
+  Touch = _reflection.GeneratedProtocolMessageType('Touch', (_message.Message,), dict(
+    DESCRIPTOR = _COMPONENT_TOUCH,
     __module__ = 'chromiumos.config.api.component_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.Component.Touchscreen)
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.Component.Touch)
     ))
   ,
 
@@ -921,7 +932,7 @@ _sym_db.RegisterMessage(Component.Memory)
 _sym_db.RegisterMessage(Component.Memory.Profile)
 _sym_db.RegisterMessage(Component.Bluetooth)
 _sym_db.RegisterMessage(Component.Camera)
-_sym_db.RegisterMessage(Component.Touchscreen)
+_sym_db.RegisterMessage(Component.Touch)
 _sym_db.RegisterMessage(Component.Wifi)
 _sym_db.RegisterMessage(Component.Qualification)
 

@@ -392,12 +392,12 @@ def _touch_vendor(vendor):
 
 _COMPONENTS = [
     comp.create_touchscreen(
-        touch_vendor = _touch_vendor(partner.touchscreen.ELAN),
+        touch_vendor = _touch_vendor(partner.touch.ELAN),
         product_id = "01FF",
         fw_version = "1234",
     ),
     comp.create_touchscreen(
-        touch_vendor = _touch_vendor(partner.touchscreen.SIS),
+        touch_vendor = _touch_vendor(partner.touch.SIS),
         product_id = "111A",
         fw_version = "1.0",
     ),

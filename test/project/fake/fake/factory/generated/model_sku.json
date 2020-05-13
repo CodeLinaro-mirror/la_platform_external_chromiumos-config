@@ -14,6 +14,7 @@
       "component.has_rear_camera": null,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
+      "component.has_tabletmode": false,
       "component.has_touchscreen": true,
       "component.has_wifi": true,
       "component.headphone_codec": "ALC5682I",
@@ -58,6 +59,7 @@
       "component.has_rear_camera": null,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
+      "component.has_tabletmode": true,
       "component.has_touchscreen": true,
       "component.has_wifi": true,
       "component.headphone_codec": "ALC5682I",
@@ -102,6 +104,7 @@
       "component.has_rear_camera": null,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
+      "component.has_tabletmode": true,
       "component.has_touchscreen": true,
       "component.has_wifi": true,
       "component.headphone_codec": "ALC5682I",
@@ -146,6 +149,7 @@
       "component.has_rear_camera": null,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
+      "component.has_tabletmode": false,
       "component.has_touchscreen": true,
       "component.has_wifi": true,
       "component.headphone_codec": "ALC5682I",
@@ -190,6 +194,7 @@
       "component.has_rear_camera": null,
       "component.has_sd_reader": true,
       "component.has_stylus": false,
+      "component.has_tabletmode": false,
       "component.has_touchscreen": false,
       "component.has_wifi": true,
       "component.headphone_codec": "ALC5682I",
@@ -220,7 +225,7 @@
     }
   },
   "product_sku": {
-    "fake-ref-design": {
+    "FAKE-REF-DESIGN": {
       "2": {
         "component.fingerprint_board": "",
         "component.has_fingerprint": false
@@ -230,16 +235,16 @@
         "component.has_fingerprint": true
       }
     },
-    "project-a": {
+    "PROJECT-A": {
       "32": {}
     },
-    "project-b": {
+    "PROJECT-B": {
       "33": {}
     },
-    "project-c": {
+    "PROJECT-C": {
       "34": {}
     },
-    "project-wl": {
+    "PROJECT-WL": {
       "64": {}
     }
   }
