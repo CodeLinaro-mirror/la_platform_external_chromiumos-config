@@ -392,7 +392,7 @@ def _touch_vendor(vendor):
 
 _COMPONENTS = [
     comp.create_touchscreen(
-        touch_vendor = _touch_vendor(partner.touch.ELAN),
+        touch_vendor = _touch_vendor(partner.touch.ELAN_TS),
         product_id = "01FF",
         fw_version = "1234",
     ),
@@ -400,6 +400,16 @@ _COMPONENTS = [
         touch_vendor = _touch_vendor(partner.touch.SIS),
         product_id = "111A",
         fw_version = "1.0",
+    ),
+    comp.create_touchpad(
+        touch_vendor = _touch_vendor(partner.touch.ELAN),
+        product_id = "99.0",
+        fw_version = "9.0",
+    ),
+    comp.create_touchpad(
+        touch_vendor = _touch_vendor(partner.touch.SYNAPTICS),
+        product_id = "ABC1",
+        fw_version = "1.1",
     ),
     comp.create_wifi(
         vendor_id = "0f22",

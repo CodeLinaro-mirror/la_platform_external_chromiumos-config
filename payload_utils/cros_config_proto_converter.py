@@ -284,14 +284,18 @@ def _BuildTouchFileConfig(config, project_name):
   partners = dict([(x.id.value, x) for x in config.partners.value])
   files = []
   for comp in config.components:
-    if comp.touchscreen.product_id:
+    touch = comp.touchscreen
+    # Everything is the same for Touch screen/pad, except different fields
+    if comp.HasField('touchpad'):
+      touch = comp.touchpad
+    if touch.product_id:
       vendor = _Lookup(comp.manufacturer_id, partners)
       if not vendor:
         raise Exception(
-            "Manufacturer must be set for touchscreen %s" % comp.id.value)
+            "Manufacturer must be set for touch device %s" % comp.id.value)
 
-      product_id = comp.touchscreen.product_id
-      fw_version = comp.touchscreen.fw_version
+      product_id = touch.product_id
+      fw_version = touch.fw_version
 
       touch_vendor = vendor.touch_vendor
       sym_link = touch_vendor.fw_file_format.format(
@@ -299,7 +303,7 @@ def _BuildTouchFileConfig(config, project_name):
         vendor_id = touch_vendor.vendor_id,
         product_id = product_id,
         fw_version = fw_version,
-        product_series = comp.touchscreen.product_series
+        product_series = touch.product_series
       )
 
       file_name = "%s_%s.bin" % (product_id, fw_version)

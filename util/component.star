@@ -39,26 +39,63 @@ def _create_pci(vendor_id, device_id, revision_id):
     )
     return component_id, pci
 
+def _create_touch(
+        product_id,
+        fw_version,
+        product_series = None):
+    """Builds a Component.Touch proto."""
+    return comp_pb.Component.Touch(
+        product_id = product_id,
+        fw_version = fw_version,
+        product_series = product_series,
+    )
+
+def _create_touch_id(
+        touch_vendor,
+        product_id,
+        fw_version):
+    return comp_id_pb.ComponentId(
+        value = "_".join([touch_vendor.name, product_id, fw_version]),
+    )
+
 def _create_touchscreen(
         touch_vendor,
         product_id,
         fw_version,
         product_name = None,
         product_series = None):
-    """Builds a Component.Touchsreen proto."""
-    id_value = comp_id_pb.ComponentId(
-        value = "_".join([touch_vendor.name, product_id, fw_version]),
-    )
-    touchscreen = comp_pb.Component.Touch(
-        product_id = product_id,
-        fw_version = fw_version,
-        product_series = product_series,
+    """Builds a Component.Touch proto for touchscreen."""
+    id = _create_touch_id(touch_vendor, product_id, fw_version)
+    touchscreen = _create_touch(
+        product_id,
+        fw_version,
+        product_series,
     )
     return comp_pb.Component(
-        id = id_value,
+        id = id,
         name = product_name,
         manufacturer_id = touch_vendor.id,
         touchscreen = touchscreen,
+    )
+
+def _create_touchpad(
+        touch_vendor,
+        product_id,
+        fw_version,
+        product_name = None,
+        product_series = None):
+    """Builds a Component.Touch proto for touchpad."""
+    id = _create_touch_id(touch_vendor, product_id, fw_version)
+    touchpad = _create_touch(
+        product_id,
+        fw_version,
+        product_series,
+    )
+    return comp_pb.Component(
+        id = id,
+        name = product_name,
+        manufacturer_id = touch_vendor.id,
+        touchpad = touchpad,
     )
 
 def _create_soc_family(name, arch = comp_pb.Component.Soc.X86_64):
@@ -124,6 +161,7 @@ comp = struct(
     create_soc_model = _create_soc_model,
     create_bt = _create_bt,
     create_touchscreen = _create_touchscreen,
+    create_touchpad = _create_touchpad,
     create_wifi = _create_wifi,
     create_qual = _create_qual,
     create_quals = _create_quals,

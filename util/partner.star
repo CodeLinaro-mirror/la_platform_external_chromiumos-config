@@ -44,6 +44,11 @@ partner = struct(
         ELAN = _create_touch_partner(
             name = "elan",
             vendor_id = "04F3",
+            fw_file_format = "elan_i2c_{product_id}.bin",
+        ),
+        ELAN_TS = _create_touch_partner(
+            name = "elants",
+            vendor_id = "04F3",
             fw_file_format = "elants_i2c_{product_id}.bin",
         ),
         EMRIGHT = _create_touch_partner(

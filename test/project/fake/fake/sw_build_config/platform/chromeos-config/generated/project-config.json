@@ -101,14 +101,24 @@
         "touch": {
           "files": [
             {
-              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
-              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "destination": "/opt/google/touch/firmware/elants_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
               "symlink": "/lib/firmware/elants_i2c_01FF.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
               "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/elan_99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/synaptics_ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
         }
@@ -201,14 +211,24 @@
         "touch": {
           "files": [
             {
-              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
-              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "destination": "/opt/google/touch/firmware/elants_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
               "symlink": "/lib/firmware/elants_i2c_01FF.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
               "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/elan_99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/synaptics_ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
         }
@@ -322,14 +342,24 @@
         "touch": {
           "files": [
             {
-              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
-              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "destination": "/opt/google/touch/firmware/elants_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
               "symlink": "/lib/firmware/elants_i2c_01FF.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
               "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/elan_99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/synaptics_ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
         }
@@ -431,14 +461,24 @@
         "touch": {
           "files": [
             {
-              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
-              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "destination": "/opt/google/touch/firmware/elants_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
               "symlink": "/lib/firmware/elants_i2c_01FF.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
               "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/elan_99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/synaptics_ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
         }
@@ -539,14 +579,24 @@
         "touch": {
           "files": [
             {
-              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
-              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "destination": "/opt/google/touch/firmware/elants_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
               "symlink": "/lib/firmware/elants_i2c_01FF.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
               "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/elan_99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/synaptics_ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
         }
@@ -639,14 +689,24 @@
         "touch": {
           "files": [
             {
-              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
-              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "destination": "/opt/google/touch/firmware/elants_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
               "symlink": "/lib/firmware/elants_i2c_01FF.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
               "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/elan_99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/synaptics_ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
         }
@@ -739,14 +799,24 @@
         "touch": {
           "files": [
             {
-              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
-              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "destination": "/opt/google/touch/firmware/elants_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
               "symlink": "/lib/firmware/elants_i2c_01FF.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
               "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/elan_99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/synaptics_ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
         }
@@ -839,14 +909,24 @@
         "touch": {
           "files": [
             {
-              "destination": "/opt/google/touch/firmware/elan_01FF_1234.bin",
-              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/01FF_1234.bin",
+              "destination": "/opt/google/touch/firmware/elants_01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
               "symlink": "/lib/firmware/elants_i2c_01FF.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/sis_111A_1.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
               "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/elan_99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/synaptics_ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
         }

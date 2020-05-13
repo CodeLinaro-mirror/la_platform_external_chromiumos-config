@@ -34,10 +34,10 @@
   "components": [
     {
       "id": {
-        "value": "elan_01FF_1234"
+        "value": "elants_01FF_1234"
       },
       "manufacturerId": {
-        "value": "elan"
+        "value": "elants"
       },
       "touchscreen": {
         "fwVersion": "1234",
@@ -54,6 +54,30 @@
       "touchscreen": {
         "fwVersion": "1.0",
         "productId": "111A"
+      }
+    },
+    {
+      "id": {
+        "value": "elan_99.0_9.0"
+      },
+      "manufacturerId": {
+        "value": "elan"
+      },
+      "touchpad": {
+        "fwVersion": "9.0",
+        "productId": "99.0"
+      }
+    },
+    {
+      "id": {
+        "value": "synaptics_ABC1_1.1"
+      },
+      "manufacturerId": {
+        "value": "synaptics"
+      },
+      "touchpad": {
+        "fwVersion": "1.1",
+        "productId": "ABC1"
       }
     },
     {
@@ -2031,9 +2055,9 @@
       },
       {
         "id": {
-          "value": "elan"
+          "value": "elants"
         },
-        "name": "elan",
+        "name": "elants",
         "touchVendor": {
           "fwFileFormat": "elants_i2c_{product_id}.bin",
           "vendorId": "04F3"
@@ -2047,6 +2071,26 @@
         "touchVendor": {
           "fwFileFormat": "sis_{product_id}.bin",
           "vendorId": "0457"
+        }
+      },
+      {
+        "id": {
+          "value": "elan"
+        },
+        "name": "elan",
+        "touchVendor": {
+          "fwFileFormat": "elan_i2c_{product_id}.bin",
+          "vendorId": "04F3"
+        }
+      },
+      {
+        "id": {
+          "value": "synaptics"
+        },
+        "name": "synaptics",
+        "touchVendor": {
+          "fwFileFormat": "hid-{vendor_id}_{product_id}",
+          "vendorId": "06CB"
         }
       }
     ]
