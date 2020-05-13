@@ -1,4 +1,4 @@
-# When and How to create new Hardware Design Configuration
+# Managing Hardware Design Configurations
 
 [TOC]
 
@@ -10,17 +10,16 @@ affect how the EC firmware configures its tasks. The OS also uses the presence
 of accelerometers to know whether it should enable tablet mode behavior.
 
 We encode the expected hardware configuration in a way that firmware and
-software can use for their purposes. In past projects, this encoding has been
-done through resistor straps or encoded in IDs programmed on an EEPROM (e.g.
-[CBI]).
+software can use. In past projects, this encoding has been done through resistor
+straps or encoded in IDs programmed on an EEPROM (e.g. [CBI]).
 
 Some hardware can be probed by firmware/software at runtime. For hardware that
-is on a probeable bus, like USB or PCI (not I2C though), we allow the device and
-driver to be probed. For example, we allow different cameras with different
-drivers on a single design. However, the expected locations of cameras on
-A/B/C/D panels should be encoded in the hardware configuration. Software should
-still be resilient to HW failures (e.g. camera not responding) even if the
-hardware configuration says to expect 2 A-panel cameras.
+is on a safely probeable bus, like USB or PCI (not I2C though), we allow the
+device and driver to be probed. For example, we allow different cameras with
+different drivers on a single design. However, the expected locations of cameras
+on A/B/C/D panels should be encoded in the hardware configuration. Software
+should still be resilient to HW failures (e.g. camera not responding) even if
+the hardware configuration says to expect 2 A-panel cameras.
 
 We define a list of hardware features that Google cares about, e.g. screen size
 (driven by CTS requirements, etc.) or sensor presence (driven by firmware
@@ -47,17 +46,17 @@ also typically maps to a single PCB (not PCBA), but isn’t strictly required.
 
 ## Overview
 
-We need to define a process for
+We define a process for
 
-*   What causes us to make a new Hardware Design Configuration Id. We will
+*   Determining when to make a new Hardware Design Configuration Id. We will
     shorten this term to **DesignConfigId**.
     *   This is loosely analogous to the firmware sku concept in past projects
-*   How the factory knows which DesignConfigId to provision in hardware during
+*   How the factory provisions the correct DesignConfigId in hardware during
     device assembly
 
 ## Hardware System Features
 
-The current list of meaningful (to Google) system features lives in
+The current list of meaningful (to Google) system features lives in the
 [hardware topology API](./hardware_topology.proto). For every meaningful
 hardware feature (e.g. cameras), we want to track all of the meaningful
 differences (e.g. “2 cameras” vs “1 camera”). Each meaningful variation of a
@@ -128,7 +127,7 @@ for a backfill for a new hardware feature).
 
 ### Adding new Hardware Features we care about
 
-As time progresses, Google and Partners will care about more hardware features.
+As time progresses, Google and partners will care about more hardware features.
 We will update the configuration APIs and backfill values of old projects (as
 much as we can). The HardwareTopology and HardwareFeature objects are structured
 in a way that allows Unknown as a possibility if we don’t have enough
@@ -154,14 +153,14 @@ We should also have a factory verification step that ensures all hardware that
 we can probe at runtime aligns with what the HardwareDesignConfiguration
 hardware features says it is. For example, we should be able to probe for the
 number of USB-C ports at runtime; we will verify this count with the number of
-expect USB-C ports by the HardwareDesignConfiguration.
+expected USB-C ports by the HardwareDesignConfiguration.
 
 ## RMA Considerations
 
-Unfortunately, the RMAs centers do not have access to the shop floor system. We
-have little choice but to rely on manual operation input to select the correct
-hardware topology values, e.g. touch vs non-touch for screen, for the design
-they are working with.
+RMA centers do not have access to the shop floor system. We have little choice
+but to rely on manual operation input to select the correct hardware topology
+values, e.g. touch vs non-touch for screen, for the design they are working
+with.
 
 Each Hardware Topology object has a description of what that selected topology
 means. We can take the full list of all HardwareDesignConfiguration objects
