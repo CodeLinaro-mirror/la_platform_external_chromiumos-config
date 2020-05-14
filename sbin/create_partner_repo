@@ -344,6 +344,13 @@ run_command() {
 }
 
 
+if ! prodcertstatus; then
+  # Some of the commands require LOAS credentials. For example, without LOAS
+  # credentials, the gob-ctl to set readers on repos will fail.
+  echo "LOAS credentials missing. Please log in with prodaccess." >&2
+  exit 1
+fi
+
 while [[ "$1" != "" ]]; do
   case $1 in
     --program)
