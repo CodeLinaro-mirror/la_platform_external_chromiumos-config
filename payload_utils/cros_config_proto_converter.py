@@ -180,9 +180,19 @@ def _BuildFirmware(config):
 
 def _BuildFwSigning(config):
   if config.sw_config.firmware and config.device_signer_config:
+    program = config.program.id.value
+    hw_design = config.hw_design.name.lower()
+    if program == 'Zork' and hw_design != 'ezkinil':
+      # TODO(https://crbug.com/1070814): Hack!!!, Zork projects other than
+      # ezkinil do not have their own brand-code and do not share signing
+      # keys. Thus this hack for now.
+      return {
+          'key-id': hw_design.upper(),
+          'signature-id': hw_design,
+      }
     return {
         'key-id': config.device_signer_config.key_id,
-        'signature-id': config.hw_design.name.lower(),
+        'signature-id': hw_design,
     }
   return {}
 
