@@ -36,8 +36,8 @@ _CAMERA_FW_MASK = 0x000000f0
 
 _SCREEN = hw_topo.create_screen("SCREEN", "Default screen", inches = 15, touch = False)
 _TOUCHSCREEN = hw_topo.create_screen("SCREEN", "Default screen", inches = 15, touch = True)
-_FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor("FORM_FACTOR", "Default clamshell form_factor", hw_topo.ff.CLAMSHELL)
-_FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor("FORM_FACTOR", "Default convertible form_factor", hw_topo.ff.CONVERTIBLE)
+_FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
+_FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
 _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.audio_codec.MAX98373, headphone_codec = hw_topo.audio_codec.ALC5682I)
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
 _KEYBOARD = hw_topo.create_keyboard("KEYBOARD", "Default keyboard", backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE)

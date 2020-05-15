@@ -263,14 +263,14 @@
               },
               "formFactor": {
                 "description": {
-                  "EN": "Default clamshell form_factor"
+                  "EN": "Device cannot rotate past 180 degrees"
                 },
                 "hardwareFeature": {
                   "formFactor": {
                     "formFactor": 1
                   }
                 },
-                "id": "FORM_FACTOR",
+                "id": "CLAMSHELL",
                 "type": 2
               },
               "keyboard": {
@@ -543,14 +543,14 @@
               },
               "formFactor": {
                 "description": {
-                  "EN": "Default clamshell form_factor"
+                  "EN": "Device cannot rotate past 180 degrees"
                 },
                 "hardwareFeature": {
                   "formFactor": {
                     "formFactor": 1
                   }
                 },
-                "id": "FORM_FACTOR",
+                "id": "CLAMSHELL",
                 "type": 2
               },
               "keyboard": {
@@ -866,14 +866,14 @@
               },
               "formFactor": {
                 "description": {
-                  "EN": "Default convertible form_factor"
+                  "EN": "Device can rotate 360 degrees"
                 },
                 "hardwareFeature": {
                   "formFactor": {
                     "formFactor": 2
                   }
                 },
-                "id": "FORM_FACTOR",
+                "id": "CONVERTIBLE",
                 "type": 2
               },
               "keyboard": {
@@ -1187,14 +1187,14 @@
               },
               "formFactor": {
                 "description": {
-                  "EN": "Default convertible form_factor"
+                  "EN": "Device can rotate 360 degrees"
                 },
                 "hardwareFeature": {
                   "formFactor": {
                     "formFactor": 2
                   }
                 },
-                "id": "FORM_FACTOR",
+                "id": "CONVERTIBLE",
                 "type": 2
               },
               "keyboard": {
@@ -1496,14 +1496,14 @@
               },
               "formFactor": {
                 "description": {
-                  "EN": "Default clamshell form_factor"
+                  "EN": "Device cannot rotate past 180 degrees"
                 },
                 "hardwareFeature": {
                   "formFactor": {
                     "formFactor": 1
                   }
                 },
-                "id": "FORM_FACTOR",
+                "id": "CLAMSHELL",
                 "type": 2
               },
               "keyboard": {
@@ -1775,14 +1775,14 @@
               },
               "formFactor": {
                 "description": {
-                  "EN": "Default clamshell form_factor"
+                  "EN": "Device cannot rotate past 180 degrees"
                 },
                 "hardwareFeature": {
                   "formFactor": {
                     "formFactor": 1
                   }
                 },
-                "id": "FORM_FACTOR",
+                "id": "CLAMSHELL",
                 "type": 2
               },
               "keyboard": {

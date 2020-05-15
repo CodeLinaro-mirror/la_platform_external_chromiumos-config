@@ -136,8 +136,29 @@ def _create_screen(id, description, inches, touch, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_form_factor(id, description, form_factor, fw_configs = []):
-    """Builds a Topology proto for a form factor."""
+def _create_form_factor(form_factor, fw_configs = [], id = None, description = None):
+    """Builds a Topology proto for a form factor.
+
+    Args:
+        form_factor: A FormFactorType enum.
+        fw_configs: A list of FirmwareConfiguration protos for the form factor.
+        id: A string identifier for the Topology. If not passed, a default is
+            provided based on form_factor.
+        description: An English description for the Topology. If not passed, a
+            default is provided based on form_factor.
+    """
+    if not id:
+        id = {
+            topo_pb.HardwareFeatures.FormFactor.CLAMSHELL: "CLAMSHELL",
+            topo_pb.HardwareFeatures.FormFactor.CONVERTIBLE: "CONVERTIBLE",
+        }[form_factor]
+
+    if not description:
+        description = {
+            topo_pb.HardwareFeatures.FormFactor.CLAMSHELL: "Device cannot rotate past 180 degrees",
+            topo_pb.HardwareFeatures.FormFactor.CONVERTIBLE: "Device can rotate 360 degrees",
+        }[form_factor]
+
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.form_factor.form_factor = form_factor

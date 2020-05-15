@@ -49,7 +49,7 @@ _${project^^}="${project^}"
 
 _DESIGN_ID = design.create_design_id(_${project^^})
 
-_CLAMSHELL = hw_topo.create_form_factor("CLAMSHELL", "Device can only rotate 200 degrees", hw_topo.ff.CLAMSHELL)
+_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
 
 _HW_TOPO = hw_topo.create_hardware_topology(
     form_factor = _CLAMSHELL,
