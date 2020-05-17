@@ -186,8 +186,11 @@ def _BuildFwSigning(config):
       # TODO(https://crbug.com/1070814): Hack!!!, Zork projects other than
       # ezkinil do not have their own brand-code and do not share signing
       # keys. Thus this hack for now.
+      # TODO(https://crbug.com/1083770): Also, Berknip signing keys not present
+      # in signing server, special case.
+      key_id = 'TREMBYLE' if hw_design == 'berknip' else hw_design.upper()
       return {
-          'key-id': hw_design.upper(),
+          'key-id': key_id,
           'signature-id': hw_design,
       }
     return {
