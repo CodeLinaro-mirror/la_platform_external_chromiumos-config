@@ -26,6 +26,10 @@ SRC_ROOT = os.path.realpath(os.path.join(__file__, '../../../../..'))
 RepoInfo = collections.namedtuple('RepoInfo', ['name', 'path'])
 
 
+class ConfigGenerationError(Exception):
+  """Exception raised for errors during config generation."""
+
+
 def get_repos(regexes: List[str]) -> List[RepoInfo]:
   """Returns a list of RepoInfo for repos matching regexes.
 
@@ -76,8 +80,11 @@ def regen_configs(path: str, branch: str, message: str):
     warnings.warn('No config.star files found in {}'.format(path))
 
   for config in config_paths:
-    subprocess.run(['./config/bin/gen_config', config],
-                   check=True, capture_output=True)
+    try:
+      subprocess.run(['./config/bin/gen_config', config], check=True)
+    except subprocess.CalledProcessError as ex:
+      raise ConfigGenerationError(
+          'Failed to generate config for {}'.format(path)) from ex
 
   # Check if any files were changed.
   status_process = subprocess.run(['git', 'status', '--porcelain'],
@@ -149,7 +156,8 @@ def main():
       repo_paths,
   )
 
-  print("Upload changes with 'repo upload --br={} --ht={}'".format(args.branch, args.branch))
+  print("Upload changes with 'repo upload --br={} --ht={}'".format(
+      args.branch, args.branch))
 
 
 if __name__ == '__main__':
