@@ -76,7 +76,8 @@ def regen_configs(path: str, branch: str, message: str):
     warnings.warn('No config.star files found in {}'.format(path))
 
   for config in config_paths:
-    subprocess.run(config, check=True, capture_output=True)
+    subprocess.run(['./config/bin/gen_config', config],
+                   check=True, capture_output=True)
 
   # Check if any files were changed.
   status_process = subprocess.run(['git', 'status', '--porcelain'],
