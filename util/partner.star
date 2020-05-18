@@ -22,6 +22,13 @@ def _create_touch_partner(name, vendor_id, fw_file_format):
     )
     return partner
 
+def _create_display_partner(vendor_code):
+    partner = _create(vendor_code)
+    partner.display_panel_vendor = partner_pb.Partner.DisplayPanelVendor(
+        vendor_code = vendor_code,
+    )
+    return partner
+
 def _create(name):
     """Builds a Partner proto."""
     partner_id = partner_id_pb.PartnerId(value = name)
@@ -40,6 +47,20 @@ _EMRIGHT_FW_FORMAT = "emright_firmware_{vendor_id}_{product_id}.bin"
 partner = struct(
     create = _create,
     create_list = _create_list,
+    display_panel = struct(
+        AUO = _create_display_partner(
+            vendor_code = "AUO",
+        ),
+        BOE = _create_display_partner(
+            vendor_code = "BOE",
+        ),
+        CMN = _create_display_partner(
+            vendor_code = "CMN",
+        ),
+        IVO = _create_display_partner(
+            vendor_code = "IVO",
+        ),
+    ),
     touch = struct(
         ELAN = _create_touch_partner(
             name = "elan",

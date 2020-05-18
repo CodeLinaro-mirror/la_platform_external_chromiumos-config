@@ -34,10 +34,22 @@ _DESIGN_ID_WL = design.create_design_id("PROJECT-WL")
 _DB_FW_MASK = 0x0000000f
 _CAMERA_FW_MASK = 0x000000f0
 
-_SCREEN = hw_topo.create_screen("SCREEN", "Default screen", inches = 15, touch = False)
-_TOUCHSCREEN = hw_topo.create_screen("SCREEN", "Default screen", inches = 15, touch = True)
 _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
+_SCREEN = hw_topo.create_screen(
+    inches = 15,
+    width_px = 1920,
+    height_px = 1080,
+    pixels_per_in = 280,
+    touch = False,
+)
+_TOUCHSCREEN = hw_topo.create_screen(
+    inches = 15,
+    width_px = 1920,
+    height_px = 1080,
+    pixels_per_in = 120,
+    touch = True,
+)
 _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.audio_codec.MAX98373, headphone_codec = hw_topo.audio_codec.ALC5682I)
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
 _KEYBOARD = hw_topo.create_keyboard("KEYBOARD", "Default keyboard", backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE)
@@ -385,29 +397,45 @@ _BRAND_CONFIGS = [
     ),
 ]
 
-def _touch_vendor(vendor):
+def _vendor(vendor):
     if not vendor in _COMPONENT_VENDORS:
         _COMPONENT_VENDORS.append(vendor)
     return vendor
 
 _COMPONENTS = [
+    comp.create_display_panel(
+        display_vendor = _vendor(partner.display_panel.AUO),
+        product_id = "1A1A",
+        inches = 15,
+        width_px = 1920,
+        height_px = 1080,
+        pixels_per_in = 280,
+    ),
+    comp.create_display_panel(
+        display_vendor = _vendor(partner.display_panel.BOE),
+        product_id = "2B2B",
+        inches = 15,
+        width_px = 1920,
+        height_px = 1080,
+        pixels_per_in = 120,
+    ),
     comp.create_touchscreen(
-        touch_vendor = _touch_vendor(partner.touch.ELAN_TS),
+        touch_vendor = _vendor(partner.touch.ELAN_TS),
         product_id = "01FF",
         fw_version = "1234",
     ),
     comp.create_touchscreen(
-        touch_vendor = _touch_vendor(partner.touch.SIS),
+        touch_vendor = _vendor(partner.touch.SIS),
         product_id = "111A",
         fw_version = "1.0",
     ),
     comp.create_touchpad(
-        touch_vendor = _touch_vendor(partner.touch.ELAN),
+        touch_vendor = _vendor(partner.touch.ELAN),
         product_id = "99.0",
         fw_version = "9.0",
     ),
     comp.create_touchpad(
-        touch_vendor = _touch_vendor(partner.touch.SYNAPTICS),
+        touch_vendor = _vendor(partner.touch.SYNAPTICS),
         product_id = "ABC1",
         fw_version = "1.1",
     ),

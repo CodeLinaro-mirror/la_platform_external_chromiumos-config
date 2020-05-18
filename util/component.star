@@ -39,6 +39,32 @@ def _create_pci(vendor_id, device_id, revision_id):
     )
     return component_id, pci
 
+def _create_display_panel(
+        display_vendor,
+        product_id,
+        product_name = None,
+        inches = None,
+        width_px = None,
+        height_px = None,
+        pixels_per_in = None):
+    vendor_code = display_vendor.display_panel_vendor.vendor_code
+    """Builds a Component.DisplayPanel proto for touchscreen."""
+    id = comp_id_pb.ComponentId(value = "_".join([vendor_code, product_id]))
+    return comp_pb.Component(
+        id = id,
+        name = product_name or product_id,
+        manufacturer_id = display_vendor.id,
+        display_panel = comp_pb.Component.DisplayPanel(
+            product_id = product_id,
+            properties = comp_pb.Component.DisplayPanel.Properties(
+                diagonal_milliinch = inches * 1000,
+                width_px = width_px,
+                height_px = height_px,
+                pixels_per_in = pixels_per_in,
+            ),
+        ),
+    )
+
 def _create_touch(
         product_id,
         fw_version,
@@ -160,6 +186,7 @@ comp = struct(
     create_soc_family = _create_soc_family,
     create_soc_model = _create_soc_model,
     create_bt = _create_bt,
+    create_display_panel = _create_display_panel,
     create_touchscreen = _create_touchscreen,
     create_touchpad = _create_touchpad,
     create_wifi = _create_wifi,

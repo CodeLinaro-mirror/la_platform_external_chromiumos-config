@@ -27,6 +27,7 @@ message Component {
     Touch touchscreen = 6;
     Wifi wifi = 7;
     Touch touchpad = 10;
+    DisplayPanel display_panel = 11;
   }
 
   // Defines common component version identifiers based on interface standards.
@@ -116,6 +117,21 @@ message Component {
 
     repeated Feature features = 1;
     ClockType clock_type = 2;
+  }
+
+  message DisplayPanel {
+    string product_id = 1;
+    Properties properties = 2;
+
+    message Properties {
+      int32 width_px = 1;
+      int32 height_px = 2;
+      // Generally expressed as double (e.g. 11.7 inches) in specs, but storing
+      // as milliinch to remove double ambiguities.
+      int32 diagonal_milliinch = 3;
+      // PPI or also referred to as DPI (density per inch)
+      int32 pixels_per_in = 4;
+    }
   }
 
   message Touch {

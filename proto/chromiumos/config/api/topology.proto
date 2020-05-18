@@ -203,11 +203,12 @@ message HardwareFeatures {
   // Screen properties of system
   Screen screen = 12;
   message Screen {
-    // Screen since in milli-inches. Would be 0 for systems without screen
-    Count milliinch = 1;
+    Component.DisplayPanel.Properties panel_properties = 3;
 
     // If touch support is present on system
     Present touch_support = 2;
+
+    reserved 1;
   }
 
   // Function form factor of system

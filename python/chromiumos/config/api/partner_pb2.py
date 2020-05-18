@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n#chromiumos/config/api/partner.proto\x12\x15\x63hromiumos.config.api\x1a&chromiumos/config/api/partner_id.proto\"\xd6\x01\n\x07Partner\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x65mail_group\x18\x03 \x01(\t\x12@\n\x0ctouch_vendor\x18\x04 \x01(\x0b\x32*.chromiumos.config.api.Partner.TouchVendor\x1a\x38\n\x0bTouchVendor\x12\x11\n\tvendor_id\x18\x04 \x01(\t\x12\x16\n\x0e\x66w_file_format\x18\x05 \x01(\t\"<\n\x0bPartnerList\x12-\n\x05value\x18\x01 \x03(\x0b\x32\x1e.chromiumos.config.api.PartnerB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n#chromiumos/config/api/partner.proto\x12\x15\x63hromiumos.config.api\x1a&chromiumos/config/api/partner_id.proto\"\xd2\x02\n\x07Partner\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x65mail_group\x18\x03 \x01(\t\x12@\n\x0ctouch_vendor\x18\x04 \x01(\x0b\x32*.chromiumos.config.api.Partner.TouchVendor\x12O\n\x14\x64isplay_panel_vendor\x18\x05 \x01(\x0b\x32\x31.chromiumos.config.api.Partner.DisplayPanelVendor\x1a\x38\n\x0bTouchVendor\x12\x11\n\tvendor_id\x18\x04 \x01(\t\x12\x16\n\x0e\x66w_file_format\x18\x05 \x01(\t\x1a)\n\x12\x44isplayPanelVendor\x12\x13\n\x0bvendor_code\x18\x01 \x01(\t\"<\n\x0bPartnerList\x12-\n\x05value\x18\x01 \x03(\x0b\x32\x1e.chromiumos.config.api.PartnerB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_partner__id__pb2.DESCRIPTOR,])
 
@@ -60,8 +60,38 @@ _PARTNER_TOUCHVENDOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=261,
-  serialized_end=317,
+  serialized_start=342,
+  serialized_end=398,
+)
+
+_PARTNER_DISPLAYPANELVENDOR = _descriptor.Descriptor(
+  name='DisplayPanelVendor',
+  full_name='chromiumos.config.api.Partner.DisplayPanelVendor',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='vendor_code', full_name='chromiumos.config.api.Partner.DisplayPanelVendor.vendor_code', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=400,
+  serialized_end=441,
 )
 
 _PARTNER = _descriptor.Descriptor(
@@ -99,10 +129,17 @@ _PARTNER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='display_panel_vendor', full_name='chromiumos.config.api.Partner.display_panel_vendor', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_PARTNER_TOUCHVENDOR, ],
+  nested_types=[_PARTNER_TOUCHVENDOR, _PARTNER_DISPLAYPANELVENDOR, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -112,7 +149,7 @@ _PARTNER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=103,
-  serialized_end=317,
+  serialized_end=441,
 )
 
 
@@ -142,13 +179,15 @@ _PARTNERLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=319,
-  serialized_end=379,
+  serialized_start=443,
+  serialized_end=503,
 )
 
 _PARTNER_TOUCHVENDOR.containing_type = _PARTNER
+_PARTNER_DISPLAYPANELVENDOR.containing_type = _PARTNER
 _PARTNER.fields_by_name['id'].message_type = chromiumos_dot_config_dot_api_dot_partner__id__pb2._PARTNERID
 _PARTNER.fields_by_name['touch_vendor'].message_type = _PARTNER_TOUCHVENDOR
+_PARTNER.fields_by_name['display_panel_vendor'].message_type = _PARTNER_DISPLAYPANELVENDOR
 _PARTNERLIST.fields_by_name['value'].message_type = _PARTNER
 DESCRIPTOR.message_types_by_name['Partner'] = _PARTNER
 DESCRIPTOR.message_types_by_name['PartnerList'] = _PARTNERLIST
@@ -162,12 +201,20 @@ Partner = _reflection.GeneratedProtocolMessageType('Partner', (_message.Message,
     # @@protoc_insertion_point(class_scope:chromiumos.config.api.Partner.TouchVendor)
     ))
   ,
+
+  DisplayPanelVendor = _reflection.GeneratedProtocolMessageType('DisplayPanelVendor', (_message.Message,), dict(
+    DESCRIPTOR = _PARTNER_DISPLAYPANELVENDOR,
+    __module__ = 'chromiumos.config.api.partner_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.Partner.DisplayPanelVendor)
+    ))
+  ,
   DESCRIPTOR = _PARTNER,
   __module__ = 'chromiumos.config.api.partner_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.Partner)
   ))
 _sym_db.RegisterMessage(Partner)
 _sym_db.RegisterMessage(Partner.TouchVendor)
+_sym_db.RegisterMessage(Partner.DisplayPanelVendor)
 
 PartnerList = _reflection.GeneratedProtocolMessageType('PartnerList', (_message.Message,), dict(
   DESCRIPTOR = _PARTNERLIST,

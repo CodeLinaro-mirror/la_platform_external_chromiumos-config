@@ -33,6 +33,42 @@
   ],
   "components": [
     {
+      "displayPanel": {
+        "productId": "1A1A",
+        "properties": {
+          "diagonalMilliinch": 15000,
+          "heightPx": 1080,
+          "pixelsPerIn": 280,
+          "widthPx": 1920
+        }
+      },
+      "id": {
+        "value": "AUO_1A1A"
+      },
+      "manufacturerId": {
+        "value": "AUO"
+      },
+      "name": "1A1A"
+    },
+    {
+      "displayPanel": {
+        "productId": "2B2B",
+        "properties": {
+          "diagonalMilliinch": 15000,
+          "heightPx": 1080,
+          "pixelsPerIn": 120,
+          "widthPx": 1920
+        }
+      },
+      "id": {
+        "value": "BOE_2B2B"
+      },
+      "manufacturerId": {
+        "value": "BOE"
+      },
+      "name": "2B2B"
+    },
+    {
       "id": {
         "value": "elants_01FF_1234"
       },
@@ -147,8 +183,11 @@
                 }
               },
               "screen": {
-                "milliinch": {
-                  "value": 15000
+                "panelProperties": {
+                  "diagonalMilliinch": 15000,
+                  "heightPx": 1080,
+                  "pixelsPerIn": 120,
+                  "widthPx": 1920
                 },
                 "touchSupport": 1
               },
@@ -356,8 +395,11 @@
                 },
                 "hardwareFeature": {
                   "screen": {
-                    "milliinch": {
-                      "value": 15000
+                    "panelProperties": {
+                      "diagonalMilliinch": 15000,
+                      "heightPx": 1080,
+                      "pixelsPerIn": 120,
+                      "widthPx": 1920
                     },
                     "touchSupport": 1
                   }
@@ -446,8 +488,11 @@
                 }
               },
               "screen": {
-                "milliinch": {
-                  "value": 15000
+                "panelProperties": {
+                  "diagonalMilliinch": 15000,
+                  "heightPx": 1080,
+                  "pixelsPerIn": 120,
+                  "widthPx": 1920
                 },
                 "touchSupport": 1
               },
@@ -636,8 +681,11 @@
                 },
                 "hardwareFeature": {
                   "screen": {
-                    "milliinch": {
-                      "value": 15000
+                    "panelProperties": {
+                      "diagonalMilliinch": 15000,
+                      "heightPx": 1080,
+                      "pixelsPerIn": 120,
+                      "widthPx": 1920
                     },
                     "touchSupport": 1
                   }
@@ -750,8 +798,11 @@
                 }
               },
               "screen": {
-                "milliinch": {
-                  "value": 15000
+                "panelProperties": {
+                  "diagonalMilliinch": 15000,
+                  "heightPx": 1080,
+                  "pixelsPerIn": 120,
+                  "widthPx": 1920
                 },
                 "touchSupport": 1
               },
@@ -959,8 +1010,11 @@
                 },
                 "hardwareFeature": {
                   "screen": {
-                    "milliinch": {
-                      "value": 15000
+                    "panelProperties": {
+                      "diagonalMilliinch": 15000,
+                      "heightPx": 1080,
+                      "pixelsPerIn": 120,
+                      "widthPx": 1920
                     },
                     "touchSupport": 1
                   }
@@ -1072,8 +1126,11 @@
                 }
               },
               "screen": {
-                "milliinch": {
-                  "value": 15000
+                "panelProperties": {
+                  "diagonalMilliinch": 15000,
+                  "heightPx": 1080,
+                  "pixelsPerIn": 120,
+                  "widthPx": 1920
                 },
                 "touchSupport": 1
               },
@@ -1268,8 +1325,11 @@
                 },
                 "hardwareFeature": {
                   "screen": {
-                    "milliinch": {
-                      "value": 15000
+                    "panelProperties": {
+                      "diagonalMilliinch": 15000,
+                      "heightPx": 1080,
+                      "pixelsPerIn": 120,
+                      "widthPx": 1920
                     },
                     "touchSupport": 1
                   }
@@ -1381,8 +1441,11 @@
                 }
               },
               "screen": {
-                "milliinch": {
-                  "value": 15000
+                "panelProperties": {
+                  "diagonalMilliinch": 15000,
+                  "heightPx": 1080,
+                  "pixelsPerIn": 120,
+                  "widthPx": 1920
                 },
                 "touchSupport": 1
               },
@@ -1577,8 +1640,11 @@
                 },
                 "hardwareFeature": {
                   "screen": {
-                    "milliinch": {
-                      "value": 15000
+                    "panelProperties": {
+                      "diagonalMilliinch": 15000,
+                      "heightPx": 1080,
+                      "pixelsPerIn": 120,
+                      "widthPx": 1920
                     },
                     "touchSupport": 1
                   }
@@ -1681,8 +1747,11 @@
                 }
               },
               "screen": {
-                "milliinch": {
-                  "value": 15000
+                "panelProperties": {
+                  "diagonalMilliinch": 15000,
+                  "heightPx": 1080,
+                  "pixelsPerIn": 280,
+                  "widthPx": 1920
                 },
                 "touchSupport": 2
               },
@@ -1856,8 +1925,11 @@
                 },
                 "hardwareFeature": {
                   "screen": {
-                    "milliinch": {
-                      "value": 15000
+                    "panelProperties": {
+                      "diagonalMilliinch": 15000,
+                      "heightPx": 1080,
+                      "pixelsPerIn": 280,
+                      "widthPx": 1920
                     },
                     "touchSupport": 2
                   }
@@ -2052,6 +2124,24 @@
           "value": "FAKE-LOEMC"
         },
         "name": "FAKE-LOEMC"
+      },
+      {
+        "displayPanelVendor": {
+          "vendorCode": "AUO"
+        },
+        "id": {
+          "value": "AUO"
+        },
+        "name": "AUO"
+      },
+      {
+        "displayPanelVendor": {
+          "vendorCode": "BOE"
+        },
+        "id": {
+          "value": "BOE"
+        },
+        "name": "BOE"
       },
       {
         "id": {

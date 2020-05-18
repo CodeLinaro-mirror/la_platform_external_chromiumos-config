@@ -120,11 +120,24 @@ def _bool_to_present(value):
     else:
         return topo_pb.HardwareFeatures.NOT_PRESENT
 
-def _create_screen(id, description, inches, touch, fw_configs = []):
+def _create_screen(
+        id = "SCREEN",
+        description = "Default screen",
+        inches = None,
+        width_px = None,
+        height_px = None,
+        pixels_per_in = None,
+        touch = False,
+        fw_configs = []):
     """Builds a Topology proto for a screen."""
     hw_features = topo_pb.HardwareFeatures()
 
-    hw_features.screen.milliinch.value = inches * 1000
+    hw_features.screen.panel_properties = comp_pb.Component.DisplayPanel.Properties(
+        diagonal_milliinch = inches * 1000,
+        width_px = width_px,
+        height_px = height_px,
+        pixels_per_in = pixels_per_in,
+    )
     hw_features.screen.touch_support = _bool_to_present(touch)
 
     _accumulate_fw_configs(hw_features, fw_configs)

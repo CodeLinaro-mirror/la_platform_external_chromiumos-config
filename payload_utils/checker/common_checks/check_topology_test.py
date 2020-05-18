@@ -8,6 +8,7 @@ import unittest
 from checker.common_checks.check_topology import TopologyConstraintSuite
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
+from chromiumos.config.api.component_pb2 import Component
 from chromiumos.config.api.design_pb2 import Design, DesignList
 from chromiumos.config.api.hardware_topology_pb2 import HardwareTopology
 from chromiumos.config.api.topology_pb2 import (HardwareFeatures,
@@ -25,7 +26,11 @@ class CheckIdsTest(unittest.TestCase):
         description={'EN': 'The first type of screen.'},
         hardware_feature=HardwareFeatures(
             screen=HardwareFeatures.Screen(
-                milliinch=HardwareFeatures.Count(value=10))),
+                panel_properties=Component.DisplayPanel.Properties(
+                    diagonal_milliinch=10
+                )
+            )
+        )
     )
 
     self.screen_2_topology = Topology(
@@ -34,7 +39,11 @@ class CheckIdsTest(unittest.TestCase):
         description={'EN': 'The second type of screen.'},
         hardware_feature=HardwareFeatures(
             screen=HardwareFeatures.Screen(
-                milliinch=HardwareFeatures.Count(value=20))),
+                panel_properties=Component.DisplayPanel.Properties(
+                    diagonal_milliinch=20
+                )
+            )
+        )
     )
 
     self.keyboard_1_topology = Topology(
@@ -77,7 +86,8 @@ class CheckIdsTest(unittest.TestCase):
     # value. Now, a given id and type maps to two different messages.
     invalid_screen_topology = Topology()
     invalid_screen_topology.CopyFrom(self.screen_1_topology)
-    invalid_screen_topology.hardware_feature.screen.milliinch.value = 20
+    invalid_screen = invalid_screen_topology.hardware_feature.screen
+    invalid_screen.panel_properties.diagonal_milliinch = 20
 
     project_config = ConfigBundle(
         designs=DesignList(value=[
@@ -106,7 +116,8 @@ class CheckIdsTest(unittest.TestCase):
     # value. Now, a given id and type maps to two different messages.
     invalid_screen_topology = Topology()
     invalid_screen_topology.CopyFrom(self.screen_1_topology)
-    invalid_screen_topology.hardware_feature.screen.milliinch.value = 20
+    invalid_screen = invalid_screen_topology.hardware_feature.screen
+    invalid_screen.panel_properties.diagonal_milliinch = 20
 
     project_config = ConfigBundle(
         designs=DesignList(value=[
