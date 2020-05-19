@@ -381,11 +381,31 @@ def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {}, {}, None)):
           raise Exception('Software config is required for: %s' % design_id)
 
         program = _Lookup(hw_design.program_id, programs)
-        signer_configs = dict(
-            [(x.brand_id.value, x) for x in program.device_signer_configs])
+        signer_configs_by_design = {}
+        signer_configs_by_brand = {}
+        for signer_config in program.device_signer_configs:
+          design_id = signer_config.design_id.value
+          brand_id = signer_config.brand_id.value
+          if design_id:
+            signer_configs_by_design[design_id] = signer_config
+          elif brand_id:
+            signer_configs_by_brand[brand_id] = signer_config
+          else:
+            raise Exception('No ID found for signer config: %s' % signer_config)
+
         device_signer_config = None
-        if signer_configs:
-          device_signer_config = _Lookup(device_brand.id, signer_configs)
+        if signer_configs_by_design or signer_configs_by_brand:
+          design_id = hw_design.id.value
+          brand_id = device_brand.id.value
+          if design_id in signer_configs_by_design:
+            device_signer_config = signer_configs_by_design[design_id]
+          elif brand_id in signer_configs_by_brand:
+            device_signer_config = signer_configs_by_brand[brand_id]
+          else:
+            # Assume that if signer configs are set, every config is setup
+            raise Exception(
+                'Signer config missing for design: %s, brand: %s' % (
+                    design_id, brand_id))
 
         transformed_config = _TransformBuildConfig(
             Config(

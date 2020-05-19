@@ -33,15 +33,24 @@ _FEATURE_CONSTRAINTS = design.create_constraints(
     hw_topo.create_features(),
 )  # Default for now
 
-_SIGNER_CONFIG = [
-    program_util.create_signer_config("AAAA", "DEFAULT"),  # Ref design
-    program_util.create_signer_config("FDAA", "KEYA"),  # Follow up design A
-    program_util.create_signer_config("FDBB", "KEYB"),  # Follow up design B
-    program_util.create_signer_config("FDCC", "KEYC"),  # Follow up design C
-    program_util.create_signer_config("WLAA", "KEYD"),  # White label A
-    program_util.create_signer_config("WLBB", "KEYE"),  # White label B
-    program_util.create_signer_config("WLCC", "KEYF"),  # White label C
-]
+_SIGNER_BRAND_CONFIGS = program_util.create_signer_configs_by_brand(
+    {
+        "WLAA": "KEYD",  # White label A
+        "WLBB": "KEYE",  # White label B
+        "WLCC": "KEYF",  # White label C
+    },
+)
+
+_SIGNER_DESIGN_CONFIGS = program_util.create_signer_configs_by_design(
+    {
+        "FAKE-REF-DESIGN": "DEFAULT",
+        "PROJECT-A": "KEYA",  # Follow up design A
+        "PROJECT-B": "KEYB",  # Follow up design B
+        "PROJECT-C": "KEYC",  # Follow up design C
+    },
+)
+
+_SIGNER_CONFIG = _SIGNER_BRAND_CONFIGS + _SIGNER_DESIGN_CONFIGS
 
 _FAKE = program_util.create(
     name = "FAKE_PROGRAM",

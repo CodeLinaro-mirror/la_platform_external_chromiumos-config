@@ -14,6 +14,10 @@ load(
     program_id_pb = "chromiumos.config.api",
 )
 load(
+    "@proto//chromiumos/config/api/design_id.proto",
+    design_id_pb = "chromiumos.config.api",
+)
+load(
     "@proto//chromiumos/config/api/device_brand_id.proto",
     db_id_pb = "chromiumos.config.api",
 )
@@ -34,12 +38,31 @@ def _create_design_config_id_segment(design_id, min_id, max_id):
         max_id = max_id,
     )
 
-def _create_signer_config(device_brand_id, key_id):
+# TODO(shapiroc): Migrate clients, make this private, and fix param order
+def _create_signer_config(device_brand_id, key_id, design_id = None):
     """Builds a DeviceSignerConfig proto."""
-    return program_pb.DeviceSignerConfig(
-        brand_id = db_id_pb.DeviceBrandId(value = device_brand_id),
-        key_id = key_id,
-    )
+    if design_id:
+        return program_pb.DeviceSignerConfig(
+            design_id = design_id_pb.DesignId(value = design_id),
+            key_id = key_id,
+        )
+    else:
+        return program_pb.DeviceSignerConfig(
+            brand_id = db_id_pb.DeviceBrandId(value = device_brand_id),
+            key_id = key_id,
+        )
+
+def _create_signer_config_by_brand(device_brand_id, key_id):
+    return _create_signer_config(device_brand_id = device_brand_id, key_id = key_id)
+
+def _create_signer_configs_by_brand(configs):
+    return [_create_signer_config_by_brand(id, key) for id, key in configs.items()]
+
+def _create_signer_config_by_design(design_id, key_id):
+    return _create_signer_config(design_id = design_id, key_id = key_id, device_brand_id = None)
+
+def _create_signer_configs_by_design(configs):
+    return [_create_signer_config_by_design(id, key) for id, key in configs.items()]
 
 def _create(
         name,
@@ -70,5 +93,9 @@ program = struct(
     create_firmware_configuration_segment = _create_firmware_configuration_segment,
     create_design_config_id_segment = _create_design_config_id_segment,
     create_signer_config = _create_signer_config,
+    create_signer_config_by_brand = _create_signer_config_by_brand,
+    create_signer_configs_by_brand = _create_signer_configs_by_brand,
+    create_signer_config_by_design = _create_signer_config_by_design,
+    create_signer_configs_by_design = _create_signer_configs_by_design,
     generate = generate.generate,
 )

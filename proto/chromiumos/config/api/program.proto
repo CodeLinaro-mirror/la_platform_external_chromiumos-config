@@ -46,7 +46,12 @@ message DesignConfigIdSegment {
 
 // Defines the signing key that will be used for a given device brand.
 message DeviceSignerConfig {
-  DeviceBrandId brand_id = 1;
+  // Associates a key to either a specific brand or design.
+  // Per brand association supports Whitelabel devices with separate brands.
+  oneof identifier {
+    DeviceBrandId brand_id = 1;
+    DesignId design_id = 3;
+  }
   string key_id = 2;
 }
 

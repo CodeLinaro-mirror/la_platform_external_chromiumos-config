@@ -79,30 +79,6 @@
         "deviceSignerConfigs": [
           {
             "brandId": {
-              "value": "AAAA"
-            },
-            "keyId": "DEFAULT"
-          },
-          {
-            "brandId": {
-              "value": "FDAA"
-            },
-            "keyId": "KEYA"
-          },
-          {
-            "brandId": {
-              "value": "FDBB"
-            },
-            "keyId": "KEYB"
-          },
-          {
-            "brandId": {
-              "value": "FDCC"
-            },
-            "keyId": "KEYC"
-          },
-          {
-            "brandId": {
               "value": "WLAA"
             },
             "keyId": "KEYD"
@@ -118,6 +94,30 @@
               "value": "WLCC"
             },
             "keyId": "KEYF"
+          },
+          {
+            "designId": {
+              "value": "FAKE-REF-DESIGN"
+            },
+            "keyId": "DEFAULT"
+          },
+          {
+            "designId": {
+              "value": "PROJECT-A"
+            },
+            "keyId": "KEYA"
+          },
+          {
+            "designId": {
+              "value": "PROJECT-B"
+            },
+            "keyId": "KEYB"
+          },
+          {
+            "designId": {
+              "value": "PROJECT-C"
+            },
+            "keyId": "KEYC"
           }
         ],
         "id": {
