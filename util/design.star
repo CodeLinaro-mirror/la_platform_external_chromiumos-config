@@ -51,7 +51,8 @@ def _append_configs(
         firmware_build_config = None,
         bluetooth = None,
         power = None,
-        audio = None):
+        audio = None,
+        smbios_name_match_override = None):
     """Creates and appends new SW and HW configs.
 
     Create new Software and Hardware Design Configuration with the
@@ -82,7 +83,7 @@ def _append_configs(
 
     sw_config = sc_pb.SoftwareConfig()
     sw_config.design_config_id = hw_config.id
-    sw_config.id_scan_config.smbios_name_match = design_id.value
+    sw_config.id_scan_config.smbios_name_match = smbios_name_match_override or design_id.value
     sw_config.id_scan_config.firmware_sku = config_id
     sw_config.firmware = firmware
     sw_config.firmware_build_config = firmware_build_config
