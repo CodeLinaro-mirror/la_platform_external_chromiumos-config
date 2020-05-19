@@ -47,8 +47,8 @@ def _create_display_panel(
         width_px = None,
         height_px = None,
         pixels_per_in = None):
-    vendor_code = display_vendor.display_panel_vendor.vendor_code
     """Builds a Component.DisplayPanel proto for touchscreen."""
+    vendor_code = display_vendor.display_panel_vendor.vendor_code
     id = comp_id_pb.ComponentId(value = "_".join([vendor_code, product_id]))
     return comp_pb.Component(
         id = id,

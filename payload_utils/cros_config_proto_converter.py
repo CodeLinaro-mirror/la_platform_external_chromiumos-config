@@ -98,6 +98,11 @@ def _BuildArc(config, config_files):
     feature_id = _ArcHardwareFeatureId(config.hw_design_config)
     if feature_id in config_files.arc_hw_features:
       result['hardware-features'] = config_files.arc_hw_features[feature_id]
+    topology = config.hw_design_config.hardware_topology
+    ppi = topology.screen.hardware_feature.screen.panel_properties.pixels_per_in
+    # Only set for high resolution displays
+    if ppi and ppi > 250:
+      result['scale'] = ppi
     return result
 
 def _BuildBluetooth(config, bluetooth_files):

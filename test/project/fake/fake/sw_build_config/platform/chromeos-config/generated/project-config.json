@@ -614,7 +614,8 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-wl.xml",
             "system-path": "/etc/hardware_features_project-wl.xml"
-          }
+          },
+          "scale": 280
         },
         "audio": {
           "main": {
@@ -724,7 +725,8 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-wl.xml",
             "system-path": "/etc/hardware_features_project-wl.xml"
-          }
+          },
+          "scale": 280
         },
         "audio": {
           "main": {
@@ -834,7 +836,8 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-wl.xml",
             "system-path": "/etc/hardware_features_project-wl.xml"
-          }
+          },
+          "scale": 280
         },
         "audio": {
           "main": {
