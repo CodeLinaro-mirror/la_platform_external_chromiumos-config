@@ -158,7 +158,7 @@ message Test {
   // these conditions.
   DUTConstraint dut_constraint = 6;
 
-  // Metadata about the test that doesn't affect scheduling or execution.
+  // Metadata about the test that doesn't affect scheduling.
   Informational informational = 4;
 
   // Will be deleted (& reserved) once all clients have migrated.

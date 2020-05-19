@@ -276,7 +276,7 @@ type Test struct {
 	// If the test execution is sharded over multiple devices, each must satisfy
 	// these conditions.
 	DutConstraint *DUTConstraint `protobuf:"bytes,6,opt,name=dut_constraint,json=dutConstraint,proto3" json:"dut_constraint,omitempty"`
-	// Metadata about the test that doesn't affect scheduling or execution.
+	// Metadata about the test that doesn't affect scheduling.
 	Informational *Informational `protobuf:"bytes,4,opt,name=informational,proto3" json:"informational,omitempty"`
 	// Will be deleted (& reserved) once all clients have migrated.
 	DutCondition         *DUTCondition `protobuf:"bytes,5,opt,name=dut_condition,json=dutCondition,proto3" json:"dut_condition,omitempty"` // Deprecated: Do not use.
