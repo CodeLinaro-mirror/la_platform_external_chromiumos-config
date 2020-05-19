@@ -185,21 +185,11 @@ def _BuildFirmware(config):
 
 def _BuildFwSigning(config):
   if config.sw_config.firmware and config.device_signer_config:
-    program = config.program.id.value
     hw_design = config.hw_design.name.lower()
-    brand_code = config.device_brand.brand_code
-    if program == 'Zork' and brand_code == 'ZZCR':
-      # TODO(https://crbug.com/1070814): Hack!!!, Zork projects that do not have
-      # their own brand-code do not share signing keys. Thus this hack for now.
-      # TODO(https://crbug.com/1083770): Also, Berknip signing keys not present
-      # in signing server, special case.
-      key_id = 'TREMBYLE' if hw_design == 'berknip' else hw_design.upper()
-      return {
-          'key-id': key_id,
-          'signature-id': hw_design,
-      }
     return {
         'key-id': config.device_signer_config.key_id,
+        # TODO(shapiroc): Need to fix for whitelabel.
+        # Whitelabel will collide on unique signature-id values.
         'signature-id': hw_design,
     }
   return {}
