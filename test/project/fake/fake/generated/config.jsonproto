@@ -2252,8 +2252,8 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery_poll_interval_initial_ms": "1000",
-          "disable_dark_resume": "0"
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
         }
       }
     },
@@ -2318,8 +2318,8 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery_poll_interval_initial_ms": "1000",
-          "disable_dark_resume": "0"
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
         }
       }
     },
@@ -2391,8 +2391,8 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery_poll_interval_initial_ms": "1000",
-          "disable_dark_resume": "0"
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
         }
       }
     },
@@ -2462,8 +2462,8 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery_poll_interval_initial_ms": "1000",
-          "disable_dark_resume": "0"
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
         }
       }
     },
@@ -2532,8 +2532,8 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery_poll_interval_initial_ms": "1000",
-          "disable_dark_resume": "0"
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
         }
       }
     },
@@ -2597,8 +2597,8 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery_poll_interval_initial_ms": "1000",
-          "disable_dark_resume": "0"
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0"
         }
       }
     }

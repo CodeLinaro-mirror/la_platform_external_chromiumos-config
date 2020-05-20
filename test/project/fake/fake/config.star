@@ -71,7 +71,7 @@ _BLUETOOTH = hw_topo.create_bluetooth("BLUETOOTH", "Default bluetooth", bt_compo
 _AUDIO_CARD = "fakeaudiocard"
 
 _SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True})
-_SC_POWER = sc.create_power(preferences = {"battery_poll_interval_initial_ms": "1000", "disable_dark_resume": "0"})
+_SC_POWER = sc.create_power(preferences = {"battery-poll-interval-initial-ms": "1000", "disable-dark-resume": "0"})
 
 def create_hardware_topology(
         screen = None,
