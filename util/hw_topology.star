@@ -162,14 +162,14 @@ def _create_form_factor(form_factor, fw_configs = [], id = None, description = N
     """
     if not id:
         id = {
-            topo_pb.HardwareFeatures.FormFactor.CLAMSHELL: "CLAMSHELL",
-            topo_pb.HardwareFeatures.FormFactor.CONVERTIBLE: "CONVERTIBLE",
+            _FF.CLAMSHELL: "CLAMSHELL",
+            _FF.CONVERTIBLE: "CONVERTIBLE",
         }[form_factor]
 
     if not description:
         description = {
-            topo_pb.HardwareFeatures.FormFactor.CLAMSHELL: "Device cannot rotate past 180 degrees",
-            topo_pb.HardwareFeatures.FormFactor.CONVERTIBLE: "Device can rotate 360 degrees",
+            _FF.CLAMSHELL: "Device cannot rotate past 180 degrees",
+            _FF.CONVERTIBLE: "Device can rotate 360 degrees",
         }[form_factor]
 
     hw_features = topo_pb.HardwareFeatures()
