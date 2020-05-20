@@ -67,6 +67,10 @@ config/payload_utils/convert_config_enums.py \
 # platform json.
 
 mkdir -p sw_build_config/platform/chromeos-config/generated
+# Note that we can't just remove the .../generated directory
+# as cros_config_proto_converter.py looks for directories
+# within this location before writing to them.
+find sw_build_config/platform/chromeos-config/generated -type f -delete
 python3 config/payload_utils/cros_config_proto_converter.py \
   --output sw_build_config/platform/chromeos-config/generated/project-config.json \
   --program_config program/generated/config.jsonproto \
