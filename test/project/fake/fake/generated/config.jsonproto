@@ -314,7 +314,7 @@
               },
               "keyboard": {
                 "description": {
-                  "EN": "Default keyboard"
+                  "EN": "Detachable keyboard with backlight"
                 },
                 "hardwareFeature": {
                   "keyboard": {
@@ -323,7 +323,7 @@
                     "powerButton": 2
                   }
                 },
-                "id": "KEYBOARD",
+                "id": "KB_BL",
                 "type": 5
               },
               "lteBoard": {
@@ -600,7 +600,7 @@
               },
               "keyboard": {
                 "description": {
-                  "EN": "Default keyboard"
+                  "EN": "Detachable keyboard with backlight"
                 },
                 "hardwareFeature": {
                   "keyboard": {
@@ -609,7 +609,7 @@
                     "powerButton": 2
                   }
                 },
-                "id": "KEYBOARD",
+                "id": "KB_BL",
                 "type": 5
               },
               "lteBoard": {
@@ -929,7 +929,7 @@
               },
               "keyboard": {
                 "description": {
-                  "EN": "Default keyboard"
+                  "EN": "Detachable keyboard with backlight"
                 },
                 "hardwareFeature": {
                   "keyboard": {
@@ -938,7 +938,7 @@
                     "powerButton": 2
                   }
                 },
-                "id": "KEYBOARD",
+                "id": "KB_BL",
                 "type": 5
               },
               "lteBoard": {
@@ -1256,7 +1256,7 @@
               },
               "keyboard": {
                 "description": {
-                  "EN": "Default keyboard"
+                  "EN": "Detachable keyboard with backlight"
                 },
                 "hardwareFeature": {
                   "keyboard": {
@@ -1265,7 +1265,7 @@
                     "powerButton": 2
                   }
                 },
-                "id": "KEYBOARD",
+                "id": "KB_BL",
                 "type": 5
               },
               "motherboardUsb": {
@@ -1571,7 +1571,7 @@
               },
               "keyboard": {
                 "description": {
-                  "EN": "Default keyboard"
+                  "EN": "Detachable keyboard with backlight"
                 },
                 "hardwareFeature": {
                   "keyboard": {
@@ -1580,7 +1580,7 @@
                     "powerButton": 2
                   }
                 },
-                "id": "KEYBOARD",
+                "id": "KB_BL",
                 "type": 5
               },
               "motherboardUsb": {
@@ -1856,7 +1856,7 @@
               },
               "keyboard": {
                 "description": {
-                  "EN": "Default keyboard"
+                  "EN": "Detachable keyboard with backlight"
                 },
                 "hardwareFeature": {
                   "keyboard": {
@@ -1865,7 +1865,7 @@
                     "powerButton": 2
                   }
                 },
-                "id": "KEYBOARD",
+                "id": "KB_BL",
                 "type": 5
               },
               "motherboardUsb": {

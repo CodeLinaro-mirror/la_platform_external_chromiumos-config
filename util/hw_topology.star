@@ -220,8 +220,40 @@ def _create_stylus(id, description, stylus_type, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_keyboard(id, description, backlight, pwr_btn_present, kb_type, fw_configs = []):
-    """Builds a Topology proto for a keyboard."""
+def _create_keyboard(backlight, pwr_btn_present, kb_type, fw_configs = [], id = None, description = None):
+    """Builds a Topology proto for a keyboard.
+
+    Args:
+        backlight: True if a backlight is present.
+        pwr_btn_present: True if a power button is present.
+        kb_type: A KeyboardType enum.
+        fw_configs: A list of FirmwareConfiguration protos for the form factor.
+        id: A string identifier for the Topology. If not passed, a default is
+            provided.
+        description: An English description for the Topology. If not passed, a
+            default is provided.
+    """
+
+    if not id:
+        id = "KB_{backlight}".format(
+            backlight = "BL" if backlight else "NO_BL",
+        )
+
+    if not description:
+        # Starlark doesn't seem to have a way to find the enum name with
+        # reflection.
+        if kb_type == topo_pb.HardwareFeatures.Keyboard.INTERNAL:
+            type_str = "Internal"
+        elif kb_type == topo_pb.HardwareFeatures.Keyboard.DETACHABLE:
+            type_str = "Detachable"
+        else:
+            type_str = "Unknown type"
+
+        description = "{type} keyboard {backlight} backlight".format(
+            type = type_str,
+            backlight = "with" if backlight else "without",
+        )
+
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.keyboard.keyboard_type = kb_type
