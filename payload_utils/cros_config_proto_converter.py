@@ -146,6 +146,7 @@ def _FwBuildTarget(payload):
 
 
 def _BuildFirmware(config):
+  """Returns firmware config, or None if no build targets."""
   fw_payload_config = config.sw_config.firmware
   fw_build_config = config.sw_config.firmware_build_config
   main_ro = fw_payload_config.main_ro_payload
@@ -161,6 +162,9 @@ def _BuildFirmware(config):
   _Set(
       list(fw_build_config.build_targets.ec_extras), build_targets, 'ec_extras')
   _Set(fw_build_config.build_targets.libpayload, build_targets, 'libpayload')
+
+  if not build_targets:
+    return None
 
   result = {
       'bcs-overlay': config.build_target.overlay_name,
