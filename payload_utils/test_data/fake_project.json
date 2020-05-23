@@ -10,6 +10,10 @@
             "metrics-tag": "fake-ref-design",
             "oem": "FAKE-OEM",
             "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "payload_utils/test_data/arc/hardware_features_fake-ref-design.xml",
+            "system-path": "/etc/hardware_features_fake-ref-design.xml"
           }
         },
         "audio": {
@@ -36,6 +40,10 @@
           }
         },
         "bluetooth": {
+          "config": {
+            "build-path": "payload_utils/test_data/bluetooth/fake-ref-design_0001_0002_0003.conf",
+            "system-path": "/etc/bluetooth/fake-ref-design_0001_0002_0003/main.conf"
+          },
           "flags": {
             "enable-suspend-management": true
           }
@@ -91,6 +99,10 @@
             "metrics-tag": "fake-ref-design",
             "oem": "FAKE-OEM",
             "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "payload_utils/test_data/arc/hardware_features_fake-ref-design.xml",
+            "system-path": "/etc/hardware_features_fake-ref-design.xml"
           }
         },
         "audio": {
@@ -164,6 +176,10 @@
             "metrics-tag": "project-a",
             "oem": "FAKE-OEMA",
             "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "payload_utils/test_data/arc/hardware_features_project-a.xml",
+            "system-path": "/etc/hardware_features_project-a.xml"
           }
         },
         "audio": {
@@ -199,6 +215,10 @@
           }
         },
         "bluetooth": {
+          "config": {
+            "build-path": "payload_utils/test_data/bluetooth/project-a_0001_0002_0003.conf",
+            "system-path": "/etc/bluetooth/project-a_0001_0002_0003/main.conf"
+          },
           "flags": {
             "enable-suspend-management": true
           }
@@ -254,6 +274,10 @@
             "metrics-tag": "project-b",
             "oem": "FAKE-OEMB",
             "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "payload_utils/test_data/arc/hardware_features_project-b.xml",
+            "system-path": "/etc/hardware_features_project-b.xml"
           }
         },
         "audio": {
@@ -281,6 +305,10 @@
           }
         },
         "bluetooth": {
+          "config": {
+            "build-path": "payload_utils/test_data/bluetooth/project-b_0001_0002_0003.conf",
+            "system-path": "/etc/bluetooth/project-b_0001_0002_0003/main.conf"
+          },
           "flags": {
             "enable-suspend-management": true
           }
@@ -332,6 +360,10 @@
             "metrics-tag": "project-c",
             "oem": "FAKE-OEMC",
             "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "payload_utils/test_data/arc/hardware_features_project-c.xml",
+            "system-path": "/etc/hardware_features_project-c.xml"
           }
         },
         "audio": {
@@ -358,6 +390,10 @@
           }
         },
         "bluetooth": {
+          "config": {
+            "build-path": "payload_utils/test_data/bluetooth/project-c_0001_0002_0003.conf",
+            "system-path": "/etc/bluetooth/project-c_0001_0002_0003/main.conf"
+          },
           "flags": {
             "enable-suspend-management": true
           }
@@ -409,6 +445,10 @@
             "metrics-tag": "project-wl",
             "oem": "FAKE-LOEMA",
             "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "payload_utils/test_data/arc/hardware_features_project-wl.xml",
+            "system-path": "/etc/hardware_features_project-wl.xml"
           },
           "scale": 280
         },
@@ -484,6 +524,10 @@
             "oem": "FAKE-LOEMB",
             "product": "fake"
           },
+          "hardware-features": {
+            "build-path": "payload_utils/test_data/arc/hardware_features_project-wl.xml",
+            "system-path": "/etc/hardware_features_project-wl.xml"
+          },
           "scale": 280
         },
         "audio": {
@@ -557,6 +601,10 @@
             "metrics-tag": "project-wl",
             "oem": "FAKE-LOEMC",
             "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "payload_utils/test_data/arc/hardware_features_project-wl.xml",
+            "system-path": "/etc/hardware_features_project-wl.xml"
           },
           "scale": 280
         },

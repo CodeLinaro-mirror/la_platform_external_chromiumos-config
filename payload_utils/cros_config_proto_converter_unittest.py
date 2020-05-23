@@ -8,7 +8,6 @@
 
 import os
 import subprocess
-import tempfile
 import unittest
 
 import cros_config_proto_converter
@@ -49,27 +48,19 @@ class ParseArgsTests(unittest.TestCase):
 class MainTest(unittest.TestCase):
 
   def testFullTransform(self):
-    with tempfile.TemporaryDirectory() as tempdir:
-      output_file = os.path.join(tempdir, 'output')
-      cros_config_proto_converter.Main(project_configs=[PROJECT_CONFIG_FILE],
-                                       program_config=PROGRAM_CONFIG_FILE,
-                                       output=output_file,)
+    output_file = 'payload_utils/test_data/fake_project.json'
+    cros_config_proto_converter.Main(project_configs=[PROJECT_CONFIG_FILE],
+                                     program_config=PROGRAM_CONFIG_FILE,
+                                     output=output_file,)
 
-      expected_file = os.path.join(THIS_DIR, 'test_data/fake_project.json')
-      changed = subprocess.run(
-          ['diff', expected_file, output_file]).returncode != 0
+    changed = subprocess.run(['git', 'diff', '--exit-code',
+                              'payload_utils/test_data']).returncode != 0
 
-      regen_cmd = ('To regenerate the expected output, run:\n'
-                   '\tcd payload_utils && '
-                   'python3 -m cros_config_proto_converter '
-                   '-c %s '
-                   '-p %s '
-                   '-o %s ' % (
-                       PROJECT_CONFIG_FILE, PROGRAM_CONFIG_FILE, expected_file))
-
-      if changed:
-        print(regen_cmd)
-        self.fail('Fake project transform does not match')
+    if changed:
+      msg = ('Fake project transform does not match.\n'
+             'If the differences are correct per the changes in\n'
+             'your changelist then check them in and try again.')
+      self.fail(msg)
 
 
 class TransformBuildConfigsTest(unittest.TestCase):

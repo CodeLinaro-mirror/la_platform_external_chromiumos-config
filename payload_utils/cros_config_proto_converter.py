@@ -511,7 +511,9 @@ def _ArcHardwareFeatureId(design_config):
 
 
 def _WriteArcHardwareFeatureFile(output_dir, file_name, config_content):
-  output = '%s/arc/%s' % (output_dir, file_name)
+  output_dir += '/arc'
+  os.makedirs(output_dir, exist_ok=True)
+  output = '%s/%s' % (output_dir, file_name)
   file_content = minidom.parseString(
       config_content).toprettyxml(indent='  ', encoding='utf-8')
 
@@ -609,6 +611,7 @@ def WriteBluetoothConfigFiles(config, output_dir, build_root_path):
   Returns:
     dict that maps the bluetooth component id onto the file config.
   """
+  output_dir += '/bluetooth'
   result = {}
   for hw_design in config.designs.value:
     project_name = hw_design.name.lower()
@@ -625,7 +628,8 @@ DeviceID = bluetooth:%s:%s:%s''' % (bt_comp.vendor_id,
                                     bt_comp.product_id,
                                     bt_comp.bcd_device)
 
-        output = '%s/bluetooth/%s.conf' % (output_dir, bt_id)
+        os.makedirs(output_dir, exist_ok=True)
+        output = '%s/%s.conf' % (output_dir, bt_id)
         with open(output, 'w') as output_stream:
           # Using print function adds proper trailing newline.
           print(bt_content, file=output_stream)
@@ -692,12 +696,10 @@ def Main(project_configs,
     }
   if os.path.exists(TOUCH_PATH):
     touch_fw = _BuildTouchFileConfig(configs, project_name)
-  if os.path.exists(os.path.join(output_dir, 'bluetooth')):
-    bluetooth_files = WriteBluetoothConfigFiles(
-        configs, output_dir, build_root_dir)
-  if os.path.exists(os.path.join(output_dir, 'arc')):
-    arc_hw_feature_files = WriteArcHardwareFeatureFiles(
-        configs, output_dir, build_root_dir)
+  bluetooth_files = WriteBluetoothConfigFiles(
+      configs, output_dir, build_root_dir)
+  arc_hw_feature_files = WriteArcHardwareFeatureFiles(
+      configs, output_dir, build_root_dir)
   config_files = ConfigFiles(
       bluetooth=bluetooth_files,
       arc_hw_features=arc_hw_feature_files,
