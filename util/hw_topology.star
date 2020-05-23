@@ -153,7 +153,7 @@ def _create_form_factor(form_factor, fw_configs = [], id = None, description = N
     """Builds a Topology proto for a form factor.
 
     Args:
-        form_factor: A FormFactorType enum.
+        form_factor: A FormFactorType enum. Required.
         fw_configs: A list of FirmwareConfiguration protos for the form factor.
         id: A string identifier for the Topology. If not passed, a default is
             provided based on form_factor.
@@ -224,9 +224,9 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, fw_configs = [], id = 
     """Builds a Topology proto for a keyboard.
 
     Args:
-        backlight: True if a backlight is present.
-        pwr_btn_present: True if a power button is present.
-        kb_type: A KeyboardType enum.
+        backlight: True if a backlight is present. Required.
+        pwr_btn_present: True if a power button is present. Required.
+        kb_type: A KeyboardType enum. Required.
         fw_configs: A list of FirmwareConfiguration protos for the form factor.
         id: A string identifier for the Topology. If not passed, a default is
             provided.
