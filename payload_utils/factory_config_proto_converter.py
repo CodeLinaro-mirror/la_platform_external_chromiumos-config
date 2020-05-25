@@ -94,13 +94,25 @@ def CastAudioCodec(value):
   return topology_pb2.HardwareFeatures.Audio.AudioCodec.Name(value)
 
 
+def CastConvertible(value):
+  if value is None:
+    return None
+  return value == topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE
+
+
+def CastFingerPrint(value):
+  if value is None:
+    return None
+  return value != topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT
+
+
 def TransformDesignTable(design_config, design_table):
   """Transforms config proto to model_sku."""
   # TODO(cyueh): Find out how to get all component.has_* and
   # component.match_sku_components from design_config.
   #
   # The list of missing component.has_*:
-  # has_tabletmode, has_lid_lightsensor, has_base_lightsensor
+  # has_lid_lightsensor, has_base_lightsensor
   features = design_config.hardware_features
   topology = design_config.hardware_topology
   design_table.update({
@@ -126,8 +138,9 @@ def TransformDesignTable(design_config, design_table):
               topology_pb2.HardwareFeatures.Stylus.EXTERNAL
           ],
       'component.has_fingerprint':
-          GetFeatures(topology, 'fingerprint', ['fingerprint', 'location']) !=
-          topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT,
+          CastFingerPrint(
+              GetFeatures(topology, 'fingerprint',
+                          ['fingerprint', 'location'])),
       'component.fingerprint_board':
           GetFeatures(topology, 'fingerprint', ['fingerprint', 'board']),
       'component.has_keyboard_backlight':
@@ -143,15 +156,38 @@ def TransformDesignTable(design_config, design_table):
               GetFeatures(topology, 'audio', ['audio', 'headphone_codec'])),
       'component.has_sd_reader':
           GetFeatures(topology, 'sd_reader'),
-      'component.has_accelerometer_gyroscope_magnetometer':
-          GetFeatures(topology, 'accelerometer_gyroscope_magnetometer'),
+      'component.has_lid_accelerometer':
+          CastPresent(
+              GetFeatures(topology, 'accelerometer_gyroscope_magnetometer',
+                          ['accelerometer', 'lid_accelerometer'])),
+      'component.has_base_accelerometer':
+          CastPresent(
+              GetFeatures(topology, 'accelerometer_gyroscope_magnetometer',
+                          ['accelerometer', 'base_accelerometer'])),
+      'component.has_lid_gyroscope':
+          CastPresent(
+              GetFeatures(topology, 'accelerometer_gyroscope_magnetometer',
+                          ['gyroscope', 'lid_gyroscope'])),
+      'component.has_base_gyroscope':
+          CastPresent(
+              GetFeatures(topology, 'accelerometer_gyroscope_magnetometer',
+                          ['gyroscope', 'base_gyroscope'])),
+      'component.has_lid_magnetometer':
+          CastPresent(
+              GetFeatures(topology, 'accelerometer_gyroscope_magnetometer',
+                          ['magnetometer', 'lid_magnetometer'])),
+      'component.has_base_magnetometer':
+          CastPresent(
+              GetFeatures(topology, 'accelerometer_gyroscope_magnetometer',
+                          ['magnetometer', 'base_magnetometer'])),
       'component.has_wifi':
           GetFeatures(topology, 'wifi'),
       'component.has_lte':
           CastPresent(GetFeatures(topology, 'lte_board', ['lte', 'present'])),
       'component.has_tabletmode':
-          GetFeatures(topology, 'form_factor', ['form_factor', 'form_factor'])
-          == topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE,
+          CastConvertible(
+              GetFeatures(topology, 'form_factor',
+                          ['form_factor', 'form_factor'])),
   })
   design_table.update({
       'component.match_sku_components':
@@ -225,7 +261,8 @@ def GetFactoryConfigs(config):
   # may map to the same product_name. The sets of sku id should not intersect.
   product_names = {
       sw_design.design_config_id.value:
-      sw_design.id_scan_config.smbios_name_match
+      (sw_design.id_scan_config.smbios_name_match or
+       sw_design.id_scan_config.device_tree_compatible_match)
       for sw_design in config.software_configs
   }
   # Create common table.
