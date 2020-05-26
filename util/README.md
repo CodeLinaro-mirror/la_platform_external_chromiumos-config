@@ -41,9 +41,17 @@ generated documentation.
 Builds a BrandConfig proto.
 
 ```python
-brand_config.create()
+brand_config.create(device_brand_id, wallpaper = None, whitelabel_tag = None)
 ```
 
+#### Arguments {#brand_config.create-args}
+
+* **device_brand_id**: A DeviceBrandId proto that is used to select a BrandConfig at runtime. Required.
+* **wallpaper**: Base filename of the default wallpaper to show.
+* **whitelabel_tag**: "whitelabel_tag" value set in the VPD, used to select a BrandConfig at runtime. See https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#field-whitelabel_tag.
+
+#### Returns  {#brand_config.create-returns}
+A BrandConfig proto.
 
 
 
@@ -54,9 +62,26 @@ brand_config.create()
 Builds a BuildTarget proto.
 
 ```python
-build_target.create()
+build_target.create(
+    # Required arguments.
+    name,
+
+    # Optional arguments.
+    overlay_name = None,
+    arc_device = None,
+    first_api_level = None,
+)
 ```
 
+#### Arguments {#build_target.create-args}
+
+* **name**: Name of the build target, e.g. "galaxy". Required.
+* **overlay_name**: Name of the Portage overlay, e.g. "overlay-galaxy-private". If not specified, "name" is used.
+* **arc_device**: Device name to report in ‘ro.product.device’. If not specified, "name"_cheets is used.
+* **first_api_level**: The first Android API level that this build shipped with.
+
+#### Returns  {#build_target.create-returns}
+A BuildTarget proto.
 
 
 
