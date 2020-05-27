@@ -21,14 +21,6 @@ internal-manifest checkout and should not run these steps.**
 Partners will do a public checkout and then add
 config repos for the projects and programs they are working on.
 
-Note: There are two different types of configurations for partners. It is
-important to know which type you are working with. One type of configuration
-places the program and projects in separate repositories. The second type of
-configuration places the program and projects in a single repository. This
-difference results in slight differences in how you work with these types of
-configurations and where you find key files and execute commands. The
-instructions below attempt to make this distinction clear.
-
 1. Before beginning verify that you have appropriate permissions to work with
    the project. This will usually mean having membership in the partner domain
    account that is configured for your project. Inquire with your local
@@ -40,19 +32,13 @@ instructions below attempt to make this distinction clear.
    code into a `$SOURCE_REPO` directory. This step pulls down a lot of code and
    could take up to an hour.
 1. Verify the name of your `$PROGRAM` and `$PROJECT` with your local representative
-   or Google contact. These values will be used in the command below. For single
-   repository configurations with projects directly in the program's
-   subdirectories you will only get the `$PROGRAM`. Example commands for both
-   separate repo and single repo variants will be shown below.
+   or Google contact.
+
 1. Run the following command to sync your `$PROGRAM` and `$PROJECT` from within your
    chromiumos checkout in the `$SOURCE_REPO/src/config` directory:
 
    ```
-   # For separate $PROGRAM $PROJECT repo configurations:
    ./setup_project.sh $PROGRAM $PROJECT
-
-   # For single $PROGRAM repo configurations:
-   ./setup_project.sh $PROGRAM
    ```
 
    This command will execute a number of steps including checking out your
@@ -103,14 +89,7 @@ configuration definition in
 project configuration follows:
 
 ```
-# For separate $PROGRAM $PROJECT repo configurations:
 cd $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/
-$EDITOR config.star
-# Adjust contents of config.star and save.
-gen_config config.star
-
-# For single $PROGRAM repo configurations:
-cd $SOURCE_REPO/src/program/$PROGRAM/${project subdir}
 $EDITOR config.star
 # Adjust contents of config.star and save.
 gen_config config.star
@@ -120,24 +99,14 @@ Note that many `config.star` files are executable, with the shebang
 `#!/usr/bin/env gen_config`. Thus `./config.star` can be used as a shortcut for
 `gen_config config.star` if `gen_config` is on `PATH`.
 
-For separate `$PROGRAM` `$PROJECT` repo configurations this will cause the
-generation of payloads that can be found at:
+This will cause the generation of payloads and config files that can be found
+at:
 
-*   `$SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/config.binaryproto`
-*   `$SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/config.cfg`
-*   `$SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/project/project-config.json`
+*   `$SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/config.jsonproto`
+*   `$SOURCE_REPO/src/project/$PROGRAM/$PROJECT/generated/project/sw_build_config/platform/chromeos-config/generated/project-config.json`
 
-For single $PROGRAM repo configurations those payloads will be found at:
-
-*   `$SOURCE_REPO/src/program/$PROGRAM/${project subdir}/generated/config.binaryproto`
-*   `$SOURCE_REPO/src/program/$PROGRAM/${project subdir}/generated/config.cfg`
-*   `$SOURCE_REPO/src/program/$PROGRAM/${project subdir}/generated/project/project-config.json`
-
-`config.binaryproto` is a file containing the config protobuf in
-[binary wire format](https://developers.google.com/protocol-buffers/docs/encoding),
-and `config.cfg` contains the same config in [text format](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.text_format).
-The binary proto is for machines reading the config, and the text format is for
-humans to understand the generated configs, e.g. diffs during a code review.
+`config.jsonproto` is a file containing the config protobuf
+[encoded as JSON](https://developers.google.com/protocol-buffers/docs/proto3#json).
 
 `project-config.json` is the config in the [legacy YAML schema](https://chromium.git.corp.google.com/chromiumos/platform2/+/refs/heads/master/chromeos-config/README.md#Config-Schema)
 and is present for backwards-compatibility.
@@ -147,12 +116,7 @@ changes pass constraint checks. You can do that by running the `check_config`
 script from within your project's root directory:
 
 ```
-# For separate $PROGRAM $PROJECT repo configurations:
 cd $SOURCE_REPO/src/project/$PROGRAM/$PROJECT/
-check_config
-
-# For single $PROGRAM repo configurations:
-cd $SOURCE_REPO/src/program/$PROGRAM/${project subdir}
 check_config
 ```
 
@@ -188,6 +152,19 @@ page for your CL. The builds are displayed with [Milo](https://g3doc.corp.google
 currently doesn't support partner access. Thus, stdout logs for key steps of the
 build are mirrored to per-project Google Storage buckets. The Google Storage
 mirrored logs appear as links like "stdout (GS mirror)" on the Milo page.
+
+## Constraint Checkers
+
+As described above, a project config is verified against the constraints of the
+program before it is submitted. This is done by `check_config` locally and by
+CQ builders before submission.
+
+Constraints look and behave similar to Python unit tests, but are passed a
+program and project `ConfigBundle` to do assertions on. Constraints that apply
+to all programs and projects are in the [payload_utils/checker/common_checks](https://chromium.googlesource.com/chromiumos/config/+/refs/heads/master/payload_utils/checker/common_checks/) directory. Constraints can also be program-specific; these
+constraints are under the `checks` directory of the program repo. For example,
+see the [Galaxy](https://chrome-internal.googlesource.com/chromeos/program/galaxy/+/refs/heads/master/checks/)
+test data program.
 
 ## Directory Structure
 
