@@ -40,9 +40,14 @@ def main():
   project_config = io_utils.read_config(args.project)
   program_config = io_utils.read_config(args.program)
 
+  # Expect program checks in a 'checks' dir under the root of the program repo.
+  # Note that args.program points to the generated file, so use dirname + '..'
+  # to find the root of the program repo.
+  program_checks_dir = os.path.join(os.path.dirname(args.program), '../checks')
+
   constraint_suite_directories = [
       COMMON_CHECKS_PATH,
-      os.path.join(args.program, 'checks'),
+      program_checks_dir,
   ]
 
   constraint_suites = []
