@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+import "chromiumos/config/api/test/rtd/v1/progress.proto";
+import "chromiumos/config/api/test/metadata/v1/metadata.proto";
+
+package chromiumos.config.api.test.tnull.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/tnull/v1;tnull";
+
+// A test with the TNull RTD consists of a Setup step (always executed first)
+// and then a sequence of zero or more Step specifications, each specifying a
+// method to call and the arguments to call it with.
+message Steps {
+  SetupArgSet setup = 1;
+  repeated Step steps = 2;
+}
+
+// The method arguments for a Setup call
+message SetupArgSet {
+  chromiumos.config.api.test.metadata.v1.Test test = 1;
+  chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig config = 2;
+  chromiumos.config.api.test.rtd.v1.Result result = 3;
+  repeated MockLog logs = 4;
+  repeated MockArtifact artifacts = 5;
+}
+
+message MockLog {
+  string name = 1;
+  repeated string messages = 2;
+}
+
+message MockArtifact {
+  string name = 1;
+  bytes file_bytes = 2;
+}
+
+// A Step is a action to take to execute a test.
+message Step {
+
+  enum Method {
+    METHOD_UNSPECIFIED = 0;
+    RESULT = 1;
+    LOG = 2;
+    ARCHIVE = 3;
+  }
+
+  oneof method_spec {
+    Method method = 1;
+    // Catchall for rapid iteration. Not guaranteed safe or reliable.
+    string unknown_method = 2;
+  }
+
+  // Method arguments, initially as raw key/value pairs but allowing for more
+  // structured types in the future as the RTD becomes more mature
+  oneof args_spec {
+    // For use with simple args and in testing.
+    ArbitraryArgSet arbitrary_args = 3;
+    // Further oneof entries will each correspond to one method type,
+    // e.g. ResultArgSet result_args = 4;
+  }
+}
+
+// Catchall args for rapid iteration. Passed to whatever method is specified by
+// method_spec.
+// This message type is not expected to ever change; it is _just_ a set of args.
+// Map types are not permitted in a oneof, or else this would just be a map.
+message ArbitraryArgSet {
+  // Where the value is a complex object - if that is ever necessary - it will
+  // be interpreted as a JSON-serialized object of whatever type the method
+  // expects for that argument.
+  map<string, string> args = 1;
+}
