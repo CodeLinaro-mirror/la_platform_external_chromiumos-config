@@ -3,7 +3,9 @@
 # found in the LICENSE file.
 """Tests for io_utils."""
 
+import json
 import os
+import pathlib
 import tempfile
 import unittest
 
@@ -31,6 +33,20 @@ class IoUtilsTest(unittest.TestCase):
     with open(self.config_path, 'w') as f:
       print(json_output, file=f)
 
+    self.factory_path = os.path.join(repo_path, 'factory')
+    os.makedirs(os.path.join(self.factory_path, 'generated'))
+    self.model_sku = {"model": {"a": 1}}
+    with open(
+        os.path.join(self.factory_path, 'generated', 'model_sku.json'),
+        'w') as f:
+      json.dump(self.model_sku, f)
+
   def test_read_config(self):
     """Tests the json proto can be read."""
     self.assertEqual(io_utils.read_config(self.config_path), self.config)
+
+  def test_read_model_sku_json(self):
+    """Tests model_sku.json can be read."""
+    self.assertDictEqual(
+        io_utils.read_model_sku_json(pathlib.Path(self.factory_path)),
+        self.model_sku)

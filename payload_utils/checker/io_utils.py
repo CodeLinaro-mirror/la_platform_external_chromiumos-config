@@ -3,7 +3,8 @@
 # found in the LICENSE file.
 """IO-related helper functions."""
 
-import os
+import json
+import pathlib
 
 from chromiumos.config.payload import config_bundle_pb2
 
@@ -21,3 +22,13 @@ def read_config(path: str) -> config_bundle_pb2.ConfigBundle:
   with open(path, 'r') as f:
     json_format.Parse(f.read(), project_config)
   return project_config
+
+
+def read_model_sku_json(factory_dir: pathlib.Path) -> dict:
+  """Reads and parses the model_sku.json file.
+
+  Args:
+      factory_dir: Path to a project's factory dir.
+  """
+  with open(factory_dir.joinpath('generated', 'model_sku.json')) as f:
+    return json.load(f)
