@@ -69,7 +69,10 @@ class CheckIdsTest(unittest.TestCase):
         ]))
 
     TopologyConstraintSuite().run_checks(
-        program_config=None, project_config=project_config)
+        program_config=None,
+        project_config=project_config,
+        factory_dir=None,
+    )
 
   def test_check_topologies_consistent_violated(self):
     """Tests assertion thrown when topologies are inconsistent."""
@@ -98,7 +101,10 @@ class CheckIdsTest(unittest.TestCase):
         AssertionError,
         r'Two different messages found for id and type \(part1, SCREEN\)*'):
       TopologyConstraintSuite().run_checks(
-          program_config=None, project_config=project_config)
+          program_config=None,
+          project_config=project_config,
+          factory_dir=None,
+      )
 
   def test_check_topologies_consistent_violated_across_designs(self):
     """Tests assertion thrown when topologies are inconsistent across designs.
@@ -130,4 +136,7 @@ class CheckIdsTest(unittest.TestCase):
         AssertionError,
         r'Two different messages found for id and type \(part1, SCREEN\)*'):
       TopologyConstraintSuite().run_checks(
-          program_config=None, project_config=project_config)
+          program_config=None,
+          project_config=project_config,
+          factory_dir=None,
+      )

@@ -37,7 +37,8 @@ pip install -r config/requirements.txt -q
 
 if ! ./config/payload_utils/checker.py \
   --program ./program/generated/config.jsonproto \
-  --project ./generated/config.jsonproto; then
+  --project ./generated/config.jsonproto \
+  --factory_dir=./factory; then
   echo 'checker.py constraint checks failed'
   exit 1
 fi

@@ -67,7 +67,10 @@ class CheckFormFactorTest(unittest.TestCase):
         ]))
 
     FormFactorConstraintSuite().check_form_factor(
-        program_config=program_config, project_config=project_config)
+        program_config=program_config,
+        project_config=project_config,
+        factory_dir=None,
+    )
 
   def test_check_form_factor_invalid(self):
     """Tests check_form_factor with invalid configs."""
@@ -102,7 +105,10 @@ class CheckFormFactorTest(unittest.TestCase):
         AssertionError,
         r".*'DETACHABLE' not found in \['CLAMSHELL', 'CONVERTIBLE'\]"):
       FormFactorConstraintSuite().check_form_factor(
-          program_config=program_config, project_config=project_config)
+          program_config=program_config,
+          project_config=project_config,
+          factory_dir=None,
+      )
 
   def test_check_form_factor_non_required_constraint(self):
     """Tests check_form_factor with a non-REQUIRED FormFactor Constraint."""
@@ -119,4 +125,4 @@ class CheckFormFactorTest(unittest.TestCase):
     with self.assertRaisesRegex(AssertionError,
                                 'FormFactor constraints must be REQUIRED.'):
       FormFactorConstraintSuite().check_form_factor_required(
-          program_config=program_config, project_config=None)
+          program_config=program_config, project_config=None, factory_dir=None)

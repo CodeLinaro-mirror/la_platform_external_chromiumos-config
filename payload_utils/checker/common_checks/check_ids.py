@@ -18,6 +18,7 @@ segments can overlap.
 """
 
 import itertools
+import pathlib
 
 from checker import constraint_suite
 from checker import config_bundle_utils
@@ -28,16 +29,23 @@ from chromiumos.config.payload import config_bundle_pb2
 class IdConstraintSuite(constraint_suite.ConstraintSuite):
   """Constraint checks related to program and project ids."""
 
-  def check_ids_consistent(self, program_config: config_bundle_pb2.ConfigBundle,
-                           project_config: config_bundle_pb2.ConfigBundle):
+  def check_ids_consistent(
+      self,
+      program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle,
+      factory_dir: pathlib.Path,
+  ):
     """Checks all project ids are consistent with the program."""
     program_id = program_config.programs.value[0].id
     for design in project_config.designs.value:
       self.assertEqual(program_id, design.program_id)
 
   def check_design_config_id_segments(
-      self, program_config: config_bundle_pb2.ConfigBundle,
-      project_config: config_bundle_pb2.ConfigBundle):
+      self,
+      program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle,
+      factory_dir: pathlib.Path,
+  ):
     """Check that all DesignConfigIds fall within their segment."""
     program = config_bundle_utils.get_program(program_config)
     segment_map = {
@@ -71,8 +79,11 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
                 segment.max_id, id_num))
 
   def check_design_config_id_segments_overlap(
-      self, program_config: config_bundle_pb2.ConfigBundle,
-      project_config: config_bundle_pb2.ConfigBundle):
+      self,
+      program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle,
+      factory_dir: pathlib.Path,
+  ):
     """Check that no DesignConfigIdSegments overlap."""
     del project_config
 
@@ -95,8 +106,11 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
         self.assertLess(seg_a.max_id, seg_b.min_id, error_message)
 
   def check_design_config_ids_unique(
-      self, program_config: config_bundle_pb2.ConfigBundle,
-      project_config: config_bundle_pb2.ConfigBundle):
+      self,
+      program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle,
+      factory_dir: pathlib.Path,
+  ):
     """Checks all project DesignConfigIds are unique."""
     del program_config
 

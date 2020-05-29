@@ -3,6 +3,8 @@
 # found in the LICENSE file.
 """Constraint checks related to topologies."""
 
+import pathlib
+
 from checker import constraint_suite
 from common import proto_utils
 
@@ -25,8 +27,11 @@ Second message:
 '''
 
   def check_topologies_consistent(
-      self, program_config: config_bundle_pb2.ConfigBundle,
-      project_config: config_bundle_pb2.ConfigBundle):
+      self,
+      program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle,
+      factory_dir: pathlib.Path,
+  ):
     """Checks all topologies in a project are consistent.
 
     Consistency is defined as: For a given Topology id and type, the entire
@@ -55,8 +60,8 @@ Second message:
     is inconsistent because a given id and type ("part1" and "SCREEN") are used
     in different messages (descriptions are different.)
     """
-    # program_config not used.
-    del program_config
+    # program_config and factory_dir not used.
+    del program_config, factory_dir
 
     # Map from (Topology.id, Topology.type) -> Topology.
     topology_map = {}

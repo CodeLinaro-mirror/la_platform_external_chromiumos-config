@@ -59,7 +59,10 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
         ]))
 
     FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
-        program_config=program_config, project_config=project_config)
+        program_config=program_config,
+        project_config=project_config,
+        factory_dir=None,
+    )
 
   def test_check_firmware_configuration_masks_overlap(self):
     """Tests check_firmware_configuration_masks with overlapping segments."""
@@ -75,7 +78,7 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
         AssertionError,
         'Overlap in masks screen and form_factor: 11 & 110 = 10'):
       FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
-          program_config=program_config, project_config=None)
+          program_config=program_config, project_config=None, factory_dir=None)
 
   def test_check_firmware_configuration_multiple_masks_in_use(self):
     """Tests check_firmware_configuration_masks with a topology using
@@ -106,7 +109,10 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
         ]))
 
     FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
-        program_config=program_config, project_config=project_config)
+        program_config=program_config,
+        project_config=project_config,
+        factory_dir=None,
+    )
 
   def test_check_firmware_configuration_incomplete_mask(self):
     """Tests check_firmware_configuration_masks with an incomplete mask."""
@@ -140,7 +146,10 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
         'fw_config field "screen_b" with mask '
         '0x0000000E'):
       FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
-          program_config=program_config, project_config=project_config)
+          program_config=program_config,
+          project_config=project_config,
+          factory_dir=None,
+      )
 
   def test_check_firmware_configuration_extra_mask(self):
     """Tests check_firmware_configuration_masks with an extra mask."""
@@ -171,7 +180,10 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
         AssertionError, 'Topology SCREEN:DEFAULT specifies fw_mask '
         'that is not known 0x00000006'):
       FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
-          program_config=program_config, project_config=project_config)
+          program_config=program_config,
+          project_config=project_config,
+          factory_dir=None,
+      )
 
   def test_check_firmware_value_collision(self):
     """Tests check_firmware_value_collision on a valid config."""
@@ -214,7 +226,10 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
 
     FirmwareConfigurationConstraintSuite(
     ).check_firmware_configuration_value_collision(
-        program_config=None, project_config=project_config)
+        program_config=None,
+        project_config=project_config,
+        factory_dir=None,
+    )
 
   def test_check_firmware_value_collision_invalid_config(self):
     """Tests check_firmware_value_collision on an invalid config."""
@@ -245,4 +260,7 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
          r'firmware value 1')):
       FirmwareConfigurationConstraintSuite(
       ).check_firmware_configuration_value_collision(
-          program_config=None, project_config=project_config)
+          program_config=None,
+          project_config=project_config,
+          factory_dir=None,
+      )

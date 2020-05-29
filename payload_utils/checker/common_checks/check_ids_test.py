@@ -37,7 +37,10 @@ class CheckIdsTest(unittest.TestCase):
         ]))
 
     IdConstraintSuite().check_ids_consistent(
-        program_config=program_config, project_config=project_config)
+        program_config=program_config,
+        project_config=project_config,
+        factory_dir=None,
+    )
 
   def test_check_ids_consistent_violated(self):
     """Tests check_ids_consistent with invalid configs."""
@@ -53,7 +56,10 @@ class CheckIdsTest(unittest.TestCase):
 
     with self.assertRaises(AssertionError):
       IdConstraintSuite().check_ids_consistent(
-          program_config=program_config, project_config=project_config)
+          program_config=program_config,
+          project_config=project_config,
+          factory_dir=None,
+      )
 
   def test_check_design_config_id_segments(self):
     """Test check_design_config_id_segments with valid configs."""
@@ -98,7 +104,10 @@ class CheckIdsTest(unittest.TestCase):
         ]))
 
     IdConstraintSuite().check_design_config_id_segments(
-        program_config=program_config, project_config=project_config)
+        program_config=program_config,
+        project_config=project_config,
+        factory_dir=None,
+    )
 
   def test_check_design_config_id_segments_violated(self):
     """Test check_design_config_id_segments with ids out of range."""
@@ -128,7 +137,10 @@ class CheckIdsTest(unittest.TestCase):
           AssertionError,
           'DesignConfigId must be >= 11, got {}'.format(id_num)):
         IdConstraintSuite().check_design_config_id_segments(
-            program_config=program_config, project_config=project_config)
+            program_config=program_config,
+            project_config=project_config,
+            factory_dir=None,
+        )
 
     # Test ids on the upper boundary.
     for id_num in (21, 22):
@@ -145,7 +157,10 @@ class CheckIdsTest(unittest.TestCase):
           AssertionError,
           'DesignConfigId must be <= 20, got {}'.format(id_num)):
         IdConstraintSuite().check_design_config_id_segments(
-            program_config=program_config, project_config=project_config)
+            program_config=program_config,
+            project_config=project_config,
+            factory_dir=None,
+        )
 
   def test_check_design_config_id_segments_overlap(self):
     """Test check_design_config_id_segments_overlap with valid configs."""
@@ -171,7 +186,7 @@ class CheckIdsTest(unittest.TestCase):
         ]))
 
     IdConstraintSuite().check_design_config_id_segments_overlap(
-        program_config=program_config, project_config=None)
+        program_config=program_config, project_config=None, factory_dir=None)
 
   def test_check_design_config_id_segments_overlap_violated(self):
     """Test check_design_config_id_segments_overlap with overlapping segments."""
@@ -202,7 +217,7 @@ class CheckIdsTest(unittest.TestCase):
             program_config.programs.value[0].design_config_id_segments[1],
         )):
       IdConstraintSuite().check_design_config_id_segments_overlap(
-          program_config=program_config, project_config=None)
+          program_config=program_config, project_config=None, factory_dir=None)
 
     # Segments are declared in a different order.
     program_config = ConfigBundle(
@@ -232,7 +247,7 @@ class CheckIdsTest(unittest.TestCase):
             program_config.programs.value[0].design_config_id_segments[1],
         )):
       IdConstraintSuite().check_design_config_id_segments_overlap(
-          program_config=program_config, project_config=None)
+          program_config=program_config, project_config=None, factory_dir=None)
 
     # Two segments have the same min_id.
     program_config = ConfigBundle(
@@ -257,7 +272,7 @@ class CheckIdsTest(unittest.TestCase):
             program_config.programs.value[0].design_config_id_segments[1],
         )):
       IdConstraintSuite().check_design_config_id_segments_overlap(
-          program_config=program_config, project_config=None)
+          program_config=program_config, project_config=None, factory_dir=None)
 
   def test_check_design_config_ids_unique(self):
     """Tests check_design_config_ids_unique with valid configs."""
@@ -271,7 +286,10 @@ class CheckIdsTest(unittest.TestCase):
         ]))
 
     IdConstraintSuite().check_design_config_ids_unique(
-        program_config=None, project_config=project_config)
+        program_config=None,
+        project_config=project_config,
+        factory_dir=None,
+    )
 
   def test_check_design_config_ids_unique_violated(self):
     """Tests check_design_config_ids_unique with valid configs."""
@@ -287,4 +305,7 @@ class CheckIdsTest(unittest.TestCase):
     with self.assertRaisesRegex(AssertionError,
                                 "Found multiple configs with id 'a'"):
       IdConstraintSuite().check_design_config_ids_unique(
-          program_config=None, project_config=project_config)
+          program_config=None,
+          project_config=project_config,
+          factory_dir=None,
+      )

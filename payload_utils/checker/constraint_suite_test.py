@@ -3,6 +3,9 @@
 # found in the LICENSE file.
 """Tests for constraint_suite."""
 
+import os
+import pathlib
+import tempfile
 import unittest
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
@@ -19,11 +22,36 @@ class ValidConstraintSuite(ConstraintSuite):
   def _helper_method(self):
     assert False, "helper_method should never be called"
 
-  def check_program_valid(self, program_config, project_config):
+  def check_program_valid(
+      self,
+      program_config,
+      project_config,
+      factory_dir,
+  ):
+    del project_config, factory_dir
     self.assertEqual(program_config.programs.value[0].name, 'TestProgram1')
 
-  def check_project_valid(self, program_config, project_config):
+  def check_project_valid(
+      self,
+      program_config,
+      project_config,
+      factory_dir,
+  ):
+    del program_config, factory_dir
     self.assertEqual(project_config.designs.value[0].name, 'TestDesign1')
+
+
+class FactoryDirSuite(ConstraintSuite):
+  """A valid constraint suite that expects a file in factory_dir."""
+
+  def check_generated_config_present(
+      self,
+      program_config,
+      project_config,
+      factory_dir,
+  ):
+    del program_config, project_config
+    self.assertTrue(os.path.exists(os.path.join(factory_dir, 'test.txt')))
 
 
 class InvalidConstraintSuite(ConstraintSuite):
@@ -46,7 +74,9 @@ class ConstraintSuiteTest(unittest.TestCase):
         designs=DesignList(value=[Design(name='TestDesign1')]))
 
     ValidConstraintSuite().run_checks(
-        program_config=program_config, project_config=project_config)
+        program_config=program_config,
+        project_config=project_config,
+        factory_dir=None)
 
   def test_runs_checks_fails_constraint(self):
     """Tests running checks on a project that violates constraints."""
@@ -58,7 +88,35 @@ class ConstraintSuiteTest(unittest.TestCase):
     with self.assertRaisesRegex(AssertionError,
                                 "'TestProgram2' != 'TestProgram1'"):
       ValidConstraintSuite().run_checks(
-          program_config=program_config, project_config=project_config)
+          program_config=program_config,
+          project_config=project_config,
+          factory_dir=None)
+
+  def test_checks_factory_dir(self):
+    """Tests running checks that a file in factory_dir is present."""
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+      with open(os.path.join(tmpdir, 'test.txt'), 'w') as fp:
+        fp.write('test file\n')
+
+      FactoryDirSuite().run_checks(
+          program_config=None,
+          project_config=None,
+          factory_dir=pathlib.Path(tmpdir),
+      )
+
+  def test_checks_factory_dir_violated(self):
+    """Tests running checks that fail because a file in factory_dir is
+    not present.
+    """
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+      with self.assertRaises(AssertionError):
+        FactoryDirSuite().run_checks(
+            program_config=None,
+            project_config=None,
+            factory_dir=pathlib.Path(tmpdir),
+        )
 
   def test_runs_checks_invalid_suite(self):
     """Tests creating a ConstraintSuite with no checks."""

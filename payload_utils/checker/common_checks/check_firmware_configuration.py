@@ -4,6 +4,7 @@
 """Constraint checks related to firmware configuration."""
 
 import itertools
+import pathlib
 
 from checker import config_bundle_utils
 from checker import constraint_suite
@@ -21,8 +22,11 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
   """Constraint checks related to firmware configuration."""
 
   def check_firmware_configuration_masks(
-      self, program_config: config_bundle_pb2.ConfigBundle,
-      project_config: config_bundle_pb2.ConfigBundle):
+      self,
+      program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle,
+      factory_dir: pathlib.Path,
+  ):
     """Checks firmware configuration masks are valid.
 
     1. Check that the FirmwareConfigurationSegments defined in the program do
@@ -68,8 +72,11 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
                   _topo_to_string(topology), mask))
 
   def check_firmware_configuration_value_collision(
-      self, program_config: config_bundle_pb2.ConfigBundle,
-      project_config: config_bundle_pb2.ConfigBundle):
+      self,
+      program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle,
+      factory_dir: pathlib.Path,
+  ):
     """Checks that a given firmware value is only used by a single topology.
 
     More precisely: For a given project, each FirmwareConfiguration.value is

@@ -6,6 +6,7 @@
 
 import argparse
 import os
+import pathlib
 
 from checker import constraint_suite_discovery
 from checker import io_utils
@@ -28,6 +29,15 @@ def argument_parser():
       help=('Path to the project config binary proto e.g. '
             '.../chromiumos/src/project/project1/generated/config.jsonproto.'),
       metavar='PATH')
+  parser.add_argument(
+      '--factory_dir',
+      # TODO(crbug.com/1085429): Require this once passed by Recipes.
+      required=False,
+      type=pathlib.Path,
+      help=('Path to the project factory confir dir e.g.'
+            '.../chromiumos/src/project/project1/factory'),
+      metavar='PATH',
+  )
   return parser
 
 
@@ -55,7 +65,11 @@ def main():
 
   for suite in constraint_suites:
     suite.run_checks(
-        program_config=program_config, project_config=project_config, verbose=1)
+        program_config=program_config,
+        project_config=project_config,
+        factory_dir=args.factory_dir,
+        verbose=1,
+    )
 
 
 if __name__ == '__main__':

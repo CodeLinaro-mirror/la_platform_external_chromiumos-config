@@ -3,6 +3,8 @@
 # found in the LICENSE file.
 """Constraint checks related to form factors."""
 
+import pathlib
+
 from typing import Iterable
 
 from checker import constraint_suite
@@ -27,8 +29,12 @@ def get_form_factor_constraints(
 class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
   """Constraint checks related to form factors."""
 
-  def check_form_factor(self, program_config: config_bundle_pb2.ConfigBundle,
-                        project_config: config_bundle_pb2.ConfigBundle):
+  def check_form_factor(
+      self,
+      program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle,
+      factory_dir: pathlib.Path,
+  ):
     """Checks a project uses a form factor allowed by a program."""
     program = config_bundle_utils.get_program(program_config)
     allowed_form_factors = []
@@ -48,8 +54,11 @@ class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
             allowed_form_factors)
 
   def check_form_factor_required(
-      self, program_config: config_bundle_pb2.ConfigBundle,
-      project_config: config_bundle_pb2.ConfigBundle):
+      self,
+      program_config: config_bundle_pb2.ConfigBundle,
+      project_config: config_bundle_pb2.ConfigBundle,
+      factory_dir: pathlib.Path,
+  ):
     """Checks all form factor constraints are REQUIRED."""
     del project_config
     program = config_bundle_utils.get_program(program_config)
