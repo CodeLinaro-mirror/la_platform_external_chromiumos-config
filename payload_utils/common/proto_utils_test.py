@@ -21,17 +21,20 @@ class ProtoUtilsTest(unittest.TestCase):
   def test_get_dep_graph(self):
     """Tests getting the depgraph of a proto."""
     self.assertDictEqual(
-        proto_utils.get_dep_graph(build_target_pb2.BuildTarget()),
-        {'chromiumos.config.api.software.BuildTarget':
-         ['chromiumos.config.api.software.BuildTarget.ArcBuildProperties',
-          'chromiumos.config.api.software.BuildTargetId'],
-         'chromiumos.config.api.software.BuildTarget.ArcBuildProperties': [],
-         'chromiumos.config.api.software.BuildTargetId': []})
+        proto_utils.get_dep_graph(build_target_pb2.BuildTarget()), {
+            'chromiumos.config.api.software.BuildTarget': [
+                'chromiumos.config.api.software.BuildTarget.ArcBuildProperties',
+                'chromiumos.config.api.software.BuildTargetId'
+            ],
+            'chromiumos.config.api.software.BuildTarget.ArcBuildProperties': [],
+            'chromiumos.config.api.software.BuildTargetId': []
+        })
 
   def test_get_dep_order(self):
     """Tests getting the dependency order of a proto."""
     self.assertSequenceEqual(
-        proto_utils.get_dep_order(build_target_pb2.BuildTarget()),
-        ['chromiumos.config.api.software.BuildTarget.ArcBuildProperties',
-         'chromiumos.config.api.software.BuildTargetId',
-         'chromiumos.config.api.software.BuildTarget'])
+        proto_utils.get_dep_order(build_target_pb2.BuildTarget()), [
+            'chromiumos.config.api.software.BuildTarget.ArcBuildProperties',
+            'chromiumos.config.api.software.BuildTargetId',
+            'chromiumos.config.api.software.BuildTarget'
+        ])

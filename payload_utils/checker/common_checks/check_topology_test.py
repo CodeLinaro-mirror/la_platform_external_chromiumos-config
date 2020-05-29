@@ -11,8 +11,7 @@ from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.component_pb2 import Component
 from chromiumos.config.api.design_pb2 import Design, DesignList
 from chromiumos.config.api.hardware_topology_pb2 import HardwareTopology
-from chromiumos.config.api.topology_pb2 import (HardwareFeatures,
-                                                        Topology)
+from chromiumos.config.api.topology_pb2 import (HardwareFeatures, Topology)
 
 
 class CheckIdsTest(unittest.TestCase):
@@ -27,11 +26,7 @@ class CheckIdsTest(unittest.TestCase):
         hardware_feature=HardwareFeatures(
             screen=HardwareFeatures.Screen(
                 panel_properties=Component.DisplayPanel.Properties(
-                    diagonal_milliinch=10
-                )
-            )
-        )
-    )
+                    diagonal_milliinch=10))))
 
     self.screen_2_topology = Topology(
         id="part2",
@@ -40,11 +35,7 @@ class CheckIdsTest(unittest.TestCase):
         hardware_feature=HardwareFeatures(
             screen=HardwareFeatures.Screen(
                 panel_properties=Component.DisplayPanel.Properties(
-                    diagonal_milliinch=20
-                )
-            )
-        )
-    )
+                    diagonal_milliinch=20))))
 
     self.keyboard_1_topology = Topology(
         id="part1",

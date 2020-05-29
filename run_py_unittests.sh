@@ -26,5 +26,11 @@ pip install -r requirements.txt -q
 echo "Running unittests..."
 python3 -m unittest discover -s payload_utils -p "*test.py"
 
+echo "Checking Python files formatted with yapf..."
+if ! yapf --style .style.yapf --diff -r payload_utils ; then
+    echo "Python files require reformatting. Please run 'yapf --style .style.yapf --in-place -r payload_utils'."
+    exit 1
+fi
+
 # Deactivate venv.
 deactivate

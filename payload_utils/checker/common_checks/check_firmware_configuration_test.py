@@ -11,7 +11,7 @@ from checker.common_checks.check_firmware_configuration import (
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.design_pb2 import Design, DesignList
 from chromiumos.config.api.program_pb2 import (Program, ProgramList,
-                                      FirmwareConfigurationSegment)
+                                               FirmwareConfigurationSegment)
 from chromiumos.config.api.hardware_topology_pb2 import HardwareTopology
 from chromiumos.config.api.topology_pb2 import HardwareFeatures, Topology
 
@@ -101,8 +101,7 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
                                 fw_config=FirmwareConfiguration(
                                     value=0b0001,
                                     mask=0b1111,
-                                ))),
-                    ))
+                                ))),))
             ]),
         ]))
 
@@ -131,16 +130,15 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
                                 fw_config=FirmwareConfiguration(
                                     value=0b0001,
                                     mask=0b0111,
-                                ))),
-                    ))
+                                ))),))
             ]),
         ]))
 
-    with self.assertRaisesRegex(AssertionError,
-                                'Topology SCREEN:DEFAULT with fw_config mask '
-                                '0x00000007 did not specify the complete '
-                                'fw_config field "screen_b" with mask '
-                                '0x0000000E'):
+    with self.assertRaisesRegex(
+        AssertionError, 'Topology SCREEN:DEFAULT with fw_config mask '
+        '0x00000007 did not specify the complete '
+        'fw_config field "screen_b" with mask '
+        '0x0000000E'):
       FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
           program_config=program_config, project_config=project_config)
 
@@ -165,14 +163,13 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
                                 fw_config=FirmwareConfiguration(
                                     value=0b0001,
                                     mask=0b0111,
-                                ))),
-                    ))
+                                ))),))
             ]),
         ]))
 
-    with self.assertRaisesRegex(AssertionError,
-                                'Topology SCREEN:DEFAULT specifies fw_mask '
-                                'that is not known 0x00000006'):
+    with self.assertRaisesRegex(
+        AssertionError, 'Topology SCREEN:DEFAULT specifies fw_mask '
+        'that is not known 0x00000006'):
       FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
           program_config=program_config, project_config=project_config)
 

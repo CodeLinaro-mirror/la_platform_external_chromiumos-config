@@ -23,17 +23,15 @@ def Main(input_config, output_config):
   config = config_bundle_pb2.ConfigBundle()
   with open(input_config, 'r') as f:
     json_format.Parse(f.read(), config)
-  json_output = json_format.MessageToJson(config,
-                                          sort_keys=True,
-                                          use_integers_for_enums=True)
+  json_output = json_format.MessageToJson(
+      config, sort_keys=True, use_integers_for_enums=True)
   with open(output_config, 'w') as f:
     print(json_output, file=f)
 
 
 def main():
   """Main program which parses args and runs Main."""
-  parser = argparse.ArgumentParser(
-      description=__doc__)
+  parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument(
       '-i',
       '--input_config',

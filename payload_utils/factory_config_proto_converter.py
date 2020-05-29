@@ -44,10 +44,7 @@ def ParseArgs(argv):
       type=str,
       help='Path to the source program-level protobinary file')
   parser.add_argument(
-      '-o',
-      '--output',
-      type=str,
-      help='Output file that will be generated')
+      '-o', '--output', type=str, help='Output file that will be generated')
   return parser.parse_args(argv)
 
 
@@ -59,10 +56,7 @@ def WriteOutput(configs, output=None):
     output: Target file output (if None, prints to stdout)
   """
   json_output = json.dumps(
-      configs,
-      sort_keys=True,
-      indent=2,
-      separators=(',', ': '))
+      configs, sort_keys=True, indent=2, separators=(',', ': '))
   if output:
     with open(output, 'w') as output_stream:
       # Using print function adds proper trailing newline.
@@ -100,7 +94,6 @@ def CastAudioCodec(value):
   return topology_pb2.HardwareFeatures.Audio.AudioCodec.Name(value)
 
 
-
 def TransformDesignTable(design_config, design_table):
   """Transforms config proto to model_sku."""
   # TODO(cyueh): Find out how to get all component.has_* and
@@ -110,64 +103,69 @@ def TransformDesignTable(design_config, design_table):
   # has_tabletmode, has_lid_lightsensor, has_base_lightsensor
   features = design_config.hardware_features
   topology = design_config.hardware_topology
-  design_table.update(
-      {'fw_config': features.fw_config.value,
-       'component.has_touchscreen': CastPresent(features.screen.touch_support),
-       'component.has_daughter_board_usb_a':
-       GetFeatures(topology, 'daughter_board', ['usb_a', 'count', 'value']),
-       'component.has_daughter_board_usb_c':
-       GetFeatures(topology, 'daughter_board', ['usb_c', 'count', 'value']),
-       'component.has_mother_board_usb_a':
-       GetFeatures(topology, 'motherboard_usb', ['usb_a', 'count', 'value']),
-       'component.has_mother_board_usb_c':
-       GetFeatures(topology, 'motherboard_usb', ['usb_c', 'count', 'value']),
-       'component.has_front_camera':
-       CastPresent(features.camera.a_panel_camera),
-       'component.has_rear_camera':
-       CastPresent(features.camera.b_panel_camera),
-       'component.has_stylus':
-       GetFeatures(topology, 'stylus', ['stylus', 'stylus']) in [
-           topology_pb2.HardwareFeatures.Stylus.INTERNAL,
-           topology_pb2.HardwareFeatures.Stylus.EXTERNAL],
-       'component.has_fingerprint':
-       GetFeatures(topology, 'fingerprint', ['fingerprint', 'location']) !=
+  design_table.update({
+      'fw_config':
+          features.fw_config.value,
+      'component.has_touchscreen':
+          CastPresent(features.screen.touch_support),
+      'component.has_daughter_board_usb_a':
+          GetFeatures(topology, 'daughter_board', ['usb_a', 'count', 'value']),
+      'component.has_daughter_board_usb_c':
+          GetFeatures(topology, 'daughter_board', ['usb_c', 'count', 'value']),
+      'component.has_mother_board_usb_a':
+          GetFeatures(topology, 'motherboard_usb', ['usb_a', 'count', 'value']),
+      'component.has_mother_board_usb_c':
+          GetFeatures(topology, 'motherboard_usb', ['usb_c', 'count', 'value']),
+      'component.has_front_camera':
+          CastPresent(features.camera.a_panel_camera),
+      'component.has_rear_camera':
+          CastPresent(features.camera.b_panel_camera),
+      'component.has_stylus':
+          GetFeatures(topology, 'stylus', ['stylus', 'stylus']) in [
+              topology_pb2.HardwareFeatures.Stylus.INTERNAL,
+              topology_pb2.HardwareFeatures.Stylus.EXTERNAL
+          ],
+      'component.has_fingerprint':
+          GetFeatures(topology, 'fingerprint', ['fingerprint', 'location']) !=
           topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT,
-       'component.fingerprint_board':
-       GetFeatures(topology, 'fingerprint', ['fingerprint', 'board']),
-       'component.has_keyboard_backlight':
-       CastPresent(GetFeatures(topology, 'keyboard',
-                               ['keyboard', 'backlight'])),
-       'component.has_proximity_sensor':
-       GetFeatures(topology, 'proximity_sensor'),
-       'component.speaker_amp':
-       CastAudioCodec(GetFeatures(topology, 'audio',
-                                  ['audio', 'speaker_amp'])),
-       'component.headphone_codec':
-       CastAudioCodec(GetFeatures(topology, 'audio',
-                                  ['audio', 'headphone_codec'])),
-       'component.has_sd_reader':
-       GetFeatures(topology, 'sd_reader'),
-       'component.has_accelerometer_gyroscope_magnetometer':
-       GetFeatures(topology, 'accelerometer_gyroscope_magnetometer'),
-       'component.has_wifi':
-       GetFeatures(topology, 'wifi'),
-       'component.has_lte':
-       CastPresent(GetFeatures(topology, 'lte_board', ['lte', 'present'])),
-       'component.has_tabletmode':
-       GetFeatures(topology, 'form_factor', ['form_factor', 'form_factor']) ==
-           topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE,
-       })
-  design_table.update(
-      {'component.match_sku_components': [
-          ["camera", "==",
-           features.camera.count.value],
-          ["touchscreen", "==",
-           1 if design_table['component.has_touchscreen'] else 0],
-          ["usb_host", "==",
-           features.usb_a.count.value + features.usb_c.count.value],
-          ["stylus", "==",
-           1 if design_table['component.has_stylus'] else 0]
-      ]})
+      'component.fingerprint_board':
+          GetFeatures(topology, 'fingerprint', ['fingerprint', 'board']),
+      'component.has_keyboard_backlight':
+          CastPresent(
+              GetFeatures(topology, 'keyboard', ['keyboard', 'backlight'])),
+      'component.has_proximity_sensor':
+          GetFeatures(topology, 'proximity_sensor'),
+      'component.speaker_amp':
+          CastAudioCodec(
+              GetFeatures(topology, 'audio', ['audio', 'speaker_amp'])),
+      'component.headphone_codec':
+          CastAudioCodec(
+              GetFeatures(topology, 'audio', ['audio', 'headphone_codec'])),
+      'component.has_sd_reader':
+          GetFeatures(topology, 'sd_reader'),
+      'component.has_accelerometer_gyroscope_magnetometer':
+          GetFeatures(topology, 'accelerometer_gyroscope_magnetometer'),
+      'component.has_wifi':
+          GetFeatures(topology, 'wifi'),
+      'component.has_lte':
+          CastPresent(GetFeatures(topology, 'lte_board', ['lte', 'present'])),
+      'component.has_tabletmode':
+          GetFeatures(topology, 'form_factor', ['form_factor', 'form_factor'])
+          == topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE,
+  })
+  design_table.update({
+      'component.match_sku_components':
+          [["camera", "==", features.camera.count.value],
+           [
+               "touchscreen", "==",
+               1 if design_table['component.has_touchscreen'] else 0
+           ],
+           [
+               "usb_host", "==",
+               features.usb_a.count.value + features.usb_c.count.value
+           ],
+           ["stylus", "==", 1 if design_table['component.has_stylus'] else 0]]
+  })
 
 
 def CreateCommonTable(project_table):
@@ -226,9 +224,10 @@ def GetFactoryConfigs(config):
   # Create map from design id to product_name. Designs from different projects
   # may map to the same product_name. The sets of sku id should not intersect.
   product_names = {
-    sw_design.design_config_id.value:
-    sw_design.id_scan_config.smbios_name_match
-    for sw_design in config.software_configs}
+      sw_design.design_config_id.value:
+      sw_design.id_scan_config.smbios_name_match
+      for sw_design in config.software_configs
+  }
   # Create common table.
   model = {}
   new_product_sku = {}
@@ -238,8 +237,10 @@ def GetFactoryConfigs(config):
       product_name = product_names['%s:%d' % (project_name, sku_id)]
       product_name_table = new_product_sku.setdefault(product_name, {})
       if sku_id in product_name_table:
-        print('The sku_id %s duplicates in product name %s'
-              % (sku_id, product_name), file=sys.stderr)
+        print(
+            'The sku_id %s duplicates in product name %s' %
+            (sku_id, product_name),
+            file=sys.stderr)
       else:
         product_name_table[sku_id] = content
   return {'model': model, 'product_sku': new_product_sku}
@@ -264,9 +265,7 @@ def _MergeConfigs(configs):
   return result
 
 
-def Main(project_configs,
-         program_config,
-         output):
+def Main(project_configs, program_config, output):
   """Transforms source proto config into factory JSON.
 
   Args:
@@ -280,9 +279,8 @@ def Main(project_configs,
     if not os.path.isdir(output_dir):
       raise FileNotFoundError('No such directory: %s' % output_dir)
 
-  configs =_MergeConfigs(
-      [_ReadConfig(program_config)] +
-      [_ReadConfig(config) for config in project_configs])
+  configs = _MergeConfigs([_ReadConfig(program_config)] +
+                          [_ReadConfig(config) for config in project_configs])
   WriteOutput(GetFactoryConfigs(configs), output)
 
 

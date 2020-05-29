@@ -25,11 +25,9 @@ class IoUtilsTest(unittest.TestCase):
 
     os.mkdir(os.path.join(repo_path, 'generated'))
 
-    self.config_path = os.path.join(repo_path, 'generated',
-                                    'config.jsonproto')
-    json_output = json_format.MessageToJson(self.config,
-                                            sort_keys=True,
-                                            use_integers_for_enums=True)
+    self.config_path = os.path.join(repo_path, 'generated', 'config.jsonproto')
+    json_output = json_format.MessageToJson(
+        self.config, sort_keys=True, use_integers_for_enums=True)
     with open(self.config_path, 'w') as f:
       print(json_output, file=f)
 

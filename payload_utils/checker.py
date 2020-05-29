@@ -19,16 +19,14 @@ def argument_parser():
   parser.add_argument(
       '--program',
       required=True,
-      help=(
-          'Path to the program config json proto e.g. '
-          '.../chromiumos/src/program/program1/generated/config.jsonproto.'),
+      help=('Path to the program config json proto e.g. '
+            '.../chromiumos/src/program/program1/generated/config.jsonproto.'),
       metavar='PATH')
   parser.add_argument(
       '--project',
       required=True,
-      help=(
-          'Path to the project config binary proto e.g. '
-          '.../chromiumos/src/project/project1/generated/config.jsonproto.'),
+      help=('Path to the project config binary proto e.g. '
+            '.../chromiumos/src/project/project1/generated/config.jsonproto.'),
       metavar='PATH')
   return parser
 

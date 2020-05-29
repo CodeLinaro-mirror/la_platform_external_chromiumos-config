@@ -7,10 +7,11 @@ import itertools
 
 from checker import config_bundle_utils
 from checker import constraint_suite
-from common  import proto_utils
+from common import proto_utils
 
 from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api import topology_pb2
+
 
 def _topo_to_string(topo):
   return '{}:{}'.format(topology_pb2.Topology.Type.Name(topo.type), topo.id)
@@ -49,20 +50,22 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
           for seg in segments:
             overlap = mask & seg.mask
             if overlap:
-              self.assertEqual(overlap, seg.mask,
-                'Topology {} with fw_config mask 0x{:08X} did not specify the '
-                'complete fw_config field "{}" with mask 0x{:08X}'.format(
-                  _topo_to_string(topology),
-                   topology.hardware_feature.fw_config.mask,
-                   seg.name, seg.mask))
+              self.assertEqual(
+                  overlap, seg.mask,
+                  'Topology {} with fw_config mask 0x{:08X} did not specify the '
+                  'complete fw_config field "{}" with mask 0x{:08X}'.format(
+                      _topo_to_string(topology),
+                      topology.hardware_feature.fw_config.mask, seg.name,
+                      seg.mask))
               # Remove the valid seg.mask to keep track of any extra mask in
               # the topology value
               mask -= overlap
           # After looping through all valid fw_config masks, ensure that topo's
           # value is empty
-          self.assertEqual(mask, 0,
-            'Topology {} specifies fw_mask that is not known 0x{:08X}'.format(
-              _topo_to_string(topology), mask))
+          self.assertEqual(
+              mask, 0,
+              'Topology {} specifies fw_mask that is not known 0x{:08X}'.format(
+                  _topo_to_string(topology), mask))
 
   def check_firmware_configuration_value_collision(
       self, program_config: config_bundle_pb2.ConfigBundle,
