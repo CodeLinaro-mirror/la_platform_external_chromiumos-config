@@ -24,7 +24,8 @@ find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
 # Collect all the protos.
 protos=(proto/**/*.proto)
 
-protoc -Iproto --descriptor_set_out=util/bindings/descpb.bin \
+PATH="${CIPD_ROOT}" protoc -Iproto \
+  --descriptor_set_out=util/bindings/descpb.bin \
   --python_out=python "${protos[@]}"
 find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
   -exec touch '{}/__init__.py' \;
@@ -43,7 +44,7 @@ trap "rm -rf ${GO_TEMP_DIR}" EXIT
 # Go files need to be processed individually until this is fixed:
 # https://github.com/golang/protobuf/issues/39
 for proto in "${protos[@]}"; do
-  protoc -I"proto" \
+  PATH="${CIPD_ROOT}" protoc -I"proto" \
     --go_out=plugins=grpc,paths=source_relative:"${GO_TEMP_DIR}" \
     "${proto}"
 done
