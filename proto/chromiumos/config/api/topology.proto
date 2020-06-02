@@ -276,11 +276,17 @@ message HardwareFeatures {
 
     enum Location {
       LOCATION_UNKNOWN = 0;
+      // Top of the screen (e.g. Pixel Slate) at the left
       POWER_BUTTON_TOP_LEFT = 1;
+      // Bottom of keyboard at the left
       KEYBOARD_BOTTOM_LEFT = 2;
+      // Bottom of keyboard at the right
       KEYBOARD_BOTTOM_RIGHT = 3;
+      // Top of keyboard at the right (e.g. Galaxy Chromebook)
       KEYBOARD_TOP_RIGHT = 4;
       NOT_PRESENT = 5;
+      // Sharing power button at the right side
+      POWER_BUTTON_SIDE_RIGHT = 6;
     }
   }
 
