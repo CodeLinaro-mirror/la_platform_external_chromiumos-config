@@ -52,6 +52,7 @@ _FP_LOC = struct(
     KEYBOARD_BOTTOM_LEFT = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_BOTTOM_LEFT,
     KEYBOARD_BOTTOM_RIGHT = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_BOTTOM_RIGHT,
     KEYBOARD_TOP_RIGHT = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_TOP_RIGHT,
+    POWER_BUTTON_SIDE_RIGHT = topo_pb.HardwareFeatures.Fingerprint.POWER_BUTTON_SIDE_RIGHT,
 )
 
 _STORAGE = struct(
