@@ -8,10 +8,6 @@ The tools in this directory include (described in more detail below):
 *   `create_partner_repo`: This script does the heavy lifting in creating
     new programs and projects. It creates the repos, sets ACLs, makes
     necessary manifest changes, etc.
-*   `create_project_buckets`: This script creates and sets the ACLs on
-    Google Storage buckets that partners have access to for examining
-    build artifacts. Currently this is used to give partners access to
-    build logs.
 *   `gen_project`: This script puts the basic skeleton of files and symlinks
     in place when starting a new program and project. It is intended to
     bootstrap the process and lay things out in an idiomatic way.
@@ -29,6 +25,7 @@ re-run as many times as you wish:
     apis check if repo and gerrit groups exist.
 *   ACLs can be re-applied without any side affects.
 *   Creation of local_manifest step will be skipped if one already exists.
+*   Creation and ACL setting on already existing gs buckets is a noop.
 
 ### Requirements :
 
@@ -44,32 +41,32 @@ re-run as many times as you wish:
 
 ### How to run the script
 
-For a new program, manually create a {program}_local_manifest.xml file and
+For a new program, manually create a {program}\_local_manifest.xml file and
 commit to this script's directory. That local_manifest with get copied to all
 project repos in the program.
 
 To add resources for a program \
-`$ ./createpartnerrepo.sh --program programName`
+`$ ./create_partner_repo --program programName`
 
 To add resource for a project \
-`$ ./createpartnerrepo.sh --program programName --project projectName`
+`$ ./create_partner_repo --program programName --project projectName`
 
 To apply ACLs to project's committer and access groups (--project is optional) \
-`$ ./createpartnerrepo.sh --program programName --project projectName --run
+`$ ./create_partner_repo --program programName --project projectName --run
 acls`
 
 To create and apply default permissions to gerrit groups (--project is optional)
 \
-`$ ./createpartnerrepo.sh --program programName --project projectName --run
+`$ ./create_partner_repo --program programName --project projectName --run
 gerritgroups`
 
 To add a local_manifest.xml into the project repo \
-`$ ./createpartnerrepo.sh --program programName --project projectName --run
+`$ ./create_partner_repo --program programName --project projectName --run
 localmanifest`
 
-## `create_project_buckets`
-
-TODO
+To create gs buckets and assign ACLs to them \
+`$ ./create_partner_repo --program programName --project projectName --run
+createprojectbuckets`
 
 ## `gen_project`
 

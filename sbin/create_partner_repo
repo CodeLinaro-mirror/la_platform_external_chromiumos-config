@@ -17,6 +17,7 @@
 #   ACLs can be re-applied and gets deduped.
 #   Creating local_manifest step will be skipped if one already exist.
 #   Update of Manifest-internal will be skipped if the project is already added.
+#   Creating already existing project buckets is a noop.
 #
 # TODO(b/152909984): Script should check script runner's env for correct setup
 
@@ -51,6 +52,7 @@ usage() {
   echo "    gerritgroups - create and apply default permissions to gerrit groups"
   echo "    localmanifest - create local_manifest.xml for the project repo"
   echo "    manifestinternal - update manifest_internal repo internal_full.xml"
+  echo "    createprojectbuckets - create gs buckets for the project"
 }
 
 gob_post() {
@@ -307,6 +309,29 @@ create_git_repo() {
   gob_put "$repo_description" "${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}"
 }
 
+try_set_viewer() {
+  local group="${1}"
+  local bucket="${2}"
+  if ! gsutil iam ch "group:${group}:objectViewer" "${bucket}"; then
+    echo "Skipping setting objectViewer for ${group} on ${bucket}." >&2
+  fi
+}
+
+create_project_buckets() {
+  # setup() guaranteed that we have a $program.
+  if [[ -n "$project" ]]; then
+    local bucket="gs://chromeos-${program}-${project}"
+    echo "Creating bucket ${bucket}."
+    gsutil mb "${bucket}"
+    gsutil iam ch serviceAccount:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com:objectAdmin "${bucket}"
+    for id in odm oem soc; do
+      try_set_viewer "${project}-${id}-external@google.com" "${bucket}"
+    done
+  else
+    echo "No project specified, skipping creation of project bucket."
+  fi
+}
+
 setup() {
   # Setup checks for program and project defined
   if [[ -z "$program" ]]; then
@@ -335,6 +360,8 @@ run_command() {
       create_local_manifest
     elif [[ "$run" == "manifestinternal" ]]; then
       update_manifest_internal
+    elif [[ "$run" == "createprojectbuckets" ]]; then
+      create_project_buckets
     else
       echo 'Unknown --run command'
       usage
@@ -393,7 +420,10 @@ echo -e "\n\n. For a project, add oem, odem, soc google groups as members of chr
 # TODO(b/152065714): applyAclsFromConfig once config is ready with export
 apply_acls_with_static_members
 
-#Step 4
+#Step 4:
 create_local_manifest
+
+#Step 5:
+create_project_buckets
 
 echo '## Script completed'
