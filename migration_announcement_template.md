@@ -18,9 +18,6 @@ to get started:
     changes.
 *   [fake test data project](https://chromium.googlesource.com/chromiumos/config/+/refs/heads/master/test/project/fake/fake):
     Working example of the new config ecosystem.
-*   [go/cros-boxster-site](https://goto.google.com/cros-boxster-site) (internal only): Project goals, timelines, and documentation.
-*   [go/cros-boxster](https://goto.google.com/cros-boxster) (internal only): Design document with project overview and motivation.
-*   [go/cros-boxster-](https://goto.google.com/cros-boxster-) (internal only): Dashboards and query examples over project data.
 
 Changes will be made in the following repos:
 
