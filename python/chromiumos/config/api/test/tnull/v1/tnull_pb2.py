@@ -21,41 +21,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.tnull.v1',
   syntax='proto3',
   serialized_options=_b('Z<go.chromium.org/chromiumos/config/go/api/test/tnull/v1;tnull'),
-  serialized_pb=_b('\n/chromiumos/config/api/test/tnull/v1/tnull.proto\x12#chromiumos.config.api.test.tnull.v1\x1a\x30\x63hromiumos/config/api/test/rtd/v1/progress.proto\x1a\x35\x63hromiumos/config/api/test/metadata/v1/metadata.proto\"\x82\x01\n\x05Steps\x12?\n\x05setup\x18\x01 \x01(\x0b\x32\x30.chromiumos.config.api.test.tnull.v1.SetupArgSet\x12\x38\n\x05steps\x18\x02 \x03(\x0b\x32).chromiumos.config.api.test.tnull.v1.Step\"\xd3\x02\n\x0bSetupArgSet\x12:\n\x04test\x18\x01 \x01(\x0b\x32,.chromiumos.config.api.test.metadata.v1.Test\x12K\n\x06\x63onfig\x18\x02 \x01(\x0b\x32;.chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig\x12\x39\n\x06result\x18\x03 \x01(\x0b\x32).chromiumos.config.api.test.rtd.v1.Result\x12:\n\x04logs\x18\x04 \x03(\x0b\x32,.chromiumos.config.api.test.tnull.v1.MockLog\x12\x44\n\tartifacts\x18\x05 \x03(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.MockArtifact\")\n\x07MockLog\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08messages\x18\x02 \x03(\t\"0\n\x0cMockArtifact\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nfile_bytes\x18\x02 \x01(\x0c\"\x94\x02\n\x04Step\x12\x42\n\x06method\x18\x01 \x01(\x0e\x32\x30.chromiumos.config.api.test.tnull.v1.Step.MethodH\x00\x12\x18\n\x0eunknown_method\x18\x02 \x01(\tH\x00\x12N\n\x0e\x61rbitrary_args\x18\x03 \x01(\x0b\x32\x34.chromiumos.config.api.test.tnull.v1.ArbitraryArgSetH\x01\"B\n\x06Method\x12\x16\n\x12METHOD_UNSPECIFIED\x10\x00\x12\n\n\x06RESULT\x10\x01\x12\x07\n\x03LOG\x10\x02\x12\x0b\n\x07\x41RCHIVE\x10\x03\x42\r\n\x0bmethod_specB\x0b\n\targs_spec\"\x8c\x01\n\x0f\x41rbitraryArgSet\x12L\n\x04\x61rgs\x18\x01 \x03(\x0b\x32>.chromiumos.config.api.test.tnull.v1.ArbitraryArgSet.ArgsEntry\x1a+\n\tArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42>Z<go.chromium.org/chromiumos/config/go/api/test/tnull/v1;tnullb\x06proto3')
+  serialized_pb=_b('\n/chromiumos/config/api/test/tnull/v1/tnull.proto\x12#chromiumos.config.api.test.tnull.v1\x1a\x30\x63hromiumos/config/api/test/rtd/v1/progress.proto\x1a\x35\x63hromiumos/config/api/test/metadata/v1/metadata.proto\"\x80\x01\n\x05Steps\x12=\n\x05setup\x18\x01 \x01(\x0b\x32..chromiumos.config.api.test.tnull.v1.SetupStep\x12\x38\n\x05steps\x18\x02 \x03(\x0b\x32).chromiumos.config.api.test.tnull.v1.Step\"\xd1\x02\n\tSetupStep\x12:\n\x04test\x18\x01 \x01(\x0b\x32,.chromiumos.config.api.test.metadata.v1.Test\x12K\n\x06\x63onfig\x18\x02 \x01(\x0b\x32;.chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig\x12\x39\n\x06result\x18\x03 \x01(\x0b\x32).chromiumos.config.api.test.rtd.v1.Result\x12:\n\x04logs\x18\x04 \x03(\x0b\x32,.chromiumos.config.api.test.tnull.v1.MockLog\x12\x44\n\tartifacts\x18\x05 \x03(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.MockArtifact\"$\n\x0c\x43ommonArgSet\x12\x14\n\x0crequest_name\x18\x01 \x01(\t\"U\n\x0b\x41rchiveStep\x12\x46\n\x0b\x63ommon_args\x18\x01 \x01(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.CommonArgSet\"Q\n\x07LogStep\x12\x46\n\x0b\x63ommon_args\x18\x01 \x01(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.CommonArgSet\"T\n\nResultStep\x12\x46\n\x0b\x63ommon_args\x18\x01 \x01(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.CommonArgSet\"\x99\x01\n\x0bUnknownStep\x12\x13\n\x0bmethod_name\x18\x01 \x01(\t\x12H\n\x04\x61rgs\x18\x02 \x03(\x0b\x32:.chromiumos.config.api.test.tnull.v1.UnknownStep.ArgsEntry\x1a+\n\tArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\")\n\x07MockLog\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08messages\x18\x02 \x03(\t\"0\n\x0cMockArtifact\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nfile_bytes\x18\x02 \x01(\x0c\"\x96\x02\n\x04Step\x12\x41\n\x05other\x18\x01 \x01(\x0b\x32\x30.chromiumos.config.api.test.tnull.v1.UnknownStepH\x00\x12\x43\n\x07\x61rchive\x18\x02 \x01(\x0b\x32\x30.chromiumos.config.api.test.tnull.v1.ArchiveStepH\x00\x12;\n\x03log\x18\x03 \x01(\x0b\x32,.chromiumos.config.api.test.tnull.v1.LogStepH\x00\x12\x41\n\x06result\x18\x04 \x01(\x0b\x32/.chromiumos.config.api.test.tnull.v1.ResultStepH\x00\x42\x06\n\x04stepB>Z<go.chromium.org/chromiumos/config/go/api/test/tnull/v1;tnullb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_rtd_dot_v1_dot_progress__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_test_dot_metadata_dot_v1_dot_metadata__pb2.DESCRIPTOR,])
 
 
-
-_STEP_METHOD = _descriptor.EnumDescriptor(
-  name='Method',
-  full_name='chromiumos.config.api.test.tnull.v1.Step.Method',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='METHOD_UNSPECIFIED', index=0, number=0,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='RESULT', index=1, number=1,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='LOG', index=2, number=2,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='ARCHIVE', index=3, number=3,
-      serialized_options=None,
-      type=None),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=944,
-  serialized_end=1010,
-)
-_sym_db.RegisterEnumDescriptor(_STEP_METHOD)
 
 
 _STEPS = _descriptor.Descriptor(
@@ -92,47 +62,47 @@ _STEPS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=194,
-  serialized_end=324,
+  serialized_end=322,
 )
 
 
-_SETUPARGSET = _descriptor.Descriptor(
-  name='SetupArgSet',
-  full_name='chromiumos.config.api.test.tnull.v1.SetupArgSet',
+_SETUPSTEP = _descriptor.Descriptor(
+  name='SetupStep',
+  full_name='chromiumos.config.api.test.tnull.v1.SetupStep',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='test', full_name='chromiumos.config.api.test.tnull.v1.SetupArgSet.test', index=0,
+      name='test', full_name='chromiumos.config.api.test.tnull.v1.SetupStep.test', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='config', full_name='chromiumos.config.api.test.tnull.v1.SetupArgSet.config', index=1,
+      name='config', full_name='chromiumos.config.api.test.tnull.v1.SetupStep.config', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='result', full_name='chromiumos.config.api.test.tnull.v1.SetupArgSet.result', index=2,
+      name='result', full_name='chromiumos.config.api.test.tnull.v1.SetupStep.result', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='logs', full_name='chromiumos.config.api.test.tnull.v1.SetupArgSet.logs', index=3,
+      name='logs', full_name='chromiumos.config.api.test.tnull.v1.SetupStep.logs', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='artifacts', full_name='chromiumos.config.api.test.tnull.v1.SetupArgSet.artifacts', index=4,
+      name='artifacts', full_name='chromiumos.config.api.test.tnull.v1.SetupStep.artifacts', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -150,8 +120,207 @@ _SETUPARGSET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=327,
-  serialized_end=666,
+  serialized_start=325,
+  serialized_end=662,
+)
+
+
+_COMMONARGSET = _descriptor.Descriptor(
+  name='CommonArgSet',
+  full_name='chromiumos.config.api.test.tnull.v1.CommonArgSet',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='request_name', full_name='chromiumos.config.api.test.tnull.v1.CommonArgSet.request_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=664,
+  serialized_end=700,
+)
+
+
+_ARCHIVESTEP = _descriptor.Descriptor(
+  name='ArchiveStep',
+  full_name='chromiumos.config.api.test.tnull.v1.ArchiveStep',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='common_args', full_name='chromiumos.config.api.test.tnull.v1.ArchiveStep.common_args', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=702,
+  serialized_end=787,
+)
+
+
+_LOGSTEP = _descriptor.Descriptor(
+  name='LogStep',
+  full_name='chromiumos.config.api.test.tnull.v1.LogStep',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='common_args', full_name='chromiumos.config.api.test.tnull.v1.LogStep.common_args', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=789,
+  serialized_end=870,
+)
+
+
+_RESULTSTEP = _descriptor.Descriptor(
+  name='ResultStep',
+  full_name='chromiumos.config.api.test.tnull.v1.ResultStep',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='common_args', full_name='chromiumos.config.api.test.tnull.v1.ResultStep.common_args', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=872,
+  serialized_end=956,
+)
+
+
+_UNKNOWNSTEP_ARGSENTRY = _descriptor.Descriptor(
+  name='ArgsEntry',
+  full_name='chromiumos.config.api.test.tnull.v1.UnknownStep.ArgsEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.config.api.test.tnull.v1.UnknownStep.ArgsEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.config.api.test.tnull.v1.UnknownStep.ArgsEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b('8\001'),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1069,
+  serialized_end=1112,
+)
+
+_UNKNOWNSTEP = _descriptor.Descriptor(
+  name='UnknownStep',
+  full_name='chromiumos.config.api.test.tnull.v1.UnknownStep',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='method_name', full_name='chromiumos.config.api.test.tnull.v1.UnknownStep.method_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='args', full_name='chromiumos.config.api.test.tnull.v1.UnknownStep.args', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_UNKNOWNSTEP_ARGSENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=959,
+  serialized_end=1112,
 )
 
 
@@ -188,8 +357,8 @@ _MOCKLOG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=668,
-  serialized_end=709,
+  serialized_start=1114,
+  serialized_end=1155,
 )
 
 
@@ -226,8 +395,8 @@ _MOCKARTIFACT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=711,
-  serialized_end=759,
+  serialized_start=1157,
+  serialized_end=1205,
 )
 
 
@@ -239,22 +408,29 @@ _STEP = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='method', full_name='chromiumos.config.api.test.tnull.v1.Step.method', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
+      name='other', full_name='chromiumos.config.api.test.tnull.v1.Step.other', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='unknown_method', full_name='chromiumos.config.api.test.tnull.v1.Step.unknown_method', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='archive', full_name='chromiumos.config.api.test.tnull.v1.Step.archive', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='arbitrary_args', full_name='chromiumos.config.api.test.tnull.v1.Step.arbitrary_args', index=2,
+      name='log', full_name='chromiumos.config.api.test.tnull.v1.Step.log', index=2,
       number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='result', full_name='chromiumos.config.api.test.tnull.v1.Step.result', index=3,
+      number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -264,7 +440,6 @@ _STEP = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-    _STEP_METHOD,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -272,111 +447,51 @@ _STEP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
     _descriptor.OneofDescriptor(
-      name='method_spec', full_name='chromiumos.config.api.test.tnull.v1.Step.method_spec',
+      name='step', full_name='chromiumos.config.api.test.tnull.v1.Step.step',
       index=0, containing_type=None, fields=[]),
-    _descriptor.OneofDescriptor(
-      name='args_spec', full_name='chromiumos.config.api.test.tnull.v1.Step.args_spec',
-      index=1, containing_type=None, fields=[]),
   ],
-  serialized_start=762,
-  serialized_end=1038,
+  serialized_start=1208,
+  serialized_end=1486,
 )
 
-
-_ARBITRARYARGSET_ARGSENTRY = _descriptor.Descriptor(
-  name='ArgsEntry',
-  full_name='chromiumos.config.api.test.tnull.v1.ArbitraryArgSet.ArgsEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='chromiumos.config.api.test.tnull.v1.ArbitraryArgSet.ArgsEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='chromiumos.config.api.test.tnull.v1.ArbitraryArgSet.ArgsEntry.value', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=_b('8\001'),
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1138,
-  serialized_end=1181,
-)
-
-_ARBITRARYARGSET = _descriptor.Descriptor(
-  name='ArbitraryArgSet',
-  full_name='chromiumos.config.api.test.tnull.v1.ArbitraryArgSet',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='args', full_name='chromiumos.config.api.test.tnull.v1.ArbitraryArgSet.args', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_ARBITRARYARGSET_ARGSENTRY, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1041,
-  serialized_end=1181,
-)
-
-_STEPS.fields_by_name['setup'].message_type = _SETUPARGSET
+_STEPS.fields_by_name['setup'].message_type = _SETUPSTEP
 _STEPS.fields_by_name['steps'].message_type = _STEP
-_SETUPARGSET.fields_by_name['test'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_metadata_dot_v1_dot_metadata__pb2._TEST
-_SETUPARGSET.fields_by_name['config'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_rtd_dot_v1_dot_progress__pb2._PROGRESSSINKCLIENTCONFIG
-_SETUPARGSET.fields_by_name['result'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_rtd_dot_v1_dot_progress__pb2._RESULT
-_SETUPARGSET.fields_by_name['logs'].message_type = _MOCKLOG
-_SETUPARGSET.fields_by_name['artifacts'].message_type = _MOCKARTIFACT
-_STEP.fields_by_name['method'].enum_type = _STEP_METHOD
-_STEP.fields_by_name['arbitrary_args'].message_type = _ARBITRARYARGSET
-_STEP_METHOD.containing_type = _STEP
-_STEP.oneofs_by_name['method_spec'].fields.append(
-  _STEP.fields_by_name['method'])
-_STEP.fields_by_name['method'].containing_oneof = _STEP.oneofs_by_name['method_spec']
-_STEP.oneofs_by_name['method_spec'].fields.append(
-  _STEP.fields_by_name['unknown_method'])
-_STEP.fields_by_name['unknown_method'].containing_oneof = _STEP.oneofs_by_name['method_spec']
-_STEP.oneofs_by_name['args_spec'].fields.append(
-  _STEP.fields_by_name['arbitrary_args'])
-_STEP.fields_by_name['arbitrary_args'].containing_oneof = _STEP.oneofs_by_name['args_spec']
-_ARBITRARYARGSET_ARGSENTRY.containing_type = _ARBITRARYARGSET
-_ARBITRARYARGSET.fields_by_name['args'].message_type = _ARBITRARYARGSET_ARGSENTRY
+_SETUPSTEP.fields_by_name['test'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_metadata_dot_v1_dot_metadata__pb2._TEST
+_SETUPSTEP.fields_by_name['config'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_rtd_dot_v1_dot_progress__pb2._PROGRESSSINKCLIENTCONFIG
+_SETUPSTEP.fields_by_name['result'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_rtd_dot_v1_dot_progress__pb2._RESULT
+_SETUPSTEP.fields_by_name['logs'].message_type = _MOCKLOG
+_SETUPSTEP.fields_by_name['artifacts'].message_type = _MOCKARTIFACT
+_ARCHIVESTEP.fields_by_name['common_args'].message_type = _COMMONARGSET
+_LOGSTEP.fields_by_name['common_args'].message_type = _COMMONARGSET
+_RESULTSTEP.fields_by_name['common_args'].message_type = _COMMONARGSET
+_UNKNOWNSTEP_ARGSENTRY.containing_type = _UNKNOWNSTEP
+_UNKNOWNSTEP.fields_by_name['args'].message_type = _UNKNOWNSTEP_ARGSENTRY
+_STEP.fields_by_name['other'].message_type = _UNKNOWNSTEP
+_STEP.fields_by_name['archive'].message_type = _ARCHIVESTEP
+_STEP.fields_by_name['log'].message_type = _LOGSTEP
+_STEP.fields_by_name['result'].message_type = _RESULTSTEP
+_STEP.oneofs_by_name['step'].fields.append(
+  _STEP.fields_by_name['other'])
+_STEP.fields_by_name['other'].containing_oneof = _STEP.oneofs_by_name['step']
+_STEP.oneofs_by_name['step'].fields.append(
+  _STEP.fields_by_name['archive'])
+_STEP.fields_by_name['archive'].containing_oneof = _STEP.oneofs_by_name['step']
+_STEP.oneofs_by_name['step'].fields.append(
+  _STEP.fields_by_name['log'])
+_STEP.fields_by_name['log'].containing_oneof = _STEP.oneofs_by_name['step']
+_STEP.oneofs_by_name['step'].fields.append(
+  _STEP.fields_by_name['result'])
+_STEP.fields_by_name['result'].containing_oneof = _STEP.oneofs_by_name['step']
 DESCRIPTOR.message_types_by_name['Steps'] = _STEPS
-DESCRIPTOR.message_types_by_name['SetupArgSet'] = _SETUPARGSET
+DESCRIPTOR.message_types_by_name['SetupStep'] = _SETUPSTEP
+DESCRIPTOR.message_types_by_name['CommonArgSet'] = _COMMONARGSET
+DESCRIPTOR.message_types_by_name['ArchiveStep'] = _ARCHIVESTEP
+DESCRIPTOR.message_types_by_name['LogStep'] = _LOGSTEP
+DESCRIPTOR.message_types_by_name['ResultStep'] = _RESULTSTEP
+DESCRIPTOR.message_types_by_name['UnknownStep'] = _UNKNOWNSTEP
 DESCRIPTOR.message_types_by_name['MockLog'] = _MOCKLOG
 DESCRIPTOR.message_types_by_name['MockArtifact'] = _MOCKARTIFACT
 DESCRIPTOR.message_types_by_name['Step'] = _STEP
-DESCRIPTOR.message_types_by_name['ArbitraryArgSet'] = _ARBITRARYARGSET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Steps = _reflection.GeneratedProtocolMessageType('Steps', (_message.Message,), dict(
@@ -386,12 +501,55 @@ Steps = _reflection.GeneratedProtocolMessageType('Steps', (_message.Message,), d
   ))
 _sym_db.RegisterMessage(Steps)
 
-SetupArgSet = _reflection.GeneratedProtocolMessageType('SetupArgSet', (_message.Message,), dict(
-  DESCRIPTOR = _SETUPARGSET,
+SetupStep = _reflection.GeneratedProtocolMessageType('SetupStep', (_message.Message,), dict(
+  DESCRIPTOR = _SETUPSTEP,
   __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.SetupArgSet)
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.SetupStep)
   ))
-_sym_db.RegisterMessage(SetupArgSet)
+_sym_db.RegisterMessage(SetupStep)
+
+CommonArgSet = _reflection.GeneratedProtocolMessageType('CommonArgSet', (_message.Message,), dict(
+  DESCRIPTOR = _COMMONARGSET,
+  __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.CommonArgSet)
+  ))
+_sym_db.RegisterMessage(CommonArgSet)
+
+ArchiveStep = _reflection.GeneratedProtocolMessageType('ArchiveStep', (_message.Message,), dict(
+  DESCRIPTOR = _ARCHIVESTEP,
+  __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.ArchiveStep)
+  ))
+_sym_db.RegisterMessage(ArchiveStep)
+
+LogStep = _reflection.GeneratedProtocolMessageType('LogStep', (_message.Message,), dict(
+  DESCRIPTOR = _LOGSTEP,
+  __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.LogStep)
+  ))
+_sym_db.RegisterMessage(LogStep)
+
+ResultStep = _reflection.GeneratedProtocolMessageType('ResultStep', (_message.Message,), dict(
+  DESCRIPTOR = _RESULTSTEP,
+  __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.ResultStep)
+  ))
+_sym_db.RegisterMessage(ResultStep)
+
+UnknownStep = _reflection.GeneratedProtocolMessageType('UnknownStep', (_message.Message,), dict(
+
+  ArgsEntry = _reflection.GeneratedProtocolMessageType('ArgsEntry', (_message.Message,), dict(
+    DESCRIPTOR = _UNKNOWNSTEP_ARGSENTRY,
+    __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.UnknownStep.ArgsEntry)
+    ))
+  ,
+  DESCRIPTOR = _UNKNOWNSTEP,
+  __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.UnknownStep)
+  ))
+_sym_db.RegisterMessage(UnknownStep)
+_sym_db.RegisterMessage(UnknownStep.ArgsEntry)
 
 MockLog = _reflection.GeneratedProtocolMessageType('MockLog', (_message.Message,), dict(
   DESCRIPTOR = _MOCKLOG,
@@ -414,22 +572,7 @@ Step = _reflection.GeneratedProtocolMessageType('Step', (_message.Message,), dic
   ))
 _sym_db.RegisterMessage(Step)
 
-ArbitraryArgSet = _reflection.GeneratedProtocolMessageType('ArbitraryArgSet', (_message.Message,), dict(
-
-  ArgsEntry = _reflection.GeneratedProtocolMessageType('ArgsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _ARBITRARYARGSET_ARGSENTRY,
-    __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.ArbitraryArgSet.ArgsEntry)
-    ))
-  ,
-  DESCRIPTOR = _ARBITRARYARGSET,
-  __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.ArbitraryArgSet)
-  ))
-_sym_db.RegisterMessage(ArbitraryArgSet)
-_sym_db.RegisterMessage(ArbitraryArgSet.ArgsEntry)
-
 
 DESCRIPTOR._options = None
-_ARBITRARYARGSET_ARGSENTRY._options = None
+_UNKNOWNSTEP_ARGSENTRY._options = None
 # @@protoc_insertion_point(module_scope)

@@ -22,46 +22,15 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Step_Method int32
-
-const (
-	Step_METHOD_UNSPECIFIED Step_Method = 0
-	Step_RESULT             Step_Method = 1
-	Step_LOG                Step_Method = 2
-	Step_ARCHIVE            Step_Method = 3
-)
-
-var Step_Method_name = map[int32]string{
-	0: "METHOD_UNSPECIFIED",
-	1: "RESULT",
-	2: "LOG",
-	3: "ARCHIVE",
-}
-
-var Step_Method_value = map[string]int32{
-	"METHOD_UNSPECIFIED": 0,
-	"RESULT":             1,
-	"LOG":                2,
-	"ARCHIVE":            3,
-}
-
-func (x Step_Method) String() string {
-	return proto.EnumName(Step_Method_name, int32(x))
-}
-
-func (Step_Method) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_09fbf3a7a4daab52, []int{4, 0}
-}
-
 // A test with the TNull RTD consists of a Setup step (always executed first)
 // and then a sequence of zero or more Step specifications, each specifying a
 // method to call and the arguments to call it with.
 type Steps struct {
-	Setup                *SetupArgSet `protobuf:"bytes,1,opt,name=setup,proto3" json:"setup,omitempty"`
-	Steps                []*Step      `protobuf:"bytes,2,rep,name=steps,proto3" json:"steps,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
-	XXX_unrecognized     []byte       `json:"-"`
-	XXX_sizecache        int32        `json:"-"`
+	Setup                *SetupStep `protobuf:"bytes,1,opt,name=setup,proto3" json:"setup,omitempty"`
+	Steps                []*Step    `protobuf:"bytes,2,rep,name=steps,proto3" json:"steps,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
 func (m *Steps) Reset()         { *m = Steps{} }
@@ -89,7 +58,7 @@ func (m *Steps) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Steps proto.InternalMessageInfo
 
-func (m *Steps) GetSetup() *SetupArgSet {
+func (m *Steps) GetSetup() *SetupStep {
 	if m != nil {
 		return m.Setup
 	}
@@ -104,7 +73,7 @@ func (m *Steps) GetSteps() []*Step {
 }
 
 // The method arguments for a Setup call
-type SetupArgSet struct {
+type SetupStep struct {
 	Test                 *v1.Test                      `protobuf:"bytes,1,opt,name=test,proto3" json:"test,omitempty"`
 	Config               *v11.ProgressSinkClientConfig `protobuf:"bytes,2,opt,name=config,proto3" json:"config,omitempty"`
 	Result               *v11.Result                   `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
@@ -115,62 +84,269 @@ type SetupArgSet struct {
 	XXX_sizecache        int32                         `json:"-"`
 }
 
-func (m *SetupArgSet) Reset()         { *m = SetupArgSet{} }
-func (m *SetupArgSet) String() string { return proto.CompactTextString(m) }
-func (*SetupArgSet) ProtoMessage()    {}
-func (*SetupArgSet) Descriptor() ([]byte, []int) {
+func (m *SetupStep) Reset()         { *m = SetupStep{} }
+func (m *SetupStep) String() string { return proto.CompactTextString(m) }
+func (*SetupStep) ProtoMessage()    {}
+func (*SetupStep) Descriptor() ([]byte, []int) {
 	return fileDescriptor_09fbf3a7a4daab52, []int{1}
 }
 
-func (m *SetupArgSet) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetupArgSet.Unmarshal(m, b)
+func (m *SetupStep) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetupStep.Unmarshal(m, b)
 }
-func (m *SetupArgSet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetupArgSet.Marshal(b, m, deterministic)
+func (m *SetupStep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetupStep.Marshal(b, m, deterministic)
 }
-func (m *SetupArgSet) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetupArgSet.Merge(m, src)
+func (m *SetupStep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetupStep.Merge(m, src)
 }
-func (m *SetupArgSet) XXX_Size() int {
-	return xxx_messageInfo_SetupArgSet.Size(m)
+func (m *SetupStep) XXX_Size() int {
+	return xxx_messageInfo_SetupStep.Size(m)
 }
-func (m *SetupArgSet) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetupArgSet.DiscardUnknown(m)
+func (m *SetupStep) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetupStep.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_SetupArgSet proto.InternalMessageInfo
+var xxx_messageInfo_SetupStep proto.InternalMessageInfo
 
-func (m *SetupArgSet) GetTest() *v1.Test {
+func (m *SetupStep) GetTest() *v1.Test {
 	if m != nil {
 		return m.Test
 	}
 	return nil
 }
 
-func (m *SetupArgSet) GetConfig() *v11.ProgressSinkClientConfig {
+func (m *SetupStep) GetConfig() *v11.ProgressSinkClientConfig {
 	if m != nil {
 		return m.Config
 	}
 	return nil
 }
 
-func (m *SetupArgSet) GetResult() *v11.Result {
+func (m *SetupStep) GetResult() *v11.Result {
 	if m != nil {
 		return m.Result
 	}
 	return nil
 }
 
-func (m *SetupArgSet) GetLogs() []*MockLog {
+func (m *SetupStep) GetLogs() []*MockLog {
 	if m != nil {
 		return m.Logs
 	}
 	return nil
 }
 
-func (m *SetupArgSet) GetArtifacts() []*MockArtifact {
+func (m *SetupStep) GetArtifacts() []*MockArtifact {
 	if m != nil {
 		return m.Artifacts
+	}
+	return nil
+}
+
+type CommonArgSet struct {
+	RequestName          string   `protobuf:"bytes,1,opt,name=request_name,json=requestName,proto3" json:"request_name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CommonArgSet) Reset()         { *m = CommonArgSet{} }
+func (m *CommonArgSet) String() string { return proto.CompactTextString(m) }
+func (*CommonArgSet) ProtoMessage()    {}
+func (*CommonArgSet) Descriptor() ([]byte, []int) {
+	return fileDescriptor_09fbf3a7a4daab52, []int{2}
+}
+
+func (m *CommonArgSet) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommonArgSet.Unmarshal(m, b)
+}
+func (m *CommonArgSet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommonArgSet.Marshal(b, m, deterministic)
+}
+func (m *CommonArgSet) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommonArgSet.Merge(m, src)
+}
+func (m *CommonArgSet) XXX_Size() int {
+	return xxx_messageInfo_CommonArgSet.Size(m)
+}
+func (m *CommonArgSet) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommonArgSet.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommonArgSet proto.InternalMessageInfo
+
+func (m *CommonArgSet) GetRequestName() string {
+	if m != nil {
+		return m.RequestName
+	}
+	return ""
+}
+
+type ArchiveStep struct {
+	CommonArgs           *CommonArgSet `protobuf:"bytes,1,opt,name=common_args,json=commonArgs,proto3" json:"common_args,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *ArchiveStep) Reset()         { *m = ArchiveStep{} }
+func (m *ArchiveStep) String() string { return proto.CompactTextString(m) }
+func (*ArchiveStep) ProtoMessage()    {}
+func (*ArchiveStep) Descriptor() ([]byte, []int) {
+	return fileDescriptor_09fbf3a7a4daab52, []int{3}
+}
+
+func (m *ArchiveStep) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ArchiveStep.Unmarshal(m, b)
+}
+func (m *ArchiveStep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ArchiveStep.Marshal(b, m, deterministic)
+}
+func (m *ArchiveStep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ArchiveStep.Merge(m, src)
+}
+func (m *ArchiveStep) XXX_Size() int {
+	return xxx_messageInfo_ArchiveStep.Size(m)
+}
+func (m *ArchiveStep) XXX_DiscardUnknown() {
+	xxx_messageInfo_ArchiveStep.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ArchiveStep proto.InternalMessageInfo
+
+func (m *ArchiveStep) GetCommonArgs() *CommonArgSet {
+	if m != nil {
+		return m.CommonArgs
+	}
+	return nil
+}
+
+type LogStep struct {
+	CommonArgs           *CommonArgSet `protobuf:"bytes,1,opt,name=common_args,json=commonArgs,proto3" json:"common_args,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *LogStep) Reset()         { *m = LogStep{} }
+func (m *LogStep) String() string { return proto.CompactTextString(m) }
+func (*LogStep) ProtoMessage()    {}
+func (*LogStep) Descriptor() ([]byte, []int) {
+	return fileDescriptor_09fbf3a7a4daab52, []int{4}
+}
+
+func (m *LogStep) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_LogStep.Unmarshal(m, b)
+}
+func (m *LogStep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_LogStep.Marshal(b, m, deterministic)
+}
+func (m *LogStep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LogStep.Merge(m, src)
+}
+func (m *LogStep) XXX_Size() int {
+	return xxx_messageInfo_LogStep.Size(m)
+}
+func (m *LogStep) XXX_DiscardUnknown() {
+	xxx_messageInfo_LogStep.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LogStep proto.InternalMessageInfo
+
+func (m *LogStep) GetCommonArgs() *CommonArgSet {
+	if m != nil {
+		return m.CommonArgs
+	}
+	return nil
+}
+
+type ResultStep struct {
+	CommonArgs           *CommonArgSet `protobuf:"bytes,1,opt,name=common_args,json=commonArgs,proto3" json:"common_args,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *ResultStep) Reset()         { *m = ResultStep{} }
+func (m *ResultStep) String() string { return proto.CompactTextString(m) }
+func (*ResultStep) ProtoMessage()    {}
+func (*ResultStep) Descriptor() ([]byte, []int) {
+	return fileDescriptor_09fbf3a7a4daab52, []int{5}
+}
+
+func (m *ResultStep) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ResultStep.Unmarshal(m, b)
+}
+func (m *ResultStep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ResultStep.Marshal(b, m, deterministic)
+}
+func (m *ResultStep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResultStep.Merge(m, src)
+}
+func (m *ResultStep) XXX_Size() int {
+	return xxx_messageInfo_ResultStep.Size(m)
+}
+func (m *ResultStep) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResultStep.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResultStep proto.InternalMessageInfo
+
+func (m *ResultStep) GetCommonArgs() *CommonArgSet {
+	if m != nil {
+		return m.CommonArgs
+	}
+	return nil
+}
+
+// Catchall for rapid iteration. Not guaranteed safe or reliable.
+type UnknownStep struct {
+	MethodName string `protobuf:"bytes,1,opt,name=method_name,json=methodName,proto3" json:"method_name,omitempty"`
+	// Where the value is a complex object - if that is ever necessary - it will
+	// be interpreted as a JSON-serialized object of whatever type the method
+	// expects for that argument.
+	Args                 map[string]string `protobuf:"bytes,2,rep,name=args,proto3" json:"args,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *UnknownStep) Reset()         { *m = UnknownStep{} }
+func (m *UnknownStep) String() string { return proto.CompactTextString(m) }
+func (*UnknownStep) ProtoMessage()    {}
+func (*UnknownStep) Descriptor() ([]byte, []int) {
+	return fileDescriptor_09fbf3a7a4daab52, []int{6}
+}
+
+func (m *UnknownStep) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UnknownStep.Unmarshal(m, b)
+}
+func (m *UnknownStep) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UnknownStep.Marshal(b, m, deterministic)
+}
+func (m *UnknownStep) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UnknownStep.Merge(m, src)
+}
+func (m *UnknownStep) XXX_Size() int {
+	return xxx_messageInfo_UnknownStep.Size(m)
+}
+func (m *UnknownStep) XXX_DiscardUnknown() {
+	xxx_messageInfo_UnknownStep.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UnknownStep proto.InternalMessageInfo
+
+func (m *UnknownStep) GetMethodName() string {
+	if m != nil {
+		return m.MethodName
+	}
+	return ""
+}
+
+func (m *UnknownStep) GetArgs() map[string]string {
+	if m != nil {
+		return m.Args
 	}
 	return nil
 }
@@ -187,7 +363,7 @@ func (m *MockLog) Reset()         { *m = MockLog{} }
 func (m *MockLog) String() string { return proto.CompactTextString(m) }
 func (*MockLog) ProtoMessage()    {}
 func (*MockLog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_09fbf3a7a4daab52, []int{2}
+	return fileDescriptor_09fbf3a7a4daab52, []int{7}
 }
 
 func (m *MockLog) XXX_Unmarshal(b []byte) error {
@@ -234,7 +410,7 @@ func (m *MockArtifact) Reset()         { *m = MockArtifact{} }
 func (m *MockArtifact) String() string { return proto.CompactTextString(m) }
 func (*MockArtifact) ProtoMessage()    {}
 func (*MockArtifact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_09fbf3a7a4daab52, []int{3}
+	return fileDescriptor_09fbf3a7a4daab52, []int{8}
 }
 
 func (m *MockArtifact) XXX_Unmarshal(b []byte) error {
@@ -271,26 +447,22 @@ func (m *MockArtifact) GetFileBytes() []byte {
 
 // A Step is a action to take to execute a test.
 type Step struct {
-	// Types that are valid to be assigned to MethodSpec:
-	//	*Step_Method_
-	//	*Step_UnknownMethod
-	MethodSpec isStep_MethodSpec `protobuf_oneof:"method_spec"`
-	// Method arguments, initially as raw key/value pairs but allowing for more
-	// structured types in the future as the RTD becomes more mature
-	//
-	// Types that are valid to be assigned to ArgsSpec:
-	//	*Step_ArbitraryArgs
-	ArgsSpec             isStep_ArgsSpec `protobuf_oneof:"args_spec"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	// Types that are valid to be assigned to Step:
+	//	*Step_Other
+	//	*Step_Archive
+	//	*Step_Log
+	//	*Step_Result
+	Step                 isStep_Step `protobuf_oneof:"step"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
 }
 
 func (m *Step) Reset()         { *m = Step{} }
 func (m *Step) String() string { return proto.CompactTextString(m) }
 func (*Step) ProtoMessage()    {}
 func (*Step) Descriptor() ([]byte, []int) {
-	return fileDescriptor_09fbf3a7a4daab52, []int{4}
+	return fileDescriptor_09fbf3a7a4daab52, []int{9}
 }
 
 func (m *Step) XXX_Unmarshal(b []byte) error {
@@ -311,63 +483,65 @@ func (m *Step) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Step proto.InternalMessageInfo
 
-type isStep_MethodSpec interface {
-	isStep_MethodSpec()
+type isStep_Step interface {
+	isStep_Step()
 }
 
-type Step_Method_ struct {
-	Method Step_Method `protobuf:"varint,1,opt,name=method,proto3,enum=chromiumos.config.api.test.tnull.v1.Step_Method,oneof"`
+type Step_Other struct {
+	Other *UnknownStep `protobuf:"bytes,1,opt,name=other,proto3,oneof"`
 }
 
-type Step_UnknownMethod struct {
-	UnknownMethod string `protobuf:"bytes,2,opt,name=unknown_method,json=unknownMethod,proto3,oneof"`
+type Step_Archive struct {
+	Archive *ArchiveStep `protobuf:"bytes,2,opt,name=archive,proto3,oneof"`
 }
 
-func (*Step_Method_) isStep_MethodSpec() {}
+type Step_Log struct {
+	Log *LogStep `protobuf:"bytes,3,opt,name=log,proto3,oneof"`
+}
 
-func (*Step_UnknownMethod) isStep_MethodSpec() {}
+type Step_Result struct {
+	Result *ResultStep `protobuf:"bytes,4,opt,name=result,proto3,oneof"`
+}
 
-func (m *Step) GetMethodSpec() isStep_MethodSpec {
+func (*Step_Other) isStep_Step() {}
+
+func (*Step_Archive) isStep_Step() {}
+
+func (*Step_Log) isStep_Step() {}
+
+func (*Step_Result) isStep_Step() {}
+
+func (m *Step) GetStep() isStep_Step {
 	if m != nil {
-		return m.MethodSpec
+		return m.Step
 	}
 	return nil
 }
 
-func (m *Step) GetMethod() Step_Method {
-	if x, ok := m.GetMethodSpec().(*Step_Method_); ok {
-		return x.Method
-	}
-	return Step_METHOD_UNSPECIFIED
-}
-
-func (m *Step) GetUnknownMethod() string {
-	if x, ok := m.GetMethodSpec().(*Step_UnknownMethod); ok {
-		return x.UnknownMethod
-	}
-	return ""
-}
-
-type isStep_ArgsSpec interface {
-	isStep_ArgsSpec()
-}
-
-type Step_ArbitraryArgs struct {
-	ArbitraryArgs *ArbitraryArgSet `protobuf:"bytes,3,opt,name=arbitrary_args,json=arbitraryArgs,proto3,oneof"`
-}
-
-func (*Step_ArbitraryArgs) isStep_ArgsSpec() {}
-
-func (m *Step) GetArgsSpec() isStep_ArgsSpec {
-	if m != nil {
-		return m.ArgsSpec
+func (m *Step) GetOther() *UnknownStep {
+	if x, ok := m.GetStep().(*Step_Other); ok {
+		return x.Other
 	}
 	return nil
 }
 
-func (m *Step) GetArbitraryArgs() *ArbitraryArgSet {
-	if x, ok := m.GetArgsSpec().(*Step_ArbitraryArgs); ok {
-		return x.ArbitraryArgs
+func (m *Step) GetArchive() *ArchiveStep {
+	if x, ok := m.GetStep().(*Step_Archive); ok {
+		return x.Archive
+	}
+	return nil
+}
+
+func (m *Step) GetLog() *LogStep {
+	if x, ok := m.GetStep().(*Step_Log); ok {
+		return x.Log
+	}
+	return nil
+}
+
+func (m *Step) GetResult() *ResultStep {
+	if x, ok := m.GetStep().(*Step_Result); ok {
+		return x.Result
 	}
 	return nil
 }
@@ -375,67 +549,25 @@ func (m *Step) GetArbitraryArgs() *ArbitraryArgSet {
 // XXX_OneofWrappers is for the internal use of the proto package.
 func (*Step) XXX_OneofWrappers() []interface{} {
 	return []interface{}{
-		(*Step_Method_)(nil),
-		(*Step_UnknownMethod)(nil),
-		(*Step_ArbitraryArgs)(nil),
+		(*Step_Other)(nil),
+		(*Step_Archive)(nil),
+		(*Step_Log)(nil),
+		(*Step_Result)(nil),
 	}
-}
-
-// Catchall args for rapid iteration. Passed to whatever method is specified by
-// method_spec.
-// This message type is not expected to ever change; it is _just_ a set of args.
-// Map types are not permitted in a oneof, or else this would just be a map.
-type ArbitraryArgSet struct {
-	// Where the value is a complex object - if that is ever necessary - it will
-	// be interpreted as a JSON-serialized object of whatever type the method
-	// expects for that argument.
-	Args                 map[string]string `protobuf:"bytes,1,rep,name=args,proto3" json:"args,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
-}
-
-func (m *ArbitraryArgSet) Reset()         { *m = ArbitraryArgSet{} }
-func (m *ArbitraryArgSet) String() string { return proto.CompactTextString(m) }
-func (*ArbitraryArgSet) ProtoMessage()    {}
-func (*ArbitraryArgSet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_09fbf3a7a4daab52, []int{5}
-}
-
-func (m *ArbitraryArgSet) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ArbitraryArgSet.Unmarshal(m, b)
-}
-func (m *ArbitraryArgSet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ArbitraryArgSet.Marshal(b, m, deterministic)
-}
-func (m *ArbitraryArgSet) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ArbitraryArgSet.Merge(m, src)
-}
-func (m *ArbitraryArgSet) XXX_Size() int {
-	return xxx_messageInfo_ArbitraryArgSet.Size(m)
-}
-func (m *ArbitraryArgSet) XXX_DiscardUnknown() {
-	xxx_messageInfo_ArbitraryArgSet.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ArbitraryArgSet proto.InternalMessageInfo
-
-func (m *ArbitraryArgSet) GetArgs() map[string]string {
-	if m != nil {
-		return m.Args
-	}
-	return nil
 }
 
 func init() {
-	proto.RegisterEnum("chromiumos.config.api.test.tnull.v1.Step_Method", Step_Method_name, Step_Method_value)
 	proto.RegisterType((*Steps)(nil), "chromiumos.config.api.test.tnull.v1.Steps")
-	proto.RegisterType((*SetupArgSet)(nil), "chromiumos.config.api.test.tnull.v1.SetupArgSet")
+	proto.RegisterType((*SetupStep)(nil), "chromiumos.config.api.test.tnull.v1.SetupStep")
+	proto.RegisterType((*CommonArgSet)(nil), "chromiumos.config.api.test.tnull.v1.CommonArgSet")
+	proto.RegisterType((*ArchiveStep)(nil), "chromiumos.config.api.test.tnull.v1.ArchiveStep")
+	proto.RegisterType((*LogStep)(nil), "chromiumos.config.api.test.tnull.v1.LogStep")
+	proto.RegisterType((*ResultStep)(nil), "chromiumos.config.api.test.tnull.v1.ResultStep")
+	proto.RegisterType((*UnknownStep)(nil), "chromiumos.config.api.test.tnull.v1.UnknownStep")
+	proto.RegisterMapType((map[string]string)(nil), "chromiumos.config.api.test.tnull.v1.UnknownStep.ArgsEntry")
 	proto.RegisterType((*MockLog)(nil), "chromiumos.config.api.test.tnull.v1.MockLog")
 	proto.RegisterType((*MockArtifact)(nil), "chromiumos.config.api.test.tnull.v1.MockArtifact")
 	proto.RegisterType((*Step)(nil), "chromiumos.config.api.test.tnull.v1.Step")
-	proto.RegisterType((*ArbitraryArgSet)(nil), "chromiumos.config.api.test.tnull.v1.ArbitraryArgSet")
-	proto.RegisterMapType((map[string]string)(nil), "chromiumos.config.api.test.tnull.v1.ArbitraryArgSet.ArgsEntry")
 }
 
 func init() {
@@ -443,44 +575,45 @@ func init() {
 }
 
 var fileDescriptor_09fbf3a7a4daab52 = []byte{
-	// 621 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0xdd, 0x6a, 0x13, 0x41,
-	0x14, 0x80, 0xbb, 0xf9, 0xab, 0x39, 0x69, 0x6b, 0x18, 0x44, 0x42, 0x40, 0x28, 0xeb, 0x85, 0x2d,
-	0x94, 0x4d, 0x53, 0x15, 0x7f, 0x2a, 0xd5, 0x24, 0x4d, 0x4d, 0xa5, 0xb5, 0x65, 0xb6, 0xf5, 0x42,
-	0x90, 0x30, 0x4d, 0xa6, 0xdb, 0x25, 0xbb, 0x3b, 0xcb, 0xcc, 0x6c, 0x24, 0x6f, 0xe1, 0x13, 0xf8,
-	0x20, 0x3e, 0x9a, 0x57, 0x32, 0x3f, 0x4d, 0x83, 0x96, 0xb0, 0x78, 0x77, 0xe6, 0x30, 0xdf, 0x37,
-	0xe7, 0x9c, 0x19, 0x06, 0x5a, 0xa3, 0x1b, 0xce, 0xe2, 0x30, 0x8b, 0x99, 0x68, 0x8d, 0x58, 0x72,
-	0x1d, 0x06, 0x2d, 0x92, 0x86, 0x2d, 0x49, 0x85, 0x6c, 0xc9, 0x24, 0x8b, 0xa2, 0xd6, 0xb4, 0x6d,
-	0x02, 0x2f, 0xe5, 0x4c, 0x32, 0xf4, 0xf4, 0x0e, 0xf0, 0x0c, 0xe0, 0x91, 0x34, 0xf4, 0x14, 0xe0,
-	0x99, 0x7d, 0xd3, 0x76, 0x73, 0x77, 0x89, 0x95, 0xcb, 0xb1, 0x72, 0xa6, 0x9c, 0x05, 0x9c, 0x0a,
-	0x61, 0xb4, 0xcd, 0x97, 0x4b, 0x88, 0x98, 0x4a, 0x32, 0x26, 0x92, 0x28, 0xec, 0x36, 0x36, 0x98,
-	0xfb, 0xc3, 0x81, 0xb2, 0x2f, 0x69, 0x2a, 0xd0, 0x11, 0x94, 0x05, 0x95, 0x59, 0xda, 0x70, 0x36,
-	0x9d, 0xad, 0xda, 0xde, 0xae, 0x97, 0xa3, 0x4e, 0xcf, 0x57, 0x44, 0x87, 0x07, 0x3e, 0x95, 0xd8,
-	0xe0, 0xe8, 0x3d, 0x94, 0x85, 0x12, 0x36, 0x0a, 0x9b, 0xc5, 0xad, 0xda, 0xde, 0x76, 0x3e, 0x8f,
-	0xa4, 0x29, 0x36, 0x9c, 0xfb, 0xbb, 0x00, 0xb5, 0x05, 0x2f, 0xfa, 0x00, 0x25, 0xb5, 0xd9, 0xd6,
-	0xb5, 0xb3, 0xcc, 0x37, 0x6f, 0x6e, 0xda, 0xf6, 0x2e, 0xa8, 0x90, 0x58, 0x93, 0xc8, 0x87, 0x8a,
-	0xd9, 0xd9, 0x28, 0x68, 0xc7, 0xfe, 0x32, 0x07, 0x97, 0x63, 0x85, 0x9f, 0xdb, 0xf1, 0xfa, 0x61,
-	0x32, 0xe9, 0x45, 0x21, 0x4d, 0x64, 0x4f, 0x6f, 0xc4, 0x56, 0x85, 0x3a, 0x50, 0xe1, 0x54, 0x64,
-	0x91, 0x6c, 0x14, 0xb5, 0x74, 0x3b, 0x87, 0x14, 0x6b, 0x00, 0x5b, 0x50, 0x75, 0x16, 0xb1, 0x40,
-	0x34, 0x4a, 0x7a, 0x52, 0x3b, 0xb9, 0x26, 0x75, 0xca, 0x46, 0x93, 0x13, 0x16, 0x60, 0x4d, 0xa2,
-	0x33, 0xa8, 0x12, 0x2e, 0xc3, 0x6b, 0x32, 0x92, 0xa2, 0x51, 0xd6, 0x9a, 0x76, 0x6e, 0x4d, 0xc7,
-	0x92, 0xf8, 0xce, 0xe1, 0xbe, 0x81, 0x55, 0x7b, 0x02, 0x42, 0x50, 0x4a, 0x48, 0x4c, 0xf5, 0xdc,
-	0xab, 0x58, 0xc7, 0xa8, 0x09, 0x0f, 0x62, 0x2a, 0x04, 0x09, 0xa8, 0xb9, 0xdf, 0x2a, 0x9e, 0xaf,
-	0xdd, 0x0e, 0xac, 0x2d, 0x5a, 0xef, 0xe5, 0x9f, 0x00, 0x5c, 0x87, 0x11, 0x1d, 0x5e, 0xcd, 0xa4,
-	0x36, 0x38, 0x5b, 0x6b, 0xb8, 0xaa, 0x32, 0x5d, 0x95, 0x70, 0x7f, 0x15, 0xa0, 0xa4, 0x9e, 0x02,
-	0xfa, 0x04, 0x95, 0x98, 0xca, 0x1b, 0x36, 0xd6, 0xf4, 0x46, 0xde, 0xd7, 0x28, 0x69, 0xea, 0x9d,
-	0x6a, 0x6e, 0xb0, 0x82, 0xad, 0x01, 0x3d, 0x83, 0x8d, 0x2c, 0x99, 0x24, 0xec, 0x7b, 0x32, 0xb4,
-	0x4e, 0x75, 0x6e, 0x75, 0xb0, 0x82, 0xd7, 0x6d, 0xde, 0x20, 0xe8, 0x1b, 0x6c, 0x10, 0x7e, 0x15,
-	0x4a, 0x4e, 0xf8, 0x6c, 0x48, 0x78, 0x20, 0xec, 0xcd, 0xbe, 0xc8, 0x75, 0x78, 0xe7, 0x16, 0x35,
-	0xcf, 0x76, 0xe0, 0xe0, 0x75, 0xb2, 0x90, 0x12, 0x6e, 0x17, 0x2a, 0xf6, 0xa0, 0xc7, 0x80, 0x4e,
-	0xfb, 0x17, 0x83, 0xb3, 0xc3, 0xe1, 0xe5, 0x67, 0xff, 0xbc, 0xdf, 0x3b, 0x3e, 0x3a, 0xee, 0x1f,
-	0xd6, 0x57, 0x10, 0x40, 0x05, 0xf7, 0xfd, 0xcb, 0x93, 0x8b, 0xba, 0x83, 0x56, 0xa1, 0x78, 0x72,
-	0xf6, 0xb1, 0x5e, 0x40, 0x35, 0x58, 0xed, 0xe0, 0xde, 0xe0, 0xf8, 0x4b, 0xbf, 0x5e, 0xec, 0xae,
-	0x43, 0xcd, 0xf4, 0x30, 0x14, 0x29, 0x1d, 0x75, 0x6b, 0xea, 0xfa, 0x03, 0xa1, 0x17, 0xee, 0x4f,
-	0x07, 0x1e, 0xfe, 0x55, 0x04, 0xc2, 0x50, 0xd2, 0x8d, 0x38, 0xfa, 0x69, 0x1c, 0xfc, 0x4f, 0x23,
-	0x9e, 0x2a, 0xbe, 0x9f, 0x48, 0x3e, 0xc3, 0xda, 0xd5, 0x7c, 0x05, 0xd5, 0x79, 0x0a, 0xd5, 0xa1,
-	0x38, 0xa1, 0x33, 0x7b, 0xc7, 0x2a, 0x44, 0x8f, 0xa0, 0x3c, 0x25, 0x51, 0x46, 0xcd, 0x94, 0xb1,
-	0x59, 0xbc, 0x2d, 0xbc, 0x76, 0xba, 0x07, 0x5f, 0xdf, 0x05, 0x6c, 0x5e, 0x82, 0xc7, 0x78, 0x70,
-	0xcf, 0xe7, 0x19, 0xb0, 0x7f, 0xff, 0xcf, 0x7d, 0x1d, 0x5c, 0x55, 0xf4, 0x97, 0xf5, 0xfc, 0x4f,
-	0x00, 0x00, 0x00, 0xff, 0xff, 0xa0, 0x99, 0xde, 0xf0, 0x73, 0x05, 0x00, 0x00,
+	// 638 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x95, 0x4d, 0x6f, 0xd3, 0x4c,
+	0x10, 0xc7, 0xf3, 0xe2, 0xa4, 0x8f, 0xc7, 0x39, 0x3c, 0x5a, 0x71, 0x88, 0x22, 0x21, 0x8a, 0xb9,
+	0xb4, 0x52, 0x65, 0x37, 0x45, 0x08, 0x68, 0x11, 0x34, 0x2d, 0x48, 0x41, 0x2a, 0x05, 0x6d, 0xe0,
+	0x82, 0x84, 0xca, 0xd6, 0xd9, 0x6e, 0xac, 0xd8, 0xde, 0xb0, 0xbb, 0x09, 0xea, 0x97, 0xe0, 0xcb,
+	0x70, 0xe0, 0xab, 0x71, 0x44, 0xfb, 0x12, 0xd7, 0x12, 0x55, 0x64, 0x0e, 0xbd, 0x8d, 0x47, 0xfb,
+	0xff, 0xcd, 0x78, 0x66, 0x76, 0x16, 0xe2, 0x64, 0x26, 0x78, 0x9e, 0x2e, 0x73, 0x2e, 0xe3, 0x84,
+	0x17, 0x57, 0x29, 0x8b, 0xc9, 0x22, 0x8d, 0x15, 0x95, 0x2a, 0x56, 0xc5, 0x32, 0xcb, 0xe2, 0xd5,
+	0xd0, 0x1a, 0xd1, 0x42, 0x70, 0xc5, 0xd1, 0xa3, 0x1b, 0x41, 0x64, 0x05, 0x11, 0x59, 0xa4, 0x91,
+	0x16, 0x44, 0xf6, 0xdc, 0x6a, 0x38, 0xd8, 0xdf, 0x40, 0x15, 0x6a, 0xaa, 0x99, 0x0b, 0xc1, 0x99,
+	0xa0, 0x52, 0x5a, 0xec, 0xe0, 0xc9, 0x06, 0x45, 0x4e, 0x15, 0x99, 0x12, 0x45, 0xb4, 0x6c, 0x6d,
+	0x5b, 0x59, 0xf8, 0xa3, 0x09, 0x9d, 0x89, 0xa2, 0x0b, 0x89, 0x5e, 0x43, 0x47, 0x52, 0xb5, 0x5c,
+	0xf4, 0x9b, 0xdb, 0xcd, 0x9d, 0xe0, 0x20, 0x8a, 0x6a, 0xe4, 0x19, 0x4d, 0xb4, 0x42, 0xeb, 0xb1,
+	0x15, 0xa3, 0x57, 0xd0, 0x91, 0x1a, 0xd7, 0x6f, 0x6d, 0xb7, 0x77, 0x82, 0x83, 0xdd, 0x7a, 0x14,
+	0x0b, 0xd0, 0xba, 0xf0, 0x77, 0x0b, 0xfc, 0x92, 0x8a, 0x8e, 0xc1, 0xd3, 0x47, 0x5d, 0x4e, 0x7b,
+	0x9b, 0x68, 0xe5, 0x8f, 0xad, 0x86, 0xd1, 0x47, 0x2a, 0x15, 0x36, 0x4a, 0x34, 0x81, 0xae, 0x3d,
+	0xd9, 0x6f, 0x19, 0xc6, 0xd1, 0x26, 0x86, 0x50, 0x53, 0x2d, 0xff, 0xe0, 0x4a, 0x3b, 0x49, 0x8b,
+	0xf9, 0x69, 0x96, 0xd2, 0x42, 0x9d, 0x9a, 0x83, 0xd8, 0xa1, 0xd0, 0x08, 0xba, 0x82, 0xca, 0x65,
+	0xa6, 0xfa, 0x6d, 0x03, 0xdd, 0xad, 0x01, 0xc5, 0x46, 0x80, 0x9d, 0x50, 0xff, 0x59, 0xc6, 0x99,
+	0xec, 0x7b, 0xa6, 0x4e, 0x7b, 0xb5, 0xea, 0xf4, 0x8e, 0x27, 0xf3, 0x33, 0xce, 0xb0, 0x51, 0xa2,
+	0xf7, 0xe0, 0x13, 0xa1, 0xd2, 0x2b, 0x92, 0x28, 0xd9, 0xef, 0x18, 0xcc, 0xb0, 0x36, 0x66, 0xe4,
+	0x94, 0xf8, 0x86, 0x11, 0x0e, 0xa1, 0x77, 0xca, 0xf3, 0x9c, 0x17, 0x23, 0xc1, 0x26, 0x54, 0xa1,
+	0x87, 0xd0, 0x13, 0xf4, 0xdb, 0x92, 0x4a, 0x75, 0x51, 0x90, 0x9c, 0x9a, 0x26, 0xf8, 0x38, 0x70,
+	0xbe, 0x73, 0x92, 0xd3, 0x90, 0x40, 0x30, 0x12, 0xc9, 0x2c, 0x5d, 0x51, 0xd3, 0x2e, 0x0c, 0x41,
+	0x62, 0x08, 0x17, 0x44, 0x30, 0xe9, 0xba, 0x56, 0x2f, 0xa9, 0x6a, 0x64, 0x0c, 0xc9, 0xfa, 0x4b,
+	0x86, 0x5f, 0x60, 0xeb, 0x8c, 0xb3, 0x3b, 0xc3, 0x7f, 0x05, 0xb0, 0x9d, 0xb9, 0xb3, 0x08, 0xbf,
+	0x9a, 0x10, 0x7c, 0x2a, 0xe6, 0x05, 0xff, 0x5e, 0x98, 0x18, 0x0f, 0x20, 0xc8, 0xa9, 0x9a, 0xf1,
+	0x69, 0xb5, 0xaa, 0x60, 0x5d, 0xba, 0xa8, 0xe8, 0x1c, 0x3c, 0x13, 0xdd, 0x5e, 0xa1, 0xc3, 0x5a,
+	0xd1, 0x2b, 0x01, 0x22, 0x1d, 0xf5, 0x4d, 0xa1, 0xc4, 0x35, 0x36, 0x9c, 0xc1, 0x53, 0xf0, 0x4b,
+	0x17, 0xfa, 0x1f, 0xda, 0x73, 0x7a, 0xed, 0xa2, 0x6a, 0x13, 0xdd, 0x83, 0xce, 0x8a, 0x64, 0x4b,
+	0x6a, 0x2e, 0x88, 0x8f, 0xed, 0xc7, 0x61, 0xeb, 0x59, 0x33, 0x7c, 0x0e, 0x5b, 0x6e, 0xe4, 0x10,
+	0x02, 0xaf, 0x92, 0xad, 0xb1, 0xd1, 0x00, 0xfe, 0xcb, 0xa9, 0x94, 0x84, 0x51, 0x9b, 0xab, 0x8f,
+	0xcb, 0xef, 0x70, 0x04, 0xbd, 0xea, 0x98, 0xdd, 0xaa, 0xbf, 0x0f, 0x70, 0x95, 0x66, 0xf4, 0xe2,
+	0xf2, 0x5a, 0x19, 0x42, 0x73, 0xa7, 0x87, 0x7d, 0xed, 0x39, 0xd1, 0x8e, 0xf0, 0x67, 0x0b, 0x3c,
+	0x53, 0xb0, 0x31, 0x74, 0xb8, 0x9a, 0x51, 0xe1, 0xda, 0xb1, 0xff, 0xaf, 0x05, 0x19, 0x37, 0xb0,
+	0x05, 0xa0, 0x33, 0xd8, 0x22, 0x76, 0x5c, 0xdd, 0x36, 0xa8, 0xc7, 0xaa, 0x8c, 0xf8, 0xb8, 0x81,
+	0xd7, 0x08, 0x74, 0x0c, 0xed, 0x8c, 0x33, 0xb7, 0x02, 0xea, 0xdd, 0x60, 0x37, 0xc9, 0xe3, 0x06,
+	0xd6, 0x52, 0xf4, 0xb6, 0xdc, 0x23, 0x9e, 0x81, 0xc4, 0xb5, 0x20, 0x37, 0xf3, 0x3a, 0x6e, 0xac,
+	0xf7, 0xc9, 0x49, 0x17, 0x3c, 0xbd, 0x40, 0x4f, 0x5e, 0x7e, 0x7e, 0xc1, 0x78, 0x89, 0x89, 0xb8,
+	0x60, 0xb7, 0xbc, 0x50, 0x8c, 0xff, 0xfd, 0x48, 0x1d, 0x19, 0xe3, 0xb2, 0x6b, 0xde, 0x85, 0xc7,
+	0x7f, 0x02, 0x00, 0x00, 0xff, 0xff, 0x84, 0xff, 0xce, 0x88, 0xd8, 0x06, 0x00, 0x00,
 }
