@@ -49,6 +49,7 @@ message Topology {
     SD_READER = 16;
     MOTHERBOARD_USB = 17;
     BLUETOOTH = 18;
+    BARRELJACK = 19;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -306,6 +307,13 @@ message HardwareFeatures {
   message Bluetooth {
     // Defines the specific bt component used in the design config
     Component.Bluetooth component = 1;
+  }
+
+  // BarrelJack properties
+  BarrelJack barreljack = 20;
+  message BarrelJack {
+    // If BarrelJack support is present on system.
+    Present present = 1;
   }
 
   // Wifi properties

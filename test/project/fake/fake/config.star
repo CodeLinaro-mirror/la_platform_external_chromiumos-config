@@ -67,6 +67,7 @@ _LTE_BOARD = hw_topo.create_lte_board("LTE_BOARD", "Default lte_board", lte_pres
 _SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
 _MOTHERBOARD_USB = hw_topo.create_motherboard_usb("MOTHERBOARD_USB", "Default motherboard_usb")
 _BLUETOOTH = hw_topo.create_bluetooth("BLUETOOTH", "Default bluetooth", bt_component = program.bluetooth_component.bluetooth)
+_BARRELJACK = hw_topo.create_barreljack("BARRELJACK", "Default barreljack", bj_present = True)
 
 _AUDIO_CARD = "fakeaudiocard"
 
@@ -80,9 +81,11 @@ def create_hardware_topology(
         fingerprint = None,
         stylus = None,
         bluetooth = None,
+        barreljack = None,
         lte_board = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
+        barreljack = barreljack if barreljack else None,
         fingerprint = fingerprint if fingerprint else _NO_FINGERPRINT,
         form_factor = form_factor if form_factor else _FORM_FACTOR_CLAMSHELL,
         keyboard = keyboard if keyboard else _KEYBOARD,
@@ -114,6 +117,7 @@ design.append_configs(
     config_id = 0x7fffffff,
     hardware_topology = create_hardware_topology(
         bluetooth = _BLUETOOTH,
+        barreljack = _BARRELJACK,
         fingerprint = _FINGERPRINT,
         lte_board = _LTE_BOARD,
         screen = _TOUCHSCREEN,

@@ -89,6 +89,7 @@ def _make_fw_config(mask, id):
     )
 
 def _accumulate_fw_config(existing_fw_config, new_fw_config):
+    """Adds fw config to existing fw config."""
     if existing_fw_config.mask & new_fw_config.mask:
         fail("FW_CONFIG masks cannot overlap! 0x%x and 0x%x" %
              (existing_fw_config.mask, new_fw_config.mask))
@@ -491,6 +492,21 @@ def _create_bluetooth(id, description, bt_component, fw_configs = []):
         hardware_feature = hw_features,
     )
 
+def _create_barreljack(id, description, bj_present, fw_configs = []):
+    """Builds a Topology proto for barreljack."""
+    hw_features = topo_pb.HardwareFeatures()
+
+    hw_features.barreljack.present = _bool_to_present(bj_present)
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.BARRELJACK,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
 def _create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -509,7 +525,8 @@ def _create_hardware_topology(
         lte_board = None,
         sd_reader = None,
         motherboard_usb = None,
-        bluetooth = None):
+        bluetooth = None,
+        barreljack = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -567,6 +584,9 @@ def _create_hardware_topology(
     if bluetooth and bluetooth.type != topo_pb.Topology.BLUETOOTH:
         fail("Invalid bluetooth topology")
 
+    if barreljack and barreljack.type != topo_pb.Topology.BARRELJACK:
+        fail("Invalid barreljack topology")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -586,6 +606,7 @@ def _create_hardware_topology(
         sd_reader = sd_reader,
         motherboard_usb = motherboard_usb,
         bluetooth = bluetooth,
+        barreljack = barreljack,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -732,6 +753,11 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
     if copy.bluetooth.hardware_feature.bluetooth != topo_pb.HardwareFeatures.Bluetooth():
         result.bluetooth = copy.bluetooth.hardware_feature.bluetooth
 
+    # Handle all possible barreljack features
+    _accumulate_fw_config(result.fw_config, copy.barreljack.hardware_feature.fw_config)
+
+    if copy.barreljack.hardware_feature.barreljack != topo_pb.HardwareFeatures.BarrelJack():
+        result.barreljack = copy.barreljack.hardware_feature.barreljack
     return result
 
 hw_topo = struct(
@@ -755,6 +781,7 @@ hw_topo = struct(
     create_sd_reader = _create_sd_reader,
     create_motherboard_usb = _create_motherboard_usb,
     create_bluetooth = _create_bluetooth,
+    create_barreljack = _create_barreljack,
     create_hardware_topology = _create_hardware_topology,
     convert_to_hw_features = _convert_to_hw_features,
     make_fw_config = _make_fw_config,

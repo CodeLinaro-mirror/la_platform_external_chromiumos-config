@@ -179,6 +179,16 @@ Changes that do not require new topology
 
 * None currently
 
+## BarrelJack
+
+Changes that require new topology
+
+* Present or absent of barrel jack
+
+Changes that do not require new topology
+
+* Placement, voltage
+
 ## LTE Board
 
 Changes that require new topology

@@ -139,6 +139,9 @@
                 "headphoneCodec": 2,
                 "speakerAmp": 5
               },
+              "barreljack": {
+                "present": 1
+              },
               "bluetooth": {
                 "component": {
                   "usb": {
@@ -225,6 +228,18 @@
                 },
                 "id": "AUDIO",
                 "type": 3
+              },
+              "barreljack": {
+                "description": {
+                  "EN": "Default barreljack"
+                },
+                "hardwareFeature": {
+                  "barreljack": {
+                    "present": 1
+                  }
+                },
+                "id": "BARRELJACK",
+                "type": 19
               },
               "bluetooth": {
                 "description": {

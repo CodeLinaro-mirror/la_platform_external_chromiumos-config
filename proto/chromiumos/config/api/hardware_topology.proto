@@ -92,4 +92,8 @@ message HardwareTopology {
   // Specify the bluetooth topology
   // See ./hardware_topology.md#bluetooth for more information.
   Topology bluetooth = 18;
+
+  // Specify the barreljack topology
+  // See ./hardware_topology.md#barreljack for more information.
+  Topology barreljack = 19;
 }
