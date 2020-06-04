@@ -148,6 +148,17 @@ message Component {
     oneof interface {
       Interface.Pci pci = 1;
     }
+
+    enum WLANProtocol {
+      WLAN_PROTOCOL_UNKNOWN = 0;
+      IEEE_802_11_A = 1;
+      IEEE_802_11_B = 2;
+      IEEE_802_11_G = 3;
+      IEEE_802_11_N = 4;
+      IEEE_802_11_AC = 5;
+    }
+    // WLAN protocols supported by this Wifi chipset.
+    repeated WLANProtocol supported_wlan_protocols = 2;
   }
 
   // Record of a component level qualification and the corresponding status.

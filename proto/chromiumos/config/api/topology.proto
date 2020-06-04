@@ -307,4 +307,10 @@ message HardwareFeatures {
     // Defines the specific bt component used in the design config
     Component.Bluetooth component = 1;
   }
+
+  // Wifi properties
+  message Wifi {
+    // WLAN protocols supported by the Wifi chipset(s).
+    repeated Component.Wifi.WLANProtocol supported_wlan_protocols = 1;
+  }
 }
