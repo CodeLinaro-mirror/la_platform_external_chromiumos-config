@@ -9,42 +9,40 @@
 # For details on the depot tools provided presubmit API see:
 # http://dev.chromium.org/developers/how-tos/depottools/presubmit-scripts
 
+import sys
+
+sys.path.insert(1, 'presubmit')
+import presubmits
 
 def CheckGenerated(input_api, output_api):
-    """Runs a generate.sh script as a presubmit check.
+    """Checks all scripts that produce generated output.
 
-  Runs a generate.sh script as a presubmit check checking for successful
-  exit and no diff generated. Thus it expects a generate.sh to exist in
-  the root of the repo.
+    Checks that all of the scripts that produce generated output in this
+    repository have been ran and that the generated output is up to date.
 
-  Args:
-    input_api: InputApi, provides information about the change.
-    output_api: OutputApi, provides the mechanism for returning a response.
+    Args:
+      input_api: InputApi, provides information about the change.
+      output_api: OutputApi, provides the mechanism for returning a response.
 
-  Returns:
-    list of PresubmitError, or empty list if no errors.
-  """
+    Returns:
+      list of PresubmitError, or empty list if no errors.
+    """
     results = []
 
-    if input_api.subprocess.call(
-        "./generate.sh",
-        shell=True,
-        stdout=input_api.subprocess.PIPE,
-        stderr=input_api.subprocess.PIPE,
-    ):
-        msg = "Error: generate.sh failed. Please fix and try again."
-        results.append(output_api.PresubmitError(msg))
-    elif input_api.subprocess.call(
-        "git diff --exit-code",
-        shell=True,
-        stdout=input_api.subprocess.PIPE,
-        stderr=input_api.subprocess.PIPE,
-    ):
-        msg = (
-            "Error: Running generate.sh produced a diff. Please "
-            "run the script, amend your changes, and try again."
-        )
-        results.append(output_api.PresubmitError(msg))
+    # Starting with generate.sh.
+    results.extend(presubmits.CheckGenerated(input_api, output_api))
+
+    err_msg = ("gen_config produced a diff for {}, please amend your changes "
+               "and try again.")
+
+    # Followed by fake program and project config.
+    for config_file in ["./test/program/fake/config.star",
+                        "./test/project/fake/fake/config.star"]:
+      results.extend(presubmits.CheckGenConfig(
+          input_api, output_api,
+          config_file=config_file,
+          gen_config_cmd="./bin/gen_config",
+          failure_message=err_msg.format(config_file)))
 
     return results
 
@@ -77,4 +75,3 @@ def CheckChangeOnCommit(input_api, output_api):
     results.extend(CheckGenerated(input_api, output_api))
     results.extend(CheckExamples(input_api, output_api))
     return results
-

@@ -56,7 +56,21 @@ def CheckGenerated(input_api, output_api):
 
   return results
 
-def CheckGenConfig(input_api, output_api, config_file='config.star'):
+
+_DEFAULT_FAILURE_MESSAGE=(
+    'Error: Running gen_config produced a diff. Please '
+    'resync your chromiumos checkout, run the gen_config '
+    'script, amend your changes, and try again. Repos '
+    'needing resyncing could include: '
+    'chromiumos/config, '
+    'chromeos/program/<your program>, '
+    'chromeos/project/<your program>/<your project>'
+)
+
+def CheckGenConfig(input_api, output_api,
+                   config_file='config.star',
+                   gen_config_cmd='./config/bin/gen_config',
+                   failure_message=_DEFAULT_FAILURE_MESSAGE):
   """Runs a gen_config as a presubmit check.
 
   Runs the gen_config script as a presubmit check checking for successful
@@ -66,6 +80,8 @@ def CheckGenConfig(input_api, output_api, config_file='config.star'):
     input_api: InputApi, provides information about the change.
     output_api: OutputApi, provides the mechanism for returning a response.
     config_file: str, file to generate from, defaults to config.star.
+    gen_config_cmd: str, location of gen_config script
+    failure_message: str, message to use when gen_config produces a diff.
 
   Returns:
     list of PresubmitError, or empty list if no errors.
@@ -74,17 +90,10 @@ def CheckGenConfig(input_api, output_api, config_file='config.star'):
 
   # TODO: get on path for recipes, for now expect to find at
   # config/bin/gen_config
-  if input_api.subprocess.call(['./config/bin/gen_config', config_file]):
+  if input_api.subprocess.call([gen_config_cmd, config_file]):
     msg = 'Error: gen_config failed. Please fix and try again.'
     results.append(output_api.PresubmitError(msg))
   elif input_api.subprocess.call(['git', 'diff', '--exit-code']):
-    msg = ('Error: Running gen_config produced a diff. Please '
-           'resync your chromiumos checkout, run the gen_config '
-           'script, amend your changes, and try again. Repos '
-           'needing resyncing could include: '
-           'chromiumos/config, '
-           'chromeos/program/<your program>, '
-           'chromeos/project/<your program>/<your project>')
-    results.append(output_api.PresubmitError(msg))
+    results.append(output_api.PresubmitError(failure_message))
 
   return results
