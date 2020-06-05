@@ -82,7 +82,9 @@ def create_hardware_topology(
         stylus = None,
         bluetooth = None,
         barreljack = None,
-        lte_board = None):
+        lte_board = None,
+        camera = None,
+        daughter_board = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -94,8 +96,8 @@ def create_hardware_topology(
         stylus = stylus if stylus else None,
         accelerometer_gyroscope_magnetometer = _SENSOR,
         audio = _AUDIO,
-        camera = _CAMERA,
-        daughter_board = _DAUGHTER_BOARD,
+        camera = camera if camera else _CAMERA,
+        daughter_board = daughter_board if daughter_board else _DAUGHTER_BOARD,
         motherboard_usb = _MOTHERBOARD_USB,
         non_volatile_storage = _NON_VOLATILE_STORAGE,
         proximity_sensor = _PROXIMITY_SENSOR,
@@ -146,11 +148,13 @@ design.append_configs(
     hw_configs = _HW_CONFIGS,
     sw_configs = _SW_CONFIGS,
     design_id = _DESIGN_ID,
-    config_id = 2,
+    config_id = 0,
     hardware_topology = create_hardware_topology(
         lte_board = _LTE_BOARD,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
+        camera = hw_topo.create_camera("CAMERA", "Non-default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 0)], count = 1),
+        daughter_board = hw_topo.create_daughter_board("DAUGHTER_BOARD", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(_DB_FW_MASK, 0)]),
     ),
     audio = sc.create_audio(
         _AUDIO_CARD,

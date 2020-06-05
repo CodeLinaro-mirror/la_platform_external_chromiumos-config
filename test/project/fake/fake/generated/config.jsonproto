@@ -481,8 +481,7 @@
                 "formFactor": 1
               },
               "fwConfig": {
-                "mask": 255,
-                "value": 33
+                "mask": 255
               },
               "hdmi": {
                 "present": 2
@@ -548,7 +547,7 @@
               },
               "camera": {
                 "description": {
-                  "EN": "Default camera"
+                  "EN": "Non-default camera"
                 },
                 "hardwareFeature": {
                   "camera": {
@@ -557,8 +556,7 @@
                     }
                   },
                   "fwConfig": {
-                    "mask": 240,
-                    "value": 32
+                    "mask": 240
                   }
                 },
                 "id": "CAMERA",
@@ -566,12 +564,11 @@
               },
               "daughterBoard": {
                 "description": {
-                  "EN": "Default daughter_board"
+                  "EN": "Non-default daughter_board"
                 },
                 "hardwareFeature": {
                   "fwConfig": {
-                    "mask": 15,
-                    "value": 1
+                    "mask": 15
                   },
                   "hdmi": {
                     "present": 2
@@ -746,7 +743,7 @@
               }
             },
             "id": {
-              "value": "FAKE-REF-DESIGN:2"
+              "value": "FAKE-REF-DESIGN:0"
             }
           }
         ],
@@ -2282,7 +2279,7 @@
         "ucmSuffix": "2mic"
       },
       "designConfigId": {
-        "value": "FAKE-REF-DESIGN:2"
+        "value": "FAKE-REF-DESIGN:0"
       },
       "firmware": {
         "ecRoPayload": {
@@ -2328,7 +2325,6 @@
         }
       },
       "idScanConfig": {
-        "firmwareSku": 2,
         "smbiosNameMatch": "FAKE-REF-DESIGN"
       },
       "powerConfig": {

@@ -179,7 +179,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 33,
+          "firmware-config": 0,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -191,7 +191,7 @@
         },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
-          "sku-id": 2,
+          "sku-id": 0,
           "smbios-name-match": "FAKE-REF-DESIGN"
         },
         "name": "fake-ref-design",

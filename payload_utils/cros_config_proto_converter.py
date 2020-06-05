@@ -65,7 +65,7 @@ def ParseArgs(argv):
 
 
 def _Set(field, target, target_name):
-  if field:
+  if field or field == 0:
     target[target_name] = field
 
 

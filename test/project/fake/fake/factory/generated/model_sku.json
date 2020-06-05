@@ -45,8 +45,7 @@
           1
         ]
       ],
-      "component.speaker_amp": "MAX98373",
-      "fw_config": 33
+      "component.speaker_amp": "MAX98373"
     },
     "project-a": {
       "component.audio_card_name": "fakeaudiocard",
@@ -251,13 +250,15 @@
   },
   "product_sku": {
     "FAKE-REF-DESIGN": {
-      "2": {
+      "0": {
         "component.fingerprint_board": "",
-        "component.has_fingerprint": false
+        "component.has_fingerprint": false,
+        "fw_config": 0
       },
       "2147483647": {
         "component.fingerprint_board": "fake-fingerprint-board",
-        "component.has_fingerprint": true
+        "component.has_fingerprint": true,
+        "fw_config": 33
       }
     },
     "PROJECT-A": {
