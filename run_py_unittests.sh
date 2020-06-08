@@ -20,11 +20,17 @@ source .venv/bin/activate
 
 # Install requirements.
 echo "Installing required packages..."
+# Wheel and upgraded setuptools required to install some packages.
+pip install --upgrade setuptools -q
+pip install wheel -q
 pip install -r requirements.txt -q
 
 # Discover and run unittests in payload_utils.
 echo "Running unittests..."
 python3 -m unittest discover -s payload_utils -p "*test.py"
+
+echo "Running pytype..."
+pytype --config=payload_utils/pytype.cfg
 
 echo "Checking Python files formatted with yapf..."
 if ! yapf --style .style.yapf --diff -r payload_utils ; then

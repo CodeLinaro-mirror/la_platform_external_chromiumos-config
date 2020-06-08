@@ -48,6 +48,9 @@ lucicfg generate "${config_file}"
 source .venv/bin/activate
 
 # Install requirements.
+# Wheel and upgraded setuptools required to install some packages.
+pip install --upgrade setuptools -q
+pip install wheel -q
 pip install -r config/requirements.txt -q
 
 # TODO(crbug.com/1073530): Ideally lucicfg's to_jsonpb could handle writing
