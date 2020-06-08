@@ -15,6 +15,8 @@ configs.
 
 ## Project Setup for Partners
 
+### Syncing Private Repos
+
 **Googlers should have the project and program config repos as part of the
 internal-manifest checkout and should not run these steps.**
 
@@ -44,6 +46,38 @@ config repos for the projects and programs they are working on.
    This command will execute a number of steps including checking out your
    program and project and other related repositories, symlinking a local
    manifest, and finally doing a full chromiumos sync.
+
+### Configuring the Chroot
+
+**As of 6/8/2020, profiles have not been set up for all projects. Please check with your Google representative on the status of your project.**
+
+Portage profiles are used to build ChromeOS with configuration from a single
+project repo. The profile can be set with `setup_board`:
+
+```
+(cr) $ setup_board --board=$PROGRAM --profile=$PROJECT
+```
+
+After the profile is set, `build_packages` can be called normally:
+
+```
+(cr)  ~/trunk/src/scripts $ ./build_packages --board=$PROGRAM
+```
+
+Note that if no profile is set, the default `base` profile will use
+configuration from all projects in the program.
+
+#### Notes
+
+- The above profiles work by setting Portage `USE` flags which affect the
+`CROS_WORKON_PROJECT`s that are chosen. Any subset of projects can be chosen
+with these `USE` flags, e.g.
+
+```
+(cr) $ USE="project_a project_b" emerge ...
+```
+
+- The `project_all` `USE` flag is a convenience to use all projects.
 
 If you got to this point without an error you are set up to start working on
 your project.
