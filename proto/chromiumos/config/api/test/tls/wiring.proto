@@ -9,7 +9,6 @@ package chromiumos.config.api.test.tls;
 option go_package = "go.chromium.org/chromiumos/config/go/api/test/tls";
 
 import "chromiumos/config/api/test/xmlrpc/xmlrpc.proto";
-import "google/longrunning/operations.proto";
 
 // Wiring APIs are implemented by TLS wiring providers for all low
 // level access to lab services.
@@ -57,16 +56,15 @@ service Wiring {
   rpc SetDutPowerSupply(SetDutPowerSupplyRequest)
       returns (SetDutPowerSupplyResponse);
 
-  // CacheForDut caches some data to be accessible for the DUT.
+  // CacheForDut caches some data to be accesible for the DUT.
   // This will be made available to the DUT via a returned URL.
-  // The implementation MUST ensure the returned URL is usable at least for the
-  // lifetime of the RTD invocation.
-  rpc CacheForDut(CacheForDutRequest) returns (google.longrunning.Operation) {
-    option (google.longrunning.operation_info) = {
-      response_type: "CacheForDutResponse",
-      metadata_type: "CacheForDutMetadata" 
-    };
-  }
+  // The service will periodically return STATUS_CONTINUE messages to keep the
+  // stream alive. Implementations should use a reasonable interval (e.g., one
+  // minute) to ensure the stream does not time out. The client should continue
+  // streaming replies until getting success or failure.
+  //
+  // EXPERIMENTAL
+  rpc CacheForDut(CacheForDutRequest) returns (stream CacheForDutResponse);
 
   // CallServoXmlRpc performs an XML-RPC call against the servo connected to a
   // DUT.
@@ -129,25 +127,25 @@ message SetDutPowerSupplyResponse {
 
 message CacheForDutRequest {
   // url identifies the resource to cache.
-  // Only http, https, and gs schemes are supported. The resource to cache MUST
-  // be accessible from the service. The implementation MAY use
-  // implementation-specific credentials to attempt to access resources.
+  // Only http, https, and gs are supported.
   string url = 1;
-  // dut_name is the resource name for the DUT.
-  // The DUT name is passed to the RTD when the RTD is started.
-  // It is not specified whether the name is the DUT hostname.
-  string dut_name = 2;
 }
-
 message CacheForDutResponse {
+  enum Status {
+    STATUS_UNKNOWN = 0;
+    STATUS_OK = 1;
+    STATUS_CONTINUE = 2;
+    STATUS_NOT_FOUND = 3;
+    STATUS_TIMEOUT = 4;
+  }
+  Status status = 1;
   // url is where the resource is cached at.
-  // This MUST be accessible to the DUT.
-  // If the host part of the url is a name, it MUST be resolvable by the DUT
-  // via standard name resolution facilities.
-  string url = 1;
-}
-
-message CacheForDutMetadata {
+  // This should be accessible to the DUT.
+  // If the host is a name, it should be resolveable by the DUT via
+  // standard name resolution facilities.
+  string url = 2;
+  // reason provides human friendly context for any error status.
+  string reason = 3;
 }
 
 message CallServoXmlRpcRequest {

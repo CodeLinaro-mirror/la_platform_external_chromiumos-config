@@ -9,16 +9,10 @@ lucicfg.check_version("1.8.6", "Please update depot_tools")
 # buildifier: disable=load-on-top
 load("@stdlib//internal/descpb.star", "wellknown_descpb")
 
-longrunning_operations = proto.new_descriptor_set(
-    name = "google/longrunning/operations",
-    blob = io.read_file("google_longrunning_operations_descpb.bin"),
-    deps = [wellknown_descpb],
-)
-
 protos = proto.new_descriptor_set(
     name = "chromiumos",
     blob = io.read_file("descpb.bin"),
-    deps = [wellknown_descpb, longrunning_operations],
+    deps = [wellknown_descpb],
 )
 
 # We register here so that users don't have to.

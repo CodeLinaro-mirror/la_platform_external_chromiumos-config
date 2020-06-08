@@ -21,31 +21,10 @@ find python/ -type f -name '*_pb2.py' -delete
 find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
   -exec rm -f '{}/__init__.py' \;
 
-readonly google_api_repo_dir=$(mktemp -d)
-readonly go_temp_dir=$(mktemp -d)
-trap "rm -rf ${google_api_repo_dir} ${go_temp_dir}" EXIT
-
-# We need `google.longrunning` from the below repo for long running operations,
-# see http://aip.dev/151 for details.
-readonly google_apis_repo_url="https://github.com/googleapis/api-common-protos"
-readonly google_apis_repo_version="1.50.0"
-wget -q -O - ${google_apis_repo_url}/tarball/${google_apis_repo_version} | \
-  tar xz --strip-components=1 -C "${google_api_repo_dir}"
-# We must generate descriptor for `google.longrunning.operations` separately
-# since it is imported by not included in `descpb.bin` in below.
-protoc -I${google_api_repo_dir} \
-  --descriptor_set_out=util/bindings/google_longrunning_operations_descpb.bin \
-  google/longrunning/operations.proto \
-  google/api/annotations.proto \
-  google/api/http.proto \
-  google/rpc/status.proto
-
 # Collect all the protos.
 protos=(proto/**/*.proto)
 
-readonly protoc_opts="-Iproto -I${google_api_repo_dir}"
-
-PATH="${CIPD_ROOT}" protoc ${protoc_opts} \
+PATH="${CIPD_ROOT}" protoc -Iproto \
   --descriptor_set_out=util/bindings/descpb.bin \
   --python_out=python "${protos[@]}"
 find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
@@ -60,11 +39,13 @@ find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
 # case any .proto files have been removed.
 find go/ -name '*pb.go' -delete
 
+readonly GO_TEMP_DIR=$(mktemp -d)
+trap "rm -rf ${GO_TEMP_DIR}" EXIT
 # Go files need to be processed individually until this is fixed:
 # https://github.com/golang/protobuf/issues/39
 for proto in "${protos[@]}"; do
-  PATH="${CIPD_ROOT}" protoc ${protoc_opts} \
-    --go_out=plugins=grpc,paths=source_relative:"${go_temp_dir}" \
+  PATH="${CIPD_ROOT}" protoc -I"proto" \
+    --go_out=plugins=grpc,paths=source_relative:"${GO_TEMP_DIR}" \
     "${proto}"
 done
-cp -rf "${go_temp_dir}"/chromiumos/config/* go/
+cp -rf "${GO_TEMP_DIR}"/chromiumos/config/* go/
