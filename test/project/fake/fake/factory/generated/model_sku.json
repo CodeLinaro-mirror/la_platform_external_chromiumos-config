@@ -2,9 +2,9 @@
   "model": {
     "fake-ref-design": {
       "component.audio_card_name": "fakeaudiocard",
-      "component.has_base_accelerometer": null,
-      "component.has_base_gyroscope": null,
-      "component.has_base_magnetometer": null,
+      "component.has_base_accelerometer": true,
+      "component.has_base_gyroscope": true,
+      "component.has_base_magnetometer": true,
       "component.has_daughter_board_usb_a": 0,
       "component.has_daughter_board_usb_c": 0,
       "component.has_front_camera": null,
@@ -50,9 +50,9 @@
     "project-a": {
       "component.audio_card_name": "fakeaudiocard",
       "component.fingerprint_board": "fake-fingerprint-board",
-      "component.has_base_accelerometer": null,
-      "component.has_base_gyroscope": null,
-      "component.has_base_magnetometer": null,
+      "component.has_base_accelerometer": true,
+      "component.has_base_gyroscope": true,
+      "component.has_base_magnetometer": true,
       "component.has_daughter_board_usb_a": 0,
       "component.has_daughter_board_usb_c": 0,
       "component.has_fingerprint": true,
@@ -95,14 +95,14 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 33
+      "fw_config": 801
     },
     "project-b": {
       "component.audio_card_name": "fakeaudiocard",
       "component.fingerprint_board": "",
-      "component.has_base_accelerometer": null,
-      "component.has_base_gyroscope": null,
-      "component.has_base_magnetometer": null,
+      "component.has_base_accelerometer": true,
+      "component.has_base_gyroscope": true,
+      "component.has_base_magnetometer": true,
       "component.has_daughter_board_usb_a": 0,
       "component.has_daughter_board_usb_c": 0,
       "component.has_fingerprint": false,
@@ -145,14 +145,14 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 33
+      "fw_config": 801
     },
     "project-c": {
       "component.audio_card_name": "fakeaudiocard",
       "component.fingerprint_board": "",
-      "component.has_base_accelerometer": null,
-      "component.has_base_gyroscope": null,
-      "component.has_base_magnetometer": null,
+      "component.has_base_accelerometer": true,
+      "component.has_base_gyroscope": true,
+      "component.has_base_magnetometer": true,
       "component.has_daughter_board_usb_a": 0,
       "component.has_daughter_board_usb_c": 0,
       "component.has_fingerprint": false,
@@ -195,14 +195,14 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 33
+      "fw_config": 801
     },
     "project-wl": {
       "component.audio_card_name": "fakeaudiocard",
       "component.fingerprint_board": "",
-      "component.has_base_accelerometer": null,
-      "component.has_base_gyroscope": null,
-      "component.has_base_magnetometer": null,
+      "component.has_base_accelerometer": true,
+      "component.has_base_gyroscope": true,
+      "component.has_base_magnetometer": true,
       "component.has_daughter_board_usb_a": 0,
       "component.has_daughter_board_usb_c": 0,
       "component.has_fingerprint": false,
@@ -245,7 +245,7 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 33
+      "fw_config": 801
     }
   },
   "product_sku": {
@@ -253,12 +253,12 @@
       "0": {
         "component.fingerprint_board": "",
         "component.has_fingerprint": false,
-        "fw_config": 0
+        "fw_config": 768
       },
       "2147483647": {
         "component.fingerprint_board": "fake-fingerprint-board",
         "component.has_fingerprint": true,
-        "fw_config": 33
+        "fw_config": 801
       }
     },
     "PROJECT-A": {

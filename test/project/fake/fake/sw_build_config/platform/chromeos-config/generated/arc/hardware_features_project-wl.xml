@@ -2,9 +2,9 @@
 <permissions>
   <unavailable-feature name="android.hardware.camera"/>
   <unavailable-feature name="android.hardware.camera.autofocus"/>
-  <unavailable-feature name="android.hardware.sensor.accelerometer"/>
-  <unavailable-feature name="android.hardware.sensor.gyroscope"/>
-  <unavailable-feature name="android.hardware.sensor.compass"/>
+  <feature name="android.hardware.sensor.accelerometer"/>
+  <feature name="android.hardware.sensor.gyroscope"/>
+  <feature name="android.hardware.sensor.compass"/>
   <unavailable-feature name="android.hardware.sensor.light"/>
   <unavailable-feature name="android.hardware.touchscreen"/>
   <unavailable-feature name="android.hardware.touchscreen.multitouch"/>

@@ -33,6 +33,7 @@ _DESIGN_ID_WL = design.create_design_id("PROJECT-WL")
 
 _DB_FW_MASK = 0x0000000f
 _CAMERA_FW_MASK = 0x000000f0
+_SENSOR_FW_MASK = 0x00000f00
 
 _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
@@ -55,7 +56,7 @@ _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_top
 _KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE)
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
 _CAMERA = hw_topo.create_camera("CAMERA", "Default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 2)], count = 1)
-_SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor")
+_SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor", fw_configs = [hw_topo.make_fw_config(_SENSOR_FW_MASK, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True)
 _FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake-fingerprint-board")
 _NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")

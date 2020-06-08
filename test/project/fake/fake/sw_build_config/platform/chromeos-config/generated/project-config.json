@@ -69,7 +69,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 33,
+          "firmware-config": 801,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -179,7 +179,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 0,
+          "firmware-config": 768,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -310,7 +310,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 33,
+          "firmware-config": 801,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -429,7 +429,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 33,
+          "firmware-config": 801,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -547,7 +547,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 33,
+          "firmware-config": 801,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -657,7 +657,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 33,
+          "firmware-config": 801,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -768,7 +768,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 33,
+          "firmware-config": 801,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -879,7 +879,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 33,
+          "firmware-config": 801,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",

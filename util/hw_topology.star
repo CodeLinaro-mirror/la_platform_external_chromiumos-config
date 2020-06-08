@@ -309,7 +309,11 @@ def _create_sensor(
         description,
         fw_configs = [],
         lid_accel_present = None,
-        base_gyro_present = None):
+        base_accel_present = None,
+        lid_gyro_present = None,
+        base_gyro_present = None,
+        lid_magno_present = None,
+        base_magno_present = None):
     """Builds a Topology proto for accelerometer/gyroscrope/magnometer sensors."""
     hw_features = topo_pb.HardwareFeatures()
 
@@ -318,8 +322,20 @@ def _create_sensor(
     if lid_accel_present:
         hw_features.accelerometer.lid_accelerometer = _bool_to_present(lid_accel_present)
 
+    if base_accel_present:
+        hw_features.accelerometer.base_accelerometer = _bool_to_present(base_accel_present)
+
+    if lid_gyro_present:
+        hw_features.gyroscope.lid_gyroscope = _bool_to_present(lid_gyro_present)
+
     if base_gyro_present:
         hw_features.gyroscope.base_gyroscope = _bool_to_present(base_gyro_present)
+
+    if lid_magno_present:
+        hw_features.magnetometer.lid_magnetometer = _bool_to_present(lid_magno_present)
+
+    if base_magno_present:
+        hw_features.magnetometer.base_magnetometer = _bool_to_present(base_magno_present)
 
     return topo_pb.Topology(
         id = id,

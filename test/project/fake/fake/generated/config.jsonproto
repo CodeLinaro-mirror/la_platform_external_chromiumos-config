@@ -135,6 +135,9 @@
         "configs": [
           {
             "hardwareFeatures": {
+              "accelerometer": {
+                "baseAccelerometer": 1
+              },
               "audio": {
                 "headphoneCodec": 2,
                 "speakerAmp": 5
@@ -164,8 +167,11 @@
                 "formFactor": 1
               },
               "fwConfig": {
-                "mask": 255,
-                "value": 33
+                "mask": 4095,
+                "value": 801
+              },
+              "gyroscope": {
+                "baseGyroscope": 1
               },
               "hdmi": {
                 "present": 2
@@ -177,6 +183,9 @@
               },
               "lte": {
                 "present": 1
+              },
+              "magnetometer": {
+                "baseMagnetometer": 1
               },
               "memory": {
                 "profile": {
@@ -212,7 +221,21 @@
                 "description": {
                   "EN": "Default sensor"
                 },
-                "hardwareFeature": {},
+                "hardwareFeature": {
+                  "accelerometer": {
+                    "baseAccelerometer": 1
+                  },
+                  "fwConfig": {
+                    "mask": 3840,
+                    "value": 768
+                  },
+                  "gyroscope": {
+                    "baseGyroscope": 1
+                  },
+                  "magnetometer": {
+                    "baseMagnetometer": 1
+                  }
+                },
                 "id": "SENSOR",
                 "type": 8
               },
@@ -465,6 +488,9 @@
           },
           {
             "hardwareFeatures": {
+              "accelerometer": {
+                "baseAccelerometer": 1
+              },
               "audio": {
                 "headphoneCodec": 2,
                 "speakerAmp": 5
@@ -481,7 +507,11 @@
                 "formFactor": 1
               },
               "fwConfig": {
-                "mask": 255
+                "mask": 4095,
+                "value": 768
+              },
+              "gyroscope": {
+                "baseGyroscope": 1
               },
               "hdmi": {
                 "present": 2
@@ -493,6 +523,9 @@
               },
               "lte": {
                 "present": 1
+              },
+              "magnetometer": {
+                "baseMagnetometer": 1
               },
               "memory": {
                 "profile": {
@@ -528,7 +561,21 @@
                 "description": {
                   "EN": "Default sensor"
                 },
-                "hardwareFeature": {},
+                "hardwareFeature": {
+                  "accelerometer": {
+                    "baseAccelerometer": 1
+                  },
+                  "fwConfig": {
+                    "mask": 3840,
+                    "value": 768
+                  },
+                  "gyroscope": {
+                    "baseGyroscope": 1
+                  },
+                  "magnetometer": {
+                    "baseMagnetometer": 1
+                  }
+                },
                 "id": "SENSOR",
                 "type": 8
               },
@@ -762,6 +809,9 @@
         "configs": [
           {
             "hardwareFeatures": {
+              "accelerometer": {
+                "baseAccelerometer": 1
+              },
               "audio": {
                 "headphoneCodec": 2,
                 "speakerAmp": 5
@@ -788,8 +838,11 @@
                 "formFactor": 2
               },
               "fwConfig": {
-                "mask": 255,
-                "value": 33
+                "mask": 4095,
+                "value": 801
+              },
+              "gyroscope": {
+                "baseGyroscope": 1
               },
               "hdmi": {
                 "present": 2
@@ -801,6 +854,9 @@
               },
               "lte": {
                 "present": 1
+              },
+              "magnetometer": {
+                "baseMagnetometer": 1
               },
               "memory": {
                 "profile": {
@@ -836,7 +892,21 @@
                 "description": {
                   "EN": "Default sensor"
                 },
-                "hardwareFeature": {},
+                "hardwareFeature": {
+                  "accelerometer": {
+                    "baseAccelerometer": 1
+                  },
+                  "fwConfig": {
+                    "mask": 3840,
+                    "value": 768
+                  },
+                  "gyroscope": {
+                    "baseGyroscope": 1
+                  },
+                  "magnetometer": {
+                    "baseMagnetometer": 1
+                  }
+                },
                 "id": "SENSOR",
                 "type": 8
               },
@@ -1091,6 +1161,9 @@
         "configs": [
           {
             "hardwareFeatures": {
+              "accelerometer": {
+                "baseAccelerometer": 1
+              },
               "audio": {
                 "headphoneCodec": 2,
                 "speakerAmp": 5
@@ -1116,8 +1189,11 @@
                 "formFactor": 2
               },
               "fwConfig": {
-                "mask": 255,
-                "value": 33
+                "mask": 4095,
+                "value": 801
+              },
+              "gyroscope": {
+                "baseGyroscope": 1
               },
               "hdmi": {
                 "present": 2
@@ -1129,6 +1205,9 @@
               },
               "lte": {
                 "present": 2
+              },
+              "magnetometer": {
+                "baseMagnetometer": 1
               },
               "memory": {
                 "profile": {
@@ -1164,7 +1243,21 @@
                 "description": {
                   "EN": "Default sensor"
                 },
-                "hardwareFeature": {},
+                "hardwareFeature": {
+                  "accelerometer": {
+                    "baseAccelerometer": 1
+                  },
+                  "fwConfig": {
+                    "mask": 3840,
+                    "value": 768
+                  },
+                  "gyroscope": {
+                    "baseGyroscope": 1
+                  },
+                  "magnetometer": {
+                    "baseMagnetometer": 1
+                  }
+                },
                 "id": "SENSOR",
                 "type": 8
               },
@@ -1406,6 +1499,9 @@
         "configs": [
           {
             "hardwareFeatures": {
+              "accelerometer": {
+                "baseAccelerometer": 1
+              },
               "audio": {
                 "headphoneCodec": 2,
                 "speakerAmp": 5
@@ -1431,8 +1527,11 @@
                 "formFactor": 1
               },
               "fwConfig": {
-                "mask": 255,
-                "value": 33
+                "mask": 4095,
+                "value": 801
+              },
+              "gyroscope": {
+                "baseGyroscope": 1
               },
               "hdmi": {
                 "present": 2
@@ -1444,6 +1543,9 @@
               },
               "lte": {
                 "present": 2
+              },
+              "magnetometer": {
+                "baseMagnetometer": 1
               },
               "memory": {
                 "profile": {
@@ -1479,7 +1581,21 @@
                 "description": {
                   "EN": "Default sensor"
                 },
-                "hardwareFeature": {},
+                "hardwareFeature": {
+                  "accelerometer": {
+                    "baseAccelerometer": 1
+                  },
+                  "fwConfig": {
+                    "mask": 3840,
+                    "value": 768
+                  },
+                  "gyroscope": {
+                    "baseGyroscope": 1
+                  },
+                  "magnetometer": {
+                    "baseMagnetometer": 1
+                  }
+                },
                 "id": "SENSOR",
                 "type": 8
               },
@@ -1721,6 +1837,9 @@
         "configs": [
           {
             "hardwareFeatures": {
+              "accelerometer": {
+                "baseAccelerometer": 1
+              },
               "audio": {
                 "headphoneCodec": 2,
                 "speakerAmp": 5
@@ -1737,8 +1856,11 @@
                 "formFactor": 1
               },
               "fwConfig": {
-                "mask": 255,
-                "value": 33
+                "mask": 4095,
+                "value": 801
+              },
+              "gyroscope": {
+                "baseGyroscope": 1
               },
               "hdmi": {
                 "present": 2
@@ -1750,6 +1872,9 @@
               },
               "lte": {
                 "present": 2
+              },
+              "magnetometer": {
+                "baseMagnetometer": 1
               },
               "memory": {
                 "profile": {
@@ -1782,7 +1907,21 @@
                 "description": {
                   "EN": "Default sensor"
                 },
-                "hardwareFeature": {},
+                "hardwareFeature": {
+                  "accelerometer": {
+                    "baseAccelerometer": 1
+                  },
+                  "fwConfig": {
+                    "mask": 3840,
+                    "value": 768
+                  },
+                  "gyroscope": {
+                    "baseGyroscope": 1
+                  },
+                  "magnetometer": {
+                    "baseMagnetometer": 1
+                  }
+                },
                 "id": "SENSOR",
                 "type": 8
               },
