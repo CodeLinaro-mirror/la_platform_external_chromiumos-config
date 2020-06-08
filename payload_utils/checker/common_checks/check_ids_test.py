@@ -20,6 +20,10 @@ from chromiumos.config.api.program_id_pb2 import ProgramId
 Config = Design.Config
 # pylint: enable=invalid-name
 
+# Some tests just check no exceptions were raised, and will not call self.assert
+# methods
+# pylint: disable=no-self-use
+
 
 class CheckIdsTest(unittest.TestCase):
   """Tests for check_ids."""

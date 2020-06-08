@@ -16,6 +16,7 @@ COMMON_CHECKS_PATH = os.path.join(
 
 
 def argument_parser():
+  """Returns an ArgumentParser for the script."""
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument(
       '--program',
@@ -42,6 +43,7 @@ def argument_parser():
 
 
 def main():
+  """Runs the script."""
   parser = argument_parser()
   args = parser.parse_args()
 

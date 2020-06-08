@@ -9,12 +9,12 @@ import pathlib
 import tempfile
 import unittest
 
+from google.protobuf import json_format
+
 from checker import io_utils
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.program_pb2 import ProgramList, Program
-
-from google.protobuf import json_format
 
 
 class IoUtilsTest(unittest.TestCase):

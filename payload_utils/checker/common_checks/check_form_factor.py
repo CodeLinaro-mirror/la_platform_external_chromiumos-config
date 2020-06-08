@@ -36,6 +36,8 @@ class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
       factory_dir: pathlib.Path,
   ):
     """Checks a project uses a form factor allowed by a program."""
+    del factory_dir
+
     program = config_bundle_utils.get_program(program_config)
     allowed_form_factors = []
     # Alias the FormFactor.Name fn. to increase readability. This fn. is used to
@@ -60,7 +62,7 @@ class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
       factory_dir: pathlib.Path,
   ):
     """Checks all form factor constraints are REQUIRED."""
-    del project_config
+    del project_config, factory_dir
     program = config_bundle_utils.get_program(program_config)
 
     for constraint in program.design_config_constraints:

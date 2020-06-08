@@ -5,9 +5,10 @@
 
 import unittest
 
+from google.protobuf import timestamp_pb2
+
 from chromiumos.config.api.software import build_target_pb2
 from common import proto_utils
-from google.protobuf import timestamp_pb2
 
 
 class ProtoUtilsTest(unittest.TestCase):

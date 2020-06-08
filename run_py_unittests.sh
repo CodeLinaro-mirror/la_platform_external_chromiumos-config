@@ -20,11 +20,16 @@ source .venv/bin/activate
 
 # Install requirements.
 echo "Installing required packages..."
+pip install wheel -q
 pip install -r requirements.txt -q
 
 # Discover and run unittests in payload_utils.
 echo "Running unittests..."
 python3 -m unittest discover -s payload_utils -p "*test.py"
+
+echo "Running pylint..."
+PYTHONPATH=payload_utils pylint "$(pwd)/payload_utils" \
+    --rcfile=payload_utils/pylintrc
 
 echo "Checking Python files formatted with yapf..."
 if ! yapf --style .style.yapf --diff -r payload_utils ; then

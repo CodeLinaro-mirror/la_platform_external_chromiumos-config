@@ -36,6 +36,8 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
       factory_dir: pathlib.Path,
   ):
     """Checks all project ids are consistent with the program."""
+    del factory_dir
+
     program_id = program_config.programs.value[0].id
     for design in project_config.designs.value:
       self.assertEqual(program_id, design.program_id)
@@ -47,6 +49,8 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
       factory_dir: pathlib.Path,
   ):
     """Check that all DesignConfigIds fall within their segment."""
+    del factory_dir
+
     program = config_bundle_utils.get_program(program_config)
     segment_map = {
         s.design_id.value: s for s in program.design_config_id_segments
@@ -85,7 +89,7 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
       factory_dir: pathlib.Path,
   ):
     """Check that no DesignConfigIdSegments overlap."""
-    del project_config
+    del project_config, factory_dir
 
     program = config_bundle_utils.get_program(program_config)
 
@@ -112,7 +116,7 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
       factory_dir: pathlib.Path,
   ):
     """Checks all project DesignConfigIds are unique."""
-    del program_config
+    del program_config, factory_dir
 
     design_config_ids = set()
     for design in project_config.designs.value:

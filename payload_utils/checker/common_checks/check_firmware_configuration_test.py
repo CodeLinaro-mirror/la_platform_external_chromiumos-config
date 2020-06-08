@@ -21,6 +21,10 @@ FirmwareConfiguration = HardwareFeatures.FirmwareConfiguration
 Config = Design.Config
 # pylint: enable=invalid-name
 
+# Some tests just check no exceptions were raised, and will not call self.assert
+# methods
+# pylint: disable=no-self-use
+
 
 class CheckFirmwareConfigurationTest(unittest.TestCase):
   """Tests for check_firmware_configuration."""

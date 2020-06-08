@@ -15,9 +15,15 @@ from chromiumos.config.api.program_pb2 import ProgramList, Program
 from checker.constraint_suite import (ConstraintSuite,
                                       InvalidConstraintSuiteError)
 
+# Some tests just check no exceptions were raised, and will not call self.assert
+# methods
+# pylint: disable=no-self-use
+
 
 class ValidConstraintSuite(ConstraintSuite):
-  """A valid constraint suite, that defines two checks."""
+  """A valid constraint suite for testing, that defines two checks."""
+
+  # pylint: disable=missing-docstring
 
   def _helper_method(self):
     assert False, "helper_method should never be called"
@@ -42,7 +48,9 @@ class ValidConstraintSuite(ConstraintSuite):
 
 
 class FactoryDirSuite(ConstraintSuite):
-  """A valid constraint suite that expects a file in factory_dir."""
+  """A valid constraint suite for testing that expects a file in factory_dir."""
+
+  # pylint: disable=missing-docstring
 
   def check_generated_config_present(
       self,
@@ -55,7 +63,9 @@ class FactoryDirSuite(ConstraintSuite):
 
 
 class InvalidConstraintSuite(ConstraintSuite):
-  """An invalid constraint suite, that defines no checks."""
+  """An invalid constraint suite for testing, that defines no checks."""
+
+  # pylint: disable=missing-docstring
 
   def helper_method1(self):
     pass
@@ -65,6 +75,7 @@ class InvalidConstraintSuite(ConstraintSuite):
 
 
 class ConstraintSuiteTest(unittest.TestCase):
+  """Tests for constraint_suite."""
 
   def test_runs_checks(self):
     """Tests running checks on a project that fulfills constraints."""

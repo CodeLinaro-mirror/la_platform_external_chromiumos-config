@@ -41,11 +41,9 @@ def load_models(public_path, private_path):
   """Load model.yaml from a public and/or private path."""
 
   # Have to import this here since we need repos cloned and sys.path set up
-  # pylint: disable=g-import-not-at-top
-  # pylint: disable=import-outside-toplevel
+  # pylint: disable=import-outside-toplevel, import-error
   from cros_config_host import cros_config_schema
-  # pylint: enable=g-import-not-at-top
-  # pylint: enable=import-outside-toplevel
+  # pylint: enable=import-outside-toplevel, import-error
 
   files = [file for file in [public_path, private_path] if file]
   return json.loads(cros_config_schema.MergeConfigs(files))
@@ -57,7 +55,7 @@ def load_hwid(hwid_path):
     return yaml.load(infile, Loader=yaml.FullLoader)
 
 
-def add_hwid_components(config_bundle, hwid_db):
+def add_hwid_components(config_bundle, hwid_db):  #pylint: disable=unused-argument
   """Add components from the HWID database to the config_bundle.
 
   HWID doesn't map hardware to SKU, it's more a listing of all possible
@@ -77,7 +75,7 @@ def add_hwid_components(config_bundle, hwid_db):
   return config_bundle
 
 
-def merge_model(config_bundle, design_config, model):
+def merge_model(config_bundle, design_config, model):  #pylint: disable=unused-argument
   """Merge model from model.yaml into a specific Design.Config instance.
 
   The ConfigBundle, and Design.Config are updated in place with
@@ -170,6 +168,7 @@ def merge_configs(config_path, project_name, public_path, private_path,
 
 
 def main(options):
+  """Runs the script."""
 
   def clone_repo(repo, path):
     """Clone a given repo to the given path in the file system."""
@@ -199,7 +198,7 @@ def main(options):
 
 
 if __name__ == '__main__':
-  parser = argparse.ArgumentParser(description=__doc__)
+  parser = argparse.ArgumentParser(description=__doc__)  #pylint: disable=invalid-name
   parser.add_argument(
       '-o',
       '--output',

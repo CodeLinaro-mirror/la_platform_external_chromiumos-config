@@ -55,7 +55,10 @@ def get_dep_order(message: pb_message.Message) -> List[Text]:
   This is a list from a preorder traversal of the dependency graph above.
   """
 
-  def dfs(graph, callback, node, seen=set()):
+  def dfs(graph, callback, node, seen=None):
+    if seen is None:
+      seen = set()
+
     if node in graph:
       for child in graph[node]:
         dfs(graph, callback, child, seen)

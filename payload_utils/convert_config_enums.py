@@ -8,12 +8,12 @@
 import argparse
 import sys
 
-from chromiumos.config.payload import config_bundle_pb2
-
 from google.protobuf import json_format
 
+from chromiumos.config.payload import config_bundle_pb2
 
-def Main(input_config, output_config):
+
+def Main(input_config, output_config):  # pylint: disable=invalid-name
   """Converts ConfigBundle json pb into json pb with enums as ints.
 
   Args:

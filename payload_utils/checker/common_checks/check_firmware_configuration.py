@@ -34,6 +34,8 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
     2. Check that each mask defined in a FirmwareConfiguration aligns with a
     segment.
     """
+    del factory_dir
+
     segments = config_bundle_utils.get_program(
         program_config).firmware_configuration_segments
 
@@ -106,7 +108,7 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
     because both ("DEFAULT_THERMAL", THERMAL) and ("DEFAULT_SCREEN", SCREEN) use
     value 11.
     """
-    del program_config
+    del program_config, factory_dir
 
     # Map from FirmwareConfiguration.value -> (Topology.id, Topology.type).
     value_to_topo = {}

@@ -23,6 +23,10 @@ CLAMSHELL = HardwareFeatures.FormFactor.FormFactorType.CLAMSHELL
 CONVERTIBLE = HardwareFeatures.FormFactor.FormFactorType.CONVERTIBLE
 DETACHABLE = HardwareFeatures.FormFactor.FormFactorType.DETACHABLE
 
+# Some tests just check no exceptions were raised, and will not call self.assert
+# methods
+# pylint: disable=no-self-use
+
 
 class CheckFormFactorTest(unittest.TestCase):
   """Tests for check_form_factor."""

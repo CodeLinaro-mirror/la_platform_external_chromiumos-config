@@ -33,6 +33,7 @@ fi
 source .venv/bin/activate
 
 # Install requirements.
+pip install wheel -q
 pip install -r config/requirements.txt -q
 
 if ! ./config/payload_utils/checker.py \

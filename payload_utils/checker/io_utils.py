@@ -8,10 +8,11 @@ import pathlib
 
 from typing import Any, Dict
 
-from chromiumos.config.payload import config_bundle_pb2
-
 from google.protobuf import json_format
 from google.protobuf.message import Message
+
+from chromiumos.config.payload import config_bundle_pb2
+
 
 
 def write_message_json(message: Message, path: pathlib.Path, \
