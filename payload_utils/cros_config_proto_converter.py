@@ -29,9 +29,10 @@ Config = namedtuple('Config', [
 ])
 
 ConfigFiles = namedtuple(
-    'ConfigFiles', ['bluetooth', 'arc_hw_features', 'touch_fw', 'dptf_file'])
+    'ConfigFiles', ['bluetooth', 'arc_hw_features', 'touch_fw', 'dptf_map'])
 
-DPTF_PATH = 'sw_build_config/platform/chromeos-config/thermal/dptf.dv'
+DPTF_PATH = 'sw_build_config/platform/chromeos-config/thermal'
+DPTF_FILE = 'dptf.dv'
 TOUCH_PATH = 'sw_build_config/platform/chromeos-config/touch'
 
 
@@ -461,7 +462,14 @@ def _transform_build_config(config, config_files):
   power_prefs_map = dict(
       (x.replace('_', '-'), power_prefs[x]) for x in power_prefs)
   _set(power_prefs_map, result, 'power')
-  _set(config_files.dptf_file, result, 'thermal')
+  if config_files.dptf_map:
+    # Prefer design specific if found, if not fall back to project wide config
+    # mapped under the empty string.
+    if config_files.dptf_map.get(config.hw_design.name):
+      dptf_file = config_files.dptf_map[config.hw_design.name]
+    else:
+      dptf_file = config_files.dptf_map.get('')
+    _set(dptf_file, result, 'thermal')
   _set(config_files.touch_fw, result, 'touch')
 
   return result
@@ -656,6 +664,43 @@ def _merge_configs(configs):
   return result
 
 
+def _dptf_map(configs, project_name):
+  """Produces a dptf map for the given configs.
+
+  Produces a map that maps from design name to the dptf file config for that
+  design. It looks for the dptf files at:
+      DPTF_PATH + DPTF_FILE
+  for a project wide config, that it maps under the empty string, and at:
+      DPTF_PATH + design_name + DPTF_FILE
+  for design specific configs that it maps under the design name.
+
+  Args:
+    configs: Source ConfigBundle to process.
+    project_name: Name of project processing for.
+
+  Returns:
+    map from design name or empty string (project wide), to dptf config
+  """
+  result = {}
+  project_dptf_path = os.path.join(project_name, 'dptf.dv')
+  # Looking at top level for project wide, and then for each design name
+  # for design specific.
+  dirs = [""] + [d.name for d in configs.designs.value]
+  for directory in dirs:
+    if os.path.exists(os.path.join(DPTF_PATH, directory, DPTF_FILE)):
+      dptf_file = {
+          'dptf-dv':
+              project_dptf_path,
+          'files': [
+              _file(
+                  os.path.join(project_name, DPTF_PATH, directory, DPTF_FILE),
+                  os.path.join('/etc/dptf', project_dptf_path))
+          ]
+      }
+      result[directory] = dptf_file
+  return result
+
+
 def Main(project_configs, program_config, output):  # pylint: disable=invalid-name
   """Transforms source proto config into platform JSON.
 
@@ -669,7 +714,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
   bluetooth_files = {}
   arc_hw_feature_files = {}
   touch_fw = {}
-  dptf_file = None
+  dptf_map = {}
   output_dir = os.path.dirname(output)
   build_root_dir = output_dir
   if 'sw_build_config' in output_dir:
@@ -685,17 +730,8 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
     # without having portage file installation collisions.
     build_root_dir = os.path.join(project_name, output_dir)
 
-  if os.path.exists(DPTF_PATH):
-    project_dptf_path = os.path.join(project_name, 'dptf.dv')
-    dptf_file = {
-        'dptf-dv':
-            project_dptf_path,
-        'files': [
-            _file(
-                os.path.join(project_name, DPTF_PATH),
-                os.path.join('/etc/dptf', project_dptf_path))
-        ]
-    }
+    dptf_map = _dptf_map(configs, project_name)
+
   if os.path.exists(TOUCH_PATH):
     touch_fw = _build_touch_file_config(configs, project_name)
   bluetooth_files = _write_bluetooth_config_files(configs, output_dir,
@@ -706,7 +742,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
       bluetooth=bluetooth_files,
       arc_hw_features=arc_hw_feature_files,
       touch_fw=touch_fw,
-      dptf_file=dptf_file)
+      dptf_map=dptf_map)
   write_output(_transform_build_configs(configs, config_files), output)
 
 

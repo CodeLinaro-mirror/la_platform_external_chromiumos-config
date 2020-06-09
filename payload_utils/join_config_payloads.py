@@ -51,10 +51,7 @@ def load_models(public_path, private_path):
     # Convert the model.yaml files into a payload JSON
     config_file = os.path.join(temp_dir, 'config.json')
     cros_config_schema.Main(
-        schema=None,
-        config=None,
-        output=config_file,
-        configs=configs)
+        schema=None, config=None, output=config_file, configs=configs)
 
     # And load the payload json into a CrosConfigJson object
     return CrosConfig(config_file)
@@ -86,7 +83,7 @@ def add_hwid_components(config_bundle, hwid_db):  #pylint: disable=unused-argume
   return config_bundle
 
 
-def merge_model(config_bundle, design_config, model):
+def merge_model(config_bundle, design_config, model):  #pylint: disable=unused-argument
   """Merge model from model.yaml into a specific Design.Config instance.
 
   The ConfigBundle, and Design.Config are updated in place with
