@@ -1,4 +1,4 @@
-#!/usr/bin/env lucicfg
+#!/usr/bin/env gen_config
 
 load("//config/util/component.star", "comp")
 load("//config/util/config_bundle.star", "config_bundle")
