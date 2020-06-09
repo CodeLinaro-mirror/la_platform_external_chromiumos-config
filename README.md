@@ -280,7 +280,7 @@ For example, `repo forall` can be used to make many commits across repos:
 repo start --all fixbuggyvalue
 
 # Find all config.star files and fix bug.
-find src/project -name config.star sed -i 's/buggyvalue/goodvalue/' {} \;
+find src/project -name config.star -exec sed -i 's/buggyvalue/goodvalue/' {} \;
 
 # Make a commit for all project repos.
 repo forall -r src/project -c 'git commit -a -m"
