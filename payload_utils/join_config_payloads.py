@@ -16,15 +16,15 @@ files.  Simple specify a project name with --project-name/-p and omit
 """
 
 import argparse
-import json
 import logging
 import os
 import sys
 import tempfile
 import yaml
 
+from common import config_bundle_utils
+
 from checker import io_utils
-from chromiumos.config.api import design_pb2
 from chromiumos.config.payload import config_bundle_pb2
 
 # HWID databases use some custom tags, which are mostly legacy as far as I can
@@ -66,7 +66,7 @@ def load_hwid(hwid_path):
     return yaml.load(infile, Loader=yaml.FullLoader)
 
 
-def add_hwid_components(config_bundle, hwid_db):
+def add_hwid_components(config_bundle, hwid_db):  #pylint: disable=unused-argument
   """Add components from the HWID database to the config_bundle.
 
   HWID doesn't map hardware to SKU, it's more a listing of all possible
@@ -116,25 +116,30 @@ def merge_configs(config_path, project_name, public_path, private_path,
   models = load_models(public_path, private_path)
   hwid_db = load_hwid(hwid_path)
 
-  def find_design_config(program, project, sku):
+  def find_design_config(prog_name, proj_name, sku):
     """Searches config_bundle a matching design_config.
 
     Args:
-      program (str): program name
-      project (str): project name
+      prog_name (str): program name
+      proj_name (str): project name
       sku (str): specific sku
 
     Returns:
       Either a found Design.Config or a new one placed in the config_bundle.
     """
 
+    # Ensure program exists
+    program = config_bundle_utils.find_program(
+        config_bundle, prog_name, create=True)
+
+    # Find design matching program and project names
     program_design = None
     for design in config_bundle.design_list:
-      if program != design.program_id.value.lower():
+      if program.id != design.program_id:
         continue
 
       program_design = design
-      if project != design.name.lower():
+      if proj_name.lower() != design.name.lower():
         continue
 
       # Found matching design, iterate design configs looking for SKU
@@ -146,14 +151,14 @@ def merge_configs(config_path, project_name, public_path, private_path,
     # No Design found, create one
     if not program_design:
       program_design = config_bundle.design_list.add()
-      program_design.id.value = program
-      program_design.name = program
+      program_design.id.value = prog_name
+      program_design.name = proj_name
+      program_design.program_id.MergeFrom(program.id)
 
     # Create new Design.Config, the board id is encoded according to CBI:
     #  http://go/chromiumsrc/chromiumos/docs/+/master/design_docs/cros_board_info.md
-    design_config = design_pb2.Design.Config()
-    design_config.id.value = '{}:{}'.format(project.capitalize(), sku)
-    program_design.configs.append(design_config)
+    design_config = program_design.configs.add()
+    design_config.id.value = '{}:{}'.format(proj_name.capitalize(), sku)
     return design_config
 
   # The primary source of SKU truth is the model.yaml files.  We'll take each
@@ -163,7 +168,6 @@ def merge_configs(config_path, project_name, public_path, private_path,
     identity = model.GetProperties('/identity')
     program = identity['platform-name']
     project = identity['smbios-name-match'].lower()
-    whitelabel = identity.get('whitelabel-tag', '')
 
     sku = str(identity.get('sku-id', 'any')).lower()
     if sku == 'any':

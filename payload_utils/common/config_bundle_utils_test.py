@@ -24,6 +24,8 @@ class ConfigBundleUtilsTest(unittest.TestCase):
     self.assertEqual(
         config_bundle_utils.find_program(empty, 'TestProgram', create=True),
         program)
+    self.assertEqual(
+        config_bundle_utils.find_program(empty, 'TestProgram'), program)
 
     self.assertEqual(
         config_bundle_utils.find_program(bundle, 'TestProgram'), program)
