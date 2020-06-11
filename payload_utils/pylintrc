@@ -5,8 +5,6 @@ ignore=
     test_data,
     experimental,
     # TODO(crbug.com/1092516): Enable linting on proto_converter files.
-    cros_config_proto_converter.py,
-    cros_config_proto_converter_unittest.py,
     factory_config_proto_converter.py,
     factory_config_proto_converter_unittest.py,
 

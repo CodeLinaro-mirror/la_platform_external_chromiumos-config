@@ -16,12 +16,12 @@ import xml.dom.minidom as minidom
 
 from collections import namedtuple
 
+from google.protobuf import json_format
+
 from chromiumos.config.api import device_brand_pb2
 from chromiumos.config.api import topology_pb2
 from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api.software import brand_config_pb2
-
-from google.protobuf import json_format
 
 Config = namedtuple('Config', [
     'program', 'hw_design', 'odm', 'hw_design_config', 'device_brand',
@@ -35,7 +35,7 @@ DPTF_PATH = 'sw_build_config/platform/chromeos-config/thermal/dptf.dv'
 TOUCH_PATH = 'sw_build_config/platform/chromeos-config/touch'
 
 
-def ParseArgs(argv):
+def parse_args(argv):
   """Parse the available arguments.
 
   Invalid arguments or -h cause this function to print a message and exit.
@@ -64,35 +64,37 @@ def ParseArgs(argv):
   return parser.parse_args(argv)
 
 
-def _Set(field, target, target_name):
+def _set(field, target, target_name):
   if field or field == 0:
     target[target_name] = field
 
 
-def _BuildArc(config, config_files):
-  if config.build_target.arc:
-    build_properties = {
-        'device': config.build_target.arc.device,
-        'first-api-level': config.build_target.arc.first_api_level,
-        'marketing-name': config.device_brand.brand_name,
-        'metrics-tag': config.hw_design.name.lower(),
-        'product': config.build_target.id.value,
-    }
-    if config.oem:
-      build_properties['oem'] = config.oem.name
-    result = {'build-properties': build_properties}
-    feature_id = _ArcHardwareFeatureId(config.hw_design_config)
-    if feature_id in config_files.arc_hw_features:
-      result['hardware-features'] = config_files.arc_hw_features[feature_id]
-    topology = config.hw_design_config.hardware_topology
-    ppi = topology.screen.hardware_feature.screen.panel_properties.pixels_per_in
-    # Only set for high resolution displays
-    if ppi and ppi > 250:
-      result['scale'] = ppi
-    return result
+def _build_arc(config, config_files):
+  if not config.build_target.arc:
+    return None
+
+  build_properties = {
+      'device': config.build_target.arc.device,
+      'first-api-level': config.build_target.arc.first_api_level,
+      'marketing-name': config.device_brand.brand_name,
+      'metrics-tag': config.hw_design.name.lower(),
+      'product': config.build_target.id.value,
+  }
+  if config.oem:
+    build_properties['oem'] = config.oem.name
+  result = {'build-properties': build_properties}
+  feature_id = _arc_hardware_feature_id(config.hw_design_config)
+  if feature_id in config_files.arc_hw_features:
+    result['hardware-features'] = config_files.arc_hw_features[feature_id]
+  topology = config.hw_design_config.hardware_topology
+  ppi = topology.screen.hardware_feature.screen.panel_properties.pixels_per_in
+  # Only set for high resolution displays
+  if ppi and ppi > 250:
+    result['scale'] = ppi
+  return result
 
 
-def _BuildBluetooth(config, bluetooth_files):
+def _build_bluetooth(config, bluetooth_files):
   bt_flags = config.sw_config.bluetooth_config.flags
   # Convert to native map (from proto wrapper)
   bt_flags_map = dict(bt_flags)
@@ -101,37 +103,43 @@ def _BuildBluetooth(config, bluetooth_files):
     result['flags'] = bt_flags_map
   bt_comp = config.hw_design_config.hardware_features.bluetooth.component.usb
   if bt_comp.vendor_id:
-    bt_id = _BluetoothId(config.hw_design.name.lower(), bt_comp)
+    bt_id = _bluetooth_id(config.hw_design.name.lower(), bt_comp)
     if bt_id in bluetooth_files:
       result['config'] = bluetooth_files[bt_id]
   return result
 
 
-def _BuildFingerprint(hw_topology):
-  if hw_topology.HasField('fingerprint'):
-    fp = hw_topology.fingerprint.hardware_feature.fingerprint
-    result = {}
-    if fp.location != topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT:
-      location = fp.Location.DESCRIPTOR.values_by_number[fp.location].name
-      result['sensor-location'] = location.lower().replace('_', '-')
-      if fp.board:
-        result['board'] = fp.board
-    return result
+def _build_fingerprint(hw_topology):
+  if not hw_topology.HasField('fingerprint'):
+    return None
+
+  fp = hw_topology.fingerprint.hardware_feature.fingerprint
+  result = {}
+  if fp.location != topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT:
+    location = fp.Location.DESCRIPTOR.values_by_number[fp.location].name
+    result['sensor-location'] = location.lower().replace('_', '-')
+    if fp.board:
+      result['board'] = fp.board
+  return result
 
 
-def _FwBcsPath(payload):
+def _fw_bcs_path(payload):
   if payload and payload.firmware_image_name:
     return 'bcs://%s.%d.%d.0.tbz2' % (payload.firmware_image_name,
                                       payload.version.major,
                                       payload.version.minor)
 
+  return None
 
-def _FwBuildTarget(payload):
+
+def _fw_build_target(payload):
   if payload:
     return payload.build_target_name
 
+  return None
 
-def _BuildFirmware(config):
+
+def _build_firmware(config):
   """Returns firmware config, or None if no build targets."""
   fw_payload_config = config.sw_config.firmware
   fw_build_config = config.sw_config.firmware_build_config
@@ -142,12 +150,12 @@ def _BuildFirmware(config):
 
   build_targets = {}
 
-  _Set(fw_build_config.build_targets.depthcharge, build_targets, 'depthcharge')
-  _Set(fw_build_config.build_targets.coreboot, build_targets, 'coreboot')
-  _Set(fw_build_config.build_targets.ec, build_targets, 'ec')
-  _Set(
+  _set(fw_build_config.build_targets.depthcharge, build_targets, 'depthcharge')
+  _set(fw_build_config.build_targets.coreboot, build_targets, 'coreboot')
+  _set(fw_build_config.build_targets.ec, build_targets, 'ec')
+  _set(
       list(fw_build_config.build_targets.ec_extras), build_targets, 'ec_extras')
-  _Set(fw_build_config.build_targets.libpayload, build_targets, 'libpayload')
+  _set(fw_build_config.build_targets.libpayload, build_targets, 'libpayload')
 
   if not build_targets:
     return None
@@ -157,14 +165,14 @@ def _BuildFirmware(config):
       'build-targets': build_targets,
   }
 
-  _Set(main_ro.firmware_image_name.lower(), result, 'image-name')
+  _set(main_ro.firmware_image_name.lower(), result, 'image-name')
 
-  _Set(_FwBcsPath(main_ro), result, 'main-ro-image')
-  _Set(_FwBcsPath(main_rw), result, 'main-rw-image')
-  _Set(_FwBcsPath(ec_ro), result, 'ec-ro-image')
-  _Set(_FwBcsPath(pd_ro), result, 'pd-ro-image')
+  _set(_fw_bcs_path(main_ro), result, 'main-ro-image')
+  _set(_fw_bcs_path(main_rw), result, 'main-rw-image')
+  _set(_fw_bcs_path(ec_ro), result, 'ec-ro-image')
+  _set(_fw_bcs_path(pd_ro), result, 'pd-ro-image')
 
-  _Set(
+  _set(
       config.hw_design_config.hardware_features.fw_config.value,
       result,
       'firmware-config',
@@ -173,7 +181,7 @@ def _BuildFirmware(config):
   return result
 
 
-def _BuildFwSigning(config):
+def _build_fw_signing(config):
   if config.sw_config.firmware and config.device_signer_config:
     hw_design = config.hw_design.name.lower()
     return {
@@ -185,11 +193,11 @@ def _BuildFwSigning(config):
   return {}
 
 
-def _File(source, destination):
+def _file(source, destination):
   return {'destination': destination, 'source': source}
 
 
-def _BuildAudio(config):
+def _build_audio(config):
   alsa_path = '/usr/share/alsa/ucm'
   cras_path = '/etc/cras'
   project_name = config.hw_design.name.lower()
@@ -204,25 +212,25 @@ def _BuildAudio(config):
   files = []
   if audio.ucm_file:
     files.append(
-        _File(audio.ucm_file,
+        _file(audio.ucm_file,
               '%s/%s/HiFi.conf' % (alsa_path, card_with_suffix)))
   if audio.ucm_master_file:
     files.append(
-        _File(audio.ucm_master_file, '%s/%s/%s.conf' %
+        _file(audio.ucm_master_file, '%s/%s/%s.conf' %
               (alsa_path, card_with_suffix, card_with_suffix)))
   if audio.card_config_file:
     files.append(
-        _File(audio.card_config_file,
+        _file(audio.card_config_file,
               '%s/%s/%s' % (cras_path, project_name, card)))
   if audio.dsp_file:
     files.append(
-        _File(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
+        _file(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
   if audio.module_file:
     files.append(
-        _File(audio.module_file, '/etc/modprobe.d/alsa-%s.conf' % program_name))
+        _file(audio.module_file, '/etc/modprobe.d/alsa-%s.conf' % program_name))
   if audio.board_file:
     files.append(
-        _File(audio.board_file, '%s/%s/board.ini' % (cras_path, project_name)))
+        _file(audio.board_file, '%s/%s/board.ini' % (cras_path, project_name)))
 
   result = {
       'main': {
@@ -236,7 +244,7 @@ def _BuildAudio(config):
   return result
 
 
-def _BuildCamera(hw_topology):
+def _build_camera(hw_topology):
   if hw_topology.HasField('camera'):
     camera = hw_topology.camera.hardware_feature.camera
     result = {}
@@ -244,40 +252,44 @@ def _BuildCamera(hw_topology):
       result['count'] = camera.count.value
     return result
 
+  return None
 
-def _BuildIdentity(hw_scan_config, program, brand_scan_config=None):
+
+def _build_identity(hw_scan_config, program, brand_scan_config=None):
   identity = {}
-  _Set(hw_scan_config.firmware_sku, identity, 'sku-id')
-  _Set(hw_scan_config.smbios_name_match, identity, 'smbios-name-match')
+  _set(hw_scan_config.firmware_sku, identity, 'sku-id')
+  _set(hw_scan_config.smbios_name_match, identity, 'smbios-name-match')
   # 'platform-name' is needed to support 'mosys platform name'. Clients should
   # longer require platform name, but set it here for backwards compatibility.
-  _Set(program.name, identity, 'platform-name')
+  _set(program.name, identity, 'platform-name')
   # ARM architecture
-  _Set(hw_scan_config.device_tree_compatible_match, identity,
+  _set(hw_scan_config.device_tree_compatible_match, identity,
        'device-tree-compatible-match')
 
   if brand_scan_config:
-    _Set(brand_scan_config.whitelabel_tag, identity, 'whitelabel-tag')
+    _set(brand_scan_config.whitelabel_tag, identity, 'whitelabel-tag')
 
   return identity
 
 
-def _Lookup(id_value, id_map):
-  if id_value.value:
-    key = id_value.value
-    if key in id_map:
-      return id_map[id_value.value]
-    error = 'Failed to lookup %s with value: %s' % (
-        id_value.__class__.__name__.replace('Id', ''), key)
-    print(error)
-    print('Check the config contents provided:')
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(id_map)
-    raise Exception(error)
+def _lookup(id_value, id_map):
+  if not id_value.value:
+    return None
+
+  key = id_value.value
+  if key in id_map:
+    return id_map[id_value.value]
+  error = 'Failed to lookup %s with value: %s' % (
+      id_value.__class__.__name__.replace('Id', ''), key)
+  print(error)
+  print('Check the config contents provided:')
+  printer = pprint.PrettyPrinter(indent=4)
+  printer.pprint(id_map)
+  raise Exception(error)
 
 
-def _BuildTouchFileConfig(config, project_name):
-  partners = dict([(x.id.value, x) for x in config.partners.value])
+def _build_touch_file_config(config, project_name):
+  partners = {x.id.value: x for x in config.partners.value}
   files = []
   for comp in config.components:
     touch = comp.touchscreen
@@ -285,7 +297,7 @@ def _BuildTouchFileConfig(config, project_name):
     if comp.HasField('touchpad'):
       touch = comp.touchpad
     if touch.product_id:
-      vendor = _Lookup(comp.manufacturer_id, partners)
+      vendor = _lookup(comp.manufacturer_id, partners)
       if not vendor:
         raise Exception("Manufacturer must be set for touch device %s" %
                         comp.id.value)
@@ -318,15 +330,17 @@ def _BuildTouchFileConfig(config, project_name):
       })
 
   result = {}
-  _Set(files, result, 'files')
+  _set(files, result, 'files')
   return result
 
 
-def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {}, {}, None)):
-  partners = dict([(x.id.value, x) for x in config.partners.value])
-  programs = dict([(x.id.value, x) for x in config.programs.value])
+def _transform_build_configs(config, config_files=ConfigFiles({}, {}, {},
+                                                              None)):
+  # pylint: disable=too-many-locals,too-many-branches
+  partners = {x.id.value: x for x in config.partners.value}
+  programs = {x.id.value: x for x in config.programs.value}
   sw_configs = list(config.software_configs)
-  brand_configs = dict([(x.brand_id.value, x) for x in config.brand_configs])
+  brand_configs = {x.brand_id.value: x for x in config.brand_configs}
 
   if len(config.build_targets) != 1:
     # Artifact of sharing the config_bundle for analysis and transforms.
@@ -362,7 +376,7 @@ def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {}, {}, None)):
         else:
           raise Exception('Software config is required for: %s' % design_id)
 
-        program = _Lookup(hw_design.program_id, programs)
+        program = _lookup(hw_design.program_id, programs)
         signer_configs_by_design = {}
         signer_configs_by_brand = {}
         for signer_config in program.device_signer_configs:
@@ -388,15 +402,15 @@ def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {}, {}, None)):
             raise Exception('Signer config missing for design: %s, brand: %s' %
                             (design_id, brand_id))
 
-        transformed_config = _TransformBuildConfig(
+        transformed_config = _transform_build_config(
             Config(
                 program=program,
                 hw_design=hw_design,
-                odm=_Lookup(hw_design.odm_id, partners),
+                odm=_lookup(hw_design.odm_id, partners),
                 hw_design_config=hw_design_config,
                 device_brand=device_brand,
                 device_signer_config=device_signer_config,
-                oem=_Lookup(device_brand.oem_id, partners),
+                oem=_lookup(device_brand.oem_id, partners),
                 sw_config=sw_config,
                 brand_config=brand_config,
                 build_target=config.build_targets[0]), config_files)
@@ -413,7 +427,7 @@ def _TransformBuildConfigs(config, config_files=ConfigFiles({}, {}, {}, None)):
   return list(results.values())
 
 
-def _TransformBuildConfig(config, config_files):
+def _transform_build_config(config, config_files):
   """Transforms Config instance into target platform JSON schema.
 
   Args:
@@ -425,34 +439,35 @@ def _TransformBuildConfig(config, config_files):
   """
   result = {
       'identity':
-          _BuildIdentity(config.sw_config.id_scan_config, config.program,
-                         config.brand_config.scan_config),
+          _build_identity(config.sw_config.id_scan_config, config.program,
+                          config.brand_config.scan_config),
       'name':
           config.hw_design.name.lower(),
   }
 
-  _Set(_BuildArc(config, config_files), result, 'arc')
-  _Set(_BuildAudio(config), result, 'audio')
-  _Set(_BuildBluetooth(config, config_files.bluetooth), result, 'bluetooth')
-  _Set(config.device_brand.brand_code, result, 'brand-code')
-  _Set(
-      _BuildCamera(config.hw_design_config.hardware_topology), result, 'camera')
-  _Set(_BuildFirmware(config), result, 'firmware')
-  _Set(_BuildFwSigning(config), result, 'firmware-signing')
-  _Set(
-      _BuildFingerprint(config.hw_design_config.hardware_topology), result,
+  _set(_build_arc(config, config_files), result, 'arc')
+  _set(_build_audio(config), result, 'audio')
+  _set(_build_bluetooth(config, config_files.bluetooth), result, 'bluetooth')
+  _set(config.device_brand.brand_code, result, 'brand-code')
+  _set(
+      _build_camera(config.hw_design_config.hardware_topology), result,
+      'camera')
+  _set(_build_firmware(config), result, 'firmware')
+  _set(_build_fw_signing(config), result, 'firmware-signing')
+  _set(
+      _build_fingerprint(config.hw_design_config.hardware_topology), result,
       'fingerprint')
   power_prefs = config.sw_config.power_config.preferences
   power_prefs_map = dict(
       (x.replace('_', '-'), power_prefs[x]) for x in power_prefs)
-  _Set(power_prefs_map, result, 'power')
-  _Set(config_files.dptf_file, result, 'thermal')
-  _Set(config_files.touch_fw, result, 'touch')
+  _set(power_prefs_map, result, 'power')
+  _set(config_files.dptf_file, result, 'thermal')
+  _set(config_files.touch_fw, result, 'touch')
 
   return result
 
 
-def WriteOutput(configs, output=None):
+def write_output(configs, output=None):
   """Writes a list of configs to platform JSON format.
 
   Args:
@@ -473,28 +488,28 @@ def WriteOutput(configs, output=None):
     print(json_output)
 
 
-def _BluetoothId(project_name, bt_comp):
+def _bluetooth_id(project_name, bt_comp):
   return '_'.join(
       [project_name, bt_comp.vendor_id, bt_comp.product_id, bt_comp.bcd_device])
 
 
-def _Feature(name, present):
+def _feature(name, present):
   attrib = {'name': name}
   if present:
     return etree.Element('feature', attrib=attrib)
-  else:
-    return etree.Element('unavailable-feature', attrib=attrib)
+
+  return etree.Element('unavailable-feature', attrib=attrib)
 
 
-def _AnyPresent(features):
+def _any_present(features):
   return topology_pb2.HardwareFeatures.PRESENT in features
 
 
-def _ArcHardwareFeatureId(design_config):
+def _arc_hardware_feature_id(design_config):
   return design_config.id.value.lower().replace(':', '_')
 
 
-def _WriteArcHardwareFeatureFile(output_dir, file_name, config_content):
+def _write_arc_hardware_feature_file(output_dir, file_name, config_content):
   output_dir += '/arc'
   os.makedirs(output_dir, exist_ok=True)
   output = '%s/%s' % (output_dir, file_name)
@@ -505,7 +520,7 @@ def _WriteArcHardwareFeatureFile(output_dir, file_name, config_content):
     f.write(file_content)
 
 
-def WriteArcHardwareFeatureFiles(config, output_dir, build_root_dir):
+def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
   """Writes ARC hardware_feature.xml files for each config
 
   Args:
@@ -515,37 +530,41 @@ def WriteArcHardwareFeatureFiles(config, output_dir, build_root_dir):
   Returns:
     dict that maps the design_config_id onto the correct file.
   """
+  # pylint: disable=too-many-locals
   result = {}
   configs_by_design = {}
   for hw_design in config.designs.value:
     for design_config in hw_design.configs:
       hw_features = design_config.hardware_features
       multi_camera = hw_features.camera.count == 2
-      touchscreen = _AnyPresent([hw_features.screen.touch_support])
+      touchscreen = _any_present([hw_features.screen.touch_support])
       acc = hw_features.accelerometer
       gyro = hw_features.gyroscope
       compass = hw_features.magnetometer
-      ls = hw_features.light_sensor
+      light_sensor = hw_features.light_sensor
       root = etree.Element('permissions')
       root.extend([
-          _Feature('android.hardware.camera', multi_camera),
-          _Feature('android.hardware.camera.autofocus', multi_camera),
-          _Feature('android.hardware.sensor.accelerometer',
-                   _AnyPresent([acc.lid_accelerometer,
-                                acc.base_accelerometer])),
-          _Feature('android.hardware.sensor.gyroscope',
-                   _AnyPresent([gyro.lid_gyroscope, gyro.base_gyroscope])),
-          _Feature(
+          _feature('android.hardware.camera', multi_camera),
+          _feature('android.hardware.camera.autofocus', multi_camera),
+          _feature(
+              'android.hardware.sensor.accelerometer',
+              _any_present([acc.lid_accelerometer, acc.base_accelerometer])),
+          _feature('android.hardware.sensor.gyroscope',
+                   _any_present([gyro.lid_gyroscope, gyro.base_gyroscope])),
+          _feature(
               'android.hardware.sensor.compass',
-              _AnyPresent([compass.lid_magnetometer,
-                           compass.base_magnetometer])),
-          _Feature('android.hardware.sensor.light',
-                   _AnyPresent([ls.lid_lightsensor, ls.base_lightsensor])),
-          _Feature('android.hardware.touchscreen', touchscreen),
-          _Feature('android.hardware.touchscreen.multitouch', touchscreen),
-          _Feature('android.hardware.touchscreen.multitouch.distinct',
+              _any_present(
+                  [compass.lid_magnetometer, compass.base_magnetometer])),
+          _feature(
+              'android.hardware.sensor.light',
+              _any_present(
+                  [light_sensor.lid_lightsensor,
+                   light_sensor.base_lightsensor])),
+          _feature('android.hardware.touchscreen', touchscreen),
+          _feature('android.hardware.touchscreen.multitouch', touchscreen),
+          _feature('android.hardware.touchscreen.multitouch.distinct',
                    touchscreen),
-          _Feature('android.hardware.touchscreen.multitouch.jazzhand',
+          _feature('android.hardware.touchscreen.multitouch.jazzhand',
                    touchscreen),
       ])
 
@@ -570,13 +589,13 @@ def WriteArcHardwareFeatureFiles(config, output_dir, build_root_dir):
     for file_content, design_configs in unique_configs.items():
       file_name = 'hardware_features_%s.xml' % design_name
       if len(unique_configs) == 1:
-        _WriteArcHardwareFeatureFile(output_dir, file_name, file_content)
+        _write_arc_hardware_feature_file(output_dir, file_name, file_content)
 
       for design_config in design_configs:
-        feature_id = _ArcHardwareFeatureId(design_config)
+        feature_id = _arc_hardware_feature_id(design_config)
         if len(unique_configs) > 1:
           file_name = 'hardware_features_%s.xml' % feature_id
-          _WriteArcHardwareFeatureFile(output_dir, file_name, file_content)
+          _write_arc_hardware_feature_file(output_dir, file_name, file_content)
         result[feature_id] = {
             'build-path': '%s/arc/%s' % (build_root_dir, file_name),
             'system-path': '/etc/%s' % file_name,
@@ -584,7 +603,7 @@ def WriteArcHardwareFeatureFiles(config, output_dir, build_root_dir):
   return result
 
 
-def WriteBluetoothConfigFiles(config, output_dir, build_root_path):
+def _write_bluetooth_config_files(config, output_dir, build_root_path):
   """Writes bluetooth conf files for every unique bluetooth chip.
 
   Args:
@@ -601,7 +620,7 @@ def WriteBluetoothConfigFiles(config, output_dir, build_root_path):
     for design_config in hw_design.configs:
       bt_comp = design_config.hardware_features.bluetooth.component.usb
       if bt_comp.vendor_id:
-        bt_id = _BluetoothId(project_name, bt_comp)
+        bt_id = _bluetooth_id(project_name, bt_comp)
         result[bt_id] = {
             'build-path': '%s/bluetooth/%s.conf' % (build_root_path, bt_id),
             'system-path': '/etc/bluetooth/%s/main.conf' % bt_id,
@@ -618,7 +637,7 @@ DeviceID = bluetooth:%s:%s:%s''' % (bt_comp.vendor_id, bt_comp.product_id,
   return result
 
 
-def _ReadConfig(path):
+def _read_config(path):
   """Reads a ConfigBundle proto from a json pb file.
 
   Args:
@@ -629,7 +648,7 @@ def _ReadConfig(path):
     return json_format.Parse(f.read(), config)
 
 
-def _MergeConfigs(configs):
+def _merge_configs(configs):
   result = config_bundle_pb2.ConfigBundle()
   for config in configs:
     result.MergeFrom(config)
@@ -637,7 +656,7 @@ def _MergeConfigs(configs):
   return result
 
 
-def Main(project_configs, program_config, output):
+def Main(project_configs, program_config, output):  # pylint: disable=invalid-name
   """Transforms source proto config into platform JSON.
 
   Args:
@@ -645,8 +664,8 @@ def Main(project_configs, program_config, output):
     program_config: Program config for the given set of projects.
     output: Output file that will be generated by the transform.
   """
-  configs = _MergeConfigs([_ReadConfig(program_config)] +
-                          [_ReadConfig(config) for config in project_configs])
+  configs = _merge_configs([_read_config(program_config)] +
+                           [_read_config(config) for config in project_configs])
   bluetooth_files = {}
   arc_hw_feature_files = {}
   touch_fw = {}
@@ -672,23 +691,23 @@ def Main(project_configs, program_config, output):
         'dptf-dv':
             project_dptf_path,
         'files': [
-            _File(
+            _file(
                 os.path.join(project_name, DPTF_PATH),
                 os.path.join('/etc/dptf', project_dptf_path))
         ]
     }
   if os.path.exists(TOUCH_PATH):
-    touch_fw = _BuildTouchFileConfig(configs, project_name)
-  bluetooth_files = WriteBluetoothConfigFiles(configs, output_dir,
-                                              build_root_dir)
-  arc_hw_feature_files = WriteArcHardwareFeatureFiles(configs, output_dir,
-                                                      build_root_dir)
+    touch_fw = _build_touch_file_config(configs, project_name)
+  bluetooth_files = _write_bluetooth_config_files(configs, output_dir,
+                                                  build_root_dir)
+  arc_hw_feature_files = _write_arc_hardware_feature_files(
+      configs, output_dir, build_root_dir)
   config_files = ConfigFiles(
       bluetooth=bluetooth_files,
       arc_hw_features=arc_hw_feature_files,
       touch_fw=touch_fw,
       dptf_file=dptf_file)
-  WriteOutput(_TransformBuildConfigs(configs, config_files), output)
+  write_output(_transform_build_configs(configs, config_files), output)
 
 
 def main(argv=None):
@@ -699,7 +718,7 @@ def main(argv=None):
   """
   if argv is None:
     argv = sys.argv[1:]
-  opts = ParseArgs(argv)
+  opts = parse_args(argv)
   Main(opts.project_configs, opts.program_config, opts.output)
 
 
