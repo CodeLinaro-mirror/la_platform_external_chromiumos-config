@@ -43,10 +43,21 @@ def load_models(public_path, private_path):
   # Have to import this here since we need repos cloned and sys.path set up
   # pylint: disable=import-outside-toplevel, import-error
   from cros_config_host import cros_config_schema
+  from libcros_config_host import CrosConfig
   # pylint: enable=import-outside-toplevel, import-error
 
-  files = [file for file in [public_path, private_path] if file]
-  return json.loads(cros_config_schema.MergeConfigs(files))
+  configs = [config for config in [public_path, private_path] if config]
+  with tempfile.TemporaryDirectory() as temp_dir:
+    # Convert the model.yaml files into a payload JSON
+    config_file = os.path.join(temp_dir, 'config.json')
+    cros_config_schema.Main(
+        schema=None,
+        config=None,
+        output=config_file,
+        configs=configs)
+
+    # And load the payload json into a CrosConfigJson object
+    return CrosConfig(config_file)
 
 
 def load_hwid(hwid_path):
@@ -55,7 +66,7 @@ def load_hwid(hwid_path):
     return yaml.load(infile, Loader=yaml.FullLoader)
 
 
-def add_hwid_components(config_bundle, hwid_db):  #pylint: disable=unused-argument
+def add_hwid_components(config_bundle, hwid_db):
   """Add components from the HWID database to the config_bundle.
 
   HWID doesn't map hardware to SKU, it's more a listing of all possible
@@ -75,7 +86,7 @@ def add_hwid_components(config_bundle, hwid_db):  #pylint: disable=unused-argume
   return config_bundle
 
 
-def merge_model(config_bundle, design_config, model):  #pylint: disable=unused-argument
+def merge_model(config_bundle, design_config, model):
   """Merge model from model.yaml into a specific Design.Config instance.
 
   The ConfigBundle, and Design.Config are updated in place with
@@ -102,7 +113,7 @@ def merge_configs(config_path, project_name, public_path, private_path,
   if config_path:
     config_bundle = io_utils.read_config(config_path)
 
-  model_yaml = load_models(public_path, private_path)
+  models = load_models(public_path, private_path)
   hwid_db = load_hwid(hwid_path)
 
   def find_design_config(program, project, sku):
@@ -148,13 +159,23 @@ def merge_configs(config_path, project_name, public_path, private_path,
   # The primary source of SKU truth is the model.yaml files.  We'll take each
   # sku we find there and attempt to match with a DesignConfig in the
   # ConfigBundles, and update it if we find it, otherwise creating a new one.
-  for model in model_yaml['chromeos']['configs']:
-    program = model['identity']['platform-name'].lower()
-    project = model['name'].lower()
-    sku = str(model['identity'].get('sku-id', 'any')).lower()
+  for model in models.GetDeviceConfigs():
+    identity = model.GetProperties('/identity')
+    program = identity['platform-name']
+    project = identity['smbios-name-match'].lower()
+    whitelabel = identity.get('whitelabel-tag', '')
+
+    sku = str(identity.get('sku-id', 'any')).lower()
     if sku == 'any':
       logging.info('skipping wildcard sku in %s', project)
       continue
+
+    if sku == '255':
+      logging.info('skipping unprovisioned sku %s', sku)
+      continue
+
+    assert program, 'program name is undefined'
+    assert project, 'project name is undefined'
 
     # Ignore projects other than the one specified
     if project_name and (project != project_name.lower()):
@@ -198,7 +219,7 @@ def main(options):
 
 
 if __name__ == '__main__':
-  parser = argparse.ArgumentParser(description=__doc__)  #pylint: disable=invalid-name
+  parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument(
       '-o',
       '--output',
