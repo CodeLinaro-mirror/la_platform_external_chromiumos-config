@@ -319,6 +319,9 @@ try_set_viewer() {
 
 create_project_buckets() {
   # setup() guaranteed that we have a $program.
+  # The invoker needs to have Storage Object Admin, Storage Object Creator
+  # permissions in the chromeos-bot project.
+  gcloud config set project chromeos-bot
   if [[ -n "$project" ]]; then
     local bucket="gs://chromeos-${program}-${project}"
     echo "Creating bucket ${bucket}."
