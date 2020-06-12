@@ -25,6 +25,7 @@ import yaml
 from common import config_bundle_utils
 
 from checker import io_utils
+from chromiumos.config.api.software import firmware_config_pb2
 from chromiumos.config.payload import config_bundle_pb2
 
 # HWID databases use some custom tags, which are mostly legacy as far as I can
@@ -63,7 +64,7 @@ def load_hwid(hwid_path):
     return yaml.load(infile, Loader=yaml.FullLoader)
 
 
-def add_hwid_components(config_bundle, hwid_db):  #pylint: disable=unused-argument
+def add_hwid_components(config_bundle, hwid_db):
   """Add components from the HWID database to the config_bundle.
 
   HWID doesn't map hardware to SKU, it's more a listing of all possible
@@ -79,11 +80,102 @@ def add_hwid_components(config_bundle, hwid_db):  #pylint: disable=unused-argume
   Returns:
     A reference to the input config_bundle updated with components from HWID
   """
+
+  del hwid_db
+
   # TODO(smcallis): implement
   return config_bundle
 
 
-def merge_model(config_bundle, design_config, model):  #pylint: disable=unused-argument
+def merge_audio_config(sw_config, model):
+  """Merge audio configuration from model.yaml into the given sw_config.
+
+  Args:
+    sw_config (SoftwareConfig): software config to update
+    model (CrosConfig): parsed model.yaml information
+
+  Returns:
+    None
+  """
+  audio_props = model.GetProperties('/audio/main')
+  audio_config = sw_config.audio_config
+  audio_config.ucm_suffix = audio_props.get('ucm-suffix', '')
+
+
+def merge_power_config(sw_config, model):
+  """Merge power configuration from model.yaml into the given sw_config.
+
+  Args:
+    sw_config (SoftwareConfig): software config to update
+    model (CrosConfig): parsed model.yaml information
+
+  Returns:
+    None
+  """
+  power_props = model.GetProperties('/power')
+  power_config = sw_config.power_config
+
+  for key, val in power_props.items():
+    power_config.preferences[key] = val
+
+
+def merge_bluetooth_config(sw_config, model):
+  """Merge bluetooth configuration from model.yaml into the given sw_config.
+
+  Args:
+    sw_config (SoftwareConfig): software config to update
+    model (CrosConfig): parsed model.yaml information
+
+  Returns:
+    None
+  """
+  bt_props = model.GetProperties('/bluetooth')
+  bt_config = sw_config.bluetooth_config
+
+  for key, val in bt_props.get('flags', {}).items():
+    bt_config.flags[key] = val
+
+
+def merge_firmware_config(sw_config, model):
+  """Merge firmware configuration from model.yaml into the given sw_config.
+
+  Args:
+    sw_config (SoftwareConfig): software config to update
+    model (CrosConfig): parsed model.yaml information
+
+  Returns:
+    None
+  """
+  fw_props = model.GetProperties('/firmware')
+
+  # Populate firmware config
+  fw_config = sw_config.firmware
+  fw_config.main_ro_payload.type = firmware_config_pb2.FirmwareType.Type.MAIN
+  fw_config.main_ro_payload.firmware_image_name = \
+      fw_props.get('main-ro-image', '')
+
+  fw_config.main_rw_payload.type = firmware_config_pb2.FirmwareType.Type.MAIN
+  fw_config.main_rw_payload.firmware_image_name = \
+      fw_props.get('main-rw-image', '')
+
+  fw_config.ec_ro_payload.type = firmware_config_pb2.FirmwareType.Type.EC
+  fw_config.ec_ro_payload.firmware_image_name = \
+      fw_props.get('ec-ro-image', '')
+
+  # Populate build config
+  build_props = model.GetProperties('/firmware/build-targets')
+
+  build_config = sw_config.firmware_build_config
+  build_config.build_targets.coreboot = build_props.get('coreboot', '')
+  build_config.build_targets.depthcharge = build_props.get('depthcharge', '')
+  build_config.build_targets.ec = build_props.get('ec', '')
+  build_config.build_targets.libpayload = build_props.get('libpayload', '')
+
+  for extra in build_props.get('ec-extras', []):
+    build_config.build_targets.ec_extras.add(extra)
+
+
+def merge_model(config_bundle, design_config, model):
   """Merge model from model.yaml into a specific Design.Config instance.
 
   The ConfigBundle, and Design.Config are updated in place with
@@ -92,16 +184,30 @@ def merge_model(config_bundle, design_config, model):  #pylint: disable=unused-a
   Args:
     config_bundle (ConfigBundle): top level ConfigBundle to update
     design_config (Design.Config): design config in the config bundle to update
-    model (dict):  parsed model.yaml information for design_config
+    model (CrosConfig):  parsed model.yaml information
 
   Returns:
     A reference to the input config_bundle updated with data from model
   """
 
-  del design_config
-  del model
+  identity = model.GetProperties('/identity')
 
-  # TODO(smcallis): implement
+  sw_config = config_bundle.software_configs.add()
+  sw_config.design_config_id.MergeFrom(design_config.id)
+  sw_config.id_scan_config.firmware_sku = identity['sku-id']
+
+  if 'smbios-name-match' in identity:
+    sw_config.id_scan_config.smbios_name_match = identity['smbios-name-match']
+
+  if 'device-tree-compatible-match' in identity:
+    sw_config.id_scan_config.device_tree_compatible_match = \
+       identity['device-tree-compatible-match']
+
+  merge_firmware_config(sw_config, model)
+  merge_bluetooth_config(sw_config, model)
+  merge_power_config(sw_config, model)
+  merge_audio_config(sw_config, model)
+
   return config_bundle
 
 
