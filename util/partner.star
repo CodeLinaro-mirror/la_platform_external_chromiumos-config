@@ -72,6 +72,11 @@ partner = struct(
             vendor_id = "04F3",
             fw_file_format = "elants_i2c_{product_id}.bin",
         ),
+        ELAN_HID_TS = _create_touch_partner(
+            name = "elants",
+            vendor_id = "04F3",
+            fw_file_format = "elants_i2chid_{product_id}.bin",
+        ),
         EMRIGHT = _create_touch_partner(
             name = "emright",
             vendor_id = "2C68",
