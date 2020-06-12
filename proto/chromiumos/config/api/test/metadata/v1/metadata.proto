@@ -59,12 +59,15 @@ message RemoteTestDriver {
   // respectively.
   string name = 1;
 
-  // A container image containing all the required dependencies and other build
+  // A Docker image containing all the required dependencies and other build
   // artifacts required for test invocations.
   //
   // Test Lab Environments SHOULD fail with an error indicating that the request
   // was invalid if the image fails to be found for a test invocation.
-  BuildArtifact image = 2;
+  //
+  // See go/cros-f20-rtd-design for details about how the docker image should
+  // be prepared.
+  DockerImage docker_image = 5;
 
   // Command to invoke the Remote Test Driver inside `image`.
   //
@@ -78,35 +81,32 @@ message RemoteTestDriver {
 
   // Metadata for the smallest schedulable test units.
   repeated Test tests = 4;
+
+  // Replaced by "docker_image".
+  reserved 2;
+  reserved "image";
 }
 
-// A Chrome OS build artifact required for test execution.
-message BuildArtifact {
-  // All build artifacts are assumed to be archived in some common directory
-  // root. `relative_path` is the relative path inside the root archive
-  // directory.
+// Remote Test Driver images are pre-packaged Docker images.
+message DockerImage {
+  // The Docker image digest is a content-addressable identifier for an image.
   //
-  // Infrastructure Test Lab Environment: Chrome OS Continuous Integration
-  // builders archive build artifacts to a path on Google Storage. The Test
-  // Platform requests include a reference to the root archival path.
-  // e.g.,
-  // * The builder archives all build artifacts to
-  //   gs://chromeos-image-archive/link-release/R64-0.0.0.0/
-  // * Test Platform request includes this archival path.
-  // * `relative_path` is set to tast/mighty.bin
-  // * Then, the full path to the artifact is
-  //   gs://chromeos-image-archive/link-release/R64-0.0.0.0/tast/mighty.bin
+  // The source of the Remote Test Driver images (e.g., a Docker registry, or
+  // a local Docker server) is specified in the Test Lab Environment request.
+  // The test metadata only contains the digest of the image to use.
   //
-  // Developer Test Lab Environment: For developer flow outside of the
-  // infrastructure, it is assumed that the build artifacts are available at a
-  // local path with the same directory layout as the Google Storage archival.
-  // e.g.,
-  // * Local build copies all artifacts to /tmp/cbuildbot/archive/
-  // * Local tooling includes a reference to this path.
-  // * `relative_path` is set to tauto/ssp.bin
-  // * Then, the full path to the artifact is
-  //   /tmp/cbuildbot/archive/tauto/ssp.bin
-  string relative_path = 1;
+  // TLEs SHOULD verify the downloaded image against the digest.
+  //
+  // The digest MUST be set in metadata payload used by the Test Lab
+  // Environments. There is only one case where the digest may be elided:
+  //
+  // It may be useful for Remote Test Driver images to contain a
+  // copy of the metadata payload (e.g. to map from Test name to some Remote
+  // Test Driver-internal execution behaviour). This creates a chicken-and-egg
+  // problem: Changing the image name changes the image content, thereby
+  // changing the image hash again. In such cases, digest may be elided in the
+  // metadata payload inside the Remote Test Driver image.
+  string digest = 1;
 }
 
 // The smallest schedulable test unit.

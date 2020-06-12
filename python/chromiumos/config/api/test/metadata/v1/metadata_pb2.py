@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.metadata.v1',
   syntax='proto3',
   serialized_options=_b('B\rMetadataProtoZBgo.chromium.org/chromiumos/config/go/api/test/metadata/v1;metadata'),
-  serialized_pb=_b('\n5chromiumos/config/api/test/metadata/v1/metadata.proto\x12&chromiumos.config.api.test.metadata.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a+chromiumos/config/api/test/dut/v1/dut.proto\x1a-chromiumos/config/api/hardware_topology.proto\x1a$chromiumos/config/api/topology.proto\"f\n\rSpecification\x12U\n\x13remote_test_drivers\x18\x01 \x03(\x0b\x32\x38.chromiumos.config.api.test.metadata.v1.RemoteTestDriver\"\xb4\x01\n\x10RemoteTestDriver\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x44\n\x05image\x18\x02 \x01(\x0b\x32\x35.chromiumos.config.api.test.metadata.v1.BuildArtifact\x12\x0f\n\x07\x63ommand\x18\x03 \x01(\t\x12;\n\x05tests\x18\x04 \x03(\x0b\x32,.chromiumos.config.api.test.metadata.v1.Test\"&\n\rBuildArtifact\x12\x15\n\rrelative_path\x18\x01 \x01(\t\"\xdb\x02\n\x04Test\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x45\n\nattributes\x18\x02 \x03(\x0b\x32\x31.chromiumos.config.api.test.metadata.v1.Attribute\x12M\n\x0e\x64ut_constraint\x18\x06 \x01(\x0b\x32\x35.chromiumos.config.api.test.metadata.v1.DUTConstraint\x12L\n\rinformational\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.test.metadata.v1.Informational\x12O\n\rdut_condition\x18\x05 \x01(\x0b\x32\x34.chromiumos.config.api.test.metadata.v1.DUTConditionB\x02\x18\x01J\x04\x08\x03\x10\x04R\nconditions\"\x19\n\tAttribute\x12\x0c\n\x04name\x18\x01 \x01(\t\"\xa7\x01\n\rDUTConstraint\x12K\n\x06\x63onfig\x18\x01 \x01(\x0b\x32;.chromiumos.config.api.test.metadata.v1.DUTConfigConstraint\x12I\n\x05setup\x18\x02 \x01(\x0b\x32:.chromiumos.config.api.test.metadata.v1.DUTSetupConstraint\"t\n\x13\x44UTConfigConstraint\x12\x12\n\nexpression\x18\x01 \x01(\t\x1aI\n\x03\x44UT\x12\x42\n\x11hardware_features\x18\x01 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"r\n\x12\x44UTSetupConstraint\x12\x12\n\nexpression\x18\x01 \x01(\t\x1aH\n\x03\x44UT\x12\x41\n\x05setup\x18\x01 \x01(\x0b\x32\x32.chromiumos.config.api.test.dut.v1.DeviceUnderTest\"\xf7\x01\n\x0c\x44UTCondition\x12\x12\n\nexpression\x18\x01 \x01(\t\x1a\xd2\x01\n\x05Scope\x12\x41\n\x05setup\x18\x01 \x01(\x0b\x32\x32.chromiumos.config.api.test.dut.v1.DeviceUnderTest\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"{\n\rInformational\x12@\n\x07\x61uthors\x18\x01 \x03(\x0b\x32/.chromiumos.config.api.test.metadata.v1.Contact\x12(\n\x07\x64\x65tails\x18\x02 \x01(\x0b\x32\x17.google.protobuf.Struct\"7\n\x07\x43ontact\x12\x0f\n\x05\x65mail\x18\x01 \x01(\tH\x00\x12\x13\n\tmdb_group\x18\x02 \x01(\tH\x00\x42\x06\n\x04typeBSB\rMetadataProtoZBgo.chromium.org/chromiumos/config/go/api/test/metadata/v1;metadatab\x06proto3')
+  serialized_pb=_b('\n5chromiumos/config/api/test/metadata/v1/metadata.proto\x12&chromiumos.config.api.test.metadata.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a+chromiumos/config/api/test/dut/v1/dut.proto\x1a-chromiumos/config/api/hardware_topology.proto\x1a$chromiumos/config/api/topology.proto\"f\n\rSpecification\x12U\n\x13remote_test_drivers\x18\x01 \x03(\x0b\x32\x38.chromiumos.config.api.test.metadata.v1.RemoteTestDriver\"\xc6\x01\n\x10RemoteTestDriver\x12\x0c\n\x04name\x18\x01 \x01(\t\x12I\n\x0c\x64ocker_image\x18\x05 \x01(\x0b\x32\x33.chromiumos.config.api.test.metadata.v1.DockerImage\x12\x0f\n\x07\x63ommand\x18\x03 \x01(\t\x12;\n\x05tests\x18\x04 \x03(\x0b\x32,.chromiumos.config.api.test.metadata.v1.TestJ\x04\x08\x02\x10\x03R\x05image\"\x1d\n\x0b\x44ockerImage\x12\x0e\n\x06\x64igest\x18\x01 \x01(\t\"\xdb\x02\n\x04Test\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x45\n\nattributes\x18\x02 \x03(\x0b\x32\x31.chromiumos.config.api.test.metadata.v1.Attribute\x12M\n\x0e\x64ut_constraint\x18\x06 \x01(\x0b\x32\x35.chromiumos.config.api.test.metadata.v1.DUTConstraint\x12L\n\rinformational\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.test.metadata.v1.Informational\x12O\n\rdut_condition\x18\x05 \x01(\x0b\x32\x34.chromiumos.config.api.test.metadata.v1.DUTConditionB\x02\x18\x01J\x04\x08\x03\x10\x04R\nconditions\"\x19\n\tAttribute\x12\x0c\n\x04name\x18\x01 \x01(\t\"\xa7\x01\n\rDUTConstraint\x12K\n\x06\x63onfig\x18\x01 \x01(\x0b\x32;.chromiumos.config.api.test.metadata.v1.DUTConfigConstraint\x12I\n\x05setup\x18\x02 \x01(\x0b\x32:.chromiumos.config.api.test.metadata.v1.DUTSetupConstraint\"t\n\x13\x44UTConfigConstraint\x12\x12\n\nexpression\x18\x01 \x01(\t\x1aI\n\x03\x44UT\x12\x42\n\x11hardware_features\x18\x01 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"r\n\x12\x44UTSetupConstraint\x12\x12\n\nexpression\x18\x01 \x01(\t\x1aH\n\x03\x44UT\x12\x41\n\x05setup\x18\x01 \x01(\x0b\x32\x32.chromiumos.config.api.test.dut.v1.DeviceUnderTest\"\xf7\x01\n\x0c\x44UTCondition\x12\x12\n\nexpression\x18\x01 \x01(\t\x1a\xd2\x01\n\x05Scope\x12\x41\n\x05setup\x18\x01 \x01(\x0b\x32\x32.chromiumos.config.api.test.dut.v1.DeviceUnderTest\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"{\n\rInformational\x12@\n\x07\x61uthors\x18\x01 \x03(\x0b\x32/.chromiumos.config.api.test.metadata.v1.Contact\x12(\n\x07\x64\x65tails\x18\x02 \x01(\x0b\x32\x17.google.protobuf.Struct\"7\n\x07\x43ontact\x12\x0f\n\x05\x65mail\x18\x01 \x01(\tH\x00\x12\x13\n\tmdb_group\x18\x02 \x01(\tH\x00\x42\x06\n\x04typeBSB\rMetadataProtoZBgo.chromium.org/chromiumos/config/go/api/test/metadata/v1;metadatab\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_struct__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_test_dot_dut_dot_v1_dot_dut__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_hardware__topology__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_topology__pb2.DESCRIPTOR,])
 
@@ -76,8 +76,8 @@ _REMOTETESTDRIVER = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='image', full_name='chromiumos.config.api.test.metadata.v1.RemoteTestDriver.image', index=1,
-      number=2, type=11, cpp_type=10, label=1,
+      name='docker_image', full_name='chromiumos.config.api.test.metadata.v1.RemoteTestDriver.docker_image', index=1,
+      number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -109,19 +109,19 @@ _REMOTETESTDRIVER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=362,
-  serialized_end=542,
+  serialized_end=560,
 )
 
 
-_BUILDARTIFACT = _descriptor.Descriptor(
-  name='BuildArtifact',
-  full_name='chromiumos.config.api.test.metadata.v1.BuildArtifact',
+_DOCKERIMAGE = _descriptor.Descriptor(
+  name='DockerImage',
+  full_name='chromiumos.config.api.test.metadata.v1.DockerImage',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='relative_path', full_name='chromiumos.config.api.test.metadata.v1.BuildArtifact.relative_path', index=0,
+      name='digest', full_name='chromiumos.config.api.test.metadata.v1.DockerImage.digest', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -139,8 +139,8 @@ _BUILDARTIFACT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=544,
-  serialized_end=582,
+  serialized_start=562,
+  serialized_end=591,
 )
 
 
@@ -198,8 +198,8 @@ _TEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=585,
-  serialized_end=932,
+  serialized_start=594,
+  serialized_end=941,
 )
 
 
@@ -229,8 +229,8 @@ _ATTRIBUTE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=934,
-  serialized_end=959,
+  serialized_start=943,
+  serialized_end=968,
 )
 
 
@@ -267,8 +267,8 @@ _DUTCONSTRAINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=962,
-  serialized_end=1129,
+  serialized_start=971,
+  serialized_end=1138,
 )
 
 
@@ -298,8 +298,8 @@ _DUTCONFIGCONSTRAINT_DUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1174,
-  serialized_end=1247,
+  serialized_start=1183,
+  serialized_end=1256,
 )
 
 _DUTCONFIGCONSTRAINT = _descriptor.Descriptor(
@@ -328,8 +328,8 @@ _DUTCONFIGCONSTRAINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1131,
-  serialized_end=1247,
+  serialized_start=1140,
+  serialized_end=1256,
 )
 
 
@@ -359,8 +359,8 @@ _DUTSETUPCONSTRAINT_DUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1291,
-  serialized_end=1363,
+  serialized_start=1300,
+  serialized_end=1372,
 )
 
 _DUTSETUPCONSTRAINT = _descriptor.Descriptor(
@@ -389,8 +389,8 @@ _DUTSETUPCONSTRAINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1249,
-  serialized_end=1363,
+  serialized_start=1258,
+  serialized_end=1372,
 )
 
 
@@ -434,8 +434,8 @@ _DUTCONDITION_SCOPE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1403,
-  serialized_end=1613,
+  serialized_start=1412,
+  serialized_end=1622,
 )
 
 _DUTCONDITION = _descriptor.Descriptor(
@@ -464,8 +464,8 @@ _DUTCONDITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1366,
-  serialized_end=1613,
+  serialized_start=1375,
+  serialized_end=1622,
 )
 
 
@@ -502,8 +502,8 @@ _INFORMATIONAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1615,
-  serialized_end=1738,
+  serialized_start=1624,
+  serialized_end=1747,
 )
 
 
@@ -543,12 +543,12 @@ _CONTACT = _descriptor.Descriptor(
       name='type', full_name='chromiumos.config.api.test.metadata.v1.Contact.type',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1740,
-  serialized_end=1795,
+  serialized_start=1749,
+  serialized_end=1804,
 )
 
 _SPECIFICATION.fields_by_name['remote_test_drivers'].message_type = _REMOTETESTDRIVER
-_REMOTETESTDRIVER.fields_by_name['image'].message_type = _BUILDARTIFACT
+_REMOTETESTDRIVER.fields_by_name['docker_image'].message_type = _DOCKERIMAGE
 _REMOTETESTDRIVER.fields_by_name['tests'].message_type = _TEST
 _TEST.fields_by_name['attributes'].message_type = _ATTRIBUTE
 _TEST.fields_by_name['dut_constraint'].message_type = _DUTCONSTRAINT
@@ -574,7 +574,7 @@ _CONTACT.oneofs_by_name['type'].fields.append(
 _CONTACT.fields_by_name['mdb_group'].containing_oneof = _CONTACT.oneofs_by_name['type']
 DESCRIPTOR.message_types_by_name['Specification'] = _SPECIFICATION
 DESCRIPTOR.message_types_by_name['RemoteTestDriver'] = _REMOTETESTDRIVER
-DESCRIPTOR.message_types_by_name['BuildArtifact'] = _BUILDARTIFACT
+DESCRIPTOR.message_types_by_name['DockerImage'] = _DOCKERIMAGE
 DESCRIPTOR.message_types_by_name['Test'] = _TEST
 DESCRIPTOR.message_types_by_name['Attribute'] = _ATTRIBUTE
 DESCRIPTOR.message_types_by_name['DUTConstraint'] = _DUTCONSTRAINT
@@ -599,12 +599,12 @@ RemoteTestDriver = _reflection.GeneratedProtocolMessageType('RemoteTestDriver', 
   ))
 _sym_db.RegisterMessage(RemoteTestDriver)
 
-BuildArtifact = _reflection.GeneratedProtocolMessageType('BuildArtifact', (_message.Message,), dict(
-  DESCRIPTOR = _BUILDARTIFACT,
+DockerImage = _reflection.GeneratedProtocolMessageType('DockerImage', (_message.Message,), dict(
+  DESCRIPTOR = _DOCKERIMAGE,
   __module__ = 'chromiumos.config.api.test.metadata.v1.metadata_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.metadata.v1.BuildArtifact)
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.metadata.v1.DockerImage)
   ))
-_sym_db.RegisterMessage(BuildArtifact)
+_sym_db.RegisterMessage(DockerImage)
 
 Test = _reflection.GeneratedProtocolMessageType('Test', (_message.Message,), dict(
   DESCRIPTOR = _TEST,
