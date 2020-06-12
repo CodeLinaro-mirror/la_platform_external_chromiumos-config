@@ -98,12 +98,18 @@ def merge_model(config_bundle, design_config, model):  #pylint: disable=unused-a
     A reference to the input config_bundle updated with data from model
   """
 
+  del design_config
+  del model
+
   # TODO(smcallis): implement
   return config_bundle
 
 
 def merge_configs(config_path, project_name, public_path, private_path,
                   hwid_path):
+  # pylint: disable=too-many-locals
+  # pylint: disable=too-many-branches
+  # pylint: disable=too-many-statements
   """Read and merge configs together, generating new config_bundle output."""
 
   config_bundle = config_bundle_pb2.ConfigBundle()
@@ -122,7 +128,8 @@ def merge_configs(config_path, project_name, public_path, private_path,
       sku (str): specific sku
 
     Returns:
-      Either a found Design.Config or a new one placed in the config_bundle.
+      Either found Design and Design.Config for input parameters or new ones
+      create and placed in the config_bundle.
     """
 
     # Ensure program exists
@@ -143,7 +150,7 @@ def merge_configs(config_path, project_name, public_path, private_path,
       for design_config in design.configs:
         design_sku = design_config.id.value.lower().split(':')[-1]
         if design_sku == sku:
-          return design_config
+          return design, design_config
 
     # No Design found, create one
     if not program_design:
@@ -156,7 +163,7 @@ def merge_configs(config_path, project_name, public_path, private_path,
     #  http://go/chromiumsrc/chromiumos/docs/+/master/design_docs/cros_board_info.md
     design_config = program_design.configs.add()
     design_config.id.value = '{}:{}'.format(proj_name.capitalize(), sku)
-    return design_config
+    return program_design, design_config
 
   # The primary source of SKU truth is the model.yaml files.  We'll take each
   # sku we find there and attempt to match with a DesignConfig in the
@@ -164,7 +171,8 @@ def merge_configs(config_path, project_name, public_path, private_path,
   for model in models.GetDeviceConfigs():
     identity = model.GetProperties('/identity')
     program = identity['platform-name']
-    project = identity['smbios-name-match'].lower()
+    project = model.GetName()
+    whitelabel = identity.get('whitelabel-tag', '').lower()
 
     sku = str(identity.get('sku-id', 'any')).lower()
     if sku == 'any':
@@ -182,8 +190,46 @@ def merge_configs(config_path, project_name, public_path, private_path,
     if project_name and (project != project_name.lower()):
       continue
 
-    # Merge information from model.yaml into the design config
-    merge_model(config_bundle, find_design_config(program, project, sku), model)
+    # Lookup design config for this specific device
+    design, design_config = find_design_config(program, project, sku)
+
+    # If we have a whitelabel tag, then just create a new DeviceBrand instead of
+    # actually updating the config, since that will be handled by the non white
+    # label variant
+    if whitelabel:
+      # Find brand for whitelabel if it exists
+      brand = None
+      for val in config_bundle.device_brand_list:
+        if val.brand_name == whitelabel:
+          brand = val
+          break
+
+      if not brand:
+        brand = config_bundle.device_brand_list.add()
+
+      brand.design_id.MergeFrom(design.id)
+      brand.id.value = whitelabel
+      brand.brand_name = whitelabel
+      brand.brand_code = model.GetProperties('/brand-code')
+
+      # And a new BrandConfig to hold the whitelabel tag and wallpaper
+      brand_config = None
+      for val in config_bundle.brand_configs:
+        if val.scan_config.whitelabel_tag == whitelabel:
+          brand_config = val
+          break
+
+      if not brand_config:
+        brand_config = config_bundle.brand_configs.add()
+
+      brand_config.brand_id.MergeFrom(brand.id)
+      brand_config.scan_config.whitelabel_tag = whitelabel
+
+      wallpaper = model.GetWallpaperFiles()
+      if wallpaper:
+        brand_config.wallpaper = wallpaper.pop()
+    else:
+      merge_model(config_bundle, design_config, model)
 
   # Merge information from HWID into config bundle
   return add_hwid_components(config_bundle, hwid_db)
