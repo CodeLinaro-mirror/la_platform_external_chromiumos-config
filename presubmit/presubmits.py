@@ -22,6 +22,29 @@
 # For more details on the depot tools provided presubmit API see:
 # http://dev.chromium.org/developers/how-tos/depottools/presubmit-scripts
 
+def CheckScript(input_api, output_api, script, msg=None):
+  """Invokes a script with the result per unix error codes.
+
+  Invokes a shell script with the result following the unix error
+  code result of the script.
+
+  Args:
+    input_api: InputApi, provides information about the change.
+    output_api: OutputApi, provides the mechanism for returning a response.
+    script: str, script to invoke.
+    msg: str, message to use when failure.
+
+  Returns:
+    list of PresubmitError, or empty list if no errors.
+  """
+  results = []
+  if input_api.subprocess.call(script, shell=True):
+    if not msg:
+      msg = 'Error: {} failed. Please fix and try again.'.format(script)
+    results.append(output_api.PresubmitError(msg))
+  return results
+
+
 def CheckGenerated(input_api, output_api):
   """Runs a generate.sh script as a presubmit check.
 

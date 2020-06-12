@@ -47,31 +47,18 @@ def CheckGenerated(input_api, output_api):
     return results
 
 
-def CheckExamples(input_api, output_api):
+def CommonChecks(input_api, output_api):
     results = []
-    ret = input_api.subprocess.call(
-        ["./check_examples.sh"],
-        stdout=input_api.subprocess.PIPE,
-        stderr=input_api.subprocess.PIPE,
-    )
-    if ret:
-        results.append(
-            output_api.PresubmitError(
-                "go test failed. Please run check_examples.sh for details."
-            )
-        )
+    results.extend(CheckGenerated(input_api, output_api))
+    for script in ['./check_examples.sh', './run_py_unittests.sh',
+                   './run_go_unittests.sh', './check_starlark.sh']:
+      results.extend(presubmits.CheckScript(input_api, output_api, script))
     return results
 
 
 def CheckChangeOnUpload(input_api, output_api):
-    results = []
-    results.extend(CheckGenerated(input_api, output_api))
-    results.extend(CheckExamples(input_api, output_api))
-    return results
+    return CommonChecks(input_api, output_api)
 
 
 def CheckChangeOnCommit(input_api, output_api):
-    results = []
-    results.extend(CheckGenerated(input_api, output_api))
-    results.extend(CheckExamples(input_api, output_api))
-    return results
+    return CommonChecks(input_api, output_api)
