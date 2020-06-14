@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 import "chromiumos/config/api/test/rtd/v1/progress.proto";
-import "chromiumos/config/api/test/metadata/v1/metadata.proto";
 
 package chromiumos.config.api.test.tnull.v1;
 
@@ -17,7 +16,7 @@ message Steps {
 
 // The method arguments for a Setup call
 message SetupStep {
-  chromiumos.config.api.test.metadata.v1.Test test = 1;
+  reserved 1;
   chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig config = 2;
   chromiumos.config.api.test.rtd.v1.Result result = 3;
   repeated MockLog logs = 4;
