@@ -179,6 +179,10 @@ def merge_firmware_config(sw_config, model):
   fw_config.ec_ro_payload.firmware_image_name = \
       fw_props.get('ec-ro-image', '')
 
+  fw_config.pd_ro_payload.type = firmware_config_pb2.FirmwareType.Type.PD
+  fw_config.pd_ro_payload.firmware_image_name = \
+      fw_props.get('pd-ro-image', '')
+
   # Populate build config
   build_props = model.GetProperties('/firmware/build-targets')
 
@@ -190,6 +194,20 @@ def merge_firmware_config(sw_config, model):
 
   for extra in build_props.get('ec-extras', []):
     build_config.build_targets.ec_extras.add(extra)
+
+
+def merge_camera_config(hw_feat, model):
+  """Merge camera config from model.yaml into the given hardware features.
+
+  Args:
+    hw_feat (HardwareFeatures): hardware features to update
+    model (CrosConfig): parsed model.yaml information
+
+  Returns:
+    None
+  """
+  camera_props = model.GetProperties('/camera')
+  hw_feat.camera.count.value = camera_props.get('count', 0)
 
 
 def merge_hardware_props(hw_feat, model):
@@ -240,7 +258,7 @@ def merge_hardware_props(hw_feat, model):
 
   stylus_val = hw_props.get('stylus-category', '')
   if not stylus_val:
-    hw_feat.style.stylus = stylus.STYLUS_UNKNOWN
+    hw_feat.stylus.stylus = stylus.STYLUS_UNKNOWN
   if stylus_val == 'none':
     hw_feat.stylus.stylus = stylus.NONE
   if stylus_val == 'internal':
@@ -301,6 +319,7 @@ def merge_model(config_bundle, design_config, model, project_name,
   hw_feat = design_config.hardware_features
   merge_fingerprint_config(hw_feat, model)
   merge_hardware_props(hw_feat, model)
+  merge_camera_config(hw_feat, model)
 
   # Merge software configuration
   sw_config = config_bundle.software_configs.add()
