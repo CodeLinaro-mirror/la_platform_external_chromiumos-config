@@ -18,6 +18,7 @@ files.  Simple specify a project name with --project-name/-p and omit
 import argparse
 import logging
 import os
+import pathlib
 import sys
 import tempfile
 import yaml
@@ -25,6 +26,7 @@ import yaml
 from common import config_bundle_utils
 
 from checker import io_utils
+from chromiumos.config.api import topology_pb2
 from chromiumos.config.api.software import firmware_config_pb2
 from chromiumos.config.payload import config_bundle_pb2
 
@@ -85,6 +87,21 @@ def add_hwid_components(config_bundle, hwid_db):
 
   # TODO(smcallis): implement
   return config_bundle
+
+
+def merge_build_target(build_target, model):
+  """Merge build configuration from model.yaml into the given build target.
+
+  Args:
+    build_target (BuildTarget): build target to modify
+    model (CrosConfig): parsed model.yaml information
+
+  Returns:
+    None
+  """
+  build_props = model.GetProperties('/arc/build-properties')
+  build_target.arc.device = build_props['device']
+  build_target.arc.first_api_level = build_props['first-api-level']
 
 
 def merge_audio_config(sw_config, model):
@@ -175,7 +192,30 @@ def merge_firmware_config(sw_config, model):
     build_config.build_targets.ec_extras.add(extra)
 
 
-def merge_model(config_bundle, design_config, model):
+def merge_fingerprint_config(hw_feat, model):
+  """Merge fingerprint config from model.yaml into the given hardware features.
+
+  Args:
+    hw_feat (HardwareFeatures): hardware features to update
+    model (CrosConfig): parsed model.yaml information
+
+  Returns:
+    None
+  """
+  location = topology_pb2.HardwareFeatures.Fingerprint.Location
+
+  fing_prop = model.GetProperties('/fingerprint')
+  hw_feat.fingerprint.board = fing_prop.get('board', '')
+
+  sensor_location = fing_prop.get('sensor-location', 'none')
+  if sensor_location == 'none':
+    sensor_location = 'not-present'
+  hw_feat.fingerprint.location = location.Value(sensor_location.upper().replace(
+      '-', '_'))
+
+
+def merge_model(config_bundle, design_config, model, project_name,
+                private_overlay):
   """Merge model from model.yaml into a specific Design.Config instance.
 
   The ConfigBundle, and Design.Config are updated in place with
@@ -184,7 +224,9 @@ def merge_model(config_bundle, design_config, model):
   Args:
     config_bundle (ConfigBundle): top level ConfigBundle to update
     design_config (Design.Config): design config in the config bundle to update
-    model (CrosConfig):  parsed model.yaml information
+    model (CrosConfig): parsed model.yaml information
+    project_name (str): name of the device (eg: phaser)
+    private_overlay (str): name of the private overlay for the project
 
   Returns:
     A reference to the input config_bundle updated with data from model
@@ -192,6 +234,17 @@ def merge_model(config_bundle, design_config, model):
 
   identity = model.GetProperties('/identity')
 
+  # Merge build target configuration
+  build_target = config_bundle.build_targets.add()
+  build_target.id.value = project_name
+  build_target.overlay_name = private_overlay
+  merge_build_target(build_target, model)
+
+  # Merge hardware configuration
+  hw_feat = design_config.hardware_features
+  merge_fingerprint_config(hw_feat, model)
+
+  # Merge software configuration
   sw_config = config_bundle.software_configs.add()
   sw_config.design_config_id.MergeFrom(design_config.id)
   sw_config.id_scan_config.firmware_sku = identity['sku-id']
@@ -217,6 +270,18 @@ def merge_configs(config_path, project_name, public_path, private_path,
   # pylint: disable=too-many-branches
   # pylint: disable=too-many-statements
   """Read and merge configs together, generating new config_bundle output."""
+
+  # Convert private overlay path to a private overlay name. The private path
+  # should end in 'model.yaml' so we'll look at it in reverse and take the
+  # first component that has 'overlay' in it.
+  private_overlay = None
+  for part in reversed(pathlib.Path(private_path).parts):
+    if 'overlay' in part:
+      private_overlay = part
+      break
+
+  assert private_overlay, \
+      'unable to find \'overlay\' component in private model.yaml path'
 
   config_bundle = config_bundle_pb2.ConfigBundle()
   if config_path:
@@ -335,7 +400,8 @@ def merge_configs(config_path, project_name, public_path, private_path,
       if wallpaper:
         brand_config.wallpaper = wallpaper.pop()
     else:
-      merge_model(config_bundle, design_config, model)
+      merge_model(config_bundle, design_config, model, project_name,
+                  private_overlay)
 
   # Merge information from HWID into config bundle
   return add_hwid_components(config_bundle, hwid_db)
