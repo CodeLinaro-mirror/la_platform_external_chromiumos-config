@@ -108,9 +108,14 @@ def _build_ash_flags(config: Config) -> List[str]:
 
   hw_features = config.hw_design_config.hardware_features
   if hw_features.stylus.stylus == topology_pb2.HardwareFeatures.Stylus.INTERNAL:
-    flags['--has-internal-stylus'] = None
+    flags['has-internal-stylus'] = None
 
-  return sorted([f'{k}={v}' if v else k for k, v in flags.items()])
+  fp_loc = hw_features.fingerprint.location
+  if fp_loc and fp_loc != topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT:
+    loc_name = topology_pb2.HardwareFeatures.Fingerprint.Location.Name(fp_loc)
+    flags['fingerprint-sensor-location'] = loc_name.lower().replace('_', '-')
+
+  return sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()])
 
 
 def _build_ui(config: Config) -> dict:

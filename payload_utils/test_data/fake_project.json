@@ -91,6 +91,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--fingerprint-sensor-location=keyboard-bottom-left",
             "--has-internal-stylus"
           ]
         }
@@ -276,6 +277,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--fingerprint-sensor-location=keyboard-bottom-left",
             "--has-internal-stylus"
           ]
         }
