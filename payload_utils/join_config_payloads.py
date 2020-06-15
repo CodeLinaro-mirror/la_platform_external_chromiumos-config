@@ -192,6 +192,63 @@ def merge_firmware_config(sw_config, model):
     build_config.build_targets.ec_extras.add(extra)
 
 
+def merge_hardware_props(hw_feat, model):
+  """Merge hardware properties from model.yaml into the given hardware features.
+
+  Args:
+    hw_feat (HardwareFeatures): hardware features to update
+    model (CrosConfig): parsed model.yaml information
+
+  Returns:
+    None
+  """
+  present = topology_pb2.HardwareFeatures.Present
+  form_factor = topology_pb2.HardwareFeatures.FormFactor
+  stylus = topology_pb2.HardwareFeatures.Stylus
+
+  def kw_to_present(config, key):
+    if not key in config:
+      return present.PRESENT_UNKNOWN
+    if config[key]:
+      return present.PRESENT
+    return present.NOT_PRESENT
+
+  hw_props = model.GetProperties('/hardware-properties')
+
+  hw_feat.accelerometer.base_accelerometer = \
+      kw_to_present(hw_props, 'has-base-accelerometer')
+  hw_feat.accelerometer.lid_accelerometer = \
+      kw_to_present(hw_props, 'has-lid-accelerometer')
+  hw_feat.gyroscope.base_gyroscope = \
+      kw_to_present(hw_props, 'has-base-gyroscope')
+  hw_feat.gyroscope.lid_gyroscope = \
+      kw_to_present(hw_props, 'has-lid-gyroscope')
+  hw_feat.light_sensor.base_lightsensor = \
+      kw_to_present(hw_props, 'has-base-light-sensor')
+  hw_feat.light_sensor.lid_lightsensor = \
+      kw_to_present(hw_props, 'has-lid-light-sensor')
+  hw_feat.magnetometer.base_magnetometer = \
+      kw_to_present(hw_props, 'has-base-magnetometer')
+  hw_feat.magnetometer.lid_magnetometer = \
+      kw_to_present(hw_props, 'has-lid-magnetometer')
+  hw_feat.screen.touch_support = \
+      kw_to_present(hw_props, 'has-touchscreen')
+
+  hw_feat.form_factor.form_factor = form_factor.FORM_FACTOR_UNKNOWN
+  if hw_props.get('is-lid-convertible', False):
+    hw_feat.form_factor.form_factor = form_factor.CONVERTIBLE
+
+  stylus_val = hw_props.get('stylus-category', '')
+  if not stylus_val:
+    hw_feat.style.stylus = stylus.STYLUS_UNKNOWN
+  if stylus_val == 'none':
+    hw_feat.stylus.stylus = stylus.NONE
+  if stylus_val == 'internal':
+    hw_feat.stylus.stylus = stylus.INTERNAL
+  if stylus_val == 'external':
+    hw_feat.stylus.stylus = stylus.EXTERNAL
+
+
 def merge_fingerprint_config(hw_feat, model):
   """Merge fingerprint config from model.yaml into the given hardware features.
 
@@ -243,6 +300,7 @@ def merge_model(config_bundle, design_config, model, project_name,
   # Merge hardware configuration
   hw_feat = design_config.hardware_features
   merge_fingerprint_config(hw_feat, model)
+  merge_hardware_props(hw_feat, model)
 
   # Merge software configuration
   sw_config = config_bundle.software_configs.add()
