@@ -14,6 +14,8 @@ import re
 import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
 
+from typing import List
+
 from collections import namedtuple
 
 from google.protobuf import json_format
@@ -93,6 +95,27 @@ def _build_arc(config, config_files):
   if ppi and ppi > 250:
     result['scale'] = ppi
   return result
+
+
+def _build_ash_flags(config: Config) -> List[str]:
+  """Returns a list of Ash flags for config.
+
+  Ash is the window manager and system UI for ChromeOS, see
+  https://chromium.googlesource.com/chromium/src/+/refs/heads/master/ash/.
+  """
+  # A map from flag name -> value. Value may be None for boolean flags.
+  flags = {}
+
+  hw_features = config.hw_design_config.hardware_features
+  if hw_features.stylus.stylus == topology_pb2.HardwareFeatures.Stylus.INTERNAL:
+    flags['--has-internal-stylus'] = None
+
+  return sorted([f'{k}={v}' if v else k for k, v in flags.items()])
+
+
+def _build_ui(config: Config) -> dict:
+  """Builds the 'ui' property from cros_config_schema."""
+  return {'extra-ash-flags': _build_ash_flags(config)}
 
 
 def _build_bluetooth(config, bluetooth_files):
@@ -458,6 +481,10 @@ def _transform_build_config(config, config_files):
   _set(
       _build_fingerprint(config.hw_design_config.hardware_topology), result,
       'fingerprint')
+
+  # TODO(crbug.com/1093837): Enable _build_ui for real programs once ready.
+  if config.program.id.value == "FAKE_PROGRAM":
+    _set(_build_ui(config), result, 'ui')
   power_prefs = config.sw_config.power_config.preferences
   power_prefs_map = dict(
       (x.replace('_', '-'), power_prefs[x]) for x in power_prefs)

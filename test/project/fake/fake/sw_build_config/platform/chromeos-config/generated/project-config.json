@@ -121,6 +121,11 @@
               "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
+          ]
         }
       },
       {
@@ -230,6 +235,11 @@
               "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
               "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
           ]
         }
       },
@@ -362,6 +372,11 @@
               "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
+          ]
         }
       },
       {
@@ -481,6 +496,11 @@
               "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
+          ]
         }
       },
       {
@@ -599,6 +619,11 @@
               "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
+          ]
         }
       },
       {
@@ -710,6 +735,9 @@
               "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
+        },
+        "ui": {
+          "extra-ash-flags": []
         }
       },
       {
@@ -821,6 +849,9 @@
               "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
+        },
+        "ui": {
+          "extra-ash-flags": []
         }
       },
       {
@@ -932,6 +963,9 @@
               "symlink": "/lib/firmware/hid-06CB_ABC1"
             }
           ]
+        },
+        "ui": {
+          "extra-ash-flags": []
         }
       }
     ]

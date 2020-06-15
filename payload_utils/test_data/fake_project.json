@@ -88,6 +88,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
+          ]
         }
       },
       {
@@ -165,6 +170,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
+          ]
         }
       },
       {
@@ -263,6 +273,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
+          ]
         }
       },
       {
@@ -349,6 +364,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
+          ]
         }
       },
       {
@@ -434,6 +454,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--has-internal-stylus"
+          ]
         }
       },
       {
@@ -512,6 +537,9 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "ui": {
+          "extra-ash-flags": []
         }
       },
       {
@@ -590,6 +618,9 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "ui": {
+          "extra-ash-flags": []
         }
       },
       {
@@ -668,6 +699,9 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0"
+        },
+        "ui": {
+          "extra-ash-flags": []
         }
       }
     ]
