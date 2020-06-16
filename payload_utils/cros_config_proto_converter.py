@@ -36,6 +36,7 @@ ConfigFiles = namedtuple(
 DPTF_PATH = 'sw_build_config/platform/chromeos-config/thermal'
 DPTF_FILE = 'dptf.dv'
 TOUCH_PATH = 'sw_build_config/platform/chromeos-config/touch'
+WALLPAPER_BASE_PATH = '/usr/share/chromeos-assets/wallpaper'
 
 
 def parse_args(argv):
@@ -114,6 +115,24 @@ def _build_ash_flags(config: Config) -> List[str]:
   if fp_loc and fp_loc != topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT:
     loc_name = topology_pb2.HardwareFeatures.Fingerprint.Location.Name(fp_loc)
     flags['fingerprint-sensor-location'] = loc_name.lower().replace('_', '-')
+
+  wallpaper = config.brand_config.wallpaper
+  # If a wallpaper is set, the 'default-wallpaper-is-oem' flag needs to be set.
+  # If a wallpaper is not set, the 'default_[large|small].jpg' wallpapers
+  # should still be set.
+  if wallpaper:
+    flags['default-wallpaper-is-oem'] = None
+  else:
+    wallpaper = 'default'
+
+  for size in ('small', 'large'):
+    flags[f'default-wallpaper-{size}'] = (
+        f'{WALLPAPER_BASE_PATH}/{wallpaper}_{size}.jpg')
+
+    # For each size, also install 'guest' and 'child' wallpapers.
+    for wallpaper_type in ('guest', 'child'):
+      flags[f'{wallpaper_type}-wallpaper-{size}'] = (
+          f'{WALLPAPER_BASE_PATH}/{wallpaper_type}_{size}.jpg')
 
   return sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()])
 
