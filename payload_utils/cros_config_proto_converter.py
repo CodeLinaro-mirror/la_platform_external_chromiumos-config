@@ -31,7 +31,12 @@ Config = namedtuple('Config', [
 ])
 
 ConfigFiles = namedtuple(
-    'ConfigFiles', ['bluetooth', 'arc_hw_features', 'touch_fw', 'dptf_map'])
+    'ConfigFiles',
+    ['bluetooth', 'arc_hw_features', 'touch_fw', 'dptf_map', 'camera_map'])
+
+CAMERA_CONFIG_DEST_PATH_TEMPLATE = '/etc/camera/camera_config_{}.json'
+CAMERA_CONFIG_SOURCE_PATH_TEMPLATE = (
+    'sw_build_config/platform/chromeos-config/camera/camera_config_{}.json')
 
 DPTF_PATH = 'sw_build_config/platform/chromeos-config/thermal'
 DPTF_FILE = 'dptf.dv'
@@ -68,9 +73,17 @@ def parse_args(argv):
   return parser.parse_args(argv)
 
 
-def _set(field, target, target_name):
+def _upsert(field, target, target_name):
+  """Updates or inserts `field` within `target`.
+
+  If `target_name` already exists within `target` an update is performed,
+  otherwise, an insert is performed.
+  """
   if field or field == 0:
-    target[target_name] = field
+    if target_name in target:
+      target[target_name].update(field)
+    else:
+      target[target_name] = field
 
 
 def _build_arc(config, config_files):
@@ -201,12 +214,13 @@ def _build_firmware(config):
 
   build_targets = {}
 
-  _set(fw_build_config.build_targets.depthcharge, build_targets, 'depthcharge')
-  _set(fw_build_config.build_targets.coreboot, build_targets, 'coreboot')
-  _set(fw_build_config.build_targets.ec, build_targets, 'ec')
-  _set(
+  _upsert(fw_build_config.build_targets.depthcharge, build_targets,
+          'depthcharge')
+  _upsert(fw_build_config.build_targets.coreboot, build_targets, 'coreboot')
+  _upsert(fw_build_config.build_targets.ec, build_targets, 'ec')
+  _upsert(
       list(fw_build_config.build_targets.ec_extras), build_targets, 'ec_extras')
-  _set(fw_build_config.build_targets.libpayload, build_targets, 'libpayload')
+  _upsert(fw_build_config.build_targets.libpayload, build_targets, 'libpayload')
 
   if not build_targets:
     return None
@@ -216,14 +230,14 @@ def _build_firmware(config):
       'build-targets': build_targets,
   }
 
-  _set(main_ro.firmware_image_name.lower(), result, 'image-name')
+  _upsert(main_ro.firmware_image_name.lower(), result, 'image-name')
 
-  _set(_fw_bcs_path(main_ro), result, 'main-ro-image')
-  _set(_fw_bcs_path(main_rw), result, 'main-rw-image')
-  _set(_fw_bcs_path(ec_ro), result, 'ec-ro-image')
-  _set(_fw_bcs_path(pd_ro), result, 'pd-ro-image')
+  _upsert(_fw_bcs_path(main_ro), result, 'main-ro-image')
+  _upsert(_fw_bcs_path(main_rw), result, 'main-rw-image')
+  _upsert(_fw_bcs_path(ec_ro), result, 'ec-ro-image')
+  _upsert(_fw_bcs_path(pd_ro), result, 'pd-ro-image')
 
-  _set(
+  _upsert(
       config.hw_design_config.hardware_features.fw_config.value,
       result,
       'firmware-config',
@@ -308,17 +322,17 @@ def _build_camera(hw_topology):
 
 def _build_identity(hw_scan_config, program, brand_scan_config=None):
   identity = {}
-  _set(hw_scan_config.firmware_sku, identity, 'sku-id')
-  _set(hw_scan_config.smbios_name_match, identity, 'smbios-name-match')
+  _upsert(hw_scan_config.firmware_sku, identity, 'sku-id')
+  _upsert(hw_scan_config.smbios_name_match, identity, 'smbios-name-match')
   # 'platform-name' is needed to support 'mosys platform name'. Clients should
   # longer require platform name, but set it here for backwards compatibility.
-  _set(program.name, identity, 'platform-name')
+  _upsert(program.name, identity, 'platform-name')
   # ARM architecture
-  _set(hw_scan_config.device_tree_compatible_match, identity,
-       'device-tree-compatible-match')
+  _upsert(hw_scan_config.device_tree_compatible_match, identity,
+          'device-tree-compatible-match')
 
   if brand_scan_config:
-    _set(brand_scan_config.whitelabel_tag, identity, 'whitelabel-tag')
+    _upsert(brand_scan_config.whitelabel_tag, identity, 'whitelabel-tag')
 
   return identity
 
@@ -381,12 +395,12 @@ def _build_touch_file_config(config, project_name):
       })
 
   result = {}
-  _set(files, result, 'files')
+  _upsert(files, result, 'files')
   return result
 
 
-def _transform_build_configs(config, config_files=ConfigFiles({}, {}, {},
-                                                              None)):
+def _transform_build_configs(config,
+                             config_files=ConfigFiles({}, {}, {}, {}, {})):
   # pylint: disable=too-many-locals,too-many-branches
   partners = {x.id.value: x for x in config.partners.value}
   programs = {x.id.value: x for x in config.programs.value}
@@ -496,26 +510,29 @@ def _transform_build_config(config, config_files):
           config.hw_design.name.lower(),
   }
 
-  _set(_build_arc(config, config_files), result, 'arc')
-  _set(_build_audio(config), result, 'audio')
-  _set(_build_bluetooth(config, config_files.bluetooth), result, 'bluetooth')
-  _set(config.device_brand.brand_code, result, 'brand-code')
-  _set(
+  _upsert(_build_arc(config, config_files), result, 'arc')
+  _upsert(_build_audio(config), result, 'audio')
+  _upsert(_build_bluetooth(config, config_files.bluetooth), result, 'bluetooth')
+  _upsert(config.device_brand.brand_code, result, 'brand-code')
+  _upsert(
       _build_camera(config.hw_design_config.hardware_topology), result,
       'camera')
-  _set(_build_firmware(config), result, 'firmware')
-  _set(_build_fw_signing(config), result, 'firmware-signing')
-  _set(
+  _upsert(_build_firmware(config), result, 'firmware')
+  _upsert(_build_fw_signing(config), result, 'firmware-signing')
+  _upsert(
       _build_fingerprint(config.hw_design_config.hardware_topology), result,
       'fingerprint')
 
   # TODO(crbug.com/1093837): Enable _build_ui for real programs once ready.
   if config.program.id.value == "FAKE_PROGRAM":
-    _set(_build_ui(config), result, 'ui')
+    _upsert(_build_ui(config), result, 'ui')
   power_prefs = config.sw_config.power_config.preferences
   power_prefs_map = dict(
       (x.replace('_', '-'), power_prefs[x]) for x in power_prefs)
-  _set(power_prefs_map, result, 'power')
+  _upsert(power_prefs_map, result, 'power')
+  if config_files.camera_map:
+    camera_file = config_files.camera_map.get(config.hw_design.name, {})
+    _upsert(camera_file, result, 'camera')
   if config_files.dptf_map:
     # Prefer design specific if found, if not fall back to project wide config
     # mapped under the empty string.
@@ -523,8 +540,8 @@ def _transform_build_config(config, config_files):
       dptf_file = config_files.dptf_map[config.hw_design.name]
     else:
       dptf_file = config_files.dptf_map.get('')
-    _set(dptf_file, result, 'thermal')
-  _set(config_files.touch_fw, result, 'touch')
+    _upsert(dptf_file, result, 'thermal')
+  _upsert(config_files.touch_fw, result, 'touch')
 
   return result
 
@@ -718,6 +735,31 @@ def _merge_configs(configs):
   return result
 
 
+def _camera_map(configs):
+  """Produces a camera config map for the given configs.
+
+  Produces a map that maps from the design name to the camera config for that
+  design.
+
+  Args:
+    configs: Source ConfigBundle to process.
+
+  Returns:
+    map from design name to camera config.
+  """
+  result = {}
+  for design in configs.designs.value:
+    design_name = design.name
+    config_path = CAMERA_CONFIG_SOURCE_PATH_TEMPLATE.format(design_name)
+    if os.path.exists(config_path):
+      destination = CAMERA_CONFIG_DEST_PATH_TEMPLATE.format(design_name)
+      result[design_name] = {
+          'config-path': destination,
+          'config-file': _file(config_path, destination),
+      }
+  return result
+
+
 def _dptf_map(configs, project_name):
   """Produces a dptf map for the given configs.
 
@@ -733,7 +775,7 @@ def _dptf_map(configs, project_name):
     project_name: Name of project processing for.
 
   Returns:
-    map from design name or empty string (project wide), to dptf config
+    map from design name or empty string (project wide), to dptf config.
   """
   result = {}
   project_dptf_path = os.path.join(project_name, 'dptf.dv')
@@ -769,6 +811,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
   arc_hw_feature_files = {}
   touch_fw = {}
   dptf_map = {}
+  camera_map = {}
   output_dir = os.path.dirname(output)
   build_root_dir = output_dir
   if 'sw_build_config' in output_dir:
@@ -784,6 +827,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
     # without having portage file installation collisions.
     build_root_dir = os.path.join(project_name, output_dir)
 
+    camera_map = _camera_map(configs)
     dptf_map = _dptf_map(configs, project_name)
 
   if os.path.exists(TOUCH_PATH):
@@ -796,7 +840,8 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
       bluetooth=bluetooth_files,
       arc_hw_features=arc_hw_feature_files,
       touch_fw=touch_fw,
-      dptf_map=dptf_map)
+      dptf_map=dptf_map,
+      camera_map=camera_map)
   write_output(_transform_build_configs(configs, config_files), output)
 
 
