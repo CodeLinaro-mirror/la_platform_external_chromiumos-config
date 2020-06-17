@@ -321,4 +321,38 @@ message HardwareFeatures {
     // WLAN protocols supported by the Wifi chipset(s).
     repeated Component.Wifi.WLANProtocol supported_wlan_protocols = 1;
   }
+
+  message Button {
+    // A general part of the device that contains the button,
+    // e.g. "on the screen", "on the keyboard".
+    enum Region {
+      REGION_UNKNOWN = 0;
+      SCREEN = 1;
+      KEYBOARD = 2;
+    }
+
+    // The edge of the Region that contains the button.
+    enum Edge {
+      EDGE_UNKNOWN = 0;
+      LEFT = 1;
+      RIGHT= 2;
+      TOP = 3;
+      BOTTOM = 4;
+    }
+
+    Region region = 1;
+
+    Edge edge = 2;
+
+    // The percentage for button center position to the display's width/height
+    // in primary landscape screen orientation. If Edge is LEFT or RIGHT,
+    // specifies the button's center position as a fraction of the Region's
+    // height relative to the top of the Region. For TOP and BOTTOM, specifies
+    // the position as a fraction of the Region's width relative to the left
+    // side of the Region.
+    float position = 3;
+  }
+
+  Button power_button = 21;
+  Button volume_button = 22;
 }
