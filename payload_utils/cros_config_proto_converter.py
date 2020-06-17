@@ -134,6 +134,9 @@ def _build_ash_flags(config: Config) -> List[str]:
       flags[f'{wallpaper_type}-wallpaper-{size}'] = (
           f'{WALLPAPER_BASE_PATH}/{wallpaper_type}_{size}.jpg')
 
+  flags['arc-build-properties'] = json_format.MessageToDict(
+      config.build_target.arc)
+
   return sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()])
 
 

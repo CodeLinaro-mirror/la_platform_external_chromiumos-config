@@ -91,6 +91,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-is-oem",
@@ -181,6 +182,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-is-oem",
@@ -291,6 +293,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
@@ -389,6 +392,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
@@ -485,6 +489,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
@@ -574,6 +579,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
@@ -662,6 +668,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
@@ -750,6 +757,7 @@
         },
         "ui": {
           "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
