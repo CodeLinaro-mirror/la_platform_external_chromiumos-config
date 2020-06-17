@@ -182,6 +182,70 @@ def _create_quals(component_ids, status = _qual_status.REQUESTED):
     """Builds a Component.Qualification proto for each of component_ids."""
     return [_create_qual(id, status) for id in component_ids]
 
+def _append_display_panel(
+        component_list,
+        vendor_list,
+        display_vendor,
+        product_id,
+        product_name = None,
+        inches = None,
+        width_px = None,
+        height_px = None,
+        pixels_per_in = None):
+    if not display_vendor in vendor_list:
+        vendor_list.append(display_vendor)
+    component_list.append(
+        _create_display_panel(
+            display_vendor = display_vendor,
+            product_id = product_id,
+            product_name = product_name,
+            inches = inches,
+            width_px = width_px,
+            height_px = height_px,
+            pixels_per_in = pixels_per_in,
+        ),
+    )
+
+def _append_touchpad(
+        component_list,
+        vendor_list,
+        touch_vendor,
+        product_id,
+        fw_version,
+        product_name = None,
+        product_series = None):
+    if not touch_vendor in vendor_list:
+        vendor_list.append(touch_vendor)
+    component_list.append(
+        _create_touchpad(
+            touch_vendor = touch_vendor,
+            product_id = product_id,
+            fw_version = fw_version,
+            product_name = product_name,
+            product_series = product_series,
+        ),
+    )
+
+def _append_touchscreen(
+        component_list,
+        vendor_list,
+        touch_vendor,
+        product_id,
+        fw_version,
+        product_name = None,
+        product_series = None):
+    if not touch_vendor in vendor_list:
+        vendor_list.append(touch_vendor)
+    component_list.append(
+        _create_touchscreen(
+            touch_vendor = touch_vendor,
+            product_id = product_id,
+            fw_version = fw_version,
+            product_name = product_name,
+            product_series = product_series,
+        ),
+    )
+
 comp = struct(
     create_soc_family = _create_soc_family,
     create_soc_model = _create_soc_model,
@@ -195,4 +259,7 @@ comp = struct(
     qual_status = _qual_status,
     create_usb = _create_usb,
     create_pci = _create_pci,
+    append_display_panel = _append_display_panel,
+    append_touchpad = _append_touchpad,
+    append_touchscreen = _append_touchscreen,
 )

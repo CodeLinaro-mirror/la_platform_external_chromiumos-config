@@ -21,6 +21,7 @@ _FAKE_LOEMC = partner.create("FAKE-LOEMC")
 
 _ODMS = [_FAKE_ODM]
 _OEMS = [_FAKE_OEM, _FAKE_OEMA, _FAKE_OEMB, _FAKE_OEMC, _FAKE_LOEMA, _FAKE_LOEMB, _FAKE_LOEMC]
+_COMPONENTS = []
 _COMPONENT_VENDORS = []
 
 _REF_DESIGN_NAME = "FAKE-REF-DESIGN"
@@ -406,54 +407,62 @@ _BRAND_CONFIGS = [
     ),
 ]
 
-def _vendor(vendor):
-    if not vendor in _COMPONENT_VENDORS:
-        _COMPONENT_VENDORS.append(vendor)
-    return vendor
+comp.append_display_panel(
+    _COMPONENTS,
+    _COMPONENT_VENDORS,
+    display_vendor = partner.display_panel.AUO,
+    product_id = "1A1A",
+    inches = 15,
+    width_px = 1920,
+    height_px = 1080,
+    pixels_per_in = 280,
+)
+comp.append_display_panel(
+    _COMPONENTS,
+    _COMPONENT_VENDORS,
+    display_vendor = partner.display_panel.BOE,
+    product_id = "2B2B",
+    inches = 15,
+    width_px = 1920,
+    height_px = 1080,
+    pixels_per_in = 120,
+)
+comp.append_touchscreen(
+    _COMPONENTS,
+    _COMPONENT_VENDORS,
+    touch_vendor = partner.touch.ELAN_TS,
+    product_id = "01FF",
+    fw_version = "1234",
+)
+comp.append_touchscreen(
+    _COMPONENTS,
+    _COMPONENT_VENDORS,
+    touch_vendor = partner.touch.SIS,
+    product_id = "111A",
+    fw_version = "1.0",
+)
+comp.append_touchpad(
+    _COMPONENTS,
+    _COMPONENT_VENDORS,
+    touch_vendor = partner.touch.ELAN,
+    product_id = "99.0",
+    fw_version = "9.0",
+)
+comp.append_touchpad(
+    _COMPONENTS,
+    _COMPONENT_VENDORS,
+    touch_vendor = partner.touch.SYNAPTICS,
+    product_id = "ABC1",
+    fw_version = "1.1",
+)
 
-_COMPONENTS = [
-    comp.create_display_panel(
-        display_vendor = _vendor(partner.display_panel.AUO),
-        product_id = "1A1A",
-        inches = 15,
-        width_px = 1920,
-        height_px = 1080,
-        pixels_per_in = 280,
-    ),
-    comp.create_display_panel(
-        display_vendor = _vendor(partner.display_panel.BOE),
-        product_id = "2B2B",
-        inches = 15,
-        width_px = 1920,
-        height_px = 1080,
-        pixels_per_in = 120,
-    ),
-    comp.create_touchscreen(
-        touch_vendor = _vendor(partner.touch.ELAN_TS),
-        product_id = "01FF",
-        fw_version = "1234",
-    ),
-    comp.create_touchscreen(
-        touch_vendor = _vendor(partner.touch.SIS),
-        product_id = "111A",
-        fw_version = "1.0",
-    ),
-    comp.create_touchpad(
-        touch_vendor = _vendor(partner.touch.ELAN),
-        product_id = "99.0",
-        fw_version = "9.0",
-    ),
-    comp.create_touchpad(
-        touch_vendor = _vendor(partner.touch.SYNAPTICS),
-        product_id = "ABC1",
-        fw_version = "1.1",
-    ),
+_COMPONENTS.append(
     comp.create_wifi(
         vendor_id = "0f22",
         device_id = "0a11",
         revision_id = "11",
     ),
-]
+)
 
 _CONFIG = config_bundle.create(
     partners = _ODMS + _OEMS + _COMPONENT_VENDORS,
