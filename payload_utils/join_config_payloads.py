@@ -210,6 +210,31 @@ def merge_camera_config(hw_feat, model):
   hw_feat.camera.count.value = camera_props.get('count', 0)
 
 
+def merge_buttons(hw_feat, model):
+  """Merge power/volume button information from model.yaml into hardware features.
+
+  Args:
+    hw_feat (HardwareFeatures): hardware features to update
+    model (CrosConfig): parsed model.yaml information
+
+  Returns:
+    None
+  """
+  ui_props = model.GetProperties('/ui')
+  button = topology_pb2.HardwareFeatures.Button
+
+  if 'power-button' in ui_props:
+    edge = ui_props['power-button']['edge']
+    hw_feat.power_button.edge = button.Edge.Value(edge.upper())
+    hw_feat.power_button.position = ui_props['power-button']['position']
+
+  if 'side-volume-button' in ui_props:
+    region = ui_props['side-volume-button']['region']
+    hw_feat.volume_button.region = button.Region.Value(region.upper())
+    side = ui_props['side-volume-button']['side']
+    hw_feat.volume_button.edge = button.Edge.Value(side.upper())
+
+
 def merge_hardware_props(hw_feat, model):
   """Merge hardware properties from model.yaml into the given hardware features.
 
@@ -320,6 +345,7 @@ def merge_model(config_bundle, design_config, model, project_name,
   merge_fingerprint_config(hw_feat, model)
   merge_hardware_props(hw_feat, model)
   merge_camera_config(hw_feat, model)
+  merge_buttons(hw_feat, model)
 
   # Merge software configuration
   sw_config = config_bundle.software_configs.add()
