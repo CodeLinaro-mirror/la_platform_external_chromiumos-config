@@ -28,6 +28,12 @@ message Design {
   // Design codename (human friendly).
   string name = 4;
 
+  // Board version assignment for each build phase.
+  // Example:
+  //  1 --> proto
+  //  2 --> proto2 ...
+  map<uint32, string> board_id_phase = 5;
+
   // Supported hardware configurations for a given design.
   repeated Config configs = 6;
 

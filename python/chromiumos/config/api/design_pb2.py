@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n\"chromiumos/config/api/design.proto\x12\x15\x63hromiumos.config.api\x1a,chromiumos/config/api/design_config_id.proto\x1a%chromiumos/config/api/design_id.proto\x1a-chromiumos/config/api/hardware_topology.proto\x1a&chromiumos/config/api/partner_id.proto\x1a&chromiumos/config/api/program_id.proto\x1a$chromiumos/config/api/topology.proto\"\x8a\x05\n\x06\x44\x65sign\x12+\n\x02id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x34\n\nprogram_id\x18\x02 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x30\n\x06odm_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x35\n\x07\x63onfigs\x18\x06 \x03(\x0b\x32$.chromiumos.config.api.Design.Config\x1a\xa5\x03\n\x06\x43onfig\x12\x31\n\x02id\x18\x01 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\x1a\xd3\x01\n\nConstraint\x12\x44\n\x05level\x18\x01 \x01(\x0e\x32\x35.chromiumos.config.api.Design.Config.Constraint.Level\x12\x39\n\x08\x66\x65\x61tures\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"D\n\x05Level\x12\x10\n\x0cTYPE_UNKNOWN\x10\x00\x12\x0c\n\x08REQUIRED\x10\x01\x12\r\n\tPREFERRED\x10\x02\x12\x0c\n\x08OPTIONAL\x10\x03J\x04\x08\x04\x10\x05J\x04\x08\x07\x10\x08\":\n\nDesignList\x12,\n\x05value\x18\x01 \x03(\x0b\x32\x1d.chromiumos.config.api.DesignB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n\"chromiumos/config/api/design.proto\x12\x15\x63hromiumos.config.api\x1a,chromiumos/config/api/design_config_id.proto\x1a%chromiumos/config/api/design_id.proto\x1a-chromiumos/config/api/hardware_topology.proto\x1a&chromiumos/config/api/partner_id.proto\x1a&chromiumos/config/api/program_id.proto\x1a$chromiumos/config/api/topology.proto\"\x88\x06\n\x06\x44\x65sign\x12+\n\x02id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x34\n\nprogram_id\x18\x02 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x30\n\x06odm_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x04 \x01(\t\x12G\n\x0e\x62oard_id_phase\x18\x05 \x03(\x0b\x32/.chromiumos.config.api.Design.BoardIdPhaseEntry\x12\x35\n\x07\x63onfigs\x18\x06 \x03(\x0b\x32$.chromiumos.config.api.Design.Config\x1a\x33\n\x11\x42oardIdPhaseEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\xa5\x03\n\x06\x43onfig\x12\x31\n\x02id\x18\x01 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\x1a\xd3\x01\n\nConstraint\x12\x44\n\x05level\x18\x01 \x01(\x0e\x32\x35.chromiumos.config.api.Design.Config.Constraint.Level\x12\x39\n\x08\x66\x65\x61tures\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"D\n\x05Level\x12\x10\n\x0cTYPE_UNKNOWN\x10\x00\x12\x0c\n\x08REQUIRED\x10\x01\x12\r\n\tPREFERRED\x10\x02\x12\x0c\n\x08OPTIONAL\x10\x03J\x04\x08\x04\x10\x05J\x04\x08\x07\x10\x08\":\n\nDesignList\x12,\n\x05value\x18\x01 \x03(\x0b\x32\x1d.chromiumos.config.api.DesignB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_design__config__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_hardware__topology__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_program__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_topology__pb2.DESCRIPTOR,])
 
@@ -56,11 +56,48 @@ _DESIGN_CONFIG_CONSTRAINT_LEVEL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=882,
-  serialized_end=950,
+  serialized_start=1008,
+  serialized_end=1076,
 )
 _sym_db.RegisterEnumDescriptor(_DESIGN_CONFIG_CONSTRAINT_LEVEL)
 
+
+_DESIGN_BOARDIDPHASEENTRY = _descriptor.Descriptor(
+  name='BoardIdPhaseEntry',
+  full_name='chromiumos.config.api.Design.BoardIdPhaseEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.config.api.Design.BoardIdPhaseEntry.key', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.config.api.Design.BoardIdPhaseEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b('8\001'),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=613,
+  serialized_end=664,
+)
 
 _DESIGN_CONFIG_CONSTRAINT = _descriptor.Descriptor(
   name='Constraint',
@@ -96,8 +133,8 @@ _DESIGN_CONFIG_CONSTRAINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=739,
-  serialized_end=950,
+  serialized_start=865,
+  serialized_end=1076,
 )
 
 _DESIGN_CONFIG = _descriptor.Descriptor(
@@ -140,8 +177,8 @@ _DESIGN_CONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=541,
-  serialized_end=962,
+  serialized_start=667,
+  serialized_end=1088,
 )
 
 _DESIGN = _descriptor.Descriptor(
@@ -180,7 +217,14 @@ _DESIGN = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='configs', full_name='chromiumos.config.api.Design.configs', index=4,
+      name='board_id_phase', full_name='chromiumos.config.api.Design.board_id_phase', index=4,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='configs', full_name='chromiumos.config.api.Design.configs', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -189,7 +233,7 @@ _DESIGN = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_DESIGN_CONFIG, ],
+  nested_types=[_DESIGN_BOARDIDPHASEENTRY, _DESIGN_CONFIG, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -199,7 +243,7 @@ _DESIGN = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=312,
-  serialized_end=962,
+  serialized_end=1088,
 )
 
 
@@ -229,10 +273,11 @@ _DESIGNLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=964,
-  serialized_end=1022,
+  serialized_start=1090,
+  serialized_end=1148,
 )
 
+_DESIGN_BOARDIDPHASEENTRY.containing_type = _DESIGN
 _DESIGN_CONFIG_CONSTRAINT.fields_by_name['level'].enum_type = _DESIGN_CONFIG_CONSTRAINT_LEVEL
 _DESIGN_CONFIG_CONSTRAINT.fields_by_name['features'].message_type = chromiumos_dot_config_dot_api_dot_topology__pb2._HARDWAREFEATURES
 _DESIGN_CONFIG_CONSTRAINT.containing_type = _DESIGN_CONFIG
@@ -244,6 +289,7 @@ _DESIGN_CONFIG.containing_type = _DESIGN
 _DESIGN.fields_by_name['id'].message_type = chromiumos_dot_config_dot_api_dot_design__id__pb2._DESIGNID
 _DESIGN.fields_by_name['program_id'].message_type = chromiumos_dot_config_dot_api_dot_program__id__pb2._PROGRAMID
 _DESIGN.fields_by_name['odm_id'].message_type = chromiumos_dot_config_dot_api_dot_partner__id__pb2._PARTNERID
+_DESIGN.fields_by_name['board_id_phase'].message_type = _DESIGN_BOARDIDPHASEENTRY
 _DESIGN.fields_by_name['configs'].message_type = _DESIGN_CONFIG
 _DESIGNLIST.fields_by_name['value'].message_type = _DESIGN
 DESCRIPTOR.message_types_by_name['Design'] = _DESIGN
@@ -251,6 +297,13 @@ DESCRIPTOR.message_types_by_name['DesignList'] = _DESIGNLIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Design = _reflection.GeneratedProtocolMessageType('Design', (_message.Message,), dict(
+
+  BoardIdPhaseEntry = _reflection.GeneratedProtocolMessageType('BoardIdPhaseEntry', (_message.Message,), dict(
+    DESCRIPTOR = _DESIGN_BOARDIDPHASEENTRY,
+    __module__ = 'chromiumos.config.api.design_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.Design.BoardIdPhaseEntry)
+    ))
+  ,
 
   Config = _reflection.GeneratedProtocolMessageType('Config', (_message.Message,), dict(
 
@@ -270,6 +323,7 @@ Design = _reflection.GeneratedProtocolMessageType('Design', (_message.Message,),
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.Design)
   ))
 _sym_db.RegisterMessage(Design)
+_sym_db.RegisterMessage(Design.BoardIdPhaseEntry)
 _sym_db.RegisterMessage(Design.Config)
 _sym_db.RegisterMessage(Design.Config.Constraint)
 
@@ -282,4 +336,5 @@ _sym_db.RegisterMessage(DesignList)
 
 
 DESCRIPTOR._options = None
+_DESIGN_BOARDIDPHASEENTRY._options = None
 # @@protoc_insertion_point(module_scope)
