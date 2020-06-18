@@ -319,8 +319,8 @@
         "brand-code": "FDAA",
         "camera": {
           "config-file": {
-            "destination": "/etc/camera/camera_config_PROJECT-A.json",
-            "source": "sw_build_config/platform/chromeos-config/camera/camera_config_PROJECT-A.json"
+            "build-path": "sw_build_config/platform/chromeos-config/camera/camera_config_PROJECT-A.json",
+            "system-path": "/etc/camera/camera_config_PROJECT-A.json"
           },
           "config-path": "/etc/camera/camera_config_PROJECT-A.json",
           "count": 1

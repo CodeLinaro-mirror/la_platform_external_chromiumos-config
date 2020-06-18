@@ -262,6 +262,10 @@ def _file(source, destination):
   return {'destination': destination, 'source': source}
 
 
+def _file_v2(build_path, system_path):
+  return {'build-path': build_path, 'system-path': system_path}
+
+
 def _build_audio(config):
   alsa_path = '/usr/share/alsa/ucm'
   cras_path = '/etc/cras'
@@ -675,10 +679,8 @@ def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
         if len(unique_configs) > 1:
           file_name = 'hardware_features_%s.xml' % feature_id
           _write_arc_hardware_feature_file(output_dir, file_name, file_content)
-        result[feature_id] = {
-            'build-path': '%s/arc/%s' % (build_root_dir, file_name),
-            'system-path': '/etc/%s' % file_name,
-        }
+        result[feature_id] = _file_v2('%s/arc/%s' % (build_root_dir, file_name),
+                                      '/etc/%s' % file_name)
   return result
 
 
@@ -700,10 +702,9 @@ def _write_bluetooth_config_files(config, output_dir, build_root_path):
       bt_comp = design_config.hardware_features.bluetooth.component.usb
       if bt_comp.vendor_id:
         bt_id = _bluetooth_id(project_name, bt_comp)
-        result[bt_id] = {
-            'build-path': '%s/bluetooth/%s.conf' % (build_root_path, bt_id),
-            'system-path': '/etc/bluetooth/%s/main.conf' % bt_id,
-        }
+        result[bt_id] = _file_v2(
+            '%s/bluetooth/%s.conf' % (build_root_path, bt_id),
+            '/etc/bluetooth/%s/main.conf' % bt_id)
         bt_content = '''[General]
 DeviceID = bluetooth:%s:%s:%s''' % (bt_comp.vendor_id, bt_comp.product_id,
                                     bt_comp.bcd_device)
@@ -755,7 +756,7 @@ def _camera_map(configs):
       destination = CAMERA_CONFIG_DEST_PATH_TEMPLATE.format(design_name)
       result[design_name] = {
           'config-path': destination,
-          'config-file': _file(config_path, destination),
+          'config-file': _file_v2(config_path, destination),
       }
   return result
 
