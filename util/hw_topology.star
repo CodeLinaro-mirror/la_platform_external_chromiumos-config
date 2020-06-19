@@ -593,6 +593,48 @@ def _create_power_button(region, edge, position, id = None, description = None):
         ),
     )
 
+def _create_volume_button(region, edge, position, id = None, description = None):
+    """Builds a Topology proto for a volume button.
+
+    Args:
+        region: A HardwareFeatures.Button.Region enum. Required.
+        edge: A HardwareFeatures.Button.Edge enum. Required.
+        position: The percentage for button center position to the display's
+            width/height in primary landscape screen orientation. If edge is
+            LEFT or RIGHT, specifies the button's center position as a fraction
+            of region's height relative to the top of region. For TOP and
+            BOTTOM, specifies the position as a fraction of region width
+            relative to the left side of region. Must be in the range
+            [0.0, 1.0]. Required.
+        id: A string identifier for the Topology. If not passed, a default is
+            provided.
+        description: An English description for the Topology. If not passed, a
+            default is provided.
+    """
+    if not id:
+        id = "{region}_{edge}_VOLUME_BUTTON".format(
+            region = _button_region_to_str(region),
+            edge = _button_edge_to_str(edge),
+        )
+
+    if not description:
+        description = "Volume button on the {edge} edge of the {region}".format(
+            region = _button_region_to_str(region).lower(),
+            edge = _button_edge_to_str(edge).lower(),
+        )
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.POWER_BUTTON,
+        description = {"EN": description},
+        hardware_feature = topo_pb.HardwareFeatures(
+            volume_button = topo_pb.HardwareFeatures.Button(
+                region = region,
+                edge = edge,
+                position = position,
+            ),
+        ),
+    )
+
 def _create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -613,7 +655,8 @@ def _create_hardware_topology(
         motherboard_usb = None,
         bluetooth = None,
         barreljack = None,
-        power_button = None):
+        power_button = None,
+        volume_button = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -677,6 +720,9 @@ def _create_hardware_topology(
     if power_button and power_button.type != topo_pb.Topology.POWER_BUTTON:
         fail("Invalid power button topology")
 
+    if volume_button and volume_button.type != topo_pb.Topology.POWER_BUTTON:
+        fail("Invalid volume button topology")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -698,6 +744,7 @@ def _create_hardware_topology(
         bluetooth = bluetooth,
         barreljack = barreljack,
         power_button = power_button,
+        volume_button = volume_button,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -875,6 +922,7 @@ hw_topo = struct(
     create_barreljack = _create_barreljack,
     create_hardware_topology = _create_hardware_topology,
     create_power_button = _create_power_button,
+    create_volume_button = _create_volume_button,
     convert_to_hw_features = _convert_to_hw_features,
     make_fw_config = _make_fw_config,
     ff = _FF,

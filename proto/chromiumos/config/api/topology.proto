@@ -51,6 +51,7 @@ message Topology {
     BLUETOOTH = 18;
     BARRELJACK = 19;
     POWER_BUTTON = 20;
+    VOLUME_BUTTON = 21;
   }
 
   // Map of human readable descriptions in various languages. Maps language

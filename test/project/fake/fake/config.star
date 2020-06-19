@@ -76,6 +76,12 @@ _POWER_BUTTON = hw_topo.create_power_button(
     position = 0.9,
 )
 
+_VOLUME_BUTTON = hw_topo.create_volume_button(
+    region = hw_topo.region.SCREEN,
+    edge = hw_topo.edge.RIGHT,
+    position = 0.75,
+)
+
 _AUDIO_CARD = "fakeaudiocard"
 
 _SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True})
@@ -113,6 +119,7 @@ def create_hardware_topology(
         thermal = _THERMAL,
         wifi = _WIFI,
         power_button = _POWER_BUTTON,
+        volume_button = _VOLUME_BUTTON,
     )
 
 # Create empty arrays that we will continually append new configurations to

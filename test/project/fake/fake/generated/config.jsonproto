@@ -487,6 +487,20 @@
                 "id": "THERMAL",
                 "type": 6
               },
+              "volumeButton": {
+                "description": {
+                  "EN": "Volume button on the right edge of the screen"
+                },
+                "hardwareFeature": {
+                  "volumeButton": {
+                    "edge": 2,
+                    "position": 0.75,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+                "type": 20
+              },
               "wifi": {
                 "description": {
                   "EN": "Default wifi"
@@ -807,6 +821,20 @@
                 "hardwareFeature": {},
                 "id": "THERMAL",
                 "type": 6
+              },
+              "volumeButton": {
+                "description": {
+                  "EN": "Volume button on the right edge of the screen"
+                },
+                "hardwareFeature": {
+                  "volumeButton": {
+                    "edge": 2,
+                    "position": 0.75,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+                "type": 20
               },
               "wifi": {
                 "description": {
@@ -1174,6 +1202,20 @@
                 "id": "THERMAL",
                 "type": 6
               },
+              "volumeButton": {
+                "description": {
+                  "EN": "Volume button on the right edge of the screen"
+                },
+                "hardwareFeature": {
+                  "volumeButton": {
+                    "edge": 2,
+                    "position": 0.75,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+                "type": 20
+              },
               "wifi": {
                 "description": {
                   "EN": "Default wifi"
@@ -1525,6 +1567,20 @@
                 "hardwareFeature": {},
                 "id": "THERMAL",
                 "type": 6
+              },
+              "volumeButton": {
+                "description": {
+                  "EN": "Volume button on the right edge of the screen"
+                },
+                "hardwareFeature": {
+                  "volumeButton": {
+                    "edge": 2,
+                    "position": 0.75,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+                "type": 20
               },
               "wifi": {
                 "description": {
@@ -1878,6 +1934,20 @@
                 "id": "THERMAL",
                 "type": 6
               },
+              "volumeButton": {
+                "description": {
+                  "EN": "Volume button on the right edge of the screen"
+                },
+                "hardwareFeature": {
+                  "volumeButton": {
+                    "edge": 2,
+                    "position": 0.75,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+                "type": 20
+              },
               "wifi": {
                 "description": {
                   "EN": "Default wifi"
@@ -2187,6 +2257,20 @@
                 "hardwareFeature": {},
                 "id": "THERMAL",
                 "type": 6
+              },
+              "volumeButton": {
+                "description": {
+                  "EN": "Volume button on the right edge of the screen"
+                },
+                "hardwareFeature": {
+                  "volumeButton": {
+                    "edge": 2,
+                    "position": 0.75,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+                "type": 20
               },
               "wifi": {
                 "description": {

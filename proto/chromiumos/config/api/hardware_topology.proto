@@ -98,5 +98,10 @@ message HardwareTopology {
   Topology barreljack = 19;
 
   // Specify the power button topology.
+  // See ./hardware_topology.md#power-button for more information.
   Topology power_button = 20;
+
+  // Specify the volume button topology.
+  // See ./hardware_topology.md#volume-button for more information.
+  Topology volume_button = 21;
 }
