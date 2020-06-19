@@ -736,7 +736,7 @@ def _merge_configs(configs):
   return result
 
 
-def _camera_map(configs):
+def _camera_map(configs, project_name):
   """Produces a camera config map for the given configs.
 
   Produces a map that maps from the design name to the camera config for that
@@ -744,6 +744,7 @@ def _camera_map(configs):
 
   Args:
     configs: Source ConfigBundle to process.
+    project_name: Name of project processing for.
 
   Returns:
     map from design name to camera config.
@@ -755,8 +756,10 @@ def _camera_map(configs):
     if os.path.exists(config_path):
       destination = CAMERA_CONFIG_DEST_PATH_TEMPLATE.format(design_name)
       result[design_name] = {
-          'config-path': destination,
-          'config-file': _file_v2(config_path, destination),
+          'config-path':
+              destination,
+          'config-file':
+              _file_v2(os.path.join(project_name, config_path), destination),
       }
   return result
 
@@ -828,7 +831,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
     # without having portage file installation collisions.
     build_root_dir = os.path.join(project_name, output_dir)
 
-    camera_map = _camera_map(configs)
+    camera_map = _camera_map(configs, project_name)
     dptf_map = _dptf_map(configs, project_name)
 
   if os.path.exists(TOUCH_PATH):
