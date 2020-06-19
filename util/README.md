@@ -187,6 +187,33 @@ comp.create_pci()
 
 
 
+### comp.append_display_panel {#comp.append_display_panel}
+
+
+```python
+comp.append_display_panel()
+```
+
+
+
+### comp.append_touchpad {#comp.append_touchpad}
+
+
+```python
+comp.append_touchpad()
+```
+
+
+
+### comp.append_touchscreen {#comp.append_touchscreen}
+
+
+```python
+comp.append_touchscreen()
+```
+
+
+
 
 
 ## //config/util/config_bundle.star
@@ -513,6 +540,15 @@ hw_topo.create_bluetooth()
 
 
 
+### hw_topo.create_barreljack {#hw_topo.create_barreljack}
+Builds a Topology proto for barreljack.
+
+```python
+hw_topo.create_barreljack()
+```
+
+
+
 ### hw_topo.create_hardware_topology {#hw_topo.create_hardware_topology}
 Builds a HardwareTopology proto from Topology protos.
 
@@ -520,6 +556,31 @@ Builds a HardwareTopology proto from Topology protos.
 hw_topo.create_hardware_topology()
 ```
 
+
+
+### hw_topo.create_power_button {#hw_topo.create_power_button}
+Builds a Topology proto for a power button.
+
+```python
+hw_topo.create_power_button(
+    # Required arguments.
+    region,
+    edge,
+    position,
+
+    # Optional arguments.
+    id = None,
+    description = None,
+)
+```
+
+#### Arguments {#hw_topo.create_power_button-args}
+
+* **region**: A HardwareFeatures.Button.Region enum. Required.
+* **edge**: A HardwareFeatures.Button.Edge enum. Required.
+* **position**: The percentage for button center position to the display's width/height in primary landscape screen orientation. If edge is LEFT or RIGHT, specifies the button's center position as a fraction of region's height relative to the top of region. For TOP and BOTTOM, specifies the position as a fraction of region width relative to the left side of region. Must be in the range [0.0, 1.0]. Required.
+* **id**: A string identifier for the Topology. If not passed, a default is provided.
+* **description**: An English description for the Topology. If not passed, a default is provided.
 
 
 ### hw_topo.convert_to_hw_features {#hw_topo.convert_to_hw_features}

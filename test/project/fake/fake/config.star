@@ -70,6 +70,11 @@ _SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
 _MOTHERBOARD_USB = hw_topo.create_motherboard_usb("MOTHERBOARD_USB", "Default motherboard_usb")
 _BLUETOOTH = hw_topo.create_bluetooth("BLUETOOTH", "Default bluetooth", bt_component = program.bluetooth_component.bluetooth)
 _BARRELJACK = hw_topo.create_barreljack("BARRELJACK", "Default barreljack", bj_present = True)
+_POWER_BUTTON = hw_topo.create_power_button(
+    region = hw_topo.region.SCREEN,
+    edge = hw_topo.edge.LEFT,
+    position = 0.9,
+)
 
 _AUDIO_CARD = "fakeaudiocard"
 
@@ -107,6 +112,7 @@ def create_hardware_topology(
         sd_reader = _SD_READER,
         thermal = _THERMAL,
         wifi = _WIFI,
+        power_button = _POWER_BUTTON,
     )
 
 # Create empty arrays that we will continually append new configurations to

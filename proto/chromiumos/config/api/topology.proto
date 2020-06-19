@@ -50,6 +50,7 @@ message Topology {
     MOTHERBOARD_USB = 17;
     BLUETOOTH = 18;
     BARRELJACK = 19;
+    POWER_BUTTON = 20;
   }
 
   // Map of human readable descriptions in various languages. Maps language

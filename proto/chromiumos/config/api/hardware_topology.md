@@ -218,3 +218,16 @@ Changes that require new topology
 Changes that do not require new topology
 
 * Adding/Removing isolation diodes on USB lines
+
+## Power Button
+
+Changes that require new topology
+
+* Region of device (i.e. is the button on the screen, keyboard, etc.)
+* Edge of device (i.e. is the button on the left side of the screen)
+* Relative position of button on edge (i.e. how far up the left side of the
+screen is the button)
+
+Changes that do not require new topology
+
+* Second sourced component changes

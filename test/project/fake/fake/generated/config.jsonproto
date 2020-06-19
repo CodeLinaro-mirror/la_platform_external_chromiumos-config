@@ -403,6 +403,20 @@
                 "id": "NON_VOLATILE_STORAGE",
                 "type": 12
               },
+              "powerButton": {
+                "description": {
+                  "EN": "Power button on the left edge of the screen"
+                },
+                "hardwareFeature": {
+                  "powerButton": {
+                    "edge": 1,
+                    "position": 0.8999999761581421,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_LEFT_POWER_BUTTON",
+                "type": 20
+              },
               "proximitySensor": {
                 "description": {
                   "EN": "Default proximity_sensor"
@@ -709,6 +723,20 @@
                 },
                 "id": "NON_VOLATILE_STORAGE",
                 "type": 12
+              },
+              "powerButton": {
+                "description": {
+                  "EN": "Power button on the left edge of the screen"
+                },
+                "hardwareFeature": {
+                  "powerButton": {
+                    "edge": 1,
+                    "position": 0.8999999761581421,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_LEFT_POWER_BUTTON",
+                "type": 20
               },
               "proximitySensor": {
                 "description": {
@@ -1062,6 +1090,20 @@
                 "id": "NON_VOLATILE_STORAGE",
                 "type": 12
               },
+              "powerButton": {
+                "description": {
+                  "EN": "Power button on the left edge of the screen"
+                },
+                "hardwareFeature": {
+                  "powerButton": {
+                    "edge": 1,
+                    "position": 0.8999999761581421,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_LEFT_POWER_BUTTON",
+                "type": 20
+              },
               "proximitySensor": {
                 "description": {
                   "EN": "Default proximity_sensor"
@@ -1399,6 +1441,20 @@
                 },
                 "id": "NON_VOLATILE_STORAGE",
                 "type": 12
+              },
+              "powerButton": {
+                "description": {
+                  "EN": "Power button on the left edge of the screen"
+                },
+                "hardwareFeature": {
+                  "powerButton": {
+                    "edge": 1,
+                    "position": 0.8999999761581421,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_LEFT_POWER_BUTTON",
+                "type": 20
               },
               "proximitySensor": {
                 "description": {
@@ -1738,6 +1794,20 @@
                 "id": "NON_VOLATILE_STORAGE",
                 "type": 12
               },
+              "powerButton": {
+                "description": {
+                  "EN": "Power button on the left edge of the screen"
+                },
+                "hardwareFeature": {
+                  "powerButton": {
+                    "edge": 1,
+                    "position": 0.8999999761581421,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_LEFT_POWER_BUTTON",
+                "type": 20
+              },
               "proximitySensor": {
                 "description": {
                   "EN": "Default proximity_sensor"
@@ -2045,6 +2115,20 @@
                 },
                 "id": "NON_VOLATILE_STORAGE",
                 "type": 12
+              },
+              "powerButton": {
+                "description": {
+                  "EN": "Power button on the left edge of the screen"
+                },
+                "hardwareFeature": {
+                  "powerButton": {
+                    "edge": 1,
+                    "position": 0.8999999761581421,
+                    "region": 1
+                  }
+                },
+                "id": "SCREEN_LEFT_POWER_BUTTON",
+                "type": 20
               },
               "proximitySensor": {
                 "description": {
