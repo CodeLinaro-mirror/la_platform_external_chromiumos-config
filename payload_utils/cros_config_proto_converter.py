@@ -752,9 +752,9 @@ def _camera_map(configs, project_name):
   result = {}
   for design in configs.designs.value:
     design_name = design.name
-    config_path = CAMERA_CONFIG_SOURCE_PATH_TEMPLATE.format(design_name)
+    config_path = CAMERA_CONFIG_SOURCE_PATH_TEMPLATE.format(design_name.lower())
     if os.path.exists(config_path):
-      destination = CAMERA_CONFIG_DEST_PATH_TEMPLATE.format(design_name)
+      destination = CAMERA_CONFIG_DEST_PATH_TEMPLATE.format(design_name.lower())
       result[design_name] = {
           'config-path':
               destination,
