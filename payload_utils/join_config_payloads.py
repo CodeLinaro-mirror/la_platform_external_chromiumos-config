@@ -19,6 +19,7 @@ import argparse
 import logging
 import os
 import pathlib
+import re
 import sys
 import tempfile
 import yaml
@@ -83,7 +84,92 @@ def add_hwid_components(config_bundle, hwid_db):
     A reference to the input config_bundle updated with components from HWID
   """
 
-  del hwid_db
+  def create_audio_components(items):
+    for key, val in items.items():
+      values = val['values']
+      comp = config_bundle.components.add()
+      comp.id.value = key
+      comp.name = values['name']
+      comp.audio_codec.name = comp.name
+
+  def create_battery_components(items):
+    for key, val in items.items():
+      values = val['values']
+      comp = config_bundle.components.add()
+      comp.id.value = key
+      comp.name = comp.id.value
+      comp.manufacturer_id.MergeFrom(
+          config_bundle_utils.find_partner(
+              config_bundle, values['manufacturer'], create=True).id)
+
+      comp.battery.model = values['model_name']
+      if values['technology'].lower() == 'li-ion':
+        comp.battery.technology = comp.battery.LI_ION
+
+  def create_bluetooth_components(items):
+    for key, val in items.items():
+      values = val['values']
+      comp = config_bundle.components.add()
+      comp.id.value = key
+      comp.name = comp.id.value
+
+      comp.bluetooth.usb.vendor_id = values['idVendor']
+      comp.bluetooth.usb.product_id = values['idProduct']
+      comp.bluetooth.usb.bcd_device = values['bcdDevice']
+
+  def create_cpu_components(items):
+    model_re = re.compile(  # reversed from HWID cpu model values
+        '(a[0-9]?-[0-9]+[a-z]?|(m3-|i3-|i5-|i7-)*[0-9y]{4,5}[uy]?|n[0-9]{4})')
+
+    for key, val in items.items():
+      values = val['values']
+      comp = config_bundle.components.add()
+      comp.id.value = key
+      comp.soc.model = values['model']
+      comp.soc.cores = int(values['cores'])
+
+      model_string = values['model'].lower()
+      if 'intel' in model_string or 'amd' in model_string:
+        comp.soc.family.arch = comp.soc.X86_64
+      elif 'aarch64' in model_string or 'armv8' in model_string:
+        comp.soc.family.arch = comp.soc.ARM64
+      elif 'armv7' in model_string:
+        comp.soc.family.arch = comp.soc.ARM
+      else:
+        logging.warning('unknown family for cpu model \'%s\'', model_string)
+
+      match = model_re.search(model_string)
+      if match:
+        comp.soc.family.name = match.group(0).upper()
+
+  components = hwid_db['components']
+  for component_type, value in components.items():
+    if value:
+      {
+          'audio_codec': create_audio_components,
+          'battery': create_battery_components,
+          'bluetooth': create_bluetooth_components,
+          'cpu': create_cpu_components,
+          # 'display_panel': create_display_components,
+          # 'dram': create_dram_components,
+          # 'ec_flash_chip': create_ec_flash_components,
+          # 'embedded_controller': created_ec_components,
+          # 'firmware_keys': create_fw_key_components,
+          # 'flash_chip': create_flash_components,
+          # 'mainboard': create_mainboard_components,
+          # 'region': create_region_components,
+          # 'ro_ec_firmware': create_ro_ec_fw_components,
+          # 'ro_main_firmware': create_ro_main_components,
+          # 'storage': create_storage_components,
+          # 'touchpad': create_touchpad_components,
+          # 'tpm': create_tpm_components,
+          # 'usb_hosts': create_usb_host_components,
+          # 'video': create_video_components,
+          # 'wireless': create_wireless_components
+
+          # XXX: needs to not use .get once all implemented
+      }.get(component_type, (lambda x: None))(
+          value['items'])
 
   # TODO(smcallis): implement
   return config_bundle

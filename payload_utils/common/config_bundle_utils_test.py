@@ -33,3 +33,25 @@ class ConfigBundleUtilsTest(unittest.TestCase):
         config_bundle_utils.find_program(bundle, 'testprogram'), program)
     self.assertIsNone(
         config_bundle_utils.find_program(bundle, 'does_not_exist'))
+
+  def test_find_partner(self):
+    """Test the find_partner method."""
+    empty = config_bundle_pb2.ConfigBundle()
+    bundle = config_bundle_pb2.ConfigBundle()
+    partner = bundle.partner_list.add()
+    partner.name = 'TestPartner'
+    partner.id.value = 'TestPartner'
+
+    self.assertIsNone(config_bundle_utils.find_partner(empty, 'TestPartner'))
+    self.assertEqual(
+        config_bundle_utils.find_partner(empty, 'TestPartner', create=True),
+        partner)
+    self.assertEqual(
+        config_bundle_utils.find_partner(empty, 'TestPartner'), partner)
+
+    self.assertEqual(
+        config_bundle_utils.find_partner(bundle, 'TestPartner'), partner)
+    self.assertEqual(
+        config_bundle_utils.find_partner(bundle, 'testpartner'), partner)
+    self.assertIsNone(
+        config_bundle_utils.find_partner(bundle, 'does_not_exist'))
