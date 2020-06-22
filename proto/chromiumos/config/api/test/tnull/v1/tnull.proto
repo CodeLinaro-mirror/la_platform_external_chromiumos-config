@@ -69,3 +69,9 @@ message Step {
     ResultStep result = 4;
   }
 }
+
+// A TestMap is a purely internal-use format for storing mappings from test
+// names to Steps protos
+message TestMap {
+  map<string,Steps> lookup = 1;
+}

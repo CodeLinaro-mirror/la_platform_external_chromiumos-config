@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.tnull.v1',
   syntax='proto3',
   serialized_options=_b('Z<go.chromium.org/chromiumos/config/go/api/test/tnull/v1;tnull'),
-  serialized_pb=_b('\n/chromiumos/config/api/test/tnull/v1/tnull.proto\x12#chromiumos.config.api.test.tnull.v1\x1a\x30\x63hromiumos/config/api/test/rtd/v1/progress.proto\"\x80\x01\n\x05Steps\x12=\n\x05setup\x18\x01 \x01(\x0b\x32..chromiumos.config.api.test.tnull.v1.SetupStep\x12\x38\n\x05steps\x18\x02 \x03(\x0b\x32).chromiumos.config.api.test.tnull.v1.Step\"\x9b\x02\n\tSetupStep\x12K\n\x06\x63onfig\x18\x02 \x01(\x0b\x32;.chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig\x12\x39\n\x06result\x18\x03 \x01(\x0b\x32).chromiumos.config.api.test.rtd.v1.Result\x12:\n\x04logs\x18\x04 \x03(\x0b\x32,.chromiumos.config.api.test.tnull.v1.MockLog\x12\x44\n\tartifacts\x18\x05 \x03(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.MockArtifactJ\x04\x08\x01\x10\x02\"$\n\x0c\x43ommonArgSet\x12\x14\n\x0crequest_name\x18\x01 \x01(\t\"U\n\x0b\x41rchiveStep\x12\x46\n\x0b\x63ommon_args\x18\x01 \x01(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.CommonArgSet\"Q\n\x07LogStep\x12\x46\n\x0b\x63ommon_args\x18\x01 \x01(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.CommonArgSet\"T\n\nResultStep\x12\x46\n\x0b\x63ommon_args\x18\x01 \x01(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.CommonArgSet\"\x99\x01\n\x0bUnknownStep\x12\x13\n\x0bmethod_name\x18\x01 \x01(\t\x12H\n\x04\x61rgs\x18\x02 \x03(\x0b\x32:.chromiumos.config.api.test.tnull.v1.UnknownStep.ArgsEntry\x1a+\n\tArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\")\n\x07MockLog\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08messages\x18\x02 \x03(\t\"0\n\x0cMockArtifact\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nfile_bytes\x18\x02 \x01(\x0c\"\x96\x02\n\x04Step\x12\x41\n\x05other\x18\x01 \x01(\x0b\x32\x30.chromiumos.config.api.test.tnull.v1.UnknownStepH\x00\x12\x43\n\x07\x61rchive\x18\x02 \x01(\x0b\x32\x30.chromiumos.config.api.test.tnull.v1.ArchiveStepH\x00\x12;\n\x03log\x18\x03 \x01(\x0b\x32,.chromiumos.config.api.test.tnull.v1.LogStepH\x00\x12\x41\n\x06result\x18\x04 \x01(\x0b\x32/.chromiumos.config.api.test.tnull.v1.ResultStepH\x00\x42\x06\n\x04stepB>Z<go.chromium.org/chromiumos/config/go/api/test/tnull/v1;tnullb\x06proto3')
+  serialized_pb=_b('\n/chromiumos/config/api/test/tnull/v1/tnull.proto\x12#chromiumos.config.api.test.tnull.v1\x1a\x30\x63hromiumos/config/api/test/rtd/v1/progress.proto\"\x80\x01\n\x05Steps\x12=\n\x05setup\x18\x01 \x01(\x0b\x32..chromiumos.config.api.test.tnull.v1.SetupStep\x12\x38\n\x05steps\x18\x02 \x03(\x0b\x32).chromiumos.config.api.test.tnull.v1.Step\"\x9b\x02\n\tSetupStep\x12K\n\x06\x63onfig\x18\x02 \x01(\x0b\x32;.chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig\x12\x39\n\x06result\x18\x03 \x01(\x0b\x32).chromiumos.config.api.test.rtd.v1.Result\x12:\n\x04logs\x18\x04 \x03(\x0b\x32,.chromiumos.config.api.test.tnull.v1.MockLog\x12\x44\n\tartifacts\x18\x05 \x03(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.MockArtifactJ\x04\x08\x01\x10\x02\"$\n\x0c\x43ommonArgSet\x12\x14\n\x0crequest_name\x18\x01 \x01(\t\"U\n\x0b\x41rchiveStep\x12\x46\n\x0b\x63ommon_args\x18\x01 \x01(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.CommonArgSet\"Q\n\x07LogStep\x12\x46\n\x0b\x63ommon_args\x18\x01 \x01(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.CommonArgSet\"T\n\nResultStep\x12\x46\n\x0b\x63ommon_args\x18\x01 \x01(\x0b\x32\x31.chromiumos.config.api.test.tnull.v1.CommonArgSet\"\x99\x01\n\x0bUnknownStep\x12\x13\n\x0bmethod_name\x18\x01 \x01(\t\x12H\n\x04\x61rgs\x18\x02 \x03(\x0b\x32:.chromiumos.config.api.test.tnull.v1.UnknownStep.ArgsEntry\x1a+\n\tArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\")\n\x07MockLog\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08messages\x18\x02 \x03(\t\"0\n\x0cMockArtifact\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nfile_bytes\x18\x02 \x01(\x0c\"\x96\x02\n\x04Step\x12\x41\n\x05other\x18\x01 \x01(\x0b\x32\x30.chromiumos.config.api.test.tnull.v1.UnknownStepH\x00\x12\x43\n\x07\x61rchive\x18\x02 \x01(\x0b\x32\x30.chromiumos.config.api.test.tnull.v1.ArchiveStepH\x00\x12;\n\x03log\x18\x03 \x01(\x0b\x32,.chromiumos.config.api.test.tnull.v1.LogStepH\x00\x12\x41\n\x06result\x18\x04 \x01(\x0b\x32/.chromiumos.config.api.test.tnull.v1.ResultStepH\x00\x42\x06\n\x04step\"\xae\x01\n\x07TestMap\x12H\n\x06lookup\x18\x01 \x03(\x0b\x32\x38.chromiumos.config.api.test.tnull.v1.TestMap.LookupEntry\x1aY\n\x0bLookupEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x39\n\x05value\x18\x02 \x01(\x0b\x32*.chromiumos.config.api.test.tnull.v1.Steps:\x02\x38\x01\x42>Z<go.chromium.org/chromiumos/config/go/api/test/tnull/v1;tnullb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_rtd_dot_v1_dot_progress__pb2.DESCRIPTOR,])
 
@@ -446,6 +446,74 @@ _STEP = _descriptor.Descriptor(
   serialized_end=1377,
 )
 
+
+_TESTMAP_LOOKUPENTRY = _descriptor.Descriptor(
+  name='LookupEntry',
+  full_name='chromiumos.config.api.test.tnull.v1.TestMap.LookupEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.config.api.test.tnull.v1.TestMap.LookupEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.config.api.test.tnull.v1.TestMap.LookupEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b('8\001'),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1465,
+  serialized_end=1554,
+)
+
+_TESTMAP = _descriptor.Descriptor(
+  name='TestMap',
+  full_name='chromiumos.config.api.test.tnull.v1.TestMap',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='lookup', full_name='chromiumos.config.api.test.tnull.v1.TestMap.lookup', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_TESTMAP_LOOKUPENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1380,
+  serialized_end=1554,
+)
+
 _STEPS.fields_by_name['setup'].message_type = _SETUPSTEP
 _STEPS.fields_by_name['steps'].message_type = _STEP
 _SETUPSTEP.fields_by_name['config'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_rtd_dot_v1_dot_progress__pb2._PROGRESSSINKCLIENTCONFIG
@@ -473,6 +541,9 @@ _STEP.fields_by_name['log'].containing_oneof = _STEP.oneofs_by_name['step']
 _STEP.oneofs_by_name['step'].fields.append(
   _STEP.fields_by_name['result'])
 _STEP.fields_by_name['result'].containing_oneof = _STEP.oneofs_by_name['step']
+_TESTMAP_LOOKUPENTRY.fields_by_name['value'].message_type = _STEPS
+_TESTMAP_LOOKUPENTRY.containing_type = _TESTMAP
+_TESTMAP.fields_by_name['lookup'].message_type = _TESTMAP_LOOKUPENTRY
 DESCRIPTOR.message_types_by_name['Steps'] = _STEPS
 DESCRIPTOR.message_types_by_name['SetupStep'] = _SETUPSTEP
 DESCRIPTOR.message_types_by_name['CommonArgSet'] = _COMMONARGSET
@@ -483,6 +554,7 @@ DESCRIPTOR.message_types_by_name['UnknownStep'] = _UNKNOWNSTEP
 DESCRIPTOR.message_types_by_name['MockLog'] = _MOCKLOG
 DESCRIPTOR.message_types_by_name['MockArtifact'] = _MOCKARTIFACT
 DESCRIPTOR.message_types_by_name['Step'] = _STEP
+DESCRIPTOR.message_types_by_name['TestMap'] = _TESTMAP
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Steps = _reflection.GeneratedProtocolMessageType('Steps', (_message.Message,), dict(
@@ -563,7 +635,23 @@ Step = _reflection.GeneratedProtocolMessageType('Step', (_message.Message,), dic
   ))
 _sym_db.RegisterMessage(Step)
 
+TestMap = _reflection.GeneratedProtocolMessageType('TestMap', (_message.Message,), dict(
+
+  LookupEntry = _reflection.GeneratedProtocolMessageType('LookupEntry', (_message.Message,), dict(
+    DESCRIPTOR = _TESTMAP_LOOKUPENTRY,
+    __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.TestMap.LookupEntry)
+    ))
+  ,
+  DESCRIPTOR = _TESTMAP,
+  __module__ = 'chromiumos.config.api.test.tnull.v1.tnull_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tnull.v1.TestMap)
+  ))
+_sym_db.RegisterMessage(TestMap)
+_sym_db.RegisterMessage(TestMap.LookupEntry)
+
 
 DESCRIPTOR._options = None
 _UNKNOWNSTEP_ARGSENTRY._options = None
+_TESTMAP_LOOKUPENTRY._options = None
 # @@protoc_insertion_point(module_scope)
