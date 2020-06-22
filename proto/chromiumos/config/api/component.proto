@@ -29,6 +29,7 @@ message Component {
     Touch touchpad = 10;
     DisplayPanel display_panel = 11;
     AudioCodec audio_codec = 12;
+    Battery battery = 13;
   }
 
   // Defines common component version identifiers based on interface standards.
@@ -176,6 +177,15 @@ message Component {
 
   message AudioCodec {
     string name = 1;
+  }
+
+  message Battery {
+    enum Technology {
+      TECH_UNKNOWN = 0;
+      LI_ION = 1;
+    }
+    string model = 1;
+    Technology technology = 2;
   }
 }
 

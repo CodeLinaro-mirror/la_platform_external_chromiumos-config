@@ -188,6 +188,12 @@ def _create_audio_codec(name):
         name = name,
     )
 
+def _create_battery(model, technology):
+    return comp_pb.Component.Battery(
+        model = model,
+        technology = technology,
+    )
+
 def _append_display_panel(
         component_list,
         vendor_list,
@@ -263,6 +269,7 @@ comp = struct(
     create_qual = _create_qual,
     create_quals = _create_quals,
     create_audio_codec = _create_audio_codec,
+    create_battery = _create_battery,
     qual_status = _qual_status,
     create_usb = _create_usb,
     create_pci = _create_pci,
