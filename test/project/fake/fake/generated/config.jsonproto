@@ -194,6 +194,11 @@
                   "type": 3
                 }
               },
+              "powerButton": {
+                "edge": 1,
+                "position": 0.8999999761581421,
+                "region": 1
+              },
               "screen": {
                 "panelProperties": {
                   "diagonalMilliinch": 15000,
@@ -214,6 +219,11 @@
               },
               "usbC": {
                 "count": {}
+              },
+              "volumeButton": {
+                "edge": 2,
+                "position": 0.75,
+                "region": 1
               }
             },
             "hardwareTopology": {
@@ -562,6 +572,11 @@
                   "type": 3
                 }
               },
+              "powerButton": {
+                "edge": 1,
+                "position": 0.8999999761581421,
+                "region": 1
+              },
               "screen": {
                 "panelProperties": {
                   "diagonalMilliinch": 15000,
@@ -582,6 +597,11 @@
               },
               "usbC": {
                 "count": {}
+              },
+              "volumeButton": {
+                "edge": 2,
+                "position": 0.75,
+                "region": 1
               }
             },
             "hardwareTopology": {
@@ -921,6 +941,11 @@
                   "type": 3
                 }
               },
+              "powerButton": {
+                "edge": 1,
+                "position": 0.8999999761581421,
+                "region": 1
+              },
               "screen": {
                 "panelProperties": {
                   "diagonalMilliinch": 15000,
@@ -941,6 +966,11 @@
               },
               "usbC": {
                 "count": {}
+              },
+              "volumeButton": {
+                "edge": 2,
+                "position": 0.75,
+                "region": 1
               }
             },
             "hardwareTopology": {
@@ -1300,6 +1330,11 @@
                   "type": 3
                 }
               },
+              "powerButton": {
+                "edge": 1,
+                "position": 0.8999999761581421,
+                "region": 1
+              },
               "screen": {
                 "panelProperties": {
                   "diagonalMilliinch": 15000,
@@ -1320,6 +1355,11 @@
               },
               "usbC": {
                 "count": {}
+              },
+              "volumeButton": {
+                "edge": 2,
+                "position": 0.75,
+                "region": 1
               }
             },
             "hardwareTopology": {
@@ -1666,6 +1706,11 @@
                   "type": 3
                 }
               },
+              "powerButton": {
+                "edge": 1,
+                "position": 0.8999999761581421,
+                "region": 1
+              },
               "screen": {
                 "panelProperties": {
                   "diagonalMilliinch": 15000,
@@ -1686,6 +1731,11 @@
               },
               "usbC": {
                 "count": {}
+              },
+              "volumeButton": {
+                "edge": 2,
+                "position": 0.75,
+                "region": 1
               }
             },
             "hardwareTopology": {
@@ -2023,6 +2073,11 @@
                   "type": 3
                 }
               },
+              "powerButton": {
+                "edge": 1,
+                "position": 0.8999999761581421,
+                "region": 1
+              },
               "screen": {
                 "panelProperties": {
                   "diagonalMilliinch": 15000,
@@ -2040,6 +2095,11 @@
               },
               "usbC": {
                 "count": {}
+              },
+              "volumeButton": {
+                "edge": 2,
+                "position": 0.75,
+                "region": 1
               }
             },
             "hardwareTopology": {

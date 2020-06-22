@@ -150,6 +150,29 @@ def _build_ash_flags(config: Config) -> List[str]:
   flags['arc-build-properties'] = json_format.MessageToDict(
       config.build_target.arc)
 
+  power_button = hw_features.power_button
+  if power_button.edge:
+    flags['ash-power-button-position'] = json.dumps({
+        'edge':
+            topology_pb2.HardwareFeatures.Button.Edge.Name(power_button.edge
+                                                          ).lower(),
+        # Starlark sometimes represents float literals strangely, e.g. changing
+        # 0.9 to 0.899999. Round to two digits here.
+        'position':
+            round(power_button.position, 2)
+    })
+
+  volume_button = hw_features.volume_button
+  if volume_button.edge:
+    flags['ash-side-volume-button-position'] = json.dumps({
+        'region':
+            topology_pb2.HardwareFeatures.Button.Region.Name(
+                volume_button.region).lower(),
+        'edge':
+            topology_pb2.HardwareFeatures.Button.Edge.Name(volume_button.edge
+                                                          ).lower(),
+    })
+
   return sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()])
 
 

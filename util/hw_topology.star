@@ -896,6 +896,13 @@ def _convert_to_hw_features(base_hw_features, hardware_topology):
 
     if copy.barreljack.hardware_feature.barreljack != topo_pb.HardwareFeatures.BarrelJack():
         result.barreljack = copy.barreljack.hardware_feature.barreljack
+
+    if copy.power_button.hardware_feature.power_button != topo_pb.HardwareFeatures.Button():
+        result.power_button = copy.power_button.hardware_feature.power_button
+
+    if copy.volume_button.hardware_feature.volume_button != topo_pb.HardwareFeatures.Button():
+        result.volume_button = copy.volume_button.hardware_feature.volume_button
+
     return result
 
 hw_topo = struct(
