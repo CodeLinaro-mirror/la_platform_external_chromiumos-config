@@ -810,13 +810,14 @@ def _dptf_map(configs, project_name):
   # for design specific.
   dirs = [""] + [d.name for d in configs.designs.value]
   for directory in dirs:
-    if os.path.exists(os.path.join(DPTF_PATH, directory, DPTF_FILE)):
+    if os.path.exists(os.path.join(DPTF_PATH, directory.lower(), DPTF_FILE)):
       dptf_file = {
           'dptf-dv':
               project_dptf_path,
           'files': [
               _file(
-                  os.path.join(project_name, DPTF_PATH, directory, DPTF_FILE),
+                  os.path.join(project_name, DPTF_PATH, directory.lower(),
+                               DPTF_FILE),
                   os.path.join('/etc/dptf', project_dptf_path))
           ]
       }
