@@ -28,6 +28,7 @@ message Component {
     Wifi wifi = 7;
     Touch touchpad = 10;
     DisplayPanel display_panel = 11;
+    AudioCodec audio_codec = 12;
   }
 
   // Defines common component version identifiers based on interface standards.
@@ -171,6 +172,10 @@ message Component {
     }
     ComponentId component_id = 1;
     Status status = 2;
+  }
+
+  message AudioCodec {
+    string name = 1;
   }
 }
 
