@@ -194,6 +194,12 @@ def _create_battery(model, technology):
         technology = technology,
     )
 
+def _create_flash_chip(part_number):
+    """Build a Component.FlashChip proto."""
+    return comp_pb.Component.FlashChip(
+        part_number = part_number,
+    )
+
 def _append_display_panel(
         component_list,
         vendor_list,
@@ -270,6 +276,8 @@ comp = struct(
     create_quals = _create_quals,
     create_audio_codec = _create_audio_codec,
     create_battery = _create_battery,
+    create_ec_flash_chip = _create_flash_chip,
+    create_flash_chip = _create_flash_chip,
     qual_status = _qual_status,
     create_usb = _create_usb,
     create_pci = _create_pci,
