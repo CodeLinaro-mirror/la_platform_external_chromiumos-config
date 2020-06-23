@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n%chromiumos/config/api/component.proto\x12\x15\x63hromiumos.config.api\x1a(chromiumos/config/api/component_id.proto\x1a&chromiumos/config/api/partner_id.proto\"\x8a\x18\n\tComponent\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.ComponentId\x12\x39\n\x0fmanufacturer_id\x18\x08 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\t \x01(\t\x12\x33\n\x03soc\x18\x02 \x01(\x0b\x32$.chromiumos.config.api.Component.SocH\x00\x12\x39\n\x06memory\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.Component.MemoryH\x00\x12?\n\tbluetooth\x18\x04 \x01(\x0b\x32*.chromiumos.config.api.Component.BluetoothH\x00\x12\x39\n\x06\x63\x61mera\x18\x05 \x01(\x0b\x32\'.chromiumos.config.api.Component.CameraH\x00\x12=\n\x0btouchscreen\x18\x06 \x01(\x0b\x32&.chromiumos.config.api.Component.TouchH\x00\x12\x35\n\x04wifi\x18\x07 \x01(\x0b\x32%.chromiumos.config.api.Component.WifiH\x00\x12:\n\x08touchpad\x18\n \x01(\x0b\x32&.chromiumos.config.api.Component.TouchH\x00\x12\x46\n\rdisplay_panel\x18\x0b \x01(\x0b\x32-.chromiumos.config.api.Component.DisplayPanelH\x00\x12\x42\n\x0b\x61udio_codec\x18\x0c \x01(\x0b\x32+.chromiumos.config.api.Component.AudioCodecH\x00\x12;\n\x07\x62\x61ttery\x18\r \x01(\x0b\x32(.chromiumos.config.api.Component.BatteryH\x00\x12\x43\n\rec_flash_chip\x18\x0e \x01(\x0b\x32*.chromiumos.config.api.Component.FlashChipH\x00\x12G\n\x11system_flash_chip\x18\x0f \x01(\x0b\x32*.chromiumos.config.api.Component.FlashChipH\x00\x1a\x8f\x01\n\tInterface\x1a@\n\x03Usb\x12\x11\n\tvendor_id\x18\x01 \x01(\t\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\x12\n\nbcd_device\x18\x03 \x01(\t\x1a@\n\x03Pci\x12\x11\n\tvendor_id\x18\x01 \x01(\t\x12\x11\n\tdevice_id\x18\x02 \x01(\t\x12\x13\n\x0brevision_id\x18\x03 \x01(\t\x1a\x8e\x02\n\x03Soc\x12;\n\x06\x66\x61mily\x18\x01 \x01(\x0b\x32+.chromiumos.config.api.Component.Soc.Family\x12\r\n\x05model\x18\x02 \x01(\t\x12\r\n\x05\x63ores\x18\x03 \x01(\x05\x1aW\n\x06\x46\x61mily\x12?\n\x04\x61rch\x18\x01 \x01(\x0e\x32\x31.chromiumos.config.api.Component.Soc.Architecture\x12\x0c\n\x04name\x18\x02 \x01(\t\"S\n\x0c\x41rchitecture\x12\x1a\n\x16\x41RCHITECTURE_UNDEFINED\x10\x00\x12\x07\n\x03X86\x10\x01\x12\n\n\x06X86_64\x10\x02\x12\x07\n\x03\x41RM\x10\x03\x12\t\n\x05\x41RM64\x10\x04\x1a\xb4\x02\n\x06Memory\x12@\n\x07profile\x18\x01 \x01(\x0b\x32/.chromiumos.config.api.Component.Memory.Profile\x12\x13\n\x0bpart_number\x18\x02 \x01(\t\x1ap\n\x07Profile\x12:\n\x04type\x18\x01 \x01(\x0e\x32,.chromiumos.config.api.Component.Memory.Type\x12\x11\n\tspeed_mhz\x18\x02 \x01(\x05\x12\x16\n\x0esize_megabytes\x18\x03 \x01(\x05\"[\n\x04Type\x12\x12\n\x0eTYPE_UNDEFINED\x10\x00\x12\x07\n\x03\x44\x44R\x10\x01\x12\x08\n\x04\x44\x44R2\x10\x02\x12\x08\n\x04\x44\x44R3\x10\x03\x12\x08\n\x04\x44\x44R4\x10\x04\x12\x0b\n\x07LP_DDR3\x10\x05\x12\x0b\n\x07LP_DDR4\x10\x06J\x04\x08\x03\x10\x04\x1aZ\n\tBluetooth\x12;\n\x03usb\x18\x04 \x01(\x0b\x32..chromiumos.config.api.Component.Interface.UsbJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04\x1a\x88\x02\n\x06\x43\x61mera\x12\x41\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0e\x32/.chromiumos.config.api.Component.Camera.Feature\x12\x45\n\nclock_type\x18\x02 \x01(\x0e\x32\x31.chromiumos.config.api.Component.Camera.ClockType\"0\n\x07\x46\x65\x61ture\x12\x13\n\x0f\x46\x45\x41TURE_UNKNOWN\x10\x00\x12\x10\n\x0c\x41\x43TIVITY_LED\x10\x01\"B\n\tClockType\x12\x18\n\x14\x43LOCK_TYPE_UNDEFINED\x10\x00\x12\r\n\tMONOTONIC\x10\x01\x12\x0c\n\x08\x42OOTTIME\x10\x02\x1a\xd6\x01\n\x0c\x44isplayPanel\x12\x12\n\nproduct_id\x18\x01 \x01(\t\x12L\n\nproperties\x18\x02 \x01(\x0b\x32\x38.chromiumos.config.api.Component.DisplayPanel.Properties\x1a\x64\n\nProperties\x12\x10\n\x08width_px\x18\x01 \x01(\x05\x12\x11\n\theight_px\x18\x02 \x01(\x05\x12\x1a\n\x12\x64iagonal_milliinch\x18\x03 \x01(\x05\x12\x15\n\rpixels_per_in\x18\x04 \x01(\x05\x1aS\n\x05Touch\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\x12\n\nfw_version\x18\x03 \x01(\t\x12\x16\n\x0eproduct_series\x18\x05 \x01(\tJ\x04\x08\x01\x10\x02J\x04\x08\x04\x10\x05\x1a\xb4\x02\n\x04Wifi\x12=\n\x03pci\x18\x01 \x01(\x0b\x32..chromiumos.config.api.Component.Interface.PciH\x00\x12T\n\x18supported_wlan_protocols\x18\x02 \x03(\x0e\x32\x32.chromiumos.config.api.Component.Wifi.WLANProtocol\"\x89\x01\n\x0cWLANProtocol\x12\x19\n\x15WLAN_PROTOCOL_UNKNOWN\x10\x00\x12\x11\n\rIEEE_802_11_A\x10\x01\x12\x11\n\rIEEE_802_11_B\x10\x02\x12\x11\n\rIEEE_802_11_G\x10\x03\x12\x11\n\rIEEE_802_11_N\x10\x04\x12\x12\n\x0eIEEE_802_11_AC\x10\x05\x42\x0b\n\tinterface\x1a\xe7\x01\n\rQualification\x12\x38\n\x0c\x63omponent_id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.ComponentId\x12\x45\n\x06status\x18\x02 \x01(\x0e\x32\x35.chromiumos.config.api.Component.Qualification.Status\"U\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\r\n\tREQUESTED\x10\x01\x12\x19\n\x15TECHNICALLY_QUALIFIED\x10\x02\x12\r\n\tQUALIFIED\x10\x03\x1a\x1a\n\nAudioCodec\x12\x0c\n\x04name\x18\x01 \x01(\t\x1a\x8d\x01\n\x07\x42\x61ttery\x12\r\n\x05model\x18\x01 \x01(\t\x12G\n\ntechnology\x18\x02 \x01(\x0e\x32\x33.chromiumos.config.api.Component.Battery.Technology\"*\n\nTechnology\x12\x10\n\x0cTECH_UNKNOWN\x10\x00\x12\n\n\x06LI_ION\x10\x01\x1a \n\tFlashChip\x12\x13\n\x0bpart_number\x18\x01 \x01(\t\x1a)\n\x12\x45mbeddedController\x12\x13\n\x0bpart_number\x18\x01 \x01(\tB\x06\n\x04type\"@\n\rComponentList\x12/\n\x05value\x18\x01 \x03(\x0b\x32 .chromiumos.config.api.ComponentB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n%chromiumos/config/api/component.proto\x12\x15\x63hromiumos.config.api\x1a(chromiumos/config/api/component_id.proto\x1a&chromiumos/config/api/partner_id.proto\"\xcd\x18\n\tComponent\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.ComponentId\x12\x39\n\x0fmanufacturer_id\x18\x08 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\t \x01(\t\x12\x33\n\x03soc\x18\x02 \x01(\x0b\x32$.chromiumos.config.api.Component.SocH\x00\x12\x39\n\x06memory\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.Component.MemoryH\x00\x12?\n\tbluetooth\x18\x04 \x01(\x0b\x32*.chromiumos.config.api.Component.BluetoothH\x00\x12\x39\n\x06\x63\x61mera\x18\x05 \x01(\x0b\x32\'.chromiumos.config.api.Component.CameraH\x00\x12=\n\x0btouchscreen\x18\x06 \x01(\x0b\x32&.chromiumos.config.api.Component.TouchH\x00\x12\x35\n\x04wifi\x18\x07 \x01(\x0b\x32%.chromiumos.config.api.Component.WifiH\x00\x12:\n\x08touchpad\x18\n \x01(\x0b\x32&.chromiumos.config.api.Component.TouchH\x00\x12\x46\n\rdisplay_panel\x18\x0b \x01(\x0b\x32-.chromiumos.config.api.Component.DisplayPanelH\x00\x12\x42\n\x0b\x61udio_codec\x18\x0c \x01(\x0b\x32+.chromiumos.config.api.Component.AudioCodecH\x00\x12;\n\x07\x62\x61ttery\x18\r \x01(\x0b\x32(.chromiumos.config.api.Component.BatteryH\x00\x12\x43\n\rec_flash_chip\x18\x0e \x01(\x0b\x32*.chromiumos.config.api.Component.FlashChipH\x00\x12G\n\x11system_flash_chip\x18\x0f \x01(\x0b\x32*.chromiumos.config.api.Component.FlashChipH\x00\x12\x41\n\x02\x65\x63\x18\x10 \x01(\x0b\x32\x33.chromiumos.config.api.Component.EmbeddedControllerH\x00\x1a\x8f\x01\n\tInterface\x1a@\n\x03Usb\x12\x11\n\tvendor_id\x18\x01 \x01(\t\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\x12\n\nbcd_device\x18\x03 \x01(\t\x1a@\n\x03Pci\x12\x11\n\tvendor_id\x18\x01 \x01(\t\x12\x11\n\tdevice_id\x18\x02 \x01(\t\x12\x13\n\x0brevision_id\x18\x03 \x01(\t\x1a\x8e\x02\n\x03Soc\x12;\n\x06\x66\x61mily\x18\x01 \x01(\x0b\x32+.chromiumos.config.api.Component.Soc.Family\x12\r\n\x05model\x18\x02 \x01(\t\x12\r\n\x05\x63ores\x18\x03 \x01(\x05\x1aW\n\x06\x46\x61mily\x12?\n\x04\x61rch\x18\x01 \x01(\x0e\x32\x31.chromiumos.config.api.Component.Soc.Architecture\x12\x0c\n\x04name\x18\x02 \x01(\t\"S\n\x0c\x41rchitecture\x12\x1a\n\x16\x41RCHITECTURE_UNDEFINED\x10\x00\x12\x07\n\x03X86\x10\x01\x12\n\n\x06X86_64\x10\x02\x12\x07\n\x03\x41RM\x10\x03\x12\t\n\x05\x41RM64\x10\x04\x1a\xb4\x02\n\x06Memory\x12@\n\x07profile\x18\x01 \x01(\x0b\x32/.chromiumos.config.api.Component.Memory.Profile\x12\x13\n\x0bpart_number\x18\x02 \x01(\t\x1ap\n\x07Profile\x12:\n\x04type\x18\x01 \x01(\x0e\x32,.chromiumos.config.api.Component.Memory.Type\x12\x11\n\tspeed_mhz\x18\x02 \x01(\x05\x12\x16\n\x0esize_megabytes\x18\x03 \x01(\x05\"[\n\x04Type\x12\x12\n\x0eTYPE_UNDEFINED\x10\x00\x12\x07\n\x03\x44\x44R\x10\x01\x12\x08\n\x04\x44\x44R2\x10\x02\x12\x08\n\x04\x44\x44R3\x10\x03\x12\x08\n\x04\x44\x44R4\x10\x04\x12\x0b\n\x07LP_DDR3\x10\x05\x12\x0b\n\x07LP_DDR4\x10\x06J\x04\x08\x03\x10\x04\x1aZ\n\tBluetooth\x12;\n\x03usb\x18\x04 \x01(\x0b\x32..chromiumos.config.api.Component.Interface.UsbJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04\x1a\x88\x02\n\x06\x43\x61mera\x12\x41\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0e\x32/.chromiumos.config.api.Component.Camera.Feature\x12\x45\n\nclock_type\x18\x02 \x01(\x0e\x32\x31.chromiumos.config.api.Component.Camera.ClockType\"0\n\x07\x46\x65\x61ture\x12\x13\n\x0f\x46\x45\x41TURE_UNKNOWN\x10\x00\x12\x10\n\x0c\x41\x43TIVITY_LED\x10\x01\"B\n\tClockType\x12\x18\n\x14\x43LOCK_TYPE_UNDEFINED\x10\x00\x12\r\n\tMONOTONIC\x10\x01\x12\x0c\n\x08\x42OOTTIME\x10\x02\x1a\xd6\x01\n\x0c\x44isplayPanel\x12\x12\n\nproduct_id\x18\x01 \x01(\t\x12L\n\nproperties\x18\x02 \x01(\x0b\x32\x38.chromiumos.config.api.Component.DisplayPanel.Properties\x1a\x64\n\nProperties\x12\x10\n\x08width_px\x18\x01 \x01(\x05\x12\x11\n\theight_px\x18\x02 \x01(\x05\x12\x1a\n\x12\x64iagonal_milliinch\x18\x03 \x01(\x05\x12\x15\n\rpixels_per_in\x18\x04 \x01(\x05\x1aS\n\x05Touch\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\x12\n\nfw_version\x18\x03 \x01(\t\x12\x16\n\x0eproduct_series\x18\x05 \x01(\tJ\x04\x08\x01\x10\x02J\x04\x08\x04\x10\x05\x1a\xb4\x02\n\x04Wifi\x12=\n\x03pci\x18\x01 \x01(\x0b\x32..chromiumos.config.api.Component.Interface.PciH\x00\x12T\n\x18supported_wlan_protocols\x18\x02 \x03(\x0e\x32\x32.chromiumos.config.api.Component.Wifi.WLANProtocol\"\x89\x01\n\x0cWLANProtocol\x12\x19\n\x15WLAN_PROTOCOL_UNKNOWN\x10\x00\x12\x11\n\rIEEE_802_11_A\x10\x01\x12\x11\n\rIEEE_802_11_B\x10\x02\x12\x11\n\rIEEE_802_11_G\x10\x03\x12\x11\n\rIEEE_802_11_N\x10\x04\x12\x12\n\x0eIEEE_802_11_AC\x10\x05\x42\x0b\n\tinterface\x1a\xe7\x01\n\rQualification\x12\x38\n\x0c\x63omponent_id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.ComponentId\x12\x45\n\x06status\x18\x02 \x01(\x0e\x32\x35.chromiumos.config.api.Component.Qualification.Status\"U\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\r\n\tREQUESTED\x10\x01\x12\x19\n\x15TECHNICALLY_QUALIFIED\x10\x02\x12\r\n\tQUALIFIED\x10\x03\x1a\x1a\n\nAudioCodec\x12\x0c\n\x04name\x18\x01 \x01(\t\x1a\x8d\x01\n\x07\x42\x61ttery\x12\r\n\x05model\x18\x01 \x01(\t\x12G\n\ntechnology\x18\x02 \x01(\x0e\x32\x33.chromiumos.config.api.Component.Battery.Technology\"*\n\nTechnology\x12\x10\n\x0cTECH_UNKNOWN\x10\x00\x12\n\n\x06LI_ION\x10\x01\x1a \n\tFlashChip\x12\x13\n\x0bpart_number\x18\x01 \x01(\t\x1a)\n\x12\x45mbeddedController\x12\x13\n\x0bpart_number\x18\x01 \x01(\tB\x06\n\x04type\"@\n\rComponentList\x12/\n\x05value\x18\x01 \x03(\x0b\x32 .chromiumos.config.api.ComponentB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_component__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__id__pb2.DESCRIPTOR,])
 
@@ -56,8 +56,8 @@ _COMPONENT_SOC_ARCHITECTURE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1372,
-  serialized_end=1455,
+  serialized_start=1439,
+  serialized_end=1522,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_SOC_ARCHITECTURE)
 
@@ -98,8 +98,8 @@ _COMPONENT_MEMORY_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1669,
-  serialized_end=1760,
+  serialized_start=1736,
+  serialized_end=1827,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_MEMORY_TYPE)
 
@@ -120,8 +120,8 @@ _COMPONENT_CAMERA_FEATURE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2009,
-  serialized_end=2057,
+  serialized_start=2076,
+  serialized_end=2124,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_CAMERA_FEATURE)
 
@@ -146,8 +146,8 @@ _COMPONENT_CAMERA_CLOCKTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2059,
-  serialized_end=2125,
+  serialized_start=2126,
+  serialized_end=2192,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_CAMERA_CLOCKTYPE)
 
@@ -184,8 +184,8 @@ _COMPONENT_WIFI_WLANPROTOCOL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2588,
-  serialized_end=2725,
+  serialized_start=2655,
+  serialized_end=2792,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_WIFI_WLANPROTOCOL)
 
@@ -214,8 +214,8 @@ _COMPONENT_QUALIFICATION_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2887,
-  serialized_end=2972,
+  serialized_start=2954,
+  serialized_end=3039,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_QUALIFICATION_STATUS)
 
@@ -236,8 +236,8 @@ _COMPONENT_BATTERY_TECHNOLOGY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3102,
-  serialized_end=3144,
+  serialized_start=3169,
+  serialized_end=3211,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT_BATTERY_TECHNOLOGY)
 
@@ -282,8 +282,8 @@ _COMPONENT_INTERFACE_USB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1052,
-  serialized_end=1116,
+  serialized_start=1119,
+  serialized_end=1183,
 )
 
 _COMPONENT_INTERFACE_PCI = _descriptor.Descriptor(
@@ -326,8 +326,8 @@ _COMPONENT_INTERFACE_PCI = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1118,
-  serialized_end=1182,
+  serialized_start=1185,
+  serialized_end=1249,
 )
 
 _COMPONENT_INTERFACE = _descriptor.Descriptor(
@@ -349,8 +349,8 @@ _COMPONENT_INTERFACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1039,
-  serialized_end=1182,
+  serialized_start=1106,
+  serialized_end=1249,
 )
 
 _COMPONENT_SOC_FAMILY = _descriptor.Descriptor(
@@ -386,8 +386,8 @@ _COMPONENT_SOC_FAMILY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1283,
-  serialized_end=1370,
+  serialized_start=1350,
+  serialized_end=1437,
 )
 
 _COMPONENT_SOC = _descriptor.Descriptor(
@@ -431,8 +431,8 @@ _COMPONENT_SOC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1185,
-  serialized_end=1455,
+  serialized_start=1252,
+  serialized_end=1522,
 )
 
 _COMPONENT_MEMORY_PROFILE = _descriptor.Descriptor(
@@ -475,8 +475,8 @@ _COMPONENT_MEMORY_PROFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1555,
-  serialized_end=1667,
+  serialized_start=1622,
+  serialized_end=1734,
 )
 
 _COMPONENT_MEMORY = _descriptor.Descriptor(
@@ -513,8 +513,8 @@ _COMPONENT_MEMORY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1458,
-  serialized_end=1766,
+  serialized_start=1525,
+  serialized_end=1833,
 )
 
 _COMPONENT_BLUETOOTH = _descriptor.Descriptor(
@@ -543,8 +543,8 @@ _COMPONENT_BLUETOOTH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1768,
-  serialized_end=1858,
+  serialized_start=1835,
+  serialized_end=1925,
 )
 
 _COMPONENT_CAMERA = _descriptor.Descriptor(
@@ -582,8 +582,8 @@ _COMPONENT_CAMERA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1861,
-  serialized_end=2125,
+  serialized_start=1928,
+  serialized_end=2192,
 )
 
 _COMPONENT_DISPLAYPANEL_PROPERTIES = _descriptor.Descriptor(
@@ -633,8 +633,8 @@ _COMPONENT_DISPLAYPANEL_PROPERTIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2242,
-  serialized_end=2342,
+  serialized_start=2309,
+  serialized_end=2409,
 )
 
 _COMPONENT_DISPLAYPANEL = _descriptor.Descriptor(
@@ -670,8 +670,8 @@ _COMPONENT_DISPLAYPANEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2128,
-  serialized_end=2342,
+  serialized_start=2195,
+  serialized_end=2409,
 )
 
 _COMPONENT_TOUCH = _descriptor.Descriptor(
@@ -714,8 +714,8 @@ _COMPONENT_TOUCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2344,
-  serialized_end=2427,
+  serialized_start=2411,
+  serialized_end=2494,
 )
 
 _COMPONENT_WIFI = _descriptor.Descriptor(
@@ -755,8 +755,8 @@ _COMPONENT_WIFI = _descriptor.Descriptor(
       name='interface', full_name='chromiumos.config.api.Component.Wifi.interface',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=2430,
-  serialized_end=2738,
+  serialized_start=2497,
+  serialized_end=2805,
 )
 
 _COMPONENT_QUALIFICATION = _descriptor.Descriptor(
@@ -793,8 +793,8 @@ _COMPONENT_QUALIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2741,
-  serialized_end=2972,
+  serialized_start=2808,
+  serialized_end=3039,
 )
 
 _COMPONENT_AUDIOCODEC = _descriptor.Descriptor(
@@ -823,8 +823,8 @@ _COMPONENT_AUDIOCODEC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2974,
-  serialized_end=3000,
+  serialized_start=3041,
+  serialized_end=3067,
 )
 
 _COMPONENT_BATTERY = _descriptor.Descriptor(
@@ -861,8 +861,8 @@ _COMPONENT_BATTERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3003,
-  serialized_end=3144,
+  serialized_start=3070,
+  serialized_end=3211,
 )
 
 _COMPONENT_FLASHCHIP = _descriptor.Descriptor(
@@ -891,8 +891,8 @@ _COMPONENT_FLASHCHIP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3146,
-  serialized_end=3178,
+  serialized_start=3213,
+  serialized_end=3245,
 )
 
 _COMPONENT_EMBEDDEDCONTROLLER = _descriptor.Descriptor(
@@ -921,8 +921,8 @@ _COMPONENT_EMBEDDEDCONTROLLER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3180,
-  serialized_end=3221,
+  serialized_start=3247,
+  serialized_end=3288,
 )
 
 _COMPONENT = _descriptor.Descriptor(
@@ -1037,6 +1037,13 @@ _COMPONENT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ec', full_name='chromiumos.config.api.Component.ec', index=15,
+      number=16, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -1053,7 +1060,7 @@ _COMPONENT = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=147,
-  serialized_end=3229,
+  serialized_end=3296,
 )
 
 
@@ -1083,8 +1090,8 @@ _COMPONENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3231,
-  serialized_end=3295,
+  serialized_start=3298,
+  serialized_end=3362,
 )
 
 _COMPONENT_INTERFACE_USB.containing_type = _COMPONENT_INTERFACE
@@ -1142,6 +1149,7 @@ _COMPONENT.fields_by_name['audio_codec'].message_type = _COMPONENT_AUDIOCODEC
 _COMPONENT.fields_by_name['battery'].message_type = _COMPONENT_BATTERY
 _COMPONENT.fields_by_name['ec_flash_chip'].message_type = _COMPONENT_FLASHCHIP
 _COMPONENT.fields_by_name['system_flash_chip'].message_type = _COMPONENT_FLASHCHIP
+_COMPONENT.fields_by_name['ec'].message_type = _COMPONENT_EMBEDDEDCONTROLLER
 _COMPONENT.oneofs_by_name['type'].fields.append(
   _COMPONENT.fields_by_name['soc'])
 _COMPONENT.fields_by_name['soc'].containing_oneof = _COMPONENT.oneofs_by_name['type']
@@ -1178,6 +1186,9 @@ _COMPONENT.fields_by_name['ec_flash_chip'].containing_oneof = _COMPONENT.oneofs_
 _COMPONENT.oneofs_by_name['type'].fields.append(
   _COMPONENT.fields_by_name['system_flash_chip'])
 _COMPONENT.fields_by_name['system_flash_chip'].containing_oneof = _COMPONENT.oneofs_by_name['type']
+_COMPONENT.oneofs_by_name['type'].fields.append(
+  _COMPONENT.fields_by_name['ec'])
+_COMPONENT.fields_by_name['ec'].containing_oneof = _COMPONENT.oneofs_by_name['type']
 _COMPONENTLIST.fields_by_name['value'].message_type = _COMPONENT
 DESCRIPTOR.message_types_by_name['Component'] = _COMPONENT
 DESCRIPTOR.message_types_by_name['ComponentList'] = _COMPONENTLIST

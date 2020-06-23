@@ -32,6 +32,7 @@ message Component {
     Battery battery = 13;
     FlashChip ec_flash_chip = 14;
     FlashChip system_flash_chip = 15;
+    EmbeddedController ec = 16;
   }
 
   // Defines common component version identifiers based on interface standards.

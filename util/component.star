@@ -200,6 +200,12 @@ def _create_flash_chip(part_number):
         part_number = part_number,
     )
 
+def _create_embedded_controller(part_number):
+    """Build a Component.EmbeddedController proto."""
+    return comp_pb.Component.EmbeddedController(
+        part_number = part_number,
+    )
+
 def _append_display_panel(
         component_list,
         vendor_list,
@@ -278,6 +284,7 @@ comp = struct(
     create_battery = _create_battery,
     create_ec_flash_chip = _create_flash_chip,
     create_flash_chip = _create_flash_chip,
+    create_embedded_controller = _create_embedded_controller,
     qual_status = _qual_status,
     create_usb = _create_usb,
     create_pci = _create_pci,
