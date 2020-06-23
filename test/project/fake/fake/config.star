@@ -303,6 +303,7 @@ design.append_configs(
         _AUDIO_CARD,
         card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
         dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
+        hdmi_name = "HDA ATI HDMI",
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",

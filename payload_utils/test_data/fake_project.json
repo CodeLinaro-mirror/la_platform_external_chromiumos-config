@@ -545,6 +545,14 @@
               {
                 "destination": "/etc/cras/project-wl/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               }
             ]
           }
@@ -636,6 +644,14 @@
               {
                 "destination": "/etc/cras/project-wl/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               }
             ]
           }
@@ -727,6 +743,14 @@
               {
                 "destination": "/etc/cras/project-wl/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               }
             ]
           }

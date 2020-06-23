@@ -189,8 +189,16 @@ def _create_audio(
         ucm_master_file = None,
         ucm_suffix = None,
         module_file = None,
-        board_file = None):
+        board_file = None,
+        hdmi_name = None,
+        hdmi_ucm_file = None,
+        hdmi_ucm_master_file = None):
     """Builds an AudioConfig proto."""
+    if hdmi_name:
+        if not hdmi_ucm_file:
+            hdmi_ucm_file = "ucm-config/%s/HiFi.conf" % hdmi_name
+        if not hdmi_ucm_master_file:
+            hdmi_ucm_master_file = "ucm-config/%s/%s.conf" % (hdmi_name, hdmi_name)
     return audio_pb.AudioConfig(
         card_name = card_name,
         card_config_file = card_config_file,
@@ -200,6 +208,9 @@ def _create_audio(
         ucm_suffix = ucm_suffix,
         module_file = module_file,
         board_file = board_file,
+        hdmi_name = hdmi_name,
+        hdmi_ucm_file = hdmi_ucm_file,
+        hdmi_ucm_master_file = hdmi_ucm_master_file,
     )
 
 def _create_bluetooth(flags):

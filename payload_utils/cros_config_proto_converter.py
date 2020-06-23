@@ -323,6 +323,14 @@ def _build_audio(config):
   if audio.board_file:
     files.append(
         _file(audio.board_file, '%s/%s/board.ini' % (cras_path, project_name)))
+  if audio.hdmi_ucm_file:
+    files.append(
+        _file(audio.hdmi_ucm_file,
+              '%s/%s/HiFi.conf' % (alsa_path, audio.hdmi_name)))
+  if audio.hdmi_ucm_master_file:
+    files.append(
+        _file(audio.hdmi_ucm_master_file,
+              '%s/%s/%s.conf' % (alsa_path, audio.hdmi_name, audio.hdmi_name)))
 
   result = {
       'main': {
