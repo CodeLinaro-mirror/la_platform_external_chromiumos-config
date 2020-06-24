@@ -296,12 +296,7 @@ message HardwareFeatures {
   // Non-volatile storage properties of system
   Storage storage = 18;
   message Storage {
-    StorageType storage_type = 1;
-    enum StorageType {
-      STORAGE_TYPE_UNKNOWN = 0;
-      EMMC = 1;
-      NVME = 2;
-    }
+    Component.Storage.StorageType storage_type = 1;
   }
 
   // Bluetooth properties

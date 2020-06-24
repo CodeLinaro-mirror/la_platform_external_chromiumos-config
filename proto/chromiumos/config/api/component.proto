@@ -33,6 +33,7 @@ message Component {
     FlashChip ec_flash_chip = 14;
     FlashChip system_flash_chip = 15;
     EmbeddedController ec = 16;
+    Storage storage = 17;
   }
 
   // Defines common component version identifiers based on interface standards.
@@ -197,7 +198,23 @@ message Component {
 
   message EmbeddedController {
     string part_number = 1;
-  };
+  }
+
+  message Storage {
+    enum StorageType {
+      STORAGE_TYPE_UNKNOWN = 0;
+      EMMC = 1;
+      NVME = 2;
+    }
+
+    string emmc5_fw_ver = 1;
+    string manfid = 2;
+    string name = 3;
+    string oemid = 4;
+    string prv = 5;
+    string sectors = 6;
+    StorageType type = 7;
+  }
 }
 
 message ComponentList {

@@ -56,8 +56,8 @@ _FP_LOC = struct(
 )
 
 _STORAGE = struct(
-    EMMC = topo_pb.HardwareFeatures.Storage.EMMC,
-    NVME = topo_pb.HardwareFeatures.Storage.NVME,
+    EMMC = comp_pb.Component.Storage.EMMC,
+    NVME = comp_pb.Component.Storage.NVME,
 )
 
 _KB_TYPE = struct(

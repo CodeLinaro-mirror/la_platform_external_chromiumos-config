@@ -206,6 +206,18 @@ def _create_embedded_controller(part_number):
         part_number = part_number,
     )
 
+def _create_storage_mmc(emmc5_fw_ver, manfid, name, oemid, prv, sectors):
+    """Build a Component.Storage proto for an MMC device."""
+    return comp_pb.Component.Storage(
+        emmc5_fw_ver = emmc5_fw_ver,
+        manfid = manfid,
+        name = name,
+        oemid = oemid,
+        prv = prv,
+        sectors = sectors,
+        type = comp_pb.Component.Storage.EMMC,
+    )
+
 def _append_display_panel(
         component_list,
         vendor_list,
@@ -285,6 +297,7 @@ comp = struct(
     create_ec_flash_chip = _create_flash_chip,
     create_flash_chip = _create_flash_chip,
     create_embedded_controller = _create_embedded_controller,
+    create_storage_mmc = _create_storage_mmc,
     qual_status = _qual_status,
     create_usb = _create_usb,
     create_pci = _create_pci,
