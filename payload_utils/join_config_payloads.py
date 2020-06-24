@@ -84,6 +84,8 @@ def add_hwid_components(config_bundle, hwid_db):
     A reference to the input config_bundle updated with components from HWID
   """
 
+  # pylint: disable=too-many-statements
+
   def create_audio_components(items):
     for key, val in items.items():
       values = val['values']
@@ -142,6 +144,104 @@ def add_hwid_components(config_bundle, hwid_db):
       if match:
         comp.soc.family.name = match.group(0).upper()
 
+  def create_display_components(items):
+    for key, val in items.items():
+      values = val['values']
+      comp = config_bundle.components.add()
+      comp.id.value = key
+      comp.manufacturer_id.MergeFrom(
+          config_bundle_utils.find_partner(
+              config_bundle, values['vendor'], create=True).id)
+
+      comp.display_panel.product_id = values['product_id']
+      comp.display_panel.properties.width_px = int(values['width'])
+      comp.display_panel.properties.height_px = int(values['height'])
+
+  def create_dram_components(items):
+    # There's a lot of duplicated part numbers in the HWID db, mostly
+    # due to specifying slot number.  That information is largely incorrect
+    # anyways, so we'll deduplicate parts here
+    part_values = {}
+    for _, val in items.items():
+      values = val['values']
+      part_values[values['part']] = (int(values['size']), values['timing'])
+
+    for part_number, (size, timing) in part_values.items():
+      comp = config_bundle.components.add()
+      comp.id.value = part_number
+      comp.memory.part_number = part_number
+      comp.memory.profile.size_megabytes = int(size)
+
+      memory_type = timing.split('-')[0]
+      if memory_type == 'LPDDR4':
+        comp.memory.profile.type = comp.memory.LP_DDR4
+      elif memory_type == 'LPDDR3':
+        comp.memory.profile.type = comp.memory.LP_DDR3
+      elif memory_type == 'DDR4':
+        comp.memory.profile.type = comp.memory.DDR4
+      elif memory_type == 'DDR3':
+        comp.memory.profile.type = comp.memory.DDR3
+      elif memory_type == 'DDR2':
+        comp.memory.profile.type = comp.memory.DDR2
+      elif memory_type == 'DDR':
+        comp.memory.profile.type = comp.memory.DDR
+
+  def create_ec_flash_components(items):
+    for _, val in items.items():
+      values = val['values']
+      part_number = values['name']
+
+      comp = config_bundle.components.add()
+      comp.id.value = part_number
+      comp.manufacturer_id.MergeFrom(
+          config_bundle_utils.find_partner(
+              config_bundle, values['vendor'], create=True).id)
+      comp.ec_flash_chip.part_number = part_number
+
+  def create_flash_components(items):
+    for _, val in items.items():
+      values = val['values']
+      part_number = values['name']
+
+      comp = config_bundle.components.add()
+      comp.id.value = part_number
+      comp.manufacturer_id.MergeFrom(
+          config_bundle_utils.find_partner(
+              config_bundle, values['vendor'], create=True).id)
+      comp.system_flash_chip.part_number = part_number
+
+  def create_ec_components(items):
+    for _, val in items.items():
+      values = val['values']
+      part_number = values['name']
+
+      comp = config_bundle.components.add()
+      comp.id.value = part_number
+      comp.name = part_number
+      comp.manufacturer_id.MergeFrom(
+          config_bundle_utils.find_partner(
+              config_bundle, values['vendor'], create=True).id)
+      comp.ec.part_number = part_number
+
+  def create_storage_components(items):
+    for key, val in items.items():
+      values = val['values']
+
+      comp = config_bundle.components.add()
+      comp.id.value = key
+      comp.name = key
+
+      comp.storage.emmc5_fw_ver = values.get('emmc5_fw_ver', '')
+      comp.storage.manfid = values.get('manfid', '')
+      comp.storage.name = values.get('name', '')
+      comp.storage.oemid = values.get('oemid', '')
+      comp.storage.prv = values.get('prv', '')
+      comp.storage.sectors = values.get('sectors', '')
+
+      storage_type = values['type'].lower()
+      if storage_type == 'mmc':
+        comp.storage.type = comp.storage.EMMC
+
   components = hwid_db['components']
   for component_type, value in components.items():
     if value:
@@ -150,17 +250,17 @@ def add_hwid_components(config_bundle, hwid_db):
           'battery': create_battery_components,
           'bluetooth': create_bluetooth_components,
           'cpu': create_cpu_components,
-          # 'display_panel': create_display_components,
-          # 'dram': create_dram_components,
-          # 'ec_flash_chip': create_ec_flash_components,
-          # 'embedded_controller': created_ec_components,
+          'display_panel': create_display_components,
+          'dram': create_dram_components,
+          'ec_flash_chip': create_ec_flash_components,
+          'embedded_controller': create_ec_components,
           # 'firmware_keys': create_fw_key_components,
-          # 'flash_chip': create_flash_components,
+          'flash_chip': create_flash_components,
           # 'mainboard': create_mainboard_components,
           # 'region': create_region_components,
           # 'ro_ec_firmware': create_ro_ec_fw_components,
           # 'ro_main_firmware': create_ro_main_components,
-          # 'storage': create_storage_components,
+          'storage': create_storage_components,
           # 'touchpad': create_touchpad_components,
           # 'tpm': create_tpm_components,
           # 'usb_hosts': create_usb_host_components,
