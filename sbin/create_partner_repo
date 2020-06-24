@@ -355,6 +355,7 @@ create_project_buckets() {
     local bucket="gs://chromeos-${program}-${project}"
     gsutil mb "${bucket}"
     gsutil iam ch serviceAccount:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com:objectAdmin "${bucket}"
+    gsutil iam ch user:chromeos-ci-server@prod.google.com:objectViewer "${bucket}"
     for id in ${committer_groups}; do
       try_set_group_viewer "${id}" "${bucket}"
     done
