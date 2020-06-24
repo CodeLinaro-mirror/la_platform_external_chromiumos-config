@@ -85,6 +85,7 @@ def add_hwid_components(config_bundle, hwid_db):
   """
 
   # pylint: disable=too-many-statements
+  # pylint: disable=too-many-locals
 
   def create_audio_components(items):
     for key, val in items.items():
@@ -242,6 +243,29 @@ def add_hwid_components(config_bundle, hwid_db):
       if storage_type == 'mmc':
         comp.storage.type = comp.storage.EMMC
 
+  def create_touchpad_components(items):
+    for _, val in items.items():
+      values = val['values']
+
+      comp = config_bundle.components.add()
+      comp.name = values['name']
+
+      # Check for USB based touchpad
+      # We don't receive an explicit type for the touchpad bus type, so
+      # we assume that if we have a product and vendor id, that it's USB,
+      # otherwise it's I2C (rare)
+      if 'product' in values and 'vendor' in values:
+        comp.touchpad.type = comp.touchpad.USB
+        comp.touchpad.product_id = values['name']
+        comp.touchpad.usb.vendor_id = values['vendor']
+        comp.touchpad.usb.product_id = values['product']
+      else:
+        # i2c based touchpad
+        comp.touchpad.type = comp.touchpad.I2C
+        comp.touchpad.product_id = values['product_id']
+        comp.touchpad.fw_version = values['fw_version']
+        comp.touchpad.fw_checksum = values['fw_csum']
+
   components = hwid_db['components']
   for component_type, value in components.items():
     if value:
@@ -261,7 +285,7 @@ def add_hwid_components(config_bundle, hwid_db):
           # 'ro_ec_firmware': create_ro_ec_fw_components,
           # 'ro_main_firmware': create_ro_main_components,
           'storage': create_storage_components,
-          # 'touchpad': create_touchpad_components,
+          'touchpad': create_touchpad_components,
           # 'tpm': create_tpm_components,
           # 'usb_hosts': create_usb_host_components,
           # 'video': create_video_components,

@@ -141,11 +141,21 @@ message Component {
   }
 
   message Touch {
+    enum TouchType {
+      TOUCH_TYPE_UNDEFINED = 0;
+      USB = 1;
+      I2C = 2;
+    }
+
     string product_id = 2;
     string fw_version = 3;
     // Optional product brand/series name
     // For some vendors, this is used in the firmware naming schema
     string product_series = 5;
+
+    string fw_checksum = 6;
+    TouchType type = 7;
+    Interface.Usb usb = 8;
 
     reserved 1, 4;
   }
