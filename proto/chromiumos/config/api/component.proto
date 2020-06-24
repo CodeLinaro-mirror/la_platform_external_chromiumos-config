@@ -125,6 +125,11 @@ message Component {
 
     repeated Feature features = 1;
     ClockType clock_type = 2;
+
+    oneof interface {
+      Interface.Usb usb = 3;
+      Interface.Pci pci = 4;
+    }
   }
 
   message DisplayPanel {
@@ -234,7 +239,6 @@ message Component {
     string manufacturer_info = 1;
     string version = 2;
   }
-
 }
 
 message ComponentList {

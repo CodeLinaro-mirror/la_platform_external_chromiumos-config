@@ -299,6 +299,32 @@ def add_hwid_components(config_bundle, hwid_db):
       host.vendor_id = get_oneof(values, ['idVendor', 'vendor'], '')
       host.bcd_device = get_oneof(values, ['bcdDevice', 'revision_id'], '')
 
+  def create_video_components(items):
+    for key, val in items.items():
+      values = val['values']
+      if values.get('status') == 'unsupported':
+        continue
+
+      comp = config_bundle.components.add()
+      if values.get('bus_type') == 'usb':
+        comp.id.value = key
+        comp.name = values['product']
+        comp.manufacturer_id.MergeFrom(
+            config_bundle_utils.find_partner(
+                config_bundle, values['manufacturer'], create=True).id)
+
+        comp.camera.usb.vendor_id = values['idVendor']
+        comp.camera.usb.product_id = values['idProduct']
+        comp.camera.usb.bcd_device = values['bcdDevice']
+
+      if values.get('bus_type') == 'pci':
+        comp.id.value = key
+        comp.name = key
+
+        comp.camera.pci.vendor_id = values['vendor']
+        comp.camera.pci.device_id = values['device']
+        comp.camera.pci.revision_id = values['revision_id']
+
   components = hwid_db['components']
   for component_type, value in components.items():
     if value:
@@ -321,7 +347,7 @@ def add_hwid_components(config_bundle, hwid_db):
           'touchpad': create_touchpad_components,
           'tpm': create_tpm_components,
           'usb_hosts': create_usb_host_components,
-          # 'video': create_video_components,
+          'video': create_video_components,
           # 'wireless': create_wireless_components
 
           # XXX: needs to not use .get once all implemented
