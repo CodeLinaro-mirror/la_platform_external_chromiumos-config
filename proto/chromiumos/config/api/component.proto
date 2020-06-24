@@ -34,6 +34,7 @@ message Component {
     FlashChip system_flash_chip = 15;
     EmbeddedController ec = 16;
     Storage storage = 17;
+    Tpm tpm = 18;
   }
 
   // Defines common component version identifiers based on interface standards.
@@ -225,6 +226,14 @@ message Component {
     string sectors = 6;
     StorageType type = 7;
   }
+
+  // Defines a Trusted Platform Module, for more information see here:
+  //   https://www.chromium.org/developers/design-documents/tpm-usage
+  message Tpm {
+    string manufacturer_info = 1;
+    string version = 2;
+  }
+
 }
 
 message ComponentList {

@@ -266,6 +266,15 @@ def add_hwid_components(config_bundle, hwid_db):
         comp.touchpad.fw_version = values['fw_version']
         comp.touchpad.fw_checksum = values['fw_csum']
 
+  def create_tpm_components(items):
+    for key, val in items.items():
+      values = val['values']
+
+      comp = config_bundle.components.add()
+      comp.name = key
+      comp.tpm.manufacturer_info = values['manufacturer_info']
+      comp.tpm.version = values['version']
+
   components = hwid_db['components']
   for component_type, value in components.items():
     if value:
@@ -286,7 +295,7 @@ def add_hwid_components(config_bundle, hwid_db):
           # 'ro_main_firmware': create_ro_main_components,
           'storage': create_storage_components,
           'touchpad': create_touchpad_components,
-          # 'tpm': create_tpm_components,
+          'tpm': create_tpm_components,
           # 'usb_hosts': create_usb_host_components,
           # 'video': create_video_components,
           # 'wireless': create_wireless_components
