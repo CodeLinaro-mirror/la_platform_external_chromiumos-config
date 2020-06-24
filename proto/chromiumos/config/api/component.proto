@@ -35,6 +35,7 @@ message Component {
     EmbeddedController ec = 16;
     Storage storage = 17;
     Tpm tpm = 18;
+    Interface.Usb usb_host = 19;
   }
 
   // Defines common component version identifiers based on interface standards.
