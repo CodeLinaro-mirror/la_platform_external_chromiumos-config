@@ -89,7 +89,11 @@ def _append_configs(
     sw_config.firmware_build_config = firmware_build_config
     sw_config.bluetooth_config = bluetooth
     sw_config.power_config = power
-    sw_config.audio_config = audio
+    if audio:
+        if type(audio) == "list":
+            sw_config.audio_configs.extend(audio)
+        else:
+            sw_config.audio_configs.append(audio)
     sw_configs.append(sw_config)
 
 def _create_design_id(name):

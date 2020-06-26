@@ -255,8 +255,10 @@ def GetFactoryConfigs(config):
       continue
     project_table = product_sku.setdefault(project_name, {})
     design_table = project_table.setdefault(sku_id, {})
-    design_table.update(
-        {'component.audio_card_name': sw_design.audio_config.card_name})
+    audio_card_name = ''
+    if sw_design.audio_configs:
+      audio_card_name = sw_design.audio_configs[0].card_name
+    design_table.update({'component.audio_card_name': audio_card_name})
   # Create map from design id to product_name. Designs from different projects
   # may map to the same product_name. The sets of sku id should not intersect.
   product_names = {

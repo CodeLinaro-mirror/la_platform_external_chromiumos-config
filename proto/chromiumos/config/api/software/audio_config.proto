@@ -37,17 +37,4 @@ message AudioConfig {
 
   // Path to the boards specific settings board.ini file.
   string board_file = 8;
-
-  // The following HDMI audio configs need to be set to keep internal
-  // soundcard and HDMI soundcard settings separate so they will not
-  // affect each other.
-
-  // Name of HDMI device.
-  string hdmi_name = 9;
-
-  // Path to the HDMI UCM file.
-  string hdmi_ucm_file = 10;
-
-  // Path to the HDMI UCM master file.
-  string hdmi_ucm_master_file = 11;
 }

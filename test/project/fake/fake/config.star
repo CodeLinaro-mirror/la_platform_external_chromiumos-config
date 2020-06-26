@@ -292,6 +292,7 @@ design.append_configs(
 )
 
 _HW_CONFIGS_WL = []
+_HDMI_AUDIO_CARD = "HDA ATI HDMI"
 
 design.append_configs(
     hw_configs = _HW_CONFIGS_WL,
@@ -299,12 +300,15 @@ design.append_configs(
     design_id = _DESIGN_ID_WL,
     config_id = 64,
     hardware_topology = create_hardware_topology(),
-    audio = sc.create_audio(
+    audio = [sc.create_audio(
         _AUDIO_CARD,
         card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
         dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
-        hdmi_name = "HDA ATI HDMI",
-    ),
+    ), sc.create_audio(
+        _HDMI_AUDIO_CARD,
+        ucm_file = "ucm-config/%s/HiFi.conf" % _HDMI_AUDIO_CARD,
+        ucm_master_file = "ucm-config/%s/%s.conf" % (_HDMI_AUDIO_CARD, _HDMI_AUDIO_CARD),
+    )],
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
         "Fake_EC",

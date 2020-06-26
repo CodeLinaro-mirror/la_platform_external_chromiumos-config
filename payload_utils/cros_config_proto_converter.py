@@ -290,47 +290,45 @@ def _file_v2(build_path, system_path):
 
 
 def _build_audio(config):
+  if not config.sw_config.audio_configs:
+    return {}
   alsa_path = '/usr/share/alsa/ucm'
   cras_path = '/etc/cras'
   project_name = config.hw_design.name.lower()
   program_name = config.program.name.lower()
-  if not config.sw_config.HasField('audio_config'):
-    return {}
-  audio = config.sw_config.audio_config
-  card = audio.card_name
-  card_with_suffix = audio.card_name
-  if audio.ucm_suffix:
-    card_with_suffix += '.' + audio.ucm_suffix
   files = []
-  if audio.ucm_file:
-    files.append(
-        _file(audio.ucm_file,
-              '%s/%s/HiFi.conf' % (alsa_path, card_with_suffix)))
-  if audio.ucm_master_file:
-    files.append(
-        _file(audio.ucm_master_file, '%s/%s/%s.conf' %
+  ucm_suffix = None
+  for audio in config.sw_config.audio_configs:
+    card = audio.card_name
+    card_with_suffix = audio.card_name
+    if audio.ucm_suffix:
+      # TODO: last ucm_suffix wins.
+      ucm_suffix = audio.ucm_suffix
+      card_with_suffix += '.' + audio.ucm_suffix
+    if audio.ucm_file:
+      files.append(
+          _file(audio.ucm_file,
+                '%s/%s/HiFi.conf' % (alsa_path, card_with_suffix)))
+    if audio.ucm_master_file:
+      files.append(
+          _file(
+              audio.ucm_master_file, '%s/%s/%s.conf' %
               (alsa_path, card_with_suffix, card_with_suffix)))
-  if audio.card_config_file:
-    files.append(
-        _file(audio.card_config_file,
-              '%s/%s/%s' % (cras_path, project_name, card)))
-  if audio.dsp_file:
-    files.append(
-        _file(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
-  if audio.module_file:
-    files.append(
-        _file(audio.module_file, '/etc/modprobe.d/alsa-%s.conf' % program_name))
-  if audio.board_file:
-    files.append(
-        _file(audio.board_file, '%s/%s/board.ini' % (cras_path, project_name)))
-  if audio.hdmi_ucm_file:
-    files.append(
-        _file(audio.hdmi_ucm_file,
-              '%s/%s/HiFi.conf' % (alsa_path, audio.hdmi_name)))
-  if audio.hdmi_ucm_master_file:
-    files.append(
-        _file(audio.hdmi_ucm_master_file,
-              '%s/%s/%s.conf' % (alsa_path, audio.hdmi_name, audio.hdmi_name)))
+    if audio.card_config_file:
+      files.append(
+          _file(audio.card_config_file,
+                '%s/%s/%s' % (cras_path, project_name, card)))
+    if audio.dsp_file:
+      files.append(
+          _file(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
+    if audio.module_file:
+      files.append(
+          _file(audio.module_file,
+                '/etc/modprobe.d/alsa-%s.conf' % program_name))
+    if audio.board_file:
+      files.append(
+          _file(audio.board_file,
+                '%s/%s/board.ini' % (cras_path, project_name)))
 
   result = {
       'main': {
@@ -338,8 +336,9 @@ def _build_audio(config):
           'files': files,
       }
   }
-  if audio.ucm_suffix:
-    result['main']['ucm-suffix'] = audio.ucm_suffix
+
+  if ucm_suffix:
+    result['main']['ucm-suffix'] = ucm_suffix
 
   return result
 

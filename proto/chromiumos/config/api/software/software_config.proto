@@ -37,9 +37,9 @@ message SoftwareConfig {
 
   PowerConfig power_config = 5;
 
-  AudioConfig audio_config = 6;
+  repeated AudioConfig audio_configs = 10;
 
-  reserved 1, 2;
+  reserved 1, 2, 6;
 }
 
 message SoftwareConfigList {
