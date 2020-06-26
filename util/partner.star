@@ -29,6 +29,12 @@ def _create_display_partner(vendor_code):
     )
     return partner
 
+def _create_battery_partner(name):
+    partner = _create(name)
+    partner.battery_vendor = partner_pb.Partner.BatteryVendor(
+        vendor_name = name,
+    )
+
 def _create(name):
     """Builds a Partner proto."""
     partner_id = partner_id_pb.PartnerId(value = name)
@@ -146,6 +152,11 @@ partner = struct(
             name = "weida",
             vendor_id = "2575",
             fw_file_format = "wdt{product_series}_{product_id}.bin",
+        ),
+    ),
+    battery = struct(
+        PANASONIC = _create_battery_partner(
+            name = "PANASON",
         ),
     ),
 )

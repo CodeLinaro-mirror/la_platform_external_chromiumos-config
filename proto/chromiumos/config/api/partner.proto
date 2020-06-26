@@ -26,6 +26,9 @@ message Partner {
   // Optional config for display panel vendors.
   DisplayPanelVendor display_panel_vendor = 5;
 
+  // Optional config for battery vendors.
+  BatteryVendor battery_vendor = 6;
+
   // Defines partner config unique to touch manufacturers.
   message TouchVendor {
     // 4-digit hex vendor id assigned
@@ -52,6 +55,12 @@ message Partner {
   message DisplayPanelVendor {
     // Vendor code assigned (generally 3 char [A-Z])
     string vendor_code = 1;
+  }
+
+  // Defines partner config unique to battery manufacturers.
+  message BatteryVendor {
+    // Vendor name assigned (generally 16 char)
+    string vendor_name = 4;
   }
 }
 
