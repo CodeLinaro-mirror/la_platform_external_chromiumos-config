@@ -647,6 +647,7 @@ def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
   for hw_design in config.designs.value:
     for design_config in hw_design.configs:
       hw_features = design_config.hardware_features
+      any_camera = hw_features.camera.count.value > 0
       multi_camera = hw_features.camera.count == 2
       touchscreen = _any_present([hw_features.screen.touch_support])
       acc = hw_features.accelerometer
@@ -657,6 +658,8 @@ def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
       root.extend([
           _feature('android.hardware.camera', multi_camera),
           _feature('android.hardware.camera.autofocus', multi_camera),
+          _feature('android.hardware.camera.any', any_camera),
+          _feature('android.hardware.camera.front', any_camera),
           _feature(
               'android.hardware.sensor.accelerometer',
               _any_present([acc.lid_accelerometer, acc.base_accelerometer])),
