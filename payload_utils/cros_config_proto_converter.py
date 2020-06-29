@@ -207,6 +207,9 @@ def _build_fingerprint(hw_topology):
     result['sensor-location'] = location.lower().replace('_', '-')
     if fp.board:
       result['board'] = fp.board
+    if fp.ro_version:
+      result['ro-version'] = fp.ro_version
+
   return result
 
 

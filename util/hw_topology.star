@@ -379,6 +379,8 @@ def _create_fingerprint(id, description, location, board = None, fw_configs = []
     hw_features.fingerprint.location = location
     if board:
         hw_features.fingerprint.board = board
+        if board == "bloonchipper":
+            hw_features.fingerprint.ro_version = "bloonchipper_v2.0.4478-22ad3ce2"
 
     _accumulate_fw_configs(hw_features, fw_configs)
 

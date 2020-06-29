@@ -277,6 +277,8 @@ message HardwareFeatures {
     Location location = 1;
     // Fingerprint board used.
     string board = 2;
+    // Read-only (RO) firmware version to use (empty means use default).
+    string ro_version = 3;
 
     enum Location {
       LOCATION_UNKNOWN = 0;
