@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+"""Wrapper around bb invocation of the cl_factory recipe."""
+
+import argparse
+import re
+import subprocess
+import sys
+
+
+def Main(args):  # pylint: disable=invalid-name
+  """Wrapper around `bb add` invocation to invoke cl_factory.
+
+  Friendlier wrapper around the `bb add` command to aid invoking the cl_factory
+  recipe. A typical invocation would look like the following:
+
+  cl_factory \
+    --cl https://chrome-internal-review.googlesource.com/c/chromeos/program/galaxy/+/3095418 \
+    --regex src/program src/project \
+    --reviewers reviewer1@chromium.org reviewer2@google.com \
+    --hashtag mondo-update \
+    --message "Hello world
+
+BUG=chromium:1092954
+TEST=CQ"
+
+  Note that by default the command is only printed out but not ran. To run the
+  command and cause the invocation of the cl_factory recipe additionally pass:
+
+  --nodryrun
+
+  For more information on arguments, such as the variables available for
+  interpolation in the CL message, see:
+
+  http://cs/chromeos_public/infra/recipes/recipes/cl_factory.proto
+
+  Args:
+    args: Namespace object holding parsed args.
+  """
+  cmd = ['bb', 'add', '-cl']
+  cmd.extend(args.cl)
+
+  csv_func = lambda v: '"{}"'.format(v)
+
+  regexes = ', '.join(map(csv_func, args.regex))
+  cmd.extend(['-p', '\'repo_regexes=[{}]\''.format(regexes)])
+  cmd.extend(['-p', 'command=gen_config'])
+  cmd.extend(['-p', '\'message_template="{}"\''.format(args.message)])
+  reviewers = ', '.join(map(csv_func, args.reviewers))
+  cmd.extend(['-p', '\'reviewers=[{}]\''.format(reviewers)])
+  hashtags = ', '.join(map(csv_func, args.hashtag))
+  cmd.extend(['-p', '\'hashtags=[{}]\''.format(hashtags)])
+  cmd.append('chromeos/infra/ClFactory')
+
+  cmd = ' '.join(cmd)
+
+  print('Command:')
+  print(cmd)
+  print('\n')
+
+  if args.dryrun:
+    print('Dry run only. Command not executed. Pass:')
+    print('  --nodryrun')
+    print('to invoke the recipe.')
+  else:
+    print('Executing command.')
+    subprocess.run(cmd, shell=True, check=True)
+
+
+def validate_regex(value):
+  try:
+    re.compile(value)
+    return value
+  except:
+    raise argparse.ArgumentTypeError('Invalid regex "{}"'.format(value))
+
+
+def main():
+  """Main program which parses args and runs Main."""
+  parser = argparse.ArgumentParser(description=__doc__)
+  parser.add_argument(
+      '--cl',
+      nargs='+',
+      type=str,
+      required=True,
+      help='CL URL(s) input to patch into the projects.')
+  parser.add_argument(
+      '--regex',
+      nargs='+',
+      type=validate_regex,
+      required=True,
+      help='Operate on projects matching the regex or '
+      'wildcard. Usage as in `repo forall`.')
+  parser.add_argument(
+      '--message',
+      type=str,
+      required=True,
+      help='Message template for the generated CLs.')
+  parser.add_argument(
+      '--reviewers',
+      nargs='+',
+      type=str,
+      required=True,
+      help='Reviewers to add to the generated CLs.')
+  parser.add_argument(
+      '--hashtag',
+      nargs='+',
+      type=str,
+      help='Hashtags to add to the generated CLs.')
+  parser.add_argument(
+      '--nodryrun',
+      dest='dryrun',
+      default=True,
+      action='store_false')
+  args = parser.parse_args()
+  Main(args)
+
+
+if __name__ == '__main__':
+  sys.exit(main())
