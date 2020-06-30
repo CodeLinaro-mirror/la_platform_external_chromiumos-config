@@ -557,10 +557,7 @@ def _transform_build_config(config, config_files):
   _upsert(
       _build_fingerprint(config.hw_design_config.hardware_topology), result,
       'fingerprint')
-
-  # TODO(crbug.com/1093837): Enable _build_ui for real programs once ready.
-  if config.program.id.value == "FAKE_PROGRAM":
-    _upsert(_build_ui(config), result, 'ui')
+  _upsert(_build_ui(config), result, 'ui')
   power_prefs = config.sw_config.power_config.preferences
   power_prefs_map = dict(
       (x.replace('_', '-'), power_prefs[x]) for x in power_prefs)
