@@ -43,16 +43,11 @@ TEST=CQ"
   cmd = ['bb', 'add', '-cl']
   cmd.extend(args.cl)
 
-  csv_func = lambda v: '"{}"'.format(v)
-
-  regexes = ', '.join(map(csv_func, args.regex))
-  cmd.extend(['-p', '\'repo_regexes=[{}]\''.format(regexes)])
+  cmd.extend(csv_param('repo_regexes', args.regex))
   cmd.extend(['-p', 'command=gen_config'])
   cmd.extend(['-p', '\'message_template={}\''.format(args.message)])
-  reviewers = ', '.join(map(csv_func, args.reviewers))
-  cmd.extend(['-p', '\'reviewers=[{}]\''.format(reviewers)])
-  hashtags = ', '.join(map(csv_func, args.hashtag))
-  cmd.extend(['-p', '\'hashtags=[{}]\''.format(hashtags)])
+  cmd.extend(csv_param('reviewers', args.reviewers))
+  cmd.extend(csv_param('hashtags', args.hashtag))
   cmd.append('chromeos/infra/ClFactory')
 
   cmd = ' '.join(cmd)
@@ -68,6 +63,13 @@ TEST=CQ"
   else:
     print('Executing command.')
     subprocess.run(cmd, shell=True, check=True)
+
+
+def csv_param(name, values):
+  if not values:
+    return []
+  values = ', '.join(map(lambda v: '"{}"'.format(v), values))
+  return ['-p', '\'{}=[{}]\''.format(name, values)]
 
 
 def validate_regex(value):
