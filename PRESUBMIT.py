@@ -44,6 +44,9 @@ def CheckGenerated(input_api, output_api):
           gen_config_cmd="./bin/gen_config",
           failure_message=err_msg.format(config_file)))
 
+    # The generate.sh in this repo can create files. Make sure repo is clean.
+    results.extend(presubmits.CheckUntracked(input_api, output_api))
+
     return results
 
 

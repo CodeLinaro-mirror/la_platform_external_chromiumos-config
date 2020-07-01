@@ -120,3 +120,23 @@ def CheckGenConfig(input_api, output_api,
     results.append(output_api.PresubmitError(failure_message))
 
   return results
+
+
+def CheckUntracked(input_api, output_api):
+  """Looks for untracked files in the repo and fails if found.
+
+  Args:
+    input_api: InputApi, provides information about the change.
+    output_api: OutputApi, provides the mechanism for returning a response.
+
+  Returns:
+    list of PresubmitError, or empty list if no errors.
+  """
+  results = []
+  cmd = ['git', 'ls-files', '--others', '--exclude-standard']
+  out = input_api.subprocess.capture(cmd)
+  if out:
+    msg = 'Found untracked files:\n{}'.format(out)
+    results.append(output_api.PresubmitError(msg))
+
+  return results
