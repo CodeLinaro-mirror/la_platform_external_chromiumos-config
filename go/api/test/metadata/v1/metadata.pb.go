@@ -119,7 +119,7 @@ type RemoteTestDriver struct {
 	// where ${command} and ${input_json} are absolute paths inside the container.
 	//
 	// Remote Test Servers MUST populate `input_json` with a JSON encoded
-	// test.invocation.Request message.
+	// test.invocation.Invocation message.
 	Command string `protobuf:"bytes,3,opt,name=command,proto3" json:"command,omitempty"`
 	// Metadata for the smallest schedulable test units.
 	Tests                []*Test  `protobuf:"bytes,4,rep,name=tests,proto3" json:"tests,omitempty"`

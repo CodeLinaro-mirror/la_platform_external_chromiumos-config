@@ -76,7 +76,7 @@ message RemoteTestDriver {
   // where ${command} and ${input_json} are absolute paths inside the container.
   //
   // Remote Test Servers MUST populate `input_json` with a JSON encoded
-  // test.invocation.Request message.
+  // test.invocation.Invocation message.
   string command = 3;
 
   // Metadata for the smallest schedulable test units.
