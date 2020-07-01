@@ -48,7 +48,7 @@ TEST=CQ"
   regexes = ', '.join(map(csv_func, args.regex))
   cmd.extend(['-p', '\'repo_regexes=[{}]\''.format(regexes)])
   cmd.extend(['-p', 'command=gen_config'])
-  cmd.extend(['-p', '\'message_template="{}"\''.format(args.message)])
+  cmd.extend(['-p', '\'message_template={}\''.format(args.message)])
   reviewers = ', '.join(map(csv_func, args.reviewers))
   cmd.extend(['-p', '\'reviewers=[{}]\''.format(reviewers)])
   hashtags = ', '.join(map(csv_func, args.hashtag))
@@ -109,6 +109,7 @@ def main():
       '--hashtag',
       nargs='+',
       type=str,
+      default=[],
       help='Hashtags to add to the generated CLs.')
   parser.add_argument(
       '--nodryrun',
