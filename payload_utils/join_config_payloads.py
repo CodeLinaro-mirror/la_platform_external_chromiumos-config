@@ -325,6 +325,20 @@ def add_hwid_components(config_bundle, hwid_db):
         comp.camera.pci.device_id = values['device']
         comp.camera.pci.revision_id = values['revision_id']
 
+  def create_wireless_components(items):
+    for key, val in items.items():
+      values = val['values']
+      if values.get('status') == 'unsupported':
+        continue
+
+      comp = config_bundle.components.add()
+      comp.id.value = key
+      comp.name = key
+
+      comp.wifi.pci.vendor_id = values['vendor']
+      comp.wifi.pci.device_id = values['device']
+      comp.wifi.pci.revision_id = values['revision_id']
+
   components = hwid_db['components']
   for component_type, value in components.items():
     if value:
@@ -348,9 +362,7 @@ def add_hwid_components(config_bundle, hwid_db):
           'tpm': create_tpm_components,
           'usb_hosts': create_usb_host_components,
           'video': create_video_components,
-          # 'wireless': create_wireless_components
-
-          # XXX: needs to not use .get once all implemented
+          'wireless': create_wireless_components
       }.get(component_type, (lambda x: None))(
           value['items'])
 
