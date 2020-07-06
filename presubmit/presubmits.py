@@ -45,6 +45,39 @@ def CheckScript(input_api, output_api, script, msg=None):
   return results
 
 
+def CheckChecker(input_api, output_api,
+                 checker_cmd='./config/payload_utils/checker.py',
+                 program='./program/generated/config.jsonproto',
+                 project='./generated/config.jsonproto',
+                 factory_dir='./factory'):
+  """Runs the checker.py script as a presubmit check.
+
+  Runs the checker script as a presubmit check checking for successful
+  exit.
+
+  Args:
+    input_api: InputApi, provides information about the change.
+    output_api: OutputApi, provides the mechanism for returning a response.
+    program: str, path to the program config json proto.
+    project: str, path to the project config json proto.
+    factory_dir: str, path to the project factory config dir.
+
+  Returns:
+    list of PresubmitError, or empty list if no errors.
+  """
+  results = []
+
+  cmd = [checker_cmd]
+  cmd.extend(['--program', program])
+  cmd.extend(['--project', project])
+  cmd.extend(['--factory_dir', factory_dir])
+  if input_api.subprocess.call(cmd):
+    msg = 'Error: config checker checker.py failed. Please fix and try again.'
+    results.append(output_api.PresubmitError(msg))
+
+  return results
+
+
 def CheckGenerated(input_api, output_api):
   """Runs a generate.sh script as a presubmit check.
 
