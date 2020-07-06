@@ -304,7 +304,7 @@ For anything where gerrit cannot accept multiple CLs, a shell loop
 can be used, for example the reviewers command:
 
 ```
-for cl in `gerrit --raw search "owner:me status:open hashtag:fixit"`; do
-  gerrit -i reviewers $cl reviewer1@google.com reviewer2@google.com
+for cl in `gerrit -i --raw search "owner:me status:open hashtag:fixit"`; do
+  gerrit reviewers $cl reviewer1@google.com reviewer2@google.com
 done
 ```
