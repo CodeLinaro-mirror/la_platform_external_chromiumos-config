@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "chromiumos/config/api/test/rtd/v1/progress.proto";
+import "chromiumos/config/api/test/results/v2/result.proto";
 
 package chromiumos.config.api.test.tnull.v1;
 
@@ -18,7 +19,7 @@ message Steps {
 message SetupStep {
   reserved 1;
   chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig config = 2;
-  chromiumos.config.api.test.rtd.v1.Result result = 3;
+  chromiumos.config.api.test.results.v2.Result result = 3;
   repeated MockLog logs = 4;
   repeated MockArtifact artifacts = 5;
 }
