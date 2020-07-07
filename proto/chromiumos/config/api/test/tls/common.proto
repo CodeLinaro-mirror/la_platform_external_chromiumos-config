@@ -8,6 +8,8 @@ package chromiumos.config.api.test.tls;
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/test/tls";
 
+import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
+
 // Common lab services implemented on top of the wiring APIs.
 //
 // The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
@@ -43,6 +45,15 @@ service Common {
   // stop the command by sending SIGINT, SIGHUP, SIGTERM, or SIGKILL.
   rpc ExecDutCommand(ExecDutCommandRequest)
       returns (stream ExecDutCommandResponse);
+
+  // Provision installs a specified version of Chrome OS on the DUT, along with
+  // any specified DLCs.
+  rpc Provision(ProvisionRequest) returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
+      response_type: "ProvisionResponse",
+      metadata_type: "ProvisionMetadata"
+    };
+  }
 }
 
 message ExecDutCommandRequest {
@@ -119,4 +130,58 @@ enum Output {
   // OUTPUT_STDOUT is a special value for stderr which means to merge stderr
   // into stdout.
   OUTPUT_STDOUT = 1;
+}
+
+message ProvisionRequest {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+
+  message ChromeOSImage {
+    oneof path_oneof {
+      // gs_path_prefix is the GS path to where kernel, rootfs, and stateful
+      // images are located. If DLCs are to be provisioned, it must be a GS path
+      // that also has the dlc directory.
+      // For example:
+      // - gs://chromeos-releases/canary-channel/eve/13380.0.0
+      // - gs://chromeos-image-archive/eve-release/R86-13380.0.0
+      string gs_path_prefix = 1;
+    }
+  }
+  // image specifies the Chrome OS image with which to provision the DUT.
+  ChromeOSImage image = 2;
+
+  // Reference DLCs developer documentation:
+  // https://source.corp.google.com/chromeos_public/src/platform2/dlcservice/docs/developer.md
+  message DLCSpec {
+    // id is the DLC ID which is a unique identifier.
+    // The DLC ID must follow a specific format that can be found in the DLC
+    // developer doc below.
+    string id = 1;
+  }
+  // dlc_specs specifies which DLCs to install on the DUT after provisioning.
+  repeated DLCSpec dlc_specs = 3;
+}
+
+message ProvisionResponse {
+  // When the status code is other than OK, details in Status message should be
+  // parsed for ErrorInfo message with the following Reasons as the reason.
+  enum Reason {
+    // status code: INVALID_ARGUMENT
+    REASON_INVALID_REQUEST = 0;
+    // status code: FAILED_PRECONDITION
+    REASON_DUT_UNREACHABLE_PRE_PROVISION = 1;
+    // status code: FAILED_PRECONDITION
+    REASON_DOWNLOADING_IMAGE_FAILED = 2;
+    // status code: DEADLINE_EXCEEDED
+    REASON_PROVISIONING_TIMEDOUT = 3;
+    // status code: ABORTED
+    REASON_PROVISIONING_VERFIFICATION_FAILED = 4;
+    // status code: ABORTED
+    REASON_DUT_UNREACHABLE_POST_PROVISION = 5;
+  }
+}
+
+message ProvisionMetadata {
 }
