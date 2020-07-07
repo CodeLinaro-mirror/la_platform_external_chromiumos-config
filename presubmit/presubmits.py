@@ -170,6 +170,6 @@ def CheckUntracked(input_api, output_api):
   out = input_api.subprocess.capture(cmd)
   if out:
     msg = 'Found untracked files:\n{}'.format(out)
-    results.append(output_api.PresubmitError(msg))
+    results.append(output_api.PresubmitPromptWarning(msg))
 
   return results
