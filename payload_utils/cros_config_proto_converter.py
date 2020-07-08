@@ -647,7 +647,7 @@ def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
     for design_config in hw_design.configs:
       hw_features = design_config.hardware_features
       any_camera = hw_features.camera.count.value > 0
-      multi_camera = hw_features.camera.count == 2
+      multi_camera = hw_features.camera.count.value > 1
       touchscreen = _any_present([hw_features.screen.touch_support])
       acc = hw_features.accelerometer
       gyro = hw_features.gyroscope
