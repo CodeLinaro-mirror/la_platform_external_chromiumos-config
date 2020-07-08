@@ -153,7 +153,7 @@ def _bool_to_present(value):
 def _create_screen(
         id = "SCREEN",
         description = "Default screen",
-        inches = None,
+        inches = 0,
         width_px = None,
         height_px = None,
         pixels_per_in = None,
