@@ -38,8 +38,8 @@ if ! config/generate.sh; then
   exit 1
 fi
 
-echo "Formatting .star files with buildifier..."
-find "${config_dir}" -name "*.star" -exec buildifier {} \;
+echo "Formatting .star files with lucicfg fmt..."
+lucicfg fmt
 
 lucicfg generate "${config_file}"
 
