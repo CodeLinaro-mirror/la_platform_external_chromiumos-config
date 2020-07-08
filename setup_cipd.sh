@@ -32,10 +32,4 @@ infra/tools/protoc/\${platform} protobuf_version:${CIPD_PROTOC_VERSION}
 chromiumos/infra/tools/protoc-gen-go version:${CIPD_PROTOC_GEN_GO_VERSION}
 infra/3pp/tools/go/\${platform} latest
 ENSURE_FILE
-PATH="${CIPD_ROOT}:${PATH}"
-PATH="${CIPD_ROOT}/bin:${PATH}"
-
-# Install buildifier (Starlark formatter) and add to PATH.
-GOROOT="${CIPD_ROOT}"
-go get github.com/bazelbuild/buildtools/buildifier
-PATH="$(go env GOPATH)/bin:${PATH}"
+PATH="${CIPD_ROOT}/bin:${CIPD_ROOT}:${PATH}"
