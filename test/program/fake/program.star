@@ -2,7 +2,6 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-load("//config/util/bindings/proto.star", "protos")
 load("//config/util/component.star", "comp")
 load("//config/util/design.star", "design")
 load("//config/util/hw_topology.star", "hw_topo")
