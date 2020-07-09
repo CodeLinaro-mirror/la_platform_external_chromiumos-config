@@ -633,10 +633,10 @@
           "disable-dark-resume": "0"
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/project-c/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
+              "destination": "/etc/dptf/fake/project-c/dptf.dv",
               "source": "fake/sw_build_config/platform/chromeos-config/thermal/project-c/dptf.dv"
             }
           ]

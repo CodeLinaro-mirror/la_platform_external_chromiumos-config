@@ -812,19 +812,19 @@ def _dptf_map(configs, project_name):
     map from design name or empty string (project wide), to dptf config.
   """
   result = {}
-  project_dptf_path = os.path.join(project_name, 'dptf.dv')
   # Looking at top level for project wide, and then for each design name
   # for design specific.
   dirs = [""] + [d.name for d in configs.designs.value]
   for directory in dirs:
-    if os.path.exists(os.path.join(DPTF_PATH, directory.lower(), DPTF_FILE)):
+    design = directory.lower()
+    if os.path.exists(os.path.join(DPTF_PATH, design, DPTF_FILE)):
+      project_dptf_path = os.path.join(project_name, design, 'dptf.dv')
       dptf_file = {
           'dptf-dv':
               project_dptf_path,
           'files': [
               _file(
-                  os.path.join(project_name, DPTF_PATH, directory.lower(),
-                               DPTF_FILE),
+                  os.path.join(project_name, DPTF_PATH, design, DPTF_FILE),
                   os.path.join('/etc/dptf', project_dptf_path))
           ]
       }
