@@ -40,8 +40,10 @@ TEST=CQ"
   Args:
     args: Namespace object holding parsed args.
   """
-  cmd = ['bb', 'add', '-cl']
-  cmd.extend(args.cl)
+  cmd = ['bb', 'add']
+
+  for cl in args.cl:
+      cmd.extend(['-cl', cl])
 
   cmd.extend(csv_param('repo_regexes', args.regex))
   cmd.extend(['-p', 'command=gen_config'])
