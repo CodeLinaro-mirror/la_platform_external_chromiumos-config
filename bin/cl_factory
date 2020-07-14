@@ -21,7 +21,8 @@ def Main(args):  # pylint: disable=invalid-name
     --cl https://chrome-internal-review.googlesource.com/c/chromeos/program/galaxy/+/3095418 \
     --regex src/program src/project \
     --reviewers reviewer1@chromium.org reviewer2@google.com \
-    --hashtag mondo-update \
+    --ccs cc1@google.com \
+    --hashtag regen-audio-configs \
     --message "Hello world
 
 BUG=chromium:1092954
@@ -31,6 +32,11 @@ TEST=CQ"
   command and cause the invocation of the cl_factory recipe additionally pass:
 
   --nodryrun
+
+  Also note that you likely to want to provide a "hashtag". This will allow
+  gerrit cli commands to accurately target the generated CLs for batch review,
+  verify, and commit. These commands are output in the "summarize results" step
+  of the ClFactory recipe.
 
   For more information on arguments, such as the variables available for
   interpolation in the CL message, see:
@@ -49,6 +55,7 @@ TEST=CQ"
   cmd.extend(['-p', 'command=gen_config'])
   cmd.extend(['-p', '\'message_template={}\''.format(args.message)])
   cmd.extend(csv_param('reviewers', args.reviewers))
+  cmd.extend(csv_param('ccs', args.ccs))
   cmd.extend(csv_param('hashtags', args.hashtag))
   cmd.append('chromeos/infra/ClFactory')
 
@@ -109,6 +116,12 @@ def main():
       type=str,
       required=True,
       help='Reviewers to add to the generated CLs.')
+  parser.add_argument(
+      '--ccs',
+      nargs='+',
+      type=str,
+      required=False,
+      help='CCs to add to the generated CLs.')
   parser.add_argument(
       '--hashtag',
       nargs='+',
