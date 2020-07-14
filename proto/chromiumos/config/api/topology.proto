@@ -11,7 +11,7 @@ import "chromiumos/config/api/component.proto";
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
 // Represents a specific hardware topology option for a hardware feature, e.g.
-// camera, microphone, gyroscope, daughter board connection. For ecample. one
+// camera, microphone, gyroscope, daughter board connection. For example. one
 // camera topology would be represented by a unique instance of this Topology
 // message.
 //
@@ -21,7 +21,7 @@ message Topology {
   // not valid. Id values are validated by Design repo. Ids are
   // meaningful within a Design. Ids are scoped and unique within a
   // particular hardware features for a Design. For example, it is valid to have
-  // a "NONE" id for both the camera and micropohne hardware feature within the
+  // a "NONE" id for both the camera and microphone hardware feature within the
   // same Design.
   string id = 1;
 
@@ -76,6 +76,7 @@ message Topology {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
+// NEXT TAG: 24
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -156,7 +157,7 @@ message HardwareFeatures {
     // If front camera on A panel is present
     Present a_panel_camera = 1;
 
-    // If user facing camer on B panel is present
+    // If user facing camera on B panel is present
     Present b_panel_camera = 2;
 
     // Number of camera present on system
@@ -314,10 +315,20 @@ message HardwareFeatures {
   }
 
   // Wifi properties
+  // NEXT TAG: 3
   message Wifi {
+    enum WifiChip {
+      WIFI_CHIP_UNKNOWN = 0;
+      WIRELESS_86ED801D = 1;
+      WIRELESS_REALTEK = 2;
+    }
+
     // WLAN protocols supported by the Wifi chipset(s).
     repeated Component.Wifi.WLANProtocol supported_wlan_protocols = 1;
+
+    repeated WifiChip wifi_chips = 2;
   }
+  Wifi wifi = 23;
 
   message Button {
     // A general part of the device that contains the button,
