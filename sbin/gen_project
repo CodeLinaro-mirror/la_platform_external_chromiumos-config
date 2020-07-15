@@ -20,15 +20,25 @@ function usage() {
   exit 1
 }
 
-function make_symlink() {
+function _make_symlink() {
   local target="${1}"
   local name="${2}"
+  # Shift target and name off, remaining arguments used as ln options.
+  shift 2
   if [[ -e "${name}" ]]; then
     echo "${name} already exists, skipping symlinking."
   else
     echo "Symlinking ${target} to ${name}."
-    ln -sr "${target}" "${name}"
+    ln "${@}" "${target}" "${name}"
   fi
+}
+
+function make_relative_symlink() {
+  _make_symlink "${1}" "${2}" -sr
+}
+
+function make_symlink() {
+  _make_symlink "${1}" "${2}" -s
 }
 
 function write_project_config() {
@@ -189,7 +199,7 @@ project_dir="$(realpath -e "${5}")"
 # Move to the project directory.
 cd "${project_dir}"
 
-make_symlink "${config_dir}" config
+make_relative_symlink "${config_dir}" config
 make_symlink config/presubmit/_PRESUBMIT.cfg PRESUBMIT.cfg
 make_symlink config/presubmit/_PRESUBMIT.py PRESUBMIT.py
 
@@ -201,8 +211,8 @@ else
   chmod 750 config.star
 fi
 
-make_symlink "${program_dir}" program
-make_symlink "${config_dir}" program/config
+make_relative_symlink "${program_dir}" program
+make_relative_symlink "${config_dir}" program/config
 
 if [[ -e program/config.star ]]; then
   echo "Program config.star already existing, skipping."
