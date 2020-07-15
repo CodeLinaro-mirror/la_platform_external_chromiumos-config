@@ -270,10 +270,71 @@ all programs and projects via symlink.
 ## Making Bulk Changes Across Repos
 
 Program and project config are spread across repos, so changes and refactors
-often span multiple repos. Familiarity with `repo forall` and the
+often span multiple repos. A very common pattern occurs when a change in a
+program repo causes changes in that program's project repos when running
+`gen_config` for the projects. Tooling is available to make such changes more
+automated and less tedious than handcrafting individual CLs. Specifically, using
+the ClFactory tool and familiarity with `repo forall` and the
 `chromite/bin/gerrit` tools is helpful for these changes.
 
-For example, `repo forall` can be used to make many commits across repos:
+### ClFactory
+
+[ClFactory](https://chromium.googlesource.com/chromiumos/infra/recipes/+/HEAD/recipes/cl_factory.py)
+is a builder that can generate CLs that are the fallout from changes
+via other CLs. ClFactory was written to address the pattern mentioned above
+where a change at the chromiumos/config or chromeos/program/$PROGRAM level
+results in changes in a high number of dependent repos. In order to remain
+consistent and pass CQ these typically must be submitted together. Generating
+these changes locally, setting commit messages, wiring up Cq-Depends, and
+sending out for review can be tedious, error prone, and time consuming.
+ClFactory is intended to make such CLs for you.
+
+With ClFactory you write your input CLs as normal. Then, to generate the
+dependent CLs that that result from the changes, you invoke a builder that
+takes care of the rest. It will checkout the source, apply your input CLs,
+run `gen_config` in the dependent projects, create the CLs, add reviewers,
+etc..
+
+A wrapper script,
+[cl_factory](https://chromium.googlesource.com/chromiumos/config/+/HEAD/bin/cl_factory),
+that lives in the bin directory of this repo, has been provided to simplify
+invoking ClFactory. The arguments are a bit involved, but the wrapper makes it
+much simpler than crafting a `bb add` command directly, which is the command
+that the wrapper delegates to. A typical invocation of ClFactory would look
+something like this:
+
+```
+./bin/cl_factory \
+  --cl https://chrome-internal-review.googlesource.com/c/chromeos/program/galaxy/+/3095418 \
+  --regex src/program src/project \
+  --reviewers reviewer1@chromium.org reviewer2@google.com \
+  --ccs author@google.com \
+  --hashtag regen-audio-configs \
+  --message "Regenerate audio configs per changes at program level.
+
+BUG=chromium:1092954
+TEST=CQ"
+```
+
+This would take CL 3095418 as input and run `gen_config` in the projects that
+match per the regex arguments. The resultant CLs would have reviewers, CCs, and
+other attributes set as indicated. When the builder is launched `cl_factory`
+will output a link to the milo page for that build. A link to this same build
+will also appear in the commit message of the generated CLs. From that milo
+build page you can follow the progress of generating the dependant CLs. The milo
+page also provides some valuable information in the step output. In particular,
+the "summarize results" step contains two pieces of information that will be of
+interest to the CL author and the reviewers. The first piece is the "unified
+diff" output. This will allow authors and reviewers to see what the entirety of
+all the changes are without having to open each individual generated CL. The
+second piece is the "gerrit commands." This output lists commands that can be
+used to label verified, label reviewed, and label for commit queue in bulk from
+the command line. This allows users to do this quickly as opposed to tediously
+navigating the gerrit pages of the generated CLs.
+
+### `repo forall` and `chromite/bin/gerrit` tooling
+
+`repo forall` can be used to make many commits across repos:
 
 ```
 # Begin branch in all projects.
