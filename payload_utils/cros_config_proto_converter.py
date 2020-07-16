@@ -272,11 +272,15 @@ def _build_firmware(config):
 def _build_fw_signing(config):
   if config.sw_config.firmware and config.device_signer_config:
     hw_design = config.hw_design.name.lower()
+    brand_scan_config = config.brand_config.scan_config
+    if brand_scan_config and brand_scan_config.whitelabel_tag:
+      signature_id = '%s-%s' % (hw_design, brand_scan_config.whitelabel_tag)
+    else:
+      signature_id = hw_design
+
     return {
         'key-id': config.device_signer_config.key_id,
-        # TODO(shapiroc): Need to fix for whitelabel.
-        # Whitelabel will collide on unique signature-id values.
-        'signature-id': hw_design,
+        'signature-id': signature_id,
     }
   return {}
 
