@@ -290,10 +290,9 @@ sending out for review can be tedious, error prone, and time consuming.
 ClFactory is intended to make such CLs for you.
 
 With ClFactory you write your input CLs as normal. Then, to generate the
-dependent CLs that that result from the changes, you invoke a builder that
-takes care of the rest. It will checkout the source, apply your input CLs,
-run `gen_config` in the dependent projects, create the CLs, add reviewers,
-etc..
+dependent CLs that result from the changes, you invoke a builder that takes care
+of the rest. It will checkout the source, apply your input CLs, run `gen_config`
+in the dependent projects, create the CLs, add reviewers, etc..
 
 A wrapper script,
 [cl_factory](https://chromium.googlesource.com/chromiumos/config/+/HEAD/bin/cl_factory),
