@@ -35,6 +35,8 @@ _AUDIO_CODEC = struct(
     MAX98357 = topo_pb.HardwareFeatures.Audio.MAX98357,
     MAX98373 = topo_pb.HardwareFeatures.Audio.MAX98373,
     MAX98360 = topo_pb.HardwareFeatures.Audio.MAX98360,
+    RT1015 = topo_pb.HardwareFeatures.Audio.RT1015,
+    DA7219 = topo_pb.HardwareFeatures.Audio.DA7219,
 )
 
 _MEMORY = struct(
