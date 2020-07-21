@@ -75,7 +75,10 @@ message Component {
     }
 
     Family family = 1;
-    // Unique model name returned from cpu_id instruction
+    // Unique model name reported by the SoC and detected
+    // through probing.
+    // For ARM/x86 specific probing logic, see:
+    // platform/factory/py/probe/functions/generic_cpu.py
     string model = 2;
     // Number of cores present on the SoC model
     int32 cores = 3;

@@ -763,7 +763,10 @@ func (m *Component_Interface_Pci) GetRevisionId() string {
 
 type Component_Soc struct {
 	Family *Component_Soc_Family `protobuf:"bytes,1,opt,name=family,proto3" json:"family,omitempty"`
-	// Unique model name returned from cpu_id instruction
+	// Unique model name reported by the SoC and detected
+	// through probing.
+	// For ARM/x86 specific probing logic, see:
+	// platform/factory/py/probe/functions/generic_cpu.py
 	Model string `protobuf:"bytes,2,opt,name=model,proto3" json:"model,omitempty"`
 	// Number of cores present on the SoC model
 	Cores                int32    `protobuf:"varint,3,opt,name=cores,proto3" json:"cores,omitempty"`
