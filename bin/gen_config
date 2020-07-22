@@ -12,6 +12,16 @@
 # Exit if any command fails.
 set -e
 
+trap "summarize" EXIT
+
+function summarize() {
+  if [[ $? -eq 0 ]]; then
+    echo "Config generation complete."
+  else
+    echo "Config generation failed!!!" >&2
+  fi
+}
+
 function usage() {
   echo "Usage: $0 <config_file>" >&2
   echo "  where <config_file> is a program's or project's main" >&2
@@ -34,7 +44,7 @@ readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
 cd "${config_dir}"
 
 if ! config/generate.sh; then
-  echo 'blew up generating proto descriptors'
+  echo "blew up generating proto descriptors" >&2
   exit 1
 fi
 
