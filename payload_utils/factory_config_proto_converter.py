@@ -16,6 +16,8 @@ from chromiumos.config.api import topology_pb2
 
 from google.protobuf import json_format
 
+_DESGIN_CONFIG_ID_RE = re.compile(r'^(\S+):(\d+)$')
+
 
 def ParseArgs(argv):
   """Parse the available arguments.
@@ -209,32 +211,31 @@ def TransformDesignTable(design_config, design_table):
   })
 
 
-def CreateCommonTable(project_table):
-  """Extract elements which are the same among an project."""
-  if not project_table:
+def CreateCommonTable(design_table):
+  """Extract elements which are the same among a design."""
+  if not design_table:
     return {}
-  project_table_list = list(project_table.values())
-  common_table = dict(project_table_list[0])
-  for config in project_table_list[1:]:
+  design_table_list = list(design_table.values())
+  common_table = dict(design_table_list[0])
+  for config in design_table_list[1:]:
     for key, value in config.items():
       if key in common_table and value != common_table[key]:
         del common_table[key]
-  for config in project_table.values():
+  for config in design_table.values():
     for key in common_table:
       del config[key]
   return common_table
 
 
-def ParseProjectSKU(value):
-  project_key_re = re.compile(r'^(\S+):(\d+)$')
-  match = project_key_re.match(value)
+def ParseDesignConfigId(value):
+  match = _DESGIN_CONFIG_ID_RE.match(value)
   if not match:
     return (None, None)
   return (match.group(1), int(match.group(2)))
 
 
 def GetFactoryConfigs(config):
-  """Writes factory conf files for every unique (project, design id).
+  """Writes factory conf files for every design config id.
 
   Args:
     config: Source ConfigBundle to process.
@@ -242,28 +243,28 @@ def GetFactoryConfigs(config):
     dict that maps the design id onto the factory test config.
   """
   product_sku = {}
-  # Enumerate projects.
+  # Enumerate designs.
   for hw_design in config.design_list:
-    project_name = hw_design.id.value
-    project_table = product_sku.setdefault(project_name, {})
-    # Enumerate design id (sku id).
+    design_name = hw_design.id.value
+    design_table = product_sku.setdefault(design_name, {})
+    # Enumerate design config id (sku id).
     for design_config in hw_design.configs:
-      second_project_name, sku_id = ParseProjectSKU(design_config.id.value)
-      if project_name != second_project_name:
+      second_design_name, sku_id = ParseDesignConfigId(design_config.id.value)
+      if design_name != second_design_name:
         continue
-      design_table = project_table.setdefault(sku_id, {})
-      TransformDesignTable(design_config, design_table)
-  # Enumerate (project, sku id).
+      design_config_table = design_table.setdefault(sku_id, {})
+      TransformDesignTable(design_config, design_config_table)
+  # Enumerate (design, sku id).
   for sw_design in config.software_configs:
-    project_name, sku_id = ParseProjectSKU(sw_design.design_config_id.value)
-    if project_name is None:
+    design_name, sku_id = ParseDesignConfigId(sw_design.design_config_id.value)
+    if design_name is None:
       continue
-    project_table = product_sku.setdefault(project_name, {})
-    design_table = project_table.setdefault(sku_id, {})
+    design_table = product_sku.setdefault(design_name, {})
+    design_config_table = design_table.setdefault(sku_id, {})
     audio_card_name = ''
     if sw_design.audio_configs:
       audio_card_name = sw_design.audio_configs[0].card_name
-    design_table.update({'component.audio_card_name': audio_card_name})
+    design_config_table.update({'component.audio_card_name': audio_card_name})
   # Create map from design id to product_name. Designs from different projects
   # may map to the same product_name. The sets of sku id should not intersect.
   product_names = {
@@ -275,10 +276,10 @@ def GetFactoryConfigs(config):
   # Create common table.
   model = {}
   new_product_sku = {}
-  for project_name, project_table in product_sku.items():
-    model[project_name.lower()] = CreateCommonTable(project_table)
-    for sku_id, content in project_table.items():
-      product_name = product_names['%s:%d' % (project_name, sku_id)]
+  for design_name, design_table in product_sku.items():
+    model[design_name.lower()] = CreateCommonTable(design_table)
+    for sku_id, content in design_table.items():
+      product_name = product_names['%s:%d' % (design_name, sku_id)]
       product_name_table = new_product_sku.setdefault(product_name, {})
       if sku_id in product_name_table:
         print(
