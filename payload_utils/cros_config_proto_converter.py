@@ -437,10 +437,8 @@ def _build_touch_file_config(config, project_name):
 
       files.append({
           "destination": os.path.join("/opt/google/touch/firmware", dest),
-          "source":
-              os.path.join(project_name, fw_file_path),
-          "symlink":
-              os.path.join("/lib/firmware", sym_link),
+          "source": os.path.join(project_name, fw_file_path),
+          "symlink": os.path.join("/lib/firmware", sym_link),
       })
 
   result = {}

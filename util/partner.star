@@ -15,10 +15,10 @@ load(
 )
 
 def _create_touch_partner(
-    name,
-    vendor_id,
-    symlink_file_format,
-    destination_file_format=None):
+        name,
+        vendor_id,
+        symlink_file_format,
+        destination_file_format = "{product_id}_{fw_version}.bin"):
     partner = _create(name)
     partner.touch_vendor = partner_pb.Partner.TouchVendor(
         vendor_id = vendor_id,
@@ -107,7 +107,6 @@ partner = struct(
             name = "goodix",
             vendor_id = "27C6",
             symlink_file_format = "goodix_firmware_{product_id}.bin",
-            destination_file_format = "{product_id}.{fw_version}.bin",
         ),
         G2TOUCH = _create_touch_partner(
             name = "g2touch",
