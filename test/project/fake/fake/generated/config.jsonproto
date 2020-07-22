@@ -2528,7 +2528,7 @@
         },
         "name": "elants",
         "touchVendor": {
-          "fwFileFormat": "elants_i2c_{product_id}.bin",
+          "symlinkFileFormat": "elants_i2c_{product_id}.bin",
           "vendorId": "04F3"
         }
       },
@@ -2538,7 +2538,7 @@
         },
         "name": "sis",
         "touchVendor": {
-          "fwFileFormat": "sis_{product_id}.bin",
+          "symlinkFileFormat": "sis_{product_id}.bin",
           "vendorId": "0457"
         }
       },
@@ -2548,7 +2548,7 @@
         },
         "name": "elan",
         "touchVendor": {
-          "fwFileFormat": "elan_i2c_{product_id}.bin",
+          "symlinkFileFormat": "elan_i2c_{product_id}.bin",
           "vendorId": "04F3"
         }
       },
@@ -2558,7 +2558,7 @@
         },
         "name": "synaptics",
         "touchVendor": {
-          "fwFileFormat": "hid-{vendor_id}_{product_id}",
+          "symlinkFileFormat": "hid-{vendor_id}_{product_id}",
           "vendorId": "06CB"
         }
       }

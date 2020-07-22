@@ -411,14 +411,6 @@ def _build_touch_file_config(config, project_name):
       product_id = touch.product_id
       fw_version = touch.fw_version
 
-      touch_vendor = vendor.touch_vendor
-      sym_link = touch_vendor.fw_file_format.format(
-          vendor_name=vendor.name,
-          vendor_id=touch_vendor.vendor_id,
-          product_id=product_id,
-          fw_version=fw_version,
-          product_series=touch.product_series)
-
       file_name = "%s_%s.bin" % (product_id, fw_version)
       fw_file_path = os.path.join(TOUCH_PATH, vendor.name, file_name)
 
@@ -426,9 +418,25 @@ def _build_touch_file_config(config, project_name):
         raise Exception("Touchscreen fw bin file doesn't exist at: %s" %
                         fw_file_path)
 
+      touch_vendor = vendor.touch_vendor
+      sym_link = touch_vendor.symlink_file_format.format(
+          vendor_name=vendor.name,
+          vendor_id=touch_vendor.vendor_id,
+          product_id=product_id,
+          fw_version=fw_version,
+          product_series=touch.product_series)
+
+      dest = "%s_%s" % (vendor.name, file_name)
+      if touch_vendor.destination_file_format:
+        dest = touch_vendor.destination_file_format.format(
+            vendor_name=vendor.name,
+            vendor_id=touch_vendor.vendor_id,
+            product_id=product_id,
+            fw_version=fw_version,
+            product_series=touch.product_series)
+
       files.append({
-          "destination":
-              "/opt/google/touch/firmware/%s_%s" % (vendor.name, file_name),
+          "destination": os.path.join("/opt/google/touch/firmware", dest),
           "source":
               os.path.join(project_name, fw_file_path),
           "symlink":

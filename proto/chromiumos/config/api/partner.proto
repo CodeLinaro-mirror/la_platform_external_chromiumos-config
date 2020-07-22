@@ -48,7 +48,11 @@ message Partner {
     // "{vendor_name}_{product_id}.bin"
     // "{vendor_name}_{vendor_id}_{product_id}_{fw_version}.bin"
     // "{vendor_name}_{product_series}_{product_id}.hex"
-    string fw_file_format = 5;
+    string symlink_file_format = 5;
+    // Same formatting as symlink_file_format, except this controls
+    // the actual destination file that will be written to
+    // /opt/google/touch/firmware, which the symlink references.
+    string destination_file_format = 6;
   }
 
   // Defines partner config unique to display panel manufacturers.
