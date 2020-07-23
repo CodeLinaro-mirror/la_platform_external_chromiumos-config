@@ -27,7 +27,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.payload',
   syntax='proto3',
   serialized_options=_b('Z,go.chromium.org/chromiumos/config/go/payload'),
-  serialized_pb=_b('\n+chromiumos/config/payload/flat_config.proto\x12\x19\x63hromiumos.config.payload\x1a%chromiumos/config/api/component.proto\x1a\"chromiumos/config/api/design.proto\x1a(chromiumos/config/api/device_brand.proto\x1a#chromiumos/config/api/partner.proto\x1a#chromiumos/config/api/program.proto\x1a\x31\x63hromiumos/config/api/software/brand_config.proto\x1a\x31\x63hromiumos/config/api/software/build_target.proto\x1a\x34\x63hromiumos/config/api/software/software_config.proto\"\xcd\x04\n\nFlatConfig\x12/\n\x07program\x18\x01 \x01(\x0b\x32\x1e.chromiumos.config.api.Program\x12<\n\x12program_components\x18\x02 \x03(\x0b\x32 .chromiumos.config.api.Component\x12\x30\n\thw_design\x18\x03 \x01(\x0b\x32\x1d.chromiumos.config.api.Design\x12+\n\x03odm\x18\x04 \x01(\x0b\x32\x1e.chromiumos.config.api.Partner\x12>\n\x10hw_design_config\x18\x05 \x01(\x0b\x32$.chromiumos.config.api.Design.Config\x12\x38\n\x0c\x64\x65vice_brand\x18\x06 \x01(\x0b\x32\".chromiumos.config.api.DeviceBrand\x12+\n\x03oem\x18\x07 \x01(\x0b\x32\x1e.chromiumos.config.api.Partner\x12\x41\n\x0c\x62uild_target\x18\x08 \x01(\x0b\x32+.chromiumos.config.api.software.BuildTarget\x12\x41\n\tsw_config\x18\t \x01(\x0b\x32..chromiumos.config.api.software.SoftwareConfig\x12\x44\n\x0f\x62rand_sw_config\x18\n \x01(\x0b\x32+.chromiumos.config.api.software.BrandConfigB.Z,go.chromium.org/chromiumos/config/go/payloadb\x06proto3')
+  serialized_pb=_b('\n+chromiumos/config/payload/flat_config.proto\x12\x19\x63hromiumos.config.payload\x1a%chromiumos/config/api/component.proto\x1a\"chromiumos/config/api/design.proto\x1a(chromiumos/config/api/device_brand.proto\x1a#chromiumos/config/api/partner.proto\x1a#chromiumos/config/api/program.proto\x1a\x31\x63hromiumos/config/api/software/brand_config.proto\x1a\x31\x63hromiumos/config/api/software/build_target.proto\x1a\x34\x63hromiumos/config/api/software/software_config.proto\"\xcd\x04\n\nFlatConfig\x12/\n\x07program\x18\x01 \x01(\x0b\x32\x1e.chromiumos.config.api.Program\x12<\n\x12program_components\x18\x02 \x03(\x0b\x32 .chromiumos.config.api.Component\x12\x30\n\thw_design\x18\x03 \x01(\x0b\x32\x1d.chromiumos.config.api.Design\x12+\n\x03odm\x18\x04 \x01(\x0b\x32\x1e.chromiumos.config.api.Partner\x12>\n\x10hw_design_config\x18\x05 \x01(\x0b\x32$.chromiumos.config.api.Design.Config\x12\x38\n\x0c\x64\x65vice_brand\x18\x06 \x01(\x0b\x32\".chromiumos.config.api.DeviceBrand\x12+\n\x03oem\x18\x07 \x01(\x0b\x32\x1e.chromiumos.config.api.Partner\x12\x41\n\x0c\x62uild_target\x18\x08 \x01(\x0b\x32+.chromiumos.config.api.software.BuildTarget\x12\x41\n\tsw_config\x18\t \x01(\x0b\x32..chromiumos.config.api.software.SoftwareConfig\x12\x44\n\x0f\x62rand_sw_config\x18\n \x01(\x0b\x32+.chromiumos.config.api.software.BrandConfig\"G\n\x0e\x46latConfigList\x12\x35\n\x06values\x18\x01 \x03(\x0b\x32%.chromiumos.config.payload.FlatConfigB.Z,go.chromium.org/chromiumos/config/go/payloadb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_component__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_device__brand__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_program__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_brand__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_build__target__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_software__config__pb2.DESCRIPTOR,])
 
@@ -127,6 +127,37 @@ _FLATCONFIG = _descriptor.Descriptor(
   serialized_end=1011,
 )
 
+
+_FLATCONFIGLIST = _descriptor.Descriptor(
+  name='FlatConfigList',
+  full_name='chromiumos.config.payload.FlatConfigList',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='values', full_name='chromiumos.config.payload.FlatConfigList.values', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1013,
+  serialized_end=1084,
+)
+
 _FLATCONFIG.fields_by_name['program'].message_type = chromiumos_dot_config_dot_api_dot_program__pb2._PROGRAM
 _FLATCONFIG.fields_by_name['program_components'].message_type = chromiumos_dot_config_dot_api_dot_component__pb2._COMPONENT
 _FLATCONFIG.fields_by_name['hw_design'].message_type = chromiumos_dot_config_dot_api_dot_design__pb2._DESIGN
@@ -137,7 +168,9 @@ _FLATCONFIG.fields_by_name['oem'].message_type = chromiumos_dot_config_dot_api_d
 _FLATCONFIG.fields_by_name['build_target'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_build__target__pb2._BUILDTARGET
 _FLATCONFIG.fields_by_name['sw_config'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_software__config__pb2._SOFTWARECONFIG
 _FLATCONFIG.fields_by_name['brand_sw_config'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_brand__config__pb2._BRANDCONFIG
+_FLATCONFIGLIST.fields_by_name['values'].message_type = _FLATCONFIG
 DESCRIPTOR.message_types_by_name['FlatConfig'] = _FLATCONFIG
+DESCRIPTOR.message_types_by_name['FlatConfigList'] = _FLATCONFIGLIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 FlatConfig = _reflection.GeneratedProtocolMessageType('FlatConfig', (_message.Message,), dict(
@@ -146,6 +179,13 @@ FlatConfig = _reflection.GeneratedProtocolMessageType('FlatConfig', (_message.Me
   # @@protoc_insertion_point(class_scope:chromiumos.config.payload.FlatConfig)
   ))
 _sym_db.RegisterMessage(FlatConfig)
+
+FlatConfigList = _reflection.GeneratedProtocolMessageType('FlatConfigList', (_message.Message,), dict(
+  DESCRIPTOR = _FLATCONFIGLIST,
+  __module__ = 'chromiumos.config.payload.flat_config_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.payload.FlatConfigList)
+  ))
+_sym_db.RegisterMessage(FlatConfigList)
 
 
 DESCRIPTOR._options = None

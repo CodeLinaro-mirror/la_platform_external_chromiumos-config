@@ -35,3 +35,8 @@ message FlatConfig {
   api.software.SoftwareConfig sw_config = 9;
   api.software.BrandConfig brand_sw_config = 10;
 }
+
+// A list of FlatConfigs for ease of serialization into a file.
+message FlatConfigList {
+  repeated FlatConfig values = 1;
+}
