@@ -6,6 +6,7 @@
 """Wrapper around bb invocation of the cl_factory recipe."""
 
 import argparse
+import json
 import re
 import subprocess
 import sys
@@ -23,6 +24,7 @@ def Main(args):  # pylint: disable=invalid-name
     --reviewers reviewer1@chromium.org reviewer2@google.com \
     --ccs cc1@google.com \
     --hashtag regen-audio-configs \
+    --replace_strings *.star foo bar \
     --message "Hello world
 
 BUG=chromium:1092954
@@ -49,14 +51,21 @@ TEST=CQ"
   cmd = ['bb', 'add']
 
   for cl in args.cl:
-      cmd.extend(['-cl', cl])
+    cmd.extend(['-cl', cl])
 
   cmd.extend(csv_param('repo_regexes', args.regex))
   cmd.extend(['-p', 'command=gen_config'])
-  cmd.extend(['-p', '\'message_template={}\''.format(args.message)])
   cmd.extend(csv_param('reviewers', args.reviewers))
   cmd.extend(csv_param('ccs', args.ccs))
   cmd.extend(csv_param('hashtags', args.hashtag))
+
+  replace_strings = list(map(lambda rs: replace_strings_dict(rs),
+                             args.replace_strings or []))
+  if replace_strings:
+    cmd.extend(
+        ['-p', '\'replace_strings={}\''.format(json.dumps(replace_strings))])
+
+  cmd.extend(['-p', '\'message_template={}\''.format(args.message)])
   cmd.append('chromeos/infra/ClFactory')
 
   cmd = ' '.join(cmd)
@@ -79,6 +88,14 @@ def csv_param(name, values):
     return []
   values = ', '.join(map(lambda v: '"{}"'.format(v), values))
   return ['-p', '\'{}=[{}]\''.format(name, values)]
+
+
+def replace_strings_dict(rs):
+  return {
+      'file_glob': rs[0],
+      'before': rs[1],
+      'after': rs[2],
+  }
 
 
 def validate_regex(value):
@@ -106,11 +123,6 @@ def main():
       help='Operate on projects matching the regex or '
       'wildcard. Usage as in `repo forall`.')
   parser.add_argument(
-      '--message',
-      type=str,
-      required=True,
-      help='Message template for the generated CLs.')
-  parser.add_argument(
       '--reviewers',
       nargs='+',
       type=str,
@@ -128,6 +140,17 @@ def main():
       type=str,
       default=[],
       help='Hashtags to add to the generated CLs.')
+  parser.add_argument(
+      '--replace_strings',
+      action='append',
+      nargs=3,
+      metavar=('glob', 'before', 'after'),
+      help='String replacements to perform on the generated CLs.')
+  parser.add_argument(
+      '--message',
+      type=str,
+      required=True,
+      help='Message template for the generated CLs.')
   parser.add_argument(
       '--nodryrun',
       dest='dryrun',
