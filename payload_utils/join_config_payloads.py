@@ -396,7 +396,7 @@ def merge_audio_config(sw_config, model):
     None
   """
   audio_props = model.GetProperties('/audio/main')
-  audio_config = sw_config.audio_config
+  audio_config = sw_config.audio_configs.add()
   audio_config.ucm_suffix = audio_props.get('ucm-suffix', '')
 
 
