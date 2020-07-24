@@ -55,3 +55,56 @@ class ConfigBundleUtilsTest(unittest.TestCase):
         config_bundle_utils.find_partner(bundle, 'testpartner'), partner)
     self.assertIsNone(
         config_bundle_utils.find_partner(bundle, 'does_not_exist'))
+
+  def test_flatten_config(self):
+    """Test flattening ConfigBundle"""
+
+    # Build a dummy test bundle config
+    bundle = config_bundle_pb2.ConfigBundle()
+
+    program = bundle.program_list.add()
+    program.name = "A Program"
+    program.id.value = "a_program"
+
+    partner_0 = bundle.partner_list.add()
+    partner_0.name = "Partner 0"
+    partner_0.id.value = "partner_0"
+
+    partner_1 = bundle.partner_list.add()
+    partner_1.name = "Partner 1"
+    partner_1.id.value = "partner_1"
+
+    hw_design = bundle.design_list.add()
+    hw_design.name = "A Design"
+    hw_design.id.value = "a_design"
+    hw_design.program_id.MergeFrom(program.id)
+    hw_design.odm_id.MergeFrom(partner_0.id)
+
+    hw_design_config = hw_design.configs.add()
+    hw_design_config.id.value = "a_design_config"
+
+    sw_config = bundle.software_configs.add()
+    sw_config.design_config_id.MergeFrom(hw_design_config.id)
+
+    device_brand = bundle.device_brand_list.add()
+    device_brand.brand_name = "A Brand"
+    device_brand.id.value = "a_brand"
+    device_brand.design_id.MergeFrom(hw_design.id)
+    device_brand.oem_id.MergeFrom(partner_1.id)
+
+    brand_config = bundle.brand_configs.add()
+    brand_config.brand_id.MergeFrom(device_brand.id)
+
+    # Flatten config bundle into a FlatConfigList
+    flattened = config_bundle_utils.flatten_config(bundle)
+    self.assertEqual(len(flattened), 1)
+
+    # And verify that values were queried correctly
+    flat_value = flattened[0]
+    self.assertEqual(flat_value.program, program)
+    self.assertEqual(flat_value.hw_design, hw_design)
+    self.assertEqual(flat_value.odm, partner_0)
+    self.assertEqual(flat_value.hw_design_config, hw_design_config)
+    self.assertEqual(flat_value.device_brand, device_brand)
+    self.assertEqual(flat_value.oem, partner_1)
+    self.assertEqual(flat_value.brand_sw_config, brand_config)
