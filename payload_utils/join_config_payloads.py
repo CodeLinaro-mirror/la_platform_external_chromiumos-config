@@ -18,7 +18,6 @@ files.  Simple specify a project name with --project-name/-p and omit
 import argparse
 import logging
 import os
-import pathlib
 import re
 import sys
 import tempfile
@@ -595,8 +594,7 @@ def merge_fingerprint_config(hw_feat, model):
       '-', '_'))
 
 
-def merge_model(config_bundle, design_config, model, project_name,
-                private_overlay):
+def merge_model(config_bundle, design_config, model, project_name):
   """Merge model from model.yaml into a specific Design.Config instance.
 
   The ConfigBundle, and Design.Config are updated in place with
@@ -607,7 +605,6 @@ def merge_model(config_bundle, design_config, model, project_name,
     design_config (Design.Config): design config in the config bundle to update
     model (CrosConfig): parsed model.yaml information
     project_name (str): name of the device (eg: phaser)
-    private_overlay (str): name of the private overlay for the project
 
   Returns:
     A reference to the input config_bundle updated with data from model
@@ -618,7 +615,6 @@ def merge_model(config_bundle, design_config, model, project_name,
   # Merge build target configuration
   build_target = config_bundle.build_targets.add()
   build_target.id.value = project_name
-  build_target.overlay_name = private_overlay
   merge_build_target(build_target, model)
 
   # Merge hardware configuration
@@ -654,18 +650,6 @@ def merge_configs(config_path, project_name, public_path, private_path,
   # pylint: disable=too-many-branches
   # pylint: disable=too-many-statements
   """Read and merge configs together, generating new config_bundle output."""
-
-  # Convert private overlay path to a private overlay name. The private path
-  # should end in 'model.yaml' so we'll look at it in reverse and take the
-  # first component that has 'overlay' in it.
-  private_overlay = None
-  for part in reversed(pathlib.Path(private_path).parts):
-    if 'overlay' in part:
-      private_overlay = part
-      break
-
-  assert private_overlay, \
-      'unable to find \'overlay\' component in private model.yaml path'
 
   config_bundle = config_bundle_pb2.ConfigBundle()
   if config_path:
@@ -784,8 +768,7 @@ def merge_configs(config_path, project_name, public_path, private_path,
       if wallpaper:
         brand_config.wallpaper = wallpaper.pop()
     else:
-      merge_model(config_bundle, design_config, model, project_name,
-                  private_overlay)
+      merge_model(config_bundle, design_config, model, project_name)
 
   # Merge information from HWID into config bundle
   return add_hwid_components(config_bundle, hwid_db)
