@@ -156,11 +156,11 @@ message HardwareFeatures {
   // Camera properties of system.
   Camera camera = 7;
   message Camera {
-    // If front camera on A panel is present
-    Present a_panel_camera = 1;
+    // If user facing camera (front camera) is present
+    Present user_facing_camera = 1;
 
-    // If user facing camera on B panel is present
-    Present b_panel_camera = 2;
+    // If world facing camera (rear camera) is present
+    Present world_facing_camera = 2;
 
     // Number of camera present on system
     Count count = 3;

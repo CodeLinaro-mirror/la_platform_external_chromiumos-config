@@ -129,9 +129,9 @@ def TransformDesignTable(design_config, design_table):
       'component.has_mother_board_usb_c':
           GetFeatures(topology, 'motherboard_usb', ['usb_c', 'count', 'value']),
       'component.has_front_camera':
-          CastPresent(features.camera.a_panel_camera),
+          CastPresent(features.camera.user_facing_camera),
       'component.has_rear_camera':
-          CastPresent(features.camera.b_panel_camera),
+          CastPresent(features.camera.world_facing_camera),
       'component.has_stylus':
           GetFeatures(topology, 'stylus', ['stylus', 'stylus']) in [
               topology_pb2.HardwareFeatures.Stylus.INTERNAL,
