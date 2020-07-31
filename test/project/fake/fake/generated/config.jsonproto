@@ -157,7 +157,9 @@
               "camera": {
                 "count": {
                   "value": 1
-                }
+                },
+                "userFacingCamera": 1,
+                "worldFacingCamera": 2
               },
               "fingerprint": {
                 "board": "fake-fingerprint-board",
@@ -300,7 +302,9 @@
                   "camera": {
                     "count": {
                       "value": 1
-                    }
+                    },
+                    "userFacingCamera": 1,
+                    "worldFacingCamera": 2
                   },
                   "fwConfig": {
                     "mask": 240,
@@ -536,7 +540,9 @@
               "camera": {
                 "count": {
                   "value": 1
-                }
+                },
+                "userFacingCamera": 1,
+                "worldFacingCamera": 2
               },
               "fingerprint": {
                 "location": 5
@@ -648,7 +654,9 @@
                   "camera": {
                     "count": {
                       "value": 1
-                    }
+                    },
+                    "userFacingCamera": 1,
+                    "worldFacingCamera": 2
                   },
                   "fwConfig": {
                     "mask": 240
@@ -904,7 +912,9 @@
               "camera": {
                 "count": {
                   "value": 1
-                }
+                },
+                "userFacingCamera": 1,
+                "worldFacingCamera": 2
               },
               "fingerprint": {
                 "board": "fake-fingerprint-board",
@@ -1035,7 +1045,9 @@
                   "camera": {
                     "count": {
                       "value": 1
-                    }
+                    },
+                    "userFacingCamera": 1,
+                    "worldFacingCamera": 2
                   },
                   "fwConfig": {
                     "mask": 240,
@@ -1294,7 +1306,9 @@
               "camera": {
                 "count": {
                   "value": 1
-                }
+                },
+                "userFacingCamera": 1,
+                "worldFacingCamera": 2
               },
               "fingerprint": {
                 "location": 5
@@ -1424,7 +1438,9 @@
                   "camera": {
                     "count": {
                       "value": 1
-                    }
+                    },
+                    "userFacingCamera": 1,
+                    "worldFacingCamera": 2
                   },
                   "fwConfig": {
                     "mask": 240,
@@ -1670,7 +1686,9 @@
               "camera": {
                 "count": {
                   "value": 1
-                }
+                },
+                "userFacingCamera": 1,
+                "worldFacingCamera": 2
               },
               "fingerprint": {
                 "location": 5
@@ -1800,7 +1818,9 @@
                   "camera": {
                     "count": {
                       "value": 1
-                    }
+                    },
+                    "userFacingCamera": 1,
+                    "worldFacingCamera": 2
                   },
                   "fwConfig": {
                     "mask": 240,
@@ -2037,7 +2057,9 @@
               "camera": {
                 "count": {
                   "value": 1
-                }
+                },
+                "userFacingCamera": 1,
+                "worldFacingCamera": 2
               },
               "fingerprint": {
                 "location": 5
@@ -2146,7 +2168,9 @@
                   "camera": {
                     "count": {
                       "value": 1
-                    }
+                    },
+                    "userFacingCamera": 1,
+                    "worldFacingCamera": 2
                   },
                   "fwConfig": {
                     "mask": 240,

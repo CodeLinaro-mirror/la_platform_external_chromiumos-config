@@ -316,7 +316,7 @@ def _create_thermal(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_camera(id, description, fw_configs = [], has_user_facing_camera = None, has_world_facing_camera = None, count = 0):
+def _create_camera(id, description, fw_configs = [], has_user_facing_camera = False, has_world_facing_camera = False, count = 0):
     """Builds a Topology proto for a camera."""
     hw_features = topo_pb.HardwareFeatures()
 
@@ -324,6 +324,8 @@ def _create_camera(id, description, fw_configs = [], has_user_facing_camera = No
     hw_features.camera.world_facing_camera = _bool_to_present(has_world_facing_camera)
     if count:
         hw_features.camera.count.value = count
+    else:
+        hw_features.camera.count.value = (1 if has_user_facing_camera else 0) + (1 if has_world_facing_camera else 0)
 
     _accumulate_fw_configs(hw_features, fw_configs)
 

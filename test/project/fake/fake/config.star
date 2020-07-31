@@ -56,7 +56,7 @@ _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.au
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
 _KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE)
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
-_CAMERA = hw_topo.create_camera("CAMERA", "Default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 2)], count = 1)
+_CAMERA = hw_topo.create_camera("CAMERA", "Default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 2)], has_user_facing_camera = True)
 _SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor", fw_configs = [hw_topo.make_fw_config(_SENSOR_FW_MASK, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True)
 _FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake-fingerprint-board")
 _NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
@@ -168,7 +168,7 @@ design.append_configs(
         lte_board = _LTE_BOARD,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
-        camera = hw_topo.create_camera("CAMERA", "Non-default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 0)], count = 1),
+        camera = hw_topo.create_camera("CAMERA", "Non-default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 0)], has_user_facing_camera = True),
         daughter_board = hw_topo.create_daughter_board("DAUGHTER_BOARD", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(_DB_FW_MASK, 0)]),
     ),
     audio = sc.create_audio(
