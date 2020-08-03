@@ -2381,101 +2381,99 @@
       }
     }
   ],
-  "deviceBrands": {
-    "value": [
-      {
-        "brandCode": "AAAA",
-        "brandName": "Fake ChromeOS Device Brandname",
-        "designId": {
-          "value": "FAKE-REF-DESIGN"
-        },
-        "id": {
-          "value": "AAAA"
-        },
-        "oemId": {
-          "value": "FAKE-OEM"
-        }
+  "deviceBrandList": [
+    {
+      "brandCode": "AAAA",
+      "brandName": "Fake ChromeOS Device Brandname",
+      "designId": {
+        "value": "FAKE-REF-DESIGN"
       },
-      {
-        "brandCode": "FDAA",
-        "brandName": "ChromeOS Device Brandname A",
-        "designId": {
-          "value": "PROJECT-A"
-        },
-        "id": {
-          "value": "FDAA"
-        },
-        "oemId": {
-          "value": "FAKE-OEMA"
-        }
+      "id": {
+        "value": "AAAA"
       },
-      {
-        "brandCode": "FDBB",
-        "brandName": "ChromeOS Device Brandname B",
-        "designId": {
-          "value": "PROJECT-B"
-        },
-        "id": {
-          "value": "FDBB"
-        },
-        "oemId": {
-          "value": "FAKE-OEMB"
-        }
-      },
-      {
-        "brandCode": "FDCC",
-        "brandName": "ChromeOS Device Brandname C",
-        "designId": {
-          "value": "PROJECT-C"
-        },
-        "id": {
-          "value": "FDCC"
-        },
-        "oemId": {
-          "value": "FAKE-OEMC"
-        }
-      },
-      {
-        "brandCode": "WLAA",
-        "brandName": "ChromeOS Device Brandname WL-A",
-        "designId": {
-          "value": "PROJECT-WL"
-        },
-        "id": {
-          "value": "WLAA"
-        },
-        "oemId": {
-          "value": "FAKE-LOEMA"
-        }
-      },
-      {
-        "brandCode": "WLBB",
-        "brandName": "ChromeOS Device Brandname WL-B",
-        "designId": {
-          "value": "PROJECT-WL"
-        },
-        "id": {
-          "value": "WLBB"
-        },
-        "oemId": {
-          "value": "FAKE-LOEMB"
-        }
-      },
-      {
-        "brandCode": "WLCC",
-        "brandName": "ChromeOS Device Brandname WL-C",
-        "designId": {
-          "value": "PROJECT-WL"
-        },
-        "id": {
-          "value": "WLCC"
-        },
-        "oemId": {
-          "value": "FAKE-LOEMC"
-        }
+      "oemId": {
+        "value": "FAKE-OEM"
       }
-    ]
-  },
+    },
+    {
+      "brandCode": "FDAA",
+      "brandName": "ChromeOS Device Brandname A",
+      "designId": {
+        "value": "PROJECT-A"
+      },
+      "id": {
+        "value": "FDAA"
+      },
+      "oemId": {
+        "value": "FAKE-OEMA"
+      }
+    },
+    {
+      "brandCode": "FDBB",
+      "brandName": "ChromeOS Device Brandname B",
+      "designId": {
+        "value": "PROJECT-B"
+      },
+      "id": {
+        "value": "FDBB"
+      },
+      "oemId": {
+        "value": "FAKE-OEMB"
+      }
+    },
+    {
+      "brandCode": "FDCC",
+      "brandName": "ChromeOS Device Brandname C",
+      "designId": {
+        "value": "PROJECT-C"
+      },
+      "id": {
+        "value": "FDCC"
+      },
+      "oemId": {
+        "value": "FAKE-OEMC"
+      }
+    },
+    {
+      "brandCode": "WLAA",
+      "brandName": "ChromeOS Device Brandname WL-A",
+      "designId": {
+        "value": "PROJECT-WL"
+      },
+      "id": {
+        "value": "WLAA"
+      },
+      "oemId": {
+        "value": "FAKE-LOEMA"
+      }
+    },
+    {
+      "brandCode": "WLBB",
+      "brandName": "ChromeOS Device Brandname WL-B",
+      "designId": {
+        "value": "PROJECT-WL"
+      },
+      "id": {
+        "value": "WLBB"
+      },
+      "oemId": {
+        "value": "FAKE-LOEMB"
+      }
+    },
+    {
+      "brandCode": "WLCC",
+      "brandName": "ChromeOS Device Brandname WL-C",
+      "designId": {
+        "value": "PROJECT-WL"
+      },
+      "id": {
+        "value": "WLCC"
+      },
+      "oemId": {
+        "value": "FAKE-LOEMC"
+      }
+    }
+  ],
   "partnerList": [
     {
       "id": {

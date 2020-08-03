@@ -478,9 +478,9 @@ def _transform_build_configs(config,
 
   results = {}
   for hw_design in config.design_list:
-    if config.device_brands.value:
+    if config.device_brand_list:
       device_brands = [
-          x for x in config.device_brands.value
+          x for x in config.device_brand_list
           if x.design_id.value == hw_design.id.value
       ]
     else:

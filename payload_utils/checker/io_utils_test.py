@@ -21,8 +21,7 @@ class IoUtilsTest(unittest.TestCase):
   """Tests for io_utils."""
 
   def setUp(self):
-    self.config = ConfigBundle(
-        program_list=[Program(name='TestProgram1')])
+    self.config = ConfigBundle(program_list=[Program(name='TestProgram1')])
     repo_path = tempfile.mkdtemp()
 
     os.mkdir(os.path.join(repo_path, 'generated'))

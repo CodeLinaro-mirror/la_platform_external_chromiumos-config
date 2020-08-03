@@ -26,11 +26,6 @@ def _create(brand_name, design_id, oem_id, brand_code = DEFAULT_BRAND_CODE):
         brand_name = brand_name,
     )
 
-def _create_list(device_brands):
-    """Builds a DeviceBrandList proto."""
-    return db_pb.DeviceBrandList(value = device_brands)
-
 device_brand = struct(
     create = _create,
-    create_list = _create_list,
 )

@@ -32,11 +32,10 @@ class CheckIdsTest(unittest.TestCase):
     program_config = ConfigBundle(
         program_list=[Program(id=ProgramId(value='testprogram1'))])
 
-    project_config = ConfigBundle(
-        design_list=[
-            Design(program_id=ProgramId(value='testprogram1')),
-            Design(program_id=ProgramId(value='testprogram1')),
-        ])
+    project_config = ConfigBundle(design_list=[
+        Design(program_id=ProgramId(value='testprogram1')),
+        Design(program_id=ProgramId(value='testprogram1')),
+    ])
 
     IdConstraintSuite().check_ids_consistent(
         program_config=program_config,
@@ -49,11 +48,10 @@ class CheckIdsTest(unittest.TestCase):
     program_config = ConfigBundle(
         program_list=[Program(id=ProgramId(value='testprogram1'))])
 
-    project_config = ConfigBundle(
-        design_list=[
-            Design(program_id=ProgramId(value='testprogram1')),
-            Design(program_id=ProgramId(value='testprogram2')),
-        ])
+    project_config = ConfigBundle(design_list=[
+        Design(program_id=ProgramId(value='testprogram1')),
+        Design(program_id=ProgramId(value='testprogram2')),
+    ])
 
     with self.assertRaises(AssertionError):
       IdConstraintSuite().check_ids_consistent(
@@ -79,29 +77,28 @@ class CheckIdsTest(unittest.TestCase):
         ])
     ])
 
-    project_config = ConfigBundle(
-        design_list=[
-            Design(
-                id=DesignId(value='a'),
-                configs=[
-                    Config(id=DesignConfigId(value='a:11')),
-                    Config(id=DesignConfigId(value='a:15')),
-                    Config(id=DesignConfigId(value='a:20')),
-                ]),
-            Design(
-                id=DesignId(value='b'),
-                configs=[
-                    Config(id=DesignConfigId(value='b:25')),
-                    # Unprovisioned ids are exempt from the check.
-                    Config(id=DesignConfigId(value='b:2147483647')),
-                ]),
-            # Design 'c' doesn't have a segment.
-            Design(
-                id=DesignId(value='c'),
-                configs=[
-                    Config(id=DesignConfigId(value='c:40')),
-                ]),
-        ])
+    project_config = ConfigBundle(design_list=[
+        Design(
+            id=DesignId(value='a'),
+            configs=[
+                Config(id=DesignConfigId(value='a:11')),
+                Config(id=DesignConfigId(value='a:15')),
+                Config(id=DesignConfigId(value='a:20')),
+            ]),
+        Design(
+            id=DesignId(value='b'),
+            configs=[
+                Config(id=DesignConfigId(value='b:25')),
+                # Unprovisioned ids are exempt from the check.
+                Config(id=DesignConfigId(value='b:2147483647')),
+            ]),
+        # Design 'c' doesn't have a segment.
+        Design(
+            id=DesignId(value='c'),
+            configs=[
+                Config(id=DesignConfigId(value='c:40')),
+            ]),
+    ])
 
     IdConstraintSuite().check_design_config_id_segments(
         program_config=program_config,
@@ -123,14 +120,13 @@ class CheckIdsTest(unittest.TestCase):
 
     # Test ids on the lower boundary.
     for id_num in (9, 10):
-      project_config = ConfigBundle(
-          design_list=[
-              Design(
-                  id=DesignId(value='a'),
-                  configs=[
-                      Config(id=DesignConfigId(value='a:{}'.format(id_num))),
-                  ]),
-          ])
+      project_config = ConfigBundle(design_list=[
+          Design(
+              id=DesignId(value='a'),
+              configs=[
+                  Config(id=DesignConfigId(value='a:{}'.format(id_num))),
+              ]),
+      ])
 
       with self.assertRaisesRegex(
           AssertionError,
@@ -143,14 +139,13 @@ class CheckIdsTest(unittest.TestCase):
 
     # Test ids on the upper boundary.
     for id_num in (21, 22):
-      project_config = ConfigBundle(
-          design_list=[
-              Design(
-                  id=DesignId(value='a'),
-                  configs=[
-                      Config(id=DesignConfigId(value='a:{}'.format(id_num))),
-                  ]),
-          ])
+      project_config = ConfigBundle(design_list=[
+          Design(
+              id=DesignId(value='a'),
+              configs=[
+                  Config(id=DesignConfigId(value='a:{}'.format(id_num))),
+              ]),
+      ])
 
       with self.assertRaisesRegex(
           AssertionError,
@@ -271,14 +266,13 @@ class CheckIdsTest(unittest.TestCase):
 
   def test_check_design_config_ids_unique(self):
     """Tests check_design_config_ids_unique with valid configs."""
-    project_config = ConfigBundle(
-        design_list=[
-            Design(configs=[
-                Config(id=DesignConfigId(value='a')),
-                Config(id=DesignConfigId(value='b')),
-            ]),
-            Design(configs=[Config(id=DesignConfigId(value='c'))]),
-        ])
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(id=DesignConfigId(value='a')),
+            Config(id=DesignConfigId(value='b')),
+        ]),
+        Design(configs=[Config(id=DesignConfigId(value='c'))]),
+    ])
 
     IdConstraintSuite().check_design_config_ids_unique(
         program_config=None,
@@ -288,14 +282,13 @@ class CheckIdsTest(unittest.TestCase):
 
   def test_check_design_config_ids_unique_violated(self):
     """Tests check_design_config_ids_unique with valid configs."""
-    project_config = ConfigBundle(
-        design_list=[
-            Design(configs=[
-                Config(id=DesignConfigId(value='a')),
-                Config(id=DesignConfigId(value='b')),
-            ]),
-            Design(configs=[Config(id=DesignConfigId(value='a'))]),
-        ])
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(id=DesignConfigId(value='a')),
+            Config(id=DesignConfigId(value='b')),
+        ]),
+        Design(configs=[Config(id=DesignConfigId(value='a'))]),
+    ])
 
     with self.assertRaisesRegex(AssertionError,
                                 "Found multiple configs with id 'a'"):

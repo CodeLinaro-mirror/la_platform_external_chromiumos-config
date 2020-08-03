@@ -315,14 +315,6 @@ device_brand.create()
 
 
 
-### device_brand.create_list {#device_brand.create_list}
-Builds a DeviceBrandList proto.
-
-```python
-device_brand.create_list()
-```
-
-
 
 
 
