@@ -13,7 +13,7 @@ def get_program(
 
   Raises if config_bundle doesn't have exactly one program.
   """
-  programs = config_bundle.programs.value
+  programs = config_bundle.program_list or config_bundle.programs.value
   if len(programs) != 1:
     raise ValueError('Expected exactly one program')
 

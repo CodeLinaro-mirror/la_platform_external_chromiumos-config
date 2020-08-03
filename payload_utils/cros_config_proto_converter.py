@@ -466,7 +466,7 @@ def _transform_build_configs(config,
                              config_files=ConfigFiles({}, {}, {}, {}, {}, {})):
   # pylint: disable=too-many-locals,too-many-branches
   partners = {x.id.value: x for x in config.partner_list}
-  programs = {x.id.value: x for x in config.programs.value}
+  programs = {x.id.value: x for x in config.program_list}
   sw_configs = list(config.software_configs)
   brand_configs = {x.brand_id.value: x for x in config.brand_configs}
 

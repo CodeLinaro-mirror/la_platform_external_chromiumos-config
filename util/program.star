@@ -83,13 +83,8 @@ def _create(
         device_signer_configs = device_signer_configs,
     )
 
-def _create_list(programs):
-    """Builds a ProgramList proto."""
-    return program_pb.ProgramList(value = programs)
-
 program = struct(
     create = _create,
-    create_list = _create_list,
     create_firmware_configuration_segment = _create_firmware_configuration_segment,
     create_design_config_id_segment = _create_design_config_id_segment,
     create_signer_config = _create_signer_config,

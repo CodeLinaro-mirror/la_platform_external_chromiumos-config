@@ -73,7 +73,7 @@ class TransformBuildConfigsTest(unittest.TestCase):
 
   def test_missing_lookups(self):
     config = fake_config()
-    config.ClearField('programs')
+    config.ClearField('program_list')
 
     with self.assertRaisesRegex(Exception, 'Failed to lookup Program'):
       cros_config_proto_converter._transform_build_configs(config)
@@ -97,7 +97,7 @@ class TransformBuildConfigsTest(unittest.TestCase):
     config = fake_config()
     config.ClearField('device_brands')
     # Signer configs tied to device brands, so need to clear that also
-    config.programs.value[0].ClearField('device_signer_configs')
+    config.program_list[0].ClearField('device_signer_configs')
 
     self.assertIsNotNone(
         cros_config_proto_converter._transform_build_configs(config))

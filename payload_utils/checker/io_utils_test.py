@@ -14,7 +14,7 @@ from google.protobuf import json_format
 from checker import io_utils
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
-from chromiumos.config.api.program_pb2 import ProgramList, Program
+from chromiumos.config.api.program_pb2 import Program
 
 
 class IoUtilsTest(unittest.TestCase):
@@ -22,7 +22,7 @@ class IoUtilsTest(unittest.TestCase):
 
   def setUp(self):
     self.config = ConfigBundle(
-        programs=ProgramList(value=[Program(name='TestProgram1')]))
+        program_list=[Program(name='TestProgram1')])
     repo_path = tempfile.mkdtemp()
 
     os.mkdir(os.path.join(repo_path, 'generated'))

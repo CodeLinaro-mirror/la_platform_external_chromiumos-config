@@ -9,7 +9,7 @@ from checker.common_checks.check_form_factor import FormFactorConstraintSuite
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.design_pb2 import Design, DesignList
-from chromiumos.config.api.program_pb2 import Program, ProgramList
+from chromiumos.config.api.program_pb2 import Program
 from chromiumos.config.api.topology_pb2 import HardwareFeatures
 
 # Alias a few nested classes to make creating test objects less verbose
@@ -34,25 +34,24 @@ class CheckFormFactorTest(unittest.TestCase):
   def test_check_form_factor(self):
     """Tests check_form_factor with valid configs."""
     # The program allows CLAMSHELL and CONVERTIBLE.
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[
-            Program(design_config_constraints=[
-                Constraint(
-                    level=Constraint.REQUIRED,
-                    features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=CLAMSHELL))),
-                Constraint(
-                    level=Constraint.REQUIRED,
-                    features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=CONVERTIBLE))),
-                # Test adding other Constraints.
-                Constraint(
-                    level=Constraint.REQUIRED,
-                    features=HardwareFeatures(
-                        screen=Screen(
-                            touch_support=HardwareFeatures.Present.PRESENT))),
-            ])
-        ]))
+    program_config = ConfigBundle(program_list=[
+        Program(design_config_constraints=[
+            Constraint(
+                level=Constraint.REQUIRED,
+                features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=CLAMSHELL))),
+            Constraint(
+                level=Constraint.REQUIRED,
+                features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=CONVERTIBLE))),
+            # Test adding other Constraints.
+            Constraint(
+                level=Constraint.REQUIRED,
+                features=HardwareFeatures(
+                    screen=Screen(
+                        touch_support=HardwareFeatures.Present.PRESENT))),
+        ])
+    ])
 
     # Project has two CLAMSHELL and one CONVERTIBLE
     project_config = ConfigBundle(
@@ -79,19 +78,18 @@ class CheckFormFactorTest(unittest.TestCase):
   def test_check_form_factor_invalid(self):
     """Tests check_form_factor with invalid configs."""
     # The program allows CLAMSHELL and CONVERTIBLE.
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[
-            Program(design_config_constraints=[
-                Constraint(
-                    level=Constraint.REQUIRED,
-                    features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=CLAMSHELL))),
-                Constraint(
-                    level=Constraint.REQUIRED,
-                    features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=CONVERTIBLE))),
-            ])
-        ]))
+    program_config = ConfigBundle(program_list=[
+        Program(design_config_constraints=[
+            Constraint(
+                level=Constraint.REQUIRED,
+                features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=CLAMSHELL))),
+            Constraint(
+                level=Constraint.REQUIRED,
+                features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=CONVERTIBLE))),
+        ])
+    ])
 
     # DETACHABLE is not allowed.
     project_config = ConfigBundle(
@@ -116,15 +114,14 @@ class CheckFormFactorTest(unittest.TestCase):
 
   def test_check_form_factor_non_required_constraint(self):
     """Tests check_form_factor with a non-REQUIRED FormFactor Constraint."""
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[
-            Program(design_config_constraints=[
-                Constraint(
-                    level=Constraint.OPTIONAL,
-                    features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=CLAMSHELL))),
-            ])
-        ]))
+    program_config = ConfigBundle(program_list=[
+        Program(design_config_constraints=[
+            Constraint(
+                level=Constraint.OPTIONAL,
+                features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=CLAMSHELL))),
+        ])
+    ])
 
     with self.assertRaisesRegex(AssertionError,
                                 'FormFactor constraints must be REQUIRED.'):

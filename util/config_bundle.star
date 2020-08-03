@@ -11,7 +11,6 @@ load(
 )
 load("//config/util/design.star", "design")
 load("//config/util/device_brand.star", "device_brand")
-load("//config/util/program.star", "program")
 
 def _create(
         components = None,
@@ -28,7 +27,7 @@ def _create(
         designs = design.create_design_list(designs),
         device_brands = device_brand.create_list(device_brands),
         partner_list = partners,
-        programs = program.create_list(programs),
+        program_list = programs,
         build_targets = build_targets,
         software_configs = software_configs,
         brand_configs = brand_configs,

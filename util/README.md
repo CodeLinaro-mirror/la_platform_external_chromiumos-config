@@ -654,14 +654,6 @@ program.create()
 
 
 
-### program.create_list {#program.create_list}
-Builds a ProgramList proto.
-
-```python
-program.create_list()
-```
-
-
 
 ### program.create_firmware_configuration_segment {#program.create_firmware_configuration_segment}
 Builds a FirmwareConfigurationSegment proto.

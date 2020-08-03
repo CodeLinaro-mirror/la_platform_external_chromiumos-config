@@ -38,9 +38,9 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
     """Checks all project ids are consistent with the program."""
     del factory_dir
 
-    program_id = program_config.programs.value[0].id
+    program_id = config_bundle_utils.get_program(program_config).id.value
     for design in project_config.designs.value:
-      self.assertEqual(program_id, design.program_id)
+      self.assertEqual(program_id, design.program_id.value)
 
   def check_design_config_id_segments(
       self,

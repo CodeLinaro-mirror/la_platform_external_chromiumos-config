@@ -10,7 +10,7 @@ from checker.common_checks.check_firmware_configuration import (
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.design_pb2 import Design, DesignList
-from chromiumos.config.api.program_pb2 import (Program, ProgramList,
+from chromiumos.config.api.program_pb2 import (Program,
                                                FirmwareConfigurationSegment)
 from chromiumos.config.api.hardware_topology_pb2 import HardwareTopology
 from chromiumos.config.api.topology_pb2 import HardwareFeatures, Topology
@@ -31,13 +31,12 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
 
   def test_check_firmware_configuration_masks(self):
     """Tests check_firmware_configuration_masks with valid configs."""
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[
-            Program(firmware_configuration_segments=[
-                FirmwareConfigurationSegment(name='screen', mask=0b0001),
-                FirmwareConfigurationSegment(name='form_factor', mask=0b0110),
-            ])
-        ]))
+    program_config = ConfigBundle(program_list=[
+        Program(firmware_configuration_segments=[
+            FirmwareConfigurationSegment(name='screen', mask=0b0001),
+            FirmwareConfigurationSegment(name='form_factor', mask=0b0110),
+        ])
+    ])
 
     project_config = ConfigBundle(
         designs=DesignList(value=[
@@ -70,13 +69,12 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
 
   def test_check_firmware_configuration_masks_overlap(self):
     """Tests check_firmware_configuration_masks with overlapping segments."""
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[
-            Program(firmware_configuration_segments=[
-                FirmwareConfigurationSegment(name='screen', mask=0b0011),
-                FirmwareConfigurationSegment(name='form_factor', mask=0b0110),
-            ])
-        ]))
+    program_config = ConfigBundle(program_list=[
+        Program(firmware_configuration_segments=[
+            FirmwareConfigurationSegment(name='screen', mask=0b0011),
+            FirmwareConfigurationSegment(name='form_factor', mask=0b0110),
+        ])
+    ])
 
     with self.assertRaisesRegex(
         AssertionError,
@@ -88,13 +86,12 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
     """Tests check_firmware_configuration_masks with a topology using
     multiple fw_config fields.
     """
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[
-            Program(firmware_configuration_segments=[
-                FirmwareConfigurationSegment(name='screen_a', mask=0b0001),
-                FirmwareConfigurationSegment(name='screen_b', mask=0b1110),
-            ])
-        ]))
+    program_config = ConfigBundle(program_list=[
+        Program(firmware_configuration_segments=[
+            FirmwareConfigurationSegment(name='screen_a', mask=0b0001),
+            FirmwareConfigurationSegment(name='screen_b', mask=0b1110),
+        ])
+    ])
 
     project_config = ConfigBundle(
         designs=DesignList(value=[
@@ -120,13 +117,12 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
 
   def test_check_firmware_configuration_incomplete_mask(self):
     """Tests check_firmware_configuration_masks with an incomplete mask."""
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[
-            Program(firmware_configuration_segments=[
-                FirmwareConfigurationSegment(name='screen_a', mask=0b0001),
-                FirmwareConfigurationSegment(name='screen_b', mask=0b1110),
-            ])
-        ]))
+    program_config = ConfigBundle(program_list=[
+        Program(firmware_configuration_segments=[
+            FirmwareConfigurationSegment(name='screen_a', mask=0b0001),
+            FirmwareConfigurationSegment(name='screen_b', mask=0b1110),
+        ])
+    ])
 
     project_config = ConfigBundle(
         designs=DesignList(value=[
@@ -157,12 +153,11 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
 
   def test_check_firmware_configuration_extra_mask(self):
     """Tests check_firmware_configuration_masks with an extra mask."""
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[
-            Program(firmware_configuration_segments=[
-                FirmwareConfigurationSegment(name='screen', mask=0b0001),
-            ])
-        ]))
+    program_config = ConfigBundle(program_list=[
+        Program(firmware_configuration_segments=[
+            FirmwareConfigurationSegment(name='screen', mask=0b0001),
+        ])
+    ])
 
     project_config = ConfigBundle(
         designs=DesignList(value=[

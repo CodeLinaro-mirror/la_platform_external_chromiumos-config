@@ -10,7 +10,7 @@ import unittest
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.design_pb2 import DesignList, Design
-from chromiumos.config.api.program_pb2 import ProgramList, Program
+from chromiumos.config.api.program_pb2 import Program
 
 from checker.constraint_suite import (ConstraintSuite,
                                       InvalidConstraintSuiteError)
@@ -35,7 +35,7 @@ class ValidConstraintSuite(ConstraintSuite):
       factory_dir,
   ):
     del project_config, factory_dir
-    self.assertEqual(program_config.programs.value[0].name, 'TestProgram1')
+    self.assertEqual(program_config.program_list[0].name, 'TestProgram1')
 
   def check_project_valid(
       self,
@@ -79,8 +79,7 @@ class ConstraintSuiteTest(unittest.TestCase):
 
   def test_runs_checks(self):
     """Tests running checks on a project that fulfills constraints."""
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[Program(name='TestProgram1')]))
+    program_config = ConfigBundle(program_list=[Program(name='TestProgram1')])
     project_config = ConfigBundle(
         designs=DesignList(value=[Design(name='TestDesign1')]))
 
@@ -91,8 +90,7 @@ class ConstraintSuiteTest(unittest.TestCase):
 
   def test_runs_checks_fails_constraint(self):
     """Tests running checks on a project that violates constraints."""
-    program_config = ConfigBundle(
-        programs=ProgramList(value=[Program(name='TestProgram2')]))
+    program_config = ConfigBundle(program_list=[Program(name='TestProgram2')])
     project_config = ConfigBundle(
         designs=DesignList(value=[Design(name='TestDesign1')]))
 

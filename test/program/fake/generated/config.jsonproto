@@ -40,104 +40,102 @@
   ],
   "designs": {},
   "deviceBrands": {},
-  "programs": {
-    "value": [
-      {
-        "componentQuals": [
-          {
-            "componentId": {
-              "value": "FAKE_MODEL_2"
-            },
-            "status": 3
+  "programList": [
+    {
+      "componentQuals": [
+        {
+          "componentId": {
+            "value": "FAKE_MODEL_2"
           },
-          {
-            "componentId": {
-              "value": "0001:0002:0003"
-            },
-            "status": 3
-          }
-        ],
-        "designConfigConstraints": [
-          {
-            "features": {
-              "formFactor": {
-                "formFactor": 1
-              }
-            },
-            "level": 1
-          },
-          {
-            "features": {
-              "formFactor": {
-                "formFactor": 2
-              }
-            },
-            "level": 1
-          }
-        ],
-        "deviceSignerConfigs": [
-          {
-            "brandId": {
-              "value": "WLAA"
-            },
-            "keyId": "KEYD"
-          },
-          {
-            "brandId": {
-              "value": "WLBB"
-            },
-            "keyId": "KEYE"
-          },
-          {
-            "brandId": {
-              "value": "WLCC"
-            },
-            "keyId": "KEYF"
-          },
-          {
-            "designId": {
-              "value": "FAKE-REF-DESIGN"
-            },
-            "keyId": "DEFAULT"
-          },
-          {
-            "designId": {
-              "value": "PROJECT-A"
-            },
-            "keyId": "KEYA"
-          },
-          {
-            "designId": {
-              "value": "PROJECT-B"
-            },
-            "keyId": "KEYB"
-          },
-          {
-            "designId": {
-              "value": "PROJECT-C"
-            },
-            "keyId": "KEYC"
-          }
-        ],
-        "firmwareConfigurationSegments": [
-          {
-            "mask": 15,
-            "name": "Daughter board"
-          },
-          {
-            "mask": 240,
-            "name": "Camera"
-          },
-          {
-            "mask": 3840,
-            "name": "Sensor"
-          }
-        ],
-        "id": {
-          "value": "FAKE_PROGRAM"
+          "status": 3
         },
-        "name": "FAKE_PROGRAM"
-      }
-    ]
-  }
+        {
+          "componentId": {
+            "value": "0001:0002:0003"
+          },
+          "status": 3
+        }
+      ],
+      "designConfigConstraints": [
+        {
+          "features": {
+            "formFactor": {
+              "formFactor": 1
+            }
+          },
+          "level": 1
+        },
+        {
+          "features": {
+            "formFactor": {
+              "formFactor": 2
+            }
+          },
+          "level": 1
+        }
+      ],
+      "deviceSignerConfigs": [
+        {
+          "brandId": {
+            "value": "WLAA"
+          },
+          "keyId": "KEYD"
+        },
+        {
+          "brandId": {
+            "value": "WLBB"
+          },
+          "keyId": "KEYE"
+        },
+        {
+          "brandId": {
+            "value": "WLCC"
+          },
+          "keyId": "KEYF"
+        },
+        {
+          "designId": {
+            "value": "FAKE-REF-DESIGN"
+          },
+          "keyId": "DEFAULT"
+        },
+        {
+          "designId": {
+            "value": "PROJECT-A"
+          },
+          "keyId": "KEYA"
+        },
+        {
+          "designId": {
+            "value": "PROJECT-B"
+          },
+          "keyId": "KEYB"
+        },
+        {
+          "designId": {
+            "value": "PROJECT-C"
+          },
+          "keyId": "KEYC"
+        }
+      ],
+      "firmwareConfigurationSegments": [
+        {
+          "mask": 15,
+          "name": "Daughter board"
+        },
+        {
+          "mask": 240,
+          "name": "Camera"
+        },
+        {
+          "mask": 3840,
+          "name": "Sensor"
+        }
+      ],
+      "id": {
+        "value": "FAKE_PROGRAM"
+      },
+      "name": "FAKE_PROGRAM"
+    }
+  ]
 }
