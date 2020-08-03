@@ -477,7 +477,7 @@ def _transform_build_configs(config,
     raise Exception('Single build_target required for transform')
 
   results = {}
-  for hw_design in config.designs.value:
+  for hw_design in config.design_list:
     if config.device_brands.value:
       device_brands = [
           x for x in config.device_brands.value
@@ -672,7 +672,7 @@ def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
   # pylint: disable=too-many-locals
   result = {}
   configs_by_design = {}
-  for hw_design in config.designs.value:
+  for hw_design in config.design_list:
     for design_config in hw_design.configs:
       hw_features = design_config.hardware_features
       any_camera = hw_features.camera.count.value > 0
@@ -755,7 +755,7 @@ def _write_bluetooth_config_files(config, output_dir, build_root_path):
   """
   output_dir += '/bluetooth'
   result = {}
-  for hw_design in config.designs.value:
+  for hw_design in config.design_list:
     project_name = hw_design.name.lower()
     for design_config in hw_design.configs:
       bt_comp = design_config.hardware_features.bluetooth.component.usb
@@ -809,7 +809,7 @@ def _camera_map(configs, project_name):
     map from design name to camera config.
   """
   result = {}
-  for design in configs.designs.value:
+  for design in configs.design_list:
     design_name = design.name
     config_path = CAMERA_CONFIG_SOURCE_PATH_TEMPLATE.format(design_name.lower())
     if os.path.exists(config_path):
@@ -879,7 +879,7 @@ def _dptf_map(configs, project_name):
   result = {}
   # Looking at top level for project wide, and then for each design name
   # for design specific.
-  dirs = [""] + [d.name for d in configs.designs.value]
+  dirs = [""] + [d.name for d in configs.design_list]
   for directory in dirs:
     design = directory.lower()
     if os.path.exists(os.path.join(DPTF_PATH, design, DPTF_FILE)):

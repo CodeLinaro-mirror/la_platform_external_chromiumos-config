@@ -39,7 +39,7 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
     del factory_dir
 
     program_id = config_bundle_utils.get_program(program_config).id.value
-    for design in project_config.designs.value:
+    for design in project_config.design_list:
       self.assertEqual(program_id, design.program_id.value)
 
   def check_design_config_id_segments(
@@ -56,7 +56,7 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
         s.design_id.value: s for s in program.design_config_id_segments
     }
 
-    for design in project_config.designs.value:
+    for design in project_config.design_list:
       # It is valid for designs to not have a corresponding segment.
       segment = segment_map.get(design.id.value)
       if not segment:
@@ -119,7 +119,7 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
     del program_config, factory_dir
 
     design_config_ids = set()
-    for design in project_config.designs.value:
+    for design in project_config.design_list:
       for config in design.configs:
         self.assertNotIn(
             config.id.value, design_config_ids,

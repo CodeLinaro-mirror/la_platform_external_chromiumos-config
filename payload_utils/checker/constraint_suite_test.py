@@ -9,7 +9,7 @@ import tempfile
 import unittest
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
-from chromiumos.config.api.design_pb2 import DesignList, Design
+from chromiumos.config.api.design_pb2 import Design
 from chromiumos.config.api.program_pb2 import Program
 
 from checker.constraint_suite import (ConstraintSuite,
@@ -44,7 +44,7 @@ class ValidConstraintSuite(ConstraintSuite):
       factory_dir,
   ):
     del program_config, factory_dir
-    self.assertEqual(project_config.designs.value[0].name, 'TestDesign1')
+    self.assertEqual(project_config.design_list[0].name, 'TestDesign1')
 
 
 class FactoryDirSuite(ConstraintSuite):
@@ -80,8 +80,7 @@ class ConstraintSuiteTest(unittest.TestCase):
   def test_runs_checks(self):
     """Tests running checks on a project that fulfills constraints."""
     program_config = ConfigBundle(program_list=[Program(name='TestProgram1')])
-    project_config = ConfigBundle(
-        designs=DesignList(value=[Design(name='TestDesign1')]))
+    project_config = ConfigBundle(design_list=[Design(name='TestDesign1')])
 
     ValidConstraintSuite().run_checks(
         program_config=program_config,
@@ -91,8 +90,7 @@ class ConstraintSuiteTest(unittest.TestCase):
   def test_runs_checks_fails_constraint(self):
     """Tests running checks on a project that violates constraints."""
     program_config = ConfigBundle(program_list=[Program(name='TestProgram2')])
-    project_config = ConfigBundle(
-        designs=DesignList(value=[Design(name='TestDesign1')]))
+    project_config = ConfigBundle(design_list=[Design(name='TestDesign1')])
 
     with self.assertRaisesRegex(AssertionError,
                                 "'TestProgram2' != 'TestProgram1'"):

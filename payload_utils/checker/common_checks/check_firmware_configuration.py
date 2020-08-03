@@ -49,7 +49,7 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
 
     # For every topology that defines a FirmwareConfiguration, check the mask
     # aligns with a segment.
-    for design in project_config.designs.value:
+    for design in project_config.design_list:
       for config in design.configs:
         for topology in proto_utils.get_all_fields(config.hardware_topology):
           mask = topology.hardware_feature.fw_config.mask
@@ -113,7 +113,7 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
     # Map from FirmwareConfiguration.value -> (Topology.id, Topology.type).
     value_to_topo = {}
 
-    for design in project_config.designs.value:
+    for design in project_config.design_list:
       for config in design.configs:
         for topology in proto_utils.get_all_fields(config.hardware_topology):
           fw_value = topology.hardware_feature.fw_config.value

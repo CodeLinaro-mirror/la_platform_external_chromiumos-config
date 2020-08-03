@@ -8,7 +8,7 @@ import unittest
 from checker.common_checks.check_form_factor import FormFactorConstraintSuite
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
-from chromiumos.config.api.design_pb2 import Design, DesignList
+from chromiumos.config.api.design_pb2 import Design
 from chromiumos.config.api.program_pb2 import Program
 from chromiumos.config.api.topology_pb2 import HardwareFeatures
 
@@ -54,20 +54,19 @@ class CheckFormFactorTest(unittest.TestCase):
     ])
 
     # Project has two CLAMSHELL and one CONVERTIBLE
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Config(
-                    hardware_features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=CLAMSHELL))),
-                Config(
-                    hardware_features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=CLAMSHELL))),
-                Config(
-                    hardware_features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=CONVERTIBLE)))
-            ])
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(
+                hardware_features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=CLAMSHELL))),
+            Config(
+                hardware_features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=CLAMSHELL))),
+            Config(
+                hardware_features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=CONVERTIBLE)))
+        ])
+    ])
 
     FormFactorConstraintSuite().check_form_factor(
         program_config=program_config,
@@ -92,17 +91,16 @@ class CheckFormFactorTest(unittest.TestCase):
     ])
 
     # DETACHABLE is not allowed.
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Config(
-                    hardware_features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=CLAMSHELL))),
-                Config(
-                    hardware_features=HardwareFeatures(
-                        form_factor=FormFactor(form_factor=DETACHABLE))),
-            ])
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(
+                hardware_features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=CLAMSHELL))),
+            Config(
+                hardware_features=HardwareFeatures(
+                    form_factor=FormFactor(form_factor=DETACHABLE))),
+        ])
+    ])
     with self.assertRaisesRegex(
         AssertionError,
         r".*'DETACHABLE' not found in \['CLAMSHELL', 'CONVERTIBLE'\]"):

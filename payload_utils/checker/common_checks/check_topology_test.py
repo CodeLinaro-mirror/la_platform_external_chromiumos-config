@@ -9,7 +9,7 @@ from checker.common_checks.check_topology import TopologyConstraintSuite
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.component_pb2 import Component
-from chromiumos.config.api.design_pb2 import Design, DesignList
+from chromiumos.config.api.design_pb2 import Design
 from chromiumos.config.api.hardware_topology_pb2 import HardwareTopology
 from chromiumos.config.api.topology_pb2 import (HardwareFeatures, Topology)
 
@@ -54,19 +54,18 @@ class CheckIdsTest(unittest.TestCase):
     #
     # Note that screen_1_topology and keyboard_1_topology share the same id
     # ("part1"), but are a different type, so do not violate the constraint.
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Design.Config(
-                    hardware_topology=HardwareTopology(
-                        screen=self.screen_1_topology,
-                        keyboard=self.keyboard_1_topology)),
-                Design.Config(
-                    hardware_topology=HardwareTopology(
-                        screen=self.screen_2_topology,
-                        keyboard=self.keyboard_1_topology))
-            ])
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Design.Config(
+                hardware_topology=HardwareTopology(
+                    screen=self.screen_1_topology,
+                    keyboard=self.keyboard_1_topology)),
+            Design.Config(
+                hardware_topology=HardwareTopology(
+                    screen=self.screen_2_topology,
+                    keyboard=self.keyboard_1_topology))
+        ])
+    ])
 
     TopologyConstraintSuite().run_checks(
         program_config=None,
@@ -83,19 +82,18 @@ class CheckIdsTest(unittest.TestCase):
     invalid_screen = invalid_screen_topology.hardware_feature.screen
     invalid_screen.panel_properties.diagonal_milliinch = 20
 
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Design.Config(
-                    hardware_topology=HardwareTopology(
-                        screen=self.screen_1_topology,
-                        keyboard=self.keyboard_1_topology)),
-                Design.Config(
-                    hardware_topology=HardwareTopology(
-                        screen=invalid_screen_topology,
-                        keyboard=self.keyboard_1_topology))
-            ])
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Design.Config(
+                hardware_topology=HardwareTopology(
+                    screen=self.screen_1_topology,
+                    keyboard=self.keyboard_1_topology)),
+            Design.Config(
+                hardware_topology=HardwareTopology(
+                    screen=invalid_screen_topology,
+                    keyboard=self.keyboard_1_topology))
+        ])
+    ])
 
     with self.assertRaisesRegex(
         AssertionError,
@@ -116,21 +114,20 @@ class CheckIdsTest(unittest.TestCase):
     invalid_screen = invalid_screen_topology.hardware_feature.screen
     invalid_screen.panel_properties.diagonal_milliinch = 20
 
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Design.Config(
-                    hardware_topology=HardwareTopology(
-                        screen=self.screen_1_topology,
-                        keyboard=self.keyboard_1_topology)),
-            ]),
-            Design(configs=[
-                Design.Config(
-                    hardware_topology=HardwareTopology(
-                        screen=invalid_screen_topology,
-                        keyboard=self.keyboard_1_topology))
-            ])
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Design.Config(
+                hardware_topology=HardwareTopology(
+                    screen=self.screen_1_topology,
+                    keyboard=self.keyboard_1_topology)),
+        ]),
+        Design(configs=[
+            Design.Config(
+                hardware_topology=HardwareTopology(
+                    screen=invalid_screen_topology,
+                    keyboard=self.keyboard_1_topology))
+        ])
+    ])
 
     with self.assertRaisesRegex(
         AssertionError,

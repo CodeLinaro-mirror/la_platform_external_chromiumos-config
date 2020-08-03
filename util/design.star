@@ -110,17 +110,12 @@ def _create_design(id, program_id, odm_id, configs = None):
         configs = configs,
     )
 
-def _create_design_list(designs):
-    """Builds a DesignList proto."""
-    return design_pb.DesignList(value = designs)
-
 design = struct(
     append_configs = _append_configs,
     create_constraint = _create_constraint,
     create_constraints = _create_constraints,
     create_design_id = _create_design_id,
     create_design = _create_design,
-    create_design_list = _create_design_list,
     constraint = _CONSTRAINT,
     generate = generate.generate,
     UNPROVISIONED_CONFIG_ID = _UNPROVISIONED_CONFIG_ID,

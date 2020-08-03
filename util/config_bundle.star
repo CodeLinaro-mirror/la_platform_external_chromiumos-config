@@ -9,7 +9,6 @@ load(
     "@proto//chromiumos/config/payload/config_bundle.proto",
     config_bundle_pb = "chromiumos.config.payload",
 )
-load("//config/util/design.star", "design")
 load("//config/util/device_brand.star", "device_brand")
 
 def _create(
@@ -24,7 +23,7 @@ def _create(
     """Builds a ConfigBundle proto."""
     return config_bundle_pb.ConfigBundle(
         components = components,
-        designs = design.create_design_list(designs),
+        design_list = designs,
         device_brands = device_brand.create_list(device_brands),
         partner_list = partners,
         program_list = programs,

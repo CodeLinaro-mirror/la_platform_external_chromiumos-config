@@ -49,7 +49,7 @@ class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
       allowed_form_factors.append(
           form_factor_name(constraint.features.form_factor.form_factor))
 
-    for design in project_config.designs.value:
+    for design in project_config.design_list:
       for config in design.configs:
         self.assertIn(
             form_factor_name(config.hardware_features.form_factor.form_factor),

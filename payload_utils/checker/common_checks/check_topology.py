@@ -66,7 +66,7 @@ Second message:
     # Map from (Topology.id, Topology.type) -> Topology.
     topology_map = {}
 
-    for design in project_config.designs.value:
+    for design in project_config.design_list:
       for config in design.configs:
         for topology in proto_utils.get_all_fields(config.hardware_topology):
           key = (topology.id, topology.type)

@@ -8,7 +8,7 @@ import unittest
 from checker.common_checks.check_ids import IdConstraintSuite
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
-from chromiumos.config.api.design_pb2 import Design, DesignList
+from chromiumos.config.api.design_pb2 import Design
 from chromiumos.config.api.design_id_pb2 import DesignId
 from chromiumos.config.api.design_config_id_pb2 import DesignConfigId
 from chromiumos.config.api.program_pb2 import (DesignConfigIdSegment, Program)
@@ -33,10 +33,10 @@ class CheckIdsTest(unittest.TestCase):
         program_list=[Program(id=ProgramId(value='testprogram1'))])
 
     project_config = ConfigBundle(
-        designs=DesignList(value=[
+        design_list=[
             Design(program_id=ProgramId(value='testprogram1')),
             Design(program_id=ProgramId(value='testprogram1')),
-        ]))
+        ])
 
     IdConstraintSuite().check_ids_consistent(
         program_config=program_config,
@@ -50,10 +50,10 @@ class CheckIdsTest(unittest.TestCase):
         program_list=[Program(id=ProgramId(value='testprogram1'))])
 
     project_config = ConfigBundle(
-        designs=DesignList(value=[
+        design_list=[
             Design(program_id=ProgramId(value='testprogram1')),
             Design(program_id=ProgramId(value='testprogram2')),
-        ]))
+        ])
 
     with self.assertRaises(AssertionError):
       IdConstraintSuite().check_ids_consistent(
@@ -80,7 +80,7 @@ class CheckIdsTest(unittest.TestCase):
     ])
 
     project_config = ConfigBundle(
-        designs=DesignList(value=[
+        design_list=[
             Design(
                 id=DesignId(value='a'),
                 configs=[
@@ -101,7 +101,7 @@ class CheckIdsTest(unittest.TestCase):
                 configs=[
                     Config(id=DesignConfigId(value='c:40')),
                 ]),
-        ]))
+        ])
 
     IdConstraintSuite().check_design_config_id_segments(
         program_config=program_config,
@@ -124,13 +124,13 @@ class CheckIdsTest(unittest.TestCase):
     # Test ids on the lower boundary.
     for id_num in (9, 10):
       project_config = ConfigBundle(
-          designs=DesignList(value=[
+          design_list=[
               Design(
                   id=DesignId(value='a'),
                   configs=[
                       Config(id=DesignConfigId(value='a:{}'.format(id_num))),
                   ]),
-          ]))
+          ])
 
       with self.assertRaisesRegex(
           AssertionError,
@@ -144,13 +144,13 @@ class CheckIdsTest(unittest.TestCase):
     # Test ids on the upper boundary.
     for id_num in (21, 22):
       project_config = ConfigBundle(
-          designs=DesignList(value=[
+          design_list=[
               Design(
                   id=DesignId(value='a'),
                   configs=[
                       Config(id=DesignConfigId(value='a:{}'.format(id_num))),
                   ]),
-          ]))
+          ])
 
       with self.assertRaisesRegex(
           AssertionError,
@@ -272,13 +272,13 @@ class CheckIdsTest(unittest.TestCase):
   def test_check_design_config_ids_unique(self):
     """Tests check_design_config_ids_unique with valid configs."""
     project_config = ConfigBundle(
-        designs=DesignList(value=[
+        design_list=[
             Design(configs=[
                 Config(id=DesignConfigId(value='a')),
                 Config(id=DesignConfigId(value='b')),
             ]),
             Design(configs=[Config(id=DesignConfigId(value='c'))]),
-        ]))
+        ])
 
     IdConstraintSuite().check_design_config_ids_unique(
         program_config=None,
@@ -289,13 +289,13 @@ class CheckIdsTest(unittest.TestCase):
   def test_check_design_config_ids_unique_violated(self):
     """Tests check_design_config_ids_unique with valid configs."""
     project_config = ConfigBundle(
-        designs=DesignList(value=[
+        design_list=[
             Design(configs=[
                 Config(id=DesignConfigId(value='a')),
                 Config(id=DesignConfigId(value='b')),
             ]),
             Design(configs=[Config(id=DesignConfigId(value='a'))]),
-        ]))
+        ])
 
     with self.assertRaisesRegex(AssertionError,
                                 "Found multiple configs with id 'a'"):

@@ -238,7 +238,7 @@ def GetFactoryConfigs(config):
   """
   product_sku = {}
   # Enumerate projects.
-  for hw_design in config.designs.value:
+  for hw_design in config.design_list:
     project_name = hw_design.id.value
     project_table = product_sku.setdefault(project_name, {})
     # Enumerate design id (sku id).

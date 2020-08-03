@@ -9,7 +9,7 @@ from checker.common_checks.check_firmware_configuration import (
     FirmwareConfigurationConstraintSuite)
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
-from chromiumos.config.api.design_pb2 import Design, DesignList
+from chromiumos.config.api.design_pb2 import Design
 from chromiumos.config.api.program_pb2 import (Program,
                                                FirmwareConfigurationSegment)
 from chromiumos.config.api.hardware_topology_pb2 import HardwareTopology
@@ -38,28 +38,27 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
         ])
     ])
 
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Config(
-                    hardware_topology=HardwareTopology(
-                        screen=Topology(
-                            type=Topology.SCREEN,
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(
-                                    value=0b0000,
-                                    mask=0b0001,
-                                ))),
-                        form_factor=Topology(
-                            type=Topology.FORM_FACTOR,
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(
-                                    value=0b0010,
-                                    mask=0b0110,
-                                ))),
-                    ))
-            ]),
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(
+                hardware_topology=HardwareTopology(
+                    screen=Topology(
+                        type=Topology.SCREEN,
+                        hardware_feature=HardwareFeatures(
+                            fw_config=FirmwareConfiguration(
+                                value=0b0000,
+                                mask=0b0001,
+                            ))),
+                    form_factor=Topology(
+                        type=Topology.FORM_FACTOR,
+                        hardware_feature=HardwareFeatures(
+                            fw_config=FirmwareConfiguration(
+                                value=0b0010,
+                                mask=0b0110,
+                            ))),
+                ))
+        ]),
+    ])
 
     FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
         program_config=program_config,
@@ -93,21 +92,20 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
         ])
     ])
 
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Config(
-                    hardware_topology=HardwareTopology(
-                        screen=Topology(
-                            id="DEFAULT",
-                            type=Topology.SCREEN,
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(
-                                    value=0b0001,
-                                    mask=0b1111,
-                                ))),))
-            ]),
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(
+                hardware_topology=HardwareTopology(
+                    screen=Topology(
+                        id="DEFAULT",
+                        type=Topology.SCREEN,
+                        hardware_feature=HardwareFeatures(
+                            fw_config=FirmwareConfiguration(
+                                value=0b0001,
+                                mask=0b1111,
+                            ))),))
+        ]),
+    ])
 
     FirmwareConfigurationConstraintSuite().check_firmware_configuration_masks(
         program_config=program_config,
@@ -124,21 +122,20 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
         ])
     ])
 
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Config(
-                    hardware_topology=HardwareTopology(
-                        screen=Topology(
-                            id="DEFAULT",
-                            type=Topology.SCREEN,
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(
-                                    value=0b0001,
-                                    mask=0b0111,
-                                ))),))
-            ]),
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(
+                hardware_topology=HardwareTopology(
+                    screen=Topology(
+                        id="DEFAULT",
+                        type=Topology.SCREEN,
+                        hardware_feature=HardwareFeatures(
+                            fw_config=FirmwareConfiguration(
+                                value=0b0001,
+                                mask=0b0111,
+                            ))),))
+        ]),
+    ])
 
     with self.assertRaisesRegex(
         AssertionError, 'Topology SCREEN:DEFAULT with fw_config mask '
@@ -159,21 +156,20 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
         ])
     ])
 
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Config(
-                    hardware_topology=HardwareTopology(
-                        screen=Topology(
-                            id="DEFAULT",
-                            type=Topology.SCREEN,
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(
-                                    value=0b0001,
-                                    mask=0b0111,
-                                ))),))
-            ]),
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(
+                hardware_topology=HardwareTopology(
+                    screen=Topology(
+                        id="DEFAULT",
+                        type=Topology.SCREEN,
+                        hardware_feature=HardwareFeatures(
+                            fw_config=FirmwareConfiguration(
+                                value=0b0001,
+                                mask=0b0111,
+                            ))),))
+        ]),
+    ])
 
     with self.assertRaisesRegex(
         AssertionError, 'Topology SCREEN:DEFAULT specifies fw_mask '
@@ -186,42 +182,38 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
 
   def test_check_firmware_value_collision(self):
     """Tests check_firmware_value_collision on a valid config."""
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Config(
-                    hardware_topology=HardwareTopology(
-                        # ('screen1', SCREEN) topology uses fw value 0b0001.
-                        screen=Topology(
-                            id='screen1',
-                            type=Topology.SCREEN,
-                            description={'EN': 'First description'},
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(value=0b0001))),
-                        # ('ff1', FORM_FACTOR) topology doesn't specify a fw
-                        # value.
-                        form_factor=Topology(
-                            id='ff1',
-                            type=Topology.FORM_FACTOR,
-                        ),
-                    )),
-                Config(
-                    hardware_topology=HardwareTopology(
-                        # ('screen1', SCREEN) topology is used in a different
-                        # design, again using fw value 0b0001. This is valid,
-                        # because the topology has the same id and type. Note
-                        # that the description is allowed to be different.
-                        screen=Topology(
-                            id='screen1',
-                            type=Topology.SCREEN,
-                            description={
-                                'EN': 'Slightly different description'
-                            },
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(
-                                    value=0b0001))),),),
-            ]),
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(
+                hardware_topology=HardwareTopology(
+                    # ('screen1', SCREEN) topology uses fw value 0b0001.
+                    screen=Topology(
+                        id='screen1',
+                        type=Topology.SCREEN,
+                        description={'EN': 'First description'},
+                        hardware_feature=HardwareFeatures(
+                            fw_config=FirmwareConfiguration(value=0b0001))),
+                    # ('ff1', FORM_FACTOR) topology doesn't specify a fw
+                    # value.
+                    form_factor=Topology(
+                        id='ff1',
+                        type=Topology.FORM_FACTOR,
+                    ),
+                )),
+            Config(
+                hardware_topology=HardwareTopology(
+                    # ('screen1', SCREEN) topology is used in a different
+                    # design, again using fw value 0b0001. This is valid,
+                    # because the topology has the same id and type. Note
+                    # that the description is allowed to be different.
+                    screen=Topology(
+                        id='screen1',
+                        type=Topology.SCREEN,
+                        description={'EN': 'Slightly different description'},
+                        hardware_feature=HardwareFeatures(
+                            fw_config=FirmwareConfiguration(value=0b0001))),),),
+        ]),
+    ])
 
     FirmwareConfigurationConstraintSuite(
     ).check_firmware_configuration_value_collision(
@@ -232,26 +224,25 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
 
   def test_check_firmware_value_collision_invalid_config(self):
     """Tests check_firmware_value_collision on an invalid config."""
-    project_config = ConfigBundle(
-        designs=DesignList(value=[
-            Design(configs=[
-                Config(
-                    hardware_topology=HardwareTopology(
-                        # Both ('screen1', SCREEN) and ('thermal1', THERMAL) use
-                        # fw value 0b0001.
-                        screen=Topology(
-                            id='screen1',
-                            type=Topology.SCREEN,
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(value=0b0001))),
-                        thermal=Topology(
-                            id='thermal1',
-                            type=Topology.THERMAL,
-                            hardware_feature=HardwareFeatures(
-                                fw_config=FirmwareConfiguration(value=0b0001))),
-                    )),
-            ]),
-        ]))
+    project_config = ConfigBundle(design_list=[
+        Design(configs=[
+            Config(
+                hardware_topology=HardwareTopology(
+                    # Both ('screen1', SCREEN) and ('thermal1', THERMAL) use
+                    # fw value 0b0001.
+                    screen=Topology(
+                        id='screen1',
+                        type=Topology.SCREEN,
+                        hardware_feature=HardwareFeatures(
+                            fw_config=FirmwareConfiguration(value=0b0001))),
+                    thermal=Topology(
+                        id='thermal1',
+                        type=Topology.THERMAL,
+                        hardware_feature=HardwareFeatures(
+                            fw_config=FirmwareConfiguration(value=0b0001))),
+                )),
+        ]),
+    ])
 
     with self.assertRaisesRegex(
         AssertionError,
