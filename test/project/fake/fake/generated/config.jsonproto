@@ -311,7 +311,7 @@
                     "value": 32
                   }
                 },
-                "id": "CAMERA",
+                "id": "DEFAULT CAMERA",
                 "type": 7
               },
               "daughterBoard": {
@@ -336,7 +336,7 @@
                     "count": {}
                   }
                 },
-                "id": "DAUGHTER_BOARD",
+                "id": "Default DB",
                 "type": 11
               },
               "fingerprint": {
@@ -457,7 +457,7 @@
               },
               "screen": {
                 "description": {
-                  "EN": "Default screen"
+                  "EN": "Touchscreen"
                 },
                 "hardwareFeature": {
                   "screen": {
@@ -470,7 +470,7 @@
                     "touchSupport": 1
                   }
                 },
-                "id": "SCREEN",
+                "id": "TOUCHSCREEN",
                 "type": 1
               },
               "sdReader": {
@@ -662,7 +662,7 @@
                     "mask": 240
                   }
                 },
-                "id": "CAMERA",
+                "id": "Non-default CAMERA",
                 "type": 7
               },
               "daughterBoard": {
@@ -686,7 +686,7 @@
                     "count": {}
                   }
                 },
-                "id": "DAUGHTER_BOARD",
+                "id": "Non-default DB",
                 "type": 11
               },
               "fingerprint": {
@@ -806,7 +806,7 @@
               },
               "screen": {
                 "description": {
-                  "EN": "Default screen"
+                  "EN": "Touchscreen"
                 },
                 "hardwareFeature": {
                   "screen": {
@@ -819,7 +819,7 @@
                     "touchSupport": 1
                   }
                 },
-                "id": "SCREEN",
+                "id": "TOUCHSCREEN",
                 "type": 1
               },
               "sdReader": {
@@ -1054,7 +1054,7 @@
                     "value": 32
                   }
                 },
-                "id": "CAMERA",
+                "id": "DEFAULT CAMERA",
                 "type": 7
               },
               "daughterBoard": {
@@ -1079,7 +1079,7 @@
                     "count": {}
                   }
                 },
-                "id": "DAUGHTER_BOARD",
+                "id": "Default DB",
                 "type": 11
               },
               "fingerprint": {
@@ -1200,7 +1200,7 @@
               },
               "screen": {
                 "description": {
-                  "EN": "Default screen"
+                  "EN": "Touchscreen"
                 },
                 "hardwareFeature": {
                   "screen": {
@@ -1213,7 +1213,7 @@
                     "touchSupport": 1
                   }
                 },
-                "id": "SCREEN",
+                "id": "TOUCHSCREEN",
                 "type": 1
               },
               "sdReader": {
@@ -1447,7 +1447,7 @@
                     "value": 32
                   }
                 },
-                "id": "CAMERA",
+                "id": "DEFAULT CAMERA",
                 "type": 7
               },
               "daughterBoard": {
@@ -1472,7 +1472,7 @@
                     "count": {}
                   }
                 },
-                "id": "DAUGHTER_BOARD",
+                "id": "Default DB",
                 "type": 11
               },
               "fingerprint": {
@@ -1580,7 +1580,7 @@
               },
               "screen": {
                 "description": {
-                  "EN": "Default screen"
+                  "EN": "Touchscreen"
                 },
                 "hardwareFeature": {
                   "screen": {
@@ -1593,7 +1593,7 @@
                     "touchSupport": 1
                   }
                 },
-                "id": "SCREEN",
+                "id": "TOUCHSCREEN",
                 "type": 1
               },
               "sdReader": {
@@ -1827,7 +1827,7 @@
                     "value": 32
                   }
                 },
-                "id": "CAMERA",
+                "id": "DEFAULT CAMERA",
                 "type": 7
               },
               "daughterBoard": {
@@ -1852,7 +1852,7 @@
                     "count": {}
                   }
                 },
-                "id": "DAUGHTER_BOARD",
+                "id": "Default DB",
                 "type": 11
               },
               "fingerprint": {
@@ -1960,7 +1960,7 @@
               },
               "screen": {
                 "description": {
-                  "EN": "Default screen"
+                  "EN": "Touchscreen"
                 },
                 "hardwareFeature": {
                   "screen": {
@@ -1973,7 +1973,7 @@
                     "touchSupport": 1
                   }
                 },
-                "id": "SCREEN",
+                "id": "TOUCHSCREEN",
                 "type": 1
               },
               "sdReader": {
@@ -2177,7 +2177,7 @@
                     "value": 32
                   }
                 },
-                "id": "CAMERA",
+                "id": "DEFAULT CAMERA",
                 "type": 7
               },
               "daughterBoard": {
@@ -2202,7 +2202,7 @@
                     "count": {}
                   }
                 },
-                "id": "DAUGHTER_BOARD",
+                "id": "Default DB",
                 "type": 11
               },
               "fingerprint": {

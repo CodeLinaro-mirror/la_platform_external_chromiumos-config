@@ -32,13 +32,11 @@ _DESIGN_ID_B = design.create_design_id("PROJECT-B")
 _DESIGN_ID_C = design.create_design_id("PROJECT-C")
 _DESIGN_ID_WL = design.create_design_id("PROJECT-WL")
 
-_DB_FW_MASK = 0x0000000f
-_CAMERA_FW_MASK = 0x000000f0
-_SENSOR_FW_MASK = 0x00000f00
-
 _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
 _SCREEN = hw_topo.create_screen(
+    id = "SCREEN",
+    description = "Default screen",
     inches = 15,
     width_px = 1920,
     height_px = 1080,
@@ -46,6 +44,8 @@ _SCREEN = hw_topo.create_screen(
     touch = False,
 )
 _TOUCHSCREEN = hw_topo.create_screen(
+    id = "TOUCHSCREEN",
+    description = "Touchscreen",
     inches = 15,
     width_px = 1920,
     height_px = 1080,
@@ -56,12 +56,12 @@ _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.au
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
 _KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE)
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
-_CAMERA = hw_topo.create_camera("CAMERA", "Default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 2)], has_user_facing_camera = True)
-_SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor", fw_configs = [hw_topo.make_fw_config(_SENSOR_FW_MASK, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True)
+_CAMERA = hw_topo.create_camera("DEFAULT CAMERA", "Default camera", fw_configs = [hw_topo.make_fw_config(program.fw_masks.CAMERA, 2)], has_user_facing_camera = True)
+_SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor", fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True)
 _FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake-fingerprint-board")
 _NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
-_DAUGHTER_BOARD = hw_topo.create_daughter_board("DAUGHTER_BOARD", "Default daughter_board", fw_configs = [hw_topo.make_fw_config(_DB_FW_MASK, 1)])
+_DAUGHTER_BOARD = hw_topo.create_daughter_board("Default DB", "Default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 1)])
 _NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
 _RAM = hw_topo.create_ram("RAM", "Default ram", gigabytes = 16, type = hw_topo.memory.DDR3, speed_mhz = 3600)
 _WIFI = hw_topo.create_wifi("WIFI", "Default wifi")
@@ -168,8 +168,8 @@ design.append_configs(
         lte_board = _LTE_BOARD,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
-        camera = hw_topo.create_camera("CAMERA", "Non-default camera", fw_configs = [hw_topo.make_fw_config(_CAMERA_FW_MASK, 0)], has_user_facing_camera = True),
-        daughter_board = hw_topo.create_daughter_board("DAUGHTER_BOARD", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(_DB_FW_MASK, 0)]),
+        camera = hw_topo.create_camera("Non-default CAMERA", "Non-default camera", fw_configs = [hw_topo.make_fw_config(program.fw_masks.CAMERA, 0)], has_user_facing_camera = True),
+        daughter_board = hw_topo.create_daughter_board("Non-default DB", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)]),
     ),
     audio = sc.create_audio(
         _AUDIO_CARD,

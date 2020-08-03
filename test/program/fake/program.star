@@ -28,6 +28,18 @@ _QUAL_CONSTRAINTS = comp.create_quals(
     comp.qual_status.QUALIFIED,
 )
 
+_FW_MASKS = struct(
+    DB = 0x0000000F,
+    CAMERA = 0x000000F0,
+    SENSOR = 0x00000F00,
+)
+
+_FIRMWARE_CONFIGURATION_SEGMENTS = [
+    program_util.create_firmware_configuration_segment("Daughter board", _FW_MASKS.DB),
+    program_util.create_firmware_configuration_segment("Camera", _FW_MASKS.CAMERA),
+    program_util.create_firmware_configuration_segment("Sensor", _FW_MASKS.SENSOR),
+]
+
 _FEATURE_CONSTRAINTS = design.create_constraints(
     hw_topo.create_features(),
 )  # Default for now
@@ -55,6 +67,7 @@ _FAKE = program_util.create(
     name = "FAKE_PROGRAM",
     component_quals = _QUAL_CONSTRAINTS,
     constraints = _FEATURE_CONSTRAINTS,
+    firmware_configuration_segments = _FIRMWARE_CONFIGURATION_SEGMENTS,
     device_signer_configs = _SIGNER_CONFIG,
 )
 
@@ -62,6 +75,7 @@ _BUILD_TARGETS = [bt_util.create("fake", "overlay-fake-private")]
 
 program = struct(
     fake = _FAKE,
+    fw_masks = _FW_MASKS,
     components = _QUALIFIED_COMPS,
     bluetooth_component = _FAKE_BT_COMP,
     build_targets = _BUILD_TARGETS,

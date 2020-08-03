@@ -120,6 +120,20 @@
             "keyId": "KEYC"
           }
         ],
+        "firmwareConfigurationSegments": [
+          {
+            "mask": 15,
+            "name": "Daughter board"
+          },
+          {
+            "mask": 240,
+            "name": "Camera"
+          },
+          {
+            "mask": 3840,
+            "name": "Sensor"
+          }
+        ],
         "id": {
           "value": "FAKE_PROGRAM"
         },
