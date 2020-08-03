@@ -2478,120 +2478,118 @@
       }
     ]
   },
-  "partners": {
-    "value": [
-      {
-        "id": {
-          "value": "FAKE-ODM"
-        },
-        "name": "FAKE-ODM"
+  "partnerList": [
+    {
+      "id": {
+        "value": "FAKE-ODM"
       },
-      {
-        "id": {
-          "value": "FAKE-OEM"
-        },
-        "name": "FAKE-OEM"
+      "name": "FAKE-ODM"
+    },
+    {
+      "id": {
+        "value": "FAKE-OEM"
       },
-      {
-        "id": {
-          "value": "FAKE-OEMA"
-        },
-        "name": "FAKE-OEMA"
+      "name": "FAKE-OEM"
+    },
+    {
+      "id": {
+        "value": "FAKE-OEMA"
       },
-      {
-        "id": {
-          "value": "FAKE-OEMB"
-        },
-        "name": "FAKE-OEMB"
+      "name": "FAKE-OEMA"
+    },
+    {
+      "id": {
+        "value": "FAKE-OEMB"
       },
-      {
-        "id": {
-          "value": "FAKE-OEMC"
-        },
-        "name": "FAKE-OEMC"
+      "name": "FAKE-OEMB"
+    },
+    {
+      "id": {
+        "value": "FAKE-OEMC"
       },
-      {
-        "id": {
-          "value": "FAKE-LOEMA"
-        },
-        "name": "FAKE-LOEMA"
+      "name": "FAKE-OEMC"
+    },
+    {
+      "id": {
+        "value": "FAKE-LOEMA"
       },
-      {
-        "id": {
-          "value": "FAKE-LOEMB"
-        },
-        "name": "FAKE-LOEMB"
+      "name": "FAKE-LOEMA"
+    },
+    {
+      "id": {
+        "value": "FAKE-LOEMB"
       },
-      {
-        "id": {
-          "value": "FAKE-LOEMC"
-        },
-        "name": "FAKE-LOEMC"
+      "name": "FAKE-LOEMB"
+    },
+    {
+      "id": {
+        "value": "FAKE-LOEMC"
       },
-      {
-        "displayPanelVendor": {
-          "vendorCode": "AUO"
-        },
-        "id": {
-          "value": "AUO"
-        },
-        "name": "AUO"
+      "name": "FAKE-LOEMC"
+    },
+    {
+      "displayPanelVendor": {
+        "vendorCode": "AUO"
       },
-      {
-        "displayPanelVendor": {
-          "vendorCode": "BOE"
-        },
-        "id": {
-          "value": "BOE"
-        },
-        "name": "BOE"
+      "id": {
+        "value": "AUO"
       },
-      {
-        "id": {
-          "value": "elants"
-        },
-        "name": "elants",
-        "touchVendor": {
-          "destinationFileFormat": "{product_id}_{fw_version}.bin",
-          "symlinkFileFormat": "elants_i2c_{product_id}.bin",
-          "vendorId": "04F3"
-        }
+      "name": "AUO"
+    },
+    {
+      "displayPanelVendor": {
+        "vendorCode": "BOE"
       },
-      {
-        "id": {
-          "value": "sis"
-        },
-        "name": "sis",
-        "touchVendor": {
-          "destinationFileFormat": "{product_id}_{fw_version}.bin",
-          "symlinkFileFormat": "sis_{product_id}.bin",
-          "vendorId": "0457"
-        }
+      "id": {
+        "value": "BOE"
       },
-      {
-        "id": {
-          "value": "elan"
-        },
-        "name": "elan",
-        "touchVendor": {
-          "destinationFileFormat": "{product_id}_{fw_version}.bin",
-          "symlinkFileFormat": "elan_i2c_{product_id}.bin",
-          "vendorId": "04F3"
-        }
+      "name": "BOE"
+    },
+    {
+      "id": {
+        "value": "elants"
       },
-      {
-        "id": {
-          "value": "synaptics"
-        },
-        "name": "synaptics",
-        "touchVendor": {
-          "destinationFileFormat": "{product_id}_{fw_version}.bin",
-          "symlinkFileFormat": "hid-{vendor_id}_{product_id}",
-          "vendorId": "06CB"
-        }
+      "name": "elants",
+      "touchVendor": {
+        "destinationFileFormat": "{product_id}_{fw_version}.bin",
+        "symlinkFileFormat": "elants_i2c_{product_id}.bin",
+        "vendorId": "04F3"
       }
-    ]
-  },
+    },
+    {
+      "id": {
+        "value": "sis"
+      },
+      "name": "sis",
+      "touchVendor": {
+        "destinationFileFormat": "{product_id}_{fw_version}.bin",
+        "symlinkFileFormat": "sis_{product_id}.bin",
+        "vendorId": "0457"
+      }
+    },
+    {
+      "id": {
+        "value": "elan"
+      },
+      "name": "elan",
+      "touchVendor": {
+        "destinationFileFormat": "{product_id}_{fw_version}.bin",
+        "symlinkFileFormat": "elan_i2c_{product_id}.bin",
+        "vendorId": "04F3"
+      }
+    },
+    {
+      "id": {
+        "value": "synaptics"
+      },
+      "name": "synaptics",
+      "touchVendor": {
+        "destinationFileFormat": "{product_id}_{fw_version}.bin",
+        "symlinkFileFormat": "hid-{vendor_id}_{product_id}",
+        "vendorId": "06CB"
+      }
+    }
+  ],
   "programs": {},
   "softwareConfigs": [
     {

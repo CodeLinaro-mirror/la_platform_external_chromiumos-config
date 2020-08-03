@@ -642,16 +642,6 @@ partner.create()
 
 
 
-### partner.create_list {#partner.create_list}
-Builds a PartnerList proto.
-
-```python
-partner.create_list()
-```
-
-
-
-
 
 ## //config/util/program.star
 

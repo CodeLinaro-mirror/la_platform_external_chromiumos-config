@@ -48,16 +48,11 @@ def _create(name):
         name = name,
     )
 
-def _create_list(partners):
-    """Builds a PartnerList proto."""
-    return partner_pb.PartnerList(value = partners)
-
 _WACOM_FW_FORMAT = "_firmware_{vendor_id}_{product_id}.hex"
 _EMRIGHT_FW_FORMAT = "emright_firmware_{vendor_id}_{product_id}.bin"
 
 partner = struct(
     create = _create,
-    create_list = _create_list,
     display_panel = struct(
         AUO = _create_display_partner(
             vendor_code = "AUO",
