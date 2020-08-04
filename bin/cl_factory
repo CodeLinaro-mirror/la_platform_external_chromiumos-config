@@ -11,6 +11,8 @@ import re
 import subprocess
 import sys
 
+from shlex import quote
+
 
 def Main(args):  # pylint: disable=invalid-name
   """Wrapper around `bb add` invocation to invoke cl_factory.
@@ -65,7 +67,7 @@ TEST=CQ"
     cmd.extend(
         ['-p', '\'replace_strings={}\''.format(json.dumps(replace_strings))])
 
-  cmd.extend(['-p', '\'message_template={}\''.format(args.message)])
+  cmd.extend(['-p', quote('message_template={}'.format(args.message))])
   cmd.append('chromeos/infra/ClFactory')
 
   cmd = ' '.join(cmd)
