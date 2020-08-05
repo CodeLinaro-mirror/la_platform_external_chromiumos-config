@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n#chromiumos/config/api/partner.proto\x12\x15\x63hromiumos.config.api\x1a&chromiumos/config/api/partner_id.proto\"\xe4\x03\n\x07Partner\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x65mail_group\x18\x03 \x01(\t\x12@\n\x0ctouch_vendor\x18\x04 \x01(\x0b\x32*.chromiumos.config.api.Partner.TouchVendor\x12O\n\x14\x64isplay_panel_vendor\x18\x05 \x01(\x0b\x32\x31.chromiumos.config.api.Partner.DisplayPanelVendor\x12\x44\n\x0e\x62\x61ttery_vendor\x18\x06 \x01(\x0b\x32,.chromiumos.config.api.Partner.BatteryVendor\x1a^\n\x0bTouchVendor\x12\x11\n\tvendor_id\x18\x04 \x01(\t\x12\x1b\n\x13symlink_file_format\x18\x05 \x01(\t\x12\x1f\n\x17\x64\x65stination_file_format\x18\x06 \x01(\t\x1a)\n\x12\x44isplayPanelVendor\x12\x13\n\x0bvendor_code\x18\x01 \x01(\t\x1a$\n\rBatteryVendor\x12\x13\n\x0bvendor_name\x18\x04 \x01(\t\"<\n\x0bPartnerList\x12-\n\x05value\x18\x01 \x03(\x0b\x32\x1e.chromiumos.config.api.PartnerB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n#chromiumos/config/api/partner.proto\x12\x15\x63hromiumos.config.api\x1a&chromiumos/config/api/partner_id.proto\"\xe4\x03\n\x07Partner\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x65mail_group\x18\x03 \x01(\t\x12@\n\x0ctouch_vendor\x18\x04 \x01(\x0b\x32*.chromiumos.config.api.Partner.TouchVendor\x12O\n\x14\x64isplay_panel_vendor\x18\x05 \x01(\x0b\x32\x31.chromiumos.config.api.Partner.DisplayPanelVendor\x12\x44\n\x0e\x62\x61ttery_vendor\x18\x06 \x01(\x0b\x32,.chromiumos.config.api.Partner.BatteryVendor\x1a^\n\x0bTouchVendor\x12\x11\n\tvendor_id\x18\x04 \x01(\t\x12\x1b\n\x13symlink_file_format\x18\x05 \x01(\t\x12\x1f\n\x17\x64\x65stination_file_format\x18\x06 \x01(\t\x1a)\n\x12\x44isplayPanelVendor\x12\x13\n\x0bvendor_code\x18\x01 \x01(\t\x1a$\n\rBatteryVendor\x12\x13\n\x0bvendor_name\x18\x04 \x01(\tB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_partner__id__pb2.DESCRIPTOR,])
 
@@ -196,37 +196,6 @@ _PARTNER = _descriptor.Descriptor(
   serialized_end=587,
 )
 
-
-_PARTNERLIST = _descriptor.Descriptor(
-  name='PartnerList',
-  full_name='chromiumos.config.api.PartnerList',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='value', full_name='chromiumos.config.api.PartnerList.value', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=589,
-  serialized_end=649,
-)
-
 _PARTNER_TOUCHVENDOR.containing_type = _PARTNER
 _PARTNER_DISPLAYPANELVENDOR.containing_type = _PARTNER
 _PARTNER_BATTERYVENDOR.containing_type = _PARTNER
@@ -234,9 +203,7 @@ _PARTNER.fields_by_name['id'].message_type = chromiumos_dot_config_dot_api_dot_p
 _PARTNER.fields_by_name['touch_vendor'].message_type = _PARTNER_TOUCHVENDOR
 _PARTNER.fields_by_name['display_panel_vendor'].message_type = _PARTNER_DISPLAYPANELVENDOR
 _PARTNER.fields_by_name['battery_vendor'].message_type = _PARTNER_BATTERYVENDOR
-_PARTNERLIST.fields_by_name['value'].message_type = _PARTNER
 DESCRIPTOR.message_types_by_name['Partner'] = _PARTNER
-DESCRIPTOR.message_types_by_name['PartnerList'] = _PARTNERLIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Partner = _reflection.GeneratedProtocolMessageType('Partner', (_message.Message,), dict(
@@ -269,13 +236,6 @@ _sym_db.RegisterMessage(Partner)
 _sym_db.RegisterMessage(Partner.TouchVendor)
 _sym_db.RegisterMessage(Partner.DisplayPanelVendor)
 _sym_db.RegisterMessage(Partner.BatteryVendor)
-
-PartnerList = _reflection.GeneratedProtocolMessageType('PartnerList', (_message.Message,), dict(
-  DESCRIPTOR = _PARTNERLIST,
-  __module__ = 'chromiumos.config.api.partner_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.PartnerList)
-  ))
-_sym_db.RegisterMessage(PartnerList)
 
 
 DESCRIPTOR._options = None

@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n(chromiumos/config/api/device_brand.proto\x12\x15\x63hromiumos.config.api\x1a%chromiumos/config/api/design_id.proto\x1a+chromiumos/config/api/device_brand_id.proto\x1a&chromiumos/config/api/partner_id.proto\"\xcd\x01\n\x0b\x44\x65viceBrand\x12\x30\n\x02id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.DeviceBrandId\x12\x32\n\tdesign_id\x18\x02 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x30\n\x06oem_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x12\n\nbrand_code\x18\x04 \x01(\t\x12\x12\n\nbrand_name\x18\x05 \x01(\t\"D\n\x0f\x44\x65viceBrandList\x12\x31\n\x05value\x18\x01 \x03(\x0b\x32\".chromiumos.config.api.DeviceBrandB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n(chromiumos/config/api/device_brand.proto\x12\x15\x63hromiumos.config.api\x1a%chromiumos/config/api/design_id.proto\x1a+chromiumos/config/api/device_brand_id.proto\x1a&chromiumos/config/api/partner_id.proto\"\xcd\x01\n\x0b\x44\x65viceBrand\x12\x30\n\x02id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.DeviceBrandId\x12\x32\n\tdesign_id\x18\x02 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x30\n\x06oem_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x12\n\nbrand_code\x18\x04 \x01(\t\x12\x12\n\nbrand_name\x18\x05 \x01(\tB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_design__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_device__brand__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__id__pb2.DESCRIPTOR,])
 
@@ -87,43 +87,10 @@ _DEVICEBRAND = _descriptor.Descriptor(
   serialized_end=397,
 )
 
-
-_DEVICEBRANDLIST = _descriptor.Descriptor(
-  name='DeviceBrandList',
-  full_name='chromiumos.config.api.DeviceBrandList',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='value', full_name='chromiumos.config.api.DeviceBrandList.value', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=399,
-  serialized_end=467,
-)
-
 _DEVICEBRAND.fields_by_name['id'].message_type = chromiumos_dot_config_dot_api_dot_device__brand__id__pb2._DEVICEBRANDID
 _DEVICEBRAND.fields_by_name['design_id'].message_type = chromiumos_dot_config_dot_api_dot_design__id__pb2._DESIGNID
 _DEVICEBRAND.fields_by_name['oem_id'].message_type = chromiumos_dot_config_dot_api_dot_partner__id__pb2._PARTNERID
-_DEVICEBRANDLIST.fields_by_name['value'].message_type = _DEVICEBRAND
 DESCRIPTOR.message_types_by_name['DeviceBrand'] = _DEVICEBRAND
-DESCRIPTOR.message_types_by_name['DeviceBrandList'] = _DEVICEBRANDLIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 DeviceBrand = _reflection.GeneratedProtocolMessageType('DeviceBrand', (_message.Message,), dict(
@@ -132,13 +99,6 @@ DeviceBrand = _reflection.GeneratedProtocolMessageType('DeviceBrand', (_message.
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.DeviceBrand)
   ))
 _sym_db.RegisterMessage(DeviceBrand)
-
-DeviceBrandList = _reflection.GeneratedProtocolMessageType('DeviceBrandList', (_message.Message,), dict(
-  DESCRIPTOR = _DEVICEBRANDLIST,
-  __module__ = 'chromiumos.config.api.device_brand_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.DeviceBrandList)
-  ))
-_sym_db.RegisterMessage(DeviceBrandList)
 
 
 DESCRIPTOR._options = None

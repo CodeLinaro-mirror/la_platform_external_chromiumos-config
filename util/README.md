@@ -280,9 +280,6 @@ design.create_design()
 
 
 
-### design.create_design_list {#design.create_design_list}
-Builds a DesignList proto.
-
 ```python
 design.create_design_list()
 ```

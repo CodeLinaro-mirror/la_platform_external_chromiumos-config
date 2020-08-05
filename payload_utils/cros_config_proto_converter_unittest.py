@@ -95,7 +95,7 @@ class TransformBuildConfigsTest(unittest.TestCase):
 
   def test_empty_device_brand(self):
     config = fake_config()
-    config.ClearField('device_brands')
+    config.ClearField('device_brand_list')
     # Signer configs tied to device brands, so need to clear that also
     config.program_list[0].ClearField('device_signer_configs')
 

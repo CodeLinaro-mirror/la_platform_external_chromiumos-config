@@ -101,7 +101,3 @@ message Design {
     reserved 4, 7;
   }
 }
-
-message DesignList {
-  repeated Design value = 1;
-}

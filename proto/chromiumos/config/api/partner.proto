@@ -67,7 +67,3 @@ message Partner {
     string vendor_name = 4;
   }
 }
-
-message PartnerList {
-  repeated Partner value = 1;
-}

@@ -26,7 +26,3 @@ message DeviceBrand {
   // Brand marketing name.
   string brand_name = 5;
 }
-
-message DeviceBrandList {
-  repeated DeviceBrand value = 1;
-}
