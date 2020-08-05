@@ -56,7 +56,6 @@ TEST=CQ"
     cmd.extend(['-cl', cl])
 
   cmd.extend(csv_param('repo_regexes', args.regex))
-  cmd.extend(['-p', 'command=gen_config'])
   cmd.extend(csv_param('reviewers', args.reviewers))
   cmd.extend(csv_param('ccs', args.ccs))
   cmd.extend(csv_param('hashtags', args.hashtag))
