@@ -8,9 +8,14 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
 package chromiumos.config.api.software;
 
+import "chromiumos/config/public_replication/public_replication.proto";
+
 // Note that all files should be specified as paths relative to the root of a
 // chromiumos checkout, e.g. "src/overlays/overlay-<target>/audio/HiFi.conf".
 message AudioConfig {
+  // Configures fields of AudioConfig that are made public.
+  chromiumos.config.public_replication.PublicReplication public_replication = 9;
+
   // The name of the audio card.
   string card_name = 1;
 

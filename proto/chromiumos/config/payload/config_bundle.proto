@@ -18,7 +18,7 @@ import "chromiumos/config/api/software/software_config.proto";
 option go_package = "go.chromium.org/chromiumos/config/go/payload";
 
 // Defines a config payload that can be generated from a given config git
-// repo.  Based on the distributed nature of the config, these bundles are then
+// repo. Based on the distributed nature of the config, these bundles are then
 // eventually stitched together to drive build config payloads or any
 // infra/analysis related access/processing.
 message ConfigBundle {
@@ -35,3 +35,4 @@ message ConfigBundle {
 
   reserved 2, 6, 7;
 }
+

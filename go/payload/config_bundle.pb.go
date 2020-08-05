@@ -23,7 +23,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Defines a config payload that can be generated from a given config git
-// repo.  Based on the distributed nature of the config, these bundles are then
+// repo. Based on the distributed nature of the config, these bundles are then
 // eventually stitched together to drive build config payloads or any
 // infra/analysis related access/processing.
 type ConfigBundle struct {
