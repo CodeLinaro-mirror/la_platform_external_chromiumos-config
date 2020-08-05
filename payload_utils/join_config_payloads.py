@@ -525,16 +525,15 @@ def merge_hardware_props(hw_feat, model):
   Returns:
     None
   """
-  present = topology_pb2.HardwareFeatures.Present
   form_factor = topology_pb2.HardwareFeatures.FormFactor
   stylus = topology_pb2.HardwareFeatures.Stylus
 
   def kw_to_present(config, key):
     if not key in config:
-      return present.PRESENT_UNKNOWN
+      return topology_pb2.HardwareFeatures.PRESENT_UNKNOWN
     if config[key]:
-      return present.PRESENT
-    return present.NOT_PRESENT
+      return topology_pb2.HardwareFeatures.PRESENT
+    return topology_pb2.HardwareFeatures.NOT_PRESENT
 
   hw_props = model.GetProperties('/hardware-properties')
 
