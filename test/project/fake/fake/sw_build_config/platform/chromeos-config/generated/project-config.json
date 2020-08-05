@@ -438,8 +438,8 @@
             "product": "fake"
           },
           "camera-characteristics": {
-            "build-path": "sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
-            "system-path": "/etc/arc/camera_characteristics.conf"
+            "build-path": "sw_build_config/platform/chromeos-config/arc/project-b/camera_characteristics.conf",
+            "system-path": "/etc/arc/camera_characteristics_project-b.conf"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-b.xml",

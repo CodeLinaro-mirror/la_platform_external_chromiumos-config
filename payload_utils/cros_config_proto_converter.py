@@ -845,7 +845,7 @@ def _config_map(configs, config_dir, config_file, system_dir):
   result = {}
   # Looking at top level for project wide, and then for each design name
   # for design specific.
-  dirs = [""] + [d.name for d in configs.designs.value]
+  dirs = [""] + [d.name for d in configs.design_list]
   for directory in dirs:
     design = directory.lower()
     build_path = os.path.join(config_dir, design, config_file)
