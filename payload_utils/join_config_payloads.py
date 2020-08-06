@@ -447,19 +447,19 @@ def merge_firmware_config(sw_config, model):
 
   # Populate firmware config
   fw_config = sw_config.firmware
-  fw_config.main_ro_payload.type = firmware_config_pb2.FirmwareType.Type.MAIN
+  fw_config.main_ro_payload.type = firmware_config_pb2.FirmwareType.MAIN
   fw_config.main_ro_payload.firmware_image_name = \
       fw_props.get('main-ro-image', '')
 
-  fw_config.main_rw_payload.type = firmware_config_pb2.FirmwareType.Type.MAIN
+  fw_config.main_rw_payload.type = firmware_config_pb2.FirmwareType.MAIN
   fw_config.main_rw_payload.firmware_image_name = \
       fw_props.get('main-rw-image', '')
 
-  fw_config.ec_ro_payload.type = firmware_config_pb2.FirmwareType.Type.EC
+  fw_config.ec_ro_payload.type = firmware_config_pb2.FirmwareType.EC
   fw_config.ec_ro_payload.firmware_image_name = \
       fw_props.get('ec-ro-image', '')
 
-  fw_config.pd_ro_payload.type = firmware_config_pb2.FirmwareType.Type.PD
+  fw_config.pd_ro_payload.type = firmware_config_pb2.FirmwareType.PD
   fw_config.pd_ro_payload.firmware_image_name = \
       fw_props.get('pd-ro-image', '')
 
