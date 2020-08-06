@@ -823,7 +823,7 @@ def _camera_map(configs, project_name):
   return result
 
 
-def _config_map(configs, config_dir, config_file, system_dir):
+def _config_map(configs, project_name, config_dir, config_file, system_dir):
   """Produces a config map for the given configs.
 
   Produces a map that maps from design name to the config file for that
@@ -835,6 +835,7 @@ def _config_map(configs, config_dir, config_file, system_dir):
 
   Args:
     configs: Source ConfigBundle to process.
+    project_name: Name of project processing for.
     config_dir: Path to the directory containing configuration files.
     config_file: Name of the configuration files.
     system_dir: Base directory for the output system path.
@@ -848,13 +849,14 @@ def _config_map(configs, config_dir, config_file, system_dir):
   dirs = [""] + [d.name for d in configs.design_list]
   for directory in dirs:
     design = directory.lower()
-    build_path = os.path.join(config_dir, design, config_file)
-    if os.path.exists(build_path):
+    config_file_path = os.path.join(config_dir, design, config_file)
+    if os.path.exists(config_file_path):
+      build_path = os.path.join(project_name, config_file_path)
       if design:
         system_file = config_file.replace('.', '_{}.'.format(design))
       else:
         system_file = config_file
-      system_path = os.path.join(system_dir, system_file)
+      system_path = os.path.join(system_dir, project_name, system_file)
       result[directory] = _file_v2(build_path, system_path)
   return result
 
@@ -928,7 +930,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
     # without having portage file installation collisions.
     build_root_dir = os.path.join(project_name, output_dir)
 
-    arc_camera_map = _config_map(configs, ARC_CONFIG_PATH,
+    arc_camera_map = _config_map(configs, project_name, ARC_CONFIG_PATH,
                                  ARC_CAMERA_CHARACTERISTICS_FILE, '/etc/arc')
     camera_map = _camera_map(configs, project_name)
     dptf_map = _dptf_map(configs, project_name)
