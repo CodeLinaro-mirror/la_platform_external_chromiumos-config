@@ -576,6 +576,7 @@ def _transform_build_config(config, config_files):
   _upsert(_build_arc(config, config_files), result, 'arc')
   _upsert(_build_audio(config), result, 'audio')
   _upsert(_build_bluetooth(config, config_files.bluetooth), result, 'bluetooth')
+  _upsert(config.brand_config.wallpaper, result, 'wallpaper')
   _upsert(config.device_brand.brand_code, result, 'brand-code')
   _upsert(
       _build_camera(config.hw_design_config.hardware_topology), result,

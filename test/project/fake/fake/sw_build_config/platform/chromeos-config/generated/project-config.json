@@ -141,7 +141,8 @@
             "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg",
             "--has-internal-stylus"
           ]
-        }
+        },
+        "wallpaper": "fake-wallpaper"
       },
       {
         "arc": {
@@ -270,7 +271,8 @@
             "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg",
             "--has-internal-stylus"
           ]
-        }
+        },
+        "wallpaper": "fake-wallpaper"
       },
       {
         "arc": {
