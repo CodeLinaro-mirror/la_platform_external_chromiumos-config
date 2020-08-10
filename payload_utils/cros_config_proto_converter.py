@@ -3,6 +3,7 @@
 # Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
+# pylint: disable=too-many-lines
 """Transforms config from /config/proto/api proto format to platform JSON."""
 
 import argparse
@@ -209,6 +210,49 @@ def _build_bluetooth(config, bluetooth_files):
     bt_id = _bluetooth_id(config.hw_design.name.lower(), bt_comp)
     if bt_id in bluetooth_files:
       result['config'] = bluetooth_files[bt_id]
+  return result
+
+
+def _build_wifi(config):
+  result = {}
+  if config.sw_config.wifi_config.HasField('ath10k_config'):
+    ath10k_config = config.sw_config.wifi_config.ath10k_config
+
+    def power_chain(power):
+      return {
+          'limit-2g': power.limit_2g,
+          'limit-5g': power.limit_5g,
+      }
+
+    result['tablet-mode-power-table-ath10k'] = power_chain(
+        ath10k_config.tablet_mode_power_table)
+    result['non-tablet-mode-power-table-ath10k'] = power_chain(
+        ath10k_config.non_tablet_mode_power_table)
+  elif config.sw_config.wifi_config.HasField('rtw88_config'):
+    rtw88_config = config.sw_config.wifi_config.rtw88_config
+
+    def power_chain(power):
+      return {
+          'limit-2g': power.limit_2g,
+          'limit-5g-1': power.limit_5g_1,
+          'limit-5g-3': power.limit_5g_3,
+          'limit-5g-4': power.limit_5g_4,
+      }
+
+    result['tablet-mode-power-table-rtw'] = power_chain(
+        rtw88_config.tablet_mode_power_table)
+    result['non-tablet-mode-power-table-rtw'] = power_chain(
+        rtw88_config.non_tablet_mode_power_table)
+
+    def offsets(offset):
+      return {
+          'offset-2g': offset.offset_2g,
+          'offset-5g': offset.offset_5g,
+      }
+
+    result['geo-offsets-fcc'] = offsets(rtw88_config.offset_fcc)
+    result['geo-offsets-eu'] = offsets(rtw88_config.offset_eu)
+    result['geo-offsets-rest-of-world'] = offsets(rtw88_config.offset_other)
   return result
 
 
@@ -576,6 +620,7 @@ def _transform_build_config(config, config_files):
   _upsert(_build_arc(config, config_files), result, 'arc')
   _upsert(_build_audio(config), result, 'audio')
   _upsert(_build_bluetooth(config, config_files.bluetooth), result, 'bluetooth')
+  _upsert(_build_wifi(config), result, 'wifi')
   _upsert(config.brand_config.wallpaper, result, 'wallpaper')
   _upsert(config.device_brand.brand_code, result, 'brand-code')
   _upsert(

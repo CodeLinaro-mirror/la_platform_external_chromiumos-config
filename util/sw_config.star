@@ -29,6 +29,10 @@ load(
     "@proto//chromiumos/config/api/software/software_config.proto",
     sc_pb = "chromiumos.config.api.software",
 )
+load(
+    "@proto//chromiumos/config/api/software/wifi_config.proto",
+    wf_pb = "chromiumos.config.api.software",
+)
 
 _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,
@@ -210,6 +214,66 @@ def _create_power(preferences):
     """Builds a PowerConfig proto."""
     return pc_pb.PowerConfig(preferences = preferences)
 
+def _create_ath10k(limit_2g, limit_5g, tablet_limit_2g, tablet_limit_5g):
+    """Builds a WifiConfig proto for use with ath10k drivers."""
+    return wf_pb.WifiConfig(
+        ath10k_config = wf_pb.WifiConfig.Ath10kConfig(
+            tablet_mode_power_table = wf_pb.WifiConfig.Ath10kConfig.TransmitPowerChain(
+                limit_2g = tablet_limit_2g,
+                limit_5g = tablet_limit_5g,
+            ),
+            non_tablet_mode_power_table = wf_pb.WifiConfig.Ath10kConfig.TransmitPowerChain(
+                limit_2g = limit_2g,
+                limit_5g = limit_5g,
+            ),
+        ),
+    )
+
+def _create_rtw88(
+        limit_2g,
+        limit_5g_1,
+        limit_5g_3,
+        limit_5g_4,
+        tablet_limit_2g,
+        tablet_limit_5g_1,
+        tablet_limit_5g_3,
+        tablet_limit_5g_4,
+        fcc_offset_2g = 0,
+        fcc_offset_5g = 0,
+        eu_offset_2g = 0,
+        eu_offset_5g = 0,
+        other_offset_2g = 0,
+        other_offset_5g = 0):
+    """Builds a WifiConfig proto for use with rtw88 drivers."""
+    return wf_pb.WifiConfig(
+        rtw88_config = wf_pb.WifiConfig.Rtw88Config(
+            tablet_mode_power_table = wf_pb.WifiConfig.Rtw88Config.TransmitPowerChain(
+                limit_2g = tablet_limit_2g,
+                limit_5g_1 = tablet_limit_5g_1,
+                limit_5g_3 = tablet_limit_5g_3,
+                limit_5g_4 = tablet_limit_5g_4,
+            ),
+            non_tablet_mode_power_table = wf_pb.WifiConfig.Rtw88Config.TransmitPowerChain(
+                limit_2g = limit_2g,
+                limit_5g_1 = limit_5g_1,
+                limit_5g_3 = limit_5g_3,
+                limit_5g_4 = limit_5g_4,
+            ),
+            offset_fcc = wf_pb.WifiConfig.Rtw88Config.GeoOffsets(
+                offset_2g = fcc_offset_2g,
+                offset_5g = fcc_offset_5g,
+            ),
+            offset_eu = wf_pb.WifiConfig.Rtw88Config.GeoOffsets(
+                offset_2g = eu_offset_2g,
+                offset_5g = eu_offset_5g,
+            ),
+            offset_other = wf_pb.WifiConfig.Rtw88Config.GeoOffsets(
+                offset_2g = other_offset_2g,
+                offset_5g = other_offset_5g,
+            ),
+        ),
+    )
+
 def _create(
         design_config_id = None,
         id_scan_config = None,
@@ -217,7 +281,8 @@ def _create(
         firmware_build_config = None,
         bluetooth = None,
         power = None,
-        audio = None):
+        audio = None,
+        wifi = None):
     """Deprecated. Use append_configs instead."""
     return sc_pb.SoftwareConfig(
         design_config_id = design_config_id,
@@ -227,11 +292,13 @@ def _create(
         bluetooth_config = bluetooth,
         power_config = power,
         audio_config = audio,
+        wifi_config = wifi,
     )
 
 sw_config = struct(
     # Deprecated. Use append_configs instead
     create = _create,
+    create_ath10k = _create_ath10k,
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
     # Deprecated. Use append_configs instead
@@ -246,5 +313,6 @@ sw_config = struct(
     create_fw_build_config_by_names = _create_fw_build_config_by_names,
     create_fw_build_targets = _create_fw_build_targets,
     create_power = _create_power,
+    create_rtw88 = _create_rtw88,
     fw_type = _FW_TYPE,
 )

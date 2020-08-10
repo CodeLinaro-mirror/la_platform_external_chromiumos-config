@@ -52,6 +52,7 @@ def _append_configs(
         bluetooth = None,
         power = None,
         audio = None,
+        wifi = None,
         smbios_name_match_override = None):
     """Creates and appends new SW and HW configs.
 
@@ -94,6 +95,7 @@ def _append_configs(
             sw_config.audio_configs.extend(audio)
         else:
             sw_config.audio_configs.append(audio)
+    sw_config.wifi_config = wifi
     sw_configs.append(sw_config)
 
 def _create_design_id(name):
