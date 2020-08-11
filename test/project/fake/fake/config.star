@@ -85,7 +85,13 @@ _VOLUME_BUTTON = hw_topo.create_volume_button(
 _AUDIO_CARD = "fakeaudiocard"
 
 _SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True})
-_SC_POWER = sc.create_power(preferences = {"battery-poll-interval-initial-ms": "1000", "disable-dark-resume": "0"})
+_SC_POWER = sc.create_power(
+    preferences = {
+        "battery-poll-interval-initial-ms": "1000",
+        "disable-dark-resume": "0",
+        "set-wifi-transmit-power-for-tablet-mode": "1",
+    },
+)
 
 def create_hardware_topology(
         screen = None,

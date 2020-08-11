@@ -91,7 +91,8 @@
         "name": "fake-ref-design",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -232,7 +233,8 @@
         "name": "fake-ref-design",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -414,7 +416,8 @@
         "name": "project-a",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -552,7 +555,8 @@
         "name": "project-b",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -688,7 +692,8 @@
         "name": "project-c",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "thermal": {
           "dptf-dv": "fake/project-c/dptf.dv",
@@ -825,7 +830,8 @@
         "name": "project-wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -961,7 +967,8 @@
         "name": "project-wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -1097,7 +1104,8 @@
         "name": "project-wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",

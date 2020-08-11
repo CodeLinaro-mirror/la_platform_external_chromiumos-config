@@ -87,7 +87,8 @@
         "name": "fake-ref-design",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
           "extra-ash-flags": [
@@ -191,7 +192,8 @@
         "name": "fake-ref-design",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
           "extra-ash-flags": [
@@ -331,7 +333,8 @@
         "name": "project-a",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
           "extra-ash-flags": [
@@ -432,7 +435,8 @@
         "name": "project-b",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
           "extra-ash-flags": [
@@ -531,7 +535,8 @@
         "name": "project-c",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
           "extra-ash-flags": [
@@ -631,7 +636,8 @@
         "name": "project-wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
           "extra-ash-flags": [
@@ -730,7 +736,8 @@
         "name": "project-wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
           "extra-ash-flags": [
@@ -829,7 +836,8 @@
         "name": "project-wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0"
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
           "extra-ash-flags": [
