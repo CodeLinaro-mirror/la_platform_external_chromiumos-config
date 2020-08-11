@@ -44,10 +44,6 @@
           }
         },
         "bluetooth": {
-          "config": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/bluetooth/fake-ref-design_0001_0002_0003.conf",
-            "system-path": "/etc/bluetooth/fake-ref-design_0001_0002_0003/main.conf"
-          },
           "flags": {
             "enable-suspend-management": true
           }
@@ -364,10 +360,6 @@
           }
         },
         "bluetooth": {
-          "config": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/bluetooth/project-a_0001_0002_0003.conf",
-            "system-path": "/etc/bluetooth/project-a_0001_0002_0003/main.conf"
-          },
           "flags": {
             "enable-suspend-management": true
           }
@@ -512,10 +504,6 @@
           }
         },
         "bluetooth": {
-          "config": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/bluetooth/project-b_0001_0002_0003.conf",
-            "system-path": "/etc/bluetooth/project-b_0001_0002_0003/main.conf"
-          },
           "flags": {
             "enable-suspend-management": true
           }
@@ -649,10 +637,6 @@
           }
         },
         "bluetooth": {
-          "config": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/bluetooth/project-c_0001_0002_0003.conf",
-            "system-path": "/etc/bluetooth/project-c_0001_0002_0003/main.conf"
-          },
           "flags": {
             "enable-suspend-management": true
           }

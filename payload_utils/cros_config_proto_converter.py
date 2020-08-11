@@ -3,7 +3,6 @@
 # Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-# pylint: disable=too-many-lines
 """Transforms config from /config/proto/api proto format to platform JSON."""
 
 import argparse
@@ -31,10 +30,9 @@ Config = namedtuple('Config', [
     'device_signer_config', 'oem', 'sw_config', 'brand_config', 'build_target'
 ])
 
-ConfigFiles = namedtuple('ConfigFiles', [
-    'bluetooth', 'arc_hw_features', 'touch_fw', 'dptf_map', 'camera_map',
-    'arc_camera_map'
-])
+ConfigFiles = namedtuple(
+    'ConfigFiles',
+    ['arc_hw_features', 'touch_fw', 'dptf_map', 'camera_map', 'arc_camera_map'])
 
 ARC_CONFIG_PATH = 'sw_build_config/platform/chromeos-config/arc'
 ARC_CAMERA_CHARACTERISTICS_FILE = 'camera_characteristics.conf'
@@ -198,18 +196,13 @@ def _build_ui(config: Config) -> dict:
   return {'extra-ash-flags': _build_ash_flags(config)}
 
 
-def _build_bluetooth(config, bluetooth_files):
+def _build_bluetooth(config):
   bt_flags = config.sw_config.bluetooth_config.flags
   # Convert to native map (from proto wrapper)
   bt_flags_map = dict(bt_flags)
   result = {}
   if bt_flags_map:
     result['flags'] = bt_flags_map
-  bt_comp = config.hw_design_config.hardware_features.bluetooth.component.usb
-  if bt_comp.vendor_id:
-    bt_id = _bluetooth_id(config.hw_design.name.lower(), bt_comp)
-    if bt_id in bluetooth_files:
-      result['config'] = bluetooth_files[bt_id]
   return result
 
 
@@ -507,7 +500,7 @@ def _build_touch_file_config(config, project_name):
 
 
 def _transform_build_configs(config,
-                             config_files=ConfigFiles({}, {}, {}, {}, {}, {})):
+                             config_files=ConfigFiles({}, {}, {}, {}, {})):
   # pylint: disable=too-many-locals,too-many-branches
   partners = {x.id.value: x for x in config.partner_list}
   programs = {x.id.value: x for x in config.program_list}
@@ -619,7 +612,7 @@ def _transform_build_config(config, config_files):
 
   _upsert(_build_arc(config, config_files), result, 'arc')
   _upsert(_build_audio(config), result, 'audio')
-  _upsert(_build_bluetooth(config, config_files.bluetooth), result, 'bluetooth')
+  _upsert(_build_bluetooth(config), result, 'bluetooth')
   _upsert(_build_wifi(config), result, 'wifi')
   _upsert(config.brand_config.wallpaper, result, 'wallpaper')
   _upsert(config.device_brand.brand_code, result, 'brand-code')
@@ -671,11 +664,6 @@ def write_output(configs, output=None):
       print(json_output, file=output_stream)
   else:
     print(json_output)
-
-
-def _bluetooth_id(project_name, bt_comp):
-  return '_'.join(
-      [project_name, bt_comp.vendor_id, bt_comp.product_id, bt_comp.bcd_device])
 
 
 def _feature(name, present):
@@ -786,39 +774,6 @@ def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
           _write_arc_hardware_feature_file(output_dir, file_name, file_content)
         result[feature_id] = _file_v2('%s/arc/%s' % (build_root_dir, file_name),
                                       '/etc/%s' % file_name)
-  return result
-
-
-def _write_bluetooth_config_files(config, output_dir, build_root_path):
-  """Writes bluetooth conf files for every unique bluetooth chip.
-
-  Args:
-    config: Source ConfigBundle to process.
-    output_dir: Path to the generated output.
-    build_root_path: Path to the config file from portage's perspective.
-  Returns:
-    dict that maps the bluetooth component id onto the file config.
-  """
-  output_dir += '/bluetooth'
-  result = {}
-  for hw_design in config.design_list:
-    project_name = hw_design.name.lower()
-    for design_config in hw_design.configs:
-      bt_comp = design_config.hardware_features.bluetooth.component.usb
-      if bt_comp.vendor_id:
-        bt_id = _bluetooth_id(project_name, bt_comp)
-        result[bt_id] = _file_v2(
-            '%s/bluetooth/%s.conf' % (build_root_path, bt_id),
-            '/etc/bluetooth/%s/main.conf' % bt_id)
-        bt_content = '''[General]
-DeviceID = bluetooth:%s:%s:%s''' % (bt_comp.vendor_id, bt_comp.product_id,
-                                    bt_comp.bcd_device)
-
-        os.makedirs(output_dir, exist_ok=True)
-        output = '%s/%s.conf' % (output_dir, bt_id)
-        with open(output, 'w') as output_stream:
-          # Using print function adds proper trailing newline.
-          print(bt_content, file=output_stream)
   return result
 
 
@@ -955,7 +910,6 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
   """
   configs = _merge_configs([_read_config(program_config)] +
                            [_read_config(config) for config in project_configs])
-  bluetooth_files = {}
   arc_hw_feature_files = {}
   touch_fw = {}
   arc_camera_map = {}
@@ -983,12 +937,9 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
 
   if os.path.exists(TOUCH_PATH):
     touch_fw = _build_touch_file_config(configs, project_name)
-  bluetooth_files = _write_bluetooth_config_files(configs, output_dir,
-                                                  build_root_dir)
   arc_hw_feature_files = _write_arc_hardware_feature_files(
       configs, output_dir, build_root_dir)
   config_files = ConfigFiles(
-      bluetooth=bluetooth_files,
       arc_hw_features=arc_hw_feature_files,
       touch_fw=touch_fw,
       dptf_map=dptf_map,
