@@ -681,6 +681,12 @@ type CommonClient interface {
 	ExecDutCommand(ctx context.Context, in *ExecDutCommandRequest, opts ...grpc.CallOption) (Common_ExecDutCommandClient, error)
 	// Provision installs a specified version of Chrome OS on the DUT, along with
 	// any specified DLCs.
+	//
+	// If the DUT is already on the specified version of Chrome OS, the OS will
+	// not be provisioned.
+	//
+	// If the DUT already has the specified list of DLCs, only the missing DLCs
+	// will be provisioned.
 	Provision(ctx context.Context, in *ProvisionRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -759,6 +765,12 @@ type CommonServer interface {
 	ExecDutCommand(*ExecDutCommandRequest, Common_ExecDutCommandServer) error
 	// Provision installs a specified version of Chrome OS on the DUT, along with
 	// any specified DLCs.
+	//
+	// If the DUT is already on the specified version of Chrome OS, the OS will
+	// not be provisioned.
+	//
+	// If the DUT already has the specified list of DLCs, only the missing DLCs
+	// will be provisioned.
 	Provision(context.Context, *ProvisionRequest) (*longrunning.Operation, error)
 }
 
