@@ -215,7 +215,14 @@ def _create_power(preferences):
     return pc_pb.PowerConfig(preferences = preferences)
 
 def _create_ath10k(limit_2g, limit_5g, tablet_limit_2g, tablet_limit_5g):
-    """Builds a WifiConfig proto for use with ath10k drivers."""
+    """Builds a WifiConfig proto for use with ath10k drivers.
+
+    Args:
+        limit_2g: 2G band power limit (dBm). Required.
+        limit_5g: 5G band power limit (dBm). Required.
+        tablet_limit_2g: tablet mode 2G band power limit (dBm). Required.
+        tablet_limit_5g: tablet mode 5G band power limit (dBm). Required.
+    """
     return wf_pb.WifiConfig(
         ath10k_config = wf_pb.WifiConfig.Ath10kConfig(
             tablet_mode_power_table = wf_pb.WifiConfig.Ath10kConfig.TransmitPowerChain(
@@ -244,7 +251,30 @@ def _create_rtw88(
         eu_offset_5g = 0,
         other_offset_2g = 0,
         other_offset_5g = 0):
-    """Builds a WifiConfig proto for use with rtw88 drivers."""
+    """Builds a WifiConfig proto for use with rtw88 drivers.
+
+    Args:
+        limit_2g: 2G band power limit: All 2G band channels. (0.125 dBm). Required.
+        limit_5g_1: 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
+        limit_5g_3: 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
+        limit_5g_4: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
+        tablet_limit_2g: tablet mode 2G band power limit: All 2G band channels. (0.125 dBm). Required.
+        tablet_limit_5g_1: tablet mode 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
+        tablet_limit_5g_3: tablet mode 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
+        tablet_limit_5g_4: tablet mode 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
+        fcc_offset_2g: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory
+            domains that follow FCC guidelines
+        fcc_offset_5g: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory
+            domains that follow FCC guidelines
+        eu_offset_2g: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory
+            domains that follow ESTI guidelines
+        eu_offset_5g: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory
+            domains that follow ESTI guidelines
+        other_offset_2g: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory
+            domains that don't follow FCC or ETSI guidelines
+        other_offset_5g: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory
+            domains that don't follow FCC or ETSI guidelines
+    """
     return wf_pb.WifiConfig(
         rtw88_config = wf_pb.WifiConfig.Rtw88Config(
             tablet_mode_power_table = wf_pb.WifiConfig.Rtw88Config.TransmitPowerChain(

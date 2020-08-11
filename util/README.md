@@ -169,6 +169,69 @@ comp.create_quals()
 
 
 
+### comp.create_audio_codec {#comp.create_audio_codec}
+Builds a Component.AudioCodec proto.
+
+```python
+comp.create_audio_codec()
+```
+
+
+
+### comp.create_battery {#comp.create_battery}
+
+
+```python
+comp.create_battery()
+```
+
+
+
+### comp.create_ec_flash_chip {#comp.create_ec_flash_chip}
+Build a Component.FlashChip proto.
+
+```python
+comp.create_ec_flash_chip()
+```
+
+
+
+### comp.create_flash_chip {#comp.create_flash_chip}
+Build a Component.FlashChip proto.
+
+```python
+comp.create_flash_chip()
+```
+
+
+
+### comp.create_embedded_controller {#comp.create_embedded_controller}
+Build a Component.EmbeddedController proto.
+
+```python
+comp.create_embedded_controller()
+```
+
+
+
+### comp.create_storage_mmc {#comp.create_storage_mmc}
+Build a Component.Storage proto for an MMC device.
+
+```python
+comp.create_storage_mmc()
+```
+
+
+
+### comp.create_tpm {#comp.create_tpm}
+Build a Component.Tpm proto.
+
+```python
+comp.create_tpm()
+```
+
+
+
 ### comp.create_usb {#comp.create_usb}
 Builds a Interface.Usb proto.
 
@@ -280,12 +343,6 @@ design.create_design()
 
 
 
-```python
-design.create_design_list()
-```
-
-
-
 ### design.generate {#design.generate}
 Serializes a ConfigBundle to a file.
 
@@ -309,7 +366,6 @@ Builds a DeviceBrand proto.
 ```python
 device_brand.create()
 ```
-
 
 
 
@@ -632,6 +688,7 @@ partner.create()
 
 
 
+
 ## //config/util/program.star
 
 ### program.create {#program.create}
@@ -640,7 +697,6 @@ Builds a Program proto.
 ```python
 program.create()
 ```
-
 
 
 
@@ -731,6 +787,27 @@ Deprecated. Use append_configs instead.
 sw_config.create()
 ```
 
+
+
+### sw_config.create_ath10k {#sw_config.create_ath10k}
+Builds a WifiConfig proto for use with ath10k drivers.
+
+```python
+sw_config.create_ath10k(
+    # Required arguments.
+    limit_2g,
+    limit_5g,
+    tablet_limit_2g,
+    tablet_limit_5g,
+)
+```
+
+#### Arguments {#sw_config.create_ath10k-args}
+
+* **limit_2g**: 2G band power limit (dBm). Required.
+* **limit_5g**: 5G band power limit (dBm). Required.
+* **tablet_limit_2g**: tablet mode 2G band power limit (dBm). Required.
+* **tablet_limit_5g**: tablet mode 5G band power limit (dBm). Required.
 
 
 ### sw_config.create_audio {#sw_config.create_audio}
@@ -846,6 +923,49 @@ Builds a PowerConfig proto.
 sw_config.create_power()
 ```
 
+
+
+### sw_config.create_rtw88 {#sw_config.create_rtw88}
+Builds a WifiConfig proto for use with rtw88 drivers.
+
+```python
+sw_config.create_rtw88(
+    # Required arguments.
+    limit_2g,
+    limit_5g_1,
+    limit_5g_3,
+    limit_5g_4,
+    tablet_limit_2g,
+    tablet_limit_5g_1,
+    tablet_limit_5g_3,
+    tablet_limit_5g_4,
+
+    # Optional arguments.
+    fcc_offset_2g = None,
+    fcc_offset_5g = None,
+    eu_offset_2g = None,
+    eu_offset_5g = None,
+    other_offset_2g = None,
+    other_offset_5g = None,
+)
+```
+
+#### Arguments {#sw_config.create_rtw88-args}
+
+* **limit_2g**: 2G band power limit: All 2G band channels. (0.125 dBm). Required.
+* **limit_5g_1**: 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
+* **limit_5g_3**: 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
+* **limit_5g_4**: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
+* **tablet_limit_2g**: tablet mode 2G band power limit: All 2G band channels. (0.125 dBm). Required.
+* **tablet_limit_5g_1**: tablet mode 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
+* **tablet_limit_5g_3**: tablet mode 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
+* **tablet_limit_5g_4**: tablet mode 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
+* **fcc_offset_2g**: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory domains that follow FCC guidelines
+* **fcc_offset_5g**: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory domains that follow FCC guidelines
+* **eu_offset_2g**: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory domains that follow ESTI guidelines
+* **eu_offset_5g**: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory domains that follow ESTI guidelines
+* **other_offset_2g**: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory domains that don't follow FCC or ETSI guidelines
+* **other_offset_5g**: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory domains that don't follow FCC or ETSI guidelines
 
 
 
