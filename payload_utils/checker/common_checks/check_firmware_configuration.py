@@ -127,9 +127,14 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
 
           prev_topo_key = value_to_topo.get(fw_value)
           if prev_topo_key:
+            # We only need to ensure that the types are the same. Two different
+            # types cannot both set/control the same FW_CONFIG field value.
+            # It is allowed for two topology values of the same type to control
+            # the same FW_CONFIG field value (thus having the same FW_CONFIG
+            # value).
             self.assertEqual(
-                topo_key,
-                prev_topo_key,
+                topo_key[1],
+                prev_topo_key[1],
                 msg=('Topologies ({id1}, {type1}) and ({id2}, {type2}) both use'
                      ' firmware value {fw_value}').format(
                          id1=topo_key[0],

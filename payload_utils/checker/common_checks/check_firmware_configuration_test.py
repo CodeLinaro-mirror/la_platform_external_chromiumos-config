@@ -202,12 +202,11 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
                 )),
             Config(
                 hardware_topology=HardwareTopology(
-                    # ('screen1', SCREEN) topology is used in a different
+                    # ('screen2', SCREEN) topology is used in a different
                     # design, again using fw value 0b0001. This is valid,
-                    # because the topology has the same id and type. Note
-                    # that the description is allowed to be different.
+                    # because the topology has the same type.
                     screen=Topology(
-                        id='screen1',
+                        id='screen2',
                         type=Topology.SCREEN,
                         description={'EN': 'Slightly different description'},
                         hardware_feature=HardwareFeatures(
