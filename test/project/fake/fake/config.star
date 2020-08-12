@@ -31,9 +31,11 @@ _DESIGN_ID_A = design.create_design_id("PROJECT-A")
 _DESIGN_ID_B = design.create_design_id("PROJECT-B")
 _DESIGN_ID_C = design.create_design_id("PROJECT-C")
 _DESIGN_ID_WL = design.create_design_id("PROJECT-WL")
+_DESIGN_ID_BOX = design.create_design_id("PROJECT-BOX")
 
 _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
+_FORM_FACTOR_CHROMEBOX = hw_topo.create_form_factor(hw_topo.ff.CHROMEBOX)
 _SCREEN = hw_topo.create_screen(
     id = "SCREEN",
     description = "Default screen",
@@ -350,6 +352,34 @@ design.append_configs(
     power = _SC_POWER,
 )
 
+_HW_CONFIGS_BOX = []
+
+design.append_configs(
+    hw_configs = _HW_CONFIGS_BOX,
+    sw_configs = _SW_CONFIGS,
+    design_id = _DESIGN_ID_BOX,
+    config_id = 128,
+    hardware_topology = create_hardware_topology(
+        form_factor = _FORM_FACTOR_CHROMEBOX,
+    ),
+    audio = [sc.create_audio(
+        _AUDIO_CARD,
+        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
+        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
+    )],
+    firmware = sc.create_fw_payloads_by_names(
+        "Fake",
+        "Fake_EC",
+        "Fake_PD",
+        ap_ro_version = sc.create_fw_version(11111),
+        ap_rw_version = sc.create_fw_version(11111),
+        ec_version = sc.create_fw_version(11111, 2),
+        pd_version = sc.create_fw_version(11111),
+    ),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
+    power = _SC_POWER,
+)
+
 _DESIGN = design.create_design(
     id = _DESIGN_ID,
     program_id = program.fake.id,
@@ -383,6 +413,13 @@ _DESIGN_WL = design.create_design(
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
     configs = _HW_CONFIGS_WL,
+)
+
+_DESIGN_BOX = design.create_design(
+    id = _DESIGN_ID_BOX,
+    program_id = program.fake.id,
+    odm_id = _FAKE_ODM.id,
+    configs = _HW_CONFIGS_BOX,
 )
 
 _DEVICE_BRAND = device_brand.create(
@@ -432,6 +469,13 @@ _WL_DEVICE_BRAND_C = device_brand.create(
     design_id = _DESIGN_ID_WL,
     oem_id = _FAKE_LOEMC.id,
     brand_code = "WLCC",
+)
+
+_DEVICE_BRAND_BOX = device_brand.create(
+    brand_name = "ChromeOS Device Brandname Box",
+    design_id = _DESIGN_ID_BOX,
+    oem_id = _FAKE_OEM.id,
+    brand_code = "FDBX",
 )
 
 _BRAND_CONFIGS = [
@@ -512,8 +556,8 @@ _COMPONENTS.append(
 
 _CONFIG = config_bundle.create(
     partners = _ODMS + _OEMS + _COMPONENT_VENDORS,
-    designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_WL],
-    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C],
+    designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_WL, _DESIGN_BOX],
+    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _DEVICE_BRAND_BOX],
     software_configs = _SW_CONFIGS,
     brand_configs = _BRAND_CONFIGS,
     components = _COMPONENTS,

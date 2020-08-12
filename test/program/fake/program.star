@@ -58,6 +58,7 @@ _SIGNER_DESIGN_CONFIGS = program_util.create_signer_configs_by_design(
         "PROJECT-A": "KEYA",  # Follow up design A
         "PROJECT-B": "KEYB",  # Follow up design B
         "PROJECT-C": "KEYC",  # Follow up design C
+        "PROJECT-BOX": "KEYBX",  # Follow up design BOX
     },
 )
 

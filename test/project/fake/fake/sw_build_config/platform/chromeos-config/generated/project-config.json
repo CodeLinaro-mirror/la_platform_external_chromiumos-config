@@ -79,6 +79,10 @@
           "key-id": "DEFAULT",
           "signature-id": "fake-ref-design"
         },
+        "hardware-properties": {
+          "has-backlight": true,
+          "psu-type": "battery"
+        },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 2147483647,
@@ -220,6 +224,10 @@
         "firmware-signing": {
           "key-id": "DEFAULT",
           "signature-id": "fake-ref-design"
+        },
+        "hardware-properties": {
+          "has-backlight": true,
+          "psu-type": "battery"
         },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
@@ -400,6 +408,10 @@
           "key-id": "KEYA",
           "signature-id": "project-a"
         },
+        "hardware-properties": {
+          "has-backlight": true,
+          "psu-type": "battery"
+        },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 32,
@@ -535,6 +547,10 @@
           "key-id": "KEYB",
           "signature-id": "project-b"
         },
+        "hardware-properties": {
+          "has-backlight": true,
+          "psu-type": "battery"
+        },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 33,
@@ -667,6 +683,10 @@
         "firmware-signing": {
           "key-id": "KEYC",
           "signature-id": "project-c"
+        },
+        "hardware-properties": {
+          "has-backlight": true,
+          "psu-type": "battery"
         },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
@@ -805,6 +825,10 @@
           "key-id": "KEYD",
           "signature-id": "project-wl-loema"
         },
+        "hardware-properties": {
+          "has-backlight": true,
+          "psu-type": "battery"
+        },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 64,
@@ -941,6 +965,10 @@
         "firmware-signing": {
           "key-id": "KEYE",
           "signature-id": "project-wl-loemb"
+        },
+        "hardware-properties": {
+          "has-backlight": true,
+          "psu-type": "battery"
         },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
@@ -1079,6 +1107,10 @@
           "key-id": "KEYF",
           "signature-id": "project-wl-loemc"
         },
+        "hardware-properties": {
+          "has-backlight": true,
+          "psu-type": "battery"
+        },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 64,
@@ -1086,6 +1118,138 @@
           "whitelabel-tag": "loemc"
         },
         "name": "project-wl",
+        "power": {
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
+            "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_cheets",
+            "first-api-level": "28",
+            "marketing-name": "ChromeOS Device Brandname Box",
+            "metrics-tag": "project-box",
+            "oem": "FAKE-OEM",
+            "product": "fake"
+          },
+          "camera-characteristics": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
+            "system-path": "/etc/arc/fake/camera_characteristics.conf"
+          },
+          "hardware-features": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-box.xml",
+            "system-path": "/etc/hardware_features_project-box.xml"
+          },
+          "scale": 280
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project-box",
+            "files": [
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+              },
+              {
+                "destination": "/etc/cras/project-box/fakeaudiocard",
+                "source": "audio/fakeaudiocard/fakeaudiocard"
+              },
+              {
+                "destination": "/etc/cras/project-box/dsp.ini",
+                "source": "audio/fakeaudiocard/dsp.ini"
+              }
+            ]
+          }
+        },
+        "brand-code": "FDBX",
+        "camera": {
+          "count": 1
+        },
+        "firmware": {
+          "bcs-overlay": "overlay-fake-private",
+          "build-targets": {
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
+            "ec_extras": [
+              "fake-ec-extra1",
+              "fake-ec-extra2"
+            ],
+            "libpayload": "fake"
+          },
+          "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 801,
+          "image-name": "fake",
+          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
+          "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
+        },
+        "firmware-signing": {
+          "key-id": "KEYBX",
+          "signature-id": "project-box"
+        },
+        "hardware-properties": {
+          "has-backlight": false,
+          "psu-type": "AC_only"
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 128,
+          "smbios-name-match": "PROJECT-BOX"
+        },
+        "name": "project-box",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",

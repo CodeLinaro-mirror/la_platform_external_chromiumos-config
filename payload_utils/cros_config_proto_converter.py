@@ -266,6 +266,29 @@ def _build_fingerprint(hw_topology):
   return result
 
 
+def _build_hardware_properties(hw_topology):
+  if not hw_topology.HasField('form_factor'):
+    return None
+
+  form_factor = hw_topology.form_factor.hardware_feature.form_factor.form_factor
+  result = {}
+  if form_factor in [
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBIT,
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBASE,
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBOX
+  ]:
+    result['psu-type'] = "AC_only"
+  else:
+    result['psu-type'] = "battery"
+
+  result['has-backlight'] = form_factor not in [
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBIT,
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBOX
+  ]
+
+  return result
+
+
 def _fw_bcs_path(payload):
   if payload and payload.firmware_image_name:
     return 'bcs://%s.%d.%d.0.tbz2' % (payload.firmware_image_name,
@@ -641,6 +664,9 @@ def _transform_build_config(config, config_files):
       dptf_file = config_files.dptf_map.get('')
     _upsert(dptf_file, result, 'thermal')
   _upsert(config_files.touch_fw, result, 'touch')
+  _upsert(
+      _build_hardware_properties(config.hw_design_config.hardware_topology),
+      result, 'hardware-properties')
 
   return result
 
