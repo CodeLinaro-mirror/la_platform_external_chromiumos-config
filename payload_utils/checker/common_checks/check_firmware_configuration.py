@@ -136,7 +136,8 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
                 topo_key[1],
                 prev_topo_key[1],
                 msg=('Topologies ({id1}, {type1}) and ({id2}, {type2}) both use'
-                     ' firmware value {fw_value}').format(
+                     ' firmware value {fw_value}'
+                     ' but have different types').format(
                          id1=topo_key[0],
                          type1=topology_pb2.Topology.Type.Name(topo_key[1]),
                          id2=prev_topo_key[0],

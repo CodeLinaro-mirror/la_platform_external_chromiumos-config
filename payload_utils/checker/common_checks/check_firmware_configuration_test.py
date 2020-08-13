@@ -246,7 +246,7 @@ class CheckFirmwareConfigurationTest(unittest.TestCase):
     with self.assertRaisesRegex(
         AssertionError,
         (r'Topologies \(thermal1, THERMAL\) and \(screen1, SCREEN\) both use '
-         r'firmware value 1')):
+         r'firmware value 1 but have different types')):
       FirmwareConfigurationConstraintSuite(
       ).check_firmware_configuration_value_collision(
           program_config=None,
