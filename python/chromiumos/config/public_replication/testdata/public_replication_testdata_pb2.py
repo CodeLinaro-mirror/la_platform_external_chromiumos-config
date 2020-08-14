@@ -20,12 +20,49 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.public_replication.testdata',
   syntax='proto3',
   serialized_options=_b('Z@go.chromium.org/chromiumos/config/go/public_replication/testdata'),
-  serialized_pb=_b('\nOchromiumos/config/public_replication/testdata/public_replication_testdata.proto\x12-chromiumos.config.public_replication.testdata\x1a=chromiumos/config/public_replication/public_replication.proto\"\x8c\x01\n\x19PublicReplicationTestdata\x12S\n\x12public_replication\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\x0c\n\x04str1\x18\x02 \x01(\t\x12\x0c\n\x04str2\x18\x03 \x01(\t\"\xe5\x01\n\x10WrapperTestdata1\x12\n\n\x02n1\x18\x01 \x01(\x05\x12]\n\x0bpr_testdata\x18\x02 \x01(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdata\x12\x66\n\x14repeated_pr_testdata\x18\x03 \x03(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdata\"n\n\x10WrapperTestdata2\x12Z\n\x11wrapper_testdata1\x18\x01 \x01(\x0b\x32?.chromiumos.config.public_replication.testdata.WrapperTestdata1\"\xd2\x01\n\x10WrapperTestdata3\x12S\n\x12public_replication\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\n\n\x02\x62\x31\x18\x02 \x01(\x08\x12]\n\x0bpr_testdata\x18\x03 \x01(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdataBBZ@go.chromium.org/chromiumos/config/go/public_replication/testdatab\x06proto3')
+  serialized_pb=_b('\nOchromiumos/config/public_replication/testdata/public_replication_testdata.proto\x12-chromiumos.config.public_replication.testdata\x1a=chromiumos/config/public_replication/public_replication.proto\"\x9b\x02\n\x19PublicReplicationTestdata\x12S\n\x12public_replication\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\x0c\n\x04str1\x18\x02 \x01(\t\x12\x0c\n\x04str2\x18\x03 \x01(\t\x12`\n\x04map1\x18\x04 \x03(\x0b\x32R.chromiumos.config.public_replication.testdata.PublicReplicationTestdata.Map1Entry\x1a+\n\tMap1Entry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\xe5\x01\n\x10WrapperTestdata1\x12\n\n\x02n1\x18\x01 \x01(\x05\x12]\n\x0bpr_testdata\x18\x02 \x01(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdata\x12\x66\n\x14repeated_pr_testdata\x18\x03 \x03(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdata\"n\n\x10WrapperTestdata2\x12Z\n\x11wrapper_testdata1\x18\x01 \x01(\x0b\x32?.chromiumos.config.public_replication.testdata.WrapperTestdata1\"\xd2\x01\n\x10WrapperTestdata3\x12S\n\x12public_replication\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\n\n\x02\x62\x31\x18\x02 \x01(\x08\x12]\n\x0bpr_testdata\x18\x03 \x01(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdataBBZ@go.chromium.org/chromiumos/config/go/public_replication/testdatab\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2.DESCRIPTOR,])
 
 
 
+
+_PUBLICREPLICATIONTESTDATA_MAP1ENTRY = _descriptor.Descriptor(
+  name='Map1Entry',
+  full_name='chromiumos.config.public_replication.testdata.PublicReplicationTestdata.Map1Entry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.config.public_replication.testdata.PublicReplicationTestdata.Map1Entry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.config.public_replication.testdata.PublicReplicationTestdata.Map1Entry.value', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b('8\001'),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=434,
+  serialized_end=477,
+)
 
 _PUBLICREPLICATIONTESTDATA = _descriptor.Descriptor(
   name='PublicReplicationTestdata',
@@ -55,10 +92,17 @@ _PUBLICREPLICATIONTESTDATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='map1', full_name='chromiumos.config.public_replication.testdata.PublicReplicationTestdata.map1', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_PUBLICREPLICATIONTESTDATA_MAP1ENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -68,7 +112,7 @@ _PUBLICREPLICATIONTESTDATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=194,
-  serialized_end=334,
+  serialized_end=477,
 )
 
 
@@ -112,8 +156,8 @@ _WRAPPERTESTDATA1 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=337,
-  serialized_end=566,
+  serialized_start=480,
+  serialized_end=709,
 )
 
 
@@ -143,8 +187,8 @@ _WRAPPERTESTDATA2 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=568,
-  serialized_end=678,
+  serialized_start=711,
+  serialized_end=821,
 )
 
 
@@ -188,11 +232,13 @@ _WRAPPERTESTDATA3 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=681,
-  serialized_end=891,
+  serialized_start=824,
+  serialized_end=1034,
 )
 
+_PUBLICREPLICATIONTESTDATA_MAP1ENTRY.containing_type = _PUBLICREPLICATIONTESTDATA
 _PUBLICREPLICATIONTESTDATA.fields_by_name['public_replication'].message_type = chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2._PUBLICREPLICATION
+_PUBLICREPLICATIONTESTDATA.fields_by_name['map1'].message_type = _PUBLICREPLICATIONTESTDATA_MAP1ENTRY
 _WRAPPERTESTDATA1.fields_by_name['pr_testdata'].message_type = _PUBLICREPLICATIONTESTDATA
 _WRAPPERTESTDATA1.fields_by_name['repeated_pr_testdata'].message_type = _PUBLICREPLICATIONTESTDATA
 _WRAPPERTESTDATA2.fields_by_name['wrapper_testdata1'].message_type = _WRAPPERTESTDATA1
@@ -205,11 +251,19 @@ DESCRIPTOR.message_types_by_name['WrapperTestdata3'] = _WRAPPERTESTDATA3
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PublicReplicationTestdata = _reflection.GeneratedProtocolMessageType('PublicReplicationTestdata', (_message.Message,), dict(
+
+  Map1Entry = _reflection.GeneratedProtocolMessageType('Map1Entry', (_message.Message,), dict(
+    DESCRIPTOR = _PUBLICREPLICATIONTESTDATA_MAP1ENTRY,
+    __module__ = 'chromiumos.config.public_replication.testdata.public_replication_testdata_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.public_replication.testdata.PublicReplicationTestdata.Map1Entry)
+    ))
+  ,
   DESCRIPTOR = _PUBLICREPLICATIONTESTDATA,
   __module__ = 'chromiumos.config.public_replication.testdata.public_replication_testdata_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.public_replication.testdata.PublicReplicationTestdata)
   ))
 _sym_db.RegisterMessage(PublicReplicationTestdata)
+_sym_db.RegisterMessage(PublicReplicationTestdata.Map1Entry)
 
 WrapperTestdata1 = _reflection.GeneratedProtocolMessageType('WrapperTestdata1', (_message.Message,), dict(
   DESCRIPTOR = _WRAPPERTESTDATA1,
@@ -234,4 +288,5 @@ _sym_db.RegisterMessage(WrapperTestdata3)
 
 
 DESCRIPTOR._options = None
+_PUBLICREPLICATIONTESTDATA_MAP1ENTRY._options = None
 # @@protoc_insertion_point(module_scope)

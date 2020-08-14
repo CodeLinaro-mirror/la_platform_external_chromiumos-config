@@ -115,9 +115,14 @@ def __apply_public_replication_internal(src: pb_message.Message,
       # For repeated fields, for each message in src, create a new message in
       # dst and call __apply_public_replication_internal.
       for next_src in getattr(src, field_descriptor.name):
-        next_dst = getattr(dst, field_descriptor.name).add()
-        __apply_public_replication_internal(next_src, next_dst,
-                                            public_replication_found)
+        # map fields are considered repeated messages, but do not have an 'add'
+        # method. Skip this case. It wasn't clear if there was a better way to
+        # detect a map field via the descriptor.
+        dst_field = getattr(dst, field_descriptor.name)
+        if hasattr(dst_field, 'add'):
+          next_dst = dst_field.add()
+          __apply_public_replication_internal(next_src, next_dst,
+                                              public_replication_found)
     else:
       # For non-repeated fields, get the field in src and dst and call
       # __apply_public_replication_internal.

@@ -19,6 +19,8 @@ message PublicReplicationTestdata {
 
     string str1 = 2;
     string str2 = 3;
+
+    map<string, int32> map1 = 4;
 }
 
 message WrapperTestdata1 {
