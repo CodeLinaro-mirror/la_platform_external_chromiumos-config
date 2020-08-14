@@ -23,7 +23,9 @@ def argument_parser():
   parser.add_argument(
       '--output',
       required=True,
-      help=('Path to the output the filtered public json proto.'),
+      help=('Path to the output the filtered public json proto. Note that if '
+            'filtering for public fields produces an empty ConfigBundle, no '
+            'output is written.'),
       metavar='PATH')
   return parser
 
@@ -38,7 +40,13 @@ def main():
 
   proto_utils.apply_public_replication(private_config, public_config)
 
-  io_utils.write_message_json(public_config, args.output)
+  # Skip writing an empty ConfigBundle.
+  if public_config != config_bundle_pb2.ConfigBundle():
+    io_utils.write_message_json(public_config, args.output)
+  else:
+    print(
+        'Filtering for public fields produced an empty ConfigBundle, skipping '
+        'writing output.')
 
 
 if __name__ == '__main__':

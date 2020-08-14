@@ -4,6 +4,8 @@
 # found in the LICENSE file.
 """Proto-related helper functions."""
 
+import copy
+
 from typing import Any, Dict, List, Text
 
 from google.protobuf import message as pb_message
@@ -121,8 +123,19 @@ def __apply_public_replication_internal(src: pb_message.Message,
         dst_field = getattr(dst, field_descriptor.name)
         if hasattr(dst_field, 'add'):
           next_dst = dst_field.add()
+
+          # If the newly added field doesn't have any fields set, remove it to
+          # avoid creating many empty messages on dst. Create a copy of next_dst
+          # to check if next_dst changed after the recursive call to
+          # __apply_public_replication_internal and remove next_dst from the
+          # list if it didn't change.
+          next_dst_copy = copy.deepcopy(next_dst)
+
           __apply_public_replication_internal(next_src, next_dst,
                                               public_replication_found)
+
+          if dst_field[-1] == next_dst_copy:
+            dst_field.pop()
     else:
       # For non-repeated fields, get the field in src and dst and call
       # __apply_public_replication_internal.

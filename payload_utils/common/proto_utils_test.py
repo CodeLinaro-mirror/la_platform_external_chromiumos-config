@@ -133,6 +133,40 @@ class ProtoUtilsTest(unittest.TestCase):
     proto_utils.apply_public_replication(src, dst)
     self.assertEqual(dst, expected)
 
+  def test_apply_public_replication_unreplicated_repeated_field(self):
+    """Tests applying the PublicReplication message in the case where a message
+    in a repeated field is not replicated.
+
+    Messages that have no fields replicated should not appear in the final
+    output.
+    """
+    src = WrapperTestdata2(
+        wrapper_testdata1=WrapperTestdata1(
+            n1=1,
+            repeated_pr_testdata=[
+                PublicReplicationTestdata(
+                    str1='abc',
+                    str2='def',
+                ),
+                PublicReplicationTestdata(
+                    str1='abc',
+                    str2='def',
+                    public_replication=PublicReplication(
+                        public_fields=field_mask_pb2.FieldMask(paths=['str2'])),
+                ),
+            ]))
+
+    # Note that only the second PublicReplicationTestdata field appears in the
+    # output; the first has no fields replicated, so is deleted.
+    expected = WrapperTestdata2(
+        wrapper_testdata1=WrapperTestdata1(repeated_pr_testdata=[
+            PublicReplicationTestdata(str2='def'),
+        ]))
+
+    dst = WrapperTestdata2()
+    proto_utils.apply_public_replication(src, dst)
+    self.assertEqual(dst, expected)
+
   def test_apply_public_replication_stacked_messages(self):
     """Tests that a PublicReplication message appearing on top of another in the
     dependency tree raises an Error.
@@ -148,7 +182,7 @@ class ProtoUtilsTest(unittest.TestCase):
   def test_apply_public_replication_empty_paths(self):
     """Tests applying the PublicReplication message with empty paths.
 
-    If the FieldMask has empty paths, not fields should be replicated. Also test
+    If the FieldMask has empty paths, no fields should be replicated. Also test
     similar cases where public_replication and public_fields are not set.
     """
     srcs = [
