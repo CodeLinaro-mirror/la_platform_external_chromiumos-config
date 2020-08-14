@@ -12,87 +12,15 @@
 # Exit if any command fails.
 set -e
 
-trap "summarize" EXIT
-
-function summarize() {
-  if [[ $? -eq 0 ]]; then
-    echo "Config generation complete."
-  else
-    echo "Config generation failed!!!" >&2
-  fi
-}
-
-function usage() {
-  echo "Usage: $0 <config_file>" >&2
-  echo "  where <config_file> is a program's or project's main" >&2
-  echo "  configuration file, typically config.star" >&2
-  exit 1
-}
+readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
+source "${script_dir}/common.sh"
 
 if [[ $# -ne 1 ]]; then
-  usage
+  config_usage
 fi
 
-readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
-source "${script_dir}/../setup_cipd.sh"
-
-readonly file_path="${1}"
-readonly config_file=$(basename "${file_path}")
-readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
-
-# Hitting some relative links so change to the directory.
-cd "${config_dir}"
-
-if ! config/generate.sh; then
-  echo "blew up generating proto descriptors" >&2
-  exit 1
-fi
-
-echo "Formatting .star files with lucicfg fmt..."
-lucicfg fmt
-
-lucicfg generate "${config_file}"
-
-# Create and activate venv.
-/usr/bin/python3 -m venv .venv
-source .venv/bin/activate
-
-# Install requirements.
-pip install wheel -q
-pip install -r config/requirements.txt -q
-
-# TODO(crbug.com/1073530): Ideally lucicfg's to_jsonpb could handle writing
-# JSON PB with enums serialized as ints. For now we do it with a python
-# helper. Note that we overwrite the input file so only the converted result
-# remains.
-config/payload_utils/convert_config_enums.py \
-  --input_config='generated/config.jsonproto' \
-  --output_config='generated/config.jsonproto'
-
-# If we don't see the program symlink in the cwd, then
-# we are not a project and we are done.
-[[ ! -L program ]] && exit
-
-# If we did see the program symlink in the cwd, then
-# we are a project and we continue with generation of
-# platform json.
-
-rm -rf sw_build_config/platform/chromeos-config/generated
-mkdir -p sw_build_config/platform/chromeos-config/generated
-python3 config/payload_utils/cros_config_proto_converter.py \
-  --output sw_build_config/platform/chromeos-config/generated/project-config.json \
-  --program_config program/generated/config.jsonproto \
-  --project_configs generated/config.jsonproto
-
-rm -rf factory/generated
-mkdir -p factory/generated
-python3 config/payload_utils/factory_config_proto_converter.py \
-  --output factory/generated/model_sku.json \
-  --program_config program/generated/config.jsonproto \
-  --project_configs generated/config.jsonproto
-
-python3 config/payload_utils/public_replication.py \
-  --input generated/config.jsonproto \
-  --output generated/public_config.jsonproto
-
-deactivate
+echo "Building config from source starlark config files."
+${script_dir}/build_config "$@"
+echo "Transforming generated protojson config output"
+cd "$(dirname "$(realpath -e "${1}")")"
+${script_dir}/transform_config
