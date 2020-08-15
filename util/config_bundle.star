@@ -10,6 +10,8 @@ load(
     config_bundle_pb = "chromiumos.config.payload",
 )
 
+load("//config/util/generate.star", "generate")
+
 def _create(
         components = None,
         designs = None,
@@ -18,7 +20,8 @@ def _create(
         programs = None,
         build_targets = None,
         software_configs = None,
-        brand_configs = None):
+        brand_configs = None,
+        test_plan_specs = None):
     """Builds a ConfigBundle proto."""
     return config_bundle_pb.ConfigBundle(
         components = components,
@@ -29,8 +32,10 @@ def _create(
         build_targets = build_targets,
         software_configs = software_configs,
         brand_configs = brand_configs,
+        test_plan_specs = test_plan_specs
     )
 
 config_bundle = struct(
     create = _create,
+    generate = generate.generate,
 )
