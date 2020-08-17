@@ -5,6 +5,8 @@
 # found in the LICENSE file.
 """Transforms config from /config/proto/api proto format to platform JSON."""
 
+# pylint: disable=too-many-lines
+
 import argparse
 import json
 import pprint
@@ -428,10 +430,34 @@ def _build_audio(config):
 
 def _build_camera(hw_topology):
   if hw_topology.HasField('camera'):
+    camera_pb = topology_pb2.HardwareFeatures.Camera
     camera = hw_topology.camera.hardware_feature.camera
     result = {}
     if camera.count.value:
       result['count'] = camera.count.value
+    if camera.devices:
+      result['devices'] = []
+      for device in camera.devices:
+        interface = {
+            camera_pb.INTERFACE_USB: 'usb',
+            camera_pb.INTERFACE_MIPI: 'mipi',
+        }[device.interface]
+        facing = {
+            camera_pb.FACING_FRONT: 'front',
+            camera_pb.FACING_BACK: 'back',
+        }[device.facing]
+        orientation = {
+            camera_pb.ORIENTATION_0: 0,
+            camera_pb.ORIENTATION_90: 90,
+            camera_pb.ORIENTATION_180: 180,
+            camera_pb.ORIENTATION_270: 270,
+        }[device.orientation]
+        result['devices'].append({
+            'id': device.id,
+            'interface': interface,
+            'facing': facing,
+            'orientation': orientation,
+        })
     return result
 
   return None

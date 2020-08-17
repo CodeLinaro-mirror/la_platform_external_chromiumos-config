@@ -156,14 +156,54 @@ message HardwareFeatures {
   // Camera properties of system.
   Camera camera = 7;
   message Camera {
+    enum Interface {
+      INTERFACE_UNKNOWN = 0;
+      INTERFACE_USB = 1;
+      INTERFACE_MIPI = 2;
+    }
+
+    enum Facing {
+      FACING_UNKNOWN = 0;
+      FACING_FRONT = 1;
+      FACING_BACK = 2;
+    }
+
+    enum Orientation {
+      ORIENTATION_UNKNOWN = 0;
+      ORIENTATION_0 = 1;
+      ORIENTATION_90 = 2;
+      ORIENTATION_180 = 3;
+      ORIENTATION_270 = 4;
+    }
+
+    message Device {
+      // A string to identify the camera device. For USB cameras this must be
+      // 4-digit hexadecimal VID and PID separated by a colon, e.g. 0123:abcd.
+      // For MIPI cameras it depends on vendor software usage.
+      string id = 1;
+
+      // The interface type of the camera device.
+      Interface interface = 2;
+
+      // Direction the camera faces relative to device screen.
+      Facing facing = 3;
+
+      // Clockwise angle through which the output image needs to be rotated to
+      // be upright on the device screen in its native orientation.
+      Orientation orientation = 4;
+    }
+
     // If user facing camera (front camera) is present
-    Present user_facing_camera = 1;
+    Present user_facing_camera = 1 [deprecated = true];
 
     // If world facing camera (rear camera) is present
-    Present world_facing_camera = 2;
+    Present world_facing_camera = 2 [deprecated = true];
 
     // Number of camera present on system
-    Count count = 3;
+    Count count = 3 [deprecated = true];
+
+    // List of camera devices on the model.
+    repeated Device devices = 4;
   }
 
   // Accelerometer properties of system.

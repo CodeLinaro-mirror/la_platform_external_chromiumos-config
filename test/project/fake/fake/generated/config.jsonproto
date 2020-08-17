@@ -157,6 +157,14 @@
               "count": {
                 "value": 1
               },
+              "devices": [
+                {
+                  "facing": 1,
+                  "id": "0123:abcd",
+                  "interface": 1,
+                  "orientation": 1
+                }
+              ],
               "userFacingCamera": 1,
               "worldFacingCamera": 2
             },
@@ -302,6 +310,14 @@
                   "count": {
                     "value": 1
                   },
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "id": "0123:abcd",
+                      "interface": 1,
+                      "orientation": 1
+                    }
+                  ],
                   "userFacingCamera": 1,
                   "worldFacingCamera": 2
                 },
@@ -540,6 +556,14 @@
               "count": {
                 "value": 1
               },
+              "devices": [
+                {
+                  "facing": 1,
+                  "id": "0123:abcd",
+                  "interface": 1,
+                  "orientation": 1
+                }
+              ],
               "userFacingCamera": 1,
               "worldFacingCamera": 2
             },
@@ -654,6 +678,14 @@
                   "count": {
                     "value": 1
                   },
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "id": "0123:abcd",
+                      "interface": 1,
+                      "orientation": 1
+                    }
+                  ],
                   "userFacingCamera": 1,
                   "worldFacingCamera": 2
                 },
@@ -912,6 +944,14 @@
               "count": {
                 "value": 1
               },
+              "devices": [
+                {
+                  "facing": 1,
+                  "id": "0123:abcd",
+                  "interface": 1,
+                  "orientation": 1
+                }
+              ],
               "userFacingCamera": 1,
               "worldFacingCamera": 2
             },
@@ -1045,6 +1085,14 @@
                   "count": {
                     "value": 1
                   },
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "id": "0123:abcd",
+                      "interface": 1,
+                      "orientation": 1
+                    }
+                  ],
                   "userFacingCamera": 1,
                   "worldFacingCamera": 2
                 },
@@ -1306,6 +1354,14 @@
               "count": {
                 "value": 1
               },
+              "devices": [
+                {
+                  "facing": 1,
+                  "id": "0123:abcd",
+                  "interface": 1,
+                  "orientation": 1
+                }
+              ],
               "userFacingCamera": 1,
               "worldFacingCamera": 2
             },
@@ -1438,6 +1494,14 @@
                   "count": {
                     "value": 1
                   },
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "id": "0123:abcd",
+                      "interface": 1,
+                      "orientation": 1
+                    }
+                  ],
                   "userFacingCamera": 1,
                   "worldFacingCamera": 2
                 },
@@ -1686,6 +1750,14 @@
               "count": {
                 "value": 1
               },
+              "devices": [
+                {
+                  "facing": 1,
+                  "id": "0123:abcd",
+                  "interface": 1,
+                  "orientation": 1
+                }
+              ],
               "userFacingCamera": 1,
               "worldFacingCamera": 2
             },
@@ -1818,6 +1890,14 @@
                   "count": {
                     "value": 1
                   },
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "id": "0123:abcd",
+                      "interface": 1,
+                      "orientation": 1
+                    }
+                  ],
                   "userFacingCamera": 1,
                   "worldFacingCamera": 2
                 },
@@ -2057,6 +2137,14 @@
               "count": {
                 "value": 1
               },
+              "devices": [
+                {
+                  "facing": 1,
+                  "id": "0123:abcd",
+                  "interface": 1,
+                  "orientation": 1
+                }
+              ],
               "userFacingCamera": 1,
               "worldFacingCamera": 2
             },
@@ -2168,6 +2256,14 @@
                   "count": {
                     "value": 1
                   },
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "id": "0123:abcd",
+                      "interface": 1,
+                      "orientation": 1
+                    }
+                  ],
                   "userFacingCamera": 1,
                   "worldFacingCamera": 2
                 },
@@ -2395,6 +2491,14 @@
               "count": {
                 "value": 1
               },
+              "devices": [
+                {
+                  "facing": 1,
+                  "id": "0123:abcd",
+                  "interface": 1,
+                  "orientation": 1
+                }
+              ],
               "userFacingCamera": 1,
               "worldFacingCamera": 2
             },
@@ -2506,6 +2610,14 @@
                   "count": {
                     "value": 1
                   },
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "id": "0123:abcd",
+                      "interface": 1,
+                      "orientation": 1
+                    }
+                  ],
                   "userFacingCamera": 1,
                   "worldFacingCamera": 2
                 },

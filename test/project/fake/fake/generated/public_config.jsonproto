@@ -1,0 +1,112 @@
+{
+  "designList": [
+    {
+      "configs": [
+        {
+          "hardwareFeatures": {
+            "camera": {}
+          },
+          "hardwareTopology": {
+            "camera": {
+              "hardwareFeature": {
+                "camera": {}
+              }
+            }
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "camera": {}
+          },
+          "hardwareTopology": {
+            "camera": {
+              "hardwareFeature": {
+                "camera": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "configs": [
+        {
+          "hardwareFeatures": {
+            "camera": {}
+          },
+          "hardwareTopology": {
+            "camera": {
+              "hardwareFeature": {
+                "camera": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "configs": [
+        {
+          "hardwareFeatures": {
+            "camera": {}
+          },
+          "hardwareTopology": {
+            "camera": {
+              "hardwareFeature": {
+                "camera": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "configs": [
+        {
+          "hardwareFeatures": {
+            "camera": {}
+          },
+          "hardwareTopology": {
+            "camera": {
+              "hardwareFeature": {
+                "camera": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "configs": [
+        {
+          "hardwareFeatures": {
+            "camera": {}
+          },
+          "hardwareTopology": {
+            "camera": {
+              "hardwareFeature": {
+                "camera": {}
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "configs": [
+        {
+          "hardwareFeatures": {
+            "camera": {}
+          },
+          "hardwareTopology": {
+            "camera": {
+              "hardwareFeature": {
+                "camera": {}
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

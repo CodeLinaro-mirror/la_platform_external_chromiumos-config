@@ -50,7 +50,15 @@
         },
         "brand-code": "AAAA",
         "camera": {
-          "count": 1
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
         },
         "fingerprint": {
           "board": "fake-fingerprint-board",
@@ -200,7 +208,15 @@
         },
         "brand-code": "AAAA",
         "camera": {
-          "count": 1
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
         },
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
@@ -379,7 +395,15 @@
             "system-path": "/etc/camera/camera_config_project-a.json"
           },
           "config-path": "/etc/camera/camera_config_project-a.json",
-          "count": 1
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
         },
         "fingerprint": {
           "board": "fake-fingerprint-board",
@@ -522,7 +546,15 @@
         },
         "brand-code": "FDBB",
         "camera": {
-          "count": 1
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
         },
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
@@ -659,7 +691,15 @@
         },
         "brand-code": "FDCC",
         "camera": {
-          "count": 1
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
         },
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
@@ -800,7 +840,15 @@
         },
         "brand-code": "WLAA",
         "camera": {
-          "count": 1
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
         },
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
@@ -941,7 +989,15 @@
         },
         "brand-code": "WLBB",
         "camera": {
-          "count": 1
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
         },
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
@@ -1082,7 +1138,15 @@
         },
         "brand-code": "WLCC",
         "camera": {
-          "count": 1
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
         },
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
@@ -1215,7 +1279,15 @@
         },
         "brand-code": "FDBX",
         "camera": {
-          "count": 1
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
         },
         "firmware": {
           "bcs-overlay": "overlay-fake-private",

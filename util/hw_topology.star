@@ -323,16 +323,71 @@ def _create_thermal(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_camera(id, description, fw_configs = [], has_user_facing_camera = False, has_world_facing_camera = False, count = 0):
-    """Builds a Topology proto for a camera."""
+def _make_camera_device(id, interface, facing, orientation):
+    """Builds a HardwareFeatures.Camera.Device proto."""
+    camera_pb = topo_pb.HardwareFeatures.Camera
+    device = camera_pb.Device()
+
+    device.id = id
+    device.interface = {
+        "usb": camera_pb.INTERFACE_USB,
+        "mipi": camera_pb.INTERFACE_MIPI,
+    }[interface]
+    device.facing = {
+        "back": camera_pb.FACING_BACK,
+        "front": camera_pb.FACING_FRONT,
+    }[facing]
+    device.orientation = {
+        0: camera_pb.ORIENTATION_0,
+        90: camera_pb.ORIENTATION_90,
+        180: camera_pb.ORIENTATION_180,
+        270: camera_pb.ORIENTATION_270,
+    }[orientation]
+
+    return device
+
+def _create_camera(
+        id,
+        description,
+        fw_configs = [],
+        has_user_facing_camera = False,
+        has_world_facing_camera = False,
+        count = 0,
+        camera_devices = []):
+    """Builds a Topology proto for cameras.
+
+    Args:
+        id: A string identifier for the Topology.
+        description: An English description for the Topology.
+        fw_configs: A list of FirmwareConfiguration protos for the form factor.
+        camera_devices: A list of HardwareFeatures.Camera.Device protos.
+        has_user_facing_camera: If there is a user(front)-facing camera.
+            Deprecated, use |camera_devices| instead.
+        has_world_facing_camera: If there is a world(back)-facing camera.
+            Deprecated, use |camera_devices| instead.
+        count: The number of cameras. Deprecated, use |camera_devices| instead.
+    """
     hw_features = topo_pb.HardwareFeatures()
 
-    hw_features.camera.user_facing_camera = _bool_to_present(has_user_facing_camera)
-    hw_features.camera.world_facing_camera = _bool_to_present(has_world_facing_camera)
-    if count:
-        hw_features.camera.count.value = count
+    if camera_devices:
+        camera = hw_features.camera
+        camera.devices = camera_devices
+        camera.count.value = len(camera.devices)
+        camera.user_facing_camera = _bool_to_present(any([
+            d.facing == topo_pb.HardwareFeatures.Camera.FACING_FRONT
+            for d in camera.devices
+        ]))
+        camera.world_facing_camera = _bool_to_present(any([
+            d.facing == topo_pb.HardwareFeatures.Camera.FACING_BACK
+            for d in camera.devices
+        ]))
     else:
-        hw_features.camera.count.value = (1 if has_user_facing_camera else 0) + (1 if has_world_facing_camera else 0)
+        hw_features.camera.user_facing_camera = _bool_to_present(has_user_facing_camera)
+        hw_features.camera.world_facing_camera = _bool_to_present(has_world_facing_camera)
+        if count:
+            hw_features.camera.count.value = count
+        else:
+            hw_features.camera.count.value = (1 if has_user_facing_camera else 0) + (1 if has_world_facing_camera else 0)
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -944,6 +999,7 @@ hw_topo = struct(
     create_power_button = _create_power_button,
     create_volume_button = _create_volume_button,
     convert_to_hw_features = _convert_to_hw_features,
+    make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,
     ff = _FF,
     audio_codec = _AUDIO_CODEC,
