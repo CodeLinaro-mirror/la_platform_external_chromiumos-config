@@ -201,7 +201,7 @@ cd "${project_dir}"
 
 make_relative_symlink "${config_dir}" config
 make_symlink config/presubmit/_PRESUBMIT.cfg PRESUBMIT.cfg
-make_symlink config/presubmit/_PRESUBMIT.py PRESUBMIT.py
+make_symlink config/presubmit/_PROJECT_PRESUBMIT.py PRESUBMIT.py
 
 if [[ -e config.star ]]; then
   echo "Project config.star already existing, skipping."
