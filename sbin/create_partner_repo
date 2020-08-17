@@ -245,12 +245,6 @@ create_gerrit_groups() {
     echo "## adding ${ref_acl}"
     gob_post "${ref_acl}" "${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}/access"
   done
-
-  # TODO(b/153167090): Remove once projects don't need to access each other
-  if [[ -n "${project}" ]]; then
-    gob_post '{"add": {"refs/*": {"permissions": {"read": {"rules": {"chromeos-partner-'"${program}"'-access": {"action": "ALLOW"}}}}}}}' \
-      "${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}/access"
-  fi
 }
 
 # Update manifest once when all the projects have been created
