@@ -243,7 +243,3 @@ message Component {
     string version = 2;
   }
 }
-
-message ComponentList {
-  repeated Component value = 1;
-}

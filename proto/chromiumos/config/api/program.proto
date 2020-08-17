@@ -84,7 +84,3 @@ message Program {
 
   repeated DeviceSignerConfig device_signer_configs = 6;
 }
-
-message ProgramList {
-  repeated Program value = 1;
-}
