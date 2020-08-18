@@ -153,8 +153,8 @@ def _bool_to_present(value):
         return topo_pb.HardwareFeatures.NOT_PRESENT
 
 def _create_screen(
-        id = "SCREEN",
-        description = "Default screen",
+        id = None,
+        description = None,
         inches = 0,
         width_px = None,
         height_px = None,
@@ -174,10 +174,17 @@ def _create_screen(
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
+    if touch:
+        screen_id = id if id else "TOUCHSCREEN"
+        screen_desc = description if description else "Touchscreen"
+    else:
+        screen_id = id if id else "SCREEN"
+        screen_desc = description if description else "Default screen"
+
     return topo_pb.Topology(
-        id = id,
+        id = screen_id,
         type = topo_pb.Topology.SCREEN,
-        description = {"EN": description},
+        description = {"EN": screen_desc},
         hardware_feature = hw_features,
     )
 

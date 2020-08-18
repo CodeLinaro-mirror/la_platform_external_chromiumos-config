@@ -9,7 +9,6 @@ load(
     "@proto//chromiumos/config/payload/config_bundle.proto",
     config_bundle_pb = "chromiumos.config.payload",
 )
-
 load("//config/util/generate.star", "generate")
 
 def _create(
@@ -32,7 +31,7 @@ def _create(
         build_targets = build_targets,
         software_configs = software_configs,
         brand_configs = brand_configs,
-        test_plan_specs = test_plan_specs
+        test_plan_specs = test_plan_specs,
     )
 
 config_bundle = struct(
