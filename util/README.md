@@ -35,6 +35,7 @@ generated documentation.
 
 
 
+
 ## //config/util/brand_config.star
 
 ### brand_config.create {#brand_config.create}
@@ -286,6 +287,19 @@ Builds a ConfigBundle proto.
 
 ```python
 config_bundle.create()
+```
+
+
+
+### config_bundle.generate {#config_bundle.generate}
+Serializes a ConfigBundle to a file.
+
+A json proto is written. Note that there is some post processing done
+by the gen_config script to convert this json output into a json
+output that uses ints for encoding enums.
+
+```python
+config_bundle.generate()
 ```
 
 
@@ -774,6 +788,25 @@ output that uses ints for encoding enums.
 program.generate()
 ```
 
+
+
+
+
+## //config/util/public_replication.star
+
+### public_replication.create {#public_replication.create}
+Creates a PublicReplication proto.
+
+```python
+public_replication.create(public_fields)
+```
+
+#### Arguments {#public_replication.create-args}
+
+* **public_fields**: A list of strings specifying fields that should be made public. See comment on the PublicReplication proto for semantics and example of how the proto works. Required.
+
+#### Returns  {#public_replication.create-returns}
+A PublicReplication proto, None if public_fields evaluates to False.
 
 
 

@@ -52,6 +52,7 @@ generated documentation.
 {{ $hw_topology := Symbol "//config/util/hw_topology.star" "hw_topo" }}
 {{ $partner := Symbol "//config/util/partner.star" "partner" }}
 {{ $program := Symbol "//config/util/program.star" "program" }}
+{{ $public_replication := Symbol "//config/util/public_replication.star" "public_replication" }}
 {{ $sw_config := Symbol "//config/util/sw_config.star" "sw_config" }}
 
 {{ template "gen-funcs-doc" $brand_config }}
@@ -63,4 +64,5 @@ generated documentation.
 {{ template "gen-funcs-doc" $hw_topology }}
 {{ template "gen-funcs-doc" $partner }}
 {{ template "gen-funcs-doc" $program }}
+{{ template "gen-funcs-doc" $public_replication }}
 {{ template "gen-funcs-doc" $sw_config }}
