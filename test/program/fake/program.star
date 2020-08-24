@@ -65,7 +65,6 @@ _SIGNER_DESIGN_CONFIGS = program_util.create_signer_configs_by_design(
 _SIGNER_CONFIG = _SIGNER_BRAND_CONFIGS + _SIGNER_DESIGN_CONFIGS
 
 _FAKE = program_util.create(
-    public_fields = ["name"],
     name = "FAKE_PROGRAM",
     component_quals = _QUAL_CONSTRAINTS,
     constraints = _FEATURE_CONSTRAINTS,
@@ -73,13 +72,7 @@ _FAKE = program_util.create(
     device_signer_configs = _SIGNER_CONFIG,
 )
 
-_BUILD_TARGETS = [
-    bt_util.create(
-        name = "fake",
-        overlay_name = "overlay-fake-private",
-        public_fields = ["id", "overlay_name"],
-    ),
-]
+_BUILD_TARGETS = [bt_util.create("fake", "overlay-fake-private")]
 
 program = struct(
     fake = _FAKE,

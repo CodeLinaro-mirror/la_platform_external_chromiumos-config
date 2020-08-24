@@ -13,7 +13,6 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.config.api.software import build_target_id_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_build__target__id__pb2
-from chromiumos.config.public_replication import public_replication_pb2 as chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n1chromiumos/config/api/software/build_target.proto\x12\x1e\x63hromiumos.config.api.software\x1a\x34\x63hromiumos/config/api/software/build_target_id.proto\x1a=chromiumos/config/public_replication/public_replication.proto\"\xbf\x02\n\x0b\x42uildTarget\x12S\n\x12public_replication\x18\x04 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\x39\n\x02id\x18\x01 \x01(\x0b\x32-.chromiumos.config.api.software.BuildTargetId\x12\x14\n\x0coverlay_name\x18\x02 \x01(\t\x12K\n\x03\x61rc\x18\x03 \x01(\x0b\x32>.chromiumos.config.api.software.BuildTarget.ArcBuildProperties\x1a=\n\x12\x41rcBuildProperties\x12\x0e\n\x06\x64\x65vice\x18\x01 \x01(\t\x12\x17\n\x0f\x66irst_api_level\x18\x02 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n1chromiumos/config/api/software/build_target.proto\x12\x1e\x63hromiumos.config.api.software\x1a\x34\x63hromiumos/config/api/software/build_target_id.proto\"\xea\x01\n\x0b\x42uildTarget\x12\x39\n\x02id\x18\x01 \x01(\x0b\x32-.chromiumos.config.api.software.BuildTargetId\x12\x14\n\x0coverlay_name\x18\x02 \x01(\t\x12K\n\x03\x61rc\x18\x03 \x01(\x0b\x32>.chromiumos.config.api.software.BuildTarget.ArcBuildProperties\x1a=\n\x12\x41rcBuildProperties\x12\x0e\n\x06\x64\x65vice\x18\x01 \x01(\t\x12\x17\n\x0f\x66irst_api_level\x18\x02 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_software_dot_build__target__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_config_dot_api_dot_software_dot_build__target__id__pb2.DESCRIPTOR,])
 
 
 
@@ -61,8 +60,8 @@ _BUILDTARGET_ARCBUILDPROPERTIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=461,
-  serialized_end=522,
+  serialized_start=313,
+  serialized_end=374,
 )
 
 _BUILDTARGET = _descriptor.Descriptor(
@@ -73,28 +72,21 @@ _BUILDTARGET = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='public_replication', full_name='chromiumos.config.api.software.BuildTarget.public_replication', index=0,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='id', full_name='chromiumos.config.api.software.BuildTarget.id', index=1,
+      name='id', full_name='chromiumos.config.api.software.BuildTarget.id', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='overlay_name', full_name='chromiumos.config.api.software.BuildTarget.overlay_name', index=2,
+      name='overlay_name', full_name='chromiumos.config.api.software.BuildTarget.overlay_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='arc', full_name='chromiumos.config.api.software.BuildTarget.arc', index=3,
+      name='arc', full_name='chromiumos.config.api.software.BuildTarget.arc', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -112,12 +104,11 @@ _BUILDTARGET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=203,
-  serialized_end=522,
+  serialized_start=140,
+  serialized_end=374,
 )
 
 _BUILDTARGET_ARCBUILDPROPERTIES.containing_type = _BUILDTARGET
-_BUILDTARGET.fields_by_name['public_replication'].message_type = chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2._PUBLICREPLICATION
 _BUILDTARGET.fields_by_name['id'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_build__target__id__pb2._BUILDTARGETID
 _BUILDTARGET.fields_by_name['arc'].message_type = _BUILDTARGET_ARCBUILDPROPERTIES
 DESCRIPTOR.message_types_by_name['BuildTarget'] = _BUILDTARGET

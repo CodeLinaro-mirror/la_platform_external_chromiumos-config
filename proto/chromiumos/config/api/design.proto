@@ -12,15 +12,10 @@ import "chromiumos/config/api/hardware_topology.proto";
 import "chromiumos/config/api/partner_id.proto";
 import "chromiumos/config/api/program_id.proto";
 import "chromiumos/config/api/topology.proto";
-import "chromiumos/config/public_replication/public_replication.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
-// Next ID: 8
 message Design {
-  // Fields replicated to public configs.
-  chromiumos.config.public_replication.PublicReplication public_replication = 7;
-
   // Globally unique design identifier.
   DesignId id = 1;
 

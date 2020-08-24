@@ -886,9 +886,6 @@
       },
       "programId": {
         "value": "FAKE_PROGRAM"
-      },
-      "publicReplication": {
-        "publicFields": "id"
       }
     },
     {
