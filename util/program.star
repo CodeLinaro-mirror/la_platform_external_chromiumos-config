@@ -22,6 +22,7 @@ load(
     db_id_pb = "chromiumos.config.api",
 )
 load("//config/util/generate.star", "generate")
+load("//config/util/public_replication.star", "public_replication")
 
 def _create_firmware_configuration_segment(name, mask):
     """Builds a FirmwareConfigurationSegment proto."""
@@ -66,6 +67,7 @@ def _create_signer_configs_by_design(configs):
 
 def _create(
         name,
+        public_fields = None,
         component_quals = None,
         constraints = None,
         firmware_configuration_segments = None,
@@ -74,6 +76,7 @@ def _create(
     """Builds a Program proto."""
     program_id = program_id_pb.ProgramId(value = name)
     return program_pb.Program(
+        public_replication = public_replication.create(public_fields = public_fields),
         id = program_id,
         name = name,
         component_quals = component_quals,

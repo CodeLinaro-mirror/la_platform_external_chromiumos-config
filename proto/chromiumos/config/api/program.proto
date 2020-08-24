@@ -11,6 +11,7 @@ import "chromiumos/config/api/design.proto";
 import "chromiumos/config/api/design_id.proto";
 import "chromiumos/config/api/device_brand_id.proto";
 import "chromiumos/config/api/program_id.proto";
+import "chromiumos/config/public_replication/public_replication.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
@@ -64,6 +65,9 @@ message DeviceSignerConfig {
 // prescribed program constraints or provide waivers that highlight any
 // constraint violations.
 message Program {
+  // Fields replicated to public configs.
+  chromiumos.config.public_replication.PublicReplication public_replication = 8;
+
   // Globally unique program identifier.
   ProgramId id = 1;
   // Program codename (human friendly).
