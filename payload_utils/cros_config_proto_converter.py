@@ -33,11 +33,7 @@ Config = namedtuple('Config', [
 ])
 
 ConfigFiles = namedtuple(
-    'ConfigFiles',
-    ['arc_hw_features', 'touch_fw', 'dptf_map', 'camera_map', 'arc_camera_map'])
-
-ARC_CONFIG_PATH = 'sw_build_config/platform/chromeos-config/arc'
-ARC_CAMERA_CHARACTERISTICS_FILE = 'camera_characteristics.conf'
+    'ConfigFiles', ['arc_hw_features', 'touch_fw', 'dptf_map', 'camera_map'])
 
 CAMERA_CONFIG_DEST_PATH_TEMPLATE = '/etc/camera/camera_config_{}.json'
 CAMERA_CONFIG_SOURCE_PATH_TEMPLATE = (
@@ -114,16 +110,6 @@ def _build_arc(config, config_files):
   # Only set for high resolution displays
   if ppi and ppi > 250:
     result['scale'] = ppi
-
-  if config_files.arc_camera_map:
-    # Prefer design specific if found, if not fall back to project wide config
-    # mapped under the empty string.
-    if config.hw_design.name in config_files.arc_camera_map:
-      camera_characteristics = config_files.arc_camera_map[
-          config.hw_design.name]
-    else:
-      camera_characteristics = config_files.arc_camera_map.get('')
-    result['camera-characteristics'] = camera_characteristics
 
   return result
 
@@ -548,8 +534,7 @@ def _build_touch_file_config(config, project_name):
   return result
 
 
-def _transform_build_configs(config,
-                             config_files=ConfigFiles({}, {}, {}, {}, {})):
+def _transform_build_configs(config, config_files=ConfigFiles({}, {}, {}, {})):
   # pylint: disable=too-many-locals,too-many-branches
   partners = {x.id.value: x for x in config.partner_list}
   programs = {x.id.value: x for x in config.program_list}
@@ -876,44 +861,6 @@ def _camera_map(configs, project_name):
   return result
 
 
-def _config_map(configs, project_name, config_dir, config_file, system_dir):
-  """Produces a config map for the given configs.
-
-  Produces a map that maps from design name to the config file for that
-  design. It looks for the config files at:
-      config_dir + '/' + config_file
-  for a project wide config, that it maps under the empty string, and at:
-      config_dir + '/' + design_name + '/' + config_file
-  for design specific configs that it maps under the design name.
-
-  Args:
-    configs: Source ConfigBundle to process.
-    project_name: Name of project processing for.
-    config_dir: Path to the directory containing configuration files.
-    config_file: Name of the configuration files.
-    system_dir: Base directory for the output system path.
-
-  Returns:
-    map from design name or empty string (project wide), to config.
-  """
-  result = {}
-  # Looking at top level for project wide, and then for each design name
-  # for design specific.
-  dirs = [""] + [d.name for d in configs.design_list]
-  for directory in dirs:
-    design = directory.lower()
-    config_file_path = os.path.join(config_dir, design, config_file)
-    if os.path.exists(config_file_path):
-      build_path = os.path.join(project_name, config_file_path)
-      if design:
-        system_file = config_file.replace('.', '_{}.'.format(design))
-      else:
-        system_file = config_file
-      system_path = os.path.join(system_dir, project_name, system_file)
-      result[directory] = _file_v2(build_path, system_path)
-  return result
-
-
 def _dptf_map(configs, project_name):
   """Produces a dptf map for the given configs.
 
@@ -964,7 +911,6 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
                            [_read_config(config) for config in project_configs])
   arc_hw_feature_files = {}
   touch_fw = {}
-  arc_camera_map = {}
   dptf_map = {}
   camera_map = {}
   output_dir = os.path.dirname(output)
@@ -982,8 +928,6 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
     # without having portage file installation collisions.
     build_root_dir = os.path.join(project_name, output_dir)
 
-    arc_camera_map = _config_map(configs, project_name, ARC_CONFIG_PATH,
-                                 ARC_CAMERA_CHARACTERISTICS_FILE, '/etc/arc')
     camera_map = _camera_map(configs, project_name)
     dptf_map = _dptf_map(configs, project_name)
 
@@ -995,8 +939,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
       arc_hw_features=arc_hw_feature_files,
       touch_fw=touch_fw,
       dptf_map=dptf_map,
-      camera_map=camera_map,
-      arc_camera_map=arc_camera_map)
+      camera_map=camera_map)
   write_output(_transform_build_configs(configs, config_files), output)
 
 

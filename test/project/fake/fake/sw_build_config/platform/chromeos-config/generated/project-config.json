@@ -11,10 +11,6 @@
             "oem": "FAKE-OEM",
             "product": "fake"
           },
-          "camera-characteristics": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
-            "system-path": "/etc/arc/fake/camera_characteristics.conf"
-          },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake-ref-design.xml",
             "system-path": "/etc/hardware_features_fake-ref-design.xml"
@@ -172,10 +168,6 @@
             "metrics-tag": "fake-ref-design",
             "oem": "FAKE-OEM",
             "product": "fake"
-          },
-          "camera-characteristics": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
-            "system-path": "/etc/arc/fake/camera_characteristics.conf"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake-ref-design.xml",
@@ -342,10 +334,6 @@
             "oem": "FAKE-OEMA",
             "product": "fake"
           },
-          "camera-characteristics": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
-            "system-path": "/etc/arc/fake/camera_characteristics.conf"
-          },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-a.xml",
             "system-path": "/etc/hardware_features_project-a.xml"
@@ -506,10 +494,6 @@
             "oem": "FAKE-OEMB",
             "product": "fake"
           },
-          "camera-characteristics": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/project-b/camera_characteristics.conf",
-            "system-path": "/etc/arc/fake/camera_characteristics_project-b.conf"
-          },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-b.xml",
             "system-path": "/etc/hardware_features_project-b.xml"
@@ -652,10 +636,6 @@
             "oem": "FAKE-OEMC",
             "product": "fake"
           },
-          "camera-characteristics": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
-            "system-path": "/etc/arc/fake/camera_characteristics.conf"
-          },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-c.xml",
             "system-path": "/etc/hardware_features_project-c.xml"
@@ -796,10 +776,6 @@
             "metrics-tag": "project-wl",
             "oem": "FAKE-LOEMA",
             "product": "fake"
-          },
-          "camera-characteristics": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
-            "system-path": "/etc/arc/fake/camera_characteristics.conf"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-wl.xml",
@@ -946,10 +922,6 @@
             "oem": "FAKE-LOEMB",
             "product": "fake"
           },
-          "camera-characteristics": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
-            "system-path": "/etc/arc/fake/camera_characteristics.conf"
-          },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-wl.xml",
             "system-path": "/etc/hardware_features_project-wl.xml"
@@ -1095,10 +1067,6 @@
             "oem": "FAKE-LOEMC",
             "product": "fake"
           },
-          "camera-characteristics": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
-            "system-path": "/etc/arc/fake/camera_characteristics.conf"
-          },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-wl.xml",
             "system-path": "/etc/hardware_features_project-wl.xml"
@@ -1243,10 +1211,6 @@
             "metrics-tag": "project-box",
             "oem": "FAKE-OEM",
             "product": "fake"
-          },
-          "camera-characteristics": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/arc/camera_characteristics.conf",
-            "system-path": "/etc/arc/fake/camera_characteristics.conf"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-box.xml",
