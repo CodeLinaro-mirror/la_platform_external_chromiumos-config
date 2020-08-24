@@ -144,7 +144,7 @@
       },
       "name": "FAKE_PROGRAM",
       "publicReplication": {
-        "publicFields": "name"
+        "publicFields": "name,id"
       }
     }
   ]

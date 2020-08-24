@@ -24,13 +24,24 @@ source .venv/bin/activate
 pip install wheel -q
 pip install -r config/requirements.txt -q
 
+# Path to the generated config protobuf.
+readonly private_config_path='generated/config.jsonproto'
+# Path to output the filtered public config protobuf to.
+readonly public_config_path='generated/public_config.jsonproto'
+
 # TODO(crbug.com/1073530): Ideally lucicfg's to_jsonpb could handle writing
 # JSON PB with enums serialized as ints. For now we do it with a python
 # helper. Note that we overwrite the input file so only the converted result
 # remains.
 config/payload_utils/convert_config_enums.py \
-  --input_config='generated/config.jsonproto' \
-  --output_config='generated/config.jsonproto'
+  --input_config="${private_config_path}" \
+  --output_config="${private_config_path}"
+
+# Generated filtered public configs. Note that this should be done for both
+# programs and projects.
+python3 config/payload_utils/public_replication.py \
+  --input "${private_config_path}" \
+  --output "${public_config_path}"
 
 # If we don't see the program symlink in the cwd, then
 # we are not a project and we are done.
@@ -40,12 +51,40 @@ config/payload_utils/convert_config_enums.py \
 # we are a project and we continue with generation of
 # platform json.
 
-rm -rf sw_build_config/platform/chromeos-config/generated
-mkdir -p sw_build_config/platform/chromeos-config/generated
-python3 config/payload_utils/cros_config_proto_converter.py \
-  --output sw_build_config/platform/chromeos-config/generated/project-config.json \
-  --program_config program/generated/config.jsonproto \
-  --project_configs generated/config.jsonproto
+# Call cros_config_proto_converter to transform a Protocol Buffer to config
+# readable by the ChromeOS platform.
+#
+# If either the program or project configs do not exist (e.g. because they are
+# public configs with all fields filtered) the function will return 0 without
+# calling cros_config_proto_converter.
+#
+# Args:
+#   $1: Path to the protobuf input. E.g. "generated/config.jsonproto".
+#   $2: Output directory to write platform JSON and other artifacts to. Note
+#       that this directory will be deleted and recreated.
+proto_converter(){
+  local config_path=$1
+  local output_dir=$2
+  local program_config="program/${config_path}"
+
+  if [[ ! -e "${program_config}" || ! -e "${config_path}" ]]; then
+    return 0
+  fi
+
+  rm -rf "${output_dir}"
+  mkdir -p "${output_dir}"
+  python3 config/payload_utils/cros_config_proto_converter.py \
+    --output "${output_dir}/project-config.json" \
+    --program_config "${program_config}" \
+    --project_configs "${config_path}"
+}
+
+# Output dirs for private and public software configs.
+readonly sw_output_dir='sw_build_config/platform/chromeos-config/generated'
+readonly public_sw_output_dir="public_${sw_output_dir}"
+
+proto_converter "${private_config_path}" "${sw_output_dir}"
+proto_converter "${public_config_path}" "${public_sw_output_dir}"
 
 rm -rf factory/generated
 mkdir -p factory/generated
@@ -54,8 +93,6 @@ python3 config/payload_utils/factory_config_proto_converter.py \
   --program_config program/generated/config.jsonproto \
   --project_configs generated/config.jsonproto
 
-python3 config/payload_utils/public_replication.py \
-  --input generated/config.jsonproto \
-  --output generated/public_config.jsonproto
+
 
 deactivate

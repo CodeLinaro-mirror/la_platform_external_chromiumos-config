@@ -33,6 +33,7 @@ load(
     "@proto//chromiumos/config/api/software/wifi_config.proto",
     wf_pb = "chromiumos.config.api.software",
 )
+load("//config/util/public_replication.star", "public_replication")
 
 _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,
@@ -193,9 +194,11 @@ def _create_audio(
         ucm_master_file = None,
         ucm_suffix = None,
         module_file = None,
-        board_file = None):
+        board_file = None,
+        public_fields = None):
     """Builds an AudioConfig proto."""
     return audio_pb.AudioConfig(
+        public_replication = public_replication.create(public_fields = public_fields),
         card_name = card_name,
         card_config_file = card_config_file,
         dsp_file = dsp_file,

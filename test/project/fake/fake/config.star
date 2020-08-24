@@ -152,6 +152,7 @@ design.append_configs(
         _AUDIO_CARD,
         card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
         dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
+        public_fields = ["card_name"],
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(
@@ -380,8 +381,13 @@ design.append_configs(
     power = _SC_POWER,
 )
 
+# Currently public_fields is only set on the fake project. Once it is ready
+# to be set on all projects, it can be made a default on create_design.
+#
+# TODO(crbug.com/1092530): Remove repetition once public_fields can be made a
+# default.
 _DESIGN = design.create_design(
-    public_fields = ["id"],
+    public_fields = ["id", "program_id"],
     id = _DESIGN_ID,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -389,6 +395,7 @@ _DESIGN = design.create_design(
 )
 
 _DESIGN_A = design.create_design(
+    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_A,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -396,6 +403,7 @@ _DESIGN_A = design.create_design(
 )
 
 _DESIGN_B = design.create_design(
+    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_B,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -403,6 +411,7 @@ _DESIGN_B = design.create_design(
 )
 
 _DESIGN_C = design.create_design(
+    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_C,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -410,6 +419,7 @@ _DESIGN_C = design.create_design(
 )
 
 _DESIGN_WL = design.create_design(
+    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_WL,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -417,6 +427,7 @@ _DESIGN_WL = design.create_design(
 )
 
 _DESIGN_BOX = design.create_design(
+    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_BOX,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,

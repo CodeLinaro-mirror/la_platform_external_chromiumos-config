@@ -920,7 +920,7 @@
         "value": "FAKE_PROGRAM"
       },
       "publicReplication": {
-        "publicFields": "id"
+        "publicFields": "id,programId"
       }
     },
     {
@@ -1331,6 +1331,9 @@
       },
       "programId": {
         "value": "FAKE_PROGRAM"
+      },
+      "publicReplication": {
+        "publicFields": "id,programId"
       }
     },
     {
@@ -1727,6 +1730,9 @@
       },
       "programId": {
         "value": "FAKE_PROGRAM"
+      },
+      "publicReplication": {
+        "publicFields": "id,programId"
       }
     },
     {
@@ -2123,6 +2129,9 @@
       },
       "programId": {
         "value": "FAKE_PROGRAM"
+      },
+      "publicReplication": {
+        "publicFields": "id,programId"
       }
     },
     {
@@ -2477,6 +2486,9 @@
       },
       "programId": {
         "value": "FAKE_PROGRAM"
+      },
+      "publicReplication": {
+        "publicFields": "id,programId"
       }
     },
     {
@@ -2831,6 +2843,9 @@
       },
       "programId": {
         "value": "FAKE_PROGRAM"
+      },
+      "publicReplication": {
+        "publicFields": "id,programId"
       }
     }
   ],
@@ -3059,6 +3074,9 @@
           "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
           "cardName": "fakeaudiocard",
           "dspFile": "audio/fakeaudiocard/dsp.ini",
+          "publicReplication": {
+            "publicFields": "cardName"
+          },
           "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
           "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
         }

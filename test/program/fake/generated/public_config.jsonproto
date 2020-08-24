@@ -1,0 +1,18 @@
+{
+  "buildTargets": [
+    {
+      "id": {
+        "value": "fake"
+      },
+      "overlayName": "overlay-fake-private"
+    }
+  ],
+  "programList": [
+    {
+      "id": {
+        "value": "FAKE_PROGRAM"
+      },
+      "name": "FAKE_PROGRAM"
+    }
+  ]
+}

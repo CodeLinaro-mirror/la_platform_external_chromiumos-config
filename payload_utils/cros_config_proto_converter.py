@@ -917,7 +917,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
   build_root_dir = output_dir
   if 'sw_build_config' in output_dir:
     full_path = os.path.realpath(output)
-    project_name = re.match(r'.*/(\w*)/sw_build_config/.*',
+    project_name = re.match(r'.*/(\w*)/(public_)?sw_build_config/.*',
                             full_path).groups(1)[0]
     # Projects don't know about each other until they are integrated into the
     # build system.  When this happens, the files need to be able to co-exist
