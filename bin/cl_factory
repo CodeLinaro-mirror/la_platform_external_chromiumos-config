@@ -52,7 +52,7 @@ TEST=CQ"
   """
   cmd = ['bb', 'add']
 
-  for cl in args.cl:
+  for cl in args.cl or []:
     cmd.extend(['-cl', cl])
 
   cmd.extend(csv_param('repo_regexes', args.regex))
@@ -114,7 +114,7 @@ def main():
       '--cl',
       nargs='+',
       type=str,
-      required=True,
+      required=False,
       help='CL URL(s) input to patch into the projects.')
   parser.add_argument(
       '--regex',
