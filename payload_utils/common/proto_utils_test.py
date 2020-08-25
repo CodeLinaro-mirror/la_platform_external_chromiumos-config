@@ -36,8 +36,12 @@ class ProtoUtilsTest(unittest.TestCase):
         proto_utils.get_dep_graph(build_target_pb2.BuildTarget()), {
             'chromiumos.config.api.software.BuildTarget': [
                 'chromiumos.config.api.software.BuildTarget.ArcBuildProperties',
-                'chromiumos.config.api.software.BuildTargetId'
+                'chromiumos.config.api.software.BuildTargetId',
+                'chromiumos.config.public_replication.PublicReplication',
             ],
+            'chromiumos.config.public_replication.PublicReplication':
+                ['google.protobuf.FieldMask',],
+            'google.protobuf.FieldMask': [],
             'chromiumos.config.api.software.BuildTarget.ArcBuildProperties': [],
             'chromiumos.config.api.software.BuildTargetId': []
         })
@@ -48,6 +52,8 @@ class ProtoUtilsTest(unittest.TestCase):
         proto_utils.get_dep_order(build_target_pb2.BuildTarget()), [
             'chromiumos.config.api.software.BuildTarget.ArcBuildProperties',
             'chromiumos.config.api.software.BuildTargetId',
+            'google.protobuf.FieldMask',
+            'chromiumos.config.public_replication.PublicReplication',
             'chromiumos.config.api.software.BuildTarget'
         ])
 

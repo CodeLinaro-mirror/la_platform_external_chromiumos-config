@@ -8,7 +8,10 @@
       "id": {
         "value": "fake"
       },
-      "overlayName": "overlay-fake-private"
+      "overlayName": "overlay-fake-private",
+      "publicReplication": {
+        "publicFields": "id,overlayName"
+      }
     }
   ],
   "components": [
@@ -139,7 +142,10 @@
       "id": {
         "value": "FAKE_PROGRAM"
       },
-      "name": "FAKE_PROGRAM"
+      "name": "FAKE_PROGRAM",
+      "publicReplication": {
+        "publicFields": "name"
+      }
     }
   ]
 }

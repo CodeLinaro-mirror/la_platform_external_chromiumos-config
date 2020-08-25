@@ -15,6 +15,7 @@ load(
 )
 load("//config/util/generate.star", "generate")
 load("//config/util/hw_topology.star", "hw_topo")
+load("//config/util/public_replication.star", "public_replication")
 load(
     "@proto//chromiumos/config/api/software/software_config.proto",
     sc_pb = "chromiumos.config.api.software",
@@ -102,12 +103,13 @@ def _create_design_id(name):
     """Builds a DesignId proto."""
     return design_id_pb.DesignId(value = name)
 
-def _create_design(id, program_id, odm_id, configs = None):
+def _create_design(id, program_id, odm_id, public_fields = None, configs = None):
     """Builds a Design proto."""
     return design_pb.Design(
         id = id,
         program_id = program_id,
         odm_id = odm_id,
+        public_replication = public_replication.create(public_fields = public_fields),
         name = id.value,
         configs = configs,
     )

@@ -381,6 +381,7 @@ design.append_configs(
 )
 
 _DESIGN = design.create_design(
+    public_fields = ["id"],
     id = _DESIGN_ID,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,

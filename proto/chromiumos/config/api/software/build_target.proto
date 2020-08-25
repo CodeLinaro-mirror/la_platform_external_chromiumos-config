@@ -5,10 +5,14 @@ package chromiumos.config.api.software;
 option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
 import "chromiumos/config/api/software/build_target_id.proto";
+import "chromiumos/config/public_replication/public_replication.proto";
 
 // Defines a portage overlay target and corresponding parameters that will be
 // used during the build and apply to all devices supported by a given build.
 message BuildTarget {
+  // Fields replicated to public configs.
+  chromiumos.config.public_replication.PublicReplication public_replication = 4;
+
   BuildTargetId id = 1;
   // Portage overlay name
   string overlay_name = 2;

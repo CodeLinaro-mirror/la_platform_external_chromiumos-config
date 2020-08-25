@@ -26,7 +26,10 @@
             }
           }
         }
-      ]
+      ],
+      "id": {
+        "value": "FAKE-REF-DESIGN"
+      }
     },
     {
       "configs": [
