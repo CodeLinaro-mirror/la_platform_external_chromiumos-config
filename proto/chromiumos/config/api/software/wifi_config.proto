@@ -22,6 +22,8 @@ message WifiConfig {
       uint32 limit_5g = 2;
     }
 
+    // TransmitPowerChain settings when operating in tablet and non-tablet
+    // modes.
     TransmitPowerChain tablet_mode_power_table = 1;
     TransmitPowerChain non_tablet_mode_power_table = 2;
   }
@@ -41,6 +43,8 @@ message WifiConfig {
       uint32 limit_5g_4 = 4;
     }
 
+    // TransmitPowerChain settings when operating in tablet and non-tablet
+    // modes.
     TransmitPowerChain tablet_mode_power_table = 1;
     TransmitPowerChain non_tablet_mode_power_table = 2;
 
@@ -60,13 +64,73 @@ message WifiConfig {
       uint32 offset_5g = 2;
     }
 
+    // GeoOffsets in different regulatory domains.
     GeoOffsets offset_fcc = 3;
     GeoOffsets offset_eu = 4;
     GeoOffsets offset_other = 5;
   }
 
+  message IntelConfig {
+    // WiFi power chain for use with Intel drivers. Limits in units
+    // of 0.125 dBm.
+    message TransmitPowerChain {
+      // 2G band power limit: All 2G band channels. (0.125 dBm)
+      uint32 limit_2g = 1;
+      // 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm)
+      uint32 limit_5g_1 = 2;
+      // 5G band 2 power limit: 5.35G-5.47G channels. (0.125 dBm)
+      uint32 limit_5g_2 = 3;
+      // 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm)
+      uint32 limit_5g_3 = 4;
+      // 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm)
+      uint32 limit_5g_4 = 5;
+    }
+
+    // TransmitPowerChain settings when operating in tablet and non-tablet
+    // modes. Each mode additionally provides chain a and chain b settings.
+    // These are power configs for a given antenna, a vs. b.
+    TransmitPowerChain tablet_mode_power_table_a = 1;
+    TransmitPowerChain tablet_mode_power_table_b = 2;
+    TransmitPowerChain non_tablet_mode_power_table_a = 3;
+    TransmitPowerChain non_tablet_mode_power_table_b = 4;
+
+    // Wireless Geo Delta Settings version.
+    uint32 wgds_version = 5;
+
+    // Offsets which are applied to WiFi power limits depending on the current
+    // regulatory domain. Offsets in units of 0.125 dBm. When the
+    // current regulatory domain is unknown or has yet to be determined, the
+    // base transmit power limits are used without any geo offsets applied.
+    // 'geo-offsets-fcc' is used for regulatory domains which follow FCC
+    // guidelines, 'geo-offsets-eu' is used for regulatory domains which follow
+    // ETSI guidelines, and 'geo-offsets-rest-of-world' is used for regulatory
+    // domains which don't follow FCC or ETSI guidelines.
+    message GeoOffsets {
+      // Defines the 2.4 GHz upper value for the allowed power to not be crossed
+      // by applying the Geo offset.
+      uint32 max_2g = 1;
+      // Value to be added to the 2.4GHz WiFi band for chain a. (0.125 dBm)
+      uint32 offset_2g_a = 2;
+      // Value to be added to the 2.4GHz WiFi band for chain b. (0.125 dBm)
+      uint32 offset_2g_b = 3;
+      // Defines the 5 GHz upper value for the allowed power to not be crossed
+      // by applying the Geo offset.
+      uint32 max_5g = 4;
+      // Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm)
+      uint32 offset_5g_a = 5;
+      // Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm)
+      uint32 offset_5g_b = 6;
+    }
+
+    // GeoOffsets in different regulatory domains.
+    GeoOffsets offset_fcc = 6;
+    GeoOffsets offset_eu = 7;
+    GeoOffsets offset_other = 8;
+  }
+
   oneof wifi_config {
     Ath10kConfig ath10k_config = 1;
     Rtw88Config rtw88_config = 2;
+    IntelConfig intel_config = 3;
   }
 }
