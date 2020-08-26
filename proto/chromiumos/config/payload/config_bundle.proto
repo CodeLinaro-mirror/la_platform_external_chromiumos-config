@@ -11,7 +11,6 @@ import "chromiumos/config/api/design.proto";
 import "chromiumos/config/api/device_brand.proto";
 import "chromiumos/config/api/partner.proto";
 import "chromiumos/config/api/program.proto";
-import "chromiumos/config/api/release/milestone.proto";
 import "chromiumos/config/api/software/brand_config.proto";
 import "chromiumos/config/api/software/build_target.proto";
 import "chromiumos/config/api/software/software_config.proto";
@@ -36,11 +35,8 @@ message ConfigBundle {
   repeated api.software.SoftwareConfig software_configs = 9;
   repeated api.software.BrandConfig brand_configs = 10;
 
-  // Chrome OS release planning
-  repeated api.release.Milestone milestones = 17;
-
   // Chrome OS test planning & coverage rule config
   repeated api.test.plan.v1.Specification test_plan_specs = 16;
 
-  reserved 2, 6, 7;
+  reserved 2, 6, 7, 17;
 }
