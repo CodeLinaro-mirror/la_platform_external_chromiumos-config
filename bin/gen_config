@@ -19,6 +19,15 @@ if [[ $# -ne 1 ]]; then
   config_usage
 fi
 
+readonly file_path="${1}"
+readonly config_file=$(basename "${file_path}")
+readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
+
+if [[ -e ${config_dir}/program/config.star ]]; then
+  echo "Making sure program config is fresh..."
+  "${script_dir}"/gen_config ${config_dir}/program/config.star
+fi
+
 echo "Building config from source starlark config files."
 ${script_dir}/build_config "$@"
 echo "Transforming generated protojson config output"
