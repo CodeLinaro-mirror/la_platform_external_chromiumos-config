@@ -17,9 +17,9 @@ message WifiConfig {
     // of 1 dBm. 5g band power limit applies to all 5g bands.
     message TransmitPowerChain {
       // 2G band power limit (dBm)
-      int32 limit_2g = 1;
+      uint32 limit_2g = 1;
       // 5G band power limit (dBm)
-      int32 limit_5g = 2;
+      uint32 limit_5g = 2;
     }
 
     TransmitPowerChain tablet_mode_power_table = 1;
@@ -32,13 +32,13 @@ message WifiConfig {
     // supported.
     message TransmitPowerChain {
       // 2G band power limit: All 2G band channels. (0.125 dBm)
-      int32 limit_2g = 1;
+      uint32 limit_2g = 1;
       // 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm)
-      int32 limit_5g_1 = 2;
+      uint32 limit_5g_1 = 2;
       // 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm)
-      int32 limit_5g_3 = 3;
+      uint32 limit_5g_3 = 3;
       // 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm)
-      int32 limit_5g_4 = 4;
+      uint32 limit_5g_4 = 4;
     }
 
     TransmitPowerChain tablet_mode_power_table = 1;
@@ -55,9 +55,9 @@ message WifiConfig {
     // domains which don't follow FCC or ETSI guidelines.
     message GeoOffsets {
       // Value to be added to the 2.4GHz WiFi band. (0.125 dBm)
-      int32 offset_2g = 1;
+      uint32 offset_2g = 1;
       // Value to be added to all 5GHz WiFi bands. (0.125 dBm)
-      int32 offset_5g = 2;
+      uint32 offset_5g = 2;
     }
 
     GeoOffsets offset_fcc = 3;

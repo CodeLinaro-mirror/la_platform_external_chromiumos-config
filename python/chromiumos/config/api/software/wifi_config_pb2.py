@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n0chromiumos/config/api/software/wifi_config.proto\x12\x1e\x63hromiumos.config.api.software\"\xf0\x08\n\nWifiConfig\x12P\n\rath10k_config\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.api.software.WifiConfig.Ath10kConfigH\x00\x12N\n\x0crtw88_config\x18\x02 \x01(\x0b\x32\x36.chromiumos.config.api.software.WifiConfig.Rtw88ConfigH\x00\x1a\xa6\x02\n\x0c\x41th10kConfig\x12k\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32J.chromiumos.config.api.software.WifiConfig.Ath10kConfig.TransmitPowerChain\x12o\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.software.WifiConfig.Ath10kConfig.TransmitPowerChain\x1a\x38\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\x05\x12\x10\n\x08limit_5g\x18\x02 \x01(\x05\x1a\x87\x05\n\x0bRtw88Config\x12j\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32I.chromiumos.config.api.software.WifiConfig.Rtw88Config.TransmitPowerChain\x12n\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32I.chromiumos.config.api.software.WifiConfig.Rtw88Config.TransmitPowerChain\x12U\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x41.chromiumos.config.api.software.WifiConfig.Rtw88Config.GeoOffsets\x12T\n\toffset_eu\x18\x04 \x01(\x0b\x32\x41.chromiumos.config.api.software.WifiConfig.Rtw88Config.GeoOffsets\x12W\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x41.chromiumos.config.api.software.WifiConfig.Rtw88Config.GeoOffsets\x1a\x62\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\x05\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\x05\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\x05\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\x05\x1a\x32\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\x05\x12\x11\n\toffset_5g\x18\x02 \x01(\x05\x42\r\n\x0bwifi_configB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n0chromiumos/config/api/software/wifi_config.proto\x12\x1e\x63hromiumos.config.api.software\"\xf0\x08\n\nWifiConfig\x12P\n\rath10k_config\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.api.software.WifiConfig.Ath10kConfigH\x00\x12N\n\x0crtw88_config\x18\x02 \x01(\x0b\x32\x36.chromiumos.config.api.software.WifiConfig.Rtw88ConfigH\x00\x1a\xa6\x02\n\x0c\x41th10kConfig\x12k\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32J.chromiumos.config.api.software.WifiConfig.Ath10kConfig.TransmitPowerChain\x12o\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.software.WifiConfig.Ath10kConfig.TransmitPowerChain\x1a\x38\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x10\n\x08limit_5g\x18\x02 \x01(\r\x1a\x87\x05\n\x0bRtw88Config\x12j\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32I.chromiumos.config.api.software.WifiConfig.Rtw88Config.TransmitPowerChain\x12n\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32I.chromiumos.config.api.software.WifiConfig.Rtw88Config.TransmitPowerChain\x12U\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x41.chromiumos.config.api.software.WifiConfig.Rtw88Config.GeoOffsets\x12T\n\toffset_eu\x18\x04 \x01(\x0b\x32\x41.chromiumos.config.api.software.WifiConfig.Rtw88Config.GeoOffsets\x12W\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x41.chromiumos.config.api.software.WifiConfig.Rtw88Config.GeoOffsets\x1a\x62\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\r\x1a\x32\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\r\x12\x11\n\toffset_5g\x18\x02 \x01(\rB\r\n\x0bwifi_configB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
 )
 
 
@@ -34,14 +34,14 @@ _WIFICONFIG_ATH10KCONFIG_TRANSMITPOWERCHAIN = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='limit_2g', full_name='chromiumos.config.api.software.WifiConfig.Ath10kConfig.TransmitPowerChain.limit_2g', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit_5g', full_name='chromiumos.config.api.software.WifiConfig.Ath10kConfig.TransmitPowerChain.limit_5g', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -108,28 +108,28 @@ _WIFICONFIG_RTW88CONFIG_TRANSMITPOWERCHAIN = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='limit_2g', full_name='chromiumos.config.api.software.WifiConfig.Rtw88Config.TransmitPowerChain.limit_2g', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit_5g_1', full_name='chromiumos.config.api.software.WifiConfig.Rtw88Config.TransmitPowerChain.limit_5g_1', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit_5g_3', full_name='chromiumos.config.api.software.WifiConfig.Rtw88Config.TransmitPowerChain.limit_5g_3', index=2,
-      number=3, type=5, cpp_type=1, label=1,
+      number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit_5g_4', full_name='chromiumos.config.api.software.WifiConfig.Rtw88Config.TransmitPowerChain.limit_5g_4', index=3,
-      number=4, type=5, cpp_type=1, label=1,
+      number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -159,14 +159,14 @@ _WIFICONFIG_RTW88CONFIG_GEOOFFSETS = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='offset_2g', full_name='chromiumos.config.api.software.WifiConfig.Rtw88Config.GeoOffsets.offset_2g', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='offset_5g', full_name='chromiumos.config.api.software.WifiConfig.Rtw88Config.GeoOffsets.offset_5g', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
