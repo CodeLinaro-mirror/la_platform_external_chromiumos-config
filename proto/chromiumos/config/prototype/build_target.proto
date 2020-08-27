@@ -1,0 +1,25 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.prototype;
+
+option go_package = "go.chromium.org/chromiumos/config/go/prototype";
+
+import "chromiumos/config/prototype/build_target_id.proto";
+
+// Defines a portage overlay target and corresponding parameters that will be
+// provided for a given build invocation.
+message BuildTarget {
+  BuildTargetId id = 1;
+  PortageConfig portage_config = 2;
+
+  // Defines the portage specific configuration for a given build target.
+  message PortageConfig {
+    string overlay_name = 1;
+    string profile_name = 2;
+    repeated string use_flags = 3;
+  }
+}

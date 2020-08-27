@@ -1,0 +1,24 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.prototype;
+
+option go_package = "go.chromium.org/chromiumos/config/go/prototype";
+
+import "chromiumos/config/prototype/build_target.proto";
+import "chromiumos/config/prototype/release_target_id.proto";
+
+// Defines a collection of build targets that are all part of the same logical
+// release target.
+// E.g. octopus -> octopus-kernel-debug, octopus-kernel_4_14, octopus
+// Build targets will change over time with alternate builds, but the release
+// target will remain stable over time.
+message ReleaseTarget {
+  ReleaseTargetId id = 1;
+  // Human friendly name
+  string name = 2;
+  repeated BuildTarget build_targets = 3;
+}
