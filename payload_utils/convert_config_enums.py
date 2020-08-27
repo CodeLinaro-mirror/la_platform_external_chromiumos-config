@@ -11,6 +11,7 @@ import sys
 from google.protobuf import json_format
 
 from chromiumos.config.payload import config_bundle_pb2
+from chromiumos.config.prototype import prototype_config_bundle_pb2
 
 
 def Main(input_config, output_config):  # pylint: disable=invalid-name
@@ -21,8 +22,14 @@ def Main(input_config, output_config):  # pylint: disable=invalid-name
     output_config: path to write converted output file to.
   """
   config = config_bundle_pb2.ConfigBundle()
-  with open(input_config, 'r') as f:
-    json_format.Parse(f.read(), config)
+  try:
+    with open(input_config, 'r') as f:
+        json_format.Parse(f.read(), config)
+  except:
+    config = prototype_config_bundle_pb2.PrototypeConfigBundle()
+    with open(input_config, 'r') as f:
+        json_format.Parse(f.read(), config)
+
   json_output = json_format.MessageToJson(
       config, sort_keys=True, use_integers_for_enums=True)
   with open(output_config, 'w') as f:
