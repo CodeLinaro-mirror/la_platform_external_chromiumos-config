@@ -25,7 +25,7 @@ def Main(input_config, output_config):  # pylint: disable=invalid-name
   try:
     with open(input_config, 'r') as f:
       json_format.Parse(f.read(), config)
-  except Exception:
+  except json_format.ParseError:
     config = prototype_config_bundle_pb2.PrototypeConfigBundle()
     with open(input_config, 'r') as f:
       json_format.Parse(f.read(), config)
