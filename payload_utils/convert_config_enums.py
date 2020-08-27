@@ -24,11 +24,11 @@ def Main(input_config, output_config):  # pylint: disable=invalid-name
   config = config_bundle_pb2.ConfigBundle()
   try:
     with open(input_config, 'r') as f:
-        json_format.Parse(f.read(), config)
-  except:
+      json_format.Parse(f.read(), config)
+  except Exception:
     config = prototype_config_bundle_pb2.PrototypeConfigBundle()
     with open(input_config, 'r') as f:
-        json_format.Parse(f.read(), config)
+      json_format.Parse(f.read(), config)
 
   json_output = json_format.MessageToJson(
       config, sort_keys=True, use_integers_for_enums=True)
