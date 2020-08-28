@@ -231,3 +231,14 @@ screen is the button)
 Changes that do not require new topology
 
 * Second sourced component changes
+
+## EmbeddedController
+
+Changes that require new topology
+
+* New EmbeddedController type, such as Chrome EC, Wilco EC
+* New EC part number, such as npcx5m6g
+
+Changes that do not require new topology
+
+* EC capabilities, such as usbpd or keyboard

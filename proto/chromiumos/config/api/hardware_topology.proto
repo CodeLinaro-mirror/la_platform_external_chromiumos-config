@@ -104,4 +104,8 @@ message HardwareTopology {
   // Specify the volume button topology.
   // See ./hardware_topology.md#volume-button for more information.
   Topology volume_button = 21;
+
+  // Specify the EC topology.
+  // See ./hardware_topology.md#ec for more information.
+  Topology ec = 22;
 }
