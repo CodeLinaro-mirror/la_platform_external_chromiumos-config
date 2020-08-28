@@ -66,6 +66,9 @@ partner = struct(
         IVO = _create_display_partner(
             vendor_code = "IVO",
         ),
+        INX = _create_display_partner(
+            vendor_code = "INX",
+        ),
     ),
     touch = struct(
         ELAN = _create_touch_partner(
