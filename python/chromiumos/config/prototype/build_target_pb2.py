@@ -20,12 +20,225 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.prototype',
   syntax='proto3',
   serialized_options=_b('Z.go.chromium.org/chromiumos/config/go/prototype'),
-  serialized_pb=_b('\n.chromiumos/config/prototype/build_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a\x31\x63hromiumos/config/prototype/build_target_id.proto\"\xe5\x01\n\x0b\x42uildTarget\x12\x36\n\x02id\x18\x01 \x01(\x0b\x32*.chromiumos.config.prototype.BuildTargetId\x12N\n\x0eportage_config\x18\x02 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1aN\n\rPortageConfig\x12\x14\n\x0coverlay_name\x18\x01 \x01(\t\x12\x14\n\x0cprofile_name\x18\x02 \x01(\t\x12\x11\n\tuse_flags\x18\x03 \x03(\tB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
+  serialized_pb=_b('\n.chromiumos/config/prototype/build_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a\x31\x63hromiumos/config/prototype/build_target_id.proto\"\xac\x07\n\x0b\x42uildTarget\x12\x36\n\x02id\x18\x01 \x01(\x0b\x32*.chromiumos.config.prototype.BuildTargetId\x12\x45\n\x08\x66irmware\x18\x02 \x01(\x0b\x32\x31.chromiumos.config.prototype.BuildTarget.FirmwareH\x00\x12\x45\n\x08platform\x18\x03 \x01(\x0b\x32\x31.chromiumos.config.prototype.BuildTarget.PlatformH\x00\x12\x43\n\x07\x66\x61\x63tory\x18\x04 \x01(\x0b\x32\x30.chromiumos.config.prototype.BuildTarget.FactoryH\x00\x1a\xf9\x02\n\x08\x46irmware\x12@\n\x02\x65\x63\x18\x01 \x01(\x0b\x32\x34.chromiumos.config.prototype.BuildTarget.Firmware.Ec\x12@\n\x02\x61p\x18\x02 \x01(\x0b\x32\x34.chromiumos.config.prototype.BuildTarget.Firmware.Ap\x12N\n\x0eportage_config\x18\x03 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1a.\n\x02\x45\x63\x12\x0c\n\x04\x62\x61se\x18\x01 \x01(\t\x12\n\n\x02\x65\x63\x18\x02 \x01(\t\x12\x0e\n\x06\x65xtras\x18\x03 \x03(\t\x1ai\n\x02\x41p\x12\x10\n\x08\x63oreboot\x18\x01 \x01(\t\x12\x0b\n\x03gsc\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65pthcharge\x18\x03 \x01(\t\x12\x0b\n\x03ish\x18\x04 \x01(\t\x12\x12\n\nlibpayload\x18\x05 \x01(\t\x12\x0e\n\x06u_boot\x18\x06 \x01(\t\x1aZ\n\x08Platform\x12N\n\x0eportage_config\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1aY\n\x07\x46\x61\x63tory\x12N\n\x0eportage_config\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1aN\n\rPortageConfig\x12\x14\n\x0coverlay_name\x18\x01 \x01(\t\x12\x14\n\x0cprofile_name\x18\x02 \x01(\t\x12\x11\n\tuse_flags\x18\x03 \x03(\tB\x0f\n\rtarget_configB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_prototype_dot_build__target__id__pb2.DESCRIPTOR,])
 
 
 
+
+_BUILDTARGET_FIRMWARE_EC = _descriptor.Descriptor(
+  name='Ec',
+  full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ec',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='base', full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ec.base', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ec', full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ec.ec', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='extras', full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ec.extras', index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=638,
+  serialized_end=684,
+)
+
+_BUILDTARGET_FIRMWARE_AP = _descriptor.Descriptor(
+  name='Ap',
+  full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ap',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='coreboot', full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ap.coreboot', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='gsc', full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ap.gsc', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='depthcharge', full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ap.depthcharge', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ish', full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ap.ish', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='libpayload', full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ap.libpayload', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='u_boot', full_name='chromiumos.config.prototype.BuildTarget.Firmware.Ap.u_boot', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=686,
+  serialized_end=791,
+)
+
+_BUILDTARGET_FIRMWARE = _descriptor.Descriptor(
+  name='Firmware',
+  full_name='chromiumos.config.prototype.BuildTarget.Firmware',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ec', full_name='chromiumos.config.prototype.BuildTarget.Firmware.ec', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ap', full_name='chromiumos.config.prototype.BuildTarget.Firmware.ap', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='portage_config', full_name='chromiumos.config.prototype.BuildTarget.Firmware.portage_config', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_BUILDTARGET_FIRMWARE_EC, _BUILDTARGET_FIRMWARE_AP, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=414,
+  serialized_end=791,
+)
+
+_BUILDTARGET_PLATFORM = _descriptor.Descriptor(
+  name='Platform',
+  full_name='chromiumos.config.prototype.BuildTarget.Platform',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='portage_config', full_name='chromiumos.config.prototype.BuildTarget.Platform.portage_config', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=793,
+  serialized_end=883,
+)
+
+_BUILDTARGET_FACTORY = _descriptor.Descriptor(
+  name='Factory',
+  full_name='chromiumos.config.prototype.BuildTarget.Factory',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='portage_config', full_name='chromiumos.config.prototype.BuildTarget.Factory.portage_config', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=885,
+  serialized_end=974,
+)
 
 _BUILDTARGET_PORTAGECONFIG = _descriptor.Descriptor(
   name='PortageConfig',
@@ -67,8 +280,8 @@ _BUILDTARGET_PORTAGECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=282,
-  serialized_end=360,
+  serialized_start=976,
+  serialized_end=1054,
 )
 
 _BUILDTARGET = _descriptor.Descriptor(
@@ -86,8 +299,22 @@ _BUILDTARGET = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='portage_config', full_name='chromiumos.config.prototype.BuildTarget.portage_config', index=1,
+      name='firmware', full_name='chromiumos.config.prototype.BuildTarget.firmware', index=1,
       number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='platform', full_name='chromiumos.config.prototype.BuildTarget.platform', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='factory', full_name='chromiumos.config.prototype.BuildTarget.factory', index=3,
+      number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -95,7 +322,7 @@ _BUILDTARGET = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_BUILDTARGET_PORTAGECONFIG, ],
+  nested_types=[_BUILDTARGET_FIRMWARE, _BUILDTARGET_PLATFORM, _BUILDTARGET_FACTORY, _BUILDTARGET_PORTAGECONFIG, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -103,18 +330,77 @@ _BUILDTARGET = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='target_config', full_name='chromiumos.config.prototype.BuildTarget.target_config',
+      index=0, containing_type=None, fields=[]),
   ],
   serialized_start=131,
-  serialized_end=360,
+  serialized_end=1071,
 )
 
+_BUILDTARGET_FIRMWARE_EC.containing_type = _BUILDTARGET_FIRMWARE
+_BUILDTARGET_FIRMWARE_AP.containing_type = _BUILDTARGET_FIRMWARE
+_BUILDTARGET_FIRMWARE.fields_by_name['ec'].message_type = _BUILDTARGET_FIRMWARE_EC
+_BUILDTARGET_FIRMWARE.fields_by_name['ap'].message_type = _BUILDTARGET_FIRMWARE_AP
+_BUILDTARGET_FIRMWARE.fields_by_name['portage_config'].message_type = _BUILDTARGET_PORTAGECONFIG
+_BUILDTARGET_FIRMWARE.containing_type = _BUILDTARGET
+_BUILDTARGET_PLATFORM.fields_by_name['portage_config'].message_type = _BUILDTARGET_PORTAGECONFIG
+_BUILDTARGET_PLATFORM.containing_type = _BUILDTARGET
+_BUILDTARGET_FACTORY.fields_by_name['portage_config'].message_type = _BUILDTARGET_PORTAGECONFIG
+_BUILDTARGET_FACTORY.containing_type = _BUILDTARGET
 _BUILDTARGET_PORTAGECONFIG.containing_type = _BUILDTARGET
 _BUILDTARGET.fields_by_name['id'].message_type = chromiumos_dot_config_dot_prototype_dot_build__target__id__pb2._BUILDTARGETID
-_BUILDTARGET.fields_by_name['portage_config'].message_type = _BUILDTARGET_PORTAGECONFIG
+_BUILDTARGET.fields_by_name['firmware'].message_type = _BUILDTARGET_FIRMWARE
+_BUILDTARGET.fields_by_name['platform'].message_type = _BUILDTARGET_PLATFORM
+_BUILDTARGET.fields_by_name['factory'].message_type = _BUILDTARGET_FACTORY
+_BUILDTARGET.oneofs_by_name['target_config'].fields.append(
+  _BUILDTARGET.fields_by_name['firmware'])
+_BUILDTARGET.fields_by_name['firmware'].containing_oneof = _BUILDTARGET.oneofs_by_name['target_config']
+_BUILDTARGET.oneofs_by_name['target_config'].fields.append(
+  _BUILDTARGET.fields_by_name['platform'])
+_BUILDTARGET.fields_by_name['platform'].containing_oneof = _BUILDTARGET.oneofs_by_name['target_config']
+_BUILDTARGET.oneofs_by_name['target_config'].fields.append(
+  _BUILDTARGET.fields_by_name['factory'])
+_BUILDTARGET.fields_by_name['factory'].containing_oneof = _BUILDTARGET.oneofs_by_name['target_config']
 DESCRIPTOR.message_types_by_name['BuildTarget'] = _BUILDTARGET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 BuildTarget = _reflection.GeneratedProtocolMessageType('BuildTarget', (_message.Message,), dict(
+
+  Firmware = _reflection.GeneratedProtocolMessageType('Firmware', (_message.Message,), dict(
+
+    Ec = _reflection.GeneratedProtocolMessageType('Ec', (_message.Message,), dict(
+      DESCRIPTOR = _BUILDTARGET_FIRMWARE_EC,
+      __module__ = 'chromiumos.config.prototype.build_target_pb2'
+      # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.BuildTarget.Firmware.Ec)
+      ))
+    ,
+
+    Ap = _reflection.GeneratedProtocolMessageType('Ap', (_message.Message,), dict(
+      DESCRIPTOR = _BUILDTARGET_FIRMWARE_AP,
+      __module__ = 'chromiumos.config.prototype.build_target_pb2'
+      # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.BuildTarget.Firmware.Ap)
+      ))
+    ,
+    DESCRIPTOR = _BUILDTARGET_FIRMWARE,
+    __module__ = 'chromiumos.config.prototype.build_target_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.BuildTarget.Firmware)
+    ))
+  ,
+
+  Platform = _reflection.GeneratedProtocolMessageType('Platform', (_message.Message,), dict(
+    DESCRIPTOR = _BUILDTARGET_PLATFORM,
+    __module__ = 'chromiumos.config.prototype.build_target_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.BuildTarget.Platform)
+    ))
+  ,
+
+  Factory = _reflection.GeneratedProtocolMessageType('Factory', (_message.Message,), dict(
+    DESCRIPTOR = _BUILDTARGET_FACTORY,
+    __module__ = 'chromiumos.config.prototype.build_target_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.BuildTarget.Factory)
+    ))
+  ,
 
   PortageConfig = _reflection.GeneratedProtocolMessageType('PortageConfig', (_message.Message,), dict(
     DESCRIPTOR = _BUILDTARGET_PORTAGECONFIG,
@@ -127,6 +413,11 @@ BuildTarget = _reflection.GeneratedProtocolMessageType('BuildTarget', (_message.
   # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.BuildTarget)
   ))
 _sym_db.RegisterMessage(BuildTarget)
+_sym_db.RegisterMessage(BuildTarget.Firmware)
+_sym_db.RegisterMessage(BuildTarget.Firmware.Ec)
+_sym_db.RegisterMessage(BuildTarget.Firmware.Ap)
+_sym_db.RegisterMessage(BuildTarget.Platform)
+_sym_db.RegisterMessage(BuildTarget.Factory)
 _sym_db.RegisterMessage(BuildTarget.PortageConfig)
 
 

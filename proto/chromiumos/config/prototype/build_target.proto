@@ -10,11 +10,54 @@ option go_package = "go.chromium.org/chromiumos/config/go/prototype";
 
 import "chromiumos/config/prototype/build_target_id.proto";
 
-// Defines a portage overlay target and corresponding parameters that will be
+// Defines different build targets and corresponding parameters that will be
 // provided for a given build invocation.
 message BuildTarget {
   BuildTargetId id = 1;
-  PortageConfig portage_config = 2;
+
+  oneof target_config {
+    Firmware firmware = 2;
+    Platform platform = 3;
+    Factory factory = 4;
+  }
+
+  // Firmware build target config and parameters for a given firmware build
+  // invocation.
+  message Firmware {
+    message Ec {
+      // Build target of the base EC firmware for a detachable device
+      string base = 1;
+      // Main ec build target
+      string ec = 2;
+
+      // List of optional components to include in the EC build
+      repeated string extras = 3;
+    }
+
+    message Ap {
+      string coreboot = 1;
+      string gsc = 2;
+      string depthcharge = 3;
+      string ish = 4;
+      string libpayload = 5;
+      string u_boot = 6;
+    }
+
+    Ec ec = 1;
+    Ap ap = 2;
+
+    // Currently firmware uses portage, but this could be changed if the fw
+    // build archticture changed (decoupled from portage).
+    PortageConfig portage_config = 3;
+  }
+
+  message Platform {
+    PortageConfig portage_config = 1;
+  }
+
+  message Factory {
+    PortageConfig portage_config = 1;
+  }
 
   // Defines the portage specific configuration for a given build target.
   message PortageConfig {

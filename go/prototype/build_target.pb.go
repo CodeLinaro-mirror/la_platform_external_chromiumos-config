@@ -20,11 +20,15 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Defines a portage overlay target and corresponding parameters that will be
+// Defines different build targets and corresponding parameters that will be
 // provided for a given build invocation.
 type BuildTarget struct {
-	Id                   *BuildTargetId             `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	PortageConfig        *BuildTarget_PortageConfig `protobuf:"bytes,2,opt,name=portage_config,json=portageConfig,proto3" json:"portage_config,omitempty"`
+	Id *BuildTargetId `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Types that are valid to be assigned to TargetConfig:
+	//	*BuildTarget_Firmware_
+	//	*BuildTarget_Platform_
+	//	*BuildTarget_Factory_
+	TargetConfig         isBuildTarget_TargetConfig `protobuf_oneof:"target_config"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
 	XXX_sizecache        int32                      `json:"-"`
@@ -62,7 +66,333 @@ func (m *BuildTarget) GetId() *BuildTargetId {
 	return nil
 }
 
-func (m *BuildTarget) GetPortageConfig() *BuildTarget_PortageConfig {
+type isBuildTarget_TargetConfig interface {
+	isBuildTarget_TargetConfig()
+}
+
+type BuildTarget_Firmware_ struct {
+	Firmware *BuildTarget_Firmware `protobuf:"bytes,2,opt,name=firmware,proto3,oneof"`
+}
+
+type BuildTarget_Platform_ struct {
+	Platform *BuildTarget_Platform `protobuf:"bytes,3,opt,name=platform,proto3,oneof"`
+}
+
+type BuildTarget_Factory_ struct {
+	Factory *BuildTarget_Factory `protobuf:"bytes,4,opt,name=factory,proto3,oneof"`
+}
+
+func (*BuildTarget_Firmware_) isBuildTarget_TargetConfig() {}
+
+func (*BuildTarget_Platform_) isBuildTarget_TargetConfig() {}
+
+func (*BuildTarget_Factory_) isBuildTarget_TargetConfig() {}
+
+func (m *BuildTarget) GetTargetConfig() isBuildTarget_TargetConfig {
+	if m != nil {
+		return m.TargetConfig
+	}
+	return nil
+}
+
+func (m *BuildTarget) GetFirmware() *BuildTarget_Firmware {
+	if x, ok := m.GetTargetConfig().(*BuildTarget_Firmware_); ok {
+		return x.Firmware
+	}
+	return nil
+}
+
+func (m *BuildTarget) GetPlatform() *BuildTarget_Platform {
+	if x, ok := m.GetTargetConfig().(*BuildTarget_Platform_); ok {
+		return x.Platform
+	}
+	return nil
+}
+
+func (m *BuildTarget) GetFactory() *BuildTarget_Factory {
+	if x, ok := m.GetTargetConfig().(*BuildTarget_Factory_); ok {
+		return x.Factory
+	}
+	return nil
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*BuildTarget) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*BuildTarget_Firmware_)(nil),
+		(*BuildTarget_Platform_)(nil),
+		(*BuildTarget_Factory_)(nil),
+	}
+}
+
+// Firmware build target config and parameters for a given firmware build
+// invocation.
+type BuildTarget_Firmware struct {
+	Ec *BuildTarget_Firmware_Ec `protobuf:"bytes,1,opt,name=ec,proto3" json:"ec,omitempty"`
+	Ap *BuildTarget_Firmware_Ap `protobuf:"bytes,2,opt,name=ap,proto3" json:"ap,omitempty"`
+	// Currently firmware uses portage, but this could be changed if the fw
+	// build archticture changed (decoupled from portage).
+	PortageConfig        *BuildTarget_PortageConfig `protobuf:"bytes,3,opt,name=portage_config,json=portageConfig,proto3" json:"portage_config,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
+	XXX_unrecognized     []byte                     `json:"-"`
+	XXX_sizecache        int32                      `json:"-"`
+}
+
+func (m *BuildTarget_Firmware) Reset()         { *m = BuildTarget_Firmware{} }
+func (m *BuildTarget_Firmware) String() string { return proto.CompactTextString(m) }
+func (*BuildTarget_Firmware) ProtoMessage()    {}
+func (*BuildTarget_Firmware) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dd5ee88c325d6d75, []int{0, 0}
+}
+
+func (m *BuildTarget_Firmware) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BuildTarget_Firmware.Unmarshal(m, b)
+}
+func (m *BuildTarget_Firmware) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BuildTarget_Firmware.Marshal(b, m, deterministic)
+}
+func (m *BuildTarget_Firmware) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BuildTarget_Firmware.Merge(m, src)
+}
+func (m *BuildTarget_Firmware) XXX_Size() int {
+	return xxx_messageInfo_BuildTarget_Firmware.Size(m)
+}
+func (m *BuildTarget_Firmware) XXX_DiscardUnknown() {
+	xxx_messageInfo_BuildTarget_Firmware.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BuildTarget_Firmware proto.InternalMessageInfo
+
+func (m *BuildTarget_Firmware) GetEc() *BuildTarget_Firmware_Ec {
+	if m != nil {
+		return m.Ec
+	}
+	return nil
+}
+
+func (m *BuildTarget_Firmware) GetAp() *BuildTarget_Firmware_Ap {
+	if m != nil {
+		return m.Ap
+	}
+	return nil
+}
+
+func (m *BuildTarget_Firmware) GetPortageConfig() *BuildTarget_PortageConfig {
+	if m != nil {
+		return m.PortageConfig
+	}
+	return nil
+}
+
+type BuildTarget_Firmware_Ec struct {
+	// Build target of the base EC firmware for a detachable device
+	Base string `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
+	// Main ec build target
+	Ec string `protobuf:"bytes,2,opt,name=ec,proto3" json:"ec,omitempty"`
+	// List of optional components to include in the EC build
+	Extras               []string `protobuf:"bytes,3,rep,name=extras,proto3" json:"extras,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *BuildTarget_Firmware_Ec) Reset()         { *m = BuildTarget_Firmware_Ec{} }
+func (m *BuildTarget_Firmware_Ec) String() string { return proto.CompactTextString(m) }
+func (*BuildTarget_Firmware_Ec) ProtoMessage()    {}
+func (*BuildTarget_Firmware_Ec) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dd5ee88c325d6d75, []int{0, 0, 0}
+}
+
+func (m *BuildTarget_Firmware_Ec) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BuildTarget_Firmware_Ec.Unmarshal(m, b)
+}
+func (m *BuildTarget_Firmware_Ec) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BuildTarget_Firmware_Ec.Marshal(b, m, deterministic)
+}
+func (m *BuildTarget_Firmware_Ec) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BuildTarget_Firmware_Ec.Merge(m, src)
+}
+func (m *BuildTarget_Firmware_Ec) XXX_Size() int {
+	return xxx_messageInfo_BuildTarget_Firmware_Ec.Size(m)
+}
+func (m *BuildTarget_Firmware_Ec) XXX_DiscardUnknown() {
+	xxx_messageInfo_BuildTarget_Firmware_Ec.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BuildTarget_Firmware_Ec proto.InternalMessageInfo
+
+func (m *BuildTarget_Firmware_Ec) GetBase() string {
+	if m != nil {
+		return m.Base
+	}
+	return ""
+}
+
+func (m *BuildTarget_Firmware_Ec) GetEc() string {
+	if m != nil {
+		return m.Ec
+	}
+	return ""
+}
+
+func (m *BuildTarget_Firmware_Ec) GetExtras() []string {
+	if m != nil {
+		return m.Extras
+	}
+	return nil
+}
+
+type BuildTarget_Firmware_Ap struct {
+	Coreboot             string   `protobuf:"bytes,1,opt,name=coreboot,proto3" json:"coreboot,omitempty"`
+	Gsc                  string   `protobuf:"bytes,2,opt,name=gsc,proto3" json:"gsc,omitempty"`
+	Depthcharge          string   `protobuf:"bytes,3,opt,name=depthcharge,proto3" json:"depthcharge,omitempty"`
+	Ish                  string   `protobuf:"bytes,4,opt,name=ish,proto3" json:"ish,omitempty"`
+	Libpayload           string   `protobuf:"bytes,5,opt,name=libpayload,proto3" json:"libpayload,omitempty"`
+	UBoot                string   `protobuf:"bytes,6,opt,name=u_boot,json=uBoot,proto3" json:"u_boot,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *BuildTarget_Firmware_Ap) Reset()         { *m = BuildTarget_Firmware_Ap{} }
+func (m *BuildTarget_Firmware_Ap) String() string { return proto.CompactTextString(m) }
+func (*BuildTarget_Firmware_Ap) ProtoMessage()    {}
+func (*BuildTarget_Firmware_Ap) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dd5ee88c325d6d75, []int{0, 0, 1}
+}
+
+func (m *BuildTarget_Firmware_Ap) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BuildTarget_Firmware_Ap.Unmarshal(m, b)
+}
+func (m *BuildTarget_Firmware_Ap) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BuildTarget_Firmware_Ap.Marshal(b, m, deterministic)
+}
+func (m *BuildTarget_Firmware_Ap) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BuildTarget_Firmware_Ap.Merge(m, src)
+}
+func (m *BuildTarget_Firmware_Ap) XXX_Size() int {
+	return xxx_messageInfo_BuildTarget_Firmware_Ap.Size(m)
+}
+func (m *BuildTarget_Firmware_Ap) XXX_DiscardUnknown() {
+	xxx_messageInfo_BuildTarget_Firmware_Ap.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BuildTarget_Firmware_Ap proto.InternalMessageInfo
+
+func (m *BuildTarget_Firmware_Ap) GetCoreboot() string {
+	if m != nil {
+		return m.Coreboot
+	}
+	return ""
+}
+
+func (m *BuildTarget_Firmware_Ap) GetGsc() string {
+	if m != nil {
+		return m.Gsc
+	}
+	return ""
+}
+
+func (m *BuildTarget_Firmware_Ap) GetDepthcharge() string {
+	if m != nil {
+		return m.Depthcharge
+	}
+	return ""
+}
+
+func (m *BuildTarget_Firmware_Ap) GetIsh() string {
+	if m != nil {
+		return m.Ish
+	}
+	return ""
+}
+
+func (m *BuildTarget_Firmware_Ap) GetLibpayload() string {
+	if m != nil {
+		return m.Libpayload
+	}
+	return ""
+}
+
+func (m *BuildTarget_Firmware_Ap) GetUBoot() string {
+	if m != nil {
+		return m.UBoot
+	}
+	return ""
+}
+
+type BuildTarget_Platform struct {
+	PortageConfig        *BuildTarget_PortageConfig `protobuf:"bytes,1,opt,name=portage_config,json=portageConfig,proto3" json:"portage_config,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
+	XXX_unrecognized     []byte                     `json:"-"`
+	XXX_sizecache        int32                      `json:"-"`
+}
+
+func (m *BuildTarget_Platform) Reset()         { *m = BuildTarget_Platform{} }
+func (m *BuildTarget_Platform) String() string { return proto.CompactTextString(m) }
+func (*BuildTarget_Platform) ProtoMessage()    {}
+func (*BuildTarget_Platform) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dd5ee88c325d6d75, []int{0, 1}
+}
+
+func (m *BuildTarget_Platform) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BuildTarget_Platform.Unmarshal(m, b)
+}
+func (m *BuildTarget_Platform) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BuildTarget_Platform.Marshal(b, m, deterministic)
+}
+func (m *BuildTarget_Platform) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BuildTarget_Platform.Merge(m, src)
+}
+func (m *BuildTarget_Platform) XXX_Size() int {
+	return xxx_messageInfo_BuildTarget_Platform.Size(m)
+}
+func (m *BuildTarget_Platform) XXX_DiscardUnknown() {
+	xxx_messageInfo_BuildTarget_Platform.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BuildTarget_Platform proto.InternalMessageInfo
+
+func (m *BuildTarget_Platform) GetPortageConfig() *BuildTarget_PortageConfig {
+	if m != nil {
+		return m.PortageConfig
+	}
+	return nil
+}
+
+type BuildTarget_Factory struct {
+	PortageConfig        *BuildTarget_PortageConfig `protobuf:"bytes,1,opt,name=portage_config,json=portageConfig,proto3" json:"portage_config,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
+	XXX_unrecognized     []byte                     `json:"-"`
+	XXX_sizecache        int32                      `json:"-"`
+}
+
+func (m *BuildTarget_Factory) Reset()         { *m = BuildTarget_Factory{} }
+func (m *BuildTarget_Factory) String() string { return proto.CompactTextString(m) }
+func (*BuildTarget_Factory) ProtoMessage()    {}
+func (*BuildTarget_Factory) Descriptor() ([]byte, []int) {
+	return fileDescriptor_dd5ee88c325d6d75, []int{0, 2}
+}
+
+func (m *BuildTarget_Factory) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BuildTarget_Factory.Unmarshal(m, b)
+}
+func (m *BuildTarget_Factory) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BuildTarget_Factory.Marshal(b, m, deterministic)
+}
+func (m *BuildTarget_Factory) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BuildTarget_Factory.Merge(m, src)
+}
+func (m *BuildTarget_Factory) XXX_Size() int {
+	return xxx_messageInfo_BuildTarget_Factory.Size(m)
+}
+func (m *BuildTarget_Factory) XXX_DiscardUnknown() {
+	xxx_messageInfo_BuildTarget_Factory.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BuildTarget_Factory proto.InternalMessageInfo
+
+func (m *BuildTarget_Factory) GetPortageConfig() *BuildTarget_PortageConfig {
 	if m != nil {
 		return m.PortageConfig
 	}
@@ -83,7 +413,7 @@ func (m *BuildTarget_PortageConfig) Reset()         { *m = BuildTarget_PortageCo
 func (m *BuildTarget_PortageConfig) String() string { return proto.CompactTextString(m) }
 func (*BuildTarget_PortageConfig) ProtoMessage()    {}
 func (*BuildTarget_PortageConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dd5ee88c325d6d75, []int{0, 0}
+	return fileDescriptor_dd5ee88c325d6d75, []int{0, 3}
 }
 
 func (m *BuildTarget_PortageConfig) XXX_Unmarshal(b []byte) error {
@@ -127,6 +457,11 @@ func (m *BuildTarget_PortageConfig) GetUseFlags() []string {
 
 func init() {
 	proto.RegisterType((*BuildTarget)(nil), "chromiumos.config.prototype.BuildTarget")
+	proto.RegisterType((*BuildTarget_Firmware)(nil), "chromiumos.config.prototype.BuildTarget.Firmware")
+	proto.RegisterType((*BuildTarget_Firmware_Ec)(nil), "chromiumos.config.prototype.BuildTarget.Firmware.Ec")
+	proto.RegisterType((*BuildTarget_Firmware_Ap)(nil), "chromiumos.config.prototype.BuildTarget.Firmware.Ap")
+	proto.RegisterType((*BuildTarget_Platform)(nil), "chromiumos.config.prototype.BuildTarget.Platform")
+	proto.RegisterType((*BuildTarget_Factory)(nil), "chromiumos.config.prototype.BuildTarget.Factory")
 	proto.RegisterType((*BuildTarget_PortageConfig)(nil), "chromiumos.config.prototype.BuildTarget.PortageConfig")
 }
 
@@ -135,22 +470,37 @@ func init() {
 }
 
 var fileDescriptor_dd5ee88c325d6d75 = []byte{
-	// 259 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x90, 0x4f, 0x4b, 0x03, 0x31,
-	0x10, 0xc5, 0x69, 0x0a, 0xe2, 0x66, 0xad, 0x87, 0x3d, 0x2d, 0xed, 0xa5, 0x7a, 0x2a, 0x1e, 0x66,
-	0xfd, 0x03, 0x1e, 0x3c, 0x56, 0x10, 0xbc, 0x88, 0x2c, 0x9e, 0x04, 0x09, 0x69, 0x33, 0x1b, 0x03,
-	0xbb, 0x9d, 0x90, 0xcd, 0x0a, 0xfd, 0x2e, 0x7e, 0x58, 0xd9, 0xa4, 0xb4, 0x15, 0x41, 0xf6, 0x96,
-	0x79, 0xef, 0xf7, 0x5e, 0x86, 0xe1, 0xb0, 0xfe, 0x74, 0xd4, 0x98, 0xae, 0xa1, 0xb6, 0x58, 0xd3,
-	0xa6, 0x32, 0xba, 0xb0, 0x8e, 0x3c, 0xf9, 0xad, 0xc5, 0x62, 0xd5, 0x99, 0x5a, 0x09, 0x2f, 0x9d,
-	0x46, 0x0f, 0x41, 0xce, 0x66, 0x07, 0x1e, 0x22, 0x0f, 0x7b, 0x7e, 0x7a, 0x33, 0xb4, 0x4c, 0x18,
-	0x15, 0x63, 0x97, 0xdf, 0x8c, 0xa7, 0xcb, 0xde, 0x79, 0x0b, 0x46, 0xf6, 0xc0, 0x99, 0x51, 0xf9,
-	0x68, 0x3e, 0x5a, 0xa4, 0xb7, 0x57, 0xf0, 0xcf, 0x67, 0x70, 0x94, 0x7a, 0x56, 0x25, 0x33, 0x2a,
-	0xfb, 0xe0, 0xe7, 0x96, 0x9c, 0x97, 0x1a, 0x45, 0xa4, 0x73, 0x16, 0x7a, 0xee, 0x87, 0xf6, 0xc0,
-	0x6b, 0x8c, 0x3f, 0x06, 0xa6, 0x9c, 0xd8, 0xe3, 0x71, 0xea, 0xf8, 0xe4, 0x97, 0x9f, 0x5d, 0xf0,
-	0x33, 0xfa, 0x42, 0x57, 0xcb, 0xad, 0xd8, 0xc8, 0x06, 0xc3, 0xd6, 0x49, 0x99, 0xee, 0xb4, 0x17,
-	0xd9, 0x60, 0x8f, 0x58, 0x47, 0x95, 0xa9, 0x31, 0x22, 0x2c, 0x22, 0x3b, 0x2d, 0x20, 0x33, 0x9e,
-	0x74, 0x2d, 0x8a, 0xaa, 0x96, 0xba, 0xcd, 0xc7, 0xf3, 0xf1, 0x22, 0x29, 0x4f, 0xbb, 0x16, 0x9f,
-	0xfa, 0x79, 0x79, 0xfd, 0x0e, 0x9a, 0xf6, 0xeb, 0x03, 0x39, 0x5d, 0xfc, 0xbd, 0xb1, 0xa6, 0xc3,
-	0x99, 0x57, 0x27, 0xe1, 0x79, 0xf7, 0x13, 0x00, 0x00, 0xff, 0xff, 0xb1, 0xa1, 0x19, 0xa1, 0xd9,
-	0x01, 0x00, 0x00,
+	// 503 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x94, 0x5d, 0x6b, 0xd5, 0x30,
+	0x18, 0xc7, 0x77, 0xda, 0xed, 0xac, 0x7d, 0xea, 0x99, 0x12, 0x50, 0x4a, 0x07, 0x72, 0xf4, 0x6a,
+	0x78, 0x91, 0xb3, 0xa9, 0x78, 0xe1, 0x95, 0x3b, 0xba, 0x31, 0x41, 0x54, 0x82, 0x57, 0x82, 0x94,
+	0xb4, 0x4d, 0xdb, 0x40, 0xbb, 0x84, 0x34, 0x55, 0xcf, 0x87, 0xf1, 0x73, 0xf9, 0x29, 0xfc, 0x0e,
+	0x92, 0x34, 0x3d, 0x3b, 0xa2, 0xc8, 0x99, 0xb8, 0xbb, 0x3c, 0x2f, 0xff, 0x5f, 0x9e, 0x97, 0x10,
+	0xc0, 0x79, 0xad, 0x44, 0xcb, 0xfb, 0x56, 0x74, 0x8b, 0x5c, 0x5c, 0x96, 0xbc, 0x5a, 0x48, 0x25,
+	0xb4, 0xd0, 0x2b, 0xc9, 0x16, 0x59, 0xcf, 0x9b, 0x22, 0xd5, 0x54, 0x55, 0x4c, 0x63, 0xeb, 0x46,
+	0x87, 0x57, 0xf9, 0x78, 0xc8, 0xc7, 0xeb, 0xfc, 0xe4, 0x64, 0x5b, 0x58, 0xca, 0x8b, 0x41, 0xf6,
+	0xf0, 0x47, 0x00, 0xd1, 0xd2, 0x44, 0x3e, 0xd8, 0x00, 0x7a, 0x0e, 0x1e, 0x2f, 0xe2, 0xc9, 0x7c,
+	0x72, 0x14, 0x3d, 0x7e, 0x84, 0xff, 0x72, 0x19, 0xde, 0x50, 0xbd, 0x2e, 0x88, 0xc7, 0x0b, 0xf4,
+	0x0e, 0x82, 0x92, 0xab, 0xf6, 0x0b, 0x55, 0x2c, 0xf6, 0x2c, 0xe1, 0x64, 0x5b, 0x02, 0x3e, 0x77,
+	0xc2, 0x8b, 0x1d, 0xb2, 0x86, 0x18, 0xa0, 0x6c, 0xa8, 0x2e, 0x85, 0x6a, 0x63, 0xff, 0x9a, 0xc0,
+	0xf7, 0x4e, 0x68, 0x80, 0x23, 0x04, 0xbd, 0x81, 0xfd, 0x92, 0xe6, 0x5a, 0xa8, 0x55, 0xbc, 0x6b,
+	0x79, 0xc7, 0xdb, 0x17, 0x38, 0xe8, 0x2e, 0x76, 0xc8, 0x88, 0x48, 0xbe, 0xfb, 0x10, 0x8c, 0x75,
+	0xa3, 0x57, 0xe0, 0xb1, 0xdc, 0x0d, 0xee, 0xe9, 0xb5, 0xdb, 0xc6, 0x67, 0x39, 0xf1, 0x58, 0x6e,
+	0x28, 0x54, 0xba, 0xe1, 0xfd, 0x03, 0xe5, 0x54, 0x12, 0x8f, 0x4a, 0xf4, 0x09, 0x0e, 0xa4, 0x50,
+	0x9a, 0x56, 0x2c, 0x1d, 0x74, 0x6e, 0x7a, 0xcf, 0xb6, 0x9f, 0xde, 0x20, 0x7f, 0x69, 0x73, 0xc8,
+	0x4c, 0x6e, 0x9a, 0xc9, 0x0b, 0xf0, 0xce, 0x72, 0x84, 0x60, 0x37, 0xa3, 0x1d, 0xb3, 0x2d, 0x87,
+	0xc4, 0x9e, 0xd1, 0x81, 0x1d, 0x82, 0x67, 0x3d, 0xa6, 0x9d, 0x7b, 0x30, 0x65, 0x5f, 0xb5, 0xa2,
+	0x5d, 0xec, 0xcf, 0xfd, 0xa3, 0x90, 0x38, 0x2b, 0xf9, 0x36, 0x01, 0xef, 0x54, 0xa2, 0x04, 0x82,
+	0x5c, 0x28, 0x96, 0x09, 0xa1, 0x1d, 0x66, 0x6d, 0xa3, 0x3b, 0xe0, 0x57, 0xdd, 0xc8, 0x32, 0x47,
+	0x34, 0x87, 0xa8, 0x60, 0x52, 0xd7, 0x79, 0x6d, 0x6a, 0xb4, 0x2d, 0x85, 0x64, 0xd3, 0x65, 0x34,
+	0xbc, 0xab, 0xed, 0x6a, 0x43, 0x62, 0x8e, 0xe8, 0x3e, 0x40, 0xc3, 0x33, 0x49, 0x57, 0x8d, 0xa0,
+	0x45, 0xbc, 0x67, 0x03, 0x1b, 0x1e, 0x74, 0x17, 0xa6, 0x7d, 0x6a, 0xef, 0x9f, 0xda, 0xd8, 0x5e,
+	0xbf, 0x14, 0x42, 0x27, 0x1c, 0x82, 0xf1, 0xfd, 0xfc, 0x61, 0x98, 0x93, 0xff, 0x39, 0xcc, 0x1a,
+	0xf6, 0xdd, 0xd3, 0xba, 0xe9, 0x9b, 0x14, 0xcc, 0x7e, 0x89, 0xa3, 0x07, 0x70, 0x4b, 0x7c, 0x66,
+	0xaa, 0xa1, 0xab, 0xf4, 0x92, 0xb6, 0xe3, 0x26, 0x23, 0xe7, 0x7b, 0x4b, 0x5b, 0x66, 0x52, 0xa4,
+	0x12, 0x25, 0x6f, 0xd8, 0x90, 0x32, 0xac, 0x23, 0x72, 0x3e, 0x9b, 0x72, 0x08, 0x61, 0xdf, 0xb1,
+	0xb4, 0x6c, 0x68, 0x35, 0xae, 0x39, 0xe8, 0x3b, 0x76, 0x6e, 0xec, 0xe5, 0x6d, 0x98, 0xb9, 0x1f,
+	0x67, 0xa8, 0x7b, 0x79, 0xfc, 0x11, 0x57, 0x62, 0xdd, 0x0f, 0x16, 0xaa, 0x5a, 0xfc, 0xfe, 0x69,
+	0x55, 0xe2, 0xea, 0xdf, 0xca, 0xa6, 0xf6, 0xf8, 0xe4, 0x67, 0x00, 0x00, 0x00, 0xff, 0xff, 0x64,
+	0x30, 0x10, 0xe7, 0x2a, 0x05, 0x00, 0x00,
 }
