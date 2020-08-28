@@ -187,6 +187,15 @@ currently doesn't support partner access. Thus, stdout logs for key steps of the
 build are mirrored to per-project Google Storage buckets. The Google Storage
 mirrored logs appear as links like "stdout (GS mirror)" on the Milo page.
 
+## Contributing Protocol Buffer Schema Changes
+
+Protobuf schemas live under the `config` directory. To make a schema change
+(e.g. add a field), edit the `.proto` file and then run the `generate.sh` script
+in the root of this repo to generate the Protobuf bindings.
+
+See the [proto3 Language Guide](https://developers.google.com/protocol-buffers/docs/proto3)
+for more background on Protobuf.
+
 ## Constraint Checkers
 
 As described above, a project config is verified against the constraints of the
