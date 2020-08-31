@@ -6,10 +6,6 @@ See proto definitions for descriptions of arguments.
 # Needed to load from @proto. Add @unused to silence lint.
 load("//config/util/bindings/proto.star", "protos")
 load(
-    "@proto//chromiumos/config/api/software/chromeos_config/identity_scan_config.proto",
-    id_scan_pb = "chromiumos.config.api.software.chromeos_config",
-)
-load(
     "@proto//chromiumos/config/api/software/audio_config.proto",
     audio_pb = "chromiumos.config.api.software",
 )
@@ -24,10 +20,6 @@ load(
 load(
     "@proto//chromiumos/config/api/software/power_config.proto",
     pc_pb = "chromiumos.config.api.software",
-)
-load(
-    "@proto//chromiumos/config/api/software/software_config.proto",
-    sc_pb = "chromiumos.config.api.software",
 )
 load(
     "@proto//chromiumos/config/api/software/wifi_config.proto",
@@ -151,41 +143,6 @@ def _create_fw_payloads_by_names(
         )
     return sc_fw_config if ap_fw_name else None
 
-def _create_x86_id_scan(smbios_name_match = None, fw_sku = 255, design_config_id = None):
-    """Deprecated. Use design.append_configs"""
-    if smbios_name_match and design_config_id:
-        fail(
-            "smbios_name_match cannot be used if design_config_id ",
-            "is used. smbios_name_match is deprecated, please use ",
-            "design_config_id.",
-        )
-
-    if design_config_id:
-        smbios_name_match, fw_sku = design_config_id.value.split(":")
-        fw_sku = int(fw_sku)
-
-    return id_scan_pb.IdentityScanConfig.DesignConfigId(
-        smbios_name_match = smbios_name_match,
-        firmware_sku = fw_sku,
-    )
-
-def _create_arm_id_scan(dt_compatible_match = None, fw_sku = 255, design_config_id = None):
-    """Deprecated. Use design.append_configs"""
-    if dt_compatible_match and design_config_id:
-        fail(
-            "dt_compatible_match cannot be used if design_config_id ",
-            "is used. dt_compatible_match is deprecated, please use ",
-            "design_config_id.",
-        )
-
-    if design_config_id:
-        dt_compatible_match, fw_sku = design_config_id.value.split(":")
-        fw_sku = int(fw_sku)
-    return id_scan_pb.IdentityScanConfig.DesignConfigId(
-        device_tree_compatible_match = dt_compatible_match,
-        firmware_sku = fw_sku,
-    )
-
 def _create_audio(
         card_name,
         card_config_file = None,
@@ -300,38 +257,11 @@ def _create_rtw88(
         ),
     )
 
-def _create(
-        design_config_id = None,
-        id_scan_config = None,
-        firmware = None,
-        firmware_build_config = None,
-        bluetooth = None,
-        power = None,
-        audio = None,
-        wifi = None):
-    """Deprecated. Use append_configs instead."""
-    return sc_pb.SoftwareConfig(
-        design_config_id = design_config_id,
-        id_scan_config = id_scan_config,
-        firmware = firmware,
-        firmware_build_config = firmware_build_config,
-        bluetooth_config = bluetooth,
-        power_config = power,
-        audio_config = audio,
-        wifi_config = wifi,
-    )
-
 sw_config = struct(
-    # Deprecated. Use append_configs instead
-    create = _create,
     create_ath10k = _create_ath10k,
     create_ath10k_power_chain = _create_ath10k_power_chain,
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
-    # Deprecated. Use append_configs instead
-    create_x86_id_scan = _create_x86_id_scan,
-    # Deprecated. Use append_configs instead
-    create_arm_id_scan = _create_arm_id_scan,
     create_fw_version = _create_fw_version,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,
