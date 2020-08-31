@@ -39,7 +39,7 @@ config/payload_utils/convert_config_enums.py \
 
 # Generated filtered public configs. Note that this should be done for both
 # programs and projects.
-python3 config/payload_utils/public_replication.py \
+config/payload_utils/public_replication.py \
   --input "${private_config_path}" \
   --output "${public_config_path}"
 
@@ -73,7 +73,7 @@ proto_converter(){
 
   rm -rf "${output_dir}"
   mkdir -p "${output_dir}"
-  python3 config/payload_utils/cros_config_proto_converter.py \
+  config/payload_utils/cros_config_proto_converter.py \
     --output "${output_dir}/project-config.json" \
     --program_config "${program_config}" \
     --project_configs "${config_path}"
@@ -88,7 +88,7 @@ proto_converter "${public_config_path}" "${public_sw_output_dir}"
 
 rm -rf factory/generated
 mkdir -p factory/generated
-python3 config/payload_utils/factory_config_proto_converter.py \
+config/payload_utils/factory_config_proto_converter.py \
   --output factory/generated/model_sku.json \
   --program_config program/generated/config.jsonproto \
   --project_configs generated/config.jsonproto
