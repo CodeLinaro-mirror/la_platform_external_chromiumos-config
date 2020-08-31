@@ -46,7 +46,6 @@ def _append_configs(
         hw_configs,
         design_id,
         config_id,
-        base_hw_features = None,
         hardware_topology = None,
         firmware = None,
         firmware_build_config = None,
@@ -60,6 +59,26 @@ def _append_configs(
     Create new Software and Hardware Design Configuration with the
     specified properties and then append them to the sw_configs and hw_configs
     arrays respectively. This ensures that all IDs are consistent.
+
+    Args:
+        sw_configs: An array to append the new SoftwareConfig to. Required.
+        hw_configs: An array to append the new Design.Config to. Required.
+        design_id: A DesignId to use for the Design.Config and SoftwareConfig.
+            Required.
+        config_id: A str or int used to construct the DesignConfigId for the
+            Design.Config and SoftwareConfig. Required.
+        hardware_topology: A HardwareTopology to be used in the Design.Config.
+        firmware: A FirmwareConfig to be used in the SoftwareConfig.
+        firmware_build_config: A FirmwareBuildConfig to be used in the
+            SoftwareConfig.
+        bluetooth: A BluetoothConfig to be used in the SoftwareConfig.
+        power: A PowerConfig to be used in the SoftwareConfig.
+        audio: An AudioConfig to be used in the SoftwareConfig. Can be either a
+            single AudioConfig or a list of AudioConfigs.
+        wifi: A WifiConfig to be used in the SoftwareConfig.
+        smbios_name_match_override: A str used for smbios_name_match in
+            IdentityScanConfig. If not specified, the string in DesignId is
+            used.
     """
 
     # Ensure that config_id is convertable to int and is serialized as a
@@ -78,7 +97,6 @@ def _append_configs(
     hw_config.id.value = "%s:%s" % (design_id.value, config_id)
     hw_config.hardware_topology = hardware_topology
     hw_config.hardware_features = hw_topo.convert_to_hw_features(
-        base_hw_features,
         hardware_topology,
     )
     hw_configs.append(hw_config)

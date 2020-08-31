@@ -835,7 +835,7 @@ def _accumulate_lte(existing_lte, new_lte):
 def _accumulate_hdmi(existing_hdmi, new_hdmi):
     existing_hdmi.present = _accumulate_presence(existing_hdmi.present, new_hdmi.present)
 
-def _convert_to_hw_features(base_hw_features, hardware_topology):
+def _convert_to_hw_features(hardware_topology):
     """Converts a HardwareTopology proto to a HardwareFeatures proto."""
     result = topo_pb.HardwareFeatures()
 
