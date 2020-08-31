@@ -13,6 +13,7 @@ import "chromiumos/config/api/software/bluetooth_config.proto";
 import "chromiumos/config/api/software/chromeos_config/identity_scan_config.proto";
 import "chromiumos/config/api/software/power_config.proto";
 import "chromiumos/config/api/software/wifi_config.proto";
+import "chromiumos/config/public_replication/public_replication.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
@@ -25,7 +26,12 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 //
 // SoftwareConfig payloads can be shared across different
 // hardware-design-configs, if the software payloads are the same.
+//
+// NEXT ID: 13
 message SoftwareConfig {
+  // Configures fields of AudioConfig that are made public.
+  chromiumos.config.public_replication.PublicReplication public_replication = 12;
+
   // Defines the hardware design config this software config supports.
   DesignConfigId design_config_id = 7;
   chromeos_config.IdentityScanConfig.DesignConfigId id_scan_config = 8;

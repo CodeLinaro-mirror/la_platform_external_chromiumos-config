@@ -44,7 +44,11 @@ message Design {
 
   // Defines a unique hardware configuration for a given hardware design
   // and the corresponding hardware features that will be supported.
+  // Next ID: 6
   message Config {
+    // Fields replicated to public configs.
+    chromiumos.config.public_replication.PublicReplication public_replication = 5;
+
     // The ID encoded in hardware on a device, typically in CBI.
     DesignConfigId id = 1;
 

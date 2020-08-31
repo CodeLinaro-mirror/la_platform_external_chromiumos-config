@@ -174,16 +174,60 @@ class ProtoUtilsTest(unittest.TestCase):
     self.assertEqual(dst, expected)
 
   def test_apply_public_replication_stacked_messages(self):
-    """Tests that a PublicReplication message appearing on top of another in the
-    dependency tree raises an Error.
+    """Tests applying PublicReplication messages that appear on top of each
+    other in the dependency tree.
     """
-    with self.assertRaisesRegex(
-        ValueError,
-        'PublicReplication messages may not be defined on top of each other. '
-        'Violating message: chromiumos.config.public_replication.testdata.PublicReplicationTestdata'
-    ):
-      proto_utils.apply_public_replication(WrapperTestdata3(),
-                                           WrapperTestdata3())
+    src = WrapperTestdata3(
+        public_replication=PublicReplication(
+            public_fields=field_mask_pb2.FieldMask(paths=['b1'])),
+        b1=True,
+        pr_testdata=PublicReplicationTestdata(
+            public_replication=PublicReplication(
+                public_fields=field_mask_pb2.FieldMask(paths=['str2'])),
+            str1='teststr1',
+            str2='teststr2',
+        ),
+    )
+
+    expected = WrapperTestdata3(
+        b1=True,
+        pr_testdata=PublicReplicationTestdata(str2='teststr2',),
+    )
+
+    dst = WrapperTestdata3()
+    proto_utils.apply_public_replication(src, dst)
+    self.assertEqual(dst, expected)
+
+  def test_apply_public_replication_stacked_messages_overlap(self):
+    """Tests applying PublicReplication messages that appear on top of each
+    other in the dependency tree, where there is overlap in the fields they
+    specify.
+    """
+    # WrapperTestdata3 specifies that "pr_testdata" should be replicated. This
+    # means the entire PublicReplicationTestdata message is replicated, even
+    # though it specifies only "str2" should be replicated.
+    src = WrapperTestdata3(
+        public_replication=PublicReplication(
+            public_fields=field_mask_pb2.FieldMask(paths=['pr_testdata'])),
+        pr_testdata=PublicReplicationTestdata(
+            public_replication=PublicReplication(
+                public_fields=field_mask_pb2.FieldMask(paths=['str2'])),
+            str1='teststr1',
+            str2='teststr2',
+        ),
+    )
+
+    expected = WrapperTestdata3(
+        pr_testdata=PublicReplicationTestdata(
+            public_replication=PublicReplication(
+                public_fields=field_mask_pb2.FieldMask(paths=['str2'])),
+            str1='teststr1',
+            str2='teststr2',
+        ),)
+
+    dst = WrapperTestdata3()
+    proto_utils.apply_public_replication(src, dst)
+    self.assertEqual(dst, expected)
 
   def test_apply_public_replication_empty_paths(self):
     """Tests applying the PublicReplication message with empty paths.

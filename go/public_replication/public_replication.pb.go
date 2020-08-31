@@ -51,26 +51,6 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 //   more granularity is needed (i.e. saying all or none of
 //   "software_configs" is public is not useful). Thus, FieldMasks to control
 //   public fields are specified in child messages of ConfigBundle.
-// - Two PublicReplication messages that appear on top of each other in a
-//   traversal of the proto schema dependency graph is considered invalid. An
-//   invalid example:
-//
-//   message_a {
-//     public_replication {
-//       public_fields {
-//         paths: "str1"
-//       }
-//     }
-//     str1: "test1"
-//     message_b {
-//       n1: 1
-//       public_replication {
-//         public_fields {
-//           paths: "n1"
-//         }
-//       }
-//     }
-//   }
 type PublicReplication struct {
 	PublicFields         *field_mask.FieldMask `protobuf:"bytes,1,opt,name=public_fields,json=publicFields,proto3" json:"public_fields,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`

@@ -76,75 +76,6 @@ def get_dep_order(message: pb_message.Message) -> List[Text]:
   return deps
 
 
-def __apply_public_replication_internal(src: pb_message.Message,
-                                        dst: pb_message.Message,
-                                        public_replication_found: bool):
-  """Private function to do most of the work of apply_public_replication.
-
-  Allows bookkeeping information to be passed between recursive calls, along
-  with the src and dst messages.
-
-  Args:
-    src: Source message.
-    dst: Destination message to be merged into.
-    public_replication_found: True if a PublicReplication message has already
-      been found earlier in a pre-order traversal of the dependency graph. This
-      is used to detect if two PublicReplication messages appear on top of each
-      other.
-  """
-  # First, see if any of the fields on src are a PublicReplication message. If
-  # one is found, apply the field mask within it and setpublic_replication_found.
-  for field_descriptor in src.DESCRIPTOR.fields:
-    message_descriptor = field_descriptor.message_type
-    if (message_descriptor and message_descriptor.full_name
-        == public_replication_pb2.PublicReplication.DESCRIPTOR.full_name):
-      if public_replication_found:
-        raise ValueError(
-            'PublicReplication messages may not be defined on top'
-            f' of each other. Violating message: {src.DESCRIPTOR.full_name}')
-      public_replication_found = True
-
-      public_fields = getattr(src, field_descriptor.name).public_fields
-      public_fields.MergeMessage(src, dst)
-
-  # Iterate the fields of src and call __apply_public_replication_internal
-  # recursively.
-  for field_descriptor in src.DESCRIPTOR.fields:
-    if field_descriptor.type != field_descriptor.TYPE_MESSAGE:
-      continue
-
-    if field_descriptor.label == field_descriptor.LABEL_REPEATED:
-      # For repeated fields, for each message in src, create a new message in
-      # dst and call __apply_public_replication_internal.
-      for next_src in getattr(src, field_descriptor.name):
-        # map fields are considered repeated messages, but do not have an 'add'
-        # method. Skip this case. It wasn't clear if there was a better way to
-        # detect a map field via the descriptor.
-        dst_field = getattr(dst, field_descriptor.name)
-        if hasattr(dst_field, 'add'):
-          next_dst = dst_field.add()
-
-          # If the newly added field doesn't have any fields set, remove it to
-          # avoid creating many empty messages on dst. Create a copy of next_dst
-          # to check if next_dst changed after the recursive call to
-          # __apply_public_replication_internal and remove next_dst from the
-          # list if it didn't change.
-          next_dst_copy = copy.deepcopy(next_dst)
-
-          __apply_public_replication_internal(next_src, next_dst,
-                                              public_replication_found)
-
-          if dst_field[-1] == next_dst_copy:
-            dst_field.pop()
-    else:
-      # For non-repeated fields, get the field in src and dst and call
-      # __apply_public_replication_internal.
-      next_src = getattr(src, field_descriptor.name)
-      next_dst = getattr(dst, field_descriptor.name)
-      __apply_public_replication_internal(next_src, next_dst,
-                                          public_replication_found)
-
-
 def apply_public_replication(src: pb_message.Message, dst: pb_message.Message):
   """Traverses src and merges fields to dst when a PublicReplication message is
   found.
@@ -161,4 +92,46 @@ def apply_public_replication(src: pb_message.Message, dst: pb_message.Message):
         'src and dst must be the same message type. Got '
         f'{src.DESCRIPTOR.full_name} and {dst.DESCRIPTOR.full_name}')
 
-  __apply_public_replication_internal(src, dst, public_replication_found=False)
+  # First, see if any of the fields on src are a PublicReplication message. If
+  # one is found, apply the field mask within it.
+  for field_descriptor in src.DESCRIPTOR.fields:
+    message_descriptor = field_descriptor.message_type
+    if (message_descriptor and message_descriptor.full_name
+        == public_replication_pb2.PublicReplication.DESCRIPTOR.full_name):
+      public_fields = getattr(src, field_descriptor.name).public_fields
+      public_fields.MergeMessage(src, dst)
+
+  # Iterate the fields of src and call apply_public_replication
+  # recursively.
+  for field_descriptor in src.DESCRIPTOR.fields:
+    if field_descriptor.type != field_descriptor.TYPE_MESSAGE:
+      continue
+
+    if field_descriptor.label == field_descriptor.LABEL_REPEATED:
+      # For repeated fields, for each message in src, create a new message in
+      # dst and call apply_public_replication.
+      for next_src in getattr(src, field_descriptor.name):
+        # map fields are considered repeated messages, but do not have an 'add'
+        # method. Skip this case. It wasn't clear if there was a better way to
+        # detect a map field via the descriptor.
+        dst_field = getattr(dst, field_descriptor.name)
+        if hasattr(dst_field, 'add'):
+          next_dst = dst_field.add()
+
+          # If the newly added field doesn't have any fields set, remove it to
+          # avoid creating many empty messages on dst. Create a copy of next_dst
+          # to check if next_dst changed after the recursive call to
+          # apply_public_replication and remove next_dst from the
+          # list if it didn't change.
+          next_dst_copy = copy.deepcopy(next_dst)
+
+          apply_public_replication(next_src, next_dst)
+
+          if dst_field[-1] == next_dst_copy:
+            dst_field.pop()
+    else:
+      # For non-repeated fields, get the field in src and dst and call
+      # apply_public_replication.
+      next_src = getattr(src, field_descriptor.name)
+      next_dst = getattr(dst, field_descriptor.name)
+      apply_public_replication(next_src, next_dst)

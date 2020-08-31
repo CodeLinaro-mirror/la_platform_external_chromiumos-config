@@ -19,6 +19,7 @@ from chromiumos.config.api.software import bluetooth_config_pb2 as chromiumos_do
 from chromiumos.config.api.software.chromeos_config import identity_scan_config_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2
 from chromiumos.config.api.software import power_config_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_power__config__pb2
 from chromiumos.config.api.software import wifi_config_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_wifi__config__pb2
+from chromiumos.config.public_replication import public_replication_pb2 as chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -26,9 +27,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n4chromiumos/config/api/software/software_config.proto\x12\x1e\x63hromiumos.config.api.software\x1a,chromiumos/config/api/design_config_id.proto\x1a\x31\x63hromiumos/config/api/software/audio_config.proto\x1a\x34\x63hromiumos/config/api/software/firmware_config.proto\x1a\x35\x63hromiumos/config/api/software/bluetooth_config.proto\x1aIchromiumos/config/api/software/chromeos_config/identity_scan_config.proto\x1a\x31\x63hromiumos/config/api/software/power_config.proto\x1a\x30\x63hromiumos/config/api/software/wifi_config.proto\"\xf7\x04\n\x0eSoftwareConfig\x12?\n\x10\x64\x65sign_config_id\x18\x07 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12i\n\x0eid_scan_config\x18\x08 \x01(\x0b\x32Q.chromiumos.config.api.software.chromeos_config.IdentityScanConfig.DesignConfigId\x12@\n\x08\x66irmware\x18\x03 \x01(\x0b\x32..chromiumos.config.api.software.FirmwareConfig\x12R\n\x15\x66irmware_build_config\x18\t \x01(\x0b\x32\x33.chromiumos.config.api.software.FirmwareBuildConfig\x12I\n\x10\x62luetooth_config\x18\x04 \x01(\x0b\x32/.chromiumos.config.api.software.BluetoothConfig\x12\x41\n\x0cpower_config\x18\x05 \x01(\x0b\x32+.chromiumos.config.api.software.PowerConfig\x12\x42\n\raudio_configs\x18\n \x03(\x0b\x32+.chromiumos.config.api.software.AudioConfig\x12?\n\x0bwifi_config\x18\x0b \x01(\x0b\x32*.chromiumos.config.api.software.WifiConfigJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x06\x10\x07\x42\x33Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n4chromiumos/config/api/software/software_config.proto\x12\x1e\x63hromiumos.config.api.software\x1a,chromiumos/config/api/design_config_id.proto\x1a\x31\x63hromiumos/config/api/software/audio_config.proto\x1a\x34\x63hromiumos/config/api/software/firmware_config.proto\x1a\x35\x63hromiumos/config/api/software/bluetooth_config.proto\x1aIchromiumos/config/api/software/chromeos_config/identity_scan_config.proto\x1a\x31\x63hromiumos/config/api/software/power_config.proto\x1a\x30\x63hromiumos/config/api/software/wifi_config.proto\x1a=chromiumos/config/public_replication/public_replication.proto\"\xcc\x05\n\x0eSoftwareConfig\x12S\n\x12public_replication\x18\x0c \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12?\n\x10\x64\x65sign_config_id\x18\x07 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12i\n\x0eid_scan_config\x18\x08 \x01(\x0b\x32Q.chromiumos.config.api.software.chromeos_config.IdentityScanConfig.DesignConfigId\x12@\n\x08\x66irmware\x18\x03 \x01(\x0b\x32..chromiumos.config.api.software.FirmwareConfig\x12R\n\x15\x66irmware_build_config\x18\t \x01(\x0b\x32\x33.chromiumos.config.api.software.FirmwareBuildConfig\x12I\n\x10\x62luetooth_config\x18\x04 \x01(\x0b\x32/.chromiumos.config.api.software.BluetoothConfig\x12\x41\n\x0cpower_config\x18\x05 \x01(\x0b\x32+.chromiumos.config.api.software.PowerConfig\x12\x42\n\raudio_configs\x18\n \x03(\x0b\x32+.chromiumos.config.api.software.AudioConfig\x12?\n\x0bwifi_config\x18\x0b \x01(\x0b\x32*.chromiumos.config.api.software.WifiConfigJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x06\x10\x07\x42\x33Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_design__config__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_audio__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_firmware__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_bluetooth__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_power__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_wifi__config__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_config_dot_api_dot_design__config__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_audio__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_firmware__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_bluetooth__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_power__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_wifi__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2.DESCRIPTOR,])
 
 
 
@@ -41,56 +42,63 @@ _SOFTWARECONFIG = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='design_config_id', full_name='chromiumos.config.api.software.SoftwareConfig.design_config_id', index=0,
+      name='public_replication', full_name='chromiumos.config.api.software.SoftwareConfig.public_replication', index=0,
+      number=12, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='design_config_id', full_name='chromiumos.config.api.software.SoftwareConfig.design_config_id', index=1,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='id_scan_config', full_name='chromiumos.config.api.software.SoftwareConfig.id_scan_config', index=1,
+      name='id_scan_config', full_name='chromiumos.config.api.software.SoftwareConfig.id_scan_config', index=2,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='firmware', full_name='chromiumos.config.api.software.SoftwareConfig.firmware', index=2,
+      name='firmware', full_name='chromiumos.config.api.software.SoftwareConfig.firmware', index=3,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='firmware_build_config', full_name='chromiumos.config.api.software.SoftwareConfig.firmware_build_config', index=3,
+      name='firmware_build_config', full_name='chromiumos.config.api.software.SoftwareConfig.firmware_build_config', index=4,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='bluetooth_config', full_name='chromiumos.config.api.software.SoftwareConfig.bluetooth_config', index=4,
+      name='bluetooth_config', full_name='chromiumos.config.api.software.SoftwareConfig.bluetooth_config', index=5,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='power_config', full_name='chromiumos.config.api.software.SoftwareConfig.power_config', index=5,
+      name='power_config', full_name='chromiumos.config.api.software.SoftwareConfig.power_config', index=6,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='audio_configs', full_name='chromiumos.config.api.software.SoftwareConfig.audio_configs', index=6,
+      name='audio_configs', full_name='chromiumos.config.api.software.SoftwareConfig.audio_configs', index=7,
       number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='wifi_config', full_name='chromiumos.config.api.software.SoftwareConfig.wifi_config', index=7,
+      name='wifi_config', full_name='chromiumos.config.api.software.SoftwareConfig.wifi_config', index=8,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -108,10 +116,11 @@ _SOFTWARECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=471,
-  serialized_end=1102,
+  serialized_start=534,
+  serialized_end=1250,
 )
 
+_SOFTWARECONFIG.fields_by_name['public_replication'].message_type = chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2._PUBLICREPLICATION
 _SOFTWARECONFIG.fields_by_name['design_config_id'].message_type = chromiumos_dot_config_dot_api_dot_design__config__id__pb2._DESIGNCONFIGID
 _SOFTWARECONFIG.fields_by_name['id_scan_config'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2._IDENTITYSCANCONFIG_DESIGNCONFIGID
 _SOFTWARECONFIG.fields_by_name['firmware'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_firmware__config__pb2._FIRMWARECONFIG
