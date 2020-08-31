@@ -68,6 +68,7 @@ build_target.create(
     name,
 
     # Optional arguments.
+    public_fields = None,
     overlay_name = None,
     arc_device = None,
     first_api_level = None,
@@ -77,6 +78,7 @@ build_target.create(
 #### Arguments {#build_target.create-args}
 
 * **name**: Name of the build target, e.g. "galaxy". Required.
+* **public_fields**: Fields replicated to public configs. See PublicReplication proto for details.
 * **overlay_name**: Name of the Portage overlay, e.g. "overlay-galaxy-private". If not specified, "name" is used.
 * **arc_device**: Device name to report in ‘ro.product.device’. If not specified, "name"_cheets is used.
 * **first_api_level**: The first Android API level that this build shipped with.
@@ -492,12 +494,30 @@ hw_topo.create_thermal()
 
 
 ### hw_topo.create_camera {#hw_topo.create_camera}
-Builds a Topology proto for a camera.
+Builds a Topology proto for cameras.
 
 ```python
-hw_topo.create_camera()
+hw_topo.create_camera(
+    # Optional arguments.
+    id = None,
+    description = None,
+    fw_configs = None,
+    camera_devices = None,
+    has_user_facing_camera = None,
+    has_world_facing_camera = None,
+    count = None,
+)
 ```
 
+#### Arguments {#hw_topo.create_camera-args}
+
+* **id**: A string identifier for the Topology.
+* **description**: An English description for the Topology.
+* **fw_configs**: A list of FirmwareConfiguration protos for the form factor.
+* **camera_devices**: A list of HardwareFeatures.Camera.Device protos.
+* **has_user_facing_camera**: If there is a user(front)-facing camera. Deprecated, use |camera_devices| instead.
+* **has_world_facing_camera**: If there is a world(back)-facing camera. Deprecated, use |camera_devices| instead.
+* **count**: The number of cameras. Deprecated, use |camera_devices| instead.
 
 
 ### hw_topo.create_sensor {#hw_topo.create_sensor}
@@ -676,6 +696,15 @@ hw_topo.convert_to_hw_features()
 
 
 
+### hw_topo.make_camera_device {#hw_topo.make_camera_device}
+Builds a HardwareFeatures.Camera.Device proto.
+
+```python
+hw_topo.make_camera_device()
+```
+
+
+
 ### hw_topo.make_fw_config {#hw_topo.make_fw_config}
 Builds a HardwareFeatures.FirmwareConfiguration proto.
 
@@ -826,21 +855,26 @@ sw_config.create()
 Builds a WifiConfig proto for use with ath10k drivers.
 
 ```python
-sw_config.create_ath10k(
-    # Required arguments.
-    limit_2g,
-    limit_5g,
-    tablet_limit_2g,
-    tablet_limit_5g,
-)
+sw_config.create_ath10k(non_tablet_mode_transmit_power_chain, tablet_mode_transmit_power_chain)
 ```
 
 #### Arguments {#sw_config.create_ath10k-args}
 
+* **non_tablet_mode_transmit_power_chain**: non-tablet mode power chain. Required.
+* **tablet_mode_transmit_power_chain**: tablet mode power chain. Required.
+
+
+### sw_config.create_ath10k_power_chain {#sw_config.create_ath10k_power_chain}
+Builds a TransmitPowerChain for ath10k drivers.
+
+```python
+sw_config.create_ath10k_power_chain(limit_2g, limit_5g)
+```
+
+#### Arguments {#sw_config.create_ath10k_power_chain-args}
+
 * **limit_2g**: 2G band power limit (dBm). Required.
 * **limit_5g**: 5G band power limit (dBm). Required.
-* **tablet_limit_2g**: tablet mode 2G band power limit (dBm). Required.
-* **tablet_limit_5g**: tablet mode 5G band power limit (dBm). Required.
 
 
 ### sw_config.create_audio {#sw_config.create_audio}
@@ -964,41 +998,57 @@ Builds a WifiConfig proto for use with rtw88 drivers.
 ```python
 sw_config.create_rtw88(
     # Required arguments.
-    limit_2g,
-    limit_5g_1,
-    limit_5g_3,
-    limit_5g_4,
-    tablet_limit_2g,
-    tablet_limit_5g_1,
-    tablet_limit_5g_3,
-    tablet_limit_5g_4,
+    non_tablet_mode_transmit_power_chain,
+    tablet_mode_transmit_power_chain,
 
     # Optional arguments.
-    fcc_offset_2g = None,
-    fcc_offset_5g = None,
-    eu_offset_2g = None,
-    eu_offset_5g = None,
-    other_offset_2g = None,
-    other_offset_5g = None,
+    fcc_offsets = None,
+    eu_offsets = None,
+    other_offsets = None,
 )
 ```
 
 #### Arguments {#sw_config.create_rtw88-args}
 
+* **non_tablet_mode_transmit_power_chain**: non-tablet mode power chain. Required.
+* **tablet_mode_transmit_power_chain**: tablet mode power chain. Required.
+* **fcc_offsets**: Offsets used for regulatory domains that follow FCC guidelines
+* **eu_offsets**: Offsets used for regulatory domains that follow ESTI guidelines
+* **other_offsets**: Offsets for regulatory domains that don't follow FCC or ETSI guidelines
+
+
+### sw_config.create_rtw88_geo_offsets {#sw_config.create_rtw88_geo_offsets}
+Builds a GeoOffsets from rtw88 drivers.
+
+```python
+sw_config.create_rtw88_geo_offsets(offset_2g, offset_5g)
+```
+
+#### Arguments {#sw_config.create_rtw88_geo_offsets-args}
+
+* **offset_2g**: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) Required.
+* **offset_5g**: Value to be added to all 5GHz WiFi bands. (0.125 dBm) Required.
+
+
+### sw_config.create_rtw88_power_chain {#sw_config.create_rtw88_power_chain}
+Builds a TransmitPowerChain for rtw88 drivers.
+
+```python
+sw_config.create_rtw88_power_chain(
+    # Required arguments.
+    limit_2g,
+    limit_5g_1,
+    limit_5g_3,
+    limit_5g_4,
+)
+```
+
+#### Arguments {#sw_config.create_rtw88_power_chain-args}
+
 * **limit_2g**: 2G band power limit: All 2G band channels. (0.125 dBm). Required.
 * **limit_5g_1**: 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
 * **limit_5g_3**: 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
 * **limit_5g_4**: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
-* **tablet_limit_2g**: tablet mode 2G band power limit: All 2G band channels. (0.125 dBm). Required.
-* **tablet_limit_5g_1**: tablet mode 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
-* **tablet_limit_5g_3**: tablet mode 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
-* **tablet_limit_5g_4**: tablet mode 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
-* **fcc_offset_2g**: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory domains that follow FCC guidelines
-* **fcc_offset_5g**: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory domains that follow FCC guidelines
-* **eu_offset_2g**: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory domains that follow ESTI guidelines
-* **eu_offset_5g**: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory domains that follow ESTI guidelines
-* **other_offset_2g**: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory domains that don't follow FCC or ETSI guidelines
-* **other_offset_5g**: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory domains that don't follow FCC or ETSI guidelines
 
 
 

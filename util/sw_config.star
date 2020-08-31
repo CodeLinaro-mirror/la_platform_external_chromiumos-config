@@ -217,93 +217,86 @@ def _create_power(preferences):
     """Builds a PowerConfig proto."""
     return pc_pb.PowerConfig(preferences = preferences)
 
-def _create_ath10k(limit_2g, limit_5g, tablet_limit_2g, tablet_limit_5g):
-    """Builds a WifiConfig proto for use with ath10k drivers.
+def _create_ath10k_power_chain(limit_2g, limit_5g):
+    """Builds a TransmitPowerChain for ath10k drivers.
 
     Args:
         limit_2g: 2G band power limit (dBm). Required.
         limit_5g: 5G band power limit (dBm). Required.
-        tablet_limit_2g: tablet mode 2G band power limit (dBm). Required.
-        tablet_limit_5g: tablet mode 5G band power limit (dBm). Required.
+    """
+    return wf_pb.WifiConfig.Ath10kConfig.TransmitPowerChain(
+        limit_2g = limit_2g,
+        limit_5g = limit_5g,
+    )
+
+def _create_ath10k(non_tablet_mode_transmit_power_chain, tablet_mode_transmit_power_chain):
+    """Builds a WifiConfig proto for use with ath10k drivers.
+
+    Args:
+        non_tablet_mode_transmit_power_chain: non-tablet mode power chain. Required.
+        tablet_mode_transmit_power_chain: tablet mode power chain. Required.
     """
     return wf_pb.WifiConfig(
         ath10k_config = wf_pb.WifiConfig.Ath10kConfig(
-            tablet_mode_power_table = wf_pb.WifiConfig.Ath10kConfig.TransmitPowerChain(
-                limit_2g = tablet_limit_2g,
-                limit_5g = tablet_limit_5g,
-            ),
-            non_tablet_mode_power_table = wf_pb.WifiConfig.Ath10kConfig.TransmitPowerChain(
-                limit_2g = limit_2g,
-                limit_5g = limit_5g,
-            ),
+            non_tablet_mode_power_table = non_tablet_mode_transmit_power_chain,
+            tablet_mode_power_table = tablet_mode_transmit_power_chain,
         ),
     )
 
-def _create_rtw88(
+def _create_rtw88_power_chain(
         limit_2g,
         limit_5g_1,
         limit_5g_3,
-        limit_5g_4,
-        tablet_limit_2g,
-        tablet_limit_5g_1,
-        tablet_limit_5g_3,
-        tablet_limit_5g_4,
-        fcc_offset_2g = 0,
-        fcc_offset_5g = 0,
-        eu_offset_2g = 0,
-        eu_offset_5g = 0,
-        other_offset_2g = 0,
-        other_offset_5g = 0):
-    """Builds a WifiConfig proto for use with rtw88 drivers.
+        limit_5g_4):
+    """Builds a TransmitPowerChain for rtw88 drivers.
 
     Args:
         limit_2g: 2G band power limit: All 2G band channels. (0.125 dBm). Required.
         limit_5g_1: 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
         limit_5g_3: 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
         limit_5g_4: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
-        tablet_limit_2g: tablet mode 2G band power limit: All 2G band channels. (0.125 dBm). Required.
-        tablet_limit_5g_1: tablet mode 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
-        tablet_limit_5g_3: tablet mode 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
-        tablet_limit_5g_4: tablet mode 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
-        fcc_offset_2g: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory
-            domains that follow FCC guidelines
-        fcc_offset_5g: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory
-            domains that follow FCC guidelines
-        eu_offset_2g: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory
-            domains that follow ESTI guidelines
-        eu_offset_5g: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory
-            domains that follow ESTI guidelines
-        other_offset_2g: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) for regulatory
-            domains that don't follow FCC or ETSI guidelines
-        other_offset_5g: Value to be added to all 5GHz WiFi bands. (0.125 dBm) for regulatory
-            domains that don't follow FCC or ETSI guidelines
+    """
+    return wf_pb.WifiConfig.Rtw88Config.TransmitPowerChain(
+        limit_2g = limit_2g,
+        limit_5g_1 = limit_5g_1,
+        limit_5g_3 = limit_5g_3,
+        limit_5g_4 = limit_5g_4,
+    )
+
+def _create_rtw88_geo_offsets(offset_2g, offset_5g):
+    """Builds a GeoOffsets from rtw88 drivers.
+
+    Args:
+        offset_2g: Value to be added to the 2.4GHz WiFi band. (0.125 dBm) Required.
+        offset_5g: Value to be added to all 5GHz WiFi bands. (0.125 dBm) Required.
+    """
+    return wf_pb.WifiConfig.Rtw88Config.GeoOffsets(
+        offset_2g = offset_2g,
+        offset_5g = offset_5g,
+    )
+
+def _create_rtw88(
+        non_tablet_mode_transmit_power_chain,
+        tablet_mode_transmit_power_chain,
+        fcc_offsets = None,
+        eu_offsets = None,
+        other_offsets = None):
+    """Builds a WifiConfig proto for use with rtw88 drivers.
+
+    Args:
+        non_tablet_mode_transmit_power_chain: non-tablet mode power chain. Required.
+        tablet_mode_transmit_power_chain: tablet mode power chain. Required.
+        fcc_offsets: Offsets used for regulatory domains that follow FCC guidelines
+        eu_offsets: Offsets used for regulatory domains that follow ESTI guidelines
+        other_offsets: Offsets for regulatory domains that don't follow FCC or ETSI guidelines
     """
     return wf_pb.WifiConfig(
         rtw88_config = wf_pb.WifiConfig.Rtw88Config(
-            tablet_mode_power_table = wf_pb.WifiConfig.Rtw88Config.TransmitPowerChain(
-                limit_2g = tablet_limit_2g,
-                limit_5g_1 = tablet_limit_5g_1,
-                limit_5g_3 = tablet_limit_5g_3,
-                limit_5g_4 = tablet_limit_5g_4,
-            ),
-            non_tablet_mode_power_table = wf_pb.WifiConfig.Rtw88Config.TransmitPowerChain(
-                limit_2g = limit_2g,
-                limit_5g_1 = limit_5g_1,
-                limit_5g_3 = limit_5g_3,
-                limit_5g_4 = limit_5g_4,
-            ),
-            offset_fcc = wf_pb.WifiConfig.Rtw88Config.GeoOffsets(
-                offset_2g = fcc_offset_2g,
-                offset_5g = fcc_offset_5g,
-            ),
-            offset_eu = wf_pb.WifiConfig.Rtw88Config.GeoOffsets(
-                offset_2g = eu_offset_2g,
-                offset_5g = eu_offset_5g,
-            ),
-            offset_other = wf_pb.WifiConfig.Rtw88Config.GeoOffsets(
-                offset_2g = other_offset_2g,
-                offset_5g = other_offset_5g,
-            ),
+            non_tablet_mode_power_table = non_tablet_mode_transmit_power_chain,
+            tablet_mode_power_table = tablet_mode_transmit_power_chain,
+            offset_fcc = fcc_offsets,
+            offset_eu = eu_offsets,
+            offset_other = other_offsets,
         ),
     )
 
@@ -332,6 +325,7 @@ sw_config = struct(
     # Deprecated. Use append_configs instead
     create = _create,
     create_ath10k = _create_ath10k,
+    create_ath10k_power_chain = _create_ath10k_power_chain,
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
     # Deprecated. Use append_configs instead
@@ -347,5 +341,7 @@ sw_config = struct(
     create_fw_build_targets = _create_fw_build_targets,
     create_power = _create_power,
     create_rtw88 = _create_rtw88,
+    create_rtw88_geo_offsets = _create_rtw88_geo_offsets,
+    create_rtw88_power_chain = _create_rtw88_power_chain,
     fw_type = _FW_TYPE,
 )

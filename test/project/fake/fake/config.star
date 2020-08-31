@@ -167,10 +167,14 @@ design.append_configs(
     firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
     power = _SC_POWER,
     wifi = sc.create_ath10k(
-        limit_2g = 1,
-        limit_5g = 2,
-        tablet_limit_2g = 3,
-        tablet_limit_5g = 4,
+        non_tablet_mode_transmit_power_chain = sc.create_ath10k_power_chain(
+            limit_2g = 1,
+            limit_5g = 2,
+        ),
+        tablet_mode_transmit_power_chain = sc.create_ath10k_power_chain(
+            limit_2g = 3,
+            limit_5g = 4,
+        ),
     ),
 )
 
@@ -204,20 +208,30 @@ design.append_configs(
     firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
     power = _SC_POWER,
     wifi = sc.create_rtw88(
-        limit_2g = 1,
-        limit_5g_1 = 2,
-        limit_5g_3 = 3,
-        limit_5g_4 = 4,
-        tablet_limit_2g = 5,
-        tablet_limit_5g_1 = 6,
-        tablet_limit_5g_3 = 7,
-        tablet_limit_5g_4 = 8,
-        fcc_offset_2g = 9,
-        fcc_offset_5g = 10,
-        eu_offset_2g = 11,
-        eu_offset_5g = 12,
-        other_offset_2g = 13,
-        other_offset_5g = 14,
+        non_tablet_mode_transmit_power_chain = sc.create_rtw88_power_chain(
+            limit_2g = 1,
+            limit_5g_1 = 2,
+            limit_5g_3 = 3,
+            limit_5g_4 = 4,
+        ),
+        tablet_mode_transmit_power_chain = sc.create_rtw88_power_chain(
+            limit_2g = 5,
+            limit_5g_1 = 6,
+            limit_5g_3 = 7,
+            limit_5g_4 = 8,
+        ),
+        fcc_offsets = sc.create_rtw88_geo_offsets(
+            offset_2g = 9,
+            offset_5g = 10,
+        ),
+        eu_offsets = sc.create_rtw88_geo_offsets(
+            offset_2g = 11,
+            offset_5g = 12,
+        ),
+        other_offsets = sc.create_rtw88_geo_offsets(
+            offset_2g = 13,
+            offset_5g = 14,
+        ),
     ),
 )
 
