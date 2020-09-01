@@ -149,8 +149,8 @@ message ProvisionRequest {
       // gs_path_prefix is the GS path to where kernel, rootfs, and stateful
       // images are located. If DLCs are to be provisioned, it must be a GS path
       // that also has the dlc directory.
-      // For example:
-      // - gs://chromeos-releases/canary-channel/eve/13380.0.0
+      // Only gs://chromeos-image-archive bucket is supported.
+      // For example the format should be:
       // - gs://chromeos-image-archive/eve-release/R86-13380.0.0
       string gs_path_prefix = 1;
     }
