@@ -141,20 +141,6 @@ load("//config/util/design.star", "design")
 load("//config/util/device_brand.star", device_brand = "device_brand")
 load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/program.star", program_util = "program")
-load("//config/util/sw_config.star", sc = "sw_config")
-
-def _sw_config(
-    design_id,
-    design_config_id,
-    ap_firmware_name,
-    scan_id=0x7FFFFFFF):
-  return sc.create(
-      design_config_id = design_config_id,
-      id_scan_config = sc.create_x86_id_scan(
-          smbios_name_match = ap_firmware_name,
-          fw_sku = scan_id,
-      ),
-  )
 
 def _brand(design_id):
   return device_brand.create(
@@ -175,7 +161,6 @@ _${program^^} = program_util.create(
 program = struct(
     brand = _brand,
     ${program} = _${program^^},
-    sw_config = _sw_config,
 )
 EOF
 }
