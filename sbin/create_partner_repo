@@ -171,7 +171,7 @@ apply_default_access() {
   echo -e "## Project's access group gets added to the program's access group"
   echo "If project is a reference-board, its committer groups gets added to chromeos-partner-${program}-committers"
   if [[ -n "${project}" ]]; then
-    gob-curl -X PUT "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${program}-committers/groups/chromeos-partner-${project}-access"
+    gob-curl -X PUT "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${program}-access/groups/chromeos-partner-${project}-access"
 
     if [[ -n "${global_project_obj}" ]]; then
        local referenceBoardName
