@@ -171,6 +171,9 @@ def add_hwid_components(config_bundle, hwid_db):
     part_values = {}
     for _, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       part_values[values['part']] = (int(values['size']), values['timing'])
 
     for part_number, (size, timing) in part_values.items():
@@ -259,7 +262,7 @@ def add_hwid_components(config_bundle, hwid_db):
       values = val['values']
 
       comp = config_bundle.components.add()
-      comp.name = values['name']
+      comp.name = values.get('name', '')
 
       # Check for USB based touchpad
       # We don't receive an explicit type for the touchpad bus type, so
@@ -267,13 +270,13 @@ def add_hwid_components(config_bundle, hwid_db):
       # otherwise it's I2C (rare)
       if 'product' in values and 'vendor' in values:
         comp.touchpad.type = comp.touchpad.USB
-        comp.touchpad.product_id = values['name']
+        comp.touchpad.product_id = comp.name
         comp.touchpad.usb.vendor_id = values['vendor']
         comp.touchpad.usb.product_id = values['product']
-      else:
+      elif 'fw_version' in values and 'fw_csum' in values:
         # i2c based touchpad
         comp.touchpad.type = comp.touchpad.I2C
-        comp.touchpad.product_id = values['product_id']
+        comp.touchpad.product_id = values.get('product_id', '')
         comp.touchpad.fw_version = values['fw_version']
         comp.touchpad.fw_checksum = values['fw_csum']
 
