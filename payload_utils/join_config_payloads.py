@@ -94,7 +94,7 @@ def add_hwid_components(config_bundle, hwid_db):
       values = val['values']
       comp = config_bundle.components.add()
       comp.id.value = key
-      comp.name = values['name']
+      comp.name = values.get('name', '')
       comp.audio_codec.name = comp.name
 
   def create_battery_components(items):
@@ -103,12 +103,13 @@ def add_hwid_components(config_bundle, hwid_db):
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.name = comp.id.value
-      comp.manufacturer_id.MergeFrom(
-          config_bundle_utils.find_partner(
-              config_bundle, values['manufacturer'], create=True).id)
+      if 'manufacturer' in values:
+        comp.manufacturer_id.MergeFrom(
+            config_bundle_utils.find_partner(
+                config_bundle, values['manufacturer'], create=True).id)
 
-      comp.battery.model = values['model_name']
-      if values['technology'].lower() == 'li-ion':
+      comp.battery.model = values.get('model_name', '')
+      if 'technology' in values and values['technology'].lower() == 'li-ion':
         comp.battery.technology = comp.battery.LI_ION
 
   def create_bluetooth_components(items):
@@ -118,9 +119,9 @@ def add_hwid_components(config_bundle, hwid_db):
       comp.id.value = key
       comp.name = comp.id.value
 
-      comp.bluetooth.usb.vendor_id = values['idVendor']
-      comp.bluetooth.usb.product_id = values['idProduct']
-      comp.bluetooth.usb.bcd_device = values['bcdDevice']
+      comp.bluetooth.usb.vendor_id = values.get('idVendor', '')
+      comp.bluetooth.usb.product_id = values.get('idProduct', '')
+      comp.bluetooth.usb.bcd_device = values.get('bcdDevice', '')
 
   def create_cpu_components(items):
     model_re = re.compile(  # reversed from HWID cpu model values
@@ -130,35 +131,38 @@ def add_hwid_components(config_bundle, hwid_db):
       values = val['values']
       comp = config_bundle.components.add()
       comp.id.value = key
-      comp.soc.model = values['model']
-      comp.soc.cores = int(values['cores'])
+      comp.soc.model = values.get('model', '')
+      comp.soc.cores = int(values.get('cores', 0))
 
-      model_string = values['model'].lower()
-      if 'intel' in model_string or 'amd' in model_string:
-        comp.soc.family.arch = comp.soc.X86_64
-      elif 'aarch64' in model_string or 'armv8' in model_string:
-        comp.soc.family.arch = comp.soc.ARM64
-      elif 'armv7' in model_string:
-        comp.soc.family.arch = comp.soc.ARM
-      else:
-        logging.warning('unknown family for cpu model \'%s\'', model_string)
+      if 'model' in values:
+        model_string = values['model'].lower()
+        if 'intel' in model_string or 'amd' in model_string:
+          comp.soc.family.arch = comp.soc.X86_64
+        elif 'aarch64' in model_string or 'armv8' in model_string:
+          comp.soc.family.arch = comp.soc.ARM64
+        elif 'armv7' in model_string:
+          comp.soc.family.arch = comp.soc.ARM
+        else:
+          logging.warning('unknown family for cpu model \'%s\'', model_string)
 
-      match = model_re.search(model_string)
-      if match:
-        comp.soc.family.name = match.group(0).upper()
+        match = model_re.search(model_string)
+        if match:
+          comp.soc.family.name = match.group(0).upper()
 
   def create_display_components(items):
     for key, val in items.items():
       values = val['values']
       comp = config_bundle.components.add()
       comp.id.value = key
-      comp.manufacturer_id.MergeFrom(
-          config_bundle_utils.find_partner(
-              config_bundle, values['vendor'], create=True).id)
 
-      comp.display_panel.product_id = values['product_id']
-      comp.display_panel.properties.width_px = int(values['width'])
-      comp.display_panel.properties.height_px = int(values['height'])
+      if 'vendor' in values:
+        comp.manufacturer_id.MergeFrom(
+            config_bundle_utils.find_partner(
+                config_bundle, values['vendor'], create=True).id)
+
+      comp.display_panel.product_id = values.get('product_id', '')
+      comp.display_panel.properties.width_px = int(values.get('width', 0))
+      comp.display_panel.properties.height_px = int(values.get('height', 0))
 
   def create_dram_components(items):
     # There's a lot of duplicated part numbers in the HWID db, mostly
@@ -192,38 +196,42 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_ec_flash_components(items):
     for _, val in items.items():
       values = val['values']
-      part_number = values['name']
+      part_number = values.get('name', '')
 
       comp = config_bundle.components.add()
       comp.id.value = part_number
-      comp.manufacturer_id.MergeFrom(
-          config_bundle_utils.find_partner(
-              config_bundle, values['vendor'], create=True).id)
+      if 'vendor' in values:
+        comp.manufacturer_id.MergeFrom(
+            config_bundle_utils.find_partner(
+                config_bundle, values['vendor'], create=True).id)
       comp.ec_flash_chip.part_number = part_number
 
   def create_flash_components(items):
     for _, val in items.items():
       values = val['values']
-      part_number = values['name']
+      part_number = values.get('name', '')
 
       comp = config_bundle.components.add()
       comp.id.value = part_number
-      comp.manufacturer_id.MergeFrom(
-          config_bundle_utils.find_partner(
-              config_bundle, values['vendor'], create=True).id)
+      if 'vendor' in values:
+        comp.manufacturer_id.MergeFrom(
+            config_bundle_utils.find_partner(
+                config_bundle, values['vendor'], create=True).id)
       comp.system_flash_chip.part_number = part_number
 
   def create_ec_components(items):
     for _, val in items.items():
       values = val['values']
-      part_number = values['name']
+      part_number = values.get('name', '')
 
       comp = config_bundle.components.add()
       comp.id.value = part_number
       comp.name = part_number
-      comp.manufacturer_id.MergeFrom(
-          config_bundle_utils.find_partner(
-              config_bundle, values['vendor'], create=True).id)
+
+      if 'vendor' in values:
+        comp.manufacturer_id.MergeFrom(
+            config_bundle_utils.find_partner(
+                config_bundle, values['vendor'], create=True).id)
       comp.ec.part_number = part_number
 
   def create_storage_components(items):
@@ -241,9 +249,10 @@ def add_hwid_components(config_bundle, hwid_db):
       comp.storage.prv = values.get('prv', '')
       comp.storage.sectors = values.get('sectors', '')
 
-      storage_type = values['type'].lower()
-      if storage_type == 'mmc':
-        comp.storage.type = comp.storage.EMMC
+      if 'type' in values:
+        storage_type = values['type'].lower()
+        if storage_type == 'mmc':
+          comp.storage.type = comp.storage.EMMC
 
   def create_touchpad_components(items):
     for _, val in items.items():
@@ -274,8 +283,8 @@ def add_hwid_components(config_bundle, hwid_db):
 
       comp = config_bundle.components.add()
       comp.name = key
-      comp.tpm.manufacturer_info = values['manufacturer_info']
-      comp.tpm.version = values['version']
+      comp.tpm.manufacturer_info = values.get('manufacturer_info', '')
+      comp.tpm.version = values.get('version', '')
 
   def create_usb_host_components(items):
 
@@ -315,17 +324,17 @@ def add_hwid_components(config_bundle, hwid_db):
             config_bundle_utils.find_partner(
                 config_bundle, values['manufacturer'], create=True).id)
 
-        comp.camera.usb.vendor_id = values['idVendor']
-        comp.camera.usb.product_id = values['idProduct']
-        comp.camera.usb.bcd_device = values['bcdDevice']
+        comp.camera.usb.vendor_id = values.get('idVendor', '')
+        comp.camera.usb.product_id = values.get('idProduct', '')
+        comp.camera.usb.bcd_device = values.get('bcdDevice', '')
 
       if values.get('bus_type') == 'pci':
         comp.id.value = key
         comp.name = key
 
-        comp.camera.pci.vendor_id = values['vendor']
-        comp.camera.pci.device_id = values['device']
-        comp.camera.pci.revision_id = values['revision_id']
+        comp.camera.pci.vendor_id = values.get('vendor', '')
+        comp.camera.pci.device_id = values.get('device', '')
+        comp.camera.pci.revision_id = values.get('revision_id', '')
 
   def create_wireless_components(items):
     for key, val in items.items():
@@ -337,9 +346,9 @@ def add_hwid_components(config_bundle, hwid_db):
       comp.id.value = key
       comp.name = key
 
-      comp.wifi.pci.vendor_id = values['vendor']
-      comp.wifi.pci.device_id = values['device']
-      comp.wifi.pci.revision_id = values['revision_id']
+      comp.wifi.pci.vendor_id = values.get('vendor', '')
+      comp.wifi.pci.device_id = values.get('device', '')
+      comp.wifi.pci.revision_id = values.get('revision_id', '')
 
   components = hwid_db['components']
   for component_type, value in components.items():
