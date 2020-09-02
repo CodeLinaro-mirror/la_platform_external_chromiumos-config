@@ -12,8 +12,8 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_fake-ref-design.xml",
-            "system-path": "/etc/hardware_features_fake-ref-design.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_fake-ref-design_2147483647.xml",
+            "system-path": "/etc/hardware_features_fake-ref-design_2147483647.xml"
           }
         },
         "audio": {
@@ -137,8 +137,8 @@
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_fake-ref-design.xml",
-            "system-path": "/etc/hardware_features_fake-ref-design.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_fake-ref-design_0.xml",
+            "system-path": "/etc/hardware_features_fake-ref-design_0.xml"
           }
         },
         "audio": {
@@ -167,13 +167,19 @@
         },
         "brand-code": "AAAA",
         "camera": {
-          "count": 1,
+          "count": 2,
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
+              "id": "0123:efef",
               "interface": "usb",
               "orientation": 0
+            },
+            {
+              "facing": "back",
+              "id": "mipi-cam",
+              "interface": "mipi",
+              "orientation": 180
             }
           ]
         },

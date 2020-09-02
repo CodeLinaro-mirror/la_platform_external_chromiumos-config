@@ -557,18 +557,24 @@
             },
             "camera": {
               "count": {
-                "value": 1
+                "value": 2
               },
               "devices": [
                 {
                   "facing": 1,
-                  "id": "0123:abcd",
+                  "id": "0123:efef",
                   "interface": 1,
                   "orientation": 1
+                },
+                {
+                  "facing": 2,
+                  "id": "mipi-cam",
+                  "interface": 2,
+                  "orientation": 3
                 }
               ],
               "userFacingCamera": 1,
-              "worldFacingCamera": 2
+              "worldFacingCamera": 1
             },
             "fingerprint": {
               "location": 5
@@ -679,18 +685,24 @@
               "hardwareFeature": {
                 "camera": {
                   "count": {
-                    "value": 1
+                    "value": 2
                   },
                   "devices": [
                     {
                       "facing": 1,
-                      "id": "0123:abcd",
+                      "id": "0123:efef",
                       "interface": 1,
                       "orientation": 1
+                    },
+                    {
+                      "facing": 2,
+                      "id": "mipi-cam",
+                      "interface": 2,
+                      "orientation": 3
                     }
                   ],
                   "userFacingCamera": 1,
-                  "worldFacingCamera": 2
+                  "worldFacingCamera": 1
                 },
                 "fwConfig": {
                   "mask": 240

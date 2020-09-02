@@ -16,35 +16,12 @@
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 0,
       "component.has_proximity_sensor": true,
-      "component.has_rear_camera": false,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
       "component.has_tabletmode": false,
       "component.has_touchscreen": true,
       "component.has_wifi": true,
       "component.headphone_codec": "ALC5682I",
-      "component.match_sku_components": [
-        [
-          "camera",
-          "==",
-          1
-        ],
-        [
-          "touchscreen",
-          "==",
-          1
-        ],
-        [
-          "usb_host",
-          "==",
-          0
-        ],
-        [
-          "stylus",
-          "==",
-          1
-        ]
-      ],
       "component.speaker_amp": "MAX98373"
     },
     "project-a": {
@@ -303,11 +280,57 @@
       "0": {
         "component.fingerprint_board": "",
         "component.has_fingerprint": false,
+        "component.has_rear_camera": true,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            2
+          ],
+          [
+            "touchscreen",
+            "==",
+            1
+          ],
+          [
+            "usb_host",
+            "==",
+            0
+          ],
+          [
+            "stylus",
+            "==",
+            1
+          ]
+        ],
         "fw_config": 768
       },
       "2147483647": {
         "component.fingerprint_board": "fake-fingerprint-board",
         "component.has_fingerprint": true,
+        "component.has_rear_camera": false,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            1
+          ],
+          [
+            "touchscreen",
+            "==",
+            1
+          ],
+          [
+            "usb_host",
+            "==",
+            0
+          ],
+          [
+            "stylus",
+            "==",
+            1
+          ]
+        ],
         "fw_config": 801
       }
     },
