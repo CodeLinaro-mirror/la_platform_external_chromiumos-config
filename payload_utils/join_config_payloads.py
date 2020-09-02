@@ -92,6 +92,9 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_audio_components(items):
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.name = values.get('name', '')
@@ -100,6 +103,9 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_battery_components(items):
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.name = comp.id.value
@@ -115,6 +121,9 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_bluetooth_components(items):
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.name = comp.id.value
@@ -129,6 +138,9 @@ def add_hwid_components(config_bundle, hwid_db):
 
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.soc.model = values.get('model', '')
@@ -152,6 +164,9 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_display_components(items):
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       comp = config_bundle.components.add()
       comp.id.value = key
 
@@ -199,6 +214,9 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_ec_flash_components(items):
     for _, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       part_number = values.get('name', '')
 
       comp = config_bundle.components.add()
@@ -212,6 +230,9 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_flash_components(items):
     for _, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       part_number = values.get('name', '')
 
       comp = config_bundle.components.add()
@@ -225,6 +246,9 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_ec_components(items):
     for _, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       part_number = values.get('name', '')
 
       comp = config_bundle.components.add()
@@ -240,6 +264,8 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_storage_components(items):
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
 
       comp = config_bundle.components.add()
       comp.id.value = key
@@ -260,6 +286,8 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_touchpad_components(items):
     for _, val in items.items():
       values = val['values']
+      if not values:
+        continue
 
       comp = config_bundle.components.add()
       comp.name = values.get('name', '')
@@ -283,6 +311,8 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_tpm_components(items):
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
 
       comp = config_bundle.components.add()
       comp.name = key
@@ -300,6 +330,8 @@ def add_hwid_components(config_bundle, hwid_db):
 
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
 
       comp = config_bundle.components.add()
       comp.name = values.get('product', key)
@@ -316,6 +348,9 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_video_components(items):
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       if values.get('status') == 'unsupported':
         continue
 
@@ -323,9 +358,11 @@ def add_hwid_components(config_bundle, hwid_db):
       if values.get('bus_type') == 'usb':
         comp.id.value = key
         comp.name = values['product']
-        comp.manufacturer_id.MergeFrom(
-            config_bundle_utils.find_partner(
-                config_bundle, values['manufacturer'], create=True).id)
+
+        if 'manufacturer' in values:
+          comp.manufacturer_id.MergeFrom(
+              config_bundle_utils.find_partner(
+                  config_bundle, values['manufacturer'], create=True).id)
 
         comp.camera.usb.vendor_id = values.get('idVendor', '')
         comp.camera.usb.product_id = values.get('idProduct', '')
@@ -342,6 +379,9 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_wireless_components(items):
     for key, val in items.items():
       values = val['values']
+      if not values:
+        continue
+
       if values.get('status') == 'unsupported':
         continue
 
