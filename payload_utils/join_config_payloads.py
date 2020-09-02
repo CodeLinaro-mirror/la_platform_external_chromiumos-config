@@ -655,7 +655,6 @@ def merge_configs(config_path, project_name, public_path, private_path,
     config_bundle = io_utils.read_config(config_path)
 
   models = load_models(public_path, private_path)
-  hwid_db = load_hwid(hwid_path)
 
   def find_design_config(prog_name, proj_name, sku):
     """Searches config_bundle a matching design_config.
@@ -770,7 +769,9 @@ def merge_configs(config_path, project_name, public_path, private_path,
       merge_model(config_bundle, design_config, model, project_name)
 
   # Merge information from HWID into config bundle
-  return add_hwid_components(config_bundle, hwid_db)
+  if hwid_path:
+    return add_hwid_components(config_bundle, load_hwid(hwid_path))
+  return config_bundle
 
 
 def main(options):
