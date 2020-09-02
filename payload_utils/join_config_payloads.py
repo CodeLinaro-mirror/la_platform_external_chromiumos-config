@@ -49,6 +49,9 @@ def load_models(public_path, private_path):
   from libcros_config_host import CrosConfig
   # pylint: enable=import-outside-toplevel, import-error
 
+  if not (public_path or private_path):
+    return None
+
   configs = [config for config in [public_path, private_path] if config]
   with tempfile.TemporaryDirectory() as temp_dir:
     # Convert the model.yaml files into a payload JSON
@@ -705,7 +708,7 @@ def merge_configs(config_path, project_name, public_path, private_path,
   # The primary source of SKU truth is the model.yaml files.  We'll take each
   # sku we find there and attempt to match with a DesignConfig in the
   # ConfigBundles, and update it if we find it, otherwise creating a new one.
-  for model in models.GetDeviceConfigs():
+  for model in models.GetDeviceConfigs() if models else []:
     identity = model.GetProperties('/identity')
     program = identity['platform-name']
     project = model.GetName()
