@@ -46,6 +46,8 @@ def _append_configs(
         hw_configs,
         design_id,
         config_id,
+        hw_config_public_fields = None,
+        sw_config_public_fields = None,
         hardware_topology = None,
         firmware = None,
         firmware_build_config = None,
@@ -67,6 +69,12 @@ def _append_configs(
             Required.
         config_id: A str or int used to construct the DesignConfigId for the
             Design.Config and SoftwareConfig. Required.
+        hw_config_public_fields: A list of str specifying fields on
+            Design.Config that will be made public. See PublicReplication proto
+            for details.
+        sw_config_public_fields: A list of str specifying fields on
+            SoftwareConfig that will be made public. See PublicReplication proto
+            for details.
         hardware_topology: A HardwareTopology to be used in the Design.Config.
         firmware: A FirmwareConfig to be used in the SoftwareConfig.
         firmware_build_config: A FirmwareBuildConfig to be used in the
@@ -99,6 +107,9 @@ def _append_configs(
     hw_config.hardware_features = hw_topo.convert_to_hw_features(
         hardware_topology,
     )
+    hw_config.public_replication = public_replication.create(
+        public_fields = hw_config_public_fields,
+    )
     hw_configs.append(hw_config)
 
     sw_config = sc_pb.SoftwareConfig()
@@ -115,6 +126,9 @@ def _append_configs(
         else:
             sw_config.audio_configs.append(audio)
     sw_config.wifi_config = wifi
+    sw_config.public_replication = public_replication.create(
+        public_fields = sw_config_public_fields,
+    )
     sw_configs.append(sw_config)
 
 def _create_design_id(name):

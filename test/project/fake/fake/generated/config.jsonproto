@@ -541,6 +541,9 @@
           },
           "id": {
             "value": "FAKE-REF-DESIGN:2147483647"
+          },
+          "publicReplication": {
+            "publicFields": "id"
           }
         },
         {
@@ -906,6 +909,9 @@
           },
           "id": {
             "value": "FAKE-REF-DESIGN:0"
+          },
+          "publicReplication": {
+            "publicFields": "id"
           }
         }
       ],
@@ -1319,6 +1325,9 @@
           },
           "id": {
             "value": "PROJECT-A:32"
+          },
+          "publicReplication": {
+            "publicFields": "id"
           }
         }
       ],
@@ -1718,6 +1727,9 @@
           },
           "id": {
             "value": "PROJECT-B:33"
+          },
+          "publicReplication": {
+            "publicFields": "id"
           }
         }
       ],
@@ -2117,6 +2129,9 @@
           },
           "id": {
             "value": "PROJECT-C:34"
+          },
+          "publicReplication": {
+            "publicFields": "id"
           }
         }
       ],
@@ -2474,6 +2489,9 @@
           },
           "id": {
             "value": "PROJECT-WL:64"
+          },
+          "publicReplication": {
+            "publicFields": "id"
           }
         }
       ],
@@ -2831,6 +2849,9 @@
           },
           "id": {
             "value": "PROJECT-BOX:128"
+          },
+          "publicReplication": {
+            "publicFields": "id"
           }
         }
       ],
@@ -3143,6 +3164,9 @@
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },
+      "publicReplication": {
+        "publicFields": "designConfigId"
+      },
       "wifiConfig": {
         "ath10kConfig": {
           "nonTabletModePowerTable": {
@@ -3222,6 +3246,9 @@
           "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId"
       },
       "wifiConfig": {
         "rtw88Config": {
@@ -3326,6 +3353,9 @@
           "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId"
       }
     },
     {
@@ -3400,6 +3430,9 @@
           "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId"
       }
     },
     {
@@ -3473,6 +3506,9 @@
           "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId"
       }
     },
     {
@@ -3546,6 +3582,9 @@
           "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId"
       }
     },
     {
@@ -3614,6 +3653,9 @@
           "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId"
       }
     }
   ]
