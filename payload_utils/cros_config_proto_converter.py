@@ -730,6 +730,54 @@ def _write_arc_hardware_feature_file(output_dir, file_name, config_content):
     f.write(file_content)
 
 
+def _get_arc_camera_features(camera):
+  """Gets camera related features for ARC hardware_features.xml from camera
+  topology. Check
+  https://developer.android.com/reference/android/content/pm/PackageManager#FEATURE_CAMERA
+  and CTS android.app.cts.SystemFeaturesTest#testCameraFeatures for the correct
+  settings.
+
+  Args:
+    camera: A HardwareFeatures.Camera proto message.
+  Returns:
+    list of camera related ARC features as XML elements.
+  """
+  camera_pb = topology_pb2.HardwareFeatures.Camera
+
+  if len(camera.devices) > 0:
+    count = len(camera.devices)
+    has_front_camera = any(
+        (d.facing == camera_pb.FACING_FRONT for d in camera.devices))
+    has_back_camera = any(
+        (d.facing == camera_pb.FACING_BACK for d in camera.devices))
+    # Assumes MIPI cameras support FULL-level.
+    # TODO(kamesan): Setting this in project configs when there's an exception.
+    has_level_full_camera = any(
+        (d.interface == camera_pb.INTERFACE_MIPI for d in camera.devices))
+  else:
+    # Fallback to use the old proto definition.
+    count = camera.count.value
+    has_front_camera = count > 0
+    has_back_camera = count > 1
+    has_level_full_camera = False
+
+  # Assumes the back camera supports autofocus.
+  # TODO(kamesan): Setting this in project configs when there's an exception.
+  has_autofocus_back_camera = has_back_camera
+
+  return [
+      _feature('android.hardware.camera', has_back_camera),
+      _feature('android.hardware.camera.any', count > 0),
+      _feature('android.hardware.camera.autofocus', has_autofocus_back_camera),
+      _feature('android.hardware.camera.capability.manual_post_processing',
+               has_level_full_camera),
+      _feature('android.hardware.camera.capability.manual_sensor',
+               has_level_full_camera),
+      _feature('android.hardware.camera.front', has_front_camera),
+      _feature('android.hardware.camera.level.full', has_level_full_camera),
+  ]
+
+
 def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
   """Writes ARC hardware_feature.xml files for each config
 
@@ -746,40 +794,37 @@ def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
   for hw_design in config.design_list:
     for design_config in hw_design.configs:
       hw_features = design_config.hardware_features
-      any_camera = hw_features.camera.count.value > 0
-      multi_camera = hw_features.camera.count.value > 1
       touchscreen = _any_present([hw_features.screen.touch_support])
       acc = hw_features.accelerometer
       gyro = hw_features.gyroscope
       compass = hw_features.magnetometer
       light_sensor = hw_features.light_sensor
       root = etree.Element('permissions')
-      root.extend([
-          _feature('android.hardware.camera', multi_camera),
-          _feature('android.hardware.camera.autofocus', multi_camera),
-          _feature('android.hardware.camera.any', any_camera),
-          _feature('android.hardware.camera.front', any_camera),
-          _feature(
-              'android.hardware.sensor.accelerometer',
-              _any_present([acc.lid_accelerometer, acc.base_accelerometer])),
-          _feature('android.hardware.sensor.gyroscope',
-                   _any_present([gyro.lid_gyroscope, gyro.base_gyroscope])),
-          _feature(
-              'android.hardware.sensor.compass',
-              _any_present(
-                  [compass.lid_magnetometer, compass.base_magnetometer])),
-          _feature(
-              'android.hardware.sensor.light',
-              _any_present(
-                  [light_sensor.lid_lightsensor,
-                   light_sensor.base_lightsensor])),
-          _feature('android.hardware.touchscreen', touchscreen),
-          _feature('android.hardware.touchscreen.multitouch', touchscreen),
-          _feature('android.hardware.touchscreen.multitouch.distinct',
-                   touchscreen),
-          _feature('android.hardware.touchscreen.multitouch.jazzhand',
-                   touchscreen),
-      ])
+      root.extend(
+          _get_arc_camera_features(hw_features.camera) + [
+              _feature(
+                  'android.hardware.sensor.accelerometer',
+                  _any_present([acc.lid_accelerometer, acc.base_accelerometer
+                               ])),
+              _feature('android.hardware.sensor.gyroscope',
+                       _any_present([gyro.lid_gyroscope, gyro.base_gyroscope])),
+              _feature(
+                  'android.hardware.sensor.compass',
+                  _any_present(
+                      [compass.lid_magnetometer, compass.base_magnetometer])),
+              _feature(
+                  'android.hardware.sensor.light',
+                  _any_present([
+                      light_sensor.lid_lightsensor,
+                      light_sensor.base_lightsensor
+                  ])),
+              _feature('android.hardware.touchscreen', touchscreen),
+              _feature('android.hardware.touchscreen.multitouch', touchscreen),
+              _feature('android.hardware.touchscreen.multitouch.distinct',
+                       touchscreen),
+              _feature('android.hardware.touchscreen.multitouch.jazzhand',
+                       touchscreen),
+          ])
 
       design_name = hw_design.name.lower()
 
