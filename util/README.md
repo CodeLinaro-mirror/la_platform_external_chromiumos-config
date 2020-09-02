@@ -318,9 +318,43 @@ specified properties and then append them to the sw_configs and hw_configs
 arrays respectively. This ensures that all IDs are consistent.
 
 ```python
-design.append_configs()
+design.append_configs(
+    # Required arguments.
+    sw_configs,
+    hw_configs,
+    design_id,
+    config_id,
+
+    # Optional arguments.
+    hw_config_public_fields = None,
+    sw_config_public_fields = None,
+    hardware_topology = None,
+    firmware = None,
+    firmware_build_config = None,
+    bluetooth = None,
+    power = None,
+    audio = None,
+    wifi = None,
+    smbios_name_match_override = None,
+)
 ```
 
+#### Arguments {#design.append_configs-args}
+
+* **sw_configs**: An array to append the new SoftwareConfig to. Required.
+* **hw_configs**: An array to append the new Design.Config to. Required.
+* **design_id**: A DesignId to use for the Design.Config and SoftwareConfig. Required.
+* **config_id**: A str or int used to construct the DesignConfigId for the Design.Config and SoftwareConfig. Required.
+* **hw_config_public_fields**: A list of str specifying fields on Design.Config that will be made public. See PublicReplication proto for details.
+* **sw_config_public_fields**: A list of str specifying fields on SoftwareConfig that will be made public. See PublicReplication proto for details.
+* **hardware_topology**: A HardwareTopology to be used in the Design.Config.
+* **firmware**: A FirmwareConfig to be used in the SoftwareConfig.
+* **firmware_build_config**: A FirmwareBuildConfig to be used in the SoftwareConfig.
+* **bluetooth**: A BluetoothConfig to be used in the SoftwareConfig.
+* **power**: A PowerConfig to be used in the SoftwareConfig.
+* **audio**: An AudioConfig to be used in the SoftwareConfig. Can be either a single AudioConfig or a list of AudioConfigs.
+* **wifi**: A WifiConfig to be used in the SoftwareConfig.
+* **smbios_name_match_override**: A str used for smbios_name_match in IdentityScanConfig. If not specified, the string in DesignId is used.
 
 
 ### design.create_constraint {#design.create_constraint}
@@ -842,15 +876,6 @@ A PublicReplication proto, None if public_fields evaluates to False.
 
 ## //config/util/sw_config.star
 
-### sw_config.create {#sw_config.create}
-Deprecated. Use append_configs instead.
-
-```python
-sw_config.create()
-```
-
-
-
 ### sw_config.create_ath10k {#sw_config.create_ath10k}
 Builds a WifiConfig proto for use with ath10k drivers.
 
@@ -891,24 +916,6 @@ Builds a BluetoothConfig proto.
 
 ```python
 sw_config.create_bluetooth()
-```
-
-
-
-### sw_config.create_x86_id_scan {#sw_config.create_x86_id_scan}
-Deprecated. Use design.append_configs
-
-```python
-sw_config.create_x86_id_scan()
-```
-
-
-
-### sw_config.create_arm_id_scan {#sw_config.create_arm_id_scan}
-Deprecated. Use design.append_configs
-
-```python
-sw_config.create_arm_id_scan()
 ```
 
 
