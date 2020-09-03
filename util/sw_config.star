@@ -257,6 +257,89 @@ def _create_rtw88(
         ),
     )
 
+def _create_intel_power_chain(
+        limit_2g,
+        limit_5g_1,
+        limit_5g_2,
+        limit_5g_3,
+        limit_5g_4):
+    """Builds a TransmitPowerChain for intel drivers.
+
+    Args:
+        limit_2g: 2G band power limit: All 2G band channels. (0.125 dBm). Required.
+        limit_5g_1: 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
+        limit_5g_2: 5G band 2 power limit: 5.35G-5.47G channels. (0.125 dBm). Required.
+        limit_5g_3: 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
+        limit_5g_4: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
+    """
+    return wf_pb.WifiConfig.IntelConfig.TransmitPowerChain(
+        limit_2g = limit_2g,
+        limit_5g_1 = limit_5g_1,
+        limit_5g_2 = limit_5g_2,
+        limit_5g_3 = limit_5g_3,
+        limit_5g_4 = limit_5g_4,
+    )
+
+def _create_intel_geo_offsets(
+        max_2g,
+        offset_2g_a,
+        offset_2g_b,
+        max_5g,
+        offset_5g_a,
+        offset_5g_b):
+    """Builds a GeoOffsets for intel drivers.
+
+    Args:
+        max_2g: Defines the 2.4 GHz upper value for the allowed power to not be
+            crossed by applying the Geo offset. Required.
+        offset_2g_a: Value to be added to the 2.4GHz WiFi band for chain a. (0.125 dBm) Required.
+        offset_2g_b: Value to be added to the 2.4GHz WiFi band for chain b. (0.125 dBm) Required.
+        max_5g: Defines the 5 GHz upper value for the allowed power to not be
+            crossed by applying the Geo offset. Required.
+        offset_5g_a: Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm) Required.
+        offset_5g_b: Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm) Required.
+    """
+    return wf_pb.WifiConfig.IntelConfig.GeoOffsets(
+        max_2g = max_2g,
+        offset_2g_a = offset_2g_a,
+        offset_2g_b = offset_2g_b,
+        max_5g = max_5g,
+        offset_5g_a = offset_5g_a,
+        offset_5g_b = offset_5g_b,
+    )
+
+def _create_intel_wifi(
+        tablet_mode_transmit_power_chain_a,
+        tablet_mode_transmit_power_chain_b,
+        non_tablet_mode_transmit_power_chain_a,
+        non_tablet_mode_transmit_power_chain_b,
+        fcc_offsets = None,
+        eu_offsets = None,
+        other_offsets = None):
+    """Builds a WifiConfig proto for use with intel drivers.
+
+    Args:
+        non_tablet_mode_transmit_power_chain_a: non-tablet mode power chain for chain a. Required.
+        non_tablet_mode_transmit_power_chain_b: non-tablet mode power chain for chain b. Required.
+        tablet_mode_transmit_power_chain_a: tablet mode power chain for chain a. Required.
+        tablet_mode_transmit_power_chain_b: tablet mode power chain for chain b. Required.
+        fcc_offsets: Offsets used for regulatory domains that follow FCC guidelines. Required.
+        eu_offsets: Offsets used for regulatory domains that follow ESTI guidelines. Required.
+        other_offsets: Offsets for regulatory domains that don't follow FCC or ETSI guidelines. Required.
+    """
+    return wf_pb.WifiConfig(
+        intel_config = wf_pb.WifiConfig.IntelConfig(
+            tablet_mode_power_table_a = tablet_mode_transmit_power_chain_a,
+            tablet_mode_power_table_b = tablet_mode_transmit_power_chain_b,
+            non_tablet_mode_power_table_a = non_tablet_mode_transmit_power_chain_a,
+            non_tablet_mode_power_table_b = non_tablet_mode_transmit_power_chain_b,
+            wgds_version = 0,
+            offset_fcc = fcc_offsets,
+            offset_eu = eu_offsets,
+            offset_other = other_offsets,
+        ),
+    )
+
 sw_config = struct(
     create_ath10k = _create_ath10k,
     create_ath10k_power_chain = _create_ath10k_power_chain,
@@ -270,6 +353,9 @@ sw_config = struct(
     create_fw_build_config_by_names = _create_fw_build_config_by_names,
     create_fw_build_targets = _create_fw_build_targets,
     create_power = _create_power,
+    create_intel_geo_offsets = _create_intel_geo_offsets,
+    create_intel_power_chain = _create_intel_power_chain,
+    create_intel_wifi = _create_intel_wifi,
     create_rtw88 = _create_rtw88,
     create_rtw88_geo_offsets = _create_rtw88_geo_offsets,
     create_rtw88_power_chain = _create_rtw88_power_chain,

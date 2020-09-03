@@ -137,6 +137,10 @@
         {
           "mask": 3840,
           "name": "Sensor"
+        },
+        {
+          "mask": 61440,
+          "name": "Intel wifi sar id"
         }
       ],
       "id": {

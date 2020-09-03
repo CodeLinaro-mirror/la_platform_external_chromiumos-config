@@ -32,12 +32,14 @@ _FW_MASKS = struct(
     DB = 0x0000000F,
     CAMERA = 0x000000F0,
     SENSOR = 0x00000F00,
+    WIFI_SAR_ID = 0x0000F000,
 )
 
 _FIRMWARE_CONFIGURATION_SEGMENTS = [
     program_util.create_firmware_configuration_segment("Daughter board", _FW_MASKS.DB),
     program_util.create_firmware_configuration_segment("Camera", _FW_MASKS.CAMERA),
     program_util.create_firmware_configuration_segment("Sensor", _FW_MASKS.SENSOR),
+    program_util.create_firmware_configuration_segment("Intel wifi sar id", _FW_MASKS.WIFI_SAR_ID),
 ]
 
 _FEATURE_CONSTRAINTS = design.create_constraints(

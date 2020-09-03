@@ -999,6 +999,81 @@ sw_config.create_power()
 
 
 
+### sw_config.create_intel_geo_offsets {#sw_config.create_intel_geo_offsets}
+Builds a GeoOffsets for intel drivers.
+
+```python
+sw_config.create_intel_geo_offsets(
+    # Required arguments.
+    max_2g,
+    offset_2g_a,
+    offset_2g_b,
+    max_5g,
+    offset_5g_a,
+    offset_5g_b,
+)
+```
+
+#### Arguments {#sw_config.create_intel_geo_offsets-args}
+
+* **max_2g**: Defines the 2.4 GHz upper value for the allowed power to not be crossed by applying the Geo offset. Required.
+* **offset_2g_a**: Value to be added to the 2.4GHz WiFi band for chain a. (0.125 dBm) Required.
+* **offset_2g_b**: Value to be added to the 2.4GHz WiFi band for chain b. (0.125 dBm) Required.
+* **max_5g**: Defines the 5 GHz upper value for the allowed power to not be crossed by applying the Geo offset. Required.
+* **offset_5g_a**: Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm) Required.
+* **offset_5g_b**: Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm) Required.
+
+
+### sw_config.create_intel_power_chain {#sw_config.create_intel_power_chain}
+Builds a TransmitPowerChain for intel drivers.
+
+```python
+sw_config.create_intel_power_chain(
+    # Required arguments.
+    limit_2g,
+    limit_5g_1,
+    limit_5g_2,
+    limit_5g_3,
+    limit_5g_4,
+)
+```
+
+#### Arguments {#sw_config.create_intel_power_chain-args}
+
+* **limit_2g**: 2G band power limit: All 2G band channels. (0.125 dBm). Required.
+* **limit_5g_1**: 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
+* **limit_5g_2**: 5G band 2 power limit: 5.35G-5.47G channels. (0.125 dBm). Required.
+* **limit_5g_3**: 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
+* **limit_5g_4**: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
+
+
+### sw_config.create_intel_wifi {#sw_config.create_intel_wifi}
+Builds a WifiConfig proto for use with intel drivers.
+
+```python
+sw_config.create_intel_wifi(
+    # Required arguments.
+    non_tablet_mode_transmit_power_chain_a,
+    non_tablet_mode_transmit_power_chain_b,
+    tablet_mode_transmit_power_chain_a,
+    tablet_mode_transmit_power_chain_b,
+    fcc_offsets,
+    eu_offsets,
+    other_offsets,
+)
+```
+
+#### Arguments {#sw_config.create_intel_wifi-args}
+
+* **non_tablet_mode_transmit_power_chain_a**: non-tablet mode power chain for chain a. Required.
+* **non_tablet_mode_transmit_power_chain_b**: non-tablet mode power chain for chain b. Required.
+* **tablet_mode_transmit_power_chain_a**: tablet mode power chain for chain a. Required.
+* **tablet_mode_transmit_power_chain_b**: tablet mode power chain for chain b. Required.
+* **fcc_offsets**: Offsets used for regulatory domains that follow FCC guidelines. Required.
+* **eu_offsets**: Offsets used for regulatory domains that follow ESTI guidelines. Required.
+* **other_offsets**: Offsets for regulatory domains that don't follow FCC or ETSI guidelines. Required.
+
+
 ### sw_config.create_rtw88 {#sw_config.create_rtw88}
 Builds a WifiConfig proto for use with rtw88 drivers.
 

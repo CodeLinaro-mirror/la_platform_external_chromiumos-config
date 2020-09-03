@@ -82,7 +82,7 @@ _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default
 _DAUGHTER_BOARD = hw_topo.create_daughter_board("Default DB", "Default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 1)])
 _NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
 _RAM = hw_topo.create_ram("RAM", "Default ram", gigabytes = 16, type = hw_topo.memory.DDR3, speed_mhz = 3600)
-_WIFI = hw_topo.create_wifi("WIFI", "Default wifi")
+_WIFI = hw_topo.create_wifi("WIFI", "Default wifi", fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)])
 _LTE_BOARD = hw_topo.create_lte_board("LTE_BOARD", "Default lte_board", lte_present = True)
 _SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
 _MOTHERBOARD_USB = hw_topo.create_motherboard_usb("MOTHERBOARD_USB", "Default motherboard_usb")
@@ -298,6 +298,60 @@ design.append_configs(
     ),
     firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
     power = _SC_POWER,
+    wifi = sc.create_intel_wifi(
+        tablet_mode_transmit_power_chain_a = sc.create_intel_power_chain(
+            limit_2g = 1,
+            limit_5g_1 = 2,
+            limit_5g_2 = 3,
+            limit_5g_3 = 4,
+            limit_5g_4 = 5,
+        ),
+        tablet_mode_transmit_power_chain_b = sc.create_intel_power_chain(
+            limit_2g = 6,
+            limit_5g_1 = 7,
+            limit_5g_2 = 8,
+            limit_5g_3 = 9,
+            limit_5g_4 = 10,
+        ),
+        non_tablet_mode_transmit_power_chain_a = sc.create_intel_power_chain(
+            limit_2g = 11,
+            limit_5g_1 = 12,
+            limit_5g_2 = 13,
+            limit_5g_3 = 14,
+            limit_5g_4 = 15,
+        ),
+        non_tablet_mode_transmit_power_chain_b = sc.create_intel_power_chain(
+            limit_2g = 16,
+            limit_5g_1 = 17,
+            limit_5g_2 = 18,
+            limit_5g_3 = 19,
+            limit_5g_4 = 20,
+        ),
+        fcc_offsets = sc.create_intel_geo_offsets(
+            max_2g = 22,
+            offset_2g_a = 23,
+            offset_2g_b = 24,
+            max_5g = 25,
+            offset_5g_a = 26,
+            offset_5g_b = 27,
+        ),
+        eu_offsets = sc.create_intel_geo_offsets(
+            max_2g = 28,
+            offset_2g_a = 29,
+            offset_2g_b = 30,
+            max_5g = 31,
+            offset_5g_a = 32,
+            offset_5g_b = 33,
+        ),
+        other_offsets = sc.create_intel_geo_offsets(
+            max_2g = 34,
+            offset_2g_a = 35,
+            offset_2g_b = 36,
+            max_5g = 37,
+            offset_5g_a = 38,
+            offset_5g_b = 39,
+        ),
+    ),
 )
 
 _HW_CONFIGS_B = []

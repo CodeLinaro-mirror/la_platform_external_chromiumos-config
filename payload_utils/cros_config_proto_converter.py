@@ -33,7 +33,8 @@ Config = namedtuple('Config', [
 ])
 
 ConfigFiles = namedtuple(
-    'ConfigFiles', ['arc_hw_features', 'touch_fw', 'dptf_map', 'camera_map'])
+    'ConfigFiles',
+    ['arc_hw_features', 'touch_fw', 'dptf_map', 'camera_map', 'wifi_sar_map'])
 
 CAMERA_CONFIG_DEST_PATH_TEMPLATE = '/etc/camera/camera_config_{}.json'
 CAMERA_CONFIG_SOURCE_PATH_TEMPLATE = (
@@ -194,47 +195,98 @@ def _build_bluetooth(config):
   return result
 
 
-def _build_wifi(config):
+def _build_ath10k_config(ath10k_config):
+  """Builds the wifi configuration for the ath10k driver.
+
+  Args:
+    ath10k_config: Ath10kConfig config.
+
+  Returns:
+    wifi configuration for the ath10k driver.
+  """
   result = {}
-  if config.sw_config.wifi_config.HasField('ath10k_config'):
-    ath10k_config = config.sw_config.wifi_config.ath10k_config
 
-    def power_chain(power):
-      return {
-          'limit-2g': power.limit_2g,
-          'limit-5g': power.limit_5g,
-      }
+  def power_chain(power):
+    return {
+        'limit-2g': power.limit_2g,
+        'limit-5g': power.limit_5g,
+    }
 
-    result['tablet-mode-power-table-ath10k'] = power_chain(
-        ath10k_config.tablet_mode_power_table)
-    result['non-tablet-mode-power-table-ath10k'] = power_chain(
-        ath10k_config.non_tablet_mode_power_table)
-  elif config.sw_config.wifi_config.HasField('rtw88_config'):
-    rtw88_config = config.sw_config.wifi_config.rtw88_config
-
-    def power_chain(power):
-      return {
-          'limit-2g': power.limit_2g,
-          'limit-5g-1': power.limit_5g_1,
-          'limit-5g-3': power.limit_5g_3,
-          'limit-5g-4': power.limit_5g_4,
-      }
-
-    result['tablet-mode-power-table-rtw'] = power_chain(
-        rtw88_config.tablet_mode_power_table)
-    result['non-tablet-mode-power-table-rtw'] = power_chain(
-        rtw88_config.non_tablet_mode_power_table)
-
-    def offsets(offset):
-      return {
-          'offset-2g': offset.offset_2g,
-          'offset-5g': offset.offset_5g,
-      }
-
-    result['geo-offsets-fcc'] = offsets(rtw88_config.offset_fcc)
-    result['geo-offsets-eu'] = offsets(rtw88_config.offset_eu)
-    result['geo-offsets-rest-of-world'] = offsets(rtw88_config.offset_other)
+  result['tablet-mode-power-table-ath10k'] = power_chain(
+      ath10k_config.tablet_mode_power_table)
+  result['non-tablet-mode-power-table-ath10k'] = power_chain(
+      ath10k_config.non_tablet_mode_power_table)
   return result
+
+
+def _build_rtw88_config(rtw88_config):
+  """Builds the wifi configuration for the rtw88 driver.
+
+  Args:
+    rtw88_config: Rtw88Config config.
+
+  Returns:
+    wifi configuration for the rtw88 driver.
+  """
+  result = {}
+
+  def power_chain(power):
+    return {
+        'limit-2g': power.limit_2g,
+        'limit-5g-1': power.limit_5g_1,
+        'limit-5g-3': power.limit_5g_3,
+        'limit-5g-4': power.limit_5g_4,
+    }
+
+  result['tablet-mode-power-table-rtw'] = power_chain(
+      rtw88_config.tablet_mode_power_table)
+  result['non-tablet-mode-power-table-rtw'] = power_chain(
+      rtw88_config.non_tablet_mode_power_table)
+
+  def offsets(offset):
+    return {
+        'offset-2g': offset.offset_2g,
+        'offset-5g': offset.offset_5g,
+    }
+
+  result['geo-offsets-fcc'] = offsets(rtw88_config.offset_fcc)
+  result['geo-offsets-eu'] = offsets(rtw88_config.offset_eu)
+  result['geo-offsets-rest-of-world'] = offsets(rtw88_config.offset_other)
+  return result
+
+
+def _build_intel_config(config, config_files):
+  """Builds the wifi configuration for the intel driver.
+
+  Args:
+    config: Config namedtuple
+    config_files: Map to look up the generated config files.
+
+  Returns:
+    wifi configuration for the intel driver.
+  """
+  design_name = config.hw_design.name.lower()
+  return config_files.wifi_sar_map.get(design_name)
+
+
+def _build_wifi(config, config_files):
+  """Builds the wifi configuration.
+
+  Args:
+    config: Config namedtuple
+    config_files: Map to look up the generated config files.
+
+  Returns:
+    wifi configuration.
+  """
+  config_field = config.sw_config.wifi_config.WhichOneof('wifi_config')
+  if config_field == 'ath10k_config':
+    return _build_ath10k_config(config.sw_config.wifi_config.ath10k_config)
+  if config_field == 'rtw88_config':
+    return _build_rtw88_config(config.sw_config.wifi_config.rtw88_config)
+  if config_field == 'intel_config':
+    return _build_intel_config(config, config_files)
+  return {}
 
 
 def _build_fingerprint(hw_topology):
@@ -534,7 +586,25 @@ def _build_touch_file_config(config, project_name):
   return result
 
 
-def _transform_build_configs(config, config_files=ConfigFiles({}, {}, {}, {})):
+def _sw_config(sw_configs, design_config_id):
+  """Returns the correct software config for `design_config_id`.
+
+  Returns the correct software config match for `design_config_id`. If no such
+  config or multiple such configs are found an exception is raised.
+  """
+  sw_config_matches = [
+      x for x in sw_configs if x.design_config_id.value == design_config_id
+  ]
+  if len(sw_config_matches) == 1:
+    return sw_config_matches[0]
+  if len(sw_config_matches) > 1:
+    raise ValueError('Multiple software configs found for: %s' %
+                     design_config_id)
+  raise ValueError('Software config is required for: %s' % design_config_id)
+
+
+def _transform_build_configs(config,
+                             config_files=ConfigFiles({}, {}, {}, {}, {})):
   # pylint: disable=too-many-locals,too-many-branches
   partners = {x.id.value: x for x in config.partner_list}
   programs = {x.id.value: x for x in config.program_list}
@@ -564,17 +634,7 @@ def _transform_build_configs(config, config_files=ConfigFiles({}, {}, {}, {})):
         brand_config = brand_configs[device_brand.id.value]
 
       for hw_design_config in hw_design.configs:
-        design_id = hw_design_config.id.value
-        sw_config_matches = [
-            x for x in sw_configs if x.design_config_id.value == design_id
-        ]
-        if len(sw_config_matches) == 1:
-          sw_config = sw_config_matches[0]
-        elif len(sw_config_matches) > 1:
-          raise Exception('Multiple software configs found for: %s' % design_id)
-        else:
-          raise Exception('Software config is required for: %s' % design_id)
-
+        sw_config = _sw_config(sw_configs, hw_design_config.id.value)
         program = _lookup(hw_design.program_id, programs)
         signer_configs_by_design = {}
         signer_configs_by_brand = {}
@@ -647,7 +707,7 @@ def _transform_build_config(config, config_files):
   _upsert(_build_arc(config, config_files), result, 'arc')
   _upsert(_build_audio(config), result, 'audio')
   _upsert(_build_bluetooth(config), result, 'bluetooth')
-  _upsert(_build_wifi(config), result, 'wifi')
+  _upsert(_build_wifi(config, config_files), result, 'wifi')
   _upsert(config.brand_config.wallpaper, result, 'wallpaper')
   _upsert(config.device_brand.brand_code, result, 'brand-code')
   _upsert(
@@ -944,6 +1004,122 @@ def _dptf_map(configs, project_name):
   return result
 
 
+def _wifi_sar_map(configs, project_name, output_dir, build_root_dir):
+  """Constructs a map from design name to wifi sar config for that design.
+
+  Constructs a map from design name to the wifi sar config for that design.
+  In the process a wifi sar hex file is generated that the config points at.
+  This mapping is only made for the intel wifi where the generated file is
+  provided when building coreboot.
+
+  Args:
+    configs: Source ConfigBundle to process.
+    project_name: Name of project processing for.
+    output_dir: Path to the generated output.
+    build_root_path: Path to the config file from portage's perspective.
+
+  Returns:
+    dict that maps the design name onto the wifi config for that design.
+  """
+  # pylint: disable=too-many-locals
+  result = {}
+  programs = {p.id.value: p for p in configs.program_list}
+  sw_configs = list(configs.software_configs)
+  for hw_design in configs.design_list:
+    for hw_design_config in hw_design.configs:
+      sw_config = _sw_config(sw_configs, hw_design_config.id.value)
+      if sw_config.wifi_config.HasField('intel_config'):
+        sar_file_content = _create_intel_sar_file_content(
+            sw_config.wifi_config.intel_config)
+        design_name = hw_design.name.lower()
+        program = _lookup(hw_design.program_id, programs)
+        wifi_sar_id = _extract_fw_config_value(hw_design_config, program,
+                                               'Intel wifi sar id')
+        output_path = os.path.join(output_dir, 'wifi')
+        os.makedirs(output_path, exist_ok=True)
+        filename = 'wifi_sar_{}.hex'.format(wifi_sar_id)
+        output_path = os.path.join(output_path, filename)
+        build_path = os.path.join(build_root_dir, 'wifi', filename)
+        if os.path.exists(output_path):
+          with open(output_path, 'r') as f:
+            if f.read() != sar_file_content:
+              raise Exception(
+                  'Project {} has conflicting wifi sar file content under '
+                  'wifi sar id {}.'.format(project_name, wifi_sar_id))
+        else:
+          with open(output_path, 'w') as f:
+            f.write(sar_file_content)
+        system_path = '/firmware/cbfs-rw-raw/{}/{}'.format(
+            project_name, filename)
+        result[design_name] = _file_v2(build_path, system_path)
+  return result
+
+
+def _extract_fw_config_value(hw_design_config, program, name):
+  """Extracts the firwmare config value with the given name.
+
+  Args:
+    hw_design_config: Design extracting value from.
+    program: Program the `hw_design_config` belongs to.
+    name: Name of firmware config segment to extract.
+
+  Returns: the extracted value or raises a ValueError if no firmware
+    configuration segment with `name` is found.
+  """
+  fw_config = hw_design_config.hardware_features.fw_config.value
+  for fcs in program.firmware_configuration_segments:
+    if fcs.name == name:
+      value = fw_config & fcs.mask
+      lsb_bit_set = (~fcs.mask + 1) & fcs.mask
+      return value // lsb_bit_set
+  raise ValueError(
+      'No firmware configuration segment with name {} found'.format(name))
+
+
+def _create_intel_sar_file_content(intel_config):
+  """Creates and returns the intel sar file content for the given config.
+
+  Creates and returns the sar file content that is used with intel drivers
+  only.
+
+  Args:
+    intel_config: IntelConfig config.
+
+  Returns:
+    sar file content for the given config, see:
+    https://chromeos.google.com/partner/dlm/docs/connectivity/wifidyntxpower.html
+  """
+
+  def to_hex(val):
+    if val > 255 or val < 0:
+      raise Exception('Sar file value %s out of range' % val)
+    return '{0:0{1}X}'.format(val, 2)
+
+  def power_table(tpc):
+    return (to_hex(tpc.limit_2g) + to_hex(tpc.limit_5g_1) +
+            to_hex(tpc.limit_5g_2) + to_hex(tpc.limit_5g_3) +
+            to_hex(tpc.limit_5g_4))
+
+  def wgds_value(wgds):
+    return to_hex(wgds)
+
+  def offset_table(offsets):
+    return (to_hex(offsets.max_2g) + to_hex(offsets.offset_2g_a) +
+            to_hex(offsets.offset_2g_b) + to_hex(offsets.max_5g) +
+            to_hex(offsets.offset_5g_a) + to_hex(offsets.offset_5g_b))
+
+  # See https://chromeos.google.com/partner/dlm/docs/connectivity/wifidyntxpower.html
+  return (power_table(intel_config.tablet_mode_power_table_a) +
+          power_table(intel_config.tablet_mode_power_table_b) +
+          power_table(intel_config.non_tablet_mode_power_table_a) +
+          power_table(intel_config.non_tablet_mode_power_table_b) +
+          '00000000000000000000' + '00000000000000000000' +
+          wgds_value(intel_config.wgds_version) +
+          offset_table(intel_config.offset_fcc) +
+          offset_table(intel_config.offset_eu) +
+          offset_table(intel_config.offset_other))
+
+
 def Main(project_configs, program_config, output):  # pylint: disable=invalid-name
   """Transforms source proto config into platform JSON.
 
@@ -956,8 +1132,9 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
                            [_read_config(config) for config in project_configs])
   arc_hw_feature_files = {}
   touch_fw = {}
-  dptf_map = {}
   camera_map = {}
+  dptf_map = {}
+  wifi_sar_map = {}
   output_dir = os.path.dirname(output)
   build_root_dir = output_dir
   if 'sw_build_config' in output_dir:
@@ -975,6 +1152,8 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
 
     camera_map = _camera_map(configs, project_name)
     dptf_map = _dptf_map(configs, project_name)
+    wifi_sar_map = _wifi_sar_map(configs, project_name, output_dir,
+                                 build_root_dir)
 
   if os.path.exists(TOUCH_PATH):
     touch_fw = _build_touch_file_config(configs, project_name)
@@ -984,7 +1163,8 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
       arc_hw_features=arc_hw_feature_files,
       touch_fw=touch_fw,
       dptf_map=dptf_map,
-      camera_map=camera_map)
+      camera_map=camera_map,
+      wifi_sar_map=wifi_sar_map)
   write_output(_transform_build_configs(configs, config_files), output)
 
 
