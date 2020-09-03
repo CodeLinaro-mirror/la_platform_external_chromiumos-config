@@ -69,6 +69,41 @@ def load_hwid(hwid_path):
     return yaml.load(infile, Loader=yaml.FullLoader)
 
 
+def non_null_values(items):
+  """Unwrap a HWID item block into a dictionary of key => values for non-null values.
+
+  a HWID item block looks like:
+    items:
+      storage_device:
+        status: unsupported
+        values:
+          class: '0x010101'
+          device: '0xff00'
+          sectors: '5000000'
+          vendor: '0xbeef'
+      some_hardware:
+         values:
+      FAKE_RAM_CHIP:
+        values:
+          class: '0x010101'
+          device: '0xff00'
+          sectors: '250000000'
+          vendor: '0xabcd'
+
+  We'll iterate over this and break out the 'values' block, make sure it's not None,
+  and check whether we should exclude it based on the 'status' field if present."""
+
+  def _include(val):
+    if not val['values']:
+      return False
+
+    if 'status' in val and val['status'].lower() == 'unsupported':
+      return False
+    return True
+
+  return [(key, val['values']) for key, val in items.items() if _include(val)]
+
+
 def add_hwid_components(config_bundle, hwid_db):
   """Add components from the HWID database to the config_bundle.
 
@@ -90,22 +125,14 @@ def add_hwid_components(config_bundle, hwid_db):
   # pylint: disable=too-many-locals
 
   def create_audio_components(items):
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.name = values.get('name', '')
       comp.audio_codec.name = comp.name
 
   def create_battery_components(items):
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.name = comp.id.value
@@ -119,11 +146,7 @@ def add_hwid_components(config_bundle, hwid_db):
         comp.battery.technology = comp.battery.LI_ION
 
   def create_bluetooth_components(items):
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.name = comp.id.value
@@ -136,11 +159,7 @@ def add_hwid_components(config_bundle, hwid_db):
     model_re = re.compile(  # reversed from HWID cpu model values
         '(a[0-9]?-[0-9]+[a-z]?|(m3-|i3-|i5-|i7-)*[0-9y]{4,5}[uy]?|n[0-9]{4})')
 
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.soc.model = values.get('model', '')
@@ -162,11 +181,7 @@ def add_hwid_components(config_bundle, hwid_db):
           comp.soc.family.name = match.group(0).upper()
 
   def create_display_components(items):
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.id.value = key
 
@@ -184,14 +199,7 @@ def add_hwid_components(config_bundle, hwid_db):
     # due to specifying slot number.  That information is largely incorrect
     # anyways, so we'll deduplicate parts here
     part_values = {}
-    for _, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
-      if 'status' in val and val['status'] == 'unsupported':
-        continue
-
+    for _, values in non_null_values(items):
       part_values[values['part']] = (int(values['size']), values['timing'])
 
     for part_number, (size, timing) in part_values.items():
@@ -215,11 +223,7 @@ def add_hwid_components(config_bundle, hwid_db):
         comp.memory.profile.type = comp.memory.DDR
 
   def create_ec_flash_components(items):
-    for _, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for _, values in non_null_values(items):
       part_number = values.get('name', '')
 
       comp = config_bundle.components.add()
@@ -231,11 +235,7 @@ def add_hwid_components(config_bundle, hwid_db):
       comp.ec_flash_chip.part_number = part_number
 
   def create_flash_components(items):
-    for _, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for _, values in non_null_values(items):
       part_number = values.get('name', '')
 
       comp = config_bundle.components.add()
@@ -247,11 +247,7 @@ def add_hwid_components(config_bundle, hwid_db):
       comp.system_flash_chip.part_number = part_number
 
   def create_ec_components(items):
-    for _, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for _, values in non_null_values(items):
       part_number = values.get('name', '')
 
       comp = config_bundle.components.add()
@@ -265,11 +261,7 @@ def add_hwid_components(config_bundle, hwid_db):
       comp.ec.part_number = part_number
 
   def create_storage_components(items):
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.name = key
@@ -287,11 +279,7 @@ def add_hwid_components(config_bundle, hwid_db):
           comp.storage.type = comp.storage.EMMC
 
   def create_touchpad_components(items):
-    for _, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for _, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.name = values.get('name', '')
 
@@ -312,11 +300,7 @@ def add_hwid_components(config_bundle, hwid_db):
         comp.touchpad.fw_checksum = values['fw_csum']
 
   def create_tpm_components(items):
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.name = key
       comp.tpm.manufacturer_info = values.get('manufacturer_info', '')
@@ -331,11 +315,7 @@ def add_hwid_components(config_bundle, hwid_db):
           return obj[key]
       return default
 
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.name = values.get('product', key)
       if 'manufacturer' in values:
@@ -349,14 +329,7 @@ def add_hwid_components(config_bundle, hwid_db):
       host.bcd_device = get_oneof(values, ['bcdDevice', 'revision_id'], '')
 
   def create_video_components(items):
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
-      if values.get('status') == 'unsupported':
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       if values.get('bus_type') == 'usb':
         comp.id.value = key
@@ -380,14 +353,7 @@ def add_hwid_components(config_bundle, hwid_db):
         comp.camera.pci.revision_id = values.get('revision_id', '')
 
   def create_wireless_components(items):
-    for key, val in items.items():
-      values = val['values']
-      if not values:
-        continue
-
-      if values.get('status') == 'unsupported':
-        continue
-
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.id.value = key
       comp.name = key
