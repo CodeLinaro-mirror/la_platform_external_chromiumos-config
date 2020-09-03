@@ -189,6 +189,9 @@ def add_hwid_components(config_bundle, hwid_db):
       if not values:
         continue
 
+      if 'status' in val and val['status'] == 'unsupported':
+        continue
+
       part_values[values['part']] = (int(values['size']), values['timing'])
 
     for part_number, (size, timing) in part_values.items():
