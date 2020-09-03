@@ -32,9 +32,9 @@ from chromiumos.config.payload import config_bundle_pb2
 
 # HWID databases use some custom tags, which are mostly legacy as far as I can
 # tell, so we'll ignore them explicitly to allow the parser to succeed.
-yaml.add_constructor('!re', lambda a, b: None)
-yaml.add_constructor('!region_field', lambda a, b: None)
-yaml.add_constructor('!region_component', lambda a, b: None)
+yaml.add_constructor('!re', lambda loader, node: loader.construct_scalar(node))
+yaml.add_constructor('!region_field', lambda loader, node: None)
+yaml.add_constructor('!region_component', lambda loader, node: None)
 
 # git repo locations
 CROS_PLATFORM_REPO = 'https://chromium.googlesource.com/chromiumos/platform2'
