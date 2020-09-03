@@ -437,6 +437,9 @@ def merge_power_config(sw_config, model):
   power_config = sw_config.power_config
 
   for key, val in power_props.items():
+    # We don't support autobrightness yet
+    if key == 'autobrightness':
+      continue
     power_config.preferences[key] = val
 
 
