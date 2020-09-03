@@ -561,7 +561,7 @@ def merge_buttons(hw_feat, model):
   if 'power-button' in ui_props:
     edge = ui_props['power-button']['edge']
     hw_feat.power_button.edge = button.Edge.Value(edge.upper())
-    hw_feat.power_button.position = ui_props['power-button']['position']
+    hw_feat.power_button.position = float(ui_props['power-button']['position'])
 
   if 'side-volume-button' in ui_props:
     region = ui_props['side-volume-button']['region']
