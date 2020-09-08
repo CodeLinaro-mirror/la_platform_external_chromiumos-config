@@ -719,7 +719,7 @@ def merge_configs(config_path, project_name, public_path, private_path,
     # No Design found, create one
     if not program_design:
       program_design = config_bundle.design_list.add()
-      program_design.id.value = prog_name
+      program_design.id.value = proj_name
       program_design.name = proj_name
       program_design.program_id.MergeFrom(program.id)
 
