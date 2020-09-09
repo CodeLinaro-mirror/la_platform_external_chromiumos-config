@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.prototype',
   syntax='proto3',
   serialized_options=_b('Z.go.chromium.org/chromiumos/config/go/prototype'),
-  serialized_pb=_b('\n.chromiumos/config/prototype/build_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a\x31\x63hromiumos/config/prototype/build_target_id.proto\"\xac\x07\n\x0b\x42uildTarget\x12\x36\n\x02id\x18\x01 \x01(\x0b\x32*.chromiumos.config.prototype.BuildTargetId\x12\x45\n\x08\x66irmware\x18\x02 \x01(\x0b\x32\x31.chromiumos.config.prototype.BuildTarget.FirmwareH\x00\x12\x45\n\x08platform\x18\x03 \x01(\x0b\x32\x31.chromiumos.config.prototype.BuildTarget.PlatformH\x00\x12\x43\n\x07\x66\x61\x63tory\x18\x04 \x01(\x0b\x32\x30.chromiumos.config.prototype.BuildTarget.FactoryH\x00\x1a\xf9\x02\n\x08\x46irmware\x12@\n\x02\x65\x63\x18\x01 \x01(\x0b\x32\x34.chromiumos.config.prototype.BuildTarget.Firmware.Ec\x12@\n\x02\x61p\x18\x02 \x01(\x0b\x32\x34.chromiumos.config.prototype.BuildTarget.Firmware.Ap\x12N\n\x0eportage_config\x18\x03 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1a.\n\x02\x45\x63\x12\x0c\n\x04\x62\x61se\x18\x01 \x01(\t\x12\n\n\x02\x65\x63\x18\x02 \x01(\t\x12\x0e\n\x06\x65xtras\x18\x03 \x03(\t\x1ai\n\x02\x41p\x12\x10\n\x08\x63oreboot\x18\x01 \x01(\t\x12\x0b\n\x03gsc\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65pthcharge\x18\x03 \x01(\t\x12\x0b\n\x03ish\x18\x04 \x01(\t\x12\x12\n\nlibpayload\x18\x05 \x01(\t\x12\x0e\n\x06u_boot\x18\x06 \x01(\t\x1aZ\n\x08Platform\x12N\n\x0eportage_config\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1aY\n\x07\x46\x61\x63tory\x12N\n\x0eportage_config\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1aN\n\rPortageConfig\x12\x14\n\x0coverlay_name\x18\x01 \x01(\t\x12\x14\n\x0cprofile_name\x18\x02 \x01(\t\x12\x11\n\tuse_flags\x18\x03 \x03(\tB\x0f\n\rtarget_configB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
+  serialized_pb=_b('\n.chromiumos/config/prototype/build_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a\x31\x63hromiumos/config/prototype/build_target_id.proto\"\xa6\x07\n\x0b\x42uildTarget\x12\x36\n\x02id\x18\x01 \x01(\x0b\x32*.chromiumos.config.prototype.BuildTargetId\x12\x45\n\x08\x66irmware\x18\x02 \x01(\x0b\x32\x31.chromiumos.config.prototype.BuildTarget.FirmwareH\x00\x12\x41\n\x06system\x18\x03 \x01(\x0b\x32/.chromiumos.config.prototype.BuildTarget.SystemH\x00\x12\x43\n\x07\x66\x61\x63tory\x18\x04 \x01(\x0b\x32\x30.chromiumos.config.prototype.BuildTarget.FactoryH\x00\x1a\xf9\x02\n\x08\x46irmware\x12@\n\x02\x65\x63\x18\x01 \x01(\x0b\x32\x34.chromiumos.config.prototype.BuildTarget.Firmware.Ec\x12@\n\x02\x61p\x18\x02 \x01(\x0b\x32\x34.chromiumos.config.prototype.BuildTarget.Firmware.Ap\x12N\n\x0eportage_config\x18\x03 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1a.\n\x02\x45\x63\x12\x0c\n\x04\x62\x61se\x18\x01 \x01(\t\x12\n\n\x02\x65\x63\x18\x02 \x01(\t\x12\x0e\n\x06\x65xtras\x18\x03 \x03(\t\x1ai\n\x02\x41p\x12\x10\n\x08\x63oreboot\x18\x01 \x01(\t\x12\x0b\n\x03gsc\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65pthcharge\x18\x03 \x01(\t\x12\x0b\n\x03ish\x18\x04 \x01(\t\x12\x12\n\nlibpayload\x18\x05 \x01(\t\x12\x0e\n\x06u_boot\x18\x06 \x01(\t\x1aX\n\x06System\x12N\n\x0eportage_config\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1aY\n\x07\x46\x61\x63tory\x12N\n\x0eportage_config\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.prototype.BuildTarget.PortageConfig\x1aN\n\rPortageConfig\x12\x14\n\x0coverlay_name\x18\x01 \x01(\t\x12\x14\n\x0cprofile_name\x18\x02 \x01(\t\x12\x11\n\tuse_flags\x18\x03 \x03(\tB\x0f\n\rtarget_configB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_prototype_dot_build__target__id__pb2.DESCRIPTOR,])
 
@@ -67,8 +67,8 @@ _BUILDTARGET_FIRMWARE_EC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=638,
-  serialized_end=684,
+  serialized_start=634,
+  serialized_end=680,
 )
 
 _BUILDTARGET_FIRMWARE_AP = _descriptor.Descriptor(
@@ -132,8 +132,8 @@ _BUILDTARGET_FIRMWARE_AP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=686,
-  serialized_end=791,
+  serialized_start=682,
+  serialized_end=787,
 )
 
 _BUILDTARGET_FIRMWARE = _descriptor.Descriptor(
@@ -176,19 +176,19 @@ _BUILDTARGET_FIRMWARE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=414,
-  serialized_end=791,
+  serialized_start=410,
+  serialized_end=787,
 )
 
-_BUILDTARGET_PLATFORM = _descriptor.Descriptor(
-  name='Platform',
-  full_name='chromiumos.config.prototype.BuildTarget.Platform',
+_BUILDTARGET_SYSTEM = _descriptor.Descriptor(
+  name='System',
+  full_name='chromiumos.config.prototype.BuildTarget.System',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='portage_config', full_name='chromiumos.config.prototype.BuildTarget.Platform.portage_config', index=0,
+      name='portage_config', full_name='chromiumos.config.prototype.BuildTarget.System.portage_config', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -206,8 +206,8 @@ _BUILDTARGET_PLATFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=793,
-  serialized_end=883,
+  serialized_start=789,
+  serialized_end=877,
 )
 
 _BUILDTARGET_FACTORY = _descriptor.Descriptor(
@@ -236,8 +236,8 @@ _BUILDTARGET_FACTORY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=885,
-  serialized_end=974,
+  serialized_start=879,
+  serialized_end=968,
 )
 
 _BUILDTARGET_PORTAGECONFIG = _descriptor.Descriptor(
@@ -280,8 +280,8 @@ _BUILDTARGET_PORTAGECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=976,
-  serialized_end=1054,
+  serialized_start=970,
+  serialized_end=1048,
 )
 
 _BUILDTARGET = _descriptor.Descriptor(
@@ -306,7 +306,7 @@ _BUILDTARGET = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='platform', full_name='chromiumos.config.prototype.BuildTarget.platform', index=2,
+      name='system', full_name='chromiumos.config.prototype.BuildTarget.system', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -322,7 +322,7 @@ _BUILDTARGET = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_BUILDTARGET_FIRMWARE, _BUILDTARGET_PLATFORM, _BUILDTARGET_FACTORY, _BUILDTARGET_PORTAGECONFIG, ],
+  nested_types=[_BUILDTARGET_FIRMWARE, _BUILDTARGET_SYSTEM, _BUILDTARGET_FACTORY, _BUILDTARGET_PORTAGECONFIG, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -335,7 +335,7 @@ _BUILDTARGET = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=131,
-  serialized_end=1071,
+  serialized_end=1065,
 )
 
 _BUILDTARGET_FIRMWARE_EC.containing_type = _BUILDTARGET_FIRMWARE
@@ -344,21 +344,21 @@ _BUILDTARGET_FIRMWARE.fields_by_name['ec'].message_type = _BUILDTARGET_FIRMWARE_
 _BUILDTARGET_FIRMWARE.fields_by_name['ap'].message_type = _BUILDTARGET_FIRMWARE_AP
 _BUILDTARGET_FIRMWARE.fields_by_name['portage_config'].message_type = _BUILDTARGET_PORTAGECONFIG
 _BUILDTARGET_FIRMWARE.containing_type = _BUILDTARGET
-_BUILDTARGET_PLATFORM.fields_by_name['portage_config'].message_type = _BUILDTARGET_PORTAGECONFIG
-_BUILDTARGET_PLATFORM.containing_type = _BUILDTARGET
+_BUILDTARGET_SYSTEM.fields_by_name['portage_config'].message_type = _BUILDTARGET_PORTAGECONFIG
+_BUILDTARGET_SYSTEM.containing_type = _BUILDTARGET
 _BUILDTARGET_FACTORY.fields_by_name['portage_config'].message_type = _BUILDTARGET_PORTAGECONFIG
 _BUILDTARGET_FACTORY.containing_type = _BUILDTARGET
 _BUILDTARGET_PORTAGECONFIG.containing_type = _BUILDTARGET
 _BUILDTARGET.fields_by_name['id'].message_type = chromiumos_dot_config_dot_prototype_dot_build__target__id__pb2._BUILDTARGETID
 _BUILDTARGET.fields_by_name['firmware'].message_type = _BUILDTARGET_FIRMWARE
-_BUILDTARGET.fields_by_name['platform'].message_type = _BUILDTARGET_PLATFORM
+_BUILDTARGET.fields_by_name['system'].message_type = _BUILDTARGET_SYSTEM
 _BUILDTARGET.fields_by_name['factory'].message_type = _BUILDTARGET_FACTORY
 _BUILDTARGET.oneofs_by_name['target_config'].fields.append(
   _BUILDTARGET.fields_by_name['firmware'])
 _BUILDTARGET.fields_by_name['firmware'].containing_oneof = _BUILDTARGET.oneofs_by_name['target_config']
 _BUILDTARGET.oneofs_by_name['target_config'].fields.append(
-  _BUILDTARGET.fields_by_name['platform'])
-_BUILDTARGET.fields_by_name['platform'].containing_oneof = _BUILDTARGET.oneofs_by_name['target_config']
+  _BUILDTARGET.fields_by_name['system'])
+_BUILDTARGET.fields_by_name['system'].containing_oneof = _BUILDTARGET.oneofs_by_name['target_config']
 _BUILDTARGET.oneofs_by_name['target_config'].fields.append(
   _BUILDTARGET.fields_by_name['factory'])
 _BUILDTARGET.fields_by_name['factory'].containing_oneof = _BUILDTARGET.oneofs_by_name['target_config']
@@ -388,10 +388,10 @@ BuildTarget = _reflection.GeneratedProtocolMessageType('BuildTarget', (_message.
     ))
   ,
 
-  Platform = _reflection.GeneratedProtocolMessageType('Platform', (_message.Message,), dict(
-    DESCRIPTOR = _BUILDTARGET_PLATFORM,
+  System = _reflection.GeneratedProtocolMessageType('System', (_message.Message,), dict(
+    DESCRIPTOR = _BUILDTARGET_SYSTEM,
     __module__ = 'chromiumos.config.prototype.build_target_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.BuildTarget.Platform)
+    # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.BuildTarget.System)
     ))
   ,
 
@@ -416,7 +416,7 @@ _sym_db.RegisterMessage(BuildTarget)
 _sym_db.RegisterMessage(BuildTarget.Firmware)
 _sym_db.RegisterMessage(BuildTarget.Firmware.Ec)
 _sym_db.RegisterMessage(BuildTarget.Firmware.Ap)
-_sym_db.RegisterMessage(BuildTarget.Platform)
+_sym_db.RegisterMessage(BuildTarget.System)
 _sym_db.RegisterMessage(BuildTarget.Factory)
 _sym_db.RegisterMessage(BuildTarget.PortageConfig)
 

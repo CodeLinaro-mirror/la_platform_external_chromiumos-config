@@ -17,7 +17,7 @@ message BuildTarget {
 
   oneof target_config {
     Firmware firmware = 2;
-    Platform platform = 3;
+    System system = 3;
     Factory factory = 4;
   }
 
@@ -51,7 +51,7 @@ message BuildTarget {
     PortageConfig portage_config = 3;
   }
 
-  message Platform {
+  message System {
     PortageConfig portage_config = 1;
   }
 
