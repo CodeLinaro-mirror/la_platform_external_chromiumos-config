@@ -29,6 +29,9 @@ fi
 
 echo "Building config from source starlark config files."
 "${script_dir}"/build_config "$@"
-echo "Transforming generated protojson config output"
-cd "$(dirname "$(realpath -e "${1}")")"
+echo "Transforming generated protojson config enums"
+cd "${config_dir}"
+"${script_dir}"/transform_config_enums
+echo "Transforming generated protojson config to build config"
+cd "${config_dir}"
 "${script_dir}"/transform_config

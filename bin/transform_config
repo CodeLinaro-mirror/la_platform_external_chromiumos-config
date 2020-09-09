@@ -8,11 +8,9 @@
 # configuration derivatives used by the build system.
 
 readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
-source "${script_dir}/common.sh"
 
 # Exit if any command fails.
 set -e
-trap "summarize" EXIT
 
 source "${script_dir}/../setup_cipd.sh"
 
@@ -28,14 +26,6 @@ pip install -r config/requirements.txt -q
 readonly private_config_path='generated/config.jsonproto'
 # Path to output the filtered public config protobuf to.
 readonly public_config_path='generated/public_config.jsonproto'
-
-# TODO(crbug.com/1073530): Ideally lucicfg's to_jsonpb could handle writing
-# JSON PB with enums serialized as ints. For now we do it with a python
-# helper. Note that we overwrite the input file so only the converted result
-# remains.
-config/payload_utils/convert_config_enums.py \
-  --input_config="${private_config_path}" \
-  --output_config="${private_config_path}"
 
 # Generated filtered public configs. Note that this should be done for both
 # programs and projects.

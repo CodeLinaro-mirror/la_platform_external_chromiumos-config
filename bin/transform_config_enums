@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Based on the output of lucicfg, transforms the enum values to readable
+# strings.
+
+readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
+
+source "${script_dir}/../setup_cipd.sh"
+
+# Exit if any command fails.
+set -e
+
+# Create and activate venv.
+/usr/bin/python3 -m venv .venv
+source .venv/bin/activate
+
+# Install requirements.
+pip install wheel -q
+pip install -r config/requirements.txt -q
+
+# Path to the generated config protobuf.
+readonly config_path='generated/config.jsonproto'
+
+# TODO(crbug.com/1073530): Ideally lucicfg's to_jsonpb could handle writing
+# JSON PB with enums serialized as ints. For now we do it with a python
+# helper. Note that we overwrite the input file so only the converted result
+# remains.
+config/payload_utils/convert_config_enums.py \
+  --input_config="${config_path}" \
+  --output_config="${config_path}"
+
