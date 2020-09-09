@@ -6,16 +6,14 @@
 # found in the LICENSE file.
 """Utilities for working with ConfigBundle instances more conveniently."""
 
-from typing import List
-
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
-from chromiumos.config.payload.flat_config_pb2 import FlatConfig
+from chromiumos.config.payload.flat_config_pb2 import FlatConfigList
 
 from chromiumos.config.api import device_brand_pb2
 from chromiumos.config.api.software import brand_config_pb2
 
 
-def flatten_config(config: ConfigBundle) -> List[FlatConfig]:
+def flatten_config(config: ConfigBundle) -> FlatConfigList:
   """Take a ConfigBundle and resolve all the values that are referred to by id.
 
   This denormalizes the ConfigBundle data to make it easier to query.
@@ -46,7 +44,7 @@ def flatten_config(config: ConfigBundle) -> List[FlatConfig]:
   sw_configs = list(config.software_configs)
   brand_configs = {b.brand_id.value: b for b in config.brand_configs}
 
-  results = []
+  results = FlatConfigList()
   for hw_design in config.design_list:
     device_brands = [device_brand_pb2.DeviceBrand()]
     if config.device_brand_list:
@@ -70,7 +68,7 @@ def flatten_config(config: ConfigBundle) -> List[FlatConfig]:
         # NOTE: We don't populate build_target because it doesn't share a
         # foreign key with anything. We'll store it as part of the build metadata
         # and use the BuildTargetId (overlay name) to look it up.
-        flat_config = FlatConfig()
+        flat_config = results.values.add()
         flat_config.program.MergeFrom(_lookup(hw_design.program_id, programs))
         flat_config.program_components.MergeFrom(config.components)
         flat_config.hw_design.MergeFrom(hw_design)
@@ -80,7 +78,6 @@ def flatten_config(config: ConfigBundle) -> List[FlatConfig]:
         flat_config.oem.MergeFrom(_lookup(device_brand.oem_id, partners))
         flat_config.sw_config.MergeFrom(sw_config)
         flat_config.brand_sw_config.MergeFrom(brand_config)
-        results.append(flat_config)
 
   return results
 

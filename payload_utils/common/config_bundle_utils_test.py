@@ -97,10 +97,10 @@ class ConfigBundleUtilsTest(unittest.TestCase):
 
     # Flatten config bundle into a FlatConfigList
     flattened = config_bundle_utils.flatten_config(bundle)
-    self.assertEqual(len(flattened), 1)
+    self.assertEqual(len(flattened.values), 1)
 
     # And verify that values were queried correctly
-    flat_value = flattened[0]
+    flat_value = flattened.values[0]
     self.assertEqual(flat_value.program, program)
     self.assertEqual(flat_value.hw_design, hw_design)
     self.assertEqual(flat_value.odm, partner_0)
