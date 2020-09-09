@@ -72,12 +72,17 @@ def flatten_config(config: ConfigBundle) -> FlatConfigList:
         flat_config.program.MergeFrom(_lookup(hw_design.program_id, programs))
         flat_config.program_components.MergeFrom(config.components)
         flat_config.hw_design.MergeFrom(hw_design)
-        flat_config.odm.MergeFrom(_lookup(hw_design.odm_id, partners))
         flat_config.hw_design_config.MergeFrom(hw_design_config)
         flat_config.device_brand.MergeFrom(device_brand)
-        flat_config.oem.MergeFrom(_lookup(device_brand.oem_id, partners))
         flat_config.sw_config.MergeFrom(sw_config)
         flat_config.brand_sw_config.MergeFrom(brand_config)
+
+        # We expect program_id to be defined above, but odm/oem is less consistently set
+        if hw_design.odm_id.value:
+          flat_config.odm.MergeFrom(_lookup(hw_design.odm_id, partners))
+
+        if device_brand.oem_id.value:
+          flat_config.oem.MergeFrom(_lookup(device_brand.oem_id, partners))
 
   return results
 
