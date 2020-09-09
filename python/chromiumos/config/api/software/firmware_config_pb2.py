@@ -12,6 +12,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from chromiumos.config.api.software import portage_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_portage__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -19,8 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n4chromiumos/config/api/software/firmware_config.proto\x12\x1e\x63hromiumos.config.api.software\"=\n\x0c\x46irmwareType\"-\n\x04Type\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x08\n\x04MAIN\x10\x01\x12\x06\n\x02\x45\x43\x10\x02\x12\x06\n\x02PD\x10\x03\"\'\n\x07Version\x12\r\n\x05major\x18\x01 \x01(\x05\x12\r\n\x05minor\x18\x02 \x01(\x05\"\xaf\x01\n\x0f\x46irmwarePayload\x12\x1b\n\x13\x66irmware_image_name\x18\x02 \x01(\t\x12?\n\x04type\x18\x03 \x01(\x0e\x32\x31.chromiumos.config.api.software.FirmwareType.Type\x12\x38\n\x07version\x18\x04 \x01(\x0b\x32\'.chromiumos.config.api.software.VersionJ\x04\x08\x01\x10\x02\"\xba\x02\n\x0e\x46irmwareConfig\x12H\n\x0fmain_ro_payload\x18\x01 \x01(\x0b\x32/.chromiumos.config.api.software.FirmwarePayload\x12H\n\x0fmain_rw_payload\x18\x02 \x01(\x0b\x32/.chromiumos.config.api.software.FirmwarePayload\x12\x46\n\rec_ro_payload\x18\x03 \x01(\x0b\x32/.chromiumos.config.api.software.FirmwarePayload\x12\x46\n\rpd_ro_payload\x18\x05 \x01(\x0b\x32/.chromiumos.config.api.software.FirmwarePayloadJ\x04\x08\x04\x10\x05\"\xd8\x01\n\x13\x46irmwareBuildConfig\x12W\n\rbuild_targets\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.software.FirmwareBuildConfig.BuildTargets\x1ah\n\x0c\x42uildTargets\x12\x10\n\x08\x63oreboot\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65pthcharge\x18\x02 \x01(\t\x12\n\n\x02\x65\x63\x18\x03 \x01(\t\x12\x11\n\tec_extras\x18\x04 \x03(\t\x12\x12\n\nlibpayload\x18\x05 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
-)
+  serialized_pb=_b('\n4chromiumos/config/api/software/firmware_config.proto\x12\x1e\x63hromiumos.config.api.software\x1a,chromiumos/config/api/software/portage.proto\"=\n\x0c\x46irmwareType\"-\n\x04Type\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x08\n\x04MAIN\x10\x01\x12\x06\n\x02\x45\x43\x10\x02\x12\x06\n\x02PD\x10\x03\"\'\n\x07Version\x12\r\n\x05major\x18\x01 \x01(\x05\x12\r\n\x05minor\x18\x02 \x01(\x05\"\xaf\x01\n\x0f\x46irmwarePayload\x12\x1b\n\x13\x66irmware_image_name\x18\x02 \x01(\t\x12?\n\x04type\x18\x03 \x01(\x0e\x32\x31.chromiumos.config.api.software.FirmwareType.Type\x12\x38\n\x07version\x18\x04 \x01(\x0b\x32\'.chromiumos.config.api.software.VersionJ\x04\x08\x01\x10\x02\"\xba\x02\n\x0e\x46irmwareConfig\x12H\n\x0fmain_ro_payload\x18\x01 \x01(\x0b\x32/.chromiumos.config.api.software.FirmwarePayload\x12H\n\x0fmain_rw_payload\x18\x02 \x01(\x0b\x32/.chromiumos.config.api.software.FirmwarePayload\x12\x46\n\rec_ro_payload\x18\x03 \x01(\x0b\x32/.chromiumos.config.api.software.FirmwarePayload\x12\x46\n\rpd_ro_payload\x18\x05 \x01(\x0b\x32/.chromiumos.config.api.software.FirmwarePayloadJ\x04\x08\x04\x10\x05\"\xac\x02\n\x13\x46irmwareBuildConfig\x12W\n\rbuild_targets\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.software.FirmwareBuildConfig.BuildTargets\x1a\xbb\x01\n\x0c\x42uildTargets\x12\x10\n\x08\x63oreboot\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65pthcharge\x18\x02 \x01(\t\x12\n\n\x02\x65\x63\x18\x03 \x01(\t\x12\x11\n\tec_extras\x18\x04 \x03(\t\x12\x12\n\nlibpayload\x18\x05 \x01(\t\x12Q\n\x14portage_build_target\x18\x06 \x01(\x0b\x32\x33.chromiumos.config.api.software.Portage.BuildTargetB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  ,
+  dependencies=[chromiumos_dot_config_dot_api_dot_software_dot_portage__pb2.DESCRIPTOR,])
 
 
 
@@ -49,8 +51,8 @@ _FIRMWARETYPE_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=104,
-  serialized_end=149,
+  serialized_start=150,
+  serialized_end=195,
 )
 _sym_db.RegisterEnumDescriptor(_FIRMWARETYPE_TYPE)
 
@@ -75,8 +77,8 @@ _FIRMWARETYPE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=88,
-  serialized_end=149,
+  serialized_start=134,
+  serialized_end=195,
 )
 
 
@@ -113,8 +115,8 @@ _VERSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=151,
-  serialized_end=190,
+  serialized_start=197,
+  serialized_end=236,
 )
 
 
@@ -158,8 +160,8 @@ _FIRMWAREPAYLOAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=193,
-  serialized_end=368,
+  serialized_start=239,
+  serialized_end=414,
 )
 
 
@@ -210,8 +212,8 @@ _FIRMWARECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=371,
-  serialized_end=685,
+  serialized_start=417,
+  serialized_end=731,
 )
 
 
@@ -257,6 +259,13 @@ _FIRMWAREBUILDCONFIG_BUILDTARGETS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='portage_build_target', full_name='chromiumos.config.api.software.FirmwareBuildConfig.BuildTargets.portage_build_target', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -269,8 +278,8 @@ _FIRMWAREBUILDCONFIG_BUILDTARGETS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=800,
-  serialized_end=904,
+  serialized_start=847,
+  serialized_end=1034,
 )
 
 _FIRMWAREBUILDCONFIG = _descriptor.Descriptor(
@@ -299,8 +308,8 @@ _FIRMWAREBUILDCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=688,
-  serialized_end=904,
+  serialized_start=734,
+  serialized_end=1034,
 )
 
 _FIRMWARETYPE_TYPE.containing_type = _FIRMWARETYPE
@@ -310,6 +319,7 @@ _FIRMWARECONFIG.fields_by_name['main_ro_payload'].message_type = _FIRMWAREPAYLOA
 _FIRMWARECONFIG.fields_by_name['main_rw_payload'].message_type = _FIRMWAREPAYLOAD
 _FIRMWARECONFIG.fields_by_name['ec_ro_payload'].message_type = _FIRMWAREPAYLOAD
 _FIRMWARECONFIG.fields_by_name['pd_ro_payload'].message_type = _FIRMWAREPAYLOAD
+_FIRMWAREBUILDCONFIG_BUILDTARGETS.fields_by_name['portage_build_target'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_portage__pb2._PORTAGE_BUILDTARGET
 _FIRMWAREBUILDCONFIG_BUILDTARGETS.containing_type = _FIRMWAREBUILDCONFIG
 _FIRMWAREBUILDCONFIG.fields_by_name['build_targets'].message_type = _FIRMWAREBUILDCONFIG_BUILDTARGETS
 DESCRIPTOR.message_types_by_name['FirmwareType'] = _FIRMWARETYPE

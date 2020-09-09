@@ -21,13 +21,13 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Defines a portage overlay target and corresponding parameters that will be
-// used during the build and apply to all devices supported by a given build.
+// TODO(shapiroc): Remove this and have clients use type specific build targets.
+// E.g. SystemImage.BuildTarget, Factory.BuildTarget, ...
 type BuildTarget struct {
 	// Fields replicated to public configs.
 	PublicReplication *public_replication.PublicReplication `protobuf:"bytes,4,opt,name=public_replication,json=publicReplication,proto3" json:"public_replication,omitempty"`
 	Id                *BuildTargetId                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Portage overlay name
+	// TODO(shapiroc): Remove once fw targets are used instead.
 	OverlayName          string                          `protobuf:"bytes,2,opt,name=overlay_name,json=overlayName,proto3" json:"overlay_name,omitempty"`
 	Arc                  *BuildTarget_ArcBuildProperties `protobuf:"bytes,3,opt,name=arc,proto3" json:"arc,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
@@ -88,8 +88,8 @@ func (m *BuildTarget) GetArc() *BuildTarget_ArcBuildProperties {
 	return nil
 }
 
-// Build-specific ARC properties that are merged with device specific
-// properties at runtime when ARC is initialized.
+// TODO(chromium:1126527) - Push this into overlay
+// This isn't device specific and shouldn't be allowed as such.
 type BuildTarget_ArcBuildProperties struct {
 	// Device name to report in ‘ro.product.device’.
 	// This is often ‘{product}_cheets’ but it can be something else if

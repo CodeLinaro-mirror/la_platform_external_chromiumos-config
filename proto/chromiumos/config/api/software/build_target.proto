@@ -7,20 +7,21 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 import "chromiumos/config/api/software/build_target_id.proto";
 import "chromiumos/config/public_replication/public_replication.proto";
 
-// Defines a portage overlay target and corresponding parameters that will be
-// used during the build and apply to all devices supported by a given build.
+// TODO(shapiroc): Remove this and have clients use type specific build targets.
+// E.g. SystemImage.BuildTarget, Factory.BuildTarget, ...
 message BuildTarget {
   // Fields replicated to public configs.
   chromiumos.config.public_replication.PublicReplication public_replication = 4;
 
   BuildTargetId id = 1;
-  // Portage overlay name
+
+  // TODO(shapiroc): Remove once fw targets are used instead.
   string overlay_name = 2;
 
   ArcBuildProperties arc = 3;
 
-  // Build-specific ARC properties that are merged with device specific
-  // properties at runtime when ARC is initialized.
+  // TODO(chromium:1126527) - Push this into overlay
+  // This isn't device specific and shouldn't be allowed as such.
   message ArcBuildProperties {
     // Device name to report in ‘ro.product.device’.
     // This is often ‘{product}_cheets’ but it can be something else if

@@ -9,9 +9,11 @@ package chromiumos.config.api.software;
 import "chromiumos/config/api/design_config_id.proto";
 import "chromiumos/config/api/software/audio_config.proto";
 import "chromiumos/config/api/software/firmware_config.proto";
+import "chromiumos/config/api/software/factory.proto";
 import "chromiumos/config/api/software/bluetooth_config.proto";
 import "chromiumos/config/api/software/chromeos_config/identity_scan_config.proto";
 import "chromiumos/config/api/software/power_config.proto";
+import "chromiumos/config/api/software/system_image.proto";
 import "chromiumos/config/api/software/wifi_config.proto";
 import "chromiumos/config/public_replication/public_replication.proto";
 
@@ -27,18 +29,25 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 // SoftwareConfig payloads can be shared across different
 // hardware-design-configs, if the software payloads are the same.
 //
-// NEXT ID: 13
+// NEXT ID: 15
 message SoftwareConfig {
   // Configures fields of AudioConfig that are made public.
-  chromiumos.config.public_replication.PublicReplication public_replication = 12;
+  chromiumos.config.public_replication.PublicReplication public_replication =
+      12;
 
   // Defines the hardware design config this software config supports.
   DesignConfigId design_config_id = 7;
   chromeos_config.IdentityScanConfig.DesignConfigId id_scan_config = 8;
 
+  // Defines firmware version pinning details (for non-development workflows).
   FirmwareConfig firmware = 3;
 
+  // TODO(shapiroc): Rename this to match SystemImage.BuildTarget pattern so
+  // that it's clear this is build target info only and not other firmware build
+  // config (like version pinning info for).
   FirmwareBuildConfig firmware_build_config = 9;
+  SystemImage.BuildTarget system_build_target = 13;
+  Factory.BuildTarget factory_build_target = 14;
 
   BluetoothConfig bluetooth_config = 4;
 

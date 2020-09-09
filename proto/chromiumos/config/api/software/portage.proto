@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package chromiumos.config.api.software;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+// Defines config used to generate portage builds.
+message Portage {
+  message BuildTarget {
+    string overlay_name = 1;
+    string profile_name = 2;
+    repeated string use_flags = 3;
+  }
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package chromiumos.config.api.software;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+import "chromiumos/config/api/software/portage.proto";
+
+// Defines config used to generate Chrome OS factory builds.
+// See: https://chromium.googlesource.com/chromiumos/platform/factory
+message Factory {
+  message BuildTarget {
+    // Factory builds currently use portage, but this could change over time
+    // as pieces become more decoupled.
+    Portage.BuildTarget portage_build_target = 1;
+  }
+}

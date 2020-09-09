@@ -4,6 +4,8 @@ package chromiumos.config.api.software;
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
+import "chromiumos/config/api/software/portage.proto";
+
 // The type of a firmware binary.
 message FirmwareType {
   enum Type {
@@ -59,7 +61,6 @@ message FirmwareConfig {
   FirmwarePayload pd_ro_payload = 5;
 }
 
-
 // Config for building firmware components. This is used in the following
 // contexts:
 //
@@ -70,7 +71,6 @@ message FirmwareConfig {
 // When building OS images, firmware payloads are usually pulled from BCS, as
 // specified by the FirmwareConfig message.
 message FirmwareBuildConfig {
-
   // Build targets for building firmware components.
   message BuildTargets {
     // Build target for coreboot.
@@ -87,6 +87,10 @@ message FirmwareBuildConfig {
 
     // Build target for libpayload.
     string libpayload = 5;
+
+    // Firmware builds currently use portage, but this could change over time
+    // as pieces become more decoupled.
+    Portage.BuildTarget portage_build_target = 6;
   }
 
   BuildTargets build_targets = 1;

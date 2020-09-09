@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package chromiumos.config.api.software;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+import "chromiumos/config/api/software/portage.proto";
+
+// Defines config used to generate Chrome OS system image builds.
+message SystemImage {
+  // Defines build target config required to generate a Chrome OS system image.
+  // See:
+  // https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#Build-a-disk-image-for-your-board
+  message BuildTarget {
+    Portage.BuildTarget portage_build_target = 1;
+  }
+}
