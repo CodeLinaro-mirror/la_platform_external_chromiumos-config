@@ -78,4 +78,7 @@ def discover_suites(
         if issubclass(cls, constraint_suite.ConstraintSuite):
           suites.append(cls())
 
-    return suites
+  # pytype has trouble inferring the type when the return statement is nested
+  # within the with block. Thus, pull the return statement outside the with
+  # block, which should be equivalent behavior.
+  return suites
