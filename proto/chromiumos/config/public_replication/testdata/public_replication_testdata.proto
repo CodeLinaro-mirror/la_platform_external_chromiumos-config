@@ -42,3 +42,9 @@ message WrapperTestdata3 {
 
     PublicReplicationTestdata pr_testdata = 3;
 }
+
+message RecursiveMessage {
+    bool b1 = 1;
+
+    RecursiveMessage recursive_message = 2;
+}

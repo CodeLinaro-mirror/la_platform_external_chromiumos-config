@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.public_replication.testdata',
   syntax='proto3',
   serialized_options=_b('Z@go.chromium.org/chromiumos/config/go/public_replication/testdata'),
-  serialized_pb=_b('\nOchromiumos/config/public_replication/testdata/public_replication_testdata.proto\x12-chromiumos.config.public_replication.testdata\x1a=chromiumos/config/public_replication/public_replication.proto\"\x9b\x02\n\x19PublicReplicationTestdata\x12S\n\x12public_replication\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\x0c\n\x04str1\x18\x02 \x01(\t\x12\x0c\n\x04str2\x18\x03 \x01(\t\x12`\n\x04map1\x18\x04 \x03(\x0b\x32R.chromiumos.config.public_replication.testdata.PublicReplicationTestdata.Map1Entry\x1a+\n\tMap1Entry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\xe5\x01\n\x10WrapperTestdata1\x12\n\n\x02n1\x18\x01 \x01(\x05\x12]\n\x0bpr_testdata\x18\x02 \x01(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdata\x12\x66\n\x14repeated_pr_testdata\x18\x03 \x03(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdata\"n\n\x10WrapperTestdata2\x12Z\n\x11wrapper_testdata1\x18\x01 \x01(\x0b\x32?.chromiumos.config.public_replication.testdata.WrapperTestdata1\"\xd2\x01\n\x10WrapperTestdata3\x12S\n\x12public_replication\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\n\n\x02\x62\x31\x18\x02 \x01(\x08\x12]\n\x0bpr_testdata\x18\x03 \x01(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdataBBZ@go.chromium.org/chromiumos/config/go/public_replication/testdatab\x06proto3')
+  serialized_pb=_b('\nOchromiumos/config/public_replication/testdata/public_replication_testdata.proto\x12-chromiumos.config.public_replication.testdata\x1a=chromiumos/config/public_replication/public_replication.proto\"\x9b\x02\n\x19PublicReplicationTestdata\x12S\n\x12public_replication\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\x0c\n\x04str1\x18\x02 \x01(\t\x12\x0c\n\x04str2\x18\x03 \x01(\t\x12`\n\x04map1\x18\x04 \x03(\x0b\x32R.chromiumos.config.public_replication.testdata.PublicReplicationTestdata.Map1Entry\x1a+\n\tMap1Entry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\xe5\x01\n\x10WrapperTestdata1\x12\n\n\x02n1\x18\x01 \x01(\x05\x12]\n\x0bpr_testdata\x18\x02 \x01(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdata\x12\x66\n\x14repeated_pr_testdata\x18\x03 \x03(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdata\"n\n\x10WrapperTestdata2\x12Z\n\x11wrapper_testdata1\x18\x01 \x01(\x0b\x32?.chromiumos.config.public_replication.testdata.WrapperTestdata1\"\xd2\x01\n\x10WrapperTestdata3\x12S\n\x12public_replication\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\n\n\x02\x62\x31\x18\x02 \x01(\x08\x12]\n\x0bpr_testdata\x18\x03 \x01(\x0b\x32H.chromiumos.config.public_replication.testdata.PublicReplicationTestdata\"z\n\x10RecursiveMessage\x12\n\n\x02\x62\x31\x18\x01 \x01(\x08\x12Z\n\x11recursive_message\x18\x02 \x01(\x0b\x32?.chromiumos.config.public_replication.testdata.RecursiveMessageBBZ@go.chromium.org/chromiumos/config/go/public_replication/testdatab\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2.DESCRIPTOR,])
 
@@ -236,6 +236,44 @@ _WRAPPERTESTDATA3 = _descriptor.Descriptor(
   serialized_end=1034,
 )
 
+
+_RECURSIVEMESSAGE = _descriptor.Descriptor(
+  name='RecursiveMessage',
+  full_name='chromiumos.config.public_replication.testdata.RecursiveMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='b1', full_name='chromiumos.config.public_replication.testdata.RecursiveMessage.b1', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='recursive_message', full_name='chromiumos.config.public_replication.testdata.RecursiveMessage.recursive_message', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1036,
+  serialized_end=1158,
+)
+
 _PUBLICREPLICATIONTESTDATA_MAP1ENTRY.containing_type = _PUBLICREPLICATIONTESTDATA
 _PUBLICREPLICATIONTESTDATA.fields_by_name['public_replication'].message_type = chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2._PUBLICREPLICATION
 _PUBLICREPLICATIONTESTDATA.fields_by_name['map1'].message_type = _PUBLICREPLICATIONTESTDATA_MAP1ENTRY
@@ -244,10 +282,12 @@ _WRAPPERTESTDATA1.fields_by_name['repeated_pr_testdata'].message_type = _PUBLICR
 _WRAPPERTESTDATA2.fields_by_name['wrapper_testdata1'].message_type = _WRAPPERTESTDATA1
 _WRAPPERTESTDATA3.fields_by_name['public_replication'].message_type = chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2._PUBLICREPLICATION
 _WRAPPERTESTDATA3.fields_by_name['pr_testdata'].message_type = _PUBLICREPLICATIONTESTDATA
+_RECURSIVEMESSAGE.fields_by_name['recursive_message'].message_type = _RECURSIVEMESSAGE
 DESCRIPTOR.message_types_by_name['PublicReplicationTestdata'] = _PUBLICREPLICATIONTESTDATA
 DESCRIPTOR.message_types_by_name['WrapperTestdata1'] = _WRAPPERTESTDATA1
 DESCRIPTOR.message_types_by_name['WrapperTestdata2'] = _WRAPPERTESTDATA2
 DESCRIPTOR.message_types_by_name['WrapperTestdata3'] = _WRAPPERTESTDATA3
+DESCRIPTOR.message_types_by_name['RecursiveMessage'] = _RECURSIVEMESSAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PublicReplicationTestdata = _reflection.GeneratedProtocolMessageType('PublicReplicationTestdata', (_message.Message,), dict(
@@ -285,6 +325,13 @@ WrapperTestdata3 = _reflection.GeneratedProtocolMessageType('WrapperTestdata3', 
   # @@protoc_insertion_point(class_scope:chromiumos.config.public_replication.testdata.WrapperTestdata3)
   ))
 _sym_db.RegisterMessage(WrapperTestdata3)
+
+RecursiveMessage = _reflection.GeneratedProtocolMessageType('RecursiveMessage', (_message.Message,), dict(
+  DESCRIPTOR = _RECURSIVEMESSAGE,
+  __module__ = 'chromiumos.config.public_replication.testdata.public_replication_testdata_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.public_replication.testdata.RecursiveMessage)
+  ))
+_sym_db.RegisterMessage(RecursiveMessage)
 
 
 DESCRIPTOR._options = None

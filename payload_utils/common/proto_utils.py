@@ -6,7 +6,7 @@
 
 import copy
 
-from typing import Any, Dict, List, Text
+from typing import Any, Dict, List, Set, Text
 
 from google.protobuf import message as pb_message
 
@@ -87,10 +87,38 @@ def apply_public_replication(src: pb_message.Message, dst: pb_message.Message):
     src: Source message.
     dst: Destination message to be merged into.
   """
+  __apply_public_replication_internal(src, dst, visited_messages=set())
+
+
+def __apply_public_replication_internal(src: pb_message.Message,
+                                        dst: pb_message.Message,
+                                        visited_messages=Set[str]):
+  """Private function to do most of the work of apply_public_replication.
+
+  Allows bookkeeping information to be passed between recursive calls, along
+  with the src and dst messages.
+
+  Args:
+    src: Source message.
+    dst: Destination message to be merged into.
+    visited_messages: Set of the full message names that have been visited
+      higher in the call stack. Used to prevent infinite recursion if a message
+      references itself.
+  """
   if src.DESCRIPTOR.full_name != dst.DESCRIPTOR.full_name:
     raise ValueError(
         'src and dst must be the same message type. Got '
         f'{src.DESCRIPTOR.full_name} and {dst.DESCRIPTOR.full_name}')
+
+  # If a message with the same type as src has been visited higher in the call
+  # stack, stop here. Then, create a new set with src's name in it. Note that
+  # it doesn't work to add src's name to visited_messages, because a message
+  # with the same type as src might be visited after this function exists, e.g.
+  # in a list of messages with the same type.
+  if src.DESCRIPTOR.full_name in visited_messages:
+    return
+
+  visited_messages = visited_messages.union([src.DESCRIPTOR.full_name])
 
   # First, see if any of the fields on src are a PublicReplication message. If
   # one is found, apply the field mask within it.
@@ -101,7 +129,7 @@ def apply_public_replication(src: pb_message.Message, dst: pb_message.Message):
       public_fields = getattr(src, field_descriptor.name).public_fields
       public_fields.MergeMessage(src, dst)
 
-  # Iterate the fields of src and call apply_public_replication
+  # Iterate the fields of src and call __apply_public_replication_internal
   # recursively.
   for field_descriptor in src.DESCRIPTOR.fields:
     if field_descriptor.type != field_descriptor.TYPE_MESSAGE:
@@ -109,7 +137,7 @@ def apply_public_replication(src: pb_message.Message, dst: pb_message.Message):
 
     if field_descriptor.label == field_descriptor.LABEL_REPEATED:
       # For repeated fields, for each message in src, create a new message in
-      # dst and call apply_public_replication.
+      # dst and call __apply_public_replication_internal.
       for next_src in getattr(src, field_descriptor.name):
         # map fields are considered repeated messages, but do not have an 'add'
         # method. Skip this case. It wasn't clear if there was a better way to
@@ -121,17 +149,18 @@ def apply_public_replication(src: pb_message.Message, dst: pb_message.Message):
           # If the newly added field doesn't have any fields set, remove it to
           # avoid creating many empty messages on dst. Create a copy of next_dst
           # to check if next_dst changed after the recursive call to
-          # apply_public_replication and remove next_dst from the
+          # __apply_public_replication_internal and remove next_dst from the
           # list if it didn't change.
           next_dst_copy = copy.deepcopy(next_dst)
 
-          apply_public_replication(next_src, next_dst)
+          __apply_public_replication_internal(next_src, next_dst,
+                                              visited_messages)
 
           if dst_field[-1] == next_dst_copy:
             dst_field.pop()
     else:
       # For non-repeated fields, get the field in src and dst and call
-      # apply_public_replication.
+      # __apply_public_replication_internal.
       next_src = getattr(src, field_descriptor.name)
       next_dst = getattr(dst, field_descriptor.name)
-      apply_public_replication(next_src, next_dst)
+      __apply_public_replication_internal(next_src, next_dst, visited_messages)

@@ -17,6 +17,7 @@ from chromiumos.config.public_replication.testdata.public_replication_testdata_p
     WrapperTestdata1,
     WrapperTestdata2,
     WrapperTestdata3,
+    RecursiveMessage,
 )
 
 from common import proto_utils
@@ -270,3 +271,15 @@ class ProtoUtilsTest(unittest.TestCase):
         ' and chromiumos.config.public_replication.testdata.WrapperTestdata1'):
       proto_utils.apply_public_replication(PublicReplicationTestdata(),
                                            WrapperTestdata1())
+
+  def test_apply_public_replication_recursive_message(self):
+    """Tests that a message that references itself as a field doesn't cause
+    infinite recursion.
+    """
+    src = RecursiveMessage(
+        b1=True,
+        recursive_message=RecursiveMessage(b1=False),
+    )
+    dst = RecursiveMessage()
+    proto_utils.apply_public_replication(src, dst)
+    self.assertEqual(dst, RecursiveMessage())
