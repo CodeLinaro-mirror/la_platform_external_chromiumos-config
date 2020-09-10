@@ -78,16 +78,16 @@ def CheckChecker(input_api, output_api,
   return results
 
 
-def CheckGenerated(input_api, output_api):
-  """Runs a generate.sh script as a presubmit check.
+def CheckGenerated(input_api, output_api, cmd='./generate.sh'):
+  """Runs a script as a presubmit check.
 
-  Runs a generate.sh script as a presubmit check checking for successful
-  exit and no diff generated. Thus it expects a generate.sh to exist in
-  the root of the repo.
+  Runs a script as a presubmit check checking for successful exit and no
+  diff generated.
 
   Args:
     input_api: InputApi, provides information about the change.
     output_api: OutputApi, provides the mechanism for returning a response.
+    cmd: String, command to run as the "generate" script.
 
   Returns:
     list of PresubmitError, or empty list if no errors.
@@ -95,19 +95,19 @@ def CheckGenerated(input_api, output_api):
   results = []
 
   if input_api.subprocess.call(
-      './generate.sh',
+      cmd,
       shell=True,
       stdout=input_api.subprocess.PIPE,
       stderr=input_api.subprocess.PIPE):
-    msg = 'Error: generate.sh failed. Please fix and try again.'
+    msg = 'Error: {} failed. Please fix and try again.'.format(cmd)
     results.append(output_api.PresubmitError(msg))
   elif input_api.subprocess.call(
       'git diff --exit-code',
       shell=True,
       stdout=input_api.subprocess.PIPE,
       stderr=input_api.subprocess.PIPE):
-    msg = ('Error: Running generate.sh produced a diff. Please '
-           'run the script, amend your changes, and try again.')
+    msg = ('Error: Running {} produced a diff. Please run the script, amend '
+           'your changes, and try again.'.format(cmd))
     results.append(output_api.PresubmitError(msg))
 
   return results
