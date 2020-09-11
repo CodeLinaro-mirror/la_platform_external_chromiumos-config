@@ -16,7 +16,7 @@ import "chromiumos/config/public_replication/public_replication.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
-// Next ID: 8
+// Next ID: 9
 message Design {
   // Fields replicated to public configs.
   chromiumos.config.public_replication.PublicReplication public_replication = 7;
@@ -41,6 +41,12 @@ message Design {
 
   // Supported hardware configurations for a given design.
   repeated Config configs = 6;
+
+  // Map of SSFC values for this project. These values must fit within the
+  // program's definitions of SSFC Segments. The string represents the human-
+  // readable description of the SSFC value (e.g. BMI160, PS8751)
+  // E.g 0x0010 -> "CameraA"; 0x0020 -> "CameraB" within SsfcSegment 0x0030
+  map<uint32, string> ssfc_value = 8;
 
   // Defines a unique hardware configuration for a given hardware design
   // and the corresponding hardware features that will be supported.

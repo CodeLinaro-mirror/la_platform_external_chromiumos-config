@@ -15,10 +15,12 @@ import "chromiumos/config/public_replication/public_replication.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
-// Defines how space in firmware configuration is allocated.
+// Defines how space in a firmware configuration field is allocated.
+//
+// This is used for both FW_CONFIG and Second Source Factory Cache (SSFC) fields
 //
 // Every FirmwareConfiguration must specify a mask that aligns with a segment.
-// No segments in a program can overlap.
+// No segments for a program within a field can overlap.
 message FirmwareConfigurationSegment {
   // Human-readable name describing the segment, e.g. "Daughter board".
   string name = 1;
@@ -64,6 +66,7 @@ message DeviceSignerConfig {
 // other hardware design project.  They will either fully comply with the
 // prescribed program constraints or provide waivers that highlight any
 // constraint violations.
+// Next ID: 10
 message Program {
   // Fields replicated to public configs.
   chromiumos.config.public_replication.PublicReplication public_replication = 8;
@@ -82,6 +85,9 @@ message Program {
 
   // Firmware segment allocations for the given program.
   repeated FirmwareConfigurationSegment firmware_configuration_segments = 5;
+
+  // Second Source Factory Cache (SSFC) allocations for the given program.
+  repeated FirmwareConfigurationSegment ssfc_segments = 9;
 
   // DesignConfigId segment allocations for the given program.
   repeated DesignConfigIdSegment design_config_id_segments = 7;
