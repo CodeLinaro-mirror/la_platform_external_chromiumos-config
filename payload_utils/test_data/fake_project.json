@@ -682,6 +682,7 @@
         },
         "firmware-signing": {
           "key-id": "DEFAULT",
+          "sig-id-in-customization-id": true,
           "signature-id": "project-wl"
         },
         "hardware-properties": {
@@ -793,6 +794,7 @@
         },
         "firmware-signing": {
           "key-id": "KEYD",
+          "sig-id-in-customization-id": true,
           "signature-id": "project-wl-loema"
         },
         "hardware-properties": {
@@ -905,6 +907,7 @@
         },
         "firmware-signing": {
           "key-id": "KEYE",
+          "sig-id-in-customization-id": true,
           "signature-id": "project-wl-loemb"
         },
         "hardware-properties": {
@@ -1017,6 +1020,7 @@
         },
         "firmware-signing": {
           "key-id": "KEYF",
+          "sig-id-in-customization-id": true,
           "signature-id": "project-wl-loemc"
         },
         "hardware-properties": {

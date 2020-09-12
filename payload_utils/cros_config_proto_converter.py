@@ -388,7 +388,7 @@ def _build_firmware(config):
   return result
 
 
-def _build_fw_signing(config):
+def _build_fw_signing(config, whitelabel):
   if config.sw_config.firmware and config.device_signer_config:
     hw_design = config.hw_design.name.lower()
     brand_scan_config = config.brand_config.scan_config
@@ -397,10 +397,13 @@ def _build_fw_signing(config):
     else:
       signature_id = hw_design
 
-    return {
+    result = {
         'key-id': config.device_signer_config.key_id,
         'signature-id': signature_id,
     }
+    if whitelabel:
+      result['sig-id-in-customization-id'] = True
+    return result
   return {}
 
 
@@ -603,6 +606,15 @@ def _sw_config(sw_configs, design_config_id):
   raise ValueError('Software config is required for: %s' % design_config_id)
 
 
+def _is_whitelabel(brand_configs, device_brands):
+  for device_brand in device_brands:
+    if device_brand.id.value in brand_configs:
+      brand_scan_config = brand_configs[device_brand.id.value].scan_config
+      if brand_scan_config and brand_scan_config.whitelabel_tag:
+        return True
+  return False
+
+
 def _transform_build_configs(config,
                              config_files=ConfigFiles({}, {}, {}, {}, {})):
   # pylint: disable=too-many-locals,too-many-branches
@@ -626,6 +638,8 @@ def _transform_build_configs(config,
       ]
     else:
       device_brands = [device_brand_pb2.DeviceBrand()]
+
+    whitelabel = _is_whitelabel(brand_configs, device_brands)
 
     for device_brand in device_brands:
       # Brand config can be empty since platform JSON config allows it
@@ -672,7 +686,7 @@ def _transform_build_configs(config,
                 oem=_lookup(device_brand.oem_id, partners),
                 sw_config=sw_config,
                 brand_config=brand_config,
-                build_target=config.build_targets[0]), config_files)
+                build_target=config.build_targets[0]), config_files, whitelabel)
 
         config_json = json.dumps(
             transformed_config,
@@ -686,12 +700,13 @@ def _transform_build_configs(config,
   return list(results.values())
 
 
-def _transform_build_config(config, config_files):
+def _transform_build_config(config, config_files, whitelabel):
   """Transforms Config instance into target platform JSON schema.
 
   Args:
     config: Config namedtuple
     config_files: Map to look up the generated config files.
+    whitelabel: Whether the config is for a whitelabel design
 
   Returns:
     Unique config payload based on the platform JSON schema.
@@ -714,7 +729,7 @@ def _transform_build_config(config, config_files):
       _build_camera(config.hw_design_config.hardware_topology), result,
       'camera')
   _upsert(_build_firmware(config), result, 'firmware')
-  _upsert(_build_fw_signing(config), result, 'firmware-signing')
+  _upsert(_build_fw_signing(config, whitelabel), result, 'firmware-signing')
   _upsert(
       _build_fingerprint(config.hw_design_config.hardware_topology), result,
       'fingerprint')
