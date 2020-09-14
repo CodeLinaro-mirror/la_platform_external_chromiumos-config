@@ -60,6 +60,9 @@ TEST=CQ"
   cmd.extend(csv_param('ccs', args.ccs))
   cmd.extend(csv_param('hashtags', args.hashtag))
 
+  if args.set_source_depends:
+    cmd.extend(['-p', 'set_source_depends=true'])
+
   replace_strings = list(map(lambda rs: replace_strings_dict(rs),
                              args.replace_strings or []))
   if replace_strings:
@@ -152,6 +155,13 @@ def main():
       type=str,
       required=True,
       help='Message template for the generated CLs.')
+  parser.add_argument(
+      '--set_source_depends',
+      type=bool,
+      required=False,
+      default=False,
+      help='Whether to set Cq-Depends on the input CLs to the list '
+      'of generated CLs.')
   parser.add_argument(
       '--nodryrun',
       dest='dryrun',
