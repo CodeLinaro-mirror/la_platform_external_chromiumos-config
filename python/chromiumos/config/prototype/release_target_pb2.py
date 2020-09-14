@@ -12,8 +12,8 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from chromiumos.config.prototype import build_target_pb2 as chromiumos_dot_config_dot_prototype_dot_build__target__pb2
 from chromiumos.config.prototype import release_target_id_pb2 as chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2
+from chromiumos.config.api.software import system_image_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_system__image__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.prototype',
   syntax='proto3',
   serialized_options=_b('Z.go.chromium.org/chromiumos/config/go/prototype'),
-  serialized_pb=_b('\n0chromiumos/config/prototype/release_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a.chromiumos/config/prototype/build_target.proto\x1a\x33\x63hromiumos/config/prototype/release_target_id.proto\"\x98\x01\n\rReleaseTarget\x12\x38\n\x02id\x18\x01 \x01(\x0b\x32,.chromiumos.config.prototype.ReleaseTargetId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12?\n\rbuild_targets\x18\x03 \x03(\x0b\x32(.chromiumos.config.prototype.BuildTargetB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
+  serialized_pb=_b('\n0chromiumos/config/prototype/release_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a\x33\x63hromiumos/config/prototype/release_target_id.proto\x1a\x31\x63hromiumos/config/api/software/system_image.proto\"\xa7\x01\n\rReleaseTarget\x12\x38\n\x02id\x18\x01 \x01(\x0b\x32,.chromiumos.config.prototype.ReleaseTargetId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12N\n\rbuild_targets\x18\x03 \x03(\x0b\x32\x37.chromiumos.config.api.software.SystemImage.BuildTargetB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_prototype_dot_build__target__pb2.DESCRIPTOR,chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_system__image__pb2.DESCRIPTOR,])
 
 
 
@@ -68,12 +68,12 @@ _RELEASETARGET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=183,
-  serialized_end=335,
+  serialized_start=186,
+  serialized_end=353,
 )
 
 _RELEASETARGET.fields_by_name['id'].message_type = chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2._RELEASETARGETID
-_RELEASETARGET.fields_by_name['build_targets'].message_type = chromiumos_dot_config_dot_prototype_dot_build__target__pb2._BUILDTARGET
+_RELEASETARGET.fields_by_name['build_targets'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_system__image__pb2._SYSTEMIMAGE_BUILDTARGET
 DESCRIPTOR.message_types_by_name['ReleaseTarget'] = _RELEASETARGET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
