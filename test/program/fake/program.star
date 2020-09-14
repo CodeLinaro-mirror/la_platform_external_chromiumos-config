@@ -51,6 +51,7 @@ _SIGNER_BRAND_CONFIGS = program_util.create_signer_configs_by_brand(
         "WLAA": "KEYD",  # White label A
         "WLBB": "KEYE",  # White label B
         "WLCC": "KEYF",  # White label C
+        "WLZZ": "DEFAULT",  # White label default
     },
 )
 

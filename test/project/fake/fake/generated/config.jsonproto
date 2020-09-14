@@ -8,6 +8,11 @@
     },
     {
       "brandId": {
+        "value": "WLZZ"
+      }
+    },
+    {
+      "brandId": {
         "value": "WLAA"
       },
       "scanConfig": {
@@ -2968,6 +2973,16 @@
       },
       "oemId": {
         "value": "FAKE-OEMC"
+      }
+    },
+    {
+      "brandCode": "WLZZ",
+      "brandName": "ChromeOS Device Brandname WL",
+      "designId": {
+        "value": "PROJECT-WL"
+      },
+      "id": {
+        "value": "WLZZ"
       }
     },
     {

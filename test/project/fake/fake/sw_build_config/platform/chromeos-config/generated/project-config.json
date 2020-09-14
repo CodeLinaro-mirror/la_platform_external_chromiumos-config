@@ -782,6 +782,149 @@
           "build-properties": {
             "device": "fake_cheets",
             "first-api-level": "28",
+            "marketing-name": "ChromeOS Device Brandname WL",
+            "metrics-tag": "project-wl",
+            "product": "fake"
+          },
+          "hardware-features": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project-wl.xml",
+            "system-path": "/etc/hardware_features_project-wl.xml"
+          },
+          "scale": 280
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project-wl",
+            "files": [
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+              },
+              {
+                "destination": "/etc/cras/project-wl/fakeaudiocard",
+                "source": "audio/fakeaudiocard/fakeaudiocard"
+              },
+              {
+                "destination": "/etc/cras/project-wl/dsp.ini",
+                "source": "audio/fakeaudiocard/dsp.ini"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
+              }
+            ]
+          }
+        },
+        "brand-code": "WLZZ",
+        "camera": {
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "id": "0123:abcd",
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
+        },
+        "firmware": {
+          "bcs-overlay": "overlay-fake-private",
+          "build-targets": {
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
+            "ec_extras": [
+              "fake-ec-extra1",
+              "fake-ec-extra2"
+            ],
+            "libpayload": "fake"
+          },
+          "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 25377,
+          "image-name": "fake",
+          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
+          "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
+        },
+        "firmware-signing": {
+          "key-id": "DEFAULT",
+          "signature-id": "project-wl"
+        },
+        "hardware-properties": {
+          "has-backlight": true,
+          "psu-type": "battery"
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 64,
+          "smbios-name-match": "PROJECT-WL"
+        },
+        "name": "project-wl",
+        "power": {
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
+            "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_cheets",
+            "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname WL-A",
             "metrics-tag": "project-wl",
             "oem": "FAKE-LOEMA",

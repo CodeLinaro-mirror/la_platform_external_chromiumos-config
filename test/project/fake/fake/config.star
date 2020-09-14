@@ -561,6 +561,13 @@ _DEVICE_BRAND_C = device_brand.create(
     brand_code = "FDCC",
 )
 
+_WL_DEVICE_BRAND = device_brand.create(
+    brand_name = "ChromeOS Device Brandname WL",
+    design_id = _DESIGN_ID_WL,
+    oem_id = None,
+    brand_code = "WLZZ",
+)
+
 _WL_DEVICE_BRAND_A = device_brand.create(
     brand_name = "ChromeOS Device Brandname WL-A",
     design_id = _DESIGN_ID_WL,
@@ -593,6 +600,9 @@ _BRAND_CONFIGS = [
     brand_config.create(
         device_brand_id = _DEVICE_BRAND.id,
         wallpaper = "fake-wallpaper",
+    ),
+    brand_config.create(
+        device_brand_id = _WL_DEVICE_BRAND.id,
     ),
     brand_config.create(
         device_brand_id = _WL_DEVICE_BRAND_A.id,
@@ -668,7 +678,7 @@ _COMPONENTS.append(
 _CONFIG = config_bundle.create(
     partners = _ODMS + _OEMS + _COMPONENT_VENDORS,
     designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_WL, _DESIGN_BOX],
-    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _DEVICE_BRAND_BOX],
+    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _WL_DEVICE_BRAND, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _DEVICE_BRAND_BOX],
     software_configs = _SW_CONFIGS,
     brand_configs = _BRAND_CONFIGS,
     components = _COMPONENTS,

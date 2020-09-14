@@ -95,6 +95,12 @@
           "keyId": "KEYF"
         },
         {
+          "brandId": {
+            "value": "WLZZ"
+          },
+          "keyId": "DEFAULT"
+        },
+        {
           "designId": {
             "value": "FAKE-REF-DESIGN"
           },
