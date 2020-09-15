@@ -18,6 +18,13 @@ def _create_build_target(overlay = None, profile = None, use_flags = None):
         ),
     )
 
+def _create_build_metadata(build_target, portage_packages):
+    return system_pb.SystemImage.BuildMetadata(
+        build_target = build_target,
+        packages = portage_packages,
+    )
+
 system_image = struct(
     create_build_target = _create_build_target,
+    create_build_metadata = _create_build_metadata,
 )

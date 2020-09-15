@@ -13,6 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.config.api.test.plan.v1 import plan_pb2 as chromiumos_dot_config_dot_api_dot_test_dot_plan_dot_v1_dot_plan__pb2
+from chromiumos.config.api.software import system_image_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_system__image__pb2
 from chromiumos.config.prototype import release_target_pb2 as chromiumos_dot_config_dot_prototype_dot_release__target__pb2
 
 
@@ -21,9 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.prototype',
   syntax='proto3',
   serialized_options=_b('Z.go.chromium.org/chromiumos/config/go/prototype'),
-  serialized_pb=_b('\n9chromiumos/config/prototype/prototype_config_bundle.proto\x12\x1b\x63hromiumos.config.prototype\x1a-chromiumos/config/api/test/plan/v1/plan.proto\x1a\x30\x63hromiumos/config/prototype/release_target.proto\"\xa8\x01\n\x15PrototypeConfigBundle\x12J\n\x0ftest_plan_specs\x18\x01 \x03(\x0b\x32\x31.chromiumos.config.api.test.plan.v1.Specification\x12\x43\n\x0frelease_targets\x18\x02 \x03(\x0b\x32*.chromiumos.config.prototype.ReleaseTargetB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
+  serialized_pb=_b('\n9chromiumos/config/prototype/prototype_config_bundle.proto\x12\x1b\x63hromiumos.config.prototype\x1a-chromiumos/config/api/test/plan/v1/plan.proto\x1a\x31\x63hromiumos/config/api/software/system_image.proto\x1a\x30\x63hromiumos/config/prototype/release_target.proto\"\xfa\x01\n\x15PrototypeConfigBundle\x12J\n\x0ftest_plan_specs\x18\x01 \x03(\x0b\x32\x31.chromiumos.config.api.test.plan.v1.Specification\x12\x43\n\x0frelease_targets\x18\x02 \x03(\x0b\x32*.chromiumos.config.prototype.ReleaseTarget\x12P\n\rsystem_builds\x18\x03 \x03(\x0b\x32\x39.chromiumos.config.api.software.SystemImage.BuildMetadataB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_plan_dot_v1_dot_plan__pb2.DESCRIPTOR,chromiumos_dot_config_dot_prototype_dot_release__target__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_plan_dot_v1_dot_plan__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_system__image__pb2.DESCRIPTOR,chromiumos_dot_config_dot_prototype_dot_release__target__pb2.DESCRIPTOR,])
 
 
 
@@ -49,6 +50,13 @@ _PROTOTYPECONFIGBUNDLE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='system_builds', full_name='chromiumos.config.prototype.PrototypeConfigBundle.system_builds', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -61,12 +69,13 @@ _PROTOTYPECONFIGBUNDLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=188,
-  serialized_end=356,
+  serialized_start=239,
+  serialized_end=489,
 )
 
 _PROTOTYPECONFIGBUNDLE.fields_by_name['test_plan_specs'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_plan_dot_v1_dot_plan__pb2._SPECIFICATION
 _PROTOTYPECONFIGBUNDLE.fields_by_name['release_targets'].message_type = chromiumos_dot_config_dot_prototype_dot_release__target__pb2._RELEASETARGET
+_PROTOTYPECONFIGBUNDLE.fields_by_name['system_builds'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_system__image__pb2._SYSTEMIMAGE_BUILDMETADATA
 DESCRIPTOR.message_types_by_name['PrototypeConfigBundle'] = _PROTOTYPECONFIGBUNDLE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

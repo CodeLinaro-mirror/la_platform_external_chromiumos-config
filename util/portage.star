@@ -15,6 +15,14 @@ def _create_build_target(overlay = None, profile = None, use_flags = None):
         use_flags = use_flags,
     )
 
+def _package(name, category, version):
+    return portage_pb.Portage.Package(
+        package_name = name,
+        category = category,
+        version = version,
+    )
+
 portage = struct(
     create_build_target = _create_build_target,
+    package = _package,
 )

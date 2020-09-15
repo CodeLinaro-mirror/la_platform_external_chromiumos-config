@@ -10,5 +10,21 @@ message Portage {
     string overlay_name = 1;
     string profile_name = 2;
     repeated string use_flags = 3;
+    // Features enabled for the given build
+    // See: https://wiki.gentoo.org/wiki/FEATURES
+    repeated string features = 4;
+  }
+
+  // Message describing a package, The corresponding variable names are from
+  // https://devmanual.gentoo.org/ebuild-writing/variables/index.html
+  message Package {
+    // The package name (PN variable).
+    string package_name = 1;
+
+    // The package category (CATEGORY variable).
+    string category = 2;
+
+    // The package version and revision (PVR variable).
+    string version = 3;
   }
 }

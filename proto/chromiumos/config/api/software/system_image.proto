@@ -14,4 +14,18 @@ message SystemImage {
   message BuildTarget {
     Portage.BuildTarget portage_build_target = 1;
   }
+
+  // Defines all of the metadata generated as a result of creating a system
+  // build.  This metadata is made available for reporting/test-planning/...
+  // as an artifact of the build.
+  message BuildMetadata {
+    // Target passed when the build was generated.
+    BuildTarget build_target = 1;
+
+    // All of the portage packages/versions included in the build.
+    repeated Portage.Package packages = 2;
+
+    // NOTE: This is a minimalist implementation for now, but more metadata
+    // will be added as test planning is further refined.
+  }
 }

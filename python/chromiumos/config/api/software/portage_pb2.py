@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n,chromiumos/config/api/software/portage.proto\x12\x1e\x63hromiumos.config.api.software\"W\n\x07Portage\x1aL\n\x0b\x42uildTarget\x12\x14\n\x0coverlay_name\x18\x01 \x01(\t\x12\x14\n\x0cprofile_name\x18\x02 \x01(\t\x12\x11\n\tuse_flags\x18\x03 \x03(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n,chromiumos/config/api/software/portage.proto\x12\x1e\x63hromiumos.config.api.software\"\xad\x01\n\x07Portage\x1a^\n\x0b\x42uildTarget\x12\x14\n\x0coverlay_name\x18\x01 \x01(\t\x12\x14\n\x0cprofile_name\x18\x02 \x01(\t\x12\x11\n\tuse_flags\x18\x03 \x03(\t\x12\x10\n\x08\x66\x65\x61tures\x18\x04 \x03(\t\x1a\x42\n\x07Package\x12\x14\n\x0cpackage_name\x18\x01 \x01(\t\x12\x10\n\x08\x63\x61tegory\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
 )
 
 
@@ -53,6 +53,13 @@ _PORTAGE_BUILDTARGET = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='features', full_name='chromiumos.config.api.software.Portage.BuildTarget.features', index=3,
+      number=4, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -65,8 +72,52 @@ _PORTAGE_BUILDTARGET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=91,
-  serialized_end=167,
+  serialized_start=92,
+  serialized_end=186,
+)
+
+_PORTAGE_PACKAGE = _descriptor.Descriptor(
+  name='Package',
+  full_name='chromiumos.config.api.software.Portage.Package',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='package_name', full_name='chromiumos.config.api.software.Portage.Package.package_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='category', full_name='chromiumos.config.api.software.Portage.Package.category', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='version', full_name='chromiumos.config.api.software.Portage.Package.version', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=188,
+  serialized_end=254,
 )
 
 _PORTAGE = _descriptor.Descriptor(
@@ -79,7 +130,7 @@ _PORTAGE = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_PORTAGE_BUILDTARGET, ],
+  nested_types=[_PORTAGE_BUILDTARGET, _PORTAGE_PACKAGE, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -88,11 +139,12 @@ _PORTAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=80,
-  serialized_end=167,
+  serialized_start=81,
+  serialized_end=254,
 )
 
 _PORTAGE_BUILDTARGET.containing_type = _PORTAGE
+_PORTAGE_PACKAGE.containing_type = _PORTAGE
 DESCRIPTOR.message_types_by_name['Portage'] = _PORTAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -104,12 +156,20 @@ Portage = _reflection.GeneratedProtocolMessageType('Portage', (_message.Message,
     # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.Portage.BuildTarget)
     ))
   ,
+
+  Package = _reflection.GeneratedProtocolMessageType('Package', (_message.Message,), dict(
+    DESCRIPTOR = _PORTAGE_PACKAGE,
+    __module__ = 'chromiumos.config.api.software.portage_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.Portage.Package)
+    ))
+  ,
   DESCRIPTOR = _PORTAGE,
   __module__ = 'chromiumos.config.api.software.portage_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.Portage)
   ))
 _sym_db.RegisterMessage(Portage)
 _sym_db.RegisterMessage(Portage.BuildTarget)
+_sym_db.RegisterMessage(Portage.Package)
 
 
 DESCRIPTOR._options = None
