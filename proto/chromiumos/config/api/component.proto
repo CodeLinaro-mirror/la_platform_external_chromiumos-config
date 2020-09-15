@@ -182,6 +182,7 @@ message Component {
       IEEE_802_11_G = 3;
       IEEE_802_11_N = 4;
       IEEE_802_11_AC = 5;
+      IEEE_802_11_AX = 6;
     }
     // WLAN protocols supported by this Wifi chipset.
     repeated WLANProtocol supported_wlan_protocols = 2;
