@@ -490,8 +490,10 @@
           ]
         },
         "wifi": {
-          "build-path": "fake/sw_build_config/platform/chromeos-config/generated/wifi/wifi_sar_6.hex",
-          "system-path": "/firmware/cbfs-rw-raw/fake/wifi_sar_6.hex"
+          "sar-file": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/wifi/wifi_sar_6.hex",
+            "system-path": "/firmware/cbfs-rw-raw/fake/wifi_sar_6.hex"
+          }
         }
       },
       {

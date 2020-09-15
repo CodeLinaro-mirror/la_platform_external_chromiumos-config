@@ -1066,7 +1066,7 @@ def _wifi_sar_map(configs, project_name, output_dir, build_root_dir):
             f.write(sar_file_content)
         system_path = '/firmware/cbfs-rw-raw/{}/{}'.format(
             project_name, filename)
-        result[design_name] = _file_v2(build_path, system_path)
+        result[design_name] = {'sar-file': _file_v2(build_path, system_path)}
   return result
 
 
