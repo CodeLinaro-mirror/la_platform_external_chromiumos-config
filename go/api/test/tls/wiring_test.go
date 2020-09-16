@@ -7,9 +7,9 @@ package tls_test
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"github.com/golang/protobuf/ptypes"
+	"github.com/golang/protobuf/ptypes/duration"
 	rtd "go.chromium.org/chromiumos/config/go/api/test/rtd/v1"
 	"go.chromium.org/chromiumos/config/go/api/test/tls"
 	"go.chromium.org/chromiumos/config/go/api/test/tls/dependencies/longrunning"
@@ -42,18 +42,16 @@ func ExampleCacheForDutRequest() {
 		panic("RPC error")
 	}
 
-	for {
-		if op.GetDone() {
-			break
-		}
-		time.Sleep(5 * time.Second)
-		op, err = opcli.GetOperation(ctx, &longrunning.GetOperationRequest{
-			Name: op.GetName(),
-		})
-		if err != nil {
-			panic("RPC error")
-		}
+	op, err = opcli.WaitOperation(ctx, &longrunning.WaitOperationRequest{
+		Name: op.GetName(),
+		Timeout: &duration.Duration{
+			Seconds: 300,
+		},
+	})
+	if err != nil {
+		panic("RPC error")
 	}
+
 	if errStatus := op.GetError(); errStatus != nil {
 		panic("Operation error")
 	}

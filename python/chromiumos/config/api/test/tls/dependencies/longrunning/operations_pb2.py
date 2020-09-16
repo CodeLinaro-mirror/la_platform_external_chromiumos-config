@@ -14,6 +14,7 @@ _sym_db = _symbol_database.Default()
 
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
+from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
@@ -22,9 +23,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='google.longrunning',
   syntax='proto3',
   serialized_options=_b('ZJgo.chromium.org/chromiumos/config/go/api/test/tls/dependencies/longrunning'),
-  serialized_pb=_b('\nHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\x12\x12google.longrunning\x1a\x19google/protobuf/any.proto\x1a google/protobuf/descriptor.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xb0\x01\n\tOperation\x12\x0c\n\x04name\x18\x01 \x01(\t\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x0c\n\x04\x64one\x18\x03 \x01(\x08\x12+\n\x05\x65rror\x18\x04 \x01(\x0b\x32\x1a.google.longrunning.StatusH\x00\x12(\n\x08response\x18\x05 \x01(\x0b\x32\x14.google.protobuf.AnyH\x00\x42\x08\n\x06result\"#\n\x13GetOperationRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\\\n\x15ListOperationsRequest\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x0e\n\x06\x66ilter\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"d\n\x16ListOperationsResponse\x12\x31\n\noperations\x18\x01 \x03(\x0b\x32\x1d.google.longrunning.Operation\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"&\n\x16\x43\x61ncelOperationRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"&\n\x16\x44\x65leteOperationRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"=\n\rOperationInfo\x12\x15\n\rresponse_type\x18\x01 \x01(\t\x12\x15\n\rmetadata_type\x18\x02 \x01(\t\"N\n\x06Status\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12%\n\x07\x64\x65tails\x18\x03 \x03(\x0b\x32\x14.google.protobuf.Any2\x83\x03\n\nOperations\x12i\n\x0eListOperations\x12).google.longrunning.ListOperationsRequest\x1a*.google.longrunning.ListOperationsResponse\"\x00\x12X\n\x0cGetOperation\x12\'.google.longrunning.GetOperationRequest\x1a\x1d.google.longrunning.Operation\"\x00\x12W\n\x0f\x44\x65leteOperation\x12*.google.longrunning.DeleteOperationRequest\x1a\x16.google.protobuf.Empty\"\x00\x12W\n\x0f\x43\x61ncelOperation\x12*.google.longrunning.CancelOperationRequest\x1a\x16.google.protobuf.Empty\"\x00:Z\n\x0eoperation_info\x12\x1e.google.protobuf.MethodOptions\x18\x99\x08 \x01(\x0b\x32!.google.longrunning.OperationInfoBLZJgo.chromium.org/chromiumos/config/go/api/test/tls/dependencies/longrunningb\x06proto3')
+  serialized_pb=_b('\nHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\x12\x12google.longrunning\x1a\x19google/protobuf/any.proto\x1a google/protobuf/descriptor.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xb0\x01\n\tOperation\x12\x0c\n\x04name\x18\x01 \x01(\t\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x0c\n\x04\x64one\x18\x03 \x01(\x08\x12+\n\x05\x65rror\x18\x04 \x01(\x0b\x32\x1a.google.longrunning.StatusH\x00\x12(\n\x08response\x18\x05 \x01(\x0b\x32\x14.google.protobuf.AnyH\x00\x42\x08\n\x06result\"#\n\x13GetOperationRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\\\n\x15ListOperationsRequest\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x0e\n\x06\x66ilter\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"d\n\x16ListOperationsResponse\x12\x31\n\noperations\x18\x01 \x03(\x0b\x32\x1d.google.longrunning.Operation\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"&\n\x16\x43\x61ncelOperationRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"&\n\x16\x44\x65leteOperationRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"P\n\x14WaitOperationRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12*\n\x07timeout\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"=\n\rOperationInfo\x12\x15\n\rresponse_type\x18\x01 \x01(\t\x12\x15\n\rmetadata_type\x18\x02 \x01(\t\"N\n\x06Status\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12%\n\x07\x64\x65tails\x18\x03 \x03(\x0b\x32\x14.google.protobuf.Any2\xdf\x03\n\nOperations\x12i\n\x0eListOperations\x12).google.longrunning.ListOperationsRequest\x1a*.google.longrunning.ListOperationsResponse\"\x00\x12X\n\x0cGetOperation\x12\'.google.longrunning.GetOperationRequest\x1a\x1d.google.longrunning.Operation\"\x00\x12W\n\x0f\x44\x65leteOperation\x12*.google.longrunning.DeleteOperationRequest\x1a\x16.google.protobuf.Empty\"\x00\x12W\n\x0f\x43\x61ncelOperation\x12*.google.longrunning.CancelOperationRequest\x1a\x16.google.protobuf.Empty\"\x00\x12Z\n\rWaitOperation\x12(.google.longrunning.WaitOperationRequest\x1a\x1d.google.longrunning.Operation\"\x00:Z\n\x0eoperation_info\x12\x1e.google.protobuf.MethodOptions\x18\x99\x08 \x01(\x0b\x32!.google.longrunning.OperationInfoBLZJgo.chromium.org/chromiumos/config/go/api/test/tls/dependencies/longrunningb\x06proto3')
   ,
-  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
 
 OPERATION_INFO_FIELD_NUMBER = 1049
@@ -94,8 +95,8 @@ _OPERATION = _descriptor.Descriptor(
       name='result', full_name='google.longrunning.Operation.result',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=187,
-  serialized_end=363,
+  serialized_start=219,
+  serialized_end=395,
 )
 
 
@@ -125,8 +126,8 @@ _GETOPERATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=365,
-  serialized_end=400,
+  serialized_start=397,
+  serialized_end=432,
 )
 
 
@@ -177,8 +178,8 @@ _LISTOPERATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=402,
-  serialized_end=494,
+  serialized_start=434,
+  serialized_end=526,
 )
 
 
@@ -215,8 +216,8 @@ _LISTOPERATIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=496,
-  serialized_end=596,
+  serialized_start=528,
+  serialized_end=628,
 )
 
 
@@ -246,8 +247,8 @@ _CANCELOPERATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=598,
-  serialized_end=636,
+  serialized_start=630,
+  serialized_end=668,
 )
 
 
@@ -277,8 +278,46 @@ _DELETEOPERATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=638,
-  serialized_end=676,
+  serialized_start=670,
+  serialized_end=708,
+)
+
+
+_WAITOPERATIONREQUEST = _descriptor.Descriptor(
+  name='WaitOperationRequest',
+  full_name='google.longrunning.WaitOperationRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='google.longrunning.WaitOperationRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='timeout', full_name='google.longrunning.WaitOperationRequest.timeout', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=710,
+  serialized_end=790,
 )
 
 
@@ -315,8 +354,8 @@ _OPERATIONINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=678,
-  serialized_end=739,
+  serialized_start=792,
+  serialized_end=853,
 )
 
 
@@ -360,8 +399,8 @@ _STATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=741,
-  serialized_end=819,
+  serialized_start=855,
+  serialized_end=933,
 )
 
 _OPERATION.fields_by_name['metadata'].message_type = google_dot_protobuf_dot_any__pb2._ANY
@@ -374,6 +413,7 @@ _OPERATION.oneofs_by_name['result'].fields.append(
   _OPERATION.fields_by_name['response'])
 _OPERATION.fields_by_name['response'].containing_oneof = _OPERATION.oneofs_by_name['result']
 _LISTOPERATIONSRESPONSE.fields_by_name['operations'].message_type = _OPERATION
+_WAITOPERATIONREQUEST.fields_by_name['timeout'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _STATUS.fields_by_name['details'].message_type = google_dot_protobuf_dot_any__pb2._ANY
 DESCRIPTOR.message_types_by_name['Operation'] = _OPERATION
 DESCRIPTOR.message_types_by_name['GetOperationRequest'] = _GETOPERATIONREQUEST
@@ -381,6 +421,7 @@ DESCRIPTOR.message_types_by_name['ListOperationsRequest'] = _LISTOPERATIONSREQUE
 DESCRIPTOR.message_types_by_name['ListOperationsResponse'] = _LISTOPERATIONSRESPONSE
 DESCRIPTOR.message_types_by_name['CancelOperationRequest'] = _CANCELOPERATIONREQUEST
 DESCRIPTOR.message_types_by_name['DeleteOperationRequest'] = _DELETEOPERATIONREQUEST
+DESCRIPTOR.message_types_by_name['WaitOperationRequest'] = _WAITOPERATIONREQUEST
 DESCRIPTOR.message_types_by_name['OperationInfo'] = _OPERATIONINFO
 DESCRIPTOR.message_types_by_name['Status'] = _STATUS
 DESCRIPTOR.extensions_by_name['operation_info'] = operation_info
@@ -428,6 +469,13 @@ DeleteOperationRequest = _reflection.GeneratedProtocolMessageType('DeleteOperati
   ))
 _sym_db.RegisterMessage(DeleteOperationRequest)
 
+WaitOperationRequest = _reflection.GeneratedProtocolMessageType('WaitOperationRequest', (_message.Message,), dict(
+  DESCRIPTOR = _WAITOPERATIONREQUEST,
+  __module__ = 'chromiumos.config.api.test.tls.dependencies.longrunning.operations_pb2'
+  # @@protoc_insertion_point(class_scope:google.longrunning.WaitOperationRequest)
+  ))
+_sym_db.RegisterMessage(WaitOperationRequest)
+
 OperationInfo = _reflection.GeneratedProtocolMessageType('OperationInfo', (_message.Message,), dict(
   DESCRIPTOR = _OPERATIONINFO,
   __module__ = 'chromiumos.config.api.test.tls.dependencies.longrunning.operations_pb2'
@@ -453,8 +501,8 @@ _OPERATIONS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=822,
-  serialized_end=1209,
+  serialized_start=936,
+  serialized_end=1415,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListOperations',
@@ -490,6 +538,15 @@ _OPERATIONS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_CANCELOPERATIONREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='WaitOperation',
+    full_name='google.longrunning.Operations.WaitOperation',
+    index=4,
+    containing_service=None,
+    input_type=_WAITOPERATIONREQUEST,
+    output_type=_OPERATION,
     serialized_options=None,
   ),
 ])
