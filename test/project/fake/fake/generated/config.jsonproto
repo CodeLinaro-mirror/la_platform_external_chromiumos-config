@@ -165,7 +165,6 @@
               "devices": [
                 {
                   "facing": 1,
-                  "id": "0123:abcd",
                   "interface": 1,
                   "orientation": 1
                 }
@@ -318,7 +317,6 @@
                   "devices": [
                     {
                       "facing": 1,
-                      "id": "0123:abcd",
                       "interface": 1,
                       "orientation": 1
                     }
@@ -572,13 +570,11 @@
               "devices": [
                 {
                   "facing": 1,
-                  "id": "0123:efef",
                   "interface": 1,
                   "orientation": 1
                 },
                 {
                   "facing": 2,
-                  "id": "mipi-cam",
                   "interface": 2,
                   "orientation": 3
                 }
@@ -700,13 +696,11 @@
                   "devices": [
                     {
                       "facing": 1,
-                      "id": "0123:efef",
                       "interface": 1,
                       "orientation": 1
                     },
                     {
                       "facing": 2,
-                      "id": "mipi-cam",
                       "interface": 2,
                       "orientation": 3
                     }
@@ -983,7 +977,6 @@
               "devices": [
                 {
                   "facing": 1,
-                  "id": "0123:abcd",
                   "interface": 1,
                   "orientation": 1
                 }
@@ -1124,7 +1117,6 @@
                   "devices": [
                     {
                       "facing": 1,
-                      "id": "0123:abcd",
                       "interface": 1,
                       "orientation": 1
                     }
@@ -1404,7 +1396,6 @@
               "devices": [
                 {
                   "facing": 1,
-                  "id": "0123:abcd",
                   "interface": 1,
                   "orientation": 1
                 }
@@ -1544,7 +1535,6 @@
                   "devices": [
                     {
                       "facing": 1,
-                      "id": "0123:abcd",
                       "interface": 1,
                       "orientation": 1
                     }
@@ -1811,7 +1801,6 @@
               "devices": [
                 {
                   "facing": 1,
-                  "id": "0123:abcd",
                   "interface": 1,
                   "orientation": 1
                 }
@@ -1951,7 +1940,6 @@
                   "devices": [
                     {
                       "facing": 1,
-                      "id": "0123:abcd",
                       "interface": 1,
                       "orientation": 1
                     }
@@ -2209,7 +2197,6 @@
               "devices": [
                 {
                   "facing": 1,
-                  "id": "0123:abcd",
                   "interface": 1,
                   "orientation": 1
                 }
@@ -2328,7 +2315,6 @@
                   "devices": [
                     {
                       "facing": 1,
-                      "id": "0123:abcd",
                       "interface": 1,
                       "orientation": 1
                     }
@@ -2574,7 +2560,6 @@
               "devices": [
                 {
                   "facing": 1,
-                  "id": "0123:abcd",
                   "interface": 1,
                   "orientation": 1
                 }
@@ -2693,7 +2678,6 @@
                   "devices": [
                     {
                       "facing": 1,
-                      "id": "0123:abcd",
                       "interface": 1,
                       "orientation": 1
                     }

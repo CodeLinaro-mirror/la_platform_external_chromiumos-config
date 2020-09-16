@@ -50,7 +50,6 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
               "interface": "usb",
               "orientation": 0
             }
@@ -171,13 +170,11 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:efef",
               "interface": "usb",
               "orientation": 0
             },
             {
               "facing": "back",
-              "id": "mipi-cam",
               "interface": "mipi",
               "orientation": 180
             }
@@ -322,7 +319,6 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
               "interface": "usb",
               "orientation": 0
             }
@@ -436,7 +432,6 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
               "interface": "usb",
               "orientation": 0
             }
@@ -544,7 +539,6 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
               "interface": "usb",
               "orientation": 0
             }
@@ -655,7 +649,6 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
               "interface": "usb",
               "orientation": 0
             }
@@ -767,7 +760,6 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
               "interface": "usb",
               "orientation": 0
             }
@@ -880,7 +872,6 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
               "interface": "usb",
               "orientation": 0
             }
@@ -993,7 +984,6 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
               "interface": "usb",
               "orientation": 0
             }
@@ -1098,7 +1088,6 @@
           "devices": [
             {
               "facing": "front",
-              "id": "0123:abcd",
               "interface": "usb",
               "orientation": 0
             }

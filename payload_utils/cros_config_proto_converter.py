@@ -494,7 +494,6 @@ def _build_camera(hw_topology):
             camera_pb.ORIENTATION_270: 270,
         }[device.orientation]
         result['devices'].append({
-            'id': device.id,
             'interface': interface,
             'facing': facing,
             'orientation': orientation,

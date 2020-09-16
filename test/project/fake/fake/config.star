@@ -63,7 +63,7 @@ _DEFAULT_CAMERA = hw_topo.create_camera(
     "Default camera",
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.CAMERA, 2)],
     camera_devices = [
-        hw_topo.make_camera_device(id = "0123:abcd", interface = "usb", facing = "front", orientation = 0),
+        hw_topo.make_camera_device(interface = "usb", facing = "front", orientation = 0),
     ],
 )
 _CAMERA = hw_topo.create_camera(
@@ -71,8 +71,8 @@ _CAMERA = hw_topo.create_camera(
     "Non-default camera",
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.CAMERA, 0)],
     camera_devices = [
-        hw_topo.make_camera_device(id = "0123:efef", interface = "usb", facing = "front", orientation = 0),
-        hw_topo.make_camera_device(id = "mipi-cam", interface = "mipi", facing = "back", orientation = 180),
+        hw_topo.make_camera_device(interface = "usb", facing = "front", orientation = 0),
+        hw_topo.make_camera_device(interface = "mipi", facing = "back", orientation = 180),
     ],
 )
 _SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor", fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True)

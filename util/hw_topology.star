@@ -323,12 +323,11 @@ def _create_thermal(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _make_camera_device(id, interface, facing, orientation):
+def _make_camera_device(interface, facing, orientation):
     """Builds a HardwareFeatures.Camera.Device proto."""
     camera_pb = topo_pb.HardwareFeatures.Camera
     device = camera_pb.Device()
 
-    device.id = id
     device.interface = {
         "usb": camera_pb.INTERFACE_USB,
         "mipi": camera_pb.INTERFACE_MIPI,
