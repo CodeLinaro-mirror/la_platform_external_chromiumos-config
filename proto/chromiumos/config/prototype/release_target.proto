@@ -12,7 +12,7 @@ import "chromiumos/config/prototype/release_target_id.proto";
 import "chromiumos/config/api/software/system_image.proto";
 
 // Defines a collection of build targets that are all part of the same logical
-// release target.
+// release target and corresponding config tied to the release target.
 // E.g. octopus -> octopus-kernel-debug, octopus-kernel_4_14, octopus
 // Build targets will change over time with alternate builds, but the release
 // target will remain stable over time.
@@ -22,4 +22,28 @@ message ReleaseTarget {
   string name = 2;
   repeated chromiumos.config.api.software.SystemImage.BuildTarget
       build_targets = 3;
+
+  Signing signing = 4;
+
+  // Defines the specific version of keyset used for mp/premp signing.
+  // Keysets are managed agnostic of milestone branches, however, since
+  // different milestones may use different keyset versions, this config
+  // needs be versioned as such.
+  message Signing {
+    // Managing separate keysets for premp/mp allows projects to co-exist (still
+    // share the build) that are in different development stages.
+    // This could potentially be used to generate separate signed builds that
+    // group premp versus mp projects together.
+    string premp_keyset = 1;
+    string mp_keyset = 2;
+
+    // Prototyping notes:
+    //
+    // Channel signing configuration is going to be tied to
+    // design projects configs instead, since that is the driving factor as to
+    // whether a build should be pushed that far into release.
+    // Design projects will manage their first stable channel and once the
+    // project progresses to MP, it will trigger signing on those respective
+    // channels.
+  }
 }
