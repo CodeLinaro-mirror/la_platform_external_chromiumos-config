@@ -7,6 +7,7 @@ package tls_test
 import (
 	"context"
 	"fmt"
+	"io"
 
 	"github.com/golang/protobuf/ptypes/duration"
 	rtd "go.chromium.org/chromiumos/config/go/api/test/rtd/v1"
@@ -65,4 +66,61 @@ func ExampleProvisionRequest() {
 	}
 
 	// Provisioned OS + DLC.
+}
+
+func ExampleFetchCrashesRequest() {
+	var invocation rtd.Invocation
+
+	tlsConfig := invocation.GetTestLabServicesConfig()
+	dutName := invocation.GetDuts()[0].GetTlsDutName()
+
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", tlsConfig.GetTlwAddress(), tlsConfig.GetTlwPort()), grpc.WithInsecure())
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+
+	c := tls.NewCommonClient(conn)
+
+	req := tls.FetchCrashesRequest{
+		Dut:       dutName,
+		FetchCore: true,
+	}
+
+	ctx := context.Background()
+	stream, err := c.FetchCrashes(ctx, &req)
+	if err != nil {
+		panic(err)
+	}
+
+	crashes := make(map[int64]*tls.CrashInfo)
+	cores := make(map[int64][]byte)
+	blobs := make(map[int64]map[string][]byte)
+
+readStream:
+	for {
+		resp, err := stream.Recv()
+		if err != nil {
+			if err == io.EOF {
+				break readStream
+			}
+			panic(fmt.Sprintf("RPC error: %v", err))
+		}
+
+		id := resp.CrashId
+		switch x := resp.Data.(type) {
+		case *tls.FetchCrashesResponse_Crash:
+			crashes[id] = x.Crash
+			// Start on next crash -- assume we get CrashInfo before
+			// any blobs.
+			blobs[id] = make(map[string][]byte)
+		case *tls.FetchCrashesResponse_Blob:
+			b := x.Blob
+			blobs[id][b.Key] = append(blobs[id][b.Key], b.Blob...)
+		case *tls.FetchCrashesResponse_Core:
+			cores[id] = append(cores[id], x.Core...)
+		default:
+			panic(fmt.Sprintf("invalid type %T", x))
+		}
+	}
 }

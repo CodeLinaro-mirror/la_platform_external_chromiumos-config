@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.tls',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/test/tls'),
-  serialized_pb=_b('\n+chromiumos/config/api/test/tls/common.proto\x12\x1e\x63hromiumos.config.api.test.tls\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\"\xc3\x01\n\x15\x45xecDutCommandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x02 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\x12\x36\n\x06stdout\x18\x05 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\x12\x36\n\x06stderr\x18\x06 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\"\xe2\x01\n\x16\x45xecDutCommandResponse\x12R\n\texit_info\x18\x01 \x01(\x0b\x32?.chromiumos.config.api.test.tls.ExecDutCommandResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x8c\x02\n\x10ProvisionRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12M\n\x05image\x18\x02 \x01(\x0b\x32>.chromiumos.config.api.test.tls.ProvisionRequest.ChromeOSImage\x12K\n\tdlc_specs\x18\x03 \x03(\x0b\x32\x38.chromiumos.config.api.test.tls.ProvisionRequest.DLCSpec\x1a\x37\n\rChromeOSImage\x12\x18\n\x0egs_path_prefix\x18\x01 \x01(\tH\x00\x42\x0c\n\npath_oneof\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\xf6\x01\n\x11ProvisionResponse\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\x13\n\x11ProvisionMetadata*,\n\x06Output\x12\x0f\n\x0bOUTPUT_PIPE\x10\x00\x12\x11\n\rOUTPUT_STDOUT\x10\x01\x32\x96\x02\n\x06\x43ommon\x12\x81\x01\n\x0e\x45xecDutCommand\x12\x35.chromiumos.config.api.test.tls.ExecDutCommandRequest\x1a\x36.chromiumos.config.api.test.tls.ExecDutCommandResponse0\x01\x12\x87\x01\n\tProvision\x12\x30.chromiumos.config.api.test.tls.ProvisionRequest\x1a\x1d.google.longrunning.Operation\")\xca\x41&\n\x11ProvisionResponse\x12\x11ProvisionMetadataB3Z1go.chromium.org/chromiumos/config/go/api/test/tlsb\x06proto3')
+  serialized_pb=_b('\n+chromiumos/config/api/test/tls/common.proto\x12\x1e\x63hromiumos.config.api.test.tls\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\"\xc3\x01\n\x15\x45xecDutCommandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x02 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\x12\x36\n\x06stdout\x18\x05 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\x12\x36\n\x06stderr\x18\x06 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\"\xe2\x01\n\x16\x45xecDutCommandResponse\x12R\n\texit_info\x18\x01 \x01(\x0b\x32?.chromiumos.config.api.test.tls.ExecDutCommandResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x8c\x02\n\x10ProvisionRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12M\n\x05image\x18\x02 \x01(\x0b\x32>.chromiumos.config.api.test.tls.ProvisionRequest.ChromeOSImage\x12K\n\tdlc_specs\x18\x03 \x03(\x0b\x32\x38.chromiumos.config.api.test.tls.ProvisionRequest.DLCSpec\x1a\x37\n\rChromeOSImage\x12\x18\n\x0egs_path_prefix\x18\x01 \x01(\tH\x00\x42\x0c\n\npath_oneof\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\xf6\x01\n\x11ProvisionResponse\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\x13\n\x11ProvisionMetadata\"6\n\x13\x46\x65tchCrashesRequest\x12\x0b\n\x03\x64ut\x18\x01 \x01(\t\x12\x12\n\nfetch_core\x18\x02 \x01(\x08\"\xb7\x01\n\x14\x46\x65tchCrashesResponse\x12\x10\n\x08\x63rash_id\x18\x01 \x01(\x03\x12:\n\x05\x63rash\x18\x02 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashInfoH\x00\x12\x39\n\x04\x62lob\x18\x03 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashBlobH\x00\x12\x0e\n\x04\x63ore\x18\x04 \x01(\x0cH\x00\x42\x06\n\x04\x64\x61ta\"\xbe\x01\n\tCrashInfo\x12\x11\n\texec_name\x18\x01 \x01(\t\x12\x0c\n\x04prod\x18\x02 \x01(\t\x12\x0b\n\x03ver\x18\x03 \x01(\t\x12\x0b\n\x03sig\x18\x04 \x01(\t\x12$\n\x1cin_progress_integration_test\x18\x05 \x01(\t\x12\x11\n\tcollector\x18\x06 \x01(\t\x12=\n\x06\x66ields\x18\x07 \x03(\x0b\x32-.chromiumos.config.api.test.tls.CrashMetadata\"*\n\rCrashMetadata\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"&\n\tCrashBlob\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c*,\n\x06Output\x12\x0f\n\x0bOUTPUT_PIPE\x10\x00\x12\x11\n\rOUTPUT_STDOUT\x10\x01\x32\x93\x03\n\x06\x43ommon\x12\x81\x01\n\x0e\x45xecDutCommand\x12\x35.chromiumos.config.api.test.tls.ExecDutCommandRequest\x1a\x36.chromiumos.config.api.test.tls.ExecDutCommandResponse0\x01\x12\x87\x01\n\tProvision\x12\x30.chromiumos.config.api.test.tls.ProvisionRequest\x1a\x1d.google.longrunning.Operation\")\xca\x41&\n\x11ProvisionResponse\x12\x11ProvisionMetadata\x12{\n\x0c\x46\x65tchCrashes\x12\x33.chromiumos.config.api.test.tls.FetchCrashesRequest\x1a\x34.chromiumos.config.api.test.tls.FetchCrashesResponse0\x01\x42\x33Z1go.chromium.org/chromiumos/config/go/api/test/tlsb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
 
@@ -42,8 +42,8 @@ _OUTPUT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1121,
-  serialized_end=1165,
+  serialized_start=1640,
+  serialized_end=1684,
 )
 _sym_db.RegisterEnumDescriptor(_OUTPUT)
 
@@ -409,6 +409,248 @@ _PROVISIONMETADATA = _descriptor.Descriptor(
   serialized_end=1119,
 )
 
+
+_FETCHCRASHESREQUEST = _descriptor.Descriptor(
+  name='FetchCrashesRequest',
+  full_name='chromiumos.config.api.test.tls.FetchCrashesRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='dut', full_name='chromiumos.config.api.test.tls.FetchCrashesRequest.dut', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='fetch_core', full_name='chromiumos.config.api.test.tls.FetchCrashesRequest.fetch_core', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1121,
+  serialized_end=1175,
+)
+
+
+_FETCHCRASHESRESPONSE = _descriptor.Descriptor(
+  name='FetchCrashesResponse',
+  full_name='chromiumos.config.api.test.tls.FetchCrashesResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='crash_id', full_name='chromiumos.config.api.test.tls.FetchCrashesResponse.crash_id', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='crash', full_name='chromiumos.config.api.test.tls.FetchCrashesResponse.crash', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='blob', full_name='chromiumos.config.api.test.tls.FetchCrashesResponse.blob', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='core', full_name='chromiumos.config.api.test.tls.FetchCrashesResponse.core', index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='data', full_name='chromiumos.config.api.test.tls.FetchCrashesResponse.data',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=1178,
+  serialized_end=1361,
+)
+
+
+_CRASHINFO = _descriptor.Descriptor(
+  name='CrashInfo',
+  full_name='chromiumos.config.api.test.tls.CrashInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='exec_name', full_name='chromiumos.config.api.test.tls.CrashInfo.exec_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='prod', full_name='chromiumos.config.api.test.tls.CrashInfo.prod', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ver', full_name='chromiumos.config.api.test.tls.CrashInfo.ver', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='sig', full_name='chromiumos.config.api.test.tls.CrashInfo.sig', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='in_progress_integration_test', full_name='chromiumos.config.api.test.tls.CrashInfo.in_progress_integration_test', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='collector', full_name='chromiumos.config.api.test.tls.CrashInfo.collector', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='fields', full_name='chromiumos.config.api.test.tls.CrashInfo.fields', index=6,
+      number=7, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1364,
+  serialized_end=1554,
+)
+
+
+_CRASHMETADATA = _descriptor.Descriptor(
+  name='CrashMetadata',
+  full_name='chromiumos.config.api.test.tls.CrashMetadata',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.config.api.test.tls.CrashMetadata.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='text', full_name='chromiumos.config.api.test.tls.CrashMetadata.text', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1556,
+  serialized_end=1598,
+)
+
+
+_CRASHBLOB = _descriptor.Descriptor(
+  name='CrashBlob',
+  full_name='chromiumos.config.api.test.tls.CrashBlob',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.config.api.test.tls.CrashBlob.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='blob', full_name='chromiumos.config.api.test.tls.CrashBlob.blob', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1600,
+  serialized_end=1638,
+)
+
 _EXECDUTCOMMANDREQUEST.fields_by_name['stdout'].enum_type = _OUTPUT
 _EXECDUTCOMMANDREQUEST.fields_by_name['stderr'].enum_type = _OUTPUT
 _EXECDUTCOMMANDRESPONSE_EXITINFO.containing_type = _EXECDUTCOMMANDRESPONSE
@@ -421,11 +663,28 @@ _PROVISIONREQUEST_DLCSPEC.containing_type = _PROVISIONREQUEST
 _PROVISIONREQUEST.fields_by_name['image'].message_type = _PROVISIONREQUEST_CHROMEOSIMAGE
 _PROVISIONREQUEST.fields_by_name['dlc_specs'].message_type = _PROVISIONREQUEST_DLCSPEC
 _PROVISIONRESPONSE_REASON.containing_type = _PROVISIONRESPONSE
+_FETCHCRASHESRESPONSE.fields_by_name['crash'].message_type = _CRASHINFO
+_FETCHCRASHESRESPONSE.fields_by_name['blob'].message_type = _CRASHBLOB
+_FETCHCRASHESRESPONSE.oneofs_by_name['data'].fields.append(
+  _FETCHCRASHESRESPONSE.fields_by_name['crash'])
+_FETCHCRASHESRESPONSE.fields_by_name['crash'].containing_oneof = _FETCHCRASHESRESPONSE.oneofs_by_name['data']
+_FETCHCRASHESRESPONSE.oneofs_by_name['data'].fields.append(
+  _FETCHCRASHESRESPONSE.fields_by_name['blob'])
+_FETCHCRASHESRESPONSE.fields_by_name['blob'].containing_oneof = _FETCHCRASHESRESPONSE.oneofs_by_name['data']
+_FETCHCRASHESRESPONSE.oneofs_by_name['data'].fields.append(
+  _FETCHCRASHESRESPONSE.fields_by_name['core'])
+_FETCHCRASHESRESPONSE.fields_by_name['core'].containing_oneof = _FETCHCRASHESRESPONSE.oneofs_by_name['data']
+_CRASHINFO.fields_by_name['fields'].message_type = _CRASHMETADATA
 DESCRIPTOR.message_types_by_name['ExecDutCommandRequest'] = _EXECDUTCOMMANDREQUEST
 DESCRIPTOR.message_types_by_name['ExecDutCommandResponse'] = _EXECDUTCOMMANDRESPONSE
 DESCRIPTOR.message_types_by_name['ProvisionRequest'] = _PROVISIONREQUEST
 DESCRIPTOR.message_types_by_name['ProvisionResponse'] = _PROVISIONRESPONSE
 DESCRIPTOR.message_types_by_name['ProvisionMetadata'] = _PROVISIONMETADATA
+DESCRIPTOR.message_types_by_name['FetchCrashesRequest'] = _FETCHCRASHESREQUEST
+DESCRIPTOR.message_types_by_name['FetchCrashesResponse'] = _FETCHCRASHESRESPONSE
+DESCRIPTOR.message_types_by_name['CrashInfo'] = _CRASHINFO
+DESCRIPTOR.message_types_by_name['CrashMetadata'] = _CRASHMETADATA
+DESCRIPTOR.message_types_by_name['CrashBlob'] = _CRASHBLOB
 DESCRIPTOR.enum_types_by_name['Output'] = _OUTPUT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -488,6 +747,41 @@ ProvisionMetadata = _reflection.GeneratedProtocolMessageType('ProvisionMetadata'
   ))
 _sym_db.RegisterMessage(ProvisionMetadata)
 
+FetchCrashesRequest = _reflection.GeneratedProtocolMessageType('FetchCrashesRequest', (_message.Message,), dict(
+  DESCRIPTOR = _FETCHCRASHESREQUEST,
+  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.FetchCrashesRequest)
+  ))
+_sym_db.RegisterMessage(FetchCrashesRequest)
+
+FetchCrashesResponse = _reflection.GeneratedProtocolMessageType('FetchCrashesResponse', (_message.Message,), dict(
+  DESCRIPTOR = _FETCHCRASHESRESPONSE,
+  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.FetchCrashesResponse)
+  ))
+_sym_db.RegisterMessage(FetchCrashesResponse)
+
+CrashInfo = _reflection.GeneratedProtocolMessageType('CrashInfo', (_message.Message,), dict(
+  DESCRIPTOR = _CRASHINFO,
+  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.CrashInfo)
+  ))
+_sym_db.RegisterMessage(CrashInfo)
+
+CrashMetadata = _reflection.GeneratedProtocolMessageType('CrashMetadata', (_message.Message,), dict(
+  DESCRIPTOR = _CRASHMETADATA,
+  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.CrashMetadata)
+  ))
+_sym_db.RegisterMessage(CrashMetadata)
+
+CrashBlob = _reflection.GeneratedProtocolMessageType('CrashBlob', (_message.Message,), dict(
+  DESCRIPTOR = _CRASHBLOB,
+  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.CrashBlob)
+  ))
+_sym_db.RegisterMessage(CrashBlob)
+
 
 DESCRIPTOR._options = None
 
@@ -497,8 +791,8 @@ _COMMON = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1168,
-  serialized_end=1446,
+  serialized_start=1687,
+  serialized_end=2090,
   methods=[
   _descriptor.MethodDescriptor(
     name='ExecDutCommand',
@@ -517,6 +811,15 @@ _COMMON = _descriptor.ServiceDescriptor(
     input_type=_PROVISIONREQUEST,
     output_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2._OPERATION,
     serialized_options=_b('\312A&\n\021ProvisionResponse\022\021ProvisionMetadata'),
+  ),
+  _descriptor.MethodDescriptor(
+    name='FetchCrashes',
+    full_name='chromiumos.config.api.test.tls.Common.FetchCrashes',
+    index=2,
+    containing_service=None,
+    input_type=_FETCHCRASHESREQUEST,
+    output_type=_FETCHCRASHESRESPONSE,
+    serialized_options=None,
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_COMMON)

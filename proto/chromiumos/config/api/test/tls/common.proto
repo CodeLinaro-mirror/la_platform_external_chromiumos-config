@@ -60,6 +60,15 @@ service Common {
       metadata_type: "ProvisionMetadata"
     };
   }
+
+  // FetchCrashes gets a stream of all crash reports currently on the DUT.
+  //
+  // The stream returned may split up a crash over multiple
+  // `FetchCrashesResponse` protos. See the definition of that proto for
+  // details.
+  //
+  // This call is read-only: it doesn't delete the crashes that it reads.
+  rpc FetchCrashes(FetchCrashesRequest) returns (stream FetchCrashesResponse);
 }
 
 message ExecDutCommandRequest {
@@ -191,3 +200,91 @@ message ProvisionResponse {
 
 message ProvisionMetadata {
 }
+
+message FetchCrashesRequest {
+    // dut is the resource name for the DUT from which to fetch crashes.
+    // The DUT name is passed to the RTD when the RTD is started.
+    // It is not specified whether the name is the DUT hostname.
+    string dut = 1;
+    // If true, fetch the core file.
+    // For uploads to the crash server, that should generally be false.
+    // If the crash file is likely to be used for manual debugging (e.g. on
+    // a manually-invoked test suite run), this might be true.
+    // Coredumps can be extremely large (even gigabytes), so if resource usage
+    // is a concern, this should probably be false.
+    bool fetch_core = 2;
+}
+
+// When this response is streamed, the first proto with a given crash ID will
+// always contain the CrashInfo.
+// Files and core dumps (if present) may be streamed. If they are,
+// subsequent protos with
+// the same crash ID will follow, each containing a chunk of file/coredump. To
+// reassemble these, concatenate the bytes received from each subsequent proto
+// with a matching crash_id (and blob.key, if present).
+// Additional crashes may be reported in the same stream with a new crash ID.
+message FetchCrashesResponse {
+    // Crash id. unique only within responses to a single FetchCrashes request.
+    // Used to assemble multiple streamed |FetchCrashesResponse| protos into a
+    // single crash report.
+    int64 crash_id = 1;
+    oneof data {
+      // Full details of crash report.
+      CrashInfo crash = 2;
+      // Misc file (e.g. minidump, large binary log, etc)
+      CrashBlob blob = 3;
+      // Coredump. Present iff fetch_core was true in FetchCrashesRequest and
+      // the crash has a coredump. (kernel warnings, for example, do not have
+      // one).
+      bytes core = 4;
+    }
+}
+
+// The data in this proto matches the metadata from crash-reporter's meta files.
+// Sender::CreateCrashFormData puts this data into crash upload POST requests.
+// (See src/platform2/crash-reporter/crash_sender_util.cc.)
+// The names in this proto MUST match the names that crash-reporter uses so
+// that, when crashes are uploaded to the crash server, they are interpreted
+// as they are when crash-reporter uploads them.
+// Similarly, when this proto is converted into a POST request to send to the
+// crash server, the names must not be altered.
+message CrashInfo {
+    // Name of executable that crashed (e.g. "chrome")
+    string exec_name = 1;
+    // Product name (e.g. "Chrome_ChromeOS" or "ChromeOS")
+    string prod = 2;
+    // Product version (e.g. "12345.0.0")
+    string ver = 3;
+    // Crash signature (may not be populated for all crashes)
+    string sig = 4;
+    // The name of the integration test that was running when this crash
+    // happened, if any.
+    string in_progress_integration_test = 5;
+    // The name of the collector (e.g. chrome_collector, arc_collector)
+    string collector = 6;
+    // Additional key-value pairs of metadata (e.g. "crash_loop_mode = true").
+    // These should be included in any POSTs to the crash server in a standard
+    // POST form, as seen in CreateCrashFormData.
+    // (despite the fact that this message is a subfield, it should be a flat
+    // structure in any POSTs).
+    repeated CrashMetadata fields = 7;
+}
+
+// Arbitrary text-only key-value pair corresponding to the key-value pairs in
+// crash report metadata files.
+message CrashMetadata {
+    // This value is a UTF8, human-readable, description of the data.
+    string key = 1;
+    // The value will be a human-readable string (e.g. "12345.0.0"), which must
+    // be valid UTF-8.
+    string text = 2;
+};
+
+// Arbitrary non-UTF8 key-value pair from crash report metadata files.
+message CrashBlob {
+    // This value is a UTF8, human-readable, description of the data.
+    string key = 1;
+    // The value is a blob (e.g. a file from sysfs or a minidump), which need
+    // not be valid UTF-8, and may be large.
+    bytes blob = 2;
+};
