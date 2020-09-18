@@ -16,7 +16,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-func ExampleWiringClient_CacheForDut() {
+func ExampleCacheForDutRequest() {
 	var invocation rtd.Invocation
 
 	tlsConfig := invocation.GetTestLabServicesConfig()
@@ -65,7 +65,7 @@ func ExampleWiringClient_CacheForDut() {
 	_ = resp
 }
 
-func ExampleWiringClient_CacheForDut_DownloadCachedFile() {
+func ExampleCacheForDutRequest_DownloadCachedFile() {
 	var dutName string
 	var c tls.CommonClient
 	var resp tls.CacheForDutResponse // Response of CacheForDut.

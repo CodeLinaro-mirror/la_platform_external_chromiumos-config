@@ -14,7 +14,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-func ExampleCommonClient_ExecDutCommand() {
+func ExampleExecDutCommandRequest() {
 	// The RTD will receive this in its invocation spec.
 	var (
 		addr    string
@@ -40,7 +40,7 @@ func ExampleCommonClient_ExecDutCommand() {
 	_ = stream
 }
 
-func ExampleCommonClient_ExecDutCommand_CheckSuccess() {
+func ExampleExecDutCommandRequest_CheckSuccess() {
 	// stream from ExecDutCommand,
 	// See example for CommonClient.ExecDutCommand.
 	var stream tls.Common_ExecDutCommandClient
@@ -64,7 +64,7 @@ readStream:
 	}
 }
 
-func ExampleCommonClient_ExecDutCommand_CheckSpecificStatus() {
+func ExampleExecDutCommandRequest_CheckSpecificStatus() {
 	// stream from ExecDutCommand,
 	// See example for CommonClient.ExecDutCommand.
 	var stream tls.Common_ExecDutCommandClient
@@ -93,7 +93,7 @@ readStream:
 	}
 }
 
-func ExampleCommonClient_ExecDutCommand_ReadOutput() {
+func ExampleExecDutCommandRequest_ReadOutput() {
 	// Stream from ExecDutCommand.
 	// See example for CommonClient.ExecDutCommand.
 	var stream tls.Common_ExecDutCommandClient
