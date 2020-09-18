@@ -20,3 +20,21 @@ function config_usage() {
   echo "  configuration file, typically config.star" >&2
   exit 1
 }
+
+# Creates a Python venv and installs requirements.txt.
+#
+# This function must be called with a link to the src/config directory in cwd.
+# The venv will be created as src/config/.venv and src/config/requirements.txt
+# will be installed.
+function create_venv(){
+  # Create and activate venv.
+  readonly venv_path=config/.venv
+  /usr/bin/python3 -m venv "${venv_path}"
+  # Ignore shellcheck non-constant source warning.
+  # shellcheck source=/dev/null
+  source "${venv_path}/bin/activate"
+
+  # Install requirements.
+  pip install wheel -q
+  pip install -r config/requirements.txt -q
+}

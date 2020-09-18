@@ -13,14 +13,9 @@ readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
 set -e
 
 source "${script_dir}/../setup_cipd.sh"
+source "${script_dir}/common.sh"
 
-# Create and activate venv.
-/usr/bin/python3 -m venv .venv
-source .venv/bin/activate
-
-# Install requirements.
-pip install wheel -q
-pip install -r config/requirements.txt -q
+create_venv
 
 # Path to the generated config protobuf.
 readonly private_config_path='generated/config.jsonproto'
