@@ -19,10 +19,7 @@ function prompt_continue() {
 }
 
 function usage() {
-  echo "Usage: $0 <program> [<project>]" >&2
-  echo "  for setups with a single repo for the program with" >&2
-  echo "  projects in subdirectories, only the program argument" >&2
-  echo "  is provided." >&2
+  echo "Usage: $0 <program> <project>" >&2
   exit 1
 }
 
@@ -38,20 +35,13 @@ Do you want to continue running this script?"
 cd "$(dirname "$0")"
 
 readonly program="${1}"
-# Will be empty if this is a single program repository project.
 readonly project="${2}"
 
 readonly local_manifests_dir="../../.repo/local_manifests"
 
-if [[ -z "${project}" ]]; then
-  readonly clone_url="https://chrome-internal.googlesource.com/chromeos/program/${program}"
-  readonly clone_src="../../src/program/${program}"
-  readonly symlink="${local_manifests_dir}/${program}.xml"
-else
-  readonly clone_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
-  readonly clone_src="../../src/project/${program}/${project}"
-  readonly symlink="${local_manifests_dir}/${project}.xml"
-fi
+readonly clone_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
+readonly clone_src="../../src/project/${program}/${project}"
+readonly symlink="${local_manifests_dir}/${project}.xml"
 
 if [[ -d "${clone_src}" ]]; then
   # If ${clone_src} is already present the user is likely running
