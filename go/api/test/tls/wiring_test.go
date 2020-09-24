@@ -7,6 +7,8 @@ package tls_test
 import (
 	"context"
 	"fmt"
+	"net"
+	"net/http"
 
 	"github.com/golang/protobuf/ptypes"
 	"github.com/golang/protobuf/ptypes/duration"
@@ -79,4 +81,47 @@ func ExampleCacheForDutRequest_DownloadCachedFile() {
 	}
 	// Check the return code of ExecDutCommand.
 	_ = result
+}
+
+func ExampleExposePortToDutRequest() {
+	var invocation rtd.Invocation
+
+	tlsConfig := invocation.GetTestLabServicesConfig()
+	dutName := invocation.GetDuts()[0].GetTlsDutName()
+
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", tlsConfig.GetTlwAddress(), tlsConfig.GetTlwPort()))
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+
+	c := tls.NewWiringClient(conn)
+	ctx := context.Background()
+
+	// Start a service inside RTD to bind to a local port.
+	s := http.Server{}
+	http.HandleFunc("/foo", func(w http.ResponseWriter, _ *http.Request) {
+		fmt.Fprint(w, "Hello world!\n")
+	})
+	// Use port "0" to request OS to assign an unused port number.
+	ln, _ := net.Listen("tcp", ":0")
+	go func() {
+		s.Serve(ln)
+	}()
+	defer s.Shutdown(context.Background())
+
+	req := tls.ExposePortToDutRequest{
+		DutName:   dutName,
+		LocalPort: int32(ln.Addr().(*net.TCPAddr).Port),
+	}
+	resp, err := c.ExposePortToDut(ctx, &req)
+	if err != nil {
+		panic("RPC error")
+	}
+
+	// Handle the response in various ways. For example:
+	// Run a client command to access the service started.
+	// Dummy example, see ExecDutCommandRequest for a possible implementation.
+	runCommandOnDut := func(args []string) {}
+	runCommandOnDut([]string{"curl", fmt.Sprintf("%s:%d/foo", resp.ExposedAddress, resp.ExposedPort)})
 }

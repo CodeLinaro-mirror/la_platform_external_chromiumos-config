@@ -64,7 +64,7 @@ service Wiring {
   rpc CacheForDut(CacheForDutRequest) returns (google.longrunning.Operation) {
     option (google.longrunning.operation_info) = {
       response_type: "CacheForDutResponse",
-      metadata_type: "CacheForDutMetadata" 
+      metadata_type: "CacheForDutMetadata"
     };
   }
 
@@ -75,6 +75,17 @@ service Wiring {
   //
   // EXPERIMENTAL
   rpc CallServoXmlRpc(CallServoXmlRpcRequest) returns (CallServoXmlRpcResponse);
+
+  // ExposePortToDut exposes an RTD port to the specified DUT.
+  //
+  // The TLE SHOULD attempt to keep this address-to-port connection open for
+  // the duration of the RTD's runtime.
+  // The connection is not restarted if it is interrupted.
+  // By default, the implementation MAY expose a port that cannot persist
+  // across DUT reboots.
+  // By default, the implementation MAY use 'localhost' as the exposed address.
+  rpc ExposePortToDut(ExposePortToDutRequest)
+      returns (ExposePortToDutResponse);
 }
 
 message OpenDutPortRequest {
@@ -173,4 +184,45 @@ message CallServoXmlRpcResponse {
   // fault indicates that the servo XML-RPC returned a fault.
   // The fault value is stored in the value field.
   bool fault = 3;
+}
+
+message ExposePortToDutRequest {
+  // dut_name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string dut_name = 1;
+  // local_port is the port of a service running inside the RTD container to
+  // expose. It MUST be in the range of [1, 65535] as defined in RFC 1700
+  // (http://https://tools.ietf.org/html/rfc1700).
+  // A client MAY bind to the special port number "0" from inside an RTD to get
+  // an OS assigned free port number without race condition. Then the client
+  // MUST get the real port number assigned and pass it to "local_port" here.
+  int32 local_port = 2;
+  // require_remote_proxy indicates if the implementation SHOULD use a DUT
+  // reachable server as a proxy and return the address and port of the proxy
+  // server.
+  // If require_remote_proxy is set, the exposed port SHOULD persist across DUT
+  // reboots.
+  // If require_remote_proxy is set but an implementation cannot provide a
+  // remote proxy, the implementation SHOULD return FAILED_PRECONDITION.
+  // If require_remote_proxy is not set, the implementation MAY expose a port
+  // that cannot persist across DUT reboots.
+  // If require_remote_proxy is not set, the implementation MAY use 'localhost'
+  // as the exposed address.
+  bool require_remote_proxy = 3;
+}
+
+message ExposePortToDutResponse {
+  // exposed_address is the address reachable by the requesting DUT.
+  // TLEs SHOULD return an IPv4 or IPv6 address to avoid name resolution
+  // issues.
+  // IPv4 addresses MUST be in standard dotted decimal notation.
+  // IPv6 addresses MUST be formatted according to RFC4291, Section 2.2. The
+  // mixed IPv4 and IPv6 form MUST NOT be used.
+  // If TLEs return a hostname, they SHOULD ensure that the hostname can be
+  // resolved by the DUT via standard name resolution facilities.
+  string exposed_address = 1;
+  // exposed_port is the port on the exposed_address which is reachable from
+  // the DUT.
+  int32 exposed_port = 2;
 }

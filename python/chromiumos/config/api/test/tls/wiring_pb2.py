@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.tls',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/test/tls'),
-  serialized_pb=_b('\n+chromiumos/config/api/test/tls/wiring.proto\x12\x1e\x63hromiumos.config.api.test.tls\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\x1a.chromiumos/config/api/test/xmlrpc/xmlrpc.proto\"0\n\x12OpenDutPortRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"4\n\x13OpenDutPortResponse\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"\xaf\x01\n\x18SetDutPowerSupplyRequest\x12\x0b\n\x03\x64ut\x18\x01 \x01(\t\x12M\n\x05state\x18\x02 \x01(\x0e\x32>.chromiumos.config.api.test.tls.SetDutPowerSupplyRequest.State\"7\n\x05State\x12\x11\n\rSTATE_UNKNOWN\x10\x00\x12\x0c\n\x08STATE_ON\x10\x01\x12\r\n\tSTATE_OFF\x10\x02\"\x80\x02\n\x19SetDutPowerSupplyResponse\x12P\n\x06status\x18\x01 \x01(\x0e\x32@.chromiumos.config.api.test.tls.SetDutPowerSupplyResponse.Status\x12\x0e\n\x06reason\x18\x02 \x01(\t\"\x80\x01\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\r\n\tSTATUS_OK\x10\x01\x12\x12\n\x0eSTATUS_BAD_DUT\x10\x02\x12\x16\n\x12STATUS_BAD_REQUEST\x10\x03\x12\x11\n\rSTATUS_NO_RPM\x10\x04\x12\x14\n\x10STATUS_RPM_ERROR\x10\x05\"3\n\x12\x43\x61\x63heForDutRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x10\n\x08\x64ut_name\x18\x02 \x01(\t\"\"\n\x13\x43\x61\x63heForDutResponse\x12\x0b\n\x03url\x18\x01 \x01(\t\"\x15\n\x13\x43\x61\x63heForDutMetadata\"m\n\x16\x43\x61llServoXmlRpcRequest\x12\x0b\n\x03\x64ut\x18\x01 \x01(\t\x12\x0e\n\x06method\x18\x02 \x01(\t\x12\x36\n\x04\x61rgs\x18\x03 \x03(\x0b\x32(.chromiumos.config.api.test.xmlrpc.Value\"\xb6\x02\n\x17\x43\x61llServoXmlRpcResponse\x12N\n\x06status\x18\x01 \x01(\x0e\x32>.chromiumos.config.api.test.tls.CallServoXmlRpcResponse.Status\x12\x37\n\x05value\x18\x02 \x01(\x0b\x32(.chromiumos.config.api.test.xmlrpc.Value\x12\r\n\x05\x66\x61ult\x18\x03 \x01(\x08\"\x82\x01\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\r\n\tSTATUS_OK\x10\x01\x12\x12\n\x0eSTATUS_BAD_DUT\x10\x02\x12\x14\n\x10STATUS_NO_METHOD\x10\x03\x12\x13\n\x0fSTATUS_NO_SERVO\x10\x04\x12\x16\n\x12STATUS_SERVO_ERROR\x10\x05\x32\xa2\x04\n\x06Wiring\x12v\n\x0bOpenDutPort\x12\x32.chromiumos.config.api.test.tls.OpenDutPortRequest\x1a\x33.chromiumos.config.api.test.tls.OpenDutPortResponse\x12\x88\x01\n\x11SetDutPowerSupply\x12\x38.chromiumos.config.api.test.tls.SetDutPowerSupplyRequest\x1a\x39.chromiumos.config.api.test.tls.SetDutPowerSupplyResponse\x12\x8f\x01\n\x0b\x43\x61\x63heForDut\x12\x32.chromiumos.config.api.test.tls.CacheForDutRequest\x1a\x1d.google.longrunning.Operation\"-\xca\x41*\n\x13\x43\x61\x63heForDutResponse\x12\x13\x43\x61\x63heForDutMetadata\x12\x82\x01\n\x0f\x43\x61llServoXmlRpc\x12\x36.chromiumos.config.api.test.tls.CallServoXmlRpcRequest\x1a\x37.chromiumos.config.api.test.tls.CallServoXmlRpcResponseB3Z1go.chromium.org/chromiumos/config/go/api/test/tlsb\x06proto3')
+  serialized_pb=_b('\n+chromiumos/config/api/test/tls/wiring.proto\x12\x1e\x63hromiumos.config.api.test.tls\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\x1a.chromiumos/config/api/test/xmlrpc/xmlrpc.proto\"0\n\x12OpenDutPortRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"4\n\x13OpenDutPortResponse\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"\xaf\x01\n\x18SetDutPowerSupplyRequest\x12\x0b\n\x03\x64ut\x18\x01 \x01(\t\x12M\n\x05state\x18\x02 \x01(\x0e\x32>.chromiumos.config.api.test.tls.SetDutPowerSupplyRequest.State\"7\n\x05State\x12\x11\n\rSTATE_UNKNOWN\x10\x00\x12\x0c\n\x08STATE_ON\x10\x01\x12\r\n\tSTATE_OFF\x10\x02\"\x80\x02\n\x19SetDutPowerSupplyResponse\x12P\n\x06status\x18\x01 \x01(\x0e\x32@.chromiumos.config.api.test.tls.SetDutPowerSupplyResponse.Status\x12\x0e\n\x06reason\x18\x02 \x01(\t\"\x80\x01\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\r\n\tSTATUS_OK\x10\x01\x12\x12\n\x0eSTATUS_BAD_DUT\x10\x02\x12\x16\n\x12STATUS_BAD_REQUEST\x10\x03\x12\x11\n\rSTATUS_NO_RPM\x10\x04\x12\x14\n\x10STATUS_RPM_ERROR\x10\x05\"3\n\x12\x43\x61\x63heForDutRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x10\n\x08\x64ut_name\x18\x02 \x01(\t\"\"\n\x13\x43\x61\x63heForDutResponse\x12\x0b\n\x03url\x18\x01 \x01(\t\"\x15\n\x13\x43\x61\x63heForDutMetadata\"m\n\x16\x43\x61llServoXmlRpcRequest\x12\x0b\n\x03\x64ut\x18\x01 \x01(\t\x12\x0e\n\x06method\x18\x02 \x01(\t\x12\x36\n\x04\x61rgs\x18\x03 \x03(\x0b\x32(.chromiumos.config.api.test.xmlrpc.Value\"\xb6\x02\n\x17\x43\x61llServoXmlRpcResponse\x12N\n\x06status\x18\x01 \x01(\x0e\x32>.chromiumos.config.api.test.tls.CallServoXmlRpcResponse.Status\x12\x37\n\x05value\x18\x02 \x01(\x0b\x32(.chromiumos.config.api.test.xmlrpc.Value\x12\r\n\x05\x66\x61ult\x18\x03 \x01(\x08\"\x82\x01\n\x06Status\x12\x12\n\x0eSTATUS_UNKNOWN\x10\x00\x12\r\n\tSTATUS_OK\x10\x01\x12\x12\n\x0eSTATUS_BAD_DUT\x10\x02\x12\x14\n\x10STATUS_NO_METHOD\x10\x03\x12\x13\n\x0fSTATUS_NO_SERVO\x10\x04\x12\x16\n\x12STATUS_SERVO_ERROR\x10\x05\"\\\n\x16\x45xposePortToDutRequest\x12\x10\n\x08\x64ut_name\x18\x01 \x01(\t\x12\x12\n\nlocal_port\x18\x02 \x01(\x05\x12\x1c\n\x14require_remote_proxy\x18\x03 \x01(\x08\"H\n\x17\x45xposePortToDutResponse\x12\x17\n\x0f\x65xposed_address\x18\x01 \x01(\t\x12\x14\n\x0c\x65xposed_port\x18\x02 \x01(\x05\x32\xa7\x05\n\x06Wiring\x12v\n\x0bOpenDutPort\x12\x32.chromiumos.config.api.test.tls.OpenDutPortRequest\x1a\x33.chromiumos.config.api.test.tls.OpenDutPortResponse\x12\x88\x01\n\x11SetDutPowerSupply\x12\x38.chromiumos.config.api.test.tls.SetDutPowerSupplyRequest\x1a\x39.chromiumos.config.api.test.tls.SetDutPowerSupplyResponse\x12\x8f\x01\n\x0b\x43\x61\x63heForDut\x12\x32.chromiumos.config.api.test.tls.CacheForDutRequest\x1a\x1d.google.longrunning.Operation\"-\xca\x41*\n\x13\x43\x61\x63heForDutResponse\x12\x13\x43\x61\x63heForDutMetadata\x12\x82\x01\n\x0f\x43\x61llServoXmlRpc\x12\x36.chromiumos.config.api.test.tls.CallServoXmlRpcRequest\x1a\x37.chromiumos.config.api.test.tls.CallServoXmlRpcResponse\x12\x82\x01\n\x0f\x45xposePortToDut\x12\x36.chromiumos.config.api.test.tls.ExposePortToDutRequest\x1a\x37.chromiumos.config.api.test.tls.ExposePortToDutResponseB3Z1go.chromium.org/chromiumos/config/go/api/test/tlsb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_test_dot_xmlrpc_dot_xmlrpc__pb2.DESCRIPTOR,])
 
@@ -467,6 +467,89 @@ _CALLSERVOXMLRPCRESPONSE = _descriptor.Descriptor(
   serialized_end=1276,
 )
 
+
+_EXPOSEPORTTODUTREQUEST = _descriptor.Descriptor(
+  name='ExposePortToDutRequest',
+  full_name='chromiumos.config.api.test.tls.ExposePortToDutRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='dut_name', full_name='chromiumos.config.api.test.tls.ExposePortToDutRequest.dut_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='local_port', full_name='chromiumos.config.api.test.tls.ExposePortToDutRequest.local_port', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='require_remote_proxy', full_name='chromiumos.config.api.test.tls.ExposePortToDutRequest.require_remote_proxy', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1278,
+  serialized_end=1370,
+)
+
+
+_EXPOSEPORTTODUTRESPONSE = _descriptor.Descriptor(
+  name='ExposePortToDutResponse',
+  full_name='chromiumos.config.api.test.tls.ExposePortToDutResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='exposed_address', full_name='chromiumos.config.api.test.tls.ExposePortToDutResponse.exposed_address', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='exposed_port', full_name='chromiumos.config.api.test.tls.ExposePortToDutResponse.exposed_port', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1372,
+  serialized_end=1444,
+)
+
 _SETDUTPOWERSUPPLYREQUEST.fields_by_name['state'].enum_type = _SETDUTPOWERSUPPLYREQUEST_STATE
 _SETDUTPOWERSUPPLYREQUEST_STATE.containing_type = _SETDUTPOWERSUPPLYREQUEST
 _SETDUTPOWERSUPPLYRESPONSE.fields_by_name['status'].enum_type = _SETDUTPOWERSUPPLYRESPONSE_STATUS
@@ -484,6 +567,8 @@ DESCRIPTOR.message_types_by_name['CacheForDutResponse'] = _CACHEFORDUTRESPONSE
 DESCRIPTOR.message_types_by_name['CacheForDutMetadata'] = _CACHEFORDUTMETADATA
 DESCRIPTOR.message_types_by_name['CallServoXmlRpcRequest'] = _CALLSERVOXMLRPCREQUEST
 DESCRIPTOR.message_types_by_name['CallServoXmlRpcResponse'] = _CALLSERVOXMLRPCRESPONSE
+DESCRIPTOR.message_types_by_name['ExposePortToDutRequest'] = _EXPOSEPORTTODUTREQUEST
+DESCRIPTOR.message_types_by_name['ExposePortToDutResponse'] = _EXPOSEPORTTODUTRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 OpenDutPortRequest = _reflection.GeneratedProtocolMessageType('OpenDutPortRequest', (_message.Message,), dict(
@@ -549,6 +634,20 @@ CallServoXmlRpcResponse = _reflection.GeneratedProtocolMessageType('CallServoXml
   ))
 _sym_db.RegisterMessage(CallServoXmlRpcResponse)
 
+ExposePortToDutRequest = _reflection.GeneratedProtocolMessageType('ExposePortToDutRequest', (_message.Message,), dict(
+  DESCRIPTOR = _EXPOSEPORTTODUTREQUEST,
+  __module__ = 'chromiumos.config.api.test.tls.wiring_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.ExposePortToDutRequest)
+  ))
+_sym_db.RegisterMessage(ExposePortToDutRequest)
+
+ExposePortToDutResponse = _reflection.GeneratedProtocolMessageType('ExposePortToDutResponse', (_message.Message,), dict(
+  DESCRIPTOR = _EXPOSEPORTTODUTRESPONSE,
+  __module__ = 'chromiumos.config.api.test.tls.wiring_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.ExposePortToDutResponse)
+  ))
+_sym_db.RegisterMessage(ExposePortToDutResponse)
+
 
 DESCRIPTOR._options = None
 
@@ -558,8 +657,8 @@ _WIRING = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1279,
-  serialized_end=1825,
+  serialized_start=1447,
+  serialized_end=2126,
   methods=[
   _descriptor.MethodDescriptor(
     name='OpenDutPort',
@@ -595,6 +694,15 @@ _WIRING = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_CALLSERVOXMLRPCREQUEST,
     output_type=_CALLSERVOXMLRPCRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ExposePortToDut',
+    full_name='chromiumos.config.api.test.tls.Wiring.ExposePortToDut',
+    index=4,
+    containing_service=None,
+    input_type=_EXPOSEPORTTODUTREQUEST,
+    output_type=_EXPOSEPORTTODUTRESPONSE,
     serialized_options=None,
   ),
 ])
