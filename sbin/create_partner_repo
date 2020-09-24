@@ -58,7 +58,7 @@ usage() {
   echo "    localmanifest - create local_manifest.xml for the project repo"
   echo "    manifestinternal - update manifest_internal repo internal_full.xml"
   echo "    createprojectbuckets - create gs buckets for the project"
-  echo "    createprojectbranches - create firmware and factory branches for the project"
+  echo "    createprojectbranches - create firmware and factory branches for the project and calls manifestinternal"
   echo "--env is optional. prod or dev. prod is default"
 }
 
@@ -266,10 +266,20 @@ create_gerrit_groups() {
 
 # Update manifest once when all the projects have been created
 # TODO(b/153167560): Determine how to update_manifest once for all projects.
+#
+# Args:
+#   branch: Optional, the branch to update the manifest on.
 update_manifest_internal() {
-  echo -e "\n## Add ${program}-${name} to manifest-internal/internal_full.xml"
+  local branch="${1}"
   cd "${WORK_DIR}"
-  git clone "https://chrome-internal.googlesource.com/chromeos/manifest-internal"
+  if [[ -n "${branch}" ]]; then
+    echo -e "\n## Add ${program}-${name} to manifest-internal/internal_full.xml (branch ${branch})"
+    git clone "https://chrome-internal.googlesource.com/chromeos/manifest-internal" --branch "${branch}"
+  else
+    echo -e "\n## Add ${program}-${name} to manifest-internal/internal_full.xml"
+    git clone "https://chrome-internal.googlesource.com/chromeos/manifest-internal"
+  fi
+
   cd manifest-internal
 
   #Read internal_full, add only if project is not already there
@@ -402,6 +412,8 @@ create_project_branches() {
     if [[ -n "${branch}" ]]; then
       echo "Manifest branch ${branch} found, creating corresponding project branch."
       gob_put '{}' "${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}/branches/${branch}"
+
+      update_manifest_internal "${branch}"
     else
       echo "No existing ${type} branch found, skipping creation."
     fi
