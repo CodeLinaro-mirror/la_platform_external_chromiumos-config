@@ -405,15 +405,18 @@ create_project_branches() {
   gob_curl "${INTERNAL_GERRIT_HOST}/a/projects/chromeos%2fmanifest-internal/branches" "${branch_info}"
 
   for type in "${branch_types[@]}"; do
-    local branch
-    branch=$(jq --raw-output ".[] | select(.ref|test(\"^refs/heads/${type}-${program}-[1-9]+.B$\")) | .ref" < "${branch_info}")
-    # Strip refs/heads/ for the Gerrit API call.
-    branch="${branch#refs/heads/}"
-    if [[ -n "${branch}" ]]; then
+    local branches
+    mapfile -t branches < <(jq --raw-output ".[] | select(.ref|test(\"^refs/heads/${type}-${program}-[1-9]+.B$\")) | .ref" < "${branch_info}")
+
+    if [[ "${#branches[@]}" = 1 ]]; then
+      # Strip refs/heads/ for the Gerrit API call.
+      local branch="${branches[0]#refs/heads/}"
       echo "Manifest branch ${branch} found, creating corresponding project branch."
       gob_put '{}' "${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}/branches/${branch}"
 
       update_manifest_internal "${branch}"
+    elif [[ "${#branches[@]}" -ge 2 ]]; then
+      echo "More than one manifest branch found: ${branches[*]}. Please create corresponding project branch manually."
     else
       echo "No existing ${type} branch found, skipping creation."
     fi
