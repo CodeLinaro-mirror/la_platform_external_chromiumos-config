@@ -3290,6 +3290,9 @@
           "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
           "cardName": "fakeaudiocard",
           "dspFile": "audio/fakeaudiocard/dsp.ini",
+          "publicReplication": {
+            "publicFields": "cardName"
+          },
           "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
           "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf",
           "ucmSuffix": "2mic"
@@ -3391,6 +3394,9 @@
           "cardName": "fakeaudiocard",
           "dspFile": "audio/fakeaudiocard/dsp.ini",
           "moduleFile": "audio/alsa-module-config/alsa-project_a.conf",
+          "publicReplication": {
+            "publicFields": "cardName"
+          },
           "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
           "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf",
           "ucmSuffix": "2mic"
@@ -3524,6 +3530,9 @@
           "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
           "cardName": "fakeaudiocard",
           "dspFile": "audio/fakeaudiocard/dsp.ini",
+          "publicReplication": {
+            "publicFields": "cardName"
+          },
           "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
           "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf",
           "ucmSuffix": "2mic"
@@ -3601,6 +3610,9 @@
           "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
           "cardName": "fakeaudiocard",
           "dspFile": "audio/fakeaudiocard/dsp.ini",
+          "publicReplication": {
+            "publicFields": "cardName"
+          },
           "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
           "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
         }
@@ -3677,11 +3689,17 @@
           "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
           "cardName": "fakeaudiocard",
           "dspFile": "audio/fakeaudiocard/dsp.ini",
+          "publicReplication": {
+            "publicFields": "cardName"
+          },
           "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
           "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
         },
         {
           "cardName": "HDA ATI HDMI",
+          "publicReplication": {
+            "publicFields": "cardName"
+          },
           "ucmFile": "ucm-config/HDA ATI HDMI/HiFi.conf",
           "ucmMasterFile": "ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
         }
@@ -3753,6 +3771,9 @@
           "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
           "cardName": "fakeaudiocard",
           "dspFile": "audio/fakeaudiocard/dsp.ini",
+          "publicReplication": {
+            "publicFields": "cardName"
+          },
           "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
           "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
         }

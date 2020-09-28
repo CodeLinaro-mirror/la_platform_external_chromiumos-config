@@ -20,7 +20,7 @@ def _create(
         overlay_name = None,
         arc_device = None,
         first_api_level = "28",
-        public_fields = None):
+        public_fields = ["id", "overlay_name"]):
     """Builds a BuildTarget proto.
 
     Args:

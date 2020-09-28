@@ -171,17 +171,9 @@ def create_hardware_topology(
 _HW_CONFIGS = []
 _SW_CONFIGS = []
 
-# Currently public_fields is only set on the fake project. Once it is ready
-# to be set on all projects, it can be made a default on append_configs and
-# create_design.
-#
-# TODO(crbug.com/1092530): Remove repetition once public_fields can be made a
-# default.
 design.append_configs(
     hw_configs = _HW_CONFIGS,
     sw_configs = _SW_CONFIGS,
-    hw_config_public_fields = ["id"],
-    sw_config_public_fields = ["design_config_id"],
     design_id = _DESIGN_ID,
     config_id = 0x7fffffff,
     hardware_topology = create_hardware_topology(
@@ -197,7 +189,6 @@ design.append_configs(
         _AUDIO_CARD,
         card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
         dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
-        public_fields = ["card_name"],
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(
@@ -226,8 +217,6 @@ design.append_configs(
 design.append_configs(
     hw_configs = _HW_CONFIGS,
     sw_configs = _SW_CONFIGS,
-    hw_config_public_fields = ["id"],
-    sw_config_public_fields = ["design_config_id"],
     design_id = _DESIGN_ID,
     config_id = 0,
     hardware_topology = create_hardware_topology(
@@ -287,8 +276,6 @@ _HW_CONFIGS_A = []
 design.append_configs(
     hw_configs = _HW_CONFIGS_A,
     sw_configs = _SW_CONFIGS,
-    hw_config_public_fields = ["id"],
-    sw_config_public_fields = ["design_config_id"],
     design_id = _DESIGN_ID_A,
     config_id = 32,
     hardware_topology = create_hardware_topology(
@@ -380,8 +367,6 @@ _HW_CONFIGS_B = []
 design.append_configs(
     hw_configs = _HW_CONFIGS_B,
     sw_configs = _SW_CONFIGS,
-    hw_config_public_fields = ["id"],
-    sw_config_public_fields = ["design_config_id"],
     design_id = _DESIGN_ID_B,
     config_id = 33,
     hardware_topology = create_hardware_topology(
@@ -415,8 +400,6 @@ _HW_CONFIGS_C = []
 design.append_configs(
     hw_configs = _HW_CONFIGS_C,
     sw_configs = _SW_CONFIGS,
-    hw_config_public_fields = ["id"],
-    sw_config_public_fields = ["design_config_id"],
     design_id = _DESIGN_ID_C,
     config_id = 34,
     hardware_topology = create_hardware_topology(
@@ -449,8 +432,6 @@ _HDMI_AUDIO_CARD = "HDA ATI HDMI"
 design.append_configs(
     hw_configs = _HW_CONFIGS_WL,
     sw_configs = _SW_CONFIGS,
-    hw_config_public_fields = ["id"],
-    sw_config_public_fields = ["design_config_id"],
     design_id = _DESIGN_ID_WL,
     config_id = 64,
     hardware_topology = create_hardware_topology(),
@@ -481,8 +462,6 @@ _HW_CONFIGS_BOX = []
 design.append_configs(
     hw_configs = _HW_CONFIGS_BOX,
     sw_configs = _SW_CONFIGS,
-    hw_config_public_fields = ["id"],
-    sw_config_public_fields = ["design_config_id"],
     design_id = _DESIGN_ID_BOX,
     config_id = 128,
     hardware_topology = create_hardware_topology(
@@ -507,7 +486,6 @@ design.append_configs(
 )
 
 _DESIGN = design.create_design(
-    public_fields = ["id", "program_id"],
     id = _DESIGN_ID,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -515,7 +493,6 @@ _DESIGN = design.create_design(
 )
 
 _DESIGN_A = design.create_design(
-    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_A,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -523,7 +500,6 @@ _DESIGN_A = design.create_design(
 )
 
 _DESIGN_B = design.create_design(
-    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_B,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -531,7 +507,6 @@ _DESIGN_B = design.create_design(
 )
 
 _DESIGN_C = design.create_design(
-    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_C,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -539,7 +514,6 @@ _DESIGN_C = design.create_design(
 )
 
 _DESIGN_WL = design.create_design(
-    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_WL,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
@@ -547,7 +521,6 @@ _DESIGN_WL = design.create_design(
 )
 
 _DESIGN_BOX = design.create_design(
-    public_fields = ["id", "program_id"],
     id = _DESIGN_ID_BOX,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,

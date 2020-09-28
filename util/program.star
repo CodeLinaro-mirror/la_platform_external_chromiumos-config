@@ -67,7 +67,7 @@ def _create_signer_configs_by_design(configs):
 
 def _create(
         name,
-        public_fields = None,
+        public_fields = ["name", "id"],
         component_quals = None,
         constraints = None,
         firmware_configuration_segments = None,

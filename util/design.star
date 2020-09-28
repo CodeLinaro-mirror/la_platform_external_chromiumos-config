@@ -46,8 +46,8 @@ def _append_configs(
         hw_configs,
         design_id,
         config_id,
-        hw_config_public_fields = None,
-        sw_config_public_fields = None,
+        hw_config_public_fields = ["id"],
+        sw_config_public_fields = ["design_config_id"],
         hardware_topology = None,
         firmware = None,
         firmware_build_config = None,
@@ -135,7 +135,12 @@ def _create_design_id(name):
     """Builds a DesignId proto."""
     return design_id_pb.DesignId(value = name)
 
-def _create_design(id, program_id, odm_id, public_fields = None, configs = None):
+def _create_design(
+        id,
+        program_id,
+        odm_id,
+        public_fields = ["id", "program_id"],
+        configs = None):
     """Builds a Design proto."""
     return design_pb.Design(
         id = id,

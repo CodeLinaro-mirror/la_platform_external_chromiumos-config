@@ -46,46 +46,6 @@
             "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
           ]
         }
-      },
-      {
-        "arc": {
-          "build-properties": {
-            "device": "",
-            "first-api-level": "",
-            "marketing-name": "",
-            "metrics-tag": "",
-            "product": "fake"
-          },
-          "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_.xml",
-            "system-path": "/etc/hardware_features_.xml"
-          }
-        },
-        "identity": {
-          "platform-name": "FAKE_PROGRAM",
-          "sku-id": 0
-        },
-        "name": "",
-        "thermal": {
-          "dptf-dv": "fake/dptf.dv",
-          "files": [
-            {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
-            }
-          ]
-        },
-        "ui": {
-          "extra-ash-flags": [
-            "--arc-build-properties",
-            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
-            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
-            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
-            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
-            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
-            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
-          ]
-        }
       }
     ]
   }

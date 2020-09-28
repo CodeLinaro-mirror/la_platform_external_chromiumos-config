@@ -152,7 +152,7 @@ def _create_audio(
         ucm_suffix = None,
         module_file = None,
         board_file = None,
-        public_fields = None):
+        public_fields = ["card_name"]):
     """Builds an AudioConfig proto."""
     return audio_pb.AudioConfig(
         public_replication = public_replication.create(public_fields = public_fields),

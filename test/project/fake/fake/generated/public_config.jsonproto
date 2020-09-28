@@ -178,31 +178,64 @@
       }
     },
     {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        }
+      ],
       "designConfigId": {
         "value": "FAKE_REF_DESIGN:0"
       }
     },
     {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        }
+      ],
       "designConfigId": {
         "value": "PROJECT_A:32"
       }
     },
     {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        }
+      ],
       "designConfigId": {
         "value": "PROJECT_B:33"
       }
     },
     {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        }
+      ],
       "designConfigId": {
         "value": "PROJECT_C:34"
       }
     },
     {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        },
+        {
+          "cardName": "HDA ATI HDMI"
+        }
+      ],
       "designConfigId": {
         "value": "PROJECT_WL:64"
       }
     },
     {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        }
+      ],
       "designConfigId": {
         "value": "PROJECT_BOX:128"
       }
