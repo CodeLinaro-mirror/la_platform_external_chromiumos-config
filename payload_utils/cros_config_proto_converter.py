@@ -972,8 +972,6 @@ def _camera_map(configs, project_name):
     if os.path.exists(config_path):
       destination = CAMERA_CONFIG_DEST_PATH_TEMPLATE.format(design_name.lower())
       result[design_name] = {
-          'config-path':
-              destination,
           'config-file':
               _file_v2(os.path.join(project_name, config_path), destination),
       }
