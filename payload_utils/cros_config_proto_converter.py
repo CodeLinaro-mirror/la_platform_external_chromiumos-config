@@ -493,10 +493,18 @@ def _build_camera(hw_topology):
             camera_pb.ORIENTATION_180: 180,
             camera_pb.ORIENTATION_270: 270,
         }[device.orientation]
+        flags = {
+            'support-1080p':
+                bool(device.flags & camera_pb.FLAGS_SUPPORT_1080P),
+            'support-autofocus':
+                bool(device.flags & camera_pb.FLAGS_SUPPORT_AUTOFOCUS),
+        }
         result['devices'].append({
             'interface': interface,
             'facing': facing,
             'orientation': orientation,
+            'flags': flags,
+            'ids': list(device.ids),
         })
     return result
 
@@ -824,6 +832,9 @@ def _get_arc_camera_features(camera):
         (d.facing == camera_pb.FACING_FRONT for d in camera.devices))
     has_back_camera = any(
         (d.facing == camera_pb.FACING_BACK for d in camera.devices))
+    has_autofocus_back_camera = any((d.facing == camera_pb.FACING_BACK and
+                                     d.flags & camera_pb.FLAGS_SUPPORT_AUTOFOCUS
+                                     for d in camera.devices))
     # Assumes MIPI cameras support FULL-level.
     # TODO(kamesan): Setting this in project configs when there's an exception.
     has_level_full_camera = any(
@@ -833,11 +844,8 @@ def _get_arc_camera_features(camera):
     count = camera.count.value
     has_front_camera = count > 0
     has_back_camera = count > 1
+    has_autofocus_back_camera = has_back_camera
     has_level_full_camera = False
-
-  # Assumes the back camera supports autofocus.
-  # TODO(kamesan): Setting this in project configs when there's an exception.
-  has_autofocus_back_camera = has_back_camera
 
   return [
       _feature('android.hardware.camera', has_back_camera),

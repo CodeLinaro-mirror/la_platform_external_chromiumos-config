@@ -177,6 +177,12 @@ message HardwareFeatures {
       ORIENTATION_270 = 4;
     }
 
+    enum Flags {
+      FLAGS_NONE = 0x0;
+      FLAGS_SUPPORT_1080P = 0x1;
+      FLAGS_SUPPORT_AUTOFOCUS = 0x2;
+    }
+
     message Device {
       // The interface type of the camera device.
       Interface interface = 2;
@@ -187,6 +193,13 @@ message HardwareFeatures {
       // Clockwise angle through which the output image needs to be rotated to
       // be upright on the device screen in its native orientation.
       Orientation orientation = 4;
+
+      // Bit flags representing camera capabilities of this device. A camera
+      // module can be mounted on this slot only if all the flags match.
+      uint32 flags = 5;
+
+      // List of strings each identifies a possible camera module on this slot.
+      repeated string ids = 6;
     }
 
     // If user facing camera (front camera) is present

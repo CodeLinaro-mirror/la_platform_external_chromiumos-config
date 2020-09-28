@@ -86,6 +86,11 @@ _EDGE = struct(
     BOTTOM = topo_pb.HardwareFeatures.Button.BOTTOM,
 )
 
+_CAMERA_FLAGS = struct(
+    SUPPORT_1080P = topo_pb.HardwareFeatures.Camera.FLAGS_SUPPORT_1080P,
+    SUPPORT_AUTOFOCUS = topo_pb.HardwareFeatures.Camera.FLAGS_SUPPORT_AUTOFOCUS,
+)
+
 # Starlark doesn't support converting enums to their names. Add helper fns. to
 # do so.
 def _button_region_to_str(region):
@@ -323,7 +328,7 @@ def _create_thermal(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _make_camera_device(interface, facing, orientation):
+def _make_camera_device(interface, facing, orientation, flags, ids):
     """Builds a HardwareFeatures.Camera.Device proto."""
     camera_pb = topo_pb.HardwareFeatures.Camera
     device = camera_pb.Device()
@@ -342,6 +347,8 @@ def _make_camera_device(interface, facing, orientation):
         180: camera_pb.ORIENTATION_180,
         270: camera_pb.ORIENTATION_270,
     }[orientation]
+    device.flags = flags
+    device.ids = ids
 
     return device
 
@@ -1017,4 +1024,5 @@ hw_topo = struct(
     stylus = _STYLUS,
     region = _REGION,
     edge = _EDGE,
+    camera_flags = _CAMERA_FLAGS,
 )
