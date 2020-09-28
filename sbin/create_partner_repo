@@ -516,6 +516,6 @@ apply_acls_from_config
 create_local_manifest
 #Step 5:
 create_project_buckets
-# TODO(crbug.com/1127000): Add create_project_branches once it is verified to
-# work.
+#Step 6:
+create_project_branches
 echo '## Script completed'
