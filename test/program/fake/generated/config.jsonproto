@@ -102,31 +102,31 @@
         },
         {
           "designId": {
-            "value": "FAKE-REF-DESIGN"
+            "value": "FAKE_REF_DESIGN"
           },
           "keyId": "DEFAULT"
         },
         {
           "designId": {
-            "value": "PROJECT-A"
+            "value": "PROJECT_A"
           },
           "keyId": "KEYA"
         },
         {
           "designId": {
-            "value": "PROJECT-B"
+            "value": "PROJECT_B"
           },
           "keyId": "KEYB"
         },
         {
           "designId": {
-            "value": "PROJECT-C"
+            "value": "PROJECT_C"
           },
           "keyId": "KEYC"
         },
         {
           "designId": {
-            "value": "PROJECT-BOX"
+            "value": "PROJECT_BOX"
           },
           "keyId": "KEYBX"
         }

@@ -4,7 +4,7 @@
       "brandId": {
         "value": "AAAA"
       },
-      "wallpaper": "fake-wallpaper"
+      "wallpaper": "fake_wallpaper"
     },
     {
       "brandId": {
@@ -173,7 +173,7 @@
               "worldFacingCamera": 2
             },
             "fingerprint": {
-              "board": "fake-fingerprint-board",
+              "board": "fake_fingerprint_board",
               "location": 2
             },
             "formFactor": {
@@ -363,7 +363,7 @@
               },
               "hardwareFeature": {
                 "fingerprint": {
-                  "board": "fake-fingerprint-board",
+                  "board": "fake_fingerprint_board",
                   "location": 2
                 }
               },
@@ -548,7 +548,7 @@
             }
           },
           "id": {
-            "value": "FAKE-REF-DESIGN:2147483647"
+            "value": "FAKE_REF_DESIGN:2147483647"
           },
           "publicReplication": {
             "publicFields": "id"
@@ -929,7 +929,7 @@
             }
           },
           "id": {
-            "value": "FAKE-REF-DESIGN:0"
+            "value": "FAKE_REF_DESIGN:0"
           },
           "publicReplication": {
             "publicFields": "id"
@@ -937,11 +937,11 @@
         }
       ],
       "id": {
-        "value": "FAKE-REF-DESIGN"
+        "value": "FAKE_REF_DESIGN"
       },
-      "name": "FAKE-REF-DESIGN",
+      "name": "FAKE_REF_DESIGN",
       "odmId": {
-        "value": "FAKE-ODM"
+        "value": "FAKE_ODM"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -985,7 +985,7 @@
               "worldFacingCamera": 2
             },
             "fingerprint": {
-              "board": "fake-fingerprint-board",
+              "board": "fake_fingerprint_board",
               "location": 2
             },
             "formFactor": {
@@ -1163,7 +1163,7 @@
               },
               "hardwareFeature": {
                 "fingerprint": {
-                  "board": "fake-fingerprint-board",
+                  "board": "fake_fingerprint_board",
                   "location": 2
                 }
               },
@@ -1348,7 +1348,7 @@
             }
           },
           "id": {
-            "value": "PROJECT-A:32"
+            "value": "PROJECT_A:32"
           },
           "publicReplication": {
             "publicFields": "id"
@@ -1356,11 +1356,11 @@
         }
       ],
       "id": {
-        "value": "PROJECT-A"
+        "value": "PROJECT_A"
       },
-      "name": "PROJECT-A",
+      "name": "PROJECT_A",
       "odmId": {
-        "value": "FAKE-ODM"
+        "value": "FAKE_ODM"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -1753,7 +1753,7 @@
             }
           },
           "id": {
-            "value": "PROJECT-B:33"
+            "value": "PROJECT_B:33"
           },
           "publicReplication": {
             "publicFields": "id"
@@ -1761,11 +1761,11 @@
         }
       ],
       "id": {
-        "value": "PROJECT-B"
+        "value": "PROJECT_B"
       },
-      "name": "PROJECT-B",
+      "name": "PROJECT_B",
       "odmId": {
-        "value": "FAKE-ODM"
+        "value": "FAKE_ODM"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -2158,7 +2158,7 @@
             }
           },
           "id": {
-            "value": "PROJECT-C:34"
+            "value": "PROJECT_C:34"
           },
           "publicReplication": {
             "publicFields": "id"
@@ -2166,11 +2166,11 @@
         }
       ],
       "id": {
-        "value": "PROJECT-C"
+        "value": "PROJECT_C"
       },
-      "name": "PROJECT-C",
+      "name": "PROJECT_C",
       "odmId": {
-        "value": "FAKE-ODM"
+        "value": "FAKE_ODM"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -2521,7 +2521,7 @@
             }
           },
           "id": {
-            "value": "PROJECT-WL:64"
+            "value": "PROJECT_WL:64"
           },
           "publicReplication": {
             "publicFields": "id"
@@ -2529,11 +2529,11 @@
         }
       ],
       "id": {
-        "value": "PROJECT-WL"
+        "value": "PROJECT_WL"
       },
-      "name": "PROJECT-WL",
+      "name": "PROJECT_WL",
       "odmId": {
-        "value": "FAKE-ODM"
+        "value": "FAKE_ODM"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -2884,7 +2884,7 @@
             }
           },
           "id": {
-            "value": "PROJECT-BOX:128"
+            "value": "PROJECT_BOX:128"
           },
           "publicReplication": {
             "publicFields": "id"
@@ -2892,11 +2892,11 @@
         }
       ],
       "id": {
-        "value": "PROJECT-BOX"
+        "value": "PROJECT_BOX"
       },
-      "name": "PROJECT-BOX",
+      "name": "PROJECT_BOX",
       "odmId": {
-        "value": "FAKE-ODM"
+        "value": "FAKE_ODM"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -2911,59 +2911,59 @@
       "brandCode": "AAAA",
       "brandName": "Fake ChromeOS Device Brandname",
       "designId": {
-        "value": "FAKE-REF-DESIGN"
+        "value": "FAKE_REF_DESIGN"
       },
       "id": {
         "value": "AAAA"
       },
       "oemId": {
-        "value": "FAKE-OEM"
+        "value": "FAKE_OEM"
       }
     },
     {
       "brandCode": "FDAA",
       "brandName": "ChromeOS Device Brandname A",
       "designId": {
-        "value": "PROJECT-A"
+        "value": "PROJECT_A"
       },
       "id": {
         "value": "FDAA"
       },
       "oemId": {
-        "value": "FAKE-OEMA"
+        "value": "FAKE_OEMA"
       }
     },
     {
       "brandCode": "FDBB",
       "brandName": "ChromeOS Device Brandname B",
       "designId": {
-        "value": "PROJECT-B"
+        "value": "PROJECT_B"
       },
       "id": {
         "value": "FDBB"
       },
       "oemId": {
-        "value": "FAKE-OEMB"
+        "value": "FAKE_OEMB"
       }
     },
     {
       "brandCode": "FDCC",
       "brandName": "ChromeOS Device Brandname C",
       "designId": {
-        "value": "PROJECT-C"
+        "value": "PROJECT_C"
       },
       "id": {
         "value": "FDCC"
       },
       "oemId": {
-        "value": "FAKE-OEMC"
+        "value": "FAKE_OEMC"
       }
     },
     {
       "brandCode": "WLZZ",
       "brandName": "ChromeOS Device Brandname WL",
       "designId": {
-        "value": "PROJECT-WL"
+        "value": "PROJECT_WL"
       },
       "id": {
         "value": "WLZZ"
@@ -2973,103 +2973,103 @@
       "brandCode": "WLAA",
       "brandName": "ChromeOS Device Brandname WL-A",
       "designId": {
-        "value": "PROJECT-WL"
+        "value": "PROJECT_WL"
       },
       "id": {
         "value": "WLAA"
       },
       "oemId": {
-        "value": "FAKE-LOEMA"
+        "value": "FAKE_LOEMA"
       }
     },
     {
       "brandCode": "WLBB",
       "brandName": "ChromeOS Device Brandname WL-B",
       "designId": {
-        "value": "PROJECT-WL"
+        "value": "PROJECT_WL"
       },
       "id": {
         "value": "WLBB"
       },
       "oemId": {
-        "value": "FAKE-LOEMB"
+        "value": "FAKE_LOEMB"
       }
     },
     {
       "brandCode": "WLCC",
       "brandName": "ChromeOS Device Brandname WL-C",
       "designId": {
-        "value": "PROJECT-WL"
+        "value": "PROJECT_WL"
       },
       "id": {
         "value": "WLCC"
       },
       "oemId": {
-        "value": "FAKE-LOEMC"
+        "value": "FAKE_LOEMC"
       }
     },
     {
       "brandCode": "FDBX",
       "brandName": "ChromeOS Device Brandname Box",
       "designId": {
-        "value": "PROJECT-BOX"
+        "value": "PROJECT_BOX"
       },
       "id": {
         "value": "FDBX"
       },
       "oemId": {
-        "value": "FAKE-OEM"
+        "value": "FAKE_OEM"
       }
     }
   ],
   "partnerList": [
     {
       "id": {
-        "value": "FAKE-ODM"
+        "value": "FAKE_ODM"
       },
-      "name": "FAKE-ODM"
+      "name": "FAKE_ODM"
     },
     {
       "id": {
-        "value": "FAKE-OEM"
+        "value": "FAKE_OEM"
       },
-      "name": "FAKE-OEM"
+      "name": "FAKE_OEM"
     },
     {
       "id": {
-        "value": "FAKE-OEMA"
+        "value": "FAKE_OEMA"
       },
-      "name": "FAKE-OEMA"
+      "name": "FAKE_OEMA"
     },
     {
       "id": {
-        "value": "FAKE-OEMB"
+        "value": "FAKE_OEMB"
       },
-      "name": "FAKE-OEMB"
+      "name": "FAKE_OEMB"
     },
     {
       "id": {
-        "value": "FAKE-OEMC"
+        "value": "FAKE_OEMC"
       },
-      "name": "FAKE-OEMC"
+      "name": "FAKE_OEMC"
     },
     {
       "id": {
-        "value": "FAKE-LOEMA"
+        "value": "FAKE_LOEMA"
       },
-      "name": "FAKE-LOEMA"
+      "name": "FAKE_LOEMA"
     },
     {
       "id": {
-        "value": "FAKE-LOEMB"
+        "value": "FAKE_LOEMB"
       },
-      "name": "FAKE-LOEMB"
+      "name": "FAKE_LOEMB"
     },
     {
       "id": {
-        "value": "FAKE-LOEMC"
+        "value": "FAKE_LOEMC"
       },
-      "name": "FAKE-LOEMC"
+      "name": "FAKE_LOEMC"
     },
     {
       "displayPanelVendor": {
@@ -3154,7 +3154,7 @@
         }
       },
       "designConfigId": {
-        "value": "FAKE-REF-DESIGN:2147483647"
+        "value": "FAKE_REF_DESIGN:2147483647"
       },
       "firmware": {
         "ecRoPayload": {
@@ -3193,15 +3193,15 @@
           "depthcharge": "fake",
           "ec": "fake",
           "ecExtras": [
-            "fake-ec-extra1",
-            "fake-ec-extra2"
+            "fake_ec_extra1",
+            "fake_ec_extra2"
           ],
           "libpayload": "fake"
         }
       },
       "idScanConfig": {
         "firmwareSku": 2147483647,
-        "smbiosNameMatch": "FAKE-REF-DESIGN"
+        "smbiosNameMatch": "FAKE_REF_DESIGN"
       },
       "powerConfig": {
         "preferences": {
@@ -3238,7 +3238,7 @@
         }
       ],
       "designConfigId": {
-        "value": "FAKE-REF-DESIGN:0"
+        "value": "FAKE_REF_DESIGN:0"
       },
       "firmware": {
         "ecRoPayload": {
@@ -3277,14 +3277,14 @@
           "depthcharge": "fake",
           "ec": "fake",
           "ecExtras": [
-            "fake-ec-extra1",
-            "fake-ec-extra2"
+            "fake_ec_extra1",
+            "fake_ec_extra2"
           ],
           "libpayload": "fake"
         }
       },
       "idScanConfig": {
-        "smbiosNameMatch": "FAKE-REF-DESIGN"
+        "smbiosNameMatch": "FAKE_REF_DESIGN"
       },
       "powerConfig": {
         "preferences": {
@@ -3332,7 +3332,7 @@
           "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
           "cardName": "fakeaudiocard",
           "dspFile": "audio/fakeaudiocard/dsp.ini",
-          "moduleFile": "audio/alsa-module-config/alsa-project-a.conf",
+          "moduleFile": "audio/alsa-module-config/alsa-project_a.conf",
           "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
           "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf",
           "ucmSuffix": "2mic"
@@ -3344,7 +3344,7 @@
         }
       },
       "designConfigId": {
-        "value": "PROJECT-A:32"
+        "value": "PROJECT_A:32"
       },
       "firmware": {
         "ecRoPayload": {
@@ -3383,15 +3383,15 @@
           "depthcharge": "fake",
           "ec": "fake",
           "ecExtras": [
-            "fake-ec-extra1",
-            "fake-ec-extra2"
+            "fake_ec_extra1",
+            "fake_ec_extra2"
           ],
           "libpayload": "fake"
         }
       },
       "idScanConfig": {
         "firmwareSku": 32,
-        "smbiosNameMatch": "PROJECT-A"
+        "smbiosNameMatch": "PROJECT_A"
       },
       "powerConfig": {
         "preferences": {
@@ -3477,7 +3477,7 @@
         }
       },
       "designConfigId": {
-        "value": "PROJECT-B:33"
+        "value": "PROJECT_B:33"
       },
       "firmware": {
         "ecRoPayload": {
@@ -3516,15 +3516,15 @@
           "depthcharge": "fake",
           "ec": "fake",
           "ecExtras": [
-            "fake-ec-extra1",
-            "fake-ec-extra2"
+            "fake_ec_extra1",
+            "fake_ec_extra2"
           ],
           "libpayload": "fake"
         }
       },
       "idScanConfig": {
         "firmwareSku": 33,
-        "smbiosNameMatch": "PROJECT-B"
+        "smbiosNameMatch": "PROJECT_B"
       },
       "powerConfig": {
         "preferences": {
@@ -3553,7 +3553,7 @@
         }
       },
       "designConfigId": {
-        "value": "PROJECT-C:34"
+        "value": "PROJECT_C:34"
       },
       "firmware": {
         "ecRoPayload": {
@@ -3592,15 +3592,15 @@
           "depthcharge": "fake",
           "ec": "fake",
           "ecExtras": [
-            "fake-ec-extra1",
-            "fake-ec-extra2"
+            "fake_ec_extra1",
+            "fake_ec_extra2"
           ],
           "libpayload": "fake"
         }
       },
       "idScanConfig": {
         "firmwareSku": 34,
-        "smbiosNameMatch": "PROJECT-C"
+        "smbiosNameMatch": "PROJECT_C"
       },
       "powerConfig": {
         "preferences": {
@@ -3629,7 +3629,7 @@
         }
       ],
       "designConfigId": {
-        "value": "PROJECT-WL:64"
+        "value": "PROJECT_WL:64"
       },
       "firmware": {
         "ecRoPayload": {
@@ -3668,15 +3668,15 @@
           "depthcharge": "fake",
           "ec": "fake",
           "ecExtras": [
-            "fake-ec-extra1",
-            "fake-ec-extra2"
+            "fake_ec_extra1",
+            "fake_ec_extra2"
           ],
           "libpayload": "fake"
         }
       },
       "idScanConfig": {
         "firmwareSku": 64,
-        "smbiosNameMatch": "PROJECT-WL"
+        "smbiosNameMatch": "PROJECT_WL"
       },
       "powerConfig": {
         "preferences": {
@@ -3700,7 +3700,7 @@
         }
       ],
       "designConfigId": {
-        "value": "PROJECT-BOX:128"
+        "value": "PROJECT_BOX:128"
       },
       "firmware": {
         "ecRoPayload": {
@@ -3739,15 +3739,15 @@
           "depthcharge": "fake",
           "ec": "fake",
           "ecExtras": [
-            "fake-ec-extra1",
-            "fake-ec-extra2"
+            "fake_ec_extra1",
+            "fake_ec_extra2"
           ],
           "libpayload": "fake"
         }
       },
       "idScanConfig": {
         "firmwareSku": 128,
-        "smbiosNameMatch": "PROJECT-BOX"
+        "smbiosNameMatch": "PROJECT_BOX"
       },
       "powerConfig": {
         "preferences": {

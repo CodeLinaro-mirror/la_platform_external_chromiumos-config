@@ -7,18 +7,18 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "Fake ChromeOS Device Brandname",
-            "metrics-tag": "fake-ref-design",
-            "oem": "FAKE-OEM",
+            "metrics-tag": "fake_ref_design",
+            "oem": "FAKE_OEM",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_fake-ref-design_2147483647.xml",
-            "system-path": "/etc/hardware_features_fake-ref-design_2147483647.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_fake_ref_design_2147483647.xml",
+            "system-path": "/etc/hardware_features_fake_ref_design_2147483647.xml"
           }
         },
         "audio": {
           "main": {
-            "cras-config-dir": "fake-ref-design",
+            "cras-config-dir": "fake_ref_design",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
@@ -29,11 +29,11 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/fake-ref-design/fakeaudiocard",
+                "destination": "/etc/cras/fake_ref_design/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/fake-ref-design/dsp.ini",
+                "destination": "/etc/cras/fake_ref_design/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               }
             ]
@@ -56,7 +56,7 @@
           ]
         },
         "fingerprint": {
-          "board": "fake-fingerprint-board",
+          "board": "fake_fingerprint_board",
           "sensor-location": "keyboard-bottom-left"
         },
         "firmware": {
@@ -66,8 +66,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -80,7 +80,7 @@
         },
         "firmware-signing": {
           "key-id": "DEFAULT",
-          "signature-id": "fake-ref-design"
+          "signature-id": "fake_ref_design"
         },
         "hardware-properties": {
           "has-backlight": true,
@@ -89,9 +89,9 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 2147483647,
-          "smbios-name-match": "FAKE-REF-DESIGN"
+          "smbios-name-match": "FAKE_REF_DESIGN"
         },
-        "name": "fake-ref-design",
+        "name": "fake_ref_design",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
@@ -105,15 +105,15 @@
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-is-oem",
-            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/fake-wallpaper_large.jpg",
-            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/fake-wallpaper_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/fake_wallpaper_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/fake_wallpaper_small.jpg",
             "--fingerprint-sensor-location=keyboard-bottom-left",
             "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
             "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg",
             "--has-internal-stylus"
           ]
         },
-        "wallpaper": "fake-wallpaper",
+        "wallpaper": "fake_wallpaper",
         "wifi": {
           "non-tablet-mode-power-table-ath10k": {
             "limit-2g": 1,
@@ -131,18 +131,18 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "Fake ChromeOS Device Brandname",
-            "metrics-tag": "fake-ref-design",
-            "oem": "FAKE-OEM",
+            "metrics-tag": "fake_ref_design",
+            "oem": "FAKE_OEM",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_fake-ref-design_0.xml",
-            "system-path": "/etc/hardware_features_fake-ref-design_0.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_fake_ref_design_0.xml",
+            "system-path": "/etc/hardware_features_fake_ref_design_0.xml"
           }
         },
         "audio": {
           "main": {
-            "cras-config-dir": "fake-ref-design",
+            "cras-config-dir": "fake_ref_design",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/HiFi.conf",
@@ -153,11 +153,11 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/fake-ref-design/fakeaudiocard",
+                "destination": "/etc/cras/fake_ref_design/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/fake-ref-design/dsp.ini",
+                "destination": "/etc/cras/fake_ref_design/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               }
             ],
@@ -187,8 +187,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -201,7 +201,7 @@
         },
         "firmware-signing": {
           "key-id": "DEFAULT",
-          "signature-id": "fake-ref-design"
+          "signature-id": "fake_ref_design"
         },
         "hardware-properties": {
           "has-backlight": true,
@@ -210,9 +210,9 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 0,
-          "smbios-name-match": "FAKE-REF-DESIGN"
+          "smbios-name-match": "FAKE_REF_DESIGN"
         },
-        "name": "fake-ref-design",
+        "name": "fake_ref_design",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
@@ -226,14 +226,14 @@
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
             "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
             "--default-wallpaper-is-oem",
-            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/fake-wallpaper_large.jpg",
-            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/fake-wallpaper_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/fake_wallpaper_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/fake_wallpaper_small.jpg",
             "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
             "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg",
             "--has-internal-stylus"
           ]
         },
-        "wallpaper": "fake-wallpaper",
+        "wallpaper": "fake_wallpaper",
         "wifi": {
           "geo-offsets-eu": {
             "offset-2g": 11,
@@ -267,18 +267,18 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname A",
-            "metrics-tag": "project-a",
-            "oem": "FAKE-OEMA",
+            "metrics-tag": "project_a",
+            "oem": "FAKE_OEMA",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_project-a.xml",
-            "system-path": "/etc/hardware_features_project-a.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_project_a.xml",
+            "system-path": "/etc/hardware_features_project_a.xml"
           }
         },
         "audio": {
           "main": {
-            "cras-config-dir": "project-a",
+            "cras-config-dir": "project_a",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/HiFi.conf",
@@ -289,19 +289,19 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/project-a/fakeaudiocard",
+                "destination": "/etc/cras/project_a/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/project-a/dsp.ini",
+                "destination": "/etc/cras/project_a/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               },
               {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
-                "source": "audio/alsa-module-config/alsa-project-a.conf"
+                "source": "audio/alsa-module-config/alsa-project_a.conf"
               },
               {
-                "destination": "/etc/cras/project-a/board.ini",
+                "destination": "/etc/cras/project_a/board.ini",
                 "source": "audio/cras-config/board.ini"
               }
             ],
@@ -325,7 +325,7 @@
           ]
         },
         "fingerprint": {
-          "board": "fake-fingerprint-board",
+          "board": "fake_fingerprint_board",
           "sensor-location": "keyboard-bottom-left"
         },
         "firmware": {
@@ -335,8 +335,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -349,7 +349,7 @@
         },
         "firmware-signing": {
           "key-id": "KEYA",
-          "signature-id": "project-a"
+          "signature-id": "project_a"
         },
         "hardware-properties": {
           "has-backlight": true,
@@ -358,9 +358,9 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 32,
-          "smbios-name-match": "PROJECT-A"
+          "smbios-name-match": "PROJECT_A"
         },
-        "name": "project-a",
+        "name": "project_a",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
@@ -388,18 +388,18 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname B",
-            "metrics-tag": "project-b",
-            "oem": "FAKE-OEMB",
+            "metrics-tag": "project_b",
+            "oem": "FAKE_OEMB",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_project-b.xml",
-            "system-path": "/etc/hardware_features_project-b.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_project_b.xml",
+            "system-path": "/etc/hardware_features_project_b.xml"
           }
         },
         "audio": {
           "main": {
-            "cras-config-dir": "project-b",
+            "cras-config-dir": "project_b",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/HiFi.conf",
@@ -410,11 +410,11 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/project-b/fakeaudiocard",
+                "destination": "/etc/cras/project_b/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/project-b/dsp.ini",
+                "destination": "/etc/cras/project_b/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               }
             ],
@@ -444,8 +444,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -458,7 +458,7 @@
         },
         "firmware-signing": {
           "key-id": "KEYB",
-          "signature-id": "project-b"
+          "signature-id": "project_b"
         },
         "hardware-properties": {
           "has-backlight": true,
@@ -467,9 +467,9 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 33,
-          "smbios-name-match": "PROJECT-B"
+          "smbios-name-match": "PROJECT_B"
         },
-        "name": "project-b",
+        "name": "project_b",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
@@ -496,18 +496,18 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname C",
-            "metrics-tag": "project-c",
-            "oem": "FAKE-OEMC",
+            "metrics-tag": "project_c",
+            "oem": "FAKE_OEMC",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_project-c.xml",
-            "system-path": "/etc/hardware_features_project-c.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_project_c.xml",
+            "system-path": "/etc/hardware_features_project_c.xml"
           }
         },
         "audio": {
           "main": {
-            "cras-config-dir": "project-c",
+            "cras-config-dir": "project_c",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
@@ -518,11 +518,11 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/project-c/fakeaudiocard",
+                "destination": "/etc/cras/project_c/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/project-c/dsp.ini",
+                "destination": "/etc/cras/project_c/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               }
             ]
@@ -551,8 +551,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -565,7 +565,7 @@
         },
         "firmware-signing": {
           "key-id": "KEYC",
-          "signature-id": "project-c"
+          "signature-id": "project_c"
         },
         "hardware-properties": {
           "has-backlight": true,
@@ -574,9 +574,9 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 34,
-          "smbios-name-match": "PROJECT-C"
+          "smbios-name-match": "PROJECT_C"
         },
-        "name": "project-c",
+        "name": "project_c",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
@@ -603,18 +603,18 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname WL",
-            "metrics-tag": "project-wl",
+            "metrics-tag": "project_wl",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_project-wl.xml",
-            "system-path": "/etc/hardware_features_project-wl.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_project_wl.xml",
+            "system-path": "/etc/hardware_features_project_wl.xml"
           },
           "scale": 280
         },
         "audio": {
           "main": {
-            "cras-config-dir": "project-wl",
+            "cras-config-dir": "project_wl",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
@@ -625,11 +625,11 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/project-wl/fakeaudiocard",
+                "destination": "/etc/cras/project_wl/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/project-wl/dsp.ini",
+                "destination": "/etc/cras/project_wl/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               },
               {
@@ -661,8 +661,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -676,7 +676,7 @@
         "firmware-signing": {
           "key-id": "DEFAULT",
           "sig-id-in-customization-id": true,
-          "signature-id": "project-wl"
+          "signature-id": "project_wl"
         },
         "hardware-properties": {
           "has-backlight": true,
@@ -685,9 +685,9 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 64,
-          "smbios-name-match": "PROJECT-WL"
+          "smbios-name-match": "PROJECT_WL"
         },
-        "name": "project-wl",
+        "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
@@ -713,19 +713,19 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname WL-A",
-            "metrics-tag": "project-wl",
-            "oem": "FAKE-LOEMA",
+            "metrics-tag": "project_wl",
+            "oem": "FAKE_LOEMA",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_project-wl.xml",
-            "system-path": "/etc/hardware_features_project-wl.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_project_wl.xml",
+            "system-path": "/etc/hardware_features_project_wl.xml"
           },
           "scale": 280
         },
         "audio": {
           "main": {
-            "cras-config-dir": "project-wl",
+            "cras-config-dir": "project_wl",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
@@ -736,11 +736,11 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/project-wl/fakeaudiocard",
+                "destination": "/etc/cras/project_wl/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/project-wl/dsp.ini",
+                "destination": "/etc/cras/project_wl/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               },
               {
@@ -772,8 +772,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -787,7 +787,7 @@
         "firmware-signing": {
           "key-id": "KEYD",
           "sig-id-in-customization-id": true,
-          "signature-id": "project-wl-loema"
+          "signature-id": "project_wl-loema"
         },
         "hardware-properties": {
           "has-backlight": true,
@@ -796,10 +796,10 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 64,
-          "smbios-name-match": "PROJECT-WL",
+          "smbios-name-match": "PROJECT_WL",
           "whitelabel-tag": "loema"
         },
-        "name": "project-wl",
+        "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
@@ -825,19 +825,19 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname WL-B",
-            "metrics-tag": "project-wl",
-            "oem": "FAKE-LOEMB",
+            "metrics-tag": "project_wl",
+            "oem": "FAKE_LOEMB",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_project-wl.xml",
-            "system-path": "/etc/hardware_features_project-wl.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_project_wl.xml",
+            "system-path": "/etc/hardware_features_project_wl.xml"
           },
           "scale": 280
         },
         "audio": {
           "main": {
-            "cras-config-dir": "project-wl",
+            "cras-config-dir": "project_wl",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
@@ -848,11 +848,11 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/project-wl/fakeaudiocard",
+                "destination": "/etc/cras/project_wl/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/project-wl/dsp.ini",
+                "destination": "/etc/cras/project_wl/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               },
               {
@@ -884,8 +884,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -899,7 +899,7 @@
         "firmware-signing": {
           "key-id": "KEYE",
           "sig-id-in-customization-id": true,
-          "signature-id": "project-wl-loemb"
+          "signature-id": "project_wl-loemb"
         },
         "hardware-properties": {
           "has-backlight": true,
@@ -908,10 +908,10 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 64,
-          "smbios-name-match": "PROJECT-WL",
+          "smbios-name-match": "PROJECT_WL",
           "whitelabel-tag": "loemb"
         },
-        "name": "project-wl",
+        "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
@@ -937,19 +937,19 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname WL-C",
-            "metrics-tag": "project-wl",
-            "oem": "FAKE-LOEMC",
+            "metrics-tag": "project_wl",
+            "oem": "FAKE_LOEMC",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_project-wl.xml",
-            "system-path": "/etc/hardware_features_project-wl.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_project_wl.xml",
+            "system-path": "/etc/hardware_features_project_wl.xml"
           },
           "scale": 280
         },
         "audio": {
           "main": {
-            "cras-config-dir": "project-wl",
+            "cras-config-dir": "project_wl",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
@@ -960,11 +960,11 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/project-wl/fakeaudiocard",
+                "destination": "/etc/cras/project_wl/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/project-wl/dsp.ini",
+                "destination": "/etc/cras/project_wl/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               },
               {
@@ -996,8 +996,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -1011,7 +1011,7 @@
         "firmware-signing": {
           "key-id": "KEYF",
           "sig-id-in-customization-id": true,
-          "signature-id": "project-wl-loemc"
+          "signature-id": "project_wl-loemc"
         },
         "hardware-properties": {
           "has-backlight": true,
@@ -1020,10 +1020,10 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 64,
-          "smbios-name-match": "PROJECT-WL",
+          "smbios-name-match": "PROJECT_WL",
           "whitelabel-tag": "loemc"
         },
-        "name": "project-wl",
+        "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
@@ -1049,19 +1049,19 @@
             "device": "fake_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname Box",
-            "metrics-tag": "project-box",
-            "oem": "FAKE-OEM",
+            "metrics-tag": "project_box",
+            "oem": "FAKE_OEM",
             "product": "fake"
           },
           "hardware-features": {
-            "build-path": "payload_utils/test_data/arc/hardware_features_project-box.xml",
-            "system-path": "/etc/hardware_features_project-box.xml"
+            "build-path": "payload_utils/test_data/arc/hardware_features_project_box.xml",
+            "system-path": "/etc/hardware_features_project_box.xml"
           },
           "scale": 280
         },
         "audio": {
           "main": {
-            "cras-config-dir": "project-box",
+            "cras-config-dir": "project_box",
             "files": [
               {
                 "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
@@ -1072,11 +1072,11 @@
                 "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
               },
               {
-                "destination": "/etc/cras/project-box/fakeaudiocard",
+                "destination": "/etc/cras/project_box/fakeaudiocard",
                 "source": "audio/fakeaudiocard/fakeaudiocard"
               },
               {
-                "destination": "/etc/cras/project-box/dsp.ini",
+                "destination": "/etc/cras/project_box/dsp.ini",
                 "source": "audio/fakeaudiocard/dsp.ini"
               }
             ]
@@ -1100,8 +1100,8 @@
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [
-              "fake-ec-extra1",
-              "fake-ec-extra2"
+              "fake_ec_extra1",
+              "fake_ec_extra2"
             ],
             "libpayload": "fake"
           },
@@ -1114,7 +1114,7 @@
         },
         "firmware-signing": {
           "key-id": "KEYBX",
-          "signature-id": "project-box"
+          "signature-id": "project_box"
         },
         "hardware-properties": {
           "has-backlight": false,
@@ -1123,9 +1123,9 @@
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 128,
-          "smbios-name-match": "PROJECT-BOX"
+          "smbios-name-match": "PROJECT_BOX"
         },
-        "name": "project-box",
+        "name": "project_box",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",

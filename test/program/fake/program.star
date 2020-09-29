@@ -57,11 +57,11 @@ _SIGNER_BRAND_CONFIGS = program_util.create_signer_configs_by_brand(
 
 _SIGNER_DESIGN_CONFIGS = program_util.create_signer_configs_by_design(
     {
-        "FAKE-REF-DESIGN": "DEFAULT",
-        "PROJECT-A": "KEYA",  # Follow up design A
-        "PROJECT-B": "KEYB",  # Follow up design B
-        "PROJECT-C": "KEYC",  # Follow up design C
-        "PROJECT-BOX": "KEYBX",  # Follow up design BOX
+        "FAKE_REF_DESIGN": "DEFAULT",
+        "PROJECT_A": "KEYA",  # Follow up design A
+        "PROJECT_B": "KEYB",  # Follow up design B
+        "PROJECT_C": "KEYC",  # Follow up design C
+        "PROJECT_BOX": "KEYBX",  # Follow up design BOX
     },
 )
 

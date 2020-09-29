@@ -14,7 +14,7 @@
             }
           },
           "id": {
-            "value": "FAKE-REF-DESIGN:2147483647"
+            "value": "FAKE_REF_DESIGN:2147483647"
           }
         },
         {
@@ -29,12 +29,12 @@
             }
           },
           "id": {
-            "value": "FAKE-REF-DESIGN:0"
+            "value": "FAKE_REF_DESIGN:0"
           }
         }
       ],
       "id": {
-        "value": "FAKE-REF-DESIGN"
+        "value": "FAKE_REF_DESIGN"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -54,12 +54,12 @@
             }
           },
           "id": {
-            "value": "PROJECT-A:32"
+            "value": "PROJECT_A:32"
           }
         }
       ],
       "id": {
-        "value": "PROJECT-A"
+        "value": "PROJECT_A"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -79,12 +79,12 @@
             }
           },
           "id": {
-            "value": "PROJECT-B:33"
+            "value": "PROJECT_B:33"
           }
         }
       ],
       "id": {
-        "value": "PROJECT-B"
+        "value": "PROJECT_B"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -104,12 +104,12 @@
             }
           },
           "id": {
-            "value": "PROJECT-C:34"
+            "value": "PROJECT_C:34"
           }
         }
       ],
       "id": {
-        "value": "PROJECT-C"
+        "value": "PROJECT_C"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -129,12 +129,12 @@
             }
           },
           "id": {
-            "value": "PROJECT-WL:64"
+            "value": "PROJECT_WL:64"
           }
         }
       ],
       "id": {
-        "value": "PROJECT-WL"
+        "value": "PROJECT_WL"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -154,12 +154,12 @@
             }
           },
           "id": {
-            "value": "PROJECT-BOX:128"
+            "value": "PROJECT_BOX:128"
           }
         }
       ],
       "id": {
-        "value": "PROJECT-BOX"
+        "value": "PROJECT_BOX"
       },
       "programId": {
         "value": "FAKE_PROGRAM"
@@ -174,37 +174,37 @@
         }
       ],
       "designConfigId": {
-        "value": "FAKE-REF-DESIGN:2147483647"
+        "value": "FAKE_REF_DESIGN:2147483647"
       }
     },
     {
       "designConfigId": {
-        "value": "FAKE-REF-DESIGN:0"
+        "value": "FAKE_REF_DESIGN:0"
       }
     },
     {
       "designConfigId": {
-        "value": "PROJECT-A:32"
+        "value": "PROJECT_A:32"
       }
     },
     {
       "designConfigId": {
-        "value": "PROJECT-B:33"
+        "value": "PROJECT_B:33"
       }
     },
     {
       "designConfigId": {
-        "value": "PROJECT-C:34"
+        "value": "PROJECT_C:34"
       }
     },
     {
       "designConfigId": {
-        "value": "PROJECT-WL:64"
+        "value": "PROJECT_WL:64"
       }
     },
     {
       "designConfigId": {
-        "value": "PROJECT-BOX:128"
+        "value": "PROJECT_BOX:128"
       }
     }
   ]

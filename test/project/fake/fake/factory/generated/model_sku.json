@@ -1,6 +1,6 @@
 {
   "model": {
-    "fake-ref-design": {
+    "fake_ref_design": {
       "component.audio_card_name": "fakeaudiocard",
       "component.has_base_accelerometer": true,
       "component.has_base_gyroscope": true,
@@ -24,9 +24,9 @@
       "component.headphone_codec": "ALC5682I",
       "component.speaker_amp": "MAX98373"
     },
-    "project-a": {
+    "project_a": {
       "component.audio_card_name": "fakeaudiocard",
-      "component.fingerprint_board": "fake-fingerprint-board",
+      "component.fingerprint_board": "fake_fingerprint_board",
       "component.has_base_accelerometer": true,
       "component.has_base_gyroscope": true,
       "component.has_base_magnetometer": true,
@@ -74,7 +74,7 @@
       "component.speaker_amp": "MAX98373",
       "fw_config": 25377
     },
-    "project-b": {
+    "project_b": {
       "component.audio_card_name": "fakeaudiocard",
       "component.fingerprint_board": "",
       "component.has_base_accelerometer": true,
@@ -124,7 +124,7 @@
       "component.speaker_amp": "MAX98373",
       "fw_config": 25377
     },
-    "project-box": {
+    "project_box": {
       "component.audio_card_name": "fakeaudiocard",
       "component.fingerprint_board": "",
       "component.has_base_accelerometer": true,
@@ -174,7 +174,7 @@
       "component.speaker_amp": "MAX98373",
       "fw_config": 25377
     },
-    "project-c": {
+    "project_c": {
       "component.audio_card_name": "fakeaudiocard",
       "component.fingerprint_board": "",
       "component.has_base_accelerometer": true,
@@ -224,7 +224,7 @@
       "component.speaker_amp": "MAX98373",
       "fw_config": 25377
     },
-    "project-wl": {
+    "project_wl": {
       "component.audio_card_name": "fakeaudiocard",
       "component.fingerprint_board": "",
       "component.has_base_accelerometer": true,
@@ -276,7 +276,7 @@
     }
   },
   "product_sku": {
-    "FAKE-REF-DESIGN": {
+    "FAKE_REF_DESIGN": {
       "0": {
         "component.fingerprint_board": "",
         "component.has_fingerprint": false,
@@ -306,7 +306,7 @@
         "fw_config": 25344
       },
       "2147483647": {
-        "component.fingerprint_board": "fake-fingerprint-board",
+        "component.fingerprint_board": "fake_fingerprint_board",
         "component.has_fingerprint": true,
         "component.has_rear_camera": false,
         "component.match_sku_components": [
@@ -334,19 +334,19 @@
         "fw_config": 25377
       }
     },
-    "PROJECT-A": {
+    "PROJECT_A": {
       "32": {}
     },
-    "PROJECT-B": {
+    "PROJECT_B": {
       "33": {}
     },
-    "PROJECT-BOX": {
+    "PROJECT_BOX": {
       "128": {}
     },
-    "PROJECT-C": {
+    "PROJECT_C": {
       "34": {}
     },
-    "PROJECT-WL": {
+    "PROJECT_WL": {
       "64": {}
     }
   }

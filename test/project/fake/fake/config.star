@@ -10,28 +10,28 @@ load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/partner.star", "partner")
 load("//program/program.star", "program")
 
-_FAKE_ODM = partner.create("FAKE-ODM")
-_FAKE_OEM = partner.create("FAKE-OEM")
-_FAKE_OEMA = partner.create("FAKE-OEMA")
-_FAKE_OEMB = partner.create("FAKE-OEMB")
-_FAKE_OEMC = partner.create("FAKE-OEMC")
-_FAKE_LOEMA = partner.create("FAKE-LOEMA")
-_FAKE_LOEMB = partner.create("FAKE-LOEMB")
-_FAKE_LOEMC = partner.create("FAKE-LOEMC")
+_FAKE_ODM = partner.create("FAKE_ODM")
+_FAKE_OEM = partner.create("FAKE_OEM")
+_FAKE_OEMA = partner.create("FAKE_OEMA")
+_FAKE_OEMB = partner.create("FAKE_OEMB")
+_FAKE_OEMC = partner.create("FAKE_OEMC")
+_FAKE_LOEMA = partner.create("FAKE_LOEMA")
+_FAKE_LOEMB = partner.create("FAKE_LOEMB")
+_FAKE_LOEMC = partner.create("FAKE_LOEMC")
 
 _ODMS = [_FAKE_ODM]
 _OEMS = [_FAKE_OEM, _FAKE_OEMA, _FAKE_OEMB, _FAKE_OEMC, _FAKE_LOEMA, _FAKE_LOEMB, _FAKE_LOEMC]
 _COMPONENTS = []
 _COMPONENT_VENDORS = []
 
-_REF_DESIGN_NAME = "FAKE-REF-DESIGN"
+_REF_DESIGN_NAME = "FAKE_REF_DESIGN"
 
 _DESIGN_ID = design.create_design_id(_REF_DESIGN_NAME)
-_DESIGN_ID_A = design.create_design_id("PROJECT-A")
-_DESIGN_ID_B = design.create_design_id("PROJECT-B")
-_DESIGN_ID_C = design.create_design_id("PROJECT-C")
-_DESIGN_ID_WL = design.create_design_id("PROJECT-WL")
-_DESIGN_ID_BOX = design.create_design_id("PROJECT-BOX")
+_DESIGN_ID_A = design.create_design_id("PROJECT_A")
+_DESIGN_ID_B = design.create_design_id("PROJECT_B")
+_DESIGN_ID_C = design.create_design_id("PROJECT_C")
+_DESIGN_ID_WL = design.create_design_id("PROJECT_WL")
+_DESIGN_ID_BOX = design.create_design_id("PROJECT_BOX")
 
 _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
@@ -76,7 +76,7 @@ _CAMERA = hw_topo.create_camera(
     ],
 )
 _SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor", fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True)
-_FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake-fingerprint-board")
+_FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake_fingerprint_board")
 _NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
 _DAUGHTER_BOARD = hw_topo.create_daughter_board("Default DB", "Default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 1)])
@@ -188,7 +188,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"]),
     power = _SC_POWER,
     wifi = sc.create_ath10k(
         non_tablet_mode_transmit_power_chain = sc.create_ath10k_power_chain(
@@ -231,7 +231,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"]),
     power = _SC_POWER,
     wifi = sc.create_rtw88(
         non_tablet_mode_transmit_power_chain = sc.create_rtw88_power_chain(
@@ -296,7 +296,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"]),
     power = _SC_POWER,
     wifi = sc.create_intel_wifi(
         tablet_mode_transmit_power_chain_a = sc.create_intel_power_chain(
@@ -385,7 +385,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"]),
     power = _SC_POWER,
 )
 
@@ -418,7 +418,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"]),
     power = _SC_POWER,
 )
 
@@ -451,7 +451,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"]),
     power = _SC_POWER,
 )
 
@@ -481,7 +481,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake-ec-extra1", "fake-ec-extra2"]),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"]),
     power = _SC_POWER,
 )
 
@@ -599,7 +599,7 @@ _DEVICE_BRAND_BOX = device_brand.create(
 _BRAND_CONFIGS = [
     brand_config.create(
         device_brand_id = _DEVICE_BRAND.id,
-        wallpaper = "fake-wallpaper",
+        wallpaper = "fake_wallpaper",
     ),
     brand_config.create(
         device_brand_id = _WL_DEVICE_BRAND.id,
