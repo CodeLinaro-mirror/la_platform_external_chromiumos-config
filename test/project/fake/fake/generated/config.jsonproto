@@ -194,6 +194,9 @@
               "keyboardType": 3,
               "powerButton": 2
             },
+            "lightSensor": {
+              "lidLightsensor": 1
+            },
             "lte": {
               "present": 1
             },
@@ -242,7 +245,7 @@
           "hardwareTopology": {
             "accelerometerGyroscopeMagnetometer": {
               "description": {
-                "EN": "Default sensor"
+                "EN": "Default sensor plus light sensor"
               },
               "hardwareFeature": {
                 "accelerometer": {
@@ -254,6 +257,9 @@
                 },
                 "gyroscope": {
                   "baseGyroscope": 1
+                },
+                "lightSensor": {
+                  "lidLightsensor": 1
                 },
                 "magnetometer": {
                   "baseMagnetometer": 1

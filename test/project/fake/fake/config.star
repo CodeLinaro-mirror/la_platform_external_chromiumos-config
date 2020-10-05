@@ -76,6 +76,7 @@ _CAMERA = hw_topo.create_camera(
     ],
 )
 _SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor", fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True)
+_SENSOR_WITH_LIGHT = hw_topo.create_sensor("SENSOR", "Default sensor plus light sensor", fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True, lid_light_present = True)
 _FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake_fingerprint_board")
 _NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
@@ -121,7 +122,8 @@ def create_hardware_topology(
         barreljack = None,
         lte_board = None,
         camera = None,
-        daughter_board = None):
+        daughter_board = None,
+        sensor = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -131,7 +133,7 @@ def create_hardware_topology(
         lte_board = lte_board if lte_board else None,
         screen = screen if screen else _SCREEN,
         stylus = stylus if stylus else None,
-        accelerometer_gyroscope_magnetometer = _SENSOR,
+        accelerometer_gyroscope_magnetometer = sensor if sensor else _SENSOR,
         audio = _AUDIO,
         camera = camera if camera else _DEFAULT_CAMERA,
         daughter_board = daughter_board if daughter_board else _DAUGHTER_BOARD,
@@ -171,6 +173,7 @@ design.append_configs(
         lte_board = _LTE_BOARD,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
+        sensor = _SENSOR_WITH_LIGHT,
     ),
     audio = sc.create_audio(
         _AUDIO_CARD,
