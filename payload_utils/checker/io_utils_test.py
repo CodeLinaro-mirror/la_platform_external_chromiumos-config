@@ -12,6 +12,7 @@ import unittest
 from google.protobuf import json_format
 
 from checker import io_utils
+from common import config_bundle_utils
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.program_pb2 import Program
@@ -22,6 +23,7 @@ class IoUtilsTest(unittest.TestCase):
 
   def setUp(self):
     self.config = ConfigBundle(program_list=[Program(name='TestProgram1')])
+    self.flat_config = config_bundle_utils.flatten_config(self.config)
     repo_path = tempfile.mkdtemp()
 
     os.mkdir(os.path.join(repo_path, 'generated'))
@@ -30,6 +32,13 @@ class IoUtilsTest(unittest.TestCase):
     json_output = json_format.MessageToJson(
         self.config, sort_keys=True, use_integers_for_enums=True)
     with open(self.config_path, 'w') as f:
+      print(json_output, file=f)
+
+    self.flat_config_path = os.path.join(repo_path, 'generated',
+                                         'flattened.jsonproto')
+    json_output = json_format.MessageToJson(
+        self.flat_config, sort_keys=True, use_integers_for_enums=True)
+    with open(self.flat_config_path, 'w') as f:
       print(json_output, file=f)
 
     self.factory_path = os.path.join(repo_path, 'factory')
@@ -43,6 +52,11 @@ class IoUtilsTest(unittest.TestCase):
   def test_read_config(self):
     """Tests the json proto can be read."""
     self.assertEqual(io_utils.read_config(self.config_path), self.config)
+
+  def test_read_flat_config(self):
+    """Tests the json proto can be read."""
+    self.assertEqual(
+        io_utils.read_flat_config(self.flat_config_path), self.flat_config)
 
   def test_read_model_sku_json(self):
     """Tests model_sku.json can be read."""

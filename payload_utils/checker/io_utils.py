@@ -12,7 +12,7 @@ from google.protobuf import json_format
 from google.protobuf.message import Message
 
 from chromiumos.config.payload import config_bundle_pb2
-
+from chromiumos.config.payload import flat_config_pb2
 
 
 def write_message_json(message: Message, path: pathlib.Path, \
@@ -32,11 +32,10 @@ def write_message_json(message: Message, path: pathlib.Path, \
 
 
 def read_config(path: str) -> config_bundle_pb2.ConfigBundle:
-  """Reads a ConfigBundle mesage from a jsonpb file.
+  """Reads a ConfigBundle message from a jsonpb file.
 
   Args:
-    path: Path to the json proto. See note above about deprecated repo
-           root behavior.
+    path: Path to the json proto.
 
   Returns:
     ConfigBundle parsed from file.
@@ -45,6 +44,21 @@ def read_config(path: str) -> config_bundle_pb2.ConfigBundle:
   with open(path, 'r') as f:
     json_format.Parse(f.read(), project_config)
   return project_config
+
+
+def read_flat_config(path: str) -> flat_config_pb2.FlatConfigList:
+  """Reads a FlatConfigList message from a jsonpb file.
+
+  Args:
+    path: Path to the json proto.
+
+  Returns:
+    FlatConfigList parsed from file.
+  """
+  flat_config = flat_config_pb2.FlatConfigList()
+  with open(path, 'r') as f:
+    json_format.Parse(f.read(), flat_config)
+  return flat_config
 
 
 def read_model_sku_json(factory_dir: pathlib.Path) -> Dict[str, Any]:
