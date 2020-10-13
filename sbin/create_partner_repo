@@ -373,7 +373,7 @@ try_set_user_viewer() {
 create_project_buckets() {
   # setup() guaranteed that we have a $program.
   if [[ -n "${project}" ]]; then
-    gcloud config set project chromeos-bot
+    gcloud config set project chromeos-partner-devices
     local bucket="gs://chromeos-${program}-${project}"
     gsutil mb "${bucket}"
     gsutil iam ch serviceAccount:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com:objectAdmin "${bucket}"
