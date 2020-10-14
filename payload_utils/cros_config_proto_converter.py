@@ -474,9 +474,8 @@ def _build_camera(hw_topology):
     camera_pb = topology_pb2.HardwareFeatures.Camera
     camera = hw_topology.camera.hardware_feature.camera
     result = {}
-    if camera.count.value:
-      result['count'] = camera.count.value
     if camera.devices:
+      result['count'] = len(camera.devices)
       result['devices'] = []
       for device in camera.devices:
         interface = {
@@ -826,26 +825,18 @@ def _get_arc_camera_features(camera):
   """
   camera_pb = topology_pb2.HardwareFeatures.Camera
 
-  if len(camera.devices) > 0:
-    count = len(camera.devices)
-    has_front_camera = any(
-        (d.facing == camera_pb.FACING_FRONT for d in camera.devices))
-    has_back_camera = any(
-        (d.facing == camera_pb.FACING_BACK for d in camera.devices))
-    has_autofocus_back_camera = any((d.facing == camera_pb.FACING_BACK and
-                                     d.flags & camera_pb.FLAGS_SUPPORT_AUTOFOCUS
-                                     for d in camera.devices))
-    # Assumes MIPI cameras support FULL-level.
-    # TODO(kamesan): Setting this in project configs when there's an exception.
-    has_level_full_camera = any(
-        (d.interface == camera_pb.INTERFACE_MIPI for d in camera.devices))
-  else:
-    # Fallback to use the old proto definition.
-    count = camera.count.value
-    has_front_camera = count > 0
-    has_back_camera = count > 1
-    has_autofocus_back_camera = has_back_camera
-    has_level_full_camera = False
+  count = len(camera.devices)
+  has_front_camera = any(
+      (d.facing == camera_pb.FACING_FRONT for d in camera.devices))
+  has_back_camera = any(
+      (d.facing == camera_pb.FACING_BACK for d in camera.devices))
+  has_autofocus_back_camera = any((d.facing == camera_pb.FACING_BACK and
+                                   d.flags & camera_pb.FLAGS_SUPPORT_AUTOFOCUS
+                                   for d in camera.devices))
+  # Assumes MIPI cameras support FULL-level.
+  # TODO(kamesan): Setting this in project configs when there's an exception.
+  has_level_full_camera = any(
+      (d.interface == camera_pb.INTERFACE_MIPI for d in camera.devices))
 
   return [
       _feature('android.hardware.camera', has_back_camera),

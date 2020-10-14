@@ -356,9 +356,6 @@ def _create_camera(
         id,
         description,
         fw_configs = [],
-        has_user_facing_camera = False,
-        has_world_facing_camera = False,
-        count = 0,
         camera_devices = []):
     """Builds a Topology proto for cameras.
 
@@ -367,33 +364,11 @@ def _create_camera(
         description: An English description for the Topology.
         fw_configs: A list of FirmwareConfiguration protos for the form factor.
         camera_devices: A list of HardwareFeatures.Camera.Device protos.
-        has_user_facing_camera: If there is a user(front)-facing camera.
-            Deprecated, use |camera_devices| instead.
-        has_world_facing_camera: If there is a world(back)-facing camera.
-            Deprecated, use |camera_devices| instead.
-        count: The number of cameras. Deprecated, use |camera_devices| instead.
     """
     hw_features = topo_pb.HardwareFeatures()
 
-    if camera_devices:
-        camera = hw_features.camera
-        camera.devices = camera_devices
-        camera.count.value = len(camera.devices)
-        camera.user_facing_camera = _bool_to_present(any([
-            d.facing == topo_pb.HardwareFeatures.Camera.FACING_FRONT
-            for d in camera.devices
-        ]))
-        camera.world_facing_camera = _bool_to_present(any([
-            d.facing == topo_pb.HardwareFeatures.Camera.FACING_BACK
-            for d in camera.devices
-        ]))
-    else:
-        hw_features.camera.user_facing_camera = _bool_to_present(has_user_facing_camera)
-        hw_features.camera.world_facing_camera = _bool_to_present(has_world_facing_camera)
-        if count:
-            hw_features.camera.count.value = count
-        else:
-            hw_features.camera.count.value = (1 if has_user_facing_camera else 0) + (1 if has_world_facing_camera else 0)
+    camera = hw_features.camera
+    camera.devices = camera_devices
 
     _accumulate_fw_configs(hw_features, fw_configs)
 

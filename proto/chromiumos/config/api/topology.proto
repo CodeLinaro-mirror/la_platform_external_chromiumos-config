@@ -202,15 +202,6 @@ message HardwareFeatures {
       repeated string ids = 6;
     }
 
-    // If user facing camera (front camera) is present
-    Present user_facing_camera = 1 [deprecated = true];
-
-    // If world facing camera (rear camera) is present
-    Present world_facing_camera = 2 [deprecated = true];
-
-    // Number of camera present on system
-    Count count = 3 [deprecated = true];
-
     // List of camera devices on the model.
     repeated Device devices = 4;
   }

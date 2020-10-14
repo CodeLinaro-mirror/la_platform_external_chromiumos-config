@@ -113,6 +113,7 @@ def TransformDesignTable(design_config, design_table):
   #
   # The list of missing component.has_*:
   # has_lid_lightsensor, has_base_lightsensor
+  camera_pb = topology_pb2.HardwareFeatures.Camera
   features = design_config.hardware_features
   topology = design_config.hardware_topology
   design_table.update({
@@ -129,9 +130,13 @@ def TransformDesignTable(design_config, design_table):
       'component.has_mother_board_usb_c':
           GetFeatures(topology, 'motherboard_usb', ['usb_c', 'count', 'value']),
       'component.has_front_camera':
-          CastPresent(features.camera.user_facing_camera),
+          any((d.facing == camera_pb.FACING_FRONT
+               for d in features.camera.devices))
+          if len(features.camera.devices) > 0 else None,
       'component.has_rear_camera':
-          CastPresent(features.camera.world_facing_camera),
+          any((d.facing == camera_pb.FACING_BACK
+               for d in features.camera.devices))
+          if len(features.camera.devices) > 0 else None,
       'component.has_stylus':
           GetFeatures(topology, 'stylus', ['stylus', 'stylus']) in [
               topology_pb2.HardwareFeatures.Stylus.INTERNAL,
@@ -191,7 +196,7 @@ def TransformDesignTable(design_config, design_table):
   })
   design_table.update({
       'component.match_sku_components':
-          [["camera", "==", features.camera.count.value],
+          [["camera", "==", len(features.camera.devices)],
            [
                "touchscreen", "==",
                1 if design_table['component.has_touchscreen'] else 0
