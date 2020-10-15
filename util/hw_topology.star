@@ -91,6 +91,12 @@ _CAMERA_FLAGS = struct(
     SUPPORT_AUTOFOCUS = topo_pb.HardwareFeatures.Camera.FLAGS_SUPPORT_AUTOFOCUS,
 )
 
+_EC_TYPE = struct(
+    UNKNOWN = topo_pb.HardwareFeatures.EmbeddedController.EC_TYPE_UNKNOWN,
+    CHROME = topo_pb.HardwareFeatures.EmbeddedController.EC_CHROME,
+    WILCO = topo_pb.HardwareFeatures.EmbeddedController.EC_WILCO,
+)
+
 # Starlark doesn't support converting enums to their names. Add helper fns. to
 # do so.
 def _button_region_to_str(region):
@@ -692,6 +698,23 @@ def _create_volume_button(region, edge, position, id = None, description = None)
         ),
     )
 
+def _create_ec(ec_type, id = None):
+    """Builds a Topology proto for an embedded controller.
+
+    Args:
+        ec_type: An EmbeddedControllerType enum. Required.
+        id: A string identifier for the Topology. If not passed, a default is
+            provided.
+    """
+    hw_features = topo_pb.HardwareFeatures()
+    hw_features.embedded_controller.ec_type = ec_type
+
+    return topo_pb.Topology(
+        id = id or "ec",
+        type = topo_pb.Topology.EC,
+        hardware_feature = hw_features,
+    )
+
 def _create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -713,7 +736,8 @@ def _create_hardware_topology(
         bluetooth = None,
         barreljack = None,
         power_button = None,
-        volume_button = None):
+        volume_button = None,
+        ec = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -780,6 +804,9 @@ def _create_hardware_topology(
     if volume_button and volume_button.type != topo_pb.Topology.POWER_BUTTON:
         fail("Invalid volume button topology")
 
+    if ec and ec.type != topo_pb.Topology.EC:
+        fail("Invalid ec type")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -802,6 +829,7 @@ def _create_hardware_topology(
         barreljack = barreljack,
         power_button = power_button,
         volume_button = volume_button,
+        ec = ec,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -987,6 +1015,7 @@ hw_topo = struct(
     create_hardware_topology = _create_hardware_topology,
     create_power_button = _create_power_button,
     create_volume_button = _create_volume_button,
+    create_ec = _create_ec,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,
@@ -1000,4 +1029,5 @@ hw_topo = struct(
     region = _REGION,
     edge = _EDGE,
     camera_flags = _CAMERA_FLAGS,
+    ec_type = _EC_TYPE,
 )

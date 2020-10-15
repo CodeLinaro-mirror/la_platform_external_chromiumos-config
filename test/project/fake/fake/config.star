@@ -141,7 +141,8 @@ def create_hardware_topology(
         lte_board = None,
         camera = None,
         daughter_board = None,
-        sensor = None):
+        sensor = None,
+        ec = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -164,6 +165,7 @@ def create_hardware_topology(
         wifi = _WIFI,
         power_button = _POWER_BUTTON,
         volume_button = _VOLUME_BUTTON,
+        ec = program.topos.EC_CHROME,
     )
 
 # Create empty arrays that we will continually append new configurations to

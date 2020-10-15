@@ -359,6 +359,15 @@
               "id": "Default DB",
               "type": 11
             },
+            "ec": {
+              "hardwareFeature": {
+                "embeddedController": {
+                  "ecType": 1
+                }
+              },
+              "id": "ec",
+              "type": 22
+            },
             "fingerprint": {
               "description": {
                 "EN": "Default fingerprint"
@@ -746,6 +755,15 @@
               },
               "id": "Non-default DB",
               "type": 11
+            },
+            "ec": {
+              "hardwareFeature": {
+                "embeddedController": {
+                  "ecType": 1
+                }
+              },
+              "id": "ec",
+              "type": 22
             },
             "fingerprint": {
               "description": {
@@ -1161,6 +1179,15 @@
               "id": "Default DB",
               "type": 11
             },
+            "ec": {
+              "hardwareFeature": {
+                "embeddedController": {
+                  "ecType": 1
+                }
+              },
+              "id": "ec",
+              "type": 22
+            },
             "fingerprint": {
               "description": {
                 "EN": "Default fingerprint"
@@ -1575,6 +1602,15 @@
               "id": "Default DB",
               "type": 11
             },
+            "ec": {
+              "hardwareFeature": {
+                "embeddedController": {
+                  "ecType": 1
+                }
+              },
+              "id": "ec",
+              "type": 22
+            },
             "fingerprint": {
               "description": {
                 "EN": "No finger print sensor"
@@ -1976,6 +2012,15 @@
               "id": "Default DB",
               "type": 11
             },
+            "ec": {
+              "hardwareFeature": {
+                "embeddedController": {
+                  "ecType": 1
+                }
+              },
+              "id": "ec",
+              "type": 22
+            },
             "fingerprint": {
               "description": {
                 "EN": "No finger print sensor"
@@ -2347,6 +2392,15 @@
               "id": "Default DB",
               "type": 11
             },
+            "ec": {
+              "hardwareFeature": {
+                "embeddedController": {
+                  "ecType": 1
+                }
+              },
+              "id": "ec",
+              "type": 22
+            },
             "fingerprint": {
               "description": {
                 "EN": "No finger print sensor"
@@ -2705,6 +2759,15 @@
               },
               "id": "Default DB",
               "type": 11
+            },
+            "ec": {
+              "hardwareFeature": {
+                "embeddedController": {
+                  "ecType": 1
+                }
+              },
+              "id": "ec",
+              "type": 22
             },
             "fingerprint": {
               "description": {
