@@ -69,8 +69,7 @@ message HardwareTopology {
   // See ./hardware_topology.md#non_volatile-storage for more information.
   Topology non_volatile_storage = 12;
 
-  // Specify the ram topology.
-  // See ./hardware_topology.md#ram for more information.
+  // Deprecated
   Topology ram = 13;
 
   // Specify the wifi topology.

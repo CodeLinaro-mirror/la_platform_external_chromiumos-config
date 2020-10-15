@@ -599,15 +599,6 @@ hw_topo.create_non_volatile_storage()
 
 
 
-### hw_topo.create_ram {#hw_topo.create_ram}
-Builds a Topology proto for RAM.
-
-```python
-hw_topo.create_ram()
-```
-
-
-
 ### hw_topo.create_wifi {#hw_topo.create_wifi}
 Builds a Topology proto for a WiFi chip.
 

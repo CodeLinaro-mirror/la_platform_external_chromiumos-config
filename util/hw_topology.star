@@ -39,15 +39,6 @@ _AUDIO_CODEC = struct(
     DA7219 = topo_pb.HardwareFeatures.Audio.DA7219,
 )
 
-_MEMORY = struct(
-    DDR = comp_pb.Component.Memory.DDR,
-    DDR2 = comp_pb.Component.Memory.DDR2,
-    DDR3 = comp_pb.Component.Memory.DDR3,
-    DDR4 = comp_pb.Component.Memory.DDR4,
-    LP_DDR3 = comp_pb.Component.Memory.LP_DDR3,
-    LP_DDR4 = comp_pb.Component.Memory.LP_DDR4,
-)
-
 _FP_LOC = struct(
     NOT_PRESENT = topo_pb.HardwareFeatures.Fingerprint.NOT_PRESENT,
     POWER_BUTTON_TOP_LEFT = topo_pb.HardwareFeatures.Fingerprint.POWER_BUTTON_TOP_LEFT,
@@ -505,23 +496,6 @@ def _create_non_volatile_storage(id, description, storage_type, fw_configs = [])
         hardware_feature = hw_features,
     )
 
-def _create_ram(id, description, gigabytes, type, speed_mhz, fw_configs = []):
-    """Builds a Topology proto for RAM."""
-    hw_features = topo_pb.HardwareFeatures()
-
-    hw_features.memory.profile.type = type
-    hw_features.memory.profile.speed_mhz = speed_mhz
-    hw_features.memory.profile.size_megabytes = gigabytes * 1024
-
-    _accumulate_fw_configs(hw_features, fw_configs)
-
-    return topo_pb.Topology(
-        id = id,
-        type = topo_pb.Topology.RAM,
-        description = {"EN": description},
-        hardware_feature = hw_features,
-    )
-
 def _create_wifi(id, description, fw_configs = []):
     """Builds a Topology proto for a WiFi chip."""
     hw_features = topo_pb.HardwareFeatures()
@@ -728,7 +702,6 @@ def _create_hardware_topology(
         proximity_sensor = None,
         daughter_board = None,
         non_volatile_storage = None,
-        ram = None,
         wifi = None,
         lte_board = None,
         sd_reader = None,
@@ -777,9 +750,6 @@ def _create_hardware_topology(
     if non_volatile_storage and non_volatile_storage.type != topo_pb.Topology.NON_VOLATILE_STORAGE:
         fail("Invalid non-volatile storage topology")
 
-    if ram and ram.type != topo_pb.Topology.RAM:
-        fail("Invalid ram topology")
-
     if wifi and wifi.type != topo_pb.Topology.WIFI:
         fail("Invalid wifi topology")
 
@@ -820,7 +790,6 @@ def _create_hardware_topology(
         proximity_sensor = proximity_sensor,
         daughter_board = daughter_board,
         non_volatile_storage = non_volatile_storage,
-        ram = ram,
         wifi = wifi,
         lte_board = lte_board,
         sd_reader = sd_reader,
@@ -943,12 +912,6 @@ def _convert_to_hw_features(hardware_topology):
     if copy.non_volatile_storage.hardware_feature.storage != topo_pb.HardwareFeatures.Storage():
         result.storage = copy.non_volatile_storage.hardware_feature.storage
 
-    # Handle all possible ram hardware features attributes
-    _accumulate_fw_config(result.fw_config, copy.ram.hardware_feature.fw_config)
-
-    if copy.ram.hardware_feature.memory != topo_pb.HardwareFeatures.Memory():
-        result.memory = copy.ram.hardware_feature.memory
-
     # Handle all possible wifi hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.wifi.hardware_feature.fw_config)
 
@@ -1005,7 +968,6 @@ hw_topo = struct(
     create_proximity_sensor = _create_proximity_sensor,
     create_daughter_board = _create_daughter_board,
     create_non_volatile_storage = _create_non_volatile_storage,
-    create_ram = _create_ram,
     create_wifi = _create_wifi,
     create_lte_board = _create_lte_board,
     create_sd_reader = _create_sd_reader,
@@ -1021,7 +983,6 @@ hw_topo = struct(
     make_fw_config = _make_fw_config,
     ff = _FF,
     audio_codec = _AUDIO_CODEC,
-    memory = _MEMORY,
     fp_loc = _FP_LOC,
     storage = _STORAGE,
     kb_type = _KB_TYPE,

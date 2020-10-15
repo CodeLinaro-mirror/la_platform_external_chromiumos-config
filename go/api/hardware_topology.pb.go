@@ -67,8 +67,7 @@ type HardwareTopology struct {
 	// Specify the non-volatile storage topology.
 	// See ./hardware_topology.md#non_volatile-storage for more information.
 	NonVolatileStorage *Topology `protobuf:"bytes,12,opt,name=non_volatile_storage,json=nonVolatileStorage,proto3" json:"non_volatile_storage,omitempty"`
-	// Specify the ram topology.
-	// See ./hardware_topology.md#ram for more information.
+	// Deprecated
 	Ram *Topology `protobuf:"bytes,13,opt,name=ram,proto3" json:"ram,omitempty"`
 	// Specify the wifi topology.
 	// See ./hardware_topology.md#wifi for more information.

@@ -100,7 +100,6 @@ _NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", l
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
 _DAUGHTER_BOARD = hw_topo.create_daughter_board("Default DB", "Default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 1)])
 _NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
-_RAM = hw_topo.create_ram("RAM", "Default ram", gigabytes = 16, type = hw_topo.memory.DDR3, speed_mhz = 3600)
 _WIFI = hw_topo.create_wifi("WIFI", "Default wifi", fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)])
 _LTE_BOARD = hw_topo.create_lte_board("LTE_BOARD", "Default lte_board", lte_present = True)
 _SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
@@ -159,7 +158,6 @@ def create_hardware_topology(
         motherboard_usb = _MOTHERBOARD_USB,
         non_volatile_storage = _NON_VOLATILE_STORAGE,
         proximity_sensor = _PROXIMITY_SENSOR,
-        ram = _RAM,
         sd_reader = _SD_READER,
         thermal = _THERMAL,
         wifi = _WIFI,

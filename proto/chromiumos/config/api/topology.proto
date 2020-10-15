@@ -43,7 +43,7 @@ message Topology {
     PROXIMITY_SENSOR = 10;
     DAUGHTER_BOARD = 11;
     NON_VOLATILE_STORAGE = 12;
-    RAM = 13;
+    RAM = 13; // deprecated
     WIFI = 14;
     LTE_BOARD = 15;
     SD_READER = 16;

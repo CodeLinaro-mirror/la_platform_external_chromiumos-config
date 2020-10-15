@@ -201,13 +201,6 @@
             "magnetometer": {
               "baseMagnetometer": 1
             },
-            "memory": {
-              "profile": {
-                "sizeMegabytes": 16384,
-                "speedMhz": 3600,
-                "type": 3
-              }
-            },
             "powerButton": {
               "edge": 1,
               "position": 0.8999999761581421,
@@ -468,22 +461,6 @@
               "id": "PROXIMITY_SENSOR",
               "type": 10
             },
-            "ram": {
-              "description": {
-                "EN": "Default ram"
-              },
-              "hardwareFeature": {
-                "memory": {
-                  "profile": {
-                    "sizeMegabytes": 16384,
-                    "speedMhz": 3600,
-                    "type": 3
-                  }
-                }
-              },
-              "id": "RAM",
-              "type": 13
-            },
             "screen": {
               "description": {
                 "EN": "Touchscreen"
@@ -622,13 +599,6 @@
             },
             "magnetometer": {
               "baseMagnetometer": 1
-            },
-            "memory": {
-              "profile": {
-                "sizeMegabytes": 16384,
-                "speedMhz": 3600,
-                "type": 3
-              }
             },
             "powerButton": {
               "edge": 1,
@@ -864,22 +834,6 @@
               "id": "PROXIMITY_SENSOR",
               "type": 10
             },
-            "ram": {
-              "description": {
-                "EN": "Default ram"
-              },
-              "hardwareFeature": {
-                "memory": {
-                  "profile": {
-                    "sizeMegabytes": 16384,
-                    "speedMhz": 3600,
-                    "type": 3
-                  }
-                }
-              },
-              "id": "RAM",
-              "type": 13
-            },
             "screen": {
               "description": {
                 "EN": "Touchscreen"
@@ -1035,13 +989,6 @@
             },
             "magnetometer": {
               "baseMagnetometer": 1
-            },
-            "memory": {
-              "profile": {
-                "sizeMegabytes": 16384,
-                "speedMhz": 3600,
-                "type": 3
-              }
             },
             "powerButton": {
               "edge": 1,
@@ -1288,22 +1235,6 @@
               "id": "PROXIMITY_SENSOR",
               "type": 10
             },
-            "ram": {
-              "description": {
-                "EN": "Default ram"
-              },
-              "hardwareFeature": {
-                "memory": {
-                  "profile": {
-                    "sizeMegabytes": 16384,
-                    "speedMhz": 3600,
-                    "type": 3
-                  }
-                }
-              },
-              "id": "RAM",
-              "type": 13
-            },
             "screen": {
               "description": {
                 "EN": "Touchscreen"
@@ -1458,13 +1389,6 @@
             },
             "magnetometer": {
               "baseMagnetometer": 1
-            },
-            "memory": {
-              "profile": {
-                "sizeMegabytes": 16384,
-                "speedMhz": 3600,
-                "type": 3
-              }
             },
             "powerButton": {
               "edge": 1,
@@ -1698,22 +1622,6 @@
               "id": "PROXIMITY_SENSOR",
               "type": 10
             },
-            "ram": {
-              "description": {
-                "EN": "Default ram"
-              },
-              "hardwareFeature": {
-                "memory": {
-                  "profile": {
-                    "sizeMegabytes": 16384,
-                    "speedMhz": 3600,
-                    "type": 3
-                  }
-                }
-              },
-              "id": "RAM",
-              "type": 13
-            },
             "screen": {
               "description": {
                 "EN": "Touchscreen"
@@ -1868,13 +1776,6 @@
             },
             "magnetometer": {
               "baseMagnetometer": 1
-            },
-            "memory": {
-              "profile": {
-                "sizeMegabytes": 16384,
-                "speedMhz": 3600,
-                "type": 3
-              }
             },
             "powerButton": {
               "edge": 1,
@@ -2108,22 +2009,6 @@
               "id": "PROXIMITY_SENSOR",
               "type": 10
             },
-            "ram": {
-              "description": {
-                "EN": "Default ram"
-              },
-              "hardwareFeature": {
-                "memory": {
-                  "profile": {
-                    "sizeMegabytes": 16384,
-                    "speedMhz": 3600,
-                    "type": 3
-                  }
-                }
-              },
-              "id": "RAM",
-              "type": 13
-            },
             "screen": {
               "description": {
                 "EN": "Touchscreen"
@@ -2269,13 +2154,6 @@
             },
             "magnetometer": {
               "baseMagnetometer": 1
-            },
-            "memory": {
-              "profile": {
-                "sizeMegabytes": 16384,
-                "speedMhz": 3600,
-                "type": 3
-              }
             },
             "powerButton": {
               "edge": 1,
@@ -2488,22 +2366,6 @@
               "id": "PROXIMITY_SENSOR",
               "type": 10
             },
-            "ram": {
-              "description": {
-                "EN": "Default ram"
-              },
-              "hardwareFeature": {
-                "memory": {
-                  "profile": {
-                    "sizeMegabytes": 16384,
-                    "speedMhz": 3600,
-                    "type": 3
-                  }
-                }
-              },
-              "id": "RAM",
-              "type": 13
-            },
             "screen": {
               "description": {
                 "EN": "Default screen"
@@ -2637,13 +2499,6 @@
             },
             "magnetometer": {
               "baseMagnetometer": 1
-            },
-            "memory": {
-              "profile": {
-                "sizeMegabytes": 16384,
-                "speedMhz": 3600,
-                "type": 3
-              }
             },
             "powerButton": {
               "edge": 1,
@@ -2855,22 +2710,6 @@
               "hardwareFeature": {},
               "id": "PROXIMITY_SENSOR",
               "type": 10
-            },
-            "ram": {
-              "description": {
-                "EN": "Default ram"
-              },
-              "hardwareFeature": {
-                "memory": {
-                  "profile": {
-                    "sizeMegabytes": 16384,
-                    "speedMhz": 3600,
-                    "type": 3
-                  }
-                }
-              },
-              "id": "RAM",
-              "type": 13
             },
             "screen": {
               "description": {

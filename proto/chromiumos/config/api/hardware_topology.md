@@ -142,22 +142,7 @@ Changes that do not require new topology
 
 ## RAM
 
-Changes that require new topology
-
-*   Change in speed: e.g. 2400MHz vs 3300MHz
-*   Change in size: e.g. 8GB vs 16Gb
-*   Change in channel count: e.g. Dual vs Single
-
-_NOTE:_ The above list is also used to know when to create a new resistor
-strapping RAM\_ID on the SoC. The RAM topology value should mirror the RAM\_ID
-resistor strapping. We still want to keep the resistor strapping on the SoC
-because we do not want to rely on SoC/EC communication to be working before
-enabling RAM access (which would be the case if AP firmware relied on CBI EEPROM
-contents proxied through EC)
-
-Changes that do not require new topology
-
-*   Vendor change of part
+Deprecated. This is no longer encoded in the design.
 
 ## WIFI
 
