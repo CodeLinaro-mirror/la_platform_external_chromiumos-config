@@ -38,7 +38,7 @@ func ExampleProvisionRequest() {
 		},
 		DlcSpecs: []*tls.ProvisionRequest_DLCSpec{
 			&tls.ProvisionRequest_DLCSpec{
-				Id: "dummy-dlc",
+				Id: "sample-dlc",
 			},
 		},
 	}
