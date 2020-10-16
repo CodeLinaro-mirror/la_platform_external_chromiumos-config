@@ -115,11 +115,11 @@ type RemoteTestDriver struct {
 	// Command to invoke the Remote Test Driver inside `image`.
 	//
 	// Remote Test Servers MUST run `command` as
-	//   $ ${command} -input_json ${input_json}
-	// where ${command} and ${input_json} are absolute paths inside the container.
+	//   $ ${command} -input ${input}
+	// where ${command} and ${input} are absolute paths inside the container.
 	//
-	// Remote Test Servers MUST populate `input_json` with a JSON encoded
-	// test.invocation.Invocation message.
+	// Remote Test Servers MUST populate `input` with a binaryproto file
+	// representing a test.invocation.Invocation message.
 	Command string `protobuf:"bytes,3,opt,name=command,proto3" json:"command,omitempty"`
 	// Metadata for the smallest schedulable test units.
 	Tests                []*Test  `protobuf:"bytes,4,rep,name=tests,proto3" json:"tests,omitempty"`
