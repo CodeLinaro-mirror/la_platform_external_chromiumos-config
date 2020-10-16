@@ -103,9 +103,9 @@ def _build_arc(config, config_files):
   if config.oem:
     build_properties['oem'] = config.oem.name
   result = {'build-properties': build_properties}
-  feature_id = _arc_hardware_feature_id(config.hw_design_config)
-  if feature_id in config_files.arc_hw_features:
-    result['hardware-features'] = config_files.arc_hw_features[feature_id]
+  config_id = _get_formatted_config_id(config.hw_design_config)
+  if config_id in config_files.arc_hw_features:
+    result['hardware-features'] = config_files.arc_hw_features[config_id]
   topology = config.hw_design_config.hardware_topology
   ppi = topology.screen.hardware_feature.screen.panel_properties.pixels_per_in
   # Only set for high resolution displays
@@ -801,17 +801,13 @@ def _any_present(features):
   return topology_pb2.HardwareFeatures.PRESENT in features
 
 
-def _arc_hardware_feature_id(design_config):
+def _get_formatted_config_id(design_config):
   return design_config.id.value.lower().replace(':', '_')
 
 
-def _write_arc_hardware_feature_file(output_dir, file_name, config_content):
-  output_dir += '/arc'
+def _write_file(output_dir, file_name, file_content):
   os.makedirs(output_dir, exist_ok=True)
-  output = '%s/%s' % (output_dir, file_name)
-  file_content = minidom.parseString(config_content).toprettyxml(
-      indent='  ', encoding='utf-8')
-
+  output = '{}/{}'.format(output_dir, file_name)
   with open(output, 'wb') as f:
     f.write(file_content)
 
@@ -856,54 +852,69 @@ def _get_arc_camera_features(camera):
   ]
 
 
-def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
-  """Writes ARC hardware_feature.xml files for each config
+def _generate_arc_hardware_features(hw_features):
+  """Generates ARC hardware_features.xml file content.
 
   Args:
-    config: Source ConfigBundle to process.
-    output_dir: Path to the generated output.
-    build_root_path: Path to the config file from portage's perspective.
+    hw_features: HardwareFeatures proto message.
   Returns:
-    dict that maps the design_config_id onto the correct file.
+    bytes of the hardware_features.xml content.
   """
-  # pylint: disable=too-many-locals
+  touchscreen = _any_present([hw_features.screen.touch_support])
+  acc = hw_features.accelerometer
+  gyro = hw_features.gyroscope
+  compass = hw_features.magnetometer
+  light_sensor = hw_features.light_sensor
+  root = etree.Element('permissions')
+  root.extend(
+      _get_arc_camera_features(hw_features.camera) + [
+          _feature(
+              'android.hardware.sensor.accelerometer',
+              _any_present([acc.lid_accelerometer, acc.base_accelerometer])),
+          _feature('android.hardware.sensor.gyroscope',
+                   _any_present([gyro.lid_gyroscope, gyro.base_gyroscope])),
+          _feature(
+              'android.hardware.sensor.compass',
+              _any_present(
+                  [compass.lid_magnetometer, compass.base_magnetometer])),
+          _feature(
+              'android.hardware.sensor.light',
+              _any_present([
+                  light_sensor.lid_lightsensor, light_sensor.base_lightsensor
+              ])),
+          _feature('android.hardware.touchscreen', touchscreen),
+          _feature('android.hardware.touchscreen.multitouch', touchscreen),
+          _feature('android.hardware.touchscreen.multitouch.distinct',
+                   touchscreen),
+          _feature('android.hardware.touchscreen.multitouch.jazzhand',
+                   touchscreen),
+      ])
+  return minidom.parseString(etree.tostring(root)).toprettyxml(
+      indent='  ', encoding='utf-8')
+
+
+def _write_files_by_design_config(configs, output_dir, build_dir, system_dir,
+                                  file_name_template, generate_file_content):
+  """Writes generated files for each design config.
+
+  Args:
+    configs: Source ConfigBundle to process.
+    output_dir: Path to the generated output.
+    build_dir: Path to the config file from portage's perspective.
+    system_dir: Path to the config file in the target device.
+    file_name_template: Template string of the config file name including one
+      format()-style replacement field for the config id, e.g. 'config_{}.xml'.
+    generate_file_content: Function to generate config file content from
+      HardwareFeatures proto.
+  Returns:
+    dict that maps the formatted config id to the correct file.
+  """
+  # pylint: disable=too-many-arguments,too-many-locals
   result = {}
   configs_by_design = {}
-  for hw_design in config.design_list:
+  for hw_design in configs.design_list:
     for design_config in hw_design.configs:
-      hw_features = design_config.hardware_features
-      touchscreen = _any_present([hw_features.screen.touch_support])
-      acc = hw_features.accelerometer
-      gyro = hw_features.gyroscope
-      compass = hw_features.magnetometer
-      light_sensor = hw_features.light_sensor
-      root = etree.Element('permissions')
-      root.extend(
-          _get_arc_camera_features(hw_features.camera) + [
-              _feature(
-                  'android.hardware.sensor.accelerometer',
-                  _any_present([acc.lid_accelerometer, acc.base_accelerometer
-                               ])),
-              _feature('android.hardware.sensor.gyroscope',
-                       _any_present([gyro.lid_gyroscope, gyro.base_gyroscope])),
-              _feature(
-                  'android.hardware.sensor.compass',
-                  _any_present(
-                      [compass.lid_magnetometer, compass.base_magnetometer])),
-              _feature(
-                  'android.hardware.sensor.light',
-                  _any_present([
-                      light_sensor.lid_lightsensor,
-                      light_sensor.base_lightsensor
-                  ])),
-              _feature('android.hardware.touchscreen', touchscreen),
-              _feature('android.hardware.touchscreen.multitouch', touchscreen),
-              _feature('android.hardware.touchscreen.multitouch.distinct',
-                       touchscreen),
-              _feature('android.hardware.touchscreen.multitouch.jazzhand',
-                       touchscreen),
-          ])
-
+      config_content = generate_file_content(design_config.hardware_features)
       design_name = hw_design.name.lower()
 
       # Constructs the following map:
@@ -914,7 +925,6 @@ def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
       #
       # Having shared configs when possible makes code reviews easier around
       # the configs and makes debugging easier on the platform side.
-      config_content = etree.tostring(root)
       arc_configs = configs_by_design.get(design_name, {})
       design_configs = arc_configs.get(config_content, [])
       design_configs.append(design_config)
@@ -923,18 +933,25 @@ def _write_arc_hardware_feature_files(config, output_dir, build_root_dir):
 
   for design_name, unique_configs in configs_by_design.items():
     for file_content, design_configs in unique_configs.items():
-      file_name = 'hardware_features_%s.xml' % design_name
+      file_name = file_name_template.format(design_name)
       if len(unique_configs) == 1:
-        _write_arc_hardware_feature_file(output_dir, file_name, file_content)
+        _write_file(output_dir, file_name, file_content)
 
       for design_config in design_configs:
-        feature_id = _arc_hardware_feature_id(design_config)
+        config_id = _get_formatted_config_id(design_config)
         if len(unique_configs) > 1:
-          file_name = 'hardware_features_%s.xml' % feature_id
-          _write_arc_hardware_feature_file(output_dir, file_name, file_content)
-        result[feature_id] = _file_v2('%s/arc/%s' % (build_root_dir, file_name),
-                                      '/etc/%s' % file_name)
+          file_name = file_name_template.format(config_id)
+          _write_file(output_dir, file_name, file_content)
+        result[config_id] = _file_v2('{}/{}'.format(build_dir, file_name),
+                                     '{}/{}'.format(system_dir, file_name))
   return result
+
+
+def _write_arc_hardware_feature_files(configs, output_root_dir, build_root_dir):
+  return _write_files_by_design_config(configs, output_root_dir + '/arc',
+                                       build_root_dir + '/arc', '/etc',
+                                       'hardware_features_{}.xml',
+                                       _generate_arc_hardware_features)
 
 
 def _read_config(path):
@@ -1032,7 +1049,7 @@ def _wifi_sar_map(configs, project_name, output_dir, build_root_dir):
     configs: Source ConfigBundle to process.
     project_name: Name of project processing for.
     output_dir: Path to the generated output.
-    build_root_path: Path to the config file from portage's perspective.
+    build_root_dir: Path to the config file from portage's perspective.
 
   Returns:
     dict that maps the design name onto the wifi config for that design.
@@ -1146,7 +1163,6 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
   """
   configs = _merge_configs([_read_config(program_config)] +
                            [_read_config(config) for config in project_configs])
-  arc_hw_feature_files = {}
   touch_fw = {}
   camera_map = {}
   dptf_map = {}
