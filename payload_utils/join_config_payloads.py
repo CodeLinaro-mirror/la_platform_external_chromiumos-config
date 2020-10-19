@@ -514,7 +514,8 @@ def merge_camera_config(hw_feat, model):
     None
   """
   camera_props = model.GetProperties('/camera')
-  hw_feat.camera.count.value = camera_props.get('count', 0)
+  del hw_feat, camera_props
+  # TODO: Merge camera configuration when it's available
 
 
 def merge_buttons(hw_feat, model):
