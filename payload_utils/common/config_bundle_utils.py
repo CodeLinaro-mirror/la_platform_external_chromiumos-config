@@ -6,6 +6,8 @@
 # found in the LICENSE file.
 """Utilities for working with ConfigBundle instances more conveniently."""
 
+import logging
+
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.payload.flat_config_pb2 import FlatConfigList
 
@@ -69,13 +71,22 @@ def flatten_config(config: ConfigBundle) -> FlatConfigList:
         # foreign key with anything. We'll store it as part of the build metadata
         # and use the BuildTargetId (overlay name) to look it up.
         flat_config = results.values.add()
-        flat_config.program.MergeFrom(_lookup(hw_design.program_id, programs))
         flat_config.program_components.MergeFrom(config.components)
         flat_config.hw_design.MergeFrom(hw_design)
         flat_config.hw_design_config.MergeFrom(hw_design_config)
         flat_config.device_brand.MergeFrom(device_brand)
         flat_config.sw_config.MergeFrom(sw_config)
         flat_config.brand_sw_config.MergeFrom(brand_config)
+
+        # Sometimes programs are a little slow to get properly added, so let's
+        # not fail completely if they're not there, we'll just leave it empty
+        # for now.
+        try:
+          flat_config.program.MergeFrom(_lookup(hw_design.program_id, programs))
+        except KeyError:
+          logging.warning(
+              "program '%s' doesn't seem to be defined (bad config?)",
+              hw_design.program_id.value)
 
         # We expect program_id to be defined above, but odm/oem is less consistently set
         if hw_design.odm_id.value:
