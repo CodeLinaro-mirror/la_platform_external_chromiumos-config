@@ -678,22 +678,29 @@ def _create_volume_button(region, edge, position, id = None, description = None)
         ),
     )
 
-def _create_ec(ec_type, id = None):
+def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None):
     """Builds a Topology proto for an embedded controller.
 
     Args:
-        ec_type: An EmbeddedControllerType enum. Required.
+        present: flag indicating whether the device has an EC at all
+        ec_type: An EmbeddedControllerType enum
         id: A string identifier for the Topology. If not passed, a default is
             provided.
     """
     hw_features = topo_pb.HardwareFeatures()
     hw_features.embedded_controller.ec_type = ec_type
+    hw_features.embedded_controller.present = _bool_to_present(present)
 
     return topo_pb.Topology(
         id = id or "ec",
         type = topo_pb.Topology.EC,
         hardware_feature = hw_features,
     )
+
+# enumerate the common cases
+_EC_NONE = _create_ec(present = False, ec_type = _EC_TYPE.UNKNOWN)
+_EC_CHROME = _create_ec(ec_type = _EC_TYPE.CHROME)
+_EC_WILCO = _create_ec(ec_type = _EC_TYPE.WILCO)
 
 def _create_hardware_topology(
         screen = None,
@@ -983,7 +990,6 @@ hw_topo = struct(
     create_hardware_topology = _create_hardware_topology,
     create_power_button = _create_power_button,
     create_volume_button = _create_volume_button,
-    create_ec = _create_ec,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,
@@ -996,6 +1002,12 @@ hw_topo = struct(
     region = _REGION,
     edge = _EDGE,
     camera_flags = _CAMERA_FLAGS,
-    ec_type = _EC_TYPE,
     present = _PRESENT,
+
+    # embedded controller exports
+    ec_type = _EC_TYPE,
+    create_ec = _create_ec,
+    EC_NONE = _EC_NONE,
+    EC_CHROME = _EC_CHROME,
+    EC_WILCO = _EC_WILCO,
 )

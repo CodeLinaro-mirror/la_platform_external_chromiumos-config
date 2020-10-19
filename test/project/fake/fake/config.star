@@ -163,7 +163,7 @@ def create_hardware_topology(
         wifi = _WIFI,
         power_button = _POWER_BUTTON,
         volume_button = _VOLUME_BUTTON,
-        ec = program.topos.EC_CHROME,
+        ec = hw_topo.EC_CHROME,
     )
 
 # Create empty arrays that we will continually append new configurations to

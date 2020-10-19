@@ -82,15 +82,10 @@ _BUILD_TARGETS = [
     ),
 ]
 
-_TOPOS = struct(
-    EC_CHROME = hw_topo.create_ec(hw_topo.ec_type.CHROME),
-)
-
 program = struct(
     fake = _FAKE,
     fw_masks = _FW_MASKS,
     components = _QUALIFIED_COMPS,
     bluetooth_component = _FAKE_BT_COMP,
     build_targets = _BUILD_TARGETS,
-    topos = _TOPOS,
 )

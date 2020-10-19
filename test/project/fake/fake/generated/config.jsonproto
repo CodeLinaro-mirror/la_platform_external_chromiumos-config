@@ -355,7 +355,8 @@
             "ec": {
               "hardwareFeature": {
                 "embeddedController": {
-                  "ecType": 1
+                  "ecType": 1,
+                  "present": 1
                 }
               },
               "id": "ec",
@@ -729,7 +730,8 @@
             "ec": {
               "hardwareFeature": {
                 "embeddedController": {
-                  "ecType": 1
+                  "ecType": 1,
+                  "present": 1
                 }
               },
               "id": "ec",
@@ -1129,7 +1131,8 @@
             "ec": {
               "hardwareFeature": {
                 "embeddedController": {
-                  "ecType": 1
+                  "ecType": 1,
+                  "present": 1
                 }
               },
               "id": "ec",
@@ -1529,7 +1532,8 @@
             "ec": {
               "hardwareFeature": {
                 "embeddedController": {
-                  "ecType": 1
+                  "ecType": 1,
+                  "present": 1
                 }
               },
               "id": "ec",
@@ -1916,7 +1920,8 @@
             "ec": {
               "hardwareFeature": {
                 "embeddedController": {
-                  "ecType": 1
+                  "ecType": 1,
+                  "present": 1
                 }
               },
               "id": "ec",
@@ -2273,7 +2278,8 @@
             "ec": {
               "hardwareFeature": {
                 "embeddedController": {
-                  "ecType": 1
+                  "ecType": 1,
+                  "present": 1
                 }
               },
               "id": "ec",
@@ -2618,7 +2624,8 @@
             "ec": {
               "hardwareFeature": {
                 "embeddedController": {
-                  "ecType": 1
+                  "ecType": 1,
+                  "present": 1
                 }
               },
               "id": "ec",
