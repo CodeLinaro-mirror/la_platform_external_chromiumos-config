@@ -18,6 +18,12 @@ load(
     comp_pb = "chromiumos.config.api",
 )
 
+_PRESENT = struct(
+    UNKNOWN = topo_pb.HardwareFeatures.PRESENT_UNKNOWN,
+    PRESENT = topo_pb.HardwareFeatures.PRESENT,
+    NOT_PRESENT = topo_pb.HardwareFeatures.NOT_PRESENT,
+)
+
 _FF = struct(
     CLAMSHELL = topo_pb.HardwareFeatures.FormFactor.CLAMSHELL,
     CONVERTIBLE = topo_pb.HardwareFeatures.FormFactor.CONVERTIBLE,
@@ -148,11 +154,11 @@ def _create_features(form_factors = [_FF.CLAMSHELL, _FF.CONVERTIBLE]):
 def _bool_to_present(value):
     """Returns correct value of present enum depending on value"""
     if value == None:
-        return topo_pb.HardwareFeatures.PRESENT_UNKNOWN
+        return _PRESENT.UNKNOWN
     elif value:
-        return topo_pb.HardwareFeatures.PRESENT
+        return _PRESENT.PRESENT
     else:
-        return topo_pb.HardwareFeatures.NOT_PRESENT
+        return _PRESENT.NOT_PRESENT
 
 def _create_screen(
         id = None,
@@ -802,9 +808,9 @@ def _create_hardware_topology(
     )
 
 def _accumulate_presence(existing_present, new_present):
-    if existing_present == topo_pb.HardwareFeatures.PRESENT:
+    if existing_present == _PRESENT.PRESENT:
         return existing_present
-    elif new_present != topo_pb.HardwareFeatures.PRESENT_UNKNOWN:
+    elif new_present != _PRESENT.UNKNOWN:
         return new_present
     else:
         return existing_present
@@ -991,4 +997,5 @@ hw_topo = struct(
     edge = _EDGE,
     camera_flags = _CAMERA_FLAGS,
     ec_type = _EC_TYPE,
+    present = _PRESENT,
 )
