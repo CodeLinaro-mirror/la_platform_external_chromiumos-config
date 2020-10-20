@@ -20,45 +20,24 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.rtd.v1',
   syntax='proto3',
   serialized_options=_b('Z8go.chromium.org/chromiumos/config/go/api/test/rtd/v1;rtd'),
-  serialized_pb=_b('\n2chromiumos/config/api/test/rtd/v1/invocation.proto\x12!chromiumos.config.api.test.rtd.v1\x1a\x30\x63hromiumos/config/api/test/rtd/v1/progress.proto\"\xb8\x02\n\nInvocation\x12`\n\x1bprogress_sink_client_config\x18\x01 \x01(\x0b\x32;.chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig\x12\x34\n\x04\x64uts\x18\x02 \x03(\x0b\x32&.chromiumos.config.api.test.rtd.v1.DUT\x12<\n\x08requests\x18\x03 \x03(\x0b\x32*.chromiumos.config.api.test.rtd.v1.Request\x12T\n\x18test_lab_services_config\x18\x04 \x01(\x0b\x32\x32.chromiumos.config.api.test.rtd.v1.TLSClientConfig\"\x1b\n\x03\x44UT\x12\x14\n\x0ctls_dut_name\x18\x01 \x01(\t\"\xa5\x01\n\x07Request\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04test\x18\x02 \x01(\t\x12K\n\x0b\x65nvironment\x18\x03 \x01(\x0b\x32\x36.chromiumos.config.api.test.rtd.v1.Request.Environment\x1a\x31\n\x0b\x45nvironment\x12\x10\n\x08work_dir\x18\x01 \x01(\t\x12\x10\n\x08temp_dir\x18\x02 \x01(\t\"_\n\x0fTLSClientConfig\x12\x13\n\x0btls_address\x18\x01 \x01(\t\x12\x10\n\x08tls_port\x18\x02 \x01(\x05\x12\x13\n\x0btlw_address\x18\x03 \x01(\t\x12\x10\n\x08tlw_port\x18\x04 \x01(\x05\x42:Z8go.chromium.org/chromiumos/config/go/api/test/rtd/v1;rtdb\x06proto3')
+  serialized_pb=_b('\n2chromiumos/config/api/test/rtd/v1/invocation.proto\x12!chromiumos.config.api.test.rtd.v1\x1a\x30\x63hromiumos/config/api/test/rtd/v1/progress.proto\"\x87\x03\n\nInvocation\x12\x0c\n\x04name\x18\x01 \x01(\t\x12`\n\x1bprogress_sink_client_config\x18\x02 \x01(\x0b\x32;.chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig\x12T\n\x18test_lab_services_config\x18\x03 \x01(\x0b\x32\x32.chromiumos.config.api.test.rtd.v1.TLSClientConfig\x12\x34\n\x04\x64uts\x18\x04 \x03(\x0b\x32&.chromiumos.config.api.test.rtd.v1.DUT\x12\x0c\n\x04test\x18\x05 \x01(\t\x12N\n\x0b\x65nvironment\x18\x06 \x01(\x0b\x32\x39.chromiumos.config.api.test.rtd.v1.Invocation.Environment\x1a\x1f\n\x0b\x45nvironment\x12\x10\n\x08work_dir\x18\x01 \x01(\t\"\x1b\n\x03\x44UT\x12\x14\n\x0ctls_dut_name\x18\x01 \x01(\t\"_\n\x0fTLSClientConfig\x12\x13\n\x0btls_address\x18\x01 \x01(\t\x12\x10\n\x08tls_port\x18\x02 \x01(\x05\x12\x13\n\x0btlw_address\x18\x03 \x01(\t\x12\x10\n\x08tlw_port\x18\x04 \x01(\x05\x42:Z8go.chromium.org/chromiumos/config/go/api/test/rtd/v1;rtdb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_rtd_dot_v1_dot_progress__pb2.DESCRIPTOR,])
 
 
 
 
-_INVOCATION = _descriptor.Descriptor(
-  name='Invocation',
-  full_name='chromiumos.config.api.test.rtd.v1.Invocation',
+_INVOCATION_ENVIRONMENT = _descriptor.Descriptor(
+  name='Environment',
+  full_name='chromiumos.config.api.test.rtd.v1.Invocation.Environment',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='progress_sink_client_config', full_name='chromiumos.config.api.test.rtd.v1.Invocation.progress_sink_client_config', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='duts', full_name='chromiumos.config.api.test.rtd.v1.Invocation.duts', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='requests', full_name='chromiumos.config.api.test.rtd.v1.Invocation.requests', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='test_lab_services_config', full_name='chromiumos.config.api.test.rtd.v1.Invocation.test_lab_services_config', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='work_dir', full_name='chromiumos.config.api.test.rtd.v1.Invocation.Environment.work_dir', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -74,8 +53,73 @@ _INVOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
+  serialized_start=500,
+  serialized_end=531,
+)
+
+_INVOCATION = _descriptor.Descriptor(
+  name='Invocation',
+  full_name='chromiumos.config.api.test.rtd.v1.Invocation',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='chromiumos.config.api.test.rtd.v1.Invocation.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='progress_sink_client_config', full_name='chromiumos.config.api.test.rtd.v1.Invocation.progress_sink_client_config', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='test_lab_services_config', full_name='chromiumos.config.api.test.rtd.v1.Invocation.test_lab_services_config', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='duts', full_name='chromiumos.config.api.test.rtd.v1.Invocation.duts', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='test', full_name='chromiumos.config.api.test.rtd.v1.Invocation.test', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='environment', full_name='chromiumos.config.api.test.rtd.v1.Invocation.environment', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_INVOCATION_ENVIRONMENT, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
   serialized_start=140,
-  serialized_end=452,
+  serialized_end=531,
 )
 
 
@@ -105,90 +149,8 @@ _DUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=454,
-  serialized_end=481,
-)
-
-
-_REQUEST_ENVIRONMENT = _descriptor.Descriptor(
-  name='Environment',
-  full_name='chromiumos.config.api.test.rtd.v1.Request.Environment',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='work_dir', full_name='chromiumos.config.api.test.rtd.v1.Request.Environment.work_dir', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='temp_dir', full_name='chromiumos.config.api.test.rtd.v1.Request.Environment.temp_dir', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=600,
-  serialized_end=649,
-)
-
-_REQUEST = _descriptor.Descriptor(
-  name='Request',
-  full_name='chromiumos.config.api.test.rtd.v1.Request',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='chromiumos.config.api.test.rtd.v1.Request.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='test', full_name='chromiumos.config.api.test.rtd.v1.Request.test', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='environment', full_name='chromiumos.config.api.test.rtd.v1.Request.environment', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_REQUEST_ENVIRONMENT, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=484,
-  serialized_end=649,
+  serialized_start=533,
+  serialized_end=560,
 )
 
 
@@ -239,28 +201,34 @@ _TLSCLIENTCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=651,
-  serialized_end=746,
+  serialized_start=562,
+  serialized_end=657,
 )
 
+_INVOCATION_ENVIRONMENT.containing_type = _INVOCATION
 _INVOCATION.fields_by_name['progress_sink_client_config'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_rtd_dot_v1_dot_progress__pb2._PROGRESSSINKCLIENTCONFIG
-_INVOCATION.fields_by_name['duts'].message_type = _DUT
-_INVOCATION.fields_by_name['requests'].message_type = _REQUEST
 _INVOCATION.fields_by_name['test_lab_services_config'].message_type = _TLSCLIENTCONFIG
-_REQUEST_ENVIRONMENT.containing_type = _REQUEST
-_REQUEST.fields_by_name['environment'].message_type = _REQUEST_ENVIRONMENT
+_INVOCATION.fields_by_name['duts'].message_type = _DUT
+_INVOCATION.fields_by_name['environment'].message_type = _INVOCATION_ENVIRONMENT
 DESCRIPTOR.message_types_by_name['Invocation'] = _INVOCATION
 DESCRIPTOR.message_types_by_name['DUT'] = _DUT
-DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
 DESCRIPTOR.message_types_by_name['TLSClientConfig'] = _TLSCLIENTCONFIG
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Invocation = _reflection.GeneratedProtocolMessageType('Invocation', (_message.Message,), dict(
+
+  Environment = _reflection.GeneratedProtocolMessageType('Environment', (_message.Message,), dict(
+    DESCRIPTOR = _INVOCATION_ENVIRONMENT,
+    __module__ = 'chromiumos.config.api.test.rtd.v1.invocation_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.rtd.v1.Invocation.Environment)
+    ))
+  ,
   DESCRIPTOR = _INVOCATION,
   __module__ = 'chromiumos.config.api.test.rtd.v1.invocation_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.rtd.v1.Invocation)
   ))
 _sym_db.RegisterMessage(Invocation)
+_sym_db.RegisterMessage(Invocation.Environment)
 
 DUT = _reflection.GeneratedProtocolMessageType('DUT', (_message.Message,), dict(
   DESCRIPTOR = _DUT,
@@ -268,21 +236,6 @@ DUT = _reflection.GeneratedProtocolMessageType('DUT', (_message.Message,), dict(
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.rtd.v1.DUT)
   ))
 _sym_db.RegisterMessage(DUT)
-
-Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
-
-  Environment = _reflection.GeneratedProtocolMessageType('Environment', (_message.Message,), dict(
-    DESCRIPTOR = _REQUEST_ENVIRONMENT,
-    __module__ = 'chromiumos.config.api.test.rtd.v1.invocation_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.rtd.v1.Request.Environment)
-    ))
-  ,
-  DESCRIPTOR = _REQUEST,
-  __module__ = 'chromiumos.config.api.test.rtd.v1.invocation_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.rtd.v1.Request)
-  ))
-_sym_db.RegisterMessage(Request)
-_sym_db.RegisterMessage(Request.Environment)
 
 TLSClientConfig = _reflection.GeneratedProtocolMessageType('TLSClientConfig', (_message.Message,), dict(
   DESCRIPTOR = _TLSCLIENTCONFIG,

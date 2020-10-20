@@ -25,24 +25,41 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // TODO(crbug.com/1051691): Link to a reference implementation of Remote Test
 // Server & Remote Test Driver.
 type Invocation struct {
+	// A unique name for this invocation.
+	//
+	// ProgressSink methods require the inclusion of this value in reported
+	// results. This provides additional safety from leaked Remote Test Driver
+	// processes in the case that a single container is used to run multiple
+	// invocations sequentially.
+	//
+	// Remote Test Drivers are recommended to use name as the opaque tag
+	// required by the Test Lab Services API. Thus, name SHOULD be unique across
+	// all invocations to simplify analytics. UUIDs are recommended.
+	//
+	// See also:
+	//   Test Lab Services API: tls/README.md
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Progress sink to be used to report progress of the Remote Test Driver
 	// invocation to the surrounding Remote Test Server.
-	ProgressSinkClientConfig *ProgressSinkClientConfig `protobuf:"bytes,1,opt,name=progress_sink_client_config,json=progressSinkClientConfig,proto3" json:"progress_sink_client_config,omitempty"`
-	// Set of DUTs used for each of the requests in this invocation.
-	//
-	// Contains more than one dut if the test execution is sharded.
-	Duts []*DUT `protobuf:"bytes,2,rep,name=duts,proto3" json:"duts,omitempty"`
-	// Smallest unit of an invocation request for which results MUST be reported.
-	//
-	// An invocation MUST execute all requests serially in-order. This assumption
-	// is necessary for future support of test sequences in test plans.
-	Requests []*Request `protobuf:"bytes,3,rep,name=requests,proto3" json:"requests,omitempty"`
+	ProgressSinkClientConfig *ProgressSinkClientConfig `protobuf:"bytes,2,opt,name=progress_sink_client_config,json=progressSinkClientConfig,proto3" json:"progress_sink_client_config,omitempty"`
 	// Configuration information for using Test Lab Services to interact
 	// with DUTs and their peripherals.
-	TestLabServicesConfig *TLSClientConfig `protobuf:"bytes,4,opt,name=test_lab_services_config,json=testLabServicesConfig,proto3" json:"test_lab_services_config,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}         `json:"-"`
-	XXX_unrecognized      []byte           `json:"-"`
-	XXX_sizecache         int32            `json:"-"`
+	TestLabServicesConfig *TLSClientConfig `protobuf:"bytes,3,opt,name=test_lab_services_config,json=testLabServicesConfig,proto3" json:"test_lab_services_config,omitempty"`
+	// Set of DUTs usable in this invocation.
+	//
+	// Contains more than one dut if the test execution is sharded.
+	Duts []*DUT `protobuf:"bytes,4,rep,name=duts,proto3" json:"duts,omitempty"`
+	// The test to execute, identified by the test.metadata.Test.name field.
+	//
+	// Note that the invocation does not contain a reference to the Remote Test
+	// Driver to use.
+	Test string `protobuf:"bytes,5,opt,name=test,proto3" json:"test,omitempty"`
+	// Environment configuration set by the Remote Test Server for a specific
+	// invocation of the Remote Test Driver.
+	Environment          *Invocation_Environment `protobuf:"bytes,6,opt,name=environment,proto3" json:"environment,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
 }
 
 func (m *Invocation) Reset()         { *m = Invocation{} }
@@ -70,9 +87,23 @@ func (m *Invocation) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Invocation proto.InternalMessageInfo
 
+func (m *Invocation) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 func (m *Invocation) GetProgressSinkClientConfig() *ProgressSinkClientConfig {
 	if m != nil {
 		return m.ProgressSinkClientConfig
+	}
+	return nil
+}
+
+func (m *Invocation) GetTestLabServicesConfig() *TLSClientConfig {
+	if m != nil {
+		return m.TestLabServicesConfig
 	}
 	return nil
 }
@@ -84,18 +115,71 @@ func (m *Invocation) GetDuts() []*DUT {
 	return nil
 }
 
-func (m *Invocation) GetRequests() []*Request {
+func (m *Invocation) GetTest() string {
 	if m != nil {
-		return m.Requests
+		return m.Test
+	}
+	return ""
+}
+
+func (m *Invocation) GetEnvironment() *Invocation_Environment {
+	if m != nil {
+		return m.Environment
 	}
 	return nil
 }
 
-func (m *Invocation) GetTestLabServicesConfig() *TLSClientConfig {
+// Per-invocation Remote Test Server environment configuration.
+type Invocation_Environment struct {
+	// Absolute path to a directory for writing arbitrary files.
+	//
+	// This directory MUST be created by Remote Test Server prior to the Remote
+	// Test Driver invocation.
+	//
+	// * Remote Test Drivers SHOULD use
+	// test.invocation.ProgressClient.ReportLog() to report logs.
+	// * Remote Test Drivers SHOULD use
+	// test.invocation.ProgressClient.ArchiveArtifact() to archive critical
+	// artifacts.
+	//
+	// Remote Test Servers may archive the work_dir contents to non-ephemeral
+	// storage as a best effort asynchronous task.
+	WorkDir              string   `protobuf:"bytes,1,opt,name=work_dir,json=workDir,proto3" json:"work_dir,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Invocation_Environment) Reset()         { *m = Invocation_Environment{} }
+func (m *Invocation_Environment) String() string { return proto.CompactTextString(m) }
+func (*Invocation_Environment) ProtoMessage()    {}
+func (*Invocation_Environment) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2aad16878b22eddc, []int{0, 0}
+}
+
+func (m *Invocation_Environment) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Invocation_Environment.Unmarshal(m, b)
+}
+func (m *Invocation_Environment) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Invocation_Environment.Marshal(b, m, deterministic)
+}
+func (m *Invocation_Environment) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Invocation_Environment.Merge(m, src)
+}
+func (m *Invocation_Environment) XXX_Size() int {
+	return xxx_messageInfo_Invocation_Environment.Size(m)
+}
+func (m *Invocation_Environment) XXX_DiscardUnknown() {
+	xxx_messageInfo_Invocation_Environment.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Invocation_Environment proto.InternalMessageInfo
+
+func (m *Invocation_Environment) GetWorkDir() string {
 	if m != nil {
-		return m.TestLabServicesConfig
+		return m.WorkDir
 	}
-	return nil
+	return ""
 }
 
 // Contains all configuration data required to interact with a single device
@@ -145,147 +229,6 @@ func (m *DUT) GetTlsDutName() string {
 	return ""
 }
 
-// Request for execution of a single test.metadata.Test
-type Request struct {
-	// name MUST be unique across all requests in this invocation.
-	//
-	// Remote Test Drivers are recommended to use name as the opaque tag
-	// required by the Test Lab Services API. Thus, name SHOULD be unique across
-	// all invocations to simplify analytics. UUIDs are recommended.
-	//
-	// See also:
-	//   Test Lab Services API: tls/README.md
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The test to execute, identified by the test.metadata.Test.name field.
-	//
-	// Note that the request does not contain a reference to the Remote Test
-	// Driver to use, as the request is an input to the Remote Test Driver
-	// invocation.
-	Test string `protobuf:"bytes,2,opt,name=test,proto3" json:"test,omitempty"`
-	// Environment configuration set by the Remote Test Server for a specific
-	// request of the Remote Test Driver.
-	Environment          *Request_Environment `protobuf:"bytes,3,opt,name=environment,proto3" json:"environment,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *Request) Reset()         { *m = Request{} }
-func (m *Request) String() string { return proto.CompactTextString(m) }
-func (*Request) ProtoMessage()    {}
-func (*Request) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2aad16878b22eddc, []int{2}
-}
-
-func (m *Request) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Request.Unmarshal(m, b)
-}
-func (m *Request) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Request.Marshal(b, m, deterministic)
-}
-func (m *Request) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Request.Merge(m, src)
-}
-func (m *Request) XXX_Size() int {
-	return xxx_messageInfo_Request.Size(m)
-}
-func (m *Request) XXX_DiscardUnknown() {
-	xxx_messageInfo_Request.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Request proto.InternalMessageInfo
-
-func (m *Request) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *Request) GetTest() string {
-	if m != nil {
-		return m.Test
-	}
-	return ""
-}
-
-func (m *Request) GetEnvironment() *Request_Environment {
-	if m != nil {
-		return m.Environment
-	}
-	return nil
-}
-
-// Per-request Remote Test Server environment configuration.
-type Request_Environment struct {
-	// Absolute path to a directory for writing arbitrary files.
-	//
-	// This directory MUST be created by Remote Test Server prior to the Remote
-	// Test Driver invocation.
-	//
-	// * Remote Test Drivers SHOULD use
-	// test.invocation.ProgressClient.ReportLog() to report logs.
-	// * Remote Test Drivers SHOULD use
-	// test.invocation.ProgressClient.ArchiveArtifact() to archive critical
-	// artifacts.
-	//
-	// Remote Test Servers may archive the work_dir contents to non-ephemeral
-	// storage as a best effort asynchronous task.
-	WorkDir string `protobuf:"bytes,1,opt,name=work_dir,json=workDir,proto3" json:"work_dir,omitempty"`
-	// Absolute path to a directory for writing temporary files.
-	//
-	// This directory MUST be created by Remote Test Server prior to the Remote
-	// Test Driver invocation.
-	//
-	// Remote Test Drivers MUST use this directory for temporary files and MUST
-	// NOT attempt to use defaults like /tmp or the TMP environment variable.
-	//
-	// See also: Environment.work_dir
-	TempDir              string   `protobuf:"bytes,2,opt,name=temp_dir,json=tempDir,proto3" json:"temp_dir,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *Request_Environment) Reset()         { *m = Request_Environment{} }
-func (m *Request_Environment) String() string { return proto.CompactTextString(m) }
-func (*Request_Environment) ProtoMessage()    {}
-func (*Request_Environment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2aad16878b22eddc, []int{2, 0}
-}
-
-func (m *Request_Environment) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Request_Environment.Unmarshal(m, b)
-}
-func (m *Request_Environment) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Request_Environment.Marshal(b, m, deterministic)
-}
-func (m *Request_Environment) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Request_Environment.Merge(m, src)
-}
-func (m *Request_Environment) XXX_Size() int {
-	return xxx_messageInfo_Request_Environment.Size(m)
-}
-func (m *Request_Environment) XXX_DiscardUnknown() {
-	xxx_messageInfo_Request_Environment.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Request_Environment proto.InternalMessageInfo
-
-func (m *Request_Environment) GetWorkDir() string {
-	if m != nil {
-		return m.WorkDir
-	}
-	return ""
-}
-
-func (m *Request_Environment) GetTempDir() string {
-	if m != nil {
-		return m.TempDir
-	}
-	return ""
-}
-
 // Configuration information required for using Test Lab & Wiring Services.
 type TLSClientConfig struct {
 	// Address where Test Lab Services is reachable.
@@ -314,7 +257,7 @@ func (m *TLSClientConfig) Reset()         { *m = TLSClientConfig{} }
 func (m *TLSClientConfig) String() string { return proto.CompactTextString(m) }
 func (*TLSClientConfig) ProtoMessage()    {}
 func (*TLSClientConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2aad16878b22eddc, []int{3}
+	return fileDescriptor_2aad16878b22eddc, []int{2}
 }
 
 func (m *TLSClientConfig) XXX_Unmarshal(b []byte) error {
@@ -365,9 +308,8 @@ func (m *TLSClientConfig) GetTlwPort() int32 {
 
 func init() {
 	proto.RegisterType((*Invocation)(nil), "chromiumos.config.api.test.rtd.v1.Invocation")
+	proto.RegisterType((*Invocation_Environment)(nil), "chromiumos.config.api.test.rtd.v1.Invocation.Environment")
 	proto.RegisterType((*DUT)(nil), "chromiumos.config.api.test.rtd.v1.DUT")
-	proto.RegisterType((*Request)(nil), "chromiumos.config.api.test.rtd.v1.Request")
-	proto.RegisterType((*Request_Environment)(nil), "chromiumos.config.api.test.rtd.v1.Request.Environment")
 	proto.RegisterType((*TLSClientConfig)(nil), "chromiumos.config.api.test.rtd.v1.TLSClientConfig")
 }
 
@@ -376,34 +318,32 @@ func init() {
 }
 
 var fileDescriptor_2aad16878b22eddc = []byte{
-	// 463 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0xd1, 0x8b, 0xd3, 0x4e,
-	0x10, 0xc7, 0x69, 0xd3, 0xdf, 0xaf, 0xe7, 0x46, 0x10, 0x16, 0x84, 0x78, 0x3e, 0x58, 0xfb, 0xa0,
-	0x87, 0x0f, 0x1b, 0xaf, 0x82, 0xc8, 0xdd, 0x93, 0x36, 0x0a, 0xc2, 0x21, 0x47, 0xda, 0x03, 0xf1,
-	0x65, 0x49, 0x93, 0x35, 0x2e, 0x4d, 0x76, 0xe3, 0xec, 0x24, 0x01, 0xff, 0x03, 0xff, 0x3b, 0xff,
-	0x1d, 0xdf, 0x64, 0x77, 0xdb, 0x5e, 0xef, 0x44, 0xae, 0x6f, 0xd9, 0x99, 0xf9, 0x7c, 0x67, 0xe6,
-	0x4b, 0x86, 0xcc, 0xf2, 0x6f, 0xa0, 0x6b, 0xd9, 0xd6, 0xda, 0xc4, 0xb9, 0x56, 0x5f, 0x65, 0x19,
-	0x67, 0x8d, 0x8c, 0x51, 0x18, 0x8c, 0x01, 0x8b, 0xb8, 0x3b, 0x8d, 0xa5, 0xea, 0x74, 0x9e, 0xa1,
-	0xd4, 0x8a, 0x35, 0xa0, 0x51, 0xd3, 0xa7, 0xd7, 0x0c, 0xf3, 0x0c, 0xcb, 0x1a, 0xc9, 0x2c, 0xc3,
-	0x00, 0x0b, 0xd6, 0x9d, 0x1e, 0xbf, 0xbc, 0x5b, 0xb6, 0x01, 0x5d, 0x82, 0x30, 0xc6, 0x8b, 0x4e,
-	0x7f, 0x0f, 0x09, 0xf9, 0xb8, 0xeb, 0x44, 0x7f, 0x90, 0xc7, 0xdb, 0x02, 0x6e, 0xa4, 0x5a, 0xf3,
-	0xbc, 0x92, 0x42, 0x21, 0xf7, 0x62, 0xd1, 0x60, 0x32, 0x38, 0x09, 0x67, 0xe7, 0xec, 0xce, 0x49,
-	0xd8, 0xe5, 0x46, 0x65, 0x21, 0xd5, 0x7a, 0xee, 0x34, 0xe6, 0xae, 0x30, 0x8d, 0x9a, 0x7f, 0x64,
-	0xe8, 0x19, 0x19, 0x15, 0x2d, 0x9a, 0x68, 0x38, 0x09, 0x4e, 0xc2, 0xd9, 0xb3, 0x03, 0x9a, 0x24,
-	0x57, 0xcb, 0xd4, 0x31, 0xf4, 0x03, 0x39, 0x02, 0xf1, 0xbd, 0x15, 0x06, 0x4d, 0x14, 0x38, 0xfe,
-	0xc5, 0x01, 0x7c, 0xea, 0x91, 0x74, 0xc7, 0xd2, 0x35, 0x89, 0x6c, 0x01, 0xaf, 0xb2, 0x15, 0x37,
-	0x02, 0x3a, 0x99, 0x0b, 0xb3, 0x5d, 0x7e, 0xe4, 0x96, 0x9f, 0x1d, 0xa0, 0xbb, 0xbc, 0x58, 0xdc,
-	0xd8, 0xf9, 0xa1, 0x4d, 0x5e, 0x64, 0xab, 0xc5, 0x46, 0xd1, 0x87, 0xa7, 0xcf, 0x49, 0x90, 0x5c,
-	0x2d, 0xe9, 0x84, 0xdc, 0xc7, 0xca, 0xf0, 0xa2, 0x45, 0xae, 0xb2, 0x5a, 0x38, 0x93, 0xef, 0xa5,
-	0x04, 0x2b, 0x93, 0xb4, 0xf8, 0x29, 0xab, 0xc5, 0xf4, 0xd7, 0x80, 0x8c, 0x37, 0xb3, 0x52, 0x4a,
-	0x46, 0x7b, 0x55, 0xee, 0xdb, 0xc6, 0x6c, 0x87, 0x68, 0xe8, 0x63, 0xf6, 0x9b, 0x7e, 0x26, 0xa1,
-	0x50, 0x9d, 0x04, 0xad, 0x6a, 0xa1, 0x30, 0x0a, 0xdc, 0xf0, 0xaf, 0x0f, 0x37, 0x85, 0xbd, 0xbf,
-	0xa6, 0xd3, 0x7d, 0xa9, 0xe3, 0x39, 0x09, 0xf7, 0x72, 0xf4, 0x11, 0x39, 0xea, 0x35, 0xac, 0x79,
-	0x21, 0x61, 0x33, 0xd4, 0xd8, 0xbe, 0x13, 0x09, 0x36, 0x85, 0xa2, 0x6e, 0x5c, 0xca, 0xcf, 0x36,
-	0xb6, 0xef, 0x44, 0xc2, 0xf4, 0xe7, 0x80, 0x3c, 0xb8, 0x65, 0x13, 0x7d, 0x42, 0x42, 0x6b, 0x44,
-	0x56, 0x14, 0xf6, 0xff, 0xd8, 0xf3, 0xe1, 0xad, 0x8f, 0x38, 0xbd, 0xca, 0xf0, 0x46, 0x83, 0xdf,
-	0xf5, 0xbf, 0x74, 0x8c, 0x95, 0xb9, 0xd4, 0x80, 0x9e, 0xed, 0x77, 0x6c, 0xb0, 0x65, 0xfb, 0x1b,
-	0x6c, 0xef, 0xd9, 0xd1, 0x96, 0xed, 0x2d, 0xfb, 0xee, 0xec, 0xcb, 0x9b, 0x52, 0xef, 0x9c, 0x61,
-	0x1a, 0xca, 0xf8, 0xef, 0x3b, 0x2a, 0xf5, 0xed, 0x53, 0x3a, 0x07, 0x2c, 0x56, 0xff, 0xbb, 0x33,
-	0x7a, 0xf5, 0x27, 0x00, 0x00, 0xff, 0xff, 0x59, 0xc5, 0xd1, 0x57, 0xd1, 0x03, 0x00, 0x00,
+	// 424 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0x41, 0x6f, 0xd3, 0x30,
+	0x14, 0xc7, 0x55, 0xd2, 0x6d, 0xe0, 0x20, 0x21, 0x59, 0x42, 0x0a, 0xe3, 0x40, 0xe9, 0x01, 0x7a,
+	0x72, 0x58, 0xb9, 0xc0, 0x76, 0x82, 0x95, 0x03, 0xd2, 0x84, 0xa6, 0xb4, 0xbb, 0xc0, 0xc1, 0x72,
+	0x63, 0x13, 0xac, 0x24, 0x76, 0x64, 0xbf, 0x24, 0x12, 0xdf, 0x80, 0x6f, 0xc9, 0x47, 0x41, 0x76,
+	0x92, 0x36, 0x1b, 0x9a, 0xd6, 0x9b, 0x93, 0xe7, 0xdf, 0xef, 0x6f, 0xbd, 0xf7, 0xd0, 0x32, 0xfd,
+	0x65, 0x74, 0x29, 0xeb, 0x52, 0xdb, 0x38, 0xd5, 0xea, 0xa7, 0xcc, 0x62, 0x56, 0xc9, 0x18, 0x84,
+	0x85, 0xd8, 0x00, 0x8f, 0x9b, 0xb3, 0x58, 0xaa, 0x46, 0xa7, 0x0c, 0xa4, 0x56, 0xa4, 0x32, 0x1a,
+	0x34, 0x7e, 0xbd, 0x67, 0x48, 0xc7, 0x10, 0x56, 0x49, 0xe2, 0x18, 0x62, 0x80, 0x93, 0xe6, 0xec,
+	0xf4, 0xdd, 0xc3, 0xda, 0xca, 0xe8, 0xcc, 0x08, 0x6b, 0x3b, 0xe9, 0xfc, 0x6f, 0x80, 0xd0, 0xd7,
+	0x5d, 0x12, 0xc6, 0x68, 0xaa, 0x58, 0x29, 0xa2, 0xc9, 0x6c, 0xb2, 0x78, 0x92, 0xf8, 0x33, 0xfe,
+	0x8d, 0x5e, 0x0e, 0x10, 0xb5, 0x52, 0xe5, 0x34, 0x2d, 0xa4, 0x50, 0x40, 0xbb, 0x80, 0xe8, 0xd1,
+	0x6c, 0xb2, 0x08, 0x97, 0x17, 0xe4, 0xc1, 0xd7, 0x91, 0xeb, 0xde, 0xb2, 0x96, 0x2a, 0xbf, 0xf4,
+	0x8e, 0x4b, 0x7f, 0x31, 0x89, 0xaa, 0x7b, 0x2a, 0x38, 0x47, 0x91, 0x33, 0xd0, 0x82, 0x6d, 0xa9,
+	0x15, 0xa6, 0x91, 0xa9, 0xb0, 0x43, 0x70, 0xe0, 0x83, 0x97, 0x07, 0x04, 0x6f, 0xae, 0xd6, 0xb7,
+	0xf2, 0x9e, 0xbb, 0xe2, 0x15, 0xdb, 0xae, 0x7b, 0x63, 0x1f, 0x76, 0x8e, 0xa6, 0xbc, 0x06, 0x1b,
+	0x4d, 0x67, 0xc1, 0x22, 0x5c, 0xbe, 0x39, 0x40, 0xbc, 0xba, 0xd9, 0x24, 0x9e, 0x71, 0x8d, 0x73,
+	0x85, 0xe8, 0xa8, 0x6b, 0x9c, 0x3b, 0xe3, 0x1f, 0x28, 0x14, 0xaa, 0x91, 0x46, 0xab, 0x52, 0x28,
+	0x88, 0x8e, 0xfd, 0x7b, 0x3f, 0x1e, 0xa0, 0xdd, 0x0f, 0x84, 0x7c, 0xd9, 0x0b, 0x92, 0xb1, 0xed,
+	0x74, 0x81, 0xc2, 0x51, 0x0d, 0xbf, 0x40, 0x8f, 0x5b, 0x6d, 0x72, 0xca, 0xa5, 0xe9, 0x87, 0x77,
+	0xe2, 0xbe, 0x57, 0xd2, 0xcc, 0xdf, 0xa2, 0x60, 0x75, 0xb3, 0xc1, 0x33, 0xf4, 0x14, 0x0a, 0x4b,
+	0x79, 0x0d, 0x74, 0x34, 0x62, 0x04, 0x85, 0x5d, 0xd5, 0xf0, 0x8d, 0x95, 0x62, 0xfe, 0x67, 0x82,
+	0x9e, 0xdd, 0x69, 0x15, 0x7e, 0x85, 0x42, 0x47, 0x31, 0xce, 0xdd, 0x7c, 0x46, 0xd0, 0xa7, 0xee,
+	0x8f, 0x0b, 0x76, 0x17, 0x2a, 0x6d, 0xc0, 0xaf, 0xc2, 0x51, 0x72, 0x02, 0x85, 0xbd, 0xd6, 0x06,
+	0x3a, 0xb6, 0xdd, 0xb1, 0xc1, 0xc0, 0xb6, 0xb7, 0xd8, 0xb6, 0x63, 0xa7, 0x03, 0xdb, 0x3a, 0xf6,
+	0xf3, 0xf9, 0xf7, 0x0f, 0x99, 0xde, 0xb5, 0x8a, 0x68, 0x93, 0xc5, 0xff, 0xef, 0x76, 0xa6, 0xef,
+	0xae, 0xf7, 0x85, 0x01, 0xbe, 0x3d, 0xf6, 0xab, 0xfd, 0xfe, 0x5f, 0x00, 0x00, 0x00, 0xff, 0xff,
+	0xcc, 0x66, 0xe0, 0x8d, 0x65, 0x03, 0x00, 0x00,
 }

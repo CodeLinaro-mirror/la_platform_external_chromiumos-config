@@ -15,41 +15,12 @@ import "chromiumos/config/api/test/rtd/v1/progress.proto";
 // TODO(crbug.com/1051691): Link to a reference implementation of Remote Test
 // Server & Remote Test Driver.
 message Invocation {
-  // Progress sink to be used to report progress of the Remote Test Driver
-  // invocation to the surrounding Remote Test Server.
-  ProgressSinkClientConfig progress_sink_client_config = 1;
-
-  // Set of DUTs used for each of the requests in this invocation.
+  // A unique name for this invocation.
   //
-  // Contains more than one dut if the test execution is sharded.
-  repeated DUT duts = 2;
-
-  // Smallest unit of an invocation request for which results MUST be reported.
-  //
-  // An invocation MUST execute all requests serially in-order. This assumption
-  // is necessary for future support of test sequences in test plans.
-  repeated Request requests = 3;
-
-  // Configuration information for using Test Lab Services to interact
-  // with DUTs and their peripherals.
-  TLSClientConfig test_lab_services_config = 4;
-}
-
-// Contains all configuration data required to interact with a single device
-// under test during a test invocation.
-message DUT {
-  // Name for the DUT for using Test Lab Services to interact with the
-  // device and its peripherals.
-  //
-  // The RTD MUST pass this to Test Lab Service RPCs that act on a particular
-  // DUT. See the tls.OpenDutPortRequest message for an example of where
-  // this is used.
-  string tls_dut_name = 1;
-}
-
-// Request for execution of a single test.metadata.Test
-message Request {
-  // name MUST be unique across all requests in this invocation.
+  // ProgressSink methods require the inclusion of this value in reported
+  // results. This provides additional safety from leaked Remote Test Driver
+  // processes in the case that a single container is used to run multiple
+  // invocations sequentially.
   //
   // Remote Test Drivers are recommended to use name as the opaque tag
   // required by the Test Lab Services API. Thus, name SHOULD be unique across
@@ -59,14 +30,26 @@ message Request {
   //   Test Lab Services API: tls/README.md
   string name = 1;
 
+  // Progress sink to be used to report progress of the Remote Test Driver
+  // invocation to the surrounding Remote Test Server.
+  ProgressSinkClientConfig progress_sink_client_config = 2;
+
+  // Configuration information for using Test Lab Services to interact
+  // with DUTs and their peripherals.
+  TLSClientConfig test_lab_services_config = 3;
+
+  // Set of DUTs usable in this invocation.
+  //
+  // Contains more than one dut if the test execution is sharded.
+  repeated DUT duts = 4;
+
   // The test to execute, identified by the test.metadata.Test.name field.
   //
-  // Note that the request does not contain a reference to the Remote Test
-  // Driver to use, as the request is an input to the Remote Test Driver
-  // invocation.
-  string test = 2;
+  // Note that the invocation does not contain a reference to the Remote Test
+  // Driver to use.
+  string test = 5;
 
-  // Per-request Remote Test Server environment configuration.
+  // Per-invocation Remote Test Server environment configuration.
   message Environment {
     // Absolute path to a directory for writing arbitrary files.
     //
@@ -82,22 +65,23 @@ message Request {
     // Remote Test Servers may archive the work_dir contents to non-ephemeral
     // storage as a best effort asynchronous task.
     string work_dir = 1;
-
-    // Absolute path to a directory for writing temporary files.
-    //
-    // This directory MUST be created by Remote Test Server prior to the Remote
-    // Test Driver invocation.
-    //
-    // Remote Test Drivers MUST use this directory for temporary files and MUST
-    // NOT attempt to use defaults like /tmp or the TMP environment variable.
-    //
-    // See also: Environment.work_dir
-    string temp_dir = 2;
   }
 
   // Environment configuration set by the Remote Test Server for a specific
-  // request of the Remote Test Driver.
-  Environment environment = 3;
+  // invocation of the Remote Test Driver.
+  Environment environment = 6;
+}
+
+// Contains all configuration data required to interact with a single device
+// under test during a test invocation.
+message DUT {
+  // Name for the DUT for using Test Lab Services to interact with the
+  // device and its peripherals.
+  //
+  // The RTD MUST pass this to Test Lab Service RPCs that act on a particular
+  // DUT. See the tls.OpenDutPortRequest message for an example of where
+  // this is used.
+  string tls_dut_name = 1;
 }
 
 // Configuration information required for using Test Lab & Wiring Services.
