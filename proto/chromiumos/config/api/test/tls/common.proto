@@ -218,10 +218,10 @@ message FetchCrashesRequest {
 // When this response is streamed, the first proto with a given crash ID will
 // always contain the CrashInfo.
 // Files and core dumps (if present) may be streamed. If they are,
-// subsequent protos with
-// the same crash ID will follow, each containing a chunk of file/coredump. To
-// reassemble these, concatenate the bytes received from each subsequent proto
-// with a matching crash_id (and blob.key, if present).
+// subsequent protos with the same crash ID will follow, each containing a chunk
+// of file/coredump. To reassemble these, concatenate the bytes received from
+// each subsequent proto with a matching crash_id (concatenate blobs that have
+// matching crash_ids and keys).
 // Additional crashes may be reported in the same stream with a new crash ID.
 message FetchCrashesResponse {
     // Crash id. unique only within responses to a single FetchCrashes request.
@@ -283,8 +283,14 @@ message CrashMetadata {
 // Arbitrary non-UTF8 key-value pair from crash report metadata files.
 message CrashBlob {
     // This value is a UTF8, human-readable, description of the data.
+    // This should be passed as the 'name' to the crash server.
+    // For instance, upload_file_fake_payload
     string key = 1;
     // The value is a blob (e.g. a file from sysfs or a minidump), which need
     // not be valid UTF-8, and may be large.
     bytes blob = 2;
+    // The basename of the file. Must be specified as the filename in data
+    // uploaded to the crash server.
+    // e.g. foo_binary.20201027.102345.0.dmp
+    string filename = 3;
 };
