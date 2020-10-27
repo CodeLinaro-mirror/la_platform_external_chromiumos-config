@@ -53,7 +53,7 @@ def CheckGenerated(input_api, output_api):
 def CommonChecks(input_api, output_api):
     results = []
     results.extend(CheckGenerated(input_api, output_api))
-    for script in ['./check_examples.sh', './run_py_unittests.sh',
+    for script in ['./run_py_unittests.sh',
                    './run_go_unittests.sh', './check_starlark.sh']:
       results.extend(presubmits.CheckScript(input_api, output_api, script))
     return results
