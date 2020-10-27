@@ -68,6 +68,58 @@ func ExampleProvisionRequest() {
 	// Provisioned OS + DLC.
 }
 
+func ExampleProvisionDutRequest() {
+	var invocation rtd.Invocation
+
+	tlsConfig := invocation.GetTestLabServicesConfig()
+	dutName := invocation.GetDuts()[0].GetTlsDutName()
+
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", tlsConfig.GetTlwAddress(), tlsConfig.GetTlwPort()), grpc.WithInsecure())
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+
+	c := tls.NewCommonClient(conn)
+
+	req := tls.ProvisionDutRequest{
+		Name: dutName,
+		Image: &tls.ProvisionDutRequest_ChromeOSImage{
+			PathOneof: &tls.ProvisionDutRequest_ChromeOSImage_GsPathPrefix{
+				GsPathPrefix: "gs://chromeos-image-archive/eve-release/R87-13457.0.0",
+			},
+		},
+		DlcSpecs: []*tls.ProvisionDutRequest_DLCSpec{
+			&tls.ProvisionDutRequest_DLCSpec{
+				Id: "sample-dlc",
+			},
+		},
+	}
+
+	ctx := context.Background()
+	op, err := c.ProvisionDut(ctx, &req)
+	if err != nil {
+		panic(err)
+	}
+
+	opcli := longrunning.NewOperationsClient(conn)
+	op, err = opcli.WaitOperation(ctx, &longrunning.WaitOperationRequest{
+		Name: op.GetName(),
+		Timeout: &duration.Duration{
+			Seconds: 3600,
+		},
+	})
+	if err != nil {
+		panic("RPC error")
+	}
+
+	if errStatus := op.GetError(); errStatus != nil {
+		panic(fmt.Sprintf("Operation error details: %v", errStatus.GetDetails()))
+	}
+
+	// Provisioned OS + DLC.
+}
+
 func ExampleFetchCrashesRequest() {
 	var invocation rtd.Invocation
 
