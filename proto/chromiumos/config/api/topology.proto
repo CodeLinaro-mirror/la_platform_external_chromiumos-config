@@ -151,6 +151,7 @@ message HardwareFeatures {
       MAX98360 = 6;
       RT1015 = 7;
       DA7219 = 8;
+      ALC1011 = 9;
     }
   }
 
