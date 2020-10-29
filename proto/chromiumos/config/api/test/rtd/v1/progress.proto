@@ -58,9 +58,13 @@ service ProgressSink {
 }
 
 message ReportResultRequest {
+  // The request to report results for, identified by the
+  // Invocation.Request.name field.
+  string request = 1;
+
   // The invocation to report results for, identified by the Invocation.name
-  // field.
-  string invocation = 1;
+  // field. DO NOT USE. Will be removed soon.
+  string invocation = 3 [deprecated = true];
 
   // Result to report.
   chromiumos.config.api.test.results.v2.Result result = 2;
@@ -80,9 +84,13 @@ message ReportLogRequest {
   // file path.
   string name = 1;
 
+  // The request to report logs for, identified by the
+  // Invocation.Request.name field.
+  string request = 2;
+
   // The invocation to report results for, identified by the Invocation.name
-  // field.
-  string invocation = 2;
+  // field. DO NOT USE. Will be removed soon.
+  string invocation = 4 [deprecated = true];
 
   // Uninterpreted chunk of log-data.
   bytes data = 3;
@@ -101,9 +109,13 @@ message ArchiveArtifactRequest {
   // request.
   string name = 1;
 
+  // The request to archive artifacts for, identified by the
+  // Invocation.Request.name field.
+  string request = 2;
+
   // The invocation to report results for, identified by the Invocation.name
-  // field.
-  string invocation = 2;
+  // field. DO NOT USE. Will be removed soon.
+  string invocation = 4 [deprecated = true];
 
   // Absolute path to a file or directory to archive.
   string local_path = 3;

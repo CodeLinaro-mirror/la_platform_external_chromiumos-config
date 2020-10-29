@@ -17,18 +17,15 @@ import "chromiumos/config/api/test/rtd/v1/progress.proto";
 message Invocation {
   // A unique name for this invocation.
   //
-  // ProgressSink methods require the inclusion of this value in reported
-  // results. This provides additional safety from leaked Remote Test Driver
-  // processes in the case that a single container is used to run multiple
-  // invocations sequentially.
+  // DO NOT USE. Will be removed in 2020-11.
+  string name = 7 [deprecated = true];
+
+  // Smallest unit of an invocation request for which results MUST be reported.
   //
-  // Remote Test Drivers are recommended to use name as the opaque tag
-  // required by the Test Lab Services API. Thus, name SHOULD be unique across
-  // all invocations to simplify analytics. UUIDs are recommended.
-  //
-  // See also:
-  //   Test Lab Services API: tls/README.md
-  string name = 1;
+  // An invocation SHOULD execute requests in a deterministic order based on
+  // the ordering of this list. The invocation MAY do this my executing the
+  // requests serially in the input order.
+  repeated Request requests = 1;
 
   // Progress sink to be used to report progress of the Remote Test Driver
   // invocation to the surrounding Remote Test Server.
@@ -45,11 +42,50 @@ message Invocation {
 
   // The test to execute, identified by the test.metadata.Test.name field.
   //
-  // Note that the invocation does not contain a reference to the Remote Test
-  // Driver to use.
-  string test = 5;
+  // DO NOT USE. Will be removed in 2020-11.
+  string test = 5 [deprecated = true];
 
   // Per-invocation Remote Test Server environment configuration.
+  //
+  // DO NOT USE. Will be removed in 2020-11.
+  message Environment {
+    // Absolute path to a directory for writing arbitrary files.
+    //
+    // DO NOT USE. Will be removed in 2020-11.
+    string work_dir = 1 [deprecated = true];
+  }
+
+  // Environment configuration set by the Remote Test Server for a specific
+  // invocation of the Remote Test Driver.
+  // DO NOT USE. Will be removed in 2020-11.
+  Environment environment = 6 [deprecated = true];
+}
+
+// Request for execution of a single test.metadata.Test
+message Request {
+  // name MUST be unique across all requests in this invocation.
+  //
+  // ProgressSink methods require the inclusion of this value in reported
+  // results. This provides additional safety from leaked Remote Test Driver
+  // processes in the case that a single container is used to run multiple
+  // invocations sequentially.
+  //
+  // Remote Test Drivers are recommended to use name as the opaque tag
+  // required by the Test Lab Services API. Thus, name SHOULD be unique across
+  // all invocations to simplify analytics. UUIDs are recommended.
+  //
+  // See also:
+  //   Test Lab Services API: tls/README.md
+  string name = 1;
+
+  // The test to execute, identified by the test.metadata.Test.name field.
+  //
+  // Note that the request does not contain a reference to the Remote Test
+  // Driver to use, as the request is an input to the Remote Test Driver
+  // invocation.
+  string test = 2;
+
+  // Per-request Remote Test Server environment configuration.
   message Environment {
     // Absolute path to a directory for writing arbitrary files.
     //
@@ -68,8 +104,8 @@ message Invocation {
   }
 
   // Environment configuration set by the Remote Test Server for a specific
-  // invocation of the Remote Test Driver.
-  Environment environment = 6;
+  // request of the Remote Test Driver.
+  Environment environment = 3;
 }
 
 // Contains all configuration data required to interact with a single device
