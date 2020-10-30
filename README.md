@@ -209,6 +209,27 @@ constraints are under the `checks` directory of the program repo. For example,
 see the [Galaxy](https://chrome-internal.googlesource.com/chromeos/program/galaxy/+/refs/heads/master/checks/)
 test data program.
 
+## Public Configs
+
+The private project repo contains the entire project config; some config fields
+must remain private and some can be made public for building from a public
+checkout. Fields are private by default, and can be made public via the
+[`chromiumos.config.public_replication.PublicReplication`](https://chromium.googlesource.com/chromiumos/config/+/HEAD/proto/chromiumos/config/public_replication/public_replication.proto)
+message (see the message comment for the most up to date documentation).
+
+The `gen_config` command will parse `PublicReplication` messages to generate
+`public_config.jsonproto` and `public_sw_build_config` outputs, which are
+filtered versions of the full `config.jsonproto` and `sw_build_config` outputs,
+respectively. These public outputs will be automatically copied to the public
+[`chromiumos/project`](https://chromium.googlesource.com/chromiumos/project/+/refs/heads/main)
+repo after CLs are submitted, where they can be used in public ebuilds (because
+the file structure of the public configs is symmetrical to the private configs,
+the ebuild structure can be similar to private ebuilds).
+
+As with other configuration, Starlark functions in `util/` will provide defaults
+for public fields, but these settings can be overridden by individual programs
+and projects.
+
 ## Directory Structure
 
 ### chromiumos/config
@@ -263,6 +284,9 @@ configuration payload. See
 
 - `sw_build_config/`: Files for configuring software on the project's build.
 Contains manually-edited and generated files.
+
+- `public_sw_build_config/`: A filtered version of `sw_build_config`, for use
+in public builds.
 
 - `local_manifest.xml`: Local manifest for working on the project. See
 [Project Setup for Partners](#Project-Setup-for-Partners)
