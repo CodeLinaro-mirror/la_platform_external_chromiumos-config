@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.rtd.v1',
   syntax='proto3',
   serialized_options=_b('Z8go.chromium.org/chromiumos/config/go/api/test/rtd/v1;rtd'),
-  serialized_pb=_b('\n0chromiumos/config/api/test/rtd/v1/progress.proto\x12!chromiumos.config.api.test.rtd.v1\x1a\x32\x63hromiumos/config/api/test/results/v2/result.proto\"(\n\x18ProgressSinkClientConfig\x12\x0c\n\x04port\x18\x01 \x01(\x05\"}\n\x13ReportResultRequest\x12\x0f\n\x07request\x18\x01 \x01(\t\x12\x16\n\ninvocation\x18\x03 \x01(\tB\x02\x18\x01\x12=\n\x06result\x18\x02 \x01(\x0b\x32-.chromiumos.config.api.test.results.v2.Result\")\n\x14ReportResultResponse\x12\x11\n\tterminate\x18\x01 \x01(\x08\"W\n\x10ReportLogRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07request\x18\x02 \x01(\t\x12\x16\n\ninvocation\x18\x04 \x01(\tB\x02\x18\x01\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\"\x13\n\x11ReportLogResponse\"c\n\x16\x41rchiveArtifactRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07request\x18\x02 \x01(\t\x12\x16\n\ninvocation\x18\x04 \x01(\tB\x02\x18\x01\x12\x12\n\nlocal_path\x18\x03 \x01(\t\"\x19\n\x17\x41rchiveArtifactResponse2\x94\x03\n\x0cProgressSink\x12\x7f\n\x0cReportResult\x12\x36.chromiumos.config.api.test.rtd.v1.ReportResultRequest\x1a\x37.chromiumos.config.api.test.rtd.v1.ReportResultResponse\x12x\n\tReportLog\x12\x33.chromiumos.config.api.test.rtd.v1.ReportLogRequest\x1a\x34.chromiumos.config.api.test.rtd.v1.ReportLogResponse(\x01\x12\x88\x01\n\x0f\x41rchiveArtifact\x12\x39.chromiumos.config.api.test.rtd.v1.ArchiveArtifactRequest\x1a:.chromiumos.config.api.test.rtd.v1.ArchiveArtifactResponseB:Z8go.chromium.org/chromiumos/config/go/api/test/rtd/v1;rtdb\x06proto3')
+  serialized_pb=_b('\n0chromiumos/config/api/test/rtd/v1/progress.proto\x12!chromiumos.config.api.test.rtd.v1\x1a\x32\x63hromiumos/config/api/test/results/v2/result.proto\"(\n\x18ProgressSinkClientConfig\x12\x0c\n\x04port\x18\x01 \x01(\x05\"e\n\x13ReportResultRequest\x12\x0f\n\x07request\x18\x01 \x01(\t\x12=\n\x06result\x18\x02 \x01(\x0b\x32-.chromiumos.config.api.test.results.v2.Result\")\n\x14ReportResultResponse\x12\x11\n\tterminate\x18\x01 \x01(\x08\"?\n\x10ReportLogRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07request\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\"\x13\n\x11ReportLogResponse\"K\n\x16\x41rchiveArtifactRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07request\x18\x02 \x01(\t\x12\x12\n\nlocal_path\x18\x03 \x01(\t\"\x19\n\x17\x41rchiveArtifactResponse2\x94\x03\n\x0cProgressSink\x12\x7f\n\x0cReportResult\x12\x36.chromiumos.config.api.test.rtd.v1.ReportResultRequest\x1a\x37.chromiumos.config.api.test.rtd.v1.ReportResultResponse\x12x\n\tReportLog\x12\x33.chromiumos.config.api.test.rtd.v1.ReportLogRequest\x1a\x34.chromiumos.config.api.test.rtd.v1.ReportLogResponse(\x01\x12\x88\x01\n\x0f\x41rchiveArtifact\x12\x39.chromiumos.config.api.test.rtd.v1.ArchiveArtifactRequest\x1a:.chromiumos.config.api.test.rtd.v1.ArchiveArtifactResponseB:Z8go.chromium.org/chromiumos/config/go/api/test/rtd/v1;rtdb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_results_dot_v2_dot_result__pb2.DESCRIPTOR,])
 
@@ -73,14 +73,7 @@ _REPORTRESULTREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='invocation', full_name='chromiumos.config.api.test.rtd.v1.ReportResultRequest.invocation', index=1,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='result', full_name='chromiumos.config.api.test.rtd.v1.ReportResultRequest.result', index=2,
+      name='result', full_name='chromiumos.config.api.test.rtd.v1.ReportResultRequest.result', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -99,7 +92,7 @@ _REPORTRESULTREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=181,
-  serialized_end=306,
+  serialized_end=282,
 )
 
 
@@ -129,8 +122,8 @@ _REPORTRESULTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=308,
-  serialized_end=349,
+  serialized_start=284,
+  serialized_end=325,
 )
 
 
@@ -156,14 +149,7 @@ _REPORTLOGREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='invocation', full_name='chromiumos.config.api.test.rtd.v1.ReportLogRequest.invocation', index=2,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='data', full_name='chromiumos.config.api.test.rtd.v1.ReportLogRequest.data', index=3,
+      name='data', full_name='chromiumos.config.api.test.rtd.v1.ReportLogRequest.data', index=2,
       number=3, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
@@ -181,8 +167,8 @@ _REPORTLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=351,
-  serialized_end=438,
+  serialized_start=327,
+  serialized_end=390,
 )
 
 
@@ -205,8 +191,8 @@ _REPORTLOGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=440,
-  serialized_end=459,
+  serialized_start=392,
+  serialized_end=411,
 )
 
 
@@ -232,14 +218,7 @@ _ARCHIVEARTIFACTREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='invocation', full_name='chromiumos.config.api.test.rtd.v1.ArchiveArtifactRequest.invocation', index=2,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='local_path', full_name='chromiumos.config.api.test.rtd.v1.ArchiveArtifactRequest.local_path', index=3,
+      name='local_path', full_name='chromiumos.config.api.test.rtd.v1.ArchiveArtifactRequest.local_path', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -257,8 +236,8 @@ _ARCHIVEARTIFACTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=461,
-  serialized_end=560,
+  serialized_start=413,
+  serialized_end=488,
 )
 
 
@@ -281,8 +260,8 @@ _ARCHIVEARTIFACTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=562,
-  serialized_end=587,
+  serialized_start=490,
+  serialized_end=515,
 )
 
 _REPORTRESULTREQUEST.fields_by_name['result'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_results_dot_v2_dot_result__pb2._RESULT
@@ -346,9 +325,6 @@ _sym_db.RegisterMessage(ArchiveArtifactResponse)
 
 
 DESCRIPTOR._options = None
-_REPORTRESULTREQUEST.fields_by_name['invocation']._options = None
-_REPORTLOGREQUEST.fields_by_name['invocation']._options = None
-_ARCHIVEARTIFACTREQUEST.fields_by_name['invocation']._options = None
 
 _PROGRESSSINK = _descriptor.ServiceDescriptor(
   name='ProgressSink',
@@ -356,8 +332,8 @@ _PROGRESSSINK = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=590,
-  serialized_end=994,
+  serialized_start=518,
+  serialized_end=922,
   methods=[
   _descriptor.MethodDescriptor(
     name='ReportResult',

@@ -15,11 +15,6 @@ import "chromiumos/config/api/test/rtd/v1/progress.proto";
 // TODO(crbug.com/1051691): Link to a reference implementation of Remote Test
 // Server & Remote Test Driver.
 message Invocation {
-  // A unique name for this invocation.
-  //
-  // DO NOT USE. Will be removed in 2020-11.
-  string name = 7 [deprecated = true];
-
   // Smallest unit of an invocation request for which results MUST be reported.
   //
   // An invocation SHOULD execute requests in a deterministic order based on
@@ -39,26 +34,6 @@ message Invocation {
   //
   // Contains more than one dut if the test execution is sharded.
   repeated DUT duts = 4;
-
-  // The test to execute, identified by the test.metadata.Test.name field.
-  //
-  // DO NOT USE. Will be removed in 2020-11.
-  string test = 5 [deprecated = true];
-
-  // Per-invocation Remote Test Server environment configuration.
-  //
-  // DO NOT USE. Will be removed in 2020-11.
-  message Environment {
-    // Absolute path to a directory for writing arbitrary files.
-    //
-    // DO NOT USE. Will be removed in 2020-11.
-    string work_dir = 1 [deprecated = true];
-  }
-
-  // Environment configuration set by the Remote Test Server for a specific
-  // invocation of the Remote Test Driver.
-  // DO NOT USE. Will be removed in 2020-11.
-  Environment environment = 6 [deprecated = true];
 }
 
 // Request for execution of a single test.metadata.Test
