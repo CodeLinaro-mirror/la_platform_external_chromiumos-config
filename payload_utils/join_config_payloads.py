@@ -38,6 +38,7 @@ yaml.add_constructor('!region_component', lambda loader, node: None)
 
 # git repo locations
 CROS_PLATFORM_REPO = 'https://chromium.googlesource.com/chromiumos/platform2'
+CROS_CONFIG_INTERNAL_REPO = 'https://chrome-internal.googlesource.com/chromeos/config-internal'
 
 
 def load_models(public_path, private_path):
@@ -102,6 +103,49 @@ def non_null_values(items):
     return True
 
   return [(key, val['values']) for key, val in items.items() if _include(val)]
+
+
+def backfill_configs(config_bundle):
+  """Add any additional backfill information on top of the joined payload.
+
+  This is really miscellaneous information that we don't have an existing
+  source for (eg: it wasn't specified in model.yaml or HWID, such as the
+  EC type), so we have to store it externally and merge it in to make it
+  available to downstream consumers of the merged data.
+  """
+
+  # Have to import this here since we need repos cloned and sys.path set up
+  # pylint: disable=import-outside-toplevel, import-error
+  from backfill import ec_config
+  # pylint: enable=import-outside-toplevel, import-error
+
+  # iterate over program and projects
+  for design in config_bundle.design_list:
+    for design_config in design.configs:
+      program = design.program_id.value.lower()
+      project = design.name.lower()
+
+      # populate embedded controller information
+      ec_type = ec_config.get_board_ec(program, project)
+
+      if (ec_type is not None and
+          not design_config.hardware_features.HasField("embedded_controller")):
+        # get reference to embedded controller proto
+        controller = design_config.hardware_features.embedded_controller
+        controller.present = topology_pb2.HardwareFeatures.PRESENT
+
+        if ec_type == ec_config.EC_NONE:
+          controller.present = topology_pb2.HardwareFeatures.NOT_PRESENT
+        else:
+          controller.ec_type = \
+            {
+                ec_config.EC_CHROME :
+                    topology_pb2.HardwareFeatures.EmbeddedController.EC_CHROME,
+                ec_config.EC_WILCO :
+                    topology_pb2.HardwareFeatures.EmbeddedController.EC_WILCO
+            }[ec_type]
+
+  return config_bundle
 
 
 def add_hwid_components(config_bundle, hwid_db):
@@ -820,14 +864,18 @@ def main(options):
 
   with tempfile.TemporaryDirectory(prefix='join_proto_') as temppath:
     clone_repo(CROS_PLATFORM_REPO, os.path.join(temppath, 'platform2'))
+    clone_repo(CROS_CONFIG_INTERNAL_REPO,
+               os.path.join(temppath, 'config-internal'))
 
     # setup sys.path so we can import from the cloned repos
     sys.path.append(os.path.join(temppath, 'platform2', 'chromeos-config'))
+    sys.path.append(os.path.join(temppath, 'config-internal'))
 
     io_utils.write_message_json(
-        merge_configs(options.config_bundle, options.project_name,
-                      options.public_model, options.private_model,
-                      options.hwid),
+        backfill_configs(
+            merge_configs(options.config_bundle, options.project_name,
+                          options.public_model, options.private_model,
+                          options.hwid)),
         options.output,
         default_fields=True)
 
