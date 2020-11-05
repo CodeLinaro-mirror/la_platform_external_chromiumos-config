@@ -485,11 +485,19 @@ design.append_configs(
     power = _SC_POWER,
 )
 
+_BOARD_ID_PHASE = {
+    0: "PROTO",
+    1: "EVT",
+    2: "DVT",
+    3: "PVT",
+}
+
 _DESIGN = design.create_design(
     id = _DESIGN_ID,
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
     configs = _HW_CONFIGS,
+    board_id_phases = _BOARD_ID_PHASE,
 )
 
 _DESIGN_A = design.create_design(

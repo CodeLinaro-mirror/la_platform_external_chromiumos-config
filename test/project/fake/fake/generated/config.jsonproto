@@ -136,6 +136,12 @@
   ],
   "designList": [
     {
+      "boardIdPhase": {
+        "0": "PROTO",
+        "1": "EVT",
+        "2": "DVT",
+        "3": "PVT"
+      },
       "configs": [
         {
           "hardwareFeatures": {

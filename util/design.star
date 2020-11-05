@@ -140,7 +140,8 @@ def _create_design(
         program_id,
         odm_id,
         public_fields = ["id", "program_id"],
-        configs = None):
+        configs = None,
+        board_id_phases = None):
     """Builds a Design proto."""
     return design_pb.Design(
         id = id,
@@ -149,6 +150,7 @@ def _create_design(
         public_replication = public_replication.create(public_fields = public_fields),
         name = id.value,
         configs = configs,
+        board_id_phase = board_id_phases,
     )
 
 design = struct(
