@@ -20,8 +20,12 @@ message ReleaseTarget {
   ReleaseTargetId id = 1;
   // Human friendly name
   string name = 2;
-  repeated chromiumos.config.api.software.SystemImage.BuildTarget
-      build_targets = 3;
+
+  // Defines the primary build target for a given release.
+  chromiumos.config.api.software.SystemImage.BuildTarget main_target = 5;
+
+  // Defines the uprev build target for a given release.
+  chromiumos.config.api.software.SystemImage.BuildTarget uprev_target = 6;
 
   Signing signing = 4;
 
