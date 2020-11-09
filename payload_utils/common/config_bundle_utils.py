@@ -71,9 +71,11 @@ def flatten_config(config: ConfigBundle) -> FlatConfigList:
         # foreign key with anything. We'll store it as part of the build metadata
         # and use the BuildTargetId (overlay name) to look it up.
         flat_config = results.values.add()
+        # TODO(shapiroc): Remove after migrated to hw_components
         flat_config.program_components.MergeFrom(config.components)
         flat_config.hw_design.MergeFrom(hw_design)
         flat_config.hw_design_config.MergeFrom(hw_design_config)
+        flat_config.hw_components.MergeFrom(config.components)
         flat_config.device_brand.MergeFrom(device_brand)
         flat_config.sw_config.MergeFrom(sw_config)
         flat_config.brand_sw_config.MergeFrom(brand_config)
