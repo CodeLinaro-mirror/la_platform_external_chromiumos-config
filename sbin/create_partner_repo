@@ -296,15 +296,16 @@ update_manifest_internal() {
   fi
 
   if [[ -z "${project}" ]]; then
-    local project_xml='  <project remote="cros-internal"\n '
-    project_xml+='          path="src\/program\/'"${name}"'"\n '
-    project_xml+='          name="chromeos\/program\/'"${name}"'"\n '
-    project_xml+='          groups="'"${program}"'-'"${name}"'" \/>\n'
+    local project_xml='<project remote="cros-internal"\n '
+    project_xml+='        path="src\/program\/'"${name}"'"\n '
+    project_xml+='        name="chromeos\/program\/'"${name}"'"\n '
+    project_xml+='        groups="partner-config" \/>\n'
     project_xml+='<\/manifest>'
   else
-    local project_xml='  <project remote="cros-internal"\n '
-    project_xml+='          path="src\/project\/'"${program}"'\/'"${name}"'"\n '
-    project_xml+='          name="chromeos\/project\/'"${program}"'\/'"${name}"'" \/>\n'
+    local project_xml='<project remote="cros-internal"\n '
+    project_xml+='        path="src\/project\/'"${program}"'\/'"${name}"'"\n '
+    project_xml+='        groups="partner-config"\n '
+    project_xml+='        name="chromeos\/project\/'"${program}"'\/'"${name}"'" \/>\n'
     project_xml+='<\/manifest>'
   fi
 
