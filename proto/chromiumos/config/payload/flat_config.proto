@@ -24,11 +24,6 @@ option go_package = "go.chromium.org/chromiumos/config/go/payload";
 // simplifies queries greatly.
 message FlatConfig {
   api.Program program = 1;
-  // TODO(shapiroc): Delete after migration to hw_components
-  // Program components don't make sense when it's merged with
-  // design project, because at that point, we have the actual components
-  // used and don't need the program level constraints.
-  repeated api.Component program_components = 2;
   api.Design hw_design = 3;
   api.Partner odm = 4;
   api.Design.Config hw_design_config = 5;
@@ -39,6 +34,8 @@ message FlatConfig {
   api.software.BuildTarget build_target = 8;
   api.software.SoftwareConfig sw_config = 9;
   api.software.BrandConfig brand_sw_config = 10;
+
+  reserved 2;
 }
 
 // A list of FlatConfigs for ease of serialization into a file.
