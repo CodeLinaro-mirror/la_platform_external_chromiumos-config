@@ -3144,6 +3144,9 @@
           "ucmSuffix": "2mic"
         }
       ],
+      "cameraConfig": {
+        "generateMediaProfiles": true
+      },
       "designConfigId": {
         "value": "FAKE_REF_DESIGN:0"
       },
@@ -3252,6 +3255,9 @@
         "flags": {
           "enable-suspend-management": true
         }
+      },
+      "cameraConfig": {
+        "generateMediaProfiles": true
       },
       "designConfigId": {
         "value": "PROJECT_A:32"
@@ -3388,6 +3394,15 @@
         "flags": {
           "enable-suspend-management": true
         }
+      },
+      "cameraConfig": {
+        "camcorderResolutions": [
+          {
+            "height": 480,
+            "width": 640
+          }
+        ],
+        "generateMediaProfiles": true
       },
       "designConfigId": {
         "value": "PROJECT_B:33"

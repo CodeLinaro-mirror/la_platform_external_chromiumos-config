@@ -1,0 +1,24 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+package chromiumos.config.api.software;
+
+message Resolution {
+  uint32 width = 1;
+  uint32 height = 2;
+}
+
+message CameraConfig {
+  // If true, the ARC media_profiles.xml will be generated from Boxster and
+  // override the one installed by overlays.
+  bool generate_media_profiles = 1;
+
+  // If non-empty, the resolutions are used for CamcorderProfiles in
+  // media_profiles.xml instead of deriving from scripts.
+  repeated Resolution camcorder_resolutions = 2;
+}

@@ -13,14 +13,13 @@ import pprint
 import os
 import sys
 import re
-import xml.etree.ElementTree as etree
-import xml.dom.minidom as minidom
 
 from typing import List
 
 from collections import namedtuple
 
 from google.protobuf import json_format
+from lxml import etree
 
 from chromiumos.config.api import device_brand_pb2
 from chromiumos.config.api import topology_pb2
@@ -32,9 +31,10 @@ Config = namedtuple('Config', [
     'device_signer_config', 'oem', 'sw_config', 'brand_config', 'build_target'
 ])
 
-ConfigFiles = namedtuple(
-    'ConfigFiles',
-    ['arc_hw_features', 'touch_fw', 'dptf_map', 'camera_map', 'wifi_sar_map'])
+ConfigFiles = namedtuple('ConfigFiles', [
+    'arc_hw_features', 'arc_media_profiles', 'touch_fw', 'dptf_map',
+    'camera_map', 'wifi_sar_map'
+])
 
 CAMERA_CONFIG_DEST_PATH_TEMPLATE = '/etc/camera/camera_config_{}.json'
 CAMERA_CONFIG_SOURCE_PATH_TEMPLATE = (
@@ -45,6 +45,8 @@ DPTF_FILE = 'dptf.dv'
 
 TOUCH_PATH = 'sw_build_config/platform/chromeos-config/touch'
 WALLPAPER_BASE_PATH = '/usr/share/chromeos-assets/wallpaper'
+
+XML_DECLARATION = b'<?xml version="1.0" encoding="utf-8"?>\n'
 
 
 def parse_args(argv):
@@ -106,6 +108,8 @@ def _build_arc(config, config_files):
   config_id = _get_formatted_config_id(config.hw_design_config)
   if config_id in config_files.arc_hw_features:
     result['hardware-features'] = config_files.arc_hw_features[config_id]
+  if config_id in config_files.arc_media_profiles:
+    result['media-profiles'] = config_files.arc_media_profiles[config_id]
   topology = config.hw_design_config.hardware_topology
   ppi = topology.screen.hardware_feature.screen.panel_properties.pixels_per_in
   # Only set for high resolution displays
@@ -626,7 +630,7 @@ def _is_whitelabel(brand_configs, device_brands):
 
 
 def _transform_build_configs(config,
-                             config_files=ConfigFiles({}, {}, {}, {}, {})):
+                             config_files=ConfigFiles({}, {}, {}, {}, {}, {})):
   # pylint: disable=too-many-locals,too-many-branches
   partners = {x.id.value: x for x in config.partner_list}
   programs = {x.id.value: x for x in config.program_list}
@@ -889,8 +893,142 @@ def _generate_arc_hardware_features(hw_features):
           _feature('android.hardware.touchscreen.multitouch.jazzhand',
                    touchscreen),
       ])
-  return minidom.parseString(etree.tostring(root)).toprettyxml(
-      indent='  ', encoding='utf-8')
+  return XML_DECLARATION + etree.tostring(root, pretty_print=True)
+
+
+def _generate_arc_media_profiles(hw_features, sw_config):
+  """Generates ARC media_profiles.xml file content.
+
+  Args:
+    hw_features: HardwareFeatures proto message.
+    sw_config: SoftwareConfig proto message.
+  Returns:
+    bytes of the media_profiles.xml content, or None if |sw_config| disables the
+    generation.
+  """
+
+  def _gen_camcorder_profiles(camera_id, resolutions):
+    elem = etree.Element(
+        'CamcorderProfiles', attrib={'cameraId': str(camera_id)})
+    for width, height in resolutions:
+      elem.extend([
+          _gen_encoder_profile(width, height, False),
+          _gen_encoder_profile(width, height, True),
+      ])
+    elem.extend([
+        etree.Element('ImageEncoding', attrib={'quality': '90'}),
+        etree.Element('ImageEncoding', attrib={'quality': '80'}),
+        etree.Element('ImageEncoding', attrib={'quality': '70'}),
+        etree.Element('ImageDecoding', attrib={'memCap': '20000000'}),
+    ])
+    return elem
+
+  def _gen_encoder_profile(width, height, timelapse):
+    elem = etree.Element(
+        'EncoderProfile',
+        attrib={
+            'quality': ('timelapse' if timelapse else '') + str(height) + 'p',
+            'fileFormat': 'mp4',
+            'duration': '60',
+        })
+    elem.append(
+        etree.Element(
+            'Video',
+            attrib={
+                'codec': 'h264',
+                'bitRate': '8000000',
+                'width': str(width),
+                'height': str(height),
+                'frameRate': '30',
+            }))
+    elem.append(
+        etree.Element(
+            'Audio',
+            attrib={
+                'codec': 'aac',
+                'bitRate': '96000',
+                'sampleRate': '44100',
+                'channels': '1',
+            }))
+    return elem
+
+  def _gen_video_encoder_cap(name, min_bit_rate, max_bit_rate):
+    return etree.Element(
+        'VideoEncoderCap',
+        attrib={
+            'name': name,
+            'enabled': 'true',
+            'minBitRate': str(min_bit_rate),
+            'maxBitRate': str(max_bit_rate),
+            'minFrameWidth': '320',
+            'maxFrameWidth': '1920',
+            'minFrameHeight': '240',
+            'maxFrameHeight': '1080',
+            'minFrameRate': '15',
+            'maxFrameRate': '30',
+        })
+
+  def _gen_audio_encoder_cap(name, min_bit_rate, max_bit_rate, min_sample_rate,
+                             max_sample_rate):
+    return etree.Element(
+        'AudioEncoderCap',
+        attrib={
+            'name': name,
+            'enabled': 'true',
+            'minBitRate': str(min_bit_rate),
+            'maxBitRate': str(max_bit_rate),
+            'minSampleRate': str(min_sample_rate),
+            'maxSampleRate': str(max_sample_rate),
+            'minChannels': '1',
+            'maxChannels': '1',
+        })
+
+  camera_config = sw_config.camera_config
+  if not camera_config.generate_media_profiles:
+    return None
+
+  camera_pb = topology_pb2.HardwareFeatures.Camera
+  root = etree.Element('MediaSettings')
+  camera_id = 0
+  for facing in [camera_pb.FACING_BACK, camera_pb.FACING_FRONT]:
+    camera_device = next(
+        (d for d in hw_features.camera.devices if d.facing == facing), None)
+    if camera_device is None:
+      continue
+    if camera_config.camcorder_resolutions:
+      resolutions = [
+          (r.width, r.height) for r in camera_config.camcorder_resolutions
+      ]
+    else:
+      resolutions = [(1280, 720)]
+      if camera_device.flags & camera_pb.FLAGS_SUPPORT_1080P:
+        resolutions.append((1920, 1080))
+    root.append(_gen_camcorder_profiles(camera_id, resolutions))
+    camera_id += 1
+
+  root.extend([
+      etree.Element('EncoderOutputFileFormat', attrib={'name': '3gp'}),
+      etree.Element('EncoderOutputFileFormat', attrib={'name': 'mp4'}),
+      _gen_video_encoder_cap('h264', 64000, 17000000),
+      _gen_video_encoder_cap('h263', 64000, 1000000),
+      _gen_video_encoder_cap('m4v', 64000, 2000000),
+      _gen_audio_encoder_cap('aac', 758, 288000, 8000, 48000),
+      _gen_audio_encoder_cap('heaac', 8000, 64000, 16000, 48000),
+      _gen_audio_encoder_cap('aaceld', 16000, 192000, 16000, 48000),
+      _gen_audio_encoder_cap('amrwb', 6600, 23050, 16000, 16000),
+      _gen_audio_encoder_cap('amrnb', 5525, 12200, 8000, 8000),
+      etree.Element(
+          'VideoDecoderCap', attrib={
+              'name': 'wmv',
+              'enabled': 'false'
+          }),
+      etree.Element(
+          'AudioDecoderCap', attrib={
+              'name': 'wma',
+              'enabled': 'false'
+          }),
+  ])
+  return XML_DECLARATION + etree.tostring(root, pretty_print=True)
 
 
 def _write_files_by_design_config(configs, output_dir, build_dir, system_dir,
@@ -905,7 +1043,7 @@ def _write_files_by_design_config(configs, output_dir, build_dir, system_dir,
     file_name_template: Template string of the config file name including one
       format()-style replacement field for the config id, e.g. 'config_{}.xml'.
     generate_file_content: Function to generate config file content from
-      HardwareFeatures proto.
+      HardwareFeatures and SoftwareConfig proto.
   Returns:
     dict that maps the formatted config id to the correct file.
   """
@@ -914,7 +1052,11 @@ def _write_files_by_design_config(configs, output_dir, build_dir, system_dir,
   configs_by_design = {}
   for hw_design in configs.design_list:
     for design_config in hw_design.configs:
-      config_content = generate_file_content(design_config.hardware_features)
+      sw_config = _sw_config(configs.software_configs, design_config.id.value)
+      config_content = generate_file_content(design_config.hardware_features,
+                                             sw_config)
+      if not config_content:
+        continue
       design_name = hw_design.name.lower()
 
       # Constructs the following map:
@@ -948,10 +1090,17 @@ def _write_files_by_design_config(configs, output_dir, build_dir, system_dir,
 
 
 def _write_arc_hardware_feature_files(configs, output_root_dir, build_root_dir):
+  return _write_files_by_design_config(
+      configs, output_root_dir + '/arc', build_root_dir + '/arc', '/etc',
+      'hardware_features_{}.xml',
+      lambda hw_features, _: _generate_arc_hardware_features(hw_features))
+
+
+def _write_arc_media_profile_files(configs, output_root_dir, build_root_dir):
   return _write_files_by_design_config(configs, output_root_dir + '/arc',
                                        build_root_dir + '/arc', '/etc',
-                                       'hardware_features_{}.xml',
-                                       _generate_arc_hardware_features)
+                                       'media_profiles_{}.xml',
+                                       _generate_arc_media_profiles)
 
 
 def _read_config(path):
@@ -1191,8 +1340,11 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
     touch_fw = _build_touch_file_config(configs, project_name)
   arc_hw_feature_files = _write_arc_hardware_feature_files(
       configs, output_dir, build_root_dir)
+  arc_media_profile_files = _write_arc_media_profile_files(
+      configs, output_dir, build_root_dir)
   config_files = ConfigFiles(
       arc_hw_features=arc_hw_feature_files,
+      arc_media_profiles=arc_media_profile_files,
       touch_fw=touch_fw,
       dptf_map=dptf_map,
       camera_map=camera_map,

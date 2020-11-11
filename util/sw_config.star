@@ -10,6 +10,10 @@ load(
     audio_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/camera_config.proto",
+    cam_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/config/api/software/bluetooth_config.proto",
     bt_pb = "chromiumos.config.api.software",
 )
@@ -340,11 +344,24 @@ def _create_intel_wifi(
         ),
     )
 
+def _create_camera(
+        generate_media_profiles = False,
+        camcorder_resolutions = None):
+    """Builds a CameraConfig proto."""
+    return cam_pb.CameraConfig(
+        generate_media_profiles = generate_media_profiles,
+        camcorder_resolutions = camcorder_resolutions if camcorder_resolutions else [],
+    )
+
+def _make_resolution(width, height):
+    return cam_pb.Resolution(width = width, height = height)
+
 sw_config = struct(
     create_ath10k = _create_ath10k,
     create_ath10k_power_chain = _create_ath10k_power_chain,
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
+    create_camera = _create_camera,
     create_fw_version = _create_fw_version,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,
@@ -360,4 +377,5 @@ sw_config = struct(
     create_rtw88_geo_offsets = _create_rtw88_geo_offsets,
     create_rtw88_power_chain = _create_rtw88_power_chain,
     fw_type = _FW_TYPE,
+    make_resolution = _make_resolution,
 )

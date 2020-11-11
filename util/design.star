@@ -55,6 +55,7 @@ def _append_configs(
         power = None,
         audio = None,
         wifi = None,
+        camera = None,
         smbios_name_match_override = None):
     """Creates and appends new SW and HW configs.
 
@@ -84,6 +85,7 @@ def _append_configs(
         audio: An AudioConfig to be used in the SoftwareConfig. Can be either a
             single AudioConfig or a list of AudioConfigs.
         wifi: A WifiConfig to be used in the SoftwareConfig.
+        camera: A CameraConfig to be used in the SoftwareConfig.
         smbios_name_match_override: A str used for smbios_name_match in
             IdentityScanConfig. If not specified, the string in DesignId is
             used.
@@ -126,6 +128,7 @@ def _append_configs(
         else:
             sw_config.audio_configs.append(audio)
     sw_config.wifi_config = wifi
+    sw_config.camera_config = camera
     sw_config.public_replication = public_replication.create(
         public_fields = sw_config_public_fields,
     )

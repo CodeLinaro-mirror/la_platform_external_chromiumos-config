@@ -180,6 +180,10 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design_0.xml",
             "system-path": "/etc/hardware_features_fake_ref_design_0.xml"
+          },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_fake_ref_design.xml",
+            "system-path": "/etc/media_profiles_fake_ref_design.xml"
           }
         },
         "audio": {
@@ -365,6 +369,10 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_a.xml",
             "system-path": "/etc/hardware_features_project_a.xml"
+          },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_a.xml",
+            "system-path": "/etc/media_profiles_project_a.xml"
           }
         },
         "audio": {
@@ -532,6 +540,10 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_b.xml",
             "system-path": "/etc/hardware_features_project_b.xml"
+          },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_b.xml",
+            "system-path": "/etc/media_profiles_project_b.xml"
           }
         },
         "audio": {

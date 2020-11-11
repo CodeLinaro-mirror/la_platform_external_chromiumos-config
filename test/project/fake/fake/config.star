@@ -269,6 +269,7 @@ design.append_configs(
             offset_5g = 14,
         ),
     ),
+    camera = sc.create_camera(generate_media_profiles = True),
 )
 
 _HW_CONFIGS_A = []
@@ -360,6 +361,7 @@ design.append_configs(
             offset_5g_b = 39,
         ),
     ),
+    camera = sc.create_camera(generate_media_profiles = True),
 )
 
 _HW_CONFIGS_B = []
@@ -393,6 +395,10 @@ design.append_configs(
     ),
     firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"]),
     power = _SC_POWER,
+    camera = sc.create_camera(
+        generate_media_profiles = True,
+        camcorder_resolutions = [sc.make_resolution(640, 480)],
+    ),
 )
 
 _HW_CONFIGS_C = []
