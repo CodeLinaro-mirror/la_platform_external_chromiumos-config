@@ -698,7 +698,7 @@ def merge_model(config_bundle, design_config, model, project_name):
   # Merge software configuration
   sw_config = config_bundle.software_configs.add()
   sw_config.design_config_id.MergeFrom(design_config.id)
-  sw_config.id_scan_config.firmware_sku = identity['sku-id']
+  sw_config.id_scan_config.firmware_sku = identity.get('sku-id', 0xFFFFFFFF)
 
   if 'smbios-name-match' in identity:
     sw_config.id_scan_config.smbios_name_match = identity['smbios-name-match']
@@ -783,10 +783,12 @@ def merge_configs(config_path, project_name, public_path, private_path,
     project = model.GetName()
     whitelabel = identity.get('whitelabel-tag', '').lower()
 
-    sku = str(identity.get('sku-id', 'any')).lower()
-    if sku == 'any':
-      logging.info('skipping wildcard sku in %s', project)
-      continue
+    sku = identity.get('sku-id')
+    if not sku:
+      sku = 0xFFFFFFFF
+      logging.info('found wildcard sku in %s, setting sku-id to "%s"', project,
+                   sku)
+    sku = str(sku)
 
     if sku == '255':
       logging.info('skipping unprovisioned sku %s', sku)
@@ -908,5 +910,11 @@ updated.""")
   parser.add_argument(
       '--private-model', type=str, help='private model.yaml file to merge')
   parser.add_argument('--hwid', type=str, help='HWID database to merge')
+  parser.add_argument(
+      "-v", "--verbose", help="increase output verbosity", action="store_true")
 
-  main(parser.parse_args(sys.argv[1:]))
+  args = parser.parse_args()
+  if args.verbose:
+    logging.basicConfig(level=logging.DEBUG)
+
+  main(args)
