@@ -28,4 +28,9 @@ message SystemImage {
     // NOTE: This is a minimalist implementation for now, but more metadata
     // will be added as test planning is further refined.
   }
+
+  // Used to serialize build metadata reports to proto[json|text|binary]
+  message BuildMetadataList {
+    repeated BuildMetadata values = 1;
+  }
 }

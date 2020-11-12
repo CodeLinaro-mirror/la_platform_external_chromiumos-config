@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n1chromiumos/config/api/software/system_image.proto\x12\x1e\x63hromiumos.config.api.software\x1a,chromiumos/config/api/software/portage.proto\"\x93\x02\n\x0bSystemImage\x1a`\n\x0b\x42uildTarget\x12Q\n\x14portage_build_target\x18\x01 \x01(\x0b\x32\x33.chromiumos.config.api.software.Portage.BuildTarget\x1a\xa1\x01\n\rBuildMetadata\x12M\n\x0c\x62uild_target\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.api.software.SystemImage.BuildTarget\x12\x41\n\x08packages\x18\x02 \x03(\x0b\x32/.chromiumos.config.api.software.Portage.PackageB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n1chromiumos/config/api/software/system_image.proto\x12\x1e\x63hromiumos.config.api.software\x1a,chromiumos/config/api/software/portage.proto\"\xf3\x02\n\x0bSystemImage\x1a`\n\x0b\x42uildTarget\x12Q\n\x14portage_build_target\x18\x01 \x01(\x0b\x32\x33.chromiumos.config.api.software.Portage.BuildTarget\x1a\xa1\x01\n\rBuildMetadata\x12M\n\x0c\x62uild_target\x18\x01 \x01(\x0b\x32\x37.chromiumos.config.api.software.SystemImage.BuildTarget\x12\x41\n\x08packages\x18\x02 \x03(\x0b\x32/.chromiumos.config.api.software.Portage.Package\x1a^\n\x11\x42uildMetadataList\x12I\n\x06values\x18\x01 \x03(\x0b\x32\x39.chromiumos.config.api.software.SystemImage.BuildMetadataB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_software_dot_portage__pb2.DESCRIPTOR,])
 
@@ -94,6 +94,36 @@ _SYSTEMIMAGE_BUILDMETADATA = _descriptor.Descriptor(
   serialized_end=407,
 )
 
+_SYSTEMIMAGE_BUILDMETADATALIST = _descriptor.Descriptor(
+  name='BuildMetadataList',
+  full_name='chromiumos.config.api.software.SystemImage.BuildMetadataList',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='values', full_name='chromiumos.config.api.software.SystemImage.BuildMetadataList.values', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=409,
+  serialized_end=503,
+)
+
 _SYSTEMIMAGE = _descriptor.Descriptor(
   name='SystemImage',
   full_name='chromiumos.config.api.software.SystemImage',
@@ -104,7 +134,7 @@ _SYSTEMIMAGE = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_SYSTEMIMAGE_BUILDTARGET, _SYSTEMIMAGE_BUILDMETADATA, ],
+  nested_types=[_SYSTEMIMAGE_BUILDTARGET, _SYSTEMIMAGE_BUILDMETADATA, _SYSTEMIMAGE_BUILDMETADATALIST, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -114,7 +144,7 @@ _SYSTEMIMAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=132,
-  serialized_end=407,
+  serialized_end=503,
 )
 
 _SYSTEMIMAGE_BUILDTARGET.fields_by_name['portage_build_target'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_portage__pb2._PORTAGE_BUILDTARGET
@@ -122,6 +152,8 @@ _SYSTEMIMAGE_BUILDTARGET.containing_type = _SYSTEMIMAGE
 _SYSTEMIMAGE_BUILDMETADATA.fields_by_name['build_target'].message_type = _SYSTEMIMAGE_BUILDTARGET
 _SYSTEMIMAGE_BUILDMETADATA.fields_by_name['packages'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_portage__pb2._PORTAGE_PACKAGE
 _SYSTEMIMAGE_BUILDMETADATA.containing_type = _SYSTEMIMAGE
+_SYSTEMIMAGE_BUILDMETADATALIST.fields_by_name['values'].message_type = _SYSTEMIMAGE_BUILDMETADATA
+_SYSTEMIMAGE_BUILDMETADATALIST.containing_type = _SYSTEMIMAGE
 DESCRIPTOR.message_types_by_name['SystemImage'] = _SYSTEMIMAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -140,6 +172,13 @@ SystemImage = _reflection.GeneratedProtocolMessageType('SystemImage', (_message.
     # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.SystemImage.BuildMetadata)
     ))
   ,
+
+  BuildMetadataList = _reflection.GeneratedProtocolMessageType('BuildMetadataList', (_message.Message,), dict(
+    DESCRIPTOR = _SYSTEMIMAGE_BUILDMETADATALIST,
+    __module__ = 'chromiumos.config.api.software.system_image_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.SystemImage.BuildMetadataList)
+    ))
+  ,
   DESCRIPTOR = _SYSTEMIMAGE,
   __module__ = 'chromiumos.config.api.software.system_image_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.SystemImage)
@@ -147,6 +186,7 @@ SystemImage = _reflection.GeneratedProtocolMessageType('SystemImage', (_message.
 _sym_db.RegisterMessage(SystemImage)
 _sym_db.RegisterMessage(SystemImage.BuildTarget)
 _sym_db.RegisterMessage(SystemImage.BuildMetadata)
+_sym_db.RegisterMessage(SystemImage.BuildMetadataList)
 
 
 DESCRIPTOR._options = None
