@@ -3,6 +3,8 @@
 See proto definitions for descriptions of arguments.
 """
 
+# Needed to load from @proto. Add @unused to silence lint.
+load("//config/util/bindings/proto.star", "protos")
 load(
     "@proto//chromiumos/config/api/software/system_image.proto",
     system_pb = "chromiumos.config.api.software",
@@ -24,7 +26,13 @@ def _create_build_metadata(build_target, portage_packages):
         packages = portage_packages,
     )
 
+def _create_build_metadata_list(builds):
+    return system_pb.SystemImage.BuildMetadataList(
+        values = builds,
+    )
+
 system_image = struct(
     create_build_target = _create_build_target,
     create_build_metadata = _create_build_metadata,
+    create_build_metadata_list = _create_build_metadata_list,
 )
