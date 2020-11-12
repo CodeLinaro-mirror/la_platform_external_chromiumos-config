@@ -470,44 +470,40 @@ def _build_audio(config):
 
 
 def _build_camera(hw_topology):
-  if hw_topology.HasField('camera'):
-    camera_pb = topology_pb2.HardwareFeatures.Camera
-    camera = hw_topology.camera.hardware_feature.camera
-    result = {}
-    if camera.devices:
-      result['count'] = len(camera.devices)
-      result['devices'] = []
-      for device in camera.devices:
-        interface = {
-            camera_pb.INTERFACE_USB: 'usb',
-            camera_pb.INTERFACE_MIPI: 'mipi',
-        }[device.interface]
-        facing = {
-            camera_pb.FACING_FRONT: 'front',
-            camera_pb.FACING_BACK: 'back',
-        }[device.facing]
-        orientation = {
-            camera_pb.ORIENTATION_0: 0,
-            camera_pb.ORIENTATION_90: 90,
-            camera_pb.ORIENTATION_180: 180,
-            camera_pb.ORIENTATION_270: 270,
-        }[device.orientation]
-        flags = {
-            'support-1080p':
-                bool(device.flags & camera_pb.FLAGS_SUPPORT_1080P),
-            'support-autofocus':
-                bool(device.flags & camera_pb.FLAGS_SUPPORT_AUTOFOCUS),
-        }
-        result['devices'].append({
-            'interface': interface,
-            'facing': facing,
-            'orientation': orientation,
-            'flags': flags,
-            'ids': list(device.ids),
-        })
-    return result
-
-  return None
+  camera_pb = topology_pb2.HardwareFeatures.Camera
+  camera = hw_topology.camera.hardware_feature.camera
+  result = {'count': len(camera.devices)}
+  if camera.devices:
+    result['devices'] = []
+    for device in camera.devices:
+      interface = {
+          camera_pb.INTERFACE_USB: 'usb',
+          camera_pb.INTERFACE_MIPI: 'mipi',
+      }[device.interface]
+      facing = {
+          camera_pb.FACING_FRONT: 'front',
+          camera_pb.FACING_BACK: 'back',
+      }[device.facing]
+      orientation = {
+          camera_pb.ORIENTATION_0: 0,
+          camera_pb.ORIENTATION_90: 90,
+          camera_pb.ORIENTATION_180: 180,
+          camera_pb.ORIENTATION_270: 270,
+      }[device.orientation]
+      flags = {
+          'support-1080p':
+              bool(device.flags & camera_pb.FLAGS_SUPPORT_1080P),
+          'support-autofocus':
+              bool(device.flags & camera_pb.FLAGS_SUPPORT_AUTOFOCUS),
+      }
+      result['devices'].append({
+          'interface': interface,
+          'facing': facing,
+          'orientation': orientation,
+          'flags': flags,
+          'ids': list(device.ids),
+      })
+  return result
 
 
 def _build_identity(hw_scan_config, program, brand_scan_config=None):

@@ -21,6 +21,9 @@
             "files": []
           }
         },
+        "camera": {
+          "count": 0
+        },
         "identity": {
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 0
