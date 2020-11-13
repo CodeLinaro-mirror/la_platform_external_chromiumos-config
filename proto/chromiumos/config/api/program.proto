@@ -66,15 +66,20 @@ message DeviceSignerConfig {
 // other hardware design project.  They will either fully comply with the
 // prescribed program constraints or provide waivers that highlight any
 // constraint violations.
-// Next ID: 10
+// Next ID: 11
 message Program {
   // Fields replicated to public configs.
   chromiumos.config.public_replication.PublicReplication public_replication = 8;
 
   // Globally unique program identifier.
   ProgramId id = 1;
+
   // Program codename (human friendly).
   string name = 2;
+
+  // platform-name override for mosys.  This should not need to be
+  // set for most programs.
+  string mosys_platform_name = 10;
 
   // Defines program constraints for all proposed design configs.
   repeated Design.Config.Constraint design_config_constraints = 3;

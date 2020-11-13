@@ -152,6 +152,7 @@
       "id": {
         "value": "FAKE_PROGRAM"
       },
+      "mosysPlatformName": "fake",
       "name": "FAKE_PROGRAM",
       "publicReplication": {
         "publicFields": "name,id"

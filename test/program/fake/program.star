@@ -73,6 +73,7 @@ _FAKE = program_util.create(
     constraints = _FEATURE_CONSTRAINTS,
     firmware_configuration_segments = _FIRMWARE_CONFIGURATION_SEGMENTS,
     device_signer_configs = _SIGNER_CONFIG,
+    mosys_platform_name = "fake",
 )
 
 _BUILD_TARGETS = [

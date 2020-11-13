@@ -72,7 +72,8 @@ def _create(
         constraints = None,
         firmware_configuration_segments = None,
         design_config_id_segments = None,
-        device_signer_configs = None):
+        device_signer_configs = None,
+        mosys_platform_name = None):
     """Builds a Program proto."""
     program_id = program_id_pb.ProgramId(value = name)
     return program_pb.Program(
@@ -84,6 +85,7 @@ def _create(
         firmware_configuration_segments = firmware_configuration_segments,
         design_config_id_segments = design_config_id_segments,
         device_signer_configs = device_signer_configs,
+        mosys_platform_name = mosys_platform_name,
     )
 
 program = struct(
