@@ -12,9 +12,6 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from chromiumos.config.api.test.dut.v1 import dut_pb2 as chromiumos_dot_config_dot_api_dot_test_dot_dut_dot_v1_dot_dut__pb2
-from chromiumos.config.api import design_config_id_pb2 as chromiumos_dot_config_dot_api_dot_design__config__id__pb2
-from chromiumos.config.api import topology_pb2 as chromiumos_dot_config_dot_api_dot_topology__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -22,9 +19,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.plan.v1',
   syntax='proto3',
   serialized_options=_b('Z:go.chromium.org/chromiumos/config/go/api/test/plan/v1;plan'),
-  serialized_pb=_b('\n-chromiumos/config/api/test/plan/v1/plan.proto\x12\"chromiumos.config.api.test.plan.v1\x1a+chromiumos/config/api/test/dut/v1/dut.proto\x1a,chromiumos/config/api/design_config_id.proto\x1a$chromiumos/config/api/topology.proto\"H\n\rSpecification\x12\x37\n\x05plans\x18\x01 \x03(\x0b\x32(.chromiumos.config.api.test.plan.v1.Plan\"M\n\x04Plan\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x37\n\x05units\x18\x02 \x03(\x0b\x32(.chromiumos.config.api.test.plan.v1.Unit\"\xc9\x02\n\x04Unit\x12\x0c\n\x04name\x18\x01 \x01(\t\x12K\n\x0ftest_constraint\x18\x02 \x01(\x0b\x32\x32.chromiumos.config.api.test.plan.v1.TestConstraint\x12Z\n\x17\x64ut_coverage_constraint\x18\x03 \x01(\x0b\x32\x39.chromiumos.config.api.test.plan.v1.DUTCoverageConstraint\x12G\n\rcode_coverage\x18\x04 \x01(\x0b\x32\x30.chromiumos.config.api.test.plan.v1.CodeCoverage\x12\x41\n\nexclusions\x18\x05 \x03(\x0b\x32-.chromiumos.config.api.test.plan.v1.Exclusion\"N\n\x0eTestConstraint\x12\x12\n\nexpression\x18\x01 \x01(\t\x1a(\n\x04Test\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\"\xff\x01\n\x15\x44UTCoverageConstraint\x12\x12\n\nexpression\x18\x01 \x01(\t\x1a\xd1\x01\n\x03\x44UT\x12\x45\n\tfleet_dut\x18\x01 \x01(\x0b\x32\x32.chromiumos.config.api.test.dut.v1.DeviceUnderTest\x12\x42\n\x11hardware_features\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\x12?\n\x10\x64\x65sign_config_id\x18\x03 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\"\xf6\x03\n\tExclusion\x12@\n\x04type\x18\x01 \x01(\x0e\x32\x32.chromiumos.config.api.test.plan.v1.Exclusion.Type\x12\x44\n\x06\x61\x63tion\x18\x05 \x01(\x0e\x32\x34.chromiumos.config.api.test.plan.v1.Exclusion.Action\x12K\n\x0ftest_constraint\x18\x02 \x01(\x0b\x32\x32.chromiumos.config.api.test.plan.v1.TestConstraint\x12R\n\x0e\x64ut_constraint\x18\x03 \x01(\x0b\x32:.chromiumos.config.api.test.plan.v1.DUTExclusionConstraint\x12\x12\n\nreferences\x18\x04 \x03(\t\"^\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\r\n\tPERMANENT\x10\x01\x12\x16\n\x12TEMPORARY_NEW_TEST\x10\x02\x12\x19\n\x15TEMPORARY_PENDING_FIX\x10\x03\"L\n\x06\x41\x63tion\x12\x16\n\x12\x41\x43TION_UNSPECIFIED\x10\x00\x12\x13\n\x0f\x44O_NOT_SCHEDULE\x10\x01\x12\x15\n\x11MARK_NON_CRITICAL\x10\x02\"\xb9\x01\n\x16\x44UTExclusionConstraint\x12\x12\n\nexpression\x18\x01 \x01(\t\x1a\x8a\x01\n\x03\x44UT\x12\x42\n\x11hardware_features\x18\x01 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\x12?\n\x10\x64\x65sign_config_id\x18\x02 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\"C\n\x0c\x43odeCoverage\x12\x12\n\nexpression\x18\x01 \x01(\t\x1a\x1f\n\tBlamelist\x12\x12\n\nrepo_paths\x18\x01 \x03(\tB<Z:go.chromium.org/chromiumos/config/go/api/test/plan/v1;planb\x06proto3')
-  ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_dut_dot_v1_dot_dut__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__config__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_topology__pb2.DESCRIPTOR,])
+  serialized_pb=_b('\n-chromiumos/config/api/test/plan/v1/plan.proto\x12\"chromiumos.config.api.test.plan.v1\"H\n\rSpecification\x12\x37\n\x05plans\x18\x01 \x03(\x0b\x32(.chromiumos.config.api.test.plan.v1.Plan\"M\n\x04Plan\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x37\n\x05units\x18\x02 \x03(\x0b\x32(.chromiumos.config.api.test.plan.v1.Unit\"1\n\x0c\x44utCriterion\x12\x11\n\tattribute\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\"\xa6\x01\n\x0c\x43overageRule\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x46\n\x0c\x64ut_criteria\x18\x02 \x03(\x0b\x32\x30.chromiumos.config.api.test.plan.v1.DutCriterion\x12@\n\texclusion\x18\x04 \x01(\x0b\x32-.chromiumos.config.api.test.plan.v1.Exclusion\"\xdf\x02\n\x04Unit\x12\x0c\n\x04name\x18\x01 \x01(\t\x12>\n\x06suites\x18\x02 \x03(\x0b\x32..chromiumos.config.api.test.plan.v1.Unit.Suite\x12<\n\x05tests\x18\x03 \x03(\x0b\x32-.chromiumos.config.api.test.plan.v1.Unit.Test\x12H\n\x0e\x63overage_rules\x18\x04 \x03(\x0b\x32\x30.chromiumos.config.api.test.plan.v1.CoverageRule\x12@\n\texclusion\x18\x05 \x01(\x0b\x32-.chromiumos.config.api.test.plan.v1.Exclusion\x1a\x15\n\x05Suite\x12\x0c\n\x04name\x18\x01 \x01(\t\x1a(\n\x04Test\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\"\xd5\x02\n\tExclusion\x12@\n\x04type\x18\x01 \x01(\x0e\x32\x32.chromiumos.config.api.test.plan.v1.Exclusion.Type\x12\x44\n\x06\x61\x63tion\x18\x05 \x01(\x0e\x32\x34.chromiumos.config.api.test.plan.v1.Exclusion.Action\x12\x12\n\nreferences\x18\x04 \x03(\t\"^\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\r\n\tPERMANENT\x10\x01\x12\x16\n\x12TEMPORARY_NEW_TEST\x10\x02\x12\x19\n\x15TEMPORARY_PENDING_FIX\x10\x03\"L\n\x06\x41\x63tion\x12\x16\n\x12\x41\x43TION_UNSPECIFIED\x10\x00\x12\x13\n\x0f\x44O_NOT_SCHEDULE\x10\x01\x12\x15\n\x11MARK_NON_CRITICAL\x10\x02\x42<Z:go.chromium.org/chromiumos/config/go/api/test/plan/v1;planb\x06proto3')
+)
 
 
 
@@ -53,8 +49,8 @@ _EXCLUSION_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1368,
-  serialized_end=1462,
+  serialized_start=982,
+  serialized_end=1076,
 )
 _sym_db.RegisterEnumDescriptor(_EXCLUSION_TYPE)
 
@@ -79,8 +75,8 @@ _EXCLUSION_ACTION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1464,
-  serialized_end=1540,
+  serialized_start=1078,
+  serialized_end=1154,
 )
 _sym_db.RegisterEnumDescriptor(_EXCLUSION_ACTION)
 
@@ -111,8 +107,8 @@ _SPECIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=214,
-  serialized_end=286,
+  serialized_start=85,
+  serialized_end=157,
 )
 
 
@@ -149,86 +145,27 @@ _PLAN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=288,
-  serialized_end=365,
+  serialized_start=159,
+  serialized_end=236,
 )
 
 
-_UNIT = _descriptor.Descriptor(
-  name='Unit',
-  full_name='chromiumos.config.api.test.plan.v1.Unit',
+_DUTCRITERION = _descriptor.Descriptor(
+  name='DutCriterion',
+  full_name='chromiumos.config.api.test.plan.v1.DutCriterion',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='chromiumos.config.api.test.plan.v1.Unit.name', index=0,
+      name='attribute', full_name='chromiumos.config.api.test.plan.v1.DutCriterion.attribute', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='test_constraint', full_name='chromiumos.config.api.test.plan.v1.Unit.test_constraint', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='dut_coverage_constraint', full_name='chromiumos.config.api.test.plan.v1.Unit.dut_coverage_constraint', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='code_coverage', full_name='chromiumos.config.api.test.plan.v1.Unit.code_coverage', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='exclusions', full_name='chromiumos.config.api.test.plan.v1.Unit.exclusions', index=4,
-      number=5, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=368,
-  serialized_end=697,
-)
-
-
-_TESTCONSTRAINT_TEST = _descriptor.Descriptor(
-  name='Test',
-  full_name='chromiumos.config.api.test.plan.v1.TestConstraint.Test',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='chromiumos.config.api.test.plan.v1.TestConstraint.Test.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='attributes', full_name='chromiumos.config.api.test.plan.v1.TestConstraint.Test.attributes', index=1,
+      name='values', full_name='chromiumos.config.api.test.plan.v1.DutCriterion.values', index=1,
       number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -246,65 +183,35 @@ _TESTCONSTRAINT_TEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=737,
-  serialized_end=777,
+  serialized_start=238,
+  serialized_end=287,
 )
 
-_TESTCONSTRAINT = _descriptor.Descriptor(
-  name='TestConstraint',
-  full_name='chromiumos.config.api.test.plan.v1.TestConstraint',
+
+_COVERAGERULE = _descriptor.Descriptor(
+  name='CoverageRule',
+  full_name='chromiumos.config.api.test.plan.v1.CoverageRule',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='expression', full_name='chromiumos.config.api.test.plan.v1.TestConstraint.expression', index=0,
+      name='name', full_name='chromiumos.config.api.test.plan.v1.CoverageRule.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_TESTCONSTRAINT_TEST, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=699,
-  serialized_end=777,
-)
-
-
-_DUTCOVERAGECONSTRAINT_DUT = _descriptor.Descriptor(
-  name='DUT',
-  full_name='chromiumos.config.api.test.plan.v1.DUTCoverageConstraint.DUT',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
     _descriptor.FieldDescriptor(
-      name='fleet_dut', full_name='chromiumos.config.api.test.plan.v1.DUTCoverageConstraint.DUT.fleet_dut', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='dut_criteria', full_name='chromiumos.config.api.test.plan.v1.CoverageRule.dut_criteria', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='hardware_features', full_name='chromiumos.config.api.test.plan.v1.DUTCoverageConstraint.DUT.hardware_features', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='design_config_id', full_name='chromiumos.config.api.test.plan.v1.DUTCoverageConstraint.DUT.design_config_id', index=2,
-      number=3, type=11, cpp_type=10, label=1,
+      name='exclusion', full_name='chromiumos.config.api.test.plan.v1.CoverageRule.exclusion', index=2,
+      number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -321,19 +228,20 @@ _DUTCOVERAGECONSTRAINT_DUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=826,
-  serialized_end=1035,
+  serialized_start=290,
+  serialized_end=456,
 )
 
-_DUTCOVERAGECONSTRAINT = _descriptor.Descriptor(
-  name='DUTCoverageConstraint',
-  full_name='chromiumos.config.api.test.plan.v1.DUTCoverageConstraint',
+
+_UNIT_SUITE = _descriptor.Descriptor(
+  name='Suite',
+  full_name='chromiumos.config.api.test.plan.v1.Unit.Suite',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='expression', full_name='chromiumos.config.api.test.plan.v1.DUTCoverageConstraint.expression', index=0,
+      name='name', full_name='chromiumos.config.api.test.plan.v1.Unit.Suite.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -342,7 +250,7 @@ _DUTCOVERAGECONSTRAINT = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_DUTCOVERAGECONSTRAINT_DUT, ],
+  nested_types=[],
   enum_types=[
   ],
   serialized_options=None,
@@ -351,8 +259,103 @@ _DUTCOVERAGECONSTRAINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=780,
-  serialized_end=1035,
+  serialized_start=747,
+  serialized_end=768,
+)
+
+_UNIT_TEST = _descriptor.Descriptor(
+  name='Test',
+  full_name='chromiumos.config.api.test.plan.v1.Unit.Test',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='chromiumos.config.api.test.plan.v1.Unit.Test.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='attributes', full_name='chromiumos.config.api.test.plan.v1.Unit.Test.attributes', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=770,
+  serialized_end=810,
+)
+
+_UNIT = _descriptor.Descriptor(
+  name='Unit',
+  full_name='chromiumos.config.api.test.plan.v1.Unit',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='chromiumos.config.api.test.plan.v1.Unit.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='suites', full_name='chromiumos.config.api.test.plan.v1.Unit.suites', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tests', full_name='chromiumos.config.api.test.plan.v1.Unit.tests', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='coverage_rules', full_name='chromiumos.config.api.test.plan.v1.Unit.coverage_rules', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='exclusion', full_name='chromiumos.config.api.test.plan.v1.Unit.exclusion', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_UNIT_SUITE, _UNIT_TEST, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=459,
+  serialized_end=810,
 )
 
 
@@ -378,21 +381,7 @@ _EXCLUSION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='test_constraint', full_name='chromiumos.config.api.test.plan.v1.Exclusion.test_constraint', index=2,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='dut_constraint', full_name='chromiumos.config.api.test.plan.v1.Exclusion.dut_constraint', index=3,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='references', full_name='chromiumos.config.api.test.plan.v1.Exclusion.references', index=4,
+      name='references', full_name='chromiumos.config.api.test.plan.v1.Exclusion.references', index=2,
       number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -412,168 +401,30 @@ _EXCLUSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1038,
-  serialized_end=1540,
-)
-
-
-_DUTEXCLUSIONCONSTRAINT_DUT = _descriptor.Descriptor(
-  name='DUT',
-  full_name='chromiumos.config.api.test.plan.v1.DUTExclusionConstraint.DUT',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='hardware_features', full_name='chromiumos.config.api.test.plan.v1.DUTExclusionConstraint.DUT.hardware_features', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='design_config_id', full_name='chromiumos.config.api.test.plan.v1.DUTExclusionConstraint.DUT.design_config_id', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1590,
-  serialized_end=1728,
-)
-
-_DUTEXCLUSIONCONSTRAINT = _descriptor.Descriptor(
-  name='DUTExclusionConstraint',
-  full_name='chromiumos.config.api.test.plan.v1.DUTExclusionConstraint',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='expression', full_name='chromiumos.config.api.test.plan.v1.DUTExclusionConstraint.expression', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_DUTEXCLUSIONCONSTRAINT_DUT, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1543,
-  serialized_end=1728,
-)
-
-
-_CODECOVERAGE_BLAMELIST = _descriptor.Descriptor(
-  name='Blamelist',
-  full_name='chromiumos.config.api.test.plan.v1.CodeCoverage.Blamelist',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='repo_paths', full_name='chromiumos.config.api.test.plan.v1.CodeCoverage.Blamelist.repo_paths', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1766,
-  serialized_end=1797,
-)
-
-_CODECOVERAGE = _descriptor.Descriptor(
-  name='CodeCoverage',
-  full_name='chromiumos.config.api.test.plan.v1.CodeCoverage',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='expression', full_name='chromiumos.config.api.test.plan.v1.CodeCoverage.expression', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_CODECOVERAGE_BLAMELIST, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1730,
-  serialized_end=1797,
+  serialized_start=813,
+  serialized_end=1154,
 )
 
 _SPECIFICATION.fields_by_name['plans'].message_type = _PLAN
 _PLAN.fields_by_name['units'].message_type = _UNIT
-_UNIT.fields_by_name['test_constraint'].message_type = _TESTCONSTRAINT
-_UNIT.fields_by_name['dut_coverage_constraint'].message_type = _DUTCOVERAGECONSTRAINT
-_UNIT.fields_by_name['code_coverage'].message_type = _CODECOVERAGE
-_UNIT.fields_by_name['exclusions'].message_type = _EXCLUSION
-_TESTCONSTRAINT_TEST.containing_type = _TESTCONSTRAINT
-_DUTCOVERAGECONSTRAINT_DUT.fields_by_name['fleet_dut'].message_type = chromiumos_dot_config_dot_api_dot_test_dot_dut_dot_v1_dot_dut__pb2._DEVICEUNDERTEST
-_DUTCOVERAGECONSTRAINT_DUT.fields_by_name['hardware_features'].message_type = chromiumos_dot_config_dot_api_dot_topology__pb2._HARDWAREFEATURES
-_DUTCOVERAGECONSTRAINT_DUT.fields_by_name['design_config_id'].message_type = chromiumos_dot_config_dot_api_dot_design__config__id__pb2._DESIGNCONFIGID
-_DUTCOVERAGECONSTRAINT_DUT.containing_type = _DUTCOVERAGECONSTRAINT
+_COVERAGERULE.fields_by_name['dut_criteria'].message_type = _DUTCRITERION
+_COVERAGERULE.fields_by_name['exclusion'].message_type = _EXCLUSION
+_UNIT_SUITE.containing_type = _UNIT
+_UNIT_TEST.containing_type = _UNIT
+_UNIT.fields_by_name['suites'].message_type = _UNIT_SUITE
+_UNIT.fields_by_name['tests'].message_type = _UNIT_TEST
+_UNIT.fields_by_name['coverage_rules'].message_type = _COVERAGERULE
+_UNIT.fields_by_name['exclusion'].message_type = _EXCLUSION
 _EXCLUSION.fields_by_name['type'].enum_type = _EXCLUSION_TYPE
 _EXCLUSION.fields_by_name['action'].enum_type = _EXCLUSION_ACTION
-_EXCLUSION.fields_by_name['test_constraint'].message_type = _TESTCONSTRAINT
-_EXCLUSION.fields_by_name['dut_constraint'].message_type = _DUTEXCLUSIONCONSTRAINT
 _EXCLUSION_TYPE.containing_type = _EXCLUSION
 _EXCLUSION_ACTION.containing_type = _EXCLUSION
-_DUTEXCLUSIONCONSTRAINT_DUT.fields_by_name['hardware_features'].message_type = chromiumos_dot_config_dot_api_dot_topology__pb2._HARDWAREFEATURES
-_DUTEXCLUSIONCONSTRAINT_DUT.fields_by_name['design_config_id'].message_type = chromiumos_dot_config_dot_api_dot_design__config__id__pb2._DESIGNCONFIGID
-_DUTEXCLUSIONCONSTRAINT_DUT.containing_type = _DUTEXCLUSIONCONSTRAINT
-_CODECOVERAGE_BLAMELIST.containing_type = _CODECOVERAGE
 DESCRIPTOR.message_types_by_name['Specification'] = _SPECIFICATION
 DESCRIPTOR.message_types_by_name['Plan'] = _PLAN
+DESCRIPTOR.message_types_by_name['DutCriterion'] = _DUTCRITERION
+DESCRIPTOR.message_types_by_name['CoverageRule'] = _COVERAGERULE
 DESCRIPTOR.message_types_by_name['Unit'] = _UNIT
-DESCRIPTOR.message_types_by_name['TestConstraint'] = _TESTCONSTRAINT
-DESCRIPTOR.message_types_by_name['DUTCoverageConstraint'] = _DUTCOVERAGECONSTRAINT
 DESCRIPTOR.message_types_by_name['Exclusion'] = _EXCLUSION
-DESCRIPTOR.message_types_by_name['DUTExclusionConstraint'] = _DUTEXCLUSIONCONSTRAINT
-DESCRIPTOR.message_types_by_name['CodeCoverage'] = _CODECOVERAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Specification = _reflection.GeneratedProtocolMessageType('Specification', (_message.Message,), dict(
@@ -590,42 +441,42 @@ Plan = _reflection.GeneratedProtocolMessageType('Plan', (_message.Message,), dic
   ))
 _sym_db.RegisterMessage(Plan)
 
+DutCriterion = _reflection.GeneratedProtocolMessageType('DutCriterion', (_message.Message,), dict(
+  DESCRIPTOR = _DUTCRITERION,
+  __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.DutCriterion)
+  ))
+_sym_db.RegisterMessage(DutCriterion)
+
+CoverageRule = _reflection.GeneratedProtocolMessageType('CoverageRule', (_message.Message,), dict(
+  DESCRIPTOR = _COVERAGERULE,
+  __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.CoverageRule)
+  ))
+_sym_db.RegisterMessage(CoverageRule)
+
 Unit = _reflection.GeneratedProtocolMessageType('Unit', (_message.Message,), dict(
+
+  Suite = _reflection.GeneratedProtocolMessageType('Suite', (_message.Message,), dict(
+    DESCRIPTOR = _UNIT_SUITE,
+    __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.Unit.Suite)
+    ))
+  ,
+
+  Test = _reflection.GeneratedProtocolMessageType('Test', (_message.Message,), dict(
+    DESCRIPTOR = _UNIT_TEST,
+    __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.Unit.Test)
+    ))
+  ,
   DESCRIPTOR = _UNIT,
   __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.Unit)
   ))
 _sym_db.RegisterMessage(Unit)
-
-TestConstraint = _reflection.GeneratedProtocolMessageType('TestConstraint', (_message.Message,), dict(
-
-  Test = _reflection.GeneratedProtocolMessageType('Test', (_message.Message,), dict(
-    DESCRIPTOR = _TESTCONSTRAINT_TEST,
-    __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.TestConstraint.Test)
-    ))
-  ,
-  DESCRIPTOR = _TESTCONSTRAINT,
-  __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.TestConstraint)
-  ))
-_sym_db.RegisterMessage(TestConstraint)
-_sym_db.RegisterMessage(TestConstraint.Test)
-
-DUTCoverageConstraint = _reflection.GeneratedProtocolMessageType('DUTCoverageConstraint', (_message.Message,), dict(
-
-  DUT = _reflection.GeneratedProtocolMessageType('DUT', (_message.Message,), dict(
-    DESCRIPTOR = _DUTCOVERAGECONSTRAINT_DUT,
-    __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.DUTCoverageConstraint.DUT)
-    ))
-  ,
-  DESCRIPTOR = _DUTCOVERAGECONSTRAINT,
-  __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.DUTCoverageConstraint)
-  ))
-_sym_db.RegisterMessage(DUTCoverageConstraint)
-_sym_db.RegisterMessage(DUTCoverageConstraint.DUT)
+_sym_db.RegisterMessage(Unit.Suite)
+_sym_db.RegisterMessage(Unit.Test)
 
 Exclusion = _reflection.GeneratedProtocolMessageType('Exclusion', (_message.Message,), dict(
   DESCRIPTOR = _EXCLUSION,
@@ -633,36 +484,6 @@ Exclusion = _reflection.GeneratedProtocolMessageType('Exclusion', (_message.Mess
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.Exclusion)
   ))
 _sym_db.RegisterMessage(Exclusion)
-
-DUTExclusionConstraint = _reflection.GeneratedProtocolMessageType('DUTExclusionConstraint', (_message.Message,), dict(
-
-  DUT = _reflection.GeneratedProtocolMessageType('DUT', (_message.Message,), dict(
-    DESCRIPTOR = _DUTEXCLUSIONCONSTRAINT_DUT,
-    __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.DUTExclusionConstraint.DUT)
-    ))
-  ,
-  DESCRIPTOR = _DUTEXCLUSIONCONSTRAINT,
-  __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.DUTExclusionConstraint)
-  ))
-_sym_db.RegisterMessage(DUTExclusionConstraint)
-_sym_db.RegisterMessage(DUTExclusionConstraint.DUT)
-
-CodeCoverage = _reflection.GeneratedProtocolMessageType('CodeCoverage', (_message.Message,), dict(
-
-  Blamelist = _reflection.GeneratedProtocolMessageType('Blamelist', (_message.Message,), dict(
-    DESCRIPTOR = _CODECOVERAGE_BLAMELIST,
-    __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.CodeCoverage.Blamelist)
-    ))
-  ,
-  DESCRIPTOR = _CODECOVERAGE,
-  __module__ = 'chromiumos.config.api.test.plan.v1.plan_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.plan.v1.CodeCoverage)
-  ))
-_sym_db.RegisterMessage(CodeCoverage)
-_sym_db.RegisterMessage(CodeCoverage.Blamelist)
 
 
 DESCRIPTOR._options = None

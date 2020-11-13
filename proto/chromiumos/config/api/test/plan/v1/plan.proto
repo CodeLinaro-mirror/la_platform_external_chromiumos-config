@@ -8,12 +8,6 @@ package chromiumos.config.api.test.plan.v1;
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/test/plan/v1;plan";
 
-import "chromiumos/config/api/test/dut/v1/dut.proto";
-import "chromiumos/config/api/design_config_id.proto";
-import "chromiumos/config/api/topology.proto";
-
-// From chromiumos/config repo.
-
 // A set of known test plans.
 //
 // In practice, a complete specification of all known plans may consist of
@@ -42,10 +36,35 @@ message Plan {
   repeated Unit units = 2;
 }
 
-// Specifies a particular set of tests to be run to meet specific conditions.
-//
-// TODO(pprabhu): Add a full example showcasing test_constraints,
-// dut_coverage_consraints and exclusions together.
+// Defines the device rule that must be met in for a given set of tests.
+// Examples:
+// attribute='hw_components.soc.family.arch', value=['X86']
+message DutCriterion {
+  // String encoded path to the attribute from DeviceUnderTest
+  string attribute = 1;
+  // String encoded values, where enums are encoded as their name (not value)
+  // Setting multiple values here treats this as an OR clause wrt matching.
+  // This gives freedom to the scheduling system to find devices with the most
+  // available idle capacity that match one of these values.
+  repeated string values = 2;
+}
+
+message CoverageRule {
+  // Human friendly name for easier analysis of test coverage rules/criteria.
+  // E.g. kernel:5.4_soc:geminilake_wifi:intel-5600
+  // Specifically, this helps when generalizing OR criteria (e.g. kernel
+  // versions)
+  string name = 1;
+  // These are criteria that must be met.  ANDs and ORs.
+  repeated DutCriterion dut_criteria = 2;
+
+  // Optional exclusion that applies to only to the given dut coverage criteria.
+  // E.g. If a specific device was failing the wifi test suite.
+  Exclusion exclusion = 4;
+}
+
+// Specifies a particular set of tests to be run for a given set of coverage
+// rules.
 message Unit {
   // A globally unique test plan unit name.
   //
@@ -55,79 +74,14 @@ message Unit {
   //   where {plan} is the parent Plan of this Unit.
   string name = 1;
 
-  // Selects tests to include in this test plan unit.
-  //
-  // See also: exclusions.
-  TestConstraint test_constraint = 2;
+  // Defines the tests that are included.
+  repeated Suite suites = 2;
+  repeated Test tests = 3;
 
-  // Selects the set of Devices Under Test that satisfy the coverage
-  // requirements of this test plan unit.
-  //
-  // See also: exclusions.
-  DUTCoverageConstraint dut_coverage_constraint = 3;
-
-  // Chrome OS platform software covered by this test plan.
-  //
-  // Test Platform requests may optionally include a reference to platform
-  // software to be tested via the test plan. For such requests, Test Platform
-  // MUST only execute test plan units that have non-trivial coverage of the
-  // referenced platform software. Unrelated test plan units MUST be skipped.
-  //
-  // A typical example is presubmit testing: When testing a change to the
-  // network manager, it may be desirable to only run test plan units that
-  // are known to exercise the network manager.
-  //
-  // For a test plan unit with no `code_coverage` specified, Test Platform MUST
-  // assume coverage of all platform software (i.e., this test plan unit MUST
-  // never be skipped for code coverage considerations).
-  CodeCoverage code_coverage = 4;
-
-  // A list of criteria for (test, Device Under Test) pairs that MUST be
-  // excluded from this test plan.
-  //
-  // Exclusions are used to record exceptions to the test plan specification for
-  // devices that are known to cause test failures for some temporary or
-  // permanent reasons. The test_constraint and dut_coverage_constraint fields
-  // together specify the _intent_ of the test plan unit. The exclusions further
-  // restrict what Devices Under Test can be used to satisfy the test plan unit
-  // due to practical considerations.
-  //
-  // Each exclusion SHOULD correspond to a different business reason.
-  // Conceptually, fixing a known issue should result in an exclusion being
-  // removed.
-  repeated Exclusion exclusions = 5;
-}
-
-// Selects the test.metadata.Test to include in a test plan unit.
-message TestConstraint {
-  // A Common Expression Language (CEL) expression to specify set of tests that
-  // are included in a test plan unit.
-  //
-  // Test Platform MUST effectively evaluate `expression` with the following
-  // declarations in scope for every test and include the test for which
-  // `expression` evaluates to true in the test plan unit.
-  //
-  // - Constant: `test` of type TestConstraint.Test defined below,
-  //   populated with metadata for a particular test.
-  //
-  // The full CEL spec can be found at https://github.com/google/cel-spec.
-  //
-  // TODO(crbug.com/1051689) Add reference to the metadata validator package.
-  //
-  // ## Examples
-  //
-  // Typical instructive examples of expressions are:
-  //
-  // - Tauto dummy tests
-  //     "suite:dummy" in test.attributes
-  // - Tast's crosbolt tests
-  //     !("disabled" in test.attributes)
-  //     && "group:crosbolt" in test.attributes
-  //     && "crosbolt_perbuild" in test.attributes
-  // - network Tauto tests, selected by name
-  //     test.name.startsWith("network_")
-  string expression = 1;
-
+  message Suite {
+    // Name of the test suite to be executed
+    string name = 1;
+  }
   message Test {
     // Name of the test as specified in test.metadata.Test.name
     string name = 1;
@@ -137,77 +91,19 @@ message TestConstraint {
     // attributes are populated from test.metadata.Test.attributes.
     repeated string attributes = 2;
   }
+
+  // Defines all of the coverage rules that need to be executed
+  // for the given tests.
+  // Separate test results will be generated for each distinct coverage rule.
+  repeated CoverageRule coverage_rules = 4;
+
+  // Optional exclusion that applies to tests in the given unit.
+  // E.g. If the test itself was bad, regardless of the device tested
+  // against.
+  Exclusion exclusion = 5;
 }
 
-// Selects sets of Devices Under Test to run the tests on in a test plan unit.
-message DUTCoverageConstraint {
-  // A Common Expression Language (CEL) expression to specify set of DUTs that
-  // provide the necessary coverage. `expression` MUST evaluate to a boolean
-  // value in the evaluation context described below.
-  //
-  // Test Platform MUST support scheduling test requests on a set of Devices
-  // Under Test that satisfy some constraints on their Chrome OS configuration.
-  //
-  // Test Platform MUST effectively evaluate `expression` with the following
-  // declarations in scope for each possible subset of Devices Under Test and
-  // ensure that the test is scheduled on a set of Devices Under Test for which
-  // `expression` evaluates to true.
-  //
-  // - Constant: `duts` of type repeated DUTConfigConstraint.DUT defined below,
-  //   each entry in `duts` set to the Chrome OS configuration payload of a
-  //   particular Device Under Test.
-  // - Types: Protobuf messages from `chromiumos.config.api.*`
-  //   - Additionally available with the short-hand `api.*`
-  // - Types: Protobuf messages from `test.dut.v1.*`
-  //   - Additionally available with the short-hand `dut.*`
-  //
-  // The full CEL spec can be found at https://github.com/google/cel-spec.
-  //
-  // TODO(crbug.com/1051689) Add reference to the metadata validator package.
-  //
-  // ## Examples
-  //
-  // Typical instructive examples of expressions are:
-  //
-  // - Constraints:
-  //    - Run each test on one DUT with a stylus.
-  //        (duts.all(dut, dut.hardware_features.stylus
-  //                       == api.HardwareFeatures.Present.PRESENT))
-  //         && size(duts) == 1)
-  //  - Fanout: In addition to constraints, the plan may want to ensure coverage
-  //    across some device features.
-  //    TODO(pprabhu) This is an instructive example. We can't say what arch
-  //    yet.
-  //    - Run each test on one x86 and ARM DUT with a specific camera.
-  //        (duts.all(dut, dut.hardware_toplogy.camera.id != "gomoe")
-  //         && duts.exist(dut,
-  //                       dut.cpu = api.Component.Soc.Architecture.X86)
-  //         && duts.exist(dut,
-  //                       dut.cpu = api.Component.Soc.Architecture.ARM))
-  //      Note that this expression does not have a clause for size(duts). Thus
-  //      Test Platform may satisfy this expression by running the test on more
-  //      than two DUTs. This behaviour can be unexpected, especially if the
-  //      plan fails due to an error on test execution on one of the selected
-  //      devices, even though it passed on other devices in the set such that
-  //      the expression was satsifed by the passing subset. Selection of a
-  //      minimal set of devices to run the plan is best effort.
-  string expression = 1;
-
-  // The evaluation context for `expression` MUST include the Chrome OS
-  // configuration payload for a set of Devices Under Test as a typed
-  // constant of the following type.
-  //
-  //   repeated DUT duts = 1;
-  //
-  message DUT {
-    // Configuration information about the lab deployment of the device.
-    chromiumos.config.api.test.dut.v1.DeviceUnderTest fleet_dut = 1;
-    chromiumos.config.api.HardwareFeatures hardware_features = 2;
-    chromiumos.config.api.DesignConfigId design_config_id = 3;
-  }
-}
-
-// Exlclusion is used to record exceptions to the test plan
+// Exclusion is used to record exceptions to the test plan
 // specification for devices that are known to cause test failures for some
 // temporary or permanent reasons.
 message Exclusion {
@@ -274,20 +170,6 @@ message Exclusion {
   }
   Action action = 5;
 
-  // The tests this exclusion applies to, within a test plan unit.
-  //
-  // Tests selected by this condition that are not in the test plan unit are
-  // ignored. e.g., simply selecting all tests via the test_constraint will
-  // apply this exclusion to all tests in the test plan unit.
-  TestConstraint test_constraint = 2;
-
-  // Constraints to exclude particular Device Under Test from being considered
-  // to satisfy the test plan.
-  //
-  // Effectively, the negation of the constraint is added to the dut_constraints
-  // for each selected test.
-  DUTExclusionConstraint dut_constraint = 3;
-
   // External references useful for archeology for this exclusion.
   //
   // PERMANENT exclusions MUST add references for the decision to make the
@@ -298,89 +180,4 @@ message Exclusion {
   // * Monorail bug: https://bugs.chromium.org/p/chromium/issues/detail?id=XXX
   // * Buganizer bug: https://b.corp.google.com/issues/XXX
   repeated string references = 4;
-}
-
-// Conditions to be met for the Chrome OS configuration of a Device Under
-// Test for it to be excluded from consideration to satisfy a test plan unit.
-message DUTExclusionConstraint {
-  // A Common Expression Language (CEL) expression to specify constraints on a
-  // Device Under Test's Chrome OS configuration payload. `expression` MUST
-  // evaluate to a boolean value in the evaluation context described below.
-  //
-  // Test Lab Environments may optionally support excluding specific Devices
-  // Under Test from being considered for a test plan unit.
-  // When supported, the Test Lab Environment MUST effectively evaluate
-  // `expression` with the following declarations in scope for each available
-  // Device Under Test and ensure that the test is *not* scheduled on a Device
-  // Under Test for which `expression` evaluates to true.
-  //
-  // - Constant: `dut` of type DUTConfigConstraint.DUT defined below, set to the
-  //   Chrome OS configuration payload of a particular Device Under Test.
-  // - Types: Protobuf messages from `chromiumos.config.api.*`
-  //   - Additionally available with the short-hand `api.*`
-  //
-  // The full CEL spec can be found at https://github.com/google/cel-spec.
-  //
-  // TODO(crbug.com/1051689) Add reference to the metadata validator package.
-  //
-  // ## Examples
-  //
-  // Typical examples of expressions are:
-  //
-  // - Must not run on a device with a given screen size:
-  //     dut.hardware_features.screen.milliinch.value == 14000
-  // - TODO: Add model / build target example.
-  string expression = 1;
-
-  // The evaluation context for `expression` MUST include the Chrome OS
-  // configuration payload for a particular Device Under Test as a typed
-  // constant of the following type.
-  message DUT {
-    chromiumos.config.api.HardwareFeatures hardware_features = 1;
-    chromiumos.config.api.DesignConfigId design_config_id = 2;
-  }
-}
-
-// Specifies platforms software covered by a test plan unit.
-message CodeCoverage {
-  // A Common Expression Language (CEL) expression to specify Chrome OS platform
-  // sources covered by a test plan unit.
-  //
-  // Test Platform may optionally support skipping test plan units that are not
-  // applicable for incoming changes to Chrome OS. If this feature is supported,
-  // and if a non-empty blamelist is available, Test Platform MUST effectively
-  // evaluate `expression` with the following declarations in scope for the
-  // blamelist only include the test plan unit if the `expression` evaluates to
-  // true.
-  //
-  // - Constant: `blamelist` of type CodeCoverage.Blamelist defined below,
-  //   populated with blamelist attached to the request, if blamelist is
-  //   non-empty.
-  //
-  // The full CEL spec can be found at https://github.com/google/cel-spec.
-  //
-  // TODO(crbug.com/1051689) Add reference to the metadata validator package.
-  //
-  // ## Examples
-  //
-  // Typical instructive examples of expressions are:
-  //
-  // - Only include test plan unit if there are changes to chromite
-  //     blamelist.repo_paths.exists(p, p.startsWith("chromite"))
-  // - Only include test plan unit if there are changes to chromite or autotest
-  //     blamelist.repo_paths.exists(p, [
-  //         "src/third_party/autotest/files",
-  //         "chromite"
-  //       ].exists(s, p.startsWith(s)))
-  // - Do not include test plan unit if there are changes to private overlays
-  //     blamelist.repo_paths.all(p, !p.contains("private-overlays"))
-  string expression = 1;
-
-  message Blamelist {
-    // Changed paths (usually directories) in a typical checkout of the Chrome
-    // OS source tree.
-    //
-    // Paths are relative to `repo` root. e.g., `src/platform2/shill`.
-    repeated string repo_paths = 1;
-  }
 }
