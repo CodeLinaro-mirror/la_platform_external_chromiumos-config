@@ -433,7 +433,6 @@ def add_hwid_components(config_bundle, hwid_db):
       }.get(component_type, (lambda x: None))(
           value['items'])
 
-  # TODO(smcallis): implement
   return config_bundle
 
 
@@ -665,6 +664,72 @@ def merge_fingerprint_config(hw_feat, model):
       '-', '_'))
 
 
+def merge_device_brand(config_bundle, design, model, project_name):
+  """Merge brand information from model.yaml into specific Design instance.
+
+  The ConfigBundle and Design protos are updated in place with the information
+  from model.yaml.
+
+  In general we'll have a 1:1 mapping with Design to Brand information so we
+  create a new DeviceBrand and link it to a new Brand_Config value.
+
+  Args:
+    config_bundle (ConfigBundle): top level ConfigBundle to update
+    design (Design): design in the config bundle to update
+    model (CrosConfig): parsed model.yaml information
+    project_name (str): name of the device (eg: phaser)
+
+  Returns:
+    A reference to the input ConfigBundle updated with data from model
+  """
+
+  whitelabel = model.GetProperties('/identity/whitelabel-tag')
+  whitelabel = whitelabel or ""
+
+  # find/create new brand entry for the design
+  brand_name = ""
+  brand_code = model.GetProperties("/brand-code")
+  brand_id = "{}_{}".format(project_name, brand_code)
+
+  # find/create device brand
+  device_brand = None
+  for brand in config_bundle.device_brand_list:
+    if (brand.design_id == design.id and brand.brand_name == brand_name and
+        brand.brand_code == brand_code):
+      device_brand = brand
+      break
+
+  if not device_brand:
+    device_brand = config_bundle.device_brand_list.add()
+    device_brand.id.value = brand_id
+    device_brand.design_id.MergeFrom(design.id)
+    device_brand.brand_name = ""
+    device_brand.brand_code = brand_code
+
+  # find/create brand config
+  brand_config = None
+  for config in config_bundle.brand_configs:
+    if (config.brand_id == device_brand.id and
+        config.scan_config.whitelabel_tag == whitelabel):
+      brand_config = config
+      break
+
+  if not brand_config:
+    brand_config = config_bundle.brand_configs.add()
+    brand_config.brand_id.MergeFrom(device_brand.id)
+    brand_config.scan_config.whitelabel_tag = whitelabel
+
+  wallpaper = model.GetWallpaperFiles()
+  if wallpaper:
+    brand_config.wallpaper = wallpaper.pop()
+
+  regulatory_label = model.GetProperties('/regulatory-label')
+  if regulatory_label:
+    brand_config.regulatory_label = regulatory_label
+
+  return config_bundle
+
+
 def merge_model(config_bundle, design_config, model, project_name):
   """Merge model from model.yaml into a specific Design.Config instance.
 
@@ -684,9 +749,16 @@ def merge_model(config_bundle, design_config, model, project_name):
   identity = model.GetProperties('/identity')
 
   # Merge build target configuration
-  build_target = config_bundle.build_targets.add()
-  build_target.id.value = project_name
-  merge_build_target(build_target, model)
+  build_target = None
+  for target in config_bundle.build_targets:
+    if target.id.value == project_name:
+      build_target = target
+      break
+
+  if not build_target:
+    build_target = config_bundle.build_targets.add()
+    build_target.id.value = project_name
+    merge_build_target(build_target, model)
 
   # Merge hardware configuration
   hw_feat = design_config.hardware_features
@@ -696,8 +768,19 @@ def merge_model(config_bundle, design_config, model, project_name):
   merge_buttons(hw_feat, model)
 
   # Merge software configuration
+  sw_config = None
+  for config in config_bundle.software_configs:
+    if config.design_config_id == design_config.id:
+      sw_config = config
+      break
+
+  # Already have software config for this design_config, so don't re-populate
+  if sw_config:
+    return config_bundle
+
   sw_config = config_bundle.software_configs.add()
   sw_config.design_config_id.MergeFrom(design_config.id)
+
   sw_config.id_scan_config.firmware_sku = identity.get('sku-id', 0xFFFFFFFF)
 
   if 'smbios-name-match' in identity:
@@ -774,14 +857,13 @@ def merge_configs(config_path, project_name, public_path, private_path,
     design_config.id.value = '{}:{}'.format(proj_name.capitalize(), sku)
     return program_design, design_config
 
-  # The primary source of SKU truth is the model.yaml files.  We'll take each
-  # sku we find there and attempt to match with a DesignConfig in the
-  # ConfigBundles, and update it if we find it, otherwise creating a new one.
+  # GetDeviceConfigs() will return an entry for all combinations of:
+  #     (program, project, sku, whitelabel)
+  # so we need to be careful not to create duplicate entries.
   for model in models.GetDeviceConfigs() if models else []:
     identity = model.GetProperties('/identity')
     program = identity['platform-name']
     project = model.GetName()
-    whitelabel = identity.get('whitelabel-tag', '').lower()
 
     sku = identity.get('sku-id')
     if not sku:
@@ -804,43 +886,8 @@ def merge_configs(config_path, project_name, public_path, private_path,
     # Lookup design config for this specific device
     design, design_config = find_design_config(program, project, sku)
 
-    # If we have a whitelabel tag, then just create a new DeviceBrand instead of
-    # actually updating the config, since that will be handled by the non white
-    # label variant
-    if whitelabel:
-      # Find brand for whitelabel if it exists
-      brand = None
-      for val in config_bundle.device_brand_list:
-        if val.brand_name == whitelabel:
-          brand = val
-          break
-
-      if not brand:
-        brand = config_bundle.device_brand_list.add()
-
-      brand.design_id.MergeFrom(design.id)
-      brand.id.value = whitelabel
-      brand.brand_name = whitelabel
-      brand.brand_code = model.GetProperties('/brand-code')
-
-      # And a new BrandConfig to hold the whitelabel tag and wallpaper
-      brand_config = None
-      for val in config_bundle.brand_configs:
-        if val.scan_config.whitelabel_tag == whitelabel:
-          brand_config = val
-          break
-
-      if not brand_config:
-        brand_config = config_bundle.brand_configs.add()
-
-      brand_config.brand_id.MergeFrom(brand.id)
-      brand_config.scan_config.whitelabel_tag = whitelabel
-
-      wallpaper = model.GetWallpaperFiles()
-      if wallpaper:
-        brand_config.wallpaper = wallpaper.pop()
-    else:
-      merge_model(config_bundle, design_config, model, project_name)
+    merge_device_brand(config_bundle, design, model, project_name)
+    merge_model(config_bundle, design_config, model, project_name)
 
   # Merge information from HWID into config bundle
   if hwid_path:
