@@ -25,6 +25,7 @@ def _create(
         device_brand_id: A DeviceBrandId proto that is used to select a
             BrandConfig at runtime. Required.
         wallpaper: Base filename of the default wallpaper to show.
+        regulatory_label: See chromeos-config readme
         whitelabel_tag: "whitelabel_tag" value set in the VPD, used to select a
             BrandConfig at runtime. See https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#field-whitelabel_tag.
 

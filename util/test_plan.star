@@ -65,30 +65,38 @@ def _create_exclusion(
 def _append_unit(
         units,
         name,
-        exclusions = None):
+        suite_names = None,
+        exclusion = None):
     """Appends a test unit proto to existing units
 
     Args:
         units: the existing unit(s) to append to
         name: name of the unit.
-        exclusions: list of Exclusion protobuf(s).
+        suite_names: list of test suite names to run.
+        exclusion: optional Exclusion for the entire unit.
     Returns:
         the Unit protobuf.
     """
-    units.append(_create_unit(name, exclusions))
+    units.append(_create_unit(name, suite_names, exclusion))
 
-def _create_unit(name, exclusions = None):
+def _create_unit(name, suite_names = None, exclusion = None):
     """Builds a test unit proto.
 
     Args:
         name: name of the unit.
-        exclusions: list of Exclusion protobuf(s).
+        suite_names: list of test suite names to run.
+        exclusion: optional Exclusion for the entire unit.
     Returns:
         the Unit protobuf.
     """
+    suites = None
+    if suite_names:
+        suites = [plan_pb.Unit.Suite(name = name) for name in suite_names]
+
     return plan_pb.Unit(
         name = name,
-        exclusions = exclusions if exclusions else None,
+        suites = suites,
+        exclusion = exclusion,
     )
 
 def _create_plan(name, units = None):
