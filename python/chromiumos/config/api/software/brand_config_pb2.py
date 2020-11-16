@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.software',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/software'),
-  serialized_pb=_b('\n1chromiumos/config/api/software/brand_config.proto\x12\x1e\x63hromiumos.config.api.software\x1a+chromiumos/config/api/device_brand_id.proto\x1aIchromiumos/config/api/software/chromeos_config/identity_scan_config.proto\"\xb9\x01\n\x0b\x42randConfig\x12\x36\n\x08\x62rand_id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.DeviceBrandId\x12_\n\x0bscan_config\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.software.chromeos_config.IdentityScanConfig.BrandId\x12\x11\n\twallpaper\x18\x03 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
+  serialized_pb=_b('\n1chromiumos/config/api/software/brand_config.proto\x12\x1e\x63hromiumos.config.api.software\x1a+chromiumos/config/api/device_brand_id.proto\x1aIchromiumos/config/api/software/chromeos_config/identity_scan_config.proto\"\xd3\x01\n\x0b\x42randConfig\x12\x36\n\x08\x62rand_id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.DeviceBrandId\x12_\n\x0bscan_config\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.software.chromeos_config.IdentityScanConfig.BrandId\x12\x11\n\twallpaper\x18\x03 \x01(\t\x12\x18\n\x10regulatory_label\x18\x04 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_device__brand__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_chromeos__config_dot_identity__scan__config__pb2.DESCRIPTOR,])
 
@@ -56,6 +56,13 @@ _BRANDCONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='regulatory_label', full_name='chromiumos.config.api.software.BrandConfig.regulatory_label', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -69,7 +76,7 @@ _BRANDCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=206,
-  serialized_end=391,
+  serialized_end=417,
 )
 
 _BRANDCONFIG.fields_by_name['brand_id'].message_type = chromiumos_dot_config_dot_api_dot_device__brand__id__pb2._DEVICEBRANDID

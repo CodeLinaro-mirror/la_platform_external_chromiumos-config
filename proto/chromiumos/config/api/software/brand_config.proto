@@ -17,4 +17,6 @@ message BrandConfig {
   DeviceBrandId brand_id = 1;
   chromeos_config.IdentityScanConfig.BrandId scan_config = 2;
   string wallpaper = 3;
+  // See chromeos-config/README.md for details
+  string regulatory_label = 4;
 }

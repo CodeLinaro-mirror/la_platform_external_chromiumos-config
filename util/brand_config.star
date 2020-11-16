@@ -14,7 +14,11 @@ load(
     id_scan_pb = "chromiumos.config.api.software.chromeos_config",
 )
 
-def _create(device_brand_id, wallpaper = None, whitelabel_tag = None):
+def _create(
+        device_brand_id,
+        wallpaper = None,
+        regulatory_label = None,
+        whitelabel_tag = None):
     """Builds a BrandConfig proto.
 
     Args:
@@ -36,6 +40,7 @@ def _create(device_brand_id, wallpaper = None, whitelabel_tag = None):
         brand_id = device_brand_id,
         wallpaper = wallpaper,
         scan_config = scan_config,
+        regulatory_label = regulatory_label,
     )
 
 brand_config = struct(

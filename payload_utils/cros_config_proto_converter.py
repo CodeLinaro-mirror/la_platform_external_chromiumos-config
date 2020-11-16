@@ -151,6 +151,10 @@ def _build_ash_flags(config: Config) -> List[str]:
       flags[f'{wallpaper_type}-wallpaper-{size}'] = (
           f'{WALLPAPER_BASE_PATH}/{wallpaper_type}_{size}.jpg')
 
+  regulatory_label = config.brand_config.regulatory_label
+  if regulatory_label:
+    flags['regulatory-label-dir'] = (regulatory_label)
+
   flags['arc-build-properties'] = json_format.MessageToDict(
       config.build_target.arc)
 
@@ -730,6 +734,7 @@ def _transform_build_config(config, config_files, whitelabel):
   _upsert(_build_bluetooth(config), result, 'bluetooth')
   _upsert(_build_wifi(config, config_files), result, 'wifi')
   _upsert(config.brand_config.wallpaper, result, 'wallpaper')
+  _upsert(config.brand_config.regulatory_label, result, 'regulatory-label')
   _upsert(config.device_brand.brand_code, result, 'brand-code')
   _upsert(
       _build_camera(config.hw_design_config.hardware_topology), result,
