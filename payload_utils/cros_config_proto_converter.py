@@ -1031,6 +1031,13 @@ def _generate_arc_media_profiles(hw_features, sw_config):
               'enabled': 'false'
           }),
   ])
+
+  dtd_path = os.path.dirname(__file__)
+  dtd = etree.DTD(os.path.join(dtd_path, 'media_profiles.dtd'))
+  if not dtd.validate(root):
+    raise etree.DTDValidateError(
+        'Invalid media_profiles.xml generated:\n{}'.format(dtd.error_log))
+
   return XML_DECLARATION + etree.tostring(root, pretty_print=True)
 
 
