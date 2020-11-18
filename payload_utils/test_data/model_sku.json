@@ -133,7 +133,7 @@
       "component.has_daughter_board_usb_a": 0,
       "component.has_daughter_board_usb_c": 0,
       "component.has_fingerprint": false,
-      "component.has_front_camera": true,
+      "component.has_front_camera": null,
       "component.has_keyboard_backlight": true,
       "component.has_lid_accelerometer": null,
       "component.has_lid_gyroscope": null,
@@ -142,7 +142,7 @@
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 0,
       "component.has_proximity_sensor": true,
-      "component.has_rear_camera": false,
+      "component.has_rear_camera": null,
       "component.has_sd_reader": true,
       "component.has_stylus": false,
       "component.has_tabletmode": false,
@@ -153,7 +153,7 @@
         [
           "camera",
           "==",
-          1
+          0
         ],
         [
           "touchscreen",
@@ -172,7 +172,7 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 25377
+      "fw_config": 25345
     },
     "project_c": {
       "component.audio_card_name": "fakeaudiocard",

@@ -904,7 +904,7 @@ def _generate_arc_media_profiles(hw_features, sw_config):
     sw_config: SoftwareConfig proto message.
   Returns:
     bytes of the media_profiles.xml content, or None if |sw_config| disables the
-    generation.
+    generation or there's no camera.
   """
 
   def _gen_camcorder_profiles(camera_id, resolutions):
@@ -1005,6 +1005,9 @@ def _generate_arc_media_profiles(hw_features, sw_config):
         resolutions.append((1920, 1080))
     root.append(_gen_camcorder_profiles(camera_id, resolutions))
     camera_id += 1
+  # media_profiles.xml should have at least one CamcorderProfiles.
+  if camera_id == 0:
+    return None
 
   root.extend([
       etree.Element('EncoderOutputFileFormat', attrib={'name': '3gp'}),

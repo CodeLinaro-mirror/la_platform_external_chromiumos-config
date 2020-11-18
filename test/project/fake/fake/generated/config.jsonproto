@@ -311,7 +311,7 @@
             },
             "camera": {
               "description": {
-                "EN": "Default camera"
+                "EN": "1 USB camera"
               },
               "hardwareFeature": {
                 "camera": {
@@ -331,7 +331,7 @@
                   "value": 32
                 }
               },
-              "id": "DEFAULT CAMERA",
+              "id": "CAMERA1",
               "type": 7
             },
             "daughterBoard": {
@@ -678,7 +678,7 @@
             },
             "camera": {
               "description": {
-                "EN": "Non-default camera"
+                "EN": "1 USB camera and 1 MIPI camera"
               },
               "hardwareFeature": {
                 "camera": {
@@ -707,7 +707,7 @@
                   "mask": 240
                 }
               },
-              "id": "Non-default CAMERA",
+              "id": "CAMERA2",
               "type": 7
             },
             "daughterBoard": {
@@ -1087,7 +1087,7 @@
             },
             "camera": {
               "description": {
-                "EN": "Default camera"
+                "EN": "1 USB camera"
               },
               "hardwareFeature": {
                 "camera": {
@@ -1107,7 +1107,7 @@
                   "value": 32
                 }
               },
-              "id": "DEFAULT CAMERA",
+              "id": "CAMERA1",
               "type": 7
             },
             "daughterBoard": {
@@ -1488,7 +1488,7 @@
             },
             "camera": {
               "description": {
-                "EN": "Default camera"
+                "EN": "1 USB camera"
               },
               "hardwareFeature": {
                 "camera": {
@@ -1508,7 +1508,7 @@
                   "value": 32
                 }
               },
-              "id": "DEFAULT CAMERA",
+              "id": "CAMERA1",
               "type": 7
             },
             "daughterBoard": {
@@ -1876,7 +1876,7 @@
             },
             "camera": {
               "description": {
-                "EN": "Default camera"
+                "EN": "1 USB camera"
               },
               "hardwareFeature": {
                 "camera": {
@@ -1896,7 +1896,7 @@
                   "value": 32
                 }
               },
-              "id": "DEFAULT CAMERA",
+              "id": "CAMERA1",
               "type": 7
             },
             "daughterBoard": {
@@ -2234,7 +2234,7 @@
             },
             "camera": {
               "description": {
-                "EN": "Default camera"
+                "EN": "1 USB camera"
               },
               "hardwareFeature": {
                 "camera": {
@@ -2254,7 +2254,7 @@
                   "value": 32
                 }
               },
-              "id": "DEFAULT CAMERA",
+              "id": "CAMERA1",
               "type": 7
             },
             "daughterBoard": {
@@ -2474,18 +2474,6 @@
               "headphoneCodec": 2,
               "speakerAmp": 5
             },
-            "camera": {
-              "devices": [
-                {
-                  "facing": 1,
-                  "ids": [
-                    "0123:abcd"
-                  ],
-                  "interface": 1,
-                  "orientation": 1
-                }
-              ]
-            },
             "fingerprint": {
               "location": 5
             },
@@ -2493,8 +2481,8 @@
               "formFactor": 5
             },
             "fwConfig": {
-              "mask": 65535,
-              "value": 25377
+              "mask": 65295,
+              "value": 25345
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -2577,31 +2565,6 @@
               },
               "id": "AUDIO",
               "type": 3
-            },
-            "camera": {
-              "description": {
-                "EN": "Default camera"
-              },
-              "hardwareFeature": {
-                "camera": {
-                  "devices": [
-                    {
-                      "facing": 1,
-                      "ids": [
-                        "0123:abcd"
-                      ],
-                      "interface": 1,
-                      "orientation": 1
-                    }
-                  ]
-                },
-                "fwConfig": {
-                  "mask": 240,
-                  "value": 32
-                }
-              },
-              "id": "DEFAULT CAMERA",
-              "type": 7
             },
             "daughterBoard": {
               "description": {
@@ -3639,6 +3602,9 @@
           "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
         }
       ],
+      "cameraConfig": {
+        "generateMediaProfiles": true
+      },
       "designConfigId": {
         "value": "PROJECT_BOX:128"
       },

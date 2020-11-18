@@ -58,9 +58,9 @@ _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.au
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
 _KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE)
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
-_DEFAULT_CAMERA = hw_topo.create_camera(
-    "DEFAULT CAMERA",
-    "Default camera",
+_CAMERA1 = hw_topo.create_camera(
+    "CAMERA1",
+    "1 USB camera",
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.CAMERA, 2)],
     camera_devices = [
         hw_topo.make_camera_device(
@@ -72,9 +72,9 @@ _DEFAULT_CAMERA = hw_topo.create_camera(
         ),
     ],
 )
-_CAMERA = hw_topo.create_camera(
-    "Non-default CAMERA",
-    "Non-default camera",
+_CAMERA2 = hw_topo.create_camera(
+    "CAMERA2",
+    "1 USB camera and 1 MIPI camera",
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.CAMERA, 0)],
     camera_devices = [
         hw_topo.make_camera_device(
@@ -153,7 +153,7 @@ def create_hardware_topology(
         stylus = stylus if stylus else None,
         accelerometer_gyroscope_magnetometer = sensor if sensor else _SENSOR,
         audio = _AUDIO,
-        camera = camera if camera else _DEFAULT_CAMERA,
+        camera = camera if camera else None,
         daughter_board = daughter_board if daughter_board else _DAUGHTER_BOARD,
         motherboard_usb = _MOTHERBOARD_USB,
         non_volatile_storage = _NON_VOLATILE_STORAGE,
@@ -179,6 +179,7 @@ design.append_configs(
     hardware_topology = create_hardware_topology(
         bluetooth = _BLUETOOTH,
         barreljack = _BARRELJACK,
+        camera = _CAMERA1,
         fingerprint = _FINGERPRINT,
         lte_board = _LTE_BOARD,
         screen = _TOUCHSCREEN,
@@ -223,7 +224,7 @@ design.append_configs(
         lte_board = _LTE_BOARD,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
-        camera = _CAMERA,
+        camera = _CAMERA2,
         daughter_board = hw_topo.create_daughter_board("Non-default DB", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)]),
     ),
     audio = sc.create_audio(
@@ -281,6 +282,7 @@ design.append_configs(
     config_id = 32,
     hardware_topology = create_hardware_topology(
         bluetooth = _BLUETOOTH,
+        camera = _CAMERA1,
         fingerprint = _FINGERPRINT,
         form_factor = _FORM_FACTOR_CONVERTIBLE,
         lte_board = _LTE_BOARD,
@@ -373,6 +375,7 @@ design.append_configs(
     config_id = 33,
     hardware_topology = create_hardware_topology(
         bluetooth = _BLUETOOTH,
+        camera = _CAMERA1,
         form_factor = _FORM_FACTOR_CONVERTIBLE,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
@@ -410,6 +413,7 @@ design.append_configs(
     config_id = 34,
     hardware_topology = create_hardware_topology(
         bluetooth = _BLUETOOTH,
+        camera = _CAMERA1,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
     ),
@@ -440,7 +444,9 @@ design.append_configs(
     sw_configs = _SW_CONFIGS,
     design_id = _DESIGN_ID_WL,
     config_id = 64,
-    hardware_topology = create_hardware_topology(),
+    hardware_topology = create_hardware_topology(
+        camera = _CAMERA1,
+    ),
     audio = [sc.create_audio(
         _AUDIO_CARD,
         card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
@@ -489,6 +495,7 @@ design.append_configs(
     ),
     firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"]),
     power = _SC_POWER,
+    camera = sc.create_camera(generate_media_profiles = True),
 )
 
 _BOARD_ID_PHASE = {

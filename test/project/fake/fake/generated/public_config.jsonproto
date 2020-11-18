@@ -143,16 +143,6 @@
     {
       "configs": [
         {
-          "hardwareFeatures": {
-            "camera": {}
-          },
-          "hardwareTopology": {
-            "camera": {
-              "hardwareFeature": {
-                "camera": {}
-              }
-            }
-          },
           "id": {
             "value": "PROJECT_BOX:128"
           }

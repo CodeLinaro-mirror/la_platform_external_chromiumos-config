@@ -1473,21 +1473,7 @@
         },
         "brand-code": "FDBX",
         "camera": {
-          "count": 1,
-          "devices": [
-            {
-              "facing": "front",
-              "flags": {
-                "support-1080p": false,
-                "support-autofocus": false
-              },
-              "ids": [
-                "0123:abcd"
-              ],
-              "interface": "usb",
-              "orientation": 0
-            }
-          ]
+          "count": 0
         },
         "firmware": {
           "bcs-overlay": "overlay-fake-private",
@@ -1502,7 +1488,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 25377,
+          "firmware-config": 25345,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
