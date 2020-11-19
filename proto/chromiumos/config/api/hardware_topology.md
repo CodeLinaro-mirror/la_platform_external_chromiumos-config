@@ -22,7 +22,7 @@ Changes that do not require new topology
 
 Changes that require new topology
 
-*   Clamshell/Convertible/Detachable/Tablet/Chromebox
+*   Clamshell/Convertible/Detachable/Tablet/Chromebox/Chromebase
 
 Changes that do not require new topology
 
@@ -95,7 +95,7 @@ Changes that do not require new topology
 *   Different vendor for camera
 *   Different OS driver required for camera
 
-## Accelerometer/Gyroscope/Magnetometer/ProximitySensor {#sensor}
+## Accelerometer/Gyroscope/Magnetometer/Proximity/LightSensor {#sensor}
 
 Changes that require new topology
 
