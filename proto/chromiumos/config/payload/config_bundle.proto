@@ -36,3 +36,8 @@ message ConfigBundle {
 
   reserved 2, 6, 7, 16, 17;
 }
+
+// List to hold multiple ConfigBundles
+message ConfigBundleList {
+   repeated ConfigBundle values = 1;
+}
