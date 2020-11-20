@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.tls',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/test/tls'),
-  serialized_pb=_b('\n+chromiumos/config/api/test/tls/common.proto\x12\x1e\x63hromiumos.config.api.test.tls\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\"\xc3\x01\n\x15\x45xecDutCommandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x02 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\x12\x36\n\x06stdout\x18\x05 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\x12\x36\n\x06stderr\x18\x06 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\"\xe2\x01\n\x16\x45xecDutCommandResponse\x12R\n\texit_info\x18\x01 \x01(\x0b\x32?.chromiumos.config.api.test.tls.ExecDutCommandResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x8c\x02\n\x10ProvisionRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12M\n\x05image\x18\x02 \x01(\x0b\x32>.chromiumos.config.api.test.tls.ProvisionRequest.ChromeOSImage\x12K\n\tdlc_specs\x18\x03 \x03(\x0b\x32\x38.chromiumos.config.api.test.tls.ProvisionRequest.DLCSpec\x1a\x37\n\rChromeOSImage\x12\x18\n\x0egs_path_prefix\x18\x01 \x01(\tH\x00\x42\x0c\n\npath_oneof\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\xf6\x01\n\x11ProvisionResponse\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\x13\n\x11ProvisionMetadata\"\x95\x02\n\x13ProvisionDutRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12P\n\x05image\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.test.tls.ProvisionDutRequest.ChromeOSImage\x12N\n\tdlc_specs\x18\x03 \x03(\x0b\x32;.chromiumos.config.api.test.tls.ProvisionDutRequest.DLCSpec\x1a\x37\n\rChromeOSImage\x12\x18\n\x0egs_path_prefix\x18\x01 \x01(\tH\x00\x42\x0c\n\npath_oneof\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\xf9\x01\n\x14ProvisionDutResponse\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\x16\n\x14ProvisionDutMetadata\"6\n\x13\x46\x65tchCrashesRequest\x12\x0b\n\x03\x64ut\x18\x01 \x01(\t\x12\x12\n\nfetch_core\x18\x02 \x01(\x08\"\xb7\x01\n\x14\x46\x65tchCrashesResponse\x12\x10\n\x08\x63rash_id\x18\x01 \x01(\x03\x12:\n\x05\x63rash\x18\x02 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashInfoH\x00\x12\x39\n\x04\x62lob\x18\x03 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashBlobH\x00\x12\x0e\n\x04\x63ore\x18\x04 \x01(\x0cH\x00\x42\x06\n\x04\x64\x61ta\"\xbe\x01\n\tCrashInfo\x12\x11\n\texec_name\x18\x01 \x01(\t\x12\x0c\n\x04prod\x18\x02 \x01(\t\x12\x0b\n\x03ver\x18\x03 \x01(\t\x12\x0b\n\x03sig\x18\x04 \x01(\t\x12$\n\x1cin_progress_integration_test\x18\x05 \x01(\t\x12\x11\n\tcollector\x18\x06 \x01(\t\x12=\n\x06\x66ields\x18\x07 \x03(\x0b\x32-.chromiumos.config.api.test.tls.CrashMetadata\"*\n\rCrashMetadata\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"8\n\tCrashBlob\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t*,\n\x06Output\x12\x0f\n\x0bOUTPUT_PIPE\x10\x00\x12\x11\n\rOUTPUT_STDOUT\x10\x01\x32\xa9\x04\n\x06\x43ommon\x12\x81\x01\n\x0e\x45xecDutCommand\x12\x35.chromiumos.config.api.test.tls.ExecDutCommandRequest\x1a\x36.chromiumos.config.api.test.tls.ExecDutCommandResponse0\x01\x12\x87\x01\n\tProvision\x12\x30.chromiumos.config.api.test.tls.ProvisionRequest\x1a\x1d.google.longrunning.Operation\")\xca\x41&\n\x11ProvisionResponse\x12\x11ProvisionMetadata\x12\x93\x01\n\x0cProvisionDut\x12\x33.chromiumos.config.api.test.tls.ProvisionDutRequest\x1a\x1d.google.longrunning.Operation\"/\xca\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12{\n\x0c\x46\x65tchCrashes\x12\x33.chromiumos.config.api.test.tls.FetchCrashesRequest\x1a\x34.chromiumos.config.api.test.tls.FetchCrashesResponse0\x01\x42\x33Z1go.chromium.org/chromiumos/config/go/api/test/tlsb\x06proto3')
+  serialized_pb=_b('\n+chromiumos/config/api/test/tls/common.proto\x12\x1e\x63hromiumos.config.api.test.tls\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\"\xc3\x01\n\x15\x45xecDutCommandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x02 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\x12\x36\n\x06stdout\x18\x05 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\x12\x36\n\x06stderr\x18\x06 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\"\xe2\x01\n\x16\x45xecDutCommandResponse\x12R\n\texit_info\x18\x01 \x01(\x0b\x32?.chromiumos.config.api.test.tls.ExecDutCommandResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x95\x02\n\x13ProvisionDutRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12P\n\x05image\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.test.tls.ProvisionDutRequest.ChromeOSImage\x12N\n\tdlc_specs\x18\x03 \x03(\x0b\x32;.chromiumos.config.api.test.tls.ProvisionDutRequest.DLCSpec\x1a\x37\n\rChromeOSImage\x12\x18\n\x0egs_path_prefix\x18\x01 \x01(\tH\x00\x42\x0c\n\npath_oneof\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\xf9\x01\n\x14ProvisionDutResponse\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\x16\n\x14ProvisionDutMetadata\"6\n\x13\x46\x65tchCrashesRequest\x12\x0b\n\x03\x64ut\x18\x01 \x01(\t\x12\x12\n\nfetch_core\x18\x02 \x01(\x08\"\xb7\x01\n\x14\x46\x65tchCrashesResponse\x12\x10\n\x08\x63rash_id\x18\x01 \x01(\x03\x12:\n\x05\x63rash\x18\x02 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashInfoH\x00\x12\x39\n\x04\x62lob\x18\x03 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashBlobH\x00\x12\x0e\n\x04\x63ore\x18\x04 \x01(\x0cH\x00\x42\x06\n\x04\x64\x61ta\"\xbe\x01\n\tCrashInfo\x12\x11\n\texec_name\x18\x01 \x01(\t\x12\x0c\n\x04prod\x18\x02 \x01(\t\x12\x0b\n\x03ver\x18\x03 \x01(\t\x12\x0b\n\x03sig\x18\x04 \x01(\t\x12$\n\x1cin_progress_integration_test\x18\x05 \x01(\t\x12\x11\n\tcollector\x18\x06 \x01(\t\x12=\n\x06\x66ields\x18\x07 \x03(\x0b\x32-.chromiumos.config.api.test.tls.CrashMetadata\"*\n\rCrashMetadata\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"8\n\tCrashBlob\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t*,\n\x06Output\x12\x0f\n\x0bOUTPUT_PIPE\x10\x00\x12\x11\n\rOUTPUT_STDOUT\x10\x01\x32\x9f\x03\n\x06\x43ommon\x12\x81\x01\n\x0e\x45xecDutCommand\x12\x35.chromiumos.config.api.test.tls.ExecDutCommandRequest\x1a\x36.chromiumos.config.api.test.tls.ExecDutCommandResponse0\x01\x12\x93\x01\n\x0cProvisionDut\x12\x33.chromiumos.config.api.test.tls.ProvisionDutRequest\x1a\x1d.google.longrunning.Operation\"/\xca\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12{\n\x0c\x46\x65tchCrashes\x12\x33.chromiumos.config.api.test.tls.FetchCrashesRequest\x1a\x34.chromiumos.config.api.test.tls.FetchCrashesResponse0\x01\x42\x33Z1go.chromium.org/chromiumos/config/go/api/test/tlsb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
 
@@ -42,8 +42,8 @@ _OUTPUT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2214,
-  serialized_end=2258,
+  serialized_start=1673,
+  serialized_end=1717,
 )
 _sym_db.RegisterEnumDescriptor(_OUTPUT)
 
@@ -51,44 +51,6 @@ Output = enum_type_wrapper.EnumTypeWrapper(_OUTPUT)
 OUTPUT_PIPE = 0
 OUTPUT_STDOUT = 1
 
-
-_PROVISIONRESPONSE_REASON = _descriptor.EnumDescriptor(
-  name='Reason',
-  full_name='chromiumos.config.api.test.tls.ProvisionResponse.Reason',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='REASON_INVALID_REQUEST', index=0, number=0,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='REASON_DUT_UNREACHABLE_PRE_PROVISION', index=1, number=1,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='REASON_DOWNLOADING_IMAGE_FAILED', index=2, number=2,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='REASON_PROVISIONING_TIMEDOUT', index=3, number=3,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='REASON_PROVISIONING_FAILED', index=4, number=4,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='REASON_DUT_UNREACHABLE_POST_PROVISION', index=5, number=5,
-      serialized_options=None,
-      type=None),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=874,
-  serialized_end=1098,
-)
-_sym_db.RegisterEnumDescriptor(_PROVISIONRESPONSE_REASON)
 
 _PROVISIONDUTRESPONSE_REASON = _descriptor.EnumDescriptor(
   name='Reason',
@@ -123,8 +85,8 @@ _PROVISIONDUTRESPONSE_REASON = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=874,
-  serialized_end=1098,
+  serialized_start=886,
+  serialized_end=1110,
 )
 _sym_db.RegisterEnumDescriptor(_PROVISIONDUTRESPONSE_REASON)
 
@@ -291,163 +253,6 @@ _EXECDUTCOMMANDRESPONSE = _descriptor.Descriptor(
 )
 
 
-_PROVISIONREQUEST_CHROMEOSIMAGE = _descriptor.Descriptor(
-  name='ChromeOSImage',
-  full_name='chromiumos.config.api.test.tls.ProvisionRequest.ChromeOSImage',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='gs_path_prefix', full_name='chromiumos.config.api.test.tls.ProvisionRequest.ChromeOSImage.gs_path_prefix', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='path_oneof', full_name='chromiumos.config.api.test.tls.ProvisionRequest.ChromeOSImage.path_oneof',
-      index=0, containing_type=None, fields=[]),
-  ],
-  serialized_start=771,
-  serialized_end=826,
-)
-
-_PROVISIONREQUEST_DLCSPEC = _descriptor.Descriptor(
-  name='DLCSpec',
-  full_name='chromiumos.config.api.test.tls.ProvisionRequest.DLCSpec',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='id', full_name='chromiumos.config.api.test.tls.ProvisionRequest.DLCSpec.id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=828,
-  serialized_end=849,
-)
-
-_PROVISIONREQUEST = _descriptor.Descriptor(
-  name='ProvisionRequest',
-  full_name='chromiumos.config.api.test.tls.ProvisionRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='chromiumos.config.api.test.tls.ProvisionRequest.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='image', full_name='chromiumos.config.api.test.tls.ProvisionRequest.image', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='dlc_specs', full_name='chromiumos.config.api.test.tls.ProvisionRequest.dlc_specs', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_PROVISIONREQUEST_CHROMEOSIMAGE, _PROVISIONREQUEST_DLCSPEC, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=581,
-  serialized_end=849,
-)
-
-
-_PROVISIONRESPONSE = _descriptor.Descriptor(
-  name='ProvisionResponse',
-  full_name='chromiumos.config.api.test.tls.ProvisionResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _PROVISIONRESPONSE_REASON,
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=852,
-  serialized_end=1098,
-)
-
-
-_PROVISIONMETADATA = _descriptor.Descriptor(
-  name='ProvisionMetadata',
-  full_name='chromiumos.config.api.test.tls.ProvisionMetadata',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1100,
-  serialized_end=1119,
-)
-
-
 _PROVISIONDUTREQUEST_CHROMEOSIMAGE = _descriptor.Descriptor(
   name='ChromeOSImage',
   full_name='chromiumos.config.api.test.tls.ProvisionDutRequest.ChromeOSImage',
@@ -477,8 +282,8 @@ _PROVISIONDUTREQUEST_CHROMEOSIMAGE = _descriptor.Descriptor(
       name='path_oneof', full_name='chromiumos.config.api.test.tls.ProvisionDutRequest.ChromeOSImage.path_oneof',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=771,
-  serialized_end=826,
+  serialized_start=780,
+  serialized_end=835,
 )
 
 _PROVISIONDUTREQUEST_DLCSPEC = _descriptor.Descriptor(
@@ -507,8 +312,8 @@ _PROVISIONDUTREQUEST_DLCSPEC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=828,
-  serialized_end=849,
+  serialized_start=837,
+  serialized_end=858,
 )
 
 _PROVISIONDUTREQUEST = _descriptor.Descriptor(
@@ -551,8 +356,8 @@ _PROVISIONDUTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1122,
-  serialized_end=1399,
+  serialized_start=581,
+  serialized_end=858,
 )
 
 
@@ -576,8 +381,8 @@ _PROVISIONDUTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1402,
-  serialized_end=1651,
+  serialized_start=861,
+  serialized_end=1110,
 )
 
 
@@ -600,8 +405,8 @@ _PROVISIONDUTMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1653,
-  serialized_end=1675,
+  serialized_start=1112,
+  serialized_end=1134,
 )
 
 
@@ -638,8 +443,8 @@ _FETCHCRASHESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1677,
-  serialized_end=1731,
+  serialized_start=1136,
+  serialized_end=1190,
 )
 
 
@@ -693,8 +498,8 @@ _FETCHCRASHESRESPONSE = _descriptor.Descriptor(
       name='data', full_name='chromiumos.config.api.test.tls.FetchCrashesResponse.data',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1734,
-  serialized_end=1917,
+  serialized_start=1193,
+  serialized_end=1376,
 )
 
 
@@ -766,8 +571,8 @@ _CRASHINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1920,
-  serialized_end=2110,
+  serialized_start=1379,
+  serialized_end=1569,
 )
 
 
@@ -804,8 +609,8 @@ _CRASHMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2112,
-  serialized_end=2154,
+  serialized_start=1571,
+  serialized_end=1613,
 )
 
 
@@ -849,22 +654,14 @@ _CRASHBLOB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2156,
-  serialized_end=2212,
+  serialized_start=1615,
+  serialized_end=1671,
 )
 
 _EXECDUTCOMMANDREQUEST.fields_by_name['stdout'].enum_type = _OUTPUT
 _EXECDUTCOMMANDREQUEST.fields_by_name['stderr'].enum_type = _OUTPUT
 _EXECDUTCOMMANDRESPONSE_EXITINFO.containing_type = _EXECDUTCOMMANDRESPONSE
 _EXECDUTCOMMANDRESPONSE.fields_by_name['exit_info'].message_type = _EXECDUTCOMMANDRESPONSE_EXITINFO
-_PROVISIONREQUEST_CHROMEOSIMAGE.containing_type = _PROVISIONREQUEST
-_PROVISIONREQUEST_CHROMEOSIMAGE.oneofs_by_name['path_oneof'].fields.append(
-  _PROVISIONREQUEST_CHROMEOSIMAGE.fields_by_name['gs_path_prefix'])
-_PROVISIONREQUEST_CHROMEOSIMAGE.fields_by_name['gs_path_prefix'].containing_oneof = _PROVISIONREQUEST_CHROMEOSIMAGE.oneofs_by_name['path_oneof']
-_PROVISIONREQUEST_DLCSPEC.containing_type = _PROVISIONREQUEST
-_PROVISIONREQUEST.fields_by_name['image'].message_type = _PROVISIONREQUEST_CHROMEOSIMAGE
-_PROVISIONREQUEST.fields_by_name['dlc_specs'].message_type = _PROVISIONREQUEST_DLCSPEC
-_PROVISIONRESPONSE_REASON.containing_type = _PROVISIONRESPONSE
 _PROVISIONDUTREQUEST_CHROMEOSIMAGE.containing_type = _PROVISIONDUTREQUEST
 _PROVISIONDUTREQUEST_CHROMEOSIMAGE.oneofs_by_name['path_oneof'].fields.append(
   _PROVISIONDUTREQUEST_CHROMEOSIMAGE.fields_by_name['gs_path_prefix'])
@@ -887,9 +684,6 @@ _FETCHCRASHESRESPONSE.fields_by_name['core'].containing_oneof = _FETCHCRASHESRES
 _CRASHINFO.fields_by_name['fields'].message_type = _CRASHMETADATA
 DESCRIPTOR.message_types_by_name['ExecDutCommandRequest'] = _EXECDUTCOMMANDREQUEST
 DESCRIPTOR.message_types_by_name['ExecDutCommandResponse'] = _EXECDUTCOMMANDRESPONSE
-DESCRIPTOR.message_types_by_name['ProvisionRequest'] = _PROVISIONREQUEST
-DESCRIPTOR.message_types_by_name['ProvisionResponse'] = _PROVISIONRESPONSE
-DESCRIPTOR.message_types_by_name['ProvisionMetadata'] = _PROVISIONMETADATA
 DESCRIPTOR.message_types_by_name['ProvisionDutRequest'] = _PROVISIONDUTREQUEST
 DESCRIPTOR.message_types_by_name['ProvisionDutResponse'] = _PROVISIONDUTRESPONSE
 DESCRIPTOR.message_types_by_name['ProvisionDutMetadata'] = _PROVISIONDUTMETADATA
@@ -922,43 +716,6 @@ ExecDutCommandResponse = _reflection.GeneratedProtocolMessageType('ExecDutComman
   ))
 _sym_db.RegisterMessage(ExecDutCommandResponse)
 _sym_db.RegisterMessage(ExecDutCommandResponse.ExitInfo)
-
-ProvisionRequest = _reflection.GeneratedProtocolMessageType('ProvisionRequest', (_message.Message,), dict(
-
-  ChromeOSImage = _reflection.GeneratedProtocolMessageType('ChromeOSImage', (_message.Message,), dict(
-    DESCRIPTOR = _PROVISIONREQUEST_CHROMEOSIMAGE,
-    __module__ = 'chromiumos.config.api.test.tls.common_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.ProvisionRequest.ChromeOSImage)
-    ))
-  ,
-
-  DLCSpec = _reflection.GeneratedProtocolMessageType('DLCSpec', (_message.Message,), dict(
-    DESCRIPTOR = _PROVISIONREQUEST_DLCSPEC,
-    __module__ = 'chromiumos.config.api.test.tls.common_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.ProvisionRequest.DLCSpec)
-    ))
-  ,
-  DESCRIPTOR = _PROVISIONREQUEST,
-  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.ProvisionRequest)
-  ))
-_sym_db.RegisterMessage(ProvisionRequest)
-_sym_db.RegisterMessage(ProvisionRequest.ChromeOSImage)
-_sym_db.RegisterMessage(ProvisionRequest.DLCSpec)
-
-ProvisionResponse = _reflection.GeneratedProtocolMessageType('ProvisionResponse', (_message.Message,), dict(
-  DESCRIPTOR = _PROVISIONRESPONSE,
-  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.ProvisionResponse)
-  ))
-_sym_db.RegisterMessage(ProvisionResponse)
-
-ProvisionMetadata = _reflection.GeneratedProtocolMessageType('ProvisionMetadata', (_message.Message,), dict(
-  DESCRIPTOR = _PROVISIONMETADATA,
-  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.ProvisionMetadata)
-  ))
-_sym_db.RegisterMessage(ProvisionMetadata)
 
 ProvisionDutRequest = _reflection.GeneratedProtocolMessageType('ProvisionDutRequest', (_message.Message,), dict(
 
@@ -1041,8 +798,8 @@ _COMMON = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=2261,
-  serialized_end=2814,
+  serialized_start=1720,
+  serialized_end=2135,
   methods=[
   _descriptor.MethodDescriptor(
     name='ExecDutCommand',
@@ -1054,18 +811,9 @@ _COMMON = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='Provision',
-    full_name='chromiumos.config.api.test.tls.Common.Provision',
-    index=1,
-    containing_service=None,
-    input_type=_PROVISIONREQUEST,
-    output_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2._OPERATION,
-    serialized_options=_b('\312A&\n\021ProvisionResponse\022\021ProvisionMetadata'),
-  ),
-  _descriptor.MethodDescriptor(
     name='ProvisionDut',
     full_name='chromiumos.config.api.test.tls.Common.ProvisionDut',
-    index=2,
+    index=1,
     containing_service=None,
     input_type=_PROVISIONDUTREQUEST,
     output_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2._OPERATION,
@@ -1074,7 +822,7 @@ _COMMON = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='FetchCrashes',
     full_name='chromiumos.config.api.test.tls.Common.FetchCrashes',
-    index=3,
+    index=2,
     containing_service=None,
     input_type=_FETCHCRASHESREQUEST,
     output_type=_FETCHCRASHESRESPONSE,

@@ -16,58 +16,6 @@ import (
 	"google.golang.org/grpc"
 )
 
-func ExampleProvisionRequest() {
-	var invocation rtd.Invocation
-
-	tlsConfig := invocation.GetTestLabServicesConfig()
-	dutName := invocation.GetDuts()[0].GetTlsDutName()
-
-	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", tlsConfig.GetTlwAddress(), tlsConfig.GetTlwPort()), grpc.WithInsecure())
-	if err != nil {
-		panic(err)
-	}
-	defer conn.Close()
-
-	c := tls.NewCommonClient(conn)
-
-	req := tls.ProvisionRequest{
-		Name: dutName,
-		Image: &tls.ProvisionRequest_ChromeOSImage{
-			PathOneof: &tls.ProvisionRequest_ChromeOSImage_GsPathPrefix{
-				GsPathPrefix: "gs://chromeos-image-archive/eve-release/R87-13457.0.0",
-			},
-		},
-		DlcSpecs: []*tls.ProvisionRequest_DLCSpec{
-			&tls.ProvisionRequest_DLCSpec{
-				Id: "sample-dlc",
-			},
-		},
-	}
-
-	ctx := context.Background()
-	op, err := c.Provision(ctx, &req)
-	if err != nil {
-		panic(err)
-	}
-
-	opcli := longrunning.NewOperationsClient(conn)
-	op, err = opcli.WaitOperation(ctx, &longrunning.WaitOperationRequest{
-		Name: op.GetName(),
-		Timeout: &duration.Duration{
-			Seconds: 3600,
-		},
-	})
-	if err != nil {
-		panic("RPC error")
-	}
-
-	if errStatus := op.GetError(); errStatus != nil {
-		panic(fmt.Sprintf("Operation error details: %v", errStatus.GetDetails()))
-	}
-
-	// Provisioned OS + DLC.
-}
-
 func ExampleProvisionDutRequest() {
 	var invocation rtd.Invocation
 
