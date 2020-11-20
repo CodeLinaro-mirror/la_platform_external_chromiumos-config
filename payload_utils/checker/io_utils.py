@@ -31,6 +31,22 @@ def write_message_json(message: Message, path: pathlib.Path, \
     outfile.write(json_format.MessageToJson(message, **opts))
 
 
+def read_json_proto(message, path):
+  """Read a jsonproto encoded message from a file.
+
+  Args:
+    message: an instance of the protobuffer message to read into
+    path (str): path to the json encoded message on disk.
+
+  Returns:
+    reference to message
+  """
+
+  with open(path, 'r') as f:
+    json_format.Parse(f.read(), message)
+  return message
+
+
 def read_config(path: str) -> config_bundle_pb2.ConfigBundle:
   """Reads a ConfigBundle message from a jsonpb file.
 
@@ -40,10 +56,10 @@ def read_config(path: str) -> config_bundle_pb2.ConfigBundle:
   Returns:
     ConfigBundle parsed from file.
   """
-  project_config = config_bundle_pb2.ConfigBundle()
-  with open(path, 'r') as f:
-    json_format.Parse(f.read(), project_config)
-  return project_config
+  return read_json_proto(
+      config_bundle_pb2.ConfigBundle(),
+      path,
+  )
 
 
 def read_flat_config(path: str) -> flat_config_pb2.FlatConfigList:
@@ -55,10 +71,10 @@ def read_flat_config(path: str) -> flat_config_pb2.FlatConfigList:
   Returns:
     FlatConfigList parsed from file.
   """
-  flat_config = flat_config_pb2.FlatConfigList()
-  with open(path, 'r') as f:
-    json_format.Parse(f.read(), flat_config)
-  return flat_config
+  return read_json_proto(
+      flat_config_pb2.FlatConfigList(),
+      path,
+  )
 
 
 def read_model_sku_json(factory_dir: pathlib.Path) -> Dict[str, Any]:

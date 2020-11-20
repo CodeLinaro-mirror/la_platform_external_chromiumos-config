@@ -5,12 +5,51 @@
 """Proto-related helper functions."""
 
 import copy
+import importlib
+import os
 
 from typing import Any, Dict, List, Set, Text
 
 from google.protobuf import message as pb_message
+from google.protobuf import symbol_database
 
 from chromiumos.config.public_replication import public_replication_pb2
+
+
+def create_symbol_db() -> symbol_database.SymbolDatabase():
+  """Load any generated messages from python/ and return symbol database.
+
+  Messages auto-register when imported, so we just recursively import and
+  generate protobuffer files and return the default instance of SymbolDatabase.
+
+  Returns:
+      symbol_database.Default()
+  """
+
+  def __import_modules(dirname: str, paths: [str]):
+    """Recurse through a list of paths and automatically load protobufs.
+
+      This starts with dirname and recursively descends looking for python files
+      ending with _pb2.py and loads them into the current name space.
+
+      Args:
+        dirname: Directory name to process
+        paths: list of parent paths names for current call
+      """
+    for path in os.listdir(dirname):
+      full_path = os.path.join(dirname, path)
+
+      if os.path.isdir(full_path) and not os.path.islink(full_path):
+        __import_modules(full_path, paths + [path])
+      elif os.path.isfile(full_path):
+        if path.endswith("_pb2.py"):
+          importlib.import_module('%s.%s' % ('.'.join(paths), path[:-3]))
+
+  __import_modules(
+      os.path.join(os.path.dirname(__file__), "../../python/chromiumos"),
+      ["chromiumos"],
+  )
+  return symbol_database.Default()
 
 
 def get_all_fields(message: pb_message.Message) -> List[Any]:

@@ -283,3 +283,11 @@ class ProtoUtilsTest(unittest.TestCase):
     dst = RecursiveMessage()
     proto_utils.apply_public_replication(src, dst)
     self.assertEqual(dst, RecursiveMessage())
+
+  def test_create_symbol_db(self):
+    """Test that we get a good symbol from the symbol database."""
+    self.assertIsNot(
+        proto_utils.create_symbol_db().GetSymbol(
+            "chromiumos.config.payload.ConfigBundle"),
+        None,
+    )
