@@ -2,7 +2,7 @@ python_version: "3"
 
 wheel: <
   name: "infra/python/wheels/protobuf-py2_py3"
-  version: "version:3.6.1"
+  version: "version:3.13.0"
 >
 
 wheel: <
