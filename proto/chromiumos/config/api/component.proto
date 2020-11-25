@@ -226,6 +226,7 @@ message Component {
       STORAGE_TYPE_UNKNOWN = 0;
       EMMC = 1;
       NVME = 2;
+      SATA = 3;
     }
 
     string emmc5_fw_ver = 1;
