@@ -31,10 +31,6 @@
            groups="minilayout"
            name="chromeos/overlays/project-cheets-private" />
   <project remote="cros-internal"
-           path="src/platform/cheets-scripts"
-           groups="minilayout"
-           name="chromeos/cheets-scripts" />
-  <project remote="cros-internal"
            path="src/third_party/autotest-tests-cheets"
            groups="minilayout"
            name="chromeos/autotest-cheets" />
