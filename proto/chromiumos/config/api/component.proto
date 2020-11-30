@@ -11,6 +11,7 @@ import "chromiumos/config/api/partner_id.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
+// next field: 23
 message Component {
   // Globally unique component identifier.
   ComponentId id = 1;
@@ -18,6 +19,16 @@ message Component {
   PartnerId manufacturer_id = 8;
   // Human readable name of the component.
   string name = 9;
+
+  // Additional optional label to provide alternative value for eg:
+  // HWID string rather than relying on id.value directly.
+  string hwid_label = 20;
+
+  // IDs used to join against AVL database
+  AVLId avl_id = 21;
+
+  // AVL-compatible part number information
+  string part_number = 22;
 
   oneof type {
     Soc soc = 2;
@@ -36,6 +47,16 @@ message Component {
     Storage storage = 17;
     Tpm tpm = 18;
     Interface.Usb usb_host = 19;
+  }
+
+  /////////////////////////////////////
+  // Message Definitions Only
+  /////////////////////////////////////
+
+  // IDs to map into AVL database
+  message AVLId {
+    int32 cid = 1; // component id
+    int32 qid = 2; // qualification id
   }
 
   // Defines common component version identifiers based on interface standards.
