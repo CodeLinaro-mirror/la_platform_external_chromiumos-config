@@ -78,21 +78,6 @@ class TransformBuildConfigsTest(unittest.TestCase):
     with self.assertRaisesRegex(Exception, 'Failed to lookup Program'):
       cros_config_proto_converter._transform_build_configs(config)
 
-  def test_missing_build_target(self):
-    config = fake_config()
-    config.ClearField('build_targets')
-
-    with self.assertRaisesRegex(Exception, 'Single build_target required'):
-      cros_config_proto_converter._transform_build_configs(config)
-
-  def test_multiple_build_target(self):
-    config = fake_config()
-    duplicate_config = cros_config_proto_converter._merge_configs(
-        [config, fake_config()])
-
-    with self.assertRaisesRegex(Exception, 'Single build_target required'):
-      cros_config_proto_converter._transform_build_configs(duplicate_config)
-
   def test_empty_device_brand(self):
     config = fake_config()
     config.ClearField('device_brand_list')
@@ -111,8 +96,6 @@ class TransformBuildConfigsTest(unittest.TestCase):
 
   def test_unique_configs_only(self):
     config = fake_config()
-    # Get past multiple build_targets check first
-    config.ClearField('build_targets')
     duplicate_config = cros_config_proto_converter._merge_configs(
         [config, fake_config()])
 

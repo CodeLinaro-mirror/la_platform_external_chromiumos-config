@@ -28,7 +28,7 @@ from chromiumos.config.api.software import brand_config_pb2
 
 Config = namedtuple('Config', [
     'program', 'hw_design', 'odm', 'hw_design_config', 'device_brand',
-    'device_signer_config', 'oem', 'sw_config', 'brand_config', 'build_target'
+    'device_signer_config', 'oem', 'sw_config', 'brand_config'
 ])
 
 ConfigFiles = namedtuple('ConfigFiles', [
@@ -92,15 +92,14 @@ def _upsert(field, target, target_name):
 
 
 def _build_arc(config, config_files):
-  if not config.build_target.arc:
-    return None
-
   build_properties = {
-      'device': config.build_target.arc.device,
-      'first-api-level': config.build_target.arc.first_api_level,
+      # TODO(chromium:1126527) - Push this into the overlay itself.
+      # This isn't/can't be device specific and shouldn't be configured as such.
+      'device': "%s_cheets" % config.program.name.lower(),
+      'first-api-level': '28',
       'marketing-name': config.device_brand.brand_name,
       'metrics-tag': config.hw_design.name.lower(),
-      'product': config.build_target.id.value,
+      'product': config.program.name.lower(),
   }
   if config.oem:
     build_properties['oem'] = config.oem.name
@@ -159,8 +158,10 @@ def _build_ash_flags(config: Config) -> List[str]:
   if regulatory_label:
     flags['regulatory-label-dir'] = (regulatory_label)
 
-  flags['arc-build-properties'] = json_format.MessageToDict(
-      config.build_target.arc)
+  flags['arc-build-properties'] = {
+      'device': "%s_cheets" % config.program.name.lower(),
+      'firstApiLevel': '28',
+  }
 
   power_button = hw_features.power_button
   if power_button.edge:
@@ -376,7 +377,7 @@ def _build_firmware(config):
     return None
 
   result = {
-      'bcs-overlay': config.build_target.overlay_name,
+      'bcs-overlay': 'overlay-%s-private' % config.program.name.lower(),
       'build-targets': build_targets,
   }
 
@@ -637,12 +638,6 @@ def _transform_build_configs(config,
   sw_configs = list(config.software_configs)
   brand_configs = {x.brand_id.value: x for x in config.brand_configs}
 
-  if len(config.build_targets) != 1:
-    # Artifact of sharing the config_bundle for analysis and transforms.
-    # Integrated analysis of multiple programs/projects it the only time
-    # having multiple build targets would be valid.
-    raise Exception('Single build_target required for transform')
-
   results = {}
   for hw_design in config.design_list:
     if config.device_brand_list:
@@ -699,8 +694,7 @@ def _transform_build_configs(config,
                 device_signer_config=device_signer_config,
                 oem=_lookup(device_brand.oem_id, partners),
                 sw_config=sw_config,
-                brand_config=brand_config,
-                build_target=config.build_targets[0]), config_files, whitelabel)
+                brand_config=brand_config), config_files, whitelabel)
 
         config_json = json.dumps(
             transformed_config,

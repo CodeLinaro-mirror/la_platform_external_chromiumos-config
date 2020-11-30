@@ -4,12 +4,12 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "Fake ChromeOS Device Brandname",
             "metrics-tag": "fake_ref_design",
             "oem": "FAKE_OEM",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design_2147483647.xml",
@@ -67,7 +67,7 @@
           "sensor-location": "keyboard-bottom-left"
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -140,7 +140,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
@@ -170,12 +170,12 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "Fake ChromeOS Device Brandname",
             "metrics-tag": "fake_ref_design",
             "oem": "FAKE_OEM",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design_0.xml",
@@ -241,7 +241,7 @@
           ]
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -314,7 +314,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
@@ -359,12 +359,12 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname A",
             "metrics-tag": "project_a",
             "oem": "FAKE_OEMA",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_a.xml",
@@ -435,7 +435,7 @@
           "sensor-location": "keyboard-bottom-left"
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -507,7 +507,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
@@ -530,12 +530,12 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname B",
             "metrics-tag": "project_b",
             "oem": "FAKE_OEMB",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_b.xml",
@@ -594,7 +594,7 @@
           ]
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -666,7 +666,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
@@ -682,12 +682,12 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname C",
             "metrics-tag": "project_c",
             "oem": "FAKE_OEMC",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_c.xml",
@@ -741,7 +741,7 @@
           ]
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -813,7 +813,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
@@ -829,11 +829,11 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname WL",
             "metrics-tag": "project_wl",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
@@ -891,7 +891,7 @@
           ]
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -964,7 +964,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
@@ -979,12 +979,12 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname WL-A",
             "metrics-tag": "project_wl",
             "oem": "FAKE_LOEMA",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
@@ -1042,7 +1042,7 @@
           ]
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -1116,7 +1116,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
@@ -1131,12 +1131,12 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname WL-B",
             "metrics-tag": "project_wl",
             "oem": "FAKE_LOEMB",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
@@ -1194,7 +1194,7 @@
           ]
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -1268,7 +1268,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
@@ -1283,12 +1283,12 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname WL-C",
             "metrics-tag": "project_wl",
             "oem": "FAKE_LOEMC",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
@@ -1346,7 +1346,7 @@
           ]
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -1420,7 +1420,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
@@ -1435,12 +1435,12 @@
       {
         "arc": {
           "build-properties": {
-            "device": "fake_cheets",
+            "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname Box",
             "metrics-tag": "project_box",
             "oem": "FAKE_OEM",
-            "product": "fake"
+            "product": "fake_program"
           },
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_box.xml",
@@ -1476,7 +1476,7 @@
           "count": 0
         },
         "firmware": {
-          "bcs-overlay": "overlay-fake-private",
+          "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
             "coreboot": "fake",
             "depthcharge": "fake",
@@ -1548,7 +1548,7 @@
         },
         "ui": {
           "extra-ash-flags": [
-            "--arc-build-properties={'device': 'fake_cheets', 'firstApiLevel': '28'}",
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
             "--ash-side-volume-button-position={\"region\": \"screen\", \"edge\": \"right\"}",
             "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
