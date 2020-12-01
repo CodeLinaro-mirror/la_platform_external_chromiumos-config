@@ -435,22 +435,6 @@ def add_hwid_components(config_bundle, hwid_db):
 
   return config_bundle
 
-
-def merge_build_target(build_target, model):
-  """Merge build configuration from model.yaml into the given build target.
-
-  Args:
-    build_target (BuildTarget): build target to modify
-    model (CrosConfig): parsed model.yaml information
-
-  Returns:
-    None
-  """
-  build_props = model.GetProperties('/arc/build-properties')
-  build_target.arc.device = build_props['device']
-  build_target.arc.first_api_level = build_props['first-api-level']
-
-
 def merge_audio_config(sw_config, model):
   """Merge audio configuration from model.yaml into the given sw_config.
 
@@ -747,18 +731,6 @@ def merge_model(config_bundle, design_config, model, project_name):
   """
 
   identity = model.GetProperties('/identity')
-
-  # Merge build target configuration
-  build_target = None
-  for target in config_bundle.build_targets:
-    if target.id.value == project_name:
-      build_target = target
-      break
-
-  if not build_target:
-    build_target = config_bundle.build_targets.add()
-    build_target.id.value = project_name
-    merge_build_target(build_target, model)
 
   # Merge hardware configuration
   hw_feat = design_config.hardware_features

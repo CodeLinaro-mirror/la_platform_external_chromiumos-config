@@ -8,7 +8,7 @@ import unittest
 from google.protobuf import field_mask_pb2
 from google.protobuf import timestamp_pb2
 
-from chromiumos.config.api.software import build_target_pb2
+from chromiumos.config.api.software import system_image_pb2
 
 from chromiumos.config.public_replication.public_replication_pb2 import (
     PublicReplication)
@@ -34,28 +34,21 @@ class ProtoUtilsTest(unittest.TestCase):
   def test_get_dep_graph(self):
     """Tests getting the depgraph of a proto."""
     self.assertDictEqual(
-        proto_utils.get_dep_graph(build_target_pb2.BuildTarget()), {
-            'chromiumos.config.api.software.BuildTarget': [
-                'chromiumos.config.api.software.BuildTarget.ArcBuildProperties',
-                'chromiumos.config.api.software.BuildTargetId',
-                'chromiumos.config.public_replication.PublicReplication',
-            ],
-            'chromiumos.config.public_replication.PublicReplication':
-                ['google.protobuf.FieldMask',],
-            'google.protobuf.FieldMask': [],
-            'chromiumos.config.api.software.BuildTarget.ArcBuildProperties': [],
-            'chromiumos.config.api.software.BuildTargetId': []
-        })
+        proto_utils.get_dep_graph(system_image_pb2.SystemImage.BuildTarget()), {
+            'chromiumos.config.api.software.Portage.BuildTarget': [],
+            'chromiumos.config.api.software.SystemImage.BuildTarget':
+              ['chromiumos.config.api.software.Portage.BuildTarget']
+        }
+    )
+
+
 
   def test_get_dep_order(self):
     """Tests getting the dependency order of a proto."""
     self.assertSequenceEqual(
-        proto_utils.get_dep_order(build_target_pb2.BuildTarget()), [
-            'chromiumos.config.api.software.BuildTarget.ArcBuildProperties',
-            'chromiumos.config.api.software.BuildTargetId',
-            'google.protobuf.FieldMask',
-            'chromiumos.config.public_replication.PublicReplication',
-            'chromiumos.config.api.software.BuildTarget'
+        proto_utils.get_dep_order(system_image_pb2.SystemImage.BuildTarget()), [
+            'chromiumos.config.api.software.Portage.BuildTarget',
+            'chromiumos.config.api.software.SystemImage.BuildTarget'
         ])
 
   def test_apply_public_replication(self):

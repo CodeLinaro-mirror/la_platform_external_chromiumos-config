@@ -17,7 +17,6 @@ def _create(
         device_brands = None,
         partners = None,
         programs = None,
-        build_targets = None,
         software_configs = None,
         brand_configs = None):
     """Builds a ConfigBundle proto."""
@@ -27,7 +26,6 @@ def _create(
         device_brand_list = device_brands,
         partner_list = partners,
         program_list = programs,
-        build_targets = build_targets,
         software_configs = software_configs,
         brand_configs = brand_configs,
     )

@@ -1,19 +1,4 @@
 {
-  "buildTargets": [
-    {
-      "arc": {
-        "device": "fake_cheets",
-        "firstApiLevel": "28"
-      },
-      "id": {
-        "value": "fake"
-      },
-      "overlayName": "overlay-fake-private",
-      "publicReplication": {
-        "publicFields": "id,overlayName"
-      }
-    }
-  ],
   "components": [
     {
       "id": {

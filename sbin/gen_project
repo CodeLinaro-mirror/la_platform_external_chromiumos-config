@@ -116,13 +116,9 @@ function write_program_config() {
 load("//config/util/config_bundle.star", "config_bundle")
 load("//program.star", "program")
 load("//config/util/program.star", program_util = "program")
-load("//config/util/build_target.star", bt_util = "build_target")
-
-_BUILD_TARGETS = [bt_util.create("${program}", "overlay-${program}-private")]
 
 _CONFIG = config_bundle.create(
     programs = [program.${program}],
-    build_targets = _BUILD_TARGETS,
 )
 
 program_util.generate(_CONFIG)

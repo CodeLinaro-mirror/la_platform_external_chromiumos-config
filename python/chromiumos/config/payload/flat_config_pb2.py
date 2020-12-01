@@ -18,7 +18,6 @@ from chromiumos.config.api import device_brand_pb2 as chromiumos_dot_config_dot_
 from chromiumos.config.api import partner_pb2 as chromiumos_dot_config_dot_api_dot_partner__pb2
 from chromiumos.config.api import program_pb2 as chromiumos_dot_config_dot_api_dot_program__pb2
 from chromiumos.config.api.software import brand_config_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_brand__config__pb2
-from chromiumos.config.api.software import build_target_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_build__target__pb2
 from chromiumos.config.api.software import software_config_pb2 as chromiumos_dot_config_dot_api_dot_software_dot_software__config__pb2
 
 
@@ -27,9 +26,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.payload',
   syntax='proto3',
   serialized_options=_b('Z,go.chromium.org/chromiumos/config/go/payload'),
-  serialized_pb=_b('\n+chromiumos/config/payload/flat_config.proto\x12\x19\x63hromiumos.config.payload\x1a%chromiumos/config/api/component.proto\x1a\"chromiumos/config/api/design.proto\x1a(chromiumos/config/api/device_brand.proto\x1a#chromiumos/config/api/partner.proto\x1a#chromiumos/config/api/program.proto\x1a\x31\x63hromiumos/config/api/software/brand_config.proto\x1a\x31\x63hromiumos/config/api/software/build_target.proto\x1a\x34\x63hromiumos/config/api/software/software_config.proto\"\xce\x04\n\nFlatConfig\x12/\n\x07program\x18\x01 \x01(\x0b\x32\x1e.chromiumos.config.api.Program\x12\x30\n\thw_design\x18\x03 \x01(\x0b\x32\x1d.chromiumos.config.api.Design\x12+\n\x03odm\x18\x04 \x01(\x0b\x32\x1e.chromiumos.config.api.Partner\x12>\n\x10hw_design_config\x18\x05 \x01(\x0b\x32$.chromiumos.config.api.Design.Config\x12\x37\n\rhw_components\x18\x0b \x03(\x0b\x32 .chromiumos.config.api.Component\x12\x38\n\x0c\x64\x65vice_brand\x18\x06 \x01(\x0b\x32\".chromiumos.config.api.DeviceBrand\x12+\n\x03oem\x18\x07 \x01(\x0b\x32\x1e.chromiumos.config.api.Partner\x12\x41\n\x0c\x62uild_target\x18\x08 \x01(\x0b\x32+.chromiumos.config.api.software.BuildTarget\x12\x41\n\tsw_config\x18\t \x01(\x0b\x32..chromiumos.config.api.software.SoftwareConfig\x12\x44\n\x0f\x62rand_sw_config\x18\n \x01(\x0b\x32+.chromiumos.config.api.software.BrandConfigJ\x04\x08\x02\x10\x03\"G\n\x0e\x46latConfigList\x12\x35\n\x06values\x18\x01 \x03(\x0b\x32%.chromiumos.config.payload.FlatConfigB.Z,go.chromium.org/chromiumos/config/go/payloadb\x06proto3')
+  serialized_pb=_b('\n+chromiumos/config/payload/flat_config.proto\x12\x19\x63hromiumos.config.payload\x1a%chromiumos/config/api/component.proto\x1a\"chromiumos/config/api/design.proto\x1a(chromiumos/config/api/device_brand.proto\x1a#chromiumos/config/api/partner.proto\x1a#chromiumos/config/api/program.proto\x1a\x31\x63hromiumos/config/api/software/brand_config.proto\x1a\x34\x63hromiumos/config/api/software/software_config.proto\"\x91\x04\n\nFlatConfig\x12/\n\x07program\x18\x01 \x01(\x0b\x32\x1e.chromiumos.config.api.Program\x12\x30\n\thw_design\x18\x03 \x01(\x0b\x32\x1d.chromiumos.config.api.Design\x12+\n\x03odm\x18\x04 \x01(\x0b\x32\x1e.chromiumos.config.api.Partner\x12>\n\x10hw_design_config\x18\x05 \x01(\x0b\x32$.chromiumos.config.api.Design.Config\x12\x37\n\rhw_components\x18\x0b \x03(\x0b\x32 .chromiumos.config.api.Component\x12\x38\n\x0c\x64\x65vice_brand\x18\x06 \x01(\x0b\x32\".chromiumos.config.api.DeviceBrand\x12+\n\x03oem\x18\x07 \x01(\x0b\x32\x1e.chromiumos.config.api.Partner\x12\x41\n\tsw_config\x18\t \x01(\x0b\x32..chromiumos.config.api.software.SoftwareConfig\x12\x44\n\x0f\x62rand_sw_config\x18\n \x01(\x0b\x32+.chromiumos.config.api.software.BrandConfigJ\x04\x08\x02\x10\x03J\x04\x08\x08\x10\t\"G\n\x0e\x46latConfigList\x12\x35\n\x06values\x18\x01 \x03(\x0b\x32%.chromiumos.config.payload.FlatConfigB.Z,go.chromium.org/chromiumos/config/go/payloadb\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_component__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_device__brand__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_program__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_brand__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_build__target__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_software__config__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_config_dot_api_dot_component__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_device__brand__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_program__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_brand__config__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_software_dot_software__config__pb2.DESCRIPTOR,])
 
 
 
@@ -91,21 +90,14 @@ _FLATCONFIG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='build_target', full_name='chromiumos.config.payload.FlatConfig.build_target', index=7,
-      number=8, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='sw_config', full_name='chromiumos.config.payload.FlatConfig.sw_config', index=8,
+      name='sw_config', full_name='chromiumos.config.payload.FlatConfig.sw_config', index=7,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='brand_sw_config', full_name='chromiumos.config.payload.FlatConfig.brand_sw_config', index=9,
+      name='brand_sw_config', full_name='chromiumos.config.payload.FlatConfig.brand_sw_config', index=8,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -123,8 +115,8 @@ _FLATCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=422,
-  serialized_end=1012,
+  serialized_start=371,
+  serialized_end=900,
 )
 
 
@@ -154,8 +146,8 @@ _FLATCONFIGLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1014,
-  serialized_end=1085,
+  serialized_start=902,
+  serialized_end=973,
 )
 
 _FLATCONFIG.fields_by_name['program'].message_type = chromiumos_dot_config_dot_api_dot_program__pb2._PROGRAM
@@ -165,7 +157,6 @@ _FLATCONFIG.fields_by_name['hw_design_config'].message_type = chromiumos_dot_con
 _FLATCONFIG.fields_by_name['hw_components'].message_type = chromiumos_dot_config_dot_api_dot_component__pb2._COMPONENT
 _FLATCONFIG.fields_by_name['device_brand'].message_type = chromiumos_dot_config_dot_api_dot_device__brand__pb2._DEVICEBRAND
 _FLATCONFIG.fields_by_name['oem'].message_type = chromiumos_dot_config_dot_api_dot_partner__pb2._PARTNER
-_FLATCONFIG.fields_by_name['build_target'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_build__target__pb2._BUILDTARGET
 _FLATCONFIG.fields_by_name['sw_config'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_software__config__pb2._SOFTWARECONFIG
 _FLATCONFIG.fields_by_name['brand_sw_config'].message_type = chromiumos_dot_config_dot_api_dot_software_dot_brand__config__pb2._BRANDCONFIG
 _FLATCONFIGLIST.fields_by_name['values'].message_type = _FLATCONFIG

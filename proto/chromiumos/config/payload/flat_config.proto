@@ -12,7 +12,6 @@ import "chromiumos/config/api/device_brand.proto";
 import "chromiumos/config/api/partner.proto";
 import "chromiumos/config/api/program.proto";
 import "chromiumos/config/api/software/brand_config.proto";
-import "chromiumos/config/api/software/build_target.proto";
 import "chromiumos/config/api/software/software_config.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/payload";
@@ -31,11 +30,10 @@ message FlatConfig {
   api.DeviceBrand device_brand = 6;
   api.Partner oem = 7;
 
-  api.software.BuildTarget build_target = 8;
   api.software.SoftwareConfig sw_config = 9;
   api.software.BrandConfig brand_sw_config = 10;
 
-  reserved 2;
+  reserved 2, 8;
 }
 
 // A list of FlatConfigs for ease of serialization into a file.

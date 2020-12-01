@@ -67,9 +67,6 @@ def flatten_config(config: ConfigBundle) -> FlatConfigList:
         ]
         sw_config = sw_config_matches[0]
 
-        # NOTE: We don't populate build_target because it doesn't share a
-        # foreign key with anything. We'll store it as part of the build metadata
-        # and use the BuildTargetId (overlay name) to look it up.
         flat_config = results.values.add()
         flat_config.hw_design.MergeFrom(hw_design)
         flat_config.hw_design_config.MergeFrom(hw_design_config)

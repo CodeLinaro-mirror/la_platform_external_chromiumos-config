@@ -10,7 +10,6 @@ load("//config/util/program.star", program_util = "program")
 
 _CONFIG = config_bundle.create(
     components = program.components,
-    build_targets = program.build_targets,
     programs = [program.fake],
 )
 

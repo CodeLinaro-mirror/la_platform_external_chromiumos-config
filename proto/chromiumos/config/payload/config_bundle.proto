@@ -12,7 +12,6 @@ import "chromiumos/config/api/device_brand.proto";
 import "chromiumos/config/api/partner.proto";
 import "chromiumos/config/api/program.proto";
 import "chromiumos/config/api/software/brand_config.proto";
-import "chromiumos/config/api/software/build_target.proto";
 import "chromiumos/config/api/software/software_config.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/payload";
@@ -30,14 +29,13 @@ message ConfigBundle {
   repeated api.DeviceBrand device_brand_list = 15;
 
   // Chrome OS build and software config
-  repeated api.software.BuildTarget build_targets = 8;
   repeated api.software.SoftwareConfig software_configs = 9;
   repeated api.software.BrandConfig brand_configs = 10;
 
-  reserved 2, 6, 7, 16, 17;
+  reserved 2, 6, 7, 8, 16, 17;
 }
 
 // List to hold multiple ConfigBundles
 message ConfigBundleList {
-   repeated ConfigBundle values = 1;
+  repeated ConfigBundle values = 1;
 }
