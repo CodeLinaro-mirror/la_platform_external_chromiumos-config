@@ -147,6 +147,8 @@ message CacheForDutRequest {
   // dut_name is the resource name for the DUT.
   // The DUT name is passed to the RTD when the RTD is started.
   // It is not specified whether the name is the DUT hostname.
+  // (-- aip.dev/not-precedent: This preceded the AIP standards.
+  //     Ordinarily, this field should be `name`. --)
   string dut_name = 2;
 }
 

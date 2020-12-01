@@ -348,6 +348,8 @@ type CacheForDutRequest struct {
 	// dut_name is the resource name for the DUT.
 	// The DUT name is passed to the RTD when the RTD is started.
 	// It is not specified whether the name is the DUT hostname.
+	// (-- aip.dev/not-precedent: This preceded the AIP standards.
+	//     Ordinarily, this field should be `name`. --)
 	DutName              string   `protobuf:"bytes,2,opt,name=dut_name,json=dutName,proto3" json:"dut_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
