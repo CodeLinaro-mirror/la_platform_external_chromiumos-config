@@ -70,7 +70,7 @@ message FirmwareConfig {
 //
 // When building OS images, firmware payloads are usually pulled from BCS, as
 // specified by the FirmwareConfig message.
-message FirmwareBuildConfig {
+message Firmware {
   // Build targets for building firmware components.
   message BuildTargets {
     // Build target for coreboot.
@@ -94,4 +94,10 @@ message FirmwareBuildConfig {
   }
 
   BuildTargets build_targets = 1;
+}
+
+// TODO(shapiroc): Remove once SoftwareConfig is migrated to
+// Firmware.build_targets
+message FirmwareBuildConfig {
+  Firmware.BuildTargets build_targets = 1;
 }

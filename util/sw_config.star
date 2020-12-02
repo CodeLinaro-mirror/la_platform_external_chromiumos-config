@@ -66,8 +66,8 @@ def _create_fw_build_targets(
         ec = None,
         ec_extras = None,
         libpayload = None):
-    """Builds a FirmwareBuildConfig.BuildTargets proto."""
-    return fw_pb.FirmwareBuildConfig.BuildTargets(
+    """Builds a Firmware.BuildTargets proto."""
+    return fw_pb.Firmware.BuildTargets(
         coreboot = coreboot,
         depthcharge = depthcharge,
         ec = ec,
@@ -93,7 +93,7 @@ def _create_fw_build_config_by_names(
     as different firmware build targets often share the same name.
     """
     return fw_pb.FirmwareBuildConfig(
-        build_targets = fw_pb.FirmwareBuildConfig.BuildTargets(
+        build_targets = fw_pb.Firmware.BuildTargets(
             coreboot = coreboot_name,
             ec = ec_name if ec_name else coreboot_name,
             ec_extras = ec_extras,

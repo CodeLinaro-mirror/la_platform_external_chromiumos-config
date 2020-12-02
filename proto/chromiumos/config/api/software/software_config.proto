@@ -30,7 +30,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 // SoftwareConfig payloads can be shared across different
 // hardware-design-configs, if the software payloads are the same.
 //
-// NEXT ID: 16
+// NEXT ID: 17
 message SoftwareConfig {
   // Configures fields of AudioConfig that are made public.
   chromiumos.config.public_replication.PublicReplication public_replication =
@@ -43,10 +43,12 @@ message SoftwareConfig {
   // Defines firmware version pinning details (for non-development workflows).
   FirmwareConfig firmware = 3;
 
-  // TODO(shapiroc): Rename this to match SystemImage.BuildTarget pattern so
-  // that it's clear this is build target info only and not other firmware build
-  // config (like version pinning info for).
+  // TODO(shapiroc): Remove once configs are migrated to firmware_build_targets
+  // This establishes consistent naming so the difference between build targets,
+  // build version pinning, and build metadata is clear (versus Config catch
+  // all naming).
   FirmwareBuildConfig firmware_build_config = 9;
+  Firmware.BuildTargets firmware_build_targets = 16;
   SystemImage.BuildTarget system_build_target = 13;
   Factory.BuildTarget factory_build_target = 14;
 
