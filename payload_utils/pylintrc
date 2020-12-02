@@ -11,6 +11,8 @@ ignore=
 # Specifying 0 will auto-detect the number of processors available to use.
 jobs=0
 
+extension-pkg-whitelist=lxml
+
 [BASIC]
 
 good-names=

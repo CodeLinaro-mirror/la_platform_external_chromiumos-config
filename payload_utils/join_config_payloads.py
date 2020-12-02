@@ -435,6 +435,7 @@ def add_hwid_components(config_bundle, hwid_db):
 
   return config_bundle
 
+
 def merge_audio_config(sw_config, model):
   """Merge audio configuration from model.yaml into the given sw_config.
 
@@ -714,7 +715,7 @@ def merge_device_brand(config_bundle, design, model, project_name):
   return config_bundle
 
 
-def merge_model(config_bundle, design_config, model, project_name):
+def merge_model(config_bundle, design_config, model):
   """Merge model from model.yaml into a specific Design.Config instance.
 
   The ConfigBundle, and Design.Config are updated in place with
@@ -724,7 +725,6 @@ def merge_model(config_bundle, design_config, model, project_name):
     config_bundle (ConfigBundle): top level ConfigBundle to update
     design_config (Design.Config): design config in the config bundle to update
     model (CrosConfig): parsed model.yaml information
-    project_name (str): name of the device (eg: phaser)
 
   Returns:
     A reference to the input config_bundle updated with data from model
@@ -859,7 +859,7 @@ def merge_configs(config_path, project_name, public_path, private_path,
     design, design_config = find_design_config(program, project, sku)
 
     merge_device_brand(config_bundle, design, model, project_name)
-    merge_model(config_bundle, design_config, model, project_name)
+    merge_model(config_bundle, design_config, model)
 
   # Merge information from HWID into config bundle
   if hwid_path:
