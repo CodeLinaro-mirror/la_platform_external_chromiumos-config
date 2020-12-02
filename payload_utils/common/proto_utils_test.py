@@ -36,8 +36,9 @@ class ProtoUtilsTest(unittest.TestCase):
     self.assertDictEqual(
         proto_utils.get_dep_graph(system_image_pb2.SystemImage.BuildTarget()), {
             'chromiumos.config.api.software.Portage.BuildTarget': [],
-            'chromiumos.config.api.software.SystemImage.BuildTarget':
-              ['chromiumos.config.api.software.Portage.BuildTarget']
+            'chromiumos.config.api.software.SystemImage.BuildTarget': [
+                'chromiumos.config.api.software.Portage.BuildTarget'
+            ]
         }
     )
 
