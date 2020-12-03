@@ -62,10 +62,28 @@ def _create_exclusion(
         references = references if references else None,
     )
 
+def _create_dut_criterion(attribute, values):
+    """Builds a DutCriterion proto (see proto for args)
+    """
+    return plan_pb.DutCriterion(
+        attribute = attribute,
+        values = values,
+    )
+
+def _create_coverage_rule(name, dut_criteria, exclusion = None):
+    """Builds a CoverageRule proto (see proto for args)
+    """
+    return plan_pb.CoverageRule(
+        name = name,
+        dut_criteria = dut_criteria,
+        exclusion = exclusion,
+    )
+
 def _append_unit(
         units,
         name,
         suite_names = None,
+        coverage_rules = None,
         exclusion = None):
     """Appends a test unit proto to existing units
 
@@ -73,18 +91,24 @@ def _append_unit(
         units: the existing unit(s) to append to
         name: name of the unit.
         suite_names: list of test suite names to run.
+        coverage_rules: list of coverage rules that must be fulfilled.
         exclusion: optional Exclusion for the entire unit.
     Returns:
         the Unit protobuf.
     """
-    units.append(_create_unit(name, suite_names, exclusion))
+    units.append(_create_unit(name, suite_names, coverage_rules, exclusion))
 
-def _create_unit(name, suite_names = None, exclusion = None):
+def _create_unit(
+        name,
+        suite_names = None,
+        coverage_rules = None,
+        exclusion = None):
     """Builds a test unit proto.
 
     Args:
         name: name of the unit.
         suite_names: list of test suite names to run.
+        coverage_rules: list of coverage rules that must be fulfilled.
         exclusion: optional Exclusion for the entire unit.
     Returns:
         the Unit protobuf.
@@ -96,6 +120,7 @@ def _create_unit(name, suite_names = None, exclusion = None):
     return plan_pb.Unit(
         name = name,
         suites = suites,
+        coverage_rules = coverage_rules,
         exclusion = exclusion,
     )
 
@@ -123,6 +148,12 @@ def _create_spec(plans):
 
 test_plan = struct(
     create = _create_plan,
+    dut_criterion = struct(
+        create = _create_dut_criterion,
+    ),
+    coverage_rule = struct(
+        create = _create_coverage_rule,
+    ),
     unit = struct(
         append = _append_unit,
         create = _create_unit,
