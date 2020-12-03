@@ -770,8 +770,9 @@ def merge_model(config_bundle, design_config, model):
   return config_bundle
 
 
-def merge_configs(config_path, project_name, public_path, private_path,
-                  hwid_path):
+def merge_configs(config_path, program_name, project_name, public_path,
+                  private_path, hwid_path):
+  # pylint: disable=too-many-arguments
   # pylint: disable=too-many-locals
   # pylint: disable=too-many-branches
   # pylint: disable=too-many-statements
@@ -782,6 +783,10 @@ def merge_configs(config_path, project_name, public_path, private_path,
     config_bundle = io_utils.read_config(config_path)
 
   models = load_models(public_path, private_path)
+
+  # ensure that a program entry is added for the manually specified program name
+  if program_name:
+    config_bundle_utils.find_program(config_bundle, program_name, create=True)
 
   def find_design_config(prog_name, proj_name, sku):
     """Searches config_bundle a matching design_config.
@@ -894,9 +899,9 @@ def main(options):
 
     io_utils.write_message_json(
         backfill_configs(
-            merge_configs(options.config_bundle, options.project_name,
-                          options.public_model, options.private_model,
-                          options.hwid)),
+            merge_configs(options.config_bundle, options.program_name,
+                          options.project_name, options.public_model,
+                          options.private_model, options.hwid)),
         options.output,
         default_fields=True)
 
@@ -924,6 +929,11 @@ instance is used instad.""")
 generate ConfigBundle information for from the model.yaml/HWID files.  When
 specified with --config-bundle/-c, then only projects with this name will be
 updated.""")
+  parser.add_argument(
+      '--program-name',
+      type=str,
+      help="""Program name to add to the output ConfigBundle.  This program will be
+added to the program_list even if there are no designs present.""")
   parser.add_argument(
       '--public-model', type=str, help='public model.yaml file to merge')
   parser.add_argument(
