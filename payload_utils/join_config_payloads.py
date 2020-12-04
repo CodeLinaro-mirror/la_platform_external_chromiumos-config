@@ -786,7 +786,8 @@ def merge_configs(config_path, program_name, project_name, public_path,
 
   # ensure that a program entry is added for the manually specified program name
   if program_name:
-    config_bundle_utils.find_program(config_bundle, program_name, create=True)
+    config_bundle_utils.find_program(
+        config_bundle, program_name.capitalize(), create=True)
 
   def find_design_config(prog_name, proj_name, sku):
     """Searches config_bundle a matching design_config.
