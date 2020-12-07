@@ -25,6 +25,7 @@ message DeviceUnderTest {
   Components hw_components = 11;
   DeviceBrand device_brand = 6;
   Partner oem = 7;
+  Firmware firmware = 12;
 }
 
 // Defines all of the schedulable characteristics
@@ -50,6 +51,18 @@ message Components {
 
   // So the numbering aligns nicely to Component.type
   reserved 1;
+}
+
+// Defines required firmware state/versions for a given
+// device under test.
+message Firmware {
+  // Readonly firmware build name, e.g.
+  // "firmware-reef-9042.B-firmwarebranch/R72-11311.0.0"
+  string ap_ro_version = 1;
+
+  // Read-write firmware build name, e.g.
+  // "firmware-reef-9042.B-firmwarebranch/R72-11311.0.0"
+  string ap_rw_version = 2;
 }
 
 // Peripheral attachments of a device under test that can be referenced by
