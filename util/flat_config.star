@@ -33,7 +33,19 @@ def _get_designs_by_overlay(design_configs):
         overlay_to_unique_designs[overlay] = set(overlay_to_designs[overlay])
     return overlay_to_unique_designs
 
+def _get_components_by_design(design_configs):
+    """Returns dict of {design1: [comp1, comp2], design2...}"""
+    designs_to_components = {}
+    for design_config in design_configs.values:
+        design_name = design_config.hw_design.name
+
+        # Components are common across all designs, so just pull the first
+        if design_name not in designs_to_components:
+            designs_to_components[design_name] = design_config.hw_components
+    return designs_to_components
+
 flat_config = struct(
     read = _read,
     get_designs_by_overlay = _get_designs_by_overlay,
+    get_components_by_design = _get_components_by_design,
 )
