@@ -349,7 +349,8 @@ type CacheForDutRequest struct {
 	// The DUT name is passed to the RTD when the RTD is started.
 	// It is not specified whether the name is the DUT hostname.
 	// (-- aip.dev/not-precedent: This preceded the AIP standards.
-	//     Ordinarily, this field should be `name`. --)
+	//     Ordinarily, this field should be either `name` or `dut`,
+	//     depending on whether this is a method on Dut resources. --)
 	DutName              string   `protobuf:"bytes,2,opt,name=dut_name,json=dutName,proto3" json:"dut_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -585,6 +586,9 @@ type ExposePortToDutRequest struct {
 	// dut_name is the resource name for the DUT.
 	// The DUT name is passed to the RTD when the RTD is started.
 	// It is not specified whether the name is the DUT hostname.
+	// (-- aip.dev/not-precedent: This preceded the AIP standards.
+	//     Ordinarily, this field should be either `name` or `dut`,
+	//     depending on whether this is a method on Dut resources. --)
 	DutName string `protobuf:"bytes,1,opt,name=dut_name,json=dutName,proto3" json:"dut_name,omitempty"`
 	// local_port is the port of a service running inside the RTD container to
 	// expose. It MUST be in the range of [1, 65535] as defined in RFC 1700
