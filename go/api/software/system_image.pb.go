@@ -146,6 +146,42 @@ func (m *SystemImage_BuildMetadata) GetPackages() []*Portage_Package {
 	return nil
 }
 
+// Provides a summary of common key packages used in the build.
+// This provides at easier client interface to avoid walking the portage
+// package graph and also allows
+type SystemImage_BuildMetadata_PackageSummary struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SystemImage_BuildMetadata_PackageSummary) Reset() {
+	*m = SystemImage_BuildMetadata_PackageSummary{}
+}
+func (m *SystemImage_BuildMetadata_PackageSummary) String() string { return proto.CompactTextString(m) }
+func (*SystemImage_BuildMetadata_PackageSummary) ProtoMessage()    {}
+func (*SystemImage_BuildMetadata_PackageSummary) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6aef23742225ab77, []int{0, 1, 0}
+}
+
+func (m *SystemImage_BuildMetadata_PackageSummary) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SystemImage_BuildMetadata_PackageSummary.Unmarshal(m, b)
+}
+func (m *SystemImage_BuildMetadata_PackageSummary) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SystemImage_BuildMetadata_PackageSummary.Marshal(b, m, deterministic)
+}
+func (m *SystemImage_BuildMetadata_PackageSummary) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SystemImage_BuildMetadata_PackageSummary.Merge(m, src)
+}
+func (m *SystemImage_BuildMetadata_PackageSummary) XXX_Size() int {
+	return xxx_messageInfo_SystemImage_BuildMetadata_PackageSummary.Size(m)
+}
+func (m *SystemImage_BuildMetadata_PackageSummary) XXX_DiscardUnknown() {
+	xxx_messageInfo_SystemImage_BuildMetadata_PackageSummary.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SystemImage_BuildMetadata_PackageSummary proto.InternalMessageInfo
+
 // Used to serialize build metadata reports to proto[json|text|binary]
 type SystemImage_BuildMetadataList struct {
 	Values               []*SystemImage_BuildMetadata `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
@@ -186,11 +222,243 @@ func (m *SystemImage_BuildMetadataList) GetValues() []*SystemImage_BuildMetadata
 	return nil
 }
 
+// Defines a distilled summary of key pieces of build metadata.
+// This provides at easier client interface to avoid walking the portage
+// package graph and also allows a much smaller payload for clients
+// that don't need the full portage package graph.
+type SystemImage_BuildSummary struct {
+	// Build parameters and environment
+	BuildTarget *SystemImage_BuildTarget            `protobuf:"bytes,1,opt,name=build_target,json=buildTarget,proto3" json:"build_target,omitempty"`
+	Toolchain   *SystemImage_BuildSummary_Toolchain `protobuf:"bytes,2,opt,name=toolchain,proto3" json:"toolchain,omitempty"`
+	// Key build packages
+	Kernel               *SystemImage_BuildSummary_Kernel `protobuf:"bytes,3,opt,name=kernel,proto3" json:"kernel,omitempty"`
+	Arc                  *SystemImage_BuildSummary_Arc    `protobuf:"bytes,4,opt,name=arc,proto3" json:"arc,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                         `json:"-"`
+	XXX_unrecognized     []byte                           `json:"-"`
+	XXX_sizecache        int32                            `json:"-"`
+}
+
+func (m *SystemImage_BuildSummary) Reset()         { *m = SystemImage_BuildSummary{} }
+func (m *SystemImage_BuildSummary) String() string { return proto.CompactTextString(m) }
+func (*SystemImage_BuildSummary) ProtoMessage()    {}
+func (*SystemImage_BuildSummary) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6aef23742225ab77, []int{0, 3}
+}
+
+func (m *SystemImage_BuildSummary) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SystemImage_BuildSummary.Unmarshal(m, b)
+}
+func (m *SystemImage_BuildSummary) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SystemImage_BuildSummary.Marshal(b, m, deterministic)
+}
+func (m *SystemImage_BuildSummary) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SystemImage_BuildSummary.Merge(m, src)
+}
+func (m *SystemImage_BuildSummary) XXX_Size() int {
+	return xxx_messageInfo_SystemImage_BuildSummary.Size(m)
+}
+func (m *SystemImage_BuildSummary) XXX_DiscardUnknown() {
+	xxx_messageInfo_SystemImage_BuildSummary.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SystemImage_BuildSummary proto.InternalMessageInfo
+
+func (m *SystemImage_BuildSummary) GetBuildTarget() *SystemImage_BuildTarget {
+	if m != nil {
+		return m.BuildTarget
+	}
+	return nil
+}
+
+func (m *SystemImage_BuildSummary) GetToolchain() *SystemImage_BuildSummary_Toolchain {
+	if m != nil {
+		return m.Toolchain
+	}
+	return nil
+}
+
+func (m *SystemImage_BuildSummary) GetKernel() *SystemImage_BuildSummary_Kernel {
+	if m != nil {
+		return m.Kernel
+	}
+	return nil
+}
+
+func (m *SystemImage_BuildSummary) GetArc() *SystemImage_BuildSummary_Arc {
+	if m != nil {
+		return m.Arc
+	}
+	return nil
+}
+
+type SystemImage_BuildSummary_Toolchain struct {
+	Version              string   `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SystemImage_BuildSummary_Toolchain) Reset()         { *m = SystemImage_BuildSummary_Toolchain{} }
+func (m *SystemImage_BuildSummary_Toolchain) String() string { return proto.CompactTextString(m) }
+func (*SystemImage_BuildSummary_Toolchain) ProtoMessage()    {}
+func (*SystemImage_BuildSummary_Toolchain) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6aef23742225ab77, []int{0, 3, 0}
+}
+
+func (m *SystemImage_BuildSummary_Toolchain) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SystemImage_BuildSummary_Toolchain.Unmarshal(m, b)
+}
+func (m *SystemImage_BuildSummary_Toolchain) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SystemImage_BuildSummary_Toolchain.Marshal(b, m, deterministic)
+}
+func (m *SystemImage_BuildSummary_Toolchain) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SystemImage_BuildSummary_Toolchain.Merge(m, src)
+}
+func (m *SystemImage_BuildSummary_Toolchain) XXX_Size() int {
+	return xxx_messageInfo_SystemImage_BuildSummary_Toolchain.Size(m)
+}
+func (m *SystemImage_BuildSummary_Toolchain) XXX_DiscardUnknown() {
+	xxx_messageInfo_SystemImage_BuildSummary_Toolchain.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SystemImage_BuildSummary_Toolchain proto.InternalMessageInfo
+
+func (m *SystemImage_BuildSummary_Toolchain) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
+
+type SystemImage_BuildSummary_Kernel struct {
+	Version              string   `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SystemImage_BuildSummary_Kernel) Reset()         { *m = SystemImage_BuildSummary_Kernel{} }
+func (m *SystemImage_BuildSummary_Kernel) String() string { return proto.CompactTextString(m) }
+func (*SystemImage_BuildSummary_Kernel) ProtoMessage()    {}
+func (*SystemImage_BuildSummary_Kernel) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6aef23742225ab77, []int{0, 3, 1}
+}
+
+func (m *SystemImage_BuildSummary_Kernel) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SystemImage_BuildSummary_Kernel.Unmarshal(m, b)
+}
+func (m *SystemImage_BuildSummary_Kernel) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SystemImage_BuildSummary_Kernel.Marshal(b, m, deterministic)
+}
+func (m *SystemImage_BuildSummary_Kernel) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SystemImage_BuildSummary_Kernel.Merge(m, src)
+}
+func (m *SystemImage_BuildSummary_Kernel) XXX_Size() int {
+	return xxx_messageInfo_SystemImage_BuildSummary_Kernel.Size(m)
+}
+func (m *SystemImage_BuildSummary_Kernel) XXX_DiscardUnknown() {
+	xxx_messageInfo_SystemImage_BuildSummary_Kernel.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SystemImage_BuildSummary_Kernel proto.InternalMessageInfo
+
+func (m *SystemImage_BuildSummary_Kernel) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
+
+type SystemImage_BuildSummary_Arc struct {
+	Version              string   `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SystemImage_BuildSummary_Arc) Reset()         { *m = SystemImage_BuildSummary_Arc{} }
+func (m *SystemImage_BuildSummary_Arc) String() string { return proto.CompactTextString(m) }
+func (*SystemImage_BuildSummary_Arc) ProtoMessage()    {}
+func (*SystemImage_BuildSummary_Arc) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6aef23742225ab77, []int{0, 3, 2}
+}
+
+func (m *SystemImage_BuildSummary_Arc) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SystemImage_BuildSummary_Arc.Unmarshal(m, b)
+}
+func (m *SystemImage_BuildSummary_Arc) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SystemImage_BuildSummary_Arc.Marshal(b, m, deterministic)
+}
+func (m *SystemImage_BuildSummary_Arc) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SystemImage_BuildSummary_Arc.Merge(m, src)
+}
+func (m *SystemImage_BuildSummary_Arc) XXX_Size() int {
+	return xxx_messageInfo_SystemImage_BuildSummary_Arc.Size(m)
+}
+func (m *SystemImage_BuildSummary_Arc) XXX_DiscardUnknown() {
+	xxx_messageInfo_SystemImage_BuildSummary_Arc.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SystemImage_BuildSummary_Arc proto.InternalMessageInfo
+
+func (m *SystemImage_BuildSummary_Arc) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
+
+// Used to serialize build summary reports to proto[json|text|binary]
+type SystemImage_BuildSummaryList struct {
+	Values               []*SystemImage_BuildSummary `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
+	XXX_unrecognized     []byte                      `json:"-"`
+	XXX_sizecache        int32                       `json:"-"`
+}
+
+func (m *SystemImage_BuildSummaryList) Reset()         { *m = SystemImage_BuildSummaryList{} }
+func (m *SystemImage_BuildSummaryList) String() string { return proto.CompactTextString(m) }
+func (*SystemImage_BuildSummaryList) ProtoMessage()    {}
+func (*SystemImage_BuildSummaryList) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6aef23742225ab77, []int{0, 4}
+}
+
+func (m *SystemImage_BuildSummaryList) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SystemImage_BuildSummaryList.Unmarshal(m, b)
+}
+func (m *SystemImage_BuildSummaryList) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SystemImage_BuildSummaryList.Marshal(b, m, deterministic)
+}
+func (m *SystemImage_BuildSummaryList) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SystemImage_BuildSummaryList.Merge(m, src)
+}
+func (m *SystemImage_BuildSummaryList) XXX_Size() int {
+	return xxx_messageInfo_SystemImage_BuildSummaryList.Size(m)
+}
+func (m *SystemImage_BuildSummaryList) XXX_DiscardUnknown() {
+	xxx_messageInfo_SystemImage_BuildSummaryList.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SystemImage_BuildSummaryList proto.InternalMessageInfo
+
+func (m *SystemImage_BuildSummaryList) GetValues() []*SystemImage_BuildSummary {
+	if m != nil {
+		return m.Values
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*SystemImage)(nil), "chromiumos.config.api.software.SystemImage")
 	proto.RegisterType((*SystemImage_BuildTarget)(nil), "chromiumos.config.api.software.SystemImage.BuildTarget")
 	proto.RegisterType((*SystemImage_BuildMetadata)(nil), "chromiumos.config.api.software.SystemImage.BuildMetadata")
+	proto.RegisterType((*SystemImage_BuildMetadata_PackageSummary)(nil), "chromiumos.config.api.software.SystemImage.BuildMetadata.PackageSummary")
 	proto.RegisterType((*SystemImage_BuildMetadataList)(nil), "chromiumos.config.api.software.SystemImage.BuildMetadataList")
+	proto.RegisterType((*SystemImage_BuildSummary)(nil), "chromiumos.config.api.software.SystemImage.BuildSummary")
+	proto.RegisterType((*SystemImage_BuildSummary_Toolchain)(nil), "chromiumos.config.api.software.SystemImage.BuildSummary.Toolchain")
+	proto.RegisterType((*SystemImage_BuildSummary_Kernel)(nil), "chromiumos.config.api.software.SystemImage.BuildSummary.Kernel")
+	proto.RegisterType((*SystemImage_BuildSummary_Arc)(nil), "chromiumos.config.api.software.SystemImage.BuildSummary.Arc")
+	proto.RegisterType((*SystemImage_BuildSummaryList)(nil), "chromiumos.config.api.software.SystemImage.BuildSummaryList")
 }
 
 func init() {
@@ -198,23 +466,32 @@ func init() {
 }
 
 var fileDescriptor_6aef23742225ab77 = []byte{
-	// 281 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x91, 0xc1, 0x4a, 0xc3, 0x40,
-	0x10, 0x86, 0x89, 0x85, 0x22, 0x1b, 0x3d, 0x18, 0x3c, 0x84, 0x1c, 0xa4, 0x78, 0xea, 0x41, 0x76,
-	0x69, 0x73, 0x10, 0xaf, 0xbd, 0x89, 0x0a, 0x35, 0x7a, 0xea, 0x25, 0x4c, 0xd2, 0xcd, 0xba, 0xd8,
-	0x38, 0x61, 0x77, 0xa2, 0xf8, 0x42, 0x3e, 0x83, 0x8f, 0x27, 0xdd, 0xa6, 0x31, 0x41, 0xb1, 0xf6,
-	0xb8, 0xc3, 0xfe, 0xdf, 0x37, 0xc3, 0xcf, 0x26, 0xf9, 0x93, 0xc1, 0x52, 0xd7, 0x25, 0x5a, 0x91,
-	0xe3, 0x4b, 0xa1, 0x95, 0x80, 0x4a, 0x0b, 0x8b, 0x05, 0xbd, 0x81, 0x91, 0xc2, 0xbe, 0x5b, 0x92,
-	0x65, 0xaa, 0x4b, 0x50, 0x92, 0x57, 0x06, 0x09, 0x83, 0xb3, 0xef, 0x08, 0xdf, 0x44, 0x38, 0x54,
-	0x9a, 0x6f, 0x23, 0xd1, 0xc5, 0x0e, 0x64, 0x85, 0x86, 0x5a, 0xda, 0xf9, 0xc7, 0x80, 0xf9, 0x0f,
-	0x4e, 0x72, 0xbd, 0x76, 0x44, 0xc4, 0xfc, 0x59, 0xad, 0x57, 0xcb, 0x47, 0x30, 0x4a, 0x52, 0x20,
-	0xd9, 0x69, 0xf3, 0x3f, 0xcd, 0xd6, 0xe3, 0x94, 0xdc, 0x3c, 0xf4, 0x46, 0xde, 0xd8, 0x9f, 0xc6,
-	0xfc, 0xef, 0x5d, 0xf8, 0xbc, 0x71, 0x75, 0x90, 0x49, 0xd0, 0x00, 0x3b, 0xb3, 0xe8, 0xd3, 0x63,
-	0xc7, 0xee, 0x7d, 0x27, 0x09, 0x96, 0x40, 0x10, 0x2c, 0xd8, 0xd1, 0x2f, 0xc2, 0xcb, 0x5d, 0xc2,
-	0xce, 0x29, 0x3d, 0xa9, 0x9f, 0x75, 0x8e, 0xba, 0x61, 0x87, 0x15, 0xe4, 0xcf, 0xa0, 0xa4, 0x0d,
-	0x0f, 0x46, 0x83, 0xb1, 0x3f, 0x15, 0xff, 0x3d, 0x64, 0xbe, 0xc9, 0x25, 0x2d, 0x20, 0x2a, 0xd8,
-	0x49, 0x6f, 0xf3, 0x5b, 0x6d, 0x29, 0xb8, 0x67, 0xc3, 0x57, 0x58, 0xd5, 0xd2, 0x86, 0x9e, 0xe3,
-	0x5f, 0xed, 0xbd, 0xf7, 0x16, 0x97, 0x34, 0xa0, 0x59, 0xbc, 0x98, 0x28, 0x6c, 0x31, 0x1c, 0x8d,
-	0x12, 0x3f, 0x8b, 0x56, 0xd8, 0xeb, 0x3a, 0x1b, 0xba, 0x92, 0xe3, 0xaf, 0x00, 0x00, 0x00, 0xff,
-	0xff, 0xf5, 0x5c, 0xc1, 0x57, 0x67, 0x02, 0x00, 0x00,
+	// 423 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x94, 0x41, 0x8b, 0xd3, 0x40,
+	0x14, 0xc7, 0xc9, 0x46, 0xe2, 0xf6, 0x65, 0x95, 0x75, 0xf0, 0x10, 0xe6, 0xa0, 0xcb, 0x82, 0xb0,
+	0x07, 0x99, 0xb0, 0xed, 0x41, 0x05, 0x41, 0xda, 0x9b, 0x54, 0xa5, 0xa6, 0x05, 0xa1, 0x97, 0x3a,
+	0x4d, 0xa7, 0xe9, 0xd0, 0x24, 0x13, 0x66, 0x26, 0x95, 0x5e, 0xfd, 0x78, 0x7e, 0x0b, 0xbf, 0x89,
+	0x74, 0x3a, 0x49, 0x53, 0x95, 0xd6, 0x16, 0x3c, 0xce, 0x9b, 0xf7, 0x7e, 0xff, 0xf7, 0x7f, 0x3c,
+	0x1e, 0xdc, 0xc7, 0x0b, 0x29, 0x32, 0x5e, 0x66, 0x42, 0x85, 0xb1, 0xc8, 0xe7, 0x3c, 0x09, 0x69,
+	0xc1, 0x43, 0x25, 0xe6, 0xfa, 0x1b, 0x95, 0x2c, 0x54, 0x6b, 0xa5, 0x59, 0x36, 0xe1, 0x19, 0x4d,
+	0x18, 0x29, 0xa4, 0xd0, 0x02, 0x3d, 0xdb, 0x95, 0x90, 0x6d, 0x09, 0xa1, 0x05, 0x27, 0x55, 0x09,
+	0x7e, 0x79, 0x04, 0x59, 0x08, 0xa9, 0x6b, 0xda, 0xed, 0xf7, 0x4b, 0xf0, 0x87, 0x46, 0xe4, 0xfd,
+	0x46, 0x03, 0x6b, 0xf0, 0x7b, 0x25, 0x4f, 0x67, 0x23, 0x2a, 0x13, 0xa6, 0x11, 0x83, 0xa7, 0x36,
+	0x7f, 0x32, 0xdd, 0x84, 0x27, 0xda, 0xc4, 0x03, 0xe7, 0xc6, 0xb9, 0xf3, 0xdb, 0x1d, 0x72, 0xb8,
+	0x17, 0x32, 0xb0, 0x5a, 0x0d, 0x64, 0x84, 0x2c, 0xb0, 0x11, 0xc3, 0x3f, 0x1c, 0x78, 0x64, 0xde,
+	0x1f, 0x99, 0xa6, 0x33, 0xaa, 0x29, 0x1a, 0xc3, 0xd5, 0x5f, 0x04, 0x5f, 0x1d, 0x13, 0x6c, 0x58,
+	0xd9, 0x13, 0xf5, 0xa7, 0x0d, 0x53, 0x7d, 0xb8, 0x2c, 0x68, 0xbc, 0xa4, 0x09, 0x53, 0xc1, 0xc5,
+	0x8d, 0x7b, 0xe7, 0xb7, 0xc3, 0x7f, 0x35, 0x32, 0xd8, 0xd6, 0x45, 0x35, 0x00, 0x5f, 0xc3, 0x63,
+	0x1b, 0x1c, 0x96, 0x59, 0x46, 0xe5, 0x1a, 0xcf, 0xe1, 0xc9, 0x9e, 0x97, 0x0f, 0x5c, 0x69, 0xf4,
+	0x19, 0xbc, 0x15, 0x4d, 0x4b, 0xa6, 0x02, 0xc7, 0x28, 0xbe, 0x39, 0xd9, 0x49, 0x85, 0x8b, 0x2c,
+	0x08, 0xff, 0x74, 0xe1, 0xca, 0xfc, 0x58, 0xe1, 0xff, 0x3a, 0xb3, 0xaf, 0xd0, 0xd2, 0x42, 0xa4,
+	0xf1, 0x82, 0xf2, 0x3c, 0xb8, 0x30, 0xe0, 0xde, 0xc9, 0x60, 0xdb, 0x28, 0x19, 0x55, 0xa4, 0x68,
+	0x07, 0x45, 0x5f, 0xc0, 0x5b, 0x32, 0x99, 0xb3, 0x34, 0x70, 0x0d, 0xfe, 0xdd, 0xd9, 0xf8, 0xbe,
+	0xc1, 0x44, 0x16, 0x87, 0x3e, 0x81, 0x4b, 0x65, 0x1c, 0x3c, 0x30, 0xd4, 0xb7, 0x67, 0x53, 0xbb,
+	0x32, 0x8e, 0x36, 0x20, 0xfc, 0x02, 0x5a, 0xb5, 0x01, 0x14, 0xc0, 0xc3, 0x15, 0x93, 0x8a, 0x8b,
+	0xdc, 0x8c, 0xbb, 0x15, 0x55, 0x4f, 0x7c, 0x0b, 0xde, 0xb6, 0x91, 0x03, 0x39, 0xcf, 0xc1, 0xed,
+	0xca, 0xf8, 0x40, 0xc2, 0x0c, 0xae, 0x9b, 0x4d, 0x98, 0x55, 0x1a, 0xfc, 0xb6, 0x4a, 0xaf, 0xcf,
+	0xb5, 0x54, 0x6d, 0x52, 0xaf, 0x33, 0xbe, 0x4f, 0x44, 0x4d, 0x21, 0x42, 0x26, 0xe1, 0x9f, 0x47,
+	0x24, 0x11, 0x7b, 0x77, 0x64, 0xea, 0x99, 0x03, 0xd2, 0xf9, 0x15, 0x00, 0x00, 0xff, 0xff, 0xc4,
+	0x7f, 0x28, 0xb9, 0xc3, 0x04, 0x00, 0x00,
 }

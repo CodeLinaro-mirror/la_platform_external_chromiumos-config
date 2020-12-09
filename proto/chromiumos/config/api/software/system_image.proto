@@ -25,6 +25,11 @@ message SystemImage {
     // All of the portage packages/versions included in the build.
     repeated Portage.Package packages = 2;
 
+    // Provides a summary of common key packages used in the build.
+    // This provides at easier client interface to avoid walking the portage
+    // package graph and also allows
+    message PackageSummary {}
+
     // NOTE: This is a minimalist implementation for now, but more metadata
     // will be added as test planning is further refined.
   }
@@ -32,5 +37,34 @@ message SystemImage {
   // Used to serialize build metadata reports to proto[json|text|binary]
   message BuildMetadataList {
     repeated BuildMetadata values = 1;
+  }
+
+  // Defines a distilled summary of key pieces of build metadata.
+  // This provides at easier client interface to avoid walking the portage
+  // package graph and also allows a much smaller payload for clients
+  // that don't need the full portage package graph.
+  message BuildSummary {
+    // Build parameters and environment
+    BuildTarget build_target = 1;
+    Toolchain toolchain = 2;
+
+    // Key build packages
+    Kernel kernel = 3;
+    Arc arc = 4;
+
+    message Toolchain {
+      string version = 1;
+    }
+    message Kernel {
+      string version = 1;
+    }
+    message Arc {
+      string version = 1;
+    }
+  }
+
+  // Used to serialize build summary reports to proto[json|text|binary]
+  message BuildSummaryList {
+    repeated BuildSummary values = 1;
   }
 }
