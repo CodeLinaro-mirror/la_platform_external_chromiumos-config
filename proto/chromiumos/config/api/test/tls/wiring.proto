@@ -26,6 +26,10 @@ import "chromiumos/config/api/test/xmlrpc/xmlrpc.proto";
 // in metrics. Clients that do not pass request_trace_id MAY be rejected so that
 // they can be fixed.
 service Wiring {
+  // GetDut gets a DUT resource, which contains various information
+  // about a DUT.
+  rpc GetDut(GetDutRequest) returns (Dut);
+
   // Open a port on the DUT and return an address which the client can
   // use to connect to the port on the DUT.
   // The TLE SHOULD attempt to keep this address-to-port connection open for
@@ -86,6 +90,47 @@ service Wiring {
   // By default, the implementation MAY use 'localhost' as the exposed address.
   rpc ExposePortToDut(ExposePortToDutRequest)
       returns (ExposePortToDutResponse);
+}
+
+message GetDutRequest {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+}
+
+message Dut {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+
+  // licenses are the licenses assigned to the DUT, e.g. Windows
+  // licenses.
+  repeated License licenses = 2;
+}
+
+message License {
+  // name is the resource name for the license.
+  // This is used for tracking licenses.
+  // Clients MUST NOT use the name to identify the type of license,
+  // even if the implementation names the resources after the license
+  // type.
+  string name = 1;
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+
+    // Microsoft Windows 10 Professional Desktop Operating System.
+    // Contact the Chrome OS Parallels team for license specifics.
+    WINDOWS_10_PRO = 1;
+
+    // Microsoft Office Standard.
+    // Contact the Chrome OS Parallels team for version and license specifics.
+    MS_OFFICE_STANDARD = 2;
+  }
+  // type is the type of the license.
+  Type type = 2;
+
 }
 
 message OpenDutPortRequest {
