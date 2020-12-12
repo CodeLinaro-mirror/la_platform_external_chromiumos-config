@@ -8,6 +8,8 @@ package chromiumos.config.api.test.tls;
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/test/tls";
 
+import "google/protobuf/empty.proto";
+
 import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
 
 // Common lab services implemented on top of the wiring APIs.
@@ -69,6 +71,13 @@ service Common {
   //
   // This call is read-only: it doesn't delete the crashes that it reads.
   rpc FetchCrashes(FetchCrashesRequest) returns (stream FetchCrashesResponse);
+
+  // CreateFakeOmaha starts a fake Omaha service on TLS and exposes the
+  // listened port to the DUT.
+  rpc CreateFakeOmaha(CreateFakeOmahaRequest) returns (FakeOmaha);
+  // DeleteFakeOmaha deletes the specified fake Omaha resource created by
+  // CreateFakeOmaha.
+  rpc DeleteFakeOmaha(DeleteFakeOmahaRequest) returns (google.protobuf.Empty);
 }
 
 message ExecDutCommandRequest {
@@ -153,6 +162,8 @@ message ProvisionDutRequest {
   // It is not specified whether the name is the DUT hostname.
   string name = 1;
 
+  // TODO(crbug.com/1155247) Deprecate this nested message and replace with
+  // top level ChromeOsImage.
   message ChromeOSImage {
     oneof path_oneof {
       // gs_path_prefix is the GS path to where kernel, rootfs, and stateful
@@ -294,3 +305,75 @@ message CrashBlob {
     // e.g. foo_binary.20201027.102345.0.dmp
     string filename = 3;
 };
+
+message ChromeOsImage {
+  oneof path_oneof {
+    // gs_path_prefix is the GS path to where the payloads are located. For
+    // example the format MAY be:
+    // gs://chromeos-image-archive/eve-release/R86-13380.0.0
+    string gs_path_prefix = 1;
+  }
+}
+
+message FakeOmaha {
+  // name is the resource name of the fake Omaha service.
+  // Format: fakeOmaha/{fake-omaha-id}
+  // The implementation MUST set it after creating the fake Omaha service.
+  // Clients SHOULD NOT set it.
+  string name = 1;
+  // dut is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string dut = 2;
+
+  // target_build is the ChromeOS build that the fake Omaha service will serve
+  // payloads for.
+  ChromeOsImage target_build = 3;
+
+  message Payload {
+    enum Type {
+      TYPE_UNSPECIFIED = 0;
+      FULL = 1;
+      DELTA = 2;
+    }
+    // id is the id of the payload. It MAY be "ROOTFS" or a DLC id, etc.
+    string id = 1;
+    // type is the payload type, e.g. TYPE_FULL or TYPE_DELTA.
+    Type type = 2;
+  }
+  // payloads is the payloads can be served by the fake Omaha service.
+  repeated Payload payloads = 4;
+  // exposed_via_proxy indicates that the fake Omaha service is exposed to a
+  // DUT via a proxy server, instead of exposing to the DUT directly. So the
+  // service exposing won't be impacted by rebooting the DUT, disconnecting the
+  // DUT network, etc.
+  bool exposed_via_proxy = 5;
+  // critical_update instructs the fake Omaha created that the update is
+  // critical if set.
+  bool critical_update = 6;
+  // return_noupdate_starting indicates from which update check to start returning noupdate.
+  // It MUST be 0 or greater.
+  // When set to 0 (the default value), disables returning noupdate.
+  // If set to positive N, returns noupdate for the Nth check and for every
+  // check thereafter.
+  // For example, if set to 1, returns noupdate starting from the first check,
+  // i.e., always returns noupdate.
+  int32 return_noupdate_starting = 7;
+  // omaha_url is the current fake Omaha service URL which is reachable from
+  // the specified DUT.
+  // The URL can be used as input of the update engine client of the DUT.
+  // The implementation MUST set it after creating the fake Omaha service.
+  // Clients SHOULD NOT set it.
+  string omaha_url = 8;
+}
+
+message CreateFakeOmahaRequest {
+  // fake_omaha is the fake omaha service to be created.
+  FakeOmaha fake_omaha = 1;
+}
+
+message DeleteFakeOmahaRequest {
+  // The resource name of the fake Omaha service to stop.
+  // Format: fakeOmahaServices/{fake-omaha-id}
+  string name = 1;
+}

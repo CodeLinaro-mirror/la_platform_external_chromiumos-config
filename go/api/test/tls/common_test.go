@@ -124,3 +124,54 @@ readStream:
 		}
 	}
 }
+
+func ExampleCreateFakeOmahaRequest() {
+	var invocation rtd.Invocation
+
+	tlsConfig := invocation.GetTestLabServicesConfig()
+	dutName := invocation.GetDuts()[0].GetTlsDutName()
+
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", tlsConfig.GetTlsAddress(), tlsConfig.GetTlsPort()), grpc.WithInsecure())
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+
+	c := tls.NewCommonClient(conn)
+
+	req := tls.CreateFakeOmahaRequest{
+		FakeOmaha: &tls.FakeOmaha{
+			Dut: dutName,
+			TargetBuild: &tls.ChromeOsImage{
+				PathOneof: &tls.ChromeOsImage_GsPathPrefix{
+					GsPathPrefix: "gs://chromeos-image-archive/eve-release/R87-13457.0.0",
+				},
+			},
+			Payloads: []*tls.FakeOmaha_Payload{
+				&tls.FakeOmaha_Payload{
+					Id:   "ROOTFS",
+					Type: tls.FakeOmaha_Payload_FULL,
+				},
+			},
+		},
+	}
+
+	ctx := context.Background()
+	omaha, err := c.CreateFakeOmaha(ctx, &req)
+	if err != nil {
+		panic("RPC CreateFakeOmaha error")
+	}
+	defer c.DeleteFakeOmaha(ctx, &tls.DeleteFakeOmahaRequest{Name: omaha.GetName()})
+
+	result, err := c.ExecDutCommand(ctx, &tls.ExecDutCommandRequest{
+		Name:    dutName,
+		Command: "update_engine_client",
+		Args:    []string{"--update_url", omaha.GetOmahaUrl(), "--update"},
+	})
+	if err != nil {
+		panic("RPC ExecDutCommand error")
+	}
+
+	// Check the return code of ExecDutCommand.
+	_ = result
+}

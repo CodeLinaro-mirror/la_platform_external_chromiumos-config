@@ -13,6 +13,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 from chromiumos.config.api.test.tls.dependencies.longrunning import operations_pb2 as chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2
 
 
@@ -21,9 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.tls',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/api/test/tls'),
-  serialized_pb=_b('\n+chromiumos/config/api/test/tls/common.proto\x12\x1e\x63hromiumos.config.api.test.tls\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\"\xc3\x01\n\x15\x45xecDutCommandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x02 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\x12\x36\n\x06stdout\x18\x05 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\x12\x36\n\x06stderr\x18\x06 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\"\xe2\x01\n\x16\x45xecDutCommandResponse\x12R\n\texit_info\x18\x01 \x01(\x0b\x32?.chromiumos.config.api.test.tls.ExecDutCommandResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x95\x02\n\x13ProvisionDutRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12P\n\x05image\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.test.tls.ProvisionDutRequest.ChromeOSImage\x12N\n\tdlc_specs\x18\x03 \x03(\x0b\x32;.chromiumos.config.api.test.tls.ProvisionDutRequest.DLCSpec\x1a\x37\n\rChromeOSImage\x12\x18\n\x0egs_path_prefix\x18\x01 \x01(\tH\x00\x42\x0c\n\npath_oneof\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\xf9\x01\n\x14ProvisionDutResponse\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\x16\n\x14ProvisionDutMetadata\"6\n\x13\x46\x65tchCrashesRequest\x12\x0b\n\x03\x64ut\x18\x01 \x01(\t\x12\x12\n\nfetch_core\x18\x02 \x01(\x08\"\xb7\x01\n\x14\x46\x65tchCrashesResponse\x12\x10\n\x08\x63rash_id\x18\x01 \x01(\x03\x12:\n\x05\x63rash\x18\x02 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashInfoH\x00\x12\x39\n\x04\x62lob\x18\x03 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashBlobH\x00\x12\x0e\n\x04\x63ore\x18\x04 \x01(\x0cH\x00\x42\x06\n\x04\x64\x61ta\"\xbe\x01\n\tCrashInfo\x12\x11\n\texec_name\x18\x01 \x01(\t\x12\x0c\n\x04prod\x18\x02 \x01(\t\x12\x0b\n\x03ver\x18\x03 \x01(\t\x12\x0b\n\x03sig\x18\x04 \x01(\t\x12$\n\x1cin_progress_integration_test\x18\x05 \x01(\t\x12\x11\n\tcollector\x18\x06 \x01(\t\x12=\n\x06\x66ields\x18\x07 \x03(\x0b\x32-.chromiumos.config.api.test.tls.CrashMetadata\"*\n\rCrashMetadata\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"8\n\tCrashBlob\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t*,\n\x06Output\x12\x0f\n\x0bOUTPUT_PIPE\x10\x00\x12\x11\n\rOUTPUT_STDOUT\x10\x01\x32\x9f\x03\n\x06\x43ommon\x12\x81\x01\n\x0e\x45xecDutCommand\x12\x35.chromiumos.config.api.test.tls.ExecDutCommandRequest\x1a\x36.chromiumos.config.api.test.tls.ExecDutCommandResponse0\x01\x12\x93\x01\n\x0cProvisionDut\x12\x33.chromiumos.config.api.test.tls.ProvisionDutRequest\x1a\x1d.google.longrunning.Operation\"/\xca\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12{\n\x0c\x46\x65tchCrashes\x12\x33.chromiumos.config.api.test.tls.FetchCrashesRequest\x1a\x34.chromiumos.config.api.test.tls.FetchCrashesResponse0\x01\x42\x33Z1go.chromium.org/chromiumos/config/go/api/test/tlsb\x06proto3')
+  serialized_pb=_b('\n+chromiumos/config/api/test/tls/common.proto\x12\x1e\x63hromiumos.config.api.test.tls\x1a\x1bgoogle/protobuf/empty.proto\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\"\xc3\x01\n\x15\x45xecDutCommandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x02 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\x12\x36\n\x06stdout\x18\x05 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\x12\x36\n\x06stderr\x18\x06 \x01(\x0e\x32&.chromiumos.config.api.test.tls.Output\"\xe2\x01\n\x16\x45xecDutCommandResponse\x12R\n\texit_info\x18\x01 \x01(\x0b\x32?.chromiumos.config.api.test.tls.ExecDutCommandResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x95\x02\n\x13ProvisionDutRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12P\n\x05image\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.test.tls.ProvisionDutRequest.ChromeOSImage\x12N\n\tdlc_specs\x18\x03 \x03(\x0b\x32;.chromiumos.config.api.test.tls.ProvisionDutRequest.DLCSpec\x1a\x37\n\rChromeOSImage\x12\x18\n\x0egs_path_prefix\x18\x01 \x01(\tH\x00\x42\x0c\n\npath_oneof\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\xf9\x01\n\x14ProvisionDutResponse\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\x16\n\x14ProvisionDutMetadata\"6\n\x13\x46\x65tchCrashesRequest\x12\x0b\n\x03\x64ut\x18\x01 \x01(\t\x12\x12\n\nfetch_core\x18\x02 \x01(\x08\"\xb7\x01\n\x14\x46\x65tchCrashesResponse\x12\x10\n\x08\x63rash_id\x18\x01 \x01(\x03\x12:\n\x05\x63rash\x18\x02 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashInfoH\x00\x12\x39\n\x04\x62lob\x18\x03 \x01(\x0b\x32).chromiumos.config.api.test.tls.CrashBlobH\x00\x12\x0e\n\x04\x63ore\x18\x04 \x01(\x0cH\x00\x42\x06\n\x04\x64\x61ta\"\xbe\x01\n\tCrashInfo\x12\x11\n\texec_name\x18\x01 \x01(\t\x12\x0c\n\x04prod\x18\x02 \x01(\t\x12\x0b\n\x03ver\x18\x03 \x01(\t\x12\x0b\n\x03sig\x18\x04 \x01(\t\x12$\n\x1cin_progress_integration_test\x18\x05 \x01(\t\x12\x11\n\tcollector\x18\x06 \x01(\t\x12=\n\x06\x66ields\x18\x07 \x03(\x0b\x32-.chromiumos.config.api.test.tls.CrashMetadata\"*\n\rCrashMetadata\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"8\n\tCrashBlob\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\"7\n\rChromeOsImage\x12\x18\n\x0egs_path_prefix\x18\x01 \x01(\tH\x00\x42\x0c\n\npath_oneof\"\xaa\x03\n\tFakeOmaha\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03\x64ut\x18\x02 \x01(\t\x12\x43\n\x0ctarget_build\x18\x03 \x01(\x0b\x32-.chromiumos.config.api.test.tls.ChromeOsImage\x12\x43\n\x08payloads\x18\x04 \x03(\x0b\x32\x31.chromiumos.config.api.test.tls.FakeOmaha.Payload\x12\x19\n\x11\x65xposed_via_proxy\x18\x05 \x01(\x08\x12\x17\n\x0f\x63ritical_update\x18\x06 \x01(\x08\x12 \n\x18return_noupdate_starting\x18\x07 \x01(\x05\x12\x11\n\tomaha_url\x18\x08 \x01(\t\x1a\x8e\x01\n\x07Payload\x12\n\n\x02id\x18\x01 \x01(\t\x12\x44\n\x04type\x18\x02 \x01(\x0e\x32\x36.chromiumos.config.api.test.tls.FakeOmaha.Payload.Type\"1\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\x08\n\x04\x46ULL\x10\x01\x12\t\n\x05\x44\x45LTA\x10\x02\"W\n\x16\x43reateFakeOmahaRequest\x12=\n\nfake_omaha\x18\x01 \x01(\x0b\x32).chromiumos.config.api.test.tls.FakeOmaha\"&\n\x16\x44\x65leteFakeOmahaRequest\x12\x0c\n\x04name\x18\x01 \x01(\t*,\n\x06Output\x12\x0f\n\x0bOUTPUT_PIPE\x10\x00\x12\x11\n\rOUTPUT_STDOUT\x10\x01\x32\xf8\x04\n\x06\x43ommon\x12\x81\x01\n\x0e\x45xecDutCommand\x12\x35.chromiumos.config.api.test.tls.ExecDutCommandRequest\x1a\x36.chromiumos.config.api.test.tls.ExecDutCommandResponse0\x01\x12\x93\x01\n\x0cProvisionDut\x12\x33.chromiumos.config.api.test.tls.ProvisionDutRequest\x1a\x1d.google.longrunning.Operation\"/\xca\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12{\n\x0c\x46\x65tchCrashes\x12\x33.chromiumos.config.api.test.tls.FetchCrashesRequest\x1a\x34.chromiumos.config.api.test.tls.FetchCrashesResponse0\x01\x12t\n\x0f\x43reateFakeOmaha\x12\x36.chromiumos.config.api.test.tls.CreateFakeOmahaRequest\x1a).chromiumos.config.api.test.tls.FakeOmaha\x12\x61\n\x0f\x44\x65leteFakeOmaha\x12\x36.chromiumos.config.api.test.tls.DeleteFakeOmahaRequest\x1a\x16.google.protobuf.EmptyB3Z1go.chromium.org/chromiumos/config/go/api/test/tlsb\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
 
 _OUTPUT = _descriptor.EnumDescriptor(
   name='Output',
@@ -42,8 +43,8 @@ _OUTPUT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1673,
-  serialized_end=1717,
+  serialized_start=2317,
+  serialized_end=2361,
 )
 _sym_db.RegisterEnumDescriptor(_OUTPUT)
 
@@ -85,10 +86,36 @@ _PROVISIONDUTRESPONSE_REASON = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=886,
-  serialized_end=1110,
+  serialized_start=915,
+  serialized_end=1139,
 )
 _sym_db.RegisterEnumDescriptor(_PROVISIONDUTRESPONSE_REASON)
+
+_FAKEOMAHA_PAYLOAD_TYPE = _descriptor.EnumDescriptor(
+  name='Type',
+  full_name='chromiumos.config.api.test.tls.FakeOmaha.Payload.Type',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='TYPE_UNSPECIFIED', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='FULL', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='DELTA', index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2137,
+  serialized_end=2186,
+)
+_sym_db.RegisterEnumDescriptor(_FAKEOMAHA_PAYLOAD_TYPE)
 
 
 _EXECDUTCOMMANDREQUEST = _descriptor.Descriptor(
@@ -152,8 +179,8 @@ _EXECDUTCOMMANDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=154,
-  serialized_end=349,
+  serialized_start=183,
+  serialized_end=378,
 )
 
 
@@ -204,8 +231,8 @@ _EXECDUTCOMMANDRESPONSE_EXITINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=494,
-  serialized_end=578,
+  serialized_start=523,
+  serialized_end=607,
 )
 
 _EXECDUTCOMMANDRESPONSE = _descriptor.Descriptor(
@@ -248,8 +275,8 @@ _EXECDUTCOMMANDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=352,
-  serialized_end=578,
+  serialized_start=381,
+  serialized_end=607,
 )
 
 
@@ -282,8 +309,8 @@ _PROVISIONDUTREQUEST_CHROMEOSIMAGE = _descriptor.Descriptor(
       name='path_oneof', full_name='chromiumos.config.api.test.tls.ProvisionDutRequest.ChromeOSImage.path_oneof',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=780,
-  serialized_end=835,
+  serialized_start=809,
+  serialized_end=864,
 )
 
 _PROVISIONDUTREQUEST_DLCSPEC = _descriptor.Descriptor(
@@ -312,8 +339,8 @@ _PROVISIONDUTREQUEST_DLCSPEC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=837,
-  serialized_end=858,
+  serialized_start=866,
+  serialized_end=887,
 )
 
 _PROVISIONDUTREQUEST = _descriptor.Descriptor(
@@ -356,8 +383,8 @@ _PROVISIONDUTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=581,
-  serialized_end=858,
+  serialized_start=610,
+  serialized_end=887,
 )
 
 
@@ -381,8 +408,8 @@ _PROVISIONDUTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=861,
-  serialized_end=1110,
+  serialized_start=890,
+  serialized_end=1139,
 )
 
 
@@ -405,8 +432,8 @@ _PROVISIONDUTMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1112,
-  serialized_end=1134,
+  serialized_start=1141,
+  serialized_end=1163,
 )
 
 
@@ -443,8 +470,8 @@ _FETCHCRASHESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1136,
-  serialized_end=1190,
+  serialized_start=1165,
+  serialized_end=1219,
 )
 
 
@@ -498,8 +525,8 @@ _FETCHCRASHESRESPONSE = _descriptor.Descriptor(
       name='data', full_name='chromiumos.config.api.test.tls.FetchCrashesResponse.data',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1193,
-  serialized_end=1376,
+  serialized_start=1222,
+  serialized_end=1405,
 )
 
 
@@ -571,8 +598,8 @@ _CRASHINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1379,
-  serialized_end=1569,
+  serialized_start=1408,
+  serialized_end=1598,
 )
 
 
@@ -609,8 +636,8 @@ _CRASHMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1571,
-  serialized_end=1613,
+  serialized_start=1600,
+  serialized_end=1642,
 )
 
 
@@ -654,8 +681,222 @@ _CRASHBLOB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1615,
-  serialized_end=1671,
+  serialized_start=1644,
+  serialized_end=1700,
+)
+
+
+_CHROMEOSIMAGE = _descriptor.Descriptor(
+  name='ChromeOsImage',
+  full_name='chromiumos.config.api.test.tls.ChromeOsImage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='gs_path_prefix', full_name='chromiumos.config.api.test.tls.ChromeOsImage.gs_path_prefix', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='path_oneof', full_name='chromiumos.config.api.test.tls.ChromeOsImage.path_oneof',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=1702,
+  serialized_end=1757,
+)
+
+
+_FAKEOMAHA_PAYLOAD = _descriptor.Descriptor(
+  name='Payload',
+  full_name='chromiumos.config.api.test.tls.FakeOmaha.Payload',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='chromiumos.config.api.test.tls.FakeOmaha.Payload.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='chromiumos.config.api.test.tls.FakeOmaha.Payload.type', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _FAKEOMAHA_PAYLOAD_TYPE,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2044,
+  serialized_end=2186,
+)
+
+_FAKEOMAHA = _descriptor.Descriptor(
+  name='FakeOmaha',
+  full_name='chromiumos.config.api.test.tls.FakeOmaha',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='chromiumos.config.api.test.tls.FakeOmaha.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='dut', full_name='chromiumos.config.api.test.tls.FakeOmaha.dut', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='target_build', full_name='chromiumos.config.api.test.tls.FakeOmaha.target_build', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='payloads', full_name='chromiumos.config.api.test.tls.FakeOmaha.payloads', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='exposed_via_proxy', full_name='chromiumos.config.api.test.tls.FakeOmaha.exposed_via_proxy', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='critical_update', full_name='chromiumos.config.api.test.tls.FakeOmaha.critical_update', index=5,
+      number=6, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='return_noupdate_starting', full_name='chromiumos.config.api.test.tls.FakeOmaha.return_noupdate_starting', index=6,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='omaha_url', full_name='chromiumos.config.api.test.tls.FakeOmaha.omaha_url', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_FAKEOMAHA_PAYLOAD, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1760,
+  serialized_end=2186,
+)
+
+
+_CREATEFAKEOMAHAREQUEST = _descriptor.Descriptor(
+  name='CreateFakeOmahaRequest',
+  full_name='chromiumos.config.api.test.tls.CreateFakeOmahaRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='fake_omaha', full_name='chromiumos.config.api.test.tls.CreateFakeOmahaRequest.fake_omaha', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2188,
+  serialized_end=2275,
+)
+
+
+_DELETEFAKEOMAHAREQUEST = _descriptor.Descriptor(
+  name='DeleteFakeOmahaRequest',
+  full_name='chromiumos.config.api.test.tls.DeleteFakeOmahaRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='chromiumos.config.api.test.tls.DeleteFakeOmahaRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2277,
+  serialized_end=2315,
 )
 
 _EXECDUTCOMMANDREQUEST.fields_by_name['stdout'].enum_type = _OUTPUT
@@ -682,6 +923,15 @@ _FETCHCRASHESRESPONSE.oneofs_by_name['data'].fields.append(
   _FETCHCRASHESRESPONSE.fields_by_name['core'])
 _FETCHCRASHESRESPONSE.fields_by_name['core'].containing_oneof = _FETCHCRASHESRESPONSE.oneofs_by_name['data']
 _CRASHINFO.fields_by_name['fields'].message_type = _CRASHMETADATA
+_CHROMEOSIMAGE.oneofs_by_name['path_oneof'].fields.append(
+  _CHROMEOSIMAGE.fields_by_name['gs_path_prefix'])
+_CHROMEOSIMAGE.fields_by_name['gs_path_prefix'].containing_oneof = _CHROMEOSIMAGE.oneofs_by_name['path_oneof']
+_FAKEOMAHA_PAYLOAD.fields_by_name['type'].enum_type = _FAKEOMAHA_PAYLOAD_TYPE
+_FAKEOMAHA_PAYLOAD.containing_type = _FAKEOMAHA
+_FAKEOMAHA_PAYLOAD_TYPE.containing_type = _FAKEOMAHA_PAYLOAD
+_FAKEOMAHA.fields_by_name['target_build'].message_type = _CHROMEOSIMAGE
+_FAKEOMAHA.fields_by_name['payloads'].message_type = _FAKEOMAHA_PAYLOAD
+_CREATEFAKEOMAHAREQUEST.fields_by_name['fake_omaha'].message_type = _FAKEOMAHA
 DESCRIPTOR.message_types_by_name['ExecDutCommandRequest'] = _EXECDUTCOMMANDREQUEST
 DESCRIPTOR.message_types_by_name['ExecDutCommandResponse'] = _EXECDUTCOMMANDRESPONSE
 DESCRIPTOR.message_types_by_name['ProvisionDutRequest'] = _PROVISIONDUTREQUEST
@@ -692,6 +942,10 @@ DESCRIPTOR.message_types_by_name['FetchCrashesResponse'] = _FETCHCRASHESRESPONSE
 DESCRIPTOR.message_types_by_name['CrashInfo'] = _CRASHINFO
 DESCRIPTOR.message_types_by_name['CrashMetadata'] = _CRASHMETADATA
 DESCRIPTOR.message_types_by_name['CrashBlob'] = _CRASHBLOB
+DESCRIPTOR.message_types_by_name['ChromeOsImage'] = _CHROMEOSIMAGE
+DESCRIPTOR.message_types_by_name['FakeOmaha'] = _FAKEOMAHA
+DESCRIPTOR.message_types_by_name['CreateFakeOmahaRequest'] = _CREATEFAKEOMAHAREQUEST
+DESCRIPTOR.message_types_by_name['DeleteFakeOmahaRequest'] = _DELETEFAKEOMAHAREQUEST
 DESCRIPTOR.enum_types_by_name['Output'] = _OUTPUT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -789,6 +1043,42 @@ CrashBlob = _reflection.GeneratedProtocolMessageType('CrashBlob', (_message.Mess
   ))
 _sym_db.RegisterMessage(CrashBlob)
 
+ChromeOsImage = _reflection.GeneratedProtocolMessageType('ChromeOsImage', (_message.Message,), dict(
+  DESCRIPTOR = _CHROMEOSIMAGE,
+  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.ChromeOsImage)
+  ))
+_sym_db.RegisterMessage(ChromeOsImage)
+
+FakeOmaha = _reflection.GeneratedProtocolMessageType('FakeOmaha', (_message.Message,), dict(
+
+  Payload = _reflection.GeneratedProtocolMessageType('Payload', (_message.Message,), dict(
+    DESCRIPTOR = _FAKEOMAHA_PAYLOAD,
+    __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.FakeOmaha.Payload)
+    ))
+  ,
+  DESCRIPTOR = _FAKEOMAHA,
+  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.FakeOmaha)
+  ))
+_sym_db.RegisterMessage(FakeOmaha)
+_sym_db.RegisterMessage(FakeOmaha.Payload)
+
+CreateFakeOmahaRequest = _reflection.GeneratedProtocolMessageType('CreateFakeOmahaRequest', (_message.Message,), dict(
+  DESCRIPTOR = _CREATEFAKEOMAHAREQUEST,
+  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.CreateFakeOmahaRequest)
+  ))
+_sym_db.RegisterMessage(CreateFakeOmahaRequest)
+
+DeleteFakeOmahaRequest = _reflection.GeneratedProtocolMessageType('DeleteFakeOmahaRequest', (_message.Message,), dict(
+  DESCRIPTOR = _DELETEFAKEOMAHAREQUEST,
+  __module__ = 'chromiumos.config.api.test.tls.common_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.config.api.test.tls.DeleteFakeOmahaRequest)
+  ))
+_sym_db.RegisterMessage(DeleteFakeOmahaRequest)
+
 
 DESCRIPTOR._options = None
 
@@ -798,8 +1088,8 @@ _COMMON = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1720,
-  serialized_end=2135,
+  serialized_start=2364,
+  serialized_end=2996,
   methods=[
   _descriptor.MethodDescriptor(
     name='ExecDutCommand',
@@ -826,6 +1116,24 @@ _COMMON = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_FETCHCRASHESREQUEST,
     output_type=_FETCHCRASHESRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='CreateFakeOmaha',
+    full_name='chromiumos.config.api.test.tls.Common.CreateFakeOmaha',
+    index=3,
+    containing_service=None,
+    input_type=_CREATEFAKEOMAHAREQUEST,
+    output_type=_FAKEOMAHA,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='DeleteFakeOmaha',
+    full_name='chromiumos.config.api.test.tls.Common.DeleteFakeOmaha',
+    index=4,
+    containing_service=None,
+    input_type=_DELETEFAKEOMAHAREQUEST,
+    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
     serialized_options=None,
   ),
 ])
