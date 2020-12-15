@@ -25,9 +25,11 @@ def _get_designs_by_overlay(design_configs):
         program_id = design_config.hw_design.program_id.value
         program_name = design_config.program.name.lower() or program_id.lower()
         overlay = build_target.portage_build_target.overlay_name or program_name
-        designs = overlay_to_designs.get(overlay, [])
+        designs = overlay_to_designs.setdefault(overlay, [])
         designs.append(design_name)
-        overlay_to_designs[overlay] = designs
+
+        # Add an explicit entry for all earlier projects with explicit overlays
+        overlay_to_designs.setdefault(design_name, []).append(design_name)
 
     overlay_to_unique_designs = {}
     for overlay in overlay_to_designs:
