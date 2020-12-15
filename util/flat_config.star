@@ -22,7 +22,8 @@ def _get_designs_by_overlay(design_configs):
     for design_config in design_configs.values:
         design_name = design_config.hw_design.name
         build_target = design_config.sw_config.system_build_target
-        program_name = design_config.program.name.lower()
+        program_id = design_config.hw_design.program_id.value
+        program_name = design_config.program.name.lower() or program_id.lower()
         overlay = build_target.portage_build_target.overlay_name or program_name
         designs = overlay_to_designs.get(overlay, [])
         designs.append(design_name)
