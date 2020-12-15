@@ -33,19 +33,31 @@ def _get_designs_by_overlay(design_configs):
         overlay_to_unique_designs[overlay] = set(overlay_to_designs[overlay])
     return overlay_to_unique_designs
 
-def _get_components_by_design(design_configs):
-    """Returns dict of {design1: [comp1, comp2], design2...}"""
-    designs_to_components = {}
+def _get_configs_by_design(design_configs):
+    """Returns all config that is common to a given design
+
+     Args:
+       design_configs: A FlatConfigList proto. Required.
+
+    Returns: dict of {design1:
+       (program, hw_design, odm, hw_components), design2...}
+    """
+    designs_to_configs = {}
     for design_config in design_configs.values:
         design_name = design_config.hw_design.name
 
         # Components are common across all designs, so just pull the first
-        if design_name not in designs_to_components:
-            designs_to_components[design_name] = design_config.hw_components
-    return designs_to_components
+        if design_name not in designs_to_configs:
+            designs_to_configs[design_name] = struct(
+                program = design_config.program,
+                odm = design_config.odm,
+                hw_design = design_config.hw_design,
+                hw_components = design_config.hw_components,
+            )
+    return designs_to_configs
 
 flat_config = struct(
     read = _read,
     get_designs_by_overlay = _get_designs_by_overlay,
-    get_components_by_design = _get_components_by_design,
+    get_configs_by_design = _get_configs_by_design,
 )
