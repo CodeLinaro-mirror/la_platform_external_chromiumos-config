@@ -142,7 +142,7 @@ def _create_design(
         id,
         program_id,
         odm_id,
-        public_fields = ["id", "program_id"],
+        public_fields = ["id", "name", "program_id"],
         configs = None,
         board_id_phases = None):
     """Builds a Design proto."""

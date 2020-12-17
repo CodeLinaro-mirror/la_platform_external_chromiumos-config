@@ -36,6 +36,7 @@
       "id": {
         "value": "FAKE_REF_DESIGN"
       },
+      "name": "FAKE_REF_DESIGN",
       "programId": {
         "value": "FAKE_PROGRAM"
       }
@@ -61,6 +62,7 @@
       "id": {
         "value": "PROJECT_A"
       },
+      "name": "PROJECT_A",
       "programId": {
         "value": "FAKE_PROGRAM"
       }
@@ -86,6 +88,7 @@
       "id": {
         "value": "PROJECT_B"
       },
+      "name": "PROJECT_B",
       "programId": {
         "value": "FAKE_PROGRAM"
       }
@@ -111,6 +114,7 @@
       "id": {
         "value": "PROJECT_C"
       },
+      "name": "PROJECT_C",
       "programId": {
         "value": "FAKE_PROGRAM"
       }
@@ -136,6 +140,7 @@
       "id": {
         "value": "PROJECT_WL"
       },
+      "name": "PROJECT_WL",
       "programId": {
         "value": "FAKE_PROGRAM"
       }
@@ -151,6 +156,7 @@
       "id": {
         "value": "PROJECT_BOX"
       },
+      "name": "PROJECT_BOX",
       "programId": {
         "value": "FAKE_PROGRAM"
       }

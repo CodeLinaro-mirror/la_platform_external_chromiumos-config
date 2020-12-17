@@ -936,7 +936,7 @@
         "value": "FAKE_PROGRAM"
       },
       "publicReplication": {
-        "publicFields": "id,programId"
+        "publicFields": "id,name,programId"
       }
     },
     {
@@ -1338,7 +1338,7 @@
         "value": "FAKE_PROGRAM"
       },
       "publicReplication": {
-        "publicFields": "id,programId"
+        "publicFields": "id,name,programId"
       }
     },
     {
@@ -1726,7 +1726,7 @@
         "value": "FAKE_PROGRAM"
       },
       "publicReplication": {
-        "publicFields": "id,programId"
+        "publicFields": "id,name,programId"
       }
     },
     {
@@ -2114,7 +2114,7 @@
         "value": "FAKE_PROGRAM"
       },
       "publicReplication": {
-        "publicFields": "id,programId"
+        "publicFields": "id,name,programId"
       }
     },
     {
@@ -2460,7 +2460,7 @@
         "value": "FAKE_PROGRAM"
       },
       "publicReplication": {
-        "publicFields": "id,programId"
+        "publicFields": "id,name,programId"
       }
     },
     {
@@ -2769,7 +2769,7 @@
         "value": "FAKE_PROGRAM"
       },
       "publicReplication": {
-        "publicFields": "id,programId"
+        "publicFields": "id,name,programId"
       }
     }
   ],

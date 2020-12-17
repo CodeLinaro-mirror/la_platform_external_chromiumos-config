@@ -7,17 +7,17 @@
             "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "",
-            "metrics-tag": "",
+            "metrics-tag": "fake_ref_design",
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_.xml",
-            "system-path": "/etc/hardware_features_.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design.xml",
+            "system-path": "/etc/hardware_features_fake_ref_design.xml"
           }
         },
         "audio": {
           "main": {
-            "cras-config-dir": "",
+            "cras-config-dir": "fake_ref_design",
             "files": []
           }
         },
@@ -28,7 +28,252 @@
           "platform-name": "FAKE_PROGRAM",
           "sku-id": 0
         },
-        "name": "",
+        "name": "fake_ref_design",
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_program_cheets",
+            "first-api-level": "28",
+            "marketing-name": "",
+            "metrics-tag": "project_a",
+            "product": "fake_program"
+          },
+          "hardware-features": {
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_a.xml",
+            "system-path": "/etc/hardware_features_project_a.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project_a",
+            "files": []
+          }
+        },
+        "camera": {
+          "count": 0
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 0
+        },
+        "name": "project_a",
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_program_cheets",
+            "first-api-level": "28",
+            "marketing-name": "",
+            "metrics-tag": "project_b",
+            "product": "fake_program"
+          },
+          "hardware-features": {
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_b.xml",
+            "system-path": "/etc/hardware_features_project_b.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project_b",
+            "files": []
+          }
+        },
+        "camera": {
+          "count": 0
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 0
+        },
+        "name": "project_b",
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_program_cheets",
+            "first-api-level": "28",
+            "marketing-name": "",
+            "metrics-tag": "project_c",
+            "product": "fake_program"
+          },
+          "hardware-features": {
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_c.xml",
+            "system-path": "/etc/hardware_features_project_c.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project_c",
+            "files": []
+          }
+        },
+        "camera": {
+          "count": 0
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 0
+        },
+        "name": "project_c",
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_program_cheets",
+            "first-api-level": "28",
+            "marketing-name": "",
+            "metrics-tag": "project_wl",
+            "product": "fake_program"
+          },
+          "hardware-features": {
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
+            "system-path": "/etc/hardware_features_project_wl.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project_wl",
+            "files": []
+          }
+        },
+        "camera": {
+          "count": 0
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 0
+        },
+        "name": "project_wl",
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_program_cheets",
+            "first-api-level": "28",
+            "marketing-name": "",
+            "metrics-tag": "project_box",
+            "product": "fake_program"
+          },
+          "hardware-features": {
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_box.xml",
+            "system-path": "/etc/hardware_features_project_box.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project_box",
+            "files": []
+          }
+        },
+        "camera": {
+          "count": 0
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 0
+        },
+        "name": "project_box",
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
