@@ -42,4 +42,10 @@ message AudioConfig {
 
   // Path to the boards specific settings board.ini file.
   string board_file = 8;
+
+  // Path to the sound_card_init config (e.g. <card_id>.yaml).
+  string sound_card_init_file = 10;
+
+  // The short name of sound card.
+  string card_id = 11;
 }

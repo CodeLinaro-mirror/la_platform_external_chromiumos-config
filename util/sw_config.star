@@ -156,6 +156,8 @@ def _create_audio(
         ucm_suffix = None,
         module_file = None,
         board_file = None,
+        sound_card_init_file = None,
+        card_id = None,
         public_fields = ["card_name"]):
     """Builds an AudioConfig proto."""
     return audio_pb.AudioConfig(
@@ -168,6 +170,8 @@ def _create_audio(
         ucm_suffix = ucm_suffix,
         module_file = module_file,
         board_file = board_file,
+        sound_card_init_file = sound_card_init_file,
+        card_id = card_id,
     )
 
 def _create_bluetooth(flags):

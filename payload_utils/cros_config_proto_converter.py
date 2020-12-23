@@ -441,6 +441,7 @@ def _build_audio(config):
     return {}
   alsa_path = '/usr/share/alsa/ucm'
   cras_path = '/etc/cras'
+  sound_card_init_path = '/etc/sound_card_init'
   project_name = config.hw_design.name.lower()
   program_name = config.program.name.lower()
   files = []
@@ -476,6 +477,10 @@ def _build_audio(config):
       files.append(
           _file(audio.board_file,
                 '%s/%s/board.ini' % (cras_path, project_name)))
+    if audio.sound_card_init_file:
+      files.append(
+          _file(audio.sound_card_init_file,
+                '%s/%s.yaml' % (sound_card_init_path, audio.card_id)))
 
   result = {
       'main': {
