@@ -323,9 +323,10 @@ def add_hwid_components(config_bundle, hwid_db):
           comp.storage.type = comp.storage.EMMC
 
   def create_touchpad_components(items):
-    for _, values in non_null_values(items):
+    for key, values in non_null_values(items):
       comp = config_bundle.components.add()
-      comp.name = values.get('name', '')
+      comp.id.value = values.get('id', values.get('name', key))
+      comp.name = values.get('name', key)
 
       # Check for USB based touchpad
       # We don't receive an explicit type for the touchpad bus type, so
@@ -346,6 +347,7 @@ def add_hwid_components(config_bundle, hwid_db):
   def create_tpm_components(items):
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
+      comp.id.value = key
       comp.name = key
       comp.tpm.manufacturer_info = values.get('manufacturer_info', '')
       comp.tpm.version = values.get('version', '')
@@ -361,6 +363,7 @@ def add_hwid_components(config_bundle, hwid_db):
 
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
+      comp.id.value = values.get('product', key)
       comp.name = values.get('product', key)
       if 'manufacturer' in values:
         comp.manufacturer_id.MergeFrom(
