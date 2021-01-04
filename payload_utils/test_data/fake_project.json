@@ -98,6 +98,9 @@
           "sku-id": 2147483647,
           "smbios-name-match": "FAKE_REF_DESIGN"
         },
+        "modem": {
+          "firmware-variant": "fake_ref_design"
+        },
         "name": "fake_ref_design",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
@@ -238,6 +241,9 @@
           "platform-name": "fake",
           "sku-id": 0,
           "smbios-name-match": "FAKE_REF_DESIGN"
+        },
+        "modem": {
+          "firmware-variant": "fake_ref_design"
         },
         "name": "fake_ref_design",
         "power": {
@@ -399,6 +405,9 @@
           "platform-name": "fake",
           "sku-id": 32,
           "smbios-name-match": "PROJECT_A"
+        },
+        "modem": {
+          "firmware-variant": "project_a"
         },
         "name": "project_a",
         "power": {

@@ -610,6 +610,15 @@ def _build_touch_file_config(config, project_name):
   return result
 
 
+def _build_modem(config):
+  """Returns the cellular modem configuration, or None if absent."""
+  hw_features = config.hw_design_config.hardware_features
+  lte_support = _any_present([hw_features.lte.present])
+  if not lte_support:
+    return None
+  return {'firmware-variant': config.hw_design.name.lower()}
+
+
 def _sw_config(sw_configs, design_config_id):
   """Returns the correct software config for `design_config_id`.
 
@@ -768,6 +777,7 @@ def _transform_build_config(config, config_files, whitelabel):
   _upsert(
       _build_hardware_properties(config.hw_design_config.hardware_topology),
       result, 'hardware-properties')
+  _upsert(_build_modem(config), result, 'modem')
 
   return result
 
