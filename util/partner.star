@@ -82,7 +82,7 @@ partner = struct(
             symlink_file_format = "elants_i2c_{product_id}.bin",
         ),
         ELAN_HID_TS = _create_touch_partner(
-            name = "elants",
+            name = "elants_hid",
             vendor_id = "04F3",
             symlink_file_format = "elants_i2chid_{product_id}.bin",
         ),
