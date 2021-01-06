@@ -3,8 +3,6 @@
 See proto definitions for descriptions of arguments.
 """
 
-# Needed to load from @proto. Add @unused to silence lint.
-load("//config/util/bindings/proto.star", "protos")
 load(
     "@proto//chromiumos/config/api/software/system_image.proto",
     system_pb = "chromiumos.config.api.software",

@@ -3,8 +3,6 @@
 See proto definitions for descriptions of arguments.
 """
 
-# Needed to load from @proto. Add @unused to silence lint.
-load("//config/util/bindings/proto.star", "protos")
 load(
     "@proto//chromiumos/config/api/test/plan/v1/plan.proto",
     plan_pb = "chromiumos.config.api.test.plan.v1",
