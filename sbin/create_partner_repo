@@ -347,7 +347,8 @@ create_git_repo() {
     "submit_type":"INHERIT",
     "owners": ["mdb/chrome-git-admins"],
     "create_empty_commit": "true",
-    "parent": "chromeos"}'
+    "parent": "chromeos",
+    "branches": ["main"]}'
   gob_put "${repo_description}" "${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}"
 }
 
