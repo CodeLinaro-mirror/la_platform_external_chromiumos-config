@@ -48,10 +48,17 @@ message SystemImage {
     BuildTarget build_target = 1;
     Toolchain toolchain = 2;
 
-    // Key build packages
+    // Key build packages and source metadata
     Kernel kernel = 3;
     Arc arc = 4;
+    Chipset chipset = 5;
 
+    message Chipset {
+      // Name of the chipset overlay used (e.g. src/overlays/chipset-[VALUE]
+      // Chipsets are SoC family based, so this allows overlays and kernels
+      // to be correlated on a per-soc-family basis.
+      string overlay = 1;
+    }
     message Toolchain {
       string version = 1;
     }
