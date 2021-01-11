@@ -341,6 +341,12 @@ def _build_hardware_properties(hw_topology):
       topology_pb2.HardwareFeatures.FormFactor.CHROMEBOX
   ]
 
+  form_factor_names = {
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBASE: "CHROMEBASE",
+  }
+  if form_factor in form_factor_names:
+    result['form-factor'] = form_factor_names[form_factor]
+
   return result
 
 
