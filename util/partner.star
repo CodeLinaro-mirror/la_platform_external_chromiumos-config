@@ -110,6 +110,7 @@ partner = struct(
             name = "g2touch",
             vendor_id = "2A94",
             symlink_file_format = "g2touch_{product_id}.bin",
+            destination_file_format = "PID_{product_id}_{fw_version}.bin",
         ),
         PIXART = _create_touch_partner(
             name = "pixart",
