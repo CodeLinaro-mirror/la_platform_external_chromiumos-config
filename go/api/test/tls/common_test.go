@@ -68,6 +68,53 @@ func ExampleProvisionDutRequest() {
 	// Provisioned OS + DLC.
 }
 
+func ExampleProvisionLacrosRequest() {
+	var invocation rtd.Invocation
+
+	tlsConfig := invocation.GetTestLabServicesConfig()
+	dutName := invocation.GetDuts()[0].GetTlsDutName()
+
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", tlsConfig.GetTlwAddress(), tlsConfig.GetTlwPort()), grpc.WithInsecure())
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+
+	c := tls.NewCommonClient(conn)
+
+	req := tls.ProvisionLacrosRequest{
+		Name: dutName,
+		Image: &tls.ProvisionLacrosRequest_LacrosImage{
+			PathOneof: &tls.ProvisionLacrosRequest_LacrosImage_GsPathPrefix{
+				GsPathPrefix: "gs://some/path",
+			},
+		},
+	}
+
+	ctx := context.Background()
+	op, err := c.ProvisionLacros(ctx, &req)
+	if err != nil {
+		panic(err)
+	}
+
+	opcli := longrunning.NewOperationsClient(conn)
+	op, err = opcli.WaitOperation(ctx, &longrunning.WaitOperationRequest{
+		Name: op.GetName(),
+		Timeout: &duration.Duration{
+			Seconds: 3600,
+		},
+	})
+	if err != nil {
+		panic("RPC error")
+	}
+
+	if errStatus := op.GetError(); errStatus != nil {
+		panic(fmt.Sprintf("Operation error details: %v", errStatus.GetDetails()))
+	}
+
+	// Provisioned Lacros.
+}
+
 func ExampleFetchCrashesRequest() {
 	var invocation rtd.Invocation
 

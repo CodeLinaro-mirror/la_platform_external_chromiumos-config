@@ -63,6 +63,17 @@ service Common {
     };
   }
 
+  // ProvisionLacros installs a specified version of Lacros on the DUT.
+  //
+  // If the DUT already has the specified version of Lacros, Lacros will not be
+  // provisioned.
+  rpc ProvisionLacros(ProvisionLacrosRequest) returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
+      response_type: "ProvisionLacrosResponse",
+      metadata_type: "ProvisionLacrosMetadata"
+    };
+  }
+
   // FetchCrashes gets a stream of all crash reports currently on the DUT.
   //
   // The stream returned may split up a crash over multiple
@@ -210,6 +221,43 @@ message ProvisionDutResponse {
 }
 
 message ProvisionDutMetadata {
+}
+
+message ProvisionLacrosRequest {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+
+  message LacrosImage {
+    oneof path_oneof {
+      // gs_path_prefix is the GS path prefix to where Lacros is located.
+      string gs_path_prefix = 1;
+    }
+  }
+  // image specifies the Lacros image with which to provision the DUT.
+  LacrosImage image = 2;
+}
+
+message ProvisionLacrosResponse {
+  // When the status code is other than OK, details in Status message should be
+  // parsed for ErrorInfo message with the following Reasons as the reason.
+  enum Reason {
+    // Failed as the ProvisionLacros request is invalid.
+    REASON_INVALID_REQUEST = 0;
+    // Failed to connect to the DUT prior to provisioning Lacros.
+    REASON_DUT_UNREACHABLE_PRE_PROVISION = 1;
+    // Failed to download the Lacros image or a timeout during download.
+    REASON_DOWNLOADING_IMAGE_FAILED = 2;
+    // Failed due to a timeout during the main Lacros provisioning.
+    // Excludes timeout during other steps.
+    REASON_PROVISIONING_TIMEDOUT = 3;
+    // General failure in Lacros provisioning.
+    REASON_PROVISIONING_FAILED = 4;
+  }
+}
+
+message ProvisionLacrosMetadata {
 }
 
 message FetchCrashesRequest {
