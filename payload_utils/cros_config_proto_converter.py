@@ -511,13 +511,16 @@ def _build_camera(hw_topology):
           'support-autofocus':
               bool(device.flags & camera_pb.FLAGS_SUPPORT_AUTOFOCUS),
       }
-      result['devices'].append({
+      dev = {
           'interface': interface,
           'facing': facing,
           'orientation': orientation,
           'flags': flags,
           'ids': list(device.ids),
-      })
+      }
+      if device.privacy_switch != topology_pb2.HardwareFeatures.PRESENT_UNKNOWN:
+        dev['has-privacy-switch'] = device.privacy_switch == topology_pb2.HardwareFeatures.PRESENT
+      result['devices'].append(dev)
   return result
 
 

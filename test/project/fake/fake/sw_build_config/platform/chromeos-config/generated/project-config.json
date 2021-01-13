@@ -223,6 +223,7 @@
                 "support-1080p": false,
                 "support-autofocus": true
               },
+              "has-privacy-switch": true,
               "ids": [
                 "0123:abcd"
               ],

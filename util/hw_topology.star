@@ -333,7 +333,13 @@ def _create_thermal(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _make_camera_device(interface, facing, orientation, flags, ids):
+def _make_camera_device(
+        interface,
+        facing,
+        orientation,
+        flags,
+        ids,
+        privacy_switch_present = None):
     """Builds a HardwareFeatures.Camera.Device proto."""
     camera_pb = topo_pb.HardwareFeatures.Camera
     device = camera_pb.Device()
@@ -354,6 +360,9 @@ def _make_camera_device(interface, facing, orientation, flags, ids):
     }[orientation]
     device.flags = flags
     device.ids = ids
+
+    if privacy_switch_present:
+        device.privacy_switch = _bool_to_present(privacy_switch_present)
 
     return device
 

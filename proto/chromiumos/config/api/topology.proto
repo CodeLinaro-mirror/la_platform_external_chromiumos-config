@@ -201,6 +201,9 @@ message HardwareFeatures {
 
       // List of strings each identifies a possible camera module on this slot.
       repeated string ids = 6;
+
+      // If privacy switch is present on the camera
+      Present privacy_switch = 7;
     }
 
     // List of camera devices on the model.

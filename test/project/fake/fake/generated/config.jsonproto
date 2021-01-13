@@ -568,7 +568,8 @@
                     "0123:abcd"
                   ],
                   "interface": 1,
-                  "orientation": 1
+                  "orientation": 1,
+                  "privacySwitch": 1
                 },
                 {
                   "facing": 2,
@@ -690,7 +691,8 @@
                         "0123:abcd"
                       ],
                       "interface": 1,
-                      "orientation": 1
+                      "orientation": 1,
+                      "privacySwitch": 1
                     },
                     {
                       "facing": 2,

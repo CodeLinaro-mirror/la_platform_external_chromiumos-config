@@ -69,6 +69,7 @@ _CAMERA1 = hw_topo.create_camera(
             orientation = 0,
             flags = 0,
             ids = ["0123:abcd"],
+            privacy_switch_present = False,
         ),
     ],
 )
@@ -83,6 +84,7 @@ _CAMERA2 = hw_topo.create_camera(
             orientation = 0,
             flags = hw_topo.camera_flags.SUPPORT_AUTOFOCUS,
             ids = ["0123:abcd"],
+            privacy_switch_present = True,
         ),
         hw_topo.make_camera_device(
             interface = "mipi",
