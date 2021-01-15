@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api.test.plan.v1',
   syntax='proto3',
   serialized_options=_b('Z:go.chromium.org/chromiumos/config/go/api/test/plan/v1;plan'),
-  serialized_pb=_b('\n-chromiumos/config/api/test/plan/v1/plan.proto\x12\"chromiumos.config.api.test.plan.v1\"H\n\rSpecification\x12\x37\n\x05plans\x18\x01 \x03(\x0b\x32(.chromiumos.config.api.test.plan.v1.Plan\"M\n\x04Plan\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x37\n\x05units\x18\x02 \x03(\x0b\x32(.chromiumos.config.api.test.plan.v1.Unit\"1\n\x0c\x44utCriterion\x12\x11\n\tattribute\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\"\xa6\x01\n\x0c\x43overageRule\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x46\n\x0c\x64ut_criteria\x18\x02 \x03(\x0b\x32\x30.chromiumos.config.api.test.plan.v1.DutCriterion\x12@\n\texclusion\x18\x04 \x01(\x0b\x32-.chromiumos.config.api.test.plan.v1.Exclusion\"\xdf\x02\n\x04Unit\x12\x0c\n\x04name\x18\x01 \x01(\t\x12>\n\x06suites\x18\x02 \x03(\x0b\x32..chromiumos.config.api.test.plan.v1.Unit.Suite\x12<\n\x05tests\x18\x03 \x03(\x0b\x32-.chromiumos.config.api.test.plan.v1.Unit.Test\x12H\n\x0e\x63overage_rules\x18\x04 \x03(\x0b\x32\x30.chromiumos.config.api.test.plan.v1.CoverageRule\x12@\n\texclusion\x18\x05 \x01(\x0b\x32-.chromiumos.config.api.test.plan.v1.Exclusion\x1a\x15\n\x05Suite\x12\x0c\n\x04name\x18\x01 \x01(\t\x1a(\n\x04Test\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\"\xd5\x02\n\tExclusion\x12@\n\x04type\x18\x01 \x01(\x0e\x32\x32.chromiumos.config.api.test.plan.v1.Exclusion.Type\x12\x44\n\x06\x61\x63tion\x18\x05 \x01(\x0e\x32\x34.chromiumos.config.api.test.plan.v1.Exclusion.Action\x12\x12\n\nreferences\x18\x04 \x03(\t\"^\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\r\n\tPERMANENT\x10\x01\x12\x16\n\x12TEMPORARY_NEW_TEST\x10\x02\x12\x19\n\x15TEMPORARY_PENDING_FIX\x10\x03\"L\n\x06\x41\x63tion\x12\x16\n\x12\x41\x43TION_UNSPECIFIED\x10\x00\x12\x13\n\x0f\x44O_NOT_SCHEDULE\x10\x01\x12\x15\n\x11MARK_NON_CRITICAL\x10\x02\x42<Z:go.chromium.org/chromiumos/config/go/api/test/plan/v1;planb\x06proto3')
+  serialized_pb=_b('\n-chromiumos/config/api/test/plan/v1/plan.proto\x12\"chromiumos.config.api.test.plan.v1\"H\n\rSpecification\x12\x37\n\x05plans\x18\x01 \x03(\x0b\x32(.chromiumos.config.api.test.plan.v1.Plan\"M\n\x04Plan\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x37\n\x05units\x18\x02 \x03(\x0b\x32(.chromiumos.config.api.test.plan.v1.Unit\"1\n\x0c\x44utCriterion\x12\x11\n\tattribute\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\"\xa6\x01\n\x0c\x43overageRule\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x46\n\x0c\x64ut_criteria\x18\x02 \x03(\x0b\x32\x30.chromiumos.config.api.test.plan.v1.DutCriterion\x12@\n\texclusion\x18\x04 \x01(\x0b\x32-.chromiumos.config.api.test.plan.v1.Exclusion\"\xdf\x02\n\x04Unit\x12\x0c\n\x04name\x18\x01 \x01(\t\x12>\n\x06suites\x18\x02 \x03(\x0b\x32..chromiumos.config.api.test.plan.v1.Unit.Suite\x12<\n\x05tests\x18\x03 \x03(\x0b\x32-.chromiumos.config.api.test.plan.v1.Unit.Test\x12H\n\x0e\x63overage_rules\x18\x04 \x03(\x0b\x32\x30.chromiumos.config.api.test.plan.v1.CoverageRule\x12@\n\texclusion\x18\x05 \x01(\x0b\x32-.chromiumos.config.api.test.plan.v1.Exclusion\x1a\x15\n\x05Suite\x12\x0c\n\x04name\x18\x01 \x01(\t\x1a(\n\x04Test\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nattributes\x18\x02 \x03(\t\"\xaf\x03\n\tExclusion\x12@\n\x04type\x18\x01 \x01(\x0e\x32\x32.chromiumos.config.api.test.plan.v1.Exclusion.Type\x12\x44\n\x06\x61\x63tion\x18\x05 \x01(\x0e\x32\x34.chromiumos.config.api.test.plan.v1.Exclusion.Action\x12\x12\n\nreferences\x18\x04 \x03(\t\"\xb7\x01\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\r\n\tPERMANENT\x10\x01\x12\x16\n\x12TEMPORARY_NEW_TEST\x10\x02\x12\x19\n\x15TEMPORARY_PENDING_FIX\x10\x03\x12%\n!TEMPORARY_NO_LAB_DEVICES_DEPLOYED\x10\x04\x12\x30\n,TEMPORARY_INSUFFICIENT_LAB_DEVICES_AVAILABLE\x10\x05\"L\n\x06\x41\x63tion\x12\x16\n\x12\x41\x43TION_UNSPECIFIED\x10\x00\x12\x13\n\x0f\x44O_NOT_SCHEDULE\x10\x01\x12\x15\n\x11MARK_NON_CRITICAL\x10\x02\x42<Z:go.chromium.org/chromiumos/config/go/api/test/plan/v1;planb\x06proto3')
 )
 
 
@@ -46,11 +46,19 @@ _EXCLUSION_TYPE = _descriptor.EnumDescriptor(
       name='TEMPORARY_PENDING_FIX', index=3, number=3,
       serialized_options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='TEMPORARY_NO_LAB_DEVICES_DEPLOYED', index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='TEMPORARY_INSUFFICIENT_LAB_DEVICES_AVAILABLE', index=5, number=5,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=982,
-  serialized_end=1076,
+  serialized_start=983,
+  serialized_end=1166,
 )
 _sym_db.RegisterEnumDescriptor(_EXCLUSION_TYPE)
 
@@ -75,8 +83,8 @@ _EXCLUSION_ACTION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1078,
-  serialized_end=1154,
+  serialized_start=1168,
+  serialized_end=1244,
 )
 _sym_db.RegisterEnumDescriptor(_EXCLUSION_ACTION)
 
@@ -402,7 +410,7 @@ _EXCLUSION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=813,
-  serialized_end=1154,
+  serialized_end=1244,
 )
 
 _SPECIFICATION.fields_by_name['plans'].message_type = _PLAN

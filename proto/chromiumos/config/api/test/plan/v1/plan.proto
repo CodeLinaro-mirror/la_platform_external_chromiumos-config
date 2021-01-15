@@ -131,6 +131,12 @@ message Exclusion {
     // These exclsusion are temporary. These exclusions SHOULD be routinely
     // audited and resolved or promoted to PERMANENT exclusions.
     TEMPORARY_PENDING_FIX = 3;
+
+    // No lab devices are deployed matching the coverage rule DUT criteria.
+    TEMPORARY_NO_LAB_DEVICES_DEPLOYED = 4;
+
+    // Insufficient lab devices available to run the coverage rule.
+    TEMPORARY_INSUFFICIENT_LAB_DEVICES_AVAILABLE = 5;
   }
   // Required.
   Type type = 1;
