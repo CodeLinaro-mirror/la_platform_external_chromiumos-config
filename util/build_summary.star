@@ -13,17 +13,29 @@ load(
     system_pb = "chromiumos.config.api.software",
 )
 
+def _overlay(build_summary):
+    return build_summary.build_target.portage_build_target.overlay_name
+
+def _remove_invalid_entries(bs_list):
+    invalid = [
+        "galaxy",  # Test overlay
+        # TODO: Filter non-cros devices.
+        # Warning ... they may not be public and this is a public repo.
+    ]
+    return [bs for bs in bs_list if _overlay(bs) not in invalid]
+
 def _read(file_path):
-    return proto.from_jsonpb(
+    build_summary_list = proto.from_jsonpb(
         system_pb.SystemImage.BuildSummaryList,
         io.read_file(file_path),
     )
+    return _remove_invalid_entries(build_summary_list.values)
 
-def _get_kernel_versions(build_summary_list):
+def _get_kernel_versions(build_summaries):
     """Returns dict of {kernel-version: [overlay-name, ...]}"""
     kernel_versions = {}
-    for build_summary in build_summary_list.values:
-        overlay = build_summary.build_target.portage_build_target.overlay_name
+    for build_summary in build_summaries:
+        overlay = _overlay(build_summary)
         version = build_summary.kernel.version
         overlays = kernel_versions.get(version, [])
         overlays.append(overlay)
@@ -33,10 +45,10 @@ def _get_kernel_versions(build_summary_list):
         unique_kernel_overlays[version] = set(kernel_versions[version])
     return unique_kernel_overlays
 
-def _get_soc_families(build_summary_list):
+def _get_soc_families(build_summaries):
     """Returns dict of {overlay-name: soc-family} if the SOC value is set"""
     soc_families = {}
-    for build_summary in build_summary_list.values:
+    for build_summary in build_summaries:
         overlay = build_summary.build_target.portage_build_target.overlay_name
         soc_family = build_summary.chipset.overlay
         if soc_family:
