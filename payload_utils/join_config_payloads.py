@@ -886,6 +886,27 @@ def main(options):
     print('Creating shallow clone of {repo} ({cmd})'.format(repo=repo, cmd=cmd))
     os.system(cmd)
 
+  def clone_or_use_dep(repo, clone_path, dep_path, sub_path=''):
+    """Either use a dependency in-place or clone it and use that.
+
+    If the dependency doesn't exist at dep_path, then clone it into clone_path.
+    Either way, add the path/{sub_path} to sys.path.
+
+    Args:
+      repo (str): url of the git repo for the dependency
+      clone_path (str): where to clone repo if neeeded
+      dep_path (str): location on disk the path might be located
+      sub_path (str): path inside of repo to add to sys.path
+
+    Returns:
+      nothing
+    """
+    root_path = dep_path
+    if not os.path.exists(root_path):
+      clone_repo(repo, clone_path)
+      root_path = clone_path
+    sys.path.append(os.path.join(root_path, sub_path))
+
   if not (options.config_bundle or options.project_name):
     raise RuntimeError(
         'At least one of {config_opt} or {project_opt} must be specified.'
@@ -893,13 +914,20 @@ def main(options):
             config_opt='--config-bundle/-c', project_opt='--project-name/-p'))
 
   with tempfile.TemporaryDirectory(prefix='join_proto_') as temppath:
-    clone_repo(CROS_PLATFORM_REPO, os.path.join(temppath, 'platform2'))
-    clone_repo(CROS_CONFIG_INTERNAL_REPO,
-               os.path.join(temppath, 'config-internal'))
+    this_dir = os.path.realpath(os.path.dirname(__file__))
 
-    # setup sys.path so we can import from the cloned repos
-    sys.path.append(os.path.join(temppath, 'platform2', 'chromeos-config'))
-    sys.path.append(os.path.join(temppath, 'config-internal'))
+    clone_or_use_dep(
+        CROS_PLATFORM_REPO,
+        os.path.join(temppath, 'platform2'),
+        os.path.realpath(os.path.join(this_dir, "../../platform2")),
+        'chromeos-config',
+    )
+
+    clone_or_use_dep(
+        CROS_CONFIG_INTERNAL_REPO,
+        os.path.join(temppath, 'config-internal'),
+        os.path.realpath(os.path.join(this_dir, "../../config-internal")),
+    )
 
     io_utils.write_message_json(
         backfill_configs(
