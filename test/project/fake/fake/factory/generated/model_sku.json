@@ -88,7 +88,7 @@
       "component.has_lid_accelerometer": null,
       "component.has_lid_gyroscope": null,
       "component.has_lid_magnetometer": null,
-      "component.has_lte": null,
+      "component.has_lte": true,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 0,
       "component.has_proximity_sensor": true,
@@ -122,7 +122,7 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 25377
+      "fw_config": 25376
     },
     "project_box": {
       "component.audio_card_name": "fakeaudiocard",
@@ -138,7 +138,7 @@
       "component.has_lid_accelerometer": null,
       "component.has_lid_gyroscope": null,
       "component.has_lid_magnetometer": null,
-      "component.has_lte": null,
+      "component.has_lte": false,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 0,
       "component.has_proximity_sensor": true,
@@ -188,7 +188,7 @@
       "component.has_lid_accelerometer": null,
       "component.has_lid_gyroscope": null,
       "component.has_lid_magnetometer": null,
-      "component.has_lte": null,
+      "component.has_lte": false,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 0,
       "component.has_proximity_sensor": true,
@@ -238,7 +238,7 @@
       "component.has_lid_accelerometer": null,
       "component.has_lid_gyroscope": null,
       "component.has_lid_magnetometer": null,
-      "component.has_lte": null,
+      "component.has_lte": false,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 0,
       "component.has_proximity_sensor": true,

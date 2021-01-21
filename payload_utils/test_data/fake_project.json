@@ -511,7 +511,7 @@
             "libpayload": "fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 25377,
+          "firmware-config": 25376,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.0.0.tbz2",
@@ -529,6 +529,9 @@
           "platform-name": "fake",
           "sku-id": 33,
           "smbios-name-match": "PROJECT_B"
+        },
+        "modem": {
+          "firmware-variant": "project_b"
         },
         "name": "project_b",
         "power": {

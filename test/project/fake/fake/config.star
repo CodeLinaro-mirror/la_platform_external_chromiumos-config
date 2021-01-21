@@ -376,6 +376,12 @@ design.append_configs(
     design_id = _DESIGN_ID_B,
     config_id = 33,
     hardware_topology = create_hardware_topology(
+        daughter_board = hw_topo.create_daughter_board(
+            "DB with LTE",
+            "Non-default daughter_board with LTE",
+            fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)],
+            lte_support = True,
+        ),
         bluetooth = _BLUETOOTH,
         camera = _CAMERA1,
         form_factor = _FORM_FACTOR_CONVERTIBLE,

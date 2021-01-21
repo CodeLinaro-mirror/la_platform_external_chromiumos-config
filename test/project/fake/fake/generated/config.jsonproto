@@ -1383,7 +1383,7 @@
             },
             "fwConfig": {
               "mask": 65535,
-              "value": 25377
+              "value": 25376
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -1397,7 +1397,7 @@
               "powerButton": 2
             },
             "lte": {
-              "present": 2
+              "present": 1
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -1515,18 +1515,17 @@
             },
             "daughterBoard": {
               "description": {
-                "EN": "Default daughter_board"
+                "EN": "Non-default daughter_board with LTE"
               },
               "hardwareFeature": {
                 "fwConfig": {
-                  "mask": 15,
-                  "value": 1
+                  "mask": 15
                 },
                 "hdmi": {
                   "present": 2
                 },
                 "lte": {
-                  "present": 2
+                  "present": 1
                 },
                 "usbA": {
                   "count": {}
@@ -1535,7 +1534,7 @@
                   "count": {}
                 }
               },
-              "id": "Default DB",
+              "id": "DB with LTE",
               "type": 11
             },
             "ec": {
