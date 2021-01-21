@@ -945,9 +945,22 @@ added to the program_list even if there are no designs present.""")
   parser.add_argument('--hwid', type=str, help='HWID database to merge')
   parser.add_argument(
       "-v", "--verbose", help="increase output verbosity", action="store_true")
+  parser.add_argument("-l", "--log", type=str, help='set logging level')
 
   args = parser.parse_args()
-  if args.verbose:
-    logging.basicConfig(level=logging.DEBUG)
+  # pylint: disable=invalid-name
+  loglevel = logging.INFO if args.verbose else logging.WARNING
+  if args.log:
+    loglevel = {
+        "critical": logging.CRITICAL,
+        "error": logging.ERROR,
+        "warning": logging.WARNING,
+        "info": logging.INFO,
+        "debug": logging.DEBUG,
+    }.get(args.log.lower())
 
+    if not loglevel:
+      logging.error("invalid value for -l/--log '%s'", args.log)
+
+  logging.basicConfig(level=loglevel)
   main(args)
