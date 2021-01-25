@@ -37,6 +37,9 @@ def _get_kernel_versions(build_summaries):
     for build_summary in build_summaries:
         overlay = _overlay(build_summary)
         version = build_summary.kernel.version
+        if not float(version):
+            continue
+
         overlays = kernel_versions.get(version, [])
         overlays.append(overlay)
         kernel_versions[version] = overlays
