@@ -72,13 +72,15 @@ service Wiring {
     };
   }
 
-  // CallServoXmlRpc performs an XML-RPC call against the servo connected to a
-  // DUT.
+  // CallServo performs an XML-RPC call against the servod for
+  // the servo connected to a DUT.
+  //
+  // The implementation, not the caller, ensures that there is a
+  // running servod instance for the DUT's servo, or is otherwise able
+  // to provide identical functionality.
   //
   // This RPC mirrors the XML-RPC specification (http://xmlrpc.com/spec.md).
-  //
-  // EXPERIMENTAL
-  rpc CallServoXmlRpc(CallServoXmlRpcRequest) returns (CallServoXmlRpcResponse);
+  rpc CallServo(CallServoRequest) returns (CallServoResponse);
 
   // ExposePortToDut exposes an RTD port to the specified DUT.
   //
@@ -209,29 +211,16 @@ message CacheForDutResponse {
 message CacheForDutMetadata {
 }
 
-message CallServoXmlRpcRequest {
+message CallServoRequest {
   string dut = 1;
   string method = 2;
   repeated xmlrpc.Value args = 3;
 }
-message CallServoXmlRpcResponse {
-  enum Status {
-    STATUS_UNKNOWN = 0;
-    STATUS_OK = 1;
-    // STATUS_BAD_DUT indicates that the DUT is not known,
-    // or the caller does not have access to it.
-    STATUS_BAD_DUT = 2;
-    // STATUS_NO_METHOD indicates that the requested method does not
-    // exist.
-    STATUS_NO_METHOD = 3;
-    STATUS_NO_SERVO = 4;
-    STATUS_SERVO_ERROR = 5;
-  }
-  Status status = 1;
-  xmlrpc.Value value = 2;
+message CallServoResponse {
+  xmlrpc.Value value = 1;
   // fault indicates that the servo XML-RPC returned a fault.
   // The fault value is stored in the value field.
-  bool fault = 3;
+  bool fault = 2;
 }
 
 message ExposePortToDutRequest {
