@@ -6,6 +6,8 @@
 #
 # Runs python unittests in a venv.
 
+readonly bin_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"/bin
+
 # Move to this script's directory.
 cd "$(dirname "$0")"
 
@@ -15,13 +17,8 @@ echo "Generating proto bindings..."
 
 # Create and activate venv.
 echo "Creating and activating venv..."
-/usr/bin/python3 -m venv .venv
-source .venv/bin/activate
-
-# Install requirements.
-echo "Installing required packages..."
-pip install wheel -q
-pip install -r requirements.txt -q
+source "${bin_dir}/common.sh"
+create_venv
 
 # Discover and run unittests in payload_utils.
 echo "Running unittests..."

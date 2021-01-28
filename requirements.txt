@@ -1,8 +1,0 @@
-google-auth-oauthlib==0.3.0
-google-cloud-bigquery==0.28.0
-lxml==4.6.1
-protobuf==3.13.0
-pylint==2.5.3
-pyyaml==5.3.1
-six==1.15.0
-yapf==0.30.0
