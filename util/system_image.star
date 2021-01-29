@@ -29,8 +29,27 @@ def _create_build_metadata_list(builds):
         values = builds,
     )
 
+def _create_build_summary(
+        build_target,
+        kernel = None,
+        chipset = None,
+        arc = None):
+    return system_pb.SystemImage.BuildSummary(
+        build_target = build_target,
+        kernel = system_pb.SystemImage.BuildSummary.Kernel(version = kernel),
+        chipset = system_pb.SystemImage.BuildSummary.Chipset(overlay = chipset),
+        arc = system_pb.SystemImage.BuildSummary.Arc(version = arc),
+    )
+
+def _create_build_summary_list(build_summaries):
+    return system_pb.SystemImage.BuildSummaryList(
+        values = build_summaries,
+    )
+
 system_image = struct(
     create_build_target = _create_build_target,
     create_build_metadata = _create_build_metadata,
     create_build_metadata_list = _create_build_metadata_list,
+    create_build_summary = _create_build_summary,
+    create_build_summary_list = _create_build_summary_list,
 )
