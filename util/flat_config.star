@@ -59,8 +59,35 @@ def _get_configs_by_design(design_configs):
             )
     return designs_to_configs
 
+def _create(
+        program,
+        hw_design,
+        odm,
+        hw_design_config,
+        hw_components = None,
+        device_brand = None,
+        oem = None,
+        sw_config = None,
+        sw_brand_config = None):
+    return flat_config_pb.FlatConfig(
+        program = program,
+        hw_design = hw_design,
+        odm = odm,
+        hw_design_config = hw_design_config,
+        hw_components = hw_components,
+        device_brand = device_brand,
+        oem = oem,
+        sw_config = sw_config,
+        sw_brand_config = sw_brand_config,
+    )
+
+def _create_list(flat_configs):
+    return flat_config_pb.FlatConfigList(values = flat_configs)
+
 flat_config = struct(
     read = _read,
+    create = _create,
+    create_list = _create_list,
     get_designs_by_overlay = _get_designs_by_overlay,
     get_configs_by_design = _get_configs_by_design,
 )
