@@ -71,6 +71,7 @@ def _create(
         component_quals = None,
         constraints = None,
         firmware_configuration_segments = None,
+        ssfc_segments = None,
         design_config_id_segments = None,
         device_signer_configs = None,
         mosys_platform_name = None):
@@ -83,6 +84,7 @@ def _create(
         component_quals = component_quals,
         design_config_constraints = constraints,
         firmware_configuration_segments = firmware_configuration_segments,
+        ssfc_segments = ssfc_segments,
         design_config_id_segments = design_config_id_segments,
         device_signer_configs = device_signer_configs,
         mosys_platform_name = mosys_platform_name,
