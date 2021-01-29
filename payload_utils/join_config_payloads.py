@@ -26,7 +26,6 @@ import tempfile
 import yaml
 
 from google.cloud import bigquery
-from google.oauth2 import credentials as oauth_credentials
 
 from common import config_bundle_utils
 
@@ -124,8 +123,6 @@ def merge_avl_dlm(config_bundle):
     reference to updated ConfigBundle
   """
 
-  creds_env = 'GOOGLE_APPLICATION_CREDENTIALS'
-
   # This is largely 'nice to have' things that make the data more human friendly
   # and easier to use.  There are a few things that are necessary here though,
   # such as the form factor information.
@@ -139,24 +136,7 @@ def merge_avl_dlm(config_bundle):
       name = name[0:name.find("_")]
     return name
 
-  # By default, use the credentials stored by 'gcloud auth login', use
-  # GOOGLE_APPLICATION_CREDENTIALS if it's set
-  creds_path = os.path.expandvars(
-      '${HOME}/.config/gcloud/legacy_credentials/${USER}@google.com/adc.json')
-  creds_path = os.environ.get(creds_env, creds_path)
-
-  try:
-    logging.info("using credentials from '%s'", creds_path)
-    credentials = oauth_credentials.Credentials.from_authorized_user_file(
-        creds_path)
-    client = bigquery.Client(project="chromeos-bot", credentials=credentials)
-  except FileNotFoundError:
-    logging.error(
-        "credential file '%s' not found, try setting %s or 'gcloud auth login'",
-        creds_path,
-        creds_env,
-    )
-    raise
+  client = bigquery.Client(project="chromeos-bot")
 
   # canonicalize design names to be compatible with the DLM database
   project_names = [
