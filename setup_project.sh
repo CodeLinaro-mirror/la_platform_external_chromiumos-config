@@ -28,6 +28,15 @@ function usage() {
 # Exit if any command fails.
 set -e
 
+
+if [[ $# -lt 2 ]]; then
+  usage
+fi
+
+readonly program="${1}"
+readonly project="${2}"
+readonly branch="${3}"
+
 prompt_continue "
 If you are a googler and are working with an internal checkout you do
 not need to run this script as you already have a full repo checkout.
@@ -35,10 +44,6 @@ Do you want to continue running this script?"
 
 # Move to this script's directory.
 cd "$(dirname "$0")"
-
-readonly program="${1}"
-readonly project="${2}"
-readonly branch="${3}"
 
 readonly local_manifests_dir="../../.repo/local_manifests"
 
