@@ -11,7 +11,7 @@ function bail() {
 }
 
 function prompt_continue() {
-  read -p "${1} (y/N) " answer
+  read -r -p "${1} (y/N) " answer
 
   if [[ "${answer^^}" != "Y" ]]; then
     exit 0
