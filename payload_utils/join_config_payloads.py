@@ -15,8 +15,6 @@ files.  Simple specify a project name with --project-name/-p and omit
 --config-bundle/-c.  At least one of these two options must be specified.
 """
 
-# pylint: disable=too-many-lines
-
 import argparse
 import logging
 import os
@@ -24,9 +22,6 @@ import re
 import sys
 import tempfile
 import yaml
-
-from google.cloud import bigquery
-from google.oauth2 import credentials as oauth_credentials
 
 from common import config_bundle_utils
 
@@ -44,10 +39,6 @@ yaml.add_constructor('!region_component', lambda loader, node: None)
 # git repo locations
 CROS_PLATFORM_REPO = 'https://chromium.googlesource.com/chromiumos/platform2'
 CROS_CONFIG_INTERNAL_REPO = 'https://chrome-internal.googlesource.com/chromeos/config-internal'
-
-# DLM/AVL table configurations
-DLM_PRODUCTS_TABLE = 'cros-device-lifecycle-manager.prod.products'
-DLM_DEVICES_TABLE = 'cros-device-lifecycle-manager.prod.devices'
 
 
 def load_models(public_path, private_path):
@@ -112,101 +103,6 @@ def non_null_values(items):
     return True
 
   return [(key, val['values']) for key, val in items.items() if _include(val)]
-
-
-def merge_avl_dlm(config_bundle):
-  """Merge in additional information from AVL/DLM.
-
-  Args:
-    config_bundle: ConfigBundle instance to update
-
-  Returns:
-    reference to updated ConfigBundle
-  """
-
-  creds_env = 'GOOGLE_APPLICATION_CREDENTIALS'
-
-  # This is largely 'nice to have' things that make the data more human friendly
-  # and easier to use.  There are a few things that are necessary here though,
-  # such as the form factor information.
-
-  def canonical_name(name):
-    """Canonicalize code name for a project."""
-
-    # These rules are from empirical runs with the real project data
-    name = name.lower()
-    if "_" in name:
-      name = name[0:name.find("_")]
-    return name
-
-  # By default, use the credentials stored by 'gcloud auth login', use
-  # GOOGLE_APPLICATION_CREDENTIALS if it's set
-  creds_path = os.path.expandvars(
-      '${HOME}/.config/gcloud/legacy_credentials/${USER}@google.com/adc.json')
-  creds_path = os.environ.get(creds_env, creds_path)
-
-  try:
-    logging.info("using credentials from '%s'", creds_path)
-    credentials = oauth_credentials.Credentials.from_authorized_user_file(
-        creds_path)
-    client = bigquery.Client(project="chromeos-bot", credentials=credentials)
-  except FileNotFoundError:
-    logging.error(
-        "credential file '%s' not found, try setting %s or 'gcloud auth login'",
-        creds_path,
-        creds_env,
-    )
-    raise
-
-  # canonicalize design names to be compatible with the DLM database
-  project_names = [
-      canonical_name(design.name) for design in config_bundle.design_list
-  ]
-
-  if not project_names:
-    logging.info("no designs to populate from DLM, aborting")
-    return config_bundle
-
-  # query all projects at once, we'll filter them on our side.
-  query = """
-    SELECT googleCodeName, deviceFormFactor
-      FROM {device_table} devices
-      WHERE googleCodeName IN ({projects})
-  """.format(
-      device_table=DLM_DEVICES_TABLE,
-      projects=",".join(["'%s'" % name for name in project_names]),
-  )
-  logging.info(query)
-
-  # sort through DLM information and update config bundle
-  rows = list(client.query(query))
-  for design, name in zip(config_bundle.design_list, project_names):
-    rows = [row for row in rows if row.get('googleCodeName') == name]
-
-    if len(rows) == 0:
-      logging.warning("no results returned for '%s', bad project name?", name)
-    elif len(rows) > 1:
-      logging.warning(
-          "multiple results returned for '%s', cowardly refusing to merge DLM data",
-          name,
-      )
-    else:
-      form_factor_enum = topology_pb2.HardwareFeatures.FormFactor
-
-      device_form_factor = rows[0].get('deviceFormFactor')
-      try:
-        form_factor = getattr(form_factor_enum, device_form_factor)
-
-        for design_config in design.configs:
-          design_config.hardware_features.form_factor.form_factor = form_factor
-      except AttributeError:
-        logging.warning(
-            "invalid form factor '%s' for '%s'",
-            device_form_factor,
-            name,
-        )
-
-  return config_bundle
 
 
 def backfill_configs(config_bundle):
@@ -1034,11 +930,10 @@ def main(options):
     )
 
     io_utils.write_message_json(
-        merge_avl_dlm(
-            backfill_configs(
-                merge_configs(options.config_bundle, options.program_name,
-                              options.project_name, options.public_model,
-                              options.private_model, options.hwid))),
+        backfill_configs(
+            merge_configs(options.config_bundle, options.program_name,
+                          options.project_name, options.public_model,
+                          options.private_model, options.hwid)),
         options.output,
         default_fields=True)
 
