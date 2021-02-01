@@ -107,4 +107,8 @@ message HardwareTopology {
   // Specify the EC topology.
   // See ./hardware_topology.md#ec for more information.
   Topology ec = 22;
+
+  // Specify the touch topology.
+  // See ./hardware_topology.md#touch for more information.
+  Topology touch = 23;
 }

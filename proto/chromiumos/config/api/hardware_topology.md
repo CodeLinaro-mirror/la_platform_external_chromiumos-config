@@ -227,3 +227,13 @@ Changes that require new topology
 Changes that do not require new topology
 
 * EC capabilities, such as usbpd or keyboard
+
+## Touch
+
+Changes that require new topology
+
+* Needs switching the different feature like numpad in the fw
+
+Changes that do not require new topology
+
+* Different touch controller vendor which supports the same feature set

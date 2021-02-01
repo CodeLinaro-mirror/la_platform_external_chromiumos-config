@@ -713,6 +713,19 @@ _EC_NONE = _create_ec(present = False, ec_type = _EC_TYPE.UNKNOWN)
 _EC_CHROME = _create_ec(ec_type = _EC_TYPE.CHROME)
 _EC_WILCO = _create_ec(ec_type = _EC_TYPE.WILCO)
 
+def _create_touch(id, description, fw_configs = []):
+    """Builds a Topology proto for touch."""
+    hw_features = topo_pb.HardwareFeatures()
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.TOUCH,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
 def _create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -734,7 +747,8 @@ def _create_hardware_topology(
         barreljack = None,
         power_button = None,
         volume_button = None,
-        ec = None):
+        ec = None,
+        touch = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -801,6 +815,9 @@ def _create_hardware_topology(
     if ec and ec.type != topo_pb.Topology.EC:
         fail("Invalid ec type")
 
+    if touch and touch.type != topo_pb.Topology.TOUCH:
+        fail("Invalid touch topology")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -823,6 +840,7 @@ def _create_hardware_topology(
         power_button = power_button,
         volume_button = volume_button,
         ec = ec,
+        touch = touch,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -975,6 +993,9 @@ def _convert_to_hw_features(hardware_topology):
     if copy.volume_button.hardware_feature.volume_button != topo_pb.HardwareFeatures.Button():
         result.volume_button = copy.volume_button.hardware_feature.volume_button
 
+    # Handle all possible touch hardware features
+    _accumulate_fw_config(result.fw_config, copy.touch.hardware_feature.fw_config)
+
     return result
 
 hw_topo = struct(
@@ -1001,6 +1022,7 @@ hw_topo = struct(
     create_hardware_topology = _create_hardware_topology,
     create_power_button = _create_power_button,
     create_volume_button = _create_volume_button,
+    create_touch = _create_touch,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,

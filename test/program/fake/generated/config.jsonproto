@@ -132,6 +132,10 @@
         {
           "mask": 61440,
           "name": "Intel wifi sar id"
+        },
+        {
+          "mask": 65536,
+          "name": "Touch controller"
         }
       ],
       "id": {

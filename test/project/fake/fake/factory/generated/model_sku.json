@@ -72,7 +72,7 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 25377
+      "fw_config": 90913
     },
     "project_b": {
       "component.audio_card_name": "fakeaudiocard",
@@ -122,7 +122,7 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 25376
+      "fw_config": 90912
     },
     "project_box": {
       "component.audio_card_name": "fakeaudiocard",
@@ -172,7 +172,7 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 25345
+      "fw_config": 90881
     },
     "project_c": {
       "component.audio_card_name": "fakeaudiocard",
@@ -222,7 +222,7 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 25377
+      "fw_config": 90913
     },
     "project_wl": {
       "component.audio_card_name": "fakeaudiocard",
@@ -272,7 +272,7 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 25377
+      "fw_config": 90913
     }
   },
   "product_sku": {
@@ -303,7 +303,7 @@
             1
           ]
         ],
-        "fw_config": 25344
+        "fw_config": 90880
       },
       "2147483647": {
         "component.fingerprint_board": "fake_fingerprint_board",
@@ -331,7 +331,7 @@
             1
           ]
         ],
-        "fw_config": 25377
+        "fw_config": 90913
       }
     },
     "PROJECT_A": {

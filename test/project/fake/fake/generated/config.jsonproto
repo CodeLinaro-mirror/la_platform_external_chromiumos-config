@@ -185,8 +185,8 @@
               "formFactor": 1
             },
             "fwConfig": {
-              "mask": 65535,
-              "value": 25377
+              "mask": 131071,
+              "value": 90913
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -515,6 +515,19 @@
               "id": "THERMAL",
               "type": 6
             },
+            "touch": {
+              "description": {
+                "EN": "Numpad touch"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 65536,
+                  "value": 65536
+                }
+              },
+              "id": "TOUCH",
+              "type": 23
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -589,8 +602,8 @@
               "formFactor": 1
             },
             "fwConfig": {
-              "mask": 65535,
-              "value": 25344
+              "mask": 131071,
+              "value": 90880
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -891,6 +904,19 @@
               "id": "THERMAL",
               "type": 6
             },
+            "touch": {
+              "description": {
+                "EN": "Numpad touch"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 65536,
+                  "value": 65536
+                }
+              },
+              "id": "TOUCH",
+              "type": 23
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -981,8 +1007,8 @@
               "formFactor": 2
             },
             "fwConfig": {
-              "mask": 65535,
-              "value": 25377
+              "mask": 131071,
+              "value": 90913
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -1293,6 +1319,19 @@
               "id": "THERMAL",
               "type": 6
             },
+            "touch": {
+              "description": {
+                "EN": "Numpad touch"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 65536,
+                  "value": 65536
+                }
+              },
+              "id": "TOUCH",
+              "type": 23
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -1382,8 +1421,8 @@
               "formFactor": 2
             },
             "fwConfig": {
-              "mask": 65535,
-              "value": 25376
+              "mask": 131071,
+              "value": 90912
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -1680,6 +1719,19 @@
               "id": "THERMAL",
               "type": 6
             },
+            "touch": {
+              "description": {
+                "EN": "Numpad touch"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 65536,
+                  "value": 65536
+                }
+              },
+              "id": "TOUCH",
+              "type": 23
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -1769,8 +1821,8 @@
               "formFactor": 1
             },
             "fwConfig": {
-              "mask": 65535,
-              "value": 25377
+              "mask": 131071,
+              "value": 90913
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -2068,6 +2120,19 @@
               "id": "THERMAL",
               "type": 6
             },
+            "touch": {
+              "description": {
+                "EN": "Numpad touch"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 65536,
+                  "value": 65536
+                }
+              },
+              "id": "TOUCH",
+              "type": 23
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -2148,8 +2213,8 @@
               "formFactor": 1
             },
             "fwConfig": {
-              "mask": 65535,
-              "value": 25377
+              "mask": 131071,
+              "value": 90913
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -2414,6 +2479,19 @@
               "id": "THERMAL",
               "type": 6
             },
+            "touch": {
+              "description": {
+                "EN": "Numpad touch"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 65536,
+                  "value": 65536
+                }
+              },
+              "id": "TOUCH",
+              "type": 23
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -2482,8 +2560,8 @@
               "formFactor": 5
             },
             "fwConfig": {
-              "mask": 65295,
-              "value": 25345
+              "mask": 130831,
+              "value": 90881
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -2722,6 +2800,19 @@
               "hardwareFeature": {},
               "id": "THERMAL",
               "type": 6
+            },
+            "touch": {
+              "description": {
+                "EN": "Numpad touch"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 65536,
+                  "value": 65536
+                }
+              },
+              "id": "TOUCH",
+              "type": 23
             },
             "volumeButton": {
               "description": {

@@ -53,6 +53,7 @@ message Topology {
     POWER_BUTTON = 20;
     VOLUME_BUTTON = 21;
     EC = 22;
+    TOUCH = 23;
   }
 
   // Map of human readable descriptions in various languages. Maps language
