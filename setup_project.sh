@@ -47,50 +47,82 @@ cd "$(dirname "$0")"
 
 readonly local_manifests_dir="../../.repo/local_manifests"
 
-readonly clone_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
-readonly clone_src="../../src/project/${program}/${project}"
-readonly symlink="${local_manifests_dir}/${project}.xml"
+# Clone a repo and create a symlink a local manifest.
+#
+# Args:
+#   $1: URL to clone.
+#   $2: Path to clone to.
+#   $3: Path to symlink to.
+function clone_manifest() {
+  [[ $# -eq 3 ]] || die "${FUNCNAME[0]}: takes three arguments"
 
-if [[ -d "${clone_src}" ]]; then
-  # If ${clone_src} is already present the user is likely running
-  # a second time when their first run failed. Users would do this
-  # when they found they didn't have adequate permissions on a first
-  # run. In this case we wipe the artifacts from the previous run and
-  # try again.
-  prompt_continue "
+  local clone_url=$1
+  local clone_src=$2
+  local symlink=$3
+
+  if [[ -d "${clone_src}" ]]; then
+    # If ${clone_src} is already present the user is likely running
+    # a second time when their first run failed. Users would do this
+    # when they found they didn't have adequate permissions on a first
+    # run. In this case we wipe the artifacts from the previous run and
+    # try again.
+    prompt_continue "
 ${clone_src} appears to already exist. If you are
 attempting to recover from a previous failed setup_project.sh attempt
 this will attempt to fix it by removing it and resyncing. If you have
 unsaved changes in ${clone_src} they will be lost.
 Do you want to continue with the removal and resync?"
 
-  echo "Founding existing ${clone_src} checkout, removing."
-  rm -rf "${clone_src}"
-  rm -f "${symlink}"
+    echo "Found existing ${clone_src} checkout, removing."
+    rm -rf "${clone_src}"
+    rm -f "${symlink}"
+  fi
+
+  # We only need the local_manifest.xml but have to clone to get it.
+  # Removing the rest of what we clone before we do the sync prevents
+  # a confusing error message from being shown to the user. The
+  # --force-sync below actually causes it to not be a problem, but we'd
+  # rather avoid the user having to interpret the error.
+  if [[ -z "${branch}" ]]; then
+    git clone "${clone_url}" "${clone_src}"
+  else
+    git clone "${clone_url}" "${clone_src}" --branch "${branch}"
+  fi
+
+  find "${clone_src}" -mindepth 1 ! -name local_manifest.xml -exec rm -rf {} +
+
+  if [[ ! -d  "${local_manifests_dir}" ]]; then
+    mkdir -p "${local_manifests_dir}"
+  fi
+
+  local_manifest="${clone_src}/local_manifest.xml"
+  if [[ ! -e "${local_manifest}" ]]; then
+    return 1
+  fi
+
+  ln -sr "${local_manifest}" "${symlink}"
+}
+
+# Clone local manifests from the program and project. Program local manifest is
+# optional, project local manifest is required.
+#
+# Note that the symlinks include "_[program|project].xml" because the project
+# name may be the same as the program name.
+readonly program_url="https://chrome-internal.googlesource.com/chromeos/program/${program}"
+readonly program_src="../../src/program/${program}"
+readonly program_symlink="${local_manifests_dir}/${program}_program.xml"
+
+readonly project_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
+readonly project_src="../../src/project/${program}/${project}"
+readonly project_symlink="${local_manifests_dir}/${project}_project.xml"
+
+if ! clone_manifest "${program_url}" "${program_src}" "${program_symlink}"; then
+  echo "No program local manifest found in ${program_url}, continuing."
 fi
 
-# We only need the local_manifest.xml but have to clone to get it.
-# Removing the rest of what we clone before we do the sync prevents
-# a confusing error message from being shown to the user. The
-# --force-sync below actually causes it to not be a problem, but we'd
-# rather avoid the user having to interpret the error.
-if [[ -z "${branch}" ]]; then
-  git clone "${clone_url}" "${clone_src}"
-else
-  git clone "${clone_url}" "${clone_src}" --branch "${branch}"
+if ! clone_manifest "${project_url}" "${project_src}" "${project_symlink}"; then
+  bail "Expected project local manifest in ${project_url} does not exist, " \
+       "exiting."
 fi
-
-find "${clone_src}" -mindepth 1 ! -name local_manifest.xml -exec rm -rf {} +
-
-if [[ ! -d  "${local_manifests_dir}" ]]; then
-  mkdir -p "${local_manifests_dir}"
-fi
-
-local_manifest="${clone_src}/local_manifest.xml"
-if [[ ! -e "${local_manifest}" ]]; then
-  bail "Expected local manifest ${local_manifest} does not exist, exiting."
-fi
-
-ln -sr "${local_manifest}" "${symlink}"
 
 repo sync --force-sync -j48
