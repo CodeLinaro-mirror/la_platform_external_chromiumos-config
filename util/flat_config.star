@@ -68,7 +68,7 @@ def _create(
         device_brand = None,
         oem = None,
         sw_config = None,
-        sw_brand_config = None):
+        brand_sw_config = None):
     return flat_config_pb.FlatConfig(
         program = program,
         hw_design = hw_design,
@@ -78,7 +78,7 @@ def _create(
         device_brand = device_brand,
         oem = oem,
         sw_config = sw_config,
-        sw_brand_config = sw_brand_config,
+        brand_sw_config = brand_sw_config,
     )
 
 def _create_list(flat_configs):
