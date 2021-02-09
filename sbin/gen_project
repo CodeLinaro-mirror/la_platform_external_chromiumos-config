@@ -152,6 +152,7 @@ _FEATURE_CONSTRAINTS = design.create_constraints(
 
 _${program^^} = program_util.create(
     name = "${program^}",
+    constraints = _FEATURE_CONSTRAINTS,
 )
 
 program = struct(
