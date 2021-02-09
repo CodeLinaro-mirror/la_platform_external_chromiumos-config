@@ -125,7 +125,9 @@ Do you want to continue running this script?"
         "exiting."
   fi
 
-  repo sync --force-sync -j48
+  echo "Local manifest setup complete, sync new projects with:
+
+repo sync --force-sync -j48"
 }
 
 main "$@"
