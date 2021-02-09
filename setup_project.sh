@@ -5,6 +5,9 @@
 
 # Setup a project.
 
+# Exit if any command fails.
+set -e
+
 function bail() {
   echo "${1}"
   exit 1
@@ -24,28 +27,6 @@ function usage() {
   echo "  from the local manifest at the given branch." >&2
   exit 1
 }
-
-# Exit if any command fails.
-set -e
-
-
-if [[ $# -lt 2 ]]; then
-  usage
-fi
-
-readonly program="${1}"
-readonly project="${2}"
-readonly branch="${3}"
-
-prompt_continue "
-If you are a googler and are working with an internal checkout you do
-not need to run this script as you already have a full repo checkout.
-Do you want to continue running this script?"
-
-# Move to this script's directory.
-cd "$(dirname "$0")"
-
-readonly local_manifests_dir="../../.repo/local_manifests"
 
 # Clone a repo and create a symlink a local manifest.
 #
@@ -103,26 +84,48 @@ Do you want to continue with the removal and resync?"
   ln -sr "${local_manifest}" "${symlink}"
 }
 
-# Clone local manifests from the program and project. Program local manifest is
-# optional, project local manifest is required.
-#
-# Note that the symlinks include "_[program|project].xml" because the project
-# name may be the same as the program name.
-readonly program_url="https://chrome-internal.googlesource.com/chromeos/program/${program}"
-readonly program_src="../../src/program/${program}"
-readonly program_symlink="${local_manifests_dir}/${program}_program.xml"
+function main() {
+  if [[ $# -lt 2 ]]; then
+    usage
+  fi
 
-readonly project_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
-readonly project_src="../../src/project/${program}/${project}"
-readonly project_symlink="${local_manifests_dir}/${project}_project.xml"
+  readonly program="${1}"
+  readonly project="${2}"
+  readonly branch="${3}"
 
-if ! clone_manifest "${program_url}" "${program_src}" "${program_symlink}"; then
-  echo "No program local manifest found in ${program_url}, continuing."
-fi
+  prompt_continue "
+If you are a googler and are working with an internal checkout you do
+not need to run this script as you already have a full repo checkout.
+Do you want to continue running this script?"
 
-if ! clone_manifest "${project_url}" "${project_src}" "${project_symlink}"; then
-  bail "Expected project local manifest in ${project_url} does not exist, " \
-       "exiting."
-fi
+  # Move to this script's directory.
+  cd "$(dirname "$0")"
 
-repo sync --force-sync -j48
+  readonly local_manifests_dir="../../.repo/local_manifests"
+
+  # Clone local manifests from the program and project. Program local manifest
+  # is optional, project local manifest is required.
+  #
+  # Note that the symlinks include "_[program|project].xml" because the project
+  # name may be the same as the program name.
+  readonly prog_url="https://chrome-internal.googlesource.com/chromeos/program/${program}"
+  readonly prog_src="../../src/program/${program}"
+  readonly prog_symlink="${local_manifests_dir}/${program}_program.xml"
+
+  readonly proj_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
+  readonly proj_src="../../src/project/${program}/${project}"
+  readonly proj_symlink="${local_manifests_dir}/${project}_project.xml"
+
+  if ! clone_manifest "${prog_url}" "${prog_src}" "${prog_symlink}"; then
+    echo "No program local manifest found in ${prog_url}, continuing."
+  fi
+
+  if ! clone_manifest "${proj_url}" "${proj_src}" "${proj_symlink}"; then
+    bail "Expected project local manifest in ${proj_url} does not exist, " \
+        "exiting."
+  fi
+
+  repo sync --force-sync -j48
+}
+
+main "$@"
