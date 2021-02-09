@@ -7,6 +7,7 @@ load(
     "@proto//chromiumos/config/api/test/plan/v1/plan.proto",
     plan_pb = "chromiumos.config.api.test.plan.v1",
 )
+load("//config/util/generate.star", "generate")
 
 def _get_exclusion_type(type):
     """Get the exclusion type enum.
@@ -144,8 +145,18 @@ def _create_spec(plans):
     """
     return plan_pb.Specification(plans = plans if plans else None)
 
+def _generate_plan(test_plan):
+    """Compiles the starkark to generate a jsonproto output file
+
+    Args:
+        test_plan: test plan
+    """
+    file_name = test_plan.name.lower().replace(" ", "_")
+    generate.generate(_create_spec([test_plan]), "%s.jsonproto" % file_name)
+
 test_plan = struct(
     create = _create_plan,
+    generate = _generate_plan,
     dut_criterion = struct(
         create = _create_dut_criterion,
     ),
