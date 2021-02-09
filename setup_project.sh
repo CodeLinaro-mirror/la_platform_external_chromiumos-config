@@ -9,7 +9,9 @@
 set -e
 
 function bail() {
-  echo "${1}"
+  RED='\033[38;5;9m'
+  NC='\033[0m' # No Color
+  echo -e "${RED}${1}${NC}"
   exit 1
 }
 
