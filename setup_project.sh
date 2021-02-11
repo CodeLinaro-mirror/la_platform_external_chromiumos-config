@@ -84,6 +84,7 @@ function usage() {
 
 Options:
   -br, --branch    Sync the project from the local manifest at the given branch.
+  --chipset        Name of the chipset overlay to sync a local manifest from.
   -h, --help       This help output.
   " >&2
 
@@ -95,6 +96,10 @@ function main() {
     case $1 in
     -br|--branch)
       readonly branch=$2
+      shift
+      ;;
+    --chipset)
+      readonly chipset=$2
       shift
       ;;
     -h|--help)
@@ -134,18 +139,29 @@ Do you want to continue running this script?"
   readonly prog_src="../../src/program/${program}"
   readonly prog_symlink="${local_manifests_dir}/${program}_program.xml"
 
-  readonly proj_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
-  readonly proj_src="../../src/project/${program}/${project}"
-  readonly proj_symlink="${local_manifests_dir}/${project}_project.xml"
-
   if ! clone_manifest "${prog_url}" "${prog_src}" "${prog_symlink}"; then
     echo "No program local manifest found in ${prog_url}, continuing."
   fi
+
+  readonly proj_url="https://chrome-internal.googlesource.com/chromeos/project/${program}/${project}"
+  readonly proj_src="../../src/project/${program}/${project}"
+  readonly proj_symlink="${local_manifests_dir}/${project}_project.xml"
 
   if ! clone_manifest "${proj_url}" "${proj_src}" "${proj_symlink}"; then
     bail "Expected project local manifest in ${proj_url} does not exist, " \
         "exiting."
   fi
+
+  if [[ -n "${chipset}" ]]; then
+    readonly chip_url="https://chrome-internal.googlesource.com/chromeos/overlays/chipset-${chipset}-private"
+    readonly chip_src="../../private-overlays/chipset-${chipset}-private"
+    readonly chip_symlink="${local_manifests_dir}/${chipset}_chipset.xml"
+    if ! clone_manifest "${chip_url}" "${chip_src}" "${chip_symlink}"; then
+    bail "Expected chipset local manifest in ${chip_url} does not exist, " \
+        "exiting."
+    fi
+  fi
+
 
   echo "Local manifest setup complete, sync new projects with:
 
