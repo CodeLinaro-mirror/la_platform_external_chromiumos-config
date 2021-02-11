@@ -18,8 +18,8 @@ load(
     bt_pb = "chromiumos.config.api.software",
 )
 load(
-    "@proto//chromiumos/config/api/software/firmware_config.proto",
-    fw_pb = "chromiumos.config.api.software",
+    "@proto//chromiumos/build/api/firmware_config.proto",
+    fw_pb = "chromiumos.build.api",
 )
 load(
     "@proto//chromiumos/config/api/software/power_config.proto",

@@ -9,7 +9,7 @@ package chromiumos.config.prototype;
 option go_package = "go.chromium.org/chromiumos/config/go/prototype";
 
 import "chromiumos/config/prototype/release_target_id.proto";
-import "chromiumos/config/api/software/system_image.proto";
+import "chromiumos/build/api/system_image.proto";
 
 // Defines a collection of build targets that are all part of the same logical
 // release target and corresponding config tied to the release target.
@@ -22,10 +22,10 @@ message ReleaseTarget {
   string name = 2;
 
   // Defines the primary build target for a given release.
-  chromiumos.config.api.software.SystemImage.BuildTarget main_target = 5;
+  chromiumos.build.api.SystemImage.BuildTarget main_target = 5;
 
   // Defines the uprev build target for a given release.
-  chromiumos.config.api.software.SystemImage.BuildTarget uprev_target = 6;
+  chromiumos.build.api.SystemImage.BuildTarget uprev_target = 6;
 
   Signing signing = 4;
 

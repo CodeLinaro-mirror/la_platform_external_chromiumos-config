@@ -49,3 +49,4 @@ for proto in "${protos[@]}"; do
     "${proto}"
 done
 cp -rf "${GO_TEMP_DIR}"/chromiumos/config/* go/
+cp -rf "${GO_TEMP_DIR}"/chromiumos/build/api/* go/build/api
