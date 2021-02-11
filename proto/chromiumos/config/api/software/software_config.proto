@@ -6,14 +6,14 @@ syntax = "proto3";
 
 package chromiumos.config.api.software;
 
+import "chromiumos/build/api/factory.proto";
+import "chromiumos/build/api/firmware_config.proto";
+import "chromiumos/build/api/system_image.proto";
 import "chromiumos/config/api/design_config_id.proto";
 import "chromiumos/config/api/software/audio_config.proto";
-import "chromiumos/config/api/software/firmware_config.proto";
-import "chromiumos/config/api/software/factory.proto";
 import "chromiumos/config/api/software/bluetooth_config.proto";
 import "chromiumos/config/api/software/chromeos_config/identity_scan_config.proto";
 import "chromiumos/config/api/software/power_config.proto";
-import "chromiumos/config/api/software/system_image.proto";
 import "chromiumos/config/api/software/wifi_config.proto";
 import "chromiumos/config/api/software/camera_config.proto";
 import "chromiumos/config/public_replication/public_replication.proto";
@@ -41,16 +41,16 @@ message SoftwareConfig {
   chromeos_config.IdentityScanConfig.DesignConfigId id_scan_config = 8;
 
   // Defines firmware version pinning details (for non-development workflows).
-  FirmwareConfig firmware = 3;
+  chromiumos.build.api.FirmwareConfig firmware = 3;
 
   // TODO(shapiroc): Remove once configs are migrated to firmware_build_targets
   // This establishes consistent naming so the difference between build targets,
   // build version pinning, and build metadata is clear (versus Config catch
   // all naming).
-  FirmwareBuildConfig firmware_build_config = 9;
-  Firmware.BuildTargets firmware_build_targets = 16;
-  SystemImage.BuildTarget system_build_target = 13;
-  Factory.BuildTarget factory_build_target = 14;
+  chromiumos.build.api.FirmwareBuildConfig firmware_build_config = 9;
+  chromiumos.build.api.Firmware.BuildTargets firmware_build_targets = 16;
+  chromiumos.build.api.SystemImage.BuildTarget system_build_target = 13;
+  chromiumos.build.api.Factory.BuildTarget factory_build_target = 14;
 
   BluetoothConfig bluetooth_config = 4;
 

@@ -7,7 +7,7 @@ syntax = "proto3";
 package chromiumos.config.prototype;
 
 import "chromiumos/config/api/test/plan/v1/plan.proto";
-import "chromiumos/config/api/software/system_image.proto";
+import "chromiumos/build/api/system_image.proto";
 import "chromiumos/config/prototype/release_target.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/prototype";
@@ -19,5 +19,5 @@ message PrototypeConfigBundle {
 
   repeated ReleaseTarget release_targets = 2;
 
-  repeated api.software.SystemImage.BuildMetadata system_builds = 3;
+  repeated chromiumos.build.api.SystemImage.BuildMetadata system_builds = 3;
 }

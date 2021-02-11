@@ -4,11 +4,11 @@
 
 syntax = "proto3";
 
-package chromiumos.config.api.software;
+package chromiumos.build.api;
 
-option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
 
-import "chromiumos/config/api/software/portage.proto";
+import "chromiumos/build/api/portage.proto";
 
 // Defines config used to generate Chrome OS factory builds.
 // See: https://chromium.googlesource.com/chromiumos/platform/factory
