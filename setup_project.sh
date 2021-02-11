@@ -23,13 +23,6 @@ function prompt_continue() {
   fi
 }
 
-function usage() {
-  echo "Usage: $0 <program> <project> [<branch>]" >&2
-  echo "  optionally pass branch to sync the project" >&2
-  echo "  from the local manifest at the given branch." >&2
-  exit 1
-}
-
 # Clone a repo and create a symlink a local manifest.
 #
 # Args:
@@ -86,14 +79,41 @@ Do you want to continue with the removal and resync?"
   ln -sr "${local_manifest}" "${symlink}"
 }
 
+function usage() {
+  echo "Usage: $0 [options] <program> <project>
+
+Options:
+  -br, --branch    Sync the project from the local manifest at the given branch.
+  -h, --help       This help output.
+  " >&2
+
+  exit 1
+}
+
 function main() {
-  if [[ $# -lt 2 ]]; then
+  while [[ $# -ne 0 ]]; do
+    case $1 in
+    -br|--branch)
+      readonly branch=$2
+      shift
+      ;;
+    -h|--help)
+      usage
+      ;;
+    *)
+      ARGS+=( "$1" )
+      ;;
+    esac
+    shift
+  done
+  set -- "${ARGS[@]}" "$@"
+
+  if [[ $# -ne 2 ]]; then
     usage
   fi
 
   readonly program="${1}"
   readonly project="${2}"
-  readonly branch="${3}"
 
   prompt_continue "
 If you are a googler and are working with an internal checkout you do
