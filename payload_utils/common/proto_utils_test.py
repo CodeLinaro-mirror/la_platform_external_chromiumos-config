@@ -8,7 +8,7 @@ import unittest
 from google.protobuf import field_mask_pb2
 from google.protobuf import timestamp_pb2
 
-from chromiumos.build.api import system_image_pb2
+from chromiumos.config.api.software import system_image_pb2
 
 from chromiumos.config.public_replication.public_replication_pb2 import (
     PublicReplication)
@@ -35,17 +35,17 @@ class ProtoUtilsTest(unittest.TestCase):
     """Tests getting the depgraph of a proto."""
     self.assertDictEqual(
         proto_utils.get_dep_graph(system_image_pb2.SystemImage.BuildTarget()), {
-            'chromiumos.build.api.Portage.BuildTarget': [],
-            'chromiumos.build.api.SystemImage.BuildTarget':
-                ['chromiumos.build.api.Portage.BuildTarget']
+            'chromiumos.config.api.software.Portage.BuildTarget': [],
+            'chromiumos.config.api.software.SystemImage.BuildTarget':
+                ['chromiumos.config.api.software.Portage.BuildTarget']
         })
 
   def test_get_dep_order(self):
     """Tests getting the dependency order of a proto."""
     self.assertSequenceEqual(
         proto_utils.get_dep_order(system_image_pb2.SystemImage.BuildTarget()), [
-            'chromiumos.build.api.Portage.BuildTarget',
-            'chromiumos.build.api.SystemImage.BuildTarget'
+            'chromiumos.config.api.software.Portage.BuildTarget',
+            'chromiumos.config.api.software.SystemImage.BuildTarget'
         ])
 
   def test_apply_public_replication(self):

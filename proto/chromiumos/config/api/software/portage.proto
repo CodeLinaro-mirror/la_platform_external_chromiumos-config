@@ -4,9 +4,9 @@
 
 syntax = "proto3";
 
-package chromiumos.build.api;
+package chromiumos.config.api.software;
 
-option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
 // Defines config used to generate portage builds.
 message Portage {

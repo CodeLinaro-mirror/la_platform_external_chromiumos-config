@@ -30,8 +30,8 @@ from google.cloud import bigquery
 from common import config_bundle_utils
 
 from checker import io_utils
-from chromiumos.build.api import firmware_config_pb2
 from chromiumos.config.api import topology_pb2
+from chromiumos.config.api.software import firmware_config_pb2
 from chromiumos.config.payload import config_bundle_pb2
 
 # HWID databases use some custom tags, which are mostly legacy as far as I can

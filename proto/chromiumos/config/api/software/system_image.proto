@@ -4,11 +4,11 @@
 
 syntax = "proto3";
 
-package chromiumos.build.api;
+package chromiumos.config.api.software;
 
-option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
-import "chromiumos/build/api/portage.proto";
+import "chromiumos/config/api/software/portage.proto";
 
 // Defines config used to generate Chrome OS system image builds.
 message SystemImage {
