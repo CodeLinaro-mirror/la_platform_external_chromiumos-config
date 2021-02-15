@@ -342,7 +342,13 @@ def _build_hardware_properties(hw_topology):
   ]
 
   form_factor_names = {
+      topology_pb2.HardwareFeatures.FormFactor.CLAMSHELL: "CHROMEBOOK",
+      topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE: "CHROMEBOOK",
+      topology_pb2.HardwareFeatures.FormFactor.DETACHABLE: "CHROMEBOOK",
       topology_pb2.HardwareFeatures.FormFactor.CHROMEBASE: "CHROMEBASE",
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBOX: "CHROMEBOX",
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBIT: "CHROMEBIT",
+      topology_pb2.HardwareFeatures.FormFactor.CHROMESLATE: "CHROMEBOOK",
   }
   if form_factor in form_factor_names:
     result['form-factor'] = form_factor_names[form_factor]

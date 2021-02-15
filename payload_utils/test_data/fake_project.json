@@ -90,6 +90,7 @@
           "signature-id": "fake_ref_design"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
           "has-backlight": true,
           "psu-type": "battery"
         },
@@ -235,6 +236,7 @@
           "signature-id": "fake_ref_design"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
           "has-backlight": true,
           "psu-type": "battery"
         },
@@ -399,6 +401,7 @@
           "signature-id": "project_a"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
           "has-backlight": true,
           "psu-type": "battery"
         },
@@ -522,6 +525,7 @@
           "signature-id": "project_b"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
           "has-backlight": true,
           "psu-type": "battery"
         },
@@ -639,6 +643,7 @@
           "signature-id": "project_c"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
           "has-backlight": true,
           "psu-type": "battery"
         },
@@ -757,6 +762,7 @@
           "signature-id": "project_wl"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
           "has-backlight": true,
           "psu-type": "battery"
         },
@@ -875,6 +881,7 @@
           "signature-id": "project_wl-loema"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
           "has-backlight": true,
           "psu-type": "battery"
         },
@@ -994,6 +1001,7 @@
           "signature-id": "project_wl-loemb"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
           "has-backlight": true,
           "psu-type": "battery"
         },
@@ -1113,6 +1121,7 @@
           "signature-id": "project_wl-loemc"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
           "has-backlight": true,
           "psu-type": "battery"
         },
@@ -1209,6 +1218,7 @@
           "signature-id": "project_box"
         },
         "hardware-properties": {
+          "form-factor": "CHROMEBOX",
           "has-backlight": false,
           "psu-type": "AC_only"
         },
