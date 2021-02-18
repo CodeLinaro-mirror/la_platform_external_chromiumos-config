@@ -237,3 +237,13 @@ Changes that require new topology
 Changes that do not require new topology
 
 * Different touch controller vendor which supports the same feature set
+
+## Trusted Platform Module
+
+Changes that require new topology
+
+* New type, such as "third party" or GSC "Google Security Chip."
+
+Changes that do not require new topology
+
+* New RO firmware.

@@ -133,6 +133,8 @@ _SC_POWER = sc.create_power(
 
 _TOUCH = hw_topo.create_touch("TOUCH", "Numpad touch", fw_configs = [hw_topo.make_fw_config(program.fw_masks.TOUCH, 1)])
 
+_TPM = hw_topo.TPM_GSC
+
 def create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -145,7 +147,8 @@ def create_hardware_topology(
         camera = None,
         daughter_board = None,
         sensor = None,
-        ec = None):
+        ec = None,
+        tpm = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -169,6 +172,7 @@ def create_hardware_topology(
         volume_button = _VOLUME_BUTTON,
         ec = hw_topo.EC_CHROME,
         touch = _TOUCH,
+        tpm = hw_topo.TPM_GSC,
     )
 
 # Create empty arrays that we will continually append new configurations to
@@ -190,6 +194,7 @@ design.append_configs(
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
         sensor = _SENSOR_WITH_LIGHT,
+        tpm = _TPM,
     ),
     audio = sc.create_audio(
         _AUDIO_CARD,

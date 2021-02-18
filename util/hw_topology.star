@@ -96,6 +96,12 @@ _EC_TYPE = struct(
     WILCO = topo_pb.HardwareFeatures.EmbeddedController.EC_WILCO,
 )
 
+_TPM_TYPE = struct(
+    UNKNOWN = topo_pb.HardwareFeatures.TrustedPlatformModule.TPM_TYPE_UNKNOWN,
+    THIRD_PARTY = topo_pb.HardwareFeatures.TrustedPlatformModule.THIRD_PARTY,
+    GSC = topo_pb.HardwareFeatures.TrustedPlatformModule.GSC,
+)
+
 # Starlark doesn't support converting enums to their names. Add helper fns. to
 # do so.
 def _button_region_to_str(region):
@@ -726,6 +732,27 @@ def _create_touch(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
+def _create_tpm(tpm_type = _TPM_TYPE.GSC, id = None):
+    """Builds a Topology proto for a trusted platform module.
+
+    Args:
+        tpm_type: A TrustedPlatformModuleType enum
+        id: A string identifier for the Topology. If not passed, a default is
+            provided.
+    """
+    hw_features = topo_pb.HardwareFeatures()
+    hw_features.trusted_platform_module.tpm_type = tpm_type
+
+    return topo_pb.Topology(
+        id = id or "TPM",
+        type = topo_pb.Topology.TPM,
+        hardware_feature = hw_features,
+    )
+
+# enumerate the common cases
+_TPM_THIRD_PARTY = _create_tpm(tpm_type = _TPM_TYPE.THIRD_PARTY)
+_TPM_GSC = _create_tpm(tpm_type = _TPM_TYPE.GSC)
+
 def _create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -748,7 +775,8 @@ def _create_hardware_topology(
         power_button = None,
         volume_button = None,
         ec = None,
-        touch = None):
+        touch = None,
+        tpm = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -818,6 +846,9 @@ def _create_hardware_topology(
     if touch and touch.type != topo_pb.Topology.TOUCH:
         fail("Invalid touch topology")
 
+    if tpm and tpm.type != topo_pb.Topology.TPM:
+        fail("Invalid tpm type")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -841,6 +872,7 @@ def _create_hardware_topology(
         volume_button = volume_button,
         ec = ec,
         touch = touch,
+        tpm = tpm,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -1043,4 +1075,10 @@ hw_topo = struct(
     EC_NONE = _EC_NONE,
     EC_CHROME = _EC_CHROME,
     EC_WILCO = _EC_WILCO,
+
+    # trusted platform module exports
+    tpm_type = _TPM_TYPE,
+    create_tpm = _create_tpm,
+    TPM_THIRD_PARTY = _TPM_THIRD_PARTY,
+    TPM_GSC = _TPM_GSC,
 )

@@ -54,6 +54,7 @@ message Topology {
     VOLUME_BUTTON = 21;
     EC = 22;
     TOUCH = 23;
+    TPM = 24;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -78,7 +79,7 @@ message Topology {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 25
+// NEXT TAG: 26
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -432,4 +433,16 @@ message HardwareFeatures {
     Component.EmbeddedController part = 3;
   }
   EmbeddedController embedded_controller = 24;
+
+  message TrustedPlatformModule {
+    enum TrustedPlatformModuleType {
+      TPM_TYPE_UNKNOWN = 0;
+      THIRD_PARTY = 1;
+      // GSCs (Google Security Chips) provide additional functionality beyond
+      // serving as the Trusted Platform Module.
+      GSC = 2;
+    }
+    TrustedPlatformModuleType tpm_type = 1;
+  }
+  TrustedPlatformModule trusted_platform_module = 25;
 }

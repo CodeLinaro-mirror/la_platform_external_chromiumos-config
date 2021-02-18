@@ -111,4 +111,8 @@ message HardwareTopology {
   // Specify the touch topology.
   // See ./hardware_topology.md#touch for more information.
   Topology touch = 23;
+
+  // Specify the tpm topology.
+  // See ./hardware_topology.md#tpm for more information.
+  Topology tpm = 24;
 }

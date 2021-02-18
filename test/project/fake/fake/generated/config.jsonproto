@@ -528,6 +528,15 @@
               "id": "TOUCH",
               "type": 23
             },
+            "tpm": {
+              "hardwareFeature": {
+                "trustedPlatformModule": {
+                  "tpmType": 2
+                }
+              },
+              "id": "TPM",
+              "type": 24
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -916,6 +925,15 @@
               },
               "id": "TOUCH",
               "type": 23
+            },
+            "tpm": {
+              "hardwareFeature": {
+                "trustedPlatformModule": {
+                  "tpmType": 2
+                }
+              },
+              "id": "TPM",
+              "type": 24
             },
             "volumeButton": {
               "description": {
@@ -1332,6 +1350,15 @@
               "id": "TOUCH",
               "type": 23
             },
+            "tpm": {
+              "hardwareFeature": {
+                "trustedPlatformModule": {
+                  "tpmType": 2
+                }
+              },
+              "id": "TPM",
+              "type": 24
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -1731,6 +1758,15 @@
               },
               "id": "TOUCH",
               "type": 23
+            },
+            "tpm": {
+              "hardwareFeature": {
+                "trustedPlatformModule": {
+                  "tpmType": 2
+                }
+              },
+              "id": "TPM",
+              "type": 24
             },
             "volumeButton": {
               "description": {
@@ -2133,6 +2169,15 @@
               "id": "TOUCH",
               "type": 23
             },
+            "tpm": {
+              "hardwareFeature": {
+                "trustedPlatformModule": {
+                  "tpmType": 2
+                }
+              },
+              "id": "TPM",
+              "type": 24
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -2492,6 +2537,15 @@
               "id": "TOUCH",
               "type": 23
             },
+            "tpm": {
+              "hardwareFeature": {
+                "trustedPlatformModule": {
+                  "tpmType": 2
+                }
+              },
+              "id": "TPM",
+              "type": 24
+            },
             "volumeButton": {
               "description": {
                 "EN": "Volume button on the right edge of the screen"
@@ -2813,6 +2867,15 @@
               },
               "id": "TOUCH",
               "type": 23
+            },
+            "tpm": {
+              "hardwareFeature": {
+                "trustedPlatformModule": {
+                  "tpmType": 2
+                }
+              },
+              "id": "TPM",
+              "type": 24
             },
             "volumeButton": {
               "description": {
