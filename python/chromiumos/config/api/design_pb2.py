@@ -26,11 +26,77 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n\"chromiumos/config/api/design.proto\x12\x15\x63hromiumos.config.api\x1a,chromiumos/config/api/design_config_id.proto\x1a%chromiumos/config/api/design_id.proto\x1a-chromiumos/config/api/hardware_topology.proto\x1a&chromiumos/config/api/partner_id.proto\x1a&chromiumos/config/api/program_id.proto\x1a$chromiumos/config/api/topology.proto\x1a=chromiumos/config/public_replication/public_replication.proto\"\xa6\x08\n\x06\x44\x65sign\x12S\n\x12public_replication\x18\x07 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12+\n\x02id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x34\n\nprogram_id\x18\x02 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x30\n\x06odm_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x04 \x01(\t\x12G\n\x0e\x62oard_id_phase\x18\x05 \x03(\x0b\x32/.chromiumos.config.api.Design.BoardIdPhaseEntry\x12\x35\n\x07\x63onfigs\x18\x06 \x03(\x0b\x32$.chromiumos.config.api.Design.Config\x12@\n\nssfc_value\x18\x08 \x03(\x0b\x32,.chromiumos.config.api.Design.SsfcValueEntry\x1a\x33\n\x11\x42oardIdPhaseEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x30\n\x0eSsfcValueEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\xfa\x03\n\x06\x43onfig\x12S\n\x12public_replication\x18\x05 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\x31\n\x02id\x18\x01 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\x1a\xd3\x01\n\nConstraint\x12\x44\n\x05level\x18\x01 \x01(\x0e\x32\x35.chromiumos.config.api.Design.Config.Constraint.Level\x12\x39\n\x08\x66\x65\x61tures\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"D\n\x05Level\x12\x10\n\x0cTYPE_UNKNOWN\x10\x00\x12\x0c\n\x08REQUIRED\x10\x01\x12\r\n\tPREFERRED\x10\x02\x12\x0c\n\x08OPTIONAL\x10\x03J\x04\x08\x04\x10\x05J\x04\x08\x07\x10\x08\x42*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n\"chromiumos/config/api/design.proto\x12\x15\x63hromiumos.config.api\x1a,chromiumos/config/api/design_config_id.proto\x1a%chromiumos/config/api/design_id.proto\x1a-chromiumos/config/api/hardware_topology.proto\x1a&chromiumos/config/api/partner_id.proto\x1a&chromiumos/config/api/program_id.proto\x1a$chromiumos/config/api/topology.proto\x1a=chromiumos/config/public_replication/public_replication.proto\"\xd3\x0b\n\x06\x44\x65sign\x12S\n\x12public_replication\x18\x07 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12+\n\x02id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x34\n\nprogram_id\x18\x02 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x30\n\x06odm_id\x18\x03 \x01(\x0b\x32 .chromiumos.config.api.PartnerId\x12\x0c\n\x04name\x18\x04 \x01(\t\x12G\n\x0e\x62oard_id_phase\x18\x05 \x03(\x0b\x32/.chromiumos.config.api.Design.BoardIdPhaseEntry\x12\x35\n\x07\x63onfigs\x18\x06 \x03(\x0b\x32$.chromiumos.config.api.Design.Config\x12@\n\nssfc_value\x18\x08 \x03(\x0b\x32,.chromiumos.config.api.Design.SsfcValueEntry\x12\x38\n\x08platform\x18\t \x01(\x0b\x32&.chromiumos.config.api.Design.Platform\x1a\x33\n\x11\x42oardIdPhaseEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x30\n\x0eSsfcValueEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\xf0\x02\n\x08Platform\x12\x0c\n\x04name\x18\x01 \x01(\t\x12T\n\x12video_acceleration\x18\x02 \x03(\x0e\x32\x38.chromiumos.config.api.Design.Platform.VideoAcceleration\"\xff\x01\n\x11VideoAcceleration\x12 \n\x1cVIDEO_ACCELERATION_UNDEFINED\x10\x00\x12\x0f\n\x0bH264_DECODE\x10\x01\x12\x0f\n\x0bH264_ENCODE\x10\x02\x12\x0e\n\nVP8_DECODE\x10\x03\x12\x0e\n\nVP8_ENCODE\x10\x04\x12\x0e\n\nVP9_DECODE\x10\x05\x12\x0e\n\nVP9_ENCODE\x10\x06\x12\x10\n\x0cVP9_2_DECODE\x10\x07\x12\x10\n\x0cVP9_2_ENCODE\x10\x08\x12\x0f\n\x0bH265_DECODE\x10\t\x12\x0f\n\x0bH265_ENCODE\x10\n\x12\x0f\n\x0bMJPG_DECODE\x10\x0b\x12\x0f\n\x0bMJPG_ENCODE\x10\x0c\x1a\xfa\x03\n\x06\x43onfig\x12S\n\x12public_replication\x18\x05 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12\x31\n\x02id\x18\x01 \x01(\x0b\x32%.chromiumos.config.api.DesignConfigId\x12\x42\n\x11hardware_topology\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareTopology\x12\x42\n\x11hardware_features\x18\x03 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\x1a\xd3\x01\n\nConstraint\x12\x44\n\x05level\x18\x01 \x01(\x0e\x32\x35.chromiumos.config.api.Design.Config.Constraint.Level\x12\x39\n\x08\x66\x65\x61tures\x18\x02 \x01(\x0b\x32\'.chromiumos.config.api.HardwareFeatures\"D\n\x05Level\x12\x10\n\x0cTYPE_UNKNOWN\x10\x00\x12\x0c\n\x08REQUIRED\x10\x01\x12\r\n\tPREFERRED\x10\x02\x12\x0c\n\x08OPTIONAL\x10\x03J\x04\x08\x04\x10\x05J\x04\x08\x07\x10\x08\x42*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_design__config__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_hardware__topology__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_partner__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_program__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_topology__pb2.DESCRIPTOR,chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2.DESCRIPTOR,])
 
 
+
+_DESIGN_PLATFORM_VIDEOACCELERATION = _descriptor.EnumDescriptor(
+  name='VideoAcceleration',
+  full_name='chromiumos.config.api.Design.Platform.VideoAcceleration',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='VIDEO_ACCELERATION_UNDEFINED', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='H264_DECODE', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='H264_ENCODE', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP8_DECODE', index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP8_ENCODE', index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP9_DECODE', index=5, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP9_ENCODE', index=6, number=6,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP9_2_DECODE', index=7, number=7,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP9_2_ENCODE', index=8, number=8,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='H265_DECODE', index=9, number=9,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='H265_ENCODE', index=10, number=10,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MJPG_DECODE', index=11, number=11,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MJPG_ENCODE', index=12, number=12,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1102,
+  serialized_end=1357,
+)
+_sym_db.RegisterEnumDescriptor(_DESIGN_PLATFORM_VIDEOACCELERATION)
 
 _DESIGN_CONFIG_CONSTRAINT_LEVEL = _descriptor.EnumDescriptor(
   name='Level',
@@ -57,8 +123,8 @@ _DESIGN_CONFIG_CONSTRAINT_LEVEL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1357,
-  serialized_end=1425,
+  serialized_start=1786,
+  serialized_end=1854,
 )
 _sym_db.RegisterEnumDescriptor(_DESIGN_CONFIG_CONSTRAINT_LEVEL)
 
@@ -96,8 +162,8 @@ _DESIGN_BOARDIDPHASEENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=827,
-  serialized_end=878,
+  serialized_start=885,
+  serialized_end=936,
 )
 
 _DESIGN_SSFCVALUEENTRY = _descriptor.Descriptor(
@@ -133,8 +199,46 @@ _DESIGN_SSFCVALUEENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=880,
-  serialized_end=928,
+  serialized_start=938,
+  serialized_end=986,
+)
+
+_DESIGN_PLATFORM = _descriptor.Descriptor(
+  name='Platform',
+  full_name='chromiumos.config.api.Design.Platform',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='chromiumos.config.api.Design.Platform.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='video_acceleration', full_name='chromiumos.config.api.Design.Platform.video_acceleration', index=1,
+      number=2, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _DESIGN_PLATFORM_VIDEOACCELERATION,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=989,
+  serialized_end=1357,
 )
 
 _DESIGN_CONFIG_CONSTRAINT = _descriptor.Descriptor(
@@ -171,8 +275,8 @@ _DESIGN_CONFIG_CONSTRAINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1214,
-  serialized_end=1425,
+  serialized_start=1643,
+  serialized_end=1854,
 )
 
 _DESIGN_CONFIG = _descriptor.Descriptor(
@@ -222,8 +326,8 @@ _DESIGN_CONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=931,
-  serialized_end=1437,
+  serialized_start=1360,
+  serialized_end=1866,
 )
 
 _DESIGN = _descriptor.Descriptor(
@@ -289,10 +393,17 @@ _DESIGN = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='platform', full_name='chromiumos.config.api.Design.platform', index=8,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_DESIGN_BOARDIDPHASEENTRY, _DESIGN_SSFCVALUEENTRY, _DESIGN_CONFIG, ],
+  nested_types=[_DESIGN_BOARDIDPHASEENTRY, _DESIGN_SSFCVALUEENTRY, _DESIGN_PLATFORM, _DESIGN_CONFIG, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -302,11 +413,14 @@ _DESIGN = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=375,
-  serialized_end=1437,
+  serialized_end=1866,
 )
 
 _DESIGN_BOARDIDPHASEENTRY.containing_type = _DESIGN
 _DESIGN_SSFCVALUEENTRY.containing_type = _DESIGN
+_DESIGN_PLATFORM.fields_by_name['video_acceleration'].enum_type = _DESIGN_PLATFORM_VIDEOACCELERATION
+_DESIGN_PLATFORM.containing_type = _DESIGN
+_DESIGN_PLATFORM_VIDEOACCELERATION.containing_type = _DESIGN_PLATFORM
 _DESIGN_CONFIG_CONSTRAINT.fields_by_name['level'].enum_type = _DESIGN_CONFIG_CONSTRAINT_LEVEL
 _DESIGN_CONFIG_CONSTRAINT.fields_by_name['features'].message_type = chromiumos_dot_config_dot_api_dot_topology__pb2._HARDWAREFEATURES
 _DESIGN_CONFIG_CONSTRAINT.containing_type = _DESIGN_CONFIG
@@ -323,6 +437,7 @@ _DESIGN.fields_by_name['odm_id'].message_type = chromiumos_dot_config_dot_api_do
 _DESIGN.fields_by_name['board_id_phase'].message_type = _DESIGN_BOARDIDPHASEENTRY
 _DESIGN.fields_by_name['configs'].message_type = _DESIGN_CONFIG
 _DESIGN.fields_by_name['ssfc_value'].message_type = _DESIGN_SSFCVALUEENTRY
+_DESIGN.fields_by_name['platform'].message_type = _DESIGN_PLATFORM
 DESCRIPTOR.message_types_by_name['Design'] = _DESIGN
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -339,6 +454,13 @@ Design = _reflection.GeneratedProtocolMessageType('Design', (_message.Message,),
     DESCRIPTOR = _DESIGN_SSFCVALUEENTRY,
     __module__ = 'chromiumos.config.api.design_pb2'
     # @@protoc_insertion_point(class_scope:chromiumos.config.api.Design.SsfcValueEntry)
+    ))
+  ,
+
+  Platform = _reflection.GeneratedProtocolMessageType('Platform', (_message.Message,), dict(
+    DESCRIPTOR = _DESIGN_PLATFORM,
+    __module__ = 'chromiumos.config.api.design_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.Design.Platform)
     ))
   ,
 
@@ -362,6 +484,7 @@ Design = _reflection.GeneratedProtocolMessageType('Design', (_message.Message,),
 _sym_db.RegisterMessage(Design)
 _sym_db.RegisterMessage(Design.BoardIdPhaseEntry)
 _sym_db.RegisterMessage(Design.SsfcValueEntry)
+_sym_db.RegisterMessage(Design.Platform)
 _sym_db.RegisterMessage(Design.Config)
 _sym_db.RegisterMessage(Design.Config.Constraint)
 

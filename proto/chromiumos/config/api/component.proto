@@ -89,23 +89,6 @@ message Component {
       ARM64 = 4;
     }
 
-    // hardware video acceleration types
-    enum VideoAcceleration {
-        VIDE_ACCELERATION_UNDEFINED = 0;
-        H264_DECODE = 1;
-        H264_ENCODE = 2;
-        VP8_DECODE = 3;
-        VP8_ENCODE = 4;
-        VP9_DECODE = 5;
-        VP9_ENCODE = 6;
-        VP9_2_DECODE = 7;
-        VP9_2_ENCODE = 8;
-        H265_DECODE = 9;
-        H265_ENCODE = 10;
-        MJPG_DECODE = 11;
-        MJPG_ENCODE = 12;
-    }
-
     message Family {
       Architecture arch = 1;
       // Common name (human friendly) for the family
@@ -120,9 +103,6 @@ message Component {
     string model = 2;
     // Number of cores present on the SoC model
     int32 cores = 3;
-
-    // supported hardware video acceleration
-    repeated VideoAcceleration video_acceleration = 4;
   }
 
   message Memory {
