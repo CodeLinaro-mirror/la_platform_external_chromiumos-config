@@ -11,6 +11,7 @@ changes using the tip-of-tree code vs what's running in production.
 
 import argparse
 import collections
+import functools
 import itertools
 import json
 import multiprocessing
@@ -114,17 +115,26 @@ def parse_build_property(build, name):
   return None
 
 
-def run_backfill(config):
-  """Run a single backfill job, return diff of current and new output."""
+def run_backfill(config, logname=None):
+  """Run a single backfill job, return diff of current and new output.
+
+  Args:
+    config: BackfillConfig instance for the backfill operation.
+    logname: Filename to redirect stderr to from backfill
+      default is to supress the output
+  """
+
+  logfile = subprocess.DEVNULL
+  if logname:
+    logfile = open(logname, "a")
 
   # reef is currently broken because it _needs_ a real portage environment
   # to pull in common code.
   # TODO(https://crbug.com/1144956): fix when reef is corrected
-
   if config.program == "reef":
     return None
 
-  cmd = [join_script, "-v"]
+  cmd = [join_script, "--l", "DEBUG"]
   cmd.extend(["--program-name", config.program])
   cmd.extend(["--project-name", config.project])
 
@@ -146,7 +156,7 @@ def run_backfill(config):
     cmd.extend(["--output", output])
 
     # execute the backfill
-    result = subprocess.run(cmd, stderr=subprocess.DEVNULL)
+    result = subprocess.run(cmd, stderr=logfile)
     if result.returncode != 0:
       print("Error executing backfill for {}-{}".format(config.program,
                                                         config.project))
@@ -180,11 +190,21 @@ def run_backfills(args, configs):
     nothing
   """
 
+  # create a logfile if requested
+  kwargs = {}
+  if args.logfile:
+    # open and close the logfile to truncate it so backfills can append
+    # We can't pickle the file object and send it as an argument with
+    # multiprocessing, so this is a workaround for that limitation
+    with open(args.logfile, "w"):
+      kwargs["logname"] = args.logfile
+
   nproc = 32
   nconfig = len(configs)
   output = {}
   with multiprocessing.Pool(processes=nproc) as pool:
-    results = pool.imap_unordered(run_backfill, configs, chunksize=1)
+    results = pool.imap_unordered(
+        functools.partial(run_backfill, **kwargs), configs, chunksize=1)
     for ii, result in enumerate(results, 1):
       sys.stderr.write(
           CLEAR_LINE + "[{}/{}] Processing backfills".format(ii, nconfig),)
@@ -222,6 +242,12 @@ def main():
       type=str,
       required=True,
       help="target file for diff information",
+  )
+  parser.add_argument(
+      "-l",
+      "--logfile",
+      type=str,
+      help="target file to log output from backfills",
   )
   args = parser.parse_args()
 
