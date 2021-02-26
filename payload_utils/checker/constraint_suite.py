@@ -42,9 +42,6 @@ class ConstraintSuite:
       self, program_config, project_config, factory_dir
     ):
       ...
-
-  A ConstraintSuite that defines no check methods will raise an exception on
-  initialization.
   """
 
   DELEGATED_ASSERTIONS = [
@@ -71,9 +68,6 @@ class ConstraintSuite:
         value for name, value in inspect.getmembers(self)
         if is_check(name, value)
     ]
-
-    if not self._checks:
-      raise InvalidConstraintSuiteError('No checks found on %s' % type(self))
 
     self.__add_delegated_assertions()
 

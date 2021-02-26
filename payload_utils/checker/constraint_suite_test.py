@@ -12,8 +12,7 @@ from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.api.design_pb2 import Design
 from chromiumos.config.api.program_pb2 import Program
 
-from checker.constraint_suite import (ConstraintSuite,
-                                      InvalidConstraintSuiteError)
+from checker.constraint_suite import ConstraintSuite
 
 # Some tests just check no exceptions were raised, and will not call self.assert
 # methods
@@ -124,12 +123,6 @@ class ConstraintSuiteTest(unittest.TestCase):
             project_config=None,
             factory_dir=pathlib.Path(tmpdir),
         )
-
-  def test_runs_checks_invalid_suite(self):
-    """Tests creating a ConstraintSuite with no checks."""
-    with self.assertRaisesRegex(InvalidConstraintSuiteError,
-                                'No checks found on.*InvalidConstraintSuite'):
-      InvalidConstraintSuite()
 
   def test_has_delegated_assertions(self):
     """Tests that ConstraintSuites have assertion methods."""

@@ -56,16 +56,20 @@ def main():
   program_checks_dir = os.path.join(os.path.dirname(args.program), '../checks')
 
   constraint_suite_directories = [
-      COMMON_CHECKS_PATH,
       program_checks_dir,
+      COMMON_CHECKS_PATH,
   ]
 
-  constraint_suites = []
+  # If two suites have the same name, only run the one in the program directory.
+  # This allows programs to override common suites.
+  constraint_suites = {}
   for directory in constraint_suite_directories:
-    constraint_suites.extend(
-        constraint_suite_discovery.discover_suites(directory))
+    for suite in constraint_suite_discovery.discover_suites(directory):
+      suite_name = suite.__class__.__name__
+      if suite_name not in constraint_suites:
+        constraint_suites[suite_name] = suite
 
-  for suite in constraint_suites:
+  for suite in constraint_suites.values():
     suite.run_checks(
         program_config=program_config,
         project_config=project_config,
