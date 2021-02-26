@@ -138,6 +138,21 @@ def merge_avl_dlm(config_bundle):
 
   client = bigquery.Client(project="chromeos-bot")
 
+  def merge_form_factor(design, name, device_form_factor):
+    """Map from form factor information in DLM to our proto definitions."""
+    try:
+      form_factor_enum = topology_pb2.HardwareFeatures.FormFactor
+      form_factor = getattr(form_factor_enum, device_form_factor)
+
+      for design_config in design.configs:
+        design_config.hardware_features.form_factor.form_factor = form_factor
+    except AttributeError:
+      logging.warning(
+          "invalid form factor '%s' for '%s'",
+          device_form_factor,
+          name,
+      )
+
   # canonicalize design names to be compatible with the DLM database
   project_names = [
       canonical_name(design.name) for design in config_bundle.design_list
@@ -165,26 +180,16 @@ def merge_avl_dlm(config_bundle):
 
     if len(rows) == 0:
       logging.warning("no results returned for '%s', bad project name?", name)
-    elif len(rows) > 1:
+      continue
+
+    if len(rows) > 1:
       logging.warning(
           "multiple results returned for '%s', cowardly refusing to merge DLM data",
           name,
       )
-    else:
-      form_factor_enum = topology_pb2.HardwareFeatures.FormFactor
+      continue
 
-      device_form_factor = rows[0].get('deviceFormFactor')
-      try:
-        form_factor = getattr(form_factor_enum, device_form_factor)
-
-        for design_config in design.configs:
-          design_config.hardware_features.form_factor.form_factor = form_factor
-      except AttributeError:
-        logging.warning(
-            "invalid form factor '%s' for '%s'",
-            device_form_factor,
-            name,
-        )
+    merge_form_factor(design, name, rows[0].get('deviceFormFactor'))
 
   return config_bundle
 
