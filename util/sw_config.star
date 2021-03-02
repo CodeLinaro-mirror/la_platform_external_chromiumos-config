@@ -37,7 +37,7 @@ _FW_TYPE = struct(
     PD = fw_pb.FirmwareType.PD,
 )
 
-def _create_fw_version(major_version = None, minor_version = None):
+def _create_fw_version(major_version = None, minor_version = None, patch_version = None):
     """
     Builds a firmware Version proto.
 
@@ -46,18 +46,20 @@ def _create_fw_version(major_version = None, minor_version = None):
     return fw_pb.Version(
         major = major_version,
         minor = minor_version,
+        patch = patch_version,
     ) if major_version else None
 
 def _create_fw_payload(
         name = None,
         fw_type = _FW_TYPE.MAIN,
         major_version = 0,
-        minor_version = 0):
+        minor_version = 0,
+        patch_version = 0):
     """Builds a FirmwarePayload proto."""
     return fw_pb.FirmwarePayload(
         firmware_image_name = name,
         type = fw_type,
-        version = fw_pb.Version(major = major_version, minor = minor_version),
+        version = fw_pb.Version(major = major_version, minor = minor_version, patch = patch_version),
     )
 
 def _create_fw_build_targets(

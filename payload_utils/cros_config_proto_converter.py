@@ -352,9 +352,9 @@ def _build_hardware_properties(hw_topology):
 
 def _fw_bcs_path(payload):
   if payload and payload.firmware_image_name:
-    return 'bcs://%s.%d.%d.0.tbz2' % (payload.firmware_image_name,
-                                      payload.version.major,
-                                      payload.version.minor)
+    return 'bcs://%s.%d.%d.%d.tbz2' % (
+        payload.firmware_image_name, payload.version.major,
+        payload.version.minor, payload.version.patch)
 
   return None
 
