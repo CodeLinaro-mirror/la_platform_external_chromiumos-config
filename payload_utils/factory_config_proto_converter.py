@@ -215,6 +215,11 @@ def TransformDesignTable(design_config, design_table):
            ],
            ["stylus", "==", 1 if design_table['component.has_stylus'] else 0]]
   })
+  if CastPresent(
+      GetFeatures(topology, 'keyboard', ['keyboard', 'numeric_pad'])):
+    design_table.update({
+        'component.has_numeric_pad': True,
+    })
 
 
 def CreateCommonTable(design_table):

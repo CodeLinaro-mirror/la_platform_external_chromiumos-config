@@ -278,13 +278,14 @@ def _create_stylus(id, description, stylus_type, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_keyboard(backlight, pwr_btn_present, kb_type, fw_configs = [], id = None, description = None):
+def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None):
     """Builds a Topology proto for a keyboard.
 
     Args:
         backlight: True if a backlight is present. Required.
         pwr_btn_present: True if a power button is present. Required.
         kb_type: A KeyboardType enum. Required.
+        numpad_present: True if numeric pad is present.
         fw_configs: A list of FirmwareConfiguration protos for the form factor.
         id: A string identifier for the Topology. If not passed, a default is
             provided.
@@ -317,6 +318,7 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, fw_configs = [], id = 
     hw_features.keyboard.keyboard_type = kb_type
     hw_features.keyboard.backlight = _bool_to_present(backlight)
     hw_features.keyboard.power_button = _bool_to_present(pwr_btn_present)
+    hw_features.keyboard.numeric_pad = _bool_to_present(numpad_present)
 
     _accumulate_fw_configs(hw_features, fw_configs)
 

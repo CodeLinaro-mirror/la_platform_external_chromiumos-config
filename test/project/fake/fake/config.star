@@ -56,7 +56,7 @@ _TOUCHSCREEN = hw_topo.create_screen(
 )
 _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.audio_codec.MAX98373, headphone_codec = hw_topo.audio_codec.ALC5682I)
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
-_KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE)
+_KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE, numpad_present = True)
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
 _CAMERA1 = hw_topo.create_camera(
     "CAMERA1",

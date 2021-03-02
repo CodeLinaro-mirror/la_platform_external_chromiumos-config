@@ -317,6 +317,9 @@ message HardwareFeatures {
 
     // If power button is present on keyboard
     Present power_button = 3;
+
+    // If numeric pad is present on keyboard
+    Present numeric_pad = 4;
   }
 
   // Memory properties of system

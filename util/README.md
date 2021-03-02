@@ -502,6 +502,7 @@ hw_topo.create_keyboard(
     kb_type,
 
     # Optional arguments.
+    numpad_present,
     fw_configs = None,
     id = None,
     description = None,
@@ -513,6 +514,7 @@ hw_topo.create_keyboard(
 * **backlight**: True if a backlight is present. Required.
 * **pwr_btn_present**: True if a power button is present. Required.
 * **kb_type**: A KeyboardType enum. Required.
+* **numpad_present**: True if numeric pad is present.
 * **fw_configs**: A list of FirmwareConfiguration protos for the form factor.
 * **id**: A string identifier for the Topology. If not passed, a default is provided.
 * **description**: An English description for the Topology. If not passed, a default is provided.
