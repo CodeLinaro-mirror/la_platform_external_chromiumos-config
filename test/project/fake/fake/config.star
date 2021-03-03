@@ -698,6 +698,12 @@ comp.append_touchpad(
     product_id = "ABC1",
     fw_version = "1.1",
 )
+comp.append_battery(
+    _COMPONENTS,
+    _COMPONENT_VENDORS,
+    battery_vendor = partner.battery.PANASONIC,
+    model = "AP15O5L",
+)
 
 _COMPONENTS.append(
     comp.create_wifi(

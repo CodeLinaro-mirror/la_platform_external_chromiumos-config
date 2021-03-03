@@ -123,6 +123,12 @@
       }
     },
     {
+      "battery": {
+        "model": "AP15O5L",
+        "technology": 1
+      }
+    },
+    {
       "id": {
         "value": "0f22:0a11:11"
       },
@@ -3154,6 +3160,15 @@
         "symlinkFileFormat": "hid-{vendor_id}_{product_id}",
         "vendorId": "06CB"
       }
+    },
+    {
+      "batteryVendor": {
+        "vendorName": "panasonic"
+      },
+      "id": {
+        "value": "panasonic"
+      },
+      "name": "panasonic"
     }
   ],
   "softwareConfigs": [

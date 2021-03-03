@@ -188,10 +188,17 @@ def _create_audio_codec(name):
         name = name,
     )
 
+_BATTERY_TECHNOLOGY = struct(
+    TECH_UNKNOWN = comp_pb.Component.Battery.TECH_UNKNOWN,
+    LI_ION = comp_pb.Component.Battery.LI_ION,
+)
+
 def _create_battery(model, technology):
-    return comp_pb.Component.Battery(
-        model = model,
-        technology = technology,
+    return comp_pb.Component(
+        battery = comp_pb.Component.Battery(
+            model = model,
+            technology = technology,
+        ),
     )
 
 def _create_flash_chip(part_number):
@@ -289,6 +296,21 @@ def _append_touchscreen(
         ),
     )
 
+def _append_battery(
+        component_list,
+        vendor_list,
+        battery_vendor,
+        model,
+        technology = _BATTERY_TECHNOLOGY.LI_ION):
+    if not battery_vendor in vendor_list:
+        vendor_list.append(battery_vendor)
+    component_list.append(
+        _create_battery(
+            model = model,
+            technology = technology,
+        ),
+    )
+
 comp = struct(
     create_soc_family = _create_soc_family,
     create_soc_model = _create_soc_model,
@@ -309,7 +331,9 @@ comp = struct(
     qual_status = _qual_status,
     create_usb = _create_usb,
     create_pci = _create_pci,
+    append_battery = _append_battery,
     append_display_panel = _append_display_panel,
     append_touchpad = _append_touchpad,
     append_touchscreen = _append_touchscreen,
+    battery_technology = _BATTERY_TECHNOLOGY,
 )

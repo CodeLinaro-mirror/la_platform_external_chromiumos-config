@@ -39,6 +39,7 @@ def _create_battery_partner(name):
     partner.battery_vendor = partner_pb.Partner.BatteryVendor(
         vendor_name = name,
     )
+    return partner
 
 def _create(name):
     """Builds a Partner proto."""
@@ -160,7 +161,7 @@ partner = struct(
     ),
     battery = struct(
         PANASONIC = _create_battery_partner(
-            name = "PANASON",
+            name = "panasonic",
         ),
     ),
 )
