@@ -448,10 +448,12 @@ def _build_audio(config):
   alsa_path = '/usr/share/alsa/ucm'
   cras_path = '/etc/cras'
   sound_card_init_path = '/etc/sound_card_init'
-  project_name = config.hw_design.name.lower()
+  design_name = config.hw_design.name.lower()
   program_name = config.program.name.lower()
   files = []
   ucm_suffix = None
+  sound_card_init_conf = None
+
   for audio in config.sw_config.audio_configs:
     card = audio.card_name
     card_with_suffix = audio.card_name
@@ -471,32 +473,34 @@ def _build_audio(config):
     if audio.card_config_file:
       files.append(
           _file(audio.card_config_file,
-                '%s/%s/%s' % (cras_path, project_name, card)))
+                '%s/%s/%s' % (cras_path, design_name, card)))
     if audio.dsp_file:
       files.append(
-          _file(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, project_name)))
+          _file(audio.dsp_file, '%s/%s/dsp.ini' % (cras_path, design_name)))
     if audio.module_file:
       files.append(
           _file(audio.module_file,
                 '/etc/modprobe.d/alsa-%s.conf' % program_name))
     if audio.board_file:
       files.append(
-          _file(audio.board_file,
-                '%s/%s/board.ini' % (cras_path, project_name)))
+          _file(audio.board_file, '%s/%s/board.ini' % (cras_path, design_name)))
     if audio.sound_card_init_file:
+      sound_card_init_conf = design_name + ".yaml"
       files.append(
           _file(audio.sound_card_init_file,
-                '%s/%s.yaml' % (sound_card_init_path, audio.card_id)))
+                '%s/%s.yaml' % (sound_card_init_path, design_name)))
 
   result = {
       'main': {
-          'cras-config-dir': project_name,
+          'cras-config-dir': design_name,
           'files': files,
       }
   }
 
   if ucm_suffix:
     result['main']['ucm-suffix'] = ucm_suffix
+  if sound_card_init_conf:
+    result['main']['sound-card-init-conf'] = sound_card_init_conf
 
   return result
 
