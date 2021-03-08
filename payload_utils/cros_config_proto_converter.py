@@ -1339,7 +1339,7 @@ def _create_intel_sar_file_content(intel_config):
           wgds_value(intel_config.wgds_version) +
           offset_table(intel_config.offset_fcc) +
           offset_table(intel_config.offset_eu) +
-          offset_table(intel_config.offset_other))
+          offset_table(intel_config.offset_other) + '\0')
 
 
 def Main(project_configs, program_config, output):  # pylint: disable=invalid-name
