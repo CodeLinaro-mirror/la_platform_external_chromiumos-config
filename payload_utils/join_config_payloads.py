@@ -391,6 +391,10 @@ def add_hwid_components(config_bundle, hwid_db):
     # anyways, so we'll deduplicate parts here
     part_values = {}
     for _, values in non_null_values(items):
+      # skip incompletely specified parts
+      if not all(key in values for key in ['part', 'size', 'timing']):
+        continue
+
       part_values[values['part']] = (int(values['size']), values['timing'])
 
     for part_number, (size, timing) in part_values.items():
