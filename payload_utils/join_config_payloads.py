@@ -50,6 +50,16 @@ CROS_CONFIG_INTERNAL_REPO = 'https://chrome-internal.googlesource.com/chromeos/c
 DLM_PRODUCTS_TABLE = 'cros-device-lifecycle-manager.prod.products'
 DLM_DEVICES_TABLE = 'cros-device-lifecycle-manager.prod.devices'
 
+# gs bucket names
+BCS_BUCKET = 'gs://chromeos-binaries'
+
+
+def remove_prefix(value, prefix):
+  """Remove a prefix from a string, if present"""
+  if value.startswith(prefix):
+    return value[len(prefix):]
+  return value
+
 
 def load_models(public_path, private_path):
   """Load model.yaml from a public and/or private path."""
@@ -652,25 +662,41 @@ def merge_firmware_config(sw_config, model):
   Returns:
     None
   """
-  fw_props = model.GetProperties('/firmware')
+
+  # extra model.yaml firmware config and the raw bcs overlay needed to resolve
+  # bcs:// paths to absolute gs:// paths
+  fw_props = model.GetFirmwareConfig()
+  bcs_overlay = remove_prefix(fw_props.get('bcs-overlay', ''), 'overlay-')
+  bcs_ebuild = bcs_overlay.split('-')[0]
+
+  def decode_bcs_url(url):
+    """Convert a bcs:// url to an absolute gs:// one."""
+    gs_template = BCS_BUCKET + '/HOME' + \
+      '/bcs-{bcs}/overlay-{bcs}/chromeos-base/chromeos-firmware-{ebuild}/{path}'
+
+    if url.startswith("bcs://") and bcs_overlay:
+      url = remove_prefix(url, "bcs://")
+      return gs_template.format(
+          bcs=bcs_overlay, model=model.GetName(), path=url, ebuild=bcs_ebuild)
+    return url
 
   # Populate firmware config
   fw_config = sw_config.firmware
   fw_config.main_ro_payload.type = firmware_config_pb2.FirmwareType.MAIN
   fw_config.main_ro_payload.firmware_image_name = \
-      fw_props.get('main-ro-image', '')
+    decode_bcs_url(fw_props.get('main-ro-image', ''))
 
   fw_config.main_rw_payload.type = firmware_config_pb2.FirmwareType.MAIN
   fw_config.main_rw_payload.firmware_image_name = \
-      fw_props.get('main-rw-image', '')
+    decode_bcs_url(fw_props.get('main-rw-image', ''))
 
   fw_config.ec_ro_payload.type = firmware_config_pb2.FirmwareType.EC
   fw_config.ec_ro_payload.firmware_image_name = \
-      fw_props.get('ec-ro-image', '')
+    decode_bcs_url(fw_props.get('ec-ro-image', ''))
 
   fw_config.pd_ro_payload.type = firmware_config_pb2.FirmwareType.PD
   fw_config.pd_ro_payload.firmware_image_name = \
-      fw_props.get('pd-ro-image', '')
+    decode_bcs_url(fw_props.get('pd-ro-image', ''))
 
   # Populate build config
   build_props = model.GetProperties('/firmware/build-targets')
