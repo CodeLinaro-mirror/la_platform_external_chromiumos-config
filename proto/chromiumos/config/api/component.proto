@@ -257,6 +257,7 @@ message Component {
     string prv = 5;
     string sectors = 6;
     StorageType type = 7;
+    uint32 size_gb = 8;
   }
 
   // Defines a Trusted Platform Module, for more information see here:
