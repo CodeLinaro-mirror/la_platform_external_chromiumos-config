@@ -121,7 +121,8 @@ partner = struct(
         RAYDIUM = _create_touch_partner(
             name = "raydium",
             vendor_id = "2386",
-            symlink_file_format = "raydium_0x{product_series}{product_id}_{fw_version}.fw",
+            symlink_file_format = "raydium_0x{product_series}{product_id}.fw",
+            destination_file_format = "raydium_0x{product_series}{product_id}_{fw_version}.fw",
         ),
         SIS = _create_touch_partner(
             name = "sis",
