@@ -469,7 +469,7 @@ def add_hwid_components(config_bundle, hwid_db):
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
       comp.id.value = key
-      comp.name = key
+      comp.name = values.get('model', key)
 
       comp.storage.emmc5_fw_ver = values.get('emmc5_fw_ver', '')
       comp.storage.manfid = values.get('manfid', '')
@@ -482,6 +482,9 @@ def add_hwid_components(config_bundle, hwid_db):
         storage_type = values['type'].lower()
         if storage_type == 'mmc':
           comp.storage.type = comp.storage.EMMC
+
+      if values.get('vendor', '').upper() == 'ATA':
+        comp.storage.type = comp.storage.SATA
 
   def create_touchpad_components(items):
     for key, values in non_null_values(items):
