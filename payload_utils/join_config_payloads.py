@@ -513,6 +513,29 @@ def add_hwid_components(config_bundle, hwid_db):
       comp.tpm.manufacturer_info = values.get('manufacturer_info', '')
       comp.tpm.version = values.get('version', '')
 
+  def create_touchscreen_components(items):
+    """Populate touchscreen components from HWID"""
+
+    def oneof(values, keys, default=""):
+      for key in keys:
+        if key in values:
+          return values[key]
+      return default
+
+    for key, values in non_null_values(items):
+      comp = config_bundle.components.add()
+      comp.id.value = key
+      comp.name = values.get('name', key)
+      comp.hwid_label = key
+
+      comp.touchscreen.product_id = key
+      comp.touchscreen.usb.product_id = oneof(values, ['product', 'product_id'])
+      comp.touchscreen.usb.vendor_id = oneof(values, ['vendor', 'vendor_id'])
+      comp.touchscreen.usb.bcd_device = values.get('bcd_device', '')
+
+      if comp.touchscreen.usb.product_id and comp.touchscreen.usb.vendor_id:
+        comp.touchscreen.type = comp.touchscreen.USB
+
   def create_usb_host_components(items):
 
     def get_oneof(obj, keys, default=None):
@@ -596,6 +619,7 @@ def add_hwid_components(config_bundle, hwid_db):
           'storage': create_storage_components,
           'touchpad': create_touchpad_components,
           'tpm': create_tpm_components,
+          'touchscreen': create_touchscreen_components,
           'usb_hosts': create_usb_host_components,
           'video': create_video_components,
           'wireless': create_wireless_components
