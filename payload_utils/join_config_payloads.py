@@ -486,6 +486,16 @@ def add_hwid_components(config_bundle, hwid_db):
       if values.get('vendor', '').upper() == 'ATA':
         comp.storage.type = comp.storage.SATA
 
+  def create_stylus_components(items):
+    for key, values in non_null_values(items):
+      comp = config_bundle.components.add()
+      comp.id.value = key
+      comp.name = values.get('name', '')
+
+      if 'product' in values and 'vendor' in values:
+        comp.stylus.i2c.product = values['product']
+        comp.stylus.i2c.vendor = values['vendor']
+
   def create_touchpad_components(items):
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
@@ -623,6 +633,7 @@ def add_hwid_components(config_bundle, hwid_db):
           'touchpad': create_touchpad_components,
           'tpm': create_tpm_components,
           'touchscreen': create_touchscreen_components,
+          'stylus': create_stylus_components,
           'usb_hosts': create_usb_host_components,
           'video': create_video_components,
           'wireless': create_wireless_components
