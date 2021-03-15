@@ -537,9 +537,13 @@ def add_hwid_components(config_bundle, hwid_db):
       host.bcd_device = get_oneof(values, ['bcdDevice', 'revision_id'], '')
 
   def create_video_components(items):
+    usb_fields = ['bcdDevice', 'idProduct', 'idVendor']
+    pci_fields = ['vendor', 'device', 'revision_id']
+
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
-      if values.get('bus_type') == 'usb':
+      if values.get('bus_type') == 'usb' or \
+         all(key in values for key in usb_fields):
         comp.id.value = key
         comp.name = values['product']
 
@@ -552,7 +556,8 @@ def add_hwid_components(config_bundle, hwid_db):
         comp.camera.usb.product_id = values.get('idProduct', '')
         comp.camera.usb.bcd_device = values.get('bcdDevice', '')
 
-      if values.get('bus_type') == 'pci':
+      if values.get('bus_type') == 'pci' or \
+         all(key in values for key in pci_fields):
         comp.id.value = key
         comp.name = key
 
