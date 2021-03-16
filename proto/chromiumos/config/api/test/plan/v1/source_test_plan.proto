@@ -1,0 +1,82 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.test.plan.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/plan/v1;plan";
+
+// Describes the test cases, software requirements, and hardware requirements
+// that run when a given set of files are changed.
+//
+// This message contains high-level rules for test planning, e.g. "test on all
+// kernel versions". This is then evaluated into a Specification message which
+// contains attributes that must be tested; in the above example, this would be
+// a list of kernel versions used by ChromeOS.
+//
+// This message is intended to be specified as a text proto in the source tree,
+// and should be concise enough Starlark, or another config generation tool, is
+// not needed.
+message SourceTestPlan {
+  // Different environments ChromeOS tests run in.
+  enum TestEnvironment {
+    TEST_TYPE_UNSPECIFIED = 0;
+    HARDWWARE = 1;
+    VIRTUAL = 2;
+  }
+
+  // Test environments enabled for the test plan. Must contain at least one
+  // test type.
+  repeated TestEnvironment enabled_test_environments = 1;
+
+  // Paths that will trigger the SourceTestPlan.
+  //
+  // Must be a source-absolute ChromeOS path. For example,
+  // “//src/platform2/arc/.*” for
+  // https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/arc/,
+  // based on the manifest’s repo to source path mapping.
+  //
+  // Paths can only match files in the subtree of the DIR_METADATA file.
+  //
+  // Patterns use Google Re2 syntax. The comparison is a full match. The pattern
+  // is implicitly anchored with ^ and $, so there is no need to add them.
+  //
+  // If path_regexp is not specified, it is implied to be all files in
+  // the directory of the DIR_METADATA file and all files in subdirectories.
+  //
+  // If a file is matched by both path_regexp and path_regexp_exclude, it is
+  // excluded.
+  repeated string path_regexps = 2;
+  repeated string path_regexp_excludes = 3;
+
+  // Only run tests that have at least one of test_tags (if specified) and do
+  // not have any of test_tag_excludes.
+  //
+  // Tags must match exactly (i.e. no regexp, wildcard, etc. allowed).
+  repeated string test_tags = 4;
+  repeated string test_tag_excludes = 5;
+
+  // The below messages and fields are requirements that must be satisfied by
+  // the SourceTestPlan.
+  //
+  // Each requirement is a message, so it can be extended with more details if
+  // needed. An empty message implies presence of the requirement, e.g.
+  // `soc_families {}`.
+  //
+  // Every requirement must be satisfied; for example, if kernel_versions and
+  // soc_families are both specified, tests must be run at least once on each
+  // kernel version and on each SoC family. The cartesian product of
+  // requirements is not required, i.e. all possible kernel version, SoC family
+  // combinations do not need to be tested.
+
+  // Run tests at least once on each kernel version.
+  message KernelVersions {}
+
+  // Run tests at least once on each SoC family.
+  message SocFamilies {}
+
+  KernelVersions kernel_versions = 6;
+  SocFamilies soc_families = 7;
+}
