@@ -492,9 +492,21 @@ def add_hwid_components(config_bundle, hwid_db):
       comp.id.value = key
       comp.name = values.get('name', '')
 
-      if 'product' in values and 'vendor' in values:
+      i2c_keys = ['product', 'vendor']
+      if all(key in values for key in i2c_keys):
         comp.stylus.i2c.product = values['product']
         comp.stylus.i2c.vendor = values['vendor']
+
+      usb_keys = ['product_id', 'vendor_id']
+      if all(key in values for key in usb_keys):
+        comp.stylus.usb.product_id = values['product_id']
+        comp.stylus.usb.vendor_id = values['vendor_id']
+
+        if 'bcd_device' in values:
+          comp.stylus.usb.bcd_device = values['bcd_device']
+
+        if 'version' in values:
+          comp.stylus.usb.bcd_device = values['version']
 
   def create_touchpad_components(items):
     for key, values in non_null_values(items):
