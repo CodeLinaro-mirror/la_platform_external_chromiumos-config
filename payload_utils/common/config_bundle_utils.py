@@ -65,15 +65,15 @@ def flatten_config(config: ConfigBundle) -> FlatConfigList:
         sw_config_matches = [
             x for x in sw_configs if x.design_config_id.value == design_id
         ]
-        sw_config = sw_config_matches[0]
-
         flat_config = results.values.add()
         flat_config.hw_design.MergeFrom(hw_design)
         flat_config.hw_design_config.MergeFrom(hw_design_config)
         flat_config.hw_components.MergeFrom(config.components)
         flat_config.device_brand.MergeFrom(device_brand)
-        flat_config.sw_config.MergeFrom(sw_config)
         flat_config.brand_sw_config.MergeFrom(brand_config)
+
+        if sw_config_matches:
+          flat_config.sw_config.MergeFrom(sw_config_matches[0])
 
         # Sometimes programs are a little slow to get properly added, so let's
         # not fail completely if they're not there, we'll just leave it empty
