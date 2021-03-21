@@ -1179,26 +1179,32 @@ if __name__ == '__main__':
       type=str,
       required=True,
       help='output file to write joined ConfigBundle jsonproto to')
+
+  parser.add_argument(
+      '-p',
+      '--project-name',
+      type=str,
+      required=True,
+      help="""When specified without --config-bundle/-c, this species the project name to
+generate ConfigBundle information for from the model.yaml/HWID files.  When
+specified with --config-bundle/-c, then only projects with this name will be
+updated.""")
+
+  parser.add_argument(
+      '--program-name',
+      type=str,
+      required=True,
+      help="""Program name to add to the output ConfigBundle.  This program will be
+added to the program_list even if there are no designs present.""")
+
   parser.add_argument(
       '-c',
       '--config-bundle',
       type=str,
       help="""generated config_bundle payload in jsonpb format
 (eg: generated/config.jsonproto).  If not specified, an empty ConfigBundle
-instance is used instad.""")
-  parser.add_argument(
-      '-p',
-      '--project-name',
-      type=str,
-      help="""When specified without --config-bundle/-c, this species the project name to
-generate ConfigBundle information for from the model.yaml/HWID files.  When
-specified with --config-bundle/-c, then only projects with this name will be
-updated.""")
-  parser.add_argument(
-      '--program-name',
-      type=str,
-      help="""Program name to add to the output ConfigBundle.  This program will be
-added to the program_list even if there are no designs present.""")
+instance is used instead.""")
+
   parser.add_argument(
       '--public-model', type=str, help='public model.yaml file to merge')
   parser.add_argument(
