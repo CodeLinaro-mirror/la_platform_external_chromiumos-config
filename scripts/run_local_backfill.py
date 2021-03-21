@@ -14,6 +14,7 @@ import collections
 import functools
 import itertools
 import json
+import logging
 import multiprocessing
 import multiprocessing.pool
 import os
@@ -27,6 +28,7 @@ import time
 this_dir = pathlib.Path(os.path.dirname(os.path.abspath(__file__)))
 hwid_path = (this_dir / "../../platform/chromeos-hwid/v3").resolve()
 join_script = (this_dir / "../payload_utils/join_config_payloads.py").resolve()
+merge_script = (this_dir / "../payload_utils/aggregate_messages.py").resolve()
 public_path = (this_dir / "../../overlays").resolve()
 private_path = (this_dir / "../../private-overlays").resolve()
 project_path = (this_dir / "../../project").resolve()
@@ -115,14 +117,60 @@ def parse_build_property(build, name):
   return None
 
 
-def run_backfill(config, logname=None):
+def jqdiff(filea, fileb, filt="."):
+  """Diff two json files using jq to get a semantic diff.
+
+  Args:
+    filea (str): first file to compare
+    fileb (str): second file to compare
+    filt (str): if supplied, jq filter to apply to inputs before comparing
+      The filter is quoted with '' for the user so take care when specifying.
+
+  Return:
+    diff between inputs
+  """
+
+  process = subprocess.run(
+      "diff -u <(jq -S '{}' {}) <(jq -S '{}' {})".format(
+          filt,
+          filea,
+          filt,
+          fileb,
+      ),
+      shell=True,
+      text=True,
+      capture_output=True,
+  )
+  return process.stdout
+
+
+def run_backfill(config, logname=None, run_imported=True, run_joined=True):
   """Run a single backfill job, return diff of current and new output.
 
   Args:
     config: BackfillConfig instance for the backfill operation.
     logname: Filename to redirect stderr to from backfill
-      default is to supress the output
+      default is to suppress the output
+    run_imported: If True, generate a diff for the imported payload
+    run_joined: If True, generate a diff for the joined payload
   """
+
+  def run_diff(cmd, current, output):
+    """Execute cmd and diff the current and output files"""
+    logfile.write("running: {}\n".format(" ".join(map(str, cmd))))
+
+    subprocess.run(cmd, stderr=logfile, check=True)
+
+    # if one or the other file doesn't exist, return the other as a diff
+    if current.exists() != output.exists():
+      if current.exists():
+        return open(current).read()
+      return open(output).read()
+
+    # otherwise run diff
+    return jqdiff(current, output)
+
+  #### start of function body
 
   logfile = subprocess.DEVNULL
   if logname:
@@ -149,29 +197,40 @@ def run_backfill(config, logname=None):
     cmd.extend(
         ["--private-model", private_path / overlay / config.private_model])
 
+  # path to project repo and config bundle
+  path_repo = project_path / config.program / config.project
+
   # create temporary directory for output
-  with tempfile.TemporaryDirectory() as tmpdir:
-    imported = project_path / config.program / config.project / "generated/imported.jsonproto"
-    output = pathlib.Path(tmpdir) / "output.jsonproto"
-    cmd.extend(["--output", output])
+  diff_imported = ""
+  diff_joined = ""
+  with tempfile.TemporaryDirectory() as scratch:
+    scratch = pathlib.Path(scratch)
 
-    # execute the backfill
-    result = subprocess.run(cmd, stderr=logfile)
-    if result.returncode != 0:
-      print("Error executing backfill for {}-{}".format(config.program,
-                                                        config.project))
-      return None
+    # path to config bundle
+    path_config = path_repo / "generated/config.jsonproto"
 
-    # use jq to generate a nice diff of the output if it exists
-    if imported.exists():
-      process = subprocess.run(
-          "diff -u <(jq -S . {}) <(jq -S . {})".format(imported, output),
-          shell=True,
-          text=True,
-          capture_output=True)
+    # generate diff of imported payloads
+    path_imported_old = path_repo / "generated/imported.jsonproto"
+    path_imported_new = scratch / "imported.jsonproto"
 
-      return ("{}-{}".format(config.program, config.project), process.stdout)
-    return None
+    if run_imported:
+      diff_imported = run_diff(
+          cmd + ["--output", path_imported_new],
+          path_imported_old,
+          path_imported_new,
+      )
+
+    # generate diff of joined payloads
+    if run_joined and path_config.exists():
+      path_joined_old = path_repo / "generated/joined.jsonproto"
+      path_joined_new = scratch / "joined.jsonproto"
+
+      diff_joined = run_diff(
+          cmd + ["--config-bundle", path_config, "--output", path_joined_new],
+          path_joined_old, path_joined_new)
+
+  return ("{}-{}".format(config.program,
+                         config.project), diff_imported, diff_joined)
 
 
 def run_backfills(args, configs):
@@ -192,6 +251,7 @@ def run_backfills(args, configs):
 
   # create a logfile if requested
   kwargs = {}
+  kwargs["run_joined"] = args.joined_diff is not None
   if args.logfile:
     # open and close the logfile to truncate it so backfills can append
     # We can't pickle the file object and send it as an argument with
@@ -201,7 +261,8 @@ def run_backfills(args, configs):
 
   nproc = 32
   nconfig = len(configs)
-  output = {}
+  imported_diffs = {}
+  joined_diffs = {}
   with multiprocessing.Pool(processes=nproc) as pool:
     results = pool.imap_unordered(
         functools.partial(run_backfill, **kwargs), configs, chunksize=1)
@@ -210,24 +271,27 @@ def run_backfills(args, configs):
           CLEAR_LINE + "[{}/{}] Processing backfills".format(ii, nconfig),)
 
       if result:
-        id, data = result
-        output[id] = data
+        key, imported, joined = result
+        imported_diffs[key] = imported
+        joined_diffs[key] = joined
 
     sys.stderr.write(CLEAR_LINE + "[✔] Processing backfills")
 
   # generate final über diff showing all the changes
-  with open(args.output, "w") as ofile:
-    all_empty = True
-    for name, result in sorted(output.items()):
+  with open(args.imported_diff, "w") as ofile:
+    for name, result in sorted(imported_diffs.items()):
       ofile.write("## ---------------------\n")
       ofile.write("## diff for {}\n".format(name))
       ofile.write("\n")
       ofile.write(result + "\n")
 
-      all_empty = all_empty and result.strip() == ""
-
-    if all_empty:
-      print("No diffs detected!\n")
+  if args.joined_diff:
+    with open(args.joined_diff, "w") as ofile:
+      for name, result in sorted(joined_diffs.items()):
+        ofile.write("## ---------------------\n")
+        ofile.write("## diff for {}\n".format(name))
+        ofile.write("\n")
+        ofile.write(result + "\n")
 
 
 def main():
@@ -237,12 +301,18 @@ def main():
   )
 
   parser.add_argument(
-      "-o",
-      "--output",
+      "--imported-diff",
       type=str,
       required=True,
-      help="target file for diff information",
+      help="target file for diff on imported.jsonproto payload",
   )
+
+  parser.add_argument(
+      "--joined-diff",
+      type=str,
+      help="target file for diff on joined.jsonproto payload",
+  )
+
   parser.add_argument(
       "-l",
       "--logfile",
@@ -284,15 +354,22 @@ def main():
     public_yaml = parse_build_property(builder, "public_yaml") or {}
     private_yaml = parse_build_property(builder, "private_yaml") or {}
 
-    configs.append(
-        BackfillConfig(
-            program=parse_build_property(builder, "program_name"),
-            project=parse_build_property(builder, "project_name"),
-            hwid_key=parse_build_property(builder, "hwid_key"),
-            public_model=public_yaml.get("path"),
-            private_repo=private_yaml.get("repo"),
-            private_model=private_yaml.get("path"),
-        ))
+    config = BackfillConfig(
+        program=parse_build_property(builder, "program_name"),
+        project=parse_build_property(builder, "project_name"),
+        hwid_key=parse_build_property(builder, "hwid_key"),
+        public_model=public_yaml.get("path"),
+        private_repo=private_yaml.get("repo"),
+        private_model=private_yaml.get("path"),
+    )
+
+    path_repo = project_path / config.program / config.project
+    if not path_repo.exists():
+      logging.warning("{}/{} does not exist locally, skipping".format(
+          config.program, config.project))
+      continue
+
+    configs.append(config)
 
   run_backfills(args, configs)
 
