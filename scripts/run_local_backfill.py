@@ -172,6 +172,10 @@ def run_backfill(config, logname=None, run_imported=True, run_joined=True):
 
   #### start of function body
 
+  # path to project repo and config bundle
+  path_repo = project_path / config.program / config.project
+  path_config = path_repo / "generated/config.jsonproto"
+
   logfile = subprocess.DEVNULL
   if logname:
     logfile = open(logname, "a")
@@ -186,6 +190,9 @@ def run_backfill(config, logname=None, run_imported=True, run_joined=True):
   cmd.extend(["--program-name", config.program])
   cmd.extend(["--project-name", config.project])
 
+  if path_config.exists():
+    cmd.extend(["--config-bundle", path_config])
+
   if config.hwid_key:
     cmd.extend(["--hwid", hwid_path / config.hwid_key])
 
@@ -197,17 +204,11 @@ def run_backfill(config, logname=None, run_imported=True, run_joined=True):
     cmd.extend(
         ["--private-model", private_path / overlay / config.private_model])
 
-  # path to project repo and config bundle
-  path_repo = project_path / config.program / config.project
-
   # create temporary directory for output
   diff_imported = ""
   diff_joined = ""
   with tempfile.TemporaryDirectory() as scratch:
     scratch = pathlib.Path(scratch)
-
-    # path to config bundle
-    path_config = path_repo / "generated/config.jsonproto"
 
     # generate diff of imported payloads
     path_imported_old = path_repo / "generated/imported.jsonproto"
@@ -215,7 +216,7 @@ def run_backfill(config, logname=None, run_imported=True, run_joined=True):
 
     if run_imported:
       diff_imported = run_diff(
-          cmd + ["--output", path_imported_new],
+          cmd + ["--import-only", "--output", path_imported_new],
           path_imported_old,
           path_imported_new,
       )
@@ -225,9 +226,8 @@ def run_backfill(config, logname=None, run_imported=True, run_joined=True):
       path_joined_old = path_repo / "generated/joined.jsonproto"
       path_joined_new = scratch / "joined.jsonproto"
 
-      diff_joined = run_diff(
-          cmd + ["--config-bundle", path_config, "--output", path_joined_new],
-          path_joined_old, path_joined_new)
+      diff_joined = run_diff(cmd + ["--output", path_joined_new],
+                             path_joined_old, path_joined_new)
 
   return ("{}-{}".format(config.program,
                          config.project), diff_imported, diff_joined)

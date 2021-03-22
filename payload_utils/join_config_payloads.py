@@ -156,6 +156,10 @@ def merge_avl_dlm(config_bundle):
 
   def merge_form_factor(design, name, device_form_factor):
     """Map from form factor information in DLM to our proto definitions."""
+    if not device_form_factor:
+      logging.warning("Null form factor for '%s', skipping", design)
+      return
+
     try:
       form_factor_enum = topology_pb2.HardwareFeatures.FormFactor
       form_factor = getattr(form_factor_enum, device_form_factor)
@@ -176,6 +180,10 @@ def merge_avl_dlm(config_bundle):
       design (Design): design instance to modify with platform information"
       platform (str): platform name as pulled from DLM
     """
+
+    if not platform:
+      logging.warning("Null platform for '%s', skipping", design)
+      return
 
     # canonicalize to uppercase and take first of any alternates seperated by /
     platform = platform.upper().split("/")[0]
@@ -1005,31 +1013,89 @@ def merge_model(config_bundle, design_config, model):
   return config_bundle
 
 
-def merge_configs(config_path, program_name, project_name, public_path,
-                  private_path, hwid_path):
-  # pylint: disable=too-many-arguments
+def merge_configs(options):
   # pylint: disable=too-many-locals
   # pylint: disable=too-many-branches
   # pylint: disable=too-many-statements
   """Read and merge configs together, generating new config_bundle output."""
 
+  config_bundle_path = options.config_bundle
+  program_name = options.program_name
+  project_name = options.project_name
+  public_path = options.public_model
+  private_path = options.private_model
+  hwid_path = options.hwid
+
+  def safe_equal(stra, strb):
+    """return True if inputs are equal ignoring case and edge whitespace"""
+    return stra.lower().strip() == strb.lower().strip()
+
+  # Set of models to ensure exist in the output.
+  ensure_models = set([project_name])
+
+  # generate canonical program ID
+  program_id = program_name.capitalize()
+
   config_bundle = config_bundle_pb2.ConfigBundle()
-  if config_path:
-    config_bundle = io_utils.read_config(config_path)
+  if config_bundle_path:
+    # if we're only importing, then save designs to ensure exist
+    input_bundle = io_utils.read_config(config_bundle_path)
+    if options.import_only:
+      for design in input_bundle.design_list:
+        if program_name and \
+           not safe_equal(design.program_id.value, program_id):
+          continue
+        ensure_models.add(design.name)
+
+      logging.debug("ensuring models: %s", ensure_models)
+    else:
+      # we're joining payloads so expose full config bundle for merging
+      config_bundle = input_bundle
+
+  # ensure that a program entry is added for the manually specified program name
+  config_bundle_utils.find_program(config_bundle, program_id, create=True)
 
   models = load_models(public_path, private_path)
 
-  # ensure that a program entry is added for the manually specified program name
-  if program_name:
-    config_bundle_utils.find_program(
-        config_bundle, program_name.capitalize(), create=True)
-
-  def find_design_config(prog_name, proj_name, sku):
-    """Searches config_bundle a matching design_config.
+  def find_design(name_program, name_project):
+    """Searches config_bundle for a matching design_config.
 
     Args:
-      prog_name (str): program name
-      proj_name (str): project name
+      name_program (str): program name
+      name_project (str): project name
+
+    Returns:
+      Either found Design for input parameters or new one created and placed
+      in the config_bundle.
+    """
+
+    # find program
+    program = config_bundle_utils.find_program(
+        config_bundle,
+        name_program.capitalize(),
+    )
+
+    for design in config_bundle.design_list:
+      # skip other program designs (shouldn't happen)
+      if not safe_equal(program.id.value, design.program_id.value):
+        continue
+
+      if safe_equal(name_project, design.name):
+        return design
+
+    # no design found, create one
+    design = config_bundle.design_list.add()
+    design.id.value = name_project
+    design.name = name_project
+    design.program_id.MergeFrom(program.id)
+    return design
+
+  def find_design_config(name_program, name_project, sku):
+    """Searches config_bundle for a matching design_config.
+
+    Args:
+      name_program (str): program name
+      name_project (str): project name
       sku (str): specific sku
 
     Returns:
@@ -1037,46 +1103,28 @@ def merge_configs(config_path, program_name, project_name, public_path,
       create and placed in the config_bundle.
     """
 
-    # Ensure program exists
-    program = config_bundle_utils.find_program(
-        config_bundle, prog_name, create=True)
+    design = find_design(name_program, name_project)
 
-    # Find design matching program and project names
-    program_design = None
-    for design in config_bundle.design_list:
-      if program.id != design.program_id:
-        continue
-
-      program_design = design
-      if proj_name.lower() != design.name.lower():
-        continue
-
-      # Found matching design, iterate design configs looking for SKU
-      for design_config in design.configs:
-        design_sku = design_config.id.value.lower().split(':')[-1]
-        if design_sku == sku:
-          return design, design_config
-
-    # No Design found, create one
-    if not program_design:
-      program_design = config_bundle.design_list.add()
-      program_design.id.value = proj_name
-      program_design.name = proj_name
-      program_design.program_id.MergeFrom(program.id)
+    for config in design.configs:
+      design_sku = config.id.value.lower().split(':')[-1]
+      if safe_equal(design_sku, sku):
+        return design, config
 
     # Create new Design.Config, the board id is encoded according to CBI:
-    #  http://go/chromiumsrc/chromiumos/docs/+/master/design_docs/cros_board_info.md
-    design_config = program_design.configs.add()
-    design_config.id.value = '{}:{}'.format(proj_name.capitalize(), sku)
-    return program_design, design_config
+    #   https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
+    config = design.configs.add()
+    config.id.value = '{}:{}'.format(name_project.capitalize(), sku)
+    return design, config
+
+  ### start of function body
 
   # GetDeviceConfigs() will return an entry for all combinations of:
   #     (program, project, sku, whitelabel)
   # so we need to be careful not to create duplicate entries.
   for model in models.GetDeviceConfigs() if models else []:
     identity = model.GetProperties('/identity')
-    program = identity['platform-name']
     project = model.GetName()
+    assert project, 'project name is undefined'
 
     sku = identity.get('sku-id')
     if not sku:
@@ -1089,18 +1137,19 @@ def merge_configs(config_path, program_name, project_name, public_path,
       logging.info('skipping unprovisioned sku %s', sku)
       continue
 
-    assert program, 'program name is undefined'
-    assert project, 'project name is undefined'
-
-    # Ignore projects other than the one specified
-    if project_name and (project != project_name.lower()):
+    # ignore other projects
+    if not safe_equal(project_name, project):
       continue
 
     # Lookup design config for this specific device
-    design, design_config = find_design_config(program, project, sku)
+    design, design_config = find_design_config(program_name, project, sku)
 
     merge_device_brand(config_bundle, design, model, project_name)
     merge_model(config_bundle, design_config, model)
+
+  # ensure that all our required model names exist.
+  for project in ensure_models:
+    design = find_design(program_name, project)
 
   # Merge information from HWID into config bundle
   if hwid_path:
@@ -1162,11 +1211,7 @@ def main(options):
     )
 
     io_utils.write_message_json(
-        merge_avl_dlm(
-            backfill_configs(
-                merge_configs(options.config_bundle, options.program_name,
-                              options.project_name, options.public_model,
-                              options.private_model, options.hwid))),
+        merge_avl_dlm(backfill_configs(merge_configs(options))),
         options.output,
         default_fields=True)
 
@@ -1204,6 +1249,12 @@ added to the program_list even if there are no designs present.""")
       help="""generated config_bundle payload in jsonpb format
 (eg: generated/config.jsonproto).  If not specified, an empty ConfigBundle
 instance is used instead.""")
+
+  parser.add_argument(
+      '--import-only',
+      action='store_true',
+      help="""When specified, don't use values from --config-bundle directly.  Instead,
+only use the config bundle to propagate models to imported payload.""")
 
   parser.add_argument(
       '--public-model', type=str, help='public model.yaml file to merge')
