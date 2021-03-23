@@ -190,7 +190,7 @@ def _build_ash_flags(config: Config) -> List[str]:
   lid_accel = hw_features.accelerometer.lid_accelerometer
   if (form_factor == topology_pb2.HardwareFeatures.FormFactor.CHROMEBASE and
       lid_accel == topology_pb2.HardwareFeatures.PRESENT):
-    flags['force-in-tablet-physical-state'] = None
+    flags['supports-clamshell-auto-rotation'] = None
 
   return sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()])
 
