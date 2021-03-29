@@ -4,9 +4,9 @@
 
 syntax = "proto3";
 
-package chromiumos.config.api.test.plan.v1;
+package chromiumos.test.plan;
 
-option go_package = "go.chromium.org/chromiumos/config/go/api/test/plan/v1;plan";
+option go_package = "go.chromium.org/chromiumos/config/go/test/plan";
 
 // Describes the test cases, software requirements, and hardware requirements
 // that run when a given set of files are changed.
