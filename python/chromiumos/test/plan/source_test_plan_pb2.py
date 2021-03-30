@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.plan',
   syntax='proto3',
   serialized_options=_b('Z.go.chromium.org/chromiumos/config/go/test/plan'),
-  serialized_pb=_b('\n+chromiumos/test/plan/source_test_plan.proto\x12\x14\x63hromiumos.test.plan\"\xcc\x03\n\x0eSourceTestPlan\x12W\n\x19\x65nabled_test_environments\x18\x01 \x03(\x0e\x32\x34.chromiumos.test.plan.SourceTestPlan.TestEnvironment\x12\x14\n\x0cpath_regexps\x18\x02 \x03(\t\x12\x1c\n\x14path_regexp_excludes\x18\x03 \x03(\t\x12\x11\n\ttest_tags\x18\x04 \x03(\t\x12\x19\n\x11test_tag_excludes\x18\x05 \x03(\t\x12L\n\x0fkernel_versions\x18\x06 \x01(\x0b\x32\x33.chromiumos.test.plan.SourceTestPlan.KernelVersions\x12\x46\n\x0csoc_families\x18\x07 \x01(\x0b\x32\x30.chromiumos.test.plan.SourceTestPlan.SocFamilies\x1a\x10\n\x0eKernelVersions\x1a\r\n\x0bSocFamilies\"H\n\x0fTestEnvironment\x12\x19\n\x15TEST_TYPE_UNSPECIFIED\x10\x00\x12\r\n\tHARDWWARE\x10\x01\x12\x0b\n\x07VIRTUAL\x10\x02\x42\x30Z.go.chromium.org/chromiumos/config/go/test/planb\x06proto3')
+  serialized_pb=_b('\n+chromiumos/test/plan/source_test_plan.proto\x12\x14\x63hromiumos.test.plan\"\xd2\x03\n\x0eSourceTestPlan\x12W\n\x19\x65nabled_test_environments\x18\x01 \x03(\x0e\x32\x34.chromiumos.test.plan.SourceTestPlan.TestEnvironment\x12\x14\n\x0cpath_regexps\x18\x02 \x03(\t\x12\x1c\n\x14path_regexp_excludes\x18\x03 \x03(\t\x12\x11\n\ttest_tags\x18\x04 \x03(\t\x12\x19\n\x11test_tag_excludes\x18\x05 \x03(\t\x12L\n\x0fkernel_versions\x18\x06 \x01(\x0b\x32\x33.chromiumos.test.plan.SourceTestPlan.KernelVersions\x12\x46\n\x0csoc_families\x18\x07 \x01(\x0b\x32\x30.chromiumos.test.plan.SourceTestPlan.SocFamilies\x1a\x10\n\x0eKernelVersions\x1a\r\n\x0bSocFamilies\"N\n\x0fTestEnvironment\x12 \n\x1cTEST_ENVIRONMENT_UNSPECIFIED\x10\x00\x12\x0c\n\x08HARDWARE\x10\x01\x12\x0b\n\x07VIRTUAL\x10\x02\x42\x30Z.go.chromium.org/chromiumos/config/go/test/planb\x06proto3')
 )
 
 
@@ -31,11 +31,11 @@ _SOURCETESTPLAN_TESTENVIRONMENT = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='TEST_TYPE_UNSPECIFIED', index=0, number=0,
+      name='TEST_ENVIRONMENT_UNSPECIFIED', index=0, number=0,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='HARDWWARE', index=1, number=1,
+      name='HARDWARE', index=1, number=1,
       serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
@@ -46,7 +46,7 @@ _SOURCETESTPLAN_TESTENVIRONMENT = _descriptor.EnumDescriptor(
   containing_type=None,
   serialized_options=None,
   serialized_start=458,
-  serialized_end=530,
+  serialized_end=536,
 )
 _sym_db.RegisterEnumDescriptor(_SOURCETESTPLAN_TESTENVIRONMENT)
 
@@ -167,7 +167,7 @@ _SOURCETESTPLAN = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=70,
-  serialized_end=530,
+  serialized_end=536,
 )
 
 _SOURCETESTPLAN_KERNELVERSIONS.containing_type = _SOURCETESTPLAN

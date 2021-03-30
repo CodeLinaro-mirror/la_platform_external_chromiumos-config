@@ -22,8 +22,8 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/plan";
 message SourceTestPlan {
   // Different environments ChromeOS tests run in.
   enum TestEnvironment {
-    TEST_TYPE_UNSPECIFIED = 0;
-    HARDWWARE = 1;
+    TEST_ENVIRONMENT_UNSPECIFIED = 0;
+    HARDWARE = 1;
     VIRTUAL = 2;
   }
 
