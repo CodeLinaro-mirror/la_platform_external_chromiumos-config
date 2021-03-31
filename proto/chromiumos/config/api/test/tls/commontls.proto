@@ -176,6 +176,7 @@ message ProvisionDutRequest {
   // TODO(crbug.com/1155247) Deprecate this nested message and replace with
   // top level ChromeOsImage.
   message ChromeOSImage {
+    option deprecated = true;
     oneof path_oneof {
       // gs_path_prefix is the GS path to where kernel, rootfs, and stateful
       // images are located. If DLCs are to be provisioned, it must be a GS path
@@ -187,7 +188,7 @@ message ProvisionDutRequest {
     }
   }
   // image specifies the Chrome OS image with which to provision the DUT.
-  ChromeOSImage image = 2;
+  ChromeOSImage image = 2 [deprecated = true];
 
   // Reference DLCs developer documentation:
   // https://source.corp.google.com/chromeos_public/src/platform2/dlcservice/docs/developer.md
@@ -203,6 +204,9 @@ message ProvisionDutRequest {
   // provisioning. If preserve_stateful is not set to true, the stateful partition is
   // block-level wiped and reset during provisioning.
   bool preserve_stateful = 4;
+
+  // target_build is the ChromeOS build to provision to.
+  ChromeOsImage target_build = 5;
 }
 
 message ProvisionDutResponse {
