@@ -154,9 +154,21 @@ def _generate_plan(test_plan):
     file_name = test_plan.name.lower().replace(" ", "_")
     generate.generate(_create_spec([test_plan]), "%s.jsonproto" % file_name)
 
+def _read_plan(file_path):
+    """Reads the test plan Specification proto and returns it
+
+    Args:
+        file_path: Source jsonproto file path
+    """
+    return proto.from_jsonpb(
+        plan_pb.Specification,
+        io.read_file(file_path),
+    )
+
 test_plan = struct(
     create = _create_plan,
     generate = _generate_plan,
+    read = _read_plan,
     dut_criterion = struct(
         create = _create_dut_criterion,
     ),
