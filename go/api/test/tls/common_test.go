@@ -32,8 +32,8 @@ func ExampleProvisionDutRequest() {
 
 	req := tls.ProvisionDutRequest{
 		Name: dutName,
-		Image: &tls.ProvisionDutRequest_ChromeOSImage{
-			PathOneof: &tls.ProvisionDutRequest_ChromeOSImage_GsPathPrefix{
+		TargetBuild: &tls.ChromeOsImage{
+			PathOneof: &tls.ChromeOsImage_GsPathPrefix{
 				GsPathPrefix: "gs://chromeos-image-archive/eve-release/R87-13457.0.0",
 			},
 		},
