@@ -338,9 +338,12 @@ message HardwareFeatures {
       KEYBOARD_BOTTOM_RIGHT = 3;
       // Top of keyboard at the right (e.g. Galaxy Chromebook)
       KEYBOARD_TOP_RIGHT = 4;
+      // No fingerprint sensor
       NOT_PRESENT = 5;
-      // Sharing power button at the right side
-      POWER_BUTTON_SIDE_RIGHT = 6;
+      // At the right side
+      RIGHT_SIDE = 6;
+      // At the left side
+      LEFT_SIDE = 7;
     }
   }
 
