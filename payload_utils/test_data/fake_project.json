@@ -76,7 +76,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90913,
@@ -222,7 +223,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90880,
@@ -387,7 +389,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90913,
@@ -511,7 +514,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90912,
@@ -629,7 +633,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90913,
@@ -747,7 +752,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90913,
@@ -866,7 +872,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90913,
@@ -986,7 +993,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90913,
@@ -1106,7 +1114,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90913,
@@ -1204,7 +1213,8 @@
               "fake_ec_extra1",
               "fake_ec_extra2"
             ],
-            "libpayload": "fake"
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90881,

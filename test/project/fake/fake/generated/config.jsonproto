@@ -3235,7 +3235,8 @@
             "fake_ec_extra1",
             "fake_ec_extra2"
           ],
-          "libpayload": "fake"
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
         }
       },
       "idScanConfig": {
@@ -3327,7 +3328,8 @@
             "fake_ec_extra1",
             "fake_ec_extra2"
           ],
-          "libpayload": "fake"
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
         }
       },
       "idScanConfig": {
@@ -3441,7 +3443,8 @@
             "fake_ec_extra1",
             "fake_ec_extra2"
           ],
-          "libpayload": "fake"
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
         }
       },
       "idScanConfig": {
@@ -3588,7 +3591,8 @@
             "fake_ec_extra1",
             "fake_ec_extra2"
           ],
-          "libpayload": "fake"
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
         }
       },
       "idScanConfig": {
@@ -3669,7 +3673,8 @@
             "fake_ec_extra1",
             "fake_ec_extra2"
           ],
-          "libpayload": "fake"
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
         }
       },
       "idScanConfig": {
@@ -3753,7 +3758,8 @@
             "fake_ec_extra1",
             "fake_ec_extra2"
           ],
-          "libpayload": "fake"
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
         }
       },
       "idScanConfig": {
@@ -3832,7 +3838,8 @@
             "fake_ec_extra1",
             "fake_ec_extra2"
           ],
-          "libpayload": "fake"
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
         }
       },
       "idScanConfig": {

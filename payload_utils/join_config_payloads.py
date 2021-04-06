@@ -769,6 +769,7 @@ def merge_firmware_config(sw_config, model):
   build_config.build_targets.depthcharge = build_props.get('depthcharge', '')
   build_config.build_targets.ec = build_props.get('ec', '')
   build_config.build_targets.libpayload = build_props.get('libpayload', '')
+  build_config.build_targets.zephyr_ec = build_props.get('zephyr-ec', '')
 
   for extra in build_props.get('ec-extras', []):
     build_config.build_targets.ec_extras.add(extra)

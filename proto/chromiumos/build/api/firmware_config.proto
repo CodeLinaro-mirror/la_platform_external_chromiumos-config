@@ -62,7 +62,7 @@ message FirmwareConfig {
 
   reserved 4;
 
-  // The libpayload read-only firmware
+  // The PD read-only firmware
   FirmwarePayload pd_ro_payload = 5;
 }
 
@@ -96,6 +96,9 @@ message Firmware {
     // Firmware builds currently use portage, but this could change over time
     // as pieces become more decoupled.
     Portage.BuildTarget portage_build_target = 6;
+
+    // Build target for zephyr_ec.
+    string zephyr_ec = 7;
   }
 
   BuildTargets build_targets = 1;

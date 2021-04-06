@@ -390,6 +390,7 @@ def _build_firmware(config):
   _upsert(
       list(fw_build_config.build_targets.ec_extras), build_targets, 'ec_extras')
   _upsert(fw_build_config.build_targets.libpayload, build_targets, 'libpayload')
+  _upsert(fw_build_config.build_targets.zephyr_ec, build_targets, 'zephyr-ec')
 
   if not build_targets:
     return None
