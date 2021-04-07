@@ -3253,6 +3253,9 @@
       "publicReplication": {
         "publicFields": "designConfigId"
       },
+      "uiConfig": {
+        "extraWebAppsDir": "apps1"
+      },
       "wifiConfig": {
         "ath10kConfig": {
           "nonTabletModePowerTable": {
@@ -3344,6 +3347,9 @@
       },
       "publicReplication": {
         "publicFields": "designConfigId"
+      },
+      "uiConfig": {
+        "extraWebAppsDir": "apps2"
       },
       "wifiConfig": {
         "rtw88Config": {
