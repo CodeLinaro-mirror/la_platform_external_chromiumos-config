@@ -1035,7 +1035,7 @@ def merge_configs(options):
   ensure_models = set([project_name])
 
   # generate canonical program ID
-  program_id = program_name.capitalize()
+  program_id = program_name.lower()
 
   config_bundle = config_bundle_pb2.ConfigBundle()
   if config_bundle_path:
@@ -1046,7 +1046,7 @@ def merge_configs(options):
         if program_name and \
            not safe_equal(design.program_id.value, program_id):
           continue
-        ensure_models.add(design.name)
+        ensure_models.add(design.name.lower())
 
       logging.debug("ensuring models: %s", ensure_models)
     else:
@@ -1073,7 +1073,7 @@ def merge_configs(options):
     # find program
     program = config_bundle_utils.find_program(
         config_bundle,
-        name_program.capitalize(),
+        name_program.lower(),
     )
 
     for design in config_bundle.design_list:
@@ -1086,8 +1086,8 @@ def merge_configs(options):
 
     # no design found, create one
     design = config_bundle.design_list.add()
-    design.id.value = name_project
-    design.name = name_project
+    design.id.value = name_project.lower()
+    design.name = name_project.lower()
     design.program_id.MergeFrom(program.id)
     return design
 
@@ -1114,7 +1114,7 @@ def merge_configs(options):
     # Create new Design.Config, the board id is encoded according to CBI:
     #   https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
     config = design.configs.add()
-    config.id.value = '{}:{}'.format(name_project.capitalize(), sku)
+    config.id.value = '{}:{}'.format(name_project.lower(), sku)
     return design, config
 
   ### start of function body
