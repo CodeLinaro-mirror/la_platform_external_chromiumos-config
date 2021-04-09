@@ -137,8 +137,8 @@ message HardwareFeatures {
     // Which audio codec is in use (deprecated)
     AudioCodec audio_codec = 1;
 
-    // Which audio codec is in use for the speakers
-    AudioCodec speaker_amp = 2;
+    // Which amplifier is in use for the speakers
+    Amplifier speaker_amp = 2;
 
     // Which audio codec is in use for the headphones
     AudioCodec headphone_codec = 3;
@@ -148,11 +148,18 @@ message HardwareFeatures {
       RT5682 = 1;
       ALC5682I = 2;
       ALC5682 = 3;
+      reserved 4 to 7;  // Not to conflict with amplifiers
+      DA7219 = 8;
+    }
+
+    enum Amplifier {
+      AMPLIFIER_UNKNOWN = 0;  // Also used for non-public amplifier
+      reserved 1 to 3;  // Not to conflict with audio codecs
       MAX98357 = 4;
       MAX98373 = 5;
       MAX98360 = 6;
       RT1015 = 7;
-      DA7219 = 8;
+      reserved 8;  // Not to conflict with audio codecs
       ALC1011 = 9;
     }
   }

@@ -182,6 +182,12 @@ def _create_quals(component_ids, status = _qual_status.REQUESTED):
     """Builds a Component.Qualification proto for each of component_ids."""
     return [_create_qual(id, status) for id in component_ids]
 
+def _create_amplifier(name):
+    """Builds a Component.Amplifier proto."""
+    return comp_pb.Component.Amplifier(
+        name = name,
+    )
+
 def _create_audio_codec(name):
     """Builds a Component.AudioCodec proto."""
     return comp_pb.Component.AudioCodec(
@@ -321,6 +327,7 @@ comp = struct(
     create_wifi = _create_wifi,
     create_qual = _create_qual,
     create_quals = _create_quals,
+    create_amplifier = _create_amplifier,
     create_audio_codec = _create_audio_codec,
     create_battery = _create_battery,
     create_ec_flash_chip = _create_flash_chip,
