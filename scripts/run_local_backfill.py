@@ -61,7 +61,7 @@ class Spinner(object):
     if success:
       sys.stderr.write(CLEAR_LINE + "[✔] %s\n" % self.message)
     else:
-      sys.stderr.write(CLEAR_LINE + "[✘] %s\n" % message)
+      sys.stderr.write(CLEAR_LINE + "[✘] %s\n" % self.message)
 
 
 def call_and_spin(message, stdin, *cmd):
@@ -109,12 +109,7 @@ def parse_build_property(build, name):
   Return:
     decoded property value or None if not found
   """
-
-  properties = build["config"]["recipe"]["propertiesJ"]
-  for prop in properties:
-    if prop.startswith(name):
-      return json.loads(prop[len(name) + 1:])
-  return None
+  return json.loads(build["config"]["properties"]).get(name)
 
 
 def jqdiff(filea, fileb, filt="."):
@@ -323,16 +318,18 @@ def main():
 
   # query BuildBucket for current builder configurations in the infra bucket
   data, status = call_and_spin(
-      "Listing backfill builders",
+      "Listing backfill builder",
       json.dumps({
+        "id": {
           "project": "chromeos",
           "bucket": "infra",
-          "pageSize": 1000,
+          "builder": "backfiller"
+        }
       }),
       "prpc",
       "call",
       "cr-buildbucket.appspot.com",
-      "buildbucket.v2.Builders.ListBuilders",
+      "buildbucket.v2.Builders.GetBuilder",
   )
 
   if status != 0:
@@ -342,25 +339,18 @@ def main():
     )
     sys.exit(status)
 
-  # filter out just the backfill builders and sort them by name
-  builders = json.loads(data)["builders"]
-  builders = [
-      bb for bb in builders if bb["id"]["builder"].startswith("backfill")
-  ]
+  builder = json.loads(data)
 
   # construct backfill config from the configured builder properties
   configs = []
-  for builder in builders:
-    public_yaml = parse_build_property(builder, "public_yaml") or {}
-    private_yaml = parse_build_property(builder, "private_yaml") or {}
-
+  for builder_config in parse_build_property(builder, "configs"):
     config = BackfillConfig(
-        program=parse_build_property(builder, "program_name"),
-        project=parse_build_property(builder, "project_name"),
-        hwid_key=parse_build_property(builder, "hwid_key"),
-        public_model=public_yaml.get("path"),
-        private_repo=private_yaml.get("repo"),
-        private_model=private_yaml.get("path"),
+        program=builder_config["program_name"],
+        project=builder_config["project_name"],
+        hwid_key=builder_config.get("hwid_key"),
+        public_model=builder_config.get("public_yaml_path"),
+        private_repo=builder_config.get("private_yaml", {}).get("repo"),
+        private_model=builder_config.get("private_yaml", {}).get("path"),
     )
 
     path_repo = project_path / config.program / config.project
