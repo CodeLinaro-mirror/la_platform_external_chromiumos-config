@@ -1048,6 +1048,8 @@ def merge_configs(options):
           continue
         ensure_models.add(design.name.lower())
 
+      # Sort to ensure ordering is consistent
+      ensure_models = sorted(ensure_models)
       logging.debug("ensuring models: %s", ensure_models)
     else:
       # we're joining payloads so expose full config bundle for merging
