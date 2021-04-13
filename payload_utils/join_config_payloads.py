@@ -1131,7 +1131,9 @@ def merge_configs(options):
 
     sku = identity.get('sku-id')
     if not sku:
-      sku = "*"
+      # sku not defined, SKUs are by definition < 0x7FFFFFF so we'll use
+      # 0x8000000 for the SKU-less case to keep it an integer
+      sku = "0x80000000"
       logging.info('found wildcard sku in %s, setting sku-id to "%s"', project,
                    sku)
     sku = str(sku)
