@@ -12,6 +12,7 @@ from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from chromiumos.config.payload.flat_config_pb2 import FlatConfigList
 
 from chromiumos.config.api import device_brand_pb2
+from chromiumos.config.api import design_pb2
 from chromiumos.config.api.software import brand_config_pb2
 
 
@@ -48,19 +49,38 @@ def flatten_config(config: ConfigBundle) -> FlatConfigList:
 
   results = FlatConfigList()
   for hw_design in config.design_list:
-    device_brands = [device_brand_pb2.DeviceBrand()]
+    logging.debug("flattening %s", hw_design.name)
+
+    device_brands = []
     if config.device_brand_list:
       device_brands = [
           x for x in config.device_brand_list
           if x.design_id.value == hw_design.id.value
       ]
 
+    if not device_brands:
+      device_brands.append(device_brand_pb2.DeviceBrand())
+    logging.debug(
+        "  %d device brands: %s",
+        len(device_brands),
+        device_brands,
+    )
+
     for device_brand in device_brands:
       # Brand config can be empty since platform JSON config allows it
       brand_config = brand_configs.get(device_brand.id.value,
                                        brand_config_pb2.BrandConfig())
 
-      for hw_design_config in hw_design.configs:
+      design_configs = hw_design.configs
+      if not design_configs:
+        design_configs.append(design_pb2.Design.Config())
+      logging.debug(
+          "  %d design configs: %s",
+          len(design_configs),
+          design_configs,
+      )
+
+      for hw_design_config in design_configs:
         design_id = hw_design_config.id.value
         sw_config_matches = [
             x for x in sw_configs if x.design_config_id.value == design_id
@@ -92,6 +112,7 @@ def flatten_config(config: ConfigBundle) -> FlatConfigList:
         if device_brand.oem_id.value:
           flat_config.oem.MergeFrom(_lookup(device_brand.oem_id, partners))
 
+  logging.debug("  created %d flattened entries", len(results.values))
   return results
 
 
