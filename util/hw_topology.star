@@ -38,12 +38,18 @@ _AUDIO_CODEC = struct(
     RT5682 = topo_pb.HardwareFeatures.Audio.RT5682,
     ALC5682I = topo_pb.HardwareFeatures.Audio.ALC5682I,
     ALC5682 = topo_pb.HardwareFeatures.Audio.ALC5682,
+    DA7219 = topo_pb.HardwareFeatures.Audio.DA7219,
+    NAU88L25B = topo_pb.HardwareFeatures.Audio.NAU88L25B,
+)
+
+_AMPLIFIER = struct(
     MAX98357 = topo_pb.HardwareFeatures.Audio.MAX98357,
     MAX98373 = topo_pb.HardwareFeatures.Audio.MAX98373,
     MAX98360 = topo_pb.HardwareFeatures.Audio.MAX98360,
     RT1015 = topo_pb.HardwareFeatures.Audio.RT1015,
-    DA7219 = topo_pb.HardwareFeatures.Audio.DA7219,
     ALC1011 = topo_pb.HardwareFeatures.Audio.ALC1011,
+    RT1015P = topo_pb.HardwareFeatures.Audio.RT1015P,
+    ALC1019 = topo_pb.HardwareFeatures.Audio.ALC1019,
 )
 
 _FP_LOC = struct(
@@ -1062,6 +1068,7 @@ hw_topo = struct(
     make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,
     ff = _FF,
+    amplifier = _AMPLIFIER,
     audio_codec = _AUDIO_CODEC,
     fp_loc = _FP_LOC,
     storage = _STORAGE,
