@@ -18,7 +18,8 @@ set -e
 create_venv
 
 # Path to the generated config protobuf.
-readonly config_path='generated/config.jsonproto'
+readonly output_dir=$1
+readonly config_path="${output_dir}/generated/config.jsonproto"
 
 # TODO(crbug.com/1073530): Ideally lucicfg's to_jsonpb could handle writing
 # JSON PB with enums serialized as ints. For now we do it with a python

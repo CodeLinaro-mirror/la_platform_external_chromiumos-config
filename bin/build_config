@@ -31,11 +31,12 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-if [[ $# -ne 1 ]]; then
+if [[ $# -ne 2 ]]; then
   config_usage
 fi
 
-readonly file_path="${1}"
+readonly file_path=$1
+readonly output_dir=$2
 readonly config_file=$(basename "${file_path}")
 readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
 
@@ -52,4 +53,9 @@ fi
 echo "Formatting .star files with lucicfg fmt..."
 lucicfg fmt
 
-lucicfg generate "${config_file}"
+# luci requires -config-dir be relative to cwd
+lucicfg         \
+    generate    \
+    -config-dir \
+    "$(realpath -m --relative-to="$(pwd)" "${output_dir}/generated")" \
+    "${config_file}"

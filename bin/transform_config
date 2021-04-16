@@ -17,16 +17,18 @@ source "${script_dir}/common.sh"
 
 create_venv
 
+readonly output_dir=$1
+
 # Path to the generated config protobuf.
-readonly private_config_path='generated/config.jsonproto'
+readonly private_config_path_rel="generated/config.jsonproto"
 # Path to output the filtered public config protobuf to.
-readonly public_config_path='generated/public_config.jsonproto'
+readonly public_config_path_rel="generated/public_config.jsonproto"
 
 # Generated filtered public configs. Note that this should be done for both
 # programs and projects.
 config/payload_utils/public_replication.py \
-  --input "${private_config_path}" \
-  --output "${public_config_path}"
+  --input "${output_dir}/${private_config_path_rel}" \
+  --output "${output_dir}/${public_config_path_rel}"
 
 # If we don't see the program symlink in the cwd, then
 # we are not a project and we are done.
@@ -48,36 +50,49 @@ config/payload_utils/public_replication.py \
 #   $2: Output directory to write platform JSON and other artifacts to. Note
 #       that this directory will be deleted and recreated.
 proto_converter(){
-  local config_path=$1
-  local output_dir=$2
-  local program_config="program/${config_path}"
+  local _program_config=$1
+  local _project_config=$2
+  local _output_dir=$3
 
-  if [[ ! -e "${program_config}" || ! -e "${config_path}" ]]; then
+  if [[ ! -e "${_program_config}" || ! -e "${_project_config}" ]]; then
     return 0
   fi
 
-  rm -rf "${output_dir}"
-  mkdir -p "${output_dir}"
+  rm -rf "${_output_dir}"
+  mkdir -p "${_output_dir}"
   config/payload_utils/cros_config_proto_converter.py \
-    --output "${output_dir}/project-config.json" \
-    --program_config "${program_config}" \
-    --project_configs "${config_path}"
+    --output "${_output_dir}/project-config.json" \
+    --program_config "${_program_config}" \
+    --project_configs "${_project_config}"
+}
+
+resolve_rel_path() {
+  realpath -m --relative-to="$(pwd)" "$1"
 }
 
 # Output dirs for private and public software configs.
 readonly sw_output_dir='sw_build_config/platform/chromeos-config/generated'
 readonly public_sw_output_dir="public_${sw_output_dir}"
 
-proto_converter "${private_config_path}" "${sw_output_dir}"
-proto_converter "${public_config_path}" "${public_sw_output_dir}"
+# convert private protos
+proto_converter \
+    "program/${private_config_path_rel}" \
+    "$(resolve_rel_path "${output_dir}/${private_config_path_rel}")" \
+    "$(resolve_rel_path "${output_dir}/${sw_output_dir}")"
 
-rm -rf factory/generated
-mkdir -p factory/generated
+# convert public protos
+proto_converter \
+    "program/${public_config_path_rel}" \
+    "$(resolve_rel_path "${output_dir}/${public_config_path_rel}")" \
+    "$(resolve_rel_path "${output_dir}/${public_sw_output_dir}")"
+
+# and convert factory config
+factory_gen_dir="$(realpath -m "${output_dir}/factory/generated")"
+rm -rf "${factory_gen_dir}"
+mkdir -p "${factory_gen_dir}"
 config/payload_utils/factory_config_proto_converter.py \
-  --output factory/generated/model_sku.json \
+  --output "${factory_gen_dir}/model_sku.json" \
   --program_config program/generated/config.jsonproto \
-  --project_configs generated/config.jsonproto
-
-
+  --project_configs "${output_dir}/${private_config_path_rel}"
 
 deactivate
