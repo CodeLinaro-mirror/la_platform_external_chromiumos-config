@@ -58,8 +58,18 @@ def _get_soc_families(build_summaries):
             soc_families[overlay] = soc_family
     return soc_families
 
+def _get_overlays(build_summaries):
+    """Returns list of all overlays"""
+    overlays = []
+    for build_summary in build_summaries:
+        overlays.append(
+            build_summary.build_target.portage_build_target.overlay_name,
+        )
+    return set(overlays)
+
 build_summary = struct(
     read = _read,
     get_kernel_versions = _get_kernel_versions,
     get_soc_families = _get_soc_families,
+    get_overlays = _get_overlays,
 )
