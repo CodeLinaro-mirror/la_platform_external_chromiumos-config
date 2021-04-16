@@ -24,6 +24,8 @@ import sys
 import tempfile
 import time
 
+from common import utilities
+
 # resolve relative directories
 this_dir = pathlib.Path(os.path.dirname(os.path.abspath(__file__)))
 hwid_path = (this_dir / "../../platform/chromeos-hwid/v3").resolve()
@@ -32,9 +34,6 @@ merge_script = (this_dir / "../payload_utils/aggregate_messages.py").resolve()
 public_path = (this_dir / "../../overlays").resolve()
 private_path = (this_dir / "../../private-overlays").resolve()
 project_path = (this_dir / "../../project").resolve()
-
-# escape sequence to clear the current line and return to column 0
-CLEAR_LINE = "\033[2K\r"
 
 # record to store backfiller configuration in
 BackfillConfig = collections.namedtuple('BackfillConfig', [
@@ -45,55 +44,6 @@ BackfillConfig = collections.namedtuple('BackfillConfig', [
     'private_repo',
     'private_model',
 ])
-
-
-class Spinner(object):
-  """Simple class to print a message and update a little spinning icon."""
-
-  def __init__(self, message):
-    self.message = message
-    self.spin = itertools.cycle("◐◓◑◒")
-
-  def tick(self):
-    sys.stderr.write(CLEAR_LINE + "[%c] %s" % (next(self.spin), self.message))
-
-  def done(self, success=True):
-    if success:
-      sys.stderr.write(CLEAR_LINE + "[✔] %s\n" % self.message)
-    else:
-      sys.stderr.write(CLEAR_LINE + "[✘] %s\n" % self.message)
-
-
-def call_and_spin(message, stdin, *cmd):
-  """Execute a command and print a nice status while we wait.
-
-    Args:
-      message (str): message to print while we wait (along with spinner)
-      stdin (bytes): array of bytes to send as the stdin (or None)
-      cmd   ([str]): command and any options and arguments
-
-    Return:
-      tuple of (data, status) containing process stdout and status
-  """
-
-  with multiprocessing.pool.ThreadPool(processes=1) as pool:
-    result = pool.apply_async(subprocess.run, (cmd,), {
-        'input': stdin,
-        'capture_output': True,
-        'text': True,
-    })
-
-    spinner = Spinner(message)
-    spinner.tick()
-
-    while not result.ready():
-      spinner.tick()
-      time.sleep(0.05)
-
-    process = result.get()
-    spinner.done(process.returncode == 0)
-
-    return process.stdout, process.returncode
 
 
 def parse_build_property(build, name):
@@ -110,33 +60,6 @@ def parse_build_property(build, name):
     decoded property value or None if not found
   """
   return json.loads(build["config"]["properties"]).get(name)
-
-
-def jqdiff(filea, fileb, filt="."):
-  """Diff two json files using jq to get a semantic diff.
-
-  Args:
-    filea (str): first file to compare
-    fileb (str): second file to compare
-    filt (str): if supplied, jq filter to apply to inputs before comparing
-      The filter is quoted with '' for the user so take care when specifying.
-
-  Return:
-    diff between inputs
-  """
-
-  process = subprocess.run(
-      "diff -u <(jq -S '{}' {}) <(jq -S '{}' {})".format(
-          filt,
-          filea,
-          filt,
-          fileb,
-      ),
-      shell=True,
-      text=True,
-      capture_output=True,
-  )
-  return process.stdout
 
 
 def run_backfill(config, logname=None, run_imported=True, run_joined=True):
@@ -163,7 +86,7 @@ def run_backfill(config, logname=None, run_imported=True, run_joined=True):
       return open(output).read()
 
     # otherwise run diff
-    return jqdiff(current, output)
+    return utilities.jqdiff(current, output)
 
   #### start of function body
 
@@ -263,14 +186,15 @@ def run_backfills(args, configs):
         functools.partial(run_backfill, **kwargs), configs, chunksize=1)
     for ii, result in enumerate(results, 1):
       sys.stderr.write(
-          CLEAR_LINE + "[{}/{}] Processing backfills".format(ii, nconfig),)
+          utilities.clear_line("[{}/{}] Processing backfills".format(
+              ii, nconfig)))
 
       if result:
         key, imported, joined = result
         imported_diffs[key] = imported
         joined_diffs[key] = joined
 
-    sys.stderr.write(CLEAR_LINE + "[✔] Processing backfills")
+    sys.stderr.write(utilities.clear_line("Processing backfills"))
 
   # generate final über diff showing all the changes
   with open(args.imported_diff, "w") as ofile:
@@ -317,14 +241,14 @@ def main():
   args = parser.parse_args()
 
   # query BuildBucket for current builder configurations in the infra bucket
-  data, status = call_and_spin(
+  data, status = utilities.call_and_spin(
       "Listing backfill builder",
       json.dumps({
-        "id": {
-          "project": "chromeos",
-          "bucket": "infra",
-          "builder": "backfiller"
-        }
+          "id": {
+              "project": "chromeos",
+              "bucket": "infra",
+              "builder": "backfiller"
+          }
       }),
       "prpc",
       "call",
