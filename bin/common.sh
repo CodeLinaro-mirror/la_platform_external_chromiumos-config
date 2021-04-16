@@ -15,9 +15,12 @@ function summarize() {
 }
 
 function config_usage() {
-  echo "Usage: $0 <config_file>" >&2
+  echo "Usage: $0 [options] <config_file>" >&2
   echo "  where <config_file> is a main starlark" >&2
   echo "  configuration file, typically config.star" >&2
+  echo
+  echo "Options:"
+  echo "  --no-proto - Don't regenerate proto definitions"
   exit 1
 }
 
