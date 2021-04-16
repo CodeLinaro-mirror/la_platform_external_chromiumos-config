@@ -28,11 +28,9 @@ import yaml
 from google.cloud import bigquery
 
 from common import config_bundle_utils
-from common import utilities
 
 from checker import io_utils
 from chromiumos.build.api import firmware_config_pb2
-from chromiumos.config.api import design_pb2
 from chromiumos.config.api import topology_pb2
 from chromiumos.config.payload import config_bundle_pb2
 
@@ -135,14 +133,6 @@ def merge_avl_dlm(config_bundle):
     reference to updated ConfigBundle
   """
 
-  # Have to import this here since we need repos cloned and sys.path set up
-  # pylint: disable=import-outside-toplevel, import-error
-  from backfill import video_codec
-  # pylint: enable=import-outside-toplevel, import-error
-
-  # full list of platform names we have hardware codec information on
-  platforms = list(video_codec.synonyms) + list(video_codec.video_codec_by_soc)
-
   def canonical_name(name):
     """Canonicalize code name for a project."""
 
@@ -173,58 +163,6 @@ def merge_avl_dlm(config_bundle):
           name,
       )
 
-  def merge_platform_and_video(design, platform):
-    """Canonicalize the platform name and match it to video codecs.
-
-    Args:
-      design (Design): design instance to modify with platform information"
-      platform (str): platform name as pulled from DLM
-    """
-
-    if not platform:
-      logging.warning("Null platform for '%s', skipping", design)
-      return
-
-    # canonicalize to uppercase and take first of any alternates seperated by /
-    platform = platform.upper().split("/")[0]
-
-    # some platform names are of the form "platform_soc (model)" so
-    # let's strip out the contents inside the parens if present.
-    platform_re = re.compile(r"[a-zA-Z0-9]*\(([a-zA-Z0-9-]*)\)")
-    match = platform_re.search(platform)
-    if match:
-      platform = match.group(1)
-
-    # measure levenshtein distance to each platform name to find the best match.
-    platform_dist = []
-    for name in platforms:
-      platform_dist.append(
-          (utilities.levenshtein_distance(platform, name), name),)
-
-    # take the closest match to be the best one
-    best_dist, best_name = min(platform_dist)
-
-    # ignore matches that aren't at least 50% similar
-    match_ratio = float(len(platform) - best_dist) / len(platform)
-    logging.info("Best platform match for %s is %s.", platform, best_name)
-
-    if match_ratio < 0.5:
-      logging.info("Too dissimilar, skipping.")
-      return
-
-    # resolve synonyms to canonical names
-    while best_name in video_codec.synonyms:
-      best_name = video_codec.synonyms[best_name]
-
-    # and update the protobuf with platform information and codecs
-    design.platform.name = best_name
-    del design.platform.video_acceleration[:]  # clear list
-
-    for codec in video_codec.video_codec_by_soc[best_name]:
-      logging.info("Adding codec %s",
-                   design_pb2.Design.Platform.VideoAcceleration.Name(codec))
-      design.platform.video_acceleration.append(codec)
-
   ##############################################################################
   ## start of function body
 
@@ -239,7 +177,7 @@ def merge_avl_dlm(config_bundle):
 
   # query all projects at once, we'll filter them on our side.
   query = """
-    SELECT googleCodeName, deviceFormFactor, platform
+    SELECT googleCodeName, deviceFormFactor
       FROM {device_table} devices
       WHERE googleCodeName IN ({projects})
   """.format(
@@ -265,7 +203,6 @@ def merge_avl_dlm(config_bundle):
       continue
 
     merge_form_factor(design, name, rows[0].get('deviceFormFactor'))
-    merge_platform_and_video(design, rows[0].get('platform'))
 
   return config_bundle
 
