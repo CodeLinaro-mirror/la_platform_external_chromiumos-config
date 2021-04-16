@@ -48,41 +48,8 @@ message Design {
   // E.g 0x0010 -> "CameraA"; 0x0020 -> "CameraB" within SsfcSegment 0x0030
   map<uint32, string> ssfc_value = 8;
 
-  // Specify the 'platform' for the design as a canonicalized string representing
-  // the SOC family.  Store a string to prevent leakage of non-public platform
-  // names.  The platform should be a canonicalized form of the codename format
-  // used on wikichip:
-  //   https://en.wikichip.org/wiki/intel/microarchitectures/kaby_lake#Codenames
-  //
-  // IE: replace spaces with underscores, upper case everything and specify
-  // variants separated by dashes:
-  //   KABY_LAKE_U_R -- indicates KBL-U or KBL-R chips (both ultra-low power)
-  //
-  message Platform {
-    // hardware video acceleration types
-    enum VideoAcceleration {
-        VIDEO_ACCELERATION_UNDEFINED = 0;
-        H264_DECODE = 1;
-        H264_ENCODE = 2;
-        VP8_DECODE = 3;
-        VP8_ENCODE = 4;
-        VP9_DECODE = 5;
-        VP9_ENCODE = 6;
-        VP9_2_DECODE = 7;
-        VP9_2_ENCODE = 8;
-        H265_DECODE = 9;
-        H265_ENCODE = 10;
-        MJPG_DECODE = 11;
-        MJPG_ENCODE = 12;
-    }
-
-    string name = 1;
-
-    // supported hardware acceleration modes for the platform
-    repeated VideoAcceleration video_acceleration = 2;
-  }
-  Platform platform = 9;
-
+  reserved "platform";
+  reserved 9;
 
   // Defines a unique hardware configuration for a given hardware design
   // and the corresponding hardware features that will be supported.

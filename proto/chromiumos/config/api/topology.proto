@@ -79,7 +79,7 @@ message Topology {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 26
+// NEXT TAG: 30
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -374,6 +374,8 @@ message HardwareFeatures {
   message Bluetooth {
     // Defines the specific bt component used in the design config
     Component.Bluetooth component = 1;
+
+    Present present = 2;
   }
 
   // BarrelJack properties
@@ -464,4 +466,29 @@ message HardwareFeatures {
     TrustedPlatformModuleType tpm_type = 1;
   }
   TrustedPlatformModule trusted_platform_module = 25;
+
+  // Whether the system supports 'Hotwording' (ie wake-on-voice: "Hey Google")
+  message Hotwording {
+      Present present = 1;
+  }
+  Hotwording hotwording = 26;
+
+  // Whether the system has an internal display, external display only or both
+  message Display {
+    enum Type {
+      TYPE_UNKNOWN = 0;
+      TYPE_INTERNAL = 1;
+      TYPE_EXTERNAL = 2;
+      TYPE_INTERNAL_EXTERNAL = 3;
+    }
+
+    Type type = 1;
+  }
+  Display display = 27;
+
+  // Whether the system has a touchpad
+  message Touchpad {
+    Present present = 1;
+  }
+  Touchpad touchpad = 28;
 }

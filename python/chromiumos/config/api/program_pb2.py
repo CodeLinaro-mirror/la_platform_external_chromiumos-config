@@ -25,11 +25,137 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n#chromiumos/config/api/program.proto\x12\x15\x63hromiumos.config.api\x1a%chromiumos/config/api/component.proto\x1a\"chromiumos/config/api/design.proto\x1a%chromiumos/config/api/design_id.proto\x1a+chromiumos/config/api/device_brand_id.proto\x1a&chromiumos/config/api/program_id.proto\x1a=chromiumos/config/public_replication/public_replication.proto\":\n\x1c\x46irmwareConfigurationSegment\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04mask\x18\x02 \x01(\r\"k\n\x15\x44\x65signConfigIdSegment\x12\x32\n\tdesign_id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x0e\n\x06min_id\x18\x02 \x01(\r\x12\x0e\n\x06max_id\x18\x03 \x01(\r\"\xa2\x01\n\x12\x44\x65viceSignerConfig\x12\x38\n\x08\x62rand_id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.DeviceBrandIdH\x00\x12\x34\n\tdesign_id\x18\x03 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignIdH\x00\x12\x0e\n\x06key_id\x18\x02 \x01(\tB\x0c\n\nidentifier\"\x99\x05\n\x07Program\x12S\n\x12public_replication\x18\x08 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1b\n\x13mosys_platform_name\x18\n \x01(\t\x12R\n\x19\x64\x65sign_config_constraints\x18\x03 \x03(\x0b\x32/.chromiumos.config.api.Design.Config.Constraint\x12G\n\x0f\x63omponent_quals\x18\x04 \x03(\x0b\x32..chromiumos.config.api.Component.Qualification\x12\\\n\x1f\x66irmware_configuration_segments\x18\x05 \x03(\x0b\x32\x33.chromiumos.config.api.FirmwareConfigurationSegment\x12J\n\rssfc_segments\x18\t \x03(\x0b\x32\x33.chromiumos.config.api.FirmwareConfigurationSegment\x12O\n\x19\x64\x65sign_config_id_segments\x18\x07 \x03(\x0b\x32,.chromiumos.config.api.DesignConfigIdSegment\x12H\n\x15\x64\x65vice_signer_configs\x18\x06 \x03(\x0b\x32).chromiumos.config.api.DeviceSignerConfigB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n#chromiumos/config/api/program.proto\x12\x15\x63hromiumos.config.api\x1a%chromiumos/config/api/component.proto\x1a\"chromiumos/config/api/design.proto\x1a%chromiumos/config/api/design_id.proto\x1a+chromiumos/config/api/device_brand_id.proto\x1a&chromiumos/config/api/program_id.proto\x1a=chromiumos/config/public_replication/public_replication.proto\":\n\x1c\x46irmwareConfigurationSegment\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04mask\x18\x02 \x01(\r\"k\n\x15\x44\x65signConfigIdSegment\x12\x32\n\tdesign_id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x0e\n\x06min_id\x18\x02 \x01(\r\x12\x0e\n\x06max_id\x18\x03 \x01(\r\"\xa2\x01\n\x12\x44\x65viceSignerConfig\x12\x38\n\x08\x62rand_id\x18\x01 \x01(\x0b\x32$.chromiumos.config.api.DeviceBrandIdH\x00\x12\x34\n\tdesign_id\x18\x03 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignIdH\x00\x12\x0e\n\x06key_id\x18\x02 \x01(\tB\x0c\n\nidentifier\"\x86\x0b\n\x07Program\x12S\n\x12public_replication\x18\x08 \x01(\x0b\x32\x37.chromiumos.config.public_replication.PublicReplication\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.ProgramId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1b\n\x13mosys_platform_name\x18\n \x01(\t\x12\x39\n\x08platform\x18\x0b \x01(\x0b\x32\'.chromiumos.config.api.Program.Platform\x12R\n\x19\x64\x65sign_config_constraints\x18\x03 \x03(\x0b\x32/.chromiumos.config.api.Design.Config.Constraint\x12G\n\x0f\x63omponent_quals\x18\x04 \x03(\x0b\x32..chromiumos.config.api.Component.Qualification\x12\\\n\x1f\x66irmware_configuration_segments\x18\x05 \x03(\x0b\x32\x33.chromiumos.config.api.FirmwareConfigurationSegment\x12J\n\rssfc_segments\x18\t \x03(\x0b\x32\x33.chromiumos.config.api.FirmwareConfigurationSegment\x12O\n\x19\x64\x65sign_config_id_segments\x18\x07 \x03(\x0b\x32,.chromiumos.config.api.DesignConfigIdSegment\x12H\n\x15\x64\x65vice_signer_configs\x18\x06 \x03(\x0b\x32).chromiumos.config.api.DeviceSignerConfig\x1a\xaf\x05\n\x08Platform\x12\x12\n\nsoc_family\x18\x01 \x01(\t\x12>\n\x08soc_arch\x18\x02 \x01(\x0e\x32,.chromiumos.config.api.Program.Platform.Arch\x12\x12\n\ngpu_family\x18\x03 \x01(\t\x12J\n\rgraphics_apis\x18\x04 \x03(\x0e\x32\x33.chromiumos.config.api.Program.Platform.GraphicsApi\x12S\n\x0cvideo_codecs\x18\x05 \x03(\x0e\x32=.chromiumos.config.api.Program.Platform.AcceleratedVideoCodec\"A\n\x04\x41rch\x12\x10\n\x0c\x41RCH_UNKNOWN\x10\x00\x12\x07\n\x03X86\x10\x01\x12\n\n\x06X86_64\x10\x02\x12\x07\n\x03\x41RM\x10\x03\x12\t\n\x05\x41RM64\x10\x04\"\xf6\x01\n\x15\x41\x63\x63\x65leratedVideoCodec\x12\x13\n\x0f\x43ODEC_UNDEFINED\x10\x00\x12\x0f\n\x0bH264_DECODE\x10\x01\x12\x0f\n\x0bH264_ENCODE\x10\x02\x12\x0e\n\nVP8_DECODE\x10\x03\x12\x0e\n\nVP8_ENCODE\x10\x04\x12\x0e\n\nVP9_DECODE\x10\x05\x12\x0e\n\nVP9_ENCODE\x10\x06\x12\x10\n\x0cVP9_2_DECODE\x10\x07\x12\x10\n\x0cVP9_2_ENCODE\x10\x08\x12\x0f\n\x0bH265_DECODE\x10\t\x12\x0f\n\x0bH265_ENCODE\x10\n\x12\x0f\n\x0bMJPG_DECODE\x10\x0b\x12\x0f\n\x0bMJPG_ENCODE\x10\x0c\"^\n\x0bGraphicsApi\x12\x1a\n\x16GRAPHICS_API_UNDEFINED\x10\x00\x12\x17\n\x13GRAPHICS_API_OPENGL\x10\x01\x12\x1a\n\x16GRAPHICS_API_OPENGL_ES\x10\x02\x42*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_component__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_device__brand__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_program__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2.DESCRIPTOR,])
 
 
+
+_PROGRAM_PLATFORM_ARCH = _descriptor.EnumDescriptor(
+  name='Arch',
+  full_name='chromiumos.config.api.Program.Platform.Arch',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='ARCH_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='X86', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='X86_64', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ARM', index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='ARM64', index=4, number=4,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1663,
+  serialized_end=1728,
+)
+_sym_db.RegisterEnumDescriptor(_PROGRAM_PLATFORM_ARCH)
+
+_PROGRAM_PLATFORM_ACCELERATEDVIDEOCODEC = _descriptor.EnumDescriptor(
+  name='AcceleratedVideoCodec',
+  full_name='chromiumos.config.api.Program.Platform.AcceleratedVideoCodec',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='CODEC_UNDEFINED', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='H264_DECODE', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='H264_ENCODE', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP8_DECODE', index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP8_ENCODE', index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP9_DECODE', index=5, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP9_ENCODE', index=6, number=6,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP9_2_DECODE', index=7, number=7,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='VP9_2_ENCODE', index=8, number=8,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='H265_DECODE', index=9, number=9,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='H265_ENCODE', index=10, number=10,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MJPG_DECODE', index=11, number=11,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='MJPG_ENCODE', index=12, number=12,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1731,
+  serialized_end=1977,
+)
+_sym_db.RegisterEnumDescriptor(_PROGRAM_PLATFORM_ACCELERATEDVIDEOCODEC)
+
+_PROGRAM_PLATFORM_GRAPHICSAPI = _descriptor.EnumDescriptor(
+  name='GraphicsApi',
+  full_name='chromiumos.config.api.Program.Platform.GraphicsApi',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='GRAPHICS_API_UNDEFINED', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GRAPHICS_API_OPENGL', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GRAPHICS_API_OPENGL_ES', index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1979,
+  serialized_end=2073,
+)
+_sym_db.RegisterEnumDescriptor(_PROGRAM_PLATFORM_GRAPHICSAPI)
 
 
 _FIRMWARECONFIGURATIONSEGMENT = _descriptor.Descriptor(
@@ -163,6 +289,67 @@ _DEVICESIGNERCONFIG = _descriptor.Descriptor(
 )
 
 
+_PROGRAM_PLATFORM = _descriptor.Descriptor(
+  name='Platform',
+  full_name='chromiumos.config.api.Program.Platform',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='soc_family', full_name='chromiumos.config.api.Program.Platform.soc_family', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='soc_arch', full_name='chromiumos.config.api.Program.Platform.soc_arch', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='gpu_family', full_name='chromiumos.config.api.Program.Platform.gpu_family', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='graphics_apis', full_name='chromiumos.config.api.Program.Platform.graphics_apis', index=3,
+      number=4, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='video_codecs', full_name='chromiumos.config.api.Program.Platform.video_codecs', index=4,
+      number=5, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _PROGRAM_PLATFORM_ARCH,
+    _PROGRAM_PLATFORM_ACCELERATEDVIDEOCODEC,
+    _PROGRAM_PLATFORM_GRAPHICSAPI,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1386,
+  serialized_end=2073,
+)
+
 _PROGRAM = _descriptor.Descriptor(
   name='Program',
   full_name='chromiumos.config.api.Program',
@@ -199,42 +386,49 @@ _PROGRAM = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='design_config_constraints', full_name='chromiumos.config.api.Program.design_config_constraints', index=4,
+      name='platform', full_name='chromiumos.config.api.Program.platform', index=4,
+      number=11, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='design_config_constraints', full_name='chromiumos.config.api.Program.design_config_constraints', index=5,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='component_quals', full_name='chromiumos.config.api.Program.component_quals', index=5,
+      name='component_quals', full_name='chromiumos.config.api.Program.component_quals', index=6,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='firmware_configuration_segments', full_name='chromiumos.config.api.Program.firmware_configuration_segments', index=6,
+      name='firmware_configuration_segments', full_name='chromiumos.config.api.Program.firmware_configuration_segments', index=7,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='ssfc_segments', full_name='chromiumos.config.api.Program.ssfc_segments', index=7,
+      name='ssfc_segments', full_name='chromiumos.config.api.Program.ssfc_segments', index=8,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='design_config_id_segments', full_name='chromiumos.config.api.Program.design_config_id_segments', index=8,
+      name='design_config_id_segments', full_name='chromiumos.config.api.Program.design_config_id_segments', index=9,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='device_signer_configs', full_name='chromiumos.config.api.Program.device_signer_configs', index=9,
+      name='device_signer_configs', full_name='chromiumos.config.api.Program.device_signer_configs', index=10,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -243,7 +437,7 @@ _PROGRAM = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_PROGRAM_PLATFORM, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -253,7 +447,7 @@ _PROGRAM = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=659,
-  serialized_end=1324,
+  serialized_end=2073,
 )
 
 _DESIGNCONFIGIDSEGMENT.fields_by_name['design_id'].message_type = chromiumos_dot_config_dot_api_dot_design__id__pb2._DESIGNID
@@ -265,8 +459,16 @@ _DEVICESIGNERCONFIG.fields_by_name['brand_id'].containing_oneof = _DEVICESIGNERC
 _DEVICESIGNERCONFIG.oneofs_by_name['identifier'].fields.append(
   _DEVICESIGNERCONFIG.fields_by_name['design_id'])
 _DEVICESIGNERCONFIG.fields_by_name['design_id'].containing_oneof = _DEVICESIGNERCONFIG.oneofs_by_name['identifier']
+_PROGRAM_PLATFORM.fields_by_name['soc_arch'].enum_type = _PROGRAM_PLATFORM_ARCH
+_PROGRAM_PLATFORM.fields_by_name['graphics_apis'].enum_type = _PROGRAM_PLATFORM_GRAPHICSAPI
+_PROGRAM_PLATFORM.fields_by_name['video_codecs'].enum_type = _PROGRAM_PLATFORM_ACCELERATEDVIDEOCODEC
+_PROGRAM_PLATFORM.containing_type = _PROGRAM
+_PROGRAM_PLATFORM_ARCH.containing_type = _PROGRAM_PLATFORM
+_PROGRAM_PLATFORM_ACCELERATEDVIDEOCODEC.containing_type = _PROGRAM_PLATFORM
+_PROGRAM_PLATFORM_GRAPHICSAPI.containing_type = _PROGRAM_PLATFORM
 _PROGRAM.fields_by_name['public_replication'].message_type = chromiumos_dot_config_dot_public__replication_dot_public__replication__pb2._PUBLICREPLICATION
 _PROGRAM.fields_by_name['id'].message_type = chromiumos_dot_config_dot_api_dot_program__id__pb2._PROGRAMID
+_PROGRAM.fields_by_name['platform'].message_type = _PROGRAM_PLATFORM
 _PROGRAM.fields_by_name['design_config_constraints'].message_type = chromiumos_dot_config_dot_api_dot_design__pb2._DESIGN_CONFIG_CONSTRAINT
 _PROGRAM.fields_by_name['component_quals'].message_type = chromiumos_dot_config_dot_api_dot_component__pb2._COMPONENT_QUALIFICATION
 _PROGRAM.fields_by_name['firmware_configuration_segments'].message_type = _FIRMWARECONFIGURATIONSEGMENT
@@ -301,11 +503,19 @@ DeviceSignerConfig = _reflection.GeneratedProtocolMessageType('DeviceSignerConfi
 _sym_db.RegisterMessage(DeviceSignerConfig)
 
 Program = _reflection.GeneratedProtocolMessageType('Program', (_message.Message,), dict(
+
+  Platform = _reflection.GeneratedProtocolMessageType('Platform', (_message.Message,), dict(
+    DESCRIPTOR = _PROGRAM_PLATFORM,
+    __module__ = 'chromiumos.config.api.program_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.Program.Platform)
+    ))
+  ,
   DESCRIPTOR = _PROGRAM,
   __module__ = 'chromiumos.config.api.program_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.Program)
   ))
 _sym_db.RegisterMessage(Program)
+_sym_db.RegisterMessage(Program.Platform)
 
 
 DESCRIPTOR._options = None

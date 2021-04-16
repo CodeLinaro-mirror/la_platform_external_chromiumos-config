@@ -66,7 +66,7 @@ message DeviceSignerConfig {
 // other hardware design project.  They will either fully comply with the
 // prescribed program constraints or provide waivers that highlight any
 // constraint violations.
-// Next ID: 11
+// Next ID: 12
 message Program {
   // Fields replicated to public configs.
   chromiumos.config.public_replication.PublicReplication public_replication = 8;
@@ -80,6 +80,60 @@ message Program {
   // platform-name override for mosys.  This should not need to be
   // set for most programs.
   string mosys_platform_name = 10;
+
+  message Platform {
+    enum Arch {
+      ARCH_UNKNOWN = 0;
+      X86 = 1;
+      X86_64 = 2;
+      ARM = 3;
+      ARM64 = 4;
+    }
+
+    // Next tag: 13
+    enum AcceleratedVideoCodec {
+      CODEC_UNDEFINED = 0;
+      H264_DECODE = 1;
+      H264_ENCODE = 2;
+      VP8_DECODE = 3;
+      VP8_ENCODE = 4;
+      VP9_DECODE = 5;
+      VP9_ENCODE = 6;
+      VP9_2_DECODE = 7;
+      VP9_2_ENCODE = 8;
+      H265_DECODE = 9;
+      H265_ENCODE = 10;
+      MJPG_DECODE = 11;
+      MJPG_ENCODE = 12;
+    }
+
+    enum GraphicsApi {
+      GRAPHICS_API_UNDEFINED = 0;
+      GRAPHICS_API_OPENGL = 1;
+      GRAPHICS_API_OPENGL_ES = 2;
+    }
+
+    // Specify the SoC for the design as a canonicalized string representing the
+    // SoC family.  Store a string to prevent leakage of non public platform
+    // names.
+    //
+    // Replace spaces with underscores, upper case everything and specify
+    // variants separated by dashes:
+    //   KABY_LAKE_U_R -- indicates KBL-U or KBL-R chips (both ultra-low power)
+    //
+    string soc_family = 1;
+    Arch   soc_arch   = 2;
+
+    string gpu_family = 3; // canonicalized gpu family name
+
+    // supported graphics APIs
+    repeated GraphicsApi graphics_apis = 4;
+
+    // Hardware accelerated video codecs supported
+    repeated AcceleratedVideoCodec video_codecs = 5;
+  }
+  Platform platform = 11;
+
 
   // Defines program constraints for all proposed design configs.
   repeated Design.Config.Constraint design_config_constraints = 3;
