@@ -1,0 +1,47 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// TODO(shapiroc): Migrate main tls protos into test/api
+import "chromiumos/config/api/test/tls/commontls.proto";
+import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
+
+// Stable (build-agnostic) testing interface for setting up live
+// ChromeOS devices, executing tests, and extracting results.
+service TestService {
+  // ProvisionDut installs a specified version of Chrome OS on the DUT, along
+  // with any specified DLCs.
+  //
+  // If the DUT is already on the specified version of Chrome OS, the OS will
+  // not be provisioned.
+  //
+  // If the DUT already has the specified list of DLCs, only the missing DLCs
+  // will be provisioned.
+  rpc ProvisionDut(chromiumos.config.api.test.tls.ProvisionDutRequest)
+      returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
+      response_type: "ProvisionDutResponse",
+      metadata_type: "ProvisionDutMetadata"
+    };
+  }
+
+  // ProvisionLacros installs a specified version of Lacros on the DUT.
+  //
+  // If the DUT already has the specified version of Lacros, Lacros will not be
+  // provisioned.
+  rpc ProvisionLacros(chromiumos.config.api.test.tls.ProvisionLacrosRequest)
+      returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
+      response_type: "ProvisionLacrosResponse",
+      metadata_type: "ProvisionLacrosMetadata"
+    };
+  }
+
+  // TODO(shapiroc): Define RunTests
+}
