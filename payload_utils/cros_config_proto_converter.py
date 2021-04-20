@@ -181,7 +181,7 @@ def _build_ash_flags(config: Config) -> List[str]:
         'region':
             topology_pb2.HardwareFeatures.Button.Region.Name(
                 volume_button.region).lower(),
-        'edge':
+        'side':
             topology_pb2.HardwareFeatures.Button.Edge.Name(volume_button.edge
                                                           ).lower(),
     })
