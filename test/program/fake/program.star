@@ -68,6 +68,19 @@ _SIGNER_DESIGN_CONFIGS = program_util.create_signer_configs_by_design(
 
 _SIGNER_CONFIG = _SIGNER_BRAND_CONFIGS + _SIGNER_DESIGN_CONFIGS
 
+platform = program_util.platform
+_PLATFORM = program_util.create_platform(
+    soc_family = "FAKE_INTEL_PLATFORM",
+    soc_arch = platform.X86_64,
+    gpu_family = "FAKE_INTEL_GPU",
+    graphics_apis = [platform.GRAPHICS_API_OPENGL],
+    video_codecs = [
+        platform.H264_DECODE,
+        platform.H264_DECODE,
+        platform.H265_DECODE,
+    ],
+)
+
 _FAKE = program_util.create(
     name = "FAKE_PROGRAM",
     component_quals = _QUAL_CONSTRAINTS,
@@ -75,6 +88,7 @@ _FAKE = program_util.create(
     firmware_configuration_segments = _FIRMWARE_CONFIGURATION_SEGMENTS,
     device_signer_configs = _SIGNER_CONFIG,
     mosys_platform_name = "fake",
+    platform = _PLATFORM,
 )
 
 program = struct(

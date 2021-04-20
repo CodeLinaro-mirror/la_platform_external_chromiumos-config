@@ -143,6 +143,19 @@
       },
       "mosysPlatformName": "fake",
       "name": "FAKE_PROGRAM",
+      "platform": {
+        "gpuFamily": "FAKE_INTEL_GPU",
+        "graphicsApis": [
+          1
+        ],
+        "socArch": 2,
+        "socFamily": "FAKE_INTEL_PLATFORM",
+        "videoCodecs": [
+          1,
+          1,
+          9
+        ]
+      },
       "publicReplication": {
         "publicFields": "name,id"
       }

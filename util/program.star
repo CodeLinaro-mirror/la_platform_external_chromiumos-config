@@ -65,6 +65,15 @@ def _create_signer_config_by_design(design_id, key_id):
 def _create_signer_configs_by_design(configs):
     return [_create_signer_config_by_design(id, key) for id, key in configs.items()]
 
+def _create_platform(soc_family, soc_arch, gpu_family = None, graphics_apis = [], video_codecs = []):
+    return program_pb.Program.Platform(
+        soc_family = soc_family,
+        soc_arch = soc_arch,
+        gpu_family = gpu_family,
+        graphics_apis = graphics_apis,
+        video_codecs = video_codecs,
+    )
+
 def _create(
         name,
         public_fields = ["name", "id"],
@@ -74,7 +83,8 @@ def _create(
         ssfc_segments = None,
         design_config_id_segments = None,
         device_signer_configs = None,
-        mosys_platform_name = None):
+        mosys_platform_name = None,
+        platform = None):
     """Builds a Program proto."""
     program_id = program_id_pb.ProgramId(value = name)
     return program_pb.Program(
@@ -88,10 +98,12 @@ def _create(
         design_config_id_segments = design_config_id_segments,
         device_signer_configs = device_signer_configs,
         mosys_platform_name = mosys_platform_name,
+        platform = platform,
     )
 
 program = struct(
     create = _create,
+    create_platform = _create_platform,
     create_firmware_configuration_segment = _create_firmware_configuration_segment,
     create_design_config_id_segment = _create_design_config_id_segment,
     create_signer_config = _create_signer_config,
@@ -100,4 +112,5 @@ program = struct(
     create_signer_config_by_design = _create_signer_config_by_design,
     create_signer_configs_by_design = _create_signer_configs_by_design,
     generate = generate.generate,
+    platform = program_pb.Program.Platform,
 )
