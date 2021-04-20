@@ -16,9 +16,9 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/plan";
 // contains attributes that must be tested; in the above example, this would be
 // a list of kernel versions used by ChromeOS.
 //
-// This message is intended to be specified as a text proto in the source tree,
-// and should be concise enough Starlark, or another config generation tool, is
-// not needed.
+// This message is intended to be specified as text proto in a DIR_METADATA file
+// in the source tree, and should be concise enough Starlark, or another config
+// generation tool, is not needed.
 message SourceTestPlan {
   // Different environments ChromeOS tests run in.
   enum TestEnvironment {
@@ -33,12 +33,12 @@ message SourceTestPlan {
 
   // Paths that will trigger the SourceTestPlan.
   //
-  // Must be a source-absolute ChromeOS path. For example,
-  // “//src/platform2/arc/.*” for
-  // https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/arc/,
-  // based on the manifest’s repo to source path mapping.
+  // Must be a repo-absolute ChromeOS path. For example,
+  // “arc/adbd/.*” for
+  // https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/arc/adbd.
   //
   // Paths can only match files in the subtree of the DIR_METADATA file.
+  // For example, paths specified in "a/b/DIR_METADATA" must start with "a/b/".
   //
   // Patterns use Google Re2 syntax. The comparison is a full match. The pattern
   // is implicitly anchored with ^ and $, so there is no need to add them.
@@ -60,6 +60,8 @@ message SourceTestPlan {
 
   // The below messages and fields are requirements that must be satisfied by
   // the SourceTestPlan.
+  //
+  // At least one requirement must be specified.
   //
   // Each requirement is a message, so it can be extended with more details if
   // needed. An empty message implies presence of the requirement, e.g.

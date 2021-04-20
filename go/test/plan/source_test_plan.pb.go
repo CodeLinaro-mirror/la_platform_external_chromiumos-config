@@ -57,21 +57,21 @@ func (SourceTestPlan_TestEnvironment) EnumDescriptor() ([]byte, []int) {
 // contains attributes that must be tested; in the above example, this would be
 // a list of kernel versions used by ChromeOS.
 //
-// This message is intended to be specified as a text proto in the source tree,
-// and should be concise enough Starlark, or another config generation tool, is
-// not needed.
+// This message is intended to be specified as text proto in a DIR_METADATA file
+// in the source tree, and should be concise enough Starlark, or another config
+// generation tool, is not needed.
 type SourceTestPlan struct {
 	// Test environments enabled for the test plan. Must contain at least one
 	// test type.
 	EnabledTestEnvironments []SourceTestPlan_TestEnvironment `protobuf:"varint,1,rep,packed,name=enabled_test_environments,json=enabledTestEnvironments,proto3,enum=chromiumos.test.plan.SourceTestPlan_TestEnvironment" json:"enabled_test_environments,omitempty"`
 	// Paths that will trigger the SourceTestPlan.
 	//
-	// Must be a source-absolute ChromeOS path. For example,
-	// “//src/platform2/arc/.*” for
-	// https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/arc/,
-	// based on the manifest’s repo to source path mapping.
+	// Must be a repo-absolute ChromeOS path. For example,
+	// “arc/adbd/.*” for
+	// https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/arc/adbd.
 	//
 	// Paths can only match files in the subtree of the DIR_METADATA file.
+	// For example, paths specified in "a/b/DIR_METADATA" must start with "a/b/".
 	//
 	// Patterns use Google Re2 syntax. The comparison is a full match. The pattern
 	// is implicitly anchored with ^ and $, so there is no need to add them.
