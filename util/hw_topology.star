@@ -97,7 +97,8 @@ _EC_TYPE = struct(
 _TPM_TYPE = struct(
     UNKNOWN = topo_pb.HardwareFeatures.TrustedPlatformModule.TPM_TYPE_UNKNOWN,
     THIRD_PARTY = topo_pb.HardwareFeatures.TrustedPlatformModule.THIRD_PARTY,
-    GSC = topo_pb.HardwareFeatures.TrustedPlatformModule.GSC,
+    GSC_H1B = topo_pb.HardwareFeatures.TrustedPlatformModule.GSC_H1B,
+    GSC_H1D = topo_pb.HardwareFeatures.TrustedPlatformModule.GSC_H1D,
 )
 
 # Starlark doesn't support converting enums to their names. Add helper fns. to
@@ -738,16 +739,19 @@ def _create_touch(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_tpm(tpm_type = _TPM_TYPE.GSC, id = None):
+def _create_tpm(tpm_type = _TPM_TYPE.GSC_H1B, id = None, fw_configs = []):
     """Builds a Topology proto for a trusted platform module.
 
     Args:
         tpm_type: A TrustedPlatformModuleType enum
         id: A string identifier for the Topology. If not passed, a default is
             provided.
+        fw_configs: A list of FirmwareConfiguration protos for the tpm.
     """
     hw_features = topo_pb.HardwareFeatures()
     hw_features.trusted_platform_module.tpm_type = tpm_type
+
+    _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
         id = id or "TPM",
@@ -757,7 +761,8 @@ def _create_tpm(tpm_type = _TPM_TYPE.GSC, id = None):
 
 # enumerate the common cases
 _TPM_THIRD_PARTY = _create_tpm(tpm_type = _TPM_TYPE.THIRD_PARTY)
-_TPM_GSC = _create_tpm(tpm_type = _TPM_TYPE.GSC)
+_TPM_GSC_H1B = _create_tpm(tpm_type = _TPM_TYPE.GSC_H1B)
+_TPM_GSC_H1D = _create_tpm(tpm_type = _TPM_TYPE.GSC_H1D)
 
 def _create_hardware_topology(
         screen = None,
@@ -1089,5 +1094,6 @@ hw_topo = struct(
     tpm_type = _TPM_TYPE,
     create_tpm = _create_tpm,
     TPM_THIRD_PARTY = _TPM_THIRD_PARTY,
-    TPM_GSC = _TPM_GSC,
+    TPM_GSC_H1B = _TPM_GSC_H1B,
+    TPM_GSC_H1D = _TPM_GSC_H1D,
 )

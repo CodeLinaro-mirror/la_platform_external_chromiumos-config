@@ -134,7 +134,7 @@ _SC_POWER = sc.create_power(
 
 _TOUCH = hw_topo.create_touch("TOUCH", "Numpad touch", fw_configs = [hw_topo.make_fw_config(program.fw_masks.TOUCH, 1)])
 
-_TPM = hw_topo.TPM_GSC
+_TPM = hw_topo.TPM_GSC_H1B
 
 def create_hardware_topology(
         screen = None,
@@ -173,7 +173,7 @@ def create_hardware_topology(
         volume_button = _VOLUME_BUTTON,
         ec = hw_topo.EC_CHROME,
         touch = _TOUCH,
-        tpm = hw_topo.TPM_GSC,
+        tpm = hw_topo.TPM_GSC_H1B,
     )
 
 # Create empty arrays that we will continually append new configurations to

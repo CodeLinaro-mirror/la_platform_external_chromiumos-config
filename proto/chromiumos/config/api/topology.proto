@@ -465,7 +465,8 @@ message HardwareFeatures {
       THIRD_PARTY = 1;
       // GSCs (Google Security Chips) provide additional functionality beyond
       // serving as the Trusted Platform Module.
-      GSC = 2;
+      GSC_H1B = 2;
+      GSC_H1D = 3;
     }
     TrustedPlatformModuleType tpm_type = 1;
   }
