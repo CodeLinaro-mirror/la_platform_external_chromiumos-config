@@ -4,6 +4,7 @@
 
 load("//config/util/component.star", "comp")
 load("//config/util/design.star", "design")
+load("//config/util/hw_features.star", "hw_feat")
 load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/program.star", program_util = "program")
 
@@ -43,9 +44,10 @@ _FIRMWARE_CONFIGURATION_SEGMENTS = [
     program_util.create_firmware_configuration_segment("Touch controller", _FW_MASKS.TOUCH),
 ]
 
-_FEATURE_CONSTRAINTS = design.create_constraints(
-    hw_topo.create_features(),
-)  # Default for now
+_FEATURE_CONSTRAINTS = design.create_constraints([
+    hw_feat.create_form_factor(hw_feat.form_factor.CLAMSHELL),
+    hw_feat.create_form_factor(hw_feat.form_factor.CONVERTIBLE),
+])
 
 _SIGNER_BRAND_CONFIGS = program_util.create_signer_configs_by_brand(
     {

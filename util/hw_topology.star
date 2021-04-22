@@ -17,21 +17,12 @@ load(
     "@proto//chromiumos/config/api/component.proto",
     comp_pb = "chromiumos.config.api",
 )
+load("//config/util/hw_features.star", "hw_feat")
 
 _PRESENT = struct(
     UNKNOWN = topo_pb.HardwareFeatures.PRESENT_UNKNOWN,
     PRESENT = topo_pb.HardwareFeatures.PRESENT,
     NOT_PRESENT = topo_pb.HardwareFeatures.NOT_PRESENT,
-)
-
-_FF = struct(
-    CLAMSHELL = topo_pb.HardwareFeatures.FormFactor.CLAMSHELL,
-    CONVERTIBLE = topo_pb.HardwareFeatures.FormFactor.CONVERTIBLE,
-    DETACHABLE = topo_pb.HardwareFeatures.FormFactor.DETACHABLE,
-    CHROMEBASE = topo_pb.HardwareFeatures.FormFactor.CHROMEBASE,
-    CHROMEBOX = topo_pb.HardwareFeatures.FormFactor.CHROMEBOX,
-    CHROMEBIT = topo_pb.HardwareFeatures.FormFactor.CHROMEBIT,
-    CHROMESLATE = topo_pb.HardwareFeatures.FormFactor.CHROMESLATE,
 )
 
 _AUDIO_CODEC = struct(
@@ -154,7 +145,7 @@ def _accumulate_fw_configs(result_hw_features, fw_configs):
     for fw_config in fw_configs:
         _accumulate_fw_config(result_hw_features.fw_config, fw_config)
 
-def _create_design_features(form_factor = _FF.CLAMSHELL):
+def _create_design_features(form_factor = hw_feat.form_factor.CLAMSHELL):
     """Builds a HardwareFeatures proto with form_factor."""
     return topo_pb.HardwareFeatures(
         form_factor = topo_pb.HardwareFeatures.FormFactor(
@@ -162,7 +153,9 @@ def _create_design_features(form_factor = _FF.CLAMSHELL):
         ),
     )
 
-def _create_features(form_factors = [_FF.CLAMSHELL, _FF.CONVERTIBLE]):
+_DEFAULT_FF = [hw_feat.form_factor.CLAMSHELL, hw_feat.form_factor.CONVERTIBLE]
+
+def _create_features(form_factors = _DEFAULT_FF):
     """Builds a HardwareFeatures proto for each of form_factors."""
     return [_create_design_features(ff) for ff in form_factors]
 
@@ -224,16 +217,16 @@ def _create_form_factor(form_factor, fw_configs = [], id = None, description = N
     """
     if not id:
         id = {
-            _FF.CLAMSHELL: "CLAMSHELL",
-            _FF.CONVERTIBLE: "CONVERTIBLE",
-            _FF.CHROMEBOX: "CHROMEBOX",
+            hw_feat.form_factor.CLAMSHELL: "CLAMSHELL",
+            hw_feat.form_factor.CONVERTIBLE: "CONVERTIBLE",
+            hw_feat.form_factor.CHROMEBOX: "CHROMEBOX",
         }[form_factor]
 
     if not description:
         description = {
-            _FF.CLAMSHELL: "Device cannot rotate past 180 degrees",
-            _FF.CONVERTIBLE: "Device can rotate 360 degrees",
-            _FF.CHROMEBOX: "Desktop chrome device.",
+            hw_feat.form_factor.CLAMSHELL: "Device cannot rotate past 180 degrees",
+            hw_feat.form_factor.CONVERTIBLE: "Device can rotate 360 degrees",
+            hw_feat.form_factor.CHROMEBOX: "Desktop chrome device.",
         }[form_factor]
 
     hw_features = topo_pb.HardwareFeatures()
@@ -590,10 +583,11 @@ def _create_motherboard_usb(
         hardware_feature = hw_features,
     )
 
-def _create_bluetooth(id, description, bt_component, fw_configs = []):
+def _create_bluetooth(id, description, bt_component, fw_configs = [], present = True):
     """Builds a Topology proto for bluetooth."""
     hw_features = topo_pb.HardwareFeatures()
 
+    hw_features.bluetooth.present = _bool_to_present(present)
     hw_features.bluetooth.component = bt_component
 
     _accumulate_fw_configs(hw_features, fw_configs)
@@ -1067,7 +1061,7 @@ hw_topo = struct(
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,
-    ff = _FF,
+    ff = hw_feat.form_factor,
     amplifier = _AMPLIFIER,
     audio_codec = _AUDIO_CODEC,
     fp_loc = _FP_LOC,

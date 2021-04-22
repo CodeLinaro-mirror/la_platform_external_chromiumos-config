@@ -169,7 +169,8 @@
                   "productId": "0002",
                   "vendorId": "0001"
                 }
-              }
+              },
+              "present": 1
             },
             "camera": {
               "devices": [
@@ -310,7 +311,8 @@
                       "productId": "0002",
                       "vendorId": "0001"
                     }
-                  }
+                  },
+                  "present": 1
                 }
               },
               "id": "BLUETOOTH",
@@ -1013,7 +1015,8 @@
                   "productId": "0002",
                   "vendorId": "0001"
                 }
-              }
+              },
+              "present": 1
             },
             "camera": {
               "devices": [
@@ -1136,7 +1139,8 @@
                       "productId": "0002",
                       "vendorId": "0001"
                     }
-                  }
+                  },
+                  "present": 1
                 }
               },
               "id": "BLUETOOTH",
@@ -1439,7 +1443,8 @@
                   "productId": "0002",
                   "vendorId": "0001"
                 }
-              }
+              },
+              "present": 1
             },
             "camera": {
               "devices": [
@@ -1561,7 +1566,8 @@
                       "productId": "0002",
                       "vendorId": "0001"
                     }
-                  }
+                  },
+                  "present": 1
                 }
               },
               "id": "BLUETOOTH",
@@ -1850,7 +1856,8 @@
                   "productId": "0002",
                   "vendorId": "0001"
                 }
-              }
+              },
+              "present": 1
             },
             "camera": {
               "devices": [
@@ -1972,7 +1979,8 @@
                       "productId": "0002",
                       "vendorId": "0001"
                     }
-                  }
+                  },
+                  "present": 1
                 }
               },
               "id": "BLUETOOTH",
