@@ -43,7 +43,7 @@ message Topology {
     PROXIMITY_SENSOR = 10;
     DAUGHTER_BOARD = 11;
     NON_VOLATILE_STORAGE = 12;
-    RAM = 13; // deprecated
+    RAM = 13;  // deprecated
     WIFI = 14;
     LTE_BOARD = 15;
     SD_READER = 16;
@@ -161,7 +161,7 @@ message HardwareFeatures {
 
     enum Amplifier {
       AMPLIFIER_UNKNOWN = 0;  // Also used for non-public amplifier
-      reserved 1 to 3;  // Not to conflict with existing audio codecs
+      reserved 1 to 3;        // Not to conflict with existing audio codecs
       MAX98357 = 4;
       MAX98373 = 5;
       MAX98360 = 6;
@@ -371,6 +371,7 @@ message HardwareFeatures {
   Storage storage = 18;
   message Storage {
     Component.Storage.StorageType storage_type = 1;
+    uint32 size_gb = 2;
   }
 
   // Bluetooth properties
@@ -418,7 +419,7 @@ message HardwareFeatures {
     enum Edge {
       EDGE_UNKNOWN = 0;
       LEFT = 1;
-      RIGHT= 2;
+      RIGHT = 2;
       TOP = 3;
       BOTTOM = 4;
     }
@@ -474,7 +475,7 @@ message HardwareFeatures {
 
   // Whether the system supports 'Hotwording' (ie wake-on-voice: "Hey Google")
   message Hotwording {
-      Present present = 1;
+    Present present = 1;
   }
   Hotwording hotwording = 26;
 
