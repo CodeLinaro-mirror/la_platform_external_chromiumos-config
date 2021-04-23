@@ -14,6 +14,8 @@ _sym_db = _symbol_database.Default()
 
 from chromiumos.config.api.test.tls import commontls_pb2 as chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_commontls__pb2
 from chromiumos.config.api.test.tls.dependencies.longrunning import operations_pb2 as chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2
+from chromiumos.test.api import test_case_pb2 as chromiumos_dot_test_dot_api_dot_test__case__pb2
+from chromiumos.test.api import test_suite_pb2 as chromiumos_dot_test_dot_api_dot_test__suite__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,13 +23,125 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n&chromiumos/test/api/test_service.proto\x12\x13\x63hromiumos.test.api\x1a.chromiumos/config/api/test/tls/commontls.proto\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto2\xc5\x02\n\x0bTestService\x12\x93\x01\n\x0cProvisionDut\x12\x33.chromiumos.config.api.test.tls.ProvisionDutRequest\x1a\x1d.google.longrunning.Operation\"/\xca\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12\x9f\x01\n\x0fProvisionLacros\x12\x36.chromiumos.config.api.test.tls.ProvisionLacrosRequest\x1a\x1d.google.longrunning.Operation\"5\xca\x41\x32\n\x17ProvisionLacrosResponse\x12\x17ProvisionLacrosMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n&chromiumos/test/api/test_service.proto\x12\x13\x63hromiumos.test.api\x1a.chromiumos/config/api/test/tls/commontls.proto\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\x1a#chromiumos/test/api/test_case.proto\x1a$chromiumos/test/api/test_suite.proto\"\x7f\n\x0fRunTestsRequest\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x37\n\rtest_case_ids\x18\x02 \x03(\x0b\x32 .chromiumos.test.api.TestCase.Id\"\x12\n\x10RunTestsResponse\"\x12\n\x10RunTestsMetadata2\xbf\x03\n\x0bTestService\x12\x93\x01\n\x0cProvisionDut\x12\x33.chromiumos.config.api.test.tls.ProvisionDutRequest\x1a\x1d.google.longrunning.Operation\"/\xca\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12\x9f\x01\n\x0fProvisionLacros\x12\x36.chromiumos.config.api.test.tls.ProvisionLacrosRequest\x1a\x1d.google.longrunning.Operation\"5\xca\x41\x32\n\x17ProvisionLacrosResponse\x12\x17ProvisionLacrosMetadata\x12x\n\x08RunTests\x12$.chromiumos.test.api.RunTestsRequest\x1a\x1d.google.longrunning.Operation\"\'\xca\x41$\n\x10RunTestsResponse\x12\x10RunTestsMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_commontls__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_commontls__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,])
 
 
 
+
+_RUNTESTSREQUEST = _descriptor.Descriptor(
+  name='RunTestsRequest',
+  full_name='chromiumos.test.api.RunTestsRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='test_suites', full_name='chromiumos.test.api.RunTestsRequest.test_suites', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='test_case_ids', full_name='chromiumos.test.api.RunTestsRequest.test_case_ids', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=260,
+  serialized_end=387,
+)
+
+
+_RUNTESTSRESPONSE = _descriptor.Descriptor(
+  name='RunTestsResponse',
+  full_name='chromiumos.test.api.RunTestsResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=389,
+  serialized_end=407,
+)
+
+
+_RUNTESTSMETADATA = _descriptor.Descriptor(
+  name='RunTestsMetadata',
+  full_name='chromiumos.test.api.RunTestsMetadata',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=409,
+  serialized_end=427,
+)
+
+_RUNTESTSREQUEST.fields_by_name['test_suites'].message_type = chromiumos_dot_test_dot_api_dot_test__suite__pb2._TESTSUITE
+_RUNTESTSREQUEST.fields_by_name['test_case_ids'].message_type = chromiumos_dot_test_dot_api_dot_test__case__pb2._TESTCASE_ID
+DESCRIPTOR.message_types_by_name['RunTestsRequest'] = _RUNTESTSREQUEST
+DESCRIPTOR.message_types_by_name['RunTestsResponse'] = _RUNTESTSRESPONSE
+DESCRIPTOR.message_types_by_name['RunTestsMetadata'] = _RUNTESTSMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+RunTestsRequest = _reflection.GeneratedProtocolMessageType('RunTestsRequest', (_message.Message,), dict(
+  DESCRIPTOR = _RUNTESTSREQUEST,
+  __module__ = 'chromiumos.test.api.test_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.RunTestsRequest)
+  ))
+_sym_db.RegisterMessage(RunTestsRequest)
+
+RunTestsResponse = _reflection.GeneratedProtocolMessageType('RunTestsResponse', (_message.Message,), dict(
+  DESCRIPTOR = _RUNTESTSRESPONSE,
+  __module__ = 'chromiumos.test.api.test_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.RunTestsResponse)
+  ))
+_sym_db.RegisterMessage(RunTestsResponse)
+
+RunTestsMetadata = _reflection.GeneratedProtocolMessageType('RunTestsMetadata', (_message.Message,), dict(
+  DESCRIPTOR = _RUNTESTSMETADATA,
+  __module__ = 'chromiumos.test.api.test_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.RunTestsMetadata)
+  ))
+_sym_db.RegisterMessage(RunTestsMetadata)
 
 
 DESCRIPTOR._options = None
@@ -38,8 +152,8 @@ _TESTSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=186,
-  serialized_end=511,
+  serialized_start=430,
+  serialized_end=877,
   methods=[
   _descriptor.MethodDescriptor(
     name='ProvisionDut',
@@ -58,6 +172,15 @@ _TESTSERVICE = _descriptor.ServiceDescriptor(
     input_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_commontls__pb2._PROVISIONLACROSREQUEST,
     output_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2._OPERATION,
     serialized_options=_b('\312A2\n\027ProvisionLacrosResponse\022\027ProvisionLacrosMetadata'),
+  ),
+  _descriptor.MethodDescriptor(
+    name='RunTests',
+    full_name='chromiumos.test.api.TestService.RunTests',
+    index=2,
+    containing_service=None,
+    input_type=_RUNTESTSREQUEST,
+    output_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2._OPERATION,
+    serialized_options=_b('\312A$\n\020RunTestsResponse\022\020RunTestsMetadata'),
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_TESTSERVICE)

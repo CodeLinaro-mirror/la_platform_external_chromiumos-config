@@ -12,6 +12,9 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 import "chromiumos/config/api/test/tls/commontls.proto";
 import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
 
+import "chromiumos/test/api/test_case.proto";
+import "chromiumos/test/api/test_suite.proto";
+
 // Stable (build-agnostic) testing interface for setting up live
 // ChromeOS devices, executing tests, and extracting results.
 service TestService {
@@ -43,5 +46,24 @@ service TestService {
     };
   }
 
-  // TODO(shapiroc): Define RunTests
+  // RunTests runs the requested tests.
+  rpc RunTests(RunTestsRequest) returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
+      response_type: "RunTestsResponse",
+      metadata_type: "RunTestsMetadata"
+    };
+  }
 }
+
+// For RunTests, clients can specify both lists of suites and test cases.
+// Both will be run as part of a single request.
+message RunTestsRequest {
+  // Test suites to run
+  repeated TestSuite test_suites = 1;
+  // Explicit test cases to run (for retries, bisection, ...)
+  repeated TestCase.Id test_case_ids = 2;
+}
+message RunTestsResponse {
+  // TODO(shapiroc): Define RunTest response
+}
+message RunTestsMetadata {}
