@@ -644,7 +644,10 @@ def _build_modem(config):
   lte_support = _any_present([hw_features.lte.present])
   if not lte_support:
     return None
-  return {'firmware-variant': config.hw_design.name.lower()}
+  firmware_variant = config.hw_design.name.lower()
+  if hw_features.lte.model:
+    firmware_variant += '_' + hw_features.lte.model.lower()
+  return {'firmware-variant': firmware_variant}
 
 
 def _sw_config(sw_configs, design_config_id):

@@ -637,6 +637,7 @@
               "powerButton": 2
             },
             "lte": {
+              "model": "FakeModem",
               "present": 1
             },
             "magnetometer": {
@@ -824,6 +825,7 @@
               },
               "hardwareFeature": {
                 "lte": {
+                  "model": "FakeModem",
                   "present": 1
                 }
               },
@@ -1481,6 +1483,7 @@
               "powerButton": 2
             },
             "lte": {
+              "model": "FakeModemB",
               "present": 1
             },
             "magnetometer": {
@@ -1610,6 +1613,7 @@
                   "present": 2
                 },
                 "lte": {
+                  "model": "FakeModemB",
                   "present": 1
                 },
                 "usbA": {

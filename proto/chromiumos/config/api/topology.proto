@@ -110,6 +110,10 @@ message HardwareFeatures {
   message Lte {
     // If LTE is present on system
     Present present = 1;
+
+    // Optional string identifying the model of the modem to select the proper
+    // helper and firmwares on platforms with several supported modems.
+    string model = 2;
   }
 
   // HDMI properties

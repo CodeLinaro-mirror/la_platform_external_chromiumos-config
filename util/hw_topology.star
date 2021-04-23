@@ -488,6 +488,7 @@ def _create_daughter_board(
         usbc_count = 0,
         usba_count = 0,
         lte_support = False,
+        lte_model = None,
         hdmi_support = False):
     """Builds a Topology proto for a daughter board."""
     hw_features = topo_pb.HardwareFeatures()
@@ -497,6 +498,7 @@ def _create_daughter_board(
     hw_features.usb_c.count.value = usbc_count
     hw_features.usb_a.count.value = usba_count
     hw_features.lte.present = _bool_to_present(lte_support)
+    hw_features.lte.model = lte_model
     hw_features.hdmi.present = _bool_to_present(hdmi_support)
 
     return topo_pb.Topology(
@@ -534,11 +536,12 @@ def _create_wifi(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_lte_board(id, description, lte_present, fw_configs = []):
+def _create_lte_board(id, description, lte_present, fw_configs = [], model = None):
     """Builds a Topology proto for a LTE board."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.lte.present = _bool_to_present(lte_present)
+    hw_features.lte.model = model
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -894,6 +897,8 @@ def _accumulate_usba(existing_usba, new_usba):
 
 def _accumulate_lte(existing_lte, new_lte):
     existing_lte.present = _accumulate_presence(existing_lte.present, new_lte.present)
+    if new_lte.present == _PRESENT.PRESENT:
+        existing_lte.model = new_lte.model
 
 def _accumulate_hdmi(existing_hdmi, new_hdmi):
     existing_hdmi.present = _accumulate_presence(existing_hdmi.present, new_hdmi.present)
@@ -996,7 +1001,7 @@ def _convert_to_hw_features(hardware_topology):
     _accumulate_fw_config(result.fw_config, copy.lte_board.hardware_feature.fw_config)
 
     if copy.lte_board.hardware_feature.lte != topo_pb.HardwareFeatures.Lte():
-        result.lte.present = _accumulate_presence(result.lte.present, copy.lte_board.hardware_feature.lte.present)
+        _accumulate_lte(result.lte, copy.lte_board.hardware_feature.lte)
 
     # Handle all possible sd reader hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.sd_reader.hardware_feature.fw_config)

@@ -249,7 +249,7 @@
           "smbios-name-match": "FAKE_REF_DESIGN"
         },
         "modem": {
-          "firmware-variant": "fake_ref_design"
+          "firmware-variant": "fake_ref_design_fakemodem"
         },
         "name": "fake_ref_design",
         "power": {
@@ -541,7 +541,7 @@
           "smbios-name-match": "PROJECT_B"
         },
         "modem": {
-          "firmware-variant": "project_b"
+          "firmware-variant": "project_b_fakemodemb"
         },
         "name": "project_b",
         "power": {

@@ -104,6 +104,7 @@ _DAUGHTER_BOARD = hw_topo.create_daughter_board("Default DB", "Default daughter_
 _NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
 _WIFI = hw_topo.create_wifi("WIFI", "Default wifi", fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)])
 _LTE_BOARD = hw_topo.create_lte_board("LTE_BOARD", "Default lte_board", lte_present = True)
+_LTE_BOARD_WITH_MODEL = hw_topo.create_lte_board("LTE_BOARD", "Default lte_board", lte_present = True, model = "FakeModem")
 _SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
 _MOTHERBOARD_USB = hw_topo.create_motherboard_usb("MOTHERBOARD_USB", "Default motherboard_usb")
 _BLUETOOTH = hw_topo.create_bluetooth("BLUETOOTH", "Default bluetooth", bt_component = program.bluetooth_component.bluetooth)
@@ -232,7 +233,7 @@ design.append_configs(
     design_id = _DESIGN_ID,
     config_id = 0,
     hardware_topology = create_hardware_topology(
-        lte_board = _LTE_BOARD,
+        lte_board = _LTE_BOARD_WITH_MODEL,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
         camera = _CAMERA2,
@@ -391,6 +392,7 @@ design.append_configs(
             "Non-default daughter_board with LTE",
             fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)],
             lte_support = True,
+            lte_model = "FakeModemB",
         ),
         bluetooth = _BLUETOOTH,
         camera = _CAMERA1,
