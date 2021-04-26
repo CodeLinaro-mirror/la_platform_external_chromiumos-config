@@ -42,3 +42,8 @@ message TestCase {
   // TODO(kathrelkeld): Define metadata based on ownership tracking
   message Contact {}
 }
+
+// List of globally unique test case identifiers
+message TestCaseIdList {
+  repeated TestCase.Id test_case_ids = 1;
+}

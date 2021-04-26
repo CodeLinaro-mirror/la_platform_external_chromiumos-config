@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n#chromiumos/test/api/test_case.proto\x12\x13\x63hromiumos.test.api\"\xe6\x01\n\x08TestCase\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.test.api.TestCase.Id\x12\x0c\n\x04name\x18\x02 \x01(\t\x12/\n\x04tags\x18\x03 \x03(\x0b\x32!.chromiumos.test.api.TestCase.Tag\x12\x37\n\x08\x63ontacts\x18\x04 \x03(\x0b\x32%.chromiumos.test.api.TestCase.Contact\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\x1a\x14\n\x03Tag\x12\r\n\x05value\x18\x01 \x01(\t\x1a\t\n\x07\x43ontactB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n#chromiumos/test/api/test_case.proto\x12\x13\x63hromiumos.test.api\"\xe6\x01\n\x08TestCase\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.test.api.TestCase.Id\x12\x0c\n\x04name\x18\x02 \x01(\t\x12/\n\x04tags\x18\x03 \x03(\x0b\x32!.chromiumos.test.api.TestCase.Tag\x12\x37\n\x08\x63ontacts\x18\x04 \x03(\x0b\x32%.chromiumos.test.api.TestCase.Contact\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\x1a\x14\n\x03Tag\x12\r\n\x05value\x18\x01 \x01(\t\x1a\t\n\x07\x43ontact\"I\n\x0eTestCaseIdList\x12\x37\n\rtest_case_ids\x18\x01 \x03(\x0b\x32 .chromiumos.test.api.TestCase.IdB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
 )
 
 
@@ -159,13 +159,46 @@ _TESTCASE = _descriptor.Descriptor(
   serialized_end=291,
 )
 
+
+_TESTCASEIDLIST = _descriptor.Descriptor(
+  name='TestCaseIdList',
+  full_name='chromiumos.test.api.TestCaseIdList',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='test_case_ids', full_name='chromiumos.test.api.TestCaseIdList.test_case_ids', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=293,
+  serialized_end=366,
+)
+
 _TESTCASE_ID.containing_type = _TESTCASE
 _TESTCASE_TAG.containing_type = _TESTCASE
 _TESTCASE_CONTACT.containing_type = _TESTCASE
 _TESTCASE.fields_by_name['id'].message_type = _TESTCASE_ID
 _TESTCASE.fields_by_name['tags'].message_type = _TESTCASE_TAG
 _TESTCASE.fields_by_name['contacts'].message_type = _TESTCASE_CONTACT
+_TESTCASEIDLIST.fields_by_name['test_case_ids'].message_type = _TESTCASE_ID
 DESCRIPTOR.message_types_by_name['TestCase'] = _TESTCASE
+DESCRIPTOR.message_types_by_name['TestCaseIdList'] = _TESTCASEIDLIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TestCase = _reflection.GeneratedProtocolMessageType('TestCase', (_message.Message,), dict(
@@ -198,6 +231,13 @@ _sym_db.RegisterMessage(TestCase)
 _sym_db.RegisterMessage(TestCase.Id)
 _sym_db.RegisterMessage(TestCase.Tag)
 _sym_db.RegisterMessage(TestCase.Contact)
+
+TestCaseIdList = _reflection.GeneratedProtocolMessageType('TestCaseIdList', (_message.Message,), dict(
+  DESCRIPTOR = _TESTCASEIDLIST,
+  __module__ = 'chromiumos.test.api.test_case_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.TestCaseIdList)
+  ))
+_sym_db.RegisterMessage(TestCaseIdList)
 
 
 DESCRIPTOR._options = None
