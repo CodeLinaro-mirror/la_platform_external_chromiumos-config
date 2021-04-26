@@ -1,0 +1,33 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/dut_attribute.proto";
+import "chromiumos/test/api/test_suite.proto";
+
+message CoverageRule {
+  // Optional human friendly name of the test coverage rule
+  // E.g. kernel:5.4_soc:geminilake_wifi:intel-5600
+  string name = 1;
+
+  // Test suites that must be executed.
+  repeated TestSuite test_suites = 2;
+
+  // Device hardware criteria that must be met.
+  // All criteria must be met (AND logic is applied).
+  repeated DutCriterion dut_criteria = 3;
+
+  message DutCriterion {
+    // ID of the DUT attribute that must meet the criterion.
+    DutAttribute.Id attribute_id = 1;
+    // List of ANY acceptable values to match (OR logic is applied).
+    // Values must match exactly (i.e. no regexp, wildcard, etc. allowed).
+    repeated string values = 2;
+  }
+}
