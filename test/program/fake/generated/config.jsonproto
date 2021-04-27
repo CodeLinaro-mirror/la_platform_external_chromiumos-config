@@ -45,6 +45,35 @@
       "designConfigConstraints": [
         {
           "features": {
+            "bluetooth": {
+              "present": 1
+            },
+            "camera": {
+              "devices": [
+                {}
+              ]
+            },
+            "display": {
+              "type": 1
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
+            "formFactor": {
+              "formFactor": 1
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "touchpad": {
+              "present": 1
+            }
+          },
+          "level": 1
+        },
+        {
+          "features": {
             "formFactor": {
               "formFactor": 1
             }

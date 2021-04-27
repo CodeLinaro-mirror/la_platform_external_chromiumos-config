@@ -1,6 +1,13 @@
 {
   "programList": [
     {
+      "designConfigConstraints": [
+        {
+          "features": {
+            "camera": {}
+          }
+        }
+      ],
       "id": {
         "value": "FAKE_PROGRAM"
       },

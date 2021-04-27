@@ -45,6 +45,16 @@ _FIRMWARE_CONFIGURATION_SEGMENTS = [
 ]
 
 _FEATURE_CONSTRAINTS = design.create_constraints([
+    hw_feat.create_features(
+        bluetooth = hw_feat.create_bluetooth(present = True),
+        camera = hw_feat.create_cameras(
+            hw_feat.create_camera(),
+        ),
+        display = hw_feat.create_display(internal = True, external = False),
+        form_factor = hw_feat.create_form_factor(hw_feat.form_factor.CLAMSHELL),
+        storage = hw_feat.create_storage(hw_feat.storage.EMMC),
+        touchpad = hw_feat.create_touchpad(present = True),
+    ),
     hw_feat.create_form_factor(hw_feat.form_factor.CLAMSHELL),
     hw_feat.create_form_factor(hw_feat.form_factor.CONVERTIBLE),
 ])
