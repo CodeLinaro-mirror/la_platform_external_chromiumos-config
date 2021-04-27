@@ -19,6 +19,8 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/plan";
 // This message is intended to be specified as text proto in a DIR_METADATA file
 // in the source tree, and should be concise enough Starlark, or another config
 // generation tool, is not needed.
+//
+// NEXT ID: 13
 message SourceTestPlan {
   // Different environments ChromeOS tests run in.
   enum TestEnvironment {
@@ -79,6 +81,26 @@ message SourceTestPlan {
   // Run tests at least once on each SoC family.
   message SocFamilies {}
 
+  // Run tests at least once on each architecture.
+  message Architectures {}
+
+  // Run tests at least once on each ARC version.
+  message ArcVersions {}
+
+  // Run tests on at least one device with a fingerprint sensor.
+  message Fingerprint {}
+
+  // Run tests on at least one device with Parallels.
+  message Parallels {}
+
+  // Run tests on at least one device with ChromeOS Config.
+  message ChromeOSConfig {}
+
   KernelVersions kernel_versions = 6;
   SocFamilies soc_families = 7;
+  Architectures architectures = 8;
+  ArcVersions arc_versions = 9;
+  Fingerprint fingerprint = 10;
+  Parallels parallels = 11;
+  ChromeOSConfig chromeos_config = 12;
 }
