@@ -57,6 +57,7 @@ def _append_configs(
         wifi = None,
         camera = None,
         ui = None,
+        device_tree_compatible_match = None,
         smbios_name_match_override = None):
     """Creates and appends new SW and HW configs.
 
@@ -88,9 +89,13 @@ def _append_configs(
         wifi: A WifiConfig to be used in the SoftwareConfig.
         camera: A CameraConfig to be used in the SoftwareConfig.
         ui: A UiConfig to be used in the SoftwareConfig.
-        smbios_name_match_override: A str used for smbios_name_match in
-            IdentityScanConfig. If not specified, the string in DesignId is
-            used.
+        device_tree_compatible_match: For ARM platform, a str used for
+            device_tree_compatible_match in IdentityScanConfig.
+        smbios_name_match_override: For x86 platform, a str used for
+            smbios_name_match in IdentityScanConfig. If not specified,
+            the string in DesignId is used.
+            Note only one of device_tree_compatible_match and
+            smbios_name_match_override can be specified.
     """
 
     # Ensure that config_id is convertable to int and is serialized as a
@@ -118,7 +123,12 @@ def _append_configs(
 
     sw_config = sc_pb.SoftwareConfig()
     sw_config.design_config_id = hw_config.id
-    sw_config.id_scan_config.smbios_name_match = smbios_name_match_override or design_id.value
+    if device_tree_compatible_match and smbios_name_match_override:
+        fail("Only one of device_tree_compatible_match and smbios_name_match_override can be specified")
+    elif device_tree_compatible_match:
+        sw_config.id_scan_config.device_tree_compatible_match = device_tree_compatible_match
+    else:
+        sw_config.id_scan_config.smbios_name_match = smbios_name_match_override or design_id.value
     sw_config.id_scan_config.firmware_sku = config_id
     sw_config.firmware = firmware
     sw_config.firmware_build_config = firmware_build_config
