@@ -1,0 +1,39 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// DutAttribute defines how attributes of a DUT are encoded into key-value pairs
+// for use in test coverage rules.
+message DutAttribute {
+  // Globally unique identifier for the attribute. Usually reflects the
+  // contents of the attribute, e.g. "bluetooth_vendor".
+  message Id {
+    string value = 1;
+  }
+
+  Id id = 1;
+
+  // Field in a chromiumos.config.payload.ConfigBundle proto that forms the
+  // value of the attribute.
+  //
+  // The path should start at ConfigBundle and be delimited by ".". For
+  // example, "components.bluetooth.usb.vendor_id". Only scalar fields are
+  // allowed as the last component of the path.
+  //
+  // The value of the field specified here forms the value of the attribute.
+  // The field in the ConfigBundle may be a reference to a field in hwid
+  // hwid files, in which case the value of the field in the hwid file is used
+  // In the above example, the value would be found in a hwid file and could
+  // be something like "btvendor123".
+  string field_path = 2;
+}
+
+message DutAttributeList {
+  repeated DutAttribute dut_attributes = 1;
+}
