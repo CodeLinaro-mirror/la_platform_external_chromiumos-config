@@ -20,7 +20,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/plan";
 // in the source tree, and should be concise enough Starlark, or another config
 // generation tool, is not needed.
 //
-// NEXT ID: 13
+// NEXT ID: 14
 message SourceTestPlan {
   // Different environments ChromeOS tests run in.
   enum TestEnvironment {
@@ -60,10 +60,11 @@ message SourceTestPlan {
   repeated string test_tags = 4;
   repeated string test_tag_excludes = 5;
 
-  // The below messages and fields are requirements that must be satisfied by
-  // the SourceTestPlan.
+  // Requirements that must be satisfied by the SourceTestPlan.
   //
-  // At least one requirement must be specified.
+  // Each field in the Requirements message should describe a requirement, e.g.
+  // "Run tests on all SoC families". At least one requirement (i.e. field) must
+  // be specified for the SourceTestPlan to be valid.
   //
   // Each requirement is a message, so it can be extended with more details if
   // needed. An empty message implies presence of the requirement, e.g.
@@ -74,8 +75,41 @@ message SourceTestPlan {
   // kernel version and on each SoC family. The cartesian product of
   // requirements is not required, i.e. all possible kernel version, SoC family
   // combinations do not need to be tested.
+  message Requirements {
+    // Run tests at least once on each kernel version.
+    message KernelVersions {}
 
-  // Run tests at least once on each kernel version.
+    // Run tests at least once on each SoC family.
+    message SocFamilies {}
+
+    // Run tests at least once on each architecture.
+    message Architectures {}
+
+    // Run tests at least once on each ARC version.
+    message ArcVersions {}
+
+    // Run tests on at least one device with a fingerprint sensor.
+    message Fingerprint {}
+
+    // Run tests on at least one device with Parallels.
+    message Parallels {}
+
+    // Run tests on at least one device with ChromeOS Config.
+    message ChromeOSConfig {}
+
+    KernelVersions kernel_versions = 1;
+    SocFamilies soc_families = 2;
+    Architectures architectures = 3;
+    ArcVersions arc_versions = 4;
+    Fingerprint fingerprint = 5;
+    Parallels parallels = 6;
+    ChromeOSConfig chromeos_config = 7;
+  }
+
+  Requirements requirements = 13;
+
+  // TODO(b/182898188): Remove deprecated requirements once code has been
+  // migrated off them.
   message KernelVersions {}
 
   // Run tests at least once on each SoC family.
@@ -96,11 +130,11 @@ message SourceTestPlan {
   // Run tests on at least one device with ChromeOS Config.
   message ChromeOSConfig {}
 
-  KernelVersions kernel_versions = 6;
-  SocFamilies soc_families = 7;
-  Architectures architectures = 8;
-  ArcVersions arc_versions = 9;
-  Fingerprint fingerprint = 10;
-  Parallels parallels = 11;
-  ChromeOSConfig chromeos_config = 12;
+  KernelVersions kernel_versions = 6 [deprecated = true];
+  SocFamilies soc_families = 7 [deprecated = true];
+  Architectures architectures = 8 [deprecated = true];
+  ArcVersions arc_versions = 9 [deprecated = true];
+  Fingerprint fingerprint = 10 [deprecated = true];
+  Parallels parallels = 11 [deprecated = true];
+  ChromeOSConfig chromeos_config = 12 [deprecated = true];
 }

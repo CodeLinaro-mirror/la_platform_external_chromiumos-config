@@ -61,7 +61,7 @@ func (SourceTestPlan_TestEnvironment) EnumDescriptor() ([]byte, []int) {
 // in the source tree, and should be concise enough Starlark, or another config
 // generation tool, is not needed.
 //
-// NEXT ID: 13
+// NEXT ID: 14
 type SourceTestPlan struct {
 	// Test environments enabled for the test plan. Must contain at least one
 	// test type.
@@ -91,13 +91,14 @@ type SourceTestPlan struct {
 	// Tags must match exactly (i.e. no regexp, wildcard, etc. allowed).
 	TestTags             []string                       `protobuf:"bytes,4,rep,name=test_tags,json=testTags,proto3" json:"test_tags,omitempty"`
 	TestTagExcludes      []string                       `protobuf:"bytes,5,rep,name=test_tag_excludes,json=testTagExcludes,proto3" json:"test_tag_excludes,omitempty"`
-	KernelVersions       *SourceTestPlan_KernelVersions `protobuf:"bytes,6,opt,name=kernel_versions,json=kernelVersions,proto3" json:"kernel_versions,omitempty"`
-	SocFamilies          *SourceTestPlan_SocFamilies    `protobuf:"bytes,7,opt,name=soc_families,json=socFamilies,proto3" json:"soc_families,omitempty"`
-	Architectures        *SourceTestPlan_Architectures  `protobuf:"bytes,8,opt,name=architectures,proto3" json:"architectures,omitempty"`
-	ArcVersions          *SourceTestPlan_ArcVersions    `protobuf:"bytes,9,opt,name=arc_versions,json=arcVersions,proto3" json:"arc_versions,omitempty"`
-	Fingerprint          *SourceTestPlan_Fingerprint    `protobuf:"bytes,10,opt,name=fingerprint,proto3" json:"fingerprint,omitempty"`
-	Parallels            *SourceTestPlan_Parallels      `protobuf:"bytes,11,opt,name=parallels,proto3" json:"parallels,omitempty"`
-	ChromeosConfig       *SourceTestPlan_ChromeOSConfig `protobuf:"bytes,12,opt,name=chromeos_config,json=chromeosConfig,proto3" json:"chromeos_config,omitempty"`
+	Requirements         *SourceTestPlan_Requirements   `protobuf:"bytes,13,opt,name=requirements,proto3" json:"requirements,omitempty"`
+	KernelVersions       *SourceTestPlan_KernelVersions `protobuf:"bytes,6,opt,name=kernel_versions,json=kernelVersions,proto3" json:"kernel_versions,omitempty"`  // Deprecated: Do not use.
+	SocFamilies          *SourceTestPlan_SocFamilies    `protobuf:"bytes,7,opt,name=soc_families,json=socFamilies,proto3" json:"soc_families,omitempty"`           // Deprecated: Do not use.
+	Architectures        *SourceTestPlan_Architectures  `protobuf:"bytes,8,opt,name=architectures,proto3" json:"architectures,omitempty"`                          // Deprecated: Do not use.
+	ArcVersions          *SourceTestPlan_ArcVersions    `protobuf:"bytes,9,opt,name=arc_versions,json=arcVersions,proto3" json:"arc_versions,omitempty"`           // Deprecated: Do not use.
+	Fingerprint          *SourceTestPlan_Fingerprint    `protobuf:"bytes,10,opt,name=fingerprint,proto3" json:"fingerprint,omitempty"`                             // Deprecated: Do not use.
+	Parallels            *SourceTestPlan_Parallels      `protobuf:"bytes,11,opt,name=parallels,proto3" json:"parallels,omitempty"`                                 // Deprecated: Do not use.
+	ChromeosConfig       *SourceTestPlan_ChromeOSConfig `protobuf:"bytes,12,opt,name=chromeos_config,json=chromeosConfig,proto3" json:"chromeos_config,omitempty"` // Deprecated: Do not use.
 	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
 	XXX_unrecognized     []byte                         `json:"-"`
 	XXX_sizecache        int32                          `json:"-"`
@@ -163,6 +164,14 @@ func (m *SourceTestPlan) GetTestTagExcludes() []string {
 	return nil
 }
 
+func (m *SourceTestPlan) GetRequirements() *SourceTestPlan_Requirements {
+	if m != nil {
+		return m.Requirements
+	}
+	return nil
+}
+
+// Deprecated: Do not use.
 func (m *SourceTestPlan) GetKernelVersions() *SourceTestPlan_KernelVersions {
 	if m != nil {
 		return m.KernelVersions
@@ -170,6 +179,7 @@ func (m *SourceTestPlan) GetKernelVersions() *SourceTestPlan_KernelVersions {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (m *SourceTestPlan) GetSocFamilies() *SourceTestPlan_SocFamilies {
 	if m != nil {
 		return m.SocFamilies
@@ -177,6 +187,7 @@ func (m *SourceTestPlan) GetSocFamilies() *SourceTestPlan_SocFamilies {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (m *SourceTestPlan) GetArchitectures() *SourceTestPlan_Architectures {
 	if m != nil {
 		return m.Architectures
@@ -184,6 +195,7 @@ func (m *SourceTestPlan) GetArchitectures() *SourceTestPlan_Architectures {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (m *SourceTestPlan) GetArcVersions() *SourceTestPlan_ArcVersions {
 	if m != nil {
 		return m.ArcVersions
@@ -191,6 +203,7 @@ func (m *SourceTestPlan) GetArcVersions() *SourceTestPlan_ArcVersions {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (m *SourceTestPlan) GetFingerprint() *SourceTestPlan_Fingerprint {
 	if m != nil {
 		return m.Fingerprint
@@ -198,6 +211,7 @@ func (m *SourceTestPlan) GetFingerprint() *SourceTestPlan_Fingerprint {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (m *SourceTestPlan) GetParallels() *SourceTestPlan_Parallels {
 	if m != nil {
 		return m.Parallels
@@ -205,6 +219,7 @@ func (m *SourceTestPlan) GetParallels() *SourceTestPlan_Parallels {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (m *SourceTestPlan) GetChromeosConfig() *SourceTestPlan_ChromeOSConfig {
 	if m != nil {
 		return m.ChromeosConfig
@@ -212,7 +227,350 @@ func (m *SourceTestPlan) GetChromeosConfig() *SourceTestPlan_ChromeOSConfig {
 	return nil
 }
 
+// Requirements that must be satisfied by the SourceTestPlan.
+//
+// Each field in the Requirements message should describe a requirement, e.g.
+// "Run tests on all SoC families". At least one requirement (i.e. field) must
+// be specified for the SourceTestPlan to be valid.
+//
+// Each requirement is a message, so it can be extended with more details if
+// needed. An empty message implies presence of the requirement, e.g.
+// `soc_families {}`.
+//
+// Every requirement must be satisfied; for example, if kernel_versions and
+// soc_families are both specified, tests must be run at least once on each
+// kernel version and on each SoC family. The cartesian product of
+// requirements is not required, i.e. all possible kernel version, SoC family
+// combinations do not need to be tested.
+type SourceTestPlan_Requirements struct {
+	KernelVersions       *SourceTestPlan_Requirements_KernelVersions `protobuf:"bytes,1,opt,name=kernel_versions,json=kernelVersions,proto3" json:"kernel_versions,omitempty"`
+	SocFamilies          *SourceTestPlan_Requirements_SocFamilies    `protobuf:"bytes,2,opt,name=soc_families,json=socFamilies,proto3" json:"soc_families,omitempty"`
+	Architectures        *SourceTestPlan_Requirements_Architectures  `protobuf:"bytes,3,opt,name=architectures,proto3" json:"architectures,omitempty"`
+	ArcVersions          *SourceTestPlan_Requirements_ArcVersions    `protobuf:"bytes,4,opt,name=arc_versions,json=arcVersions,proto3" json:"arc_versions,omitempty"`
+	Fingerprint          *SourceTestPlan_Requirements_Fingerprint    `protobuf:"bytes,5,opt,name=fingerprint,proto3" json:"fingerprint,omitempty"`
+	Parallels            *SourceTestPlan_Requirements_Parallels      `protobuf:"bytes,6,opt,name=parallels,proto3" json:"parallels,omitempty"`
+	ChromeosConfig       *SourceTestPlan_Requirements_ChromeOSConfig `protobuf:"bytes,7,opt,name=chromeos_config,json=chromeosConfig,proto3" json:"chromeos_config,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                    `json:"-"`
+	XXX_unrecognized     []byte                                      `json:"-"`
+	XXX_sizecache        int32                                       `json:"-"`
+}
+
+func (m *SourceTestPlan_Requirements) Reset()         { *m = SourceTestPlan_Requirements{} }
+func (m *SourceTestPlan_Requirements) String() string { return proto.CompactTextString(m) }
+func (*SourceTestPlan_Requirements) ProtoMessage()    {}
+func (*SourceTestPlan_Requirements) Descriptor() ([]byte, []int) {
+	return fileDescriptor_28090e75a41618a0, []int{0, 0}
+}
+
+func (m *SourceTestPlan_Requirements) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SourceTestPlan_Requirements.Unmarshal(m, b)
+}
+func (m *SourceTestPlan_Requirements) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SourceTestPlan_Requirements.Marshal(b, m, deterministic)
+}
+func (m *SourceTestPlan_Requirements) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SourceTestPlan_Requirements.Merge(m, src)
+}
+func (m *SourceTestPlan_Requirements) XXX_Size() int {
+	return xxx_messageInfo_SourceTestPlan_Requirements.Size(m)
+}
+func (m *SourceTestPlan_Requirements) XXX_DiscardUnknown() {
+	xxx_messageInfo_SourceTestPlan_Requirements.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SourceTestPlan_Requirements proto.InternalMessageInfo
+
+func (m *SourceTestPlan_Requirements) GetKernelVersions() *SourceTestPlan_Requirements_KernelVersions {
+	if m != nil {
+		return m.KernelVersions
+	}
+	return nil
+}
+
+func (m *SourceTestPlan_Requirements) GetSocFamilies() *SourceTestPlan_Requirements_SocFamilies {
+	if m != nil {
+		return m.SocFamilies
+	}
+	return nil
+}
+
+func (m *SourceTestPlan_Requirements) GetArchitectures() *SourceTestPlan_Requirements_Architectures {
+	if m != nil {
+		return m.Architectures
+	}
+	return nil
+}
+
+func (m *SourceTestPlan_Requirements) GetArcVersions() *SourceTestPlan_Requirements_ArcVersions {
+	if m != nil {
+		return m.ArcVersions
+	}
+	return nil
+}
+
+func (m *SourceTestPlan_Requirements) GetFingerprint() *SourceTestPlan_Requirements_Fingerprint {
+	if m != nil {
+		return m.Fingerprint
+	}
+	return nil
+}
+
+func (m *SourceTestPlan_Requirements) GetParallels() *SourceTestPlan_Requirements_Parallels {
+	if m != nil {
+		return m.Parallels
+	}
+	return nil
+}
+
+func (m *SourceTestPlan_Requirements) GetChromeosConfig() *SourceTestPlan_Requirements_ChromeOSConfig {
+	if m != nil {
+		return m.ChromeosConfig
+	}
+	return nil
+}
+
 // Run tests at least once on each kernel version.
+type SourceTestPlan_Requirements_KernelVersions struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SourceTestPlan_Requirements_KernelVersions) Reset() {
+	*m = SourceTestPlan_Requirements_KernelVersions{}
+}
+func (m *SourceTestPlan_Requirements_KernelVersions) String() string {
+	return proto.CompactTextString(m)
+}
+func (*SourceTestPlan_Requirements_KernelVersions) ProtoMessage() {}
+func (*SourceTestPlan_Requirements_KernelVersions) Descriptor() ([]byte, []int) {
+	return fileDescriptor_28090e75a41618a0, []int{0, 0, 0}
+}
+
+func (m *SourceTestPlan_Requirements_KernelVersions) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SourceTestPlan_Requirements_KernelVersions.Unmarshal(m, b)
+}
+func (m *SourceTestPlan_Requirements_KernelVersions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SourceTestPlan_Requirements_KernelVersions.Marshal(b, m, deterministic)
+}
+func (m *SourceTestPlan_Requirements_KernelVersions) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SourceTestPlan_Requirements_KernelVersions.Merge(m, src)
+}
+func (m *SourceTestPlan_Requirements_KernelVersions) XXX_Size() int {
+	return xxx_messageInfo_SourceTestPlan_Requirements_KernelVersions.Size(m)
+}
+func (m *SourceTestPlan_Requirements_KernelVersions) XXX_DiscardUnknown() {
+	xxx_messageInfo_SourceTestPlan_Requirements_KernelVersions.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SourceTestPlan_Requirements_KernelVersions proto.InternalMessageInfo
+
+// Run tests at least once on each SoC family.
+type SourceTestPlan_Requirements_SocFamilies struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SourceTestPlan_Requirements_SocFamilies) Reset() {
+	*m = SourceTestPlan_Requirements_SocFamilies{}
+}
+func (m *SourceTestPlan_Requirements_SocFamilies) String() string { return proto.CompactTextString(m) }
+func (*SourceTestPlan_Requirements_SocFamilies) ProtoMessage()    {}
+func (*SourceTestPlan_Requirements_SocFamilies) Descriptor() ([]byte, []int) {
+	return fileDescriptor_28090e75a41618a0, []int{0, 0, 1}
+}
+
+func (m *SourceTestPlan_Requirements_SocFamilies) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SourceTestPlan_Requirements_SocFamilies.Unmarshal(m, b)
+}
+func (m *SourceTestPlan_Requirements_SocFamilies) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SourceTestPlan_Requirements_SocFamilies.Marshal(b, m, deterministic)
+}
+func (m *SourceTestPlan_Requirements_SocFamilies) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SourceTestPlan_Requirements_SocFamilies.Merge(m, src)
+}
+func (m *SourceTestPlan_Requirements_SocFamilies) XXX_Size() int {
+	return xxx_messageInfo_SourceTestPlan_Requirements_SocFamilies.Size(m)
+}
+func (m *SourceTestPlan_Requirements_SocFamilies) XXX_DiscardUnknown() {
+	xxx_messageInfo_SourceTestPlan_Requirements_SocFamilies.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SourceTestPlan_Requirements_SocFamilies proto.InternalMessageInfo
+
+// Run tests at least once on each architecture.
+type SourceTestPlan_Requirements_Architectures struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SourceTestPlan_Requirements_Architectures) Reset() {
+	*m = SourceTestPlan_Requirements_Architectures{}
+}
+func (m *SourceTestPlan_Requirements_Architectures) String() string { return proto.CompactTextString(m) }
+func (*SourceTestPlan_Requirements_Architectures) ProtoMessage()    {}
+func (*SourceTestPlan_Requirements_Architectures) Descriptor() ([]byte, []int) {
+	return fileDescriptor_28090e75a41618a0, []int{0, 0, 2}
+}
+
+func (m *SourceTestPlan_Requirements_Architectures) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SourceTestPlan_Requirements_Architectures.Unmarshal(m, b)
+}
+func (m *SourceTestPlan_Requirements_Architectures) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SourceTestPlan_Requirements_Architectures.Marshal(b, m, deterministic)
+}
+func (m *SourceTestPlan_Requirements_Architectures) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SourceTestPlan_Requirements_Architectures.Merge(m, src)
+}
+func (m *SourceTestPlan_Requirements_Architectures) XXX_Size() int {
+	return xxx_messageInfo_SourceTestPlan_Requirements_Architectures.Size(m)
+}
+func (m *SourceTestPlan_Requirements_Architectures) XXX_DiscardUnknown() {
+	xxx_messageInfo_SourceTestPlan_Requirements_Architectures.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SourceTestPlan_Requirements_Architectures proto.InternalMessageInfo
+
+// Run tests at least once on each ARC version.
+type SourceTestPlan_Requirements_ArcVersions struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SourceTestPlan_Requirements_ArcVersions) Reset() {
+	*m = SourceTestPlan_Requirements_ArcVersions{}
+}
+func (m *SourceTestPlan_Requirements_ArcVersions) String() string { return proto.CompactTextString(m) }
+func (*SourceTestPlan_Requirements_ArcVersions) ProtoMessage()    {}
+func (*SourceTestPlan_Requirements_ArcVersions) Descriptor() ([]byte, []int) {
+	return fileDescriptor_28090e75a41618a0, []int{0, 0, 3}
+}
+
+func (m *SourceTestPlan_Requirements_ArcVersions) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SourceTestPlan_Requirements_ArcVersions.Unmarshal(m, b)
+}
+func (m *SourceTestPlan_Requirements_ArcVersions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SourceTestPlan_Requirements_ArcVersions.Marshal(b, m, deterministic)
+}
+func (m *SourceTestPlan_Requirements_ArcVersions) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SourceTestPlan_Requirements_ArcVersions.Merge(m, src)
+}
+func (m *SourceTestPlan_Requirements_ArcVersions) XXX_Size() int {
+	return xxx_messageInfo_SourceTestPlan_Requirements_ArcVersions.Size(m)
+}
+func (m *SourceTestPlan_Requirements_ArcVersions) XXX_DiscardUnknown() {
+	xxx_messageInfo_SourceTestPlan_Requirements_ArcVersions.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SourceTestPlan_Requirements_ArcVersions proto.InternalMessageInfo
+
+// Run tests on at least one device with a fingerprint sensor.
+type SourceTestPlan_Requirements_Fingerprint struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SourceTestPlan_Requirements_Fingerprint) Reset() {
+	*m = SourceTestPlan_Requirements_Fingerprint{}
+}
+func (m *SourceTestPlan_Requirements_Fingerprint) String() string { return proto.CompactTextString(m) }
+func (*SourceTestPlan_Requirements_Fingerprint) ProtoMessage()    {}
+func (*SourceTestPlan_Requirements_Fingerprint) Descriptor() ([]byte, []int) {
+	return fileDescriptor_28090e75a41618a0, []int{0, 0, 4}
+}
+
+func (m *SourceTestPlan_Requirements_Fingerprint) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SourceTestPlan_Requirements_Fingerprint.Unmarshal(m, b)
+}
+func (m *SourceTestPlan_Requirements_Fingerprint) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SourceTestPlan_Requirements_Fingerprint.Marshal(b, m, deterministic)
+}
+func (m *SourceTestPlan_Requirements_Fingerprint) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SourceTestPlan_Requirements_Fingerprint.Merge(m, src)
+}
+func (m *SourceTestPlan_Requirements_Fingerprint) XXX_Size() int {
+	return xxx_messageInfo_SourceTestPlan_Requirements_Fingerprint.Size(m)
+}
+func (m *SourceTestPlan_Requirements_Fingerprint) XXX_DiscardUnknown() {
+	xxx_messageInfo_SourceTestPlan_Requirements_Fingerprint.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SourceTestPlan_Requirements_Fingerprint proto.InternalMessageInfo
+
+// Run tests on at least one device with Parallels.
+type SourceTestPlan_Requirements_Parallels struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SourceTestPlan_Requirements_Parallels) Reset()         { *m = SourceTestPlan_Requirements_Parallels{} }
+func (m *SourceTestPlan_Requirements_Parallels) String() string { return proto.CompactTextString(m) }
+func (*SourceTestPlan_Requirements_Parallels) ProtoMessage()    {}
+func (*SourceTestPlan_Requirements_Parallels) Descriptor() ([]byte, []int) {
+	return fileDescriptor_28090e75a41618a0, []int{0, 0, 5}
+}
+
+func (m *SourceTestPlan_Requirements_Parallels) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SourceTestPlan_Requirements_Parallels.Unmarshal(m, b)
+}
+func (m *SourceTestPlan_Requirements_Parallels) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SourceTestPlan_Requirements_Parallels.Marshal(b, m, deterministic)
+}
+func (m *SourceTestPlan_Requirements_Parallels) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SourceTestPlan_Requirements_Parallels.Merge(m, src)
+}
+func (m *SourceTestPlan_Requirements_Parallels) XXX_Size() int {
+	return xxx_messageInfo_SourceTestPlan_Requirements_Parallels.Size(m)
+}
+func (m *SourceTestPlan_Requirements_Parallels) XXX_DiscardUnknown() {
+	xxx_messageInfo_SourceTestPlan_Requirements_Parallels.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SourceTestPlan_Requirements_Parallels proto.InternalMessageInfo
+
+// Run tests on at least one device with ChromeOS Config.
+type SourceTestPlan_Requirements_ChromeOSConfig struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SourceTestPlan_Requirements_ChromeOSConfig) Reset() {
+	*m = SourceTestPlan_Requirements_ChromeOSConfig{}
+}
+func (m *SourceTestPlan_Requirements_ChromeOSConfig) String() string {
+	return proto.CompactTextString(m)
+}
+func (*SourceTestPlan_Requirements_ChromeOSConfig) ProtoMessage() {}
+func (*SourceTestPlan_Requirements_ChromeOSConfig) Descriptor() ([]byte, []int) {
+	return fileDescriptor_28090e75a41618a0, []int{0, 0, 6}
+}
+
+func (m *SourceTestPlan_Requirements_ChromeOSConfig) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SourceTestPlan_Requirements_ChromeOSConfig.Unmarshal(m, b)
+}
+func (m *SourceTestPlan_Requirements_ChromeOSConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SourceTestPlan_Requirements_ChromeOSConfig.Marshal(b, m, deterministic)
+}
+func (m *SourceTestPlan_Requirements_ChromeOSConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SourceTestPlan_Requirements_ChromeOSConfig.Merge(m, src)
+}
+func (m *SourceTestPlan_Requirements_ChromeOSConfig) XXX_Size() int {
+	return xxx_messageInfo_SourceTestPlan_Requirements_ChromeOSConfig.Size(m)
+}
+func (m *SourceTestPlan_Requirements_ChromeOSConfig) XXX_DiscardUnknown() {
+	xxx_messageInfo_SourceTestPlan_Requirements_ChromeOSConfig.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SourceTestPlan_Requirements_ChromeOSConfig proto.InternalMessageInfo
+
+// TODO(b/182898188): Remove deprecated requirements once code has been
+// migrated off them.
 type SourceTestPlan_KernelVersions struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -223,7 +581,7 @@ func (m *SourceTestPlan_KernelVersions) Reset()         { *m = SourceTestPlan_Ke
 func (m *SourceTestPlan_KernelVersions) String() string { return proto.CompactTextString(m) }
 func (*SourceTestPlan_KernelVersions) ProtoMessage()    {}
 func (*SourceTestPlan_KernelVersions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_28090e75a41618a0, []int{0, 0}
+	return fileDescriptor_28090e75a41618a0, []int{0, 1}
 }
 
 func (m *SourceTestPlan_KernelVersions) XXX_Unmarshal(b []byte) error {
@@ -255,7 +613,7 @@ func (m *SourceTestPlan_SocFamilies) Reset()         { *m = SourceTestPlan_SocFa
 func (m *SourceTestPlan_SocFamilies) String() string { return proto.CompactTextString(m) }
 func (*SourceTestPlan_SocFamilies) ProtoMessage()    {}
 func (*SourceTestPlan_SocFamilies) Descriptor() ([]byte, []int) {
-	return fileDescriptor_28090e75a41618a0, []int{0, 1}
+	return fileDescriptor_28090e75a41618a0, []int{0, 2}
 }
 
 func (m *SourceTestPlan_SocFamilies) XXX_Unmarshal(b []byte) error {
@@ -287,7 +645,7 @@ func (m *SourceTestPlan_Architectures) Reset()         { *m = SourceTestPlan_Arc
 func (m *SourceTestPlan_Architectures) String() string { return proto.CompactTextString(m) }
 func (*SourceTestPlan_Architectures) ProtoMessage()    {}
 func (*SourceTestPlan_Architectures) Descriptor() ([]byte, []int) {
-	return fileDescriptor_28090e75a41618a0, []int{0, 2}
+	return fileDescriptor_28090e75a41618a0, []int{0, 3}
 }
 
 func (m *SourceTestPlan_Architectures) XXX_Unmarshal(b []byte) error {
@@ -319,7 +677,7 @@ func (m *SourceTestPlan_ArcVersions) Reset()         { *m = SourceTestPlan_ArcVe
 func (m *SourceTestPlan_ArcVersions) String() string { return proto.CompactTextString(m) }
 func (*SourceTestPlan_ArcVersions) ProtoMessage()    {}
 func (*SourceTestPlan_ArcVersions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_28090e75a41618a0, []int{0, 3}
+	return fileDescriptor_28090e75a41618a0, []int{0, 4}
 }
 
 func (m *SourceTestPlan_ArcVersions) XXX_Unmarshal(b []byte) error {
@@ -351,7 +709,7 @@ func (m *SourceTestPlan_Fingerprint) Reset()         { *m = SourceTestPlan_Finge
 func (m *SourceTestPlan_Fingerprint) String() string { return proto.CompactTextString(m) }
 func (*SourceTestPlan_Fingerprint) ProtoMessage()    {}
 func (*SourceTestPlan_Fingerprint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_28090e75a41618a0, []int{0, 4}
+	return fileDescriptor_28090e75a41618a0, []int{0, 5}
 }
 
 func (m *SourceTestPlan_Fingerprint) XXX_Unmarshal(b []byte) error {
@@ -383,7 +741,7 @@ func (m *SourceTestPlan_Parallels) Reset()         { *m = SourceTestPlan_Paralle
 func (m *SourceTestPlan_Parallels) String() string { return proto.CompactTextString(m) }
 func (*SourceTestPlan_Parallels) ProtoMessage()    {}
 func (*SourceTestPlan_Parallels) Descriptor() ([]byte, []int) {
-	return fileDescriptor_28090e75a41618a0, []int{0, 5}
+	return fileDescriptor_28090e75a41618a0, []int{0, 6}
 }
 
 func (m *SourceTestPlan_Parallels) XXX_Unmarshal(b []byte) error {
@@ -415,7 +773,7 @@ func (m *SourceTestPlan_ChromeOSConfig) Reset()         { *m = SourceTestPlan_Ch
 func (m *SourceTestPlan_ChromeOSConfig) String() string { return proto.CompactTextString(m) }
 func (*SourceTestPlan_ChromeOSConfig) ProtoMessage()    {}
 func (*SourceTestPlan_ChromeOSConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_28090e75a41618a0, []int{0, 6}
+	return fileDescriptor_28090e75a41618a0, []int{0, 7}
 }
 
 func (m *SourceTestPlan_ChromeOSConfig) XXX_Unmarshal(b []byte) error {
@@ -439,6 +797,14 @@ var xxx_messageInfo_SourceTestPlan_ChromeOSConfig proto.InternalMessageInfo
 func init() {
 	proto.RegisterEnum("chromiumos.test.plan.SourceTestPlan_TestEnvironment", SourceTestPlan_TestEnvironment_name, SourceTestPlan_TestEnvironment_value)
 	proto.RegisterType((*SourceTestPlan)(nil), "chromiumos.test.plan.SourceTestPlan")
+	proto.RegisterType((*SourceTestPlan_Requirements)(nil), "chromiumos.test.plan.SourceTestPlan.Requirements")
+	proto.RegisterType((*SourceTestPlan_Requirements_KernelVersions)(nil), "chromiumos.test.plan.SourceTestPlan.Requirements.KernelVersions")
+	proto.RegisterType((*SourceTestPlan_Requirements_SocFamilies)(nil), "chromiumos.test.plan.SourceTestPlan.Requirements.SocFamilies")
+	proto.RegisterType((*SourceTestPlan_Requirements_Architectures)(nil), "chromiumos.test.plan.SourceTestPlan.Requirements.Architectures")
+	proto.RegisterType((*SourceTestPlan_Requirements_ArcVersions)(nil), "chromiumos.test.plan.SourceTestPlan.Requirements.ArcVersions")
+	proto.RegisterType((*SourceTestPlan_Requirements_Fingerprint)(nil), "chromiumos.test.plan.SourceTestPlan.Requirements.Fingerprint")
+	proto.RegisterType((*SourceTestPlan_Requirements_Parallels)(nil), "chromiumos.test.plan.SourceTestPlan.Requirements.Parallels")
+	proto.RegisterType((*SourceTestPlan_Requirements_ChromeOSConfig)(nil), "chromiumos.test.plan.SourceTestPlan.Requirements.ChromeOSConfig")
 	proto.RegisterType((*SourceTestPlan_KernelVersions)(nil), "chromiumos.test.plan.SourceTestPlan.KernelVersions")
 	proto.RegisterType((*SourceTestPlan_SocFamilies)(nil), "chromiumos.test.plan.SourceTestPlan.SocFamilies")
 	proto.RegisterType((*SourceTestPlan_Architectures)(nil), "chromiumos.test.plan.SourceTestPlan.Architectures")
@@ -453,39 +819,47 @@ func init() {
 }
 
 var fileDescriptor_28090e75a41618a0 = []byte{
-	// 531 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0xdf, 0x6e, 0xda, 0x30,
-	0x14, 0xc6, 0x47, 0xd9, 0x5a, 0x38, 0xe1, 0xdf, 0xac, 0x4a, 0xcb, 0xd8, 0x2e, 0x58, 0xaf, 0xd0,
-	0x26, 0x05, 0x44, 0xf7, 0x02, 0x8c, 0x06, 0x0d, 0xad, 0xa3, 0xc8, 0x49, 0xd9, 0x34, 0x4d, 0x8a,
-	0xdc, 0xd4, 0x84, 0xa8, 0xc1, 0x8e, 0xec, 0x50, 0xf5, 0xf5, 0xf6, 0x66, 0x93, 0xcd, 0x1f, 0x27,
-	0x55, 0x2f, 0xe0, 0x2e, 0xe7, 0x9c, 0xef, 0xfb, 0xc5, 0xf9, 0xec, 0x18, 0xbe, 0x84, 0x4b, 0xc1,
-	0x57, 0xf1, 0x7a, 0xc5, 0x65, 0x2f, 0xa3, 0x32, 0xeb, 0xa5, 0x09, 0x61, 0x3d, 0xc9, 0xd7, 0x22,
-	0xa4, 0x81, 0x6a, 0x04, 0xaa, 0xe1, 0xa4, 0x82, 0x67, 0x1c, 0x9d, 0x1b, 0xb1, 0xa3, 0x66, 0x8e,
-	0x9a, 0x5d, 0xfc, 0xab, 0x40, 0xc3, 0xd3, 0x06, 0x9f, 0xca, 0x6c, 0x96, 0x10, 0x86, 0x52, 0x78,
-	0x4f, 0x19, 0xb9, 0x4b, 0xe8, 0xfd, 0x86, 0x41, 0xd9, 0x63, 0x2c, 0x38, 0x5b, 0x51, 0x96, 0x49,
-	0xbb, 0xd4, 0x29, 0x77, 0x1b, 0x83, 0xaf, 0xce, 0x4b, 0x30, 0xa7, 0x08, 0x72, 0xd4, 0x83, 0x6b,
-	0xcc, 0xf8, 0xdd, 0x16, 0xfb, 0xac, 0x2f, 0xd1, 0x27, 0xa8, 0xa5, 0x24, 0x5b, 0x06, 0x82, 0x46,
-	0xf4, 0x29, 0x95, 0xf6, 0x49, 0xa7, 0xdc, 0xad, 0x62, 0x4b, 0xf5, 0xf0, 0xa6, 0x85, 0xfa, 0x70,
-	0x9e, 0x93, 0x04, 0xf4, 0x29, 0x4c, 0xd6, 0xf7, 0x54, 0xda, 0x65, 0x2d, 0x45, 0x46, 0xea, 0x6e,
-	0x27, 0xe8, 0x03, 0x54, 0xf5, 0xf2, 0x33, 0x12, 0x49, 0xfb, 0xb5, 0x96, 0x55, 0x54, 0xc3, 0x27,
-	0x91, 0x44, 0x9f, 0xe1, 0xed, 0x6e, 0x68, 0x58, 0x6f, 0xb4, 0xa8, 0xb9, 0x15, 0xed, 0x41, 0x7f,
-	0xa1, 0xf9, 0x40, 0x05, 0xa3, 0x49, 0xf0, 0x48, 0x85, 0x8c, 0x39, 0x93, 0xf6, 0x69, 0xa7, 0xd4,
-	0xb5, 0x06, 0x97, 0x07, 0xa5, 0xf0, 0x43, 0x7b, 0xe7, 0x5b, 0x2b, 0x6e, 0x3c, 0x14, 0x6a, 0xe4,
-	0x41, 0x4d, 0xf2, 0x30, 0x58, 0x90, 0x55, 0x9c, 0xc4, 0x54, 0xda, 0x67, 0x1a, 0xdd, 0x3f, 0x08,
-	0xed, 0xf1, 0x70, 0xbc, 0xf5, 0x61, 0x4b, 0x9a, 0x02, 0xfd, 0x86, 0x3a, 0x11, 0xe1, 0x32, 0xce,
-	0x68, 0x98, 0xad, 0x05, 0x95, 0x76, 0x45, 0x53, 0x07, 0x07, 0x51, 0x87, 0x79, 0x27, 0x2e, 0x82,
-	0xd4, 0x72, 0x89, 0x08, 0x4d, 0x12, 0xd5, 0x23, 0x96, 0x3b, 0x14, 0xe1, 0x3e, 0x06, 0x8b, 0x98,
-	0x02, 0x61, 0xb0, 0x16, 0x31, 0x8b, 0xa8, 0x48, 0x45, 0xcc, 0x32, 0x1b, 0x8e, 0x60, 0x8e, 0x8d,
-	0x0f, 0xe7, 0x21, 0xe8, 0x1a, 0xaa, 0x29, 0x11, 0x24, 0x49, 0x68, 0x22, 0x6d, 0x4b, 0x13, 0x9d,
-	0x83, 0x88, 0xb3, 0x9d, 0x0b, 0x1b, 0x80, 0x3a, 0x03, 0xda, 0x4b, 0xb9, 0x0c, 0x42, 0xce, 0x16,
-	0x71, 0x64, 0xd7, 0x8e, 0x38, 0x03, 0x23, 0xed, 0xbd, 0xf1, 0x46, 0xda, 0x8a, 0x1b, 0x3b, 0xd6,
-	0xa6, 0x6e, 0xb7, 0xa0, 0x51, 0x3c, 0x25, 0xed, 0x3a, 0x58, 0xb9, 0xcd, 0x6d, 0x37, 0xa1, 0x5e,
-	0xd8, 0x15, 0x35, 0xcf, 0xa5, 0xa9, 0xca, 0x5c, 0x10, 0x6d, 0x0b, 0xaa, 0xfb, 0xaf, 0x50, 0xf0,
-	0xe2, 0xeb, 0x2f, 0xa6, 0xd0, 0x7c, 0xf6, 0x0b, 0xa2, 0x0e, 0x7c, 0xf4, 0x5d, 0xcf, 0x0f, 0xdc,
-	0xe9, 0x7c, 0x82, 0x6f, 0xa6, 0x3f, 0xdd, 0xa9, 0x1f, 0xdc, 0x4e, 0xbd, 0x99, 0x3b, 0x9a, 0x8c,
-	0x27, 0xee, 0x55, 0xeb, 0x15, 0xaa, 0x41, 0xe5, 0xfb, 0x10, 0x5f, 0xfd, 0x1a, 0x62, 0xb7, 0x55,
-	0x42, 0x16, 0x9c, 0xcd, 0x27, 0xd8, 0xbf, 0x1d, 0x5e, 0xb7, 0x4e, 0xbe, 0xf5, 0xff, 0x38, 0x11,
-	0xdf, 0xe7, 0xe0, 0x70, 0x11, 0xf5, 0x72, 0x17, 0xd3, 0x26, 0xae, 0x5e, 0xc4, 0xcd, 0x15, 0x75,
-	0x77, 0xaa, 0xaf, 0xa4, 0xcb, 0xff, 0x01, 0x00, 0x00, 0xff, 0xff, 0x9f, 0x17, 0x1f, 0xc4, 0xc1,
-	0x04, 0x00, 0x00,
+	// 667 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x96, 0xdd, 0x6e, 0xd3, 0x30,
+	0x14, 0xc7, 0x69, 0xbb, 0xaf, 0x3a, 0xe9, 0x07, 0xd6, 0x24, 0x42, 0xe1, 0xa2, 0xec, 0x6a, 0x02,
+	0x29, 0x1d, 0x1b, 0x77, 0x08, 0x41, 0xb7, 0x65, 0xa2, 0x02, 0xba, 0x2a, 0xcd, 0x3a, 0x81, 0x90,
+	0x32, 0x2f, 0xf3, 0x32, 0x6b, 0x69, 0x1c, 0xec, 0x74, 0xda, 0xb3, 0xf1, 0x56, 0xbc, 0x01, 0xb2,
+	0xd3, 0x35, 0x76, 0xca, 0x45, 0xb3, 0x0b, 0xee, 0xda, 0xe3, 0xf3, 0xff, 0x9d, 0xe4, 0xe4, 0xa7,
+	0x36, 0xe0, 0x4d, 0x70, 0xc3, 0xe8, 0x94, 0xcc, 0xa6, 0x94, 0xf7, 0x52, 0xcc, 0xd3, 0x5e, 0x12,
+	0xa1, 0xb8, 0xc7, 0xe9, 0x8c, 0x05, 0xd8, 0x17, 0x05, 0x5f, 0x14, 0xec, 0x84, 0xd1, 0x94, 0xc2,
+	0xed, 0xbc, 0xd9, 0x16, 0x67, 0xb6, 0x38, 0xdb, 0xf9, 0xd3, 0x02, 0xcd, 0xb1, 0x0c, 0x78, 0x98,
+	0xa7, 0xa3, 0x08, 0xc5, 0x30, 0x01, 0xcf, 0x71, 0x8c, 0x2e, 0x23, 0x7c, 0x95, 0x31, 0x70, 0x7c,
+	0x47, 0x18, 0x8d, 0xa7, 0x38, 0x4e, 0xb9, 0x55, 0xe9, 0xd6, 0x76, 0x9b, 0xfb, 0xef, 0xec, 0x7f,
+	0xc1, 0x6c, 0x1d, 0x64, 0x8b, 0x0f, 0x4e, 0x1e, 0x76, 0x9f, 0xcd, 0xb1, 0x85, 0x3a, 0x87, 0xaf,
+	0x80, 0x99, 0xa0, 0xf4, 0xc6, 0x67, 0x38, 0xc4, 0xf7, 0x09, 0xb7, 0xaa, 0xdd, 0xda, 0x6e, 0xdd,
+	0x35, 0x44, 0xcd, 0xcd, 0x4a, 0x70, 0x0f, 0x6c, 0x2b, 0x2d, 0x3e, 0xbe, 0x0f, 0xa2, 0xd9, 0x15,
+	0xe6, 0x56, 0x4d, 0xb6, 0xc2, 0xbc, 0xd5, 0x99, 0x9f, 0xc0, 0x17, 0xa0, 0x2e, 0x2f, 0x3f, 0x45,
+	0x21, 0xb7, 0xd6, 0x64, 0xdb, 0x96, 0x28, 0x78, 0x28, 0xe4, 0xf0, 0x35, 0x78, 0xfa, 0x70, 0x98,
+	0xb3, 0xd6, 0x65, 0x53, 0x6b, 0xde, 0xb4, 0x00, 0x9d, 0x01, 0x93, 0xe1, 0x5f, 0x33, 0xc2, 0x70,
+	0xb6, 0x82, 0x46, 0xb7, 0xb2, 0x6b, 0xec, 0xbf, 0x5d, 0x69, 0x05, 0xae, 0x12, 0x74, 0x35, 0x0c,
+	0xbc, 0x00, 0xad, 0x5b, 0xcc, 0x62, 0x1c, 0xf9, 0x77, 0x98, 0x71, 0x42, 0x63, 0x6e, 0x6d, 0x48,
+	0xf2, 0xc1, 0x4a, 0xe4, 0x2f, 0x32, 0x3b, 0x99, 0x47, 0x0f, 0xab, 0x56, 0xc5, 0x6d, 0xde, 0x6a,
+	0x35, 0x78, 0x0e, 0x4c, 0x4e, 0x03, 0xff, 0x1a, 0x4d, 0x49, 0x44, 0x30, 0xb7, 0x36, 0x25, 0x7e,
+	0x6f, 0x25, 0xfc, 0x98, 0x06, 0x27, 0xf3, 0x9c, 0x64, 0x1b, 0x3c, 0x2f, 0xc0, 0x9f, 0xa0, 0x81,
+	0x58, 0x70, 0x43, 0x52, 0x1c, 0xa4, 0x33, 0x86, 0xb9, 0xb5, 0x25, 0xc9, 0xfb, 0x2b, 0x91, 0xfb,
+	0x6a, 0x52, 0xb2, 0x75, 0x98, 0xb8, 0x6c, 0xc4, 0x82, 0x7c, 0x2b, 0xf5, 0x12, 0x97, 0xdd, 0x67,
+	0x81, 0xb6, 0x12, 0x03, 0xe5, 0x05, 0x38, 0x01, 0xc6, 0x35, 0x89, 0x43, 0xcc, 0x12, 0x46, 0xe2,
+	0xd4, 0x02, 0x25, 0xb8, 0x27, 0x79, 0x2e, 0xe3, 0x2a, 0x20, 0x38, 0x02, 0xf5, 0x04, 0x31, 0x14,
+	0x45, 0x38, 0xe2, 0x96, 0x21, 0xa9, 0xf6, 0x4a, 0xd4, 0xd1, 0x43, 0x4a, 0x32, 0x73, 0x88, 0x70,
+	0x43, 0xe6, 0x31, 0xe5, 0x7e, 0x40, 0xe3, 0x6b, 0x12, 0x5a, 0x66, 0x09, 0x37, 0x8e, 0x64, 0xf6,
+	0x74, 0x7c, 0x24, 0xa3, 0x99, 0x1b, 0x0f, 0xbc, 0xac, 0xd6, 0xf9, 0xbd, 0x01, 0x4c, 0x55, 0x4e,
+	0x48, 0x96, 0x75, 0xac, 0xc8, 0x91, 0x9f, 0x4a, 0x8b, 0x5e, 0x70, 0x73, 0xc9, 0xcb, 0x8b, 0x82,
+	0x97, 0x55, 0x39, 0xe7, 0x43, 0xf9, 0x39, 0x8a, 0xa4, 0xba, 0xa0, 0xb8, 0x28, 0x68, 0x4d, 0x8e,
+	0xf8, 0x58, 0x7e, 0x84, 0x66, 0x6b, 0xd1, 0xd4, 0x8b, 0x82, 0xa9, 0x6b, 0x8f, 0xbd, 0x11, 0x45,
+	0x5b, 0x5d, 0x59, 0x5f, 0x57, 0x76, 0xfd, 0xb1, 0x03, 0x14, 0x7f, 0x75, 0x77, 0xbf, 0xab, 0xee,
+	0x66, 0xbf, 0x3f, 0xef, 0xcb, 0xe3, 0x17, 0x22, 0xab, 0x12, 0x93, 0x65, 0x89, 0x37, 0x1f, 0x6b,
+	0x94, 0x6e, 0xf4, 0x92, 0xcd, 0x6d, 0xd0, 0xd4, 0x9d, 0xeb, 0x34, 0x80, 0xa1, 0xd8, 0xd1, 0x69,
+	0x81, 0x86, 0xf6, 0x24, 0xc5, 0xb9, 0xb2, 0x74, 0xf1, 0x55, 0x59, 0x51, 0xc7, 0x00, 0xf5, 0xc5,
+	0x2d, 0x09, 0xb8, 0x3e, 0xfe, 0x3f, 0x8f, 0xdb, 0x19, 0x82, 0x56, 0xe1, 0x2f, 0x13, 0x76, 0xc1,
+	0x4b, 0xcf, 0x19, 0x7b, 0xbe, 0x33, 0x9c, 0x0c, 0xdc, 0xd3, 0xe1, 0x37, 0x67, 0xe8, 0xf9, 0x67,
+	0xc3, 0xf1, 0xc8, 0x39, 0x1a, 0x9c, 0x0c, 0x9c, 0xe3, 0xf6, 0x13, 0x68, 0x82, 0xad, 0xcf, 0x7d,
+	0xf7, 0xf8, 0xbc, 0xef, 0x3a, 0xed, 0x0a, 0x34, 0xc0, 0xe6, 0x64, 0xe0, 0x7a, 0x67, 0xfd, 0xaf,
+	0xed, 0xea, 0xe1, 0xde, 0x0f, 0x3b, 0xa4, 0x8b, 0x67, 0x60, 0x53, 0x16, 0xf6, 0x94, 0x17, 0x89,
+	0xec, 0x51, 0xf5, 0x42, 0x9a, 0xbf, 0x52, 0x5c, 0x6e, 0xc8, 0x57, 0x88, 0x83, 0xbf, 0x01, 0x00,
+	0x00, 0xff, 0xff, 0xd5, 0xf7, 0xcc, 0xf1, 0x71, 0x08, 0x00, 0x00,
 }
