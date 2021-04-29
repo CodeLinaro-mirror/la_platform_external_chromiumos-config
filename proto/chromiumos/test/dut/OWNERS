@@ -1,1 +1,1 @@
-include ../OWNERS.fleetplatform
+include chromiumos/config:/owners/fleetplatform

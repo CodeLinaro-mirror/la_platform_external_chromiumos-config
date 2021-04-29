@@ -1,2 +1,2 @@
-include ./OWNERS.testplatform
-include ./OWNERS.fleetplatform
+include chromiumos/config:/owners/fleetplatform
+include chromiumos/config:/owners/testplatform

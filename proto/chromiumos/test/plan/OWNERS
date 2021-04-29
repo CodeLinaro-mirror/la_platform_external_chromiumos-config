@@ -1,1 +1,1 @@
-include ../OWNERS.testplatform
+include chromiumos/config:/owners/testplatform
