@@ -108,33 +108,5 @@ message SourceTestPlan {
 
   Requirements requirements = 13;
 
-  // TODO(b/182898188): Remove deprecated requirements once code has been
-  // migrated off them.
-  message KernelVersions {}
-
-  // Run tests at least once on each SoC family.
-  message SocFamilies {}
-
-  // Run tests at least once on each architecture.
-  message Architectures {}
-
-  // Run tests at least once on each ARC version.
-  message ArcVersions {}
-
-  // Run tests on at least one device with a fingerprint sensor.
-  message Fingerprint {}
-
-  // Run tests on at least one device with Parallels.
-  message Parallels {}
-
-  // Run tests on at least one device with ChromeOS Config.
-  message ChromeOSConfig {}
-
-  KernelVersions kernel_versions = 6 [deprecated = true];
-  SocFamilies soc_families = 7 [deprecated = true];
-  Architectures architectures = 8 [deprecated = true];
-  ArcVersions arc_versions = 9 [deprecated = true];
-  Fingerprint fingerprint = 10 [deprecated = true];
-  Parallels parallels = 11 [deprecated = true];
-  ChromeOSConfig chromeos_config = 12 [deprecated = true];
+  reserved 6 to 12;
 }

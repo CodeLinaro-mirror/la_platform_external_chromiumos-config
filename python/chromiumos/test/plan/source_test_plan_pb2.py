@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.plan',
   syntax='proto3',
   serialized_options=_b('Z.go.chromium.org/chromiumos/config/go/test/plan'),
-  serialized_pb=_b('\n+chromiumos/test/plan/source_test_plan.proto\x12\x14\x63hromiumos.test.plan\"\xcc\r\n\x0eSourceTestPlan\x12W\n\x19\x65nabled_test_environments\x18\x01 \x03(\x0e\x32\x34.chromiumos.test.plan.SourceTestPlan.TestEnvironment\x12\x14\n\x0cpath_regexps\x18\x02 \x03(\t\x12\x1c\n\x14path_regexp_excludes\x18\x03 \x03(\t\x12\x11\n\ttest_tags\x18\x04 \x03(\t\x12\x19\n\x11test_tag_excludes\x18\x05 \x03(\t\x12G\n\x0crequirements\x18\r \x01(\x0b\x32\x31.chromiumos.test.plan.SourceTestPlan.Requirements\x12P\n\x0fkernel_versions\x18\x06 \x01(\x0b\x32\x33.chromiumos.test.plan.SourceTestPlan.KernelVersionsB\x02\x18\x01\x12J\n\x0csoc_families\x18\x07 \x01(\x0b\x32\x30.chromiumos.test.plan.SourceTestPlan.SocFamiliesB\x02\x18\x01\x12M\n\rarchitectures\x18\x08 \x01(\x0b\x32\x32.chromiumos.test.plan.SourceTestPlan.ArchitecturesB\x02\x18\x01\x12J\n\x0c\x61rc_versions\x18\t \x01(\x0b\x32\x30.chromiumos.test.plan.SourceTestPlan.ArcVersionsB\x02\x18\x01\x12I\n\x0b\x66ingerprint\x18\n \x01(\x0b\x32\x30.chromiumos.test.plan.SourceTestPlan.FingerprintB\x02\x18\x01\x12\x45\n\tparallels\x18\x0b \x01(\x0b\x32..chromiumos.test.plan.SourceTestPlan.ParallelsB\x02\x18\x01\x12P\n\x0f\x63hromeos_config\x18\x0c \x01(\x0b\x32\x33.chromiumos.test.plan.SourceTestPlan.ChromeOSConfigB\x02\x18\x01\x1a\xd9\x05\n\x0cRequirements\x12Y\n\x0fkernel_versions\x18\x01 \x01(\x0b\x32@.chromiumos.test.plan.SourceTestPlan.Requirements.KernelVersions\x12S\n\x0csoc_families\x18\x02 \x01(\x0b\x32=.chromiumos.test.plan.SourceTestPlan.Requirements.SocFamilies\x12V\n\rarchitectures\x18\x03 \x01(\x0b\x32?.chromiumos.test.plan.SourceTestPlan.Requirements.Architectures\x12S\n\x0c\x61rc_versions\x18\x04 \x01(\x0b\x32=.chromiumos.test.plan.SourceTestPlan.Requirements.ArcVersions\x12R\n\x0b\x66ingerprint\x18\x05 \x01(\x0b\x32=.chromiumos.test.plan.SourceTestPlan.Requirements.Fingerprint\x12N\n\tparallels\x18\x06 \x01(\x0b\x32;.chromiumos.test.plan.SourceTestPlan.Requirements.Parallels\x12Y\n\x0f\x63hromeos_config\x18\x07 \x01(\x0b\x32@.chromiumos.test.plan.SourceTestPlan.Requirements.ChromeOSConfig\x1a\x10\n\x0eKernelVersions\x1a\r\n\x0bSocFamilies\x1a\x0f\n\rArchitectures\x1a\r\n\x0b\x41rcVersions\x1a\r\n\x0b\x46ingerprint\x1a\x0b\n\tParallels\x1a\x10\n\x0e\x43hromeOSConfig\x1a\x10\n\x0eKernelVersions\x1a\r\n\x0bSocFamilies\x1a\x0f\n\rArchitectures\x1a\r\n\x0b\x41rcVersions\x1a\r\n\x0b\x46ingerprint\x1a\x0b\n\tParallels\x1a\x10\n\x0e\x43hromeOSConfig\"N\n\x0fTestEnvironment\x12 \n\x1cTEST_ENVIRONMENT_UNSPECIFIED\x10\x00\x12\x0c\n\x08HARDWARE\x10\x01\x12\x0b\n\x07VIRTUAL\x10\x02\x42\x30Z.go.chromium.org/chromiumos/config/go/test/planb\x06proto3')
+  serialized_pb=_b('\n+chromiumos/test/plan/source_test_plan.proto\x12\x14\x63hromiumos.test.plan\"\xc6\x08\n\x0eSourceTestPlan\x12W\n\x19\x65nabled_test_environments\x18\x01 \x03(\x0e\x32\x34.chromiumos.test.plan.SourceTestPlan.TestEnvironment\x12\x14\n\x0cpath_regexps\x18\x02 \x03(\t\x12\x1c\n\x14path_regexp_excludes\x18\x03 \x03(\t\x12\x11\n\ttest_tags\x18\x04 \x03(\t\x12\x19\n\x11test_tag_excludes\x18\x05 \x03(\t\x12G\n\x0crequirements\x18\r \x01(\x0b\x32\x31.chromiumos.test.plan.SourceTestPlan.Requirements\x1a\xd9\x05\n\x0cRequirements\x12Y\n\x0fkernel_versions\x18\x01 \x01(\x0b\x32@.chromiumos.test.plan.SourceTestPlan.Requirements.KernelVersions\x12S\n\x0csoc_families\x18\x02 \x01(\x0b\x32=.chromiumos.test.plan.SourceTestPlan.Requirements.SocFamilies\x12V\n\rarchitectures\x18\x03 \x01(\x0b\x32?.chromiumos.test.plan.SourceTestPlan.Requirements.Architectures\x12S\n\x0c\x61rc_versions\x18\x04 \x01(\x0b\x32=.chromiumos.test.plan.SourceTestPlan.Requirements.ArcVersions\x12R\n\x0b\x66ingerprint\x18\x05 \x01(\x0b\x32=.chromiumos.test.plan.SourceTestPlan.Requirements.Fingerprint\x12N\n\tparallels\x18\x06 \x01(\x0b\x32;.chromiumos.test.plan.SourceTestPlan.Requirements.Parallels\x12Y\n\x0f\x63hromeos_config\x18\x07 \x01(\x0b\x32@.chromiumos.test.plan.SourceTestPlan.Requirements.ChromeOSConfig\x1a\x10\n\x0eKernelVersions\x1a\r\n\x0bSocFamilies\x1a\x0f\n\rArchitectures\x1a\r\n\x0b\x41rcVersions\x1a\r\n\x0b\x46ingerprint\x1a\x0b\n\tParallels\x1a\x10\n\x0e\x43hromeOSConfig\"N\n\x0fTestEnvironment\x12 \n\x1cTEST_ENVIRONMENT_UNSPECIFIED\x10\x00\x12\x0c\n\x08HARDWARE\x10\x01\x12\x0b\n\x07VIRTUAL\x10\x02J\x04\x08\x06\x10\rB0Z.go.chromium.org/chromiumos/config/go/test/planb\x06proto3')
 )
 
 
@@ -45,8 +45,8 @@ _SOURCETESTPLAN_TESTENVIRONMENT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1732,
-  serialized_end=1810,
+  serialized_start=1080,
+  serialized_end=1158,
 )
 _sym_db.RegisterEnumDescriptor(_SOURCETESTPLAN_TESTENVIRONMENT)
 
@@ -70,8 +70,8 @@ _SOURCETESTPLAN_REQUIREMENTS_KERNELVERSIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1510,
-  serialized_end=1526,
+  serialized_start=969,
+  serialized_end=985,
 )
 
 _SOURCETESTPLAN_REQUIREMENTS_SOCFAMILIES = _descriptor.Descriptor(
@@ -93,8 +93,8 @@ _SOURCETESTPLAN_REQUIREMENTS_SOCFAMILIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1528,
-  serialized_end=1541,
+  serialized_start=987,
+  serialized_end=1000,
 )
 
 _SOURCETESTPLAN_REQUIREMENTS_ARCHITECTURES = _descriptor.Descriptor(
@@ -116,8 +116,8 @@ _SOURCETESTPLAN_REQUIREMENTS_ARCHITECTURES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1543,
-  serialized_end=1558,
+  serialized_start=1002,
+  serialized_end=1017,
 )
 
 _SOURCETESTPLAN_REQUIREMENTS_ARCVERSIONS = _descriptor.Descriptor(
@@ -139,8 +139,8 @@ _SOURCETESTPLAN_REQUIREMENTS_ARCVERSIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1560,
-  serialized_end=1573,
+  serialized_start=1019,
+  serialized_end=1032,
 )
 
 _SOURCETESTPLAN_REQUIREMENTS_FINGERPRINT = _descriptor.Descriptor(
@@ -162,8 +162,8 @@ _SOURCETESTPLAN_REQUIREMENTS_FINGERPRINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1575,
-  serialized_end=1588,
+  serialized_start=1034,
+  serialized_end=1047,
 )
 
 _SOURCETESTPLAN_REQUIREMENTS_PARALLELS = _descriptor.Descriptor(
@@ -185,8 +185,8 @@ _SOURCETESTPLAN_REQUIREMENTS_PARALLELS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1590,
-  serialized_end=1601,
+  serialized_start=1049,
+  serialized_end=1060,
 )
 
 _SOURCETESTPLAN_REQUIREMENTS_CHROMEOSCONFIG = _descriptor.Descriptor(
@@ -208,8 +208,8 @@ _SOURCETESTPLAN_REQUIREMENTS_CHROMEOSCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1603,
-  serialized_end=1619,
+  serialized_start=1062,
+  serialized_end=1078,
 )
 
 _SOURCETESTPLAN_REQUIREMENTS = _descriptor.Descriptor(
@@ -280,169 +280,8 @@ _SOURCETESTPLAN_REQUIREMENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=890,
-  serialized_end=1619,
-)
-
-_SOURCETESTPLAN_KERNELVERSIONS = _descriptor.Descriptor(
-  name='KernelVersions',
-  full_name='chromiumos.test.plan.SourceTestPlan.KernelVersions',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1510,
-  serialized_end=1526,
-)
-
-_SOURCETESTPLAN_SOCFAMILIES = _descriptor.Descriptor(
-  name='SocFamilies',
-  full_name='chromiumos.test.plan.SourceTestPlan.SocFamilies',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1528,
-  serialized_end=1541,
-)
-
-_SOURCETESTPLAN_ARCHITECTURES = _descriptor.Descriptor(
-  name='Architectures',
-  full_name='chromiumos.test.plan.SourceTestPlan.Architectures',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1543,
-  serialized_end=1558,
-)
-
-_SOURCETESTPLAN_ARCVERSIONS = _descriptor.Descriptor(
-  name='ArcVersions',
-  full_name='chromiumos.test.plan.SourceTestPlan.ArcVersions',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1560,
-  serialized_end=1573,
-)
-
-_SOURCETESTPLAN_FINGERPRINT = _descriptor.Descriptor(
-  name='Fingerprint',
-  full_name='chromiumos.test.plan.SourceTestPlan.Fingerprint',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1575,
-  serialized_end=1588,
-)
-
-_SOURCETESTPLAN_PARALLELS = _descriptor.Descriptor(
-  name='Parallels',
-  full_name='chromiumos.test.plan.SourceTestPlan.Parallels',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1590,
-  serialized_end=1601,
-)
-
-_SOURCETESTPLAN_CHROMEOSCONFIG = _descriptor.Descriptor(
-  name='ChromeOSConfig',
-  full_name='chromiumos.test.plan.SourceTestPlan.ChromeOSConfig',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1603,
-  serialized_end=1619,
+  serialized_start=349,
+  serialized_end=1078,
 )
 
 _SOURCETESTPLAN = _descriptor.Descriptor(
@@ -494,59 +333,10 @@ _SOURCETESTPLAN = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='kernel_versions', full_name='chromiumos.test.plan.SourceTestPlan.kernel_versions', index=6,
-      number=6, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='soc_families', full_name='chromiumos.test.plan.SourceTestPlan.soc_families', index=7,
-      number=7, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='architectures', full_name='chromiumos.test.plan.SourceTestPlan.architectures', index=8,
-      number=8, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='arc_versions', full_name='chromiumos.test.plan.SourceTestPlan.arc_versions', index=9,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='fingerprint', full_name='chromiumos.test.plan.SourceTestPlan.fingerprint', index=10,
-      number=10, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='parallels', full_name='chromiumos.test.plan.SourceTestPlan.parallels', index=11,
-      number=11, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='chromeos_config', full_name='chromiumos.test.plan.SourceTestPlan.chromeos_config', index=12,
-      number=12, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=_b('\030\001'), file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_SOURCETESTPLAN_REQUIREMENTS, _SOURCETESTPLAN_KERNELVERSIONS, _SOURCETESTPLAN_SOCFAMILIES, _SOURCETESTPLAN_ARCHITECTURES, _SOURCETESTPLAN_ARCVERSIONS, _SOURCETESTPLAN_FINGERPRINT, _SOURCETESTPLAN_PARALLELS, _SOURCETESTPLAN_CHROMEOSCONFIG, ],
+  nested_types=[_SOURCETESTPLAN_REQUIREMENTS, ],
   enum_types=[
     _SOURCETESTPLAN_TESTENVIRONMENT,
   ],
@@ -557,7 +347,7 @@ _SOURCETESTPLAN = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=70,
-  serialized_end=1810,
+  serialized_end=1164,
 )
 
 _SOURCETESTPLAN_REQUIREMENTS_KERNELVERSIONS.containing_type = _SOURCETESTPLAN_REQUIREMENTS
@@ -575,22 +365,8 @@ _SOURCETESTPLAN_REQUIREMENTS.fields_by_name['fingerprint'].message_type = _SOURC
 _SOURCETESTPLAN_REQUIREMENTS.fields_by_name['parallels'].message_type = _SOURCETESTPLAN_REQUIREMENTS_PARALLELS
 _SOURCETESTPLAN_REQUIREMENTS.fields_by_name['chromeos_config'].message_type = _SOURCETESTPLAN_REQUIREMENTS_CHROMEOSCONFIG
 _SOURCETESTPLAN_REQUIREMENTS.containing_type = _SOURCETESTPLAN
-_SOURCETESTPLAN_KERNELVERSIONS.containing_type = _SOURCETESTPLAN
-_SOURCETESTPLAN_SOCFAMILIES.containing_type = _SOURCETESTPLAN
-_SOURCETESTPLAN_ARCHITECTURES.containing_type = _SOURCETESTPLAN
-_SOURCETESTPLAN_ARCVERSIONS.containing_type = _SOURCETESTPLAN
-_SOURCETESTPLAN_FINGERPRINT.containing_type = _SOURCETESTPLAN
-_SOURCETESTPLAN_PARALLELS.containing_type = _SOURCETESTPLAN
-_SOURCETESTPLAN_CHROMEOSCONFIG.containing_type = _SOURCETESTPLAN
 _SOURCETESTPLAN.fields_by_name['enabled_test_environments'].enum_type = _SOURCETESTPLAN_TESTENVIRONMENT
 _SOURCETESTPLAN.fields_by_name['requirements'].message_type = _SOURCETESTPLAN_REQUIREMENTS
-_SOURCETESTPLAN.fields_by_name['kernel_versions'].message_type = _SOURCETESTPLAN_KERNELVERSIONS
-_SOURCETESTPLAN.fields_by_name['soc_families'].message_type = _SOURCETESTPLAN_SOCFAMILIES
-_SOURCETESTPLAN.fields_by_name['architectures'].message_type = _SOURCETESTPLAN_ARCHITECTURES
-_SOURCETESTPLAN.fields_by_name['arc_versions'].message_type = _SOURCETESTPLAN_ARCVERSIONS
-_SOURCETESTPLAN.fields_by_name['fingerprint'].message_type = _SOURCETESTPLAN_FINGERPRINT
-_SOURCETESTPLAN.fields_by_name['parallels'].message_type = _SOURCETESTPLAN_PARALLELS
-_SOURCETESTPLAN.fields_by_name['chromeos_config'].message_type = _SOURCETESTPLAN_CHROMEOSCONFIG
 _SOURCETESTPLAN_TESTENVIRONMENT.containing_type = _SOURCETESTPLAN
 DESCRIPTOR.message_types_by_name['SourceTestPlan'] = _SOURCETESTPLAN
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -652,55 +428,6 @@ SourceTestPlan = _reflection.GeneratedProtocolMessageType('SourceTestPlan', (_me
     # @@protoc_insertion_point(class_scope:chromiumos.test.plan.SourceTestPlan.Requirements)
     ))
   ,
-
-  KernelVersions = _reflection.GeneratedProtocolMessageType('KernelVersions', (_message.Message,), dict(
-    DESCRIPTOR = _SOURCETESTPLAN_KERNELVERSIONS,
-    __module__ = 'chromiumos.test.plan.source_test_plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.test.plan.SourceTestPlan.KernelVersions)
-    ))
-  ,
-
-  SocFamilies = _reflection.GeneratedProtocolMessageType('SocFamilies', (_message.Message,), dict(
-    DESCRIPTOR = _SOURCETESTPLAN_SOCFAMILIES,
-    __module__ = 'chromiumos.test.plan.source_test_plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.test.plan.SourceTestPlan.SocFamilies)
-    ))
-  ,
-
-  Architectures = _reflection.GeneratedProtocolMessageType('Architectures', (_message.Message,), dict(
-    DESCRIPTOR = _SOURCETESTPLAN_ARCHITECTURES,
-    __module__ = 'chromiumos.test.plan.source_test_plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.test.plan.SourceTestPlan.Architectures)
-    ))
-  ,
-
-  ArcVersions = _reflection.GeneratedProtocolMessageType('ArcVersions', (_message.Message,), dict(
-    DESCRIPTOR = _SOURCETESTPLAN_ARCVERSIONS,
-    __module__ = 'chromiumos.test.plan.source_test_plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.test.plan.SourceTestPlan.ArcVersions)
-    ))
-  ,
-
-  Fingerprint = _reflection.GeneratedProtocolMessageType('Fingerprint', (_message.Message,), dict(
-    DESCRIPTOR = _SOURCETESTPLAN_FINGERPRINT,
-    __module__ = 'chromiumos.test.plan.source_test_plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.test.plan.SourceTestPlan.Fingerprint)
-    ))
-  ,
-
-  Parallels = _reflection.GeneratedProtocolMessageType('Parallels', (_message.Message,), dict(
-    DESCRIPTOR = _SOURCETESTPLAN_PARALLELS,
-    __module__ = 'chromiumos.test.plan.source_test_plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.test.plan.SourceTestPlan.Parallels)
-    ))
-  ,
-
-  ChromeOSConfig = _reflection.GeneratedProtocolMessageType('ChromeOSConfig', (_message.Message,), dict(
-    DESCRIPTOR = _SOURCETESTPLAN_CHROMEOSCONFIG,
-    __module__ = 'chromiumos.test.plan.source_test_plan_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.test.plan.SourceTestPlan.ChromeOSConfig)
-    ))
-  ,
   DESCRIPTOR = _SOURCETESTPLAN,
   __module__ = 'chromiumos.test.plan.source_test_plan_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.plan.SourceTestPlan)
@@ -714,21 +441,7 @@ _sym_db.RegisterMessage(SourceTestPlan.Requirements.ArcVersions)
 _sym_db.RegisterMessage(SourceTestPlan.Requirements.Fingerprint)
 _sym_db.RegisterMessage(SourceTestPlan.Requirements.Parallels)
 _sym_db.RegisterMessage(SourceTestPlan.Requirements.ChromeOSConfig)
-_sym_db.RegisterMessage(SourceTestPlan.KernelVersions)
-_sym_db.RegisterMessage(SourceTestPlan.SocFamilies)
-_sym_db.RegisterMessage(SourceTestPlan.Architectures)
-_sym_db.RegisterMessage(SourceTestPlan.ArcVersions)
-_sym_db.RegisterMessage(SourceTestPlan.Fingerprint)
-_sym_db.RegisterMessage(SourceTestPlan.Parallels)
-_sym_db.RegisterMessage(SourceTestPlan.ChromeOSConfig)
 
 
 DESCRIPTOR._options = None
-_SOURCETESTPLAN.fields_by_name['kernel_versions']._options = None
-_SOURCETESTPLAN.fields_by_name['soc_families']._options = None
-_SOURCETESTPLAN.fields_by_name['architectures']._options = None
-_SOURCETESTPLAN.fields_by_name['arc_versions']._options = None
-_SOURCETESTPLAN.fields_by_name['fingerprint']._options = None
-_SOURCETESTPLAN.fields_by_name['parallels']._options = None
-_SOURCETESTPLAN.fields_by_name['chromeos_config']._options = None
 # @@protoc_insertion_point(module_scope)
