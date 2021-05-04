@@ -1,0 +1,55 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/test_case.proto";
+
+// Result of a single execution of a given TestCase
+message TestCaseResult {
+  // Unique ID of test case executed
+  TestCase.Id test_case_id = 1;
+
+  Artifacts artifacts = 2;
+
+  oneof verdict {
+    // Set if test ran successfully and passed
+    Pass pass = 3;
+    // Set if test ran successfully and failed
+    Fail fail = 4;
+    // Set if test execution could not be completed
+    Error error = 5;
+  }
+
+  message Artifacts {
+    // Host of the artifacts
+    HostType host_type = 1;
+    // Path to a directory on the host containing all of the test
+    // artifacts.
+    // Path can include any format.
+    // E.g. unstructured logs, telemetry, crash reports, etc...
+    string path = 2;
+
+    enum HostType {
+      HOSTTYPE_UNSPECIFIED = 0;
+      // The test artifacts are hosted locally.
+      LOCAL = 1;
+      // The test artifacts are hosted in Google Storage.
+      GS = 2;
+    }
+  }
+
+  message Pass {
+  }
+
+  message Fail {
+  }
+
+  message Error {
+  }
+}
