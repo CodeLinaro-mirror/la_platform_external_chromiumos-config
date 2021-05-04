@@ -12,7 +12,6 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 import "chromiumos/config/api/test/tls/commontls.proto";
 import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
 
-import "chromiumos/test/api/test_case.proto";
 import "chromiumos/test/api/test_case_result.proto";
 import "chromiumos/test/api/test_suite.proto";
 
@@ -59,12 +58,14 @@ service TestService {
 // For RunTests, clients can specify both lists of suites and test cases.
 // Both will be run as part of a single request.
 message RunTestsRequest {
-  // Test suites to run
+  // Test suites to run (by tag or explicit list of tests)
   repeated TestSuite test_suites = 1;
-  // Explicit test cases to run (for retries, bisection, ...)
-  repeated TestCase.Id test_case_ids = 2;
+
+  reserved 2;
 }
+
 message RunTestsResponse {
   repeated TestCaseResult test_case_results = 1;
 }
+
 message RunTestsMetadata {}
