@@ -364,6 +364,8 @@ message HardwareFeatures {
       RIGHT_SIDE = 6;
       // At the left side
       LEFT_SIDE = 7;
+      // Fingerprint sensor present, but no location information
+      PRESENT = 8;
     }
   }
 

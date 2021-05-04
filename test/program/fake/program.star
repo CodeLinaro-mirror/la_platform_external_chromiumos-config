@@ -51,7 +51,13 @@ _FEATURE_CONSTRAINTS = design.create_constraints([
             hw_feat.create_camera(),
         ),
         display = hw_feat.create_display(internal = True, external = False),
+        fingerprint = hw_feat.create_fingerprint(
+            hw_feat.location.SIDE_LEFT,
+            "test_board",
+            "ro-test",
+        ),
         form_factor = hw_feat.create_form_factor(hw_feat.form_factor.CLAMSHELL),
+        screen = hw_feat.create_screen(touch = True),
         storage = hw_feat.create_storage(hw_feat.storage.EMMC),
         touchpad = hw_feat.create_touchpad(present = True),
     ),

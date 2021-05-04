@@ -60,8 +60,17 @@
               "ecType": 1,
               "present": 1
             },
+            "fingerprint": {
+              "board": "test_board",
+              "location": 7,
+              "roVersion": "ro-test"
+            },
             "formFactor": {
               "formFactor": 1
+            },
+            "screen": {
+              "panelProperties": {},
+              "touchSupport": 1
             },
             "storage": {
               "storageType": 1

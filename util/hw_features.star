@@ -86,6 +86,27 @@ def _create_ec(ec_type, present = True):
         ),
     )
 
+_LOCATION = struct(
+    SCREEN_TOP_LEFT = _HW_FEAT.Fingerprint.POWER_BUTTON_TOP_LEFT,
+    KEYBOARD_BOTTOM_LEFT = _HW_FEAT.Fingerprint.KEYBOARD_BOTTOM_LEFT,
+    KEYBOARD_BOTTOM_RIGHT = _HW_FEAT.Fingerprint.KEYBOARD_BOTTOM_RIGHT,
+    KEYBOARD_TOP_RIGHT = _HW_FEAT.Fingerprint.KEYBOARD_TOP_RIGHT,
+    PRESENT = _HW_FEAT.Fingerprint.PRESENT,
+    NOT_PRESENT = _HW_FEAT.Fingerprint.NOT_PRESENT,
+    SIDE_RIGHT = _HW_FEAT.Fingerprint.RIGHT_SIDE,
+    SIDE_LEFT = _HW_FEAT.Fingerprint.LEFT_SIDE,
+)
+
+def _create_fingerprint(location, board = "", ro_version = ""):
+    """Specify fingerprint settings"""
+    return _HW_FEAT(
+        fingerprint = _HW_FEAT.Fingerprint(
+            location = location,
+            board = board,
+            ro_version = ro_version,
+        ),
+    )
+
 def _create_form_factor(form_factor):
     """Specify the form factor as a HardwareFeature."""
     return _HW_FEAT(
@@ -105,6 +126,26 @@ def _create_storage(type):
     return _HW_FEAT(
         storage = _HW_FEAT.Storage(
             storage_type = type,
+        ),
+    )
+
+def _create_screen(
+        touch = False,
+        inches = 0,
+        width_px = None,
+        height_px = None,
+        pixels_per_in = None):
+    """Specify features of screen"""
+
+    return _HW_FEAT(
+        screen = _HW_FEAT.Screen(
+            touch_support = _bool_to_present(touch),
+            panel_properties = comp_pb.Component.DisplayPanel.Properties(
+                diagonal_milliinch = inches * 1000,
+                width_px = width_px,
+                height_px = height_px,
+                pixels_per_in = pixels_per_in,
+            ),
         ),
     )
 
@@ -171,8 +212,10 @@ def _create_features(
         camera = None,
         display = None,
         ec = _create_ec(_EC.CHROME),  # non-chrome ECs are very rare
+        fingerprint = None,
         form_factor = None,
         hotwording = None,
+        screen = None,
         storage = None,
         touchpad = None):
     hw_feat = {}
@@ -181,12 +224,14 @@ def _create_features(
         if feature:
             hw_feat[name] = getattr(feature, name)
 
-    _merge("display", display)
-    _merge("camera", camera)
     _merge("bluetooth", bluetooth)
+    _merge("camera", camera)
+    _merge("display", display)
     _merge("embedded_controller", ec)
+    _merge("fingerprint", fingerprint)
     _merge("form_factor", form_factor)
     _merge("hotwording", hotwording)
+    _merge("screen", screen)
     _merge("storage", storage)
     _merge("touchpad", touchpad)
 
@@ -198,9 +243,11 @@ hw_feat = struct(
     create_cameras = _create_cameras,
     create_display = _create_display,
     create_ec = _create_ec,
+    create_fingerprint = _create_fingerprint,
     create_features = _create_features,
     create_form_factor = _create_form_factor,
     create_hotwording = _create_hotwording,
+    create_screen = _create_screen,
     create_storage = _create_storage,
     create_touchpad = _create_touchpad,
 
@@ -210,4 +257,5 @@ hw_feat = struct(
     form_factor = _FORM_FACTOR,
     present = _PRESENT,
     storage = _STORAGE,
+    location = _LOCATION,
 )
