@@ -13,6 +13,7 @@ import "chromiumos/config/api/test/tls/commontls.proto";
 import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
 
 import "chromiumos/test/api/test_case.proto";
+import "chromiumos/test/api/test_case_result.proto";
 import "chromiumos/test/api/test_suite.proto";
 
 // Stable (build-agnostic) testing interface for setting up live
@@ -64,6 +65,6 @@ message RunTestsRequest {
   repeated TestCase.Id test_case_ids = 2;
 }
 message RunTestsResponse {
-  // TODO(shapiroc): Define RunTest response
+  repeated TestCaseResult test_case_results = 1;
 }
 message RunTestsMetadata {}
