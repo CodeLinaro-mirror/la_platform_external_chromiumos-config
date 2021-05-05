@@ -12,6 +12,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from chromiumos import storage_path_pb2 as chromiumos_dot_storage__path__pb2
 from chromiumos.test.api import test_case_pb2 as chromiumos_dot_test_dot_api_dot_test__case__pb2
 
 
@@ -20,37 +21,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n*chromiumos/test/api/test_case_result.proto\x12\x13\x63hromiumos.test.api\x1a#chromiumos/test/api/test_case.proto\"\xfe\x03\n\x0eTestCaseResult\x12\x36\n\x0ctest_case_id\x18\x01 \x01(\x0b\x32 .chromiumos.test.api.TestCase.Id\x12@\n\tartifacts\x18\x02 \x01(\x0b\x32-.chromiumos.test.api.TestCaseResult.Artifacts\x12\x38\n\x04pass\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.PassH\x00\x12\x38\n\x04\x66\x61il\x18\x04 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.FailH\x00\x12:\n\x05\x65rror\x18\x05 \x01(\x0b\x32).chromiumos.test.api.TestCaseResult.ErrorH\x00\x1a\x9d\x01\n\tArtifacts\x12I\n\thost_type\x18\x01 \x01(\x0e\x32\x36.chromiumos.test.api.TestCaseResult.Artifacts.HostType\x12\x0c\n\x04path\x18\x02 \x01(\t\"7\n\x08HostType\x12\x18\n\x14HOSTTYPE_UNSPECIFIED\x10\x00\x12\t\n\x05LOCAL\x10\x01\x12\x06\n\x02GS\x10\x02\x1a\x06\n\x04Pass\x1a\x06\n\x04\x46\x61il\x1a\x07\n\x05\x45rrorB\t\n\x07verdictB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n*chromiumos/test/api/test_case_result.proto\x12\x13\x63hromiumos.test.api\x1a\x1d\x63hromiumos/storage_path.proto\x1a#chromiumos/test/api/test_case.proto\"\xdb\x02\n\x0eTestCaseResult\x12\x36\n\x0ctest_case_id\x18\x01 \x01(\x0b\x32 .chromiumos.test.api.TestCase.Id\x12\x30\n\x0fresult_dir_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x38\n\x04pass\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.PassH\x00\x12\x38\n\x04\x66\x61il\x18\x04 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.FailH\x00\x12:\n\x05\x65rror\x18\x05 \x01(\x0b\x32).chromiumos.test.api.TestCaseResult.ErrorH\x00\x1a\x0b\n\tArtifacts\x1a\x06\n\x04Pass\x1a\x06\n\x04\x46\x61il\x1a\x07\n\x05\x45rrorB\t\n\x07verdictB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
   ,
-  dependencies=[chromiumos_dot_test_dot_api_dot_test__case__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_storage__path__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__pb2.DESCRIPTOR,])
 
 
-
-_TESTCASERESULT_ARTIFACTS_HOSTTYPE = _descriptor.EnumDescriptor(
-  name='HostType',
-  full_name='chromiumos.test.api.TestCaseResult.Artifacts.HostType',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='HOSTTYPE_UNSPECIFIED', index=0, number=0,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='LOCAL', index=1, number=1,
-      serialized_options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='GS', index=2, number=2,
-      serialized_options=None,
-      type=None),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=524,
-  serialized_end=579,
-)
-_sym_db.RegisterEnumDescriptor(_TESTCASERESULT_ARTIFACTS_HOSTTYPE)
 
 
 _TESTCASERESULT_ARTIFACTS = _descriptor.Descriptor(
@@ -60,26 +35,11 @@ _TESTCASERESULT_ARTIFACTS = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
-    _descriptor.FieldDescriptor(
-      name='host_type', full_name='chromiumos.test.api.TestCaseResult.Artifacts.host_type', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='path', full_name='chromiumos.test.api.TestCaseResult.Artifacts.path', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
-    _TESTCASERESULT_ARTIFACTS_HOSTTYPE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -87,8 +47,8 @@ _TESTCASERESULT_ARTIFACTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=422,
-  serialized_end=579,
+  serialized_start=436,
+  serialized_end=447,
 )
 
 _TESTCASERESULT_PASS = _descriptor.Descriptor(
@@ -110,8 +70,8 @@ _TESTCASERESULT_PASS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=581,
-  serialized_end=587,
+  serialized_start=449,
+  serialized_end=455,
 )
 
 _TESTCASERESULT_FAIL = _descriptor.Descriptor(
@@ -133,8 +93,8 @@ _TESTCASERESULT_FAIL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=589,
-  serialized_end=595,
+  serialized_start=457,
+  serialized_end=463,
 )
 
 _TESTCASERESULT_ERROR = _descriptor.Descriptor(
@@ -156,8 +116,8 @@ _TESTCASERESULT_ERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=597,
-  serialized_end=604,
+  serialized_start=465,
+  serialized_end=472,
 )
 
 _TESTCASERESULT = _descriptor.Descriptor(
@@ -175,7 +135,7 @@ _TESTCASERESULT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='artifacts', full_name='chromiumos.test.api.TestCaseResult.artifacts', index=1,
+      name='result_dir_path', full_name='chromiumos.test.api.TestCaseResult.result_dir_path', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -217,18 +177,16 @@ _TESTCASERESULT = _descriptor.Descriptor(
       name='verdict', full_name='chromiumos.test.api.TestCaseResult.verdict',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=105,
-  serialized_end=615,
+  serialized_start=136,
+  serialized_end=483,
 )
 
-_TESTCASERESULT_ARTIFACTS.fields_by_name['host_type'].enum_type = _TESTCASERESULT_ARTIFACTS_HOSTTYPE
 _TESTCASERESULT_ARTIFACTS.containing_type = _TESTCASERESULT
-_TESTCASERESULT_ARTIFACTS_HOSTTYPE.containing_type = _TESTCASERESULT_ARTIFACTS
 _TESTCASERESULT_PASS.containing_type = _TESTCASERESULT
 _TESTCASERESULT_FAIL.containing_type = _TESTCASERESULT
 _TESTCASERESULT_ERROR.containing_type = _TESTCASERESULT
 _TESTCASERESULT.fields_by_name['test_case_id'].message_type = chromiumos_dot_test_dot_api_dot_test__case__pb2._TESTCASE_ID
-_TESTCASERESULT.fields_by_name['artifacts'].message_type = _TESTCASERESULT_ARTIFACTS
+_TESTCASERESULT.fields_by_name['result_dir_path'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
 _TESTCASERESULT.fields_by_name['pass'].message_type = _TESTCASERESULT_PASS
 _TESTCASERESULT.fields_by_name['fail'].message_type = _TESTCASERESULT_FAIL
 _TESTCASERESULT.fields_by_name['error'].message_type = _TESTCASERESULT_ERROR
