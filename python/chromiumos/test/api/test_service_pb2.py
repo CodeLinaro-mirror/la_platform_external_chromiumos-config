@@ -12,7 +12,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from chromiumos.config.api.test.tls.dependencies.longrunning import operations_pb2 as chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2
+from chromiumos.longrunning import operations_pb2 as chromiumos_dot_longrunning_dot_operations__pb2
 from chromiumos import storage_path_pb2 as chromiumos_dot_storage__path__pb2
 from chromiumos.test.api import test_case_result_pb2 as chromiumos_dot_test_dot_api_dot_test__case__result__pb2
 from chromiumos.test.api import test_suite_pb2 as chromiumos_dot_test_dot_api_dot_test__suite__pb2
@@ -23,9 +23,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n&chromiumos/test/api/test_service.proto\x12\x13\x63hromiumos.test.api\x1aHchromiumos/config/api/test/tls/dependencies/longrunning/operations.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a*chromiumos/test/api/test_case_result.proto\x1a$chromiumos/test/api/test_suite.proto\"L\n\x0fRunTestsRequest\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuiteJ\x04\x08\x02\x10\x03\"R\n\x10RunTestsResponse\x12>\n\x11test_case_results\x18\x01 \x03(\x0b\x32#.chromiumos.test.api.TestCaseResult\"\x12\n\x10RunTestsMetadata\"\x12\n\x10ProvisionSuccess\"\xb3\x02\n\x10ProvisionFailure\x12<\n\x06reason\x18\x01 \x01(\x0e\x32,.chromiumos.test.api.ProvisionFailure.Reason\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\xbe\x01\n\x13ProvisionDutRequest\x12\x30\n\x0f\x63ros_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x43\n\tdlc_specs\x18\x02 \x03(\x0b\x32\x30.chromiumos.test.api.ProvisionDutRequest.DLCSpec\x12\x19\n\x11preserve_stateful\x18\x03 \x01(\x08\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\x95\x01\n\x14ProvisionDutResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x16\n\x14ProvisionDutMetadata\"L\n\x16ProvisionLacrosRequest\x12\x32\n\x11lacros_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x98\x01\n\x17ProvisionLacrosResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x19\n\x17ProvisionLacrosMetadata\"F\n\x13ProvisionAshRequest\x12/\n\x0e\x61sh_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x95\x01\n\x14ProvisionAshResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x16\n\x14ProvisionAshMetadata2\xb4\x04\n\x0bTestService\x12\x88\x01\n\x0cProvisionDut\x12(.chromiumos.test.api.ProvisionDutRequest\x1a\x1d.google.longrunning.Operation\"/\xca\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12\x94\x01\n\x0fProvisionLacros\x12+.chromiumos.test.api.ProvisionLacrosRequest\x1a\x1d.google.longrunning.Operation\"5\xca\x41\x32\n\x17ProvisionLacrosResponse\x12\x17ProvisionLacrosMetadata\x12\x88\x01\n\x0cProvisionAsh\x12(.chromiumos.test.api.ProvisionAshRequest\x1a\x1d.google.longrunning.Operation\"/\xca\x41,\n\x14ProvisionAshResponse\x12\x14ProvisionAshMetadata\x12x\n\x08RunTests\x12$.chromiumos.test.api.RunTestsRequest\x1a\x1d.google.longrunning.Operation\"\'\xca\x41$\n\x10RunTestsResponse\x12\x10RunTestsMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n&chromiumos/test/api/test_service.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a*chromiumos/test/api/test_case_result.proto\x1a$chromiumos/test/api/test_suite.proto\"L\n\x0fRunTestsRequest\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuiteJ\x04\x08\x02\x10\x03\"R\n\x10RunTestsResponse\x12>\n\x11test_case_results\x18\x01 \x03(\x0b\x32#.chromiumos.test.api.TestCaseResult\"\x12\n\x10RunTestsMetadata\"\x12\n\x10ProvisionSuccess\"\xb3\x02\n\x10ProvisionFailure\x12<\n\x06reason\x18\x01 \x01(\x0e\x32,.chromiumos.test.api.ProvisionFailure.Reason\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\xbe\x01\n\x13ProvisionDutRequest\x12\x30\n\x0f\x63ros_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x43\n\tdlc_specs\x18\x02 \x03(\x0b\x32\x30.chromiumos.test.api.ProvisionDutRequest.DLCSpec\x12\x19\n\x11preserve_stateful\x18\x03 \x01(\x08\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\x95\x01\n\x14ProvisionDutResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x16\n\x14ProvisionDutMetadata\"L\n\x16ProvisionLacrosRequest\x12\x32\n\x11lacros_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x98\x01\n\x17ProvisionLacrosResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x19\n\x17ProvisionLacrosMetadata\"F\n\x13ProvisionAshRequest\x12/\n\x0e\x61sh_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x95\x01\n\x14ProvisionAshResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x16\n\x14ProvisionAshMetadata2\xc4\x04\n\x0bTestService\x12\x8c\x01\n\x0cProvisionDut\x12(.chromiumos.test.api.ProvisionDutRequest\x1a!.chromiumos.longrunning.Operation\"/\xd2\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12\x98\x01\n\x0fProvisionLacros\x12+.chromiumos.test.api.ProvisionLacrosRequest\x1a!.chromiumos.longrunning.Operation\"5\xd2\x41\x32\n\x17ProvisionLacrosResponse\x12\x17ProvisionLacrosMetadata\x12\x8c\x01\n\x0cProvisionAsh\x12(.chromiumos.test.api.ProvisionAshRequest\x1a!.chromiumos.longrunning.Operation\"/\xd2\x41,\n\x14ProvisionAshResponse\x12\x14ProvisionAshMetadata\x12|\n\x08RunTests\x12$.chromiumos.test.api.RunTestsRequest\x1a!.chromiumos.longrunning.Operation\"\'\xd2\x41$\n\x10RunTestsResponse\x12\x10RunTestsMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__result__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__result__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,])
 
 
 
@@ -62,8 +62,8 @@ _PROVISIONFAILURE_REASON = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=536,
-  serialized_end=760,
+  serialized_start=503,
+  serialized_end=727,
 )
 _sym_db.RegisterEnumDescriptor(_PROVISIONFAILURE_REASON)
 
@@ -94,8 +94,8 @@ _RUNTESTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=250,
-  serialized_end=326,
+  serialized_start=217,
+  serialized_end=293,
 )
 
 
@@ -125,8 +125,8 @@ _RUNTESTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=328,
-  serialized_end=410,
+  serialized_start=295,
+  serialized_end=377,
 )
 
 
@@ -149,8 +149,8 @@ _RUNTESTSMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=412,
-  serialized_end=430,
+  serialized_start=379,
+  serialized_end=397,
 )
 
 
@@ -173,8 +173,8 @@ _PROVISIONSUCCESS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=432,
-  serialized_end=450,
+  serialized_start=399,
+  serialized_end=417,
 )
 
 
@@ -205,8 +205,8 @@ _PROVISIONFAILURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=453,
-  serialized_end=760,
+  serialized_start=420,
+  serialized_end=727,
 )
 
 
@@ -236,8 +236,8 @@ _PROVISIONDUTREQUEST_DLCSPEC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=932,
-  serialized_end=953,
+  serialized_start=899,
+  serialized_end=920,
 )
 
 _PROVISIONDUTREQUEST = _descriptor.Descriptor(
@@ -280,8 +280,8 @@ _PROVISIONDUTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=763,
-  serialized_end=953,
+  serialized_start=730,
+  serialized_end=920,
 )
 
 
@@ -321,8 +321,8 @@ _PROVISIONDUTRESPONSE = _descriptor.Descriptor(
       name='outcome', full_name='chromiumos.test.api.ProvisionDutResponse.outcome',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=956,
-  serialized_end=1105,
+  serialized_start=923,
+  serialized_end=1072,
 )
 
 
@@ -345,8 +345,8 @@ _PROVISIONDUTMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1107,
-  serialized_end=1129,
+  serialized_start=1074,
+  serialized_end=1096,
 )
 
 
@@ -376,8 +376,8 @@ _PROVISIONLACROSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1131,
-  serialized_end=1207,
+  serialized_start=1098,
+  serialized_end=1174,
 )
 
 
@@ -417,8 +417,8 @@ _PROVISIONLACROSRESPONSE = _descriptor.Descriptor(
       name='outcome', full_name='chromiumos.test.api.ProvisionLacrosResponse.outcome',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1210,
-  serialized_end=1362,
+  serialized_start=1177,
+  serialized_end=1329,
 )
 
 
@@ -441,8 +441,8 @@ _PROVISIONLACROSMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1364,
-  serialized_end=1389,
+  serialized_start=1331,
+  serialized_end=1356,
 )
 
 
@@ -472,8 +472,8 @@ _PROVISIONASHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1391,
-  serialized_end=1461,
+  serialized_start=1358,
+  serialized_end=1428,
 )
 
 
@@ -513,8 +513,8 @@ _PROVISIONASHRESPONSE = _descriptor.Descriptor(
       name='outcome', full_name='chromiumos.test.api.ProvisionAshResponse.outcome',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1464,
-  serialized_end=1613,
+  serialized_start=1431,
+  serialized_end=1580,
 )
 
 
@@ -537,8 +537,8 @@ _PROVISIONASHMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1615,
-  serialized_end=1637,
+  serialized_start=1582,
+  serialized_end=1604,
 )
 
 _RUNTESTSREQUEST.fields_by_name['test_suites'].message_type = chromiumos_dot_test_dot_api_dot_test__suite__pb2._TESTSUITE
@@ -705,8 +705,8 @@ _TESTSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1640,
-  serialized_end=2204,
+  serialized_start=1607,
+  serialized_end=2187,
   methods=[
   _descriptor.MethodDescriptor(
     name='ProvisionDut',
@@ -714,8 +714,8 @@ _TESTSERVICE = _descriptor.ServiceDescriptor(
     index=0,
     containing_service=None,
     input_type=_PROVISIONDUTREQUEST,
-    output_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2._OPERATION,
-    serialized_options=_b('\312A,\n\024ProvisionDutResponse\022\024ProvisionDutMetadata'),
+    output_type=chromiumos_dot_longrunning_dot_operations__pb2._OPERATION,
+    serialized_options=_b('\322A,\n\024ProvisionDutResponse\022\024ProvisionDutMetadata'),
   ),
   _descriptor.MethodDescriptor(
     name='ProvisionLacros',
@@ -723,8 +723,8 @@ _TESTSERVICE = _descriptor.ServiceDescriptor(
     index=1,
     containing_service=None,
     input_type=_PROVISIONLACROSREQUEST,
-    output_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2._OPERATION,
-    serialized_options=_b('\312A2\n\027ProvisionLacrosResponse\022\027ProvisionLacrosMetadata'),
+    output_type=chromiumos_dot_longrunning_dot_operations__pb2._OPERATION,
+    serialized_options=_b('\322A2\n\027ProvisionLacrosResponse\022\027ProvisionLacrosMetadata'),
   ),
   _descriptor.MethodDescriptor(
     name='ProvisionAsh',
@@ -732,8 +732,8 @@ _TESTSERVICE = _descriptor.ServiceDescriptor(
     index=2,
     containing_service=None,
     input_type=_PROVISIONASHREQUEST,
-    output_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2._OPERATION,
-    serialized_options=_b('\312A,\n\024ProvisionAshResponse\022\024ProvisionAshMetadata'),
+    output_type=chromiumos_dot_longrunning_dot_operations__pb2._OPERATION,
+    serialized_options=_b('\322A,\n\024ProvisionAshResponse\022\024ProvisionAshMetadata'),
   ),
   _descriptor.MethodDescriptor(
     name='RunTests',
@@ -741,8 +741,8 @@ _TESTSERVICE = _descriptor.ServiceDescriptor(
     index=3,
     containing_service=None,
     input_type=_RUNTESTSREQUEST,
-    output_type=chromiumos_dot_config_dot_api_dot_test_dot_tls_dot_dependencies_dot_longrunning_dot_operations__pb2._OPERATION,
-    serialized_options=_b('\312A$\n\020RunTestsResponse\022\020RunTestsMetadata'),
+    output_type=chromiumos_dot_longrunning_dot_operations__pb2._OPERATION,
+    serialized_options=_b('\322A$\n\020RunTestsResponse\022\020RunTestsMetadata'),
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_TESTSERVICE)

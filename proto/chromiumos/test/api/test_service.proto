@@ -8,9 +8,7 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
-// TODO(shapiroc): Migrate longrunning to common
-import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
-
+import "chromiumos/longrunning/operations.proto";
 import "chromiumos/storage_path.proto";
 import "chromiumos/test/api/test_case_result.proto";
 import "chromiumos/test/api/test_suite.proto";
@@ -27,8 +25,8 @@ service TestService {
   // If the DUT already has the specified list of DLCs, only the missing DLCs
   // will be provisioned.
   rpc ProvisionDut(ProvisionDutRequest)
-      returns (google.longrunning.Operation) {
-    option (google.longrunning.operation_info) = {
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
       response_type: "ProvisionDutResponse",
       metadata_type: "ProvisionDutMetadata"
     };
@@ -39,8 +37,8 @@ service TestService {
   // If the DUT already has the specified version of Lacros, Lacros will not be
   // provisioned.
   rpc ProvisionLacros(ProvisionLacrosRequest)
-      returns (google.longrunning.Operation) {
-    option (google.longrunning.operation_info) = {
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
       response_type: "ProvisionLacrosResponse",
       metadata_type: "ProvisionLacrosMetadata"
     };
@@ -51,16 +49,16 @@ service TestService {
   // This directly overwrites the version of ash-chrome on the current root
   // disk partition.
   rpc ProvisionAsh(ProvisionAshRequest)
-      returns (google.longrunning.Operation) {
-    option (google.longrunning.operation_info) = {
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
       response_type: "ProvisionAshResponse",
       metadata_type: "ProvisionAshMetadata"
     };
   }
 
   // RunTests runs the requested tests.
-  rpc RunTests(RunTestsRequest) returns (google.longrunning.Operation) {
-    option (google.longrunning.operation_info) = {
+  rpc RunTests(RunTestsRequest) returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
       response_type: "RunTestsResponse",
       metadata_type: "RunTestsMetadata"
     };
