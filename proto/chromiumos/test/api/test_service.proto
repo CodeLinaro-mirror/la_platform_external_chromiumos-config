@@ -46,6 +46,18 @@ service TestService {
     };
   }
 
+  // ProvisionAsh installs a specified version of ash-chrome on the DUT.
+  //
+  // This directly overwrites the version of ash-chrome on the current root
+  // disk partition.
+  rpc ProvisionAsh(ProvisionAshRequest)
+      returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
+      response_type: "ProvisionAshResponse",
+      metadata_type: "ProvisionAshMetadata"
+    };
+  }
+
   // RunTests runs the requested tests.
   rpc RunTests(RunTestsRequest) returns (google.longrunning.Operation) {
     option (google.longrunning.operation_info) = {
@@ -135,4 +147,18 @@ message ProvisionLacrosResponse {
 }
 
 message ProvisionLacrosMetadata {
+}
+
+message ProvisionAshRequest {
+  StoragePath ash_image_path = 1;
+}
+
+message ProvisionAshResponse {
+  oneof outcome {
+    ProvisionSuccess success = 1;
+    ProvisionFailure failure = 2;
+  }
+}
+
+message ProvisionAshMetadata {
 }
