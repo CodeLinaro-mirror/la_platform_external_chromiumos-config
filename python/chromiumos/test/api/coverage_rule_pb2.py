@@ -21,49 +21,12 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n\'chromiumos/test/api/coverage_rule.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/test/api/dut_attribute.proto\x1a$chromiumos/test/api/test_suite.proto\"\xf3\x01\n\x0c\x43overageRule\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x33\n\x0btest_suites\x18\x02 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x44\n\x0c\x64ut_criteria\x18\x03 \x03(\x0b\x32..chromiumos.test.api.CoverageRule.DutCriterion\x1aZ\n\x0c\x44utCriterion\x12:\n\x0c\x61ttribute_id\x18\x01 \x01(\x0b\x32$.chromiumos.test.api.DutAttribute.Id\x12\x0e\n\x06values\x18\x02 \x03(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n\'chromiumos/test/api/coverage_rule.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/test/api/dut_attribute.proto\x1a$chromiumos/test/api/test_suite.proto\"\x8a\x01\n\x0c\x43overageRule\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x33\n\x0btest_suites\x18\x02 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x37\n\x0c\x64ut_criteria\x18\x03 \x03(\x0b\x32!.chromiumos.test.api.DutCriterionB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_dut__attribute__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,])
 
 
 
-
-_COVERAGERULE_DUTCRITERION = _descriptor.Descriptor(
-  name='DutCriterion',
-  full_name='chromiumos.test.api.CoverageRule.DutCriterion',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='attribute_id', full_name='chromiumos.test.api.CoverageRule.DutCriterion.attribute_id', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='values', full_name='chromiumos.test.api.CoverageRule.DutCriterion.values', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=297,
-  serialized_end=387,
-)
 
 _COVERAGERULE = _descriptor.Descriptor(
   name='CoverageRule',
@@ -96,7 +59,7 @@ _COVERAGERULE = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_COVERAGERULE_DUTCRITERION, ],
+  nested_types=[],
   enum_types=[
   ],
   serialized_options=None,
@@ -106,30 +69,20 @@ _COVERAGERULE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=144,
-  serialized_end=387,
+  serialized_end=282,
 )
 
-_COVERAGERULE_DUTCRITERION.fields_by_name['attribute_id'].message_type = chromiumos_dot_test_dot_api_dot_dut__attribute__pb2._DUTATTRIBUTE_ID
-_COVERAGERULE_DUTCRITERION.containing_type = _COVERAGERULE
 _COVERAGERULE.fields_by_name['test_suites'].message_type = chromiumos_dot_test_dot_api_dot_test__suite__pb2._TESTSUITE
-_COVERAGERULE.fields_by_name['dut_criteria'].message_type = _COVERAGERULE_DUTCRITERION
+_COVERAGERULE.fields_by_name['dut_criteria'].message_type = chromiumos_dot_test_dot_api_dot_dut__attribute__pb2._DUTCRITERION
 DESCRIPTOR.message_types_by_name['CoverageRule'] = _COVERAGERULE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 CoverageRule = _reflection.GeneratedProtocolMessageType('CoverageRule', (_message.Message,), dict(
-
-  DutCriterion = _reflection.GeneratedProtocolMessageType('DutCriterion', (_message.Message,), dict(
-    DESCRIPTOR = _COVERAGERULE_DUTCRITERION,
-    __module__ = 'chromiumos.test.api.coverage_rule_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.test.api.CoverageRule.DutCriterion)
-    ))
-  ,
   DESCRIPTOR = _COVERAGERULE,
   __module__ = 'chromiumos.test.api.coverage_rule_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.CoverageRule)
   ))
 _sym_db.RegisterMessage(CoverageRule)
-_sym_db.RegisterMessage(CoverageRule.DutCriterion)
 
 
 DESCRIPTOR._options = None

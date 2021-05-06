@@ -37,3 +37,12 @@ message DutAttribute {
 message DutAttributeList {
   repeated DutAttribute dut_attributes = 1;
 }
+
+// DutCriterion describes a groups of DUTs, based on DUT attributes.
+message DutCriterion {
+  // ID of the DUT attribute that must meet the criterion.
+  DutAttribute.Id attribute_id = 1;
+  // List of ANY acceptable values to match (OR logic is applied).
+  // Values must match exactly (i.e. no regexp, wildcard, etc. allowed).
+  repeated string values = 2;
+}
