@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n&chromiumos/test/api/test_service.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a*chromiumos/test/api/test_case_result.proto\x1a$chromiumos/test/api/test_suite.proto\"L\n\x0fRunTestsRequest\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuiteJ\x04\x08\x02\x10\x03\"R\n\x10RunTestsResponse\x12>\n\x11test_case_results\x18\x01 \x03(\x0b\x32#.chromiumos.test.api.TestCaseResult\"\x12\n\x10RunTestsMetadata\"\x12\n\x10ProvisionSuccess\"\xb3\x02\n\x10ProvisionFailure\x12<\n\x06reason\x18\x01 \x01(\x0e\x32,.chromiumos.test.api.ProvisionFailure.Reason\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\xbe\x01\n\x13ProvisionDutRequest\x12\x30\n\x0f\x63ros_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x43\n\tdlc_specs\x18\x02 \x03(\x0b\x32\x30.chromiumos.test.api.ProvisionDutRequest.DLCSpec\x12\x19\n\x11preserve_stateful\x18\x03 \x01(\x08\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\x95\x01\n\x14ProvisionDutResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x16\n\x14ProvisionDutMetadata\"L\n\x16ProvisionLacrosRequest\x12\x32\n\x11lacros_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x98\x01\n\x17ProvisionLacrosResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x19\n\x17ProvisionLacrosMetadata\"F\n\x13ProvisionAshRequest\x12/\n\x0e\x61sh_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x95\x01\n\x14ProvisionAshResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x16\n\x14ProvisionAshMetadata2\xc4\x04\n\x0bTestService\x12\x8c\x01\n\x0cProvisionDut\x12(.chromiumos.test.api.ProvisionDutRequest\x1a!.chromiumos.longrunning.Operation\"/\xd2\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12\x98\x01\n\x0fProvisionLacros\x12+.chromiumos.test.api.ProvisionLacrosRequest\x1a!.chromiumos.longrunning.Operation\"5\xd2\x41\x32\n\x17ProvisionLacrosResponse\x12\x17ProvisionLacrosMetadata\x12\x8c\x01\n\x0cProvisionAsh\x12(.chromiumos.test.api.ProvisionAshRequest\x1a!.chromiumos.longrunning.Operation\"/\xd2\x41,\n\x14ProvisionAshResponse\x12\x14ProvisionAshMetadata\x12|\n\x08RunTests\x12$.chromiumos.test.api.RunTestsRequest\x1a!.chromiumos.longrunning.Operation\"\'\xd2\x41$\n\x10RunTestsResponse\x12\x10RunTestsMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n&chromiumos/test/api/test_service.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a*chromiumos/test/api/test_case_result.proto\x1a$chromiumos/test/api/test_suite.proto\"L\n\x0fRunTestsRequest\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuiteJ\x04\x08\x02\x10\x03\"R\n\x10RunTestsResponse\x12>\n\x11test_case_results\x18\x01 \x03(\x0b\x32#.chromiumos.test.api.TestCaseResult\"\x12\n\x10RunTestsMetadata\"\x12\n\x10ProvisionSuccess\"\xb3\x02\n\x10ProvisionFailure\x12<\n\x06reason\x18\x01 \x01(\x0e\x32,.chromiumos.test.api.ProvisionFailure.Reason\"\xe0\x01\n\x06Reason\x12\x1a\n\x16REASON_INVALID_REQUEST\x10\x00\x12(\n$REASON_DUT_UNREACHABLE_PRE_PROVISION\x10\x01\x12#\n\x1fREASON_DOWNLOADING_IMAGE_FAILED\x10\x02\x12 \n\x1cREASON_PROVISIONING_TIMEDOUT\x10\x03\x12\x1e\n\x1aREASON_PROVISIONING_FAILED\x10\x04\x12)\n%REASON_DUT_UNREACHABLE_POST_PROVISION\x10\x05\"\xbe\x01\n\x13ProvisionDutRequest\x12\x30\n\x0f\x63ros_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x43\n\tdlc_specs\x18\x02 \x03(\x0b\x32\x30.chromiumos.test.api.ProvisionDutRequest.DLCSpec\x12\x19\n\x11preserve_stateful\x18\x03 \x01(\x08\x1a\x15\n\x07\x44LCSpec\x12\n\n\x02id\x18\x01 \x01(\t\"\x95\x01\n\x14ProvisionDutResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x16\n\x14ProvisionDutMetadata\"L\n\x16ProvisionLacrosRequest\x12\x32\n\x11lacros_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x98\x01\n\x17ProvisionLacrosResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x19\n\x17ProvisionLacrosMetadata\"F\n\x13ProvisionAshRequest\x12/\n\x0e\x61sh_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x95\x01\n\x14ProvisionAshResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x16\n\x14ProvisionAshMetadata\"F\n\x13ProvisionArcRequest\x12/\n\x0e\x61sh_image_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x95\x01\n\x14ProvisionArcResponse\x12\x38\n\x07success\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.ProvisionSuccessH\x00\x12\x38\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.ProvisionFailureH\x00\x42\t\n\x07outcome\"\x16\n\x14ProvisionArcMetadata2\xd3\x05\n\x0bTestService\x12\x8c\x01\n\x0cProvisionDut\x12(.chromiumos.test.api.ProvisionDutRequest\x1a!.chromiumos.longrunning.Operation\"/\xd2\x41,\n\x14ProvisionDutResponse\x12\x14ProvisionDutMetadata\x12\x98\x01\n\x0fProvisionLacros\x12+.chromiumos.test.api.ProvisionLacrosRequest\x1a!.chromiumos.longrunning.Operation\"5\xd2\x41\x32\n\x17ProvisionLacrosResponse\x12\x17ProvisionLacrosMetadata\x12\x8c\x01\n\x0cProvisionAsh\x12(.chromiumos.test.api.ProvisionAshRequest\x1a!.chromiumos.longrunning.Operation\"/\xd2\x41,\n\x14ProvisionAshResponse\x12\x14ProvisionAshMetadata\x12\x8c\x01\n\x0cProvisionArc\x12(.chromiumos.test.api.ProvisionArcRequest\x1a!.chromiumos.longrunning.Operation\"/\xd2\x41,\n\x14ProvisionArcResponse\x12\x14ProvisionArcMetadata\x12|\n\x08RunTests\x12$.chromiumos.test.api.RunTestsRequest\x1a!.chromiumos.longrunning.Operation\"\'\xd2\x41$\n\x10RunTestsResponse\x12\x10RunTestsMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__result__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,])
 
@@ -541,6 +541,102 @@ _PROVISIONASHMETADATA = _descriptor.Descriptor(
   serialized_end=1604,
 )
 
+
+_PROVISIONARCREQUEST = _descriptor.Descriptor(
+  name='ProvisionArcRequest',
+  full_name='chromiumos.test.api.ProvisionArcRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ash_image_path', full_name='chromiumos.test.api.ProvisionArcRequest.ash_image_path', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1606,
+  serialized_end=1676,
+)
+
+
+_PROVISIONARCRESPONSE = _descriptor.Descriptor(
+  name='ProvisionArcResponse',
+  full_name='chromiumos.test.api.ProvisionArcResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='chromiumos.test.api.ProvisionArcResponse.success', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='failure', full_name='chromiumos.test.api.ProvisionArcResponse.failure', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='outcome', full_name='chromiumos.test.api.ProvisionArcResponse.outcome',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=1679,
+  serialized_end=1828,
+)
+
+
+_PROVISIONARCMETADATA = _descriptor.Descriptor(
+  name='ProvisionArcMetadata',
+  full_name='chromiumos.test.api.ProvisionArcMetadata',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1830,
+  serialized_end=1852,
+)
+
 _RUNTESTSREQUEST.fields_by_name['test_suites'].message_type = chromiumos_dot_test_dot_api_dot_test__suite__pb2._TESTSUITE
 _RUNTESTSRESPONSE.fields_by_name['test_case_results'].message_type = chromiumos_dot_test_dot_api_dot_test__case__result__pb2._TESTCASERESULT
 _PROVISIONFAILURE.fields_by_name['reason'].enum_type = _PROVISIONFAILURE_REASON
@@ -574,6 +670,15 @@ _PROVISIONASHRESPONSE.fields_by_name['success'].containing_oneof = _PROVISIONASH
 _PROVISIONASHRESPONSE.oneofs_by_name['outcome'].fields.append(
   _PROVISIONASHRESPONSE.fields_by_name['failure'])
 _PROVISIONASHRESPONSE.fields_by_name['failure'].containing_oneof = _PROVISIONASHRESPONSE.oneofs_by_name['outcome']
+_PROVISIONARCREQUEST.fields_by_name['ash_image_path'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
+_PROVISIONARCRESPONSE.fields_by_name['success'].message_type = _PROVISIONSUCCESS
+_PROVISIONARCRESPONSE.fields_by_name['failure'].message_type = _PROVISIONFAILURE
+_PROVISIONARCRESPONSE.oneofs_by_name['outcome'].fields.append(
+  _PROVISIONARCRESPONSE.fields_by_name['success'])
+_PROVISIONARCRESPONSE.fields_by_name['success'].containing_oneof = _PROVISIONARCRESPONSE.oneofs_by_name['outcome']
+_PROVISIONARCRESPONSE.oneofs_by_name['outcome'].fields.append(
+  _PROVISIONARCRESPONSE.fields_by_name['failure'])
+_PROVISIONARCRESPONSE.fields_by_name['failure'].containing_oneof = _PROVISIONARCRESPONSE.oneofs_by_name['outcome']
 DESCRIPTOR.message_types_by_name['RunTestsRequest'] = _RUNTESTSREQUEST
 DESCRIPTOR.message_types_by_name['RunTestsResponse'] = _RUNTESTSRESPONSE
 DESCRIPTOR.message_types_by_name['RunTestsMetadata'] = _RUNTESTSMETADATA
@@ -588,6 +693,9 @@ DESCRIPTOR.message_types_by_name['ProvisionLacrosMetadata'] = _PROVISIONLACROSME
 DESCRIPTOR.message_types_by_name['ProvisionAshRequest'] = _PROVISIONASHREQUEST
 DESCRIPTOR.message_types_by_name['ProvisionAshResponse'] = _PROVISIONASHRESPONSE
 DESCRIPTOR.message_types_by_name['ProvisionAshMetadata'] = _PROVISIONASHMETADATA
+DESCRIPTOR.message_types_by_name['ProvisionArcRequest'] = _PROVISIONARCREQUEST
+DESCRIPTOR.message_types_by_name['ProvisionArcResponse'] = _PROVISIONARCRESPONSE
+DESCRIPTOR.message_types_by_name['ProvisionArcMetadata'] = _PROVISIONARCMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 RunTestsRequest = _reflection.GeneratedProtocolMessageType('RunTestsRequest', (_message.Message,), dict(
@@ -696,6 +804,27 @@ ProvisionAshMetadata = _reflection.GeneratedProtocolMessageType('ProvisionAshMet
   ))
 _sym_db.RegisterMessage(ProvisionAshMetadata)
 
+ProvisionArcRequest = _reflection.GeneratedProtocolMessageType('ProvisionArcRequest', (_message.Message,), dict(
+  DESCRIPTOR = _PROVISIONARCREQUEST,
+  __module__ = 'chromiumos.test.api.test_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ProvisionArcRequest)
+  ))
+_sym_db.RegisterMessage(ProvisionArcRequest)
+
+ProvisionArcResponse = _reflection.GeneratedProtocolMessageType('ProvisionArcResponse', (_message.Message,), dict(
+  DESCRIPTOR = _PROVISIONARCRESPONSE,
+  __module__ = 'chromiumos.test.api.test_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ProvisionArcResponse)
+  ))
+_sym_db.RegisterMessage(ProvisionArcResponse)
+
+ProvisionArcMetadata = _reflection.GeneratedProtocolMessageType('ProvisionArcMetadata', (_message.Message,), dict(
+  DESCRIPTOR = _PROVISIONARCMETADATA,
+  __module__ = 'chromiumos.test.api.test_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ProvisionArcMetadata)
+  ))
+_sym_db.RegisterMessage(ProvisionArcMetadata)
+
 
 DESCRIPTOR._options = None
 
@@ -705,8 +834,8 @@ _TESTSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1607,
-  serialized_end=2187,
+  serialized_start=1855,
+  serialized_end=2578,
   methods=[
   _descriptor.MethodDescriptor(
     name='ProvisionDut',
@@ -736,9 +865,18 @@ _TESTSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=_b('\322A,\n\024ProvisionAshResponse\022\024ProvisionAshMetadata'),
   ),
   _descriptor.MethodDescriptor(
+    name='ProvisionArc',
+    full_name='chromiumos.test.api.TestService.ProvisionArc',
+    index=3,
+    containing_service=None,
+    input_type=_PROVISIONARCREQUEST,
+    output_type=chromiumos_dot_longrunning_dot_operations__pb2._OPERATION,
+    serialized_options=_b('\322A,\n\024ProvisionArcResponse\022\024ProvisionArcMetadata'),
+  ),
+  _descriptor.MethodDescriptor(
     name='RunTests',
     full_name='chromiumos.test.api.TestService.RunTests',
-    index=3,
+    index=4,
     containing_service=None,
     input_type=_RUNTESTSREQUEST,
     output_type=chromiumos_dot_longrunning_dot_operations__pb2._OPERATION,

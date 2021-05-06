@@ -56,6 +56,18 @@ service TestService {
     };
   }
 
+  // ProvisionArc installs a specified version of ARC on the DUT.
+  //
+  // This directly overwrites the version of ARC on the current root
+  // disk partition.
+  rpc ProvisionArc(ProvisionArcRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "ProvisionArcResponse",
+      metadata_type: "ProvisionArcMetadata"
+    };
+  }
+
   // RunTests runs the requested tests.
   rpc RunTests(RunTestsRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
@@ -159,4 +171,18 @@ message ProvisionAshResponse {
 }
 
 message ProvisionAshMetadata {
+}
+
+message ProvisionArcRequest {
+  StoragePath ash_image_path = 1;
+}
+
+message ProvisionArcResponse {
+  oneof outcome {
+    ProvisionSuccess success = 1;
+    ProvisionFailure failure = 2;
+  }
+}
+
+message ProvisionArcMetadata {
 }
