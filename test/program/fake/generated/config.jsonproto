@@ -68,12 +68,21 @@
             "formFactor": {
               "formFactor": 1
             },
+            "keyboard": {
+              "backlight": 2,
+              "keyboardType": 1,
+              "numericPad": 2,
+              "powerButton": 2
+            },
             "screen": {
               "panelProperties": {},
               "touchSupport": 1
             },
             "storage": {
               "storageType": 1
+            },
+            "stylus": {
+              "stylus": 2
             },
             "touchpad": {
               "present": 1

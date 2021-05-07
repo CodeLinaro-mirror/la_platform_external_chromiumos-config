@@ -115,6 +115,34 @@ def _create_form_factor(form_factor):
         ),
     )
 
+_KB_TYPE = struct(
+    NONE = _HW_FEAT.Keyboard.NONE,
+    INTERNAL = _HW_FEAT.Keyboard.INTERNAL,
+    DETACHABLE = _HW_FEAT.Keyboard.DETACHABLE,
+)
+
+def _create_keyboard(
+        kb_type,
+        backlight = False,
+        pwr_btn_present = False,
+        numpad_present = False):
+    """Builds a Topology proto for a keyboard.
+
+    Args:
+        kb_type: A KeyboardType enum. Required.
+        backlight: True if a backlight is present. Required.
+        pwr_btn_present: True if a power button is present. Required.
+        numpad_present: True if numeric pad is present.
+    """
+    return _HW_FEAT(
+        keyboard = _HW_FEAT.Keyboard(
+            keyboard_type = kb_type,
+            backlight = _bool_to_present(backlight),
+            power_button = _bool_to_present(pwr_btn_present),
+            numeric_pad = _bool_to_present(numpad_present),
+        ),
+    )
+
 _STORAGE = struct(
     EMMC = comp_pb.Component.Storage.EMMC,
     NVME = comp_pb.Component.Storage.NVME,
@@ -207,6 +235,20 @@ def _create_cameras(*args):
         ),
     )
 
+_STYLUS_TYPE = struct(
+    NONE = _HW_FEAT.Stylus.NONE,
+    INTERNAL = _HW_FEAT.Stylus.INTERNAL,
+    EXTERNAL = _HW_FEAT.Stylus.EXTERNAL,
+)
+
+def _create_stylus(stylus_type):
+    """Create stylus feature."""
+    return _HW_FEAT(
+        stylus = _HW_FEAT.Stylus(
+            stylus = stylus_type,
+        ),
+    )
+
 def _create_features(
         bluetooth = None,
         camera = None,
@@ -215,8 +257,10 @@ def _create_features(
         fingerprint = None,
         form_factor = None,
         hotwording = None,
+        keyboard = None,
         screen = None,
         storage = None,
+        stylus = None,
         touchpad = None):
     hw_feat = {}
 
@@ -231,8 +275,10 @@ def _create_features(
     _merge("fingerprint", fingerprint)
     _merge("form_factor", form_factor)
     _merge("hotwording", hotwording)
+    _merge("keyboard", keyboard)
     _merge("screen", screen)
     _merge("storage", storage)
+    _merge("stylus", stylus)
     _merge("touchpad", touchpad)
 
     return _HW_FEAT(**hw_feat)
@@ -247,15 +293,19 @@ hw_feat = struct(
     create_features = _create_features,
     create_form_factor = _create_form_factor,
     create_hotwording = _create_hotwording,
+    create_keyboard = _create_keyboard,
     create_screen = _create_screen,
     create_storage = _create_storage,
+    create_stylus = _create_stylus,
     create_touchpad = _create_touchpad,
 
     # export enums
     camera_features = _camera_features,
     embedded_controller = _EC,
     form_factor = _FORM_FACTOR,
+    keyboard_type = _KB_TYPE,
     present = _PRESENT,
     storage = _STORAGE,
+    stylus_type = _STYLUS_TYPE,
     location = _LOCATION,
 )
