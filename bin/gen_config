@@ -48,7 +48,7 @@ if [[ -e "${config_dir}"/program/config.star ]]; then
 fi
 
 echo "Building config from source starlark config files."
-"${script_dir}"/build_config ${proto_opt} "$@" "${output_dir}"
+"${script_dir}"/build_config ${proto_opt} -o "${output_dir}" "$@"
 echo "Transforming generated protojson config enums"
 cd "${config_dir}"
 "${script_dir}"/transform_config_enums "${output_dir}"

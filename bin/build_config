@@ -19,10 +19,16 @@ trap "summarize" EXIT
 source "${script_dir}/../setup_cipd.sh"
 
 regen_proto=1
+output_dir="."
 while [[ $# -gt 0 ]]; do
     case $1 in
         --no-proto)
             regen_proto=0
+            shift
+            ;;
+        --output-dir|-o)
+            output_dir="$2"
+            shift
             shift
             ;;
         *)
@@ -31,12 +37,11 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-if [[ $# -ne 2 ]]; then
+if [[ $# -ne 1 ]]; then
   config_usage
 fi
 
 readonly file_path=$1
-readonly output_dir=$2
 readonly config_file=$(basename "${file_path}")
 readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
 
