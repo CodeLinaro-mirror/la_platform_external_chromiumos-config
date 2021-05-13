@@ -12116,6 +12116,74 @@
             }
           ],
           "name": "RecursiveMessage"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "config",
+              "label": "LABEL_OPTIONAL",
+              "name": "config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.testdata.PrivateMessage.Config"
+            }
+          ],
+          "name": "PrivateMessage",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "payload",
+                  "label": "LABEL_REPEATED",
+                  "name": "payload",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.public_replication.testdata.PrivateMessage.Config.Test"
+                }
+              ],
+              "name": "Config",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "bools",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "bools",
+                      "number": 1,
+                      "type": "TYPE_BOOL"
+                    }
+                  ],
+                  "name": "Test"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "nestedMessages",
+              "label": "LABEL_OPTIONAL",
+              "name": "nested_messages",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.testdata.PrivateMessage"
+            }
+          ],
+          "name": "NestedPrivateMessage"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "nestedMessages",
+              "label": "LABEL_REPEATED",
+              "name": "nested_messages",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.testdata.PrivateMessage"
+            }
+          ],
+          "name": "NestedRepeatedPrivateMessage"
         }
       ],
       "name": "chromiumos/config/public_replication/testdata/public_replication_testdata.proto",

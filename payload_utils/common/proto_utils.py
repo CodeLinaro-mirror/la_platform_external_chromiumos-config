@@ -4,7 +4,6 @@
 # found in the LICENSE file.
 """Proto-related helper functions."""
 
-import copy
 import importlib
 import os
 
@@ -262,18 +261,11 @@ def __apply_public_replication_internal(src: pb_message.Message,
         dst_field = getattr(dst, field_descriptor.name)
         if hasattr(dst_field, 'add'):
           next_dst = dst_field.add()
-
-          # If the newly added field doesn't have any fields set, remove it to
-          # avoid creating many empty messages on dst. Create a copy of next_dst
-          # to check if next_dst changed after the recursive call to
-          # __apply_public_replication_internal and remove next_dst from the
-          # list if it didn't change.
-          next_dst_copy = copy.deepcopy(next_dst)
-
           __apply_public_replication_internal(next_src, next_dst,
                                               visited_messages)
-
-          if dst_field[-1] == next_dst_copy:
+          # If the newly added field doesn't have any fields set, remove it to
+          # avoid creating many empty messages on dst.
+          if not dst_field[-1].ByteSize():
             dst_field.pop()
     else:
       # For non-repeated fields, get the field in src and dst and call
@@ -281,3 +273,7 @@ def __apply_public_replication_internal(src: pb_message.Message,
       next_src = getattr(src, field_descriptor.name)
       next_dst = getattr(dst, field_descriptor.name)
       __apply_public_replication_internal(next_src, next_dst, visited_messages)
+      # If the newly added field doesn't have any fields set, remove it to
+      # avoid creating many empty messages on dst.
+      if not next_dst.ByteSize():
+        dst.ClearField(field_descriptor.name)

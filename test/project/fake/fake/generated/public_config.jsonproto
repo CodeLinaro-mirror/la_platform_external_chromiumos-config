@@ -3,31 +3,11 @@
     {
       "configs": [
         {
-          "hardwareFeatures": {
-            "camera": {}
-          },
-          "hardwareTopology": {
-            "camera": {
-              "hardwareFeature": {
-                "camera": {}
-              }
-            }
-          },
           "id": {
             "value": "FAKE_REF_DESIGN:2147483647"
           }
         },
         {
-          "hardwareFeatures": {
-            "camera": {}
-          },
-          "hardwareTopology": {
-            "camera": {
-              "hardwareFeature": {
-                "camera": {}
-              }
-            }
-          },
           "id": {
             "value": "FAKE_REF_DESIGN:0"
           }
@@ -44,16 +24,6 @@
     {
       "configs": [
         {
-          "hardwareFeatures": {
-            "camera": {}
-          },
-          "hardwareTopology": {
-            "camera": {
-              "hardwareFeature": {
-                "camera": {}
-              }
-            }
-          },
           "id": {
             "value": "PROJECT_A:32"
           }
@@ -70,16 +40,6 @@
     {
       "configs": [
         {
-          "hardwareFeatures": {
-            "camera": {}
-          },
-          "hardwareTopology": {
-            "camera": {
-              "hardwareFeature": {
-                "camera": {}
-              }
-            }
-          },
           "id": {
             "value": "PROJECT_B:33"
           }
@@ -96,16 +56,6 @@
     {
       "configs": [
         {
-          "hardwareFeatures": {
-            "camera": {}
-          },
-          "hardwareTopology": {
-            "camera": {
-              "hardwareFeature": {
-                "camera": {}
-              }
-            }
-          },
           "id": {
             "value": "PROJECT_C:34"
           }
@@ -122,16 +72,6 @@
     {
       "configs": [
         {
-          "hardwareFeatures": {
-            "camera": {}
-          },
-          "hardwareTopology": {
-            "camera": {
-              "hardwareFeature": {
-                "camera": {}
-              }
-            }
-          },
           "id": {
             "value": "PROJECT_WL:64"
           }
@@ -148,16 +88,6 @@
     {
       "configs": [
         {
-          "hardwareFeatures": {
-            "camera": {}
-          },
-          "hardwareTopology": {
-            "camera": {
-              "hardwareFeature": {
-                "camera": {}
-              }
-            }
-          },
           "id": {
             "value": "PROJECT_REBRAND:65"
           }
@@ -246,7 +176,6 @@
           "cardName": "fakeaudiocard"
         }
       ],
-      "cameraConfig": {},
       "designConfigId": {
         "value": "PROJECT_B:33"
       },

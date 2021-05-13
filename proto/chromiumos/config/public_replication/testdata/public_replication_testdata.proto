@@ -48,3 +48,21 @@ message RecursiveMessage {
 
     RecursiveMessage recursive_message = 2;
 }
+
+message PrivateMessage {
+    message Config {
+        message Test {
+           bool bools = 1;
+        }
+        repeated Test payload = 1;
+    }
+    Config config = 1;
+}
+
+message NestedPrivateMessage {
+    PrivateMessage nested_messages = 1;
+}
+
+message NestedRepeatedPrivateMessage {
+    repeated PrivateMessage nested_messages = 1;
+}

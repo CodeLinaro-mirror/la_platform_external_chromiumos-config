@@ -20,6 +20,9 @@ from chromiumos.config.public_replication.testdata.public_replication_testdata_p
     WrapperTestdata2,
     WrapperTestdata3,
     RecursiveMessage,
+    PrivateMessage,
+    NestedPrivateMessage,
+    NestedRepeatedPrivateMessage,
 )
 
 from common import proto_utils
@@ -320,3 +323,32 @@ class ProtoUtilsTest(unittest.TestCase):
             "chromiumos.config.payload.ConfigBundle"),
         None,
     )
+
+  def test_remove_emptymessage(self):
+    """Test that a message that does not contain any public information
+    is removed.
+    """
+    src = NestedPrivateMessage(
+        nested_messages=PrivateMessage(
+            config=PrivateMessage.Config(payload=[
+                PrivateMessage.Config.Test(bools=True),
+                PrivateMessage.Config.Test(bools=True)
+            ])))
+    dst = NestedPrivateMessage()
+    proto_utils.apply_public_replication(src, dst)
+    self.assertEqual(dst, NestedPrivateMessage())
+
+  def test_remove_repeated_emptymessage(self):
+    """Test that a message that does not contain any public information
+    is removed.
+    """
+    src = NestedRepeatedPrivateMessage(nested_messages=[
+        PrivateMessage(
+            config=PrivateMessage.Config(payload=[
+                PrivateMessage.Config.Test(bools=True),
+                PrivateMessage.Config.Test(bools=True)
+            ]))
+    ])
+    dst = NestedRepeatedPrivateMessage()
+    proto_utils.apply_public_replication(src, dst)
+    self.assertEqual(dst, NestedRepeatedPrivateMessage())
