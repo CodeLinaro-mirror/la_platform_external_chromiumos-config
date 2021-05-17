@@ -10,13 +10,8 @@ readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
 
 cd "${script_dir}"
 
-readonly venv_path=.venv
-/usr/bin/python3 -m venv "${venv_path}"
-source "${venv_path}/bin/activate"
-
-echo "Installing grpcio-tools"
-# TODO(crbug.com/1207957) Remove once this is included in vpython by default
-pip install -q grpcio-tools==1.32.0
+source "${script_dir}/bin/common.sh"
+create_venv
 
 echo "Generating proto and grpc bindings"
 python3 -m grpc_tools.protoc \

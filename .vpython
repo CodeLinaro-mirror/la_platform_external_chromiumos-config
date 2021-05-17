@@ -96,6 +96,16 @@ wheel: <
 >
 
 wheel: <
+  name: "infra/python/wheels/grpcio/linux-amd64_cp38_cp38"
+  version: "version:1.32.0"
+>
+
+wheel: <
+  name: "infra/python/wheels/grpcio-tools/linux-amd64_cp38_cp38"
+  version: "version:1.32.0"
+>
+
+wheel: <
   name: "infra/python/wheels/lazy-object-proxy/linux-amd64_cp38_cp38"
   version: "version:1.4.3"
 >
