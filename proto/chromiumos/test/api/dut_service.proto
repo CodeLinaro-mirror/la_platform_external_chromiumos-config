@@ -1,0 +1,163 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/longrunning/operations.proto";
+import "chromiumos/storage_path.proto";
+
+// Stable (build-agnostic) interface for setting up (provisioning) and
+// maintaining (e.g. recovering) a live hardware Device Under Test (DUT).
+service DutService {
+  // ProvisionDut installs a specified version of Chrome OS on the DUT, along
+  // with any specified DLCs.
+  //
+  // If the DUT is already on the specified version of Chrome OS, the OS will
+  // not be provisioned.
+  //
+  // If the DUT already has the specified list of DLCs, only the missing DLCs
+  // will be provisioned.
+  rpc ProvisionDut(ProvisionDutRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "ProvisionDutResponse",
+      metadata_type: "ProvisionDutMetadata"
+    };
+  }
+
+  // ProvisionLacros installs a specified version of Lacros on the DUT.
+  //
+  // If the DUT already has the specified version of Lacros, Lacros will not be
+  // provisioned.
+  rpc ProvisionLacros(ProvisionLacrosRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "ProvisionLacrosResponse",
+      metadata_type: "ProvisionLacrosMetadata"
+    };
+  }
+
+  // ProvisionAsh installs a specified version of ash-chrome on the DUT.
+  //
+  // This directly overwrites the version of ash-chrome on the current root
+  // disk partition.
+  rpc ProvisionAsh(ProvisionAshRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "ProvisionAshResponse",
+      metadata_type: "ProvisionAshMetadata"
+    };
+  }
+
+  // ProvisionArc installs a specified version of ARC on the DUT.
+  //
+  // This directly overwrites the version of ARC on the current root
+  // disk partition.
+  rpc ProvisionArc(ProvisionArcRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "ProvisionArcResponse",
+      metadata_type: "ProvisionArcMetadata"
+    };
+  }
+}
+
+message ProvisionSuccess {
+}
+
+message ProvisionFailure {
+  // When the status code is other than OK, details in Status message should be
+  // parsed for ErrorInfo message with the following Reasons as the reason.
+  enum Reason {
+    // status code: INVALID_ARGUMENT
+    REASON_INVALID_REQUEST = 0;
+    // status code: FAILED_PRECONDITION
+    REASON_DUT_UNREACHABLE_PRE_PROVISION = 1;
+    // status code: FAILED_PRECONDITION
+    REASON_DOWNLOADING_IMAGE_FAILED = 2;
+    // status code: DEADLINE_EXCEEDED
+    REASON_PROVISIONING_TIMEDOUT = 3;
+    // status code: ABORTED
+    REASON_PROVISIONING_FAILED = 4;
+    // status code: ABORTED
+    REASON_DUT_UNREACHABLE_POST_PROVISION = 5;
+  }
+
+  Reason reason = 1;
+}
+
+message ProvisionDutRequest {
+  StoragePath cros_image_path = 1;
+
+  // Reference DLCs developer documentation:
+  // https://source.corp.google.com/chromeos_public/src/platform2/dlcservice/docs/developer.md
+  message DLCSpec {
+    // id is the DLC ID which is a unique identifier.
+    // The DLC ID must follow a specific format that can be found in the DLC
+    // developer doc below.
+    string id = 1;
+  }
+  // dlc_specs specifies which DLCs to install on the DUT after provisioning.
+  repeated DLCSpec dlc_specs = 2;
+  // preserve_stateful specifies whether the stateful partition should be preserved during
+  // provisioning. If preserve_stateful is not set to true, the stateful partition is
+  // block-level wiped and reset during provisioning.
+  bool preserve_stateful = 3;
+}
+
+message ProvisionDutResponse {
+  oneof outcome {
+    ProvisionSuccess success = 1;
+    ProvisionFailure failure = 2;
+  }
+}
+
+message ProvisionDutMetadata {
+}
+
+message ProvisionLacrosRequest {
+  StoragePath lacros_image_path = 1;
+}
+
+message ProvisionLacrosResponse {
+  oneof outcome {
+    ProvisionSuccess success = 1;
+    ProvisionFailure failure = 2;
+  }
+}
+
+message ProvisionLacrosMetadata {
+}
+
+message ProvisionAshRequest {
+  StoragePath ash_image_path = 1;
+}
+
+message ProvisionAshResponse {
+  oneof outcome {
+    ProvisionSuccess success = 1;
+    ProvisionFailure failure = 2;
+  }
+}
+
+message ProvisionAshMetadata {
+}
+
+message ProvisionArcRequest {
+  StoragePath ash_image_path = 1;
+}
+
+message ProvisionArcResponse {
+  oneof outcome {
+    ProvisionSuccess success = 1;
+    ProvisionFailure failure = 2;
+  }
+}
+
+message ProvisionArcMetadata {
+}
