@@ -23,6 +23,7 @@ python3 -m grpc_tools.protoc \
     -Iproto \
     --python_out=python \
     --grpc_python_out=python \
-    proto/chromiumos/test/api/test_service.proto
+    proto/chromiumos/test/api/test_service.proto \
+    proto/chromiumos/test/api/dut_service.proto
 
 deactivate

@@ -7,8 +7,8 @@ from chromiumos.test.api import test_service_pb2 as chromiumos_dot_test_dot_api_
 
 
 class TestServiceStub(object):
-    """Stable (build-agnostic) testing interface for setting up live
-    ChromeOS devices, executing tests, and extracting results.
+    """Stable (build-agnostic) testing interface for executing tests and
+    extracting results.
     """
 
     def __init__(self, channel):
@@ -17,26 +17,6 @@ class TestServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ProvisionDut = channel.unary_unary(
-                '/chromiumos.test.api.TestService/ProvisionDut',
-                request_serializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionDutRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
-        self.ProvisionLacros = channel.unary_unary(
-                '/chromiumos.test.api.TestService/ProvisionLacros',
-                request_serializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionLacrosRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
-        self.ProvisionAsh = channel.unary_unary(
-                '/chromiumos.test.api.TestService/ProvisionAsh',
-                request_serializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionAshRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
-        self.ProvisionArc = channel.unary_unary(
-                '/chromiumos.test.api.TestService/ProvisionArc',
-                request_serializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionArcRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
         self.RunTests = channel.unary_unary(
                 '/chromiumos.test.api.TestService/RunTests',
                 request_serializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.RunTestsRequest.SerializeToString,
@@ -45,53 +25,9 @@ class TestServiceStub(object):
 
 
 class TestServiceServicer(object):
-    """Stable (build-agnostic) testing interface for setting up live
-    ChromeOS devices, executing tests, and extracting results.
+    """Stable (build-agnostic) testing interface for executing tests and
+    extracting results.
     """
-
-    def ProvisionDut(self, request, context):
-        """ProvisionDut installs a specified version of Chrome OS on the DUT, along
-        with any specified DLCs.
-
-        If the DUT is already on the specified version of Chrome OS, the OS will
-        not be provisioned.
-
-        If the DUT already has the specified list of DLCs, only the missing DLCs
-        will be provisioned.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ProvisionLacros(self, request, context):
-        """ProvisionLacros installs a specified version of Lacros on the DUT.
-
-        If the DUT already has the specified version of Lacros, Lacros will not be
-        provisioned.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ProvisionAsh(self, request, context):
-        """ProvisionAsh installs a specified version of ash-chrome on the DUT.
-
-        This directly overwrites the version of ash-chrome on the current root
-        disk partition.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ProvisionArc(self, request, context):
-        """ProvisionArc installs a specified version of ARC on the DUT.
-
-        This directly overwrites the version of ARC on the current root
-        disk partition.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
 
     def RunTests(self, request, context):
         """RunTests runs the requested tests.
@@ -103,26 +39,6 @@ class TestServiceServicer(object):
 
 def add_TestServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ProvisionDut': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProvisionDut,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionDutRequest.FromString,
-                    response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'ProvisionLacros': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProvisionLacros,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionLacrosRequest.FromString,
-                    response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'ProvisionAsh': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProvisionAsh,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionAshRequest.FromString,
-                    response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'ProvisionArc': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProvisionArc,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionArcRequest.FromString,
-                    response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
             'RunTests': grpc.unary_unary_rpc_method_handler(
                     servicer.RunTests,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.RunTestsRequest.FromString,
@@ -136,77 +52,9 @@ def add_TestServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class TestService(object):
-    """Stable (build-agnostic) testing interface for setting up live
-    ChromeOS devices, executing tests, and extracting results.
+    """Stable (build-agnostic) testing interface for executing tests and
+    extracting results.
     """
-
-    @staticmethod
-    def ProvisionDut(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.TestService/ProvisionDut',
-            chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionDutRequest.SerializeToString,
-            chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ProvisionLacros(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.TestService/ProvisionLacros',
-            chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionLacrosRequest.SerializeToString,
-            chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ProvisionAsh(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.TestService/ProvisionAsh',
-            chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionAshRequest.SerializeToString,
-            chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ProvisionArc(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.TestService/ProvisionArc',
-            chromiumos_dot_test_dot_api_dot_test__service__pb2.ProvisionArcRequest.SerializeToString,
-            chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def RunTests(request,
