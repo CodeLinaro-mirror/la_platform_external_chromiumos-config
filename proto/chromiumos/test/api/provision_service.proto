@@ -11,66 +11,66 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 import "chromiumos/longrunning/operations.proto";
 import "chromiumos/storage_path.proto";
 
-// Stable (build-agnostic) interface for setting up (provisioning) and
-// maintaining (e.g. recovering) a live hardware Device Under Test (DUT).
-service DutService {
-  // ProvisionDut installs a specified version of Chrome OS on the DUT, along
+// Stable (build-agnostic) interface for installing software (provisioning)
+// on a Chrome OS device.
+service ProvisionService {
+  // InstallCros installs a specified version of Chrome OS on the DUT, along
   // with any specified DLCs.
   //
   // If the DUT is already on the specified version of Chrome OS, the OS will
-  // not be provisioned.
+  // not be installed.
   //
   // If the DUT already has the specified list of DLCs, only the missing DLCs
-  // will be provisioned.
-  rpc ProvisionDut(ProvisionDutRequest)
+  // will be installed.
+  rpc InstallCros(InstallCrosRequest)
       returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
-      response_type: "ProvisionDutResponse",
-      metadata_type: "ProvisionDutMetadata"
+      response_type: "InstallCrosResponse",
+      metadata_type: "InstallCrosMetadata"
     };
   }
 
-  // ProvisionLacros installs a specified version of Lacros on the DUT.
+  // InstallLacros installs a specified version of Lacros on the DUT.
   //
   // If the DUT already has the specified version of Lacros, Lacros will not be
-  // provisioned.
-  rpc ProvisionLacros(ProvisionLacrosRequest)
+  // installed.
+  rpc InstallLacros(InstallLacrosRequest)
       returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
-      response_type: "ProvisionLacrosResponse",
-      metadata_type: "ProvisionLacrosMetadata"
+      response_type: "InstallLacrosResponse",
+      metadata_type: "InstallLacrosMetadata"
     };
   }
 
-  // ProvisionAsh installs a specified version of ash-chrome on the DUT.
+  // InstallAsh installs a specified version of ash-chrome on the DUT.
   //
   // This directly overwrites the version of ash-chrome on the current root
   // disk partition.
-  rpc ProvisionAsh(ProvisionAshRequest)
+  rpc InstallAsh(InstallAshRequest)
       returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
-      response_type: "ProvisionAshResponse",
-      metadata_type: "ProvisionAshMetadata"
+      response_type: "InstallAshResponse",
+      metadata_type: "InstallAshMetadata"
     };
   }
 
-  // ProvisionArc installs a specified version of ARC on the DUT.
+  // InstallArc installs a specified version of ARC on the DUT.
   //
   // This directly overwrites the version of ARC on the current root
   // disk partition.
-  rpc ProvisionArc(ProvisionArcRequest)
+  rpc InstallArc(InstallArcRequest)
       returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
-      response_type: "ProvisionArcResponse",
-      metadata_type: "ProvisionArcMetadata"
+      response_type: "InstallArcResponse",
+      metadata_type: "InstallArcMetadata"
     };
   }
 }
 
-message ProvisionSuccess {
+message InstallSuccess {
 }
 
-message ProvisionFailure {
+message InstallFailure {
   // When the status code is other than OK, details in Status message should be
   // parsed for ErrorInfo message with the following Reasons as the reason.
   enum Reason {
@@ -91,7 +91,7 @@ message ProvisionFailure {
   Reason reason = 1;
 }
 
-message ProvisionDutRequest {
+message InstallCrosRequest {
   StoragePath cros_image_path = 1;
 
   // Reference DLCs developer documentation:
@@ -110,54 +110,54 @@ message ProvisionDutRequest {
   bool preserve_stateful = 3;
 }
 
-message ProvisionDutResponse {
+message InstallCrosResponse {
   oneof outcome {
-    ProvisionSuccess success = 1;
-    ProvisionFailure failure = 2;
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
   }
 }
 
-message ProvisionDutMetadata {
+message InstallCrosMetadata {
 }
 
-message ProvisionLacrosRequest {
+message InstallLacrosRequest {
   StoragePath lacros_image_path = 1;
 }
 
-message ProvisionLacrosResponse {
+message InstallLacrosResponse {
   oneof outcome {
-    ProvisionSuccess success = 1;
-    ProvisionFailure failure = 2;
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
   }
 }
 
-message ProvisionLacrosMetadata {
+message InstallLacrosMetadata {
 }
 
-message ProvisionAshRequest {
+message InstallAshRequest {
   StoragePath ash_image_path = 1;
 }
 
-message ProvisionAshResponse {
+message InstallAshResponse {
   oneof outcome {
-    ProvisionSuccess success = 1;
-    ProvisionFailure failure = 2;
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
   }
 }
 
-message ProvisionAshMetadata {
+message InstallAshMetadata {
 }
 
-message ProvisionArcRequest {
+message InstallArcRequest {
   StoragePath ash_image_path = 1;
 }
 
-message ProvisionArcResponse {
+message InstallArcResponse {
   oneof outcome {
-    ProvisionSuccess success = 1;
-    ProvisionFailure failure = 2;
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
   }
 }
 
-message ProvisionArcMetadata {
+message InstallArcMetadata {
 }
