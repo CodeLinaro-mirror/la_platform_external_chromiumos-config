@@ -3,12 +3,12 @@
 import grpc
 
 from chromiumos.longrunning import operations_pb2 as chromiumos_dot_longrunning_dot_operations__pb2
-from chromiumos.test.api import dut_service_pb2 as chromiumos_dot_test_dot_api_dot_dut__service__pb2
+from chromiumos.test.api import provision_service_pb2 as chromiumos_dot_test_dot_api_dot_provision__service__pb2
 
 
-class DutServiceStub(object):
-    """Stable (build-agnostic) interface for setting up (provisioning) and
-    maintaining (e.g. recovering) a live hardware Device Under Test (DUT).
+class ProvisionServiceStub(object):
+    """Stable (build-agnostic) interface for installing software (provisioning)
+    on a Chrome OS device.
     """
 
     def __init__(self, channel):
@@ -17,59 +17,59 @@ class DutServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ProvisionDut = channel.unary_unary(
-                '/chromiumos.test.api.DutService/ProvisionDut',
-                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionDutRequest.SerializeToString,
+        self.InstallCros = channel.unary_unary(
+                '/chromiumos.test.api.ProvisionService/InstallCros',
+                request_serializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallCrosRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
-        self.ProvisionLacros = channel.unary_unary(
-                '/chromiumos.test.api.DutService/ProvisionLacros',
-                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionLacrosRequest.SerializeToString,
+        self.InstallLacros = channel.unary_unary(
+                '/chromiumos.test.api.ProvisionService/InstallLacros',
+                request_serializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallLacrosRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
-        self.ProvisionAsh = channel.unary_unary(
-                '/chromiumos.test.api.DutService/ProvisionAsh',
-                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionAshRequest.SerializeToString,
+        self.InstallAsh = channel.unary_unary(
+                '/chromiumos.test.api.ProvisionService/InstallAsh',
+                request_serializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallAshRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
-        self.ProvisionArc = channel.unary_unary(
-                '/chromiumos.test.api.DutService/ProvisionArc',
-                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionArcRequest.SerializeToString,
+        self.InstallArc = channel.unary_unary(
+                '/chromiumos.test.api.ProvisionService/InstallArc',
+                request_serializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallArcRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
 
 
-class DutServiceServicer(object):
-    """Stable (build-agnostic) interface for setting up (provisioning) and
-    maintaining (e.g. recovering) a live hardware Device Under Test (DUT).
+class ProvisionServiceServicer(object):
+    """Stable (build-agnostic) interface for installing software (provisioning)
+    on a Chrome OS device.
     """
 
-    def ProvisionDut(self, request, context):
-        """ProvisionDut installs a specified version of Chrome OS on the DUT, along
+    def InstallCros(self, request, context):
+        """InstallCros installs a specified version of Chrome OS on the DUT, along
         with any specified DLCs.
 
         If the DUT is already on the specified version of Chrome OS, the OS will
-        not be provisioned.
+        not be installed.
 
         If the DUT already has the specified list of DLCs, only the missing DLCs
-        will be provisioned.
+        will be installed.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ProvisionLacros(self, request, context):
-        """ProvisionLacros installs a specified version of Lacros on the DUT.
+    def InstallLacros(self, request, context):
+        """InstallLacros installs a specified version of Lacros on the DUT.
 
         If the DUT already has the specified version of Lacros, Lacros will not be
-        provisioned.
+        installed.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ProvisionAsh(self, request, context):
-        """ProvisionAsh installs a specified version of ash-chrome on the DUT.
+    def InstallAsh(self, request, context):
+        """InstallAsh installs a specified version of ash-chrome on the DUT.
 
         This directly overwrites the version of ash-chrome on the current root
         disk partition.
@@ -78,8 +78,8 @@ class DutServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ProvisionArc(self, request, context):
-        """ProvisionArc installs a specified version of ARC on the DUT.
+    def InstallArc(self, request, context):
+        """InstallArc installs a specified version of ARC on the DUT.
 
         This directly overwrites the version of ARC on the current root
         disk partition.
@@ -89,42 +89,42 @@ class DutServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_DutServiceServicer_to_server(servicer, server):
+def add_ProvisionServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ProvisionDut': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProvisionDut,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionDutRequest.FromString,
+            'InstallCros': grpc.unary_unary_rpc_method_handler(
+                    servicer.InstallCros,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallCrosRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
-            'ProvisionLacros': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProvisionLacros,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionLacrosRequest.FromString,
+            'InstallLacros': grpc.unary_unary_rpc_method_handler(
+                    servicer.InstallLacros,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallLacrosRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
-            'ProvisionAsh': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProvisionAsh,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionAshRequest.FromString,
+            'InstallAsh': grpc.unary_unary_rpc_method_handler(
+                    servicer.InstallAsh,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallAshRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
-            'ProvisionArc': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProvisionArc,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionArcRequest.FromString,
+            'InstallArc': grpc.unary_unary_rpc_method_handler(
+                    servicer.InstallArc,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallArcRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'chromiumos.test.api.DutService', rpc_method_handlers)
+            'chromiumos.test.api.ProvisionService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class DutService(object):
-    """Stable (build-agnostic) interface for setting up (provisioning) and
-    maintaining (e.g. recovering) a live hardware Device Under Test (DUT).
+class ProvisionService(object):
+    """Stable (build-agnostic) interface for installing software (provisioning)
+    on a Chrome OS device.
     """
 
     @staticmethod
-    def ProvisionDut(request,
+    def InstallCros(request,
             target,
             options=(),
             channel_credentials=None,
@@ -134,14 +134,14 @@ class DutService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DutService/ProvisionDut',
-            chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionDutRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ProvisionService/InstallCros',
+            chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallCrosRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ProvisionLacros(request,
+    def InstallLacros(request,
             target,
             options=(),
             channel_credentials=None,
@@ -151,14 +151,14 @@ class DutService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DutService/ProvisionLacros',
-            chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionLacrosRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ProvisionService/InstallLacros',
+            chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallLacrosRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ProvisionAsh(request,
+    def InstallAsh(request,
             target,
             options=(),
             channel_credentials=None,
@@ -168,14 +168,14 @@ class DutService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DutService/ProvisionAsh',
-            chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionAshRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ProvisionService/InstallAsh',
+            chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallAshRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ProvisionArc(request,
+    def InstallArc(request,
             target,
             options=(),
             channel_credentials=None,
@@ -185,8 +185,8 @@ class DutService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DutService/ProvisionArc',
-            chromiumos_dot_test_dot_api_dot_dut__service__pb2.ProvisionArcRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ProvisionService/InstallArc',
+            chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallArcRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

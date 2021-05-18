@@ -3,10 +3,10 @@
 import grpc
 
 from chromiumos.longrunning import operations_pb2 as chromiumos_dot_longrunning_dot_operations__pb2
-from chromiumos.test.api import test_service_pb2 as chromiumos_dot_test_dot_api_dot_test__service__pb2
+from chromiumos.test.api import execution_service_pb2 as chromiumos_dot_test_dot_api_dot_execution__service__pb2
 
 
-class TestServiceStub(object):
+class ExecutionServiceStub(object):
     """Stable (build-agnostic) testing interface for executing tests and
     extracting results.
     """
@@ -18,13 +18,13 @@ class TestServiceStub(object):
             channel: A grpc.Channel.
         """
         self.RunTests = channel.unary_unary(
-                '/chromiumos.test.api.TestService/RunTests',
-                request_serializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.RunTestsRequest.SerializeToString,
+                '/chromiumos.test.api.ExecutionService/RunTests',
+                request_serializer=chromiumos_dot_test_dot_api_dot_execution__service__pb2.RunTestsRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
 
 
-class TestServiceServicer(object):
+class ExecutionServiceServicer(object):
     """Stable (build-agnostic) testing interface for executing tests and
     extracting results.
     """
@@ -37,21 +37,21 @@ class TestServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_TestServiceServicer_to_server(servicer, server):
+def add_ExecutionServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'RunTests': grpc.unary_unary_rpc_method_handler(
                     servicer.RunTests,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_test__service__pb2.RunTestsRequest.FromString,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_execution__service__pb2.RunTestsRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'chromiumos.test.api.TestService', rpc_method_handlers)
+            'chromiumos.test.api.ExecutionService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class TestService(object):
+class ExecutionService(object):
     """Stable (build-agnostic) testing interface for executing tests and
     extracting results.
     """
@@ -67,8 +67,8 @@ class TestService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.TestService/RunTests',
-            chromiumos_dot_test_dot_api_dot_test__service__pb2.RunTestsRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ExecutionService/RunTests',
+            chromiumos_dot_test_dot_api_dot_execution__service__pb2.RunTestsRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
