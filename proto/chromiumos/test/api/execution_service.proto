@@ -14,7 +14,7 @@ import "chromiumos/test/api/test_suite.proto";
 
 // Stable (build-agnostic) testing interface for executing tests and
 // extracting results.
-service TestService {
+service ExecutionService {
   // RunTests runs the requested tests.
   rpc RunTests(RunTestsRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
