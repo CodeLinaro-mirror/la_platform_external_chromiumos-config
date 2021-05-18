@@ -1,0 +1,29 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.internal;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/internal";
+
+// Defines a test execution framework that can execute test cases and report
+// results.
+message TestHarness {
+  // Globally unique (for ChromeOS) identifier of a given test harness
+  Id id = 1;
+  message Id {
+    string value = 1;
+  }
+
+  oneof test_harness_type {
+    Manual manual = 2;
+    Tauto tauto = 3;
+    Tast tast = 4;
+  }
+
+  message Manual {}
+  message Tast {}
+  message Tauto {}
+}

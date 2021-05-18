@@ -36,11 +36,6 @@ message TestCase {
   message Tag {
     string value = 1;
   }
-
-  repeated Contact contacts = 4;
-
-  // TODO(kathrelkeld): Define metadata based on ownership tracking
-  message Contact {}
 }
 
 // List of globally unique test case identifiers

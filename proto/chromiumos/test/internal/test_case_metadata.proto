@@ -1,0 +1,38 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.internal;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/internal";
+
+import "chromiumos/test/api/test_case.proto";
+import "chromiumos/test/internal/test_harness.proto";
+
+// Defines all metadata about a given test case to support the entire
+// test case lifecycle (planning, execution, debugging, triage, reporting, ...).
+message TestCaseMetadata {
+  api.TestCase test_case = 1;
+  TestCaseExec test_case_exec = 2;
+  TestCaseInfo test_case_info = 3;
+}
+
+// Contains details needed to execute a given test case.
+message TestCaseExec {
+  TestHarness test_harness = 1;
+}
+
+// Contains informational details about a test case which doesn't affect
+// scheduling or execution behavior.
+message TestCaseInfo {
+  // Contacts for ownership / flakiness notification etc.
+  repeated Contact owners = 1;
+}
+
+// Contact information of individuals or teams.
+message Contact {
+  // Can be individual user or group email
+  string email = 1;
+}
