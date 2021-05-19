@@ -247,3 +247,9 @@ Changes that require new topology
 Changes that do not require new topology
 
 * New RO firmware.
+
+## Microphone mute switch
+
+Changes that require new topology
+
+* Microphone mute switch presence

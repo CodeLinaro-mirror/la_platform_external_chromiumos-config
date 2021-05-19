@@ -185,6 +185,14 @@ def _create_touchpad(present = True):
         ),
     )
 
+def _create_microphone_mute_switch(present = False):
+    """Specify whether audio input mute switch is present."""
+    return _HW_FEAT(
+        microphone_mute_switch = _HW_FEAT.MicrophoneMuteSwitch(
+            present = _bool_to_present(present),
+        ),
+    )
+
 # build struct of enums to configure camera
 _camera_features = struct(
     facing = struct(
@@ -261,7 +269,8 @@ def _create_features(
         screen = None,
         storage = None,
         stylus = None,
-        touchpad = None):
+        touchpad = None,
+        microphone_mute_switch = None):
     hw_feat = {}
 
     def _merge(name, feature):
@@ -280,6 +289,7 @@ def _create_features(
     _merge("storage", storage)
     _merge("stylus", stylus)
     _merge("touchpad", touchpad)
+    _merge("microphone_mute_switch", microphone_mute_switch)
 
     return _HW_FEAT(**hw_feat)
 
@@ -298,6 +308,7 @@ hw_feat = struct(
     create_storage = _create_storage,
     create_stylus = _create_stylus,
     create_touchpad = _create_touchpad,
+    create_microphone_mute_switch = _create_microphone_mute_switch,
 
     # export enums
     camera_features = _camera_features,

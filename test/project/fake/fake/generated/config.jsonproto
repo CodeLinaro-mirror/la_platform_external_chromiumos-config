@@ -216,6 +216,9 @@
             "magnetometer": {
               "baseMagnetometer": 1
             },
+            "microphoneMuteSwitch": {
+              "present": 1
+            },
             "powerButton": {
               "edge": 1,
               "position": 0.9,
@@ -430,6 +433,15 @@
               "id": "LTE_BOARD",
               "type": 15
             },
+            "microphoneMuteSwitch": {
+              "hardwareFeature": {
+                "microphoneMuteSwitch": {
+                  "present": 1
+                }
+              },
+              "id": "Default",
+              "type": 25
+            },
             "motherboardUsb": {
               "description": {
                 "EN": "Default motherboard_usb"
@@ -643,6 +655,9 @@
             "magnetometer": {
               "baseMagnetometer": 1
             },
+            "microphoneMuteSwitch": {
+              "present": 1
+            },
             "powerButton": {
               "edge": 1,
               "position": 0.9,
@@ -831,6 +846,15 @@
               },
               "id": "LTE_BOARD",
               "type": 15
+            },
+            "microphoneMuteSwitch": {
+              "hardwareFeature": {
+                "microphoneMuteSwitch": {
+                  "present": 1
+                }
+              },
+              "id": "Default",
+              "type": 25
             },
             "motherboardUsb": {
               "description": {

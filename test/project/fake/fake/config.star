@@ -136,6 +136,8 @@ _TOUCH = hw_topo.create_touch("TOUCH", "Numpad touch", fw_configs = [hw_topo.mak
 
 _TPM = hw_topo.TPM_GSC_H1B
 
+_MICROPHONE_MUTE_SWITCH = hw_topo.create_microphone_mute_switch(present = True)
+
 def create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -149,7 +151,8 @@ def create_hardware_topology(
         daughter_board = None,
         sensor = None,
         ec = None,
-        tpm = None):
+        tpm = None,
+        microphone_mute_switch = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -174,6 +177,7 @@ def create_hardware_topology(
         ec = hw_topo.EC_CHROME,
         touch = _TOUCH,
         tpm = hw_topo.TPM_GSC_H1B,
+        microphone_mute_switch = microphone_mute_switch,
     )
 
 # Create empty arrays that we will continually append new configurations to
@@ -196,6 +200,7 @@ design.append_configs(
         stylus = _STYLUS,
         sensor = _SENSOR_WITH_LIGHT,
         tpm = _TPM,
+        microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
     ),
     audio = sc.create_audio(
         _AUDIO_CARD,
@@ -238,6 +243,7 @@ design.append_configs(
         stylus = _STYLUS,
         camera = _CAMERA2,
         daughter_board = hw_topo.create_daughter_board("Non-default DB", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)]),
+        microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
     ),
     audio = sc.create_audio(
         _AUDIO_CARD,

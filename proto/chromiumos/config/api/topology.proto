@@ -55,6 +55,7 @@ message Topology {
     EC = 22;
     TOUCH = 23;
     TPM = 24;
+    MICROPHONE_MUTE_SWITCH = 25;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -499,4 +500,10 @@ message HardwareFeatures {
     Present present = 1;
   }
   Touchpad touchpad = 28;
+
+  // Whether the system has an audio input mute switch
+  message MicrophoneMuteSwitch {
+    Present present = 1;
+  }
+  MicrophoneMuteSwitch microphone_mute_switch = 29;
 }

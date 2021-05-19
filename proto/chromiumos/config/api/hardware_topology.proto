@@ -115,4 +115,8 @@ message HardwareTopology {
   // Specify the tpm topology.
   // See ./hardware_topology.md#tpm for more information.
   Topology tpm = 24;
+
+  // Specify the microphone mute switch topology.
+  // See ./hardware_topology.md#microphone_mute_switch for more information.
+  Topology microphone_mute_switch = 25;
 }

@@ -761,6 +761,22 @@ def _create_tpm(tpm_type = _TPM_TYPE.GSC_H1B, id = None, fw_configs = []):
         hardware_feature = hw_features,
     )
 
+def _create_microphone_mute_switch(present = False):
+    """Builds a Topology proto for an microphone mute switch.
+
+    Args:
+        present: flag indicating whether the device has an microphone mute
+	         switch
+    """
+    hw_features = topo_pb.HardwareFeatures()
+    hw_features.microphone_mute_switch.present = _bool_to_present(present)
+
+    return topo_pb.Topology(
+        id = "Default",
+        type = topo_pb.Topology.MICROPHONE_MUTE_SWITCH,
+        hardware_feature = hw_features,
+    )
+
 # enumerate the common cases
 _TPM_THIRD_PARTY = _create_tpm(tpm_type = _TPM_TYPE.THIRD_PARTY)
 _TPM_GSC_H1B = _create_tpm(tpm_type = _TPM_TYPE.GSC_H1B)
@@ -789,7 +805,8 @@ def _create_hardware_topology(
         volume_button = None,
         ec = None,
         touch = None,
-        tpm = None):
+        tpm = None,
+        microphone_mute_switch = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -862,6 +879,9 @@ def _create_hardware_topology(
     if tpm and tpm.type != topo_pb.Topology.TPM:
         fail("Invalid tpm type")
 
+    if microphone_mute_switch and microphone_mute_switch.type != topo_pb.Topology.MICROPHONE_MUTE_SWITCH:
+        fail("Invalid microphone mute switch type")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -886,6 +906,7 @@ def _create_hardware_topology(
         ec = ec,
         touch = touch,
         tpm = tpm,
+        microphone_mute_switch = microphone_mute_switch,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -1040,6 +1061,9 @@ def _convert_to_hw_features(hardware_topology):
     if copy.volume_button.hardware_feature.volume_button != topo_pb.HardwareFeatures.Button():
         result.volume_button = copy.volume_button.hardware_feature.volume_button
 
+    if copy.microphone_mute_switch.hardware_feature.microphone_mute_switch != topo_pb.HardwareFeatures.MicrophoneMuteSwitch():
+        result.microphone_mute_switch = copy.microphone_mute_switch.hardware_feature.microphone_mute_switch
+
     # Handle all possible touch hardware features
     _accumulate_fw_config(result.fw_config, copy.touch.hardware_feature.fw_config)
 
@@ -1070,6 +1094,7 @@ hw_topo = struct(
     create_power_button = _create_power_button,
     create_volume_button = _create_volume_button,
     create_touch = _create_touch,
+    create_microphone_mute_switch = _create_microphone_mute_switch,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,

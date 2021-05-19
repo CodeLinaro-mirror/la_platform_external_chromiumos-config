@@ -195,6 +195,9 @@ def _build_ash_flags(config: Config) -> List[str]:
   if config.sw_config.ui_config.extra_web_apps_dir:
     flags['extra-web-apps-dir'] = config.sw_config.ui_config.extra_web_apps_dir
 
+  if hw_features.microphone_mute_switch.present == topology_pb2.HardwareFeatures.PRESENT:
+    flags['enable-microphone-mute-switch-device'] = None
+
   return sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()])
 
 
