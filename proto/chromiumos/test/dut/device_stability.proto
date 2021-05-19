@@ -29,3 +29,7 @@ message DeviceStability {
 
   Stability stability = 2;
 }
+
+message DeviceStabilityList {
+  repeated DeviceStability values = 1;
+}
