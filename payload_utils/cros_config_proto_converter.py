@@ -127,76 +127,86 @@ def _build_ash_flags(config: Config) -> List[str]:
   # A map from flag name -> value. Value may be None for boolean flags.
   flags = {}
 
+  # Adds a flag name -> value pair to flags map. |value| may be None for boolean
+  # flags.
+  def _add_flag(name, value=None):
+    flags[name] = value
+
   hw_features = config.hw_design_config.hardware_features
   if hw_features.stylus.stylus == topology_pb2.HardwareFeatures.Stylus.INTERNAL:
-    flags['has-internal-stylus'] = None
+    _add_flag('has-internal-stylus')
 
   fp_loc = hw_features.fingerprint.location
   if fp_loc and fp_loc != topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT:
     loc_name = topology_pb2.HardwareFeatures.Fingerprint.Location.Name(fp_loc)
-    flags['fingerprint-sensor-location'] = loc_name.lower().replace('_', '-')
+    _add_flag('fingerprint-sensor-location', loc_name.lower().replace('_', '-'))
 
   wallpaper = config.brand_config.wallpaper
   # If a wallpaper is set, the 'default-wallpaper-is-oem' flag needs to be set.
   # If a wallpaper is not set, the 'default_[large|small].jpg' wallpapers
   # should still be set.
   if wallpaper:
-    flags['default-wallpaper-is-oem'] = None
+    _add_flag('default-wallpaper-is-oem')
   else:
     wallpaper = 'default'
 
   for size in ('small', 'large'):
-    flags[f'default-wallpaper-{size}'] = (
-        f'{WALLPAPER_BASE_PATH}/{wallpaper}_{size}.jpg')
+    _add_flag(f'default-wallpaper-{size}',
+              f'{WALLPAPER_BASE_PATH}/{wallpaper}_{size}.jpg')
 
     # For each size, also install 'guest' and 'child' wallpapers.
     for wallpaper_type in ('guest', 'child'):
-      flags[f'{wallpaper_type}-wallpaper-{size}'] = (
-          f'{WALLPAPER_BASE_PATH}/{wallpaper_type}_{size}.jpg')
+      _add_flag(f'{wallpaper_type}-wallpaper-{size}',
+                f'{WALLPAPER_BASE_PATH}/{wallpaper_type}_{size}.jpg')
 
   regulatory_label = config.brand_config.regulatory_label
   if regulatory_label:
-    flags['regulatory-label-dir'] = (regulatory_label)
+    _add_flag('regulatory-label-dir', regulatory_label)
 
-  flags['arc-build-properties'] = {
+  _add_flag('arc-build-properties', {
       'device': "%s_cheets" % config.program.name.lower(),
       'firstApiLevel': '28',
-  }
+  })
 
   power_button = hw_features.power_button
   if power_button.edge:
-    flags['ash-power-button-position'] = json.dumps({
-        'edge':
-            topology_pb2.HardwareFeatures.Button.Edge.Name(power_button.edge
-                                                          ).lower(),
-        # Starlark sometimes represents float literals strangely, e.g. changing
-        # 0.9 to 0.899999. Round to two digits here.
-        'position':
-            round(power_button.position, 2)
-    })
+    _add_flag(
+        'ash-power-button-position',
+        json.dumps({
+            'edge':
+                topology_pb2.HardwareFeatures.Button.Edge.Name(power_button.edge
+                                                              ).lower(),
+            # Starlark sometimes represents float literals strangely, e.g. changing
+            # 0.9 to 0.899999. Round to two digits here.
+            'position':
+                round(power_button.position, 2)
+        }))
 
   volume_button = hw_features.volume_button
   if volume_button.edge:
-    flags['ash-side-volume-button-position'] = json.dumps({
-        'region':
-            topology_pb2.HardwareFeatures.Button.Region.Name(
-                volume_button.region).lower(),
-        'side':
-            topology_pb2.HardwareFeatures.Button.Edge.Name(volume_button.edge
-                                                          ).lower(),
-    })
+    _add_flag(
+        'ash-side-volume-button-position',
+        json.dumps({
+            'region':
+                topology_pb2.HardwareFeatures.Button.Region.Name(
+                    volume_button.region).lower(),
+            'side':
+                topology_pb2.HardwareFeatures.Button.Edge.Name(
+                    volume_button.edge).lower(),
+        }))
 
   form_factor = hw_features.form_factor.form_factor
   lid_accel = hw_features.accelerometer.lid_accelerometer
   if (form_factor == topology_pb2.HardwareFeatures.FormFactor.CHROMEBASE and
       lid_accel == topology_pb2.HardwareFeatures.PRESENT):
-    flags['supports-clamshell-auto-rotation'] = None
+    _add_flag('supports-clamshell-auto-rotation')
 
   if config.sw_config.ui_config.extra_web_apps_dir:
-    flags['extra-web-apps-dir'] = config.sw_config.ui_config.extra_web_apps_dir
+    _add_flag('extra-web-apps-dir',
+              config.sw_config.ui_config.extra_web_apps_dir)
 
   if hw_features.microphone_mute_switch.present == topology_pb2.HardwareFeatures.PRESENT:
-    flags['enable-microphone-mute-switch-device'] = None
+    _add_flag('enable-microphone-mute-switch-device')
 
   return sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()])
 
