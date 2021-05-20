@@ -56,6 +56,7 @@ message Topology {
     TOUCH = 23;
     TPM = 24;
     MICROPHONE_MUTE_SWITCH = 25;
+    BATTERY = 26;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -67,6 +68,21 @@ message Topology {
   // Specify the subset of hardware features that this hardware topology
   // provides
   HardwareFeatures hardware_feature = 4;
+}
+
+// Defines a time duration that's targeted for easier reading/understanding
+// of program requirements (versus normalizing everything to millis).
+message Duration {
+  enum Type {
+    TYPE_UNKNOWN = 0;
+    MILLISECONDS = 1;
+    SECONDS = 2;
+    MINUTES = 3;
+    HOURS = 4;
+    DAYS = 5;
+  }
+  Type type = 1;
+  int32 value = 2;
 }
 
 // Each Topology message specifies what that topology means in a 1st class
@@ -506,4 +522,38 @@ message HardwareFeatures {
     Present present = 1;
   }
   MicrophoneMuteSwitch microphone_mute_switch = 29;
+
+  message Battery {
+    // Battery present (e.g. not present on chromebox)
+    Present present = 1;
+    Lifetime lifetime = 2;
+    Charging charging = 3;
+    message Lifetime {
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Shipping state.
+      Duration shipping_min = 1;
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Deep Sleep state.
+      Duration deep_sleep_min = 2;
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Suspend state.
+      Duration suspend_min = 3;
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Lucid Sleep state.
+      Duration lucid_sleep_min = 4;
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Active state.
+      Duration active_min = 5;
+    }
+
+    message Charging {
+      // Max time to charge from 0 to 100% in the Active state at average load.
+      Duration active_max = 1;
+      // Max time to charge from 0 to 100% in the Suspend state.
+      Duration suspend_max = 2;
+      // Max time to charge from 0 to 100% in the Deep sleep state.
+      Duration deep_sleep_max = 3;
+    }
+  }
+  Battery battery = 30;
 }
