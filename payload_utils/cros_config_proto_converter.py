@@ -25,6 +25,7 @@ from chromiumos.config.api import device_brand_pb2
 from chromiumos.config.api import topology_pb2
 from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api.software import brand_config_pb2
+from chromiumos.config.api.software import ui_config_pb2
 
 Config = namedtuple('Config', [
     'program', 'hw_design', 'odm', 'hw_design_config', 'device_brand',
@@ -124,6 +125,8 @@ def _build_ash_flags(config: Config) -> List[str]:
   Ash is the window manager and system UI for ChromeOS, see
   https://chromium.googlesource.com/chromium/src/+/HEAD/ash/.
   """
+  # pylint: disable=too-many-branches
+
   # A map from flag name -> value. Value may be None for boolean flags.
   flags = {}
 
@@ -207,6 +210,12 @@ def _build_ash_flags(config: Config) -> List[str]:
 
   if hw_features.microphone_mute_switch.present == topology_pb2.HardwareFeatures.PRESENT:
     _add_flag('enable-microphone-mute-switch-device')
+
+  requisition = config.sw_config.ui_config.requisition
+  if (requisition == ui_config_pb2.UiConfig.REQUISITION_MEETHW and
+      form_factor == topology_pb2.HardwareFeatures.FormFactor.CHROMEBASE):
+    _add_flag('oobe-large-screen-special-scaling')
+    _add_flag('enable-virtual-keyboard')
 
   return sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()])
 

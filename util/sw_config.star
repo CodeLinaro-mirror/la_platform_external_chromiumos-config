@@ -367,8 +367,18 @@ def _create_camera(
         camcorder_resolutions = camcorder_resolutions if camcorder_resolutions else [],
     )
 
-def _create_ui(extra_web_apps_dir = None):
-    return ui_pb.UiConfig(extra_web_apps_dir = extra_web_apps_dir)
+_UI_REQUISITION = struct(
+    CHROMEOS = ui_pb.UiConfig.REQUISITION_CHROMEOS,
+    MEETHW = ui_pb.UiConfig.REQUISITION_MEETHW,
+)
+
+def _create_ui(
+        extra_web_apps_dir = None,
+        requisition = None):
+    return ui_pb.UiConfig(
+        extra_web_apps_dir = extra_web_apps_dir,
+        requisition = requisition,
+    )
 
 def _make_resolution(width, height):
     return cam_pb.Resolution(width = width, height = height)
@@ -395,5 +405,6 @@ sw_config = struct(
     create_rtw88_power_chain = _create_rtw88_power_chain,
     create_ui = _create_ui,
     fw_type = _FW_TYPE,
+    ui_requisition = _UI_REQUISITION,
     make_resolution = _make_resolution,
 )

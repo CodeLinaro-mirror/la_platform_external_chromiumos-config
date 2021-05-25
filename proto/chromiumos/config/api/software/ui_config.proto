@@ -12,4 +12,13 @@ message UiConfig {
   // If set, additional web apps will be installed from the given subdirectory
   // of the web_apps directory.
   string extra_web_apps_dir = 1;
+
+  // Select device type. Models that identify as Meet Hardware may use
+  // different UI flags
+  enum Requisition {
+    REQUISITION_UNSPECIFIED = 0;
+    REQUISITION_CHROMEOS = 1;
+    REQUISITION_MEETHW = 2;
+  }
+  Requisition requisition = 2;
 }
