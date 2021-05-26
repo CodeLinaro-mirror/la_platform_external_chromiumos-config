@@ -30,7 +30,23 @@ message RunTestsRequest {
   // Test suites to run (by tag or explicit list of tests)
   repeated TestSuite test_suites = 1;
 
-  reserved 2;
+  // Information on device to used in the test run
+  DeviceInfo dut = 2;
+}
+
+// DeviceInfo contains all Information of devices to be used in running tests.
+message DeviceInfo {
+  // Hostname for the primary host to be used for running tests.
+  string primary_host = 1;
+
+  // A list of companion hosts to be used for running tests.
+  repeated CompanionHostInfo companions = 2;
+}
+
+// CompanionHostInfo contains all Information of a companion host to be used in running tests.
+message CompanionHostInfo {
+  // Hostname for the compainion host.
+  string host = 1;
 }
 
 message RunTestsResponse {
