@@ -57,6 +57,7 @@ usage() {
   echo "    gerritgroups - create and apply default permissions to gerrit groups"
   echo "    localmanifest - create local_manifest.xml for the project repo"
   echo "    manifestinternal - update manifest_internal repo internal_full.xml"
+  echo "    createprogrambuckets - create gs buckets for the program"
   echo "    createprojectbuckets - create gs buckets for the project"
   echo "    createprojectbranches - create firmware and factory branches for the project and calls manifestinternal"
   echo "--env is optional. prod or dev. prod is default"
@@ -391,6 +392,21 @@ create_project_buckets() {
   fi
 }
 
+create_program_buckets() {
+  # setup() guaranteed that we have a $program.
+  gcloud config set project chromeos-partner-devices
+  local bucket="gs://chromeos-${program}"
+  gsutil mb "${bucket}"
+  gsutil iam ch serviceAccount:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com:objectAdmin "${bucket}"
+  gsutil iam ch user:chromeos-ci-server@prod.google.com:objectViewer "${bucket}"
+  for id in ${committer_groups}; do
+    try_set_group_viewer "${id}" "${bucket}"
+  done
+  for id in ${committer_users}; do
+    try_set_user_viewer "${id}" "${bucket}"
+  done
+}
+
 create_project_branches() {
   # setup() guaranteed that we have a $program.
   if [[ -z "${project}" ]]; then
@@ -456,6 +472,9 @@ run_command() {
     elif [[ "$run" == "createprojectbuckets" ]]; then
       parse_program_config
       create_project_buckets
+    elif [[ "$run" == "createprogrambuckets" ]]; then
+      parse_program_config
+      create_program_buckets
     elif [[ "$run" == "createprojectbranches" ]]; then
       create_project_branches
     else
@@ -517,7 +536,9 @@ apply_acls_from_config
 #Step 4:
 create_local_manifest
 #Step 5:
-create_project_buckets
+create_program_buckets
 #Step 6:
+create_project_buckets
+#Step 7:
 create_project_branches
 echo '## Script completed'
