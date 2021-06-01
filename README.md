@@ -170,9 +170,9 @@ This will result in a reviewable CL in
 for your CL will be output when the CL is uploaded. The CL will need to be
 approved and pass CQ. Details on working with CLs and the progression through
 review and CQ can be found in the
-[Chromium OS Contributing Guide](https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md)
+[Chromium OS Contributing Guide](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md)
 and more specifically in the
-[Going through review](https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Going-through-review)
+[Going through review](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Going-through-review)
 section. CQ verifies that you have correctly generated your configuration
 payload and that you have not violated the program's constraints.
 
@@ -204,9 +204,9 @@ CQ builders before submission.
 
 Constraints look and behave similar to Python unit tests, but are passed a
 program and project `ConfigBundle` to do assertions on. Constraints that apply
-to all programs and projects are in the [payload_utils/checker/common_checks](https://chromium.googlesource.com/chromiumos/config/+/refs/heads/master/payload_utils/checker/common_checks/) directory. Constraints can also be program-specific; these
+to all programs and projects are in the [payload_utils/checker/common_checks](https://chromium.googlesource.com/chromiumos/config/+/HEAD/payload_utils/checker/common_checks/) directory. Constraints can also be program-specific; these
 constraints are under the `checks` directory of the program repo. For example,
-see the [Galaxy](https://chrome-internal.googlesource.com/chromeos/program/galaxy/+/refs/heads/master/checks/)
+see the [Galaxy](https://chrome-internal.googlesource.com/chromeos/program/galaxy/+/HEAD/checks/)
 test data program.
 
 ## Public Configs

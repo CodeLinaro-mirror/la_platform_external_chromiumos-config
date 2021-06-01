@@ -30,7 +30,7 @@ type AudioConfig struct {
 	CardName string `protobuf:"bytes,1,opt,name=card_name,json=cardName,proto3" json:"card_name,omitempty"`
 	// Path to the CRAS card configuration file.
 	// See
-	// https://chromium.googlesource.com/chromiumos/third_party/adhd/+/master/cras/#card-configuration.
+	// https://chromium.googlesource.com/chromiumos/third_party/adhd/+/HEAD/cras/#card-configuration.
 	CardConfigFile string `protobuf:"bytes,2,opt,name=card_config_file,json=cardConfigFile,proto3" json:"card_config_file,omitempty"`
 	// Path to the dsp.ini configuration file.
 	DspFile string `protobuf:"bytes,3,opt,name=dsp_file,json=dspFile,proto3" json:"dsp_file,omitempty"`

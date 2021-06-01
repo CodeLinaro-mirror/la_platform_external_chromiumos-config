@@ -21,7 +21,7 @@ message AudioConfig {
 
   // Path to the CRAS card configuration file.
   // See
-  // https://chromium.googlesource.com/chromiumos/third_party/adhd/+/master/cras/#card-configuration.
+  // https://chromium.googlesource.com/chromiumos/third_party/adhd/+/HEAD/cras/#card-configuration.
   string card_config_file = 2;
 
   // Path to the dsp.ini configuration file.

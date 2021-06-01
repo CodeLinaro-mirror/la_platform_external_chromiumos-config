@@ -982,7 +982,7 @@ def merge_configs(options):
         return design, config
 
     # Create new Design.Config, the board id is encoded according to CBI:
-    #   https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
+    #   https://chromium.googlesource.com/chromiumos/docs/+/HEAD/design_docs/cros_board_info.md
     config = design.configs.add()
     config.id.value = '{}:{}'.format(name_project.lower(), sku)
     return design, config

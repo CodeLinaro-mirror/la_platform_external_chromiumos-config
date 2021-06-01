@@ -23,7 +23,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 type BluetoothConfig struct {
 	// Flags that are passed to the bluetooth daemon on startup.
 	// For more details on allowed flags, see:
-	//   https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/chromeos-config/#flags
+	//   https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/chromeos-config/#flags
 	Flags                map[string]bool `protobuf:"bytes,1,rep,name=flags,proto3" json:"flags,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`

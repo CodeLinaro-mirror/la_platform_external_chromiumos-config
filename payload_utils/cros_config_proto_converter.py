@@ -122,7 +122,7 @@ def _build_ash_flags(config: Config) -> List[str]:
   """Returns a list of Ash flags for config.
 
   Ash is the window manager and system UI for ChromeOS, see
-  https://chromium.googlesource.com/chromium/src/+/refs/heads/master/ash/.
+  https://chromium.googlesource.com/chromium/src/+/HEAD/ash/.
   """
   # A map from flag name -> value. Value may be None for boolean flags.
   flags = {}

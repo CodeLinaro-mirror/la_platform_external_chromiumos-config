@@ -13,10 +13,10 @@ be deleted from <private overlay>. A few resources
 to get started:
 
 *   [Starlark language guide](https://docs.bazel.build/versions/master/skylark/language.html)
-*   [chromiumos/config README](https://chromium.googlesource.com/chromiumos/config/+/refs/heads/master/README.md):
+*   [chromiumos/config README](https://chromium.googlesource.com/chromiumos/config/+/HEAD/README.md):
     Steps for partners and Googlers to check out their repos and contribute
     changes.
-*   [fake test data project](https://chromium.googlesource.com/chromiumos/config/+/refs/heads/master/test/project/fake/fake):
+*   [fake test data project](https://chromium.googlesource.com/chromiumos/config/+/HEAD/test/project/fake/fake):
     Working example of the new config ecosystem.
 
 Changes will be made in the following repos:

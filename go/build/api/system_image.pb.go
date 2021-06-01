@@ -54,7 +54,7 @@ var xxx_messageInfo_SystemImage proto.InternalMessageInfo
 
 // Defines build target config required to generate a Chrome OS system image.
 // See:
-// https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#Build-a-disk-image-for-your-board
+// https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#Build-a-disk-image-for-your-board
 type SystemImage_BuildTarget struct {
 	PortageBuildTarget   *Portage_BuildTarget `protobuf:"bytes,1,opt,name=portage_build_target,json=portageBuildTarget,proto3" json:"portage_build_target,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`

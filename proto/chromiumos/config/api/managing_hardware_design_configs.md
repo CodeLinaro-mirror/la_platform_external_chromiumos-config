@@ -172,4 +172,4 @@ programmed. We keep asking questions until we know which
 HardwareDesignConfiguration is in use.
 
 [go/sku-id-in-eeprom]: https://docs.google.com/document/d/1EUhMNJKvyBP8v3MCDfPcsxf7uOz2LhU5QKLKKJbrkns
-[CBI]: https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
+[CBI]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/design_docs/cros_board_info.md

@@ -22,7 +22,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Defines configuration settings for power management.
 // For more details, see:
-// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform2/chromeos-config/README.md
+// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform2/chromeos-config/README.md
 type PowerConfig struct {
 	// Key/values that define all of the power management preferences.
 	Preferences          map[string]string `protobuf:"bytes,1,rep,name=preferences,proto3" json:"preferences,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
