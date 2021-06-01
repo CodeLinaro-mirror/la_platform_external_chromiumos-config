@@ -52,5 +52,5 @@ done
 cp -rf "${GO_TEMP_DIR}"/chromiumos/config/* go/
 cp "${GO_TEMP_DIR}"/chromiumos/*.go go/
 cp "${GO_TEMP_DIR}"/chromiumos/longrunning/*.go go/longrunning
-cp -rf "${GO_TEMP_DIR}"/chromiumos/build/api/* go/build/api
+cp -rf "${GO_TEMP_DIR}"/chromiumos/build/* go/build/
 cp -rf "${GO_TEMP_DIR}"/chromiumos/test/* go/test
