@@ -253,3 +253,9 @@ Changes that do not require new topology
 Changes that require new topology
 
 * Microphone mute switch presence
+
+## HDMI
+
+Changes that require new topology
+
+* HDMI port

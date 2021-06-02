@@ -54,6 +54,10 @@ _TOUCHSCREEN = hw_topo.create_screen(
     pixels_per_in = 120,
     touch = True,
 )
+_HDMI = hw_topo.create_hdmi(
+    id = "HDMI",
+    description = "HDMI port",
+)
 _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.amplifier.MAX98373, headphone_codec = hw_topo.audio_codec.ALC5682I)
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
 _KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE, numpad_present = True)
@@ -152,7 +156,8 @@ def create_hardware_topology(
         sensor = None,
         ec = None,
         tpm = None,
-        microphone_mute_switch = None):
+        microphone_mute_switch = None,
+        hdmi = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -178,6 +183,7 @@ def create_hardware_topology(
         touch = _TOUCH,
         tpm = hw_topo.TPM_GSC_H1B,
         microphone_mute_switch = microphone_mute_switch,
+        hdmi = hdmi,
     )
 
 # Create empty arrays that we will continually append new configurations to
@@ -201,6 +207,7 @@ design.append_configs(
         sensor = _SENSOR_WITH_LIGHT,
         tpm = _TPM,
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
+        hdmi = _HDMI,
     ),
     audio = sc.create_audio(
         _AUDIO_CARD,

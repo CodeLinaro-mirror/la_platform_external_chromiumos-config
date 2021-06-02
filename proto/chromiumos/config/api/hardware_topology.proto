@@ -119,4 +119,8 @@ message HardwareTopology {
   // Specify the microphone mute switch topology.
   // See ./hardware_topology.md#microphone_mute_switch for more information.
   Topology microphone_mute_switch = 25;
+
+  // Specify the HDMI topology.
+  // See ./hardware_topology.md#hdmi for more information.
+  Topology hdmi = 26;
 }

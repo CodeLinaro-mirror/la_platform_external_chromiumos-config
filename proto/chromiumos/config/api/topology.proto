@@ -57,6 +57,7 @@ message Topology {
     TPM = 24;
     MICROPHONE_MUTE_SWITCH = 25;
     BATTERY = 26;
+    HDMI = 27;
   }
 
   // Map of human readable descriptions in various languages. Maps language

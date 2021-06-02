@@ -199,7 +199,7 @@
               "baseGyroscope": 1
             },
             "hdmi": {
-              "present": 2
+              "present": 1
             },
             "keyboard": {
               "backlight": 1,
@@ -405,6 +405,18 @@
               },
               "id": "CLAMSHELL",
               "type": 2
+            },
+            "hdmi": {
+              "description": {
+                "EN": "HDMI port"
+              },
+              "hardwareFeature": {
+                "hdmi": {
+                  "present": 1
+                }
+              },
+              "id": "HDMI",
+              "type": 27
             },
             "keyboard": {
               "description": {

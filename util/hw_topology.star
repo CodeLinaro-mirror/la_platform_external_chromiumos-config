@@ -484,6 +484,21 @@ def _create_proximity_sensor(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
+def _create_hdmi(id, description, fw_configs = []):
+    """Builds a Topology proto for HDMI."""
+    hw_features = topo_pb.HardwareFeatures()
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    hw_features.hdmi.present = _PRESENT.PRESENT
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.HDMI,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
 def _create_daughter_board(
         id,
         description,
@@ -806,7 +821,8 @@ def _create_hardware_topology(
         ec = None,
         touch = None,
         tpm = None,
-        microphone_mute_switch = None):
+        microphone_mute_switch = None,
+        hdmi = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -882,6 +898,9 @@ def _create_hardware_topology(
     if microphone_mute_switch and microphone_mute_switch.type != topo_pb.Topology.MICROPHONE_MUTE_SWITCH:
         fail("Invalid microphone mute switch type")
 
+    if hdmi and hdmi.type != topo_pb.Topology.HDMI:
+        fail("Invalid hdmi topology")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -907,6 +926,7 @@ def _create_hardware_topology(
         touch = touch,
         tpm = tpm,
         microphone_mute_switch = microphone_mute_switch,
+        hdmi = hdmi,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -1000,6 +1020,12 @@ def _convert_to_hw_features(hardware_topology):
 
     # Handle all possible proximity sensor hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.proximity_sensor.hardware_feature.fw_config)
+
+    # Handle all possible hdmi hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.hdmi.hardware_feature.fw_config)
+
+    if copy.hdmi.hardware_feature.hdmi != topo_pb.HardwareFeatures.Hdmi():
+        result.hdmi = copy.hdmi.hardware_feature.hdmi
 
     # Handle all possible daughter board hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.daughter_board.hardware_feature.fw_config)
@@ -1095,6 +1121,7 @@ hw_topo = struct(
     create_volume_button = _create_volume_button,
     create_touch = _create_touch,
     create_microphone_mute_switch = _create_microphone_mute_switch,
+    create_hdmi = _create_hdmi,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,
