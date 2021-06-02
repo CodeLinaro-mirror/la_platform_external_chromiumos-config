@@ -500,6 +500,9 @@ message HardwareFeatures {
 
     // The physical component of the EC.
     Component.EmbeddedController part = 3;
+
+    // Whether the EC supports EC_FEATURE_TYPEC_CMD.
+    Present feature_typec_cmd = 4;
   }
   EmbeddedController embedded_controller = 24;
 

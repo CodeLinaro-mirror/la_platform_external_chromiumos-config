@@ -3427,6 +3427,14 @@
                   "number": 3,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.Component.EmbeddedController"
+                },
+                {
+                  "jsonName": "featureTypecCmd",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "feature_typec_cmd",
+                  "number": 4,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "EmbeddedController"
