@@ -48,6 +48,15 @@ message Design {
   // E.g 0x0010 -> "CameraA"; 0x0020 -> "CameraB" within SsfcSegment 0x0030
   map<uint32, string> ssfc_value = 8;
 
+  // Define custom type as whitelabel or rebrand
+  // More details in go/custom_label_introduction
+  CustomType custom_type = 10;
+  enum CustomType {
+    NO_CUSTOM = 0;
+    WHITELABEL = 1;
+    REBRAND = 2;
+  }
+
   reserved "platform";
   reserved 9;
 

@@ -13,6 +13,7 @@ import sys
 
 from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api import topology_pb2
+from chromiumos.config.api import design_pb2
 
 from google.protobuf import json_format
 
@@ -265,6 +266,7 @@ def GetFactoryConfigs(config):
   for hw_design in config.design_list:
     design_name = hw_design.id.value
     design_table = product_sku.setdefault(design_name, {})
+    custom_type = hw_design.custom_type
     # Enumerate design config id (sku id).
     for design_config in hw_design.configs:
       second_design_name, sku_id = ParseDesignConfigId(design_config.id.value)
@@ -272,6 +274,10 @@ def GetFactoryConfigs(config):
         continue
       design_config_table = design_table.setdefault(sku_id, {})
       TransformDesignTable(design_config, design_config_table)
+      if custom_type == design_pb2.Design.CustomType.WHITELABEL:
+        design_config_table.update({'custom_type': 'whitelabel'})
+      elif custom_type == design_pb2.Design.CustomType.REBRAND:
+        design_config_table.update({'custom_type': 'rebrand'})
   # Enumerate (design, sku id).
   for sw_design in config.software_configs:
     design_name, sku_id = ParseDesignConfigId(sw_design.design_config_id.value)

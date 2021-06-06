@@ -30,6 +30,12 @@ _CONSTRAINT = struct(
     OPTIONAL = design_pb.Design.Config.Constraint.OPTIONAL,
 )
 
+_CUSTOMTYPE = struct(
+    NO_CUSTOM = design_pb.Design.NO_CUSTOM,
+    WHITELABEL = design_pb.Design.WHITELABEL,
+    REBRAND = design_pb.Design.REBRAND,
+)
+
 # Default hw_config_fields to be exposed
 _DEFAULT_PUBLIC_HW_CONFIG_FIELDS = [
     "id",
@@ -170,7 +176,8 @@ def _create_design(
         odm_id,
         public_fields = ["id", "name", "program_id"],
         configs = None,
-        board_id_phases = None):
+        board_id_phases = None,
+        custom_type = _CUSTOMTYPE.NO_CUSTOM):
     """Builds a Design proto."""
     return design_pb.Design(
         id = id,
@@ -180,6 +187,7 @@ def _create_design(
         name = id.value,
         configs = configs,
         board_id_phase = board_id_phases,
+        custom_type = custom_type,
     )
 
 design = struct(
@@ -189,6 +197,7 @@ design = struct(
     create_design_id = _create_design_id,
     create_design = _create_design,
     constraint = _CONSTRAINT,
+    custom_type = _CUSTOMTYPE,
     generate = generate.generate,
     UNPROVISIONED_CONFIG_ID = _UNPROVISIONED_CONFIG_ID,
 )

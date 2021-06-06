@@ -15,12 +15,13 @@ _FAKE_OEM = partner.create("FAKE_OEM")
 _FAKE_OEMA = partner.create("FAKE_OEMA")
 _FAKE_OEMB = partner.create("FAKE_OEMB")
 _FAKE_OEMC = partner.create("FAKE_OEMC")
+_FAKE_OEMD = partner.create("FAKE_OEMD")
 _FAKE_LOEMA = partner.create("FAKE_LOEMA")
 _FAKE_LOEMB = partner.create("FAKE_LOEMB")
 _FAKE_LOEMC = partner.create("FAKE_LOEMC")
 
 _ODMS = [_FAKE_ODM]
-_OEMS = [_FAKE_OEM, _FAKE_OEMA, _FAKE_OEMB, _FAKE_OEMC, _FAKE_LOEMA, _FAKE_LOEMB, _FAKE_LOEMC]
+_OEMS = [_FAKE_OEM, _FAKE_OEMA, _FAKE_OEMB, _FAKE_OEMC, _FAKE_OEMD, _FAKE_LOEMA, _FAKE_LOEMB, _FAKE_LOEMC]
 _COMPONENTS = []
 _COMPONENT_VENDORS = []
 
@@ -31,6 +32,7 @@ _DESIGN_ID_A = design.create_design_id("PROJECT_A")
 _DESIGN_ID_B = design.create_design_id("PROJECT_B")
 _DESIGN_ID_C = design.create_design_id("PROJECT_C")
 _DESIGN_ID_WL = design.create_design_id("PROJECT_WL")
+_DESIGN_ID_REBRAND = design.create_design_id("PROJECT_REBRAND")
 _DESIGN_ID_BOX = design.create_design_id("PROJECT_BOX")
 
 _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
@@ -629,6 +631,7 @@ design.append_configs(
 )
 
 _HW_CONFIGS_WL = []
+_HW_CONFIGS_REBRAND = []
 _HDMI_AUDIO_CARD = "HDA ATI HDMI"
 
 design.append_configs(
@@ -636,6 +639,36 @@ design.append_configs(
     sw_configs = _SW_CONFIGS,
     design_id = _DESIGN_ID_WL,
     config_id = 64,
+    hardware_topology = create_hardware_topology(
+        camera = _CAMERA1,
+    ),
+    audio = [sc.create_audio(
+        _AUDIO_CARD,
+        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
+        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
+    ), sc.create_audio(
+        _HDMI_AUDIO_CARD,
+        ucm_file = "ucm-config/%s/HiFi.conf" % _HDMI_AUDIO_CARD,
+        ucm_master_file = "ucm-config/%s/%s.conf" % (_HDMI_AUDIO_CARD, _HDMI_AUDIO_CARD),
+    )],
+    firmware = sc.create_fw_payloads_by_names(
+        "Fake",
+        "Fake_EC",
+        "Fake_PD",
+        ap_ro_version = sc.create_fw_version(11111),
+        ap_rw_version = sc.create_fw_version(11111, 2, 3),
+        ec_version = sc.create_fw_version(11111, 2),
+        pd_version = sc.create_fw_version(11111),
+    ),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    power = _SC_POWER,
+)
+
+design.append_configs(
+    hw_configs = _HW_CONFIGS_REBRAND,
+    sw_configs = _SW_CONFIGS,
+    design_id = _DESIGN_ID_REBRAND,
+    config_id = 65,
     hardware_topology = create_hardware_topology(
         camera = _CAMERA1,
     ),
@@ -786,6 +819,15 @@ _DESIGN_WL = design.create_design(
     program_id = program.fake.id,
     odm_id = _FAKE_ODM.id,
     configs = _HW_CONFIGS_WL,
+    custom_type = design.custom_type.WHITELABEL,
+)
+
+_DESIGN_REBRAND = design.create_design(
+    id = _DESIGN_ID_REBRAND,
+    program_id = program.fake.id,
+    odm_id = _FAKE_ODM.id,
+    configs = _HW_CONFIGS_REBRAND,
+    custom_type = design.custom_type.REBRAND,
 )
 
 _DESIGN_BOX = design.create_design(
@@ -851,6 +893,13 @@ _WL_DEVICE_BRAND_C = device_brand.create(
     brand_code = "WLCC",
 )
 
+_REBRAND_DEVICE_BRAND_D = device_brand.create(
+    brand_name = "ChromeOS Device Brandname REBRAND-D",
+    design_id = _DESIGN_ID_REBRAND,
+    oem_id = _FAKE_OEMD.id,
+    brand_code = "RBDD",
+)
+
 _DEVICE_BRAND_BOX = device_brand.create(
     brand_name = "ChromeOS Device Brandname Box",
     design_id = _DESIGN_ID_BOX,
@@ -879,6 +928,10 @@ _BRAND_CONFIGS = [
     brand_config.create(
         device_brand_id = _WL_DEVICE_BRAND_C.id,
         whitelabel_tag = "loemc",
+    ),
+    brand_config.create(
+        device_brand_id = _REBRAND_DEVICE_BRAND_D.id,
+        whitelabel_tag = "branda",
     ),
 ]
 
@@ -955,8 +1008,8 @@ _COMPONENTS.append(
 
 _CONFIG = config_bundle.create(
     partners = _ODMS + _OEMS + _COMPONENT_VENDORS,
-    designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_WL, _DESIGN_BOX],
-    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _WL_DEVICE_BRAND, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _DEVICE_BRAND_BOX],
+    designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_WL, _DESIGN_REBRAND, _DESIGN_BOX],
+    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _WL_DEVICE_BRAND, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _REBRAND_DEVICE_BRAND_D, _DEVICE_BRAND_BOX],
     software_configs = _SW_CONFIGS,
     brand_configs = _BRAND_CONFIGS,
     components = _COMPONENTS,

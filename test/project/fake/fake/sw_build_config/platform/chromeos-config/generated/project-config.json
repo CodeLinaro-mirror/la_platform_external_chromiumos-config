@@ -1484,6 +1484,160 @@
           "build-properties": {
             "device": "fake_program_cheets",
             "first-api-level": "28",
+            "marketing-name": "ChromeOS Device Brandname REBRAND-D",
+            "metrics-tag": "project_rebrand",
+            "oem": "FAKE_OEMD",
+            "product": "fake_program"
+          },
+          "hardware-features": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_rebrand.xml",
+            "system-path": "/etc/hardware_features_project_rebrand.xml"
+          },
+          "scale": 280
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project_rebrand",
+            "files": [
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
+                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
+                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+              },
+              {
+                "destination": "/etc/cras/project_rebrand/fakeaudiocard",
+                "source": "audio/fakeaudiocard/fakeaudiocard"
+              },
+              {
+                "destination": "/etc/cras/project_rebrand/dsp.ini",
+                "source": "audio/fakeaudiocard/dsp.ini"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
+              }
+            ]
+          }
+        },
+        "brand-code": "RBDD",
+        "camera": {
+          "count": 1,
+          "devices": [
+            {
+              "facing": "front",
+              "flags": {
+                "support-1080p": false,
+                "support-autofocus": false
+              },
+              "ids": [
+                "0123:abcd"
+              ],
+              "interface": "usb",
+              "orientation": 0
+            }
+          ]
+        },
+        "firmware": {
+          "bcs-overlay": "overlay-fake_program-private",
+          "build-targets": {
+            "coreboot": "fake",
+            "depthcharge": "fake",
+            "ec": "fake",
+            "ec_extras": [
+              "fake_ec_extra1",
+              "fake_ec_extra2"
+            ],
+            "libpayload": "fake",
+            "zephyr-ec": "projects/fake/fake"
+          },
+          "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
+          "firmware-config": 90913,
+          "image-name": "fake",
+          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
+          "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
+        },
+        "firmware-signing": {
+          "key-id": "KEYRB",
+          "sig-id-in-customization-id": true,
+          "signature-id": "project_rebrand-branda"
+        },
+        "hardware-properties": {
+          "form-factor": "CHROMEBOOK",
+          "has-backlight": true,
+          "psu-type": "battery"
+        },
+        "identity": {
+          "platform-name": "fake",
+          "sku-id": 65,
+          "smbios-name-match": "PROJECT_REBRAND",
+          "whitelabel-tag": "branda"
+        },
+        "name": "project_rebrand",
+        "power": {
+          "battery-poll-interval-initial-ms": "1000",
+          "disable-dark-resume": "0",
+          "set-wifi-transmit-power-for-tablet-mode": "1"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "touch": {
+          "files": [
+            {
+              "destination": "/opt/google/touch/firmware/01FF_1234.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elants/01FF_1234.bin",
+              "symlink": "/lib/firmware/elants_i2c_01FF.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/111A_1.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/sis/111A_1.0.bin",
+              "symlink": "/lib/firmware/sis_111A.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/99.0_9.0.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
+              "symlink": "/lib/firmware/elan_i2c_99.0.bin"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/ABC1_1.1.bin",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/synaptics/ABC1_1.1.bin",
+              "symlink": "/lib/firmware/hid-06CB_ABC1"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
+            "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",
+            "--ash-side-volume-button-position={\"region\": \"screen\", \"side\": \"right\"}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_program_cheets",
+            "first-api-level": "28",
             "marketing-name": "ChromeOS Device Brandname Box",
             "metrics-tag": "project_box",
             "oem": "FAKE_OEM",

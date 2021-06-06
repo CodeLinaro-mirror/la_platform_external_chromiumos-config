@@ -4067,6 +4067,25 @@
       ],
       "messageType": [
         {
+          "enumType": [
+            {
+              "name": "CustomType",
+              "value": [
+                {
+                  "name": "NO_CUSTOM",
+                  "number": 0
+                },
+                {
+                  "name": "WHITELABEL",
+                  "number": 1
+                },
+                {
+                  "name": "REBRAND",
+                  "number": 2
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "publicReplication",
@@ -4130,6 +4149,14 @@
               "number": 8,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Design.SsfcValueEntry"
+            },
+            {
+              "jsonName": "customType",
+              "label": "LABEL_OPTIONAL",
+              "name": "custom_type",
+              "number": 10,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.api.Design.CustomType"
             }
           ],
           "name": "Design",

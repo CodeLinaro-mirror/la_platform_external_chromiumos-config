@@ -158,6 +158,12 @@
         },
         {
           "designId": {
+            "value": "PROJECT_REBRAND"
+          },
+          "keyId": "KEYRB"
+        },
+        {
+          "designId": {
             "value": "PROJECT_BOX"
           },
           "keyId": "KEYBX"

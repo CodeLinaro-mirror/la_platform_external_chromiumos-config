@@ -307,6 +307,56 @@
             "device": "fake_program_cheets",
             "first-api-level": "28",
             "marketing-name": "",
+            "metrics-tag": "project_rebrand",
+            "product": "fake_program"
+          },
+          "hardware-features": {
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_rebrand.xml",
+            "system-path": "/etc/hardware_features_project_rebrand.xml"
+          }
+        },
+        "audio": {
+          "main": {
+            "cras-config-dir": "project_rebrand",
+            "files": []
+          }
+        },
+        "camera": {
+          "count": 0
+        },
+        "identity": {
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 65,
+          "smbios-name-match": "PROJECT_REBRAND"
+        },
+        "name": "project_rebrand",
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_program_cheets",
+            "first-api-level": "28",
+            "marketing-name": "",
             "metrics-tag": "project_box",
             "product": "fake_program"
           },

@@ -148,6 +148,32 @@
     {
       "configs": [
         {
+          "hardwareFeatures": {
+            "camera": {}
+          },
+          "hardwareTopology": {
+            "camera": {
+              "hardwareFeature": {
+                "camera": {}
+              }
+            }
+          },
+          "id": {
+            "value": "PROJECT_REBRAND:65"
+          }
+        }
+      ],
+      "id": {
+        "value": "PROJECT_REBRAND"
+      },
+      "name": "PROJECT_REBRAND",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
           "id": {
             "value": "PROJECT_BOX:128"
           }
@@ -258,6 +284,23 @@
       "idScanConfig": {
         "firmwareSku": 64,
         "smbiosNameMatch": "PROJECT_WL"
+      }
+    },
+    {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        },
+        {
+          "cardName": "HDA ATI HDMI"
+        }
+      ],
+      "designConfigId": {
+        "value": "PROJECT_REBRAND:65"
+      },
+      "idScanConfig": {
+        "firmwareSku": 65,
+        "smbiosNameMatch": "PROJECT_REBRAND"
       }
     },
     {
