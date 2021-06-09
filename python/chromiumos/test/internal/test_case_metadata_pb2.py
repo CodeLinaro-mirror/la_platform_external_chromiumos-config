@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.internal',
   syntax='proto3',
   serialized_options=_b('Z2go.chromium.org/chromiumos/config/go/test/internal'),
-  serialized_pb=_b('\n1chromiumos/test/internal/test_case_metadata.proto\x12\x18\x63hromiumos.test.internal\x1a#chromiumos/test/api/test_case.proto\x1a+chromiumos/test/internal/test_harness.proto\"\xc4\x01\n\x10TestCaseMetadata\x12\x30\n\ttest_case\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.TestCase\x12>\n\x0etest_case_exec\x18\x02 \x01(\x0b\x32&.chromiumos.test.internal.TestCaseExec\x12>\n\x0etest_case_info\x18\x03 \x01(\x0b\x32&.chromiumos.test.internal.TestCaseInfo\"K\n\x0cTestCaseExec\x12;\n\x0ctest_harness\x18\x01 \x01(\x0b\x32%.chromiumos.test.internal.TestHarness\"A\n\x0cTestCaseInfo\x12\x31\n\x06owners\x18\x01 \x03(\x0b\x32!.chromiumos.test.internal.Contact\"\x18\n\x07\x43ontact\x12\r\n\x05\x65mail\x18\x01 \x01(\tB4Z2go.chromium.org/chromiumos/config/go/test/internalb\x06proto3')
+  serialized_pb=_b('\n1chromiumos/test/internal/test_case_metadata.proto\x12\x18\x63hromiumos.test.internal\x1a#chromiumos/test/api/test_case.proto\x1a+chromiumos/test/internal/test_harness.proto\"\xc4\x01\n\x10TestCaseMetadata\x12\x30\n\ttest_case\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.TestCase\x12>\n\x0etest_case_exec\x18\x02 \x01(\x0b\x32&.chromiumos.test.internal.TestCaseExec\x12>\n\x0etest_case_info\x18\x03 \x01(\x0b\x32&.chromiumos.test.internal.TestCaseInfo\"K\n\x0cTestCaseExec\x12;\n\x0ctest_harness\x18\x01 \x01(\x0b\x32%.chromiumos.test.internal.TestHarness\"A\n\x0cTestCaseInfo\x12\x31\n\x06owners\x18\x01 \x03(\x0b\x32!.chromiumos.test.internal.Contact\"\x18\n\x07\x43ontact\x12\r\n\x05\x65mail\x18\x01 \x01(\t\"R\n\x14TestCaseMetadataList\x12:\n\x06values\x18\x01 \x03(\x0b\x32*.chromiumos.test.internal.TestCaseMetadataB4Z2go.chromium.org/chromiumos/config/go/test/internalb\x06proto3')
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_test__case__pb2.DESCRIPTOR,chromiumos_dot_test_dot_internal_dot_test__harness__pb2.DESCRIPTOR,])
 
@@ -165,15 +165,48 @@ _CONTACT = _descriptor.Descriptor(
   serialized_end=528,
 )
 
+
+_TESTCASEMETADATALIST = _descriptor.Descriptor(
+  name='TestCaseMetadataList',
+  full_name='chromiumos.test.internal.TestCaseMetadataList',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='values', full_name='chromiumos.test.internal.TestCaseMetadataList.values', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=530,
+  serialized_end=612,
+)
+
 _TESTCASEMETADATA.fields_by_name['test_case'].message_type = chromiumos_dot_test_dot_api_dot_test__case__pb2._TESTCASE
 _TESTCASEMETADATA.fields_by_name['test_case_exec'].message_type = _TESTCASEEXEC
 _TESTCASEMETADATA.fields_by_name['test_case_info'].message_type = _TESTCASEINFO
 _TESTCASEEXEC.fields_by_name['test_harness'].message_type = chromiumos_dot_test_dot_internal_dot_test__harness__pb2._TESTHARNESS
 _TESTCASEINFO.fields_by_name['owners'].message_type = _CONTACT
+_TESTCASEMETADATALIST.fields_by_name['values'].message_type = _TESTCASEMETADATA
 DESCRIPTOR.message_types_by_name['TestCaseMetadata'] = _TESTCASEMETADATA
 DESCRIPTOR.message_types_by_name['TestCaseExec'] = _TESTCASEEXEC
 DESCRIPTOR.message_types_by_name['TestCaseInfo'] = _TESTCASEINFO
 DESCRIPTOR.message_types_by_name['Contact'] = _CONTACT
+DESCRIPTOR.message_types_by_name['TestCaseMetadataList'] = _TESTCASEMETADATALIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TestCaseMetadata = _reflection.GeneratedProtocolMessageType('TestCaseMetadata', (_message.Message,), dict(
@@ -203,6 +236,13 @@ Contact = _reflection.GeneratedProtocolMessageType('Contact', (_message.Message,
   # @@protoc_insertion_point(class_scope:chromiumos.test.internal.Contact)
   ))
 _sym_db.RegisterMessage(Contact)
+
+TestCaseMetadataList = _reflection.GeneratedProtocolMessageType('TestCaseMetadataList', (_message.Message,), dict(
+  DESCRIPTOR = _TESTCASEMETADATALIST,
+  __module__ = 'chromiumos.test.internal.test_case_metadata_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.internal.TestCaseMetadataList)
+  ))
+_sym_db.RegisterMessage(TestCaseMetadataList)
 
 
 DESCRIPTOR._options = None

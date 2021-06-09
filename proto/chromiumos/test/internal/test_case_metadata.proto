@@ -36,3 +36,8 @@ message Contact {
   // Can be individual user or group email
   string email = 1;
 }
+
+// A list of TestCaseMetadata for ease of serialization into a file.
+message TestCaseMetadataList {
+  repeated TestCaseMetadata values = 1;
+}
