@@ -12,15 +12,10 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/internal";
 // results.
 message TestHarness {
   // Globally unique (for ChromeOS) identifier of a given test harness
-  Id id = 1;
-  message Id {
-    string value = 1;
-  }
-
   oneof test_harness_type {
-    Manual manual = 2;
-    Tauto tauto = 3;
-    Tast tast = 4;
+    Manual manual = 1;
+    Tauto tauto = 2;
+    Tast tast = 3;
   }
 
   message Manual {}

@@ -19,41 +19,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.internal',
   syntax='proto3',
   serialized_options=_b('Z2go.chromium.org/chromiumos/config/go/test/internal'),
-  serialized_pb=_b('\n+chromiumos/test/internal/test_harness.proto\x12\x18\x63hromiumos.test.internal\"\xc2\x02\n\x0bTestHarness\x12\x34\n\x02id\x18\x01 \x01(\x0b\x32(.chromiumos.test.internal.TestHarness.Id\x12>\n\x06manual\x18\x02 \x01(\x0b\x32,.chromiumos.test.internal.TestHarness.ManualH\x00\x12<\n\x05tauto\x18\x03 \x01(\x0b\x32+.chromiumos.test.internal.TestHarness.TautoH\x00\x12:\n\x04tast\x18\x04 \x01(\x0b\x32*.chromiumos.test.internal.TestHarness.TastH\x00\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\x1a\x08\n\x06Manual\x1a\x06\n\x04Tast\x1a\x07\n\x05TautoB\x13\n\x11test_harness_typeB4Z2go.chromium.org/chromiumos/config/go/test/internalb\x06proto3')
+  serialized_pb=_b('\n+chromiumos/test/internal/test_harness.proto\x12\x18\x63hromiumos.test.internal\"\xf7\x01\n\x0bTestHarness\x12>\n\x06manual\x18\x01 \x01(\x0b\x32,.chromiumos.test.internal.TestHarness.ManualH\x00\x12<\n\x05tauto\x18\x02 \x01(\x0b\x32+.chromiumos.test.internal.TestHarness.TautoH\x00\x12:\n\x04tast\x18\x03 \x01(\x0b\x32*.chromiumos.test.internal.TestHarness.TastH\x00\x1a\x08\n\x06Manual\x1a\x06\n\x04Tast\x1a\x07\n\x05TautoB\x13\n\x11test_harness_typeB4Z2go.chromium.org/chromiumos/config/go/test/internalb\x06proto3')
 )
 
 
 
-
-_TESTHARNESS_ID = _descriptor.Descriptor(
-  name='Id',
-  full_name='chromiumos.test.internal.TestHarness.Id',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='value', full_name='chromiumos.test.internal.TestHarness.Id.value', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=329,
-  serialized_end=348,
-)
 
 _TESTHARNESS_MANUAL = _descriptor.Descriptor(
   name='Manual',
@@ -74,8 +44,8 @@ _TESTHARNESS_MANUAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=350,
-  serialized_end=358,
+  serialized_start=275,
+  serialized_end=283,
 )
 
 _TESTHARNESS_TAST = _descriptor.Descriptor(
@@ -97,8 +67,8 @@ _TESTHARNESS_TAST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=360,
-  serialized_end=366,
+  serialized_start=285,
+  serialized_end=291,
 )
 
 _TESTHARNESS_TAUTO = _descriptor.Descriptor(
@@ -120,8 +90,8 @@ _TESTHARNESS_TAUTO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=368,
-  serialized_end=375,
+  serialized_start=293,
+  serialized_end=300,
 )
 
 _TESTHARNESS = _descriptor.Descriptor(
@@ -132,29 +102,22 @@ _TESTHARNESS = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='chromiumos.test.internal.TestHarness.id', index=0,
+      name='manual', full_name='chromiumos.test.internal.TestHarness.manual', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='manual', full_name='chromiumos.test.internal.TestHarness.manual', index=1,
+      name='tauto', full_name='chromiumos.test.internal.TestHarness.tauto', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='tauto', full_name='chromiumos.test.internal.TestHarness.tauto', index=2,
+      name='tast', full_name='chromiumos.test.internal.TestHarness.tast', index=2,
       number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='tast', full_name='chromiumos.test.internal.TestHarness.tast', index=3,
-      number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -162,7 +125,7 @@ _TESTHARNESS = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_TESTHARNESS_ID, _TESTHARNESS_MANUAL, _TESTHARNESS_TAST, _TESTHARNESS_TAUTO, ],
+  nested_types=[_TESTHARNESS_MANUAL, _TESTHARNESS_TAST, _TESTHARNESS_TAUTO, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -175,14 +138,12 @@ _TESTHARNESS = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=74,
-  serialized_end=396,
+  serialized_end=321,
 )
 
-_TESTHARNESS_ID.containing_type = _TESTHARNESS
 _TESTHARNESS_MANUAL.containing_type = _TESTHARNESS
 _TESTHARNESS_TAST.containing_type = _TESTHARNESS
 _TESTHARNESS_TAUTO.containing_type = _TESTHARNESS
-_TESTHARNESS.fields_by_name['id'].message_type = _TESTHARNESS_ID
 _TESTHARNESS.fields_by_name['manual'].message_type = _TESTHARNESS_MANUAL
 _TESTHARNESS.fields_by_name['tauto'].message_type = _TESTHARNESS_TAUTO
 _TESTHARNESS.fields_by_name['tast'].message_type = _TESTHARNESS_TAST
@@ -199,13 +160,6 @@ DESCRIPTOR.message_types_by_name['TestHarness'] = _TESTHARNESS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TestHarness = _reflection.GeneratedProtocolMessageType('TestHarness', (_message.Message,), dict(
-
-  Id = _reflection.GeneratedProtocolMessageType('Id', (_message.Message,), dict(
-    DESCRIPTOR = _TESTHARNESS_ID,
-    __module__ = 'chromiumos.test.internal.test_harness_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.test.internal.TestHarness.Id)
-    ))
-  ,
 
   Manual = _reflection.GeneratedProtocolMessageType('Manual', (_message.Message,), dict(
     DESCRIPTOR = _TESTHARNESS_MANUAL,
@@ -232,7 +186,6 @@ TestHarness = _reflection.GeneratedProtocolMessageType('TestHarness', (_message.
   # @@protoc_insertion_point(class_scope:chromiumos.test.internal.TestHarness)
   ))
 _sym_db.RegisterMessage(TestHarness)
-_sym_db.RegisterMessage(TestHarness.Id)
 _sym_db.RegisterMessage(TestHarness.Manual)
 _sym_db.RegisterMessage(TestHarness.Tast)
 _sym_db.RegisterMessage(TestHarness.Tauto)
