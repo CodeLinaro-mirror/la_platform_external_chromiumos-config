@@ -1054,6 +1054,9 @@ def _convert_to_hw_features(hardware_topology):
     # Handle all possible wifi hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.wifi.hardware_feature.fw_config)
 
+    if copy.wifi.hardware_feature.wifi != topo_pb.HardwareFeatures.Wifi():
+        result.wifi = copy.wifi.hardware_feature.wifi
+
     # Handle all possible lte board attributes
     _accumulate_fw_config(result.fw_config, copy.lte_board.hardware_feature.fw_config)
 
