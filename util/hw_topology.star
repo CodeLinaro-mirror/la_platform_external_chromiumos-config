@@ -982,6 +982,9 @@ def _convert_to_hw_features(hardware_topology):
     if copy.stylus.hardware_feature.stylus != topo_pb.HardwareFeatures.Stylus():
         result.stylus = copy.stylus.hardware_feature.stylus
 
+    # Handle all possible tpm features attributes
+    _accumulate_fw_config(result.fw_config, copy.tpm.hardware_feature.fw_config)
+
     # Handle all possible keyboard hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.keyboard.hardware_feature.fw_config)
 
