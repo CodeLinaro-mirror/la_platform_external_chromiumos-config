@@ -4,8 +4,8 @@ See proto definitions for descriptions of arguments.
 """
 
 load(
-    "@proto//chromiumos/config/api/software/portage.proto",
-    portage_pb = "chromiumos.config.api.software",
+    "@proto//chromiumos/build/api/portage.proto",
+    portage_pb = "chromiumos.build.api",
 )
 
 def _create_build_target(overlay = None, profile = None, use_flags = None):

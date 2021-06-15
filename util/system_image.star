@@ -3,9 +3,11 @@
 See proto definitions for descriptions of arguments.
 """
 
+# Needed to load from @proto. Add @unused to silence lint.
+load("//config/util/bindings/proto.star", "protos")
 load(
-    "@proto//chromiumos/config/api/software/system_image.proto",
-    system_pb = "chromiumos.config.api.software",
+    "@proto//chromiumos/build/api/system_image.proto",
+    system_pb = "chromiumos.build.api",
 )
 load("//config/util/portage.star", "portage")
 
@@ -18,38 +20,37 @@ def _create_build_target(overlay = None, profile = None, use_flags = None):
         ),
     )
 
-def _create_build_metadata(build_target, portage_packages):
+def _create_build_metadata(build_target, packages, package_summary = None):
     return system_pb.SystemImage.BuildMetadata(
         build_target = build_target,
-        packages = portage_packages,
+        packages = packages,
+        package_summary = package_summary,
     )
 
-def _create_build_metadata_list(builds):
+def _create_build_metadata_list(values):
     return system_pb.SystemImage.BuildMetadataList(
-        values = builds,
+        values = values,
     )
 
-def _create_build_summary(
-        build_target,
-        kernel = None,
+def _create_package_summary(
+        arc = None,
+        chrome = None,
         chipset = None,
-        arc = None):
-    return system_pb.SystemImage.BuildSummary(
-        build_target = build_target,
-        kernel = system_pb.SystemImage.BuildSummary.Kernel(version = kernel),
-        chipset = system_pb.SystemImage.BuildSummary.Chipset(overlay = chipset),
-        arc = system_pb.SystemImage.BuildSummary.Arc(version = arc),
-    )
+        kernel = None,
+        toolchain = None):
+    metadata_pb = system_pb.SystemImage.BuildMetadata
 
-def _create_build_summary_list(build_summaries):
-    return system_pb.SystemImage.BuildSummaryList(
-        values = build_summaries,
+    return metadata_pb.PackageSummary(
+        arc = metadata_pb.Arc(version = arc),
+        chrome = metadata_pb.AshChrome(version = chrome),
+        chipset = metadata_pb.Chipset(overlay = chipset),
+        kernel = metadata_pb.Kernel(version = kernel),
+        toolchain = metadata_pb.Toolchain(version = toolchain),
     )
 
 system_image = struct(
     create_build_target = _create_build_target,
     create_build_metadata = _create_build_metadata,
     create_build_metadata_list = _create_build_metadata_list,
-    create_build_summary = _create_build_summary,
-    create_build_summary_list = _create_build_summary_list,
+    create_package_summary = _create_package_summary,
 )

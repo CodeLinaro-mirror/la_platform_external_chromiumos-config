@@ -12,6 +12,13 @@ import "chromiumos/build/api/portage.proto";
 
 // Defines config used to generate Chrome OS system image builds.
 message SystemImage {
+  ImageId       id       = 1; // universally unique ID representing the build
+  BuildMetadata metadata = 2; // metadata about the system image
+
+  message ImageId {
+      string value = 1;
+  }
+
   // Defines build target config required to generate a Chrome OS system image.
   // See:
   // https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#Build-a-disk-image-for-your-board
@@ -19,43 +26,32 @@ message SystemImage {
     Portage.BuildTarget portage_build_target = 1;
   }
 
-  // Defines all of the metadata generated as a result of creating a system
-  // build.  This metadata is made available for reporting/test-planning/...
-  // as an artifact of the build.
   message BuildMetadata {
-    // Target passed when the build was generated.
-    BuildTarget build_target = 1;
-
-    // All of the portage packages/versions included in the build.
-    repeated Portage.Package packages = 2;
+    // Information passed to portage as part of the build.
+    BuildTarget              build_target    = 1;
+    PackageSummary           package_summary = 2;
+    repeated Portage.Package packages        = 3;
 
     // Provides a summary of common key packages used in the build.
-    // This provides at easier client interface to avoid walking the portage
-    // package graph and also allows
-    message PackageSummary {}
+    message PackageSummary {
+      Arc       arc       = 1;
+      AshChrome chrome    = 2;
+      Chipset   chipset   = 3;
+      Kernel    kernel    = 4;
+      Toolchain toolchain = 5;
+    }
 
-    // NOTE: This is a minimalist implementation for now, but more metadata
-    // will be added as test planning is further refined.
-  }
+    // package-specific meta data for VIPs (very important packages).  Wrapped
+    // in their own message to let us extend them in the future.
 
-  // Used to serialize build metadata reports to proto[json|text|binary]
-  message BuildMetadataList {
-    repeated BuildMetadata values = 1;
-  }
+    message Arc {
+      string version = 1;
+      string branch  = 2;
+    }
 
-  // Defines a distilled summary of key pieces of build metadata.
-  // This provides at easier client interface to avoid walking the portage
-  // package graph and also allows a much smaller payload for clients
-  // that don't need the full portage package graph.
-  message BuildSummary {
-    // Build parameters and environment
-    BuildTarget build_target = 1;
-    Toolchain toolchain = 2;
-
-    // Key build packages and source metadata
-    Kernel kernel = 3;
-    Arc arc = 4;
-    Chipset chipset = 5;
+    message AshChrome {
+      string version = 1;
+    }
 
     message Chipset {
       // Name of the chipset overlay used (e.g. src/overlays/chipset-[VALUE]
@@ -63,19 +59,18 @@ message SystemImage {
       // to be correlated on a per-soc-family basis.
       string overlay = 1;
     }
-    message Toolchain {
-      string version = 1;
-    }
+
     message Kernel {
       string version = 1;
     }
-    message Arc {
+
+    message Toolchain {
       string version = 1;
     }
   }
 
-  // Used to serialize build summary reports to proto[json|text|binary]
-  message BuildSummaryList {
-    repeated BuildSummary values = 1;
+  // Used to serialize build metadata reports to proto[json|text|binary]
+  message BuildMetadataList {
+    repeated BuildMetadata values = 1;
   }
 }
