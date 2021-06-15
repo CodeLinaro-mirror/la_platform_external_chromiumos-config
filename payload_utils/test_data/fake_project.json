@@ -111,6 +111,8 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "has-ambient-light-sensor": "1",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "regulatory-label": "fake_regulatory_label",
@@ -265,6 +267,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "regulatory-label": "fake_regulatory_label",
@@ -438,6 +441,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
@@ -567,6 +571,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
@@ -687,6 +692,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
@@ -811,6 +817,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
@@ -936,6 +943,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
@@ -1061,6 +1069,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
@@ -1186,6 +1195,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {
@@ -1287,6 +1297,8 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
+          "external-display-only": "1",
+          "has-keyboard-backlight": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         },
         "ui": {

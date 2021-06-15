@@ -119,6 +119,47 @@ def _build_arc(config, config_files):
   return result
 
 
+def _build_derived_power_prefs(config: Config) -> dict:
+  """Builds a partial 'power' property derived from hardware features."""
+  present = topology_pb2.HardwareFeatures.PRESENT
+  hw_features = config.hw_design_config.hardware_features
+
+  form_factor = hw_features.form_factor.form_factor
+  if (form_factor ==
+      topology_pb2.HardwareFeatures.FormFactor.FORM_FACTOR_UNKNOWN):
+    return {}
+
+  result = {}
+
+  result['external-display-only'] = form_factor in (
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBIT,
+      topology_pb2.HardwareFeatures.FormFactor.CHROMEBOX,
+  )
+
+  light_sensor = hw_features.light_sensor
+  result['has-ambient-light-sensor'] = (
+      light_sensor.lid_lightsensor,
+      light_sensor.base_lightsensor).count(present)
+
+  result['has-keyboard-backlight'] = hw_features.keyboard.backlight == present
+
+  def _format_power_pref_value(value):
+    if isinstance(value, bool):
+      return str(int(value))
+    return str(value)
+
+  return dict((k, _format_power_pref_value(v)) for k, v in result.items() if v)
+
+
+def _build_power(config: Config) -> dict:
+  """Builds the 'power' property from cros_config_schema."""
+  power_prefs_map = _build_derived_power_prefs(config)
+  power_prefs = config.sw_config.power_config.preferences
+  power_prefs_map.update(
+      (x.replace('_', '-'), power_prefs[x]) for x in power_prefs)
+  return power_prefs_map
+
+
 def _build_ash_flags(config: Config) -> List[str]:
   """Returns a list of Ash flags for config.
 
@@ -830,10 +871,7 @@ def _transform_build_config(config, config_files, whitelabel):
       _build_fingerprint(config.hw_design_config.hardware_topology), result,
       'fingerprint')
   _upsert(_build_ui(config), result, 'ui')
-  power_prefs = config.sw_config.power_config.preferences
-  power_prefs_map = dict(
-      (x.replace('_', '-'), power_prefs[x]) for x in power_prefs)
-  _upsert(power_prefs_map, result, 'power')
+  _upsert(_build_power(config), result, 'power')
   if config_files.camera_map:
     camera_file = config_files.camera_map.get(config.hw_design.name, {})
     _upsert(camera_file, result, 'camera')
