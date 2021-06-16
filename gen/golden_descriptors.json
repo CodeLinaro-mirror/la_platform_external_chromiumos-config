@@ -9071,6 +9071,79 @@
         {
           "field": [
             {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "bundle",
+              "label": "LABEL_OPTIONAL",
+              "name": "bundle",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.test.tls.ProvisionAshRequest.AshBundle"
+            }
+          ],
+          "name": "ProvisionAshRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "gsBundlePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gs_bundle_path",
+                  "number": 1,
+                  "oneofIndex": 0,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "AshBundle",
+              "oneofDecl": [
+                {
+                  "name": "path_oneof"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "enumType": [
+            {
+              "name": "Reason",
+              "value": [
+                {
+                  "name": "REASON_INVALID_REQUEST",
+                  "number": 0
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_PRE_PROVISION",
+                  "number": 1
+                },
+                {
+                  "name": "REASON_DOWNLOADING_BUNDLE_FAILED",
+                  "number": 2
+                },
+                {
+                  "name": "REASON_PROVISIONING_TIMEDOUT",
+                  "number": 3
+                },
+                {
+                  "name": "REASON_PROVISIONING_FAILED",
+                  "number": 4
+                }
+              ]
+            }
+          ],
+          "name": "ProvisionAshResponse"
+        },
+        {
+          "name": "ProvisionAshMetadata"
+        },
+        {
+          "field": [
+            {
               "jsonName": "dut",
               "label": "LABEL_OPTIONAL",
               "name": "dut",
@@ -9410,6 +9483,17 @@
                 "[google.longrunning.operation_info]": {
                   "metadataType": "ProvisionLacrosMetadata",
                   "responseType": "ProvisionLacrosResponse"
+                }
+              },
+              "outputType": ".google.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.config.api.test.tls.ProvisionAshRequest",
+              "name": "ProvisionAsh",
+              "options": {
+                "[google.longrunning.operation_info]": {
+                  "metadataType": "ProvisionAshMetadata",
+                  "responseType": "ProvisionAshResponse"
                 }
               },
               "outputType": ".google.longrunning.Operation"

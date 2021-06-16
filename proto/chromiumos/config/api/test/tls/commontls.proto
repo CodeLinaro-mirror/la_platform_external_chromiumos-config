@@ -74,6 +74,15 @@ service Common {
     };
   }
 
+  // ProvisionAsh installs a specific version of AshChrome on the DUT.
+  //
+  rpc ProvisionAsh(ProvisionAshRequest) returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
+      response_type: "ProvisionAshResponse",
+      metadata_type: "ProvisionAshMetadata"
+    };
+  }
+
   // FetchCrashes gets a stream of all crash reports currently on the DUT.
   //
   // The stream returned may split up a crash over multiple
@@ -266,6 +275,43 @@ message ProvisionLacrosResponse {
 }
 
 message ProvisionLacrosMetadata {
+}
+
+message ProvisionAshRequest {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+
+  message AshBundle {
+    oneof path_oneof {
+      // gs_bundle_path is the GS path to where AshChrome bundle is located.
+      string gs_bundle_path = 1;
+    }
+  }
+  // image specifies the Lacros image with which to provision the DUT.
+  AshBundle bundle = 2;
+}
+
+message ProvisionAshResponse {
+  // When the status code is other than OK, details in Status message should be
+  // parsed for ErrorInfo message with the following Reasons as the reason.
+  enum Reason {
+    // Failed as the ProvisionAsh request is invalid.
+    REASON_INVALID_REQUEST = 0;
+    // Failed to connect to the DUT prior to provisioning Ash.
+    REASON_DUT_UNREACHABLE_PRE_PROVISION = 1;
+    // Failed to download the Ash bundle or a timeout during download.
+    REASON_DOWNLOADING_BUNDLE_FAILED = 2;
+    // Failed due to a timeout during the main Ash provisioning.
+    // Excludes timeout during other steps.
+    REASON_PROVISIONING_TIMEDOUT = 3;
+    // General failure in Ash provisioning.
+    REASON_PROVISIONING_FAILED = 4;
+  }
+}
+
+message ProvisionAshMetadata {
 }
 
 message FetchCrashesRequest {
