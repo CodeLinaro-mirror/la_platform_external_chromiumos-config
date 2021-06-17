@@ -97,6 +97,18 @@ message SourceTestPlan {
     // Run tests on at least one device with ChromeOS Config.
     message ChromeOSConfig {}
 
+    // Run tests on each Design.Config in a Program, using the firmware read-only
+    // version configured for the Design.Config under
+    // FirmwareConfig.main_ro_payload.
+    message FirmwareROVersions {
+      // Map from Programs to test to the milestone for the firmware branch for
+      // the program.
+      //
+      // TODO(b/189223005): Read the milestone from source-of-truth configs when
+      // they are available.
+      map<string, int32> program_to_milestone = 1;
+    }
+
     KernelVersions kernel_versions = 1;
     SocFamilies soc_families = 2;
     Architectures architectures = 3;
@@ -104,6 +116,7 @@ message SourceTestPlan {
     Fingerprint fingerprint = 5;
     Parallels parallels = 6;
     ChromeOSConfig chromeos_config = 7;
+    FirmwareROVersions firmware_ro_versions = 8;
   }
 
   Requirements requirements = 13;
