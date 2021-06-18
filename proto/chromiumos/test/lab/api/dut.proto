@@ -18,9 +18,31 @@ message Dut {
     string value = 1;
   }
 
-  // Manufacturing hardware design/component details for a given device
-  chromiumos.config.api.MfgConfig mfg_config = 2;
+  Id id = 1;
 
-  // Endpoint for ssh service running on the device
-  IpEndpoint ssh = 3;
+  oneof dut_type {
+    ChromeOS chromeos = 2;
+    Android android = 3;
+  }
+
+  // Chrome OS specific DUT details
+  message ChromeOS {
+    // Manufacturing hardware design/component details for a given device
+    chromiumos.config.api.MfgConfig mfg_config = 1;
+    // Endpoint for ssh service running on the device
+    IpEndpoint ssh = 2;
+  }
+
+  // Android specific DUT details
+  message Android {
+  }
 }
+
+// Defines the testing topology for a given device under test
+message DutTopology {
+  // Primary device under test in the topology
+  Dut dut = 1;
+  // Secondary devices used for peer-to-peer testing.
+  repeated Dut peer_duts = 2;
+}
+

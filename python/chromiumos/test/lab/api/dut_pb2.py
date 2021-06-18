@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.lab.api',
   syntax='proto3',
   serialized_options=_b('Z1go.chromium.org/chromiumos/config/go/test/lab/api'),
-  serialized_pb=_b('\n!chromiumos/test/lab/api/dut.proto\x12\x17\x63hromiumos.test.lab.api\x1a&chromiumos/config/api/mfg_config.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\x82\x01\n\x03\x44ut\x12\x34\n\nmfg_config\x18\x02 \x01(\x0b\x32 .chromiumos.config.api.MfgConfig\x12\x30\n\x03ssh\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3')
+  serialized_pb=_b('\n!chromiumos/test/lab/api/dut.proto\x12\x17\x63hromiumos.test.lab.api\x1a&chromiumos/config/api/mfg_config.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xc6\x02\n\x03\x44ut\x12+\n\x02id\x18\x01 \x01(\x0b\x32\x1f.chromiumos.test.lab.api.Dut.Id\x12\x39\n\x08\x63hromeos\x18\x02 \x01(\x0b\x32%.chromiumos.test.lab.api.Dut.ChromeOSH\x00\x12\x37\n\x07\x61ndroid\x18\x03 \x01(\x0b\x32$.chromiumos.test.lab.api.Dut.AndroidH\x00\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\x1ar\n\x08\x43hromeOS\x12\x34\n\nmfg_config\x18\x01 \x01(\x0b\x32 .chromiumos.config.api.MfgConfig\x12\x30\n\x03ssh\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x1a\t\n\x07\x41ndroidB\n\n\x08\x64ut_type\"i\n\x0b\x44utTopology\x12)\n\x03\x64ut\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12/\n\tpeer_duts\x18\x02 \x03(\x0b\x32\x1c.chromiumos.test.lab.api.DutB3Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_mfg__config__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
 
@@ -54,8 +54,68 @@ _DUT_ID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=257,
-  serialized_end=276,
+  serialized_start=314,
+  serialized_end=333,
+)
+
+_DUT_CHROMEOS = _descriptor.Descriptor(
+  name='ChromeOS',
+  full_name='chromiumos.test.lab.api.Dut.ChromeOS',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='mfg_config', full_name='chromiumos.test.lab.api.Dut.ChromeOS.mfg_config', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='ssh', full_name='chromiumos.test.lab.api.Dut.ChromeOS.ssh', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=335,
+  serialized_end=449,
+)
+
+_DUT_ANDROID = _descriptor.Descriptor(
+  name='Android',
+  full_name='chromiumos.test.lab.api.Dut.Android',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=451,
+  serialized_end=460,
 )
 
 _DUT = _descriptor.Descriptor(
@@ -66,14 +126,21 @@ _DUT = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='mfg_config', full_name='chromiumos.test.lab.api.Dut.mfg_config', index=0,
+      name='id', full_name='chromiumos.test.lab.api.Dut.id', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='chromeos', full_name='chromiumos.test.lab.api.Dut.chromeos', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='ssh', full_name='chromiumos.test.lab.api.Dut.ssh', index=1,
+      name='android', full_name='chromiumos.test.lab.api.Dut.android', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -82,7 +149,48 @@ _DUT = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_DUT_ID, ],
+  nested_types=[_DUT_ID, _DUT_CHROMEOS, _DUT_ANDROID, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='dut_type', full_name='chromiumos.test.lab.api.Dut.dut_type',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=146,
+  serialized_end=472,
+)
+
+
+_DUTTOPOLOGY = _descriptor.Descriptor(
+  name='DutTopology',
+  full_name='chromiumos.test.lab.api.DutTopology',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='dut', full_name='chromiumos.test.lab.api.DutTopology.dut', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='peer_duts', full_name='chromiumos.test.lab.api.DutTopology.peer_duts', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
   enum_types=[
   ],
   serialized_options=None,
@@ -91,14 +199,28 @@ _DUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=146,
-  serialized_end=276,
+  serialized_start=474,
+  serialized_end=579,
 )
 
 _DUT_ID.containing_type = _DUT
-_DUT.fields_by_name['mfg_config'].message_type = chromiumos_dot_config_dot_api_dot_mfg__config__pb2._MFGCONFIG
-_DUT.fields_by_name['ssh'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
+_DUT_CHROMEOS.fields_by_name['mfg_config'].message_type = chromiumos_dot_config_dot_api_dot_mfg__config__pb2._MFGCONFIG
+_DUT_CHROMEOS.fields_by_name['ssh'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
+_DUT_CHROMEOS.containing_type = _DUT
+_DUT_ANDROID.containing_type = _DUT
+_DUT.fields_by_name['id'].message_type = _DUT_ID
+_DUT.fields_by_name['chromeos'].message_type = _DUT_CHROMEOS
+_DUT.fields_by_name['android'].message_type = _DUT_ANDROID
+_DUT.oneofs_by_name['dut_type'].fields.append(
+  _DUT.fields_by_name['chromeos'])
+_DUT.fields_by_name['chromeos'].containing_oneof = _DUT.oneofs_by_name['dut_type']
+_DUT.oneofs_by_name['dut_type'].fields.append(
+  _DUT.fields_by_name['android'])
+_DUT.fields_by_name['android'].containing_oneof = _DUT.oneofs_by_name['dut_type']
+_DUTTOPOLOGY.fields_by_name['dut'].message_type = _DUT
+_DUTTOPOLOGY.fields_by_name['peer_duts'].message_type = _DUT
 DESCRIPTOR.message_types_by_name['Dut'] = _DUT
+DESCRIPTOR.message_types_by_name['DutTopology'] = _DUTTOPOLOGY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Dut = _reflection.GeneratedProtocolMessageType('Dut', (_message.Message,), dict(
@@ -109,12 +231,35 @@ Dut = _reflection.GeneratedProtocolMessageType('Dut', (_message.Message,), dict(
     # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.Dut.Id)
     ))
   ,
+
+  ChromeOS = _reflection.GeneratedProtocolMessageType('ChromeOS', (_message.Message,), dict(
+    DESCRIPTOR = _DUT_CHROMEOS,
+    __module__ = 'chromiumos.test.lab.api.dut_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.Dut.ChromeOS)
+    ))
+  ,
+
+  Android = _reflection.GeneratedProtocolMessageType('Android', (_message.Message,), dict(
+    DESCRIPTOR = _DUT_ANDROID,
+    __module__ = 'chromiumos.test.lab.api.dut_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.Dut.Android)
+    ))
+  ,
   DESCRIPTOR = _DUT,
   __module__ = 'chromiumos.test.lab.api.dut_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.Dut)
   ))
 _sym_db.RegisterMessage(Dut)
 _sym_db.RegisterMessage(Dut.Id)
+_sym_db.RegisterMessage(Dut.ChromeOS)
+_sym_db.RegisterMessage(Dut.Android)
+
+DutTopology = _reflection.GeneratedProtocolMessageType('DutTopology', (_message.Message,), dict(
+  DESCRIPTOR = _DUTTOPOLOGY,
+  __module__ = 'chromiumos.test.lab.api.dut_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.DutTopology)
+  ))
+_sym_db.RegisterMessage(DutTopology)
 
 
 DESCRIPTOR._options = None
