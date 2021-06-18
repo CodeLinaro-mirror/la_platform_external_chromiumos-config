@@ -1,0 +1,26 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+import "chromiumos/config/api/mfg_config.proto";
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+
+// Specification of Device Under Test.
+message Dut {
+  // Unique identifier for the lab device.
+  message Id {
+    string value = 1;
+  }
+
+  // Manufacturing hardware design/component details for a given device
+  chromiumos.config.api.MfgConfig mfg_config = 2;
+
+  // Endpoint for ssh service running on the device
+  IpEndpoint ssh = 3;
+}
