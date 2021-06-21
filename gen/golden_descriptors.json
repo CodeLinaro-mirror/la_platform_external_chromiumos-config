@@ -2476,6 +2476,10 @@
                     {
                       "name": "NAU88L25B",
                       "number": 10
+                    },
+                    {
+                      "name": "CS42L42",
+                      "number": 11
                     }
                   ]
                 },

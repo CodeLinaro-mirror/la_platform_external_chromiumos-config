@@ -175,6 +175,7 @@ message HardwareFeatures {
       reserved 9;  // Not to conflict with existing amplifiers
       // New audio codecs
       NAU88L25B = 10;
+      CS42L42 = 11;
     }
 
     enum Amplifier {
