@@ -13,6 +13,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from chromiumos.longrunning import operations_pb2 as chromiumos_dot_longrunning_dot_operations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,8 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n%chromiumos/test/api/dut_service.proto\x12\x13\x63hromiumos.test.api\"\xaa\x01\n\x12\x45xecCommandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x02 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\x12+\n\x06stdout\x18\x05 \x01(\x0e\x32\x1b.chromiumos.test.api.Output\x12+\n\x06stderr\x18\x06 \x01(\x0e\x32\x1b.chromiumos.test.api.Output\"\xd1\x01\n\x13\x45xecCommandResponse\x12\x44\n\texit_info\x18\x01 \x01(\x0b\x32\x31.chromiumos.test.api.ExecCommandResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"/\n\x13\x46\x65tchCrashesRequest\x12\x12\n\nfetch_core\x18\x02 \x01(\x08J\x04\x08\x01\x10\x02\"\xa1\x01\n\x14\x46\x65tchCrashesResponse\x12\x10\n\x08\x63rash_id\x18\x01 \x01(\x03\x12/\n\x05\x63rash\x18\x02 \x01(\x0b\x32\x1e.chromiumos.test.api.CrashInfoH\x00\x12.\n\x04\x62lob\x18\x03 \x01(\x0b\x32\x1e.chromiumos.test.api.CrashBlobH\x00\x12\x0e\n\x04\x63ore\x18\x04 \x01(\x0cH\x00\x42\x06\n\x04\x64\x61ta\"\xb3\x01\n\tCrashInfo\x12\x11\n\texec_name\x18\x01 \x01(\t\x12\x0c\n\x04prod\x18\x02 \x01(\t\x12\x0b\n\x03ver\x18\x03 \x01(\t\x12\x0b\n\x03sig\x18\x04 \x01(\t\x12$\n\x1cin_progress_integration_test\x18\x05 \x01(\t\x12\x11\n\tcollector\x18\x06 \x01(\t\x12\x32\n\x06\x66ields\x18\x07 \x03(\x0b\x32\".chromiumos.test.api.CrashMetadata\"*\n\rCrashMetadata\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"8\n\tCrashBlob\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t*,\n\x06Output\x12\x0f\n\x0bOUTPUT_PIPE\x10\x00\x12\x11\n\rOUTPUT_STDOUT\x10\x01\x32\xd7\x01\n\nDutService\x12\x62\n\x0b\x45xecCommand\x12\'.chromiumos.test.api.ExecCommandRequest\x1a(.chromiumos.test.api.ExecCommandResponse0\x01\x12\x65\n\x0c\x46\x65tchCrashes\x12(.chromiumos.test.api.FetchCrashesRequest\x1a).chromiumos.test.api.FetchCrashesResponse0\x01\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
-)
+  serialized_pb=_b('\n%chromiumos/test/api/dut_service.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\"\xaa\x01\n\x12\x45xecCommandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x02 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\x12+\n\x06stdout\x18\x05 \x01(\x0e\x32\x1b.chromiumos.test.api.Output\x12+\n\x06stderr\x18\x06 \x01(\x0e\x32\x1b.chromiumos.test.api.Output\"\xd1\x01\n\x13\x45xecCommandResponse\x12\x44\n\texit_info\x18\x01 \x01(\x0b\x32\x31.chromiumos.test.api.ExecCommandResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"/\n\x13\x46\x65tchCrashesRequest\x12\x12\n\nfetch_core\x18\x02 \x01(\x08J\x04\x08\x01\x10\x02\"\xa1\x01\n\x14\x46\x65tchCrashesResponse\x12\x10\n\x08\x63rash_id\x18\x01 \x01(\x03\x12/\n\x05\x63rash\x18\x02 \x01(\x0b\x32\x1e.chromiumos.test.api.CrashInfoH\x00\x12.\n\x04\x62lob\x18\x03 \x01(\x0b\x32\x1e.chromiumos.test.api.CrashBlobH\x00\x12\x0e\n\x04\x63ore\x18\x04 \x01(\x0cH\x00\x42\x06\n\x04\x64\x61ta\"\xb3\x01\n\tCrashInfo\x12\x11\n\texec_name\x18\x01 \x01(\t\x12\x0c\n\x04prod\x18\x02 \x01(\t\x12\x0b\n\x03ver\x18\x03 \x01(\t\x12\x0b\n\x03sig\x18\x04 \x01(\t\x12$\n\x1cin_progress_integration_test\x18\x05 \x01(\t\x12\x11\n\tcollector\x18\x06 \x01(\t\x12\x32\n\x06\x66ields\x18\x07 \x03(\x0b\x32\".chromiumos.test.api.CrashMetadata\"*\n\rCrashMetadata\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"8\n\tCrashBlob\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\"\x1e\n\x0eRestartRequest\x12\x0c\n\x04\x61rgs\x18\x01 \x03(\t\"!\n\x0fRestartResponse\x12\x0e\n\x06output\x18\x01 \x01(\t\"\x11\n\x0fRestartMetadata*,\n\x06Output\x12\x0f\n\x0bOUTPUT_PIPE\x10\x00\x12\x11\n\rOUTPUT_STDOUT\x10\x01\x32\xd1\x02\n\nDutService\x12\x62\n\x0b\x45xecCommand\x12\'.chromiumos.test.api.ExecCommandRequest\x1a(.chromiumos.test.api.ExecCommandResponse0\x01\x12\x65\n\x0c\x46\x65tchCrashes\x12(.chromiumos.test.api.FetchCrashesRequest\x1a).chromiumos.test.api.FetchCrashesResponse0\x01\x12x\n\x07Restart\x12#.chromiumos.test.api.RestartRequest\x1a!.chromiumos.longrunning.Operation\"%\xd2\x41\"\n\x0fRestartResponse\x12\x0fRestartMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  ,
+  dependencies=[chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
 
 _OUTPUT = _descriptor.EnumDescriptor(
   name='Output',
@@ -40,8 +42,8 @@ _OUTPUT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=944,
-  serialized_end=988,
+  serialized_start=1071,
+  serialized_end=1115,
 )
 _sym_db.RegisterEnumDescriptor(_OUTPUT)
 
@@ -112,8 +114,8 @@ _EXECCOMMANDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=63,
-  serialized_end=233,
+  serialized_start=104,
+  serialized_end=274,
 )
 
 
@@ -164,8 +166,8 @@ _EXECCOMMANDRESPONSE_EXITINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=361,
-  serialized_end=445,
+  serialized_start=402,
+  serialized_end=486,
 )
 
 _EXECCOMMANDRESPONSE = _descriptor.Descriptor(
@@ -208,8 +210,8 @@ _EXECCOMMANDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=236,
-  serialized_end=445,
+  serialized_start=277,
+  serialized_end=486,
 )
 
 
@@ -239,8 +241,8 @@ _FETCHCRASHESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=447,
-  serialized_end=494,
+  serialized_start=488,
+  serialized_end=535,
 )
 
 
@@ -294,8 +296,8 @@ _FETCHCRASHESRESPONSE = _descriptor.Descriptor(
       name='data', full_name='chromiumos.test.api.FetchCrashesResponse.data',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=497,
-  serialized_end=658,
+  serialized_start=538,
+  serialized_end=699,
 )
 
 
@@ -367,8 +369,8 @@ _CRASHINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=661,
-  serialized_end=840,
+  serialized_start=702,
+  serialized_end=881,
 )
 
 
@@ -405,8 +407,8 @@ _CRASHMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=842,
-  serialized_end=884,
+  serialized_start=883,
+  serialized_end=925,
 )
 
 
@@ -450,8 +452,94 @@ _CRASHBLOB = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=886,
-  serialized_end=942,
+  serialized_start=927,
+  serialized_end=983,
+)
+
+
+_RESTARTREQUEST = _descriptor.Descriptor(
+  name='RestartRequest',
+  full_name='chromiumos.test.api.RestartRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='args', full_name='chromiumos.test.api.RestartRequest.args', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=985,
+  serialized_end=1015,
+)
+
+
+_RESTARTRESPONSE = _descriptor.Descriptor(
+  name='RestartResponse',
+  full_name='chromiumos.test.api.RestartResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='output', full_name='chromiumos.test.api.RestartResponse.output', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1017,
+  serialized_end=1050,
+)
+
+
+_RESTARTMETADATA = _descriptor.Descriptor(
+  name='RestartMetadata',
+  full_name='chromiumos.test.api.RestartMetadata',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1052,
+  serialized_end=1069,
 )
 
 _EXECCOMMANDREQUEST.fields_by_name['stdout'].enum_type = _OUTPUT
@@ -477,6 +565,9 @@ DESCRIPTOR.message_types_by_name['FetchCrashesResponse'] = _FETCHCRASHESRESPONSE
 DESCRIPTOR.message_types_by_name['CrashInfo'] = _CRASHINFO
 DESCRIPTOR.message_types_by_name['CrashMetadata'] = _CRASHMETADATA
 DESCRIPTOR.message_types_by_name['CrashBlob'] = _CRASHBLOB
+DESCRIPTOR.message_types_by_name['RestartRequest'] = _RESTARTREQUEST
+DESCRIPTOR.message_types_by_name['RestartResponse'] = _RESTARTRESPONSE
+DESCRIPTOR.message_types_by_name['RestartMetadata'] = _RESTARTMETADATA
 DESCRIPTOR.enum_types_by_name['Output'] = _OUTPUT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -537,6 +628,27 @@ CrashBlob = _reflection.GeneratedProtocolMessageType('CrashBlob', (_message.Mess
   ))
 _sym_db.RegisterMessage(CrashBlob)
 
+RestartRequest = _reflection.GeneratedProtocolMessageType('RestartRequest', (_message.Message,), dict(
+  DESCRIPTOR = _RESTARTREQUEST,
+  __module__ = 'chromiumos.test.api.dut_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.RestartRequest)
+  ))
+_sym_db.RegisterMessage(RestartRequest)
+
+RestartResponse = _reflection.GeneratedProtocolMessageType('RestartResponse', (_message.Message,), dict(
+  DESCRIPTOR = _RESTARTRESPONSE,
+  __module__ = 'chromiumos.test.api.dut_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.RestartResponse)
+  ))
+_sym_db.RegisterMessage(RestartResponse)
+
+RestartMetadata = _reflection.GeneratedProtocolMessageType('RestartMetadata', (_message.Message,), dict(
+  DESCRIPTOR = _RESTARTMETADATA,
+  __module__ = 'chromiumos.test.api.dut_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.RestartMetadata)
+  ))
+_sym_db.RegisterMessage(RestartMetadata)
+
 
 DESCRIPTOR._options = None
 
@@ -546,8 +658,8 @@ _DUTSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=991,
-  serialized_end=1206,
+  serialized_start=1118,
+  serialized_end=1455,
   methods=[
   _descriptor.MethodDescriptor(
     name='ExecCommand',
@@ -566,6 +678,15 @@ _DUTSERVICE = _descriptor.ServiceDescriptor(
     input_type=_FETCHCRASHESREQUEST,
     output_type=_FETCHCRASHESRESPONSE,
     serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Restart',
+    full_name='chromiumos.test.api.DutService.Restart',
+    index=2,
+    containing_service=None,
+    input_type=_RESTARTREQUEST,
+    output_type=chromiumos_dot_longrunning_dot_operations__pb2._OPERATION,
+    serialized_options=_b('\322A\"\n\017RestartResponse\022\017RestartMetadata'),
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_DUTSERVICE)

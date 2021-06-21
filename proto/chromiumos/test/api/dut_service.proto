@@ -8,6 +8,8 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
+import "chromiumos/longrunning/operations.proto";
+
 // Provides network based access to a device under test for remote
 // command execution and device state/identity retrieval.
 service DutService {
@@ -43,6 +45,19 @@ service DutService {
   //
   // This call is read-only: it doesn't delete the crashes that it reads.
   rpc FetchCrashes(FetchCrashesRequest) returns (stream FetchCrashesResponse);
+
+  // Restart simply reboots a DUT and returns when done.
+  //
+  // This is necessary as we need to refresh our connection to the DUT at
+  // restart, and this allows a signaling to the server that the connection
+  // will be severed.
+  rpc Restart(RestartRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "RestartResponse",
+      metadata_type: "RestartMetadata"
+    };
+  }
 }
 
 message ExecCommandRequest {
@@ -214,3 +229,18 @@ message CrashBlob {
     // e.g. foo_binary.20201027.102345.0.dmp
     string filename = 3;
 };
+
+message RestartRequest {
+  // args are the arguments to pass to the reboot command.
+  repeated string args = 1;
+};
+
+message RestartResponse {
+  // output represents the stdout for the reboot. Useful if the verbose flag is
+  // used.
+  string output = 1;
+
+}
+
+message RestartMetadata {
+}
