@@ -189,6 +189,7 @@ message HardwareFeatures {
       // New amplifiers
       RT1015P = 10;
       ALC1019 = 11;
+      MAX98390 = 12;
     }
   }
 
