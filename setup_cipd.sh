@@ -28,8 +28,10 @@ cipd ensure \
      -root "${CIPD_ROOT}" \
      -ensure-file - \
      <<ENSURE_FILE
+fuchsia/third_party/jq/\${platform} latest
 infra/tools/protoc/\${platform} protobuf_version:${CIPD_PROTOC_VERSION}
 chromiumos/infra/tools/protoc-gen-go version:${CIPD_PROTOC_GEN_GO_VERSION}
 infra/3pp/tools/go/\${platform} latest
+infra/3pp/go/github.com/bufbuild/buf/\${platform} latest
 ENSURE_FILE
 PATH="${CIPD_ROOT}/bin:${CIPD_ROOT}:${PATH}"
