@@ -10747,6 +10747,35 @@
     {
       "messageType": [
         {
+          "name": "CheckHealthRequest"
+        },
+        {
+          "name": "CheckHealthResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/callbox_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.CheckHealthRequest",
+              "name": "CheckHealth",
+              "outputType": ".chromiumos.test.api.CheckHealthResponse",
+              "serverStreaming": true
+            }
+          ],
+          "name": "CallboxService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "messageType": [
+        {
           "field": [
             {
               "jsonName": "id",

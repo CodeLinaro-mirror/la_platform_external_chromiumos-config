@@ -2,6 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
+from chromiumos.longrunning import operations_pb2 as chromiumos_dot_longrunning_dot_operations__pb2
 from chromiumos.test.api import dut_service_pb2 as chromiumos_dot_test_dot_api_dot_dut__service__pb2
 
 
@@ -25,6 +26,11 @@ class DutServiceStub(object):
                 '/chromiumos.test.api.DutService/FetchCrashes',
                 request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.FetchCrashesRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.FetchCrashesResponse.FromString,
+                )
+        self.Restart = channel.unary_unary(
+                '/chromiumos.test.api.DutService/Restart',
+                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.RestartRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
 
 
@@ -73,6 +79,17 @@ class DutServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Restart(self, request, context):
+        """Restart simply reboots a DUT and returns when done.
+
+        This is necessary as we need to refresh our connection to the DUT at
+        restart, and this allows a signaling to the server that the connection
+        will be severed.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DutServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -85,6 +102,11 @@ def add_DutServiceServicer_to_server(servicer, server):
                     servicer.FetchCrashes,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.FetchCrashesRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.FetchCrashesResponse.SerializeToString,
+            ),
+            'Restart': grpc.unary_unary_rpc_method_handler(
+                    servicer.Restart,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.RestartRequest.FromString,
+                    response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -129,5 +151,22 @@ class DutService(object):
         return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.DutService/FetchCrashes',
             chromiumos_dot_test_dot_api_dot_dut__service__pb2.FetchCrashesRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_dut__service__pb2.FetchCrashesResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Restart(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DutService/Restart',
+            chromiumos_dot_test_dot_api_dot_dut__service__pb2.RestartRequest.SerializeToString,
+            chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
