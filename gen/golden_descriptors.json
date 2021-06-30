@@ -11634,6 +11634,39 @@
       },
       "messageType": [
         {
+          "name": "CheckChameleonHealthRequest"
+        },
+        {
+          "name": "CheckChameleonHealthResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/chameleon_lib_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.CheckChameleonHealthRequest",
+              "name": "CheckChameleonHealth",
+              "outputType": ".chromiumos.test.api.CheckChameleonHealthResponse",
+              "serverStreaming": true
+            }
+          ],
+          "name": "ChameleonLibService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
           "field": [
             {
               "jsonName": "id",

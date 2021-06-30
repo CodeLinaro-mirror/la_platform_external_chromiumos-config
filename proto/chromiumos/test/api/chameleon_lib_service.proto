@@ -1,0 +1,22 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// Defines API for common chameleon client libraries that are shared
+// across different test harnesses/content (e.g. tast, tauto, ...).
+service ChameleonLibService {
+  // Verifies the connection/status of the chameleon device
+  rpc CheckChameleonHealth(CheckChameleonHealthRequest)
+      returns (stream CheckChameleonHealthResponse);
+}
+
+message CheckChameleonHealthRequest {
+}
+message CheckChameleonHealthResponse {
+}
