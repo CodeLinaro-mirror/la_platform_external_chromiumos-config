@@ -100,6 +100,10 @@
           "sku-id": 2147483647,
           "smbios-name-match": "FAKE_REF_DESIGN"
         },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
+        },
         "modem": {
           "firmware-variant": "fake_ref_design"
         },
@@ -281,6 +285,10 @@
           "platform-name": "fake",
           "sku-id": 0,
           "smbios-name-match": "FAKE_REF_DESIGN"
+        },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
         },
         "modem": {
           "firmware-variant": "fake_ref_design_fakemodem"
@@ -483,6 +491,10 @@
           "sku-id": 32,
           "smbios-name-match": "PROJECT_A"
         },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
+        },
         "modem": {
           "firmware-variant": "project_a"
         },
@@ -647,6 +659,10 @@
           "sku-id": 33,
           "smbios-name-match": "PROJECT_B"
         },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
+        },
         "modem": {
           "firmware-variant": "project_b_fakemodemb"
         },
@@ -798,6 +814,10 @@
           "platform-name": "fake",
           "sku-id": 34,
           "smbios-name-match": "PROJECT_C"
+        },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
         },
         "name": "project_c",
         "power": {
@@ -951,6 +971,10 @@
           "platform-name": "fake",
           "sku-id": 64,
           "smbios-name-match": "PROJECT_WL"
+        },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
         },
         "name": "project_wl",
         "power": {
@@ -1106,6 +1130,10 @@
           "smbios-name-match": "PROJECT_WL",
           "whitelabel-tag": "loema"
         },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
+        },
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
@@ -1259,6 +1287,10 @@
           "sku-id": 64,
           "smbios-name-match": "PROJECT_WL",
           "whitelabel-tag": "loemb"
+        },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
         },
         "name": "project_wl",
         "power": {
@@ -1414,6 +1446,10 @@
           "smbios-name-match": "PROJECT_WL",
           "whitelabel-tag": "loemc"
         },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
+        },
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
@@ -1543,6 +1579,10 @@
           "platform-name": "fake",
           "sku-id": 128,
           "smbios-name-match": "PROJECT_BOX"
+        },
+        "keyboard": {
+          "backlight": true,
+          "numpad": true
         },
         "name": "project_box",
         "power": {

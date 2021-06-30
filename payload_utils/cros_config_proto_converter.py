@@ -225,6 +225,20 @@ def _build_ui(config: Config) -> dict:
   return {'extra-ash-flags': _build_ash_flags(config)}
 
 
+def _build_keyboard(hw_topology):
+  if not hw_topology.HasField('keyboard'):
+    return None
+
+  keyboard = hw_topology.keyboard.hardware_feature.keyboard
+  result = {}
+  if keyboard.backlight == topology_pb2.HardwareFeatures.PRESENT:
+    result['backlight'] = True
+  if keyboard.numeric_pad == topology_pb2.HardwareFeatures.PRESENT:
+    result['numpad'] = True
+
+  return result
+
+
 def _build_bluetooth(config):
   bt_flags = config.sw_config.bluetooth_config.flags
   # Convert to native map (from proto wrapper)
@@ -831,6 +845,9 @@ def _transform_build_config(config, config_files, whitelabel):
       _build_hardware_properties(config.hw_design_config.hardware_topology),
       result, 'hardware-properties')
   _upsert(_build_modem(config), result, 'modem')
+  _upsert(
+      _build_keyboard(config.hw_design_config.hardware_topology), result,
+      'keyboard')
 
   return result
 
