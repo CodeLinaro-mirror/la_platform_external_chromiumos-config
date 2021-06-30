@@ -40,6 +40,7 @@ script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
 readonly script_dir
 
 cd "${script_dir}"
+./generate_grpc_py_bindings.sh
 source "./setup_cipd.sh" # uses script_dir
 
 if [[ "${regen_golden}" -eq 1 ]]; then
