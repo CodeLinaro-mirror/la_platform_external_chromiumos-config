@@ -40,6 +40,12 @@ message Dut {
 
 // Defines the testing topology for a given device under test
 message DutTopology {
+  // Unique identifier for a given dut topology (schedulable lab unit)
+  message Id {
+    string value = 1;
+  }
+  Id id = 3;
+
   // Primary device under test in the topology
   Dut dut = 1;
   // Secondary devices used for peer-to-peer testing.

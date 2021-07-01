@@ -12218,6 +12218,14 @@
         {
           "field": [
             {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.DutTopology.Id"
+            },
+            {
               "jsonName": "dut",
               "label": "LABEL_OPTIONAL",
               "name": "dut",
@@ -12234,7 +12242,21 @@
               "typeName": ".chromiumos.test.lab.api.Dut"
             }
           ],
-          "name": "DutTopology"
+          "name": "DutTopology",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/lab/api/dut.proto",
@@ -12242,6 +12264,100 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
       },
       "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "dependency": [
+        "chromiumos/test/lab/api/dut.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.DutTopology.Id"
+            }
+          ],
+          "name": "GetDutTopologyRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.GetDutTopologyResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.GetDutTopologyResponse.Failure"
+            }
+          ],
+          "name": "GetDutTopologyResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "dutTopology",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut_topology",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.DutTopology"
+                }
+              ],
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/inventory_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.GetDutTopologyRequest",
+              "name": "GetDutTopology",
+              "outputType": ".chromiumos.test.lab.api.GetDutTopologyResponse",
+              "serverStreaming": true
+            }
+          ],
+          "name": "InventoryService"
+        }
+      ],
       "syntax": "proto3"
     },
     {

@@ -1,0 +1,48 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+import "chromiumos/test/lab/api/dut.proto";
+
+// Provides access to all of the lab device device wiring/setup information.
+//
+// Implementations of this service will vary on a lab-environment basis.
+// E.g. Local lab, Mobile lab, Managed lab, Partner lab
+//
+// This allows dependent services (e.g. test execution, device provisioning) to
+// run consistently based on this stable API, agnostic of the lab environment.
+service InventoryService {
+  // Returns the device wiring topology, including all peripherals attached to
+  // the device and peer devices that are used in the test setup.
+  rpc GetDutTopology(GetDutTopologyRequest)
+      returns (stream GetDutTopologyResponse);
+}
+
+message GetDutTopologyRequest {
+  // Unique ID of the DUT topology
+  // Provided by the client (e.g. local test environment) or by
+  // the automated scheduling layer (e.g. test setup that was assigned to
+  // service the requested testing).
+  DutTopology.Id id = 1;
+}
+
+message GetDutTopologyResponse {
+  message Success {
+    DutTopology dut_topology = 1;
+  }
+  message Failure {
+    // Human readable error to aid in debugging
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
