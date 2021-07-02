@@ -13,7 +13,6 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.config.api import component_package_pb2 as chromiumos_dot_config_dot_api_dot_component__package__pb2
-from chromiumos.config.api import design_config_package_pb2 as chromiumos_dot_config_dot_api_dot_design__config__package__pb2
 from chromiumos.config.api import mfg_config_id_pb2 as chromiumos_dot_config_dot_api_dot_mfg__config__id__pb2
 
 
@@ -22,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n&chromiumos/config/api/mfg_config.proto\x12\x15\x63hromiumos.config.api\x1a-chromiumos/config/api/component_package.proto\x1a\x31\x63hromiumos/config/api/design_config_package.proto\x1a)chromiumos/config/api/mfg_config_id.proto\"\x87\x02\n\tMfgConfig\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.MfgConfigId\x12\x12\n\npcb_vendor\x18\x02 \x01(\t\x12\x17\n\x0fram_part_number\x18\x03 \x01(\t\x12\x0e\n\x06region\x18\x04 \x01(\t\x12I\n\x15\x64\x65sign_config_package\x18\x05 \x01(\x0b\x32*.chromiumos.config.api.DesignConfigPackage\x12\x42\n\x11\x63omponent_package\x18\x06 \x01(\x0b\x32\'.chromiumos.config.api.ComponentPackageB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n&chromiumos/config/api/mfg_config.proto\x12\x15\x63hromiumos.config.api\x1a-chromiumos/config/api/component_package.proto\x1a)chromiumos/config/api/mfg_config_id.proto\"\xc2\x01\n\tMfgConfig\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".chromiumos.config.api.MfgConfigId\x12\x12\n\npcb_vendor\x18\x02 \x01(\t\x12\x17\n\x0fram_part_number\x18\x03 \x01(\t\x12\x0e\n\x06region\x18\x04 \x01(\t\x12\x42\n\x11\x63omponent_package\x18\x06 \x01(\x0b\x32\'.chromiumos.config.api.ComponentPackageJ\x04\x08\x05\x10\x06\x42*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_api_dot_component__package__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_design__config__package__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_mfg__config__id__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_config_dot_api_dot_component__package__pb2.DESCRIPTOR,chromiumos_dot_config_dot_api_dot_mfg__config__id__pb2.DESCRIPTOR,])
 
 
 
@@ -65,14 +64,7 @@ _MFGCONFIG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='design_config_package', full_name='chromiumos.config.api.MfgConfig.design_config_package', index=4,
-      number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='component_package', full_name='chromiumos.config.api.MfgConfig.component_package', index=5,
+      name='component_package', full_name='chromiumos.config.api.MfgConfig.component_package', index=4,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -90,12 +82,11 @@ _MFGCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=207,
-  serialized_end=470,
+  serialized_start=156,
+  serialized_end=350,
 )
 
 _MFGCONFIG.fields_by_name['id'].message_type = chromiumos_dot_config_dot_api_dot_mfg__config__id__pb2._MFGCONFIGID
-_MFGCONFIG.fields_by_name['design_config_package'].message_type = chromiumos_dot_config_dot_api_dot_design__config__package__pb2._DESIGNCONFIGPACKAGE
 _MFGCONFIG.fields_by_name['component_package'].message_type = chromiumos_dot_config_dot_api_dot_component__package__pb2._COMPONENTPACKAGE
 DESCRIPTOR.message_types_by_name['MfgConfig'] = _MFGCONFIG
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)

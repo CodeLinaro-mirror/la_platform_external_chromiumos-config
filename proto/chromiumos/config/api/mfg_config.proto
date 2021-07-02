@@ -7,7 +7,6 @@ syntax = "proto3";
 package chromiumos.config.api;
 
 import "chromiumos/config/api/component_package.proto";
-import "chromiumos/config/api/design_config_package.proto";
 import "chromiumos/config/api/mfg_config_id.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
@@ -31,8 +30,8 @@ message MfgConfig {
   // https://storage.googleapis.com/chromeos-factory-docs/sdk/regions.html#available-regions
   string region = 4;
 
-  // All design config details for the given device.
-  DesignConfigPackage design_config_package = 5;
   // All of the components used to manufacture the device
   ComponentPackage component_package = 6;
+
+  reserved 5;
 }

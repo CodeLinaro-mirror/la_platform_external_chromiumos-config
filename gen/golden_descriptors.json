@@ -4745,7 +4745,6 @@
     {
       "dependency": [
         "chromiumos/config/api/component_package.proto",
-        "chromiumos/config/api/design_config_package.proto",
         "chromiumos/config/api/mfg_config_id.proto"
       ],
       "messageType": [
@@ -4781,14 +4780,6 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "designConfigPackage",
-              "label": "LABEL_OPTIONAL",
-              "name": "design_config_package",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.DesignConfigPackage"
-            },
-            {
               "jsonName": "componentPackage",
               "label": "LABEL_OPTIONAL",
               "name": "component_package",
@@ -4797,7 +4788,13 @@
               "typeName": ".chromiumos.config.api.ComponentPackage"
             }
           ],
-          "name": "MfgConfig"
+          "name": "MfgConfig",
+          "reservedRange": [
+            {
+              "end": 6,
+              "start": 5
+            }
+          ]
         }
       ],
       "name": "chromiumos/config/api/mfg_config.proto",
