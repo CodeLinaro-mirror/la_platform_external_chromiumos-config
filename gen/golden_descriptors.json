@@ -11106,6 +11106,7 @@
     },
     {
       "dependency": [
+        "chromiumos/config/api/device_config_id.proto",
         "chromiumos/longrunning/operations.proto"
       ],
       "enumType": [
@@ -11422,6 +11423,64 @@
         },
         {
           "name": "RestartMetadata"
+        },
+        {
+          "name": "DetectDeviceConfigIdRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DetectDeviceConfigIdResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DetectDeviceConfigIdResponse.Failure"
+            }
+          ],
+          "name": "DetectDeviceConfigIdResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "detectedScanConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "detected_scan_config",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.DeviceConfigId.ScanConfig"
+                }
+              ],
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/dut_service.proto",
@@ -11454,6 +11513,12 @@
                 }
               },
               "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.DetectDeviceConfigIdRequest",
+              "name": "DetectDeviceConfigId",
+              "outputType": ".chromiumos.test.api.DetectDeviceConfigIdResponse",
+              "serverStreaming": true
             }
           ],
           "name": "DutService"

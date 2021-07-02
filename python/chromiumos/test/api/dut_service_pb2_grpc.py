@@ -32,6 +32,11 @@ class DutServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.RestartRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
+        self.DetectDeviceConfigId = channel.unary_stream(
+                '/chromiumos.test.api.DutService/DetectDeviceConfigId',
+                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdResponse.FromString,
+                )
 
 
 class DutServiceServicer(object):
@@ -90,6 +95,16 @@ class DutServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def DetectDeviceConfigId(self, request, context):
+        """Scans the live device to determine device config identifiers.
+
+        The returned scan config can then be used to reverse lookup
+        the actual DeviceConfigId values and corresponding configs.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DutServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -107,6 +122,11 @@ def add_DutServiceServicer_to_server(servicer, server):
                     servicer.Restart,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.RestartRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+            ),
+            'DetectDeviceConfigId': grpc.unary_stream_rpc_method_handler(
+                    servicer.DetectDeviceConfigId,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -168,5 +188,22 @@ class DutService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DutService/Restart',
             chromiumos_dot_test_dot_api_dot_dut__service__pb2.RestartRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DetectDeviceConfigId(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.DutService/DetectDeviceConfigId',
+            chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

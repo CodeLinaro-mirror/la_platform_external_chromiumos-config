@@ -8,6 +8,8 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
+import "chromiumos/config/api/device_config_id.proto";
+
 import "chromiumos/longrunning/operations.proto";
 
 // Provides network based access to a device under test for remote
@@ -58,6 +60,13 @@ service DutService {
       metadata_type: "RestartMetadata"
     };
   }
+
+  // Scans the live device to determine device config identifiers.
+  //
+  // The returned scan config can then be used to reverse lookup
+  // the actual DeviceConfigId values and corresponding configs.
+  rpc DetectDeviceConfigId(DetectDeviceConfigIdRequest)
+      returns (stream DetectDeviceConfigIdResponse);
 }
 
 message ExecCommandRequest {
@@ -243,4 +252,22 @@ message RestartResponse {
 }
 
 message RestartMetadata {
+}
+
+message DetectDeviceConfigIdRequest {
+};
+
+message DetectDeviceConfigIdResponse {
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+
+  message Success {
+    chromiumos.config.api.DeviceConfigId.ScanConfig detected_scan_config = 1;
+  }
+
+  message Failure {
+    string error_message = 1;
+  }
 }
