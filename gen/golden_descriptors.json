@@ -4643,10 +4643,99 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "MfgConfigId"
+          "name": "MfgConfigId",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "hwid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hwid",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ScanConfig"
+            }
+          ]
         }
       ],
       "name": "chromiumos/config/api/mfg_config_id.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "dependency": [
+        "chromiumos/config/api/design_config_id.proto",
+        "chromiumos/config/api/device_brand_id.proto",
+        "chromiumos/config/api/mfg_config_id.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "designConfigId",
+              "label": "LABEL_OPTIONAL",
+              "name": "design_config_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DesignConfigId"
+            },
+            {
+              "jsonName": "deviceBrandId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_brand_id",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DeviceBrandId"
+            },
+            {
+              "jsonName": "mfgConfigId",
+              "label": "LABEL_OPTIONAL",
+              "name": "mfg_config_id",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.MfgConfigId"
+            }
+          ],
+          "name": "DeviceConfigId",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "designScanConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "design_scan_config",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.DesignConfigId.ScanConfig"
+                },
+                {
+                  "jsonName": "brandScanConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "brand_scan_config",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.DeviceBrandId.ScanConfig"
+                },
+                {
+                  "jsonName": "mfgScanConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "mfg_scan_config",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.MfgConfigId.ScanConfig"
+                }
+              ],
+              "name": "ScanConfig"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/config/api/device_config_id.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/api"
       },

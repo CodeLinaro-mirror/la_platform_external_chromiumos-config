@@ -19,11 +19,41 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n)chromiumos/config/api/mfg_config_id.proto\x12\x15\x63hromiumos.config.api\"\x1c\n\x0bMfgConfigId\x12\r\n\x05value\x18\x01 \x01(\tB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n)chromiumos/config/api/mfg_config_id.proto\x12\x15\x63hromiumos.config.api\"8\n\x0bMfgConfigId\x12\r\n\x05value\x18\x01 \x01(\t\x1a\x1a\n\nScanConfig\x12\x0c\n\x04hwid\x18\x01 \x01(\tB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
 )
 
 
 
+
+_MFGCONFIGID_SCANCONFIG = _descriptor.Descriptor(
+  name='ScanConfig',
+  full_name='chromiumos.config.api.MfgConfigId.ScanConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='hwid', full_name='chromiumos.config.api.MfgConfigId.ScanConfig.hwid', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=98,
+  serialized_end=124,
+)
 
 _MFGCONFIGID = _descriptor.Descriptor(
   name='MfgConfigId',
@@ -42,7 +72,7 @@ _MFGCONFIGID = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_MFGCONFIGID_SCANCONFIG, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -52,18 +82,27 @@ _MFGCONFIGID = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=68,
-  serialized_end=96,
+  serialized_end=124,
 )
 
+_MFGCONFIGID_SCANCONFIG.containing_type = _MFGCONFIGID
 DESCRIPTOR.message_types_by_name['MfgConfigId'] = _MFGCONFIGID
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 MfgConfigId = _reflection.GeneratedProtocolMessageType('MfgConfigId', (_message.Message,), dict(
+
+  ScanConfig = _reflection.GeneratedProtocolMessageType('ScanConfig', (_message.Message,), dict(
+    DESCRIPTOR = _MFGCONFIGID_SCANCONFIG,
+    __module__ = 'chromiumos.config.api.mfg_config_id_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.MfgConfigId.ScanConfig)
+    ))
+  ,
   DESCRIPTOR = _MFGCONFIGID,
   __module__ = 'chromiumos.config.api.mfg_config_id_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.MfgConfigId)
   ))
 _sym_db.RegisterMessage(MfgConfigId)
+_sym_db.RegisterMessage(MfgConfigId.ScanConfig)
 
 
 DESCRIPTOR._options = None
