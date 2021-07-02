@@ -5,7 +5,6 @@ package chromiumos.config.api.software;
 option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
 import "chromiumos/config/api/device_brand_id.proto";
-import "chromiumos/config/api/software/chromeos_config/identity_scan_config.proto";
 
 // Contains all of the device-brand-specific configuration that can be
 // updated via new software builds/releases.
@@ -15,7 +14,7 @@ import "chromiumos/config/api/software/chromeos_config/identity_scan_config.prot
 // the current software-build installed on the device.
 message BrandConfig {
   DeviceBrandId brand_id = 1;
-  chromeos_config.IdentityScanConfig.BrandId scan_config = 2;
+  DeviceBrandId.ScanConfig scan_config = 2;
   string wallpaper = 3;
   // See chromeos-config/README.md for details
   string regulatory_label = 4;

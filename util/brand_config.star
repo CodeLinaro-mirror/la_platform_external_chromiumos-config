@@ -10,8 +10,8 @@ load(
     bc_pb = "chromiumos.config.api.software",
 )
 load(
-    "@proto//chromiumos/config/api/software/chromeos_config/identity_scan_config.proto",
-    id_scan_pb = "chromiumos.config.api.software.chromeos_config",
+    "@proto//chromiumos/config/api/device_brand_id.proto",
+    db_id_pb = "chromiumos.config.api",
 )
 
 def _create(
@@ -34,7 +34,7 @@ def _create(
     """
     scan_config = None
     if whitelabel_tag:
-        scan_config = id_scan_pb.IdentityScanConfig.BrandId(
+        scan_config = db_id_pb.DeviceBrandId.ScanConfig(
             whitelabel_tag = whitelabel_tag,
         )
     return bc_pb.BrandConfig(

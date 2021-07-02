@@ -19,11 +19,41 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.api',
   syntax='proto3',
   serialized_options=_b('Z(go.chromium.org/chromiumos/config/go/api'),
-  serialized_pb=_b('\n+chromiumos/config/api/device_brand_id.proto\x12\x15\x63hromiumos.config.api\"\x1e\n\rDeviceBrandId\x12\r\n\x05value\x18\x01 \x01(\tB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
+  serialized_pb=_b('\n+chromiumos/config/api/device_brand_id.proto\x12\x15\x63hromiumos.config.api\"D\n\rDeviceBrandId\x12\r\n\x05value\x18\x01 \x01(\t\x1a$\n\nScanConfig\x12\x16\n\x0ewhitelabel_tag\x18\x01 \x01(\tB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3')
 )
 
 
 
+
+_DEVICEBRANDID_SCANCONFIG = _descriptor.Descriptor(
+  name='ScanConfig',
+  full_name='chromiumos.config.api.DeviceBrandId.ScanConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='whitelabel_tag', full_name='chromiumos.config.api.DeviceBrandId.ScanConfig.whitelabel_tag', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=102,
+  serialized_end=138,
+)
 
 _DEVICEBRANDID = _descriptor.Descriptor(
   name='DeviceBrandId',
@@ -42,7 +72,7 @@ _DEVICEBRANDID = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_DEVICEBRANDID_SCANCONFIG, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -52,18 +82,27 @@ _DEVICEBRANDID = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=70,
-  serialized_end=100,
+  serialized_end=138,
 )
 
+_DEVICEBRANDID_SCANCONFIG.containing_type = _DEVICEBRANDID
 DESCRIPTOR.message_types_by_name['DeviceBrandId'] = _DEVICEBRANDID
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 DeviceBrandId = _reflection.GeneratedProtocolMessageType('DeviceBrandId', (_message.Message,), dict(
+
+  ScanConfig = _reflection.GeneratedProtocolMessageType('ScanConfig', (_message.Message,), dict(
+    DESCRIPTOR = _DEVICEBRANDID_SCANCONFIG,
+    __module__ = 'chromiumos.config.api.device_brand_id_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.config.api.DeviceBrandId.ScanConfig)
+    ))
+  ,
   DESCRIPTOR = _DEVICEBRANDID,
   __module__ = 'chromiumos.config.api.device_brand_id_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.api.DeviceBrandId)
   ))
 _sym_db.RegisterMessage(DeviceBrandId)
+_sym_db.RegisterMessage(DeviceBrandId.ScanConfig)
 
 
 DESCRIPTOR._options = None

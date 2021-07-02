@@ -11,4 +11,12 @@ option go_package = "go.chromium.org/chromiumos/config/go/api";
 // Uniquely identifies a Chromium OS device brand.
 message DeviceBrandId {
   string value = 1;
+
+  // Scan config to determine the BrandId
+  message ScanConfig {
+    // 'whitelabel_tag' value set in the VPD.
+    // See
+    // https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#field-whitelabel_tag.
+    string whitelabel_tag = 1;
+  }
 }

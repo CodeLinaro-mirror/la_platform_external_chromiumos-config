@@ -12,7 +12,6 @@ import "chromiumos/build/api/system_image.proto";
 import "chromiumos/config/api/design_config_id.proto";
 import "chromiumos/config/api/software/audio_config.proto";
 import "chromiumos/config/api/software/bluetooth_config.proto";
-import "chromiumos/config/api/software/chromeos_config/identity_scan_config.proto";
 import "chromiumos/config/api/software/power_config.proto";
 import "chromiumos/config/api/software/wifi_config.proto";
 import "chromiumos/config/api/software/camera_config.proto";
@@ -39,7 +38,9 @@ message SoftwareConfig {
 
   // Defines the hardware design config this software config supports.
   DesignConfigId design_config_id = 7;
-  chromeos_config.IdentityScanConfig.DesignConfigId id_scan_config = 8;
+
+  // Scanning config used to determine the DesignConfigId
+  DesignConfigId.ScanConfig id_scan_config = 8;
 
   // Defines firmware version pinning details (for non-development workflows).
   chromiumos.build.api.FirmwareConfig firmware = 3;

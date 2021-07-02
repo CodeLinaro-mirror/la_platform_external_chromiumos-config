@@ -1817,7 +1817,42 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "DesignConfigId"
+          "name": "DesignConfigId",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "smbiosNameMatch",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "smbios_name_match",
+                  "number": 1,
+                  "oneofIndex": 0,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "deviceTreeCompatibleMatch",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "device_tree_compatible_match",
+                  "number": 2,
+                  "oneofIndex": 0,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "firmwareSku",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "firmware_sku",
+                  "number": 3,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "ScanConfig",
+              "oneofDecl": [
+                {
+                  "name": "firmware_name_match"
+                }
+              ]
+            }
+          ]
         }
       ],
       "name": "chromiumos/config/api/design_config_id.proto",
@@ -4126,7 +4161,21 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "DeviceBrandId"
+          "name": "DeviceBrandId",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "whitelabelTag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "whitelabel_tag",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ScanConfig"
+            }
+          ]
         }
       ],
       "name": "chromiumos/config/api/device_brand_id.proto",
@@ -4813,69 +4862,8 @@
       "syntax": "proto3"
     },
     {
-      "messageType": [
-        {
-          "name": "IdentityScanConfig",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "smbiosNameMatch",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "smbios_name_match",
-                  "number": 1,
-                  "oneofIndex": 0,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "deviceTreeCompatibleMatch",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "device_tree_compatible_match",
-                  "number": 2,
-                  "oneofIndex": 0,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "firmwareSku",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "firmware_sku",
-                  "number": 3,
-                  "type": "TYPE_UINT32"
-                }
-              ],
-              "name": "DesignConfigId",
-              "oneofDecl": [
-                {
-                  "name": "firmware_name_match"
-                }
-              ]
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "whitelabelTag",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "whitelabel_tag",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "BrandId"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/config/api/software/chromeos_config/identity_scan_config.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api/software/chromeos_config"
-      },
-      "package": "chromiumos.config.api.software.chromeos_config",
-      "syntax": "proto3"
-    },
-    {
       "dependency": [
-        "chromiumos/config/api/device_brand_id.proto",
-        "chromiumos/config/api/software/chromeos_config/identity_scan_config.proto"
+        "chromiumos/config/api/device_brand_id.proto"
       ],
       "messageType": [
         {
@@ -4894,7 +4882,7 @@
               "name": "scan_config",
               "number": 2,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.chromeos_config.IdentityScanConfig.BrandId"
+              "typeName": ".chromiumos.config.api.DeviceBrandId.ScanConfig"
             },
             {
               "jsonName": "wallpaper",
@@ -5421,7 +5409,6 @@
         "chromiumos/config/api/design_config_id.proto",
         "chromiumos/config/api/software/audio_config.proto",
         "chromiumos/config/api/software/bluetooth_config.proto",
-        "chromiumos/config/api/software/chromeos_config/identity_scan_config.proto",
         "chromiumos/config/api/software/power_config.proto",
         "chromiumos/config/api/software/wifi_config.proto",
         "chromiumos/config/api/software/camera_config.proto",
@@ -5453,7 +5440,7 @@
               "name": "id_scan_config",
               "number": 8,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.chromeos_config.IdentityScanConfig.DesignConfigId"
+              "typeName": ".chromiumos.config.api.DesignConfigId.ScanConfig"
             },
             {
               "jsonName": "firmware",
