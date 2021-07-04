@@ -11838,6 +11838,7 @@
     },
     {
       "dependency": [
+        "chromiumos/build/api/firmware_config.proto",
         "chromiumos/longrunning/operations.proto",
         "chromiumos/storage_path.proto"
       ],
@@ -12093,6 +12094,50 @@
         },
         {
           "name": "InstallArcMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "firmwareConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            }
+          ],
+          "name": "InstallFirmwareRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallFirmwareResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallFirmwareMetadata"
         }
       ],
       "name": "chromiumos/test/api/provision_service.proto",
@@ -12143,6 +12188,17 @@
                 "[chromiumos.longrunning.operation_info]": {
                   "metadataType": "InstallArcMetadata",
                   "responseType": "InstallArcResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallFirmwareRequest",
+              "name": "InstallFirmware",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallFirmwareMetadata",
+                  "responseType": "InstallFirmwareResponse"
                 }
               },
               "outputType": ".chromiumos.longrunning.Operation"
