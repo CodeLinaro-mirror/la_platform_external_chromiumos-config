@@ -37,11 +37,6 @@ class ProvisionServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallArcRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
-        self.InstallFirmware = channel.unary_unary(
-                '/chromiumos.test.api.ProvisionService/InstallFirmware',
-                request_serializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallFirmwareRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-                )
 
 
 class ProvisionServiceServicer(object):
@@ -93,13 +88,6 @@ class ProvisionServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def InstallFirmware(self, request, context):
-        """InstallFirmware installs all of the firmware images specified.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
 
 def add_ProvisionServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -121,11 +109,6 @@ def add_ProvisionServiceServicer_to_server(servicer, server):
             'InstallArc': grpc.unary_unary_rpc_method_handler(
                     servicer.InstallArc,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallArcRequest.FromString,
-                    response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
-            ),
-            'InstallFirmware': grpc.unary_unary_rpc_method_handler(
-                    servicer.InstallFirmware,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallFirmwareRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
     }
@@ -204,23 +187,6 @@ class ProvisionService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ProvisionService/InstallArc',
             chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallArcRequest.SerializeToString,
-            chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def InstallFirmware(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ProvisionService/InstallFirmware',
-            chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallFirmwareRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
