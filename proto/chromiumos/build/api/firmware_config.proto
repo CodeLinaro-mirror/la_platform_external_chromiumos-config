@@ -9,7 +9,6 @@ package chromiumos.build.api;
 option go_package = "go.chromium.org/chromiumos/config/go/build/api";
 
 import "chromiumos/build/api/portage.proto";
-import "chromiumos/storage_path.proto";
 
 // The type of a firmware binary.
 message FirmwareType {
@@ -32,19 +31,10 @@ message Version {
 message FirmwarePayload {
   reserved 1;
 
-  // The path to the firmware build artifact
-  oneof firmware_image {
-    // Path to the firmware artifact (either local or GS path)
-    StoragePath firmware_image_path = 5;
-
-    // NOTE: Deprecated (use firmware_image_path instead)
-    //
-    // Image path in BCS format: "bcs://Coral.10068.118.0.tbz2"
-    //
-    // TODO(shapiroc): Migrate to use fimware_image_path instead so
-    // that local provisioning can be supported also via provision_service
-    string firmware_image_name = 2 [deprecated = true];
-  }
+  // The name of the firmware image used by the firmware updater. Typically
+  // the device name, but can differ when a device may have two or more
+  // different firmware images.
+  string firmware_image_name = 2;
 
   FirmwareType.Type type = 3;
 
