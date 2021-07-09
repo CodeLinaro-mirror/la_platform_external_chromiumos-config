@@ -165,6 +165,15 @@ message HardwareFeatures {
     // Which audio codec is in use for the headphones
     AudioCodec headphone_codec = 3;
 
+    // The number of microphones present in the lid
+    Count lid_microphone = 4;
+
+    // The number of microphones present in the base
+    Count base_microphone = 5;
+
+    // Which amplifier is in use for the speakers if one is present
+    Component.Amplifier speaker_amplifier = 6;
+
     enum AudioCodec {
       AUDIO_CODEC_UNKNOWN = 0;  // Also used for non-public audio codecs
       RT5682 = 1;

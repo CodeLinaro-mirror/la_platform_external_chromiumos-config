@@ -2594,6 +2594,30 @@
                   "number": 3,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Audio.AudioCodec"
+                },
+                {
+                  "jsonName": "lidMicrophone",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "lid_microphone",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Count"
+                },
+                {
+                  "jsonName": "baseMicrophone",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "base_microphone",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Count"
+                },
+                {
+                  "jsonName": "speakerAmplifier",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "speaker_amplifier",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Component.Amplifier"
                 }
               ],
               "name": "Audio"
