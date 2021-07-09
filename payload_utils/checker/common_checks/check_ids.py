@@ -18,6 +18,7 @@ segments can overlap.
 """
 
 import itertools
+import logging
 import pathlib
 
 from checker import constraint_suite
@@ -60,6 +61,11 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
       # It is valid for designs to not have a corresponding segment.
       segment = segment_map.get(design.id.value)
       if not segment:
+        logging.warning(
+            'No DesignConfigIdSegment found for design %s, constraints on ids '
+            'will not be enforced',
+            design.id.value,
+        )
         continue
 
       self.assertLess(segment.min_id, segment.max_id)
