@@ -51,7 +51,9 @@ def CheckGenerated(input_api, output_api):
 
 
 def CommonChecks(input_api, output_api):
-    results = []
+    file_filter = lambda x: x.LocalPath() == 'infra/config/recipes.cfg'
+    results = input_api.canned_checks.CheckJsonParses(
+        input_api, output_api, file_filter=file_filter)
     results.extend(CheckGenerated(input_api, output_api))
     for script in ['./run_py_unittests.sh',
                    './run_go_unittests.sh', './check_starlark.sh']:
