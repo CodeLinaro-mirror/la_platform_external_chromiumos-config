@@ -12135,6 +12135,158 @@
       "syntax": "proto3"
     },
     {
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "manual",
+              "label": "LABEL_OPTIONAL",
+              "name": "manual",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Manual"
+            },
+            {
+              "jsonName": "tauto",
+              "label": "LABEL_OPTIONAL",
+              "name": "tauto",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Tauto"
+            },
+            {
+              "jsonName": "tast",
+              "label": "LABEL_OPTIONAL",
+              "name": "tast",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Tast"
+            }
+          ],
+          "name": "TestHarness",
+          "nestedType": [
+            {
+              "name": "Manual"
+            },
+            {
+              "name": "Tast"
+            },
+            {
+              "name": "Tauto"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "test_harness_type"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/test_harness.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "dependency": [
+        "chromiumos/test/api/test_case.proto",
+        "chromiumos/test/api/test_harness.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "testCase",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase"
+            },
+            {
+              "jsonName": "testCaseExec",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_exec",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseExec"
+            },
+            {
+              "jsonName": "testCaseInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_info",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseInfo"
+            }
+          ],
+          "name": "TestCaseMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testHarness",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_harness",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness"
+            }
+          ],
+          "name": "TestCaseExec"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "owners",
+              "label": "LABEL_REPEATED",
+              "name": "owners",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Contact"
+            }
+          ],
+          "name": "TestCaseInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "email",
+              "label": "LABEL_OPTIONAL",
+              "name": "email",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Contact"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseMetadata"
+            }
+          ],
+          "name": "TestCaseMetadataList"
+        }
+      ],
+      "name": "chromiumos/test/api/test_case_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
       "dependency": [
         "chromiumos/test/api/dut_attribute.proto"
       ],
@@ -12198,158 +12350,6 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/dut"
       },
       "package": "chromiumos.test.dut",
-      "syntax": "proto3"
-    },
-    {
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "manual",
-              "label": "LABEL_OPTIONAL",
-              "name": "manual",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.internal.TestHarness.Manual"
-            },
-            {
-              "jsonName": "tauto",
-              "label": "LABEL_OPTIONAL",
-              "name": "tauto",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.internal.TestHarness.Tauto"
-            },
-            {
-              "jsonName": "tast",
-              "label": "LABEL_OPTIONAL",
-              "name": "tast",
-              "number": 3,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.internal.TestHarness.Tast"
-            }
-          ],
-          "name": "TestHarness",
-          "nestedType": [
-            {
-              "name": "Manual"
-            },
-            {
-              "name": "Tast"
-            },
-            {
-              "name": "Tauto"
-            }
-          ],
-          "oneofDecl": [
-            {
-              "name": "test_harness_type"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/internal/test_harness.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/internal"
-      },
-      "package": "chromiumos.test.internal",
-      "syntax": "proto3"
-    },
-    {
-      "dependency": [
-        "chromiumos/test/api/test_case.proto",
-        "chromiumos/test/internal/test_harness.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "testCase",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCase"
-            },
-            {
-              "jsonName": "testCaseExec",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_exec",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.internal.TestCaseExec"
-            },
-            {
-              "jsonName": "testCaseInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_info",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.internal.TestCaseInfo"
-            }
-          ],
-          "name": "TestCaseMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "testHarness",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_harness",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.internal.TestHarness"
-            }
-          ],
-          "name": "TestCaseExec"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "owners",
-              "label": "LABEL_REPEATED",
-              "name": "owners",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.internal.Contact"
-            }
-          ],
-          "name": "TestCaseInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "email",
-              "label": "LABEL_OPTIONAL",
-              "name": "email",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "Contact"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "values",
-              "label": "LABEL_REPEATED",
-              "name": "values",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.internal.TestCaseMetadata"
-            }
-          ],
-          "name": "TestCaseMetadataList"
-        }
-      ],
-      "name": "chromiumos/test/internal/test_case_metadata.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/internal"
-      },
-      "package": "chromiumos.test.internal",
       "syntax": "proto3"
     },
     {

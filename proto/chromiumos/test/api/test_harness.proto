@@ -4,9 +4,9 @@
 
 syntax = "proto3";
 
-package chromiumos.test.internal;
+package chromiumos.test.api;
 
-option go_package = "go.chromium.org/chromiumos/config/go/test/internal";
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 // Defines a test execution framework that can execute test cases and report
 // results.

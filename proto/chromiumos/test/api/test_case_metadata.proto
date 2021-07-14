@@ -4,12 +4,12 @@
 
 syntax = "proto3";
 
-package chromiumos.test.internal;
+package chromiumos.test.api;
 
-option go_package = "go.chromium.org/chromiumos/config/go/test/internal";
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/test/api/test_case.proto";
-import "chromiumos/test/internal/test_harness.proto";
+import "chromiumos/test/api/test_harness.proto";
 
 // Defines all metadata about a given test case to support the entire
 // test case lifecycle (planning, execution, debugging, triage, reporting, ...).
