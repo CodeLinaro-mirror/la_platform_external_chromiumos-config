@@ -107,8 +107,58 @@
       "syntax": "proto3"
     },
     {
+      "messageType": [
+        {
+          "enumType": [
+            {
+              "name": "HostType",
+              "value": [
+                {
+                  "name": "HOSTTYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "LOCAL",
+                  "number": 1
+                },
+                {
+                  "name": "GS",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "hostType",
+              "label": "LABEL_OPTIONAL",
+              "name": "host_type",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.StoragePath.HostType"
+            },
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StoragePath"
+        }
+      ],
+      "name": "chromiumos/storage_path.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go"
+      },
+      "package": "chromiumos",
+      "syntax": "proto3"
+    },
+    {
       "dependency": [
-        "chromiumos/build/api/portage.proto"
+        "chromiumos/build/api/portage.proto",
+        "chromiumos/storage_path.proto"
       ],
       "messageType": [
         {
@@ -166,10 +216,23 @@
         {
           "field": [
             {
+              "jsonName": "firmwareImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_image_path",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
               "jsonName": "firmwareImageName",
               "label": "LABEL_OPTIONAL",
               "name": "firmware_image_name",
               "number": 2,
+              "oneofIndex": 0,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             },
             {
@@ -190,6 +253,11 @@
             }
           ],
           "name": "FirmwarePayload",
+          "oneofDecl": [
+            {
+              "name": "firmware_image"
+            }
+          ],
           "reservedRange": [
             {
               "end": 2,
@@ -10874,55 +10942,6 @@
           "name": "Operations"
         }
       ],
-      "syntax": "proto3"
-    },
-    {
-      "messageType": [
-        {
-          "enumType": [
-            {
-              "name": "HostType",
-              "value": [
-                {
-                  "name": "HOSTTYPE_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "LOCAL",
-                  "number": 1
-                },
-                {
-                  "name": "GS",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "hostType",
-              "label": "LABEL_OPTIONAL",
-              "name": "host_type",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.StoragePath.HostType"
-            },
-            {
-              "jsonName": "path",
-              "label": "LABEL_OPTIONAL",
-              "name": "path",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "StoragePath"
-        }
-      ],
-      "name": "chromiumos/storage_path.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go"
-      },
-      "package": "chromiumos",
       "syntax": "proto3"
     },
     {
