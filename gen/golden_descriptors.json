@@ -12458,7 +12458,7 @@
     },
     {
       "dependency": [
-        "chromiumos/config/api/mfg_config.proto",
+        "chromiumos/config/api/device_config_id.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto"
       ],
       "messageType": [
@@ -12508,12 +12508,12 @@
             {
               "field": [
                 {
-                  "jsonName": "mfgConfig",
+                  "jsonName": "deviceConfigId",
                   "label": "LABEL_OPTIONAL",
-                  "name": "mfg_config",
-                  "number": 1,
+                  "name": "device_config_id",
+                  "number": 3,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.MfgConfig"
+                  "typeName": ".chromiumos.config.api.DeviceConfigId"
                 },
                 {
                   "jsonName": "ssh",
@@ -12524,7 +12524,13 @@
                   "typeName": ".chromiumos.test.lab.api.IpEndpoint"
                 }
               ],
-              "name": "ChromeOS"
+              "name": "ChromeOS",
+              "reservedRange": [
+                {
+                  "end": 2,
+                  "start": 1
+                }
+              ]
             },
             {
               "name": "Android"

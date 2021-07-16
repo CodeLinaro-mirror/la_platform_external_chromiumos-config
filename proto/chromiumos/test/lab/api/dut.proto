@@ -8,7 +8,7 @@ package chromiumos.test.lab.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 
-import "chromiumos/config/api/mfg_config.proto";
+import "chromiumos/config/api/device_config_id.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 
 // Specification of Device Under Test.
@@ -27,10 +27,13 @@ message Dut {
 
   // Chrome OS specific DUT details
   message ChromeOS {
-    // Manufacturing hardware design/component details for a given device
-    chromiumos.config.api.MfgConfig mfg_config = 1;
+    // Unique identifiers around the device's hardware, manufacturing, and brand
+    // configuration.
+    chromiumos.config.api.DeviceConfigId device_config_id = 3;
     // Endpoint for ssh service running on the device
     IpEndpoint ssh = 2;
+
+    reserved 1;
   }
 
   // Android specific DUT details
