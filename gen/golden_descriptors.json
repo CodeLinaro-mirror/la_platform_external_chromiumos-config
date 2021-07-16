@@ -5194,6 +5194,13 @@
               "name": "regulatory_label",
               "number": 4,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "helpContentId",
+              "label": "LABEL_OPTIONAL",
+              "name": "help_content_id",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "BrandConfig"

@@ -18,4 +18,5 @@ message BrandConfig {
   string wallpaper = 3;
   // See chromeos-config/README.md for details
   string regulatory_label = 4;
+  string help_content_id = 5;
 }

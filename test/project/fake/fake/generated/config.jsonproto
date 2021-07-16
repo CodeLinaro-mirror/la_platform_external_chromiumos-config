@@ -4,6 +4,7 @@
       "brandId": {
         "value": "AAAA"
       },
+      "helpContentId": "fake_help",
       "regulatoryLabel": "fake_regulatory_label",
       "wallpaper": "fake_wallpaper"
     },

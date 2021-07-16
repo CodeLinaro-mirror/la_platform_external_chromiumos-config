@@ -649,6 +649,7 @@ _BRAND_CONFIGS = [
         device_brand_id = _DEVICE_BRAND.id,
         wallpaper = "fake_wallpaper",
         regulatory_label = "fake_regulatory_label",
+        help_content_id = "fake_help",
     ),
     brand_config.create(
         device_brand_id = _WL_DEVICE_BRAND.id,

@@ -164,7 +164,8 @@
             "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg",
             "--has-internal-stylus",
             "--regulatory-label-dir=fake_regulatory_label"
-          ]
+          ],
+          "help-content-id": "fake_help"
         },
         "wallpaper": "fake_wallpaper",
         "wifi": {
@@ -349,7 +350,8 @@
             "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg",
             "--has-internal-stylus",
             "--regulatory-label-dir=fake_regulatory_label"
-          ]
+          ],
+          "help-content-id": "fake_help"
         },
         "wallpaper": "fake_wallpaper",
         "wifi": {

@@ -222,7 +222,11 @@ def _build_ash_flags(config: Config) -> List[str]:
 
 def _build_ui(config: Config) -> dict:
   """Builds the 'ui' property from cros_config_schema."""
-  return {'extra-ash-flags': _build_ash_flags(config)}
+  result = {'extra-ash-flags': _build_ash_flags(config)}
+  help_content_id = config.brand_config.help_content_id
+  if help_content_id:
+    result['help-content-id'] = help_content_id
+  return result
 
 
 def _build_keyboard(hw_topology):
