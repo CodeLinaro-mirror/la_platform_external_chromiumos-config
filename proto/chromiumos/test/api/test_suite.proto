@@ -19,16 +19,18 @@ message TestSuite {
   // Optional human friendly name
   string name = 1;
 
-  // Explicit list of tests
-  TestCaseIdList test_case_ids = 2;
-  // Tests are included via tag inclusion/exclusion criteria.
-  TestCaseTagCriteria test_case_tag_criteria = 3;
+  oneof spec {
+    // Explicit list of tests
+    TestCaseIdList test_case_ids = 2;
+    // Tests are included via tag inclusion/exclusion criteria.
+    TestCaseTagCriteria test_case_tag_criteria = 3;
+  }
 
   // Defines tag based selection criteria, which is applied against
   // a list of TestCase definitions to determine test suite inclusion.
   //
   // Tests are included if they meet the following:
-  //  - MATCH ANY of the [include] tags.
+  //  - MATCH ALL of the [include] tags.
   //  - DO NOT MATCH ANY of the exclude tags.
   //
   // Tags must match exactly (i.e. no regexp, wildcard, etc. allowed).

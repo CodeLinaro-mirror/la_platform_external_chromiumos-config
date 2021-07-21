@@ -11272,6 +11272,7 @@
               "label": "LABEL_OPTIONAL",
               "name": "test_case_ids",
               "number": 2,
+              "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCaseIdList"
             },
@@ -11280,6 +11281,7 @@
               "label": "LABEL_OPTIONAL",
               "name": "test_case_tag_criteria",
               "number": 3,
+              "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestSuite.TestCaseTagCriteria"
             }
@@ -11304,6 +11306,11 @@
                 }
               ],
               "name": "TestCaseTagCriteria"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "spec"
             }
           ]
         }
