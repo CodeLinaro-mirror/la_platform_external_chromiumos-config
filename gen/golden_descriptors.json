@@ -400,6 +400,83 @@
       "syntax": "proto3"
     },
     {
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SoftwareAttribute.Id"
+            },
+            {
+              "jsonName": "fieldPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "field_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SoftwareAttribute",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "swAttributes",
+              "label": "LABEL_REPEATED",
+              "name": "sw_attributes",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SoftwareAttribute"
+            }
+          ],
+          "name": "SoftwareAttributeList"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "attributeId",
+              "label": "LABEL_OPTIONAL",
+              "name": "attribute_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SoftwareAttribute.Id"
+            },
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SoftwareCriterion"
+        }
+      ],
+      "name": "chromiumos/build/api/software_attribute.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
       "dependency": [
         "chromiumos/build/api/portage.proto"
       ],
@@ -610,6 +687,41 @@
         }
       ],
       "name": "chromiumos/build/api/system_image.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
+      "dependency": [
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/build/api/system_image.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "systemImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "system_image",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SystemImage"
+            },
+            {
+              "jsonName": "firmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.Firmware"
+            }
+          ],
+          "name": "SoftwareBundle"
+        }
+      ],
+      "name": "chromiumos/build/api/software_bundle.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
       },
