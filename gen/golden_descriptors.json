@@ -1636,6 +1636,10 @@
                     {
                       "name": "LI_ION",
                       "number": 1
+                    },
+                    {
+                      "name": "LI_POLY",
+                      "number": 2
                     }
                   ]
                 }

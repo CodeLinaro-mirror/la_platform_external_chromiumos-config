@@ -4,6 +4,7 @@
 """Test for Hwid merging plugin"""
 
 import unittest
+from chromiumos.config.api.component_pb2 import Component
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from .merge_hwid import MergeHwid
 
@@ -47,6 +48,39 @@ class MergeHWidTests(unittest.TestCase):
     self.assertEqual(component.id.value, test_label)
     self.assertEqual(component.name, test_name)
     self.assertEqual(component.audio_codec.name, test_name)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
+
+  def test_battery(self):
+    """Test basic battery functionality."""
+    test_label = 'battery123'
+    test_oem = 'conglomo'
+    test_model = 'battery-123-abc'
+    test_tech = 'li-poly'
+
+    hwid = _mock_hwid_component(
+        'battery',
+        test_label,
+        {
+            'manufacturer': test_oem,
+            'model_name': test_model,
+            'technology': test_tech,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'battery')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.id.value, test_label)
+    self.assertEqual(component.manufacturer_id.value, test_oem)
+    self.assertEqual(component.battery.model, test_model)
+    self.assertEqual(component.battery.technology, Component.Battery.LI_POLY)
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})

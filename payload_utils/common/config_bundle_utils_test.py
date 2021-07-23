@@ -46,6 +46,8 @@ class ConfigBundleUtilsTest(unittest.TestCase):
     self.assertEqual(
         config_bundle_utils.find_partner(empty, 'TestPartner', create=True),
         partner)
+
+    # Now that we called with create=True, we should find it in the bundle
     self.assertEqual(
         config_bundle_utils.find_partner(empty, 'TestPartner'), partner)
 
@@ -55,6 +57,30 @@ class ConfigBundleUtilsTest(unittest.TestCase):
         config_bundle_utils.find_partner(bundle, 'testpartner'), partner)
     self.assertIsNone(
         config_bundle_utils.find_partner(bundle, 'does_not_exist'))
+
+  def test_find_component(self):
+    """Test the find_component method."""
+    empty = config_bundle_pb2.ConfigBundle()
+    bundle = config_bundle_pb2.ConfigBundle()
+    component = bundle.components.add()
+    component.id.value = 'TestComponent'
+
+    self.assertIsNone(
+        config_bundle_utils.find_component(empty, 'TestComponent'))
+    self.assertEqual(
+        config_bundle_utils.find_component(empty, 'TestComponent', create=True),
+        component)
+
+    # Now that we called with create=True, we should find it in the bundle
+    self.assertEqual(
+        config_bundle_utils.find_component(empty, 'TestComponent'), component)
+
+    self.assertEqual(
+        config_bundle_utils.find_component(bundle, 'TestComponent'), component)
+    self.assertEqual(
+        config_bundle_utils.find_component(bundle, 'testcomponent'), component)
+    self.assertIsNone(
+        config_bundle_utils.find_component(bundle, 'does_not_exist'))
 
   def test_flatten_config(self):
     """Test flattening ConfigBundle"""

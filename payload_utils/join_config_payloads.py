@@ -224,20 +224,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
 
-  def create_battery_components(items):
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = key
-      comp.name = comp.id.value
-      if 'manufacturer' in values:
-        comp.manufacturer_id.MergeFrom(
-            config_bundle_utils.find_partner(
-                config_bundle, values['manufacturer'], create=True).id)
-
-      comp.battery.model = values.get('model_name', '')
-      if 'technology' in values and values['technology'].lower() == 'li-ion':
-        comp.battery.technology = comp.battery.LI_ION
-
   def create_bluetooth_components(items):
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
@@ -519,7 +505,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'battery': create_battery_components,
           'bluetooth': create_bluetooth_components,
           'cpu': create_cpu_components,
           'display_panel': create_display_components,

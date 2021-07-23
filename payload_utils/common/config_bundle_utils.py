@@ -16,6 +16,11 @@ from chromiumos.config.api import design_pb2
 from chromiumos.config.api.software import brand_config_pb2
 
 
+def _case_equal(str1, str2):
+  """Case insensitive string equals."""
+  return str1.lower() == str2.lower()
+
+
 def flatten_config(config: ConfigBundle) -> FlatConfigList:
   """Take a ConfigBundle and resolve all the values that are referred to by id.
 
@@ -129,7 +134,7 @@ def find_partner(bundle: ConfigBundle, name: str, create=False):
   """
 
   for partner in bundle.partner_list:
-    if partner.name.lower() == name.lower():
+    if _case_equal(partner.name, name):
       return partner
 
   if create:
@@ -153,7 +158,7 @@ def find_program(bundle: ConfigBundle, name: str, create=False):
   """
 
   for program in bundle.program_list:
-    if program.name.lower() == name.lower():
+    if _case_equal(program.name, name):
       return program
 
   if create:
@@ -161,4 +166,27 @@ def find_program(bundle: ConfigBundle, name: str, create=False):
     program.id.value = name
     program.name = name
     return program
+  return None
+
+
+def find_component(bundle: ConfigBundle, id_value: str, create=False):
+  """Search for a component with the given id.
+
+  Args:
+     bundle: ConfigBundle instance to search
+     id_value: Value for Component.Id.Value to search for
+     create: If true, return newly created component if one isn't found.
+
+  Returns:
+     existing Component if found, otherwise a newly create one, else None
+  """
+
+  for component in bundle.components:
+    if _case_equal(component.id.value, id_value):
+      return component
+
+  if create:
+    component = bundle.components.add()
+    component.id.value = id_value
+    return component
   return None

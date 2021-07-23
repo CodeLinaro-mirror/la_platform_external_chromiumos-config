@@ -7,7 +7,11 @@
 import copy
 import yaml
 
-from .merge_plugin import ConfigBundle, MergePlugin
+from chromiumos.config.api.component_pb2 import Component
+from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
+
+from common import config_bundle_utils as cbu
+from .merge_plugin import MergePlugin
 
 
 def _include_item(item):
@@ -107,8 +111,6 @@ class MergeHwid(MergePlugin):
 
   def merge(self, bundle: ConfigBundle):
     """Merge our data into the given ConfigBundle instance."""
-    processed = set()
-
     components = self.data['components']
     for component_type in list(components.keys()):
       value = components[component_type]
@@ -117,8 +119,8 @@ class MergeHwid(MergePlugin):
 
       # yapf: disable
       callback = {
-          'audio_codec':         MergeHwid._merge_audio,
-          # 'battery':             __merge_battery,
+        'audio_codec':         MergeHwid._merge_audio,
+        'battery':             MergeHwid._merge_battery,
           # 'bluetooth':           __merge_bluetooth,
           # 'cpu':                 __merge_cpu,
           # 'display_panel':       __merge_display,
@@ -139,31 +141,86 @@ class MergeHwid(MergePlugin):
 
       if callback:
         value['items'] = _non_null_items(value['items'])
-        callback(bundle, value['items'])
+        MergeHwid._iterate_items(bundle, value['items'], callback)
 
         _del_if_empty(value, 'items')
         _del_if_empty(components, component_type)
 
-        processed.add(component_type)
-
     _del_if_empty(self.data, 'components')
 
   @staticmethod
-  def _merge_audio(bundle, items):
-    """Merge audio_codec items."""
+  def _iterate_items(bundle, items, callback):
+    """Iterate items in an item dict and call callback on them.
+
+    Handle boilerplate for callbacks to delete empty/touched
+    fields as we go to leave an informative residual.
+
+    Callbacks must take a ConfigBundle and an item and return
+    an iterable of fields in the item that were touched/used.
+
+    Args:
+      bundle: ConfigBundle instance to modify
+      items:  dict of label => [item]
+      callback: callback to process a single item.
+    """
+
     for label in list(items.keys()):
       values = items[label]
-      component = bundle.components.add()
+      touched = callback(bundle, label, values)
 
-      # save HWID values
-      component.hwid_type = "audio_codec"
-      component.hwid_label = label
-
-      # configure component
-      component.id.value = label
-      component.name = values.get('name', label)
-      component.audio_codec.name = component.name
-
-      # remove values we've touched for residual output
-      _maybe_delete(values, 'name')
+      for name in touched:
+        _maybe_delete(values, name)
       _del_if_empty(items, label)
+
+  @staticmethod
+  def _merge_audio(bundle, label, values):
+    """Merge audio_codec items."""
+    component = cbu.find_component(bundle, id_value=label, create=True)
+
+    # save HWID values
+    component.hwid_type = 'audio_codec'
+    component.hwid_label = label
+
+    # configure component
+    component.name = values.get('name', label)
+    component.audio_codec.name = component.name
+
+    return ['name']
+
+  @staticmethod
+  def _merge_battery(bundle, label, values):
+    """Merge battery items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = component.id.value
+
+    # save HWID values
+    component.hwid_type = 'battery'
+    component.hwid_label = label
+
+    # lookup or create manufacturer
+    if 'manufacturer' in values:
+      component.manufacturer_id.MergeFrom(
+          cbu.find_partner(bundle, values['manufacturer'], create=True).id)
+      touched.add('manufacturer')
+
+    # set model
+    if 'model_name' in values:
+      component.battery.model = values['model_name']
+      touched.add('model_name')
+
+    # set battery technology
+    if 'technology' in values:
+      tech = values['technology'].lower().replace('-', '')
+
+      tech_map = {
+          'liion': Component.Battery.LI_ION,
+          'lipoly': Component.Battery.LI_POLY,
+      }
+
+      if tech in tech_map:
+        component.battery.technology = tech_map[tech]
+        touched.add('technology')
+
+    return touched

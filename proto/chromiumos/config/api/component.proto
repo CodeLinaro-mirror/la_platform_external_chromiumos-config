@@ -241,6 +241,7 @@ message Component {
     enum Technology {
       TECH_UNKNOWN = 0;
       LI_ION = 1;
+      LI_POLY = 2;
     }
     string model = 1;
     Technology technology = 2;
