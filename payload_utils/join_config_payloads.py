@@ -27,6 +27,8 @@ import yaml
 
 from google.cloud import bigquery
 
+from merge_plugins.merge_hwid import MergeHwid
+
 from common import config_bundle_utils
 
 from checker import io_utils
@@ -197,7 +199,8 @@ def merge_avl_dlm(config_bundle):
   return config_bundle
 
 
-def add_hwid_components(config_bundle, hwid_db):
+# NOTE: hwid_path is temporary until migration to new plugins is completeq
+def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   """Add components from the HWID database to the config_bundle.
 
   HWID doesn't map hardware to SKU, it's more a listing of all possible
@@ -209,6 +212,7 @@ def add_hwid_components(config_bundle, hwid_db):
   Args:
     config_bundle (ConfigBundle): config to add HWID components to
     hwid_db (dict): parsed HWID database
+    hwid_path (str): path to HWID file
 
   Returns:
     A reference to the input config_bundle updated with components from HWID
@@ -217,12 +221,8 @@ def add_hwid_components(config_bundle, hwid_db):
   # pylint: disable=too-many-statements
   # pylint: disable=too-many-locals
 
-  def create_audio_components(items):
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = key
-      comp.name = values.get('name', '')
-      comp.audio_codec.name = comp.name
+  merger = MergeHwid(hwid_path)
+  merger.merge(config_bundle)
 
   def create_battery_components(items):
     for key, values in non_null_values(items):
@@ -519,7 +519,6 @@ def add_hwid_components(config_bundle, hwid_db):
   for component_type, value in components.items():
     if value:
       {
-          'audio_codec': create_audio_components,
           'battery': create_battery_components,
           'bluetooth': create_bluetooth_components,
           'cpu': create_cpu_components,
@@ -1026,7 +1025,7 @@ def merge_configs(options):
 
   # Merge information from HWID into config bundle
   if hwid_path:
-    return add_hwid_components(config_bundle, load_hwid(hwid_path))
+    return add_hwid_components(config_bundle, load_hwid(hwid_path), hwid_path)
   return config_bundle
 
 
