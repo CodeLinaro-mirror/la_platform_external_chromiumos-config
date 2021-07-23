@@ -1085,7 +1085,7 @@ def main(options):
     io_utils.write_message_json(
         merge_avl_dlm(merge_configs(options)),
         options.output,
-        default_fields=True)
+    )
 
 
 if __name__ == '__main__':
