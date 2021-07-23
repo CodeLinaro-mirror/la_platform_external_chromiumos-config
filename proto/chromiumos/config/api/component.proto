@@ -11,7 +11,7 @@ import "chromiumos/config/api/partner_id.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
-// next field: 25
+// next field: 26
 message Component {
   // Globally unique component identifier.
   ComponentId id = 1;
@@ -22,6 +22,7 @@ message Component {
 
   // Additional optional label to provide alternative value for eg:
   // HWID string rather than relying on id.value directly.
+  string hwid_type  = 25;
   string hwid_label = 20;
 
   // IDs used to join against AVL database

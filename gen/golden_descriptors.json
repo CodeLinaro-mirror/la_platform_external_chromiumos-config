@@ -804,6 +804,13 @@
               "type": "TYPE_STRING"
             },
             {
+              "jsonName": "hwidType",
+              "label": "LABEL_OPTIONAL",
+              "name": "hwid_type",
+              "number": 25,
+              "type": "TYPE_STRING"
+            },
+            {
               "jsonName": "hwidLabel",
               "label": "LABEL_OPTIONAL",
               "name": "hwid_label",
