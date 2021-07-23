@@ -2566,6 +2566,14 @@
               "number": 30,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Battery"
+            },
+            {
+              "jsonName": "privacyScreen",
+              "label": "LABEL_OPTIONAL",
+              "name": "privacy_screen",
+              "number": 31,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.PrivacyScreen"
             }
           ],
           "name": "HardwareFeatures",
@@ -3724,6 +3732,19 @@
                   "name": "Charging"
                 }
               ]
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "PrivacyScreen"
             }
           ]
         }
