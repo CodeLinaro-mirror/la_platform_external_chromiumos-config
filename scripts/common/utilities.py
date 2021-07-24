@@ -66,18 +66,19 @@ def call_and_spin(message, stdin, *cmd):
     return process.stdout, process.returncode
 
 
-def jqdiff(filea, fileb, filt="."):
+def jqdiff(filea, fileb):
   """Diff two json files using jq with ordered keys.
 
     Args:
       filea (str): first file to compare
       fileb (str): second file to compare
-      filt (str): if supplied, jq filter to apply to inputs before comparing
-        The filter is quoted with '' for the user so take care when specifying.
 
     Return:
       Diff between jq output with -S (sorted keys) enabled
     """
+
+  # Enable recursive sort on arrays
+  filt = 'walk(if type == "array" then sort else . end)'
 
   # if inputs aren't declared, use a file that will (almost surely) never
   # exist and pass -N to diff so it treats it as an empty file and gives a
