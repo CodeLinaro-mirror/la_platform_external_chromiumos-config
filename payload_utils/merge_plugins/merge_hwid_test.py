@@ -84,3 +84,36 @@ class MergeHWidTests(unittest.TestCase):
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
+
+  def test_bluetooth(self):
+    """Test basic bluetooth functionality."""
+    test_label = 'bluetooth123'
+    test_vendor = 'vendor'
+    test_product = 'product'
+    test_bcd = 'bcd'
+
+    hwid = _mock_hwid_component(
+        'bluetooth',
+        test_label,
+        {
+            'idVendor': test_vendor,
+            'idProduct': test_product,
+            'bcdDevice': test_bcd,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'bluetooth')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.id.value, test_label)
+    self.assertEqual(component.bluetooth.usb.vendor_id, test_vendor)
+    self.assertEqual(component.bluetooth.usb.product_id, test_product)
+    self.assertEqual(component.bluetooth.usb.bcd_device, test_bcd)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})

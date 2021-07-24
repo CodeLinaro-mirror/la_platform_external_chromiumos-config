@@ -224,16 +224,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
 
-  def create_bluetooth_components(items):
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = key
-      comp.name = comp.id.value
-
-      comp.bluetooth.usb.vendor_id = values.get('idVendor', '')
-      comp.bluetooth.usb.product_id = values.get('idProduct', '')
-      comp.bluetooth.usb.bcd_device = values.get('bcdDevice', '')
-
   def create_cpu_components(items):
     model_re = re.compile(  # reversed from HWID cpu model values
         '(a[0-9]?-[0-9]+[a-z]?|(m3-|i3-|i5-|i7-)*[0-9y]{4,5}[uy]?|n[0-9]{4})')
@@ -505,7 +495,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'bluetooth': create_bluetooth_components,
           'cpu': create_cpu_components,
           'display_panel': create_display_components,
           'dram': create_dram_components,
