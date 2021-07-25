@@ -223,20 +223,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
 
-  def create_display_components(items):
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = key
-
-      if 'vendor' in values:
-        comp.manufacturer_id.MergeFrom(
-            config_bundle_utils.find_partner(
-                config_bundle, values['vendor'], create=True).id)
-
-      comp.display_panel.product_id = values.get('product_id', '')
-      comp.display_panel.properties.width_px = int(values.get('width', 0))
-      comp.display_panel.properties.height_px = int(values.get('height', 0))
-
   def create_dram_components(items):
     # There's a lot of duplicated part numbers in the HWID db, mostly
     # due to specifying slot number.  That information is largely incorrect
@@ -469,7 +455,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'display_panel': create_display_components,
           'dram': create_dram_components,
           'ec_flash_chip': create_ec_flash_components,
           'embedded_controller': create_ec_components,

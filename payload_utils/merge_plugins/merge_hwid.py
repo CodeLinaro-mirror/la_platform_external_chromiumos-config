@@ -128,7 +128,7 @@ class MergeHwid(MergePlugin):
         'battery':             MergeHwid._merge_battery,
         'bluetooth':           MergeHwid._merge_bluetooth,
         'cpu':                 MergeHwid._merge_cpu,
-          # 'display_panel':       __merge_display,
+        'display_panel':       MergeHwid._merge_display_panel,
           # 'dram':                __merge_dram,
           # 'ec_flash_chip':       __merge_ec_flash,
           # 'embedded_controller': __merge_ec,
@@ -298,3 +298,23 @@ class MergeHwid(MergePlugin):
         component.soc.family.name = match.group(0).upper()
 
     return touched
+
+  @staticmethod
+  def _merge_display_panel(bundle, label, values):
+    """Merge display panel items."""
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = component.id.value
+
+    # save HWID values
+    component.hwid_type = 'display_panel'
+    component.hwid_label = label
+
+    if 'vendor' in values:
+      component.manufacturer_id.MergeFrom(
+          cbu.find_partner(bundle, values['vendor'], create=True).id)
+
+    component.display_panel.product_id = values.get('product_id', '')
+    component.display_panel.properties.width_px = int(values.get('width', 0))
+    component.display_panel.properties.height_px = int(values.get('height', 0))
+
+    return set(['vendor', 'product_id', 'width', 'height'])

@@ -176,3 +176,39 @@ class MergeHWidTests(unittest.TestCase):
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
+
+  def test_display_panel(self):
+    """Test basic display panel functionality."""
+    test_label = 'some_cpu_123'
+    test_vendor = 'ABCCo'
+    test_product_id = 'panel_1a_niner'
+    test_width = 800
+    test_height = 480
+
+    hwid = _mock_hwid_component(
+        'display_panel',
+        test_label,
+        {
+            'vendor': test_vendor,
+            'product_id': test_product_id,
+            'width': test_width,
+            'height': test_height,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'display_panel')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.id.value, test_label)
+    self.assertEqual(component.manufacturer_id.value, test_vendor)
+    self.assertEqual(component.display_panel.product_id, test_product_id)
+    self.assertEqual(component.display_panel.properties.width_px, test_width)
+    self.assertEqual(component.display_panel.properties.height_px, test_height)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
