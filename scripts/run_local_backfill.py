@@ -19,6 +19,7 @@ import multiprocessing
 import multiprocessing.pool
 import os
 import pathlib
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -62,11 +63,16 @@ def parse_build_property(build, name):
   return json.loads(build["config"]["properties"]).get(name)
 
 
-def run_backfill(config, logname=None, run_imported=True, run_joined=True):
+def run_backfill(config,
+                 args,
+                 logname=None,
+                 run_imported=True,
+                 run_joined=True):
   """Run a single backfill job, return diff of current and new output.
 
   Args:
     config: BackfillConfig instance for the backfill operation.
+    args: Commandline arguments
     logname: Filename to redirect stderr to from backfill
       default is to suppress the output
     run_imported: If True, generate a diff for the imported payload
@@ -122,14 +128,35 @@ def run_backfill(config, logname=None, run_imported=True, run_joined=True):
     cmd.extend(
         ["--private-model", private_path / overlay / config.private_model])
 
+  # create output directory if it doesn't exist
+  if args.save_imported_payloads:
+    os.makedirs(
+        os.path.join(args.save_imported_payloads, config.project),
+        exist_ok=True,
+    )
+
+  if args.save_joined_payloads:
+    os.makedirs(
+        os.path.join(args.save_joined_payloads, config.project),
+        exist_ok=True,
+    )
+
   # create temporary directory for output
   diff_imported = ""
   diff_joined = ""
   with tempfile.TemporaryDirectory() as scratch:
     scratch = pathlib.Path(scratch)
 
+    old_imported_prefix = path_repo / "generated"
+    if args.diff_imported_against:
+      old_imported_prefix = pathlib.Path(
+          os.path.join(
+              args.diff_imported_against,
+              config.project,
+          ))
+
     # generate diff of imported payloads
-    path_imported_old = path_repo / "generated/imported.jsonproto"
+    path_imported_old = old_imported_prefix / "imported.jsonproto"
     path_imported_new = scratch / "imported.jsonproto"
 
     if run_imported:
@@ -139,13 +166,41 @@ def run_backfill(config, logname=None, run_imported=True, run_joined=True):
           path_imported_new,
       )
 
+      if args.save_imported_payloads:
+        shutil.copyfile(
+            path_imported_new,
+            os.path.join(
+                args.save_imported_payloads,
+                config.project,
+                "imported.jsonproto",
+            ),
+        )
+
+    old_joined_prefix = path_repo / "generated"
+    if args.diff_joined_against:
+      old_joined_prefix = pathlib.Path(
+          os.path.join(
+              args.diff_joined_against,
+              config.project,
+          ))
+
     # generate diff of joined payloads
     if run_joined and path_config.exists():
-      path_joined_old = path_repo / "generated/joined.jsonproto"
+      path_joined_old = old_joined_prefix / "joined.jsonproto"
       path_joined_new = scratch / "joined.jsonproto"
 
       diff_joined = run_diff(cmd + ["--output", path_joined_new],
                              path_joined_old, path_joined_new)
+
+      if args.save_joined_payloads:
+        shutil.copyfile(
+            path_joined_new,
+            os.path.join(
+                args.save_joined_payloads,
+                config.project,
+                "joined.jsonproto",
+            ),
+        )
 
   return ("{}-{}".format(config.program,
                          config.project), diff_imported, diff_joined)
@@ -170,6 +225,7 @@ def run_backfills(args, configs):
   # create a logfile if requested
   kwargs = {}
   kwargs["run_joined"] = args.joined_diff is not None
+  kwargs["args"] = args
   if args.logfile:
     # open and close the logfile to truncate it so backfills can append
     # We can't pickle the file object and send it as an argument with
@@ -227,9 +283,33 @@ def main():
   )
 
   parser.add_argument(
+      "--save-imported-payloads",
+      type=str,
+      help="target directory to save individual imported.jsonproto payloads",
+  )
+
+  parser.add_argument(
+      "--diff-imported-against",
+      type=str,
+      help="source directory of individual imported.jsonproto payloads",
+  )
+
+  parser.add_argument(
       "--joined-diff",
       type=str,
       help="target file for diff on joined.jsonproto payload",
+  )
+
+  parser.add_argument(
+      "--save-joined-payloads",
+      type=str,
+      help="target directory to save individual joined.jsonproto payloads",
+  )
+
+  parser.add_argument(
+      "--diff-joined-against",
+      type=str,
+      help="source directory of individual joined.jsonproto payloads",
   )
 
   parser.add_argument(
