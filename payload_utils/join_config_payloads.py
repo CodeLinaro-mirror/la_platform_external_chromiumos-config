@@ -20,7 +20,6 @@ files.  Simple specify a project name with --project-name/-p and omit
 import argparse
 import logging
 import os
-import re
 import sys
 import tempfile
 import yaml
@@ -223,31 +222,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
 
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
-
-  def create_cpu_components(items):
-    model_re = re.compile(  # reversed from HWID cpu model values
-        '(a[0-9]?-[0-9]+[a-z]?|(m3-|i3-|i5-|i7-)*[0-9y]{4,5}[uy]?|n[0-9]{4})')
-
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = key
-      comp.soc.model = values.get('model', '')
-      comp.soc.cores = int(values.get('cores', 0))
-
-      if 'model' in values:
-        model_string = values['model'].lower()
-        if 'intel' in model_string or 'amd' in model_string:
-          comp.soc.family.arch = comp.soc.X86_64
-        elif 'aarch64' in model_string or 'armv8' in model_string:
-          comp.soc.family.arch = comp.soc.ARM64
-        elif 'armv7' in model_string:
-          comp.soc.family.arch = comp.soc.ARM
-        else:
-          logging.warning('unknown family for cpu model \'%s\'', model_string)
-
-        match = model_re.search(model_string)
-        if match:
-          comp.soc.family.name = match.group(0).upper()
 
   def create_display_components(items):
     for key, values in non_null_values(items):
@@ -495,7 +469,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'cpu': create_cpu_components,
           'display_panel': create_display_components,
           'dram': create_dram_components,
           'ec_flash_chip': create_ec_flash_components,

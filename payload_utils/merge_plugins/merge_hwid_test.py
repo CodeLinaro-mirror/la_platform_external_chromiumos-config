@@ -4,6 +4,7 @@
 """Test for Hwid merging plugin"""
 
 import unittest
+
 from chromiumos.config.api.component_pb2 import Component
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 from .merge_hwid import MergeHwid
@@ -114,6 +115,64 @@ class MergeHWidTests(unittest.TestCase):
     self.assertEqual(component.bluetooth.usb.vendor_id, test_vendor)
     self.assertEqual(component.bluetooth.usb.product_id, test_product)
     self.assertEqual(component.bluetooth.usb.bcd_device, test_bcd)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
+
+  def test_cpu(self):
+    """Test basic cpu functionality."""
+    test_label = 'some_cpu_123'
+    test_model = 'intel i3-5005U'
+    test_cores = 4
+
+    hwid = _mock_hwid_component(
+        'cpu',
+        test_label,
+        {
+            'model': test_model,
+            'cores': test_cores,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'cpu')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.id.value, test_label)
+    self.assertEqual(component.soc.family.arch, component.soc.X86_64)
+    self.assertEqual(component.soc.cores, 4)
+    self.assertEqual(component.soc.family.name, 'I3-5005U')
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
+
+  def test_cpu_nocores(self):
+    """Test cpu entry without cores field."""
+    test_label = 'some_cpu_123'
+    test_model = 'intel i3-5005U'
+
+    hwid = _mock_hwid_component(
+        'cpu',
+        test_label,
+        {
+            'model': test_model,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'cpu')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.id.value, test_label)
+    self.assertEqual(component.soc.cores, 0)
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})

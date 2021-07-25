@@ -5,6 +5,8 @@
 """Plugin for merging HWID information into ConfigBundle format"""
 
 import copy
+import logging as _logging
+import re
 import yaml
 
 from chromiumos.config.api.component_pb2 import Component
@@ -12,6 +14,9 @@ from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
 
 from common import config_bundle_utils as cbu
 from .merge_plugin import MergePlugin
+
+# Create named logger
+logging = _logging.getLogger(__name__)
 
 
 def _include_item(item):
@@ -122,7 +127,7 @@ class MergeHwid(MergePlugin):
         'audio_codec':         MergeHwid._merge_audio,
         'battery':             MergeHwid._merge_battery,
         'bluetooth':           MergeHwid._merge_bluetooth,
-          # 'cpu':                 __merge_cpu,
+        'cpu':                 MergeHwid._merge_cpu,
           # 'display_panel':       __merge_display,
           # 'dram':                __merge_dram,
           # 'ec_flash_chip':       __merge_ec_flash,
@@ -253,5 +258,43 @@ class MergeHwid(MergePlugin):
       if key in values:
         setattr(component.bluetooth.usb, attr, values[key])
         touched.add(key)
+
+    return touched
+
+  @staticmethod
+  def _merge_cpu(bundle, label, values):
+    """Merge cpu items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = component.id.value
+
+    # save HWID values
+    component.hwid_type = 'cpu'
+    component.hwid_label = label
+
+    model_re = re.compile(  # reversed from HWID cpu model values
+        '(a[0-9]?-[0-9]+[a-z]?|(m3-|i3-|i5-|i7-)*[0-9y]{4,5}[uy]?|n[0-9]{4})')
+
+    component.soc.cores = int(values.get('cores', 0))
+    touched.add('cores')
+
+    if 'model' in values:
+      component.soc.model = values['model']
+      touched.add('model')
+
+      model_string = values['model'].lower()
+      if 'intel' in model_string or 'amd' in model_string:
+        component.soc.family.arch = component.soc.X86_64
+      elif 'aarch64' in model_string or 'armv8' in model_string:
+        component.soc.family.arch = component.soc.ARM64
+      elif 'armv7' in model_string:
+        component.soc.family.arch = component.soc.ARM
+      else:
+        logging.warning('unknown family for cpu model \'%s\'', model_string)
+
+      match = model_re.search(model_string)
+      if match:
+        component.soc.family.name = match.group(0).upper()
 
     return touched
