@@ -8943,9 +8943,9 @@
           "jsonName": "operationInfo",
           "label": "LABEL_OPTIONAL",
           "name": "operation_info",
-          "number": 1049,
+          "number": 1050,
           "type": "TYPE_MESSAGE",
-          "typeName": ".google.longrunning.OperationInfo"
+          "typeName": ".chromiumos.longrunning.OperationInfo"
         }
       ],
       "messageType": [
@@ -8980,7 +8980,7 @@
               "number": 4,
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
-              "typeName": ".google.longrunning.Status"
+              "typeName": ".chromiumos.longrunning.Status"
             },
             {
               "jsonName": "response",
@@ -9052,7 +9052,7 @@
               "name": "operations",
               "number": 1,
               "type": "TYPE_MESSAGE",
-              "typeName": ".google.longrunning.Operation"
+              "typeName": ".chromiumos.longrunning.Operation"
             },
             {
               "jsonName": "nextPageToken",
@@ -9155,43 +9155,43 @@
           "name": "Status"
         }
       ],
-      "name": "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto",
+      "name": "chromiumos/longrunning/operations.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api/test/tls/dependencies/longrunning"
+        "goPackage": "go.chromium.org/chromiumos/config/go/longrunning"
       },
-      "package": "google.longrunning",
+      "package": "chromiumos.longrunning",
       "service": [
         {
           "method": [
             {
-              "inputType": ".google.longrunning.ListOperationsRequest",
+              "inputType": ".chromiumos.longrunning.ListOperationsRequest",
               "name": "ListOperations",
               "options": {},
-              "outputType": ".google.longrunning.ListOperationsResponse"
+              "outputType": ".chromiumos.longrunning.ListOperationsResponse"
             },
             {
-              "inputType": ".google.longrunning.GetOperationRequest",
+              "inputType": ".chromiumos.longrunning.GetOperationRequest",
               "name": "GetOperation",
               "options": {},
-              "outputType": ".google.longrunning.Operation"
+              "outputType": ".chromiumos.longrunning.Operation"
             },
             {
-              "inputType": ".google.longrunning.DeleteOperationRequest",
+              "inputType": ".chromiumos.longrunning.DeleteOperationRequest",
               "name": "DeleteOperation",
               "options": {},
               "outputType": ".google.protobuf.Empty"
             },
             {
-              "inputType": ".google.longrunning.CancelOperationRequest",
+              "inputType": ".chromiumos.longrunning.CancelOperationRequest",
               "name": "CancelOperation",
               "options": {},
               "outputType": ".google.protobuf.Empty"
             },
             {
-              "inputType": ".google.longrunning.WaitOperationRequest",
+              "inputType": ".chromiumos.longrunning.WaitOperationRequest",
               "name": "WaitOperation",
               "options": {},
-              "outputType": ".google.longrunning.Operation"
+              "outputType": ".chromiumos.longrunning.Operation"
             }
           ],
           "name": "Operations"
@@ -9206,7 +9206,7 @@
       },
       "dependency": [
         "google/protobuf/empty.proto",
-        "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto"
+        "chromiumos/longrunning/operations.proto"
       ],
       "enumType": [
         {
@@ -9927,34 +9927,34 @@
               "inputType": ".chromiumos.config.api.test.tls.ProvisionDutRequest",
               "name": "ProvisionDut",
               "options": {
-                "[google.longrunning.operation_info]": {
+                "[chromiumos.longrunning.operation_info]": {
                   "metadataType": "ProvisionDutMetadata",
                   "responseType": "ProvisionDutResponse"
                 }
               },
-              "outputType": ".google.longrunning.Operation"
+              "outputType": ".chromiumos.longrunning.Operation"
             },
             {
               "inputType": ".chromiumos.config.api.test.tls.ProvisionLacrosRequest",
               "name": "ProvisionLacros",
               "options": {
-                "[google.longrunning.operation_info]": {
+                "[chromiumos.longrunning.operation_info]": {
                   "metadataType": "ProvisionLacrosMetadata",
                   "responseType": "ProvisionLacrosResponse"
                 }
               },
-              "outputType": ".google.longrunning.Operation"
+              "outputType": ".chromiumos.longrunning.Operation"
             },
             {
               "inputType": ".chromiumos.config.api.test.tls.ProvisionAshRequest",
               "name": "ProvisionAsh",
               "options": {
-                "[google.longrunning.operation_info]": {
+                "[chromiumos.longrunning.operation_info]": {
                   "metadataType": "ProvisionAshMetadata",
                   "responseType": "ProvisionAshResponse"
                 }
               },
-              "outputType": ".google.longrunning.Operation"
+              "outputType": ".chromiumos.longrunning.Operation"
             },
             {
               "inputType": ".chromiumos.config.api.test.tls.FetchCrashesRequest",
@@ -9974,6 +9974,279 @@
             }
           ],
           "name": "Common"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "google/protobuf/any.proto",
+        "google/protobuf/descriptor.proto",
+        "google/protobuf/duration.proto",
+        "google/protobuf/empty.proto"
+      ],
+      "extension": [
+        {
+          "extendee": ".google.protobuf.MethodOptions",
+          "jsonName": "operationInfo",
+          "label": "LABEL_OPTIONAL",
+          "name": "operation_info",
+          "number": 1049,
+          "type": "TYPE_MESSAGE",
+          "typeName": ".google.longrunning.OperationInfo"
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "done",
+              "label": "LABEL_OPTIONAL",
+              "name": "done",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "error",
+              "label": "LABEL_OPTIONAL",
+              "name": "error",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.longrunning.Status"
+            },
+            {
+              "jsonName": "response",
+              "label": "LABEL_OPTIONAL",
+              "name": "response",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "Operation",
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetOperationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "filter",
+              "label": "LABEL_OPTIONAL",
+              "name": "filter",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pageSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_size",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_token",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListOperationsRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "operations",
+              "label": "LABEL_REPEATED",
+              "name": "operations",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.longrunning.Operation"
+            },
+            {
+              "jsonName": "nextPageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_page_token",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListOperationsResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CancelOperationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DeleteOperationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "timeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "timeout",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            }
+          ],
+          "name": "WaitOperationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "responseType",
+              "label": "LABEL_OPTIONAL",
+              "name": "response_type",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "metadataType",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "OperationInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "code",
+              "label": "LABEL_OPTIONAL",
+              "name": "code",
+              "number": 1,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "details",
+              "label": "LABEL_REPEATED",
+              "name": "details",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "Status"
+        }
+      ],
+      "name": "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/test/tls/dependencies/longrunning"
+      },
+      "package": "google.longrunning",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".google.longrunning.ListOperationsRequest",
+              "name": "ListOperations",
+              "options": {},
+              "outputType": ".google.longrunning.ListOperationsResponse"
+            },
+            {
+              "inputType": ".google.longrunning.GetOperationRequest",
+              "name": "GetOperation",
+              "options": {},
+              "outputType": ".google.longrunning.Operation"
+            },
+            {
+              "inputType": ".google.longrunning.DeleteOperationRequest",
+              "name": "DeleteOperation",
+              "options": {},
+              "outputType": ".google.protobuf.Empty"
+            },
+            {
+              "inputType": ".google.longrunning.CancelOperationRequest",
+              "name": "CancelOperation",
+              "options": {},
+              "outputType": ".google.protobuf.Empty"
+            },
+            {
+              "inputType": ".google.longrunning.WaitOperationRequest",
+              "name": "WaitOperation",
+              "options": {},
+              "outputType": ".google.longrunning.Operation"
+            }
+          ],
+          "name": "Operations"
         }
       ],
       "syntax": "proto3"
@@ -10125,7 +10398,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto",
+        "chromiumos/longrunning/operations.proto",
         "chromiumos/config/api/test/xmlrpc/xmlrpc.proto"
       ],
       "messageType": [
@@ -10482,12 +10755,12 @@
               "inputType": ".chromiumos.config.api.test.tls.CacheForDutRequest",
               "name": "CacheForDut",
               "options": {
-                "[google.longrunning.operation_info]": {
+                "[chromiumos.longrunning.operation_info]": {
                   "metadataType": "CacheForDutMetadata",
                   "responseType": "CacheForDutResponse"
                 }
               },
-              "outputType": ".google.longrunning.Operation"
+              "outputType": ".chromiumos.longrunning.Operation"
             },
             {
               "inputType": ".chromiumos.config.api.test.tls.CallServoRequest",
@@ -11071,279 +11344,6 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/public_replication/testdata"
       },
       "package": "chromiumos.config.public_replication.testdata",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "google/protobuf/any.proto",
-        "google/protobuf/descriptor.proto",
-        "google/protobuf/duration.proto",
-        "google/protobuf/empty.proto"
-      ],
-      "extension": [
-        {
-          "extendee": ".google.protobuf.MethodOptions",
-          "jsonName": "operationInfo",
-          "label": "LABEL_OPTIONAL",
-          "name": "operation_info",
-          "number": 1050,
-          "type": "TYPE_MESSAGE",
-          "typeName": ".chromiumos.longrunning.OperationInfo"
-        }
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "name",
-              "label": "LABEL_OPTIONAL",
-              "name": "name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "metadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
-            },
-            {
-              "jsonName": "done",
-              "label": "LABEL_OPTIONAL",
-              "name": "done",
-              "number": 3,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "error",
-              "label": "LABEL_OPTIONAL",
-              "name": "error",
-              "number": 4,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.longrunning.Status"
-            },
-            {
-              "jsonName": "response",
-              "label": "LABEL_OPTIONAL",
-              "name": "response",
-              "number": 5,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
-            }
-          ],
-          "name": "Operation",
-          "oneofDecl": [
-            {
-              "name": "result"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "name",
-              "label": "LABEL_OPTIONAL",
-              "name": "name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "GetOperationRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "name",
-              "label": "LABEL_OPTIONAL",
-              "name": "name",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "filter",
-              "label": "LABEL_OPTIONAL",
-              "name": "filter",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "pageSize",
-              "label": "LABEL_OPTIONAL",
-              "name": "page_size",
-              "number": 2,
-              "type": "TYPE_INT32"
-            },
-            {
-              "jsonName": "pageToken",
-              "label": "LABEL_OPTIONAL",
-              "name": "page_token",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "ListOperationsRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "operations",
-              "label": "LABEL_REPEATED",
-              "name": "operations",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "jsonName": "nextPageToken",
-              "label": "LABEL_OPTIONAL",
-              "name": "next_page_token",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "ListOperationsResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "name",
-              "label": "LABEL_OPTIONAL",
-              "name": "name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CancelOperationRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "name",
-              "label": "LABEL_OPTIONAL",
-              "name": "name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DeleteOperationRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "name",
-              "label": "LABEL_OPTIONAL",
-              "name": "name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "timeout",
-              "label": "LABEL_OPTIONAL",
-              "name": "timeout",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Duration"
-            }
-          ],
-          "name": "WaitOperationRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "responseType",
-              "label": "LABEL_OPTIONAL",
-              "name": "response_type",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "metadataType",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata_type",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "OperationInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "code",
-              "label": "LABEL_OPTIONAL",
-              "name": "code",
-              "number": 1,
-              "type": "TYPE_INT32"
-            },
-            {
-              "jsonName": "message",
-              "label": "LABEL_OPTIONAL",
-              "name": "message",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "details",
-              "label": "LABEL_REPEATED",
-              "name": "details",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
-            }
-          ],
-          "name": "Status"
-        }
-      ],
-      "name": "chromiumos/longrunning/operations.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/longrunning"
-      },
-      "package": "chromiumos.longrunning",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.longrunning.ListOperationsRequest",
-              "name": "ListOperations",
-              "options": {},
-              "outputType": ".chromiumos.longrunning.ListOperationsResponse"
-            },
-            {
-              "inputType": ".chromiumos.longrunning.GetOperationRequest",
-              "name": "GetOperation",
-              "options": {},
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.longrunning.DeleteOperationRequest",
-              "name": "DeleteOperation",
-              "options": {},
-              "outputType": ".google.protobuf.Empty"
-            },
-            {
-              "inputType": ".chromiumos.longrunning.CancelOperationRequest",
-              "name": "CancelOperation",
-              "options": {},
-              "outputType": ".google.protobuf.Empty"
-            },
-            {
-              "inputType": ".chromiumos.longrunning.WaitOperationRequest",
-              "name": "WaitOperation",
-              "options": {},
-              "outputType": ".chromiumos.longrunning.Operation"
-            }
-          ],
-          "name": "Operations"
-        }
-      ],
       "syntax": "proto3"
     },
     {
