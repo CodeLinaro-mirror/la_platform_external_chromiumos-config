@@ -326,8 +326,8 @@ design.append_configs(
     config_id,
 
     # Optional arguments.
-    hw_config_public_fields = None,
-    sw_config_public_fields = None,
+    extra_hw_config_public_fields = [],
+    extra_sw_config_public_fields = [],
     hardware_topology = None,
     firmware = None,
     firmware_build_config = None,
@@ -335,6 +335,8 @@ design.append_configs(
     power = None,
     audio = None,
     wifi = None,
+    ui = None,
+    device_tree_compatible_match = None,
     smbios_name_match_override = None,
 )
 ```
@@ -345,8 +347,8 @@ design.append_configs(
 * **hw_configs**: An array to append the new Design.Config to. Required.
 * **design_id**: A DesignId to use for the Design.Config and SoftwareConfig. Required.
 * **config_id**: A str or int used to construct the DesignConfigId for the Design.Config and SoftwareConfig. Required.
-* **hw_config_public_fields**: A list of str specifying fields on Design.Config that will be made public. See PublicReplication proto for details.
-* **sw_config_public_fields**: A list of str specifying fields on SoftwareConfig that will be made public. See PublicReplication proto for details.
+* **extra_hw_config_public_fields**: A list of additional str specifying fields on Design.Config that will be made public. See PublicReplication proto for details.
+* **extra_sw_config_public_fields**: A list of additional str specifying fields on SoftwareConfig that will be made public. See PublicReplication proto for details.
 * **hardware_topology**: A HardwareTopology to be used in the Design.Config.
 * **firmware**: A FirmwareConfig to be used in the SoftwareConfig.
 * **firmware_build_config**: A FirmwareBuildConfig to be used in the SoftwareConfig.
@@ -354,7 +356,9 @@ design.append_configs(
 * **power**: A PowerConfig to be used in the SoftwareConfig.
 * **audio**: An AudioConfig to be used in the SoftwareConfig. Can be either a single AudioConfig or a list of AudioConfigs.
 * **wifi**: A WifiConfig to be used in the SoftwareConfig.
-* **smbios_name_match_override**: A str used for smbios_name_match in IdentityScanConfig. If not specified, the string in DesignId is used.
+* **ui**: A UiConfig to be used in the SoftwareConfig.
+* **device_tree_compatible_match**: For ARM platform, a str used for device_tree_compatible_match in IdentityScanConfig.
+* **smbios_name_match_override**: For x86 platform, a str used for smbios_name_match in IdentityScanConfig. If not specified, the string in DesignId is used.
 
 
 ### design.create_constraint {#design.create_constraint}

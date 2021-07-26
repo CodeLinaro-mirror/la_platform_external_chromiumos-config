@@ -171,6 +171,10 @@
       ],
       "designConfigId": {
         "value": "FAKE_REF_DESIGN:2147483647"
+      },
+      "idScanConfig": {
+        "firmwareSku": 2147483647,
+        "smbiosNameMatch": "FAKE_REF_DESIGN"
       }
     },
     {
@@ -181,6 +185,9 @@
       ],
       "designConfigId": {
         "value": "FAKE_REF_DESIGN:0"
+      },
+      "idScanConfig": {
+        "smbiosNameMatch": "FAKE_REF_DESIGN"
       }
     },
     {
@@ -191,6 +198,10 @@
       ],
       "designConfigId": {
         "value": "PROJECT_A:32"
+      },
+      "idScanConfig": {
+        "firmwareSku": 32,
+        "smbiosNameMatch": "PROJECT_A"
       }
     },
     {
@@ -202,6 +213,10 @@
       "cameraConfig": {},
       "designConfigId": {
         "value": "PROJECT_B:33"
+      },
+      "idScanConfig": {
+        "firmwareSku": 33,
+        "smbiosNameMatch": "PROJECT_B"
       }
     },
     {
@@ -212,6 +227,10 @@
       ],
       "designConfigId": {
         "value": "PROJECT_C:34"
+      },
+      "idScanConfig": {
+        "firmwareSku": 34,
+        "smbiosNameMatch": "PROJECT_C"
       }
     },
     {
@@ -225,6 +244,10 @@
       ],
       "designConfigId": {
         "value": "PROJECT_WL:64"
+      },
+      "idScanConfig": {
+        "firmwareSku": 64,
+        "smbiosNameMatch": "PROJECT_WL"
       }
     },
     {
@@ -235,6 +258,10 @@
       ],
       "designConfigId": {
         "value": "PROJECT_BOX:128"
+      },
+      "idScanConfig": {
+        "firmwareSku": 128,
+        "smbiosNameMatch": "PROJECT_BOX"
       }
     }
   ]

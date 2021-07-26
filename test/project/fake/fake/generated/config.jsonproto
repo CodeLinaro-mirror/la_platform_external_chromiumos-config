@@ -3314,7 +3314,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId"
+        "publicFields": "designConfigId,idScanConfig"
       },
       "uiConfig": {
         "extraWebAppsDir": "apps1"
@@ -3409,7 +3409,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId"
+        "publicFields": "designConfigId,idScanConfig"
       },
       "uiConfig": {
         "extraWebAppsDir": "apps2"
@@ -3528,7 +3528,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId"
+        "publicFields": "designConfigId,idScanConfig"
       },
       "wifiConfig": {
         "intelConfig": {
@@ -3676,7 +3676,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId"
+        "publicFields": "designConfigId,idScanConfig"
       }
     },
     {
@@ -3758,7 +3758,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId"
+        "publicFields": "designConfigId,idScanConfig"
       }
     },
     {
@@ -3843,7 +3843,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId"
+        "publicFields": "designConfigId,idScanConfig"
       }
     },
     {
@@ -3923,7 +3923,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId"
+        "publicFields": "designConfigId,idScanConfig"
       }
     }
   ]

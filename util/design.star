@@ -30,6 +30,17 @@ _CONSTRAINT = struct(
     OPTIONAL = design_pb.Design.Config.Constraint.OPTIONAL,
 )
 
+# Default hw_config_fields to be exposed
+_DEFAULT_PUBLIC_HW_CONFIG_FIELDS = [
+    "id",
+]
+
+# Default sw_config_fields to be exposed
+_DEFAULT_PUBLIC_SW_CONFIG_FIELDS = [
+    "design_config_id",
+    "id_scan_config",
+]
+
 def _create_constraint(hw_features, level = _CONSTRAINT.REQUIRED):
     """Builds a Design.Config.Constraint proto."""
     return design_pb.Design.Config.Constraint(level = level, features = hw_features)
@@ -46,8 +57,8 @@ def _append_configs(
         hw_configs,
         design_id,
         config_id,
-        hw_config_public_fields = ["id"],
-        sw_config_public_fields = ["design_config_id"],
+        extra_hw_config_public_fields = [],
+        extra_sw_config_public_fields = [],
         hardware_topology = None,
         firmware = None,
         firmware_build_config = None,
@@ -72,12 +83,14 @@ def _append_configs(
             Required.
         config_id: A str or int used to construct the DesignConfigId for the
             Design.Config and SoftwareConfig. Required.
-        hw_config_public_fields: A list of str specifying fields on
-            Design.Config that will be made public. See PublicReplication proto
+        extra_hw_config_public_fields: A list of str specifying fields on
+            Design.Config that will be made public in addition to the default
+            _DEFAULT_PUBLIC_HW_CONFIG_FIELDS. See PublicReplication proto
             for details.
-        sw_config_public_fields: A list of str specifying fields on
-            SoftwareConfig that will be made public. See PublicReplication proto
-            for details.
+        extra_sw_config_public_fields: A list of str specifying fields on
+            SoftwareConfig that will be made public in addition to the default
+            _DEFAULT_PUBLIC_SW_CONFIG_FIELDS. See PublicReplication proto for
+            details.
         hardware_topology: A HardwareTopology to be used in the Design.Config.
         firmware: A FirmwareConfig to be used in the SoftwareConfig.
         firmware_build_config: A FirmwareBuildConfig to be used in the
@@ -117,7 +130,7 @@ def _append_configs(
         hardware_topology,
     )
     hw_config.public_replication = public_replication.create(
-        public_fields = hw_config_public_fields,
+        public_fields = _DEFAULT_PUBLIC_HW_CONFIG_FIELDS + extra_hw_config_public_fields,
     )
     hw_configs.append(hw_config)
 
@@ -143,7 +156,7 @@ def _append_configs(
     sw_config.camera_config = camera
     sw_config.ui_config = ui
     sw_config.public_replication = public_replication.create(
-        public_fields = sw_config_public_fields,
+        public_fields = _DEFAULT_PUBLIC_SW_CONFIG_FIELDS + extra_sw_config_public_fields,
     )
     sw_configs.append(sw_config)
 
