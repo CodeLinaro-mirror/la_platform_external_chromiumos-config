@@ -1,7 +1,10 @@
 {
-  "bufbuildImageExtension": {},
   "file": [
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "name": "Portage",
@@ -76,6 +79,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/build/api/portage.proto"
       ],
@@ -107,6 +114,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "enumType": [
@@ -156,6 +167,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/build/api/portage.proto",
         "chromiumos/storage_path.proto"
@@ -400,6 +415,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -477,6 +496,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/build/api/portage.proto"
       ],
@@ -694,6 +717,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/build/api/firmware_config.proto",
         "chromiumos/build/api/system_image.proto"
@@ -729,6 +756,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -751,6 +782,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -773,6 +808,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/component_id.proto",
         "chromiumos/config/api/partner_id.proto"
@@ -1835,6 +1874,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/component.proto"
       ],
@@ -1997,6 +2040,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -2054,6 +2101,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -2076,6 +2127,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/component.proto"
       ],
@@ -3761,6 +3816,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/topology.proto"
       ],
@@ -3987,6 +4046,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -4009,6 +4072,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/field_mask.proto"
       ],
@@ -4035,6 +4102,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/design_config_id.proto",
         "chromiumos/config/api/design_id.proto",
@@ -4270,6 +4341,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/partner_id.proto"
       ],
@@ -4386,6 +4461,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -4422,6 +4501,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/component.proto",
         "chromiumos/config/api/design.proto",
@@ -4758,6 +4841,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/design.proto",
         "chromiumos/config/api/partner.proto",
@@ -4810,6 +4897,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/design_id.proto",
         "chromiumos/config/api/device_brand_id.proto",
@@ -4868,6 +4959,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -4904,6 +4999,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/design_config_id.proto",
         "chromiumos/config/api/device_brand_id.proto",
@@ -4979,6 +5078,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/component_package.proto",
         "chromiumos/config/api/mfg_config_id.proto"
@@ -5041,6 +5144,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/public_replication/public_replication.proto"
       ],
@@ -5137,6 +5244,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -5184,6 +5295,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/device_brand_id.proto"
       ],
@@ -5239,6 +5354,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -5288,6 +5407,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -5335,6 +5458,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -5682,6 +5809,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "enumType": [
@@ -5731,6 +5862,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/build/api/factory.proto",
         "chromiumos/build/api/firmware_config.proto",
@@ -5885,6 +6020,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/component.proto",
         "chromiumos/config/api/design.proto",
@@ -6552,6 +6691,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -6596,6 +6739,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/struct.proto"
       ],
@@ -6724,6 +6871,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/test/results/v2/result.proto"
       ],
@@ -6862,6 +7013,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/test/rtd/v1/progress.proto",
         "chromiumos/config/api/test/results/v2/result.proto"
@@ -7157,6 +7312,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/struct.proto",
         "chromiumos/config/api/test/dut/v1/dut.proto",
@@ -7476,6 +7635,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -7719,6 +7882,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -7741,6 +7908,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/test/results/graphics/v1/trace_id.proto"
       ],
@@ -7858,6 +8029,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -7880,6 +8055,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/timestamp.proto",
         "chromiumos/config/api/test/results/v1/machine_id.proto"
@@ -7929,6 +8108,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/timestamp.proto"
       ],
@@ -7990,6 +8173,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -8012,6 +8199,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -8034,6 +8225,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/test/results/v1/package.proto"
       ],
@@ -8060,6 +8255,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/timestamp.proto",
         "chromiumos/config/api/test/results/v1/machine_id.proto",
@@ -8343,6 +8542,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/timestamp.proto",
         "chromiumos/config/api/test/results/v1/package.proto",
@@ -8584,6 +8787,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/test/rtd/v1/progress.proto"
       ],
@@ -8720,6 +8927,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/any.proto",
         "google/protobuf/descriptor.proto",
@@ -8989,6 +9200,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/empty.proto",
         "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto"
@@ -9764,6 +9979,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -9901,6 +10120,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto",
         "chromiumos/config/api/test/xmlrpc/xmlrpc.proto"
@@ -10283,6 +10506,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/component.proto",
         "chromiumos/config/api/design.proto",
@@ -10402,6 +10629,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/component.proto",
         "chromiumos/config/api/design.proto",
@@ -10521,6 +10752,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -10543,6 +10778,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/prototype/release_target_id.proto",
         "chromiumos/build/api/system_image.proto"
@@ -10622,6 +10861,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/test/plan/v1/plan.proto",
         "chromiumos/build/api/system_image.proto",
@@ -10666,6 +10909,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/public_replication/public_replication.proto"
       ],
@@ -10827,6 +11074,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/any.proto",
         "google/protobuf/descriptor.proto",
@@ -11096,6 +11347,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "name": "CheckHealthRequest"
@@ -11125,6 +11380,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -11202,6 +11461,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -11279,6 +11542,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/test_case.proto"
       ],
@@ -11348,6 +11615,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/dut_attribute.proto",
         "chromiumos/test/api/test_suite.proto"
@@ -11390,6 +11661,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/longrunning/operations.proto"
@@ -11812,6 +12087,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/storage_path.proto",
         "chromiumos/test/api/test_case.proto"
@@ -11893,6 +12172,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/longrunning/operations.proto",
         "chromiumos/test/api/test_case_result.proto",
@@ -11995,6 +12278,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/build/api/firmware_config.proto",
         "chromiumos/longrunning/operations.proto",
@@ -12368,6 +12655,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -12426,6 +12717,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/test_case.proto",
         "chromiumos/test/api/test_harness.proto"
@@ -12520,6 +12815,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/dut_attribute.proto"
       ],
@@ -12586,6 +12885,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -12615,6 +12918,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto"
@@ -12752,6 +13059,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/lab/api/dut.proto"
       ],
@@ -12846,6 +13157,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/coverage_rule.proto"
       ],
@@ -12894,6 +13209,10 @@
       "syntax": "proto3"
     },
     {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "enumType": [

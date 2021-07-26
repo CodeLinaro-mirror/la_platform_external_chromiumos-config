@@ -223,38 +223,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
 
-  def create_dram_components(items):
-    # There's a lot of duplicated part numbers in the HWID db, mostly
-    # due to specifying slot number.  That information is largely incorrect
-    # anyways, so we'll deduplicate parts here
-    part_values = {}
-    for _, values in non_null_values(items):
-      # skip incompletely specified parts
-      if not all(key in values for key in ['part', 'size', 'timing']):
-        continue
-
-      part_values[values['part']] = (int(values['size']), values['timing'])
-
-    for part_number, (size, timing) in part_values.items():
-      comp = config_bundle.components.add()
-      comp.id.value = part_number
-      comp.memory.part_number = part_number
-      comp.memory.profile.size_megabytes = int(size)
-
-      memory_type = timing.split('-')[0]
-      if memory_type == 'LPDDR4':
-        comp.memory.profile.type = comp.memory.LP_DDR4
-      elif memory_type == 'LPDDR3':
-        comp.memory.profile.type = comp.memory.LP_DDR3
-      elif memory_type == 'DDR4':
-        comp.memory.profile.type = comp.memory.DDR4
-      elif memory_type == 'DDR3':
-        comp.memory.profile.type = comp.memory.DDR3
-      elif memory_type == 'DDR2':
-        comp.memory.profile.type = comp.memory.DDR2
-      elif memory_type == 'DDR':
-        comp.memory.profile.type = comp.memory.DDR
-
   def create_ec_flash_components(items):
     for _, values in non_null_values(items):
       part_number = values.get('name', '')
@@ -455,7 +423,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'dram': create_dram_components,
           'ec_flash_chip': create_ec_flash_components,
           'embedded_controller': create_ec_components,
           # 'firmware_keys': create_fw_key_components,

@@ -212,3 +212,45 @@ class MergeHWidTests(unittest.TestCase):
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
+
+  def test_dram(self):
+    """Test basic display panel functionality."""
+    test_label = 'some_dram_123abc_0'
+    test_part = '1234abcd'
+    test_size = 2048
+
+    test_timings = [
+        ('LPDDR4', Component.Memory.LP_DDR4),
+        ('LPDDR3', Component.Memory.LP_DDR3),
+        ('DDR4', Component.Memory.DDR4),
+        ('DDR3', Component.Memory.DDR3),
+        ('DDR2', Component.Memory.DDR2),
+        ('DDR', Component.Memory.DDR),
+    ]
+
+    for memory_timing, memory_type in test_timings:
+      hwid = _mock_hwid_component(
+          'dram',
+          test_label,
+          {
+              'part': test_part,
+              'size': str(test_size),
+              'timing': memory_timing
+          },
+      )
+
+      bundle = ConfigBundle()
+      merger = MergeHwid(hwid_data=hwid)
+      merger.merge(bundle)
+
+      self.assertEqual(len(bundle.components), 1)
+      component = bundle.components[0]
+      self.assertEqual(component.hwid_type, 'dram')
+      self.assertEqual(component.hwid_label, test_label)
+      self.assertEqual(component.id.value, test_label)
+      self.assertEqual(component.memory.part_number, test_part)
+      self.assertEqual(component.memory.profile.size_megabytes, test_size)
+      self.assertEqual(component.memory.profile.type, memory_type)
+
+      # Should be nothing unparsed
+      self.assertEqual(merger.residual(), {})

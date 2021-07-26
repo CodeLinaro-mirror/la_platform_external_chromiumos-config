@@ -129,7 +129,7 @@ class MergeHwid(MergePlugin):
         'bluetooth':           MergeHwid._merge_bluetooth,
         'cpu':                 MergeHwid._merge_cpu,
         'display_panel':       MergeHwid._merge_display_panel,
-          # 'dram':                __merge_dram,
+        'dram':                MergeHwid._merge_dram,
           # 'ec_flash_chip':       __merge_ec_flash,
           # 'embedded_controller': __merge_ec,
           # 'flash_chip':          __merge_flash,
@@ -318,3 +318,33 @@ class MergeHwid(MergePlugin):
     component.display_panel.properties.height_px = int(values.get('height', 0))
 
     return set(['vendor', 'product_id', 'width', 'height'])
+
+  @staticmethod
+  def _merge_dram(bundle, label, values):
+    """Merge dram items."""
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = component.id.value
+
+    # save HWID values
+    component.hwid_type = 'dram'
+    component.hwid_label = label
+
+    component.memory.part_number = values.get('part', '')
+    component.memory.profile.size_megabytes = int(values.get('size', 0))
+
+    if 'timing' in values:
+      memory_type = values['timing'].split('-')[0]
+      if memory_type == 'LPDDR4':
+        component.memory.profile.type = component.memory.LP_DDR4
+      elif memory_type == 'LPDDR3':
+        component.memory.profile.type = component.memory.LP_DDR3
+      elif memory_type == 'DDR4':
+        component.memory.profile.type = component.memory.DDR4
+      elif memory_type == 'DDR3':
+        component.memory.profile.type = component.memory.DDR3
+      elif memory_type == 'DDR2':
+        component.memory.profile.type = component.memory.DDR2
+      elif memory_type == 'DDR':
+        component.memory.profile.type = component.memory.DDR
+
+    return set(['part', 'size', 'timing'])
