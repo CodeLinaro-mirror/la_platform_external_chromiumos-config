@@ -223,18 +223,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
 
-  def create_flash_components(items):
-    for _, values in non_null_values(items):
-      part_number = values.get('name', '')
-
-      comp = config_bundle.components.add()
-      comp.id.value = part_number
-      if 'vendor' in values:
-        comp.manufacturer_id.MergeFrom(
-            config_bundle_utils.find_partner(
-                config_bundle, values['vendor'], create=True).id)
-      comp.system_flash_chip.part_number = part_number
-
   def create_storage_components(items):
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
@@ -397,12 +385,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          # 'firmware_keys': create_fw_key_components,
-          'flash_chip': create_flash_components,
-          # 'mainboard': create_mainboard_components,
-          # 'region': create_region_components,
-          # 'ro_ec_firmware': create_ro_ec_fw_components,
-          # 'ro_main_firmware': create_ro_main_components,
           'storage': create_storage_components,
           'touchpad': create_touchpad_components,
           'tpm': create_tpm_components,
