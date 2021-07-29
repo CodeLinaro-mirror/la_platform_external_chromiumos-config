@@ -385,3 +385,63 @@ class MergeHWidTests(unittest.TestCase):
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
+
+  def test_touchpad_usb(self):
+    """Test touchpad USB functionality."""
+    test_label = 'some_touchpad_123abc'
+    test_product = 'product'
+    test_vendor = 'vendor'
+
+    hwid = _mock_hwid_component(
+        'touchpad',
+        test_label,
+        {
+            'product': test_product,
+            'vendor': test_vendor,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'touchpad')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.touchpad.type, Component.Touch.USB)
+    self.assertEqual(component.touchpad.usb.product_id, test_product)
+    self.assertEqual(component.touchpad.usb.vendor_id, test_vendor)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
+
+  def test_touchpad_i2c(self):
+    """Test touchpad I2C functionality."""
+    test_label = 'some_touchpad_123abc'
+    test_fw_version = '1.2.3'
+    test_fw_csum = 'csum'
+
+    hwid = _mock_hwid_component(
+        'touchpad',
+        test_label,
+        {
+            'fw_version': test_fw_version,
+            'fw_csum': test_fw_csum
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'touchpad')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.touchpad.type, Component.Touch.I2C)
+    self.assertEqual(component.touchpad.fw_version, test_fw_version)
+    self.assertEqual(component.touchpad.fw_checksum, test_fw_csum)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})

@@ -134,7 +134,7 @@ class MergeHwid(MergePlugin):
         'embedded_controller': MergeHwid._merge_ec,
         'flash_chip':          MergeHwid._merge_flash,
         'storage':             MergeHwid._merge_storage,
-          # 'touchpad':            __merge_touchpad,
+         'touchpad':           MergeHwid._merge_touchpad,
           # 'tpm':                 __merge_tpm,
           # 'touchscreen':         __merge_touchscreen,
           # 'stylus':              __merge_stylus,
@@ -445,5 +445,39 @@ class MergeHwid(MergePlugin):
     if values.get('vendor', '').lower() == 'ata':
       component.storage.type = component.storage.SATA
     touched.add('vendor')
+
+    return touched
+
+  @staticmethod
+  def _merge_touchpad(bundle, label, values):
+    """Merge touchpad items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = values.get('model', label)
+    touched.add('model')
+
+    # save HWID values
+    component.hwid_type = 'touchpad'
+    component.hwid_label = label
+
+    # Check for USB based touchpad
+    # We don't receive an explicit type for the touchpad bus type, so
+    # we assume that if we have a product and vendor id, that it's USB,
+    # otherwise it's I2C (rare)
+    if 'product' in values and 'vendor' in values:
+      component.touchpad.type = component.touchpad.USB
+      component.touchpad.product_id = component.name
+      component.touchpad.usb.vendor_id = values['vendor']
+      component.touchpad.usb.product_id = values['product']
+      touched.update(['vendor', 'product'])
+
+    elif 'fw_version' in values and 'fw_csum' in values:
+      # i2c based touchpad
+      component.touchpad.type = component.touchpad.I2C
+      component.touchpad.product_id = values.get('product_id', '')
+      component.touchpad.fw_version = values['fw_version']
+      component.touchpad.fw_checksum = values['fw_csum']
+      touched.update(['fw_version', 'fw_csum', 'product_id'])
 
     return touched
