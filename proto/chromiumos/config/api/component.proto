@@ -97,6 +97,13 @@ message Component {
       ARM64 = 4;
     }
 
+    enum Feature {
+      FEATURE_UNKNOWN = 0;
+      // Supports Symmetric Multi-Threading (SMT; a.k.a. Hyper-Threading, or
+      // other vendor-specific terms).
+      SMT = 1;
+    };
+
     message Family {
       Architecture arch = 1;
       // Common name (human friendly) for the family
@@ -111,6 +118,7 @@ message Component {
     string model = 2;
     // Number of cores present on the SoC model
     int32 cores = 3;
+    repeated Feature features = 4;
   }
 
   message Memory {

@@ -910,6 +910,19 @@
                       "number": 4
                     }
                   ]
+                },
+                {
+                  "name": "Feature",
+                  "value": [
+                    {
+                      "name": "FEATURE_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "SMT",
+                      "number": 1
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -934,6 +947,14 @@
                   "name": "cores",
                   "number": 3,
                   "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "features",
+                  "label": "LABEL_REPEATED",
+                  "name": "features",
+                  "number": 4,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.Component.Soc.Feature"
                 }
               ],
               "name": "Soc",
