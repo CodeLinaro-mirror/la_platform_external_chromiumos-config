@@ -341,3 +341,47 @@ class MergeHWidTests(unittest.TestCase):
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
+
+  def test_storage(self):
+    """Test basic storage functionality."""
+    test_label = 'some_storage_123abc'
+    test_emmc5 = '1.2.3'
+    test_manfid = 'manfid'
+    test_name = 'Name'
+    test_oemid = 'oemid'
+    test_prv = 'prv'
+    test_sectors = 'sectors'
+    test_type = 'MMC'
+
+    hwid = _mock_hwid_component(
+        'storage',
+        test_label,
+        {
+            'emmc5_fw_ver': test_emmc5,
+            'manfid': test_manfid,
+            'name': test_name,
+            'oemid': test_oemid,
+            'prv': test_prv,
+            'sectors': test_sectors,
+            'type': test_type,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'storage')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.storage.emmc5_fw_ver, test_emmc5)
+    self.assertEqual(component.storage.manfid, test_manfid)
+    self.assertEqual(component.storage.name, test_name)
+    self.assertEqual(component.storage.oemid, test_oemid)
+    self.assertEqual(component.storage.prv, test_prv)
+    self.assertEqual(component.storage.sectors, test_sectors)
+    self.assertEqual(component.storage.type, Component.Storage.EMMC)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})

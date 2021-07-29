@@ -133,7 +133,7 @@ class MergeHwid(MergePlugin):
         'ec_flash_chip':       MergeHwid._merge_ec_flash,
         'embedded_controller': MergeHwid._merge_ec,
         'flash_chip':          MergeHwid._merge_flash,
-          # 'storage':             __merge_storage,
+        'storage':             MergeHwid._merge_storage,
           # 'touchpad':            __merge_touchpad,
           # 'tpm':                 __merge_tpm,
           # 'touchscreen':         __merge_touchscreen,
@@ -412,5 +412,38 @@ class MergeHwid(MergePlugin):
       component.manufacturer_id.MergeFrom(
           cbu.find_partner(bundle, values['vendor'], create=True).id)
       touched.add('vendor')
+
+    return touched
+
+  @staticmethod
+  def _merge_storage(bundle, label, values):
+    """Merge flash items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = values.get('model', label)
+    touched.add('model')
+
+    # save HWID values
+    component.hwid_type = 'storage'
+    component.hwid_label = label
+
+    component.storage.emmc5_fw_ver = values.get('emmc5_fw_ver', '')
+    component.storage.manfid = values.get('manfid', '')
+    component.storage.name = values.get('name', '')
+    component.storage.oemid = values.get('oemid', '')
+    component.storage.prv = values.get('prv', '')
+    component.storage.sectors = values.get('sectors', '')
+
+    touched.update(
+        ['emmc5_fw_ver', 'manfid', 'name', 'oemid', 'prv', 'sectors'])
+
+    if values.get('type', '').lower() == 'mmc':
+      component.storage.type = component.storage.EMMC
+    touched.add('type')
+
+    if values.get('vendor', '').lower() == 'ata':
+      component.storage.type = component.storage.SATA
+    touched.add('vendor')
 
     return touched

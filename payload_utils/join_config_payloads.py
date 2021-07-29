@@ -223,27 +223,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
 
-  def create_storage_components(items):
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = key
-      comp.name = values.get('model', key)
-
-      comp.storage.emmc5_fw_ver = values.get('emmc5_fw_ver', '')
-      comp.storage.manfid = values.get('manfid', '')
-      comp.storage.name = values.get('name', '')
-      comp.storage.oemid = values.get('oemid', '')
-      comp.storage.prv = values.get('prv', '')
-      comp.storage.sectors = values.get('sectors', '')
-
-      if 'type' in values:
-        storage_type = values['type'].lower()
-        if storage_type == 'mmc':
-          comp.storage.type = comp.storage.EMMC
-
-      if values.get('vendor', '').upper() == 'ATA':
-        comp.storage.type = comp.storage.SATA
-
   def create_stylus_components(items):
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
@@ -385,7 +364,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'storage': create_storage_components,
           'touchpad': create_touchpad_components,
           'tpm': create_tpm_components,
           'touchscreen': create_touchscreen_components,
