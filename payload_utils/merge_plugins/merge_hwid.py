@@ -134,8 +134,8 @@ class MergeHwid(MergePlugin):
         'embedded_controller': MergeHwid._merge_ec,
         'flash_chip':          MergeHwid._merge_flash,
         'storage':             MergeHwid._merge_storage,
-         'touchpad':           MergeHwid._merge_touchpad,
-          # 'tpm':                 __merge_tpm,
+        'touchpad':            MergeHwid._merge_touchpad,
+        'tpm':                 MergeHwid._merge_tpm,
           # 'touchscreen':         __merge_touchscreen,
           # 'stylus':              __merge_stylus,
           # 'usb_hosts':           __merge_usb_hosts,
@@ -480,4 +480,22 @@ class MergeHwid(MergePlugin):
       component.touchpad.fw_checksum = values['fw_csum']
       touched.update(['fw_version', 'fw_csum', 'product_id'])
 
+    return touched
+
+  @staticmethod
+  def _merge_tpm(bundle, label, values):
+    """Merge tpm items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = label
+
+    # save HWID values
+    component.hwid_type = 'tpm'
+    component.hwid_label = label
+
+    component.tpm.manufacturer_info = values.get('manufacturer_info', '')
+    component.tpm.version = values.get('version', '')
+
+    touched.update(['manufacturer_info', 'version'])
     return touched

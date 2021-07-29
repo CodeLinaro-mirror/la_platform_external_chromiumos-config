@@ -245,14 +245,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
         if 'version' in values:
           comp.stylus.usb.bcd_device = values['version']
 
-  def create_tpm_components(items):
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = key
-      comp.name = key
-      comp.tpm.manufacturer_info = values.get('manufacturer_info', '')
-      comp.tpm.version = values.get('version', '')
-
   def create_touchscreen_components(items):
     """Populate touchscreen components from HWID"""
 
@@ -342,7 +334,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'tpm': create_tpm_components,
           'touchscreen': create_touchscreen_components,
           'stylus': create_stylus_components,
           'usb_hosts': create_usb_host_components,

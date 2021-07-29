@@ -445,3 +445,32 @@ class MergeHWidTests(unittest.TestCase):
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
+
+  def test_tpm(self):
+    """Test tpm functionality."""
+    test_label = 'some_tpm_123abc'
+    test_mfg_info = 'TPMCo'
+    test_version = '1.2.3'
+
+    hwid = _mock_hwid_component(
+        'tpm',
+        test_label,
+        {
+            'manufacturer_info': test_mfg_info,
+            'version': test_version
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'tpm')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.tpm.manufacturer_info, test_mfg_info)
+    self.assertEqual(component.tpm.version, test_version)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
