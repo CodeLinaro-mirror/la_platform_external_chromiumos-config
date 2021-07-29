@@ -423,297 +423,56 @@
         {
           "field": [
             {
-              "jsonName": "id",
+              "jsonName": "value",
               "label": "LABEL_OPTIONAL",
-              "name": "id",
+              "name": "value",
               "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.SoftwareAttribute.Id"
-            },
-            {
-              "jsonName": "fieldPath",
-              "label": "LABEL_OPTIONAL",
-              "name": "field_path",
-              "number": 2,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "SoftwareAttribute",
+          "name": "DesignConfigId",
           "nestedType": [
             {
               "field": [
                 {
-                  "jsonName": "value",
+                  "jsonName": "smbiosNameMatch",
                   "label": "LABEL_OPTIONAL",
-                  "name": "value",
+                  "name": "smbios_name_match",
                   "number": 1,
+                  "oneofIndex": 0,
                   "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Id"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "swAttributes",
-              "label": "LABEL_REPEATED",
-              "name": "sw_attributes",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.SoftwareAttribute"
-            }
-          ],
-          "name": "SoftwareAttributeList"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "attributeId",
-              "label": "LABEL_OPTIONAL",
-              "name": "attribute_id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.SoftwareAttribute.Id"
-            },
-            {
-              "jsonName": "values",
-              "label": "LABEL_REPEATED",
-              "name": "values",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "SoftwareCriterion"
-        }
-      ],
-      "name": "chromiumos/build/api/software_attribute.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
-      },
-      "package": "chromiumos.build.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/build/api/portage.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.SystemImage.ImageId"
-            },
-            {
-              "jsonName": "metadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata"
-            }
-          ],
-          "name": "SystemImage",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "ImageId"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "portageBuildTarget",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "portage_build_target",
-                  "number": 1,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.build.api.Portage.BuildTarget"
-                }
-              ],
-              "name": "BuildTarget"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "buildTarget",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "build_target",
-                  "number": 1,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"
                 },
                 {
-                  "jsonName": "packageSummary",
+                  "jsonName": "deviceTreeCompatibleMatch",
                   "label": "LABEL_OPTIONAL",
-                  "name": "package_summary",
+                  "name": "device_tree_compatible_match",
                   "number": 2,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.PackageSummary"
+                  "oneofIndex": 0,
+                  "type": "TYPE_STRING"
                 },
                 {
-                  "jsonName": "packages",
-                  "label": "LABEL_REPEATED",
-                  "name": "packages",
+                  "jsonName": "firmwareSku",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "firmware_sku",
                   "number": 3,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.build.api.Portage.Package"
+                  "type": "TYPE_UINT32"
                 }
               ],
-              "name": "BuildMetadata",
-              "nestedType": [
+              "name": "ScanConfig",
+              "oneofDecl": [
                 {
-                  "field": [
-                    {
-                      "jsonName": "arc",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "arc",
-                      "number": 1,
-                      "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.Arc"
-                    },
-                    {
-                      "jsonName": "chrome",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "chrome",
-                      "number": 2,
-                      "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.AshChrome"
-                    },
-                    {
-                      "jsonName": "chipset",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "chipset",
-                      "number": 3,
-                      "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.Chipset"
-                    },
-                    {
-                      "jsonName": "kernel",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "kernel",
-                      "number": 4,
-                      "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.Kernel"
-                    },
-                    {
-                      "jsonName": "toolchain",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "toolchain",
-                      "number": 5,
-                      "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.Toolchain"
-                    }
-                  ],
-                  "name": "PackageSummary"
-                },
-                {
-                  "field": [
-                    {
-                      "jsonName": "version",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "version",
-                      "number": 1,
-                      "type": "TYPE_STRING"
-                    },
-                    {
-                      "jsonName": "branch",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "branch",
-                      "number": 2,
-                      "type": "TYPE_STRING"
-                    }
-                  ],
-                  "name": "Arc"
-                },
-                {
-                  "field": [
-                    {
-                      "jsonName": "version",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "version",
-                      "number": 1,
-                      "type": "TYPE_STRING"
-                    }
-                  ],
-                  "name": "AshChrome"
-                },
-                {
-                  "field": [
-                    {
-                      "jsonName": "overlay",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "overlay",
-                      "number": 1,
-                      "type": "TYPE_STRING"
-                    }
-                  ],
-                  "name": "Chipset"
-                },
-                {
-                  "field": [
-                    {
-                      "jsonName": "version",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "version",
-                      "number": 1,
-                      "type": "TYPE_STRING"
-                    }
-                  ],
-                  "name": "Kernel"
-                },
-                {
-                  "field": [
-                    {
-                      "jsonName": "version",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "version",
-                      "number": 1,
-                      "type": "TYPE_STRING"
-                    }
-                  ],
-                  "name": "Toolchain"
+                  "name": "firmware_name_match"
                 }
               ]
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "values",
-                  "label": "LABEL_REPEATED",
-                  "name": "values",
-                  "number": 1,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata"
-                }
-              ],
-              "name": "BuildMetadataList"
             }
           ]
         }
       ],
-      "name": "chromiumos/build/api/system_image.proto",
+      "name": "chromiumos/config/api/design_config_id.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
       },
-      "package": "chromiumos.build.api",
+      "package": "chromiumos.config.api",
       "syntax": "proto3"
     },
     {
@@ -721,38 +480,25 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
-      "dependency": [
-        "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/build/api/system_image.proto"
-      ],
       "messageType": [
         {
           "field": [
             {
-              "jsonName": "systemImage",
+              "jsonName": "value",
               "label": "LABEL_OPTIONAL",
-              "name": "system_image",
+              "name": "value",
               "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.SystemImage"
-            },
-            {
-              "jsonName": "firmware",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.Firmware"
+              "type": "TYPE_STRING"
             }
           ],
-          "name": "SoftwareBundle"
+          "name": "DesignId"
         }
       ],
-      "name": "chromiumos/build/api/software_bundle.proto",
+      "name": "chromiumos/config/api/design_id.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
       },
-      "package": "chromiumos.build.api",
+      "package": "chromiumos.config.api",
       "syntax": "proto3"
     },
     {
@@ -1867,259 +1613,6 @@
         }
       ],
       "name": "chromiumos/config/api/component.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api"
-      },
-      "package": "chromiumos.config.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/config/api/component.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "soc",
-              "label": "LABEL_OPTIONAL",
-              "name": "soc",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Soc"
-            },
-            {
-              "jsonName": "memory",
-              "label": "LABEL_REPEATED",
-              "name": "memory",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Memory"
-            },
-            {
-              "jsonName": "bluetooth",
-              "label": "LABEL_OPTIONAL",
-              "name": "bluetooth",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Bluetooth"
-            },
-            {
-              "jsonName": "camera",
-              "label": "LABEL_OPTIONAL",
-              "name": "camera",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Camera"
-            },
-            {
-              "jsonName": "touchscreen",
-              "label": "LABEL_OPTIONAL",
-              "name": "touchscreen",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Touch"
-            },
-            {
-              "jsonName": "wifi",
-              "label": "LABEL_OPTIONAL",
-              "name": "wifi",
-              "number": 6,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Wifi"
-            },
-            {
-              "jsonName": "touchpad",
-              "label": "LABEL_OPTIONAL",
-              "name": "touchpad",
-              "number": 7,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Touch"
-            },
-            {
-              "jsonName": "displayPanel",
-              "label": "LABEL_OPTIONAL",
-              "name": "display_panel",
-              "number": 8,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.DisplayPanel"
-            },
-            {
-              "jsonName": "audioCodec",
-              "label": "LABEL_OPTIONAL",
-              "name": "audio_codec",
-              "number": 9,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.AudioCodec"
-            },
-            {
-              "jsonName": "battery",
-              "label": "LABEL_OPTIONAL",
-              "name": "battery",
-              "number": 10,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Battery"
-            },
-            {
-              "jsonName": "ecFlashChip",
-              "label": "LABEL_OPTIONAL",
-              "name": "ec_flash_chip",
-              "number": 11,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.FlashChip"
-            },
-            {
-              "jsonName": "systemFlashChip",
-              "label": "LABEL_OPTIONAL",
-              "name": "system_flash_chip",
-              "number": 12,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.FlashChip"
-            },
-            {
-              "jsonName": "ec",
-              "label": "LABEL_OPTIONAL",
-              "name": "ec",
-              "number": 13,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.EmbeddedController"
-            },
-            {
-              "jsonName": "storage",
-              "label": "LABEL_OPTIONAL",
-              "name": "storage",
-              "number": 14,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Storage"
-            },
-            {
-              "jsonName": "tpm",
-              "label": "LABEL_OPTIONAL",
-              "name": "tpm",
-              "number": 15,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Tpm"
-            },
-            {
-              "jsonName": "usbHost",
-              "label": "LABEL_OPTIONAL",
-              "name": "usb_host",
-              "number": 16,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Interface.Usb"
-            },
-            {
-              "jsonName": "stylus",
-              "label": "LABEL_OPTIONAL",
-              "name": "stylus",
-              "number": 17,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Stylus"
-            },
-            {
-              "jsonName": "amplifier",
-              "label": "LABEL_OPTIONAL",
-              "name": "amplifier",
-              "number": 18,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Component.Amplifier"
-            }
-          ],
-          "name": "ComponentPackage"
-        }
-      ],
-      "name": "chromiumos/config/api/component_package.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api"
-      },
-      "package": "chromiumos.config.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "value",
-              "label": "LABEL_OPTIONAL",
-              "name": "value",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DesignConfigId",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "smbiosNameMatch",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "smbios_name_match",
-                  "number": 1,
-                  "oneofIndex": 0,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "deviceTreeCompatibleMatch",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "device_tree_compatible_match",
-                  "number": 2,
-                  "oneofIndex": 0,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "firmwareSku",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "firmware_sku",
-                  "number": 3,
-                  "type": "TYPE_UINT32"
-                }
-              ],
-              "name": "ScanConfig",
-              "oneofDecl": [
-                {
-                  "name": "firmware_name_match"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/config/api/design_config_id.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api"
-      },
-      "package": "chromiumos.config.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "value",
-              "label": "LABEL_OPTIONAL",
-              "name": "value",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DesignId"
-        }
-      ],
-      "name": "chromiumos/config/api/design_id.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/api"
       },
@@ -4345,6 +3838,380 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DeviceBrandId",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "whitelabelTag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "whitelabel_tag",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ScanConfig"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/config/api/device_brand_id.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/config/api/design_id.proto",
+        "chromiumos/config/api/device_brand_id.proto",
+        "chromiumos/config/api/partner_id.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DeviceBrandId"
+            },
+            {
+              "jsonName": "designId",
+              "label": "LABEL_OPTIONAL",
+              "name": "design_id",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DesignId"
+            },
+            {
+              "jsonName": "oemId",
+              "label": "LABEL_OPTIONAL",
+              "name": "oem_id",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.PartnerId"
+            },
+            {
+              "jsonName": "brandCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "brand_code",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "brandName",
+              "label": "LABEL_OPTIONAL",
+              "name": "brand_name",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DeviceBrand"
+        }
+      ],
+      "name": "chromiumos/config/api/device_brand.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/config/api/component.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "soc",
+              "label": "LABEL_OPTIONAL",
+              "name": "soc",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Soc"
+            },
+            {
+              "jsonName": "memory",
+              "label": "LABEL_REPEATED",
+              "name": "memory",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Memory"
+            },
+            {
+              "jsonName": "bluetooth",
+              "label": "LABEL_OPTIONAL",
+              "name": "bluetooth",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Bluetooth"
+            },
+            {
+              "jsonName": "camera",
+              "label": "LABEL_OPTIONAL",
+              "name": "camera",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Camera"
+            },
+            {
+              "jsonName": "touchscreen",
+              "label": "LABEL_OPTIONAL",
+              "name": "touchscreen",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Touch"
+            },
+            {
+              "jsonName": "wifi",
+              "label": "LABEL_OPTIONAL",
+              "name": "wifi",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Wifi"
+            },
+            {
+              "jsonName": "touchpad",
+              "label": "LABEL_OPTIONAL",
+              "name": "touchpad",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Touch"
+            },
+            {
+              "jsonName": "displayPanel",
+              "label": "LABEL_OPTIONAL",
+              "name": "display_panel",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.DisplayPanel"
+            },
+            {
+              "jsonName": "audioCodec",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_codec",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.AudioCodec"
+            },
+            {
+              "jsonName": "battery",
+              "label": "LABEL_OPTIONAL",
+              "name": "battery",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Battery"
+            },
+            {
+              "jsonName": "ecFlashChip",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_flash_chip",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.FlashChip"
+            },
+            {
+              "jsonName": "systemFlashChip",
+              "label": "LABEL_OPTIONAL",
+              "name": "system_flash_chip",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.FlashChip"
+            },
+            {
+              "jsonName": "ec",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec",
+              "number": 13,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.EmbeddedController"
+            },
+            {
+              "jsonName": "storage",
+              "label": "LABEL_OPTIONAL",
+              "name": "storage",
+              "number": 14,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Storage"
+            },
+            {
+              "jsonName": "tpm",
+              "label": "LABEL_OPTIONAL",
+              "name": "tpm",
+              "number": 15,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Tpm"
+            },
+            {
+              "jsonName": "usbHost",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_host",
+              "number": 16,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Interface.Usb"
+            },
+            {
+              "jsonName": "stylus",
+              "label": "LABEL_OPTIONAL",
+              "name": "stylus",
+              "number": 17,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Stylus"
+            },
+            {
+              "jsonName": "amplifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "amplifier",
+              "number": 18,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Amplifier"
+            }
+          ],
+          "name": "ComponentPackage"
+        }
+      ],
+      "name": "chromiumos/config/api/component_package.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "MfgConfigId",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "hwid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hwid",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ScanConfig"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/config/api/mfg_config_id.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/config/api/component_package.proto",
+        "chromiumos/config/api/mfg_config_id.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.MfgConfigId"
+            },
+            {
+              "jsonName": "pcbVendor",
+              "label": "LABEL_OPTIONAL",
+              "name": "pcb_vendor",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "ramPartNumber",
+              "label": "LABEL_OPTIONAL",
+              "name": "ram_part_number",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "region",
+              "label": "LABEL_OPTIONAL",
+              "name": "region",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "componentPackage",
+              "label": "LABEL_OPTIONAL",
+              "name": "component_package",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.ComponentPackage"
+            }
+          ],
+          "name": "MfgConfig",
+          "reservedRange": [
+            {
+              "end": 6,
+              "start": 5
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/config/api/mfg_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/partner_id.proto"
       ],
@@ -4454,46 +4321,6 @@
         }
       ],
       "name": "chromiumos/config/api/partner.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api"
-      },
-      "package": "chromiumos.config.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "value",
-              "label": "LABEL_OPTIONAL",
-              "name": "value",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DeviceBrandId",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "whitelabelTag",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "whitelabel_tag",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "ScanConfig"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/config/api/device_brand_id.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/api"
       },
@@ -4847,6 +4674,8 @@
       },
       "dependency": [
         "chromiumos/config/api/design.proto",
+        "chromiumos/config/api/device_brand.proto",
+        "chromiumos/config/api/mfg_config.proto",
         "chromiumos/config/api/partner.proto",
         "chromiumos/config/api/program.proto"
       ],
@@ -4854,17 +4683,17 @@
         {
           "field": [
             {
-              "jsonName": "designConfig",
+              "jsonName": "program",
               "label": "LABEL_OPTIONAL",
-              "name": "design_config",
+              "name": "program",
               "number": 1,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Design.Config"
+              "typeName": ".chromiumos.config.api.Program"
             },
             {
-              "jsonName": "design",
+              "jsonName": "hwDesign",
               "label": "LABEL_OPTIONAL",
-              "name": "design",
+              "name": "hw_design",
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Design"
@@ -4878,120 +4707,42 @@
               "typeName": ".chromiumos.config.api.Partner"
             },
             {
-              "jsonName": "program",
+              "jsonName": "hwDesignConfig",
               "label": "LABEL_OPTIONAL",
-              "name": "program",
+              "name": "hw_design_config",
               "number": 4,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Program"
-            }
-          ],
-          "name": "DesignConfigPackage"
-        }
-      ],
-      "name": "chromiumos/config/api/design_config_package.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api"
-      },
-      "package": "chromiumos.config.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/config/api/design_id.proto",
-        "chromiumos/config/api/device_brand_id.proto",
-        "chromiumos/config/api/partner_id.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.DeviceBrandId"
+              "typeName": ".chromiumos.config.api.Design.Config"
             },
             {
-              "jsonName": "designId",
+              "jsonName": "deviceBrand",
               "label": "LABEL_OPTIONAL",
-              "name": "design_id",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.DesignId"
-            },
-            {
-              "jsonName": "oemId",
-              "label": "LABEL_OPTIONAL",
-              "name": "oem_id",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.PartnerId"
-            },
-            {
-              "jsonName": "brandCode",
-              "label": "LABEL_OPTIONAL",
-              "name": "brand_code",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "brandName",
-              "label": "LABEL_OPTIONAL",
-              "name": "brand_name",
+              "name": "device_brand",
               "number": 5,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DeviceBrand"
-        }
-      ],
-      "name": "chromiumos/config/api/device_brand.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api"
-      },
-      "package": "chromiumos.config.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DeviceBrand"
+            },
             {
-              "jsonName": "value",
+              "jsonName": "oem",
               "label": "LABEL_OPTIONAL",
-              "name": "value",
-              "number": 1,
-              "type": "TYPE_STRING"
+              "name": "oem",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Partner"
+            },
+            {
+              "jsonName": "mfgConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "mfg_config",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.MfgConfig"
             }
           ],
-          "name": "MfgConfigId",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "hwid",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "hwid",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "ScanConfig"
-            }
-          ]
+          "name": "DeviceConfig"
         }
       ],
-      "name": "chromiumos/config/api/mfg_config_id.proto",
+      "name": "chromiumos/config/api/device_config.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/api"
       },
@@ -5083,8 +4834,201 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/config/api/component_package.proto",
-        "chromiumos/config/api/mfg_config_id.proto"
+        "chromiumos/config/api/device_config.proto",
+        "chromiumos/config/api/device_config_id.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DeviceConfigId"
+            },
+            {
+              "jsonName": "scanConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "scan_config",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DeviceConfigId.ScanConfig"
+            }
+          ],
+          "name": "GetDeviceConfigRequest",
+          "oneofDecl": [
+            {
+              "name": "id_type"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.GetDeviceConfigResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.GetDeviceConfigResponse.Failure"
+            }
+          ],
+          "name": "GetDeviceConfigResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "deviceConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "device_config",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.DeviceConfig"
+                }
+              ],
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/build/api/metadata_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.build.api.GetDeviceConfigRequest",
+              "name": "GetDeviceConfig",
+              "outputType": ".chromiumos.build.api.GetDeviceConfigResponse"
+            }
+          ],
+          "name": "MetadataService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SoftwareAttribute.Id"
+            },
+            {
+              "jsonName": "fieldPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "field_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SoftwareAttribute",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "swAttributes",
+              "label": "LABEL_REPEATED",
+              "name": "sw_attributes",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SoftwareAttribute"
+            }
+          ],
+          "name": "SoftwareAttributeList"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "attributeId",
+              "label": "LABEL_OPTIONAL",
+              "name": "attribute_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SoftwareAttribute.Id"
+            },
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SoftwareCriterion"
+        }
+      ],
+      "name": "chromiumos/build/api/software_attribute.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/build/api/portage.proto"
       ],
       "messageType": [
         {
@@ -5095,48 +5039,299 @@
               "name": "id",
               "number": 1,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.MfgConfigId"
+              "typeName": ".chromiumos.build.api.SystemImage.ImageId"
             },
             {
-              "jsonName": "pcbVendor",
+              "jsonName": "metadata",
               "label": "LABEL_OPTIONAL",
-              "name": "pcb_vendor",
+              "name": "metadata",
               "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "ramPartNumber",
-              "label": "LABEL_OPTIONAL",
-              "name": "ram_part_number",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "region",
-              "label": "LABEL_OPTIONAL",
-              "name": "region",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "componentPackage",
-              "label": "LABEL_OPTIONAL",
-              "name": "component_package",
-              "number": 6,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.ComponentPackage"
+              "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata"
             }
           ],
-          "name": "MfgConfig",
-          "reservedRange": [
+          "name": "SystemImage",
+          "nestedType": [
             {
-              "end": 6,
-              "start": 5
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ImageId"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "portageBuildTarget",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "portage_build_target",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.Portage.BuildTarget"
+                }
+              ],
+              "name": "BuildTarget"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "buildTarget",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "build_target",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"
+                },
+                {
+                  "jsonName": "packageSummary",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "package_summary",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.PackageSummary"
+                },
+                {
+                  "jsonName": "packages",
+                  "label": "LABEL_REPEATED",
+                  "name": "packages",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.Portage.Package"
+                }
+              ],
+              "name": "BuildMetadata",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "arc",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "arc",
+                      "number": 1,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.Arc"
+                    },
+                    {
+                      "jsonName": "chrome",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "chrome",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.AshChrome"
+                    },
+                    {
+                      "jsonName": "chipset",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "chipset",
+                      "number": 3,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.Chipset"
+                    },
+                    {
+                      "jsonName": "kernel",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "kernel",
+                      "number": 4,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.Kernel"
+                    },
+                    {
+                      "jsonName": "toolchain",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "toolchain",
+                      "number": 5,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata.Toolchain"
+                    }
+                  ],
+                  "name": "PackageSummary"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "version",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "version",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    },
+                    {
+                      "jsonName": "branch",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "branch",
+                      "number": 2,
+                      "type": "TYPE_STRING"
+                    }
+                  ],
+                  "name": "Arc"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "version",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "version",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    }
+                  ],
+                  "name": "AshChrome"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "overlay",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "overlay",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    }
+                  ],
+                  "name": "Chipset"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "version",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "version",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    }
+                  ],
+                  "name": "Kernel"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "version",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "version",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    }
+                  ],
+                  "name": "Toolchain"
+                }
+              ]
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "values",
+                  "label": "LABEL_REPEATED",
+                  "name": "values",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.SystemImage.BuildMetadata"
+                }
+              ],
+              "name": "BuildMetadataList"
             }
           ]
         }
       ],
-      "name": "chromiumos/config/api/mfg_config.proto",
+      "name": "chromiumos/build/api/system_image.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/build/api/system_image.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "systemImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "system_image",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SystemImage"
+            },
+            {
+              "jsonName": "firmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.Firmware"
+            }
+          ],
+          "name": "SoftwareBundle"
+        }
+      ],
+      "name": "chromiumos/build/api/software_bundle.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/config/api/design.proto",
+        "chromiumos/config/api/partner.proto",
+        "chromiumos/config/api/program.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "designConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "design_config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Design.Config"
+            },
+            {
+              "jsonName": "design",
+              "label": "LABEL_OPTIONAL",
+              "name": "design",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Design"
+            },
+            {
+              "jsonName": "odm",
+              "label": "LABEL_OPTIONAL",
+              "name": "odm",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Partner"
+            },
+            {
+              "jsonName": "program",
+              "label": "LABEL_OPTIONAL",
+              "name": "program",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Program"
+            }
+          ],
+          "name": "DesignConfigPackage"
+        }
+      ],
+      "name": "chromiumos/config/api/design_config_package.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/api"
       },

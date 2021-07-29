@@ -1,0 +1,48 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+import "chromiumos/config/api/device_config.proto";
+import "chromiumos/config/api/device_config_id.proto";
+
+// Retrieves build-specific metadata, which can be used during
+// test execution.
+// E.g. Hardware/feature details for a given device, test configs,
+// and software settings.
+service MetadataService {
+  // Retrieves all of the known device hardware configuration
+  // based on a unique id or hardware/manufacturing identifiers
+  // scanned off of a live device.
+  rpc GetDeviceConfig(GetDeviceConfigRequest)
+      returns (GetDeviceConfigResponse);
+}
+
+message GetDeviceConfigRequest {
+  oneof id_type {
+    // If the ID has already been captured/stored (in inventory system).
+    chromiumos.config.api.DeviceConfigId id = 1;
+    // If the ID is scanned off a live device via dut_service.proto
+    chromiumos.config.api.DeviceConfigId.ScanConfig scan_config = 2;
+  }
+}
+
+message GetDeviceConfigResponse {
+  message Success {
+    chromiumos.config.api.DeviceConfig device_config = 1;
+  }
+  message Failure {
+    // Human readable error to aid in debugging
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
