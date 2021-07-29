@@ -235,20 +235,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
                 config_bundle, values['vendor'], create=True).id)
       comp.system_flash_chip.part_number = part_number
 
-  def create_ec_components(items):
-    for _, values in non_null_values(items):
-      part_number = values.get('name', '')
-
-      comp = config_bundle.components.add()
-      comp.id.value = part_number
-      comp.name = part_number
-
-      if 'vendor' in values:
-        comp.manufacturer_id.MergeFrom(
-            config_bundle_utils.find_partner(
-                config_bundle, values['vendor'], create=True).id)
-      comp.ec.part_number = part_number
-
   def create_storage_components(items):
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
@@ -411,7 +397,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'embedded_controller': create_ec_components,
           # 'firmware_keys': create_fw_key_components,
           'flash_chip': create_flash_components,
           # 'mainboard': create_mainboard_components,

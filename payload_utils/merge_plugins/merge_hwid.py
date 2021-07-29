@@ -131,7 +131,7 @@ class MergeHwid(MergePlugin):
         'display_panel':       MergeHwid._merge_display_panel,
         'dram':                MergeHwid._merge_dram,
         'ec_flash_chip':       MergeHwid._merge_ec_flash,
-          # 'embedded_controller': __merge_ec,
+        'embedded_controller': MergeHwid._merge_ec,
           # 'flash_chip':          __merge_flash,
           # 'storage':             __merge_storage,
           # 'touchpad':            __merge_touchpad,
@@ -362,6 +362,28 @@ class MergeHwid(MergePlugin):
     component.hwid_label = label
 
     component.ec_flash_chip.part_number = values.get('name', '')
+    touched.add('name')
+
+    if 'vendor' in values:
+      component.manufacturer_id.MergeFrom(
+          cbu.find_partner(bundle, values['vendor'], create=True).id)
+      touched.add('vendor')
+
+    return touched
+
+  @staticmethod
+  def _merge_ec(bundle, label, values):
+    """Merge EC items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = component.id.value
+
+    # save HWID values
+    component.hwid_type = 'embedded_controller'
+    component.hwid_label = label
+
+    component.ec.part_number = values.get('name', '')
     touched.add('name')
 
     if 'vendor' in values:

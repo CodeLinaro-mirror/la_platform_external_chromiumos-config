@@ -283,3 +283,32 @@ class MergeHWidTests(unittest.TestCase):
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
+
+  def test_ec(self):
+    """Test basic ec functionality."""
+    test_label = 'some_ec_123abc'
+    test_part = '1234abcd'
+    test_vendor = 'TestVendorCo'
+
+    hwid = _mock_hwid_component(
+        'embedded_controller',
+        test_label,
+        {
+            'name': test_part,
+            'vendor': test_vendor
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'embedded_controller')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.ec.part_number, test_part)
+    self.assertEqual(component.manufacturer_id.value, test_vendor)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
