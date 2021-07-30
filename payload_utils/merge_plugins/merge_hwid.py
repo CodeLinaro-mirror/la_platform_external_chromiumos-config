@@ -139,7 +139,7 @@ class MergeHwid(MergePlugin):
         'tpm':                 MergeHwid._merge_tpm,
         'touchscreen':         MergeHwid._merge_touchscreen,
         'usb_hosts':           MergeHwid._merge_usb_hosts,
-          # 'video':               __merge_video,
+        'video':               MergeHwid._merge_video,
           # 'wireless':            __merge_wireless,
       }.get(component_type)
       # yapf: enable
@@ -603,4 +603,43 @@ class MergeHwid(MergePlugin):
     host.vendor_id = get_oneof(values, ['idVendor', 'vendor'], '')
     host.bcd_device = get_oneof(values, ['bcdDevice', 'revision_id'], '')
 
+    return touched
+
+  @staticmethod
+  def _merge_video(bundle, label, values):
+    """Merge video items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = values.get('product', label)
+    touched.add('product')
+
+    # save HWID values
+    component.hwid_type = 'video'
+    component.hwid_label = label
+
+    usb_fields = ['bcdDevice', 'idProduct', 'idVendor']
+    pci_fields = ['vendor', 'device', 'revision_id']
+
+    if values.get('bus_type') == 'usb' or \
+       all(key in values for key in usb_fields):
+
+      if 'manufacturer' in values:
+        component.manufacturer_id.MergeFrom(
+            cbu.find_partner(bundle, values['manufacturer'], create=True).id)
+
+      component.camera.usb.vendor_id = values.get('idVendor', '')
+      component.camera.usb.product_id = values.get('idProduct', '')
+      component.camera.usb.bcd_device = values.get('bcdDevice', '')
+      touched.update(usb_fields)
+
+    if values.get('bus_type') == 'pci' or \
+       all(key in values for key in pci_fields):
+
+      component.camera.pci.vendor_id = values.get('vendor', '')
+      component.camera.pci.device_id = values.get('device', '')
+      component.camera.pci.revision_id = values.get('revision_id', '')
+      touched.update(pci_fields)
+
+    touched.add('bus_type')
     return touched

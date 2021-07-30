@@ -223,35 +223,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
 
-  def create_video_components(items):
-    usb_fields = ['bcdDevice', 'idProduct', 'idVendor']
-    pci_fields = ['vendor', 'device', 'revision_id']
-
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      if values.get('bus_type') == 'usb' or \
-         all(key in values for key in usb_fields):
-        comp.id.value = key
-        comp.name = values['product']
-
-        if 'manufacturer' in values:
-          comp.manufacturer_id.MergeFrom(
-              config_bundle_utils.find_partner(
-                  config_bundle, values['manufacturer'], create=True).id)
-
-        comp.camera.usb.vendor_id = values.get('idVendor', '')
-        comp.camera.usb.product_id = values.get('idProduct', '')
-        comp.camera.usb.bcd_device = values.get('bcdDevice', '')
-
-      if values.get('bus_type') == 'pci' or \
-         all(key in values for key in pci_fields):
-        comp.id.value = key
-        comp.name = key
-
-        comp.camera.pci.vendor_id = values.get('vendor', '')
-        comp.camera.pci.device_id = values.get('device', '')
-        comp.camera.pci.revision_id = values.get('revision_id', '')
-
   def create_wireless_components(items):
     for key, values in non_null_values(items):
       comp = config_bundle.components.add()
@@ -266,7 +237,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'video': create_video_components,
           'wireless': create_wireless_components
       }.get(component_type, (lambda x: None))(
           value['items'])

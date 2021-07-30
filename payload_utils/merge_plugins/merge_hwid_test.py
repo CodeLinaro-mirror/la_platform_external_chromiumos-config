@@ -599,3 +599,69 @@ class MergeHWidTests(unittest.TestCase):
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
+
+  def test_video_usb(self):
+    """Test USB video functionality."""
+    test_label = 'some_touch_123abc'
+    test_product = '0x1234'
+    test_vendor = '0xabcd'
+    test_bcd = '12'
+
+    hwid = _mock_hwid_component(
+        'video',
+        test_label,
+        {
+            'bus_type': 'usb',
+            'idProduct': test_product,
+            'idVendor': test_vendor,
+            'bcdDevice': test_bcd
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'video')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.camera.usb.product_id, test_product)
+    self.assertEqual(component.camera.usb.vendor_id, test_vendor)
+    self.assertEqual(component.camera.usb.bcd_device, test_bcd)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
+
+  def test_video_pci(self):
+    """Test PCI video functionality."""
+    test_label = 'some_touch_123abc'
+    test_vendor = '0xabcd'
+    test_device = '0x1234'
+    test_revision = '12'
+
+    hwid = _mock_hwid_component(
+        'video',
+        test_label,
+        {
+            'bus_type': 'pci',
+            'vendor': test_vendor,
+            'device': test_device,
+            'revision_id': test_revision
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'video')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.camera.pci.vendor_id, test_vendor)
+    self.assertEqual(component.camera.pci.device_id, test_device)
+    self.assertEqual(component.camera.pci.revision_id, test_revision)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
