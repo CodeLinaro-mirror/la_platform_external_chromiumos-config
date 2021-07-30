@@ -134,10 +134,10 @@ class MergeHwid(MergePlugin):
         'embedded_controller': MergeHwid._merge_ec,
         'flash_chip':          MergeHwid._merge_flash,
         'storage':             MergeHwid._merge_storage,
+        'stylus':              MergeHwid._merge_stylus,
         'touchpad':            MergeHwid._merge_touchpad,
         'tpm':                 MergeHwid._merge_tpm,
         'touchscreen':         MergeHwid._merge_touchscreen,
-          # 'stylus':              __merge_stylus,
           # 'usb_hosts':           __merge_usb_hosts,
           # 'video':               __merge_video,
           # 'wireless':            __merge_wireless,
@@ -417,7 +417,7 @@ class MergeHwid(MergePlugin):
 
   @staticmethod
   def _merge_storage(bundle, label, values):
-    """Merge flash items."""
+    """Merge storage items."""
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
@@ -445,6 +445,41 @@ class MergeHwid(MergePlugin):
     if values.get('vendor', '').lower() == 'ata':
       component.storage.type = component.storage.SATA
     touched.add('vendor')
+
+    return touched
+
+  @staticmethod
+  def _merge_stylus(bundle, label, values):
+    """Merge stylus items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = values.get('name', label)
+    touched.add('name')
+
+    # save HWID values
+    component.hwid_type = 'stylus'
+    component.hwid_label = label
+
+    i2c_keys = ['product', 'vendor']
+    if all(key in values for key in i2c_keys):
+      component.stylus.i2c.product = values['product']
+      component.stylus.i2c.vendor = values['vendor']
+      touched.update(i2c_keys)
+
+    usb_keys = ['product_id', 'vendor_id']
+    if all(key in values for key in usb_keys):
+      component.stylus.usb.product_id = values['product_id']
+      component.stylus.usb.vendor_id = values['vendor_id']
+      touched.update(usb_keys)
+
+      if 'bcd_device' in values:
+        component.stylus.usb.bcd_device = values['bcd_device']
+      touched.add('bcd_device')
+
+      if 'version' in values:
+        component.stylus.usb.bcd_device = values['version']
+      touched.add('version')
 
     return touched
 

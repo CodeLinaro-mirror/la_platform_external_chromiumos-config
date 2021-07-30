@@ -223,28 +223,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
 
-  def create_stylus_components(items):
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = key
-      comp.name = values.get('name', '')
-
-      i2c_keys = ['product', 'vendor']
-      if all(key in values for key in i2c_keys):
-        comp.stylus.i2c.product = values['product']
-        comp.stylus.i2c.vendor = values['vendor']
-
-      usb_keys = ['product_id', 'vendor_id']
-      if all(key in values for key in usb_keys):
-        comp.stylus.usb.product_id = values['product_id']
-        comp.stylus.usb.vendor_id = values['vendor_id']
-
-        if 'bcd_device' in values:
-          comp.stylus.usb.bcd_device = values['bcd_device']
-
-        if 'version' in values:
-          comp.stylus.usb.bcd_device = values['version']
-
   def create_usb_host_components(items):
 
     def get_oneof(obj, keys, default=None):
@@ -311,7 +289,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'stylus': create_stylus_components,
           'usb_hosts': create_usb_host_components,
           'video': create_video_components,
           'wireless': create_wireless_components

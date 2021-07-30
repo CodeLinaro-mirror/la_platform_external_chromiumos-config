@@ -386,6 +386,67 @@ class MergeHWidTests(unittest.TestCase):
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
 
+  def test_stylus_i2c(self):
+    """Test stylus I2C functionality."""
+    test_label = 'some_touch_123abc'
+    test_vendor = '0x1234'
+    test_product = '0xbeef'
+
+    hwid = _mock_hwid_component(
+        'stylus',
+        test_label,
+        {
+            'vendor': test_vendor,
+            'product': test_product,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'stylus')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.stylus.i2c.product, test_product)
+    self.assertEqual(component.stylus.i2c.vendor, test_vendor)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
+
+  def test_stylus_usb(self):
+    """Test stylus USB functionality."""
+    test_label = 'some_touch_123abc'
+    test_vendorid = '0x1234'
+    test_productid = '0xbeef'
+    test_bcd_device = 'bcd'
+
+    hwid = _mock_hwid_component(
+        'stylus',
+        test_label,
+        {
+            'vendor_id': test_vendorid,
+            'product_id': test_productid,
+            'bcd_device': test_bcd_device,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'stylus')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.stylus.usb.product_id, test_productid)
+    self.assertEqual(component.stylus.usb.vendor_id, test_vendorid)
+    self.assertEqual(component.stylus.usb.bcd_device, test_bcd_device)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
+
   def test_touchpad_usb(self):
     """Test touchpad USB functionality."""
     test_label = 'some_touchpad_123abc'
