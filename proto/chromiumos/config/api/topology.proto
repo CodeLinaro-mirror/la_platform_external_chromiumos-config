@@ -58,6 +58,7 @@ message Topology {
     MICROPHONE_MUTE_SWITCH = 25;
     BATTERY = 26;
     HDMI = 27;
+    SOC = 28;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -574,4 +575,9 @@ message HardwareFeatures {
     Present present = 1;
   }
   PrivacyScreen privacy_screen = 31;
+
+  Soc soc = 32;
+  message Soc {
+    repeated Component.Soc.Feature features = 1;
+  };
 }

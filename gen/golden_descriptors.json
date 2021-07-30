@@ -1772,6 +1772,10 @@
                 {
                   "name": "HDMI",
                   "number": 27
+                },
+                {
+                  "name": "SOC",
+                  "number": 28
                 }
               ]
             }
@@ -2154,6 +2158,14 @@
               "number": 31,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.PrivacyScreen"
+            },
+            {
+              "jsonName": "soc",
+              "label": "LABEL_OPTIONAL",
+              "name": "soc",
+              "number": 32,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Soc"
             }
           ],
           "name": "HardwareFeatures",
@@ -3325,6 +3337,19 @@
                 }
               ],
               "name": "PrivacyScreen"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "features",
+                  "label": "LABEL_REPEATED",
+                  "name": "features",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.Component.Soc.Feature"
+                }
+              ],
+              "name": "Soc"
             }
           ]
         }
