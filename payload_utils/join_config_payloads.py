@@ -199,7 +199,7 @@ def merge_avl_dlm(config_bundle):
 
 
 # NOTE: hwid_path is temporary until migration to new plugins is completeq
-def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
+def add_hwid_components(config_bundle, _hwid_db, hwid_path=None):
   """Add components from the HWID database to the config_bundle.
 
   HWID doesn't map hardware to SKU, it's more a listing of all possible
@@ -217,29 +217,8 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
     A reference to the input config_bundle updated with components from HWID
   """
 
-  # pylint: disable=too-many-statements
-  # pylint: disable=too-many-locals
-
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
-
-  def create_wireless_components(items):
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = key
-      comp.name = key
-
-      comp.wifi.pci.vendor_id = values.get('vendor', '')
-      comp.wifi.pci.device_id = values.get('device', '')
-      comp.wifi.pci.revision_id = values.get('revision_id', '')
-
-  components = hwid_db['components']
-  for component_type, value in components.items():
-    if value:
-      {
-          'wireless': create_wireless_components
-      }.get(component_type, (lambda x: None))(
-          value['items'])
 
   return config_bundle
 

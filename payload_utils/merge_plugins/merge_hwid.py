@@ -140,7 +140,7 @@ class MergeHwid(MergePlugin):
         'touchscreen':         MergeHwid._merge_touchscreen,
         'usb_hosts':           MergeHwid._merge_usb_hosts,
         'video':               MergeHwid._merge_video,
-          # 'wireless':            __merge_wireless,
+        'wireless':            MergeHwid._merge_wireless,
       }.get(component_type)
       # yapf: enable
 
@@ -642,4 +642,22 @@ class MergeHwid(MergePlugin):
       touched.update(pci_fields)
 
     touched.add('bus_type')
+    return touched
+
+  @staticmethod
+  def _merge_wireless(bundle, label, values):
+    """Merge wireless items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = label
+
+    # save HWID values
+    component.hwid_type = 'wireless'
+    component.hwid_label = label
+
+    component.wifi.pci.vendor_id = values.get('vendor', '')
+    component.wifi.pci.device_id = values.get('device', '')
+    component.wifi.pci.revision_id = values.get('revision_id', '')
+    touched.update(['vendor', 'device', 'revision_id'])
     return touched

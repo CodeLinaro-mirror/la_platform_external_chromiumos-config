@@ -27,6 +27,8 @@ def _mock_hwid_component(type_name, label, values):
 class MergeHWidTests(unittest.TestCase):
   """Tests for MergeHwid plugin."""
 
+  # pylint: disable=too-many-public-methods
+
   def test_audio_codec(self):
     """Test basic audio codec functionality."""
     test_label = 'ACLABEL123'
@@ -663,5 +665,36 @@ class MergeHWidTests(unittest.TestCase):
     self.assertEqual(component.camera.pci.device_id, test_device)
     self.assertEqual(component.camera.pci.revision_id, test_revision)
 
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
+
+  def test_wireless(self):
+    """Test wireless functionality."""
+    test_label = 'some_touch_123abc'
+    test_vendor = '0xabcd'
+    test_device = '0x1234'
+    test_revision = '12'
+
+    hwid = _mock_hwid_component(
+        'wireless',
+        test_label,
+        {
+            'vendor': test_vendor,
+            'device': test_device,
+            'revision_id': test_revision
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'wireless')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.wifi.pci.vendor_id, test_vendor)
+    self.assertEqual(component.wifi.pci.device_id, test_device)
+    self.assertEqual(component.wifi.pci.revision_id, test_revision)
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
