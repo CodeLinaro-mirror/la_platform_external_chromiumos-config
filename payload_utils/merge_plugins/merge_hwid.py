@@ -136,7 +136,7 @@ class MergeHwid(MergePlugin):
         'storage':             MergeHwid._merge_storage,
         'touchpad':            MergeHwid._merge_touchpad,
         'tpm':                 MergeHwid._merge_tpm,
-          # 'touchscreen':         __merge_touchscreen,
+        'touchscreen':         MergeHwid._merge_touchscreen,
           # 'stylus':              __merge_stylus,
           # 'usb_hosts':           __merge_usb_hosts,
           # 'video':               __merge_video,
@@ -498,4 +498,41 @@ class MergeHwid(MergePlugin):
     component.tpm.version = values.get('version', '')
 
     touched.update(['manufacturer_info', 'version'])
+    return touched
+
+  @staticmethod
+  def _merge_touchscreen(bundle, label, values):
+    """Merge touchscreen items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = values.get('name', label)
+    touched.add('name')
+
+    # save HWID values
+    component.hwid_type = 'touchscreen'
+    component.hwid_label = label
+
+    def oneof(values, keys, default=""):
+      for key in keys:
+        if key in values:
+          return values[key]
+      return default
+
+    component.touchscreen.product_id = label
+    component.touchscreen.usb.product_id = oneof(
+        values,
+        ['product', 'product_id'],
+    )
+    component.touchscreen.usb.vendor_id = oneof(values, ['vendor', 'vendor_id'])
+    component.touchscreen.usb.bcd_device = values.get('bcd_device', '')
+
+    if all([
+        component.touchscreen.usb.product_id,
+        component.touchscreen.usb.vendor_id
+    ]):
+      component.touchscreen.type = component.touchscreen.USB
+
+    touched.update(
+        ['product', 'product_id', 'vendor', 'vendor_id', 'bcd_device'])
     return touched
