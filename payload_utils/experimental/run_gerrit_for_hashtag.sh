@@ -14,7 +14,7 @@ if [[ -z "${COMMAND}" ]]; then
 fi
 
 for cl in $(../../../../chromite/bin/gerrit -i \
-  --raw search "owner:me status:open hashtag:${HASH_TAG}"); do
+  --raw search "status:open hashtag:${HASH_TAG}"); do
   ../../../../chromite/bin/gerrit -i "${2}" "${cl}" ${3}
 done
 
