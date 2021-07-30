@@ -67,6 +67,7 @@ def _create_fw_payload(
     )
 
 def _create_fw_build_targets(
+        bmpblk = None,
         coreboot = None,
         depthcharge = None,
         ec = None,
@@ -75,6 +76,7 @@ def _create_fw_build_targets(
         zephyr_ec = None):
     """Builds a Firmware.BuildTargets proto."""
     return fw_pb.Firmware.BuildTargets(
+        bmpblk = bmpblk,
         coreboot = coreboot,
         depthcharge = depthcharge,
         ec = ec,
@@ -89,6 +91,7 @@ def _create_fw_build_config(build_targets):
 
 def _create_fw_build_config_by_names(
         coreboot_name,
+        bmpblk_name = None,
         ec_name = None,
         depthcharge_name = None,
         libpayload_name = None,
@@ -103,6 +106,7 @@ def _create_fw_build_config_by_names(
     """
     return fw_pb.FirmwareBuildConfig(
         build_targets = fw_pb.Firmware.BuildTargets(
+            bmpblk = bmpblk_name,
             coreboot = coreboot_name,
             ec = ec_name if ec_name else coreboot_name,
             ec_extras = ec_extras,

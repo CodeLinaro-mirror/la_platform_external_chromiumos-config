@@ -387,6 +387,13 @@
                   "name": "zephyr_ec",
                   "number": 7,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "bmpblk",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bmpblk",
+                  "number": 8,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "BuildTargets"

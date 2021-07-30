@@ -426,6 +426,7 @@ def _build_firmware(config):
 
   build_targets = {}
 
+  _upsert(fw_build_config.build_targets.bmpblk, build_targets, 'bmpblk')
   _upsert(fw_build_config.build_targets.depthcharge, build_targets,
           'depthcharge')
   _upsert(fw_build_config.build_targets.coreboot, build_targets, 'coreboot')

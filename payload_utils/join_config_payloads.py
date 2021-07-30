@@ -309,6 +309,7 @@ def merge_firmware_config(sw_config, model):
   build_props = model.GetProperties('/firmware/build-targets')
 
   build_config = sw_config.firmware_build_config
+  build_config.build_targets.bmpblk = build_props.get('bmpblk', '')
   build_config.build_targets.coreboot = build_props.get('coreboot', '')
   build_config.build_targets.depthcharge = build_props.get('depthcharge', '')
   build_config.build_targets.ec = build_props.get('ec', '')

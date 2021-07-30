@@ -109,6 +109,9 @@ message Firmware {
 
     // Build target for zephyr_ec.
     string zephyr_ec = 7;
+
+    // Build target for chromeos-bmpblk.
+    string bmpblk = 8;
   }
 
   BuildTargets build_targets = 1;
