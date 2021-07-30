@@ -110,6 +110,18 @@ class MergeHwid(MergePlugin):
     else:
       self.data = copy.deepcopy(hwid_data)
 
+    # We're not interested in the details of the HWID encoding so remove those
+    # fields from the residual
+    _maybe_delete(self.data, 'pattern')
+    _maybe_delete(self.data, 'encoded_fields')
+    _maybe_delete(self.data, 'encoding_patterns')
+
+    # And remove any other fields that would just be residual noise
+    _maybe_delete(self.data, 'checksum')
+    _maybe_delete(self.data, 'image_id')
+    _maybe_delete(self.data, 'rules')
+    _maybe_delete(self.data, 'project')
+
   def residual(self):
     """Get any remaining data that hasn't been parsed."""
     return self.data
@@ -120,6 +132,7 @@ class MergeHwid(MergePlugin):
     for component_type in list(components.keys()):
       value = components[component_type]
       if not value:
+        _del_if_empty(components, component_type)
         continue
 
       # yapf: disable

@@ -18,6 +18,7 @@ files.  Simple specify a project name with --project-name/-p and omit
 # pylint: disable=too-many-lines
 
 import argparse
+import json
 import logging
 import os
 import sys
@@ -194,31 +195,6 @@ def merge_avl_dlm(config_bundle):
       continue
 
     merge_form_factor(design, name, rows[0].get('deviceFormFactor'))
-
-  return config_bundle
-
-
-# NOTE: hwid_path is temporary until migration to new plugins is completeq
-def add_hwid_components(config_bundle, _hwid_db, hwid_path=None):
-  """Add components from the HWID database to the config_bundle.
-
-  HWID doesn't map hardware to SKU, it's more a listing of all possible
-  hardware components, which is resolved at runtime to generate an actual
-  accounting of what hardware is on a specific device.  So we'll add the
-  components under the ConfigBundle, but not actually tie them together
-  into design configs (yet).
-
-  Args:
-    config_bundle (ConfigBundle): config to add HWID components to
-    hwid_db (dict): parsed HWID database
-    hwid_path (str): path to HWID file
-
-  Returns:
-    A reference to the input config_bundle updated with components from HWID
-  """
-
-  merger = MergeHwid(hwid_path)
-  merger.merge(config_bundle)
 
   return config_bundle
 
@@ -703,7 +679,13 @@ def merge_configs(options):
 
   # Merge information from HWID into config bundle
   if hwid_path:
-    return add_hwid_components(config_bundle, load_hwid(hwid_path), hwid_path)
+    merger = MergeHwid(hwid_path)
+    merger.merge(config_bundle)
+
+    if options.hwid_residual:
+      with open(options.hwid_residual, 'w') as outfile:
+        json.dump(merger.residual(), outfile, indent=2)
+
   return config_bundle
 
 
@@ -805,6 +787,12 @@ instance is used instead.""")
       action='store_true',
       help="""When specified, don't use values from --config-bundle directly.  Instead,
 only use the config bundle to propagate models to imported payload.""")
+
+  parser.add_argument(
+      '--hwid-residual',
+      type=str,
+      help='when given, write remaining unparsed HWID information to this file',
+  )
 
   parser.add_argument(
       '--public-model', type=str, help='public model.yaml file to merge')
