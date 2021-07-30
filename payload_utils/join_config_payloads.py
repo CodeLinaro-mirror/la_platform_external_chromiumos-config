@@ -223,29 +223,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   merger = MergeHwid(hwid_path)
   merger.merge(config_bundle)
 
-  def create_usb_host_components(items):
-
-    def get_oneof(obj, keys, default=None):
-      """Get one of a set of keys from a dict, or return a default value."""
-      for key in keys:
-        if key in obj:
-          return obj[key]
-      return default
-
-    for key, values in non_null_values(items):
-      comp = config_bundle.components.add()
-      comp.id.value = values.get('product', key)
-      comp.name = values.get('product', key)
-      if 'manufacturer' in values:
-        comp.manufacturer_id.MergeFrom(
-            config_bundle_utils.find_partner(
-                config_bundle, values['manufacturer'], create=True).id)
-
-      host = comp.usb_host
-      host.product_id = get_oneof(values, ['idProduct', 'device'], '')
-      host.vendor_id = get_oneof(values, ['idVendor', 'vendor'], '')
-      host.bcd_device = get_oneof(values, ['bcdDevice', 'revision_id'], '')
-
   def create_video_components(items):
     usb_fields = ['bcdDevice', 'idProduct', 'idVendor']
     pci_fields = ['vendor', 'device', 'revision_id']
@@ -289,7 +266,6 @@ def add_hwid_components(config_bundle, hwid_db, hwid_path=None):
   for component_type, value in components.items():
     if value:
       {
-          'usb_hosts': create_usb_host_components,
           'video': create_video_components,
           'wireless': create_wireless_components
       }.get(component_type, (lambda x: None))(

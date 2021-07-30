@@ -138,7 +138,7 @@ class MergeHwid(MergePlugin):
         'touchpad':            MergeHwid._merge_touchpad,
         'tpm':                 MergeHwid._merge_tpm,
         'touchscreen':         MergeHwid._merge_touchscreen,
-          # 'usb_hosts':           __merge_usb_hosts,
+        'usb_hosts':           MergeHwid._merge_usb_hosts,
           # 'video':               __merge_video,
           # 'wireless':            __merge_wireless,
       }.get(component_type)
@@ -570,4 +570,37 @@ class MergeHwid(MergePlugin):
 
     touched.update(
         ['product', 'product_id', 'vendor', 'vendor_id', 'bcd_device'])
+    return touched
+
+  @staticmethod
+  def _merge_usb_hosts(bundle, label, values):
+    """Merge USB host items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = values.get('product', label)
+    touched.add('product')
+
+    # save HWID values
+    component.hwid_type = 'usb_hosts'
+    component.hwid_label = label
+
+    def get_oneof(obj, keys, default=None):
+      """Get one of a set of keys from values, or return a default value."""
+      for key in keys:
+        if key in obj:
+          touched.add(key)
+          return obj[key]
+      return default
+
+    if 'manufacturer' in values:
+      component.manufacturer_id.MergeFrom(
+          cbu.find_partner(bundle, values['manufacturer'], create=True).id)
+      touched.add('manufacturer')
+
+    host = component.usb_host
+    host.product_id = get_oneof(values, ['idProduct', 'device'], '')
+    host.vendor_id = get_oneof(values, ['idVendor', 'vendor'], '')
+    host.bcd_device = get_oneof(values, ['bcdDevice', 'revision_id'], '')
+
     return touched

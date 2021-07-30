@@ -565,3 +565,37 @@ class MergeHWidTests(unittest.TestCase):
 
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
+
+  def test_usb_hosts(self):
+    """Test USB hosts functionality."""
+    test_label = 'some_touch_123abc'
+    test_mfg = 'ChipCo'
+    test_device = '0x1234'
+    test_vendor = '0xabcd'
+    test_revision = '123'
+
+    hwid = _mock_hwid_component(
+        'usb_hosts',
+        test_label,
+        {
+            'manufacturer': test_mfg,
+            'device': test_device,
+            'vendor': test_vendor,
+            'revision_id': test_revision
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'usb_hosts')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.manufacturer_id.value, test_mfg)
+    self.assertEqual(component.usb_host.product_id, test_device)
+    self.assertEqual(component.usb_host.vendor_id, test_vendor)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
