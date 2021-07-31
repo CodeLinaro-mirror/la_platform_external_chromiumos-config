@@ -44,7 +44,6 @@ generated documentation.
 {{end}}
 
 {{ $brand_config := Symbol "//config/util/brand_config.star" "brand_config" }}
-{{ $build_target := Symbol "//config/util/build_target.star" "build_target" }}
 {{ $component := Symbol "//config/util/component.star" "comp" }}
 {{ $config_bundle := Symbol "//config/util/config_bundle.star" "config_bundle" }}
 {{ $design := Symbol "//config/util/design.star" "design" }}
@@ -56,7 +55,6 @@ generated documentation.
 {{ $sw_config := Symbol "//config/util/sw_config.star" "sw_config" }}
 
 {{ template "gen-funcs-doc" $brand_config }}
-{{ template "gen-funcs-doc" $build_target }}
 {{ template "gen-funcs-doc" $component }}
 {{ template "gen-funcs-doc" $config_bundle }}
 {{ template "gen-funcs-doc" $design }}

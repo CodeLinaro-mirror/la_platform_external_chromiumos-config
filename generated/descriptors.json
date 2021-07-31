@@ -6102,67 +6102,44 @@
             {
               "field": [
                 {
-                  "jsonName": "tabletModePowerTableA",
+                  "jsonName": "sarTable",
                   "label": "LABEL_OPTIONAL",
-                  "name": "tablet_mode_power_table_a",
+                  "name": "sar_table",
                   "number": 1,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.TransmitPowerChain"
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable"
                 },
                 {
-                  "jsonName": "tabletModePowerTableB",
+                  "jsonName": "wgdsTable",
                   "label": "LABEL_OPTIONAL",
-                  "name": "tablet_mode_power_table_b",
+                  "name": "wgds_table",
                   "number": 2,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.TransmitPowerChain"
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.Offsets"
                 },
                 {
-                  "jsonName": "nonTabletModePowerTableA",
+                  "jsonName": "antTable",
                   "label": "LABEL_OPTIONAL",
-                  "name": "non_tablet_mode_power_table_a",
+                  "name": "ant_table",
                   "number": 3,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.TransmitPowerChain"
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.Gains"
                 },
                 {
-                  "jsonName": "nonTabletModePowerTableB",
+                  "jsonName": "wtasTable",
                   "label": "LABEL_OPTIONAL",
-                  "name": "non_tablet_mode_power_table_b",
+                  "name": "wtas_table",
                   "number": 4,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.TransmitPowerChain"
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.Average"
                 },
                 {
-                  "jsonName": "wgdsVersion",
+                  "jsonName": "dsm",
                   "label": "LABEL_OPTIONAL",
-                  "name": "wgds_version",
+                  "name": "dsm",
                   "number": 5,
-                  "type": "TYPE_UINT32"
-                },
-                {
-                  "jsonName": "offsetFcc",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "offset_fcc",
-                  "number": 6,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.GeoOffsets"
-                },
-                {
-                  "jsonName": "offsetEu",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "offset_eu",
-                  "number": 7,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.GeoOffsets"
-                },
-                {
-                  "jsonName": "offsetOther",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "offset_other",
-                  "number": 8,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.GeoOffsets"
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.DSM"
                 }
               ],
               "name": "IntelConfig",
@@ -6170,89 +6147,579 @@
                 {
                   "field": [
                     {
-                      "jsonName": "limit2g",
+                      "jsonName": "sarTableVersion",
                       "label": "LABEL_OPTIONAL",
-                      "name": "limit_2g",
+                      "name": "sar_table_version",
                       "number": 1,
                       "type": "TYPE_UINT32"
                     },
                     {
-                      "jsonName": "limit5g1",
+                      "jsonName": "tabletModePowerTableA",
                       "label": "LABEL_OPTIONAL",
-                      "name": "limit_5g_1",
-                      "number": 2,
-                      "type": "TYPE_UINT32"
-                    },
-                    {
-                      "jsonName": "limit5g2",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "limit_5g_2",
+                      "name": "tablet_mode_power_table_a",
                       "number": 3,
-                      "type": "TYPE_UINT32"
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable.TransmitPowerChain"
                     },
                     {
-                      "jsonName": "limit5g3",
+                      "jsonName": "tabletModePowerTableB",
                       "label": "LABEL_OPTIONAL",
-                      "name": "limit_5g_3",
+                      "name": "tablet_mode_power_table_b",
                       "number": 4,
-                      "type": "TYPE_UINT32"
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable.TransmitPowerChain"
                     },
                     {
-                      "jsonName": "limit5g4",
+                      "jsonName": "nonTabletModePowerTableA",
                       "label": "LABEL_OPTIONAL",
-                      "name": "limit_5g_4",
+                      "name": "non_tablet_mode_power_table_a",
                       "number": 5,
-                      "type": "TYPE_UINT32"
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable.TransmitPowerChain"
+                    },
+                    {
+                      "jsonName": "nonTabletModePowerTableB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "non_tablet_mode_power_table_b",
+                      "number": 6,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable.TransmitPowerChain"
+                    },
+                    {
+                      "jsonName": "cdbTabletModePowerTableA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "cdb_tablet_mode_power_table_a",
+                      "number": 7,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable.TransmitPowerChain"
+                    },
+                    {
+                      "jsonName": "cdbTabletModePowerTableB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "cdb_tablet_mode_power_table_b",
+                      "number": 8,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable.TransmitPowerChain"
+                    },
+                    {
+                      "jsonName": "cdbNonTabletModePowerTableA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "cdb_non_tablet_mode_power_table_a",
+                      "number": 9,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable.TransmitPowerChain"
+                    },
+                    {
+                      "jsonName": "cdbNonTabletModePowerTableB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "cdb_non_tablet_mode_power_table_b",
+                      "number": 10,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable.TransmitPowerChain"
                     }
                   ],
-                  "name": "TransmitPowerChain"
+                  "name": "SarTable",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "limit2g",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_2g",
+                          "number": 1,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit5g1",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_5g_1",
+                          "number": 2,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit5g2",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_5g_2",
+                          "number": 3,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit5g3",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_5g_3",
+                          "number": 4,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit5g4",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_5g_4",
+                          "number": 5,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit5g5",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_5g_5",
+                          "number": 6,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit6g1",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_6g_1",
+                          "number": 7,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit6g2",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_6g_2",
+                          "number": 8,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit6g3",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_6g_3",
+                          "number": 9,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit6g4",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_6g_4",
+                          "number": 10,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "limit6g5",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "limit_6g_5",
+                          "number": 11,
+                          "type": "TYPE_UINT32"
+                        }
+                      ],
+                      "name": "TransmitPowerChain"
+                    }
+                  ]
                 },
                 {
                   "field": [
                     {
-                      "jsonName": "max2g",
+                      "jsonName": "wgdsVersion",
                       "label": "LABEL_OPTIONAL",
-                      "name": "max_2g",
+                      "name": "wgds_version",
                       "number": 1,
                       "type": "TYPE_UINT32"
                     },
                     {
-                      "jsonName": "offset2gA",
+                      "jsonName": "offsetFcc",
                       "label": "LABEL_OPTIONAL",
-                      "name": "offset_2g_a",
+                      "name": "offset_fcc",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.Offsets.GeoOffsets"
+                    },
+                    {
+                      "jsonName": "offsetEu",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "offset_eu",
+                      "number": 3,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.Offsets.GeoOffsets"
+                    },
+                    {
+                      "jsonName": "offsetOther",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "offset_other",
+                      "number": 4,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.Offsets.GeoOffsets"
+                    }
+                  ],
+                  "name": "Offsets",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "max2g",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "max_2g",
+                          "number": 1,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "offset2gA",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "offset_2g_a",
+                          "number": 2,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "offset2gB",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "offset_2g_b",
+                          "number": 3,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "max5g",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "max_5g",
+                          "number": 4,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "offset5gA",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "offset_5g_a",
+                          "number": 5,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "offset5gB",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "offset_5g_b",
+                          "number": 6,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "max6g",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "max_6g",
+                          "number": 7,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "offset6gA",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "offset_6g_a",
+                          "number": 8,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "offset6gB",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "offset_6g_b",
+                          "number": 9,
+                          "type": "TYPE_UINT32"
+                        }
+                      ],
+                      "name": "GeoOffsets"
+                    }
+                  ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "antTableVersion",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "ant_table_version",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "antModePpag",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "ant_mode_ppag",
                       "number": 2,
                       "type": "TYPE_UINT32"
                     },
                     {
-                      "jsonName": "offset2gB",
+                      "jsonName": "antGainTableA",
                       "label": "LABEL_OPTIONAL",
-                      "name": "offset_2g_b",
+                      "name": "ant_gain_table_a",
+                      "number": 3,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.Gains.AntennaGain"
+                    },
+                    {
+                      "jsonName": "antGainTableB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "ant_gain_table_b",
+                      "number": 4,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig.Gains.AntennaGain"
+                    }
+                  ],
+                  "name": "Gains",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "antGain2g",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_2g",
+                          "number": 1,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain5g1",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_5g_1",
+                          "number": 2,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain5g2",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_5g_2",
+                          "number": 3,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain5g3",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_5g_3",
+                          "number": 4,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain5g4",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_5g_4",
+                          "number": 5,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain5g5",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_5g_5",
+                          "number": 6,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain6g1",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_6g_1",
+                          "number": 7,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain6g2",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_6g_2",
+                          "number": 8,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain6g3",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_6g_3",
+                          "number": 9,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain6g4",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_6g_4",
+                          "number": 10,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "antGain6g5",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ant_gain_6g_5",
+                          "number": 11,
+                          "type": "TYPE_UINT32"
+                        }
+                      ],
+                      "name": "AntennaGain"
+                    }
+                  ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "sarAvgVersion",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "sar_avg_version",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "tasSelection",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "tas_selection",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "tasListSize",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "tas_list_size",
                       "number": 3,
                       "type": "TYPE_UINT32"
                     },
                     {
-                      "jsonName": "max5g",
+                      "jsonName": "denyListEntry1",
                       "label": "LABEL_OPTIONAL",
-                      "name": "max_5g",
+                      "name": "deny_list_entry_1",
                       "number": 4,
                       "type": "TYPE_UINT32"
                     },
                     {
-                      "jsonName": "offset5gA",
+                      "jsonName": "denyListEntry2",
                       "label": "LABEL_OPTIONAL",
-                      "name": "offset_5g_a",
+                      "name": "deny_list_entry_2",
                       "number": 5,
                       "type": "TYPE_UINT32"
                     },
                     {
-                      "jsonName": "offset5gB",
+                      "jsonName": "denyListEntry3",
                       "label": "LABEL_OPTIONAL",
-                      "name": "offset_5g_b",
+                      "name": "deny_list_entry_3",
                       "number": 6,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry4",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_4",
+                      "number": 7,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry5",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_5",
+                      "number": 8,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry6",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_6",
+                      "number": 9,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry7",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_7",
+                      "number": 10,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry8",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_8",
+                      "number": 11,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry9",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_9",
+                      "number": 12,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry10",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_10",
+                      "number": 13,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry11",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_11",
+                      "number": 14,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry12",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_12",
+                      "number": 15,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry13",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_13",
+                      "number": 16,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry14",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_14",
+                      "number": 17,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry15",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_15",
+                      "number": 18,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "denyListEntry16",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "deny_list_entry_16",
+                      "number": 19,
                       "type": "TYPE_UINT32"
                     }
                   ],
-                  "name": "GeoOffsets"
+                  "name": "Average"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "disableActiveSdrChannels",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "disable_active_sdr_channels",
+                      "number": 2,
+                      "type": "TYPE_INT64"
+                    },
+                    {
+                      "jsonName": "supportIndonesia5gBand",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "support_indonesia_5g_band",
+                      "number": 3,
+                      "type": "TYPE_INT64"
+                    },
+                    {
+                      "jsonName": "supportUltraHighBand",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "support_ultra_high_band",
+                      "number": 4,
+                      "type": "TYPE_INT64"
+                    },
+                    {
+                      "jsonName": "regulatoryConfigurations",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "regulatory_configurations",
+                      "number": 5,
+                      "type": "TYPE_INT64"
+                    },
+                    {
+                      "jsonName": "uartConfigurations",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "uart_configurations",
+                      "number": 6,
+                      "type": "TYPE_INT64"
+                    },
+                    {
+                      "jsonName": "enablement11ax",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "enablement_11ax",
+                      "number": 7,
+                      "type": "TYPE_INT64"
+                    },
+                    {
+                      "jsonName": "unii4",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "unii_4",
+                      "number": 8,
+                      "type": "TYPE_INT64"
+                    }
+                  ],
+                  "name": "DSM"
                 }
               ]
             }

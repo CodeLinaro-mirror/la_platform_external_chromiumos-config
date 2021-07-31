@@ -71,61 +71,161 @@ message WifiConfig {
   }
 
   message IntelConfig {
-    // WiFi power chain for use with Intel drivers. Limits in units
-    // of 0.125 dBm.
-    message TransmitPowerChain {
-      // 2G band power limit: All 2G band channels. (0.125 dBm)
-      uint32 limit_2g = 1;
-      // 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm)
-      uint32 limit_5g_1 = 2;
-      // 5G band 2 power limit: 5.35G-5.47G channels. (0.125 dBm)
-      uint32 limit_5g_2 = 3;
-      // 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm)
-      uint32 limit_5g_3 = 4;
-      // 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm)
-      uint32 limit_5g_4 = 5;
+
+    message SarTable {
+        // Wireless SAR table Settings.
+        uint32 sar_table_version = 1;
+        // WiFi power chain for use with Intel drivers. Limits in units
+        // of 0.125 dBm.
+        message TransmitPowerChain {
+          // 2G band power limit: All 2G band channels. (0.125 dBm)
+          uint32 limit_2g = 1;
+          // 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm)
+          uint32 limit_5g_1 = 2;
+          // 5G band 2 power limit: 5.35G-5.47G channels. (0.125 dBm)
+          uint32 limit_5g_2 = 3;
+          // 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm)
+          uint32 limit_5g_3 = 4;
+          // 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm)
+          uint32 limit_5g_4 = 5;
+          // 5G band 5 power limit: 5.95G-6.165G channels. (0.125 dBm)
+          uint32 limit_5g_5 = 6;
+          // 6G band 1 power limit: 6.165G-6.405G channels. (0.125 dBm)
+          uint32 limit_6g_1 = 7;
+          // 6G band 2 power limit: 6.405G-6.525G channels. (0.125 dBm)
+          uint32 limit_6g_2 = 8;
+          // 6G band 3 power limit: 6.525G-6.705G channels. (0.125 dBm)
+          uint32 limit_6g_3 = 9;
+          // 6G band 4 power limit: 6.705G-6.865G channels. (0.125 dBm)
+          uint32 limit_6g_4 = 10;
+          // 6G band 5 power limit: 6.865G-7.105G channels. (0.125 dBm)
+          uint32 limit_6g_5 = 11;
+        }
+
+        // TransmitPowerChain settings when operating in tablet and non-tablet
+        // modes. Each mode additionally provides chain a and chain b settings.
+        // Revision 2 provides concurrency dual band settings.
+        // These are power configs for a given antenna, a vs. b.
+        TransmitPowerChain tablet_mode_power_table_a = 3;
+        TransmitPowerChain tablet_mode_power_table_b = 4;
+        TransmitPowerChain non_tablet_mode_power_table_a = 5;
+        TransmitPowerChain non_tablet_mode_power_table_b = 6;
+        TransmitPowerChain cdb_tablet_mode_power_table_a = 7;
+        TransmitPowerChain cdb_tablet_mode_power_table_b = 8;
+        TransmitPowerChain cdb_non_tablet_mode_power_table_a = 9;
+        TransmitPowerChain cdb_non_tablet_mode_power_table_b = 10;
     }
 
-    // TransmitPowerChain settings when operating in tablet and non-tablet
-    // modes. Each mode additionally provides chain a and chain b settings.
-    // These are power configs for a given antenna, a vs. b.
-    TransmitPowerChain tablet_mode_power_table_a = 1;
-    TransmitPowerChain tablet_mode_power_table_b = 2;
-    TransmitPowerChain non_tablet_mode_power_table_a = 3;
-    TransmitPowerChain non_tablet_mode_power_table_b = 4;
+    SarTable sar_table = 1;
 
-    // Wireless Geo Delta Settings version.
-    uint32 wgds_version = 5;
+    message Offsets {
+        // Wireless Geo Delta Settings version.
+        uint32 wgds_version = 1;
 
-    // Offsets which are applied to WiFi power limits depending on the current
-    // regulatory domain. Offsets in units of 0.125 dBm. When the
-    // current regulatory domain is unknown or has yet to be determined, the
-    // base transmit power limits are used without any geo offsets applied.
-    // 'geo-offsets-fcc' is used for regulatory domains which follow FCC
-    // guidelines, 'geo-offsets-eu' is used for regulatory domains which follow
-    // ETSI guidelines, and 'geo-offsets-rest-of-world' is used for regulatory
-    // domains which don't follow FCC or ETSI guidelines.
-    message GeoOffsets {
-      // Defines the 2.4 GHz upper value for the allowed power to not be crossed
-      // by applying the Geo offset.
-      uint32 max_2g = 1;
-      // Value to be added to the 2.4GHz WiFi band for chain a. (0.125 dBm)
-      uint32 offset_2g_a = 2;
-      // Value to be added to the 2.4GHz WiFi band for chain b. (0.125 dBm)
-      uint32 offset_2g_b = 3;
-      // Defines the 5 GHz upper value for the allowed power to not be crossed
-      // by applying the Geo offset.
-      uint32 max_5g = 4;
-      // Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm)
-      uint32 offset_5g_a = 5;
-      // Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm)
-      uint32 offset_5g_b = 6;
+        // Offsets which are applied to WiFi power limits depending on the current
+        // regulatory domain. Offsets in units of 0.125 dBm. When the
+        // current regulatory domain is unknown or has yet to be determined, the
+        // base transmit power limits are used without any geo offsets applied.
+        // 'geo-offsets-fcc' is used for regulatory domains which follow FCC
+        // guidelines, 'geo-offsets-eu' is used for regulatory domains which follow
+        // ETSI guidelines, and 'geo-offsets-rest-of-world' is used for regulatory
+        // domains which don't follow FCC or ETSI guidelines.
+        message GeoOffsets {
+          // Defines the 2.4 GHz upper value for the allowed power to not be crossed
+          // by applying the Geo offset.
+          uint32 max_2g = 1;
+          // Value to be added to the 2.4GHz WiFi band for chain a. (0.125 dBm)
+          uint32 offset_2g_a = 2;
+          // Value to be added to the 2.4GHz WiFi band for chain b. (0.125 dBm)
+          uint32 offset_2g_b = 3;
+          // Defines the 5 GHz upper value for the allowed power to not be crossed
+          // by applying the Geo offset.
+          uint32 max_5g = 4;
+          // Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm)
+          uint32 offset_5g_a = 5;
+          // Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm)
+          uint32 offset_5g_b = 6;
+          // Defines the 6 GHz upper value for the allowed power to not be crossed
+          // by applying the Geo offset.
+          uint32 max_6g = 7;
+          // Value to be added to 6GHz WiFi bands for chain a. (0.125 dBm)
+          uint32 offset_6g_a = 8;
+          // Value to be added to 6GHz WiFi bands for chain b. (0.125 dBm)
+          uint32 offset_6g_b = 9;
+        }
+
+        // GeoOffsets in different regulatory domains.
+        GeoOffsets offset_fcc = 2;
+        GeoOffsets offset_eu = 3;
+        GeoOffsets offset_other = 4;
     }
+    Offsets wgds_table = 2;
 
-    // GeoOffsets in different regulatory domains.
-    GeoOffsets offset_fcc = 6;
-    GeoOffsets offset_eu = 7;
-    GeoOffsets offset_other = 8;
+    message Gains {
+        // Antenna Gains table version.
+        uint32 ant_table_version = 1;
+        uint32 ant_mode_ppag = 2;
+
+        message AntennaGain {
+          uint32 ant_gain_2g = 1;
+          uint32 ant_gain_5g_1 = 2;
+          uint32 ant_gain_5g_2 = 3;
+          uint32 ant_gain_5g_3 = 4;
+          uint32 ant_gain_5g_4 = 5;
+          uint32 ant_gain_5g_5 = 6;
+          uint32 ant_gain_6g_1 = 7;
+          uint32 ant_gain_6g_2 = 8;
+          uint32 ant_gain_6g_3 = 9;
+          uint32 ant_gain_6g_4 = 10;
+          uint32 ant_gain_6g_5 = 11;
+        }
+
+        AntennaGain ant_gain_table_a = 3;
+        AntennaGain ant_gain_table_b = 4;
+    }
+    Gains ant_table = 3;
+
+    message Average {
+      uint32 sar_avg_version = 1;
+      uint32 tas_selection = 2;
+      uint32 tas_list_size = 3;
+      uint32 deny_list_entry_1 = 4;
+      uint32 deny_list_entry_2 = 5;
+      uint32 deny_list_entry_3 = 6;
+      uint32 deny_list_entry_4 = 7;
+      uint32 deny_list_entry_5 = 8;
+      uint32 deny_list_entry_6 = 9;
+      uint32 deny_list_entry_7 = 10;
+      uint32 deny_list_entry_8 = 11;
+      uint32 deny_list_entry_9 = 12;
+      uint32 deny_list_entry_10 = 13;
+      uint32 deny_list_entry_11 = 14;
+      uint32 deny_list_entry_12 = 15;
+      uint32 deny_list_entry_13 = 16;
+      uint32 deny_list_entry_14 = 17;
+      uint32 deny_list_entry_15 = 18;
+      uint32 deny_list_entry_16 = 19;
+    }
+    Average wtas_table = 4;
+
+    // Device Specific methods used by intel wifi driver.
+    message DSM {
+      // Function 1
+      int64 disable_active_sdr_channels = 2;
+      // Function 2
+      int64 support_indonesia_5g_band = 3;
+      // Function 3
+      int64 support_ultra_high_band = 4;
+      // Function 4
+      int64 regulatory_configurations = 5;
+      // Function 5
+      int64 uart_configurations = 6;
+      // Function 6
+      int64 enablement_11ax = 7;
+      // Function 7
+      int64 unii_4 = 8;
+    }
+    DSM dsm = 5;
   }
 
   oneof wifi_config {

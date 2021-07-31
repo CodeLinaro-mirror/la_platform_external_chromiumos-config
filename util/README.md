@@ -35,56 +35,34 @@ generated documentation.
 
 
 
-
 ## //config/util/brand_config.star
 
 ### brand_config.create {#brand_config.create}
 Builds a BrandConfig proto.
 
 ```python
-brand_config.create(device_brand_id, wallpaper = None, whitelabel_tag = None)
+brand_config.create(
+    # Required arguments.
+    device_brand_id,
+
+    # Optional arguments.
+    wallpaper = None,
+    regulatory_label = None,
+    whitelabel_tag = None,
+    help_content_id = None,
+)
 ```
 
 #### Arguments {#brand_config.create-args}
 
 * **device_brand_id**: A DeviceBrandId proto that is used to select a BrandConfig at runtime. Required.
 * **wallpaper**: Base filename of the default wallpaper to show.
+* **regulatory_label**: See chromeos-config readme
 * **whitelabel_tag**: "whitelabel_tag" value set in the VPD, used to select a BrandConfig at runtime. See https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#field-whitelabel_tag.
+* **help_content_id**: help content identifier
 
 #### Returns  {#brand_config.create-returns}
 A BrandConfig proto.
-
-
-
-
-## //config/util/build_target.star
-
-### build_target.create {#build_target.create}
-Builds a BuildTarget proto.
-
-```python
-build_target.create(
-    # Required arguments.
-    name,
-
-    # Optional arguments.
-    public_fields = None,
-    overlay_name = None,
-    arc_device = None,
-    first_api_level = None,
-)
-```
-
-#### Arguments {#build_target.create-args}
-
-* **name**: Name of the build target, e.g. "galaxy". Required.
-* **public_fields**: Fields replicated to public configs. See PublicReplication proto for details.
-* **overlay_name**: Name of the Portage overlay, e.g. "overlay-galaxy-private". If not specified, "name" is used.
-* **arc_device**: Device name to report in ‘ro.product.device’. If not specified, "name"_cheets is used.
-* **first_api_level**: The first Android API level that this build shipped with.
-
-#### Returns  {#build_target.create-returns}
-A BuildTarget proto.
 
 
 
@@ -172,6 +150,15 @@ comp.create_quals()
 
 
 
+### comp.create_amplifier {#comp.create_amplifier}
+Builds a Component.Amplifier proto.
+
+```python
+comp.create_amplifier()
+```
+
+
+
 ### comp.create_audio_codec {#comp.create_audio_codec}
 Builds a Component.AudioCodec proto.
 
@@ -253,6 +240,15 @@ comp.create_pci()
 
 
 
+### comp.append_battery {#comp.append_battery}
+
+
+```python
+comp.append_battery()
+```
+
+
+
 ### comp.append_display_panel {#comp.append_display_panel}
 
 
@@ -326,8 +322,8 @@ design.append_configs(
     config_id,
 
     # Optional arguments.
-    extra_hw_config_public_fields = [],
-    extra_sw_config_public_fields = [],
+    extra_hw_config_public_fields = None,
+    extra_sw_config_public_fields = None,
     hardware_topology = None,
     firmware = None,
     firmware_build_config = None,
@@ -335,6 +331,7 @@ design.append_configs(
     power = None,
     audio = None,
     wifi = None,
+    camera = None,
     ui = None,
     device_tree_compatible_match = None,
     smbios_name_match_override = None,
@@ -347,8 +344,8 @@ design.append_configs(
 * **hw_configs**: An array to append the new Design.Config to. Required.
 * **design_id**: A DesignId to use for the Design.Config and SoftwareConfig. Required.
 * **config_id**: A str or int used to construct the DesignConfigId for the Design.Config and SoftwareConfig. Required.
-* **extra_hw_config_public_fields**: A list of additional str specifying fields on Design.Config that will be made public. See PublicReplication proto for details.
-* **extra_sw_config_public_fields**: A list of additional str specifying fields on SoftwareConfig that will be made public. See PublicReplication proto for details.
+* **extra_hw_config_public_fields**: A list of str specifying fields on Design.Config that will be made public in addition to the default _DEFAULT_PUBLIC_HW_CONFIG_FIELDS. See PublicReplication proto for details.
+* **extra_sw_config_public_fields**: A list of str specifying fields on SoftwareConfig that will be made public in addition to the default _DEFAULT_PUBLIC_SW_CONFIG_FIELDS. See PublicReplication proto for details.
 * **hardware_topology**: A HardwareTopology to be used in the Design.Config.
 * **firmware**: A FirmwareConfig to be used in the SoftwareConfig.
 * **firmware_build_config**: A FirmwareBuildConfig to be used in the SoftwareConfig.
@@ -356,9 +353,10 @@ design.append_configs(
 * **power**: A PowerConfig to be used in the SoftwareConfig.
 * **audio**: An AudioConfig to be used in the SoftwareConfig. Can be either a single AudioConfig or a list of AudioConfigs.
 * **wifi**: A WifiConfig to be used in the SoftwareConfig.
+* **camera**: A CameraConfig to be used in the SoftwareConfig.
 * **ui**: A UiConfig to be used in the SoftwareConfig.
 * **device_tree_compatible_match**: For ARM platform, a str used for device_tree_compatible_match in IdentityScanConfig.
-* **smbios_name_match_override**: For x86 platform, a str used for smbios_name_match in IdentityScanConfig. If not specified, the string in DesignId is used.
+* **smbios_name_match_override**: For x86 platform, a str used for smbios_name_match in IdentityScanConfig. If not specified, the string in DesignId is used. Note only one of device_tree_compatible_match and smbios_name_match_override can be specified.
 
 
 ### design.create_constraint {#design.create_constraint}
@@ -506,7 +504,7 @@ hw_topo.create_keyboard(
     kb_type,
 
     # Optional arguments.
-    numpad_present,
+    numpad_present = None,
     fw_configs = None,
     id = None,
     description = None,
@@ -543,9 +541,6 @@ hw_topo.create_camera(
     description = None,
     fw_configs = None,
     camera_devices = None,
-    has_user_facing_camera = None,
-    has_world_facing_camera = None,
-    count = None,
 )
 ```
 
@@ -555,9 +550,6 @@ hw_topo.create_camera(
 * **description**: An English description for the Topology.
 * **fw_configs**: A list of FirmwareConfiguration protos for the form factor.
 * **camera_devices**: A list of HardwareFeatures.Camera.Device protos.
-* **has_user_facing_camera**: If there is a user(front)-facing camera. Deprecated, use |camera_devices| instead.
-* **has_world_facing_camera**: If there is a world(back)-facing camera. Deprecated, use |camera_devices| instead.
-* **count**: The number of cameras. Deprecated, use |camera_devices| instead.
 
 
 ### hw_topo.create_sensor {#hw_topo.create_sensor}
@@ -718,6 +710,36 @@ hw_topo.create_volume_button(
 * **description**: An English description for the Topology. If not passed, a default is provided.
 
 
+### hw_topo.create_touch {#hw_topo.create_touch}
+Builds a Topology proto for touch.
+
+```python
+hw_topo.create_touch()
+```
+
+
+
+### hw_topo.create_microphone_mute_switch {#hw_topo.create_microphone_mute_switch}
+Builds a Topology proto for an microphone mute switch.
+
+```python
+hw_topo.create_microphone_mute_switch(present = None)
+```
+
+#### Arguments {#hw_topo.create_microphone_mute_switch-args}
+
+* **present**: flag indicating whether the device has an microphone mute switch
+
+
+### hw_topo.create_hdmi {#hw_topo.create_hdmi}
+Builds a Topology proto for HDMI.
+
+```python
+hw_topo.create_hdmi()
+```
+
+
+
 ### hw_topo.convert_to_hw_features {#hw_topo.convert_to_hw_features}
 Converts a HardwareTopology proto to a HardwareFeatures proto.
 
@@ -748,6 +770,34 @@ hw_topo.make_fw_config()
 
 
 
+### hw_topo.create_ec {#hw_topo.create_ec}
+Builds a Topology proto for an embedded controller.
+
+```python
+hw_topo.create_ec(present = None, ec_type = None, id = None)
+```
+
+#### Arguments {#hw_topo.create_ec-args}
+
+* **present**: flag indicating whether the device has an EC at all
+* **ec_type**: An EmbeddedControllerType enum
+* **id**: A string identifier for the Topology. If not passed, a default is provided.
+
+
+### hw_topo.create_tpm {#hw_topo.create_tpm}
+Builds a Topology proto for a trusted platform module.
+
+```python
+hw_topo.create_tpm(tpm_type = None, id = None, fw_configs = None)
+```
+
+#### Arguments {#hw_topo.create_tpm-args}
+
+* **tpm_type**: A TrustedPlatformModuleType enum
+* **id**: A string identifier for the Topology. If not passed, a default is provided.
+* **fw_configs**: A list of FirmwareConfiguration protos for the tpm.
+
+
 
 
 ## //config/util/partner.star
@@ -770,6 +820,15 @@ Builds a Program proto.
 
 ```python
 program.create()
+```
+
+
+
+### program.create_platform {#program.create_platform}
+
+
+```python
+program.create_platform()
 ```
 
 
@@ -917,6 +976,15 @@ sw_config.create_bluetooth()
 
 
 
+### sw_config.create_camera {#sw_config.create_camera}
+Builds a CameraConfig proto.
+
+```python
+sw_config.create_camera()
+```
+
+
+
 ### sw_config.create_fw_version {#sw_config.create_fw_version}
 Builds a firmware Version proto.
 
@@ -979,7 +1047,7 @@ sw_config.create_fw_build_config_by_names()
 
 
 ### sw_config.create_fw_build_targets {#sw_config.create_fw_build_targets}
-Builds a FirmwareBuildConfig.BuildTargets proto.
+Builds a Firmware.BuildTargets proto.
 
 ```python
 sw_config.create_fw_build_targets()
@@ -996,6 +1064,91 @@ sw_config.create_power()
 
 
 
+### sw_config.create_intel_antenna_gain {#sw_config.create_intel_antenna_gain}
+Builds AntennaGain for intel drivers.
+
+```python
+sw_config.create_intel_antenna_gain(
+    # Required arguments.
+    ant_gain_5g_1,
+    ant_gain_5g_2,
+    ant_gain_5g_3,
+    ant_gain_5g_4,
+
+    # Optional arguments.
+    ant_gain_2g = None,
+    ant_gain_5g_5 = None,
+    ant_gain_6g_1 = None,
+    ant_gain_6g_2 = None,
+    ant_gain_6g_3 = None,
+    ant_gain_6g_4 = None,
+    ant_gain_6g_5 = None,
+)
+```
+
+#### Arguments {#sw_config.create_intel_antenna_gain-args}
+
+* **ant_gain_2g**: Antenna gain used for 2400MHz frequency.
+* **ant_gain_5g_1**: Antenna gain used for 5150–5350MHz frequency. Required.
+* **ant_gain_5g_2**: Antenna gain used for 5350–5470MHz frequency. Required.
+* **ant_gain_5g_3**: Antenna gain used for 5470–5725MHz frequency. Required.
+* **ant_gain_5g_4**: Antenna gain used for 5725–5950MHz frequency. Required.
+* **ant_gain_5g_5**: Antenna gain used for 5945–6165MHz frequency. Rev 1 & 2.
+* **ant_gain_6g_1**: Antenna gain used for 6165–6405MHz frequency. Rev 1 & 2.
+* **ant_gain_6g_2**: Antenna gain used for 6405–6525MHz frequency. Rev 1 & 2.
+* **ant_gain_6g_3**: Antenna gain used for 6525–6705MHz frequency. Rev 1 & 2.
+* **ant_gain_6g_4**: Antenna gain used for 6705–6865MHz frequency. Rev 1 & 2.
+* **ant_gain_6g_5**: Antenna gain used for 6865–7105MHz frequency. Rev 1 & 2.
+
+
+### sw_config.create_intel_antgain_table {#sw_config.create_intel_antgain_table}
+Builds a antenna Gains for intel drivers.
+
+```python
+sw_config.create_intel_antgain_table(
+    # Optional arguments.
+    ant_table_revision = None,
+    ant_ppag_mode = None,
+    ant_gain_chain_a = None,
+    ant_gain_chain_b = None,
+)
+```
+
+#### Arguments {#sw_config.create_intel_antgain_table-args}
+
+* **ant_table_revision**: Antenna gains table revision
+* **ant_ppag_mode**: Defines the mode of the ANT_gain control to be used.
+* **ant_gain_chain_a**: Defines the ANT_gain in dBi for chain A to be used.
+* **ant_gain_chain_b**: Defines the ANT_gain in dBi for chain B to be used.
+
+
+### sw_config.create_intel_dsm {#sw_config.create_intel_dsm}
+Builds a DSM for intel drivers.
+
+```python
+sw_config.create_intel_dsm(
+    # Optional arguments.
+    disable_active_sdr_channels = None,
+    support_indonesia_5g_band = None,
+    support_ultra_high_band = None,
+    regulatory_configurations = None,
+    uart_configurations = None,
+    enablement_11ax = None,
+    unii_4 = None,
+)
+```
+
+#### Arguments {#sw_config.create_intel_dsm-args}
+
+* **disable_active_sdr_channels**: Allow OEMs to set ETSI 5.8GHz SRD Channels to Passive/Disabled.
+* **support_indonesia_5g_band**: Enable/Disable 5.15-5.35GHz band support in Indonesia.
+* **support_ultra_high_band**: Control the enablement of 6 GHz band.
+* **regulatory_configurations**: Regulatory special configurations enablements value.
+* **uart_configurations**: M.2 UART interface configuration.
+* **enablement_11ax**: Control enablement of 11ax on certificated modules.
+* **unii_4**: Control enablement of UNII-4 over certificate modules.
+
+
 ### sw_config.create_intel_geo_offsets {#sw_config.create_intel_geo_offsets}
 Builds a GeoOffsets for intel drivers.
 
@@ -1008,6 +1161,11 @@ sw_config.create_intel_geo_offsets(
     max_5g,
     offset_5g_a,
     offset_5g_b,
+
+    # Optional arguments.
+    max_6g = None,
+    offset_6g_a = None,
+    offset_6g_b = None,
 )
 ```
 
@@ -1019,6 +1177,30 @@ sw_config.create_intel_geo_offsets(
 * **max_5g**: Defines the 5 GHz upper value for the allowed power to not be crossed by applying the Geo offset. Required.
 * **offset_5g_a**: Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm) Required.
 * **offset_5g_b**: Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm) Required.
+* **max_6g**: Defines the 6 GHz upper value for the allowed power to not be crossed by applying the Geo offset. Rev 1 & 2.
+* **offset_6g_a**: Value to be added to 6GHz WiFi bands for chain a. (0.125 dBm) Rev 1 & 2.
+* **offset_6g_b**: Value to be added to 6GHz WiFi bands for chain b. (0.125 dBm) Rev 1 & 2.
+
+
+### sw_config.create_intel_offsets_table {#sw_config.create_intel_offsets_table}
+Builds a Geo Offsets proto for use with intel drivers.
+
+```python
+sw_config.create_intel_offsets_table(
+    # Optional arguments.
+    wgds_revision = None,
+    fcc_offsets = None,
+    eu_offsets = None,
+    other_offsets = None,
+)
+```
+
+#### Arguments {#sw_config.create_intel_offsets_table-args}
+
+* **wgds_revision**: Geo delta table revision,
+* **fcc_offsets**: Offsets used for regulatory domains that follow FCC guidelines.
+* **eu_offsets**: Offsets used for regulatory domains that follow ESTI guidelines.
+* **other_offsets**: Offsets for regulatory domains that don't follow FCC or ETSI guidelines.
 
 
 ### sw_config.create_intel_power_chain {#sw_config.create_intel_power_chain}
@@ -1032,6 +1214,14 @@ sw_config.create_intel_power_chain(
     limit_5g_2,
     limit_5g_3,
     limit_5g_4,
+
+    # Optional arguments.
+    limit_5g_5 = None,
+    limit_6g_1 = None,
+    limit_6g_2 = None,
+    limit_6g_3 = None,
+    limit_6g_4 = None,
+    limit_6g_5 = None,
 )
 ```
 
@@ -1042,33 +1232,117 @@ sw_config.create_intel_power_chain(
 * **limit_5g_2**: 5G band 2 power limit: 5.35G-5.47G channels. (0.125 dBm). Required.
 * **limit_5g_3**: 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
 * **limit_5g_4**: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
+* **limit_5g_5**: 5G band 5 power limit: 5.95G-6.165G channels. (0.125 dBm). Rev 1 & 2.
+* **limit_6g_1**: 6G band 1 power limit: 6.165G-6.405G channels. (0.125 dBm). Rev 1 & 2.
+* **limit_6g_2**: 6G band 2 power limit: 6.405G-6.525G channels. (0.125 dBm). Rev 1 & 2.
+* **limit_6g_3**: 6G band 3 power limit: 6.525G-6.705G channels. (0.125 dBm). Rev 1 & 2.
+* **limit_6g_4**: 6G band 4 power limit: 6.705G-6.865G channels. (0.125 dBm). Rev 1 & 2.
+* **limit_6g_5**: 6G band 5 power limit: 6.865G-7.105G channels. (0.125 dBm). Rev 1 & 2.
+
+
+### sw_config.create_intel_sar_table {#sw_config.create_intel_sar_table}
+Builds a SarTable proto for use with intel drivers.
+
+```python
+sw_config.create_intel_sar_table(
+    # Optional arguments.
+    sar_table_revision = None,
+    tablet_mode_transmit_power_chain_a = None,
+    tablet_mode_transmit_power_chain_b = None,
+    non_tablet_mode_transmit_power_chain_a = None,
+    non_tablet_mode_transmit_power_chain_b = None,
+    cdb_tablet_mode_transmit_power_chain_a = None,
+    cdb_tablet_mode_transmit_power_chain_b = None,
+    cdb_non_tablet_mode_transmit_power_chain_a = None,
+    cdb_non_tablet_mode_transmit_power_chain_b = None,
+)
+```
+
+#### Arguments {#sw_config.create_intel_sar_table-args}
+
+* **sar_table_revision**: SAR table revision.
+* **tablet_mode_transmit_power_chain_a**: Tablet mode power chain for chain a.
+* **tablet_mode_transmit_power_chain_b**: Tablet mode power chain for chain b.
+* **non_tablet_mode_transmit_power_chain_a**: Non-tablet mode power chain for chain a.
+* **non_tablet_mode_transmit_power_chain_b**: Non-tablet mode power chain for chain b.
+* **cdb_tablet_mode_transmit_power_chain_a**: Tablet mode concurrency dual band power chain for chain a.
+* **cdb_tablet_mode_transmit_power_chain_b**: Tablet mode concurrency dual band power chain for chain b.
+* **cdb_non_tablet_mode_transmit_power_chain_a**: Non-tablet mode concurrency dual band power chain for chain a.
+* **cdb_non_tablet_mode_transmit_power_chain_b**: Non-tablet mode concurrency dual band power chain for chain b.
+
+
+### sw_config.create_intel_sar_avg_table {#sw_config.create_intel_sar_avg_table}
+Builds a wifi time average SAR proto for use with intel drivers.
+
+```python
+sw_config.create_intel_sar_avg_table(
+    # Optional arguments.
+    wtas_revision = None,
+    tas_selection = None,
+    tas_list_size = None,
+    deny_list_entry_1 = None,
+    deny_list_entry_2 = None,
+    deny_list_entry_3 = None,
+    deny_list_entry_4 = None,
+    deny_list_entry_5 = None,
+    deny_list_entry_6 = None,
+    deny_list_entry_7 = None,
+    deny_list_entry_8 = None,
+    deny_list_entry_9 = None,
+    deny_list_entry_10 = None,
+    deny_list_entry_11 = None,
+    deny_list_entry_12 = None,
+    deny_list_entry_13 = None,
+    deny_list_entry_14 = None,
+    deny_list_entry_15 = None,
+    deny_list_entry_16 = None,
+)
+```
+
+#### Arguments {#sw_config.create_intel_sar_avg_table-args}
+
+* **wtas_revision**: Wifi time average SAR version.
+* **tas_selection**: Enable/disable the TAS feature.
+* **tas_list_size**: Represents the number of blocked countries that are not approved by the OEM to support this feature, even if that feature is enabled.
+* **deny_list_entry_1**: ISO country code 1 to block.
+* **deny_list_entry_2**: ISO country code 2 to block.
+* **deny_list_entry_3**: ISO country code 3 to block.
+* **deny_list_entry_4**: ISO country code 4 to block.
+* **deny_list_entry_5**: ISO country code 5 to block.
+* **deny_list_entry_6**: ISO country code 6 to block.
+* **deny_list_entry_7**: ISO country code 7 to block.
+* **deny_list_entry_8**: ISO country code 8 to block.
+* **deny_list_entry_9**: ISO country code 9 to block.
+* **deny_list_entry_10**: ISO country code 10 to block.
+* **deny_list_entry_11**: ISO country code 11 to block.
+* **deny_list_entry_12**: ISO country code 12 to block.
+* **deny_list_entry_13**: ISO country code 13 to block.
+* **deny_list_entry_14**: ISO country code 14 to block.
+* **deny_list_entry_15**: ISO country code 15 to block.
+* **deny_list_entry_16**: ISO country code 16 to block.
 
 
 ### sw_config.create_intel_wifi {#sw_config.create_intel_wifi}
-Builds a WifiConfig proto for use with intel drivers.
+Builds a IntelConfig proto for use with intel drivers.
 
 ```python
 sw_config.create_intel_wifi(
-    # Required arguments.
-    non_tablet_mode_transmit_power_chain_a,
-    non_tablet_mode_transmit_power_chain_b,
-    tablet_mode_transmit_power_chain_a,
-    tablet_mode_transmit_power_chain_b,
-    fcc_offsets,
-    eu_offsets,
-    other_offsets,
+    # Optional arguments.
+    sar_table = None,
+    wgds_table = None,
+    ant_table = None,
+    wtas_table = None,
+    dsm = None,
 )
 ```
 
 #### Arguments {#sw_config.create_intel_wifi-args}
 
-* **non_tablet_mode_transmit_power_chain_a**: non-tablet mode power chain for chain a. Required.
-* **non_tablet_mode_transmit_power_chain_b**: non-tablet mode power chain for chain b. Required.
-* **tablet_mode_transmit_power_chain_a**: tablet mode power chain for chain a. Required.
-* **tablet_mode_transmit_power_chain_b**: tablet mode power chain for chain b. Required.
-* **fcc_offsets**: Offsets used for regulatory domains that follow FCC guidelines. Required.
-* **eu_offsets**: Offsets used for regulatory domains that follow ESTI guidelines. Required.
-* **other_offsets**: Offsets for regulatory domains that don't follow FCC or ETSI guidelines. Required.
+* **sar_table**: SarTable proto for use with intel driver.
+* **wgds_table**: Geo Offsets proto for use with intel driver.
+* **ant_table**: Antenna Gains for use with intel driver.
+* **wtas_table**: Time average SAR for use with intel driver.
+* **dsm**: Device specific methods return values for intel driver.
 
 
 ### sw_config.create_rtw88 {#sw_config.create_rtw88}
@@ -1128,6 +1402,24 @@ sw_config.create_rtw88_power_chain(
 * **limit_5g_1**: 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm). Required.
 * **limit_5g_3**: 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
 * **limit_5g_4**: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
+
+
+### sw_config.create_ui {#sw_config.create_ui}
+
+
+```python
+sw_config.create_ui()
+```
+
+
+
+### sw_config.make_resolution {#sw_config.make_resolution}
+
+
+```python
+sw_config.make_resolution()
+```
+
 
 
 

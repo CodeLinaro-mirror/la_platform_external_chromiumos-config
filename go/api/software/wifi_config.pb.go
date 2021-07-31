@@ -427,22 +427,14 @@ func (m *WifiConfig_Rtw88Config_GeoOffsets) GetOffset_5G() uint32 {
 }
 
 type WifiConfig_IntelConfig struct {
-	// TransmitPowerChain settings when operating in tablet and non-tablet
-	// modes. Each mode additionally provides chain a and chain b settings.
-	// These are power configs for a given antenna, a vs. b.
-	TabletModePowerTableA    *WifiConfig_IntelConfig_TransmitPowerChain `protobuf:"bytes,1,opt,name=tablet_mode_power_table_a,json=tabletModePowerTableA,proto3" json:"tablet_mode_power_table_a,omitempty"`
-	TabletModePowerTableB    *WifiConfig_IntelConfig_TransmitPowerChain `protobuf:"bytes,2,opt,name=tablet_mode_power_table_b,json=tabletModePowerTableB,proto3" json:"tablet_mode_power_table_b,omitempty"`
-	NonTabletModePowerTableA *WifiConfig_IntelConfig_TransmitPowerChain `protobuf:"bytes,3,opt,name=non_tablet_mode_power_table_a,json=nonTabletModePowerTableA,proto3" json:"non_tablet_mode_power_table_a,omitempty"`
-	NonTabletModePowerTableB *WifiConfig_IntelConfig_TransmitPowerChain `protobuf:"bytes,4,opt,name=non_tablet_mode_power_table_b,json=nonTabletModePowerTableB,proto3" json:"non_tablet_mode_power_table_b,omitempty"`
-	// Wireless Geo Delta Settings version.
-	WgdsVersion uint32 `protobuf:"varint,5,opt,name=wgds_version,json=wgdsVersion,proto3" json:"wgds_version,omitempty"`
-	// GeoOffsets in different regulatory domains.
-	OffsetFcc            *WifiConfig_IntelConfig_GeoOffsets `protobuf:"bytes,6,opt,name=offset_fcc,json=offsetFcc,proto3" json:"offset_fcc,omitempty"`
-	OffsetEu             *WifiConfig_IntelConfig_GeoOffsets `protobuf:"bytes,7,opt,name=offset_eu,json=offsetEu,proto3" json:"offset_eu,omitempty"`
-	OffsetOther          *WifiConfig_IntelConfig_GeoOffsets `protobuf:"bytes,8,opt,name=offset_other,json=offsetOther,proto3" json:"offset_other,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                           `json:"-"`
-	XXX_unrecognized     []byte                             `json:"-"`
-	XXX_sizecache        int32                              `json:"-"`
+	SarTable             *WifiConfig_IntelConfig_SarTable `protobuf:"bytes,1,opt,name=sar_table,json=sarTable,proto3" json:"sar_table,omitempty"`
+	WgdsTable            *WifiConfig_IntelConfig_Offsets  `protobuf:"bytes,2,opt,name=wgds_table,json=wgdsTable,proto3" json:"wgds_table,omitempty"`
+	AntTable             *WifiConfig_IntelConfig_Gains    `protobuf:"bytes,3,opt,name=ant_table,json=antTable,proto3" json:"ant_table,omitempty"`
+	WtasTable            *WifiConfig_IntelConfig_Average  `protobuf:"bytes,4,opt,name=wtas_table,json=wtasTable,proto3" json:"wtas_table,omitempty"`
+	Dsm                  *WifiConfig_IntelConfig_DSM      `protobuf:"bytes,5,opt,name=dsm,proto3" json:"dsm,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                         `json:"-"`
+	XXX_unrecognized     []byte                           `json:"-"`
+	XXX_sizecache        int32                            `json:"-"`
 }
 
 func (m *WifiConfig_IntelConfig) Reset()         { *m = WifiConfig_IntelConfig{} }
@@ -470,65 +462,152 @@ func (m *WifiConfig_IntelConfig) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_WifiConfig_IntelConfig proto.InternalMessageInfo
 
-func (m *WifiConfig_IntelConfig) GetTabletModePowerTableA() *WifiConfig_IntelConfig_TransmitPowerChain {
+func (m *WifiConfig_IntelConfig) GetSarTable() *WifiConfig_IntelConfig_SarTable {
+	if m != nil {
+		return m.SarTable
+	}
+	return nil
+}
+
+func (m *WifiConfig_IntelConfig) GetWgdsTable() *WifiConfig_IntelConfig_Offsets {
+	if m != nil {
+		return m.WgdsTable
+	}
+	return nil
+}
+
+func (m *WifiConfig_IntelConfig) GetAntTable() *WifiConfig_IntelConfig_Gains {
+	if m != nil {
+		return m.AntTable
+	}
+	return nil
+}
+
+func (m *WifiConfig_IntelConfig) GetWtasTable() *WifiConfig_IntelConfig_Average {
+	if m != nil {
+		return m.WtasTable
+	}
+	return nil
+}
+
+func (m *WifiConfig_IntelConfig) GetDsm() *WifiConfig_IntelConfig_DSM {
+	if m != nil {
+		return m.Dsm
+	}
+	return nil
+}
+
+type WifiConfig_IntelConfig_SarTable struct {
+	// Wireless SAR table Settings.
+	SarTableVersion uint32 `protobuf:"varint,1,opt,name=sar_table_version,json=sarTableVersion,proto3" json:"sar_table_version,omitempty"`
+	// TransmitPowerChain settings when operating in tablet and non-tablet
+	// modes. Each mode additionally provides chain a and chain b settings.
+	// Revision 2 provides concurrency dual band settings.
+	// These are power configs for a given antenna, a vs. b.
+	TabletModePowerTableA       *WifiConfig_IntelConfig_SarTable_TransmitPowerChain `protobuf:"bytes,3,opt,name=tablet_mode_power_table_a,json=tabletModePowerTableA,proto3" json:"tablet_mode_power_table_a,omitempty"`
+	TabletModePowerTableB       *WifiConfig_IntelConfig_SarTable_TransmitPowerChain `protobuf:"bytes,4,opt,name=tablet_mode_power_table_b,json=tabletModePowerTableB,proto3" json:"tablet_mode_power_table_b,omitempty"`
+	NonTabletModePowerTableA    *WifiConfig_IntelConfig_SarTable_TransmitPowerChain `protobuf:"bytes,5,opt,name=non_tablet_mode_power_table_a,json=nonTabletModePowerTableA,proto3" json:"non_tablet_mode_power_table_a,omitempty"`
+	NonTabletModePowerTableB    *WifiConfig_IntelConfig_SarTable_TransmitPowerChain `protobuf:"bytes,6,opt,name=non_tablet_mode_power_table_b,json=nonTabletModePowerTableB,proto3" json:"non_tablet_mode_power_table_b,omitempty"`
+	CdbTabletModePowerTableA    *WifiConfig_IntelConfig_SarTable_TransmitPowerChain `protobuf:"bytes,7,opt,name=cdb_tablet_mode_power_table_a,json=cdbTabletModePowerTableA,proto3" json:"cdb_tablet_mode_power_table_a,omitempty"`
+	CdbTabletModePowerTableB    *WifiConfig_IntelConfig_SarTable_TransmitPowerChain `protobuf:"bytes,8,opt,name=cdb_tablet_mode_power_table_b,json=cdbTabletModePowerTableB,proto3" json:"cdb_tablet_mode_power_table_b,omitempty"`
+	CdbNonTabletModePowerTableA *WifiConfig_IntelConfig_SarTable_TransmitPowerChain `protobuf:"bytes,9,opt,name=cdb_non_tablet_mode_power_table_a,json=cdbNonTabletModePowerTableA,proto3" json:"cdb_non_tablet_mode_power_table_a,omitempty"`
+	CdbNonTabletModePowerTableB *WifiConfig_IntelConfig_SarTable_TransmitPowerChain `protobuf:"bytes,10,opt,name=cdb_non_tablet_mode_power_table_b,json=cdbNonTabletModePowerTableB,proto3" json:"cdb_non_tablet_mode_power_table_b,omitempty"`
+	XXX_NoUnkeyedLiteral        struct{}                                            `json:"-"`
+	XXX_unrecognized            []byte                                              `json:"-"`
+	XXX_sizecache               int32                                               `json:"-"`
+}
+
+func (m *WifiConfig_IntelConfig_SarTable) Reset()         { *m = WifiConfig_IntelConfig_SarTable{} }
+func (m *WifiConfig_IntelConfig_SarTable) String() string { return proto.CompactTextString(m) }
+func (*WifiConfig_IntelConfig_SarTable) ProtoMessage()    {}
+func (*WifiConfig_IntelConfig_SarTable) Descriptor() ([]byte, []int) {
+	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 0}
+}
+
+func (m *WifiConfig_IntelConfig_SarTable) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WifiConfig_IntelConfig_SarTable.Unmarshal(m, b)
+}
+func (m *WifiConfig_IntelConfig_SarTable) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WifiConfig_IntelConfig_SarTable.Marshal(b, m, deterministic)
+}
+func (m *WifiConfig_IntelConfig_SarTable) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WifiConfig_IntelConfig_SarTable.Merge(m, src)
+}
+func (m *WifiConfig_IntelConfig_SarTable) XXX_Size() int {
+	return xxx_messageInfo_WifiConfig_IntelConfig_SarTable.Size(m)
+}
+func (m *WifiConfig_IntelConfig_SarTable) XXX_DiscardUnknown() {
+	xxx_messageInfo_WifiConfig_IntelConfig_SarTable.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_WifiConfig_IntelConfig_SarTable proto.InternalMessageInfo
+
+func (m *WifiConfig_IntelConfig_SarTable) GetSarTableVersion() uint32 {
+	if m != nil {
+		return m.SarTableVersion
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_SarTable) GetTabletModePowerTableA() *WifiConfig_IntelConfig_SarTable_TransmitPowerChain {
 	if m != nil {
 		return m.TabletModePowerTableA
 	}
 	return nil
 }
 
-func (m *WifiConfig_IntelConfig) GetTabletModePowerTableB() *WifiConfig_IntelConfig_TransmitPowerChain {
+func (m *WifiConfig_IntelConfig_SarTable) GetTabletModePowerTableB() *WifiConfig_IntelConfig_SarTable_TransmitPowerChain {
 	if m != nil {
 		return m.TabletModePowerTableB
 	}
 	return nil
 }
 
-func (m *WifiConfig_IntelConfig) GetNonTabletModePowerTableA() *WifiConfig_IntelConfig_TransmitPowerChain {
+func (m *WifiConfig_IntelConfig_SarTable) GetNonTabletModePowerTableA() *WifiConfig_IntelConfig_SarTable_TransmitPowerChain {
 	if m != nil {
 		return m.NonTabletModePowerTableA
 	}
 	return nil
 }
 
-func (m *WifiConfig_IntelConfig) GetNonTabletModePowerTableB() *WifiConfig_IntelConfig_TransmitPowerChain {
+func (m *WifiConfig_IntelConfig_SarTable) GetNonTabletModePowerTableB() *WifiConfig_IntelConfig_SarTable_TransmitPowerChain {
 	if m != nil {
 		return m.NonTabletModePowerTableB
 	}
 	return nil
 }
 
-func (m *WifiConfig_IntelConfig) GetWgdsVersion() uint32 {
+func (m *WifiConfig_IntelConfig_SarTable) GetCdbTabletModePowerTableA() *WifiConfig_IntelConfig_SarTable_TransmitPowerChain {
 	if m != nil {
-		return m.WgdsVersion
-	}
-	return 0
-}
-
-func (m *WifiConfig_IntelConfig) GetOffsetFcc() *WifiConfig_IntelConfig_GeoOffsets {
-	if m != nil {
-		return m.OffsetFcc
+		return m.CdbTabletModePowerTableA
 	}
 	return nil
 }
 
-func (m *WifiConfig_IntelConfig) GetOffsetEu() *WifiConfig_IntelConfig_GeoOffsets {
+func (m *WifiConfig_IntelConfig_SarTable) GetCdbTabletModePowerTableB() *WifiConfig_IntelConfig_SarTable_TransmitPowerChain {
 	if m != nil {
-		return m.OffsetEu
+		return m.CdbTabletModePowerTableB
 	}
 	return nil
 }
 
-func (m *WifiConfig_IntelConfig) GetOffsetOther() *WifiConfig_IntelConfig_GeoOffsets {
+func (m *WifiConfig_IntelConfig_SarTable) GetCdbNonTabletModePowerTableA() *WifiConfig_IntelConfig_SarTable_TransmitPowerChain {
 	if m != nil {
-		return m.OffsetOther
+		return m.CdbNonTabletModePowerTableA
+	}
+	return nil
+}
+
+func (m *WifiConfig_IntelConfig_SarTable) GetCdbNonTabletModePowerTableB() *WifiConfig_IntelConfig_SarTable_TransmitPowerChain {
+	if m != nil {
+		return m.CdbNonTabletModePowerTableB
 	}
 	return nil
 }
 
 // WiFi power chain for use with Intel drivers. Limits in units
 // of 0.125 dBm.
-type WifiConfig_IntelConfig_TransmitPowerChain struct {
+type WifiConfig_IntelConfig_SarTable_TransmitPowerChain struct {
 	// 2G band power limit: All 2G band channels. (0.125 dBm)
 	Limit_2G uint32 `protobuf:"varint,1,opt,name=limit_2g,json=limit2g,proto3" json:"limit_2g,omitempty"`
 	// 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm)
@@ -538,72 +617,193 @@ type WifiConfig_IntelConfig_TransmitPowerChain struct {
 	// 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm)
 	Limit_5G_3 uint32 `protobuf:"varint,4,opt,name=limit_5g_3,json=limit5g3,proto3" json:"limit_5g_3,omitempty"`
 	// 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm)
-	Limit_5G_4           uint32   `protobuf:"varint,5,opt,name=limit_5g_4,json=limit5g4,proto3" json:"limit_5g_4,omitempty"`
+	Limit_5G_4 uint32 `protobuf:"varint,5,opt,name=limit_5g_4,json=limit5g4,proto3" json:"limit_5g_4,omitempty"`
+	// 5G band 5 power limit: 5.95G-6.165G channels. (0.125 dBm)
+	Limit_5G_5 uint32 `protobuf:"varint,6,opt,name=limit_5g_5,json=limit5g5,proto3" json:"limit_5g_5,omitempty"`
+	// 6G band 1 power limit: 6.165G-6.405G channels. (0.125 dBm)
+	Limit_6G_1 uint32 `protobuf:"varint,7,opt,name=limit_6g_1,json=limit6g1,proto3" json:"limit_6g_1,omitempty"`
+	// 6G band 2 power limit: 6.405G-6.525G channels. (0.125 dBm)
+	Limit_6G_2 uint32 `protobuf:"varint,8,opt,name=limit_6g_2,json=limit6g2,proto3" json:"limit_6g_2,omitempty"`
+	// 6G band 3 power limit: 6.525G-6.705G channels. (0.125 dBm)
+	Limit_6G_3 uint32 `protobuf:"varint,9,opt,name=limit_6g_3,json=limit6g3,proto3" json:"limit_6g_3,omitempty"`
+	// 6G band 4 power limit: 6.705G-6.865G channels. (0.125 dBm)
+	Limit_6G_4 uint32 `protobuf:"varint,10,opt,name=limit_6g_4,json=limit6g4,proto3" json:"limit_6g_4,omitempty"`
+	// 6G band 5 power limit: 6.865G-7.105G channels. (0.125 dBm)
+	Limit_6G_5           uint32   `protobuf:"varint,11,opt,name=limit_6g_5,json=limit6g5,proto3" json:"limit_6g_5,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) Reset() {
-	*m = WifiConfig_IntelConfig_TransmitPowerChain{}
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) Reset() {
+	*m = WifiConfig_IntelConfig_SarTable_TransmitPowerChain{}
 }
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) String() string { return proto.CompactTextString(m) }
-func (*WifiConfig_IntelConfig_TransmitPowerChain) ProtoMessage()    {}
-func (*WifiConfig_IntelConfig_TransmitPowerChain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 0}
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) String() string {
+	return proto.CompactTextString(m)
 }
-
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_WifiConfig_IntelConfig_TransmitPowerChain.Unmarshal(m, b)
-}
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_WifiConfig_IntelConfig_TransmitPowerChain.Marshal(b, m, deterministic)
-}
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WifiConfig_IntelConfig_TransmitPowerChain.Merge(m, src)
-}
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) XXX_Size() int {
-	return xxx_messageInfo_WifiConfig_IntelConfig_TransmitPowerChain.Size(m)
-}
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) XXX_DiscardUnknown() {
-	xxx_messageInfo_WifiConfig_IntelConfig_TransmitPowerChain.DiscardUnknown(m)
+func (*WifiConfig_IntelConfig_SarTable_TransmitPowerChain) ProtoMessage() {}
+func (*WifiConfig_IntelConfig_SarTable_TransmitPowerChain) Descriptor() ([]byte, []int) {
+	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 0, 0}
 }
 
-var xxx_messageInfo_WifiConfig_IntelConfig_TransmitPowerChain proto.InternalMessageInfo
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WifiConfig_IntelConfig_SarTable_TransmitPowerChain.Unmarshal(m, b)
+}
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WifiConfig_IntelConfig_SarTable_TransmitPowerChain.Marshal(b, m, deterministic)
+}
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WifiConfig_IntelConfig_SarTable_TransmitPowerChain.Merge(m, src)
+}
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) XXX_Size() int {
+	return xxx_messageInfo_WifiConfig_IntelConfig_SarTable_TransmitPowerChain.Size(m)
+}
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) XXX_DiscardUnknown() {
+	xxx_messageInfo_WifiConfig_IntelConfig_SarTable_TransmitPowerChain.DiscardUnknown(m)
+}
 
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) GetLimit_2G() uint32 {
+var xxx_messageInfo_WifiConfig_IntelConfig_SarTable_TransmitPowerChain proto.InternalMessageInfo
+
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_2G() uint32 {
 	if m != nil {
 		return m.Limit_2G
 	}
 	return 0
 }
 
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) GetLimit_5G_1() uint32 {
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_5G_1() uint32 {
 	if m != nil {
 		return m.Limit_5G_1
 	}
 	return 0
 }
 
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) GetLimit_5G_2() uint32 {
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_5G_2() uint32 {
 	if m != nil {
 		return m.Limit_5G_2
 	}
 	return 0
 }
 
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) GetLimit_5G_3() uint32 {
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_5G_3() uint32 {
 	if m != nil {
 		return m.Limit_5G_3
 	}
 	return 0
 }
 
-func (m *WifiConfig_IntelConfig_TransmitPowerChain) GetLimit_5G_4() uint32 {
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_5G_4() uint32 {
 	if m != nil {
 		return m.Limit_5G_4
 	}
 	return 0
+}
+
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_5G_5() uint32 {
+	if m != nil {
+		return m.Limit_5G_5
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_6G_1() uint32 {
+	if m != nil {
+		return m.Limit_6G_1
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_6G_2() uint32 {
+	if m != nil {
+		return m.Limit_6G_2
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_6G_3() uint32 {
+	if m != nil {
+		return m.Limit_6G_3
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_6G_4() uint32 {
+	if m != nil {
+		return m.Limit_6G_4
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_SarTable_TransmitPowerChain) GetLimit_6G_5() uint32 {
+	if m != nil {
+		return m.Limit_6G_5
+	}
+	return 0
+}
+
+type WifiConfig_IntelConfig_Offsets struct {
+	// Wireless Geo Delta Settings version.
+	WgdsVersion uint32 `protobuf:"varint,1,opt,name=wgds_version,json=wgdsVersion,proto3" json:"wgds_version,omitempty"`
+	// GeoOffsets in different regulatory domains.
+	OffsetFcc            *WifiConfig_IntelConfig_Offsets_GeoOffsets `protobuf:"bytes,2,opt,name=offset_fcc,json=offsetFcc,proto3" json:"offset_fcc,omitempty"`
+	OffsetEu             *WifiConfig_IntelConfig_Offsets_GeoOffsets `protobuf:"bytes,3,opt,name=offset_eu,json=offsetEu,proto3" json:"offset_eu,omitempty"`
+	OffsetOther          *WifiConfig_IntelConfig_Offsets_GeoOffsets `protobuf:"bytes,4,opt,name=offset_other,json=offsetOther,proto3" json:"offset_other,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                   `json:"-"`
+	XXX_unrecognized     []byte                                     `json:"-"`
+	XXX_sizecache        int32                                      `json:"-"`
+}
+
+func (m *WifiConfig_IntelConfig_Offsets) Reset()         { *m = WifiConfig_IntelConfig_Offsets{} }
+func (m *WifiConfig_IntelConfig_Offsets) String() string { return proto.CompactTextString(m) }
+func (*WifiConfig_IntelConfig_Offsets) ProtoMessage()    {}
+func (*WifiConfig_IntelConfig_Offsets) Descriptor() ([]byte, []int) {
+	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 1}
+}
+
+func (m *WifiConfig_IntelConfig_Offsets) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Offsets.Unmarshal(m, b)
+}
+func (m *WifiConfig_IntelConfig_Offsets) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Offsets.Marshal(b, m, deterministic)
+}
+func (m *WifiConfig_IntelConfig_Offsets) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WifiConfig_IntelConfig_Offsets.Merge(m, src)
+}
+func (m *WifiConfig_IntelConfig_Offsets) XXX_Size() int {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Offsets.Size(m)
+}
+func (m *WifiConfig_IntelConfig_Offsets) XXX_DiscardUnknown() {
+	xxx_messageInfo_WifiConfig_IntelConfig_Offsets.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_WifiConfig_IntelConfig_Offsets proto.InternalMessageInfo
+
+func (m *WifiConfig_IntelConfig_Offsets) GetWgdsVersion() uint32 {
+	if m != nil {
+		return m.WgdsVersion
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Offsets) GetOffsetFcc() *WifiConfig_IntelConfig_Offsets_GeoOffsets {
+	if m != nil {
+		return m.OffsetFcc
+	}
+	return nil
+}
+
+func (m *WifiConfig_IntelConfig_Offsets) GetOffsetEu() *WifiConfig_IntelConfig_Offsets_GeoOffsets {
+	if m != nil {
+		return m.OffsetEu
+	}
+	return nil
+}
+
+func (m *WifiConfig_IntelConfig_Offsets) GetOffsetOther() *WifiConfig_IntelConfig_Offsets_GeoOffsets {
+	if m != nil {
+		return m.OffsetOther
+	}
+	return nil
 }
 
 // Offsets which are applied to WiFi power limits depending on the current
@@ -614,7 +814,7 @@ func (m *WifiConfig_IntelConfig_TransmitPowerChain) GetLimit_5G_4() uint32 {
 // guidelines, 'geo-offsets-eu' is used for regulatory domains which follow
 // ETSI guidelines, and 'geo-offsets-rest-of-world' is used for regulatory
 // domains which don't follow FCC or ETSI guidelines.
-type WifiConfig_IntelConfig_GeoOffsets struct {
+type WifiConfig_IntelConfig_Offsets_GeoOffsets struct {
 	// Defines the 2.4 GHz upper value for the allowed power to not be crossed
 	// by applying the Geo offset.
 	Max_2G uint32 `protobuf:"varint,1,opt,name=max_2g,json=max2g,proto3" json:"max_2g,omitempty"`
@@ -628,75 +828,568 @@ type WifiConfig_IntelConfig_GeoOffsets struct {
 	// Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm)
 	Offset_5GA uint32 `protobuf:"varint,5,opt,name=offset_5g_a,json=offset5gA,proto3" json:"offset_5g_a,omitempty"`
 	// Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm)
-	Offset_5GB           uint32   `protobuf:"varint,6,opt,name=offset_5g_b,json=offset5gB,proto3" json:"offset_5g_b,omitempty"`
+	Offset_5GB uint32 `protobuf:"varint,6,opt,name=offset_5g_b,json=offset5gB,proto3" json:"offset_5g_b,omitempty"`
+	// Defines the 6 GHz upper value for the allowed power to not be crossed
+	// by applying the Geo offset.
+	Max_6G uint32 `protobuf:"varint,7,opt,name=max_6g,json=max6g,proto3" json:"max_6g,omitempty"`
+	// Value to be added to 6GHz WiFi bands for chain a. (0.125 dBm)
+	Offset_6GA uint32 `protobuf:"varint,8,opt,name=offset_6g_a,json=offset6gA,proto3" json:"offset_6g_a,omitempty"`
+	// Value to be added to 6GHz WiFi bands for chain b. (0.125 dBm)
+	Offset_6GB           uint32   `protobuf:"varint,9,opt,name=offset_6g_b,json=offset6gB,proto3" json:"offset_6g_b,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *WifiConfig_IntelConfig_GeoOffsets) Reset()         { *m = WifiConfig_IntelConfig_GeoOffsets{} }
-func (m *WifiConfig_IntelConfig_GeoOffsets) String() string { return proto.CompactTextString(m) }
-func (*WifiConfig_IntelConfig_GeoOffsets) ProtoMessage()    {}
-func (*WifiConfig_IntelConfig_GeoOffsets) Descriptor() ([]byte, []int) {
-	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 1}
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) Reset() {
+	*m = WifiConfig_IntelConfig_Offsets_GeoOffsets{}
+}
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) String() string { return proto.CompactTextString(m) }
+func (*WifiConfig_IntelConfig_Offsets_GeoOffsets) ProtoMessage()    {}
+func (*WifiConfig_IntelConfig_Offsets_GeoOffsets) Descriptor() ([]byte, []int) {
+	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 1, 0}
 }
 
-func (m *WifiConfig_IntelConfig_GeoOffsets) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_WifiConfig_IntelConfig_GeoOffsets.Unmarshal(m, b)
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Offsets_GeoOffsets.Unmarshal(m, b)
 }
-func (m *WifiConfig_IntelConfig_GeoOffsets) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_WifiConfig_IntelConfig_GeoOffsets.Marshal(b, m, deterministic)
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Offsets_GeoOffsets.Marshal(b, m, deterministic)
 }
-func (m *WifiConfig_IntelConfig_GeoOffsets) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WifiConfig_IntelConfig_GeoOffsets.Merge(m, src)
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WifiConfig_IntelConfig_Offsets_GeoOffsets.Merge(m, src)
 }
-func (m *WifiConfig_IntelConfig_GeoOffsets) XXX_Size() int {
-	return xxx_messageInfo_WifiConfig_IntelConfig_GeoOffsets.Size(m)
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) XXX_Size() int {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Offsets_GeoOffsets.Size(m)
 }
-func (m *WifiConfig_IntelConfig_GeoOffsets) XXX_DiscardUnknown() {
-	xxx_messageInfo_WifiConfig_IntelConfig_GeoOffsets.DiscardUnknown(m)
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) XXX_DiscardUnknown() {
+	xxx_messageInfo_WifiConfig_IntelConfig_Offsets_GeoOffsets.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_WifiConfig_IntelConfig_GeoOffsets proto.InternalMessageInfo
+var xxx_messageInfo_WifiConfig_IntelConfig_Offsets_GeoOffsets proto.InternalMessageInfo
 
-func (m *WifiConfig_IntelConfig_GeoOffsets) GetMax_2G() uint32 {
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) GetMax_2G() uint32 {
 	if m != nil {
 		return m.Max_2G
 	}
 	return 0
 }
 
-func (m *WifiConfig_IntelConfig_GeoOffsets) GetOffset_2GA() uint32 {
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) GetOffset_2GA() uint32 {
 	if m != nil {
 		return m.Offset_2GA
 	}
 	return 0
 }
 
-func (m *WifiConfig_IntelConfig_GeoOffsets) GetOffset_2GB() uint32 {
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) GetOffset_2GB() uint32 {
 	if m != nil {
 		return m.Offset_2GB
 	}
 	return 0
 }
 
-func (m *WifiConfig_IntelConfig_GeoOffsets) GetMax_5G() uint32 {
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) GetMax_5G() uint32 {
 	if m != nil {
 		return m.Max_5G
 	}
 	return 0
 }
 
-func (m *WifiConfig_IntelConfig_GeoOffsets) GetOffset_5GA() uint32 {
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) GetOffset_5GA() uint32 {
 	if m != nil {
 		return m.Offset_5GA
 	}
 	return 0
 }
 
-func (m *WifiConfig_IntelConfig_GeoOffsets) GetOffset_5GB() uint32 {
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) GetOffset_5GB() uint32 {
 	if m != nil {
 		return m.Offset_5GB
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) GetMax_6G() uint32 {
+	if m != nil {
+		return m.Max_6G
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) GetOffset_6GA() uint32 {
+	if m != nil {
+		return m.Offset_6GA
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Offsets_GeoOffsets) GetOffset_6GB() uint32 {
+	if m != nil {
+		return m.Offset_6GB
+	}
+	return 0
+}
+
+type WifiConfig_IntelConfig_Gains struct {
+	// Antenna Gains table version.
+	AntTableVersion      uint32                                    `protobuf:"varint,1,opt,name=ant_table_version,json=antTableVersion,proto3" json:"ant_table_version,omitempty"`
+	AntModePpag          uint32                                    `protobuf:"varint,2,opt,name=ant_mode_ppag,json=antModePpag,proto3" json:"ant_mode_ppag,omitempty"`
+	AntGainTableA        *WifiConfig_IntelConfig_Gains_AntennaGain `protobuf:"bytes,3,opt,name=ant_gain_table_a,json=antGainTableA,proto3" json:"ant_gain_table_a,omitempty"`
+	AntGainTableB        *WifiConfig_IntelConfig_Gains_AntennaGain `protobuf:"bytes,4,opt,name=ant_gain_table_b,json=antGainTableB,proto3" json:"ant_gain_table_b,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                  `json:"-"`
+	XXX_unrecognized     []byte                                    `json:"-"`
+	XXX_sizecache        int32                                     `json:"-"`
+}
+
+func (m *WifiConfig_IntelConfig_Gains) Reset()         { *m = WifiConfig_IntelConfig_Gains{} }
+func (m *WifiConfig_IntelConfig_Gains) String() string { return proto.CompactTextString(m) }
+func (*WifiConfig_IntelConfig_Gains) ProtoMessage()    {}
+func (*WifiConfig_IntelConfig_Gains) Descriptor() ([]byte, []int) {
+	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 2}
+}
+
+func (m *WifiConfig_IntelConfig_Gains) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Gains.Unmarshal(m, b)
+}
+func (m *WifiConfig_IntelConfig_Gains) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Gains.Marshal(b, m, deterministic)
+}
+func (m *WifiConfig_IntelConfig_Gains) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WifiConfig_IntelConfig_Gains.Merge(m, src)
+}
+func (m *WifiConfig_IntelConfig_Gains) XXX_Size() int {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Gains.Size(m)
+}
+func (m *WifiConfig_IntelConfig_Gains) XXX_DiscardUnknown() {
+	xxx_messageInfo_WifiConfig_IntelConfig_Gains.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_WifiConfig_IntelConfig_Gains proto.InternalMessageInfo
+
+func (m *WifiConfig_IntelConfig_Gains) GetAntTableVersion() uint32 {
+	if m != nil {
+		return m.AntTableVersion
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains) GetAntModePpag() uint32 {
+	if m != nil {
+		return m.AntModePpag
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains) GetAntGainTableA() *WifiConfig_IntelConfig_Gains_AntennaGain {
+	if m != nil {
+		return m.AntGainTableA
+	}
+	return nil
+}
+
+func (m *WifiConfig_IntelConfig_Gains) GetAntGainTableB() *WifiConfig_IntelConfig_Gains_AntennaGain {
+	if m != nil {
+		return m.AntGainTableB
+	}
+	return nil
+}
+
+type WifiConfig_IntelConfig_Gains_AntennaGain struct {
+	AntGain_2G           uint32   `protobuf:"varint,1,opt,name=ant_gain_2g,json=antGain2g,proto3" json:"ant_gain_2g,omitempty"`
+	AntGain_5G_1         uint32   `protobuf:"varint,2,opt,name=ant_gain_5g_1,json=antGain5g1,proto3" json:"ant_gain_5g_1,omitempty"`
+	AntGain_5G_2         uint32   `protobuf:"varint,3,opt,name=ant_gain_5g_2,json=antGain5g2,proto3" json:"ant_gain_5g_2,omitempty"`
+	AntGain_5G_3         uint32   `protobuf:"varint,4,opt,name=ant_gain_5g_3,json=antGain5g3,proto3" json:"ant_gain_5g_3,omitempty"`
+	AntGain_5G_4         uint32   `protobuf:"varint,5,opt,name=ant_gain_5g_4,json=antGain5g4,proto3" json:"ant_gain_5g_4,omitempty"`
+	AntGain_5G_5         uint32   `protobuf:"varint,6,opt,name=ant_gain_5g_5,json=antGain5g5,proto3" json:"ant_gain_5g_5,omitempty"`
+	AntGain_6G_1         uint32   `protobuf:"varint,7,opt,name=ant_gain_6g_1,json=antGain6g1,proto3" json:"ant_gain_6g_1,omitempty"`
+	AntGain_6G_2         uint32   `protobuf:"varint,8,opt,name=ant_gain_6g_2,json=antGain6g2,proto3" json:"ant_gain_6g_2,omitempty"`
+	AntGain_6G_3         uint32   `protobuf:"varint,9,opt,name=ant_gain_6g_3,json=antGain6g3,proto3" json:"ant_gain_6g_3,omitempty"`
+	AntGain_6G_4         uint32   `protobuf:"varint,10,opt,name=ant_gain_6g_4,json=antGain6g4,proto3" json:"ant_gain_6g_4,omitempty"`
+	AntGain_6G_5         uint32   `protobuf:"varint,11,opt,name=ant_gain_6g_5,json=antGain6g5,proto3" json:"ant_gain_6g_5,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) Reset() {
+	*m = WifiConfig_IntelConfig_Gains_AntennaGain{}
+}
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) String() string { return proto.CompactTextString(m) }
+func (*WifiConfig_IntelConfig_Gains_AntennaGain) ProtoMessage()    {}
+func (*WifiConfig_IntelConfig_Gains_AntennaGain) Descriptor() ([]byte, []int) {
+	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 2, 0}
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Gains_AntennaGain.Unmarshal(m, b)
+}
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Gains_AntennaGain.Marshal(b, m, deterministic)
+}
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WifiConfig_IntelConfig_Gains_AntennaGain.Merge(m, src)
+}
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) XXX_Size() int {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Gains_AntennaGain.Size(m)
+}
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) XXX_DiscardUnknown() {
+	xxx_messageInfo_WifiConfig_IntelConfig_Gains_AntennaGain.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_WifiConfig_IntelConfig_Gains_AntennaGain proto.InternalMessageInfo
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_2G() uint32 {
+	if m != nil {
+		return m.AntGain_2G
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_5G_1() uint32 {
+	if m != nil {
+		return m.AntGain_5G_1
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_5G_2() uint32 {
+	if m != nil {
+		return m.AntGain_5G_2
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_5G_3() uint32 {
+	if m != nil {
+		return m.AntGain_5G_3
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_5G_4() uint32 {
+	if m != nil {
+		return m.AntGain_5G_4
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_5G_5() uint32 {
+	if m != nil {
+		return m.AntGain_5G_5
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_6G_1() uint32 {
+	if m != nil {
+		return m.AntGain_6G_1
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_6G_2() uint32 {
+	if m != nil {
+		return m.AntGain_6G_2
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_6G_3() uint32 {
+	if m != nil {
+		return m.AntGain_6G_3
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_6G_4() uint32 {
+	if m != nil {
+		return m.AntGain_6G_4
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_6G_5() uint32 {
+	if m != nil {
+		return m.AntGain_6G_5
+	}
+	return 0
+}
+
+type WifiConfig_IntelConfig_Average struct {
+	SarAvgVersion        uint32   `protobuf:"varint,1,opt,name=sar_avg_version,json=sarAvgVersion,proto3" json:"sar_avg_version,omitempty"`
+	TasSelection         uint32   `protobuf:"varint,2,opt,name=tas_selection,json=tasSelection,proto3" json:"tas_selection,omitempty"`
+	TasListSize          uint32   `protobuf:"varint,3,opt,name=tas_list_size,json=tasListSize,proto3" json:"tas_list_size,omitempty"`
+	DenyListEntry_1      uint32   `protobuf:"varint,4,opt,name=deny_list_entry_1,json=denyListEntry1,proto3" json:"deny_list_entry_1,omitempty"`
+	DenyListEntry_2      uint32   `protobuf:"varint,5,opt,name=deny_list_entry_2,json=denyListEntry2,proto3" json:"deny_list_entry_2,omitempty"`
+	DenyListEntry_3      uint32   `protobuf:"varint,6,opt,name=deny_list_entry_3,json=denyListEntry3,proto3" json:"deny_list_entry_3,omitempty"`
+	DenyListEntry_4      uint32   `protobuf:"varint,7,opt,name=deny_list_entry_4,json=denyListEntry4,proto3" json:"deny_list_entry_4,omitempty"`
+	DenyListEntry_5      uint32   `protobuf:"varint,8,opt,name=deny_list_entry_5,json=denyListEntry5,proto3" json:"deny_list_entry_5,omitempty"`
+	DenyListEntry_6      uint32   `protobuf:"varint,9,opt,name=deny_list_entry_6,json=denyListEntry6,proto3" json:"deny_list_entry_6,omitempty"`
+	DenyListEntry_7      uint32   `protobuf:"varint,10,opt,name=deny_list_entry_7,json=denyListEntry7,proto3" json:"deny_list_entry_7,omitempty"`
+	DenyListEntry_8      uint32   `protobuf:"varint,11,opt,name=deny_list_entry_8,json=denyListEntry8,proto3" json:"deny_list_entry_8,omitempty"`
+	DenyListEntry_9      uint32   `protobuf:"varint,12,opt,name=deny_list_entry_9,json=denyListEntry9,proto3" json:"deny_list_entry_9,omitempty"`
+	DenyListEntry_10     uint32   `protobuf:"varint,13,opt,name=deny_list_entry_10,json=denyListEntry10,proto3" json:"deny_list_entry_10,omitempty"`
+	DenyListEntry_11     uint32   `protobuf:"varint,14,opt,name=deny_list_entry_11,json=denyListEntry11,proto3" json:"deny_list_entry_11,omitempty"`
+	DenyListEntry_12     uint32   `protobuf:"varint,15,opt,name=deny_list_entry_12,json=denyListEntry12,proto3" json:"deny_list_entry_12,omitempty"`
+	DenyListEntry_13     uint32   `protobuf:"varint,16,opt,name=deny_list_entry_13,json=denyListEntry13,proto3" json:"deny_list_entry_13,omitempty"`
+	DenyListEntry_14     uint32   `protobuf:"varint,17,opt,name=deny_list_entry_14,json=denyListEntry14,proto3" json:"deny_list_entry_14,omitempty"`
+	DenyListEntry_15     uint32   `protobuf:"varint,18,opt,name=deny_list_entry_15,json=denyListEntry15,proto3" json:"deny_list_entry_15,omitempty"`
+	DenyListEntry_16     uint32   `protobuf:"varint,19,opt,name=deny_list_entry_16,json=denyListEntry16,proto3" json:"deny_list_entry_16,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *WifiConfig_IntelConfig_Average) Reset()         { *m = WifiConfig_IntelConfig_Average{} }
+func (m *WifiConfig_IntelConfig_Average) String() string { return proto.CompactTextString(m) }
+func (*WifiConfig_IntelConfig_Average) ProtoMessage()    {}
+func (*WifiConfig_IntelConfig_Average) Descriptor() ([]byte, []int) {
+	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 3}
+}
+
+func (m *WifiConfig_IntelConfig_Average) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Average.Unmarshal(m, b)
+}
+func (m *WifiConfig_IntelConfig_Average) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Average.Marshal(b, m, deterministic)
+}
+func (m *WifiConfig_IntelConfig_Average) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WifiConfig_IntelConfig_Average.Merge(m, src)
+}
+func (m *WifiConfig_IntelConfig_Average) XXX_Size() int {
+	return xxx_messageInfo_WifiConfig_IntelConfig_Average.Size(m)
+}
+func (m *WifiConfig_IntelConfig_Average) XXX_DiscardUnknown() {
+	xxx_messageInfo_WifiConfig_IntelConfig_Average.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_WifiConfig_IntelConfig_Average proto.InternalMessageInfo
+
+func (m *WifiConfig_IntelConfig_Average) GetSarAvgVersion() uint32 {
+	if m != nil {
+		return m.SarAvgVersion
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetTasSelection() uint32 {
+	if m != nil {
+		return m.TasSelection
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetTasListSize() uint32 {
+	if m != nil {
+		return m.TasListSize
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_1() uint32 {
+	if m != nil {
+		return m.DenyListEntry_1
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_2() uint32 {
+	if m != nil {
+		return m.DenyListEntry_2
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_3() uint32 {
+	if m != nil {
+		return m.DenyListEntry_3
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_4() uint32 {
+	if m != nil {
+		return m.DenyListEntry_4
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_5() uint32 {
+	if m != nil {
+		return m.DenyListEntry_5
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_6() uint32 {
+	if m != nil {
+		return m.DenyListEntry_6
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_7() uint32 {
+	if m != nil {
+		return m.DenyListEntry_7
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_8() uint32 {
+	if m != nil {
+		return m.DenyListEntry_8
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_9() uint32 {
+	if m != nil {
+		return m.DenyListEntry_9
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_10() uint32 {
+	if m != nil {
+		return m.DenyListEntry_10
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_11() uint32 {
+	if m != nil {
+		return m.DenyListEntry_11
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_12() uint32 {
+	if m != nil {
+		return m.DenyListEntry_12
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_13() uint32 {
+	if m != nil {
+		return m.DenyListEntry_13
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_14() uint32 {
+	if m != nil {
+		return m.DenyListEntry_14
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_15() uint32 {
+	if m != nil {
+		return m.DenyListEntry_15
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_Average) GetDenyListEntry_16() uint32 {
+	if m != nil {
+		return m.DenyListEntry_16
+	}
+	return 0
+}
+
+// Device Specific methods used by intel wifi driver.
+type WifiConfig_IntelConfig_DSM struct {
+	// Function 1
+	DisableActiveSdrChannels int64 `protobuf:"varint,2,opt,name=disable_active_sdr_channels,json=disableActiveSdrChannels,proto3" json:"disable_active_sdr_channels,omitempty"`
+	// Function 2
+	SupportIndonesia_5GBand int64 `protobuf:"varint,3,opt,name=support_indonesia_5g_band,json=supportIndonesia5gBand,proto3" json:"support_indonesia_5g_band,omitempty"`
+	// Function 3
+	SupportUltraHighBand int64 `protobuf:"varint,4,opt,name=support_ultra_high_band,json=supportUltraHighBand,proto3" json:"support_ultra_high_band,omitempty"`
+	// Function 4
+	RegulatoryConfigurations int64 `protobuf:"varint,5,opt,name=regulatory_configurations,json=regulatoryConfigurations,proto3" json:"regulatory_configurations,omitempty"`
+	// Function 5
+	UartConfigurations int64 `protobuf:"varint,6,opt,name=uart_configurations,json=uartConfigurations,proto3" json:"uart_configurations,omitempty"`
+	// Function 6
+	Enablement_11Ax int64 `protobuf:"varint,7,opt,name=enablement_11ax,json=enablement11ax,proto3" json:"enablement_11ax,omitempty"`
+	// Function 7
+	Unii_4               int64    `protobuf:"varint,8,opt,name=unii_4,json=unii4,proto3" json:"unii_4,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *WifiConfig_IntelConfig_DSM) Reset()         { *m = WifiConfig_IntelConfig_DSM{} }
+func (m *WifiConfig_IntelConfig_DSM) String() string { return proto.CompactTextString(m) }
+func (*WifiConfig_IntelConfig_DSM) ProtoMessage()    {}
+func (*WifiConfig_IntelConfig_DSM) Descriptor() ([]byte, []int) {
+	return fileDescriptor_394edccf34e4f0c0, []int{0, 2, 4}
+}
+
+func (m *WifiConfig_IntelConfig_DSM) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WifiConfig_IntelConfig_DSM.Unmarshal(m, b)
+}
+func (m *WifiConfig_IntelConfig_DSM) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WifiConfig_IntelConfig_DSM.Marshal(b, m, deterministic)
+}
+func (m *WifiConfig_IntelConfig_DSM) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WifiConfig_IntelConfig_DSM.Merge(m, src)
+}
+func (m *WifiConfig_IntelConfig_DSM) XXX_Size() int {
+	return xxx_messageInfo_WifiConfig_IntelConfig_DSM.Size(m)
+}
+func (m *WifiConfig_IntelConfig_DSM) XXX_DiscardUnknown() {
+	xxx_messageInfo_WifiConfig_IntelConfig_DSM.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_WifiConfig_IntelConfig_DSM proto.InternalMessageInfo
+
+func (m *WifiConfig_IntelConfig_DSM) GetDisableActiveSdrChannels() int64 {
+	if m != nil {
+		return m.DisableActiveSdrChannels
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_DSM) GetSupportIndonesia_5GBand() int64 {
+	if m != nil {
+		return m.SupportIndonesia_5GBand
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_DSM) GetSupportUltraHighBand() int64 {
+	if m != nil {
+		return m.SupportUltraHighBand
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_DSM) GetRegulatoryConfigurations() int64 {
+	if m != nil {
+		return m.RegulatoryConfigurations
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_DSM) GetUartConfigurations() int64 {
+	if m != nil {
+		return m.UartConfigurations
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_DSM) GetEnablement_11Ax() int64 {
+	if m != nil {
+		return m.Enablement_11Ax
+	}
+	return 0
+}
+
+func (m *WifiConfig_IntelConfig_DSM) GetUnii_4() int64 {
+	if m != nil {
+		return m.Unii_4
 	}
 	return 0
 }
@@ -709,8 +1402,14 @@ func init() {
 	proto.RegisterType((*WifiConfig_Rtw88Config_TransmitPowerChain)(nil), "chromiumos.config.api.software.WifiConfig.Rtw88Config.TransmitPowerChain")
 	proto.RegisterType((*WifiConfig_Rtw88Config_GeoOffsets)(nil), "chromiumos.config.api.software.WifiConfig.Rtw88Config.GeoOffsets")
 	proto.RegisterType((*WifiConfig_IntelConfig)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig")
-	proto.RegisterType((*WifiConfig_IntelConfig_TransmitPowerChain)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.TransmitPowerChain")
-	proto.RegisterType((*WifiConfig_IntelConfig_GeoOffsets)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.GeoOffsets")
+	proto.RegisterType((*WifiConfig_IntelConfig_SarTable)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable")
+	proto.RegisterType((*WifiConfig_IntelConfig_SarTable_TransmitPowerChain)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.SarTable.TransmitPowerChain")
+	proto.RegisterType((*WifiConfig_IntelConfig_Offsets)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.Offsets")
+	proto.RegisterType((*WifiConfig_IntelConfig_Offsets_GeoOffsets)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.Offsets.GeoOffsets")
+	proto.RegisterType((*WifiConfig_IntelConfig_Gains)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.Gains")
+	proto.RegisterType((*WifiConfig_IntelConfig_Gains_AntennaGain)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.Gains.AntennaGain")
+	proto.RegisterType((*WifiConfig_IntelConfig_Average)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.Average")
+	proto.RegisterType((*WifiConfig_IntelConfig_DSM)(nil), "chromiumos.config.api.software.WifiConfig.IntelConfig.DSM")
 }
 
 func init() {
@@ -718,48 +1417,100 @@ func init() {
 }
 
 var fileDescriptor_394edccf34e4f0c0 = []byte{
-	// 682 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x96, 0xcd, 0x6e, 0xd3, 0x4e,
-	0x14, 0xc5, 0xff, 0xee, 0xbf, 0x49, 0xd3, 0xeb, 0x64, 0x33, 0xa2, 0x6a, 0xea, 0x42, 0x05, 0xac,
-	0x58, 0x39, 0x8d, 0x53, 0x43, 0xb7, 0x71, 0x45, 0xa1, 0x95, 0x50, 0x91, 0x55, 0x81, 0x04, 0x52,
-	0x87, 0x89, 0x63, 0x3b, 0x23, 0x6a, 0x4f, 0x64, 0xbb, 0xa4, 0x4b, 0x10, 0x0b, 0x3e, 0x1e, 0x80,
-	0x07, 0x60, 0xc3, 0x3b, 0xf0, 0x3e, 0x2c, 0x78, 0x0b, 0x64, 0x7b, 0xfc, 0x95, 0x36, 0x69, 0x62,
-	0x19, 0x96, 0x33, 0x27, 0xf3, 0x9b, 0x93, 0xeb, 0x7b, 0x8f, 0x06, 0x76, 0x8d, 0x91, 0xc7, 0x1c,
-	0x7a, 0xe1, 0x30, 0xbf, 0x63, 0x30, 0xd7, 0xa2, 0x76, 0x87, 0x8c, 0x69, 0xc7, 0x67, 0x56, 0x30,
-	0x21, 0x9e, 0xd9, 0x99, 0x50, 0x8b, 0xe2, 0x58, 0x90, 0xc7, 0x1e, 0x0b, 0x18, 0xda, 0xc9, 0x4e,
-	0xc8, 0x5c, 0x20, 0x63, 0x2a, 0x27, 0x27, 0xee, 0x7f, 0xdf, 0x00, 0x78, 0x49, 0x2d, 0x7a, 0x10,
-	0x69, 0xe8, 0x0c, 0x5a, 0x24, 0x18, 0x75, 0x77, 0xdf, 0x72, 0x4a, 0x5b, 0xb8, 0x2b, 0x3c, 0x10,
-	0x95, 0x47, 0xf2, 0x7c, 0x8c, 0x9c, 0x21, 0xe4, 0x7e, 0x74, 0x3e, 0x5e, 0x3c, 0xfd, 0x4f, 0x6f,
-	0x92, 0xdc, 0x1a, 0xbd, 0x86, 0xa6, 0x17, 0x4c, 0xf6, 0xf7, 0x13, 0xfc, 0x4a, 0x84, 0x7f, 0xb8,
-	0x04, 0x5e, 0x0f, 0x8f, 0xa7, 0x74, 0xd1, 0xcb, 0x96, 0x21, 0x9c, 0xba, 0x81, 0x79, 0x9e, 0xc0,
-	0xff, 0x5f, 0x1a, 0x7e, 0x14, 0x1e, 0xcf, 0xe0, 0x34, 0x5b, 0x4a, 0xbf, 0x57, 0xa0, 0x99, 0xff,
-	0x6b, 0xe8, 0x83, 0x00, 0x9b, 0x01, 0x19, 0x9c, 0x9b, 0x01, 0x76, 0xd8, 0xd0, 0xc4, 0x63, 0x36,
-	0x31, 0x3d, 0x1c, 0xed, 0xf0, 0xaa, 0x1d, 0x97, 0xac, 0x9a, 0x7c, 0xea, 0x11, 0xd7, 0x77, 0x68,
-	0xf0, 0x3c, 0x44, 0x1e, 0x8c, 0x08, 0x75, 0xf5, 0x5b, 0xf1, 0x55, 0xcf, 0xd8, 0xd0, 0x8c, 0x76,
-	0x4f, 0xc3, 0x25, 0xfa, 0x2c, 0xc0, 0xb6, 0xcb, 0x5c, 0x3c, 0xcb, 0xc7, 0x4a, 0xe5, 0x3e, 0x36,
-	0x5d, 0xe6, 0x9e, 0x5e, 0x63, 0x45, 0x3a, 0x06, 0x74, 0xf5, 0xe7, 0x68, 0x0b, 0x1a, 0xe7, 0xd4,
-	0xa1, 0x01, 0x56, 0xe2, 0x56, 0x6a, 0xe9, 0x6b, 0xd1, 0x5a, 0xb1, 0x33, 0x49, 0x8d, 0xdb, 0x20,
-	0x91, 0x54, 0x5b, 0xfa, 0x56, 0x07, 0x31, 0xf7, 0x9d, 0xd1, 0xfb, 0x1b, 0x4b, 0x7d, 0x54, 0xae,
-	0x83, 0x16, 0xaf, 0xf4, 0xa7, 0x85, 0x2a, 0x5d, 0xa1, 0x8d, 0x59, 0x85, 0x46, 0x6f, 0x00, 0x98,
-	0x65, 0xf9, 0x66, 0x80, 0x2d, 0xc3, 0xe0, 0x3d, 0xde, 0x2f, 0x79, 0xef, 0x13, 0x93, 0x9d, 0x44,
-	0x2c, 0x5f, 0x5f, 0x8f, 0xa1, 0x87, 0x86, 0x81, 0xce, 0x80, 0x2f, 0xb0, 0x79, 0xd1, 0x5e, 0xad,
-	0xea, 0x82, 0x46, 0xcc, 0x7c, 0x7c, 0x81, 0x86, 0xd0, 0xe4, 0x7c, 0x16, 0x8c, 0x4c, 0xaf, 0x5d,
-	0xab, 0xea, 0x0a, 0x31, 0xc6, 0x9e, 0x84, 0x54, 0xe9, 0x8b, 0xb0, 0x6c, 0x47, 0xde, 0x06, 0x48,
-	0x3a, 0x12, 0x77, 0x79, 0x4f, 0x36, 0x78, 0x4f, 0x76, 0x0b, 0x6a, 0x2f, 0xaa, 0x7b, 0xa6, 0xf6,
-	0x0a, 0xea, 0x5e, 0x54, 0xb4, 0x4c, 0xdd, 0x93, 0x0e, 0x01, 0x32, 0x9b, 0x68, 0x3b, 0xad, 0x6f,
-	0xea, 0x81, 0x17, 0x47, 0xb1, 0x73, 0x62, 0x3a, 0x17, 0x5c, 0x54, 0x6d, 0xe9, 0xd7, 0x3a, 0x88,
-	0xb9, 0x8c, 0x42, 0x1f, 0x05, 0xd8, 0x9a, 0xd1, 0x91, 0x98, 0x94, 0x18, 0x8d, 0x1c, 0xfb, 0xba,
-	0x9e, 0xdc, 0xb8, 0x6e, 0x34, 0xfa, 0x73, 0x5d, 0x0c, 0x4a, 0x4c, 0x46, 0x19, 0x17, 0x1a, 0xfa,
-	0x2a, 0xc0, 0x9d, 0x39, 0x13, 0x8a, 0x09, 0x9f, 0x95, 0x0a, 0x9d, 0xb4, 0x67, 0xcc, 0x68, 0xff,
-	0x46, 0x33, 0x03, 0x3e, 0x57, 0xff, 0xc0, 0x8c, 0x86, 0xee, 0x41, 0x73, 0x62, 0x0f, 0x7d, 0xfc,
-	0xce, 0xf4, 0x7c, 0xca, 0xdc, 0x68, 0xde, 0x5a, 0xba, 0x18, 0xee, 0xbd, 0x88, 0xb7, 0xa6, 0x42,
-	0xa5, 0xbe, 0xf4, 0x40, 0xe6, 0xbd, 0x2d, 0x10, 0x2a, 0x6b, 0x55, 0x5d, 0x30, 0x3b, 0x54, 0x1a,
-	0x55, 0x5d, 0x51, 0x08, 0x95, 0x1f, 0x7f, 0x31, 0x54, 0x94, 0xa9, 0x50, 0x51, 0xa6, 0x22, 0x67,
-	0x75, 0x6e, 0xe4, 0xd4, 0xa6, 0x22, 0xe7, 0xa7, 0x50, 0xc8, 0x9c, 0x0d, 0xa8, 0x3b, 0xe4, 0x32,
-	0xf3, 0x57, 0x73, 0xc8, 0xa5, 0x62, 0xa3, 0x1d, 0x10, 0xd3, 0x28, 0xc2, 0x84, 0xdb, 0x5b, 0x4f,
-	0xc2, 0xa8, 0x5f, 0xd4, 0x07, 0xdc, 0x60, 0xaa, 0x6b, 0x09, 0x56, 0xb5, 0xb9, 0xbb, 0x10, 0xab,
-	0xe6, 0xb1, 0x6a, 0x88, 0xad, 0xe5, 0x8f, 0xa9, 0x05, 0xac, 0x1a, 0x62, 0xeb, 0x45, 0x5d, 0xd3,
-	0x5a, 0x20, 0xe6, 0x9e, 0xb2, 0x5a, 0xef, 0x55, 0xd7, 0x66, 0xe9, 0x97, 0x94, 0x99, 0x67, 0x77,
-	0xae, 0x3e, 0x84, 0x6d, 0x56, 0x78, 0x0b, 0x0f, 0xea, 0xd1, 0x03, 0xb8, 0xf7, 0x27, 0x00, 0x00,
-	0xff, 0xff, 0x7f, 0x33, 0x51, 0xe2, 0x34, 0x0b, 0x00, 0x00,
+	// 1510 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x59, 0x5b, 0x73, 0xdb, 0x44,
+	0x14, 0xc6, 0x71, 0x2e, 0xf6, 0xda, 0xe9, 0x65, 0xdb, 0x52, 0xc5, 0x81, 0x0e, 0x2d, 0x0c, 0xd7,
+	0x19, 0x27, 0x96, 0x2d, 0x35, 0xe5, 0x3a, 0x76, 0xef, 0x9d, 0x96, 0x32, 0x4a, 0x81, 0xe1, 0x56,
+	0xb1, 0xb6, 0x64, 0x79, 0x07, 0x7b, 0x65, 0xa4, 0x75, 0xd2, 0xf6, 0xa9, 0x3c, 0x01, 0x43, 0x5f,
+	0x18, 0x66, 0x78, 0xe0, 0x97, 0xf0, 0x03, 0x78, 0x61, 0xf8, 0x09, 0xbc, 0xf2, 0xc2, 0xbf, 0x60,
+	0x76, 0xb5, 0x2b, 0x69, 0x15, 0xd9, 0x6d, 0xdc, 0xa4, 0xbc, 0x65, 0xf7, 0xfb, 0xce, 0xb7, 0xc7,
+	0xe7, 0x9c, 0x3d, 0x7b, 0x62, 0x83, 0xcd, 0xde, 0x20, 0xf0, 0x47, 0x78, 0x32, 0xf2, 0xc3, 0x8d,
+	0x9e, 0x4f, 0xfa, 0xd8, 0xdb, 0x40, 0x63, 0xbc, 0x11, 0xfa, 0x7d, 0xba, 0x8b, 0x02, 0x77, 0x63,
+	0x17, 0xf7, 0xb1, 0x1d, 0x01, 0xf5, 0x71, 0xe0, 0x53, 0x1f, 0x9e, 0x49, 0x2c, 0xea, 0x02, 0x40,
+	0x63, 0x5c, 0x97, 0x16, 0xe7, 0xfe, 0xdc, 0x00, 0xe0, 0x53, 0xdc, 0xc7, 0x17, 0x39, 0x06, 0xef,
+	0x82, 0x55, 0x44, 0x07, 0x8d, 0xcd, 0x6f, 0x84, 0x8a, 0x56, 0x78, 0xa9, 0xf0, 0x7a, 0x45, 0x3f,
+	0x5f, 0x9f, 0x2d, 0x53, 0x4f, 0x24, 0xea, 0x6d, 0x6e, 0x1f, 0x2d, 0xae, 0x3d, 0x67, 0x55, 0x51,
+	0x6a, 0x0d, 0xbf, 0x00, 0xd5, 0x80, 0xee, 0x6e, 0x6d, 0x49, 0xf9, 0x05, 0x2e, 0x6f, 0xee, 0x43,
+	0xde, 0x62, 0xe6, 0xb1, 0x7a, 0x25, 0x48, 0x96, 0x4c, 0x1c, 0x13, 0xea, 0x0e, 0xa5, 0x78, 0x71,
+	0xdf, 0xe2, 0xd7, 0x99, 0x79, 0x22, 0x8e, 0x93, 0x65, 0xed, 0xdf, 0x05, 0x50, 0x4d, 0x7f, 0x34,
+	0xf8, 0x5d, 0x01, 0x9c, 0xa6, 0xa8, 0x3b, 0x74, 0xa9, 0x3d, 0xf2, 0x1d, 0xd7, 0x1e, 0xfb, 0xbb,
+	0x6e, 0x60, 0xf3, 0x1d, 0x11, 0xb5, 0x1b, 0x73, 0x46, 0xad, 0x7e, 0x27, 0x40, 0x24, 0x1c, 0x61,
+	0xfa, 0x11, 0x93, 0xbc, 0x38, 0x40, 0x98, 0x58, 0x27, 0xa3, 0xa3, 0x6e, 0xf9, 0x8e, 0xcb, 0x77,
+	0xef, 0xb0, 0x25, 0xfc, 0xa1, 0x00, 0xd6, 0x89, 0x4f, 0xec, 0x69, 0x7e, 0x2c, 0x1c, 0xb8, 0x1f,
+	0xa7, 0x89, 0x4f, 0xee, 0xe4, 0xb8, 0x52, 0xbb, 0x01, 0xe0, 0x5e, 0x3a, 0x5c, 0x03, 0xa5, 0x21,
+	0x1e, 0x61, 0x6a, 0xeb, 0x51, 0x29, 0xad, 0x5a, 0x2b, 0x7c, 0xad, 0x7b, 0x09, 0x64, 0x44, 0x65,
+	0x20, 0x21, 0xc3, 0xab, 0xfd, 0xba, 0x0c, 0x2a, 0xa9, 0x3c, 0xc3, 0x87, 0x8f, 0x0d, 0xf5, 0xf5,
+	0xf9, 0x2a, 0xe8, 0xc9, 0x23, 0xfd, 0xfd, 0x13, 0x45, 0xfa, 0x00, 0xdd, 0x98, 0x16, 0x68, 0xf8,
+	0x35, 0x00, 0x7e, 0xbf, 0x1f, 0xba, 0xd4, 0xee, 0xf7, 0x7a, 0xa2, 0xc6, 0xdb, 0x73, 0x9e, 0x7b,
+	0xd5, 0xf5, 0x6f, 0x73, 0xad, 0xd0, 0x2a, 0x47, 0xa2, 0x57, 0x7a, 0x3d, 0x78, 0x17, 0x88, 0x85,
+	0xed, 0x4e, 0xb4, 0xc5, 0x83, 0x3a, 0xa0, 0x14, 0x69, 0x5e, 0x9e, 0x40, 0x07, 0x54, 0x85, 0xbe,
+	0x4f, 0x07, 0x6e, 0xa0, 0x2d, 0x1d, 0xd4, 0x11, 0x95, 0x48, 0xf6, 0x36, 0x53, 0xad, 0xfd, 0x58,
+	0xd8, 0x6f, 0x45, 0xbe, 0x00, 0x80, 0xac, 0x48, 0xbb, 0x21, 0x6a, 0xb2, 0x24, 0x6a, 0xb2, 0xa1,
+	0xa0, 0x4d, 0x1e, 0xf7, 0x04, 0x6d, 0x2a, 0x68, 0x8b, 0x07, 0x2d, 0x41, 0x5b, 0xb5, 0x2b, 0x00,
+	0x24, 0x6e, 0xc2, 0xf5, 0x38, 0xbe, 0xb1, 0x0f, 0x22, 0x38, 0xba, 0x97, 0x02, 0xe3, 0x7b, 0x21,
+	0x40, 0xc3, 0xab, 0x3d, 0x7a, 0x05, 0x54, 0x52, 0x3d, 0x0a, 0x7e, 0x09, 0xca, 0x21, 0x52, 0x6f,
+	0xc2, 0x07, 0xf3, 0xb5, 0xbb, 0xfa, 0x36, 0x8a, 0xea, 0xcb, 0x2a, 0x85, 0xe2, 0x2f, 0xf8, 0x15,
+	0x00, 0xbb, 0x9e, 0x13, 0x2a, 0x15, 0xfe, 0xfe, 0x9c, 0xf2, 0x71, 0x99, 0x31, 0xc5, 0x48, 0xfe,
+	0x33, 0x50, 0x46, 0x84, 0x0a, 0xf5, 0xa8, 0x8e, 0xdf, 0x9d, 0x53, 0xfd, 0x2a, 0xc2, 0x24, 0xb4,
+	0x4a, 0x88, 0xd0, 0xc4, 0x73, 0x8a, 0xa4, 0xe7, 0x8b, 0x4f, 0xe5, 0x79, 0x7b, 0xc7, 0x0d, 0x90,
+	0xe7, 0x5a, 0x65, 0xa6, 0x18, 0xc9, 0xdf, 0x04, 0x45, 0x27, 0x1c, 0x89, 0xba, 0x7d, 0x7b, 0x4e,
+	0xdd, 0x4b, 0xdb, 0xb7, 0x2c, 0x26, 0x53, 0xfb, 0xa3, 0x0a, 0x4a, 0x32, 0xfa, 0xf0, 0x4d, 0x70,
+	0x3c, 0xce, 0xa8, 0xbd, 0xe3, 0x06, 0x21, 0xf6, 0x89, 0xa8, 0x91, 0xa3, 0x32, 0x31, 0x9f, 0x44,
+	0xdb, 0xf0, 0x51, 0x01, 0xac, 0x4d, 0xe9, 0x47, 0x36, 0x12, 0x11, 0xb5, 0x9e, 0xb2, 0x1c, 0xf2,
+	0x5a, 0xd3, 0xa9, 0xbc, 0x0e, 0xd9, 0x9e, 0xe9, 0x4e, 0x57, 0x24, 0xe1, 0x99, 0xb9, 0xd3, 0x81,
+	0xbf, 0x14, 0xc0, 0x8b, 0x33, 0x3a, 0xb6, 0x8d, 0x44, 0xfe, 0x0e, 0xc3, 0x25, 0x6d, 0x4a, 0xf3,
+	0x6e, 0x3f, 0xd6, 0xab, 0xae, 0xb6, 0xfc, 0xcc, 0xbd, 0x8a, 0x62, 0xd5, 0x73, 0xba, 0x33, 0x62,
+	0xb5, 0x72, 0x78, 0x5e, 0xf5, 0x9c, 0xee, 0xf4, 0x58, 0xcd, 0xf2, 0xaa, 0xab, 0x95, 0x9e, 0xb9,
+	0x57, 0x1d, 0xf8, 0x5b, 0x01, 0x9c, 0x65, 0x5e, 0xcd, 0xae, 0xad, 0xf2, 0xa1, 0x79, 0xb6, 0xde,
+	0x73, 0xba, 0x1f, 0x4e, 0x2b, 0xaf, 0x27, 0x71, 0xae, 0xab, 0x81, 0xff, 0xc3, 0xb9, 0x4e, 0xed,
+	0xef, 0x85, 0xc3, 0x7b, 0x91, 0xf5, 0xcc, 0x8b, 0xac, 0x67, 0xde, 0xeb, 0xc5, 0x99, 0xef, 0xf5,
+	0x92, 0xfa, 0x5e, 0x2b, 0xa8, 0xc1, 0x6f, 0x64, 0x82, 0x1a, 0x09, 0x6a, 0x32, 0xaf, 0x56, 0x52,
+	0xa8, 0x99, 0xf6, 0xca, 0x64, 0x5e, 0x95, 0x14, 0x54, 0x57, 0xd0, 0x26, 0xaf, 0x92, 0x04, 0x6d,
+	0x2a, 0x68, 0x8b, 0xa7, 0x29, 0x41, 0x5b, 0x0a, 0x6a, 0x68, 0x15, 0x05, 0x35, 0x6a, 0x0f, 0x97,
+	0xc0, 0x8a, 0x9c, 0x30, 0xce, 0x82, 0x2a, 0x7f, 0xb9, 0xd5, 0x07, 0xa4, 0xc2, 0xf6, 0xe4, 0xe3,
+	0x31, 0x50, 0xc6, 0xc8, 0xfd, 0x8f, 0xaf, 0x39, 0x8f, 0xfb, 0x94, 0x71, 0xb2, 0x9f, 0x1e, 0x27,
+	0x8b, 0x07, 0x7d, 0x50, 0x32, 0x56, 0x0e, 0x33, 0x63, 0xe5, 0xe2, 0x41, 0x1f, 0xa5, 0x8c, 0x97,
+	0x3f, 0x2f, 0x28, 0x33, 0xdd, 0x29, 0xb0, 0x3c, 0x42, 0xf7, 0x92, 0x12, 0x5e, 0x1a, 0xa1, 0x7b,
+	0xba, 0x07, 0xcf, 0x80, 0x4a, 0x3c, 0xea, 0xd9, 0x48, 0x54, 0x70, 0x59, 0x0e, 0x7b, 0x6d, 0x15,
+	0xef, 0x8a, 0x1a, 0x8e, 0xf1, 0x8e, 0x94, 0x35, 0x3c, 0x51, 0xc0, 0x4c, 0xd6, 0x48, 0xcb, 0x1a,
+	0x9e, 0x78, 0xc8, 0x62, 0x33, 0x43, 0x91, 0x35, 0x3c, 0xf1, 0xa4, 0xa4, 0xf0, 0x58, 0xd6, 0xf4,
+	0x44, 0xf5, 0x32, 0x59, 0x33, 0x2d, 0x6b, 0x32, 0xd9, 0x52, 0xda, 0xcc, 0x54, 0x64, 0x4d, 0x26,
+	0x5b, 0x56, 0xf1, 0x4e, 0xed, 0xaf, 0x25, 0xb0, 0xc4, 0x47, 0x31, 0x36, 0xc6, 0xc4, 0xb3, 0x5d,
+	0x76, 0x8c, 0x91, 0x53, 0x9a, 0xac, 0xc4, 0x73, 0x60, 0x95, 0x71, 0xa3, 0x3e, 0x35, 0x46, 0x72,
+	0xea, 0xad, 0x20, 0x12, 0x75, 0x90, 0x31, 0xf2, 0xe0, 0xb7, 0xe0, 0x18, 0xe3, 0x78, 0x08, 0x93,
+	0xcc, 0x80, 0x73, 0xed, 0x69, 0x46, 0xc6, 0x7a, 0x9b, 0x50, 0x97, 0x10, 0xc4, 0x16, 0x16, 0xf3,
+	0x82, 0xfd, 0x21, 0x5a, 0xe9, 0xde, 0x23, 0xe5, 0x10, 0x73, 0x48, 0x47, 0x76, 0x6a, 0x3f, 0x15,
+	0x41, 0x25, 0x05, 0xb3, 0x78, 0xc7, 0x2e, 0xc4, 0x95, 0x55, 0x16, 0x36, 0xba, 0x07, 0xcf, 0x46,
+	0x91, 0xe3, 0x78, 0xaa, 0x43, 0x02, 0xc1, 0x60, 0x3d, 0x32, 0x43, 0x91, 0x6d, 0x32, 0xa1, 0xe8,
+	0x59, 0x8a, 0xec, 0x95, 0x09, 0xa5, 0x99, 0xa5, 0xc8, 0x86, 0x99, 0x50, 0x5a, 0x59, 0x8a, 0xec,
+	0x9a, 0x09, 0xc5, 0x50, 0x28, 0xa9, 0xd6, 0x29, 0x29, 0x66, 0xc6, 0xdd, 0x54, 0xff, 0x4c, 0x28,
+	0x7a, 0x96, 0x22, 0x9b, 0x68, 0x42, 0x69, 0x66, 0x29, 0xb2, 0x93, 0x26, 0x94, 0x56, 0x96, 0x22,
+	0xdb, 0x69, 0x42, 0x31, 0x6a, 0xbf, 0x2f, 0x83, 0x15, 0x31, 0xfc, 0xc3, 0x57, 0x01, 0x9b, 0xbe,
+	0x6d, 0xb4, 0xe3, 0x65, 0xaa, 0x79, 0x35, 0x44, 0x41, 0x7b, 0xc7, 0x93, 0xb5, 0xfc, 0x32, 0x58,
+	0x65, 0xff, 0x77, 0x84, 0xee, 0xd0, 0xed, 0x51, 0xc6, 0x8a, 0x32, 0x52, 0xa5, 0x28, 0xdc, 0x96,
+	0x7b, 0xac, 0xe0, 0x19, 0x69, 0x88, 0x43, 0x6a, 0x87, 0xf8, 0x81, 0x2b, 0x72, 0x52, 0xa1, 0x28,
+	0xbc, 0x89, 0x43, 0xba, 0x8d, 0x1f, 0xb8, 0xf0, 0x0d, 0x70, 0xdc, 0x71, 0xc9, 0xfd, 0x88, 0xe4,
+	0x12, 0x1a, 0xdc, 0xb7, 0x1b, 0x22, 0x31, 0x47, 0x18, 0xc0, 0x88, 0x97, 0xd9, 0x76, 0x23, 0x8f,
+	0xaa, 0x8b, 0x04, 0xa9, 0x54, 0x3d, 0x8f, 0xda, 0x14, 0x89, 0x52, 0xa9, 0xcd, 0x3c, 0x6a, 0x4b,
+	0x24, 0x4c, 0xa5, 0xb6, 0xf2, 0xa8, 0x86, 0x48, 0x9c, 0x4a, 0x35, 0xf2, 0xa8, 0xa6, 0x48, 0xa0,
+	0x4a, 0x35, 0xf3, 0xa8, 0xe7, 0x45, 0x22, 0x55, 0xea, 0xf9, 0x3c, 0xea, 0x96, 0x48, 0xa8, 0x4a,
+	0xdd, 0xca, 0xa3, 0x5e, 0xd0, 0xaa, 0x39, 0xd4, 0x0b, 0xf0, 0x2d, 0x00, 0xf7, 0xa4, 0x60, 0x53,
+	0x5b, 0x8d, 0x9a, 0x98, 0x9a, 0x83, 0xcd, 0x5c, 0x72, 0x43, 0x3b, 0x92, 0x47, 0x6e, 0xe4, 0x92,
+	0x75, 0xed, 0x68, 0x1e, 0x59, 0xcf, 0x25, 0x37, 0xb5, 0x63, 0x79, 0xe4, 0x66, 0x2e, 0xb9, 0xa5,
+	0x1d, 0xcf, 0x23, 0xb7, 0x72, 0xc9, 0x86, 0x06, 0xf3, 0xc8, 0x46, 0x2e, 0xd9, 0xd4, 0x4e, 0xe4,
+	0x91, 0xcd, 0xda, 0x3f, 0x0b, 0xa0, 0x78, 0x69, 0xfb, 0x16, 0x7c, 0x0f, 0xac, 0x3b, 0x38, 0x8c,
+	0xfa, 0x75, 0x8f, 0xe2, 0x1d, 0xd7, 0x0e, 0x9d, 0xc0, 0xee, 0x0d, 0x10, 0x21, 0xee, 0x30, 0xe4,
+	0x97, 0xa3, 0x68, 0x69, 0x82, 0xd2, 0xe6, 0x8c, 0x6d, 0x87, 0x8d, 0x85, 0x1c, 0x87, 0x17, 0xc0,
+	0x5a, 0x38, 0x19, 0x8f, 0xfd, 0x80, 0xda, 0x98, 0x38, 0x3e, 0x71, 0x43, 0x8c, 0xf8, 0x8b, 0x86,
+	0x88, 0xc3, 0x2f, 0x4d, 0xd1, 0x7a, 0x5e, 0x10, 0xae, 0x4b, 0xdc, 0xf0, 0x3a, 0x88, 0x38, 0xd0,
+	0x00, 0xa7, 0xa5, 0xe9, 0x64, 0x48, 0x03, 0x64, 0x0f, 0xb0, 0x37, 0x88, 0x0c, 0x17, 0xb9, 0xe1,
+	0x49, 0x01, 0x7f, 0xcc, 0xd0, 0x6b, 0xd8, 0x1b, 0x70, 0xb3, 0x77, 0xc0, 0x5a, 0xe0, 0x7a, 0x93,
+	0x21, 0xa2, 0x7e, 0x70, 0x5f, 0x7c, 0x8f, 0x3c, 0x09, 0x10, 0xbb, 0xb6, 0x21, 0xbf, 0x53, 0x45,
+	0x4b, 0x4b, 0x08, 0x17, 0x15, 0x1c, 0x6e, 0x80, 0x13, 0x13, 0x14, 0xd0, 0xac, 0xd9, 0x32, 0x37,
+	0x83, 0x0c, 0xca, 0x18, 0xbc, 0x06, 0x8e, 0xba, 0x84, 0x7d, 0xf4, 0x91, 0x4b, 0xa8, 0xdd, 0x68,
+	0xa0, 0x7b, 0xfc, 0x86, 0x15, 0xad, 0x23, 0xc9, 0x36, 0xdb, 0x65, 0xef, 0xf5, 0x84, 0x60, 0x6c,
+	0xb7, 0xf8, 0xb5, 0x2a, 0x5a, 0x4b, 0x6c, 0xd5, 0xea, 0xac, 0x82, 0x4a, 0xea, 0x1b, 0xff, 0x4e,
+	0xf3, 0xf3, 0x86, 0xe7, 0xc7, 0x6f, 0x53, 0xdd, 0x0f, 0xbc, 0x8d, 0xbd, 0xbf, 0x17, 0x78, 0xbe,
+	0xf2, 0x93, 0x41, 0x77, 0x99, 0xff, 0x4e, 0xd0, 0xfc, 0x2f, 0x00, 0x00, 0xff, 0xff, 0x8e, 0x30,
+	0x95, 0x4d, 0x5b, 0x18, 0x00, 0x00,
 }

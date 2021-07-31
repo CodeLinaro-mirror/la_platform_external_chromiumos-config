@@ -279,12 +279,59 @@ def _create_rtw88(
         ),
     )
 
+def _create_intel_antenna_gain(
+        ant_gain_2g,
+        ant_gain_5g_1,
+        ant_gain_5g_2,
+        ant_gain_5g_3,
+        ant_gain_5g_4,
+        ant_gain_5g_5 = None,
+        ant_gain_6g_1 = None,
+        ant_gain_6g_2 = None,
+        ant_gain_6g_3 = None,
+        ant_gain_6g_4 = None,
+        ant_gain_6g_5 = None):
+    """Builds AntennaGain for intel drivers.
+
+    Args:
+        ant_gain_2g: Antenna gain used for 2400MHz frequency.
+        ant_gain_5g_1: Antenna gain used for 5150–5350MHz frequency. Required.
+        ant_gain_5g_2: Antenna gain used for 5350–5470MHz frequency. Required.
+        ant_gain_5g_3: Antenna gain used for 5470–5725MHz frequency. Required.
+        ant_gain_5g_4: Antenna gain used for 5725–5950MHz frequency. Required.
+        ant_gain_5g_5: Antenna gain used for 5945–6165MHz frequency. Rev 1 & 2.
+        ant_gain_6g_1: Antenna gain used for 6165–6405MHz frequency. Rev 1 & 2.
+        ant_gain_6g_2: Antenna gain used for 6405–6525MHz frequency. Rev 1 & 2.
+        ant_gain_6g_3: Antenna gain used for 6525–6705MHz frequency. Rev 1 & 2.
+        ant_gain_6g_4: Antenna gain used for 6705–6865MHz frequency. Rev 1 & 2.
+        ant_gain_6g_5: Antenna gain used for 6865–7105MHz frequency. Rev 1 & 2.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Gains.AntennaGain(
+        ant_gain_2g = ant_gain_2g,
+        ant_gain_5g_1 = ant_gain_5g_1,
+        ant_gain_5g_2 = ant_gain_5g_2,
+        ant_gain_5g_3 = ant_gain_5g_3,
+        ant_gain_5g_4 = ant_gain_5g_4,
+        ant_gain_5g_5 = ant_gain_5g_5,
+        ant_gain_6g_1 = ant_gain_6g_1,
+        ant_gain_6g_2 = ant_gain_6g_2,
+        ant_gain_6g_3 = ant_gain_6g_3,
+        ant_gain_6g_4 = ant_gain_6g_4,
+        ant_gain_6g_5 = ant_gain_6g_5,
+    )
+
 def _create_intel_power_chain(
         limit_2g,
         limit_5g_1,
         limit_5g_2,
         limit_5g_3,
-        limit_5g_4):
+        limit_5g_4,
+        limit_5g_5 = None,
+        limit_6g_1 = None,
+        limit_6g_2 = None,
+        limit_6g_3 = None,
+        limit_6g_4 = None,
+        limit_6g_5 = None):
     """Builds a TransmitPowerChain for intel drivers.
 
     Args:
@@ -293,13 +340,25 @@ def _create_intel_power_chain(
         limit_5g_2: 5G band 2 power limit: 5.35G-5.47G channels. (0.125 dBm). Required.
         limit_5g_3: 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm). Required.
         limit_5g_4: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
+        limit_5g_5: 5G band 5 power limit: 5.95G-6.165G channels. (0.125 dBm). Rev 1 & 2.
+        limit_6g_1: 6G band 1 power limit: 6.165G-6.405G channels. (0.125 dBm). Rev 1 & 2.
+        limit_6g_2: 6G band 2 power limit: 6.405G-6.525G channels. (0.125 dBm). Rev 1 & 2.
+        limit_6g_3: 6G band 3 power limit: 6.525G-6.705G channels. (0.125 dBm). Rev 1 & 2.
+        limit_6g_4: 6G band 4 power limit: 6.705G-6.865G channels. (0.125 dBm). Rev 1 & 2.
+        limit_6g_5: 6G band 5 power limit: 6.865G-7.105G channels. (0.125 dBm). Rev 1 & 2.
     """
-    return wf_pb.WifiConfig.IntelConfig.TransmitPowerChain(
+    return wf_pb.WifiConfig.IntelConfig.SarTable.TransmitPowerChain(
         limit_2g = limit_2g,
         limit_5g_1 = limit_5g_1,
         limit_5g_2 = limit_5g_2,
         limit_5g_3 = limit_5g_3,
         limit_5g_4 = limit_5g_4,
+        limit_5g_5 = limit_5g_5,
+        limit_6g_1 = limit_6g_1,
+        limit_6g_2 = limit_6g_2,
+        limit_6g_3 = limit_6g_3,
+        limit_6g_4 = limit_6g_4,
+        limit_6g_5 = limit_6g_5,
     )
 
 def _create_intel_geo_offsets(
@@ -308,57 +367,230 @@ def _create_intel_geo_offsets(
         offset_2g_b,
         max_5g,
         offset_5g_a,
-        offset_5g_b):
+        offset_5g_b,
+        max_6g = None,
+        offset_6g_a = None,
+        offset_6g_b = None):
     """Builds a GeoOffsets for intel drivers.
 
     Args:
         max_2g: Defines the 2.4 GHz upper value for the allowed power to not be
-            crossed by applying the Geo offset. Required.
+                crossed by applying the Geo offset. Required.
         offset_2g_a: Value to be added to the 2.4GHz WiFi band for chain a. (0.125 dBm) Required.
         offset_2g_b: Value to be added to the 2.4GHz WiFi band for chain b. (0.125 dBm) Required.
         max_5g: Defines the 5 GHz upper value for the allowed power to not be
-            crossed by applying the Geo offset. Required.
+                crossed by applying the Geo offset. Required.
         offset_5g_a: Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm) Required.
         offset_5g_b: Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm) Required.
+        max_6g: Defines the 6 GHz upper value for the allowed power to not be
+                crossed by applying the Geo offset. Rev 1 & 2.
+        offset_6g_a: Value to be added to 6GHz WiFi bands for chain a. (0.125 dBm) Rev 1 & 2.
+        offset_6g_b: Value to be added to 6GHz WiFi bands for chain b. (0.125 dBm) Rev 1 & 2.
     """
-    return wf_pb.WifiConfig.IntelConfig.GeoOffsets(
+    return wf_pb.WifiConfig.IntelConfig.Offsets.GeoOffsets(
         max_2g = max_2g,
         offset_2g_a = offset_2g_a,
         offset_2g_b = offset_2g_b,
         max_5g = max_5g,
         offset_5g_a = offset_5g_a,
         offset_5g_b = offset_5g_b,
+        max_6g = max_6g,
+        offset_6g_a = offset_6g_a,
+        offset_6g_b = offset_6g_b,
     )
 
-def _create_intel_wifi(
-        tablet_mode_transmit_power_chain_a,
-        tablet_mode_transmit_power_chain_b,
-        non_tablet_mode_transmit_power_chain_a,
-        non_tablet_mode_transmit_power_chain_b,
+def _create_intel_antgain_table(
+        ant_table_revision = 0xff,
+        ant_ppag_mode = None,
+        ant_gain_chain_a = None,
+        ant_gain_chain_b = None):
+    """Builds a antenna Gains for intel drivers.
+
+    Args:
+        ant_table_revision: Antenna gains table revision
+        ant_ppag_mode: Defines the mode of the ANT_gain control to be used.
+        ant_gain_chain_a: Defines the ANT_gain in dBi for chain A to be used.
+        ant_gain_chain_b: Defines the ANT_gain in dBi for chain B to be used.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Gains(
+        ant_table_version = ant_table_revision,
+        ant_mode_ppag = ant_ppag_mode,
+        ant_gain_table_a = ant_gain_chain_a,
+        ant_gain_table_b = ant_gain_chain_b,
+    )
+
+def _create_intel_dsm(
+        disable_active_sdr_channels = -1,
+        support_indonesia_5g_band = -1,
+        support_ultra_high_band = -1,
+        regulatory_configurations = -1,
+        uart_configurations = -1,
+        enablement_11ax = -1,
+        unii_4 = -1):
+    """Builds a DSM for intel drivers.
+
+    Args:
+        disable_active_sdr_channels: Allow OEMs to set ETSI 5.8GHz SRD Channels to Passive/Disabled.
+        support_indonesia_5g_band: Enable/Disable 5.15-5.35GHz band support in Indonesia.
+        support_ultra_high_band: Control the enablement of 6 GHz band.
+        regulatory_configurations: Regulatory special configurations enablements value.
+        uart_configurations: M.2 UART interface configuration.
+        enablement_11ax: Control enablement of 11ax on certificated modules.
+        unii_4: Control enablement of UNII-4 over certificate modules.
+    """
+    return wf_pb.WifiConfig.IntelConfig.DSM(
+        disable_active_sdr_channels = disable_active_sdr_channels,
+        support_indonesia_5g_band = support_indonesia_5g_band,
+        support_ultra_high_band = support_ultra_high_band,
+        regulatory_configurations = regulatory_configurations,
+        uart_configurations = uart_configurations,
+        enablement_11ax = enablement_11ax,
+        unii_4 = unii_4,
+    )
+
+def _create_intel_sar_table(
+        sar_table_revision = 0xff,
+        tablet_mode_transmit_power_chain_a = None,
+        tablet_mode_transmit_power_chain_b = None,
+        non_tablet_mode_transmit_power_chain_a = None,
+        non_tablet_mode_transmit_power_chain_b = None,
+        cdb_tablet_mode_transmit_power_chain_a = None,
+        cdb_tablet_mode_transmit_power_chain_b = None,
+        cdb_non_tablet_mode_transmit_power_chain_a = None,
+        cdb_non_tablet_mode_transmit_power_chain_b = None):
+    """Builds a SarTable proto for use with intel drivers.
+
+    Args:
+        sar_table_revision: SAR table revision.
+        tablet_mode_transmit_power_chain_a: Tablet mode power chain for chain a.
+        tablet_mode_transmit_power_chain_b: Tablet mode power chain for chain b.
+        non_tablet_mode_transmit_power_chain_a: Non-tablet mode power chain for chain a.
+        non_tablet_mode_transmit_power_chain_b: Non-tablet mode power chain for chain b.
+        cdb_tablet_mode_transmit_power_chain_a: Tablet mode concurrency dual band power chain for chain a.
+        cdb_tablet_mode_transmit_power_chain_b: Tablet mode concurrency dual band power chain for chain b.
+        cdb_non_tablet_mode_transmit_power_chain_a: Non-tablet mode concurrency dual band power chain for chain a.
+        cdb_non_tablet_mode_transmit_power_chain_b: Non-tablet mode concurrency dual band power chain for chain b.
+    """
+    return wf_pb.WifiConfig.IntelConfig.SarTable(
+        sar_table_version = sar_table_revision,
+        tablet_mode_power_table_a = tablet_mode_transmit_power_chain_a,
+        tablet_mode_power_table_b = tablet_mode_transmit_power_chain_b,
+        non_tablet_mode_power_table_a = non_tablet_mode_transmit_power_chain_a,
+        non_tablet_mode_power_table_b = non_tablet_mode_transmit_power_chain_b,
+        cdb_tablet_mode_power_table_a = cdb_tablet_mode_transmit_power_chain_a,
+        cdb_tablet_mode_power_table_b = cdb_tablet_mode_transmit_power_chain_b,
+        cdb_non_tablet_mode_power_table_a = cdb_non_tablet_mode_transmit_power_chain_a,
+        cdb_non_tablet_mode_power_table_b = cdb_non_tablet_mode_transmit_power_chain_b,
+    )
+
+def _create_intel_offsets_table(
+        wgds_revision = 0xff,
         fcc_offsets = None,
         eu_offsets = None,
         other_offsets = None):
-    """Builds a WifiConfig proto for use with intel drivers.
+    """Builds a Geo Offsets proto for use with intel drivers.
 
     Args:
-        non_tablet_mode_transmit_power_chain_a: non-tablet mode power chain for chain a. Required.
-        non_tablet_mode_transmit_power_chain_b: non-tablet mode power chain for chain b. Required.
-        tablet_mode_transmit_power_chain_a: tablet mode power chain for chain a. Required.
-        tablet_mode_transmit_power_chain_b: tablet mode power chain for chain b. Required.
-        fcc_offsets: Offsets used for regulatory domains that follow FCC guidelines. Required.
-        eu_offsets: Offsets used for regulatory domains that follow ESTI guidelines. Required.
-        other_offsets: Offsets for regulatory domains that don't follow FCC or ETSI guidelines. Required.
+        wgds_revision: Geo delta table revision,
+        fcc_offsets: Offsets used for regulatory domains that follow FCC guidelines.
+        eu_offsets: Offsets used for regulatory domains that follow ESTI guidelines.
+        other_offsets: Offsets for regulatory domains that don't follow FCC or ETSI guidelines.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Offsets(
+        wgds_version = wgds_revision,
+        offset_fcc = fcc_offsets,
+        offset_eu = eu_offsets,
+        offset_other = other_offsets,
+    )
+
+def _create_intel_sar_avg_table(
+        wtas_revision = 0xffff,
+        tas_selection = 0,
+        tas_list_size = 0,
+        deny_list_entry_1 = 0,
+        deny_list_entry_2 = 0,
+        deny_list_entry_3 = 0,
+        deny_list_entry_4 = 0,
+        deny_list_entry_5 = 0,
+        deny_list_entry_6 = 0,
+        deny_list_entry_7 = 0,
+        deny_list_entry_8 = 0,
+        deny_list_entry_9 = 0,
+        deny_list_entry_10 = 0,
+        deny_list_entry_11 = 0,
+        deny_list_entry_12 = 0,
+        deny_list_entry_13 = 0,
+        deny_list_entry_14 = 0,
+        deny_list_entry_15 = 0,
+        deny_list_entry_16 = 0):
+    """Builds a wifi time average SAR proto for use with intel drivers.
+
+    Args:
+        wtas_revision: Wifi time average SAR version.
+        tas_selection: Enable/disable the TAS feature.
+        tas_list_size: Represents the number of blocked countries that are not approved by the
+                       OEM to support this feature, even if that feature is enabled.
+        deny_list_entry_1: ISO country code 1 to block.
+        deny_list_entry_2: ISO country code 2 to block.
+        deny_list_entry_3: ISO country code 3 to block.
+        deny_list_entry_4: ISO country code 4 to block.
+        deny_list_entry_5: ISO country code 5 to block.
+        deny_list_entry_6: ISO country code 6 to block.
+        deny_list_entry_7: ISO country code 7 to block.
+        deny_list_entry_8: ISO country code 8 to block.
+        deny_list_entry_9: ISO country code 9 to block.
+        deny_list_entry_10: ISO country code 10 to block.
+        deny_list_entry_11: ISO country code 11 to block.
+        deny_list_entry_12: ISO country code 12 to block.
+        deny_list_entry_13: ISO country code 13 to block.
+        deny_list_entry_14: ISO country code 14 to block.
+        deny_list_entry_15: ISO country code 15 to block.
+        deny_list_entry_16: ISO country code 16 to block.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Average(
+        sar_avg_version = wtas_revision,
+        tas_selection = tas_selection,
+        tas_list_size = tas_list_size,
+        deny_list_entry_1 = deny_list_entry_1,
+        deny_list_entry_2 = deny_list_entry_2,
+        deny_list_entry_3 = deny_list_entry_3,
+        deny_list_entry_4 = deny_list_entry_4,
+        deny_list_entry_5 = deny_list_entry_5,
+        deny_list_entry_6 = deny_list_entry_6,
+        deny_list_entry_7 = deny_list_entry_7,
+        deny_list_entry_8 = deny_list_entry_8,
+        deny_list_entry_9 = deny_list_entry_9,
+        deny_list_entry_10 = deny_list_entry_10,
+        deny_list_entry_11 = deny_list_entry_11,
+        deny_list_entry_12 = deny_list_entry_12,
+        deny_list_entry_13 = deny_list_entry_13,
+        deny_list_entry_14 = deny_list_entry_14,
+        deny_list_entry_15 = deny_list_entry_15,
+        deny_list_entry_16 = deny_list_entry_16,
+    )
+
+def _create_intel_wifi(
+        sar_table = _create_intel_sar_table(),
+        wgds_table = _create_intel_offsets_table(),
+        ant_table = _create_intel_antgain_table(),
+        wtas_table = _create_intel_sar_avg_table(),
+        dsm = _create_intel_dsm()):
+    """Builds a IntelConfig proto for use with intel drivers.
+
+    Args:
+        sar_table: SarTable proto for use with intel driver.
+        wgds_table: Geo Offsets proto for use with intel driver.
+        ant_table: Antenna Gains for use with intel driver.
+        wtas_table: Time average SAR for use with intel driver.
+        dsm: Device specific methods return values for intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
-            tablet_mode_power_table_a = tablet_mode_transmit_power_chain_a,
-            tablet_mode_power_table_b = tablet_mode_transmit_power_chain_b,
-            non_tablet_mode_power_table_a = non_tablet_mode_transmit_power_chain_a,
-            non_tablet_mode_power_table_b = non_tablet_mode_transmit_power_chain_b,
-            wgds_version = 0,
-            offset_fcc = fcc_offsets,
-            offset_eu = eu_offsets,
-            offset_other = other_offsets,
+            sar_table = sar_table,
+            wgds_table = wgds_table,
+            ant_table = ant_table,
+            wtas_table = wtas_table,
+            dsm = dsm,
         ),
     )
 
@@ -401,8 +633,14 @@ sw_config = struct(
     create_fw_build_config_by_names = _create_fw_build_config_by_names,
     create_fw_build_targets = _create_fw_build_targets,
     create_power = _create_power,
+    create_intel_antenna_gain = _create_intel_antenna_gain,
+    create_intel_antgain_table = _create_intel_antgain_table,
+    create_intel_dsm = _create_intel_dsm,
     create_intel_geo_offsets = _create_intel_geo_offsets,
+    create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,
+    create_intel_sar_table = _create_intel_sar_table,
+    create_intel_sar_avg_table = _create_intel_sar_avg_table,
     create_intel_wifi = _create_intel_wifi,
     create_rtw88 = _create_rtw88,
     create_rtw88_geo_offsets = _create_rtw88_geo_offsets,

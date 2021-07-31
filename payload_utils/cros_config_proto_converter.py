@@ -1356,13 +1356,13 @@ def _wifi_sar_map(configs, project_name, output_dir, build_root_dir):
         output_path = os.path.join(output_path, filename)
         build_path = os.path.join(build_root_dir, 'wifi', filename)
         if os.path.exists(output_path):
-          with open(output_path, 'r') as f:
+          with open(output_path, 'rb') as f:
             if f.read() != sar_file_content:
               raise Exception(
                   'Project {} has conflicting wifi sar file content under '
                   'wifi sar id {}.'.format(project_name, wifi_sar_id))
         else:
-          with open(output_path, 'w') as f:
+          with open(output_path, 'wb') as f:
             f.write(sar_file_content)
         system_path = '/firmware/cbfs-rw-raw/{}/{}'.format(
             project_name, filename)
@@ -1391,48 +1391,385 @@ def _extract_fw_config_value(hw_design_config, program, name):
       'No firmware configuration segment with name {} found'.format(name))
 
 
-def _create_intel_sar_file_content(intel_config):
-  """Creates and returns the intel sar file content for the given config.
+def hex_8bit(value):
+  """Converts 8bit value into bytearray.
 
-  Creates and returns the sar file content that is used with intel drivers
+  args:
+    8bit value
+
+  returns:
+    bytearray of size 1
+  """
+
+  if value > 0xff or value < 0:
+    raise Exception('Sar file 8bit value %s out of range' % value)
+  return value.to_bytes(1, 'little')
+
+
+def hex_16bit(value):
+  """Converts 16bit value into bytearray.
+
+  args:
+    16bit value
+
+  returns:
+    bytearray of size 2
+  """
+
+  if value > 0xffff or value < 0:
+    raise Exception('Sar file 16bit value %s out of range' % value)
+  return value.to_bytes(2, 'little')
+
+
+def hex_32bit(value):
+  """Converts 32bit value into bytearray.
+
+  args:
+    32bit value
+
+  returns:
+    bytearray of size 4
+  """
+
+  if value > 0xffffffff or value < 0:
+    raise Exception('Sar file 32bit value %s out of range' % value)
+  return value.to_bytes(4, 'little')
+
+
+def wrds_ewrd_encode(sar_table_config):
+  """Creates and returns encoded power tables.
+
+  args:
+    sar_table_config: contains power table values configured in config.star
+
+  returns:
+    Encoded power tables as bytearray
+  """
+
+  def power_table(tpc, revision):
+    data = bytearray(0)
+    if revision == 0:
+      data = (
+          hex_8bit(tpc.limit_2g) + hex_8bit(tpc.limit_5g_1) +
+          hex_8bit(tpc.limit_5g_2) + hex_8bit(tpc.limit_5g_3) +
+          hex_8bit(tpc.limit_5g_4))
+    elif revision in (1, 2):
+      data = (
+          hex_8bit(tpc.limit_2g) + hex_8bit(tpc.limit_5g_1) +
+          hex_8bit(tpc.limit_5g_2) + hex_8bit(tpc.limit_5g_3) +
+          hex_8bit(tpc.limit_5g_4) + hex_8bit(tpc.limit_5g_5) +
+          hex_8bit(tpc.limit_6g_1) + hex_8bit(tpc.limit_6g_2) +
+          hex_8bit(tpc.limit_6g_3) + hex_8bit(tpc.limit_6g_4) +
+          hex_8bit(tpc.limit_6g_5))
+    else:
+      raise Exception('ERROR: Invalid power table revision ' % revision)
+    return data
+
+  def is_zero_filled(databuffer):
+    for byte in databuffer:
+      if byte != 0:
+        return False
+    return True
+
+  sar_table = bytearray(0)
+  dsar_table = bytearray(0)
+  chain_count = 2
+  subbands_count = 0
+  dsar_set_count = 1
+
+  if sar_table_config.sar_table_version == 0:
+    subbands_count = 5
+    sar_table = (
+        power_table(sar_table_config.tablet_mode_power_table_a, 0) +
+        power_table(sar_table_config.tablet_mode_power_table_b, 0))
+    dsar_table = (
+        power_table(sar_table_config.non_tablet_mode_power_table_a, 0) +
+        power_table(sar_table_config.non_tablet_mode_power_table_b, 0))
+  elif sar_table_config.sar_table_version == 1:
+    subbands_count = 11
+    sar_table = (
+        power_table(sar_table_config.tablet_mode_power_table_a, 1) +
+        power_table(sar_table_config.tablet_mode_power_table_b, 1))
+    dsar_table = (
+        power_table(sar_table_config.non_tablet_mode_power_table_a, 1) +
+        power_table(sar_table_config.non_tablet_mode_power_table_b, 1))
+  elif sar_table_config.sar_table_version == 2:
+    subbands_count = 22
+    sar_table = (
+        power_table(sar_table_config.tablet_mode_power_table_a, 2) +
+        power_table(sar_table_config.tablet_mode_power_table_b, 2) +
+        power_table(sar_table_config.cdb_tablet_mode_power_table_a, 2) +
+        power_table(sar_table_config.cdb_tablet_mode_power_table_b, 2))
+    dsar_table = (
+        power_table(sar_table_config.non_tablet_mode_power_table_a, 2) +
+        power_table(sar_table_config.non_tablet_mode_power_table_b, 2) +
+        power_table(sar_table_config.cdb_non_tablet_mode_power_table_a, 2) +
+        power_table(sar_table_config.cdb_non_tablet_mode_power_table_b, 2))
+  elif sar_table_config.sar_table_version == 0xff:
+    return bytearray(0)
+  else:
+    raise Exception("ERROR: Invalid power table revision " %
+                    sar_table_config.sar_table_version)
+
+  if is_zero_filled(sar_table):
+    raise Exception("ERROR: SAR entries are not initialized.")
+
+  if is_zero_filled(dsar_table):
+    dsar_set_count = 0
+    dsar_table = bytearray(0)
+
+  return (hex_8bit(sar_table_config.sar_table_version) +
+          hex_8bit(dsar_set_count) + hex_8bit(chain_count) +
+          hex_8bit(subbands_count) + sar_table + dsar_table)
+
+
+def wgds_encode(wgds_config):
+  """Creates and returns encoded geo offset tables.
+
+  args:
+    wgds_config: contains offset table values configured in config.star
+
+  returns:
+    Encoded geo offset tables as bytearray
+  """
+
+  def wgds_offset_table(offsets, revision):
+    if revision == 0:
+      return (hex_8bit(offsets.max_2g) + hex_8bit(offsets.offset_2g_a) +
+              hex_8bit(offsets.offset_2g_b) + hex_8bit(offsets.max_5g) +
+              hex_8bit(offsets.offset_5g_a) + hex_8bit(offsets.offset_5g_b))
+    if revision in (1, 2):
+      return (hex_8bit(offsets.max_2g) + hex_8bit(offsets.offset_2g_a) +
+              hex_8bit(offsets.offset_2g_b) + hex_8bit(offsets.max_5g) +
+              hex_8bit(offsets.offset_5g_a) + hex_8bit(offsets.offset_5g_b) +
+              hex_8bit(offsets.max_6g) + hex_8bit(offsets.offset_6g_a) +
+              hex_8bit(offsets.offset_6g_b))
+    raise Exception('ERROR: Invalid geo offset table revision ' % revision)
+
+  subbands_count = 0
+  offsets_count = 3
+  if wgds_config.wgds_version in (0, 1):
+    subbands_count = 6
+  elif wgds_config.wgds_version in (2, 3):
+    subbands_count = 9
+  elif wgds_config.wgds_version == 0xff:
+    return bytearray(0)
+  else:
+    raise Exception('ERROR: Invalid geo offset table revision ' %
+                    wgds_config.wgds_version)
+
+  return (hex_8bit(wgds_config.wgds_version) + hex_8bit(offsets_count) +
+          hex_8bit(subbands_count) +
+          wgds_offset_table(wgds_config.offset_fcc, wgds_config.wgds_version) +
+          wgds_offset_table(wgds_config.offset_eu, wgds_config.wgds_version) +
+          wgds_offset_table(wgds_config.offset_other, wgds_config.wgds_version))
+
+
+def antgain_encode(ant_gain_config):
+  """Creates and returns encoded antenna gain tables.
+
+  args:
+    ant_gain_config: contains antenna gain values configured in config.star
+
+  returns:
+    Encoded antenna gain tables as bytearray
+  """
+
+  def antgain_table(gains, revision):
+    if revision == 0:
+      return (hex_8bit(gains.ant_gain_2g) + hex_8bit(gains.ant_gain_5g_1) +
+              hex_8bit(gains.ant_gain_5g_2) + hex_8bit(gains.ant_gain_5g_3) +
+              hex_8bit(gains.ant_gain_5g_4))
+    if revision in (1, 2):
+      return (hex_8bit(gains.ant_gain_2g) + hex_8bit(gains.ant_gain_5g_1) +
+              hex_8bit(gains.ant_gain_5g_2) + hex_8bit(gains.ant_gain_5g_3) +
+              hex_8bit(gains.ant_gain_5g_4) + hex_8bit(gains.ant_gain_5g_5) +
+              hex_8bit(gains.ant_gain_6g_1) + hex_8bit(gains.ant_gain_6g_2) +
+              hex_8bit(gains.ant_gain_6g_3) + hex_8bit(gains.ant_gain_6g_4) +
+              hex_8bit(gains.ant_gain_6g_5))
+    raise Exception('ERROR: Invalid antenna gain table revision ' % revision)
+
+  chain_count = 2
+  bands_count = 0
+  if ant_gain_config.ant_table_version == 0:
+    bands_count = 5
+  elif ant_gain_config.ant_table_version == 1 or ant_gain_config.ant_table_version == 2:
+    bands_count = 11
+  else:
+    return bytearray(0)
+  return (hex_8bit(ant_gain_config.ant_table_version) +
+          hex_8bit(ant_gain_config.ant_mode_ppag) + hex_8bit(chain_count) +
+          hex_8bit(bands_count) +
+          antgain_table(ant_gain_config.ant_gain_table_a,
+                        ant_gain_config.ant_table_version) +
+          antgain_table(ant_gain_config.ant_gain_table_b,
+                        ant_gain_config.ant_table_version))
+
+
+def wtas_encode(wtas_config):
+  """Creates and returns encoded time average sar tables.
+
+  args:
+    wtas_encode: contains time average sar values configured in config.star
+
+  returns:
+    Encoded time average sar tables as bytearray
+  """
+
+  if wtas_config.tas_list_size > 16:
+    raise Exception('Invalid deny list size ' % wtas_config.tas_list_size)
+
+  if wtas_config.sar_avg_version == 0xffff:
+    return bytearray(0)
+
+  if wtas_config.sar_avg_version in (0, 1):
+    return (hex_8bit(wtas_config.sar_avg_version) +
+            hex_8bit(wtas_config.tas_selection) +
+            hex_8bit(wtas_config.tas_list_size) +
+            hex_8bit(wtas_config.deny_list_entry_1) +
+            hex_8bit(wtas_config.deny_list_entry_2) +
+            hex_8bit(wtas_config.deny_list_entry_3) +
+            hex_8bit(wtas_config.deny_list_entry_4) +
+            hex_8bit(wtas_config.deny_list_entry_5) +
+            hex_8bit(wtas_config.deny_list_entry_6) +
+            hex_8bit(wtas_config.deny_list_entry_7) +
+            hex_8bit(wtas_config.deny_list_entry_8) +
+            hex_8bit(wtas_config.deny_list_entry_9) +
+            hex_8bit(wtas_config.deny_list_entry_10) +
+            hex_8bit(wtas_config.deny_list_entry_11) +
+            hex_8bit(wtas_config.deny_list_entry_12) +
+            hex_8bit(wtas_config.deny_list_entry_13) +
+            hex_8bit(wtas_config.deny_list_entry_14) +
+            hex_8bit(wtas_config.deny_list_entry_15) +
+            hex_8bit(wtas_config.deny_list_entry_16))
+
+  raise Exception('Invalid time average table revision ' %
+                  wtas_config.sar_avg_version)
+
+
+def dsm_encode(dsm_config):
+  """Creates and returns device specific method return values.
+
+  args:
+    dsm_config: contains device specific method return values configured in config.star
+
+  returns:
+    Encoded device specific method return values as bytearray
+  """
+
+  def enable_supported_functions(dsm_config):
+    supported_functions = 0
+    mask = 0x2
+    if dsm_config.disable_active_sdr_channels >= 0:
+      supported_functions |= mask
+    mask = mask << 1
+    if dsm_config.support_indonesia_5g_band >= 0:
+      supported_functions |= mask
+    mask = mask << 1
+    if dsm_config.support_ultra_high_band >= 0:
+      supported_functions |= mask
+    mask = mask << 1
+    if dsm_config.regulatory_configurations >= 0:
+      supported_functions |= mask
+    mask = mask << 1
+    if dsm_config.uart_configurations >= 0:
+      supported_functions |= mask
+    mask = mask << 1
+    if dsm_config.enablement_11ax >= 0:
+      supported_functions |= mask
+    mask = mask << 1
+    if dsm_config.unii_4 >= 0:
+      supported_functions |= mask
+    return supported_functions
+
+  def dsm_value(value):
+    if value < 0:
+      return hex_32bit(0)
+    return value.to_bytes(4, 'little')
+
+  supported_functions = enable_supported_functions(dsm_config)
+  if supported_functions == 0:
+    return bytearray(0)
+  return (dsm_value(supported_functions) +
+          dsm_value(dsm_config.disable_active_sdr_channels) +
+          dsm_value(dsm_config.support_indonesia_5g_band) +
+          dsm_value(dsm_config.support_ultra_high_band) +
+          dsm_value(dsm_config.regulatory_configurations) +
+          dsm_value(dsm_config.uart_configurations) +
+          dsm_value(dsm_config.enablement_11ax) + dsm_value(dsm_config.unii_4))
+
+
+def _create_intel_sar_file_content(intel_config):
+  """creates and returns the intel sar file content for the given config.
+
+  creates and returns the sar file content that is used with intel drivers
   only.
 
-  Args:
-    intel_config: IntelConfig config.
+  args:
+    intel_config: intelconfig config.
 
-  Returns:
+  returns:
     sar file content for the given config, see:
     https://chromeos.google.com/partner/dlm/docs/connectivity/wifidyntxpower.html
   """
 
-  def to_hex(val):
-    if val > 255 or val < 0:
-      raise Exception('Sar file value %s out of range' % val)
-    return '{0:0{1}X}'.format(val, 2)
+  # Encode the SAR data in following format
+  #
+  # +------------------------------------------------------------+
+  # | Field     | Size     | Description                         |
+  # +------------------------------------------------------------+
+  # | Marker    | 4 bytes  | "$SAR"                              |
+  # +------------------------------------------------------------+
+  # | Version   | 1 byte   | Current version = 1                 |
+  # +------------------------------------------------------------+
+  # | SAR table | 2 bytes  | Offset of SAR table from start of   |
+  # | offset    |          | the header                          |
+  # +------------------------------------------------------------+
+  # | WGDS      | 2 bytes  | Offset of WGDS table from start of  |
+  # | offset    |          | the header                          |
+  # +------------------------------------------------------------+
+  # | Ant table | 2 bytes  | Offset of Antenna table from start  |
+  # | offset    |          | of the header                       |
+  # +------------------------------------------------------------+
+  # | DSM offset| 2 bytes  | Offset of DSM from start of the     |
+  # |           |          | header                              |
+  # +------------------------------------------------------------+
+  # | Data      | n bytes  | Data for the different tables       |
+  # +------------------------------------------------------------+
 
-  def power_table(tpc):
-    return (to_hex(tpc.limit_2g) + to_hex(tpc.limit_5g_1) +
-            to_hex(tpc.limit_5g_2) + to_hex(tpc.limit_5g_3) +
-            to_hex(tpc.limit_5g_4))
+  def encode_data(data, header, payload, offset):
+    payload += data
+    if len(data) > 0:
+      header += hex_16bit(offset)
+      offset += len(data)
+    else:
+      header += hex_16bit(0)
+    return header, payload, offset
 
-  def wgds_value(wgds):
-    return to_hex(wgds)
+  sar_configs = 5
+  marker = "$SAR".encode()
+  header = bytearray(0)
+  header += hex_8bit(1)  # hex file version
 
-  def offset_table(offsets):
-    return (to_hex(offsets.max_2g) + to_hex(offsets.offset_2g_a) +
-            to_hex(offsets.offset_2g_b) + to_hex(offsets.max_5g) +
-            to_hex(offsets.offset_5g_a) + to_hex(offsets.offset_5g_b))
+  payload = bytearray(0)
+  offset = len(marker) + len(header) + (sar_configs * 2)
 
-  # See https://chromeos.google.com/partner/dlm/docs/connectivity/wifidyntxpower.html
-  return (power_table(intel_config.tablet_mode_power_table_a) +
-          power_table(intel_config.tablet_mode_power_table_b) +
-          power_table(intel_config.non_tablet_mode_power_table_a) +
-          power_table(intel_config.non_tablet_mode_power_table_b) +
-          '00000000000000000000' + '00000000000000000000' +
-          wgds_value(intel_config.wgds_version) +
-          offset_table(intel_config.offset_fcc) +
-          offset_table(intel_config.offset_eu) +
-          offset_table(intel_config.offset_other) + '\0')
+  data = wrds_ewrd_encode(intel_config.sar_table)
+  header, payload, offset = encode_data(data, header, payload, offset)
+
+  data = wgds_encode(intel_config.wgds_table)
+  header, payload, offset = encode_data(data, header, payload, offset)
+
+  data = antgain_encode(intel_config.ant_table)
+  header, payload, offset = encode_data(data, header, payload, offset)
+
+  data = wtas_encode(intel_config.wtas_table)
+  header, payload, offset = encode_data(data, header, payload, offset)
+
+  data = dsm_encode(intel_config.dsm)
+  header, payload, offset = encode_data(data, header, payload, offset)
+
+  return marker + header + payload
 
 
 def Main(project_configs, program_config, output):  # pylint: disable=invalid-name
