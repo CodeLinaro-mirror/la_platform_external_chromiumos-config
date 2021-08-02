@@ -1,0 +1,20 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# For refactors/updates that affect many hw-design project repos,
+# use this set of reviewers.
+#
+# These reviewers are included in all src/project and src/program repos
+# in order to facilate these refactors.
+#
+# For updates, that only affect a single program, they should still go
+# to the respective owners for that program.
+
+andrewlamb@google.com
+marcochen@google.com
+smcallis@google.com
+shapiroc@google.com
+yueherngl@google.com
+
+# COMPONENT: ChromeOS>Infra
