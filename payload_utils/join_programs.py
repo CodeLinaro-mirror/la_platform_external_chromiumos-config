@@ -42,12 +42,16 @@ def main(opts):
       program_map[program_id] = program
 
   # Fill in project configs
-  logging.debug('Joining programs to projects')
+  logging.debug('Populating program payloads')
   for config in project_configs.values:
-    program_id = config.program.id.value.lower()
+    program_id = config.hw_design.program_id.value.lower()
     program_config = program_map.get(program_id)
     if program_config:
-      logging.info('Linking to program %s', program_id)
+      logging.debug(
+          '  Linking design %s to program %s',
+          config.hw_design_config.id.value,
+          config.program.id.value,
+      )
       config.program.CopyFrom(program_config)
 
   logging.debug('Writing output')
