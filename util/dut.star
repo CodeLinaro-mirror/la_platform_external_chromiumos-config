@@ -25,11 +25,12 @@ def _create_dut(address, port = 22):
         ),
     )
 
-def _create_dut_topology(dut, peer_duts = None):
+def _create_dut_topology(duts):
     return lab_pb.DutTopology(
-        id = lab_pb.DutTopology.Id(value = dut.id.value),
-        dut = dut,
-        peer_duts = peer_duts,
+        # Make the overall id the first dut id since this is mostly
+        # used for fakes setup/testing
+        id = lab_pb.DutTopology.Id(value = duts[0].id.value),
+        duts = duts,
     )
 
 dut = struct(

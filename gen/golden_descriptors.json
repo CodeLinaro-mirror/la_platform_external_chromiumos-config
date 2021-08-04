@@ -12993,18 +12993,10 @@
               "typeName": ".chromiumos.test.lab.api.DutTopology.Id"
             },
             {
-              "jsonName": "dut",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.Dut"
-            },
-            {
-              "jsonName": "peerDuts",
+              "jsonName": "duts",
               "label": "LABEL_REPEATED",
-              "name": "peer_duts",
-              "number": 2,
+              "name": "duts",
+              "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.Dut"
             }
@@ -13022,6 +13014,16 @@
                 }
               ],
               "name": "Id"
+            }
+          ],
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            },
+            {
+              "end": 3,
+              "start": 2
             }
           ]
         }

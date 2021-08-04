@@ -10,8 +10,8 @@ load("//config/util/generate.star", "generate")
 load("//config/util/dut.star", "dut")
 
 _CONFIG = dut.create_dut_topology(
-    dut = dut.create_dut("fake_primary_hostname"),
-    peer_duts = [
+    duts = [
+        dut.create_dut("fake_primary_hostname"),
         dut.create_dut("fake_peer_dut_hostname"),
     ],
 )
