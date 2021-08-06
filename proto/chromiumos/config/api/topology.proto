@@ -372,6 +372,11 @@ message HardwareFeatures {
 
     // If numeric pad is present on keyboard
     Present numeric_pad = 4;
+
+    // The keyboard backlight level step values. Values must be in
+    // increasing order. If set, the first value must be 0. This corresponds to
+    // the keyboard_backlight_user_steps powerd pref.
+    repeated double backlight_user_steps = 5;
   }
 
   // Memory properties of system

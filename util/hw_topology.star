@@ -290,7 +290,7 @@ def _create_stylus(id, description, stylus_type, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None):
+def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None, backlight_user_steps = None):
     """Builds a Topology proto for a keyboard.
 
     Args:
@@ -303,6 +303,9 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
             provided.
         description: An English description for the Topology. If not passed, a
             default is provided.
+        backlight_user_steps: A list of doubles specifying the user-selectable
+            backlight steps in increasing order, starting from 0. This controls
+            the keyboard_backlight_user_steps powerd pref.
     """
 
     if not id:
@@ -331,6 +334,7 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
     hw_features.keyboard.backlight = _bool_to_present(backlight)
     hw_features.keyboard.power_button = _bool_to_present(pwr_btn_present)
     hw_features.keyboard.numeric_pad = _bool_to_present(numpad_present)
+    hw_features.keyboard.backlight_user_steps = backlight_user_steps
 
     _accumulate_fw_configs(hw_features, fw_configs)
 

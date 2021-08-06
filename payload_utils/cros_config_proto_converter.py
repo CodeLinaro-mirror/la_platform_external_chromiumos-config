@@ -8,6 +8,7 @@
 # pylint: disable=too-many-lines
 
 import argparse
+import collections.abc
 import glob
 import json
 import pprint
@@ -120,6 +121,14 @@ def _build_arc(config, config_files):
   return result
 
 
+def _check_increasing_sequence(values: [float], description: str):
+  for lhs, rhs in zip(values, values[1:]):
+    if lhs >= rhs:
+      raise Exception(
+          'Value %.1f is not strictly larger than previous value for %s' %
+          (rhs, description))
+
+
 def _build_derived_power_prefs(config: Config) -> dict:
   """Builds a partial 'power' property derived from hardware features."""
   present = topology_pb2.HardwareFeatures.PRESENT
@@ -144,7 +153,22 @@ def _build_derived_power_prefs(config: Config) -> dict:
 
   result['has-keyboard-backlight'] = hw_features.keyboard.backlight == present
 
+  if hw_features.keyboard.backlight_user_steps:
+    _check_increasing_sequence(hw_features.keyboard.backlight_user_steps,
+                               'keyboard.backlight_user_steps')
+    if hw_features.keyboard.backlight_user_steps[0] != 0:
+      raise Exception(
+          'keyboard.backlight_user_steps starts at %.1f instead of 0.0' %
+          hw_features.keyboard.backlight_user_steps[0])
+
+    result['keyboard-backlight-user-steps'] = (
+        hw_features.keyboard.backlight_user_steps)
+
   def _format_power_pref_value(value):
+    if isinstance(value, str):
+      return value
+    if isinstance(value, collections.abc.Sequence):
+      return '\n'.join(_format_power_pref_value(x) for x in value)
     if isinstance(value, bool):
       return str(int(value))
     return str(value)

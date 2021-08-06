@@ -222,9 +222,9 @@
               "present": 1
             },
             "keyboard": {
-              "backlight": 1,
+              "backlight": 2,
               "keyboardType": 3,
-              "numericPad": 1,
+              "numericPad": 2,
               "powerButton": 2
             },
             "lightSensor": {
@@ -462,17 +462,17 @@
             },
             "keyboard": {
               "description": {
-                "EN": "Detachable keyboard with backlight"
+                "EN": "Detachable keyboard without backlight"
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "backlight": 1,
+                  "backlight": 2,
                   "keyboardType": 3,
-                  "numericPad": 1,
+                  "numericPad": 2,
                   "powerButton": 2
                 }
               },
-              "id": "KB_BL",
+              "id": "KB_NO_BL",
               "type": 5
             },
             "microphoneMuteSwitch": {
@@ -691,9 +691,17 @@
             },
             "keyboard": {
               "backlight": 1,
-              "keyboardType": 3,
+              "backlightUserSteps": [
+                0.0,
+                10.0,
+                20.0,
+                40.0,
+                60.0,
+                100.0
+              ],
+              "keyboardType": 1,
               "numericPad": 1,
-              "powerButton": 2
+              "powerButton": 1
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -878,14 +886,22 @@
             },
             "keyboard": {
               "description": {
-                "EN": "Detachable keyboard with backlight"
+                "EN": "Internal keyboard with backlight"
               },
               "hardwareFeature": {
                 "keyboard": {
                   "backlight": 1,
-                  "keyboardType": 3,
+                  "backlightUserSteps": [
+                    0.0,
+                    10.0,
+                    20.0,
+                    40.0,
+                    60.0,
+                    100.0
+                  ],
+                  "keyboardType": 1,
                   "numericPad": 1,
-                  "powerButton": 2
+                  "powerButton": 1
                 }
               },
               "id": "KB_BL",
@@ -1122,9 +1138,9 @@
               "present": 2
             },
             "keyboard": {
-              "backlight": 1,
+              "backlight": 2,
               "keyboardType": 3,
-              "numericPad": 1,
+              "numericPad": 2,
               "powerButton": 2
             },
             "magnetometer": {
@@ -1317,17 +1333,17 @@
             },
             "keyboard": {
               "description": {
-                "EN": "Detachable keyboard with backlight"
+                "EN": "Detachable keyboard without backlight"
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "backlight": 1,
+                  "backlight": 2,
                   "keyboardType": 3,
-                  "numericPad": 1,
+                  "numericPad": 2,
                   "powerButton": 2
                 }
               },
-              "id": "KB_BL",
+              "id": "KB_NO_BL",
               "type": 5
             },
             "motherboardUsb": {
@@ -1552,9 +1568,9 @@
               "present": 2
             },
             "keyboard": {
-              "backlight": 1,
+              "backlight": 2,
               "keyboardType": 3,
-              "numericPad": 1,
+              "numericPad": 2,
               "powerButton": 2
             },
             "magnetometer": {
@@ -1734,17 +1750,17 @@
             },
             "keyboard": {
               "description": {
-                "EN": "Detachable keyboard with backlight"
+                "EN": "Detachable keyboard without backlight"
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "backlight": 1,
+                  "backlight": 2,
                   "keyboardType": 3,
-                  "numericPad": 1,
+                  "numericPad": 2,
                   "powerButton": 2
                 }
               },
-              "id": "KB_BL",
+              "id": "KB_NO_BL",
               "type": 5
             },
             "motherboardUsb": {
@@ -1967,9 +1983,9 @@
               "present": 2
             },
             "keyboard": {
-              "backlight": 1,
+              "backlight": 2,
               "keyboardType": 3,
-              "numericPad": 1,
+              "numericPad": 2,
               "powerButton": 2
             },
             "magnetometer": {
@@ -2148,17 +2164,17 @@
             },
             "keyboard": {
               "description": {
-                "EN": "Detachable keyboard with backlight"
+                "EN": "Detachable keyboard without backlight"
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "backlight": 1,
+                  "backlight": 2,
                   "keyboardType": 3,
-                  "numericPad": 1,
+                  "numericPad": 2,
                   "powerButton": 2
                 }
               },
-              "id": "KB_BL",
+              "id": "KB_NO_BL",
               "type": 5
             },
             "motherboardUsb": {
@@ -2371,9 +2387,9 @@
               "present": 2
             },
             "keyboard": {
-              "backlight": 1,
+              "backlight": 2,
               "keyboardType": 3,
-              "numericPad": 1,
+              "numericPad": 2,
               "powerButton": 2
             },
             "magnetometer": {
@@ -2530,17 +2546,17 @@
             },
             "keyboard": {
               "description": {
-                "EN": "Detachable keyboard with backlight"
+                "EN": "Detachable keyboard without backlight"
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "backlight": 1,
+                  "backlight": 2,
                   "keyboardType": 3,
-                  "numericPad": 1,
+                  "numericPad": 2,
                   "powerButton": 2
                 }
               },
-              "id": "KB_BL",
+              "id": "KB_NO_BL",
               "type": 5
             },
             "motherboardUsb": {
@@ -2729,9 +2745,9 @@
               "present": 2
             },
             "keyboard": {
-              "backlight": 1,
+              "backlight": 2,
               "keyboardType": 3,
-              "numericPad": 1,
+              "numericPad": 2,
               "powerButton": 2
             },
             "magnetometer": {
@@ -2863,17 +2879,17 @@
             },
             "keyboard": {
               "description": {
-                "EN": "Detachable keyboard with backlight"
+                "EN": "Detachable keyboard without backlight"
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "backlight": 1,
+                  "backlight": 2,
                   "keyboardType": 3,
-                  "numericPad": 1,
+                  "numericPad": 2,
                   "powerButton": 2
                 }
               },
-              "id": "KB_BL",
+              "id": "KB_NO_BL",
               "type": 5
             },
             "motherboardUsb": {
@@ -3045,9 +3061,9 @@
               "present": 2
             },
             "keyboard": {
-              "backlight": 1,
+              "backlight": 2,
               "keyboardType": 3,
-              "numericPad": 1,
+              "numericPad": 2,
               "powerButton": 2
             },
             "magnetometer": {
@@ -3179,17 +3195,17 @@
             },
             "keyboard": {
               "description": {
-                "EN": "Detachable keyboard with backlight"
+                "EN": "Detachable keyboard without backlight"
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "backlight": 1,
+                  "backlight": 2,
                   "keyboardType": 3,
-                  "numericPad": 1,
+                  "numericPad": 2,
                   "powerButton": 2
                 }
               },
-              "id": "KB_BL",
+              "id": "KB_NO_BL",
               "type": 5
             },
             "motherboardUsb": {
@@ -3358,9 +3374,9 @@
               "present": 2
             },
             "keyboard": {
-              "backlight": 1,
+              "backlight": 2,
               "keyboardType": 3,
-              "numericPad": 1,
+              "numericPad": 2,
               "powerButton": 2
             },
             "powerButton": {
@@ -3479,17 +3495,17 @@
             },
             "keyboard": {
               "description": {
-                "EN": "Detachable keyboard with backlight"
+                "EN": "Detachable keyboard without backlight"
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "backlight": 1,
+                  "backlight": 2,
                   "keyboardType": 3,
-                  "numericPad": 1,
+                  "numericPad": 2,
                   "powerButton": 2
                 }
               },
-              "id": "KB_BL",
+              "id": "KB_NO_BL",
               "type": 5
             },
             "motherboardUsb": {

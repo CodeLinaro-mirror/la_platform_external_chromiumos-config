@@ -61,7 +61,8 @@ _HDMI = hw_topo.create_hdmi(
 )
 _AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.amplifier.MAX98373, headphone_codec = hw_topo.audio_codec.ALC5682I)
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
-_KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE, numpad_present = True)
+_BL_KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = True, kb_type = hw_topo.kb_type.INTERNAL, numpad_present = True, backlight_user_steps = [0, 10, 20, 40, 60, 100])
+_KEYBOARD = hw_topo.create_keyboard(backlight = False, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE, numpad_present = False)
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
 _CAMERA1 = hw_topo.create_camera(
     "CAMERA1",
@@ -256,6 +257,7 @@ design.append_configs(
         camera = _CAMERA2,
         daughter_board = hw_topo.create_daughter_board("Non-default DB", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)]),
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
+        keyboard = _BL_KEYBOARD,
     ),
     audio = sc.create_audio(
         _AUDIO_CARD,

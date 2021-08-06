@@ -3163,6 +3163,13 @@
                   "number": 4,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "backlightUserSteps",
+                  "label": "LABEL_REPEATED",
+                  "name": "backlight_user_steps",
+                  "number": 5,
+                  "type": "TYPE_DOUBLE"
                 }
               ],
               "name": "Keyboard"
