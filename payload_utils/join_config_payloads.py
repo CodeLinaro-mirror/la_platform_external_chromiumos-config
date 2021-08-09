@@ -433,6 +433,8 @@ def merge_device_brand(config_bundle, design, model, project_name):
     A reference to the input ConfigBundle updated with data from model
   """
 
+  # pylint: disable=too-many-locals
+
   whitelabel = model.GetProperties('/identity/whitelabel-tag')
   whitelabel = whitelabel or ""
 
@@ -476,6 +478,18 @@ def merge_device_brand(config_bundle, design, model, project_name):
   regulatory_label = model.GetProperties('/regulatory-label')
   if regulatory_label:
     brand_config.regulatory_label = regulatory_label
+
+  help_tags = [
+      '/ui/help-content-id',
+      '/identity/customization-id',
+      '/name',
+  ]
+
+  for tag in help_tags:
+    help_content = model.GetProperties(tag)
+    if help_content:
+      brand_config.help_content_id = help_content
+      break
 
   return config_bundle
 
