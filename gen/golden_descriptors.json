@@ -10231,6 +10231,279 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/any.proto",
+        "google/protobuf/descriptor.proto",
+        "google/protobuf/duration.proto",
+        "google/protobuf/empty.proto"
+      ],
+      "extension": [
+        {
+          "extendee": ".google.protobuf.MethodOptions",
+          "jsonName": "operationInfo",
+          "label": "LABEL_OPTIONAL",
+          "name": "operation_info",
+          "number": 1049,
+          "type": "TYPE_MESSAGE",
+          "typeName": ".google.longrunning.OperationInfo"
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "done",
+              "label": "LABEL_OPTIONAL",
+              "name": "done",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "error",
+              "label": "LABEL_OPTIONAL",
+              "name": "error",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.longrunning.Status"
+            },
+            {
+              "jsonName": "response",
+              "label": "LABEL_OPTIONAL",
+              "name": "response",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "Operation",
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetOperationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "filter",
+              "label": "LABEL_OPTIONAL",
+              "name": "filter",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pageSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_size",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_token",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListOperationsRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "operations",
+              "label": "LABEL_REPEATED",
+              "name": "operations",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.longrunning.Operation"
+            },
+            {
+              "jsonName": "nextPageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_page_token",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListOperationsResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CancelOperationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DeleteOperationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "timeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "timeout",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            }
+          ],
+          "name": "WaitOperationRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "responseType",
+              "label": "LABEL_OPTIONAL",
+              "name": "response_type",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "metadataType",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata_type",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "OperationInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "code",
+              "label": "LABEL_OPTIONAL",
+              "name": "code",
+              "number": 1,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "details",
+              "label": "LABEL_REPEATED",
+              "name": "details",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "Status"
+        }
+      ],
+      "name": "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/test/tls/dependencies/longrunning"
+      },
+      "package": "google.longrunning",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".google.longrunning.ListOperationsRequest",
+              "name": "ListOperations",
+              "options": {},
+              "outputType": ".google.longrunning.ListOperationsResponse"
+            },
+            {
+              "inputType": ".google.longrunning.GetOperationRequest",
+              "name": "GetOperation",
+              "options": {},
+              "outputType": ".google.longrunning.Operation"
+            },
+            {
+              "inputType": ".google.longrunning.DeleteOperationRequest",
+              "name": "DeleteOperation",
+              "options": {},
+              "outputType": ".google.protobuf.Empty"
+            },
+            {
+              "inputType": ".google.longrunning.CancelOperationRequest",
+              "name": "CancelOperation",
+              "options": {},
+              "outputType": ".google.protobuf.Empty"
+            },
+            {
+              "inputType": ".google.longrunning.WaitOperationRequest",
+              "name": "WaitOperation",
+              "options": {},
+              "outputType": ".google.longrunning.Operation"
+            }
+          ],
+          "name": "Operations"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
