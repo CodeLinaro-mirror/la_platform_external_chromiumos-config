@@ -12,7 +12,7 @@ import (
 	"github.com/golang/protobuf/ptypes/duration"
 	rtd "go.chromium.org/chromiumos/config/go/api/test/rtd/v1"
 	"go.chromium.org/chromiumos/config/go/api/test/tls"
-	"go.chromium.org/chromiumos/config/go/longrunning"
+	"go.chromium.org/chromiumos/config/go/api/test/tls/dependencies/longrunning"
 	"google.golang.org/grpc"
 )
 

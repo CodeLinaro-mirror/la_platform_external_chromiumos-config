@@ -8,7 +8,7 @@ package chromiumos.config.api.test.tls;
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/test/tls";
 
-import "chromiumos/longrunning/operations.proto";
+import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
 import "chromiumos/config/api/test/xmlrpc/xmlrpc.proto";
 
 // Wiring APIs are implemented by TLS wiring providers for all low
@@ -65,8 +65,8 @@ service Wiring {
   // This will be made available to the DUT via a returned URL.
   // The implementation MUST ensure the returned URL is usable at least for the
   // lifetime of the RTD invocation.
-  rpc CacheForDut(CacheForDutRequest) returns (chromiumos.longrunning.Operation) {
-    option (chromiumos.longrunning.operation_info) = {
+  rpc CacheForDut(CacheForDutRequest) returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
       response_type: "CacheForDutResponse",
       metadata_type: "CacheForDutMetadata"
     };

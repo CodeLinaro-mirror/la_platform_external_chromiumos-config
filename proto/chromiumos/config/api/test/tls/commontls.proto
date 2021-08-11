@@ -10,7 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/test/tls";
 
 import "google/protobuf/empty.proto";
 
-import "chromiumos/longrunning/operations.proto";
+import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
 
 // Common lab services implemented on top of the wiring APIs.
 //
@@ -56,8 +56,8 @@ service Common {
   //
   // If the DUT already has the specified list of DLCs, only the missing DLCs
   // will be provisioned.
-  rpc ProvisionDut(ProvisionDutRequest) returns (chromiumos.longrunning.Operation) {
-    option (chromiumos.longrunning.operation_info) = {
+  rpc ProvisionDut(ProvisionDutRequest) returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
       response_type: "ProvisionDutResponse",
       metadata_type: "ProvisionDutMetadata"
     };
@@ -67,8 +67,8 @@ service Common {
   //
   // If the DUT already has the specified version of Lacros, Lacros will not be
   // provisioned.
-  rpc ProvisionLacros(ProvisionLacrosRequest) returns (chromiumos.longrunning.Operation) {
-    option (chromiumos.longrunning.operation_info) = {
+  rpc ProvisionLacros(ProvisionLacrosRequest) returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
       response_type: "ProvisionLacrosResponse",
       metadata_type: "ProvisionLacrosMetadata"
     };
@@ -76,8 +76,8 @@ service Common {
 
   // ProvisionAsh installs a specific version of AshChrome on the DUT.
   //
-  rpc ProvisionAsh(ProvisionAshRequest) returns (chromiumos.longrunning.Operation) {
-    option (chromiumos.longrunning.operation_info) = {
+  rpc ProvisionAsh(ProvisionAshRequest) returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
       response_type: "ProvisionAshResponse",
       metadata_type: "ProvisionAshMetadata"
     };
