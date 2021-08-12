@@ -187,6 +187,11 @@ def _create_screen(
         height_px = None,
         pixels_per_in = None,
         touch = False,
+        no_als_battery_brightness = None,
+        no_als_ac_brightness = None,
+        min_visible_backlight_level = None,
+        turn_off_screen_timeout_ms = None,
+        als_steps = None,
         fw_configs = []):
     """Builds a Topology proto for a screen."""
     hw_features = topo_pb.HardwareFeatures()
@@ -198,6 +203,12 @@ def _create_screen(
         pixels_per_in = pixels_per_in,
     )
     hw_features.screen.touch_support = _bool_to_present(touch)
+    hw_features.screen.panel_properties.no_als_battery_brightness = no_als_battery_brightness
+    hw_features.screen.panel_properties.no_als_ac_brightness = no_als_ac_brightness
+    hw_features.screen.panel_properties.min_visible_backlight_level = min_visible_backlight_level
+    hw_features.screen.panel_properties.als_steps = als_steps
+    if turn_off_screen_timeout_ms != None:
+        hw_features.screen.panel_properties.turn_off_screen_timeout_ms.value = turn_off_screen_timeout_ms
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -214,6 +225,35 @@ def _create_screen(
         description = {"EN": screen_desc},
         hardware_feature = hw_features,
     )
+
+def _create_als_step(
+        lux_decrease_threshold,
+        lux_increase_threshold,
+        ac_backlight_percent,
+        battery_backlight_percent = None):
+    """Builds a Component.AlsStep.
+
+    Args:
+    lux_decrease_threshold: An int containing the sensor value below which the
+        previous step should be considered. A value of None indicates negative
+        infinity.
+    lux_increase_threshold: An int containing the sensor value above which the
+        next step should be considered. A value of None indicates infinity.
+    ac_backlight_percent: A double containing the backlight brightness
+        percentage to use at this step while on AC power.
+    battery_backlight_percent: A double containing the backlight brightness
+        percentage to use at this step while on battery power. If unset,
+        defaults to the ac_backlight_percent value.
+    """
+    step = comp_pb.Component.AlsStep()
+    step.lux_increase_threshold = lux_increase_threshold if lux_increase_threshold != None else -1
+    step.lux_decrease_threshold = lux_decrease_threshold if lux_decrease_threshold != None else -1
+    step.ac_backlight_percent = ac_backlight_percent
+    if battery_backlight_percent != None:
+        step.battery_backlight_percent = battery_backlight_percent
+    else:
+        step.battery_backlight_percent = step.ac_backlight_percent
+    return step
 
 def _create_form_factor(form_factor, fw_configs = [], id = None, description = None):
     """Builds a Topology proto for a form factor.
@@ -1207,6 +1247,7 @@ hw_topo = struct(
     create_design_features = _create_design_features,
     create_features = _create_features,
     create_screen = _create_screen,
+    create_als_step = _create_als_step,
     create_form_factor = _create_form_factor,
     create_audio = _create_audio,
     create_stylus = _create_stylus,

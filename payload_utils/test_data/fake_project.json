@@ -119,7 +119,9 @@
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
           "has-ambient-light-sensor": "1",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-als-steps": "80.0 63.0 -1 400\n100.0 80.0 100 -1",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "3000"
         },
         "regulatory-label": "fake_regulatory_label",
         "ui": {
@@ -274,8 +276,11 @@
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
           "has-keyboard-backlight": "1",
+          "internal-backlight-no-als-ac-brightness": "80.0",
+          "internal-backlight-no-als-battery-brightness": "63.0",
           "keyboard-backlight-user-steps": "0.0\n10.0\n20.0\n40.0\n60.0\n100.0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "3000"
         },
         "regulatory-label": "fake_regulatory_label",
         "ui": {
@@ -444,7 +449,10 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.0",
+          "internal-backlight-no-als-battery-brightness": "63.0",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "3000"
         },
         "ui": {
           "extra-ash-flags": [
@@ -569,7 +577,10 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.0",
+          "internal-backlight-no-als-battery-brightness": "63.0",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "3000"
         },
         "ui": {
           "extra-ash-flags": [
@@ -685,7 +696,10 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.0",
+          "internal-backlight-no-als-battery-brightness": "63.0",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "3000"
         },
         "ui": {
           "extra-ash-flags": [
@@ -805,7 +819,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.1",
+          "internal-backlight-no-als-battery-brightness": "63.2",
+          "min-visible-backlight-level": "1000",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "0"
         },
         "ui": {
           "extra-ash-flags": [
@@ -926,7 +944,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.1",
+          "internal-backlight-no-als-battery-brightness": "63.2",
+          "min-visible-backlight-level": "1000",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "0"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1047,7 +1069,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.1",
+          "internal-backlight-no-als-battery-brightness": "63.2",
+          "min-visible-backlight-level": "1000",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "0"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1168,7 +1194,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.1",
+          "internal-backlight-no-als-battery-brightness": "63.2",
+          "min-visible-backlight-level": "1000",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "0"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1289,7 +1319,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.1",
+          "internal-backlight-no-als-battery-brightness": "63.2",
+          "min-visible-backlight-level": "1000",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "0"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1387,7 +1421,11 @@
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
           "external-display-only": "1",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.1",
+          "internal-backlight-no-als-battery-brightness": "63.2",
+          "min-visible-backlight-level": "1000",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "0"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1484,7 +1522,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "internal-backlight-no-als-ac-brightness": "80.1",
+          "internal-backlight-no-als-battery-brightness": "63.2",
+          "min-visible-backlight-level": "1000",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "0"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1582,7 +1624,11 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "has-ambient-light-sensor": "1",
+          "internal-backlight-als-steps": "80.1 -1 400\n100.0 100 -1",
+          "min-visible-backlight-level": "1000",
+          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "turn-off-screen-timeout-ms": "0"
         },
         "ui": {
           "extra-ash-flags": [

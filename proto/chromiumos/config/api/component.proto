@@ -8,6 +8,7 @@ package chromiumos.config.api;
 
 import "chromiumos/config/api/component_id.proto";
 import "chromiumos/config/api/partner_id.proto";
+import "google/protobuf/wrappers.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
@@ -200,6 +201,26 @@ message Component {
       // PPI or also referred to as DPI (density per inch)
       int32 pixels_per_in = 4;
       repeated Feature features = 5;
+
+      // The minimum backlight level to use before turning the backlight off
+      // entirely.
+      uint32 min_visible_backlight_level = 6;
+
+      // The delay between setting the backlight level to 0 and turning off the
+      // display.
+      google.protobuf.UInt32Value turn_off_screen_timeout_ms = 7;
+
+      // The default display backlight percentage on battery power in the
+      // absence of an ambient light sensor controlling the display backlight.
+      double no_als_battery_brightness = 8;
+
+      // The default display backlight percentage on AC power in the absence of
+      // an ambient light sensor controlling the display backlight.
+      double no_als_ac_brightness = 9;
+
+      // The configuration of the display backlight percentage based on the
+      // ambient light sensor value. Steps should be in increasing order.
+      repeated AlsStep als_steps = 10;
     }
   }
 
@@ -338,5 +359,27 @@ message Component {
     STATUS_DEPRECATED = 2;
     STATUS_UNQUALIFIED = 3;
     STATUS_UNSUPPORTED = 4;
+  }
+
+  // A single step in an ambient light sensor configuration table. Each step
+  // configures the brightness percentage while at that step as well as the
+  // sensor value at which the next or previous step should be considered.
+  // Steps should be specified in increasing order for each field.
+  message AlsStep {
+    // The backlight brightness percentage on AC power for this step.
+    double ac_backlight_percent = 1;
+
+    // The backlight brightness percentage on battery power for this step.
+    double battery_backlight_percent = 2;
+
+    // The ALS sensor value below which the previous step should be considered.
+    // A value of -1 denotes negative infinity and should be used for the first
+    // step.
+    int32 lux_decrease_threshold = 3;
+
+    // The ALS sensor value above which the following step should be
+    // considered. A value of -1 denotes infinity and should be used for the
+    // last step.
+    int32 lux_increase_threshold = 4;
   }
 }

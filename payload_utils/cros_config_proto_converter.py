@@ -21,8 +21,10 @@ from typing import List
 from collections import namedtuple
 
 from google.protobuf import json_format
+from google.protobuf import wrappers_pb2
 from lxml import etree
 
+from chromiumos.config.api import component_pb2
 from chromiumos.config.api import device_brand_pb2
 from chromiumos.config.api import topology_pb2
 from chromiumos.config.payload import config_bundle_pb2
@@ -121,12 +123,78 @@ def _build_arc(config, config_files):
   return result
 
 
+def _check_percentage_value(value: float, description: str):
+  if not 0 <= value <= 100:
+    raise Exception('Value %.1f out of range [0, 100] for %s' %
+                    (value, description))
+
+
 def _check_increasing_sequence(values: [float], description: str):
   for lhs, rhs in zip(values, values[1:]):
     if lhs >= rhs:
       raise Exception(
-          'Value %.1f is not strictly larger than previous value for %s' %
-          (rhs, description))
+          'Value %s is not strictly larger than previous value %s for %s' %
+          (rhs, lhs, description))
+
+
+def _check_als_steps(steps: [component_pb2.Component.AlsStep],
+                     description: str):
+  for idx, step in enumerate(steps):
+    _check_percentage_value(step.ac_backlight_percent,
+                            '%s[%d].ac_backlight_percent' % (description, idx))
+    _check_percentage_value(
+        step.battery_backlight_percent,
+        '%s[%d].battery_backlight_percent' % (description, idx))
+
+  _check_increasing_sequence([step.ac_backlight_percent for step in steps],
+                             '%s.ac_backlight_percent' % description)
+  _check_increasing_sequence([step.battery_backlight_percent for step in steps],
+                             '%s.battery_backlight_percent' % description)
+  _check_increasing_sequence(
+      [step.lux_increase_threshold for step in steps[:-1]],
+      '%s.lux_increase_threshold' % description)
+  _check_increasing_sequence(
+      [step.lux_decrease_threshold for step in steps[1:]],
+      '%s.lux_decrease_threshold' % description)
+
+  if steps[0].lux_decrease_threshold != -1:
+    raise Exception('%s[0].lux_decrease_threshold should be unset, not %d' %
+                    (description, steps[0].lux_decrease_threshold))
+  if steps[-1].lux_increase_threshold != -1:
+    raise Exception('%s[0].lux_decrease_threshold should be unset, not %d' %
+                    (description, steps[-1].lux_increase_threshold))
+
+
+def _format_als_step(als_step: component_pb2.Component.AlsStep) -> str:
+  battery_percent = ''
+  if als_step.battery_backlight_percent != als_step.ac_backlight_percent:
+    battery_percent = ' %s' % _format_power_pref_value(
+        als_step.battery_backlight_percent)
+  return '%s%s %s %s' % (
+      _format_power_pref_value(als_step.ac_backlight_percent),
+      battery_percent,
+      _format_power_pref_value(als_step.lux_decrease_threshold),
+      _format_power_pref_value(als_step.lux_increase_threshold),
+  )
+
+
+def _format_power_pref_value(value) -> str:
+  if isinstance(value, str):
+    return value
+  if isinstance(value, collections.abc.Sequence):
+    return '\n'.join(_format_power_pref_value(x) for x in value)
+  if isinstance(value, bool):
+    return str(int(value))
+  if isinstance(
+      value,
+      (wrappers_pb2.DoubleValue, wrappers_pb2.FloatValue,
+       wrappers_pb2.UInt32Value, wrappers_pb2.UInt64Value,
+       wrappers_pb2.Int32Value, wrappers_pb2.Int64Value, wrappers_pb2.BoolValue,
+       wrappers_pb2.StringValue, wrappers_pb2.BytesValue)):
+    return _format_power_pref_value(value.value)
+  if isinstance(value, component_pb2.Component.AlsStep):
+    return _format_als_step(value)
+  return str(value)
 
 
 def _build_derived_power_prefs(config: Config) -> dict:
@@ -164,14 +232,34 @@ def _build_derived_power_prefs(config: Config) -> dict:
     result['keyboard-backlight-user-steps'] = (
         hw_features.keyboard.backlight_user_steps)
 
-  def _format_power_pref_value(value):
-    if isinstance(value, str):
-      return value
-    if isinstance(value, collections.abc.Sequence):
-      return '\n'.join(_format_power_pref_value(x) for x in value)
-    if isinstance(value, bool):
-      return str(int(value))
-    return str(value)
+  if hw_features.screen.panel_properties.min_visible_backlight_level:
+    result['min-visible-backlight-level'] = (
+        hw_features.screen.panel_properties.min_visible_backlight_level)
+
+  if hw_features.screen.panel_properties.HasField('turn_off_screen_timeout_ms'):
+    result['turn-off-screen-timeout-ms'] = (
+        hw_features.screen.panel_properties.turn_off_screen_timeout_ms)
+
+  if light_sensor.lid_lightsensor == present:
+    if hw_features.screen.panel_properties.als_steps:
+      _check_als_steps(hw_features.screen.panel_properties.als_steps,
+                       'hw_features.screen.panel_properties.als_steps')
+      result['internal-backlight-als-steps'] = (
+          hw_features.screen.panel_properties.als_steps)
+  else:
+    if hw_features.screen.panel_properties.no_als_battery_brightness:
+      _check_percentage_value(
+          hw_features.screen.panel_properties.no_als_battery_brightness,
+          'screen.panel_properties.no_als_battery_brightness')
+      result['internal-backlight-no-als-battery-brightness'] = (
+          hw_features.screen.panel_properties.no_als_battery_brightness)
+
+    if hw_features.screen.panel_properties.no_als_ac_brightness:
+      _check_percentage_value(
+          hw_features.screen.panel_properties.no_als_ac_brightness,
+          'screen.panel_properties.no_als_ac_brightness')
+      result['internal-backlight-no-als-ac-brightness'] = (
+          hw_features.screen.panel_properties.no_als_ac_brightness)
 
   return dict((k, _format_power_pref_value(v)) for k, v in result.items() if v)
 

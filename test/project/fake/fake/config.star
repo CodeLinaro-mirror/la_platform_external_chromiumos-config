@@ -47,6 +47,14 @@ _SCREEN = hw_topo.create_screen(
     height_px = 1080,
     pixels_per_in = 280,
     touch = False,
+    min_visible_backlight_level = 1000,
+    turn_off_screen_timeout_ms = 0,
+    no_als_battery_brightness = 63.2,
+    no_als_ac_brightness = 80.1,
+    als_steps = [
+        hw_topo.create_als_step(None, 400, 80.1, 80.1),
+        hw_topo.create_als_step(100, None, 100),
+    ],
 )
 _TOUCHSCREEN = hw_topo.create_screen(
     id = "TOUCHSCREEN",
@@ -56,6 +64,13 @@ _TOUCHSCREEN = hw_topo.create_screen(
     height_px = 1080,
     pixels_per_in = 120,
     touch = True,
+    turn_off_screen_timeout_ms = 3000,
+    no_als_battery_brightness = 63.0,
+    no_als_ac_brightness = 80,
+    als_steps = [
+        hw_topo.create_als_step(None, 400, 80, 63),
+        hw_topo.create_als_step(100, None, 100, 80),
+    ],
 )
 _HDMI = hw_topo.create_hdmi(
     id = "HDMI",
@@ -762,7 +777,7 @@ design.append_configs(
     config_id = 130,
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CHROMEBASE,
-        sensor = hw_topo.create_sensor("SENSOR", "Lid accelerometer", lid_accel_present = True),
+        sensor = hw_topo.create_sensor("SENSOR", "Lid accelerometer", lid_accel_present = True, lid_light_present = True),
     ),
     audio = [sc.create_audio(
         _AUDIO_CARD,

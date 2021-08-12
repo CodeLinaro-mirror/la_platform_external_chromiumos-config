@@ -751,7 +751,8 @@
       },
       "dependency": [
         "chromiumos/config/api/component_id.proto",
-        "chromiumos/config/api/partner_id.proto"
+        "chromiumos/config/api/partner_id.proto",
+        "google/protobuf/wrappers.proto"
       ],
       "messageType": [
         {
@@ -1494,6 +1495,43 @@
                       "number": 5,
                       "type": "TYPE_ENUM",
                       "typeName": ".chromiumos.config.api.Component.DisplayPanel.Feature"
+                    },
+                    {
+                      "jsonName": "minVisibleBacklightLevel",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "min_visible_backlight_level",
+                      "number": 6,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "turnOffScreenTimeoutMs",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "turn_off_screen_timeout_ms",
+                      "number": 7,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".google.protobuf.UInt32Value"
+                    },
+                    {
+                      "jsonName": "noAlsBatteryBrightness",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "no_als_battery_brightness",
+                      "number": 8,
+                      "type": "TYPE_DOUBLE"
+                    },
+                    {
+                      "jsonName": "noAlsAcBrightness",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "no_als_ac_brightness",
+                      "number": 9,
+                      "type": "TYPE_DOUBLE"
+                    },
+                    {
+                      "jsonName": "alsSteps",
+                      "label": "LABEL_REPEATED",
+                      "name": "als_steps",
+                      "number": 10,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.Component.AlsStep"
                     }
                   ],
                   "name": "Properties"
@@ -1970,6 +2008,39 @@
                   "name": "interface"
                 }
               ]
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "acBacklightPercent",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ac_backlight_percent",
+                  "number": 1,
+                  "type": "TYPE_DOUBLE"
+                },
+                {
+                  "jsonName": "batteryBacklightPercent",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "battery_backlight_percent",
+                  "number": 2,
+                  "type": "TYPE_DOUBLE"
+                },
+                {
+                  "jsonName": "luxDecreaseThreshold",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "lux_decrease_threshold",
+                  "number": 3,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "luxIncreaseThreshold",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "lux_increase_threshold",
+                  "number": 4,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "AlsStep"
             }
           ],
           "oneofDecl": [

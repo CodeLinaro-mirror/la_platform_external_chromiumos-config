@@ -251,9 +251,26 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.0,
+                    "batteryBacklightPercent": 63.0,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 80.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "noAlsAcBrightness": 80.0,
+                "noAlsBatteryBrightness": 63.0,
                 "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
               },
               "touchSupport": 1
@@ -548,9 +565,26 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.0,
+                        "batteryBacklightPercent": 63.0,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 80.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "noAlsAcBrightness": 80.0,
+                    "noAlsBatteryBrightness": 63.0,
                     "pixelsPerIn": 120,
+                    "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
                   },
                   "touchSupport": 1
@@ -724,9 +758,26 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.0,
+                    "batteryBacklightPercent": 63.0,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 80.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "noAlsAcBrightness": 80.0,
+                "noAlsBatteryBrightness": 63.0,
                 "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
               },
               "touchSupport": 1
@@ -980,9 +1031,26 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.0,
+                        "batteryBacklightPercent": 63.0,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 80.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "noAlsAcBrightness": 80.0,
+                    "noAlsBatteryBrightness": 63.0,
                     "pixelsPerIn": 120,
+                    "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
                   },
                   "touchSupport": 1
@@ -1161,9 +1229,26 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.0,
+                    "batteryBacklightPercent": 63.0,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 80.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "noAlsAcBrightness": 80.0,
+                "noAlsBatteryBrightness": 63.0,
                 "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
               },
               "touchSupport": 1
@@ -1410,9 +1495,26 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.0,
+                        "batteryBacklightPercent": 63.0,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 80.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "noAlsAcBrightness": 80.0,
+                    "noAlsBatteryBrightness": 63.0,
                     "pixelsPerIn": 120,
+                    "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
                   },
                   "touchSupport": 1
@@ -1591,9 +1693,26 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.0,
+                    "batteryBacklightPercent": 63.0,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 80.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "noAlsAcBrightness": 80.0,
+                "noAlsBatteryBrightness": 63.0,
                 "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
               },
               "touchSupport": 1
@@ -1827,9 +1946,26 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.0,
+                        "batteryBacklightPercent": 63.0,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 80.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "noAlsAcBrightness": 80.0,
+                    "noAlsBatteryBrightness": 63.0,
                     "pixelsPerIn": 120,
+                    "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
                   },
                   "touchSupport": 1
@@ -2006,9 +2142,26 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.0,
+                    "batteryBacklightPercent": 63.0,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 80.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "noAlsAcBrightness": 80.0,
+                "noAlsBatteryBrightness": 63.0,
                 "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
               },
               "touchSupport": 1
@@ -2241,9 +2394,26 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.0,
+                        "batteryBacklightPercent": 63.0,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 80.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "noAlsAcBrightness": 80.0,
+                    "noAlsBatteryBrightness": 63.0,
                     "pixelsPerIn": 120,
+                    "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
                   },
                   "touchSupport": 1
@@ -2410,9 +2580,27 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 80.1,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
               "touchSupport": 2
@@ -2623,9 +2811,27 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 80.1,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 100.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "minVisibleBacklightLevel": 1000,
+                    "noAlsAcBrightness": 80.1,
+                    "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
                   "touchSupport": 2
@@ -2781,9 +2987,27 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 80.1,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
               "touchSupport": 2
@@ -2994,9 +3218,27 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 80.1,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 100.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "minVisibleBacklightLevel": 1000,
+                    "noAlsAcBrightness": 80.1,
+                    "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
                   "touchSupport": 2
@@ -3140,9 +3382,27 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 80.1,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
               "touchSupport": 2
@@ -3328,9 +3588,27 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 80.1,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 100.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "minVisibleBacklightLevel": 1000,
+                    "noAlsAcBrightness": 80.1,
+                    "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
                   "touchSupport": 2
@@ -3456,9 +3734,27 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 80.1,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
               "touchSupport": 2
@@ -3644,9 +3940,27 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 80.1,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 100.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "minVisibleBacklightLevel": 1000,
+                    "noAlsAcBrightness": 80.1,
+                    "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
                   "touchSupport": 2
@@ -3759,6 +4073,9 @@
               "numericPad": 2,
               "powerButton": 2
             },
+            "lightSensor": {
+              "lidLightsensor": 1
+            },
             "powerButton": {
               "edge": 1,
               "position": 0.9,
@@ -3766,9 +4083,27 @@
             },
             "screen": {
               "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 80.1,
+                    "luxDecreaseThreshold": -1,
+                    "luxIncreaseThreshold": 400
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxDecreaseThreshold": 100,
+                    "luxIncreaseThreshold": -1
+                  }
+                ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
               "touchSupport": 2
@@ -3796,6 +4131,9 @@
               "hardwareFeature": {
                 "accelerometer": {
                   "lidAccelerometer": 1
+                },
+                "lightSensor": {
+                  "lidLightsensor": 1
                 }
               },
               "id": "SENSOR",
@@ -3944,9 +4282,27 @@
               "hardwareFeature": {
                 "screen": {
                   "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 80.1,
+                        "luxDecreaseThreshold": -1,
+                        "luxIncreaseThreshold": 400
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 100.0,
+                        "luxDecreaseThreshold": 100,
+                        "luxIncreaseThreshold": -1
+                      }
+                    ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
+                    "minVisibleBacklightLevel": 1000,
+                    "noAlsAcBrightness": 80.1,
+                    "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
                   "touchSupport": 2
