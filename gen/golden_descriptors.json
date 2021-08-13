@@ -6324,14 +6324,6 @@
         {
           "field": [
             {
-              "jsonName": "peripheral",
-              "label": "LABEL_OPTIONAL",
-              "name": "peripheral",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Peripheral"
-            },
-            {
               "jsonName": "program",
               "label": "LABEL_OPTIONAL",
               "name": "program",
@@ -6396,7 +6388,16 @@
               "typeName": ".chromiumos.config.api.test.dut.v1.Firmware"
             }
           ],
-          "name": "DeviceUnderTest"
+          "name": "DeviceUnderTest",
+          "reservedName": [
+            "peripheral"
+          ],
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            }
+          ]
         },
         {
           "field": [
@@ -6547,429 +6548,6 @@
             }
           ],
           "name": "Firmware"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "servo",
-              "label": "LABEL_OPTIONAL",
-              "name": "servo",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Servo"
-            },
-            {
-              "jsonName": "chameleon",
-              "label": "LABEL_OPTIONAL",
-              "name": "chameleon",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Chameleon"
-            },
-            {
-              "jsonName": "rpm",
-              "label": "LABEL_OPTIONAL",
-              "name": "rpm",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.RPM"
-            },
-            {
-              "jsonName": "externalCameras",
-              "label": "LABEL_REPEATED",
-              "name": "external_cameras",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.ExternalCamera"
-            },
-            {
-              "jsonName": "audio",
-              "label": "LABEL_OPTIONAL",
-              "name": "audio",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Audio"
-            },
-            {
-              "jsonName": "wifi",
-              "label": "LABEL_OPTIONAL",
-              "name": "wifi",
-              "number": 6,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Wifi"
-            },
-            {
-              "jsonName": "touch",
-              "label": "LABEL_OPTIONAL",
-              "name": "touch",
-              "number": 7,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Touch"
-            },
-            {
-              "jsonName": "camerabox",
-              "label": "LABEL_OPTIONAL",
-              "name": "camerabox",
-              "number": 8,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Camerabox"
-            },
-            {
-              "jsonName": "cables",
-              "label": "LABEL_REPEATED",
-              "name": "cables",
-              "number": 9,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Cable"
-            },
-            {
-              "jsonName": "cellular",
-              "label": "LABEL_OPTIONAL",
-              "name": "cellular",
-              "number": 10,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Cellular"
-            }
-          ],
-          "name": "Peripheral"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "audioBox",
-              "label": "LABEL_OPTIONAL",
-              "name": "audio_box",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "atrus",
-              "label": "LABEL_OPTIONAL",
-              "name": "atrus",
-              "number": 2,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "Audio"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Type",
-              "value": [
-                {
-                  "name": "TYPE_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "AUDIOJACK",
-                  "number": 1
-                },
-                {
-                  "name": "USBAUDIO",
-                  "number": 2
-                },
-                {
-                  "name": "USBPRINTING",
-                  "number": 3
-                },
-                {
-                  "name": "HDMIAUDIO",
-                  "number": 4
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "type",
-              "label": "LABEL_OPTIONAL",
-              "name": "type",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Cable.Type"
-            }
-          ],
-          "name": "Cable"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Facing",
-              "value": [
-                {
-                  "name": "FACING_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "BACK",
-                  "number": 1
-                },
-                {
-                  "name": "FRONT",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "facing",
-              "label": "LABEL_OPTIONAL",
-              "name": "facing",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Camerabox.Facing"
-            }
-          ],
-          "name": "Camerabox"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Operator",
-              "value": [
-                {
-                  "name": "OPERATOR_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "ATT",
-                  "number": 1
-                },
-                {
-                  "name": "VERIZON",
-                  "number": 2
-                },
-                {
-                  "name": "TMOBILE",
-                  "number": 3
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "operators",
-              "label": "LABEL_REPEATED",
-              "name": "operators",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Cellular.Operator"
-            }
-          ],
-          "name": "Cellular"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Peripheral",
-              "value": [
-                {
-                  "name": "PREIPHERAL_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "BT_HID",
-                  "number": 1
-                },
-                {
-                  "name": "DP",
-                  "number": 2
-                },
-                {
-                  "name": "DP_HDMI",
-                  "number": 3
-                },
-                {
-                  "name": "VGA",
-                  "number": 4
-                },
-                {
-                  "name": "HDMI",
-                  "number": 5
-                },
-                {
-                  "name": "BT_BLE_HID",
-                  "number": 6
-                },
-                {
-                  "name": "BT_A2DP_SINK",
-                  "number": 7
-                },
-                {
-                  "name": "BT_PEER",
-                  "number": 8
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "peripherals",
-              "label": "LABEL_REPEATED",
-              "name": "peripherals",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Chameleon.Peripheral"
-            },
-            {
-              "jsonName": "audioBoard",
-              "label": "LABEL_OPTIONAL",
-              "name": "audio_board",
-              "number": 2,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "Chameleon"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Type",
-              "value": [
-                {
-                  "name": "TYPE_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "HUDDLY",
-                  "number": 1
-                },
-                {
-                  "name": "PTZPRO2",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "type",
-              "label": "LABEL_OPTIONAL",
-              "name": "type",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.config.api.test.dut.v1.ExternalCamera.Type"
-            }
-          ],
-          "name": "ExternalCamera"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "present",
-              "label": "LABEL_OPTIONAL",
-              "name": "present",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "RPM"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "present",
-              "label": "LABEL_OPTIONAL",
-              "name": "present",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "Servo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "mimo",
-              "label": "LABEL_OPTIONAL",
-              "name": "mimo",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "Touch"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Environment",
-              "value": [
-                {
-                  "name": "ENVIRONMENT_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "STANDARD",
-                  "number": 1
-                },
-                {
-                  "name": "WIFI_CELL",
-                  "number": 2
-                },
-                {
-                  "name": "CHAOS",
-                  "number": 3
-                },
-                {
-                  "name": "ROUTER_802_11AX",
-                  "number": 4
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "environment",
-              "label": "LABEL_OPTIONAL",
-              "name": "environment",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.config.api.test.dut.v1.Wifi.Environment"
-            },
-            {
-              "jsonName": "antenna",
-              "label": "LABEL_OPTIONAL",
-              "name": "antenna",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.test.dut.v1.WifiAntenna"
-            }
-          ],
-          "name": "Wifi"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Connection",
-              "value": [
-                {
-                  "name": "CONNECTION_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "CONDUCTIVE",
-                  "number": 1
-                },
-                {
-                  "name": "OTA",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "connection",
-              "label": "LABEL_OPTIONAL",
-              "name": "connection",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.config.api.test.dut.v1.WifiAntenna.Connection"
-            }
-          ],
-          "name": "WifiAntenna"
         }
       ],
       "name": "chromiumos/config/api/test/dut/v1/dut.proto",
@@ -13429,6 +13007,86 @@
                   "number": 2,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+                },
+                {
+                  "jsonName": "servo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Servo"
+                },
+                {
+                  "jsonName": "chameleon",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "chameleon",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Chameleon"
+                },
+                {
+                  "jsonName": "rpm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "rpm",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.RPM"
+                },
+                {
+                  "jsonName": "externalCameras",
+                  "label": "LABEL_REPEATED",
+                  "name": "external_cameras",
+                  "number": 7,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.ExternalCamera"
+                },
+                {
+                  "jsonName": "audio",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "audio",
+                  "number": 8,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Audio"
+                },
+                {
+                  "jsonName": "wifi",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wifi",
+                  "number": 9,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Wifi"
+                },
+                {
+                  "jsonName": "touch",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "touch",
+                  "number": 10,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Touch"
+                },
+                {
+                  "jsonName": "camerabox",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "camerabox",
+                  "number": 11,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Camerabox"
+                },
+                {
+                  "jsonName": "cables",
+                  "label": "LABEL_REPEATED",
+                  "name": "cables",
+                  "number": 12,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Cable"
+                },
+                {
+                  "jsonName": "cellular",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "cellular",
+                  "number": 13,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Cellular"
                 }
               ],
               "name": "ChromeOS",
@@ -13493,6 +13151,344 @@
               "start": 2
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "audioBox",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_box",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "atrus",
+              "label": "LABEL_OPTIONAL",
+              "name": "atrus",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Audio"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Type",
+              "value": [
+                {
+                  "name": "TYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "AUDIOJACK",
+                  "number": 1
+                },
+                {
+                  "name": "USBAUDIO",
+                  "number": 2
+                },
+                {
+                  "name": "USBPRINTING",
+                  "number": 3
+                },
+                {
+                  "name": "HDMIAUDIO",
+                  "number": 4
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Cable.Type"
+            }
+          ],
+          "name": "Cable"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Facing",
+              "value": [
+                {
+                  "name": "FACING_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "BACK",
+                  "number": 1
+                },
+                {
+                  "name": "FRONT",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "facing",
+              "label": "LABEL_OPTIONAL",
+              "name": "facing",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Camerabox.Facing"
+            }
+          ],
+          "name": "Camerabox"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Operator",
+              "value": [
+                {
+                  "name": "OPERATOR_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "ATT",
+                  "number": 1
+                },
+                {
+                  "name": "VERIZON",
+                  "number": 2
+                },
+                {
+                  "name": "TMOBILE",
+                  "number": 3
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "operators",
+              "label": "LABEL_REPEATED",
+              "name": "operators",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Cellular.Operator"
+            }
+          ],
+          "name": "Cellular"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Peripheral",
+              "value": [
+                {
+                  "name": "PREIPHERAL_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "BT_HID",
+                  "number": 1
+                },
+                {
+                  "name": "DP",
+                  "number": 2
+                },
+                {
+                  "name": "DP_HDMI",
+                  "number": 3
+                },
+                {
+                  "name": "VGA",
+                  "number": 4
+                },
+                {
+                  "name": "HDMI",
+                  "number": 5
+                },
+                {
+                  "name": "BT_BLE_HID",
+                  "number": 6
+                },
+                {
+                  "name": "BT_A2DP_SINK",
+                  "number": 7
+                },
+                {
+                  "name": "BT_PEER",
+                  "number": 8
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "peripherals",
+              "label": "LABEL_REPEATED",
+              "name": "peripherals",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Chameleon.Peripheral"
+            },
+            {
+              "jsonName": "audioBoard",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_board",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Chameleon"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Type",
+              "value": [
+                {
+                  "name": "TYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "HUDDLY",
+                  "number": 1
+                },
+                {
+                  "name": "PTZPRO2",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.ExternalCamera.Type"
+            }
+          ],
+          "name": "ExternalCamera"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "present",
+              "label": "LABEL_OPTIONAL",
+              "name": "present",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "RPM"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "present",
+              "label": "LABEL_OPTIONAL",
+              "name": "present",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Servo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "mimo",
+              "label": "LABEL_OPTIONAL",
+              "name": "mimo",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Touch"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Environment",
+              "value": [
+                {
+                  "name": "ENVIRONMENT_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "STANDARD",
+                  "number": 1
+                },
+                {
+                  "name": "WIFI_CELL",
+                  "number": 2
+                },
+                {
+                  "name": "CHAOS",
+                  "number": 3
+                },
+                {
+                  "name": "ROUTER_802_11AX",
+                  "number": 4
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "environment",
+              "label": "LABEL_OPTIONAL",
+              "name": "environment",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Wifi.Environment"
+            },
+            {
+              "jsonName": "antenna",
+              "label": "LABEL_OPTIONAL",
+              "name": "antenna",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.WifiAntenna"
+            }
+          ],
+          "name": "Wifi"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Connection",
+              "value": [
+                {
+                  "name": "CONNECTION_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "CONDUCTIVE",
+                  "number": 1
+                },
+                {
+                  "name": "OTA",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "connection",
+              "label": "LABEL_OPTIONAL",
+              "name": "connection",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.WifiAntenna.Connection"
+            }
+          ],
+          "name": "WifiAntenna"
         }
       ],
       "name": "chromiumos/test/lab/api/dut.proto",

@@ -21,6 +21,250 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type Cable_Type int32
+
+const (
+	Cable_TYPE_UNSPECIFIED Cable_Type = 0
+	Cable_AUDIOJACK        Cable_Type = 1
+	Cable_USBAUDIO         Cable_Type = 2
+	Cable_USBPRINTING      Cable_Type = 3
+	Cable_HDMIAUDIO        Cable_Type = 4
+)
+
+var Cable_Type_name = map[int32]string{
+	0: "TYPE_UNSPECIFIED",
+	1: "AUDIOJACK",
+	2: "USBAUDIO",
+	3: "USBPRINTING",
+	4: "HDMIAUDIO",
+}
+
+var Cable_Type_value = map[string]int32{
+	"TYPE_UNSPECIFIED": 0,
+	"AUDIOJACK":        1,
+	"USBAUDIO":         2,
+	"USBPRINTING":      3,
+	"HDMIAUDIO":        4,
+}
+
+func (x Cable_Type) String() string {
+	return proto.EnumName(Cable_Type_name, int32(x))
+}
+
+func (Cable_Type) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{3, 0}
+}
+
+// Facing of DUT's camera to be tested whose FOV should cover chart tablet's
+// screen.
+type Camerabox_Facing int32
+
+const (
+	Camerabox_FACING_UNSPECIFIED Camerabox_Facing = 0
+	// DUT's back camera faces the chart tablet.
+	Camerabox_BACK Camerabox_Facing = 1
+	// DUT's front camera faces to chart tablet.
+	Camerabox_FRONT Camerabox_Facing = 2
+)
+
+var Camerabox_Facing_name = map[int32]string{
+	0: "FACING_UNSPECIFIED",
+	1: "BACK",
+	2: "FRONT",
+}
+
+var Camerabox_Facing_value = map[string]int32{
+	"FACING_UNSPECIFIED": 0,
+	"BACK":               1,
+	"FRONT":              2,
+}
+
+func (x Camerabox_Facing) String() string {
+	return proto.EnumName(Camerabox_Facing_name, int32(x))
+}
+
+func (Camerabox_Facing) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{4, 0}
+}
+
+type Cellular_Operator int32
+
+const (
+	Cellular_OPERATOR_UNSPECIFIED Cellular_Operator = 0
+	Cellular_ATT                  Cellular_Operator = 1
+	Cellular_VERIZON              Cellular_Operator = 2
+	Cellular_TMOBILE              Cellular_Operator = 3
+)
+
+var Cellular_Operator_name = map[int32]string{
+	0: "OPERATOR_UNSPECIFIED",
+	1: "ATT",
+	2: "VERIZON",
+	3: "TMOBILE",
+}
+
+var Cellular_Operator_value = map[string]int32{
+	"OPERATOR_UNSPECIFIED": 0,
+	"ATT":                  1,
+	"VERIZON":              2,
+	"TMOBILE":              3,
+}
+
+func (x Cellular_Operator) String() string {
+	return proto.EnumName(Cellular_Operator_name, int32(x))
+}
+
+func (Cellular_Operator) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{5, 0}
+}
+
+type Chameleon_Peripheral int32
+
+const (
+	Chameleon_PREIPHERAL_UNSPECIFIED Chameleon_Peripheral = 0
+	Chameleon_BT_HID                 Chameleon_Peripheral = 1
+	Chameleon_DP                     Chameleon_Peripheral = 2
+	Chameleon_DP_HDMI                Chameleon_Peripheral = 3
+	Chameleon_VGA                    Chameleon_Peripheral = 4
+	Chameleon_HDMI                   Chameleon_Peripheral = 5
+	Chameleon_BT_BLE_HID             Chameleon_Peripheral = 6
+	Chameleon_BT_A2DP_SINK           Chameleon_Peripheral = 7
+	Chameleon_BT_PEER                Chameleon_Peripheral = 8
+)
+
+var Chameleon_Peripheral_name = map[int32]string{
+	0: "PREIPHERAL_UNSPECIFIED",
+	1: "BT_HID",
+	2: "DP",
+	3: "DP_HDMI",
+	4: "VGA",
+	5: "HDMI",
+	6: "BT_BLE_HID",
+	7: "BT_A2DP_SINK",
+	8: "BT_PEER",
+}
+
+var Chameleon_Peripheral_value = map[string]int32{
+	"PREIPHERAL_UNSPECIFIED": 0,
+	"BT_HID":                 1,
+	"DP":                     2,
+	"DP_HDMI":                3,
+	"VGA":                    4,
+	"HDMI":                   5,
+	"BT_BLE_HID":             6,
+	"BT_A2DP_SINK":           7,
+	"BT_PEER":                8,
+}
+
+func (x Chameleon_Peripheral) String() string {
+	return proto.EnumName(Chameleon_Peripheral_name, int32(x))
+}
+
+func (Chameleon_Peripheral) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{6, 0}
+}
+
+type ExternalCamera_Type int32
+
+const (
+	ExternalCamera_TYPE_UNSPECIFIED ExternalCamera_Type = 0
+	// camera Huddly GO
+	ExternalCamera_HUDDLY ExternalCamera_Type = 1
+	// camera Logitech PTZ Pro 2
+	ExternalCamera_PTZPRO2 ExternalCamera_Type = 2
+)
+
+var ExternalCamera_Type_name = map[int32]string{
+	0: "TYPE_UNSPECIFIED",
+	1: "HUDDLY",
+	2: "PTZPRO2",
+}
+
+var ExternalCamera_Type_value = map[string]int32{
+	"TYPE_UNSPECIFIED": 0,
+	"HUDDLY":           1,
+	"PTZPRO2":          2,
+}
+
+func (x ExternalCamera_Type) String() string {
+	return proto.EnumName(ExternalCamera_Type_name, int32(x))
+}
+
+func (ExternalCamera_Type) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{7, 0}
+}
+
+type Wifi_Environment int32
+
+const (
+	Wifi_ENVIRONMENT_UNSPECIFIED Wifi_Environment = 0
+	// Device is setup without any special wifi environment.
+	Wifi_STANDARD Wifi_Environment = 1
+	// Device is inside a hermetic wifi cell.
+	Wifi_WIFI_CELL Wifi_Environment = 2
+	// Device is setup in a chaos environment. It's a special settings for
+	// running wifi interop tests.
+	Wifi_CHAOS Wifi_Environment = 3
+	// In an environment where the AP is 802.11ax compliant.
+	// Context: crbug.com/1044786
+	Wifi_ROUTER_802_11AX Wifi_Environment = 4
+)
+
+var Wifi_Environment_name = map[int32]string{
+	0: "ENVIRONMENT_UNSPECIFIED",
+	1: "STANDARD",
+	2: "WIFI_CELL",
+	3: "CHAOS",
+	4: "ROUTER_802_11AX",
+}
+
+var Wifi_Environment_value = map[string]int32{
+	"ENVIRONMENT_UNSPECIFIED": 0,
+	"STANDARD":                1,
+	"WIFI_CELL":               2,
+	"CHAOS":                   3,
+	"ROUTER_802_11AX":         4,
+}
+
+func (x Wifi_Environment) String() string {
+	return proto.EnumName(Wifi_Environment_name, int32(x))
+}
+
+func (Wifi_Environment) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{11, 0}
+}
+
+// DUT's WiFi antenna's connection.
+type WifiAntenna_Connection int32
+
+const (
+	WifiAntenna_CONNECTION_UNSPECIFIED WifiAntenna_Connection = 0
+	// WIFI antenna is connected conductively.
+	WifiAntenna_CONDUCTIVE WifiAntenna_Connection = 1
+	// WIFI antenna is connected over-the-air.
+	WifiAntenna_OTA WifiAntenna_Connection = 2
+)
+
+var WifiAntenna_Connection_name = map[int32]string{
+	0: "CONNECTION_UNSPECIFIED",
+	1: "CONDUCTIVE",
+	2: "OTA",
+}
+
+var WifiAntenna_Connection_value = map[string]int32{
+	"CONNECTION_UNSPECIFIED": 0,
+	"CONDUCTIVE":             1,
+	"OTA":                    2,
+}
+
+func (x WifiAntenna_Connection) String() string {
+	return proto.EnumName(WifiAntenna_Connection_name, int32(x))
+}
+
+func (WifiAntenna_Connection) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{12, 0}
+}
+
 // Specification of Device Under Test.
 type Dut struct {
 	Id *Dut_Id `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -156,10 +400,20 @@ type Dut_ChromeOS struct {
 	// configuration.
 	DeviceConfigId *api.DeviceConfigId `protobuf:"bytes,3,opt,name=device_config_id,json=deviceConfigId,proto3" json:"device_config_id,omitempty"`
 	// Endpoint for ssh service running on the device
-	Ssh                  *IpEndpoint `protobuf:"bytes,2,opt,name=ssh,proto3" json:"ssh,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
-	XXX_unrecognized     []byte      `json:"-"`
-	XXX_sizecache        int32       `json:"-"`
+	Ssh                  *IpEndpoint       `protobuf:"bytes,2,opt,name=ssh,proto3" json:"ssh,omitempty"`
+	Servo                *Servo            `protobuf:"bytes,4,opt,name=servo,proto3" json:"servo,omitempty"`
+	Chameleon            *Chameleon        `protobuf:"bytes,5,opt,name=chameleon,proto3" json:"chameleon,omitempty"`
+	Rpm                  *RPM              `protobuf:"bytes,6,opt,name=rpm,proto3" json:"rpm,omitempty"`
+	ExternalCameras      []*ExternalCamera `protobuf:"bytes,7,rep,name=external_cameras,json=externalCameras,proto3" json:"external_cameras,omitempty"`
+	Audio                *Audio            `protobuf:"bytes,8,opt,name=audio,proto3" json:"audio,omitempty"`
+	Wifi                 *Wifi             `protobuf:"bytes,9,opt,name=wifi,proto3" json:"wifi,omitempty"`
+	Touch                *Touch            `protobuf:"bytes,10,opt,name=touch,proto3" json:"touch,omitempty"`
+	Camerabox            *Camerabox        `protobuf:"bytes,11,opt,name=camerabox,proto3" json:"camerabox,omitempty"`
+	Cables               []*Cable          `protobuf:"bytes,12,rep,name=cables,proto3" json:"cables,omitempty"`
+	Cellular             *Cellular         `protobuf:"bytes,13,opt,name=cellular,proto3" json:"cellular,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
 func (m *Dut_ChromeOS) Reset()         { *m = Dut_ChromeOS{} }
@@ -197,6 +451,76 @@ func (m *Dut_ChromeOS) GetDeviceConfigId() *api.DeviceConfigId {
 func (m *Dut_ChromeOS) GetSsh() *IpEndpoint {
 	if m != nil {
 		return m.Ssh
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetServo() *Servo {
+	if m != nil {
+		return m.Servo
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetChameleon() *Chameleon {
+	if m != nil {
+		return m.Chameleon
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetRpm() *RPM {
+	if m != nil {
+		return m.Rpm
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetExternalCameras() []*ExternalCamera {
+	if m != nil {
+		return m.ExternalCameras
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetAudio() *Audio {
+	if m != nil {
+		return m.Audio
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetWifi() *Wifi {
+	if m != nil {
+		return m.Wifi
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetTouch() *Touch {
+	if m != nil {
+		return m.Touch
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetCamerabox() *Camerabox {
+	if m != nil {
+		return m.Camerabox
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetCables() []*Cable {
+	if m != nil {
+		return m.Cables
+	}
+	return nil
+}
+
+func (m *Dut_ChromeOS) GetCellular() *Cellular {
+	if m != nil {
+		return m.Cellular
 	}
 	return nil
 }
@@ -326,41 +650,580 @@ func (m *DutTopology_Id) GetValue() string {
 	return ""
 }
 
+// Peripherals related to audio input and output from the Device.
+type Audio struct {
+	// Device is housed in an audio box to record / replay audio
+	// for audio testing.
+	AudioBox bool `protobuf:"varint,1,opt,name=audio_box,json=audioBox,proto3" json:"audio_box,omitempty"`
+	// Device is connected to Atrus speakermic.
+	Atrus                bool     `protobuf:"varint,2,opt,name=atrus,proto3" json:"atrus,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Audio) Reset()         { *m = Audio{} }
+func (m *Audio) String() string { return proto.CompactTextString(m) }
+func (*Audio) ProtoMessage()    {}
+func (*Audio) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{2}
+}
+
+func (m *Audio) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Audio.Unmarshal(m, b)
+}
+func (m *Audio) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Audio.Marshal(b, m, deterministic)
+}
+func (m *Audio) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Audio.Merge(m, src)
+}
+func (m *Audio) XXX_Size() int {
+	return xxx_messageInfo_Audio.Size(m)
+}
+func (m *Audio) XXX_DiscardUnknown() {
+	xxx_messageInfo_Audio.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Audio proto.InternalMessageInfo
+
+func (m *Audio) GetAudioBox() bool {
+	if m != nil {
+		return m.AudioBox
+	}
+	return false
+}
+
+func (m *Audio) GetAtrus() bool {
+	if m != nil {
+		return m.Atrus
+	}
+	return false
+}
+
+// A cable connecting the device to audio, printer and other peripherals.
+type Cable struct {
+	Type                 Cable_Type `protobuf:"varint,1,opt,name=type,proto3,enum=chromiumos.test.lab.api.Cable_Type" json:"type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
+}
+
+func (m *Cable) Reset()         { *m = Cable{} }
+func (m *Cable) String() string { return proto.CompactTextString(m) }
+func (*Cable) ProtoMessage()    {}
+func (*Cable) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{3}
+}
+
+func (m *Cable) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Cable.Unmarshal(m, b)
+}
+func (m *Cable) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Cable.Marshal(b, m, deterministic)
+}
+func (m *Cable) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Cable.Merge(m, src)
+}
+func (m *Cable) XXX_Size() int {
+	return xxx_messageInfo_Cable.Size(m)
+}
+func (m *Cable) XXX_DiscardUnknown() {
+	xxx_messageInfo_Cable.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Cable proto.InternalMessageInfo
+
+func (m *Cable) GetType() Cable_Type {
+	if m != nil {
+		return m.Type
+	}
+	return Cable_TYPE_UNSPECIFIED
+}
+
+// A steady and controllable camera box environment for the device, used by
+// camera test automation. http://go/cros-camera-box
+type Camerabox struct {
+	Facing               Camerabox_Facing `protobuf:"varint,1,opt,name=facing,proto3,enum=chromiumos.test.lab.api.Camerabox_Facing" json:"facing,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *Camerabox) Reset()         { *m = Camerabox{} }
+func (m *Camerabox) String() string { return proto.CompactTextString(m) }
+func (*Camerabox) ProtoMessage()    {}
+func (*Camerabox) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{4}
+}
+
+func (m *Camerabox) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Camerabox.Unmarshal(m, b)
+}
+func (m *Camerabox) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Camerabox.Marshal(b, m, deterministic)
+}
+func (m *Camerabox) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Camerabox.Merge(m, src)
+}
+func (m *Camerabox) XXX_Size() int {
+	return xxx_messageInfo_Camerabox.Size(m)
+}
+func (m *Camerabox) XXX_DiscardUnknown() {
+	xxx_messageInfo_Camerabox.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Camerabox proto.InternalMessageInfo
+
+func (m *Camerabox) GetFacing() Camerabox_Facing {
+	if m != nil {
+		return m.Facing
+	}
+	return Camerabox_FACING_UNSPECIFIED
+}
+
+type Cellular struct {
+	// Cellular operators supported by the SIM installed in the device.
+	Operators            []Cellular_Operator `protobuf:"varint,1,rep,packed,name=operators,proto3,enum=chromiumos.test.lab.api.Cellular_Operator" json:"operators,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
+}
+
+func (m *Cellular) Reset()         { *m = Cellular{} }
+func (m *Cellular) String() string { return proto.CompactTextString(m) }
+func (*Cellular) ProtoMessage()    {}
+func (*Cellular) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{5}
+}
+
+func (m *Cellular) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Cellular.Unmarshal(m, b)
+}
+func (m *Cellular) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Cellular.Marshal(b, m, deterministic)
+}
+func (m *Cellular) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Cellular.Merge(m, src)
+}
+func (m *Cellular) XXX_Size() int {
+	return xxx_messageInfo_Cellular.Size(m)
+}
+func (m *Cellular) XXX_DiscardUnknown() {
+	xxx_messageInfo_Cellular.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Cellular proto.InternalMessageInfo
+
+func (m *Cellular) GetOperators() []Cellular_Operator {
+	if m != nil {
+		return m.Operators
+	}
+	return nil
+}
+
+// See https://sites.google.com/a/google.com/cros-chameleon/home
+type Chameleon struct {
+	Peripherals []Chameleon_Peripheral `protobuf:"varint,1,rep,packed,name=peripherals,proto3,enum=chromiumos.test.lab.api.Chameleon_Peripheral" json:"peripherals,omitempty"`
+	// Indicate if there's an audio_board in the chameleon.
+	AudioBoard           bool     `protobuf:"varint,2,opt,name=audio_board,json=audioBoard,proto3" json:"audio_board,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Chameleon) Reset()         { *m = Chameleon{} }
+func (m *Chameleon) String() string { return proto.CompactTextString(m) }
+func (*Chameleon) ProtoMessage()    {}
+func (*Chameleon) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{6}
+}
+
+func (m *Chameleon) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Chameleon.Unmarshal(m, b)
+}
+func (m *Chameleon) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Chameleon.Marshal(b, m, deterministic)
+}
+func (m *Chameleon) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Chameleon.Merge(m, src)
+}
+func (m *Chameleon) XXX_Size() int {
+	return xxx_messageInfo_Chameleon.Size(m)
+}
+func (m *Chameleon) XXX_DiscardUnknown() {
+	xxx_messageInfo_Chameleon.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Chameleon proto.InternalMessageInfo
+
+func (m *Chameleon) GetPeripherals() []Chameleon_Peripheral {
+	if m != nil {
+		return m.Peripherals
+	}
+	return nil
+}
+
+func (m *Chameleon) GetAudioBoard() bool {
+	if m != nil {
+		return m.AudioBoard
+	}
+	return false
+}
+
+// External camera connected to the device.
+type ExternalCamera struct {
+	Type                 ExternalCamera_Type `protobuf:"varint,1,opt,name=type,proto3,enum=chromiumos.test.lab.api.ExternalCamera_Type" json:"type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
+}
+
+func (m *ExternalCamera) Reset()         { *m = ExternalCamera{} }
+func (m *ExternalCamera) String() string { return proto.CompactTextString(m) }
+func (*ExternalCamera) ProtoMessage()    {}
+func (*ExternalCamera) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{7}
+}
+
+func (m *ExternalCamera) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ExternalCamera.Unmarshal(m, b)
+}
+func (m *ExternalCamera) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ExternalCamera.Marshal(b, m, deterministic)
+}
+func (m *ExternalCamera) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExternalCamera.Merge(m, src)
+}
+func (m *ExternalCamera) XXX_Size() int {
+	return xxx_messageInfo_ExternalCamera.Size(m)
+}
+func (m *ExternalCamera) XXX_DiscardUnknown() {
+	xxx_messageInfo_ExternalCamera.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ExternalCamera proto.InternalMessageInfo
+
+func (m *ExternalCamera) GetType() ExternalCamera_Type {
+	if m != nil {
+		return m.Type
+	}
+	return ExternalCamera_TYPE_UNSPECIFIED
+}
+
+// Remote power management capability for the device.
+type RPM struct {
+	Present              bool     `protobuf:"varint,1,opt,name=present,proto3" json:"present,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RPM) Reset()         { *m = RPM{} }
+func (m *RPM) String() string { return proto.CompactTextString(m) }
+func (*RPM) ProtoMessage()    {}
+func (*RPM) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{8}
+}
+
+func (m *RPM) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RPM.Unmarshal(m, b)
+}
+func (m *RPM) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RPM.Marshal(b, m, deterministic)
+}
+func (m *RPM) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RPM.Merge(m, src)
+}
+func (m *RPM) XXX_Size() int {
+	return xxx_messageInfo_RPM.Size(m)
+}
+func (m *RPM) XXX_DiscardUnknown() {
+	xxx_messageInfo_RPM.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RPM proto.InternalMessageInfo
+
+func (m *RPM) GetPresent() bool {
+	if m != nil {
+		return m.Present
+	}
+	return false
+}
+
+// Servo control of the device.
+type Servo struct {
+	Present              bool     `protobuf:"varint,1,opt,name=present,proto3" json:"present,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Servo) Reset()         { *m = Servo{} }
+func (m *Servo) String() string { return proto.CompactTextString(m) }
+func (*Servo) ProtoMessage()    {}
+func (*Servo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{9}
+}
+
+func (m *Servo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Servo.Unmarshal(m, b)
+}
+func (m *Servo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Servo.Marshal(b, m, deterministic)
+}
+func (m *Servo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Servo.Merge(m, src)
+}
+func (m *Servo) XXX_Size() int {
+	return xxx_messageInfo_Servo.Size(m)
+}
+func (m *Servo) XXX_DiscardUnknown() {
+	xxx_messageInfo_Servo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Servo proto.InternalMessageInfo
+
+func (m *Servo) GetPresent() bool {
+	if m != nil {
+		return m.Present
+	}
+	return false
+}
+
+type Touch struct {
+	// Has touch monitor mimo.
+	Mimo                 bool     `protobuf:"varint,1,opt,name=mimo,proto3" json:"mimo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Touch) Reset()         { *m = Touch{} }
+func (m *Touch) String() string { return proto.CompactTextString(m) }
+func (*Touch) ProtoMessage()    {}
+func (*Touch) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{10}
+}
+
+func (m *Touch) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Touch.Unmarshal(m, b)
+}
+func (m *Touch) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Touch.Marshal(b, m, deterministic)
+}
+func (m *Touch) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Touch.Merge(m, src)
+}
+func (m *Touch) XXX_Size() int {
+	return xxx_messageInfo_Touch.Size(m)
+}
+func (m *Touch) XXX_DiscardUnknown() {
+	xxx_messageInfo_Touch.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Touch proto.InternalMessageInfo
+
+func (m *Touch) GetMimo() bool {
+	if m != nil {
+		return m.Mimo
+	}
+	return false
+}
+
+// Wifi environment of the device.
+type Wifi struct {
+	Environment          Wifi_Environment `protobuf:"varint,1,opt,name=environment,proto3,enum=chromiumos.test.lab.api.Wifi_Environment" json:"environment,omitempty"`
+	Antenna              *WifiAntenna     `protobuf:"bytes,2,opt,name=antenna,proto3" json:"antenna,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *Wifi) Reset()         { *m = Wifi{} }
+func (m *Wifi) String() string { return proto.CompactTextString(m) }
+func (*Wifi) ProtoMessage()    {}
+func (*Wifi) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{11}
+}
+
+func (m *Wifi) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Wifi.Unmarshal(m, b)
+}
+func (m *Wifi) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Wifi.Marshal(b, m, deterministic)
+}
+func (m *Wifi) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Wifi.Merge(m, src)
+}
+func (m *Wifi) XXX_Size() int {
+	return xxx_messageInfo_Wifi.Size(m)
+}
+func (m *Wifi) XXX_DiscardUnknown() {
+	xxx_messageInfo_Wifi.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Wifi proto.InternalMessageInfo
+
+func (m *Wifi) GetEnvironment() Wifi_Environment {
+	if m != nil {
+		return m.Environment
+	}
+	return Wifi_ENVIRONMENT_UNSPECIFIED
+}
+
+func (m *Wifi) GetAntenna() *WifiAntenna {
+	if m != nil {
+		return m.Antenna
+	}
+	return nil
+}
+
+type WifiAntenna struct {
+	Connection           WifiAntenna_Connection `protobuf:"varint,1,opt,name=connection,proto3,enum=chromiumos.test.lab.api.WifiAntenna_Connection" json:"connection,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
+}
+
+func (m *WifiAntenna) Reset()         { *m = WifiAntenna{} }
+func (m *WifiAntenna) String() string { return proto.CompactTextString(m) }
+func (*WifiAntenna) ProtoMessage()    {}
+func (*WifiAntenna) Descriptor() ([]byte, []int) {
+	return fileDescriptor_675cb56828cc6988, []int{12}
+}
+
+func (m *WifiAntenna) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_WifiAntenna.Unmarshal(m, b)
+}
+func (m *WifiAntenna) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_WifiAntenna.Marshal(b, m, deterministic)
+}
+func (m *WifiAntenna) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WifiAntenna.Merge(m, src)
+}
+func (m *WifiAntenna) XXX_Size() int {
+	return xxx_messageInfo_WifiAntenna.Size(m)
+}
+func (m *WifiAntenna) XXX_DiscardUnknown() {
+	xxx_messageInfo_WifiAntenna.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_WifiAntenna proto.InternalMessageInfo
+
+func (m *WifiAntenna) GetConnection() WifiAntenna_Connection {
+	if m != nil {
+		return m.Connection
+	}
+	return WifiAntenna_CONNECTION_UNSPECIFIED
+}
+
 func init() {
+	proto.RegisterEnum("chromiumos.test.lab.api.Cable_Type", Cable_Type_name, Cable_Type_value)
+	proto.RegisterEnum("chromiumos.test.lab.api.Camerabox_Facing", Camerabox_Facing_name, Camerabox_Facing_value)
+	proto.RegisterEnum("chromiumos.test.lab.api.Cellular_Operator", Cellular_Operator_name, Cellular_Operator_value)
+	proto.RegisterEnum("chromiumos.test.lab.api.Chameleon_Peripheral", Chameleon_Peripheral_name, Chameleon_Peripheral_value)
+	proto.RegisterEnum("chromiumos.test.lab.api.ExternalCamera_Type", ExternalCamera_Type_name, ExternalCamera_Type_value)
+	proto.RegisterEnum("chromiumos.test.lab.api.Wifi_Environment", Wifi_Environment_name, Wifi_Environment_value)
+	proto.RegisterEnum("chromiumos.test.lab.api.WifiAntenna_Connection", WifiAntenna_Connection_name, WifiAntenna_Connection_value)
 	proto.RegisterType((*Dut)(nil), "chromiumos.test.lab.api.Dut")
 	proto.RegisterType((*Dut_Id)(nil), "chromiumos.test.lab.api.Dut.Id")
 	proto.RegisterType((*Dut_ChromeOS)(nil), "chromiumos.test.lab.api.Dut.ChromeOS")
 	proto.RegisterType((*Dut_Android)(nil), "chromiumos.test.lab.api.Dut.Android")
 	proto.RegisterType((*DutTopology)(nil), "chromiumos.test.lab.api.DutTopology")
 	proto.RegisterType((*DutTopology_Id)(nil), "chromiumos.test.lab.api.DutTopology.Id")
+	proto.RegisterType((*Audio)(nil), "chromiumos.test.lab.api.Audio")
+	proto.RegisterType((*Cable)(nil), "chromiumos.test.lab.api.Cable")
+	proto.RegisterType((*Camerabox)(nil), "chromiumos.test.lab.api.Camerabox")
+	proto.RegisterType((*Cellular)(nil), "chromiumos.test.lab.api.Cellular")
+	proto.RegisterType((*Chameleon)(nil), "chromiumos.test.lab.api.Chameleon")
+	proto.RegisterType((*ExternalCamera)(nil), "chromiumos.test.lab.api.ExternalCamera")
+	proto.RegisterType((*RPM)(nil), "chromiumos.test.lab.api.RPM")
+	proto.RegisterType((*Servo)(nil), "chromiumos.test.lab.api.Servo")
+	proto.RegisterType((*Touch)(nil), "chromiumos.test.lab.api.Touch")
+	proto.RegisterType((*Wifi)(nil), "chromiumos.test.lab.api.Wifi")
+	proto.RegisterType((*WifiAntenna)(nil), "chromiumos.test.lab.api.WifiAntenna")
 }
 
 func init() { proto.RegisterFile("chromiumos/test/lab/api/dut.proto", fileDescriptor_675cb56828cc6988) }
 
 var fileDescriptor_675cb56828cc6988 = []byte{
-	// 377 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0x5f, 0x4b, 0xf3, 0x30,
-	0x14, 0xc6, 0xd7, 0x3f, 0xef, 0xbb, 0x2e, 0x03, 0x19, 0x41, 0xb0, 0x14, 0xc1, 0x39, 0x15, 0x27,
-	0x48, 0xaa, 0x1b, 0xe2, 0xad, 0x6e, 0x13, 0xd6, 0xdd, 0x0c, 0xaa, 0x57, 0xde, 0x94, 0x6e, 0xa9,
-	0x5d, 0xa0, 0x6b, 0x42, 0x9b, 0x0c, 0xf6, 0x19, 0xfc, 0x02, 0x5e, 0xfa, 0x51, 0x65, 0x49, 0x3b,
-	0x9d, 0xb2, 0x5e, 0x26, 0x79, 0x7e, 0xe7, 0x79, 0xce, 0xc9, 0x01, 0xa7, 0xf3, 0x45, 0x46, 0x97,
-	0x44, 0x2c, 0x69, 0xee, 0xf2, 0x28, 0xe7, 0x6e, 0x12, 0xce, 0xdc, 0x90, 0x11, 0x17, 0x0b, 0x8e,
-	0x58, 0x46, 0x39, 0x85, 0x47, 0xdf, 0x12, 0xb4, 0x91, 0xa0, 0x24, 0x9c, 0xa1, 0x90, 0x11, 0xe7,
-	0xfa, 0x07, 0x3b, 0xa7, 0xe9, 0x1b, 0x89, 0x15, 0x19, 0xad, 0xc8, 0x3c, 0x0a, 0xd4, 0x4d, 0x40,
-	0xb0, 0x2a, 0xe3, 0x5c, 0xed, 0x73, 0x22, 0x2c, 0x88, 0x52, 0xcc, 0x28, 0x49, 0x0b, 0xc7, 0xce,
-	0xbb, 0x01, 0x8c, 0x91, 0xe0, 0xd0, 0x05, 0x3a, 0xc1, 0xb6, 0xd6, 0xd6, 0xba, 0xcd, 0xde, 0x09,
-	0xda, 0x13, 0x03, 0x8d, 0x04, 0x47, 0x1e, 0xf6, 0x75, 0x82, 0xe1, 0x10, 0x58, 0x52, 0x15, 0xd1,
-	0xdc, 0xd6, 0x25, 0x76, 0x51, 0x89, 0x0d, 0xa5, 0x78, 0xfa, 0x3c, 0xae, 0xf9, 0x5b, 0x10, 0x3e,
-	0x80, 0x7a, 0x98, 0xe2, 0x8c, 0x12, 0x6c, 0x1b, 0xb2, 0xc6, 0x79, 0x65, 0x8d, 0x47, 0xa5, 0x1d,
-	0xd7, 0xfc, 0x12, 0x73, 0x1c, 0xa0, 0x7b, 0x18, 0x1e, 0x82, 0x7f, 0xab, 0x30, 0x11, 0x91, 0x6c,
-	0xa0, 0xe1, 0xab, 0x83, 0xf3, 0xa1, 0x01, 0xab, 0xb4, 0x85, 0x53, 0xd0, 0xfa, 0x3d, 0xad, 0xc2,
-	0x73, 0x27, 0xb7, 0x7a, 0x54, 0x8e, 0x52, 0x3e, 0x94, 0x17, 0x1e, 0xf6, 0x0f, 0xf0, 0xce, 0x19,
-	0xde, 0x01, 0x23, 0xcf, 0x17, 0x45, 0xef, 0x67, 0x7b, 0x73, 0x7b, 0xec, 0xa9, 0x98, 0xb8, 0xbf,
-	0xd1, 0x4f, 0x4c, 0x4b, 0x6b, 0xe9, 0x4e, 0x03, 0xd4, 0x8b, 0x66, 0x06, 0x00, 0x58, 0x58, 0xf0,
-	0x80, 0xaf, 0x59, 0xd4, 0xf9, 0xd4, 0x40, 0x73, 0x24, 0xf8, 0x0b, 0x65, 0x34, 0xa1, 0xf1, 0x1a,
-	0xde, 0xcb, 0x5f, 0x51, 0x31, 0x2f, 0xab, 0x46, 0x53, 0x12, 0xe5, 0xef, 0xdc, 0x00, 0x13, 0x0b,
-	0x9e, 0xdb, 0x66, 0xdb, 0xe8, 0x36, 0x7b, 0xc7, 0x55, 0xa8, 0x2f, 0x95, 0x55, 0x83, 0x54, 0x99,
-	0x27, 0xa6, 0xa5, 0xb7, 0x8c, 0x41, 0xff, 0xf5, 0x36, 0xa6, 0xdb, 0x7a, 0x88, 0x66, 0xb1, 0xfb,
-	0x77, 0x37, 0x63, 0xba, 0xb3, 0x77, 0xb3, 0xff, 0x72, 0xd9, 0xfa, 0x5f, 0x01, 0x00, 0x00, 0xff,
-	0xff, 0x83, 0x5e, 0x8d, 0xd0, 0x03, 0x03, 0x00, 0x00,
+	// 1228 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x96, 0xdf, 0x8e, 0x9b, 0xc6,
+	0x17, 0xc7, 0x03, 0xc6, 0x36, 0x3e, 0xde, 0x6c, 0xd0, 0xfc, 0xa2, 0x04, 0x39, 0xf9, 0xe5, 0x0f,
+	0x4d, 0x95, 0xa4, 0x4a, 0x71, 0x76, 0xd3, 0x34, 0x55, 0xa5, 0x56, 0xc1, 0xc0, 0xae, 0x49, 0x76,
+	0x01, 0x8d, 0xf1, 0xa6, 0xc9, 0x0d, 0x62, 0x0d, 0xeb, 0x45, 0xb2, 0x19, 0x84, 0xf1, 0x36, 0xfb,
+	0x00, 0xbd, 0xa8, 0xf2, 0x08, 0x55, 0xa5, 0xf6, 0xc9, 0xfa, 0x02, 0x7d, 0x84, 0x5e, 0x54, 0x33,
+	0x80, 0xed, 0xdd, 0xca, 0xde, 0xdc, 0x79, 0x86, 0xef, 0xe7, 0xfc, 0x9b, 0x73, 0xc6, 0x03, 0x0f,
+	0x47, 0xa7, 0x19, 0x99, 0xc6, 0xf3, 0x29, 0x99, 0x75, 0xf3, 0x68, 0x96, 0x77, 0x27, 0xc1, 0x71,
+	0x37, 0x48, 0xe3, 0x6e, 0x38, 0xcf, 0xd5, 0x34, 0x23, 0x39, 0x41, 0xb7, 0x97, 0x12, 0x95, 0x4a,
+	0xd4, 0x49, 0x70, 0xac, 0x06, 0x69, 0xdc, 0x79, 0xb6, 0xc2, 0x8e, 0x48, 0x72, 0x12, 0x8f, 0x0b,
+	0x32, 0x3a, 0x8b, 0x47, 0x91, 0x5f, 0xec, 0xf8, 0x71, 0x58, 0x98, 0xe9, 0x3c, 0x5d, 0xe7, 0x29,
+	0x4e, 0xfd, 0x28, 0x09, 0x53, 0x12, 0x27, 0xa5, 0x47, 0xe5, 0xaf, 0x26, 0xd4, 0x8c, 0x79, 0x8e,
+	0xba, 0xc0, 0xc7, 0xa1, 0xcc, 0x3d, 0xe0, 0x9e, 0xb4, 0x77, 0xef, 0xab, 0x6b, 0xc2, 0x50, 0x8d,
+	0x79, 0xae, 0x5a, 0x21, 0xe6, 0xe3, 0x10, 0xe9, 0x20, 0x32, 0x55, 0x44, 0x66, 0x32, 0xcf, 0xb0,
+	0x2f, 0x37, 0x62, 0x3a, 0x13, 0x3b, 0x83, 0xfe, 0x35, 0xbc, 0x00, 0xd1, 0x6b, 0x68, 0x06, 0x49,
+	0x98, 0x91, 0x38, 0x94, 0x6b, 0xcc, 0xc6, 0xa3, 0x8d, 0x36, 0xb4, 0x42, 0xdb, 0xbf, 0x86, 0x2b,
+	0xac, 0xd3, 0x01, 0xde, 0x0a, 0xd1, 0x4d, 0xa8, 0x9f, 0x05, 0x93, 0x79, 0xc4, 0x12, 0x68, 0xe1,
+	0x62, 0xd1, 0xf9, 0xbb, 0x0e, 0x62, 0xe5, 0x16, 0x39, 0x20, 0x5d, 0xae, 0x56, 0xe9, 0xf3, 0x42,
+	0xdc, 0xc5, 0xc7, 0xc2, 0x23, 0x93, 0xeb, 0x6c, 0xc3, 0x0a, 0xf1, 0x76, 0x78, 0x61, 0x8d, 0x5e,
+	0x42, 0x6d, 0x36, 0x3b, 0x2d, 0x73, 0xff, 0x62, 0x6d, 0xdc, 0x56, 0x6a, 0x96, 0x15, 0xc7, 0x54,
+	0x8f, 0xbe, 0x81, 0xfa, 0x2c, 0xca, 0xce, 0x88, 0x2c, 0x30, 0xf0, 0xde, 0x5a, 0x70, 0x40, 0x55,
+	0xb8, 0x10, 0xa3, 0xd7, 0xd0, 0x1a, 0x9d, 0x06, 0xd3, 0x68, 0x12, 0x91, 0x44, 0xae, 0x33, 0x52,
+	0x59, 0x4b, 0xea, 0x95, 0x12, 0x2f, 0x21, 0xa4, 0x42, 0x2d, 0x4b, 0xa7, 0x72, 0x83, 0xb1, 0x77,
+	0xd7, 0xb2, 0xd8, 0x3d, 0xc4, 0x54, 0x88, 0x30, 0x48, 0xd1, 0xc7, 0x3c, 0xca, 0x92, 0x60, 0xe2,
+	0x8f, 0x82, 0x69, 0x94, 0x05, 0x33, 0xb9, 0xf9, 0xa0, 0xf6, 0xa4, 0xbd, 0xfb, 0x78, 0x2d, 0x6c,
+	0x96, 0x80, 0xce, 0xf4, 0xf8, 0x46, 0x74, 0x61, 0x3d, 0xa3, 0xb9, 0x07, 0xf3, 0x30, 0x26, 0xb2,
+	0x78, 0x45, 0xee, 0x1a, 0x55, 0xe1, 0x42, 0x8c, 0x76, 0x40, 0xf8, 0x39, 0x3e, 0x89, 0xe5, 0x16,
+	0x83, 0xfe, 0xbf, 0x16, 0x7a, 0x17, 0x9f, 0xc4, 0x98, 0x49, 0xa9, 0xa3, 0x9c, 0xcc, 0x47, 0xa7,
+	0x32, 0x5c, 0xe1, 0xc8, 0xa3, 0x2a, 0x5c, 0x88, 0x59, 0x91, 0x59, 0xa4, 0xc7, 0xe4, 0xa3, 0xdc,
+	0xbe, 0xaa, 0xc8, 0x95, 0x12, 0x2f, 0x21, 0xf4, 0x2d, 0x34, 0x46, 0xc1, 0xf1, 0x24, 0x9a, 0xc9,
+	0x5b, 0xac, 0x54, 0xf7, 0x36, 0xe0, 0xc7, 0x93, 0x08, 0x97, 0x6a, 0xf4, 0x03, 0x88, 0xa3, 0x68,
+	0x32, 0x99, 0x4f, 0x82, 0x4c, 0xbe, 0xce, 0x1c, 0x3f, 0x5c, 0x4f, 0x96, 0x42, 0xbc, 0x40, 0xde,
+	0x08, 0x22, 0x27, 0xf1, 0x9d, 0x16, 0x34, 0xcb, 0x01, 0xe9, 0x01, 0x88, 0xe1, 0x3c, 0xf7, 0xf3,
+	0xf3, 0x34, 0x52, 0xfe, 0xe0, 0xa0, 0x6d, 0xcc, 0x73, 0x8f, 0xa4, 0x64, 0x42, 0xc6, 0xe7, 0xe8,
+	0x15, 0x9b, 0xf4, 0xa2, 0xf5, 0x1f, 0x6f, 0x1a, 0xb7, 0x8a, 0xa8, 0x26, 0xfe, 0x39, 0x08, 0xe1,
+	0x3c, 0x9f, 0xc9, 0x02, 0x4b, 0xed, 0xee, 0x26, 0x14, 0x33, 0xe5, 0xa6, 0xe1, 0x2c, 0x62, 0x7e,
+	0x23, 0x88, 0xbc, 0x54, 0x53, 0xbe, 0x87, 0x3a, 0x3b, 0x71, 0x74, 0x07, 0x5a, 0xec, 0xcc, 0x7d,
+	0x7a, 0x02, 0x54, 0x2e, 0x62, 0x91, 0x6d, 0xf4, 0xc8, 0x47, 0x6a, 0x27, 0xc8, 0xb3, 0x79, 0x71,
+	0xdd, 0x88, 0xb8, 0x58, 0x28, 0xbf, 0x71, 0x50, 0x67, 0xc5, 0x44, 0xaf, 0x40, 0xa0, 0x09, 0x33,
+	0x6e, 0x7b, 0xc3, 0x44, 0x32, 0xb5, 0xea, 0x9d, 0xa7, 0x11, 0x66, 0x80, 0xf2, 0x1e, 0x04, 0xba,
+	0x42, 0x37, 0x41, 0xf2, 0xde, 0xbb, 0xa6, 0x3f, 0xb4, 0x07, 0xae, 0xa9, 0x5b, 0x7b, 0x96, 0x69,
+	0x48, 0xd7, 0xd0, 0x75, 0x68, 0x69, 0x43, 0xc3, 0x72, 0xde, 0x68, 0xfa, 0x5b, 0x89, 0x43, 0x5b,
+	0x20, 0x0e, 0x07, 0x3d, 0xb6, 0x23, 0xf1, 0xe8, 0x06, 0xb4, 0x87, 0x83, 0x9e, 0x8b, 0x2d, 0xdb,
+	0xb3, 0xec, 0x7d, 0xa9, 0x46, 0xd5, 0x7d, 0xe3, 0xd0, 0x2a, 0xbe, 0x0b, 0xca, 0x2f, 0x1c, 0xb4,
+	0x16, 0x9d, 0x82, 0x34, 0x68, 0x9c, 0x04, 0xa3, 0x38, 0x19, 0x97, 0x31, 0x3e, 0xbd, 0xba, 0xbb,
+	0xd4, 0x3d, 0x06, 0xe0, 0x12, 0x54, 0x5e, 0x42, 0xa3, 0xd8, 0x41, 0xb7, 0x00, 0xed, 0x69, 0xba,
+	0x65, 0xef, 0x5f, 0x8a, 0x57, 0x04, 0xa1, 0x57, 0x84, 0xda, 0x82, 0xfa, 0x1e, 0x76, 0x6c, 0x4f,
+	0xe2, 0x95, 0xdf, 0x39, 0x10, 0xab, 0xc6, 0x41, 0x7d, 0x68, 0x91, 0x34, 0xca, 0x82, 0x9c, 0x64,
+	0x33, 0x99, 0x7b, 0x50, 0x7b, 0xb2, 0xbd, 0xfb, 0xd5, 0x95, 0xed, 0xa6, 0x3a, 0x25, 0x82, 0x97,
+	0xb0, 0xb2, 0x0f, 0x62, 0xb5, 0x8d, 0x64, 0xb8, 0xe9, 0xb8, 0x26, 0xd6, 0x3c, 0x07, 0x5f, 0x8a,
+	0xa8, 0x09, 0x35, 0xcd, 0xf3, 0x24, 0x0e, 0xb5, 0xa1, 0x79, 0x64, 0x62, 0xeb, 0x83, 0x63, 0x4b,
+	0x3c, 0x5d, 0x78, 0x87, 0x4e, 0xcf, 0x3a, 0x30, 0xa5, 0x9a, 0xf2, 0x89, 0x87, 0xd6, 0xe2, 0xda,
+	0x42, 0x0e, 0xb4, 0xd3, 0x28, 0x8b, 0xd3, 0xd3, 0x28, 0x0b, 0x26, 0x55, 0x88, 0x5f, 0x5f, 0x7d,
+	0xdf, 0xa9, 0xee, 0x82, 0xc2, 0xab, 0x16, 0xd0, 0x7d, 0x68, 0x57, 0x7d, 0x15, 0x64, 0x61, 0xd9,
+	0x40, 0x50, 0x76, 0x56, 0x90, 0x85, 0xca, 0x27, 0x0e, 0x60, 0x09, 0xa3, 0x0e, 0xdc, 0x72, 0xb1,
+	0x69, 0xb9, 0x7d, 0x13, 0x6b, 0x07, 0x97, 0xb2, 0x01, 0x68, 0xf4, 0x3c, 0xbf, 0x6f, 0x19, 0x12,
+	0x87, 0x1a, 0xc0, 0x1b, 0x6e, 0x91, 0x8b, 0xe1, 0xfa, 0xf4, 0xe0, 0xa5, 0x1a, 0x4d, 0xf7, 0x68,
+	0x5f, 0x93, 0x04, 0x7a, 0x12, 0x6c, 0xab, 0x8e, 0xb6, 0x01, 0x7a, 0x9e, 0xdf, 0x3b, 0x30, 0x19,
+	0xd7, 0x40, 0x12, 0x6c, 0xf5, 0x3c, 0x5f, 0xdb, 0x35, 0x5c, 0x7f, 0x60, 0xd9, 0x6f, 0xa5, 0x26,
+	0xb5, 0xd0, 0xf3, 0x7c, 0xd7, 0x34, 0xb1, 0x24, 0x2a, 0xbf, 0x72, 0xb0, 0x7d, 0xf1, 0x2e, 0x45,
+	0xaf, 0x2f, 0x34, 0xf7, 0xb3, 0xcf, 0xbc, 0x82, 0x57, 0xbb, 0xfc, 0xe5, 0xc6, 0x2e, 0x07, 0x68,
+	0xf4, 0x87, 0x86, 0x71, 0xf0, 0xbe, 0x38, 0x26, 0xd7, 0xfb, 0xe0, 0x62, 0x67, 0x57, 0xe2, 0x95,
+	0xfb, 0x50, 0xc3, 0xee, 0x21, 0x92, 0xa1, 0x99, 0x66, 0xd1, 0x2c, 0x4a, 0xf2, 0x72, 0x2e, 0xab,
+	0xa5, 0xf2, 0x10, 0xea, 0xec, 0xaf, 0x6a, 0x83, 0xe4, 0x0e, 0xd4, 0xd9, 0x45, 0x8b, 0x10, 0x08,
+	0xd3, 0x78, 0x4a, 0xca, 0xef, 0xec, 0xb7, 0xf2, 0x0f, 0x07, 0x02, 0xbd, 0xba, 0xd1, 0x5b, 0x68,
+	0x47, 0xc9, 0x59, 0x9c, 0x91, 0x64, 0x5a, 0xd9, 0xd8, 0x34, 0x22, 0x94, 0x51, 0xcd, 0x25, 0x80,
+	0x57, 0x69, 0xf4, 0x23, 0x7d, 0x59, 0xe4, 0x51, 0x92, 0x04, 0xe5, 0x3f, 0xf4, 0xa3, 0x8d, 0x86,
+	0xb4, 0x42, 0x8b, 0x2b, 0x48, 0x19, 0x43, 0x7b, 0xc5, 0x36, 0xba, 0x03, 0xb7, 0x4d, 0xfb, 0xc8,
+	0xc2, 0x8e, 0x7d, 0x68, 0xda, 0xde, 0xa5, 0xda, 0x6d, 0x81, 0x38, 0xf0, 0x34, 0xdb, 0xd0, 0x30,
+	0xed, 0x89, 0xeb, 0xd0, 0x7a, 0x67, 0xed, 0x59, 0xbe, 0x6e, 0x1e, 0x1c, 0x48, 0x3c, 0x1d, 0x42,
+	0xbd, 0xaf, 0x39, 0x03, 0xa9, 0x86, 0xfe, 0x07, 0x37, 0xb0, 0x33, 0xf4, 0x4c, 0xec, 0x7f, 0xf7,
+	0x7c, 0xd7, 0xdf, 0xd9, 0xd1, 0x7e, 0x92, 0x04, 0xe5, 0x4f, 0x0e, 0xda, 0x2b, 0x11, 0x20, 0x07,
+	0x60, 0x44, 0x92, 0x24, 0x1a, 0xe5, 0x31, 0x49, 0xca, 0x22, 0x74, 0x3f, 0x27, 0x76, 0x55, 0x5f,
+	0x60, 0x78, 0xc5, 0x84, 0xa2, 0x01, 0x2c, 0xbf, 0xd0, 0xce, 0xd6, 0x1d, 0xdb, 0x36, 0x75, 0xcf,
+	0x72, 0xec, 0x4b, 0x79, 0x6c, 0x03, 0xe8, 0x8e, 0x6d, 0x0c, 0x75, 0xcf, 0x3a, 0x32, 0x25, 0x8e,
+	0x36, 0xb2, 0xe3, 0x69, 0x12, 0xdf, 0x7b, 0xf1, 0x61, 0x67, 0x4c, 0x16, 0x31, 0xa8, 0x24, 0x1b,
+	0x77, 0xff, 0xfb, 0x1e, 0x1d, 0x93, 0x0b, 0x6f, 0xcd, 0xe3, 0x06, 0x7b, 0x60, 0xbe, 0xf8, 0x37,
+	0x00, 0x00, 0xff, 0xff, 0xf1, 0x35, 0xcf, 0xfa, 0xf7, 0x0a, 0x00, 0x00,
 }
