@@ -155,6 +155,9 @@ message RPM {
 // Servo control of the device.
 message Servo {
   bool present = 1;
+  // Address to the host running the servod daemon.
+  // Port number servod is listening on.
+  IpEndpoint servod_address = 2;
 }
 
 message Touch {

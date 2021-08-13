@@ -12848,6 +12848,14 @@
               "name": "present",
               "number": 1,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "servodAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "servod_address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             }
           ],
           "name": "Servo"
