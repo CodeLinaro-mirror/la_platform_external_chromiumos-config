@@ -1,0 +1,62 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/build/api/dlc.proto";
+import "chromiumos/build/api/firmware_config.proto";
+import "chromiumos/build/api/portage.proto";
+import "chromiumos/storage_path.proto";
+
+// ProvisionState defines all of the installable (provisionable) elements on a
+// ChromeOS test device as part of device setup for test operations.
+//
+// This record is used to define the following:
+//   How devices should be provisioned based on the client's respective needs.
+//     E.g.
+//       CrOS CI - System image only
+//       Lacros CI - System image + Lacros component
+//   How device provisioning state is reported for corresponding test results.
+//     Every test result will link to a provisioning record for
+//     analysis/debugging.
+message ProvisionState {
+  // String encoded id that uniquely reflects a given ProvisionState.
+  // This is used for both scheduling and reporting purposes.
+  // For scheduling, is used to determine if a device is in the requested
+  // provisioning state for testing or it needs to be reprovisioned.
+  // For reporting, this can be used to compare the entire provision state
+  // (in a summarized string) across different test results.
+  Id id = 1;
+
+  message Id {
+    string value = 1;
+  }
+
+  chromiumos.build.api.FirmwareConfig firmware = 2;
+  SystemImage system_image = 3;
+  repeated Package packages = 4;
+
+
+  message SystemImage {
+    // Unique version used in constructing the overall Id
+    string version = 1;
+    StoragePath system_image_path = 2;
+    // List of DLCs that were built/archived for a given system image and are
+    // installed as part of provisioning.
+    repeated chromiumos.build.api.Dlc.Id dlcs = 3;
+  }
+
+  message Package {
+    // Package names must match actual portage package names that
+    // exist in a given ChromeOS test image.
+    // Package versions may be in any scheme that is relevant to the clients
+    // versioning scheme (e.g. Lacros build versions).
+    chromiumos.build.api.Portage.Package portage_package = 1;
+    StoragePath package_path = 2;
+  }
+}
