@@ -5,3 +5,4 @@ recipes/.recipe_deps
 *.pyc
 .venv
 .pytype
+.idea/*
