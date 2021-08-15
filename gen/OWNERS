@@ -1,4 +1,5 @@
 ##### AUTO-GENERATED FILE #####
 ##### See generate.sh     #####
+include chromiumos/chromite:/OWNERS.au
 include chromiumos/config:/OWNERS.fleetplatform
 include chromiumos/config:/OWNERS.testplatform
