@@ -10,6 +10,7 @@
 shopt -s globstar
 
 readonly golden_file="gen/golden_descriptors.json"
+readonly gen_owners="gen/OWNERS"
 
 regenerate_golden() {
     # We want to split --path from the filenames so silence warning.
@@ -140,6 +141,20 @@ for proto in "${proto_files[@]}"; do
     --go_out=plugins=grpc,paths=source_relative:"${GO_TEMP_DIR}" \
     "${proto}"
 done
+
+echo
+echo "== Generating OWNERS file for generated code paths"
+echo "##### AUTO-GENERATED FILE #####" > "${gen_owners}"
+echo "##### See generate.sh     #####" >> "${gen_owners}"
+find proto/* -type f -name "OWNERS*" | xargs cat | grep -E ^include | sort | uniq >> "${gen_owners}"
+find proto/* -type f -name "OWNERS*" | xargs cat | grep -E ^[a-z0-9]+@.+\..+ | sort | uniq >> "${gen_owners}"
+
+if ! git diff --quiet "${gen_owners}"; then
+  echo
+  echo "An OWNERS file was updated in the src/config/proto directory."
+  echo "${gen_owners} was automatically updated based on this change."
+  echo "Please commit ${gen_owners} with your change."
+fi
 
 cp -rf "${GO_TEMP_DIR}"/chromiumos/config/* go/
 cp "${GO_TEMP_DIR}"/chromiumos/*.go go/
