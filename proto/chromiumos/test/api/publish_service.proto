@@ -1,0 +1,43 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/longrunning/operations.proto";
+
+// Provides the ability to upload files to GS and publish results.
+// Publishing and upload require a more complex workflow than simple
+// file copy, and as such we require a service to simplify.
+service PublishService {
+  // UploadToGS uploads a folder to Google Cloud Storage
+  //
+  // Effectively this should function as a thin wrapper around the GCS API.
+  rpc UploadToGS(UploadToGSRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "UploadToGSResponse",
+      metadata_type: "UploadToGSMetadata"
+    };
+  }
+}
+
+message UploadToGSRequest {
+  // GS path to upload to, e.g. gs://foo/bar/baz/
+  string gs_directory = 1;
+
+  // Absolute path to local directory to upload to GS, e.g. /usr/local/foo/bar
+  string local_directory = 2;
+}
+
+message UploadToGSResponse {
+  // URL of Google Storage location containing offloaded files
+  string gs_url = 1;
+}
+
+message UploadToGSMetadata {
+}

@@ -12686,6 +12686,75 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/longrunning/operations.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "gsDirectory",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_directory",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "localDirectory",
+              "label": "LABEL_OPTIONAL",
+              "name": "local_directory",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "UploadToGSRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "gsUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_url",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "UploadToGSResponse"
+        },
+        {
+          "name": "UploadToGSMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/publish_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.UploadToGSRequest",
+              "name": "UploadToGS",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "UploadToGSMetadata",
+                  "responseType": "UploadToGSResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "PublishService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
