@@ -57,6 +57,9 @@ def main(opts):
   logging.debug('Writing output')
   io_utils.write_message_json(project_configs, args.output)
 
+  if args.binary_output:
+    io_utils.write_message_binary(project_configs, args.binary_output)
+
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description=__doc__)
@@ -66,6 +69,13 @@ if __name__ == "__main__":
       type=str,
       required=True,
       help='file to write joined payload to')
+
+  parser.add_argument(
+      '-b',
+      '--binary-output',
+      type=str,
+      help=('file to write the joined payload to in binary wire format, in '
+            'addition to the jsonpb written to --output.'))
 
   parser.add_argument(
       '-i',

@@ -31,6 +31,17 @@ def write_message_json(message: Message, path: pathlib.Path, \
     outfile.write(json_format.MessageToJson(message, **opts))
 
 
+def write_message_binary(message: Message, path: pathlib.Path):
+  """Write a Message to a file as binary wire format.
+
+  Args:
+    message: protobuf message to write to file
+    path: output file write to
+  """
+  with open(path, 'wb') as outfile:
+    outfile.write(message.SerializeToString())
+
+
 def read_json_proto(message, path):
   """Read a jsonproto encoded message from a file.
 
