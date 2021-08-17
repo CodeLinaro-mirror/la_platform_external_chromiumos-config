@@ -216,6 +216,9 @@ message ProvisionDutRequest {
 
   // target_build is the ChromeOS build to provision to.
   ChromeOsImage target_build = 5;
+
+  // force_provision_os will always provision the OS.
+  bool force_provision_os = 6;
 }
 
 message ProvisionDutResponse {

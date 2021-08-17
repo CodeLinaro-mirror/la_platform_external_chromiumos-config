@@ -9244,6 +9244,13 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.test.tls.ChromeOsImage"
+            },
+            {
+              "jsonName": "forceProvisionOs",
+              "label": "LABEL_OPTIONAL",
+              "name": "force_provision_os",
+              "number": 6,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "ProvisionDutRequest",
