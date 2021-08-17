@@ -12606,6 +12606,13 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ProvisionState.Package"
+            },
+            {
+              "jsonName": "preventReboot",
+              "label": "LABEL_OPTIONAL",
+              "name": "prevent_reboot",
+              "number": 5,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "ProvisionState",

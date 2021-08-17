@@ -40,7 +40,8 @@ message ProvisionState {
   chromiumos.build.api.FirmwareConfig firmware = 2;
   SystemImage system_image = 3;
   repeated Package packages = 4;
-
+  // Prevents device reboot during system image provisioning.
+  bool prevent_reboot = 5;
 
   message SystemImage {
     // Unique version used in constructing the overall Id
