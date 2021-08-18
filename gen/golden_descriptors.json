@@ -5385,6 +5385,172 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Chroot"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "root",
+              "label": "LABEL_OPTIONAL",
+              "name": "root",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "BuildTarget"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.TestContainersBuildResult.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.TestContainersBuildResult.Failure"
+            }
+          ],
+          "name": "TestContainersBuildResult",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "registryPath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "registry_path",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "buildTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_target",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.BuildTarget"
+            },
+            {
+              "jsonName": "chroot",
+              "label": "LABEL_OPTIONAL",
+              "name": "chroot",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.Chroot"
+            },
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "TestContainersBuildRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "results",
+              "label": "LABEL_REPEATED",
+              "name": "results",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.TestContainersBuildResult"
+            }
+          ],
+          "name": "BuildTestContainersResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "request",
+              "label": "LABEL_OPTIONAL",
+              "name": "request",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.TestContainersBuildRequest"
+            }
+          ],
+          "name": "BuildTestContainersRequest"
+        }
+      ],
+      "name": "chromiumos/build/api/test.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.build.api.BuildTestContainersRequest",
+              "name": "BuildTestExecContainer",
+              "options": {},
+              "outputType": ".chromiumos.build.api.BuildTestContainersResponse"
+            }
+          ],
+          "name": "ContainerService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/design.proto",
         "chromiumos/config/api/partner.proto",

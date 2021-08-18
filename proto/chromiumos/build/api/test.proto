@@ -1,0 +1,74 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+// Chroot information needed to support container creation. Can be expanded.
+message Chroot {
+  string path = 1;
+}
+
+// build information needed to support container creation. Can be expanded.
+message BuildTarget {
+  string root = 1;
+}
+
+
+// Abstracted Result from any test container build.
+message TestContainersBuildResult {
+  message Success {
+    // Full path to the build artifact in the hosted container registry.
+    string registry_path = 1;
+  }
+
+  message Failure {
+    // Debugging details about the error that occurred.
+    string error_message = 1;
+  }
+
+  // Human friendly name of the container built (for debugging/reporting only).
+  string name = 1;
+
+  oneof result {
+    Success success = 2;
+    Failure failure = 3;
+  }
+}
+
+// Abstract Container Request.
+message TestContainersBuildRequest {
+  // The build target the test service containers are being build for.
+  BuildTarget build_target = 1;
+
+  // The chroot containing the sysroot.
+  Chroot chroot = 2;
+
+  // Build version number, which matches the build artifact version
+  // number that will be tested ultimately.
+  string version = 3;
+}
+
+message BuildTestContainersResponse {
+  // List of containers that were attempted to be built and the success/failure
+  // results for each.
+  repeated TestContainersBuildResult results = 1;
+}
+
+message BuildTestContainersRequest {
+  TestContainersBuildRequest request = 1;
+}
+
+// Interface to build any of the test containers.
+service ContainerService {
+
+  rpc BuildTestExecContainer(BuildTestContainersRequest)
+    returns (BuildTestContainersResponse) {
+  }
+
+  // TODO(dbeckett): migrate BuildTestServiceContainers here as well?
+}

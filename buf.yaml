@@ -12,17 +12,13 @@ lint:
     - PACKAGE_VERSION_SUFFIX      # Don't require eg: .v1 suffix
     - RPC_REQUEST_RESPONSE_UNIQUE # Don't require RPC request/response types to be used once
     - RPC_RESPONSE_STANDARD_NAME  # We have a lot of requests that return longrunning.Operation
-
+    - RPC_REQUEST_STANDARD_NAME   # We have requests that abstraction is useful for.
   ignore:
     - chromiumos/config/api/test # Deprecated
 
   # Opt-outs for backwards compatibility with existing protos
   ignore_only:
     SERVICE_SUFFIX:
-      - chromiumos/longrunning
-    RPC_REQUEST_STANDARD_NAME:
-      - chromiumos/longrunning
-    RPC_RESPONSE_STANDARD_NAME:
       - chromiumos/longrunning
 
 breaking:
