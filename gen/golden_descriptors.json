@@ -2343,6 +2343,10 @@
                     {
                       "name": "CS42L42",
                       "number": 11
+                    },
+                    {
+                      "name": "ALC5682IVS",
+                      "number": 12
                     }
                   ]
                 },

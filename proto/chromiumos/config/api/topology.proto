@@ -186,6 +186,7 @@ message HardwareFeatures {
       // New audio codecs
       NAU88L25B = 10;
       CS42L42 = 11;
+      ALC5682IVS = 12;
     }
 
     enum Amplifier {
