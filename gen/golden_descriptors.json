@@ -12917,7 +12917,8 @@
       "dependency": [
         "chromiumos/build/api/firmware_config.proto",
         "chromiumos/longrunning/operations.proto",
-        "chromiumos/storage_path.proto"
+        "chromiumos/storage_path.proto",
+        "chromiumos/test/api/provision_state.proto"
       ],
       "messageType": [
         {
@@ -13188,6 +13189,19 @@
         {
           "field": [
             {
+              "jsonName": "provisionState",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_state",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState"
+            }
+          ],
+          "name": "InstallRequest"
+        },
+        {
+          "field": [
+            {
               "jsonName": "success",
               "label": "LABEL_OPTIONAL",
               "name": "success",
@@ -13272,6 +13286,17 @@
             {
               "inputType": ".chromiumos.test.api.InstallFirmwareRequest",
               "name": "InstallFirmware",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallFirmwareMetadata",
+                  "responseType": "InstallFirmwareResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallRequest",
+              "name": "Install",
               "options": {
                 "[chromiumos.longrunning.operation_info]": {
                   "metadataType": "InstallFirmwareMetadata",
