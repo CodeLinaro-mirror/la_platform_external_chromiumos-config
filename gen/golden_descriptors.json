@@ -12189,809 +12189,6 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
-      "dependency": [
-        "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/longrunning/operations.proto",
-        "chromiumos/storage_path.proto"
-      ],
-      "messageType": [
-        {
-          "name": "InstallSuccess"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Reason",
-              "value": [
-                {
-                  "name": "REASON_INVALID_REQUEST",
-                  "number": 0
-                },
-                {
-                  "name": "REASON_DUT_UNREACHABLE_PRE_PROVISION",
-                  "number": 1
-                },
-                {
-                  "name": "REASON_DOWNLOADING_IMAGE_FAILED",
-                  "number": 2
-                },
-                {
-                  "name": "REASON_PROVISIONING_TIMEDOUT",
-                  "number": 3
-                },
-                {
-                  "name": "REASON_PROVISIONING_FAILED",
-                  "number": 4
-                },
-                {
-                  "name": "REASON_DUT_UNREACHABLE_POST_PROVISION",
-                  "number": 5
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "reason",
-              "label": "LABEL_OPTIONAL",
-              "name": "reason",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.InstallFailure.Reason"
-            }
-          ],
-          "name": "InstallFailure"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "crosImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "cros_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "dlcSpecs",
-              "label": "LABEL_REPEATED",
-              "name": "dlc_specs",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallCrosRequest.DLCSpec"
-            },
-            {
-              "jsonName": "preserveStateful",
-              "label": "LABEL_OPTIONAL",
-              "name": "preserve_stateful",
-              "number": 3,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "InstallCrosRequest",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "id",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "id",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "DLCSpec"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallCrosResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallCrosMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "lacrosImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "lacros_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            }
-          ],
-          "name": "InstallLacrosRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallLacrosResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallLacrosMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "ashImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "ash_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            }
-          ],
-          "name": "InstallAshRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallAshResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallAshMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "ashImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "ash_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            }
-          ],
-          "name": "InstallArcRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallArcResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallArcMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "firmwareConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_config",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.FirmwareConfig"
-            }
-          ],
-          "name": "InstallFirmwareRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallFirmwareResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallFirmwareMetadata"
-        }
-      ],
-      "name": "chromiumos/test/api/provision_service.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.InstallCrosRequest",
-              "name": "InstallCros",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallCrosMetadata",
-                  "responseType": "InstallCrosResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallLacrosRequest",
-              "name": "InstallLacros",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallLacrosMetadata",
-                  "responseType": "InstallLacrosResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallAshRequest",
-              "name": "InstallAsh",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallAshMetadata",
-                  "responseType": "InstallAshResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallArcRequest",
-              "name": "InstallArc",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallArcMetadata",
-                  "responseType": "InstallArcResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallFirmwareRequest",
-              "name": "InstallFirmware",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallFirmwareMetadata",
-                  "responseType": "InstallFirmwareResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            }
-          ],
-          "name": "ProvisionService"
-        }
-      ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/build/api/dlc.proto",
-        "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/build/api/portage.proto",
-        "chromiumos/storage_path.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ProvisionState.Id"
-            },
-            {
-              "jsonName": "firmware",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.FirmwareConfig"
-            },
-            {
-              "jsonName": "systemImage",
-              "label": "LABEL_OPTIONAL",
-              "name": "system_image",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ProvisionState.SystemImage"
-            },
-            {
-              "jsonName": "packages",
-              "label": "LABEL_REPEATED",
-              "name": "packages",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ProvisionState.Package"
-            },
-            {
-              "jsonName": "preventReboot",
-              "label": "LABEL_OPTIONAL",
-              "name": "prevent_reboot",
-              "number": 5,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "ProvisionState",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Id"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "version",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "version",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "systemImagePath",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "system_image_path",
-                  "number": 2,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.StoragePath"
-                },
-                {
-                  "jsonName": "dlcs",
-                  "label": "LABEL_REPEATED",
-                  "name": "dlcs",
-                  "number": 3,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.build.api.Dlc.Id"
-                }
-              ],
-              "name": "SystemImage"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "portagePackage",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "portage_package",
-                  "number": 1,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.build.api.Portage.Package"
-                },
-                {
-                  "jsonName": "packagePath",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "package_path",
-                  "number": 2,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.StoragePath"
-                }
-              ],
-              "name": "Package"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/api/provision_state.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/longrunning/operations.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "gsDirectory",
-              "label": "LABEL_OPTIONAL",
-              "name": "gs_directory",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "localDirectory",
-              "label": "LABEL_OPTIONAL",
-              "name": "local_directory",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "UploadToGSRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "gsUrl",
-              "label": "LABEL_OPTIONAL",
-              "name": "gs_url",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "UploadToGSResponse"
-        },
-        {
-          "name": "UploadToGSMetadata"
-        }
-      ],
-      "name": "chromiumos/test/api/publish_service.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.UploadToGSRequest",
-              "name": "UploadToGS",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "UploadToGSMetadata",
-                  "responseType": "UploadToGSResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            }
-          ],
-          "name": "PublishService"
-        }
-      ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "manual",
-              "label": "LABEL_OPTIONAL",
-              "name": "manual",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestHarness.Manual"
-            },
-            {
-              "jsonName": "tauto",
-              "label": "LABEL_OPTIONAL",
-              "name": "tauto",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestHarness.Tauto"
-            },
-            {
-              "jsonName": "tast",
-              "label": "LABEL_OPTIONAL",
-              "name": "tast",
-              "number": 3,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestHarness.Tast"
-            }
-          ],
-          "name": "TestHarness",
-          "nestedType": [
-            {
-              "name": "Manual"
-            },
-            {
-              "name": "Tast"
-            },
-            {
-              "name": "Tauto"
-            }
-          ],
-          "oneofDecl": [
-            {
-              "name": "test_harness_type"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/api/test_harness.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/test/api/test_case.proto",
-        "chromiumos/test/api/test_harness.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "testCase",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCase"
-            },
-            {
-              "jsonName": "testCaseExec",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_exec",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseExec"
-            },
-            {
-              "jsonName": "testCaseInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_info",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseInfo"
-            }
-          ],
-          "name": "TestCaseMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "testHarness",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_harness",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestHarness"
-            }
-          ],
-          "name": "TestCaseExec"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "owners",
-              "label": "LABEL_REPEATED",
-              "name": "owners",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Contact"
-            }
-          ],
-          "name": "TestCaseInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "email",
-              "label": "LABEL_OPTIONAL",
-              "name": "email",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "Contact"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "values",
-              "label": "LABEL_REPEATED",
-              "name": "values",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseMetadata"
-            }
-          ],
-          "name": "TestCaseMetadataList"
-        }
-      ],
-      "name": "chromiumos/test/api/test_case_metadata.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/test/api/dut_attribute.proto"
-      ],
-      "messageType": [
-        {
-          "enumType": [
-            {
-              "name": "Stability",
-              "value": [
-                {
-                  "name": "STABILITY_UNKNOWN",
-                  "number": 0
-                },
-                {
-                  "name": "STABLE",
-                  "number": 1
-                },
-                {
-                  "name": "UNSTABLE",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "dutCriteria",
-              "label": "LABEL_REPEATED",
-              "name": "dut_criteria",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.DutCriterion"
-            },
-            {
-              "jsonName": "stability",
-              "label": "LABEL_OPTIONAL",
-              "name": "stability",
-              "number": 2,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.dut.DeviceStability.Stability"
-            }
-          ],
-          "name": "DeviceStability"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "values",
-              "label": "LABEL_REPEATED",
-              "name": "values",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.dut.DeviceStability"
-            }
-          ],
-          "name": "DeviceStabilityList"
-        }
-      ],
-      "name": "chromiumos/test/dut/device_stability.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/dut"
-      },
-      "package": "chromiumos.test.dut",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
       "messageType": [
         {
           "field": [
@@ -13579,6 +12776,918 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
       },
       "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/build/api/dlc.proto",
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/build/api/portage.proto",
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState.Id"
+            },
+            {
+              "jsonName": "firmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "systemImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "system_image",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState.SystemImage"
+            },
+            {
+              "jsonName": "packages",
+              "label": "LABEL_REPEATED",
+              "name": "packages",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState.Package"
+            },
+            {
+              "jsonName": "preventReboot",
+              "label": "LABEL_OPTIONAL",
+              "name": "prevent_reboot",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "ProvisionState",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "version",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "systemImagePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "system_image_path",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.StoragePath"
+                },
+                {
+                  "jsonName": "dlcs",
+                  "label": "LABEL_REPEATED",
+                  "name": "dlcs",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.Dlc.Id"
+                }
+              ],
+              "name": "SystemImage"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "portagePackage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "portage_package",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.Portage.Package"
+                },
+                {
+                  "jsonName": "packagePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "package_path",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.StoragePath"
+                }
+              ],
+              "name": "Package"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/provision_state.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/longrunning/operations.proto",
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "name": "InstallSuccess"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Reason",
+              "value": [
+                {
+                  "name": "REASON_INVALID_REQUEST",
+                  "number": 0
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_PRE_PROVISION",
+                  "number": 1
+                },
+                {
+                  "name": "REASON_DOWNLOADING_IMAGE_FAILED",
+                  "number": 2
+                },
+                {
+                  "name": "REASON_PROVISIONING_TIMEDOUT",
+                  "number": 3
+                },
+                {
+                  "name": "REASON_PROVISIONING_FAILED",
+                  "number": 4
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_POST_PROVISION",
+                  "number": 5
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "reason",
+              "label": "LABEL_OPTIONAL",
+              "name": "reason",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.InstallFailure.Reason"
+            }
+          ],
+          "name": "InstallFailure"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "crosImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "dlcSpecs",
+              "label": "LABEL_REPEATED",
+              "name": "dlc_specs",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallCrosRequest.DLCSpec"
+            },
+            {
+              "jsonName": "preserveStateful",
+              "label": "LABEL_OPTIONAL",
+              "name": "preserve_stateful",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "InstallCrosRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "id",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "id",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "DLCSpec"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallCrosResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallCrosMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "lacrosImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "lacros_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            }
+          ],
+          "name": "InstallLacrosRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallLacrosResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallLacrosMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ashImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            }
+          ],
+          "name": "InstallAshRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallAshResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallAshMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ashImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            }
+          ],
+          "name": "InstallArcRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallArcResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallArcMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "firmwareConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            }
+          ],
+          "name": "InstallFirmwareRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallFirmwareResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallFirmwareMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/provision_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.InstallCrosRequest",
+              "name": "InstallCros",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallCrosMetadata",
+                  "responseType": "InstallCrosResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallLacrosRequest",
+              "name": "InstallLacros",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallLacrosMetadata",
+                  "responseType": "InstallLacrosResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallAshRequest",
+              "name": "InstallAsh",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallAshMetadata",
+                  "responseType": "InstallAshResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallArcRequest",
+              "name": "InstallArc",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallArcMetadata",
+                  "responseType": "InstallArcResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallFirmwareRequest",
+              "name": "InstallFirmware",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallFirmwareMetadata",
+                  "responseType": "InstallFirmwareResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "ProvisionService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/lab/api/dut.proto",
+        "chromiumos/test/api/provision_state.proto",
+        "chromiumos/test/api/provision_service.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "dutInputs",
+              "label": "LABEL_REPEATED",
+              "name": "dut_inputs",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutInput"
+            }
+          ],
+          "name": "ProvisionCliInput"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut.Id"
+            },
+            {
+              "jsonName": "dockerTag",
+              "label": "LABEL_OPTIONAL",
+              "name": "docker_tag",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "provisionState",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_state",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState"
+            }
+          ],
+          "name": "DutInput"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dutOutputs",
+              "label": "LABEL_REPEATED",
+              "name": "dut_outputs",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutOutput"
+            }
+          ],
+          "name": "ProvisionCliOutput"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut.Id"
+            },
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "DutOutput",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/provision_cli.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/longrunning/operations.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "gsDirectory",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_directory",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "localDirectory",
+              "label": "LABEL_OPTIONAL",
+              "name": "local_directory",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "UploadToGSRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "gsUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_url",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "UploadToGSResponse"
+        },
+        {
+          "name": "UploadToGSMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/publish_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.UploadToGSRequest",
+              "name": "UploadToGS",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "UploadToGSMetadata",
+                  "responseType": "UploadToGSResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "PublishService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "manual",
+              "label": "LABEL_OPTIONAL",
+              "name": "manual",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Manual"
+            },
+            {
+              "jsonName": "tauto",
+              "label": "LABEL_OPTIONAL",
+              "name": "tauto",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Tauto"
+            },
+            {
+              "jsonName": "tast",
+              "label": "LABEL_OPTIONAL",
+              "name": "tast",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Tast"
+            }
+          ],
+          "name": "TestHarness",
+          "nestedType": [
+            {
+              "name": "Manual"
+            },
+            {
+              "name": "Tast"
+            },
+            {
+              "name": "Tauto"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "test_harness_type"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/test_harness.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/test_case.proto",
+        "chromiumos/test/api/test_harness.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "testCase",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase"
+            },
+            {
+              "jsonName": "testCaseExec",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_exec",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseExec"
+            },
+            {
+              "jsonName": "testCaseInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_info",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseInfo"
+            }
+          ],
+          "name": "TestCaseMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testHarness",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_harness",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness"
+            }
+          ],
+          "name": "TestCaseExec"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "owners",
+              "label": "LABEL_REPEATED",
+              "name": "owners",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Contact"
+            }
+          ],
+          "name": "TestCaseInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "email",
+              "label": "LABEL_OPTIONAL",
+              "name": "email",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Contact"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseMetadata"
+            }
+          ],
+          "name": "TestCaseMetadataList"
+        }
+      ],
+      "name": "chromiumos/test/api/test_case_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/dut_attribute.proto"
+      ],
+      "messageType": [
+        {
+          "enumType": [
+            {
+              "name": "Stability",
+              "value": [
+                {
+                  "name": "STABILITY_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "STABLE",
+                  "number": 1
+                },
+                {
+                  "name": "UNSTABLE",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "dutCriteria",
+              "label": "LABEL_REPEATED",
+              "name": "dut_criteria",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutCriterion"
+            },
+            {
+              "jsonName": "stability",
+              "label": "LABEL_OPTIONAL",
+              "name": "stability",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.dut.DeviceStability.Stability"
+            }
+          ],
+          "name": "DeviceStability"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.dut.DeviceStability"
+            }
+          ],
+          "name": "DeviceStabilityList"
+        }
+      ],
+      "name": "chromiumos/test/dut/device_stability.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/dut"
+      },
+      "package": "chromiumos.test.dut",
       "syntax": "proto3"
     },
     {
