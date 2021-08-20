@@ -13693,6 +13693,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestHarness.Tast"
+            },
+            {
+              "jsonName": "gtest",
+              "label": "LABEL_OPTIONAL",
+              "name": "gtest",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Gtest"
             }
           ],
           "name": "TestHarness",
@@ -13705,6 +13714,9 @@
             },
             {
               "name": "Tauto"
+            },
+            {
+              "name": "Gtest"
             }
           ],
           "oneofDecl": [

@@ -16,9 +16,11 @@ message TestHarness {
     Manual manual = 1;
     Tauto tauto = 2;
     Tast tast = 3;
+    Gtest gtest = 4;
   }
 
   message Manual {}
   message Tast {}
   message Tauto {}
+  message Gtest {}
 }
