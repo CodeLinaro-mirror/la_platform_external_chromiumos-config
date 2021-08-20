@@ -18,9 +18,14 @@ trap "summarize" EXIT
 
 source "${script_dir}/../setup_cipd.sh"
 
+regen_proto=1
 output_dir="."
 while [[ $# -gt 0 ]]; do
     case $1 in
+        --no-proto)
+            regen_proto=0
+            shift
+            ;;
         --output-dir|-o)
             output_dir="$2"
             shift
@@ -43,7 +48,7 @@ readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
 # Hitting some relative links so change to the directory.
 cd "${config_dir}"
 
-if [[ ! -f ${script_dir}/../util/bindings/descpb.bin ]]; then
+if [[ ${regen_proto} -eq 1 ]]; then
   if ! config/generate.sh; then
     echo "blew up generating proto descriptors" >&2
     exit 1
