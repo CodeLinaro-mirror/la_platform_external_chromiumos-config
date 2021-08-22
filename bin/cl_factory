@@ -69,6 +69,9 @@ TEST=CQ"
     cmd.extend(
         ['-p', '\'replace_strings={}\''.format(json.dumps(replace_strings))])
 
+  if args.manifest_branch:
+    cmd.extend(['-p', '\'manifest_branch={}\''.format(args.manifest_branch)])
+
   cmd.extend(['-p', quote('message_template={}'.format(args.message))])
   cmd.append('chromeos/infra/ClFactory')
 
@@ -167,6 +170,12 @@ def main():
       dest='dryrun',
       default=True,
       action='store_false')
+  parser.add_argument(
+      '--manifest_branch',
+      type=str,
+      required=False,
+      help='Manifest branch to checkout and upload changes for. '
+      'If not specified, ToT is used.')
   args = parser.parse_args()
   Main(args)
 
