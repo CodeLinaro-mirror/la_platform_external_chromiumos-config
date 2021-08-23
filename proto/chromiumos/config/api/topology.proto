@@ -187,6 +187,7 @@ message HardwareFeatures {
       NAU88L25B = 10;
       CS42L42 = 11;
       ALC5682IVS = 12;
+      WCD9385 = 13;
     }
 
     enum Amplifier {

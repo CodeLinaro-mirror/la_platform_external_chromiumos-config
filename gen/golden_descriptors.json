@@ -2347,6 +2347,10 @@
                     {
                       "name": "ALC5682IVS",
                       "number": 12
+                    },
+                    {
+                      "name": "WCD9385",
+                      "number": 13
                     }
                   ]
                 },
