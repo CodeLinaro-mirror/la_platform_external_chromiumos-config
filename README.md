@@ -47,6 +47,48 @@ config repos for the projects and programs they are working on.
    program and project and other related repositories, symlinking a local
    manifest, and finally doing a full chromiumos sync.
 
+### Syncing to a specific ChromeOS version (buildspec)
+
+**Googlers have access to full private buildspecs and should not run these
+steps.**
+
+1. Make sure that you and your project(s) are enrolled in this program (a
+   Google contact will need to set this up for you.)
+1. Choose the buildspec you'd like to sync to, e.g. `full/buildspecs/92/13963.2.0.xml`.
+   [List of available buildspecs](https://chromium.googlesource.com/chromiumos/manifest-versions/+/refs/heads/main/).
+   1. Provided the project in question has been properly enrolled, project-specific buildspecs are automatically created for new versions (at up to a 12 hour delay). If you'd like to sync to an older buildspec (or one that has not yet been created):
+     1. run ```bb add chromeos/partner-access/project-buildspec -p program={your program} -p project={your project} -p buildspec={buildspec}```
+     1. Follow the link that `bb add` prints and verify that the run has successfully completed.
+1. In a new or existing chromiumos checkout, run:
+  1. e.g. ```repo init -u https://chromium.googlesource.com/chromiumos/manifest-versions -b main -m {buildspec}```
+  1. ```cipd install -root .cipd_bin chromiumos/infra/setup_project/linux-amd64 prod```
+  1. ```./.cipd_bin/setup_project auth-login```. As of 08/26/21, this app does not yet have 1p verification
+    so certain scopes are disabled by default on the OAuth ogin screen. Make sure you enable all scopes when logging in.
+  1. e.g. ```./.cipd_bin/setup_project setup-project --checkout={your checkout path} --program {your program} --project {your project} --buildspec {buildspec}```
+  1. ```repo sync --force-sync -j12```
+
+#### Partner Troubleshooting
+
+* `setup-project` spits out something like the following:
+  * ```2021/07/31 10:10:10.529001 error downloading gs://chromeos-{program}/{project}/{buildspec}: download: googleapi: got HTTP response code 403 with body: <?xml version='1.0' encoding='UTF-8'?><Error><Code>AccessDenied</Code><Message>Access denied.</Message></Error> or 2021/08/11 23:49:56.131370 error downloading gs://chromeos-{program}/{buildspec}: download: googleapi: got HTTP response code 403 with body: <?xml version='1.0' encoding='UTF-8'?><Error><Code>AccessDenied</Code><Message>Access denied.</Message><Details>user@gmail.com does not have storage.objects.get access to the Google Cloud Storage object.</Details></Error>```
+  * Things to try:
+    * Some partners have different processes for setting up host config/gs access. Confirm access to the requisite GS bucket/object with ```gsutil ls gs://chromeos-{program}-{project}/```
+    * Make sure you enabled all API scopes when logging in on the OAuth page
+
+#### Googler Workflows:
+
+1. Enrolling a new partner:
+  1. (Temporary, as of 08/26/21): The setup_project app has not yet been verified. Add users as Test Users on the setup_project OAuth configuration page [screenshot](https://screenshot.googleplex.com/A4g7m4gaUeYB2Di).
+  1. In order for a partner to kick off a project-buildspec build via bb add, they need to be added to [cria/project-chromeos-partner-access](https://chrome-infra-auth.appspot.com/auth/groups/project-chromeos-partner-access). If you want to add a google or mdb group, you need to export the group to CRIA by cutting a CL ([example](https://critique-ng.corp.google.com/cl/386477578)).
+1. Enrolling a new project:
+  1. Enroll the appropriate projects in automatic buildspec creation by adding them to the `project_buildspecs` property of `manifest-doctor` ([example](crrev.com/i/4081090)).
+  1. (Temporary, as of 08/26/21): Create a program bucket: From the root of a chromiumos checkout, run ```./src/config/sbin/create_partner_repo --run createprogrambuckets --program {your program}```.
+    1. For now, you need to manually set the "Storage Object Viewer" permission for the appropriate groups ([example](https://screenshot.googleplex.com/63ioviutNRiebL2)).
+
+#### See Also
+* [go/per-project-buildspecs](http://go/per-project-buildspecs)
+* [go/cros-partner-buildspec-sync](http://go/cros-partner-buildspec-sync)
+
 ### Configuring the Chroot
 
 **As of 6/8/2020, profiles have not been set up for all projects. Please check with your Google representative on the status of your project.**
