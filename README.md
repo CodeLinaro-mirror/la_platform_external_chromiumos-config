@@ -57,7 +57,7 @@ steps.**
 1. Choose the buildspec you'd like to sync to, e.g. `full/buildspecs/92/13963.2.0.xml`.
    [List of available buildspecs](https://chromium.googlesource.com/chromiumos/manifest-versions/+/refs/heads/main/).
    1. Provided the project in question has been properly enrolled, project-specific buildspecs are automatically created for new versions (at up to a 12 hour delay). If you'd like to sync to an older buildspec (or one that has not yet been created):
-     1. run ```bb add chromeos/partner-access/project-buildspec -p program={your program} -p project={your project} -p buildspec={buildspec}```
+     1. run ```bb add chromeos/partner-access/project-buildspec -p 'projects=["{project}/{program}"]' -p buildspec={buildspec}```
      1. Follow the link that `bb add` prints and verify that the run has successfully completed.
 1. In a new or existing chromiumos checkout, run:
   1. e.g. ```repo init -u https://chromium.googlesource.com/chromiumos/manifest-versions -b main -m {buildspec}```
