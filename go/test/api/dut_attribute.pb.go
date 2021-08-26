@@ -24,19 +24,35 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // for use in test coverage rules.
 type DutAttribute struct {
 	Id *DutAttribute_Id `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Field in a chromiumos.config.payload.ConfigBundle proto that forms the
-	// value of the attribute.
+	// Alternate names to make the label available under (for migration and
+	// backwards compatibility support).  No restrictions on name format.
+	Aliases []string `protobuf:"bytes,2,rep,name=aliases,proto3" json:"aliases,omitempty"`
+	// Definition of the attribute source data
 	//
-	// The path should start at ConfigBundle and be delimited by ".". For
-	// example, "components.bluetooth.usb.vendor_id". Only scalar fields are
-	// allowed as the last component of the path.
+	// Types that are valid to be assigned to DataSource:
+	//	*DutAttribute_FlatConfigSource_
+	//	*DutAttribute_HwidSource_
+	DataSource isDutAttribute_DataSource `protobuf_oneof:"data_source"`
+	// Optional values and excluded values.
+	//   If these are specified then if the attribute matches _any_ value in
+	// allowed_values and _zero_ values in exclude_values, the attribute is
+	// exposed with a True value and otherwise it is exposed with a False value.
 	//
-	// The value of the field specified here forms the value of the attribute.
-	// The field in the ConfigBundle may be a reference to a field in hwid
-	// hwid files, in which case the value of the field in the hwid file is used
-	// In the above example, the value would be found in a hwid file and could
-	// be something like "btvendor123".
-	FieldPath            string   `protobuf:"bytes,2,opt,name=field_path,json=fieldPath,proto3" json:"field_path,omitempty"`
+	// Values are compared case insensitively.
+	//
+	// Example:
+	// {
+	//   "id" : {
+	//     "value": "starts-with-a-but-not-atlas"
+	//   },
+	//   "static_field" : {
+	//     "field_specs" : ["program.platform.soc_arch"]
+	//   },
+	//   "allowed_values" : ["asuka", "asurada"],
+	//   "exclude_values" : ["atlas"]
+	// }
+	AllowedValues        []string `protobuf:"bytes,5,rep,name=allowed_values,json=allowedValues,proto3" json:"allowed_values,omitempty"`
+	ExcludeValues        []string `protobuf:"bytes,6,rep,name=exclude_values,json=excludeValues,proto3" json:"exclude_values,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -74,15 +90,86 @@ func (m *DutAttribute) GetId() *DutAttribute_Id {
 	return nil
 }
 
-func (m *DutAttribute) GetFieldPath() string {
+func (m *DutAttribute) GetAliases() []string {
 	if m != nil {
-		return m.FieldPath
+		return m.Aliases
 	}
-	return ""
+	return nil
 }
 
-// Globally unique identifier for the attribute. Usually reflects the
-// contents of the attribute, e.g. "bluetooth_vendor".
+type isDutAttribute_DataSource interface {
+	isDutAttribute_DataSource()
+}
+
+type DutAttribute_FlatConfigSource_ struct {
+	FlatConfigSource *DutAttribute_FlatConfigSource `protobuf:"bytes,3,opt,name=flat_config_source,json=flatConfigSource,proto3,oneof"`
+}
+
+type DutAttribute_HwidSource_ struct {
+	HwidSource *DutAttribute_HwidSource `protobuf:"bytes,4,opt,name=hwid_source,json=hwidSource,proto3,oneof"`
+}
+
+func (*DutAttribute_FlatConfigSource_) isDutAttribute_DataSource() {}
+
+func (*DutAttribute_HwidSource_) isDutAttribute_DataSource() {}
+
+func (m *DutAttribute) GetDataSource() isDutAttribute_DataSource {
+	if m != nil {
+		return m.DataSource
+	}
+	return nil
+}
+
+func (m *DutAttribute) GetFlatConfigSource() *DutAttribute_FlatConfigSource {
+	if x, ok := m.GetDataSource().(*DutAttribute_FlatConfigSource_); ok {
+		return x.FlatConfigSource
+	}
+	return nil
+}
+
+func (m *DutAttribute) GetHwidSource() *DutAttribute_HwidSource {
+	if x, ok := m.GetDataSource().(*DutAttribute_HwidSource_); ok {
+		return x.HwidSource
+	}
+	return nil
+}
+
+func (m *DutAttribute) GetAllowedValues() []string {
+	if m != nil {
+		return m.AllowedValues
+	}
+	return nil
+}
+
+func (m *DutAttribute) GetExcludeValues() []string {
+	if m != nil {
+		return m.ExcludeValues
+	}
+	return nil
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*DutAttribute) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*DutAttribute_FlatConfigSource_)(nil),
+		(*DutAttribute_HwidSource_)(nil),
+	}
+}
+
+// Globally unique identifier for the attribute. Value must match:
+//   ^([a-zA-Z0-9]+-?)+[a-zA-Z0-9]+$
+//
+// That is, valid identifiers are alphanumberic strings with - joining them.
+//
+// Examples:
+//   valid
+//     attr-device-model
+//     attr-label-2
+//
+//   invalid
+//     attr_device_model
+//     _attr-device-model
+//     attr-device-model-
 type DutAttribute_Id struct {
 	Value                string   `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -120,6 +207,139 @@ func (m *DutAttribute_Id) GetValue() string {
 		return m.Value
 	}
 	return ""
+}
+
+// A field spec is a chain of field names ending in a scalar or enum, excluding
+// floating point values.
+//   eg: 'program.platform.soc_arch'
+type DutAttribute_FieldSpec struct {
+	Path                 string   `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DutAttribute_FieldSpec) Reset()         { *m = DutAttribute_FieldSpec{} }
+func (m *DutAttribute_FieldSpec) String() string { return proto.CompactTextString(m) }
+func (*DutAttribute_FieldSpec) ProtoMessage()    {}
+func (*DutAttribute_FieldSpec) Descriptor() ([]byte, []int) {
+	return fileDescriptor_41053f368c84a1c0, []int{0, 1}
+}
+
+func (m *DutAttribute_FieldSpec) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DutAttribute_FieldSpec.Unmarshal(m, b)
+}
+func (m *DutAttribute_FieldSpec) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DutAttribute_FieldSpec.Marshal(b, m, deterministic)
+}
+func (m *DutAttribute_FieldSpec) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DutAttribute_FieldSpec.Merge(m, src)
+}
+func (m *DutAttribute_FieldSpec) XXX_Size() int {
+	return xxx_messageInfo_DutAttribute_FieldSpec.Size(m)
+}
+func (m *DutAttribute_FieldSpec) XXX_DiscardUnknown() {
+	xxx_messageInfo_DutAttribute_FieldSpec.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DutAttribute_FieldSpec proto.InternalMessageInfo
+
+func (m *DutAttribute_FieldSpec) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
+// FlatConfigSource specifies an attribute value that comes directly from the
+// FlatConfig payload.  Fields are tried in-order, taking the first one that
+// matches.
+type DutAttribute_FlatConfigSource struct {
+	Fields               []*DutAttribute_FieldSpec `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *DutAttribute_FlatConfigSource) Reset()         { *m = DutAttribute_FlatConfigSource{} }
+func (m *DutAttribute_FlatConfigSource) String() string { return proto.CompactTextString(m) }
+func (*DutAttribute_FlatConfigSource) ProtoMessage()    {}
+func (*DutAttribute_FlatConfigSource) Descriptor() ([]byte, []int) {
+	return fileDescriptor_41053f368c84a1c0, []int{0, 2}
+}
+
+func (m *DutAttribute_FlatConfigSource) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DutAttribute_FlatConfigSource.Unmarshal(m, b)
+}
+func (m *DutAttribute_FlatConfigSource) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DutAttribute_FlatConfigSource.Marshal(b, m, deterministic)
+}
+func (m *DutAttribute_FlatConfigSource) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DutAttribute_FlatConfigSource.Merge(m, src)
+}
+func (m *DutAttribute_FlatConfigSource) XXX_Size() int {
+	return xxx_messageInfo_DutAttribute_FlatConfigSource.Size(m)
+}
+func (m *DutAttribute_FlatConfigSource) XXX_DiscardUnknown() {
+	xxx_messageInfo_DutAttribute_FlatConfigSource.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DutAttribute_FlatConfigSource proto.InternalMessageInfo
+
+func (m *DutAttribute_FlatConfigSource) GetFields() []*DutAttribute_FieldSpec {
+	if m != nil {
+		return m.Fields
+	}
+	return nil
+}
+
+// HwidSource specifies an attribute value that's mediated by HWID server
+// Fields are tried in-order, taking the first one that matches.
+type DutAttribute_HwidSource struct {
+	ComponentType        string                    `protobuf:"bytes,1,opt,name=component_type,json=componentType,proto3" json:"component_type,omitempty"`
+	Fields               []*DutAttribute_FieldSpec `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *DutAttribute_HwidSource) Reset()         { *m = DutAttribute_HwidSource{} }
+func (m *DutAttribute_HwidSource) String() string { return proto.CompactTextString(m) }
+func (*DutAttribute_HwidSource) ProtoMessage()    {}
+func (*DutAttribute_HwidSource) Descriptor() ([]byte, []int) {
+	return fileDescriptor_41053f368c84a1c0, []int{0, 3}
+}
+
+func (m *DutAttribute_HwidSource) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DutAttribute_HwidSource.Unmarshal(m, b)
+}
+func (m *DutAttribute_HwidSource) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DutAttribute_HwidSource.Marshal(b, m, deterministic)
+}
+func (m *DutAttribute_HwidSource) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DutAttribute_HwidSource.Merge(m, src)
+}
+func (m *DutAttribute_HwidSource) XXX_Size() int {
+	return xxx_messageInfo_DutAttribute_HwidSource.Size(m)
+}
+func (m *DutAttribute_HwidSource) XXX_DiscardUnknown() {
+	xxx_messageInfo_DutAttribute_HwidSource.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DutAttribute_HwidSource proto.InternalMessageInfo
+
+func (m *DutAttribute_HwidSource) GetComponentType() string {
+	if m != nil {
+		return m.ComponentType
+	}
+	return ""
+}
+
+func (m *DutAttribute_HwidSource) GetFields() []*DutAttribute_FieldSpec {
+	if m != nil {
+		return m.Fields
+	}
+	return nil
 }
 
 type DutAttributeList struct {
@@ -166,7 +386,7 @@ type DutCriterion struct {
 	// ID of the DUT attribute that must meet the criterion.
 	AttributeId *DutAttribute_Id `protobuf:"bytes,1,opt,name=attribute_id,json=attributeId,proto3" json:"attribute_id,omitempty"`
 	// List of ANY acceptable values to match (OR logic is applied).
-	// Values must match exactly (i.e. no regexp, wildcard, etc. allowed).
+	// Values are compared as simple strings case insensitively.
 	Values               []string `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -215,6 +435,9 @@ func (m *DutCriterion) GetValues() []string {
 func init() {
 	proto.RegisterType((*DutAttribute)(nil), "chromiumos.test.api.DutAttribute")
 	proto.RegisterType((*DutAttribute_Id)(nil), "chromiumos.test.api.DutAttribute.Id")
+	proto.RegisterType((*DutAttribute_FieldSpec)(nil), "chromiumos.test.api.DutAttribute.FieldSpec")
+	proto.RegisterType((*DutAttribute_FlatConfigSource)(nil), "chromiumos.test.api.DutAttribute.FlatConfigSource")
+	proto.RegisterType((*DutAttribute_HwidSource)(nil), "chromiumos.test.api.DutAttribute.HwidSource")
 	proto.RegisterType((*DutAttributeList)(nil), "chromiumos.test.api.DutAttributeList")
 	proto.RegisterType((*DutCriterion)(nil), "chromiumos.test.api.DutCriterion")
 }
@@ -224,22 +447,33 @@ func init() {
 }
 
 var fileDescriptor_41053f368c84a1c0 = []byte{
-	// 265 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x91, 0x4f, 0x4b, 0xc3, 0x40,
-	0x10, 0xc5, 0x49, 0x8a, 0x85, 0x4c, 0xab, 0xc8, 0x2a, 0x12, 0x0a, 0x42, 0x0c, 0x82, 0xb9, 0xb8,
-	0x0b, 0xd5, 0x2f, 0xe0, 0x1f, 0xd0, 0x80, 0x07, 0xc9, 0x51, 0x84, 0xb0, 0xed, 0xa6, 0xc9, 0x40,
-	0xdb, 0x09, 0xbb, 0x13, 0xaf, 0x7e, 0x75, 0x71, 0xd5, 0x18, 0x41, 0x10, 0x8f, 0x6f, 0x78, 0xf3,
-	0xe3, 0x3d, 0x1e, 0x9c, 0x2d, 0x1b, 0x4b, 0x1b, 0xec, 0x36, 0xe4, 0x14, 0x57, 0x8e, 0x95, 0x6e,
-	0x51, 0x99, 0x8e, 0x4b, 0xcd, 0x6c, 0x71, 0xd1, 0x71, 0x25, 0x5b, 0x4b, 0x4c, 0xe2, 0xe0, 0xdb,
-	0x28, 0xdf, 0x8d, 0x52, 0xb7, 0x98, 0xbe, 0xc2, 0xf4, 0xb6, 0xe3, 0xab, 0x2f, 0xab, 0xb8, 0x84,
-	0x10, 0x4d, 0x1c, 0x24, 0x41, 0x36, 0x99, 0x9f, 0xca, 0x5f, 0x3e, 0xe4, 0xd0, 0x2e, 0x73, 0x53,
-	0x84, 0x68, 0xc4, 0x31, 0xc0, 0x0a, 0xab, 0xb5, 0x29, 0x5b, 0xcd, 0x4d, 0x1c, 0x26, 0x41, 0x16,
-	0x15, 0x91, 0xbf, 0x3c, 0x6a, 0x6e, 0x66, 0x33, 0x08, 0x73, 0x23, 0x0e, 0x61, 0xe7, 0x45, 0xaf,
-	0xbb, 0xca, 0xd3, 0xa3, 0xe2, 0x43, 0xa4, 0xcf, 0xb0, 0x3f, 0x24, 0x3e, 0xa0, 0x63, 0x71, 0x0f,
-	0x7b, 0x3f, 0x0a, 0xb8, 0x38, 0x48, 0x46, 0xd9, 0x64, 0x7e, 0xf2, 0x67, 0xa0, 0x62, 0xd7, 0x0c,
-	0x94, 0x4b, 0xc9, 0xd7, 0xbb, 0xb1, 0xc8, 0x95, 0x45, 0xda, 0x8a, 0x3b, 0x98, 0xf6, 0xd4, 0xf2,
-	0x9f, 0x45, 0x27, 0xfd, 0x67, 0x6e, 0xc4, 0x11, 0x8c, 0x7d, 0x7e, 0x17, 0x87, 0xc9, 0x28, 0x8b,
-	0x8a, 0x4f, 0x75, 0xad, 0x9e, 0xce, 0x6b, 0xea, 0x71, 0x92, 0x6c, 0xad, 0x06, 0xfb, 0x2c, 0x69,
-	0xbb, 0xc2, 0x5a, 0xd5, 0xd4, 0x2f, 0xb5, 0x18, 0xfb, 0x71, 0x2e, 0xde, 0x02, 0x00, 0x00, 0xff,
-	0xff, 0x70, 0xf1, 0xe6, 0x2e, 0xc7, 0x01, 0x00, 0x00,
+	// 435 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x93, 0x6f, 0x8b, 0xd3, 0x40,
+	0x10, 0xc6, 0x6d, 0x7a, 0xad, 0x74, 0x72, 0x3d, 0xca, 0x2a, 0x12, 0xf2, 0xc6, 0x5a, 0x14, 0x0b,
+	0x6a, 0x02, 0xd5, 0x2f, 0xe0, 0x55, 0xce, 0x16, 0x04, 0x21, 0x27, 0x0a, 0x22, 0x84, 0x6d, 0x76,
+	0x9b, 0x2c, 0x6c, 0xb3, 0x4b, 0x76, 0x62, 0xef, 0xde, 0xf9, 0xd1, 0xa5, 0x9b, 0x3f, 0xe6, 0x8a,
+	0x50, 0xbd, 0x77, 0x99, 0xe1, 0xf7, 0x3c, 0x93, 0x99, 0x9d, 0x81, 0x97, 0x49, 0x56, 0xa8, 0x9d,
+	0x28, 0x77, 0xca, 0x84, 0xc8, 0x0d, 0x86, 0x54, 0x8b, 0x90, 0x95, 0x18, 0x53, 0xc4, 0x42, 0x6c,
+	0x4a, 0xe4, 0x81, 0x2e, 0x14, 0x2a, 0xf2, 0xe8, 0x0f, 0x18, 0x1c, 0xc0, 0x80, 0x6a, 0x31, 0xfb,
+	0x35, 0x80, 0xf3, 0x0f, 0x25, 0xbe, 0x6f, 0x58, 0xf2, 0x0e, 0x1c, 0xc1, 0xbc, 0xde, 0xb4, 0x37,
+	0x77, 0x17, 0xcf, 0x83, 0xbf, 0x48, 0x82, 0x2e, 0x1e, 0xac, 0x59, 0xe4, 0x08, 0x46, 0x3c, 0x78,
+	0x48, 0xa5, 0xa0, 0x86, 0x1b, 0xcf, 0x99, 0xf6, 0xe7, 0xa3, 0xa8, 0x09, 0xc9, 0x06, 0xc8, 0x56,
+	0x52, 0x8c, 0x13, 0x95, 0x6f, 0x45, 0x1a, 0x1b, 0x55, 0x16, 0x09, 0xf7, 0xfa, 0xd6, 0x7f, 0x71,
+	0xda, 0xff, 0x4a, 0x52, 0x5c, 0x5a, 0xe9, 0xb5, 0x55, 0xae, 0x1e, 0x44, 0x93, 0xed, 0x51, 0x8e,
+	0x7c, 0x06, 0x37, 0xdb, 0x0b, 0xd6, 0x98, 0x9f, 0x59, 0xf3, 0xd7, 0xa7, 0xcd, 0x57, 0x7b, 0xc1,
+	0x5a, 0x5b, 0xc8, 0xda, 0x88, 0xbc, 0x80, 0x0b, 0x2a, 0xa5, 0xda, 0x73, 0x16, 0xff, 0xa4, 0xb2,
+	0xe4, 0xc6, 0x1b, 0xd8, 0xae, 0xc6, 0x75, 0xf6, 0xab, 0x4d, 0x1e, 0x30, 0x7e, 0x93, 0xc8, 0x92,
+	0xf1, 0x06, 0x1b, 0x56, 0x58, 0x9d, 0xad, 0x30, 0xdf, 0x07, 0x67, 0xcd, 0xc8, 0x63, 0x18, 0x58,
+	0xc8, 0xce, 0x76, 0x14, 0x55, 0x81, 0xff, 0x14, 0x46, 0x57, 0x82, 0x4b, 0x76, 0xad, 0x79, 0x42,
+	0x08, 0x9c, 0x69, 0x8a, 0x59, 0x4d, 0xd8, 0x6f, 0xff, 0x1b, 0x4c, 0x8e, 0x67, 0x40, 0x96, 0x30,
+	0xdc, 0x1e, 0x44, 0xc6, 0xeb, 0x4d, 0xfb, 0x73, 0x77, 0xf1, 0xea, 0x1f, 0xe6, 0xd8, 0x14, 0x89,
+	0x6a, 0xa9, 0x7f, 0x03, 0xb0, 0xba, 0xd3, 0x71, 0xa2, 0x76, 0x5a, 0xe5, 0x3c, 0xc7, 0x18, 0x6f,
+	0x75, 0xf3, 0x9b, 0xe3, 0x36, 0xfb, 0xe5, 0x56, 0x77, 0x2b, 0x3b, 0xf7, 0xae, 0x7c, 0x39, 0x06,
+	0x97, 0x51, 0xa4, 0xf5, 0x73, 0xcd, 0x7e, 0xc0, 0xa4, 0x2b, 0xf8, 0x24, 0x0c, 0x92, 0x15, 0x5c,
+	0xdc, 0x59, 0xe1, 0xa6, 0xd3, 0x67, 0x27, 0xeb, 0x45, 0x63, 0xd6, 0x89, 0xcc, 0x4c, 0xd9, 0xfd,
+	0x5e, 0x16, 0x02, 0x79, 0x21, 0x54, 0x4e, 0x3e, 0xc2, 0x79, 0xeb, 0x1a, 0xff, 0xe7, 0xa6, 0xbb,
+	0xad, 0x72, 0xcd, 0xc8, 0x13, 0x18, 0xd6, 0x8f, 0x5e, 0x6d, 0x7c, 0x1d, 0x5d, 0x86, 0xdf, 0xdf,
+	0xa4, 0xaa, 0xb5, 0x0b, 0x54, 0x91, 0x86, 0x9d, 0x0b, 0xad, 0xce, 0x20, 0x4c, 0x55, 0x7b, 0xab,
+	0x9b, 0xa1, 0x3d, 0xcf, 0xb7, 0xbf, 0x03, 0x00, 0x00, 0xff, 0xff, 0x5c, 0x1f, 0x70, 0x16, 0xc9,
+	0x03, 0x00, 0x00,
 }

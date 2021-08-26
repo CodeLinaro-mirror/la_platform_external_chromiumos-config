@@ -11499,10 +11499,42 @@
               "typeName": ".chromiumos.test.api.DutAttribute.Id"
             },
             {
-              "jsonName": "fieldPath",
-              "label": "LABEL_OPTIONAL",
-              "name": "field_path",
+              "jsonName": "aliases",
+              "label": "LABEL_REPEATED",
+              "name": "aliases",
               "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "flatConfigSource",
+              "label": "LABEL_OPTIONAL",
+              "name": "flat_config_source",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutAttribute.FlatConfigSource"
+            },
+            {
+              "jsonName": "hwidSource",
+              "label": "LABEL_OPTIONAL",
+              "name": "hwid_source",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutAttribute.HwidSource"
+            },
+            {
+              "jsonName": "allowedValues",
+              "label": "LABEL_REPEATED",
+              "name": "allowed_values",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "excludeValues",
+              "label": "LABEL_REPEATED",
+              "name": "exclude_values",
+              "number": 6,
               "type": "TYPE_STRING"
             }
           ],
@@ -11519,6 +11551,56 @@
                 }
               ],
               "name": "Id"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "path",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "path",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "FieldSpec"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "fields",
+                  "label": "LABEL_REPEATED",
+                  "name": "fields",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.DutAttribute.FieldSpec"
+                }
+              ],
+              "name": "FlatConfigSource"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "componentType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "component_type",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "fields",
+                  "label": "LABEL_REPEATED",
+                  "name": "fields",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.DutAttribute.FieldSpec"
+                }
+              ],
+              "name": "HwidSource"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "data_source"
             }
           ]
         },

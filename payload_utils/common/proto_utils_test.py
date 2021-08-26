@@ -7,8 +7,10 @@ import unittest
 
 from google.protobuf import field_mask_pb2
 from google.protobuf import timestamp_pb2
+from google.protobuf.descriptor import FieldDescriptor
 
 from chromiumos.build.api import system_image_pb2
+from chromiumos.config.payload.flat_config_pb2 import FlatConfig
 
 from chromiumos.config.public_replication.public_replication_pb2 import (
     PublicReplication)
@@ -25,6 +27,43 @@ from common import proto_utils
 
 class ProtoUtilsTest(unittest.TestCase):
   """Tests for proto_utils."""
+
+  def test_resolve_field_path(self):
+    """Tests resolving paths in a proto."""
+
+    # Check fully valid path
+    infos = proto_utils.resolve_field_path(
+        FlatConfig,
+        'hw_components.soc.cores',
+    )
+    self.assertTrue(all(infos))
+    self.assertEqual(infos[0].typeid, FieldDescriptor.TYPE_MESSAGE)
+    self.assertEqual(infos[0].name, 'hw_components')
+    self.assertEqual(infos[0].typename, 'Component')
+    self.assertEqual(infos[0].repeated, True)
+
+    self.assertEqual(infos[1].typeid, FieldDescriptor.TYPE_MESSAGE)
+    self.assertEqual(infos[1].name, 'soc')
+    self.assertEqual(infos[1].typename, 'Soc')
+    self.assertEqual(infos[1].repeated, False)
+
+    self.assertEqual(infos[2].typeid, FieldDescriptor.TYPE_INT32)
+    self.assertEqual(infos[2].name, 'cores')
+    self.assertEqual(infos[2].typename, 'int32')
+    self.assertEqual(infos[2].repeated, False)
+
+    # Check parsing stops at first invalid field
+    infos = proto_utils.resolve_field_path(
+        FlatConfig,
+        'hw_components.not_exist.cores',
+    )
+    self.assertEqual(len(infos), 3)
+    self.assertEqual(infos[0].typeid, FieldDescriptor.TYPE_MESSAGE)
+    self.assertEqual(infos[0].name, 'hw_components')
+    self.assertEqual(infos[0].typename, 'Component')
+    self.assertEqual(infos[0].repeated, True)
+    self.assertEqual(infos[1], None)
+    self.assertEqual(infos[2], None)
 
   def test_get_all_fields(self):
     """Tests getting all fields on a proto."""

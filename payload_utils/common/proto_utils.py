@@ -8,12 +8,41 @@ import copy
 import importlib
 import os
 
-from typing import Any, Dict, List, Set, Text
+from typing import Any, Dict, List, Set, Text, NamedTuple
 
 from google.protobuf import message as pb_message
 from google.protobuf import symbol_database
+from google.protobuf.descriptor import FieldDescriptor
 
 from chromiumos.config.public_replication import public_replication_pb2
+
+
+def _build_type_map():
+  """Build a map from the TYPE_* constants in protobuf to string names."""
+  mapping = {}
+  for field in dir(FieldDescriptor):
+    if field.startswith("TYPE_"):
+      mapping[getattr(FieldDescriptor, field)] = field[5:].lower()
+  return mapping
+
+
+type_strings = _build_type_map()
+
+
+class FieldInfo(NamedTuple):
+  """Named tuple to represent information about a proto field.
+
+  Fields:
+    name:     Name of the field in the message
+    typeid:   FieldDescriptor type for the field
+    typename: For compound fields, the name of the message type.
+              For value fields, a string-ified type name
+    repeated: True if the field is repeated
+  """
+  name: str
+  typeid: int
+  typename: str
+  repeated: bool
 
 
 def create_symbol_db() -> symbol_database.SymbolDatabase():
@@ -50,6 +79,55 @@ def create_symbol_db() -> symbol_database.SymbolDatabase():
       ["chromiumos"],
   )
   return symbol_database.Default()
+
+
+def resolve_field_path(
+    message: pb_message.Message,
+    path: str,
+) -> List[FieldInfo]:
+  """Resolve a dotted field path into specific information about the fields.
+
+  A field path is of the format foo.bar.baz where the dotted notation .field
+  indicates a particular field of the preceding message type.
+
+  We resolve this by iteratively looking up each field starting with a root
+  message type, and populating information about it.
+
+  The result is a list of FieldInfo instances, one per field.  If a field
+  is not found, then None is returned for it and subsequent fields.
+
+  Args:
+    message: a protobuffer Message type to root the path in
+    path: a dotted field path
+  """
+
+  fields = path.split('.')
+  infos = [None] * len(fields)
+
+  current = message.DESCRIPTOR
+  for idx, field in enumerate(fields):
+    descriptor = current.fields_by_name.get(field)
+    if not descriptor:
+      break
+
+    typename = type_strings[descriptor.type]
+    if descriptor.message_type:
+      typename = descriptor.message_type.name
+
+    infos[idx] = FieldInfo(
+        name=field,
+        typeid=descriptor.type,
+        typename=typename,
+        repeated=(descriptor.label == descriptor.LABEL_REPEATED),
+    )
+
+    # If field isn't a message type then we're done
+    if descriptor.type != descriptor.TYPE_MESSAGE:
+      break
+
+    current = descriptor.message_type
+
+  return infos
 
 
 def get_all_fields(message: pb_message.Message) -> List[Any]:
