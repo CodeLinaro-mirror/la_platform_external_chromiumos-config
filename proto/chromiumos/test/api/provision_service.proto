@@ -118,6 +118,8 @@ message InstallCrosRequest {
   // provisioning. If preserve_stateful is not set to true, the stateful partition is
   // block-level wiped and reset during provisioning.
   bool preserve_stateful = 3;
+  // Prevents device reboot during system image provisioning.
+  bool prevent_reboot = 4;
 }
 
 message InstallCrosResponse {
