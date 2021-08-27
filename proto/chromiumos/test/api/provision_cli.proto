@@ -17,11 +17,23 @@ message ProvisionCliInput {
 }
 
 message DutInput {
+  reserved 2;
+
   chromiumos.test.lab.api.Dut.Id id = 1;
-  // Docker tag uses to pull docker images for DutService and ProvisionService.
-  string docker_tag = 2;
   // Provision state is pass through request to the provision service.
   ProvisionState provision_state = 3;
+
+  // Docker image info used to pull DUT service.
+  DockerImage dut_service = 4;
+  // Docker image info used to pull provision service.
+  DockerImage provision_service = 5;
+
+  message DockerImage {
+    // If not specified then used default.
+    string repository_path = 1;
+    // If not specified then used 'latest'.
+    string tag = 2;
+  }
 }
 
 message ProvisionCliOutput {

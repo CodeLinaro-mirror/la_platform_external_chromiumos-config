@@ -13506,22 +13506,58 @@
               "typeName": ".chromiumos.test.lab.api.Dut.Id"
             },
             {
-              "jsonName": "dockerTag",
-              "label": "LABEL_OPTIONAL",
-              "name": "docker_tag",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
               "jsonName": "provisionState",
               "label": "LABEL_OPTIONAL",
               "name": "provision_state",
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ProvisionState"
+            },
+            {
+              "jsonName": "dutService",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_service",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutInput.DockerImage"
+            },
+            {
+              "jsonName": "provisionService",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_service",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutInput.DockerImage"
             }
           ],
-          "name": "DutInput"
+          "name": "DutInput",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "repositoryPath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "repository_path",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "tag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "tag",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "DockerImage"
+            }
+          ],
+          "reservedRange": [
+            {
+              "end": 3,
+              "start": 2
+            }
+          ]
         },
         {
           "field": [
