@@ -8,10 +8,16 @@ lucicfg.check_version("1.8.6", "Please update depot_tools")
 # as duration, field_mask, etc.. See LUCI docs.
 # buildifier: disable=load-on-top
 load("@stdlib//internal/descpb.star", "wellknown_descpb")
+load("@proto//google/protobuf/descriptor.proto", descriptorpb = "google.protobuf")
 
 protos = proto.new_descriptor_set(
     name = "chromiumos",
-    blob = io.read_file("descpb.bin"),
+    blob = proto.to_wirepb(
+        io.read_proto(
+            descriptorpb.FileDescriptorSet,
+            "../../gen/descriptors.json",
+        ),
+    ),
     deps = [wellknown_descpb],
 )
 

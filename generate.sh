@@ -9,14 +9,14 @@
 # Allows the recursive glob for proto files below to work.
 shopt -s globstar
 
-readonly golden_file="gen/golden_descriptors.json"
+readonly desc_file="gen/descriptors.json"
 readonly gen_owners="gen/OWNERS"
 
 regenerate_golden() {
     # We want to split --path from the filenames so silence warning.
     # shellcheck disable=2068
     buf build --exclude-imports -o -#format=json ${proto_paths[@]} \
-        | jq -S > "${golden_file}"
+        | jq -S > "${desc_file}"
 }
 
 allow_breaking=0
@@ -60,7 +60,7 @@ mapfile -t proto_paths < \
 
 echo
 echo "== Checking for breaking protobuffer changes"
-if ! buf breaking --against "${golden_file}"; then
+if ! buf breaking --against "${desc_file}"; then
     if [[ "${allow_breaking}" -eq 0 ]]; then
       (
           echo
@@ -77,19 +77,19 @@ EOF
     fi
 fi
 
-echo "No breaking changes, regenerating '${golden_file}'"
+echo "No breaking changes, regenerating '${desc_file}'"
 # We want to split --path from the filenames so suppress warning about quotes.
 # shellcheck disable=2068
 buf build --exclude-imports --exclude-source-info \
     -o -#format=json ${proto_paths[@]}            \
-    | jq -S > "${golden_file}"
+    | jq -S > "${desc_file}"
 
-# Check if golden file changed and offer to submit it for the user.
-if ! git diff --quiet "${golden_file}"; then
+# Check if golden file changed and inform use to commit it.
+if ! git diff --quiet "${desc_file}"; then
   echo
-  echo "Please commit ${golden_file} with your change"
+  echo "Please commit ${desc_file} with your change"
 else
-  echo "Clean diff on ${golden_file}, nothing else to do." >&2
+  echo "Clean diff on ${desc_file}, nothing else to do." >&2
 fi
 
 echo
@@ -114,7 +114,6 @@ find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
   -exec rm -f '{}/__init__.py' \;
 
 PATH="${CIPD_ROOT}" protoc -Iproto \
-  --descriptor_set_out=util/bindings/descpb.bin \
   --python_out=python "${proto_files[@]}"
 find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
   -exec touch '{}/__init__.py' \;
