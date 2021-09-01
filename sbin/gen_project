@@ -92,7 +92,6 @@ _DESIGN = design.create_design(
 _DEVICE_BRAND = program.brand(_DESIGN_ID)
 
 _CONFIG_BUNDLE = config_bundle.create(
-    programs = [program.${program}],
     designs=[_DESIGN],
     device_brands=[_DEVICE_BRAND],
     software_configs=_SW_CONFIGS,
