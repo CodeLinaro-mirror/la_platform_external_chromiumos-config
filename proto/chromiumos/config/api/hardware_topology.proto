@@ -135,4 +135,8 @@ message HardwareTopology {
   // Specify the PoE peripheral support topology.
   // See ./hardware_topology.md#poe_peripheral_support for more information.
   Topology poe = 29;
+
+  // Specify the power supply topology
+  // See ./hardware_topology.md#power-supply for more information.
+  Topology power_supply = 30;
 }

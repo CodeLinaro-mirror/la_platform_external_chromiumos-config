@@ -199,6 +199,8 @@ _TPM = hw_topo.TPM_GSC_H1B
 
 _MICROPHONE_MUTE_SWITCH = hw_topo.create_microphone_mute_switch(present = True)
 
+_POWER_SUPPLY = hw_topo.create_power_supply("POWER_SUPPLY", "Default power supply", usb_min_ac_watts = 20)
+
 def create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -216,7 +218,8 @@ def create_hardware_topology(
         microphone_mute_switch = None,
         hdmi = None,
         hps = None,
-        audio = None):
+        audio = None,
+        power_supply = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -244,6 +247,7 @@ def create_hardware_topology(
         microphone_mute_switch = microphone_mute_switch,
         hdmi = hdmi,
         hps = hps,
+        power_supply = power_supply if power_supply else _POWER_SUPPLY,
     )
 
 # Create empty arrays that we will continually append new configurations to
@@ -728,6 +732,12 @@ design.append_configs(
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CHROMEBOX,
         audio = _AUDIO_WITHOUT_MIC_SUFFIX,
+        power_supply = hw_topo.create_power_supply(
+            "BJ_POWER_SUPPLY",
+            "Default power supply with barreljack",
+            usb_min_ac_watts = 90,
+            bj_present = True,
+        ),
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",

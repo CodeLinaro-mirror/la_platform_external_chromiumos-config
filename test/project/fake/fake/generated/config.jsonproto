@@ -256,6 +256,10 @@
               "position": 0.9,
               "region": 1
             },
+            "powerSupply": {
+              "barreljack": 2,
+              "usbMinAcWatts": 20
+            },
             "screen": {
               "panelProperties": {
                 "alsSteps": [
@@ -564,6 +568,19 @@
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
             },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 2,
+                  "usbMinAcWatts": 20
+                }
+              },
+              "id": "POWER_SUPPLY",
+              "type": 32
+            },
             "proximitySensor": {
               "description": {
                 "EN": "Default proximity_sensor"
@@ -776,6 +793,10 @@
               "edge": 1,
               "position": 0.9,
               "region": 1
+            },
+            "powerSupply": {
+              "barreljack": 2,
+              "usbMinAcWatts": 20
             },
             "screen": {
               "panelProperties": {
@@ -1044,6 +1065,19 @@
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
             },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 2,
+                  "usbMinAcWatts": 20
+                }
+              },
+              "id": "POWER_SUPPLY",
+              "type": 32
+            },
             "proximitySensor": {
               "description": {
                 "EN": "Default proximity_sensor"
@@ -1261,6 +1295,10 @@
               "edge": 1,
               "position": 0.9,
               "region": 1
+            },
+            "powerSupply": {
+              "barreljack": 2,
+              "usbMinAcWatts": 20
             },
             "screen": {
               "panelProperties": {
@@ -1522,6 +1560,19 @@
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
             },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 2,
+                  "usbMinAcWatts": 20
+                }
+              },
+              "id": "POWER_SUPPLY",
+              "type": 32
+            },
             "proximitySensor": {
               "description": {
                 "EN": "Default proximity_sensor"
@@ -1741,6 +1792,10 @@
               "edge": 1,
               "position": 0.9,
               "region": 1
+            },
+            "powerSupply": {
+              "barreljack": 2,
+              "usbMinAcWatts": 20
             },
             "screen": {
               "panelProperties": {
@@ -1991,6 +2046,19 @@
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
             },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 2,
+                  "usbMinAcWatts": 20
+                }
+              },
+              "id": "POWER_SUPPLY",
+              "type": 32
+            },
             "proximitySensor": {
               "description": {
                 "EN": "Default proximity_sensor"
@@ -2206,6 +2274,10 @@
               "edge": 1,
               "position": 0.9,
               "region": 1
+            },
+            "powerSupply": {
+              "barreljack": 2,
+              "usbMinAcWatts": 20
             },
             "screen": {
               "panelProperties": {
@@ -2453,6 +2525,19 @@
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
             },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 2,
+                  "usbMinAcWatts": 20
+                }
+              },
+              "id": "POWER_SUPPLY",
+              "type": 32
+            },
             "proximitySensor": {
               "description": {
                 "EN": "Default proximity_sensor"
@@ -2659,6 +2744,10 @@
               "position": 0.9,
               "region": 1
             },
+            "powerSupply": {
+              "barreljack": 2,
+              "usbMinAcWatts": 20
+            },
             "screen": {
               "panelProperties": {
                 "alsSteps": [
@@ -2883,6 +2972,19 @@
               },
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
+            },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 2,
+                  "usbMinAcWatts": 20
+                }
+              },
+              "id": "POWER_SUPPLY",
+              "type": 32
             },
             "proximitySensor": {
               "description": {
@@ -3080,6 +3182,10 @@
               "position": 0.9,
               "region": 1
             },
+            "powerSupply": {
+              "barreljack": 2,
+              "usbMinAcWatts": 20
+            },
             "screen": {
               "panelProperties": {
                 "alsSteps": [
@@ -3305,6 +3411,19 @@
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
             },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 2,
+                  "usbMinAcWatts": 20
+                }
+              },
+              "id": "POWER_SUPPLY",
+              "type": 32
+            },
             "proximitySensor": {
               "description": {
                 "EN": "Default proximity_sensor"
@@ -3491,6 +3610,10 @@
               "edge": 1,
               "position": 0.9,
               "region": 1
+            },
+            "powerSupply": {
+              "barreljack": 1,
+              "usbMinAcWatts": 90
             },
             "screen": {
               "panelProperties": {
@@ -3695,6 +3818,19 @@
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
             },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply with barreljack"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 1,
+                  "usbMinAcWatts": 90
+                }
+              },
+              "id": "BJ_POWER_SUPPLY",
+              "type": 32
+            },
             "proximitySensor": {
               "description": {
                 "EN": "Default proximity_sensor"
@@ -3863,6 +3999,10 @@
               "edge": 1,
               "position": 0.9,
               "region": 1
+            },
+            "powerSupply": {
+              "barreljack": 2,
+              "usbMinAcWatts": 20
             },
             "screen": {
               "panelProperties": {
@@ -4067,6 +4207,19 @@
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
             },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 2,
+                  "usbMinAcWatts": 20
+                }
+              },
+              "id": "POWER_SUPPLY",
+              "type": 32
+            },
             "proximitySensor": {
               "description": {
                 "EN": "Default proximity_sensor"
@@ -4232,6 +4385,10 @@
               "edge": 1,
               "position": 0.9,
               "region": 1
+            },
+            "powerSupply": {
+              "barreljack": 2,
+              "usbMinAcWatts": 20
             },
             "screen": {
               "panelProperties": {
@@ -4428,6 +4585,19 @@
               },
               "id": "SCREEN_LEFT_POWER_BUTTON",
               "type": 20
+            },
+            "powerSupply": {
+              "description": {
+                "EN": "Default power supply"
+              },
+              "hardwareFeature": {
+                "powerSupply": {
+                  "barreljack": 2,
+                  "usbMinAcWatts": 20
+                }
+              },
+              "id": "POWER_SUPPLY",
+              "type": 32
             },
             "proximitySensor": {
               "description": {

@@ -2199,6 +2199,10 @@
                 {
                   "name": "POE",
                   "number": 31
+                },
+                {
+                  "name": "POWER_SUPPLY",
+                  "number": 32
                 }
               ]
             }
@@ -2613,6 +2617,14 @@
               "number": 35,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.PoE"
+            },
+            {
+              "jsonName": "powerSupply",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_supply",
+              "number": 36,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.PowerSupply"
             }
           ],
           "name": "HardwareFeatures",
@@ -3972,6 +3984,26 @@
                 }
               ],
               "name": "PoE"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "barreljack",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "barreljack",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "usbMinAcWatts",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "usb_min_ac_watts",
+                  "number": 2,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "PowerSupply"
             }
           ]
         }
@@ -4223,6 +4255,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "poe",
               "number": 29,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "powerSupply",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_supply",
+              "number": 30,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }

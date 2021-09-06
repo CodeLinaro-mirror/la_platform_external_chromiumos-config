@@ -281,3 +281,10 @@ Changes that do not require new topology
 Changes that require new topology
 
 * Presence of hardware for PoE peripheral support
+
+## Power supply
+
+Changes that require new topology
+
+* Presence or absence of barrel jack
+* Preferred input power

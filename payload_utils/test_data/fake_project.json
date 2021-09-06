@@ -138,7 +138,8 @@
           "has-ambient-light-sensor": "1",
           "internal-backlight-als-steps": "80.0 63.0 -1 400\n100.0 80.0 100 -1",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "3000"
+          "turn-off-screen-timeout-ms": "3000",
+          "usb-min-ac-watts": "20"
         },
         "regulatory-label": "fake_regulatory_label",
         "ui": {
@@ -313,7 +314,8 @@
           "internal-backlight-no-als-battery-brightness": "63.0",
           "keyboard-backlight-user-steps": "0.0\n10.0\n20.0\n40.0\n60.0\n100.0",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "3000"
+          "turn-off-screen-timeout-ms": "3000",
+          "usb-min-ac-watts": "20"
         },
         "regulatory-label": "fake_regulatory_label",
         "ui": {
@@ -485,7 +487,8 @@
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "3000"
+          "turn-off-screen-timeout-ms": "3000",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [
@@ -635,7 +638,8 @@
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "3000"
+          "turn-off-screen-timeout-ms": "3000",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [
@@ -771,7 +775,8 @@
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "3000"
+          "turn-off-screen-timeout-ms": "3000",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [
@@ -895,7 +900,8 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "0"
+          "turn-off-screen-timeout-ms": "0",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1020,7 +1026,8 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "0"
+          "turn-off-screen-timeout-ms": "0",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1145,7 +1152,8 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "0"
+          "turn-off-screen-timeout-ms": "0",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1270,7 +1278,8 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "0"
+          "turn-off-screen-timeout-ms": "0",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1404,7 +1413,8 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "0"
+          "turn-off-screen-timeout-ms": "0",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1529,7 +1539,8 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "0"
+          "turn-off-screen-timeout-ms": "0",
+          "usb-min-ac-watts": "90"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1653,7 +1664,8 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "0"
+          "turn-off-screen-timeout-ms": "0",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [
@@ -1778,7 +1790,8 @@
           "internal-backlight-als-steps": "80.1 -1 400\n100.0 100 -1",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
-          "turn-off-screen-timeout-ms": "0"
+          "turn-off-screen-timeout-ms": "0",
+          "usb-min-ac-watts": "20"
         },
         "ui": {
           "extra-ash-flags": [

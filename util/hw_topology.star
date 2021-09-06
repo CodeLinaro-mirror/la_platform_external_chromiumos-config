@@ -860,6 +860,34 @@ def _create_barreljack(id, description, bj_present, fw_configs = []):
         hardware_feature = hw_features,
     )
 
+def _create_power_supply(id, description, bj_present = False, usb_min_ac_watts = None, fw_configs = []):
+    """Builds a Topology proto for power supply.
+
+    Args:
+        id: A string identifier for the Topology.
+        description: An English description for the Topology.
+        bj_present: A bool containing whether a barreljack power port is present
+        usb_min_ac_watts: The input power below which a warning should be shown
+            to use a higher-power USB adapter.
+        fw_configs: A list of firmware configs implied by the Topology.
+
+    """
+    hw_features = topo_pb.HardwareFeatures()
+
+    hw_features.power_supply.barreljack = _bool_to_present(bj_present)
+
+    if usb_min_ac_watts:
+        hw_features.power_supply.usb_min_ac_watts = usb_min_ac_watts
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.POWER_SUPPLY,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
 def _create_power_button(region, edge, position, id = None, description = None):
     """Builds a Topology proto for a power button.
 
@@ -1041,6 +1069,7 @@ def _create_hardware_topology(
         motherboard_usb = None,
         bluetooth = None,
         barreljack = None,
+        power_supply = None,
         power_button = None,
         volume_button = None,
         ec = None,
@@ -1138,6 +1167,9 @@ def _create_hardware_topology(
     if poe and poe.type != topo_pb.Topology.POE:
         fail("Invalid PoE topology")
 
+    if power_supply and power_supply.type != topo_pb.Topology.POWER_SUPPLY:
+        fail("Invalid power supply topology")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -1167,6 +1199,7 @@ def _create_hardware_topology(
         hps = hps,
         dp_converter = dp_converter,
         poe = poe,
+        power_supply = power_supply,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -1341,6 +1374,12 @@ def _convert_to_hw_features(hardware_topology):
     if copy.barreljack.hardware_feature.barreljack != topo_pb.HardwareFeatures.BarrelJack():
         result.barreljack = copy.barreljack.hardware_feature.barreljack
 
+    # Handle all possible power supply features
+    _accumulate_fw_config(result.fw_config, copy.power_supply.hardware_feature.fw_config)
+
+    if copy.power_supply.hardware_feature.power_supply != topo_pb.HardwareFeatures.PowerSupply():
+        result.power_supply = copy.power_supply.hardware_feature.power_supply
+
     if copy.power_button.hardware_feature.power_button != topo_pb.HardwareFeatures.Button():
         result.power_button = copy.power_button.hardware_feature.power_button
 
@@ -1379,6 +1418,7 @@ hw_topo = struct(
     create_motherboard_usb = _create_motherboard_usb,
     create_bluetooth = _create_bluetooth,
     create_barreljack = _create_barreljack,
+    create_power_supply = _create_power_supply,
     create_hardware_topology = _create_hardware_topology,
     create_power_button = _create_power_button,
     create_volume_button = _create_volume_button,

@@ -63,6 +63,7 @@ message Topology {
     HPS = 29;
     DP_CONVERTER = 30;
     POE = 31;
+    POWER_SUPPLY = 32;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -656,4 +657,15 @@ message HardwareFeatures {
     // If PoE peripheral support is present on system
     Present present = 1;
   };
+
+  // Power supply properties
+  PowerSupply power_supply = 36;
+  message PowerSupply {
+    // If BarrelJack support is present on system.
+    Present barreljack = 1;
+
+    // The input power below which a warning should be shown to use a
+    // higher-power USB adapter.
+    int32 usb_min_ac_watts = 2;
+  }
 }

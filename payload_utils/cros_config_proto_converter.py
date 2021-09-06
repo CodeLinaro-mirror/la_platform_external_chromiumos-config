@@ -264,6 +264,8 @@ def _build_derived_power_prefs(config: Config) -> dict:
       result['internal-backlight-no-als-ac-brightness'] = (
           hw_features.screen.panel_properties.no_als_ac_brightness)
 
+  result['usb-min-ac-watts'] = hw_features.power_supply.usb_min_ac_watts
+
   return dict((k, _format_power_pref_value(v)) for k, v in result.items() if v)
 
 
