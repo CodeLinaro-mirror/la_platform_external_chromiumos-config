@@ -111,6 +111,13 @@ _TPM_TYPE = struct(
     GSC_H1D = topo_pb.HardwareFeatures.TrustedPlatformModule.GSC_H1D,
 )
 
+_PORT_POSITION = struct(
+    LEFT = topo_pb.HardwareFeatures.LEFT,
+    RIGHT = topo_pb.HardwareFeatures.RIGHT,
+    BACK = topo_pb.HardwareFeatures.BACK,
+    FRONT = topo_pb.HardwareFeatures.FRONT,
+)
+
 _AUDIO_CONFIG_STRUCTURE = struct(
     NONE = topo_pb.HardwareFeatures.Audio.AUDIO_CONFIG_STRUCTURE_NONE,
     DESIGN = topo_pb.HardwareFeatures.Audio.DESIGN,
@@ -734,13 +741,15 @@ def _create_daughter_board(
         cellular_support = False,
         cellular_model = None,
         cellular_type = _CELLULAR.NOT_PRESENT,
-        hdmi_support = False):
+        hdmi_support = False,
+        side = None,
+        usbc_ports = None):
     """Builds a Topology proto for a daughter board."""
     hw_features = topo_pb.HardwareFeatures()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
-    hw_features.usb_c.count.value = usbc_count
+    hw_features.usb_c = _build_usbc(side, usbc_ports, usbc_count)
     hw_features.usb_a.count.value = usba_count
 
     hw_features.cellular.present = _bool_to_present(cellular_support)
@@ -822,18 +831,82 @@ def _create_sd_reader(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
+_USB_PORT_POSITIONS = {
+    _PORT_POSITION.LEFT: {
+        _PORT_POSITION.FRONT: topo_pb.HardwareFeatures.LEFT_FRONT,
+        _PORT_POSITION.BACK: topo_pb.HardwareFeatures.LEFT_BACK,
+        topo_pb.HardwareFeatures.UNKNOWN: _PORT_POSITION.LEFT,
+    },
+    _PORT_POSITION.RIGHT: {
+        _PORT_POSITION.FRONT: topo_pb.HardwareFeatures.RIGHT_FRONT,
+        _PORT_POSITION.BACK: topo_pb.HardwareFeatures.RIGHT_BACK,
+        topo_pb.HardwareFeatures.UNKNOWN: _PORT_POSITION.RIGHT,
+    },
+    _PORT_POSITION.BACK: {
+        _PORT_POSITION.LEFT: topo_pb.HardwareFeatures.BACK_LEFT,
+        _PORT_POSITION.RIGHT: topo_pb.HardwareFeatures.BACK_RIGHT,
+        topo_pb.HardwareFeatures.UNKNOWN: _PORT_POSITION.BACK,
+    },
+}
+
+def _normalize_usbc_port(side, port):
+    position = _USB_PORT_POSITIONS.get(side, {}).get(
+        port.position,
+        topo_pb.HardwareFeatures.UNKNOWN,
+    )
+    normalized_port = topo_pb.HardwareFeatures.UsbC.Port()
+    normalized_port.position = position
+    if proto.has(port, "index_override"):
+        normalized_port.index_override = port.index_override
+    return normalized_port
+
+def _build_usbc(side, ports, count):
+    if ports != None:
+        count = len(ports)
+    else:
+        ports = [_create_usbc_port()] * count
+
+    result = topo_pb.HardwareFeatures.UsbC()
+    result.count.value = count
+
+    if side:
+        result.ports = [_normalize_usbc_port(side, port) for port in ports]
+    return result
+
+def _create_usbc_port(position = topo_pb.HardwareFeatures.UNKNOWN, index_override = None):
+    """Builds a UsbC Port.
+
+    Args:
+        position: An optional topo_pb.HardwareFeatures.PortPosition indicating
+            the position of this port on the side of the chassis it occupies.
+            Required if more than one USB-C port is present on the same side of
+            the chassis.
+        index_override: An optional int specifying the 0-indexed index of this
+            port. For ports with this unset, the motherboard ports will be
+            ordered before the daughter board ports, in the order they are
+            specified, leaving gaps as needed for ports with an override set.
+            If set, this value must be in the range [0, number_of_usb_c_ports).
+    """
+    port = topo_pb.HardwareFeatures.UsbC.Port()
+    port.position = position
+    if index_override != None:
+        port.index_override.value = index_override
+    return port
+
 def _create_motherboard_usb(
         id,
         description,
         fw_configs = [],
         usbc_count = 0,
-        usba_count = 0):
+        usba_count = 0,
+        side = None,
+        usbc_ports = None):
     """Builds a Topology proto for a motherboard."""
     hw_features = topo_pb.HardwareFeatures()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
-    hw_features.usb_c.count.value = usbc_count
+    hw_features.usb_c = _build_usbc(side, usbc_ports, usbc_count)
     hw_features.usb_a.count.value = usba_count
 
     return topo_pb.Topology(
@@ -1226,6 +1299,7 @@ def _accumulate_presence(existing_present, new_present):
 
 def _accumulate_usbc(existing_usbc, new_usbc):
     existing_usbc.count.value += new_usbc.count.value
+    existing_usbc.ports += new_usbc.ports
 
 def _accumulate_usba(existing_usba, new_usba):
     existing_usba.count.value += new_usba.count.value
@@ -1331,6 +1405,15 @@ def _convert_to_hw_features(hardware_topology):
     if copy.hdmi.hardware_feature.hdmi != topo_pb.HardwareFeatures.Hdmi():
         result.hdmi = copy.hdmi.hardware_feature.hdmi
 
+    # Handle all possible motherboard usb features attributes
+    _accumulate_fw_config(result.fw_config, copy.motherboard_usb.hardware_feature.fw_config)
+
+    if copy.motherboard_usb.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
+        _accumulate_usbc(result.usb_c, copy.motherboard_usb.hardware_feature.usb_c)
+
+    if copy.motherboard_usb.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
+        _accumulate_usba(result.usb_a, copy.motherboard_usb.hardware_feature.usb_a)
+
     # Handle all possible daughter board hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.daughter_board.hardware_feature.fw_config)
 
@@ -1366,15 +1449,6 @@ def _convert_to_hw_features(hardware_topology):
 
     # Handle all possible sd reader hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.sd_reader.hardware_feature.fw_config)
-
-    # Handle all possible motherboard usb features attributes
-    _accumulate_fw_config(result.fw_config, copy.motherboard_usb.hardware_feature.fw_config)
-
-    if copy.motherboard_usb.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
-        _accumulate_usbc(result.usb_c, copy.motherboard_usb.hardware_feature.usb_c)
-
-    if copy.motherboard_usb.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
-        _accumulate_usba(result.usb_a, copy.motherboard_usb.hardware_feature.usb_a)
 
     # Handle all possible bluetooth features attributes
     _accumulate_fw_config(result.fw_config, copy.bluetooth.hardware_feature.fw_config)
@@ -1430,6 +1504,7 @@ hw_topo = struct(
     create_cellular_board = _create_cellular_board,
     create_sd_reader = _create_sd_reader,
     create_motherboard_usb = _create_motherboard_usb,
+    create_usbc_port = _create_usbc_port,
     create_bluetooth = _create_bluetooth,
     create_barreljack = _create_barreljack,
     create_power_supply = _create_power_supply,
@@ -1457,6 +1532,7 @@ hw_topo = struct(
     edge = _EDGE,
     camera_flags = _CAMERA_FLAGS,
     present = _PRESENT,
+    port_position = _PORT_POSITION,
     audio_config_structure = _AUDIO_CONFIG_STRUCTURE,
 
     # embedded controller exports

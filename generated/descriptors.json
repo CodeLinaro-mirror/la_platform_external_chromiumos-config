@@ -2335,6 +2335,55 @@
                   "number": 2
                 }
               ]
+            },
+            {
+              "name": "PortPosition",
+              "value": [
+                {
+                  "name": "UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "LEFT",
+                  "number": 1
+                },
+                {
+                  "name": "RIGHT",
+                  "number": 2
+                },
+                {
+                  "name": "BACK",
+                  "number": 3
+                },
+                {
+                  "name": "FRONT",
+                  "number": 4
+                },
+                {
+                  "name": "LEFT_FRONT",
+                  "number": 5
+                },
+                {
+                  "name": "LEFT_BACK",
+                  "number": 6
+                },
+                {
+                  "name": "RIGHT_FRONT",
+                  "number": 7
+                },
+                {
+                  "name": "RIGHT_BACK",
+                  "number": 8
+                },
+                {
+                  "name": "BACK_LEFT",
+                  "number": 9
+                },
+                {
+                  "name": "BACK_RIGHT",
+                  "number": 10
+                }
+              ]
             }
           ],
           "field": [
@@ -2650,9 +2699,40 @@
                   "number": 1,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Count"
+                },
+                {
+                  "jsonName": "ports",
+                  "label": "LABEL_REPEATED",
+                  "name": "ports",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.UsbC.Port"
                 }
               ],
-              "name": "UsbC"
+              "name": "UsbC",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "position",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "position",
+                      "number": 1,
+                      "type": "TYPE_ENUM",
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.PortPosition"
+                    },
+                    {
+                      "jsonName": "indexOverride",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "index_override",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".google.protobuf.UInt32Value"
+                    }
+                  ],
+                  "name": "Port"
+                }
+              ]
             },
             {
               "field": [

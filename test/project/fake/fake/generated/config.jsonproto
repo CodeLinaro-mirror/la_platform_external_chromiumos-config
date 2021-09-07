@@ -299,7 +299,21 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 3
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                },
+                {
+                  "indexOverride": 1,
+                  "position": 2
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -444,7 +458,15 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 1
+                  },
+                  "ports": [
+                    {
+                      "indexOverride": 1,
+                      "position": 2
+                    }
+                  ]
                 }
               },
               "id": "Default DB",
@@ -542,7 +564,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -846,7 +878,17 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -1051,7 +1093,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -1357,7 +1409,21 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 3
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                },
+                {
+                  "indexOverride": 1,
+                  "position": 2
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -1487,7 +1553,15 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 1
+                  },
+                  "ports": [
+                    {
+                      "indexOverride": 1,
+                      "position": 2
+                    }
+                  ]
                 }
               },
               "id": "Default DB",
@@ -1552,7 +1626,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -1860,7 +1944,17 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -2044,7 +2138,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -2348,7 +2452,21 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 3
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                },
+                {
+                  "indexOverride": 1,
+                  "position": 2
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -2465,7 +2583,15 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 1
+                  },
+                  "ports": [
+                    {
+                      "indexOverride": 1,
+                      "position": 2
+                    }
+                  ]
                 }
               },
               "id": "Default DB",
@@ -2529,7 +2655,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -2821,7 +2957,21 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 3
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                },
+                {
+                  "indexOverride": 1,
+                  "position": 2
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -2919,7 +3069,15 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 1
+                  },
+                  "ports": [
+                    {
+                      "indexOverride": 1,
+                      "position": 2
+                    }
+                  ]
                 }
               },
               "id": "Default DB",
@@ -2983,7 +3141,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -3265,7 +3433,21 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 3
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                },
+                {
+                  "indexOverride": 1,
+                  "position": 2
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -3363,7 +3545,15 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 1
+                  },
+                  "ports": [
+                    {
+                      "indexOverride": 1,
+                      "position": 2
+                    }
+                  ]
                 }
               },
               "id": "Default DB",
@@ -3427,7 +3617,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -3697,7 +3897,21 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 3
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                },
+                {
+                  "indexOverride": 1,
+                  "position": 2
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -3784,7 +3998,15 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 1
+                  },
+                  "ports": [
+                    {
+                      "indexOverride": 1,
+                      "position": 2
+                    }
+                  ]
                 }
               },
               "id": "Default DB",
@@ -3848,7 +4070,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -4097,7 +4329,21 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 3
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                },
+                {
+                  "indexOverride": 1,
+                  "position": 2
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -4181,7 +4427,15 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 1
+                  },
+                  "ports": [
+                    {
+                      "indexOverride": 1,
+                      "position": 2
+                    }
+                  ]
                 }
               },
               "id": "Default DB",
@@ -4245,7 +4499,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -4494,7 +4758,21 @@
               "count": {}
             },
             "usbC": {
-              "count": {}
+              "count": {
+                "value": 3
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                },
+                {
+                  "indexOverride": 1,
+                  "position": 2
+                }
+              ]
             },
             "volumeButton": {
               "edge": 2,
@@ -4560,7 +4838,15 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 1
+                  },
+                  "ports": [
+                    {
+                      "indexOverride": 1,
+                      "position": 2
+                    }
+                  ]
                 }
               },
               "id": "Default DB",
@@ -4624,7 +4910,17 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {}
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ]
                 }
               },
               "id": "MOTHERBOARD_USB",

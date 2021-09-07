@@ -170,13 +170,27 @@ _FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", 
 _NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
 _HPS = hw_topo.create_hps("HPS", "Default Hps", present = True)
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
-_DAUGHTER_BOARD = hw_topo.create_daughter_board("Default DB", "Default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 1)])
+_DAUGHTER_BOARD = hw_topo.create_daughter_board(
+    "Default DB",
+    "Default daughter_board",
+    fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 1)],
+    side = hw_topo.port_position.RIGHT,
+    usbc_ports = [hw_topo.create_usbc_port(index_override = 1)],
+)
 _NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
 _WIFI = hw_topo.create_wifi("WIFI", "Default wifi", fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)])
 _LTE_BOARD = hw_topo.create_cellular_board("LTE_BOARD", "Default cellular_board", present = True, type = hw_topo.cellular.CELLULAR_LTE)
 _LTE_BOARD_WITH_MODEL = hw_topo.create_cellular_board("LTE_BOARD_MODEL", "Default cellular_board w/ model", present = True, type = hw_topo.cellular.CELLULAR_LTE, model = "FakeModem")
 _SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
-_MOTHERBOARD_USB = hw_topo.create_motherboard_usb("MOTHERBOARD_USB", "Default motherboard_usb")
+_MOTHERBOARD_USB = hw_topo.create_motherboard_usb(
+    "MOTHERBOARD_USB",
+    "Default motherboard_usb",
+    side = hw_topo.port_position.LEFT,
+    usbc_ports = [
+        hw_topo.create_usbc_port(hw_topo.port_position.BACK),
+        hw_topo.create_usbc_port(hw_topo.port_position.FRONT),
+    ],
+)
 _BLUETOOTH = hw_topo.create_bluetooth("BLUETOOTH", "Default bluetooth", bt_component = program.bluetooth_component.bluetooth)
 _BARRELJACK = hw_topo.create_barreljack("BARRELJACK", "Default barreljack", bj_present = True)
 _POWER_BUTTON = hw_topo.create_power_button(

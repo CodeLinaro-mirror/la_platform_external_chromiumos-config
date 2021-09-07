@@ -111,6 +111,28 @@ message HardwareFeatures {
     NOT_PRESENT = 2;
   }
 
+  // Copied from PowerSupplyProperties.PowerSource.Port in
+  // src/platform2/system_api/dbus/power_manager/power_supply_properties.proto.
+  enum PortPosition {
+    UNKNOWN = 0;
+
+    // Various positions on the device. The first word describes the side of
+    // the device where the port is located while the second clarifies the
+    // position. For example, LEFT_BACK means the farthest-back port on the
+    // left side, while BACK_LEFT means the leftmost port on the back of the
+    // device.
+    LEFT        = 1;
+    RIGHT       = 2;
+    BACK        = 3;
+    FRONT       = 4;
+    LEFT_FRONT  = 5;
+    LEFT_BACK   = 6;
+    RIGHT_FRONT = 7;
+    RIGHT_BACK  = 8;
+    BACK_LEFT   = 9;
+    BACK_RIGHT  = 10;
+  }
+
   message Count {
     uint32 value = 1;
   }
@@ -120,6 +142,20 @@ message HardwareFeatures {
   message UsbC {
     // The number of USB-C ports
     Count count = 1;
+
+    // Details about each USB-C port.
+    repeated Port ports = 2;
+
+    message Port {
+      // The position of the port on the chassis.
+      PortPosition position = 1;
+
+			// The 0-indexed index of this USB-C port. If set, this is used as the
+			// port index rather than numbering the motherboard ports in order
+			// followed by daughter board ports, in the order they are specified.
+			// This value must be in the range [0, number_of_usb_c_ports).
+      google.protobuf.UInt32Value index_override = 2;
+    }
   }
 
   // USB-A properties

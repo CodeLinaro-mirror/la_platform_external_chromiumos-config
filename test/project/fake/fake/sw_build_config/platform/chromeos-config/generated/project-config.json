@@ -138,6 +138,7 @@
         "name": "fake_ref_design",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "has-ambient-light-sensor": "1",
           "internal-backlight-als-steps": "80.0 63.0 -1 400\n100.0 80.0 100 -1",
@@ -350,6 +351,7 @@
         },
         "name": "fake_ref_design",
         "power": {
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
           "disable-dark-resume": "0",
           "has-keyboard-backlight": "1",
           "internal-backlight-no-als-ac-brightness": "80.0",
@@ -563,6 +565,7 @@
         "name": "project_a",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
@@ -760,6 +763,7 @@
         "name": "project_b",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
@@ -971,6 +975,7 @@
         "name": "project_c",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
@@ -1134,6 +1139,7 @@
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1299,6 +1305,7 @@
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1464,6 +1471,7 @@
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1629,6 +1637,7 @@
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1803,6 +1812,7 @@
         "name": "project_rebrand",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1967,6 +1977,7 @@
         "name": "project_box",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "external-display-only": "1",
           "internal-backlight-no-als-ac-brightness": "80.1",
@@ -2126,6 +2137,7 @@
         "name": "project_box",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -2291,6 +2303,7 @@
         "name": "project_box",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
           "disable-dark-resume": "0",
           "has-ambient-light-sensor": "1",
           "internal-backlight-als-steps": "80.1 -1 400\n100.0 100 -1",
