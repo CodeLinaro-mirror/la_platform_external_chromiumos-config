@@ -1626,22 +1626,22 @@ def wtas_encode(wtas_config):
     return (hex_8bit(wtas_config.sar_avg_version) +
             hex_8bit(wtas_config.tas_selection) +
             hex_8bit(wtas_config.tas_list_size) +
-            hex_8bit(wtas_config.deny_list_entry_1) +
-            hex_8bit(wtas_config.deny_list_entry_2) +
-            hex_8bit(wtas_config.deny_list_entry_3) +
-            hex_8bit(wtas_config.deny_list_entry_4) +
-            hex_8bit(wtas_config.deny_list_entry_5) +
-            hex_8bit(wtas_config.deny_list_entry_6) +
-            hex_8bit(wtas_config.deny_list_entry_7) +
-            hex_8bit(wtas_config.deny_list_entry_8) +
-            hex_8bit(wtas_config.deny_list_entry_9) +
-            hex_8bit(wtas_config.deny_list_entry_10) +
-            hex_8bit(wtas_config.deny_list_entry_11) +
-            hex_8bit(wtas_config.deny_list_entry_12) +
-            hex_8bit(wtas_config.deny_list_entry_13) +
-            hex_8bit(wtas_config.deny_list_entry_14) +
-            hex_8bit(wtas_config.deny_list_entry_15) +
-            hex_8bit(wtas_config.deny_list_entry_16))
+            hex_16bit(wtas_config.deny_list_entry_1) +
+            hex_16bit(wtas_config.deny_list_entry_2) +
+            hex_16bit(wtas_config.deny_list_entry_3) +
+            hex_16bit(wtas_config.deny_list_entry_4) +
+            hex_16bit(wtas_config.deny_list_entry_5) +
+            hex_16bit(wtas_config.deny_list_entry_6) +
+            hex_16bit(wtas_config.deny_list_entry_7) +
+            hex_16bit(wtas_config.deny_list_entry_8) +
+            hex_16bit(wtas_config.deny_list_entry_9) +
+            hex_16bit(wtas_config.deny_list_entry_10) +
+            hex_16bit(wtas_config.deny_list_entry_11) +
+            hex_16bit(wtas_config.deny_list_entry_12) +
+            hex_16bit(wtas_config.deny_list_entry_13) +
+            hex_16bit(wtas_config.deny_list_entry_14) +
+            hex_16bit(wtas_config.deny_list_entry_15) +
+            hex_16bit(wtas_config.deny_list_entry_16))
 
   raise Exception('Invalid time average table revision ' %
                   wtas_config.sar_avg_version)
