@@ -9517,6 +9517,20 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.test.tls.ProvisionLacrosRequest.LacrosImage"
+            },
+            {
+              "jsonName": "overrideVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_version",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "overrideInstallPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_install_path",
+              "number": 4,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "ProvisionLacrosRequest",
@@ -9528,6 +9542,14 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "gs_path_prefix",
                   "number": 1,
+                  "oneofIndex": 0,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "deviceFilePrefix",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "device_file_prefix",
+                  "number": 2,
                   "oneofIndex": 0,
                   "type": "TYPE_STRING"
                 }

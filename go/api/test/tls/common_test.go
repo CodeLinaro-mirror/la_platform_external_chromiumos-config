@@ -115,6 +115,54 @@ func ExampleProvisionLacrosRequest() {
 	// Provisioned Lacros.
 }
 
+func ExampleProvisionLacrosRequest_SuccessForAutoupdate() {
+	var invocation rtd.Invocation
+
+	tlsConfig := invocation.GetTestLabServicesConfig()
+	dutName := invocation.GetDuts()[0].GetTlsDutName()
+
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", tlsConfig.GetTlwAddress(), tlsConfig.GetTlwPort()), grpc.WithInsecure())
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+
+	c := tls.NewCommonClient(conn)
+
+	// A request for Autoupdate tests.
+	req := tls.ProvisionLacrosRequest{
+		Name: dutName,
+		Image: &tls.ProvisionLacrosRequest_LacrosImage{
+			PathOneof: &tls.ProvisionLacrosRequest_LacrosImage_DeviceFilePrefix{
+				DeviceFilePrefix: "file:///some/path",
+			},
+		},
+		OverrideVersion:     "9999.0.0.0",
+		OverrideInstallPath: "/home/chronos/cros-components/lacros-dogfood-dev",
+	}
+
+	ctx := context.Background()
+	op, err := c.ProvisionLacros(ctx, &req)
+	if err != nil {
+		panic(err)
+	}
+
+	opcli := longrunning.NewOperationsClient(conn)
+	op, err = opcli.WaitOperation(ctx, &longrunning.WaitOperationRequest{
+		Name: op.GetName(),
+		Timeout: &duration.Duration{
+			Seconds: 3600,
+		},
+	})
+	if err != nil {
+		panic("RPC error")
+	}
+
+	if errStatus := op.GetError(); errStatus != nil {
+		panic(fmt.Sprintf("Operation error details: %v", errStatus.GetDetails()))
+	}
+}
+
 func ExampleFetchCrashesRequest() {
 	var invocation rtd.Invocation
 

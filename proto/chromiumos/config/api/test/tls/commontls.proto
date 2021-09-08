@@ -253,10 +253,27 @@ message ProvisionLacrosRequest {
     oneof path_oneof {
       // gs_path_prefix is the GS path prefix to where Lacros is located.
       string gs_path_prefix = 1;
+
+      // device_file_prefix is the file URL in which Lacros is located on the
+      // DUT. This can refer to a local file for Lacros autoupdate testing.
+      string device_file_prefix = 2;
     }
   }
   // image specifies the Lacros image with which to provision the DUT.
   LacrosImage image = 2;
+
+  // override_version is the Lacros version string used to override when Lacros
+  // is provisioned from the image source in the |LacrosImage| to the component
+  // path. This is useful for simulating any desired version of Lacros for
+  // autoupdate testing.
+  // By default, if not specified, the actual version in the |LacrosImage| is
+  // used.
+  string override_version = 3;
+
+  // override_install_path changes the install location from the default
+  // imageloader component path.
+  // If not specified, it defaults to the imageloader component path.
+  string override_install_path = 4;
 }
 
 message ProvisionLacrosResponse {
