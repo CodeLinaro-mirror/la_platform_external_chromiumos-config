@@ -113,6 +113,12 @@ partner = struct(
             symlink_file_format = "g2touch_{product_id}.bin",
             destination_file_format = "PID_{product_id}_{fw_version}.bin",
         ),
+        MELFAS = _create_touch_partner(
+            name = "melfas",
+            vendor_id = "1FD2",
+            symlink_file_format = "melfas_mip4_{product_id}.fw",
+            destination_file_format = "{product_id}_{fw_version}.fw",
+        ),
         PIXART = _create_touch_partner(
             name = "pixart",
             vendor_id = "093A",
