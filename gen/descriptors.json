@@ -10852,8 +10852,70 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "prempKeyset",
+              "label": "LABEL_OPTIONAL",
+              "name": "premp_keyset",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "mpKeyset",
+              "label": "LABEL_OPTIONAL",
+              "name": "mp_keyset",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firmwareUpdate",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_update",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "allowPassword",
+              "label": "LABEL_OPTIONAL",
+              "name": "allow_password",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "outputNames",
+              "label": "LABEL_OPTIONAL",
+              "name": "output_names",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "inputFiles",
+              "label": "LABEL_OPTIONAL",
+              "name": "input_files",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SigningInstructions"
+        }
+      ],
+      "name": "chromiumos/config/prototype/signing.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/prototype"
+      },
+      "package": "chromiumos.config.prototype",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/prototype/release_target_id.proto",
+        "chromiumos/config/prototype/signing.proto",
         "chromiumos/build/api/system_image.proto"
       ],
       "messageType": [
@@ -10883,44 +10945,23 @@
               "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"
             },
             {
-              "jsonName": "uprevTarget",
-              "label": "LABEL_OPTIONAL",
-              "name": "uprev_target",
+              "jsonName": "varientTargets",
+              "label": "LABEL_REPEATED",
+              "name": "varient_targets",
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"
             },
             {
-              "jsonName": "signing",
+              "jsonName": "signingInstructions",
               "label": "LABEL_OPTIONAL",
-              "name": "signing",
+              "name": "signing_instructions",
               "number": 4,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.prototype.ReleaseTarget.Signing"
+              "typeName": ".chromiumos.config.prototype.SigningInstructions"
             }
           ],
-          "name": "ReleaseTarget",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "prempKeyset",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "premp_keyset",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "mpKeyset",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "mp_keyset",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Signing"
-            }
-          ]
+          "name": "ReleaseTarget"
         }
       ],
       "name": "chromiumos/config/prototype/release_target.proto",

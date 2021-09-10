@@ -13,6 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.config.prototype import release_target_id_pb2 as chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2
+from chromiumos.config.prototype import signing_pb2 as chromiumos_dot_config_dot_prototype_dot_signing__pb2
 from chromiumos.build.api import system_image_pb2 as chromiumos_dot_build_dot_api_dot_system__image__pb2
 
 
@@ -21,49 +22,12 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.prototype',
   syntax='proto3',
   serialized_options=_b('Z.go.chromium.org/chromiumos/config/go/prototype'),
-  serialized_pb=_b('\n0chromiumos/config/prototype/release_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a\x33\x63hromiumos/config/prototype/release_target_id.proto\x1a\'chromiumos/build/api/system_image.proto\"\xd9\x02\n\rReleaseTarget\x12\x38\n\x02id\x18\x01 \x01(\x0b\x32,.chromiumos.config.prototype.ReleaseTargetId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x42\n\x0bmain_target\x18\x05 \x01(\x0b\x32-.chromiumos.build.api.SystemImage.BuildTarget\x12\x43\n\x0cuprev_target\x18\x06 \x01(\x0b\x32-.chromiumos.build.api.SystemImage.BuildTarget\x12\x43\n\x07signing\x18\x04 \x01(\x0b\x32\x32.chromiumos.config.prototype.ReleaseTarget.Signing\x1a\x32\n\x07Signing\x12\x14\n\x0cpremp_keyset\x18\x01 \x01(\t\x12\x11\n\tmp_keyset\x18\x02 \x01(\tB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
+  serialized_pb=_b('\n0chromiumos/config/prototype/release_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a\x33\x63hromiumos/config/prototype/release_target_id.proto\x1a)chromiumos/config/prototype/signing.proto\x1a\'chromiumos/build/api/system_image.proto\"\xb3\x02\n\rReleaseTarget\x12\x38\n\x02id\x18\x01 \x01(\x0b\x32,.chromiumos.config.prototype.ReleaseTargetId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x42\n\x0bmain_target\x18\x05 \x01(\x0b\x32-.chromiumos.build.api.SystemImage.BuildTarget\x12\x46\n\x0fvarient_targets\x18\x06 \x03(\x0b\x32-.chromiumos.build.api.SystemImage.BuildTarget\x12N\n\x14signing_instructions\x18\x04 \x01(\x0b\x32\x30.chromiumos.config.prototype.SigningInstructionsB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
   ,
-  dependencies=[chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2.DESCRIPTOR,chromiumos_dot_build_dot_api_dot_system__image__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_prototype_dot_signing__pb2.DESCRIPTOR,chromiumos_dot_build_dot_api_dot_system__image__pb2.DESCRIPTOR,])
 
 
 
-
-_RELEASETARGET_SIGNING = _descriptor.Descriptor(
-  name='Signing',
-  full_name='chromiumos.config.prototype.ReleaseTarget.Signing',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='premp_keyset', full_name='chromiumos.config.prototype.ReleaseTarget.Signing.premp_keyset', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='mp_keyset', full_name='chromiumos.config.prototype.ReleaseTarget.Signing.mp_keyset', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=471,
-  serialized_end=521,
-)
 
 _RELEASETARGET = _descriptor.Descriptor(
   name='ReleaseTarget',
@@ -94,14 +58,14 @@ _RELEASETARGET = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='uprev_target', full_name='chromiumos.config.prototype.ReleaseTarget.uprev_target', index=3,
-      number=6, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='varient_targets', full_name='chromiumos.config.prototype.ReleaseTarget.varient_targets', index=3,
+      number=6, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='signing', full_name='chromiumos.config.prototype.ReleaseTarget.signing', index=4,
+      name='signing_instructions', full_name='chromiumos.config.prototype.ReleaseTarget.signing_instructions', index=4,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -110,7 +74,7 @@ _RELEASETARGET = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_RELEASETARGET_SIGNING, ],
+  nested_types=[],
   enum_types=[
   ],
   serialized_options=None,
@@ -119,32 +83,23 @@ _RELEASETARGET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=176,
-  serialized_end=521,
+  serialized_start=219,
+  serialized_end=526,
 )
 
-_RELEASETARGET_SIGNING.containing_type = _RELEASETARGET
 _RELEASETARGET.fields_by_name['id'].message_type = chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2._RELEASETARGETID
 _RELEASETARGET.fields_by_name['main_target'].message_type = chromiumos_dot_build_dot_api_dot_system__image__pb2._SYSTEMIMAGE_BUILDTARGET
-_RELEASETARGET.fields_by_name['uprev_target'].message_type = chromiumos_dot_build_dot_api_dot_system__image__pb2._SYSTEMIMAGE_BUILDTARGET
-_RELEASETARGET.fields_by_name['signing'].message_type = _RELEASETARGET_SIGNING
+_RELEASETARGET.fields_by_name['varient_targets'].message_type = chromiumos_dot_build_dot_api_dot_system__image__pb2._SYSTEMIMAGE_BUILDTARGET
+_RELEASETARGET.fields_by_name['signing_instructions'].message_type = chromiumos_dot_config_dot_prototype_dot_signing__pb2._SIGNINGINSTRUCTIONS
 DESCRIPTOR.message_types_by_name['ReleaseTarget'] = _RELEASETARGET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ReleaseTarget = _reflection.GeneratedProtocolMessageType('ReleaseTarget', (_message.Message,), dict(
-
-  Signing = _reflection.GeneratedProtocolMessageType('Signing', (_message.Message,), dict(
-    DESCRIPTOR = _RELEASETARGET_SIGNING,
-    __module__ = 'chromiumos.config.prototype.release_target_pb2'
-    # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.ReleaseTarget.Signing)
-    ))
-  ,
   DESCRIPTOR = _RELEASETARGET,
   __module__ = 'chromiumos.config.prototype.release_target_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.config.prototype.ReleaseTarget)
   ))
 _sym_db.RegisterMessage(ReleaseTarget)
-_sym_db.RegisterMessage(ReleaseTarget.Signing)
 
 
 DESCRIPTOR._options = None
