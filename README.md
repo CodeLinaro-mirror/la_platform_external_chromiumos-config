@@ -443,3 +443,11 @@ for cl in `gerrit -i --raw search "owner:me status:open hashtag:fixit"`; do
   gerrit reviewers $cl reviewer1@google.com reviewer2@google.com
 done
 ```
+
+# DUT Attributes
+The `starlark/dut_attributes` directory defines a `DutAttributesList` containing
+all `DutAttributes` valid for use in test plans. New `DutAttributes` can be
+added in this file.
+
+Note that a **`DutAttribute` used on any branch cannot be deleted or modified**,
+because this may break the test plan on the branch.

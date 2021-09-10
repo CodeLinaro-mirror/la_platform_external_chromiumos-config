@@ -15,7 +15,7 @@ protos = proto.new_descriptor_set(
     blob = proto.to_wirepb(
         io.read_proto(
             descriptorpb.FileDescriptorSet,
-            "../../gen/descriptors.json",
+            "../../generated/descriptors.json",
         ),
     ),
     deps = [wellknown_descpb],

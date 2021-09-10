@@ -9,8 +9,8 @@
 # Allows the recursive glob for proto files below to work.
 shopt -s globstar
 
-readonly desc_file="gen/descriptors.json"
-readonly gen_owners="gen/OWNERS"
+readonly desc_file="generated/descriptors.json"
+readonly gen_owners="generated/OWNERS"
 
 regenerate_golden() {
     # We want to split --path from the filenames so silence warning.
@@ -160,3 +160,7 @@ cp "${GO_TEMP_DIR}"/chromiumos/*.go go/
 cp "${GO_TEMP_DIR}"/chromiumos/longrunning/*.go go/longrunning
 cp -rf "${GO_TEMP_DIR}"/chromiumos/build/* go/build/
 cp -rf "${GO_TEMP_DIR}"/chromiumos/test/* go/test
+
+echo
+echo "== Regenerating DutAttributes"
+starlark/dut_attributes/generate

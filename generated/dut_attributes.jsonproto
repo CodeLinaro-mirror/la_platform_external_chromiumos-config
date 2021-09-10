@@ -1,0 +1,261 @@
+{
+  "dutAttributes": [
+    {
+      "id": {
+        "value": "attr-cts-abi"
+      },
+      "aliases": [
+        "label-cts_abi",
+        "label-cts_cpu"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "program.platform.soc_arch"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "attr-design"
+      },
+      "aliases": [
+        "label-model"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design.id.value"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "attr-ec-type"
+      },
+      "aliases": [
+        "label-ec_type"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.embedded_controller.ec_type"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "attr-fingerprint-location"
+      },
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.fingerprint.location"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "attr-program"
+      },
+      "aliases": [
+        "label-platform"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "program.id.value"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "feature-bluetooth"
+      },
+      "aliases": [
+        "label-bluetooth"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.bluetooth.present"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "feature-fingerprint"
+      },
+      "aliases": [
+        "label-fingerprint"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.fingerprint.location"
+          }
+        ]
+      },
+      "excludeValues": [
+        "LOCATION_UNKNOWN",
+        "NOT_PRESENT"
+      ]
+    },
+    {
+      "id": {
+        "value": "feature-hotwording"
+      },
+      "aliases": [
+        "label-hotwording"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.hotwording.present"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "feature-internal-display"
+      },
+      "aliases": [
+        "label-internal_display"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.display.type"
+          }
+        ]
+      },
+      "allowedValues": [
+        "TYPE_INTERNAL",
+        "TYPE_INTERNAL_EXTERNAL"
+      ]
+    },
+    {
+      "id": {
+        "value": "feature-stylus"
+      },
+      "aliases": [
+        "label-stylus"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.stylus.stylus"
+          }
+        ]
+      },
+      "allowedValues": [
+        "INTERNAL",
+        "EXTERNAL"
+      ]
+    },
+    {
+      "id": {
+        "value": "feature-touchpad"
+      },
+      "aliases": [
+        "label-touchpad"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.touchpad.present"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "feature-touchscreen"
+      },
+      "aliases": [
+        "label-touchscreen"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.screen.touch_support"
+          }
+        ]
+      },
+      "allowedValues": [
+        "PRESENT"
+      ]
+    },
+    {
+      "id": {
+        "value": "hw-wireless"
+      },
+      "aliases": [
+        "label-wifi_chip"
+      ],
+      "hwidSource": {
+        "componentType": "wifi",
+        "fields": [
+          {
+            "path": "hwid_label"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "sw-build-target"
+      },
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "sw_config.system_build_target.portage_build_target.overlay_name"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "sw-firmware-ro-major-version"
+      },
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "sw_config.firmware.main_ro_payload.version.major"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "sw-firmware-ro-minor-version"
+      },
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "sw_config.firmware.main_ro_payload.version.minor"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "sw-firmware-ro-patch-version"
+      },
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "sw_config.firmware.main_ro_payload.version.patch"
+          }
+        ]
+      }
+    }
+  ]
+}
