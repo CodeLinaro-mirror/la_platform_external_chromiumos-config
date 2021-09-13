@@ -10945,9 +10945,9 @@
               "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"
             },
             {
-              "jsonName": "varientTargets",
+              "jsonName": "variantTargets",
               "label": "LABEL_REPEATED",
-              "name": "varient_targets",
+              "name": "variant_targets",
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"

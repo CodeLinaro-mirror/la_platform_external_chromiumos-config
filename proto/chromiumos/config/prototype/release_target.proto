@@ -27,8 +27,8 @@ message ReleaseTarget {
   // Defines the primary build target for a given release.
   chromiumos.build.api.SystemImage.BuildTarget main_target = 5;
 
-  // Defines the uprev build target for a given release.
-  repeated chromiumos.build.api.SystemImage.BuildTarget varient_targets = 6;
+  // Defines the uprev build variants for a given release.
+  repeated chromiumos.build.api.SystemImage.BuildTarget variant_targets = 6;
 
   // Defines the signing instructions set for this release.
   SigningInstructions signing_instructions = 4;

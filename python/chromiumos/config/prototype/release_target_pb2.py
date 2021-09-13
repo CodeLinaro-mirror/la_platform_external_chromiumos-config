@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.config.prototype',
   syntax='proto3',
   serialized_options=_b('Z.go.chromium.org/chromiumos/config/go/prototype'),
-  serialized_pb=_b('\n0chromiumos/config/prototype/release_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a\x33\x63hromiumos/config/prototype/release_target_id.proto\x1a)chromiumos/config/prototype/signing.proto\x1a\'chromiumos/build/api/system_image.proto\"\xb3\x02\n\rReleaseTarget\x12\x38\n\x02id\x18\x01 \x01(\x0b\x32,.chromiumos.config.prototype.ReleaseTargetId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x42\n\x0bmain_target\x18\x05 \x01(\x0b\x32-.chromiumos.build.api.SystemImage.BuildTarget\x12\x46\n\x0fvarient_targets\x18\x06 \x03(\x0b\x32-.chromiumos.build.api.SystemImage.BuildTarget\x12N\n\x14signing_instructions\x18\x04 \x01(\x0b\x32\x30.chromiumos.config.prototype.SigningInstructionsB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
+  serialized_pb=_b('\n0chromiumos/config/prototype/release_target.proto\x12\x1b\x63hromiumos.config.prototype\x1a\x33\x63hromiumos/config/prototype/release_target_id.proto\x1a)chromiumos/config/prototype/signing.proto\x1a\'chromiumos/build/api/system_image.proto\"\xb3\x02\n\rReleaseTarget\x12\x38\n\x02id\x18\x01 \x01(\x0b\x32,.chromiumos.config.prototype.ReleaseTargetId\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x42\n\x0bmain_target\x18\x05 \x01(\x0b\x32-.chromiumos.build.api.SystemImage.BuildTarget\x12\x46\n\x0fvariant_targets\x18\x06 \x03(\x0b\x32-.chromiumos.build.api.SystemImage.BuildTarget\x12N\n\x14signing_instructions\x18\x04 \x01(\x0b\x32\x30.chromiumos.config.prototype.SigningInstructionsB0Z.go.chromium.org/chromiumos/config/go/prototypeb\x06proto3')
   ,
   dependencies=[chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2.DESCRIPTOR,chromiumos_dot_config_dot_prototype_dot_signing__pb2.DESCRIPTOR,chromiumos_dot_build_dot_api_dot_system__image__pb2.DESCRIPTOR,])
 
@@ -58,7 +58,7 @@ _RELEASETARGET = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='varient_targets', full_name='chromiumos.config.prototype.ReleaseTarget.varient_targets', index=3,
+      name='variant_targets', full_name='chromiumos.config.prototype.ReleaseTarget.variant_targets', index=3,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -89,7 +89,7 @@ _RELEASETARGET = _descriptor.Descriptor(
 
 _RELEASETARGET.fields_by_name['id'].message_type = chromiumos_dot_config_dot_prototype_dot_release__target__id__pb2._RELEASETARGETID
 _RELEASETARGET.fields_by_name['main_target'].message_type = chromiumos_dot_build_dot_api_dot_system__image__pb2._SYSTEMIMAGE_BUILDTARGET
-_RELEASETARGET.fields_by_name['varient_targets'].message_type = chromiumos_dot_build_dot_api_dot_system__image__pb2._SYSTEMIMAGE_BUILDTARGET
+_RELEASETARGET.fields_by_name['variant_targets'].message_type = chromiumos_dot_build_dot_api_dot_system__image__pb2._SYSTEMIMAGE_BUILDTARGET
 _RELEASETARGET.fields_by_name['signing_instructions'].message_type = chromiumos_dot_config_dot_prototype_dot_signing__pb2._SIGNINGINSTRUCTIONS
 DESCRIPTOR.message_types_by_name['ReleaseTarget'] = _RELEASETARGET
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
