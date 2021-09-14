@@ -206,8 +206,12 @@ if __name__ == '__main__':
 
   handle_config_bundle_list("hw_design/generated/configs.jsonproto",
                             ufs_ds_client)
-  handle_dut_attribute_list("dut_attributes/generated/dut_attributes.jsonproto",
-                            ufs_ds_client)
+  handle_dut_attribute_list(
+      os.path.realpath(
+          os.path.join(
+              script_dir,
+              "../generated/dut_attributes.jsonproto",
+          )), ufs_ds_client)
   handle_flat_config_list("hw_design/generated/flattened.jsonproto",
                           ufs_ds_client)
   handle_device_stability_list(
