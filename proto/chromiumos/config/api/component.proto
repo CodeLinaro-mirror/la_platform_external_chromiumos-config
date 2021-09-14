@@ -176,6 +176,12 @@ message Component {
     string product_id = 1;
     Properties properties = 2;
 
+    enum Feature {
+      FEATURE_UNKNOWN = 0;
+      // Supports high dynamic range.
+      HDR = 1;
+    };
+
     message Properties {
       int32 width_px = 1;
       int32 height_px = 2;
@@ -184,6 +190,7 @@ message Component {
       int32 diagonal_milliinch = 3;
       // PPI or also referred to as DPI (density per inch)
       int32 pixels_per_in = 4;
+      repeated Feature features = 5;
     }
   }
 

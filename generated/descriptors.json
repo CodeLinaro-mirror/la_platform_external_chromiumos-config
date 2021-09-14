@@ -1216,6 +1216,21 @@
               ]
             },
             {
+              "enumType": [
+                {
+                  "name": "Feature",
+                  "value": [
+                    {
+                      "name": "FEATURE_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "HDR",
+                      "number": 1
+                    }
+                  ]
+                }
+              ],
               "field": [
                 {
                   "jsonName": "productId",
@@ -1264,6 +1279,14 @@
                       "name": "pixels_per_in",
                       "number": 4,
                       "type": "TYPE_INT32"
+                    },
+                    {
+                      "jsonName": "features",
+                      "label": "LABEL_REPEATED",
+                      "name": "features",
+                      "number": 5,
+                      "type": "TYPE_ENUM",
+                      "typeName": ".chromiumos.config.api.Component.DisplayPanel.Feature"
                     }
                   ],
                   "name": "Properties"
