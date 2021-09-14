@@ -11482,6 +11482,29 @@
       ],
       "messageType": [
         {
+          "enumType": [
+            {
+              "name": "TargetCriticality",
+              "value": [
+                {
+                  "name": "CRIT_UNDEFINED",
+                  "number": 0
+                },
+                {
+                  "name": "CRIT_EXPERIMENTAL",
+                  "number": 1
+                },
+                {
+                  "name": "CRIT_INFORMATIONAL",
+                  "number": 2
+                },
+                {
+                  "name": "CRIT_PRODUCTION",
+                  "number": 3
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "id",
@@ -11499,10 +11522,10 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "mainTarget",
+              "jsonName": "buildTarget",
               "label": "LABEL_OPTIONAL",
-              "name": "main_target",
-              "number": 5,
+              "name": "build_target",
+              "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"
             },
@@ -11510,17 +11533,25 @@
               "jsonName": "variantTargets",
               "label": "LABEL_REPEATED",
               "name": "variant_targets",
-              "number": 6,
+              "number": 4,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.SystemImage.BuildTarget"
+              "typeName": ".chromiumos.config.prototype.ReleaseTarget"
             },
             {
               "jsonName": "signingInstructions",
               "label": "LABEL_OPTIONAL",
               "name": "signing_instructions",
-              "number": 4,
+              "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.prototype.SigningInstructions"
+            },
+            {
+              "jsonName": "criticality",
+              "label": "LABEL_OPTIONAL",
+              "name": "criticality",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.prototype.ReleaseTarget.TargetCriticality"
             }
           ],
           "name": "ReleaseTarget"

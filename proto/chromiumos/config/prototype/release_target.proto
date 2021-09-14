@@ -25,11 +25,28 @@ message ReleaseTarget {
   string name = 2;
 
   // Defines the primary build target for a given release.
-  chromiumos.build.api.SystemImage.BuildTarget main_target = 5;
+  chromiumos.build.api.SystemImage.BuildTarget build_target = 3;
 
   // Defines the uprev build variants for a given release.
-  repeated chromiumos.build.api.SystemImage.BuildTarget variant_targets = 6;
+  repeated ReleaseTarget variant_targets = 4;
 
   // Defines the signing instructions set for this release.
-  SigningInstructions signing_instructions = 4;
+  SigningInstructions signing_instructions = 5;
+
+  // Defines the criticality of the target when used to determine things like
+  // the overall build return status, as well as if we should update the LKGM
+  // version, etc.
+  enum TargetCriticality {
+    // Should not be used.
+    CRIT_UNDEFINED = 0;
+    // In bringup or otherwise not ready, ignore for overall status.
+    CRIT_EXPERIMENTAL = 1;
+    // Used for informational purposes. Might affect some status calculations.
+    CRIT_INFORMATIONAL = 2;
+    // In production, deployed or otherwise critical.
+    CRIT_PRODUCTION = 3;
+  }
+
+  // This target's level of.
+  TargetCriticality criticality = 6;
 }
