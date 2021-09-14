@@ -216,6 +216,9 @@
               ]
             },
             "cellular": {
+              "dynamicPowerReductionConfig": {
+                "modemManager": true
+              },
               "present": 1,
               "type": 1
             },
@@ -432,6 +435,9 @@
               },
               "hardwareFeature": {
                 "cellular": {
+                  "dynamicPowerReductionConfig": {
+                    "modemManager": true
+                  },
                   "present": 1,
                   "type": 1
                 }
@@ -619,14 +625,6 @@
               "id": "POWER_SUPPLY",
               "type": 32
             },
-            "proximitySensor": {
-              "description": {
-                "EN": "Default proximity_sensor"
-              },
-              "hardwareFeature": {},
-              "id": "PROXIMITY_SENSOR",
-              "type": 10
-            },
             "screen": {
               "description": {
                 "EN": "Touchscreen"
@@ -793,6 +791,10 @@
               ]
             },
             "cellular": {
+              "dynamicPowerReductionConfig": {
+                "gpio": 0,
+                "tabletMode": true
+              },
               "model": "FakeModem",
               "present": 1,
               "type": 1
@@ -986,6 +988,10 @@
               },
               "hardwareFeature": {
                 "cellular": {
+                  "dynamicPowerReductionConfig": {
+                    "gpio": 0,
+                    "tabletMode": true
+                  },
                   "model": "FakeModem",
                   "present": 1,
                   "type": 1
@@ -1147,14 +1153,6 @@
               },
               "id": "POWER_SUPPLY",
               "type": 32
-            },
-            "proximitySensor": {
-              "description": {
-                "EN": "Default proximity_sensor"
-              },
-              "hardwareFeature": {},
-              "id": "PROXIMITY_SENSOR",
-              "type": 10
             },
             "screen": {
               "description": {
@@ -1335,6 +1333,9 @@
               ]
             },
             "cellular": {
+              "dynamicPowerReductionConfig": {
+                "modemManager": true
+              },
               "present": 1,
               "type": 1
             },
@@ -1527,6 +1528,9 @@
               },
               "hardwareFeature": {
                 "cellular": {
+                  "dynamicPowerReductionConfig": {
+                    "modemManager": true
+                  },
                   "present": 1,
                   "type": 1
                 }
@@ -1680,14 +1684,6 @@
               },
               "id": "POWER_SUPPLY",
               "type": 32
-            },
-            "proximitySensor": {
-              "description": {
-                "EN": "Default proximity_sensor"
-              },
-              "hardwareFeature": {},
-              "id": "PROXIMITY_SENSOR",
-              "type": 10
             },
             "screen": {
               "description": {
@@ -1870,7 +1866,11 @@
               ]
             },
             "cellular": {
-              "model": "FakeModemB",
+              "dynamicPowerReductionConfig": {
+                "gpio": 0,
+                "tabletMode": true
+              },
+              "model": "FakeModem",
               "present": 1,
               "type": 1
             },
@@ -2054,6 +2054,24 @@
               "id": "CAMERA1",
               "type": 7
             },
+            "cellularBoard": {
+              "description": {
+                "EN": "Default cellular_board w/ model"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "dynamicPowerReductionConfig": {
+                    "gpio": 0,
+                    "tabletMode": true
+                  },
+                  "model": "FakeModem",
+                  "present": 1,
+                  "type": 1
+                }
+              },
+              "id": "LTE_BOARD_MODEL",
+              "type": 15
+            },
             "daughterBoard": {
               "description": {
                 "EN": "Non-default daughter_board with LTE"
@@ -2192,14 +2210,6 @@
               },
               "id": "POWER_SUPPLY",
               "type": 32
-            },
-            "proximitySensor": {
-              "description": {
-                "EN": "Default proximity_sensor"
-              },
-              "hardwareFeature": {},
-              "id": "PROXIMITY_SENSOR",
-              "type": 10
             },
             "screen": {
               "description": {
@@ -2710,14 +2720,6 @@
               "id": "POWER_SUPPLY",
               "type": 32
             },
-            "proximitySensor": {
-              "description": {
-                "EN": "Default proximity_sensor"
-              },
-              "hardwareFeature": {},
-              "id": "PROXIMITY_SENSOR",
-              "type": 10
-            },
             "screen": {
               "description": {
                 "EN": "Touchscreen"
@@ -2887,7 +2889,12 @@
               ]
             },
             "cellular": {
-              "present": 2
+              "dynamicPowerReductionConfig": {
+                "gpio": 20,
+                "tabletMode": true
+              },
+              "present": 1,
+              "type": 1
             },
             "fingerprint": {
               "location": 5
@@ -2897,7 +2904,7 @@
             },
             "fwConfig": {
               "mask": 131071,
-              "value": 90913
+              "value": 90914
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -2923,6 +2930,7 @@
               "barreljack": 2,
               "usbMinAcWatts": 20
             },
+            "proximity": {},
             "screen": {
               "panelProperties": {
                 "alsSteps": [
@@ -2958,7 +2966,7 @@
             },
             "usbC": {
               "count": {
-                "value": 3
+                "value": 2
               },
               "ports": [
                 {
@@ -2966,10 +2974,6 @@
                 },
                 {
                   "position": 5
-                },
-                {
-                  "indexOverride": 1,
-                  "position": 2
                 }
               ]
             },
@@ -3052,15 +3056,20 @@
             },
             "daughterBoard": {
               "description": {
-                "EN": "Default daughter_board"
+                "EN": "LTE daughter_board"
               },
               "hardwareFeature": {
                 "cellular": {
-                  "present": 2
+                  "dynamicPowerReductionConfig": {
+                    "gpio": 20,
+                    "tabletMode": true
+                  },
+                  "present": 1,
+                  "type": 1
                 },
                 "fwConfig": {
                   "mask": 15,
-                  "value": 1
+                  "value": 2
                 },
                 "hdmi": {
                   "present": 2
@@ -3069,18 +3078,10 @@
                   "count": {}
                 },
                 "usbC": {
-                  "count": {
-                    "value": 1
-                  },
-                  "ports": [
-                    {
-                      "indexOverride": 1,
-                      "position": 2
-                    }
-                  ]
+                  "count": {}
                 }
               },
-              "id": "Default DB",
+              "id": "LTE DB",
               "type": 11
             },
             "ec": {
@@ -3200,7 +3201,9 @@
               "description": {
                 "EN": "Default proximity_sensor"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "proximity": {}
+              },
               "id": "PROXIMITY_SENSOR",
               "type": 10
             },
@@ -3363,7 +3366,8 @@
               ]
             },
             "cellular": {
-              "present": 2
+              "present": 1,
+              "type": 1
             },
             "fingerprint": {
               "location": 5
@@ -3526,6 +3530,19 @@
               "id": "CAMERA1",
               "type": 7
             },
+            "cellularBoard": {
+              "description": {
+                "EN": "Default cellular_board without dynamic power reduction config"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "present": 1,
+                  "type": 1
+                }
+              },
+              "id": "LTE_BOARD_NO_DPR",
+              "type": 15
+            },
             "daughterBoard": {
               "description": {
                 "EN": "Default daughter_board"
@@ -3671,14 +3688,6 @@
               },
               "id": "POWER_SUPPLY",
               "type": 32
-            },
-            "proximitySensor": {
-              "description": {
-                "EN": "Default proximity_sensor"
-              },
-              "hardwareFeature": {},
-              "id": "PROXIMITY_SENSOR",
-              "type": 10
             },
             "screen": {
               "description": {
@@ -3827,7 +3836,13 @@
               "speakerAmp": 5
             },
             "cellular": {
-              "present": 2
+              "dynamicPowerReductionConfig": {
+                "gpio": 0,
+                "tabletMode": true
+              },
+              "model": "FakeModem",
+              "present": 1,
+              "type": 1
             },
             "fingerprint": {
               "location": 5
@@ -3979,6 +3994,24 @@
               "id": "CAMERA0",
               "type": 7
             },
+            "cellularBoard": {
+              "description": {
+                "EN": "Default cellular_board w/ model"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "dynamicPowerReductionConfig": {
+                    "gpio": 0,
+                    "tabletMode": true
+                  },
+                  "model": "FakeModem",
+                  "present": 1,
+                  "type": 1
+                }
+              },
+              "id": "LTE_BOARD_MODEL",
+              "type": 15
+            },
             "daughterBoard": {
               "description": {
                 "EN": "Default daughter_board"
@@ -4124,14 +4157,6 @@
               },
               "id": "BJ_POWER_SUPPLY",
               "type": 32
-            },
-            "proximitySensor": {
-              "description": {
-                "EN": "Default proximity_sensor"
-              },
-              "hardwareFeature": {},
-              "id": "PROXIMITY_SENSOR",
-              "type": 10
             },
             "screen": {
               "description": {
@@ -4554,14 +4579,6 @@
               "id": "POWER_SUPPLY",
               "type": 32
             },
-            "proximitySensor": {
-              "description": {
-                "EN": "Default proximity_sensor"
-              },
-              "hardwareFeature": {},
-              "id": "PROXIMITY_SENSOR",
-              "type": 10
-            },
             "screen": {
               "description": {
                 "EN": "Default screen"
@@ -4964,14 +4981,6 @@
               },
               "id": "POWER_SUPPLY",
               "type": 32
-            },
-            "proximitySensor": {
-              "description": {
-                "EN": "Default proximity_sensor"
-              },
-              "hardwareFeature": {},
-              "id": "PROXIMITY_SENSOR",
-              "type": 10
             },
             "screen": {
               "description": {

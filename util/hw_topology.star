@@ -708,6 +708,8 @@ def _create_proximity_sensor(id, description, fw_configs = []):
     """Builds a Topology proto for a proximity sensor."""
     hw_features = topo_pb.HardwareFeatures()
 
+    hw_features.proximity = {}
+
     _accumulate_fw_configs(hw_features, fw_configs)
 
     return topo_pb.Topology(
@@ -741,6 +743,7 @@ def _create_daughter_board(
         cellular_support = False,
         cellular_model = None,
         cellular_type = _CELLULAR.NOT_PRESENT,
+        cellular_dynamic_power_reduction_config = None,
         hdmi_support = False,
         side = None,
         usbc_ports = None):
@@ -755,6 +758,7 @@ def _create_daughter_board(
     hw_features.cellular.present = _bool_to_present(cellular_support)
     hw_features.cellular.model = cellular_model
     hw_features.cellular.type = cellular_type
+    hw_features.cellular.dynamic_power_reduction_config = cellular_dynamic_power_reduction_config
 
     hw_features.hdmi.present = _bool_to_present(hdmi_support)
 
@@ -800,7 +804,8 @@ def _create_cellular_board(
         type = _CELLULAR.NOT_PRESENT,
         fw_configs = [],
         model = None,
-        attach_apn_required = None):
+        attach_apn_required = None,
+        dynamic_power_reduction_config = None):
     """Builds a Topology proto for a Cellular board."""
     hw_features = topo_pb.HardwareFeatures()
 
@@ -808,6 +813,7 @@ def _create_cellular_board(
     hw_features.cellular.model = model
     hw_features.cellular.type = type
     hw_features.cellular.attach_apn_required = attach_apn_required
+    hw_features.cellular.dynamic_power_reduction_config = dynamic_power_reduction_config
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -817,6 +823,24 @@ def _create_cellular_board(
         description = {"EN": description},
         hardware_feature = hw_features,
     )
+
+def _make_cellular_dynamic_power_reduction_config(
+        gpio = None,
+        modem_manager = False,
+        tablet_mode = None):
+    """Builds a configuration for cellular dynamic power reduction."""
+    config = topo_pb.HardwareFeatures.Cellular.DynamicPowerReductionConfig()
+
+    if gpio != None:
+        config.gpio = gpio
+    elif modem_manager:
+        config.modem_manager = True
+    else:
+        fail("A Cellular.DynamicPowerReductionConfig must configure a GPIO or the use of modem manager.")
+
+    if tablet_mode:
+        config.tablet_mode.value = tablet_mode
+    return config
 
 def _create_sd_reader(id, description, fw_configs = []):
     """Builds a Topology proto for a SD reader."""
@@ -1310,6 +1334,8 @@ def _accumulate_cellular(existing_cellular, new_cellular):
         existing_cellular.model = new_cellular.model
         existing_cellular.type = new_cellular.type
         existing_cellular.attach_apn_required = new_cellular.attach_apn_required
+        if proto.has(new_cellular, "dynamic_power_reduction_config"):
+            existing_cellular.dynamic_power_reduction_config = new_cellular.dynamic_power_reduction_config
 
 def _accumulate_hdmi(existing_hdmi, new_hdmi):
     existing_hdmi.present = _accumulate_presence(existing_hdmi.present, new_hdmi.present)
@@ -1398,6 +1424,9 @@ def _convert_to_hw_features(hardware_topology):
 
     # Handle all possible proximity sensor hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.proximity_sensor.hardware_feature.fw_config)
+
+    if proto.has(copy.proximity_sensor.hardware_feature, "proximity"):
+        result.proximity = copy.proximity_sensor.hardware_feature.proximity
 
     # Handle all possible hdmi hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.hdmi.hardware_feature.fw_config)
@@ -1519,6 +1548,7 @@ hw_topo = struct(
     create_poe = _create_poe,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
+    make_cellular_dynamic_power_reduction_config = _make_cellular_dynamic_power_reduction_config,
     make_fw_config = _make_fw_config,
     ff = hw_feat.form_factor,
     amplifier = _AMPLIFIER,

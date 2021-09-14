@@ -103,7 +103,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 31
+// NEXT TAG: 38
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -150,10 +150,10 @@ message HardwareFeatures {
       // The position of the port on the chassis.
       PortPosition position = 1;
 
-			// The 0-indexed index of this USB-C port. If set, this is used as the
-			// port index rather than numbering the motherboard ports in order
-			// followed by daughter board ports, in the order they are specified.
-			// This value must be in the range [0, number_of_usb_c_ports).
+      // The 0-indexed index of this USB-C port. If set, this is used as the
+      // port index rather than numbering the motherboard ports in order
+      // followed by daughter board ports, in the order they are specified.
+      // This value must be in the range [0, number_of_usb_c_ports).
       google.protobuf.UInt32Value index_override = 2;
     }
   }
@@ -185,6 +185,23 @@ message HardwareFeatures {
       NOT_PRESENT = 0;
       CELLULAR_LTE = 1;
       CELLULAR_5G = 2;
+    }
+
+    // Optional config for dynamic power reduction control.
+    DynamicPowerReductionConfig dynamic_power_reduction_config = 5;
+    message DynamicPowerReductionConfig {
+      oneof dynamic_power_reduction_config {
+        // A uint identifying the GPIO to use to toggle dynamic power
+        // reduction.
+        uint32 gpio = 1;
+
+        // A dummy value identifying that modem manager should be used to
+        // toggle dynamic power reduction.
+        bool modem_manager = 2;
+      }
+      // Whether tablet mode should be a trigger for dynamic power reduction.
+      // If unset, the value will be true for convertibles.
+      google.protobuf.BoolValue tablet_mode = 3;
     }
   }
 
@@ -709,5 +726,9 @@ message HardwareFeatures {
     // The input power below which a warning should be shown to use a
     // higher-power USB adapter.
     int32 usb_min_ac_watts = 2;
+  }
+
+  Proximity proximity = 37;
+  message Proximity {
   }
 }

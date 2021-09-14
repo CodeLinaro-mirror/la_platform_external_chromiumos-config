@@ -2674,6 +2674,14 @@
               "number": 36,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.PowerSupply"
+            },
+            {
+              "jsonName": "proximity",
+              "label": "LABEL_OPTIONAL",
+              "name": "proximity",
+              "number": 37,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Proximity"
             }
           ],
           "name": "HardwareFeatures",
@@ -2797,9 +2805,53 @@
                   "name": "attach_apn_required",
                   "number": 4,
                   "type": "TYPE_BOOL"
+                },
+                {
+                  "jsonName": "dynamicPowerReductionConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dynamic_power_reduction_config",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig"
                 }
               ],
-              "name": "Cellular"
+              "name": "Cellular",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "gpio",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "gpio",
+                      "number": 1,
+                      "oneofIndex": 0,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "modemManager",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "modem_manager",
+                      "number": 2,
+                      "oneofIndex": 0,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "tabletMode",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "tablet_mode",
+                      "number": 3,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".google.protobuf.BoolValue"
+                    }
+                  ],
+                  "name": "DynamicPowerReductionConfig",
+                  "oneofDecl": [
+                    {
+                      "name": "dynamic_power_reduction_config"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "field": [
@@ -4100,6 +4152,9 @@
                 }
               ],
               "name": "PowerSupply"
+            },
+            {
+              "name": "Proximity"
             }
           ]
         }

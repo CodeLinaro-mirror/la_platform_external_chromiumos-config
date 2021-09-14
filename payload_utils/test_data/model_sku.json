@@ -13,7 +13,7 @@
       "component.has_lte": true,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 2,
-      "component.has_proximity_sensor": true,
+      "component.has_proximity_sensor": null,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
       "component.has_tabletmode": false,
@@ -39,7 +39,7 @@
       "component.has_lte": true,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 2,
-      "component.has_proximity_sensor": true,
+      "component.has_proximity_sensor": null,
       "component.has_rear_camera": false,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
@@ -89,7 +89,7 @@
       "component.has_lte": true,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 2,
-      "component.has_proximity_sensor": true,
+      "component.has_proximity_sensor": null,
       "component.has_rear_camera": false,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
@@ -132,10 +132,9 @@
       "component.has_keyboard_backlight": false,
       "component.has_lid_gyroscope": null,
       "component.has_lid_magnetometer": null,
-      "component.has_lte": false,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 2,
-      "component.has_proximity_sensor": true,
+      "component.has_proximity_sensor": null,
       "component.has_rear_camera": null,
       "component.has_sd_reader": true,
       "component.has_stylus": false,
@@ -183,7 +182,7 @@
       "component.has_lte": false,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 2,
-      "component.has_proximity_sensor": true,
+      "component.has_proximity_sensor": null,
       "component.has_rear_camera": false,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
@@ -230,10 +229,10 @@
       "component.has_lid_accelerometer": null,
       "component.has_lid_gyroscope": null,
       "component.has_lid_magnetometer": null,
-      "component.has_lte": false,
+      "component.has_lte": true,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 2,
-      "component.has_proximity_sensor": true,
+      "component.has_proximity_sensor": null,
       "component.has_rear_camera": false,
       "component.has_sd_reader": true,
       "component.has_stylus": false,
@@ -274,14 +273,14 @@
       "component.has_base_gyroscope": true,
       "component.has_base_magnetometer": true,
       "component.has_daughter_board_usb_a": 0,
-      "component.has_daughter_board_usb_c": 1,
+      "component.has_daughter_board_usb_c": 0,
       "component.has_fingerprint": false,
       "component.has_front_camera": true,
       "component.has_keyboard_backlight": false,
       "component.has_lid_accelerometer": null,
       "component.has_lid_gyroscope": null,
       "component.has_lid_magnetometer": null,
-      "component.has_lte": false,
+      "component.has_lte": true,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 2,
       "component.has_proximity_sensor": true,
@@ -306,7 +305,7 @@
         [
           "usb_host",
           "==",
-          3
+          2
         ],
         [
           "stylus",
@@ -316,7 +315,7 @@
       ],
       "component.speaker_amp": "AMPLIFIER_UNKNOWN",
       "custom_type": "whitelabel",
-      "fw_config": 90913
+      "fw_config": 90914
     }
   },
   "product_sku": {
@@ -396,6 +395,7 @@
         "component.has_base_gyroscope": true,
         "component.has_base_magnetometer": true,
         "component.has_lid_accelerometer": null,
+        "component.has_lte": true,
         "component.speaker_amp": "MAX98373",
         "fw_config": 90897
       },
@@ -404,6 +404,7 @@
         "component.has_base_gyroscope": true,
         "component.has_base_magnetometer": true,
         "component.has_lid_accelerometer": null,
+        "component.has_lte": false,
         "component.speaker_amp": "AMPLIFIER_UNKNOWN",
         "fw_config": 90897
       },
@@ -412,6 +413,7 @@
         "component.has_base_gyroscope": null,
         "component.has_base_magnetometer": null,
         "component.has_lid_accelerometer": true,
+        "component.has_lte": false,
         "component.speaker_amp": "MAX98373",
         "fw_config": 90113
       }

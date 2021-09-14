@@ -170,6 +170,7 @@ _FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", 
 _NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
 _HPS = hw_topo.create_hps("HPS", "Default Hps", present = True)
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
+_NO_PROXIMITY_SENSOR = None
 _DAUGHTER_BOARD = hw_topo.create_daughter_board(
     "Default DB",
     "Default daughter_board",
@@ -179,8 +180,9 @@ _DAUGHTER_BOARD = hw_topo.create_daughter_board(
 )
 _NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
 _WIFI = hw_topo.create_wifi("WIFI", "Default wifi", fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)])
-_LTE_BOARD = hw_topo.create_cellular_board("LTE_BOARD", "Default cellular_board", present = True, type = hw_topo.cellular.CELLULAR_LTE)
-_LTE_BOARD_WITH_MODEL = hw_topo.create_cellular_board("LTE_BOARD_MODEL", "Default cellular_board w/ model", present = True, type = hw_topo.cellular.CELLULAR_LTE, model = "FakeModem")
+_LTE_BOARD = hw_topo.create_cellular_board("LTE_BOARD", "Default cellular_board", present = True, type = hw_topo.cellular.CELLULAR_LTE, dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(modem_manager = True))
+_LTE_BOARD_WITH_MODEL = hw_topo.create_cellular_board("LTE_BOARD_MODEL", "Default cellular_board w/ model", present = True, type = hw_topo.cellular.CELLULAR_LTE, model = "FakeModem", dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(gpio = 0, tablet_mode = True))
+_LTE_BOARD_WITH_NO_DPR = hw_topo.create_cellular_board("LTE_BOARD_NO_DPR", "Default cellular_board without dynamic power reduction config", present = True, type = hw_topo.cellular.CELLULAR_LTE, dynamic_power_reduction_config = None)
 _SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
 _MOTHERBOARD_USB = hw_topo.create_motherboard_usb(
     "MOTHERBOARD_USB",
@@ -243,7 +245,8 @@ def create_hardware_topology(
         hdmi = None,
         hps = None,
         audio = None,
-        power_supply = None):
+        power_supply = None,
+        proximity_sensor = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -259,7 +262,7 @@ def create_hardware_topology(
         daughter_board = daughter_board if daughter_board else _DAUGHTER_BOARD,
         motherboard_usb = _MOTHERBOARD_USB,
         non_volatile_storage = _NON_VOLATILE_STORAGE,
-        proximity_sensor = _PROXIMITY_SENSOR,
+        proximity_sensor = proximity_sensor if proximity_sensor else _NO_PROXIMITY_SENSOR,
         sd_reader = _SD_READER,
         thermal = _THERMAL,
         wifi = _WIFI,
@@ -647,6 +650,8 @@ design.append_configs(
         form_factor = _FORM_FACTOR_DETACHABLE,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
+        cellular_board = _LTE_BOARD_WITH_MODEL,
+        proximity_sensor = _NO_PROXIMITY_SENSOR,
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(
@@ -739,6 +744,15 @@ design.append_configs(
     config_id = 64,
     hardware_topology = create_hardware_topology(
         camera = _CAMERA1,
+        daughter_board = hw_topo.create_daughter_board(
+            "LTE DB",
+            "LTE daughter_board",
+            fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 2)],
+            cellular_support = True,
+            cellular_type = hw_topo.cellular.CELLULAR_LTE,
+            cellular_dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(gpio = 20, tablet_mode = True),
+        ),
+        proximity_sensor = _PROXIMITY_SENSOR,
     ),
     audio = [sc.create_audio(
         _AUDIO_CARD,
@@ -769,6 +783,7 @@ design.append_configs(
     config_id = 65,
     hardware_topology = create_hardware_topology(
         camera = _CAMERA1,
+        cellular_board = _LTE_BOARD_WITH_NO_DPR,
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
@@ -800,6 +815,8 @@ design.append_configs(
             bj_present = True,
         ),
         camera = _CAMERA0,
+        cellular_board = _LTE_BOARD_WITH_MODEL,
+        proximity_sensor = _NO_PROXIMITY_SENSOR,
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",

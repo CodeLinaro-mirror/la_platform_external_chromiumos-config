@@ -572,10 +572,12 @@
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
+          "set-cellular-transmit-power-for-tablet-mode": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1",
           "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "3000",
           "usb-min-ac-watts": "20",
+          "use-modemmanager-for-dynamic-sar": "1",
           "wake-on-dp": "1"
         },
         "thermal": {
@@ -764,7 +766,7 @@
           "smbios-name-match": "PROJECT_B"
         },
         "modem": {
-          "firmware-variant": "fakemodemb"
+          "firmware-variant": "fakemodem"
         },
         "name": "project_b",
         "power": {
@@ -773,6 +775,8 @@
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
+          "set-cellular-transmit-power-dpr-gpio": "0",
+          "set-cellular-transmit-power-for-tablet-mode": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1",
           "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "3000",
@@ -1127,7 +1131,7 @@
             "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 90913,
+          "firmware-config": 90914,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
@@ -1148,14 +1152,19 @@
           "sku-id": 64,
           "smbios-name-match": "PROJECT_WL"
         },
+        "modem": {
+          "firmware-variant": "project_wl"
+        },
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
+          "set-cellular-transmit-power-dpr-gpio": "20",
+          "set-cellular-transmit-power-for-proximity": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1",
           "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
@@ -1295,7 +1304,7 @@
             "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 90913,
+          "firmware-config": 90914,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
@@ -1317,14 +1326,19 @@
           "smbios-name-match": "PROJECT_WL",
           "whitelabel-tag": "loema"
         },
+        "modem": {
+          "firmware-variant": "project_wl"
+        },
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
+          "set-cellular-transmit-power-dpr-gpio": "20",
+          "set-cellular-transmit-power-for-proximity": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1",
           "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
@@ -1464,7 +1478,7 @@
             "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 90913,
+          "firmware-config": 90914,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
@@ -1486,14 +1500,19 @@
           "smbios-name-match": "PROJECT_WL",
           "whitelabel-tag": "loemb"
         },
+        "modem": {
+          "firmware-variant": "project_wl"
+        },
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
+          "set-cellular-transmit-power-dpr-gpio": "20",
+          "set-cellular-transmit-power-for-proximity": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1",
           "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
@@ -1633,7 +1652,7 @@
             "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 90913,
+          "firmware-config": 90914,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
@@ -1655,14 +1674,19 @@
           "smbios-name-match": "PROJECT_WL",
           "whitelabel-tag": "loemc"
         },
+        "modem": {
+          "firmware-variant": "project_wl"
+        },
         "name": "project_wl",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
-          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
+          "set-cellular-transmit-power-dpr-gpio": "20",
+          "set-cellular-transmit-power-for-proximity": "1",
           "set-wifi-transmit-power-for-tablet-mode": "1",
           "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
@@ -1833,6 +1857,9 @@
           "smbios-name-match": "PROJECT_REBRAND",
           "whitelabel-tag": "branda"
         },
+        "modem": {
+          "firmware-variant": "project_rebrand"
+        },
         "name": "project_rebrand",
         "power": {
           "battery-poll-interval-initial-ms": "1000",
@@ -2000,6 +2027,9 @@
           "platform-name": "fake",
           "sku-id": 128,
           "smbios-name-match": "PROJECT_BOX"
+        },
+        "modem": {
+          "firmware-variant": "fakemodem"
         },
         "name": "project_box",
         "power": {
