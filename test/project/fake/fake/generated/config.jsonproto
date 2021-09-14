@@ -3878,7 +3878,7 @@
             },
             "fwConfig": {
               "mask": 131071,
-              "value": 90913
+              "value": 95009
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -3958,6 +3958,11 @@
               "edge": 2,
               "position": 0.75,
               "region": 1
+            },
+            "wifi": {
+              "wifiConfig": {
+                "legacyIntelConfig": {}
+              }
             }
           },
           "hardwareTopology": {
@@ -4280,15 +4285,20 @@
             },
             "wifi": {
               "description": {
-                "EN": "Default wifi"
+                "EN": "intel wifi (legacy config)"
               },
               "hardwareFeature": {
                 "fwConfig": {
                   "mask": 61440,
-                  "value": 24576
+                  "value": 28672
+                },
+                "wifi": {
+                  "wifiConfig": {
+                    "legacyIntelConfig": {}
+                  }
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI_INTEL_LEGACY",
               "type": 14
             }
           },
@@ -5952,8 +5962,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "battery-poll-interval-initial-ms": "1000"
         }
       },
       "publicReplication": {
@@ -6155,8 +6164,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "battery-poll-interval-initial-ms": "1000"
         }
       },
       "publicReplication": {
@@ -6439,8 +6447,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "battery-poll-interval-initial-ms": "1000"
         }
       },
       "publicReplication": {
@@ -6544,8 +6551,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "battery-poll-interval-initial-ms": "1000"
         }
       },
       "publicReplication": {
@@ -6656,8 +6662,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "battery-poll-interval-initial-ms": "1000"
         }
       },
       "publicReplication": {
@@ -6720,8 +6725,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "battery-poll-interval-initial-ms": "1000"
         }
       },
       "publicReplication": {
@@ -6787,8 +6791,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "battery-poll-interval-initial-ms": "1000"
         }
       },
       "publicReplication": {
@@ -6854,8 +6857,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "battery-poll-interval-initial-ms": "1000"
         }
       },
       "publicReplication": {
@@ -6921,8 +6923,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "battery-poll-interval-initial-ms": "1000"
         }
       },
       "publicReplication": {

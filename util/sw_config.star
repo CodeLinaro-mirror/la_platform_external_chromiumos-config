@@ -721,6 +721,11 @@ def _create_intel_wifi(
         ),
     )
 
+def _create_legacy_intel_wifi():
+    return wf_pb.WifiConfig(
+        legacy_intel_config = wf_pb.WifiConfig.LegacyIntelConfig(),
+    )
+
 def _create_mtk_geo_power_chain(
         limit_2g,
         limit_5g,
@@ -849,6 +854,7 @@ sw_config = struct(
     create_intel_sar_table = _create_intel_sar_table,
     create_intel_sar_avg_table = _create_intel_sar_avg_table,
     create_intel_wifi = _create_intel_wifi,
+    create_legacy_intel_wifi = _create_legacy_intel_wifi,
     create_mtk_geo_power_chain = _create_mtk_geo_power_chain,
     create_mtk_power_chain = _create_mtk_power_chain,
     create_mtk_wifi = _create_mtk_wifi,

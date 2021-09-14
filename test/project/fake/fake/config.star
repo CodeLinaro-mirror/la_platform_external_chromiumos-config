@@ -220,7 +220,6 @@ _SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True})
 _SC_POWER = sc.create_power(
     preferences = {
         "battery-poll-interval-initial-ms": "1000",
-        "set-wifi-transmit-power-for-tablet-mode": "1",
     },
 )
 _SC_WIFI_ATH10K = sc.create_ath10k(
@@ -836,6 +835,12 @@ design.append_configs(
     hardware_topology = create_hardware_topology(
         camera = _CAMERA1,
         cellular_board = _LTE_BOARD_WITH_NO_DPR,
+        wifi = hw_topo.create_wifi(
+            "WIFI_INTEL_LEGACY",
+            "intel wifi (legacy config)",
+            fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 7)],
+            wifi_config = sc.create_legacy_intel_wifi(),
+        ),
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",

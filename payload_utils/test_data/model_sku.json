@@ -264,7 +264,7 @@
       ],
       "component.speaker_amp": "AMPLIFIER_UNKNOWN",
       "custom_type": "rebrand",
-      "fw_config": 90913
+      "fw_config": 95009
     },
     "project_wl": {
       "component.audio_card_name": "fakeaudiocard",

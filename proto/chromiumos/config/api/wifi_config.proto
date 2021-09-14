@@ -228,6 +228,11 @@ message WifiConfig {
     DSM dsm = 5;
   }
 
+  // An empty message indicating that Intel wifi is used, but the config values
+  // are stored elsewhere.
+  message LegacyIntelConfig {
+  }
+
   message MtkConfig {
     // WiFi power chain for use with MediaTek mt7921 driver. Limits in units of
     // 0.25 dBm.
@@ -316,5 +321,6 @@ message WifiConfig {
     IntelConfig intel_config = 3;
     MtkConfig mtk_config = 4;
     Rtw89Config rtw89_config = 5;
+    LegacyIntelConfig legacy_intel_config = 6;
   }
 }

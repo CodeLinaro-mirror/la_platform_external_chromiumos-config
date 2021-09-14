@@ -2121,6 +2121,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.WifiConfig.Rtw89Config"
+            },
+            {
+              "jsonName": "legacyIntelConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "legacy_intel_config",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.WifiConfig.LegacyIntelConfig"
             }
           ],
           "name": "WifiConfig",
@@ -2889,6 +2898,9 @@
                   "name": "DSM"
                 }
               ]
+            },
+            {
+              "name": "LegacyIntelConfig"
             },
             {
               "field": [

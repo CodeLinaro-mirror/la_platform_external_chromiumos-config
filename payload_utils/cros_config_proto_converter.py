@@ -292,6 +292,9 @@ def _build_derived_connectivity_power_prefs(config: Config) -> dict:
       elif dpr_config.HasField('modem_manager'):
         result['use-modemmanager-for-dynamic-sar'] = True
 
+  result['set-wifi-transmit-power-for-tablet-mode'] = hw_features.wifi.HasField(
+      'wifi_config')
+
   return result
 
 
