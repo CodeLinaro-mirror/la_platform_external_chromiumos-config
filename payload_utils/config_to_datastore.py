@@ -11,7 +11,8 @@ By default, this script converts a few config-related protos into datastore
 entities:
 
 1. ConfigBundleList from 'hw_design/generated/configs.jsonproto'
-2. DutAttributeList from 'dut_attributes/generated/dut_attributes.jsonproto'
+2. DutAttributeList from
+  '.../chromiumos/src/config/generated/dut_attributes.jsonproto'
 3. FlatConfigList from 'hw_design/generated/flattened.jsonproto'
 4. DeviceStabilityList from
   '.../chromiumos/infra/config/testingconfig/generated/device_stability.cfg'
@@ -201,7 +202,10 @@ if __name__ == '__main__':
   # load database of protobuffer name -> Type
   protodb = proto_utils.create_symbol_db()
   options = parser.parse_args()
-  ufs_ds_client = datastore.Client(project=get_ufs_project(options.env),)
+  ufs_ds_client = datastore.Client(
+      project=get_ufs_project(options.env),
+      namespace="os",
+  )
   script_dir = os.path.dirname(os.path.realpath(__file__))
 
   handle_config_bundle_list("hw_design/generated/configs.jsonproto",
