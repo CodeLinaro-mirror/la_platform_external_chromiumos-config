@@ -219,6 +219,9 @@ message ProvisionDutRequest {
 
   // force_provision_os will always provision the OS.
   bool force_provision_os = 6;
+
+  // prevent_reboot will skip all attempts to reboot during provision the OS.
+  bool prevent_reboot = 7;
 }
 
 message ProvisionDutResponse {
