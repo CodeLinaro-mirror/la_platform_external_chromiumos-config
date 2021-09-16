@@ -582,4 +582,9 @@ message HardwareFeatures {
   message Soc {
     repeated Component.Soc.Feature features = 1;
   };
+
+  DisplayPortConverter dp_converter = 33;
+  message DisplayPortConverter {
+    repeated Component.DisplayPortConverter converters = 1;
+  };
 }

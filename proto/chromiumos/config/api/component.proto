@@ -11,7 +11,7 @@ import "chromiumos/config/api/partner_id.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
-// next field: 26
+// next field: 27
 message Component {
   // Globally unique component identifier.
   ComponentId id = 1;
@@ -50,6 +50,7 @@ message Component {
     Interface.Usb usb_host = 19;
     Stylus stylus = 23;
     Amplifier amplifier = 24;
+    DisplayPortConverter dp_converter = 26;
   }
 
   /////////////////////////////////////
@@ -300,5 +301,10 @@ message Component {
         Interface.Usb usb = 1;
         Interface.I2C i2c = 2;
     }
+  }
+
+  // Defines a peripheral IC that converts DP signal to another format like HDMI.
+  message DisplayPortConverter {
+    string name = 1;
   }
 }
