@@ -246,7 +246,12 @@ message Component {
   }
 
   message Amplifier {
+    enum Feature {
+      FEATURE_UNKNOWN = 0;
+      BOOT_TIME_CALIBRATION = 1;
+    }
     string name = 1;
+    repeated Feature features = 2;
   }
 
   message AudioCodec {

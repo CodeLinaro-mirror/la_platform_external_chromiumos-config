@@ -1487,6 +1487,21 @@
               "name": "Qualification"
             },
             {
+              "enumType": [
+                {
+                  "name": "Feature",
+                  "value": [
+                    {
+                      "name": "FEATURE_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "BOOT_TIME_CALIBRATION",
+                      "number": 1
+                    }
+                  ]
+                }
+              ],
               "field": [
                 {
                   "jsonName": "name",
@@ -1494,6 +1509,14 @@
                   "name": "name",
                   "number": 1,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "features",
+                  "label": "LABEL_REPEATED",
+                  "name": "features",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.Component.Amplifier.Feature"
                 }
               ],
               "name": "Amplifier"
