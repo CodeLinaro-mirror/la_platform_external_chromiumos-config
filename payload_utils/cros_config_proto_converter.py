@@ -1338,7 +1338,6 @@ def _wifi_sar_map(configs, project_name, output_dir, build_root_dir):
   """
   # pylint: disable=too-many-locals
   result = {}
-  programs = {p.id.value: p for p in configs.program_list}
   sw_configs = list(configs.software_configs)
   for hw_design in configs.design_list:
     for hw_design_config in hw_design.configs:
@@ -1347,9 +1346,8 @@ def _wifi_sar_map(configs, project_name, output_dir, build_root_dir):
         sar_file_content = _create_intel_sar_file_content(
             sw_config.wifi_config.intel_config)
         design_name = hw_design.name.lower()
-        program = _lookup(hw_design.program_id, programs)
-        wifi_sar_id = _extract_fw_config_value(hw_design_config, program,
-                                               'Intel wifi sar id')
+        wifi_sar_id = _extract_fw_config_value(
+            hw_design_config, hw_design_config.hardware_topology.wifi)
         output_path = os.path.join(output_dir, 'wifi')
         os.makedirs(output_path, exist_ok=True)
         filename = 'wifi_sar_{}.hex'.format(wifi_sar_id)
@@ -1370,25 +1368,25 @@ def _wifi_sar_map(configs, project_name, output_dir, build_root_dir):
   return result
 
 
-def _extract_fw_config_value(hw_design_config, program, name):
-  """Extracts the firwmare config value with the given name.
+def _extract_fw_config_value(hw_design_config, topology):
+  """Extracts the firwmare config value for the given topology.
 
   Args:
     hw_design_config: Design extracting value from.
-    program: Program the `hw_design_config` belongs to.
-    name: Name of firmware config segment to extract.
+    topology: Topology proto to extract the firmware config value for.
 
   Returns: the extracted value or raises a ValueError if no firmware
     configuration segment with `name` is found.
   """
+  mask = topology.hardware_feature.fw_config.mask
+  if not mask:
+    raise ValueError(
+        'No firmware configuration mask found in topology {}'.format(topology))
+
   fw_config = hw_design_config.hardware_features.fw_config.value
-  for fcs in program.firmware_configuration_segments:
-    if fcs.name == name:
-      value = fw_config & fcs.mask
-      lsb_bit_set = (~fcs.mask + 1) & fcs.mask
-      return value // lsb_bit_set
-  raise ValueError(
-      'No firmware configuration segment with name {} found'.format(name))
+  value = fw_config & mask
+  lsb_bit_set = (~mask + 1) & mask
+  return value // lsb_bit_set
 
 
 def hex_8bit(value):
