@@ -15020,6 +15020,75 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "artifacts",
+              "label": "LABEL_REPEATED",
+              "name": "artifacts",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.Artifact"
+            }
+          ],
+          "name": "Manifest"
+        },
+        {
+          "enumType": [
+            {
+              "name": "ArtifactType",
+              "value": [
+                {
+                  "name": "ARTIFACT_TYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "TEST_RESULT",
+                  "number": 1
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.artifact.Artifact.ArtifactType"
+            },
+            {
+              "jsonName": "gsUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_url",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Artifact"
+        }
+      ],
+      "name": "chromiumos/test/artifact/manifest.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/artifact"
+      },
+      "package": "chromiumos.test.artifact",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/dut_attribute.proto"
       ],
