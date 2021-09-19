@@ -91,6 +91,7 @@ def _device_attributes():
             "attr-design",
             ["hw_design.id.value"],
             aliases = [
+                "attr-model",
                 "label-model",
             ],
         ),
@@ -110,6 +111,7 @@ def _device_attributes():
             "attr-program",
             ["program.id.value"],
             aliases = [
+                "attr-board",
                 "label-platform",
             ],
         ),
@@ -186,34 +188,12 @@ def _hwid_attributes():
         ),
     ]
 
-def _software_attributes():
-    """Return list of device attributes related to software config."""
-    return [
-        _config_attribute(
-            "sw-build-target",
-            ["sw_config.system_build_target.portage_build_target.overlay_name"],
-        ),
-        _config_attribute(
-            "sw-firmware-ro-major-version",
-            ["sw_config.firmware.main_ro_payload.version.major"],
-        ),
-        _config_attribute(
-            "sw-firmware-ro-minor-version",
-            ["sw_config.firmware.main_ro_payload.version.minor"],
-        ),
-        _config_attribute(
-            "sw-firmware-ro-patch-version",
-            ["sw_config.firmware.main_ro_payload.version.patch"],
-        ),
-    ]
-
 # List of DutAttributes to generate. Add new DutAttributes here.
 _dut_attribute_list = dut_attribute_pb.DutAttributeList(
     dut_attributes =
         _device_attributes() +
         _device_features() +
-        _hwid_attributes() +
-        _software_attributes(),
+        _hwid_attributes(),
 )
 
 def _validate_dut_attribute_list(dut_attribute_list):

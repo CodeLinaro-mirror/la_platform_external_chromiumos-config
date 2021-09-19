@@ -21,6 +21,7 @@
         "value": "attr-design"
       },
       "aliases": [
+        "attr-model",
         "label-model"
       ],
       "flatConfigSource": {
@@ -63,6 +64,7 @@
         "value": "attr-program"
       },
       "aliases": [
+        "attr-board",
         "label-platform"
       ],
       "flatConfigSource": {
@@ -205,54 +207,6 @@
         "fields": [
           {
             "path": "hwid_label"
-          }
-        ]
-      }
-    },
-    {
-      "id": {
-        "value": "sw-build-target"
-      },
-      "flatConfigSource": {
-        "fields": [
-          {
-            "path": "sw_config.system_build_target.portage_build_target.overlay_name"
-          }
-        ]
-      }
-    },
-    {
-      "id": {
-        "value": "sw-firmware-ro-major-version"
-      },
-      "flatConfigSource": {
-        "fields": [
-          {
-            "path": "sw_config.firmware.main_ro_payload.version.major"
-          }
-        ]
-      }
-    },
-    {
-      "id": {
-        "value": "sw-firmware-ro-minor-version"
-      },
-      "flatConfigSource": {
-        "fields": [
-          {
-            "path": "sw_config.firmware.main_ro_payload.version.minor"
-          }
-        ]
-      }
-    },
-    {
-      "id": {
-        "value": "sw-firmware-ro-patch-version"
-      },
-      "flatConfigSource": {
-        "fields": [
-          {
-            "path": "sw_config.firmware.main_ro_payload.version.patch"
           }
         ]
       }
