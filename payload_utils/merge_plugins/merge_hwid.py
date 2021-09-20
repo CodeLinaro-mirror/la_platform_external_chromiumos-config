@@ -140,6 +140,7 @@ class MergeHwid(MergePlugin):
         'audio_codec':         MergeHwid._merge_audio,
         'battery':             MergeHwid._merge_battery,
         'bluetooth':           MergeHwid._merge_bluetooth,
+        'cellular':            MergeHwid._merge_cellular,
         'cpu':                 MergeHwid._merge_cpu,
         'display_panel':       MergeHwid._merge_display_panel,
         'dram':                MergeHwid._merge_dram,
@@ -270,6 +271,37 @@ class MergeHwid(MergePlugin):
     for attr, key in fields:
       if key in values:
         setattr(component.bluetooth.usb, attr, values[key])
+        touched.add(key)
+
+    return touched
+
+  @staticmethod
+  def _merge_cellular(bundle, label, values):
+    """Merge cellular items."""
+    touched = set()
+
+    component = cbu.find_component(bundle, id_value=label, create=True)
+    component.name = component.id.value
+
+    # save HWID values
+    component.hwid_type = 'cellular'
+    component.hwid_label = label
+
+    # lookup or create manufacturer
+    if 'manufacturer' in values:
+      component.manufacturer_id.MergeFrom(
+          cbu.find_partner(bundle, values['manufacturer'], create=True).id)
+      touched.add('manufacturer')
+
+    fields = [
+        ('vendor_id', 'idVendor'),
+        ('product_id', 'idProduct'),
+        ('bcd_device', 'bcdDevice'),
+    ]
+
+    for attr, key in fields:
+      if key in values:
+        setattr(component.cellular.usb, attr, values[key])
         touched.add(key)
 
     return touched

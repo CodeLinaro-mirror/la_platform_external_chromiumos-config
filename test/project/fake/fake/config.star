@@ -882,6 +882,14 @@ _COMPONENTS.append(
     ),
 )
 
+_COMPONENTS.append(
+    comp.create_cellular(
+        vendor_id = "abcd",
+        product_id = "1234",
+        bcd_device = "42",
+    ),
+)
+
 _CONFIG = config_bundle.create(
     partners = _ODMS + _OEMS + _COMPONENT_VENDORS,
     designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_WL, _DESIGN_BOX],

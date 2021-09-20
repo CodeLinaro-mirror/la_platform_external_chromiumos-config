@@ -140,6 +140,18 @@
           "vendorId": "0f22"
         }
       }
+    },
+    {
+      "cellular": {
+        "usb": {
+          "bcdDevice": "42",
+          "productId": "1234",
+          "vendorId": "abcd"
+        }
+      },
+      "id": {
+        "value": "abcd:1234:42"
+      }
     }
   ],
   "designList": [

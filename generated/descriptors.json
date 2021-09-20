@@ -835,6 +835,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Component.DisplayPortConverter"
+            },
+            {
+              "jsonName": "cellular",
+              "label": "LABEL_OPTIONAL",
+              "name": "cellular",
+              "number": 27,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Component.Cellular"
             }
           ],
           "name": "Component",
@@ -1739,6 +1748,25 @@
                 }
               ],
               "name": "DisplayPortConverter"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "usb",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "usb",
+                  "number": 1,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Component.Interface.Usb"
+                }
+              ],
+              "name": "Cellular",
+              "oneofDecl": [
+                {
+                  "name": "interface"
+                }
+              ]
             }
           ],
           "oneofDecl": [

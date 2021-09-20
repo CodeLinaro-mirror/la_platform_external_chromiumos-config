@@ -51,6 +51,7 @@ message Component {
     Stylus stylus = 23;
     Amplifier amplifier = 24;
     DisplayPortConverter dp_converter = 26;
+    Cellular cellular = 27;
   }
 
   /////////////////////////////////////
@@ -311,5 +312,11 @@ message Component {
   // Defines a peripheral IC that converts DP signal to another format like HDMI.
   message DisplayPortConverter {
     string name = 1;
+  }
+
+  message Cellular {
+    oneof interface {
+        Interface.Usb usb = 1;
+    }
   }
 }

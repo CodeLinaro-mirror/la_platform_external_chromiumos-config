@@ -104,10 +104,10 @@ def run_backfill(config,
   if logname:
     logfile = open(logname, "a")
 
-  # reef is currently broken because it _needs_ a real portage environment
+  # reef/fizz are currently broken because it _needs_ a real portage environment
   # to pull in common code.
   # TODO(https://crbug.com/1144956): fix when reef is corrected
-  if config.program == "reef":
+  if config.program in ["reef", "fizz"]:
     return None
 
   cmd = [join_script, "--l", "DEBUG"]

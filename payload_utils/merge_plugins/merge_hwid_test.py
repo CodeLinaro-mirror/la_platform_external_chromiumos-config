@@ -121,6 +121,39 @@ class MergeHWidTests(unittest.TestCase):
     # Should be nothing unparsed
     self.assertEqual(merger.residual(), {})
 
+  def test_cellular(self):
+    """Test basic cellular functionality."""
+    test_label = 'cellular123'
+    test_vendor = 'vendor'
+    test_product = 'product'
+    test_bcd = 'bcd'
+
+    hwid = _mock_hwid_component(
+        'cellular',
+        test_label,
+        {
+            'idVendor': test_vendor,
+            'idProduct': test_product,
+            'bcdDevice': test_bcd,
+        },
+    )
+
+    bundle = ConfigBundle()
+    merger = MergeHwid(hwid_data=hwid)
+    merger.merge(bundle)
+
+    self.assertEqual(len(bundle.components), 1)
+    component = bundle.components[0]
+    self.assertEqual(component.hwid_type, 'cellular')
+    self.assertEqual(component.hwid_label, test_label)
+    self.assertEqual(component.id.value, test_label)
+    self.assertEqual(component.cellular.usb.vendor_id, test_vendor)
+    self.assertEqual(component.cellular.usb.product_id, test_product)
+    self.assertEqual(component.cellular.usb.bcd_device, test_bcd)
+
+    # Should be nothing unparsed
+    self.assertEqual(merger.residual(), {})
+
   def test_cpu(self):
     """Test basic cpu functionality."""
     test_label = 'some_cpu_123'

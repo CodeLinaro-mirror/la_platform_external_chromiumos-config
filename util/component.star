@@ -153,6 +153,18 @@ def _create_bt(vendor_id, product_id, bcd_device):
         bluetooth = comp_pb.Component.Bluetooth(usb = usb),
     )
 
+def _create_cellular(vendor_id, product_id, bcd_device):
+    """Builds a Component proto for Cellular device."""
+    component_id, usb = _create_usb(
+        vendor_id = vendor_id,
+        product_id = product_id,
+        bcd_device = bcd_device,
+    )
+    return comp_pb.Component(
+        id = component_id,
+        cellular = comp_pb.Component.Cellular(usb = usb),
+    )
+
 def _create_wifi(vendor_id, device_id, revision_id):
     """Builds a Component proto for Wifi."""
     component_id, pci = _create_pci(
@@ -321,6 +333,7 @@ comp = struct(
     create_soc_family = _create_soc_family,
     create_soc_model = _create_soc_model,
     create_bt = _create_bt,
+    create_cellular = _create_cellular,
     create_display_panel = _create_display_panel,
     create_touchscreen = _create_touchscreen,
     create_touchpad = _create_touchpad,
