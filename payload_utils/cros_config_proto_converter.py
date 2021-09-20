@@ -8,6 +8,7 @@
 # pylint: disable=too-many-lines
 
 import argparse
+import glob
 import json
 import pprint
 import os
@@ -876,10 +877,18 @@ def _transform_build_config(config, config_files, whitelabel):
     camera_file = config_files.camera_map.get(config.hw_design.name, {})
     _upsert(camera_file, result, 'camera')
   if config_files.dptf_map:
-    # Prefer design specific if found, if not fall back to project wide config
-    # mapped under the empty string.
-    if config_files.dptf_map.get(config.hw_design.name):
-      dptf_file = config_files.dptf_map[config.hw_design.name]
+    # Prefer design_config level (sku)
+    # Then design level
+    # If neither, fall back to project wide config (mapped to empty string)
+    design_name = config.hw_design.name.lower()
+    design_config_id = config.hw_design_config.id.value.lower()
+    design_config_id_path = os.path.join(design_name, design_config_id)
+    if design_name in design_config_id:
+      design_config_id_path = design_config_id.replace(':', '/')
+    if config_files.dptf_map.get(design_config_id_path):
+      dptf_file = config_files.dptf_map[design_config_id_path]
+    elif config_files.dptf_map.get(design_name):
+      dptf_file = config_files.dptf_map[design_name]
     else:
       dptf_file = config_files.dptf_map.get('')
     _upsert(dptf_file, result, 'thermal')
@@ -1281,7 +1290,7 @@ def _camera_map(configs, project_name):
   return result
 
 
-def _dptf_map(configs, project_name):
+def _dptf_map(project_name):
   """Produces a dptf map for the given configs.
 
   Produces a map that maps from design name to the dptf file config for that
@@ -1290,32 +1299,34 @@ def _dptf_map(configs, project_name):
   for a project wide config, that it maps under the empty string, and at:
       DPTF_PATH + '/' + design_name + '/' + DPTF_FILE
   for design specific configs that it maps under the design name.
+  and at:
+      DPTF_PATH + '/' + design_name + '/' + design_config_id '/' + DPTF_FILE
+  for design config (firmware sku level) specific configs.
 
   Args:
-    configs: Source ConfigBundle to process.
     project_name: Name of project processing for.
 
   Returns:
     map from design name or empty string (project wide), to dptf config.
   """
   result = {}
-  # Looking at top level for project wide, and then for each design name
-  # for design specific.
-  dirs = [""] + [d.name for d in configs.design_list]
-  for directory in dirs:
-    design = directory.lower()
-    if os.path.exists(os.path.join(DPTF_PATH, design, DPTF_FILE)):
-      project_dptf_path = os.path.join(project_name, design, DPTF_FILE)
-      dptf_file = {
-          'dptf-dv':
-              project_dptf_path,
-          'files': [
-              _file(
-                  os.path.join(project_name, DPTF_PATH, design, DPTF_FILE),
-                  os.path.join('/etc/dptf', project_dptf_path))
-          ]
-      }
-      result[directory] = dptf_file
+  for file in glob.iglob(
+      os.path.join(DPTF_PATH, '**', DPTF_FILE), recursive=True):
+    relative_path = os.path.dirname(file).partition(DPTF_PATH)[2].strip('/')
+    if relative_path:
+      project_dptf_path = os.path.join(project_name, relative_path, DPTF_FILE)
+    else:
+      project_dptf_path = os.path.join(project_name, DPTF_FILE)
+    dptf_file = {
+        'dptf-dv':
+            project_dptf_path,
+        'files': [
+            _file(
+                os.path.join(project_name, DPTF_PATH, relative_path, DPTF_FILE),
+                os.path.join('/etc/dptf', project_dptf_path))
+        ]
+    }
+    result[relative_path] = dptf_file
   return result
 
 
@@ -1800,7 +1811,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
     build_root_dir = os.path.join(project_name, output_dir)
 
     camera_map = _camera_map(configs, project_name)
-    dptf_map = _dptf_map(configs, project_name)
+    dptf_map = _dptf_map(project_name)
     wifi_sar_map = _wifi_sar_map(configs, project_name, output_dir,
                                  build_root_dir)
 
