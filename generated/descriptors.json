@@ -13719,6 +13719,192 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/storage_path.proto",
+        "chromiumos/test/api/test_case.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "testCaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase.Id"
+            },
+            {
+              "jsonName": "resultDirPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "result_dir_path",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "pass",
+              "label": "LABEL_OPTIONAL",
+              "name": "pass",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Pass"
+            },
+            {
+              "jsonName": "fail",
+              "label": "LABEL_OPTIONAL",
+              "name": "fail",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Fail"
+            },
+            {
+              "jsonName": "error",
+              "label": "LABEL_OPTIONAL",
+              "name": "error",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Error"
+            }
+          ],
+          "name": "TestCaseResult",
+          "nestedType": [
+            {
+              "name": "Artifacts"
+            },
+            {
+              "name": "Pass"
+            },
+            {
+              "name": "Fail"
+            },
+            {
+              "name": "Error"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "verdict"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/test_case_result.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/test_case_result.proto",
+        "chromiumos/test/api/test_suite.proto",
+        "chromiumos/test/lab/api/dut.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            },
+            {
+              "jsonName": "primary",
+              "label": "LABEL_OPTIONAL",
+              "name": "primary",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestRequest.Device"
+            },
+            {
+              "jsonName": "companions",
+              "label": "LABEL_REPEATED",
+              "name": "companions",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestRequest.Device"
+            },
+            {
+              "jsonName": "inventoryServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "inventory_server",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "CrosTestRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "dut",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Dut"
+                },
+                {
+                  "jsonName": "dutServer",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut_server",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+                },
+                {
+                  "jsonName": "provisionServer",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "provision_server",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+                }
+              ],
+              "name": "Device"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testCaseResults",
+              "label": "LABEL_REPEATED",
+              "name": "test_case_results",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult"
+            }
+          ],
+          "name": "CrosTestResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_test_cli.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/longrunning/operations.proto"
       ],
@@ -14137,91 +14323,6 @@
           "name": "DutService"
         }
       ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/storage_path.proto",
-        "chromiumos/test/api/test_case.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "testCaseId",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCase.Id"
-            },
-            {
-              "jsonName": "resultDirPath",
-              "label": "LABEL_OPTIONAL",
-              "name": "result_dir_path",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "pass",
-              "label": "LABEL_OPTIONAL",
-              "name": "pass",
-              "number": 3,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult.Pass"
-            },
-            {
-              "jsonName": "fail",
-              "label": "LABEL_OPTIONAL",
-              "name": "fail",
-              "number": 4,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult.Fail"
-            },
-            {
-              "jsonName": "error",
-              "label": "LABEL_OPTIONAL",
-              "name": "error",
-              "number": 5,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult.Error"
-            }
-          ],
-          "name": "TestCaseResult",
-          "nestedType": [
-            {
-              "name": "Artifacts"
-            },
-            {
-              "name": "Pass"
-            },
-            {
-              "name": "Fail"
-            },
-            {
-              "name": "Error"
-            }
-          ],
-          "oneofDecl": [
-            {
-              "name": "verdict"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/api/test_case_result.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
       "syntax": "proto3"
     },
     {

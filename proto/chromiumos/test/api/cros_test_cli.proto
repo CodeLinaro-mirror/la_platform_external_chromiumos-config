@@ -1,0 +1,39 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/test_case_result.proto";
+import "chromiumos/test/api/test_suite.proto";
+import "chromiumos/test/lab/api/dut.proto";
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+
+// CrosTestRequest specifies test suites, DUTs and other test-related
+// information to run tests.
+message CrosTestRequest {
+  message Device {
+    // DUT information.
+    chromiumos.test.lab.api.Dut dut = 1;
+    // DUT Server address.
+    chromiumos.test.lab.api.IpEndpoint dut_server = 2;
+    // Provision server address.
+    chromiumos.test.lab.api.IpEndpoint provision_server = 3;
+  }
+  // Test suites to run (by tag or explicit list of tests)
+  repeated TestSuite test_suites = 1;
+  // Primary DUT
+  Device primary = 2;
+  // A list of companion hosts to be used for running tests.
+  repeated Device companions = 3;
+  // Inventory Server address.
+  chromiumos.test.lab.api.IpEndpoint inventory_server = 4;
+}
+
+message CrosTestResponse {
+  repeated TestCaseResult test_case_results = 1;
+}
