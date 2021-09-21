@@ -12512,623 +12512,6 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
-      "dependency": [
-        "chromiumos/config/api/device_config_id.proto",
-        "chromiumos/longrunning/operations.proto"
-      ],
-      "enumType": [
-        {
-          "name": "Output",
-          "value": [
-            {
-              "name": "OUTPUT_PIPE",
-              "number": 0
-            },
-            {
-              "name": "OUTPUT_STDOUT",
-              "number": 1
-            }
-          ]
-        }
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "name",
-              "label": "LABEL_OPTIONAL",
-              "name": "name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "command",
-              "label": "LABEL_OPTIONAL",
-              "name": "command",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "args",
-              "label": "LABEL_REPEATED",
-              "name": "args",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "stdin",
-              "label": "LABEL_OPTIONAL",
-              "name": "stdin",
-              "number": 4,
-              "type": "TYPE_BYTES"
-            },
-            {
-              "jsonName": "stdout",
-              "label": "LABEL_OPTIONAL",
-              "name": "stdout",
-              "number": 5,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.Output"
-            },
-            {
-              "jsonName": "stderr",
-              "label": "LABEL_OPTIONAL",
-              "name": "stderr",
-              "number": 6,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.Output"
-            }
-          ],
-          "name": "ExecCommandRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "exitInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "exit_info",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ExecCommandResponse.ExitInfo"
-            },
-            {
-              "jsonName": "stdout",
-              "label": "LABEL_OPTIONAL",
-              "name": "stdout",
-              "number": 2,
-              "type": "TYPE_BYTES"
-            },
-            {
-              "jsonName": "stderr",
-              "label": "LABEL_OPTIONAL",
-              "name": "stderr",
-              "number": 3,
-              "type": "TYPE_BYTES"
-            }
-          ],
-          "name": "ExecCommandResponse",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "status",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "status",
-                  "number": 1,
-                  "type": "TYPE_INT32"
-                },
-                {
-                  "jsonName": "signaled",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "signaled",
-                  "number": 2,
-                  "type": "TYPE_BOOL"
-                },
-                {
-                  "jsonName": "started",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "started",
-                  "number": 3,
-                  "type": "TYPE_BOOL"
-                },
-                {
-                  "jsonName": "errorMessage",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "error_message",
-                  "number": 4,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "ExitInfo"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "fetchCore",
-              "label": "LABEL_OPTIONAL",
-              "name": "fetch_core",
-              "number": 2,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "FetchCrashesRequest",
-          "reservedRange": [
-            {
-              "end": 2,
-              "start": 1
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "crashId",
-              "label": "LABEL_OPTIONAL",
-              "name": "crash_id",
-              "number": 1,
-              "type": "TYPE_INT64"
-            },
-            {
-              "jsonName": "crash",
-              "label": "LABEL_OPTIONAL",
-              "name": "crash",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CrashInfo"
-            },
-            {
-              "jsonName": "blob",
-              "label": "LABEL_OPTIONAL",
-              "name": "blob",
-              "number": 3,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CrashBlob"
-            },
-            {
-              "jsonName": "core",
-              "label": "LABEL_OPTIONAL",
-              "name": "core",
-              "number": 4,
-              "oneofIndex": 0,
-              "type": "TYPE_BYTES"
-            }
-          ],
-          "name": "FetchCrashesResponse",
-          "oneofDecl": [
-            {
-              "name": "data"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "execName",
-              "label": "LABEL_OPTIONAL",
-              "name": "exec_name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "prod",
-              "label": "LABEL_OPTIONAL",
-              "name": "prod",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "ver",
-              "label": "LABEL_OPTIONAL",
-              "name": "ver",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "sig",
-              "label": "LABEL_OPTIONAL",
-              "name": "sig",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "inProgressIntegrationTest",
-              "label": "LABEL_OPTIONAL",
-              "name": "in_progress_integration_test",
-              "number": 5,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "collector",
-              "label": "LABEL_OPTIONAL",
-              "name": "collector",
-              "number": 6,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "fields",
-              "label": "LABEL_REPEATED",
-              "name": "fields",
-              "number": 7,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CrashMetadata"
-            }
-          ],
-          "name": "CrashInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "key",
-              "label": "LABEL_OPTIONAL",
-              "name": "key",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "text",
-              "label": "LABEL_OPTIONAL",
-              "name": "text",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CrashMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "key",
-              "label": "LABEL_OPTIONAL",
-              "name": "key",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "blob",
-              "label": "LABEL_OPTIONAL",
-              "name": "blob",
-              "number": 2,
-              "type": "TYPE_BYTES"
-            },
-            {
-              "jsonName": "filename",
-              "label": "LABEL_OPTIONAL",
-              "name": "filename",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CrashBlob"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "args",
-              "label": "LABEL_REPEATED",
-              "name": "args",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "RestartRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "output",
-              "label": "LABEL_OPTIONAL",
-              "name": "output",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "RestartResponse"
-        },
-        {
-          "name": "RestartMetadata"
-        },
-        {
-          "name": "DetectDeviceConfigIdRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.DetectDeviceConfigIdResponse.Success"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.DetectDeviceConfigIdResponse.Failure"
-            }
-          ],
-          "name": "DetectDeviceConfigIdResponse",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "detectedScanConfig",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "detected_scan_config",
-                  "number": 1,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.DeviceConfigId.ScanConfig"
-                }
-              ],
-              "name": "Success"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "errorMessage",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "error_message",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Failure"
-            }
-          ],
-          "oneofDecl": [
-            {
-              "name": "result"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/api/dut_service.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.ExecCommandRequest",
-              "name": "ExecCommand",
-              "outputType": ".chromiumos.test.api.ExecCommandResponse",
-              "serverStreaming": true
-            },
-            {
-              "inputType": ".chromiumos.test.api.FetchCrashesRequest",
-              "name": "FetchCrashes",
-              "outputType": ".chromiumos.test.api.FetchCrashesResponse",
-              "serverStreaming": true
-            },
-            {
-              "inputType": ".chromiumos.test.api.RestartRequest",
-              "name": "Restart",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "RestartMetadata",
-                  "responseType": "RestartResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.DetectDeviceConfigIdRequest",
-              "name": "DetectDeviceConfigId",
-              "outputType": ".chromiumos.test.api.DetectDeviceConfigIdResponse",
-              "serverStreaming": true
-            }
-          ],
-          "name": "DutService"
-        }
-      ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/storage_path.proto",
-        "chromiumos/test/api/test_case.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "testCaseId",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCase.Id"
-            },
-            {
-              "jsonName": "resultDirPath",
-              "label": "LABEL_OPTIONAL",
-              "name": "result_dir_path",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "pass",
-              "label": "LABEL_OPTIONAL",
-              "name": "pass",
-              "number": 3,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult.Pass"
-            },
-            {
-              "jsonName": "fail",
-              "label": "LABEL_OPTIONAL",
-              "name": "fail",
-              "number": 4,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult.Fail"
-            },
-            {
-              "jsonName": "error",
-              "label": "LABEL_OPTIONAL",
-              "name": "error",
-              "number": 5,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult.Error"
-            }
-          ],
-          "name": "TestCaseResult",
-          "nestedType": [
-            {
-              "name": "Artifacts"
-            },
-            {
-              "name": "Pass"
-            },
-            {
-              "name": "Fail"
-            },
-            {
-              "name": "Error"
-            }
-          ],
-          "oneofDecl": [
-            {
-              "name": "verdict"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/api/test_case_result.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/longrunning/operations.proto",
-        "chromiumos/test/api/test_case_result.proto",
-        "chromiumos/test/api/test_suite.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "testSuites",
-              "label": "LABEL_REPEATED",
-              "name": "test_suites",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestSuite"
-            },
-            {
-              "jsonName": "dut",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.DeviceInfo"
-            }
-          ],
-          "name": "RunTestsRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "primaryHost",
-              "label": "LABEL_OPTIONAL",
-              "name": "primary_host",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "companions",
-              "label": "LABEL_REPEATED",
-              "name": "companions",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CompanionHostInfo"
-            }
-          ],
-          "name": "DeviceInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "host",
-              "label": "LABEL_OPTIONAL",
-              "name": "host",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CompanionHostInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "testCaseResults",
-              "label": "LABEL_REPEATED",
-              "name": "test_case_results",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult"
-            }
-          ],
-          "name": "RunTestsResponse"
-        },
-        {
-          "name": "RunTestsMetadata"
-        }
-      ],
-      "name": "chromiumos/test/api/execution_service.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.RunTestsRequest",
-              "name": "RunTests",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "RunTestsMetadata",
-                  "responseType": "RunTestsResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            }
-          ],
-          "name": "ExecutionService"
-        }
-      ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
       "messageType": [
         {
           "field": [
@@ -14233,6 +13616,716 @@
             }
           ],
           "name": "ProvisionService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/lab/api/dut.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto",
+        "chromiumos/test/api/provision_state.proto",
+        "chromiumos/test/api/provision_service.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "dut",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            },
+            {
+              "jsonName": "provisionState",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_state",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState"
+            },
+            {
+              "jsonName": "dutServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_server",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "inventoryServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "inventory_server",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "CrosProvisionRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut.Id"
+            },
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "CrosProvisionResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/cros_provision_cli.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/config/api/device_config_id.proto",
+        "chromiumos/longrunning/operations.proto"
+      ],
+      "enumType": [
+        {
+          "name": "Output",
+          "value": [
+            {
+              "name": "OUTPUT_PIPE",
+              "number": 0
+            },
+            {
+              "name": "OUTPUT_STDOUT",
+              "number": 1
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "command",
+              "label": "LABEL_OPTIONAL",
+              "name": "command",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "stdin",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdin",
+              "number": 4,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "stdout",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdout",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.Output"
+            },
+            {
+              "jsonName": "stderr",
+              "label": "LABEL_OPTIONAL",
+              "name": "stderr",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.Output"
+            }
+          ],
+          "name": "ExecCommandRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "exitInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "exit_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ExecCommandResponse.ExitInfo"
+            },
+            {
+              "jsonName": "stdout",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdout",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "stderr",
+              "label": "LABEL_OPTIONAL",
+              "name": "stderr",
+              "number": 3,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "ExecCommandResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "status",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "status",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "signaled",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "signaled",
+                  "number": 2,
+                  "type": "TYPE_BOOL"
+                },
+                {
+                  "jsonName": "started",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "started",
+                  "number": 3,
+                  "type": "TYPE_BOOL"
+                },
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ExitInfo"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fetchCore",
+              "label": "LABEL_OPTIONAL",
+              "name": "fetch_core",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "FetchCrashesRequest",
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "crashId",
+              "label": "LABEL_OPTIONAL",
+              "name": "crash_id",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "crash",
+              "label": "LABEL_OPTIONAL",
+              "name": "crash",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrashInfo"
+            },
+            {
+              "jsonName": "blob",
+              "label": "LABEL_OPTIONAL",
+              "name": "blob",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrashBlob"
+            },
+            {
+              "jsonName": "core",
+              "label": "LABEL_OPTIONAL",
+              "name": "core",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "FetchCrashesResponse",
+          "oneofDecl": [
+            {
+              "name": "data"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "execName",
+              "label": "LABEL_OPTIONAL",
+              "name": "exec_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "prod",
+              "label": "LABEL_OPTIONAL",
+              "name": "prod",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "ver",
+              "label": "LABEL_OPTIONAL",
+              "name": "ver",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "sig",
+              "label": "LABEL_OPTIONAL",
+              "name": "sig",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "inProgressIntegrationTest",
+              "label": "LABEL_OPTIONAL",
+              "name": "in_progress_integration_test",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "collector",
+              "label": "LABEL_OPTIONAL",
+              "name": "collector",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "fields",
+              "label": "LABEL_REPEATED",
+              "name": "fields",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrashMetadata"
+            }
+          ],
+          "name": "CrashInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "key",
+              "label": "LABEL_OPTIONAL",
+              "name": "key",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "text",
+              "label": "LABEL_OPTIONAL",
+              "name": "text",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrashMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "key",
+              "label": "LABEL_OPTIONAL",
+              "name": "key",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "blob",
+              "label": "LABEL_OPTIONAL",
+              "name": "blob",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "filename",
+              "label": "LABEL_OPTIONAL",
+              "name": "filename",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrashBlob"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RestartRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RestartResponse"
+        },
+        {
+          "name": "RestartMetadata"
+        },
+        {
+          "name": "DetectDeviceConfigIdRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DetectDeviceConfigIdResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DetectDeviceConfigIdResponse.Failure"
+            }
+          ],
+          "name": "DetectDeviceConfigIdResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "detectedScanConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "detected_scan_config",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.DeviceConfigId.ScanConfig"
+                }
+              ],
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/dut_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.ExecCommandRequest",
+              "name": "ExecCommand",
+              "outputType": ".chromiumos.test.api.ExecCommandResponse",
+              "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.FetchCrashesRequest",
+              "name": "FetchCrashes",
+              "outputType": ".chromiumos.test.api.FetchCrashesResponse",
+              "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.RestartRequest",
+              "name": "Restart",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "RestartMetadata",
+                  "responseType": "RestartResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.DetectDeviceConfigIdRequest",
+              "name": "DetectDeviceConfigId",
+              "outputType": ".chromiumos.test.api.DetectDeviceConfigIdResponse",
+              "serverStreaming": true
+            }
+          ],
+          "name": "DutService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/storage_path.proto",
+        "chromiumos/test/api/test_case.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "testCaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase.Id"
+            },
+            {
+              "jsonName": "resultDirPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "result_dir_path",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "pass",
+              "label": "LABEL_OPTIONAL",
+              "name": "pass",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Pass"
+            },
+            {
+              "jsonName": "fail",
+              "label": "LABEL_OPTIONAL",
+              "name": "fail",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Fail"
+            },
+            {
+              "jsonName": "error",
+              "label": "LABEL_OPTIONAL",
+              "name": "error",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Error"
+            }
+          ],
+          "name": "TestCaseResult",
+          "nestedType": [
+            {
+              "name": "Artifacts"
+            },
+            {
+              "name": "Pass"
+            },
+            {
+              "name": "Fail"
+            },
+            {
+              "name": "Error"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "verdict"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/test_case_result.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/longrunning/operations.proto",
+        "chromiumos/test/api/test_case_result.proto",
+        "chromiumos/test/api/test_suite.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            },
+            {
+              "jsonName": "dut",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DeviceInfo"
+            }
+          ],
+          "name": "RunTestsRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "primaryHost",
+              "label": "LABEL_OPTIONAL",
+              "name": "primary_host",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "companions",
+              "label": "LABEL_REPEATED",
+              "name": "companions",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CompanionHostInfo"
+            }
+          ],
+          "name": "DeviceInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "host",
+              "label": "LABEL_OPTIONAL",
+              "name": "host",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CompanionHostInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testCaseResults",
+              "label": "LABEL_REPEATED",
+              "name": "test_case_results",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult"
+            }
+          ],
+          "name": "RunTestsResponse"
+        },
+        {
+          "name": "RunTestsMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/execution_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.RunTestsRequest",
+              "name": "RunTests",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "RunTestsMetadata",
+                  "responseType": "RunTestsResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "ExecutionService"
         }
       ],
       "syntax": "proto3"
