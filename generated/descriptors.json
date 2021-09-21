@@ -13905,6 +13905,49 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/api/test_suite.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            }
+          ],
+          "name": "CrosTestFinderRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            }
+          ],
+          "name": "CrosTestFinderResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_test_finder_cli.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/longrunning/operations.proto"
       ],
