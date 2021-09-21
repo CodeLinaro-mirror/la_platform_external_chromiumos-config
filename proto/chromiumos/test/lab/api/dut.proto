@@ -50,6 +50,9 @@ message Dut {
   // Android specific DUT details
   message Android {
   }
+
+  // Cache server for downloading artifacts related to this DUT.
+  CacheServer cache_server = 14;
 }
 
 // Defines the topology of connected devices under test
@@ -89,6 +92,24 @@ message Cable {
     HDMIAUDIO = 4;
   }
   Type type = 1;
+}
+
+// A cache server for downloading artifacts.
+//
+// The server should support the following HTTP requests:
+//
+// GET /download/GS_BUCKET/GS_PATH
+// Download a file from Google Storage.
+//
+// GET /extract/GS_BUCKET/GS_PATH?file=TAR_PATH
+// Download a file within a (possibly compressed) TAR archive stored
+// in Google Storage.
+//
+// GET /decompress/GS_BUCKET/GS_PATH
+// Download the decompressed data of a compressed file from Google Storage.
+message CacheServer {
+  // HTTP address for the cache server.
+  IpEndpoint address = 1;
 }
 
 // A steady and controllable camera box environment for the device, used by

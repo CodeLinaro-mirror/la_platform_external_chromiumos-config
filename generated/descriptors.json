@@ -12911,6 +12911,14 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.Dut.Android"
+            },
+            {
+              "jsonName": "cacheServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "cache_server",
+              "number": 14,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CacheServer"
             }
           ],
           "name": "Dut",
@@ -13147,6 +13155,19 @@
             }
           ],
           "name": "Cable"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "address",
+              "label": "LABEL_OPTIONAL",
+              "name": "address",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "CacheServer"
         },
         {
           "enumType": [
