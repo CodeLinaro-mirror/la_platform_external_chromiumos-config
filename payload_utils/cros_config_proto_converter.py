@@ -242,9 +242,10 @@ def _build_ash_flags(config: Config) -> List[str]:
 
   form_factor = hw_features.form_factor.form_factor
   lid_accel = hw_features.accelerometer.lid_accelerometer
-  if (form_factor == topology_pb2.HardwareFeatures.FormFactor.CHROMEBASE and
-      lid_accel == topology_pb2.HardwareFeatures.PRESENT):
-    _add_flag('supports-clamshell-auto-rotation')
+  if form_factor == topology_pb2.HardwareFeatures.FormFactor.CHROMEBASE:
+    _add_flag('touchscreen-usable-while-screen-off')
+    if lid_accel == topology_pb2.HardwareFeatures.PRESENT:
+      _add_flag('supports-clamshell-auto-rotation')
 
   if config.sw_config.ui_config.extra_web_apps_dir:
     _add_flag('extra-web-apps-dir',

@@ -36,6 +36,7 @@ _DESIGN_ID_BOX = design.create_design_id("PROJECT_BOX")
 _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
 _FORM_FACTOR_CHROMEBOX = hw_topo.create_form_factor(hw_topo.ff.CHROMEBOX)
+_FORM_FACTOR_CHROMEBASE = hw_topo.create_form_factor(hw_topo.ff.CHROMEBASE)
 _SCREEN = hw_topo.create_screen(
     id = "SCREEN",
     description = "Default screen",
@@ -662,6 +663,61 @@ design.append_configs(
     config_id = 128,
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CHROMEBOX,
+    ),
+    audio = [sc.create_audio(
+        _AUDIO_CARD,
+        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
+        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
+    )],
+    firmware = sc.create_fw_payloads_by_names(
+        "Fake",
+        "Fake_EC",
+        "Fake_PD",
+        ap_ro_version = sc.create_fw_version(11111),
+        ap_rw_version = sc.create_fw_version(11111, 2, 3),
+        ec_version = sc.create_fw_version(11111, 2),
+        pd_version = sc.create_fw_version(11111),
+    ),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    power = _SC_POWER,
+    camera = sc.create_camera(generate_media_profiles = True),
+)
+
+design.append_configs(
+    hw_configs = _HW_CONFIGS_BOX,
+    sw_configs = _SW_CONFIGS,
+    design_id = _DESIGN_ID_BOX,
+    config_id = 129,
+    hardware_topology = create_hardware_topology(
+        form_factor = _FORM_FACTOR_CHROMEBASE,
+    ),
+    audio = [sc.create_audio(
+        _AUDIO_CARD,
+        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
+        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
+    )],
+    firmware = sc.create_fw_payloads_by_names(
+        "Fake",
+        "Fake_EC",
+        "Fake_PD",
+        ap_ro_version = sc.create_fw_version(11111),
+        ap_rw_version = sc.create_fw_version(11111, 2, 3),
+        ec_version = sc.create_fw_version(11111, 2),
+        pd_version = sc.create_fw_version(11111),
+    ),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    power = _SC_POWER,
+    camera = sc.create_camera(generate_media_profiles = True),
+)
+
+design.append_configs(
+    hw_configs = _HW_CONFIGS_BOX,
+    sw_configs = _SW_CONFIGS,
+    design_id = _DESIGN_ID_BOX,
+    config_id = 130,
+    hardware_topology = create_hardware_topology(
+        form_factor = _FORM_FACTOR_CHROMEBASE,
+        sensor = hw_topo.create_sensor("SENSOR", "Lid accelerometer", lid_accel_present = True),
     ),
     audio = [sc.create_audio(
         _AUDIO_CARD,

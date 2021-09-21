@@ -151,6 +151,16 @@
           "id": {
             "value": "PROJECT_BOX:128"
           }
+        },
+        {
+          "id": {
+            "value": "PROJECT_BOX:129"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_BOX:130"
+          }
         }
       ],
       "id": {
@@ -261,6 +271,34 @@
       },
       "idScanConfig": {
         "firmwareSku": 128,
+        "smbiosNameMatch": "PROJECT_BOX"
+      }
+    },
+    {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        }
+      ],
+      "designConfigId": {
+        "value": "PROJECT_BOX:129"
+      },
+      "idScanConfig": {
+        "firmwareSku": 129,
+        "smbiosNameMatch": "PROJECT_BOX"
+      }
+    },
+    {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        }
+      ],
+      "designConfigId": {
+        "value": "PROJECT_BOX:130"
+      },
+      "idScanConfig": {
+        "firmwareSku": 130,
         "smbiosNameMatch": "PROJECT_BOX"
       }
     }
