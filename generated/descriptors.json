@@ -13948,6 +13948,161 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/api/provision_state.proto",
+        "chromiumos/test/api/cros_provision_cli.proto",
+        "chromiumos/test/api/test_case_result.proto",
+        "chromiumos/test/api/test_suite.proto",
+        "chromiumos/test/lab/api/dut.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "devices",
+              "label": "LABEL_REPEATED",
+              "name": "devices",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosToolRunnerProvisionRequest.Device"
+            },
+            {
+              "jsonName": "inventoryServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "inventory_server",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "CrosToolRunnerProvisionRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "dut",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Dut"
+                },
+                {
+                  "jsonName": "provisionState",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "provision_state",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.ProvisionState"
+                }
+              ],
+              "name": "Device"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "responses",
+              "label": "LABEL_REPEATED",
+              "name": "responses",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosProvisionResponse"
+            }
+          ],
+          "name": "CrosToolRunnerProvisionResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            },
+            {
+              "jsonName": "primaryDut",
+              "label": "LABEL_OPTIONAL",
+              "name": "primary_dut",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            },
+            {
+              "jsonName": "companionDuts",
+              "label": "LABEL_REPEATED",
+              "name": "companion_duts",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            },
+            {
+              "jsonName": "inventoryServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "inventory_server",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "CrosToolRunnerTestRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testCaseResults",
+              "label": "LABEL_REPEATED",
+              "name": "test_case_results",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult"
+            }
+          ],
+          "name": "CrosToolRunnerTestResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            }
+          ],
+          "name": "CrosToolRunnerTestFinderRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            }
+          ],
+          "name": "CrosToolRunnerTestFinderResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_tool_runner_cli.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/longrunning/operations.proto"
       ],
