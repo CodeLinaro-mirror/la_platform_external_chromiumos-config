@@ -2,27 +2,14 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-from distutils.core import setup
+from setuptools import find_packages, setup
 
-setup(name='chromiumos',
-      version='1.0',
-      description='Module to access Config API python proto bindings',
-      packages=['chromiumos'],
-      package_data={'chromiumos': [
-          '*.py',
-          'build/api/*.py',
-          'build/payload/*.py',
-          'config/api/*.py',
-          'config/api/software/*.py',
-          'config/api/software/**/*.py',
-          'config/payload/*.py',
-          'config/public_replication/*.py',
-          'config/test/*.py',
-          'config/test/fake_program/*',
-          'config/test/fake_project/*',
-          'test/*.py',
-          'test/api/*.py',
-          'test/internal/*.py',
-          'test/lab/*.py',
-          'test/lab/api/*.py',
-      ]},)
+setup(
+    name='chromiumos',
+    version='1.0',
+    description='Module to access Config API python proto bindings',
+    packages=find_packages(),
+    package_data={
+        'chromiumos.config.test': ['fake_program/*', 'fake_project/*']
+    },
+)
