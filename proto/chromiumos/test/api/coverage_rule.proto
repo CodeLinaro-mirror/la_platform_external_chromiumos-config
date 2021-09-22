@@ -19,7 +19,14 @@ message CoverageRule {
   // Test suites that must be executed.
   repeated TestSuite test_suites = 2;
 
-  // Device hardware criteria that must be met.
-  // All criteria must be met (AND logic is applied).
-  repeated DutCriterion dut_criteria = 3;
+  // Dut criteria that must be met to execute the tests.
+  //   - At least one list of criteria must be specified
+  //   - Additional criteria lists will target compound scheduling units
+  //       (units with multiple physical duts)
+  //   - All criteria in each list must be met (logical AND) to match a DUT
+  //
+  repeated DutTarget dut_targets = 4;
+
+  // Graveyard
+  repeated DutCriterion dut_criteria = 3 [deprecated = true];
 }

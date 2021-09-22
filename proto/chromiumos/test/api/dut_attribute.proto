@@ -96,3 +96,8 @@ message DutCriterion {
   // Values are compared as simple strings case insensitively.
   repeated string values = 2;
 }
+
+// We target a dut by specifying multiple criteria it has to meet
+message DutTarget {
+    repeated DutCriterion criteria = 1;
+}

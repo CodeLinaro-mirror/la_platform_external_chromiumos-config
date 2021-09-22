@@ -12298,6 +12298,19 @@
             }
           ],
           "name": "DutCriterion"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "criteria",
+              "label": "LABEL_REPEATED",
+              "name": "criteria",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutCriterion"
+            }
+          ],
+          "name": "DutTarget"
         }
       ],
       "name": "chromiumos/test/api/dut_attribute.proto",
@@ -12489,10 +12502,21 @@
               "typeName": ".chromiumos.test.api.TestSuite"
             },
             {
+              "jsonName": "dutTargets",
+              "label": "LABEL_REPEATED",
+              "name": "dut_targets",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutTarget"
+            },
+            {
               "jsonName": "dutCriteria",
               "label": "LABEL_REPEATED",
               "name": "dut_criteria",
               "number": 3,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.DutCriterion"
             }
