@@ -61,3 +61,11 @@ message ProvisionState {
     StoragePath package_path = 2;
   }
 }
+
+// User configurable provisioning settings.  These inform the final
+// ProvisionState that's requested from the provisioning service.
+message ProvisionConfig {
+    chromiumos.build.api.FirmwareConfig  firmware = 1;
+    repeated chromiumos.build.api.Dlc.Id dlcs     = 2;
+    repeated ProvisionState.Package      packages = 3;
+}
