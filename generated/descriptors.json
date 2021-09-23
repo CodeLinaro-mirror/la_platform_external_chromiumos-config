@@ -9,6 +9,149 @@
         {
           "field": [
             {
+              "jsonName": "hostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hostname",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "project",
+              "label": "LABEL_OPTIONAL",
+              "name": "project",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GcrRepository"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "repository",
+              "label": "LABEL_OPTIONAL",
+              "name": "repository",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.GcrRepository"
+            },
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "digest",
+              "label": "LABEL_OPTIONAL",
+              "name": "digest",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "tags",
+              "label": "LABEL_REPEATED",
+              "name": "tags",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ContainerImageInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "images",
+              "label": "LABEL_REPEATED",
+              "name": "images",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.ContainerImageMap.ImagesEntry"
+            }
+          ],
+          "name": "ContainerImageMap",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.ContainerImageInfo"
+                }
+              ],
+              "name": "ImagesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "containers",
+              "label": "LABEL_REPEATED",
+              "name": "containers",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.ContainerMetadata.ContainersEntry"
+            }
+          ],
+          "name": "ContainerMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.ContainerImageMap"
+                }
+              ],
+              "name": "ContainersEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/build/api/container_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "id",
               "label": "LABEL_OPTIONAL",
               "name": "id",
