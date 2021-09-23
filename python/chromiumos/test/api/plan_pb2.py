@@ -13,7 +13,6 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.test.api import coverage_rule_pb2 as chromiumos_dot_test_dot_api_dot_coverage__rule__pb2
-from chromiumos.test.api import provision_state_pb2 as chromiumos_dot_test_dot_api_dot_provision__state__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n\x1e\x63hromiumos/test/api/plan.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/test/api/coverage_rule.proto\x1a)chromiumos/test/api/provision_state.proto\"\x86\x01\n\nHWTestUnit\x12\x38\n\rcoverage_rule\x18\x01 \x01(\x0b\x32!.chromiumos.test.api.CoverageRule\x12>\n\x10provision_config\x18\x02 \x01(\x0b\x32$.chromiumos.test.api.ProvisionConfig\"\x96\x01\n\nHWTestPlan\x12\x36\n\x02id\x18\x01 \x01(\x0b\x32*.chromiumos.test.api.HWTestPlan.TestPlanId\x12\x33\n\ntest_units\x18\x02 \x03(\x0b\x32\x1f.chromiumos.test.api.HWTestUnit\x1a\x1b\n\nTestPlanId\x12\r\n\x05value\x18\x01 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n\x1e\x63hromiumos/test/api/plan.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/test/api/coverage_rule.proto\"F\n\nHWTestUnit\x12\x38\n\rcoverage_rule\x18\x01 \x01(\x0b\x32!.chromiumos.test.api.CoverageRule\"\x96\x01\n\nHWTestPlan\x12\x36\n\x02id\x18\x01 \x01(\x0b\x32*.chromiumos.test.api.HWTestPlan.TestPlanId\x12\x33\n\ntest_units\x18\x02 \x03(\x0b\x32\x1f.chromiumos.test.api.HWTestUnit\x1a\x1b\n\nTestPlanId\x12\r\n\x05value\x18\x01 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
   ,
-  dependencies=[chromiumos_dot_test_dot_api_dot_coverage__rule__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_provision__state__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_test_dot_api_dot_coverage__rule__pb2.DESCRIPTOR,])
 
 
 
@@ -42,13 +41,6 @@ _HWTESTUNIT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='provision_config', full_name='chromiumos.test.api.HWTestUnit.provision_config', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -61,8 +53,8 @@ _HWTESTUNIT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=140,
-  serialized_end=274,
+  serialized_start=96,
+  serialized_end=166,
 )
 
 
@@ -92,8 +84,8 @@ _HWTESTPLAN_TESTPLANID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=400,
-  serialized_end=427,
+  serialized_start=292,
+  serialized_end=319,
 )
 
 _HWTESTPLAN = _descriptor.Descriptor(
@@ -129,12 +121,11 @@ _HWTESTPLAN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=277,
-  serialized_end=427,
+  serialized_start=169,
+  serialized_end=319,
 )
 
 _HWTESTUNIT.fields_by_name['coverage_rule'].message_type = chromiumos_dot_test_dot_api_dot_coverage__rule__pb2._COVERAGERULE
-_HWTESTUNIT.fields_by_name['provision_config'].message_type = chromiumos_dot_test_dot_api_dot_provision__state__pb2._PROVISIONCONFIG
 _HWTESTPLAN_TESTPLANID.containing_type = _HWTESTPLAN
 _HWTESTPLAN.fields_by_name['id'].message_type = _HWTESTPLAN_TESTPLANID
 _HWTESTPLAN.fields_by_name['test_units'].message_type = _HWTESTUNIT

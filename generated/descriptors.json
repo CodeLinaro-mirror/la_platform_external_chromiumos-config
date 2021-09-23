@@ -12292,6 +12292,165 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/build/api/dlc.proto",
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/build/api/portage.proto",
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState.Id"
+            },
+            {
+              "jsonName": "firmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "systemImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "system_image",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState.SystemImage"
+            },
+            {
+              "jsonName": "packages",
+              "label": "LABEL_REPEATED",
+              "name": "packages",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState.Package"
+            },
+            {
+              "jsonName": "preventReboot",
+              "label": "LABEL_OPTIONAL",
+              "name": "prevent_reboot",
+              "number": 5,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "ProvisionState",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "version",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "systemImagePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "system_image_path",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.StoragePath"
+                },
+                {
+                  "jsonName": "dlcs",
+                  "label": "LABEL_REPEATED",
+                  "name": "dlcs",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.Dlc.Id"
+                }
+              ],
+              "name": "SystemImage"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "portagePackage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "portage_package",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.build.api.Portage.Package"
+                },
+                {
+                  "jsonName": "packagePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "package_path",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.StoragePath"
+                }
+              ],
+              "name": "Package"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "firmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "dlcs",
+              "label": "LABEL_REPEATED",
+              "name": "dlcs",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.Dlc.Id"
+            },
+            {
+              "jsonName": "packages",
+              "label": "LABEL_REPEATED",
+              "name": "packages",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState.Package"
+            }
+          ],
+          "name": "ProvisionConfig"
+        }
+      ],
+      "name": "chromiumos/test/api/provision_state.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/provision_state.proto"
+      ],
       "messageType": [
         {
           "field": [
@@ -12451,6 +12610,14 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.DutCriterion"
+            },
+            {
+              "jsonName": "provisionConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_config",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionConfig"
             }
           ],
           "name": "DutTarget"
@@ -13274,162 +13441,6 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
       },
       "package": "chromiumos.test.lab.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/build/api/dlc.proto",
-        "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/build/api/portage.proto",
-        "chromiumos/storage_path.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ProvisionState.Id"
-            },
-            {
-              "jsonName": "firmware",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.FirmwareConfig"
-            },
-            {
-              "jsonName": "systemImage",
-              "label": "LABEL_OPTIONAL",
-              "name": "system_image",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ProvisionState.SystemImage"
-            },
-            {
-              "jsonName": "packages",
-              "label": "LABEL_REPEATED",
-              "name": "packages",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ProvisionState.Package"
-            },
-            {
-              "jsonName": "preventReboot",
-              "label": "LABEL_OPTIONAL",
-              "name": "prevent_reboot",
-              "number": 5,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "ProvisionState",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Id"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "version",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "version",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "systemImagePath",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "system_image_path",
-                  "number": 2,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.StoragePath"
-                },
-                {
-                  "jsonName": "dlcs",
-                  "label": "LABEL_REPEATED",
-                  "name": "dlcs",
-                  "number": 3,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.build.api.Dlc.Id"
-                }
-              ],
-              "name": "SystemImage"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "portagePackage",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "portage_package",
-                  "number": 1,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.build.api.Portage.Package"
-                },
-                {
-                  "jsonName": "packagePath",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "package_path",
-                  "number": 2,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.StoragePath"
-                }
-              ],
-              "name": "Package"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "firmware",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.FirmwareConfig"
-            },
-            {
-              "jsonName": "dlcs",
-              "label": "LABEL_REPEATED",
-              "name": "dlcs",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.Dlc.Id"
-            },
-            {
-              "jsonName": "packages",
-              "label": "LABEL_REPEATED",
-              "name": "packages",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ProvisionState.Package"
-            }
-          ],
-          "name": "ProvisionConfig"
-        }
-      ],
-      "name": "chromiumos/test/api/provision_state.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
       "syntax": "proto3"
     },
     {
@@ -14870,8 +14881,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/api/coverage_rule.proto",
-        "chromiumos/test/api/provision_state.proto"
+        "chromiumos/test/api/coverage_rule.proto"
       ],
       "messageType": [
         {
@@ -14883,14 +14893,6 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CoverageRule"
-            },
-            {
-              "jsonName": "provisionConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "provision_config",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ProvisionConfig"
             }
           ],
           "name": "HWTestUnit"

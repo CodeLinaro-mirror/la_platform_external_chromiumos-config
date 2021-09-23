@@ -8,6 +8,8 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
+import "chromiumos/test/api/provision_state.proto";
+
 // DutAttribute defines how attributes of a DUT are encoded into key-value pairs
 // for use in test coverage rules.
 message DutAttribute {
@@ -100,4 +102,7 @@ message DutCriterion {
 // We target a dut by specifying multiple criteria it has to meet
 message DutTarget {
     repeated DutCriterion criteria = 1;
+
+    // Provisioning configuration for this device
+    ProvisionConfig provision_config = 2;
 }
