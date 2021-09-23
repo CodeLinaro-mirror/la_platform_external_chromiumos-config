@@ -15430,6 +15430,192 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/storage_path.proto",
+        "chromiumos/test/api/test_case.proto",
+        "chromiumos/test/api/test_case_metadata.proto",
+        "chromiumos/test/api/test_case_result.proto",
+        "chromiumos/test/lab/api/dut.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "testRuns",
+              "label": "LABEL_REPEATED",
+              "name": "test_runs",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TestRun"
+            },
+            {
+              "jsonName": "customResults",
+              "label": "LABEL_REPEATED",
+              "name": "custom_results",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.CustomResult"
+            }
+          ],
+          "name": "TestResult"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testCase",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase"
+            },
+            {
+              "jsonName": "testCaseMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseMetadata"
+            },
+            {
+              "jsonName": "testCaseResult",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_result",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult"
+            },
+            {
+              "jsonName": "buildIds",
+              "label": "LABEL_REPEATED",
+              "name": "build_ids",
+              "number": 4,
+              "type": "TYPE_UINT64"
+            },
+            {
+              "jsonName": "dutTopology",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_topology",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.DutTopology"
+            },
+            {
+              "jsonName": "primaryDut",
+              "label": "LABEL_OPTIONAL",
+              "name": "primary_dut",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfo"
+            },
+            {
+              "jsonName": "companionDuts",
+              "label": "LABEL_REPEATED",
+              "name": "companion_duts",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfo"
+            }
+          ],
+          "name": "TestRun"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut.Id"
+            },
+            {
+              "jsonName": "tags",
+              "label": "LABEL_REPEATED",
+              "name": "tags",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfo.TagsEntry"
+            }
+          ],
+          "name": "DutInfo",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TagsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "resultDirPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "result_dir_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "cts",
+              "label": "LABEL_OPTIONAL",
+              "name": "cts",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.CustomResult.Cts"
+            }
+          ],
+          "name": "CustomResult",
+          "nestedType": [
+            {
+              "name": "Cts"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "type"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/artifact/test_result.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/artifact"
+      },
+      "package": "chromiumos.test.artifact",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/test/api/dut_attribute.proto"
       ],
       "messageType": [
