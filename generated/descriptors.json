@@ -14219,6 +14219,13 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "CrosToolRunnerProvisionRequest",
@@ -14292,6 +14299,13 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "CrosToolRunnerTestRequest"
@@ -14318,6 +14332,13 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestSuite"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "CrosToolRunnerTestFinderRequest"

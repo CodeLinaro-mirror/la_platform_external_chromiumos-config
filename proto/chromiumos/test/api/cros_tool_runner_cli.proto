@@ -28,6 +28,8 @@ message CrosToolRunnerProvisionRequest {
   repeated Device devices = 1;
   // The server that can provide inventory service.
   chromiumos.test.lab.api.IpEndpoint inventory_server = 2;
+  // The path of directory that will store all the cros-provision artifacts.
+  string artifact_dir = 3 ;
 }
 
 // CrosToolRunnerProvisionResponse includes provision result for each DUT.
@@ -47,6 +49,8 @@ message CrosToolRunnerTestRequest {
   repeated chromiumos.test.lab.api.Dut companion_duts = 3;
   // Inventory Server address.
   chromiumos.test.lab.api.IpEndpoint inventory_server = 4;
+  // The path of directory that will store all the cros-test artifacts.
+  string artifact_dir = 5 ;
 }
 
 // CrosToolRunnerTestResponse includes all test results.
@@ -59,6 +63,8 @@ message CrosToolRunnerTestResponse {
 message CrosToolRunnerTestFinderRequest {
   // Test suites to run by tag or explicit list of tests.
   repeated TestSuite test_suites = 1;
+  // The path of directory that will store all the cros-test-finder artifacts.
+  string artifact_dir = 2 ;
 }
 
 // CrosToolRunnerTestFinderResponse return a lit of test suites
