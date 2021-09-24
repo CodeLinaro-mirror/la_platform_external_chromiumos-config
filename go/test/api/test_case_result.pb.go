@@ -22,19 +22,24 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Result of a single execution of a given TestCase
+// NEXT TAG: 9
 type TestCaseResult struct {
-	// Unique ID of test case executed
+	// Unique ID of test case executed.
 	TestCaseId *TestCase_Id `protobuf:"bytes,1,opt,name=test_case_id,json=testCaseId,proto3" json:"test_case_id,omitempty"`
 	// Location of the test result artifacts generated during execution.
 	ResultDirPath *_go.StoragePath `protobuf:"bytes,2,opt,name=result_dir_path,json=resultDirPath,proto3" json:"result_dir_path,omitempty"`
 	// Types that are valid to be assigned to Verdict:
 	//	*TestCaseResult_Pass_
 	//	*TestCaseResult_Fail_
-	//	*TestCaseResult_Error_
-	Verdict              isTestCaseResult_Verdict `protobuf_oneof:"verdict"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	//	*TestCaseResult_Crash_
+	//	*TestCaseResult_Abort_
+	//	*TestCaseResult_Skip_
+	Verdict isTestCaseResult_Verdict `protobuf_oneof:"verdict"`
+	// Reason associated with status above to provide more information.
+	Reason               string   `protobuf:"bytes,8,opt,name=reason,proto3" json:"reason,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *TestCaseResult) Reset()         { *m = TestCaseResult{} }
@@ -88,15 +93,27 @@ type TestCaseResult_Fail_ struct {
 	Fail *TestCaseResult_Fail `protobuf:"bytes,4,opt,name=fail,proto3,oneof"`
 }
 
-type TestCaseResult_Error_ struct {
-	Error *TestCaseResult_Error `protobuf:"bytes,5,opt,name=error,proto3,oneof"`
+type TestCaseResult_Crash_ struct {
+	Crash *TestCaseResult_Crash `protobuf:"bytes,5,opt,name=crash,proto3,oneof"`
+}
+
+type TestCaseResult_Abort_ struct {
+	Abort *TestCaseResult_Abort `protobuf:"bytes,6,opt,name=abort,proto3,oneof"`
+}
+
+type TestCaseResult_Skip_ struct {
+	Skip *TestCaseResult_Skip `protobuf:"bytes,7,opt,name=skip,proto3,oneof"`
 }
 
 func (*TestCaseResult_Pass_) isTestCaseResult_Verdict() {}
 
 func (*TestCaseResult_Fail_) isTestCaseResult_Verdict() {}
 
-func (*TestCaseResult_Error_) isTestCaseResult_Verdict() {}
+func (*TestCaseResult_Crash_) isTestCaseResult_Verdict() {}
+
+func (*TestCaseResult_Abort_) isTestCaseResult_Verdict() {}
+
+func (*TestCaseResult_Skip_) isTestCaseResult_Verdict() {}
 
 func (m *TestCaseResult) GetVerdict() isTestCaseResult_Verdict {
 	if m != nil {
@@ -119,11 +136,32 @@ func (m *TestCaseResult) GetFail() *TestCaseResult_Fail {
 	return nil
 }
 
-func (m *TestCaseResult) GetError() *TestCaseResult_Error {
-	if x, ok := m.GetVerdict().(*TestCaseResult_Error_); ok {
-		return x.Error
+func (m *TestCaseResult) GetCrash() *TestCaseResult_Crash {
+	if x, ok := m.GetVerdict().(*TestCaseResult_Crash_); ok {
+		return x.Crash
 	}
 	return nil
+}
+
+func (m *TestCaseResult) GetAbort() *TestCaseResult_Abort {
+	if x, ok := m.GetVerdict().(*TestCaseResult_Abort_); ok {
+		return x.Abort
+	}
+	return nil
+}
+
+func (m *TestCaseResult) GetSkip() *TestCaseResult_Skip {
+	if x, ok := m.GetVerdict().(*TestCaseResult_Skip_); ok {
+		return x.Skip
+	}
+	return nil
+}
+
+func (m *TestCaseResult) GetReason() string {
+	if m != nil {
+		return m.Reason
+	}
+	return ""
 }
 
 // XXX_OneofWrappers is for the internal use of the proto package.
@@ -131,7 +169,9 @@ func (*TestCaseResult) XXX_OneofWrappers() []interface{} {
 	return []interface{}{
 		(*TestCaseResult_Pass_)(nil),
 		(*TestCaseResult_Fail_)(nil),
-		(*TestCaseResult_Error_)(nil),
+		(*TestCaseResult_Crash_)(nil),
+		(*TestCaseResult_Abort_)(nil),
+		(*TestCaseResult_Skip_)(nil),
 	}
 }
 
@@ -228,43 +268,107 @@ func (m *TestCaseResult_Fail) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_TestCaseResult_Fail proto.InternalMessageInfo
 
-type TestCaseResult_Error struct {
+type TestCaseResult_Crash struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TestCaseResult_Error) Reset()         { *m = TestCaseResult_Error{} }
-func (m *TestCaseResult_Error) String() string { return proto.CompactTextString(m) }
-func (*TestCaseResult_Error) ProtoMessage()    {}
-func (*TestCaseResult_Error) Descriptor() ([]byte, []int) {
+func (m *TestCaseResult_Crash) Reset()         { *m = TestCaseResult_Crash{} }
+func (m *TestCaseResult_Crash) String() string { return proto.CompactTextString(m) }
+func (*TestCaseResult_Crash) ProtoMessage()    {}
+func (*TestCaseResult_Crash) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7926a88698fcd412, []int{0, 3}
 }
 
-func (m *TestCaseResult_Error) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TestCaseResult_Error.Unmarshal(m, b)
+func (m *TestCaseResult_Crash) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TestCaseResult_Crash.Unmarshal(m, b)
 }
-func (m *TestCaseResult_Error) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TestCaseResult_Error.Marshal(b, m, deterministic)
+func (m *TestCaseResult_Crash) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TestCaseResult_Crash.Marshal(b, m, deterministic)
 }
-func (m *TestCaseResult_Error) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TestCaseResult_Error.Merge(m, src)
+func (m *TestCaseResult_Crash) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TestCaseResult_Crash.Merge(m, src)
 }
-func (m *TestCaseResult_Error) XXX_Size() int {
-	return xxx_messageInfo_TestCaseResult_Error.Size(m)
+func (m *TestCaseResult_Crash) XXX_Size() int {
+	return xxx_messageInfo_TestCaseResult_Crash.Size(m)
 }
-func (m *TestCaseResult_Error) XXX_DiscardUnknown() {
-	xxx_messageInfo_TestCaseResult_Error.DiscardUnknown(m)
+func (m *TestCaseResult_Crash) XXX_DiscardUnknown() {
+	xxx_messageInfo_TestCaseResult_Crash.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TestCaseResult_Error proto.InternalMessageInfo
+var xxx_messageInfo_TestCaseResult_Crash proto.InternalMessageInfo
+
+type TestCaseResult_Abort struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TestCaseResult_Abort) Reset()         { *m = TestCaseResult_Abort{} }
+func (m *TestCaseResult_Abort) String() string { return proto.CompactTextString(m) }
+func (*TestCaseResult_Abort) ProtoMessage()    {}
+func (*TestCaseResult_Abort) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7926a88698fcd412, []int{0, 4}
+}
+
+func (m *TestCaseResult_Abort) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TestCaseResult_Abort.Unmarshal(m, b)
+}
+func (m *TestCaseResult_Abort) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TestCaseResult_Abort.Marshal(b, m, deterministic)
+}
+func (m *TestCaseResult_Abort) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TestCaseResult_Abort.Merge(m, src)
+}
+func (m *TestCaseResult_Abort) XXX_Size() int {
+	return xxx_messageInfo_TestCaseResult_Abort.Size(m)
+}
+func (m *TestCaseResult_Abort) XXX_DiscardUnknown() {
+	xxx_messageInfo_TestCaseResult_Abort.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TestCaseResult_Abort proto.InternalMessageInfo
+
+type TestCaseResult_Skip struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TestCaseResult_Skip) Reset()         { *m = TestCaseResult_Skip{} }
+func (m *TestCaseResult_Skip) String() string { return proto.CompactTextString(m) }
+func (*TestCaseResult_Skip) ProtoMessage()    {}
+func (*TestCaseResult_Skip) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7926a88698fcd412, []int{0, 5}
+}
+
+func (m *TestCaseResult_Skip) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TestCaseResult_Skip.Unmarshal(m, b)
+}
+func (m *TestCaseResult_Skip) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TestCaseResult_Skip.Marshal(b, m, deterministic)
+}
+func (m *TestCaseResult_Skip) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TestCaseResult_Skip.Merge(m, src)
+}
+func (m *TestCaseResult_Skip) XXX_Size() int {
+	return xxx_messageInfo_TestCaseResult_Skip.Size(m)
+}
+func (m *TestCaseResult_Skip) XXX_DiscardUnknown() {
+	xxx_messageInfo_TestCaseResult_Skip.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TestCaseResult_Skip proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*TestCaseResult)(nil), "chromiumos.test.api.TestCaseResult")
 	proto.RegisterType((*TestCaseResult_Artifacts)(nil), "chromiumos.test.api.TestCaseResult.Artifacts")
 	proto.RegisterType((*TestCaseResult_Pass)(nil), "chromiumos.test.api.TestCaseResult.Pass")
 	proto.RegisterType((*TestCaseResult_Fail)(nil), "chromiumos.test.api.TestCaseResult.Fail")
-	proto.RegisterType((*TestCaseResult_Error)(nil), "chromiumos.test.api.TestCaseResult.Error")
+	proto.RegisterType((*TestCaseResult_Crash)(nil), "chromiumos.test.api.TestCaseResult.Crash")
+	proto.RegisterType((*TestCaseResult_Abort)(nil), "chromiumos.test.api.TestCaseResult.Abort")
+	proto.RegisterType((*TestCaseResult_Skip)(nil), "chromiumos.test.api.TestCaseResult.Skip")
 }
 
 func init() {
@@ -272,25 +376,28 @@ func init() {
 }
 
 var fileDescriptor_7926a88698fcd412 = []byte{
-	// 309 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x91, 0x4b, 0x4b, 0xc3, 0x40,
-	0x14, 0x85, 0x5b, 0xfb, 0xa2, 0x53, 0x1f, 0x10, 0x17, 0x86, 0x80, 0x50, 0x74, 0x53, 0x05, 0x27,
-	0xa0, 0x7b, 0xa5, 0xf5, 0x41, 0xbb, 0x2b, 0xd1, 0x95, 0x9b, 0x70, 0x4d, 0xa6, 0xe9, 0x40, 0xea,
-	0x84, 0x7b, 0x6f, 0xfd, 0x0f, 0xfe, 0x6b, 0x99, 0x19, 0x6d, 0xb3, 0x90, 0xd2, 0x55, 0x32, 0x70,
-	0xbe, 0x73, 0x3e, 0xb8, 0xe2, 0x3a, 0x5b, 0xa2, 0x59, 0xe9, 0xf5, 0xca, 0x50, 0xcc, 0x8a, 0x38,
-	0x86, 0x4a, 0xbb, 0x9f, 0x34, 0x03, 0x52, 0x29, 0x2a, 0x5a, 0x97, 0x2c, 0x2b, 0x34, 0x6c, 0x82,
-	0xd3, 0x6d, 0x56, 0xda, 0x88, 0x84, 0x4a, 0x47, 0xe7, 0xb5, 0x02, 0x62, 0x83, 0x50, 0xa8, 0xb4,
-	0x02, 0x5e, 0x7a, 0x26, 0xba, 0xdc, 0xd9, 0xef, 0x43, 0x17, 0xdf, 0x2d, 0x71, 0xfc, 0xa6, 0x88,
-	0x1f, 0x81, 0x54, 0xe2, 0x16, 0x83, 0x89, 0x38, 0xdc, 0x5a, 0xe8, 0x3c, 0x6c, 0x0e, 0x9b, 0xa3,
-	0xc1, 0xed, 0x50, 0xfe, 0xa3, 0x20, 0xff, 0x50, 0x39, 0xcb, 0x13, 0xc1, 0xbf, 0x8f, 0x59, 0x1e,
-	0x3c, 0x88, 0x13, 0xef, 0x9f, 0xe6, 0x1a, 0x9d, 0x54, 0x78, 0xe0, 0x6a, 0xce, 0xea, 0x35, 0xaf,
-	0x5e, 0x7a, 0x0e, 0xbc, 0x4c, 0x8e, 0x7c, 0xfe, 0x49, 0xa3, 0x7d, 0x06, 0xf7, 0xa2, 0x5d, 0x01,
-	0x51, 0xd8, 0x72, 0xd4, 0x68, 0xe7, 0xb8, 0xf7, 0x96, 0x73, 0x20, 0x9a, 0x36, 0x12, 0xc7, 0x59,
-	0x7e, 0x01, 0xba, 0x0c, 0xdb, 0xfb, 0xf3, 0x2f, 0xa0, 0x4b, 0xcb, 0x5b, 0x2e, 0x18, 0x8b, 0x8e,
-	0x42, 0x34, 0x18, 0x76, 0x5c, 0xc1, 0xd5, 0x3e, 0x05, 0xcf, 0x16, 0x98, 0x36, 0x12, 0x4f, 0x46,
-	0x03, 0xd1, 0x1f, 0x23, 0xeb, 0x05, 0x64, 0x4c, 0x51, 0x57, 0xb4, 0xad, 0x9f, 0xfd, 0xda, 0x9d,
-	0xa8, 0x27, 0x3a, 0x2e, 0x3e, 0xe9, 0x8b, 0xde, 0x97, 0xc2, 0x5c, 0x67, 0x3c, 0x89, 0xdf, 0x6f,
-	0x0a, 0xb3, 0x19, 0x92, 0x06, 0x8b, 0xb8, 0x76, 0xc2, 0xcc, 0x7c, 0x2e, 0x74, 0x11, 0x17, 0x66,
-	0x73, 0xcc, 0x8f, 0xae, 0xbb, 0xe1, 0xdd, 0x4f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x98, 0x76, 0xac,
-	0xda, 0x4a, 0x02, 0x00, 0x00,
+	// 364 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xcf, 0x6b, 0xea, 0x40,
+	0x10, 0xc7, 0xf5, 0xbd, 0x18, 0x9f, 0xeb, 0x7b, 0xaf, 0x90, 0x42, 0xbb, 0x04, 0x0a, 0xd2, 0x5e,
+	0x6c, 0xa1, 0x1b, 0x68, 0xef, 0x2d, 0x6a, 0x29, 0x7a, 0x93, 0xd8, 0x53, 0x2f, 0x61, 0x4c, 0xd6,
+	0x64, 0xf1, 0xc7, 0x86, 0x9d, 0xb5, 0xff, 0x59, 0xff, 0xbf, 0x32, 0x1b, 0xab, 0x1e, 0x8a, 0xe4,
+	0x94, 0x1d, 0x32, 0x9f, 0xcf, 0x7e, 0x67, 0x19, 0x76, 0x97, 0x16, 0x46, 0xaf, 0xd5, 0x76, 0xad,
+	0x31, 0xb2, 0x12, 0x6d, 0x04, 0xa5, 0x72, 0x87, 0x24, 0x05, 0x94, 0x89, 0x91, 0xb8, 0x5d, 0x59,
+	0x51, 0x1a, 0x6d, 0x75, 0x70, 0x7e, 0xe8, 0x15, 0xd4, 0x22, 0xa0, 0x54, 0xe1, 0xd5, 0x91, 0x00,
+	0xad, 0x36, 0x90, 0xcb, 0xa4, 0x04, 0x5b, 0x54, 0x4c, 0x78, 0x73, 0xd2, 0x5f, 0x35, 0x5d, 0x7f,
+	0x7a, 0xec, 0xff, 0x9b, 0x44, 0x3b, 0x02, 0x94, 0xb1, 0xbb, 0x31, 0x18, 0xb2, 0xbf, 0x87, 0x14,
+	0x2a, 0xe3, 0xcd, 0x5e, 0xb3, 0xdf, 0x7d, 0xe8, 0x89, 0x1f, 0x22, 0x88, 0x6f, 0x54, 0x4c, 0xb2,
+	0x98, 0xd9, 0x5d, 0x31, 0xc9, 0x82, 0x67, 0x76, 0x56, 0xe5, 0x4f, 0x32, 0x65, 0x5c, 0x28, 0xfe,
+	0xcb, 0x69, 0x2e, 0x8f, 0x35, 0xb3, 0x2a, 0xf4, 0x14, 0x6c, 0x11, 0xff, 0xab, 0xfa, 0x5f, 0x94,
+	0xa1, 0x32, 0x78, 0x62, 0x5e, 0x09, 0x88, 0xfc, 0xb7, 0xa3, 0xfa, 0x27, 0x2f, 0xaf, 0x72, 0x8b,
+	0x29, 0x20, 0x8e, 0x1b, 0xb1, 0xe3, 0x88, 0x5f, 0x80, 0x5a, 0x71, 0xaf, 0x3e, 0xff, 0x0a, 0x6a,
+	0x45, 0x3c, 0x71, 0xc1, 0x80, 0xb5, 0x52, 0x03, 0x58, 0xf0, 0x96, 0x13, 0xdc, 0xd6, 0x11, 0x8c,
+	0x08, 0x18, 0x37, 0xe2, 0x8a, 0x24, 0x05, 0xcc, 0xb5, 0xb1, 0xdc, 0xaf, 0xaf, 0x18, 0x10, 0x40,
+	0x0a, 0x47, 0xd2, 0x14, 0xb8, 0x54, 0x25, 0x6f, 0xd7, 0x9f, 0x62, 0xb6, 0x54, 0x25, 0x4d, 0x41,
+	0x5c, 0x70, 0xc1, 0x7c, 0x23, 0x01, 0xf5, 0x86, 0xff, 0xe9, 0x35, 0xfb, 0x9d, 0x78, 0x57, 0x85,
+	0x5d, 0xd6, 0x19, 0x18, 0xab, 0x16, 0x90, 0x5a, 0x0c, 0x7d, 0xe6, 0xd1, 0xd3, 0xd1, 0x97, 0x9e,
+	0x20, 0x6c, 0xb3, 0x96, 0x9b, 0x84, 0x0e, 0x2e, 0x0f, 0xfd, 0x21, 0xed, 0xb0, 0xc3, 0xda, 0x1f,
+	0xd2, 0x64, 0x2a, 0xb5, 0xc3, 0xe8, 0xfd, 0x3e, 0xd7, 0xfb, 0x3c, 0x42, 0x9b, 0x3c, 0x3a, 0x5a,
+	0xb7, 0x54, 0x6f, 0x16, 0x2a, 0x8f, 0x72, 0xbd, 0x5f, 0xbc, 0xb9, 0xef, 0xf6, 0xed, 0xf1, 0x2b,
+	0x00, 0x00, 0xff, 0xff, 0xf5, 0x1f, 0x43, 0xcf, 0xf6, 0x02, 0x00, 0x00,
 }

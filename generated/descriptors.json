@@ -13964,13 +13964,38 @@
               "typeName": ".chromiumos.test.api.TestCaseResult.Fail"
             },
             {
-              "jsonName": "error",
+              "jsonName": "crash",
               "label": "LABEL_OPTIONAL",
-              "name": "error",
+              "name": "crash",
               "number": 5,
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult.Error"
+              "typeName": ".chromiumos.test.api.TestCaseResult.Crash"
+            },
+            {
+              "jsonName": "abort",
+              "label": "LABEL_OPTIONAL",
+              "name": "abort",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Abort"
+            },
+            {
+              "jsonName": "skip",
+              "label": "LABEL_OPTIONAL",
+              "name": "skip",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Skip"
+            },
+            {
+              "jsonName": "reason",
+              "label": "LABEL_OPTIONAL",
+              "name": "reason",
+              "number": 8,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "TestCaseResult",
@@ -13985,7 +14010,13 @@
               "name": "Fail"
             },
             {
-              "name": "Error"
+              "name": "Crash"
+            },
+            {
+              "name": "Abort"
+            },
+            {
+              "name": "Skip"
             }
           ],
           "oneofDecl": [
