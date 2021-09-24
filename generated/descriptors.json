@@ -13521,6 +13521,14 @@
               "name": "prevent_reboot",
               "number": 4,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "overwritePayload",
+              "label": "LABEL_OPTIONAL",
+              "name": "overwrite_payload",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
             }
           ],
           "name": "InstallCrosRequest",

@@ -120,6 +120,9 @@ message InstallCrosRequest {
   bool preserve_stateful = 3;
   // Prevents device reboot during system image provisioning.
   bool prevent_reboot = 4;
+
+  // Provides a possible tar file to overwrite current install files
+  StoragePath overwrite_payload = 5;
 }
 
 message InstallCrosResponse {
