@@ -12,33 +12,21 @@ import "chromiumos/storage_path.proto";
 import "chromiumos/test/api/test_case.proto";
 
 // Result of a single execution of a given TestCase
-// NEXT TAG: 9
 message TestCaseResult {
-  // Unique ID of test case executed.
+  // Unique ID of test case executed
   TestCase.Id test_case_id = 1;
 
   // Location of the test result artifacts generated during execution.
   StoragePath result_dir_path = 2;
 
   oneof verdict {
-    // Set if test ran successfully and passed.
+    // Set if test ran successfully and passed
     Pass pass = 3;
-
-    // Set if test ran successfully and failed.
+    // Set if test ran successfully and failed
     Fail fail = 4;
-
-    // Set if test execution could not be completed.
-    Crash crash = 5;
-
-    // Set if test execution was intentionally aborted.
-    Abort abort = 6;
-
-    // Set if test execution was skipped.
-    Skip skip = 7;
+    // Set if test execution could not be completed
+    Error error = 5;
   }
-
-  // Reason associated with status above to provide more information.
-  string reason = 8;
 
   message Artifacts {
   }
@@ -49,12 +37,6 @@ message TestCaseResult {
   message Fail {
   }
 
-  message Crash {
-  }
-
-  message Abort {
-  }
-
-  message Skip {
+  message Error {
   }
 }
