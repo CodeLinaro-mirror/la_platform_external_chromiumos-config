@@ -13933,9 +13933,84 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "manual",
+              "label": "LABEL_OPTIONAL",
+              "name": "manual",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Manual"
+            },
+            {
+              "jsonName": "tauto",
+              "label": "LABEL_OPTIONAL",
+              "name": "tauto",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Tauto"
+            },
+            {
+              "jsonName": "tast",
+              "label": "LABEL_OPTIONAL",
+              "name": "tast",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Tast"
+            },
+            {
+              "jsonName": "gtest",
+              "label": "LABEL_OPTIONAL",
+              "name": "gtest",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Gtest"
+            }
+          ],
+          "name": "TestHarness",
+          "nestedType": [
+            {
+              "name": "Manual"
+            },
+            {
+              "name": "Tast"
+            },
+            {
+              "name": "Tauto"
+            },
+            {
+              "name": "Gtest"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "test_harness_type"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/test_harness.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/storage_path.proto",
-        "chromiumos/test/api/test_case.proto"
+        "chromiumos/test/api/test_case.proto",
+        "chromiumos/test/api/test_harness.proto"
       ],
       "messageType": [
         {
@@ -13975,13 +14050,55 @@
               "typeName": ".chromiumos.test.api.TestCaseResult.Fail"
             },
             {
-              "jsonName": "error",
+              "jsonName": "crash",
               "label": "LABEL_OPTIONAL",
-              "name": "error",
+              "name": "crash",
               "number": 5,
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult.Error"
+              "typeName": ".chromiumos.test.api.TestCaseResult.Crash"
+            },
+            {
+              "jsonName": "abort",
+              "label": "LABEL_OPTIONAL",
+              "name": "abort",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Abort"
+            },
+            {
+              "jsonName": "skip",
+              "label": "LABEL_OPTIONAL",
+              "name": "skip",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Skip"
+            },
+            {
+              "jsonName": "notRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "not_run",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.NotRun"
+            },
+            {
+              "jsonName": "reason",
+              "label": "LABEL_OPTIONAL",
+              "name": "reason",
+              "number": 9,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "testHarness",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_harness",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness"
             }
           ],
           "name": "TestCaseResult",
@@ -13996,7 +14113,16 @@
               "name": "Fail"
             },
             {
-              "name": "Error"
+              "name": "Crash"
+            },
+            {
+              "name": "Abort"
+            },
+            {
+              "name": "Skip"
+            },
+            {
+              "name": "NotRun"
             }
           ],
           "oneofDecl": [
@@ -15129,80 +15255,6 @@
           "name": "PublishService"
         }
       ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "manual",
-              "label": "LABEL_OPTIONAL",
-              "name": "manual",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestHarness.Manual"
-            },
-            {
-              "jsonName": "tauto",
-              "label": "LABEL_OPTIONAL",
-              "name": "tauto",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestHarness.Tauto"
-            },
-            {
-              "jsonName": "tast",
-              "label": "LABEL_OPTIONAL",
-              "name": "tast",
-              "number": 3,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestHarness.Tast"
-            },
-            {
-              "jsonName": "gtest",
-              "label": "LABEL_OPTIONAL",
-              "name": "gtest",
-              "number": 4,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestHarness.Gtest"
-            }
-          ],
-          "name": "TestHarness",
-          "nestedType": [
-            {
-              "name": "Manual"
-            },
-            {
-              "name": "Tast"
-            },
-            {
-              "name": "Tauto"
-            },
-            {
-              "name": "Gtest"
-            }
-          ],
-          "oneofDecl": [
-            {
-              "name": "test_harness_type"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/api/test_harness.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
       "syntax": "proto3"
     },
     {

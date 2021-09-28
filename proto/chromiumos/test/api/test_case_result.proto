@@ -10,6 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/storage_path.proto";
 import "chromiumos/test/api/test_case.proto";
+import "chromiumos/test/api/test_harness.proto";
 
 // Result of a single execution of a given TestCase
 message TestCaseResult {
@@ -20,13 +21,26 @@ message TestCaseResult {
   StoragePath result_dir_path = 2;
 
   oneof verdict {
-    // Set if test ran successfully and passed
+    // Set if test ran successfully and passed.
     Pass pass = 3;
-    // Set if test ran successfully and failed
+    // Set if test ran successfully and failed.
     Fail fail = 4;
-    // Set if test execution could not be completed
-    Error error = 5;
+    // Set if test execution encountered errors (i.e. started/attempted).
+    Crash crash = 5;
+    // Set if test execution was aborted before finishing either due to system
+    // limitation or user requests.
+    Abort abort = 6;
+    // Set if test was skipped due to dependency requirements.
+    Skip skip = 7;
+    // Set if test did not run.
+    NotRun not_run = 8;
   }
+
+  // Reason associated with status above to provide more information.
+  string reason = 9;
+
+  // Test harness information.
+  TestHarness test_harness = 10;
 
   message Artifacts {
   }
@@ -37,6 +51,16 @@ message TestCaseResult {
   message Fail {
   }
 
-  message Error {
+  message Crash {
   }
+
+  message Abort {
+  }
+
+  message Skip {
+  }
+
+  message NotRun {
+  }
+
 }
