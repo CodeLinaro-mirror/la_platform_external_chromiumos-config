@@ -14877,19 +14877,6 @@
         {
           "field": [
             {
-              "jsonName": "coverageRule",
-              "label": "LABEL_OPTIONAL",
-              "name": "coverage_rule",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CoverageRule"
-            }
-          ],
-          "name": "HWTestUnit"
-        },
-        {
-          "field": [
-            {
               "jsonName": "id",
               "label": "LABEL_OPTIONAL",
               "name": "id",
@@ -14898,12 +14885,12 @@
               "typeName": ".chromiumos.test.api.HWTestPlan.TestPlanId"
             },
             {
-              "jsonName": "testUnits",
+              "jsonName": "coverageRules",
               "label": "LABEL_REPEATED",
-              "name": "test_units",
+              "name": "coverage_rules",
               "number": 2,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.HWTestUnit"
+              "typeName": ".chromiumos.test.api.CoverageRule"
             }
           ],
           "name": "HWTestPlan",

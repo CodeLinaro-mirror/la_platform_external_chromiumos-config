@@ -10,17 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/test/api/coverage_rule.proto";
 
-// A unit is the fundamental building block of a test plan.  It specifies
-// a coverage rule (a set of tests to execute, and dut attributes required to
-// execute them), and a provisioning state for the device.
-//
-// The scheduling backend MAY split a unit into multiple units to actually
-// execute, but it can be logically considered a single unit of execution.
-message HWTestUnit {
-    CoverageRule coverage_rule = 1; // Tests to run and required dut attributes
-}
-
-// A hardware test plan is composed of multiple units.
+// A hardware test plan is composed of coverage rules
 message HWTestPlan {
     // Unique name to identify the test plan, recommend reverse domain name
     // rooted at chromeos:
@@ -30,5 +20,5 @@ message HWTestPlan {
     }
 
     TestPlanId id = 1;
-    repeated HWTestUnit test_units = 2;
+    repeated CoverageRule coverage_rules = 2;
 }

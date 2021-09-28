@@ -20,42 +20,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n\x1e\x63hromiumos/test/api/plan.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/test/api/coverage_rule.proto\"F\n\nHWTestUnit\x12\x38\n\rcoverage_rule\x18\x01 \x01(\x0b\x32!.chromiumos.test.api.CoverageRule\"\x96\x01\n\nHWTestPlan\x12\x36\n\x02id\x18\x01 \x01(\x0b\x32*.chromiumos.test.api.HWTestPlan.TestPlanId\x12\x33\n\ntest_units\x18\x02 \x03(\x0b\x32\x1f.chromiumos.test.api.HWTestUnit\x1a\x1b\n\nTestPlanId\x12\r\n\x05value\x18\x01 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n\x1e\x63hromiumos/test/api/plan.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/test/api/coverage_rule.proto\"\x9c\x01\n\nHWTestPlan\x12\x36\n\x02id\x18\x01 \x01(\x0b\x32*.chromiumos.test.api.HWTestPlan.TestPlanId\x12\x39\n\x0e\x63overage_rules\x18\x02 \x03(\x0b\x32!.chromiumos.test.api.CoverageRule\x1a\x1b\n\nTestPlanId\x12\r\n\x05value\x18\x01 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_coverage__rule__pb2.DESCRIPTOR,])
 
 
-
-
-_HWTESTUNIT = _descriptor.Descriptor(
-  name='HWTestUnit',
-  full_name='chromiumos.test.api.HWTestUnit',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='coverage_rule', full_name='chromiumos.test.api.HWTestUnit.coverage_rule', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=96,
-  serialized_end=166,
-)
 
 
 _HWTESTPLAN_TESTPLANID = _descriptor.Descriptor(
@@ -84,8 +53,8 @@ _HWTESTPLAN_TESTPLANID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=292,
-  serialized_end=319,
+  serialized_start=226,
+  serialized_end=253,
 )
 
 _HWTESTPLAN = _descriptor.Descriptor(
@@ -103,7 +72,7 @@ _HWTESTPLAN = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='test_units', full_name='chromiumos.test.api.HWTestPlan.test_units', index=1,
+      name='coverage_rules', full_name='chromiumos.test.api.HWTestPlan.coverage_rules', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -121,24 +90,15 @@ _HWTESTPLAN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=169,
-  serialized_end=319,
+  serialized_start=97,
+  serialized_end=253,
 )
 
-_HWTESTUNIT.fields_by_name['coverage_rule'].message_type = chromiumos_dot_test_dot_api_dot_coverage__rule__pb2._COVERAGERULE
 _HWTESTPLAN_TESTPLANID.containing_type = _HWTESTPLAN
 _HWTESTPLAN.fields_by_name['id'].message_type = _HWTESTPLAN_TESTPLANID
-_HWTESTPLAN.fields_by_name['test_units'].message_type = _HWTESTUNIT
-DESCRIPTOR.message_types_by_name['HWTestUnit'] = _HWTESTUNIT
+_HWTESTPLAN.fields_by_name['coverage_rules'].message_type = chromiumos_dot_test_dot_api_dot_coverage__rule__pb2._COVERAGERULE
 DESCRIPTOR.message_types_by_name['HWTestPlan'] = _HWTESTPLAN
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
-HWTestUnit = _reflection.GeneratedProtocolMessageType('HWTestUnit', (_message.Message,), dict(
-  DESCRIPTOR = _HWTESTUNIT,
-  __module__ = 'chromiumos.test.api.plan_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.test.api.HWTestUnit)
-  ))
-_sym_db.RegisterMessage(HWTestUnit)
 
 HWTestPlan = _reflection.GeneratedProtocolMessageType('HWTestPlan', (_message.Message,), dict(
 
