@@ -2001,7 +2001,7 @@
                   "number": 14
                 },
                 {
-                  "name": "LTE_BOARD",
+                  "name": "CELLULAR_BOARD",
                   "number": 15
                 },
                 {
@@ -2207,12 +2207,12 @@
               "typeName": ".chromiumos.config.api.HardwareFeatures.UsbA"
             },
             {
-              "jsonName": "lte",
+              "jsonName": "cellular",
               "label": "LABEL_OPTIONAL",
-              "name": "lte",
+              "name": "cellular",
               "number": 3,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.HardwareFeatures.Lte"
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Cellular"
             },
             {
               "jsonName": "hdmi",
@@ -2496,6 +2496,25 @@
               "name": "UsbA"
             },
             {
+              "enumType": [
+                {
+                  "name": "CellularType",
+                  "value": [
+                    {
+                      "name": "NOT_PRESENT",
+                      "number": 0
+                    },
+                    {
+                      "name": "CELLULAR_LTE",
+                      "number": 1
+                    },
+                    {
+                      "name": "CELLULAR_5G",
+                      "number": 2
+                    }
+                  ]
+                }
+              ],
               "field": [
                 {
                   "jsonName": "present",
@@ -2511,9 +2530,17 @@
                   "name": "model",
                   "number": 2,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "type",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "type",
+                  "number": 3,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Cellular.CellularType"
                 }
               ],
-              "name": "Lte"
+              "name": "Cellular"
             },
             {
               "field": [
@@ -3793,9 +3820,9 @@
               "typeName": ".chromiumos.config.api.Topology"
             },
             {
-              "jsonName": "lteBoard",
+              "jsonName": "cellularBoard",
               "label": "LABEL_OPTIONAL",
-              "name": "lte_board",
+              "name": "cellular_board",
               "number": 15,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"

@@ -76,9 +76,9 @@ message HardwareTopology {
   // See ./hardware_topology.md#wifi for more information.
   Topology wifi = 14;
 
-  // Specify the LTE sub-board topology.
-  // See ./hardware_topology.md#lte-board for more information.
-  Topology lte_board = 15;
+  // Specify the cellular sub-board topology.
+  // See ./hardware_topology.md#cellular-board for more information.
+  Topology cellular_board = 15;
 
   // Specify the SD card reader topology.
   // See ./hardware_topology.md#sd-reader for more information.

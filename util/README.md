@@ -615,6 +615,15 @@ hw_topo.create_lte_board()
 
 
 
+### hw_topo.create_cellular_board {#hw_topo.create_cellular_board}
+Builds a Topology proto for a Cellular board.
+
+```python
+hw_topo.create_cellular_board()
+```
+
+
+
 ### hw_topo.create_sd_reader {#hw_topo.create_sd_reader}
 Builds a Topology proto for a SD reader.
 

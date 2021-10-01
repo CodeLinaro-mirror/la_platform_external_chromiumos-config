@@ -197,6 +197,9 @@
                 }
               ]
             },
+            "cellular": {
+              "present": 1
+            },
             "fingerprint": {
               "board": "fake_fingerprint_board",
               "location": 2
@@ -222,9 +225,6 @@
             },
             "lightSensor": {
               "lidLightsensor": 1
-            },
-            "lte": {
-              "present": 1
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -359,19 +359,32 @@
               "id": "CAMERA1",
               "type": 7
             },
+            "cellularBoard": {
+              "description": {
+                "EN": "Default lte_board"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "present": 1,
+                  "type": 1
+                }
+              },
+              "id": "LTE_BOARD",
+              "type": 15
+            },
             "daughterBoard": {
               "description": {
                 "EN": "Default daughter_board"
               },
               "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
                 "fwConfig": {
                   "mask": 15,
                   "value": 1
                 },
                 "hdmi": {
-                  "present": 2
-                },
-                "lte": {
                   "present": 2
                 },
                 "usbA": {
@@ -445,18 +458,6 @@
               },
               "id": "KB_BL",
               "type": 5
-            },
-            "lteBoard": {
-              "description": {
-                "EN": "Default lte_board"
-              },
-              "hardwareFeature": {
-                "lte": {
-                  "present": 1
-                }
-              },
-              "id": "LTE_BOARD",
-              "type": 15
             },
             "microphoneMuteSwitch": {
               "hardwareFeature": {
@@ -651,6 +652,10 @@
                 }
               ]
             },
+            "cellular": {
+              "model": "FakeModem",
+              "present": 1
+            },
             "fingerprint": {
               "location": 5
             },
@@ -672,10 +677,6 @@
               "keyboardType": 3,
               "numericPad": 1,
               "powerButton": 2
-            },
-            "lte": {
-              "model": "FakeModem",
-              "present": 1
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -786,18 +787,32 @@
               "id": "CAMERA2",
               "type": 7
             },
+            "cellularBoard": {
+              "description": {
+                "EN": "Default lte_board"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "model": "FakeModem",
+                  "present": 1,
+                  "type": 1
+                }
+              },
+              "id": "LTE_BOARD",
+              "type": 15
+            },
             "daughterBoard": {
               "description": {
                 "EN": "Non-default daughter_board"
               },
               "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
                 "fwConfig": {
                   "mask": 15
                 },
                 "hdmi": {
-                  "present": 2
-                },
-                "lte": {
                   "present": 2
                 },
                 "usbA": {
@@ -858,19 +873,6 @@
               },
               "id": "KB_BL",
               "type": 5
-            },
-            "lteBoard": {
-              "description": {
-                "EN": "Default lte_board"
-              },
-              "hardwareFeature": {
-                "lte": {
-                  "model": "FakeModem",
-                  "present": 1
-                }
-              },
-              "id": "LTE_BOARD",
-              "type": 15
             },
             "microphoneMuteSwitch": {
               "hardwareFeature": {
@@ -1081,6 +1083,9 @@
                 }
               ]
             },
+            "cellular": {
+              "present": 1
+            },
             "fingerprint": {
               "board": "fake_fingerprint_board",
               "location": 2
@@ -1103,9 +1108,6 @@
               "keyboardType": 3,
               "numericPad": 1,
               "powerButton": 2
-            },
-            "lte": {
-              "present": 1
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -1222,19 +1224,32 @@
               "id": "CAMERA1",
               "type": 7
             },
+            "cellularBoard": {
+              "description": {
+                "EN": "Default lte_board"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "present": 1,
+                  "type": 1
+                }
+              },
+              "id": "LTE_BOARD",
+              "type": 15
+            },
             "daughterBoard": {
               "description": {
                 "EN": "Default daughter_board"
               },
               "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
                 "fwConfig": {
                   "mask": 15,
                   "value": 1
                 },
                 "hdmi": {
-                  "present": 2
-                },
-                "lte": {
                   "present": 2
                 },
                 "usbA": {
@@ -1296,18 +1311,6 @@
               },
               "id": "KB_BL",
               "type": 5
-            },
-            "lteBoard": {
-              "description": {
-                "EN": "Default lte_board"
-              },
-              "hardwareFeature": {
-                "lte": {
-                  "present": 1
-                }
-              },
-              "id": "LTE_BOARD",
-              "type": 15
             },
             "motherboardUsb": {
               "description": {
@@ -1509,6 +1512,10 @@
                 }
               ]
             },
+            "cellular": {
+              "model": "FakeModemB",
+              "present": 1
+            },
             "fingerprint": {
               "location": 5
             },
@@ -1530,10 +1537,6 @@
               "keyboardType": 3,
               "numericPad": 1,
               "powerButton": 2
-            },
-            "lte": {
-              "model": "FakeModemB",
-              "present": 1
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -1655,15 +1658,16 @@
                 "EN": "Non-default daughter_board with LTE"
               },
               "hardwareFeature": {
+                "cellular": {
+                  "model": "FakeModemB",
+                  "present": 1,
+                  "type": 1
+                },
                 "fwConfig": {
                   "mask": 15
                 },
                 "hdmi": {
                   "present": 2
-                },
-                "lte": {
-                  "model": "FakeModemB",
-                  "present": 1
                 },
                 "usbA": {
                   "count": {}
@@ -1924,6 +1928,9 @@
                 }
               ]
             },
+            "cellular": {
+              "present": 2
+            },
             "fingerprint": {
               "location": 5
             },
@@ -1945,9 +1952,6 @@
               "keyboardType": 3,
               "numericPad": 1,
               "powerButton": 2
-            },
-            "lte": {
-              "present": 2
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -2069,14 +2073,14 @@
                 "EN": "Default daughter_board"
               },
               "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
                 "fwConfig": {
                   "mask": 15,
                   "value": 1
                 },
                 "hdmi": {
-                  "present": 2
-                },
-                "lte": {
                   "present": 2
                 },
                 "usbA": {
@@ -2328,6 +2332,9 @@
                 }
               ]
             },
+            "cellular": {
+              "present": 2
+            },
             "fingerprint": {
               "location": 5
             },
@@ -2349,9 +2356,6 @@
               "keyboardType": 3,
               "numericPad": 1,
               "powerButton": 2
-            },
-            "lte": {
-              "present": 2
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -2451,14 +2455,14 @@
                 "EN": "Default daughter_board"
               },
               "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
                 "fwConfig": {
                   "mask": 15,
                   "value": 1
                 },
                 "hdmi": {
-                  "present": 2
-                },
-                "lte": {
                   "present": 2
                 },
                 "usbA": {
@@ -2686,6 +2690,9 @@
               "headphoneCodec": 2,
               "speakerAmp": 5
             },
+            "cellular": {
+              "present": 2
+            },
             "fingerprint": {
               "location": 5
             },
@@ -2707,9 +2714,6 @@
               "keyboardType": 3,
               "numericPad": 1,
               "powerButton": 2
-            },
-            "lte": {
-              "present": 2
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -2784,14 +2788,14 @@
                 "EN": "Default daughter_board"
               },
               "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
                 "fwConfig": {
                   "mask": 15,
                   "value": 1
                 },
                 "hdmi": {
-                  "present": 2
-                },
-                "lte": {
                   "present": 2
                 },
                 "usbA": {
@@ -3002,6 +3006,9 @@
               "headphoneCodec": 2,
               "speakerAmp": 5
             },
+            "cellular": {
+              "present": 2
+            },
             "fingerprint": {
               "location": 5
             },
@@ -3023,9 +3030,6 @@
               "keyboardType": 3,
               "numericPad": 1,
               "powerButton": 2
-            },
-            "lte": {
-              "present": 2
             },
             "magnetometer": {
               "baseMagnetometer": 1
@@ -3100,14 +3104,14 @@
                 "EN": "Default daughter_board"
               },
               "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
                 "fwConfig": {
                   "mask": 15,
                   "value": 1
                 },
                 "hdmi": {
-                  "present": 2
-                },
-                "lte": {
                   "present": 2
                 },
                 "usbA": {
@@ -3318,6 +3322,9 @@
               "headphoneCodec": 2,
               "speakerAmp": 5
             },
+            "cellular": {
+              "present": 2
+            },
             "fingerprint": {
               "location": 5
             },
@@ -3336,9 +3343,6 @@
               "keyboardType": 3,
               "numericPad": 1,
               "powerButton": 2
-            },
-            "lte": {
-              "present": 2
             },
             "powerButton": {
               "edge": 1,
@@ -3400,14 +3404,14 @@
                 "EN": "Default daughter_board"
               },
               "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
                 "fwConfig": {
                   "mask": 15,
                   "value": 1
                 },
                 "hdmi": {
-                  "present": 2
-                },
-                "lte": {
                   "present": 2
                 },
                 "usbA": {

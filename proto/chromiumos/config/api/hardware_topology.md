@@ -174,11 +174,11 @@ Changes that do not require new topology
 
 * Placement, voltage
 
-## LTE Board
+## Cellular Board
 
 Changes that require new topology
 
-* Presence of LTE board
+* Presence of Cellular board
 
 Changes that do not require new topology
 

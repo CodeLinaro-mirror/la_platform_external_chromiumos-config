@@ -45,7 +45,7 @@ message Topology {
     NON_VOLATILE_STORAGE = 12;
     RAM = 13;  // deprecated
     WIFI = 14;
-    LTE_BOARD = 15;
+    CELLULAR_BOARD = 15;
     SD_READER = 16;
     MOTHERBOARD_USB = 17;
     BLUETOOTH = 18;
@@ -124,15 +124,24 @@ message HardwareFeatures {
     Count count = 1;
   }
 
-  // LTE properties
-  Lte lte = 3;
-  message Lte {
-    // If LTE is present on system
+  // Cellular properties
+  Cellular cellular = 3;
+  message Cellular {
+    // If Cellular is present on system
     Present present = 1;
 
     // Optional string identifying the model of the modem to select the proper
     // helper and firmwares on platforms with several supported modems.
     string model = 2;
+
+    // Cellular type
+    CellularType type = 3;
+
+    enum CellularType {
+      NOT_PRESENT = 0;
+      CELLULAR_LTE = 1;
+      CELLULAR_5G = 2;
+    }
   }
 
   // HDMI properties

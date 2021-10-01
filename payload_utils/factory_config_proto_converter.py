@@ -196,7 +196,7 @@ def TransformDesignTable(design_config, design_table):
       'component.has_wifi':
           GetFeatures(topology, 'wifi'),
       'component.has_lte':
-          CastPresent(features.lte.present),
+          CastPresent(features.cellular.present),
       'component.has_tabletmode':
           CastConvertible(
               GetFeatures(topology, 'form_factor',
