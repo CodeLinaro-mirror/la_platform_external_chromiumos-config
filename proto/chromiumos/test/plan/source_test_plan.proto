@@ -8,19 +8,13 @@ package chromiumos.test.plan;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/plan";
 
-// Describes the test cases, software requirements, and hardware requirements
-// that run when a given set of files are changed.
-//
-// This message contains high-level rules for test planning, e.g. "test on all
-// kernel versions". This is then evaluated into a Specification message which
-// contains attributes that must be tested; in the above example, this would be
-// a list of kernel versions used by ChromeOS.
+// Describes the test cases that run when a given set of files are changed.
 //
 // This message is intended to be specified as text proto in a DIR_METADATA file
 // in the source tree, and should be concise enough Starlark, or another config
 // generation tool, is not needed.
 //
-// NEXT ID: 14
+// NEXT ID: 15
 message SourceTestPlan {
   // Different environments ChromeOS tests run in.
   enum TestEnvironment {
@@ -28,10 +22,7 @@ message SourceTestPlan {
     HARDWARE = 1;
     VIRTUAL = 2;
   }
-
-  // Test environments enabled for the test plan. Must contain at least one
-  // test type.
-  repeated TestEnvironment enabled_test_environments = 1;
+  repeated TestEnvironment enabled_test_environments = 1 [deprecated = true];
 
   // Paths that will trigger the SourceTestPlan.
   //
@@ -53,12 +44,28 @@ message SourceTestPlan {
   repeated string path_regexps = 2;
   repeated string path_regexp_excludes = 3;
 
+  // A Starlark file that will be evaluated to generate HW/VMTestPlan protos.
+  //
+  // The Starlark file must output a list of HW/VMTestPlan protos based on an
+  // input BuildMetadataList and FlatConfigList.
+  message TestPlanStarlarkFile {
+    // Repo containing the Starlark file.
+    string repo = 1;
+
+    // Absolute path within the repo to the Starlark file. Regexes are not
+    // allowed.
+    string path = 2;
+  }
+
+  // Starlark files to evaluate to generate HW/VMTestPlan protos.
+  repeated TestPlanStarlarkFile test_plan_starlark_files = 15;
+
   // Only run tests that have at least one of test_tags (if specified) and do
   // not have any of test_tag_excludes.
   //
   // Tags must match exactly (i.e. no regexp, wildcard, etc. allowed).
-  repeated string test_tags = 4;
-  repeated string test_tag_excludes = 5;
+  repeated string test_tags = 4 [deprecated = true];
+  repeated string test_tag_excludes = 5 [deprecated = true];
 
   // Requirements that must be satisfied by the SourceTestPlan.
   //
@@ -119,7 +126,7 @@ message SourceTestPlan {
     FirmwareROVersions firmware_ro_versions = 8;
   }
 
-  Requirements requirements = 13;
+  Requirements requirements = 13 [deprecated = true];
 
   reserved 6 to 12;
 }

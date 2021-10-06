@@ -15831,6 +15831,9 @@
               "label": "LABEL_REPEATED",
               "name": "enabled_test_environments",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.plan.SourceTestPlan.TestEnvironment"
             },
@@ -15849,10 +15852,21 @@
               "type": "TYPE_STRING"
             },
             {
+              "jsonName": "testPlanStarlarkFiles",
+              "label": "LABEL_REPEATED",
+              "name": "test_plan_starlark_files",
+              "number": 15,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.plan.SourceTestPlan.TestPlanStarlarkFile"
+            },
+            {
               "jsonName": "testTags",
               "label": "LABEL_REPEATED",
               "name": "test_tags",
               "number": 4,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             },
             {
@@ -15860,6 +15874,9 @@
               "label": "LABEL_REPEATED",
               "name": "test_tag_excludes",
               "number": 5,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             },
             {
@@ -15867,12 +15884,34 @@
               "label": "LABEL_OPTIONAL",
               "name": "requirements",
               "number": 13,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements"
             }
           ],
           "name": "SourceTestPlan",
           "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "repo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "repo",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "path",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "path",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TestPlanStarlarkFile"
+            },
             {
               "field": [
                 {
