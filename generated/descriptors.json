@@ -15896,6 +15896,77 @@
       },
       "messageType": [
         {
+          "field": [
+            {
+              "jsonName": "requestEndpoint",
+              "label": "LABEL_OPTIONAL",
+              "name": "request_endpoint",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "requestMethod",
+              "label": "LABEL_OPTIONAL",
+              "name": "request_method",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "requestTimeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "request_timeout",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "payloadBytes",
+              "label": "LABEL_OPTIONAL",
+              "name": "payload_bytes",
+              "number": 4,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "CallTapeRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "payloadBytes",
+              "label": "LABEL_OPTIONAL",
+              "name": "payload_bytes",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "CallTapeResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/tape_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.CallTapeRequest",
+              "name": "CallTape",
+              "outputType": ".chromiumos.test.lab.api.CallTapeResponse"
+            }
+          ],
+          "name": "TapeService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
           "enumType": [
             {
               "name": "TestEnvironment",
