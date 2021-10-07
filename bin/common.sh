@@ -20,7 +20,6 @@ function config_usage() {
   echo "  configuration file, typically config.star" >&2
   echo
   echo "Options:"
-  echo "  --no-proto            - Don't regenerate proto definitions"
   echo "  --output-dir/-o <dir> - Directory to write output to (default cwd)"
   exit 1
 }

@@ -9,7 +9,7 @@ set -e
 readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
 cd "${script_dir}"
 
-config/bin/build_config --no-proto --output-dir config dut_attributes.star
+config/bin/build_config --output-dir config dut_attributes.star
 
 # Replace tabs with spaces for easier diff.
 sed -i 's/\t/  /g' "${script_dir}"/config/generated/dut_attributes.jsonproto

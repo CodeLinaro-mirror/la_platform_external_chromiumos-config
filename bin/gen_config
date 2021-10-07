@@ -15,14 +15,9 @@ set -e
 readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
 source "${script_dir}/common.sh"
 
-proto_opt=""
 output_dir="."
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --no-proto)
-            proto_opt="--no-proto"
-            shift
-            ;;
         --output-dir|-o)
             output_dir="$2"
             shift
@@ -44,11 +39,11 @@ readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
 
 if [[ -e "${config_dir}"/program/config.star ]]; then
   echo "Making sure program config is fresh..."
-  "${script_dir}"/gen_config ${proto_opt} "${config_dir}"/program/config.star
+  "${script_dir}"/gen_config "${config_dir}"/program/config.star
 fi
 
 echo "Building config from source starlark config files."
-"${script_dir}"/build_config ${proto_opt} -o "${output_dir}" "$@"
+"${script_dir}"/build_config -o "${output_dir}" "$@"
 echo "Transforming generated protojson config enums"
 cd "${config_dir}"
 "${script_dir}"/transform_config_enums "${output_dir}"
