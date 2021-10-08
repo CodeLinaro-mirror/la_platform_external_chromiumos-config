@@ -115,7 +115,7 @@ def update_config(config, client, flat=False):
       exclude_from_indexes=['ConfigData'],
   )
   entity['ConfigData'] = config.SerializeToString()
-  entity['updated'] = datetime.datetime.now()
+  entity['Updated'] = datetime.datetime.now()
 
   logging.info('update_config: putting entity into datastore for %s', eid)
   client.put(entity)
@@ -143,7 +143,7 @@ def update_dut_attribute(attr, client):
       exclude_from_indexes=['AttributeData'],
   )
   entity['AttributeData'] = attr.SerializeToString()
-  entity['updated'] = datetime.datetime.now()
+  entity['Updated'] = datetime.datetime.now()
 
   logging.info('update_dut_attribute: putting entity into datastore for %s',
                eid)
@@ -178,7 +178,7 @@ def update_device_stability(dev_stab, client):
         exclude_from_indexes=['StabilityData'],
     )
     entity['StabilityData'] = dev_stab.SerializeToString()
-    entity['updated'] = datetime.datetime.now()
+    entity['Updated'] = datetime.datetime.now()
 
     logging.info(
         'update_device_stability: putting entity into datastore for %s', eid)
