@@ -15471,6 +15471,61 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/test/api/provision_state.proto",
+        "chromiumos/test/lab/api/dut.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "dutInfoArtifacts",
+              "label": "LABEL_REPEATED",
+              "name": "dut_info_artifacts",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfoArtifact"
+            }
+          ],
+          "name": "DutMetadataArtifact"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dut",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            },
+            {
+              "jsonName": "provisionState",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_state",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState"
+            }
+          ],
+          "name": "DutInfoArtifact"
+        }
+      ],
+      "name": "chromiumos/test/artifact/dut_metadata_artifact.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/artifact"
+      },
+      "package": "chromiumos.test.artifact",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/storage_path.proto"
+      ],
       "messageType": [
         {
           "field": [
@@ -15504,6 +15559,10 @@
                 {
                   "name": "TEST_RESULT",
                   "number": 1
+                },
+                {
+                  "name": "DUT_METADATA",
+                  "number": 2
                 }
               ]
             }
@@ -15518,11 +15577,12 @@
               "typeName": ".chromiumos.test.artifact.Artifact.ArtifactType"
             },
             {
-              "jsonName": "gsUrl",
+              "jsonName": "storagePath",
               "label": "LABEL_OPTIONAL",
-              "name": "gs_url",
+              "name": "storage_path",
               "number": 2,
-              "type": "TYPE_STRING"
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
             }
           ],
           "name": "Artifact"
@@ -15542,6 +15602,7 @@
       },
       "dependency": [
         "chromiumos/storage_path.proto",
+        "chromiumos/test/api/provision_state.proto",
         "chromiumos/test/api/test_case.proto",
         "chromiumos/test/api/test_case_metadata.proto",
         "chromiumos/test/api/test_case_result.proto",
@@ -15645,6 +15706,14 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.Dut.Id"
+            },
+            {
+              "jsonName": "provisionStateId",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_state_id",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState.Id"
             },
             {
               "jsonName": "tags",

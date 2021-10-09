@@ -9,6 +9,7 @@ package chromiumos.test.artifact;
 option go_package = "go.chromium.org/chromiumos/config/go/test/artifact";
 
 import "chromiumos/storage_path.proto";
+import "chromiumos/test/api/provision_state.proto";
 import "chromiumos/test/api/test_case.proto";
 import "chromiumos/test/api/test_case_metadata.proto";
 import "chromiumos/test/api/test_case_result.proto";
@@ -57,11 +58,14 @@ message TestRun {
 }
 
 // Captures dut related info.
-// NEXT TAG: 3
+// NEXT TAG: 4
 message DutInfo {
 
   // Id of the dut.
   chromiumos.test.lab.api.Dut.Id id = 1;
+
+  // Id of the provision state corresponding to the dut.
+  chromiumos.test.api.ProvisionState.Id provision_state_id = 3;
 
   // Additional DUT related info that could be specific to
   // a certain TLE e.g. moblab install id, etc.

@@ -6,6 +6,8 @@ syntax = "proto3";
 
 package chromiumos.test.artifact;
 
+import "chromiumos/storage_path.proto";
+
 option go_package = "go.chromium.org/chromiumos/config/go/test/artifact";
 
 // Manifest for test result artifacts.
@@ -24,16 +26,16 @@ message Manifest {
 message Artifact {
 
   // Capture the various artifact types.
-  // NEXT TAG: 2
+  // NEXT TAG: 4
   enum ArtifactType {
     ARTIFACT_TYPE_UNSPECIFIED = 0;
     TEST_RESULT = 1;
+    DUT_METADATA = 2;
   }
 
   // Type of the artifact.
   ArtifactType type = 1;
 
-  // URL of Google Storage location containing the artifact
-  // e.g. gs://foo/bar/baz.ext
-  string gs_url = 2;
+  // Path containing the artifact (usually points to the artifact GCS URL).
+  chromiumos.StoragePath storage_path = 2;
 }
