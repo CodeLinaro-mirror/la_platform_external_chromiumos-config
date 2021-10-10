@@ -515,11 +515,9 @@ def _create_daughter_board(
         fw_configs = [],
         usbc_count = 0,
         usba_count = 0,
-        lte_support = False,
-        lte_model = None,
         cellular_support = False,
         cellular_model = None,
-        cellular_type = None,
+        cellular_type = _CELLULAR.NOT_PRESENT,
         hdmi_support = False):
     """Builds a Topology proto for a daughter board."""
     hw_features = topo_pb.HardwareFeatures()
@@ -528,14 +526,10 @@ def _create_daughter_board(
 
     hw_features.usb_c.count.value = usbc_count
     hw_features.usb_a.count.value = usba_count
-    hw_features.cellular.present = _bool_to_present(lte_support)
-    hw_features.cellular.model = lte_model
-    hw_features.cellular.type = _CELLULAR.CELLULAR_LTE if lte_support else _CELLULAR.NOT_PRESENT
 
-    if cellular_support:
-        hw_features.cellular.present = _bool_to_present(cellular_support)
-        hw_features.cellular.model = cellular_model
-        hw_features.cellular.type = cellular_type
+    hw_features.cellular.present = _bool_to_present(cellular_support)
+    hw_features.cellular.model = cellular_model
+    hw_features.cellular.type = cellular_type
 
     hw_features.hdmi.present = _bool_to_present(hdmi_support)
 
@@ -575,7 +569,7 @@ def _create_wifi(id, description, fw_configs = []):
     )
 
 def _create_cellular_board(id, description, present, type = _CELLULAR.NOT_PRESENT, fw_configs = [], model = None):
-    """Builds a Topology proto for a LTE board."""
+    """Builds a Topology proto for a Cellular board."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.cellular.present = _bool_to_present(present)
@@ -589,17 +583,6 @@ def _create_cellular_board(id, description, present, type = _CELLULAR.NOT_PRESEN
         type = topo_pb.Topology.CELLULAR_BOARD,
         description = {"EN": description},
         hardware_feature = hw_features,
-    )
-
-def _create_lte_board(id, description, lte_present, fw_configs = [], model = None):
-    """Builds a Topology proto for a LTE board."""
-    return _create_cellular_board(
-        id,
-        description,
-        lte_present,
-        _CELLULAR.CELLULAR_LTE if lte_present else _CELLULAR.NOT_PRESENT,
-        fw_configs,
-        model,
     )
 
 def _create_sd_reader(id, description, fw_configs = []):
@@ -843,7 +826,6 @@ def _create_hardware_topology(
         daughter_board = None,
         non_volatile_storage = None,
         wifi = None,
-        lte_board = None,
         cellular_board = None,
         sd_reader = None,
         motherboard_usb = None,
@@ -898,14 +880,11 @@ def _create_hardware_topology(
     if wifi and wifi.type != topo_pb.Topology.WIFI:
         fail("Invalid wifi topology")
 
-    if lte_board and lte_board.type != topo_pb.Topology.CELLULAR_BOARD:
-        fail("Invalid cellular board topology")
-
     if cellular_board and cellular_board.type != topo_pb.Topology.CELLULAR_BOARD:
         fail("Invalid cellular board topology")
 
     if sd_reader and sd_reader.type != topo_pb.Topology.SD_READER:
-        fail("Invalid lte board topology")
+        fail("Invalid sd_reader topology")
 
     if motherboard_usb and motherboard_usb.type != topo_pb.Topology.MOTHERBOARD_USB:
         fail("Invalid motherboard usb board topology")
@@ -951,7 +930,7 @@ def _create_hardware_topology(
         daughter_board = daughter_board,
         non_volatile_storage = non_volatile_storage,
         wifi = wifi,
-        cellular_board = cellular_board if cellular_board else lte_board,
+        cellular_board = cellular_board,
         sd_reader = sd_reader,
         motherboard_usb = motherboard_usb,
         bluetooth = bluetooth,
@@ -979,10 +958,11 @@ def _accumulate_usbc(existing_usbc, new_usbc):
 def _accumulate_usba(existing_usba, new_usba):
     existing_usba.count.value += new_usba.count.value
 
-def _accumulate_lte(existing_lte, new_lte):
-    existing_lte.present = _accumulate_presence(existing_lte.present, new_lte.present)
-    if new_lte.present == _PRESENT.PRESENT:
-        existing_lte.model = new_lte.model
+def _accumulate_cellular(existing_cellular, new_cellular):
+    existing_cellular.present = _accumulate_presence(existing_cellular.present, new_cellular.present)
+    if new_cellular.present == _PRESENT.PRESENT:
+        existing_cellular.model = new_cellular.model
+        existing_cellular.type = new_cellular.type
 
 def _accumulate_hdmi(existing_hdmi, new_hdmi):
     existing_hdmi.present = _accumulate_presence(existing_hdmi.present, new_hdmi.present)
@@ -1076,7 +1056,7 @@ def _convert_to_hw_features(hardware_topology):
         _accumulate_usba(result.usb_a, copy.daughter_board.hardware_feature.usb_a)
 
     if copy.daughter_board.hardware_feature.cellular != topo_pb.HardwareFeatures.Cellular():
-        _accumulate_lte(result.cellular, copy.daughter_board.hardware_feature.cellular)
+        _accumulate_cellular(result.cellular, copy.daughter_board.hardware_feature.cellular)
 
     if copy.daughter_board.hardware_feature.hdmi != topo_pb.HardwareFeatures.Hdmi():
         _accumulate_hdmi(result.hdmi, copy.daughter_board.hardware_feature.hdmi)
@@ -1097,7 +1077,7 @@ def _convert_to_hw_features(hardware_topology):
     _accumulate_fw_config(result.fw_config, copy.cellular_board.hardware_feature.fw_config)
 
     if copy.cellular_board.hardware_feature.cellular != topo_pb.HardwareFeatures.Cellular():
-        _accumulate_lte(result.cellular, copy.cellular_board.hardware_feature.cellular)
+        _accumulate_cellular(result.cellular, copy.cellular_board.hardware_feature.cellular)
 
     # Handle all possible sd reader hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.sd_reader.hardware_feature.fw_config)
@@ -1154,7 +1134,6 @@ hw_topo = struct(
     create_non_volatile_storage = _create_non_volatile_storage,
     create_wifi = _create_wifi,
     create_cellular_board = _create_cellular_board,
-    create_lte_board = _create_lte_board,
     create_sd_reader = _create_sd_reader,
     create_motherboard_usb = _create_motherboard_usb,
     create_bluetooth = _create_bluetooth,

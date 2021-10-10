@@ -198,7 +198,8 @@
               ]
             },
             "cellular": {
-              "present": 1
+              "present": 1,
+              "type": 1
             },
             "fingerprint": {
               "board": "fake_fingerprint_board",
@@ -361,7 +362,7 @@
             },
             "cellularBoard": {
               "description": {
-                "EN": "Default lte_board"
+                "EN": "Default cellular_board"
               },
               "hardwareFeature": {
                 "cellular": {
@@ -654,7 +655,8 @@
             },
             "cellular": {
               "model": "FakeModem",
-              "present": 1
+              "present": 1,
+              "type": 1
             },
             "fingerprint": {
               "location": 5
@@ -789,7 +791,7 @@
             },
             "cellularBoard": {
               "description": {
-                "EN": "Default lte_board"
+                "EN": "Default cellular_board w/ model"
               },
               "hardwareFeature": {
                 "cellular": {
@@ -798,7 +800,7 @@
                   "type": 1
                 }
               },
-              "id": "LTE_BOARD",
+              "id": "LTE_BOARD_MODEL",
               "type": 15
             },
             "daughterBoard": {
@@ -1084,7 +1086,8 @@
               ]
             },
             "cellular": {
-              "present": 1
+              "present": 1,
+              "type": 1
             },
             "fingerprint": {
               "board": "fake_fingerprint_board",
@@ -1226,7 +1229,7 @@
             },
             "cellularBoard": {
               "description": {
-                "EN": "Default lte_board"
+                "EN": "Default cellular_board"
               },
               "hardwareFeature": {
                 "cellular": {
@@ -1514,7 +1517,8 @@
             },
             "cellular": {
               "model": "FakeModemB",
-              "present": 1
+              "present": 1,
+              "type": 1
             },
             "fingerprint": {
               "location": 5
