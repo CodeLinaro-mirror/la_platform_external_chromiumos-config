@@ -6,7 +6,7 @@ syntax = "proto3";
 
 package chromiumos.test.api.v1;
 
-option go_package = "go.chromium.org/chromiumos/config/go/test/api/v1/plan";
+option go_package = "go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1";
 
 import "chromiumos/test/api/coverage_rule.proto";
 

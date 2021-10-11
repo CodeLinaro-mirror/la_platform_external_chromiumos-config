@@ -19,8 +19,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='chromiumos/test/api/v1/plan.proto',
   package='chromiumos.test.api.v1',
   syntax='proto3',
-  serialized_options=_b('Z5go.chromium.org/chromiumos/config/go/test/api/v1/plan'),
-  serialized_pb=_b('\n!chromiumos/test/api/v1/plan.proto\x12\x16\x63hromiumos.test.api.v1\x1a\'chromiumos/test/api/coverage_rule.proto\"\x9f\x01\n\nHWTestPlan\x12\x39\n\x02id\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.v1.HWTestPlan.TestPlanId\x12\x39\n\x0e\x63overage_rules\x18\x02 \x03(\x0b\x32!.chromiumos.test.api.CoverageRule\x1a\x1b\n\nTestPlanId\x12\r\n\x05value\x18\x01 \x01(\tB7Z5go.chromium.org/chromiumos/config/go/test/api/v1/planb\x06proto3')
+  serialized_options=_b('Z<go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1'),
+  serialized_pb=_b('\n!chromiumos/test/api/v1/plan.proto\x12\x16\x63hromiumos.test.api.v1\x1a\'chromiumos/test/api/coverage_rule.proto\"\x9f\x01\n\nHWTestPlan\x12\x39\n\x02id\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.v1.HWTestPlan.TestPlanId\x12\x39\n\x0e\x63overage_rules\x18\x02 \x03(\x0b\x32!.chromiumos.test.api.CoverageRule\x1a\x1b\n\nTestPlanId\x12\r\n\x05value\x18\x01 \x01(\tB>Z<go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1b\x06proto3')
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_coverage__rule__pb2.DESCRIPTOR,])
 

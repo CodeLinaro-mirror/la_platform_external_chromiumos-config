@@ -15461,7 +15461,7 @@
       ],
       "name": "chromiumos/test/api/v1/plan.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/v1/plan"
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1"
       },
       "package": "chromiumos.test.api.v1",
       "syntax": "proto3"
