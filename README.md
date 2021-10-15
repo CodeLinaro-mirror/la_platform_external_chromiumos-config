@@ -74,7 +74,7 @@ version.
     1. ```(mkdir -p $CHECKOUT && cd $CHECKOUT && repo init --repo-rev=v2.17 -u gs://buildspecs-external/legacy/$BUILDSPEC --standalone-manifest)```
     1. ```./setup_project.sh --checkout=$CHECKOUT --program=$PROGRAM --project=$PROJECT --buildspec=legacy/$BUILDSPEC```
         1. If you do not already have `setup_project.sh` available in an existing ChromeOS checkout, you can download it [here](https://chromium.googlesource.com/chromiumos/config/+/refs/heads/main/setup_project.sh).
-    1. ```cd $CHECKOUT && repo sync --force-sync -j12```
+    1. ```cd $CHECKOUT && repo sync --force-sync -j12 --nmu``` (`--nmu` is a temporary workaround to a known bug, this will be resolved shortly.)
 
 Run `./setup_project.sh -h` for a full list of options/arguments, e.g. `--chipset`, `--all_projects`, and `--other-repos`.
 
