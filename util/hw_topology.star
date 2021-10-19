@@ -481,6 +481,21 @@ def _create_fingerprint(id, description, location, board = None, fw_configs = []
         hardware_feature = hw_features,
     )
 
+def _create_hps(id, description, present = False, fw_configs = []):
+    """Builds a Topology proto for HPS."""
+    hw_features = topo_pb.HardwareFeatures()
+
+    hw_features.hps.present = _bool_to_present(present)
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.HPS,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
 def _create_proximity_sensor(id, description, fw_configs = []):
     """Builds a Topology proto for a proximity sensor."""
     hw_features = topo_pb.HardwareFeatures()
@@ -837,7 +852,8 @@ def _create_hardware_topology(
         touch = None,
         tpm = None,
         microphone_mute_switch = None,
-        hdmi = None):
+        hdmi = None,
+        hps = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -916,6 +932,9 @@ def _create_hardware_topology(
     if hdmi and hdmi.type != topo_pb.Topology.HDMI:
         fail("Invalid hdmi topology")
 
+    if hps and hps.type != topo_pb.Topology.HPS:
+        fail("Invalid hps topology")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -942,6 +961,7 @@ def _create_hardware_topology(
         tpm = tpm,
         microphone_mute_switch = microphone_mute_switch,
         hdmi = hdmi,
+        hps = hps,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -1036,6 +1056,12 @@ def _convert_to_hw_features(hardware_topology):
 
     if copy.fingerprint.hardware_feature.fingerprint != topo_pb.HardwareFeatures.Fingerprint():
         result.fingerprint = copy.fingerprint.hardware_feature.fingerprint
+
+    # Handle all possible hps hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.hps.hardware_feature.fw_config)
+
+    if copy.hps.hardware_feature.hps != topo_pb.HardwareFeatures.Hps():
+        result.hps = copy.hps.hardware_feature.hps
 
     # Handle all possible proximity sensor hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.proximity_sensor.hardware_feature.fw_config)
@@ -1144,6 +1170,7 @@ hw_topo = struct(
     create_touch = _create_touch,
     create_microphone_mute_switch = _create_microphone_mute_switch,
     create_hdmi = _create_hdmi,
+    create_hps = _create_hps,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,

@@ -95,6 +95,9 @@
           "has-backlight": true,
           "psu-type": "battery"
         },
+        "hps": {
+          "has-hps": true
+        },
         "identity": {
           "platform-name": "fake",
           "sku-id": 2147483647,

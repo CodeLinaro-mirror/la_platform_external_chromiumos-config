@@ -218,6 +218,9 @@
             "hdmi": {
               "present": 1
             },
+            "hps": {
+              "present": 1
+            },
             "keyboard": {
               "backlight": 1,
               "keyboardType": 3,
@@ -444,6 +447,18 @@
               },
               "id": "HDMI",
               "type": 27
+            },
+            "hps": {
+              "description": {
+                "EN": "Default Hps"
+              },
+              "hardwareFeature": {
+                "hps": {
+                  "present": 1
+                }
+              },
+              "id": "HPS",
+              "type": 29
             },
             "keyboard": {
               "description": {

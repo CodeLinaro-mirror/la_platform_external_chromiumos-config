@@ -59,6 +59,7 @@ message Topology {
     BATTERY = 26;
     HDMI = 27;
     SOC = 28;
+    HPS = 29;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -598,5 +599,12 @@ message HardwareFeatures {
   DisplayPortConverter dp_converter = 33;
   message DisplayPortConverter {
     repeated Component.DisplayPortConverter converters = 1;
+  };
+
+  // HPS properties of system
+  Hps hps = 34;
+  message Hps {
+    // If hps is present on system
+    Present present = 1;
   };
 }

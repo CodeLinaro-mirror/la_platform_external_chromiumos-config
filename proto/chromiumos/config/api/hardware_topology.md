@@ -259,3 +259,9 @@ Changes that require new topology
 Changes that require new topology
 
 * HDMI port
+
+## HPS
+
+Changes that require new topology
+
+* Presence of HPS board

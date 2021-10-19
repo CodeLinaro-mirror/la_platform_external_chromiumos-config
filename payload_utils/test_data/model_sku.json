@@ -309,6 +309,7 @@
       "2147483647": {
         "component.fingerprint_board": "fake_fingerprint_board",
         "component.has_fingerprint": true,
+        "component.has_hps": true,
         "component.has_rear_camera": false,
         "component.match_sku_components": [
           [

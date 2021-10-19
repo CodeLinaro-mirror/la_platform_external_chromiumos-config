@@ -407,6 +407,18 @@ def _build_fingerprint(hw_topology):
   return result
 
 
+def _build_hps(hw_topology):
+  if not hw_topology.HasField('hps'):
+    return None
+
+  hps = hw_topology.hps.hardware_feature.hps
+  result = {}
+  if hps.present == topology_pb2.HardwareFeatures.PRESENT:
+    result['has-hps'] = True
+
+  return result
+
+
 def _build_hardware_properties(hw_topology):
   if not hw_topology.HasField('form_factor'):
     return None
@@ -901,6 +913,7 @@ def _transform_build_config(config, config_files, whitelabel):
   _upsert(
       _build_keyboard(config.hw_design_config.hardware_topology), result,
       'keyboard')
+  _upsert(_build_hps(config.hw_design_config.hardware_topology), result, 'hps')
 
   return result
 

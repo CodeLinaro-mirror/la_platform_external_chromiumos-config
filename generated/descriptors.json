@@ -2076,6 +2076,10 @@
                 {
                   "name": "SOC",
                   "number": 28
+                },
+                {
+                  "name": "HPS",
+                  "number": 29
                 }
               ]
             }
@@ -2474,6 +2478,14 @@
               "number": 33,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.DisplayPortConverter"
+            },
+            {
+              "jsonName": "hps",
+              "label": "LABEL_OPTIONAL",
+              "name": "hps",
+              "number": 34,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Hps"
             }
           ],
           "name": "HardwareFeatures",
@@ -3714,6 +3726,19 @@
                 }
               ],
               "name": "DisplayPortConverter"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "Hps"
             }
           ]
         }
@@ -3941,6 +3966,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "hdmi",
               "number": 26,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "hps",
+              "label": "LABEL_OPTIONAL",
+              "name": "hps",
+              "number": 27,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }

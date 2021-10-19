@@ -220,6 +220,8 @@ def TransformDesignTable(design_config, design_table):
     design_table.update({
         'component.has_numeric_pad': True,
     })
+  if CastPresent(GetFeatures(topology, 'hps', ['hps', 'present'])):
+    design_table.update({'component.has_hps': True})
 
 
 def CreateCommonTable(design_table):

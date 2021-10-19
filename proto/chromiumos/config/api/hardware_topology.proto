@@ -123,4 +123,8 @@ message HardwareTopology {
   // Specify the HDMI topology.
   // See ./hardware_topology.md#hdmi for more information.
   Topology hdmi = 26;
+
+  // Specify the HPS topology.
+  // See ./hardware_topology.md#hps for more information.
+  Topology hps = 27;
 }

@@ -104,6 +104,7 @@ _SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor", fw_configs = [hw_top
 _SENSOR_WITH_LIGHT = hw_topo.create_sensor("SENSOR", "Default sensor plus light sensor", fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True, lid_light_present = True)
 _FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake_fingerprint_board")
 _NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
+_HPS = hw_topo.create_hps("HPS", "Default Hps", present = True)
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
 _DAUGHTER_BOARD = hw_topo.create_daughter_board("Default DB", "Default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 1)])
 _NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
@@ -158,7 +159,8 @@ def create_hardware_topology(
         ec = None,
         tpm = None,
         microphone_mute_switch = None,
-        hdmi = None):
+        hdmi = None,
+        hps = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -185,6 +187,7 @@ def create_hardware_topology(
         tpm = hw_topo.TPM_GSC_H1B,
         microphone_mute_switch = microphone_mute_switch,
         hdmi = hdmi,
+        hps = hps,
     )
 
 # Create empty arrays that we will continually append new configurations to
@@ -209,6 +212,7 @@ design.append_configs(
         tpm = _TPM,
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
         hdmi = _HDMI,
+        hps = _HPS,
     ),
     audio = sc.create_audio(
         _AUDIO_CARD,
