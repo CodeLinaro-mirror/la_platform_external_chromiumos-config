@@ -13,10 +13,11 @@ import "chromiumos/test/api/provision_state.proto";
 import "chromiumos/test/api/test_case.proto";
 import "chromiumos/test/api/test_case_metadata.proto";
 import "chromiumos/test/api/test_case_result.proto";
+import "chromiumos/test/api/v1/plan.proto";
 import "chromiumos/test/lab/api/dut.proto";
 
 // Captures artifact for test result.
-// NEXT TAG: 4
+// NEXT TAG: 5
 message TestResult {
 
   // Captures the test result artifact version.
@@ -27,6 +28,9 @@ message TestResult {
 
   // List of custom results.
   repeated CustomResult custom_results = 3;
+
+  // Test plan ids associated with the test result.
+  repeated chromiumos.test.api.v1.HWTestPlan.TestPlanId test_plan_ids = 4;
 }
 
 // Captures information regarding a test run.

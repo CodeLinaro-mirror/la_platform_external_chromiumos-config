@@ -15607,6 +15607,10 @@
                 {
                   "name": "DUT_METADATA",
                   "number": 2
+                },
+                {
+                  "name": "TEST_PLAN",
+                  "number": 3
                 }
               ]
             }
@@ -15645,11 +15649,42 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/api/v1/plan.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "hwTestPlans",
+              "label": "LABEL_REPEATED",
+              "name": "hw_test_plans",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.v1.HWTestPlan"
+            }
+          ],
+          "name": "TestPlanArtifact"
+        }
+      ],
+      "name": "chromiumos/test/artifact/test_plan.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/artifact"
+      },
+      "package": "chromiumos.test.artifact",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/storage_path.proto",
         "chromiumos/test/api/provision_state.proto",
         "chromiumos/test/api/test_case.proto",
         "chromiumos/test/api/test_case_metadata.proto",
         "chromiumos/test/api/test_case_result.proto",
+        "chromiumos/test/api/v1/plan.proto",
         "chromiumos/test/lab/api/dut.proto"
       ],
       "messageType": [
@@ -15677,6 +15712,14 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.CustomResult"
+            },
+            {
+              "jsonName": "testPlanIds",
+              "label": "LABEL_REPEATED",
+              "name": "test_plan_ids",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.v1.HWTestPlan.TestPlanId"
             }
           ],
           "name": "TestResult"

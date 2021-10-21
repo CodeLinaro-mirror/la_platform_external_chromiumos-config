@@ -31,6 +31,7 @@ message Artifact {
     ARTIFACT_TYPE_UNSPECIFIED = 0;
     TEST_RESULT = 1;
     DUT_METADATA = 2;
+    TEST_PLAN = 3;
   }
 
   // Type of the artifact.
