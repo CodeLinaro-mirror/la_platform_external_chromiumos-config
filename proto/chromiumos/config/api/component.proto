@@ -87,6 +87,8 @@ message Component {
       string device_id = 2;
       // 2-digit hex
       string revision_id = 3;
+      // 6-digit hex (2 digit for class 4 for subclass)
+      string class_id = 4;
     }
   }
 
@@ -293,6 +295,10 @@ message Component {
     string sectors = 6;
     StorageType type = 7;
     uint32 size_gb = 8;
+
+    oneof interface {
+        Interface.Pci pci = 9;
+    }
   }
 
   // Defines a Trusted Platform Module, for more information see here:

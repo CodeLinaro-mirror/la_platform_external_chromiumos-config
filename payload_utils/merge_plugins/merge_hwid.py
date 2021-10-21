@@ -483,6 +483,14 @@ class MergeHwid(MergePlugin):
     touched.update(
         ['emmc5_fw_ver', 'manfid', 'name', 'oemid', 'prv', 'sectors'])
 
+    pcie_fields = ['class', 'device', 'vendor']
+    if all([field in values for field in pcie_fields]):
+      component.storage.type = component.storage.NVME
+      component.storage.pci.vendor_id = values['vendor']
+      component.storage.pci.device_id = values['device']
+      component.storage.pci.class_id = values['class']
+      touched.update(pcie_fields)
+
     if values.get('type', '').lower() == 'mmc':
       component.storage.type = component.storage.EMMC
     touched.add('type')

@@ -1080,6 +1080,13 @@
                       "name": "revision_id",
                       "number": 3,
                       "type": "TYPE_STRING"
+                    },
+                    {
+                      "jsonName": "classId",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "class_id",
+                      "number": 4,
+                      "type": "TYPE_STRING"
                     }
                   ],
                   "name": "Pci"
@@ -1829,9 +1836,23 @@
                   "name": "size_gb",
                   "number": 8,
                   "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "pci",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "pci",
+                  "number": 9,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Component.Interface.Pci"
                 }
               ],
-              "name": "Storage"
+              "name": "Storage",
+              "oneofDecl": [
+                {
+                  "name": "interface"
+                }
+              ]
             },
             {
               "field": [
