@@ -12414,6 +12414,14 @@
                   "number": 3,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.build.api.Dlc.Id"
+                },
+                {
+                  "jsonName": "overwritePayload",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "overwrite_payload",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.StoragePath"
                 }
               ],
               "name": "SystemImage"
@@ -12466,6 +12474,21 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ProvisionState.Package"
+            },
+            {
+              "jsonName": "boardVariant",
+              "label": "LABEL_OPTIONAL",
+              "name": "board_variant",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "overwritePayload",
+              "label": "LABEL_OPTIONAL",
+              "name": "overwrite_payload",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
             }
           ],
           "name": "ProvisionConfig"

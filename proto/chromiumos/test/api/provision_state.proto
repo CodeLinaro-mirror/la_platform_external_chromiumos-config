@@ -50,6 +50,10 @@ message ProvisionState {
     // List of DLCs that were built/archived for a given system image and are
     // installed as part of provisioning.
     repeated chromiumos.build.api.Dlc.Id dlcs = 3;
+
+    // An optional tarball to be extracted at the root of the filesystem to
+    // overwrite existing binary payloads.
+    StoragePath overwrite_payload = 4;
   }
 
   message Package {
@@ -68,4 +72,13 @@ message ProvisionConfig {
     chromiumos.build.api.FirmwareConfig  firmware = 1;
     repeated chromiumos.build.api.Dlc.Id dlcs     = 2;
     repeated ProvisionState.Package      packages = 3;
+
+    // Variant on the primary build target to test with.
+    //   Eg: If we were targeting a 'coral' board for testing, setting this
+    //   to 'kernelnext' woul duse the coral-kernelnext image from the build for
+    //   testing.
+    string board_variant = 4;
+
+    // Optional tarball to pass through to provisioning.
+    StoragePath overwrite_payload = 5;
 }
