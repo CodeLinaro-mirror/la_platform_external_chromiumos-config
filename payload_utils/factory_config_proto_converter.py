@@ -229,9 +229,14 @@ def CreateCommonTable(design_table):
   design_table_list = list(design_table.values())
   common_table = dict(design_table_list[0])
   for config in design_table_list[1:]:
-    for key, value in config.items():
-      if key in common_table and value != common_table[key]:
-        del common_table[key]
+    # keep only keys that are in all configs
+    # where the values are the same in all configs
+    common_table = {
+        key: value
+        for key, value in config.items()
+        if key in common_table and value == common_table[key]
+    }
+  # delete the common keys from all configs
   for config in design_table.values():
     for key in common_table:
       del config[key]
