@@ -71,7 +71,7 @@ version.
     1. `export PROJECT={your project}`, e.g. `export PROJECT=galaxy`.
     1. `export PROGRAM={your program}`, e.g. `export PROGRAM=milkyway`.
     1. `export CHECKOUT={path to your checkout}`, e.g. `export CHECKOUT=~/my_checkout`.
-    1. ```(mkdir -p $CHECKOUT && cd $CHECKOUT && repo init --repo-rev=v2.17 -u gs://buildspecs-external/legacy/$BUILDSPEC --standalone-manifest)```
+    1. ```(mkdir -p $CHECKOUT && cd $CHECKOUT && repo init -u gs://buildspecs-external/legacy/$BUILDSPEC --standalone-manifest)```
     1. ```./setup_project.sh --checkout=$CHECKOUT --program=$PROGRAM --project=$PROJECT --buildspec=legacy/$BUILDSPEC```
         1. If you do not already have `setup_project.sh` available in an existing ChromeOS checkout, you can download it [here](https://chromium.googlesource.com/chromiumos/config/+/refs/heads/main/setup_project.sh).
     1. ```cd $CHECKOUT && repo sync --force-sync -j12 --nmu``` (`--nmu` is a temporary workaround to a known bug, this will be resolved shortly.)
