@@ -12634,6 +12634,15 @@
               "typeName": ".chromiumos.test.api.DutAttribute.HwidSource"
             },
             {
+              "jsonName": "tleSource",
+              "label": "LABEL_OPTIONAL",
+              "name": "tle_source",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DutAttribute.TleSource"
+            },
+            {
               "jsonName": "allowedValues",
               "label": "LABEL_REPEATED",
               "name": "allowed_values",
@@ -12706,6 +12715,9 @@
                 }
               ],
               "name": "HwidSource"
+            },
+            {
+              "name": "TleSource"
             }
           ],
           "oneofDecl": [

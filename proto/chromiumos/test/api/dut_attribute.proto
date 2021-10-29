@@ -10,6 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/test/api/provision_state.proto";
 
+// NEXT TAG: 8
 // DutAttribute defines how attributes of a DUT are encoded into key-value pairs
 // for use in test coverage rules.
 message DutAttribute {
@@ -40,6 +41,7 @@ message DutAttribute {
   oneof data_source {
     FlatConfigSource flat_config_source = 3;
     HwidSource       hwid_source        = 4;
+    TleSource        tle_source         = 7;
   }
 
   // Optional values and excluded values.
@@ -83,6 +85,10 @@ message DutAttribute {
     string component_type = 1;
     repeated FieldSpec fields = 2;
   }
+
+  // TleSource specifies the information for querying attribute values based on
+  // the definition provided at the TLE level.
+  message TleSource {}
 }
 
 message DutAttributeList {
