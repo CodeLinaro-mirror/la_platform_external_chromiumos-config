@@ -577,6 +577,8 @@ def _build_audio(config):
   files = []
   ucm_suffix = None
   sound_card_init_conf = None
+  audio_pb = topology_pb2.HardwareFeatures.Audio
+  hw_feature = config.hw_design_config.hardware_features
 
   for audio in config.sw_config.audio_configs:
     card = audio.card_name
@@ -625,6 +627,8 @@ def _build_audio(config):
     result['main']['ucm-suffix'] = ucm_suffix
   if sound_card_init_conf:
     result['main']['sound-card-init-conf'] = sound_card_init_conf
+    result['main']['speaker-amp'] = audio_pb.Amplifier.Name(
+        hw_feature.audio.speaker_amp)
 
   return result
 
