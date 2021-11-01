@@ -2571,6 +2571,13 @@
                   "number": 3,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Cellular.CellularType"
+                },
+                {
+                  "jsonName": "attachApnRequired",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "attach_apn_required",
+                  "number": 4,
+                  "type": "TYPE_BOOL"
                 }
               ],
               "name": "Cellular"

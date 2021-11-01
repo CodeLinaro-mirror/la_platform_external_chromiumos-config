@@ -767,7 +767,10 @@ def _build_modem(config):
   firmware_variant = config.hw_design.name.lower()
   if hw_features.cellular.model:
     firmware_variant += '_' + hw_features.cellular.model.lower()
-  return {'firmware-variant': firmware_variant}
+  result = {'firmware-variant': firmware_variant}
+  if hw_features.cellular.attach_apn_required:
+    result['attach-apn-required'] = True
+  return result
 
 
 def _sw_config(sw_configs, design_config_id):

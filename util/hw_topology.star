@@ -587,13 +587,21 @@ def _create_wifi(id, description, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_cellular_board(id, description, present, type = _CELLULAR.NOT_PRESENT, fw_configs = [], model = None):
+def _create_cellular_board(
+        id,
+        description,
+        present,
+        type = _CELLULAR.NOT_PRESENT,
+        fw_configs = [],
+        model = None,
+        attach_apn_required = None):
     """Builds a Topology proto for a Cellular board."""
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.cellular.present = _bool_to_present(present)
     hw_features.cellular.model = model
     hw_features.cellular.type = type
+    hw_features.cellular.attach_apn_required = attach_apn_required
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -987,6 +995,7 @@ def _accumulate_cellular(existing_cellular, new_cellular):
     if new_cellular.present == _PRESENT.PRESENT:
         existing_cellular.model = new_cellular.model
         existing_cellular.type = new_cellular.type
+        existing_cellular.attach_apn_required = new_cellular.attach_apn_required
 
 def _accumulate_hdmi(existing_hdmi, new_hdmi):
     existing_hdmi.present = _accumulate_presence(existing_hdmi.present, new_hdmi.present)
