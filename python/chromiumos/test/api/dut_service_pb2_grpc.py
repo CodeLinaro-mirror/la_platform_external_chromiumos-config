@@ -37,6 +37,16 @@ class DutServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdResponse.FromString,
                 )
+        self.Cache = channel.unary_unary(
+                '/chromiumos.test.api.DutService/Cache',
+                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.CacheRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
+                )
+        self.ForceReconnect = channel.unary_unary(
+                '/chromiumos.test.api.DutService/ForceReconnect',
+                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ForceReconnectRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
+                )
 
 
 class DutServiceServicer(object):
@@ -105,6 +115,30 @@ class DutServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Cache(self, request, context):
+        """Downloads files from GS to the DUT
+
+        The files downloaded may be decompressed in this layer to save cycles (and
+        space) in the DUT. This utilizes the cacheForDUT endpoint to download the
+        files.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ForceReconnect(self, request, context):
+        """Used to reestablish connection to DUT in case of drops.
+
+        This is needed in case the connection to the DUT is lost and we need to
+        keep the connection. Previously this was done by the service, but as we try
+        to accomplish true microservice functionality (i.e.: no side-effects) we
+        removed it and gave the option for the user to reconnect if needed with
+        whichever algorithm they prefer.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DutServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -127,6 +161,16 @@ def add_DutServiceServicer_to_server(servicer, server):
                     servicer.DetectDeviceConfigId,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdResponse.SerializeToString,
+            ),
+            'Cache': grpc.unary_unary_rpc_method_handler(
+                    servicer.Cache,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.CacheRequest.FromString,
+                    response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+            ),
+            'ForceReconnect': grpc.unary_unary_rpc_method_handler(
+                    servicer.ForceReconnect,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ForceReconnectRequest.FromString,
+                    response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -205,5 +249,39 @@ class DutService(object):
         return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.DutService/DetectDeviceConfigId',
             chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Cache(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DutService/Cache',
+            chromiumos_dot_test_dot_api_dot_dut__service__pb2.CacheRequest.SerializeToString,
+            chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ForceReconnect(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.DutService/ForceReconnect',
+            chromiumos_dot_test_dot_api_dot_dut__service__pb2.ForceReconnectRequest.SerializeToString,
+            chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

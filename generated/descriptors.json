@@ -14648,11 +14648,15 @@
     {
       "bufExtension": {
         "isImport": false,
-        "isSyntaxUnspecified": false
+        "isSyntaxUnspecified": false,
+        "unusedDependency": [
+          2
+        ]
       },
       "dependency": [
         "chromiumos/config/api/device_config_id.proto",
-        "chromiumos/longrunning/operations.proto"
+        "chromiumos/longrunning/operations.proto",
+        "chromiumos/storage_path.proto"
       ],
       "enumType": [
         {
@@ -14970,6 +14974,194 @@
           "name": "RestartMetadata"
         },
         {
+          "field": [
+            {
+              "jsonName": "destinationPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "destination_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gsFile",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_file",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CacheRequest.GSFile"
+            },
+            {
+              "jsonName": "gsZipFile",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_zip_file",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CacheRequest.GSZipFile"
+            },
+            {
+              "jsonName": "gsTarFile",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_tar_file",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CacheRequest.GSTARFile"
+            }
+          ],
+          "name": "CacheRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "sourcePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "source_path",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "GSFile"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "sourcePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "source_path",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "GSZipFile"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "sourcePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "source_path",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "sourceFile",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "source_file",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "GSTARFile"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "source"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CacheResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CacheResponse.Failure"
+            }
+          ],
+          "name": "CacheResponse",
+          "nestedType": [
+            {
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "name": "CacheMetadata"
+        },
+        {
+          "name": "ForceReconnectRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ForceReconnectResponse.Success"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ForceReconnectResponse.Failure"
+            }
+          ],
+          "name": "ForceReconnectResponse",
+          "nestedType": [
+            {
+              "name": "Success"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Failure"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "result"
+            }
+          ]
+        },
+        {
+          "name": "ForceReconnectMetadata"
+        },
+        {
           "name": "DetectDeviceConfigIdRequest"
         },
         {
@@ -15064,6 +15256,28 @@
               "name": "DetectDeviceConfigId",
               "outputType": ".chromiumos.test.api.DetectDeviceConfigIdResponse",
               "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.CacheRequest",
+              "name": "Cache",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "CacheMetadata",
+                  "responseType": "CacheResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ForceReconnectRequest",
+              "name": "ForceReconnect",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "ForceReconnectMetadata",
+                  "responseType": "ForceReconnectResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
             }
           ],
           "name": "DutService"
