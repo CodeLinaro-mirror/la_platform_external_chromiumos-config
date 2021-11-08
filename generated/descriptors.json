@@ -755,6 +755,33 @@
       ],
       "messageType": [
         {
+          "enumType": [
+            {
+              "name": "SupportStatus",
+              "value": [
+                {
+                  "name": "STATUS_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_SUPPORTED",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_DEPRECATED",
+                  "number": 2
+                },
+                {
+                  "name": "STATUS_UNQUALIFIED",
+                  "number": 3
+                },
+                {
+                  "name": "STATUS_UNSUPPORTED",
+                  "number": 4
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "id",
@@ -807,6 +834,14 @@
               "name": "part_number",
               "number": 22,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "supportStatus",
+              "label": "LABEL_OPTIONAL",
+              "name": "support_status",
+              "number": 28,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.config.api.Component.SupportStatus"
             },
             {
               "jsonName": "soc",

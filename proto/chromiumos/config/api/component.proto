@@ -11,7 +11,7 @@ import "chromiumos/config/api/partner_id.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
-// next field: 27
+// next field: 29
 message Component {
   // Globally unique component identifier.
   ComponentId id = 1;
@@ -30,6 +30,9 @@ message Component {
 
   // AVL-compatible part number information
   string part_number = 22;
+
+  // Current support status of the component
+  SupportStatus support_status = 28;
 
   oneof type {
     Soc soc = 2;
@@ -324,5 +327,14 @@ message Component {
     oneof interface {
         Interface.Usb usb = 1;
     }
+  }
+
+  // Various levels of component support.
+  enum SupportStatus {
+    STATUS_UNKNOWN = 0;
+    STATUS_SUPPORTED = 1;
+    STATUS_DEPRECATED = 2;
+    STATUS_UNQUALIFIED = 3;
+    STATUS_UNSUPPORTED = 4;
   }
 }

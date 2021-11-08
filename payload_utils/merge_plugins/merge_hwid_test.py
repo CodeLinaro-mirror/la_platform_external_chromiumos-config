@@ -7,7 +7,7 @@ import unittest
 
 from chromiumos.config.api.component_pb2 import Component
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundle
-from .merge_hwid import MergeHwid
+from .merge_hwid import _set_support_status, MergeHwid
 
 
 def _mock_hwid_component(type_name, label, values):
@@ -28,6 +28,34 @@ class MergeHWidTests(unittest.TestCase):
   """Tests for MergeHwid plugin."""
 
   # pylint: disable=too-many-public-methods
+
+  def test_support_status(self):
+    """Test the _set_support_status functionality."""
+    bundle = ConfigBundle()
+
+    # With no status information, our support status should be unknown.
+    component = bundle.components.add()
+    component = _set_support_status(component, {})
+    self.assertEqual(
+        component.support_status,
+        component.SupportStatus.STATUS_UNKNOWN,
+    )
+
+    # A known status should get reflected into component.
+    component = bundle.components.add()
+    component = _set_support_status(component, {'status': 'supported'})
+    self.assertEqual(
+        component.support_status,
+        component.SupportStatus.STATUS_SUPPORTED,
+    )
+
+    # An unknown status value should _not_ get reflected into component.
+    component = bundle.components.add()
+    component = _set_support_status(component, {'status': 'fooble'})
+    self.assertEqual(
+        component.support_status,
+        component.SupportStatus.STATUS_UNKNOWN,
+    )
 
   def test_audio_codec(self):
     """Test basic audio codec functionality."""

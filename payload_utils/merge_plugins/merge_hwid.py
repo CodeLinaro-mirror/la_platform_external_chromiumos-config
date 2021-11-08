@@ -26,9 +26,7 @@ def _include_item(item):
   """
 
   # Status values that indicate we should exclude the item
-  bad_status_values = set([
-      'unsupported',
-  ])
+  bad_status_values = set([])
 
   if not item['values']:
     return False
@@ -37,6 +35,28 @@ def _include_item(item):
     return False
 
   return True
+
+
+def _set_support_status(component, item):
+  """Set the supported_status field of a component from its status."""
+
+  status = item.get('status')
+  if not status:
+    return component
+
+  status_map = {
+      'deprecated': component.SupportStatus.STATUS_DEPRECATED,
+      'supported': component.SupportStatus.STATUS_SUPPORTED,
+      'unqualified': component.SupportStatus.STATUS_UNQUALIFIED,
+      'unsupported': component.SupportStatus.STATUS_UNSUPPORTED,
+  }
+
+  component.support_status = status_map.get(
+      status.lower(),
+      component.SupportStatus.STATUS_UNKNOWN,
+  )
+
+  return component
 
 
 def _maybe_delete(val, key):
@@ -81,9 +101,7 @@ def _non_null_items(items):
       ...
     }
   """
-  return {
-      key: item['values'] for key, item in items.items() if _include_item(item)
-  }
+  return {key: item for key, item in items.items() if _include_item(item)}
 
 
 class MergeHwid(MergePlugin):
@@ -183,18 +201,25 @@ class MergeHwid(MergePlugin):
       callback: callback to process a single item.
     """
 
+    # Copy keys list so that we can remove from items as we go.
     for label in list(items.keys()):
-      values = items[label]
-      touched = callback(bundle, label, values)
+      item = items[label]
+      touched = callback(bundle, label, item)
 
+      values = item.get('values', {})
       for name in touched:
         _maybe_delete(values, name)
+
+      _del_if_empty(item, 'values')
       _del_if_empty(items, label)
 
   @staticmethod
-  def _merge_audio(bundle, label, values):
+  def _merge_audio(bundle, label, item):
     """Merge audio_codec items."""
+    values = item.get('values', {})
+
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
 
     # save HWID values
     component.hwid_type = 'audio_codec'
@@ -207,11 +232,14 @@ class MergeHwid(MergePlugin):
     return ['name']
 
   @staticmethod
-  def _merge_battery(bundle, label, values):
+  def _merge_battery(bundle, label, item):
     """Merge battery items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = component.id.value
 
     # save HWID values
@@ -220,8 +248,18 @@ class MergeHwid(MergePlugin):
 
     # lookup or create manufacturer
     if 'manufacturer' in values:
+      # We seem to have some bad manufacturer values in the battery component.
+      # If we can't decode them to a valid unicode string, skip them.
+      mfgr = values['manufacturer']
+      if isinstance(mfgr, bytes):
+        try:
+          mfgr = mfgr.decode()
+        except UnicodeDecodeError as exception:
+          logging.error("Error decoding '%s' to string: %s", mfgr, exception)
+          return set()
+
       component.manufacturer_id.MergeFrom(
-          cbu.find_partner(bundle, values['manufacturer'], create=True).id)
+          cbu.find_partner(bundle, mfgr, create=True).id)
       touched.add('manufacturer')
 
     # set model
@@ -245,11 +283,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_bluetooth(bundle, label, values):
+  def _merge_bluetooth(bundle, label, item):
     """Merge bluetooth items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = component.id.value
 
     # save HWID values
@@ -276,11 +317,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_cellular(bundle, label, values):
+  def _merge_cellular(bundle, label, item):
     """Merge cellular items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = component.id.value
 
     # save HWID values
@@ -307,11 +351,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_cpu(bundle, label, values):
+  def _merge_cpu(bundle, label, item):
     """Merge cpu items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = component.id.value
 
     # save HWID values
@@ -345,9 +392,12 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_display_panel(bundle, label, values):
+  def _merge_display_panel(bundle, label, item):
     """Merge display panel items."""
+    values = item.get('values', {})
+
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = component.id.value
 
     # save HWID values
@@ -365,9 +415,12 @@ class MergeHwid(MergePlugin):
     return set(['vendor', 'product_id', 'width', 'height'])
 
   @staticmethod
-  def _merge_dram(bundle, label, values):
+  def _merge_dram(bundle, label, item):
     """Merge dram items."""
+    values = item.get('values', {})
+
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = component.id.value
 
     # save HWID values
@@ -395,11 +448,14 @@ class MergeHwid(MergePlugin):
     return set(['part', 'size', 'timing'])
 
   @staticmethod
-  def _merge_ec_flash(bundle, label, values):
+  def _merge_ec_flash(bundle, label, item):
     """Merge EC flash items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = component.id.value
 
     # save HWID values
@@ -417,11 +473,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_ec(bundle, label, values):
+  def _merge_ec(bundle, label, item):
     """Merge EC items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = component.id.value
 
     # save HWID values
@@ -439,11 +498,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_flash(bundle, label, values):
+  def _merge_flash(bundle, label, item):
     """Merge flash items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = component.id.value
 
     # save HWID values
@@ -461,11 +523,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_storage(bundle, label, values):
+  def _merge_storage(bundle, label, item):
     """Merge storage items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = values.get('model', label)
     touched.add('model')
 
@@ -502,11 +567,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_stylus(bundle, label, values):
+  def _merge_stylus(bundle, label, item):
     """Merge stylus items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = values.get('name', label)
     touched.add('name')
 
@@ -537,11 +605,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_touchpad(bundle, label, values):
+  def _merge_touchpad(bundle, label, item):
     """Merge touchpad items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = values.get('model', label)
     touched.add('model')
 
@@ -571,11 +642,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_tpm(bundle, label, values):
+  def _merge_tpm(bundle, label, item):
     """Merge tpm items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = label
 
     # save HWID values
@@ -589,11 +663,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_touchscreen(bundle, label, values):
+  def _merge_touchscreen(bundle, label, item):
     """Merge touchscreen items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = values.get('name', label)
     touched.add('name')
 
@@ -626,11 +703,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_usb_hosts(bundle, label, values):
+  def _merge_usb_hosts(bundle, label, item):
     """Merge USB host items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = values.get('product', label)
     touched.add('product')
 
@@ -659,11 +739,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_video(bundle, label, values):
+  def _merge_video(bundle, label, item):
     """Merge video items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = values.get('product', label)
     touched.add('product')
 
@@ -698,11 +781,14 @@ class MergeHwid(MergePlugin):
     return touched
 
   @staticmethod
-  def _merge_wireless(bundle, label, values):
+  def _merge_wireless(bundle, label, item):
     """Merge wireless items."""
+    values = item.get('values', {})
+
     touched = set()
 
     component = cbu.find_component(bundle, id_value=label, create=True)
+    component = _set_support_status(component, item)
     component.name = label
 
     # save HWID values

@@ -78,7 +78,22 @@ def jqdiff(filea, fileb):
     """
 
   # Enable recursive sort on arrays
-  filt = 'walk(if type == "array" then sort else . end)'
+  filt = """
+def safeget(f):
+  if type == "object" then
+     f
+  else
+     .
+  end;
+
+walk(
+  if type == "array" then
+    sort_by(safeget(.hwidLabel), safeget(.id), .)
+  else
+    .
+  end
+)
+"""
 
   # if inputs aren't declared, use a file that will (almost surely) never
   # exist and pass -N to diff so it treats it as an empty file and gives a
