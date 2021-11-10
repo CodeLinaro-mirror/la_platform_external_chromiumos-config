@@ -127,4 +127,8 @@ message HardwareTopology {
   // Specify the HPS topology.
   // See ./hardware_topology.md#hps for more information.
   Topology hps = 27;
+
+  // Specify the DisplayPort converter topology.
+  // See ./hardware_topology.md#dp_converter for more information.
+  Topology dp_converter = 28;
 }

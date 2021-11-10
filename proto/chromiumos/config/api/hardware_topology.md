@@ -265,3 +265,13 @@ Changes that require new topology
 Changes that require new topology
 
 * Presence of HPS board
+
+## DP Converter
+
+Changes that require new topology
+
+* Addition, removal, or change of DisplayPort converter devices
+
+Changes that do not require new topology
+
+* New firmware for DisplayPort converters

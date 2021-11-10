@@ -2115,6 +2115,10 @@
                 {
                   "name": "HPS",
                   "number": 29
+                },
+                {
+                  "name": "DP_CONVERTER",
+                  "number": 30
                 }
               ]
             }
@@ -4023,6 +4027,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "hps",
               "number": 27,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "dpConverter",
+              "label": "LABEL_OPTIONAL",
+              "name": "dp_converter",
+              "number": 28,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }

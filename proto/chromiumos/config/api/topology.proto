@@ -60,6 +60,7 @@ message Topology {
     HDMI = 27;
     SOC = 28;
     HPS = 29;
+    DP_CONVERTER = 30;
   }
 
   // Map of human readable descriptions in various languages. Maps language

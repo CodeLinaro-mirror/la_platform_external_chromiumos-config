@@ -500,6 +500,22 @@ def _create_hps(id, description, present = False, fw_configs = []):
         hardware_feature = hw_features,
     )
 
+def _create_dp_converter(id, description, names = []):
+    """Builds a Topology proto for DisplayPort converters."""
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.DP_CONVERTER,
+        description = {"EN": description},
+        hardware_feature = topo_pb.HardwareFeatures(
+            dp_converter = topo_pb.HardwareFeatures.DisplayPortConverter(
+                converters = [
+                    comp_pb.Component.DisplayPortConverter(name = name)
+                    for name in names
+                ],
+            ),
+        ),
+    )
+
 def _create_proximity_sensor(id, description, fw_configs = []):
     """Builds a Topology proto for a proximity sensor."""
     hw_features = topo_pb.HardwareFeatures()
@@ -865,7 +881,8 @@ def _create_hardware_topology(
         tpm = None,
         microphone_mute_switch = None,
         hdmi = None,
-        hps = None):
+        hps = None,
+        dp_converter = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -947,6 +964,9 @@ def _create_hardware_topology(
     if hps and hps.type != topo_pb.Topology.HPS:
         fail("Invalid hps topology")
 
+    if dp_converter and dp_converter.type != topo_pb.Topology.DP_CONVERTER:
+        fail("Invalid cp_converters topology")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -974,6 +994,7 @@ def _create_hardware_topology(
         microphone_mute_switch = microphone_mute_switch,
         hdmi = hdmi,
         hps = hps,
+        dp_converter = dp_converter,
     )
 
 def _accumulate_presence(existing_present, new_present):
@@ -1184,6 +1205,7 @@ hw_topo = struct(
     create_microphone_mute_switch = _create_microphone_mute_switch,
     create_hdmi = _create_hdmi,
     create_hps = _create_hps,
+    create_dp_converter = _create_dp_converter,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_fw_config = _make_fw_config,
