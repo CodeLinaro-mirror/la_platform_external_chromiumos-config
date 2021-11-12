@@ -14170,6 +14170,65 @@
         {
           "field": [
             {
+              "jsonName": "gsDirectory",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_directory",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "localDirectory",
+              "label": "LABEL_OPTIONAL",
+              "name": "local_directory",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrosPublishRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "gsUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_url",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "error",
+              "label": "LABEL_OPTIONAL",
+              "name": "error",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "errorMessage",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_message",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrosPublishResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_publish_cli.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "manual",
               "label": "LABEL_OPTIONAL",
               "name": "manual",
