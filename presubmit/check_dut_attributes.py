@@ -127,6 +127,9 @@ def check_valid_attributes():
     fields = []
     name = attr.WhichOneof("data_source")
     if name:
+      if name == "tle_source":
+        print("Skipping '{}', no fields are defined.".format(name))
+        return []
       fields = getattr(attr, name).fields
 
     root_msg = ROOT_MSG_MAP.get(name)

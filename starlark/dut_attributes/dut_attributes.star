@@ -76,6 +76,26 @@ def _hwid_attribute(
         ),
     )
 
+def _tle_attribute(
+        name,
+        aliases = [],
+        allowed_values = [],
+        exclude_values = []):
+    """Build a DutAttribute with a TleSource.
+
+    These are attributes whose values are determined by the caller TLE at
+    runtime. Field specs are not maintained here as each TLE should have its own
+    implementation on how to match the label to the desired value.
+    """
+
+    return dut_attribute_pb.DutAttribute(
+        id = _dut_attribute_id(name),
+        aliases = aliases,
+        allowed_values = allowed_values,
+        exclude_values = exclude_values,
+        tle_source = dut_attribute_pb.DutAttribute.TleSource(),
+    )
+
 def _device_attributes():
     """Return list of generic device attribute definitions."""
     return [
@@ -188,12 +208,96 @@ def _hwid_attributes():
         ),
     ]
 
+def _tle_attributes():
+    """Return list of device attributes to be looked up by a TLE."""
+    return [
+        _tle_attribute(
+            "misc-license",
+            aliases = [
+                "label-license",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-audio-board",
+            aliases = [
+                "label-audio_board",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-audio-box",
+            aliases = [
+                "label-audio_box",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-audio-cable",
+            aliases = [
+                "label-audio_cable",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-audio-loopback",
+            aliases = [
+                "label-audio_loopback_dongle",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-camerabox-facing",
+            aliases = [
+                "label-camerabox_facing",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-camerabox-light",
+            aliases = [
+                "label-camerabox_light",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-chameleon",
+            aliases = [
+                "label-chameleon",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-num-btpeer",
+            aliases = [
+                "label-working_bluetooth_btpeer",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-servo-state",
+            aliases = [
+                "label-servo_state",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-servo-usb-state",
+            aliases = [
+                "label-servo_usb_state",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-wificell",
+            aliases = [
+                "label-wificell",
+            ],
+        ),
+        _tle_attribute(
+            "swarming-pool",
+            aliases = [
+                "label-pool",
+            ],
+        ),
+    ]
+
 # List of DutAttributes to generate. Add new DutAttributes here.
 _dut_attribute_list = dut_attribute_pb.DutAttributeList(
     dut_attributes =
         _device_attributes() +
         _device_features() +
-        _hwid_attributes(),
+        _hwid_attributes() +
+        _tle_attributes(),
 )
 
 def _validate_dut_attribute_list(dut_attribute_list):

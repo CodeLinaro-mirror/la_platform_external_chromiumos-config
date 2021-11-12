@@ -210,6 +210,123 @@
           }
         ]
       }
+    },
+    {
+      "id": {
+        "value": "misc-license"
+      },
+      "aliases": [
+        "label-license"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-audio-board"
+      },
+      "aliases": [
+        "label-audio_board"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-audio-box"
+      },
+      "aliases": [
+        "label-audio_box"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-audio-cable"
+      },
+      "aliases": [
+        "label-audio_cable"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-audio-loopback"
+      },
+      "aliases": [
+        "label-audio_loopback_dongle"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-camerabox-facing"
+      },
+      "aliases": [
+        "label-camerabox_facing"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-camerabox-light"
+      },
+      "aliases": [
+        "label-camerabox_light"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-chameleon"
+      },
+      "aliases": [
+        "label-chameleon"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-num-btpeer"
+      },
+      "aliases": [
+        "label-working_bluetooth_btpeer"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-servo-state"
+      },
+      "aliases": [
+        "label-servo_state"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-servo-usb-state"
+      },
+      "aliases": [
+        "label-servo_usb_state"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-wificell"
+      },
+      "aliases": [
+        "label-wificell"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "swarming-pool"
+      },
+      "aliases": [
+        "label-pool"
+      ],
+      "tleSource": {}
     }
   ]
 }
