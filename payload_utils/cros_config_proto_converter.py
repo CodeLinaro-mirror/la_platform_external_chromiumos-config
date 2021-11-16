@@ -414,6 +414,45 @@ def _build_wifi(config, config_files):
   return {}
 
 
+def _build_health_cached_vpd(health_config):
+  if not health_config.HasField('cached_vpd'):
+    return None
+
+  cached_vpd = health_config.cached_vpd
+  result = {}
+  _upsert(cached_vpd.has_sku_number, result, 'has-sku-number')
+  return result
+
+
+def _build_health_battery(health_config):
+  if not health_config.HasField('battery'):
+    return None
+
+  battery = health_config.battery
+  result = {}
+  _upsert(battery.has_smart_battery_info, result, 'has-smart-battery-info')
+  return result
+
+
+def _build_health(config: Config):
+  """Builds the health configuration.
+
+  Args:
+    config: Config namedtuple
+
+  Returns:
+    health configuration.
+  """
+  if not config.sw_config.health_config:
+    return None
+
+  health_config = config.sw_config.health_config
+  result = {}
+  _upsert(_build_health_cached_vpd(health_config), result, 'cached_vpd')
+  _upsert(_build_health_battery(health_config), result, 'battery')
+  return result
+
+
 def _build_fingerprint(hw_topology):
   if not hw_topology.HasField('fingerprint'):
     return None
@@ -904,6 +943,7 @@ def _transform_build_config(config, config_files, whitelabel):
   _upsert(_build_audio(config), result, 'audio')
   _upsert(_build_bluetooth(config), result, 'bluetooth')
   _upsert(_build_wifi(config, config_files), result, 'wifi')
+  _upsert(_build_health(config), result, 'cros-healthd')
   _upsert(config.brand_config.wallpaper, result, 'wallpaper')
   _upsert(config.brand_config.regulatory_label, result, 'regulatory-label')
   _upsert(config.device_brand.brand_code, result, 'brand-code')

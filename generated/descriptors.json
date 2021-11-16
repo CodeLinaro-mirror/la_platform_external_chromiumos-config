@@ -6312,7 +6312,51 @@
       },
       "messageType": [
         {
-          "name": "HealthConfig"
+          "field": [
+            {
+              "jsonName": "battery",
+              "label": "LABEL_OPTIONAL",
+              "name": "battery",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.HealthConfig.Battery"
+            },
+            {
+              "jsonName": "cachedVpd",
+              "label": "LABEL_OPTIONAL",
+              "name": "cached_vpd",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.HealthConfig.CachedVpd"
+            }
+          ],
+          "name": "HealthConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "hasSmartBatteryInfo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "has_smart_battery_info",
+                  "number": 1,
+                  "type": "TYPE_BOOL"
+                }
+              ],
+              "name": "Battery"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "hasSkuNumber",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "has_sku_number",
+                  "number": 1,
+                  "type": "TYPE_BOOL"
+                }
+              ],
+              "name": "CachedVpd"
+            }
+          ]
         }
       ],
       "name": "chromiumos/config/api/software/health_config.proto",
