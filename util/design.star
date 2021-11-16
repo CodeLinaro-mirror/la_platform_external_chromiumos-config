@@ -73,6 +73,7 @@ def _append_configs(
         audio = None,
         wifi = None,
         camera = None,
+        health = None,
         ui = None,
         device_tree_compatible_match = None,
         smbios_name_match_override = None):
@@ -107,6 +108,7 @@ def _append_configs(
             single AudioConfig or a list of AudioConfigs.
         wifi: A WifiConfig to be used in the SoftwareConfig.
         camera: A CameraConfig to be used in the SoftwareConfig.
+        health: A HealthConfig to be used in the SoftwareConfig.
         ui: A UiConfig to be used in the SoftwareConfig.
         device_tree_compatible_match: For ARM platform, a str used for
             device_tree_compatible_match in IdentityScanConfig.
@@ -160,6 +162,7 @@ def _append_configs(
             sw_config.audio_configs.append(audio)
     sw_config.wifi_config = wifi
     sw_config.camera_config = camera
+    sw_config.health_config = health
     sw_config.ui_config = ui
     sw_config.public_replication = public_replication.create(
         public_fields = _DEFAULT_PUBLIC_SW_CONFIG_FIELDS + extra_sw_config_public_fields,

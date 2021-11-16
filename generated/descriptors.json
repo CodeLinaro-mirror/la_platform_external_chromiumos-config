@@ -6312,6 +6312,23 @@
       },
       "messageType": [
         {
+          "name": "HealthConfig"
+        }
+      ],
+      "name": "chromiumos/config/api/software/health_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
           "field": [
             {
               "jsonName": "preferences",
@@ -7239,9 +7256,10 @@
         "chromiumos/config/api/design_config_id.proto",
         "chromiumos/config/api/software/audio_config.proto",
         "chromiumos/config/api/software/bluetooth_config.proto",
+        "chromiumos/config/api/software/camera_config.proto",
+        "chromiumos/config/api/software/health_config.proto",
         "chromiumos/config/api/software/power_config.proto",
         "chromiumos/config/api/software/wifi_config.proto",
-        "chromiumos/config/api/software/camera_config.proto",
         "chromiumos/config/api/software/ui_config.proto",
         "chromiumos/config/public_replication/public_replication.proto"
       ],
@@ -7343,6 +7361,14 @@
               "number": 11,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.WifiConfig"
+            },
+            {
+              "jsonName": "healthConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "health_config",
+              "number": 18,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.HealthConfig"
             },
             {
               "jsonName": "cameraConfig",
