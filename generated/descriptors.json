@@ -17078,6 +17078,169 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "port",
+              "label": "LABEL_OPTIONAL",
+              "name": "port",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetLibSuccess"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Reason",
+              "value": [
+                {
+                  "name": "REASON_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "REASON_UNREGISTERED_LIB",
+                  "number": 1
+                },
+                {
+                  "name": "REASON_CONTAINER_START_ERROR",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "reason",
+              "label": "LABEL_OPTIONAL",
+              "name": "reason",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.GetLibFailure.Reason"
+            }
+          ],
+          "name": "GetLibFailure"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "options",
+              "label": "LABEL_REPEATED",
+              "name": "options",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetLibRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetLibSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetLibFailure"
+            }
+          ],
+          "name": "GetLibResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "options",
+              "label": "LABEL_OPTIONAL",
+              "name": "options",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "KillLibRequest"
+        },
+        {
+          "name": "KillLibResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/test_libs_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.GetLibRequest",
+              "name": "StartLib",
+              "outputType": ".chromiumos.test.api.GetLibResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.GetLibRequest",
+              "name": "FindLib",
+              "outputType": ".chromiumos.test.api.GetLibResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.KillLibRequest",
+              "name": "KillLib",
+              "outputType": ".chromiumos.test.api.KillLibResponse"
+            }
+          ],
+          "name": "TestLibsService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/coverage_rule.proto"
       ],
