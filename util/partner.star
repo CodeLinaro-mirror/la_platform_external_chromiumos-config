@@ -165,6 +165,12 @@ partner = struct(
             vendor_id = "2575",
             symlink_file_format = "wdt{product_series}_{product_id}.bin",
         ),
+        ZINITIX = _create_touch_partner(
+            name = "zinitix",
+            vendor_id = "14E5",
+            symlink_file_format = "zinitix_firmware.bin",
+            destination_file_format = "zinitix_{product_id}_{fw_version}.bin",
+        ),
     ),
     battery = struct(
         PANASONIC = _create_battery_partner(
