@@ -22,5 +22,8 @@ message TestHarness {
   message Manual {}
   message Tast {}
   message Tauto {}
-  message Gtest {}
+  message Gtest {
+    // Location of the test binary on the DUT
+    string target_bin_location = 1;
+  }
 }

@@ -14345,6 +14345,15 @@
               "name": "Tauto"
             },
             {
+              "field": [
+                {
+                  "jsonName": "targetBinLocation",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "target_bin_location",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
               "name": "Gtest"
             }
           ],
