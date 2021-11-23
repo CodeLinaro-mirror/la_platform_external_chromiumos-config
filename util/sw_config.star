@@ -30,6 +30,10 @@ load(
     pc_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/health_config.proto",
+    health_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/config/api/software/wifi_config.proto",
     wf_pb = "chromiumos.config.api.software",
 )
@@ -191,6 +195,19 @@ def _create_audio(
 def _create_bluetooth(flags):
     """Builds a BluetoothConfig proto."""
     return bt_pb.BluetoothConfig(flags = flags)
+
+def _create_health(
+        vpd_has_sku_number = None,
+        battery_has_smart_battery_info = None):
+    """Builds a HealthConfig proto."""
+    return health_pb.HealthConfig(
+        cached_vpd = health_pb.HealthConfig.CachedVpd(
+            has_sku_number = vpd_has_sku_number,
+        ),
+        battery = health_pb.HealthConfig.Battery(
+            has_smart_battery_info = battery_has_smart_battery_info,
+        ),
+    )
 
 def _create_power(preferences):
     """Builds a PowerConfig proto."""
@@ -632,6 +649,7 @@ sw_config = struct(
     create_fw_build_config = _create_fw_build_config,
     create_fw_build_config_by_names = _create_fw_build_config_by_names,
     create_fw_build_targets = _create_fw_build_targets,
+    create_health = _create_health,
     create_power = _create_power,
     create_intel_antenna_gain = _create_intel_antenna_gain,
     create_intel_antgain_table = _create_intel_antgain_table,
