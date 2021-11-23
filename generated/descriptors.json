@@ -16606,37 +16606,7 @@
       },
       "messageType": [
         {
-          "enumType": [
-            {
-              "name": "TestEnvironment",
-              "value": [
-                {
-                  "name": "TEST_ENVIRONMENT_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "HARDWARE",
-                  "number": 1
-                },
-                {
-                  "name": "VIRTUAL",
-                  "number": 2
-                }
-              ]
-            }
-          ],
           "field": [
-            {
-              "jsonName": "enabledTestEnvironments",
-              "label": "LABEL_REPEATED",
-              "name": "enabled_test_environments",
-              "number": 1,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.plan.SourceTestPlan.TestEnvironment"
-            },
             {
               "jsonName": "pathRegexps",
               "label": "LABEL_REPEATED",
@@ -16658,37 +16628,6 @@
               "number": 15,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.plan.SourceTestPlan.TestPlanStarlarkFile"
-            },
-            {
-              "jsonName": "testTags",
-              "label": "LABEL_REPEATED",
-              "name": "test_tags",
-              "number": 4,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "testTagExcludes",
-              "label": "LABEL_REPEATED",
-              "name": "test_tag_excludes",
-              "number": 5,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "requirements",
-              "label": "LABEL_OPTIONAL",
-              "name": "requirements",
-              "number": 13,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements"
             }
           ],
           "name": "SourceTestPlan",
@@ -16711,141 +16650,16 @@
                 }
               ],
               "name": "TestPlanStarlarkFile"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "kernelVersions",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "kernel_versions",
-                  "number": 1,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements.KernelVersions"
-                },
-                {
-                  "jsonName": "socFamilies",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "soc_families",
-                  "number": 2,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements.SocFamilies"
-                },
-                {
-                  "jsonName": "architectures",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "architectures",
-                  "number": 3,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements.Architectures"
-                },
-                {
-                  "jsonName": "arcVersions",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "arc_versions",
-                  "number": 4,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements.ArcVersions"
-                },
-                {
-                  "jsonName": "fingerprint",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "fingerprint",
-                  "number": 5,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements.Fingerprint"
-                },
-                {
-                  "jsonName": "parallels",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "parallels",
-                  "number": 6,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements.Parallels"
-                },
-                {
-                  "jsonName": "chromeosConfig",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "chromeos_config",
-                  "number": 7,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements.ChromeOSConfig"
-                },
-                {
-                  "jsonName": "firmwareRoVersions",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "firmware_ro_versions",
-                  "number": 8,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements.FirmwareROVersions"
-                }
-              ],
-              "name": "Requirements",
-              "nestedType": [
-                {
-                  "name": "KernelVersions"
-                },
-                {
-                  "name": "SocFamilies"
-                },
-                {
-                  "name": "Architectures"
-                },
-                {
-                  "name": "ArcVersions"
-                },
-                {
-                  "name": "Fingerprint"
-                },
-                {
-                  "name": "Parallels"
-                },
-                {
-                  "name": "ChromeOSConfig"
-                },
-                {
-                  "field": [
-                    {
-                      "jsonName": "programToMilestone",
-                      "label": "LABEL_REPEATED",
-                      "name": "program_to_milestone",
-                      "number": 1,
-                      "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.test.plan.SourceTestPlan.Requirements.FirmwareROVersions.ProgramToMilestoneEntry"
-                    }
-                  ],
-                  "name": "FirmwareROVersions",
-                  "nestedType": [
-                    {
-                      "field": [
-                        {
-                          "jsonName": "key",
-                          "label": "LABEL_OPTIONAL",
-                          "name": "key",
-                          "number": 1,
-                          "type": "TYPE_STRING"
-                        },
-                        {
-                          "jsonName": "value",
-                          "label": "LABEL_OPTIONAL",
-                          "name": "value",
-                          "number": 2,
-                          "type": "TYPE_INT32"
-                        }
-                      ],
-                      "name": "ProgramToMilestoneEntry",
-                      "options": {
-                        "mapEntry": true
-                      }
-                    }
-                  ]
-                }
-              ]
             }
           ],
           "reservedRange": [
             {
-              "end": 13,
-              "start": 6
+              "end": 2,
+              "start": 1
+            },
+            {
+              "end": 15,
+              "start": 4
             }
           ]
         }
