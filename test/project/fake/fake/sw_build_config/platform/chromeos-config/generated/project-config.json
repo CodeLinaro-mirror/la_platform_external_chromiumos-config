@@ -62,6 +62,14 @@
             }
           ]
         },
+        "cros-healthd": {
+          "battery": {
+            "has-smart-battery-info": true
+          },
+          "cached_vpd": {
+            "has-sku-number": true
+          }
+        },
         "fingerprint": {
           "board": "fake_fingerprint_board",
           "sensor-location": "keyboard-bottom-left"

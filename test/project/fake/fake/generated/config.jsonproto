@@ -4368,6 +4368,14 @@
           "zephyrEc": "projects/fake/fake"
         }
       },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        }
+      },
       "idScanConfig": {
         "firmwareSku": 2147483647,
         "smbiosNameMatch": "FAKE_REF_DESIGN"

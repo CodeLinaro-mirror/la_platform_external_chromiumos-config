@@ -132,6 +132,10 @@ _VOLUME_BUTTON = hw_topo.create_volume_button(
 
 _AUDIO_CARD = "fakeaudiocard"
 
+_SC_HEALTH = sc.create_health(
+    vpd_has_sku_number = True,
+    battery_has_smart_battery_info = True,
+)
 _SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True})
 _SC_POWER = sc.create_power(
     preferences = {
@@ -223,6 +227,7 @@ design.append_configs(
         dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
     ),
     bluetooth = _SC_BLUETOOTH,
+    health = _SC_HEALTH,
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
         "Fake_EC",
