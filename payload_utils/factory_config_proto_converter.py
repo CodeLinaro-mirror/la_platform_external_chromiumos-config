@@ -203,6 +203,9 @@ def TransformDesignTable(design_config, design_table):
               GetFeatures(topology, 'form_factor',
                           ['form_factor', 'form_factor'])),
   })
+  if features.audio.card_configs:
+    audio_card_name = features.audio.card_configs[0].card_name.partition('.')[0]
+    design_table.update({'component.audio_card_name': audio_card_name})
   design_table.update({
       'component.match_sku_components':
           [["camera", "==", len(features.camera.devices)],
@@ -287,10 +290,11 @@ def GetFactoryConfigs(config):
       continue
     design_table = product_sku.setdefault(design_name, {})
     design_config_table = design_table.setdefault(sku_id, {})
-    audio_card_name = ''
-    if sw_design.audio_configs:
-      audio_card_name = sw_design.audio_configs[0].card_name
-    design_config_table.update({'component.audio_card_name': audio_card_name})
+    if 'component.audio_card_name' not in design_config_table:
+      audio_card_name = ''
+      if sw_design.audio_configs:
+        audio_card_name = sw_design.audio_configs[0].card_name
+      design_config_table.update({'component.audio_card_name': audio_card_name})
   # Create map from design id to product_name. Designs from different projects
   # may map to the same product_name. The sets of sku id should not intersect.
   product_names = {

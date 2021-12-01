@@ -28,6 +28,17 @@
   ],
   "programList": [
     {
+      "audioConfig": {
+        "cardConfigs": [
+          {
+            "cardName": "HDA ATI HDMI",
+            "ucmConfig": 2,
+            "ucmSuffix": ""
+          }
+        ],
+        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{camera_count}mic.{design}",
+        "hasModuleFile": true
+      },
       "componentQuals": [
         {
           "componentId": {

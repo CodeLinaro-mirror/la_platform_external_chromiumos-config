@@ -9,8 +9,11 @@
 
 import argparse
 import collections.abc
+import functools
 import glob
+import itertools
 import json
+import pathlib
 import pprint
 import os
 import sys
@@ -698,16 +701,185 @@ def _build_fw_signing(config, whitelabel):
 
 
 def _file(source, destination):
-  return {'destination': destination, 'source': source}
+  return {'destination': str(destination), 'source': str(source)}
 
 
 def _file_v2(build_path, system_path):
   return {'build-path': build_path, 'system-path': system_path}
 
 
+class _AudioConfigBuilder:
+  _ALSA_PATH = pathlib.PurePath('/usr/share/alsa/ucm')
+  _CRAS_PATH = pathlib.PurePath('/etc/cras')
+  _SOUND_CARD_INIT_PATH = pathlib.PurePath('/etc/sound_card_init')
+  _MODULE_PATH = pathlib.PurePath('/etc/modprobe.d')
+  _AUDIO_CONFIG_PATH = 'audio'
+  AudioConfigStructure = (
+      topology_pb2.HardwareFeatures.Audio.AudioConfigStructure)
+
+  def __init__(self, config):
+    self._config = config
+
+    self._files = []
+    self._ucm_suffixes = set()
+    self._sound_card_init_confs = set()
+
+  @property
+  def _program_audio(self):
+    return self._config.program.audio_config
+
+  @property
+  def _audio(self):
+    return self._hw_features.audio
+
+  @functools.cached_property
+  def _design_name(self):
+    return self._config.hw_design.name.lower()
+
+  @property
+  def _hw_features(self):
+    return self._config.hw_design_config.hardware_features
+
+  def _build_source_path(self, config_structure, config_path):
+    if config_structure == self.AudioConfigStructure.COMMON:
+      return pathlib.PurePath('common').joinpath(self._AUDIO_CONFIG_PATH,
+                                                 config_path)
+    if config_structure == self.AudioConfigStructure.DESIGN:
+      return pathlib.PurePath(self._design_name).joinpath(
+          self._AUDIO_CONFIG_PATH, config_path)
+    return None
+
+  def _build_audio_card(self, card_config):
+    ucm_suffix_format = self._program_audio.default_ucm_suffix
+    if card_config.HasField('ucm_suffix'):
+      ucm_suffix_format = card_config.ucm_suffix.value
+
+    design_for_ucm = self._design_name
+    if card_config.ucm_config == self.AudioConfigStructure.COMMON:
+      design_for_ucm = ''
+    ucm_suffix = ucm_suffix_format.format(
+        headset_codec=(topology_pb2.HardwareFeatures.Audio.AudioCodec.Name(
+            self._audio.headphone_codec)).lower()
+        if self._audio.headphone_codec else '',
+        speaker_amp=(topology_pb2.HardwareFeatures.Audio.Amplifier.Name(
+            self._audio.speaker_amp)).lower()
+        if self._audio.speaker_amp else '',
+        design=design_for_ucm,
+        camera_count=len(self._hw_features.camera.devices),
+    )
+    ucm_suffix = '.'.join(
+        [component for component in ucm_suffix.split('.') if component])
+    card_with_suffix = '.'.join([card_config.card_name, ucm_suffix]).strip('.')
+    card, _, card_suffix = card_config.card_name.partition('.')
+    ucm_suffix = '.'.join([card_suffix, ucm_suffix]).strip('.')
+    self._ucm_suffixes.add(ucm_suffix)
+
+    ucm_config_source_directory = self._build_source_path(
+        card_config.ucm_config, 'ucm-config')
+    self._files.append(
+        _file(
+            ucm_config_source_directory.joinpath(card_with_suffix, 'HiFi.conf'),
+            self._ALSA_PATH.joinpath(card_with_suffix, 'HiFi.conf')))
+    self._files.append(
+        _file(
+            ucm_config_source_directory.joinpath(card_with_suffix,
+                                                 f'{card_with_suffix}.conf'),
+            self._ALSA_PATH.joinpath(card_with_suffix,
+                                     f'{card_with_suffix}.conf')))
+
+    cras_config_source_path = self._build_source_path(card_config.cras_config,
+                                                      'cras-config')
+    if cras_config_source_path:
+      self._files.append(
+          _file(
+              cras_config_source_path.joinpath(card).with_suffix(
+                  '.card_settings'),
+              self._CRAS_PATH.joinpath(self._design_name, card)))
+
+    card_init_config_source_path = self._build_source_path(
+        card_config.sound_card_init_config, 'sound_card_init')
+
+    if card_init_config_source_path:
+      speaker_amp = (
+          topology_pb2.HardwareFeatures.Audio.Amplifier.Name(
+              self._audio.speaker_amp))
+      sound_card_init_conf = f'{self._design_name}.{speaker_amp}.yaml'
+      self._files.append(
+          _file(
+              card_init_config_source_path.joinpath(sound_card_init_conf),
+              self._SOUND_CARD_INIT_PATH.joinpath(sound_card_init_conf)))
+      self._sound_card_init_confs.add(sound_card_init_conf)
+    else:
+      self._sound_card_init_confs.add(None)
+
+  @staticmethod
+  def _select_from_set(values, description):
+    if not values:
+      return None
+    if len(values) == 1:
+      return next(iter(values))
+    values -= set([None, ''])
+    if len(values) == 1:
+      return next(iter(values))
+    raise Exception(f'Inconsistent values for "{description}": {values}')
+
+  def build(self):
+    """Builds the audio configuration."""
+    if not self._hw_features.audio or not self._hw_features.audio.card_configs:
+      return {}
+
+    program_name = self._config.program.name.lower()
+
+    for card_config in itertools.chain(self._audio.card_configs,
+                                       self._program_audio.card_configs):
+      self._build_audio_card(card_config)
+
+    cras_config_source_path = self._build_source_path(self._audio.cras_config,
+                                                      'cras-config')
+    if cras_config_source_path:
+      for filename in ['dsp.ini', 'board.ini']:
+        self._files.append(
+            _file(
+                cras_config_source_path.joinpath(filename),
+                self._CRAS_PATH.joinpath(self._design_name, filename)))
+
+    if self._program_audio.has_module_file:
+      module_name = f'alsa-{program_name}.conf'
+      self._files.append(
+          _file(
+              self._build_source_path(
+                  self.AudioConfigStructure.COMMON,
+                  'alsa-module-config').joinpath(module_name),
+              self._MODULE_PATH.joinpath(module_name)))
+
+    result = {
+        'main': {
+            'cras-config-dir': self._design_name,
+            'files': self._files,
+        }
+    }
+
+    ucm_suffix = self._select_from_set(self._ucm_suffixes, 'ucm-suffix')
+    if ucm_suffix:
+      result['main']['ucm-suffix'] = ucm_suffix
+
+    sound_card_init_conf = self._select_from_set(self._sound_card_init_confs,
+                                                 'sound-card-init-conf')
+    if sound_card_init_conf:
+      result['main']['sound-card-init-conf'] = sound_card_init_conf
+      result['main']['speaker-amp'] = (
+          topology_pb2.HardwareFeatures.Audio.Amplifier.Name(
+              self._audio.speaker_amp))
+
+    return result
+
+
 def _build_audio(config):
+  # pylint: disable=too-many-locals
   if not config.sw_config.audio_configs:
-    return {}
+    builder = _AudioConfigBuilder(config)
+    return builder.build()
+
   alsa_path = '/usr/share/alsa/ucm'
   cras_path = '/etc/cras'
   sound_card_init_path = '/etc/sound_card_init'
@@ -1977,6 +2149,7 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
     program_config: Program config for the given set of projects.
     output: Output file that will be generated by the transform.
   """
+  # pylint: disable=too-many-locals
   configs = _merge_configs([_read_config(program_config)] +
                            [_read_config(config) for config in project_configs])
   touch_fw = {}

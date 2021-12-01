@@ -11,6 +11,7 @@ import "chromiumos/config/api/design.proto";
 import "chromiumos/config/api/design_id.proto";
 import "chromiumos/config/api/device_brand_id.proto";
 import "chromiumos/config/api/program_id.proto";
+import "chromiumos/config/api/topology.proto";
 import "chromiumos/config/public_replication/public_replication.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
@@ -134,6 +135,17 @@ message Program {
   }
   Platform platform = 11;
 
+  message AudioConfig {
+    // The card configs to include for all design configs within this program.
+    repeated HardwareFeatures.Audio.CardConfig card_configs = 1;
+
+    // Whether an alsa-<program>.conf should be installed.
+    bool has_module_file = 2;
+
+    // The UCM suffix pattern to use as the program-level default.
+    string default_ucm_suffix = 3;
+  }
+  AudioConfig audio_config = 12;
 
   // Defines program constraints for all proposed design configs.
   repeated Design.Config.Constraint design_config_constraints = 3;

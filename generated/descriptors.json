@@ -2063,7 +2063,8 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/config/api/component.proto"
+        "chromiumos/config/api/component.proto",
+        "google/protobuf/wrappers.proto"
       ],
       "messageType": [
         {
@@ -2843,6 +2844,23 @@
                       "number": 12
                     }
                   ]
+                },
+                {
+                  "name": "AudioConfigStructure",
+                  "value": [
+                    {
+                      "name": "AUDIO_CONFIG_STRUCTURE_NONE",
+                      "number": 0
+                    },
+                    {
+                      "name": "DESIGN",
+                      "number": 1
+                    },
+                    {
+                      "name": "COMMON",
+                      "number": 2
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -2893,9 +2911,71 @@
                   "number": 6,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.Component.Amplifier"
+                },
+                {
+                  "jsonName": "cardConfigs",
+                  "label": "LABEL_REPEATED",
+                  "name": "card_configs",
+                  "number": 7,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Audio.CardConfig"
+                },
+                {
+                  "jsonName": "crasConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "cras_config",
+                  "number": 8,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure"
                 }
               ],
-              "name": "Audio"
+              "name": "Audio",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "cardName",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "card_name",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    },
+                    {
+                      "jsonName": "ucmSuffix",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "ucm_suffix",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".google.protobuf.StringValue"
+                    },
+                    {
+                      "jsonName": "ucmConfig",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "ucm_config",
+                      "number": 3,
+                      "type": "TYPE_ENUM",
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure"
+                    },
+                    {
+                      "jsonName": "crasConfig",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "cras_config",
+                      "number": 4,
+                      "type": "TYPE_ENUM",
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure"
+                    },
+                    {
+                      "jsonName": "soundCardInitConfig",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "sound_card_init_config",
+                      "number": 5,
+                      "type": "TYPE_ENUM",
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure"
+                    }
+                  ],
+                  "name": "CardConfig"
+                }
+              ]
             },
             {
               "enumType": [
@@ -4984,6 +5064,7 @@
         "chromiumos/config/api/design_id.proto",
         "chromiumos/config/api/device_brand_id.proto",
         "chromiumos/config/api/program_id.proto",
+        "chromiumos/config/api/topology.proto",
         "chromiumos/config/public_replication/public_replication.proto"
       ],
       "messageType": [
@@ -5107,6 +5188,14 @@
               "number": 11,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Program.Platform"
+            },
+            {
+              "jsonName": "audioConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_config",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Program.AudioConfig"
             },
             {
               "jsonName": "designConfigConstraints",
@@ -5302,6 +5391,33 @@
                 }
               ],
               "name": "Platform"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "cardConfigs",
+                  "label": "LABEL_REPEATED",
+                  "name": "card_configs",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Audio.CardConfig"
+                },
+                {
+                  "jsonName": "hasModuleFile",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "has_module_file",
+                  "number": 2,
+                  "type": "TYPE_BOOL"
+                },
+                {
+                  "jsonName": "defaultUcmSuffix",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "default_ucm_suffix",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "AudioConfig"
             }
           ]
         }

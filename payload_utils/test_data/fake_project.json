@@ -21,22 +21,39 @@
             "cras-config-dir": "fake_ref_design",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
-                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.fake_ref_design/HiFi.conf",
+                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.1mic.fake_ref_design/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
-                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.fake_ref_design/fakeaudiocard.alc5682i.1mic.fake_ref_design.conf",
+                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.1mic.fake_ref_design/fakeaudiocard.alc5682i.1mic.fake_ref_design.conf"
               },
               {
                 "destination": "/etc/cras/fake_ref_design/fakeaudiocard",
-                "source": "audio/fakeaudiocard/fakeaudiocard"
+                "source": "fake_ref_design/audio/cras-config/fakeaudiocard.card_settings"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               },
               {
                 "destination": "/etc/cras/fake_ref_design/dsp.ini",
-                "source": "audio/fakeaudiocard/dsp.ini"
+                "source": "fake_ref_design/audio/cras-config/dsp.ini"
+              },
+              {
+                "destination": "/etc/cras/fake_ref_design/board.ini",
+                "source": "fake_ref_design/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/modprobe.d/alsa-fake_program.conf",
+                "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
-            ]
+            ],
+            "ucm-suffix": "alc5682i.1mic.fake_ref_design"
           }
         },
         "bluetooth": {
@@ -180,23 +197,39 @@
             "cras-config-dir": "fake_ref_design",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/HiFi.conf",
-                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2mic.fake_ref_design/HiFi.conf",
+                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.2mic.fake_ref_design/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/fakeaudiocard.2mic.conf",
-                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2mic.fake_ref_design/fakeaudiocard.alc5682i.2mic.fake_ref_design.conf",
+                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.2mic.fake_ref_design/fakeaudiocard.alc5682i.2mic.fake_ref_design.conf"
               },
               {
                 "destination": "/etc/cras/fake_ref_design/fakeaudiocard",
-                "source": "audio/fakeaudiocard/fakeaudiocard"
+                "source": "fake_ref_design/audio/cras-config/fakeaudiocard.card_settings"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               },
               {
                 "destination": "/etc/cras/fake_ref_design/dsp.ini",
-                "source": "audio/fakeaudiocard/dsp.ini"
+                "source": "fake_ref_design/audio/cras-config/dsp.ini"
+              },
+              {
+                "destination": "/etc/cras/fake_ref_design/board.ini",
+                "source": "fake_ref_design/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/modprobe.d/alsa-fake_program.conf",
+                "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
             ],
-            "ucm-suffix": "2mic"
+            "ucm-suffix": "alc5682i.2mic.fake_ref_design"
           }
         },
         "brand-code": "AAAA",
@@ -494,23 +527,45 @@
             "cras-config-dir": "project_b",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/HiFi.conf",
-                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b/HiFi.conf",
+                "source": "project_b/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.2mic/fakeaudiocard.2mic.conf",
-                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b.conf",
+                "source": "project_b/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b.conf"
               },
               {
                 "destination": "/etc/cras/project_b/fakeaudiocard",
-                "source": "audio/fakeaudiocard/fakeaudiocard"
+                "source": "project_b/audio/cras-config/fakeaudiocard.card_settings"
+              },
+              {
+                "destination": "/etc/sound_card_init/project_b.MAX98373.yaml",
+                "source": "project_b/audio/sound_card_init/project_b.MAX98373.yaml"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               },
               {
                 "destination": "/etc/cras/project_b/dsp.ini",
-                "source": "audio/fakeaudiocard/dsp.ini"
+                "source": "project_b/audio/cras-config/dsp.ini"
+              },
+              {
+                "destination": "/etc/cras/project_b/board.ini",
+                "source": "project_b/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/modprobe.d/alsa-fake_program.conf",
+                "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
             ],
-            "ucm-suffix": "2mic"
+            "sound-card-init-conf": "project_b.MAX98373.yaml",
+            "speaker-amp": "MAX98373",
+            "ucm-suffix": "card_suffix.max98373.alc5682i.1mic.project_b"
           }
         },
         "bluetooth": {
@@ -617,22 +672,39 @@
             "cras-config-dir": "project_c",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
-                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.project_c/HiFi.conf",
+                "source": "project_c/audio/ucm-config/fakeaudiocard.alc5682i.1mic.project_c/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
-                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.project_c/fakeaudiocard.alc5682i.1mic.project_c.conf",
+                "source": "project_c/audio/ucm-config/fakeaudiocard.alc5682i.1mic.project_c/fakeaudiocard.alc5682i.1mic.project_c.conf"
               },
               {
                 "destination": "/etc/cras/project_c/fakeaudiocard",
-                "source": "audio/fakeaudiocard/fakeaudiocard"
+                "source": "project_c/audio/cras-config/fakeaudiocard.card_settings"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               },
               {
                 "destination": "/etc/cras/project_c/dsp.ini",
-                "source": "audio/fakeaudiocard/dsp.ini"
+                "source": "project_c/audio/cras-config/dsp.ini"
+              },
+              {
+                "destination": "/etc/cras/project_c/board.ini",
+                "source": "project_c/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/modprobe.d/alsa-fake_program.conf",
+                "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
-            ]
+            ],
+            "ucm-suffix": "alc5682i.1mic.project_c"
           }
         },
         "bluetooth": {
@@ -1235,30 +1307,39 @@
             "cras-config-dir": "project_rebrand",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
-                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.project_rebrand/HiFi.conf",
+                "source": "project_rebrand/audio/ucm-config/fakeaudiocard.alc5682i.1mic.project_rebrand/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
-                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.project_rebrand/fakeaudiocard.alc5682i.1mic.project_rebrand.conf",
+                "source": "project_rebrand/audio/ucm-config/fakeaudiocard.alc5682i.1mic.project_rebrand/fakeaudiocard.alc5682i.1mic.project_rebrand.conf"
               },
               {
                 "destination": "/etc/cras/project_rebrand/fakeaudiocard",
-                "source": "audio/fakeaudiocard/fakeaudiocard"
-              },
-              {
-                "destination": "/etc/cras/project_rebrand/dsp.ini",
-                "source": "audio/fakeaudiocard/dsp.ini"
+                "source": "project_rebrand/audio/cras-config/fakeaudiocard.card_settings"
               },
               {
                 "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
-                "source": "ucm-config/HDA ATI HDMI/HiFi.conf"
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HiFi.conf"
               },
               {
                 "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
-                "source": "ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
+              },
+              {
+                "destination": "/etc/cras/project_rebrand/dsp.ini",
+                "source": "project_rebrand/audio/cras-config/dsp.ini"
+              },
+              {
+                "destination": "/etc/cras/project_rebrand/board.ini",
+                "source": "project_rebrand/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/modprobe.d/alsa-fake_program.conf",
+                "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
-            ]
+            ],
+            "ucm-suffix": "alc5682i.1mic.project_rebrand"
           }
         },
         "brand-code": "RBDD",
@@ -1360,22 +1441,45 @@
             "cras-config-dir": "project_box",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
-                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix/HiFi.conf",
+                "source": "common/audio/ucm-config/fakeaudiocard.card_suffix/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
-                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix/fakeaudiocard.card_suffix.conf",
+                "source": "common/audio/ucm-config/fakeaudiocard.card_suffix/fakeaudiocard.card_suffix.conf"
               },
               {
                 "destination": "/etc/cras/project_box/fakeaudiocard",
-                "source": "audio/fakeaudiocard/fakeaudiocard"
+                "source": "common/audio/cras-config/fakeaudiocard.card_settings"
+              },
+              {
+                "destination": "/etc/sound_card_init/project_box.MAX98373.yaml",
+                "source": "project_box/audio/sound_card_init/project_box.MAX98373.yaml"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               },
               {
                 "destination": "/etc/cras/project_box/dsp.ini",
-                "source": "audio/fakeaudiocard/dsp.ini"
+                "source": "common/audio/cras-config/dsp.ini"
+              },
+              {
+                "destination": "/etc/cras/project_box/board.ini",
+                "source": "common/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/modprobe.d/alsa-fake_program.conf",
+                "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
-            ]
+            ],
+            "sound-card-init-conf": "project_box.MAX98373.yaml",
+            "speaker-amp": "MAX98373",
+            "ucm-suffix": "card_suffix"
           }
         },
         "brand-code": "FDBX",
@@ -1462,22 +1566,45 @@
             "cras-config-dir": "project_box",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
-                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.fixed_suffix/HiFi.conf",
+                "source": "project_box/audio/ucm-config/fakeaudiocard.card_suffix.fixed_suffix/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
-                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.fixed_suffix/fakeaudiocard.card_suffix.fixed_suffix.conf",
+                "source": "project_box/audio/ucm-config/fakeaudiocard.card_suffix.fixed_suffix/fakeaudiocard.card_suffix.fixed_suffix.conf"
               },
               {
                 "destination": "/etc/cras/project_box/fakeaudiocard",
-                "source": "audio/fakeaudiocard/fakeaudiocard"
+                "source": "project_box/audio/cras-config/fakeaudiocard.card_settings"
+              },
+              {
+                "destination": "/etc/sound_card_init/project_box.MAX98373.yaml",
+                "source": "project_box/audio/sound_card_init/project_box.MAX98373.yaml"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               },
               {
                 "destination": "/etc/cras/project_box/dsp.ini",
-                "source": "audio/fakeaudiocard/dsp.ini"
+                "source": "project_box/audio/cras-config/dsp.ini"
+              },
+              {
+                "destination": "/etc/cras/project_box/board.ini",
+                "source": "project_box/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/modprobe.d/alsa-fake_program.conf",
+                "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
-            ]
+            ],
+            "sound-card-init-conf": "project_box.MAX98373.yaml",
+            "speaker-amp": "MAX98373",
+            "ucm-suffix": "card_suffix.fixed_suffix"
           }
         },
         "brand-code": "FDBX",
@@ -1564,22 +1691,45 @@
             "cras-config-dir": "project_box",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/HiFi.conf",
-                "source": "ucm-config/fakeaudiocard/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.fixed_suffix/HiFi.conf",
+                "source": "project_box/audio/ucm-config/fakeaudiocard.card_suffix.fixed_suffix/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard/fakeaudiocard.conf",
-                "source": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.fixed_suffix/fakeaudiocard.card_suffix.fixed_suffix.conf",
+                "source": "project_box/audio/ucm-config/fakeaudiocard.card_suffix.fixed_suffix/fakeaudiocard.card_suffix.fixed_suffix.conf"
               },
               {
                 "destination": "/etc/cras/project_box/fakeaudiocard",
-                "source": "audio/fakeaudiocard/fakeaudiocard"
+                "source": "project_box/audio/cras-config/fakeaudiocard.card_settings"
+              },
+              {
+                "destination": "/etc/sound_card_init/project_box.MAX98373.yaml",
+                "source": "project_box/audio/sound_card_init/project_box.MAX98373.yaml"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HiFi.conf"
+              },
+              {
+                "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HDA ATI HDMI.conf",
+                "source": "common/audio/ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               },
               {
                 "destination": "/etc/cras/project_box/dsp.ini",
-                "source": "audio/fakeaudiocard/dsp.ini"
+                "source": "project_box/audio/cras-config/dsp.ini"
+              },
+              {
+                "destination": "/etc/cras/project_box/board.ini",
+                "source": "project_box/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/modprobe.d/alsa-fake_program.conf",
+                "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
-            ]
+            ],
+            "sound-card-init-conf": "project_box.MAX98373.yaml",
+            "speaker-amp": "MAX98373",
+            "ucm-suffix": "card_suffix.fixed_suffix"
           }
         },
         "brand-code": "FDBX",

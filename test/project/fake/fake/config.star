@@ -76,7 +76,42 @@ _HDMI = hw_topo.create_hdmi(
     id = "HDMI",
     description = "HDMI port",
 )
-_AUDIO = hw_topo.create_audio("AUDIO", "Default audio", speaker_amp = hw_topo.amplifier.MAX98373, headphone_codec = hw_topo.audio_codec.ALC5682I)
+
+_AUDIO_CARD = "fakeaudiocard"
+_AUDIO = hw_topo.create_audio(
+    "AUDIO",
+    "Default audio",
+    headphone_codec = hw_topo.audio_codec.ALC5682I,
+    card_configs = [hw_topo.create_audio_card_config(
+        card_name = _AUDIO_CARD,
+    )],
+)
+_AUDIO_WITH_INIT = hw_topo.create_audio(
+    "AUDIO",
+    "Default audio",
+    speaker_amp = hw_topo.amplifier.MAX98373,
+    headphone_codec = hw_topo.audio_codec.ALC5682I,
+    card_configs = [
+        hw_topo.create_audio_card_config(
+            card_name = _AUDIO_CARD + ".card_suffix",
+            sound_card_init_config = hw_topo.audio_config_structure.DESIGN,
+        ),
+    ],
+)
+
+_AUDIO_WITHOUT_MIC_SUFFIX = hw_topo.override_audio(
+    _AUDIO_WITH_INIT,
+    ucm_suffix = "{design}",
+    ucm_config = hw_topo.audio_config_structure.COMMON,
+    cras_config = hw_topo.audio_config_structure.COMMON,
+)
+
+_AUDIO_WITH_FIXED_SUFFIX = hw_topo.override_audio(
+    _AUDIO_WITH_INIT,
+    ucm_suffix = "fixed_suffix",
+    ucm_config = hw_topo.audio_config_structure.DESIGN,
+)
+
 _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
 _BL_KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = True, kb_type = hw_topo.kb_type.INTERNAL, numpad_present = True, backlight_user_steps = [0, 10, 20, 40, 60, 100])
 _KEYBOARD = hw_topo.create_keyboard(backlight = False, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE, numpad_present = False)
@@ -145,8 +180,6 @@ _VOLUME_BUTTON = hw_topo.create_volume_button(
     position = 0.75,
 )
 
-_AUDIO_CARD = "fakeaudiocard"
-
 _SC_HEALTH = sc.create_health(
     vpd_has_sku_number = True,
     battery_has_smart_battery_info = True,
@@ -182,7 +215,8 @@ def create_hardware_topology(
         tpm = None,
         microphone_mute_switch = None,
         hdmi = None,
-        hps = None):
+        hps = None,
+        audio = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -193,7 +227,7 @@ def create_hardware_topology(
         screen = screen if screen else _SCREEN,
         stylus = stylus if stylus else None,
         accelerometer_gyroscope_magnetometer = sensor if sensor else _SENSOR,
-        audio = _AUDIO,
+        audio = audio if audio else _AUDIO,
         camera = camera if camera else None,
         daughter_board = daughter_board if daughter_board else _DAUGHTER_BOARD,
         motherboard_usb = _MOTHERBOARD_USB,
@@ -236,11 +270,6 @@ design.append_configs(
         hdmi = _HDMI,
         hps = _HPS,
     ),
-    audio = sc.create_audio(
-        _AUDIO_CARD,
-        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
-        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
-    ),
     bluetooth = _SC_BLUETOOTH,
     health = _SC_HEALTH,
     firmware = sc.create_fw_payloads_by_names(
@@ -280,12 +309,6 @@ design.append_configs(
         daughter_board = hw_topo.create_daughter_board("Non-default DB", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)]),
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
         keyboard = _BL_KEYBOARD,
-    ),
-    audio = sc.create_audio(
-        _AUDIO_CARD,
-        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
-        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
-        ucm_suffix = "2mic",
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
@@ -580,6 +603,7 @@ design.append_configs(
     design_id = _DESIGN_ID_B,
     config_id = 33,
     hardware_topology = create_hardware_topology(
+        audio = _AUDIO_WITH_INIT,
         daughter_board = hw_topo.create_daughter_board(
             "DB with LTE",
             "Non-default daughter_board with LTE",
@@ -593,12 +617,6 @@ design.append_configs(
         form_factor = _FORM_FACTOR_CONVERTIBLE,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
-    ),
-    audio = sc.create_audio(
-        _AUDIO_CARD,
-        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
-        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
-        ucm_suffix = "2mic",
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(
@@ -630,11 +648,6 @@ design.append_configs(
         camera = _CAMERA1,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
-    ),
-    audio = sc.create_audio(
-        _AUDIO_CARD,
-        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
-        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(
@@ -692,15 +705,6 @@ design.append_configs(
     hardware_topology = create_hardware_topology(
         camera = _CAMERA1,
     ),
-    audio = [sc.create_audio(
-        _AUDIO_CARD,
-        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
-        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
-    ), sc.create_audio(
-        _HDMI_AUDIO_CARD,
-        ucm_file = "ucm-config/%s/HiFi.conf" % _HDMI_AUDIO_CARD,
-        ucm_master_file = "ucm-config/%s/%s.conf" % (_HDMI_AUDIO_CARD, _HDMI_AUDIO_CARD),
-    )],
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
         "Fake_EC",
@@ -723,12 +727,8 @@ design.append_configs(
     config_id = 128,
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CHROMEBOX,
+        audio = _AUDIO_WITHOUT_MIC_SUFFIX,
     ),
-    audio = [sc.create_audio(
-        _AUDIO_CARD,
-        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
-        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
-    )],
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
         "Fake_EC",
@@ -750,12 +750,8 @@ design.append_configs(
     config_id = 129,
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CHROMEBASE,
+        audio = _AUDIO_WITH_FIXED_SUFFIX,
     ),
-    audio = [sc.create_audio(
-        _AUDIO_CARD,
-        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
-        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
-    )],
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
         "Fake_EC",
@@ -777,13 +773,9 @@ design.append_configs(
     config_id = 130,
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CHROMEBASE,
+        audio = _AUDIO_WITH_FIXED_SUFFIX,
         sensor = hw_topo.create_sensor("SENSOR", "Lid accelerometer", lid_accel_present = True, lid_light_present = True),
     ),
-    audio = [sc.create_audio(
-        _AUDIO_CARD,
-        card_config_file = "audio/%s/%s" % (_AUDIO_CARD, _AUDIO_CARD),
-        dsp_file = "audio/%s/dsp.ini" % _AUDIO_CARD,
-    )],
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
         "Fake_EC",

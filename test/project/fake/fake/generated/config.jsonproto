@@ -177,8 +177,15 @@
               "baseAccelerometer": 1
             },
             "audio": {
-              "headphoneCodec": 2,
-              "speakerAmp": 5
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard",
+                  "crasConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2
             },
             "barreljack": {
               "present": 1
@@ -325,8 +332,15 @@
               },
               "hardwareFeature": {
                 "audio": {
-                  "headphoneCodec": 2,
-                  "speakerAmp": 5
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard",
+                      "crasConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2
                 }
               },
               "id": "AUDIO",
@@ -684,8 +698,15 @@
               "baseAccelerometer": 1
             },
             "audio": {
-              "headphoneCodec": 2,
-              "speakerAmp": 5
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard",
+                  "crasConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2
             },
             "camera": {
               "devices": [
@@ -829,8 +850,15 @@
               },
               "hardwareFeature": {
                 "audio": {
-                  "headphoneCodec": 2,
-                  "speakerAmp": 5
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard",
+                      "crasConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2
                 }
               },
               "id": "AUDIO",
@@ -1167,8 +1195,15 @@
               "baseAccelerometer": 1
             },
             "audio": {
-              "headphoneCodec": 2,
-              "speakerAmp": 5
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard",
+                  "crasConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2
             },
             "bluetooth": {
               "component": {
@@ -1300,8 +1335,15 @@
               },
               "hardwareFeature": {
                 "audio": {
-                  "headphoneCodec": 2,
-                  "speakerAmp": 5
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard",
+                      "crasConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2
                 }
               },
               "id": "AUDIO",
@@ -1631,6 +1673,15 @@
               "baseAccelerometer": 1
             },
             "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 1,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
               "headphoneCodec": 2,
               "speakerAmp": 5
             },
@@ -1764,6 +1815,15 @@
               },
               "hardwareFeature": {
                 "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 1,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
                   "headphoneCodec": 2,
                   "speakerAmp": 5
                 }
@@ -2082,8 +2142,15 @@
               "baseAccelerometer": 1
             },
             "audio": {
-              "headphoneCodec": 2,
-              "speakerAmp": 5
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard",
+                  "crasConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2
             },
             "bluetooth": {
               "component": {
@@ -2213,8 +2280,15 @@
               },
               "hardwareFeature": {
                 "audio": {
-                  "headphoneCodec": 2,
-                  "speakerAmp": 5
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard",
+                      "crasConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2
                 }
               },
               "id": "AUDIO",
@@ -2530,8 +2604,15 @@
               "baseAccelerometer": 1
             },
             "audio": {
-              "headphoneCodec": 2,
-              "speakerAmp": 5
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard",
+                  "crasConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2
             },
             "camera": {
               "devices": [
@@ -2649,8 +2730,15 @@
               },
               "hardwareFeature": {
                 "audio": {
-                  "headphoneCodec": 2,
-                  "speakerAmp": 5
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard",
+                      "crasConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2
                 }
               },
               "id": "AUDIO",
@@ -2937,8 +3025,15 @@
               "baseAccelerometer": 1
             },
             "audio": {
-              "headphoneCodec": 2,
-              "speakerAmp": 5
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard",
+                  "crasConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2
             },
             "camera": {
               "devices": [
@@ -3056,8 +3151,15 @@
               },
               "hardwareFeature": {
                 "audio": {
-                  "headphoneCodec": 2,
-                  "speakerAmp": 5
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard",
+                      "crasConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2
                 }
               },
               "id": "AUDIO",
@@ -3344,6 +3446,16 @@
               "baseAccelerometer": 1
             },
             "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 2,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 2,
+                  "ucmSuffix": "{design}"
+                }
+              ],
+              "crasConfig": 2,
               "headphoneCodec": 2,
               "speakerAmp": 5
             },
@@ -3451,6 +3563,16 @@
               },
               "hardwareFeature": {
                 "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 2,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 2,
+                      "ucmSuffix": "{design}"
+                    }
+                  ],
+                  "crasConfig": 2,
                   "headphoneCodec": 2,
                   "speakerAmp": 5
                 }
@@ -3696,6 +3818,16 @@
               "baseAccelerometer": 1
             },
             "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 1,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 1,
+                  "ucmSuffix": "fixed_suffix"
+                }
+              ],
+              "crasConfig": 1,
               "headphoneCodec": 2,
               "speakerAmp": 5
             },
@@ -3803,6 +3935,16 @@
               },
               "hardwareFeature": {
                 "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 1,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 1,
+                      "ucmSuffix": "fixed_suffix"
+                    }
+                  ],
+                  "crasConfig": 1,
                   "headphoneCodec": 2,
                   "speakerAmp": 5
                 }
@@ -4048,6 +4190,16 @@
               "lidAccelerometer": 1
             },
             "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 1,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 1,
+                  "ucmSuffix": "fixed_suffix"
+                }
+              ],
+              "crasConfig": 1,
               "headphoneCodec": 2,
               "speakerAmp": 5
             },
@@ -4145,6 +4297,16 @@
               },
               "hardwareFeature": {
                 "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 1,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 1,
+                      "ucmSuffix": "fixed_suffix"
+                    }
+                  ],
+                  "crasConfig": 1,
                   "headphoneCodec": 2,
                   "speakerAmp": 5
                 }
@@ -4658,18 +4820,6 @@
   ],
   "softwareConfigs": [
     {
-      "audioConfigs": [
-        {
-          "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
-          "cardName": "fakeaudiocard",
-          "dspFile": "audio/fakeaudiocard/dsp.ini",
-          "publicReplication": {
-            "publicFields": "cardName"
-          },
-          "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
-          "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
-        }
-      ],
       "bluetoothConfig": {
         "flags": {
           "enable-suspend-management": true
@@ -4763,19 +4913,6 @@
       }
     },
     {
-      "audioConfigs": [
-        {
-          "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
-          "cardName": "fakeaudiocard",
-          "dspFile": "audio/fakeaudiocard/dsp.ini",
-          "publicReplication": {
-            "publicFields": "cardName"
-          },
-          "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
-          "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf",
-          "ucmSuffix": "2mic"
-        }
-      ],
       "cameraConfig": {
         "generateMediaProfiles": true
       },
@@ -5168,19 +5305,6 @@
       }
     },
     {
-      "audioConfigs": [
-        {
-          "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
-          "cardName": "fakeaudiocard",
-          "dspFile": "audio/fakeaudiocard/dsp.ini",
-          "publicReplication": {
-            "publicFields": "cardName"
-          },
-          "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
-          "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf",
-          "ucmSuffix": "2mic"
-        }
-      ],
       "bluetoothConfig": {
         "flags": {
           "enable-suspend-management": true
@@ -5260,18 +5384,6 @@
       }
     },
     {
-      "audioConfigs": [
-        {
-          "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
-          "cardName": "fakeaudiocard",
-          "dspFile": "audio/fakeaudiocard/dsp.ini",
-          "publicReplication": {
-            "publicFields": "cardName"
-          },
-          "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
-          "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
-        }
-      ],
       "bluetoothConfig": {
         "flags": {
           "enable-suspend-management": true
@@ -5427,26 +5539,6 @@
       }
     },
     {
-      "audioConfigs": [
-        {
-          "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
-          "cardName": "fakeaudiocard",
-          "dspFile": "audio/fakeaudiocard/dsp.ini",
-          "publicReplication": {
-            "publicFields": "cardName"
-          },
-          "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
-          "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
-        },
-        {
-          "cardName": "HDA ATI HDMI",
-          "publicReplication": {
-            "publicFields": "cardName"
-          },
-          "ucmFile": "ucm-config/HDA ATI HDMI/HiFi.conf",
-          "ucmMasterFile": "ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
-        }
-      ],
       "designConfigId": {
         "value": "PROJECT_REBRAND:65"
       },
@@ -5512,18 +5604,6 @@
       }
     },
     {
-      "audioConfigs": [
-        {
-          "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
-          "cardName": "fakeaudiocard",
-          "dspFile": "audio/fakeaudiocard/dsp.ini",
-          "publicReplication": {
-            "publicFields": "cardName"
-          },
-          "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
-          "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
-        }
-      ],
       "cameraConfig": {
         "generateMediaProfiles": true
       },
@@ -5592,18 +5672,6 @@
       }
     },
     {
-      "audioConfigs": [
-        {
-          "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
-          "cardName": "fakeaudiocard",
-          "dspFile": "audio/fakeaudiocard/dsp.ini",
-          "publicReplication": {
-            "publicFields": "cardName"
-          },
-          "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
-          "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
-        }
-      ],
       "cameraConfig": {
         "generateMediaProfiles": true
       },
@@ -5672,18 +5740,6 @@
       }
     },
     {
-      "audioConfigs": [
-        {
-          "cardConfigFile": "audio/fakeaudiocard/fakeaudiocard",
-          "cardName": "fakeaudiocard",
-          "dspFile": "audio/fakeaudiocard/dsp.ini",
-          "publicReplication": {
-            "publicFields": "cardName"
-          },
-          "ucmFile": "ucm-config/fakeaudiocard/HiFi.conf",
-          "ucmMasterFile": "ucm-config/fakeaudiocard/fakeaudiocard.conf"
-        }
-      ],
       "cameraConfig": {
         "generateMediaProfiles": true
       },

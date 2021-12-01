@@ -21,7 +21,7 @@
       "component.has_touchscreen": true,
       "component.has_wifi": true,
       "component.headphone_codec": "ALC5682I",
-      "component.speaker_amp": "MAX98373"
+      "component.speaker_amp": "AMPLIFIER_UNKNOWN"
     },
     "project_a": {
       "component.audio_card_name": "fakeaudiocard",
@@ -70,7 +70,7 @@
           1
         ]
       ],
-      "component.speaker_amp": "MAX98373",
+      "component.speaker_amp": "AMPLIFIER_UNKNOWN",
       "fw_config": 90913
     },
     "project_b": {
@@ -215,7 +215,7 @@
           1
         ]
       ],
-      "component.speaker_amp": "MAX98373",
+      "component.speaker_amp": "AMPLIFIER_UNKNOWN",
       "fw_config": 90913
     },
     "project_rebrand": {
@@ -265,7 +265,7 @@
           0
         ]
       ],
-      "component.speaker_amp": "MAX98373",
+      "component.speaker_amp": "AMPLIFIER_UNKNOWN",
       "custom_type": "rebrand",
       "fw_config": 90913
     },
@@ -316,7 +316,7 @@
           0
         ]
       ],
-      "component.speaker_amp": "MAX98373",
+      "component.speaker_amp": "AMPLIFIER_UNKNOWN",
       "custom_type": "whitelabel",
       "fw_config": 90913
     }

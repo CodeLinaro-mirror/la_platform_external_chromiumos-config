@@ -111,6 +111,12 @@ _TPM_TYPE = struct(
     GSC_H1D = topo_pb.HardwareFeatures.TrustedPlatformModule.GSC_H1D,
 )
 
+_AUDIO_CONFIG_STRUCTURE = struct(
+    NONE = topo_pb.HardwareFeatures.Audio.AUDIO_CONFIG_STRUCTURE_NONE,
+    DESIGN = topo_pb.HardwareFeatures.Audio.DESIGN,
+    COMMON = topo_pb.HardwareFeatures.Audio.COMMON,
+)
+
 # Starlark doesn't support converting enums to their names. Add helper fns. to
 # do so.
 def _button_region_to_str(region):
@@ -295,8 +301,78 @@ def _create_form_factor(form_factor, fw_configs = [], id = None, description = N
         hardware_feature = hw_features,
     )
 
-def _create_audio(id, description, codec = None, speaker_amp = None, headphone_codec = None, fw_configs = []):
-    """Builds a Topology proto for audio."""
+def _create_audio_card_config(
+        card_name,
+        ucm_suffix = None,
+        cras_config = _AUDIO_CONFIG_STRUCTURE.DESIGN,
+        ucm_config = _AUDIO_CONFIG_STRUCTURE.DESIGN,
+        sound_card_init_config = _AUDIO_CONFIG_STRUCTURE.NONE):
+    """Builds a CardConfig proto for an audio card config.
+
+    Args:
+        card_name: A string. This should match the card used by ALSA, with an
+            optional suffix starting with a dot, if a suffix representing
+            hardware details, such as the speaker amplifier or jack codec is
+            required. For example, "sof-rt5682.max98373".
+        ucm_suffix: An optional format string used to generate the remainder of
+            the UCM suffix not referring to audio components. If unset, the
+            program-wide default suffix is used. The following placeholders
+            may be used:
+                {design}: The design name.
+                {camera_count}: The number of cameras (usually 0, 1 or 2).
+                {headset_codec}: The headset codec name (in lowercase)
+                    specified in the topology containing this card config.
+                {speaker_amp}: The speaker amp name (in lowercase) specified in
+                    the topology containing this card config.
+            It is strongly recommended that any details of the speaker
+            amplifier or jack codec not be included in this suffix - they
+            should instead be included as part of card_name.
+        cras_config: An AudioConfigStructure enum specifying how cras config
+            files are structured for this card. If unset, defaults to DESIGN.
+        ucm_config: An AudioConfigStructure enum specifying how ALSA UCM config
+            files are structured for this card. If unset, defaults to DESIGN.
+        sound_card_init_config: An AudioConfigStructure enum specifying how
+            sound card init config files are structured for this card. If unset,
+            defaults to NONE.
+    """
+    if ucm_config == _AUDIO_CONFIG_STRUCTURE.NONE:
+        fail("ucm_config cannot be NONE.")
+
+    config = topo_pb.HardwareFeatures.Audio.CardConfig(
+        card_name = card_name,
+        sound_card_init_config = sound_card_init_config,
+        cras_config = cras_config,
+        ucm_config = ucm_config,
+    )
+    if ucm_suffix != None:
+        config.ucm_suffix.value = ucm_suffix
+    return config
+
+def _create_audio(
+        id,
+        description,
+        codec = None,
+        speaker_amp = None,
+        headphone_codec = None,
+        fw_configs = [],
+        card_configs = [],
+        cras_config = None):
+    """Builds a Topology proto for audio.
+
+    Args:
+        id: A string identifier for the Topology.
+        description: An English description for the Topology.
+        codec: Deprecated.
+        speaker_amp: An Amplifier enum value specifying the speaker amplifier.
+        headphone_codec: An AudioCodec enum value specifying the jack codec.
+        fw_configs: A list of FirmwareConfiguration protos for this audio
+            topology.
+        card_configs: A list of CardConfig protos specifying card configs to be
+            installed and used for this audio topology.
+        cras_config: An AudioConfigStructure enum specifying how card-agnostic
+            cras config files are structured. If unset, defaults to
+            DESIGN if any card_configs are passed, otherwise NONE.
+    """
     hw_features = topo_pb.HardwareFeatures()
 
     if codec:
@@ -305,6 +381,12 @@ def _create_audio(id, description, codec = None, speaker_amp = None, headphone_c
         hw_features.audio.speaker_amp = speaker_amp
     if headphone_codec:
         hw_features.audio.headphone_codec = headphone_codec
+    if card_configs:
+        hw_features.audio.card_configs = card_configs
+    if cras_config != None:
+        hw_features.audio.cras_config = cras_config
+    elif card_configs:
+        hw_features.audio.cras_config = _AUDIO_CONFIG_STRUCTURE.DESIGN
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -314,6 +396,36 @@ def _create_audio(id, description, codec = None, speaker_amp = None, headphone_c
         description = {"EN": description},
         hardware_feature = hw_features,
     )
+
+def _override_audio(
+        source_topo,
+        fw_configs = None,
+        ucm_suffix = None,
+        cras_config = None,
+        ucm_config = None,
+        sound_card_init_config = None):
+    if source_topo.type != topo_pb.Topology.AUDIO:
+        fail("Invalid audio topology")
+
+    topo = proto.clone(source_topo)
+    hw_features = topo.hardware_feature
+    if fw_configs != None:
+        hw_features.fw_config = topo_pb.HardwareFeatures.FirmwareConfiguration()
+        _accumulate_fw_configs(hw_features.fw_config, fw_configs)
+    for card_config in hw_features.audio.card_configs:
+        if ucm_config != None:
+            if ucm_config == _AUDIO_CONFIG_STRUCTURE.NONE:
+                fail("ucm_config cannot be NONE.")
+            card_config.ucm_config = ucm_config
+        if ucm_suffix != None:
+            card_config.ucm_suffix.value = ucm_suffix
+        if cras_config != None:
+            card_config.cras_config = cras_config
+        if sound_card_init_config != None:
+            card_config.sound_card_init_config = sound_card_init_config
+    if cras_config != None:
+        hw_features.audio.cras_config = cras_config
+    return topo
 
 def _create_stylus(id, description, stylus_type, fw_configs = []):
     """Builds a Topology proto for a stylus."""
@@ -1250,6 +1362,8 @@ hw_topo = struct(
     create_als_step = _create_als_step,
     create_form_factor = _create_form_factor,
     create_audio = _create_audio,
+    create_audio_card_config = _create_audio_card_config,
+    override_audio = _override_audio,
     create_stylus = _create_stylus,
     create_keyboard = _create_keyboard,
     create_thermal = _create_thermal,
@@ -1289,6 +1403,7 @@ hw_topo = struct(
     edge = _EDGE,
     camera_flags = _CAMERA_FLAGS,
     present = _PRESENT,
+    audio_config_structure = _AUDIO_CONFIG_STRUCTURE,
 
     # embedded controller exports
     ec_type = _EC_TYPE,

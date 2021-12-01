@@ -7,6 +7,7 @@ syntax = "proto3";
 package chromiumos.config.api;
 
 import "chromiumos/config/api/component.proto";
+import "google/protobuf/wrappers.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
@@ -190,6 +191,12 @@ message HardwareFeatures {
     // Which amplifier is in use for the speakers if one is present
     Component.Amplifier speaker_amplifier = 6;
 
+    // The card configs for this topology.
+    repeated CardConfig card_configs = 7;
+
+      // The source config file layout used for card-agnostic cras config.
+    AudioConfigStructure cras_config = 8;
+
     enum AudioCodec {
       AUDIO_CODEC_UNKNOWN = 0;  // Also used for non-public audio codecs
       RT5682 = 1;
@@ -218,6 +225,32 @@ message HardwareFeatures {
       RT1015P = 10;
       ALC1019 = 11;
       MAX98390 = 12;
+    }
+
+    enum AudioConfigStructure {
+      AUDIO_CONFIG_STRUCTURE_NONE = 0;
+      DESIGN = 1;
+      COMMON = 2;
+    }
+
+    // The configuration file layout structure for a single card.
+    message CardConfig {
+      // The name of the audio card.
+      string card_name = 1;
+
+      // The UCM suffix pattern for this card if different to the program-level
+      // default.
+      google.protobuf.StringValue ucm_suffix = 2;
+
+      // The source config file layout used for UCM config. May not be
+      // AUDIO_CONFIG_STRUCTURE_NONE.
+      AudioConfigStructure ucm_config = 3;
+
+      // The source config file layout used for card-level cras config.
+      AudioConfigStructure cras_config = 4;
+
+      // The source config file layout used for sound card init config.
+      AudioConfigStructure sound_card_init_config = 5;
     }
   }
 
