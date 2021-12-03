@@ -17,9 +17,9 @@ import "chromiumos/config/api/software/health_config.proto";
 import "chromiumos/config/api/software/nnpalm_config.proto";
 import "chromiumos/config/api/software/power_config.proto";
 import "chromiumos/config/api/software/resource_config.proto";
-import "chromiumos/config/api/software/wifi_config.proto";
 import "chromiumos/config/api/software/ui_config.proto";
 import "chromiumos/config/api/software/usb_config.proto";
+import "chromiumos/config/api/wifi_config.proto";
 import "chromiumos/config/public_replication/public_replication.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api/software";

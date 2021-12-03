@@ -46,8 +46,8 @@ load(
     resource_pb = "chromiumos.config.api.software",
 )
 load(
-    "@proto//chromiumos/config/api/software/wifi_config.proto",
-    wf_pb = "chromiumos.config.api.software",
+    "@proto//chromiumos/config/api/wifi_config.proto",
+    wf_pb = "chromiumos.config.api",
 )
 load("//config/util/public_replication.star", "public_replication")
 

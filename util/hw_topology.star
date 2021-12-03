@@ -786,9 +786,12 @@ def _create_non_volatile_storage(id, description, storage_type, fw_configs = [])
         hardware_feature = hw_features,
     )
 
-def _create_wifi(id, description, fw_configs = []):
+def _create_wifi(id, description, fw_configs = [], wifi_config = None):
     """Builds a Topology proto for a WiFi chip."""
     hw_features = topo_pb.HardwareFeatures()
+
+    if wifi_config:
+        hw_features.wifi.wifi_config = wifi_config
 
     _accumulate_fw_configs(hw_features, fw_configs)
 

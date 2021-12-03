@@ -120,7 +120,7 @@
         ]
       ],
       "component.speaker_amp": "MAX98373",
-      "fw_config": 90912
+      "fw_config": 66336
     },
     "project_box": {
       "component.audio_card_name": "fakeaudiocard",
@@ -213,7 +213,7 @@
         ]
       ],
       "component.speaker_amp": "AMPLIFIER_UNKNOWN",
-      "fw_config": 90913
+      "fw_config": 66337
     },
     "project_rebrand": {
       "component.audio_card_name": "fakeaudiocard",

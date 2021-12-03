@@ -4,9 +4,9 @@
 
 syntax = "proto3";
 
-option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+option go_package = "go.chromium.org/chromiumos/config/go/api";
 
-package chromiumos.config.api.software;
+package chromiumos.config.api;
 
 // Sets limits on maximum WiFi transmit power for tablet and non-tablet
 // device configurations. This config must contain properties for ath10k, rtw88,
