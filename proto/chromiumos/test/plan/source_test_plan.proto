@@ -43,12 +43,15 @@ message SourceTestPlan {
   // The Starlark file must output a list of HW/VMTestPlan protos based on an
   // input BuildMetadataList and FlatConfigList.
   message TestPlanStarlarkFile {
-    // Repo containing the Starlark file.
-    string repo = 1;
+    // Gitiles hostname, e.g. "chromium.googlesource.com".
+    string host = 1;
+
+    // Repository name on the host, e.g. "chromium/src".
+    string project = 2;
 
     // Absolute path within the repo to the Starlark file. Regexes are not
     // allowed.
-    string path = 2;
+    string path = 3;
   }
 
   // Starlark files to evaluate to generate HW/VMTestPlan protos.

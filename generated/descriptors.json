@@ -16635,17 +16635,24 @@
             {
               "field": [
                 {
-                  "jsonName": "repo",
+                  "jsonName": "host",
                   "label": "LABEL_OPTIONAL",
-                  "name": "repo",
+                  "name": "host",
                   "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "project",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "project",
+                  "number": 2,
                   "type": "TYPE_STRING"
                 },
                 {
                   "jsonName": "path",
                   "label": "LABEL_OPTIONAL",
                   "name": "path",
-                  "number": 2,
+                  "number": 3,
                   "type": "TYPE_STRING"
                 }
               ],
