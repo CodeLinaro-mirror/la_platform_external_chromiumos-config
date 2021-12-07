@@ -14781,6 +14781,13 @@
                   "number": 2,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.api.ProvisionState"
+                },
+                {
+                  "jsonName": "containerMetadataKey",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "container_metadata_key",
+                  "number": 3,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Device"
@@ -14816,7 +14823,7 @@
               "name": "primary_dut",
               "number": 2,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.Dut"
+              "typeName": ".chromiumos.test.api.CrosToolRunnerTestRequest.Device"
             },
             {
               "jsonName": "companionDuts",
@@ -14824,7 +14831,7 @@
               "name": "companion_duts",
               "number": 3,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.Dut"
+              "typeName": ".chromiumos.test.api.CrosToolRunnerTestRequest.Device"
             },
             {
               "jsonName": "inventoryServer",
@@ -14842,7 +14849,29 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "CrosToolRunnerTestRequest"
+          "name": "CrosToolRunnerTestRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "dut",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Dut"
+                },
+                {
+                  "jsonName": "containerMetadataKey",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "container_metadata_key",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Device"
+            }
+          ]
         },
         {
           "field": [
@@ -14872,6 +14901,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "artifact_dir",
               "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "containerMetadataKey",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_metadata_key",
+              "number": 3,
               "type": "TYPE_STRING"
             }
           ],
