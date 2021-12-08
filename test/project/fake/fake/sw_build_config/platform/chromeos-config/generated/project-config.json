@@ -66,7 +66,7 @@
           "battery": {
             "has-smart-battery-info": true
           },
-          "cached_vpd": {
+          "cached-vpd": {
             "has-sku-number": true
           }
         },

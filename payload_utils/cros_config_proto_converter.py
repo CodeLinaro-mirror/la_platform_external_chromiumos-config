@@ -448,7 +448,7 @@ def _build_health(config: Config):
 
   health_config = config.sw_config.health_config
   result = {}
-  _upsert(_build_health_cached_vpd(health_config), result, 'cached_vpd')
+  _upsert(_build_health_cached_vpd(health_config), result, 'cached-vpd')
   _upsert(_build_health_battery(health_config), result, 'battery')
   return result
 
