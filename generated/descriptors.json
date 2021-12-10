@@ -15955,6 +15955,190 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/api/dut_service.proto",
+        "chromiumos/longrunning/operations.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "servodHostPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "servod_host_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dockerServodName",
+              "label": "LABEL_OPTIONAL",
+              "name": "docker_servod_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "buildVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_version",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "serialName",
+              "label": "LABEL_OPTIONAL",
+              "name": "serial_name",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "port",
+              "label": "LABEL_OPTIONAL",
+              "name": "port",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "debug",
+              "label": "LABEL_OPTIONAL",
+              "name": "debug",
+              "number": 8,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "recoveryMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "recovery_mode",
+              "number": 9,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "config",
+              "label": "LABEL_OPTIONAL",
+              "name": "config",
+              "number": 10,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "allowDualV4",
+              "label": "LABEL_OPTIONAL",
+              "name": "allow_dual_v4",
+              "number": 11,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StartServodRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StartServodResponse"
+        },
+        {
+          "name": "StartServodMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "servodHostPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "servod_host_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dockerServodName",
+              "label": "LABEL_OPTIONAL",
+              "name": "docker_servod_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StopServodRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "output",
+              "label": "LABEL_OPTIONAL",
+              "name": "output",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StopServodResponse"
+        },
+        {
+          "name": "StopServodMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/servod_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.StartServodRequest",
+              "name": "StartServod",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "StartServodMetadata",
+                  "responseType": "StartServodResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.StartServodRequest",
+              "name": "StopServod",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "StartServodMetadata",
+                  "responseType": "StartServodResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ExecCommandRequest",
+              "name": "ExecCommand",
+              "outputType": ".chromiumos.test.api.ExecCommandResponse",
+              "serverStreaming": true
+            }
+          ],
+          "name": "ServodService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/test/api/test_case.proto",
         "chromiumos/test/api/test_harness.proto"
       ],

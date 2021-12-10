@@ -1,0 +1,109 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/dut_service.proto";
+
+import "chromiumos/longrunning/operations.proto";
+
+// Provides the ability to start/stop a servod Docker container either on the
+// same host or a remote servo host and execute servod commands on it.
+// go/cros-servod-design to learn more about the design.
+service ServodService {
+  // StartServod runs a servod Docker container and starts the servod daemon
+  // inside the container.
+  rpc StartServod(StartServodRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "StartServodResponse",
+      metadata_type: "StartServodMetadata"
+    };
+  }
+
+  // StopServod stops the servod Docker container.
+  rpc StopServod(StartServodRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "StartServodResponse",
+      metadata_type: "StartServodMetadata"
+    };
+  }
+
+  // ExecCommand runs a servod command inside the servod Docker container.
+  // If docker_servod_name is not provided, the command is executed directly
+  // inside the current host.
+  // Some example commands:
+  // "dut-control -p $PORT power_state:off"
+  rpc ExecCommand(ExecCommandRequest)
+      returns (stream ExecCommandResponse);
+}
+
+message StartServodRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servod_host_path = 1;
+
+  // The servod Docker container name.
+  string docker_servod_name = 2;
+
+  // The build version of Chrome OS.
+  // This will be used as the tag name for the servod image to pull from GCR.
+  string build_version = 3;
+
+  // The --BOARD parameter value for servod command.
+  string board = 4;
+
+  // The --MODEL parameter value for servod command.
+  string model = 5;
+
+  // The --SERIALNAME parameter value for servod command.
+  string serial_name = 6;
+
+  // The --PORT parameter value for servod command.
+  string port = 7;
+
+  // The --DEBUG parameter value for servod command.
+  string debug = 8;
+
+  // The --RECOVERY_MODE parameter value for servod command.
+  string recovery_mode = 9;
+
+  // The --CONFIG parameter value for servod command.
+  string config = 10;
+
+  // The --ALLOW-DUAL-V4 parameter value for servod command.
+  string allow_dual_v4 = 11;
+}
+
+message StartServodResponse {
+  // The stdout/stderr output for the start operation.
+  string output = 1;
+}
+
+message StartServodMetadata {
+}
+
+message StopServodRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servod_host_path = 1;
+
+  // The servod Docker container name.
+  string docker_servod_name = 2;
+}
+
+message StopServodResponse {
+  // The stdout/stderr output for the stop operation.
+  string output = 1;
+}
+
+message StopServodMetadata {
+}
