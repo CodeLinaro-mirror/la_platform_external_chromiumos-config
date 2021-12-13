@@ -15265,18 +15265,29 @@
         {
           "field": [
             {
-              "jsonName": "destinationPath",
+              "jsonName": "file",
               "label": "LABEL_OPTIONAL",
-              "name": "destination_path",
+              "name": "file",
               "number": 1,
-              "type": "TYPE_STRING"
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CacheRequest.LocalFile"
+            },
+            {
+              "jsonName": "pipe",
+              "label": "LABEL_OPTIONAL",
+              "name": "pipe",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CacheRequest.Pipe"
             },
             {
               "jsonName": "gsFile",
               "label": "LABEL_OPTIONAL",
               "name": "gs_file",
-              "number": 2,
-              "oneofIndex": 0,
+              "number": 3,
+              "oneofIndex": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CacheRequest.GSFile"
             },
@@ -15284,8 +15295,8 @@
               "jsonName": "gsZipFile",
               "label": "LABEL_OPTIONAL",
               "name": "gs_zip_file",
-              "number": 3,
-              "oneofIndex": 0,
+              "number": 4,
+              "oneofIndex": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CacheRequest.GSZipFile"
             },
@@ -15293,14 +15304,38 @@
               "jsonName": "gsTarFile",
               "label": "LABEL_OPTIONAL",
               "name": "gs_tar_file",
-              "number": 4,
-              "oneofIndex": 0,
+              "number": 5,
+              "oneofIndex": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CacheRequest.GSTARFile"
             }
           ],
           "name": "CacheRequest",
           "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "path",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "path",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "LocalFile"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "commands",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "commands",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Pipe"
+            },
             {
               "field": [
                 {
@@ -15346,6 +15381,9 @@
             }
           ],
           "oneofDecl": [
+            {
+              "name": "destination"
+            },
             {
               "name": "source"
             }

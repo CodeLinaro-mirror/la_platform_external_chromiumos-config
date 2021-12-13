@@ -288,8 +288,21 @@ message RestartMetadata {
 }
 
 message CacheRequest {
-  // Where to place the file in the DUT
-  string destination_path = 1;
+  // Where to place the file in the DUT:
+  // * Local DUT File
+  // * Pipe to command
+  message LocalFile {
+    string path = 1;
+  }
+
+  message Pipe {
+    string commands = 1;
+  }
+
+  oneof destination {
+    LocalFile file = 1;
+    Pipe pipe = 2;
+  }
 
   // A file downloaded may be one of:
   //  * A regular file
@@ -309,9 +322,9 @@ message CacheRequest {
   }
 
   oneof source {
-    GSFile gs_file = 2;
-    GSZipFile gs_zip_file = 3;
-    GSTARFile gs_tar_file = 4;
+    GSFile gs_file = 3;
+    GSZipFile gs_zip_file = 4;
+    GSTARFile gs_tar_file = 5;
   }
 }
 
