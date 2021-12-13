@@ -15993,7 +15993,6 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/api/dut_service.proto",
         "chromiumos/longrunning/operations.proto"
       ],
       "messageType": [
@@ -16127,6 +16126,104 @@
         },
         {
           "name": "StopServodMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "servodHostPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "servod_host_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dockerServodName",
+              "label": "LABEL_OPTIONAL",
+              "name": "docker_servod_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "command",
+              "label": "LABEL_OPTIONAL",
+              "name": "command",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "stdin",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdin",
+              "number": 4,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "ExecCmdRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "exitInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "exit_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ExecCmdResponse.ExitInfo"
+            },
+            {
+              "jsonName": "stdout",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdout",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "stderr",
+              "label": "LABEL_OPTIONAL",
+              "name": "stderr",
+              "number": 3,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "ExecCmdResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "status",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "status",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "signaled",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "signaled",
+                  "number": 2,
+                  "type": "TYPE_BOOL"
+                },
+                {
+                  "jsonName": "started",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "started",
+                  "number": 3,
+                  "type": "TYPE_BOOL"
+                },
+                {
+                  "jsonName": "errorMessage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "error_message",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ExitInfo"
+            }
+          ]
+        },
+        {
+          "name": "ExecCmdMetadata"
         }
       ],
       "name": "chromiumos/test/api/servod_service.proto",
@@ -16160,9 +16257,9 @@
               "outputType": ".chromiumos.longrunning.Operation"
             },
             {
-              "inputType": ".chromiumos.test.api.ExecCommandRequest",
-              "name": "ExecCommand",
-              "outputType": ".chromiumos.test.api.ExecCommandResponse",
+              "inputType": ".chromiumos.test.api.ExecCmdRequest",
+              "name": "ExecCmd",
+              "outputType": ".chromiumos.test.api.ExecCmdResponse",
               "serverStreaming": true
             }
           ],

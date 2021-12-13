@@ -12,7 +12,6 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from chromiumos.test.api import dut_service_pb2 as chromiumos_dot_test_dot_api_dot_dut__service__pb2
 from chromiumos.longrunning import operations_pb2 as chromiumos_dot_longrunning_dot_operations__pb2
 
 
@@ -21,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n(chromiumos/test/api/servod_service.proto\x12\x13\x63hromiumos.test.api\x1a%chromiumos/test/api/dut_service.proto\x1a\'chromiumos/longrunning/operations.proto\"\xef\x01\n\x12StartServodRequest\x12\x18\n\x10servod_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\x12\x15\n\rbuild_version\x18\x03 \x01(\t\x12\r\n\x05\x62oard\x18\x04 \x01(\t\x12\r\n\x05model\x18\x05 \x01(\t\x12\x13\n\x0bserial_name\x18\x06 \x01(\t\x12\x0c\n\x04port\x18\x07 \x01(\t\x12\r\n\x05\x64\x65\x62ug\x18\x08 \x01(\t\x12\x15\n\rrecovery_mode\x18\t \x01(\t\x12\x0e\n\x06\x63onfig\x18\n \x01(\t\x12\x15\n\rallow_dual_v4\x18\x0b \x01(\t\"%\n\x13StartServodResponse\x12\x0e\n\x06output\x18\x01 \x01(\t\"\x15\n\x13StartServodMetadata\"I\n\x11StopServodRequest\x12\x18\n\x10servod_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\"$\n\x12StopServodResponse\x12\x0e\n\x06output\x18\x01 \x01(\t\"\x14\n\x12StopServodMetadata2\x88\x03\n\rServodService\x12\x88\x01\n\x0bStartServod\x12\'.chromiumos.test.api.StartServodRequest\x1a!.chromiumos.longrunning.Operation\"-\xd2\x41*\n\x13StartServodResponse\x12\x13StartServodMetadata\x12\x87\x01\n\nStopServod\x12\'.chromiumos.test.api.StartServodRequest\x1a!.chromiumos.longrunning.Operation\"-\xd2\x41*\n\x13StartServodResponse\x12\x13StartServodMetadata\x12\x62\n\x0b\x45xecCommand\x12\'.chromiumos.test.api.ExecCommandRequest\x1a(.chromiumos.test.api.ExecCommandResponse0\x01\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n(chromiumos/test/api/servod_service.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\"\xef\x01\n\x12StartServodRequest\x12\x18\n\x10servod_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\x12\x15\n\rbuild_version\x18\x03 \x01(\t\x12\r\n\x05\x62oard\x18\x04 \x01(\t\x12\r\n\x05model\x18\x05 \x01(\t\x12\x13\n\x0bserial_name\x18\x06 \x01(\t\x12\x0c\n\x04port\x18\x07 \x01(\t\x12\r\n\x05\x64\x65\x62ug\x18\x08 \x01(\t\x12\x15\n\rrecovery_mode\x18\t \x01(\t\x12\x0e\n\x06\x63onfig\x18\n \x01(\t\x12\x15\n\rallow_dual_v4\x18\x0b \x01(\t\"%\n\x13StartServodResponse\x12\x0e\n\x06output\x18\x01 \x01(\t\"\x15\n\x13StartServodMetadata\"I\n\x11StopServodRequest\x12\x18\n\x10servod_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\"$\n\x12StopServodResponse\x12\x0e\n\x06output\x18\x01 \x01(\t\"\x14\n\x12StopServodMetadata\"f\n\x0e\x45xecCmdRequest\x12\x18\n\x10servod_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x03 \x01(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\"\xc9\x01\n\x0f\x45xecCmdResponse\x12@\n\texit_info\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.ExecCmdResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x11\n\x0f\x45xecCmdMetadata2\xfc\x02\n\rServodService\x12\x88\x01\n\x0bStartServod\x12\'.chromiumos.test.api.StartServodRequest\x1a!.chromiumos.longrunning.Operation\"-\xd2\x41*\n\x13StartServodResponse\x12\x13StartServodMetadata\x12\x87\x01\n\nStopServod\x12\'.chromiumos.test.api.StartServodRequest\x1a!.chromiumos.longrunning.Operation\"-\xd2\x41*\n\x13StartServodResponse\x12\x13StartServodMetadata\x12V\n\x07\x45xecCmd\x12#.chromiumos.test.api.ExecCmdRequest\x1a$.chromiumos.test.api.ExecCmdResponse0\x01\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
   ,
-  dependencies=[chromiumos_dot_test_dot_api_dot_dut__service__pb2.DESCRIPTOR,chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
 
 
 
@@ -124,8 +123,8 @@ _STARTSERVODREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=146,
-  serialized_end=385,
+  serialized_start=107,
+  serialized_end=346,
 )
 
 
@@ -155,8 +154,8 @@ _STARTSERVODRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=387,
-  serialized_end=424,
+  serialized_start=348,
+  serialized_end=385,
 )
 
 
@@ -179,8 +178,8 @@ _STARTSERVODMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=426,
-  serialized_end=447,
+  serialized_start=387,
+  serialized_end=408,
 )
 
 
@@ -217,8 +216,8 @@ _STOPSERVODREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=449,
-  serialized_end=522,
+  serialized_start=410,
+  serialized_end=483,
 )
 
 
@@ -248,8 +247,8 @@ _STOPSERVODRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=524,
-  serialized_end=560,
+  serialized_start=485,
+  serialized_end=521,
 )
 
 
@@ -272,16 +271,193 @@ _STOPSERVODMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=562,
-  serialized_end=582,
+  serialized_start=523,
+  serialized_end=543,
 )
 
+
+_EXECCMDREQUEST = _descriptor.Descriptor(
+  name='ExecCmdRequest',
+  full_name='chromiumos.test.api.ExecCmdRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='servod_host_path', full_name='chromiumos.test.api.ExecCmdRequest.servod_host_path', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='docker_servod_name', full_name='chromiumos.test.api.ExecCmdRequest.docker_servod_name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='command', full_name='chromiumos.test.api.ExecCmdRequest.command', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='stdin', full_name='chromiumos.test.api.ExecCmdRequest.stdin', index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=545,
+  serialized_end=647,
+)
+
+
+_EXECCMDRESPONSE_EXITINFO = _descriptor.Descriptor(
+  name='ExitInfo',
+  full_name='chromiumos.test.api.ExecCmdResponse.ExitInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='chromiumos.test.api.ExecCmdResponse.ExitInfo.status', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='signaled', full_name='chromiumos.test.api.ExecCmdResponse.ExitInfo.signaled', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='started', full_name='chromiumos.test.api.ExecCmdResponse.ExitInfo.started', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error_message', full_name='chromiumos.test.api.ExecCmdResponse.ExitInfo.error_message', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=767,
+  serialized_end=851,
+)
+
+_EXECCMDRESPONSE = _descriptor.Descriptor(
+  name='ExecCmdResponse',
+  full_name='chromiumos.test.api.ExecCmdResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='exit_info', full_name='chromiumos.test.api.ExecCmdResponse.exit_info', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='stdout', full_name='chromiumos.test.api.ExecCmdResponse.stdout', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='stderr', full_name='chromiumos.test.api.ExecCmdResponse.stderr', index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_EXECCMDRESPONSE_EXITINFO, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=650,
+  serialized_end=851,
+)
+
+
+_EXECCMDMETADATA = _descriptor.Descriptor(
+  name='ExecCmdMetadata',
+  full_name='chromiumos.test.api.ExecCmdMetadata',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=853,
+  serialized_end=870,
+)
+
+_EXECCMDRESPONSE_EXITINFO.containing_type = _EXECCMDRESPONSE
+_EXECCMDRESPONSE.fields_by_name['exit_info'].message_type = _EXECCMDRESPONSE_EXITINFO
 DESCRIPTOR.message_types_by_name['StartServodRequest'] = _STARTSERVODREQUEST
 DESCRIPTOR.message_types_by_name['StartServodResponse'] = _STARTSERVODRESPONSE
 DESCRIPTOR.message_types_by_name['StartServodMetadata'] = _STARTSERVODMETADATA
 DESCRIPTOR.message_types_by_name['StopServodRequest'] = _STOPSERVODREQUEST
 DESCRIPTOR.message_types_by_name['StopServodResponse'] = _STOPSERVODRESPONSE
 DESCRIPTOR.message_types_by_name['StopServodMetadata'] = _STOPSERVODMETADATA
+DESCRIPTOR.message_types_by_name['ExecCmdRequest'] = _EXECCMDREQUEST
+DESCRIPTOR.message_types_by_name['ExecCmdResponse'] = _EXECCMDRESPONSE
+DESCRIPTOR.message_types_by_name['ExecCmdMetadata'] = _EXECCMDMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 StartServodRequest = _reflection.GeneratedProtocolMessageType('StartServodRequest', (_message.Message,), dict(
@@ -326,6 +502,35 @@ StopServodMetadata = _reflection.GeneratedProtocolMessageType('StopServodMetadat
   ))
 _sym_db.RegisterMessage(StopServodMetadata)
 
+ExecCmdRequest = _reflection.GeneratedProtocolMessageType('ExecCmdRequest', (_message.Message,), dict(
+  DESCRIPTOR = _EXECCMDREQUEST,
+  __module__ = 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ExecCmdRequest)
+  ))
+_sym_db.RegisterMessage(ExecCmdRequest)
+
+ExecCmdResponse = _reflection.GeneratedProtocolMessageType('ExecCmdResponse', (_message.Message,), dict(
+
+  ExitInfo = _reflection.GeneratedProtocolMessageType('ExitInfo', (_message.Message,), dict(
+    DESCRIPTOR = _EXECCMDRESPONSE_EXITINFO,
+    __module__ = 'chromiumos.test.api.servod_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.ExecCmdResponse.ExitInfo)
+    ))
+  ,
+  DESCRIPTOR = _EXECCMDRESPONSE,
+  __module__ = 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ExecCmdResponse)
+  ))
+_sym_db.RegisterMessage(ExecCmdResponse)
+_sym_db.RegisterMessage(ExecCmdResponse.ExitInfo)
+
+ExecCmdMetadata = _reflection.GeneratedProtocolMessageType('ExecCmdMetadata', (_message.Message,), dict(
+  DESCRIPTOR = _EXECCMDMETADATA,
+  __module__ = 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ExecCmdMetadata)
+  ))
+_sym_db.RegisterMessage(ExecCmdMetadata)
+
 
 DESCRIPTOR._options = None
 
@@ -335,8 +540,8 @@ _SERVODSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=585,
-  serialized_end=977,
+  serialized_start=873,
+  serialized_end=1253,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartServod',
@@ -357,12 +562,12 @@ _SERVODSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=_b('\322A*\n\023StartServodResponse\022\023StartServodMetadata'),
   ),
   _descriptor.MethodDescriptor(
-    name='ExecCommand',
-    full_name='chromiumos.test.api.ServodService.ExecCommand',
+    name='ExecCmd',
+    full_name='chromiumos.test.api.ServodService.ExecCmd',
     index=2,
     containing_service=None,
-    input_type=chromiumos_dot_test_dot_api_dot_dut__service__pb2._EXECCOMMANDREQUEST,
-    output_type=chromiumos_dot_test_dot_api_dot_dut__service__pb2._EXECCOMMANDRESPONSE,
+    input_type=_EXECCMDREQUEST,
+    output_type=_EXECCMDRESPONSE,
     serialized_options=None,
   ),
 ])

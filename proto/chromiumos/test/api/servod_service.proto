@@ -8,8 +8,6 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
-import "chromiumos/test/api/dut_service.proto";
-
 import "chromiumos/longrunning/operations.proto";
 
 // Provides the ability to start/stop a servod Docker container either on the
@@ -35,13 +33,13 @@ service ServodService {
     };
   }
 
-  // ExecCommand runs a servod command inside the servod Docker container.
+  // ExecCmd runs a servod command inside the servod Docker container.
   // If docker_servod_name is not provided, the command is executed directly
   // inside the current host.
   // Some example commands:
   // "dut-control -p $PORT power_state:off"
-  rpc ExecCommand(ExecCommandRequest)
-      returns (stream ExecCommandResponse);
+  rpc ExecCmd(ExecCmdRequest)
+      returns (stream ExecCmdResponse);
 }
 
 message StartServodRequest {
@@ -106,4 +104,64 @@ message StopServodResponse {
 }
 
 message StopServodMetadata {
+}
+
+message ExecCmdRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servod_host_path = 1;
+
+  // The servod Docker container name.
+  string docker_servod_name = 2;
+
+  // The command to execute on the servo host.
+  // Some example commands:
+  // "dut-control -p $PORT power_state:off"
+  string command = 3;
+
+  // stdin is passed to the command as the program's stdin.
+  // The stream does not support seeking.
+  // An empty bytes is not treated specially; if the command reads
+  // from stdin, it will receive zero bytes.
+  bytes stdin = 4;
+}
+
+message ExecCmdResponse {
+  message ExitInfo {
+    // status provides information about how the command process
+    // terminated.
+    //
+    // If the command failed to start, status is set to an arbitrary
+    // non-zero value.
+    //
+    // If signaled is set, status is set to the signal that caused
+    // the command to terminate.
+    //
+    // Otherwise, status is set to the exit status of the process.
+    // Exit statuses outside of 0 to 255 inclusive are not supported;
+    // they will be mapped to an arbitrary non-zero value.
+    //
+    // status is zero if and only if the process was successfully
+    // started and exited with a zero status.
+    int32 status = 1;
+    // signaled indicates whether the command exited due to a signal.
+    // If set, status contains the signal.
+    bool signaled = 2;
+    // started indicates whether the command was started.
+    bool started = 3;
+    // error_message provides a human readable explanation for some errors.
+    // This MUST NOT be inspected by programs.
+    string error_message = 4;
+  }
+  // The exit information that is set when the command has exited
+  // or failed to start.
+  ExitInfo exit_info = 1;
+  // The shell command's stdout output since the last response in the stream.
+  bytes stdout = 2;
+  // The shell command's stderr output since the last response in the stream.
+  bytes stderr = 3;
+}
+
+message ExecCmdMetadata {
 }

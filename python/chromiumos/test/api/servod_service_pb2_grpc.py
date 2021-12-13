@@ -3,7 +3,6 @@
 import grpc
 
 from chromiumos.longrunning import operations_pb2 as chromiumos_dot_longrunning_dot_operations__pb2
-from chromiumos.test.api import dut_service_pb2 as chromiumos_dot_test_dot_api_dot_dut__service__pb2
 from chromiumos.test.api import servod_service_pb2 as chromiumos_dot_test_dot_api_dot_servod__service__pb2
 
 
@@ -29,10 +28,10 @@ class ServodServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.StartServodRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
-        self.ExecCommand = channel.unary_stream(
-                '/chromiumos.test.api.ServodService/ExecCommand',
-                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ExecCommandRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ExecCommandResponse.FromString,
+        self.ExecCmd = channel.unary_stream(
+                '/chromiumos.test.api.ServodService/ExecCmd',
+                request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.FromString,
                 )
 
 
@@ -57,8 +56,8 @@ class ServodServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ExecCommand(self, request, context):
-        """ExecCommand runs a servod command inside the servod Docker container.
+    def ExecCmd(self, request, context):
+        """ExecCmd runs a servod command inside the servod Docker container.
         If docker_servod_name is not provided, the command is executed directly
         inside the current host.
         Some example commands:
@@ -81,10 +80,10 @@ def add_ServodServiceServicer_to_server(servicer, server):
                     request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.StartServodRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
-            'ExecCommand': grpc.unary_stream_rpc_method_handler(
-                    servicer.ExecCommand,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ExecCommandRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.ExecCommandResponse.SerializeToString,
+            'ExecCmd': grpc.unary_stream_rpc_method_handler(
+                    servicer.ExecCmd,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -134,7 +133,7 @@ class ServodService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ExecCommand(request,
+    def ExecCmd(request,
             target,
             options=(),
             channel_credentials=None,
@@ -144,8 +143,8 @@ class ServodService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.ServodService/ExecCommand',
-            chromiumos_dot_test_dot_api_dot_dut__service__pb2.ExecCommandRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_dut__service__pb2.ExecCommandResponse.FromString,
+        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.ServodService/ExecCmd',
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
