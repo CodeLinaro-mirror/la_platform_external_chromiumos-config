@@ -64,8 +64,8 @@ def get_ufs_project(env):
 
 def generate_config_bundle_id(bundle):
   """Generate ConfigBundleEntity id as ${program_id}-${design_id}."""
-  return bundle.design_list[0].program_id.value + '-' + bundle.design_list[
-      0].id.value
+  return (bundle.design_list[0].program_id.value + '-' +
+          bundle.design_list[0].id.value).lower()
 
 
 def handle_config_bundle_list(cb_list_path, client):
@@ -83,9 +83,11 @@ def generate_flat_config_id(bundle):
   """Generate FlatConfigEntity id as ${program_id}-${design_id}-${design_config_id}
   if design_config_id is available. Else ${program_id}-${design_id}."""
   if bundle.hw_design_config.id.value:
-    return bundle.hw_design.program_id.value + '-' + bundle.hw_design.id.value \
-    + '-' + bundle.hw_design_config.id.value
-  return bundle.hw_design.program_id.value + '-' + bundle.hw_design.id.value
+    return (bundle.hw_design.program_id.value + '-' \
+      + bundle.hw_design.id.value \
+      + '-' + bundle.hw_design_config.id.value).lower()
+  return (bundle.hw_design.program_id.value + '-' \
+    + bundle.hw_design.id.value).lower()
 
 
 def handle_flat_config_list(fc_list_path, client):
