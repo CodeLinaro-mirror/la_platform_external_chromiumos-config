@@ -14138,6 +14138,20 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "force",
+              "label": "LABEL_OPTIONAL",
+              "name": "force",
+              "number": 8,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "useServo",
+              "label": "LABEL_OPTIONAL",
+              "name": "use_servo",
+              "number": 9,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "InstallFirmwareRequest"

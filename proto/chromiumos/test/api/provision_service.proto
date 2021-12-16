@@ -179,6 +179,15 @@ message InstallArcMetadata {
 
 message InstallFirmwareRequest {
   chromiumos.build.api.FirmwareConfig firmware_config = 1;
+
+  // Use force to pass "--force" to futility, which skips the TPM checks.
+  bool force = 8;
+
+  // If True, provision firmware over servo; information about
+  // servo to use will be pulled from a `Dut` proto, that will be
+  // requested from InventoryService.
+  // If False, SSH to the DUT and provision it directly.
+  bool use_servo = 9;
 }
 
 message InstallFirmwareResponse {

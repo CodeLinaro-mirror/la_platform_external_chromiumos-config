@@ -245,18 +245,24 @@ func (*FirmwarePayload) XXX_OneofWrappers() []interface{} {
 //
 // - OS images that specify BCS payloads.
 // - In the factory to flash the RO firmware.
+// - F20 firmware provisioning.
 //
 // Building firmware is configured with the FirmwareBuildConfig message.
 //
 // TODO(crbug.com/1071918): Rename to FirmwarePayloadConfig.
 type FirmwareConfig struct {
-	// The main read-only firmware.
+	// The main firmware image. Updates both RO and RW sections.
 	MainRoPayload *FirmwarePayload `protobuf:"bytes,1,opt,name=main_ro_payload,json=mainRoPayload,proto3" json:"main_ro_payload,omitempty"`
-	// The main read-write firmware.
+	// The main firmware image. Updates only RW section.
+	//
+	// main_rw image is flashed after main_ro image, which allows to reproduce
+	// the setup of real devices in a single request by setting RO to some old
+	// version, that the device was shipped with, and setting RW to latest.
 	MainRwPayload *FirmwarePayload `protobuf:"bytes,2,opt,name=main_rw_payload,json=mainRwPayload,proto3" json:"main_rw_payload,omitempty"`
 	// The embedded controller read-only firmware.
+	// Will not update EC RW; you can flash EC RW as part of main image.
 	EcRoPayload *FirmwarePayload `protobuf:"bytes,3,opt,name=ec_ro_payload,json=ecRoPayload,proto3" json:"ec_ro_payload,omitempty"`
-	// The PD read-only firmware
+	// The PD read-only firmware.
 	PdRoPayload          *FirmwarePayload `protobuf:"bytes,5,opt,name=pd_ro_payload,json=pdRoPayload,proto3" json:"pd_ro_payload,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`

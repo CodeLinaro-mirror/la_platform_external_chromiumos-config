@@ -56,23 +56,29 @@ message FirmwarePayload {
 //
 // - OS images that specify BCS payloads.
 // - In the factory to flash the RO firmware.
+// - F20 firmware provisioning.
 //
 // Building firmware is configured with the FirmwareBuildConfig message.
 //
 // TODO(crbug.com/1071918): Rename to FirmwarePayloadConfig.
 message FirmwareConfig {
-  // The main read-only firmware.
+  // The main firmware image. Updates both RO and RW sections.
   FirmwarePayload main_ro_payload = 1;
 
-  // The main read-write firmware.
+  // The main firmware image. Updates only RW section.
+  //
+  // main_rw image is flashed after main_ro image, which allows to reproduce
+  // the setup of real devices in a single request by setting RO to some old
+  // version, that the device was shipped with, and setting RW to latest.
   FirmwarePayload main_rw_payload = 2;
 
   // The embedded controller read-only firmware.
+  // Will not update EC RW; you can flash EC RW as part of main image.
   FirmwarePayload ec_ro_payload = 3;
 
   reserved 4;
 
-  // The PD read-only firmware
+  // The PD read-only firmware.
   FirmwarePayload pd_ro_payload = 5;
 }
 
