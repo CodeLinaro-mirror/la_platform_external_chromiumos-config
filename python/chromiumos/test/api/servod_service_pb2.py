@@ -20,11 +20,37 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='chromiumos.test.api',
   syntax='proto3',
   serialized_options=_b('Z-go.chromium.org/chromiumos/config/go/test/api'),
-  serialized_pb=_b('\n(chromiumos/test/api/servod_service.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\"\xef\x01\n\x12StartServodRequest\x12\x18\n\x10servod_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\x12\x15\n\rbuild_version\x18\x03 \x01(\t\x12\r\n\x05\x62oard\x18\x04 \x01(\t\x12\r\n\x05model\x18\x05 \x01(\t\x12\x13\n\x0bserial_name\x18\x06 \x01(\t\x12\x0c\n\x04port\x18\x07 \x01(\t\x12\r\n\x05\x64\x65\x62ug\x18\x08 \x01(\t\x12\x15\n\rrecovery_mode\x18\t \x01(\t\x12\x0e\n\x06\x63onfig\x18\n \x01(\t\x12\x15\n\rallow_dual_v4\x18\x0b \x01(\t\"%\n\x13StartServodResponse\x12\x0e\n\x06output\x18\x01 \x01(\t\"\x15\n\x13StartServodMetadata\"I\n\x11StopServodRequest\x12\x18\n\x10servod_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\"$\n\x12StopServodResponse\x12\x0e\n\x06output\x18\x01 \x01(\t\"\x14\n\x12StopServodMetadata\"f\n\x0e\x45xecCmdRequest\x12\x18\n\x10servod_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x03 \x01(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\"\xc9\x01\n\x0f\x45xecCmdResponse\x12@\n\texit_info\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.ExecCmdResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x11\n\x0f\x45xecCmdMetadata2\xfc\x02\n\rServodService\x12\x88\x01\n\x0bStartServod\x12\'.chromiumos.test.api.StartServodRequest\x1a!.chromiumos.longrunning.Operation\"-\xd2\x41*\n\x13StartServodResponse\x12\x13StartServodMetadata\x12\x87\x01\n\nStopServod\x12\'.chromiumos.test.api.StartServodRequest\x1a!.chromiumos.longrunning.Operation\"-\xd2\x41*\n\x13StartServodResponse\x12\x13StartServodMetadata\x12V\n\x07\x45xecCmd\x12#.chromiumos.test.api.ExecCmdRequest\x1a$.chromiumos.test.api.ExecCmdResponse0\x01\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
+  serialized_pb=_b('\n(chromiumos/test/api/servod_service.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\"\xee\x01\n\x12StartServodRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\x12\x15\n\rbuild_version\x18\x03 \x01(\t\x12\r\n\x05\x62oard\x18\x04 \x01(\t\x12\r\n\x05model\x18\x05 \x01(\t\x12\x13\n\x0bserial_name\x18\x06 \x01(\t\x12\x0c\n\x04port\x18\x07 \x01(\t\x12\r\n\x05\x64\x65\x62ug\x18\x08 \x01(\t\x12\x15\n\rrecovery_mode\x18\t \x01(\t\x12\x0e\n\x06\x63onfig\x18\n \x01(\t\x12\x15\n\rallow_dual_v4\x18\x0b \x01(\t\"\xd6\x01\n\x13StartServodResponse\x12\x43\n\x07success\x18\x01 \x01(\x0b\x32\x30.chromiumos.test.api.StartServodResponse.SuccessH\x00\x12\x43\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x30.chromiumos.test.api.StartServodResponse.FailureH\x00\x1a\t\n\x07Success\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x15\n\x13StartServodMetadata\"V\n\x11StopServodRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\x12\x0c\n\x04port\x18\x03 \x01(\t\"\xd3\x01\n\x12StopServodResponse\x12\x42\n\x07success\x18\x01 \x01(\x0b\x32/.chromiumos.test.api.StopServodResponse.SuccessH\x00\x12\x42\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32/.chromiumos.test.api.StopServodResponse.FailureH\x00\x1a\t\n\x07Success\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x14\n\x12StopServodMetadata\"e\n\x0e\x45xecCmdRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x03 \x01(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\"\xc9\x01\n\x0f\x45xecCmdResponse\x12@\n\texit_info\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.ExecCmdResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x11\n\x0f\x45xecCmdMetadata\"\xba\x01\n\x11\x43\x61llServodRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12\x1a\n\x12\x64ocker_servod_name\x18\x02 \x01(\t\x12=\n\x06method\x18\x03 \x01(\x0e\x32-.chromiumos.test.api.CallServodRequest.Method\x12\x0c\n\x04\x61rgs\x18\x04 \x01(\t\"#\n\x06Method\x12\x07\n\x03\x44OC\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03SET\x10\x02\"\xe3\x01\n\x12\x43\x61llServodResponse\x12\x42\n\x07success\x18\x01 \x01(\x0b\x32/.chromiumos.test.api.CallServodResponse.SuccessH\x00\x12\x42\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32/.chromiumos.test.api.CallServodResponse.FailureH\x00\x1a\x19\n\x07Success\x12\x0e\n\x06result\x18\x01 \x01(\t\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x14\n\x12\x43\x61llServodMetadata2\xda\x03\n\rServodService\x12\x88\x01\n\x0bStartServod\x12\'.chromiumos.test.api.StartServodRequest\x1a!.chromiumos.longrunning.Operation\"-\xd2\x41*\n\x13StartServodResponse\x12\x13StartServodMetadata\x12\x84\x01\n\nStopServod\x12&.chromiumos.test.api.StopServodRequest\x1a!.chromiumos.longrunning.Operation\"+\xd2\x41(\n\x12StopServodResponse\x12\x12StopServodMetadata\x12V\n\x07\x45xecCmd\x12#.chromiumos.test.api.ExecCmdRequest\x1a$.chromiumos.test.api.ExecCmdResponse0\x01\x12_\n\nCallServod\x12&.chromiumos.test.api.CallServodRequest\x1a\'.chromiumos.test.api.CallServodResponse0\x01\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3')
   ,
   dependencies=[chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
 
 
+
+_CALLSERVODREQUEST_METHOD = _descriptor.EnumDescriptor(
+  name='Method',
+  full_name='chromiumos.test.api.CallServodRequest.Method',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='DOC', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='GET', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SET', index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1389,
+  serialized_end=1424,
+)
+_sym_db.RegisterEnumDescriptor(_CALLSERVODREQUEST_METHOD)
 
 
 _STARTSERVODREQUEST = _descriptor.Descriptor(
@@ -35,7 +61,7 @@ _STARTSERVODREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='servod_host_path', full_name='chromiumos.test.api.StartServodRequest.servod_host_path', index=0,
+      name='servo_host_path', full_name='chromiumos.test.api.StartServodRequest.servo_host_path', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -124,19 +150,42 @@ _STARTSERVODREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=107,
-  serialized_end=346,
+  serialized_end=345,
 )
 
 
-_STARTSERVODRESPONSE = _descriptor.Descriptor(
-  name='StartServodResponse',
-  full_name='chromiumos.test.api.StartServodResponse',
+_STARTSERVODRESPONSE_SUCCESS = _descriptor.Descriptor(
+  name='Success',
+  full_name='chromiumos.test.api.StartServodResponse.Success',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=509,
+  serialized_end=518,
+)
+
+_STARTSERVODRESPONSE_FAILURE = _descriptor.Descriptor(
+  name='Failure',
+  full_name='chromiumos.test.api.StartServodResponse.Failure',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='output', full_name='chromiumos.test.api.StartServodResponse.output', index=0,
+      name='error_message', full_name='chromiumos.test.api.StartServodResponse.Failure.error_message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -154,8 +203,48 @@ _STARTSERVODRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
+  serialized_start=520,
+  serialized_end=552,
+)
+
+_STARTSERVODRESPONSE = _descriptor.Descriptor(
+  name='StartServodResponse',
+  full_name='chromiumos.test.api.StartServodResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='chromiumos.test.api.StartServodResponse.success', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='failure', full_name='chromiumos.test.api.StartServodResponse.failure', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_STARTSERVODRESPONSE_SUCCESS, _STARTSERVODRESPONSE_FAILURE, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='result', full_name='chromiumos.test.api.StartServodResponse.result',
+      index=0, containing_type=None, fields=[]),
+  ],
   serialized_start=348,
-  serialized_end=385,
+  serialized_end=562,
 )
 
 
@@ -178,8 +267,8 @@ _STARTSERVODMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=387,
-  serialized_end=408,
+  serialized_start=564,
+  serialized_end=585,
 )
 
 
@@ -191,7 +280,7 @@ _STOPSERVODREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='servod_host_path', full_name='chromiumos.test.api.StopServodRequest.servod_host_path', index=0,
+      name='servo_host_path', full_name='chromiumos.test.api.StopServodRequest.servo_host_path', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -204,6 +293,13 @@ _STOPSERVODREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='port', full_name='chromiumos.test.api.StopServodRequest.port', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -216,20 +312,43 @@ _STOPSERVODREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=410,
-  serialized_end=483,
+  serialized_start=587,
+  serialized_end=673,
 )
 
 
-_STOPSERVODRESPONSE = _descriptor.Descriptor(
-  name='StopServodResponse',
-  full_name='chromiumos.test.api.StopServodResponse',
+_STOPSERVODRESPONSE_SUCCESS = _descriptor.Descriptor(
+  name='Success',
+  full_name='chromiumos.test.api.StopServodResponse.Success',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=509,
+  serialized_end=518,
+)
+
+_STOPSERVODRESPONSE_FAILURE = _descriptor.Descriptor(
+  name='Failure',
+  full_name='chromiumos.test.api.StopServodResponse.Failure',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='output', full_name='chromiumos.test.api.StopServodResponse.output', index=0,
+      name='error_message', full_name='chromiumos.test.api.StopServodResponse.Failure.error_message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -247,8 +366,48 @@ _STOPSERVODRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=485,
-  serialized_end=521,
+  serialized_start=520,
+  serialized_end=552,
+)
+
+_STOPSERVODRESPONSE = _descriptor.Descriptor(
+  name='StopServodResponse',
+  full_name='chromiumos.test.api.StopServodResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='chromiumos.test.api.StopServodResponse.success', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='failure', full_name='chromiumos.test.api.StopServodResponse.failure', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_STOPSERVODRESPONSE_SUCCESS, _STOPSERVODRESPONSE_FAILURE, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='result', full_name='chromiumos.test.api.StopServodResponse.result',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=676,
+  serialized_end=887,
 )
 
 
@@ -271,8 +430,8 @@ _STOPSERVODMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=523,
-  serialized_end=543,
+  serialized_start=889,
+  serialized_end=909,
 )
 
 
@@ -284,7 +443,7 @@ _EXECCMDREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='servod_host_path', full_name='chromiumos.test.api.ExecCmdRequest.servod_host_path', index=0,
+      name='servo_host_path', full_name='chromiumos.test.api.ExecCmdRequest.servo_host_path', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -323,8 +482,8 @@ _EXECCMDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=545,
-  serialized_end=647,
+  serialized_start=911,
+  serialized_end=1012,
 )
 
 
@@ -375,8 +534,8 @@ _EXECCMDRESPONSE_EXITINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=767,
-  serialized_end=851,
+  serialized_start=1132,
+  serialized_end=1216,
 )
 
 _EXECCMDRESPONSE = _descriptor.Descriptor(
@@ -419,8 +578,8 @@ _EXECCMDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=650,
-  serialized_end=851,
+  serialized_start=1015,
+  serialized_end=1216,
 )
 
 
@@ -443,12 +602,222 @@ _EXECCMDMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=853,
-  serialized_end=870,
+  serialized_start=1218,
+  serialized_end=1235,
 )
 
+
+_CALLSERVODREQUEST = _descriptor.Descriptor(
+  name='CallServodRequest',
+  full_name='chromiumos.test.api.CallServodRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='servo_host_path', full_name='chromiumos.test.api.CallServodRequest.servo_host_path', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='docker_servod_name', full_name='chromiumos.test.api.CallServodRequest.docker_servod_name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='method', full_name='chromiumos.test.api.CallServodRequest.method', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='args', full_name='chromiumos.test.api.CallServodRequest.args', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _CALLSERVODREQUEST_METHOD,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1238,
+  serialized_end=1424,
+)
+
+
+_CALLSERVODRESPONSE_SUCCESS = _descriptor.Descriptor(
+  name='Success',
+  full_name='chromiumos.test.api.CallServodResponse.Success',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='chromiumos.test.api.CallServodResponse.Success.result', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1585,
+  serialized_end=1610,
+)
+
+_CALLSERVODRESPONSE_FAILURE = _descriptor.Descriptor(
+  name='Failure',
+  full_name='chromiumos.test.api.CallServodResponse.Failure',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='error_message', full_name='chromiumos.test.api.CallServodResponse.Failure.error_message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=520,
+  serialized_end=552,
+)
+
+_CALLSERVODRESPONSE = _descriptor.Descriptor(
+  name='CallServodResponse',
+  full_name='chromiumos.test.api.CallServodResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='chromiumos.test.api.CallServodResponse.success', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='failure', full_name='chromiumos.test.api.CallServodResponse.failure', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_CALLSERVODRESPONSE_SUCCESS, _CALLSERVODRESPONSE_FAILURE, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='result', full_name='chromiumos.test.api.CallServodResponse.result',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=1427,
+  serialized_end=1654,
+)
+
+
+_CALLSERVODMETADATA = _descriptor.Descriptor(
+  name='CallServodMetadata',
+  full_name='chromiumos.test.api.CallServodMetadata',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1656,
+  serialized_end=1676,
+)
+
+_STARTSERVODRESPONSE_SUCCESS.containing_type = _STARTSERVODRESPONSE
+_STARTSERVODRESPONSE_FAILURE.containing_type = _STARTSERVODRESPONSE
+_STARTSERVODRESPONSE.fields_by_name['success'].message_type = _STARTSERVODRESPONSE_SUCCESS
+_STARTSERVODRESPONSE.fields_by_name['failure'].message_type = _STARTSERVODRESPONSE_FAILURE
+_STARTSERVODRESPONSE.oneofs_by_name['result'].fields.append(
+  _STARTSERVODRESPONSE.fields_by_name['success'])
+_STARTSERVODRESPONSE.fields_by_name['success'].containing_oneof = _STARTSERVODRESPONSE.oneofs_by_name['result']
+_STARTSERVODRESPONSE.oneofs_by_name['result'].fields.append(
+  _STARTSERVODRESPONSE.fields_by_name['failure'])
+_STARTSERVODRESPONSE.fields_by_name['failure'].containing_oneof = _STARTSERVODRESPONSE.oneofs_by_name['result']
+_STOPSERVODRESPONSE_SUCCESS.containing_type = _STOPSERVODRESPONSE
+_STOPSERVODRESPONSE_FAILURE.containing_type = _STOPSERVODRESPONSE
+_STOPSERVODRESPONSE.fields_by_name['success'].message_type = _STOPSERVODRESPONSE_SUCCESS
+_STOPSERVODRESPONSE.fields_by_name['failure'].message_type = _STOPSERVODRESPONSE_FAILURE
+_STOPSERVODRESPONSE.oneofs_by_name['result'].fields.append(
+  _STOPSERVODRESPONSE.fields_by_name['success'])
+_STOPSERVODRESPONSE.fields_by_name['success'].containing_oneof = _STOPSERVODRESPONSE.oneofs_by_name['result']
+_STOPSERVODRESPONSE.oneofs_by_name['result'].fields.append(
+  _STOPSERVODRESPONSE.fields_by_name['failure'])
+_STOPSERVODRESPONSE.fields_by_name['failure'].containing_oneof = _STOPSERVODRESPONSE.oneofs_by_name['result']
 _EXECCMDRESPONSE_EXITINFO.containing_type = _EXECCMDRESPONSE
 _EXECCMDRESPONSE.fields_by_name['exit_info'].message_type = _EXECCMDRESPONSE_EXITINFO
+_CALLSERVODREQUEST.fields_by_name['method'].enum_type = _CALLSERVODREQUEST_METHOD
+_CALLSERVODREQUEST_METHOD.containing_type = _CALLSERVODREQUEST
+_CALLSERVODRESPONSE_SUCCESS.containing_type = _CALLSERVODRESPONSE
+_CALLSERVODRESPONSE_FAILURE.containing_type = _CALLSERVODRESPONSE
+_CALLSERVODRESPONSE.fields_by_name['success'].message_type = _CALLSERVODRESPONSE_SUCCESS
+_CALLSERVODRESPONSE.fields_by_name['failure'].message_type = _CALLSERVODRESPONSE_FAILURE
+_CALLSERVODRESPONSE.oneofs_by_name['result'].fields.append(
+  _CALLSERVODRESPONSE.fields_by_name['success'])
+_CALLSERVODRESPONSE.fields_by_name['success'].containing_oneof = _CALLSERVODRESPONSE.oneofs_by_name['result']
+_CALLSERVODRESPONSE.oneofs_by_name['result'].fields.append(
+  _CALLSERVODRESPONSE.fields_by_name['failure'])
+_CALLSERVODRESPONSE.fields_by_name['failure'].containing_oneof = _CALLSERVODRESPONSE.oneofs_by_name['result']
 DESCRIPTOR.message_types_by_name['StartServodRequest'] = _STARTSERVODREQUEST
 DESCRIPTOR.message_types_by_name['StartServodResponse'] = _STARTSERVODRESPONSE
 DESCRIPTOR.message_types_by_name['StartServodMetadata'] = _STARTSERVODMETADATA
@@ -458,6 +827,9 @@ DESCRIPTOR.message_types_by_name['StopServodMetadata'] = _STOPSERVODMETADATA
 DESCRIPTOR.message_types_by_name['ExecCmdRequest'] = _EXECCMDREQUEST
 DESCRIPTOR.message_types_by_name['ExecCmdResponse'] = _EXECCMDRESPONSE
 DESCRIPTOR.message_types_by_name['ExecCmdMetadata'] = _EXECCMDMETADATA
+DESCRIPTOR.message_types_by_name['CallServodRequest'] = _CALLSERVODREQUEST
+DESCRIPTOR.message_types_by_name['CallServodResponse'] = _CALLSERVODRESPONSE
+DESCRIPTOR.message_types_by_name['CallServodMetadata'] = _CALLSERVODMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 StartServodRequest = _reflection.GeneratedProtocolMessageType('StartServodRequest', (_message.Message,), dict(
@@ -468,11 +840,27 @@ StartServodRequest = _reflection.GeneratedProtocolMessageType('StartServodReques
 _sym_db.RegisterMessage(StartServodRequest)
 
 StartServodResponse = _reflection.GeneratedProtocolMessageType('StartServodResponse', (_message.Message,), dict(
+
+  Success = _reflection.GeneratedProtocolMessageType('Success', (_message.Message,), dict(
+    DESCRIPTOR = _STARTSERVODRESPONSE_SUCCESS,
+    __module__ = 'chromiumos.test.api.servod_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.StartServodResponse.Success)
+    ))
+  ,
+
+  Failure = _reflection.GeneratedProtocolMessageType('Failure', (_message.Message,), dict(
+    DESCRIPTOR = _STARTSERVODRESPONSE_FAILURE,
+    __module__ = 'chromiumos.test.api.servod_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.StartServodResponse.Failure)
+    ))
+  ,
   DESCRIPTOR = _STARTSERVODRESPONSE,
   __module__ = 'chromiumos.test.api.servod_service_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.StartServodResponse)
   ))
 _sym_db.RegisterMessage(StartServodResponse)
+_sym_db.RegisterMessage(StartServodResponse.Success)
+_sym_db.RegisterMessage(StartServodResponse.Failure)
 
 StartServodMetadata = _reflection.GeneratedProtocolMessageType('StartServodMetadata', (_message.Message,), dict(
   DESCRIPTOR = _STARTSERVODMETADATA,
@@ -489,11 +877,27 @@ StopServodRequest = _reflection.GeneratedProtocolMessageType('StopServodRequest'
 _sym_db.RegisterMessage(StopServodRequest)
 
 StopServodResponse = _reflection.GeneratedProtocolMessageType('StopServodResponse', (_message.Message,), dict(
+
+  Success = _reflection.GeneratedProtocolMessageType('Success', (_message.Message,), dict(
+    DESCRIPTOR = _STOPSERVODRESPONSE_SUCCESS,
+    __module__ = 'chromiumos.test.api.servod_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.StopServodResponse.Success)
+    ))
+  ,
+
+  Failure = _reflection.GeneratedProtocolMessageType('Failure', (_message.Message,), dict(
+    DESCRIPTOR = _STOPSERVODRESPONSE_FAILURE,
+    __module__ = 'chromiumos.test.api.servod_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.StopServodResponse.Failure)
+    ))
+  ,
   DESCRIPTOR = _STOPSERVODRESPONSE,
   __module__ = 'chromiumos.test.api.servod_service_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.StopServodResponse)
   ))
 _sym_db.RegisterMessage(StopServodResponse)
+_sym_db.RegisterMessage(StopServodResponse.Success)
+_sym_db.RegisterMessage(StopServodResponse.Failure)
 
 StopServodMetadata = _reflection.GeneratedProtocolMessageType('StopServodMetadata', (_message.Message,), dict(
   DESCRIPTOR = _STOPSERVODMETADATA,
@@ -531,6 +935,43 @@ ExecCmdMetadata = _reflection.GeneratedProtocolMessageType('ExecCmdMetadata', (_
   ))
 _sym_db.RegisterMessage(ExecCmdMetadata)
 
+CallServodRequest = _reflection.GeneratedProtocolMessageType('CallServodRequest', (_message.Message,), dict(
+  DESCRIPTOR = _CALLSERVODREQUEST,
+  __module__ = 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.CallServodRequest)
+  ))
+_sym_db.RegisterMessage(CallServodRequest)
+
+CallServodResponse = _reflection.GeneratedProtocolMessageType('CallServodResponse', (_message.Message,), dict(
+
+  Success = _reflection.GeneratedProtocolMessageType('Success', (_message.Message,), dict(
+    DESCRIPTOR = _CALLSERVODRESPONSE_SUCCESS,
+    __module__ = 'chromiumos.test.api.servod_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.CallServodResponse.Success)
+    ))
+  ,
+
+  Failure = _reflection.GeneratedProtocolMessageType('Failure', (_message.Message,), dict(
+    DESCRIPTOR = _CALLSERVODRESPONSE_FAILURE,
+    __module__ = 'chromiumos.test.api.servod_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.CallServodResponse.Failure)
+    ))
+  ,
+  DESCRIPTOR = _CALLSERVODRESPONSE,
+  __module__ = 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.CallServodResponse)
+  ))
+_sym_db.RegisterMessage(CallServodResponse)
+_sym_db.RegisterMessage(CallServodResponse.Success)
+_sym_db.RegisterMessage(CallServodResponse.Failure)
+
+CallServodMetadata = _reflection.GeneratedProtocolMessageType('CallServodMetadata', (_message.Message,), dict(
+  DESCRIPTOR = _CALLSERVODMETADATA,
+  __module__ = 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.CallServodMetadata)
+  ))
+_sym_db.RegisterMessage(CallServodMetadata)
+
 
 DESCRIPTOR._options = None
 
@@ -540,8 +981,8 @@ _SERVODSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=873,
-  serialized_end=1253,
+  serialized_start=1679,
+  serialized_end=2153,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartServod',
@@ -557,9 +998,9 @@ _SERVODSERVICE = _descriptor.ServiceDescriptor(
     full_name='chromiumos.test.api.ServodService.StopServod',
     index=1,
     containing_service=None,
-    input_type=_STARTSERVODREQUEST,
+    input_type=_STOPSERVODREQUEST,
     output_type=chromiumos_dot_longrunning_dot_operations__pb2._OPERATION,
-    serialized_options=_b('\322A*\n\023StartServodResponse\022\023StartServodMetadata'),
+    serialized_options=_b('\322A(\n\022StopServodResponse\022\022StopServodMetadata'),
   ),
   _descriptor.MethodDescriptor(
     name='ExecCmd',
@@ -568,6 +1009,15 @@ _SERVODSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_EXECCMDREQUEST,
     output_type=_EXECCMDRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='CallServod',
+    full_name='chromiumos.test.api.ServodService.CallServod',
+    index=3,
+    containing_service=None,
+    input_type=_CALLSERVODREQUEST,
+    output_type=_CALLSERVODRESPONSE,
     serialized_options=None,
   ),
 ])

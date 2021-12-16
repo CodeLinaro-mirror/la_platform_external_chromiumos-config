@@ -25,11 +25,39 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type CallServodRequest_Method int32
+
+const (
+	CallServodRequest_DOC CallServodRequest_Method = 0
+	CallServodRequest_GET CallServodRequest_Method = 1
+	CallServodRequest_SET CallServodRequest_Method = 2
+)
+
+var CallServodRequest_Method_name = map[int32]string{
+	0: "DOC",
+	1: "GET",
+	2: "SET",
+}
+
+var CallServodRequest_Method_value = map[string]int32{
+	"DOC": 0,
+	"GET": 1,
+	"SET": 2,
+}
+
+func (x CallServodRequest_Method) String() string {
+	return proto.EnumName(CallServodRequest_Method_name, int32(x))
+}
+
+func (CallServodRequest_Method) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{9, 0}
+}
+
 type StartServodRequest struct {
 	// The path (URI) for the servod (containerized or running as a daemon) host.
 	// If cros-servod and docker-servod live on the same host, this parameter
 	// should be empty.
-	ServodHostPath string `protobuf:"bytes,1,opt,name=servod_host_path,json=servodHostPath,proto3" json:"servod_host_path,omitempty"`
+	ServoHostPath string `protobuf:"bytes,1,opt,name=servo_host_path,json=servoHostPath,proto3" json:"servo_host_path,omitempty"`
 	// The servod Docker container name.
 	DockerServodName string `protobuf:"bytes,2,opt,name=docker_servod_name,json=dockerServodName,proto3" json:"docker_servod_name,omitempty"`
 	// The build version of Chrome OS.
@@ -81,9 +109,9 @@ func (m *StartServodRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StartServodRequest proto.InternalMessageInfo
 
-func (m *StartServodRequest) GetServodHostPath() string {
+func (m *StartServodRequest) GetServoHostPath() string {
 	if m != nil {
-		return m.ServodHostPath
+		return m.ServoHostPath
 	}
 	return ""
 }
@@ -159,11 +187,13 @@ func (m *StartServodRequest) GetAllowDualV4() string {
 }
 
 type StartServodResponse struct {
-	// The stdout/stderr output for the start operation.
-	Output               string   `protobuf:"bytes,1,opt,name=output,proto3" json:"output,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	// Types that are valid to be assigned to Result:
+	//	*StartServodResponse_Success_
+	//	*StartServodResponse_Failure_
+	Result               isStartServodResponse_Result `protobuf_oneof:"result"`
+	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
+	XXX_unrecognized     []byte                       `json:"-"`
+	XXX_sizecache        int32                        `json:"-"`
 }
 
 func (m *StartServodResponse) Reset()         { *m = StartServodResponse{} }
@@ -191,9 +221,119 @@ func (m *StartServodResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StartServodResponse proto.InternalMessageInfo
 
-func (m *StartServodResponse) GetOutput() string {
+type isStartServodResponse_Result interface {
+	isStartServodResponse_Result()
+}
+
+type StartServodResponse_Success_ struct {
+	Success *StartServodResponse_Success `protobuf:"bytes,1,opt,name=success,proto3,oneof"`
+}
+
+type StartServodResponse_Failure_ struct {
+	Failure *StartServodResponse_Failure `protobuf:"bytes,2,opt,name=failure,proto3,oneof"`
+}
+
+func (*StartServodResponse_Success_) isStartServodResponse_Result() {}
+
+func (*StartServodResponse_Failure_) isStartServodResponse_Result() {}
+
+func (m *StartServodResponse) GetResult() isStartServodResponse_Result {
 	if m != nil {
-		return m.Output
+		return m.Result
+	}
+	return nil
+}
+
+func (m *StartServodResponse) GetSuccess() *StartServodResponse_Success {
+	if x, ok := m.GetResult().(*StartServodResponse_Success_); ok {
+		return x.Success
+	}
+	return nil
+}
+
+func (m *StartServodResponse) GetFailure() *StartServodResponse_Failure {
+	if x, ok := m.GetResult().(*StartServodResponse_Failure_); ok {
+		return x.Failure
+	}
+	return nil
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*StartServodResponse) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*StartServodResponse_Success_)(nil),
+		(*StartServodResponse_Failure_)(nil),
+	}
+}
+
+// Empty response for success.
+type StartServodResponse_Success struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StartServodResponse_Success) Reset()         { *m = StartServodResponse_Success{} }
+func (m *StartServodResponse_Success) String() string { return proto.CompactTextString(m) }
+func (*StartServodResponse_Success) ProtoMessage()    {}
+func (*StartServodResponse_Success) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{1, 0}
+}
+
+func (m *StartServodResponse_Success) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StartServodResponse_Success.Unmarshal(m, b)
+}
+func (m *StartServodResponse_Success) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StartServodResponse_Success.Marshal(b, m, deterministic)
+}
+func (m *StartServodResponse_Success) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StartServodResponse_Success.Merge(m, src)
+}
+func (m *StartServodResponse_Success) XXX_Size() int {
+	return xxx_messageInfo_StartServodResponse_Success.Size(m)
+}
+func (m *StartServodResponse_Success) XXX_DiscardUnknown() {
+	xxx_messageInfo_StartServodResponse_Success.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StartServodResponse_Success proto.InternalMessageInfo
+
+// Error message for failure.
+type StartServodResponse_Failure struct {
+	ErrorMessage         string   `protobuf:"bytes,1,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StartServodResponse_Failure) Reset()         { *m = StartServodResponse_Failure{} }
+func (m *StartServodResponse_Failure) String() string { return proto.CompactTextString(m) }
+func (*StartServodResponse_Failure) ProtoMessage()    {}
+func (*StartServodResponse_Failure) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{1, 1}
+}
+
+func (m *StartServodResponse_Failure) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StartServodResponse_Failure.Unmarshal(m, b)
+}
+func (m *StartServodResponse_Failure) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StartServodResponse_Failure.Marshal(b, m, deterministic)
+}
+func (m *StartServodResponse_Failure) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StartServodResponse_Failure.Merge(m, src)
+}
+func (m *StartServodResponse_Failure) XXX_Size() int {
+	return xxx_messageInfo_StartServodResponse_Failure.Size(m)
+}
+func (m *StartServodResponse_Failure) XXX_DiscardUnknown() {
+	xxx_messageInfo_StartServodResponse_Failure.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StartServodResponse_Failure proto.InternalMessageInfo
+
+func (m *StartServodResponse_Failure) GetErrorMessage() string {
+	if m != nil {
+		return m.ErrorMessage
 	}
 	return ""
 }
@@ -233,9 +373,11 @@ type StopServodRequest struct {
 	// The path (URI) for the servod (containerized or running as a daemon) host.
 	// If cros-servod and docker-servod live on the same host, this parameter
 	// should be empty.
-	ServodHostPath string `protobuf:"bytes,1,opt,name=servod_host_path,json=servodHostPath,proto3" json:"servod_host_path,omitempty"`
+	ServoHostPath string `protobuf:"bytes,1,opt,name=servo_host_path,json=servoHostPath,proto3" json:"servo_host_path,omitempty"`
 	// The servod Docker container name.
-	DockerServodName     string   `protobuf:"bytes,2,opt,name=docker_servod_name,json=dockerServodName,proto3" json:"docker_servod_name,omitempty"`
+	DockerServodName string `protobuf:"bytes,2,opt,name=docker_servod_name,json=dockerServodName,proto3" json:"docker_servod_name,omitempty"`
+	// The port that servod is running on the servo host.
+	Port                 string   `protobuf:"bytes,3,opt,name=port,proto3" json:"port,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -266,9 +408,9 @@ func (m *StopServodRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StopServodRequest proto.InternalMessageInfo
 
-func (m *StopServodRequest) GetServodHostPath() string {
+func (m *StopServodRequest) GetServoHostPath() string {
 	if m != nil {
-		return m.ServodHostPath
+		return m.ServoHostPath
 	}
 	return ""
 }
@@ -280,12 +422,21 @@ func (m *StopServodRequest) GetDockerServodName() string {
 	return ""
 }
 
+func (m *StopServodRequest) GetPort() string {
+	if m != nil {
+		return m.Port
+	}
+	return ""
+}
+
 type StopServodResponse struct {
-	// The stdout/stderr output for the stop operation.
-	Output               string   `protobuf:"bytes,1,opt,name=output,proto3" json:"output,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	// Types that are valid to be assigned to Result:
+	//	*StopServodResponse_Success_
+	//	*StopServodResponse_Failure_
+	Result               isStopServodResponse_Result `protobuf_oneof:"result"`
+	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
+	XXX_unrecognized     []byte                      `json:"-"`
+	XXX_sizecache        int32                       `json:"-"`
 }
 
 func (m *StopServodResponse) Reset()         { *m = StopServodResponse{} }
@@ -313,9 +464,119 @@ func (m *StopServodResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StopServodResponse proto.InternalMessageInfo
 
-func (m *StopServodResponse) GetOutput() string {
+type isStopServodResponse_Result interface {
+	isStopServodResponse_Result()
+}
+
+type StopServodResponse_Success_ struct {
+	Success *StopServodResponse_Success `protobuf:"bytes,1,opt,name=success,proto3,oneof"`
+}
+
+type StopServodResponse_Failure_ struct {
+	Failure *StopServodResponse_Failure `protobuf:"bytes,2,opt,name=failure,proto3,oneof"`
+}
+
+func (*StopServodResponse_Success_) isStopServodResponse_Result() {}
+
+func (*StopServodResponse_Failure_) isStopServodResponse_Result() {}
+
+func (m *StopServodResponse) GetResult() isStopServodResponse_Result {
 	if m != nil {
-		return m.Output
+		return m.Result
+	}
+	return nil
+}
+
+func (m *StopServodResponse) GetSuccess() *StopServodResponse_Success {
+	if x, ok := m.GetResult().(*StopServodResponse_Success_); ok {
+		return x.Success
+	}
+	return nil
+}
+
+func (m *StopServodResponse) GetFailure() *StopServodResponse_Failure {
+	if x, ok := m.GetResult().(*StopServodResponse_Failure_); ok {
+		return x.Failure
+	}
+	return nil
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*StopServodResponse) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*StopServodResponse_Success_)(nil),
+		(*StopServodResponse_Failure_)(nil),
+	}
+}
+
+// Empty response for success.
+type StopServodResponse_Success struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StopServodResponse_Success) Reset()         { *m = StopServodResponse_Success{} }
+func (m *StopServodResponse_Success) String() string { return proto.CompactTextString(m) }
+func (*StopServodResponse_Success) ProtoMessage()    {}
+func (*StopServodResponse_Success) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{4, 0}
+}
+
+func (m *StopServodResponse_Success) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StopServodResponse_Success.Unmarshal(m, b)
+}
+func (m *StopServodResponse_Success) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StopServodResponse_Success.Marshal(b, m, deterministic)
+}
+func (m *StopServodResponse_Success) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StopServodResponse_Success.Merge(m, src)
+}
+func (m *StopServodResponse_Success) XXX_Size() int {
+	return xxx_messageInfo_StopServodResponse_Success.Size(m)
+}
+func (m *StopServodResponse_Success) XXX_DiscardUnknown() {
+	xxx_messageInfo_StopServodResponse_Success.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StopServodResponse_Success proto.InternalMessageInfo
+
+// Error message for failure.
+type StopServodResponse_Failure struct {
+	ErrorMessage         string   `protobuf:"bytes,1,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StopServodResponse_Failure) Reset()         { *m = StopServodResponse_Failure{} }
+func (m *StopServodResponse_Failure) String() string { return proto.CompactTextString(m) }
+func (*StopServodResponse_Failure) ProtoMessage()    {}
+func (*StopServodResponse_Failure) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{4, 1}
+}
+
+func (m *StopServodResponse_Failure) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StopServodResponse_Failure.Unmarshal(m, b)
+}
+func (m *StopServodResponse_Failure) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StopServodResponse_Failure.Marshal(b, m, deterministic)
+}
+func (m *StopServodResponse_Failure) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StopServodResponse_Failure.Merge(m, src)
+}
+func (m *StopServodResponse_Failure) XXX_Size() int {
+	return xxx_messageInfo_StopServodResponse_Failure.Size(m)
+}
+func (m *StopServodResponse_Failure) XXX_DiscardUnknown() {
+	xxx_messageInfo_StopServodResponse_Failure.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StopServodResponse_Failure proto.InternalMessageInfo
+
+func (m *StopServodResponse_Failure) GetErrorMessage() string {
+	if m != nil {
+		return m.ErrorMessage
 	}
 	return ""
 }
@@ -355,11 +616,11 @@ type ExecCmdRequest struct {
 	// The path (URI) for the servod (containerized or running as a daemon) host.
 	// If cros-servod and docker-servod live on the same host, this parameter
 	// should be empty.
-	ServodHostPath string `protobuf:"bytes,1,opt,name=servod_host_path,json=servodHostPath,proto3" json:"servod_host_path,omitempty"`
+	ServoHostPath string `protobuf:"bytes,1,opt,name=servo_host_path,json=servoHostPath,proto3" json:"servo_host_path,omitempty"`
 	// The servod Docker container name.
 	DockerServodName string `protobuf:"bytes,2,opt,name=docker_servod_name,json=dockerServodName,proto3" json:"docker_servod_name,omitempty"`
 	// The command to execute on the servo host.
-	// Some example commands:
+	// Example commands:
 	// "dut-control -p $PORT power_state:off"
 	Command string `protobuf:"bytes,3,opt,name=command,proto3" json:"command,omitempty"`
 	// stdin is passed to the command as the program's stdin.
@@ -397,9 +658,9 @@ func (m *ExecCmdRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ExecCmdRequest proto.InternalMessageInfo
 
-func (m *ExecCmdRequest) GetServodHostPath() string {
+func (m *ExecCmdRequest) GetServoHostPath() string {
 	if m != nil {
-		return m.ServodHostPath
+		return m.ServoHostPath
 	}
 	return ""
 }
@@ -598,17 +859,291 @@ func (m *ExecCmdMetadata) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ExecCmdMetadata proto.InternalMessageInfo
 
+type CallServodRequest struct {
+	// The path (URI) for the servod (containerized or running as a daemon) host.
+	// If cros-servod and docker-servod live on the same host, this parameter
+	// should be empty.
+	ServoHostPath string `protobuf:"bytes,1,opt,name=servo_host_path,json=servoHostPath,proto3" json:"servo_host_path,omitempty"`
+	// The servod Docker container name.
+	DockerServodName string `protobuf:"bytes,2,opt,name=docker_servod_name,json=dockerServodName,proto3" json:"docker_servod_name,omitempty"`
+	// The method to call.
+	Method CallServodRequest_Method `protobuf:"varint,3,opt,name=method,proto3,enum=chromiumos.test.api.CallServodRequest_Method" json:"method,omitempty"`
+	// The arguments to pass to the method.
+	// For the doc and get methods, there will be a single argument which is
+	// the control name (e.g. fakedisconnect).
+	// For the set method, it will be the control name and the value separated
+	// with a colon and wrapped inside a quote (e.g. "fakedisconnect:100 2000").
+	Args                 string   `protobuf:"bytes,4,opt,name=args,proto3" json:"args,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CallServodRequest) Reset()         { *m = CallServodRequest{} }
+func (m *CallServodRequest) String() string { return proto.CompactTextString(m) }
+func (*CallServodRequest) ProtoMessage()    {}
+func (*CallServodRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{9}
+}
+
+func (m *CallServodRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CallServodRequest.Unmarshal(m, b)
+}
+func (m *CallServodRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CallServodRequest.Marshal(b, m, deterministic)
+}
+func (m *CallServodRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CallServodRequest.Merge(m, src)
+}
+func (m *CallServodRequest) XXX_Size() int {
+	return xxx_messageInfo_CallServodRequest.Size(m)
+}
+func (m *CallServodRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CallServodRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CallServodRequest proto.InternalMessageInfo
+
+func (m *CallServodRequest) GetServoHostPath() string {
+	if m != nil {
+		return m.ServoHostPath
+	}
+	return ""
+}
+
+func (m *CallServodRequest) GetDockerServodName() string {
+	if m != nil {
+		return m.DockerServodName
+	}
+	return ""
+}
+
+func (m *CallServodRequest) GetMethod() CallServodRequest_Method {
+	if m != nil {
+		return m.Method
+	}
+	return CallServodRequest_DOC
+}
+
+func (m *CallServodRequest) GetArgs() string {
+	if m != nil {
+		return m.Args
+	}
+	return ""
+}
+
+type CallServodResponse struct {
+	// Types that are valid to be assigned to Result:
+	//	*CallServodResponse_Success_
+	//	*CallServodResponse_Failure_
+	Result               isCallServodResponse_Result `protobuf_oneof:"result"`
+	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
+	XXX_unrecognized     []byte                      `json:"-"`
+	XXX_sizecache        int32                       `json:"-"`
+}
+
+func (m *CallServodResponse) Reset()         { *m = CallServodResponse{} }
+func (m *CallServodResponse) String() string { return proto.CompactTextString(m) }
+func (*CallServodResponse) ProtoMessage()    {}
+func (*CallServodResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{10}
+}
+
+func (m *CallServodResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CallServodResponse.Unmarshal(m, b)
+}
+func (m *CallServodResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CallServodResponse.Marshal(b, m, deterministic)
+}
+func (m *CallServodResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CallServodResponse.Merge(m, src)
+}
+func (m *CallServodResponse) XXX_Size() int {
+	return xxx_messageInfo_CallServodResponse.Size(m)
+}
+func (m *CallServodResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CallServodResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CallServodResponse proto.InternalMessageInfo
+
+type isCallServodResponse_Result interface {
+	isCallServodResponse_Result()
+}
+
+type CallServodResponse_Success_ struct {
+	Success *CallServodResponse_Success `protobuf:"bytes,1,opt,name=success,proto3,oneof"`
+}
+
+type CallServodResponse_Failure_ struct {
+	Failure *CallServodResponse_Failure `protobuf:"bytes,2,opt,name=failure,proto3,oneof"`
+}
+
+func (*CallServodResponse_Success_) isCallServodResponse_Result() {}
+
+func (*CallServodResponse_Failure_) isCallServodResponse_Result() {}
+
+func (m *CallServodResponse) GetResult() isCallServodResponse_Result {
+	if m != nil {
+		return m.Result
+	}
+	return nil
+}
+
+func (m *CallServodResponse) GetSuccess() *CallServodResponse_Success {
+	if x, ok := m.GetResult().(*CallServodResponse_Success_); ok {
+		return x.Success
+	}
+	return nil
+}
+
+func (m *CallServodResponse) GetFailure() *CallServodResponse_Failure {
+	if x, ok := m.GetResult().(*CallServodResponse_Failure_); ok {
+		return x.Failure
+	}
+	return nil
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CallServodResponse) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*CallServodResponse_Success_)(nil),
+		(*CallServodResponse_Failure_)(nil),
+	}
+}
+
+// Response for success.
+type CallServodResponse_Success struct {
+	Result               string   `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CallServodResponse_Success) Reset()         { *m = CallServodResponse_Success{} }
+func (m *CallServodResponse_Success) String() string { return proto.CompactTextString(m) }
+func (*CallServodResponse_Success) ProtoMessage()    {}
+func (*CallServodResponse_Success) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{10, 0}
+}
+
+func (m *CallServodResponse_Success) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CallServodResponse_Success.Unmarshal(m, b)
+}
+func (m *CallServodResponse_Success) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CallServodResponse_Success.Marshal(b, m, deterministic)
+}
+func (m *CallServodResponse_Success) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CallServodResponse_Success.Merge(m, src)
+}
+func (m *CallServodResponse_Success) XXX_Size() int {
+	return xxx_messageInfo_CallServodResponse_Success.Size(m)
+}
+func (m *CallServodResponse_Success) XXX_DiscardUnknown() {
+	xxx_messageInfo_CallServodResponse_Success.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CallServodResponse_Success proto.InternalMessageInfo
+
+func (m *CallServodResponse_Success) GetResult() string {
+	if m != nil {
+		return m.Result
+	}
+	return ""
+}
+
+// Error message for failure.
+type CallServodResponse_Failure struct {
+	ErrorMessage         string   `protobuf:"bytes,1,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CallServodResponse_Failure) Reset()         { *m = CallServodResponse_Failure{} }
+func (m *CallServodResponse_Failure) String() string { return proto.CompactTextString(m) }
+func (*CallServodResponse_Failure) ProtoMessage()    {}
+func (*CallServodResponse_Failure) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{10, 1}
+}
+
+func (m *CallServodResponse_Failure) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CallServodResponse_Failure.Unmarshal(m, b)
+}
+func (m *CallServodResponse_Failure) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CallServodResponse_Failure.Marshal(b, m, deterministic)
+}
+func (m *CallServodResponse_Failure) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CallServodResponse_Failure.Merge(m, src)
+}
+func (m *CallServodResponse_Failure) XXX_Size() int {
+	return xxx_messageInfo_CallServodResponse_Failure.Size(m)
+}
+func (m *CallServodResponse_Failure) XXX_DiscardUnknown() {
+	xxx_messageInfo_CallServodResponse_Failure.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CallServodResponse_Failure proto.InternalMessageInfo
+
+func (m *CallServodResponse_Failure) GetErrorMessage() string {
+	if m != nil {
+		return m.ErrorMessage
+	}
+	return ""
+}
+
+type CallServodMetadata struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CallServodMetadata) Reset()         { *m = CallServodMetadata{} }
+func (m *CallServodMetadata) String() string { return proto.CompactTextString(m) }
+func (*CallServodMetadata) ProtoMessage()    {}
+func (*CallServodMetadata) Descriptor() ([]byte, []int) {
+	return fileDescriptor_88add0f20deb49eb, []int{11}
+}
+
+func (m *CallServodMetadata) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CallServodMetadata.Unmarshal(m, b)
+}
+func (m *CallServodMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CallServodMetadata.Marshal(b, m, deterministic)
+}
+func (m *CallServodMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CallServodMetadata.Merge(m, src)
+}
+func (m *CallServodMetadata) XXX_Size() int {
+	return xxx_messageInfo_CallServodMetadata.Size(m)
+}
+func (m *CallServodMetadata) XXX_DiscardUnknown() {
+	xxx_messageInfo_CallServodMetadata.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CallServodMetadata proto.InternalMessageInfo
+
 func init() {
+	proto.RegisterEnum("chromiumos.test.api.CallServodRequest_Method", CallServodRequest_Method_name, CallServodRequest_Method_value)
 	proto.RegisterType((*StartServodRequest)(nil), "chromiumos.test.api.StartServodRequest")
 	proto.RegisterType((*StartServodResponse)(nil), "chromiumos.test.api.StartServodResponse")
+	proto.RegisterType((*StartServodResponse_Success)(nil), "chromiumos.test.api.StartServodResponse.Success")
+	proto.RegisterType((*StartServodResponse_Failure)(nil), "chromiumos.test.api.StartServodResponse.Failure")
 	proto.RegisterType((*StartServodMetadata)(nil), "chromiumos.test.api.StartServodMetadata")
 	proto.RegisterType((*StopServodRequest)(nil), "chromiumos.test.api.StopServodRequest")
 	proto.RegisterType((*StopServodResponse)(nil), "chromiumos.test.api.StopServodResponse")
+	proto.RegisterType((*StopServodResponse_Success)(nil), "chromiumos.test.api.StopServodResponse.Success")
+	proto.RegisterType((*StopServodResponse_Failure)(nil), "chromiumos.test.api.StopServodResponse.Failure")
 	proto.RegisterType((*StopServodMetadata)(nil), "chromiumos.test.api.StopServodMetadata")
 	proto.RegisterType((*ExecCmdRequest)(nil), "chromiumos.test.api.ExecCmdRequest")
 	proto.RegisterType((*ExecCmdResponse)(nil), "chromiumos.test.api.ExecCmdResponse")
 	proto.RegisterType((*ExecCmdResponse_ExitInfo)(nil), "chromiumos.test.api.ExecCmdResponse.ExitInfo")
 	proto.RegisterType((*ExecCmdMetadata)(nil), "chromiumos.test.api.ExecCmdMetadata")
+	proto.RegisterType((*CallServodRequest)(nil), "chromiumos.test.api.CallServodRequest")
+	proto.RegisterType((*CallServodResponse)(nil), "chromiumos.test.api.CallServodResponse")
+	proto.RegisterType((*CallServodResponse_Success)(nil), "chromiumos.test.api.CallServodResponse.Success")
+	proto.RegisterType((*CallServodResponse_Failure)(nil), "chromiumos.test.api.CallServodResponse.Failure")
+	proto.RegisterType((*CallServodMetadata)(nil), "chromiumos.test.api.CallServodMetadata")
 }
 
 func init() {
@@ -616,48 +1151,62 @@ func init() {
 }
 
 var fileDescriptor_88add0f20deb49eb = []byte{
-	// 645 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x55, 0xcd, 0x6e, 0x13, 0x31,
-	0x10, 0x56, 0x42, 0x7f, 0x52, 0x27, 0x2d, 0xad, 0x5b, 0xd0, 0x2a, 0x17, 0x60, 0x8b, 0xd4, 0x0a,
-	0x35, 0xbb, 0xa8, 0xf4, 0x05, 0xf8, 0xa9, 0x04, 0x48, 0x05, 0xb4, 0x91, 0x7a, 0xe0, 0xb2, 0x72,
-	0xd6, 0xd3, 0x8d, 0xd5, 0x5d, 0xcf, 0x62, 0x7b, 0x43, 0x39, 0x70, 0x86, 0x03, 0x0f, 0xc0, 0x73,
-	0xf1, 0x16, 0xbc, 0x03, 0x07, 0xb4, 0xb6, 0x93, 0xa6, 0x10, 0x01, 0x17, 0xe0, 0x94, 0xfd, 0xbe,
-	0x19, 0x8f, 0x3f, 0x8f, 0x3f, 0x4f, 0xc8, 0x7e, 0x36, 0x56, 0x58, 0x8a, 0xba, 0x44, 0x1d, 0x1b,
-	0xd0, 0x26, 0x66, 0x95, 0x88, 0x35, 0xa8, 0x09, 0xf2, 0xb4, 0xf9, 0x11, 0x19, 0x44, 0x95, 0x42,
-	0x83, 0x74, 0xfb, 0x32, 0x33, 0x6a, 0x32, 0x23, 0x56, 0x89, 0xfe, 0xde, 0xdc, 0xf2, 0x02, 0x65,
-	0xae, 0x6a, 0x29, 0x85, 0xcc, 0x63, 0xac, 0x40, 0x31, 0x23, 0x50, 0x6a, 0xb7, 0x3a, 0xfc, 0xda,
-	0x26, 0x74, 0x68, 0x98, 0x32, 0x43, 0x5b, 0x3b, 0x81, 0x37, 0x35, 0x68, 0x43, 0xf7, 0xc9, 0xa6,
-	0xdf, 0x6c, 0x8c, 0xda, 0xa4, 0x15, 0x33, 0xe3, 0xa0, 0x75, 0xbb, 0xb5, 0xbf, 0x96, 0x6c, 0x38,
-	0xfe, 0x29, 0x6a, 0xf3, 0x8a, 0x99, 0x31, 0x3d, 0x20, 0x94, 0x63, 0x76, 0x0e, 0x2a, 0xf5, 0x0b,
-	0x24, 0x2b, 0x21, 0x68, 0xdb, 0xdc, 0x4d, 0x17, 0x71, 0xa5, 0x5f, 0xb0, 0x12, 0xe8, 0x2e, 0x59,
-	0x1f, 0xd5, 0xa2, 0xe0, 0xe9, 0x04, 0x94, 0x16, 0x28, 0x83, 0x6b, 0x36, 0xb1, 0x67, 0xc9, 0x53,
-	0xc7, 0xd1, 0x1d, 0xb2, 0x3c, 0x42, 0xa6, 0x78, 0xb0, 0x64, 0x83, 0x0e, 0x34, 0x6c, 0x89, 0x1c,
-	0x8a, 0x60, 0xd9, 0xb1, 0x16, 0xd0, 0x5b, 0xa4, 0xab, 0x41, 0x09, 0x56, 0xb8, 0x7d, 0x57, 0x6c,
-	0x8c, 0x38, 0xca, 0xee, 0x48, 0xc9, 0x52, 0x85, 0xca, 0x04, 0xab, 0x36, 0x62, 0xbf, 0x9b, 0x52,
-	0x1c, 0x46, 0x75, 0x1e, 0x74, 0x5c, 0x29, 0x0b, 0x1a, 0x6d, 0x0a, 0x32, 0x9c, 0x80, 0x7a, 0x97,
-	0x36, 0xc5, 0x83, 0x35, 0xa7, 0x6d, 0x4a, 0x9e, 0x20, 0x07, 0x7a, 0x93, 0xac, 0x64, 0x28, 0xcf,
-	0x44, 0x1e, 0x10, 0x1b, 0xf5, 0x88, 0x86, 0x64, 0x9d, 0x15, 0x05, 0xbe, 0x4d, 0x79, 0xcd, 0x8a,
-	0x74, 0x72, 0x14, 0x74, 0x6d, 0xb8, 0x6b, 0xc9, 0x27, 0x35, 0x2b, 0x4e, 0x8f, 0xc2, 0x01, 0xd9,
-	0xbe, 0xd2, 0x6a, 0x5d, 0xa1, 0xd4, 0xb6, 0x24, 0xd6, 0xa6, 0xaa, 0x8d, 0xef, 0xb0, 0x47, 0xe1,
-	0x8d, 0x2b, 0xe9, 0x27, 0x60, 0x18, 0x67, 0x86, 0x85, 0xe7, 0x64, 0x6b, 0x68, 0xb0, 0xfa, 0x27,
-	0xf7, 0x15, 0x1e, 0x34, 0xee, 0xb8, 0xdc, 0xec, 0x37, 0x8a, 0x77, 0xe6, 0xb3, 0x67, 0x82, 0x3f,
-	0xb7, 0xc8, 0xc6, 0xf1, 0x05, 0x64, 0x8f, 0xcb, 0xbf, 0x6e, 0xaf, 0x80, 0xac, 0x66, 0x58, 0x96,
-	0x4c, 0x72, 0x6f, 0xac, 0x29, 0x6c, 0xae, 0x5c, 0x1b, 0x2e, 0xa4, 0xf5, 0x54, 0x2f, 0x71, 0x20,
-	0xfc, 0xd4, 0x26, 0xd7, 0x67, 0xd2, 0xfc, 0xe1, 0x9e, 0x93, 0x35, 0xb8, 0x10, 0x26, 0x15, 0xf2,
-	0x0c, 0xad, 0xa8, 0xee, 0xe1, 0x20, 0x5a, 0xf0, 0xc6, 0xa2, 0x1f, 0x16, 0x46, 0xc7, 0x17, 0xc2,
-	0x3c, 0x93, 0x67, 0x98, 0x74, 0xc0, 0x7f, 0x35, 0x8d, 0xd2, 0x86, 0x63, 0x6d, 0xac, 0xe2, 0x5e,
-	0xe2, 0x91, 0xe7, 0x41, 0x29, 0x2b, 0xd3, 0xf1, 0xa0, 0x54, 0xff, 0x3d, 0xe9, 0x1c, 0x5f, 0x59,
-	0xcb, 0x4c, 0xad, 0xad, 0x88, 0xe5, 0xc4, 0x23, 0xda, 0x27, 0x1d, 0x2d, 0x72, 0xc9, 0x0a, 0xe0,
-	0xb6, 0x6a, 0x27, 0x99, 0xe1, 0xe6, 0xfc, 0xba, 0xb1, 0x0c, 0xb8, 0xf3, 0x77, 0x92, 0x29, 0x6c,
-	0xcc, 0x0d, 0x4a, 0xa1, 0x4a, 0x4b, 0xd0, 0x9a, 0xe5, 0xe0, 0xdf, 0x56, 0xcf, 0x92, 0x27, 0x8e,
-	0x0b, 0xb7, 0x66, 0xdd, 0x98, 0x5e, 0xde, 0xe1, 0xb7, 0x36, 0x59, 0x77, 0x0d, 0x1e, 0xba, 0xa9,
-	0x43, 0x3f, 0xb6, 0x48, 0x77, 0xce, 0x97, 0x74, 0x6f, 0x61, 0x73, 0x7e, 0x9e, 0x29, 0xfd, 0x3b,
-	0xf3, 0x89, 0x73, 0x43, 0x29, 0x7a, 0x39, 0x1d, 0x4a, 0xe1, 0xe0, 0xcb, 0xc3, 0x7b, 0x8b, 0x1f,
-	0xc9, 0xa2, 0xa7, 0x40, 0x3f, 0xb4, 0x08, 0xb9, 0x34, 0xdc, 0xff, 0x54, 0x72, 0x4a, 0x56, 0x7d,
-	0xe7, 0xe8, 0xee, 0xaf, 0xcd, 0xe2, 0x14, 0xdc, 0xfd, 0x13, 0x47, 0xdd, 0x6f, 0x3d, 0x8a, 0x5f,
-	0x0f, 0x72, 0x9c, 0xe5, 0x46, 0xa8, 0xf2, 0x78, 0x6e, 0xb2, 0xbb, 0xd9, 0x13, 0xe7, 0x38, 0xfb,
-	0x8b, 0x18, 0xad, 0xd8, 0xb1, 0xfe, 0xe0, 0x7b, 0x00, 0x00, 0x00, 0xff, 0xff, 0x7e, 0x2a, 0xfe,
-	0xd3, 0x40, 0x06, 0x00, 0x00,
+	// 877 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x56, 0xcd, 0x6e, 0xdb, 0x46,
+	0x10, 0x0e, 0x65, 0x5b, 0x92, 0x47, 0x76, 0x62, 0x6f, 0xd2, 0x82, 0xd0, 0xa5, 0x0d, 0x5d, 0xc4,
+	0x46, 0x5b, 0x93, 0x46, 0x9a, 0x17, 0x48, 0x1c, 0xb5, 0x69, 0x53, 0x35, 0x05, 0x15, 0xf8, 0xd0,
+	0x0b, 0xb1, 0x22, 0x57, 0xd4, 0xa2, 0x24, 0x97, 0xdd, 0x5d, 0xaa, 0xee, 0x21, 0xb7, 0x1e, 0x0a,
+	0xb4, 0xe7, 0x3e, 0x58, 0x8e, 0x7d, 0x81, 0xa2, 0xe7, 0x02, 0x3d, 0x17, 0xfb, 0x23, 0x4a, 0x96,
+	0xe8, 0x44, 0x41, 0x90, 0x9c, 0xb8, 0x33, 0x3b, 0x33, 0x3b, 0xbb, 0xdf, 0x7c, 0xc3, 0x81, 0x93,
+	0x78, 0xca, 0x59, 0x4e, 0xab, 0x9c, 0x89, 0x40, 0x12, 0x21, 0x03, 0x5c, 0xd2, 0x40, 0x10, 0x3e,
+	0x63, 0x49, 0xa4, 0x3e, 0x34, 0x26, 0x7e, 0xc9, 0x99, 0x64, 0xe8, 0xf6, 0xc2, 0xd2, 0x57, 0x96,
+	0x3e, 0x2e, 0x69, 0xff, 0x78, 0xc9, 0x3d, 0x63, 0x45, 0xca, 0xab, 0xa2, 0xa0, 0x45, 0x1a, 0xb0,
+	0x92, 0x70, 0x2c, 0x29, 0x2b, 0x84, 0xf1, 0xf6, 0xfe, 0x6e, 0x01, 0x1a, 0x49, 0xcc, 0xe5, 0x48,
+	0xc7, 0x0e, 0xc9, 0x4f, 0x15, 0x11, 0x12, 0xdd, 0x83, 0x5b, 0xfa, 0xb0, 0x68, 0xca, 0x84, 0x8c,
+	0x4a, 0x2c, 0xa7, 0xae, 0xf3, 0xb1, 0x73, 0xb2, 0x1b, 0xee, 0x6b, 0xf5, 0x13, 0x26, 0xe4, 0xf7,
+	0x58, 0x4e, 0xd1, 0xe7, 0x80, 0x12, 0x16, 0xff, 0x48, 0x78, 0x64, 0x73, 0x2b, 0x70, 0x4e, 0xdc,
+	0x96, 0x36, 0x3d, 0x30, 0x3b, 0x26, 0xf0, 0x77, 0x38, 0x27, 0xe8, 0x08, 0xf6, 0xc7, 0x15, 0xcd,
+	0x92, 0x68, 0x46, 0xb8, 0xa0, 0xac, 0x70, 0xb7, 0xb4, 0xe1, 0x9e, 0x56, 0x5e, 0x18, 0x1d, 0xba,
+	0x03, 0x3b, 0x63, 0x86, 0x79, 0xe2, 0x6e, 0xeb, 0x4d, 0x23, 0x28, 0x6d, 0xce, 0x12, 0x92, 0xb9,
+	0x3b, 0x46, 0xab, 0x05, 0xf4, 0x11, 0xf4, 0x04, 0xe1, 0x14, 0x67, 0xe6, 0xdc, 0xb6, 0xde, 0x03,
+	0xa3, 0xd2, 0x27, 0x22, 0xd8, 0x2e, 0x19, 0x97, 0x6e, 0x47, 0xef, 0xe8, 0xb5, 0x0a, 0x95, 0x90,
+	0x71, 0x95, 0xba, 0x5d, 0x13, 0x4a, 0x0b, 0x2a, 0x37, 0x4e, 0x62, 0x36, 0x23, 0xfc, 0x97, 0x48,
+	0x05, 0x77, 0x77, 0x4d, 0x6e, 0x73, 0xe5, 0x90, 0x25, 0x04, 0x7d, 0x08, 0xed, 0x98, 0x15, 0x13,
+	0x9a, 0xba, 0xa0, 0x77, 0xad, 0x84, 0x3c, 0xd8, 0xc7, 0x59, 0xc6, 0x7e, 0x8e, 0x92, 0x0a, 0x67,
+	0xd1, 0xec, 0x81, 0xdb, 0xd3, 0xdb, 0x3d, 0xad, 0x7c, 0x5c, 0xe1, 0xec, 0xe2, 0x81, 0xf7, 0x9f,
+	0x03, 0xb7, 0xaf, 0xbc, 0xb4, 0x28, 0x59, 0x21, 0x08, 0xfa, 0x16, 0x3a, 0xa2, 0x8a, 0x63, 0x22,
+	0x84, 0x7e, 0xe2, 0xde, 0xfd, 0x33, 0xbf, 0x01, 0x51, 0xbf, 0xc1, 0xd5, 0x1f, 0x19, 0xbf, 0x27,
+	0x37, 0xc2, 0x79, 0x08, 0x15, 0x6d, 0x82, 0x69, 0x56, 0x71, 0x83, 0xc2, 0x9b, 0x44, 0xfb, 0xd2,
+	0xf8, 0xa9, 0x68, 0x36, 0x44, 0x7f, 0x17, 0x3a, 0xf6, 0x8c, 0xbe, 0x0f, 0x1d, 0x6b, 0xa0, 0x9e,
+	0x8a, 0x70, 0xce, 0x78, 0x94, 0x13, 0x21, 0x70, 0x4a, 0x6c, 0x69, 0xec, 0x69, 0xe5, 0xd0, 0xe8,
+	0x1e, 0x75, 0xa1, 0xcd, 0x89, 0xa8, 0x32, 0xe9, 0x7d, 0x70, 0xe5, 0xde, 0x43, 0x22, 0x71, 0x82,
+	0x25, 0xf6, 0x5e, 0xc0, 0xe1, 0x48, 0xb2, 0xf2, 0x7d, 0xd4, 0xdd, 0xbc, 0x0a, 0xb6, 0x16, 0x55,
+	0xe0, 0xfd, 0xeb, 0xa8, 0xc2, 0x5f, 0x9c, 0x6f, 0xd1, 0x78, 0xba, 0x8a, 0x46, 0x70, 0xcd, 0xfb,
+	0xad, 0x7a, 0x36, 0x81, 0xf1, 0x74, 0x15, 0x8c, 0x8d, 0x83, 0xbd, 0x2b, 0x2c, 0xee, 0x2c, 0x5f,
+	0xba, 0x86, 0xe2, 0x4f, 0x07, 0x6e, 0x0e, 0x2e, 0x49, 0x7c, 0x9e, 0xbf, 0x63, 0x20, 0x5c, 0xe8,
+	0xc4, 0x2c, 0xcf, 0x71, 0x91, 0x58, 0x2c, 0xe6, 0xa2, 0x22, 0xa5, 0x90, 0x09, 0x2d, 0x34, 0xeb,
+	0xf7, 0x42, 0x23, 0x78, 0x7f, 0xb4, 0xe0, 0x56, 0x9d, 0x98, 0x45, 0xe8, 0x1b, 0xd8, 0x25, 0x97,
+	0x54, 0x46, 0xb4, 0x98, 0x30, 0x8b, 0xd1, 0x69, 0xe3, 0xb3, 0xae, 0x38, 0xfa, 0x83, 0x4b, 0x2a,
+	0xbf, 0x2e, 0x26, 0x2c, 0xec, 0x12, 0xbb, 0x52, 0x7c, 0x16, 0x32, 0x61, 0x95, 0xd4, 0x19, 0xef,
+	0x85, 0x56, 0xb2, 0x7a, 0xc2, 0xb9, 0x4e, 0xd3, 0xe8, 0x09, 0xe7, 0xfd, 0x17, 0xd0, 0x1d, 0x5c,
+	0xf1, 0xc5, 0xb2, 0x32, 0x85, 0xb2, 0x13, 0x5a, 0x09, 0xf5, 0xa1, 0x2b, 0x68, 0x5a, 0xe0, 0x8c,
+	0x24, 0x3a, 0x6a, 0x37, 0xac, 0x65, 0x75, 0x7f, 0xa1, 0xa8, 0x40, 0xcc, 0xfd, 0xbb, 0xe1, 0x5c,
+	0x5c, 0xc7, 0x71, 0x7b, 0x1d, 0x47, 0xef, 0xb0, 0x7e, 0x8d, 0x1a, 0xba, 0x7f, 0x1c, 0x38, 0x3c,
+	0xc7, 0x59, 0xf6, 0x3e, 0x68, 0x34, 0x80, 0x76, 0x4e, 0xe4, 0x94, 0x99, 0xe4, 0x6f, 0x5e, 0xf3,
+	0xec, 0x6b, 0xd9, 0xf8, 0x43, 0xed, 0x14, 0x5a, 0x67, 0xc5, 0x46, 0xcc, 0x53, 0x61, 0x6f, 0xa8,
+	0xd7, 0xde, 0x11, 0xb4, 0x8d, 0x15, 0xea, 0xc0, 0xd6, 0xe3, 0x67, 0xe7, 0x07, 0x37, 0xd4, 0xe2,
+	0xab, 0xc1, 0xf3, 0x03, 0x47, 0x2d, 0x46, 0x83, 0xe7, 0x07, 0x2d, 0xef, 0xf7, 0x16, 0xa0, 0xe5,
+	0xe8, 0x6f, 0x46, 0xd9, 0x75, 0xcf, 0xb7, 0xa0, 0x6c, 0x43, 0xb0, 0x06, 0xca, 0xde, 0xad, 0x29,
+	0xab, 0xaa, 0xc5, 0x50, 0xd0, 0x02, 0x61, 0xa5, 0xb7, 0xa3, 0xf2, 0x22, 0x8b, 0x79, 0x3d, 0xdc,
+	0xff, 0x6b, 0x0b, 0xf6, 0x8d, 0x6a, 0x64, 0xa6, 0x04, 0xf4, 0x9b, 0x03, 0xbd, 0xa5, 0xfe, 0x8b,
+	0x8e, 0x5f, 0xff, 0x43, 0xd0, 0xb0, 0xf5, 0xef, 0x2e, 0x1b, 0x2e, 0x0d, 0x11, 0xfe, 0xb3, 0xf9,
+	0x10, 0xe1, 0x9d, 0xbe, 0x7c, 0xf8, 0x69, 0xf3, 0x5f, 0xad, 0xa9, 0xe5, 0xa3, 0x5f, 0x1d, 0x80,
+	0x45, 0xfb, 0x41, 0xf7, 0x5e, 0xdb, 0x0d, 0x37, 0x4e, 0xe4, 0xb3, 0x97, 0x0f, 0x4f, 0x1a, 0xfb,
+	0x79, 0x43, 0xbb, 0x43, 0x17, 0xd0, 0xb1, 0x34, 0x42, 0x47, 0xaf, 0xee, 0x1c, 0xe6, 0xfc, 0x4f,
+	0x36, 0x69, 0x2f, 0x67, 0x0e, 0x8a, 0x00, 0x16, 0x88, 0x5c, 0x73, 0xbb, 0x35, 0x76, 0xf4, 0x8f,
+	0x37, 0x2c, 0xb0, 0x33, 0xe7, 0x51, 0xf0, 0xc3, 0x69, 0xca, 0x6a, 0x73, 0x9f, 0xf1, 0x34, 0x58,
+	0x9a, 0xf3, 0xcc, 0x2c, 0x12, 0xa4, 0xac, 0x1e, 0x18, 0xc7, 0x6d, 0x3d, 0xe4, 0x7d, 0xf1, 0x7f,
+	0x00, 0x00, 0x00, 0xff, 0xff, 0xab, 0xf5, 0x5d, 0x9c, 0x4e, 0x0a, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -673,16 +1222,24 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ServodServiceClient interface {
 	// StartServod runs a servod Docker container and starts the servod daemon
-	// inside the container.
+	// inside the container if servod is containerized. Otherwise, it simply
+	// starts the servod daemon.
 	StartServod(ctx context.Context, in *StartServodRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// StopServod stops the servod Docker container.
-	StopServod(ctx context.Context, in *StartServodRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// ExecCmd runs a servod command inside the servod Docker container.
-	// If docker_servod_name is not provided, the command is executed directly
-	// inside the current host.
-	// Some example commands:
+	// StopServod stops the servod daemon inside the container and stops the
+	// servod Docker container if servod is containerized. Otherwise, it simply
+	// stops the servod daemon.
+	StopServod(ctx context.Context, in *StopServodRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
+	// ExecCmd executes a servod command inside the servod Docker container
+	// if docker_servod_name parameter is provided. Otherwise, it executes the
+	// command directly inside the servo host.
+	// Example commands:
 	// "dut-control -p $PORT power_state:off"
 	ExecCmd(ctx context.Context, in *ExecCmdRequest, opts ...grpc.CallOption) (ServodService_ExecCmdClient, error)
+	// CallServod runs a servod command through an XML-RPC call inside the
+	// servod Docker container if docker_servod_name parameter is provided.
+	// Otherwise, it runs the command directly inside the servo host.
+	// Allowed methods: doc, get, and set.
+	CallServod(ctx context.Context, in *CallServodRequest, opts ...grpc.CallOption) (ServodService_CallServodClient, error)
 }
 
 type servodServiceClient struct {
@@ -702,7 +1259,7 @@ func (c *servodServiceClient) StartServod(ctx context.Context, in *StartServodRe
 	return out, nil
 }
 
-func (c *servodServiceClient) StopServod(ctx context.Context, in *StartServodRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
+func (c *servodServiceClient) StopServod(ctx context.Context, in *StopServodRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
 	out := new(longrunning.Operation)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.ServodService/StopServod", in, out, opts...)
 	if err != nil {
@@ -743,19 +1300,59 @@ func (x *servodServiceExecCmdClient) Recv() (*ExecCmdResponse, error) {
 	return m, nil
 }
 
+func (c *servodServiceClient) CallServod(ctx context.Context, in *CallServodRequest, opts ...grpc.CallOption) (ServodService_CallServodClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_ServodService_serviceDesc.Streams[1], "/chromiumos.test.api.ServodService/CallServod", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &servodServiceCallServodClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ServodService_CallServodClient interface {
+	Recv() (*CallServodResponse, error)
+	grpc.ClientStream
+}
+
+type servodServiceCallServodClient struct {
+	grpc.ClientStream
+}
+
+func (x *servodServiceCallServodClient) Recv() (*CallServodResponse, error) {
+	m := new(CallServodResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // ServodServiceServer is the server API for ServodService service.
 type ServodServiceServer interface {
 	// StartServod runs a servod Docker container and starts the servod daemon
-	// inside the container.
+	// inside the container if servod is containerized. Otherwise, it simply
+	// starts the servod daemon.
 	StartServod(context.Context, *StartServodRequest) (*longrunning.Operation, error)
-	// StopServod stops the servod Docker container.
-	StopServod(context.Context, *StartServodRequest) (*longrunning.Operation, error)
-	// ExecCmd runs a servod command inside the servod Docker container.
-	// If docker_servod_name is not provided, the command is executed directly
-	// inside the current host.
-	// Some example commands:
+	// StopServod stops the servod daemon inside the container and stops the
+	// servod Docker container if servod is containerized. Otherwise, it simply
+	// stops the servod daemon.
+	StopServod(context.Context, *StopServodRequest) (*longrunning.Operation, error)
+	// ExecCmd executes a servod command inside the servod Docker container
+	// if docker_servod_name parameter is provided. Otherwise, it executes the
+	// command directly inside the servo host.
+	// Example commands:
 	// "dut-control -p $PORT power_state:off"
 	ExecCmd(*ExecCmdRequest, ServodService_ExecCmdServer) error
+	// CallServod runs a servod command through an XML-RPC call inside the
+	// servod Docker container if docker_servod_name parameter is provided.
+	// Otherwise, it runs the command directly inside the servo host.
+	// Allowed methods: doc, get, and set.
+	CallServod(*CallServodRequest, ServodService_CallServodServer) error
 }
 
 // UnimplementedServodServiceServer can be embedded to have forward compatible implementations.
@@ -765,11 +1362,14 @@ type UnimplementedServodServiceServer struct {
 func (*UnimplementedServodServiceServer) StartServod(ctx context.Context, req *StartServodRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartServod not implemented")
 }
-func (*UnimplementedServodServiceServer) StopServod(ctx context.Context, req *StartServodRequest) (*longrunning.Operation, error) {
+func (*UnimplementedServodServiceServer) StopServod(ctx context.Context, req *StopServodRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopServod not implemented")
 }
 func (*UnimplementedServodServiceServer) ExecCmd(req *ExecCmdRequest, srv ServodService_ExecCmdServer) error {
 	return status.Errorf(codes.Unimplemented, "method ExecCmd not implemented")
+}
+func (*UnimplementedServodServiceServer) CallServod(req *CallServodRequest, srv ServodService_CallServodServer) error {
+	return status.Errorf(codes.Unimplemented, "method CallServod not implemented")
 }
 
 func RegisterServodServiceServer(s *grpc.Server, srv ServodServiceServer) {
@@ -795,7 +1395,7 @@ func _ServodService_StartServod_Handler(srv interface{}, ctx context.Context, de
 }
 
 func _ServodService_StopServod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StartServodRequest)
+	in := new(StopServodRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -807,7 +1407,7 @@ func _ServodService_StopServod_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/chromiumos.test.api.ServodService/StopServod",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServodServiceServer).StopServod(ctx, req.(*StartServodRequest))
+		return srv.(ServodServiceServer).StopServod(ctx, req.(*StopServodRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -833,6 +1433,27 @@ func (x *servodServiceExecCmdServer) Send(m *ExecCmdResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
+func _ServodService_CallServod_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(CallServodRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ServodServiceServer).CallServod(m, &servodServiceCallServodServer{stream})
+}
+
+type ServodService_CallServodServer interface {
+	Send(*CallServodResponse) error
+	grpc.ServerStream
+}
+
+type servodServiceCallServodServer struct {
+	grpc.ServerStream
+}
+
+func (x *servodServiceCallServodServer) Send(m *CallServodResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 var _ServodService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "chromiumos.test.api.ServodService",
 	HandlerType: (*ServodServiceServer)(nil),
@@ -850,6 +1471,11 @@ var _ServodService_serviceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "ExecCmd",
 			Handler:       _ServodService_ExecCmd_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "CallServod",
+			Handler:       _ServodService_CallServod_Handler,
 			ServerStreams: true,
 		},
 	},

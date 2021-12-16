@@ -10,12 +10,16 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/longrunning/operations.proto";
 
-// Provides the ability to start/stop a servod Docker container either on the
-// same host or a remote servo host and execute servod commands on it.
+// Provides the ability to start/stop servod daemon and execute servod 
+// commands on it.
+// Servod daemon can be running either inside a Docker container or directly
+// on the host.
+// The servo host could also be the same as the service host or a remote host.
 // go/cros-servod-design to learn more about the design.
 service ServodService {
   // StartServod runs a servod Docker container and starts the servod daemon
-  // inside the container.
+  // inside the container if servod is containerized. Otherwise, it simply
+  // starts the servod daemon.
   rpc StartServod(StartServodRequest)
       returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
@@ -24,29 +28,38 @@ service ServodService {
     };
   }
 
-  // StopServod stops the servod Docker container.
-  rpc StopServod(StartServodRequest)
+  // StopServod stops the servod daemon inside the container and stops the
+  // servod Docker container if servod is containerized. Otherwise, it simply
+  // stops the servod daemon.
+  rpc StopServod(StopServodRequest)
       returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
-      response_type: "StartServodResponse",
-      metadata_type: "StartServodMetadata"
+      response_type: "StopServodResponse",
+      metadata_type: "StopServodMetadata"
     };
   }
 
-  // ExecCmd runs a servod command inside the servod Docker container.
-  // If docker_servod_name is not provided, the command is executed directly
-  // inside the current host.
-  // Some example commands:
+  // ExecCmd executes a servod command inside the servod Docker container
+  // if docker_servod_name parameter is provided. Otherwise, it executes the
+  // command directly inside the servo host.
+  // Example commands:
   // "dut-control -p $PORT power_state:off"
   rpc ExecCmd(ExecCmdRequest)
       returns (stream ExecCmdResponse);
+
+  // CallServod runs a servod command through an XML-RPC call inside the 
+  // servod Docker container if docker_servod_name parameter is provided.
+  // Otherwise, it runs the command directly inside the servo host.
+  // Allowed methods: doc, get, and set.
+  rpc CallServod(CallServodRequest)
+      returns (stream CallServodResponse);
 }
 
 message StartServodRequest {
   // The path (URI) for the servod (containerized or running as a daemon) host.
   // If cros-servod and docker-servod live on the same host, this parameter
   // should be empty.
-  string servod_host_path = 1;
+  string servo_host_path = 1;
 
   // The servod Docker container name.
   string docker_servod_name = 2;
@@ -81,8 +94,19 @@ message StartServodRequest {
 }
 
 message StartServodResponse {
-  // The stdout/stderr output for the start operation.
-  string output = 1;
+  // Empty response for success.
+  message Success {
+  }
+
+  // Error message for failure.
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
 }
 
 message StartServodMetadata {
@@ -92,15 +116,29 @@ message StopServodRequest {
   // The path (URI) for the servod (containerized or running as a daemon) host.
   // If cros-servod and docker-servod live on the same host, this parameter
   // should be empty.
-  string servod_host_path = 1;
+  string servo_host_path = 1;
 
   // The servod Docker container name.
   string docker_servod_name = 2;
+
+  // The port that servod is running on the servo host.
+  string port = 3;
 }
 
 message StopServodResponse {
-  // The stdout/stderr output for the stop operation.
-  string output = 1;
+  // Empty response for success.
+  message Success {
+  }
+
+  // Error message for failure.
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
 }
 
 message StopServodMetadata {
@@ -110,13 +148,13 @@ message ExecCmdRequest {
   // The path (URI) for the servod (containerized or running as a daemon) host.
   // If cros-servod and docker-servod live on the same host, this parameter
   // should be empty.
-  string servod_host_path = 1;
+  string servo_host_path = 1;
 
   // The servod Docker container name.
   string docker_servod_name = 2;
 
   // The command to execute on the servo host.
-  // Some example commands:
+  // Example commands:
   // "dut-control -p $PORT power_state:off"
   string command = 3;
 
@@ -164,4 +202,50 @@ message ExecCmdResponse {
 }
 
 message ExecCmdMetadata {
+}
+
+message CallServodRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servo_host_path = 1;
+
+  // The servod Docker container name.
+  string docker_servod_name = 2;
+
+  enum Method {
+    DOC = 0;
+    GET = 1;
+    SET = 2;
+  }
+
+  // The method to call.
+  Method method = 3;
+
+  // The arguments to pass to the method.
+  // For the doc and get methods, there will be a single argument which is
+  // the control name (e.g. fakedisconnect).
+  // For the set method, it will be the control name and the value separated
+  // with a colon and wrapped inside a quote (e.g. "fakedisconnect:100 2000").
+  string args = 4;
+}
+
+message CallServodResponse {
+  // Response for success.
+  message Success {
+    string result = 1;
+  }
+
+  // Error message for failure.
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
+
+message CallServodMetadata {
 }

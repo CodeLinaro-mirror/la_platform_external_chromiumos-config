@@ -7,8 +7,11 @@ from chromiumos.test.api import servod_service_pb2 as chromiumos_dot_test_dot_ap
 
 
 class ServodServiceStub(object):
-    """Provides the ability to start/stop a servod Docker container either on the
-    same host or a remote servo host and execute servod commands on it.
+    """Provides the ability to start/stop servod daemon and execute servod 
+    commands on it.
+    Servod daemon can be running either inside a Docker container or directly
+    on the host.
+    The servo host could also be the same as the service host or a remote host.
     go/cros-servod-design to learn more about the design.
     """
 
@@ -25,7 +28,7 @@ class ServodServiceStub(object):
                 )
         self.StopServod = channel.unary_unary(
                 '/chromiumos.test.api.ServodService/StopServod',
-                request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.StartServodRequest.SerializeToString,
+                request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.StopServodRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
         self.ExecCmd = channel.unary_stream(
@@ -33,35 +36,56 @@ class ServodServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.FromString,
                 )
+        self.CallServod = channel.unary_stream(
+                '/chromiumos.test.api.ServodService/CallServod',
+                request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.FromString,
+                )
 
 
 class ServodServiceServicer(object):
-    """Provides the ability to start/stop a servod Docker container either on the
-    same host or a remote servo host and execute servod commands on it.
+    """Provides the ability to start/stop servod daemon and execute servod 
+    commands on it.
+    Servod daemon can be running either inside a Docker container or directly
+    on the host.
+    The servo host could also be the same as the service host or a remote host.
     go/cros-servod-design to learn more about the design.
     """
 
     def StartServod(self, request, context):
         """StartServod runs a servod Docker container and starts the servod daemon
-        inside the container.
+        inside the container if servod is containerized. Otherwise, it simply
+        starts the servod daemon.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def StopServod(self, request, context):
-        """StopServod stops the servod Docker container.
+        """StopServod stops the servod daemon inside the container and stops the
+        servod Docker container if servod is containerized. Otherwise, it simply
+        stops the servod daemon.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ExecCmd(self, request, context):
-        """ExecCmd runs a servod command inside the servod Docker container.
-        If docker_servod_name is not provided, the command is executed directly
-        inside the current host.
-        Some example commands:
+        """ExecCmd executes a servod command inside the servod Docker container
+        if docker_servod_name parameter is provided. Otherwise, it executes the
+        command directly inside the servo host.
+        Example commands:
         "dut-control -p $PORT power_state:off"
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CallServod(self, request, context):
+        """CallServod runs a servod command through an XML-RPC call inside the 
+        servod Docker container if docker_servod_name parameter is provided.
+        Otherwise, it runs the command directly inside the servo host.
+        Allowed methods: doc, get, and set.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -77,13 +101,18 @@ def add_ServodServiceServicer_to_server(servicer, server):
             ),
             'StopServod': grpc.unary_unary_rpc_method_handler(
                     servicer.StopServod,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.StartServodRequest.FromString,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.StopServodRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
             'ExecCmd': grpc.unary_stream_rpc_method_handler(
                     servicer.ExecCmd,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.SerializeToString,
+            ),
+            'CallServod': grpc.unary_stream_rpc_method_handler(
+                    servicer.CallServod,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -93,8 +122,11 @@ def add_ServodServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class ServodService(object):
-    """Provides the ability to start/stop a servod Docker container either on the
-    same host or a remote servo host and execute servod commands on it.
+    """Provides the ability to start/stop servod daemon and execute servod 
+    commands on it.
+    Servod daemon can be running either inside a Docker container or directly
+    on the host.
+    The servo host could also be the same as the service host or a remote host.
     go/cros-servod-design to learn more about the design.
     """
 
@@ -127,7 +159,7 @@ class ServodService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ServodService/StopServod',
-            chromiumos_dot_test_dot_api_dot_servod__service__pb2.StartServodRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.StopServodRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -146,5 +178,22 @@ class ServodService(object):
         return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.ServodService/ExecCmd',
             chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CallServod(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.ServodService/CallServod',
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
