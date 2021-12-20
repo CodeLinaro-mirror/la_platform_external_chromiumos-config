@@ -208,6 +208,11 @@
       "mosysPlatformName": "fake",
       "name": "FAKE_PROGRAM",
       "platform": {
+        "capabilities": {
+          "darkResume": true,
+          "suspendToIdle": true,
+          "wakeOnDp": true
+        },
         "gpuFamily": "FAKE_INTEL_GPU",
         "graphicsApis": [
           1

@@ -138,8 +138,10 @@
           "has-ambient-light-sensor": "1",
           "internal-backlight-als-steps": "80.0 63.0 -1 400\n100.0 80.0 100 -1",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "3000",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "regulatory-label": "fake_regulatory_label",
         "thermal": {
@@ -340,15 +342,15 @@
         },
         "name": "fake_ref_design",
         "power": {
-          "battery-poll-interval-initial-ms": "1000",
           "disable-dark-resume": "0",
           "has-keyboard-backlight": "1",
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
           "keyboard-backlight-user-steps": "0.0\n10.0\n20.0\n40.0\n60.0\n100.0",
-          "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "0",
           "turn-off-screen-timeout-ms": "3000",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "regulatory-label": "fake_regulatory_label",
         "thermal": {
@@ -553,8 +555,10 @@
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "3000",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -743,8 +747,10 @@
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "3000",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/project_b/33/dptf.dv",
@@ -913,8 +919,10 @@
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "3000",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/project_c/dptf.dv",
@@ -1071,8 +1079,10 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -1230,8 +1240,10 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -1389,8 +1401,10 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -1548,8 +1562,10 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -1716,8 +1732,10 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -1875,8 +1893,10 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
-          "usb-min-ac-watts": "90"
+          "usb-min-ac-watts": "90",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -2033,8 +2053,10 @@
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -2192,8 +2214,10 @@
           "internal-backlight-als-steps": "80.1 -1 400\n100.0 100 -1",
           "min-visible-backlight-level": "1000",
           "set-wifi-transmit-power-for-tablet-mode": "1",
+          "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
-          "usb-min-ac-watts": "20"
+          "usb-min-ac-watts": "20",
+          "wake-on-dp": "1"
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",

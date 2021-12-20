@@ -188,7 +188,6 @@ _SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True})
 _SC_POWER = sc.create_power(
     preferences = {
         "battery-poll-interval-initial-ms": "1000",
-        "disable-dark-resume": "0",
         "set-wifi-transmit-power-for-tablet-mode": "1",
     },
 )
@@ -324,7 +323,9 @@ design.append_configs(
         pd_version = sc.create_fw_version(11111),
     ),
     firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
-    power = _SC_POWER,
+    power = sc.create_power({
+        "suspend-to-idle": "0",
+    }),
     wifi = sc.create_rtw88(
         non_tablet_mode_transmit_power_chain = sc.create_rtw88_power_chain(
             limit_2g = 1,

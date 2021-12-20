@@ -5428,9 +5428,45 @@
                   "number": 5,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.Program.Platform.AcceleratedVideoCodec"
+                },
+                {
+                  "jsonName": "capabilities",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "capabilities",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Program.Platform.Capabilities"
                 }
               ],
-              "name": "Platform"
+              "name": "Platform",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "suspendToIdle",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "suspend_to_idle",
+                      "number": 1,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "darkResume",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "dark_resume",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "wakeOnDp",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "wake_on_dp",
+                      "number": 3,
+                      "type": "TYPE_BOOL"
+                    }
+                  ],
+                  "name": "Capabilities"
+                }
+              ]
             },
             {
               "field": [

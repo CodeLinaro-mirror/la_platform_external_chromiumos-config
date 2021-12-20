@@ -132,6 +132,18 @@ message Program {
 
     // Hardware accelerated video codecs supported
     repeated AcceleratedVideoCodec video_codecs = 5;
+
+    message Capabilities {
+      // Whether suspend to idle (S0ix/S0i3) is supported on this platform.
+      bool suspend_to_idle = 1;
+
+      // Whether dark resume is supported on this platform.
+      bool dark_resume = 2;
+
+      // Whether wake on DisplayPort plug is supported on this platform.
+      bool wake_on_dp = 3;
+    }
+    Capabilities capabilities = 6;
   }
   Platform platform = 11;
 

@@ -5059,7 +5059,6 @@
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },
@@ -5140,9 +5139,7 @@
       },
       "powerConfig": {
         "preferences": {
-          "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
-          "set-wifi-transmit-power-for-tablet-mode": "1"
+          "suspend-to-idle": "0"
         }
       },
       "publicReplication": {
@@ -5260,7 +5257,6 @@
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },
@@ -5545,7 +5541,6 @@
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },
@@ -5615,7 +5610,6 @@
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },
@@ -5700,7 +5694,6 @@
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },
@@ -5765,7 +5758,6 @@
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },
@@ -5833,7 +5825,6 @@
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },
@@ -5901,7 +5892,6 @@
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },
@@ -5969,7 +5959,6 @@
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",
-          "disable-dark-resume": "0",
           "set-wifi-transmit-power-for-tablet-mode": "1"
         }
       },

@@ -100,6 +100,9 @@ _PLATFORM = program_util.create_platform(
         platform.H264_DECODE,
         platform.H265_DECODE,
     ],
+    suspend_to_idle = True,
+    dark_resume = True,
+    wake_on_dp = True,
 )
 
 _HDMI_AUDIO_CARD = hw_topo.create_audio_card_config(

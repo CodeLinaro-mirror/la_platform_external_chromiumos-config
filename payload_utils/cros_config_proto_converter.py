@@ -200,6 +200,20 @@ def _format_power_pref_value(value) -> str:
   return str(value)
 
 
+def _build_derived_platform_power_prefs(capabilities) -> dict:
+  result = {}
+
+  # Falsy values are filtered out, deferring to the equivalent powerd default
+  # pref values. Dark resume is inverted; wrap it so False values are forwarded.
+  if capabilities.dark_resume:
+    result['disable-dark-resume'] = wrappers_pb2.BoolValue(
+        value=not capabilities.dark_resume)
+  result['suspend-to-idle'] = capabilities.suspend_to_idle
+  result['wake-on-dp'] = capabilities.wake_on_dp
+
+  return result
+
+
 def _build_derived_power_prefs(config: Config) -> dict:
   """Builds a partial 'power' property derived from hardware features."""
   present = topology_pb2.HardwareFeatures.PRESENT
@@ -263,6 +277,9 @@ def _build_derived_power_prefs(config: Config) -> dict:
           'screen.panel_properties.no_als_ac_brightness')
       result['internal-backlight-no-als-ac-brightness'] = (
           hw_features.screen.panel_properties.no_als_ac_brightness)
+
+  result.update(
+      _build_derived_platform_power_prefs(config.program.platform.capabilities))
 
   result['usb-min-ac-watts'] = hw_features.power_supply.usb_min_ac_watts
 
