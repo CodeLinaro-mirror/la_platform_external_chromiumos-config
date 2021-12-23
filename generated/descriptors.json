@@ -2123,6 +2123,10 @@
                 {
                   "name": "DP_CONVERTER",
                   "number": 30
+                },
+                {
+                  "name": "POE",
+                  "number": 31
                 }
               ]
             }
@@ -2529,6 +2533,14 @@
               "number": 34,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Hps"
+            },
+            {
+              "jsonName": "poe",
+              "label": "LABEL_OPTIONAL",
+              "name": "poe",
+              "number": 35,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.PoE"
             }
           ],
           "name": "HardwareFeatures",
@@ -3796,6 +3808,19 @@
                 }
               ],
               "name": "Hps"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "PoE"
             }
           ]
         }
@@ -4039,6 +4064,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "dp_converter",
               "number": 28,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "poe",
+              "label": "LABEL_OPTIONAL",
+              "name": "poe",
+              "number": 29,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }

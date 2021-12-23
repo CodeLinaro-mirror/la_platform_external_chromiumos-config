@@ -223,6 +223,8 @@ def TransformDesignTable(design_config, design_table):
     })
   if CastPresent(GetFeatures(topology, 'hps', ['hps', 'present'])):
     design_table.update({'component.has_hps': True})
+  if CastPresent(GetFeatures(topology, 'poe', ['poe', 'present'])):
+    design_table.update({'component.has_poe_peripheral_support': True})
 
 
 def CreateCommonTable(design_table):

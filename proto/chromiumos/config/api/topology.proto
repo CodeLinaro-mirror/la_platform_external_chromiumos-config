@@ -61,6 +61,7 @@ message Topology {
     SOC = 28;
     HPS = 29;
     DP_CONVERTER = 30;
+    POE = 31;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -614,6 +615,12 @@ message HardwareFeatures {
   Hps hps = 34;
   message Hps {
     // If hps is present on system
+    Present present = 1;
+  };
+
+  PoE poe = 35;
+  message PoE {
+    // If PoE peripheral support is present on system
     Present present = 1;
   };
 }

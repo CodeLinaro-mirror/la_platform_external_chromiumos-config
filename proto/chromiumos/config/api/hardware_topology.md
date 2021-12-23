@@ -275,3 +275,9 @@ Changes that require new topology
 Changes that do not require new topology
 
 * New firmware for DisplayPort converters
+
+## PoE Peripheral support
+
+Changes that require new topology
+
+* Presence of hardware for PoE peripheral support
