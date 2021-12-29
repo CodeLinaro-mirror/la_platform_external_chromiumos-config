@@ -5,6 +5,7 @@
 
 find_checkout_root() {
   path="$(dirname "$0")"
+  path="$(realpath "${path}")"
   while [[ "${path}" != "/" && ! -d "${path}/.repo" ]]
   do
     path="$(dirname "${path}")"
@@ -16,11 +17,14 @@ find_checkout_root() {
 mkdir /tmp/setup_project 2>/dev/null
 cipd install -force -root /tmp/setup_project \
   chromiumos/infra/setup_project/\$\{platform\} prod
+echo "Done installing CIPD package."
 
 # If --checkout is not supplied, assume that this script is being run from
 # a checkout. Find the root of the checkout.
 if [[ "$*" != *"-checkout"* ]]; then
+  echo "--checkout not supplied, searching for checkout root."
   checkout_root="$(find_checkout_root)"
+  echo "Found checkout root ${checkout_root}."
   if [[ "${checkout_root}" != "/" ]]; then
     set -- "$@" "-checkout=$(find_checkout_root)/"
   else
