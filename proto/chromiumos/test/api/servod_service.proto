@@ -40,7 +40,7 @@ service ServodService {
   }
 
   // ExecCmd executes a servod command inside the servod Docker container
-  // if docker_servod_name parameter is provided. Otherwise, it executes the
+  // if servod_docker_container_name parameter is provided. Otherwise, it executes the
   // command directly inside the servo host.
   // Example commands:
   // "dut-control -p $PORT power_state:off"
@@ -48,7 +48,7 @@ service ServodService {
       returns (stream ExecCmdResponse);
 
   // CallServod runs a servod command through an XML-RPC call inside the 
-  // servod Docker container if docker_servod_name parameter is provided.
+  // servod Docker container if servod_docker_container_name parameter is provided.
   // Otherwise, it runs the command directly inside the servo host.
   // Allowed methods: doc, get, and set.
   rpc CallServod(CallServodRequest)
@@ -62,23 +62,23 @@ message StartServodRequest {
   string servo_host_path = 1;
 
   // The servod Docker container name.
-  string docker_servod_name = 2;
+  string servod_docker_container_name = 2;
 
-  // The build version of Chrome OS.
-  // This will be used as the tag name for the servod image to pull from GCR.
-  string build_version = 3;
-
-  // The --BOARD parameter value for servod command.
-  string board = 4;
-
-  // The --MODEL parameter value for servod command.
-  string model = 5;
-
-  // The --SERIALNAME parameter value for servod command.
-  string serial_name = 6;
+  // The servod Docker image path to pull from GCR.
+  // Example: gcr.io/chromeos-bot/servod@sha256:2d25f6313c7bbac349607
+  string servod_docker_image_path = 3;
 
   // The --PORT parameter value for servod command.
-  string port = 7;
+  int32 servod_port = 4;
+
+  // The --BOARD parameter value for servod command.
+  string board = 5;
+
+  // The --MODEL parameter value for servod command.
+  string model = 6;
+
+  // The --SERIALNAME parameter value for servod command.
+  string serial_name = 7;
 
   // The --DEBUG parameter value for servod command.
   string debug = 8;
@@ -119,10 +119,10 @@ message StopServodRequest {
   string servo_host_path = 1;
 
   // The servod Docker container name.
-  string docker_servod_name = 2;
+  string servod_docker_container_name = 2;
 
   // The port that servod is running on the servo host.
-  string port = 3;
+  int32 servod_port = 3;
 }
 
 message StopServodResponse {
@@ -151,7 +151,7 @@ message ExecCmdRequest {
   string servo_host_path = 1;
 
   // The servod Docker container name.
-  string docker_servod_name = 2;
+  string servod_docker_container_name = 2;
 
   // The command to execute on the servo host.
   // Example commands:
@@ -211,7 +211,7 @@ message CallServodRequest {
   string servo_host_path = 1;
 
   // The servod Docker container name.
-  string docker_servod_name = 2;
+  string servod_docker_container_name = 2;
 
   enum Method {
     DOC = 0;
@@ -224,9 +224,9 @@ message CallServodRequest {
 
   // The arguments to pass to the method.
   // For the doc and get methods, there will be a single argument which is
-  // the control name (e.g. fakedisconnect).
+  // the control name (e.g. "fakedisconnect").
   // For the set method, it will be the control name and the value separated
-  // with a colon and wrapped inside a quote (e.g. "fakedisconnect:100 2000").
+  // with a colon (e.g. "fakedisconnect:100 2000").
   string args = 4;
 }
 

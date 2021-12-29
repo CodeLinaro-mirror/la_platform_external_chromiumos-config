@@ -72,7 +72,7 @@ class ServodServiceServicer(object):
 
     def ExecCmd(self, request, context):
         """ExecCmd executes a servod command inside the servod Docker container
-        if docker_servod_name parameter is provided. Otherwise, it executes the
+        if servod_docker_container_name parameter is provided. Otherwise, it executes the
         command directly inside the servo host.
         Example commands:
         "dut-control -p $PORT power_state:off"
@@ -83,7 +83,7 @@ class ServodServiceServicer(object):
 
     def CallServod(self, request, context):
         """CallServod runs a servod command through an XML-RPC call inside the 
-        servod Docker container if docker_servod_name parameter is provided.
+        servod Docker container if servod_docker_container_name parameter is provided.
         Otherwise, it runs the command directly inside the servo host.
         Allowed methods: doc, get, and set.
         """
