@@ -213,6 +213,9 @@ message CallServodRequest {
   // The servod Docker container name.
   string servod_docker_container_name = 2;
 
+  // The port that servod is running on the servo host.
+  int32 servod_port = 3;
+
   enum Method {
     DOC = 0;
     GET = 1;
@@ -220,14 +223,14 @@ message CallServodRequest {
   }
 
   // The method to call.
-  Method method = 3;
+  Method method = 4;
 
   // The arguments to pass to the method.
   // For the doc and get methods, there will be a single argument which is
   // the control name (e.g. "fakedisconnect").
   // For the set method, it will be the control name and the value separated
   // with a colon (e.g. "fakedisconnect:100 2000").
-  string args = 4;
+  string args = 5;
 }
 
 message CallServodResponse {

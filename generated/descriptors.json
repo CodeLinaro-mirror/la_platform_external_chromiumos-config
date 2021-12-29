@@ -16334,10 +16334,17 @@
               "type": "TYPE_STRING"
             },
             {
+              "jsonName": "servodPort",
+              "label": "LABEL_OPTIONAL",
+              "name": "servod_port",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
               "jsonName": "method",
               "label": "LABEL_OPTIONAL",
               "name": "method",
-              "number": 3,
+              "number": 4,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.api.CallServodRequest.Method"
             },
@@ -16345,7 +16352,7 @@
               "jsonName": "args",
               "label": "LABEL_OPTIONAL",
               "name": "args",
-              "number": 4,
+              "number": 5,
               "type": "TYPE_STRING"
             }
           ],
