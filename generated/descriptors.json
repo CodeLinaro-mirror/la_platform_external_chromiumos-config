@@ -1165,6 +1165,10 @@
                     {
                       "name": "SMT",
                       "number": 1
+                    },
+                    {
+                      "name": "SHA_NI",
+                      "number": 2
                     }
                   ]
                 }

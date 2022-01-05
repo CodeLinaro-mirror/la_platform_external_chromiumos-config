@@ -109,6 +109,8 @@ message Component {
       // Supports Symmetric Multi-Threading (SMT; a.k.a. Hyper-Threading, or
       // other vendor-specific terms).
       SMT = 1;
+      // Supports x86 SHA-NI (instruction extension set for SHA1 and SHA256)
+      SHA_NI = 2;
     };
 
     message Family {
