@@ -2,4 +2,3 @@
 include chromiumos/chromite:/OWNERS.ci
 
 andrewlamb@google.com
-smcallis@google.com
