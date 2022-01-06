@@ -31,12 +31,12 @@ class ServodServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.StopServodRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
-        self.ExecCmd = channel.unary_stream(
+        self.ExecCmd = channel.unary_unary(
                 '/chromiumos.test.api.ServodService/ExecCmd',
                 request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.FromString,
                 )
-        self.CallServod = channel.unary_stream(
+        self.CallServod = channel.unary_unary(
                 '/chromiumos.test.api.ServodService/CallServod',
                 request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.FromString,
@@ -104,12 +104,12 @@ def add_ServodServiceServicer_to_server(servicer, server):
                     request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.StopServodRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
-            'ExecCmd': grpc.unary_stream_rpc_method_handler(
+            'ExecCmd': grpc.unary_unary_rpc_method_handler(
                     servicer.ExecCmd,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.SerializeToString,
             ),
-            'CallServod': grpc.unary_stream_rpc_method_handler(
+            'CallServod': grpc.unary_unary_rpc_method_handler(
                     servicer.CallServod,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.SerializeToString,
@@ -175,7 +175,7 @@ class ServodService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.ServodService/ExecCmd',
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ServodService/ExecCmd',
             chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.FromString,
             options, channel_credentials,
@@ -192,7 +192,7 @@ class ServodService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.ServodService/CallServod',
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ServodService/CallServod',
             chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.FromString,
             options, channel_credentials,

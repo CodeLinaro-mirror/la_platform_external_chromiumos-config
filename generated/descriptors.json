@@ -16449,14 +16449,12 @@
             {
               "inputType": ".chromiumos.test.api.ExecCmdRequest",
               "name": "ExecCmd",
-              "outputType": ".chromiumos.test.api.ExecCmdResponse",
-              "serverStreaming": true
+              "outputType": ".chromiumos.test.api.ExecCmdResponse"
             },
             {
               "inputType": ".chromiumos.test.api.CallServodRequest",
               "name": "CallServod",
-              "outputType": ".chromiumos.test.api.CallServodResponse",
-              "serverStreaming": true
+              "outputType": ".chromiumos.test.api.CallServodResponse"
             }
           ],
           "name": "ServodService"

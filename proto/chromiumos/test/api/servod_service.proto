@@ -45,14 +45,14 @@ service ServodService {
   // Example commands:
   // "dut-control -p $PORT power_state:off"
   rpc ExecCmd(ExecCmdRequest)
-      returns (stream ExecCmdResponse);
+      returns (ExecCmdResponse);
 
   // CallServod runs a servod command through an XML-RPC call inside the 
   // servod Docker container if servod_docker_container_name parameter is provided.
   // Otherwise, it runs the command directly inside the servo host.
   // Allowed methods: doc, get, and set.
   rpc CallServod(CallServodRequest)
-      returns (stream CallServodResponse);
+      returns (CallServodResponse);
 }
 
 message StartServodRequest {
@@ -159,7 +159,6 @@ message ExecCmdRequest {
   string command = 3;
 
   // stdin is passed to the command as the program's stdin.
-  // The stream does not support seeking.
   // An empty bytes is not treated specially; if the command reads
   // from stdin, it will receive zero bytes.
   bytes stdin = 4;
@@ -195,9 +194,9 @@ message ExecCmdResponse {
   // The exit information that is set when the command has exited
   // or failed to start.
   ExitInfo exit_info = 1;
-  // The shell command's stdout output since the last response in the stream.
+  // The shell command's stdout output since the last response.
   bytes stdout = 2;
-  // The shell command's stderr output since the last response in the stream.
+  // The shell command's stderr output since the last response.
   bytes stderr = 3;
 }
 
