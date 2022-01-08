@@ -6,7 +6,7 @@ syntax = "proto3";
 
 package chromiumos;
 
-option go_package = "go.chromium.org/chromiumos/config/go";
+option go_package = "go.chromium.org/chromiumos/config/go;_go";
 
 // Defines remote/local path to storage resources
 // E.g. build/test artifacts, logs, telemetry, etc...

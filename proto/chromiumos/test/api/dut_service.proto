@@ -12,8 +12,6 @@ import "chromiumos/config/api/device_config_id.proto";
 
 import "chromiumos/longrunning/operations.proto";
 
-import "chromiumos/storage_path.proto";
-
 // Provides network based access to a device under test for remote
 // command execution and device state/identity retrieval.
 service DutService {

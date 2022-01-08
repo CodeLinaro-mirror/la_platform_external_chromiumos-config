@@ -345,7 +345,7 @@
       ],
       "name": "chromiumos/storage_path.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go"
+        "goPackage": "go.chromium.org/chromiumos/config/go;_go"
       },
       "package": "chromiumos",
       "syntax": "proto3"
@@ -14941,15 +14941,11 @@
     {
       "bufExtension": {
         "isImport": false,
-        "isSyntaxUnspecified": false,
-        "unusedDependency": [
-          2
-        ]
+        "isSyntaxUnspecified": false
       },
       "dependency": [
         "chromiumos/config/api/device_config_id.proto",
-        "chromiumos/longrunning/operations.proto",
-        "chromiumos/storage_path.proto"
+        "chromiumos/longrunning/operations.proto"
       ],
       "enumType": [
         {
