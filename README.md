@@ -61,7 +61,7 @@ version.
 
 1. Make sure that you and your project(s) are enrolled in this program (a
    Google contact will need to set this up for you.)
-1. Choose the buildspec you'd like to sync to, e.g. `full/buildspecs/92/13963.2.0.xml`. You can list available buildspecs by running `gsutil ls -R gs://buildspecs-external/legacy/`.
+1. Choose the buildspec you'd like to sync to, e.g. `full/buildspecs/92/13963.2.0.xml`. You can list available buildspecs by running `gsutil ls -R gs://chromiumos-manifest-versions/legacy/`.
     1. [Instructions for setting up `gsutil`](https://cloud.google.com/storage/docs/gsutil_install)
     1. Provided the project in question has been enrolled by your Googler contact, project-specific buildspecs are automatically created for enrolled projects for new build versions (at up to a 12 hour delay). If you'd like to sync to an older buildspec (or one that has not yet been created):
         1. run ```bb add chromeos/partner-access/project-buildspec -p 'projects=["{your project}/{your program}"]' -p buildspec={your buildspec}```, e.g. ```bb add chromeos/partner-access/project-buildspec -p 'projects=["brya/brya"]' -p buildspec=legacy/buildspecs/96/14268.0.0.xml```.
@@ -71,7 +71,7 @@ version.
     1. `export PROJECT={your project}`, e.g. `export PROJECT=galaxy`.
     1. `export PROGRAM={your program}`, e.g. `export PROGRAM=milkyway`.
     1. `export CHECKOUT={path to your checkout}`, e.g. `export CHECKOUT=~/my_checkout`.
-    1. ```(mkdir -p $CHECKOUT && cd $CHECKOUT && repo init -u gs://buildspecs-external/legacy/$BUILDSPEC --standalone-manifest)```
+    1. ```(mkdir -p $CHECKOUT && cd $CHECKOUT && repo init -u gs://chromiumos-manifest-versions/legacy/$BUILDSPEC --standalone-manifest)```
     1. ```./setup_project.sh --checkout=$CHECKOUT --program=$PROGRAM --project=$PROJECT --buildspec=legacy/$BUILDSPEC```
         1. If you do not already have `setup_project.sh` available in an existing ChromeOS checkout, you can download it [here](https://chromium.googlesource.com/chromiumos/config/+/refs/heads/main/setup_project.sh).
     1. ```cd $CHECKOUT && repo sync --force-sync -j12 --nmu``` (`--nmu` is a temporary workaround to a known bug, this will be resolved shortly.)
