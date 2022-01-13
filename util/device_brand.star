@@ -16,12 +16,18 @@ load(
 
 DEFAULT_BRAND_CODE = "ZZCR"
 
-def _create(brand_name, design_id, oem_id, brand_code = DEFAULT_BRAND_CODE):
+def _create(
+        brand_name,
+        design_id,
+        oem_id,
+        brand_code = DEFAULT_BRAND_CODE,
+        export_oem_info = False):
     """Builds a DeviceBrand proto."""
     return db_pb.DeviceBrand(
         id = db_id_pb.DeviceBrandId(value = brand_code),
         design_id = design_id,
         oem_id = oem_id,
+        export_oem_info = export_oem_info,
         brand_code = brand_code,
         brand_name = brand_name,
     )

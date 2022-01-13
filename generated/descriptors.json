@@ -4693,6 +4693,13 @@
               "typeName": ".chromiumos.config.api.PartnerId"
             },
             {
+              "jsonName": "exportOemInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "export_oem_info",
+              "number": 6,
+              "type": "TYPE_BOOL"
+            },
+            {
               "jsonName": "brandCode",
               "label": "LABEL_OPTIONAL",
               "name": "brand_code",

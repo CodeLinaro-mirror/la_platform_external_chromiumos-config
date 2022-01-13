@@ -21,6 +21,8 @@ message DeviceBrand {
   DesignId design_id = 2;
   // OEM for the given device brand.
   PartnerId oem_id = 3;
+  // Whether to export oem_id information to OS image via cros_config.
+  bool export_oem_info = 6;
   // Brand code assigned and set during manufacturing.
   string brand_code = 4;
   // Brand marketing name.

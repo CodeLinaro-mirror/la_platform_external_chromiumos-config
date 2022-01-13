@@ -621,6 +621,23 @@ def _build_health(config: Config):
   return result
 
 
+def _build_branding(config: Config):
+  """Builds the branding configuration.
+
+  Args:
+    config: Config namedtuple
+
+  Returns:
+    branding configuration.
+  """
+  result = {}
+  if config.device_brand.export_oem_info and config.oem:
+    _upsert(config.oem.name, result, 'oem-name')
+  if config.device_brand:
+    _upsert(config.device_brand.brand_name, result, 'marketing-name')
+  return result
+
+
 def _build_fingerprint(hw_topology):
   if not hw_topology.HasField('fingerprint'):
     return None
@@ -1311,6 +1328,7 @@ def _transform_build_config(config, config_files, whitelabel):
   _upsert(_build_bluetooth(config), result, 'bluetooth')
   _upsert(_build_wifi(config, config_files), result, 'wifi')
   _upsert(_build_health(config), result, 'cros-healthd')
+  _upsert(_build_branding(config), result, 'branding')
   _upsert(config.brand_config.wallpaper, result, 'wallpaper')
   _upsert(config.brand_config.regulatory_label, result, 'regulatory-label')
   _upsert(config.device_brand.brand_code, result, 'brand-code')
