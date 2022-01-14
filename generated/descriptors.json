@@ -16346,7 +16346,7 @@
               "name": "method",
               "number": 4,
               "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.CallServodRequest.Method"
+              "typeName": ".chromiumos.test.api.DutControlRequest.Method"
             },
             {
               "jsonName": "args",
@@ -16356,7 +16356,7 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "CallServodRequest"
+          "name": "DutControlRequest"
         },
         {
           "field": [
@@ -16367,7 +16367,7 @@
               "number": 1,
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CallServodResponse.Success"
+              "typeName": ".chromiumos.test.api.DutControlResponse.Success"
             },
             {
               "jsonName": "failure",
@@ -16376,10 +16376,10 @@
               "number": 2,
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CallServodResponse.Failure"
+              "typeName": ".chromiumos.test.api.DutControlResponse.Failure"
             }
           ],
-          "name": "CallServodResponse",
+          "name": "DutControlResponse",
           "nestedType": [
             {
               "field": [
@@ -16413,7 +16413,7 @@
           ]
         },
         {
-          "name": "CallServodMetadata"
+          "name": "DutControlMetadata"
         }
       ],
       "name": "chromiumos/test/api/servod_service.proto",
@@ -16452,9 +16452,9 @@
               "outputType": ".chromiumos.test.api.ExecCmdResponse"
             },
             {
-              "inputType": ".chromiumos.test.api.CallServodRequest",
-              "name": "CallServod",
-              "outputType": ".chromiumos.test.api.CallServodResponse"
+              "inputType": ".chromiumos.test.api.DutControlRequest",
+              "name": "DutControl",
+              "outputType": ".chromiumos.test.api.DutControlResponse"
             }
           ],
           "name": "ServodService"

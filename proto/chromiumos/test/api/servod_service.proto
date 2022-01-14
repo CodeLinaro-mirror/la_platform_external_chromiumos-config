@@ -39,20 +39,25 @@ service ServodService {
     };
   }
 
-  // ExecCmd executes a servod command inside the servod Docker container
-  // if servod_docker_container_name parameter is provided. Otherwise, it executes the
-  // command directly inside the servo host.
-  // Example commands:
-  // "dut-control -p $PORT power_state:off"
+  // ExecCmd executes a system command that is provided through the command
+  // parameter in the request. It allows the user to execute arbitrary commands
+  // that can't be handled by dut-control command (e.g. update firmware through
+  // "futility", remote file copy through "scp").
+  // It executes the command inside the servod Docker container if the
+  // servod_docker_container_name parameter is provided in the request.
+  // Otherwise, it executes the command directly inside the host that the servo
+  // is physically connected to.
   rpc ExecCmd(ExecCmdRequest)
       returns (ExecCmdResponse);
 
-  // CallServod runs a servod command through an XML-RPC call inside the 
-  // servod Docker container if servod_docker_container_name parameter is provided.
-  // Otherwise, it runs the command directly inside the servo host.
-  // Allowed methods: doc, get, and set.
-  rpc CallServod(CallServodRequest)
-      returns (CallServodResponse);
+  // DutControl runs a dut-control command to get and set various controls on
+  // a DUT system via the servo debug & control board.
+  // It runs the command inside the servod Docker container if the
+  // servod_docker_container_name parameter is provided in the request.
+  // Otherwise, it runs the command directly inside the host that the servo
+  // is physically connected to.
+  rpc DutControl(DutControlRequest)
+      returns (DutControlResponse);
 }
 
 message StartServodRequest {
@@ -203,7 +208,7 @@ message ExecCmdResponse {
 message ExecCmdMetadata {
 }
 
-message CallServodRequest {
+message DutControlRequest {
   // The path (URI) for the servod (containerized or running as a daemon) host.
   // If cros-servod and docker-servod live on the same host, this parameter
   // should be empty.
@@ -215,24 +220,31 @@ message CallServodRequest {
   // The port that servod is running on the servo host.
   int32 servod_port = 3;
 
+  // The allowed methods to run.
   enum Method {
+    // Shows info about control by using -i (--info) option of dut-control.
     DOC = 0;
+    // Gets the value of control.
     GET = 1;
+    // Sets the value of control.
     SET = 2;
   }
 
-  // The method to call.
+  // The method to run.
   Method method = 4;
 
-  // The arguments to pass to the method.
+  // The arguments to pass to the dut-control call.
   // For the doc and get methods, there will be a single argument which is
-  // the control name (e.g. "fakedisconnect").
+  // the control name (e.g. "lid_open").
   // For the set method, it will be the control name and the value separated
-  // with a colon (e.g. "fakedisconnect:100 2000").
+  // with a colon (e.g. "lid_open:yes").
+  // If the control value for the set operation includes non-alphanumeric
+  // characters such as space, it should be wrapped with a single quote
+  // (e.g. "servo_v4_uart_cmd:'fakedisconnect 100 2000'").
   string args = 5;
 }
 
-message CallServodResponse {
+message DutControlResponse {
   // Response for success.
   message Success {
     string result = 1;
@@ -249,5 +261,5 @@ message CallServodResponse {
   }
 }
 
-message CallServodMetadata {
+message DutControlMetadata {
 }

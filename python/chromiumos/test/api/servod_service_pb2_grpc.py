@@ -36,10 +36,10 @@ class ServodServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.FromString,
                 )
-        self.CallServod = channel.unary_unary(
-                '/chromiumos.test.api.ServodService/CallServod',
-                request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.FromString,
+        self.DutControl = channel.unary_unary(
+                '/chromiumos.test.api.ServodService/DutControl',
+                request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.DutControlRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.DutControlResponse.FromString,
                 )
 
 
@@ -71,21 +71,26 @@ class ServodServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ExecCmd(self, request, context):
-        """ExecCmd executes a servod command inside the servod Docker container
-        if servod_docker_container_name parameter is provided. Otherwise, it executes the
-        command directly inside the servo host.
-        Example commands:
-        "dut-control -p $PORT power_state:off"
+        """ExecCmd executes a system command that is provided through the command
+        parameter in the request. It allows the user to execute arbitrary commands
+        that can't be handled by dut-control command (e.g. update firmware through
+        "futility", remote file copy through "scp").
+        It executes the command inside the servod Docker container if the
+        servod_docker_container_name parameter is provided in the request.
+        Otherwise, it executes the command directly inside the host that the servo
+        is physically connected to.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def CallServod(self, request, context):
-        """CallServod runs a servod command through an XML-RPC call inside the 
-        servod Docker container if servod_docker_container_name parameter is provided.
-        Otherwise, it runs the command directly inside the servo host.
-        Allowed methods: doc, get, and set.
+    def DutControl(self, request, context):
+        """DutControl runs a dut-control command to get and set various controls on
+        a DUT system via the servo debug & control board.
+        It runs the command inside the servod Docker container if the
+        servod_docker_container_name parameter is provided in the request.
+        Otherwise, it runs the command directly inside the host that the servo
+        is physically connected to.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -109,10 +114,10 @@ def add_ServodServiceServicer_to_server(servicer, server):
                     request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.ExecCmdResponse.SerializeToString,
             ),
-            'CallServod': grpc.unary_unary_rpc_method_handler(
-                    servicer.CallServod,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.SerializeToString,
+            'DutControl': grpc.unary_unary_rpc_method_handler(
+                    servicer.DutControl,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.DutControlRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.DutControlResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -182,7 +187,7 @@ class ServodService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def CallServod(request,
+    def DutControl(request,
             target,
             options=(),
             channel_credentials=None,
@@ -192,8 +197,8 @@ class ServodService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ServodService/CallServod',
-            chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ServodService/DutControl',
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.DutControlRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.DutControlResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
