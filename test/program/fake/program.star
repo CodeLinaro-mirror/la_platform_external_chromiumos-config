@@ -122,7 +122,7 @@ _FAKE = program_util.create(
     platform = _PLATFORM,
     audio_config = program_util.create_audio_config(
         has_module_file = True,
-        default_ucm_suffix = "{speaker_amp}.{headset_codec}.{camera_count}mic.{design}",
+        default_ucm_suffix = "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
         card_configs = [_HDMI_AUDIO_CARD],
     ),
 )

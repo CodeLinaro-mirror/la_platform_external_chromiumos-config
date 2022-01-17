@@ -119,6 +119,12 @@ def _create_audio_config(
                     specified in the topology containing the card config.
                 {speaker_amp}: The speaker amp name (in lowercase) specified in
                     the topology containing the card config.
+                {mic_description}: A description of the microphone topology, of
+                    the form {user_facing_mic_count}uf{world_facing_mic_count}wf, with
+                    components elided if their count is 0.
+                {total_mic_count}: The total number of internal microphones.
+                {user_facing_mic_count}: The number of internal user-facing microphones.
+                {world_facing_mic_count}: The number of internal world-facing microphones.
     """
     return program_pb.Program.AudioConfig(
         card_configs = card_configs,

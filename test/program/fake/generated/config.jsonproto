@@ -36,7 +36,7 @@
             "ucmSuffix": ""
           }
         ],
-        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{camera_count}mic.{design}",
+        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
         "hasModuleFile": true
       },
       "componentQuals": [

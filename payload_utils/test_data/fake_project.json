@@ -21,12 +21,12 @@
             "cras-config-dir": "fake_ref_design",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.fake_ref_design/HiFi.conf",
-                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.1mic.fake_ref_design/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.fake_ref_design/HiFi.conf",
+                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.2uf.fake_ref_design/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.fake_ref_design/fakeaudiocard.alc5682i.1mic.fake_ref_design.conf",
-                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.1mic.fake_ref_design/fakeaudiocard.alc5682i.1mic.fake_ref_design.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.fake_ref_design/fakeaudiocard.alc5682i.2uf.fake_ref_design.conf",
+                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.2uf.fake_ref_design/fakeaudiocard.alc5682i.2uf.fake_ref_design.conf"
               },
               {
                 "destination": "/etc/cras/fake_ref_design/fakeaudiocard",
@@ -53,7 +53,7 @@
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
             ],
-            "ucm-suffix": "alc5682i.1mic.fake_ref_design"
+            "ucm-suffix": "alc5682i.2uf.fake_ref_design"
           }
         },
         "bluetooth": {
@@ -200,12 +200,12 @@
             "cras-config-dir": "fake_ref_design",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2mic.fake_ref_design/HiFi.conf",
-                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.2mic.fake_ref_design/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1uf2wf.fake_ref_design/HiFi.conf",
+                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.1uf2wf.fake_ref_design/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2mic.fake_ref_design/fakeaudiocard.alc5682i.2mic.fake_ref_design.conf",
-                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.2mic.fake_ref_design/fakeaudiocard.alc5682i.2mic.fake_ref_design.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1uf2wf.fake_ref_design/fakeaudiocard.alc5682i.1uf2wf.fake_ref_design.conf",
+                "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.1uf2wf.fake_ref_design/fakeaudiocard.alc5682i.1uf2wf.fake_ref_design.conf"
               },
               {
                 "destination": "/etc/cras/fake_ref_design/fakeaudiocard",
@@ -232,7 +232,7 @@
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
             ],
-            "ucm-suffix": "alc5682i.2mic.fake_ref_design"
+            "ucm-suffix": "alc5682i.1uf2wf.fake_ref_design"
           }
         },
         "brand-code": "AAAA",
@@ -535,12 +535,12 @@
             "cras-config-dir": "project_b",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b/HiFi.conf",
-                "source": "project_b/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b/HiFi.conf",
+                "source": "project_b/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b.conf",
-                "source": "project_b/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b/fakeaudiocard.card_suffix.max98373.alc5682i.1mic.project_b.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b.conf",
+                "source": "project_b/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b.conf"
               },
               {
                 "destination": "/etc/cras/project_b/fakeaudiocard",
@@ -573,7 +573,7 @@
             ],
             "sound-card-init-conf": "project_b.MAX98373.yaml",
             "speaker-amp": "MAX98373",
-            "ucm-suffix": "card_suffix.max98373.alc5682i.1mic.project_b"
+            "ucm-suffix": "card_suffix.max98373.alc5682i.2uf.project_b"
           }
         },
         "bluetooth": {
@@ -718,12 +718,12 @@
             "cras-config-dir": "project_c",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.project_c/HiFi.conf",
-                "source": "project_c/audio/ucm-config/fakeaudiocard.alc5682i.1mic.project_c/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.project_c/HiFi.conf",
+                "source": "project_c/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_c/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.project_c/fakeaudiocard.alc5682i.1mic.project_c.conf",
-                "source": "project_c/audio/ucm-config/fakeaudiocard.alc5682i.1mic.project_c/fakeaudiocard.alc5682i.1mic.project_c.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.project_c/fakeaudiocard.alc5682i.2uf.project_c.conf",
+                "source": "project_c/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_c/fakeaudiocard.alc5682i.2uf.project_c.conf"
               },
               {
                 "destination": "/etc/cras/project_c/fakeaudiocard",
@@ -750,7 +750,7 @@
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
             ],
-            "ucm-suffix": "alc5682i.1mic.project_c"
+            "ucm-suffix": "alc5682i.2uf.project_c"
           }
         },
         "bluetooth": {
@@ -1369,12 +1369,12 @@
             "cras-config-dir": "project_rebrand",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.project_rebrand/HiFi.conf",
-                "source": "project_rebrand/audio/ucm-config/fakeaudiocard.alc5682i.1mic.project_rebrand/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.project_rebrand/HiFi.conf",
+                "source": "project_rebrand/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_rebrand/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.1mic.project_rebrand/fakeaudiocard.alc5682i.1mic.project_rebrand.conf",
-                "source": "project_rebrand/audio/ucm-config/fakeaudiocard.alc5682i.1mic.project_rebrand/fakeaudiocard.alc5682i.1mic.project_rebrand.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.project_rebrand/fakeaudiocard.alc5682i.2uf.project_rebrand.conf",
+                "source": "project_rebrand/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_rebrand/fakeaudiocard.alc5682i.2uf.project_rebrand.conf"
               },
               {
                 "destination": "/etc/cras/project_rebrand/fakeaudiocard",
@@ -1401,7 +1401,7 @@
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
             ],
-            "ucm-suffix": "alc5682i.1mic.project_rebrand"
+            "ucm-suffix": "alc5682i.2uf.project_rebrand"
           }
         },
         "brand-code": "RBDD",
@@ -1506,12 +1506,12 @@
             "cras-config-dir": "project_box",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix/HiFi.conf",
-                "source": "common/audio/ucm-config/fakeaudiocard.card_suffix/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.0pos.0uf0wf0total/HiFi.conf",
+                "source": "common/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.0pos.0uf0wf0total/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix/fakeaudiocard.card_suffix.conf",
-                "source": "common/audio/ucm-config/fakeaudiocard.card_suffix/fakeaudiocard.card_suffix.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.0pos.0uf0wf0total/fakeaudiocard.card_suffix.max98373.alc5682i.0pos.0uf0wf0total.conf",
+                "source": "common/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.0pos.0uf0wf0total/fakeaudiocard.card_suffix.max98373.alc5682i.0pos.0uf0wf0total.conf"
               },
               {
                 "destination": "/etc/cras/project_box/fakeaudiocard",
@@ -1544,7 +1544,7 @@
             ],
             "sound-card-init-conf": "project_box.MAX98373.yaml",
             "speaker-amp": "MAX98373",
-            "ucm-suffix": "card_suffix"
+            "ucm-suffix": "card_suffix.max98373.alc5682i.0pos.0uf0wf0total"
           }
         },
         "brand-code": "FDBX",
@@ -1565,7 +1565,7 @@
             "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 90881,
+          "firmware-config": 90897,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
@@ -1634,20 +1634,16 @@
             "cras-config-dir": "project_box",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.fixed_suffix/HiFi.conf",
-                "source": "project_box/audio/ucm-config/fakeaudiocard.card_suffix.fixed_suffix/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.project_box/HiFi.conf",
+                "source": "project_box/audio/ucm-config/fakeaudiocard.alc5682i.project_box/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.fixed_suffix/fakeaudiocard.card_suffix.fixed_suffix.conf",
-                "source": "project_box/audio/ucm-config/fakeaudiocard.card_suffix.fixed_suffix/fakeaudiocard.card_suffix.fixed_suffix.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.project_box/fakeaudiocard.alc5682i.project_box.conf",
+                "source": "project_box/audio/ucm-config/fakeaudiocard.alc5682i.project_box/fakeaudiocard.alc5682i.project_box.conf"
               },
               {
                 "destination": "/etc/cras/project_box/fakeaudiocard",
                 "source": "project_box/audio/cras-config/fakeaudiocard.card_settings"
-              },
-              {
-                "destination": "/etc/sound_card_init/project_box.MAX98373.yaml",
-                "source": "project_box/audio/sound_card_init/project_box.MAX98373.yaml"
               },
               {
                 "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
@@ -1670,9 +1666,7 @@
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
             ],
-            "sound-card-init-conf": "project_box.MAX98373.yaml",
-            "speaker-amp": "MAX98373",
-            "ucm-suffix": "card_suffix.fixed_suffix"
+            "ucm-suffix": "alc5682i.project_box"
           }
         },
         "brand-code": "FDBX",
@@ -1693,7 +1687,7 @@
             "zephyr-ec": "projects/fake/fake"
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
-          "firmware-config": 90881,
+          "firmware-config": 90897,
           "image-name": "fake",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",

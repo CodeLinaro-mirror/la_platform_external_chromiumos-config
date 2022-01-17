@@ -3127,6 +3127,14 @@
                       "number": 7,
                       "type": "TYPE_ENUM",
                       "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                    },
+                    {
+                      "jsonName": "microphoneCount",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "microphone_count",
+                      "number": 8,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.Count"
                     }
                   ],
                   "name": "Device"

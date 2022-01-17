@@ -328,6 +328,12 @@ def _create_audio_card_config(
                     specified in the topology containing this card config.
                 {speaker_amp}: The speaker amp name (in lowercase) specified in
                     the topology containing this card config.
+                {mic_description}: A description of the microphone topology, of
+                    the form {user_facing_mic_count}uf{world_facing_mic_count}wf, with
+                    components elided if their count is 0.
+                {total_mic_count}: The total number of internal microphones.
+                {user_facing_mic_count}: The number of internal user-facing microphones.
+                {world_facing_mic_count}: The number of internal world-facing microphones.
             It is strongly recommended that any details of the speaker
             amplifier or jack codec not be included in this suffix - they
             should instead be included as part of card_name.
@@ -520,7 +526,8 @@ def _make_camera_device(
         orientation,
         flags,
         ids,
-        privacy_switch_present = None):
+        privacy_switch_present = None,
+        microphone_count = None):
     """Builds a HardwareFeatures.Camera.Device proto."""
     camera_pb = topo_pb.HardwareFeatures.Camera
     device = camera_pb.Device()
@@ -544,6 +551,9 @@ def _make_camera_device(
 
     if privacy_switch_present:
         device.privacy_switch = _bool_to_present(privacy_switch_present)
+
+    if microphone_count != None:
+        device.microphone_count.value = microphone_count
 
     return device
 

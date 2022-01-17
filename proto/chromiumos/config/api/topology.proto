@@ -304,6 +304,9 @@ message HardwareFeatures {
 
       // If privacy switch is present on the camera
       Present privacy_switch = 7;
+
+      // The number of microphones associated with this device.
+      Count microphone_count = 8;
     }
 
     // List of camera devices on the model.

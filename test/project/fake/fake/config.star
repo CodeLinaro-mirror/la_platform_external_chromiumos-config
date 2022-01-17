@@ -101,9 +101,9 @@ _AUDIO_WITH_INIT = hw_topo.create_audio(
     ],
 )
 
-_AUDIO_WITHOUT_MIC_SUFFIX = hw_topo.override_audio(
+_AUDIO_WITH_CUSTOM_MIC_SUFFIX = hw_topo.override_audio(
     _AUDIO_WITH_INIT,
-    ucm_suffix = "{design}",
+    ucm_suffix = "{speaker_amp}.{headset_codec}.{camera_count}pos.{user_facing_mic_count}uf{world_facing_mic_count}wf{total_mic_count}total.{design}",
     ucm_config = hw_topo.audio_config_structure.COMMON,
     cras_config = hw_topo.audio_config_structure.COMMON,
 )
@@ -118,6 +118,12 @@ _STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_top
 _BL_KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = True, kb_type = hw_topo.kb_type.INTERNAL, numpad_present = True, backlight_user_steps = [0, 10, 20, 40, 60, 100])
 _KEYBOARD = hw_topo.create_keyboard(backlight = False, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE, numpad_present = False)
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
+_CAMERA0 = hw_topo.create_camera(
+    "CAMERA0",
+    "No cameras",
+    fw_configs = [hw_topo.make_fw_config(program.fw_masks.CAMERA, 1)],
+    camera_devices = [],
+)
 _CAMERA1 = hw_topo.create_camera(
     "CAMERA1",
     "1 USB camera",
@@ -130,6 +136,7 @@ _CAMERA1 = hw_topo.create_camera(
             flags = 0,
             ids = ["0123:abcd"],
             privacy_switch_present = False,
+            microphone_count = 2,
         ),
     ],
 )
@@ -145,6 +152,7 @@ _CAMERA2 = hw_topo.create_camera(
             flags = hw_topo.camera_flags.SUPPORT_AUTOFOCUS,
             ids = ["0123:abcd"],
             privacy_switch_present = True,
+            microphone_count = 1,
         ),
         hw_topo.make_camera_device(
             interface = "mipi",
@@ -152,6 +160,7 @@ _CAMERA2 = hw_topo.create_camera(
             orientation = 180,
             flags = hw_topo.camera_flags.SUPPORT_1080P | hw_topo.camera_flags.SUPPORT_AUTOFOCUS,
             ids = ["mipi-cam"],
+            microphone_count = 2,
         ),
     ],
 )
@@ -769,13 +778,14 @@ design.append_configs(
     config_id = 128,
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CHROMEBOX,
-        audio = _AUDIO_WITHOUT_MIC_SUFFIX,
+        audio = _AUDIO_WITH_CUSTOM_MIC_SUFFIX,
         power_supply = hw_topo.create_power_supply(
             "BJ_POWER_SUPPLY",
             "Default power supply with barreljack",
             usb_min_ac_watts = 90,
             bj_present = True,
         ),
+        camera = _CAMERA0,
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
@@ -798,7 +808,7 @@ design.append_configs(
     config_id = 129,
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CHROMEBASE,
-        audio = _AUDIO_WITH_FIXED_SUFFIX,
+        camera = _CAMERA0,
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
