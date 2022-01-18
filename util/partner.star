@@ -171,6 +171,12 @@ partner = struct(
             symlink_file_format = "zinitix_firmware.bin",
             destination_file_format = "zinitix_{product_id}_{fw_version}.bin",
         ),
+        WACOM_BUGZZY = _create_touch_partner(
+            name = "wacom",
+            vendor_id = "2D1F",
+            symlink_file_format = "wacom_firmware.hex",
+            destination_file_format = "wacom_{product_id}_{fw_version}.hex",
+        ),
     ),
     battery = struct(
         PANASONIC = _create_battery_partner(
