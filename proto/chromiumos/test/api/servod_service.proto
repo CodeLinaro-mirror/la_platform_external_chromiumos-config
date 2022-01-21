@@ -8,6 +8,7 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
+import "chromiumos/config/api/test/xmlrpc/xmlrpc.proto";
 import "chromiumos/longrunning/operations.proto";
 
 // Provides the ability to start/stop servod daemon and execute servod 
@@ -41,7 +42,7 @@ service ServodService {
 
   // ExecCmd executes a system command that is provided through the command
   // parameter in the request. It allows the user to execute arbitrary commands
-  // that can't be handled by dut-control command (e.g. update firmware through
+  // that can't be handled by calling servod (e.g. update firmware through
   // "futility", remote file copy through "scp").
   // It executes the command inside the servod Docker container if the
   // servod_docker_container_name parameter is provided in the request.
@@ -50,14 +51,14 @@ service ServodService {
   rpc ExecCmd(ExecCmdRequest)
       returns (ExecCmdResponse);
 
-  // DutControl runs a dut-control command to get and set various controls on
-  // a DUT system via the servo debug & control board.
+  // CallServod runs a servod command through an XML-RPC call.
   // It runs the command inside the servod Docker container if the
   // servod_docker_container_name parameter is provided in the request.
   // Otherwise, it runs the command directly inside the host that the servo
   // is physically connected to.
-  rpc DutControl(DutControlRequest)
-      returns (DutControlResponse);
+  // Allowed methods: doc, get, set, and hwinit.
+  rpc CallServod(CallServodRequest)
+      returns (CallServodResponse);
 }
 
 message StartServodRequest {
@@ -159,8 +160,10 @@ message ExecCmdRequest {
   string servod_docker_container_name = 2;
 
   // The command to execute on the servo host.
-  // Example commands:
-  // "dut-control -p $PORT power_state:off"
+  // Example (Flash firmware with the provided image):
+  // "futility update -i <IMAGE> --servo_port=<PORT>"
+  // Example (Copy a file from B to A while logged into B):
+  // "scp /path/to/file username@A:/path/to/destination"
   string command = 3;
 
   // stdin is passed to the command as the program's stdin.
@@ -208,7 +211,7 @@ message ExecCmdResponse {
 message ExecCmdMetadata {
 }
 
-message DutControlRequest {
+message CallServodRequest {
   // The path (URI) for the servod (containerized or running as a daemon) host.
   // If cros-servod and docker-servod live on the same host, this parameter
   // should be empty.
@@ -222,32 +225,31 @@ message DutControlRequest {
 
   // The allowed methods to run.
   enum Method {
-    // Shows info about control by using -i (--info) option of dut-control.
+    // Shows info about control.
     DOC = 0;
     // Gets the value of control.
     GET = 1;
     // Sets the value of control.
     SET = 2;
+    // Initializes all controls.
+    HWINIT = 3;
   }
 
   // The method to run.
   Method method = 4;
 
-  // The arguments to pass to the dut-control call.
-  // For the doc and get methods, there will be a single argument which is
-  // the control name (e.g. "lid_open").
-  // For the set method, it will be the control name and the value separated
-  // with a colon (e.g. "lid_open:yes").
-  // If the control value for the set operation includes non-alphanumeric
-  // characters such as space, it should be wrapped with a single quote
-  // (e.g. "servo_v4_uart_cmd:'fakedisconnect 100 2000'").
-  string args = 5;
+  // The arguments to pass to the servod call.
+  // For the doc and get methods, it will be control name as single
+  // array value (e.g. ["lid_open"]).
+  // For the set method, it will be control name and the value as
+  // separate array values (e.g. ["lid_open", "yes"]).
+  repeated chromiumos.config.api.test.xmlrpc.Value args = 5;
 }
 
-message DutControlResponse {
+message CallServodResponse {
   // Response for success.
   message Success {
-    string result = 1;
+    chromiumos.config.api.test.xmlrpc.Value result = 1;
   }
 
   // Error message for failure.
@@ -261,5 +263,5 @@ message DutControlResponse {
   }
 }
 
-message DutControlMetadata {
+message CallServodMetadata {
 }
