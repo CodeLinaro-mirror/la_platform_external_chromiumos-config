@@ -1,4 +1,4 @@
 # ChromeOS Continous Integration Team
 include chromiumos/chromite:/OWNERS.ci
 
-andrewlamb@google.com
+per-file OWNERS.platformconfig=file:/OWNERS.platformconfig

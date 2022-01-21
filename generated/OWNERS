@@ -4,3 +4,4 @@ include chromiumos/chromite:/OWNERS.au
 include chromiumos/config:/OWNERS.fleetplatform
 include chromiumos/config:/OWNERS.testplatform
 include chromiumos/config:/OWNERS.testresultsplatform
+include /OWNERS.platformconfig
