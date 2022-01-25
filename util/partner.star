@@ -77,6 +77,11 @@ partner = struct(
             vendor_id = "04F3",
             symlink_file_format = "elan_i2c_{product_id}.bin",
         ),
+        ELAN_EEPROM = _create_touch_partner(
+            name = "elan_eeprom",
+            vendor_id = "04F3",
+            symlink_file_format = "elan_eeprom_{product_id}.bin",
+        ),
         ELAN_TS = _create_touch_partner(
             name = "elants",
             vendor_id = "04F3",
