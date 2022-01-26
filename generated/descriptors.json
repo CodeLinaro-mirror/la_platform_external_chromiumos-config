@@ -13374,7 +13374,7 @@
               "jsonName": "cacheServer",
               "label": "LABEL_OPTIONAL",
               "name": "cache_server",
-              "number": 14,
+              "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.CacheServer"
             }
@@ -13410,6 +13410,14 @@
                   "number": 2,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+                },
+                {
+                  "jsonName": "dutModel",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut_model",
+                  "number": 14,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.DutModel"
                 },
                 {
                   "jsonName": "servo",
@@ -13509,6 +13517,25 @@
               "name": "dut_type"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "referenceBoardName",
+              "label": "LABEL_OPTIONAL",
+              "name": "reference_board_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "modelName",
+              "label": "LABEL_OPTIONAL",
+              "name": "model_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DutModel"
         },
         {
           "field": [

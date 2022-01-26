@@ -26,6 +26,7 @@ message Dut {
   }
 
   // Chrome OS specific DUT details
+  // NEXT TAG: 15
   message ChromeOS {
     // Unique identifiers around the device's hardware, manufacturing, and brand
     // configuration.
@@ -33,6 +34,7 @@ message Dut {
     // Endpoint for ssh service running on the device
     IpEndpoint ssh = 2;
 
+    DutModel dut_model = 14;
     Servo servo = 4;
     Chameleon chameleon = 5;
     RPM rpm = 6;
@@ -52,7 +54,13 @@ message Dut {
   }
 
   // Cache server for downloading artifacts related to this DUT.
-  CacheServer cache_server = 14;
+  CacheServer cache_server = 4;
+}
+
+// Defines the board and model of the Dut
+message DutModel {
+  string reference_board_name = 1;
+  string model_name = 2;
 }
 
 // Defines the topology of connected devices under test
