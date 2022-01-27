@@ -13509,6 +13509,44 @@
               ]
             },
             {
+              "field": [
+                {
+                  "jsonName": "associatedHostname",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "associated_hostname",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+                },
+                {
+                  "jsonName": "name",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "name",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "model",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "model",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "serialNumber",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "serial_number",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "board",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "board",
+                  "number": 5,
+                  "type": "TYPE_STRING"
+                }
+              ],
               "name": "Android"
             }
           ],

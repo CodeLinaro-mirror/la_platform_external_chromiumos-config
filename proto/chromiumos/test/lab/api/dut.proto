@@ -51,6 +51,16 @@ message Dut {
 
   // Android specific DUT details
   message Android {
+    // A hostname of the device that the Android DUT is attached to.
+    IpEndpoint associated_hostname = 1;
+    // Android DUT name.
+    string name = 2;
+    // Android DUT model codename.
+    string model = 3;
+    // A string created by adb to uniquely identify the device.
+    string serial_number = 4;
+    // Board name.
+    string board = 5;
   }
 
   // Cache server for downloading artifacts related to this DUT.
