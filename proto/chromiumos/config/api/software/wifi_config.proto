@@ -228,9 +228,50 @@ message WifiConfig {
     DSM dsm = 5;
   }
 
+  message MtkConfig {
+    // WiFi power chain for use with MediaTek mt7921 driver. Limits in units of
+    // 0.25 dBm.
+    message TransmitPowerChain {
+      // 2G band power limit. (0.25 dBm)
+      uint32 limit_2g = 1;
+      // 5G band 1 power limit: 5.15G-5.35G frequency. (0.25 dBm)
+      uint32 limit_5g_1 = 2;
+      // 5G band 2 power limit: 5.35G-5.47G frequency. (0.25 dBm)
+      uint32 limit_5g_2 = 3;
+      // 5G band 3 power limit: 5.47G-5.725G frequency. (0.25 dBm)
+      uint32 limit_5g_3 = 4;
+      // 5G band 4 power limit: 5.725G-5.95G frequency. (0.25 dBm)
+      uint32 limit_5g_4 = 5;
+    }
+
+    // TransmitPowerChain settings when operating in tablet and non-tablet
+    // modes.
+    TransmitPowerChain tablet_mode_power_table = 1;
+    TransmitPowerChain non_tablet_mode_power_table = 2;
+
+    // WiFi power chain of regulatory domain for use with MediaTek mt7921
+    // driver. Limits in units of 0.25 dBm, Offset in units of 0.25 dBm.
+    message GeoTransmitPowerChain {
+      // 2G band geo power limit. (0.25 dBm)
+      uint32 limit_2g = 1;
+      // 5G band geo power limit. (0.25 dBm)
+      uint32 limit_5g = 2;
+      // Value to be added to the 2.4GHz WiFi band. (0.25 dBm)
+      uint32 offset_2g = 3;
+      // Value to be added to all 5GHz WiFi bands. (0.25 dBm)
+      uint32 offset_5g = 4;
+    }
+
+    // GeoTransmitPowerChain settings in different regulatory domains.
+    GeoTransmitPowerChain fcc_power_table = 3;
+    GeoTransmitPowerChain eu_power_table = 4;
+    GeoTransmitPowerChain other_power_table = 5;
+  }
+
   oneof wifi_config {
     Ath10kConfig ath10k_config = 1;
     Rtw88Config rtw88_config = 2;
     IntelConfig intel_config = 3;
+    MtkConfig mtk_config = 4;
   }
 }

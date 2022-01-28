@@ -6759,6 +6759,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.WifiConfig.IntelConfig"
+            },
+            {
+              "jsonName": "mtkConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "mtk_config",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.WifiConfig.MtkConfig"
             }
           ],
           "name": "WifiConfig",
@@ -7525,6 +7534,126 @@
                     }
                   ],
                   "name": "DSM"
+                }
+              ]
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "tabletModePowerTable",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "tablet_mode_power_table",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.MtkConfig.TransmitPowerChain"
+                },
+                {
+                  "jsonName": "nonTabletModePowerTable",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "non_tablet_mode_power_table",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.MtkConfig.TransmitPowerChain"
+                },
+                {
+                  "jsonName": "fccPowerTable",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "fcc_power_table",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.MtkConfig.GeoTransmitPowerChain"
+                },
+                {
+                  "jsonName": "euPowerTable",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "eu_power_table",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.MtkConfig.GeoTransmitPowerChain"
+                },
+                {
+                  "jsonName": "otherPowerTable",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "other_power_table",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.MtkConfig.GeoTransmitPowerChain"
+                }
+              ],
+              "name": "MtkConfig",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "limit2g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_2g",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit5g1",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_5g_1",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit5g2",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_5g_2",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit5g3",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_5g_3",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit5g4",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_5g_4",
+                      "number": 5,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "TransmitPowerChain"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "limit2g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_2g",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit5g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_5g",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "offset2g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "offset_2g",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "offset5g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "offset_5g",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "GeoTransmitPowerChain"
                 }
               ]
             }
