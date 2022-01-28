@@ -639,6 +639,40 @@ design.append_configs(
         generate_media_profiles = True,
         camcorder_resolutions = [sc.make_resolution(640, 480)],
     ),
+    wifi = sc.create_mtk_wifi(
+        non_tablet_mode_transmit_power_chain = sc.create_mtk_power_chain(
+            limit_2g = 1,
+            limit_5g_1 = 2,
+            limit_5g_2 = 3,
+            limit_5g_3 = 4,
+            limit_5g_4 = 5,
+        ),
+        tablet_mode_transmit_power_chain = sc.create_mtk_power_chain(
+            limit_2g = 6,
+            limit_5g_1 = 7,
+            limit_5g_2 = 8,
+            limit_5g_3 = 9,
+            limit_5g_4 = 10,
+        ),
+        fcc_transmit_power_chain = sc.create_mtk_geo_power_chain(
+            limit_2g = 11,
+            limit_5g = 12,
+            offset_2g = 13,
+            offset_5g = 14,
+        ),
+        eu_transmit_power_chain = sc.create_mtk_geo_power_chain(
+            limit_2g = 15,
+            limit_5g = 16,
+            offset_2g = 17,
+            offset_5g = 18,
+        ),
+        other_transmit_power_chain = sc.create_mtk_geo_power_chain(
+            limit_2g = 19,
+            limit_5g = 20,
+            offset_2g = 21,
+            offset_5g = 22,
+        ),
+    ),
 )
 
 _HW_CONFIGS_C = []

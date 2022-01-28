@@ -611,6 +611,74 @@ def _create_intel_wifi(
         ),
     )
 
+def _create_mtk_geo_power_chain(
+        limit_2g,
+        limit_5g,
+        offset_2g,
+        offset_5g):
+    """Builds a GeoTransmitPowerChain for mtk drivers.
+
+    Args:
+        limit_2g: 2G band geo power limit. (0.25 dBm). Required.
+        limit_5g: 5G band geo power limit. (0.25 dBm). Required.
+        offset_2g: Value to be added to the 2.4GHz WiFi band. (0.25 dBm). Required.
+        offset_5g: Value to be added to all 5GHz WiFi bands. (0.25 dBm). Required.
+    """
+    return wf_pb.WifiConfig.MtkConfig.GeoTransmitPowerChain(
+        limit_2g = limit_2g,
+        limit_5g = limit_5g,
+        offset_2g = offset_2g,
+        offset_5g = offset_5g,
+    )
+
+def _create_mtk_power_chain(
+        limit_2g,
+        limit_5g_1,
+        limit_5g_2,
+        limit_5g_3,
+        limit_5g_4):
+    """Builds a TransmitPowerChain for mtk drivers.
+
+    Args:
+        limit_2g: 2G band power limit. (0.25 dBm). Required.
+        limit_5g_1: 5G band 1 power limit: 5.15G-5.35G frequency. (0.25 dBm). Required.
+        limit_5g_2: 5G band 2 power limit: 5.35G-5.47G frequency. (0.25 dBm). Required.
+        limit_5g_3: 5G band 3 power limit: 5.47G-5.725G frequency. (0.25 dBm). Required.
+        limit_5g_4: 5G band 4 power limit: 5.725G-5.95G frequency. (0.25 dBm). Required.
+    """
+    return wf_pb.WifiConfig.MtkConfig.TransmitPowerChain(
+        limit_2g = limit_2g,
+        limit_5g_1 = limit_5g_1,
+        limit_5g_2 = limit_5g_2,
+        limit_5g_3 = limit_5g_3,
+        limit_5g_4 = limit_5g_4,
+    )
+
+def _create_mtk_wifi(
+        non_tablet_mode_transmit_power_chain,
+        tablet_mode_transmit_power_chain,
+        fcc_transmit_power_chain = None,
+        eu_transmit_power_chain = None,
+        other_transmit_power_chain = None):
+    """Builds a WifiConfig proto for use with mtk drivers.
+
+    Args:
+        non_tablet_mode_transmit_power_chain: non-tablet mode power chain. Required.
+        tablet_mode_transmit_power_chain: tablet mode power chain. Required.
+        fcc_transmit_power_chain: power chain for regulatory domains that follow FCC guidelines.
+        eu_transmit_power_chain: power chain for regulatory domains that follow ESTI guidelines.
+        other_transmit_power_chain: power chain for regulatory domains that don't follow FCC or ETSI guidelines.
+    """
+    return wf_pb.WifiConfig(
+        mtk_config = wf_pb.WifiConfig.MtkConfig(
+            non_tablet_mode_power_table = non_tablet_mode_transmit_power_chain,
+            tablet_mode_power_table = tablet_mode_transmit_power_chain,
+            fcc_power_table = fcc_transmit_power_chain,
+            eu_power_table = eu_transmit_power_chain,
+            other_power_table = other_transmit_power_chain,
+        ),
+    )
+
 def _create_camera(
         generate_media_profiles = False,
         camcorder_resolutions = None):
@@ -660,6 +728,9 @@ sw_config = struct(
     create_intel_sar_table = _create_intel_sar_table,
     create_intel_sar_avg_table = _create_intel_sar_avg_table,
     create_intel_wifi = _create_intel_wifi,
+    create_mtk_geo_power_chain = _create_mtk_geo_power_chain,
+    create_mtk_power_chain = _create_mtk_power_chain,
+    create_mtk_wifi = _create_mtk_wifi,
     create_rtw88 = _create_rtw88,
     create_rtw88_geo_offsets = _create_rtw88_geo_offsets,
     create_rtw88_power_chain = _create_rtw88_power_chain,

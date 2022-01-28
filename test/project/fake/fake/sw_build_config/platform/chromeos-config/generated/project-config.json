@@ -798,6 +798,40 @@
             "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg",
             "--has-internal-stylus"
           ]
+        },
+        "wifi": {
+          "eu-power-table-mtk": {
+            "limit-2g": 15,
+            "limit-5g": 16,
+            "offset-2g": 17,
+            "offset-5g": 18
+          },
+          "fcc-power-table-mtk": {
+            "limit-2g": 11,
+            "limit-5g": 12,
+            "offset-2g": 13,
+            "offset-5g": 14
+          },
+          "non-tablet-mode-power-table-mtk": {
+            "limit-2g": 1,
+            "limit-5g-1": 2,
+            "limit-5g-2": 3,
+            "limit-5g-3": 4,
+            "limit-5g-4": 5
+          },
+          "rest-of-world-power-table-mtk": {
+            "limit-2g": 19,
+            "limit-5g": 20,
+            "offset-2g": 21,
+            "offset-5g": 22
+          },
+          "tablet-mode-power-table-mtk": {
+            "limit-2g": 6,
+            "limit-5g-1": 7,
+            "limit-5g-2": 8,
+            "limit-5g-3": 9,
+            "limit-5g-4": 10
+          }
         }
       },
       {

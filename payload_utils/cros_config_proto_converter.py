@@ -504,6 +504,52 @@ def _build_intel_config(config, config_files):
   return config_files.wifi_sar_map.get(design_name)
 
 
+def _build_mtk_config(mtk_config):
+  """Builds the wifi configuration for the mtk driver.
+
+  Args:
+    mtk_config: MtkConfig config.
+
+  Returns:
+    wifi configuration for the mtk driver.
+  """
+  result = {}
+
+  def power_chain(power):
+    return {
+        'limit-2g': power.limit_2g,
+        'limit-5g-1': power.limit_5g_1,
+        'limit-5g-2': power.limit_5g_2,
+        'limit-5g-3': power.limit_5g_3,
+        'limit-5g-4': power.limit_5g_4,
+    }
+
+  if mtk_config.HasField('tablet_mode_power_table'):
+    result['tablet-mode-power-table-mtk'] = power_chain(
+        mtk_config.tablet_mode_power_table)
+  if mtk_config.HasField('non_tablet_mode_power_table'):
+    result['non-tablet-mode-power-table-mtk'] = power_chain(
+        mtk_config.non_tablet_mode_power_table)
+
+  def geo_power_chain(power):
+    return {
+        'limit-2g': power.limit_2g,
+        'limit-5g': power.limit_5g,
+        'offset-2g': power.offset_2g,
+        'offset-5g': power.offset_5g,
+    }
+
+  if mtk_config.HasField('fcc_power_table'):
+    result['fcc-power-table-mtk'] = geo_power_chain(mtk_config.fcc_power_table)
+  if mtk_config.HasField('eu_power_table'):
+    result['eu-power-table-mtk'] = geo_power_chain(mtk_config.eu_power_table)
+  if mtk_config.HasField('other_power_table'):
+    result['rest-of-world-power-table-mtk'] = geo_power_chain(
+        mtk_config.other_power_table)
+
+  return result
+
+
 def _build_wifi(config, config_files):
   """Builds the wifi configuration.
 
@@ -521,6 +567,8 @@ def _build_wifi(config, config_files):
     return _build_rtw88_config(config.sw_config.wifi_config.rtw88_config)
   if config_field == 'intel_config':
     return _build_intel_config(config, config_files)
+  if config_field == 'mtk_config':
+    return _build_mtk_config(config.sw_config.wifi_config.mtk_config)
   return {}
 
 

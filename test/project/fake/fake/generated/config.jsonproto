@@ -5546,6 +5546,42 @@
       },
       "publicReplication": {
         "publicFields": "designConfigId,idScanConfig"
+      },
+      "wifiConfig": {
+        "mtkConfig": {
+          "euPowerTable": {
+            "limit2g": 15,
+            "limit5g": 16,
+            "offset2g": 17,
+            "offset5g": 18
+          },
+          "fccPowerTable": {
+            "limit2g": 11,
+            "limit5g": 12,
+            "offset2g": 13,
+            "offset5g": 14
+          },
+          "nonTabletModePowerTable": {
+            "limit2g": 1,
+            "limit5g1": 2,
+            "limit5g2": 3,
+            "limit5g3": 4,
+            "limit5g4": 5
+          },
+          "otherPowerTable": {
+            "limit2g": 19,
+            "limit5g": 20,
+            "offset2g": 21,
+            "offset5g": 22
+          },
+          "tabletModePowerTable": {
+            "limit2g": 6,
+            "limit5g1": 7,
+            "limit5g2": 8,
+            "limit5g3": 9,
+            "limit5g4": 10
+          }
+        }
       }
     },
     {
