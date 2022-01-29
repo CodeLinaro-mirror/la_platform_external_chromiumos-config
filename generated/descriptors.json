@@ -13682,25 +13682,19 @@
                   "type": "TYPE_STRING"
                 },
                 {
-                  "jsonName": "model",
+                  "jsonName": "serialNumber",
                   "label": "LABEL_OPTIONAL",
-                  "name": "model",
+                  "name": "serial_number",
                   "number": 3,
                   "type": "TYPE_STRING"
                 },
                 {
-                  "jsonName": "serialNumber",
+                  "jsonName": "dutModel",
                   "label": "LABEL_OPTIONAL",
-                  "name": "serial_number",
+                  "name": "dut_model",
                   "number": 4,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "board",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "board",
-                  "number": 5,
-                  "type": "TYPE_STRING"
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.DutModel"
                 }
               ],
               "name": "Android"
