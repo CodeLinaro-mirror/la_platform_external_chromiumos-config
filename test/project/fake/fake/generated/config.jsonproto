@@ -1767,7 +1767,7 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 2
+              "formFactor": 3
             },
             "fwConfig": {
               "mask": 131071,
@@ -1980,14 +1980,14 @@
             },
             "formFactor": {
               "description": {
-                "EN": "Device can rotate 360 degrees"
+                "EN": "Device can detach from its keyboard."
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 2
+                  "formFactor": 3
                 }
               },
-              "id": "CONVERTIBLE",
+              "id": "DETACHABLE",
               "type": 2
             },
             "keyboard": {
@@ -2249,7 +2249,7 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 1
+              "formFactor": 7
             },
             "fwConfig": {
               "mask": 131071,
@@ -2459,14 +2459,14 @@
             },
             "formFactor": {
               "description": {
-                "EN": "Device cannot rotate past 180 degrees"
+                "EN": "Tablet chrome device."
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 1
+                  "formFactor": 7
                 }
               },
-              "id": "CLAMSHELL",
+              "id": "CHROMESLATE",
               "type": 2
             },
             "keyboard": {

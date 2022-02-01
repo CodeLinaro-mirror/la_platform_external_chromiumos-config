@@ -278,6 +278,8 @@ def _create_form_factor(form_factor, fw_configs = [], id = None, description = N
             hw_feat.form_factor.CONVERTIBLE: "CONVERTIBLE",
             hw_feat.form_factor.CHROMEBASE: "CHROMEBASE",
             hw_feat.form_factor.CHROMEBOX: "CHROMEBOX",
+            hw_feat.form_factor.DETACHABLE: "DETACHABLE",
+            hw_feat.form_factor.CHROMESLATE: "CHROMESLATE",
         }[form_factor]
 
     if not description:
@@ -286,6 +288,8 @@ def _create_form_factor(form_factor, fw_configs = [], id = None, description = N
             hw_feat.form_factor.CONVERTIBLE: "Device can rotate 360 degrees",
             hw_feat.form_factor.CHROMEBASE: "Desktop chrome all-in-one.",
             hw_feat.form_factor.CHROMEBOX: "Desktop chrome device.",
+            hw_feat.form_factor.DETACHABLE: "Device can detach from its keyboard.",
+            hw_feat.form_factor.CHROMESLATE: "Tablet chrome device.",
         }[form_factor]
 
     hw_features = topo_pb.HardwareFeatures()

@@ -94,7 +94,7 @@
       "component.has_rear_camera": false,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
-      "component.has_tabletmode": true,
+      "component.has_tabletmode": false,
       "component.has_touchscreen": true,
       "component.has_wifi": true,
       "component.headphone_codec": "ALC5682I",

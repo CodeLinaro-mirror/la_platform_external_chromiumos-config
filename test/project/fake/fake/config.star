@@ -39,6 +39,8 @@ _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
 _FORM_FACTOR_CHROMEBOX = hw_topo.create_form_factor(hw_topo.ff.CHROMEBOX)
 _FORM_FACTOR_CHROMEBASE = hw_topo.create_form_factor(hw_topo.ff.CHROMEBASE)
+_FORM_FACTOR_DETACHABLE = hw_topo.create_form_factor(hw_topo.ff.DETACHABLE)
+_FORM_FACTOR_CHROMESLATE = hw_topo.create_form_factor(hw_topo.ff.CHROMESLATE)
 _SCREEN = hw_topo.create_screen(
     id = "SCREEN",
     description = "Default screen",
@@ -619,7 +621,7 @@ design.append_configs(
         ),
         bluetooth = _BLUETOOTH,
         camera = _CAMERA1,
-        form_factor = _FORM_FACTOR_CONVERTIBLE,
+        form_factor = _FORM_FACTOR_DETACHABLE,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
     ),
@@ -687,6 +689,7 @@ design.append_configs(
         camera = _CAMERA1,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
+        form_factor = _FORM_FACTOR_CHROMESLATE,
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(
