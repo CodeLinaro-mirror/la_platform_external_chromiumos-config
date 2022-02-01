@@ -13709,9 +13709,9 @@
         {
           "field": [
             {
-              "jsonName": "referenceBoardName",
+              "jsonName": "buildTarget",
               "label": "LABEL_OPTIONAL",
-              "name": "reference_board_name",
+              "name": "build_target",
               "number": 1,
               "type": "TYPE_STRING"
             },

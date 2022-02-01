@@ -64,9 +64,9 @@ message Dut {
   CacheServer cache_server = 4;
 }
 
-// Defines the board and model of the Dut
+// Defines the build target/board and model of the Dut
 message DutModel {
-  string reference_board_name = 1;
+  string build_target = 1;
   string model_name = 2;
 }
 
