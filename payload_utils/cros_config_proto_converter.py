@@ -1098,9 +1098,10 @@ def _build_modem(config):
   cellular_support = _any_present([hw_features.cellular.present])
   if not cellular_support:
     return None
-  firmware_variant = config.hw_design.name.lower()
   if hw_features.cellular.model:
-    firmware_variant += '_' + hw_features.cellular.model.lower()
+    firmware_variant = hw_features.cellular.model.lower()
+  else:
+    firmware_variant = config.hw_design.name.lower()
   result = {'firmware-variant': firmware_variant}
   if hw_features.cellular.attach_apn_required:
     result['attach-apn-required'] = True

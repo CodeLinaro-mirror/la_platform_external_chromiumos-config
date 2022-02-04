@@ -338,7 +338,7 @@
           "numpad": true
         },
         "modem": {
-          "firmware-variant": "fake_ref_design_fakemodem"
+          "firmware-variant": "fakemodem"
         },
         "name": "fake_ref_design",
         "power": {
@@ -738,7 +738,7 @@
           "smbios-name-match": "PROJECT_B"
         },
         "modem": {
-          "firmware-variant": "project_b_fakemodemb"
+          "firmware-variant": "fakemodemb"
         },
         "name": "project_b",
         "power": {
