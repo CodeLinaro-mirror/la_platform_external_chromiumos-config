@@ -548,6 +548,9 @@ message HardwareFeatures {
 
     // Whether the EC supports EC_FEATURE_TYPEC_CMD.
     Present feature_typec_cmd = 4;
+
+    // Whether the EC supports CBI (CrOS Board Info stored on the EEPROM).
+    Present cbi = 5;
   }
   EmbeddedController embedded_controller = 24;
 

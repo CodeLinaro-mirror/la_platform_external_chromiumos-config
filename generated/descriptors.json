@@ -3700,6 +3700,14 @@
                   "number": 4,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "cbi",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "cbi",
+                  "number": 5,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "EmbeddedController"
