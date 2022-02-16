@@ -275,6 +275,9 @@
             }
           ]
         },
+        "fingerprint": {
+          "sensor-location": "none"
+        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -618,6 +621,9 @@
             }
           ]
         },
+        "fingerprint": {
+          "sensor-location": "none"
+        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -800,6 +806,9 @@
             }
           ]
         },
+        "fingerprint": {
+          "sensor-location": "none"
+        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -929,6 +938,9 @@
               "orientation": 0
             }
           ]
+        },
+        "fingerprint": {
+          "sensor-location": "none"
         },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
@@ -1061,6 +1073,9 @@
               "orientation": 0
             }
           ]
+        },
+        "fingerprint": {
+          "sensor-location": "none"
         },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
@@ -1195,6 +1210,9 @@
             }
           ]
         },
+        "fingerprint": {
+          "sensor-location": "none"
+        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -1327,6 +1345,9 @@
               "orientation": 0
             }
           ]
+        },
+        "fingerprint": {
+          "sensor-location": "none"
         },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
@@ -1470,6 +1491,9 @@
             }
           ]
         },
+        "fingerprint": {
+          "sensor-location": "none"
+        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -1604,6 +1628,9 @@
         "camera": {
           "count": 0
         },
+        "fingerprint": {
+          "sensor-location": "none"
+        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -1730,6 +1757,9 @@
         },
         "camera": {
           "count": 0
+        },
+        "fingerprint": {
+          "sensor-location": "none"
         },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
@@ -1863,6 +1893,9 @@
         },
         "camera": {
           "count": 0
+        },
+        "fingerprint": {
+          "sensor-location": "none"
         },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
