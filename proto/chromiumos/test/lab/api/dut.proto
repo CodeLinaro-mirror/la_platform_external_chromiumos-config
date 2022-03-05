@@ -194,6 +194,8 @@ message Servo {
   // Address to the host running the servod daemon.
   // Port number servod is listening on.
   IpEndpoint servod_address = 2;
+  // Serial number of the servo.
+  string serial = 3;
 }
 
 message Touch {

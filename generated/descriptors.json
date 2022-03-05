@@ -14214,6 +14214,13 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "serial",
+              "label": "LABEL_OPTIONAL",
+              "name": "serial",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "Servo"
