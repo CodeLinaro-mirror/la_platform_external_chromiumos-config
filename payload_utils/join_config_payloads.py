@@ -101,8 +101,10 @@ def non_null_values(items):
           sectors: '250000000'
           vendor: '0xabcd'
 
-  We'll iterate over this and break out the 'values' block, make sure it's not None,
-  and check whether we should exclude it based on the 'status' field if present."""
+  We'll iterate over this and break out the 'values' block, make sure it's not
+  None, and check whether we should exclude it based on the 'status' field if
+  present.
+  """
 
   def _include(val):
     if not val['values']:
@@ -130,11 +132,11 @@ def merge_avl_dlm(config_bundle):
 
     # These rules are from empirical runs with the real project data
     name = name.lower()
-    if "_" in name:
-      name = name[0:name.find("_")]
+    if '_' in name:
+      name = name[0:name.find('_')]
     return name
 
-  client = bigquery.Client(project="chromeos-bot")
+  client = bigquery.Client(project='chromeos-bot')
 
   def merge_form_factor(design, name, device_form_factor):
     """Map from form factor information in DLM to our proto definitions."""
@@ -164,7 +166,7 @@ def merge_avl_dlm(config_bundle):
   ]
 
   if not project_names:
-    logging.info("no designs to populate from DLM, aborting")
+    logging.info('no designs to populate from DLM, aborting')
     return config_bundle
 
   # query all projects at once, we'll filter them on our side.
@@ -174,7 +176,7 @@ def merge_avl_dlm(config_bundle):
       WHERE googleCodeName IN ({projects})
   """.format(
       device_table=DLM_DEVICES_TABLE,
-      projects=",".join(["'%s'" % name for name in project_names]),
+      projects=','.join(["'%s'" % name for name in project_names]),
   )
   logging.info(query)
 
@@ -293,7 +295,7 @@ def merge_firmware_config(sw_config, model):
   build_config.build_targets.zephyr_ec = build_props.get('zephyr-ec', '')
 
   for extra in build_props.get('ec-extras', []):
-    build_config.build_targets.ec_extras.add(extra)
+    build_config.build_targets.ec_extras.append(extra)
 
 
 def merge_camera_config(hw_feat, model):
@@ -436,12 +438,12 @@ def merge_device_brand(config_bundle, design, model, project_name):
   # pylint: disable=too-many-locals
 
   whitelabel = model.GetProperties('/identity/whitelabel-tag')
-  whitelabel = whitelabel or ""
+  whitelabel = whitelabel or ''
 
   # find/create new brand entry for the design
-  brand_name = ""
-  brand_code = model.GetProperties("/brand-code")
-  brand_id = "{}_{}".format(project_name, brand_code)
+  brand_name = ''
+  brand_code = model.GetProperties('/brand-code')
+  brand_id = '{}_{}'.format(project_name, brand_code)
 
   # find/create device brand
   device_brand = None
@@ -455,7 +457,7 @@ def merge_device_brand(config_bundle, design, model, project_name):
     device_brand = config_bundle.device_brand_list.add()
     device_brand.id.value = brand_id
     device_brand.design_id.MergeFrom(design.id)
-    device_brand.brand_name = ""
+    device_brand.brand_name = ''
     device_brand.brand_code = brand_code
 
   # find/create brand config
@@ -585,7 +587,7 @@ def merge_configs(options):
 
       # Sort to ensure ordering is consistent
       ensure_models = sorted(ensure_models)
-      logging.debug("ensuring models: %s", ensure_models)
+      logging.debug('ensuring models: %s', ensure_models)
     else:
       # we're joining payloads so expose full config bundle for merging
       config_bundle = input_bundle
@@ -668,7 +670,7 @@ def merge_configs(options):
     if not sku:
       # sku not defined, SKUs are by definition < 0x7FFFFFF so we'll use
       # 0x8000000 for the SKU-less case to keep it an integer
-      sku = "0x80000000"
+      sku = '0x80000000'
       logging.info('found wildcard sku in %s, setting sku-id to "%s"', project,
                    sku)
     sku = str(sku)
@@ -746,14 +748,14 @@ def main(options):
     clone_or_use_dep(
         CROS_PLATFORM_REPO,
         os.path.join(temppath, 'platform2'),
-        os.path.realpath(os.path.join(this_dir, "../../platform2")),
+        os.path.realpath(os.path.join(this_dir, '../../platform2')),
         'chromeos-config',
     )
 
     clone_or_use_dep(
         CROS_CONFIG_INTERNAL_REPO,
         os.path.join(temppath, 'config-internal'),
-        os.path.realpath(os.path.join(this_dir, "../../config-internal")),
+        os.path.realpath(os.path.join(this_dir, '../../config-internal')),
     )
 
     io_utils.write_message_json(
@@ -814,19 +816,19 @@ only use the config bundle to propagate models to imported payload.""")
       '--private-model', type=str, help='private model.yaml file to merge')
   parser.add_argument('--hwid', type=str, help='HWID database to merge')
   parser.add_argument(
-      "-v", "--verbose", help="increase output verbosity", action="store_true")
-  parser.add_argument("-l", "--log", type=str, help='set logging level')
+      '-v', '--verbose', help='increase output verbosity', action='store_true')
+  parser.add_argument('-l', '--log', type=str, help='set logging level')
 
   args = parser.parse_args()
   # pylint: disable=invalid-name
   loglevel = logging.INFO if args.verbose else logging.WARNING
   if args.log:
     loglevel = {
-        "critical": logging.CRITICAL,
-        "error": logging.ERROR,
-        "warning": logging.WARNING,
-        "info": logging.INFO,
-        "debug": logging.DEBUG,
+        'critical': logging.CRITICAL,
+        'error': logging.ERROR,
+        'warning': logging.WARNING,
+        'info': logging.INFO,
+        'debug': logging.DEBUG,
     }.get(args.log.lower())
 
     if not loglevel:
