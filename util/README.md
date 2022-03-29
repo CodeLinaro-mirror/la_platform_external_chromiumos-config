@@ -96,6 +96,15 @@ comp.create_bt()
 
 
 
+### comp.create_cellular {#comp.create_cellular}
+Builds a Component proto for Cellular device.
+
+```python
+comp.create_cellular()
+```
+
+
+
 ### comp.create_display_panel {#comp.create_display_panel}
 Builds a Component.DisplayPanel proto for touchscreen.
 
@@ -332,6 +341,7 @@ design.append_configs(
     audio = None,
     wifi = None,
     camera = None,
+    health = None,
     ui = None,
     device_tree_compatible_match = None,
     smbios_name_match_override = None,
@@ -354,6 +364,7 @@ design.append_configs(
 * **audio**: An AudioConfig to be used in the SoftwareConfig. Can be either a single AudioConfig or a list of AudioConfigs.
 * **wifi**: A WifiConfig to be used in the SoftwareConfig.
 * **camera**: A CameraConfig to be used in the SoftwareConfig.
+* **health**: A HealthConfig to be used in the SoftwareConfig.
 * **ui**: A UiConfig to be used in the SoftwareConfig.
 * **device_tree_compatible_match**: For ARM platform, a str used for device_tree_compatible_match in IdentityScanConfig.
 * **smbios_name_match_override**: For x86 platform, a str used for smbios_name_match in IdentityScanConfig. If not specified, the string in DesignId is used. Note only one of device_tree_compatible_match and smbios_name_match_override can be specified.
@@ -452,6 +463,25 @@ hw_topo.create_screen()
 
 
 
+### hw_topo.create_als_step {#hw_topo.create_als_step}
+Builds a Component.AlsStep.
+lux_decrease_threshold: An int containing the sensor value below which the
+    previous step should be considered. A value of None indicates negative
+    infinity.
+lux_increase_threshold: An int containing the sensor value above which the
+    next step should be considered. A value of None indicates infinity.
+ac_backlight_percent: A double containing the backlight brightness
+    percentage to use at this step while on AC power.
+battery_backlight_percent: A double containing the backlight brightness
+    percentage to use at this step while on battery power. If unset,
+    defaults to the ac_backlight_percent value.
+
+```python
+hw_topo.create_als_step()
+```
+
+
+
 ### hw_topo.create_form_factor {#hw_topo.create_form_factor}
 Builds a Topology proto for a form factor.
 
@@ -479,7 +509,59 @@ hw_topo.create_form_factor(
 Builds a Topology proto for audio.
 
 ```python
-hw_topo.create_audio()
+hw_topo.create_audio(
+    # Optional arguments.
+    id = None,
+    description = None,
+    codec = None,
+    speaker_amp = None,
+    headphone_codec = None,
+    fw_configs = None,
+    card_configs = None,
+    cras_config = None,
+)
+```
+
+#### Arguments {#hw_topo.create_audio-args}
+
+* **id**: A string identifier for the Topology.
+* **description**: An English description for the Topology.
+* **codec**: Deprecated.
+* **speaker_amp**: An Amplifier enum value specifying the speaker amplifier.
+* **headphone_codec**: An AudioCodec enum value specifying the jack codec.
+* **fw_configs**: A list of FirmwareConfiguration protos for this audio topology.
+* **card_configs**: A list of CardConfig protos specifying card configs to be installed and used for this audio topology.
+* **cras_config**: An AudioConfigStructure enum specifying how card-agnostic cras config files are structured. If unset, defaults to DESIGN if any card_configs are passed, otherwise NONE.
+
+
+### hw_topo.create_audio_card_config {#hw_topo.create_audio_card_config}
+Builds a CardConfig proto for an audio card config.
+
+```python
+hw_topo.create_audio_card_config(
+    # Optional arguments.
+    card_name = None,
+    ucm_suffix = None,
+    cras_config = None,
+    ucm_config = None,
+    sound_card_init_config = None,
+)
+```
+
+#### Arguments {#hw_topo.create_audio_card_config-args}
+
+* **card_name**: A string. This should match the card used by ALSA, with an optional suffix starting with a dot, if a suffix representing hardware details, such as the speaker amplifier or jack codec is required. For example, "sof-rt5682.max98373".
+* **ucm_suffix**: An optional format string used to generate the remainder of the UCM suffix not referring to audio components. If unset, the program-wide default suffix is used. The following placeholders may be used:     {design}: The design name.     {camera_count}: The number of cameras (usually 0, 1 or 2).     {headset_codec}: The headset codec name (in lowercase)         specified in the topology containing this card config.     {speaker_amp}: The speaker amp name (in lowercase) specified in         the topology containing this card config.     {mic_description}: A description of the microphone topology, of         the form {user_facing_mic_count}uf{world_facing_mic_count}wf, with         components elided if their count is 0.     {total_mic_count}: The total number of internal microphones.     {user_facing_mic_count}: The number of internal user-facing microphones.     {world_facing_mic_count}: The number of internal world-facing microphones. It is strongly recommended that any details of the speaker amplifier or jack codec not be included in this suffix - they should instead be included as part of card_name.
+* **cras_config**: An AudioConfigStructure enum specifying how cras config files are structured for this card. If unset, defaults to DESIGN.
+* **ucm_config**: An AudioConfigStructure enum specifying how ALSA UCM config files are structured for this card. If unset, defaults to DESIGN.
+* **sound_card_init_config**: An AudioConfigStructure enum specifying how sound card init config files are structured for this card. If unset, defaults to NONE.
+
+
+### hw_topo.override_audio {#hw_topo.override_audio}
+
+
+```python
+hw_topo.override_audio()
 ```
 
 
@@ -508,6 +590,7 @@ hw_topo.create_keyboard(
     fw_configs = None,
     id = None,
     description = None,
+    backlight_user_steps = None,
 )
 ```
 
@@ -520,6 +603,7 @@ hw_topo.create_keyboard(
 * **fw_configs**: A list of FirmwareConfiguration protos for the form factor.
 * **id**: A string identifier for the Topology. If not passed, a default is provided.
 * **description**: An English description for the Topology. If not passed, a default is provided.
+* **backlight_user_steps**: A list of doubles specifying the user-selectable backlight steps in increasing order, starting from 0. This controls the keyboard_backlight_user_steps powerd pref.
 
 
 ### hw_topo.create_thermal {#hw_topo.create_thermal}
@@ -606,15 +690,6 @@ hw_topo.create_wifi()
 
 
 
-### hw_topo.create_lte_board {#hw_topo.create_lte_board}
-Builds a Topology proto for a LTE board.
-
-```python
-hw_topo.create_lte_board()
-```
-
-
-
 ### hw_topo.create_cellular_board {#hw_topo.create_cellular_board}
 Builds a Topology proto for a Cellular board.
 
@@ -642,6 +717,19 @@ hw_topo.create_motherboard_usb()
 
 
 
+### hw_topo.create_usbc_port {#hw_topo.create_usbc_port}
+Builds a UsbC Port.
+
+```python
+hw_topo.create_usbc_port(position = None, index_override = None)
+```
+
+#### Arguments {#hw_topo.create_usbc_port-args}
+
+* **position**: An optional topo_pb.HardwareFeatures.PortPosition indicating the position of this port on the side of the chassis it occupies. Required if more than one USB-C port is present on the same side of the chassis.
+* **index_override**: An optional int specifying the 0-indexed index of this port. For ports with this unset, the motherboard ports will be ordered before the daughter board ports, in the order they are specified, leaving gaps as needed for ports with an override set. If set, this value must be in the range [0, number_of_usb_c_ports).
+
+
 ### hw_topo.create_bluetooth {#hw_topo.create_bluetooth}
 Builds a Topology proto for bluetooth.
 
@@ -658,6 +746,29 @@ Builds a Topology proto for barreljack.
 hw_topo.create_barreljack()
 ```
 
+
+
+### hw_topo.create_power_supply {#hw_topo.create_power_supply}
+Builds a Topology proto for power supply.
+
+```python
+hw_topo.create_power_supply(
+    # Optional arguments.
+    id = None,
+    description = None,
+    bj_present = None,
+    usb_min_ac_watts = None,
+    fw_configs = None,
+)
+```
+
+#### Arguments {#hw_topo.create_power_supply-args}
+
+* **id**: A string identifier for the Topology.
+* **description**: An English description for the Topology.
+* **bj_present**: A bool containing whether a barreljack power port is present
+* **usb_min_ac_watts**: The input power below which a warning should be shown to use a higher-power USB adapter.
+* **fw_configs**: A list of firmware configs implied by the Topology.
 
 
 ### hw_topo.create_hardware_topology {#hw_topo.create_hardware_topology}
@@ -749,6 +860,33 @@ hw_topo.create_hdmi()
 
 
 
+### hw_topo.create_hps {#hw_topo.create_hps}
+Builds a Topology proto for HPS.
+
+```python
+hw_topo.create_hps()
+```
+
+
+
+### hw_topo.create_dp_converter {#hw_topo.create_dp_converter}
+Builds a Topology proto for DisplayPort converters.
+
+```python
+hw_topo.create_dp_converter()
+```
+
+
+
+### hw_topo.create_poe {#hw_topo.create_poe}
+Builds a Topology proto for PoE.
+
+```python
+hw_topo.create_poe()
+```
+
+
+
 ### hw_topo.convert_to_hw_features {#hw_topo.convert_to_hw_features}
 Converts a HardwareTopology proto to a HardwareFeatures proto.
 
@@ -829,6 +967,15 @@ Builds a Program proto.
 
 ```python
 program.create()
+```
+
+
+
+### program.create_audio_config {#program.create_audio_config}
+Builds an AudioConfig proto.
+
+```python
+program.create_audio_config()
 ```
 
 
@@ -1060,6 +1207,15 @@ Builds a Firmware.BuildTargets proto.
 
 ```python
 sw_config.create_fw_build_targets()
+```
+
+
+
+### sw_config.create_health {#sw_config.create_health}
+Builds a HealthConfig proto.
+
+```python
+sw_config.create_health()
 ```
 
 
@@ -1352,6 +1508,75 @@ sw_config.create_intel_wifi(
 * **ant_table**: Antenna Gains for use with intel driver.
 * **wtas_table**: Time average SAR for use with intel driver.
 * **dsm**: Device specific methods return values for intel driver.
+
+
+### sw_config.create_mtk_geo_power_chain {#sw_config.create_mtk_geo_power_chain}
+Builds a GeoTransmitPowerChain for mtk drivers.
+
+```python
+sw_config.create_mtk_geo_power_chain(
+    # Required arguments.
+    limit_2g,
+    limit_5g,
+    offset_2g,
+    offset_5g,
+)
+```
+
+#### Arguments {#sw_config.create_mtk_geo_power_chain-args}
+
+* **limit_2g**: 2G band geo power limit. (0.25 dBm). Required.
+* **limit_5g**: 5G band geo power limit. (0.25 dBm). Required.
+* **offset_2g**: Value to be added to the 2.4GHz WiFi band. (0.25 dBm). Required.
+* **offset_5g**: Value to be added to all 5GHz WiFi bands. (0.25 dBm). Required.
+
+
+### sw_config.create_mtk_power_chain {#sw_config.create_mtk_power_chain}
+Builds a TransmitPowerChain for mtk drivers.
+
+```python
+sw_config.create_mtk_power_chain(
+    # Required arguments.
+    limit_2g,
+    limit_5g_1,
+    limit_5g_2,
+    limit_5g_3,
+    limit_5g_4,
+)
+```
+
+#### Arguments {#sw_config.create_mtk_power_chain-args}
+
+* **limit_2g**: 2G band power limit. (0.25 dBm). Required.
+* **limit_5g_1**: 5G band 1 power limit: 5.15G-5.35G frequency. (0.25 dBm). Required.
+* **limit_5g_2**: 5G band 2 power limit: 5.35G-5.47G frequency. (0.25 dBm). Required.
+* **limit_5g_3**: 5G band 3 power limit: 5.47G-5.725G frequency. (0.25 dBm). Required.
+* **limit_5g_4**: 5G band 4 power limit: 5.725G-5.95G frequency. (0.25 dBm). Required.
+
+
+### sw_config.create_mtk_wifi {#sw_config.create_mtk_wifi}
+Builds a WifiConfig proto for use with mtk drivers.
+
+```python
+sw_config.create_mtk_wifi(
+    # Required arguments.
+    non_tablet_mode_transmit_power_chain,
+    tablet_mode_transmit_power_chain,
+
+    # Optional arguments.
+    fcc_transmit_power_chain = None,
+    eu_transmit_power_chain = None,
+    other_transmit_power_chain = None,
+)
+```
+
+#### Arguments {#sw_config.create_mtk_wifi-args}
+
+* **non_tablet_mode_transmit_power_chain**: non-tablet mode power chain. Required.
+* **tablet_mode_transmit_power_chain**: tablet mode power chain. Required.
+* **fcc_transmit_power_chain**: power chain for regulatory domains that follow FCC guidelines.
+* **eu_transmit_power_chain**: power chain for regulatory domains that follow ESTI guidelines.
+* **other_transmit_power_chain**: power chain for regulatory domains that don't follow FCC or ETSI guidelines.
 
 
 ### sw_config.create_rtw88 {#sw_config.create_rtw88}
