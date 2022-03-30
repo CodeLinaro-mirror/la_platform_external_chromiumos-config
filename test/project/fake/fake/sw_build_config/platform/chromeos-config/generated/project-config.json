@@ -29,7 +29,7 @@
                 "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.2uf.fake_ref_design/fakeaudiocard.alc5682i.2uf.fake_ref_design.conf"
               },
               {
-                "destination": "/etc/cras/fake_ref_design/fakeaudiocard",
+                "destination": "/etc/cras/fake_ref_design/fakeaudiocard.card_settings",
                 "source": "fake_ref_design/audio/cras-config/fakeaudiocard.card_settings"
               },
               {
@@ -246,7 +246,7 @@
                 "source": "fake_ref_design/audio/ucm-config/fakeaudiocard.alc5682i.1uf2wf.fake_ref_design/fakeaudiocard.alc5682i.1uf2wf.fake_ref_design.conf"
               },
               {
-                "destination": "/etc/cras/fake_ref_design/fakeaudiocard",
+                "destination": "/etc/cras/fake_ref_design/fakeaudiocard.card_settings",
                 "source": "fake_ref_design/audio/cras-config/fakeaudiocard.card_settings"
               },
               {
@@ -666,7 +666,7 @@
                 "source": "project_b/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b.conf"
               },
               {
-                "destination": "/etc/cras/project_b/fakeaudiocard",
+                "destination": "/etc/cras/project_b/fakeaudiocard.card_settings",
                 "source": "project_b/audio/cras-config/fakeaudiocard.card_settings"
               },
               {
@@ -890,7 +890,7 @@
                 "source": "project_c/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_c/fakeaudiocard.alc5682i.2uf.project_c.conf"
               },
               {
-                "destination": "/etc/cras/project_c/fakeaudiocard",
+                "destination": "/etc/cras/project_c/fakeaudiocard.card_settings",
                 "source": "project_c/audio/cras-config/fakeaudiocard.card_settings"
               },
               {
@@ -1745,7 +1745,7 @@
                 "source": "project_rebrand/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_rebrand/fakeaudiocard.alc5682i.2uf.project_rebrand.conf"
               },
               {
-                "destination": "/etc/cras/project_rebrand/fakeaudiocard",
+                "destination": "/etc/cras/project_rebrand/fakeaudiocard.card_settings",
                 "source": "project_rebrand/audio/cras-config/fakeaudiocard.card_settings"
               },
               {
@@ -1923,7 +1923,7 @@
                 "source": "common/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.0pos.0uf0wf0total/fakeaudiocard.card_suffix.max98373.alc5682i.0pos.0uf0wf0total.conf"
               },
               {
-                "destination": "/etc/cras/project_box/fakeaudiocard",
+                "destination": "/etc/cras/project_box/fakeaudiocard.card_settings",
                 "source": "common/audio/cras-config/fakeaudiocard.card_settings"
               },
               {
@@ -2092,7 +2092,7 @@
                 "source": "project_box/audio/ucm-config/fakeaudiocard.alc5682i.project_box/fakeaudiocard.alc5682i.project_box.conf"
               },
               {
-                "destination": "/etc/cras/project_box/fakeaudiocard",
+                "destination": "/etc/cras/project_box/fakeaudiocard.card_settings",
                 "source": "project_box/audio/cras-config/fakeaudiocard.card_settings"
               },
               {
@@ -2255,7 +2255,7 @@
                 "source": "project_box/audio/ucm-config/fakeaudiocard.card_suffix.fixed_suffix/fakeaudiocard.card_suffix.fixed_suffix.conf"
               },
               {
-                "destination": "/etc/cras/project_box/fakeaudiocard",
+                "destination": "/etc/cras/project_box/fakeaudiocard.card_settings",
                 "source": "project_box/audio/cras-config/fakeaudiocard.card_settings"
               },
               {

@@ -959,11 +959,11 @@ class _AudioConfigBuilder:
     cras_config_source_path = self._build_source_path(card_config.cras_config,
                                                       'cras-config')
     if cras_config_source_path:
+      card_settings = card + '.card_settings'
       self._files.append(
           _file(
-              cras_config_source_path.joinpath(card).with_suffix(
-                  '.card_settings'),
-              self._CRAS_PATH.joinpath(self._design_name, card)))
+              cras_config_source_path.joinpath(card_settings),
+              self._CRAS_PATH.joinpath(self._design_name, card_settings)))
 
     card_init_config_source_path = self._build_source_path(
         card_config.sound_card_init_config, 'sound_card_init')
