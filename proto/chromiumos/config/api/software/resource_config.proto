@@ -1,0 +1,59 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.software;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+// Defines configuration settings for resourced.
+// For more details, see:
+// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/resourced/README.md
+//
+// NEXT ID: 4
+message ResourceConfig {
+  // See
+  // https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v5.10/Documentation/admin-guide/pm/cpufreq.rst;l=437;drc=abc59fd4a56abba8a9d9beadac7a371f4bb76187
+  message OndemandGovernor {
+    uint32 powersave_bias = 1 [json_name = "powersave-bias"];
+  }
+
+  message Governor {
+    oneof governor {
+      OndemandGovernor ondemand = 1;
+      // TODO: Possibly add scheduitl or powersave
+    }
+  }
+
+  message PowerPreferences {
+    Governor governor = 1;
+    // TODO: Possibly add Intel EPP
+  }
+
+  // If more then one activity is enabled, the following priority list is used
+  // to determine which settings to apply:
+  //
+  // 1) Gaming
+  // 2) WebRTC
+  // 3) Fullscreen Video
+  //
+  // Default will be applied when no activity is active.
+
+  // PowerPreferences to apply at boot and when no other activity is active.
+  PowerPreferences default_power_preferences = 1
+      [json_name = "default-power-preferences"];
+
+  // PowerPreferences to apply when RTC audio is active.
+  PowerPreferences web_rtc_power_preferences = 2
+      [json_name = "web-rtc-power-preferences"];
+
+  // PowerPreferences to apply when full screen video is active.
+  PowerPreferences fullscreen_video_power_preferences = 3
+      [json_name = "fullscreen-power-preferences"];
+
+  // PowerPreferences to apply when playing a game.
+  PowerPreferences gaming_power_preferences = 4
+      [json_name = "gaming-power-preferences"];
+}

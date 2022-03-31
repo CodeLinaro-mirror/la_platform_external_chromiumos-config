@@ -70,6 +70,7 @@ def _append_configs(
         firmware_build_config = None,
         bluetooth = None,
         power = None,
+        resource = None,
         audio = None,
         wifi = None,
         camera = None,
@@ -104,6 +105,7 @@ def _append_configs(
             SoftwareConfig.
         bluetooth: A BluetoothConfig to be used in the SoftwareConfig.
         power: A PowerConfig to be used in the SoftwareConfig.
+        resource: A ResourceConfig to be used in the SoftwareConfig.
         audio: An AudioConfig to be used in the SoftwareConfig. Can be either a
             single AudioConfig or a list of AudioConfigs.
         wifi: A WifiConfig to be used in the SoftwareConfig.
@@ -155,6 +157,7 @@ def _append_configs(
     sw_config.firmware_build_config = firmware_build_config
     sw_config.bluetooth_config = bluetooth
     sw_config.power_config = power
+    sw_config.resource_config = resource
     if audio:
         if type(audio) == "list":
             sw_config.audio_configs.extend(audio)

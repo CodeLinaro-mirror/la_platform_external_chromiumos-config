@@ -34,6 +34,10 @@ load(
     health_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/resource_config.proto",
+    resource_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/config/api/software/wifi_config.proto",
     wf_pb = "chromiumos.config.api.software",
 )
@@ -212,6 +216,36 @@ def _create_health(
 def _create_power(preferences):
     """Builds a PowerConfig proto."""
     return pc_pb.PowerConfig(preferences = preferences)
+
+def _create_resource(default = None, web_rtc = None, fullscreen_video = None, gaming = None):
+    """Builds a ResourceConfig proto.
+
+    Args:
+        default: PowerPreferences
+        web_rtc: PowerPreferences
+        fullscreen_video: PowerPreferences
+        gaming: PowerPreferences
+    """
+    return resource_pb.ResourceConfig(
+        default_power_preferences = default,
+        web_rtc_power_preferences = web_rtc,
+        fullscreen_video_power_preferences = fullscreen_video,
+        gaming_power_preferences = gaming,
+    )
+
+def _create_ondemand_preference(powersave_bias):
+    """Builds an ondemand governor PowerPreferences proto
+
+    Args:
+        powersave_bias: powersave bias for the ondemand governor
+    """
+    return resource_pb.ResourceConfig.PowerPreferences(
+        governor = resource_pb.ResourceConfig.Governor(
+            ondemand = resource_pb.ResourceConfig.OndemandGovernor(
+                powersave_bias = powersave_bias,
+            ),
+        ),
+    )
 
 def _create_ath10k_power_chain(limit_2g, limit_5g):
     """Builds a TransmitPowerChain for ath10k drivers.
@@ -719,6 +753,8 @@ sw_config = struct(
     create_fw_build_targets = _create_fw_build_targets,
     create_health = _create_health,
     create_power = _create_power,
+    create_resource = _create_resource,
+    create_ondemand_preference = _create_ondemand_preference,
     create_intel_antenna_gain = _create_intel_antenna_gain,
     create_intel_antgain_table = _create_intel_antgain_table,
     create_intel_dsm = _create_intel_dsm,
