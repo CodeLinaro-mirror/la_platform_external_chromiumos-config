@@ -330,6 +330,63 @@ def _create_rtw88(
         ),
     )
 
+def _create_rtw89_power_chain(
+        limit_2g,
+        limit_5g_1,
+        limit_5g_3,
+        limit_5g_4):
+    """Builds a TransmitPowerChain for rtw89 drivers.
+
+    Args:
+        limit_2g: 2G band power limit: All 2G band channels. (0.25 dBm). Required.
+        limit_5g_1: 5G band 1 power limit: 5.15G-5.35G channels. (0.25 dBm). Required.
+        limit_5g_3: 5G band 3 power limit: 5.47G-5.725G channels. (0.25 dBm). Required.
+        limit_5g_4: 5G band 4 power limit: 5.725G-5.95G channels. (0.25 dBm). Required.
+    """
+    return wf_pb.WifiConfig.Rtw89Config.TransmitPowerChain(
+        limit_2g = limit_2g,
+        limit_5g_1 = limit_5g_1,
+        limit_5g_3 = limit_5g_3,
+        limit_5g_4 = limit_5g_4,
+    )
+
+def _create_rtw89_geo_offsets(offset_2g, offset_5g):
+    """Builds a GeoOffsets from rtw89 drivers.
+
+    Args:
+        offset_2g: Value to be added to the 2.4GHz WiFi band. (0.25 dBm) Required.
+        offset_5g: Value to be added to all 5GHz WiFi bands. (0.25 dBm) Required.
+    """
+    return wf_pb.WifiConfig.Rtw89Config.GeoOffsets(
+        offset_2g = offset_2g,
+        offset_5g = offset_5g,
+    )
+
+def _create_rtw89(
+        non_tablet_mode_transmit_power_chain,
+        tablet_mode_transmit_power_chain,
+        fcc_offsets = None,
+        eu_offsets = None,
+        other_offsets = None):
+    """Builds a WifiConfig proto for use with rtw89 drivers.
+
+    Args:
+        non_tablet_mode_transmit_power_chain: non-tablet mode power chain. Required.
+        tablet_mode_transmit_power_chain: tablet mode power chain. Required.
+        fcc_offsets: Offsets used for regulatory domains that follow FCC guidelines
+        eu_offsets: Offsets used for regulatory domains that follow ESTI guidelines
+        other_offsets: Offsets for regulatory domains that don't follow FCC or ETSI guidelines
+    """
+    return wf_pb.WifiConfig(
+        rtw89_config = wf_pb.WifiConfig.Rtw89Config(
+            non_tablet_mode_power_table = non_tablet_mode_transmit_power_chain,
+            tablet_mode_power_table = tablet_mode_transmit_power_chain,
+            offset_fcc = fcc_offsets,
+            offset_eu = eu_offsets,
+            offset_other = other_offsets,
+        ),
+    )
+
 def _create_intel_antenna_gain(
         ant_gain_2g,
         ant_gain_5g_1,
@@ -770,6 +827,9 @@ sw_config = struct(
     create_rtw88 = _create_rtw88,
     create_rtw88_geo_offsets = _create_rtw88_geo_offsets,
     create_rtw88_power_chain = _create_rtw88_power_chain,
+    create_rtw89 = _create_rtw89,
+    create_rtw89_geo_offsets = _create_rtw89_geo_offsets,
+    create_rtw89_power_chain = _create_rtw89_power_chain,
     create_ui = _create_ui,
     fw_type = _FW_TYPE,
     ui_requisition = _UI_REQUISITION,

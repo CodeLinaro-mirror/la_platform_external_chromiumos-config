@@ -1638,6 +1638,65 @@ sw_config.create_rtw88_power_chain(
 * **limit_5g_4**: 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm). Required.
 
 
+### sw_config.create_rtw89 {#sw_config.create_rtw89}
+Builds a WifiConfig proto for use with rtw89 drivers.
+
+```python
+sw_config.create_rtw89(
+    # Required arguments.
+    non_tablet_mode_transmit_power_chain,
+    tablet_mode_transmit_power_chain,
+
+    # Optional arguments.
+    fcc_offsets = None,
+    eu_offsets = None,
+    other_offsets = None,
+)
+```
+
+#### Arguments {#sw_config.create_rtw89-args}
+
+* **non_tablet_mode_transmit_power_chain**: non-tablet mode power chain. Required.
+* **tablet_mode_transmit_power_chain**: tablet mode power chain. Required.
+* **fcc_offsets**: Offsets used for regulatory domains that follow FCC guidelines
+* **eu_offsets**: Offsets used for regulatory domains that follow ESTI guidelines
+* **other_offsets**: Offsets for regulatory domains that don't follow FCC or ETSI guidelines
+
+
+### sw_config.create_rtw89_geo_offsets {#sw_config.create_rtw89_geo_offsets}
+Builds a GeoOffsets from rtw89 drivers.
+
+```python
+sw_config.create_rtw89_geo_offsets(offset_2g, offset_5g)
+```
+
+#### Arguments {#sw_config.create_rtw89_geo_offsets-args}
+
+* **offset_2g**: Value to be added to the 2.4GHz WiFi band. (0.25 dBm) Required.
+* **offset_5g**: Value to be added to all 5GHz WiFi bands. (0.25 dBm) Required.
+
+
+### sw_config.create_rtw89_power_chain {#sw_config.create_rtw89_power_chain}
+Builds a TransmitPowerChain for rtw89 drivers.
+
+```python
+sw_config.create_rtw89_power_chain(
+    # Required arguments.
+    limit_2g,
+    limit_5g_1,
+    limit_5g_3,
+    limit_5g_4,
+)
+```
+
+#### Arguments {#sw_config.create_rtw89_power_chain-args}
+
+* **limit_2g**: 2G band power limit: All 2G band channels. (0.25 dBm). Required.
+* **limit_5g_1**: 5G band 1 power limit: 5.15G-5.35G channels. (0.25 dBm). Required.
+* **limit_5g_3**: 5G band 3 power limit: 5.47G-5.725G channels. (0.25 dBm). Required.
+* **limit_5g_4**: 5G band 4 power limit: 5.725G-5.95G channels. (0.25 dBm). Required.
+
+
 ### sw_config.create_ui {#sw_config.create_ui}
 
 

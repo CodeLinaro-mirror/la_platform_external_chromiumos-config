@@ -731,6 +731,32 @@ design.append_configs(
     ),
     firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
+    wifi = sc.create_rtw89(
+        non_tablet_mode_transmit_power_chain = sc.create_rtw89_power_chain(
+            limit_2g = 1,
+            limit_5g_1 = 2,
+            limit_5g_3 = 3,
+            limit_5g_4 = 4,
+        ),
+        tablet_mode_transmit_power_chain = sc.create_rtw89_power_chain(
+            limit_2g = 5,
+            limit_5g_1 = 6,
+            limit_5g_3 = 7,
+            limit_5g_4 = 8,
+        ),
+        fcc_offsets = sc.create_rtw89_geo_offsets(
+            offset_2g = 9,
+            offset_5g = 10,
+        ),
+        eu_offsets = sc.create_rtw89_geo_offsets(
+            offset_2g = 11,
+            offset_5g = 12,
+        ),
+        other_offsets = sc.create_rtw89_geo_offsets(
+            offset_2g = 13,
+            offset_5g = 14,
+        ),
+    ),
 )
 
 _HW_CONFIGS_WL = []

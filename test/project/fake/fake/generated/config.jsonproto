@@ -6036,6 +6036,34 @@
       },
       "publicReplication": {
         "publicFields": "designConfigId,idScanConfig"
+      },
+      "wifiConfig": {
+        "rtw89Config": {
+          "nonTabletModePowerTable": {
+            "limit2g": 1,
+            "limit5g1": 2,
+            "limit5g3": 3,
+            "limit5g4": 4
+          },
+          "offsetEu": {
+            "offset2g": 11,
+            "offset5g": 12
+          },
+          "offsetFcc": {
+            "offset2g": 9,
+            "offset5g": 10
+          },
+          "offsetOther": {
+            "offset2g": 13,
+            "offset5g": 14
+          },
+          "tabletModePowerTable": {
+            "limit2g": 5,
+            "limit5g1": 6,
+            "limit5g3": 7,
+            "limit5g4": 8
+          }
+        }
       }
     },
     {
