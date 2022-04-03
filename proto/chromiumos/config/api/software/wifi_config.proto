@@ -9,8 +9,8 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 package chromiumos.config.api.software;
 
 // Sets limits on maximum WiFi transmit power for tablet and non-tablet
-// device configurations. This config must contain properties for ath10k wifi
-// driver or rtw88 wifi driver only.
+// device configurations. This config must contain properties for ath10k, rtw88,
+// rtw89, Intel, or mtk wifi driver only.
 message WifiConfig {
   message Ath10kConfig {
     // WiFi power chain for use with QCA ath10k drivers. Limits in units
@@ -268,10 +268,53 @@ message WifiConfig {
     GeoTransmitPowerChain other_power_table = 5;
   }
 
+  message Rtw89Config {
+    // WiFi power chain for use with Realtek rtw89 drivers. Limits in units
+    // of 0.25 dBm. 5g band 2 (channels 5.35G-5.47G) power limit is not
+    // supported.
+    message TransmitPowerChain {
+      // 2G band power limit: All 2G band channels. (0.25 dBm)
+      uint32 limit_2g = 1;
+      // 5G band 1 power limit: 5.15G-5.35G channels. (0.25 dBm)
+      uint32 limit_5g_1 = 2;
+      // 5G band 3 power limit: 5.47G-5.725G channels. (0.25 dBm)
+      uint32 limit_5g_3 = 3;
+      // 5G band 4 power limit: 5.725G-5.95G channels. (0.25 dBm)
+      uint32 limit_5g_4 = 4;
+    }
+
+    // TransmitPowerChain settings when operating in tablet and non-tablet
+    // modes.
+    TransmitPowerChain tablet_mode_power_table = 1;
+    TransmitPowerChain non_tablet_mode_power_table = 2;
+
+    // Offsets which are applied to WiFi power limits depending on the current
+    // regulatory domain. Offsets in units of 0.25 dBm. The sum of a geo offset
+    // and any power limit to which it applies cannot exceed 255. When the
+    // current regulatory domain is unknown or has yet to be determined, the
+    // base transmit power limits are used without any geo offsets applied.
+    // 'geo-offsets-fcc' is used for regulatory domains which follow FCC
+    // guidelines, 'geo-offsets-eu' is used for regulatory domains which follow
+    // ETSI guidelines, and 'geo-offsets-rest-of-world' is used for regulatory
+    // domains which don't follow FCC or ETSI guidelines.
+    message GeoOffsets {
+      // Value to be added to the 2.4GHz WiFi band. (0.25 dBm)
+      uint32 offset_2g = 1;
+      // Value to be added to all 5GHz WiFi bands. (0.25 dBm)
+      uint32 offset_5g = 2;
+    }
+
+    // GeoOffsets in different regulatory domains.
+    GeoOffsets offset_fcc = 3;
+    GeoOffsets offset_eu = 4;
+    GeoOffsets offset_other = 5;
+  }
+
   oneof wifi_config {
     Ath10kConfig ath10k_config = 1;
     Rtw88Config rtw88_config = 2;
     IntelConfig intel_config = 3;
     MtkConfig mtk_config = 4;
+    Rtw89Config rtw89_config = 5;
   }
 }

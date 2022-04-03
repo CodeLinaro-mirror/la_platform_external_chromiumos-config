@@ -7019,6 +7019,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.WifiConfig.MtkConfig"
+            },
+            {
+              "jsonName": "rtw89Config",
+              "label": "LABEL_OPTIONAL",
+              "name": "rtw89_config",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.WifiConfig.Rtw89Config"
             }
           ],
           "name": "WifiConfig",
@@ -7905,6 +7914,105 @@
                     }
                   ],
                   "name": "GeoTransmitPowerChain"
+                }
+              ]
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "tabletModePowerTable",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "tablet_mode_power_table",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.Rtw89Config.TransmitPowerChain"
+                },
+                {
+                  "jsonName": "nonTabletModePowerTable",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "non_tablet_mode_power_table",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.Rtw89Config.TransmitPowerChain"
+                },
+                {
+                  "jsonName": "offsetFcc",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "offset_fcc",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.Rtw89Config.GeoOffsets"
+                },
+                {
+                  "jsonName": "offsetEu",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "offset_eu",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.Rtw89Config.GeoOffsets"
+                },
+                {
+                  "jsonName": "offsetOther",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "offset_other",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.WifiConfig.Rtw89Config.GeoOffsets"
+                }
+              ],
+              "name": "Rtw89Config",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "limit2g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_2g",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit5g1",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_5g_1",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit5g3",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_5g_3",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit5g4",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_5g_4",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "TransmitPowerChain"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "offset2g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "offset_2g",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "offset5g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "offset_5g",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "GeoOffsets"
                 }
               ]
             }
