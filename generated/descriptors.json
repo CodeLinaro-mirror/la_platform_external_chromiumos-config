@@ -15220,6 +15220,8 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/duration.proto",
+        "google/protobuf/timestamp.proto",
         "chromiumos/storage_path.proto",
         "chromiumos/test/api/test_case.proto",
         "chromiumos/test/api/test_harness.proto"
@@ -15311,6 +15313,22 @@
               "number": 10,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestHarness"
+            },
+            {
+              "jsonName": "startTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "start_time",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "duration",
+              "label": "LABEL_OPTIONAL",
+              "name": "duration",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
             }
           ],
           "name": "TestCaseResult",
