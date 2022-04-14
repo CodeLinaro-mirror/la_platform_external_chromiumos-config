@@ -63,7 +63,14 @@ def get_ufs_project(env):
 
 
 def generate_config_bundle_id(bundle):
-  """Generate ConfigBundleEntity id as ${program_id}-${design_id}."""
+  """Generate ConfigBundleEntity id as ${program_id}-${design_id}.
+
+  It is possible the ConfigBundle has an empty design_list (e.g. because it is
+  from a program repo). In this case, return None.
+  """
+  if not bundle.design_list:
+    return None
+
   return (bundle.design_list[0].program_id.value + '-' +
           bundle.design_list[0].id.value).lower()
 
@@ -109,6 +116,11 @@ def update_config(config, client, flat=False):
   else:
     kind = CONFIG_BUNDLE_KIND
     eid = generate_config_bundle_id(config)
+
+    if not eid:
+      logging.info('no eid for config %s, skipping', config)
+      return
+
   logging.info('update_config: handling %s', eid)
 
   key = client.key(kind, eid)
