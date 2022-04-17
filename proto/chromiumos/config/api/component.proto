@@ -311,6 +311,7 @@ message Component {
       EMMC = 1;
       NVME = 2;
       SATA = 3;
+      UFS = 4;
     }
 
     string emmc5_fw_ver = 1;

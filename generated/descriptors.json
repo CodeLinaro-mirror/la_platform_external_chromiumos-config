@@ -1852,6 +1852,10 @@
                     {
                       "name": "SATA",
                       "number": 3
+                    },
+                    {
+                      "name": "UFS",
+                      "number": 4
                     }
                   ]
                 }
