@@ -64,6 +64,7 @@ _FP_LOC = struct(
 )
 
 _STORAGE = struct(
+    UNKNOWN = comp_pb.Component.Storage.STORAGE_TYPE_UNKNOWN,
     EMMC = comp_pb.Component.Storage.EMMC,
     NVME = comp_pb.Component.Storage.NVME,
     SATA = comp_pb.Component.Storage.SATA,
