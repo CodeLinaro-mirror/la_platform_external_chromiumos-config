@@ -756,6 +756,26 @@ def _build_health(config: Config):
   return result
 
 
+def _build_nnpalm(config: Config):
+  """Builds the nnpalm configuration.
+
+  Args:
+    config: Config namedtuple
+
+  Returns:
+    nnpalm configuration.
+  """
+  if not config.sw_config.nnpalm_config:
+    return None
+
+  nnpalm_config = config.sw_config.nnpalm_config
+  result = {}
+  _upsert(nnpalm_config.model, result, 'model')
+  _upsert(nnpalm_config.radius_polynomial, result, 'radius-polynomial')
+  _upsert(nnpalm_config.touch_compatible, result, 'touch-compatible')
+  return result
+
+
 def _build_branding(config: Config):
   """Builds the branding configuration.
 

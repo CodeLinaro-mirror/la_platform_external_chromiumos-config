@@ -75,6 +75,7 @@ def _append_configs(
         wifi = None,
         camera = None,
         health = None,
+        nnpalm = None,
         ui = None,
         usb = None,
         device_tree_compatible_match = None,
@@ -112,6 +113,7 @@ def _append_configs(
         wifi: A WifiConfig to be used in the SoftwareConfig.
         camera: A CameraConfig to be used in the SoftwareConfig.
         health: A HealthConfig to be used in the SoftwareConfig.
+        nnpalm: A NnpalmConfig to be used in the SoftwareConfig.
         ui: A UiConfig to be used in the SoftwareConfig.
         usb: UsbConfig to be used in the SoftwareConfig.
         device_tree_compatible_match: For ARM platform, a str used for
@@ -168,6 +170,7 @@ def _append_configs(
     sw_config.wifi_config = wifi
     sw_config.camera_config = camera
     sw_config.health_config = health
+    sw_config.nnpalm_config = nnpalm
     sw_config.ui_config = ui
     sw_config.usb_config = usb
     sw_config.public_replication = public_replication.create(

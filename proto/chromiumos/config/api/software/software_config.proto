@@ -14,6 +14,7 @@ import "chromiumos/config/api/software/audio_config.proto";
 import "chromiumos/config/api/software/bluetooth_config.proto";
 import "chromiumos/config/api/software/camera_config.proto";
 import "chromiumos/config/api/software/health_config.proto";
+import "chromiumos/config/api/software/nnpalm_config.proto";
 import "chromiumos/config/api/software/power_config.proto";
 import "chromiumos/config/api/software/resource_config.proto";
 import "chromiumos/config/api/software/wifi_config.proto";
@@ -33,7 +34,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 // SoftwareConfig payloads can be shared across different
 // hardware-design-configs, if the software payloads are the same.
 //
-// NEXT ID: 21
+// NEXT ID: 22
 message SoftwareConfig {
   // Configures fields of AudioConfig that are made public.
   chromiumos.config.public_replication.PublicReplication public_replication =
@@ -74,6 +75,8 @@ message SoftwareConfig {
   UiConfig ui_config = 17;
 
   UsbConfig usb_config = 20;
+
+  NnpalmConfig nnpalm_config = 21;
 
   reserved 1, 2, 6;
 }

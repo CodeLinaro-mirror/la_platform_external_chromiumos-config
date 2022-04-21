@@ -6845,6 +6845,46 @@
         {
           "field": [
             {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "radiusPolynomial",
+              "label": "LABEL_OPTIONAL",
+              "name": "radius_polynomial",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "touchCompatible",
+              "label": "LABEL_OPTIONAL",
+              "name": "touch_compatible",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "NnpalmConfig"
+        }
+      ],
+      "name": "chromiumos/config/api/software/nnpalm_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "preferences",
               "label": "LABEL_REPEATED",
               "name": "preferences",
@@ -8147,6 +8187,7 @@
         "chromiumos/config/api/software/bluetooth_config.proto",
         "chromiumos/config/api/software/camera_config.proto",
         "chromiumos/config/api/software/health_config.proto",
+        "chromiumos/config/api/software/nnpalm_config.proto",
         "chromiumos/config/api/software/power_config.proto",
         "chromiumos/config/api/software/resource_config.proto",
         "chromiumos/config/api/software/wifi_config.proto",
@@ -8292,6 +8333,14 @@
               "number": 20,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.UsbConfig"
+            },
+            {
+              "jsonName": "nnpalmConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "nnpalm_config",
+              "number": 21,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.NnpalmConfig"
             }
           ],
           "name": "SoftwareConfig",
