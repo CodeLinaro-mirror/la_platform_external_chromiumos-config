@@ -14,9 +14,9 @@ find_checkout_root() {
 }
 
 # Setup a project.
-mkdir /tmp/setup_project 2>/dev/null
+mkdir -p /tmp/setup_project || exit $?
 cipd install -force -root /tmp/setup_project \
-  chromiumos/infra/setup_project/\$\{platform\} prod
+  chromiumos/infra/setup_project/\$\{platform\} prod || exit $?
 echo "Done installing CIPD package."
 
 # If --checkout is not supplied, assume that this script is being run from
