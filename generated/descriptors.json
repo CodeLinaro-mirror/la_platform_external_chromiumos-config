@@ -18292,6 +18292,50 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/timestamp.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "serial",
+              "label": "LABEL_OPTIONAL",
+              "name": "serial",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "manufacturer",
+              "label": "LABEL_OPTIONAL",
+              "name": "manufacturer",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "firstSeenTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "first_seen_time",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            }
+          ],
+          "name": "UsbDrive"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/usb_drive.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
