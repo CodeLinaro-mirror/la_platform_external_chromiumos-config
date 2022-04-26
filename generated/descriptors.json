@@ -11210,6 +11210,13 @@
               "name": "prevent_reboot",
               "number": 7,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "updateFirmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "update_firmware",
+              "number": 8,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "ProvisionDutRequest",
@@ -11277,6 +11284,18 @@
                 {
                   "name": "REASON_DUT_UNREACHABLE_POST_PROVISION",
                   "number": 5
+                },
+                {
+                  "name": "REASON_UPDATE_FIRMWARE_FAILED",
+                  "number": 6
+                },
+                {
+                  "name": "REASON_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
+                  "number": 7
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
+                  "number": 8
                 }
               ]
             }
