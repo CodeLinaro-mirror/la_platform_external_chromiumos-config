@@ -49,6 +49,10 @@
                 "source": "fake_ref_design/audio/cras-config/board.ini"
               },
               {
+                "destination": "/etc/cras/fake_ref_design/apm.ini",
+                "source": "fake_ref_design/audio/cras-config/apm.ini"
+              },
+              {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
@@ -267,6 +271,10 @@
               {
                 "destination": "/etc/cras/fake_ref_design/board.ini",
                 "source": "fake_ref_design/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/cras/fake_ref_design/apm.ini",
+                "source": "fake_ref_design/audio/cras-config/apm.ini"
               },
               {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
@@ -676,7 +684,7 @@
               },
               {
                 "destination": "/etc/sound_card_init/project_b.MAX98373.yaml",
-                "source": "project_b/audio/sound_card_init/project_b.MAX98373.yaml"
+                "source": "project_b/audio/sound-card-init-config/project_b.MAX98373.yaml"
               },
               {
                 "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
@@ -693,6 +701,10 @@
               {
                 "destination": "/etc/cras/project_b/board.ini",
                 "source": "project_b/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/cras/project_b/apm.ini",
+                "source": "project_b/audio/cras-config/apm.ini"
               },
               {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
@@ -915,6 +927,10 @@
               {
                 "destination": "/etc/cras/project_c/board.ini",
                 "source": "project_c/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/cras/project_c/apm.ini",
+                "source": "project_c/audio/cras-config/apm.ini"
               },
               {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
@@ -1818,6 +1834,10 @@
                 "source": "project_rebrand/audio/cras-config/board.ini"
               },
               {
+                "destination": "/etc/cras/project_rebrand/apm.ini",
+                "source": "project_rebrand/audio/cras-config/apm.ini"
+              },
+              {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
@@ -1984,7 +2004,7 @@
               },
               {
                 "destination": "/etc/sound_card_init/project_box.MAX98373.yaml",
-                "source": "project_box/audio/sound_card_init/project_box.MAX98373.yaml"
+                "source": "project_box/audio/sound-card-init-config/project_box.MAX98373.yaml"
               },
               {
                 "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
@@ -2001,6 +2021,10 @@
               {
                 "destination": "/etc/cras/project_box/board.ini",
                 "source": "common/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/cras/project_box/apm.ini",
+                "source": "common/audio/cras-config/apm.ini"
               },
               {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
@@ -2171,6 +2195,10 @@
                 "source": "project_box/audio/cras-config/board.ini"
               },
               {
+                "destination": "/etc/cras/project_box/apm.ini",
+                "source": "project_box/audio/cras-config/apm.ini"
+              },
+              {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
@@ -2319,7 +2347,7 @@
               },
               {
                 "destination": "/etc/sound_card_init/project_box.MAX98373.yaml",
-                "source": "project_box/audio/sound_card_init/project_box.MAX98373.yaml"
+                "source": "project_box/audio/sound-card-init-config/project_box.MAX98373.yaml"
               },
               {
                 "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
@@ -2336,6 +2364,10 @@
               {
                 "destination": "/etc/cras/project_box/board.ini",
                 "source": "project_box/audio/cras-config/board.ini"
+              },
+              {
+                "destination": "/etc/cras/project_box/apm.ini",
+                "source": "project_box/audio/cras-config/apm.ini"
               },
               {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
