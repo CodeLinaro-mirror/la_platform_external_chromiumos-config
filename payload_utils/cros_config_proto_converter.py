@@ -931,6 +931,29 @@ def _build_fw_signing(config, whitelabel):
   return {}
 
 
+def _build_usb(config: Config):
+  """Builds the usb configuration.
+
+  Args:
+    config: Config namedtuple
+
+  Returns:
+    usb configuration.
+  """
+  if not config.sw_config.usb_config:
+    return None
+
+  usb_config = config.sw_config.usb_config
+  if not usb_config.HasField('typecd'):
+    return None
+
+  typecd = usb_config.typecd
+  result = {}
+
+  _upsert(typecd.dp_only, result, 'mode-entry-dp-only')
+  return result
+
+
 def _file(source, destination):
   return {'destination': str(destination), 'source': str(source)}
 
@@ -1478,6 +1501,7 @@ def _transform_build_config(config, config_files, whitelabel):
       _build_fingerprint(config.hw_design_config.hardware_topology), result,
       'fingerprint')
   _upsert(_build_ui(config), result, 'ui')
+  _upsert(_build_usb(config), result, 'typecd')
   _upsert(_build_power(config), result, 'power')
   _upsert(_build_resource(config), result, 'resource')
   if config_files.camera_map:

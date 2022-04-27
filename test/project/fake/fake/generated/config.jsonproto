@@ -5453,6 +5453,11 @@
       "uiConfig": {
         "extraWebAppsDir": "apps1"
       },
+      "usbConfig": {
+        "typecd": {
+          "dpOnly": true
+        }
+      },
       "wifiConfig": {
         "ath10kConfig": {
           "nonTabletModePowerTable": {

@@ -325,6 +325,7 @@ design.append_configs(
         ),
     ),
     ui = sc.create_ui(extra_web_apps_dir = "apps1"),
+    usb = sc.create_usb(dp_only = True),
 )
 
 design.append_configs(

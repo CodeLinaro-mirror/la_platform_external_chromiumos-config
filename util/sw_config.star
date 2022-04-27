@@ -22,6 +22,10 @@ load(
     ui_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/usb_config.proto",
+    usb_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/build/api/firmware_config.proto",
     fw_pb = "chromiumos.build.api",
 )
@@ -792,6 +796,14 @@ def _create_ui(
         requisition = requisition,
     )
 
+def _create_usb(
+        dp_only = None):
+    return usb_pb.UsbConfig(
+        typecd = usb_pb.UsbConfig.TypeCD(
+            dp_only = dp_only or False,
+        ),
+    )
+
 def _make_resolution(width, height):
     return cam_pb.Resolution(width = width, height = height)
 
@@ -831,6 +843,7 @@ sw_config = struct(
     create_rtw89_geo_offsets = _create_rtw89_geo_offsets,
     create_rtw89_power_chain = _create_rtw89_power_chain,
     create_ui = _create_ui,
+    create_usb = _create_usb,
     fw_type = _FW_TYPE,
     ui_requisition = _UI_REQUISITION,
     make_resolution = _make_resolution,

@@ -8089,6 +8089,47 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "typecd",
+              "label": "LABEL_OPTIONAL",
+              "name": "typecd",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.UsbConfig.TypeCD"
+            }
+          ],
+          "name": "UsbConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "dpOnly",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dp_only",
+                  "number": 1,
+                  "type": "TYPE_BOOL"
+                }
+              ],
+              "name": "TypeCD"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/config/api/software/usb_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/build/api/factory.proto",
         "chromiumos/build/api/firmware_config.proto",
@@ -8102,6 +8143,7 @@
         "chromiumos/config/api/software/resource_config.proto",
         "chromiumos/config/api/software/wifi_config.proto",
         "chromiumos/config/api/software/ui_config.proto",
+        "chromiumos/config/api/software/usb_config.proto",
         "chromiumos/config/public_replication/public_replication.proto"
       ],
       "messageType": [
@@ -8234,6 +8276,14 @@
               "number": 17,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.UiConfig"
+            },
+            {
+              "jsonName": "usbConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_config",
+              "number": 20,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.UsbConfig"
             }
           ],
           "name": "SoftwareConfig",

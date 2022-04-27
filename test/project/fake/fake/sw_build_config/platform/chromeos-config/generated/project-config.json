@@ -182,6 +182,9 @@
             }
           ]
         },
+        "typecd": {
+          "mode-entry-dp-only": true
+        },
         "ui": {
           "extra-ash-flags": [
             "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
