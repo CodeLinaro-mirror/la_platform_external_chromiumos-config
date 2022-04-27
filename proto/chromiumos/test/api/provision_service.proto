@@ -96,6 +96,12 @@ message InstallFailure {
     REASON_PROVISIONING_FAILED = 4;
     // status code: ABORTED
     REASON_DUT_UNREACHABLE_POST_PROVISION = 5;
+    // status code: ABORTED
+    REASON_UPDATE_FIRMWARE_FAILED = 6;
+    // status code: ABORTED
+    REASON_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE = 7;
+    // status code: ABORTED
+    REASON_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE = 8;
   }
 
   Reason reason = 1;
@@ -123,6 +129,12 @@ message InstallCrosRequest {
 
   // Provides a possible tar file to overwrite current install files
   StoragePath overwrite_payload = 5;
+
+  // update_firmware will update OS bundled firmware(RW only) during the provision.
+  // Please note this firmware update only update RW firmware that built in the
+  // target_build OS image and it is different from firmware provision which
+  // download and update a separate firmware image based on request.
+  bool update_firmware = 6;
 }
 
 message InstallCrosResponse {
