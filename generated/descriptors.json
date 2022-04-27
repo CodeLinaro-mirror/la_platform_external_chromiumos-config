@@ -3283,6 +3283,10 @@
                 {
                   "name": "POWER_SUPPLY",
                   "number": 32
+                },
+                {
+                  "name": "RECOVERY_INPUT",
+                  "number": 33
                 }
               ]
             }
@@ -4510,6 +4514,27 @@
                       "number": 7
                     }
                   ]
+                },
+                {
+                  "name": "RecoveryInputType",
+                  "value": [
+                    {
+                      "name": "RECOVERY_INPUT_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "KEYBOARD",
+                      "number": 1
+                    },
+                    {
+                      "name": "POWER_BUTTON",
+                      "number": 2
+                    },
+                    {
+                      "name": "RECOVERY_BUTTON",
+                      "number": 3
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -4520,6 +4545,14 @@
                   "number": 1,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.FormFactor.FormFactorType"
+                },
+                {
+                  "jsonName": "recoveryInput",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "recovery_input",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.FormFactor.RecoveryInputType"
                 }
               ],
               "name": "FormFactor"

@@ -126,6 +126,13 @@ _AUDIO_CONFIG_STRUCTURE = struct(
     COMMON = topo_pb.HardwareFeatures.Audio.COMMON,
 )
 
+_RECOVERY_INPUT = struct(
+    UNKNOWN = topo_pb.HardwareFeatures.FormFactor.RECOVERY_INPUT_UNKNOWN,
+    KEYBOARD = topo_pb.HardwareFeatures.FormFactor.KEYBOARD,
+    POWER_BUTTON = topo_pb.HardwareFeatures.FormFactor.POWER_BUTTON,
+    RECOVERY_BUTTON = topo_pb.HardwareFeatures.FormFactor.RECOVERY_BUTTON,
+)
+
 # Starlark doesn't support converting enums to their names. Add helper fns. to
 # do so.
 def _button_region_to_str(region):
@@ -270,11 +277,12 @@ def _create_als_step(
         step.battery_backlight_percent = step.ac_backlight_percent
     return step
 
-def _create_form_factor(form_factor, fw_configs = [], id = None, description = None):
+def _create_form_factor(form_factor, recovery_input = None, fw_configs = [], id = None, description = None):
     """Builds a Topology proto for a form factor.
 
     Args:
         form_factor: A FormFactorType enum. Required.
+        recovery_input: A RecoveryInputType enum. Will be auto-generated if not specified.
         fw_configs: A list of FirmwareConfiguration protos for the form factor.
         id: A string identifier for the Topology. If not passed, a default is
             provided based on form_factor.
@@ -301,9 +309,30 @@ def _create_form_factor(form_factor, fw_configs = [], id = None, description = N
             hw_feat.form_factor.CHROMESLATE: "Tablet chrome device.",
         }[form_factor]
 
+    if not recovery_input:
+        # TODO(b/232022558) remove this workaround and generate recovery-input for
+        # all form factors
+        generate_recovery_input_for = [
+            hw_feat.form_factor.CLAMSHELL,
+            hw_feat.form_factor.CONVERTIBLE,
+            hw_feat.form_factor.DETACHABLE,
+            hw_feat.form_factor.CHROMESLATE,
+        ]
+        if form_factor in generate_recovery_input_for:
+            recovery_input = {
+                hw_feat.form_factor.CLAMSHELL: hw_feat.recovery_input.KEYBOARD,
+                hw_feat.form_factor.CONVERTIBLE: hw_feat.recovery_input.KEYBOARD,
+                hw_feat.form_factor.DETACHABLE: hw_feat.recovery_input.POWER_BUTTON,
+                hw_feat.form_factor.CHROMEBASE: hw_feat.recovery_input.RECOVERY_BUTTON,
+                hw_feat.form_factor.CHROMEBOX: hw_feat.recovery_input.RECOVERY_BUTTON,
+                hw_feat.form_factor.CHROMEBIT: hw_feat.recovery_input.RECOVERY_BUTTON,
+                hw_feat.form_factor.CHROMESLATE: hw_feat.recovery_input.POWER_BUTTON,
+            }[form_factor]
+
     hw_features = topo_pb.HardwareFeatures()
 
     hw_features.form_factor.form_factor = form_factor
+    hw_features.form_factor.recovery_input = recovery_input
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -1571,6 +1600,7 @@ hw_topo = struct(
     present = _PRESENT,
     port_position = _PORT_POSITION,
     audio_config_structure = _AUDIO_CONFIG_STRUCTURE,
+    recovery_input = _RECOVERY_INPUT,
 
     # embedded controller exports
     ec_type = _EC_TYPE,

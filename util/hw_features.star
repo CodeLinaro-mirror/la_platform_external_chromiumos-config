@@ -72,6 +72,12 @@ _FORM_FACTOR = struct(
     CHROMESLATE = _HW_FEAT.FormFactor.CHROMESLATE,
 )
 
+_RECOVERY_INPUT = struct(
+    KEYBOARD = _HW_FEAT.FormFactor.KEYBOARD,
+    POWER_BUTTON = _HW_FEAT.FormFactor.POWER_BUTTON,
+    RECOVERY_BUTTON = _HW_FEAT.FormFactor.RECOVERY_BUTTON,
+)
+
 _EC = struct(
     CHROME = _HW_FEAT.EmbeddedController.EC_CHROME,
     WILCO = _HW_FEAT.EmbeddedController.EC_WILCO,
@@ -107,11 +113,12 @@ def _create_fingerprint(location, board = "", ro_version = ""):
         ),
     )
 
-def _create_form_factor(form_factor):
+def _create_form_factor(form_factor, recovery_input = None):
     """Specify the form factor as a HardwareFeature."""
     return _HW_FEAT(
         form_factor = _HW_FEAT.FormFactor(
             form_factor = form_factor,
+            recovery_input = recovery_input,
         ),
     )
 
@@ -314,6 +321,7 @@ hw_feat = struct(
     camera_features = _camera_features,
     embedded_controller = _EC,
     form_factor = _FORM_FACTOR,
+    recovery_input = _RECOVERY_INPUT,
     keyboard_type = _KB_TYPE,
     present = _PRESENT,
     storage = _STORAGE,

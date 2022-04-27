@@ -229,7 +229,8 @@
               "location": 2
             },
             "formFactor": {
-              "formFactor": 1
+              "formFactor": 1,
+              "recoveryInput": 1
             },
             "fwConfig": {
               "mask": 131071,
@@ -509,7 +510,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 1
+                  "formFactor": 1,
+                  "recoveryInput": 1
                 }
               },
               "id": "CLAMSHELL",
@@ -805,7 +807,8 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 1
+              "formFactor": 1,
+              "recoveryInput": 2
             },
             "fwConfig": {
               "mask": 131071,
@@ -1054,7 +1057,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 1
+                  "formFactor": 1,
+                  "recoveryInput": 2
                 }
               },
               "id": "CLAMSHELL",
@@ -1346,7 +1350,8 @@
               "location": 2
             },
             "formFactor": {
-              "formFactor": 2
+              "formFactor": 2,
+              "recoveryInput": 1
             },
             "fwConfig": {
               "mask": 131071,
@@ -1602,7 +1607,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 2
+                  "formFactor": 2,
+                  "recoveryInput": 1
                 }
               },
               "id": "CONVERTIBLE",
@@ -1880,7 +1886,8 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 3
+              "formFactor": 3,
+              "recoveryInput": 2
             },
             "fwConfig": {
               "mask": 69631,
@@ -2142,7 +2149,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 3
+                  "formFactor": 3,
+                  "recoveryInput": 2
                 }
               },
               "id": "DETACHABLE",
@@ -2422,7 +2430,8 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 7
+              "formFactor": 7,
+              "recoveryInput": 2
             },
             "fwConfig": {
               "mask": 69631,
@@ -2691,7 +2700,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 7
+                  "formFactor": 7,
+                  "recoveryInput": 2
                 }
               },
               "id": "CHROMESLATE",
@@ -2985,7 +2995,8 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 1
+              "formFactor": 1,
+              "recoveryInput": 1
             },
             "fwConfig": {
               "mask": 131071,
@@ -3405,7 +3416,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 1
+                  "formFactor": 1,
+                  "recoveryInput": 1
                 }
               },
               "id": "CLAMSHELL",
@@ -3874,7 +3886,8 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 1
+              "formFactor": 1,
+              "recoveryInput": 1
             },
             "fwConfig": {
               "mask": 131071,
@@ -4110,7 +4123,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 1
+                  "formFactor": 1,
+                  "recoveryInput": 1
                 }
               },
               "id": "CLAMSHELL",

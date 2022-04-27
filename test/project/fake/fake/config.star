@@ -36,6 +36,7 @@ _DESIGN_ID_REBRAND = design.create_design_id("PROJECT_REBRAND")
 _DESIGN_ID_BOX = design.create_design_id("PROJECT_BOX")
 
 _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
+_FORM_FACTOR_CLAMSHELL_POWER_RECOV = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL, hw_topo.recovery_input.POWER_BUTTON)
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
 _FORM_FACTOR_CHROMEBOX = hw_topo.create_form_factor(hw_topo.ff.CHROMEBOX)
 _FORM_FACTOR_CHROMEBASE = hw_topo.create_form_factor(hw_topo.ff.CHROMEBASE)
@@ -571,6 +572,7 @@ design.append_configs(
     design_id = _DESIGN_ID,
     config_id = 0,
     hardware_topology = create_hardware_topology(
+        form_factor = _FORM_FACTOR_CLAMSHELL_POWER_RECOV,
         cellular_board = _LTE_BOARD_WITH_MODEL,
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
