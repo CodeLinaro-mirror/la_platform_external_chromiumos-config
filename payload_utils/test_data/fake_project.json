@@ -760,19 +760,19 @@
         },
         "audio": {
           "main": {
-            "cras-config-dir": "project_c",
+            "cras-config-dir": "project_b",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.project_c/HiFi.conf",
-                "source": "project_c/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_c/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.project_b/HiFi.conf",
+                "source": "project_b/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_b/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.project_c/fakeaudiocard.alc5682i.2uf.project_c.conf",
-                "source": "project_c/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_c/fakeaudiocard.alc5682i.2uf.project_c.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5682i.2uf.project_b/fakeaudiocard.alc5682i.2uf.project_b.conf",
+                "source": "project_b/audio/ucm-config/fakeaudiocard.alc5682i.2uf.project_b/fakeaudiocard.alc5682i.2uf.project_b.conf"
               },
               {
-                "destination": "/etc/cras/project_c/fakeaudiocard.card_settings",
-                "source": "project_c/audio/cras-config/fakeaudiocard.card_settings"
+                "destination": "/etc/cras/project_b/fakeaudiocard.card_settings",
+                "source": "project_b/audio/cras-config/fakeaudiocard.card_settings"
               },
               {
                 "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
@@ -783,23 +783,23 @@
                 "source": "common/audio/ucm-config/HDA ATI HDMI/HDA ATI HDMI.conf"
               },
               {
-                "destination": "/etc/cras/project_c/dsp.ini",
-                "source": "project_c/audio/cras-config/dsp.ini"
+                "destination": "/etc/cras/project_b/dsp.ini",
+                "source": "project_b/audio/cras-config/dsp.ini"
               },
               {
-                "destination": "/etc/cras/project_c/board.ini",
-                "source": "project_c/audio/cras-config/board.ini"
+                "destination": "/etc/cras/project_b/board.ini",
+                "source": "project_b/audio/cras-config/board.ini"
               },
               {
-                "destination": "/etc/cras/project_c/apm.ini",
-                "source": "project_c/audio/cras-config/apm.ini"
+                "destination": "/etc/cras/project_b/apm.ini",
+                "source": "project_b/audio/cras-config/apm.ini"
               },
               {
                 "destination": "/etc/modprobe.d/alsa-fake_program.conf",
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
             ],
-            "ucm-suffix": "alc5682i.2uf.project_c"
+            "ucm-suffix": "alc5682i.2uf.project_b"
           }
         },
         "bluetooth": {

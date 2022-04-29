@@ -11,4 +11,8 @@ option go_package = "go.chromium.org/chromiumos/config/go/api";
 // Uniquely identifies a Chromium OS hardware design project.
 message DesignId {
   string value = 1;
+
+  // Design ID to use for software configs. May be used in place of value for
+  // software config (e.g. audio) purposes.
+  DesignId config_design_id_override = 2;
 }

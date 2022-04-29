@@ -680,6 +680,14 @@
               "name": "value",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "configDesignIdOverride",
+              "label": "LABEL_OPTIONAL",
+              "name": "config_design_id_override",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.DesignId"
             }
           ],
           "name": "DesignId"

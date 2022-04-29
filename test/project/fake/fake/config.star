@@ -30,7 +30,7 @@ _REF_DESIGN_NAME = "FAKE_REF_DESIGN"
 _DESIGN_ID = design.create_design_id(_REF_DESIGN_NAME)
 _DESIGN_ID_A = design.create_design_id("PROJECT_A")
 _DESIGN_ID_B = design.create_design_id("PROJECT_B")
-_DESIGN_ID_C = design.create_design_id("PROJECT_C")
+_DESIGN_ID_C = design.create_design_id("PROJECT_C", config_design_id_override = _DESIGN_ID_B)
 _DESIGN_ID_WL = design.create_design_id("PROJECT_WL")
 _DESIGN_ID_REBRAND = design.create_design_id("PROJECT_REBRAND")
 _DESIGN_ID_BOX = design.create_design_id("PROJECT_BOX")

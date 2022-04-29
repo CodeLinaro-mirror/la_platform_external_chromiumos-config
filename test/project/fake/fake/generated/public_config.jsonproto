@@ -62,6 +62,9 @@
         }
       ],
       "id": {
+        "configDesignIdOverride": {
+          "value": "PROJECT_B"
+        },
         "value": "PROJECT_C"
       },
       "name": "PROJECT_C",

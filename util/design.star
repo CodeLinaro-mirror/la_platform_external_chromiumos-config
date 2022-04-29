@@ -175,9 +175,9 @@ def _append_configs(
     )
     sw_configs.append(sw_config)
 
-def _create_design_id(name):
+def _create_design_id(name, config_design_id_override = None):
     """Builds a DesignId proto."""
-    return design_id_pb.DesignId(value = name)
+    return design_id_pb.DesignId(value = name, config_design_id_override = config_design_id_override)
 
 def _create_design(
         id,

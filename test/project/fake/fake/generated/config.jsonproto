@@ -2842,6 +2842,9 @@
         }
       ],
       "id": {
+        "configDesignIdOverride": {
+          "value": "PROJECT_B"
+        },
         "value": "PROJECT_C"
       },
       "name": "PROJECT_C",
@@ -5154,6 +5157,9 @@
       "brandCode": "FDCC",
       "brandName": "ChromeOS Device Brandname C",
       "designId": {
+        "configDesignIdOverride": {
+          "value": "PROJECT_B"
+        },
         "value": "PROJECT_C"
       },
       "exportOemInfo": true,
