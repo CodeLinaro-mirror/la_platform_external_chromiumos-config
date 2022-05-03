@@ -22,3 +22,15 @@ message HWTestPlan {
     TestPlanId id = 1;
     repeated CoverageRule coverage_rules = 2;
 }
+
+message VMTestPlan {
+    // Unique name to identify the test plan, recommend reverse domain name
+    // rooted at chromeos:
+    //   chromeos.release.wifi....
+    message TestPlanId {
+        string value = 1;
+    }
+
+    TestPlanId id = 1;
+    repeated CoverageRule coverage_rules = 2;
+}

@@ -17775,6 +17775,41 @@
               "name": "TestPlanId"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.v1.VMTestPlan.TestPlanId"
+            },
+            {
+              "jsonName": "coverageRules",
+              "label": "LABEL_REPEATED",
+              "name": "coverage_rules",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CoverageRule"
+            }
+          ],
+          "name": "VMTestPlan",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TestPlanId"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/v1/plan.proto",
