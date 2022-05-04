@@ -1076,6 +1076,7 @@ _BRAND_CONFIGS = [
         wallpaper = "fake_wallpaper",
         regulatory_label = "fake_regulatory_label",
         help_content_id = "fake_help",
+        cloud_gaming_device = True,
     ),
     brand_config.create(
         device_brand_id = _WL_DEVICE_BRAND.id,
@@ -1091,10 +1092,12 @@ _BRAND_CONFIGS = [
     brand_config.create(
         device_brand_id = _WL_DEVICE_BRAND_C.id,
         whitelabel_tag = "loemc",
+        cloud_gaming_device = False,
     ),
     brand_config.create(
         device_brand_id = _REBRAND_DEVICE_BRAND_D.id,
         whitelabel_tag = "branda",
+        cloud_gaming_device = True,
     ),
 ]
 

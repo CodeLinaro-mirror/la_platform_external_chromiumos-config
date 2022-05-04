@@ -4,6 +4,7 @@
       "brandId": {
         "value": "AAAA"
       },
+      "cloudGamingDevice": true,
       "helpContentId": "fake_help",
       "regulatoryLabel": "fake_regulatory_label",
       "wallpaper": "fake_wallpaper"
@@ -41,6 +42,7 @@
       "brandId": {
         "value": "RBDD"
       },
+      "cloudGamingDevice": true,
       "scanConfig": {
         "whitelabelTag": "branda"
       }

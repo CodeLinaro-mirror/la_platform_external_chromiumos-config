@@ -7774,6 +7774,13 @@
               "name": "help_content_id",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "cloudGamingDevice",
+              "label": "LABEL_OPTIONAL",
+              "name": "cloud_gaming_device",
+              "number": 6,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "BrandConfig"

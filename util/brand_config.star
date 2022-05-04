@@ -19,7 +19,8 @@ def _create(
         wallpaper = None,
         regulatory_label = None,
         whitelabel_tag = None,
-        help_content_id = None):
+        help_content_id = None,
+        cloud_gaming_device = None):
     """Builds a BrandConfig proto.
 
     Args:
@@ -30,6 +31,8 @@ def _create(
         whitelabel_tag: "whitelabel_tag" value set in the VPD, used to select a
             BrandConfig at runtime. See https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#field-whitelabel_tag.
         help_content_id: help content identifier
+        cloud_gaming_device: whether devices using this BrandConfig should
+            enable cloud gaming features
 
     Returns:
         A BrandConfig proto.
@@ -45,6 +48,7 @@ def _create(
         scan_config = scan_config,
         regulatory_label = regulatory_label,
         help_content_id = help_content_id,
+        cloud_gaming_device = cloud_gaming_device,
     )
 
 brand_config = struct(

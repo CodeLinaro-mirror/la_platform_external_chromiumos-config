@@ -19,4 +19,5 @@ message BrandConfig {
   // See chromeos-config/README.md for details
   string regulatory_label = 4;
   string help_content_id = 5;
+  bool cloud_gaming_device = 6;
 }
