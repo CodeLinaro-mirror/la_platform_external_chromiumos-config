@@ -211,6 +211,11 @@ _SC_HEALTH = sc.create_health(
     vpd_has_sku_number = True,
     battery_has_smart_battery_info = True,
 )
+_SC_NNPALM = sc.create_nnpalm(
+    model = "alpha",
+    radius_polynomial = "1,0",
+    touch_compatible = True,
+)
 _SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True})
 _SC_POWER = sc.create_power(
     preferences = {
@@ -303,6 +308,7 @@ design.append_configs(
     ),
     bluetooth = _SC_BLUETOOTH,
     health = _SC_HEALTH,
+    nnpalm = _SC_NNPALM,
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
         "Fake_EC",

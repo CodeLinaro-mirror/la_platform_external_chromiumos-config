@@ -38,6 +38,10 @@ load(
     health_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/nnpalm_config.proto",
+    nnpalm_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/config/api/software/resource_config.proto",
     resource_pb = "chromiumos.config.api.software",
 )
@@ -215,6 +219,17 @@ def _create_health(
         battery = health_pb.HealthConfig.Battery(
             has_smart_battery_info = battery_has_smart_battery_info,
         ),
+    )
+
+def _create_nnpalm(
+        model = None,
+        radius_polynomial = None,
+        touch_compatible = None):
+    """Builds a NnpalmConfig proto."""
+    return nnpalm_pb.NnpalmConfig(
+        model = model,
+        radius_polynomial = radius_polynomial,
+        touch_compatible = touch_compatible,
     )
 
 def _create_power(preferences):
@@ -821,6 +836,7 @@ sw_config = struct(
     create_fw_build_config_by_names = _create_fw_build_config_by_names,
     create_fw_build_targets = _create_fw_build_targets,
     create_health = _create_health,
+    create_nnpalm = _create_nnpalm,
     create_power = _create_power,
     create_resource = _create_resource,
     create_ondemand_preference = _create_ondemand_preference,

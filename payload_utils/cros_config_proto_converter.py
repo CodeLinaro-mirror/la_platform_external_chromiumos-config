@@ -769,6 +769,9 @@ def _build_nnpalm(config: Config):
     return None
 
   nnpalm_config = config.sw_config.nnpalm_config
+  if not nnpalm_config.touch_compatible:
+    return None
+
   result = {}
   _upsert(nnpalm_config.model, result, 'model')
   _upsert(nnpalm_config.radius_polynomial, result, 'radius-polynomial')
@@ -1510,6 +1513,7 @@ def _transform_build_config(config, config_files, whitelabel):
   _upsert(_build_bluetooth(config), result, 'bluetooth')
   _upsert(_build_wifi(config, config_files), result, 'wifi')
   _upsert(_build_health(config), result, 'cros-healthd')
+  _upsert(_build_nnpalm(config), result, 'nnpalm')
   _upsert(_build_branding(config), result, 'branding')
   _upsert(config.brand_config.wallpaper, result, 'wallpaper')
   _upsert(config.brand_config.regulatory_label, result, 'regulatory-label')

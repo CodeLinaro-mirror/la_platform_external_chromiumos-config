@@ -5447,6 +5447,11 @@
         "firmwareSku": 2147483647,
         "smbiosNameMatch": "FAKE_REF_DESIGN"
       },
+      "nnpalmConfig": {
+        "model": "alpha",
+        "radiusPolynomial": "1,0",
+        "touchCompatible": true
+      },
       "powerConfig": {
         "preferences": {
           "battery-poll-interval-initial-ms": "1000",

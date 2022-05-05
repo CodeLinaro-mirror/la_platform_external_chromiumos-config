@@ -140,6 +140,11 @@
           "firmware-variant": "fake_ref_design"
         },
         "name": "fake_ref_design",
+        "nnpalm": {
+          "model": "alpha",
+          "radius-polynomial": "1,0",
+          "touch-compatible": true
+        },
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
