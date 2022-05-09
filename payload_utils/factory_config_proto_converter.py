@@ -307,6 +307,9 @@ def GetFactoryConfigs(config):
   model = {}
   new_product_sku = {}
   for design_name, design_table in product_sku.items():
+    if not design_table:
+      # A design is defined but without a design id under it. Just skip it.
+      continue
     model[design_name.lower()] = CreateCommonTable(design_table)
     for sku_id, content in design_table.items():
       product_name = product_names['%s:%d' % (design_name, sku_id)]
