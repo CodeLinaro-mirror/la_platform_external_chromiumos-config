@@ -633,6 +633,17 @@ design.append_configs(
     ),
     firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
+    resource = sc.create_resource(
+        ac = sc.create_power_source_preference(
+            default = sc.create_ondemand_preference(0),
+        ),
+        dc = sc.create_power_source_preference(
+            default = sc.create_ondemand_preference(0),
+            web_rtc = sc.create_ondemand_preference(400),
+            fullscreen_video = sc.create_ondemand_preference(600),
+            gaming = sc.create_ondemand_preference(0),
+        ),
+    ),
     wifi = _SC_WIFI_INTEL,
     camera = sc.create_camera(generate_media_profiles = True),
 )

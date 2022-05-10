@@ -236,8 +236,24 @@ def _create_power(preferences):
     """Builds a PowerConfig proto."""
     return pc_pb.PowerConfig(preferences = preferences)
 
-def _create_resource(default = None, web_rtc = None, fullscreen_video = None, gaming = None):
+def _create_resource(ac = None, dc = None):
     """Builds a ResourceConfig proto.
+
+    Args:
+        ac: PowerSourcePreferences
+        dc: PowerSourcePreferences
+    """
+    return resource_pb.ResourceConfig(
+        ac = ac,
+        dc = dc,
+    )
+
+def _create_power_source_preference(
+        default = None,
+        web_rtc = None,
+        fullscreen_video = None,
+        gaming = None):
+    """Builds a PowerSourcePreferences proto.
 
     Args:
         default: PowerPreferences
@@ -245,7 +261,7 @@ def _create_resource(default = None, web_rtc = None, fullscreen_video = None, ga
         fullscreen_video: PowerPreferences
         gaming: PowerPreferences
     """
-    return resource_pb.ResourceConfig(
+    return resource_pb.ResourceConfig.PowerSourcePreferences(
         default_power_preferences = default,
         web_rtc_power_preferences = web_rtc,
         fullscreen_video_power_preferences = fullscreen_video,
@@ -844,6 +860,7 @@ sw_config = struct(
     create_nnpalm = _create_nnpalm,
     create_power = _create_power,
     create_resource = _create_resource,
+    create_power_source_preference = _create_power_source_preference,
     create_ondemand_preference = _create_ondemand_preference,
     create_intel_antenna_gain = _create_intel_antenna_gain,
     create_intel_antgain_table = _create_intel_antgain_table,

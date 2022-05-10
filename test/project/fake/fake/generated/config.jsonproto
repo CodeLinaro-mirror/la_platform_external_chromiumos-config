@@ -6170,6 +6170,41 @@
       "publicReplication": {
         "publicFields": "designConfigId,idScanConfig"
       },
+      "resourceConfig": {
+        "ac": {
+          "default-power-preferences": {
+            "governor": {
+              "ondemand": {}
+            }
+          }
+        },
+        "dc": {
+          "default-power-preferences": {
+            "governor": {
+              "ondemand": {}
+            }
+          },
+          "fullscreen-power-preferences": {
+            "governor": {
+              "ondemand": {
+                "powersave-bias": 600
+              }
+            }
+          },
+          "gaming-power-preferences": {
+            "governor": {
+              "ondemand": {}
+            }
+          },
+          "web-rtc-power-preferences": {
+            "governor": {
+              "ondemand": {
+                "powersave-bias": 400
+              }
+            }
+          }
+        }
+      },
       "wifiConfig": {
         "intelConfig": {
           "antTable": {

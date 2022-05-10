@@ -596,6 +596,47 @@
           "use-modemmanager-for-dynamic-sar": "1",
           "wake-on-dp": "1"
         },
+        "resource": {
+          "ac": {
+            "default-power-preferences": {
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 0
+                }
+              }
+            }
+          },
+          "dc": {
+            "default-power-preferences": {
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 0
+                }
+              }
+            },
+            "fullscreen-power-preferences": {
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 600
+                }
+              }
+            },
+            "gaming-power-preferences": {
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 0
+                }
+              }
+            },
+            "web-rtc-power-preferences": {
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 400
+                }
+              }
+            }
+          }
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [

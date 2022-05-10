@@ -8040,36 +8040,20 @@
         {
           "field": [
             {
-              "jsonName": "default-power-preferences",
+              "jsonName": "ac",
               "label": "LABEL_OPTIONAL",
-              "name": "default_power_preferences",
-              "number": 1,
+              "name": "ac",
+              "number": 5,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
+              "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerSourcePreferences"
             },
             {
-              "jsonName": "web-rtc-power-preferences",
+              "jsonName": "dc",
               "label": "LABEL_OPTIONAL",
-              "name": "web_rtc_power_preferences",
-              "number": 2,
+              "name": "dc",
+              "number": 6,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
-            },
-            {
-              "jsonName": "fullscreen-power-preferences",
-              "label": "LABEL_OPTIONAL",
-              "name": "fullscreen_video_power_preferences",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
-            },
-            {
-              "jsonName": "gaming-power-preferences",
-              "label": "LABEL_OPTIONAL",
-              "name": "gaming_power_preferences",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
+              "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerSourcePreferences"
             }
           ],
           "name": "ResourceConfig",
@@ -8117,6 +8101,43 @@
                 }
               ],
               "name": "PowerPreferences"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "default-power-preferences",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "default_power_preferences",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
+                },
+                {
+                  "jsonName": "web-rtc-power-preferences",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "web_rtc_power_preferences",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
+                },
+                {
+                  "jsonName": "fullscreen-power-preferences",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "fullscreen_video_power_preferences",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
+                },
+                {
+                  "jsonName": "gaming-power-preferences",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gaming_power_preferences",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
+                }
+              ],
+              "name": "PowerSourcePreferences"
             }
           ]
         }
