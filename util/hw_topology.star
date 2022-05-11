@@ -1112,9 +1112,11 @@ _EC_NONE = _create_ec(present = False, ec_type = _EC_TYPE.UNKNOWN)
 _EC_CHROME = _create_ec(ec_type = _EC_TYPE.CHROME)
 _EC_WILCO = _create_ec(ec_type = _EC_TYPE.WILCO)
 
-def _create_touch(id, description, fw_configs = []):
+def _create_touch(id, description, fw_configs = [], touch_slop_distance = None):
     """Builds a Topology proto for touch."""
     hw_features = topo_pb.HardwareFeatures()
+    if touch_slop_distance != None:
+        hw_features.touch.touch_slop_distance.value = touch_slop_distance
 
     _accumulate_fw_configs(hw_features, fw_configs)
 

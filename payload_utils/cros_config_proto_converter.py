@@ -513,6 +513,10 @@ def _build_ash_flags(config: Config) -> List[str]:
     _add_flag('oobe-large-screen-special-scaling')
     _add_flag('enable-virtual-keyboard')
 
+  touch = config.hw_design_config.hardware_topology.touch.hardware_feature.touch
+  if touch.HasField('touch_slop_distance'):
+    _add_flag('touch-slop-distance', touch.touch_slop_distance.value)
+
   # This affects a large number of projects, so stage the rollout behind each
   # program updating to configure platform capabilities.
   # TODO(b/218220022, b/195298103): Remove this condition once all programs

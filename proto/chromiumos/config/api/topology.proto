@@ -734,4 +734,13 @@ message HardwareFeatures {
   Proximity proximity = 37;
   message Proximity {
   }
+
+  // Touch screen properties
+  Touch touch = 38;
+  message Touch {
+     // Configures touch slop distance in Chrome.
+     // This is the number of pixels a touch event can wander before being
+     // recognized as a scroll rather than a tap.
+     google.protobuf.UInt32Value touch_slop_distance = 1;
+  }
 }

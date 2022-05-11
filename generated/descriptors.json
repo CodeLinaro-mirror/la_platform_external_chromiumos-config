@@ -3762,6 +3762,14 @@
               "number": 37,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Proximity"
+            },
+            {
+              "jsonName": "touch",
+              "label": "LABEL_OPTIONAL",
+              "name": "touch",
+              "number": 38,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Touch"
             }
           ],
           "name": "HardwareFeatures",
@@ -5243,6 +5251,19 @@
             },
             {
               "name": "Proximity"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "touchSlopDistance",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "touch_slop_distance",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.UInt32Value"
+                }
+              ],
+              "name": "Touch"
             }
           ]
         }
