@@ -70,6 +70,15 @@ message ProvisionState {
   // target_build OS image and it is different from firmware provision which
   // download and update a separate firmware image based on request.
   bool update_firmware = 6;
+
+  // Use force to pass "--force" to futility, which skips the TPM checks.
+  bool firmware_force = 7;
+
+  // If True, provision firmware over servo; information about
+  // servo to use will be pulled from a `Dut` proto, that will be
+  // requested from InventoryService.
+  // If False, SSH to the DUT and provision it directly.
+  bool use_servo = 8;
 }
 
 // User configurable provisioning settings.  These inform the final
