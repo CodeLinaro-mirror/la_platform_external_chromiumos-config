@@ -7,6 +7,7 @@
   <unavailable-feature name="android.hardware.camera.capability.manual_sensor"/>
   <feature name="android.hardware.camera.front"/>
   <unavailable-feature name="android.hardware.camera.level.full"/>
+  <feature name="android.hardware.camera.external"/>
   <feature name="android.hardware.sensor.accelerometer"/>
   <feature name="android.hardware.sensor.gyroscope"/>
   <feature name="android.hardware.sensor.compass"/>

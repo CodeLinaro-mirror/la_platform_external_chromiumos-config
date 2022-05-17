@@ -7922,6 +7922,13 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.Resolution"
+            },
+            {
+              "jsonName": "hasExternalCamera",
+              "label": "LABEL_OPTIONAL",
+              "name": "has_external_camera",
+              "number": 3,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "CameraConfig"

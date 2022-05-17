@@ -1672,7 +1672,7 @@ def _write_file(output_dir, file_name, file_content):
     f.write(file_content)
 
 
-def _get_arc_camera_features(camera):
+def _get_arc_camera_features(camera, camera_config):
   """Gets camera related features for ARC hardware_features.xml from camera
   topology. Check
   https://developer.android.com/reference/android/content/pm/PackageManager#FEATURE_CAMERA
@@ -1699,9 +1699,10 @@ def _get_arc_camera_features(camera):
   has_level_full_camera = any(
       (d.interface == camera_pb.INTERFACE_MIPI for d in camera.devices))
 
-  return [
+  features = [
       _feature('android.hardware.camera', has_back_camera),
-      _feature('android.hardware.camera.any', count > 0),
+      _feature('android.hardware.camera.any', count > 0 or
+               camera_config.has_external_camera),
       _feature('android.hardware.camera.autofocus', has_autofocus_back_camera),
       _feature('android.hardware.camera.capability.manual_post_processing',
                has_level_full_camera),
@@ -1710,13 +1711,18 @@ def _get_arc_camera_features(camera):
       _feature('android.hardware.camera.front', has_front_camera),
       _feature('android.hardware.camera.level.full', has_level_full_camera),
   ]
+  if camera_config.has_external_camera:
+    features.append(_feature('android.hardware.camera.external', True))
+
+  return features
 
 
-def _generate_arc_hardware_features(hw_features):
+def _generate_arc_hardware_features(hw_features, sw_config):
   """Generates ARC hardware_features.xml file content.
 
   Args:
     hw_features: HardwareFeatures proto message.
+    sw_config: SoftwareConfig proto message.
   Returns:
     bytes of the hardware_features.xml content.
   """
@@ -1727,7 +1733,7 @@ def _generate_arc_hardware_features(hw_features):
   light_sensor = hw_features.light_sensor
   root = etree.Element('permissions')
   root.extend(
-      _get_arc_camera_features(hw_features.camera) + [
+      _get_arc_camera_features(hw_features.camera, sw_config.camera_config) + [
           _feature(
               'android.hardware.sensor.accelerometer',
               _any_present([acc.lid_accelerometer, acc.base_accelerometer])),
@@ -1956,10 +1962,10 @@ def _write_files_by_design_config(configs, output_dir, build_dir, system_dir,
 
 
 def _write_arc_hardware_feature_files(configs, output_root_dir, build_root_dir):
-  return _write_files_by_design_config(
-      configs, output_root_dir + '/arc', build_root_dir + '/arc', '/etc',
-      'hardware_features_{}.xml',
-      lambda hw_features, _: _generate_arc_hardware_features(hw_features))
+  return _write_files_by_design_config(configs, output_root_dir + '/arc',
+                                       build_root_dir + '/arc', '/etc',
+                                       'hardware_features_{}.xml',
+                                       _generate_arc_hardware_features)
 
 
 def _write_arc_media_profile_files(configs, output_root_dir, build_root_dir):

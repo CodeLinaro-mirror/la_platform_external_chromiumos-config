@@ -6154,7 +6154,8 @@
         }
       },
       "cameraConfig": {
-        "generateMediaProfiles": true
+        "generateMediaProfiles": true,
+        "hasExternalCamera": true
       },
       "designConfigId": {
         "value": "PROJECT_A:32"
@@ -6577,6 +6578,9 @@
         "flags": {
           "enable-suspend-management": true
         }
+      },
+      "cameraConfig": {
+        "hasExternalCamera": true
       },
       "designConfigId": {
         "value": "PROJECT_C:34"

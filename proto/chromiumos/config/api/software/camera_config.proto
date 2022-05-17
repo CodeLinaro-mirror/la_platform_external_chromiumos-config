@@ -21,4 +21,8 @@ message CameraConfig {
   // If non-empty, the resolutions are used for CamcorderProfiles in
   // media_profiles.xml instead of deriving from scripts.
   repeated Resolution camcorder_resolutions = 2;
+
+  // If true, the device assumes there's an external camera connected, and ARC
+  // hardware_features.xml should declare external camera feature.
+  bool has_external_camera = 3;
 }

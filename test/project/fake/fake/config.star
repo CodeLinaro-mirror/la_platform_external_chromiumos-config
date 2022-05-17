@@ -649,7 +649,7 @@ design.append_configs(
         ),
     ),
     wifi = _SC_WIFI_INTEL,
-    camera = sc.create_camera(generate_media_profiles = True),
+    camera = sc.create_camera(generate_media_profiles = True, has_external_camera = True),
 )
 
 _HW_CONFIGS_B = []
@@ -791,6 +791,7 @@ design.append_configs(
             offset_5g = 14,
         ),
     ),
+    camera = sc.create_camera(has_external_camera = True),
 )
 
 _HW_CONFIGS_WL = []

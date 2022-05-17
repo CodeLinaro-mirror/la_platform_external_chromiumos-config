@@ -812,11 +812,13 @@ def _create_mtk_wifi(
 
 def _create_camera(
         generate_media_profiles = False,
-        camcorder_resolutions = None):
+        camcorder_resolutions = None,
+        has_external_camera = False):
     """Builds a CameraConfig proto."""
     return cam_pb.CameraConfig(
         generate_media_profiles = generate_media_profiles,
         camcorder_resolutions = camcorder_resolutions if camcorder_resolutions else [],
+        has_external_camera = has_external_camera,
     )
 
 _UI_REQUISITION = struct(
