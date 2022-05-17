@@ -214,6 +214,7 @@ _VOLUME_BUTTON = hw_topo.create_volume_button(
 _SC_HEALTH = sc.create_health(
     vpd_has_sku_number = True,
     battery_has_smart_battery_info = True,
+    routines_battery_health_percent_battery_wear_allowed = 50,
 )
 _SC_NNPALM = sc.create_nnpalm(
     model = "alpha",

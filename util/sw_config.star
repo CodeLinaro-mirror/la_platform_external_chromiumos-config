@@ -210,8 +210,17 @@ def _create_bluetooth(flags):
 
 def _create_health(
         vpd_has_sku_number = None,
-        battery_has_smart_battery_info = None):
+        battery_has_smart_battery_info = None,
+        routines_battery_health_percent_battery_wear_allowed = None):
     """Builds a HealthConfig proto."""
+    routines = None
+    if routines_battery_health_percent_battery_wear_allowed != None:
+        routines = health_pb.HealthConfig.Routines(
+            battery_health = health_pb.HealthConfig.BatteryHealth(
+                percent_battery_wear_allowed =
+                    routines_battery_health_percent_battery_wear_allowed,
+            ),
+        )
     return health_pb.HealthConfig(
         cached_vpd = health_pb.HealthConfig.CachedVpd(
             has_sku_number = vpd_has_sku_number,
@@ -219,6 +228,7 @@ def _create_health(
         battery = health_pb.HealthConfig.Battery(
             has_smart_battery_info = battery_has_smart_battery_info,
         ),
+        routines = routines,
     )
 
 def _create_nnpalm(

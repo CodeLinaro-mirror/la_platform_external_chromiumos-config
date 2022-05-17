@@ -19,6 +19,14 @@ message HealthConfig {
     bool has_sku_number = 1;
   }
 
+  message BatteryHealth {
+    uint32 percent_battery_wear_allowed = 1;
+  }
+  message Routines {
+    BatteryHealth battery_health = 1;
+  }
+
   Battery battery = 1;
   CachedVpd cached_vpd = 2;
+  Routines routines = 3;
 }

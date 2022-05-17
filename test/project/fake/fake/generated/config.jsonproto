@@ -6056,6 +6056,11 @@
         },
         "cachedVpd": {
           "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          }
         }
       },
       "idScanConfig": {

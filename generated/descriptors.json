@@ -8057,6 +8057,14 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.HealthConfig.CachedVpd"
+            },
+            {
+              "jsonName": "routines",
+              "label": "LABEL_OPTIONAL",
+              "name": "routines",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.HealthConfig.Routines"
             }
           ],
           "name": "HealthConfig",
@@ -8084,6 +8092,31 @@
                 }
               ],
               "name": "CachedVpd"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "percentBatteryWearAllowed",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "percent_battery_wear_allowed",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "BatteryHealth"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "batteryHealth",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "battery_health",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.HealthConfig.BatteryHealth"
+                }
+              ],
+              "name": "Routines"
             }
           ]
         }

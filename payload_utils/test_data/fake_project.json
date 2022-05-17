@@ -97,6 +97,11 @@
           },
           "cached-vpd": {
             "has-sku-number": true
+          },
+          "routines": {
+            "battery-health": {
+              "percent-battery-wear-allowed": 50
+            }
           }
         },
         "fingerprint": {
