@@ -2147,7 +2147,8 @@
         "hardware-properties": {
           "form-factor": "CHROMEBOX",
           "has-backlight": false,
-          "psu-type": "AC_only"
+          "psu-type": "AC_only",
+          "recovery-input": "RECOVERY_BUTTON"
         },
         "identity": {
           "platform-name": "fake",
@@ -2317,7 +2318,8 @@
         "hardware-properties": {
           "form-factor": "CHROMEBASE",
           "has-backlight": true,
-          "psu-type": "AC_only"
+          "psu-type": "AC_only",
+          "recovery-input": "RECOVERY_BUTTON"
         },
         "identity": {
           "platform-name": "fake",
@@ -2490,7 +2492,8 @@
         "hardware-properties": {
           "form-factor": "CHROMEBASE",
           "has-backlight": true,
-          "psu-type": "AC_only"
+          "psu-type": "AC_only",
+          "recovery-input": "RECOVERY_BUTTON"
         },
         "identity": {
           "platform-name": "fake",

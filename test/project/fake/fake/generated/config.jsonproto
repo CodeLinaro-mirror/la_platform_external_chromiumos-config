@@ -4391,7 +4391,8 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 5
+              "formFactor": 5,
+              "recoveryInput": 3
             },
             "fwConfig": {
               "mask": 131071,
@@ -4618,7 +4619,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 5
+                  "formFactor": 5,
+                  "recoveryInput": 3
                 }
               },
               "id": "CHROMEBOX",
@@ -4836,7 +4838,8 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 4
+              "formFactor": 4,
+              "recoveryInput": 3
             },
             "fwConfig": {
               "mask": 131071,
@@ -5042,7 +5045,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 4
+                  "formFactor": 4,
+                  "recoveryInput": 3
                 }
               },
               "id": "CHROMEBASE",
@@ -5263,7 +5267,8 @@
               "location": 5
             },
             "formFactor": {
-              "formFactor": 4
+              "formFactor": 4,
+              "recoveryInput": 3
             },
             "fwConfig": {
               "mask": 126991,
@@ -5448,7 +5453,8 @@
               },
               "hardwareFeature": {
                 "formFactor": {
-                  "formFactor": 4
+                  "formFactor": 4,
+                  "recoveryInput": 3
                 }
               },
               "id": "CHROMEBASE",
