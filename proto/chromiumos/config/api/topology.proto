@@ -281,6 +281,7 @@ message HardwareFeatures {
       RT1015P = 10;
       ALC1019 = 11;
       MAX98390 = 12;
+      MAX98396 = 13;
     }
 
     enum AudioConfigStructure {
