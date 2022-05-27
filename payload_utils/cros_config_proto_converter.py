@@ -19,8 +19,6 @@ import os
 import sys
 import re
 
-from typing import List
-
 from collections import namedtuple
 
 from google.protobuf import json_format
@@ -395,8 +393,8 @@ def _build_resource(config: Config) -> dict:
       config.sw_config.resource_config, including_default_value_fields=True)
 
 
-def _build_ash_flags(config: Config) -> List[str]:
-  """Returns a list of Ash flags for config.
+def _build_ash_flags(config: Config) -> dict:
+  """Returns a dict of ash flags and features.
 
   Ash is the window manager and system UI for ChromeOS, see
   https://chromium.googlesource.com/chromium/src/+/HEAD/ash/.
@@ -527,17 +525,20 @@ def _build_ash_flags(config: Config) -> List[str]:
                        topology_pb2.HardwareFeatures.FormFactor.CHROMESLATE):
       _add_flag('enable-touchview')
 
-  if enabled_features:
-    _add_flag('enable-features', ','.join(sorted(enabled_features)))
+  result = {
+      'extra-ash-flags':
+          sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()]),
+  }
   if disabled_features:
-    _add_flag('disable-features', ','.join(sorted(disabled_features)))
-
-  return sorted([f'--{k}={v}' if v else f'--{k}' for k, v in flags.items()])
+    result['ash-disabled-features'] = sorted(disabled_features)
+  if enabled_features:
+    result['ash-enabled-features'] = sorted(enabled_features)
+  return result
 
 
 def _build_ui(config: Config) -> dict:
   """Builds the 'ui' property from cros_config_schema."""
-  result = {'extra-ash-flags': _build_ash_flags(config)}
+  result = _build_ash_flags(config)
   help_content_id = config.brand_config.help_content_id
   if help_content_id:
     result['help-content-id'] = help_content_id
