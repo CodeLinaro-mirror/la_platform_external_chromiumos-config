@@ -3807,6 +3807,20 @@
                   "number": 2,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.UsbC.Port"
+                },
+                {
+                  "jsonName": "usb4",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "usb4",
+                  "number": 3,
+                  "type": "TYPE_BOOL"
+                },
+                {
+                  "jsonName": "deferExternalDisplayTimeout",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "defer_external_display_timeout",
+                  "number": 4,
+                  "type": "TYPE_UINT32"
                 }
               ],
               "name": "UsbC",

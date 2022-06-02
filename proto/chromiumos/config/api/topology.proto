@@ -158,6 +158,12 @@ message HardwareFeatures {
       // This value must be in the range [0, number_of_usb_c_ports).
       google.protobuf.UInt32Value index_override = 2;
     }
+
+    // Whether port(s) are USB4
+    bool usb4 = 3;
+
+    // Optional field to manually override the external display timeout
+    uint32 defer_external_display_timeout = 4;
   }
 
   // USB-A properties

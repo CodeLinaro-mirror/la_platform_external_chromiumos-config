@@ -149,6 +149,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "has-ambient-light-sensor": "1",
           "internal-backlight-als-steps": "80.0 63.0 -1 400\n100.0 80.0 100 -1",
@@ -342,6 +343,7 @@
         "name": "fake_ref_design",
         "power": {
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "has-keyboard-backlight": "1",
           "internal-backlight-no-als-ac-brightness": "80.0",
@@ -527,6 +529,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
@@ -736,6 +739,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
@@ -901,6 +905,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.0",
           "internal-backlight-no-als-battery-brightness": "63.0",
@@ -1065,6 +1070,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1207,6 +1213,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1349,6 +1356,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1491,6 +1499,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1646,6 +1655,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -1791,6 +1801,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "external-display-only": "1",
           "internal-backlight-no-als-ac-brightness": "80.1",
@@ -1924,6 +1935,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
@@ -2063,6 +2075,7 @@
         "power": {
           "battery-poll-interval-initial-ms": "1000",
           "charging-ports": "CROS_USBPD_CHARGER0 LEFT_BACK\nCROS_USBPD_CHARGER1 RIGHT\nCROS_USBPD_CHARGER2 LEFT_FRONT",
+          "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "has-ambient-light-sensor": "1",
           "internal-backlight-als-steps": "80.1 -1 400\n100.0 100 -1",

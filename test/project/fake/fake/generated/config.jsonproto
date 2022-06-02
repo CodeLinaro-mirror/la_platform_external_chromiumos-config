@@ -319,7 +319,8 @@
                   "indexOverride": 1,
                   "position": 2
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -475,7 +476,8 @@
                       "indexOverride": 1,
                       "position": 2
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "Default DB",
@@ -584,7 +586,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -895,7 +898,8 @@
                 {
                   "position": 5
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -1115,7 +1119,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -1431,7 +1436,8 @@
                   "indexOverride": 1,
                   "position": 2
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -1572,7 +1578,8 @@
                       "indexOverride": 1,
                       "position": 2
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "Default DB",
@@ -1648,7 +1655,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -1963,7 +1971,8 @@
                 {
                   "position": 5
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -2190,7 +2199,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -2511,7 +2521,8 @@
                   "indexOverride": 1,
                   "position": 2
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -2666,7 +2677,8 @@
                       "indexOverride": 1,
                       "position": 2
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "Default DB",
@@ -2741,7 +2753,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -3071,7 +3084,8 @@
                 {
                   "position": 5
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -3457,7 +3471,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -3965,7 +3980,8 @@
                   "indexOverride": 1,
                   "position": 2
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -4089,7 +4105,8 @@
                       "indexOverride": 1,
                       "position": 2
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "Default DB",
@@ -4164,7 +4181,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -4451,7 +4469,8 @@
                   "indexOverride": 1,
                   "position": 2
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -4564,7 +4583,8 @@
                       "indexOverride": 1,
                       "position": 2
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "Default DB",
@@ -4638,7 +4658,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -4893,7 +4914,8 @@
                   "indexOverride": 1,
                   "position": 2
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -4985,7 +5007,8 @@
                       "indexOverride": 1,
                       "position": 2
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "Default DB",
@@ -5059,7 +5082,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",
@@ -5314,7 +5338,8 @@
                   "indexOverride": 1,
                   "position": 2
                 }
-              ]
+              ],
+              "usb4": true
             },
             "volumeButton": {
               "edge": 2,
@@ -5388,7 +5413,8 @@
                       "indexOverride": 1,
                       "position": 2
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "Default DB",
@@ -5462,7 +5488,8 @@
                     {
                       "position": 5
                     }
-                  ]
+                  ],
+                  "usb4": true
                 }
               },
               "id": "MOTHERBOARD_USB",

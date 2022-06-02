@@ -178,6 +178,7 @@ _DAUGHTER_BOARD = hw_topo.create_daughter_board(
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 1)],
     side = hw_topo.port_position.RIGHT,
     usbc_ports = [hw_topo.create_usbc_port(index_override = 1)],
+    usb4 = True,
 )
 _NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
 _WIFI = hw_topo.create_wifi("WIFI", "Default wifi", fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)])
@@ -193,6 +194,7 @@ _MOTHERBOARD_USB = hw_topo.create_motherboard_usb(
         hw_topo.create_usbc_port(hw_topo.port_position.BACK),
         hw_topo.create_usbc_port(hw_topo.port_position.FRONT),
     ],
+    usb4 = True,
 )
 _BLUETOOTH = hw_topo.create_bluetooth("BLUETOOTH", "Default bluetooth", bt_component = program.bluetooth_component.bluetooth)
 _BARRELJACK = hw_topo.create_barreljack("BARRELJACK", "Default barreljack", bj_present = True)

@@ -296,6 +296,19 @@ def _build_derived_connectivity_power_prefs(config: Config) -> dict:
   return result
 
 
+def _build_derived_external_display_timeout_power_prefs(config: Config) -> dict:
+  hw_features = config.hw_design_config.hardware_features
+  result = {}
+
+  if hw_features.usb_c.defer_external_display_timeout:
+    result['defer-external-display-timeout'] = (
+        hw_features.usb_c.defer_external_display_timeout)
+  elif hw_features.usb_c.usb4:
+    result['defer-external-display-timeout'] = 10
+
+  return result
+
+
 def _build_derived_power_prefs(config: Config) -> dict:
   """Builds a partial 'power' property derived from hardware features."""
   present = topology_pb2.HardwareFeatures.PRESENT
@@ -371,6 +384,7 @@ def _build_derived_power_prefs(config: Config) -> dict:
   result.update(
       _build_derived_platform_power_prefs(config.program.platform.capabilities))
   result.update(_build_derived_connectivity_power_prefs(config))
+  result.update(_build_derived_external_display_timeout_power_prefs(config))
 
   result['usb-min-ac-watts'] = hw_features.power_supply.usb_min_ac_watts
 

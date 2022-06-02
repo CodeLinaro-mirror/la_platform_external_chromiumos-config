@@ -772,6 +772,8 @@ def _create_daughter_board(
         fw_configs = [],
         usbc_count = 0,
         usba_count = 0,
+        usb4 = False,
+        defer_external_display_timeout = None,
         cellular_support = False,
         cellular_model = None,
         cellular_type = _CELLULAR.NOT_PRESENT,
@@ -784,7 +786,13 @@ def _create_daughter_board(
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
-    hw_features.usb_c = _build_usbc(side, usbc_ports, usbc_count)
+    hw_features.usb_c = _build_usbc(
+        side,
+        usbc_ports,
+        usbc_count,
+        usb4,
+        defer_external_display_timeout,
+    )
     hw_features.usb_a.count.value = usba_count
 
     hw_features.cellular.present = _bool_to_present(cellular_support)
@@ -919,14 +927,18 @@ def _normalize_usbc_port(side, port):
         normalized_port.index_override = port.index_override
     return normalized_port
 
-def _build_usbc(side, ports, count):
+def _build_usbc(side, ports, count, usb4, defer_external_display_timeout):
     if ports != None:
         count = len(ports)
     else:
         ports = [_create_usbc_port()] * count
 
     result = topo_pb.HardwareFeatures.UsbC()
+    result.usb4 = usb4
     result.count.value = count
+
+    if defer_external_display_timeout:
+        result.defer_external_display_timeout = defer_external_display_timeout
 
     if side:
         result.ports = [_normalize_usbc_port(side, port) for port in ports]
@@ -958,6 +970,8 @@ def _create_motherboard_usb(
         fw_configs = [],
         usbc_count = 0,
         usba_count = 0,
+        usb4 = False,
+        defer_external_display_timeout = None,
         side = None,
         usbc_ports = None):
     """Builds a Topology proto for a motherboard."""
@@ -965,7 +979,13 @@ def _create_motherboard_usb(
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
-    hw_features.usb_c = _build_usbc(side, usbc_ports, usbc_count)
+    hw_features.usb_c = _build_usbc(
+        side,
+        usbc_ports,
+        usbc_count,
+        usb4,
+        defer_external_display_timeout,
+    )
     hw_features.usb_a.count.value = usba_count
 
     return topo_pb.Topology(
@@ -1360,6 +1380,7 @@ def _accumulate_presence(existing_present, new_present):
 
 def _accumulate_usbc(existing_usbc, new_usbc):
     existing_usbc.count.value += new_usbc.count.value
+    existing_usbc.usb4 = existing_usbc.usb4 or new_usbc.usb4
     existing_usbc.ports += new_usbc.ports
 
 def _accumulate_usba(existing_usba, new_usba):
