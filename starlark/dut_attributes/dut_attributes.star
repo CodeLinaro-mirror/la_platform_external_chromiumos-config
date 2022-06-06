@@ -133,6 +133,7 @@ def _device_attributes():
             aliases = [
                 "attr-board",
                 "label-platform",
+                "label-board",
             ],
         ),
     ]
@@ -218,6 +219,18 @@ def _tle_attributes():
             ],
         ),
         _tle_attribute(
+            "peripheral-arc",
+            aliases = [
+                "label-arc",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-atrus",
+            aliases = [
+                "label-atrus",
+            ],
+        ),
+        _tle_attribute(
             "peripheral-audio-board",
             aliases = [
                 "label-audio_board",
@@ -239,6 +252,12 @@ def _tle_attributes():
             "peripheral-audio-loopback",
             aliases = [
                 "label-audio_loopback_dongle",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-bluetooth-state",
+            aliases = [
+                "label-bluetooth_state",
             ],
         ),
         _tle_attribute(
@@ -275,6 +294,7 @@ def _tle_attributes():
             "peripheral-servo-usb-state",
             aliases = [
                 "label-servo_usb_state",
+                "servo_usb_state",
             ],
         ),
         _tle_attribute(

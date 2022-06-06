@@ -65,7 +65,8 @@
       },
       "aliases": [
         "attr-board",
-        "label-platform"
+        "label-platform",
+        "label-board"
       ],
       "flatConfigSource": {
         "fields": [
@@ -222,6 +223,24 @@
     },
     {
       "id": {
+        "value": "peripheral-arc"
+      },
+      "aliases": [
+        "label-arc"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-atrus"
+      },
+      "aliases": [
+        "label-atrus"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
         "value": "peripheral-audio-board"
       },
       "aliases": [
@@ -253,6 +272,15 @@
       },
       "aliases": [
         "label-audio_loopback_dongle"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-bluetooth-state"
+      },
+      "aliases": [
+        "label-bluetooth_state"
       ],
       "tleSource": {}
     },
@@ -306,7 +334,8 @@
         "value": "peripheral-servo-usb-state"
       },
       "aliases": [
-        "label-servo_usb_state"
+        "label-servo_usb_state",
+        "servo_usb_state"
       ],
       "tleSource": {}
     },
