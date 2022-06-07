@@ -267,6 +267,10 @@ def GetFactoryConfigs(config):
     dict that maps the design id onto the factory test config.
   """
   product_sku = {}
+  oem_name = {}
+  partners = {x.id.value: x for x in config.partner_list}
+  brand_configs = {x.brand_id.value: x for x in config.brand_configs}
+
   # Enumerate designs.
   for hw_design in config.design_list:
     design_name = hw_design.id.value
@@ -283,6 +287,25 @@ def GetFactoryConfigs(config):
         design_config_table.update({'custom_type': 'whitelabel'})
       elif custom_type == design_pb2.Design.CustomType.REBRAND:
         design_config_table.update({'custom_type': 'rebrand'})
+  # Create map from custom label to oem name.
+  if config.device_brand_list:
+    for device_brand in config.device_brand_list:
+      device_brand_id = device_brand.id.value
+      # Design names should be lowercase, to be consistent with `model`.
+      design_name = device_brand.design_id.value.lower()
+      design_oem_name_table = oem_name.setdefault(design_name, {})
+      if not partners.get(device_brand.oem_id.value):
+        print(
+            "OEM %r for the device_brand %r is not found in partner_list %r." %
+            (device_brand.oem_id.value, device_brand_id, list(partners.keys())),
+            file=sys.stderr)
+        continue
+      key = ''
+      value = partners[device_brand.oem_id.value].name
+      brand_config = brand_configs.get(device_brand_id)
+      if brand_config and brand_config.scan_config.whitelabel_tag:
+        key = brand_config.scan_config.whitelabel_tag
+      design_oem_name_table.setdefault(key, value)
   # Enumerate (design, sku id).
   for sw_design in config.software_configs:
     design_name, sku_id = ParseDesignConfigId(sw_design.design_config_id.value)
@@ -321,7 +344,7 @@ def GetFactoryConfigs(config):
             file=sys.stderr)
       else:
         product_name_table[sku_id] = content
-  return {'model': model, 'product_sku': new_product_sku}
+  return {'model': model, 'oem_name': oem_name, 'product_sku': new_product_sku}
 
 
 def _ReadConfig(path):

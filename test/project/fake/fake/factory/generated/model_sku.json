@@ -318,6 +318,31 @@
       "fw_config": 90914
     }
   },
+  "oem_name": {
+    "fake_ref_design": {
+      "": "FAKE_OEM"
+    },
+    "project_a": {
+      "": "FAKE_OEMA"
+    },
+    "project_b": {
+      "": "FAKE_OEMB"
+    },
+    "project_box": {
+      "": "FAKE_OEM"
+    },
+    "project_c": {
+      "": "FAKE_OEMC"
+    },
+    "project_rebrand": {
+      "branda": "FAKE_OEMD"
+    },
+    "project_wl": {
+      "loema": "FAKE_LOEMA",
+      "loemb": "FAKE_LOEMB",
+      "loemc": "FAKE_LOEMC"
+    }
+  },
   "product_sku": {
     "FAKE_REF_DESIGN": {
       "0": {
