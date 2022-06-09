@@ -210,17 +210,32 @@ message Component {
       // display.
       google.protobuf.UInt32Value turn_off_screen_timeout_ms = 7;
 
-      // The default display backlight percentage on battery power in the
-      // absence of an ambient light sensor controlling the display backlight.
-      double no_als_battery_brightness = 8;
+      oneof battery_brightness {
+        // The default display backlight percentage on battery power in the
+        // absence of an ambient light sensor controlling the display backlight.
+        double no_als_battery_brightness = 8;
 
-      // The default display backlight percentage on AC power in the absence of
-      // an ambient light sensor controlling the display backlight.
-      double no_als_ac_brightness = 9;
+        // The default display backlight nits on battery power in the
+        // absence of an ambient light sensor controlling the display backlight.
+        double no_als_battery_brightness_nits = 11;
+      }
+
+      oneof ac_brightness {
+        // The default display backlight percentage on AC power in the absence of
+        // an ambient light sensor controlling the display backlight.
+        double no_als_ac_brightness = 9;
+
+        // The default display backlight nits on AC power in the absence of
+        // an ambient light sensor controlling the display backlight.
+        double no_als_ac_brightness_nits = 12;
+      }
 
       // The configuration of the display backlight percentage based on the
       // ambient light sensor value. Steps should be in increasing order.
       repeated AlsStep als_steps = 10;
+
+      // The max luminance of the panel in nits.
+      double max_screen_brightness = 13;
     }
   }
 
@@ -367,11 +382,21 @@ message Component {
   // sensor value at which the next or previous step should be considered.
   // Steps should be specified in increasing order for each field.
   message AlsStep {
-    // The backlight brightness percentage on AC power for this step.
-    double ac_backlight_percent = 1;
+    oneof ac_backlight {
+      // The backlight brightness percentage on AC power for this step.
+      double ac_backlight_percent = 1;
 
-    // The backlight brightness percentage on battery power for this step.
-    double battery_backlight_percent = 2;
+      // The backlight brightness nits on AC power for this step.
+      double ac_backlight_nits = 5;
+    }
+
+    oneof battery_backlight {
+      // The backlight brightness percentage on battery power for this step.
+      double battery_backlight_percent = 2;
+
+      // The backlight brightness nits on battery power for this step
+      double battery_backlight_nits = 6;
+    }
 
     // The ALS sensor value below which the previous step should be considered.
     // A value of -1 denotes negative infinity and should be used for the first
@@ -382,5 +407,8 @@ message Component {
     // considered. A value of -1 denotes infinity and should be used for the
     // last step.
     int32 lux_increase_threshold = 4;
+
+    // The max luminance of the panel in nits.
+    double max_screen_brightness = 7;
   }
 }

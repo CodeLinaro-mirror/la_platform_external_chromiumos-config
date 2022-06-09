@@ -273,22 +273,25 @@
               "panelProperties": {
                 "alsSteps": [
                   {
-                    "acBacklightPercent": 80.0,
-                    "batteryBacklightPercent": 63.0,
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
                     "luxDecreaseThreshold": -1,
-                    "luxIncreaseThreshold": 400
+                    "luxIncreaseThreshold": 400,
+                    "maxScreenBrightness": 215.0
                   },
                   {
-                    "acBacklightPercent": 100.0,
-                    "batteryBacklightPercent": 80.0,
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
                     "luxDecreaseThreshold": 100,
-                    "luxIncreaseThreshold": -1
+                    "luxIncreaseThreshold": -1,
+                    "maxScreenBrightness": 215.0
                   }
                 ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
-                "noAlsAcBrightness": 80.0,
-                "noAlsBatteryBrightness": 63.0,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
                 "pixelsPerIn": 120,
                 "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
@@ -641,22 +644,25 @@
                   "panelProperties": {
                     "alsSteps": [
                       {
-                        "acBacklightPercent": 80.0,
-                        "batteryBacklightPercent": 63.0,
+                        "acBacklightNits": 133.0,
+                        "batteryBacklightNits": 80.0,
                         "luxDecreaseThreshold": -1,
-                        "luxIncreaseThreshold": 400
+                        "luxIncreaseThreshold": 400,
+                        "maxScreenBrightness": 215.0
                       },
                       {
-                        "acBacklightPercent": 100.0,
-                        "batteryBacklightPercent": 80.0,
+                        "acBacklightNits": 215.0,
+                        "batteryBacklightNits": 215.0,
                         "luxDecreaseThreshold": 100,
-                        "luxIncreaseThreshold": -1
+                        "luxIncreaseThreshold": -1,
+                        "maxScreenBrightness": 215.0
                       }
                     ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
-                    "noAlsAcBrightness": 80.0,
-                    "noAlsBatteryBrightness": 63.0,
+                    "maxScreenBrightness": 215.0,
+                    "noAlsAcBrightnessNits": 135.0,
+                    "noAlsBatteryBrightnessNits": 80.0,
                     "pixelsPerIn": 120,
                     "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
@@ -856,22 +862,25 @@
               "panelProperties": {
                 "alsSteps": [
                   {
-                    "acBacklightPercent": 80.0,
-                    "batteryBacklightPercent": 63.0,
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
                     "luxDecreaseThreshold": -1,
-                    "luxIncreaseThreshold": 400
+                    "luxIncreaseThreshold": 400,
+                    "maxScreenBrightness": 215.0
                   },
                   {
-                    "acBacklightPercent": 100.0,
-                    "batteryBacklightPercent": 80.0,
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
                     "luxDecreaseThreshold": 100,
-                    "luxIncreaseThreshold": -1
+                    "luxIncreaseThreshold": -1,
+                    "maxScreenBrightness": 215.0
                   }
                 ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
-                "noAlsAcBrightness": 80.0,
-                "noAlsBatteryBrightness": 63.0,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
                 "pixelsPerIn": 120,
                 "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
@@ -1174,22 +1183,25 @@
                   "panelProperties": {
                     "alsSteps": [
                       {
-                        "acBacklightPercent": 80.0,
-                        "batteryBacklightPercent": 63.0,
+                        "acBacklightNits": 133.0,
+                        "batteryBacklightNits": 80.0,
                         "luxDecreaseThreshold": -1,
-                        "luxIncreaseThreshold": 400
+                        "luxIncreaseThreshold": 400,
+                        "maxScreenBrightness": 215.0
                       },
                       {
-                        "acBacklightPercent": 100.0,
-                        "batteryBacklightPercent": 80.0,
+                        "acBacklightNits": 215.0,
+                        "batteryBacklightNits": 215.0,
                         "luxDecreaseThreshold": 100,
-                        "luxIncreaseThreshold": -1
+                        "luxIncreaseThreshold": -1,
+                        "maxScreenBrightness": 215.0
                       }
                     ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
-                    "noAlsAcBrightness": 80.0,
-                    "noAlsBatteryBrightness": 63.0,
+                    "maxScreenBrightness": 215.0,
+                    "noAlsAcBrightnessNits": 135.0,
+                    "noAlsBatteryBrightnessNits": 80.0,
                     "pixelsPerIn": 120,
                     "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
@@ -1390,22 +1402,25 @@
               "panelProperties": {
                 "alsSteps": [
                   {
-                    "acBacklightPercent": 80.0,
-                    "batteryBacklightPercent": 63.0,
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
                     "luxDecreaseThreshold": -1,
-                    "luxIncreaseThreshold": 400
+                    "luxIncreaseThreshold": 400,
+                    "maxScreenBrightness": 215.0
                   },
                   {
-                    "acBacklightPercent": 100.0,
-                    "batteryBacklightPercent": 80.0,
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
                     "luxDecreaseThreshold": 100,
-                    "luxIncreaseThreshold": -1
+                    "luxIncreaseThreshold": -1,
+                    "maxScreenBrightness": 215.0
                   }
                 ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
-                "noAlsAcBrightness": 80.0,
-                "noAlsBatteryBrightness": 63.0,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
                 "pixelsPerIn": 120,
                 "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
@@ -1710,22 +1725,25 @@
                   "panelProperties": {
                     "alsSteps": [
                       {
-                        "acBacklightPercent": 80.0,
-                        "batteryBacklightPercent": 63.0,
+                        "acBacklightNits": 133.0,
+                        "batteryBacklightNits": 80.0,
                         "luxDecreaseThreshold": -1,
-                        "luxIncreaseThreshold": 400
+                        "luxIncreaseThreshold": 400,
+                        "maxScreenBrightness": 215.0
                       },
                       {
-                        "acBacklightPercent": 100.0,
-                        "batteryBacklightPercent": 80.0,
+                        "acBacklightNits": 215.0,
+                        "batteryBacklightNits": 215.0,
                         "luxDecreaseThreshold": 100,
-                        "luxIncreaseThreshold": -1
+                        "luxIncreaseThreshold": -1,
+                        "maxScreenBrightness": 215.0
                       }
                     ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
-                    "noAlsAcBrightness": 80.0,
-                    "noAlsBatteryBrightness": 63.0,
+                    "maxScreenBrightness": 215.0,
+                    "noAlsAcBrightnessNits": 135.0,
+                    "noAlsBatteryBrightnessNits": 80.0,
                     "pixelsPerIn": 120,
                     "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
@@ -1929,22 +1947,25 @@
               "panelProperties": {
                 "alsSteps": [
                   {
-                    "acBacklightPercent": 80.0,
-                    "batteryBacklightPercent": 63.0,
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
                     "luxDecreaseThreshold": -1,
-                    "luxIncreaseThreshold": 400
+                    "luxIncreaseThreshold": 400,
+                    "maxScreenBrightness": 215.0
                   },
                   {
-                    "acBacklightPercent": 100.0,
-                    "batteryBacklightPercent": 80.0,
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
                     "luxDecreaseThreshold": 100,
-                    "luxIncreaseThreshold": -1
+                    "luxIncreaseThreshold": -1,
+                    "maxScreenBrightness": 215.0
                   }
                 ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
-                "noAlsAcBrightness": 80.0,
-                "noAlsBatteryBrightness": 63.0,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
                 "pixelsPerIn": 120,
                 "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
@@ -2254,22 +2275,25 @@
                   "panelProperties": {
                     "alsSteps": [
                       {
-                        "acBacklightPercent": 80.0,
-                        "batteryBacklightPercent": 63.0,
+                        "acBacklightNits": 133.0,
+                        "batteryBacklightNits": 80.0,
                         "luxDecreaseThreshold": -1,
-                        "luxIncreaseThreshold": 400
+                        "luxIncreaseThreshold": 400,
+                        "maxScreenBrightness": 215.0
                       },
                       {
-                        "acBacklightPercent": 100.0,
-                        "batteryBacklightPercent": 80.0,
+                        "acBacklightNits": 215.0,
+                        "batteryBacklightNits": 215.0,
                         "luxDecreaseThreshold": 100,
-                        "luxIncreaseThreshold": -1
+                        "luxIncreaseThreshold": -1,
+                        "maxScreenBrightness": 215.0
                       }
                     ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
-                    "noAlsAcBrightness": 80.0,
-                    "noAlsBatteryBrightness": 63.0,
+                    "maxScreenBrightness": 215.0,
+                    "noAlsAcBrightnessNits": 135.0,
+                    "noAlsBatteryBrightnessNits": 80.0,
                     "pixelsPerIn": 120,
                     "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
@@ -2475,22 +2499,25 @@
               "panelProperties": {
                 "alsSteps": [
                   {
-                    "acBacklightPercent": 80.0,
-                    "batteryBacklightPercent": 63.0,
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
                     "luxDecreaseThreshold": -1,
-                    "luxIncreaseThreshold": 400
+                    "luxIncreaseThreshold": 400,
+                    "maxScreenBrightness": 215.0
                   },
                   {
-                    "acBacklightPercent": 100.0,
-                    "batteryBacklightPercent": 80.0,
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
                     "luxDecreaseThreshold": 100,
-                    "luxIncreaseThreshold": -1
+                    "luxIncreaseThreshold": -1,
+                    "maxScreenBrightness": 215.0
                   }
                 ],
                 "diagonalMilliinch": 15000,
                 "heightPx": 1080,
-                "noAlsAcBrightness": 80.0,
-                "noAlsBatteryBrightness": 63.0,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
                 "pixelsPerIn": 120,
                 "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
@@ -2808,22 +2835,25 @@
                   "panelProperties": {
                     "alsSteps": [
                       {
-                        "acBacklightPercent": 80.0,
-                        "batteryBacklightPercent": 63.0,
+                        "acBacklightNits": 133.0,
+                        "batteryBacklightNits": 80.0,
                         "luxDecreaseThreshold": -1,
-                        "luxIncreaseThreshold": 400
+                        "luxIncreaseThreshold": 400,
+                        "maxScreenBrightness": 215.0
                       },
                       {
-                        "acBacklightPercent": 100.0,
-                        "batteryBacklightPercent": 80.0,
+                        "acBacklightNits": 215.0,
+                        "batteryBacklightNits": 215.0,
                         "luxDecreaseThreshold": 100,
-                        "luxIncreaseThreshold": -1
+                        "luxIncreaseThreshold": -1,
+                        "maxScreenBrightness": 215.0
                       }
                     ],
                     "diagonalMilliinch": 15000,
                     "heightPx": 1080,
-                    "noAlsAcBrightness": 80.0,
-                    "noAlsBatteryBrightness": 63.0,
+                    "maxScreenBrightness": 215.0,
+                    "noAlsAcBrightnessNits": 135.0,
+                    "noAlsBatteryBrightnessNits": 80.0,
                     "pixelsPerIn": 120,
                     "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
@@ -3045,7 +3075,7 @@
                 "alsSteps": [
                   {
                     "acBacklightPercent": 80.1,
-                    "batteryBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
                     "luxDecreaseThreshold": -1,
                     "luxIncreaseThreshold": 400
                   },
@@ -3537,7 +3567,7 @@
                     "alsSteps": [
                       {
                         "acBacklightPercent": 80.1,
-                        "batteryBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 60.1,
                         "luxDecreaseThreshold": -1,
                         "luxIncreaseThreshold": 400
                       },
@@ -3937,7 +3967,7 @@
                 "alsSteps": [
                   {
                     "acBacklightPercent": 80.1,
-                    "batteryBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
                     "luxDecreaseThreshold": -1,
                     "luxIncreaseThreshold": 400
                   },
@@ -4237,7 +4267,7 @@
                     "alsSteps": [
                       {
                         "acBacklightPercent": 80.1,
-                        "batteryBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 60.1,
                         "luxDecreaseThreshold": -1,
                         "luxIncreaseThreshold": 400
                       },
@@ -4427,7 +4457,7 @@
                 "alsSteps": [
                   {
                     "acBacklightPercent": 80.1,
-                    "batteryBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
                     "luxDecreaseThreshold": -1,
                     "luxIncreaseThreshold": 400
                   },
@@ -4716,7 +4746,7 @@
                     "alsSteps": [
                       {
                         "acBacklightPercent": 80.1,
-                        "batteryBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 60.1,
                         "luxDecreaseThreshold": -1,
                         "luxIncreaseThreshold": 400
                       },
@@ -4874,7 +4904,7 @@
                 "alsSteps": [
                   {
                     "acBacklightPercent": 80.1,
-                    "batteryBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
                     "luxDecreaseThreshold": -1,
                     "luxIncreaseThreshold": 400
                   },
@@ -5142,7 +5172,7 @@
                     "alsSteps": [
                       {
                         "acBacklightPercent": 80.1,
-                        "batteryBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 60.1,
                         "luxDecreaseThreshold": -1,
                         "luxIncreaseThreshold": 400
                       },
@@ -5300,7 +5330,7 @@
                 "alsSteps": [
                   {
                     "acBacklightPercent": 80.1,
-                    "batteryBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
                     "luxDecreaseThreshold": -1,
                     "luxIncreaseThreshold": 400
                   },
@@ -5550,7 +5580,7 @@
                     "alsSteps": [
                       {
                         "acBacklightPercent": 80.1,
-                        "batteryBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 60.1,
                         "luxDecreaseThreshold": -1,
                         "luxIncreaseThreshold": 400
                       },

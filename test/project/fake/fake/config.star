@@ -55,7 +55,7 @@ _SCREEN = hw_topo.create_screen(
     no_als_battery_brightness = 63.2,
     no_als_ac_brightness = 80.1,
     als_steps = [
-        hw_topo.create_als_step(None, 400, 80.1, 80.1),
+        hw_topo.create_als_step(None, 400, 80.1, 60.1),
         hw_topo.create_als_step(100, None, 100),
     ],
 )
@@ -68,11 +68,11 @@ _TOUCHSCREEN = hw_topo.create_screen(
     pixels_per_in = 120,
     touch = True,
     turn_off_screen_timeout_ms = 3000,
-    no_als_battery_brightness = 63.0,
-    no_als_ac_brightness = 80,
+    no_als_ac_brightness_nits = 135,
+    max_brightness_nits = 215,
     als_steps = [
-        hw_topo.create_als_step(None, 400, 80, 63),
-        hw_topo.create_als_step(100, None, 100, 80),
+        hw_topo.create_als_step(None, 400, ac_backlight_nits = 133, battery_backlight_nits = 80),
+        hw_topo.create_als_step(100, None, ac_backlight_nits = 215),
     ],
 )
 _HDMI = hw_topo.create_hdmi(

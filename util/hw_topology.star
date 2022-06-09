@@ -212,13 +212,39 @@ def _create_screen(
         pixels_per_in = None,
         touch = False,
         no_als_battery_brightness = None,
+        no_als_battery_brightness_nits = None,
         no_als_ac_brightness = None,
+        no_als_ac_brightness_nits = None,
+        max_brightness_nits = None,
         min_visible_backlight_level = None,
         turn_off_screen_timeout_ms = None,
         als_steps = None,
         fw_configs = []):
     """Builds a Topology proto for a screen."""
     hw_features = topo_pb.HardwareFeatures()
+
+    if no_als_battery_brightness and no_als_battery_brightness_nits:
+        fail("no_als_battery_brightness: Specify percentage or nits, not both")
+    if no_als_ac_brightness and no_als_ac_brightness_nits:
+        fail("no_als_ac_brightness: Specify percentage or nits, not both")
+
+    if (no_als_battery_brightness_nits or no_als_ac_brightness_nits) and not max_brightness_nits:
+        fail("max_brightness_nits must be specified when using " +
+             "no_als_battery_brightness_nits or no_als_ac_brightness_nits.")
+
+    if als_steps:
+        for step in als_steps:
+            if (step.battery_backlight_nits or step.ac_backlight_nits) and not max_brightness_nits:
+                fail("max_brightness_nits must be specified when using " +
+                     "AlsStep with battery_backlight_nits or " +
+                     "ac_backlight_nits.")
+            else:
+                step.max_screen_brightness = max_brightness_nits
+
+    if max_brightness_nits:
+        # The default battery brightnesses can be assumed to be 80 nits if omitted.
+        if not no_als_battery_brightness and not no_als_battery_brightness_nits:
+            no_als_battery_brightness_nits = 80
 
     hw_features.screen.panel_properties = comp_pb.Component.DisplayPanel.Properties(
         diagonal_milliinch = inches * 1000,
@@ -228,9 +254,12 @@ def _create_screen(
     )
     hw_features.screen.touch_support = _bool_to_present(touch)
     hw_features.screen.panel_properties.no_als_battery_brightness = no_als_battery_brightness
+    hw_features.screen.panel_properties.no_als_battery_brightness_nits = no_als_battery_brightness_nits
     hw_features.screen.panel_properties.no_als_ac_brightness = no_als_ac_brightness
+    hw_features.screen.panel_properties.no_als_ac_brightness_nits = no_als_ac_brightness_nits
     hw_features.screen.panel_properties.min_visible_backlight_level = min_visible_backlight_level
     hw_features.screen.panel_properties.als_steps = als_steps
+    hw_features.screen.panel_properties.max_screen_brightness = max_brightness_nits
     if turn_off_screen_timeout_ms != None:
         hw_features.screen.panel_properties.turn_off_screen_timeout_ms.value = turn_off_screen_timeout_ms
 
@@ -253,8 +282,10 @@ def _create_screen(
 def _create_als_step(
         lux_decrease_threshold,
         lux_increase_threshold,
-        ac_backlight_percent,
-        battery_backlight_percent = None):
+        ac_backlight_percent = None,
+        battery_backlight_percent = None,
+        ac_backlight_nits = None,
+        battery_backlight_nits = None):
     """Builds a Component.AlsStep.
 
     Args:
@@ -264,19 +295,40 @@ def _create_als_step(
     lux_increase_threshold: An int containing the sensor value above which the
         next step should be considered. A value of None indicates infinity.
     ac_backlight_percent: A double containing the backlight brightness
-        percentage to use at this step while on AC power.
+        percentage to use at this step while on AC power. One of
+        ac_backlight_percent or ac_backlight_nits must be set.
+    ac_backlight_nits: A double containing the backlight brightess in nits to
+        use at this step while on AC power. One of ac_backlight_percent or
+        ac_backlight_nits must be set.
     battery_backlight_percent: A double containing the backlight brightness
         percentage to use at this step while on battery power. If unset,
-        defaults to the ac_backlight_percent value.
+        defaults to the ac_backlight_percent value. Only oen of
+        battery_backlight_percent or backlight_battery_nits can be set.
+    battery_backlight_nits: A double containing the backlight brighness in nits
+        to use at this step while on battery power. If unset, defaults to the
+        ac_backlight_nits value. Only one of battery_backlight_percent or
+        battery_backlight_nits can be set.
     """
+    if ac_backlight_percent and ac_backlight_nits:
+        fail("ac_backlight: Specify percentage or nits, not both")
+    if not ac_backlight_percent and not ac_backlight_nits:
+        fail("One of ac_backlight_percent and ac_backlight_nits must be set")
+    if battery_backlight_percent and battery_backlight_nits:
+        fail("battery_backlight: Specify percentage or nits, not both")
+
     step = comp_pb.Component.AlsStep()
     step.lux_increase_threshold = lux_increase_threshold if lux_increase_threshold != None else -1
     step.lux_decrease_threshold = lux_decrease_threshold if lux_decrease_threshold != None else -1
     step.ac_backlight_percent = ac_backlight_percent
+    step.ac_backlight_nits = ac_backlight_nits
     if battery_backlight_percent != None:
         step.battery_backlight_percent = battery_backlight_percent
     else:
         step.battery_backlight_percent = step.ac_backlight_percent
+    if battery_backlight_nits != None:
+        step.battery_backlight_nits = battery_backlight_nits
+    else:
+        step.battery_backlight_nits = step.ac_backlight_nits
     return step
 
 def _create_form_factor(form_factor, recovery_input = None, fw_configs = [], id = None, description = None):

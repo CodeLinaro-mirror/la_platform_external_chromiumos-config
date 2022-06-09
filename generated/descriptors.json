@@ -1524,6 +1524,15 @@
                       "label": "LABEL_OPTIONAL",
                       "name": "no_als_battery_brightness",
                       "number": 8,
+                      "oneofIndex": 0,
+                      "type": "TYPE_DOUBLE"
+                    },
+                    {
+                      "jsonName": "noAlsBatteryBrightnessNits",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "no_als_battery_brightness_nits",
+                      "number": 11,
+                      "oneofIndex": 0,
                       "type": "TYPE_DOUBLE"
                     },
                     {
@@ -1531,6 +1540,15 @@
                       "label": "LABEL_OPTIONAL",
                       "name": "no_als_ac_brightness",
                       "number": 9,
+                      "oneofIndex": 1,
+                      "type": "TYPE_DOUBLE"
+                    },
+                    {
+                      "jsonName": "noAlsAcBrightnessNits",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "no_als_ac_brightness_nits",
+                      "number": 12,
+                      "oneofIndex": 1,
                       "type": "TYPE_DOUBLE"
                     },
                     {
@@ -1540,9 +1558,24 @@
                       "number": 10,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.Component.AlsStep"
+                    },
+                    {
+                      "jsonName": "maxScreenBrightness",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "max_screen_brightness",
+                      "number": 13,
+                      "type": "TYPE_DOUBLE"
                     }
                   ],
-                  "name": "Properties"
+                  "name": "Properties",
+                  "oneofDecl": [
+                    {
+                      "name": "battery_brightness"
+                    },
+                    {
+                      "name": "ac_brightness"
+                    }
+                  ]
                 }
               ]
             },
@@ -2028,6 +2061,15 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "ac_backlight_percent",
                   "number": 1,
+                  "oneofIndex": 0,
+                  "type": "TYPE_DOUBLE"
+                },
+                {
+                  "jsonName": "acBacklightNits",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ac_backlight_nits",
+                  "number": 5,
+                  "oneofIndex": 0,
                   "type": "TYPE_DOUBLE"
                 },
                 {
@@ -2035,6 +2077,15 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "battery_backlight_percent",
                   "number": 2,
+                  "oneofIndex": 1,
+                  "type": "TYPE_DOUBLE"
+                },
+                {
+                  "jsonName": "batteryBacklightNits",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "battery_backlight_nits",
+                  "number": 6,
+                  "oneofIndex": 1,
                   "type": "TYPE_DOUBLE"
                 },
                 {
@@ -2050,9 +2101,24 @@
                   "name": "lux_increase_threshold",
                   "number": 4,
                   "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "maxScreenBrightness",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "max_screen_brightness",
+                  "number": 7,
+                  "type": "TYPE_DOUBLE"
                 }
               ],
-              "name": "AlsStep"
+              "name": "AlsStep",
+              "oneofDecl": [
+                {
+                  "name": "ac_backlight"
+                },
+                {
+                  "name": "battery_backlight"
+                }
+              ]
             }
           ],
           "oneofDecl": [
