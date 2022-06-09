@@ -15127,6 +15127,20 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "overrideVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_version",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "overrideInstallPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_install_path",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "InstallLacrosRequest"

@@ -149,6 +149,8 @@ message InstallCrosMetadata {
 
 message InstallLacrosRequest {
   StoragePath lacros_image_path = 1;
+  string override_version = 2;
+  string override_install_path = 3;
 }
 
 message InstallLacrosResponse {
