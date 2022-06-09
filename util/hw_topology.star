@@ -19,50 +19,52 @@ load(
 )
 load("//config/util/hw_features.star", "hw_feat")
 
+_HW_FEAT = topo_pb.HardwareFeatures
+
 _PRESENT = struct(
-    UNKNOWN = topo_pb.HardwareFeatures.PRESENT_UNKNOWN,
-    PRESENT = topo_pb.HardwareFeatures.PRESENT,
-    NOT_PRESENT = topo_pb.HardwareFeatures.NOT_PRESENT,
+    UNKNOWN = _HW_FEAT.PRESENT_UNKNOWN,
+    PRESENT = _HW_FEAT.PRESENT,
+    NOT_PRESENT = _HW_FEAT.NOT_PRESENT,
 )
 
 _AUDIO_CODEC = struct(
-    RT5682 = topo_pb.HardwareFeatures.Audio.RT5682,
-    ALC5682I = topo_pb.HardwareFeatures.Audio.ALC5682I,
-    ALC5682 = topo_pb.HardwareFeatures.Audio.ALC5682,
-    DA7219 = topo_pb.HardwareFeatures.Audio.DA7219,
-    NAU88L25B = topo_pb.HardwareFeatures.Audio.NAU88L25B,
-    CS42L42 = topo_pb.HardwareFeatures.Audio.CS42L42,
-    ALC5682IVS = topo_pb.HardwareFeatures.Audio.ALC5682IVS,
-    WCD9385 = topo_pb.HardwareFeatures.Audio.WCD9385,
+    RT5682 = _HW_FEAT.Audio.RT5682,
+    ALC5682I = _HW_FEAT.Audio.ALC5682I,
+    ALC5682 = _HW_FEAT.Audio.ALC5682,
+    DA7219 = _HW_FEAT.Audio.DA7219,
+    NAU88L25B = _HW_FEAT.Audio.NAU88L25B,
+    CS42L42 = _HW_FEAT.Audio.CS42L42,
+    ALC5682IVS = _HW_FEAT.Audio.ALC5682IVS,
+    WCD9385 = _HW_FEAT.Audio.WCD9385,
 )
 
 _AMPLIFIER = struct(
-    MAX98357 = topo_pb.HardwareFeatures.Audio.MAX98357,
-    MAX98373 = topo_pb.HardwareFeatures.Audio.MAX98373,
-    MAX98360 = topo_pb.HardwareFeatures.Audio.MAX98360,
-    RT1015 = topo_pb.HardwareFeatures.Audio.RT1015,
-    ALC1011 = topo_pb.HardwareFeatures.Audio.ALC1011,
-    RT1015P = topo_pb.HardwareFeatures.Audio.RT1015P,
-    ALC1019 = topo_pb.HardwareFeatures.Audio.ALC1019,
-    MAX98390 = topo_pb.HardwareFeatures.Audio.MAX98390,
-    MAX98396 = topo_pb.HardwareFeatures.Audio.MAX98396,
-    CS35L41 = topo_pb.HardwareFeatures.Audio.CS35L41,
+    MAX98357 = _HW_FEAT.Audio.MAX98357,
+    MAX98373 = _HW_FEAT.Audio.MAX98373,
+    MAX98360 = _HW_FEAT.Audio.MAX98360,
+    RT1015 = _HW_FEAT.Audio.RT1015,
+    ALC1011 = _HW_FEAT.Audio.ALC1011,
+    RT1015P = _HW_FEAT.Audio.RT1015P,
+    ALC1019 = _HW_FEAT.Audio.ALC1019,
+    MAX98390 = _HW_FEAT.Audio.MAX98390,
+    MAX98396 = _HW_FEAT.Audio.MAX98396,
+    CS35L41 = _HW_FEAT.Audio.CS35L41,
 )
 
 _CELLULAR = struct(
-    NOT_PRESENT = topo_pb.HardwareFeatures.Cellular.NOT_PRESENT,
-    CELLULAR_LTE = topo_pb.HardwareFeatures.Cellular.CELLULAR_LTE,
-    CELLULAR_5G = topo_pb.HardwareFeatures.Cellular.CELLULAR_5G,
+    NOT_PRESENT = _HW_FEAT.Cellular.NOT_PRESENT,
+    CELLULAR_LTE = _HW_FEAT.Cellular.CELLULAR_LTE,
+    CELLULAR_5G = _HW_FEAT.Cellular.CELLULAR_5G,
 )
 
 _FP_LOC = struct(
-    NOT_PRESENT = topo_pb.HardwareFeatures.Fingerprint.NOT_PRESENT,
-    POWER_BUTTON_TOP_LEFT = topo_pb.HardwareFeatures.Fingerprint.POWER_BUTTON_TOP_LEFT,
-    KEYBOARD_BOTTOM_LEFT = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_BOTTOM_LEFT,
-    KEYBOARD_BOTTOM_RIGHT = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_BOTTOM_RIGHT,
-    KEYBOARD_TOP_RIGHT = topo_pb.HardwareFeatures.Fingerprint.KEYBOARD_TOP_RIGHT,
-    RIGHT_SIDE = topo_pb.HardwareFeatures.Fingerprint.RIGHT_SIDE,
-    LEFT_SIDE = topo_pb.HardwareFeatures.Fingerprint.LEFT_SIDE,
+    NOT_PRESENT = _HW_FEAT.Fingerprint.NOT_PRESENT,
+    POWER_BUTTON_TOP_LEFT = _HW_FEAT.Fingerprint.POWER_BUTTON_TOP_LEFT,
+    KEYBOARD_BOTTOM_LEFT = _HW_FEAT.Fingerprint.KEYBOARD_BOTTOM_LEFT,
+    KEYBOARD_BOTTOM_RIGHT = _HW_FEAT.Fingerprint.KEYBOARD_BOTTOM_RIGHT,
+    KEYBOARD_TOP_RIGHT = _HW_FEAT.Fingerprint.KEYBOARD_TOP_RIGHT,
+    RIGHT_SIDE = _HW_FEAT.Fingerprint.RIGHT_SIDE,
+    LEFT_SIDE = _HW_FEAT.Fingerprint.LEFT_SIDE,
 )
 
 _STORAGE = struct(
@@ -74,65 +76,65 @@ _STORAGE = struct(
 )
 
 _KB_TYPE = struct(
-    NONE = topo_pb.HardwareFeatures.Keyboard.NONE,
-    INTERNAL = topo_pb.HardwareFeatures.Keyboard.INTERNAL,
-    DETACHABLE = topo_pb.HardwareFeatures.Keyboard.DETACHABLE,
+    NONE = _HW_FEAT.Keyboard.NONE,
+    INTERNAL = _HW_FEAT.Keyboard.INTERNAL,
+    DETACHABLE = _HW_FEAT.Keyboard.DETACHABLE,
 )
 
 _STYLUS = struct(
-    NONE = topo_pb.HardwareFeatures.Stylus.NONE,
-    INTERNAL = topo_pb.HardwareFeatures.Stylus.INTERNAL,
-    EXTERNAL = topo_pb.HardwareFeatures.Stylus.EXTERNAL,
+    NONE = _HW_FEAT.Stylus.NONE,
+    INTERNAL = _HW_FEAT.Stylus.INTERNAL,
+    EXTERNAL = _HW_FEAT.Stylus.EXTERNAL,
 )
 
 _REGION = struct(
-    SCREEN = topo_pb.HardwareFeatures.Button.SCREEN,
-    KEYBOARD = topo_pb.HardwareFeatures.Button.KEYBOARD,
+    SCREEN = _HW_FEAT.Button.SCREEN,
+    KEYBOARD = _HW_FEAT.Button.KEYBOARD,
 )
 
 _EDGE = struct(
-    LEFT = topo_pb.HardwareFeatures.Button.LEFT,
-    RIGHT = topo_pb.HardwareFeatures.Button.RIGHT,
-    TOP = topo_pb.HardwareFeatures.Button.TOP,
-    BOTTOM = topo_pb.HardwareFeatures.Button.BOTTOM,
+    LEFT = _HW_FEAT.Button.LEFT,
+    RIGHT = _HW_FEAT.Button.RIGHT,
+    TOP = _HW_FEAT.Button.TOP,
+    BOTTOM = _HW_FEAT.Button.BOTTOM,
 )
 
 _CAMERA_FLAGS = struct(
-    SUPPORT_1080P = topo_pb.HardwareFeatures.Camera.FLAGS_SUPPORT_1080P,
-    SUPPORT_AUTOFOCUS = topo_pb.HardwareFeatures.Camera.FLAGS_SUPPORT_AUTOFOCUS,
+    SUPPORT_1080P = _HW_FEAT.Camera.FLAGS_SUPPORT_1080P,
+    SUPPORT_AUTOFOCUS = _HW_FEAT.Camera.FLAGS_SUPPORT_AUTOFOCUS,
 )
 
 _EC_TYPE = struct(
-    UNKNOWN = topo_pb.HardwareFeatures.EmbeddedController.EC_TYPE_UNKNOWN,
-    CHROME = topo_pb.HardwareFeatures.EmbeddedController.EC_CHROME,
-    WILCO = topo_pb.HardwareFeatures.EmbeddedController.EC_WILCO,
+    UNKNOWN = _HW_FEAT.EmbeddedController.EC_TYPE_UNKNOWN,
+    CHROME = _HW_FEAT.EmbeddedController.EC_CHROME,
+    WILCO = _HW_FEAT.EmbeddedController.EC_WILCO,
 )
 
 _TPM_TYPE = struct(
-    UNKNOWN = topo_pb.HardwareFeatures.TrustedPlatformModule.TPM_TYPE_UNKNOWN,
-    THIRD_PARTY = topo_pb.HardwareFeatures.TrustedPlatformModule.THIRD_PARTY,
-    GSC_H1B = topo_pb.HardwareFeatures.TrustedPlatformModule.GSC_H1B,
-    GSC_H1D = topo_pb.HardwareFeatures.TrustedPlatformModule.GSC_H1D,
+    UNKNOWN = _HW_FEAT.TrustedPlatformModule.TPM_TYPE_UNKNOWN,
+    THIRD_PARTY = _HW_FEAT.TrustedPlatformModule.THIRD_PARTY,
+    GSC_H1B = _HW_FEAT.TrustedPlatformModule.GSC_H1B,
+    GSC_H1D = _HW_FEAT.TrustedPlatformModule.GSC_H1D,
 )
 
 _PORT_POSITION = struct(
-    LEFT = topo_pb.HardwareFeatures.LEFT,
-    RIGHT = topo_pb.HardwareFeatures.RIGHT,
-    BACK = topo_pb.HardwareFeatures.BACK,
-    FRONT = topo_pb.HardwareFeatures.FRONT,
+    LEFT = _HW_FEAT.LEFT,
+    RIGHT = _HW_FEAT.RIGHT,
+    BACK = _HW_FEAT.BACK,
+    FRONT = _HW_FEAT.FRONT,
 )
 
 _AUDIO_CONFIG_STRUCTURE = struct(
-    NONE = topo_pb.HardwareFeatures.Audio.AUDIO_CONFIG_STRUCTURE_NONE,
-    DESIGN = topo_pb.HardwareFeatures.Audio.DESIGN,
-    COMMON = topo_pb.HardwareFeatures.Audio.COMMON,
+    NONE = _HW_FEAT.Audio.AUDIO_CONFIG_STRUCTURE_NONE,
+    DESIGN = _HW_FEAT.Audio.DESIGN,
+    COMMON = _HW_FEAT.Audio.COMMON,
 )
 
 _RECOVERY_INPUT = struct(
-    UNKNOWN = topo_pb.HardwareFeatures.FormFactor.RECOVERY_INPUT_UNKNOWN,
-    KEYBOARD = topo_pb.HardwareFeatures.FormFactor.KEYBOARD,
-    POWER_BUTTON = topo_pb.HardwareFeatures.FormFactor.POWER_BUTTON,
-    RECOVERY_BUTTON = topo_pb.HardwareFeatures.FormFactor.RECOVERY_BUTTON,
+    UNKNOWN = _HW_FEAT.FormFactor.RECOVERY_INPUT_UNKNOWN,
+    KEYBOARD = _HW_FEAT.FormFactor.KEYBOARD,
+    POWER_BUTTON = _HW_FEAT.FormFactor.POWER_BUTTON,
+    RECOVERY_BUTTON = _HW_FEAT.FormFactor.RECOVERY_BUTTON,
 )
 
 # Starlark doesn't support converting enums to their names. Add helper fns. to
@@ -162,7 +164,7 @@ def _make_fw_config(mask, id):
     if shifted_id & mask != shifted_id:
         fail("Specified id %d out of range [0, %d]" % (id, mask // lsb_bit_set))
 
-    return topo_pb.HardwareFeatures.FirmwareConfiguration(
+    return _HW_FEAT.FirmwareConfiguration(
         value = shifted_id,
         mask = mask,
     )
@@ -182,8 +184,8 @@ def _accumulate_fw_configs(result_hw_features, fw_configs):
 
 def _create_design_features(form_factor = hw_feat.form_factor.CLAMSHELL):
     """Builds a HardwareFeatures proto with form_factor."""
-    return topo_pb.HardwareFeatures(
-        form_factor = topo_pb.HardwareFeatures.FormFactor(
+    return _HW_FEAT(
+        form_factor = _HW_FEAT.FormFactor(
             form_factor = form_factor,
         ),
     )
@@ -221,7 +223,7 @@ def _create_screen(
         als_steps = None,
         fw_configs = []):
     """Builds a Topology proto for a screen."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     if no_als_battery_brightness and no_als_battery_brightness_nits:
         fail("no_als_battery_brightness: Specify percentage or nits, not both")
@@ -374,7 +376,7 @@ def _create_form_factor(form_factor, recovery_input = None, fw_configs = [], id 
             hw_feat.form_factor.CHROMESLATE: hw_feat.recovery_input.POWER_BUTTON,
         }[form_factor]
 
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.form_factor.form_factor = form_factor
     hw_features.form_factor.recovery_input = recovery_input
@@ -431,7 +433,7 @@ def _create_audio_card_config(
     if ucm_config == _AUDIO_CONFIG_STRUCTURE.NONE:
         fail("ucm_config cannot be NONE.")
 
-    config = topo_pb.HardwareFeatures.Audio.CardConfig(
+    config = _HW_FEAT.Audio.CardConfig(
         card_name = card_name,
         sound_card_init_config = sound_card_init_config,
         cras_config = cras_config,
@@ -466,7 +468,7 @@ def _create_audio(
             cras config files are structured. If unset, defaults to
             DESIGN if any card_configs are passed, otherwise NONE.
     """
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     if codec:
         hw_features.audio.audio_codec = codec
@@ -503,7 +505,7 @@ def _override_audio(
     topo = proto.clone(source_topo)
     hw_features = topo.hardware_feature
     if fw_configs != None:
-        hw_features.fw_config = topo_pb.HardwareFeatures.FirmwareConfiguration()
+        hw_features.fw_config = _HW_FEAT.FirmwareConfiguration()
         _accumulate_fw_configs(hw_features.fw_config, fw_configs)
     for card_config in hw_features.audio.card_configs:
         if ucm_config != None:
@@ -522,7 +524,7 @@ def _override_audio(
 
 def _create_stylus(id, description, stylus_type, fw_configs = []):
     """Builds a Topology proto for a stylus."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.stylus.stylus = stylus_type
 
@@ -561,9 +563,9 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
     if not description:
         # Starlark doesn't seem to have a way to find the enum name with
         # reflection.
-        if kb_type == topo_pb.HardwareFeatures.Keyboard.INTERNAL:
+        if kb_type == _HW_FEAT.Keyboard.INTERNAL:
             type_str = "Internal"
-        elif kb_type == topo_pb.HardwareFeatures.Keyboard.DETACHABLE:
+        elif kb_type == _HW_FEAT.Keyboard.DETACHABLE:
             type_str = "Detachable"
         else:
             type_str = "Unknown type"
@@ -573,7 +575,7 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
             backlight = "with" if backlight else "without",
         )
 
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.keyboard.keyboard_type = kb_type
     hw_features.keyboard.backlight = _bool_to_present(backlight)
@@ -592,7 +594,7 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
 
 def _create_thermal(id, description, fw_configs = []):
     """Builds a Topology proto for thermal."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -612,7 +614,7 @@ def _make_camera_device(
         privacy_switch_present = None,
         microphone_count = None):
     """Builds a HardwareFeatures.Camera.Device proto."""
-    camera_pb = topo_pb.HardwareFeatures.Camera
+    camera_pb = _HW_FEAT.Camera
     device = camera_pb.Device()
 
     device.interface = {
@@ -653,7 +655,7 @@ def _create_camera(
         fw_configs: A list of FirmwareConfiguration protos for the form factor.
         camera_devices: A list of HardwareFeatures.Camera.Device protos.
     """
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     camera = hw_features.camera
     camera.devices = camera_devices
@@ -680,7 +682,7 @@ def _create_sensor(
         lid_light_present = None,
         base_light_present = None):
     """Builds a Topology proto for accelerometer/gyroscrope/magnometer sensors."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -717,7 +719,7 @@ def _create_sensor(
 
 def _create_fingerprint(id, description, location, board = None, fw_configs = []):
     """Builds a Topology proto for a fingerprint reader."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.fingerprint.location = location
     if board:
@@ -736,7 +738,7 @@ def _create_fingerprint(id, description, location, board = None, fw_configs = []
 
 def _create_hps(id, description, present = False, fw_configs = []):
     """Builds a Topology proto for HPS."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.hps.present = _bool_to_present(present)
 
@@ -755,8 +757,8 @@ def _create_dp_converter(id, description, names = []):
         id = id,
         type = topo_pb.Topology.DP_CONVERTER,
         description = {"EN": description},
-        hardware_feature = topo_pb.HardwareFeatures(
-            dp_converter = topo_pb.HardwareFeatures.DisplayPortConverter(
+        hardware_feature = _HW_FEAT(
+            dp_converter = _HW_FEAT.DisplayPortConverter(
                 converters = [
                     comp_pb.Component.DisplayPortConverter(name = name)
                     for name in names
@@ -767,7 +769,7 @@ def _create_dp_converter(id, description, names = []):
 
 def _create_poe(id, description, present = False, fw_configs = []):
     """Builds a Topology proto for PoE."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.poe.present = _bool_to_present(present)
 
@@ -782,7 +784,7 @@ def _create_poe(id, description, present = False, fw_configs = []):
 
 def _create_proximity_sensor(id, description, fw_configs = []):
     """Builds a Topology proto for a proximity sensor."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.proximity = {}
 
@@ -797,7 +799,7 @@ def _create_proximity_sensor(id, description, fw_configs = []):
 
 def _create_hdmi(id, description, fw_configs = []):
     """Builds a Topology proto for HDMI."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -826,7 +828,7 @@ def _create_daughter_board(
         side = None,
         usbc_ports = None):
     """Builds a Topology proto for a daughter board."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -855,7 +857,7 @@ def _create_daughter_board(
 
 def _create_non_volatile_storage(id, description, storage_type, fw_configs = []):
     """Builds a Topology proto for non-volatile storage."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.storage.storage_type = storage_type
 
@@ -870,7 +872,7 @@ def _create_non_volatile_storage(id, description, storage_type, fw_configs = [])
 
 def _create_wifi(id, description, fw_configs = [], wifi_config = None):
     """Builds a Topology proto for a WiFi chip."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     if wifi_config:
         hw_features.wifi.wifi_config = wifi_config
@@ -894,7 +896,7 @@ def _create_cellular_board(
         attach_apn_required = None,
         dynamic_power_reduction_config = None):
     """Builds a Topology proto for a Cellular board."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.cellular.present = _bool_to_present(present)
     hw_features.cellular.model = model
@@ -916,7 +918,7 @@ def _make_cellular_dynamic_power_reduction_config(
         modem_manager = False,
         tablet_mode = None):
     """Builds a configuration for cellular dynamic power reduction."""
-    config = topo_pb.HardwareFeatures.Cellular.DynamicPowerReductionConfig()
+    config = _HW_FEAT.Cellular.DynamicPowerReductionConfig()
 
     if gpio != None:
         config.gpio = gpio
@@ -931,7 +933,7 @@ def _make_cellular_dynamic_power_reduction_config(
 
 def _create_sd_reader(id, description, fw_configs = []):
     """Builds a Topology proto for a SD reader."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -944,28 +946,28 @@ def _create_sd_reader(id, description, fw_configs = []):
 
 _USB_PORT_POSITIONS = {
     _PORT_POSITION.LEFT: {
-        _PORT_POSITION.FRONT: topo_pb.HardwareFeatures.LEFT_FRONT,
-        _PORT_POSITION.BACK: topo_pb.HardwareFeatures.LEFT_BACK,
-        topo_pb.HardwareFeatures.UNKNOWN: _PORT_POSITION.LEFT,
+        _PORT_POSITION.FRONT: _HW_FEAT.LEFT_FRONT,
+        _PORT_POSITION.BACK: _HW_FEAT.LEFT_BACK,
+        _HW_FEAT.UNKNOWN: _PORT_POSITION.LEFT,
     },
     _PORT_POSITION.RIGHT: {
-        _PORT_POSITION.FRONT: topo_pb.HardwareFeatures.RIGHT_FRONT,
-        _PORT_POSITION.BACK: topo_pb.HardwareFeatures.RIGHT_BACK,
-        topo_pb.HardwareFeatures.UNKNOWN: _PORT_POSITION.RIGHT,
+        _PORT_POSITION.FRONT: _HW_FEAT.RIGHT_FRONT,
+        _PORT_POSITION.BACK: _HW_FEAT.RIGHT_BACK,
+        _HW_FEAT.UNKNOWN: _PORT_POSITION.RIGHT,
     },
     _PORT_POSITION.BACK: {
-        _PORT_POSITION.LEFT: topo_pb.HardwareFeatures.BACK_LEFT,
-        _PORT_POSITION.RIGHT: topo_pb.HardwareFeatures.BACK_RIGHT,
-        topo_pb.HardwareFeatures.UNKNOWN: _PORT_POSITION.BACK,
+        _PORT_POSITION.LEFT: _HW_FEAT.BACK_LEFT,
+        _PORT_POSITION.RIGHT: _HW_FEAT.BACK_RIGHT,
+        _HW_FEAT.UNKNOWN: _PORT_POSITION.BACK,
     },
 }
 
 def _normalize_usbc_port(side, port):
     position = _USB_PORT_POSITIONS.get(side, {}).get(
         port.position,
-        topo_pb.HardwareFeatures.UNKNOWN,
+        _HW_FEAT.UNKNOWN,
     )
-    normalized_port = topo_pb.HardwareFeatures.UsbC.Port()
+    normalized_port = _HW_FEAT.UsbC.Port()
     normalized_port.position = position
     if proto.has(port, "index_override"):
         normalized_port.index_override = port.index_override
@@ -977,7 +979,7 @@ def _build_usbc(side, ports, count, usb4, defer_external_display_timeout):
     else:
         ports = [_create_usbc_port()] * count
 
-    result = topo_pb.HardwareFeatures.UsbC()
+    result = _HW_FEAT.UsbC()
     result.usb4 = usb4
     result.count.value = count
 
@@ -988,11 +990,11 @@ def _build_usbc(side, ports, count, usb4, defer_external_display_timeout):
         result.ports = [_normalize_usbc_port(side, port) for port in ports]
     return result
 
-def _create_usbc_port(position = topo_pb.HardwareFeatures.UNKNOWN, index_override = None):
+def _create_usbc_port(position = _HW_FEAT.UNKNOWN, index_override = None):
     """Builds a UsbC Port.
 
     Args:
-        position: An optional topo_pb.HardwareFeatures.PortPosition indicating
+        position: An optional _HW_FEAT.PortPosition indicating
             the position of this port on the side of the chassis it occupies.
             Required if more than one USB-C port is present on the same side of
             the chassis.
@@ -1002,7 +1004,7 @@ def _create_usbc_port(position = topo_pb.HardwareFeatures.UNKNOWN, index_overrid
             specified, leaving gaps as needed for ports with an override set.
             If set, this value must be in the range [0, number_of_usb_c_ports).
     """
-    port = topo_pb.HardwareFeatures.UsbC.Port()
+    port = _HW_FEAT.UsbC.Port()
     port.position = position
     if index_override != None:
         port.index_override.value = index_override
@@ -1019,7 +1021,7 @@ def _create_motherboard_usb(
         side = None,
         usbc_ports = None):
     """Builds a Topology proto for a motherboard."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -1041,7 +1043,7 @@ def _create_motherboard_usb(
 
 def _create_bluetooth(id, description, bt_component, fw_configs = [], present = True):
     """Builds a Topology proto for bluetooth."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.bluetooth.present = _bool_to_present(present)
     hw_features.bluetooth.component = bt_component
@@ -1057,7 +1059,7 @@ def _create_bluetooth(id, description, bt_component, fw_configs = [], present = 
 
 def _create_barreljack(id, description, bj_present, fw_configs = []):
     """Builds a Topology proto for barreljack."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.barreljack.present = _bool_to_present(bj_present)
 
@@ -1082,7 +1084,7 @@ def _create_power_supply(id, description, bj_present = False, usb_min_ac_watts =
         fw_configs: A list of firmware configs implied by the Topology.
 
     """
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     hw_features.power_supply.barreljack = _bool_to_present(bj_present)
 
@@ -1131,8 +1133,8 @@ def _create_power_button(region, edge, position, id = None, description = None):
         id = id,
         type = topo_pb.Topology.POWER_BUTTON,
         description = {"EN": description},
-        hardware_feature = topo_pb.HardwareFeatures(
-            power_button = topo_pb.HardwareFeatures.Button(
+        hardware_feature = _HW_FEAT(
+            power_button = _HW_FEAT.Button(
                 region = region,
                 edge = edge,
                 position = position,
@@ -1173,8 +1175,8 @@ def _create_volume_button(region, edge, position, id = None, description = None)
         id = id,
         type = topo_pb.Topology.POWER_BUTTON,
         description = {"EN": description},
-        hardware_feature = topo_pb.HardwareFeatures(
-            volume_button = topo_pb.HardwareFeatures.Button(
+        hardware_feature = _HW_FEAT(
+            volume_button = _HW_FEAT.Button(
                 region = region,
                 edge = edge,
                 position = position,
@@ -1191,7 +1193,7 @@ def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None):
         id: A string identifier for the Topology. If not passed, a default is
             provided.
     """
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
     hw_features.embedded_controller.ec_type = ec_type
     hw_features.embedded_controller.present = _bool_to_present(present)
 
@@ -1208,7 +1210,7 @@ _EC_WILCO = _create_ec(ec_type = _EC_TYPE.WILCO)
 
 def _create_touch(id, description, fw_configs = [], touch_slop_distance = None):
     """Builds a Topology proto for touch."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
     if touch_slop_distance != None:
         hw_features.touch.touch_slop_distance.value = touch_slop_distance
 
@@ -1230,7 +1232,7 @@ def _create_tpm(tpm_type = _TPM_TYPE.GSC_H1B, id = None, fw_configs = []):
             provided.
         fw_configs: A list of FirmwareConfiguration protos for the tpm.
     """
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
     hw_features.trusted_platform_module.tpm_type = tpm_type
 
     _accumulate_fw_configs(hw_features, fw_configs)
@@ -1248,7 +1250,7 @@ def _create_microphone_mute_switch(present = False):
         present: flag indicating whether the device has an microphone mute
 	         switch
     """
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
     hw_features.microphone_mute_switch.present = _bool_to_present(present)
 
     return topo_pb.Topology(
@@ -1444,7 +1446,7 @@ def _accumulate_hdmi(existing_hdmi, new_hdmi):
 
 def _convert_to_hw_features(hardware_topology):
     """Converts a HardwareTopology proto to a HardwareFeatures proto."""
-    result = topo_pb.HardwareFeatures()
+    result = _HW_FEAT()
 
     # Need to make deep-copy otherwise we change the has_ message serialization
     copy = proto.from_textpb(hw_topo_pb.HardwareTopology, proto.to_textpb(hardware_topology))
@@ -1452,25 +1454,25 @@ def _convert_to_hw_features(hardware_topology):
     # Handle all possible screen hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.screen.hardware_feature.fw_config)
 
-    if copy.screen.hardware_feature.screen != topo_pb.HardwareFeatures.Screen():
+    if copy.screen.hardware_feature.screen != _HW_FEAT.Screen():
         result.screen = copy.screen.hardware_feature.screen
 
     # Handle all possible form factor hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.form_factor.hardware_feature.fw_config)
 
-    if copy.form_factor.hardware_feature.form_factor != topo_pb.HardwareFeatures.FormFactor():
+    if copy.form_factor.hardware_feature.form_factor != _HW_FEAT.FormFactor():
         result.form_factor = copy.form_factor.hardware_feature.form_factor
 
     # Handle all possible audio features attributes
     _accumulate_fw_config(result.fw_config, copy.audio.hardware_feature.fw_config)
 
-    if copy.audio.hardware_feature.audio != topo_pb.HardwareFeatures.Audio():
+    if copy.audio.hardware_feature.audio != _HW_FEAT.Audio():
         result.audio = copy.audio.hardware_feature.audio
 
     # Handle all possible stylus hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.stylus.hardware_feature.fw_config)
 
-    if copy.stylus.hardware_feature.stylus != topo_pb.HardwareFeatures.Stylus():
+    if copy.stylus.hardware_feature.stylus != _HW_FEAT.Stylus():
         result.stylus = copy.stylus.hardware_feature.stylus
 
     # Handle all possible tpm features attributes
@@ -1479,7 +1481,7 @@ def _convert_to_hw_features(hardware_topology):
     # Handle all possible keyboard hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.keyboard.hardware_feature.fw_config)
 
-    if copy.keyboard.hardware_feature.keyboard != topo_pb.HardwareFeatures.Keyboard():
+    if copy.keyboard.hardware_feature.keyboard != _HW_FEAT.Keyboard():
         result.keyboard = copy.keyboard.hardware_feature.keyboard
 
     # Handle all possible thermal features attributes
@@ -1488,40 +1490,40 @@ def _convert_to_hw_features(hardware_topology):
     # Handle all possible camera features attributes
     _accumulate_fw_config(result.fw_config, copy.camera.hardware_feature.fw_config)
 
-    if copy.camera.hardware_feature.camera != topo_pb.HardwareFeatures.Camera():
+    if copy.camera.hardware_feature.camera != _HW_FEAT.Camera():
         result.camera = copy.camera.hardware_feature.camera
 
     # Handle all possible sensor attributes
     _accumulate_fw_config(result.fw_config, copy.accelerometer_gyroscope_magnetometer.hardware_feature.fw_config)
 
-    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.accelerometer != topo_pb.HardwareFeatures.Accelerometer():
+    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.accelerometer != _HW_FEAT.Accelerometer():
         result.accelerometer = copy.accelerometer_gyroscope_magnetometer.hardware_feature.accelerometer
 
-    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.gyroscope != topo_pb.HardwareFeatures.Gyroscope():
+    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.gyroscope != _HW_FEAT.Gyroscope():
         result.gyroscope = copy.accelerometer_gyroscope_magnetometer.hardware_feature.gyroscope
 
-    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.magnetometer != topo_pb.HardwareFeatures.Magnetometer():
+    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.magnetometer != _HW_FEAT.Magnetometer():
         result.magnetometer = copy.accelerometer_gyroscope_magnetometer.hardware_feature.magnetometer
 
-    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.light_sensor != topo_pb.HardwareFeatures.LightSensor():
+    if copy.accelerometer_gyroscope_magnetometer.hardware_feature.light_sensor != _HW_FEAT.LightSensor():
         result.light_sensor = copy.accelerometer_gyroscope_magnetometer.hardware_feature.light_sensor
 
     # Handle all possible fingerprint hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.fingerprint.hardware_feature.fw_config)
 
-    if copy.fingerprint.hardware_feature.fingerprint != topo_pb.HardwareFeatures.Fingerprint():
+    if copy.fingerprint.hardware_feature.fingerprint != _HW_FEAT.Fingerprint():
         result.fingerprint = copy.fingerprint.hardware_feature.fingerprint
 
     # Handle all possible hps hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.hps.hardware_feature.fw_config)
 
-    if copy.hps.hardware_feature.hps != topo_pb.HardwareFeatures.Hps():
+    if copy.hps.hardware_feature.hps != _HW_FEAT.Hps():
         result.hps = copy.hps.hardware_feature.hps
 
     # Handle all possible poe hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.poe.hardware_feature.fw_config)
 
-    if copy.poe.hardware_feature.poe != topo_pb.HardwareFeatures.PoE():
+    if copy.poe.hardware_feature.poe != _HW_FEAT.PoE():
         result.poe = copy.poe.hardware_feature.poe
 
     # Handle all possible proximity sensor hardware features attributes
@@ -1533,49 +1535,49 @@ def _convert_to_hw_features(hardware_topology):
     # Handle all possible hdmi hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.hdmi.hardware_feature.fw_config)
 
-    if copy.hdmi.hardware_feature.hdmi != topo_pb.HardwareFeatures.Hdmi():
+    if copy.hdmi.hardware_feature.hdmi != _HW_FEAT.Hdmi():
         result.hdmi = copy.hdmi.hardware_feature.hdmi
 
     # Handle all possible motherboard usb features attributes
     _accumulate_fw_config(result.fw_config, copy.motherboard_usb.hardware_feature.fw_config)
 
-    if copy.motherboard_usb.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
+    if copy.motherboard_usb.hardware_feature.usb_c != _HW_FEAT.UsbC():
         _accumulate_usbc(result.usb_c, copy.motherboard_usb.hardware_feature.usb_c)
 
-    if copy.motherboard_usb.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
+    if copy.motherboard_usb.hardware_feature.usb_a != _HW_FEAT.UsbA():
         _accumulate_usba(result.usb_a, copy.motherboard_usb.hardware_feature.usb_a)
 
     # Handle all possible daughter board hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.daughter_board.hardware_feature.fw_config)
 
-    if copy.daughter_board.hardware_feature.usb_c != topo_pb.HardwareFeatures.UsbC():
+    if copy.daughter_board.hardware_feature.usb_c != _HW_FEAT.UsbC():
         _accumulate_usbc(result.usb_c, copy.daughter_board.hardware_feature.usb_c)
 
-    if copy.daughter_board.hardware_feature.usb_a != topo_pb.HardwareFeatures.UsbA():
+    if copy.daughter_board.hardware_feature.usb_a != _HW_FEAT.UsbA():
         _accumulate_usba(result.usb_a, copy.daughter_board.hardware_feature.usb_a)
 
-    if copy.daughter_board.hardware_feature.cellular != topo_pb.HardwareFeatures.Cellular():
+    if copy.daughter_board.hardware_feature.cellular != _HW_FEAT.Cellular():
         _accumulate_cellular(result.cellular, copy.daughter_board.hardware_feature.cellular)
 
-    if copy.daughter_board.hardware_feature.hdmi != topo_pb.HardwareFeatures.Hdmi():
+    if copy.daughter_board.hardware_feature.hdmi != _HW_FEAT.Hdmi():
         _accumulate_hdmi(result.hdmi, copy.daughter_board.hardware_feature.hdmi)
 
     # Handle all possible non volatile storage hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.non_volatile_storage.hardware_feature.fw_config)
 
-    if copy.non_volatile_storage.hardware_feature.storage != topo_pb.HardwareFeatures.Storage():
+    if copy.non_volatile_storage.hardware_feature.storage != _HW_FEAT.Storage():
         result.storage = copy.non_volatile_storage.hardware_feature.storage
 
     # Handle all possible wifi hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.wifi.hardware_feature.fw_config)
 
-    if copy.wifi.hardware_feature.wifi != topo_pb.HardwareFeatures.Wifi():
+    if copy.wifi.hardware_feature.wifi != _HW_FEAT.Wifi():
         result.wifi = copy.wifi.hardware_feature.wifi
 
     # Handle all possible cellular board attributes
     _accumulate_fw_config(result.fw_config, copy.cellular_board.hardware_feature.fw_config)
 
-    if copy.cellular_board.hardware_feature.cellular != topo_pb.HardwareFeatures.Cellular():
+    if copy.cellular_board.hardware_feature.cellular != _HW_FEAT.Cellular():
         _accumulate_cellular(result.cellular, copy.cellular_board.hardware_feature.cellular)
 
     # Handle all possible sd reader hardware features attributes
@@ -1584,28 +1586,28 @@ def _convert_to_hw_features(hardware_topology):
     # Handle all possible bluetooth features attributes
     _accumulate_fw_config(result.fw_config, copy.bluetooth.hardware_feature.fw_config)
 
-    if copy.bluetooth.hardware_feature.bluetooth != topo_pb.HardwareFeatures.Bluetooth():
+    if copy.bluetooth.hardware_feature.bluetooth != _HW_FEAT.Bluetooth():
         result.bluetooth = copy.bluetooth.hardware_feature.bluetooth
 
     # Handle all possible barreljack features
     _accumulate_fw_config(result.fw_config, copy.barreljack.hardware_feature.fw_config)
 
-    if copy.barreljack.hardware_feature.barreljack != topo_pb.HardwareFeatures.BarrelJack():
+    if copy.barreljack.hardware_feature.barreljack != _HW_FEAT.BarrelJack():
         result.barreljack = copy.barreljack.hardware_feature.barreljack
 
     # Handle all possible power supply features
     _accumulate_fw_config(result.fw_config, copy.power_supply.hardware_feature.fw_config)
 
-    if copy.power_supply.hardware_feature.power_supply != topo_pb.HardwareFeatures.PowerSupply():
+    if copy.power_supply.hardware_feature.power_supply != _HW_FEAT.PowerSupply():
         result.power_supply = copy.power_supply.hardware_feature.power_supply
 
-    if copy.power_button.hardware_feature.power_button != topo_pb.HardwareFeatures.Button():
+    if copy.power_button.hardware_feature.power_button != _HW_FEAT.Button():
         result.power_button = copy.power_button.hardware_feature.power_button
 
-    if copy.volume_button.hardware_feature.volume_button != topo_pb.HardwareFeatures.Button():
+    if copy.volume_button.hardware_feature.volume_button != _HW_FEAT.Button():
         result.volume_button = copy.volume_button.hardware_feature.volume_button
 
-    if copy.microphone_mute_switch.hardware_feature.microphone_mute_switch != topo_pb.HardwareFeatures.MicrophoneMuteSwitch():
+    if copy.microphone_mute_switch.hardware_feature.microphone_mute_switch != _HW_FEAT.MicrophoneMuteSwitch():
         result.microphone_mute_switch = copy.microphone_mute_switch.hardware_feature.microphone_mute_switch
 
     # Handle all possible touch hardware features
