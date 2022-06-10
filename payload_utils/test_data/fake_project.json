@@ -310,7 +310,7 @@
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
-            "coreboot": "fake",
+            "coreboot": "fake_0db_1custom_2cameras",
             "depthcharge": "fake",
             "ec": "fake",
             "ec_extras": [

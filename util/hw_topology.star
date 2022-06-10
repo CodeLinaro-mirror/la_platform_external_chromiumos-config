@@ -153,7 +153,7 @@ def _button_edge_to_str(edge):
         _EDGE.BOTTOM: "BOTTOM",
     }.get(edge, "UNKNOWN")
 
-def _make_fw_config(mask, id):
+def _make_fw_config(mask, id, coreboot_customizations = None):
     """Builds a HardwareFeatures.FirmwareConfiguration proto.
 
     Takes a 32-bit mask for the field and an id. Shifts the id
@@ -167,6 +167,7 @@ def _make_fw_config(mask, id):
     return _HW_FEAT.FirmwareConfiguration(
         value = shifted_id,
         mask = mask,
+        coreboot_customizations = coreboot_customizations,
     )
 
 def _accumulate_fw_config(existing_fw_config, new_fw_config):
@@ -177,6 +178,7 @@ def _accumulate_fw_config(existing_fw_config, new_fw_config):
 
     existing_fw_config.value += new_fw_config.value
     existing_fw_config.mask += new_fw_config.mask
+    existing_fw_config.coreboot_customizations += new_fw_config.coreboot_customizations
 
 def _accumulate_fw_configs(result_hw_features, fw_configs):
     for fw_config in fw_configs:

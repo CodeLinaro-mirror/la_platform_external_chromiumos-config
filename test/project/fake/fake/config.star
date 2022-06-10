@@ -145,7 +145,11 @@ _CAMERA1 = hw_topo.create_camera(
 _CAMERA2 = hw_topo.create_camera(
     "CAMERA2",
     "1 USB camera and 1 MIPI camera",
-    fw_configs = [hw_topo.make_fw_config(program.fw_masks.CAMERA, 0)],
+    fw_configs = [hw_topo.make_fw_config(
+        program.fw_masks.CAMERA,
+        0,
+        coreboot_customizations = ["2cameras", "1custom"],
+    )],
     camera_devices = [
         hw_topo.make_camera_device(
             interface = "usb",
@@ -581,7 +585,11 @@ design.append_configs(
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
         camera = _CAMERA2,
-        daughter_board = hw_topo.create_daughter_board("Non-default DB", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)]),
+        daughter_board = hw_topo.create_daughter_board("Non-default DB", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(
+            program.fw_masks.DB,
+            0,
+            coreboot_customizations = ["0db"],
+        )]),
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
         keyboard = _BL_KEYBOARD,
     ),

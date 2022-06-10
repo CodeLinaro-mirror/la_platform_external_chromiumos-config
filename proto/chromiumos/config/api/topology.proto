@@ -230,6 +230,10 @@ message HardwareFeatures {
 
     // The mask of valid bits that could be used by above value
     uint32 mask = 2;
+
+    // Customizations to append as a suffix to the coreboot build target and AP
+    // firmware packaging.
+    repeated string coreboot_customizations = 3;
   }
 
   // Audio properties of system

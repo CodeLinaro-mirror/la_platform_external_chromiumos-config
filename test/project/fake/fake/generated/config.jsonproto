@@ -820,6 +820,11 @@
               "recoveryInput": 2
             },
             "fwConfig": {
+              "corebootCustomizations": [
+                "2cameras",
+                "1custom",
+                "0db"
+              ],
               "mask": 131071,
               "value": 90880
             },
@@ -994,6 +999,10 @@
                   ]
                 },
                 "fwConfig": {
+                  "corebootCustomizations": [
+                    "2cameras",
+                    "1custom"
+                  ],
                   "mask": 240
                 }
               },
@@ -1027,6 +1036,9 @@
                   "present": 2
                 },
                 "fwConfig": {
+                  "corebootCustomizations": [
+                    "0db"
+                  ],
                   "mask": 15
                 },
                 "hdmi": {

@@ -84,13 +84,15 @@ def parse_args(argv):
   return parser.parse_args(argv)
 
 
-def _upsert(field, target, target_name):
+def _upsert(field, target, target_name, suffix=None):
   """Updates or inserts `field` within `target`.
 
   If `target_name` already exists within `target` an update is performed,
   otherwise, an insert is performed.
   """
   if field or field == 0:
+    if suffix is not None:
+      field += suffix
     if target_name in target:
       target[target_name].update(field)
     else:
@@ -1096,7 +1098,17 @@ def _build_firmware(config):
   _upsert(fw_build_config.build_targets.bmpblk, build_targets, 'bmpblk')
   _upsert(fw_build_config.build_targets.depthcharge, build_targets,
           'depthcharge')
-  _upsert(fw_build_config.build_targets.coreboot, build_targets, 'coreboot')
+
+  ap_fw_suffix = ''.join(
+      f'_{customization}'
+      for customization in sorted(config.hw_design_config.hardware_features
+                                  .fw_config.coreboot_customizations))
+
+  _upsert(
+      fw_build_config.build_targets.coreboot,
+      build_targets,
+      'coreboot',
+      suffix=ap_fw_suffix)
   _upsert(fw_build_config.build_targets.ec, build_targets, 'ec')
   _upsert(
       list(fw_build_config.build_targets.ec_extras), build_targets, 'ec_extras')

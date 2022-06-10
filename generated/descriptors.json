@@ -4057,6 +4057,13 @@
                   "name": "mask",
                   "number": 2,
                   "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "corebootCustomizations",
+                  "label": "LABEL_REPEATED",
+                  "name": "coreboot_customizations",
+                  "number": 3,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "FirmwareConfiguration"
