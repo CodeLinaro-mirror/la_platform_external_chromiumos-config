@@ -46,6 +46,7 @@ _AMPLIFIER = struct(
     ALC1019 = topo_pb.HardwareFeatures.Audio.ALC1019,
     MAX98390 = topo_pb.HardwareFeatures.Audio.MAX98390,
     MAX98396 = topo_pb.HardwareFeatures.Audio.MAX98396,
+    CS35L41 = topo_pb.HardwareFeatures.Audio.CS35L41,
 )
 
 _CELLULAR = struct(

@@ -288,6 +288,7 @@ message HardwareFeatures {
       ALC1019 = 11;
       MAX98390 = 12;
       MAX98396 = 13;
+      CS35L41 = 14;
     }
 
     enum AudioConfigStructure {
