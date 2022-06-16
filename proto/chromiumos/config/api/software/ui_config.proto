@@ -21,4 +21,6 @@ message UiConfig {
     REQUISITION_MEETHW = 2;
   }
   Requisition requisition = 2;
+
+  bool cloud_gaming_device = 3;
 }

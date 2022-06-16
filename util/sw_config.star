@@ -828,10 +828,12 @@ _UI_REQUISITION = struct(
 
 def _create_ui(
         extra_web_apps_dir = None,
-        requisition = None):
+        requisition = None,
+        cloud_gaming_device = None):
     return ui_pb.UiConfig(
         extra_web_apps_dir = extra_web_apps_dir,
         requisition = requisition,
+        cloud_gaming_device = cloud_gaming_device,
     )
 
 def _create_usb(

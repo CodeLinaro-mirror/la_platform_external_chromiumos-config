@@ -2548,6 +2548,9 @@
           ]
         },
         "ui": {
+          "ash-enabled-features": [
+            "CloudGamingDevice"
+          ],
           "extra-ash-flags": [
             "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
             "--ash-power-button-position={\"edge\": \"left\", \"position\": 0.9}",

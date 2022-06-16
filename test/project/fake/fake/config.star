@@ -950,6 +950,7 @@ design.append_configs(
     firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
     camera = sc.create_camera(generate_media_profiles = True),
+    ui = sc.create_ui(cloud_gaming_device = True),
 )
 
 _BOARD_ID_PHASE = {

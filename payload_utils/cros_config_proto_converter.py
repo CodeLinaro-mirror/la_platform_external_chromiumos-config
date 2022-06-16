@@ -470,7 +470,8 @@ def _build_ash_flags(config: Config) -> dict:
   if regulatory_label:
     _add_flag('regulatory-label-dir', regulatory_label)
 
-  if config.brand_config.cloud_gaming_device:
+  if (config.brand_config.cloud_gaming_device or
+      config.sw_config.ui_config.cloud_gaming_device):
     _enable_feature('CloudGamingDevice')
 
   _add_flag('arc-build-properties', {

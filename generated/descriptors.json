@@ -8252,6 +8252,13 @@
               "number": 2,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.config.api.software.UiConfig.Requisition"
+            },
+            {
+              "jsonName": "cloudGamingDevice",
+              "label": "LABEL_OPTIONAL",
+              "name": "cloud_gaming_device",
+              "number": 3,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "UiConfig"
