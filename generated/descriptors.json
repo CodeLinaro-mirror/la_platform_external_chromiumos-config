@@ -15498,6 +15498,61 @@
         {
           "field": [
             {
+              "jsonName": "dlcSpecs",
+              "label": "LABEL_REPEATED",
+              "name": "dlc_specs",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrOSProvisionMetadata.DLCSpec"
+            },
+            {
+              "jsonName": "preserveStateful",
+              "label": "LABEL_OPTIONAL",
+              "name": "preserve_stateful",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "updateFirmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "update_firmware",
+              "number": 6,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "CrOSProvisionMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "id",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "id",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "DLCSpec"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/cros_provision_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "gsDirectory",
               "label": "LABEL_OPTIONAL",
               "name": "gs_directory",
@@ -16975,6 +17030,150 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },
       "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/longrunning/operations.proto",
+        "chromiumos/storage_path.proto",
+        "google/protobuf/any.proto"
+      ],
+      "messageType": [
+        {
+          "enumType": [
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_OK",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_INVALID_REQUEST",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_DUT_UNREACHABLE_PRE_PROVISION",
+                  "number": 2
+                },
+                {
+                  "name": "STATUS_DOWNLOADING_IMAGE_FAILED",
+                  "number": 3
+                },
+                {
+                  "name": "STATUS_PROVISIONING_TIMEDOUT",
+                  "number": 4
+                },
+                {
+                  "name": "STATUS_PROVISIONING_FAILED",
+                  "number": 5
+                },
+                {
+                  "name": "STATUS_DUT_UNREACHABLE_POST_PROVISION",
+                  "number": 6
+                },
+                {
+                  "name": "STATUS_UPDATE_FIRMWARE_FAILED",
+                  "number": 7
+                },
+                {
+                  "name": "STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
+                  "number": 8
+                },
+                {
+                  "name": "STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
+                  "number": 9
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.InstallResponse.Status"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "InstallResponse"
+        },
+        {
+          "name": "InstallMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "imagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "preventReboot",
+              "label": "LABEL_OPTIONAL",
+              "name": "prevent_reboot",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "overwritePayload",
+              "label": "LABEL_OPTIONAL",
+              "name": "overwrite_payload",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "InstallRequest"
+        }
+      ],
+      "name": "chromiumos/test/api/provision.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.InstallRequest",
+              "name": "Install",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallMetadata",
+                  "responseType": "InstallResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "GenericProvisionService"
+        }
+      ],
       "syntax": "proto3"
     },
     {
