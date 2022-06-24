@@ -16892,78 +16892,11 @@
       },
       "dependency": [
         "chromiumos/longrunning/operations.proto",
-        "chromiumos/test/api/test_case_result.proto",
-        "chromiumos/test/api/test_suite.proto"
+        "chromiumos/test/api/cros_test_cli.proto"
       ],
       "messageType": [
         {
-          "field": [
-            {
-              "jsonName": "testSuites",
-              "label": "LABEL_REPEATED",
-              "name": "test_suites",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestSuite"
-            },
-            {
-              "jsonName": "dut",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.DeviceInfo"
-            }
-          ],
-          "name": "RunTestsRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "primaryHost",
-              "label": "LABEL_OPTIONAL",
-              "name": "primary_host",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "companions",
-              "label": "LABEL_REPEATED",
-              "name": "companions",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CompanionHostInfo"
-            }
-          ],
-          "name": "DeviceInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "host",
-              "label": "LABEL_OPTIONAL",
-              "name": "host",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CompanionHostInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "testCaseResults",
-              "label": "LABEL_REPEATED",
-              "name": "test_case_results",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult"
-            }
-          ],
-          "name": "RunTestsResponse"
-        },
-        {
-          "name": "RunTestsMetadata"
+          "name": "RunCrosTestMetadata"
         }
       ],
       "name": "chromiumos/test/api/execution_service.proto",
@@ -16975,12 +16908,12 @@
         {
           "method": [
             {
-              "inputType": ".chromiumos.test.api.RunTestsRequest",
+              "inputType": ".chromiumos.test.api.CrosTestRequest",
               "name": "RunTests",
               "options": {
                 "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "RunTestsMetadata",
-                  "responseType": "RunTestsResponse"
+                  "metadataType": "RunCrosTestMetadata",
+                  "responseType": "CrosTestResponse"
                 }
               },
               "outputType": ".chromiumos.longrunning.Operation"

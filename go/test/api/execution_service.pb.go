@@ -25,224 +25,39 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// For RunTests, clients can specify both lists of suites and test cases.
-// Both will be run as part of a single request.
-type RunTestsRequest struct {
-	// Test suites to run (by tag or explicit list of tests)
-	TestSuites []*TestSuite `protobuf:"bytes,1,rep,name=test_suites,json=testSuites,proto3" json:"test_suites,omitempty"`
-	// Information on device to used in the test run
-	Dut                  *DeviceInfo `protobuf:"bytes,2,opt,name=dut,proto3" json:"dut,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
-	XXX_unrecognized     []byte      `json:"-"`
-	XXX_sizecache        int32       `json:"-"`
+type RunCrosTestMetadata struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *RunTestsRequest) Reset()         { *m = RunTestsRequest{} }
-func (m *RunTestsRequest) String() string { return proto.CompactTextString(m) }
-func (*RunTestsRequest) ProtoMessage()    {}
-func (*RunTestsRequest) Descriptor() ([]byte, []int) {
+func (m *RunCrosTestMetadata) Reset()         { *m = RunCrosTestMetadata{} }
+func (m *RunCrosTestMetadata) String() string { return proto.CompactTextString(m) }
+func (*RunCrosTestMetadata) ProtoMessage()    {}
+func (*RunCrosTestMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8f3e6d923b1a4293, []int{0}
 }
 
-func (m *RunTestsRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RunTestsRequest.Unmarshal(m, b)
+func (m *RunCrosTestMetadata) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RunCrosTestMetadata.Unmarshal(m, b)
 }
-func (m *RunTestsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RunTestsRequest.Marshal(b, m, deterministic)
+func (m *RunCrosTestMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RunCrosTestMetadata.Marshal(b, m, deterministic)
 }
-func (m *RunTestsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RunTestsRequest.Merge(m, src)
+func (m *RunCrosTestMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RunCrosTestMetadata.Merge(m, src)
 }
-func (m *RunTestsRequest) XXX_Size() int {
-	return xxx_messageInfo_RunTestsRequest.Size(m)
+func (m *RunCrosTestMetadata) XXX_Size() int {
+	return xxx_messageInfo_RunCrosTestMetadata.Size(m)
 }
-func (m *RunTestsRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_RunTestsRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RunTestsRequest proto.InternalMessageInfo
-
-func (m *RunTestsRequest) GetTestSuites() []*TestSuite {
-	if m != nil {
-		return m.TestSuites
-	}
-	return nil
+func (m *RunCrosTestMetadata) XXX_DiscardUnknown() {
+	xxx_messageInfo_RunCrosTestMetadata.DiscardUnknown(m)
 }
 
-func (m *RunTestsRequest) GetDut() *DeviceInfo {
-	if m != nil {
-		return m.Dut
-	}
-	return nil
-}
-
-// DeviceInfo contains all Information of devices to be used in running tests.
-type DeviceInfo struct {
-	// Hostname for the primary host to be used for running tests.
-	PrimaryHost string `protobuf:"bytes,1,opt,name=primary_host,json=primaryHost,proto3" json:"primary_host,omitempty"`
-	// A list of companion hosts to be used for running tests.
-	Companions           []*CompanionHostInfo `protobuf:"bytes,2,rep,name=companions,proto3" json:"companions,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *DeviceInfo) Reset()         { *m = DeviceInfo{} }
-func (m *DeviceInfo) String() string { return proto.CompactTextString(m) }
-func (*DeviceInfo) ProtoMessage()    {}
-func (*DeviceInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8f3e6d923b1a4293, []int{1}
-}
-
-func (m *DeviceInfo) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeviceInfo.Unmarshal(m, b)
-}
-func (m *DeviceInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeviceInfo.Marshal(b, m, deterministic)
-}
-func (m *DeviceInfo) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeviceInfo.Merge(m, src)
-}
-func (m *DeviceInfo) XXX_Size() int {
-	return xxx_messageInfo_DeviceInfo.Size(m)
-}
-func (m *DeviceInfo) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeviceInfo.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeviceInfo proto.InternalMessageInfo
-
-func (m *DeviceInfo) GetPrimaryHost() string {
-	if m != nil {
-		return m.PrimaryHost
-	}
-	return ""
-}
-
-func (m *DeviceInfo) GetCompanions() []*CompanionHostInfo {
-	if m != nil {
-		return m.Companions
-	}
-	return nil
-}
-
-// CompanionHostInfo contains all Information of a companion host to be used in running tests.
-type CompanionHostInfo struct {
-	// Hostname for the compainion host.
-	Host                 string   `protobuf:"bytes,1,opt,name=host,proto3" json:"host,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *CompanionHostInfo) Reset()         { *m = CompanionHostInfo{} }
-func (m *CompanionHostInfo) String() string { return proto.CompactTextString(m) }
-func (*CompanionHostInfo) ProtoMessage()    {}
-func (*CompanionHostInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8f3e6d923b1a4293, []int{2}
-}
-
-func (m *CompanionHostInfo) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CompanionHostInfo.Unmarshal(m, b)
-}
-func (m *CompanionHostInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CompanionHostInfo.Marshal(b, m, deterministic)
-}
-func (m *CompanionHostInfo) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CompanionHostInfo.Merge(m, src)
-}
-func (m *CompanionHostInfo) XXX_Size() int {
-	return xxx_messageInfo_CompanionHostInfo.Size(m)
-}
-func (m *CompanionHostInfo) XXX_DiscardUnknown() {
-	xxx_messageInfo_CompanionHostInfo.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CompanionHostInfo proto.InternalMessageInfo
-
-func (m *CompanionHostInfo) GetHost() string {
-	if m != nil {
-		return m.Host
-	}
-	return ""
-}
-
-type RunTestsResponse struct {
-	TestCaseResults      []*TestCaseResult `protobuf:"bytes,1,rep,name=test_case_results,json=testCaseResults,proto3" json:"test_case_results,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
-}
-
-func (m *RunTestsResponse) Reset()         { *m = RunTestsResponse{} }
-func (m *RunTestsResponse) String() string { return proto.CompactTextString(m) }
-func (*RunTestsResponse) ProtoMessage()    {}
-func (*RunTestsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8f3e6d923b1a4293, []int{3}
-}
-
-func (m *RunTestsResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RunTestsResponse.Unmarshal(m, b)
-}
-func (m *RunTestsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RunTestsResponse.Marshal(b, m, deterministic)
-}
-func (m *RunTestsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RunTestsResponse.Merge(m, src)
-}
-func (m *RunTestsResponse) XXX_Size() int {
-	return xxx_messageInfo_RunTestsResponse.Size(m)
-}
-func (m *RunTestsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_RunTestsResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RunTestsResponse proto.InternalMessageInfo
-
-func (m *RunTestsResponse) GetTestCaseResults() []*TestCaseResult {
-	if m != nil {
-		return m.TestCaseResults
-	}
-	return nil
-}
-
-type RunTestsMetadata struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *RunTestsMetadata) Reset()         { *m = RunTestsMetadata{} }
-func (m *RunTestsMetadata) String() string { return proto.CompactTextString(m) }
-func (*RunTestsMetadata) ProtoMessage()    {}
-func (*RunTestsMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8f3e6d923b1a4293, []int{4}
-}
-
-func (m *RunTestsMetadata) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RunTestsMetadata.Unmarshal(m, b)
-}
-func (m *RunTestsMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RunTestsMetadata.Marshal(b, m, deterministic)
-}
-func (m *RunTestsMetadata) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RunTestsMetadata.Merge(m, src)
-}
-func (m *RunTestsMetadata) XXX_Size() int {
-	return xxx_messageInfo_RunTestsMetadata.Size(m)
-}
-func (m *RunTestsMetadata) XXX_DiscardUnknown() {
-	xxx_messageInfo_RunTestsMetadata.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RunTestsMetadata proto.InternalMessageInfo
+var xxx_messageInfo_RunCrosTestMetadata proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*RunTestsRequest)(nil), "chromiumos.test.api.RunTestsRequest")
-	proto.RegisterType((*DeviceInfo)(nil), "chromiumos.test.api.DeviceInfo")
-	proto.RegisterType((*CompanionHostInfo)(nil), "chromiumos.test.api.CompanionHostInfo")
-	proto.RegisterType((*RunTestsResponse)(nil), "chromiumos.test.api.RunTestsResponse")
-	proto.RegisterType((*RunTestsMetadata)(nil), "chromiumos.test.api.RunTestsMetadata")
+	proto.RegisterType((*RunCrosTestMetadata)(nil), "chromiumos.test.api.RunCrosTestMetadata")
 }
 
 func init() {
@@ -250,32 +65,22 @@ func init() {
 }
 
 var fileDescriptor_8f3e6d923b1a4293 = []byte{
-	// 394 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x92, 0xcd, 0xee, 0xd2, 0x40,
-	0x14, 0xc5, 0xd3, 0x3f, 0xc6, 0xe8, 0xad, 0x09, 0x30, 0x6e, 0x1a, 0x16, 0x0a, 0x95, 0x08, 0xd1,
-	0xd8, 0x46, 0x7c, 0x00, 0xa3, 0xa8, 0xd1, 0x85, 0x21, 0x29, 0xae, 0xdc, 0x34, 0x63, 0x19, 0xca,
-	0x24, 0x74, 0x6e, 0x9d, 0x3b, 0xe3, 0x47, 0xe2, 0xd6, 0xbd, 0xcf, 0xe6, 0x13, 0x99, 0x29, 0x94,
-	0x56, 0x28, 0xbb, 0xcb, 0xe4, 0x77, 0xee, 0xb9, 0x9c, 0x1e, 0x78, 0x9a, 0xed, 0x34, 0x16, 0xd2,
-	0x16, 0x48, 0xb1, 0x11, 0x64, 0x62, 0x5e, 0xca, 0x58, 0xfc, 0x10, 0x99, 0x35, 0x12, 0x55, 0x4a,
-	0x42, 0x7f, 0x93, 0x99, 0x88, 0x4a, 0x8d, 0x06, 0xd9, 0xfd, 0x06, 0x8e, 0x1c, 0x1c, 0xf1, 0x52,
-	0x8e, 0x66, 0xad, 0x0d, 0x7b, 0x54, 0xb9, 0xb6, 0x4a, 0x49, 0x95, 0xc7, 0x58, 0x0a, 0xcd, 0xdd,
-	0x12, 0x3a, 0xa8, 0x47, 0x4f, 0xba, 0xac, 0xdc, 0x90, 0x66, 0x9c, 0x44, 0xaa, 0x05, 0xd9, 0xbd,
-	0x39, 0xb2, 0xd3, 0xab, 0x2c, 0x59, 0x69, 0x8e, 0xf7, 0x84, 0xbf, 0x3d, 0xe8, 0x27, 0x56, 0x7d,
-	0x12, 0x64, 0x28, 0x11, 0x5f, 0xad, 0x20, 0xc3, 0x5e, 0x82, 0xdf, 0x70, 0x14, 0x78, 0xe3, 0xde,
-	0xdc, 0x5f, 0x3c, 0x88, 0x3a, 0x2e, 0x8f, 0x9c, 0x6e, 0xed, 0xb0, 0x04, 0x4c, 0x3d, 0x12, 0x7b,
-	0x0e, 0xbd, 0x8d, 0x35, 0xc1, 0xcd, 0xd8, 0x9b, 0xfb, 0x8b, 0x87, 0x9d, 0xc2, 0x37, 0xc2, 0x85,
-	0xf2, 0x41, 0x6d, 0x31, 0x71, 0x6c, 0xf8, 0x1d, 0xa0, 0x79, 0x62, 0x13, 0xb8, 0x57, 0x6a, 0x59,
-	0x70, 0xfd, 0x33, 0xdd, 0x21, 0x99, 0xc0, 0x1b, 0x7b, 0xf3, 0xbb, 0x89, 0x7f, 0x7c, 0x7b, 0x8f,
-	0x64, 0xd8, 0x3b, 0x80, 0x0c, 0x8b, 0x92, 0x2b, 0x17, 0x4f, 0x70, 0x53, 0xdd, 0xf8, 0xb8, 0xd3,
-	0x6a, 0x59, 0x63, 0x4e, 0x57, 0x39, 0xb6, 0x94, 0xe1, 0x0c, 0x86, 0x17, 0x00, 0x63, 0x70, 0xab,
-	0xe5, 0x5b, 0xcd, 0x61, 0x06, 0x83, 0x26, 0x28, 0x2a, 0x51, 0x91, 0x60, 0x2b, 0x18, 0x9e, 0xa7,
-	0x5f, 0xe7, 0xf5, 0xe8, 0x6a, 0x5e, 0x4b, 0x4e, 0x22, 0xa9, 0xd8, 0xa4, 0x6f, 0xfe, 0xfb, 0x4d,
-	0x21, 0x6b, 0x4c, 0x3e, 0x0a, 0xc3, 0x37, 0xdc, 0xf0, 0xc5, 0x1f, 0x0f, 0x06, 0x6f, 0xeb, 0x3a,
-	0xad, 0x0f, 0x6d, 0x62, 0xbf, 0xe0, 0x4e, 0x0d, 0xb2, 0x69, 0xa7, 0xd5, 0xd9, 0x57, 0x1d, 0x4d,
-	0xda, 0x54, 0xab, 0x65, 0xd1, 0xaa, 0x6e, 0x59, 0x38, 0xfb, 0xfb, 0x6a, 0xda, 0xf1, 0x2f, 0x2f,
-	0x4e, 0x7a, 0x1d, 0x7f, 0x7e, 0x96, 0xe3, 0x69, 0x5f, 0x84, 0x3a, 0x8f, 0x5b, 0x6d, 0xcb, 0x50,
-	0x6d, 0x65, 0x1e, 0xe7, 0x78, 0xea, 0xdd, 0x97, 0xdb, 0x55, 0xdb, 0x5e, 0xfc, 0x0b, 0x00, 0x00,
-	0xff, 0xff, 0x01, 0x97, 0x80, 0x02, 0x2c, 0x03, 0x00, 0x00,
+	// 234 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x8f, 0xc1, 0x4a, 0x03, 0x31,
+	0x10, 0x86, 0xf1, 0x22, 0x92, 0x53, 0xd9, 0xe2, 0xa5, 0x37, 0x8b, 0x50, 0x50, 0x4c, 0x40, 0x9f,
+	0x40, 0xc5, 0xa3, 0x08, 0xab, 0x27, 0x2f, 0x4b, 0x8c, 0x63, 0x0c, 0xb4, 0x33, 0x71, 0x66, 0x22,
+	0xde, 0x7c, 0x08, 0xdf, 0xcc, 0x27, 0x92, 0x75, 0xd9, 0x6d, 0x0a, 0x3d, 0x06, 0xbe, 0xf9, 0xf2,
+	0xfd, 0xe6, 0x3c, 0xbc, 0x33, 0x6d, 0x52, 0xd9, 0x90, 0x38, 0x05, 0x51, 0xe7, 0x73, 0x72, 0xf0,
+	0x05, 0xa1, 0x68, 0x22, 0xec, 0x04, 0xf8, 0x33, 0x05, 0xb0, 0x99, 0x49, 0xa9, 0x99, 0x6f, 0x61,
+	0xdb, 0xc3, 0xd6, 0xe7, 0xb4, 0x58, 0x55, 0x86, 0x35, 0x61, 0xe4, 0x82, 0x98, 0x30, 0x3a, 0xca,
+	0xc0, 0xbe, 0x97, 0xc8, 0x70, 0xbd, 0x03, 0x4e, 0x5f, 0x05, 0x26, 0xe9, 0xfa, 0x57, 0x17, 0xd6,
+	0x69, 0x00, 0x97, 0xc7, 0x66, 0xde, 0x16, 0xbc, 0x65, 0x92, 0x27, 0x10, 0xbd, 0x07, 0xf5, 0xaf,
+	0x5e, 0xfd, 0xe5, 0xcf, 0x81, 0x99, 0xdd, 0x8d, 0x65, 0x8f, 0x43, 0x58, 0xf3, 0x6d, 0x8e, 0xda,
+	0x82, 0x3d, 0x27, 0xcd, 0xa9, 0xdd, 0xd3, 0x67, 0x47, 0x4f, 0x0b, 0x1f, 0x05, 0x44, 0x17, 0x27,
+	0x35, 0x55, 0x05, 0xdb, 0x87, 0x31, 0x78, 0x79, 0xf6, 0x7b, 0xbd, 0x32, 0xb3, 0xed, 0xa1, 0x64,
+	0x42, 0x81, 0x66, 0x5f, 0xd5, 0x8d, 0x7b, 0xbe, 0x88, 0x34, 0x29, 0x2d, 0x71, 0x74, 0xd5, 0xce,
+	0x40, 0xf8, 0x96, 0xa2, 0x8b, 0x34, 0x2d, 0x7e, 0x39, 0xfc, 0x1f, 0x79, 0xf5, 0x17, 0x00, 0x00,
+	0xff, 0xff, 0x45, 0xdb, 0xba, 0x69, 0x7a, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -290,8 +95,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ExecutionServiceClient interface {
-	// RunTests runs the requested tests.
-	RunTests(ctx context.Context, in *RunTestsRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
+	// Provides the ability to run tests as specified per the request.
+	RunTests(ctx context.Context, in *CrosTestRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
 type executionServiceClient struct {
@@ -302,7 +107,7 @@ func NewExecutionServiceClient(cc *grpc.ClientConn) ExecutionServiceClient {
 	return &executionServiceClient{cc}
 }
 
-func (c *executionServiceClient) RunTests(ctx context.Context, in *RunTestsRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
+func (c *executionServiceClient) RunTests(ctx context.Context, in *CrosTestRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
 	out := new(longrunning.Operation)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.ExecutionService/RunTests", in, out, opts...)
 	if err != nil {
@@ -313,15 +118,15 @@ func (c *executionServiceClient) RunTests(ctx context.Context, in *RunTestsReque
 
 // ExecutionServiceServer is the server API for ExecutionService service.
 type ExecutionServiceServer interface {
-	// RunTests runs the requested tests.
-	RunTests(context.Context, *RunTestsRequest) (*longrunning.Operation, error)
+	// Provides the ability to run tests as specified per the request.
+	RunTests(context.Context, *CrosTestRequest) (*longrunning.Operation, error)
 }
 
 // UnimplementedExecutionServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedExecutionServiceServer struct {
 }
 
-func (*UnimplementedExecutionServiceServer) RunTests(ctx context.Context, req *RunTestsRequest) (*longrunning.Operation, error) {
+func (*UnimplementedExecutionServiceServer) RunTests(ctx context.Context, req *CrosTestRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RunTests not implemented")
 }
 
@@ -330,7 +135,7 @@ func RegisterExecutionServiceServer(s *grpc.Server, srv ExecutionServiceServer) 
 }
 
 func _ExecutionService_RunTests_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RunTestsRequest)
+	in := new(CrosTestRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -342,7 +147,7 @@ func _ExecutionService_RunTests_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/chromiumos.test.api.ExecutionService/RunTests",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionServiceServer).RunTests(ctx, req.(*RunTestsRequest))
+		return srv.(ExecutionServiceServer).RunTests(ctx, req.(*CrosTestRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

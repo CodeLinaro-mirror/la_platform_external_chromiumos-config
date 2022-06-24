@@ -3,7 +3,7 @@
 import grpc
 
 from chromiumos.longrunning import operations_pb2 as chromiumos_dot_longrunning_dot_operations__pb2
-from chromiumos.test.api import execution_service_pb2 as chromiumos_dot_test_dot_api_dot_execution__service__pb2
+from chromiumos.test.api import cros_test_cli_pb2 as chromiumos_dot_test_dot_api_dot_cros__test__cli__pb2
 
 
 class ExecutionServiceStub(object):
@@ -19,7 +19,7 @@ class ExecutionServiceStub(object):
         """
         self.RunTests = channel.unary_unary(
                 '/chromiumos.test.api.ExecutionService/RunTests',
-                request_serializer=chromiumos_dot_test_dot_api_dot_execution__service__pb2.RunTestsRequest.SerializeToString,
+                request_serializer=chromiumos_dot_test_dot_api_dot_cros__test__cli__pb2.CrosTestRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
 
@@ -30,7 +30,7 @@ class ExecutionServiceServicer(object):
     """
 
     def RunTests(self, request, context):
-        """RunTests runs the requested tests.
+        """Provides the ability to run tests as specified per the request.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -41,7 +41,7 @@ def add_ExecutionServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'RunTests': grpc.unary_unary_rpc_method_handler(
                     servicer.RunTests,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_execution__service__pb2.RunTestsRequest.FromString,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_cros__test__cli__pb2.CrosTestRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
     }
@@ -68,7 +68,7 @@ class ExecutionService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ExecutionService/RunTests',
-            chromiumos_dot_test_dot_api_dot_execution__service__pb2.RunTestsRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_cros__test__cli__pb2.CrosTestRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -9,49 +9,20 @@ package chromiumos.test.api;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/longrunning/operations.proto";
-import "chromiumos/test/api/test_case_result.proto";
-import "chromiumos/test/api/test_suite.proto";
+import "chromiumos/test/api/cros_test_cli.proto";
 
 // Stable (build-agnostic) testing interface for executing tests and
 // extracting results.
 service ExecutionService {
-  // RunTests runs the requested tests.
-  rpc RunTests(RunTestsRequest) returns (longrunning.Operation) {
+  // Provides the ability to run tests as specified per the request.
+  rpc RunTests(CrosTestRequest)
+      returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
-      response_type: "RunTestsResponse",
-      metadata_type: "RunTestsMetadata"
+      response_type: "CrosTestResponse",
+      metadata_type: "RunCrosTestMetadata"
     };
   }
 }
 
-// For RunTests, clients can specify both lists of suites and test cases.
-// Both will be run as part of a single request.
-message RunTestsRequest {
-  // Test suites to run (by tag or explicit list of tests)
-  repeated TestSuite test_suites = 1;
-
-  // Information on device to used in the test run
-  DeviceInfo dut = 2;
+message RunCrosTestMetadata {
 }
-
-// DeviceInfo contains all Information of devices to be used in running tests.
-message DeviceInfo {
-  // Hostname for the primary host to be used for running tests.
-  string primary_host = 1;
-
-  // A list of companion hosts to be used for running tests.
-  repeated CompanionHostInfo companions = 2;
-}
-
-// CompanionHostInfo contains all Information of a companion host to be used in running tests.
-message CompanionHostInfo {
-  // Hostname for the compainion host.
-  string host = 1;
-}
-
-message RunTestsResponse {
-  repeated TestCaseResult test_case_results = 1;
-}
-
-message RunTestsMetadata {}
-
