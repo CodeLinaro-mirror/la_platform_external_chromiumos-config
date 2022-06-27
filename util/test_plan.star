@@ -9,57 +9,58 @@ load(
 )
 load("//config/util/generate.star", "generate")
 
-def _get_exclusion_type(type):
-    """Get the exclusion type enum.
+# TODO (b/237300719): determine if this needs to be fixed.
+# def _get_exclusion_type(type):
+#     """Get the exclusion type enum.
 
-    Args:
-        type: the exclusion type string.
-    Returns:
-        Exclusion type enum
-    """
+#     Args:
+#         type: the exclusion type string.
+#     Returns:
+#         Exclusion type enum
+#     """
 
-    if type == "PERMANENT":
-        return plan_pb.Exclusion.PERMANENT
-    if type == "TEMPORARY_NEW_TEST":
-        return plan_pb.Exclusion.TEMPORARY_NEW_TEST
-    if type == "TEMPORARY_PENDING_FIX":
-        return plan_pb.Exclusion.TEMPORARY_PENDING_FIX
+#     if type == "PERMANENT":
+#         return plan_pb.Exclusion.PERMANENT
+#     if type == "TEMPORARY_NEW_TEST":
+#         return plan_pb.Exclusion.TEMPORARY_NEW_TEST
+#     if type == "TEMPORARY_PENDING_FIX":
+#         return plan_pb.Exclusion.TEMPORARY_PENDING_FIX
 
-    return plan_pb.Exclusion.TYPE_UNSPECIFIED
+#     return plan_pb.Exclusion.TYPE_UNSPECIFIED
 
-def _get_exclusion_action(action):
-    """Get the exclusion action enum.
+# def _get_exclusion_action(action):
+#     """Get the exclusion action enum.
 
-    Args:
-        action: the action type string.
-    Returns:
-        Exclusion action enum
-    """
-    if action == "DO_NOT_SCHEDULE":
-        return plan_pb.Exclusion.DO_NOT_SCHEDULE
-    if action == "MARK_NON_CRITICAL":
-        return plan_pb.Exclusion.MARK_NON_CRITICAL
+#     Args:
+#         action: the action type string.
+#     Returns:
+#         Exclusion action enum
+#     """
+#     if action == "DO_NOT_SCHEDULE":
+#         return plan_pb.Exclusion.DO_NOT_SCHEDULE
+#     if action == "MARK_NON_CRITICAL":
+#         return plan_pb.Exclusion.MARK_NON_CRITICAL
 
-    return plan_pb.Exclusion.ACTION_UNSPECIFIED
+#     return plan_pb.Exclusion.ACTION_UNSPECIFIED
 
-def _create_exclusion(
-        type = None,
-        action = None,
-        references = None):
-    """Builds a test exclusion proto.
+# def _create_exclusion(
+#         type = None,
+#         action = None,
+#         references = None):
+#     """Builds a test exclusion proto.
 
-    Args:
-        type: the exclusion type.
-        action: the exclusion action.
-        references: list of reference(s) associated.
-    Returns:
-        the Exclusion protobuf.
-    """
-    return plan_pb.Exclusion(
-        type = _get_exclusion_type(type),
-        action = _get_exclusion_action(action),
-        references = references if references else None,
-    )
+#     Args:
+#         type: the exclusion type.
+#         action: the exclusion action.
+#         references: list of reference(s) associated.
+#     Returns:
+#         the Exclusion protobuf.
+#     """
+#     return plan_pb.Exclusion(
+#         type = _get_exclusion_type(type),
+#         action = _get_exclusion_action(action),
+#         references = references if references else None,
+#     )
 
 def _create_dut_criterion(attribute, values):
     """Builds a DutCriterion proto (see proto for args)
