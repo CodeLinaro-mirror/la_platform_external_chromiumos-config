@@ -17989,6 +17989,33 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/test/api/cros_test_finder_cli.proto"
+      ],
+      "name": "chromiumos/test/api/test_finder_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.CrosTestFinderRequest",
+              "name": "FindTests",
+              "outputType": ".chromiumos.test.api.CrosTestFinderResponse"
+            }
+          ],
+          "name": "TestFinderService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
