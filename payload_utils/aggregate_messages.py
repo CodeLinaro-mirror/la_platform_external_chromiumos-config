@@ -81,4 +81,5 @@ if __name__ == '__main__':
           io_utils.read_json_proto(
               protodb.GetSymbol(options.message_type)(), path))
 
-  io_utils.write_message_json(output, options.output)
+  io_utils.write_message_json(
+      output, options.output, use_integers_for_enums=True)

@@ -15,20 +15,28 @@ from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.payload import flat_config_pb2
 
 
-def write_message_json(message: Message, path: pathlib.Path, \
-                       default_fields=False):
+def write_message_json(
+    message: Message,
+    path: pathlib.Path,
+    default_fields=False,
+    use_integers_for_enums=False,
+):
   """Take a Message and write it to a file as json.
 
   Args:
     message: protobuf message to write to file
     path: output file write json to
     default_fields: If true, include default values for fields
+    use_integers_for_enums: If true, print integers instead of enum names.
   """
-  # ow this is a long parameter
-  opts = {'including_default_value_fields': default_fields, 'sort_keys': True}
-
   with open(path, 'w') as outfile:
-    outfile.write(json_format.MessageToJson(message, **opts))
+    outfile.write(
+        json_format.MessageToJson(
+            message,
+            including_default_value_fields=default_fields,
+            sort_keys=True,
+            use_integers_for_enums=use_integers_for_enums,
+        ))
 
 
 def write_message_binary(message: Message, path: pathlib.Path):
