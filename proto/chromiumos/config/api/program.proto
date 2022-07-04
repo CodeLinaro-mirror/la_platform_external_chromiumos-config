@@ -159,6 +159,10 @@ message Program {
   }
   AudioConfig audio_config = 12;
 
+  // If true, the ARC media_profiles.xml will be generated from Boxster and
+  // override the one installed by overlays.
+  bool generate_camera_media_profiles = 13;
+
   // Defines program constraints for all proposed design configs.
   repeated Design.Config.Constraint design_config_constraints = 3;
 

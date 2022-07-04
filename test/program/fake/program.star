@@ -125,6 +125,7 @@ _FAKE = program_util.create(
         default_ucm_suffix = "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
         card_configs = [_HDMI_AUDIO_CARD],
     ),
+    generate_camera_media_profiles = True,
 )
 
 program = struct(

@@ -14,6 +14,10 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design_2147483647.xml",
             "system-path": "/etc/hardware_features_fake_ref_design_2147483647.xml"
+          },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_fake_ref_design_2147483647.xml",
+            "system-path": "/etc/media_profiles_fake_ref_design_2147483647.xml"
           }
         },
         "audio": {
@@ -245,8 +249,8 @@
             "system-path": "/etc/hardware_features_fake_ref_design_0.xml"
           },
           "media-profiles": {
-            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_fake_ref_design.xml",
-            "system-path": "/etc/media_profiles_fake_ref_design.xml"
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_fake_ref_design_0.xml",
+            "system-path": "/etc/media_profiles_fake_ref_design_0.xml"
           }
         },
         "audio": {
@@ -928,6 +932,10 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_c.xml",
             "system-path": "/etc/hardware_features_project_c.xml"
+          },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_c.xml",
+            "system-path": "/etc/media_profiles_project_c.xml"
           }
         },
         "audio": {
@@ -1141,6 +1149,10 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
             "system-path": "/etc/hardware_features_project_wl.xml"
           },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_wl.xml",
+            "system-path": "/etc/media_profiles_project_wl.xml"
+          },
           "scale": 280
         },
         "audio": {
@@ -1320,6 +1332,10 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
             "system-path": "/etc/hardware_features_project_wl.xml"
+          },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_wl.xml",
+            "system-path": "/etc/media_profiles_project_wl.xml"
           },
           "scale": 280
         },
@@ -1503,6 +1519,10 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
             "system-path": "/etc/hardware_features_project_wl.xml"
           },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_wl.xml",
+            "system-path": "/etc/media_profiles_project_wl.xml"
+          },
           "scale": 280
         },
         "audio": {
@@ -1685,6 +1705,10 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
             "system-path": "/etc/hardware_features_project_wl.xml"
           },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_wl.xml",
+            "system-path": "/etc/media_profiles_project_wl.xml"
+          },
           "scale": 280
         },
         "audio": {
@@ -1866,6 +1890,10 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_rebrand.xml",
             "system-path": "/etc/hardware_features_project_rebrand.xml"
+          },
+          "media-profiles": {
+            "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_rebrand.xml",
+            "system-path": "/etc/media_profiles_project_rebrand.xml"
           },
           "scale": 280
         },

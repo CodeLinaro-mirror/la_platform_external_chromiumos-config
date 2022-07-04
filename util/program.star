@@ -143,7 +143,8 @@ def _create(
         device_signer_configs = None,
         mosys_platform_name = None,
         platform = None,
-        audio_config = None):
+        audio_config = None,
+        generate_camera_media_profiles = None):
     """Builds a Program proto."""
     program_id = program_id_pb.ProgramId(value = name)
     return program_pb.Program(
@@ -159,6 +160,7 @@ def _create(
         mosys_platform_name = mosys_platform_name,
         platform = platform,
         audio_config = audio_config,
+        generate_camera_media_profiles = generate_camera_media_profiles,
     )
 
 program = struct(

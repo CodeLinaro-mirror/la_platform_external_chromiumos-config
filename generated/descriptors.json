@@ -6626,6 +6626,13 @@
               "typeName": ".chromiumos.config.api.Program.AudioConfig"
             },
             {
+              "jsonName": "generateCameraMediaProfiles",
+              "label": "LABEL_OPTIONAL",
+              "name": "generate_camera_media_profiles",
+              "number": 13,
+              "type": "TYPE_BOOL"
+            },
+            {
               "jsonName": "designConfigConstraints",
               "label": "LABEL_REPEATED",
               "name": "design_config_constraints",
