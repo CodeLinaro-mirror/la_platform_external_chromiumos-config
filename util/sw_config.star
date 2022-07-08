@@ -268,16 +268,21 @@ def _create_power_source_preference(
         gaming_power_preferences = gaming,
     )
 
-def _create_ondemand_preference(powersave_bias):
+def _create_ondemand_preference(powersave_bias, sampling_rate_ms = 0):
     """Builds an ondemand governor PowerPreferences proto
 
     Args:
         powersave_bias: powersave bias for the ondemand governor
+        sampling_rate_ms: sampling rate in ms for the ondemand governor
     """
+    if sampling_rate_ms == 1:
+        fail("sampling_rate_ms should be set to 0 or >= 2")
+
     return resource_pb.ResourceConfig.PowerPreferences(
         governor = resource_pb.ResourceConfig.Governor(
             ondemand = resource_pb.ResourceConfig.OndemandGovernor(
                 powersave_bias = powersave_bias,
+                sampling_rate_ms = sampling_rate_ms,
             ),
         ),
     )

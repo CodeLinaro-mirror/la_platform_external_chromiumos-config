@@ -18,6 +18,10 @@ message ResourceConfig {
   // https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v5.10/Documentation/admin-guide/pm/cpufreq.rst;l=437;drc=abc59fd4a56abba8a9d9beadac7a371f4bb76187
   message OndemandGovernor {
     uint32 powersave_bias = 1 [json_name = "powersave-bias"];
+
+    // This field has a min of 2ms. If this field is set to 0 or unset,
+    // resourced will not update the sampling_rate on the governor.
+    uint32 sampling_rate_ms = 2 [json_name = "sampling-rate-ms"];
   }
 
   message Governor {

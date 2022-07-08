@@ -639,13 +639,13 @@ design.append_configs(
     power = _SC_POWER,
     resource = sc.create_resource(
         ac = sc.create_power_source_preference(
-            default = sc.create_ondemand_preference(0),
+            default = sc.create_ondemand_preference(0, 2),
         ),
         dc = sc.create_power_source_preference(
-            default = sc.create_ondemand_preference(0),
-            web_rtc = sc.create_ondemand_preference(400),
-            fullscreen_video = sc.create_ondemand_preference(600),
-            gaming = sc.create_ondemand_preference(0),
+            default = sc.create_ondemand_preference(0, 2),
+            web_rtc = sc.create_ondemand_preference(400, 16),
+            fullscreen_video = sc.create_ondemand_preference(600, 2),
+            gaming = sc.create_ondemand_preference(0, 16),
         ),
     ),
     wifi = _SC_WIFI_INTEL,

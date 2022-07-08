@@ -615,7 +615,8 @@
             "default-power-preferences": {
               "governor": {
                 "ondemand": {
-                  "powersave-bias": 0
+                  "powersave-bias": 0,
+                  "sampling-rate-ms": 2
                 }
               }
             }
@@ -624,28 +625,32 @@
             "default-power-preferences": {
               "governor": {
                 "ondemand": {
-                  "powersave-bias": 0
+                  "powersave-bias": 0,
+                  "sampling-rate-ms": 2
                 }
               }
             },
             "fullscreen-power-preferences": {
               "governor": {
                 "ondemand": {
-                  "powersave-bias": 600
+                  "powersave-bias": 600,
+                  "sampling-rate-ms": 2
                 }
               }
             },
             "gaming-power-preferences": {
               "governor": {
                 "ondemand": {
-                  "powersave-bias": 0
+                  "powersave-bias": 0,
+                  "sampling-rate-ms": 16
                 }
               }
             },
             "web-rtc-power-preferences": {
               "governor": {
                 "ondemand": {
-                  "powersave-bias": 400
+                  "powersave-bias": 400,
+                  "sampling-rate-ms": 16
                 }
               }
             }

@@ -8217,6 +8217,13 @@
                   "name": "powersave_bias",
                   "number": 1,
                   "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "sampling-rate-ms",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "sampling_rate_ms",
+                  "number": 2,
+                  "type": "TYPE_UINT32"
                 }
               ],
               "name": "OndemandGovernor"
