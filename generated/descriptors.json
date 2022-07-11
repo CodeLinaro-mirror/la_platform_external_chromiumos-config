@@ -17002,6 +17002,39 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "overrideVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_version",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "overrideInstallPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_install_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "LaCrOSProvisionMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/lacros_provision_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/coverage_rule.proto"
       ],
