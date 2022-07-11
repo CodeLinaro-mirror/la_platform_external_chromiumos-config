@@ -5065,6 +5065,14 @@
                   "number": 5,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "detachableBase",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "detachable_base",
+                  "number": 6,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "EmbeddedController"

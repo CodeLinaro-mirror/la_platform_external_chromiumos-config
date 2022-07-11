@@ -628,6 +628,9 @@ message HardwareFeatures {
 
     // Whether the EC supports CBI (CrOS Board Info stored on the EEPROM).
     Present cbi = 5;
+
+    // Whether the EC detects the detachable base at runtime
+    Present detachable_base = 6;
   }
   EmbeddedController embedded_controller = 24;
 
