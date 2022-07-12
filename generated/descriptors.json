@@ -17010,6 +17010,116 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/longrunning/operations.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "firmwareConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "force",
+              "label": "LABEL_OPTIONAL",
+              "name": "force",
+              "number": 8,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "useServo",
+              "label": "LABEL_OPTIONAL",
+              "name": "use_servo",
+              "number": 9,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "ProvisionFirmwareRequest"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_OK",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_INVALID_REQUEST",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_DUT_UNREACHABLE_PRE_PROVISION",
+                  "number": 2
+                },
+                {
+                  "name": "STATUS_UPDATE_FIRMWARE_FAILED",
+                  "number": 3
+                },
+                {
+                  "name": "STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
+                  "number": 4
+                },
+                {
+                  "name": "STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
+                  "number": 5
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.ProvisionFirmwareResponse.Status"
+            }
+          ],
+          "name": "ProvisionFirmwareResponse"
+        },
+        {
+          "name": "ProvisionFirmwareMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/firmware_provision.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.ProvisionFirmwareRequest",
+              "name": "Provision",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "ProvisionFirmwareMetadata",
+                  "responseType": "ProvisionFirmwareResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "FirmwareProvisionService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [

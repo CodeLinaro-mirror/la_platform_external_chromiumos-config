@@ -1,0 +1,61 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/build/api/firmware_config.proto";
+import "chromiumos/longrunning/operations.proto";
+
+// Firmware Provisioning for CFT
+service FirmwareProvisionService {
+  // Install installs a specific firmware on a DUT.
+  rpc Provision(ProvisionFirmwareRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "ProvisionFirmwareResponse",
+      metadata_type: "ProvisionFirmwareMetadata"
+    };
+  }
+}
+
+message ProvisionFirmwareRequest {
+  chromiumos.build.api.FirmwareConfig firmware_config = 1;
+
+  // Use force to pass "--force" to futility, which skips the TPM checks.
+  bool force = 8;
+
+  // If True, provision firmware over servo; information about
+  // servo to use will be pulled from a `Dut` proto, that will be
+  // requested from InventoryService.
+  // If False, SSH to the DUT and provision it directly.
+  bool use_servo = 9;
+}
+
+message ProvisionFirmwareResponse {
+  // When the status code is other than OK, details in Status message should be
+  // parsed for ErrorInfo message with the following Reasons as the reason.
+  enum Status {
+    STATUS_OK = 0;
+    // status code: INVALID_ARGUMENT
+    STATUS_INVALID_REQUEST = 1;
+    // status code: FAILED_PRECONDITION
+    STATUS_DUT_UNREACHABLE_PRE_PROVISION = 2;
+    // status code: ABORTED
+    STATUS_UPDATE_FIRMWARE_FAILED = 3;
+    // status code: ABORTED
+    STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE = 4;
+    // status code: ABORTED
+    STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE = 5;
+  }
+
+  Status status = 1;
+}
+
+// Empty as required by longrunning to comply
+message ProvisionFirmwareMetadata {
+}
