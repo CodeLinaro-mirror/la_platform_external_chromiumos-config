@@ -5073,6 +5073,14 @@
                   "number": 6,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "featureChargeControlV2",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "feature_charge_control_v2",
+                  "number": 7,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "EmbeddedController"

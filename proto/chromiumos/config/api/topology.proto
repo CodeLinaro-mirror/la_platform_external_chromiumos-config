@@ -606,7 +606,7 @@ message HardwareFeatures {
   Button volume_button = 22;
 
   // EmbeddedController properties
-  // Next Tag: 4
+  // Next Tag: 8
   message EmbeddedController {
     // Whether any kind of EC is present on the system.
     Present present = 1;
@@ -631,6 +631,9 @@ message HardwareFeatures {
 
     // Whether the EC detects the detachable base at runtime
     Present detachable_base = 6;
+
+    // Whether the EC supports EC_CMD_CHARGE_CONTROL v2.
+    Present feature_charge_control_v2 = 7;
   }
   EmbeddedController embedded_controller = 24;
 
