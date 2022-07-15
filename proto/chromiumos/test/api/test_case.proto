@@ -36,6 +36,13 @@ message TestCase {
   message Tag {
     string value = 1;
   }
+
+  // Dependencies for a given test cases, which drive scheduling logic for
+  // dut matching.
+  repeated Dependency dependencies = 4;
+  message Dependency {
+    string value = 1;
+  }
 }
 
 // List of globally unique test case identifiers

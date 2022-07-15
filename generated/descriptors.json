@@ -14190,6 +14190,14 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCase.Tag"
+            },
+            {
+              "jsonName": "dependencies",
+              "label": "LABEL_REPEATED",
+              "name": "dependencies",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase.Dependency"
             }
           ],
           "name": "TestCase",
@@ -14217,6 +14225,18 @@
                 }
               ],
               "name": "Tag"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Dependency"
             }
           ]
         },
