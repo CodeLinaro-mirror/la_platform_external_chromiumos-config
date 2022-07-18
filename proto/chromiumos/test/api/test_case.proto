@@ -49,3 +49,7 @@ message TestCase {
 message TestCaseIdList {
   repeated TestCase.Id test_case_ids = 1;
 }
+
+message TestCaseList {
+  repeated TestCase test_cases = 1;
+}

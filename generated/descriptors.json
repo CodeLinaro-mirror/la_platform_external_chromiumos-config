@@ -14252,6 +14252,19 @@
             }
           ],
           "name": "TestCaseIdList"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testCases",
+              "label": "LABEL_REPEATED",
+              "name": "test_cases",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase"
+            }
+          ],
+          "name": "TestCaseList"
         }
       ],
       "name": "chromiumos/test/api/test_case.proto",
@@ -14296,6 +14309,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestSuite.TestCaseTagCriteria"
+            },
+            {
+              "jsonName": "testCases",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_cases",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseList"
             }
           ],
           "name": "TestSuite",

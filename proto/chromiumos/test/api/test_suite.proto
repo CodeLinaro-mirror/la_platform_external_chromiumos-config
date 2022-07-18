@@ -24,6 +24,8 @@ message TestSuite {
     TestCaseIdList test_case_ids = 2;
     // Tests are included via tag inclusion/exclusion criteria.
     TestCaseTagCriteria test_case_tag_criteria = 3;
+    // List of all test_cases
+    TestCaseList test_cases = 4;
   }
 
   // Defines tag based selection criteria, which is applied against
