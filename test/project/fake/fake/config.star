@@ -561,7 +561,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
     wifi = _SC_WIFI_ATH10K,
     ui = sc.create_ui(extra_web_apps_dir = "apps1"),
@@ -592,7 +592,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = sc.create_power({
         "suspend-to-idle": "0",
     }),
@@ -635,7 +635,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
     resource = sc.create_resource(
         ac = sc.create_power_source_preference(
@@ -692,7 +692,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
     camera = sc.create_camera(
         generate_media_profiles = True,
@@ -763,7 +763,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
     wifi = sc.create_rtw89(
         non_tablet_mode_transmit_power_chain = sc.create_rtw89_power_chain(
@@ -839,7 +839,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
 )
 
@@ -867,7 +867,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
 )
 
@@ -900,7 +900,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
     camera = sc.create_camera(generate_media_profiles = True),
 )
@@ -923,7 +923,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
     camera = sc.create_camera(generate_media_profiles = True),
 )
@@ -947,7 +947,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
     power = _SC_POWER,
     camera = sc.create_camera(generate_media_profiles = True),
     ui = sc.create_ui(cloud_gaming_device = True),

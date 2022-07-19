@@ -124,7 +124,7 @@ def _create_fw_build_config_by_names(
         build_targets = fw_pb.Firmware.BuildTargets(
             bmpblk = bmpblk_name,
             coreboot = coreboot_name,
-            ec = ec_name if ec_name else coreboot_name,
+            ec = ec_name,
             ec_extras = ec_extras,
             depthcharge = depthcharge_name if depthcharge_name else coreboot_name,
             libpayload = libpayload_name if libpayload_name else coreboot_name,
