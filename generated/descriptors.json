@@ -16347,6 +16347,677 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "gcloudAuthServiceAccountArgs",
+              "label": "LABEL_REPEATED",
+              "name": "gcloud_auth_service_account_args",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "LoginRegistryExtensions"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_tool_runner_container_service_extensions.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/cros_provision_cli.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "crosDut",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_dut",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosDutTemplate"
+            },
+            {
+              "jsonName": "crosProvision",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_provision",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosProvisionTemplate"
+            },
+            {
+              "jsonName": "crosTest",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_test",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestTemplate"
+            }
+          ],
+          "name": "Template",
+          "oneofDecl": [
+            {
+              "name": "container"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "cacheServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "cache_server",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "dutAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_address",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "CrosDutTemplate"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "inputRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "input_request",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosProvisionRequest"
+            }
+          ],
+          "name": "CrosProvisionTemplate"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrosTestTemplate"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_tool_runner_container_service_templates.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/cros_tool_runner_container_service_extensions.proto",
+        "chromiumos/test/api/cros_tool_runner_container_service_templates.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "owned",
+              "label": "LABEL_OPTIONAL",
+              "name": "owned",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Network"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "owned",
+              "label": "LABEL_OPTIONAL",
+              "name": "owned",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "portBindings",
+              "label": "LABEL_REPEATED",
+              "name": "port_bindings",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Container.PortBinding"
+            }
+          ],
+          "name": "Container",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "containerPort",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "container_port",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "protocol",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "protocol",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "hostIp",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "host_ip",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "hostPort",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "host_port",
+                  "number": 4,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "PortBinding"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CreateNetworkRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Network"
+            }
+          ],
+          "name": "CreateNetworkResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetNetworkRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Network"
+            }
+          ],
+          "name": "GetNetworkResponse"
+        },
+        {
+          "name": "ShutdownRequest"
+        },
+        {
+          "name": "ShutdownResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "username",
+              "label": "LABEL_OPTIONAL",
+              "name": "username",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "password",
+              "label": "LABEL_OPTIONAL",
+              "name": "password",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "registry",
+              "label": "LABEL_OPTIONAL",
+              "name": "registry",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "extensions",
+              "label": "LABEL_OPTIONAL",
+              "name": "extensions",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LoginRegistryExtensions"
+            }
+          ],
+          "name": "LoginRegistryRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "extensionsOutput",
+              "label": "LABEL_REPEATED",
+              "name": "extensions_output",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "LoginRegistryResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "containerImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_image",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "additionalOptions",
+              "label": "LABEL_OPTIONAL",
+              "name": "additional_options",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StartContainerRequest.Options"
+            },
+            {
+              "jsonName": "startCommand",
+              "label": "LABEL_REPEATED",
+              "name": "start_command",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StartContainerRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "expose",
+                  "label": "LABEL_REPEATED",
+                  "name": "expose",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "volume",
+                  "label": "LABEL_REPEATED",
+                  "name": "volume",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "network",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "network",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Options"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "container",
+              "label": "LABEL_OPTIONAL",
+              "name": "container",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Container"
+            }
+          ],
+          "name": "StartContainerResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "containerImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_image",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "template",
+              "label": "LABEL_OPTIONAL",
+              "name": "template",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Template"
+            }
+          ],
+          "name": "StartTemplatedContainerRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "requests",
+              "label": "LABEL_REPEATED",
+              "name": "requests",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StackCommandsRequest.Stackable"
+            }
+          ],
+          "name": "StackCommandsRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "startContainer",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "start_container",
+                  "number": 1,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.StartContainerRequest"
+                },
+                {
+                  "jsonName": "startTemplatedContainer",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "start_templated_container",
+                  "number": 2,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.StartTemplatedContainerRequest"
+                },
+                {
+                  "jsonName": "createNetwork",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "create_network",
+                  "number": 3,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.CreateNetworkRequest"
+                },
+                {
+                  "jsonName": "loginRegistry",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "login_registry",
+                  "number": 4,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.LoginRegistryRequest"
+                }
+              ],
+              "name": "Stackable",
+              "oneofDecl": [
+                {
+                  "name": "command"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "responses",
+              "label": "LABEL_REPEATED",
+              "name": "responses",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StackCommandsResponse.Stackable"
+            }
+          ],
+          "name": "StackCommandsResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "startContainer",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "start_container",
+                  "number": 1,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.StartContainerResponse"
+                },
+                {
+                  "jsonName": "createNetwork",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "create_network",
+                  "number": 2,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.CreateNetworkResponse"
+                },
+                {
+                  "jsonName": "loginRegistry",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "login_registry",
+                  "number": 3,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.LoginRegistryResponse"
+                }
+              ],
+              "name": "Stackable",
+              "oneofDecl": [
+                {
+                  "name": "output"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetContainerRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "container",
+              "label": "LABEL_OPTIONAL",
+              "name": "container",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Container"
+            }
+          ],
+          "name": "GetContainerResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_tool_runner_container_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.CreateNetworkRequest",
+              "name": "CreateNetwork",
+              "outputType": ".chromiumos.test.api.CreateNetworkResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.GetNetworkRequest",
+              "name": "GetNetwork",
+              "outputType": ".chromiumos.test.api.GetNetworkResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ShutdownRequest",
+              "name": "Shutdown",
+              "outputType": ".chromiumos.test.api.ShutdownResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.LoginRegistryRequest",
+              "name": "LoginRegistry",
+              "outputType": ".chromiumos.test.api.LoginRegistryResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.StartContainerRequest",
+              "name": "StartContainer",
+              "outputType": ".chromiumos.test.api.StartContainerResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.StartTemplatedContainerRequest",
+              "name": "StartTemplatedContainer",
+              "outputType": ".chromiumos.test.api.StartContainerResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.StackCommandsRequest",
+              "name": "StackCommands",
+              "outputType": ".chromiumos.test.api.StackCommandsResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.GetContainerRequest",
+              "name": "GetContainer",
+              "outputType": ".chromiumos.test.api.GetContainerResponse"
+            }
+          ],
+          "name": "CrosToolRunnerContainerService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/longrunning/operations.proto"
