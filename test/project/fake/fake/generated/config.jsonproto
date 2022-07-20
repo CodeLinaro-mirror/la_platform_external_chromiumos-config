@@ -111,6 +111,18 @@
     },
     {
       "id": {
+        "value": "ilitek_2323_0700.0000.0000.0000"
+      },
+      "manufacturerId": {
+        "value": "ilitek"
+      },
+      "touchscreen": {
+        "fwVersion": "0700.0000.0000.0000",
+        "productId": "2323"
+      }
+    },
+    {
+      "id": {
         "value": "elan_99.0_9.0"
       },
       "manufacturerId": {
@@ -5972,6 +5984,17 @@
         "destinationFileFormat": "{product_id}_{fw_version}.bin",
         "symlinkFileFormat": "sis_{product_id}.bin",
         "vendorId": "0457"
+      }
+    },
+    {
+      "id": {
+        "value": "ilitek"
+      },
+      "name": "ilitek",
+      "touchVendor": {
+        "destinationFileFormat": "{product_id}_{fw_version}.hex",
+        "symlinkFileFormat": "ilitek_{product_id}.hex",
+        "vendorId": "222A"
       }
     },
     {

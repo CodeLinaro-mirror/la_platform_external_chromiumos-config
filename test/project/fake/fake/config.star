@@ -1167,6 +1167,13 @@ comp.append_touchscreen(
     product_id = "111A",
     fw_version = "1.0",
 )
+comp.append_touchscreen(
+    _COMPONENTS,
+    _COMPONENT_VENDORS,
+    touch_vendor = partner.touch.ILITEK,
+    product_id = "2323",
+    fw_version = "0700.0000.0000.0000",
+)
 comp.append_touchpad(
     _COMPONENTS,
     _COMPONENT_VENDORS,
