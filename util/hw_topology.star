@@ -221,7 +221,8 @@ def _create_screen(
         min_visible_backlight_level = None,
         turn_off_screen_timeout_ms = None,
         als_steps = None,
-        fw_configs = []):
+        fw_configs = [],
+        seamless_refresh_rate_switching = False):
     """Builds a Topology proto for a screen."""
     hw_features = _HW_FEAT()
 
@@ -273,6 +274,9 @@ def _create_screen(
     else:
         screen_id = id if id else "SCREEN"
         screen_desc = description if description else "Default screen"
+
+    if seamless_refresh_rate_switching:
+        hw_features.screen.panel_properties.features.append(comp_pb.Component.DisplayPanel.SEAMLESS_REFRESH_RATE_SWITCHING)
 
     return topo_pb.Topology(
         id = screen_id,

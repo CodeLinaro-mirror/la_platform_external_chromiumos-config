@@ -190,6 +190,8 @@ message Component {
       FEATURE_UNKNOWN = 0;
       // Supports high dynamic range.
       HDR = 1;
+      // Supports seamless refresh rate switching.
+      SEAMLESS_REFRESH_RATE_SWITCHING = 2;
     };
 
     message Properties {

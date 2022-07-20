@@ -1443,6 +1443,10 @@
                     {
                       "name": "HDR",
                       "number": 1
+                    },
+                    {
+                      "name": "SEAMLESS_REFRESH_RATE_SWITCHING",
+                      "number": 2
                     }
                   ]
                 }

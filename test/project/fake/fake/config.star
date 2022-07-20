@@ -58,6 +58,7 @@ _SCREEN = hw_topo.create_screen(
         hw_topo.create_als_step(None, 400, 80.1, 60.1),
         hw_topo.create_als_step(100, None, 100),
     ],
+    seamless_refresh_rate_switching = True,
 )
 _TOUCHSCREEN = hw_topo.create_screen(
     id = "TOUCHSCREEN",

@@ -574,6 +574,10 @@ def _build_ash_flags(config: Config) -> dict:
       config.sw_config.ui_config.cloud_gaming_device):
     _enable_feature('CloudGamingDevice')
 
+  if (component_pb2.Component.DisplayPanel.SEAMLESS_REFRESH_RATE_SWITCHING
+      in hw_features.screen.panel_properties.features):
+    _enable_feature('SeamlessRefreshRateSwitching')
+
   _add_flag('arc-build-properties', {
       'device': "%s_cheets" % config.program.name.lower(),
       'firstApiLevel': '28',

@@ -3087,6 +3087,9 @@
                   }
                 ],
                 "diagonalMilliinch": 15000,
+                "features": [
+                  2
+                ],
                 "heightPx": 1080,
                 "minVisibleBacklightLevel": 1000,
                 "noAlsAcBrightness": 80.1,
@@ -3579,6 +3582,9 @@
                       }
                     ],
                     "diagonalMilliinch": 15000,
+                    "features": [
+                      2
+                    ],
                     "heightPx": 1080,
                     "minVisibleBacklightLevel": 1000,
                     "noAlsAcBrightness": 80.1,
@@ -3979,6 +3985,9 @@
                   }
                 ],
                 "diagonalMilliinch": 15000,
+                "features": [
+                  2
+                ],
                 "heightPx": 1080,
                 "minVisibleBacklightLevel": 1000,
                 "noAlsAcBrightness": 80.1,
@@ -4279,6 +4288,9 @@
                       }
                     ],
                     "diagonalMilliinch": 15000,
+                    "features": [
+                      2
+                    ],
                     "heightPx": 1080,
                     "minVisibleBacklightLevel": 1000,
                     "noAlsAcBrightness": 80.1,
@@ -4469,6 +4481,9 @@
                   }
                 ],
                 "diagonalMilliinch": 15000,
+                "features": [
+                  2
+                ],
                 "heightPx": 1080,
                 "minVisibleBacklightLevel": 1000,
                 "noAlsAcBrightness": 80.1,
@@ -4758,6 +4773,9 @@
                       }
                     ],
                     "diagonalMilliinch": 15000,
+                    "features": [
+                      2
+                    ],
                     "heightPx": 1080,
                     "minVisibleBacklightLevel": 1000,
                     "noAlsAcBrightness": 80.1,
@@ -4916,6 +4934,9 @@
                   }
                 ],
                 "diagonalMilliinch": 15000,
+                "features": [
+                  2
+                ],
                 "heightPx": 1080,
                 "minVisibleBacklightLevel": 1000,
                 "noAlsAcBrightness": 80.1,
@@ -5184,6 +5205,9 @@
                       }
                     ],
                     "diagonalMilliinch": 15000,
+                    "features": [
+                      2
+                    ],
                     "heightPx": 1080,
                     "minVisibleBacklightLevel": 1000,
                     "noAlsAcBrightness": 80.1,
@@ -5342,6 +5366,9 @@
                   }
                 ],
                 "diagonalMilliinch": 15000,
+                "features": [
+                  2
+                ],
                 "heightPx": 1080,
                 "minVisibleBacklightLevel": 1000,
                 "noAlsAcBrightness": 80.1,
@@ -5592,6 +5619,9 @@
                       }
                     ],
                     "diagonalMilliinch": 15000,
+                    "features": [
+                      2
+                    ],
                     "heightPx": 1080,
                     "minVisibleBacklightLevel": 1000,
                     "noAlsAcBrightness": 80.1,
