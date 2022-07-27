@@ -319,11 +319,18 @@ message CacheRequest {
     string source_file = 2;
   }
 
+  message Retry {
+    int32 times = 1;
+    int64 interval_ms = 2;
+  }
+
   oneof source {
     GSFile gs_file = 3;
     GSZipFile gs_zip_file = 4;
     GSTARFile gs_tar_file = 5;
   }
+
+  Retry retry = 6;
 }
 
 message CacheResponse {

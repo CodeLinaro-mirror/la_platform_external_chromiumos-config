@@ -17427,6 +17427,14 @@
               "oneofIndex": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CacheRequest.GSTARFile"
+            },
+            {
+              "jsonName": "retry",
+              "label": "LABEL_OPTIONAL",
+              "name": "retry",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CacheRequest.Retry"
             }
           ],
           "name": "CacheRequest",
@@ -17497,6 +17505,25 @@
                 }
               ],
               "name": "GSTARFile"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "times",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "times",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "intervalMs",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "interval_ms",
+                  "number": 2,
+                  "type": "TYPE_INT64"
+                }
+              ],
+              "name": "Retry"
             }
           ],
           "oneofDecl": [
