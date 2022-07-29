@@ -17804,18 +17804,80 @@
       },
       "dependency": [
         "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/longrunning/operations.proto"
+        "chromiumos/longrunning/operations.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto",
+        "chromiumos/storage_path.proto"
       ],
       "messageType": [
         {
           "field": [
             {
-              "jsonName": "firmwareConfig",
+              "jsonName": "firmwareImagePath",
               "label": "LABEL_OPTIONAL",
-              "name": "firmware_config",
+              "name": "firmware_image_path",
               "number": 1,
               "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "flashRo",
+              "label": "LABEL_OPTIONAL",
+              "name": "flash_ro",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "SimpleFirmwareRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "simpleRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "simple_request",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SimpleFirmwareRequest"
+            },
+            {
+              "jsonName": "detailedRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "detailed_request",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "dutServerAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_server_address",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "crosServodAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_servod_address",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 7,
+              "type": "TYPE_STRING"
             },
             {
               "jsonName": "force",
@@ -17832,7 +17894,12 @@
               "type": "TYPE_BOOL"
             }
           ],
-          "name": "ProvisionFirmwareRequest"
+          "name": "ProvisionFirmwareRequest",
+          "oneofDecl": [
+            {
+              "name": "firmware_request"
+            }
+          ]
         },
         {
           "enumType": [

@@ -10,6 +10,8 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/build/api/firmware_config.proto";
 import "chromiumos/longrunning/operations.proto";
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+import "chromiumos/storage_path.proto";
 
 // Firmware Provisioning for CFT
 service FirmwareProvisionService {
@@ -23,16 +25,45 @@ service FirmwareProvisionService {
   }
 }
 
+message SimpleFirmwareRequest {
+  // GS path of the firmware image.
+  StoragePath firmware_image_path = 1;
+  // Whether to flash read-only aka write-protected region.
+  bool flash_ro = 2;
+}
+
 message ProvisionFirmwareRequest {
-  chromiumos.build.api.FirmwareConfig firmware_config = 1;
+  // The path(s) to the firmware build artifact.
+  oneof firmware_request {
+    // Simple Request installs a single firmware image archive entirely.
+    // Recommended for most use-cases.
+    // Uses `futility update -a path/to/archive.tar` interface.
+    SimpleFirmwareRequest simple_request = 1;
+
+    // Detailed Request allows you to specify individual versions of
+    // AP_RW, AP_RO, EC_RO, and PD_RO.
+    // Service will extract the images from firmware archive and install
+    // them individually over futility.
+    // ec_ro over Servo is flashed using flash_ec.
+    chromiumos.build.api.FirmwareConfig detailed_request = 2;
+  }
+
+  // Access to DUT Service is required to flash over SSH.
+  chromiumos.test.lab.api.IpEndpoint dut_server_address = 3;
+
+  // Access to cros-servod is required to flash over Servo.
+  chromiumos.test.lab.api.IpEndpoint cros_servod_address = 4;
+
+  // Board of the DUT. Required.
+  string board = 6;
+
+  // Model of the DUT. Required.
+  string model = 7;
 
   // Use force to pass "--force" to futility, which skips the TPM checks.
   bool force = 8;
 
-  // If True, provision firmware over servo; information about
-  // servo to use will be pulled from a `Dut` proto, that will be
-  // requested from InventoryService.
-  // If False, SSH to the DUT and provision it directly.
+  // If True, provision firmware over Servo, otherwise use SSH.
   bool use_servo = 9;
 }
 
