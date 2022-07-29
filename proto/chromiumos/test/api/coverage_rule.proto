@@ -8,24 +8,30 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
+import "google/protobuf/wrappers.proto";
 import "chromiumos/test/api/dut_attribute.proto";
 import "chromiumos/test/api/test_suite.proto";
 
+// CoverageRule specifies a set of tests that must be executed, and criteria for
+// the DUTs to execute tests on.
 message CoverageRule {
-  // Optional human friendly name of the test coverage rule
-  // E.g. kernel:5.4_soc:geminilake_wifi:intel-5600
+  // Optional human friendly name of the rule, e.g.
+  // "kernel:5.4_soc:geminilake_wifi:intel-5600".
   string name = 1;
 
   // Test suites that must be executed.
   repeated TestSuite test_suites = 2;
 
-  // Dut criteria that must be met to execute the tests.
-  //   - At least one list of criteria must be specified
-  //   - Additional criteria lists will target compound scheduling units
-  //       (units with multiple physical duts)
-  //   - All criteria in each list must be met (logical AND) to match a DUT
-  //
+  // DutTargets to execute the tests on.
+  //   - At least one target must be specified.
+  //   - Additional targets will target compound scheduling units (for units
+  //     with multiple physical duts)
   repeated DutTarget dut_targets = 4;
+
+  // Whether the rule is considered critical. For example, this value determines
+  // whether failures in this rule fail a CQ or postsubmit run. Note that the
+  // default is true.
+  google.protobuf.BoolValue critical = 5;
 
   // Graveyard
   repeated DutCriterion dut_criteria = 3 [deprecated = true];

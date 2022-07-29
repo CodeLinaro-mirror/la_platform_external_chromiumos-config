@@ -105,7 +105,8 @@ message DutCriterion {
   repeated string values = 2;
 }
 
-// We target a dut by specifying multiple criteria it has to meet
+// DutTarget is a list of DutCriterion that must be met by the DUT executing
+// tests. All criteria must be met (AND logic is applied) by the DUT.
 message DutTarget {
     repeated DutCriterion criteria = 1;
 

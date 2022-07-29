@@ -14406,6 +14406,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/wrappers.proto",
         "chromiumos/test/api/dut_attribute.proto",
         "chromiumos/test/api/test_suite.proto"
       ],
@@ -14434,6 +14435,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.DutTarget"
+            },
+            {
+              "jsonName": "critical",
+              "label": "LABEL_OPTIONAL",
+              "name": "critical",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.BoolValue"
             },
             {
               "jsonName": "dutCriteria",

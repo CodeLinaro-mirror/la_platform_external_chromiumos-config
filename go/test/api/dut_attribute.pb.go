@@ -481,7 +481,8 @@ func (m *DutCriterion) GetValues() []string {
 	return nil
 }
 
-// We target a dut by specifying multiple criteria it has to meet
+// DutTarget is a list of DutCriterion that must be met by the DUT executing
+// tests. All criteria must be met (AND logic is applied) by the DUT.
 type DutTarget struct {
 	Criteria []*DutCriterion `protobuf:"bytes,1,rep,name=criteria,proto3" json:"criteria,omitempty"`
 	// Provisioning configuration for this device
