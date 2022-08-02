@@ -213,6 +213,30 @@ def _tle_attributes():
     """Return list of device attributes to be looked up by a TLE."""
     return [
         _tle_attribute(
+            "attr-cr50-phase",
+            aliases = [
+                "label-cr50_phase",
+            ],
+        ),
+        _tle_attribute(
+            "attr-cr50-key-env",
+            aliases = [
+                "label-cr50_ro_keyid",
+            ],
+        ),
+        _tle_attribute(
+            "attr-dut-id",
+            aliases = [
+                "dut_id",
+            ],
+        ),
+        _tle_attribute(
+            "attr-dut-name",
+            aliases = [
+                "dut_name",
+            ],
+        ),
+        _tle_attribute(
             "misc-license",
             aliases = [
                 "label-license",
@@ -273,15 +297,51 @@ def _tle_attributes():
             ],
         ),
         _tle_attribute(
+            "peripheral-carrier",
+            aliases = [
+                "label-carrier",
+            ],
+        ),
+        _tle_attribute(
             "peripheral-chameleon",
             aliases = [
                 "label-chameleon",
             ],
         ),
         _tle_attribute(
+            "peripheral-chaos",
+            aliases = [
+                "label-chaos_dut",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-mimo",
+            aliases = [
+                "label-mimo",
+            ],
+        ),
+        _tle_attribute(
             "peripheral-num-btpeer",
             aliases = [
                 "label-working_bluetooth_btpeer",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-power",
+            aliases = [
+                "label-power",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-servo",
+            aliases = [
+                "label-servo",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-servo-component",
+            aliases = [
+                "label-servo_component",
             ],
         ),
         _tle_attribute(
@@ -301,6 +361,12 @@ def _tle_attributes():
             "peripheral-wificell",
             aliases = [
                 "label-wificell",
+            ],
+        ),
+        _tle_attribute(
+            "peripheral-wifi-state",
+            aliases = [
+                "label-wifi_state",
             ],
         ),
         _tle_attribute(

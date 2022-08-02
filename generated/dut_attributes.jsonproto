@@ -214,6 +214,42 @@
     },
     {
       "id": {
+        "value": "attr-cr50-phase"
+      },
+      "aliases": [
+        "label-cr50_phase"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "attr-cr50-key-env"
+      },
+      "aliases": [
+        "label-cr50_ro_keyid"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "attr-dut-id"
+      },
+      "aliases": [
+        "dut_id"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "attr-dut-name"
+      },
+      "aliases": [
+        "dut_name"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
         "value": "misc-license"
       },
       "aliases": [
@@ -304,6 +340,15 @@
     },
     {
       "id": {
+        "value": "peripheral-carrier"
+      },
+      "aliases": [
+        "label-carrier"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
         "value": "peripheral-chameleon"
       },
       "aliases": [
@@ -313,10 +358,55 @@
     },
     {
       "id": {
+        "value": "peripheral-chaos"
+      },
+      "aliases": [
+        "label-chaos_dut"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-mimo"
+      },
+      "aliases": [
+        "label-mimo"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
         "value": "peripheral-num-btpeer"
       },
       "aliases": [
         "label-working_bluetooth_btpeer"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-power"
+      },
+      "aliases": [
+        "label-power"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-servo"
+      },
+      "aliases": [
+        "label-servo"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-servo-component"
+      },
+      "aliases": [
+        "label-servo_component"
       ],
       "tleSource": {}
     },
@@ -345,6 +435,15 @@
       },
       "aliases": [
         "label-wificell"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-wifi-state"
+      },
+      "aliases": [
+        "label-wifi_state"
       ],
       "tleSource": {}
     },
