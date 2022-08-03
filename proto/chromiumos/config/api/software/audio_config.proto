@@ -48,4 +48,7 @@ message AudioConfig {
 
   // The short name of sound card.
   string card_id = 11;
+
+  // The custom project name of cras path
+  string cras_custom_name = 12;
 }

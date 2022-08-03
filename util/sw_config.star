@@ -179,6 +179,7 @@ def _create_fw_payloads_by_names(
 
 def _create_audio(
         card_name,
+        cras_custom_name = None,
         card_config_file = None,
         dsp_file = None,
         ucm_file = None,
@@ -193,6 +194,7 @@ def _create_audio(
     return audio_pb.AudioConfig(
         public_replication = public_replication.create(public_fields = public_fields),
         card_name = card_name,
+        cras_custom_name = cras_custom_name,
         card_config_file = card_config_file,
         dsp_file = dsp_file,
         ucm_file = ucm_file if ucm_file else ("ucm-config/%s/HiFi.conf" % card_name),

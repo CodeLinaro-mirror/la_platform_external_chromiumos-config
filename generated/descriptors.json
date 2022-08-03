@@ -7852,6 +7852,13 @@
               "name": "card_id",
               "number": 11,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "crasCustomName",
+              "label": "LABEL_OPTIONAL",
+              "name": "cras_custom_name",
+              "number": 12,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "AudioConfig"
