@@ -19294,6 +19294,30 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Contact"
+            },
+            {
+              "jsonName": "requirements",
+              "label": "LABEL_REPEATED",
+              "name": "requirements",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Requirement"
+            },
+            {
+              "jsonName": "bugComponent",
+              "label": "LABEL_OPTIONAL",
+              "name": "bug_component",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.BugComponent"
+            },
+            {
+              "jsonName": "criteria",
+              "label": "LABEL_OPTIONAL",
+              "name": "criteria",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Criteria"
             }
           ],
           "name": "TestCaseInfo"
@@ -19309,6 +19333,42 @@
             }
           ],
           "name": "Contact"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Requirement"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "BugComponent"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Criteria"
         },
         {
           "field": [

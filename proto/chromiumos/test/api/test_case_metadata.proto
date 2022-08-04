@@ -29,12 +29,30 @@ message TestCaseExec {
 message TestCaseInfo {
   // Contacts for ownership / flakiness notification etc.
   repeated Contact owners = 1;
+  repeated Requirement requirements = 2;
+  BugComponent bug_component = 3;
+  Criteria criteria = 4;
 }
 
 // Contact information of individuals or teams.
 message Contact {
   // Can be individual user or group email
   string email = 1;
+}
+
+// Requirements satisfied by test case
+message Requirement {
+  string value = 1;
+}
+
+// Bug component for filing bugs against test case
+message BugComponent {
+  string value = 1;
+}
+
+// A brief description of the test case.
+message Criteria {
+  string value = 1;
 }
 
 // A list of TestCaseMetadata for ease of serialization into a file.
