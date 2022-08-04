@@ -2740,6 +2740,7 @@
           "defer-external-display-timeout": "10",
           "disable-dark-resume": "0",
           "external-display-only": "1",
+          "has-barreljack": "1",
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
