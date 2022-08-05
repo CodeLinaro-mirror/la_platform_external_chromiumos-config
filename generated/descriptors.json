@@ -13746,6 +13746,328 @@
       },
       "messageType": [
         {
+          "enumType": [
+            {
+              "name": "Architecture",
+              "value": [
+                {
+                  "name": "ARCHITECTURE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "ARMV7",
+                  "number": 1
+                },
+                {
+                  "name": "ARM64",
+                  "number": 2
+                },
+                {
+                  "name": "X86",
+                  "number": 3
+                },
+                {
+                  "name": "X86_64",
+                  "number": 4
+                }
+              ]
+            },
+            {
+              "name": "BuildType",
+              "value": [
+                {
+                  "name": "BUILD_TYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "PHONE_PRE_LMP",
+                  "number": 1
+                },
+                {
+                  "name": "PHONE_LMP",
+                  "number": 2
+                },
+                {
+                  "name": "PHONE_MNC",
+                  "number": 3
+                },
+                {
+                  "name": "PHONE_PI",
+                  "number": 4
+                },
+                {
+                  "name": "PHONE_RVC",
+                  "number": 5
+                },
+                {
+                  "name": "PHONE_SC",
+                  "number": 6
+                },
+                {
+                  "name": "PHONE_NEXT",
+                  "number": 7
+                },
+                {
+                  "name": "PHONE_GO",
+                  "number": 8
+                },
+                {
+                  "name": "PHONE_GO_R",
+                  "number": 9
+                },
+                {
+                  "name": "PHONE_GO_S",
+                  "number": 10
+                }
+              ]
+            },
+            {
+              "name": "BuildPurpose",
+              "value": [
+                {
+                  "name": "BUILD_PURPOSE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "RAW",
+                  "number": 1
+                },
+                {
+                  "name": "RELEASE",
+                  "number": 2
+                },
+                {
+                  "name": "DEBUG",
+                  "number": 3
+                },
+                {
+                  "name": "DEBUG_SHRUNK",
+                  "number": 4
+                }
+              ]
+            },
+            {
+              "name": "Density",
+              "value": [
+                {
+                  "name": "DENSITY_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "MDPI",
+                  "number": 1
+                },
+                {
+                  "name": "HDPI",
+                  "number": 2
+                },
+                {
+                  "name": "XHDPI",
+                  "number": 3
+                },
+                {
+                  "name": "XXHDPI",
+                  "number": 4
+                },
+                {
+                  "name": "ALLDPI",
+                  "number": 5
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "architecture",
+              "label": "LABEL_OPTIONAL",
+              "name": "architecture",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.GMSCoreApk.Architecture"
+            },
+            {
+              "jsonName": "buildType",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_type",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.GMSCoreApk.BuildType"
+            },
+            {
+              "jsonName": "buildPurpose",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_purpose",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.GMSCoreApk.BuildPurpose"
+            },
+            {
+              "jsonName": "density",
+              "label": "LABEL_OPTIONAL",
+              "name": "density",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.GMSCoreApk.Density"
+            }
+          ],
+          "name": "GMSCoreApk"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "ref",
+              "label": "LABEL_OPTIONAL",
+              "name": "ref",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "tag",
+              "label": "LABEL_OPTIONAL",
+              "name": "tag",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "instanceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "instance_id",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "server",
+              "label": "LABEL_OPTIONAL",
+              "name": "server",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "packageDetails",
+              "label": "LABEL_OPTIONAL",
+              "name": "package_details",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CIPDPackage.CIPDPackageDetails"
+            }
+          ],
+          "name": "CIPDPackage",
+          "nestedType": [
+            {
+              "enumType": [
+                {
+                  "name": "PackageType",
+                  "value": [
+                    {
+                      "name": "PACKAGE_TYPE_UNSPECIFIED",
+                      "number": 0
+                    },
+                    {
+                      "name": "GMS_CORE_APK",
+                      "number": 1
+                    }
+                  ]
+                }
+              ],
+              "field": [
+                {
+                  "jsonName": "packageType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "package_type",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.api.CIPDPackage.CIPDPackageDetails.PackageType"
+                },
+                {
+                  "jsonName": "gmsCoreApkDetails",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gms_core_apk_details",
+                  "number": 2,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.GMSCoreApk"
+                }
+              ],
+              "name": "CIPDPackageDetails",
+              "oneofDecl": [
+                {
+                  "name": "additional_info_oneof"
+                }
+              ]
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "version_oneof"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "serialNumber",
+              "label": "LABEL_OPTIONAL",
+              "name": "serial_number",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "associatedHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "associated_hostname",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "adbVendorKeys",
+              "label": "LABEL_REPEATED",
+              "name": "adb_vendor_keys",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "cipdPackages",
+              "label": "LABEL_REPEATED",
+              "name": "cipd_packages",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CIPDPackage"
+            }
+          ],
+          "name": "AndroidDeviceProvisionMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/android_provision_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
           "name": "CheckHealthRequest"
         },
         {
