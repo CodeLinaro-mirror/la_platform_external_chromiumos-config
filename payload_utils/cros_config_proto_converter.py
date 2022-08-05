@@ -1068,11 +1068,11 @@ def _build_hardware_properties(hw_topology):
   return result
 
 
-def _fw_bcs_path(payload):
+def _fw_bcs_path(payload, ap_fw_suffix=''):
   if payload and payload.firmware_image_name:
-    return 'bcs://%s.%d.%d.%d.tbz2' % (
-        payload.firmware_image_name, payload.version.major,
-        payload.version.minor, payload.version.patch)
+    return 'bcs://%s%s.%d.%d.%d.tbz2' % (
+        payload.firmware_image_name, ap_fw_suffix.title(),
+        payload.version.major, payload.version.minor, payload.version.patch)
 
   return None
 
@@ -1124,10 +1124,14 @@ def _build_firmware(config):
   }
 
   if main_ro and main_ro.firmware_image_name:
-    _upsert(config.hw_design.id.value.lower(), result, 'image-name')
+    _upsert(
+        config.hw_design.id.value.lower(),
+        result,
+        'image-name',
+        suffix=ap_fw_suffix)
 
-  _upsert(_fw_bcs_path(main_ro), result, 'main-ro-image')
-  _upsert(_fw_bcs_path(main_rw), result, 'main-rw-image')
+  _upsert(_fw_bcs_path(main_ro, ap_fw_suffix), result, 'main-ro-image')
+  _upsert(_fw_bcs_path(main_rw, ap_fw_suffix), result, 'main-rw-image')
   _upsert(_fw_bcs_path(ec_ro), result, 'ec-ro-image')
   _upsert(_fw_bcs_path(pd_ro), result, 'pd-ro-image')
 

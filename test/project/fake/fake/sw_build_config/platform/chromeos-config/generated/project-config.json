@@ -360,9 +360,9 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90880,
-          "image-name": "fake_ref_design",
-          "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
-          "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
+          "image-name": "fake_ref_design_0db_1custom_2cameras",
+          "main-ro-image": "bcs://Fake_0Db_1Custom_2Cameras.11111.0.0.tbz2",
+          "main-rw-image": "bcs://Fake_0Db_1Custom_2Cameras.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
         },
         "firmware-signing": {
