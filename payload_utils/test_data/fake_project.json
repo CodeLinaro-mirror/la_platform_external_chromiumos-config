@@ -123,7 +123,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90913,
-          "image-name": "fake",
+          "image-name": "fake_ref_design",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -322,7 +322,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90880,
-          "image-name": "fake",
+          "image-name": "fake_ref_design",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -511,7 +511,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90913,
-          "image-name": "fake",
+          "image-name": "project_a",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -726,7 +726,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 66336,
-          "image-name": "fake",
+          "image-name": "project_b",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -899,7 +899,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 66337,
-          "image-name": "fake",
+          "image-name": "project_c",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -1064,7 +1064,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90914,
-          "image-name": "fake",
+          "image-name": "project_wl",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -1213,7 +1213,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90914,
-          "image-name": "fake",
+          "image-name": "project_wl",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -1363,7 +1363,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90914,
-          "image-name": "fake",
+          "image-name": "project_wl",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -1513,7 +1513,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90914,
-          "image-name": "fake",
+          "image-name": "project_wl",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -1676,7 +1676,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 95009,
-          "image-name": "fake",
+          "image-name": "project_rebrand",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -1826,7 +1826,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90897,
-          "image-name": "fake",
+          "image-name": "project_box",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -1967,7 +1967,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90897,
-          "image-name": "fake",
+          "image-name": "project_box",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"
@@ -2111,7 +2111,7 @@
           },
           "ec-ro-image": "bcs://Fake_EC.11111.2.0.tbz2",
           "firmware-config": 90113,
-          "image-name": "fake",
+          "image-name": "project_box",
           "main-ro-image": "bcs://Fake.11111.0.0.tbz2",
           "main-rw-image": "bcs://Fake.11111.2.3.tbz2",
           "pd-ro-image": "bcs://Fake_PD.11111.0.0.tbz2"

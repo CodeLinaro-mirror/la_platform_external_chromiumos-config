@@ -1123,7 +1123,8 @@ def _build_firmware(config):
       'build-targets': build_targets,
   }
 
-  _upsert(main_ro.firmware_image_name.lower(), result, 'image-name')
+  if main_ro and main_ro.firmware_image_name:
+    _upsert(config.hw_design.id.value.lower(), result, 'image-name')
 
   _upsert(_fw_bcs_path(main_ro), result, 'main-ro-image')
   _upsert(_fw_bcs_path(main_rw), result, 'main-rw-image')
