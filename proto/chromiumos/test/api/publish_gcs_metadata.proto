@@ -1,0 +1,16 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/storage_path.proto";
+
+message PublishGcsMetadata {
+  // GCS location where artifacts will be uploaded.
+  StoragePath gcs_path = 1;
+}

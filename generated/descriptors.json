@@ -16135,6 +16135,111 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/longrunning/operations.proto",
+        "google/protobuf/any.proto",
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "artifactDirPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "PublishRequest"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_SUCCESS",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_INVALID_REQUEST",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_FAILURE",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.PublishResponse.Status"
+            },
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "PublishResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_publish_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.PublishRequest",
+              "name": "Publish",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "PublishMetadata",
+                  "responseType": "PublishResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "GenericPublishService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -18683,6 +18788,36 @@
         }
       ],
       "name": "chromiumos/test/api/provision_cli.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "gcsPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "gcs_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            }
+          ],
+          "name": "PublishGcsMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/publish_gcs_metadata.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },
