@@ -28,11 +28,14 @@ service GenericPublishService {
 }
 
 message PublishRequest {
-  // local path to tests artifact directory
+  // Local path to tests artifact directory
   StoragePath artifact_dir_path = 1;
 
+  // Retry count. Default is 0 where no retry will be done.
+  int32 retry_count = 2;
+
   // Endpoint specific metadata
-  google.protobuf.Any metadata = 2;
+  google.protobuf.Any metadata = 3;
 }
 
 message PublishResponse {
