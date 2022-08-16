@@ -512,7 +512,7 @@ def _override_audio(
     hw_features = topo.hardware_feature
     if fw_configs != None:
         hw_features.fw_config = _HW_FEAT.FirmwareConfiguration()
-        _accumulate_fw_configs(hw_features.fw_config, fw_configs)
+        _accumulate_fw_configs(hw_features, fw_configs)
     for card_config in hw_features.audio.card_configs:
         if ucm_config != None:
             if ucm_config == _AUDIO_CONFIG_STRUCTURE.NONE:
