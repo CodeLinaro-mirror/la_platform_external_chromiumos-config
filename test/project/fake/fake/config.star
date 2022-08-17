@@ -708,39 +708,155 @@ design.append_configs(
         generate_media_profiles = True,
         camcorder_resolutions = [sc.make_resolution(640, 480)],
     ),
-    wifi = sc.create_mtk_wifi(
-        non_tablet_mode_transmit_power_chain = sc.create_mtk_power_chain(
-            limit_2g = 1,
-            limit_5g_1 = 2,
-            limit_5g_2 = 3,
-            limit_5g_3 = 4,
-            limit_5g_4 = 5,
+)
+
+design.append_configs(
+    hw_configs = _HW_CONFIGS_B,
+    sw_configs = _SW_CONFIGS,
+    design_id = _DESIGN_ID_B,
+    config_id = 34,
+    hardware_topology = create_hardware_topology(
+        audio = _AUDIO_WITH_INIT,
+        daughter_board = hw_topo.create_daughter_board(
+            "DB with LTE",
+            "Non-default daughter_board with LTE",
+            fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)],
+            cellular_support = True,
+            cellular_model = "FakeModemB",
+            cellular_type = hw_topo.cellular.CELLULAR_LTE,
         ),
-        tablet_mode_transmit_power_chain = sc.create_mtk_power_chain(
-            limit_2g = 6,
-            limit_5g_1 = 7,
-            limit_5g_2 = 8,
-            limit_5g_3 = 9,
-            limit_5g_4 = 10,
+        bluetooth = _BLUETOOTH,
+        camera = _CAMERA1,
+        form_factor = _FORM_FACTOR_DETACHABLE,
+        screen = _TOUCHSCREEN,
+        stylus = _STYLUS,
+        cellular_board = _LTE_BOARD_WITH_MODEL,
+        proximity_sensor = _NO_PROXIMITY_SENSOR,
+        wifi = hw_topo.create_wifi(
+            "WIFI_MTK",
+            "mtk wifi",
+            wifi_config = sc.create_mtk_wifi(
+                non_tablet_mode_transmit_power_chain = sc.create_mtk_power_chain(
+                    limit_2g = 1,
+                    limit_5g_1 = 2,
+                    limit_5g_2 = 3,
+                    limit_5g_3 = 4,
+                    limit_5g_4 = 5,
+                ),
+                tablet_mode_transmit_power_chain = sc.create_mtk_power_chain(
+                    limit_2g = 6,
+                    limit_5g_1 = 7,
+                    limit_5g_2 = 8,
+                    limit_5g_3 = 9,
+                    limit_5g_4 = 10,
+                ),
+                fcc_transmit_power_chain = sc.create_mtk_geo_power_chain(
+                    limit_2g = 11,
+                    limit_5g = 12,
+                    offset_2g = 13,
+                    offset_5g = 14,
+                ),
+                eu_transmit_power_chain = sc.create_mtk_geo_power_chain(
+                    limit_2g = 15,
+                    limit_5g = 16,
+                    offset_2g = 17,
+                    offset_5g = 18,
+                ),
+                other_transmit_power_chain = sc.create_mtk_geo_power_chain(
+                    limit_2g = 19,
+                    limit_5g = 20,
+                    offset_2g = 21,
+                    offset_5g = 22,
+                ),
+            ),
         ),
-        fcc_transmit_power_chain = sc.create_mtk_geo_power_chain(
-            limit_2g = 11,
-            limit_5g = 12,
-            offset_2g = 13,
-            offset_5g = 14,
+    ),
+    bluetooth = _SC_BLUETOOTH,
+    firmware = sc.create_fw_payloads_by_names(
+        "Fake",
+        "Fake_EC",
+        "Fake_PD",
+        ap_ro_version = sc.create_fw_version(11111),
+        ap_rw_version = sc.create_fw_version(11111, 2, 3),
+        ec_version = sc.create_fw_version(11111, 2),
+        pd_version = sc.create_fw_version(11111),
+    ),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    power = _SC_POWER,
+    camera = sc.create_camera(
+        generate_media_profiles = True,
+        camcorder_resolutions = [sc.make_resolution(640, 480)],
+    ),
+)
+
+design.append_configs(
+    hw_configs = _HW_CONFIGS_B,
+    sw_configs = _SW_CONFIGS,
+    design_id = _DESIGN_ID_B,
+    config_id = 35,
+    hardware_topology = create_hardware_topology(
+        audio = _AUDIO_WITH_INIT,
+        daughter_board = hw_topo.create_daughter_board(
+            "DB with LTE",
+            "Non-default daughter_board with LTE",
+            fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)],
+            cellular_support = True,
+            cellular_model = "FakeModemB",
+            cellular_type = hw_topo.cellular.CELLULAR_LTE,
         ),
-        eu_transmit_power_chain = sc.create_mtk_geo_power_chain(
-            limit_2g = 15,
-            limit_5g = 16,
-            offset_2g = 17,
-            offset_5g = 18,
+        bluetooth = _BLUETOOTH,
+        camera = _CAMERA1,
+        form_factor = _FORM_FACTOR_DETACHABLE,
+        screen = _TOUCHSCREEN,
+        stylus = _STYLUS,
+        cellular_board = _LTE_BOARD_WITH_MODEL,
+        proximity_sensor = _NO_PROXIMITY_SENSOR,
+        wifi = hw_topo.create_wifi(
+            "WIFI_RTK89",
+            "rt89 wifi",
+            wifi_config = sc.create_rtw89(
+                non_tablet_mode_transmit_power_chain = sc.create_rtw89_power_chain(
+                    limit_2g = 1,
+                    limit_5g_1 = 2,
+                    limit_5g_3 = 3,
+                    limit_5g_4 = 4,
+                ),
+                tablet_mode_transmit_power_chain = sc.create_rtw89_power_chain(
+                    limit_2g = 5,
+                    limit_5g_1 = 6,
+                    limit_5g_3 = 7,
+                    limit_5g_4 = 8,
+                ),
+                fcc_offsets = sc.create_rtw89_geo_offsets(
+                    offset_2g = 9,
+                    offset_5g = 10,
+                ),
+                eu_offsets = sc.create_rtw89_geo_offsets(
+                    offset_2g = 11,
+                    offset_5g = 12,
+                ),
+                other_offsets = sc.create_rtw89_geo_offsets(
+                    offset_2g = 13,
+                    offset_5g = 14,
+                ),
+            ),
         ),
-        other_transmit_power_chain = sc.create_mtk_geo_power_chain(
-            limit_2g = 19,
-            limit_5g = 20,
-            offset_2g = 21,
-            offset_5g = 22,
-        ),
+    ),
+    bluetooth = _SC_BLUETOOTH,
+    firmware = sc.create_fw_payloads_by_names(
+        "Fake",
+        "Fake_EC",
+        "Fake_PD",
+        ap_ro_version = sc.create_fw_version(11111),
+        ap_rw_version = sc.create_fw_version(11111, 2, 3),
+        ec_version = sc.create_fw_version(11111, 2),
+        pd_version = sc.create_fw_version(11111),
+    ),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    power = _SC_POWER,
+    camera = sc.create_camera(
+        generate_media_profiles = True,
+        camcorder_resolutions = [sc.make_resolution(640, 480)],
     ),
 )
 

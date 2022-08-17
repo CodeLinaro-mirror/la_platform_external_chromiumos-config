@@ -869,9 +869,9 @@ def _build_wifi(config, config_files):
   if config_field == 'intel_config':
     return _build_intel_config(config, config_files)
   if config_field == 'mtk_config':
-    return _build_mtk_config(config.sw_config.wifi_config.mtk_config)
+    return _build_mtk_config(wifi_config.mtk_config)
   if config_field == 'rtw89_config':
-    return _build_rtw89_config(config.sw_config.wifi_config.rtw89_config)
+    return _build_rtw89_config(wifi_config.rtw89_config)
   return {}
 
 

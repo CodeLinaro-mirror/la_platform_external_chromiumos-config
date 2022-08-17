@@ -43,6 +43,16 @@
           "id": {
             "value": "PROJECT_B:33"
           }
+        },
+        {
+          "id": {
+            "value": "PROJECT_B:34"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_B:35"
+          }
         }
       ],
       "id": {
@@ -169,6 +179,24 @@
       },
       "idScanConfig": {
         "firmwareSku": 33,
+        "smbiosNameMatch": "PROJECT_B"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_B:34"
+      },
+      "idScanConfig": {
+        "firmwareSku": 34,
+        "smbiosNameMatch": "PROJECT_B"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_B:35"
+      },
+      "idScanConfig": {
+        "firmwareSku": 35,
         "smbiosNameMatch": "PROJECT_B"
       }
     },
