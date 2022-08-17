@@ -10,79 +10,137 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/artifact";
 
 import "chromiumos/storage_path.proto";
 import "chromiumos/test/api/provision_state.proto";
-import "chromiumos/test/api/test_case.proto";
 import "chromiumos/test/api/test_case_metadata.proto";
 import "chromiumos/test/api/test_case_result.proto";
 import "chromiumos/test/api/v1/plan.proto";
 import "chromiumos/test/lab/api/dut.proto";
 
 // Captures artifact for test result.
-// NEXT TAG: 5
+// NEXT TAG: 4
 message TestResult {
-
   // Captures the test result artifact version.
   uint32 version = 1;
 
   // List of test runs.
   repeated TestRun test_runs = 2;
 
-  // List of custom results.
-  repeated CustomResult custom_results = 3;
-
   // Test plan ids associated with the test result.
-  repeated chromiumos.test.api.v1.HWTestPlan.TestPlanId test_plan_ids = 4;
+  repeated chromiumos.test.api.v1.HWTestPlan.TestPlanId test_plan_ids = 3;
 }
 
 // Captures information regarding a test run.
 // NEXT TAG: 8
 message TestRun {
-
-  //  The executed test case.
-  chromiumos.test.api.TestCase test_case = 1;
-
-  //  Metadata related to test case and execution context.
-  chromiumos.test.api.TestCaseMetadata test_case_metadata = 2;
+  // Metadata related to test case and execution context.
+  chromiumos.test.api.TestCaseMetadata test_case_metadata = 1;
 
   // Result of a single execution of a given test case.
-  chromiumos.test.api.TestCaseResult test_case_result = 3;
+  chromiumos.test.api.TestCaseResult test_case_result = 2;
 
-  // Build ids associated with the test result.
-  repeated uint64 build_ids = 4;
+  // List of paths to the result artifacts that are used to derive test result
+  // information.
+  repeated chromiumos.StoragePath logs_info = 3;
 
-  // The topology of the connected devices under test.
-  // If there are multiple duts (for multi DUTs tests), there should be
-  // corresponding build info entry for each with the same ordering.
-  chromiumos.test.lab.api.DutTopology dut_topology = 5;
+  // The topology of the connected devices under test. The DUT topology
+  // represents the hardware specs of devices and includes a full list of
+  // available DUTs of a given schedule-able unit (e.g. swarming bot) from
+  // inventory server.
+  // Multi-dut Sarming bot example:
+  // https://chromeos-swarming.appspot.com/bot?id=crossk-chromeos15-row3-metro1-unit4
+  //
+  // For multi-dut testing, it's possible that only a subset of DUTs are used
+  // to run tests. In addition, only those DUT that are used for testing will
+  // have provision info and build info. Refer to ExecutionInfo fields for
+  // detailed test execution info of DUTs.
+  chromiumos.test.lab.api.DutTopology dut_topology = 4;
 
-  // Primary DUT info.
-  DutInfo primary_dut = 6;
+  // The execution information for the test run that consists of software
+  // information (e.g. build) and hardware information (e.g. DUT).
+  // Generally, this will contain a single Dut for an functional test that
+  // doesn't depend on other devices, but can include a collection of devices
+  // used in multi-dut testing (e.g. ChromeOS to ChromeOS, ChromeOS to Android,
+  // etc...). For multi-dut testing, there are only one primary DUT and one or
+  // more secondary DUTs.
+  //
+  // Test execution related information for the primary DUT.
+  ExecutionInfo primary_execution_info = 5;
 
-  // Companion DUT info.
-  repeated DutInfo companion_duts = 7;
+  // Test execution related information for the secondary DUTs.
+  repeated ExecutionInfo secondary_executions_info = 6;
+
+  // List of additional custom results.
+  repeated CustomResult custom_results = 7;
 }
 
-// Captures dut related info.
+// Captures ChromeOS build information associated with a test run.
+// NEXT TAG: 9
+message BuildInfo {
+  // The name associated with a given build.
+  // Format: "<source>/R<milestone>-<chrome_os_version>[.<additional_suffix>]"
+  // Example: "drallion-cq/R106-15048.0.0-69541-8805781873765277729"
+  string name = 1;
+
+  // The ChromeOS Milestone associated with the build.
+  // Example: 100, 101
+  uint64 milestone = 2;
+
+  // The ChromeOS Version associated with the build.
+  // Example: "15048.0.0"
+  string chrome_os_version = 3;
+
+  // The source where the build is created.
+  // Example: "drallion-cq", "kevin-release"
+  string source = 4;
+
+  // The snapshot version associated with the build.
+  // Example: "59b0b491b0aac1aedbac9334f9ddb4d1c448260a"
+  string snapshot_version = 5;
+
+  // The full name of the build target which includes any variant if available.
+  // Example: "grunt-arc-r-vmrvc-android-pfq"
+  string build_target = 6;
+
+  // The variant associated with the given build.
+  // Example: "grunt-arc-r"
+  string build_variant = 7;
+
+  // The plain board name associated with the given build.
+  // Example: "grunt".
+  string board = 8;
+}
+
+// Captures DUT related info.
 // NEXT TAG: 4
 message DutInfo {
+  // DUT associated with the test run.
+  chromiumos.test.lab.api.Dut dut = 1;
 
-  // Id of the dut.
-  chromiumos.test.lab.api.Dut.Id id = 1;
+  // Provision state associated with the DUT.
+  chromiumos.test.api.ProvisionState provision_state = 2;
 
-  // Id of the provision state corresponding to the dut.
-  chromiumos.test.api.ProvisionState.Id provision_state_id = 3;
-
-  // Additional DUT related info that could be specific to
-  // a certain TLE e.g. moblab install id, etc.
-  map<string, string> tags = 2;
+  // Additional DUT related information for more flexibility. For example,
+  // additional identifier that could be specific to a certain TLE.
+  // Example: "Moblab Install Id": "701c38ce144611ed86a50242c0a8640c"
+  map<string, string> tags = 3;
 }
 
-// Represents custom results, as a way for tests to produce produce arbitrary
-// artifacts.
+// Captures test execution related information for the test run.
+// NEXT TAG: 3
+message ExecutionInfo {
+  // ChromeOS build associated with the test run.
+  BuildInfo build_info = 1;
+
+  // DUT associated with the test run.
+  DutInfo dut_info = 2;
+}
+
+// Represents custom result, as a way for tests to produce arbitrary artifacts.
+// Custom results can be used by the pipeline to kick off post processing jobs
+// or to hand off results to downstream pipelines.
 // NEXT TAG: 3
 message CustomResult {
-
-  // Location of the custom result artifacts generated during execution.
-  chromiumos.StoragePath result_dir_path = 1;
+  // Path to the custom result artifacts generated during execution.
+  chromiumos.StoragePath result_artifact_path = 1;
 
   // Type of the custom result.
   oneof type {

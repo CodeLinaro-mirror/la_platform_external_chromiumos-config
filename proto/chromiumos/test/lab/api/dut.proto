@@ -13,7 +13,9 @@ import "chromiumos/test/lab/api/ip_endpoint.proto";
 
 // Specification of Device Under Test.
 message Dut {
-  // Unique identifier for the lab device.
+  // Unique identifier for the lab device. It can be the DUT serial number
+  // (e.g. "C144091") derived from the DUT itself or some other unique value
+  // regarding different contexts.
   message Id {
     string value = 1;
   }
@@ -26,13 +28,17 @@ message Dut {
   }
 
   // Chrome OS specific DUT details
-  // NEXT TAG: 15
+  // NEXT TAG: 16
   message ChromeOS {
     // Unique identifiers around the device's hardware, manufacturing, and brand
     // configuration.
     chromiumos.config.api.DeviceConfigId device_config_id = 3;
     // Endpoint for ssh service running on the device
     IpEndpoint ssh = 2;
+
+    // ChromeOS DUT name that is usually associated with the hostname.
+    // Example: "chromeos6-row16-rack11-host1"
+    string name = 15;
 
     DutModel dut_model = 14;
     Servo servo = 4;
