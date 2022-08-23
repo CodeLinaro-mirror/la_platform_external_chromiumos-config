@@ -531,6 +531,8 @@ message HardwareFeatures {
       LEFT_SIDE = 7;
       // Fingerprint sensor present, but no location information
       PRESENT = 8;
+      // Left of power button at top right corner (of the keyboard)
+      LEFT_OF_POWER_BUTTON_TOP_RIGHT = 9;
     }
   }
 

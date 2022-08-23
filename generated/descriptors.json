@@ -4812,6 +4812,10 @@
                     {
                       "name": "PRESENT",
                       "number": 8
+                    },
+                    {
+                      "name": "LEFT_OF_POWER_BUTTON_TOP_RIGHT",
+                      "number": 9
                     }
                   ]
                 }
