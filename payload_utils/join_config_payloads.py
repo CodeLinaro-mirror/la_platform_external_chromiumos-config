@@ -536,6 +536,9 @@ def merge_model(config_bundle, design_config, model):
 
   sw_config.id_scan_config.firmware_sku = identity.get('sku-id', 0xFFFFFFFF)
 
+  if 'frid' in identity:
+    sw_config.id_scan_config.frid = identity['frid']
+
   if 'smbios-name-match' in identity:
     sw_config.id_scan_config.smbios_name_match = identity['smbios-name-match']
 

@@ -642,6 +642,14 @@
                   "type": "TYPE_STRING"
                 },
                 {
+                  "jsonName": "frid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "frid",
+                  "number": 4,
+                  "oneofIndex": 0,
+                  "type": "TYPE_STRING"
+                },
+                {
                   "jsonName": "firmwareSku",
                   "label": "LABEL_OPTIONAL",
                   "name": "firmware_sku",

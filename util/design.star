@@ -79,12 +79,17 @@ def _append_configs(
         ui = None,
         usb = None,
         device_tree_compatible_match = None,
-        smbios_name_match_override = None):
+        smbios_name_match_override = None,
+        frid = None):
     """Creates and appends new SW and HW configs.
 
     Create new Software and Hardware Design Configuration with the
     specified properties and then append them to the sw_configs and hw_configs
     arrays respectively. This ensures that all IDs are consistent.
+
+    Note:
+        Only one of device_tree_compatible_match,
+        smbios_name_match_override, or frid can be specified.
 
     Args:
         sw_configs: An array to append the new SoftwareConfig to. Required.
@@ -121,8 +126,9 @@ def _append_configs(
         smbios_name_match_override: For x86 platform, a str used for
             smbios_name_match in IdentityScanConfig. If not specified,
             the string in DesignId is used.
-            Note only one of device_tree_compatible_match and
-            smbios_name_match_override can be specified.
+        frid: String which must match the AP firmware FRID (first part before the
+            period) in order for the config to match.  Leaving this value unset
+            will cause the config to match any FRID.
     """
 
     # Ensure that config_id is convertable to int and is serialized as a
@@ -150,12 +156,23 @@ def _append_configs(
 
     sw_config = sc_pb.SoftwareConfig()
     sw_config.design_config_id = hw_config.id
-    if device_tree_compatible_match and smbios_name_match_override:
-        fail("Only one of device_tree_compatible_match and smbios_name_match_override can be specified")
+
+    # Verify that only one of the three match parameters are set
+    match_list = [device_tree_compatible_match, smbios_name_match_override, frid]
+    match_count = 0
+    for match_var in match_list:
+        if match_var:
+            match_count += 1
+
+    if match_count > 1:
+        fail("Only one of device_tree_compatible_match, smbios_name_match_override, and frid can be specified")
+    elif frid:
+        sw_config.id_scan_config.frid = frid
     elif device_tree_compatible_match:
         sw_config.id_scan_config.device_tree_compatible_match = device_tree_compatible_match
     else:
         sw_config.id_scan_config.smbios_name_match = smbios_name_match_override or design_id.value
+
     sw_config.id_scan_config.firmware_sku = config_id
     sw_config.firmware = firmware
     sw_config.firmware_build_config = firmware_build_config

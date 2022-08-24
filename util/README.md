@@ -345,6 +345,7 @@ design.append_configs(
     ui = None,
     device_tree_compatible_match = None,
     smbios_name_match_override = None,
+    frid = None,
 )
 ```
 
@@ -368,6 +369,7 @@ design.append_configs(
 * **ui**: A UiConfig to be used in the SoftwareConfig.
 * **device_tree_compatible_match**: For ARM platform, a str used for device_tree_compatible_match in IdentityScanConfig.
 * **smbios_name_match_override**: For x86 platform, a str used for smbios_name_match in IdentityScanConfig. If not specified, the string in DesignId is used. Note only one of device_tree_compatible_match and smbios_name_match_override can be specified.
+* **frid**: A str used for frid matching.  Note: This will override device_tree_compatible_match and smbios_name_match_override.
 
 
 ### design.create_constraint {#design.create_constraint}
