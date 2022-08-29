@@ -19,10 +19,10 @@ if [[ -z "${script_dir}" ]]; then
 fi
 
 # Versions of packages to get from CIPD.
-readonly CIPD_PROTOC_VERSION='v3.6.1'
-readonly CIPD_PROTOC_GEN_GO_VERSION='v1.3.2'
+readonly CIPD_PROTOC_VERSION='3.17.1'
 readonly CIPD_BUF_VERSION='0.46.0'
 
+GOBIN="${script_dir}/.go_bin"
 readonly CIPD_ROOT="${script_dir}/.cipd_bin"
 cipd ensure \
      -log-level warning \
@@ -30,9 +30,12 @@ cipd ensure \
      -ensure-file - \
      <<ENSURE_FILE
 fuchsia/third_party/jq/\${platform} latest
-infra/tools/protoc/\${platform} protobuf_version:${CIPD_PROTOC_VERSION}
-chromiumos/infra/tools/protoc-gen-go version:${CIPD_PROTOC_GEN_GO_VERSION}
+infra/3pp/tools/protoc/\${platform} version:2@${CIPD_PROTOC_VERSION}
 infra/3pp/tools/go/\${platform} latest
 infra/3pp/go/github.com/bufbuild/buf/\${platform} version:2@${CIPD_BUF_VERSION}
+infra/3pp/go/github.com/protocolbuffers/protoc-gen-go/\${platform} protoc
+infra/3pp/go/github.com/grpc/protoc-gen-go-grpc/\${platform} protoc
 ENSURE_FILE
+
+PATH="${GOBIN}:${PATH}"
 PATH="${CIPD_ROOT}/bin:${CIPD_ROOT}:${PATH}"

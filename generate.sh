@@ -113,7 +113,7 @@ find python/ -type f -name '*_pb2.py' -delete
 find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
   -exec rm -f '{}/__init__.py' \;
 
-PATH="${CIPD_ROOT}" protoc -Iproto \
+protoc -Iproto \
   --python_out=python "${proto_files[@]}"
 find python/chromiumos -mindepth 1 -type d -not -name __pycache__ \
   -exec touch '{}/__init__.py' \;
@@ -133,13 +133,12 @@ GO_TEMP_DIR=$(mktemp -d)
 readonly GO_TEMP_DIR
 trap 'rm -rf ${GO_TEMP_DIR}' EXIT
 
-# Go files need to be processed individually until this is fixed:
-# https://github.com/golang/protobuf/issues/39
-for proto in "${proto_files[@]}"; do
-  PATH="${CIPD_ROOT}" protoc -I"proto" \
-    --go_out=plugins=grpc,paths=source_relative:"${GO_TEMP_DIR}" \
-    "${proto}"
-done
+protoc -Iproto \
+  --go_out="${GO_TEMP_DIR}" --go_opt=paths=source_relative \
+  "${proto_files[@]}" \
+  --go-grpc_out="${GO_TEMP_DIR}" \
+  --go-grpc_opt=require_unimplemented_servers=false,paths=source_relative \
+  "${proto_files[@]}";
 
 echo
 echo "== Generating OWNERS file for generated code paths"
