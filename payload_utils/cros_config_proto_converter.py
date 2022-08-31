@@ -46,6 +46,7 @@ CAMERA_CONFIG_DEST_PATH_TEMPLATE = '/etc/camera/camera_config_{}.json'
 CAMERA_CONFIG_SOURCE_PATH_TEMPLATE = (
     'sw_build_config/platform/chromeos-config/camera/camera_config_{}.json')
 
+DTD_FILE = "media_profiles.dtd"
 DPTF_PATH = 'sw_build_config/platform/chromeos-config/thermal'
 DPTF_FILE = 'dptf.dv'
 
@@ -81,6 +82,12 @@ def parse_args(argv):
       help='Path to the source program-level protobinary file')
   parser.add_argument(
       '-o', '--output', type=str, help='Output file that will be generated')
+  parser.add_argument(
+      "--dtd-path",
+      default=pathlib.Path(__file__).parent / DTD_FILE,
+      type=pathlib.Path,
+      help="Path to media_profiles.dtd. Defaults to the script's cwd.",
+  )
   return parser.parse_args(argv)
 
 
@@ -152,21 +159,20 @@ def _check_als_steps(steps: [component_pb2.Component.AlsStep],
   for idx, step in enumerate(steps):
     if step.ac_backlight_nits and step.battery_backlight_nits:
       if sequence_in_percent is True:
-        raise Exception('Als steps not specified in consistent units ' +
+        raise Exception('Als steps not specified in consistent units '
                         '(expected percent, got nits) for %s[%d]' %
                         (description, idx))
       sequence_in_percent = False
       if not max_screen_brightness_nits:
-        raise Exception(
-            'max_screen_brightness must be set for panel when specifying ' +
-            'brightness in nits')
+        raise Exception('max_screen_brightness must be set for panel when '
+                        'specifying brightness in nits')
       _check_nits_value(step.ac_backlight_nits, max_screen_brightness_nits,
                         '%s[%d].ac_backlight_nits' % (description, idx))
       _check_nits_value(step.battery_backlight_nits, max_screen_brightness_nits,
                         '%s[%d].battery_backlight_nits' % (description, idx))
     elif step.ac_backlight_percent and step.battery_backlight_percent:
       if sequence_in_percent is False:
-        raise Exception('Als steps not specified in consistent units ' +
+        raise Exception('Als steps not specified in consistent units '
                         '(expected nits, got percent) for %s[%d]' %
                         (description, idx))
       sequence_in_percent = True
@@ -177,9 +183,8 @@ def _check_als_steps(steps: [component_pb2.Component.AlsStep],
           step.battery_backlight_percent,
           '%s[%d].battery_backlight_percent' % (description, idx))
     else:
-      raise Exception(
-          'Als step battery and AC brightness given in different units for ' +
-          '%s[%d]' % (description, idx))
+      raise Exception('Als step battery and AC brightness given in different '
+                      'units for %s[%d]' % (description, idx))
 
   if sequence_in_percent:
     _check_increasing_sequence([step.ac_backlight_percent for step in steps],
@@ -402,16 +407,17 @@ def _build_derived_panel_power_prefs(config: Config) -> dict:
       result['internal-backlight-als-steps'] = (
           hw_features.screen.panel_properties.als_steps)
   else:
-    if hw_features.screen.panel_properties.no_als_battery_brightness:
+    panel_properties = hw_features.screen.panel_properties
+    if panel_properties.no_als_battery_brightness:
       _check_percentage_value(
-          hw_features.screen.panel_properties.no_als_battery_brightness,
+          panel_properties.no_als_battery_brightness,
           'screen.panel_properties.no_als_battery_brightness')
       result['internal-backlight-no-als-battery-brightness'] = (
-          hw_features.screen.panel_properties.no_als_battery_brightness)
-    elif hw_features.screen.panel_properties.no_als_battery_brightness_nits:
+          panel_properties.no_als_battery_brightness)
+    elif panel_properties.no_als_battery_brightness_nits:
       brightness_pct_calc = _brightness_nits_to_percent(
-          hw_features.screen.panel_properties.no_als_battery_brightness_nits,
-          hw_features.screen.panel_properties.max_screen_brightness)
+          panel_properties.no_als_battery_brightness_nits,
+          panel_properties.max_screen_brightness)
       result[
           'internal-backlight-no-als-battery-brightness'] = brightness_pct_calc
 
@@ -1221,9 +1227,10 @@ class _AudioConfigBuilder:
 
   @functools.cached_property
   def _design_name(self):
-    if self._config.hw_design.id.HasField('config_design_id_override'):
-      return self._config.hw_design.id.config_design_id_override.value.lower()
-    return self._config.hw_design.id.value.lower()
+    design_id = self._config.hw_design.id
+    if design_id.HasField('config_design_id_override'):
+      return design_id.config_design_id_override.value.lower()
+    return design_id.value.lower()
 
   @property
   def _hw_features(self):
@@ -1295,7 +1302,7 @@ class _AudioConfigBuilder:
     cras_config_source_path = self._build_source_path(card_config.cras_config,
                                                       'cras-config')
     if cras_config_source_path:
-      card_settings = card + '.card_settings'
+      card_settings = '%s.card_settings' % card
       self._files.append(
           _file(
               cras_config_source_path.joinpath(card_settings),
@@ -1909,12 +1916,14 @@ def _generate_arc_hardware_features(hw_features, sw_config, _program):
   return XML_DECLARATION + etree.tostring(root, pretty_print=True)
 
 
-def _generate_arc_media_profiles(hw_features, sw_config, program):
+def _generate_arc_media_profiles(hw_features, sw_config, program, dtd_path):
   """Generates ARC media_profiles.xml file content.
 
   Args:
     hw_features: HardwareFeatures proto message.
     sw_config: SoftwareConfig proto message.
+    program: name of the program
+    dtd_path: Full path to dtd media profiles file.
   Returns:
     bytes of the media_profiles.xml content, or None if |sw_config| disables the
     generation or there's no camera.
@@ -2048,8 +2057,10 @@ def _generate_arc_media_profiles(hw_features, sw_config, program):
           }),
   ])
 
-  dtd_path = os.path.dirname(__file__)
-  dtd = etree.DTD(os.path.join(dtd_path, 'media_profiles.dtd'))
+  if not dtd_path.exists():
+    raise Exception("%s file does not exist. Please specify correct path." %
+                    dtd_path)
+  dtd = etree.DTD(str(dtd_path))
   if not dtd.validate(root):
     raise etree.DTDValidateError(
         'Invalid media_profiles.xml generated:\n{}'.format(dtd.error_log))
@@ -2124,11 +2135,12 @@ def _write_arc_hardware_feature_files(configs, output_root_dir, build_root_dir):
                                        _generate_arc_hardware_features)
 
 
-def _write_arc_media_profile_files(configs, output_root_dir, build_root_dir):
-  return _write_files_by_design_config(configs, output_root_dir + '/arc',
-                                       build_root_dir + '/arc', '/etc',
-                                       'media_profiles_{}.xml',
-                                       _generate_arc_media_profiles)
+def _write_arc_media_profile_files(configs, output_root_dir, build_root_dir,
+                                   dtd_path):
+  return _write_files_by_design_config(
+      configs, output_root_dir + '/arc', build_root_dir + '/arc', '/etc',
+      'media_profiles_{}.xml',
+      functools.partial(_generate_arc_media_profiles, dtd_path=dtd_path))
 
 
 def _read_config(path):
@@ -2552,7 +2564,7 @@ def dsm_encode(dsm_config):
   """Creates and returns device specific method return values.
 
   args:
-    dsm_config: contains device specific method return values configured in config.star
+    dsm_config: contains device specific method return values in config.star
 
   returns:
     Encoded device specific method return values as bytearray
@@ -2673,7 +2685,7 @@ def _create_intel_sar_file_content(intel_config):
   return marker + header + payload
 
 
-def Main(project_configs, program_config, output):  # pylint: disable=invalid-name
+def Main(project_configs, program_config, output, dtd_path):  # pylint: disable=invalid-name
   """Transforms source proto config into platform JSON.
 
   Args:
@@ -2713,7 +2725,10 @@ def Main(project_configs, program_config, output):  # pylint: disable=invalid-na
   arc_hw_feature_files = _write_arc_hardware_feature_files(
       configs, output_dir, build_root_dir)
   arc_media_profile_files = _write_arc_media_profile_files(
-      configs, output_dir, build_root_dir)
+      configs=configs,
+      output_root_dir=output_dir,
+      build_root_dir=build_root_dir,
+      dtd_path=dtd_path)
   config_files = ConfigFiles(
       arc_hw_features=arc_hw_feature_files,
       arc_media_profiles=arc_media_profile_files,
@@ -2733,7 +2748,7 @@ def main(argv=None):
   if argv is None:
     argv = sys.argv[1:]
   opts = parse_args(argv)
-  Main(opts.project_configs, opts.program_config, opts.output)
+  Main(opts.project_configs, opts.program_config, opts.output, opts.dtd_path)
 
 
 if __name__ == '__main__':
