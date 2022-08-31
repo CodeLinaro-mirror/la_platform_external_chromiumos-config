@@ -23,8 +23,6 @@ message CrosTestRequest {
     chromiumos.test.lab.api.IpEndpoint dut_server = 2;
     // Provision server address.
     chromiumos.test.lab.api.IpEndpoint provision_server = 3;
-    // TestLibs server address.
-    chromiumos.test.lab.api.IpEndpoint libs_server = 4;
   }
   // Test suites to run (by tag or explicit list of tests)
   repeated TestSuite test_suites = 1;

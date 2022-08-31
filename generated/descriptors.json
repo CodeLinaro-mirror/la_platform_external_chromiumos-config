@@ -16572,14 +16572,6 @@
                   "number": 3,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-                },
-                {
-                  "jsonName": "libsServer",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "libs_server",
-                  "number": 4,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
                 }
               ],
               "name": "Device"
