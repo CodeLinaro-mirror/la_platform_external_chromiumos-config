@@ -329,7 +329,7 @@
         },
         "firmware-signing": {
           "key-id": "DEFAULT",
-          "signature-id": "fake_ref_design"
+          "signature-id": "fake_ref_design_0db_1custom_2cameras"
         },
         "hardware-properties": {
           "form-factor": "CLAMSHELL",

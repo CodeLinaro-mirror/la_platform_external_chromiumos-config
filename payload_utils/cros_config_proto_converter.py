@@ -1085,6 +1085,13 @@ def _fw_build_target(payload):
   return None
 
 
+def _calculate_image_name_suffix(config):
+  return ''.join(
+      f'_{customization}'
+      for customization in sorted(config.hw_design_config.hardware_features
+                                  .fw_config.coreboot_customizations))
+
+
 def _build_firmware(config):
   """Returns firmware config, or None if no build targets."""
   fw_payload_config = config.sw_config.firmware
@@ -1100,10 +1107,7 @@ def _build_firmware(config):
   _upsert(fw_build_config.build_targets.depthcharge, build_targets,
           'depthcharge')
 
-  ap_fw_suffix = ''.join(
-      f'_{customization}'
-      for customization in sorted(config.hw_design_config.hardware_features
-                                  .fw_config.coreboot_customizations))
+  ap_fw_suffix = _calculate_image_name_suffix(config)
 
   _upsert(
       fw_build_config.build_targets.coreboot,
@@ -1147,7 +1151,12 @@ def _build_firmware(config):
 
 def _build_fw_signing(config, whitelabel):
   if config.sw_config.firmware and config.device_signer_config:
+    ap_fw_suffix = _calculate_image_name_suffix(config)
+
     hw_design = config.hw_design.name.lower()
+    if ap_fw_suffix:
+      hw_design += ap_fw_suffix
+
     brand_scan_config = config.brand_config.scan_config
     if brand_scan_config and brand_scan_config.whitelabel_tag:
       signature_id = '%s-%s' % (hw_design, brand_scan_config.whitelabel_tag)
