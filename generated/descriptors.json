@@ -20454,6 +20454,32 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "rawContents",
+              "label": "LABEL_OPTIONAL",
+              "name": "raw_contents",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Cbi"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/cbi.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/lab/api/dut.proto"
       ],
