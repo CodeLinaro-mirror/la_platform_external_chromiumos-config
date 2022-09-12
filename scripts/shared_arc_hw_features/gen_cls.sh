@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -27,4 +27,3 @@ Cq-Depend: chromium:2194303
 
   repo upload --no-verify --ht="${name}"
 fi
-

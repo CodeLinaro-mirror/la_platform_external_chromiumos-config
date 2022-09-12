@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -28,4 +28,3 @@ readonly config_path="${output_dir}/generated/config.jsonproto"
 config/payload_utils/convert_config_enums.py \
   --input_config="${config_path}" \
   --output_config="${config_path}"
-
