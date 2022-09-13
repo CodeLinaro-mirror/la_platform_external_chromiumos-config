@@ -374,6 +374,9 @@ message HardwareFeatures {
 
       // The number of microphones associated with this device.
       Count microphone_count = 8;
+
+      // Whether the camera module is detachable.
+      bool detachable = 9;
     }
 
     // List of camera devices on the model.

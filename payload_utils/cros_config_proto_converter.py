@@ -1502,6 +1502,8 @@ def _build_camera(hw_topology):
       }
       if device.privacy_switch != topology_pb2.HardwareFeatures.PRESENT_UNKNOWN:
         dev['has-privacy-switch'] = device.privacy_switch == topology_pb2.HardwareFeatures.PRESENT
+      if device.detachable:
+        dev['detachable'] = True
       result['devices'].append(dev)
   return result
 
@@ -1846,18 +1848,21 @@ def _get_arc_camera_features(camera, camera_config):
   """
   camera_pb = topology_pb2.HardwareFeatures.Camera
 
+  # Camera stack treats detachable cameras as external.
   count = len(camera.devices)
-  has_front_camera = any(
-      (d.facing == camera_pb.FACING_FRONT for d in camera.devices))
-  has_back_camera = any(
-      (d.facing == camera_pb.FACING_BACK for d in camera.devices))
-  has_autofocus_back_camera = any((d.facing == camera_pb.FACING_BACK and
-                                   d.flags & camera_pb.FLAGS_SUPPORT_AUTOFOCUS
-                                   for d in camera.devices))
+  has_front_camera = any((not d.detachable and
+                          d.facing == camera_pb.FACING_FRONT
+                          for d in camera.devices))
+  has_back_camera = any((not d.detachable and d.facing == camera_pb.FACING_BACK
+                         for d in camera.devices))
+  has_autofocus_back_camera = any(
+      (not d.detachable and d.facing == camera_pb.FACING_BACK and
+       d.flags & camera_pb.FLAGS_SUPPORT_AUTOFOCUS for d in camera.devices))
   # Assumes MIPI cameras support FULL-level.
   # TODO(kamesan): Setting this in project configs when there's an exception.
   has_level_full_camera = any(
       (d.interface == camera_pb.INTERFACE_MIPI for d in camera.devices))
+  has_detachable_camera = any(d.detachable for d in camera.devices)
 
   features = [
       _feature('android.hardware.camera', has_back_camera),
@@ -1871,7 +1876,7 @@ def _get_arc_camera_features(camera, camera_config):
       _feature('android.hardware.camera.front', has_front_camera),
       _feature('android.hardware.camera.level.full', has_level_full_camera),
   ]
-  if camera_config.has_external_camera:
+  if has_detachable_camera or camera_config.has_external_camera:
     features.append(_feature('android.hardware.camera.external', True))
 
   return features
@@ -2018,8 +2023,8 @@ def _generate_arc_media_profiles(hw_features, sw_config, program, dtd_path):
   root = etree.Element('MediaSettings')
   camera_id = 0
   for facing in [camera_pb.FACING_BACK, camera_pb.FACING_FRONT]:
-    camera_device = next(
-        (d for d in hw_features.camera.devices if d.facing == facing), None)
+    camera_device = next((d for d in hw_features.camera.devices
+                          if not d.detachable and d.facing == facing), None)
     if camera_device is None:
       continue
     if camera_config.camcorder_resolutions:

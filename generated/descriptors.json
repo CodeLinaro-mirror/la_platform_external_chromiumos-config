@@ -4466,6 +4466,13 @@
                       "number": 8,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.HardwareFeatures.Count"
+                    },
+                    {
+                      "jsonName": "detachable",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "detachable",
+                      "number": 9,
+                      "type": "TYPE_BOOL"
                     }
                   ],
                   "name": "Device"

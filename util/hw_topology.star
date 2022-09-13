@@ -619,7 +619,8 @@ def _make_camera_device(
         flags,
         ids,
         privacy_switch_present = None,
-        microphone_count = None):
+        microphone_count = None,
+        detachable = False):
     """Builds a HardwareFeatures.Camera.Device proto."""
     camera_pb = _HW_FEAT.Camera
     device = camera_pb.Device()
@@ -646,6 +647,8 @@ def _make_camera_device(
 
     if microphone_count != None:
         device.microphone_count.value = microphone_count
+
+    device.detachable = detachable
 
     return device
 
