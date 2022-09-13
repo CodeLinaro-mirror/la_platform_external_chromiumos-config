@@ -16161,118 +16161,6 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
-      "dependency": [
-        "chromiumos/longrunning/operations.proto",
-        "google/protobuf/any.proto",
-        "chromiumos/storage_path.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "artifactDirPath",
-              "label": "LABEL_OPTIONAL",
-              "name": "artifact_dir_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "retryCount",
-              "label": "LABEL_OPTIONAL",
-              "name": "retry_count",
-              "number": 2,
-              "type": "TYPE_INT32"
-            },
-            {
-              "jsonName": "metadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
-            }
-          ],
-          "name": "PublishRequest"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Status",
-              "value": [
-                {
-                  "name": "STATUS_SUCCESS",
-                  "number": 0
-                },
-                {
-                  "name": "STATUS_INVALID_REQUEST",
-                  "number": 1
-                },
-                {
-                  "name": "STATUS_FAILURE",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "status",
-              "label": "LABEL_OPTIONAL",
-              "name": "status",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.PublishResponse.Status"
-            },
-            {
-              "jsonName": "message",
-              "label": "LABEL_OPTIONAL",
-              "name": "message",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "metadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
-            }
-          ],
-          "name": "PublishResponse"
-        }
-      ],
-      "name": "chromiumos/test/api/cros_publish_service.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.PublishRequest",
-              "name": "Publish",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "PublishMetadata",
-                  "responseType": "PublishResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            }
-          ],
-          "name": "GenericPublishService"
-        }
-      ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
       "messageType": [
         {
           "field": [
@@ -16613,6 +16501,131 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },
       "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/longrunning/operations.proto",
+        "google/protobuf/any.proto",
+        "chromiumos/storage_path.proto",
+        "chromiumos/test/api/cros_test_cli.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "artifactDirPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "testResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_response",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestResponse"
+            },
+            {
+              "jsonName": "retryCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "retry_count",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "PublishRequest"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_SUCCESS",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_INVALID_REQUEST",
+                  "number": 2
+                },
+                {
+                  "name": "STATUS_FAILURE",
+                  "number": 3
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.PublishResponse.Status"
+            },
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "PublishResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_publish_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.PublishRequest",
+              "name": "Publish",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "PublishMetadata",
+                  "responseType": "PublishResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "GenericPublishService"
+        }
+      ],
       "syntax": "proto3"
     },
     {
@@ -18851,6 +18864,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "gcs_path",
               "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "serviceAccountCredsFilePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_account_creds_file_path",
+              "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.StoragePath"
             }

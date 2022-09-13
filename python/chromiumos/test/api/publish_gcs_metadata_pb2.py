@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n.chromiumos/test/api/publish_gcs_metadata.proto\x12\x13\x63hromiumos.test.api\x1a\x1d\x63hromiumos/storage_path.proto\"?\n\x12PublishGcsMetadata\x12)\n\x08gcs_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePathB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n.chromiumos/test/api/publish_gcs_metadata.proto\x12\x13\x63hromiumos.test.api\x1a\x1d\x63hromiumos/storage_path.proto\"\x81\x01\n\x12PublishGcsMetadata\x12)\n\x08gcs_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12@\n\x1fservice_account_creds_file_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePathB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_storage__path__pb2.DESCRIPTOR,])
 
@@ -42,6 +42,13 @@ _PUBLISHGCSMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='service_account_creds_file_path', full_name='chromiumos.test.api.PublishGcsMetadata.service_account_creds_file_path', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -54,11 +61,12 @@ _PUBLISHGCSMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=102,
-  serialized_end=165,
+  serialized_start=103,
+  serialized_end=232,
 )
 
 _PUBLISHGCSMETADATA.fields_by_name['gcs_path'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
+_PUBLISHGCSMETADATA.fields_by_name['service_account_creds_file_path'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
 DESCRIPTOR.message_types_by_name['PublishGcsMetadata'] = _PUBLISHGCSMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

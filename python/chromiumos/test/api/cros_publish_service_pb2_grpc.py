@@ -7,7 +7,7 @@ from chromiumos.test.api import cros_publish_service_pb2 as chromiumos_dot_test_
 
 
 class GenericPublishServiceStub(object):
-    """Generic provisioning interface for CFT. Intended to be interchangeable across
+    """Generic publishing interface for CFT. Intended to be interchangeable across
     services
     """
 
@@ -25,7 +25,7 @@ class GenericPublishServiceStub(object):
 
 
 class GenericPublishServiceServicer(object):
-    """Generic provisioning interface for CFT. Intended to be interchangeable across
+    """Generic publishing interface for CFT. Intended to be interchangeable across
     services
     """
 
@@ -54,7 +54,7 @@ def add_GenericPublishServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class GenericPublishService(object):
-    """Generic provisioning interface for CFT. Intended to be interchangeable across
+    """Generic publishing interface for CFT. Intended to be interchangeable across
     services
     """
 

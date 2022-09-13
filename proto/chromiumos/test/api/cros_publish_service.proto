@@ -11,8 +11,9 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 import "chromiumos/longrunning/operations.proto";
 import "google/protobuf/any.proto";
 import "chromiumos/storage_path.proto";
+import "chromiumos/test/api/cros_test_cli.proto";
 
-// Generic provisioning interface for CFT. Intended to be interchangeable across
+// Generic publishing interface for CFT. Intended to be interchangeable across
 // services
 service GenericPublishService {
   // Publish publishes test results to a specific endpoint.
@@ -27,28 +28,34 @@ service GenericPublishService {
   }
 }
 
+// NEXT_TAG: 5
 message PublishRequest {
   // Local path to tests artifact directory
   StoragePath artifact_dir_path = 1;
 
+  // Test responses from cros-test
+  CrosTestResponse test_response = 2;
+
   // Retry count. Default is 0 where no retry will be done.
-  int32 retry_count = 2;
+  int32 retry_count = 3;
 
   // Endpoint specific metadata
-  google.protobuf.Any metadata = 3;
+  google.protobuf.Any metadata = 4;
 }
 
 message PublishResponse {
   // Status of the publish operation
   enum Status {
+    // Unspecified.  Invalid state.
+    STATUS_UNSPECIFIED = 0;
     // Success
-    STATUS_SUCCESS = 0;
+    STATUS_SUCCESS = 1;
     // Invalid Request
-    STATUS_INVALID_REQUEST = 1;
+    STATUS_INVALID_REQUEST = 2;
     // Failure
-    STATUS_FAILURE = 2;
+    STATUS_FAILURE = 3;
   }
-
+  // Status of the publish operation
   Status status = 1;
 
   // Any kind of message that the service wants to respond with.
