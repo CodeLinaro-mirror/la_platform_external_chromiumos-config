@@ -18960,6 +18960,32 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "jobName",
+              "label": "LABEL_OPTIONAL",
+              "name": "job_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PublishTkoMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/publish_tko_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/test/xmlrpc/xmlrpc.proto",
         "chromiumos/longrunning/operations.proto"
