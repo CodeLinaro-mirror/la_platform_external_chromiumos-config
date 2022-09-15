@@ -39,7 +39,7 @@
       "component.has_lte": true,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 2,
-      "component.has_proximity_sensor": null,
+      "component.has_proximity_sensor": true,
       "component.has_rear_camera": false,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
@@ -89,7 +89,6 @@
       "component.has_lte": true,
       "component.has_mother_board_usb_a": 0,
       "component.has_mother_board_usb_c": 2,
-      "component.has_proximity_sensor": null,
       "component.has_rear_camera": false,
       "component.has_sd_reader": true,
       "component.has_stylus": true,
@@ -414,9 +413,15 @@
       "32": {}
     },
     "project_b": {
-      "33": {},
-      "34": {},
-      "35": {}
+      "33": {
+        "component.has_proximity_sensor": true
+      },
+      "34": {
+        "component.has_proximity_sensor": null
+      },
+      "35": {
+        "component.has_proximity_sensor": null
+      }
     },
     "project_box": {
       "128": {

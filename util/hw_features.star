@@ -287,6 +287,7 @@ def _create_features(
         form_factor = None,
         hotwording = None,
         keyboard = None,
+        proximity = None,
         screen = None,
         storage = None,
         stylus = None,
@@ -307,6 +308,7 @@ def _create_features(
     _merge("form_factor", form_factor)
     _merge("hotwording", hotwording)
     _merge("keyboard", keyboard)
+    _merge("proximity", proximity)
     _merge("screen", screen)
     _merge("storage", storage)
     _merge("stylus", stylus)

@@ -14,6 +14,10 @@ load(
     hw_topo_pb = "chromiumos.config.api",
 )
 load(
+    "@proto//chromiumos/config/api/proximity_config.proto",
+    prox_pb = "chromiumos.config.api",
+)
+load(
     "@proto//chromiumos/config/api/component.proto",
     comp_pb = "chromiumos.config.api",
 )
@@ -66,6 +70,12 @@ _FP_LOC = struct(
     RIGHT_SIDE = _HW_FEAT.Fingerprint.RIGHT_SIDE,
     LEFT_SIDE = _HW_FEAT.Fingerprint.LEFT_SIDE,
     LEFT_OF_POWER_BUTTON_TOP_RIGHT = _HW_FEAT.Fingerprint.LEFT_OF_POWER_BUTTON_TOP_RIGHT,
+)
+
+_PS_RADIO_TYPE = struct(
+    UNKNOWN = prox_pb.ProximityConfig.Location.UNKNOWN,
+    WIFI = prox_pb.ProximityConfig.Location.WIFI,
+    CELLULAR = prox_pb.ProximityConfig.Location.CELLULAR,
 )
 
 _STORAGE = struct(
@@ -882,11 +892,15 @@ def _create_poe(id, description, present = False, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_proximity_sensor(id, description, fw_configs = []):
+def _create_proximity_sensor(id, description, fw_configs = [], proximity_config = None):
     """Builds a Topology proto for a proximity sensor."""
     hw_features = _HW_FEAT()
 
-    hw_features.proximity = {}
+    if proximity_config:
+        if type(proximity_config) == "list":
+            hw_features.proximity.configs.extend(proximity_config)
+        else:
+            hw_features.proximity.configs.append(proximity_config)
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -1348,7 +1362,7 @@ def _create_microphone_mute_switch(present = False):
 
     Args:
         present: flag indicating whether the device has an microphone mute
-	         switch
+                 switch
     """
     hw_features = _HW_FEAT()
     hw_features.microphone_mute_switch.present = _bool_to_present(present)
@@ -1374,6 +1388,76 @@ def _create_battery(no_battery_boot_supported = False):
         type = topo_pb.Topology.BATTERY,
         hardware_feature = hw_features,
     )
+
+def _create_proximity_location(type, modifier = None):
+    return prox_pb.ProximityConfig.Location(
+        radio_type = type,
+        modifier = modifier,
+    )
+
+def _create_legacy_proximity(location):
+    prox_config = prox_pb.ProximityConfig(
+        location = None,
+        legacy_config = prox_pb.ProximityConfig.LegacyProximityConfig(),
+    )
+    if type(location) == "list":
+        prox_config.location.extend(location)
+    else:
+        prox_config.location.append(location)
+
+    return prox_config
+
+def _create_semtech_proximity_channel(
+        channel,
+        hardwaregain = 0,
+        thresh_falling = 0,
+        thresh_falling_hysteresis = 0,
+        thresh_rising = 0,
+        thresh_rising_hysteresis = 0):
+    return prox_pb.ProximityConfig.SemtechProximityConfig.ChannelConfig(
+        channel = channel,
+        hardwaregain = hardwaregain,
+        thresh_falling = thresh_falling,
+        thresh_falling_hysteresis = thresh_falling_hysteresis,
+        thresh_rising = thresh_rising,
+        thresh_rising_hysteresis = thresh_rising_hysteresis,
+    )
+
+def _create_semtech_proximity(
+        location,
+        channels,
+        sampling_frequency = 0,
+        thresh_falling_period = 0,
+        thresh_rising_period = 0):
+    """ Builds a configuration for Semtech sensors.
+    """
+    prox_config = prox_pb.ProximityConfig(
+        location = None,
+        semtech_config = prox_pb.ProximityConfig.SemtechProximityConfig(
+            channel_config = channels,
+            sampling_frequency = sampling_frequency,
+            thresh_falling_period = thresh_falling_period,
+            thresh_rising_period = thresh_rising_period,
+        ),
+    )
+    if type(location) == "list":
+        prox_config.location.extend(location)
+    else:
+        prox_config.location.append(location)
+
+    return prox_config
+
+def _create_activity_proximity(location):
+    prox_config = prox_pb.ProximityConfig(
+        location = None,
+        activity_config = prox_pb.ProximityConfig.ActivityProximityConfig(),
+    )
+    if type(location) == "list":
+        prox_config.location.extend(location)
+    else:
+        prox_config.location.append(location)
+
+    return prox_config
 
 # enumerate the common cases
 _TPM_THIRD_PARTY = _create_tpm(tpm_type = _TPM_TYPE.THIRD_PARTY)
@@ -1753,6 +1837,11 @@ hw_topo = struct(
     create_thermal = _create_thermal,
     create_camera = _create_camera,
     create_sensor = _create_sensor,
+    create_legacy_proximity = _create_legacy_proximity,
+    create_semtech_proximity = _create_semtech_proximity,
+    create_activity_proximity = _create_activity_proximity,
+    create_semtech_proximity_channel = _create_semtech_proximity_channel,
+    create_proximity_location = _create_proximity_location,
     create_fingerprint = _create_fingerprint,
     create_fingerprint_diag = _create_fingerprint_diag,
     create_fingerprint_diag_detect_zone = _create_fingerprint_diag_detect_zone,
@@ -1787,6 +1876,7 @@ hw_topo = struct(
     audio_codec = _AUDIO_CODEC,
     cellular = _CELLULAR,
     fp_loc = _FP_LOC,
+    proximity_sensor_radio_type = _PS_RADIO_TYPE,
     storage = _STORAGE,
     kb_type = _KB_TYPE,
     kb_mcu_type = _KB_MCU_TYPE,

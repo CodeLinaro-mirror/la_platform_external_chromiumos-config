@@ -658,7 +658,7 @@ hw_topo.create_fingerprint()
 
 
 ### hw_topo.create_proximity_sensor {#hw_topo.create_proximity_sensor}
-Builds a Topology proto for a proximity sensor.
+Builds a Topology proto for proximity sensors.
 
 ```python
 hw_topo.create_proximity_sensor()

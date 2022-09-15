@@ -2186,6 +2186,195 @@
         {
           "field": [
             {
+              "jsonName": "location",
+              "label": "LABEL_REPEATED",
+              "name": "location",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.ProximityConfig.Location"
+            },
+            {
+              "jsonName": "legacyConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "legacy_config",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.ProximityConfig.LegacyProximityConfig"
+            },
+            {
+              "jsonName": "semtechConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "semtech_config",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.ProximityConfig.SemtechProximityConfig"
+            },
+            {
+              "jsonName": "activityConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "activity_config",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.ProximityConfig.ActivityProximityConfig"
+            }
+          ],
+          "name": "ProximityConfig",
+          "nestedType": [
+            {
+              "enumType": [
+                {
+                  "name": "RadioType",
+                  "value": [
+                    {
+                      "name": "UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "WIFI",
+                      "number": 1
+                    },
+                    {
+                      "name": "CELLULAR",
+                      "number": 2
+                    }
+                  ]
+                }
+              ],
+              "field": [
+                {
+                  "jsonName": "radioType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "radio_type",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.ProximityConfig.Location.RadioType"
+                },
+                {
+                  "jsonName": "modifier",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "modifier",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Location"
+            },
+            {
+              "name": "LegacyProximityConfig"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "channelConfig",
+                  "label": "LABEL_REPEATED",
+                  "name": "channel_config",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.ProximityConfig.SemtechProximityConfig.ChannelConfig"
+                },
+                {
+                  "jsonName": "samplingFrequency",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "sampling_frequency",
+                  "number": 2,
+                  "type": "TYPE_FLOAT"
+                },
+                {
+                  "jsonName": "threshFallingPeriod",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thresh_falling_period",
+                  "number": 3,
+                  "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "threshRisingPeriod",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thresh_rising_period",
+                  "number": 4,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "SemtechProximityConfig",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "channel",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "channel",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    },
+                    {
+                      "jsonName": "hardwaregain",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "hardwaregain",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "threshFalling",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "thresh_falling",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "threshFallingHysteresis",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "thresh_falling_hysteresis",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "threshRising",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "thresh_rising",
+                      "number": 5,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "threshRisingHysteresis",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "thresh_rising_hysteresis",
+                      "number": 6,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "ChannelConfig"
+                }
+              ]
+            },
+            {
+              "name": "ActivityProximityConfig"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "config"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/config/api/proximity_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "ath10kConfig",
               "label": "LABEL_OPTIONAL",
               "name": "ath10k_config",
@@ -3300,6 +3489,7 @@
       },
       "dependency": [
         "chromiumos/config/api/component.proto",
+        "chromiumos/config/api/proximity_config.proto",
         "chromiumos/config/api/wifi_config.proto",
         "google/protobuf/wrappers.proto"
       ],
@@ -5739,6 +5929,16 @@
               "name": "PowerSupply"
             },
             {
+              "field": [
+                {
+                  "jsonName": "configs",
+                  "label": "LABEL_REPEATED",
+                  "name": "configs",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.ProximityConfig"
+                }
+              ],
               "name": "Proximity"
             },
             {

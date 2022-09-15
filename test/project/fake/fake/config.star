@@ -621,6 +621,32 @@ _POWER_SUPPLY = hw_topo.create_power_supply(
 
 _BATTERY = hw_topo.create_battery(no_battery_boot_supported = True)
 
+_PROXIMITY_CONFIG = [
+    hw_topo.create_semtech_proximity(
+        [
+            hw_topo.create_proximity_location(hw_topo.proximity_sensor_radio_type.WIFI, "left"),
+            hw_topo.create_proximity_location(hw_topo.proximity_sensor_radio_type.CELLULAR),
+        ],
+        [
+            hw_topo.create_semtech_proximity_channel("0", hardwaregain = 4),
+            hw_topo.create_semtech_proximity_channel("1"),
+        ],
+    ),
+    hw_topo.create_semtech_proximity(
+        hw_topo.create_proximity_location(hw_topo.proximity_sensor_radio_type.WIFI, "right"),
+        [
+            hw_topo.create_semtech_proximity_channel("0", hardwaregain = 2),
+            hw_topo.create_semtech_proximity_channel("1"),
+        ],
+    ),
+    hw_topo.create_activity_proximity(
+        [
+            hw_topo.create_proximity_location(hw_topo.proximity_sensor_radio_type.WIFI),
+            hw_topo.create_proximity_location(hw_topo.proximity_sensor_radio_type.CELLULAR),
+        ],
+    ),
+]
+
 def create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -658,7 +684,7 @@ def create_hardware_topology(
         daughter_board = daughter_board if daughter_board else _DAUGHTER_BOARD,
         motherboard_usb = _MOTHERBOARD_USB,
         non_volatile_storage = _NON_VOLATILE_STORAGE,
-        proximity_sensor = proximity_sensor if proximity_sensor else _NO_PROXIMITY_SENSOR,
+        proximity_sensor = proximity_sensor,
         sd_reader = _SD_READER,
         thermal = _THERMAL,
         wifi = wifi if wifi else _WIFI,
@@ -785,6 +811,11 @@ design.append_configs(
         fingerprint = _FINGERPRINT,
         form_factor = _FORM_FACTOR_CONVERTIBLE,
         cellular_board = _LTE_BOARD,
+        proximity_sensor = hw_topo.create_proximity_sensor(
+            "PROXIMITY_SENSOR",
+            "Default proximity_sensor",
+            proximity_config = _PROXIMITY_CONFIG,
+        ),
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
     ),
@@ -857,11 +888,15 @@ design.append_configs(
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
         cellular_board = _LTE_BOARD_WITH_MODEL,
-        proximity_sensor = _NO_PROXIMITY_SENSOR,
         wifi = hw_topo.create_wifi(
             "WIFI_ATH10K",
             "ath10k wifi",
             wifi_config = _SC_WIFI_ATH10K,
+        ),
+        proximity_sensor = hw_topo.create_proximity_sensor(
+            "PROXIMITY_SENSOR",
+            "Default proximity_sensor",
+            proximity_config = hw_topo.create_activity_proximity(hw_topo.create_proximity_location(hw_topo.proximity_sensor_radio_type.CELLULAR)),
         ),
     ),
     bluetooth = _SC_BLUETOOTH,
@@ -908,7 +943,6 @@ design.append_configs(
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
         cellular_board = _LTE_BOARD_WITH_MODEL,
-        proximity_sensor = _NO_PROXIMITY_SENSOR,
         wifi = hw_topo.create_wifi(
             "WIFI_MTK",
             "mtk wifi",
@@ -992,7 +1026,6 @@ design.append_configs(
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
         cellular_board = _LTE_BOARD_WITH_MODEL,
-        proximity_sensor = _NO_PROXIMITY_SENSOR,
         wifi = hw_topo.create_wifi(
             "WIFI_RTK89",
             "rt89 wifi",
@@ -1131,7 +1164,11 @@ design.append_configs(
             cellular_type = hw_topo.cellular.CELLULAR_LTE,
             cellular_dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(gpio = 20, tablet_mode = True),
         ),
-        proximity_sensor = _PROXIMITY_SENSOR,
+        proximity_sensor = hw_topo.create_proximity_sensor(
+            "PROXIMITY_SENSOR",
+            "Default proximity_sensor",
+            proximity_config = _PROXIMITY_CONFIG,
+        ),
         wifi = hw_topo.create_wifi(
             "WIFI_INTEL",
             "intel wifi",
@@ -1217,7 +1254,6 @@ design.append_configs(
         ),
         camera = _CAMERA0,
         cellular_board = _LTE_BOARD_WITH_MODEL,
-        proximity_sensor = _NO_PROXIMITY_SENSOR,
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",

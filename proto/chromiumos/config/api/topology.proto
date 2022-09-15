@@ -7,6 +7,7 @@ syntax = "proto3";
 package chromiumos.config.api;
 
 import "chromiumos/config/api/component.proto";
+import "chromiumos/config/api/proximity_config.proto";
 import "chromiumos/config/api/wifi_config.proto";
 import "google/protobuf/wrappers.proto";
 
@@ -821,6 +822,7 @@ message HardwareFeatures {
 
   Proximity proximity = 37;
   message Proximity {
+    repeated ProximityConfig configs = 1;
   }
 
   // Touch screen properties
