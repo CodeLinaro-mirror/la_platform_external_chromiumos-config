@@ -120,6 +120,15 @@ message Component {
       string name = 2;
     }
 
+    enum Vulnerability {
+      VULNERABILITY_UNDEFINED = 0;
+      // CPU is vulnerable to the L1 Terminal Fault (a.k.a., L1TF) side
+      // channel.
+      L1TF = 1;
+      // CPU is vulnerable to Microarchitectural Data Sampling (MDS).
+      MDS = 2;
+    }
+
     Family family = 1;
     // Unique model name reported by the SoC and detected
     // through probing.
@@ -129,6 +138,7 @@ message Component {
     // Number of cores present on the SoC model
     int32 cores = 3;
     repeated Feature features = 4;
+    repeated Vulnerability vulnerabilities = 5;
   }
 
   message Memory {

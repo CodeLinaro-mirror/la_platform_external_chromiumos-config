@@ -1188,6 +1188,23 @@
                       "number": 2
                     }
                   ]
+                },
+                {
+                  "name": "Vulnerability",
+                  "value": [
+                    {
+                      "name": "VULNERABILITY_UNDEFINED",
+                      "number": 0
+                    },
+                    {
+                      "name": "L1TF",
+                      "number": 1
+                    },
+                    {
+                      "name": "MDS",
+                      "number": 2
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -1220,6 +1237,14 @@
                   "number": 4,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.Component.Soc.Feature"
+                },
+                {
+                  "jsonName": "vulnerabilities",
+                  "label": "LABEL_REPEATED",
+                  "name": "vulnerabilities",
+                  "number": 5,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.Component.Soc.Vulnerability"
                 }
               ],
               "name": "Soc",
@@ -5353,6 +5378,14 @@
                   "number": 1,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.Component.Soc.Feature"
+                },
+                {
+                  "jsonName": "vulnerabilities",
+                  "label": "LABEL_REPEATED",
+                  "name": "vulnerabilities",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.Component.Soc.Vulnerability"
                 }
               ],
               "name": "Soc"

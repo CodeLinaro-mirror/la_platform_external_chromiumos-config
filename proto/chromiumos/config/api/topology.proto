@@ -733,6 +733,7 @@ message HardwareFeatures {
   Soc soc = 32;
   message Soc {
     repeated Component.Soc.Feature features = 1;
+    repeated Component.Soc.Vulnerability vulnerabilities = 2;
   };
 
   DisplayPortConverter dp_converter = 33;
