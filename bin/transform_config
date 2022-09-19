@@ -60,7 +60,10 @@ proto_converter(){
 
   rm -rf "${_output_dir}"
   mkdir -p "${_output_dir}"
-  config/payload_utils/cros_config_proto_converter.py \
+
+  # Call cros_conifg_proto_converter from chromeos-config.
+  PYTHONPATH="${script_dir}/../../platform2/chromeos-config" \
+    python -m cros_config_host.cros_config_proto_converter \
     --output "${_output_dir}/project-config.json" \
     --program_config "${_program_config}" \
     --project_configs "${_project_config}"
