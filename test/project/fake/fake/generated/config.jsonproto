@@ -7281,11 +7281,6 @@
       "publicReplication": {
         "publicFields": "designConfigId,idScanConfig"
       },
-      "schedulerConfig": {
-        "boostUrgent": 20,
-        "cpusetNonurgent": "0-5",
-        "inputBoost": 15
-      },
       "uiConfig": {
         "extraWebAppsDir": "apps1"
       },

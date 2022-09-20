@@ -8377,63 +8377,6 @@
       },
       "messageType": [
         {
-          "field": [
-            {
-              "jsonName": "boostUrgent",
-              "label": "LABEL_OPTIONAL",
-              "name": "boost_urgent",
-              "number": 1,
-              "oneofIndex": 0,
-              "proto3Optional": true,
-              "type": "TYPE_UINT32"
-            },
-            {
-              "jsonName": "cpusetNonurgent",
-              "label": "LABEL_OPTIONAL",
-              "name": "cpuset_nonurgent",
-              "number": 2,
-              "oneofIndex": 1,
-              "proto3Optional": true,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "inputBoost",
-              "label": "LABEL_OPTIONAL",
-              "name": "input_boost",
-              "number": 3,
-              "oneofIndex": 2,
-              "proto3Optional": true,
-              "type": "TYPE_UINT32"
-            }
-          ],
-          "name": "SchedulerConfig",
-          "oneofDecl": [
-            {
-              "name": "_boost_urgent"
-            },
-            {
-              "name": "_cpuset_nonurgent"
-            },
-            {
-              "name": "_input_boost"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/config/api/software/scheduler_config.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
-      },
-      "package": "chromiumos.config.api.software",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
           "enumType": [
             {
               "name": "Requisition",
@@ -8545,7 +8488,6 @@
         "chromiumos/config/api/software/nnpalm_config.proto",
         "chromiumos/config/api/software/power_config.proto",
         "chromiumos/config/api/software/resource_config.proto",
-        "chromiumos/config/api/software/scheduler_config.proto",
         "chromiumos/config/api/software/ui_config.proto",
         "chromiumos/config/api/software/usb_config.proto",
         "chromiumos/config/api/wifi_config.proto",
@@ -8697,14 +8639,6 @@
               "number": 21,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.NnpalmConfig"
-            },
-            {
-              "jsonName": "schedulerConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "scheduler_config",
-              "number": 22,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.SchedulerConfig"
             }
           ],
           "name": "SoftwareConfig",

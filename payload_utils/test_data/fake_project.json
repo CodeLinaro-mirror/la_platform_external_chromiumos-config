@@ -168,11 +168,6 @@
           "wake-on-dp": "1"
         },
         "regulatory-label": "fake_regulatory_label",
-        "scheduler-tune": {
-          "boost-urgent": 20,
-          "cpuset-nonurgent": "0-5",
-          "input-boost": 15
-        },
         "typecd": {
           "mode-entry-dp-only": true
         },

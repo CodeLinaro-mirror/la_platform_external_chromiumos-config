@@ -46,10 +46,6 @@ load(
     resource_pb = "chromiumos.config.api.software",
 )
 load(
-    "@proto//chromiumos/config/api/software/scheduler_config.proto",
-    scheduler_pb = "chromiumos.config.api.software",
-)
-load(
     "@proto//chromiumos/config/api/wifi_config.proto",
     wf_pb = "chromiumos.config.api",
 )
@@ -842,17 +838,6 @@ def _create_camera(
         has_external_camera = has_external_camera,
     )
 
-def _create_scheduler(
-        boost_urgent = None,
-        cpuset_nonurgent = None,
-        input_boost = None):
-    """Builds a SchedulerConfig proto."""
-    return scheduler_pb.SchedulerConfig(
-        boost_urgent = boost_urgent,
-        cpuset_nonurgent = cpuset_nonurgent,
-        input_boost = input_boost,
-    )
-
 _UI_REQUISITION = struct(
     CHROMEOS = ui_pb.UiConfig.REQUISITION_CHROMEOS,
     MEETHW = ui_pb.UiConfig.REQUISITION_MEETHW,
@@ -917,7 +902,6 @@ sw_config = struct(
     create_rtw89 = _create_rtw89,
     create_rtw89_geo_offsets = _create_rtw89_geo_offsets,
     create_rtw89_power_chain = _create_rtw89_power_chain,
-    create_scheduler = _create_scheduler,
     create_ui = _create_ui,
     create_usb = _create_usb,
     fw_type = _FW_TYPE,

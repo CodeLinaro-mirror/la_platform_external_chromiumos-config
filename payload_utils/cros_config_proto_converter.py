@@ -1173,31 +1173,6 @@ def _build_fw_signing(config, whitelabel):
   return {}
 
 
-def _build_scheduler_tune(config: Config):
-  """Build the scheduler-tune configuration.
-
-  Args:
-    config: Config namedtuple.
-
-  Returns:
-    scheduler-tune configuration.
-  """
-  if not config.sw_config.scheduler_config:
-    return None
-
-  scheduler = config.sw_config.scheduler_config
-
-  result = {}
-  if scheduler.HasField('boost_urgent'):
-    _upsert(scheduler.boost_urgent, result, 'boost-urgent')
-  if scheduler.HasField('cpuset_nonurgent'):
-    _upsert(scheduler.cpuset_nonurgent, result, 'cpuset-nonurgent')
-  if scheduler.HasField('input_boost'):
-    _upsert(scheduler.input_boost, result, 'input-boost')
-
-  return result
-
-
 def _build_usb(config: Config):
   """Builds the usb configuration.
 
@@ -1773,7 +1748,6 @@ def _transform_build_config(config, config_files, whitelabel):
   _upsert(
       _build_fingerprint(config.hw_design_config.hardware_topology), result,
       'fingerprint')
-  _upsert(_build_scheduler_tune(config), result, 'scheduler-tune')
   _upsert(_build_ui(config), result, 'ui')
   _upsert(_build_usb(config), result, 'typecd')
   _upsert(_build_power(config), result, 'power')
