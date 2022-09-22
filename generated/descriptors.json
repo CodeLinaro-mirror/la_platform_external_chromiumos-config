@@ -17915,9 +17915,38 @@
               "name": "args",
               "number": 1,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "retry",
+              "label": "LABEL_OPTIONAL",
+              "name": "retry",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.RestartRequest.ReconnectRetry"
             }
           ],
-          "name": "RestartRequest"
+          "name": "RestartRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "times",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "times",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "intervalMs",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "interval_ms",
+                  "number": 2,
+                  "type": "TYPE_INT64"
+                }
+              ],
+              "name": "ReconnectRetry"
+            }
+          ]
         },
         {
           "field": [

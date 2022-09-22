@@ -273,6 +273,13 @@ message CrashBlob {
 message RestartRequest {
   // args are the arguments to pass to the reboot command.
   repeated string args = 1;
+
+  message ReconnectRetry {
+    int32 times = 1;
+    int64 interval_ms = 2;
+  }
+
+  ReconnectRetry retry = 2;
 };
 
 message RestartResponse {
