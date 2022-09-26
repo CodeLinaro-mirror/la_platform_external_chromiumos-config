@@ -16,30 +16,24 @@ import "chromiumos/test/api/v1/plan.proto";
 import "chromiumos/test/lab/api/dut.proto";
 
 // Captures artifact for test result.
-// NEXT TAG: 4
+// NEXT TAG: 3
 message TestResult {
   // Captures the test result artifact version.
   uint32 version = 1;
 
   // List of test runs.
   repeated TestRun test_runs = 2;
-
-  // Test plan ids associated with the test result.
-  repeated chromiumos.test.api.v1.HWTestPlan.TestPlanId test_plan_ids = 3;
 }
 
 // Captures information regarding a test run.
 // NEXT TAG: 8
 message TestRun {
-  // Metadata related to test case and execution context.
-  chromiumos.test.api.TestCaseMetadata test_case_metadata = 1;
-
-  // Result of a single execution of a given test case.
-  chromiumos.test.api.TestCaseResult test_case_result = 2;
+  // Test case information for the test result.
+  TestCaseInfo test_case_info = 1;
 
   // List of paths to the result artifacts that are used to derive test result
   // information.
-  repeated chromiumos.StoragePath logs_info = 3;
+  repeated chromiumos.StoragePath logs_info = 2;
 
   // The topology of the connected devices under test. The DUT topology
   // represents the hardware specs of devices and includes a full list of
@@ -52,7 +46,7 @@ message TestRun {
   // to run tests. In addition, only those DUT that are used for testing will
   // have provision info and build info. Refer to ExecutionInfo fields for
   // detailed test execution info of DUTs.
-  chromiumos.test.lab.api.DutTopology dut_topology = 4;
+  chromiumos.test.lab.api.DutTopology dut_topology = 3;
 
   // The execution information for the test run that consists of software
   // information (e.g. build) and hardware information (e.g. DUT).
@@ -63,13 +57,34 @@ message TestRun {
   // more secondary DUTs.
   //
   // Test execution related information for the primary DUT.
-  ExecutionInfo primary_execution_info = 5;
+  ExecutionInfo primary_execution_info = 4;
 
   // Test execution related information for the secondary DUTs.
-  repeated ExecutionInfo secondary_executions_info = 6;
+  repeated ExecutionInfo secondary_executions_info = 5;
 
   // List of additional custom results.
-  repeated CustomResult custom_results = 7;
+  repeated CustomResult custom_results = 6;
+
+  // Test plan id associated with the test result.
+  chromiumos.test.api.v1.HWTestPlan.TestPlanId test_plan_id = 7;
+}
+
+// Captures test case information associated with a test run.
+// NEXT TAG: 5
+message TestCaseInfo {
+  // Metadata related to test case and execution context.
+  chromiumos.test.api.TestCaseMetadata test_case_metadata = 1;
+
+  // Result of a single execution of a given test case.
+  chromiumos.test.api.TestCaseResult test_case_result = 2;
+
+  // The display name of the test result.
+  // Example: "hatch-cq/R102-14632.0.0/wificell-cq/tast.wificell-cq"
+  string display_name = 3;
+
+  // Test suite name.
+  // Example: "crosbolt_perf_perbuild"
+  string suite = 4;
 }
 
 // Captures ChromeOS build information associated with a test run.
@@ -100,9 +115,9 @@ message BuildInfo {
   // Example: "grunt-arc-r-vmrvc-android-pfq"
   string build_target = 6;
 
-  // The variant associated with the given build.
+  // The variant associated with the given board.
   // Example: "grunt-arc-r"
-  string build_variant = 7;
+  string board_variant = 7;
 
   // The plain board name associated with the given build.
   // Example: "grunt".
