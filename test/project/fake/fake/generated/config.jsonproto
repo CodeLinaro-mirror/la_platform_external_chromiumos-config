@@ -7495,6 +7495,20 @@
           }
         },
         "dc": {
+          "arcvm-gaming-power-preferences": {
+            "governor": {
+              "ondemand": {
+                "sampling-rate-ms": 64
+              }
+            }
+          },
+          "borealis-gaming-power-preferences": {
+            "governor": {
+              "ondemand": {
+                "sampling-rate-ms": 32
+              }
+            }
+          },
           "default-power-preferences": {
             "governor": {
               "ondemand": {

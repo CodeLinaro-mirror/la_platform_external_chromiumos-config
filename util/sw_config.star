@@ -264,7 +264,9 @@ def _create_power_source_preference(
         default = None,
         web_rtc = None,
         fullscreen_video = None,
-        gaming = None):
+        gaming = None,
+        borealis_gaming = None,
+        arcvm_gaming = None):
     """Builds a PowerSourcePreferences proto.
 
     Args:
@@ -272,12 +274,16 @@ def _create_power_source_preference(
         web_rtc: PowerPreferences
         fullscreen_video: PowerPreferences
         gaming: PowerPreferences
+        borealis_gaming: PowerPreferences
+        arcvm_gaming: PowerPreferences
     """
     return resource_pb.ResourceConfig.PowerSourcePreferences(
         default_power_preferences = default,
         web_rtc_power_preferences = web_rtc,
         fullscreen_video_power_preferences = fullscreen_video,
         gaming_power_preferences = gaming,
+        borealis_gaming_power_preferences = borealis_gaming,
+        arcvm_gaming_power_preferences = arcvm_gaming,
     )
 
 def _create_ondemand_preference(powersave_bias, sampling_rate_ms = 0):

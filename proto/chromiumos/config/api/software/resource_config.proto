@@ -40,9 +40,11 @@ message ResourceConfig {
     // If more then one activity is enabled, the following priority list is used
     // to determine which settings to apply:
     //
-    // 1) Gaming
-    // 2) WebRTC
-    // 3) Fullscreen Video
+    // 1) Borealis gaming
+    // 2) ARCVM gaming
+    // 3) Gaming
+    // 4) WebRTC
+    // 5) Fullscreen Video
     //
     // Default will be applied when no activity is active.
 
@@ -61,6 +63,14 @@ message ResourceConfig {
     // PowerPreferences to apply when playing a game.
     PowerPreferences gaming_power_preferences = 4
         [json_name = "gaming-power-preferences"];
+
+    // PowerPreferences to apply when playing a Borealis game.
+    PowerPreferences borealis_gaming_power_preferences = 5
+        [json_name = "borealis-gaming-power-preferences"];
+
+    // PowerPreferences to apply when playing an ARCVM game.
+    PowerPreferences arcvm_gaming_power_preferences = 6
+        [json_name = "arcvm-gaming-power-preferences"];
   }
 
   // Power Preferences to apply when the device is on AC power (Plugged-in).

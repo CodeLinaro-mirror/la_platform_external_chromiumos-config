@@ -8396,6 +8396,22 @@
                   "number": 4,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
+                },
+                {
+                  "jsonName": "borealis-gaming-power-preferences",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "borealis_gaming_power_preferences",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
+                },
+                {
+                  "jsonName": "arcvm-gaming-power-preferences",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "arcvm_gaming_power_preferences",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
                 }
               ],
               "name": "PowerSourcePreferences"
