@@ -18595,6 +18595,573 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/api/test_case.proto",
+        "chromiumos/test/api/test_harness.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "testCase",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase"
+            },
+            {
+              "jsonName": "testCaseExec",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_exec",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseExec"
+            },
+            {
+              "jsonName": "testCaseInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_info",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseInfo"
+            }
+          ],
+          "name": "TestCaseMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testHarness",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_harness",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness"
+            }
+          ],
+          "name": "TestCaseExec"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "owners",
+              "label": "LABEL_REPEATED",
+              "name": "owners",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Contact"
+            },
+            {
+              "jsonName": "requirements",
+              "label": "LABEL_REPEATED",
+              "name": "requirements",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Requirement"
+            },
+            {
+              "jsonName": "bugComponent",
+              "label": "LABEL_OPTIONAL",
+              "name": "bug_component",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.BugComponent"
+            },
+            {
+              "jsonName": "criteria",
+              "label": "LABEL_OPTIONAL",
+              "name": "criteria",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Criteria"
+            }
+          ],
+          "name": "TestCaseInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "email",
+              "label": "LABEL_OPTIONAL",
+              "name": "email",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Contact"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Requirement"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "BugComponent"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Criteria"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseMetadata"
+            }
+          ],
+          "name": "TestCaseMetadataList"
+        }
+      ],
+      "name": "chromiumos/test/api/test_case_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/coverage_rule.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.v1.HWTestPlan.TestPlanId"
+            },
+            {
+              "jsonName": "coverageRules",
+              "label": "LABEL_REPEATED",
+              "name": "coverage_rules",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CoverageRule"
+            }
+          ],
+          "name": "HWTestPlan",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TestPlanId"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.v1.VMTestPlan.TestPlanId"
+            },
+            {
+              "jsonName": "coverageRules",
+              "label": "LABEL_REPEATED",
+              "name": "coverage_rules",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CoverageRule"
+            }
+          ],
+          "name": "VMTestPlan",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TestPlanId"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/v1/plan.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1"
+      },
+      "package": "chromiumos.test.api.v1",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/storage_path.proto",
+        "chromiumos/test/api/provision_state.proto",
+        "chromiumos/test/api/test_case_metadata.proto",
+        "chromiumos/test/api/test_case_result.proto",
+        "chromiumos/test/api/v1/plan.proto",
+        "chromiumos/test/lab/api/dut.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 1,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "testRuns",
+              "label": "LABEL_REPEATED",
+              "name": "test_runs",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TestRun"
+            },
+            {
+              "jsonName": "testPlanIds",
+              "label": "LABEL_REPEATED",
+              "name": "test_plan_ids",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.v1.HWTestPlan.TestPlanId"
+            }
+          ],
+          "name": "TestResult"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testCaseMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_metadata",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseMetadata"
+            },
+            {
+              "jsonName": "testCaseResult",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_result",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult"
+            },
+            {
+              "jsonName": "logsInfo",
+              "label": "LABEL_REPEATED",
+              "name": "logs_info",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "dutTopology",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_topology",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.DutTopology"
+            },
+            {
+              "jsonName": "primaryExecutionInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "primary_execution_info",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.ExecutionInfo"
+            },
+            {
+              "jsonName": "secondaryExecutionsInfo",
+              "label": "LABEL_REPEATED",
+              "name": "secondary_executions_info",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.ExecutionInfo"
+            },
+            {
+              "jsonName": "customResults",
+              "label": "LABEL_REPEATED",
+              "name": "custom_results",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.CustomResult"
+            }
+          ],
+          "name": "TestRun"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "milestone",
+              "label": "LABEL_OPTIONAL",
+              "name": "milestone",
+              "number": 2,
+              "type": "TYPE_UINT64"
+            },
+            {
+              "jsonName": "chromeOsVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "chrome_os_version",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "source",
+              "label": "LABEL_OPTIONAL",
+              "name": "source",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "snapshotVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "snapshot_version",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "buildTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_target",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "buildVariant",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_variant",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 8,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "BuildInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dut",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            },
+            {
+              "jsonName": "provisionState",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_state",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionState"
+            },
+            {
+              "jsonName": "tags",
+              "label": "LABEL_REPEATED",
+              "name": "tags",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfo.TagsEntry"
+            }
+          ],
+          "name": "DutInfo",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TagsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "buildInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildInfo"
+            },
+            {
+              "jsonName": "dutInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_info",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfo"
+            }
+          ],
+          "name": "ExecutionInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "resultArtifactPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "result_artifact_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "cts",
+              "label": "LABEL_OPTIONAL",
+              "name": "cts",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.CustomResult.Cts"
+            }
+          ],
+          "name": "CustomResult",
+          "nestedType": [
+            {
+              "name": "Cts"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "type"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/artifact/test_result.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/artifact"
+      },
+      "package": "chromiumos.test.artifact",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/artifact/test_result.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "currentInvocationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "current_invocation_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "testResult",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_result",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TestResult"
+            },
+            {
+              "jsonName": "stainlessUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "stainless_url",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PublishRdbMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/metadata/publish_rdb_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/metadata"
+      },
+      "package": "chromiumos.test.api.metadata",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/test/api/coverage_rule.proto"
       ],
       "messageType": [
@@ -19554,164 +20121,6 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/api/test_case.proto",
-        "chromiumos/test/api/test_harness.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "testCase",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCase"
-            },
-            {
-              "jsonName": "testCaseExec",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_exec",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseExec"
-            },
-            {
-              "jsonName": "testCaseInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_info",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseInfo"
-            }
-          ],
-          "name": "TestCaseMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "testHarness",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_harness",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestHarness"
-            }
-          ],
-          "name": "TestCaseExec"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "owners",
-              "label": "LABEL_REPEATED",
-              "name": "owners",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Contact"
-            },
-            {
-              "jsonName": "requirements",
-              "label": "LABEL_REPEATED",
-              "name": "requirements",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Requirement"
-            },
-            {
-              "jsonName": "bugComponent",
-              "label": "LABEL_OPTIONAL",
-              "name": "bug_component",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.BugComponent"
-            },
-            {
-              "jsonName": "criteria",
-              "label": "LABEL_OPTIONAL",
-              "name": "criteria",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Criteria"
-            }
-          ],
-          "name": "TestCaseInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "email",
-              "label": "LABEL_OPTIONAL",
-              "name": "email",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "Contact"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "value",
-              "label": "LABEL_OPTIONAL",
-              "name": "value",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "Requirement"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "value",
-              "label": "LABEL_OPTIONAL",
-              "name": "value",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "BugComponent"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "value",
-              "label": "LABEL_OPTIONAL",
-              "name": "value",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "Criteria"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "values",
-              "label": "LABEL_REPEATED",
-              "name": "values",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseMetadata"
-            }
-          ],
-          "name": "TestCaseMetadataList"
-        }
-      ],
-      "name": "chromiumos/test/api/test_case_metadata.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
         "chromiumos/test/api/cros_test_finder_cli.proto"
       ],
       "name": "chromiumos/test/api/test_finder_service.proto",
@@ -19902,93 +20311,6 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/api/coverage_rule.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.v1.HWTestPlan.TestPlanId"
-            },
-            {
-              "jsonName": "coverageRules",
-              "label": "LABEL_REPEATED",
-              "name": "coverage_rules",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CoverageRule"
-            }
-          ],
-          "name": "HWTestPlan",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "TestPlanId"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.v1.VMTestPlan.TestPlanId"
-            },
-            {
-              "jsonName": "coverageRules",
-              "label": "LABEL_REPEATED",
-              "name": "coverage_rules",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CoverageRule"
-            }
-          ],
-          "name": "VMTestPlan",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "TestPlanId"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/api/v1/plan.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1"
-      },
-      "package": "chromiumos.test.api.v1",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
         "chromiumos/test/api/provision_state.proto",
         "chromiumos/test/lab/api/dut.proto"
       ],
@@ -20140,284 +20462,6 @@
         }
       ],
       "name": "chromiumos/test/artifact/test_plan.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/artifact"
-      },
-      "package": "chromiumos.test.artifact",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/storage_path.proto",
-        "chromiumos/test/api/provision_state.proto",
-        "chromiumos/test/api/test_case_metadata.proto",
-        "chromiumos/test/api/test_case_result.proto",
-        "chromiumos/test/api/v1/plan.proto",
-        "chromiumos/test/lab/api/dut.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "version",
-              "label": "LABEL_OPTIONAL",
-              "name": "version",
-              "number": 1,
-              "type": "TYPE_UINT32"
-            },
-            {
-              "jsonName": "testRuns",
-              "label": "LABEL_REPEATED",
-              "name": "test_runs",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.TestRun"
-            },
-            {
-              "jsonName": "testPlanIds",
-              "label": "LABEL_REPEATED",
-              "name": "test_plan_ids",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.v1.HWTestPlan.TestPlanId"
-            }
-          ],
-          "name": "TestResult"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "testCaseMetadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_metadata",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseMetadata"
-            },
-            {
-              "jsonName": "testCaseResult",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_case_result",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCaseResult"
-            },
-            {
-              "jsonName": "logsInfo",
-              "label": "LABEL_REPEATED",
-              "name": "logs_info",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "dutTopology",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut_topology",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.DutTopology"
-            },
-            {
-              "jsonName": "primaryExecutionInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "primary_execution_info",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.ExecutionInfo"
-            },
-            {
-              "jsonName": "secondaryExecutionsInfo",
-              "label": "LABEL_REPEATED",
-              "name": "secondary_executions_info",
-              "number": 6,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.ExecutionInfo"
-            },
-            {
-              "jsonName": "customResults",
-              "label": "LABEL_REPEATED",
-              "name": "custom_results",
-              "number": 7,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.CustomResult"
-            }
-          ],
-          "name": "TestRun"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "name",
-              "label": "LABEL_OPTIONAL",
-              "name": "name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "milestone",
-              "label": "LABEL_OPTIONAL",
-              "name": "milestone",
-              "number": 2,
-              "type": "TYPE_UINT64"
-            },
-            {
-              "jsonName": "chromeOsVersion",
-              "label": "LABEL_OPTIONAL",
-              "name": "chrome_os_version",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "source",
-              "label": "LABEL_OPTIONAL",
-              "name": "source",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "snapshotVersion",
-              "label": "LABEL_OPTIONAL",
-              "name": "snapshot_version",
-              "number": 5,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "buildTarget",
-              "label": "LABEL_OPTIONAL",
-              "name": "build_target",
-              "number": 6,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "buildVariant",
-              "label": "LABEL_OPTIONAL",
-              "name": "build_variant",
-              "number": 7,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "board",
-              "label": "LABEL_OPTIONAL",
-              "name": "board",
-              "number": 8,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "BuildInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "dut",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.Dut"
-            },
-            {
-              "jsonName": "provisionState",
-              "label": "LABEL_OPTIONAL",
-              "name": "provision_state",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ProvisionState"
-            },
-            {
-              "jsonName": "tags",
-              "label": "LABEL_REPEATED",
-              "name": "tags",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.DutInfo.TagsEntry"
-            }
-          ],
-          "name": "DutInfo",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "key",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "key",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "TagsEntry",
-              "options": {
-                "mapEntry": true
-              }
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "buildInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "build_info",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.BuildInfo"
-            },
-            {
-              "jsonName": "dutInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut_info",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.DutInfo"
-            }
-          ],
-          "name": "ExecutionInfo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "resultArtifactPath",
-              "label": "LABEL_OPTIONAL",
-              "name": "result_artifact_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "cts",
-              "label": "LABEL_OPTIONAL",
-              "name": "cts",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.CustomResult.Cts"
-            }
-          ],
-          "name": "CustomResult",
-          "nestedType": [
-            {
-              "name": "Cts"
-            }
-          ],
-          "oneofDecl": [
-            {
-              "name": "type"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/artifact/test_result.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/artifact"
       },

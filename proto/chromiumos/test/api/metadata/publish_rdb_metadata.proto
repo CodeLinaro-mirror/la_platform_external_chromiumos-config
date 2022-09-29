@@ -1,0 +1,22 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api.metadata;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
+
+import "chromiumos/test/artifact/test_result.proto";
+
+message PublishRdbMetadata {
+  // Current invocation id
+  string current_invocation_id = 1;
+
+  // Test results
+  chromiumos.test.artifact.TestResult test_result = 2;
+
+  // Stainless url where artifacts have been uploaded
+  string stainless_url = 3;
+}
