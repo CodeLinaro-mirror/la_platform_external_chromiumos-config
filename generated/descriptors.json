@@ -8390,14 +8390,6 @@
                   "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
                 },
                 {
-                  "jsonName": "gaming-power-preferences",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "gaming_power_preferences",
-                  "number": 4,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
-                },
-                {
                   "jsonName": "borealis-gaming-power-preferences",
                   "label": "LABEL_OPTIONAL",
                   "name": "borealis_gaming_power_preferences",

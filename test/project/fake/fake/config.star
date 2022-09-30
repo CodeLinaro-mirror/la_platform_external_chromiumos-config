@@ -655,7 +655,6 @@ design.append_configs(
             default = sc.create_ondemand_preference(0, 2),
             web_rtc = sc.create_ondemand_preference(400, 16),
             fullscreen_video = sc.create_ondemand_preference(600, 2),
-            gaming = sc.create_ondemand_preference(0, 16),
             borealis_gaming = sc.create_ondemand_preference(0, 32),
             arcvm_gaming = sc.create_ondemand_preference(0, 64),
         ),
