@@ -4705,6 +4705,14 @@
                   "number": 2,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.FormFactor.RecoveryInputType"
+                },
+                {
+                  "jsonName": "detachableUi",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "detachable_ui",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.BoolValue"
                 }
               ],
               "name": "FormFactor"

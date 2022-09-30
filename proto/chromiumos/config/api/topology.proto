@@ -462,6 +462,9 @@ message HardwareFeatures {
       POWER_BUTTON = 2;
       RECOVERY_BUTTON = 3;
     }
+
+    // Whether to enable detachable UI in firmware build.
+    google.protobuf.BoolValue detachable_ui = 3;
   }
 
   // Stylus properites of system.

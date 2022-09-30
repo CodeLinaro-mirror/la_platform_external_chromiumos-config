@@ -339,6 +339,7 @@
       "branda": "FAKE_OEMD"
     },
     "project_wl": {
+      "": "FAKE_OEM",
       "loema": "FAKE_LOEMA",
       "loemb": "FAKE_LOEMB",
       "loemc": "FAKE_LOEMC"

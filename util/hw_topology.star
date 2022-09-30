@@ -345,7 +345,13 @@ def _create_als_step(
         step.battery_backlight_nits = step.ac_backlight_nits
     return step
 
-def _create_form_factor(form_factor, recovery_input = None, fw_configs = [], id = None, description = None):
+def _create_form_factor(
+        form_factor,
+        recovery_input = None,
+        fw_configs = [],
+        id = None,
+        description = None,
+        detachable_ui = None):
     """Builds a Topology proto for a form factor.
 
     Args:
@@ -356,6 +362,7 @@ def _create_form_factor(form_factor, recovery_input = None, fw_configs = [], id 
             provided based on form_factor.
         description: An English description for the Topology. If not passed, a
             default is provided based on form_factor.
+        detachable_ui: Whether to enable the detachable ui mode for recovery screens.
     """
     if not id:
         id = {
@@ -392,6 +399,9 @@ def _create_form_factor(form_factor, recovery_input = None, fw_configs = [], id 
 
     hw_features.form_factor.form_factor = form_factor
     hw_features.form_factor.recovery_input = recovery_input
+
+    if detachable_ui != None:
+        hw_features.form_factor.detachable_ui.value = detachable_ui
 
     _accumulate_fw_configs(hw_features, fw_configs)
 

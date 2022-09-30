@@ -45,7 +45,7 @@ _FORM_FACTOR_CLAMSHELL_POWER_RECOV = hw_topo.create_form_factor(
 )
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
 _FORM_FACTOR_CHROMEBOX = hw_topo.create_form_factor(hw_topo.ff.CHROMEBOX)
-_FORM_FACTOR_CHROMEBASE = hw_topo.create_form_factor(hw_topo.ff.CHROMEBASE)
+_FORM_FACTOR_CHROMEBASE = hw_topo.create_form_factor(hw_topo.ff.CHROMEBASE, detachable_ui = True)
 _FORM_FACTOR_DETACHABLE = hw_topo.create_form_factor(hw_topo.ff.DETACHABLE)
 _FORM_FACTOR_CHROMESLATE = hw_topo.create_form_factor(hw_topo.ff.CHROMESLATE)
 _SCREEN = hw_topo.create_screen(
@@ -802,6 +802,7 @@ design.append_configs(
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
+        depthcharge_name = "fake2",
         ec_name = "fake",
         ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
         zephyr_ec_name = "projects/fake/fake",
@@ -1384,7 +1385,7 @@ _DEVICE_BRAND_C = device_brand.create(
 _WL_DEVICE_BRAND = device_brand.create(
     brand_name = "ChromeOS Device Brandname WL",
     design_id = _DESIGN_ID_WL,
-    oem_id = None,
+    oem_id = _FAKE_OEM.id,
     brand_code = "WLZZ",
     export_oem_info = True,
 )
