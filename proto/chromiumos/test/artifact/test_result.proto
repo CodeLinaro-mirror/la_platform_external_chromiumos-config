@@ -15,14 +15,48 @@ import "chromiumos/test/api/test_case_result.proto";
 import "chromiumos/test/api/v1/plan.proto";
 import "chromiumos/test/lab/api/dut.proto";
 
-// Captures artifact for test result.
-// NEXT TAG: 3
+// Captures rich information for test results.
+// NEXT TAG: 4
 message TestResult {
   // Captures the test result artifact version.
   uint32 version = 1;
 
-  // List of test runs.
-  repeated TestRun test_runs = 2;
+  // The test invocation which contains invocation-level information.
+  TestInvocation test_invocation = 2;
+
+  // List of test runs which contains specific test-level information.
+  repeated TestRun test_runs = 3;
+}
+
+// Captures invocation-level information for test results.
+// NEXT TAG: 4
+message TestInvocation {
+  // The topology of the connected devices under test. The DUT topology
+  // represents the hardware specs of devices and includes a full list of
+  // available DUTs of a given schedule-able unit (e.g. swarming bot) from
+  // inventory server.
+  // Multi-dut Sarming bot example:
+  // https://chromeos-swarming.appspot.com/bot?id=crossk-chromeos15-row3-metro1-unit4
+  //
+  // For multi-dut testing, it's possible that only a subset of DUTs are used
+  // to run tests. In addition, only those DUT that are used for testing will
+  // have provision info and build info. Refer to ExecutionInfo fields for
+  // detailed test execution info of DUTs.
+  chromiumos.test.lab.api.DutTopology dut_topology = 1;
+
+  // The execution information for the test run that consists of software
+  // information (e.g. build) and hardware information (e.g. DUT).
+  // Generally, this will contain a single Dut for an functional test that
+  // doesn't depend on other devices, but can include a collection of devices
+  // used in multi-dut testing (e.g. ChromeOS to ChromeOS, ChromeOS to Android,
+  // etc...). For multi-dut testing, there are only one primary DUT and one or
+  // more secondary DUTs.
+  //
+  // Test execution related information for the primary DUT.
+  ExecutionInfo primary_execution_info = 2;
+
+  // Test execution related information for the secondary DUTs.
+  repeated ExecutionInfo secondary_executions_info = 3;
 }
 
 // Captures information regarding a test run.
@@ -35,6 +69,8 @@ message TestRun {
   // information.
   repeated chromiumos.StoragePath logs_info = 2;
 
+  // TODO(b/240893570): Remove the deprecated fields once the cros_test_result
+  // adapter reflects the changes.
   // The topology of the connected devices under test. The DUT topology
   // represents the hardware specs of devices and includes a full list of
   // available DUTs of a given schedule-able unit (e.g. swarming bot) from
@@ -46,7 +82,7 @@ message TestRun {
   // to run tests. In addition, only those DUT that are used for testing will
   // have provision info and build info. Refer to ExecutionInfo fields for
   // detailed test execution info of DUTs.
-  chromiumos.test.lab.api.DutTopology dut_topology = 3;
+  chromiumos.test.lab.api.DutTopology dut_topology = 3 [deprecated = true];
 
   // The execution information for the test run that consists of software
   // information (e.g. build) and hardware information (e.g. DUT).
@@ -57,10 +93,10 @@ message TestRun {
   // more secondary DUTs.
   //
   // Test execution related information for the primary DUT.
-  ExecutionInfo primary_execution_info = 4;
+  ExecutionInfo primary_execution_info = 4 [deprecated = true];
 
   // Test execution related information for the secondary DUTs.
-  repeated ExecutionInfo secondary_executions_info = 5;
+  repeated ExecutionInfo secondary_executions_info = 5 [deprecated = true];
 
   // List of additional custom results.
   repeated CustomResult custom_results = 6;

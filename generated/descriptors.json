@@ -18850,15 +18850,52 @@
               "type": "TYPE_UINT32"
             },
             {
+              "jsonName": "testInvocation",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_invocation",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TestInvocation"
+            },
+            {
               "jsonName": "testRuns",
               "label": "LABEL_REPEATED",
               "name": "test_runs",
-              "number": 2,
+              "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.TestRun"
             }
           ],
           "name": "TestResult"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dutTopology",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_topology",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.DutTopology"
+            },
+            {
+              "jsonName": "primaryExecutionInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "primary_execution_info",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.ExecutionInfo"
+            },
+            {
+              "jsonName": "secondaryExecutionsInfo",
+              "label": "LABEL_REPEATED",
+              "name": "secondary_executions_info",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.ExecutionInfo"
+            }
+          ],
+          "name": "TestInvocation"
         },
         {
           "field": [
@@ -18883,6 +18920,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "dut_topology",
               "number": 3,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.DutTopology"
             },
@@ -18891,6 +18931,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "primary_execution_info",
               "number": 4,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.ExecutionInfo"
             },
@@ -18899,6 +18942,9 @@
               "label": "LABEL_REPEATED",
               "name": "secondary_executions_info",
               "number": 5,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.ExecutionInfo"
             },

@@ -28,8 +28,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Captures artifact for test result.
-// NEXT TAG: 3
+// Captures rich information for test results.
+// NEXT TAG: 4
 type TestResult struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -37,8 +37,10 @@ type TestResult struct {
 
 	// Captures the test result artifact version.
 	Version uint32 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"`
-	// List of test runs.
-	TestRuns []*TestRun `protobuf:"bytes,2,rep,name=test_runs,json=testRuns,proto3" json:"test_runs,omitempty"`
+	// The test invocation which contains invocation-level information.
+	TestInvocation *TestInvocation `protobuf:"bytes,2,opt,name=test_invocation,json=testInvocation,proto3" json:"test_invocation,omitempty"`
+	// List of test runs which contains specific test-level information.
+	TestRuns []*TestRun `protobuf:"bytes,3,rep,name=test_runs,json=testRuns,proto3" json:"test_runs,omitempty"`
 }
 
 func (x *TestResult) Reset() {
@@ -80,9 +82,102 @@ func (x *TestResult) GetVersion() uint32 {
 	return 0
 }
 
+func (x *TestResult) GetTestInvocation() *TestInvocation {
+	if x != nil {
+		return x.TestInvocation
+	}
+	return nil
+}
+
 func (x *TestResult) GetTestRuns() []*TestRun {
 	if x != nil {
 		return x.TestRuns
+	}
+	return nil
+}
+
+// Captures invocation-level information for test results.
+// NEXT TAG: 4
+type TestInvocation struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The topology of the connected devices under test. The DUT topology
+	// represents the hardware specs of devices and includes a full list of
+	// available DUTs of a given schedule-able unit (e.g. swarming bot) from
+	// inventory server.
+	// Multi-dut Sarming bot example:
+	// https://chromeos-swarming.appspot.com/bot?id=crossk-chromeos15-row3-metro1-unit4
+	//
+	// For multi-dut testing, it's possible that only a subset of DUTs are used
+	// to run tests. In addition, only those DUT that are used for testing will
+	// have provision info and build info. Refer to ExecutionInfo fields for
+	// detailed test execution info of DUTs.
+	DutTopology *api.DutTopology `protobuf:"bytes,1,opt,name=dut_topology,json=dutTopology,proto3" json:"dut_topology,omitempty"`
+	// The execution information for the test run that consists of software
+	// information (e.g. build) and hardware information (e.g. DUT).
+	// Generally, this will contain a single Dut for an functional test that
+	// doesn't depend on other devices, but can include a collection of devices
+	// used in multi-dut testing (e.g. ChromeOS to ChromeOS, ChromeOS to Android,
+	// etc...). For multi-dut testing, there are only one primary DUT and one or
+	// more secondary DUTs.
+	//
+	// Test execution related information for the primary DUT.
+	PrimaryExecutionInfo *ExecutionInfo `protobuf:"bytes,2,opt,name=primary_execution_info,json=primaryExecutionInfo,proto3" json:"primary_execution_info,omitempty"`
+	// Test execution related information for the secondary DUTs.
+	SecondaryExecutionsInfo []*ExecutionInfo `protobuf:"bytes,3,rep,name=secondary_executions_info,json=secondaryExecutionsInfo,proto3" json:"secondary_executions_info,omitempty"`
+}
+
+func (x *TestInvocation) Reset() {
+	*x = TestInvocation{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestInvocation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestInvocation) ProtoMessage() {}
+
+func (x *TestInvocation) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestInvocation.ProtoReflect.Descriptor instead.
+func (*TestInvocation) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *TestInvocation) GetDutTopology() *api.DutTopology {
+	if x != nil {
+		return x.DutTopology
+	}
+	return nil
+}
+
+func (x *TestInvocation) GetPrimaryExecutionInfo() *ExecutionInfo {
+	if x != nil {
+		return x.PrimaryExecutionInfo
+	}
+	return nil
+}
+
+func (x *TestInvocation) GetSecondaryExecutionsInfo() []*ExecutionInfo {
+	if x != nil {
+		return x.SecondaryExecutionsInfo
 	}
 	return nil
 }
@@ -99,6 +194,8 @@ type TestRun struct {
 	// List of paths to the result artifacts that are used to derive test result
 	// information.
 	LogsInfo []*_go.StoragePath `protobuf:"bytes,2,rep,name=logs_info,json=logsInfo,proto3" json:"logs_info,omitempty"`
+	// TODO(b/240893570): Remove the deprecated fields once the cros_test_result
+	// adapter reflects the changes.
 	// The topology of the connected devices under test. The DUT topology
 	// represents the hardware specs of devices and includes a full list of
 	// available DUTs of a given schedule-able unit (e.g. swarming bot) from
@@ -110,6 +207,8 @@ type TestRun struct {
 	// to run tests. In addition, only those DUT that are used for testing will
 	// have provision info and build info. Refer to ExecutionInfo fields for
 	// detailed test execution info of DUTs.
+	//
+	// Deprecated: Do not use.
 	DutTopology *api.DutTopology `protobuf:"bytes,3,opt,name=dut_topology,json=dutTopology,proto3" json:"dut_topology,omitempty"`
 	// The execution information for the test run that consists of software
 	// information (e.g. build) and hardware information (e.g. DUT).
@@ -120,8 +219,12 @@ type TestRun struct {
 	// more secondary DUTs.
 	//
 	// Test execution related information for the primary DUT.
+	//
+	// Deprecated: Do not use.
 	PrimaryExecutionInfo *ExecutionInfo `protobuf:"bytes,4,opt,name=primary_execution_info,json=primaryExecutionInfo,proto3" json:"primary_execution_info,omitempty"`
 	// Test execution related information for the secondary DUTs.
+	//
+	// Deprecated: Do not use.
 	SecondaryExecutionsInfo []*ExecutionInfo `protobuf:"bytes,5,rep,name=secondary_executions_info,json=secondaryExecutionsInfo,proto3" json:"secondary_executions_info,omitempty"`
 	// List of additional custom results.
 	CustomResults []*CustomResult `protobuf:"bytes,6,rep,name=custom_results,json=customResults,proto3" json:"custom_results,omitempty"`
@@ -132,7 +235,7 @@ type TestRun struct {
 func (x *TestRun) Reset() {
 	*x = TestRun{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[1]
+		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -145,7 +248,7 @@ func (x *TestRun) String() string {
 func (*TestRun) ProtoMessage() {}
 
 func (x *TestRun) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[1]
+	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -158,7 +261,7 @@ func (x *TestRun) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestRun.ProtoReflect.Descriptor instead.
 func (*TestRun) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{1}
+	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *TestRun) GetTestCaseInfo() *TestCaseInfo {
@@ -175,6 +278,7 @@ func (x *TestRun) GetLogsInfo() []*_go.StoragePath {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (x *TestRun) GetDutTopology() *api.DutTopology {
 	if x != nil {
 		return x.DutTopology
@@ -182,6 +286,7 @@ func (x *TestRun) GetDutTopology() *api.DutTopology {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (x *TestRun) GetPrimaryExecutionInfo() *ExecutionInfo {
 	if x != nil {
 		return x.PrimaryExecutionInfo
@@ -189,6 +294,7 @@ func (x *TestRun) GetPrimaryExecutionInfo() *ExecutionInfo {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (x *TestRun) GetSecondaryExecutionsInfo() []*ExecutionInfo {
 	if x != nil {
 		return x.SecondaryExecutionsInfo
@@ -232,7 +338,7 @@ type TestCaseInfo struct {
 func (x *TestCaseInfo) Reset() {
 	*x = TestCaseInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[2]
+		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -245,7 +351,7 @@ func (x *TestCaseInfo) String() string {
 func (*TestCaseInfo) ProtoMessage() {}
 
 func (x *TestCaseInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[2]
+	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -258,7 +364,7 @@ func (x *TestCaseInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseInfo.ProtoReflect.Descriptor instead.
 func (*TestCaseInfo) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{2}
+	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *TestCaseInfo) GetTestCaseMetadata() *api1.TestCaseMetadata {
@@ -326,7 +432,7 @@ type BuildInfo struct {
 func (x *BuildInfo) Reset() {
 	*x = BuildInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[3]
+		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -339,7 +445,7 @@ func (x *BuildInfo) String() string {
 func (*BuildInfo) ProtoMessage() {}
 
 func (x *BuildInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[3]
+	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -352,7 +458,7 @@ func (x *BuildInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BuildInfo.ProtoReflect.Descriptor instead.
 func (*BuildInfo) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{3}
+	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *BuildInfo) GetName() string {
@@ -431,7 +537,7 @@ type DutInfo struct {
 func (x *DutInfo) Reset() {
 	*x = DutInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[4]
+		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -444,7 +550,7 @@ func (x *DutInfo) String() string {
 func (*DutInfo) ProtoMessage() {}
 
 func (x *DutInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[4]
+	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -457,7 +563,7 @@ func (x *DutInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DutInfo.ProtoReflect.Descriptor instead.
 func (*DutInfo) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{4}
+	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DutInfo) GetDut() *api.Dut {
@@ -497,7 +603,7 @@ type ExecutionInfo struct {
 func (x *ExecutionInfo) Reset() {
 	*x = ExecutionInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[5]
+		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -510,7 +616,7 @@ func (x *ExecutionInfo) String() string {
 func (*ExecutionInfo) ProtoMessage() {}
 
 func (x *ExecutionInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[5]
+	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -523,7 +629,7 @@ func (x *ExecutionInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecutionInfo.ProtoReflect.Descriptor instead.
 func (*ExecutionInfo) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{5}
+	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ExecutionInfo) GetBuildInfo() *BuildInfo {
@@ -561,7 +667,7 @@ type CustomResult struct {
 func (x *CustomResult) Reset() {
 	*x = CustomResult{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[6]
+		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -574,7 +680,7 @@ func (x *CustomResult) String() string {
 func (*CustomResult) ProtoMessage() {}
 
 func (x *CustomResult) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[6]
+	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -587,7 +693,7 @@ func (x *CustomResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomResult.ProtoReflect.Descriptor instead.
 func (*CustomResult) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{6}
+	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CustomResult) GetResultArtifactPath() *_go.StoragePath {
@@ -631,7 +737,7 @@ type CustomResult_Cts struct {
 func (x *CustomResult_Cts) Reset() {
 	*x = CustomResult_Cts{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[8]
+		mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -644,7 +750,7 @@ func (x *CustomResult_Cts) String() string {
 func (*CustomResult_Cts) ProtoMessage() {}
 
 func (x *CustomResult_Cts) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[8]
+	mi := &file_chromiumos_test_artifact_test_result_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -657,7 +763,7 @@ func (x *CustomResult_Cts) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomResult_Cts.ProtoReflect.Descriptor instead.
 func (*CustomResult_Cts) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{6, 0}
+	return file_chromiumos_test_artifact_test_result_proto_rawDescGZIP(), []int{7, 0}
 }
 
 var File_chromiumos_test_artifact_test_result_proto protoreflect.FileDescriptor
@@ -682,37 +788,61 @@ var file_chromiumos_test_artifact_test_result_proto_rawDesc = []byte{
 	0x76, 0x31, 0x2f, 0x70, 0x6c, 0x61, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x21, 0x63,
 	0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x6c,
 	0x61, 0x62, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x75, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x22, 0x66, 0x0a, 0x0a, 0x54, 0x65, 0x73, 0x74, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x18,
-	0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52,
-	0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x3e, 0x0a, 0x09, 0x74, 0x65, 0x73, 0x74,
-	0x5f, 0x72, 0x75, 0x6e, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x63, 0x68,
-	0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x72,
-	0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x52, 0x75, 0x6e, 0x52, 0x08,
-	0x74, 0x65, 0x73, 0x74, 0x52, 0x75, 0x6e, 0x73, 0x22, 0xba, 0x04, 0x0a, 0x07, 0x54, 0x65, 0x73,
-	0x74, 0x52, 0x75, 0x6e, 0x12, 0x4c, 0x0a, 0x0e, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x63, 0x61, 0x73,
-	0x65, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x63,
-	0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61,
-	0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65,
-	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0c, 0x74, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x49, 0x6e,
-	0x66, 0x6f, 0x12, 0x34, 0x0a, 0x09, 0x6c, 0x6f, 0x67, 0x73, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18,
-	0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d,
-	0x6f, 0x73, 0x2e, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x50, 0x61, 0x74, 0x68, 0x52, 0x08,
-	0x6c, 0x6f, 0x67, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x47, 0x0a, 0x0c, 0x64, 0x75, 0x74, 0x5f,
-	0x74, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x24,
-	0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74,
-	0x2e, 0x6c, 0x61, 0x62, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x44, 0x75, 0x74, 0x54, 0x6f, 0x70, 0x6f,
-	0x6c, 0x6f, 0x67, 0x79, 0x52, 0x0b, 0x64, 0x75, 0x74, 0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67,
-	0x79, 0x12, 0x5d, 0x0a, 0x16, 0x70, 0x72, 0x69, 0x6d, 0x61, 0x72, 0x79, 0x5f, 0x65, 0x78, 0x65,
-	0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x04, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74,
-	0x65, 0x73, 0x74, 0x2e, 0x61, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x2e, 0x45, 0x78, 0x65,
-	0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x14, 0x70, 0x72, 0x69, 0x6d,
-	0x61, 0x72, 0x79, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f,
-	0x12, 0x63, 0x0a, 0x19, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x5f, 0x65, 0x78,
-	0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x05, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73,
-	0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x2e, 0x45,
-	0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x17, 0x73, 0x65,
+	0x22, 0xb9, 0x01, 0x0a, 0x0a, 0x54, 0x65, 0x73, 0x74, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12,
+	0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d,
+	0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x51, 0x0a, 0x0f, 0x74, 0x65, 0x73,
+	0x74, 0x5f, 0x69, 0x6e, 0x76, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x28, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
+	0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x2e, 0x54, 0x65,
+	0x73, 0x74, 0x49, 0x6e, 0x76, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0e, 0x74, 0x65,
+	0x73, 0x74, 0x49, 0x6e, 0x76, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x3e, 0x0a, 0x09,
+	0x74, 0x65, 0x73, 0x74, 0x5f, 0x72, 0x75, 0x6e, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x21, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73,
+	0x74, 0x2e, 0x61, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x52,
+	0x75, 0x6e, 0x52, 0x08, 0x74, 0x65, 0x73, 0x74, 0x52, 0x75, 0x6e, 0x73, 0x22, 0x9d, 0x02, 0x0a,
+	0x0e, 0x54, 0x65, 0x73, 0x74, 0x49, 0x6e, 0x76, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12,
+	0x47, 0x0a, 0x0c, 0x64, 0x75, 0x74, 0x5f, 0x74, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d,
+	0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x6c, 0x61, 0x62, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x44, 0x75, 0x74, 0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x52, 0x0b, 0x64, 0x75, 0x74,
+	0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x12, 0x5d, 0x0a, 0x16, 0x70, 0x72, 0x69, 0x6d,
+	0x61, 0x72, 0x79, 0x5f, 0x65, 0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x6e,
+	0x66, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d,
+	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x72, 0x74, 0x69, 0x66,
+	0x61, 0x63, 0x74, 0x2e, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66,
+	0x6f, 0x52, 0x14, 0x70, 0x72, 0x69, 0x6d, 0x61, 0x72, 0x79, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74,
+	0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x63, 0x0a, 0x19, 0x73, 0x65, 0x63, 0x6f, 0x6e,
+	0x64, 0x61, 0x72, 0x79, 0x5f, 0x65, 0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x5f,
+	0x69, 0x6e, 0x66, 0x6f, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x68, 0x72,
+	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x72, 0x74,
+	0x69, 0x66, 0x61, 0x63, 0x74, 0x2e, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x49,
+	0x6e, 0x66, 0x6f, 0x52, 0x17, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x45, 0x78,
+	0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x22, 0xc6, 0x04, 0x0a,
+	0x07, 0x54, 0x65, 0x73, 0x74, 0x52, 0x75, 0x6e, 0x12, 0x4c, 0x0a, 0x0e, 0x74, 0x65, 0x73, 0x74,
+	0x5f, 0x63, 0x61, 0x73, 0x65, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x26, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
+	0x73, 0x74, 0x2e, 0x61, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x2e, 0x54, 0x65, 0x73, 0x74,
+	0x43, 0x61, 0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0c, 0x74, 0x65, 0x73, 0x74, 0x43, 0x61,
+	0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x34, 0x0a, 0x09, 0x6c, 0x6f, 0x67, 0x73, 0x5f, 0x69,
+	0x6e, 0x66, 0x6f, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x50, 0x61,
+	0x74, 0x68, 0x52, 0x08, 0x6c, 0x6f, 0x67, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x4b, 0x0a, 0x0c,
+	0x64, 0x75, 0x74, 0x5f, 0x74, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x24, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
+	0x74, 0x65, 0x73, 0x74, 0x2e, 0x6c, 0x61, 0x62, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x44, 0x75, 0x74,
+	0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x42, 0x02, 0x18, 0x01, 0x52, 0x0b, 0x64, 0x75,
+	0x74, 0x54, 0x6f, 0x70, 0x6f, 0x6c, 0x6f, 0x67, 0x79, 0x12, 0x61, 0x0a, 0x16, 0x70, 0x72, 0x69,
+	0x6d, 0x61, 0x72, 0x79, 0x5f, 0x65, 0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69,
+	0x6e, 0x66, 0x6f, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x72, 0x74, 0x69,
+	0x66, 0x61, 0x63, 0x74, 0x2e, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e,
+	0x66, 0x6f, 0x42, 0x02, 0x18, 0x01, 0x52, 0x14, 0x70, 0x72, 0x69, 0x6d, 0x61, 0x72, 0x79, 0x45,
+	0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x67, 0x0a, 0x19,
+	0x73, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x5f, 0x65, 0x78, 0x65, 0x63, 0x75, 0x74,
+	0x69, 0x6f, 0x6e, 0x73, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73,
+	0x74, 0x2e, 0x61, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x2e, 0x45, 0x78, 0x65, 0x63, 0x75,
+	0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x42, 0x02, 0x18, 0x01, 0x52, 0x17, 0x73, 0x65,
 	0x63, 0x6f, 0x6e, 0x64, 0x61, 0x72, 0x79, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x69, 0x6f, 0x6e,
 	0x73, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x4d, 0x0a, 0x0e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x5f,
 	0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x26, 0x2e,
@@ -811,48 +941,53 @@ func file_chromiumos_test_artifact_test_result_proto_rawDescGZIP() []byte {
 	return file_chromiumos_test_artifact_test_result_proto_rawDescData
 }
 
-var file_chromiumos_test_artifact_test_result_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_chromiumos_test_artifact_test_result_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_chromiumos_test_artifact_test_result_proto_goTypes = []interface{}{
 	(*TestResult)(nil),               // 0: chromiumos.test.artifact.TestResult
-	(*TestRun)(nil),                  // 1: chromiumos.test.artifact.TestRun
-	(*TestCaseInfo)(nil),             // 2: chromiumos.test.artifact.TestCaseInfo
-	(*BuildInfo)(nil),                // 3: chromiumos.test.artifact.BuildInfo
-	(*DutInfo)(nil),                  // 4: chromiumos.test.artifact.DutInfo
-	(*ExecutionInfo)(nil),            // 5: chromiumos.test.artifact.ExecutionInfo
-	(*CustomResult)(nil),             // 6: chromiumos.test.artifact.CustomResult
-	nil,                              // 7: chromiumos.test.artifact.DutInfo.TagsEntry
-	(*CustomResult_Cts)(nil),         // 8: chromiumos.test.artifact.CustomResult.Cts
-	(*_go.StoragePath)(nil),          // 9: chromiumos.StoragePath
+	(*TestInvocation)(nil),           // 1: chromiumos.test.artifact.TestInvocation
+	(*TestRun)(nil),                  // 2: chromiumos.test.artifact.TestRun
+	(*TestCaseInfo)(nil),             // 3: chromiumos.test.artifact.TestCaseInfo
+	(*BuildInfo)(nil),                // 4: chromiumos.test.artifact.BuildInfo
+	(*DutInfo)(nil),                  // 5: chromiumos.test.artifact.DutInfo
+	(*ExecutionInfo)(nil),            // 6: chromiumos.test.artifact.ExecutionInfo
+	(*CustomResult)(nil),             // 7: chromiumos.test.artifact.CustomResult
+	nil,                              // 8: chromiumos.test.artifact.DutInfo.TagsEntry
+	(*CustomResult_Cts)(nil),         // 9: chromiumos.test.artifact.CustomResult.Cts
 	(*api.DutTopology)(nil),          // 10: chromiumos.test.lab.api.DutTopology
-	(*v1.HWTestPlan_TestPlanId)(nil), // 11: chromiumos.test.api.v1.HWTestPlan.TestPlanId
-	(*api1.TestCaseMetadata)(nil),    // 12: chromiumos.test.api.TestCaseMetadata
-	(*api1.TestCaseResult)(nil),      // 13: chromiumos.test.api.TestCaseResult
-	(*api.Dut)(nil),                  // 14: chromiumos.test.lab.api.Dut
-	(*api1.ProvisionState)(nil),      // 15: chromiumos.test.api.ProvisionState
+	(*_go.StoragePath)(nil),          // 11: chromiumos.StoragePath
+	(*v1.HWTestPlan_TestPlanId)(nil), // 12: chromiumos.test.api.v1.HWTestPlan.TestPlanId
+	(*api1.TestCaseMetadata)(nil),    // 13: chromiumos.test.api.TestCaseMetadata
+	(*api1.TestCaseResult)(nil),      // 14: chromiumos.test.api.TestCaseResult
+	(*api.Dut)(nil),                  // 15: chromiumos.test.lab.api.Dut
+	(*api1.ProvisionState)(nil),      // 16: chromiumos.test.api.ProvisionState
 }
 var file_chromiumos_test_artifact_test_result_proto_depIdxs = []int32{
-	1,  // 0: chromiumos.test.artifact.TestResult.test_runs:type_name -> chromiumos.test.artifact.TestRun
-	2,  // 1: chromiumos.test.artifact.TestRun.test_case_info:type_name -> chromiumos.test.artifact.TestCaseInfo
-	9,  // 2: chromiumos.test.artifact.TestRun.logs_info:type_name -> chromiumos.StoragePath
-	10, // 3: chromiumos.test.artifact.TestRun.dut_topology:type_name -> chromiumos.test.lab.api.DutTopology
-	5,  // 4: chromiumos.test.artifact.TestRun.primary_execution_info:type_name -> chromiumos.test.artifact.ExecutionInfo
-	5,  // 5: chromiumos.test.artifact.TestRun.secondary_executions_info:type_name -> chromiumos.test.artifact.ExecutionInfo
-	6,  // 6: chromiumos.test.artifact.TestRun.custom_results:type_name -> chromiumos.test.artifact.CustomResult
-	11, // 7: chromiumos.test.artifact.TestRun.test_plan_id:type_name -> chromiumos.test.api.v1.HWTestPlan.TestPlanId
-	12, // 8: chromiumos.test.artifact.TestCaseInfo.test_case_metadata:type_name -> chromiumos.test.api.TestCaseMetadata
-	13, // 9: chromiumos.test.artifact.TestCaseInfo.test_case_result:type_name -> chromiumos.test.api.TestCaseResult
-	14, // 10: chromiumos.test.artifact.DutInfo.dut:type_name -> chromiumos.test.lab.api.Dut
-	15, // 11: chromiumos.test.artifact.DutInfo.provision_state:type_name -> chromiumos.test.api.ProvisionState
-	7,  // 12: chromiumos.test.artifact.DutInfo.tags:type_name -> chromiumos.test.artifact.DutInfo.TagsEntry
-	3,  // 13: chromiumos.test.artifact.ExecutionInfo.build_info:type_name -> chromiumos.test.artifact.BuildInfo
-	4,  // 14: chromiumos.test.artifact.ExecutionInfo.dut_info:type_name -> chromiumos.test.artifact.DutInfo
-	9,  // 15: chromiumos.test.artifact.CustomResult.result_artifact_path:type_name -> chromiumos.StoragePath
-	8,  // 16: chromiumos.test.artifact.CustomResult.cts:type_name -> chromiumos.test.artifact.CustomResult.Cts
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	1,  // 0: chromiumos.test.artifact.TestResult.test_invocation:type_name -> chromiumos.test.artifact.TestInvocation
+	2,  // 1: chromiumos.test.artifact.TestResult.test_runs:type_name -> chromiumos.test.artifact.TestRun
+	10, // 2: chromiumos.test.artifact.TestInvocation.dut_topology:type_name -> chromiumos.test.lab.api.DutTopology
+	6,  // 3: chromiumos.test.artifact.TestInvocation.primary_execution_info:type_name -> chromiumos.test.artifact.ExecutionInfo
+	6,  // 4: chromiumos.test.artifact.TestInvocation.secondary_executions_info:type_name -> chromiumos.test.artifact.ExecutionInfo
+	3,  // 5: chromiumos.test.artifact.TestRun.test_case_info:type_name -> chromiumos.test.artifact.TestCaseInfo
+	11, // 6: chromiumos.test.artifact.TestRun.logs_info:type_name -> chromiumos.StoragePath
+	10, // 7: chromiumos.test.artifact.TestRun.dut_topology:type_name -> chromiumos.test.lab.api.DutTopology
+	6,  // 8: chromiumos.test.artifact.TestRun.primary_execution_info:type_name -> chromiumos.test.artifact.ExecutionInfo
+	6,  // 9: chromiumos.test.artifact.TestRun.secondary_executions_info:type_name -> chromiumos.test.artifact.ExecutionInfo
+	7,  // 10: chromiumos.test.artifact.TestRun.custom_results:type_name -> chromiumos.test.artifact.CustomResult
+	12, // 11: chromiumos.test.artifact.TestRun.test_plan_id:type_name -> chromiumos.test.api.v1.HWTestPlan.TestPlanId
+	13, // 12: chromiumos.test.artifact.TestCaseInfo.test_case_metadata:type_name -> chromiumos.test.api.TestCaseMetadata
+	14, // 13: chromiumos.test.artifact.TestCaseInfo.test_case_result:type_name -> chromiumos.test.api.TestCaseResult
+	15, // 14: chromiumos.test.artifact.DutInfo.dut:type_name -> chromiumos.test.lab.api.Dut
+	16, // 15: chromiumos.test.artifact.DutInfo.provision_state:type_name -> chromiumos.test.api.ProvisionState
+	8,  // 16: chromiumos.test.artifact.DutInfo.tags:type_name -> chromiumos.test.artifact.DutInfo.TagsEntry
+	4,  // 17: chromiumos.test.artifact.ExecutionInfo.build_info:type_name -> chromiumos.test.artifact.BuildInfo
+	5,  // 18: chromiumos.test.artifact.ExecutionInfo.dut_info:type_name -> chromiumos.test.artifact.DutInfo
+	11, // 19: chromiumos.test.artifact.CustomResult.result_artifact_path:type_name -> chromiumos.StoragePath
+	9,  // 20: chromiumos.test.artifact.CustomResult.cts:type_name -> chromiumos.test.artifact.CustomResult.Cts
+	21, // [21:21] is the sub-list for method output_type
+	21, // [21:21] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	21, // [21:21] is the sub-list for extension extendee
+	0,  // [0:21] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_artifact_test_result_proto_init() }
@@ -874,7 +1009,7 @@ func file_chromiumos_test_artifact_test_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_artifact_test_result_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TestRun); i {
+			switch v := v.(*TestInvocation); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -886,7 +1021,7 @@ func file_chromiumos_test_artifact_test_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_artifact_test_result_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TestCaseInfo); i {
+			switch v := v.(*TestRun); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -898,7 +1033,7 @@ func file_chromiumos_test_artifact_test_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_artifact_test_result_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BuildInfo); i {
+			switch v := v.(*TestCaseInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -910,7 +1045,7 @@ func file_chromiumos_test_artifact_test_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_artifact_test_result_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DutInfo); i {
+			switch v := v.(*BuildInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -922,7 +1057,7 @@ func file_chromiumos_test_artifact_test_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_artifact_test_result_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExecutionInfo); i {
+			switch v := v.(*DutInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -934,6 +1069,18 @@ func file_chromiumos_test_artifact_test_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_artifact_test_result_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ExecutionInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_artifact_test_result_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CustomResult); i {
 			case 0:
 				return &v.state
@@ -945,7 +1092,7 @@ func file_chromiumos_test_artifact_test_result_proto_init() {
 				return nil
 			}
 		}
-		file_chromiumos_test_artifact_test_result_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+		file_chromiumos_test_artifact_test_result_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CustomResult_Cts); i {
 			case 0:
 				return &v.state
@@ -958,7 +1105,7 @@ func file_chromiumos_test_artifact_test_result_proto_init() {
 			}
 		}
 	}
-	file_chromiumos_test_artifact_test_result_proto_msgTypes[6].OneofWrappers = []interface{}{
+	file_chromiumos_test_artifact_test_result_proto_msgTypes[7].OneofWrappers = []interface{}{
 		(*CustomResult_Cts_)(nil),
 	}
 	type x struct{}
@@ -967,7 +1114,7 @@ func file_chromiumos_test_artifact_test_result_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_artifact_test_result_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
