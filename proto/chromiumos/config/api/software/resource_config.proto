@@ -14,8 +14,11 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 //
 // NEXT ID: 7
 message ResourceConfig {
-  // See
-  // https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v5.10/Documentation/admin-guide/pm/cpufreq.rst;l=437;drc=abc59fd4a56abba8a9d9beadac7a371f4bb76187
+  // See https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html
+  message ConservativeGovernor {
+    // TODO: Add conservative specific parameters.
+  }
+
   message OndemandGovernor {
     uint32 powersave_bias = 1 [json_name = "powersave-bias"];
 
@@ -24,10 +27,34 @@ message ResourceConfig {
     uint32 sampling_rate_ms = 2 [json_name = "sampling-rate-ms"];
   }
 
+  message PerformanceGovernor {
+    // No parameter for the performance governor. The CPU frequency is set to
+    // the highest within scalinng_max_freq.
+  }
+
+  message PowersaveGovernor {
+    // No parameter for the powersave governor. The CPU frequency is set to the
+    // lowest within scaling_min_freq.
+  }
+
+  message SchedutilGovernor {
+    // TODO: Add schedutil specific parameters.
+  }
+
+  message UserspaceGovernor {
+    // No parameter for the userspace governor. The user space can set CPU
+    // frequency by writing to scaling_setspeed.
+  }
+
+
   message Governor {
     oneof governor {
+      ConservativeGovernor conservative = 2;
       OndemandGovernor ondemand = 1;
-      // TODO: Possibly add scheduitl or powersave
+      PerformanceGovernor performance = 3;
+      PowersaveGovernor powersave = 4;
+      SchedutilGovernor schedutil = 5;
+      UserspaceGovernor userspace = 6;
     }
   }
 

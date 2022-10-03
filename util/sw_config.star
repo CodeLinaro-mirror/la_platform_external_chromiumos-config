@@ -283,7 +283,15 @@ def _create_power_source_preference(
         arcvm_gaming_power_preferences = arcvm_gaming,
     )
 
-def _create_ondemand_preference(powersave_bias, sampling_rate_ms = 0):
+def _create_conservative_governor_preference():
+    """Builds a conservative governor PowerPreferences proto"""
+    return resource_pb.ResourceConfig.PowerPreferences(
+        governor = resource_pb.ResourceConfig.Governor(
+            conservative = resource_pb.ResourceConfig.ConservativeGovernor(),
+        ),
+    )
+
+def _create_ondemand_governor_preference(powersave_bias, sampling_rate_ms = 0):
     """Builds an ondemand governor PowerPreferences proto
 
     Args:
@@ -299,6 +307,38 @@ def _create_ondemand_preference(powersave_bias, sampling_rate_ms = 0):
                 powersave_bias = powersave_bias,
                 sampling_rate_ms = sampling_rate_ms,
             ),
+        ),
+    )
+
+def _create_performance_governor_preference():
+    """Builds a performance governor PowerPreferences proto"""
+    return resource_pb.ResourceConfig.PowerPreferences(
+        governor = resource_pb.ResourceConfig.Governor(
+            performance = resource_pb.ResourceConfig.PerformanceGovernor(),
+        ),
+    )
+
+def _create_powersave_governor_preference():
+    """Builds a powersave governor PowerPreferences proto"""
+    return resource_pb.ResourceConfig.PowerPreferences(
+        governor = resource_pb.ResourceConfig.Governor(
+            powersave = resource_pb.ResourceConfig.PowersaveGovernor(),
+        ),
+    )
+
+def _create_schedutil_governor_preference():
+    """Builds a schedutil governor PowerPreferences proto"""
+    return resource_pb.ResourceConfig.PowerPreferences(
+        governor = resource_pb.ResourceConfig.Governor(
+            schedutil = resource_pb.ResourceConfig.SchedutilGovernor(),
+        ),
+    )
+
+def _create_userspace_governor_preference():
+    """Builds an userspace governor PowerPreferences proto"""
+    return resource_pb.ResourceConfig.PowerPreferences(
+        governor = resource_pb.ResourceConfig.Governor(
+            userspace = resource_pb.ResourceConfig.UserspaceGovernor(),
         ),
     )
 
@@ -885,7 +925,12 @@ sw_config = struct(
     create_power = _create_power,
     create_resource = _create_resource,
     create_power_source_preference = _create_power_source_preference,
-    create_ondemand_preference = _create_ondemand_preference,
+    create_conservative_governor_preference = _create_conservative_governor_preference,
+    create_ondemand_governor_preference = _create_ondemand_governor_preference,
+    create_performance_governor_preference = _create_performance_governor_preference,
+    create_powersave_governor_preference = _create_powersave_governor_preference,
+    create_schedutil_governor_preference = _create_schedutil_governor_preference,
+    create_userspace_governor_preference = _create_userspace_governor_preference,
     create_intel_antenna_gain = _create_intel_antenna_gain,
     create_intel_antgain_table = _create_intel_antgain_table,
     create_intel_dsm = _create_intel_dsm,

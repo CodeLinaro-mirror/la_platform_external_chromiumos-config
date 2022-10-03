@@ -8313,6 +8313,9 @@
           "name": "ResourceConfig",
           "nestedType": [
             {
+              "name": "ConservativeGovernor"
+            },
+            {
               "field": [
                 {
                   "jsonName": "powersave-bias",
@@ -8332,7 +8335,28 @@
               "name": "OndemandGovernor"
             },
             {
+              "name": "PerformanceGovernor"
+            },
+            {
+              "name": "PowersaveGovernor"
+            },
+            {
+              "name": "SchedutilGovernor"
+            },
+            {
+              "name": "UserspaceGovernor"
+            },
+            {
               "field": [
+                {
+                  "jsonName": "conservative",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "conservative",
+                  "number": 2,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.ConservativeGovernor"
+                },
                 {
                   "jsonName": "ondemand",
                   "label": "LABEL_OPTIONAL",
@@ -8341,6 +8365,42 @@
                   "oneofIndex": 0,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.software.ResourceConfig.OndemandGovernor"
+                },
+                {
+                  "jsonName": "performance",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "performance",
+                  "number": 3,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PerformanceGovernor"
+                },
+                {
+                  "jsonName": "powersave",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "powersave",
+                  "number": 4,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowersaveGovernor"
+                },
+                {
+                  "jsonName": "schedutil",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "schedutil",
+                  "number": 5,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.SchedutilGovernor"
+                },
+                {
+                  "jsonName": "userspace",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "userspace",
+                  "number": 6,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.UserspaceGovernor"
                 }
               ],
               "name": "Governor",
