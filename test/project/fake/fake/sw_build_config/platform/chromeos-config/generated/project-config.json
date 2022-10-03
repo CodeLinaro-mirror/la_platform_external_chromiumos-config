@@ -168,6 +168,11 @@
           "wake-on-dp": "1"
         },
         "regulatory-label": "fake_regulatory_label",
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -402,6 +407,11 @@
           "wake-on-dp": "1"
         },
         "regulatory-label": "fake_regulatory_label",
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -696,6 +706,11 @@
             }
           }
         },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -909,6 +924,11 @@
           "turn-off-screen-timeout-ms": "3000",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
         },
         "thermal": {
           "dptf-dv": "fake/project_b/33/dptf.dv",
@@ -1126,6 +1146,11 @@
           "turn-off-screen-timeout-ms": "3000",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
         },
         "thermal": {
           "dptf-dv": "fake/project_b/dptf.dv",
@@ -1368,6 +1393,11 @@
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
         },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
+        },
         "thermal": {
           "dptf-dv": "fake/project_b/dptf.dv",
           "files": [
@@ -1590,6 +1620,11 @@
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
         },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
+        },
         "thermal": {
           "dptf-dv": "fake/project_c/dptf.dv",
           "files": [
@@ -1800,6 +1835,11 @@
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
         },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -1993,6 +2033,11 @@
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -2188,6 +2233,11 @@
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
         },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -2381,6 +2431,11 @@
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -2587,6 +2642,11 @@
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
         },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -2774,6 +2834,11 @@
           "usb-min-ac-watts": "90",
           "wake-on-dp": "1"
         },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -2948,6 +3013,11 @@
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -3130,6 +3200,11 @@
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "scheduler-tune": {
+          "boost-urgent": 20,
+          "cpuset-nonurgent": "0-5",
+          "input-boost": 15
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",

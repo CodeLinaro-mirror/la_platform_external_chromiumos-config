@@ -67,7 +67,7 @@ message DeviceSignerConfig {
 // other hardware design project.  They will either fully comply with the
 // prescribed program constraints or provide waivers that highlight any
 // constraint violations.
-// Next ID: 12
+// Next ID: 14
 message Program {
   // Fields replicated to public configs.
   chromiumos.config.public_replication.PublicReplication public_replication = 8;
@@ -82,6 +82,7 @@ message Program {
   // set for most programs.
   string mosys_platform_name = 10;
 
+  // Next ID: 8
   message Platform {
     enum Arch {
       ARCH_UNKNOWN = 0;
@@ -91,7 +92,7 @@ message Program {
       ARM64 = 4;
     }
 
-    // Next tag: 13
+    // Next ID: 13
     enum AcceleratedVideoCodec {
       CODEC_UNDEFINED = 0;
       H264_DECODE = 1;
@@ -144,6 +145,25 @@ message Program {
       bool wake_on_dp = 3;
     }
     Capabilities capabilities = 6;
+
+    message SchedulerTune {
+      // Scheduler's boost value(%) for urgent tasks. When an urgent thread is
+      // created, chrome applies this value to scheduler attribute. Tasks with
+      // higher boost value are more likely to have higher operating power point
+      // even when the system is low utilized.
+      // Minimum value: 0x0. Maximum value: 0x64.
+      uint32 boost_urgent = 1;
+
+      // Non-urgent task are only allowed to use given CPUs.
+      string cpuset_nonurgent = 2;
+
+      // Chromium kernel has a cpu-boost feature, which boosts CPUs for a short
+      // duration when user interaction is detected from input devices. This value
+      // specifies how much CPUs will be boosted.
+      // Minimum value: 0x0. Maximum value: 0x64.
+      uint32 input_boost = 3;
+    }
+    SchedulerTune scheduler_tune = 7;
   }
   Platform platform = 11;
 

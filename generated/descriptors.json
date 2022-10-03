@@ -6910,6 +6910,14 @@
                   "number": 6,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.Program.Platform.Capabilities"
+                },
+                {
+                  "jsonName": "schedulerTune",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "scheduler_tune",
+                  "number": 7,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Program.Platform.SchedulerTune"
                 }
               ],
               "name": "Platform",
@@ -6939,6 +6947,32 @@
                     }
                   ],
                   "name": "Capabilities"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "boostUrgent",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "boost_urgent",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "cpusetNonurgent",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "cpuset_nonurgent",
+                      "number": 2,
+                      "type": "TYPE_STRING"
+                    },
+                    {
+                      "jsonName": "inputBoost",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "input_boost",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "SchedulerTune"
                 }
               ]
             },

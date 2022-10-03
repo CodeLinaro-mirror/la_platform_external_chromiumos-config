@@ -218,6 +218,11 @@
         "graphicsApis": [
           1
         ],
+        "schedulerTune": {
+          "boostUrgent": 20,
+          "cpusetNonurgent": "0-5",
+          "inputBoost": 15
+        },
         "socArch": 2,
         "socFamily": "FAKE_INTEL_PLATFORM",
         "videoCodecs": [

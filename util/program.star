@@ -73,7 +73,10 @@ def _create_platform(
         video_codecs = [],
         suspend_to_idle = None,
         dark_resume = None,
-        wake_on_dp = None):
+        wake_on_dp = None,
+        boost_urgent = None,
+        cpuset_nonurgent = None,
+        input_boost = None):
     capabilities = None
     if any([
         suspend_to_idle != None,
@@ -85,6 +88,19 @@ def _create_platform(
             dark_resume = dark_resume,
             wake_on_dp = wake_on_dp,
         )
+
+    scheduler_tune = None
+    if any([
+        boost_urgent != None,
+        cpuset_nonurgent != None,
+        input_boost != None,
+    ]):
+        scheduler_tune = program_pb.Program.Platform.SchedulerTune(
+            boost_urgent = boost_urgent,
+            cpuset_nonurgent = cpuset_nonurgent,
+            input_boost = input_boost,
+        )
+
     return program_pb.Program.Platform(
         soc_family = soc_family,
         soc_arch = soc_arch,
@@ -92,6 +108,7 @@ def _create_platform(
         graphics_apis = graphics_apis,
         video_codecs = video_codecs,
         capabilities = capabilities,
+        scheduler_tune = scheduler_tune,
     )
 
 def _create_audio_config(
