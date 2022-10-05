@@ -19072,43 +19072,10 @@
               "typeName": ".chromiumos.StoragePath"
             },
             {
-              "jsonName": "dutTopology",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut_topology",
-              "number": 3,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.DutTopology"
-            },
-            {
-              "jsonName": "primaryExecutionInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "primary_execution_info",
-              "number": 4,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.ExecutionInfo"
-            },
-            {
-              "jsonName": "secondaryExecutionsInfo",
-              "label": "LABEL_REPEATED",
-              "name": "secondary_executions_info",
-              "number": 5,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.ExecutionInfo"
-            },
-            {
               "jsonName": "customResults",
               "label": "LABEL_REPEATED",
               "name": "custom_results",
-              "number": 6,
+              "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.CustomResult"
             },
@@ -19116,7 +19083,7 @@
               "jsonName": "testPlanId",
               "label": "LABEL_OPTIONAL",
               "name": "test_plan_id",
-              "number": 7,
+              "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.v1.HWTestPlan.TestPlanId"
             }

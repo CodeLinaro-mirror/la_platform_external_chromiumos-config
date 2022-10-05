@@ -60,7 +60,7 @@ message TestInvocation {
 }
 
 // Captures information regarding a test run.
-// NEXT TAG: 8
+// NEXT TAG: 5
 message TestRun {
   // Test case information for the test result.
   TestCaseInfo test_case_info = 1;
@@ -69,40 +69,11 @@ message TestRun {
   // information.
   repeated chromiumos.StoragePath logs_info = 2;
 
-  // TODO(b/240893570): Remove the deprecated fields once the cros_test_result
-  // adapter reflects the changes.
-  // The topology of the connected devices under test. The DUT topology
-  // represents the hardware specs of devices and includes a full list of
-  // available DUTs of a given schedule-able unit (e.g. swarming bot) from
-  // inventory server.
-  // Multi-dut Sarming bot example:
-  // https://chromeos-swarming.appspot.com/bot?id=crossk-chromeos15-row3-metro1-unit4
-  //
-  // For multi-dut testing, it's possible that only a subset of DUTs are used
-  // to run tests. In addition, only those DUT that are used for testing will
-  // have provision info and build info. Refer to ExecutionInfo fields for
-  // detailed test execution info of DUTs.
-  chromiumos.test.lab.api.DutTopology dut_topology = 3 [deprecated = true];
-
-  // The execution information for the test run that consists of software
-  // information (e.g. build) and hardware information (e.g. DUT).
-  // Generally, this will contain a single Dut for an functional test that
-  // doesn't depend on other devices, but can include a collection of devices
-  // used in multi-dut testing (e.g. ChromeOS to ChromeOS, ChromeOS to Android,
-  // etc...). For multi-dut testing, there are only one primary DUT and one or
-  // more secondary DUTs.
-  //
-  // Test execution related information for the primary DUT.
-  ExecutionInfo primary_execution_info = 4 [deprecated = true];
-
-  // Test execution related information for the secondary DUTs.
-  repeated ExecutionInfo secondary_executions_info = 5 [deprecated = true];
-
   // List of additional custom results.
-  repeated CustomResult custom_results = 6;
+  repeated CustomResult custom_results = 3;
 
   // Test plan id associated with the test result.
-  chromiumos.test.api.v1.HWTestPlan.TestPlanId test_plan_id = 7;
+  chromiumos.test.api.v1.HWTestPlan.TestPlanId test_plan_id = 4;
 }
 
 // Captures test case information associated with a test run.
