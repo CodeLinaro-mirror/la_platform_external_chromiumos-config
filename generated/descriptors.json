@@ -8208,12 +8208,32 @@
             {
               "field": [
                 {
+                  "jsonName": "wearLevelThreshold",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wear_level_threshold",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "NvmeWearLevel"
+            },
+            {
+              "field": [
+                {
                   "jsonName": "batteryHealth",
                   "label": "LABEL_OPTIONAL",
                   "name": "battery_health",
                   "number": 1,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.software.HealthConfig.BatteryHealth"
+                },
+                {
+                  "jsonName": "nvmeWearLevel",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "nvme_wear_level",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.HealthConfig.NvmeWearLevel"
                 }
               ],
               "name": "Routines"

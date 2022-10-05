@@ -22,8 +22,12 @@ message HealthConfig {
   message BatteryHealth {
     uint32 percent_battery_wear_allowed = 1;
   }
+  message NvmeWearLevel {
+    uint32 wear_level_threshold = 1;
+  }
   message Routines {
     BatteryHealth battery_health = 1;
+    NvmeWearLevel nvme_wear_level = 2;
   }
 
   Battery battery = 1;

@@ -7261,6 +7261,9 @@
         "routines": {
           "batteryHealth": {
             "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
           }
         }
       },

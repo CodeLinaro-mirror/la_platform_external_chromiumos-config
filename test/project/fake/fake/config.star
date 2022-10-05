@@ -219,6 +219,7 @@ _SC_HEALTH = sc.create_health(
     vpd_has_sku_number = True,
     battery_has_smart_battery_info = True,
     routines_battery_health_percent_battery_wear_allowed = 50,
+    routines_nvme_wear_level_wear_level_threshold = 50,
 )
 _SC_NNPALM = sc.create_nnpalm(
     model = "alpha",
