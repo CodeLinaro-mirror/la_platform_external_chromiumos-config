@@ -9065,6 +9065,202 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "source",
+              "label": "LABEL_OPTIONAL",
+              "name": "source",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "destination",
+              "label": "LABEL_OPTIONAL",
+              "name": "destination",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Payload"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hostName",
+              "label": "LABEL_OPTIONAL",
+              "name": "host_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Device"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Build"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "commandLine",
+              "label": "LABEL_OPTIONAL",
+              "name": "command_line",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "localExecution",
+              "label": "LABEL_OPTIONAL",
+              "name": "local_execution",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Parameter"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "commandLine",
+              "label": "LABEL_OPTIONAL",
+              "name": "command_line",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "localExecution",
+              "label": "LABEL_OPTIONAL",
+              "name": "local_execution",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Workload"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "payloads",
+              "label": "LABEL_REPEATED",
+              "name": "payloads",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromium.config.api.test.benchy.v1.Payload"
+            },
+            {
+              "jsonName": "devices",
+              "label": "LABEL_REPEATED",
+              "name": "devices",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromium.config.api.test.benchy.v1.Device"
+            },
+            {
+              "jsonName": "builds",
+              "label": "LABEL_REPEATED",
+              "name": "builds",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromium.config.api.test.benchy.v1.Build"
+            },
+            {
+              "jsonName": "workloads",
+              "label": "LABEL_REPEATED",
+              "name": "workloads",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromium.config.api.test.benchy.v1.Workload"
+            },
+            {
+              "jsonName": "parameters",
+              "label": "LABEL_REPEATED",
+              "name": "parameters",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromium.config.api.test.benchy.v1.Parameter"
+            }
+          ],
+          "name": "Plan"
+        }
+      ],
+      "name": "chromiumos/config/api/test/benchy/v1/plan.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/test/benchy/v1;benchy"
+      },
+      "package": "chromium.config.api.test.benchy.v1",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/component.proto",
         "chromiumos/config/api/design.proto",
