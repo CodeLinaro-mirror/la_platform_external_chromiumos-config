@@ -127,6 +127,14 @@ _AUDIO_WITH_FIXED_SUFFIX = hw_topo.override_audio(
     ucm_config = hw_topo.audio_config_structure.DESIGN,
 )
 
+_AUDIO_WITH_CUSTOM_MIC_SUFFIX_AND_CRAS_SUFFIX = hw_topo.override_audio(
+    _AUDIO_WITH_INIT,
+    ucm_suffix = "{speaker_amp}.{headset_codec}.{camera_count}pos.{user_facing_mic_count}uf{world_facing_mic_count}wf{total_mic_count}total.{design}",
+    cras_suffix = "{speaker_amp}.{headset_codec}.{camera_count}pos.{user_facing_mic_count}uf{world_facing_mic_count}wf{total_mic_count}total.{design}",
+    ucm_config = hw_topo.audio_config_structure.COMMON,
+    cras_config = hw_topo.audio_config_structure.COMMON,
+)
+
 _STYLUS = hw_topo.create_stylus(
     "STYLUS",
     "Default stylus",
@@ -146,6 +154,7 @@ _KEYBOARD = hw_topo.create_keyboard(
     kb_type = hw_topo.kb_type.DETACHABLE,
     numpad_present = False,
 )
+
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
 _CAMERA0 = hw_topo.create_camera(
     "CAMERA0",
@@ -1199,6 +1208,7 @@ design.append_configs(
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CHROMEBASE,
         camera = _CAMERA0,
+        audio = _AUDIO_WITH_CUSTOM_MIC_SUFFIX_AND_CRAS_SUFFIX,
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",

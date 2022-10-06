@@ -6063,13 +6063,17 @@
             "audio": {
               "cardConfigs": [
                 {
-                  "cardName": "fakeaudiocard",
-                  "crasConfig": 1,
-                  "ucmConfig": 1
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 2,
+                  "crasSuffix": "{speaker_amp}.{headset_codec}.{camera_count}pos.{user_facing_mic_count}uf{world_facing_mic_count}wf{total_mic_count}total.{design}",
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 2,
+                  "ucmSuffix": "{speaker_amp}.{headset_codec}.{camera_count}pos.{user_facing_mic_count}uf{world_facing_mic_count}wf{total_mic_count}total.{design}"
                 }
               ],
-              "crasConfig": 1,
-              "headphoneCodec": 2
+              "crasConfig": 2,
+              "headphoneCodec": 2,
+              "speakerAmp": 5
             },
             "cellular": {
               "present": 2
@@ -6200,13 +6204,17 @@
                 "audio": {
                   "cardConfigs": [
                     {
-                      "cardName": "fakeaudiocard",
-                      "crasConfig": 1,
-                      "ucmConfig": 1
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 2,
+                      "crasSuffix": "{speaker_amp}.{headset_codec}.{camera_count}pos.{user_facing_mic_count}uf{world_facing_mic_count}wf{total_mic_count}total.{design}",
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 2,
+                      "ucmSuffix": "{speaker_amp}.{headset_codec}.{camera_count}pos.{user_facing_mic_count}uf{world_facing_mic_count}wf{total_mic_count}total.{design}"
                     }
                   ],
-                  "crasConfig": 1,
-                  "headphoneCodec": 2
+                  "crasConfig": 2,
+                  "headphoneCodec": 2,
+                  "speakerAmp": 5
                 }
               },
               "id": "AUDIO",

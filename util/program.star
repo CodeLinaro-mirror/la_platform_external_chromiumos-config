@@ -114,7 +114,8 @@ def _create_platform(
 def _create_audio_config(
         card_configs = [],
         has_module_file = False,
-        default_ucm_suffix = "{model}"):
+        default_ucm_suffix = "{model}",
+        default_cras_suffix = ""):
     """Builds an AudioConfig proto.
 
     Args:
@@ -142,11 +143,13 @@ def _create_audio_config(
                 {total_mic_count}: The total number of internal microphones.
                 {user_facing_mic_count}: The number of internal user-facing microphones.
                 {world_facing_mic_count}: The number of internal world-facing microphones.
+        default_cras_suffix: Similar to default_ucm_suffix.
     """
     return program_pb.Program.AudioConfig(
         card_configs = card_configs,
         has_module_file = has_module_file,
         default_ucm_suffix = default_ucm_suffix,
+        default_cras_suffix = default_cras_suffix,
     )
 
 def _create(

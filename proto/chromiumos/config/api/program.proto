@@ -176,6 +176,9 @@ message Program {
 
     // The UCM suffix pattern to use as the program-level default.
     string default_ucm_suffix = 3;
+
+    // The cras suffix pattern to use as the program-level default.
+    string default_cras_suffix = 4;
   }
   AudioConfig audio_config = 12;
 

@@ -163,7 +163,8 @@
           "==",
           0
         ]
-      ]
+      ],
+      "component.speaker_amp": "MAX98373"
     },
     "project_c": {
       "component.audio_card_name": "fakeaudiocard",
@@ -423,7 +424,6 @@
         "component.has_base_magnetometer": true,
         "component.has_lid_accelerometer": null,
         "component.has_lte": true,
-        "component.speaker_amp": "MAX98373",
         "fw_config": 90897
       },
       "129": {
@@ -432,7 +432,6 @@
         "component.has_base_magnetometer": true,
         "component.has_lid_accelerometer": null,
         "component.has_lte": false,
-        "component.speaker_amp": "AMPLIFIER_UNKNOWN",
         "fw_config": 90897
       },
       "130": {
@@ -441,7 +440,6 @@
         "component.has_base_magnetometer": null,
         "component.has_lid_accelerometer": true,
         "component.has_lte": false,
-        "component.speaker_amp": "MAX98373",
         "fw_config": 90113
       }
     },

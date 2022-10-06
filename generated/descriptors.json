@@ -4346,6 +4346,14 @@
                       "number": 5,
                       "type": "TYPE_ENUM",
                       "typeName": ".chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure"
+                    },
+                    {
+                      "jsonName": "crasSuffix",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "cras_suffix",
+                      "number": 6,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".google.protobuf.StringValue"
                     }
                   ],
                   "name": "CardConfig"
@@ -7040,6 +7048,13 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "default_ucm_suffix",
                   "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "defaultCrasSuffix",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "default_cras_suffix",
+                  "number": 4,
                   "type": "TYPE_STRING"
                 }
               ],

@@ -319,6 +319,10 @@ message HardwareFeatures {
 
       // The source config file layout used for sound card init config.
       AudioConfigStructure sound_card_init_config = 5;
+
+      // The cras suffix pattern for this card if different to the program-level
+      // default.
+      google.protobuf.StringValue cras_suffix = 6;
     }
   }
 
