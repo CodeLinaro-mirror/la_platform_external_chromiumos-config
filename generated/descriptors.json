@@ -5290,6 +5290,13 @@
                   "number": 3,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Battery.Charging"
+                },
+                {
+                  "jsonName": "noBatteryBootSupported",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "no_battery_boot_supported",
+                  "number": 4,
+                  "type": "TYPE_BOOL"
                 }
               ],
               "name": "Battery",

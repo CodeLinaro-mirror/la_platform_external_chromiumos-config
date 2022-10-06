@@ -697,6 +697,8 @@ message HardwareFeatures {
     Present present = 1;
     Lifetime lifetime = 2;
     Charging charging = 3;
+    // Device supports the feature to boot with no battery.
+    bool no_battery_boot_supported = 4;
     message Lifetime {
       // Starting with a fully-charged battery, the amount of time a Chrome
       // device must remain operational in the Shipping state.
