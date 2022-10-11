@@ -204,6 +204,9 @@
             "barreljack": {
               "present": 1
             },
+            "battery": {
+              "noBatteryBootSupported": true
+            },
             "bluetooth": {
               "component": {
                 "usb": {
@@ -433,6 +436,15 @@
               },
               "id": "BARRELJACK",
               "type": 19
+            },
+            "battery": {
+              "hardwareFeature": {
+                "battery": {
+                  "noBatteryBootSupported": true
+                }
+              },
+              "id": "Default",
+              "type": 26
             },
             "bluetooth": {
               "description": {
@@ -852,6 +864,9 @@
               "crasConfig": 1,
               "headphoneCodec": 2
             },
+            "battery": {
+              "noBatteryBootSupported": true
+            },
             "camera": {
               "devices": [
                 {
@@ -1042,6 +1057,15 @@
               },
               "id": "AUDIO",
               "type": 3
+            },
+            "battery": {
+              "hardwareFeature": {
+                "battery": {
+                  "noBatteryBootSupported": true
+                }
+              },
+              "id": "Default",
+              "type": 26
             },
             "camera": {
               "description": {

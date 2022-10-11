@@ -205,6 +205,14 @@ def _create_microphone_mute_switch(present = False):
         ),
     )
 
+def _create_battery(no_battery_boot_supported = False):
+    """Specify whether no battery boot is supported."""
+    return _HW_FEAT(
+        battery = _HW_FEAT.Battery(
+            no_battery_boot_supported = no_battery_boot_supported,
+        ),
+    )
+
 # build struct of enums to configure camera
 _camera_features = struct(
     facing = struct(
@@ -270,6 +278,7 @@ def _create_stylus(stylus_type):
     )
 
 def _create_features(
+        battery = None,
         bluetooth = None,
         camera = None,
         display = None,
@@ -289,6 +298,7 @@ def _create_features(
         if feature:
             hw_feat[name] = getattr(feature, name)
 
+    _merge("battery", battery)
     _merge("bluetooth", bluetooth)
     _merge("camera", camera)
     _merge("display", display)
@@ -306,6 +316,7 @@ def _create_features(
     return _HW_FEAT(**hw_feat)
 
 hw_feat = struct(
+    create_battery = _create_battery,
     create_bluetooth = _create_bluetooth,
     create_camera = _create_camera,
     create_cameras = _create_cameras,

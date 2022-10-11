@@ -139,4 +139,8 @@ message HardwareTopology {
   // Specify the power supply topology
   // See ./hardware_topology.md#power-supply for more information.
   Topology power_supply = 30;
+
+  // Specify the battery topology
+  // See ./hardware_topology.md#battery for more information.
+  Topology battery = 31;
 }

@@ -6014,6 +6014,14 @@
               "number": 30,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "battery",
+              "label": "LABEL_OPTIONAL",
+              "name": "battery",
+              "number": 31,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
             }
           ],
           "name": "HardwareTopology"

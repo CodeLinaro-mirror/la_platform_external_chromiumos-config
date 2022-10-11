@@ -288,3 +288,9 @@ Changes that require new topology
 
 * Presence or absence of barrel jack
 * Preferred input power
+
+## Battery
+
+Changes that require new topology
+
+* Supports booting with no battery
