@@ -4984,6 +4984,13 @@
                   "number": 3,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig"
+                },
+                {
+                  "jsonName": "wifiVpdSar",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wifi_vpd_sar",
+                  "number": 4,
+                  "type": "TYPE_BOOL"
                 }
               ],
               "name": "Wifi"

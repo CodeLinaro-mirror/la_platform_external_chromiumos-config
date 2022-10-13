@@ -577,6 +577,8 @@ message HardwareFeatures {
     repeated WifiChip wifi_chips = 2;
 
     WifiConfig wifi_config = 3;
+
+    bool wifi_vpd_sar = 4;
   }
   Wifi wifi = 23;
 
