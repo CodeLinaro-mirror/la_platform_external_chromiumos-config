@@ -118,6 +118,9 @@ message Firmware {
 
     // Build target for chromeos-bmpblk.
     string bmpblk = 8;
+
+    // Build target for chromeos-ish.
+    string ish = 9;
   }
 
   BuildTargets build_targets = 1;

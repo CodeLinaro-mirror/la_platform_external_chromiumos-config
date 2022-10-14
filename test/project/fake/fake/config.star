@@ -568,7 +568,7 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake", ish_name = "fake"),
     power = _SC_POWER,
     wifi = _SC_WIFI_ATH10K,
     ui = sc.create_ui(extra_web_apps_dir = "apps1"),

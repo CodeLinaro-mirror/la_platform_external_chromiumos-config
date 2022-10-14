@@ -578,6 +578,13 @@
                   "name": "bmpblk",
                   "number": 8,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "ish",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ish",
+                  "number": 9,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "BuildTargets"

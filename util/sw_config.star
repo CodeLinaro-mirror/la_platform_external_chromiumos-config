@@ -88,6 +88,7 @@ def _create_fw_build_targets(
         depthcharge = None,
         ec = None,
         ec_extras = None,
+        ish = None,
         libpayload = None,
         zephyr_ec = None):
     """Builds a Firmware.BuildTargets proto."""
@@ -97,6 +98,7 @@ def _create_fw_build_targets(
         depthcharge = depthcharge,
         ec = ec,
         ec_extras = ec_extras,
+        ish = ish,
         libpayload = libpayload,
         zephyr_ec = zephyr_ec,
     )
@@ -110,6 +112,7 @@ def _create_fw_build_config_by_names(
         bmpblk_name = None,
         ec_name = None,
         depthcharge_name = None,
+        ish_name = None,
         libpayload_name = None,
         ec_extras = None,
         zephyr_ec_name = None):
@@ -127,6 +130,7 @@ def _create_fw_build_config_by_names(
             ec = ec_name,
             ec_extras = ec_extras,
             depthcharge = depthcharge_name if depthcharge_name else coreboot_name,
+            ish = ish_name,
             libpayload = libpayload_name if libpayload_name else coreboot_name,
             zephyr_ec = zephyr_ec_name,
         ),
