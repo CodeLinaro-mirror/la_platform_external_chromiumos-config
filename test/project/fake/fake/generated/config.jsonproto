@@ -366,7 +366,7 @@
                   "baseMagnetometer": 1
                 }
               },
-              "id": "SENSOR",
+              "id": "SENSOR with ALS",
               "type": 8
             },
             "audio": {
@@ -857,6 +857,7 @@
                 100.0
               ],
               "keyboardType": 1,
+              "mcuType": 1,
               "numericPad": 1,
               "powerButton": 1
             },
@@ -1117,6 +1118,7 @@
                     100.0
                   ],
                   "keyboardType": 1,
+                  "mcuType": 1,
                   "numericPad": 1,
                   "powerButton": 1
                 }

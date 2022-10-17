@@ -30,13 +30,19 @@ _REF_DESIGN_NAME = "FAKE_REF_DESIGN"
 _DESIGN_ID = design.create_design_id(_REF_DESIGN_NAME)
 _DESIGN_ID_A = design.create_design_id("PROJECT_A")
 _DESIGN_ID_B = design.create_design_id("PROJECT_B")
-_DESIGN_ID_C = design.create_design_id("PROJECT_C", config_design_id_override = _DESIGN_ID_B)
+_DESIGN_ID_C = design.create_design_id(
+    "PROJECT_C",
+    config_design_id_override = _DESIGN_ID_B,
+)
 _DESIGN_ID_WL = design.create_design_id("PROJECT_WL")
 _DESIGN_ID_REBRAND = design.create_design_id("PROJECT_REBRAND")
 _DESIGN_ID_BOX = design.create_design_id("PROJECT_BOX")
 
 _FORM_FACTOR_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
-_FORM_FACTOR_CLAMSHELL_POWER_RECOV = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL, hw_topo.recovery_input.POWER_BUTTON)
+_FORM_FACTOR_CLAMSHELL_POWER_RECOV = hw_topo.create_form_factor(
+    hw_topo.ff.CLAMSHELL,
+    hw_topo.recovery_input.POWER_BUTTON,
+)
 _FORM_FACTOR_CONVERTIBLE = hw_topo.create_form_factor(hw_topo.ff.CONVERTIBLE)
 _FORM_FACTOR_CHROMEBOX = hw_topo.create_form_factor(hw_topo.ff.CHROMEBOX)
 _FORM_FACTOR_CHROMEBASE = hw_topo.create_form_factor(hw_topo.ff.CHROMEBASE)
@@ -72,7 +78,12 @@ _TOUCHSCREEN = hw_topo.create_screen(
     no_als_ac_brightness_nits = 135,
     max_brightness_nits = 215,
     als_steps = [
-        hw_topo.create_als_step(None, 400, ac_backlight_nits = 133, battery_backlight_nits = 80),
+        hw_topo.create_als_step(
+            None,
+            400,
+            ac_backlight_nits = 133,
+            battery_backlight_nits = 80,
+        ),
         hw_topo.create_als_step(100, None, ac_backlight_nits = 215),
     ],
 )
@@ -116,9 +127,25 @@ _AUDIO_WITH_FIXED_SUFFIX = hw_topo.override_audio(
     ucm_config = hw_topo.audio_config_structure.DESIGN,
 )
 
-_STYLUS = hw_topo.create_stylus("STYLUS", "Default stylus", stylus_type = hw_topo.stylus.INTERNAL)
-_BL_KEYBOARD = hw_topo.create_keyboard(backlight = True, pwr_btn_present = True, kb_type = hw_topo.kb_type.INTERNAL, numpad_present = True, backlight_user_steps = [0, 10, 20, 40, 60, 100])
-_KEYBOARD = hw_topo.create_keyboard(backlight = False, pwr_btn_present = False, kb_type = hw_topo.kb_type.DETACHABLE, numpad_present = False)
+_STYLUS = hw_topo.create_stylus(
+    "STYLUS",
+    "Default stylus",
+    stylus_type = hw_topo.stylus.INTERNAL,
+)
+_BL_KEYBOARD = hw_topo.create_keyboard(
+    backlight = True,
+    pwr_btn_present = True,
+    kb_type = hw_topo.kb_type.INTERNAL,
+    numpad_present = True,
+    backlight_user_steps = [0, 10, 20, 40, 60, 100],
+    mcu_type = hw_topo.kb_mcu_type.MCU_PRISM,
+)
+_KEYBOARD = hw_topo.create_keyboard(
+    backlight = False,
+    pwr_btn_present = False,
+    kb_type = hw_topo.kb_type.DETACHABLE,
+    numpad_present = False,
+)
 _THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
 _CAMERA0 = hw_topo.create_camera(
     "CAMERA0",
@@ -170,12 +197,39 @@ _CAMERA2 = hw_topo.create_camera(
         ),
     ],
 )
-_SENSOR = hw_topo.create_sensor("SENSOR", "Default sensor", fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True)
-_SENSOR_WITH_LIGHT = hw_topo.create_sensor("SENSOR", "Default sensor plus light sensor", fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)], base_accel_present = True, base_gyro_present = True, base_magno_present = True, lid_light_present = True)
-_FINGERPRINT = hw_topo.create_fingerprint("FINGERPRINT", "Default fingerprint", location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT, board = "fake_fingerprint_board")
-_NO_FINGERPRINT = hw_topo.create_fingerprint("NONE", "No finger print sensor", location = hw_topo.fp_loc.NOT_PRESENT)
+_SENSOR = hw_topo.create_sensor(
+    "SENSOR",
+    "Default sensor",
+    fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)],
+    base_accel_present = True,
+    base_gyro_present = True,
+    base_magno_present = True,
+)
+_SENSOR_WITH_LIGHT = hw_topo.create_sensor(
+    "SENSOR with ALS",
+    "Default sensor plus light sensor",
+    fw_configs = [hw_topo.make_fw_config(program.fw_masks.SENSOR, 3)],
+    base_accel_present = True,
+    base_gyro_present = True,
+    base_magno_present = True,
+    lid_light_present = True,
+)
+_FINGERPRINT = hw_topo.create_fingerprint(
+    "FINGERPRINT",
+    "Default fingerprint",
+    location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT,
+    board = "fake_fingerprint_board",
+)
+_NO_FINGERPRINT = hw_topo.create_fingerprint(
+    "NONE",
+    "No finger print sensor",
+    location = hw_topo.fp_loc.NOT_PRESENT,
+)
 _HPS = hw_topo.create_hps("HPS", "Default Hps", present = True)
-_PROXIMITY_SENSOR = hw_topo.create_proximity_sensor("PROXIMITY_SENSOR", "Default proximity_sensor")
+_PROXIMITY_SENSOR = hw_topo.create_proximity_sensor(
+    "PROXIMITY_SENSOR",
+    "Default proximity_sensor",
+)
 _NO_PROXIMITY_SENSOR = None
 _DAUGHTER_BOARD = hw_topo.create_daughter_board(
     "Default DB",
@@ -185,11 +239,38 @@ _DAUGHTER_BOARD = hw_topo.create_daughter_board(
     usbc_ports = [hw_topo.create_usbc_port(index_override = 1)],
     usb4 = True,
 )
-_NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage("NON_VOLATILE_STORAGE", "Default non_volatile_storage", storage_type = hw_topo.storage.EMMC)
-_WIFI = hw_topo.create_wifi("WIFI", "Default wifi", fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)])
-_LTE_BOARD = hw_topo.create_cellular_board("LTE_BOARD", "Default cellular_board", present = True, type = hw_topo.cellular.CELLULAR_LTE, dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(modem_manager = True))
-_LTE_BOARD_WITH_MODEL = hw_topo.create_cellular_board("LTE_BOARD_MODEL", "Default cellular_board w/ model", present = True, type = hw_topo.cellular.CELLULAR_LTE, model = "FakeModem", dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(gpio = 0, tablet_mode = True))
-_LTE_BOARD_WITH_NO_DPR = hw_topo.create_cellular_board("LTE_BOARD_NO_DPR", "Default cellular_board without dynamic power reduction config", present = True, type = hw_topo.cellular.CELLULAR_LTE, dynamic_power_reduction_config = None)
+_NON_VOLATILE_STORAGE = hw_topo.create_non_volatile_storage(
+    "NON_VOLATILE_STORAGE",
+    "Default non_volatile_storage",
+    storage_type = hw_topo.storage.EMMC,
+)
+_WIFI = hw_topo.create_wifi(
+    "WIFI",
+    "Default wifi",
+    fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)],
+)
+_LTE_BOARD = hw_topo.create_cellular_board(
+    "LTE_BOARD",
+    "Default cellular_board",
+    present = True,
+    type = hw_topo.cellular.CELLULAR_LTE,
+    dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(modem_manager = True),
+)
+_LTE_BOARD_WITH_MODEL = hw_topo.create_cellular_board(
+    "LTE_BOARD_MODEL",
+    "Default cellular_board w/ model",
+    present = True,
+    type = hw_topo.cellular.CELLULAR_LTE,
+    model = "FakeModem",
+    dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(gpio = 0, tablet_mode = True),
+)
+_LTE_BOARD_WITH_NO_DPR = hw_topo.create_cellular_board(
+    "LTE_BOARD_NO_DPR",
+    "Default cellular_board without dynamic power reduction config",
+    present = True,
+    type = hw_topo.cellular.CELLULAR_LTE,
+    dynamic_power_reduction_config = None,
+)
 _SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
 _MOTHERBOARD_USB = hw_topo.create_motherboard_usb(
     "MOTHERBOARD_USB",
@@ -201,8 +282,16 @@ _MOTHERBOARD_USB = hw_topo.create_motherboard_usb(
     ],
     usb4 = True,
 )
-_BLUETOOTH = hw_topo.create_bluetooth("BLUETOOTH", "Default bluetooth", bt_component = program.bluetooth_component.bluetooth)
-_BARRELJACK = hw_topo.create_barreljack("BARRELJACK", "Default barreljack", bj_present = True)
+_BLUETOOTH = hw_topo.create_bluetooth(
+    "BLUETOOTH",
+    "Default bluetooth",
+    bt_component = program.bluetooth_component.bluetooth,
+)
+_BARRELJACK = hw_topo.create_barreljack(
+    "BARRELJACK",
+    "Default barreljack",
+    bj_present = True,
+)
 _POWER_BUTTON = hw_topo.create_power_button(
     region = hw_topo.region.SCREEN,
     edge = hw_topo.edge.LEFT,
@@ -226,7 +315,9 @@ _SC_NNPALM = sc.create_nnpalm(
     radius_polynomial = "1,0",
     touch_compatible = True,
 )
-_SC_BLUETOOTH = sc.create_bluetooth(flags = {"enable-suspend-management": True})
+_SC_BLUETOOTH = sc.create_bluetooth(
+    flags = {"enable-suspend-management": True},
+)
 _SC_POWER = sc.create_power(
     preferences = {
         "battery-poll-interval-initial-ms": "1000",
@@ -473,13 +564,21 @@ _SC_WIFI_INTEL = sc.create_intel_wifi(
         unii_4 = 7,
     ),
 )
-_TOUCH = hw_topo.create_touch("TOUCH", "Numpad touch", fw_configs = [hw_topo.make_fw_config(program.fw_masks.TOUCH, 1)])
+_TOUCH = hw_topo.create_touch(
+    "TOUCH",
+    "Numpad touch",
+    fw_configs = [hw_topo.make_fw_config(program.fw_masks.TOUCH, 1)],
+)
 
 _TPM = hw_topo.TPM_GSC_H1B
 
 _MICROPHONE_MUTE_SWITCH = hw_topo.create_microphone_mute_switch(present = True)
 
-_POWER_SUPPLY = hw_topo.create_power_supply("POWER_SUPPLY", "Default power supply", usb_min_ac_watts = 20)
+_POWER_SUPPLY = hw_topo.create_power_supply(
+    "POWER_SUPPLY",
+    "Default power supply",
+    usb_min_ac_watts = 20,
+)
 
 def create_hardware_topology(
         screen = None,
@@ -523,9 +622,9 @@ def create_hardware_topology(
         wifi = wifi if wifi else _WIFI,
         power_button = _POWER_BUTTON,
         volume_button = _VOLUME_BUTTON,
-        ec = hw_topo.EC_CHROME,
+        ec = ec or hw_topo.EC_CHROME,
         touch = _TOUCH,
-        tpm = hw_topo.TPM_GSC_H1B,
+        tpm = tpm or hw_topo.TPM_GSC_H1B,
         microphone_mute_switch = microphone_mute_switch,
         hdmi = hdmi,
         hps = hps,
@@ -568,7 +667,13 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake", ish_name = "fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+        ish_name = "fake",
+    ),
     power = _SC_POWER,
     wifi = _SC_WIFI_ATH10K,
     ui = sc.create_ui(extra_web_apps_dir = "apps1"),
@@ -586,11 +691,15 @@ design.append_configs(
         screen = _TOUCHSCREEN,
         stylus = _STYLUS,
         camera = _CAMERA2,
-        daughter_board = hw_topo.create_daughter_board("Non-default DB", "Non-default daughter_board", fw_configs = [hw_topo.make_fw_config(
-            program.fw_masks.DB,
-            0,
-            coreboot_customizations = ["0db"],
-        )]),
+        daughter_board = hw_topo.create_daughter_board(
+            "Non-default DB",
+            "Non-default daughter_board",
+            fw_configs = [hw_topo.make_fw_config(
+                program.fw_masks.DB,
+                0,
+                coreboot_customizations = ["0db"],
+            )],
+        ),
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
         keyboard = _BL_KEYBOARD,
     ),
@@ -603,7 +712,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = sc.create_power({
         "suspend-to-idle": "0",
     }),
@@ -646,7 +760,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
     resource = sc.create_resource(
         ac = sc.create_power_source_preference(
@@ -708,7 +827,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
     camera = sc.create_camera(
         generate_media_profiles = True,
@@ -787,7 +911,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
     camera = sc.create_camera(
         generate_media_profiles = True,
@@ -858,7 +987,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
     camera = sc.create_camera(
         generate_media_profiles = True,
@@ -895,7 +1029,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
     wifi = sc.create_rtw89(
         non_tablet_mode_transmit_power_chain = sc.create_rtw89_power_chain(
@@ -971,7 +1110,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
 )
 
@@ -999,7 +1143,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
 )
 
@@ -1032,7 +1181,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
     camera = sc.create_camera(generate_media_profiles = True),
 )
@@ -1055,7 +1209,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
     camera = sc.create_camera(generate_media_profiles = True),
 )
@@ -1079,7 +1238,12 @@ design.append_configs(
         ec_version = sc.create_fw_version(11111, 2),
         pd_version = sc.create_fw_version(11111),
     ),
-    firmware_build_config = sc.create_fw_build_config_by_names("fake", ec_name = "fake", ec_extras = ["fake_ec_extra1", "fake_ec_extra2"], zephyr_ec_name = "projects/fake/fake"),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
     power = _SC_POWER,
     camera = sc.create_camera(generate_media_profiles = True),
     ui = sc.create_ui(cloud_gaming_device = True),

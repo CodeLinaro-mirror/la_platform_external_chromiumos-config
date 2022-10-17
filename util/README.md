@@ -606,6 +606,7 @@ hw_topo.create_keyboard(
 * **id**: A string identifier for the Topology. If not passed, a default is provided.
 * **description**: An English description for the Topology. If not passed, a default is provided.
 * **backlight_user_steps**: A list of doubles specifying the user-selectable backlight steps in increasing order, starting from 0. This controls the keyboard_backlight_user_steps powerd pref.
+* **mcu_type**: A KeyboardMcuType enum. Optional.
 
 
 ### hw_topo.create_thermal {#hw_topo.create_thermal}

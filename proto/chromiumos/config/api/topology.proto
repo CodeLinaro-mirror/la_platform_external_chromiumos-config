@@ -494,6 +494,13 @@ message HardwareFeatures {
     // If numeric pad is present on keyboard
     Present numeric_pad = 4;
 
+    // Type of the MCU used in the system
+    KeyboardMcuType mcu_type = 6;
+    enum KeyboardMcuType {
+      KEYBOARD_MCU_NOT_PRESENT = 0;
+      KEYBOARD_MCU_PRISM = 1;
+    }
+
     // The keyboard backlight level step values. Values must be in
     // increasing order. If set, the first value must be 0. This corresponds to
     // the keyboard_backlight_user_steps powerd pref.

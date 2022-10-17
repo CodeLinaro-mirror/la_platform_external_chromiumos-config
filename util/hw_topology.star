@@ -82,6 +82,11 @@ _KB_TYPE = struct(
     DETACHABLE = _HW_FEAT.Keyboard.DETACHABLE,
 )
 
+_KB_MCU_TYPE = struct(
+    NONE = _HW_FEAT.Keyboard.KEYBOARD_MCU_NOT_PRESENT,
+    MCU_PRISM = _HW_FEAT.Keyboard.KEYBOARD_MCU_PRISM,
+)
+
 _STYLUS = struct(
     NONE = _HW_FEAT.Stylus.NONE,
     INTERNAL = _HW_FEAT.Stylus.INTERNAL,
@@ -544,7 +549,7 @@ def _create_stylus(id, description, stylus_type, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None, backlight_user_steps = None):
+def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None, backlight_user_steps = None, mcu_type = _KB_MCU_TYPE.NONE):
     """Builds a Topology proto for a keyboard.
 
     Args:
@@ -560,6 +565,7 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
         backlight_user_steps: A list of doubles specifying the user-selectable
             backlight steps in increasing order, starting from 0. This controls
             the keyboard_backlight_user_steps powerd pref.
+        mcu_type: A KeyboardMcuType enum. Optional.
     """
 
     if not id:
@@ -589,6 +595,7 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
     hw_features.keyboard.power_button = _bool_to_present(pwr_btn_present)
     hw_features.keyboard.numeric_pad = _bool_to_present(numpad_present)
     hw_features.keyboard.backlight_user_steps = backlight_user_steps
+    hw_features.keyboard.mcu_type = mcu_type
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -1671,6 +1678,7 @@ hw_topo = struct(
     fp_loc = _FP_LOC,
     storage = _STORAGE,
     kb_type = _KB_TYPE,
+    kb_mcu_type = _KB_MCU_TYPE,
     stylus = _STYLUS,
     region = _REGION,
     edge = _EDGE,

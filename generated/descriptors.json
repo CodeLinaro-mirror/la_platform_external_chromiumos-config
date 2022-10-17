@@ -4761,6 +4761,19 @@
                       "number": 3
                     }
                   ]
+                },
+                {
+                  "name": "KeyboardMcuType",
+                  "value": [
+                    {
+                      "name": "KEYBOARD_MCU_NOT_PRESENT",
+                      "number": 0
+                    },
+                    {
+                      "name": "KEYBOARD_MCU_PRISM",
+                      "number": 1
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -4795,6 +4808,14 @@
                   "number": 4,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "mcuType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "mcu_type",
+                  "number": 6,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Keyboard.KeyboardMcuType"
                 },
                 {
                   "jsonName": "backlightUserSteps",
