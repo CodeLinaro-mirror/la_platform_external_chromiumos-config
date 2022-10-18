@@ -228,6 +228,36 @@ _FINGERPRINT = hw_topo.create_fingerprint(
     "Default fingerprint",
     location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT,
     board = "fake_fingerprint_board",
+    fingerprint_diag = hw_topo.create_fingerprint_diag(
+        routine_enable = True,
+        max_pixel_dev = 5,
+        max_dead_pixels = 5,
+        pixel_median = hw_topo.create_fingerprint_diag_pixel_median(
+            cb_type1_lower = 1,
+            cb_type1_upper = 2,
+            cb_type2_lower = 3,
+            cb_type2_upper = 4,
+            icb_type1_lower = 5,
+            icb_type1_upper = 6,
+            icb_type2_lower = 7,
+            icb_type2_upper = 8,
+        ),
+        num_detect_zone = 2,
+        detect_zones = [hw_topo.create_fingerprint_diag_detect_zone(
+            x1 = 10,
+            y1 = 20,
+            x2 = 30,
+            y2 = 40,
+        ), hw_topo.create_fingerprint_diag_detect_zone(
+            x1 = 50,
+            y1 = 60,
+            x2 = 70,
+            y2 = 80,
+        )],
+        max_dead_pixels_in_detect_zone = 0,
+        max_reset_pixel_dev = 5,
+        max_error_reset_pixels = 5,
+    ),
 )
 _NO_FINGERPRINT = hw_topo.create_fingerprint(
     "NONE",

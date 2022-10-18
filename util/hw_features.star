@@ -103,13 +103,18 @@ _LOCATION = struct(
     SIDE_LEFT = _HW_FEAT.Fingerprint.LEFT_SIDE,
 )
 
-def _create_fingerprint(location, board = "", ro_version = ""):
+def _create_fingerprint(
+        location,
+        board = "",
+        ro_version = "",
+        fingerprint_diag = None):
     """Specify fingerprint settings"""
     return _HW_FEAT(
         fingerprint = _HW_FEAT.Fingerprint(
             location = location,
             board = board,
             ro_version = ro_version,
+            fingerprint_diag = fingerprint_diag,
         ),
     )
 

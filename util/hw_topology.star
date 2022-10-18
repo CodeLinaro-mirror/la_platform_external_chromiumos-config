@@ -742,7 +742,13 @@ def _create_sensor(
         hardware_feature = hw_features,
     )
 
-def _create_fingerprint(id, description, location, board = None, fw_configs = []):
+def _create_fingerprint(
+        id,
+        description,
+        location,
+        board = None,
+        fw_configs = [],
+        fingerprint_diag = None):
     """Builds a Topology proto for a fingerprint reader."""
     hw_features = _HW_FEAT()
 
@@ -751,6 +757,8 @@ def _create_fingerprint(id, description, location, board = None, fw_configs = []
         hw_features.fingerprint.board = board
         if board == "bloonchipper":
             hw_features.fingerprint.ro_version = "bloonchipper_v2.0.5938-197506c1"
+    if fingerprint_diag:
+        hw_features.fingerprint.fingerprint_diag = fingerprint_diag
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -759,6 +767,63 @@ def _create_fingerprint(id, description, location, board = None, fw_configs = []
         type = topo_pb.Topology.FINGERPRINT,
         description = {"EN": description},
         hardware_feature = hw_features,
+    )
+
+def _create_fingerprint_diag_pixel_median(
+        cb_type1_lower = 0,
+        cb_type1_upper = 0,
+        cb_type2_lower = 0,
+        cb_type2_upper = 0,
+        icb_type1_lower = 0,
+        icb_type1_upper = 0,
+        icb_type2_lower = 0,
+        icb_type2_upper = 0):
+    """ Builds a fingerprint diagnostic PixelMedian proto."""
+    return _HW_FEAT.Fingerprint.FingerprintDiag.PixelMedian(
+        cb_type1_lower = cb_type1_lower,
+        cb_type1_upper = cb_type1_upper,
+        cb_type2_lower = cb_type2_lower,
+        cb_type2_upper = cb_type2_upper,
+        icb_type1_lower = icb_type1_lower,
+        icb_type1_upper = icb_type1_upper,
+        icb_type2_lower = icb_type2_lower,
+        icb_type2_upper = icb_type2_upper,
+    )
+
+def _create_fingerprint_diag_detect_zone(
+        x1 = 0,
+        y1 = 0,
+        x2 = 0,
+        y2 = 0):
+    """ Builds a fingerprint diagnostic DetectZone proto."""
+    return _HW_FEAT.Fingerprint.FingerprintDiag.DetectZone(
+        x1 = x1,
+        y1 = y1,
+        x2 = x2,
+        y2 = y2,
+    )
+
+def _create_fingerprint_diag(
+        routine_enable = False,
+        max_pixel_dev = 0,
+        max_dead_pixels = 0,
+        pixel_median = _create_fingerprint_diag_pixel_median(),
+        num_detect_zone = 0,
+        detect_zones = [],
+        max_dead_pixels_in_detect_zone = 0,
+        max_reset_pixel_dev = 0,
+        max_error_reset_pixels = 0):
+    """ Builds a health routine FingerprintDiag proto."""
+    return _HW_FEAT.Fingerprint.FingerprintDiag(
+        routine_enable = routine_enable,
+        max_pixel_dev = max_pixel_dev,
+        max_dead_pixels = max_dead_pixels,
+        pixel_median = pixel_median,
+        num_detect_zone = num_detect_zone,
+        detect_zones = detect_zones,
+        max_dead_pixels_in_detect_zone = max_dead_pixels_in_detect_zone,
+        max_reset_pixel_dev = max_reset_pixel_dev,
+        max_error_reset_pixels = max_error_reset_pixels,
     )
 
 def _create_hps(id, description, present = False, fw_configs = []):
@@ -1655,6 +1720,9 @@ hw_topo = struct(
     create_camera = _create_camera,
     create_sensor = _create_sensor,
     create_fingerprint = _create_fingerprint,
+    create_fingerprint_diag = _create_fingerprint_diag,
+    create_fingerprint_diag_detect_zone = _create_fingerprint_diag_detect_zone,
+    create_fingerprint_diag_pixel_median = _create_fingerprint_diag_pixel_median,
     create_proximity_sensor = _create_proximity_sensor,
     create_daughter_board = _create_daughter_board,
     create_non_volatile_storage = _create_non_volatile_storage,

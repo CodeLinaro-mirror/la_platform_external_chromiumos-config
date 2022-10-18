@@ -238,6 +238,38 @@
             },
             "fingerprint": {
               "board": "fake_fingerprint_board",
+              "fingerprintDiag": {
+                "detectZones": [
+                  {
+                    "x1": 10,
+                    "x2": 30,
+                    "y1": 20,
+                    "y2": 40
+                  },
+                  {
+                    "x1": 50,
+                    "x2": 70,
+                    "y1": 60,
+                    "y2": 80
+                  }
+                ],
+                "maxDeadPixels": 5,
+                "maxErrorResetPixels": 5,
+                "maxPixelDev": 5,
+                "maxResetPixelDev": 5,
+                "numDetectZone": 2,
+                "pixelMedian": {
+                  "cbType1Lower": 1,
+                  "cbType1Upper": 2,
+                  "cbType2Lower": 3,
+                  "cbType2Upper": 4,
+                  "icbType1Lower": 5,
+                  "icbType1Upper": 6,
+                  "icbType2Lower": 7,
+                  "icbType2Upper": 8
+                },
+                "routineEnable": true
+              },
               "location": 2
             },
             "formFactor": {
@@ -515,6 +547,38 @@
               "hardwareFeature": {
                 "fingerprint": {
                   "board": "fake_fingerprint_board",
+                  "fingerprintDiag": {
+                    "detectZones": [
+                      {
+                        "x1": 10,
+                        "x2": 30,
+                        "y1": 20,
+                        "y2": 40
+                      },
+                      {
+                        "x1": 50,
+                        "x2": 70,
+                        "y1": 60,
+                        "y2": 80
+                      }
+                    ],
+                    "maxDeadPixels": 5,
+                    "maxErrorResetPixels": 5,
+                    "maxPixelDev": 5,
+                    "maxResetPixelDev": 5,
+                    "numDetectZone": 2,
+                    "pixelMedian": {
+                      "cbType1Lower": 1,
+                      "cbType1Upper": 2,
+                      "cbType2Lower": 3,
+                      "cbType2Upper": 4,
+                      "icbType1Lower": 5,
+                      "icbType1Upper": 6,
+                      "icbType2Lower": 7,
+                      "icbType2Upper": 8
+                    },
+                    "routineEnable": true
+                  },
                   "location": 2
                 }
               },
@@ -1390,6 +1454,38 @@
             },
             "fingerprint": {
               "board": "fake_fingerprint_board",
+              "fingerprintDiag": {
+                "detectZones": [
+                  {
+                    "x1": 10,
+                    "x2": 30,
+                    "y1": 20,
+                    "y2": 40
+                  },
+                  {
+                    "x1": 50,
+                    "x2": 70,
+                    "y1": 60,
+                    "y2": 80
+                  }
+                ],
+                "maxDeadPixels": 5,
+                "maxErrorResetPixels": 5,
+                "maxPixelDev": 5,
+                "maxResetPixelDev": 5,
+                "numDetectZone": 2,
+                "pixelMedian": {
+                  "cbType1Lower": 1,
+                  "cbType1Upper": 2,
+                  "cbType2Lower": 3,
+                  "cbType2Upper": 4,
+                  "icbType1Lower": 5,
+                  "icbType1Upper": 6,
+                  "icbType2Lower": 7,
+                  "icbType2Upper": 8
+                },
+                "routineEnable": true
+              },
               "location": 2
             },
             "formFactor": {
@@ -1643,6 +1739,38 @@
               "hardwareFeature": {
                 "fingerprint": {
                   "board": "fake_fingerprint_board",
+                  "fingerprintDiag": {
+                    "detectZones": [
+                      {
+                        "x1": 10,
+                        "x2": 30,
+                        "y1": 20,
+                        "y2": 40
+                      },
+                      {
+                        "x1": 50,
+                        "x2": 70,
+                        "y1": 60,
+                        "y2": 80
+                      }
+                    ],
+                    "maxDeadPixels": 5,
+                    "maxErrorResetPixels": 5,
+                    "maxPixelDev": 5,
+                    "maxResetPixelDev": 5,
+                    "numDetectZone": 2,
+                    "pixelMedian": {
+                      "cbType1Lower": 1,
+                      "cbType1Upper": 2,
+                      "cbType2Lower": 3,
+                      "cbType2Upper": 4,
+                      "icbType1Lower": 5,
+                      "icbType1Upper": 6,
+                      "icbType2Lower": 7,
+                      "icbType2Upper": 8
+                    },
+                    "routineEnable": true
+                  },
                   "location": 2
                 }
               },

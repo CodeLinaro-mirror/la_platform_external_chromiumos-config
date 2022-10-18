@@ -4918,9 +4918,185 @@
                   "name": "ro_version",
                   "number": 3,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "fingerprintDiag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "fingerprint_diag",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag"
                 }
               ],
-              "name": "Fingerprint"
+              "name": "Fingerprint",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "routineEnable",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "routine_enable",
+                      "number": 1,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "maxPixelDev",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "max_pixel_dev",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "maxDeadPixels",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "max_dead_pixels",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "pixelMedian",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "pixel_median",
+                      "number": 4,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.PixelMedian"
+                    },
+                    {
+                      "jsonName": "numDetectZone",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "num_detect_zone",
+                      "number": 5,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "detectZones",
+                      "label": "LABEL_REPEATED",
+                      "name": "detect_zones",
+                      "number": 6,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.DetectZone"
+                    },
+                    {
+                      "jsonName": "maxDeadPixelsInDetectZone",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "max_dead_pixels_in_detect_zone",
+                      "number": 7,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "maxResetPixelDev",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "max_reset_pixel_dev",
+                      "number": 8,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "maxErrorResetPixels",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "max_error_reset_pixels",
+                      "number": 9,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "FingerprintDiag",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "cbType1Lower",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "cb_type1_lower",
+                          "number": 1,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "cbType1Upper",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "cb_type1_upper",
+                          "number": 2,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "cbType2Lower",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "cb_type2_lower",
+                          "number": 3,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "cbType2Upper",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "cb_type2_upper",
+                          "number": 4,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "icbType1Lower",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "icb_type1_lower",
+                          "number": 5,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "icbType1Upper",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "icb_type1_upper",
+                          "number": 6,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "icbType2Lower",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "icb_type2_lower",
+                          "number": 7,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "icbType2Upper",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "icb_type2_upper",
+                          "number": 8,
+                          "type": "TYPE_UINT32"
+                        }
+                      ],
+                      "name": "PixelMedian"
+                    },
+                    {
+                      "field": [
+                        {
+                          "jsonName": "x1",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "x1",
+                          "number": 1,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "y1",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "y1",
+                          "number": 2,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "x2",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "x2",
+                          "number": 3,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "y2",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "y2",
+                          "number": 4,
+                          "type": "TYPE_UINT32"
+                        }
+                      ],
+                      "name": "DetectZone"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "field": [

@@ -526,6 +526,8 @@ message HardwareFeatures {
     string board = 2;
     // Read-only (RO) firmware version to use (empty means use default).
     string ro_version = 3;
+    // Healthd fingerprint diagnostic routine parameters.
+    FingerprintDiag fingerprint_diag = 4;
 
     enum Location {
       LOCATION_UNKNOWN = 0;
@@ -547,6 +549,36 @@ message HardwareFeatures {
       PRESENT = 8;
       // Left of power button at top right corner (of the keyboard)
       LEFT_OF_POWER_BUTTON_TOP_RIGHT = 9;
+    }
+
+    message FingerprintDiag {
+      bool routine_enable = 1;
+      uint32 max_pixel_dev = 2;
+      uint32 max_dead_pixels = 3;
+      PixelMedian pixel_median = 4;
+      uint32 num_detect_zone = 5;
+      repeated DetectZone detect_zones = 6;
+      uint32 max_dead_pixels_in_detect_zone = 7;
+      uint32 max_reset_pixel_dev = 8;
+      uint32 max_error_reset_pixels = 9;
+
+      message PixelMedian {
+        uint32 cb_type1_lower = 1;
+        uint32 cb_type1_upper = 2;
+        uint32 cb_type2_lower = 3;
+        uint32 cb_type2_upper = 4;
+        uint32 icb_type1_lower = 5;
+        uint32 icb_type1_upper = 6;
+        uint32 icb_type2_lower = 7;
+        uint32 icb_type2_upper = 8;
+      }
+
+      message DetectZone {
+        uint32 x1 = 1;
+        uint32 y1 = 2;
+        uint32 x2 = 3;
+        uint32 y2 = 4;
+      }
     }
   }
 
