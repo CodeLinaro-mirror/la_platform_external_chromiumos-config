@@ -20668,6 +20668,340 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "dir",
+              "label": "LABEL_REQUIRED",
+              "name": "dir",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "tests",
+              "label": "LABEL_REPEATED",
+              "name": "tests",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.Job.Test"
+            },
+            {
+              "jsonName": "user",
+              "label": "LABEL_REQUIRED",
+              "name": "user",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "label",
+              "label": "LABEL_REQUIRED",
+              "name": "label",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "tag",
+              "label": "LABEL_REQUIRED",
+              "name": "tag",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "queuedTime",
+              "label": "LABEL_REQUIRED",
+              "name": "queued_time",
+              "number": 6,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "startedTime",
+              "label": "LABEL_REQUIRED",
+              "name": "started_time",
+              "number": 7,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "finishedTime",
+              "label": "LABEL_REQUIRED",
+              "name": "finished_time",
+              "number": 8,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "machine",
+              "label": "LABEL_REQUIRED",
+              "name": "machine",
+              "number": 9,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "machineOwner",
+              "label": "LABEL_REQUIRED",
+              "name": "machine_owner",
+              "number": 10,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "machineGroup",
+              "label": "LABEL_REQUIRED",
+              "name": "machine_group",
+              "number": 11,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "abortedBy",
+              "label": "LABEL_REQUIRED",
+              "name": "aborted_by",
+              "number": 12,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "abortedOn",
+              "label": "LABEL_REQUIRED",
+              "name": "aborted_on",
+              "number": 13,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "afeJobId",
+              "label": "LABEL_REQUIRED",
+              "name": "afe_job_id",
+              "number": 14,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "keyvalDict",
+              "label": "LABEL_REPEATED",
+              "name": "keyval_dict",
+              "number": 15,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.Job.KeyVal"
+            },
+            {
+              "jsonName": "afeParentJobId",
+              "label": "LABEL_OPTIONAL",
+              "name": "afe_parent_job_id",
+              "number": 16,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "jobIdx",
+              "label": "LABEL_OPTIONAL",
+              "name": "job_idx",
+              "number": 17,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "buildVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_version",
+              "number": 18,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "suite",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite",
+              "number": 19,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 20,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dlmSkuId",
+              "label": "LABEL_OPTIONAL",
+              "name": "dlm_sku_id",
+              "number": 21,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hwid",
+              "label": "LABEL_OPTIONAL",
+              "name": "hwid",
+              "number": 22,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Job",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "name",
+                  "label": "LABEL_REQUIRED",
+                  "name": "name",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_REQUIRED",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "KeyVal"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "base",
+                  "label": "LABEL_REQUIRED",
+                  "name": "base",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "kernelHash",
+                  "label": "LABEL_REQUIRED",
+                  "name": "kernel_hash",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Kernel"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "index",
+                  "label": "LABEL_REQUIRED",
+                  "name": "index",
+                  "number": 1,
+                  "type": "TYPE_INT64"
+                },
+                {
+                  "jsonName": "attrKeyval",
+                  "label": "LABEL_REPEATED",
+                  "name": "attr_keyval",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.artifact.Job.KeyVal"
+                },
+                {
+                  "jsonName": "perfKeyval",
+                  "label": "LABEL_REPEATED",
+                  "name": "perf_keyval",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.artifact.Job.KeyVal"
+                }
+              ],
+              "name": "Iteration"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "subdir",
+                  "label": "LABEL_REQUIRED",
+                  "name": "subdir",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "testname",
+                  "label": "LABEL_REQUIRED",
+                  "name": "testname",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "status",
+                  "label": "LABEL_REQUIRED",
+                  "name": "status",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "reason",
+                  "label": "LABEL_REQUIRED",
+                  "name": "reason",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "kernel",
+                  "label": "LABEL_REQUIRED",
+                  "name": "kernel",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.artifact.Job.Kernel"
+                },
+                {
+                  "jsonName": "machine",
+                  "label": "LABEL_REQUIRED",
+                  "name": "machine",
+                  "number": 6,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "startedTime",
+                  "label": "LABEL_REQUIRED",
+                  "name": "started_time",
+                  "number": 7,
+                  "type": "TYPE_INT64"
+                },
+                {
+                  "jsonName": "finishedTime",
+                  "label": "LABEL_REQUIRED",
+                  "name": "finished_time",
+                  "number": 8,
+                  "type": "TYPE_INT64"
+                },
+                {
+                  "jsonName": "iterations",
+                  "label": "LABEL_REPEATED",
+                  "name": "iterations",
+                  "number": 9,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.artifact.Job.Iteration"
+                },
+                {
+                  "jsonName": "attributes",
+                  "label": "LABEL_REPEATED",
+                  "name": "attributes",
+                  "number": 10,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.artifact.Job.KeyVal"
+                },
+                {
+                  "jsonName": "labels",
+                  "label": "LABEL_REPEATED",
+                  "name": "labels",
+                  "number": 11,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "testIdx",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "test_idx",
+                  "number": 12,
+                  "type": "TYPE_INT64"
+                }
+              ],
+              "name": "Test"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/artifact/tko.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/artifact"
+      },
+      "package": "chromiumos.test.artifact"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/dut_attribute.proto"
       ],
