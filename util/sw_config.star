@@ -444,7 +444,13 @@ def _create_rtw89_power_chain(
         limit_2g,
         limit_5g_1,
         limit_5g_3,
-        limit_5g_4):
+        limit_5g_4,
+        limit_6g_1 = None,
+        limit_6g_2 = None,
+        limit_6g_3 = None,
+        limit_6g_4 = None,
+        limit_6g_5 = None,
+        limit_6g_6 = None):
     """Builds a TransmitPowerChain for rtw89 drivers.
 
     Args:
@@ -452,24 +458,38 @@ def _create_rtw89_power_chain(
         limit_5g_1: 5G band 1 power limit: 5.15G-5.35G channels. (0.25 dBm). Required.
         limit_5g_3: 5G band 3 power limit: 5.47G-5.725G channels. (0.25 dBm). Required.
         limit_5g_4: 5G band 4 power limit: 5.725G-5.95G channels. (0.25 dBm). Required.
+        limit_6g_1: 6G band 1 power limit: 5.955G-6.155G channels. (0.25 dBm). Required.
+        limit_6g_2: 6G band 2 power limit: 6.175G-6.415G channels. (0.25 dBm). Required.
+        limit_6g_3: 6G band 3 power limit: 6.435G-6.515G channels. (0.25 dBm). Required.
+        limit_6g_4: 6G band 4 power limit: 6.535G-6.695G channels. (0.25 dBm). Required.
+        limit_6g_5: 6G band 5 power limit: 6.715G-6.855G channels. (0.25 dBm). Required
+        limit_6g_6: 6G band 6 power limit: 6.895G-7.115G channels. (0.25 dBm). Required.
     """
     return wf_pb.WifiConfig.Rtw89Config.TransmitPowerChain(
         limit_2g = limit_2g,
         limit_5g_1 = limit_5g_1,
         limit_5g_3 = limit_5g_3,
         limit_5g_4 = limit_5g_4,
+        limit_6g_1 = limit_6g_1,
+        limit_6g_2 = limit_6g_2,
+        limit_6g_3 = limit_6g_3,
+        limit_6g_4 = limit_6g_4,
+        limit_6g_5 = limit_6g_5,
+        limit_6g_6 = limit_6g_6,
     )
 
-def _create_rtw89_geo_offsets(offset_2g, offset_5g):
+def _create_rtw89_geo_offsets(offset_2g, offset_5g, offset_6g = None):
     """Builds a GeoOffsets from rtw89 drivers.
 
     Args:
         offset_2g: Value to be added to the 2.4GHz WiFi band. (0.25 dBm) Required.
         offset_5g: Value to be added to all 5GHz WiFi bands. (0.25 dBm) Required.
+        offset_6g: Value to be added to all 6GHz WiFi bands. (0.25 dBm) Required.
     """
     return wf_pb.WifiConfig.Rtw89Config.GeoOffsets(
         offset_2g = offset_2g,
         offset_5g = offset_5g,
+        offset_6g = offset_6g,
     )
 
 def _create_rtw89(
