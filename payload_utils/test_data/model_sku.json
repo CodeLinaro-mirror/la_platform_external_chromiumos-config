@@ -345,7 +345,7 @@
     }
   },
   "product_sku": {
-    "FAKE_REF_DESIGN": {
+    "": {
       "0": {
         "component.fingerprint_board": "",
         "component.has_daughter_board_usb_c": 0,
@@ -376,7 +376,9 @@
           ]
         ],
         "fw_config": 90880
-      },
+      }
+    },
+    "FAKE_REF_DESIGN": {
       "2147483647": {
         "component.fingerprint_board": "fake_fingerprint_board",
         "component.has_daughter_board_usb_c": 1,

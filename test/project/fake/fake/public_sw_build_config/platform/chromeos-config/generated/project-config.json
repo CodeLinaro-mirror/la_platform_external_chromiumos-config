@@ -63,9 +63,9 @@
           "count": 0
         },
         "identity": {
+          "frid": "Google_Fake",
           "platform-name": "FAKE_PROGRAM",
-          "sku-id": 0,
-          "smbios-name-match": "FAKE_REF_DESIGN"
+          "sku-id": 0
         },
         "name": "fake_ref_design",
         "thermal": {

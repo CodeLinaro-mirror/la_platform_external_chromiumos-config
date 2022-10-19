@@ -763,6 +763,7 @@ design.append_configs(
     wifi = _SC_WIFI_RTW88,
     camera = sc.create_camera(generate_media_profiles = True),
     ui = sc.create_ui(extra_web_apps_dir = "apps2"),
+    frid = design.FRID_AUTO,
 )
 
 _HW_CONFIGS_A = []

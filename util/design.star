@@ -24,6 +24,9 @@ load(
 # Config identifier used for an unprovisioned configuration.
 _UNPROVISIONED_CONFIG_ID = 0x7FFFFFFF
 
+# Special value indicating that the FRID should be generated.
+_FRID_AUTO = "__auto__"
+
 _CONSTRAINT = struct(
     REQUIRED = design_pb.Design.Config.Constraint.REQUIRED,
     PREFERRED = design_pb.Design.Config.Constraint.PREFERRED,
@@ -167,7 +170,13 @@ def _append_configs(
     if match_count > 1:
         fail("Only one of device_tree_compatible_match, smbios_name_match_override, and frid can be specified")
     elif frid:
-        sw_config.id_scan_config.frid = frid
+        if frid == _FRID_AUTO:
+            frid_candidate = firmware_build_config.build_targets.coreboot
+            if not frid_candidate:
+                frid_candidate = design_id.value
+            sw_config.id_scan_config.frid = "Google_%s" % frid_candidate.title()
+        else:
+            sw_config.id_scan_config.frid = frid
     elif device_tree_compatible_match:
         sw_config.id_scan_config.device_tree_compatible_match = device_tree_compatible_match
     else:
@@ -229,4 +238,5 @@ design = struct(
     custom_type = _CUSTOMTYPE,
     generate = generate.generate,
     UNPROVISIONED_CONFIG_ID = _UNPROVISIONED_CONFIG_ID,
+    FRID_AUTO = _FRID_AUTO,
 )

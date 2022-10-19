@@ -156,7 +156,7 @@
         "value": "FAKE_REF_DESIGN:0"
       },
       "idScanConfig": {
-        "smbiosNameMatch": "FAKE_REF_DESIGN"
+        "frid": "Google_Fake"
       }
     },
     {
