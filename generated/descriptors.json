@@ -11826,6 +11826,13 @@
               "name": "update_firmware",
               "number": 8,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "onlyGooglerSshKeys",
+              "label": "LABEL_OPTIONAL",
+              "name": "only_googler_ssh_keys",
+              "number": 9,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "ProvisionDutRequest",
