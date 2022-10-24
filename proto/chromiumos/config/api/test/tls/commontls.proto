@@ -230,9 +230,8 @@ message ProvisionDutRequest {
   bool update_firmware = 8;
 
   // only_googler_ssh_keys controls if we provision googler ssh key only.
-  // If it's true, provision will only enable googler ssh key on the DUT.
-  // If it's false, provision will enable external ssh key (which is the
-  // current status) on the DUT.
+  // If true, provision will only enable googler ssh key on the DUT.
+  // If false, provision will enable external & googler ssh key on the DUT.
   bool only_googler_ssh_keys = 9;
 }
 

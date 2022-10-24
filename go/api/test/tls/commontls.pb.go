@@ -537,9 +537,8 @@ type ProvisionDutRequest struct {
 	// which download and update a separate firmware image based on request.
 	UpdateFirmware bool `protobuf:"varint,8,opt,name=update_firmware,json=updateFirmware,proto3" json:"update_firmware,omitempty"`
 	// only_googler_ssh_keys controls if we provision googler ssh key only.
-	// If it's true, provision will only enable googler ssh key on the DUT.
-	// If it's false, provision will enable external ssh key (which is the
-	// current status) on the DUT.
+	// If true, provision will only enable googler ssh key on the DUT.
+	// If false, provision will enable external & googler ssh key on the DUT.
 	OnlyGooglerSshKeys bool `protobuf:"varint,9,opt,name=only_googler_ssh_keys,json=onlyGooglerSshKeys,proto3" json:"only_googler_ssh_keys,omitempty"`
 }
 
