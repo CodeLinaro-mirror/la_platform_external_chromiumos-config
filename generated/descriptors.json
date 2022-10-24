@@ -16297,6 +16297,13 @@
               "name": "update_firmware",
               "number": 6,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "onlyGooglerSshKeys",
+              "label": "LABEL_OPTIONAL",
+              "name": "only_googler_ssh_keys",
+              "number": 4,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "CrOSProvisionMetadata",

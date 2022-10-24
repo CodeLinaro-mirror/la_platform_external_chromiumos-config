@@ -28,4 +28,8 @@ message CrOSProvisionMetadata {
   // target_build OS image and it is different from firmware provision which
   // download and update a separate firmware image based on request.
   bool update_firmware = 6;
+  // only_googler_ssh_keys controls if we provision googler ssh key only.
+  // If true, provision will only enable googler ssh key on the DUT.
+  // If false, provision will enable external & googler ssh key on the DUT.
+  bool only_googler_ssh_keys = 4;
 }
