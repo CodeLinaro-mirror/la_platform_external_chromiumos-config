@@ -322,9 +322,7 @@ def GetFactoryConfigs(config):
   # may map to the same product_name. The sets of sku id should not intersect.
   product_names = {
       sw_design.design_config_id.value:
-      (sw_design.id_scan_config.smbios_name_match or
-       sw_design.id_scan_config.device_tree_compatible_match or
-       ParseDesignConfigId(sw_design.design_config_id.value)[0].lower())
+      ParseDesignConfigId(sw_design.design_config_id.value)[0].lower()
       for sw_design in config.software_configs
   }
   # Create common table.

@@ -15,17 +15,10 @@ message DesignConfigId {
 
   // Config used to scan an actual device to determine a given DesignConfig
   message ScanConfig {
+    reserved 1, 2;
+    reserved "smbios_name_match", "device_tree_compatible_match";
+
     oneof firmware_name_match {
-      // x86 only. Firmware name built into the firmware and reflected back
-      // out in the SMBIOS tables.
-      // This is deprecated in favor of FRID matching
-      string smbios_name_match = 1;
-
-      // ARM only. String pattern (partial) that is matched against the
-      // contents of /proc/device-tree/compatible on ARM devices.
-      // This is deprecated in favor of FRID matching
-      string device_tree_compatible_match = 2;
-
       // String pattern (partial) that is matched against the
       // contents of first available:
       // /proc/device-tree/firmware/chromeos/readonly-firmware-version

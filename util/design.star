@@ -124,11 +124,10 @@ def _append_configs(
         nnpalm: A NnpalmConfig to be used in the SoftwareConfig.
         ui: A UiConfig to be used in the SoftwareConfig.
         usb: UsbConfig to be used in the SoftwareConfig.
-        device_tree_compatible_match: For ARM platform, a str used for
-            device_tree_compatible_match in IdentityScanConfig.
-        smbios_name_match_override: For x86 platform, a str used for
-            smbios_name_match in IdentityScanConfig. If not specified,
-            the string in DesignId is used.
+        device_tree_compatible_match: Deprecated and traslated to FRID.
+            ("google,name" -> "Google_Name").
+        smbios_name_match_override: Deprecated and translated to FRID.
+            ("Name" -> "Google_Name").
         frid: String which must match the AP firmware FRID (first part before the
             period) in order for the config to match.  Leaving this value unset
             will cause the config to match any FRID.
@@ -174,13 +173,19 @@ def _append_configs(
             frid_candidate = firmware_build_config.build_targets.coreboot
             if not frid_candidate:
                 frid_candidate = design_id.value
-            sw_config.id_scan_config.frid = "Google_%s" % frid_candidate.title()
-        else:
-            sw_config.id_scan_config.frid = frid
+            frid = "Google_%s" % frid_candidate.title()
     elif device_tree_compatible_match:
-        sw_config.id_scan_config.device_tree_compatible_match = device_tree_compatible_match
+        _, _, firmware_name = device_tree_compatible_match.partition(",")
+        frid = "Google_%s" % firmware_name.title()
+        print("WARNING: device_tree_compatible_match is no longer supported.  " +
+              "Changing %r to a FRID match of %r" % (device_tree_compatible_match, frid))
     else:
-        sw_config.id_scan_config.smbios_name_match = smbios_name_match_override or design_id.value
+        smbios_name_match = smbios_name_match_override or design_id.value
+        frid = "Google_%s" % smbios_name_match
+        print("WARNING: smbios_name_match is no longer supported.  " +
+              "Changing %r to a FRID match of %r" % (smbios_name_match, frid))
+
+    sw_config.id_scan_config.frid = frid
 
     sw_config.id_scan_config.firmware_sku = config_id
     sw_config.firmware = firmware

@@ -540,13 +540,6 @@ def merge_model(config_bundle, design_config, model):
   if 'frid' in identity:
     sw_config.id_scan_config.frid = identity['frid']
 
-  if 'smbios-name-match' in identity:
-    sw_config.id_scan_config.smbios_name_match = identity['smbios-name-match']
-
-  if 'device-tree-compatible-match' in identity:
-    sw_config.id_scan_config.device_tree_compatible_match = \
-       identity['device-tree-compatible-match']
-
   merge_firmware_config(sw_config, model)
   merge_bluetooth_config(sw_config, model)
   merge_power_config(sw_config, model)

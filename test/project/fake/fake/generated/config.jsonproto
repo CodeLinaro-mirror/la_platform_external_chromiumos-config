@@ -7408,7 +7408,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 2147483647,
-        "smbiosNameMatch": "FAKE_REF_DESIGN"
+        "frid": "Google_FAKE_REF_DESIGN"
       },
       "nnpalmConfig": {
         "model": "alpha",
@@ -7616,7 +7616,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 32,
-        "smbiosNameMatch": "PROJECT_A"
+        "frid": "Google_PROJECT_A"
       },
       "powerConfig": {
         "preferences": {
@@ -7967,7 +7967,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 33,
-        "smbiosNameMatch": "PROJECT_B"
+        "frid": "Google_PROJECT_B"
       },
       "powerConfig": {
         "preferences": {
@@ -8044,7 +8044,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 34,
-        "smbiosNameMatch": "PROJECT_B"
+        "frid": "Google_PROJECT_B"
       },
       "powerConfig": {
         "preferences": {
@@ -8121,7 +8121,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 35,
-        "smbiosNameMatch": "PROJECT_B"
+        "frid": "Google_PROJECT_B"
       },
       "powerConfig": {
         "preferences": {
@@ -8192,7 +8192,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 34,
-        "smbiosNameMatch": "PROJECT_C"
+        "frid": "Google_PROJECT_C"
       },
       "powerConfig": {
         "preferences": {
@@ -8303,7 +8303,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 64,
-        "smbiosNameMatch": "PROJECT_WL"
+        "frid": "Google_PROJECT_WL"
       },
       "powerConfig": {
         "preferences": {
@@ -8366,7 +8366,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 65,
-        "smbiosNameMatch": "PROJECT_REBRAND"
+        "frid": "Google_PROJECT_REBRAND"
       },
       "powerConfig": {
         "preferences": {
@@ -8432,7 +8432,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 128,
-        "smbiosNameMatch": "PROJECT_BOX"
+        "frid": "Google_PROJECT_BOX"
       },
       "powerConfig": {
         "preferences": {
@@ -8498,7 +8498,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 129,
-        "smbiosNameMatch": "PROJECT_BOX"
+        "frid": "Google_PROJECT_BOX"
       },
       "powerConfig": {
         "preferences": {
@@ -8564,7 +8564,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 130,
-        "smbiosNameMatch": "PROJECT_BOX"
+        "frid": "Google_PROJECT_BOX"
       },
       "powerConfig": {
         "preferences": {

@@ -345,7 +345,38 @@
     }
   },
   "product_sku": {
-    "FAKE_REF_DESIGN": {
+    "fake_ref_design": {
+      "0": {
+        "component.fingerprint_board": "",
+        "component.has_daughter_board_usb_c": 0,
+        "component.has_fingerprint": false,
+        "component.has_keyboard_backlight": true,
+        "component.has_numeric_pad": true,
+        "component.has_rear_camera": true,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            2
+          ],
+          [
+            "touchscreen",
+            "==",
+            1
+          ],
+          [
+            "usb_host",
+            "==",
+            2
+          ],
+          [
+            "stylus",
+            "==",
+            1
+          ]
+        ],
+        "fw_config": 90880
+      },
       "2147483647": {
         "component.fingerprint_board": "fake_fingerprint_board",
         "component.has_daughter_board_usb_c": 1,
@@ -378,15 +409,15 @@
         "fw_config": 90913
       }
     },
-    "PROJECT_A": {
+    "project_a": {
       "32": {}
     },
-    "PROJECT_B": {
+    "project_b": {
       "33": {},
       "34": {},
       "35": {}
     },
-    "PROJECT_BOX": {
+    "project_box": {
       "128": {
         "component.has_base_accelerometer": true,
         "component.has_base_gyroscope": true,
@@ -412,47 +443,14 @@
         "fw_config": 90113
       }
     },
-    "PROJECT_C": {
+    "project_c": {
       "34": {}
     },
-    "PROJECT_REBRAND": {
+    "project_rebrand": {
       "65": {}
     },
-    "PROJECT_WL": {
+    "project_wl": {
       "64": {}
-    },
-    "fake_ref_design": {
-      "0": {
-        "component.fingerprint_board": "",
-        "component.has_daughter_board_usb_c": 0,
-        "component.has_fingerprint": false,
-        "component.has_keyboard_backlight": true,
-        "component.has_numeric_pad": true,
-        "component.has_rear_camera": true,
-        "component.match_sku_components": [
-          [
-            "camera",
-            "==",
-            2
-          ],
-          [
-            "touchscreen",
-            "==",
-            1
-          ],
-          [
-            "usb_host",
-            "==",
-            2
-          ],
-          [
-            "stylus",
-            "==",
-            1
-          ]
-        ],
-        "fw_config": 90880
-      }
     }
   }
 }

@@ -148,7 +148,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 2147483647,
-        "smbiosNameMatch": "FAKE_REF_DESIGN"
+        "frid": "Google_FAKE_REF_DESIGN"
       }
     },
     {
@@ -170,7 +170,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 32,
-        "smbiosNameMatch": "PROJECT_A"
+        "frid": "Google_PROJECT_A"
       }
     },
     {
@@ -179,7 +179,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 33,
-        "smbiosNameMatch": "PROJECT_B"
+        "frid": "Google_PROJECT_B"
       }
     },
     {
@@ -188,7 +188,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 34,
-        "smbiosNameMatch": "PROJECT_B"
+        "frid": "Google_PROJECT_B"
       }
     },
     {
@@ -197,7 +197,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 35,
-        "smbiosNameMatch": "PROJECT_B"
+        "frid": "Google_PROJECT_B"
       }
     },
     {
@@ -206,7 +206,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 34,
-        "smbiosNameMatch": "PROJECT_C"
+        "frid": "Google_PROJECT_C"
       }
     },
     {
@@ -223,7 +223,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 64,
-        "smbiosNameMatch": "PROJECT_WL"
+        "frid": "Google_PROJECT_WL"
       }
     },
     {
@@ -232,7 +232,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 65,
-        "smbiosNameMatch": "PROJECT_REBRAND"
+        "frid": "Google_PROJECT_REBRAND"
       }
     },
     {
@@ -241,7 +241,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 128,
-        "smbiosNameMatch": "PROJECT_BOX"
+        "frid": "Google_PROJECT_BOX"
       }
     },
     {
@@ -250,7 +250,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 129,
-        "smbiosNameMatch": "PROJECT_BOX"
+        "frid": "Google_PROJECT_BOX"
       }
     },
     {
@@ -259,7 +259,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 130,
-        "smbiosNameMatch": "PROJECT_BOX"
+        "frid": "Google_PROJECT_BOX"
       }
     }
   ]

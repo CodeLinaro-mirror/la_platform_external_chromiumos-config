@@ -633,22 +633,6 @@
             {
               "field": [
                 {
-                  "jsonName": "smbiosNameMatch",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "smbios_name_match",
-                  "number": 1,
-                  "oneofIndex": 0,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "deviceTreeCompatibleMatch",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "device_tree_compatible_match",
-                  "number": 2,
-                  "oneofIndex": 0,
-                  "type": "TYPE_STRING"
-                },
-                {
                   "jsonName": "frid",
                   "label": "LABEL_OPTIONAL",
                   "name": "frid",
@@ -668,6 +652,20 @@
               "oneofDecl": [
                 {
                   "name": "firmware_name_match"
+                }
+              ],
+              "reservedName": [
+                "smbios_name_match",
+                "device_tree_compatible_match"
+              ],
+              "reservedRange": [
+                {
+                  "end": 2,
+                  "start": 1
+                },
+                {
+                  "end": 3,
+                  "start": 2
                 }
               ]
             }
