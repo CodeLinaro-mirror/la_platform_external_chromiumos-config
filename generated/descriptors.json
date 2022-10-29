@@ -17156,6 +17156,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestHarness.Gtest"
+            },
+            {
+              "jsonName": "mobly",
+              "label": "LABEL_OPTIONAL",
+              "name": "mobly",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Mobly"
             }
           ],
           "name": "TestHarness",
@@ -17180,6 +17189,9 @@
                 }
               ],
               "name": "Gtest"
+            },
+            {
+              "name": "Mobly"
             }
           ],
           "oneofDecl": [
@@ -19715,99 +19727,14 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/api/coverage_rule.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.v1.HWTestPlan.TestPlanId"
-            },
-            {
-              "jsonName": "coverageRules",
-              "label": "LABEL_REPEATED",
-              "name": "coverage_rules",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CoverageRule"
-            }
-          ],
-          "name": "HWTestPlan",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "TestPlanId"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.v1.VMTestPlan.TestPlanId"
-            },
-            {
-              "jsonName": "coverageRules",
-              "label": "LABEL_REPEATED",
-              "name": "coverage_rules",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CoverageRule"
-            }
-          ],
-          "name": "VMTestPlan",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "TestPlanId"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/api/v1/plan.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1"
-      },
-      "package": "chromiumos.test.api.v1",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
         "chromiumos/storage_path.proto",
         "chromiumos/test/api/provision_state.proto",
         "chromiumos/test/api/test_case_metadata.proto",
         "chromiumos/test/api/test_case_result.proto",
-        "chromiumos/test/api/v1/plan.proto",
-        "chromiumos/test/lab/api/dut.proto"
+        "chromiumos/test/api/test_harness.proto",
+        "chromiumos/test/lab/api/dut.proto",
+        "google/protobuf/duration.proto",
+        "google/protobuf/timestamp.proto"
       ],
       "messageType": [
         {
@@ -19841,10 +19768,18 @@
         {
           "field": [
             {
+              "jsonName": "testEnvironment",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_environment",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TestEnvironment"
+            },
+            {
               "jsonName": "dutTopology",
               "label": "LABEL_OPTIONAL",
               "name": "dut_topology",
-              "number": 1,
+              "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.DutTopology"
             },
@@ -19852,7 +19787,7 @@
               "jsonName": "primaryExecutionInfo",
               "label": "LABEL_OPTIONAL",
               "name": "primary_execution_info",
-              "number": 2,
+              "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.ExecutionInfo"
             },
@@ -19860,12 +19795,94 @@
               "jsonName": "secondaryExecutionsInfo",
               "label": "LABEL_REPEATED",
               "name": "secondary_executions_info",
-              "number": 3,
+              "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.ExecutionInfo"
+            },
+            {
+              "jsonName": "schedulingMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "scheduling_metadata",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.SchedulingMetadata"
+            },
+            {
+              "jsonName": "tags",
+              "label": "LABEL_REPEATED",
+              "name": "tags",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TestInvocation.TagsEntry"
             }
           ],
-          "name": "TestInvocation"
+          "name": "TestInvocation",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TagsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TestEnvironment.Id"
+            },
+            {
+              "jsonName": "ancestorIds",
+              "label": "LABEL_REPEATED",
+              "name": "ancestor_ids",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TestEnvironment.Id"
+            }
+          ],
+          "name": "TestEnvironment",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "id",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "id",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "name",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "name",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            }
+          ]
         },
         {
           "field": [
@@ -19894,15 +19911,63 @@
               "typeName": ".chromiumos.test.artifact.CustomResult"
             },
             {
-              "jsonName": "testPlanId",
+              "jsonName": "timeInfo",
               "label": "LABEL_OPTIONAL",
-              "name": "test_plan_id",
+              "name": "time_info",
               "number": 4,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.v1.HWTestPlan.TestPlanId"
+              "typeName": ".chromiumos.test.artifact.TimingInfo"
+            },
+            {
+              "jsonName": "testHarness",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_harness",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness"
+            },
+            {
+              "jsonName": "executionMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "execution_metadata",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.ExecutionMetadata"
+            },
+            {
+              "jsonName": "tags",
+              "label": "LABEL_REPEATED",
+              "name": "tags",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TestRun.TagsEntry"
             }
           ],
-          "name": "TestRun"
+          "name": "TestRun",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TagsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "field": [
@@ -19934,6 +19999,34 @@
               "label": "LABEL_OPTIONAL",
               "name": "suite",
               "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "branch",
+              "label": "LABEL_OPTIONAL",
+              "name": "branch",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "mainBuilderName",
+              "label": "LABEL_OPTIONAL",
+              "name": "main_builder_name",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "requester",
+              "label": "LABEL_OPTIONAL",
+              "name": "requester",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "contacts",
+              "label": "LABEL_REPEATED",
+              "name": "contacts",
+              "number": 8,
               "type": "TYPE_STRING"
             }
           ],
@@ -19996,9 +20089,225 @@
               "name": "board",
               "number": 8,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "buildMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_metadata",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata"
             }
           ],
           "name": "BuildInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "arc",
+              "label": "LABEL_OPTIONAL",
+              "name": "arc",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.Arc"
+            },
+            {
+              "jsonName": "chrome",
+              "label": "LABEL_OPTIONAL",
+              "name": "chrome",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.Chrome"
+            },
+            {
+              "jsonName": "chromeOs",
+              "label": "LABEL_OPTIONAL",
+              "name": "chrome_os",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.ChromeOs"
+            },
+            {
+              "jsonName": "firmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.Firmware"
+            },
+            {
+              "jsonName": "kernel",
+              "label": "LABEL_OPTIONAL",
+              "name": "kernel",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.Kernel"
+            },
+            {
+              "jsonName": "sku",
+              "label": "LABEL_OPTIONAL",
+              "name": "sku",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.Sku"
+            },
+            {
+              "jsonName": "chipset",
+              "label": "LABEL_OPTIONAL",
+              "name": "chipset",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.Chipset"
+            },
+            {
+              "jsonName": "cellular",
+              "label": "LABEL_OPTIONAL",
+              "name": "cellular",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.Cellular"
+            },
+            {
+              "jsonName": "lacros",
+              "label": "LABEL_OPTIONAL",
+              "name": "lacros",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.Lacros"
+            }
+          ],
+          "name": "BuildMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "version",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "branch",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "branch",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Arc"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "version",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Chrome"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "version",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ChromeOs"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "roVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ro_version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "rwVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "rw_version",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Firmware"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "version",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Kernel"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "hwidSku",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hwid_sku",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Sku"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "wifiChip",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wifi_chip",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Chipset"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "carrier",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "carrier",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Cellular"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "ashVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ash_version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "lacrosVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "lacros_version",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Lacros"
+            }
+          ]
         },
         {
           "field": [
@@ -20056,6 +20365,106 @@
         {
           "field": [
             {
+              "jsonName": "drone",
+              "label": "LABEL_OPTIONAL",
+              "name": "drone",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "droneImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "drone_image",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "droneServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "drone_server",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DroneInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "taskId",
+              "label": "LABEL_OPTIONAL",
+              "name": "task_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "suiteTaskId",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite_task_id",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "jobName",
+              "label": "LABEL_OPTIONAL",
+              "name": "job_name",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pool",
+              "label": "LABEL_OPTIONAL",
+              "name": "pool",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "labelPool",
+              "label": "LABEL_OPTIONAL",
+              "name": "label_pool",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SwarmingInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "droneInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "drone_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DroneInfo"
+            },
+            {
+              "jsonName": "swarmingInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "swarming_info",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.SwarmingInfo"
+            }
+          ],
+          "name": "SkylabInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "swarmingInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "swarming_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.SwarmingInfo"
+            }
+          ],
+          "name": "SatlabInfo"
+        },
+        {
+          "field": [
+            {
               "jsonName": "buildInfo",
               "label": "LABEL_OPTIONAL",
               "name": "build_info",
@@ -20070,9 +20479,32 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.DutInfo"
+            },
+            {
+              "jsonName": "skylabInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "skylab_info",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.SkylabInfo"
+            },
+            {
+              "jsonName": "satlabInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "satlab_info",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.SatlabInfo"
             }
           ],
-          "name": "ExecutionInfo"
+          "name": "ExecutionInfo",
+          "oneofDecl": [
+            {
+              "name": "env_info"
+            }
+          ]
         },
         {
           "field": [
@@ -20103,6 +20535,177 @@
           "oneofDecl": [
             {
               "name": "type"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "queuedTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "queued_time",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "startedTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "started_time",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "duration",
+              "label": "LABEL_OPTIONAL",
+              "name": "duration",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            }
+          ],
+          "name": "TimingInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hardwareDependencies",
+              "label": "LABEL_REPEATED",
+              "name": "hardware_dependencies",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.SchedulingMetadata.HardwareDependenciesEntry"
+            },
+            {
+              "jsonName": "schedulingArgs",
+              "label": "LABEL_REPEATED",
+              "name": "scheduling_args",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.SchedulingMetadata.SchedulingArgsEntry"
+            },
+            {
+              "jsonName": "timeInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "time_info",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.TimingInfo"
+            }
+          ],
+          "name": "SchedulingMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "HardwareDependenciesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "SchedulingArgsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "softwareDependencies",
+              "label": "LABEL_REPEATED",
+              "name": "software_dependencies",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.ExecutionMetadata.SoftwareDependenciesEntry"
+            },
+            {
+              "jsonName": "testArgs",
+              "label": "LABEL_REPEATED",
+              "name": "test_args",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.ExecutionMetadata.TestArgsEntry"
+            }
+          ],
+          "name": "ExecutionMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "SoftwareDependenciesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TestArgsEntry",
+              "options": {
+                "mapEntry": true
+              }
             }
           ]
         }
@@ -21353,6 +21956,93 @@
           "name": "TestLibsService"
         }
       ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/coverage_rule.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.v1.HWTestPlan.TestPlanId"
+            },
+            {
+              "jsonName": "coverageRules",
+              "label": "LABEL_REPEATED",
+              "name": "coverage_rules",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CoverageRule"
+            }
+          ],
+          "name": "HWTestPlan",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TestPlanId"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.v1.VMTestPlan.TestPlanId"
+            },
+            {
+              "jsonName": "coverageRules",
+              "label": "LABEL_REPEATED",
+              "name": "coverage_rules",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CoverageRule"
+            }
+          ],
+          "name": "VMTestPlan",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "TestPlanId"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/v1/plan.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1"
+      },
+      "package": "chromiumos.test.api.v1",
       "syntax": "proto3"
     },
     {

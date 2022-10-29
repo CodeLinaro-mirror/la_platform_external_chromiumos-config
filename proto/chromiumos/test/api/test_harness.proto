@@ -17,6 +17,7 @@ message TestHarness {
     Tauto tauto = 2;
     Tast tast = 3;
     Gtest gtest = 4;
+    Mobly mobly = 5;
   }
 
   message Manual {}
@@ -26,4 +27,5 @@ message TestHarness {
     // Location of the test binary on the DUT
     string target_bin_location = 1;
   }
+  message Mobly {}
 }

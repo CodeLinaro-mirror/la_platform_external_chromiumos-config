@@ -6,14 +6,16 @@ syntax = "proto3";
 
 package chromiumos.test.artifact;
 
-option go_package = "go.chromium.org/chromiumos/config/go/test/artifact";
-
 import "chromiumos/storage_path.proto";
 import "chromiumos/test/api/provision_state.proto";
 import "chromiumos/test/api/test_case_metadata.proto";
 import "chromiumos/test/api/test_case_result.proto";
-import "chromiumos/test/api/v1/plan.proto";
+import "chromiumos/test/api/test_harness.proto";
 import "chromiumos/test/lab/api/dut.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/artifact";
 
 // Captures rich information for test results.
 // NEXT TAG: 4
@@ -29,8 +31,11 @@ message TestResult {
 }
 
 // Captures invocation-level information for test results.
-// NEXT TAG: 4
+// NEXT TAG: 7
 message TestInvocation {
+  // The test environment specific information.
+  TestEnvironment test_environment = 1;
+
   // The topology of the connected devices under test. The DUT topology
   // represents the hardware specs of devices and includes a full list of
   // available DUTs of a given schedule-able unit (e.g. swarming bot) from
@@ -42,7 +47,7 @@ message TestInvocation {
   // to run tests. In addition, only those DUT that are used for testing will
   // have provision info and build info. Refer to ExecutionInfo fields for
   // detailed test execution info of DUTs.
-  chromiumos.test.lab.api.DutTopology dut_topology = 1;
+  chromiumos.test.lab.api.DutTopology dut_topology = 2;
 
   // The execution information for the test run that consists of software
   // information (e.g. build) and hardware information (e.g. DUT).
@@ -53,14 +58,55 @@ message TestInvocation {
   // more secondary DUTs.
   //
   // Test execution related information for the primary DUT.
-  ExecutionInfo primary_execution_info = 2;
+  ExecutionInfo primary_execution_info = 3;
 
   // Test execution related information for the secondary DUTs.
-  repeated ExecutionInfo secondary_executions_info = 3;
+  repeated ExecutionInfo secondary_executions_info = 4;
+
+  // The metadata required to schedule the test(s) within the same test
+  // invocation.
+  SchedulingMetadata scheduling_metadata = 5;
+
+  // For added flexibility, additional key value pairs could be added and
+  // associated with the given test invocation as needed.
+  map<string, string> tags = 6;
+}
+
+// Captures the test environment that produced the test invocation,
+// e.g. internal labs via buildbucket, partner labs via Satlab for Partner,
+// local LED testing via swarming.
+// NEXT TAG: 3
+message TestEnvironment {
+  // Unique identifier for the test environment that produced results in this
+  // invocation.
+  // NEXT TAG: 3
+  message Id {
+    // The unique id of the test environment that produced results in this
+    // invocation.
+    // Example: buildbucket id: "8799081636806167121".
+    string id = 1;
+
+    // The full name of the test environment that produced results in this
+    // invocation. See also https://aip.dev/122#full-resource-names
+    // e.g.
+    // - Swarming task:
+    // "//chromeos-swarming.appspot.com//tasks/5e91083c29fc0810"
+    // - Buildbucket build:
+    // "//cr-buildbucket.appspot.com/builds/8799081636806167121".
+    string name = 2;
+  }
+
+  // The unique id of the test environment that produced results in this
+  // invocation.
+  Id id = 1;
+
+  // All the ancestor ids of this test environment. The order represents the
+  // relationship of the ancestors and the first one is the root.
+  repeated Id ancestor_ids = 2;
 }
 
 // Captures information regarding a test run.
-// NEXT TAG: 5
+// NEXT TAG: 8
 message TestRun {
   // Test case information for the test result.
   TestCaseInfo test_case_info = 1;
@@ -72,12 +118,22 @@ message TestRun {
   // List of additional custom results.
   repeated CustomResult custom_results = 3;
 
-  // Test plan id associated with the test result.
-  chromiumos.test.api.v1.HWTestPlan.TestPlanId test_plan_id = 4;
+  // The timing information of the test run.
+  TimingInfo time_info = 4;
+
+  // Test harness that the test belongs to.
+  chromiumos.test.api.TestHarness test_harness = 5;
+
+  // The metadata required to execute the test run.
+  ExecutionMetadata execution_metadata = 6;
+
+  // For added flexibility, additional key value pairs could be added and
+  // associated with the given test run as needed.
+  map<string, string> tags = 7;
 }
 
 // Captures test case information associated with a test run.
-// NEXT TAG: 5
+// NEXT TAG: 9
 message TestCaseInfo {
   // Metadata related to test case and execution context.
   chromiumos.test.api.TestCaseMetadata test_case_metadata = 1;
@@ -92,12 +148,26 @@ message TestCaseInfo {
   // Test suite name.
   // Example: "crosbolt_perf_perbuild"
   string suite = 4;
+
+  // The branch name.
+  // Example: main
+  string branch = 5;
+
+  // The main builder name.
+  // Example: main-release
+  string main_builder_name = 6;
+
+  // The requester who triggered the test run.
+  string requester = 7;
+
+  // List of email addresses to contact in case of test failures.
+  repeated string contacts = 8;
 }
 
 // Captures ChromeOS build information associated with a test run.
-// NEXT TAG: 9
+// NEXT TAG: 10
 message BuildInfo {
-  // The name associated with a given build.
+  // The name associated with a given build, e.g. image name.
   // Format: "<source>/R<milestone>-<chrome_os_version>[.<additional_suffix>]"
   // Example: "drallion-cq/R106-15048.0.0-69541-8805781873765277729"
   string name = 1;
@@ -129,6 +199,90 @@ message BuildInfo {
   // The plain board name associated with the given build.
   // Example: "grunt".
   string board = 8;
+
+  // The build metadata associated with a test run.
+  BuildMetadata build_metadata = 9;
+}
+
+// The complete build metadata of the test case.
+// NEXT TAG: 10
+message BuildMetadata {
+  // ARC++ metadata
+  message Arc {
+    // The ARC++ version associated with the build.
+    string version = 1;
+
+    // The particular ARC++ branch associated with the build.
+    string branch = 2;
+  }
+
+  Arc arc = 1;
+
+  // Chrome metadata
+  message Chrome {
+    string version = 1;
+  }
+
+  Chrome chrome = 2;
+
+  message ChromeOs {
+    string version = 1;
+  }
+
+  // Chrome OS metadata
+  ChromeOs chrome_os = 3;
+
+  // Firmware metadata
+  message Firmware {
+    // Read-only firmware version, e.g. "Google_Voema.13672.224.0".
+    string ro_version = 1;
+    // Read-write firmware version, e.g. "Google_Voema.13672.224.0".
+    string rw_version = 2;
+  }
+
+  Firmware firmware = 4;
+
+  // Kernel metadata
+  message Kernel {
+    // Kernel version, e.g. "5.4.151-16902-g93699f4e73de".
+    string version = 1;
+  }
+
+  Kernel kernel = 5;
+
+  // SKU metadata
+  message Sku {
+    string hwid_sku = 1;
+  }
+
+  Sku sku = 6;
+
+  // The Chip set metadata
+  message Chipset {
+    // Wifi chip info, e.g. "marvell".
+    string wifi_chip = 1;
+  }
+
+  Chipset chipset = 7;
+
+  // ChromeOS cellular metadata
+  message Cellular {
+    // Carrier info, e.g. "CARRIER_ESIM"
+    string carrier = 1;
+  }
+
+  Cellular cellular = 8;
+
+  // Lacros metadata
+  message Lacros {
+    // Ash Chrome browser version, e.g. "109.0.5391.0".
+    string ash_version = 1;
+
+    // Lacros browser version, e.g. "109.0.5391.0".
+    string lacros_version = 2;
+  }
+
+  Lacros lacros = 9;
 }
 
 // Captures DUT related info.
@@ -146,14 +300,80 @@ message DutInfo {
   map<string, string> tags = 3;
 }
 
-// Captures test execution related information for the test run.
+// Captures Drone related info.
+// NEXT TAG: 4
+message DroneInfo {
+  // The UUID assigned to the drone.
+  // Example: "skylab-drone-deployment-prod-6dc79d4f9-czjlj"
+  string drone = 1;
+
+  // The image installed in the drone.
+  // Example: "gcr.io/chromeos-drone-images/drone:20221110T150226-chromeos-test"
+  string drone_image = 2;
+
+  // The drone server id.
+  // Example: "kube20-e"
+  string drone_server = 3;
+}
+
+// Captures the Swarming task related info.
+// NEXT TAG: 6
+message SwarmingInfo {
+  // The Swarming task id.
+  // Example: "59f0e13fe7af0710"
+  string task_id = 1;
+
+  // The parent's swarming task id.
+  // Example: "59ef5e9532bbd611"
+  string suite_task_id = 2;
+
+  // The swarming task name (swarming request name).
+  // Example: "bb-8818737803155059937-chromeos/general/Full"
+  string job_name = 3;
+
+  // Device pool, an optional dimension to Swarming, which is used only by
+  // ChromeOS.
+  // Example: "ChromeOSSkylab"
+  string pool = 4;
+
+  // A pool dimension for swarming task scheduling.
+  // Example: "DUT_POOL_QUOTA"
+  string label_pool = 5;
+}
+
+// Captures Skylab related info.
 // NEXT TAG: 3
+message SkylabInfo {
+  // Drone info associated with the test run.
+  DroneInfo drone_info = 1;
+
+  // Swarming task associated with the test run. Mainly populated for tests
+  // running in the internal managed labs.
+  SwarmingInfo swarming_info = 2;
+}
+
+// Captures Satlab related info.
+// NEXT TAG: 2
+message SatlabInfo {
+  // Swarming task associated with the test run. Mainly populated for tests
+  // running in the internal managed labs.
+  SwarmingInfo swarming_info = 1;
+}
+
+// Captures test execution related information for the test run.
+// NEXT TAG: 5
 message ExecutionInfo {
   // ChromeOS build associated with the test run.
   BuildInfo build_info = 1;
 
   // DUT associated with the test run.
   DutInfo dut_info = 2;
+
+  // Execution architecture specific information.
+  oneof env_info {
+    SkylabInfo skylab_info = 3;
+    SatlabInfo satlab_info = 4;
+  }
 }
 
 // Represents custom result, as a way for tests to produce arbitrary artifacts.
@@ -173,4 +393,56 @@ message CustomResult {
   message Cts {
     // TODO: Add fields as needed.
   }
+}
+
+// Captures the timing information.
+// NEXT TAG: 4
+message TimingInfo {
+  // The time when the execution was created and pending in queue.
+  google.protobuf.Timestamp queued_time = 1;
+
+  // The time when the execution started to execute.
+  google.protobuf.Timestamp started_time = 2;
+
+  // Duration of the execution.
+  google.protobuf.Duration duration = 3;
+}
+
+// Metadata associated with the scheduling of the test. The scheduling metadata
+// are mainly related to the hardware aspect.
+// NEXT TAG: 4
+message SchedulingMetadata {
+  // HardwareAttributes defines the hardware-bound characteristics of the
+  // devices to run tests on.
+  map<string, string> hardware_dependencies = 1;
+
+  // Captures scheduling arguments that affect how the tests in this request are
+  // prioritized relative to other requests, and how capacity for them is
+  // allocated,
+  // e.g. Scheduling field in
+  // "go.chromium.org/chromiumos/infra/proto/go/test_platform/request.proto".
+  map<string, string> scheduling_args = 2;
+
+  // The timing information of the scheduling task,
+  // e.g. fast, slow, extendedtimeout, ordering etc.
+  TimingInfo time_info = 3;
+}
+
+// Metadata associated with the test execution. The execution metadata are
+// mainly related to the software respect.
+// NEXT TAG: 3
+message ExecutionMetadata {
+  // List of software dependencies needed to be installed onto the DUT for the
+  // particular Test Case,
+  // e.g. provisioning requirements, additional supplemental files to download.
+  //
+  // Aligned with the SoftwareDependency in
+  // "go.chromium.org/chromiumos/infra/proto/go/test_platform/request.proto".
+  map<string, string> software_dependencies = 1;
+
+  // Captures the command and arguments used to run the particular Test Case.
+  // This could be at the Test Invocation level which would be propagated to
+  // each of the Test Case that’s contained by the Test Invocation. This is
+  // useful for retrying or rerunning the test again if needed.
+  map<string, string> test_args = 2;
 }
