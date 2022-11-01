@@ -19221,6 +19221,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Criteria"
+            },
+            {
+              "jsonName": "hwAgnostic",
+              "label": "LABEL_OPTIONAL",
+              "name": "hw_agnostic",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HwAgnostic"
             }
           ],
           "name": "TestCaseInfo"
@@ -19272,6 +19280,18 @@
             }
           ],
           "name": "Criteria"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "HwAgnostic"
         },
         {
           "field": [

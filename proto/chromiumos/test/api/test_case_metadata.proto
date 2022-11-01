@@ -32,6 +32,7 @@ message TestCaseInfo {
   repeated Requirement requirements = 2;
   BugComponent bug_component = 3;
   Criteria criteria = 4;
+  HwAgnostic hw_agnostic = 5;
 }
 
 // Contact information of individuals or teams.
@@ -53,6 +54,11 @@ message BugComponent {
 // A brief description of the test case.
 message Criteria {
   string value = 1;
+}
+
+// Specifies if a test can be run on VM or not.
+message HwAgnostic {
+  bool value = 1;
 }
 
 // A list of TestCaseMetadata for ease of serialization into a file.
