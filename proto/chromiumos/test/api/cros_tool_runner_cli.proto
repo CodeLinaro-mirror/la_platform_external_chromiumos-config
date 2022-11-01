@@ -8,6 +8,7 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
+import "google/protobuf/any.proto";
 import "chromiumos/test/api/provision_state.proto";
 import "chromiumos/test/api/cros_provision_cli.proto";
 import "chromiumos/test/api/test_case_result.proto";
@@ -61,11 +62,14 @@ message CrosToolRunnerTestRequest {
   chromiumos.test.lab.api.IpEndpoint inventory_server = 4;
   // The path of directory that will store all the cros-test artifacts.
   string artifact_dir = 5 ;
+  // Test harness specific metadata
+  google.protobuf.Any metadata = 6;
 }
 
 // CrosToolRunnerTestResponse includes all test results.
 message CrosToolRunnerTestResponse {
   repeated TestCaseResult test_case_results = 1;
+  google.protobuf.Any metadata = 2;
 }
 
 // CrosToolRunnerTestFinderRequest specifies a list of test suites

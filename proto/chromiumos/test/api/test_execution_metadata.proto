@@ -1,0 +1,20 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+message AutotestExecutionMetadata {
+    message Arg {
+        // The name of the autotest argument
+        string flag = 1;
+        // The value of the autotest argument
+        string value = 2;
+    }
+    // Custom arguments passed into the autotest test harness
+    repeated Arg args = 1;
+}
