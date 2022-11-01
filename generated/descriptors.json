@@ -17011,6 +17011,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/any.proto",
         "chromiumos/test/api/test_case_result.proto",
         "chromiumos/test/api/test_suite.proto",
         "chromiumos/test/lab/api/dut.proto",
@@ -17050,6 +17051,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
             }
           ],
           "name": "CrosTestRequest",
@@ -17102,6 +17111,14 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCaseResult"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
             }
           ],
           "name": "CrosTestResponse"
@@ -17288,6 +17305,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/any.proto",
         "chromiumos/test/api/provision_state.proto",
         "chromiumos/test/api/cros_provision_cli.proto",
         "chromiumos/test/api/test_case_result.proto",
@@ -17407,6 +17425,14 @@
               "name": "artifact_dir",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
             }
           ],
           "name": "CrosToolRunnerTestRequest",
@@ -17442,6 +17468,14 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCaseResult"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
             }
           ],
           "name": "CrosToolRunnerTestResponse"
@@ -20735,6 +20769,54 @@
           "name": "ServodService"
         }
       ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AutotestExecutionMetadata.Arg"
+            }
+          ],
+          "name": "AutotestExecutionMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "flag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "flag",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Arg"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/test_execution_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
       "syntax": "proto3"
     },
     {
