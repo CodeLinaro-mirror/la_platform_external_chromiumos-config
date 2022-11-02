@@ -4297,11 +4297,86 @@
                       "label": "LABEL_OPTIONAL",
                       "name": "tablet_mode",
                       "number": 3,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "enableMultiPowerLevelSar",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "enable_multi_power_level_sar",
+                      "number": 4,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "enableDefaultProximityStateFar",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "enable_default_proximity_state_far",
+                      "number": 5,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "powerLevelMapping",
+                      "label": "LABEL_REPEATED",
+                      "name": "power_level_mapping",
+                      "number": 6,
                       "type": "TYPE_MESSAGE",
-                      "typeName": ".google.protobuf.BoolValue"
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.PowerLevelMappingEntry"
+                    },
+                    {
+                      "jsonName": "regulatoryDomainMapping",
+                      "label": "LABEL_REPEATED",
+                      "name": "regulatory_domain_mapping",
+                      "number": 7,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.RegulatoryDomainMappingEntry"
                     }
                   ],
                   "name": "DynamicPowerReductionConfig",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "key",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "key",
+                          "number": 1,
+                          "type": "TYPE_STRING"
+                        },
+                        {
+                          "jsonName": "value",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "value",
+                          "number": 2,
+                          "type": "TYPE_UINT32"
+                        }
+                      ],
+                      "name": "PowerLevelMappingEntry",
+                      "options": {
+                        "mapEntry": true
+                      }
+                    },
+                    {
+                      "field": [
+                        {
+                          "jsonName": "key",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "key",
+                          "number": 1,
+                          "type": "TYPE_STRING"
+                        },
+                        {
+                          "jsonName": "value",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "value",
+                          "number": 2,
+                          "type": "TYPE_UINT32"
+                        }
+                      ],
+                      "name": "RegulatoryDomainMappingEntry",
+                      "options": {
+                        "mapEntry": true
+                      }
+                    }
+                  ],
                   "oneofDecl": [
                     {
                       "name": "dynamic_power_reduction_config"

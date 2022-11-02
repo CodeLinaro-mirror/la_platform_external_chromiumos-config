@@ -1034,19 +1034,37 @@ def _create_cellular_board(
 def _make_cellular_dynamic_power_reduction_config(
         gpio = None,
         modem_manager = False,
-        tablet_mode = None):
+        tablet_mode = False,
+        multi_power_level_sar = False,
+        default_proximity_state_far = False,
+        power_level_mapping = None,
+        regulatory_domain_mapping = None):
     """Builds a configuration for cellular dynamic power reduction."""
     config = _HW_FEAT.Cellular.DynamicPowerReductionConfig()
 
-    if gpio != None:
-        config.gpio = gpio
-    elif modem_manager:
+    if modem_manager and gpio != None:
+        fail("A Cellular.DynamicPowerReductionConfig supports either a GPIO or modem manager based power reduction.")
+
+    if modem_manager:
         config.modem_manager = True
+    elif gpio != None:
+        config.gpio = gpio
+        if (
+            multi_power_level_sar or
+            default_proximity_state_far or
+            power_level_mapping or
+            regulatory_domain_mapping
+        ):
+            fail("A Cellular.DynamicPowerReductionConfig does not support any customization in GPIO mode.")
     else:
         fail("A Cellular.DynamicPowerReductionConfig must configure a GPIO or the use of modem manager.")
 
-    if tablet_mode:
-        config.tablet_mode.value = tablet_mode
+    config.enable_multi_power_level_sar = multi_power_level_sar
+    config.enable_default_proximity_state_far = default_proximity_state_far
+    config.tablet_mode = tablet_mode
+    config.power_level_mapping = power_level_mapping
+    config.regulatory_domain_mapping = regulatory_domain_mapping
+
     return config
 
 def _create_sd_reader(id, description, fw_configs = []):

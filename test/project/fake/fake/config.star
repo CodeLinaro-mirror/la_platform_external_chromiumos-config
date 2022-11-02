@@ -309,12 +309,28 @@ _WIFI = hw_topo.create_wifi(
     "Default wifi",
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)],
 )
+_REGULATORY_DOMAIN_MAPPING = {
+    "ISED": 2,
+    "CE": 4,
+    "MIC": 4,
+}
+_POWER_LEVEL_MAPPING = {
+    "HIGH": 1,
+    "LOW": 2,
+}
 _LTE_BOARD = hw_topo.create_cellular_board(
     "LTE_BOARD",
     "Default cellular_board",
     present = True,
     type = hw_topo.cellular.CELLULAR_LTE,
-    dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(modem_manager = True),
+    dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(
+        modem_manager = True,
+        multi_power_level_sar = True,
+        default_proximity_state_far = True,
+        tablet_mode = True,
+        regulatory_domain_mapping = _REGULATORY_DOMAIN_MAPPING,
+        power_level_mapping = _POWER_LEVEL_MAPPING,
+    ),
 )
 _LTE_BOARD_WITH_MODEL = hw_topo.create_cellular_board(
     "LTE_BOARD_MODEL",

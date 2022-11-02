@@ -210,8 +210,17 @@ message HardwareFeatures {
         bool modem_manager = 2;
       }
       // Whether tablet mode should be a trigger for dynamic power reduction.
-      // If unset, the value will be true for convertibles.
-      google.protobuf.BoolValue tablet_mode = 3;
+      bool tablet_mode = 3;
+      // Whether multi level dynamic power reduction is enabled.
+      bool enable_multi_power_level_sar = 4;
+      // Whether we should set the initial proximity state to far.
+      bool enable_default_proximity_state_far = 5;
+      // Map of custom power level to modem index mapping.
+      // E.g. HIGH -> 1, LOW -> 2
+      map<string, uint32> power_level_mapping = 6;
+      // Map of regulatory domains and power level offset. 
+      // E.g. KCC -> 2
+      map<string, uint32> regulatory_domain_mapping = 7;
     }
   }
 
