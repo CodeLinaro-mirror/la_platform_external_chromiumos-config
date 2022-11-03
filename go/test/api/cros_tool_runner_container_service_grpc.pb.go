@@ -41,6 +41,9 @@ type CrosToolRunnerContainerServiceClient interface {
 	// The container will run in detached mode (-d); all exposed ports will be
 	// published to a random port on host (-P); and the container will be removed
 	// after it stops (--rm).
+	// StartContainer always returns a success response (for valid requests) as
+	// detached mode starts a container in the background. Clients may call
+	// GetContainer to verify the container has successfully started before use.
 	StartContainer(ctx context.Context, in *StartContainerRequest, opts ...grpc.CallOption) (*StartContainerResponse, error)
 	// Runs a docker container that has a template implemented. A template
 	// simplifies the data required in the request, and provides placeholders to
@@ -158,6 +161,9 @@ type CrosToolRunnerContainerServiceServer interface {
 	// The container will run in detached mode (-d); all exposed ports will be
 	// published to a random port on host (-P); and the container will be removed
 	// after it stops (--rm).
+	// StartContainer always returns a success response (for valid requests) as
+	// detached mode starts a container in the background. Clients may call
+	// GetContainer to verify the container has successfully started before use.
 	StartContainer(context.Context, *StartContainerRequest) (*StartContainerResponse, error)
 	// Runs a docker container that has a template implemented. A template
 	// simplifies the data required in the request, and provides placeholders to

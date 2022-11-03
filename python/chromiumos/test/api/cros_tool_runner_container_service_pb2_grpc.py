@@ -101,6 +101,9 @@ class CrosToolRunnerContainerServiceServicer(object):
         The container will run in detached mode (-d); all exposed ports will be
         published to a random port on host (-P); and the container will be removed
         after it stops (--rm).
+        StartContainer always returns a success response (for valid requests) as
+        detached mode starts a container in the background. Clients may call
+        GetContainer to verify the container has successfully started before use.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
