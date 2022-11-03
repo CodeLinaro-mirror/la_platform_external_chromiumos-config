@@ -83,6 +83,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -608,6 +609,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -898,6 +900,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -1121,6 +1124,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -1368,6 +1372,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -1601,6 +1606,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -1812,6 +1818,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -2010,6 +2017,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -2209,6 +2217,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -2408,6 +2417,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],
@@ -2620,6 +2630,7 @@
                 "support-1080p": false,
                 "support-autofocus": false
               },
+              "has-privacy-switch": false,
               "ids": [
                 "0123:abcd"
               ],

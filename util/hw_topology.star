@@ -667,7 +667,7 @@ def _make_camera_device(
     device.flags = flags
     device.ids = ids
 
-    if privacy_switch_present:
+    if privacy_switch_present != None:
         device.privacy_switch = _bool_to_present(privacy_switch_present)
 
     if microphone_count != None:

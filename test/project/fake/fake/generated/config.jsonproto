@@ -225,7 +225,8 @@
                   "microphoneCount": {
                     "value": 2
                   },
-                  "orientation": 1
+                  "orientation": 1,
+                  "privacySwitch": 2
                 }
               ]
             },
@@ -468,7 +469,8 @@
                       "microphoneCount": {
                         "value": 2
                       },
-                      "orientation": 1
+                      "orientation": 1,
+                      "privacySwitch": 2
                     }
                   ]
                 },
@@ -1441,7 +1443,8 @@
                   "microphoneCount": {
                     "value": 2
                   },
-                  "orientation": 1
+                  "orientation": 1,
+                  "privacySwitch": 2
                 }
               ]
             },
@@ -1660,7 +1663,8 @@
                       "microphoneCount": {
                         "value": 2
                       },
-                      "orientation": 1
+                      "orientation": 1,
+                      "privacySwitch": 2
                     }
                   ]
                 },
@@ -2049,7 +2053,8 @@
                   "microphoneCount": {
                     "value": 2
                   },
-                  "orientation": 1
+                  "orientation": 1,
+                  "privacySwitch": 2
                 }
               ]
             },
@@ -2249,7 +2254,8 @@
                       "microphoneCount": {
                         "value": 2
                       },
-                      "orientation": 1
+                      "orientation": 1,
+                      "privacySwitch": 2
                     }
                   ]
                 },
@@ -2592,7 +2598,8 @@
                   "microphoneCount": {
                     "value": 2
                   },
-                  "orientation": 1
+                  "orientation": 1,
+                  "privacySwitch": 2
                 }
               ]
             },
@@ -2816,7 +2823,8 @@
                       "microphoneCount": {
                         "value": 2
                       },
-                      "orientation": 1
+                      "orientation": 1,
+                      "privacySwitch": 2
                     }
                   ]
                 },
@@ -3183,7 +3191,8 @@
                   "microphoneCount": {
                     "value": 2
                   },
-                  "orientation": 1
+                  "orientation": 1,
+                  "privacySwitch": 2
                 }
               ]
             },
@@ -3399,7 +3408,8 @@
                       "microphoneCount": {
                         "value": 2
                       },
-                      "orientation": 1
+                      "orientation": 1,
+                      "privacySwitch": 2
                     }
                   ]
                 },
@@ -3773,7 +3783,8 @@
                   "microphoneCount": {
                     "value": 2
                   },
-                  "orientation": 1
+                  "orientation": 1,
+                  "privacySwitch": 2
                 }
               ]
             },
@@ -3985,7 +3996,8 @@
                       "microphoneCount": {
                         "value": 2
                       },
-                      "orientation": 1
+                      "orientation": 1,
+                      "privacySwitch": 2
                     }
                   ]
                 },
@@ -4342,7 +4354,8 @@
                   "microphoneCount": {
                     "value": 2
                   },
-                  "orientation": 1
+                  "orientation": 1,
+                  "privacySwitch": 2
                 }
               ]
             },
@@ -4713,7 +4726,8 @@
                       "microphoneCount": {
                         "value": 2
                       },
-                      "orientation": 1
+                      "orientation": 1,
+                      "privacySwitch": 2
                     }
                   ]
                 },
@@ -5245,7 +5259,8 @@
                   "microphoneCount": {
                     "value": 2
                   },
-                  "orientation": 1
+                  "orientation": 1,
+                  "privacySwitch": 2
                 }
               ]
             },
@@ -5412,7 +5427,8 @@
                       "microphoneCount": {
                         "value": 2
                       },
-                      "orientation": 1
+                      "orientation": 1,
+                      "privacySwitch": 2
                     }
                   ]
                 },
