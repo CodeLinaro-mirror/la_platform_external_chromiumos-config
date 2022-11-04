@@ -5361,6 +5361,14 @@
                   "number": 7,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "featureTabletModeAngle",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "feature_tablet_mode_angle",
+                  "number": 8,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "EmbeddedController"
