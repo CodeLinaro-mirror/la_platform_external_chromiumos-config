@@ -8,7 +8,6 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
-import "google/protobuf/any.proto";
 import "chromiumos/test/api/test_case_result.proto";
 import "chromiumos/test/api/test_suite.proto";
 import "chromiumos/test/lab/api/dut.proto";
@@ -35,11 +34,8 @@ message CrosTestRequest {
   repeated Device companions = 3;
   // Inventory Server address.
   chromiumos.test.lab.api.IpEndpoint inventory_server = 4;
-  // Test harness specific metadata
-  google.protobuf.Any metadata = 5;
 }
 
 message CrosTestResponse {
   repeated TestCaseResult test_case_results = 1;
-  google.protobuf.Any metadata = 2;
 }
