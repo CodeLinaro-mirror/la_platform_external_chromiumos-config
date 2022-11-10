@@ -14439,6 +14439,21 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "enumType": [
+        {
+          "name": "AndroidPackage",
+          "value": [
+            {
+              "name": "ANDROID_PACKAGE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "GMS_CORE",
+              "number": 1
+            }
+          ]
+        }
+      ],
       "messageType": [
         {
           "enumType": [
@@ -14578,7 +14593,7 @@
               "name": "architecture",
               "number": 1,
               "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.GMSCoreApk.Architecture"
+              "typeName": ".chromiumos.test.api.ApkDetails.Architecture"
             },
             {
               "jsonName": "buildType",
@@ -14586,7 +14601,7 @@
               "name": "build_type",
               "number": 2,
               "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.GMSCoreApk.BuildType"
+              "typeName": ".chromiumos.test.api.ApkDetails.BuildType"
             },
             {
               "jsonName": "buildPurpose",
@@ -14594,7 +14609,7 @@
               "name": "build_purpose",
               "number": 3,
               "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.GMSCoreApk.BuildPurpose"
+              "typeName": ".chromiumos.test.api.ApkDetails.BuildPurpose"
             },
             {
               "jsonName": "density",
@@ -14602,10 +14617,10 @@
               "name": "density",
               "number": 4,
               "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.GMSCoreApk.Density"
+              "typeName": ".chromiumos.test.api.ApkDetails.Density"
             }
           ],
-          "name": "GMSCoreApk"
+          "name": "ApkDetails"
         },
         {
           "field": [
@@ -14641,71 +14656,1232 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "server",
+              "jsonName": "serviceUrl",
               "label": "LABEL_OPTIONAL",
-              "name": "server",
+              "name": "service_url",
               "number": 5,
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "packageDetails",
+              "jsonName": "androidPackage",
               "label": "LABEL_OPTIONAL",
-              "name": "package_details",
+              "name": "android_package",
               "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.AndroidPackage"
+            },
+            {
+              "jsonName": "apkDetails",
+              "label": "LABEL_OPTIONAL",
+              "name": "apk_details",
+              "number": 7,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CIPDPackage.CIPDPackageDetails"
+              "typeName": ".chromiumos.test.api.ApkDetails"
             }
           ],
           "name": "CIPDPackage",
-          "nestedType": [
-            {
-              "enumType": [
-                {
-                  "name": "PackageType",
-                  "value": [
-                    {
-                      "name": "PACKAGE_TYPE_UNSPECIFIED",
-                      "number": 0
-                    },
-                    {
-                      "name": "GMS_CORE_APK",
-                      "number": 1
-                    }
-                  ]
-                }
-              ],
-              "field": [
-                {
-                  "jsonName": "packageType",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "package_type",
-                  "number": 1,
-                  "type": "TYPE_ENUM",
-                  "typeName": ".chromiumos.test.api.CIPDPackage.CIPDPackageDetails.PackageType"
-                },
-                {
-                  "jsonName": "gmsCoreApkDetails",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "gms_core_apk_details",
-                  "number": 2,
-                  "oneofIndex": 0,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.api.GMSCoreApk"
-                }
-              ],
-              "name": "CIPDPackageDetails",
-              "oneofDecl": [
-                {
-                  "name": "additional_info_oneof"
-                }
-              ]
-            }
-          ],
           "oneofDecl": [
             {
               "name": "version_oneof"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "cipdPackages",
+              "label": "LABEL_REPEATED",
+              "name": "cipd_packages",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CIPDPackage"
+            }
+          ],
+          "name": "AndroidProvisionMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/android_provision_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/longrunning/operations.proto",
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "name": "InstallSuccess"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Reason",
+              "value": [
+                {
+                  "name": "REASON_INVALID_REQUEST",
+                  "number": 0
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_PRE_PROVISION",
+                  "number": 1
+                },
+                {
+                  "name": "REASON_DOWNLOADING_IMAGE_FAILED",
+                  "number": 2
+                },
+                {
+                  "name": "REASON_PROVISIONING_TIMEDOUT",
+                  "number": 3
+                },
+                {
+                  "name": "REASON_PROVISIONING_FAILED",
+                  "number": 4
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_POST_PROVISION",
+                  "number": 5
+                },
+                {
+                  "name": "REASON_UPDATE_FIRMWARE_FAILED",
+                  "number": 6
+                },
+                {
+                  "name": "REASON_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
+                  "number": 7
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
+                  "number": 8
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "reason",
+              "label": "LABEL_OPTIONAL",
+              "name": "reason",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.InstallFailure.Reason"
+            }
+          ],
+          "name": "InstallFailure"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "crosImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "dlcSpecs",
+              "label": "LABEL_REPEATED",
+              "name": "dlc_specs",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallCrosRequest.DLCSpec"
+            },
+            {
+              "jsonName": "preserveStateful",
+              "label": "LABEL_OPTIONAL",
+              "name": "preserve_stateful",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "preventReboot",
+              "label": "LABEL_OPTIONAL",
+              "name": "prevent_reboot",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "overwritePayload",
+              "label": "LABEL_OPTIONAL",
+              "name": "overwrite_payload",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "updateFirmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "update_firmware",
+              "number": 6,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "InstallCrosRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "id",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "id",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "DLCSpec"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallCrosResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallCrosMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "lacrosImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "lacros_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "overrideVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_version",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "overrideInstallPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_install_path",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "InstallLacrosRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallLacrosResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallLacrosMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ashImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            }
+          ],
+          "name": "InstallAshRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallAshResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallAshMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ashImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            }
+          ],
+          "name": "InstallArcRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallArcResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallArcMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "firmwareConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "force",
+              "label": "LABEL_OPTIONAL",
+              "name": "force",
+              "number": 8,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "useServo",
+              "label": "LABEL_OPTIONAL",
+              "name": "use_servo",
+              "number": 9,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "InstallFirmwareRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallFirmwareResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallFirmwareMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/provision_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.InstallCrosRequest",
+              "name": "InstallCros",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallCrosMetadata",
+                  "responseType": "InstallCrosResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallLacrosRequest",
+              "name": "InstallLacros",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallLacrosMetadata",
+                  "responseType": "InstallLacrosResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallAshRequest",
+              "name": "InstallAsh",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallAshMetadata",
+                  "responseType": "InstallAshResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallArcRequest",
+              "name": "InstallArc",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallArcMetadata",
+                  "responseType": "InstallArcResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallFirmwareRequest",
+              "name": "InstallFirmware",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallFirmwareMetadata",
+                  "responseType": "InstallFirmwareResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "ProvisionService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "address",
+              "label": "LABEL_OPTIONAL",
+              "name": "address",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "port",
+              "label": "LABEL_OPTIONAL",
+              "name": "port",
+              "number": 2,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "IpEndpoint"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/ip_endpoint.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/config/api/device_config_id.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut.Id"
+            },
+            {
+              "jsonName": "chromeos",
+              "label": "LABEL_OPTIONAL",
+              "name": "chromeos",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut.ChromeOS"
+            },
+            {
+              "jsonName": "android",
+              "label": "LABEL_OPTIONAL",
+              "name": "android",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut.Android"
+            },
+            {
+              "jsonName": "cacheServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "cache_server",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CacheServer"
+            }
+          ],
+          "name": "Dut",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "deviceConfigId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "device_config_id",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.DeviceConfigId"
+                },
+                {
+                  "jsonName": "ssh",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ssh",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+                },
+                {
+                  "jsonName": "name",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "name",
+                  "number": 15,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "dutModel",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut_model",
+                  "number": 14,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.DutModel"
+                },
+                {
+                  "jsonName": "servo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Servo"
+                },
+                {
+                  "jsonName": "chameleon",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "chameleon",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Chameleon"
+                },
+                {
+                  "jsonName": "rpm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "rpm",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.RPM"
+                },
+                {
+                  "jsonName": "externalCameras",
+                  "label": "LABEL_REPEATED",
+                  "name": "external_cameras",
+                  "number": 7,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.ExternalCamera"
+                },
+                {
+                  "jsonName": "audio",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "audio",
+                  "number": 8,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Audio"
+                },
+                {
+                  "jsonName": "wifi",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wifi",
+                  "number": 9,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Wifi"
+                },
+                {
+                  "jsonName": "touch",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "touch",
+                  "number": 10,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Touch"
+                },
+                {
+                  "jsonName": "camerabox",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "camerabox",
+                  "number": 11,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Camerabox"
+                },
+                {
+                  "jsonName": "cables",
+                  "label": "LABEL_REPEATED",
+                  "name": "cables",
+                  "number": 12,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Cable"
+                },
+                {
+                  "jsonName": "cellular",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "cellular",
+                  "number": 13,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Cellular"
+                }
+              ],
+              "name": "ChromeOS",
+              "reservedRange": [
+                {
+                  "end": 2,
+                  "start": 1
+                }
+              ]
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "associatedHostname",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "associated_hostname",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+                },
+                {
+                  "jsonName": "name",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "name",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "serialNumber",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "serial_number",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "dutModel",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut_model",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.DutModel"
+                }
+              ],
+              "name": "Android"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "dut_type"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "buildTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_target",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "modelName",
+              "label": "LABEL_OPTIONAL",
+              "name": "model_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DutModel"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.DutTopology.Id"
+            },
+            {
+              "jsonName": "duts",
+              "label": "LABEL_REPEATED",
+              "name": "duts",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            }
+          ],
+          "name": "DutTopology",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            }
+          ],
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            },
+            {
+              "end": 3,
+              "start": 2
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "audioBox",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_box",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "atrus",
+              "label": "LABEL_OPTIONAL",
+              "name": "atrus",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Audio"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Type",
+              "value": [
+                {
+                  "name": "TYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "AUDIOJACK",
+                  "number": 1
+                },
+                {
+                  "name": "USBAUDIO",
+                  "number": 2
+                },
+                {
+                  "name": "USBPRINTING",
+                  "number": 3
+                },
+                {
+                  "name": "HDMIAUDIO",
+                  "number": 4
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Cable.Type"
+            }
+          ],
+          "name": "Cable"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "address",
+              "label": "LABEL_OPTIONAL",
+              "name": "address",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "CacheServer"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Facing",
+              "value": [
+                {
+                  "name": "FACING_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "BACK",
+                  "number": 1
+                },
+                {
+                  "name": "FRONT",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "facing",
+              "label": "LABEL_OPTIONAL",
+              "name": "facing",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Camerabox.Facing"
+            }
+          ],
+          "name": "Camerabox"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Operator",
+              "value": [
+                {
+                  "name": "OPERATOR_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "ATT",
+                  "number": 1
+                },
+                {
+                  "name": "VERIZON",
+                  "number": 2
+                },
+                {
+                  "name": "TMOBILE",
+                  "number": 3
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "operators",
+              "label": "LABEL_REPEATED",
+              "name": "operators",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Cellular.Operator"
+            }
+          ],
+          "name": "Cellular"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Peripheral",
+              "value": [
+                {
+                  "name": "PREIPHERAL_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "BT_HID",
+                  "number": 1
+                },
+                {
+                  "name": "DP",
+                  "number": 2
+                },
+                {
+                  "name": "DP_HDMI",
+                  "number": 3
+                },
+                {
+                  "name": "VGA",
+                  "number": 4
+                },
+                {
+                  "name": "HDMI",
+                  "number": 5
+                },
+                {
+                  "name": "BT_BLE_HID",
+                  "number": 6
+                },
+                {
+                  "name": "BT_A2DP_SINK",
+                  "number": 7
+                },
+                {
+                  "name": "BT_PEER",
+                  "number": 8
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "peripherals",
+              "label": "LABEL_REPEATED",
+              "name": "peripherals",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Chameleon.Peripheral"
+            },
+            {
+              "jsonName": "audioBoard",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_board",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Chameleon"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Type",
+              "value": [
+                {
+                  "name": "TYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "HUDDLY",
+                  "number": 1
+                },
+                {
+                  "name": "PTZPRO2",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.ExternalCamera.Type"
+            }
+          ],
+          "name": "ExternalCamera"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "present",
+              "label": "LABEL_OPTIONAL",
+              "name": "present",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "RPM"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "present",
+              "label": "LABEL_OPTIONAL",
+              "name": "present",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "servodAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "servod_address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "serial",
+              "label": "LABEL_OPTIONAL",
+              "name": "serial",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Servo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "mimo",
+              "label": "LABEL_OPTIONAL",
+              "name": "mimo",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "Touch"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Environment",
+              "value": [
+                {
+                  "name": "ENVIRONMENT_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "STANDARD",
+                  "number": 1
+                },
+                {
+                  "name": "WIFI_CELL",
+                  "number": 2
+                },
+                {
+                  "name": "CHAOS",
+                  "number": 3
+                },
+                {
+                  "name": "ROUTER_802_11AX",
+                  "number": 4
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "environment",
+              "label": "LABEL_OPTIONAL",
+              "name": "environment",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Wifi.Environment"
+            },
+            {
+              "jsonName": "antenna",
+              "label": "LABEL_OPTIONAL",
+              "name": "antenna",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.WifiAntenna"
+            }
+          ],
+          "name": "Wifi"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Connection",
+              "value": [
+                {
+                  "name": "CONNECTION_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "CONDUCTIVE",
+                  "number": 1
+                },
+                {
+                  "name": "OTA",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "connection",
+              "label": "LABEL_OPTIONAL",
+              "name": "connection",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.WifiAntenna.Connection"
+            }
+          ],
+          "name": "WifiAntenna"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/dut.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/android_provision_metadata.proto",
+        "chromiumos/test/api/provision_service.proto",
+        "chromiumos/test/lab/api/dut.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "dut",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            },
+            {
+              "jsonName": "cipdPackages",
+              "label": "LABEL_REPEATED",
+              "name": "cipd_packages",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CIPDPackage"
+            },
+            {
+              "jsonName": "dutServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_server",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "AndroidProvisionRequest"
         },
         {
           "field": [
@@ -14717,39 +15893,61 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "serialNumber",
+              "jsonName": "versionCode",
               "label": "LABEL_OPTIONAL",
-              "name": "serial_number",
+              "name": "version_code",
               "number": 2,
               "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "associatedHostname",
-              "label": "LABEL_OPTIONAL",
-              "name": "associated_hostname",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "adbVendorKeys",
-              "label": "LABEL_REPEATED",
-              "name": "adb_vendor_keys",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "cipdPackages",
-              "label": "LABEL_REPEATED",
-              "name": "cipd_packages",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CIPDPackage"
             }
           ],
-          "name": "AndroidDeviceProvisionMetadata"
+          "name": "InstalledAndroidPackage"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut.Id"
+            },
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            },
+            {
+              "jsonName": "androidPackages",
+              "label": "LABEL_REPEATED",
+              "name": "android_packages",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstalledAndroidPackage"
+            }
+          ],
+          "name": "AndroidProvisionResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
         }
       ],
-      "name": "chromiumos/test/api/android_provision_metadata.proto",
+      "name": "chromiumos/test/api/android_provision_cli.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },
@@ -15481,1141 +16679,6 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },
       "package": "chromiumos.test.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "address",
-              "label": "LABEL_OPTIONAL",
-              "name": "address",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "port",
-              "label": "LABEL_OPTIONAL",
-              "name": "port",
-              "number": 2,
-              "type": "TYPE_INT32"
-            }
-          ],
-          "name": "IpEndpoint"
-        }
-      ],
-      "name": "chromiumos/test/lab/api/ip_endpoint.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
-      },
-      "package": "chromiumos.test.lab.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/config/api/device_config_id.proto",
-        "chromiumos/test/lab/api/ip_endpoint.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.Dut.Id"
-            },
-            {
-              "jsonName": "chromeos",
-              "label": "LABEL_OPTIONAL",
-              "name": "chromeos",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.Dut.ChromeOS"
-            },
-            {
-              "jsonName": "android",
-              "label": "LABEL_OPTIONAL",
-              "name": "android",
-              "number": 3,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.Dut.Android"
-            },
-            {
-              "jsonName": "cacheServer",
-              "label": "LABEL_OPTIONAL",
-              "name": "cache_server",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.CacheServer"
-            }
-          ],
-          "name": "Dut",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Id"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "deviceConfigId",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "device_config_id",
-                  "number": 3,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.DeviceConfigId"
-                },
-                {
-                  "jsonName": "ssh",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "ssh",
-                  "number": 2,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-                },
-                {
-                  "jsonName": "name",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "name",
-                  "number": 15,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "dutModel",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "dut_model",
-                  "number": 14,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.DutModel"
-                },
-                {
-                  "jsonName": "servo",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "servo",
-                  "number": 4,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.Servo"
-                },
-                {
-                  "jsonName": "chameleon",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "chameleon",
-                  "number": 5,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.Chameleon"
-                },
-                {
-                  "jsonName": "rpm",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "rpm",
-                  "number": 6,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.RPM"
-                },
-                {
-                  "jsonName": "externalCameras",
-                  "label": "LABEL_REPEATED",
-                  "name": "external_cameras",
-                  "number": 7,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.ExternalCamera"
-                },
-                {
-                  "jsonName": "audio",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "audio",
-                  "number": 8,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.Audio"
-                },
-                {
-                  "jsonName": "wifi",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "wifi",
-                  "number": 9,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.Wifi"
-                },
-                {
-                  "jsonName": "touch",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "touch",
-                  "number": 10,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.Touch"
-                },
-                {
-                  "jsonName": "camerabox",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "camerabox",
-                  "number": 11,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.Camerabox"
-                },
-                {
-                  "jsonName": "cables",
-                  "label": "LABEL_REPEATED",
-                  "name": "cables",
-                  "number": 12,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.Cable"
-                },
-                {
-                  "jsonName": "cellular",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "cellular",
-                  "number": 13,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.Cellular"
-                }
-              ],
-              "name": "ChromeOS",
-              "reservedRange": [
-                {
-                  "end": 2,
-                  "start": 1
-                }
-              ]
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "associatedHostname",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "associated_hostname",
-                  "number": 1,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-                },
-                {
-                  "jsonName": "name",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "name",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "serialNumber",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "serial_number",
-                  "number": 3,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "dutModel",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "dut_model",
-                  "number": 4,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.DutModel"
-                }
-              ],
-              "name": "Android"
-            }
-          ],
-          "oneofDecl": [
-            {
-              "name": "dut_type"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "buildTarget",
-              "label": "LABEL_OPTIONAL",
-              "name": "build_target",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "modelName",
-              "label": "LABEL_OPTIONAL",
-              "name": "model_name",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "DutModel"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.DutTopology.Id"
-            },
-            {
-              "jsonName": "duts",
-              "label": "LABEL_REPEATED",
-              "name": "duts",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.Dut"
-            }
-          ],
-          "name": "DutTopology",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Id"
-            }
-          ],
-          "reservedRange": [
-            {
-              "end": 2,
-              "start": 1
-            },
-            {
-              "end": 3,
-              "start": 2
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "audioBox",
-              "label": "LABEL_OPTIONAL",
-              "name": "audio_box",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "atrus",
-              "label": "LABEL_OPTIONAL",
-              "name": "atrus",
-              "number": 2,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "Audio"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Type",
-              "value": [
-                {
-                  "name": "TYPE_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "AUDIOJACK",
-                  "number": 1
-                },
-                {
-                  "name": "USBAUDIO",
-                  "number": 2
-                },
-                {
-                  "name": "USBPRINTING",
-                  "number": 3
-                },
-                {
-                  "name": "HDMIAUDIO",
-                  "number": 4
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "type",
-              "label": "LABEL_OPTIONAL",
-              "name": "type",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.Cable.Type"
-            }
-          ],
-          "name": "Cable"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "address",
-              "label": "LABEL_OPTIONAL",
-              "name": "address",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            }
-          ],
-          "name": "CacheServer"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Facing",
-              "value": [
-                {
-                  "name": "FACING_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "BACK",
-                  "number": 1
-                },
-                {
-                  "name": "FRONT",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "facing",
-              "label": "LABEL_OPTIONAL",
-              "name": "facing",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.Camerabox.Facing"
-            }
-          ],
-          "name": "Camerabox"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Operator",
-              "value": [
-                {
-                  "name": "OPERATOR_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "ATT",
-                  "number": 1
-                },
-                {
-                  "name": "VERIZON",
-                  "number": 2
-                },
-                {
-                  "name": "TMOBILE",
-                  "number": 3
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "operators",
-              "label": "LABEL_REPEATED",
-              "name": "operators",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.Cellular.Operator"
-            }
-          ],
-          "name": "Cellular"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Peripheral",
-              "value": [
-                {
-                  "name": "PREIPHERAL_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "BT_HID",
-                  "number": 1
-                },
-                {
-                  "name": "DP",
-                  "number": 2
-                },
-                {
-                  "name": "DP_HDMI",
-                  "number": 3
-                },
-                {
-                  "name": "VGA",
-                  "number": 4
-                },
-                {
-                  "name": "HDMI",
-                  "number": 5
-                },
-                {
-                  "name": "BT_BLE_HID",
-                  "number": 6
-                },
-                {
-                  "name": "BT_A2DP_SINK",
-                  "number": 7
-                },
-                {
-                  "name": "BT_PEER",
-                  "number": 8
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "peripherals",
-              "label": "LABEL_REPEATED",
-              "name": "peripherals",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.Chameleon.Peripheral"
-            },
-            {
-              "jsonName": "audioBoard",
-              "label": "LABEL_OPTIONAL",
-              "name": "audio_board",
-              "number": 2,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "Chameleon"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Type",
-              "value": [
-                {
-                  "name": "TYPE_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "HUDDLY",
-                  "number": 1
-                },
-                {
-                  "name": "PTZPRO2",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "type",
-              "label": "LABEL_OPTIONAL",
-              "name": "type",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.ExternalCamera.Type"
-            }
-          ],
-          "name": "ExternalCamera"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "present",
-              "label": "LABEL_OPTIONAL",
-              "name": "present",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "RPM"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "present",
-              "label": "LABEL_OPTIONAL",
-              "name": "present",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "servodAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "servod_address",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "serial",
-              "label": "LABEL_OPTIONAL",
-              "name": "serial",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "Servo"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "mimo",
-              "label": "LABEL_OPTIONAL",
-              "name": "mimo",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "Touch"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Environment",
-              "value": [
-                {
-                  "name": "ENVIRONMENT_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "STANDARD",
-                  "number": 1
-                },
-                {
-                  "name": "WIFI_CELL",
-                  "number": 2
-                },
-                {
-                  "name": "CHAOS",
-                  "number": 3
-                },
-                {
-                  "name": "ROUTER_802_11AX",
-                  "number": 4
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "environment",
-              "label": "LABEL_OPTIONAL",
-              "name": "environment",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.Wifi.Environment"
-            },
-            {
-              "jsonName": "antenna",
-              "label": "LABEL_OPTIONAL",
-              "name": "antenna",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.WifiAntenna"
-            }
-          ],
-          "name": "Wifi"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Connection",
-              "value": [
-                {
-                  "name": "CONNECTION_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "CONDUCTIVE",
-                  "number": 1
-                },
-                {
-                  "name": "OTA",
-                  "number": 2
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "connection",
-              "label": "LABEL_OPTIONAL",
-              "name": "connection",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.WifiAntenna.Connection"
-            }
-          ],
-          "name": "WifiAntenna"
-        }
-      ],
-      "name": "chromiumos/test/lab/api/dut.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
-      },
-      "package": "chromiumos.test.lab.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/longrunning/operations.proto",
-        "chromiumos/storage_path.proto"
-      ],
-      "messageType": [
-        {
-          "name": "InstallSuccess"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Reason",
-              "value": [
-                {
-                  "name": "REASON_INVALID_REQUEST",
-                  "number": 0
-                },
-                {
-                  "name": "REASON_DUT_UNREACHABLE_PRE_PROVISION",
-                  "number": 1
-                },
-                {
-                  "name": "REASON_DOWNLOADING_IMAGE_FAILED",
-                  "number": 2
-                },
-                {
-                  "name": "REASON_PROVISIONING_TIMEDOUT",
-                  "number": 3
-                },
-                {
-                  "name": "REASON_PROVISIONING_FAILED",
-                  "number": 4
-                },
-                {
-                  "name": "REASON_DUT_UNREACHABLE_POST_PROVISION",
-                  "number": 5
-                },
-                {
-                  "name": "REASON_UPDATE_FIRMWARE_FAILED",
-                  "number": 6
-                },
-                {
-                  "name": "REASON_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
-                  "number": 7
-                },
-                {
-                  "name": "REASON_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
-                  "number": 8
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "reason",
-              "label": "LABEL_OPTIONAL",
-              "name": "reason",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.InstallFailure.Reason"
-            }
-          ],
-          "name": "InstallFailure"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "crosImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "cros_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "dlcSpecs",
-              "label": "LABEL_REPEATED",
-              "name": "dlc_specs",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallCrosRequest.DLCSpec"
-            },
-            {
-              "jsonName": "preserveStateful",
-              "label": "LABEL_OPTIONAL",
-              "name": "preserve_stateful",
-              "number": 3,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "preventReboot",
-              "label": "LABEL_OPTIONAL",
-              "name": "prevent_reboot",
-              "number": 4,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "overwritePayload",
-              "label": "LABEL_OPTIONAL",
-              "name": "overwrite_payload",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "updateFirmware",
-              "label": "LABEL_OPTIONAL",
-              "name": "update_firmware",
-              "number": 6,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "InstallCrosRequest",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "id",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "id",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "DLCSpec"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallCrosResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallCrosMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "lacrosImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "lacros_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "overrideVersion",
-              "label": "LABEL_OPTIONAL",
-              "name": "override_version",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "overrideInstallPath",
-              "label": "LABEL_OPTIONAL",
-              "name": "override_install_path",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "InstallLacrosRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallLacrosResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallLacrosMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "ashImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "ash_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            }
-          ],
-          "name": "InstallAshRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallAshResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallAshMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "ashImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "ash_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            }
-          ],
-          "name": "InstallArcRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallArcResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallArcMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "firmwareConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_config",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.FirmwareConfig"
-            },
-            {
-              "jsonName": "force",
-              "label": "LABEL_OPTIONAL",
-              "name": "force",
-              "number": 8,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "useServo",
-              "label": "LABEL_OPTIONAL",
-              "name": "use_servo",
-              "number": 9,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "InstallFirmwareRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallFirmwareResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallFirmwareMetadata"
-        }
-      ],
-      "name": "chromiumos/test/api/provision_service.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.InstallCrosRequest",
-              "name": "InstallCros",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallCrosMetadata",
-                  "responseType": "InstallCrosResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallLacrosRequest",
-              "name": "InstallLacros",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallLacrosMetadata",
-                  "responseType": "InstallLacrosResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallAshRequest",
-              "name": "InstallAsh",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallAshMetadata",
-                  "responseType": "InstallAshResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallArcRequest",
-              "name": "InstallArc",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallArcMetadata",
-                  "responseType": "InstallArcResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallFirmwareRequest",
-              "name": "InstallFirmware",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallFirmwareMetadata",
-                  "responseType": "InstallFirmwareResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            }
-          ],
-          "name": "ProvisionService"
-        }
-      ],
       "syntax": "proto3"
     },
     {

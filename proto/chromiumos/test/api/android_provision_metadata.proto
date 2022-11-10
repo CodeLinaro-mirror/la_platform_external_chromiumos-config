@@ -9,8 +9,8 @@ package chromiumos.test.api;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 // Next Tag: 5
-message GMSCoreApk {
-  //Supported GMS Core architectures.
+message ApkDetails {
+  // Supported Android architectures.
   enum Architecture {
     ARCHITECTURE_UNSPECIFIED = 0;
     ARMV7 = 1;
@@ -20,7 +20,7 @@ message GMSCoreApk {
   }
   Architecture architecture = 1;
 
-  // Supported GMS Core build types.
+  // Supported APK build types.
   enum BuildType {
     BUILD_TYPE_UNSPECIFIED = 0;
     PHONE_PRE_LMP = 1;
@@ -36,7 +36,7 @@ message GMSCoreApk {
   }
   BuildType build_type = 2;
 
-  // Supported GMS Core build purposes.
+  // Supported APK build purposes.
   enum BuildPurpose {
     BUILD_PURPOSE_UNSPECIFIED = 0;
     RAW = 1;
@@ -46,7 +46,7 @@ message GMSCoreApk {
   }
   BuildPurpose build_purpose = 3;
 
-  // Supported GMS Core densities.
+  // Supported APK densities.
   enum Density {
     DENSITY_UNSPECIFIED = 0;
     MDPI = 1;
@@ -58,12 +58,17 @@ message GMSCoreApk {
   Density density = 4;
 }
 
-// Next Tag: 7
+enum AndroidPackage {
+  ANDROID_PACKAGE_UNSPECIFIED = 0;
+  GMS_CORE = 1;
+}
+
+// Next Tag: 8
 message CIPDPackage {
-  // Required. Name of a CIPD package to query instances.
+  // Required. CIPD package name.
   string name = 1;
 
-  // Required. A CIPD package version.
+  // Required. CIPD package version.
   // Can be defined by ref, tag or specific instance Id.
   oneof version_oneof {
     string ref = 2;
@@ -71,37 +76,20 @@ message CIPDPackage {
     string instance_id = 4;
   }
 
-  // CIPD server to fetch this package from.
+  // CIPD server URL to fetch this package from.
   // chrome-infra-packages.appspot.com is used by default.
-  string server = 5;
+  string service_url = 5;
 
-  message CIPDPackageDetails {
-    // List of supported CIPD packages.
-    enum PackageType {
-      PACKAGE_TYPE_UNSPECIFIED = 0;
-      GMS_CORE_APK = 1;
-    }
-    // Required. Type of the package.
-    PackageType package_type = 1;
-    // Additional details about the package.
-    oneof additional_info_oneof {
-      GMSCoreApk gms_core_apk_details = 2;
-    }
-  }
-  // Required. Details about the package.
-  CIPDPackageDetails package_details = 6;
+  // Required. Android package type.
+  AndroidPackage android_package = 6;
+
+  // APK details (arch, build type, screen density)
+  ApkDetails apk_details = 7;
 }
 
-// Next Tag: 6
-message AndroidDeviceProvisionMetadata {
-  // Required. The resource name for the DUT.
-  string name = 1;
-  // Required. Serial number of the DUT.
-  string serial_number = 2;
-  // Required. Hostname to which the Android DUT is attached to.
-  string associated_hostname = 3;
-  // A list of adb keys (files or directories).
-  repeated string adb_vendor_keys = 4;
-  // Required. A list of CIPD packages which should be installed on the DUT.
-  repeated CIPDPackage cipd_packages = 5;
+
+// Next Tag: 2
+message AndroidProvisionMetadata {
+  // Required. A list of CIPD packages to install.
+  repeated CIPDPackage cipd_packages = 1;
 }

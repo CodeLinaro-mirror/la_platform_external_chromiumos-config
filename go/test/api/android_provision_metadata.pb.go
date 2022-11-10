@@ -24,27 +24,73 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-//Supported GMS Core architectures.
-type GMSCoreApk_Architecture int32
+type AndroidPackage int32
 
 const (
-	GMSCoreApk_ARCHITECTURE_UNSPECIFIED GMSCoreApk_Architecture = 0
-	GMSCoreApk_ARMV7                    GMSCoreApk_Architecture = 1
-	GMSCoreApk_ARM64                    GMSCoreApk_Architecture = 2
-	GMSCoreApk_X86                      GMSCoreApk_Architecture = 3
-	GMSCoreApk_X86_64                   GMSCoreApk_Architecture = 4
+	AndroidPackage_ANDROID_PACKAGE_UNSPECIFIED AndroidPackage = 0
+	AndroidPackage_GMS_CORE                    AndroidPackage = 1
 )
 
-// Enum value maps for GMSCoreApk_Architecture.
+// Enum value maps for AndroidPackage.
 var (
-	GMSCoreApk_Architecture_name = map[int32]string{
+	AndroidPackage_name = map[int32]string{
+		0: "ANDROID_PACKAGE_UNSPECIFIED",
+		1: "GMS_CORE",
+	}
+	AndroidPackage_value = map[string]int32{
+		"ANDROID_PACKAGE_UNSPECIFIED": 0,
+		"GMS_CORE":                    1,
+	}
+)
+
+func (x AndroidPackage) Enum() *AndroidPackage {
+	p := new(AndroidPackage)
+	*p = x
+	return p
+}
+
+func (x AndroidPackage) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (AndroidPackage) Descriptor() protoreflect.EnumDescriptor {
+	return file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[0].Descriptor()
+}
+
+func (AndroidPackage) Type() protoreflect.EnumType {
+	return &file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[0]
+}
+
+func (x AndroidPackage) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use AndroidPackage.Descriptor instead.
+func (AndroidPackage) EnumDescriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{0}
+}
+
+// Supported Android architectures.
+type ApkDetails_Architecture int32
+
+const (
+	ApkDetails_ARCHITECTURE_UNSPECIFIED ApkDetails_Architecture = 0
+	ApkDetails_ARMV7                    ApkDetails_Architecture = 1
+	ApkDetails_ARM64                    ApkDetails_Architecture = 2
+	ApkDetails_X86                      ApkDetails_Architecture = 3
+	ApkDetails_X86_64                   ApkDetails_Architecture = 4
+)
+
+// Enum value maps for ApkDetails_Architecture.
+var (
+	ApkDetails_Architecture_name = map[int32]string{
 		0: "ARCHITECTURE_UNSPECIFIED",
 		1: "ARMV7",
 		2: "ARM64",
 		3: "X86",
 		4: "X86_64",
 	}
-	GMSCoreApk_Architecture_value = map[string]int32{
+	ApkDetails_Architecture_value = map[string]int32{
 		"ARCHITECTURE_UNSPECIFIED": 0,
 		"ARMV7":                    1,
 		"ARM64":                    2,
@@ -53,53 +99,53 @@ var (
 	}
 )
 
-func (x GMSCoreApk_Architecture) Enum() *GMSCoreApk_Architecture {
-	p := new(GMSCoreApk_Architecture)
+func (x ApkDetails_Architecture) Enum() *ApkDetails_Architecture {
+	p := new(ApkDetails_Architecture)
 	*p = x
 	return p
 }
 
-func (x GMSCoreApk_Architecture) String() string {
+func (x ApkDetails_Architecture) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (GMSCoreApk_Architecture) Descriptor() protoreflect.EnumDescriptor {
-	return file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[0].Descriptor()
+func (ApkDetails_Architecture) Descriptor() protoreflect.EnumDescriptor {
+	return file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[1].Descriptor()
 }
 
-func (GMSCoreApk_Architecture) Type() protoreflect.EnumType {
-	return &file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[0]
+func (ApkDetails_Architecture) Type() protoreflect.EnumType {
+	return &file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[1]
 }
 
-func (x GMSCoreApk_Architecture) Number() protoreflect.EnumNumber {
+func (x ApkDetails_Architecture) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use GMSCoreApk_Architecture.Descriptor instead.
-func (GMSCoreApk_Architecture) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use ApkDetails_Architecture.Descriptor instead.
+func (ApkDetails_Architecture) EnumDescriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{0, 0}
 }
 
-// Supported GMS Core build types.
-type GMSCoreApk_BuildType int32
+// Supported APK build types.
+type ApkDetails_BuildType int32
 
 const (
-	GMSCoreApk_BUILD_TYPE_UNSPECIFIED GMSCoreApk_BuildType = 0
-	GMSCoreApk_PHONE_PRE_LMP          GMSCoreApk_BuildType = 1
-	GMSCoreApk_PHONE_LMP              GMSCoreApk_BuildType = 2
-	GMSCoreApk_PHONE_MNC              GMSCoreApk_BuildType = 3
-	GMSCoreApk_PHONE_PI               GMSCoreApk_BuildType = 4
-	GMSCoreApk_PHONE_RVC              GMSCoreApk_BuildType = 5
-	GMSCoreApk_PHONE_SC               GMSCoreApk_BuildType = 6
-	GMSCoreApk_PHONE_NEXT             GMSCoreApk_BuildType = 7
-	GMSCoreApk_PHONE_GO               GMSCoreApk_BuildType = 8
-	GMSCoreApk_PHONE_GO_R             GMSCoreApk_BuildType = 9
-	GMSCoreApk_PHONE_GO_S             GMSCoreApk_BuildType = 10
+	ApkDetails_BUILD_TYPE_UNSPECIFIED ApkDetails_BuildType = 0
+	ApkDetails_PHONE_PRE_LMP          ApkDetails_BuildType = 1
+	ApkDetails_PHONE_LMP              ApkDetails_BuildType = 2
+	ApkDetails_PHONE_MNC              ApkDetails_BuildType = 3
+	ApkDetails_PHONE_PI               ApkDetails_BuildType = 4
+	ApkDetails_PHONE_RVC              ApkDetails_BuildType = 5
+	ApkDetails_PHONE_SC               ApkDetails_BuildType = 6
+	ApkDetails_PHONE_NEXT             ApkDetails_BuildType = 7
+	ApkDetails_PHONE_GO               ApkDetails_BuildType = 8
+	ApkDetails_PHONE_GO_R             ApkDetails_BuildType = 9
+	ApkDetails_PHONE_GO_S             ApkDetails_BuildType = 10
 )
 
-// Enum value maps for GMSCoreApk_BuildType.
+// Enum value maps for ApkDetails_BuildType.
 var (
-	GMSCoreApk_BuildType_name = map[int32]string{
+	ApkDetails_BuildType_name = map[int32]string{
 		0:  "BUILD_TYPE_UNSPECIFIED",
 		1:  "PHONE_PRE_LMP",
 		2:  "PHONE_LMP",
@@ -112,7 +158,7 @@ var (
 		9:  "PHONE_GO_R",
 		10: "PHONE_GO_S",
 	}
-	GMSCoreApk_BuildType_value = map[string]int32{
+	ApkDetails_BuildType_value = map[string]int32{
 		"BUILD_TYPE_UNSPECIFIED": 0,
 		"PHONE_PRE_LMP":          1,
 		"PHONE_LMP":              2,
@@ -127,54 +173,54 @@ var (
 	}
 )
 
-func (x GMSCoreApk_BuildType) Enum() *GMSCoreApk_BuildType {
-	p := new(GMSCoreApk_BuildType)
+func (x ApkDetails_BuildType) Enum() *ApkDetails_BuildType {
+	p := new(ApkDetails_BuildType)
 	*p = x
 	return p
 }
 
-func (x GMSCoreApk_BuildType) String() string {
+func (x ApkDetails_BuildType) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (GMSCoreApk_BuildType) Descriptor() protoreflect.EnumDescriptor {
-	return file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[1].Descriptor()
+func (ApkDetails_BuildType) Descriptor() protoreflect.EnumDescriptor {
+	return file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[2].Descriptor()
 }
 
-func (GMSCoreApk_BuildType) Type() protoreflect.EnumType {
-	return &file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[1]
+func (ApkDetails_BuildType) Type() protoreflect.EnumType {
+	return &file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[2]
 }
 
-func (x GMSCoreApk_BuildType) Number() protoreflect.EnumNumber {
+func (x ApkDetails_BuildType) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use GMSCoreApk_BuildType.Descriptor instead.
-func (GMSCoreApk_BuildType) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use ApkDetails_BuildType.Descriptor instead.
+func (ApkDetails_BuildType) EnumDescriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{0, 1}
 }
 
-// Supported GMS Core build purposes.
-type GMSCoreApk_BuildPurpose int32
+// Supported APK build purposes.
+type ApkDetails_BuildPurpose int32
 
 const (
-	GMSCoreApk_BUILD_PURPOSE_UNSPECIFIED GMSCoreApk_BuildPurpose = 0
-	GMSCoreApk_RAW                       GMSCoreApk_BuildPurpose = 1
-	GMSCoreApk_RELEASE                   GMSCoreApk_BuildPurpose = 2
-	GMSCoreApk_DEBUG                     GMSCoreApk_BuildPurpose = 3
-	GMSCoreApk_DEBUG_SHRUNK              GMSCoreApk_BuildPurpose = 4
+	ApkDetails_BUILD_PURPOSE_UNSPECIFIED ApkDetails_BuildPurpose = 0
+	ApkDetails_RAW                       ApkDetails_BuildPurpose = 1
+	ApkDetails_RELEASE                   ApkDetails_BuildPurpose = 2
+	ApkDetails_DEBUG                     ApkDetails_BuildPurpose = 3
+	ApkDetails_DEBUG_SHRUNK              ApkDetails_BuildPurpose = 4
 )
 
-// Enum value maps for GMSCoreApk_BuildPurpose.
+// Enum value maps for ApkDetails_BuildPurpose.
 var (
-	GMSCoreApk_BuildPurpose_name = map[int32]string{
+	ApkDetails_BuildPurpose_name = map[int32]string{
 		0: "BUILD_PURPOSE_UNSPECIFIED",
 		1: "RAW",
 		2: "RELEASE",
 		3: "DEBUG",
 		4: "DEBUG_SHRUNK",
 	}
-	GMSCoreApk_BuildPurpose_value = map[string]int32{
+	ApkDetails_BuildPurpose_value = map[string]int32{
 		"BUILD_PURPOSE_UNSPECIFIED": 0,
 		"RAW":                       1,
 		"RELEASE":                   2,
@@ -183,48 +229,48 @@ var (
 	}
 )
 
-func (x GMSCoreApk_BuildPurpose) Enum() *GMSCoreApk_BuildPurpose {
-	p := new(GMSCoreApk_BuildPurpose)
+func (x ApkDetails_BuildPurpose) Enum() *ApkDetails_BuildPurpose {
+	p := new(ApkDetails_BuildPurpose)
 	*p = x
 	return p
 }
 
-func (x GMSCoreApk_BuildPurpose) String() string {
+func (x ApkDetails_BuildPurpose) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (GMSCoreApk_BuildPurpose) Descriptor() protoreflect.EnumDescriptor {
-	return file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[2].Descriptor()
+func (ApkDetails_BuildPurpose) Descriptor() protoreflect.EnumDescriptor {
+	return file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[3].Descriptor()
 }
 
-func (GMSCoreApk_BuildPurpose) Type() protoreflect.EnumType {
-	return &file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[2]
+func (ApkDetails_BuildPurpose) Type() protoreflect.EnumType {
+	return &file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[3]
 }
 
-func (x GMSCoreApk_BuildPurpose) Number() protoreflect.EnumNumber {
+func (x ApkDetails_BuildPurpose) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use GMSCoreApk_BuildPurpose.Descriptor instead.
-func (GMSCoreApk_BuildPurpose) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use ApkDetails_BuildPurpose.Descriptor instead.
+func (ApkDetails_BuildPurpose) EnumDescriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{0, 2}
 }
 
-// Supported GMS Core densities.
-type GMSCoreApk_Density int32
+// Supported APK densities.
+type ApkDetails_Density int32
 
 const (
-	GMSCoreApk_DENSITY_UNSPECIFIED GMSCoreApk_Density = 0
-	GMSCoreApk_MDPI                GMSCoreApk_Density = 1
-	GMSCoreApk_HDPI                GMSCoreApk_Density = 2
-	GMSCoreApk_XHDPI               GMSCoreApk_Density = 3
-	GMSCoreApk_XXHDPI              GMSCoreApk_Density = 4
-	GMSCoreApk_ALLDPI              GMSCoreApk_Density = 5
+	ApkDetails_DENSITY_UNSPECIFIED ApkDetails_Density = 0
+	ApkDetails_MDPI                ApkDetails_Density = 1
+	ApkDetails_HDPI                ApkDetails_Density = 2
+	ApkDetails_XHDPI               ApkDetails_Density = 3
+	ApkDetails_XXHDPI              ApkDetails_Density = 4
+	ApkDetails_ALLDPI              ApkDetails_Density = 5
 )
 
-// Enum value maps for GMSCoreApk_Density.
+// Enum value maps for ApkDetails_Density.
 var (
-	GMSCoreApk_Density_name = map[int32]string{
+	ApkDetails_Density_name = map[int32]string{
 		0: "DENSITY_UNSPECIFIED",
 		1: "MDPI",
 		2: "HDPI",
@@ -232,7 +278,7 @@ var (
 		4: "XXHDPI",
 		5: "ALLDPI",
 	}
-	GMSCoreApk_Density_value = map[string]int32{
+	ApkDetails_Density_value = map[string]int32{
 		"DENSITY_UNSPECIFIED": 0,
 		"MDPI":                1,
 		"HDPI":                2,
@@ -242,94 +288,47 @@ var (
 	}
 )
 
-func (x GMSCoreApk_Density) Enum() *GMSCoreApk_Density {
-	p := new(GMSCoreApk_Density)
+func (x ApkDetails_Density) Enum() *ApkDetails_Density {
+	p := new(ApkDetails_Density)
 	*p = x
 	return p
 }
 
-func (x GMSCoreApk_Density) String() string {
+func (x ApkDetails_Density) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (GMSCoreApk_Density) Descriptor() protoreflect.EnumDescriptor {
-	return file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[3].Descriptor()
-}
-
-func (GMSCoreApk_Density) Type() protoreflect.EnumType {
-	return &file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[3]
-}
-
-func (x GMSCoreApk_Density) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use GMSCoreApk_Density.Descriptor instead.
-func (GMSCoreApk_Density) EnumDescriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{0, 3}
-}
-
-// List of supported CIPD packages.
-type CIPDPackage_CIPDPackageDetails_PackageType int32
-
-const (
-	CIPDPackage_CIPDPackageDetails_PACKAGE_TYPE_UNSPECIFIED CIPDPackage_CIPDPackageDetails_PackageType = 0
-	CIPDPackage_CIPDPackageDetails_GMS_CORE_APK             CIPDPackage_CIPDPackageDetails_PackageType = 1
-)
-
-// Enum value maps for CIPDPackage_CIPDPackageDetails_PackageType.
-var (
-	CIPDPackage_CIPDPackageDetails_PackageType_name = map[int32]string{
-		0: "PACKAGE_TYPE_UNSPECIFIED",
-		1: "GMS_CORE_APK",
-	}
-	CIPDPackage_CIPDPackageDetails_PackageType_value = map[string]int32{
-		"PACKAGE_TYPE_UNSPECIFIED": 0,
-		"GMS_CORE_APK":             1,
-	}
-)
-
-func (x CIPDPackage_CIPDPackageDetails_PackageType) Enum() *CIPDPackage_CIPDPackageDetails_PackageType {
-	p := new(CIPDPackage_CIPDPackageDetails_PackageType)
-	*p = x
-	return p
-}
-
-func (x CIPDPackage_CIPDPackageDetails_PackageType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (CIPDPackage_CIPDPackageDetails_PackageType) Descriptor() protoreflect.EnumDescriptor {
+func (ApkDetails_Density) Descriptor() protoreflect.EnumDescriptor {
 	return file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[4].Descriptor()
 }
 
-func (CIPDPackage_CIPDPackageDetails_PackageType) Type() protoreflect.EnumType {
+func (ApkDetails_Density) Type() protoreflect.EnumType {
 	return &file_chromiumos_test_api_android_provision_metadata_proto_enumTypes[4]
 }
 
-func (x CIPDPackage_CIPDPackageDetails_PackageType) Number() protoreflect.EnumNumber {
+func (x ApkDetails_Density) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use CIPDPackage_CIPDPackageDetails_PackageType.Descriptor instead.
-func (CIPDPackage_CIPDPackageDetails_PackageType) EnumDescriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{1, 0, 0}
+// Deprecated: Use ApkDetails_Density.Descriptor instead.
+func (ApkDetails_Density) EnumDescriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{0, 3}
 }
 
 // Next Tag: 5
-type GMSCoreApk struct {
+type ApkDetails struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Architecture GMSCoreApk_Architecture `protobuf:"varint,1,opt,name=architecture,proto3,enum=chromiumos.test.api.GMSCoreApk_Architecture" json:"architecture,omitempty"`
-	BuildType    GMSCoreApk_BuildType    `protobuf:"varint,2,opt,name=build_type,json=buildType,proto3,enum=chromiumos.test.api.GMSCoreApk_BuildType" json:"build_type,omitempty"`
-	BuildPurpose GMSCoreApk_BuildPurpose `protobuf:"varint,3,opt,name=build_purpose,json=buildPurpose,proto3,enum=chromiumos.test.api.GMSCoreApk_BuildPurpose" json:"build_purpose,omitempty"`
-	Density      GMSCoreApk_Density      `protobuf:"varint,4,opt,name=density,proto3,enum=chromiumos.test.api.GMSCoreApk_Density" json:"density,omitempty"`
+	Architecture ApkDetails_Architecture `protobuf:"varint,1,opt,name=architecture,proto3,enum=chromiumos.test.api.ApkDetails_Architecture" json:"architecture,omitempty"`
+	BuildType    ApkDetails_BuildType    `protobuf:"varint,2,opt,name=build_type,json=buildType,proto3,enum=chromiumos.test.api.ApkDetails_BuildType" json:"build_type,omitempty"`
+	BuildPurpose ApkDetails_BuildPurpose `protobuf:"varint,3,opt,name=build_purpose,json=buildPurpose,proto3,enum=chromiumos.test.api.ApkDetails_BuildPurpose" json:"build_purpose,omitempty"`
+	Density      ApkDetails_Density      `protobuf:"varint,4,opt,name=density,proto3,enum=chromiumos.test.api.ApkDetails_Density" json:"density,omitempty"`
 }
 
-func (x *GMSCoreApk) Reset() {
-	*x = GMSCoreApk{}
+func (x *ApkDetails) Reset() {
+	*x = ApkDetails{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -337,13 +336,13 @@ func (x *GMSCoreApk) Reset() {
 	}
 }
 
-func (x *GMSCoreApk) String() string {
+func (x *ApkDetails) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GMSCoreApk) ProtoMessage() {}
+func (*ApkDetails) ProtoMessage() {}
 
-func (x *GMSCoreApk) ProtoReflect() protoreflect.Message {
+func (x *ApkDetails) ProtoReflect() protoreflect.Message {
 	mi := &file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -355,48 +354,48 @@ func (x *GMSCoreApk) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GMSCoreApk.ProtoReflect.Descriptor instead.
-func (*GMSCoreApk) Descriptor() ([]byte, []int) {
+// Deprecated: Use ApkDetails.ProtoReflect.Descriptor instead.
+func (*ApkDetails) Descriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GMSCoreApk) GetArchitecture() GMSCoreApk_Architecture {
+func (x *ApkDetails) GetArchitecture() ApkDetails_Architecture {
 	if x != nil {
 		return x.Architecture
 	}
-	return GMSCoreApk_ARCHITECTURE_UNSPECIFIED
+	return ApkDetails_ARCHITECTURE_UNSPECIFIED
 }
 
-func (x *GMSCoreApk) GetBuildType() GMSCoreApk_BuildType {
+func (x *ApkDetails) GetBuildType() ApkDetails_BuildType {
 	if x != nil {
 		return x.BuildType
 	}
-	return GMSCoreApk_BUILD_TYPE_UNSPECIFIED
+	return ApkDetails_BUILD_TYPE_UNSPECIFIED
 }
 
-func (x *GMSCoreApk) GetBuildPurpose() GMSCoreApk_BuildPurpose {
+func (x *ApkDetails) GetBuildPurpose() ApkDetails_BuildPurpose {
 	if x != nil {
 		return x.BuildPurpose
 	}
-	return GMSCoreApk_BUILD_PURPOSE_UNSPECIFIED
+	return ApkDetails_BUILD_PURPOSE_UNSPECIFIED
 }
 
-func (x *GMSCoreApk) GetDensity() GMSCoreApk_Density {
+func (x *ApkDetails) GetDensity() ApkDetails_Density {
 	if x != nil {
 		return x.Density
 	}
-	return GMSCoreApk_DENSITY_UNSPECIFIED
+	return ApkDetails_DENSITY_UNSPECIFIED
 }
 
-// Next Tag: 7
+// Next Tag: 8
 type CIPDPackage struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Name of a CIPD package to query instances.
+	// Required. CIPD package name.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. A CIPD package version.
+	// Required. CIPD package version.
 	// Can be defined by ref, tag or specific instance Id.
 	//
 	// Types that are assignable to VersionOneof:
@@ -404,11 +403,13 @@ type CIPDPackage struct {
 	//	*CIPDPackage_Tag
 	//	*CIPDPackage_InstanceId
 	VersionOneof isCIPDPackage_VersionOneof `protobuf_oneof:"version_oneof"`
-	// CIPD server to fetch this package from.
+	// CIPD server URL to fetch this package from.
 	// chrome-infra-packages.appspot.com is used by default.
-	Server string `protobuf:"bytes,5,opt,name=server,proto3" json:"server,omitempty"`
-	// Required. Details about the package.
-	PackageDetails *CIPDPackage_CIPDPackageDetails `protobuf:"bytes,6,opt,name=package_details,json=packageDetails,proto3" json:"package_details,omitempty"`
+	ServiceUrl string `protobuf:"bytes,5,opt,name=service_url,json=serviceUrl,proto3" json:"service_url,omitempty"`
+	// Required. Android package type.
+	AndroidPackage AndroidPackage `protobuf:"varint,6,opt,name=android_package,json=androidPackage,proto3,enum=chromiumos.test.api.AndroidPackage" json:"android_package,omitempty"`
+	// APK details (arch, build type, screen density)
+	ApkDetails *ApkDetails `protobuf:"bytes,7,opt,name=apk_details,json=apkDetails,proto3" json:"apk_details,omitempty"`
 }
 
 func (x *CIPDPackage) Reset() {
@@ -478,16 +479,23 @@ func (x *CIPDPackage) GetInstanceId() string {
 	return ""
 }
 
-func (x *CIPDPackage) GetServer() string {
+func (x *CIPDPackage) GetServiceUrl() string {
 	if x != nil {
-		return x.Server
+		return x.ServiceUrl
 	}
 	return ""
 }
 
-func (x *CIPDPackage) GetPackageDetails() *CIPDPackage_CIPDPackageDetails {
+func (x *CIPDPackage) GetAndroidPackage() AndroidPackage {
 	if x != nil {
-		return x.PackageDetails
+		return x.AndroidPackage
+	}
+	return AndroidPackage_ANDROID_PACKAGE_UNSPECIFIED
+}
+
+func (x *CIPDPackage) GetApkDetails() *ApkDetails {
+	if x != nil {
+		return x.ApkDetails
 	}
 	return nil
 }
@@ -514,26 +522,18 @@ func (*CIPDPackage_Tag) isCIPDPackage_VersionOneof() {}
 
 func (*CIPDPackage_InstanceId) isCIPDPackage_VersionOneof() {}
 
-// Next Tag: 6
-type AndroidDeviceProvisionMetadata struct {
+// Next Tag: 2
+type AndroidProvisionMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name for the DUT.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. Serial number of the DUT.
-	SerialNumber string `protobuf:"bytes,2,opt,name=serial_number,json=serialNumber,proto3" json:"serial_number,omitempty"`
-	// Required. Hostname to which the Android DUT is attached to.
-	AssociatedHostname string `protobuf:"bytes,3,opt,name=associated_hostname,json=associatedHostname,proto3" json:"associated_hostname,omitempty"`
-	// A list of adb keys (files or directories).
-	AdbVendorKeys []string `protobuf:"bytes,4,rep,name=adb_vendor_keys,json=adbVendorKeys,proto3" json:"adb_vendor_keys,omitempty"`
-	// Required. A list of CIPD packages which should be installed on the DUT.
-	CipdPackages []*CIPDPackage `protobuf:"bytes,5,rep,name=cipd_packages,json=cipdPackages,proto3" json:"cipd_packages,omitempty"`
+	// Required. A list of CIPD packages to install.
+	CipdPackages []*CIPDPackage `protobuf:"bytes,1,rep,name=cipd_packages,json=cipdPackages,proto3" json:"cipd_packages,omitempty"`
 }
 
-func (x *AndroidDeviceProvisionMetadata) Reset() {
-	*x = AndroidDeviceProvisionMetadata{}
+func (x *AndroidProvisionMetadata) Reset() {
+	*x = AndroidProvisionMetadata{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -541,13 +541,13 @@ func (x *AndroidDeviceProvisionMetadata) Reset() {
 	}
 }
 
-func (x *AndroidDeviceProvisionMetadata) String() string {
+func (x *AndroidProvisionMetadata) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AndroidDeviceProvisionMetadata) ProtoMessage() {}
+func (*AndroidProvisionMetadata) ProtoMessage() {}
 
-func (x *AndroidDeviceProvisionMetadata) ProtoReflect() protoreflect.Message {
+func (x *AndroidProvisionMetadata) ProtoReflect() protoreflect.Message {
 	mi := &file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -559,122 +559,16 @@ func (x *AndroidDeviceProvisionMetadata) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AndroidDeviceProvisionMetadata.ProtoReflect.Descriptor instead.
-func (*AndroidDeviceProvisionMetadata) Descriptor() ([]byte, []int) {
+// Deprecated: Use AndroidProvisionMetadata.ProtoReflect.Descriptor instead.
+func (*AndroidProvisionMetadata) Descriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *AndroidDeviceProvisionMetadata) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *AndroidDeviceProvisionMetadata) GetSerialNumber() string {
-	if x != nil {
-		return x.SerialNumber
-	}
-	return ""
-}
-
-func (x *AndroidDeviceProvisionMetadata) GetAssociatedHostname() string {
-	if x != nil {
-		return x.AssociatedHostname
-	}
-	return ""
-}
-
-func (x *AndroidDeviceProvisionMetadata) GetAdbVendorKeys() []string {
-	if x != nil {
-		return x.AdbVendorKeys
-	}
-	return nil
-}
-
-func (x *AndroidDeviceProvisionMetadata) GetCipdPackages() []*CIPDPackage {
+func (x *AndroidProvisionMetadata) GetCipdPackages() []*CIPDPackage {
 	if x != nil {
 		return x.CipdPackages
 	}
 	return nil
-}
-
-type CIPDPackage_CIPDPackageDetails struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Required. Type of the package.
-	PackageType CIPDPackage_CIPDPackageDetails_PackageType `protobuf:"varint,1,opt,name=package_type,json=packageType,proto3,enum=chromiumos.test.api.CIPDPackage_CIPDPackageDetails_PackageType" json:"package_type,omitempty"`
-	// Additional details about the package.
-	//
-	// Types that are assignable to AdditionalInfoOneof:
-	//	*CIPDPackage_CIPDPackageDetails_GmsCoreApkDetails
-	AdditionalInfoOneof isCIPDPackage_CIPDPackageDetails_AdditionalInfoOneof `protobuf_oneof:"additional_info_oneof"`
-}
-
-func (x *CIPDPackage_CIPDPackageDetails) Reset() {
-	*x = CIPDPackage_CIPDPackageDetails{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CIPDPackage_CIPDPackageDetails) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CIPDPackage_CIPDPackageDetails) ProtoMessage() {}
-
-func (x *CIPDPackage_CIPDPackageDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CIPDPackage_CIPDPackageDetails.ProtoReflect.Descriptor instead.
-func (*CIPDPackage_CIPDPackageDetails) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP(), []int{1, 0}
-}
-
-func (x *CIPDPackage_CIPDPackageDetails) GetPackageType() CIPDPackage_CIPDPackageDetails_PackageType {
-	if x != nil {
-		return x.PackageType
-	}
-	return CIPDPackage_CIPDPackageDetails_PACKAGE_TYPE_UNSPECIFIED
-}
-
-func (m *CIPDPackage_CIPDPackageDetails) GetAdditionalInfoOneof() isCIPDPackage_CIPDPackageDetails_AdditionalInfoOneof {
-	if m != nil {
-		return m.AdditionalInfoOneof
-	}
-	return nil
-}
-
-func (x *CIPDPackage_CIPDPackageDetails) GetGmsCoreApkDetails() *GMSCoreApk {
-	if x, ok := x.GetAdditionalInfoOneof().(*CIPDPackage_CIPDPackageDetails_GmsCoreApkDetails); ok {
-		return x.GmsCoreApkDetails
-	}
-	return nil
-}
-
-type isCIPDPackage_CIPDPackageDetails_AdditionalInfoOneof interface {
-	isCIPDPackage_CIPDPackageDetails_AdditionalInfoOneof()
-}
-
-type CIPDPackage_CIPDPackageDetails_GmsCoreApkDetails struct {
-	GmsCoreApkDetails *GMSCoreApk `protobuf:"bytes,2,opt,name=gms_core_apk_details,json=gmsCoreApkDetails,proto3,oneof"`
-}
-
-func (*CIPDPackage_CIPDPackageDetails_GmsCoreApkDetails) isCIPDPackage_CIPDPackageDetails_AdditionalInfoOneof() {
 }
 
 var File_chromiumos_test_api_android_provision_metadata_proto protoreflect.FileDescriptor
@@ -685,25 +579,25 @@ var file_chromiumos_test_api_android_provision_metadata_proto_rawDesc = []byte{
 	0x6f, 0x76, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x13, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d,
 	0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x22, 0x98, 0x06, 0x0a, 0x0a,
-	0x47, 0x4d, 0x53, 0x43, 0x6f, 0x72, 0x65, 0x41, 0x70, 0x6b, 0x12, 0x50, 0x0a, 0x0c, 0x61, 0x72,
+	0x41, 0x70, 0x6b, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x12, 0x50, 0x0a, 0x0c, 0x61, 0x72,
 	0x63, 0x68, 0x69, 0x74, 0x65, 0x63, 0x74, 0x75, 0x72, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e,
 	0x32, 0x2c, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
-	0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x47, 0x4d, 0x53, 0x43, 0x6f, 0x72, 0x65, 0x41, 0x70,
-	0x6b, 0x2e, 0x41, 0x72, 0x63, 0x68, 0x69, 0x74, 0x65, 0x63, 0x74, 0x75, 0x72, 0x65, 0x52, 0x0c,
+	0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x41, 0x70, 0x6b, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c,
+	0x73, 0x2e, 0x41, 0x72, 0x63, 0x68, 0x69, 0x74, 0x65, 0x63, 0x74, 0x75, 0x72, 0x65, 0x52, 0x0c,
 	0x61, 0x72, 0x63, 0x68, 0x69, 0x74, 0x65, 0x63, 0x74, 0x75, 0x72, 0x65, 0x12, 0x48, 0x0a, 0x0a,
 	0x62, 0x75, 0x69, 0x6c, 0x64, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e,
 	0x32, 0x29, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
-	0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x47, 0x4d, 0x53, 0x43, 0x6f, 0x72, 0x65, 0x41, 0x70,
-	0x6b, 0x2e, 0x42, 0x75, 0x69, 0x6c, 0x64, 0x54, 0x79, 0x70, 0x65, 0x52, 0x09, 0x62, 0x75, 0x69,
+	0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x41, 0x70, 0x6b, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c,
+	0x73, 0x2e, 0x42, 0x75, 0x69, 0x6c, 0x64, 0x54, 0x79, 0x70, 0x65, 0x52, 0x09, 0x62, 0x75, 0x69,
 	0x6c, 0x64, 0x54, 0x79, 0x70, 0x65, 0x12, 0x51, 0x0a, 0x0d, 0x62, 0x75, 0x69, 0x6c, 0x64, 0x5f,
 	0x70, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2c, 0x2e,
 	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e,
-	0x61, 0x70, 0x69, 0x2e, 0x47, 0x4d, 0x53, 0x43, 0x6f, 0x72, 0x65, 0x41, 0x70, 0x6b, 0x2e, 0x42,
+	0x61, 0x70, 0x69, 0x2e, 0x41, 0x70, 0x6b, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x2e, 0x42,
 	0x75, 0x69, 0x6c, 0x64, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x52, 0x0c, 0x62, 0x75, 0x69,
 	0x6c, 0x64, 0x50, 0x75, 0x72, 0x70, 0x6f, 0x73, 0x65, 0x12, 0x41, 0x0a, 0x07, 0x64, 0x65, 0x6e,
 	0x73, 0x69, 0x74, 0x79, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x27, 0x2e, 0x63, 0x68, 0x72,
 	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69,
-	0x2e, 0x47, 0x4d, 0x53, 0x43, 0x6f, 0x72, 0x65, 0x41, 0x70, 0x6b, 0x2e, 0x44, 0x65, 0x6e, 0x73,
+	0x2e, 0x41, 0x70, 0x6b, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x2e, 0x44, 0x65, 0x6e, 0x73,
 	0x69, 0x74, 0x79, 0x52, 0x07, 0x64, 0x65, 0x6e, 0x73, 0x69, 0x74, 0x79, 0x22, 0x57, 0x0a, 0x0c,
 	0x41, 0x72, 0x63, 0x68, 0x69, 0x74, 0x65, 0x63, 0x74, 0x75, 0x72, 0x65, 0x12, 0x1c, 0x0a, 0x18,
 	0x41, 0x52, 0x43, 0x48, 0x49, 0x54, 0x45, 0x43, 0x54, 0x55, 0x52, 0x45, 0x5f, 0x55, 0x4e, 0x53,
@@ -734,60 +628,40 @@ var file_chromiumos_test_api_android_provision_metadata_proto_rawDesc = []byte{
 	0x08, 0x0a, 0x04, 0x4d, 0x44, 0x50, 0x49, 0x10, 0x01, 0x12, 0x08, 0x0a, 0x04, 0x48, 0x44, 0x50,
 	0x49, 0x10, 0x02, 0x12, 0x09, 0x0a, 0x05, 0x58, 0x48, 0x44, 0x50, 0x49, 0x10, 0x03, 0x12, 0x0a,
 	0x0a, 0x06, 0x58, 0x58, 0x48, 0x44, 0x50, 0x49, 0x10, 0x04, 0x12, 0x0a, 0x0a, 0x06, 0x41, 0x4c,
-	0x4c, 0x44, 0x50, 0x49, 0x10, 0x05, 0x22, 0x9a, 0x04, 0x0a, 0x0b, 0x43, 0x49, 0x50, 0x44, 0x50,
+	0x4c, 0x44, 0x50, 0x49, 0x10, 0x05, 0x22, 0xae, 0x02, 0x0a, 0x0b, 0x43, 0x49, 0x50, 0x44, 0x50,
 	0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x03, 0x72, 0x65,
 	0x66, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x03, 0x72, 0x65, 0x66, 0x12, 0x12,
 	0x0a, 0x03, 0x74, 0x61, 0x67, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x03, 0x74,
 	0x61, 0x67, 0x12, 0x21, 0x0a, 0x0b, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x5f, 0x69,
 	0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x0a, 0x69, 0x6e, 0x73, 0x74, 0x61,
-	0x6e, 0x63, 0x65, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x18,
-	0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x12, 0x5c, 0x0a,
-	0x0f, 0x70, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x5f, 0x64, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73,
-	0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x33, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75,
-	0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x49, 0x50,
-	0x44, 0x50, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x2e, 0x43, 0x49, 0x50, 0x44, 0x50, 0x61, 0x63,
-	0x6b, 0x61, 0x67, 0x65, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x52, 0x0e, 0x70, 0x61, 0x63,
-	0x6b, 0x61, 0x67, 0x65, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x1a, 0xa4, 0x02, 0x0a, 0x12,
-	0x43, 0x49, 0x50, 0x44, 0x50, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x44, 0x65, 0x74, 0x61, 0x69,
-	0x6c, 0x73, 0x12, 0x62, 0x0a, 0x0c, 0x70, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x5f, 0x74, 0x79,
-	0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x3f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d,
-	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43,
-	0x49, 0x50, 0x44, 0x50, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x2e, 0x43, 0x49, 0x50, 0x44, 0x50,
-	0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x2e, 0x50, 0x61,
-	0x63, 0x6b, 0x61, 0x67, 0x65, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0b, 0x70, 0x61, 0x63, 0x6b, 0x61,
-	0x67, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x52, 0x0a, 0x14, 0x67, 0x6d, 0x73, 0x5f, 0x63, 0x6f,
-	0x72, 0x65, 0x5f, 0x61, 0x70, 0x6b, 0x5f, 0x64, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f,
-	0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x47, 0x4d, 0x53, 0x43, 0x6f,
-	0x72, 0x65, 0x41, 0x70, 0x6b, 0x48, 0x00, 0x52, 0x11, 0x67, 0x6d, 0x73, 0x43, 0x6f, 0x72, 0x65,
-	0x41, 0x70, 0x6b, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x22, 0x3d, 0x0a, 0x0b, 0x50, 0x61,
-	0x63, 0x6b, 0x61, 0x67, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1c, 0x0a, 0x18, 0x50, 0x41, 0x43,
-	0x4b, 0x41, 0x47, 0x45, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43,
-	0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x10, 0x0a, 0x0c, 0x47, 0x4d, 0x53, 0x5f, 0x43,
-	0x4f, 0x52, 0x45, 0x5f, 0x41, 0x50, 0x4b, 0x10, 0x01, 0x42, 0x17, 0x0a, 0x15, 0x61, 0x64, 0x64,
-	0x69, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x5f, 0x6f, 0x6e, 0x65,
-	0x6f, 0x66, 0x42, 0x0f, 0x0a, 0x0d, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x6f, 0x6e,
-	0x65, 0x6f, 0x66, 0x22, 0xf9, 0x01, 0x0a, 0x1e, 0x41, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x44,
-	0x65, 0x76, 0x69, 0x63, 0x65, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x65,
-	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x73, 0x65,
-	0x72, 0x69, 0x61, 0x6c, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0c, 0x73, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12,
-	0x2f, 0x0a, 0x13, 0x61, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x68, 0x6f,
-	0x73, 0x74, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x61, 0x73,
-	0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x64, 0x48, 0x6f, 0x73, 0x74, 0x6e, 0x61, 0x6d, 0x65,
-	0x12, 0x26, 0x0a, 0x0f, 0x61, 0x64, 0x62, 0x5f, 0x76, 0x65, 0x6e, 0x64, 0x6f, 0x72, 0x5f, 0x6b,
-	0x65, 0x79, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0d, 0x61, 0x64, 0x62, 0x56, 0x65,
-	0x6e, 0x64, 0x6f, 0x72, 0x4b, 0x65, 0x79, 0x73, 0x12, 0x45, 0x0a, 0x0d, 0x63, 0x69, 0x70, 0x64,
-	0x5f, 0x70, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32,
-	0x20, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73,
-	0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x49, 0x50, 0x44, 0x50, 0x61, 0x63, 0x6b, 0x61, 0x67,
-	0x65, 0x52, 0x0c, 0x63, 0x69, 0x70, 0x64, 0x50, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x73, 0x42,
-	0x2f, 0x5a, 0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f,
-	0x72, 0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f,
-	0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6e, 0x63, 0x65, 0x49, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x5f, 0x75, 0x72, 0x6c, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x55, 0x72, 0x6c, 0x12, 0x4c, 0x0a, 0x0f, 0x61, 0x6e, 0x64, 0x72, 0x6f, 0x69,
+	0x64, 0x5f, 0x70, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0e, 0x32,
+	0x23, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73,
+	0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x41, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x50, 0x61, 0x63,
+	0x6b, 0x61, 0x67, 0x65, 0x52, 0x0e, 0x61, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x50, 0x61, 0x63,
+	0x6b, 0x61, 0x67, 0x65, 0x12, 0x40, 0x0a, 0x0b, 0x61, 0x70, 0x6b, 0x5f, 0x64, 0x65, 0x74, 0x61,
+	0x69, 0x6c, 0x73, 0x18, 0x07, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x41, 0x70, 0x6b, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x52, 0x0a, 0x61, 0x70, 0x6b, 0x44,
+	0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x42, 0x0f, 0x0a, 0x0d, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f,
+	0x6e, 0x5f, 0x6f, 0x6e, 0x65, 0x6f, 0x66, 0x22, 0x61, 0x0a, 0x18, 0x41, 0x6e, 0x64, 0x72, 0x6f,
+	0x69, 0x64, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0x12, 0x45, 0x0a, 0x0d, 0x63, 0x69, 0x70, 0x64, 0x5f, 0x70, 0x61, 0x63, 0x6b,
+	0x61, 0x67, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x63, 0x68, 0x72,
+	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x43, 0x49, 0x50, 0x44, 0x50, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x52, 0x0c, 0x63, 0x69,
+	0x70, 0x64, 0x50, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x73, 0x2a, 0x3f, 0x0a, 0x0e, 0x41, 0x6e,
+	0x64, 0x72, 0x6f, 0x69, 0x64, 0x50, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x12, 0x1f, 0x0a, 0x1b,
+	0x41, 0x4e, 0x44, 0x52, 0x4f, 0x49, 0x44, 0x5f, 0x50, 0x41, 0x43, 0x4b, 0x41, 0x47, 0x45, 0x5f,
+	0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0c, 0x0a,
+	0x08, 0x47, 0x4d, 0x53, 0x5f, 0x43, 0x4f, 0x52, 0x45, 0x10, 0x01, 0x42, 0x2f, 0x5a, 0x2d, 0x67,
+	0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x63,
+	0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -803,32 +677,30 @@ func file_chromiumos_test_api_android_provision_metadata_proto_rawDescGZIP() []b
 }
 
 var file_chromiumos_test_api_android_provision_metadata_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
-var file_chromiumos_test_api_android_provision_metadata_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_chromiumos_test_api_android_provision_metadata_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_chromiumos_test_api_android_provision_metadata_proto_goTypes = []interface{}{
-	(GMSCoreApk_Architecture)(0),                    // 0: chromiumos.test.api.GMSCoreApk.Architecture
-	(GMSCoreApk_BuildType)(0),                       // 1: chromiumos.test.api.GMSCoreApk.BuildType
-	(GMSCoreApk_BuildPurpose)(0),                    // 2: chromiumos.test.api.GMSCoreApk.BuildPurpose
-	(GMSCoreApk_Density)(0),                         // 3: chromiumos.test.api.GMSCoreApk.Density
-	(CIPDPackage_CIPDPackageDetails_PackageType)(0), // 4: chromiumos.test.api.CIPDPackage.CIPDPackageDetails.PackageType
-	(*GMSCoreApk)(nil),                              // 5: chromiumos.test.api.GMSCoreApk
-	(*CIPDPackage)(nil),                             // 6: chromiumos.test.api.CIPDPackage
-	(*AndroidDeviceProvisionMetadata)(nil),          // 7: chromiumos.test.api.AndroidDeviceProvisionMetadata
-	(*CIPDPackage_CIPDPackageDetails)(nil),          // 8: chromiumos.test.api.CIPDPackage.CIPDPackageDetails
+	(AndroidPackage)(0),              // 0: chromiumos.test.api.AndroidPackage
+	(ApkDetails_Architecture)(0),     // 1: chromiumos.test.api.ApkDetails.Architecture
+	(ApkDetails_BuildType)(0),        // 2: chromiumos.test.api.ApkDetails.BuildType
+	(ApkDetails_BuildPurpose)(0),     // 3: chromiumos.test.api.ApkDetails.BuildPurpose
+	(ApkDetails_Density)(0),          // 4: chromiumos.test.api.ApkDetails.Density
+	(*ApkDetails)(nil),               // 5: chromiumos.test.api.ApkDetails
+	(*CIPDPackage)(nil),              // 6: chromiumos.test.api.CIPDPackage
+	(*AndroidProvisionMetadata)(nil), // 7: chromiumos.test.api.AndroidProvisionMetadata
 }
 var file_chromiumos_test_api_android_provision_metadata_proto_depIdxs = []int32{
-	0, // 0: chromiumos.test.api.GMSCoreApk.architecture:type_name -> chromiumos.test.api.GMSCoreApk.Architecture
-	1, // 1: chromiumos.test.api.GMSCoreApk.build_type:type_name -> chromiumos.test.api.GMSCoreApk.BuildType
-	2, // 2: chromiumos.test.api.GMSCoreApk.build_purpose:type_name -> chromiumos.test.api.GMSCoreApk.BuildPurpose
-	3, // 3: chromiumos.test.api.GMSCoreApk.density:type_name -> chromiumos.test.api.GMSCoreApk.Density
-	8, // 4: chromiumos.test.api.CIPDPackage.package_details:type_name -> chromiumos.test.api.CIPDPackage.CIPDPackageDetails
-	6, // 5: chromiumos.test.api.AndroidDeviceProvisionMetadata.cipd_packages:type_name -> chromiumos.test.api.CIPDPackage
-	4, // 6: chromiumos.test.api.CIPDPackage.CIPDPackageDetails.package_type:type_name -> chromiumos.test.api.CIPDPackage.CIPDPackageDetails.PackageType
-	5, // 7: chromiumos.test.api.CIPDPackage.CIPDPackageDetails.gms_core_apk_details:type_name -> chromiumos.test.api.GMSCoreApk
-	8, // [8:8] is the sub-list for method output_type
-	8, // [8:8] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	1, // 0: chromiumos.test.api.ApkDetails.architecture:type_name -> chromiumos.test.api.ApkDetails.Architecture
+	2, // 1: chromiumos.test.api.ApkDetails.build_type:type_name -> chromiumos.test.api.ApkDetails.BuildType
+	3, // 2: chromiumos.test.api.ApkDetails.build_purpose:type_name -> chromiumos.test.api.ApkDetails.BuildPurpose
+	4, // 3: chromiumos.test.api.ApkDetails.density:type_name -> chromiumos.test.api.ApkDetails.Density
+	0, // 4: chromiumos.test.api.CIPDPackage.android_package:type_name -> chromiumos.test.api.AndroidPackage
+	5, // 5: chromiumos.test.api.CIPDPackage.apk_details:type_name -> chromiumos.test.api.ApkDetails
+	6, // 6: chromiumos.test.api.AndroidProvisionMetadata.cipd_packages:type_name -> chromiumos.test.api.CIPDPackage
+	7, // [7:7] is the sub-list for method output_type
+	7, // [7:7] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_api_android_provision_metadata_proto_init() }
@@ -838,7 +710,7 @@ func file_chromiumos_test_api_android_provision_metadata_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GMSCoreApk); i {
+			switch v := v.(*ApkDetails); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -862,19 +734,7 @@ func file_chromiumos_test_api_android_provision_metadata_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AndroidDeviceProvisionMetadata); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CIPDPackage_CIPDPackageDetails); i {
+			switch v := v.(*AndroidProvisionMetadata); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -891,16 +751,13 @@ func file_chromiumos_test_api_android_provision_metadata_proto_init() {
 		(*CIPDPackage_Tag)(nil),
 		(*CIPDPackage_InstanceId)(nil),
 	}
-	file_chromiumos_test_api_android_provision_metadata_proto_msgTypes[3].OneofWrappers = []interface{}{
-		(*CIPDPackage_CIPDPackageDetails_GmsCoreApkDetails)(nil),
-	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_api_android_provision_metadata_proto_rawDesc,
 			NumEnums:      5,
-			NumMessages:   4,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
