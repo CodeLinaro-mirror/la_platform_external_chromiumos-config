@@ -65,6 +65,7 @@ _SCREEN = hw_topo.create_screen(
         hw_topo.create_als_step(100, None, 100),
     ],
     seamless_refresh_rate_switching = True,
+    privacy_screen = False,
 )
 _TOUCHSCREEN = hw_topo.create_screen(
     id = "TOUCHSCREEN",
@@ -86,6 +87,26 @@ _TOUCHSCREEN = hw_topo.create_screen(
         ),
         hw_topo.create_als_step(100, None, ac_backlight_nits = 215),
     ],
+    privacy_screen = False,
+)
+_PRIVACY_SCREEN = hw_topo.create_screen(
+    id = "PRIVACY_SCREEN",
+    description = "Privacy screen",
+    inches = 15,
+    width_px = 1920,
+    height_px = 1080,
+    pixels_per_in = 280,
+    touch = False,
+    min_visible_backlight_level = 1000,
+    turn_off_screen_timeout_ms = 0,
+    no_als_battery_brightness = 63.2,
+    no_als_ac_brightness = 80.1,
+    als_steps = [
+        hw_topo.create_als_step(None, 400, 80.1, 60.1),
+        hw_topo.create_als_step(100, None, 100),
+    ],
+    seamless_refresh_rate_switching = True,
+    privacy_screen = True,
 )
 _HDMI = hw_topo.create_hdmi(
     id = "HDMI",
@@ -1090,7 +1111,7 @@ design.append_configs(
     hardware_topology = create_hardware_topology(
         bluetooth = _BLUETOOTH,
         camera = _CAMERA1,
-        screen = _TOUCHSCREEN,
+        screen = _PRIVACY_SCREEN,
         stylus = _STYLUS,
         form_factor = _FORM_FACTOR_CHROMESLATE,
         wifi = hw_topo.create_wifi(

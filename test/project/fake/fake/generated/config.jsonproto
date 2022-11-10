@@ -4008,30 +4008,31 @@
               "panelProperties": {
                 "alsSteps": [
                   {
-                    "acBacklightNits": 133.0,
-                    "batteryBacklightNits": 80.0,
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
                     "luxDecreaseThreshold": -1,
-                    "luxIncreaseThreshold": 400,
-                    "maxScreenBrightness": 215.0
+                    "luxIncreaseThreshold": 400
                   },
                   {
-                    "acBacklightNits": 215.0,
-                    "batteryBacklightNits": 215.0,
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
                     "luxDecreaseThreshold": 100,
-                    "luxIncreaseThreshold": -1,
-                    "maxScreenBrightness": 215.0
+                    "luxIncreaseThreshold": -1
                   }
                 ],
                 "diagonalMilliinch": 15000,
+                "features": [
+                  2
+                ],
                 "heightPx": 1080,
-                "maxScreenBrightness": 215.0,
-                "noAlsAcBrightnessNits": 135.0,
-                "noAlsBatteryBrightnessNits": 80.0,
-                "pixelsPerIn": 120,
-                "turnOffScreenTimeoutMs": 3000,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
+                "pixelsPerIn": 280,
+                "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
-              "touchSupport": 1
+              "touchSupport": 2
             },
             "storage": {
               "storageType": 1
@@ -4338,40 +4339,44 @@
             },
             "screen": {
               "description": {
-                "EN": "Touchscreen"
+                "EN": "Privacy screen"
               },
               "hardwareFeature": {
+                "privacyScreen": {
+                  "present": 1
+                },
                 "screen": {
                   "panelProperties": {
                     "alsSteps": [
                       {
-                        "acBacklightNits": 133.0,
-                        "batteryBacklightNits": 80.0,
+                        "acBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 60.1,
                         "luxDecreaseThreshold": -1,
-                        "luxIncreaseThreshold": 400,
-                        "maxScreenBrightness": 215.0
+                        "luxIncreaseThreshold": 400
                       },
                       {
-                        "acBacklightNits": 215.0,
-                        "batteryBacklightNits": 215.0,
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 100.0,
                         "luxDecreaseThreshold": 100,
-                        "luxIncreaseThreshold": -1,
-                        "maxScreenBrightness": 215.0
+                        "luxIncreaseThreshold": -1
                       }
                     ],
                     "diagonalMilliinch": 15000,
+                    "features": [
+                      2
+                    ],
                     "heightPx": 1080,
-                    "maxScreenBrightness": 215.0,
-                    "noAlsAcBrightnessNits": 135.0,
-                    "noAlsBatteryBrightnessNits": 80.0,
-                    "pixelsPerIn": 120,
-                    "turnOffScreenTimeoutMs": 3000,
+                    "minVisibleBacklightLevel": 1000,
+                    "noAlsAcBrightness": 80.1,
+                    "noAlsBatteryBrightness": 63.2,
+                    "pixelsPerIn": 280,
+                    "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
-                  "touchSupport": 1
+                  "touchSupport": 2
                 }
               },
-              "id": "TOUCHSCREEN",
+              "id": "PRIVACY_SCREEN",
               "type": 1
             },
             "sdReader": {

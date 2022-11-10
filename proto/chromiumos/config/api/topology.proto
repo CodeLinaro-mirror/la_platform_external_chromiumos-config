@@ -67,6 +67,7 @@ message Topology {
     POE = 31;
     POWER_SUPPLY = 32;
     RECOVERY_INPUT = 33;
+    PRIVACY_SCREEN = 34;
   }
 
   // Map of human readable descriptions in various languages. Maps language

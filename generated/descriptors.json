@@ -3634,6 +3634,10 @@
                 {
                   "name": "RECOVERY_INPUT",
                   "number": 33
+                },
+                {
+                  "name": "PRIVACY_SCREEN",
+                  "number": 34
                 }
               ]
             }

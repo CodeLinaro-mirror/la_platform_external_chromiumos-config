@@ -174,7 +174,8 @@ def _create_screen(
         inches = 0,
         width_px = None,
         height_px = None,
-        pixels_per_in = None):
+        pixels_per_in = None,
+        privacy_screen = False):
     """Specify features of screen"""
 
     return _HW_FEAT(
@@ -186,6 +187,9 @@ def _create_screen(
                 height_px = height_px,
                 pixels_per_in = pixels_per_in,
             ),
+        ),
+        privacy_screen = _HW_FEAT.PrivacyScreen(
+            present = _bool_to_present(privacy_screen),
         ),
     )
 

@@ -240,7 +240,8 @@ def _create_screen(
         turn_off_screen_timeout_ms = None,
         als_steps = None,
         fw_configs = [],
-        seamless_refresh_rate_switching = False):
+        seamless_refresh_rate_switching = False,
+        privacy_screen = False):
     """Builds a Topology proto for a screen."""
     hw_features = _HW_FEAT()
 
@@ -283,6 +284,9 @@ def _create_screen(
     hw_features.screen.panel_properties.max_screen_brightness = max_brightness_nits
     if turn_off_screen_timeout_ms != None:
         hw_features.screen.panel_properties.turn_off_screen_timeout_ms.value = turn_off_screen_timeout_ms
+
+    if privacy_screen:
+        hw_features.privacy_screen.present = _PRESENT.PRESENT
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
