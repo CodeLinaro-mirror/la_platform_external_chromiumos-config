@@ -28,7 +28,7 @@ message Dut {
   }
 
   // Chrome OS specific DUT details
-  // NEXT TAG: 16
+  // NEXT TAG: 17
   message ChromeOS {
     // Unique identifiers around the device's hardware, manufacturing, and brand
     // configuration.
@@ -51,6 +51,7 @@ message Dut {
     Camerabox camerabox = 11;
     repeated Cable cables = 12;
     Cellular cellular = 13;
+    repeated string hwid_component = 16;
 
     reserved 1;
   }

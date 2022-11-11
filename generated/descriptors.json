@@ -15352,6 +15352,13 @@
                   "number": 13,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.Cellular"
+                },
+                {
+                  "jsonName": "hwidComponent",
+                  "label": "LABEL_REPEATED",
+                  "name": "hwid_component",
+                  "number": 16,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "ChromeOS",
