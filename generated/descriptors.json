@@ -16788,6 +16788,13 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCaseList"
+            },
+            {
+              "jsonName": "totalShards",
+              "label": "LABEL_OPTIONAL",
+              "name": "total_shards",
+              "number": 5,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "TestSuite",

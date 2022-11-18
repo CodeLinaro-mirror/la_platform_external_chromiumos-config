@@ -28,6 +28,10 @@ message TestSuite {
     TestCaseList test_cases = 4;
   }
 
+  // The total number of shards to be used in a test run.
+  // Currently only supported for Tast VM tests which are not run by CFT.
+  int64 total_shards = 5;
+
   // Defines tag based selection criteria, which is applied against
   // a list of TestCase definitions to determine test suite inclusion.
   //
