@@ -62,8 +62,18 @@ message Parameter {
         // "sudo sysctl vm.swappiness=%(parameter_value)s"
         string command_line = 3;
 
-        // Whether the command should be executed on the host or the DUT.
-        bool local_execution = 4;
+        // Whether the command should be executed locally or on DUT host
+        // or on DUT guest.
+        enum ExecutionMode {
+          EXECUTION_UNSPECIFIED = 0;
+          // Running locally
+          EXECUTION_LOCAL = 1;
+          // Running on DUT host
+          EXECUTION_DUT = 2;
+          // Running on DUT guest via tast parameter
+          EXECUTION_TAST_VARIABLE = 3;
+        }
+        ExecutionMode execution_mode = 4;
 }
 
 message Workload {

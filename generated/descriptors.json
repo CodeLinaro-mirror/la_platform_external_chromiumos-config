@@ -9413,6 +9413,29 @@
           "name": "Build"
         },
         {
+          "enumType": [
+            {
+              "name": "ExecutionMode",
+              "value": [
+                {
+                  "name": "EXECUTION_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "EXECUTION_LOCAL",
+                  "number": 1
+                },
+                {
+                  "name": "EXECUTION_DUT",
+                  "number": 2
+                },
+                {
+                  "name": "EXECUTION_TAST_VARIABLE",
+                  "number": 3
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "name",
@@ -9436,11 +9459,12 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "localExecution",
+              "jsonName": "executionMode",
               "label": "LABEL_OPTIONAL",
-              "name": "local_execution",
+              "name": "execution_mode",
               "number": 4,
-              "type": "TYPE_BOOL"
+              "type": "TYPE_ENUM",
+              "typeName": ".chromium.config.api.test.benchy.v1.Parameter.ExecutionMode"
             }
           ],
           "name": "Parameter"
