@@ -25,6 +25,7 @@ message Dut {
   oneof dut_type {
     ChromeOS chromeos = 2;
     Android android = 3;
+    Devboard devboard = 5;
   }
 
   // Chrome OS specific DUT details
@@ -69,6 +70,17 @@ message Dut {
     // A string created by adb to uniquely identify the device.
     string serial_number = 3;
     DutModel dut_model = 4;
+  }
+
+  // Devboard specific DUT details
+  message Devboard {
+    // The type of devboard, e.g., andreiboard.
+    string board_type = 1;
+    // Serial for the UltraDebug interface, if present.
+    string ultradebug_serial = 2;
+    Servo servo = 3;
+    // An ID string for the fingerprint module.
+    string fingerprint_module_id = 4;
   }
 
   // Cache server for downloading artifacts related to this DUT.

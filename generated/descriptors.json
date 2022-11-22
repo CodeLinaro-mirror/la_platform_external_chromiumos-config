@@ -15656,6 +15656,15 @@
               "typeName": ".chromiumos.test.lab.api.Dut.Android"
             },
             {
+              "jsonName": "devboard",
+              "label": "LABEL_OPTIONAL",
+              "name": "devboard",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut.Devboard"
+            },
+            {
               "jsonName": "cacheServer",
               "label": "LABEL_OPTIONAL",
               "name": "cache_server",
@@ -15871,6 +15880,40 @@
                 }
               ],
               "name": "Android"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "boardType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "board_type",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "ultradebugSerial",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ultradebug_serial",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "servo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Servo"
+                },
+                {
+                  "jsonName": "fingerprintModuleId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "fingerprint_module_id",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Devboard"
             }
           ],
           "oneofDecl": [
