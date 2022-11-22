@@ -15392,6 +15392,25 @@
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto"
       ],
+      "enumType": [
+        {
+          "name": "PeripheralState",
+          "value": [
+            {
+              "name": "PERIPHERAL_STATE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "WORKING",
+              "number": 1
+            },
+            {
+              "name": "BROKEN",
+              "number": 2
+            }
+          ]
+        }
+      ],
       "messageType": [
         {
           "field": [
@@ -15563,6 +15582,14 @@
                   "name": "hwid_component",
                   "number": 16,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "bluetoothPeers",
+                  "label": "LABEL_REPEATED",
+                  "name": "bluetooth_peers",
+                  "number": 17,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.BluetoothPeer"
                 }
               ],
               "name": "ChromeOS",
@@ -16044,6 +16071,26 @@
             }
           ],
           "name": "WifiAntenna"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hostname",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.PeripheralState"
+            }
+          ],
+          "name": "BluetoothPeer"
         }
       ],
       "name": "chromiumos/test/lab/api/dut.proto",

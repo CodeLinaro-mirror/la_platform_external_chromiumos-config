@@ -28,7 +28,7 @@ message Dut {
   }
 
   // Chrome OS specific DUT details
-  // NEXT TAG: 17
+  // NEXT TAG: 18
   message ChromeOS {
     // Unique identifiers around the device's hardware, manufacturing, and brand
     // configuration.
@@ -52,6 +52,7 @@ message Dut {
     repeated Cable cables = 12;
     Cellular cellular = 13;
     repeated string hwid_component = 16;
+    repeated BluetoothPeer bluetooth_peers = 17;
 
     reserved 1;
   }
@@ -239,4 +240,17 @@ message WifiAntenna {
     OTA = 2;
   }
   Connection connection = 1;
+}
+
+// Bluetooth Peers attached to the DUT.
+message BluetoothPeer {
+  string hostname = 1;
+  PeripheralState state = 2;
+}
+
+// Next Tag: 3
+enum PeripheralState {
+  PERIPHERAL_STATE_UNSPECIFIED = 0;
+  WORKING = 1;
+  BROKEN = 2;
 }
