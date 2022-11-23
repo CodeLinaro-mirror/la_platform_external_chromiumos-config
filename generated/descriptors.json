@@ -17112,6 +17112,13 @@
               "typeName": ".google.protobuf.BoolValue"
             },
             {
+              "jsonName": "runViaCft",
+              "label": "LABEL_OPTIONAL",
+              "name": "run_via_cft",
+              "number": 6,
+              "type": "TYPE_BOOL"
+            },
+            {
               "jsonName": "dutCriteria",
               "label": "LABEL_REPEATED",
               "name": "dut_criteria",

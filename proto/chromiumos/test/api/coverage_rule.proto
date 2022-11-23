@@ -14,6 +14,7 @@ import "chromiumos/test/api/test_suite.proto";
 
 // CoverageRule specifies a set of tests that must be executed, and criteria for
 // the DUTs to execute tests on.
+// Next ID: 7
 message CoverageRule {
   // Optional human friendly name of the rule, e.g.
   // "kernel:5.4_soc:geminilake_wifi:intel-5600".
@@ -32,6 +33,9 @@ message CoverageRule {
   // whether failures in this rule fail a CQ or postsubmit run. Note that the
   // default is true.
   google.protobuf.BoolValue critical = 5;
+
+  // If true, then run test suites in this rule via CFT workflow.
+  bool run_via_cft = 6;
 
   // Graveyard
   repeated DutCriterion dut_criteria = 3 [deprecated = true];
