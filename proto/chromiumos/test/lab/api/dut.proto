@@ -28,7 +28,7 @@ message Dut {
   }
 
   // Chrome OS specific DUT details
-  // NEXT TAG: 18
+  // NEXT TAG: 21
   message ChromeOS {
     // Unique identifiers around the device's hardware, manufacturing, and brand
     // configuration.
@@ -53,6 +53,9 @@ message Dut {
     Cellular cellular = 13;
     repeated string hwid_component = 16;
     repeated BluetoothPeer bluetooth_peers = 17;
+    string sku = 18;
+    string hwid = 19;
+    Phase phase = 20;
 
     reserved 1;
   }
@@ -253,4 +256,42 @@ enum PeripheralState {
   PERIPHERAL_STATE_UNSPECIFIED = 0;
   WORKING = 1;
   BROKEN = 2;
+}
+
+// Next Tag: 34
+enum Phase {
+  PHASE_UNSPECIFIED = 0;
+  DVT = 1;
+  DVT_2 = 2;
+  DVT_2_MPS_LTE = 3;
+  DVT_BIPSHIP = 4;
+  DVT_BOOKEM = 5;
+  DVT_ELECTRO = 6;
+  DVT_LOCKE = 7;
+  DVT_OSCINO = 8;
+  DVT_REKS14 = 9;
+  DVT_REKS14_TOUCH = 10;
+  DVT_TOUCH = 11;
+  EVT = 12;
+  EVT_FLEEX_LTE = 13;
+  EVT_HQ = 14;
+  EVT_LTE = 15;
+  EVT_MAPLE = 16;
+  EVT_PUJJO = 17;
+  PROTO = 18;
+  PROTO1 = 19;
+  PVT = 20;
+  PVT_TERRA3 = 21;
+  PVT_US = 22;
+  PVT_2 = 23;
+  PVT_BOOKEM = 24;
+  PVT_ELECTRO = 25;
+  PVT_GIK360 = 26;
+  PVT_LILI = 27;
+  PVT_LTE = 28;
+  PVT_NEW_CPU = 29;
+  PVT_SAND = 30;
+  PVT_TUNE_BITS = 31;
+  PVT_TELESU = 32;
+  SR = 33;
 }

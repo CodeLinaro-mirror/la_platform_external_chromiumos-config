@@ -15433,6 +15433,147 @@
               "number": 2
             }
           ]
+        },
+        {
+          "name": "Phase",
+          "value": [
+            {
+              "name": "PHASE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "DVT",
+              "number": 1
+            },
+            {
+              "name": "DVT_2",
+              "number": 2
+            },
+            {
+              "name": "DVT_2_MPS_LTE",
+              "number": 3
+            },
+            {
+              "name": "DVT_BIPSHIP",
+              "number": 4
+            },
+            {
+              "name": "DVT_BOOKEM",
+              "number": 5
+            },
+            {
+              "name": "DVT_ELECTRO",
+              "number": 6
+            },
+            {
+              "name": "DVT_LOCKE",
+              "number": 7
+            },
+            {
+              "name": "DVT_OSCINO",
+              "number": 8
+            },
+            {
+              "name": "DVT_REKS14",
+              "number": 9
+            },
+            {
+              "name": "DVT_REKS14_TOUCH",
+              "number": 10
+            },
+            {
+              "name": "DVT_TOUCH",
+              "number": 11
+            },
+            {
+              "name": "EVT",
+              "number": 12
+            },
+            {
+              "name": "EVT_FLEEX_LTE",
+              "number": 13
+            },
+            {
+              "name": "EVT_HQ",
+              "number": 14
+            },
+            {
+              "name": "EVT_LTE",
+              "number": 15
+            },
+            {
+              "name": "EVT_MAPLE",
+              "number": 16
+            },
+            {
+              "name": "EVT_PUJJO",
+              "number": 17
+            },
+            {
+              "name": "PROTO",
+              "number": 18
+            },
+            {
+              "name": "PROTO1",
+              "number": 19
+            },
+            {
+              "name": "PVT",
+              "number": 20
+            },
+            {
+              "name": "PVT_TERRA3",
+              "number": 21
+            },
+            {
+              "name": "PVT_US",
+              "number": 22
+            },
+            {
+              "name": "PVT_2",
+              "number": 23
+            },
+            {
+              "name": "PVT_BOOKEM",
+              "number": 24
+            },
+            {
+              "name": "PVT_ELECTRO",
+              "number": 25
+            },
+            {
+              "name": "PVT_GIK360",
+              "number": 26
+            },
+            {
+              "name": "PVT_LILI",
+              "number": 27
+            },
+            {
+              "name": "PVT_LTE",
+              "number": 28
+            },
+            {
+              "name": "PVT_NEW_CPU",
+              "number": 29
+            },
+            {
+              "name": "PVT_SAND",
+              "number": 30
+            },
+            {
+              "name": "PVT_TUNE_BITS",
+              "number": 31
+            },
+            {
+              "name": "PVT_TELESU",
+              "number": 32
+            },
+            {
+              "name": "SR",
+              "number": 33
+            }
+          ]
         }
       ],
       "messageType": [
@@ -15614,6 +15755,28 @@
                   "number": 17,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.BluetoothPeer"
+                },
+                {
+                  "jsonName": "sku",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "sku",
+                  "number": 18,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "hwid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hwid",
+                  "number": 19,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "phase",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "phase",
+                  "number": 20,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.lab.api.Phase"
                 }
               ],
               "name": "ChromeOS",
