@@ -328,8 +328,9 @@ message SwarmingInfo {
   string suite_task_id = 2;
 
   // The swarming task name (swarming request name).
+  // Format: "bb-<buildbucket_id>-{project}/{bucket}/{builder}"
   // Example: "bb-8818737803155059937-chromeos/general/Full"
-  string job_name = 3;
+  string task_name = 3;
 
   // Device pool, an optional dimension to Swarming, which is used only by
   // ChromeOS.
@@ -341,23 +342,73 @@ message SwarmingInfo {
   string label_pool = 5;
 }
 
+// Identifies a buildbucket builder.
+// Canonical string representation: "{project}/{bucket}/{builder}".
+// See the BuilderID in the buildbucket build.proto:
+// https://chromium.googlesource.com/infra/luci/luci-go/+/master/buildbucket/proto/builder_common.proto
+// NEXT TAG: 4
+message BuilderID {
+  // Project ID, e.g. "chromeos". Unique within a LUCI deployment.
+  // Regex: ^[a-z0-9\-_]+$
+  string project = 1;
+
+  // Bucket name, e.g. "try". Unique within the project.
+  // Regex: ^[a-z0-9\-_.]{1,100}$
+  // Together with project, defines an ACL.
+  string bucket = 2;
+
+  // Builder name, e.g. "linux-rel". Unique within the bucket.
+  // Regex: ^[a-zA-Z0-9\-_.\(\) ]{1,128}$
+  string builder = 3;
+}
+
+// BuildbucketInfo contains fields extracted from the buildbucket build.proto
+// https://chromium.googlesource.com/infra/luci/luci-go/+/master/buildbucket/proto/build.proto
+// NEXT TAG: 4
+message BuildbucketInfo {
+  // Identifier of the build, unique per LUCI deployment.
+  // IDs are monotonically decreasing.
+  int64 id = 1;
+
+  // Required. The builder this build belongs to.
+  //
+  // Tuple (builder.project, builder.bucket) defines build ACL
+  // which may change after build has ended.
+  BuilderID builder = 2;
+
+  // IDs of the build's ancestors. This includes all parents/grandparents/etc.
+  // This is ordered from top-to-bottom so `ancestor_ids[0]` is the root of
+  // the builds tree, and `ancestor_ids[-1]` is this build's immediate parent.
+  // This does not include any "siblings" at higher levels of the tree, just
+  // the direct chain of ancestors from root to this build.
+  repeated int64 ancestor_ids = 3;
+}
+
 // Captures Skylab related info.
-// NEXT TAG: 3
+// NEXT TAG: 4
 message SkylabInfo {
   // Drone info associated with the test run.
   DroneInfo drone_info = 1;
 
   // Swarming task associated with the test run. Mainly populated for tests
-  // running in the internal managed labs.
+  // running on swarming bot.
   SwarmingInfo swarming_info = 2;
+
+  // Buildbucket build associated with the test run. Mainly populated for tests
+  //  scheduled by buildbucket.
+  BuildbucketInfo buildbucket_info = 3;
 }
 
 // Captures Satlab related info.
-// NEXT TAG: 2
+// NEXT TAG: 3
 message SatlabInfo {
   // Swarming task associated with the test run. Mainly populated for tests
-  // running in the internal managed labs.
+  // running on swarming bot.
   SwarmingInfo swarming_info = 1;
+
+  // Buildbucket build associated with the test run. Mainly populated for tests
+  // scheduled by buildbucket.
+  BuildbucketInfo buildbucket_info = 2;
 }
 
 // Captures test execution related information for the test run.

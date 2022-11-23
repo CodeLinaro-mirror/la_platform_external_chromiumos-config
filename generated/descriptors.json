@@ -20739,9 +20739,9 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "jobName",
+              "jsonName": "taskName",
               "label": "LABEL_OPTIONAL",
-              "name": "job_name",
+              "name": "task_name",
               "number": 3,
               "type": "TYPE_STRING"
             },
@@ -20765,6 +20765,59 @@
         {
           "field": [
             {
+              "jsonName": "project",
+              "label": "LABEL_OPTIONAL",
+              "name": "project",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "bucket",
+              "label": "LABEL_OPTIONAL",
+              "name": "bucket",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "builder",
+              "label": "LABEL_OPTIONAL",
+              "name": "builder",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "BuilderID"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "builder",
+              "label": "LABEL_OPTIONAL",
+              "name": "builder",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuilderID"
+            },
+            {
+              "jsonName": "ancestorIds",
+              "label": "LABEL_REPEATED",
+              "name": "ancestor_ids",
+              "number": 3,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "BuildbucketInfo"
+        },
+        {
+          "field": [
+            {
               "jsonName": "droneInfo",
               "label": "LABEL_OPTIONAL",
               "name": "drone_info",
@@ -20779,6 +20832,14 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.SwarmingInfo"
+            },
+            {
+              "jsonName": "buildbucketInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "buildbucket_info",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildbucketInfo"
             }
           ],
           "name": "SkylabInfo"
@@ -20792,6 +20853,14 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.SwarmingInfo"
+            },
+            {
+              "jsonName": "buildbucketInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "buildbucket_info",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildbucketInfo"
             }
           ],
           "name": "SatlabInfo"
