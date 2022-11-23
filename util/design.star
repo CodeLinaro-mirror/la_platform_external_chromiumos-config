@@ -81,6 +81,7 @@ def _append_configs(
         nnpalm = None,
         ui = None,
         usb = None,
+        rma = None,
         device_tree_compatible_match = None,
         smbios_name_match_override = None,
         frid = None):
@@ -124,6 +125,7 @@ def _append_configs(
         nnpalm: A NnpalmConfig to be used in the SoftwareConfig.
         ui: A UiConfig to be used in the SoftwareConfig.
         usb: UsbConfig to be used in the SoftwareConfig.
+        rma: An RmaConfig to be used in the SoftwareConfig.
         device_tree_compatible_match: Deprecated and traslated to FRID.
             ("google,name" -> "Google_Name").
         smbios_name_match_override: Deprecated and translated to FRID.
@@ -204,6 +206,7 @@ def _append_configs(
     sw_config.nnpalm_config = nnpalm
     sw_config.ui_config = ui
     sw_config.usb_config = usb
+    sw_config.rma_config = rma
     sw_config.public_replication = public_replication.create(
         public_fields = _DEFAULT_PUBLIC_SW_CONFIG_FIELDS + extra_sw_config_public_fields,
     )

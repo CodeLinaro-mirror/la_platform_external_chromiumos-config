@@ -38,6 +38,10 @@ load(
     health_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/rma_config.proto",
+    rma_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/config/api/software/nnpalm_config.proto",
     nnpalm_pb = "chromiumos.config.api.software",
 )
@@ -246,6 +250,15 @@ def _create_health(
             has_smart_battery_info = battery_has_smart_battery_info,
         ),
         routines = routines,
+    )
+
+def _create_rma(
+        enabled = None,
+        has_cbi = None):
+    """Builds an RmaConfig proto."""
+    return rma_pb.RmaConfig(
+        enabled = enabled,
+        has_cbi = has_cbi,
     )
 
 def _create_nnpalm(
@@ -956,6 +969,7 @@ sw_config = struct(
     create_fw_build_config_by_names = _create_fw_build_config_by_names,
     create_fw_build_targets = _create_fw_build_targets,
     create_health = _create_health,
+    create_rma = _create_rma,
     create_nnpalm = _create_nnpalm,
     create_power = _create_power,
     create_resource = _create_resource,

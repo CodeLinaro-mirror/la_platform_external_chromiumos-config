@@ -9047,6 +9047,39 @@
       },
       "messageType": [
         {
+          "field": [
+            {
+              "jsonName": "enabled",
+              "label": "LABEL_OPTIONAL",
+              "name": "enabled",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "hasCbi",
+              "label": "LABEL_OPTIONAL",
+              "name": "has_cbi",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "RmaConfig"
+        }
+      ],
+      "name": "chromiumos/config/api/software/rma_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
           "enumType": [
             {
               "name": "Requisition",
@@ -9158,6 +9191,7 @@
         "chromiumos/config/api/software/nnpalm_config.proto",
         "chromiumos/config/api/software/power_config.proto",
         "chromiumos/config/api/software/resource_config.proto",
+        "chromiumos/config/api/software/rma_config.proto",
         "chromiumos/config/api/software/ui_config.proto",
         "chromiumos/config/api/software/usb_config.proto",
         "chromiumos/config/api/wifi_config.proto",
@@ -9309,6 +9343,14 @@
               "number": 21,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.NnpalmConfig"
+            },
+            {
+              "jsonName": "rmaConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "rma_config",
+              "number": 22,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.RmaConfig"
             }
           ],
           "name": "SoftwareConfig",
