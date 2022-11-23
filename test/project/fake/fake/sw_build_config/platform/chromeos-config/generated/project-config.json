@@ -209,6 +209,10 @@
           "wake-on-dp": "1"
         },
         "regulatory-label": "fake_regulatory_label",
+        "rmad": {
+          "enabled": true,
+          "has-cbi": true
+        },
         "scheduler-tune": {
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",

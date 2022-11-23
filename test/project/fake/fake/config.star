@@ -370,6 +370,10 @@ _SC_HEALTH = sc.create_health(
     routines_battery_health_percent_battery_wear_allowed = 50,
     routines_nvme_wear_level_wear_level_threshold = 50,
 )
+_SC_RMA = sc.create_rma(
+    enabled = True,
+    has_cbi = True,
+)
 _SC_NNPALM = sc.create_nnpalm(
     model = "alpha",
     radius_polynomial = "1,0",
@@ -748,6 +752,7 @@ design.append_configs(
     ),
     bluetooth = _SC_BLUETOOTH,
     health = _SC_HEALTH,
+    rma = _SC_RMA,
     nnpalm = _SC_NNPALM,
     firmware = sc.create_fw_payloads_by_names(
         "Fake",

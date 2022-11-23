@@ -7739,6 +7739,10 @@
       "publicReplication": {
         "publicFields": "designConfigId,idScanConfig"
       },
+      "rmaConfig": {
+        "enabled": true,
+        "hasCbi": true
+      },
       "uiConfig": {
         "extraWebAppsDir": "apps1"
       },
