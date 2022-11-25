@@ -710,6 +710,9 @@ message HardwareFeatures {
       GSC_H1D = 3;
     }
     TrustedPlatformModuleType tpm_type = 1;
+
+    // Whether GSC image is signed with production RW keyid.
+    Present production_rw_key_id = 2;
   }
   TrustedPlatformModule trusted_platform_module = 25;
 

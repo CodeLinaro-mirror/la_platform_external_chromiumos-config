@@ -5648,6 +5648,14 @@
                   "number": 1,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.TrustedPlatformModuleType"
+                },
+                {
+                  "jsonName": "productionRwKeyId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "production_rw_key_id",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "TrustedPlatformModule"
