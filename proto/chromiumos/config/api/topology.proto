@@ -677,7 +677,7 @@ message HardwareFeatures {
   Button volume_button = 22;
 
   // EmbeddedController properties
-  // Next Tag: 9
+  // Next Tag: 8
   message EmbeddedController {
     // Whether any kind of EC is present on the system.
     Present present = 1;
@@ -705,10 +705,6 @@ message HardwareFeatures {
 
     // Whether the EC supports EC_CMD_CHARGE_CONTROL v2.
     Present feature_charge_control_v2 = 7;
-
-    // Whether the EC supports fetching the tablet mode angle via the
-    // motionsense command
-    Present feature_tablet_mode_angle = 8;
   }
   EmbeddedController embedded_controller = 24;
 
