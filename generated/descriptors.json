@@ -4763,6 +4763,13 @@
                   "number": 4,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Camera.Device"
+                },
+                {
+                  "jsonName": "features",
+                  "label": "LABEL_REPEATED",
+                  "name": "features",
+                  "number": 5,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Camera",

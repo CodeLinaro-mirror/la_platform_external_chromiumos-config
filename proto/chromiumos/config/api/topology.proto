@@ -396,6 +396,9 @@ message HardwareFeatures {
 
     // List of camera devices on the model.
     repeated Device devices = 4;
+
+    // The list of camera features that are enabled on this device.
+    repeated string features = 5;
   }
 
   // Accelerometer properties of system.
