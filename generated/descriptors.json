@@ -22849,6 +22849,13 @@
               "name": "hwid",
               "number": 22,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "uploader",
+              "label": "LABEL_OPTIONAL",
+              "name": "uploader",
+              "number": 23,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "Job",
