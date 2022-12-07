@@ -1676,7 +1676,7 @@ def _convert_to_hw_features(hardware_topology):
     result = _HW_FEAT()
 
     # Need to make deep-copy otherwise we change the has_ message serialization
-    copy = proto.from_textpb(hw_topo_pb.HardwareTopology, proto.to_textpb(hardware_topology))
+    copy = proto.clone(hardware_topology)
 
     # Handle all possible screen hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.screen.hardware_feature.fw_config)
