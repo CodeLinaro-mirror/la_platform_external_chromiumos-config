@@ -15073,6 +15073,58 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/api/android_provision_metadata.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AndroidProvisionState.Id"
+            },
+            {
+              "jsonName": "cipdPackages",
+              "label": "LABEL_REPEATED",
+              "name": "cipd_packages",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CIPDPackage"
+            }
+          ],
+          "name": "AndroidProvisionState",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/android_provision_state.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/build/api/firmware_config.proto",
         "chromiumos/longrunning/operations.proto",
         "chromiumos/storage_path.proto"
@@ -16468,7 +16520,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/api/android_provision_metadata.proto",
+        "chromiumos/test/api/android_provision_state.proto",
         "chromiumos/test/api/provision_service.proto",
         "chromiumos/test/lab/api/dut.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto"
@@ -16485,12 +16537,12 @@
               "typeName": ".chromiumos.test.lab.api.Dut"
             },
             {
-              "jsonName": "cipdPackages",
-              "label": "LABEL_REPEATED",
-              "name": "cipd_packages",
+              "jsonName": "provisionState",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_state",
               "number": 2,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CIPDPackage"
+              "typeName": ".chromiumos.test.api.AndroidProvisionState"
             },
             {
               "jsonName": "dutServer",

@@ -1,0 +1,24 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/android_provision_metadata.proto";
+
+// AndroidProvisionState defines all of the installable (provisionable) elements on an
+// Android test device as part of device setup for test operations.
+// Next Tag: 3
+message AndroidProvisionState {
+  // Required. String encoded id that uniquely reflects a given AndroidProvisionState.
+  message Id {
+    string value = 1;
+  }
+  Id id = 1;
+  // Required. CIPD packages to provision.
+  repeated CIPDPackage cipd_packages = 2;
+}
