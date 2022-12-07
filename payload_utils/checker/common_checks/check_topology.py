@@ -75,8 +75,8 @@ Second message:
             # Consider two messages equal iff their serialized form is the same.
             # Include a human-readable error message as well.
             self.assertEqual(
-                prev_topology.SerializeToString(),
-                topology.SerializeToString(),
+                prev_topology.SerializeToString(deterministic=True),
+                topology.SerializeToString(deterministic=True),
                 msg=self.__error_message_template.format(
                     id=key[0],
                     type=topology_pb2.Topology.Type.Name(key[1]),
