@@ -5712,6 +5712,23 @@
                       "number": 3
                     }
                   ]
+                },
+                {
+                  "name": "RuntimeTpmVersion",
+                  "value": [
+                    {
+                      "name": "TPM_VERSION_DISABLED",
+                      "number": 0
+                    },
+                    {
+                      "name": "TPM_VERSION_V1_2",
+                      "number": 1
+                    },
+                    {
+                      "name": "TPM_VERSION_V2",
+                      "number": 2
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -5730,6 +5747,14 @@
                   "number": 2,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "runtimeTpmVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "runtime_tpm_version",
+                  "number": 3,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.RuntimeTpmVersion"
                 }
               ],
               "name": "TrustedPlatformModule"

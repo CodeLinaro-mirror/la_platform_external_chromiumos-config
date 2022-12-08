@@ -721,6 +721,18 @@ message HardwareFeatures {
 
     // Whether GSC image is signed with production RW keyid.
     Present production_rw_key_id = 2;
+
+    // The runtime-determined TPM version. This field is needed because a flex
+    // device couldn't determine its TPM version using USE flags, so it needs
+    // to rely on this hardware feature which is detected during runtime.
+    enum RuntimeTpmVersion {
+      TPM_VERSION_DISABLED = 0;
+      // TPM 1.2
+      TPM_VERSION_V1_2 = 1;
+      // TPM 2.0
+      TPM_VERSION_V2 = 2;
+    }
+    RuntimeTpmVersion runtime_tpm_version = 3;
   }
   TrustedPlatformModule trusted_platform_module = 25;
 
