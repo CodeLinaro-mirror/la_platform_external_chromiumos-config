@@ -15,4 +15,8 @@ message DesignId {
   // Design ID to use for software configs. May be used in place of value for
   // software config (e.g. audio) purposes.
   DesignId config_design_id_override = 2;
+
+  // Design ID to use for the model name, to be used as the key for test
+  // coverage requirements, and hence the cros-config model name.
+  DesignId model_name_design_id_override = 3;
 }

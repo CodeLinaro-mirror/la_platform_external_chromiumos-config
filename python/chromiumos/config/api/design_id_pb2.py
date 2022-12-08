@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z(go.chromium.org/chromiumos/config/go/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n%chromiumos/config/api/design_id.proto\x12\x15\x63hromiumos.config.api\"]\n\x08\x44\x65signId\x12\r\n\x05value\x18\x01 \x01(\t\x12\x42\n\x19\x63onfig_design_id_override\x18\x02 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignIdB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
+  serialized_pb=b'\n%chromiumos/config/api/design_id.proto\x12\x15\x63hromiumos.config.api\"\xa5\x01\n\x08\x44\x65signId\x12\r\n\x05value\x18\x01 \x01(\t\x12\x42\n\x19\x63onfig_design_id_override\x18\x02 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignId\x12\x46\n\x1dmodel_name_design_id_override\x18\x03 \x01(\x0b\x32\x1f.chromiumos.config.api.DesignIdB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
 )
 
 
@@ -47,6 +47,13 @@ _DESIGNID = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='model_name_design_id_override', full_name='chromiumos.config.api.DesignId.model_name_design_id_override', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -59,11 +66,12 @@ _DESIGNID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=64,
-  serialized_end=157,
+  serialized_start=65,
+  serialized_end=230,
 )
 
 _DESIGNID.fields_by_name['config_design_id_override'].message_type = _DESIGNID
+_DESIGNID.fields_by_name['model_name_design_id_override'].message_type = _DESIGNID
 DESCRIPTOR.message_types_by_name['DesignId'] = _DESIGNID
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

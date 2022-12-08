@@ -115,6 +115,12 @@ def CastFingerPrint(value):
   return value != topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT
 
 
+def _GetModelNameForDesignId(design_id):
+  if design_id.HasField("model_name_design_id_override"):
+    return design_id.model_name_design_id_override.value
+  return design_id.value
+
+
 def TransformDesignTable(design_config, design_table):
   """Transforms config proto to model_sku."""
   # TODO(cyueh): Find out how to get all component.has_* and
@@ -270,11 +276,14 @@ def GetFactoryConfigs(config):
   oem_name = {}
   partners = {x.id.value: x for x in config.partner_list}
   brand_configs = {x.brand_id.value: x for x in config.brand_configs}
+  design_name_to_testing_design_name = {}
 
   # Enumerate designs.
   for hw_design in config.design_list:
     design_name = hw_design.id.value
-    design_table = product_sku.setdefault(design_name, {})
+    testing_design_name = _GetModelNameForDesignId(hw_design.id)
+    design_name_to_testing_design_name[design_name] = testing_design_name
+    design_table = product_sku.setdefault(testing_design_name, {})
     custom_type = hw_design.custom_type
     # Enumerate design config id (sku id).
     for design_config in hw_design.configs:
@@ -292,7 +301,7 @@ def GetFactoryConfigs(config):
     for device_brand in config.device_brand_list:
       device_brand_id = device_brand.id.value
       # Design names should be lowercase, to be consistent with `model`.
-      design_name = device_brand.design_id.value.lower()
+      design_name = _GetModelNameForDesignId(device_brand.design_id).lower()
       design_oem_name_table = oem_name.setdefault(design_name, {})
       if not partners.get(device_brand.oem_id.value):
         print(
@@ -311,20 +320,14 @@ def GetFactoryConfigs(config):
     design_name, sku_id = ParseDesignConfigId(sw_design.design_config_id.value)
     if design_name is None:
       continue
-    design_table = product_sku.setdefault(design_name, {})
+    design_table = product_sku.setdefault(
+        design_name_to_testing_design_name.get(design_name, design_name))
     design_config_table = design_table.setdefault(sku_id, {})
     if 'component.audio_card_name' not in design_config_table:
       audio_card_name = ''
       if sw_design.audio_configs:
         audio_card_name = sw_design.audio_configs[0].card_name
       design_config_table.update({'component.audio_card_name': audio_card_name})
-  # Create map from design id to product_name. Designs from different projects
-  # may map to the same product_name. The sets of sku id should not intersect.
-  product_names = {
-      sw_design.design_config_id.value:
-      ParseDesignConfigId(sw_design.design_config_id.value)[0].lower()
-      for sw_design in config.software_configs
-  }
   # Create common table.
   model = {}
   new_product_sku = {}
@@ -334,7 +337,7 @@ def GetFactoryConfigs(config):
       continue
     model[design_name.lower()] = CreateCommonTable(design_table)
     for sku_id, content in design_table.items():
-      product_name = product_names['%s:%d' % (design_name, sku_id)]
+      product_name = design_name.lower()
       product_name_table = new_product_sku.setdefault(product_name, {})
       if sku_id in product_name_table:
         print(

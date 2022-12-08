@@ -34,6 +34,10 @@ _DESIGN_ID_C = design.create_design_id(
     "PROJECT_C",
     config_design_id_override = _DESIGN_ID_B,
 )
+_DESIGN_ID_D = design.create_design_id(
+    "PROJECT_D",
+    model_name_design_id_override = _DESIGN_ID_C,
+)
 _DESIGN_ID_WL = design.create_design_id("PROJECT_WL")
 _DESIGN_ID_REBRAND = design.create_design_id("PROJECT_REBRAND")
 _DESIGN_ID_BOX = design.create_design_id("PROJECT_BOX")
@@ -1187,6 +1191,71 @@ design.append_configs(
     camera = sc.create_camera(has_external_camera = True),
 )
 
+_HW_CONFIGS_D = []
+
+design.append_configs(
+    hw_configs = _HW_CONFIGS_D,
+    sw_configs = _SW_CONFIGS,
+    design_id = _DESIGN_ID_D,
+    config_id = 40,
+    hardware_topology = create_hardware_topology(
+        bluetooth = _BLUETOOTH,
+        camera = _CAMERA1,
+        screen = _PRIVACY_SCREEN,
+        stylus = _STYLUS,
+        form_factor = _FORM_FACTOR_CHROMESLATE,
+        wifi = hw_topo.create_wifi(
+            "WIFI_RTW88",
+            "rtw88 wifi",
+            wifi_config = _SC_WIFI_RTW88,
+        ),
+    ),
+    bluetooth = _SC_BLUETOOTH,
+    firmware = sc.create_fw_payloads_by_names(
+        "Fake",
+        "Fake_EC",
+        "Fake_PD",
+        ap_ro_version = sc.create_fw_version(11111),
+        ap_rw_version = sc.create_fw_version(11111, 2, 3),
+        ec_version = sc.create_fw_version(11111, 2),
+        pd_version = sc.create_fw_version(11111),
+    ),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
+    power = _SC_POWER,
+    wifi = sc.create_rtw89(
+        non_tablet_mode_transmit_power_chain = sc.create_rtw89_power_chain(
+            limit_2g = 1,
+            limit_5g_1 = 2,
+            limit_5g_3 = 3,
+            limit_5g_4 = 4,
+        ),
+        tablet_mode_transmit_power_chain = sc.create_rtw89_power_chain(
+            limit_2g = 5,
+            limit_5g_1 = 6,
+            limit_5g_3 = 7,
+            limit_5g_4 = 8,
+        ),
+        fcc_offsets = sc.create_rtw89_geo_offsets(
+            offset_2g = 9,
+            offset_5g = 10,
+        ),
+        eu_offsets = sc.create_rtw89_geo_offsets(
+            offset_2g = 11,
+            offset_5g = 12,
+        ),
+        other_offsets = sc.create_rtw89_geo_offsets(
+            offset_2g = 13,
+            offset_5g = 14,
+        ),
+    ),
+    camera = sc.create_camera(has_external_camera = True),
+)
+
 _HW_CONFIGS_WL = []
 _HW_CONFIGS_REBRAND = []
 _HDMI_AUDIO_CARD = "HDA ATI HDMI"
@@ -1411,6 +1480,13 @@ _DESIGN_C = design.create_design(
     configs = _HW_CONFIGS_C,
 )
 
+_DESIGN_D = design.create_design(
+    id = _DESIGN_ID_D,
+    program_id = program.fake.id,
+    odm_id = _FAKE_ODM.id,
+    configs = _HW_CONFIGS_D,
+)
+
 _DESIGN_WL = design.create_design(
     id = _DESIGN_ID_WL,
     program_id = program.fake.id,
@@ -1463,6 +1539,14 @@ _DEVICE_BRAND_C = device_brand.create(
     design_id = _DESIGN_ID_C,
     oem_id = _FAKE_OEMC.id,
     brand_code = "FDCC",
+    export_oem_info = True,
+)
+
+_DEVICE_BRAND_D = device_brand.create(
+    brand_name = "ChromeOS Device Brandname D",
+    design_id = _DESIGN_ID_D,
+    oem_id = _FAKE_OEMC.id,
+    brand_code = "FDCD",
     export_oem_info = True,
 )
 
@@ -1625,8 +1709,8 @@ _COMPONENTS.append(
 
 _CONFIG = config_bundle.create(
     partners = _ODMS + _OEMS + _COMPONENT_VENDORS,
-    designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_WL, _DESIGN_REBRAND, _DESIGN_BOX],
-    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _WL_DEVICE_BRAND, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _REBRAND_DEVICE_BRAND_D, _DEVICE_BRAND_BOX],
+    designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_D, _DESIGN_WL, _DESIGN_REBRAND, _DESIGN_BOX],
+    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _DEVICE_BRAND_D, _WL_DEVICE_BRAND, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _REBRAND_DEVICE_BRAND_D, _DEVICE_BRAND_BOX],
     software_configs = _SW_CONFIGS,
     brand_configs = _BRAND_CONFIGS,
     components = _COMPONENTS,
