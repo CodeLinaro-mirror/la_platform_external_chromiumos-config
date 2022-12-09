@@ -102,6 +102,16 @@ message InstallFailure {
     REASON_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE = 7;
     // status code: ABORTED
     REASON_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE = 8;
+    // status code: ABORTED
+    REASON_UPDATE_MINIOS_FAILED = 9;
+    // status code: ABORTED
+    REASON_POST_PROVISION_SETUP_FAILED = 10;
+    // status code: ABORTED
+    REASON_CLEAR_TPM_FAILED = 11;
+    // status code: ABORTED
+    REASON_STABLIZE_DUT_FAILED = 12;
+    // status code: ABORTED
+    REASON_INSTALL_DLC_FAILED = 13;
   }
 
   Reason reason = 1;

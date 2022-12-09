@@ -15190,6 +15190,26 @@
                 {
                   "name": "REASON_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
                   "number": 8
+                },
+                {
+                  "name": "REASON_UPDATE_MINIOS_FAILED",
+                  "number": 9
+                },
+                {
+                  "name": "REASON_POST_PROVISION_SETUP_FAILED",
+                  "number": 10
+                },
+                {
+                  "name": "REASON_CLEAR_TPM_FAILED",
+                  "number": 11
+                },
+                {
+                  "name": "REASON_STABLIZE_DUT_FAILED",
+                  "number": 12
+                },
+                {
+                  "name": "REASON_INSTALL_DLC_FAILED",
+                  "number": 13
                 }
               ]
             }
@@ -21425,6 +21445,26 @@
                 {
                   "name": "STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
                   "number": 9
+                },
+                {
+                  "name": "STATUS_UPDATE_MINIOS_FAILED",
+                  "number": 10
+                },
+                {
+                  "name": "STATUS_POST_PROVISION_SETUP_FAILED",
+                  "number": 11
+                },
+                {
+                  "name": "STATUS_CLEAR_TPM_FAILED",
+                  "number": 12
+                },
+                {
+                  "name": "STATUS_STABLIZE_DUT_FAILED",
+                  "number": 13
+                },
+                {
+                  "name": "STATUS_INSTALL_DLC_FAILED",
+                  "number": 14
                 }
               ]
             }

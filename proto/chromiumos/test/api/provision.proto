@@ -51,8 +51,17 @@ message InstallResponse {
     STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE = 8;
     // status code: ABORTED
     STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE = 9;
+    // status code: ABORTED
+    STATUS_UPDATE_MINIOS_FAILED = 10;
+    // status code: ABORTED
+    STATUS_POST_PROVISION_SETUP_FAILED = 11;
+    // status code: ABORTED
+    STATUS_CLEAR_TPM_FAILED = 12;
+    // status code: ABORT
+    STATUS_STABLIZE_DUT_FAILED = 13;
+    // status code: ABORT
+    STATUS_INSTALL_DLC_FAILED = 14;
   }
-
   Status status = 1;
 
   // OS flavor specific metadata
