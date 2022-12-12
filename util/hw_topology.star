@@ -1644,14 +1644,6 @@ def _create_hardware_topology(
         battery = battery,
     )
 
-def _accumulate_presence(existing_present, new_present):
-    if existing_present == _PRESENT.PRESENT:
-        return existing_present
-    elif new_present != _PRESENT.UNKNOWN:
-        return new_present
-    else:
-        return existing_present
-
 def _accumulate_usbc(existing_usbc, new_usbc):
     existing_usbc.count.value += new_usbc.count.value
     existing_usbc.usb4 = existing_usbc.usb4 or new_usbc.usb4
@@ -1661,16 +1653,20 @@ def _accumulate_usba(existing_usba, new_usba):
     existing_usba.count.value += new_usba.count.value
 
 def _accumulate_cellular(existing_cellular, new_cellular):
-    existing_cellular.present = _accumulate_presence(existing_cellular.present, new_cellular.present)
-    if new_cellular.present == _PRESENT.PRESENT:
-        existing_cellular.model = new_cellular.model
-        existing_cellular.type = new_cellular.type
-        existing_cellular.attach_apn_required = new_cellular.attach_apn_required
-        if proto.has(new_cellular, "dynamic_power_reduction_config"):
-            existing_cellular.dynamic_power_reduction_config = new_cellular.dynamic_power_reduction_config
+    if existing_cellular.present != _PRESENT.PRESENT:
+        if new_cellular.present != _PRESENT.UNKNOWN:
+            existing_cellular.present = new_cellular.present
+        if new_cellular.present == _PRESENT.PRESENT:
+            existing_cellular.model = new_cellular.model
+            existing_cellular.type = new_cellular.type
+            existing_cellular.attach_apn_required = new_cellular.attach_apn_required
+            if proto.has(new_cellular, "dynamic_power_reduction_config"):
+                existing_cellular.dynamic_power_reduction_config = new_cellular.dynamic_power_reduction_config
 
 def _accumulate_hdmi(existing_hdmi, new_hdmi):
-    existing_hdmi.present = _accumulate_presence(existing_hdmi.present, new_hdmi.present)
+    if existing_hdmi.present != _PRESENT.PRESENT:
+        if new_hdmi.present != _PRESENT.UNKNOWN:
+            existing_hdmi.present = new_hdmi.present
 
 def _convert_to_hw_features(hardware_topology):
     """Converts a HardwareTopology proto to a HardwareFeatures proto."""
