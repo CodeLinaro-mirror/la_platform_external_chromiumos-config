@@ -18167,6 +18167,128 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "host",
+              "label": "LABEL_OPTIONAL",
+              "name": "host",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "tests",
+              "label": "LABEL_REPEATED",
+              "name": "tests",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "resultsDirName",
+              "label": "LABEL_OPTIONAL",
+              "name": "results_dir_name",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "autotestArgs",
+              "label": "LABEL_REPEATED",
+              "name": "autotest_args",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.RunCrosTestRequest.AutotestArg"
+            },
+            {
+              "jsonName": "crosTestImageTag",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_test_image_tag",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "RunCrosTestRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "flag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "flag",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "AutotestArg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stdout",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdout",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "stderr",
+              "label": "LABEL_OPTIONAL",
+              "name": "stderr",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "returnCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "return_code",
+              "number": 3,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "RunCrosTestResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/cros_test_runner_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.RunCrosTestRequest",
+              "name": "Run",
+              "options": {},
+              "outputType": ".chromiumos.test.api.RunCrosTestResponse"
+            }
+          ],
+          "name": "CrosTestRunnerService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/any.proto",
         "chromiumos/test/api/provision_state.proto",
