@@ -159,6 +159,7 @@ _STORAGE = struct(
     EMMC = comp_pb.Component.Storage.EMMC,
     NVME = comp_pb.Component.Storage.NVME,
     SATA = comp_pb.Component.Storage.SATA,
+    UFS = comp_pb.Component.Storage.UFS,
 )
 
 def _create_storage(type):
