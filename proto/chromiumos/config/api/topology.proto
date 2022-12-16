@@ -304,6 +304,7 @@ message HardwareFeatures {
       MAX98390 = 12;
       MAX98396 = 13;
       CS35L41 = 14;
+      MAX98363 = 15;
     }
 
     enum AudioConfigStructure {

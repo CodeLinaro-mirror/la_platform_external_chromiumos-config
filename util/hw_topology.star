@@ -53,6 +53,7 @@ _AMPLIFIER = struct(
     MAX98390 = _HW_FEAT.Audio.MAX98390,
     MAX98396 = _HW_FEAT.Audio.MAX98396,
     CS35L41 = _HW_FEAT.Audio.CS35L41,
+    MAX98363 = _HW_FEAT.Audio.MAX98363,
 )
 
 _CELLULAR = struct(
