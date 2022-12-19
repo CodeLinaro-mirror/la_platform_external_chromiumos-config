@@ -10,6 +10,7 @@ import sys
 sys.path.insert(1, 'presubmit')
 import presubmits
 
+USE_PYTHON3 = True
 
 def CheckGenerated(input_api, output_api):
   """Checks all scripts that produce generated output.
