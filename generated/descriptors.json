@@ -18589,6 +18589,33 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CrosTestTemplate"
+            },
+            {
+              "jsonName": "crosGcsPublish",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_gcs_publish",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosGcsPublishTemplate"
+            },
+            {
+              "jsonName": "crosTkoPublish",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_tko_publish",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTkoPublishTemplate"
+            },
+            {
+              "jsonName": "crosRdbPublish",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_rdb_publish",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosRdbPublishTemplate"
             }
           ],
           "name": "Template",

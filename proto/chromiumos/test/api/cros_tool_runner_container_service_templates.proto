@@ -17,6 +17,9 @@ message Template {
     CrosDutTemplate cros_dut = 1;
     CrosProvisionTemplate cros_provision = 2;
     CrosTestTemplate cros_test = 3;
+    CrosGcsPublishTemplate cros_gcs_publish = 4;
+    CrosTkoPublishTemplate cros_tko_publish = 5;
+    CrosRdbPublishTemplate cros_rdb_publish = 6;
   }
 }
 

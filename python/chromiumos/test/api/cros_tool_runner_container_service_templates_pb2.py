@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\nFchromiumos/test/api/cros_tool_runner_container_service_templates.proto\x12\x13\x63hromiumos.test.api\x1a,chromiumos/test/api/cros_provision_cli.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xd3\x01\n\x08Template\x12\x38\n\x08\x63ros_dut\x18\x01 \x01(\x0b\x32$.chromiumos.test.api.CrosDutTemplateH\x00\x12\x44\n\x0e\x63ros_provision\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.CrosProvisionTemplateH\x00\x12:\n\tcros_test\x18\x03 \x01(\x0b\x32%.chromiumos.test.api.CrosTestTemplateH\x00\x42\x0b\n\tcontainer\"\xad\x01\n\x0f\x43rosDutTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x39\n\x0c\x63\x61\x63he_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x38\n\x0b\x64ut_address\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"\x80\x01\n\x15\x43rosProvisionTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12@\n\rinput_request\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CrosProvisionRequest\"9\n\x10\x43rosTestTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\"X\n\x16\x43rosGcsPublishTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x17\n\x0fpublish_src_dir\x18\x03 \x01(\t\"X\n\x16\x43rosTkoPublishTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x17\n\x0fpublish_src_dir\x18\x03 \x01(\t\"?\n\x16\x43rosRdbPublishTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\nFchromiumos/test/api/cros_tool_runner_container_service_templates.proto\x12\x13\x63hromiumos.test.api\x1a,chromiumos/test/api/cros_provision_cli.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xae\x03\n\x08Template\x12\x38\n\x08\x63ros_dut\x18\x01 \x01(\x0b\x32$.chromiumos.test.api.CrosDutTemplateH\x00\x12\x44\n\x0e\x63ros_provision\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.CrosProvisionTemplateH\x00\x12:\n\tcros_test\x18\x03 \x01(\x0b\x32%.chromiumos.test.api.CrosTestTemplateH\x00\x12G\n\x10\x63ros_gcs_publish\x18\x04 \x01(\x0b\x32+.chromiumos.test.api.CrosGcsPublishTemplateH\x00\x12G\n\x10\x63ros_tko_publish\x18\x05 \x01(\x0b\x32+.chromiumos.test.api.CrosTkoPublishTemplateH\x00\x12G\n\x10\x63ros_rdb_publish\x18\x06 \x01(\x0b\x32+.chromiumos.test.api.CrosRdbPublishTemplateH\x00\x42\x0b\n\tcontainer\"\xad\x01\n\x0f\x43rosDutTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x39\n\x0c\x63\x61\x63he_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x38\n\x0b\x64ut_address\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"\x80\x01\n\x15\x43rosProvisionTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12@\n\rinput_request\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CrosProvisionRequest\"9\n\x10\x43rosTestTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\"X\n\x16\x43rosGcsPublishTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x17\n\x0fpublish_src_dir\x18\x03 \x01(\t\"X\n\x16\x43rosTkoPublishTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x17\n\x0fpublish_src_dir\x18\x03 \x01(\t\"?\n\x16\x43rosRdbPublishTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_cros__provision__cli__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
 
@@ -57,6 +57,27 @@ _TEMPLATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='cros_gcs_publish', full_name='chromiumos.test.api.Template.cros_gcs_publish', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='cros_tko_publish', full_name='chromiumos.test.api.Template.cros_tko_publish', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='cros_rdb_publish', full_name='chromiumos.test.api.Template.cros_rdb_publish', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -75,7 +96,7 @@ _TEMPLATE = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=185,
-  serialized_end=396,
+  serialized_end=615,
 )
 
 
@@ -127,8 +148,8 @@ _CROSDUTTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=399,
-  serialized_end=572,
+  serialized_start=618,
+  serialized_end=791,
 )
 
 
@@ -173,8 +194,8 @@ _CROSPROVISIONTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=575,
-  serialized_end=703,
+  serialized_start=794,
+  serialized_end=922,
 )
 
 
@@ -212,8 +233,8 @@ _CROSTESTTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=705,
-  serialized_end=762,
+  serialized_start=924,
+  serialized_end=981,
 )
 
 
@@ -258,8 +279,8 @@ _CROSGCSPUBLISHTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=764,
-  serialized_end=852,
+  serialized_start=983,
+  serialized_end=1071,
 )
 
 
@@ -304,8 +325,8 @@ _CROSTKOPUBLISHTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=854,
-  serialized_end=942,
+  serialized_start=1073,
+  serialized_end=1161,
 )
 
 
@@ -343,13 +364,16 @@ _CROSRDBPUBLISHTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=944,
-  serialized_end=1007,
+  serialized_start=1163,
+  serialized_end=1226,
 )
 
 _TEMPLATE.fields_by_name['cros_dut'].message_type = _CROSDUTTEMPLATE
 _TEMPLATE.fields_by_name['cros_provision'].message_type = _CROSPROVISIONTEMPLATE
 _TEMPLATE.fields_by_name['cros_test'].message_type = _CROSTESTTEMPLATE
+_TEMPLATE.fields_by_name['cros_gcs_publish'].message_type = _CROSGCSPUBLISHTEMPLATE
+_TEMPLATE.fields_by_name['cros_tko_publish'].message_type = _CROSTKOPUBLISHTEMPLATE
+_TEMPLATE.fields_by_name['cros_rdb_publish'].message_type = _CROSRDBPUBLISHTEMPLATE
 _TEMPLATE.oneofs_by_name['container'].fields.append(
   _TEMPLATE.fields_by_name['cros_dut'])
 _TEMPLATE.fields_by_name['cros_dut'].containing_oneof = _TEMPLATE.oneofs_by_name['container']
@@ -359,6 +383,15 @@ _TEMPLATE.fields_by_name['cros_provision'].containing_oneof = _TEMPLATE.oneofs_b
 _TEMPLATE.oneofs_by_name['container'].fields.append(
   _TEMPLATE.fields_by_name['cros_test'])
 _TEMPLATE.fields_by_name['cros_test'].containing_oneof = _TEMPLATE.oneofs_by_name['container']
+_TEMPLATE.oneofs_by_name['container'].fields.append(
+  _TEMPLATE.fields_by_name['cros_gcs_publish'])
+_TEMPLATE.fields_by_name['cros_gcs_publish'].containing_oneof = _TEMPLATE.oneofs_by_name['container']
+_TEMPLATE.oneofs_by_name['container'].fields.append(
+  _TEMPLATE.fields_by_name['cros_tko_publish'])
+_TEMPLATE.fields_by_name['cros_tko_publish'].containing_oneof = _TEMPLATE.oneofs_by_name['container']
+_TEMPLATE.oneofs_by_name['container'].fields.append(
+  _TEMPLATE.fields_by_name['cros_rdb_publish'])
+_TEMPLATE.fields_by_name['cros_rdb_publish'].containing_oneof = _TEMPLATE.oneofs_by_name['container']
 _CROSDUTTEMPLATE.fields_by_name['cache_server'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _CROSDUTTEMPLATE.fields_by_name['dut_address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _CROSPROVISIONTEMPLATE.fields_by_name['input_request'].message_type = chromiumos_dot_test_dot_api_dot_cros__provision__cli__pb2._CROSPROVISIONREQUEST
