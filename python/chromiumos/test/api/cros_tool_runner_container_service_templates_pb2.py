@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\nFchromiumos/test/api/cros_tool_runner_container_service_templates.proto\x12\x13\x63hromiumos.test.api\x1a,chromiumos/test/api/cros_provision_cli.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xd3\x01\n\x08Template\x12\x38\n\x08\x63ros_dut\x18\x01 \x01(\x0b\x32$.chromiumos.test.api.CrosDutTemplateH\x00\x12\x44\n\x0e\x63ros_provision\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.CrosProvisionTemplateH\x00\x12:\n\tcros_test\x18\x03 \x01(\x0b\x32%.chromiumos.test.api.CrosTestTemplateH\x00\x42\x0b\n\tcontainer\"\xad\x01\n\x0f\x43rosDutTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x39\n\x0c\x63\x61\x63he_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x38\n\x0b\x64ut_address\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"\x80\x01\n\x15\x43rosProvisionTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12@\n\rinput_request\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CrosProvisionRequest\"9\n\x10\x43rosTestTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\nFchromiumos/test/api/cros_tool_runner_container_service_templates.proto\x12\x13\x63hromiumos.test.api\x1a,chromiumos/test/api/cros_provision_cli.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xd3\x01\n\x08Template\x12\x38\n\x08\x63ros_dut\x18\x01 \x01(\x0b\x32$.chromiumos.test.api.CrosDutTemplateH\x00\x12\x44\n\x0e\x63ros_provision\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.CrosProvisionTemplateH\x00\x12:\n\tcros_test\x18\x03 \x01(\x0b\x32%.chromiumos.test.api.CrosTestTemplateH\x00\x42\x0b\n\tcontainer\"\xad\x01\n\x0f\x43rosDutTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x39\n\x0c\x63\x61\x63he_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x38\n\x0b\x64ut_address\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"\x80\x01\n\x15\x43rosProvisionTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12@\n\rinput_request\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CrosProvisionRequest\"9\n\x10\x43rosTestTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\"X\n\x16\x43rosGcsPublishTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x17\n\x0fpublish_src_dir\x18\x03 \x01(\t\"X\n\x16\x43rosTkoPublishTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\t\x12\x17\n\x0fpublish_src_dir\x18\x03 \x01(\t\"?\n\x16\x43rosRdbPublishTemplate\x12\x0f\n\x07network\x18\x01 \x01(\t\x12\x14\n\x0c\x61rtifact_dir\x18\x02 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_cros__provision__cli__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
 
@@ -216,6 +216,137 @@ _CROSTESTTEMPLATE = _descriptor.Descriptor(
   serialized_end=762,
 )
 
+
+_CROSGCSPUBLISHTEMPLATE = _descriptor.Descriptor(
+  name='CrosGcsPublishTemplate',
+  full_name='chromiumos.test.api.CrosGcsPublishTemplate',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='network', full_name='chromiumos.test.api.CrosGcsPublishTemplate.network', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='artifact_dir', full_name='chromiumos.test.api.CrosGcsPublishTemplate.artifact_dir', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='publish_src_dir', full_name='chromiumos.test.api.CrosGcsPublishTemplate.publish_src_dir', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=764,
+  serialized_end=852,
+)
+
+
+_CROSTKOPUBLISHTEMPLATE = _descriptor.Descriptor(
+  name='CrosTkoPublishTemplate',
+  full_name='chromiumos.test.api.CrosTkoPublishTemplate',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='network', full_name='chromiumos.test.api.CrosTkoPublishTemplate.network', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='artifact_dir', full_name='chromiumos.test.api.CrosTkoPublishTemplate.artifact_dir', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='publish_src_dir', full_name='chromiumos.test.api.CrosTkoPublishTemplate.publish_src_dir', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=854,
+  serialized_end=942,
+)
+
+
+_CROSRDBPUBLISHTEMPLATE = _descriptor.Descriptor(
+  name='CrosRdbPublishTemplate',
+  full_name='chromiumos.test.api.CrosRdbPublishTemplate',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='network', full_name='chromiumos.test.api.CrosRdbPublishTemplate.network', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='artifact_dir', full_name='chromiumos.test.api.CrosRdbPublishTemplate.artifact_dir', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=944,
+  serialized_end=1007,
+)
+
 _TEMPLATE.fields_by_name['cros_dut'].message_type = _CROSDUTTEMPLATE
 _TEMPLATE.fields_by_name['cros_provision'].message_type = _CROSPROVISIONTEMPLATE
 _TEMPLATE.fields_by_name['cros_test'].message_type = _CROSTESTTEMPLATE
@@ -235,6 +366,9 @@ DESCRIPTOR.message_types_by_name['Template'] = _TEMPLATE
 DESCRIPTOR.message_types_by_name['CrosDutTemplate'] = _CROSDUTTEMPLATE
 DESCRIPTOR.message_types_by_name['CrosProvisionTemplate'] = _CROSPROVISIONTEMPLATE
 DESCRIPTOR.message_types_by_name['CrosTestTemplate'] = _CROSTESTTEMPLATE
+DESCRIPTOR.message_types_by_name['CrosGcsPublishTemplate'] = _CROSGCSPUBLISHTEMPLATE
+DESCRIPTOR.message_types_by_name['CrosTkoPublishTemplate'] = _CROSTKOPUBLISHTEMPLATE
+DESCRIPTOR.message_types_by_name['CrosRdbPublishTemplate'] = _CROSRDBPUBLISHTEMPLATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Template = _reflection.GeneratedProtocolMessageType('Template', (_message.Message,), {
@@ -264,6 +398,27 @@ CrosTestTemplate = _reflection.GeneratedProtocolMessageType('CrosTestTemplate', 
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.CrosTestTemplate)
   })
 _sym_db.RegisterMessage(CrosTestTemplate)
+
+CrosGcsPublishTemplate = _reflection.GeneratedProtocolMessageType('CrosGcsPublishTemplate', (_message.Message,), {
+  'DESCRIPTOR' : _CROSGCSPUBLISHTEMPLATE,
+  '__module__' : 'chromiumos.test.api.cros_tool_runner_container_service_templates_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.CrosGcsPublishTemplate)
+  })
+_sym_db.RegisterMessage(CrosGcsPublishTemplate)
+
+CrosTkoPublishTemplate = _reflection.GeneratedProtocolMessageType('CrosTkoPublishTemplate', (_message.Message,), {
+  'DESCRIPTOR' : _CROSTKOPUBLISHTEMPLATE,
+  '__module__' : 'chromiumos.test.api.cros_tool_runner_container_service_templates_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.CrosTkoPublishTemplate)
+  })
+_sym_db.RegisterMessage(CrosTkoPublishTemplate)
+
+CrosRdbPublishTemplate = _reflection.GeneratedProtocolMessageType('CrosRdbPublishTemplate', (_message.Message,), {
+  'DESCRIPTOR' : _CROSRDBPUBLISHTEMPLATE,
+  '__module__' : 'chromiumos.test.api.cros_tool_runner_container_service_templates_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.CrosRdbPublishTemplate)
+  })
+_sym_db.RegisterMessage(CrosRdbPublishTemplate)
 
 
 DESCRIPTOR._options = None

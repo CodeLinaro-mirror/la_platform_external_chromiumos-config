@@ -18678,6 +18678,77 @@
             }
           ],
           "name": "CrosTestTemplate"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "publishSrcDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "publish_src_dir",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrosGcsPublishTemplate"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "publishSrcDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "publish_src_dir",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrosTkoPublishTemplate"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrosRdbPublishTemplate"
         }
       ],
       "name": "chromiumos/test/api/cros_tool_runner_container_service_templates.proto",

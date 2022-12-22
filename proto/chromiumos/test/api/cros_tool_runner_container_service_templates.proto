@@ -56,3 +56,36 @@ message CrosTestTemplate {
   // `<artifact_dir>/cros-test/results` for result artifacts to be published
   string artifact_dir = 2;
 }
+
+// Plain template to demonstrate the usage of cros-gcs-publish container. All fields
+// are required.
+message CrosGcsPublishTemplate {
+  // Name of an existing network to join
+  string network = 1;
+  // Host directory to be mounted into the container for logs and other artifacts
+  string artifact_dir = 2;
+  // Source directory of artifacts that needs to be published.
+  // Will be mounted to "/tmp/gcs-publish-test-artifacts/".
+  string publish_src_dir = 3;
+}
+
+// Plain template to demonstrate the usage of cros-tko-publish container. All fields
+// are required.
+message CrosTkoPublishTemplate {
+  // Name of an existing network to join
+  string network = 1;
+  // Host directory to be mounted into the container for logs and other artifacts
+  string artifact_dir = 2;
+  // Source directory of artifacts that needs to be published.
+  // Will be mounted to "/tmp/tko-publish-test-artifacts/".
+  string publish_src_dir = 3;
+}
+
+// Plain template to demonstrate the usage of cros-rdb-publish container. All fields
+// are required.
+message CrosRdbPublishTemplate {
+  // Name of an existing network to join
+  string network = 1;
+  // Host directory to be mounted into the container for logs and other artifacts
+  string artifact_dir = 2;
+}
