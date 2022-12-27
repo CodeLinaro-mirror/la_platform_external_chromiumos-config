@@ -17,9 +17,7 @@ message Template {
     CrosDutTemplate cros_dut = 1;
     CrosProvisionTemplate cros_provision = 2;
     CrosTestTemplate cros_test = 3;
-    CrosGcsPublishTemplate cros_gcs_publish = 4;
-    CrosTkoPublishTemplate cros_tko_publish = 5;
-    CrosRdbPublishTemplate cros_rdb_publish = 6;
+    CrosPublishTemplate cros_publish = 4;
   }
 }
 
@@ -60,35 +58,19 @@ message CrosTestTemplate {
   string artifact_dir = 2;
 }
 
-// Plain template to demonstrate the usage of cros-gcs-publish container. All fields
-// are required.
-message CrosGcsPublishTemplate {
-  // Name of an existing network to join
-  string network = 1;
-  // Host directory to be mounted into the container for logs and other artifacts
-  string artifact_dir = 2;
-  // Source directory of artifacts that needs to be published.
-  // Will be mounted to "/tmp/gcs-publish-test-artifacts/".
-  string publish_src_dir = 3;
-}
+// Plain template to demonstrate the usage of cros-publish container. publish_type
+// is required. publish_src_dir is required for GCS and TKO publish types.
+message CrosPublishTemplate {
+  enum PublishType {
+    PUBLISH_UNSPECIFIED = 0;
+    PUBLISH_GCS = 1;
+    PUBLISH_TKO = 2;
+    PUBLISH_RDB = 3;
+  }
 
-// Plain template to demonstrate the usage of cros-tko-publish container. All fields
-// are required.
-message CrosTkoPublishTemplate {
-  // Name of an existing network to join
-  string network = 1;
-  // Host directory to be mounted into the container for logs and other artifacts
-  string artifact_dir = 2;
+  PublishType publish_type = 1;
   // Source directory of artifacts that needs to be published.
-  // Will be mounted to "/tmp/tko-publish-test-artifacts/".
-  string publish_src_dir = 3;
-}
-
-// Plain template to demonstrate the usage of cros-rdb-publish container. All fields
-// are required.
-message CrosRdbPublishTemplate {
-  // Name of an existing network to join
-  string network = 1;
-  // Host directory to be mounted into the container for logs and other artifacts
-  string artifact_dir = 2;
+  // If provided, will be mounted to "/tmp/<publish_type>-publish-test-artifacts/"
+  // (Ex: gcs-publish-test-artifacts). Required for GCS and TKO publish types.
+  string publish_src_dir = 2;
 }

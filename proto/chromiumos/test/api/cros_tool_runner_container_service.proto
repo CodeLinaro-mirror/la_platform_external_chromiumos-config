@@ -187,6 +187,10 @@ message StartTemplatedContainerRequest {
   string container_image = 2;
   // Container-specific template
   Template template = 3;
+  // Name of an existing network to join
+  string network = 4;
+  // Host directory to be mounted into the container for logs and other artifacts
+  string artifact_dir = 5;
 }
 
 message StackCommandsRequest {

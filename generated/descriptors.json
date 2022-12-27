@@ -18591,31 +18591,13 @@
               "typeName": ".chromiumos.test.api.CrosTestTemplate"
             },
             {
-              "jsonName": "crosGcsPublish",
+              "jsonName": "crosPublish",
               "label": "LABEL_OPTIONAL",
-              "name": "cros_gcs_publish",
+              "name": "cros_publish",
               "number": 4,
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CrosGcsPublishTemplate"
-            },
-            {
-              "jsonName": "crosTkoPublish",
-              "label": "LABEL_OPTIONAL",
-              "name": "cros_tko_publish",
-              "number": 5,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CrosTkoPublishTemplate"
-            },
-            {
-              "jsonName": "crosRdbPublish",
-              "label": "LABEL_OPTIONAL",
-              "name": "cros_rdb_publish",
-              "number": 6,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CrosRdbPublishTemplate"
+              "typeName": ".chromiumos.test.api.CrosPublishTemplate"
             }
           ],
           "name": "Template",
@@ -18707,75 +18689,47 @@
           "name": "CrosTestTemplate"
         },
         {
+          "enumType": [
+            {
+              "name": "PublishType",
+              "value": [
+                {
+                  "name": "PUBLISH_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "PUBLISH_GCS",
+                  "number": 1
+                },
+                {
+                  "name": "PUBLISH_TKO",
+                  "number": 2
+                },
+                {
+                  "name": "PUBLISH_RDB",
+                  "number": 3
+                }
+              ]
+            }
+          ],
           "field": [
             {
-              "jsonName": "network",
+              "jsonName": "publishType",
               "label": "LABEL_OPTIONAL",
-              "name": "network",
+              "name": "publish_type",
               "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "artifactDir",
-              "label": "LABEL_OPTIONAL",
-              "name": "artifact_dir",
-              "number": 2,
-              "type": "TYPE_STRING"
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.CrosPublishTemplate.PublishType"
             },
             {
               "jsonName": "publishSrcDir",
               "label": "LABEL_OPTIONAL",
               "name": "publish_src_dir",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CrosGcsPublishTemplate"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "network",
-              "label": "LABEL_OPTIONAL",
-              "name": "network",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "artifactDir",
-              "label": "LABEL_OPTIONAL",
-              "name": "artifact_dir",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "publishSrcDir",
-              "label": "LABEL_OPTIONAL",
-              "name": "publish_src_dir",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CrosTkoPublishTemplate"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "network",
-              "label": "LABEL_OPTIONAL",
-              "name": "network",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "artifactDir",
-              "label": "LABEL_OPTIONAL",
-              "name": "artifact_dir",
               "number": 2,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "CrosRdbPublishTemplate"
+          "name": "CrosPublishTemplate"
         }
       ],
       "name": "chromiumos/test/api/cros_tool_runner_container_service_templates.proto",
@@ -19104,6 +19058,20 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Template"
+            },
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "StartTemplatedContainerRequest"
