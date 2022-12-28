@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#chromiumos/test/api/provision.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a\x19google/protobuf/any.proto\"\x94\x05\n\x0fInstallResponse\x12;\n\x06status\x18\x01 \x01(\x0e\x32+.chromiumos.test.api.InstallResponse.Status\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\"\x9b\x04\n\x06Status\x12\r\n\tSTATUS_OK\x10\x00\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x01\x12(\n$STATUS_DUT_UNREACHABLE_PRE_PROVISION\x10\x02\x12#\n\x1fSTATUS_DOWNLOADING_IMAGE_FAILED\x10\x03\x12 \n\x1cSTATUS_PROVISIONING_TIMEDOUT\x10\x04\x12\x1e\n\x1aSTATUS_PROVISIONING_FAILED\x10\x05\x12)\n%STATUS_DUT_UNREACHABLE_POST_PROVISION\x10\x06\x12!\n\x1dSTATUS_UPDATE_FIRMWARE_FAILED\x10\x07\x12\x31\n-STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE\x10\x08\x12/\n+STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE\x10\t\x12\x1f\n\x1bSTATUS_UPDATE_MINIOS_FAILED\x10\n\x12&\n\"STATUS_POST_PROVISION_SETUP_FAILED\x10\x0b\x12\x1b\n\x17STATUS_CLEAR_TPM_FAILED\x10\x0c\x12\x1e\n\x1aSTATUS_STABLIZE_DUT_FAILED\x10\r\x12\x1d\n\x19STATUS_INSTALL_DLC_FAILED\x10\x0e\"\x11\n\x0fInstallMetadata\"\xb1\x01\n\x0eInstallRequest\x12+\n\nimage_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x16\n\x0eprevent_reboot\x18\x02 \x01(\x08\x12\x32\n\x11overwrite_payload\x18\x03 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12&\n\x08metadata\x18\x04 \x01(\x0b\x32\x14.google.protobuf.Any2\x93\x01\n\x17GenericProvisionService\x12x\n\x07Install\x12#.chromiumos.test.api.InstallRequest\x1a!.chromiumos.longrunning.Operation\"%\xd2\x41\"\n\x0fInstallResponse\x12\x0fInstallMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n#chromiumos/test/api/provision.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a\x19google/protobuf/any.proto\"\xc4\x06\n\x0fInstallResponse\x12;\n\x06status\x18\x01 \x01(\x0e\x32+.chromiumos.test.api.InstallResponse.Status\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\"\xcb\x05\n\x06Status\x12\r\n\tSTATUS_OK\x10\x00\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x01\x12(\n$STATUS_DUT_UNREACHABLE_PRE_PROVISION\x10\x02\x12#\n\x1fSTATUS_DOWNLOADING_IMAGE_FAILED\x10\x03\x12 \n\x1cSTATUS_PROVISIONING_TIMEDOUT\x10\x04\x12\x1e\n\x1aSTATUS_PROVISIONING_FAILED\x10\x05\x12)\n%STATUS_DUT_UNREACHABLE_POST_PROVISION\x10\x06\x12!\n\x1dSTATUS_UPDATE_FIRMWARE_FAILED\x10\x07\x12\x31\n-STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE\x10\x08\x12/\n+STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE\x10\t\x12\x1f\n\x1bSTATUS_UPDATE_MINIOS_FAILED\x10\n\x12&\n\"STATUS_POST_PROVISION_SETUP_FAILED\x10\x0b\x12\x1b\n\x17STATUS_CLEAR_TPM_FAILED\x10\x0c\x12\x1e\n\x1aSTATUS_STABLIZE_DUT_FAILED\x10\r\x12\x1d\n\x19STATUS_INSTALL_DLC_FAILED\x10\x0e\x12%\n!STATUS_PRE_PROVISION_SETUP_FAILED\x10\x0f\x12%\n!STATUS_CIPD_PACKAGE_LOOKUP_FAILED\x10\x10\x12$\n STATUS_CIPD_PACKAGE_FETCH_FAILED\x10\x11\x12\x1b\n\x17STATUS_GS_UPLOAD_FAILED\x10\x12\x12\x1d\n\x19STATUS_GS_DOWNLOAD_FAILED\x10\x13\"\x11\n\x0fInstallMetadata\"\xb1\x01\n\x0eInstallRequest\x12+\n\nimage_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x16\n\x0eprevent_reboot\x18\x02 \x01(\x08\x12\x32\n\x11overwrite_payload\x18\x03 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12&\n\x08metadata\x18\x04 \x01(\x0b\x32\x14.google.protobuf.Any2\x93\x01\n\x17GenericProvisionService\x12x\n\x07Install\x12#.chromiumos.test.api.InstallRequest\x1a!.chromiumos.longrunning.Operation\"%\xd2\x41\"\n\x0fInstallResponse\x12\x0fInstallMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
@@ -110,11 +110,36 @@ _INSTALLRESPONSE_STATUS = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STATUS_PRE_PROVISION_SETUP_FAILED', index=15, number=15,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STATUS_CIPD_PACKAGE_LOOKUP_FAILED', index=16, number=16,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STATUS_CIPD_PACKAGE_FETCH_FAILED', index=17, number=17,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STATUS_GS_UPLOAD_FAILED', index=18, number=18,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STATUS_GS_DOWNLOAD_FAILED', index=19, number=19,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=281,
-  serialized_end=820,
+  serialized_end=996,
 )
 _sym_db.RegisterEnumDescriptor(_INSTALLRESPONSE_STATUS)
 
@@ -155,7 +180,7 @@ _INSTALLRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=160,
-  serialized_end=820,
+  serialized_end=996,
 )
 
 
@@ -179,8 +204,8 @@ _INSTALLMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=822,
-  serialized_end=839,
+  serialized_start=998,
+  serialized_end=1015,
 )
 
 
@@ -232,8 +257,8 @@ _INSTALLREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=842,
-  serialized_end=1019,
+  serialized_start=1018,
+  serialized_end=1195,
 )
 
 _INSTALLRESPONSE.fields_by_name['status'].enum_type = _INSTALLRESPONSE_STATUS
@@ -278,8 +303,8 @@ _GENERICPROVISIONSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1022,
-  serialized_end=1169,
+  serialized_start=1198,
+  serialized_end=1345,
   methods=[
   _descriptor.MethodDescriptor(
     name='Install',

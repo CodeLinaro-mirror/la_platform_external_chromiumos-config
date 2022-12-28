@@ -112,6 +112,16 @@ message InstallFailure {
     REASON_STABLIZE_DUT_FAILED = 12;
     // status code: ABORTED
     REASON_INSTALL_DLC_FAILED = 13;
+    // status code: ABORTED
+    REASON_PRE_PROVISION_SETUP_FAILED = 14;
+    // status code: ABORTED
+    REASON_CIPD_PACKAGE_LOOKUP_FAILED = 15;
+    // status code: ABORTED
+    REASON_CIPD_PACKAGE_FETCH_FAILED = 16;
+    // status code: ABORTED
+    REASON_GS_UPLOAD_FAILED = 17;
+    // status code: ABORTED
+    REASON_GS_DOWNLOAD_FAILED = 18;
   }
 
   Reason reason = 1;

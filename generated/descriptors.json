@@ -15222,6 +15222,26 @@
                 {
                   "name": "REASON_INSTALL_DLC_FAILED",
                   "number": 13
+                },
+                {
+                  "name": "REASON_PRE_PROVISION_SETUP_FAILED",
+                  "number": 14
+                },
+                {
+                  "name": "REASON_CIPD_PACKAGE_LOOKUP_FAILED",
+                  "number": 15
+                },
+                {
+                  "name": "REASON_CIPD_PACKAGE_FETCH_FAILED",
+                  "number": 16
+                },
+                {
+                  "name": "REASON_GS_UPLOAD_FAILED",
+                  "number": 17
+                },
+                {
+                  "name": "REASON_GS_DOWNLOAD_FAILED",
+                  "number": 18
                 }
               ]
             }
@@ -21665,6 +21685,26 @@
                 {
                   "name": "STATUS_INSTALL_DLC_FAILED",
                   "number": 14
+                },
+                {
+                  "name": "STATUS_PRE_PROVISION_SETUP_FAILED",
+                  "number": 15
+                },
+                {
+                  "name": "STATUS_CIPD_PACKAGE_LOOKUP_FAILED",
+                  "number": 16
+                },
+                {
+                  "name": "STATUS_CIPD_PACKAGE_FETCH_FAILED",
+                  "number": 17
+                },
+                {
+                  "name": "STATUS_GS_UPLOAD_FAILED",
+                  "number": 18
+                },
+                {
+                  "name": "STATUS_GS_DOWNLOAD_FAILED",
+                  "number": 19
                 }
               ]
             }

@@ -57,10 +57,20 @@ message InstallResponse {
     STATUS_POST_PROVISION_SETUP_FAILED = 11;
     // status code: ABORTED
     STATUS_CLEAR_TPM_FAILED = 12;
-    // status code: ABORT
+    // status code: ABORTED
     STATUS_STABLIZE_DUT_FAILED = 13;
-    // status code: ABORT
+    // status code: ABORTED
     STATUS_INSTALL_DLC_FAILED = 14;
+    // status code: ABORTED
+    STATUS_PRE_PROVISION_SETUP_FAILED = 15;
+    // status code: ABORTED
+    STATUS_CIPD_PACKAGE_LOOKUP_FAILED = 16;
+    // status code: ABORTED
+    STATUS_CIPD_PACKAGE_FETCH_FAILED = 17;
+    // status code: ABORTED
+    STATUS_GS_UPLOAD_FAILED = 18;
+    // status code: ABORTED
+    STATUS_GS_DOWNLOAD_FAILED = 19;
   }
   Status status = 1;
 
