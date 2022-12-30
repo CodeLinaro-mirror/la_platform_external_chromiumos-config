@@ -15086,7 +15086,39 @@
               "typeName": ".chromiumos.test.api.CIPDPackage"
             }
           ],
-          "name": "AndroidProvisionMetadata"
+          "name": "AndroidProvisionRequestMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "versionCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "version_code",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "InstalledAndroidPackage"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "installedAndroidPackages",
+              "label": "LABEL_REPEATED",
+              "name": "installed_android_packages",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstalledAndroidPackage"
+            }
+          ],
+          "name": "AndroidProvisionResponseMetadata"
         }
       ],
       "name": "chromiumos/test/api/android_provision_metadata.proto",
@@ -15094,537 +15126,6 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },
       "package": "chromiumos.test.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/test/api/android_provision_metadata.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.AndroidProvisionState.Id"
-            },
-            {
-              "jsonName": "cipdPackages",
-              "label": "LABEL_REPEATED",
-              "name": "cipd_packages",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CIPDPackage"
-            }
-          ],
-          "name": "AndroidProvisionState",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Id"
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/api/android_provision_state.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/longrunning/operations.proto",
-        "chromiumos/storage_path.proto"
-      ],
-      "messageType": [
-        {
-          "name": "InstallSuccess"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Reason",
-              "value": [
-                {
-                  "name": "REASON_INVALID_REQUEST",
-                  "number": 0
-                },
-                {
-                  "name": "REASON_DUT_UNREACHABLE_PRE_PROVISION",
-                  "number": 1
-                },
-                {
-                  "name": "REASON_DOWNLOADING_IMAGE_FAILED",
-                  "number": 2
-                },
-                {
-                  "name": "REASON_PROVISIONING_TIMEDOUT",
-                  "number": 3
-                },
-                {
-                  "name": "REASON_PROVISIONING_FAILED",
-                  "number": 4
-                },
-                {
-                  "name": "REASON_DUT_UNREACHABLE_POST_PROVISION",
-                  "number": 5
-                },
-                {
-                  "name": "REASON_UPDATE_FIRMWARE_FAILED",
-                  "number": 6
-                },
-                {
-                  "name": "REASON_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
-                  "number": 7
-                },
-                {
-                  "name": "REASON_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
-                  "number": 8
-                },
-                {
-                  "name": "REASON_UPDATE_MINIOS_FAILED",
-                  "number": 9
-                },
-                {
-                  "name": "REASON_POST_PROVISION_SETUP_FAILED",
-                  "number": 10
-                },
-                {
-                  "name": "REASON_CLEAR_TPM_FAILED",
-                  "number": 11
-                },
-                {
-                  "name": "REASON_STABLIZE_DUT_FAILED",
-                  "number": 12
-                },
-                {
-                  "name": "REASON_INSTALL_DLC_FAILED",
-                  "number": 13
-                },
-                {
-                  "name": "REASON_PRE_PROVISION_SETUP_FAILED",
-                  "number": 14
-                },
-                {
-                  "name": "REASON_CIPD_PACKAGE_LOOKUP_FAILED",
-                  "number": 15
-                },
-                {
-                  "name": "REASON_CIPD_PACKAGE_FETCH_FAILED",
-                  "number": 16
-                },
-                {
-                  "name": "REASON_GS_UPLOAD_FAILED",
-                  "number": 17
-                },
-                {
-                  "name": "REASON_GS_DOWNLOAD_FAILED",
-                  "number": 18
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "reason",
-              "label": "LABEL_OPTIONAL",
-              "name": "reason",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.InstallFailure.Reason"
-            }
-          ],
-          "name": "InstallFailure"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "crosImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "cros_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "dlcSpecs",
-              "label": "LABEL_REPEATED",
-              "name": "dlc_specs",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallCrosRequest.DLCSpec"
-            },
-            {
-              "jsonName": "preserveStateful",
-              "label": "LABEL_OPTIONAL",
-              "name": "preserve_stateful",
-              "number": 3,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "preventReboot",
-              "label": "LABEL_OPTIONAL",
-              "name": "prevent_reboot",
-              "number": 4,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "overwritePayload",
-              "label": "LABEL_OPTIONAL",
-              "name": "overwrite_payload",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "updateFirmware",
-              "label": "LABEL_OPTIONAL",
-              "name": "update_firmware",
-              "number": 6,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "InstallCrosRequest",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "id",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "id",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "DLCSpec"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallCrosResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallCrosMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "lacrosImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "lacros_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "overrideVersion",
-              "label": "LABEL_OPTIONAL",
-              "name": "override_version",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "overrideInstallPath",
-              "label": "LABEL_OPTIONAL",
-              "name": "override_install_path",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "InstallLacrosRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallLacrosResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallLacrosMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "ashImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "ash_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            }
-          ],
-          "name": "InstallAshRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallAshResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallAshMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "ashImagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "ash_image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            }
-          ],
-          "name": "InstallArcRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallArcResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallArcMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "firmwareConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_config",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.FirmwareConfig"
-            },
-            {
-              "jsonName": "force",
-              "label": "LABEL_OPTIONAL",
-              "name": "force",
-              "number": 8,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "useServo",
-              "label": "LABEL_OPTIONAL",
-              "name": "use_servo",
-              "number": 9,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "InstallFirmwareRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "success",
-              "label": "LABEL_OPTIONAL",
-              "name": "success",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallSuccess"
-            },
-            {
-              "jsonName": "failure",
-              "label": "LABEL_OPTIONAL",
-              "name": "failure",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallFailure"
-            }
-          ],
-          "name": "InstallFirmwareResponse",
-          "oneofDecl": [
-            {
-              "name": "outcome"
-            }
-          ]
-        },
-        {
-          "name": "InstallFirmwareMetadata"
-        }
-      ],
-      "name": "chromiumos/test/api/provision_service.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.InstallCrosRequest",
-              "name": "InstallCros",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallCrosMetadata",
-                  "responseType": "InstallCrosResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallLacrosRequest",
-              "name": "InstallLacros",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallLacrosMetadata",
-                  "responseType": "InstallLacrosResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallAshRequest",
-              "name": "InstallAsh",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallAshMetadata",
-                  "responseType": "InstallAshResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallArcRequest",
-              "name": "InstallArc",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallArcMetadata",
-                  "responseType": "InstallArcResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
-              "inputType": ".chromiumos.test.api.InstallFirmwareRequest",
-              "name": "InstallFirmware",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallFirmwareMetadata",
-                  "responseType": "InstallFirmwareResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            }
-          ],
-          "name": "ProvisionService"
-        }
-      ],
       "syntax": "proto3"
     },
     {
@@ -16589,12 +16090,46 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/api/android_provision_state.proto",
-        "chromiumos/test/api/provision_service.proto",
+        "chromiumos/test/api/android_provision_metadata.proto",
         "chromiumos/test/lab/api/dut.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto"
       ],
       "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AndroidProvisionState.Id"
+            },
+            {
+              "jsonName": "cipdPackages",
+              "label": "LABEL_REPEATED",
+              "name": "cipd_packages",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CIPDPackage"
+            }
+          ],
+          "name": "AndroidProvisionState",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            }
+          ]
+        },
         {
           "field": [
             {
@@ -16623,26 +16158,505 @@
             }
           ],
           "name": "AndroidProvisionRequest"
+        }
+      ],
+      "name": "chromiumos/test/api/android_provision.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/build/api/firmware_config.proto",
+        "chromiumos/longrunning/operations.proto",
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "name": "InstallSuccess"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Reason",
+              "value": [
+                {
+                  "name": "REASON_INVALID_REQUEST",
+                  "number": 0
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_PRE_PROVISION",
+                  "number": 1
+                },
+                {
+                  "name": "REASON_DOWNLOADING_IMAGE_FAILED",
+                  "number": 2
+                },
+                {
+                  "name": "REASON_PROVISIONING_TIMEDOUT",
+                  "number": 3
+                },
+                {
+                  "name": "REASON_PROVISIONING_FAILED",
+                  "number": 4
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_POST_PROVISION",
+                  "number": 5
+                },
+                {
+                  "name": "REASON_UPDATE_FIRMWARE_FAILED",
+                  "number": 6
+                },
+                {
+                  "name": "REASON_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
+                  "number": 7
+                },
+                {
+                  "name": "REASON_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
+                  "number": 8
+                },
+                {
+                  "name": "REASON_UPDATE_MINIOS_FAILED",
+                  "number": 9
+                },
+                {
+                  "name": "REASON_POST_PROVISION_SETUP_FAILED",
+                  "number": 10
+                },
+                {
+                  "name": "REASON_CLEAR_TPM_FAILED",
+                  "number": 11
+                },
+                {
+                  "name": "REASON_STABLIZE_DUT_FAILED",
+                  "number": 12
+                },
+                {
+                  "name": "REASON_INSTALL_DLC_FAILED",
+                  "number": 13
+                },
+                {
+                  "name": "REASON_PRE_PROVISION_SETUP_FAILED",
+                  "number": 14
+                },
+                {
+                  "name": "REASON_CIPD_PACKAGE_LOOKUP_FAILED",
+                  "number": 15
+                },
+                {
+                  "name": "REASON_CIPD_PACKAGE_FETCH_FAILED",
+                  "number": 16
+                },
+                {
+                  "name": "REASON_GS_UPLOAD_FAILED",
+                  "number": 17
+                },
+                {
+                  "name": "REASON_GS_DOWNLOAD_FAILED",
+                  "number": 18
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "reason",
+              "label": "LABEL_OPTIONAL",
+              "name": "reason",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.InstallFailure.Reason"
+            }
+          ],
+          "name": "InstallFailure"
         },
         {
           "field": [
             {
-              "jsonName": "name",
+              "jsonName": "crosImagePath",
               "label": "LABEL_OPTIONAL",
-              "name": "name",
+              "name": "cros_image_path",
               "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "dlcSpecs",
+              "label": "LABEL_REPEATED",
+              "name": "dlc_specs",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallCrosRequest.DLCSpec"
+            },
+            {
+              "jsonName": "preserveStateful",
+              "label": "LABEL_OPTIONAL",
+              "name": "preserve_stateful",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "preventReboot",
+              "label": "LABEL_OPTIONAL",
+              "name": "prevent_reboot",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "overwritePayload",
+              "label": "LABEL_OPTIONAL",
+              "name": "overwrite_payload",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "updateFirmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "update_firmware",
+              "number": 6,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "InstallCrosRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "id",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "id",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "DLCSpec"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallCrosResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallCrosMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "lacrosImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "lacros_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "overrideVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_version",
+              "number": 2,
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "versionCode",
+              "jsonName": "overrideInstallPath",
               "label": "LABEL_OPTIONAL",
-              "name": "version_code",
-              "number": 2,
+              "name": "override_install_path",
+              "number": 3,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "InstalledAndroidPackage"
+          "name": "InstallLacrosRequest"
         },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallLacrosResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallLacrosMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ashImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            }
+          ],
+          "name": "InstallAshRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallAshResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallAshMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ashImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            }
+          ],
+          "name": "InstallArcRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallArcResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallArcMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "firmwareConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "force",
+              "label": "LABEL_OPTIONAL",
+              "name": "force",
+              "number": 8,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "useServo",
+              "label": "LABEL_OPTIONAL",
+              "name": "use_servo",
+              "number": 9,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "InstallFirmwareRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallFirmwareResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallFirmwareMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/provision_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.InstallCrosRequest",
+              "name": "InstallCros",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallCrosMetadata",
+                  "responseType": "InstallCrosResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallLacrosRequest",
+              "name": "InstallLacros",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallLacrosMetadata",
+                  "responseType": "InstallLacrosResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallAshRequest",
+              "name": "InstallAsh",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallAshMetadata",
+                  "responseType": "InstallAshResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallArcRequest",
+              "name": "InstallArc",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallArcMetadata",
+                  "responseType": "InstallArcResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallFirmwareRequest",
+              "name": "InstallFirmware",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallFirmwareMetadata",
+                  "responseType": "InstallFirmwareResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "ProvisionService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/android_provision_metadata.proto",
+        "chromiumos/test/api/provision_service.proto",
+        "chromiumos/test/lab/api/dut.proto"
+      ],
+      "messageType": [
         {
           "field": [
             {
@@ -16680,7 +16694,7 @@
               "typeName": ".chromiumos.test.api.InstalledAndroidPackage"
             }
           ],
-          "name": "AndroidProvisionResponse",
+          "name": "AndroidProvisionCLIResponse",
           "oneofDecl": [
             {
               "name": "outcome"

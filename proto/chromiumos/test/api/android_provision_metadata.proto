@@ -89,7 +89,21 @@ message CIPDPackage {
 
 
 // Next Tag: 2
-message AndroidProvisionMetadata {
+message AndroidProvisionRequestMetadata {
   // Required. A list of CIPD packages to install.
   repeated CIPDPackage cipd_packages = 1;
+}
+
+// Next Tag: 3
+message InstalledAndroidPackage {
+  // Required. Name of the installed package.
+  string name = 1;
+  // Required. Version of the installed package.
+  string version_code = 2;
+}
+
+// Next Tag: 2
+message AndroidProvisionResponseMetadata {
+  // List of the provisioned Android packages.
+  repeated InstalledAndroidPackage installed_android_packages = 1;
 }

@@ -8,31 +8,12 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
-import "chromiumos/test/api/android_provision_state.proto";
+import "chromiumos/test/api/android_provision_metadata.proto";
 import "chromiumos/test/api/provision_service.proto";
 import "chromiumos/test/lab/api/dut.proto";
-import "chromiumos/test/lab/api/ip_endpoint.proto";
-
-// Next Tag: 4
-message AndroidProvisionRequest {
-  // Required. DUT information.
-  chromiumos.test.lab.api.Dut dut = 1;
-  // Required. Provision state is a pass through request to the provision service.
-  AndroidProvisionState provision_state = 2;
-  // Required. Address of the DUT Server.
-  chromiumos.test.lab.api.IpEndpoint dut_server = 3;
-}
-
-// Next Tag: 3
-message InstalledAndroidPackage {
-  // Required. Name of the installed package.
-  string name = 1;
-  // Required. Version of the installed package.
-  string version_code = 2;
-}
 
 // Next Tag: 5
-message AndroidProvisionResponse {
+message AndroidProvisionCLIResponse {
   // Required. The DUT Id.
   chromiumos.test.lab.api.Dut.Id id = 1;
   // Required. Outcome represents the result of performing provisioning on the DUT.
