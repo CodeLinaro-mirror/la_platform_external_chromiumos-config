@@ -9,6 +9,8 @@ import sys
 sys.path.insert(1, 'config/presubmit')
 import presubmits
 
+USE_PYTHON3 = True
+
 def CheckChangeOnUpload(input_api, output_api):
   results = []
   results.extend(presubmits.CheckGenConfig(input_api, output_api))
