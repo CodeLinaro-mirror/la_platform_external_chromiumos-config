@@ -18692,20 +18692,6 @@
         {
           "field": [
             {
-              "jsonName": "network",
-              "label": "LABEL_OPTIONAL",
-              "name": "network",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "artifactDir",
-              "label": "LABEL_OPTIONAL",
-              "name": "artifact_dir",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
               "jsonName": "cacheServer",
               "label": "LABEL_OPTIONAL",
               "name": "cache_server",
@@ -18722,24 +18708,20 @@
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             }
           ],
-          "name": "CrosDutTemplate"
+          "name": "CrosDutTemplate",
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            },
+            {
+              "end": 3,
+              "start": 2
+            }
+          ]
         },
         {
           "field": [
-            {
-              "jsonName": "network",
-              "label": "LABEL_OPTIONAL",
-              "name": "network",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "artifactDir",
-              "label": "LABEL_OPTIONAL",
-              "name": "artifact_dir",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
             {
               "jsonName": "inputRequest",
               "label": "LABEL_OPTIONAL",
@@ -18749,26 +18731,30 @@
               "typeName": ".chromiumos.test.api.CrosProvisionRequest"
             }
           ],
-          "name": "CrosProvisionTemplate"
-        },
-        {
-          "field": [
+          "name": "CrosProvisionTemplate",
+          "reservedRange": [
             {
-              "jsonName": "network",
-              "label": "LABEL_OPTIONAL",
-              "name": "network",
-              "number": 1,
-              "type": "TYPE_STRING"
+              "end": 2,
+              "start": 1
             },
             {
-              "jsonName": "artifactDir",
-              "label": "LABEL_OPTIONAL",
-              "name": "artifact_dir",
-              "number": 2,
-              "type": "TYPE_STRING"
+              "end": 3,
+              "start": 2
             }
-          ],
-          "name": "CrosTestTemplate"
+          ]
+        },
+        {
+          "name": "CrosTestTemplate",
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            },
+            {
+              "end": 3,
+              "start": 2
+            }
+          ]
         },
         {
           "enumType": [
