@@ -4,6 +4,8 @@
 
 import sys
 
+USE_PYTHON3 = True
+
 # TODO(https://crbug.com/1046543): is there a better way to do this cross
 # repo import?
 sys.path.insert(1, 'config/presubmit')
