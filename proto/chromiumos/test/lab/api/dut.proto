@@ -192,6 +192,14 @@ message Chameleon {
   repeated Peripheral peripherals = 1;
   // Indicate if there's an audio_board in the chameleon.
   bool audio_board = 2;
+  PeripheralState state = 3;
+  string hostname = 4;
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    V2 = 1;
+    V3 = 2;
+  }
+  repeated Type types = 5;
 }
 
 // External camera connected to the device.
@@ -268,6 +276,7 @@ enum PeripheralState {
   PERIPHERAL_STATE_UNSPECIFIED = 0;
   WORKING = 1;
   BROKEN = 2;
+  NOT_APPLICABLE = 3;
 }
 
 // Next Tag: 34

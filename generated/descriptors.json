@@ -15189,6 +15189,10 @@
             {
               "name": "BROKEN",
               "number": 2
+            },
+            {
+              "name": "NOT_APPLICABLE",
+              "number": 3
             }
           ]
         },
@@ -15876,6 +15880,23 @@
                   "number": 8
                 }
               ]
+            },
+            {
+              "name": "Type",
+              "value": [
+                {
+                  "name": "TYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "V2",
+                  "number": 1
+                },
+                {
+                  "name": "V3",
+                  "number": 2
+                }
+              ]
             }
           ],
           "field": [
@@ -15893,6 +15914,29 @@
               "name": "audio_board",
               "number": 2,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.PeripheralState"
+            },
+            {
+              "jsonName": "hostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hostname",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "types",
+              "label": "LABEL_REPEATED",
+              "name": "types",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.Chameleon.Type"
             }
           ],
           "name": "Chameleon"
