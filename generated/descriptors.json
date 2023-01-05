@@ -4133,6 +4133,14 @@
               "number": 38,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Touch"
+            },
+            {
+              "jsonName": "thermal",
+              "label": "LABEL_OPTIONAL",
+              "name": "thermal",
+              "number": 39,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Thermal"
             }
           ],
           "name": "HardwareFeatures",
@@ -6080,6 +6088,18 @@
                 }
               ],
               "name": "Touch"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "configPathSuffix",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "config_path_suffix",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Thermal"
             }
           ]
         }

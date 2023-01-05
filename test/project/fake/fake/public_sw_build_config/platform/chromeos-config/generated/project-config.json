@@ -163,11 +163,11 @@
         },
         "name": "project_b",
         "thermal": {
-          "dptf-dv": "fake/project_b/33/dptf.dv",
+          "dptf-dv": "fake/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/project_b/33/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b/33/dptf.dv"
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
             }
           ]
         },
@@ -207,11 +207,11 @@
         },
         "name": "project_b",
         "thermal": {
-          "dptf-dv": "fake/project_b/dptf.dv",
+          "dptf-dv": "fake/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/project_b/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b/dptf.dv"
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
             }
           ]
         },
@@ -251,11 +251,11 @@
         },
         "name": "project_b",
         "thermal": {
-          "dptf-dv": "fake/project_b/dptf.dv",
+          "dptf-dv": "fake/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/project_b/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b/dptf.dv"
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
             }
           ]
         },
@@ -295,11 +295,11 @@
         },
         "name": "project_c",
         "thermal": {
-          "dptf-dv": "fake/project_b/dptf.dv",
+          "dptf-dv": "fake/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/project_b/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b/dptf.dv"
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
             }
           ]
         },

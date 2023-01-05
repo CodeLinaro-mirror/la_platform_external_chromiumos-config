@@ -640,9 +640,28 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
         hardware_feature = hw_features,
     )
 
-def _create_thermal(id, description, fw_configs = []):
-    """Builds a Topology proto for thermal."""
+def _create_thermal(id, description, fw_configs = [],
+                    config_path_suffix = None):
+    """Builds a Topology proto for thermal solution.
+
+    Args:
+        id: A string identifier for the Topology.
+        description: An English description for the Topology.
+        fw_configs: A list of FirmwareConfiguration protos for this audio
+            topology.
+        config_path_suffix: A suffix to append to the design name when
+        searching for thermal config files, e.g. dptf.dv. The following paths
+        with the thermal directory will be considered, in order:
+            * {suffix}
+            * {design}_{suffix}
+            * {design}_{suffix}/{config_id}.
+        If unset, suffix is treated as an empty string and the underscore after
+        the design name is omitted.
+    """
     hw_features = _HW_FEAT()
+
+    if config_path_suffix != None:
+        hw_features.thermal.config_path_suffix = config_path_suffix
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -1837,6 +1856,9 @@ def _convert_to_hw_features(hardware_topology):
 
     if copy.battery.hardware_feature.battery != _HW_FEAT.Battery():
         result.battery = copy.battery.hardware_feature.battery
+
+    if copy.thermal.hardware_feature.thermal != _HW_FEAT.Thermal():
+        result.thermal = copy.thermal.hardware_feature.thermal
 
     # Handle all possible touch hardware features
     _accumulate_fw_config(result.fw_config, copy.touch.hardware_feature.fw_config)

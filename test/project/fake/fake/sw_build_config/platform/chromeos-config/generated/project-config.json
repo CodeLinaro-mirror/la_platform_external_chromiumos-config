@@ -219,11 +219,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -462,11 +462,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -789,11 +789,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -1012,11 +1012,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/project_b/33/dptf.dv",
+          "dptf-dv": "fake/project_b_default/33/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/project_b/33/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b/33/dptf.dv"
+              "destination": "/etc/dptf/fake/project_b_default/33/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b_default/33/dptf.dv"
             }
           ]
         },
@@ -1236,11 +1236,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/project_b/dptf.dv",
+          "dptf-dv": "fake/project_b_default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/project_b/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b/dptf.dv"
+              "destination": "/etc/dptf/fake/project_b_default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b_default/dptf.dv"
             }
           ]
         },
@@ -1484,11 +1484,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/project_b/dptf.dv",
+          "dptf-dv": "fake/project_b_default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/project_b/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b/dptf.dv"
+              "destination": "/etc/dptf/fake/project_b_default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b_default/dptf.dv"
             }
           ]
         },
@@ -1716,11 +1716,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/project_b/dptf.dv",
+          "dptf-dv": "fake/project_b_default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/project_b/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b/dptf.dv"
+              "destination": "/etc/dptf/fake/project_b_default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/project_b_default/dptf.dv"
             }
           ]
         },
@@ -1951,11 +1951,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -2193,11 +2193,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -2414,11 +2414,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -2635,11 +2635,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -2856,11 +2856,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -3067,11 +3067,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -3259,11 +3259,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -3446,11 +3446,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },
@@ -3634,11 +3634,11 @@
           "input-boost": 15
         },
         "thermal": {
-          "dptf-dv": "fake/dptf.dv",
+          "dptf-dv": "fake/default/dptf.dv",
           "files": [
             {
-              "destination": "/etc/dptf/fake/dptf.dv",
-              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+              "destination": "/etc/dptf/fake/default/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/default/dptf.dv"
             }
           ]
         },

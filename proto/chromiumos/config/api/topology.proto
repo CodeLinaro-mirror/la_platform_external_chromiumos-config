@@ -107,7 +107,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 38
+// NEXT TAG: 40
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -858,5 +858,12 @@ message HardwareFeatures {
      // This is the number of pixels a touch event can wander before being
      // recognized as a scroll rather than a tap.
      google.protobuf.UInt32Value touch_slop_distance = 1;
+  }
+
+  Thermal thermal = 39;
+  message Thermal {
+    // A suffix to be added to the design name to determine the directory to
+    // search for thermal config files, e.g. dptf.dv.
+    string config_path_suffix = 1;
   }
 }

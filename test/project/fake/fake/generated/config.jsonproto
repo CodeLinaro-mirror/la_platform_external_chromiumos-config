@@ -364,6 +364,9 @@
             "stylus": {
               "stylus": 2
             },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
             "usbA": {
               "count": {}
             },
@@ -811,7 +814,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -1015,6 +1022,9 @@
             },
             "stylus": {
               "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -1376,7 +1386,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -1673,6 +1687,9 @@
             },
             "stylus": {
               "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -2129,7 +2146,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -2341,6 +2362,9 @@
             },
             "stylus": {
               "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -2712,7 +2736,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -2905,6 +2933,9 @@
             },
             "stylus": {
               "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -3279,7 +3310,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -3496,6 +3531,9 @@
             },
             "stylus": {
               "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -3862,7 +3900,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -4081,6 +4123,9 @@
             },
             "stylus": {
               "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -4445,7 +4490,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -4668,6 +4717,9 @@
             "stylus": {
               "stylus": 2
             },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
             "usbA": {
               "count": {}
             },
@@ -5031,7 +5083,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -5304,6 +5360,9 @@
             },
             "storage": {
               "storageType": 1
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -5869,7 +5928,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -6260,6 +6323,9 @@
             "storage": {
               "storageType": 1
             },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
             "usbA": {
               "count": {}
             },
@@ -6577,7 +6643,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -6756,6 +6826,9 @@
             },
             "storage": {
               "storageType": 1
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -7062,7 +7135,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -7214,6 +7291,9 @@
             },
             "storage": {
               "storageType": 1
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -7504,7 +7584,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },
@@ -7652,6 +7736,9 @@
             },
             "storage": {
               "storageType": 1
+            },
+            "thermal": {
+              "configPathSuffix": "default"
             },
             "usbA": {
               "count": {}
@@ -7920,7 +8007,11 @@
               "description": {
                 "EN": "Default thermal"
               },
-              "hardwareFeature": {},
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
               "id": "THERMAL",
               "type": 6
             },

@@ -180,7 +180,11 @@ _KEYBOARD = hw_topo.create_keyboard(
     numpad_present = False,
 )
 
-_THERMAL = hw_topo.create_thermal("THERMAL", "Default thermal")
+_THERMAL = hw_topo.create_thermal(
+    "THERMAL",
+    "Default thermal",
+    config_path_suffix = "default",
+)
 _CAMERA0 = hw_topo.create_camera(
     "CAMERA0",
     "No cameras",
