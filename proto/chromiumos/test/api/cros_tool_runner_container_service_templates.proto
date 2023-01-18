@@ -18,6 +18,7 @@ message Template {
     CrosProvisionTemplate cros_provision = 2;
     CrosTestTemplate cros_test = 3;
     CrosPublishTemplate cros_publish = 4;
+    CrosFirmwareProvisionTemplate cros_fw_provision = 5;
   }
 }
 
@@ -68,4 +69,8 @@ message CrosPublishTemplate {
   // If provided, will be mounted to "/tmp/<publish_type>-publish-test-artifacts/"
   // (Ex: gcs-publish-test-artifacts). Required for GCS and TKO publish types.
   string publish_src_dir = 2;
+}
+
+// Plain template to demonstrate the usage of cros-fw-provision container.
+message CrosFirmwareProvisionTemplate {
 }

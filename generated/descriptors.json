@@ -18742,6 +18742,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CrosPublishTemplate"
+            },
+            {
+              "jsonName": "crosFwProvision",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_fw_provision",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosFirmwareProvisionTemplate"
             }
           ],
           "name": "Template",
@@ -18860,6 +18869,9 @@
             }
           ],
           "name": "CrosPublishTemplate"
+        },
+        {
+          "name": "CrosFirmwareProvisionTemplate"
         }
       ],
       "name": "chromiumos/test/api/cros_tool_runner_container_service_templates.proto",

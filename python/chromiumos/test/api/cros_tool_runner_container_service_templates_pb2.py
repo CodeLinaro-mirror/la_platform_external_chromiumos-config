@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\nFchromiumos/test/api/cros_tool_runner_container_service_templates.proto\x12\x13\x63hromiumos.test.api\x1a,chromiumos/test/api/cros_provision_cli.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\x95\x02\n\x08Template\x12\x38\n\x08\x63ros_dut\x18\x01 \x01(\x0b\x32$.chromiumos.test.api.CrosDutTemplateH\x00\x12\x44\n\x0e\x63ros_provision\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.CrosProvisionTemplateH\x00\x12:\n\tcros_test\x18\x03 \x01(\x0b\x32%.chromiumos.test.api.CrosTestTemplateH\x00\x12@\n\x0c\x63ros_publish\x18\x04 \x01(\x0b\x32(.chromiumos.test.api.CrosPublishTemplateH\x00\x42\x0b\n\tcontainer\"\x92\x01\n\x0f\x43rosDutTemplate\x12\x39\n\x0c\x63\x61\x63he_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x38\n\x0b\x64ut_address\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpointJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03\"e\n\x15\x43rosProvisionTemplate\x12@\n\rinput_request\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CrosProvisionRequestJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03\"\x1e\n\x10\x43rosTestTemplateJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03\"\xd5\x01\n\x13\x43rosPublishTemplate\x12J\n\x0cpublish_type\x18\x01 \x01(\x0e\x32\x34.chromiumos.test.api.CrosPublishTemplate.PublishType\x12\x17\n\x0fpublish_src_dir\x18\x02 \x01(\t\"Y\n\x0bPublishType\x12\x17\n\x13PUBLISH_UNSPECIFIED\x10\x00\x12\x0f\n\x0bPUBLISH_GCS\x10\x01\x12\x0f\n\x0bPUBLISH_TKO\x10\x02\x12\x0f\n\x0bPUBLISH_RDB\x10\x03\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\nFchromiumos/test/api/cros_tool_runner_container_service_templates.proto\x12\x13\x63hromiumos.test.api\x1a,chromiumos/test/api/cros_provision_cli.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xe6\x02\n\x08Template\x12\x38\n\x08\x63ros_dut\x18\x01 \x01(\x0b\x32$.chromiumos.test.api.CrosDutTemplateH\x00\x12\x44\n\x0e\x63ros_provision\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.CrosProvisionTemplateH\x00\x12:\n\tcros_test\x18\x03 \x01(\x0b\x32%.chromiumos.test.api.CrosTestTemplateH\x00\x12@\n\x0c\x63ros_publish\x18\x04 \x01(\x0b\x32(.chromiumos.test.api.CrosPublishTemplateH\x00\x12O\n\x11\x63ros_fw_provision\x18\x05 \x01(\x0b\x32\x32.chromiumos.test.api.CrosFirmwareProvisionTemplateH\x00\x42\x0b\n\tcontainer\"\x92\x01\n\x0f\x43rosDutTemplate\x12\x39\n\x0c\x63\x61\x63he_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x38\n\x0b\x64ut_address\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpointJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03\"e\n\x15\x43rosProvisionTemplate\x12@\n\rinput_request\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CrosProvisionRequestJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03\"\x1e\n\x10\x43rosTestTemplateJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03\"\xd5\x01\n\x13\x43rosPublishTemplate\x12J\n\x0cpublish_type\x18\x01 \x01(\x0e\x32\x34.chromiumos.test.api.CrosPublishTemplate.PublishType\x12\x17\n\x0fpublish_src_dir\x18\x02 \x01(\t\"Y\n\x0bPublishType\x12\x17\n\x13PUBLISH_UNSPECIFIED\x10\x00\x12\x0f\n\x0bPUBLISH_GCS\x10\x01\x12\x0f\n\x0bPUBLISH_TKO\x10\x02\x12\x0f\n\x0bPUBLISH_RDB\x10\x03\"\x1f\n\x1d\x43rosFirmwareProvisionTemplateB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_cros__provision__cli__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
 
@@ -57,8 +57,8 @@ _CROSPUBLISHTEMPLATE_PUBLISHTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=873,
-  serialized_end=962,
+  serialized_start=954,
+  serialized_end=1043,
 )
 _sym_db.RegisterEnumDescriptor(_CROSPUBLISHTEMPLATE_PUBLISHTYPE)
 
@@ -99,6 +99,13 @@ _TEMPLATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='cros_fw_provision', full_name='chromiumos.test.api.Template.cros_fw_provision', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -117,7 +124,7 @@ _TEMPLATE = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=185,
-  serialized_end=462,
+  serialized_end=543,
 )
 
 
@@ -155,8 +162,8 @@ _CROSDUTTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=465,
-  serialized_end=611,
+  serialized_start=546,
+  serialized_end=692,
 )
 
 
@@ -187,8 +194,8 @@ _CROSPROVISIONTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=613,
-  serialized_end=714,
+  serialized_start=694,
+  serialized_end=795,
 )
 
 
@@ -212,8 +219,8 @@ _CROSTESTTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=716,
-  serialized_end=746,
+  serialized_start=797,
+  serialized_end=827,
 )
 
 
@@ -252,14 +259,40 @@ _CROSPUBLISHTEMPLATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=749,
-  serialized_end=962,
+  serialized_start=830,
+  serialized_end=1043,
+)
+
+
+_CROSFIRMWAREPROVISIONTEMPLATE = _descriptor.Descriptor(
+  name='CrosFirmwareProvisionTemplate',
+  full_name='chromiumos.test.api.CrosFirmwareProvisionTemplate',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1045,
+  serialized_end=1076,
 )
 
 _TEMPLATE.fields_by_name['cros_dut'].message_type = _CROSDUTTEMPLATE
 _TEMPLATE.fields_by_name['cros_provision'].message_type = _CROSPROVISIONTEMPLATE
 _TEMPLATE.fields_by_name['cros_test'].message_type = _CROSTESTTEMPLATE
 _TEMPLATE.fields_by_name['cros_publish'].message_type = _CROSPUBLISHTEMPLATE
+_TEMPLATE.fields_by_name['cros_fw_provision'].message_type = _CROSFIRMWAREPROVISIONTEMPLATE
 _TEMPLATE.oneofs_by_name['container'].fields.append(
   _TEMPLATE.fields_by_name['cros_dut'])
 _TEMPLATE.fields_by_name['cros_dut'].containing_oneof = _TEMPLATE.oneofs_by_name['container']
@@ -272,6 +305,9 @@ _TEMPLATE.fields_by_name['cros_test'].containing_oneof = _TEMPLATE.oneofs_by_nam
 _TEMPLATE.oneofs_by_name['container'].fields.append(
   _TEMPLATE.fields_by_name['cros_publish'])
 _TEMPLATE.fields_by_name['cros_publish'].containing_oneof = _TEMPLATE.oneofs_by_name['container']
+_TEMPLATE.oneofs_by_name['container'].fields.append(
+  _TEMPLATE.fields_by_name['cros_fw_provision'])
+_TEMPLATE.fields_by_name['cros_fw_provision'].containing_oneof = _TEMPLATE.oneofs_by_name['container']
 _CROSDUTTEMPLATE.fields_by_name['cache_server'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _CROSDUTTEMPLATE.fields_by_name['dut_address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _CROSPROVISIONTEMPLATE.fields_by_name['input_request'].message_type = chromiumos_dot_test_dot_api_dot_cros__provision__cli__pb2._CROSPROVISIONREQUEST
@@ -282,6 +318,7 @@ DESCRIPTOR.message_types_by_name['CrosDutTemplate'] = _CROSDUTTEMPLATE
 DESCRIPTOR.message_types_by_name['CrosProvisionTemplate'] = _CROSPROVISIONTEMPLATE
 DESCRIPTOR.message_types_by_name['CrosTestTemplate'] = _CROSTESTTEMPLATE
 DESCRIPTOR.message_types_by_name['CrosPublishTemplate'] = _CROSPUBLISHTEMPLATE
+DESCRIPTOR.message_types_by_name['CrosFirmwareProvisionTemplate'] = _CROSFIRMWAREPROVISIONTEMPLATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Template = _reflection.GeneratedProtocolMessageType('Template', (_message.Message,), {
@@ -318,6 +355,13 @@ CrosPublishTemplate = _reflection.GeneratedProtocolMessageType('CrosPublishTempl
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.CrosPublishTemplate)
   })
 _sym_db.RegisterMessage(CrosPublishTemplate)
+
+CrosFirmwareProvisionTemplate = _reflection.GeneratedProtocolMessageType('CrosFirmwareProvisionTemplate', (_message.Message,), {
+  'DESCRIPTOR' : _CROSFIRMWAREPROVISIONTEMPLATE,
+  '__module__' : 'chromiumos.test.api.cros_tool_runner_container_service_templates_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.CrosFirmwareProvisionTemplate)
+  })
+_sym_db.RegisterMessage(CrosFirmwareProvisionTemplate)
 
 
 DESCRIPTOR._options = None
