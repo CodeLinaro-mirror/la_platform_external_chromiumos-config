@@ -92,6 +92,8 @@ message Workload {
 
         // TODO: trace, test, script
         // TODO: results, processing
+        // Repeat count for this workload
+        uint32 repeat_count = 4;
 }
 
 message Plan {

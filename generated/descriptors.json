@@ -9656,6 +9656,13 @@
               "name": "local_execution",
               "number": 3,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "repeatCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "repeat_count",
+              "number": 4,
+              "type": "TYPE_UINT32"
             }
           ],
           "name": "Workload"
