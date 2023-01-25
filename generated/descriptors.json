@@ -16316,6 +16316,14 @@
                 {
                   "name": "REASON_GS_DOWNLOAD_FAILED",
                   "number": 18
+                },
+                {
+                  "name": "REASON_DOCKER_UNABLE_TO_START",
+                  "number": 19
+                },
+                {
+                  "name": "REASON_SERVICE_UNABLE_TO_START",
+                  "number": 20
                 }
               ]
             }

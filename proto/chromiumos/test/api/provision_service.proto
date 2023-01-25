@@ -122,6 +122,12 @@ message InstallFailure {
     REASON_GS_UPLOAD_FAILED = 17;
     // status code: ABORTED
     REASON_GS_DOWNLOAD_FAILED = 18;
+    // status code: ABORTED
+    // TODO (b/266634996) Remove once CTRv1 is deprecated and move into TR.
+    REASON_DOCKER_UNABLE_TO_START = 19;
+    // TODO (b/266634996) Remove once CTRv1 is deprecated and move into TR.
+    // status code: ABORTED
+    REASON_SERVICE_UNABLE_TO_START = 20;
   }
 
   Reason reason = 1;
