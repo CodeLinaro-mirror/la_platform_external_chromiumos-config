@@ -17,4 +17,9 @@ message AutotestExecutionMetadata {
     }
     // Custom arguments passed into the autotest test harness
     repeated Arg args = 1;
+    // A custom sub directory to which test results will be written. In
+    // particular, this path will be appended to the results directory
+    // path specified on cros-test server startup to determine the final
+    // path where results will live
+    string results_sub_dir = 2;
 }

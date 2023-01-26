@@ -22652,6 +22652,13 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.AutotestExecutionMetadata.Arg"
+            },
+            {
+              "jsonName": "resultsSubDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "results_sub_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "AutotestExecutionMetadata",
