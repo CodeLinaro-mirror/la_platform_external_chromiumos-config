@@ -245,6 +245,9 @@ message HardwareFeatures {
     // Customizations to append as a suffix to the coreboot build target and AP
     // firmware packaging.
     repeated string coreboot_customizations = 3;
+
+    // The AP firmware has the CONFIG_MAINBOARD_HAS_EARLY_LIBGFXINIT feature enabled.
+    Present mainboard_has_early_libgfxinit = 4;
   }
 
   // Audio properties of system

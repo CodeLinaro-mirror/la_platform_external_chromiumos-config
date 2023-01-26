@@ -4436,6 +4436,14 @@
                   "name": "coreboot_customizations",
                   "number": 3,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "mainboardHasEarlyLibgfxinit",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "mainboard_has_early_libgfxinit",
+                  "number": 4,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "FirmwareConfiguration"
