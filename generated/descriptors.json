@@ -4444,6 +4444,14 @@
                   "number": 4,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "vbootCbfsIntegration",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "vboot_cbfs_integration",
+                  "number": 5,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "FirmwareConfiguration"

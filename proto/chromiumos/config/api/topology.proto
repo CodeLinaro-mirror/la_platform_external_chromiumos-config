@@ -248,6 +248,9 @@ message HardwareFeatures {
 
     // The AP firmware has the CONFIG_MAINBOARD_HAS_EARLY_LIBGFXINIT feature enabled.
     Present mainboard_has_early_libgfxinit = 4;
+
+    // The AP firmware has the CONFIG_VBOOT_CBFS_INTEGRATION feature enabled.
+    Present vboot_cbfs_integration = 5;
   }
 
   // Audio properties of system
