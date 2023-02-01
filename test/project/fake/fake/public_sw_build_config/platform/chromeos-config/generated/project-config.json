@@ -5,7 +5,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "fake_ref_design",
             "product": "fake_program"
@@ -49,7 +48,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "fake_ref_design",
             "product": "fake_program"
@@ -93,7 +91,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_a",
             "product": "fake_program"
@@ -143,7 +140,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_b",
             "product": "fake_program"
@@ -187,7 +183,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_b",
             "product": "fake_program"
@@ -231,7 +226,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_b",
             "product": "fake_program"
@@ -275,7 +269,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_c",
             "product": "fake_program"
@@ -319,7 +312,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_c",
             "product": "fake_program"
@@ -363,7 +355,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_wl",
             "product": "fake_program"
@@ -413,7 +404,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_rebrand",
             "product": "fake_program"
@@ -457,7 +447,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_box",
             "product": "fake_program"
@@ -501,7 +490,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_box",
             "product": "fake_program"
@@ -545,7 +533,6 @@
         "arc": {
           "build-properties": {
             "device": "fake_program_cheets",
-            "first-api-level": "28",
             "marketing-name": "",
             "metrics-tag": "project_box",
             "product": "fake_program"

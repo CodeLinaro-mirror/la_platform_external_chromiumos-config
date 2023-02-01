@@ -640,8 +640,11 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
         hardware_feature = hw_features,
     )
 
-def _create_thermal(id, description, fw_configs = [],
-                    config_path_suffix = None):
+def _create_thermal(
+        id,
+        description,
+        fw_configs = [],
+        config_path_suffix = None):
     """Builds a Topology proto for thermal solution.
 
     Args:
