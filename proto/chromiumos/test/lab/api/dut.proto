@@ -217,6 +217,10 @@ message ExternalCamera {
 // Remote power management capability for the device.
 message RPM {
   bool present = 1;
+  // Address to the frontend service for accessing the RPM.
+  // The frontend service is an HTTP service that supports XMLRPC calls.
+  // TODO(b/266591528): add rpm hostname and outlet port which are needed for XMLRPC call.
+  IpEndpoint frontend_address = 2;
 }
 
 // Servo control of the device.

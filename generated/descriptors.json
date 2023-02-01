@@ -16016,6 +16016,14 @@
               "name": "present",
               "number": 1,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "frontendAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "frontend_address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             }
           ],
           "name": "RPM"
