@@ -115,5 +115,8 @@ message Plan {
         // List of parameters.
         repeated Parameter parameters = 6;
 
+        // Cooldown time between running workloads.
+        uint32 cooldown_seconds = 7;
+
         // TODO: extra labels
 }

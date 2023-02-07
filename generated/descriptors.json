@@ -9743,6 +9743,13 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromium.config.api.test.benchy.v1.Parameter"
+            },
+            {
+              "jsonName": "cooldownSeconds",
+              "label": "LABEL_OPTIONAL",
+              "name": "cooldown_seconds",
+              "number": 7,
+              "type": "TYPE_UINT32"
             }
           ],
           "name": "Plan"
