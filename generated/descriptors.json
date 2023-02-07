@@ -16360,6 +16360,10 @@
                 {
                   "name": "REASON_SERVICE_UNABLE_TO_START",
                   "number": 20
+                },
+                {
+                  "name": "REASON_SERVICE_CONTAINER_UNABLE_TO_PULL",
+                  "number": 21
                 }
               ]
             }

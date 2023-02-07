@@ -128,6 +128,9 @@ message InstallFailure {
     // TODO (b/266634996) Remove once CTRv1 is deprecated and move into TR.
     // status code: ABORTED
     REASON_SERVICE_UNABLE_TO_START = 20;
+    // TODO (b/266634996) Remove once CTRv1 is deprecated and move into TR.
+    // status:code ABORT
+    REASON_SERVICE_CONTAINER_UNABLE_TO_PULL = 21;
   }
 
   Reason reason = 1;
