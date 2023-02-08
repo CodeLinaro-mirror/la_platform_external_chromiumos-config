@@ -15886,7 +15886,7 @@
               "name": "Peripheral",
               "value": [
                 {
-                  "name": "PREIPHERAL_UNSPECIFIED",
+                  "name": "PERIPHERAL_UNSPECIFIED",
                   "number": 0
                 },
                 {

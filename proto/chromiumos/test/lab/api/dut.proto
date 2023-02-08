@@ -179,7 +179,7 @@ message Cellular {
 // See https://sites.google.com/a/google.com/cros-chameleon/home
 message Chameleon {
   enum Peripheral {
-    PREIPHERAL_UNSPECIFIED = 0;
+    PERIPHERAL_UNSPECIFIED = 0;
     BT_HID = 1;
     DP = 2;
     DP_HDMI = 3;
