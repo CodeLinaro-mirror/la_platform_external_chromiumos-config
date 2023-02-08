@@ -17,6 +17,9 @@
         "camera": {
           "count": 0
         },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
+        },
         "identity": {
           "frid": "Google_FAKE_REF_DESIGN",
           "platform-name": "FAKE_PROGRAM",
@@ -59,6 +62,9 @@
         },
         "camera": {
           "count": 0
+        },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -109,6 +115,9 @@
         "camera": {
           "count": 0
         },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
+        },
         "identity": {
           "frid": "Google_PROJECT_A",
           "platform-name": "FAKE_PROGRAM",
@@ -151,6 +160,9 @@
         },
         "camera": {
           "count": 0
+        },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
         },
         "identity": {
           "frid": "Google_PROJECT_B",
@@ -195,6 +207,9 @@
         "camera": {
           "count": 0
         },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
+        },
         "identity": {
           "frid": "Google_PROJECT_B",
           "platform-name": "FAKE_PROGRAM",
@@ -237,6 +252,9 @@
         },
         "camera": {
           "count": 0
+        },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
         },
         "identity": {
           "frid": "Google_PROJECT_B",
@@ -281,6 +299,9 @@
         "camera": {
           "count": 0
         },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
+        },
         "identity": {
           "frid": "Google_PROJECT_C",
           "platform-name": "FAKE_PROGRAM",
@@ -323,6 +344,9 @@
         },
         "camera": {
           "count": 0
+        },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
         },
         "identity": {
           "frid": "Google_PROJECT_D",
@@ -373,6 +397,9 @@
         "camera": {
           "count": 0
         },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
+        },
         "identity": {
           "frid": "Google_PROJECT_WL",
           "platform-name": "FAKE_PROGRAM",
@@ -415,6 +442,9 @@
         },
         "camera": {
           "count": 0
+        },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
         },
         "identity": {
           "frid": "Google_PROJECT_REBRAND",
@@ -459,6 +489,9 @@
         "camera": {
           "count": 0
         },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
+        },
         "identity": {
           "frid": "Google_PROJECT_BOX",
           "platform-name": "FAKE_PROGRAM",
@@ -502,6 +535,9 @@
         "camera": {
           "count": 0
         },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
+        },
         "identity": {
           "frid": "Google_PROJECT_BOX",
           "platform-name": "FAKE_PROGRAM",
@@ -544,6 +580,9 @@
         },
         "camera": {
           "count": 0
+        },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
         },
         "identity": {
           "frid": "Google_PROJECT_BOX",

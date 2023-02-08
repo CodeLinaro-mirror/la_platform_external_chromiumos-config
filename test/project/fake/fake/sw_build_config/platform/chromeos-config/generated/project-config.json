@@ -176,7 +176,8 @@
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "KEYBOARD"
+          "recovery-input": "KEYBOARD",
+          "storage-type": "EMMC"
         },
         "hps": {
           "has-hps": true
@@ -424,7 +425,8 @@
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "POWER_BUTTON"
+          "recovery-input": "POWER_BUTTON",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_Fake_0Db_1Custom_2Cameras",
@@ -657,7 +659,8 @@
           "form-factor": "CONVERTIBLE",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "KEYBOARD"
+          "recovery-input": "KEYBOARD",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_A",
@@ -974,7 +977,8 @@
           "form-factor": "DETACHABLE",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "POWER_BUTTON"
+          "recovery-input": "POWER_BUTTON",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_B",
@@ -1199,7 +1203,8 @@
           "form-factor": "DETACHABLE",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "POWER_BUTTON"
+          "recovery-input": "POWER_BUTTON",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_B",
@@ -1446,7 +1451,8 @@
           "form-factor": "DETACHABLE",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "POWER_BUTTON"
+          "recovery-input": "POWER_BUTTON",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_B",
@@ -1681,7 +1687,8 @@
           "has-backlight": true,
           "has-privacy-screen": true,
           "psu-type": "battery",
-          "recovery-input": "POWER_BUTTON"
+          "recovery-input": "POWER_BUTTON",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_C",
@@ -1915,7 +1922,8 @@
           "has-backlight": true,
           "has-privacy-screen": true,
           "psu-type": "battery",
-          "recovery-input": "POWER_BUTTON"
+          "recovery-input": "POWER_BUTTON",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_D",
@@ -2130,7 +2138,8 @@
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "KEYBOARD"
+          "recovery-input": "KEYBOARD",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_WL",
@@ -2349,7 +2358,8 @@
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "KEYBOARD"
+          "recovery-input": "KEYBOARD",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_WL",
@@ -2569,7 +2579,8 @@
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "KEYBOARD"
+          "recovery-input": "KEYBOARD",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_WL",
@@ -2789,7 +2800,8 @@
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "KEYBOARD"
+          "recovery-input": "KEYBOARD",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_WL",
@@ -3022,7 +3034,8 @@
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
           "psu-type": "battery",
-          "recovery-input": "KEYBOARD"
+          "recovery-input": "KEYBOARD",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_REBRAND",
@@ -3213,7 +3226,8 @@
           "form-factor": "CHROMEBOX",
           "has-backlight": false,
           "psu-type": "AC_only",
-          "recovery-input": "RECOVERY_BUTTON"
+          "recovery-input": "RECOVERY_BUTTON",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_BOX",
@@ -3404,7 +3418,8 @@
           "form-factor": "CHROMEBASE",
           "has-backlight": true,
           "psu-type": "AC_only",
-          "recovery-input": "RECOVERY_BUTTON"
+          "recovery-input": "RECOVERY_BUTTON",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_BOX",
@@ -3591,7 +3606,8 @@
           "form-factor": "CHROMEBASE",
           "has-backlight": true,
           "psu-type": "AC_only",
-          "recovery-input": "RECOVERY_BUTTON"
+          "recovery-input": "RECOVERY_BUTTON",
+          "storage-type": "EMMC"
         },
         "identity": {
           "frid": "Google_PROJECT_BOX",
