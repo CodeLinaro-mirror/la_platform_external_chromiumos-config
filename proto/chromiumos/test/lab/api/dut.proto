@@ -12,6 +12,7 @@ import "chromiumos/config/api/device_config_id.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 
 // Specification of Device Under Test.
+// Next Tag: 7
 message Dut {
   // Unique identifier for the lab device. It can be the DUT serial number
   // (e.g. "C144091") derived from the DUT itself or some other unique value
@@ -179,15 +180,20 @@ message Cellular {
 // See https://sites.google.com/a/google.com/cros-chameleon/home
 message Chameleon {
   enum Peripheral {
+    // TODO(b/268202522): remove obsolete chameleon types
     PERIPHERAL_UNSPECIFIED = 0;
     BT_HID = 1;
+    // Display Port
     DP = 2;
     DP_HDMI = 3;
     VGA = 4;
+    // High Definition Multimedia Interface
     HDMI = 5;
     BT_BLE_HID = 6;
     BT_A2DP_SINK = 7;
     BT_PEER = 8;
+    // Raspberry Pi
+    RPI = 9;
   }
   repeated Peripheral peripherals = 1;
   // Indicate if there's an audio_board in the chameleon.

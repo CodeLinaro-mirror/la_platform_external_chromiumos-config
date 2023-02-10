@@ -15920,6 +15920,10 @@
                 {
                   "name": "BT_PEER",
                   "number": 8
+                },
+                {
+                  "name": "RPI",
+                  "number": 9
                 }
               ]
             },
