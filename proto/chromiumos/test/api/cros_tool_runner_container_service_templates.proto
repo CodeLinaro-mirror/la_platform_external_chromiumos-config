@@ -61,19 +61,20 @@ message CacheServerTemplate {
 }
 
 // Plain template to demonstrate the usage of cros-publish container. publish_type
-// is required. publish_src_dir is required for GCS and TKO publish types.
+// is required. publish_src_dir is required for GCS, TKO, and CPCON publish types.
 message CrosPublishTemplate {
   enum PublishType {
     PUBLISH_UNSPECIFIED = 0;
     PUBLISH_GCS = 1;
     PUBLISH_TKO = 2;
     PUBLISH_RDB = 3;
+    PUBLISH_CPCON = 4;
   }
 
   PublishType publish_type = 1;
   // Source directory of artifacts that needs to be published.
   // If provided, will be mounted to "/tmp/<publish_type>-publish-test-artifacts/"
-  // (Ex: gcs-publish-test-artifacts). Required for GCS and TKO publish types.
+  // (Ex: gcs-publish-test-artifacts). Required for GCS, TKO, and CPCON publish types.
   string publish_src_dir = 2;
 }
 

@@ -18878,6 +18878,10 @@
                 {
                   "name": "PUBLISH_RDB",
                   "number": 3
+                },
+                {
+                  "name": "PUBLISH_CPCON",
+                  "number": 4
                 }
               ]
             }
