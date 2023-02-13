@@ -18770,6 +18770,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CrosFirmwareProvisionTemplate"
+            },
+            {
+              "jsonName": "cacheServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "cache_server",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CacheServerTemplate"
             }
           ],
           "name": "Template",
@@ -18845,6 +18854,9 @@
               "start": 2
             }
           ]
+        },
+        {
+          "name": "CacheServerTemplate"
         },
         {
           "enumType": [

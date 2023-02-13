@@ -19,6 +19,7 @@ message Template {
     CrosTestTemplate cros_test = 3;
     CrosPublishTemplate cros_publish = 4;
     CrosFirmwareProvisionTemplate cros_fw_provision = 5;
+    CacheServerTemplate cache_server = 6;
   }
 }
 
@@ -52,6 +53,11 @@ message CrosProvisionTemplate {
 message CrosTestTemplate {
   // Reserved for network and artifact_dir that have been moved to upper level.
   reserved 1, 2;
+}
+
+// Plain template to demonstrate the usage of cache-server container. All fields are
+// required.
+message CacheServerTemplate {
 }
 
 // Plain template to demonstrate the usage of cros-publish container. publish_type
