@@ -19,4 +19,7 @@ message PublishRdbMetadata {
 
   // Stainless url where artifacts have been uploaded
   string stainless_url = 3;
+
+  // Testhaus url where artifacts have been uploaded
+  string testhaus_url = 4;
 }

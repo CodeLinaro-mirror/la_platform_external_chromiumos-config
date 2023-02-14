@@ -21696,6 +21696,13 @@
               "name": "stainless_url",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "testhausUrl",
+              "label": "LABEL_OPTIONAL",
+              "name": "testhaus_url",
+              "number": 4,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "PublishRdbMetadata"

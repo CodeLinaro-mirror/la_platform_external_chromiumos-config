@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z6go.chromium.org/chromiumos/config/go/test/api/metadata',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n7chromiumos/test/api/metadata/publish_rdb_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\"\x85\x01\n\x12PublishRdbMetadata\x12\x1d\n\x15\x63urrent_invocation_id\x18\x01 \x01(\t\x12\x39\n\x0btest_result\x18\x02 \x01(\x0b\x32$.chromiumos.test.artifact.TestResult\x12\x15\n\rstainless_url\x18\x03 \x01(\tB8Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
+  serialized_pb=b'\n7chromiumos/test/api/metadata/publish_rdb_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\"\x9b\x01\n\x12PublishRdbMetadata\x12\x1d\n\x15\x63urrent_invocation_id\x18\x01 \x01(\t\x12\x39\n\x0btest_result\x18\x02 \x01(\x0b\x32$.chromiumos.test.artifact.TestResult\x12\x15\n\rstainless_url\x18\x03 \x01(\t\x12\x14\n\x0ctesthaus_url\x18\x04 \x01(\tB8Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_artifact_dot_test__result__pb2.DESCRIPTOR,])
 
@@ -56,6 +56,13 @@ _PUBLISHRDBMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='testhaus_url', full_name='chromiumos.test.api.metadata.PublishRdbMetadata.testhaus_url', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -69,7 +76,7 @@ _PUBLISHRDBMETADATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=134,
-  serialized_end=267,
+  serialized_end=289,
 )
 
 _PUBLISHRDBMETADATA.fields_by_name['test_result'].message_type = chromiumos_dot_test_dot_artifact_dot_test__result__pb2._TESTRESULT
