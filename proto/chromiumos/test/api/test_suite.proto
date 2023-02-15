@@ -9,6 +9,7 @@ package chromiumos.test.api;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/test/api/test_case.proto";
+import "chromiumos/test/api/test_case_metadata.proto";
 
 // Defines a named collection of tests.
 //
@@ -26,6 +27,8 @@ message TestSuite {
     TestCaseTagCriteria test_case_tag_criteria = 3;
     // List of all test_cases
     TestCaseList test_cases = 4;
+    // List of TestCaseMetadata which is list of test case with metadata.
+    TestCaseMetadataList test_cases_metadata = 6;
   }
 
   // The total number of shards to be used in a test run.
