@@ -1947,6 +1947,10 @@
                     {
                       "name": "UFS",
                       "number": 4
+                    },
+                    {
+                      "name": "BRIDGED_EMMC",
+                      "number": 5
                     }
                   ]
                 }

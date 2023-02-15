@@ -339,6 +339,7 @@ message Component {
       NVME = 2;
       SATA = 3;
       UFS = 4;
+      BRIDGED_EMMC = 5;
     }
 
     string emmc5_fw_ver = 1;

@@ -86,6 +86,7 @@ _STORAGE = struct(
     NVME = comp_pb.Component.Storage.NVME,
     SATA = comp_pb.Component.Storage.SATA,
     UFS = comp_pb.Component.Storage.UFS,
+    BRIDGED_EMMC = comp_pb.Component.Storage.BRIDGED_EMMC,
 )
 
 _KB_TYPE = struct(
