@@ -14,6 +14,9 @@ import "chromiumos/test/api/test_suite.proto";
 message CrosTestFinderRequest {
   // Test suites to run (by tag or explicit list of tests).
   repeated TestSuite test_suites = 1;
+  // Set this bool to true to get result with test metadata. Response will have
+  // Test suites with TestCaseMetadataList instead of TestCaseList.
+  bool metadata_required = 2;
 }
 
 message CrosTestFinderResponse {
