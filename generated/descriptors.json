@@ -4145,6 +4145,14 @@
               "number": 39,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Thermal"
+            },
+            {
+              "jsonName": "runtimeProbeConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "runtime_probe_config",
+              "number": 40,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.RuntimeProbeConfig"
             }
           ],
           "name": "HardwareFeatures",
@@ -6120,6 +6128,19 @@
                 }
               ],
               "name": "Thermal"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "RuntimeProbeConfig"
             }
           ]
         }

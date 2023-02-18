@@ -107,7 +107,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 40
+// NEXT TAG: 41
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -871,5 +871,12 @@ message HardwareFeatures {
     // A suffix to be added to the design name to determine the directory to
     // search for thermal config files, e.g. dptf.dv.
     string config_path_suffix = 1;
+  }
+
+  RuntimeProbeConfig runtime_probe_config = 40;
+  message RuntimeProbeConfig {
+    // If the probe config file under /etc/runtime_probe/{model}/ present on
+    // device.
+    Present present = 1;
   }
 }
