@@ -409,6 +409,25 @@ _SC_HEALTH = sc.create_health(
 _SC_RMA = sc.create_rma(
     enabled = True,
     has_cbi = True,
+    ssfc_config = sc.create_ssfc(
+        mask = 0xF0000000,
+        component_type_configs = [
+            sc.create_ssfc_component_type_config(
+                component_type = "component_1",
+                default_value = 0x0,
+                probeable_components = [
+                    sc.create_ssfc_probeable_component(
+                        identifier = "identifier_1",
+                        value = 0x1,
+                    ),
+                    sc.create_ssfc_probeable_component(
+                        identifier = "identifier_2",
+                        value = 0x2,
+                    ),
+                ],
+            ),
+        ],
+    ),
 )
 _SC_NNPALM = sc.create_nnpalm(
     model = "alpha",
