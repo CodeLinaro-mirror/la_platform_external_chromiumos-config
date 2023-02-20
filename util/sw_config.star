@@ -252,13 +252,33 @@ def _create_health(
         routines = routines,
     )
 
+def _create_ssfc_component(
+        identifier = None,
+        value = None):
+    """Builds an SsfcComponent proto."""
+    return rma_pb.RmaConfig.SsfcConfig.SsfcComponent(
+        identifier = identifier,
+        value = value,
+    )
+
+def _create_ssfc(
+        mask = None,
+        components = None):
+    """Builds an SsfcConfig proto."""
+    return rma_pb.RmaConfig.SsfcConfig(
+        mask = mask,
+        components = components,
+    )
+
 def _create_rma(
         enabled = None,
-        has_cbi = None):
+        has_cbi = None,
+        ssfc_config = None):
     """Builds an RmaConfig proto."""
     return rma_pb.RmaConfig(
         enabled = enabled,
         has_cbi = has_cbi,
+        ssfc_config = ssfc_config,
     )
 
 def _create_nnpalm(
@@ -969,6 +989,8 @@ sw_config = struct(
     create_fw_build_config_by_names = _create_fw_build_config_by_names,
     create_fw_build_targets = _create_fw_build_targets,
     create_health = _create_health,
+    create_ssfc_component = _create_ssfc_component,
+    create_ssfc = _create_ssfc,
     create_rma = _create_rma,
     create_nnpalm = _create_nnpalm,
     create_power = _create_power,

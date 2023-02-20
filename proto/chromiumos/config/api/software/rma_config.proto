@@ -12,6 +12,15 @@ package chromiumos.config.api.software;
 // For more details, see:
 // https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform2/chromeos-config/README.md
 message RmaConfig {
+  message SsfcConfig {
+    message SsfcComponent {
+      string identifier = 1;
+      uint32 value = 2;
+    }
+    uint32 mask = 1;
+    repeated SsfcComponent components = 2;
+  }
   bool enabled = 1;
   bool has_cbi = 2;
+  SsfcConfig ssfc_config = 3;
 }

@@ -9338,9 +9338,60 @@
               "name": "has_cbi",
               "number": 2,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "ssfcConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "ssfc_config",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.RmaConfig.SsfcConfig"
             }
           ],
-          "name": "RmaConfig"
+          "name": "RmaConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "mask",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "mask",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "components",
+                  "label": "LABEL_REPEATED",
+                  "name": "components",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponent"
+                }
+              ],
+              "name": "SsfcConfig",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "identifier",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "identifier",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    },
+                    {
+                      "jsonName": "value",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "value",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "SsfcComponent"
+                }
+              ]
+            }
+          ]
         }
       ],
       "name": "chromiumos/config/api/software/rma_config.proto",
