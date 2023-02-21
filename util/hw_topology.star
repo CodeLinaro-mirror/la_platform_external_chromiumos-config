@@ -63,6 +63,12 @@ _CELLULAR = struct(
     CELLULAR_5G = _HW_FEAT.Cellular.CELLULAR_5G,
 )
 
+_DGPU = struct(
+    DGPU_UNKNOWN = _HW_FEAT.Dgpu.DGPU_UNKNOWN,
+    DGPU_NV3050 = _HW_FEAT.Dgpu.DGPU_NV3050,
+    DGPU_NV4050 = _HW_FEAT.Dgpu.DGPU_NV4050,
+)
+
 _FP_LOC = struct(
     NOT_PRESENT = _HW_FEAT.Fingerprint.NOT_PRESENT,
     POWER_BUTTON_TOP_LEFT = _HW_FEAT.Fingerprint.POWER_BUTTON_TOP_LEFT,
@@ -1404,6 +1410,36 @@ def _create_tpm(tpm_type = _TPM_TYPE.GSC_H1B, id = None, fw_configs = []):
         hardware_feature = hw_features,
     )
 
+def _create_dgpu(id, description, fw_configs = [], dgpu_type = _DGPU.DGPU_UNKNOWN):
+    """Builds a Topology proto for dgpu."""
+    hw_features = _HW_FEAT()
+
+    hw_features.dgpu_config.present = _bool_to_present(True)
+    hw_features.dgpu_config.dgpu_type = dgpu_type
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.DGPU,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
+def _create_uwb(id, description, fw_configs = []):
+    """Builds a Topology proto for uwb."""
+    hw_features = _HW_FEAT()
+
+    hw_features.uwb_config.present = _bool_to_present(True)
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.UWB,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
 def _create_microphone_mute_switch(present = False):
     """Builds a Topology proto for an microphone mute switch.
 
@@ -1541,7 +1577,9 @@ def _create_hardware_topology(
         hps = None,
         dp_converter = None,
         poe = None,
-        battery = None):
+        battery = None,
+        dgpu = None,
+        uwb = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -1635,6 +1673,12 @@ def _create_hardware_topology(
     if battery and battery.type != topo_pb.Topology.BATTERY:
         fail("Invalid battery type")
 
+    if dgpu and dgpu.type != topo_pb.Topology.DGPU:
+        fail("Invalid dGPU type")
+
+    if uwb and uwb.type != topo_pb.Topology.UWB:
+        fail("Invalid UWB type")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -1666,6 +1710,8 @@ def _create_hardware_topology(
         poe = poe,
         power_supply = power_supply,
         battery = battery,
+        dgpu = dgpu,
+        uwb = uwb,
     )
 
 def _accumulate_usbc(existing_usbc, new_usbc):
@@ -1913,6 +1959,8 @@ hw_topo = struct(
     create_dp_converter = _create_dp_converter,
     create_poe = _create_poe,
     create_battery = _create_battery,
+    create_dgpu = _create_dgpu,
+    create_uwb = _create_uwb,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_cellular_dynamic_power_reduction_config = _make_cellular_dynamic_power_reduction_config,
@@ -1921,6 +1969,7 @@ hw_topo = struct(
     amplifier = _AMPLIFIER,
     audio_codec = _AUDIO_CODEC,
     cellular = _CELLULAR,
+    dgpu = _DGPU,
     fp_loc = _FP_LOC,
     proximity_sensor_radio_type = _PS_RADIO_TYPE,
     storage = _STORAGE,

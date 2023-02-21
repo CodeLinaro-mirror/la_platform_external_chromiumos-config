@@ -68,6 +68,8 @@ message Topology {
     POWER_SUPPLY = 32;
     RECOVERY_INPUT = 33;
     PRIVACY_SCREEN = 34;
+    DGPU = 35;
+    UWB = 36;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -107,7 +109,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 41
+// NEXT TAG: 43
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -879,4 +881,25 @@ message HardwareFeatures {
     // device.
     Present present = 1;
   }
+
+  Dgpu dgpu_config = 41;
+  message Dgpu {
+    Present present = 1;
+
+    // The type of dGPU on the device.
+    // Next Tag: 3
+    enum DgpuType {
+      DGPU_UNKNOWN = 0;
+      DGPU_NV3050 = 1;
+      DGPU_NV4050 = 2;
+    }
+    DgpuType dgpu_type = 2;
+  }
+
+  // UWB properties of system
+  Uwb uwb_config = 42;
+  message Uwb {
+    // If UWB is present on system
+    Present present = 1;
+  };
 }

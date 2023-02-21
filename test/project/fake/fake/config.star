@@ -165,6 +165,18 @@ _STYLUS = hw_topo.create_stylus(
     "Default stylus",
     stylus_type = hw_topo.stylus.INTERNAL,
 )
+
+_DGPU = hw_topo.create_dgpu(
+    "NV3050",
+    "Default dGPU",
+    dgpu_type = hw_topo.dgpu.DGPU_NV3050,
+)
+
+_UWB = hw_topo.create_uwb(
+    "UWB",
+    "Default UWB",
+)
+
 _BL_KEYBOARD = hw_topo.create_keyboard(
     backlight = True,
     pwr_btn_present = True,
@@ -717,7 +729,9 @@ def create_hardware_topology(
         power_supply = None,
         proximity_sensor = None,
         wifi = None,
-        battery = None):
+        battery = None,
+        dgpu = None,
+        uwb = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -747,6 +761,8 @@ def create_hardware_topology(
         hps = hps,
         power_supply = power_supply if power_supply else _POWER_SUPPLY,
         battery = battery,
+        dgpu = dgpu,
+        uwb = uwb,
     )
 
 # Create empty arrays that we will continually append new configurations to
@@ -773,6 +789,8 @@ design.append_configs(
         hdmi = _HDMI,
         hps = _HPS,
         battery = _BATTERY,
+        dgpu = _DGPU,
+        uwb = _UWB,
     ),
     bluetooth = _SC_BLUETOOTH,
     health = _SC_HEALTH,

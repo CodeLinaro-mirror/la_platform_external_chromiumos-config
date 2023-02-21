@@ -3650,6 +3650,14 @@
                 {
                   "name": "PRIVACY_SCREEN",
                   "number": 34
+                },
+                {
+                  "name": "DGPU",
+                  "number": 35
+                },
+                {
+                  "name": "UWB",
+                  "number": 36
                 }
               ]
             }
@@ -4153,6 +4161,22 @@
               "number": 40,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.RuntimeProbeConfig"
+            },
+            {
+              "jsonName": "dgpuConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "dgpu_config",
+              "number": 41,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Dgpu"
+            },
+            {
+              "jsonName": "uwbConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "uwb_config",
+              "number": 42,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Uwb"
             }
           ],
           "name": "HardwareFeatures",
@@ -6141,6 +6165,59 @@
                 }
               ],
               "name": "RuntimeProbeConfig"
+            },
+            {
+              "enumType": [
+                {
+                  "name": "DgpuType",
+                  "value": [
+                    {
+                      "name": "DGPU_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "DGPU_NV3050",
+                      "number": 1
+                    },
+                    {
+                      "name": "DGPU_NV4050",
+                      "number": 2
+                    }
+                  ]
+                }
+              ],
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "dgpuType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dgpu_type",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Dgpu.DgpuType"
+                }
+              ],
+              "name": "Dgpu"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "Uwb"
             }
           ]
         }
@@ -6408,6 +6485,22 @@
               "label": "LABEL_OPTIONAL",
               "name": "battery",
               "number": 31,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "dgpu",
+              "label": "LABEL_OPTIONAL",
+              "name": "dgpu",
+              "number": 32,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "uwb",
+              "label": "LABEL_OPTIONAL",
+              "name": "uwb",
+              "number": 33,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }

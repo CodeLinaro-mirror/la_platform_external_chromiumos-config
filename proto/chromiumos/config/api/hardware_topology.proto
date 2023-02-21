@@ -143,4 +143,12 @@ message HardwareTopology {
   // Specify the battery topology
   // See ./hardware_topology.md#battery for more information.
   Topology battery = 31;
+
+  // Specify the dGPU topology
+  // See ./hardware_topology.md#dgpu for more information.
+  Topology dgpu = 32;
+
+  // Specify the UWB (Ultra Wideband) topology
+  // See ./hardware_topology.md#uwb for more information.
+  Topology uwb = 33;
 }

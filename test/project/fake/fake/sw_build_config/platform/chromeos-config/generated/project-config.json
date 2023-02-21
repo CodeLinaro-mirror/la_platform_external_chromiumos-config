@@ -143,6 +143,10 @@
             }
           }
         },
+        "dgpu": {
+          "dgpu-type": "nv3050",
+          "has-dgpu": true
+        },
         "fingerprint": {
           "board": "fake_fingerprint_board",
           "sensor-location": "keyboard-bottom-left"
@@ -285,6 +289,9 @@
             "--regulatory-label-dir=fake_regulatory_label"
           ],
           "help-content-id": "fake_help"
+        },
+        "uwb": {
+          "has-uwb": true
         },
         "wallpaper": "fake_wallpaper",
         "wifi": {

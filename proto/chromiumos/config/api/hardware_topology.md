@@ -294,3 +294,15 @@ Changes that require new topology
 Changes that require new topology
 
 * Supports booting with no battery
+
+## dGPU
+
+Changes that require new topology
+
+* Supports discrete GPU
+
+## UWB
+
+Changes that require new topology
+
+* Supports UWB (Ultra Wideband)

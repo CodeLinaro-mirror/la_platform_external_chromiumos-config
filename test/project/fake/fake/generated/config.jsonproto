@@ -571,6 +571,19 @@
               "id": "Default DB",
               "type": 11
             },
+            "dgpu": {
+              "description": {
+                "EN": "Default dGPU"
+              },
+              "hardwareFeature": {
+                "dgpuConfig": {
+                  "dgpuType": 1,
+                  "present": 1
+                }
+              },
+              "id": "NV3050",
+              "type": 35
+            },
             "ec": {
               "hardwareFeature": {
                 "embeddedController": {
@@ -843,6 +856,18 @@
               },
               "id": "TPM",
               "type": 24
+            },
+            "uwb": {
+              "description": {
+                "EN": "Default UWB"
+              },
+              "hardwareFeature": {
+                "uwbConfig": {
+                  "present": 1
+                }
+              },
+              "id": "UWB",
+              "type": 36
             },
             "volumeButton": {
               "description": {
