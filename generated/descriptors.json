@@ -18999,6 +18999,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CacheServerTemplate"
+            },
+            {
+              "jsonName": "crosTestFinder",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_test_finder",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestFinderTemplate"
             }
           ],
           "name": "Template",
@@ -19074,6 +19083,9 @@
               "start": 2
             }
           ]
+        },
+        {
+          "name": "CrosTestFinderTemplate"
         },
         {
           "name": "CacheServerTemplate"
