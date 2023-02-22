@@ -4270,7 +4270,7 @@
                   "name": "CellularType",
                   "value": [
                     {
-                      "name": "NOT_PRESENT",
+                      "name": "CELLULAR_UNKNOWN",
                       "number": 0
                     },
                     {

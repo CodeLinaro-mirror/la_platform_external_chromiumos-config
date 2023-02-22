@@ -194,7 +194,7 @@ message HardwareFeatures {
     bool attach_apn_required = 4;
 
     enum CellularType {
-      NOT_PRESENT = 0;
+      CELLULAR_UNKNOWN = 0;
       CELLULAR_LTE = 1;
       CELLULAR_5G = 2;
     }

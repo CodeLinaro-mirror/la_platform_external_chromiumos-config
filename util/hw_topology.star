@@ -58,7 +58,7 @@ _AMPLIFIER = struct(
 )
 
 _CELLULAR = struct(
-    NOT_PRESENT = _HW_FEAT.Cellular.NOT_PRESENT,
+    CELLULAR_UNKNOWN = _HW_FEAT.Cellular.CELLULAR_UNKNOWN,
     CELLULAR_LTE = _HW_FEAT.Cellular.CELLULAR_LTE,
     CELLULAR_5G = _HW_FEAT.Cellular.CELLULAR_5G,
 )
@@ -971,7 +971,7 @@ def _create_daughter_board(
         defer_external_display_timeout = None,
         cellular_support = False,
         cellular_model = None,
-        cellular_type = _CELLULAR.NOT_PRESENT,
+        cellular_type = _CELLULAR.CELLULAR_UNKNOWN,
         cellular_dynamic_power_reduction_config = None,
         hdmi_support = False,
         side = None,
@@ -1039,7 +1039,7 @@ def _create_cellular_board(
         id,
         description,
         present,
-        type = _CELLULAR.NOT_PRESENT,
+        type = _CELLULAR.CELLULAR_UNKNOWN,
         fw_configs = [],
         model = None,
         attach_apn_required = None,
