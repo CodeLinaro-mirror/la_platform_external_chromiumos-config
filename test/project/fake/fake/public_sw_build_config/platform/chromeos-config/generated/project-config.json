@@ -26,6 +26,10 @@
           "sku-id": 2147483647
         },
         "name": "fake_ref_design",
+        "pvs": {
+          "program": "fake_program",
+          "project": "fake_ref_design"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -72,6 +76,10 @@
           "sku-id": 0
         },
         "name": "fake_ref_design",
+        "pvs": {
+          "program": "fake_program",
+          "project": "fake_ref_design"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -124,6 +132,10 @@
           "sku-id": 32
         },
         "name": "project_a",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_a"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -170,6 +182,10 @@
           "sku-id": 33
         },
         "name": "project_b",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_b"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -216,6 +232,10 @@
           "sku-id": 34
         },
         "name": "project_b",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_b"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -262,6 +282,10 @@
           "sku-id": 35
         },
         "name": "project_b",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_b"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -308,6 +332,10 @@
           "sku-id": 34
         },
         "name": "project_c",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_c"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -354,6 +382,10 @@
           "sku-id": 40
         },
         "name": "project_c",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_d"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -406,6 +438,10 @@
           "sku-id": 64
         },
         "name": "project_wl",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_wl"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -452,6 +488,10 @@
           "sku-id": 65
         },
         "name": "project_rebrand",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_rebrand"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -498,6 +538,10 @@
           "sku-id": 128
         },
         "name": "project_box",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_box"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -544,6 +588,10 @@
           "sku-id": 129
         },
         "name": "project_box",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_box"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -590,6 +638,10 @@
           "sku-id": 130
         },
         "name": "project_box",
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_box"
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [

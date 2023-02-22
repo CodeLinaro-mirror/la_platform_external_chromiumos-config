@@ -208,6 +208,10 @@
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
         },
+        "pvs": {
+          "program": "fake_program",
+          "project": "fake_ref_design"
+        },
         "regulatory-label": "fake_regulatory_label",
         "rmad": {
           "enabled": true,
@@ -454,6 +458,10 @@
           "turn-off-screen-timeout-ms": "3000",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "pvs": {
+          "program": "fake_program",
+          "project": "fake_ref_design"
         },
         "regulatory-label": "fake_regulatory_label",
         "scheduler-tune": {
@@ -711,6 +719,10 @@
               "location": "wifi-right"
             }
           ]
+        },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_a"
         },
         "resource": {
           "ac": {
@@ -1006,6 +1018,10 @@
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
         },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_b"
+        },
         "scheduler-tune": {
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
@@ -1229,6 +1245,10 @@
           "turn-off-screen-timeout-ms": "3000",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_b"
         },
         "scheduler-tune": {
           "boost-urgent": 20,
@@ -1478,6 +1498,10 @@
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
         },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_b"
+        },
         "scheduler-tune": {
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
@@ -1709,6 +1733,10 @@
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_c"
         },
         "scheduler-tune": {
           "boost-urgent": 20,
@@ -1944,6 +1972,10 @@
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_d"
         },
         "scheduler-tune": {
           "boost-urgent": 20,
@@ -2187,6 +2219,10 @@
             }
           ]
         },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_wl"
+        },
         "scheduler-tune": {
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
@@ -2407,6 +2443,10 @@
               "location": "wifi-right"
             }
           ]
+        },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_wl"
         },
         "scheduler-tune": {
           "boost-urgent": 20,
@@ -2629,6 +2669,10 @@
             }
           ]
         },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_wl"
+        },
         "scheduler-tune": {
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
@@ -2850,6 +2894,10 @@
             }
           ]
         },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_wl"
+        },
         "scheduler-tune": {
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
@@ -3061,6 +3109,10 @@
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
         },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_rebrand"
+        },
         "scheduler-tune": {
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
@@ -3253,6 +3305,10 @@
           "usb-min-ac-watts": "90",
           "wake-on-dp": "1"
         },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_box"
+        },
         "scheduler-tune": {
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
@@ -3439,6 +3495,10 @@
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_box"
         },
         "scheduler-tune": {
           "boost-urgent": 20,
@@ -3627,6 +3687,10 @@
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
           "wake-on-dp": "1"
+        },
+        "pvs": {
+          "program": "fake_program",
+          "project": "project_box"
         },
         "scheduler-tune": {
           "boost-urgent": 20,
