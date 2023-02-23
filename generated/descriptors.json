@@ -17939,6 +17939,20 @@
                   "name": "tag_excludes",
                   "number": 2,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "testNames",
+                  "label": "LABEL_REPEATED",
+                  "name": "test_names",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "testNameExcludes",
+                  "label": "LABEL_REPEATED",
+                  "name": "test_name_excludes",
+                  "number": 4,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "TestCaseTagCriteria"

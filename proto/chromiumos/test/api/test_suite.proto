@@ -35,16 +35,20 @@ message TestSuite {
   // Currently only supported for Tast VM tests which are not run by CFT.
   int64 total_shards = 5;
 
-  // Defines tag based selection criteria, which is applied against
-  // a list of TestCase definitions to determine test suite inclusion.
+  // Defines a combination of tag and test name based selection criteria,
+  // which is applied against a list of TestCase definitions to determine
+  // test suite inclusion.
   //
   // Tests are included if they meet the following:
-  //  - MATCH ALL of the [include] tags.
-  //  - DO NOT MATCH ANY of the exclude tags.
+  //  - MATCH ALL of the [include] tags and at least one from [include] test names
+  //  - DO NOT MATCH ANY of the exclude tags or test names
   //
   // Tags must match exactly (i.e. no regexp, wildcard, etc. allowed).
+  // Test names allow usage of wildcard.
   message TestCaseTagCriteria {
     repeated string tags = 1;
     repeated string tag_excludes = 2;
+    repeated string test_names = 3;
+    repeated string test_name_excludes = 4;
   }
 }
