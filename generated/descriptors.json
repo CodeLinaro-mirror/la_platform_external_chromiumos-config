@@ -21923,6 +21923,10 @@
                 {
                   "name": "STATUS_GS_DOWNLOAD_FAILED",
                   "number": 19
+                },
+                {
+                  "name": "STATUS_SUCCESS",
+                  "number": 20
                 }
               ]
             }
