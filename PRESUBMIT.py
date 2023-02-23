@@ -30,21 +30,6 @@ def CheckGenerated(input_api, output_api):
   # Starting with generate.sh.
   results.extend(presubmits.CheckGenerated(input_api, output_api))
 
-  err_msg = ("gen_config produced a diff for {}, please amend your changes "
-             "and try again.")
-
-  # Followed by fake program and project config.
-  for config_file in [
-      "./test/program/fake/config.star", "./test/project/fake/fake/config.star"
-  ]:
-    results.extend(
-        presubmits.CheckGenConfig(
-            input_api,
-            output_api,
-            config_file=config_file,
-            gen_config_cmd="./bin/gen_config",
-            failure_message=err_msg.format(config_file)))
-
   # The generate.sh in this repo can create files. Make sure repo is clean.
   results.extend(presubmits.CheckUntracked(input_api, output_api))
 
