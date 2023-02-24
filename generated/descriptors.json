@@ -5407,6 +5407,16 @@
               "enumType": [
                 {
                   "name": "Location",
+                  "reservedRange": [
+                    {
+                      "end": 5,
+                      "start": 5
+                    },
+                    {
+                      "end": 8,
+                      "start": 8
+                    }
+                  ],
                   "value": [
                     {
                       "name": "LOCATION_UNKNOWN",
@@ -5429,20 +5439,12 @@
                       "number": 4
                     },
                     {
-                      "name": "NOT_PRESENT",
-                      "number": 5
-                    },
-                    {
                       "name": "RIGHT_SIDE",
                       "number": 6
                     },
                     {
                       "name": "LEFT_SIDE",
                       "number": 7
-                    },
-                    {
-                      "name": "PRESENT",
-                      "number": 8
                     },
                     {
                       "name": "LEFT_OF_POWER_BUTTON_TOP_RIGHT",
@@ -5481,6 +5483,13 @@
                   "number": 4,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag"
+                },
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 5,
+                  "type": "TYPE_BOOL"
                 }
               ],
               "name": "Fingerprint",

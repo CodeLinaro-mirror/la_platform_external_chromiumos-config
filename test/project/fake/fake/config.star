@@ -290,6 +290,7 @@ _SENSOR_WITH_LIGHT = hw_topo.create_sensor(
 _FINGERPRINT = hw_topo.create_fingerprint(
     "FINGERPRINT",
     "Default fingerprint",
+    present = True,
     location = hw_topo.fp_loc.KEYBOARD_BOTTOM_LEFT,
     board = "fake_fingerprint_board",
     fingerprint_diag = hw_topo.create_fingerprint_diag(
@@ -326,7 +327,7 @@ _FINGERPRINT = hw_topo.create_fingerprint(
 _NO_FINGERPRINT = hw_topo.create_fingerprint(
     "NONE",
     "No finger print sensor",
-    location = hw_topo.fp_loc.NOT_PRESENT,
+    present = False,
 )
 _HPS = hw_topo.create_hps("HPS", "Default Hps", present = True)
 _PROXIMITY_SENSOR = hw_topo.create_proximity_sensor(

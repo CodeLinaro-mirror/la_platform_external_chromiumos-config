@@ -109,12 +109,6 @@ def CastConvertible(value):
   return value == topology_pb2.HardwareFeatures.FormFactor.CONVERTIBLE
 
 
-def CastFingerPrint(value):
-  if value is None:
-    return None
-  return value != topology_pb2.HardwareFeatures.Fingerprint.NOT_PRESENT
-
-
 def _GetModelNameForDesignId(design_id):
   if design_id.HasField("model_name_design_id_override"):
     return design_id.model_name_design_id_override.value
@@ -158,9 +152,7 @@ def TransformDesignTable(design_config, design_table):
               topology_pb2.HardwareFeatures.Stylus.EXTERNAL
           ],
       'component.has_fingerprint':
-          CastFingerPrint(
-              GetFeatures(topology, 'fingerprint',
-                          ['fingerprint', 'location'])),
+          GetFeatures(topology, 'fingerprint', ['fingerprint', 'present']),
       'component.fingerprint_board':
           GetFeatures(topology, 'fingerprint', ['fingerprint', 'board']),
       'component.has_keyboard_backlight':

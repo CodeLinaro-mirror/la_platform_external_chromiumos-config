@@ -54,9 +54,10 @@ _FEATURE_CONSTRAINTS = design.create_constraints([
         ),
         display = hw_feat.create_display(internal = True, external = False),
         fingerprint = hw_feat.create_fingerprint(
-            hw_feat.location.SIDE_LEFT,
-            "test_board",
-            "ro-test",
+            location = hw_feat.location.SIDE_LEFT,
+            board = "test_board",
+            ro_version = "ro-test",
+            present = True,
         ),
         form_factor = hw_feat.create_form_factor(hw_feat.form_factor.CLAMSHELL),
         keyboard = hw_feat.create_keyboard(hw_feat.keyboard_type.INTERNAL),

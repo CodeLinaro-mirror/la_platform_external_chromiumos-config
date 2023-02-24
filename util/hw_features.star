@@ -93,18 +93,19 @@ def _create_ec(ec_type, present = True):
     )
 
 _LOCATION = struct(
+    UNKNOWN = _HW_FEAT.Fingerprint.LOCATION_UNKNOWN,
     SCREEN_TOP_LEFT = _HW_FEAT.Fingerprint.POWER_BUTTON_TOP_LEFT,
     KEYBOARD_BOTTOM_LEFT = _HW_FEAT.Fingerprint.KEYBOARD_BOTTOM_LEFT,
     KEYBOARD_BOTTOM_RIGHT = _HW_FEAT.Fingerprint.KEYBOARD_BOTTOM_RIGHT,
     KEYBOARD_TOP_RIGHT = _HW_FEAT.Fingerprint.KEYBOARD_TOP_RIGHT,
-    PRESENT = _HW_FEAT.Fingerprint.PRESENT,
-    NOT_PRESENT = _HW_FEAT.Fingerprint.NOT_PRESENT,
     SIDE_RIGHT = _HW_FEAT.Fingerprint.RIGHT_SIDE,
     SIDE_LEFT = _HW_FEAT.Fingerprint.LEFT_SIDE,
+    LEFT_OF_POWER_BUTTON_TOP_RIGHT = _HW_FEAT.Fingerprint.LEFT_OF_POWER_BUTTON_TOP_RIGHT,
 )
 
 def _create_fingerprint(
-        location,
+        present = False,
+        location = _LOCATION.UNKNOWN,
         board = "",
         ro_version = "",
         fingerprint_diag = None):
@@ -115,6 +116,7 @@ def _create_fingerprint(
             board = board,
             ro_version = ro_version,
             fingerprint_diag = fingerprint_diag,
+            present = present,
         ),
     )
 

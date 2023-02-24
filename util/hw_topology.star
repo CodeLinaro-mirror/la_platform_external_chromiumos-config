@@ -70,7 +70,7 @@ _DGPU = struct(
 )
 
 _FP_LOC = struct(
-    NOT_PRESENT = _HW_FEAT.Fingerprint.NOT_PRESENT,
+    UNKNOWN = _HW_FEAT.Fingerprint.LOCATION_UNKNOWN,
     POWER_BUTTON_TOP_LEFT = _HW_FEAT.Fingerprint.POWER_BUTTON_TOP_LEFT,
     KEYBOARD_BOTTOM_LEFT = _HW_FEAT.Fingerprint.KEYBOARD_BOTTOM_LEFT,
     KEYBOARD_BOTTOM_RIGHT = _HW_FEAT.Fingerprint.KEYBOARD_BOTTOM_RIGHT,
@@ -843,14 +843,17 @@ def _create_sensor(
 def _create_fingerprint(
         id,
         description,
-        location,
+        present = False,
+        location = _FP_LOC.UNKNOWN,
         board = None,
         fw_configs = [],
         fingerprint_diag = None):
     """Builds a Topology proto for a fingerprint reader."""
     hw_features = _HW_FEAT()
 
+    hw_features.fingerprint.present = present
     hw_features.fingerprint.location = location
+
     if board:
         hw_features.fingerprint.board = board
         if board == "bloonchipper":

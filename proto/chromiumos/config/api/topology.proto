@@ -577,6 +577,8 @@ message HardwareFeatures {
     string ro_version = 3;
     // Healthd fingerprint diagnostic routine parameters.
     FingerprintDiag fingerprint_diag = 4;
+    // If fingerprint sensor is present on system
+    bool present = 5;
 
     enum Location {
       LOCATION_UNKNOWN = 0;
@@ -588,14 +590,12 @@ message HardwareFeatures {
       KEYBOARD_BOTTOM_RIGHT = 3;
       // Top of keyboard at the right (e.g. Galaxy Chromebook)
       KEYBOARD_TOP_RIGHT = 4;
-      // No fingerprint sensor
-      NOT_PRESENT = 5;
+      reserved 5;  // Not to conflict with NOT_PRESENT
       // At the right side
       RIGHT_SIDE = 6;
       // At the left side
       LEFT_SIDE = 7;
-      // Fingerprint sensor present, but no location information
-      PRESENT = 8;
+      reserved 8;  // Not to conflict with PRESENT
       // Left of power button at top right corner (of the keyboard)
       LEFT_OF_POWER_BUTTON_TOP_RIGHT = 9;
     }

@@ -74,6 +74,7 @@
             "fingerprint": {
               "board": "test_board",
               "location": 7,
+              "present": true,
               "roVersion": "ro-test"
             },
             "formFactor": {
