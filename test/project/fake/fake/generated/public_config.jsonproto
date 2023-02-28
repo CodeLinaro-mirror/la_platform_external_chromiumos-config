@@ -170,7 +170,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 2147483647,
-        "frid": "Google_FAKE_REF_DESIGN"
+        "frid": "Google_Ref"
       }
     },
     {
@@ -192,7 +192,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 32,
-        "frid": "Google_PROJECT_A"
+        "frid": "Google_Ref_A"
       }
     },
     {
@@ -201,7 +201,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 33,
-        "frid": "Google_PROJECT_B"
+        "frid": "Google_Fake"
       }
     },
     {
@@ -210,7 +210,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 34,
-        "frid": "Google_PROJECT_B"
+        "frid": "Google_Fake"
       }
     },
     {
@@ -219,7 +219,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 35,
-        "frid": "Google_PROJECT_B"
+        "frid": "Google_Fake"
       }
     },
     {
@@ -228,7 +228,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 34,
-        "frid": "Google_PROJECT_C"
+        "frid": "Google_Fake"
       }
     },
     {
@@ -237,7 +237,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 40,
-        "frid": "Google_PROJECT_D"
+        "frid": "Google_Fake"
       }
     },
     {
@@ -254,7 +254,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 64,
-        "frid": "Google_PROJECT_WL"
+        "frid": "Google_Fake"
       }
     },
     {
@@ -263,7 +263,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 65,
-        "frid": "Google_PROJECT_REBRAND"
+        "frid": "Google_Fake"
       }
     },
     {
@@ -272,7 +272,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 128,
-        "frid": "Google_PROJECT_BOX"
+        "frid": "Google_Fake"
       }
     },
     {
@@ -281,7 +281,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 129,
-        "frid": "Google_PROJECT_BOX"
+        "frid": "Google_Fake"
       }
     },
     {
@@ -290,7 +290,7 @@
       },
       "idScanConfig": {
         "firmwareSku": 130,
-        "frid": "Google_PROJECT_BOX"
+        "frid": "Google_Fake"
       }
     }
   ]

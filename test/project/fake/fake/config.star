@@ -835,6 +835,7 @@ design.append_configs(
     wifi = _SC_WIFI_ATH10K,
     ui = sc.create_ui(extra_web_apps_dir = "apps1"),
     usb = sc.create_usb(dp_only = True),
+    frid = "Google_Ref",
 )
 
 design.append_configs(
@@ -882,7 +883,6 @@ design.append_configs(
     wifi = _SC_WIFI_RTW88,
     camera = sc.create_camera(generate_media_profiles = True),
     ui = sc.create_ui(extra_web_apps_dir = "apps2"),
-    frid = design.FRID_AUTO,
 )
 
 _HW_CONFIGS_A = []
@@ -950,6 +950,7 @@ design.append_configs(
     ),
     wifi = _SC_WIFI_INTEL,
     camera = sc.create_camera(generate_media_profiles = True, has_external_camera = True),
+    frid = "Google_Ref_A",
 )
 
 _HW_CONFIGS_B = []
@@ -1005,6 +1006,7 @@ design.append_configs(
         generate_media_profiles = True,
         camcorder_resolutions = [sc.make_resolution(640, 480)],
     ),
+    frid = None,
 )
 
 design.append_configs(

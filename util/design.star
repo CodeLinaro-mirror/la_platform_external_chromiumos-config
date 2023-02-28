@@ -24,9 +24,6 @@ load(
 # Config identifier used for an unprovisioned configuration.
 _UNPROVISIONED_CONFIG_ID = 0x7FFFFFFF
 
-# Special value indicating that the FRID should be generated.
-_FRID_AUTO = "__auto__"
-
 _CONSTRAINT = struct(
     REQUIRED = design_pb.Design.Config.Constraint.REQUIRED,
     PREFERRED = design_pb.Design.Config.Constraint.PREFERRED,
@@ -91,10 +88,6 @@ def _append_configs(
     specified properties and then append them to the sw_configs and hw_configs
     arrays respectively. This ensures that all IDs are consistent.
 
-    Note:
-        Only one of device_tree_compatible_match,
-        smbios_name_match_override, or frid can be specified.
-
     Args:
         sw_configs: An array to append the new SoftwareConfig to. Required.
         hw_configs: An array to append the new Design.Config to. Required.
@@ -126,13 +119,11 @@ def _append_configs(
         ui: A UiConfig to be used in the SoftwareConfig.
         usb: UsbConfig to be used in the SoftwareConfig.
         rma: An RmaConfig to be used in the SoftwareConfig.
-        device_tree_compatible_match: Deprecated and traslated to FRID.
-            ("google,name" -> "Google_Name").
-        smbios_name_match_override: Deprecated and translated to FRID.
-            ("Name" -> "Google_Name").
+        device_tree_compatible_match: Deprecated, use FRID instead.
+        smbios_name_match_override: Deprecated, use FRID instead.
         frid: String which must match the AP firmware FRID (first part before the
             period) in order for the config to match.  Leaving this value unset
-            will cause the config to match any FRID.
+            will result in FRID being generated from coreboot target name or design ID.
     """
 
     # Ensure that config_id is convertable to int and is serialized as a
@@ -161,33 +152,22 @@ def _append_configs(
     sw_config = sc_pb.SoftwareConfig()
     sw_config.design_config_id = hw_config.id
 
-    # Verify that only one of the three match parameters are set
-    match_list = [device_tree_compatible_match, smbios_name_match_override, frid]
-    match_count = 0
-    for match_var in match_list:
-        if match_var:
-            match_count += 1
-
-    if match_count > 1:
-        fail("Only one of device_tree_compatible_match, smbios_name_match_override, and frid can be specified")
-    elif frid:
-        if frid == _FRID_AUTO:
-            frid_candidate = firmware_build_config.build_targets.coreboot
-            if not frid_candidate:
-                frid_candidate = design_id.value
-            frid = "Google_%s" % frid_candidate.title()
-    elif device_tree_compatible_match:
-        _, _, firmware_name = device_tree_compatible_match.partition(",")
-        frid = "Google_%s" % firmware_name.title()
-        print("WARNING: device_tree_compatible_match is no longer supported.  " +
-              "Changing %r to a FRID match of %r" % (device_tree_compatible_match, frid))
-    else:
-        smbios_name_match = smbios_name_match_override or design_id.value
-        frid = "Google_%s" % smbios_name_match
-        print("WARNING: smbios_name_match is no longer supported.  " +
-              "Changing %r to a FRID match of %r" % (smbios_name_match, frid))
+    # Generate a default FRID from coreboot target name or design ID.
+    if not frid:
+        if firmware_build_config:
+            candidate_name = firmware_build_config.build_targets.coreboot
+        else:
+            candidate_name = design_id.value
+        frid = "Google_%s" % candidate_name.title()
 
     sw_config.id_scan_config.frid = frid
+
+    # Ignoring all other options to generate FRID.
+    if device_tree_compatible_match:
+        print("WARNING: device_tree_compatible_match is deprecated. FRID `%s` is used for this config." % frid)
+
+    if smbios_name_match_override:
+        print("WARNING: smbios_name_match is deprecated. FRID `%s` is used for this config." % frid)
 
     sw_config.id_scan_config.firmware_sku = config_id
     sw_config.firmware = firmware
@@ -250,5 +230,4 @@ design = struct(
     custom_type = _CUSTOMTYPE,
     generate = generate.generate,
     UNPROVISIONED_CONFIG_ID = _UNPROVISIONED_CONFIG_ID,
-    FRID_AUTO = _FRID_AUTO,
 )

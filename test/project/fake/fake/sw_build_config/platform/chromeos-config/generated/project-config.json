@@ -187,7 +187,7 @@
           "has-hps": true
         },
         "identity": {
-          "frid": "Google_FAKE_REF_DESIGN",
+          "frid": "Google_Ref",
           "platform-name": "fake",
           "sku-id": 2147483647
         },
@@ -734,7 +734,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_A",
+          "frid": "Google_Ref_A",
           "platform-name": "fake",
           "sku-id": 32
         },
@@ -1056,7 +1056,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_B",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 33
         },
@@ -1286,7 +1286,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_B",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 34
         },
@@ -1538,7 +1538,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_B",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 35
         },
@@ -1778,7 +1778,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_C",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 34
         },
@@ -2017,7 +2017,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_D",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 40
         },
@@ -2237,7 +2237,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_WL",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 64
         },
@@ -2461,7 +2461,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_WL",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 64,
           "whitelabel-tag": "loema"
@@ -2686,7 +2686,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_WL",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 64,
           "whitelabel-tag": "loemb"
@@ -2911,7 +2911,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_WL",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 64,
           "whitelabel-tag": "loemc"
@@ -3149,7 +3149,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_REBRAND",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 65,
           "whitelabel-tag": "branda"
@@ -3345,7 +3345,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_BOX",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 128
         },
@@ -3541,7 +3541,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_BOX",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 129
         },
@@ -3733,7 +3733,7 @@
           "storage-type": "EMMC"
         },
         "identity": {
-          "frid": "Google_PROJECT_BOX",
+          "frid": "Google_Fake",
           "platform-name": "fake",
           "sku-id": 130
         },
