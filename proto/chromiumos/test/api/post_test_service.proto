@@ -1,0 +1,65 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+
+// PostTestService acts as a post-test landing point for needed services/actions.
+// For example:
+//  - getting the fw versions for RDB uploading
+//  - getting crash logs in the event of a harness crash
+//  - getting specific file from the DUT
+// Could be expanded to include harness agnostic post-test cleanups, repairs, etc.
+service PostTestService {
+  rpc RunActivity(RunActivityRequest)
+      returns (RunActivityResponse);
+}
+
+// Specific request to run. Must be from the list below.
+message RunActivityRequest {
+  oneof request {
+    GetFWInfoRequest get_fw_info_request = 1;
+    GetFilesFromDUTRequest get_files_from_dut_request = 2;
+  }
+}
+
+// GetFWInfo gets the fwInfo needed for rdb uploads from DUT.
+message GetFWInfoRequest {}
+
+// GetFilesFromDUT will gather files from the DUT post test.
+message GetFilesFromDUTRequest{
+  repeated string files = 1;
+}
+
+// Specific response to be matched with the request.
+message RunActivityResponse {
+  oneof response {
+    GetFWInfoResponse get_fw_info_response = 1;
+    GetFilesFromDUTResponse get_files_from_dut_response = 2;
+  }
+}
+
+// GetFWInfoResponse provides the value of each field from the DUT.
+message GetFWInfoResponse {
+  string ro_fwid  = 1;
+  string rw_fwid  = 2;
+  string kernel_version = 3;
+}
+
+
+// GetFWInfoResponse is a list of filemaps in relation to the service.
+message GetFilesFromDUTResponse{
+  repeated FileMap file_map = 1;
+}
+
+
+// FileMap file_name:location in relation to the service.
+message FileMap {
+  string file_name = 1;
+  string file_location = 2;
+}
