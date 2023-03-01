@@ -165,7 +165,7 @@ message TestCaseInfo {
 }
 
 // Captures ChromeOS build information associated with a test run.
-// NEXT TAG: 10
+// NEXT TAG: 11
 message BuildInfo {
   // The name associated with a given build, e.g. image name.
   // Format: "<source>/R<milestone>-<chrome_os_version>[.<additional_suffix>]"
@@ -202,6 +202,11 @@ message BuildInfo {
 
   // The build metadata associated with a test run.
   BuildMetadata build_metadata = 9;
+
+  // The criticality is for the build tied to the board/model from GoldenEye
+  // whether it's tagged with informational (non-critical) or not.
+  // Note that the default is false if it's not set.
+  bool critical = 10;
 }
 
 // The complete build metadata of the test case.

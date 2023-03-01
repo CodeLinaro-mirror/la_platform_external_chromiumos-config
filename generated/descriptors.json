@@ -21220,6 +21220,13 @@
               "number": 9,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.BuildMetadata"
+            },
+            {
+              "jsonName": "critical",
+              "label": "LABEL_OPTIONAL",
+              "name": "critical",
+              "number": 10,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "BuildInfo"
