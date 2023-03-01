@@ -252,22 +252,33 @@ def _create_health(
         routines = routines,
     )
 
-def _create_ssfc_component(
+def _create_ssfc_probeable_component(
         identifier = None,
         value = None):
-    """Builds an SsfcComponent proto."""
-    return rma_pb.RmaConfig.SsfcConfig.SsfcComponent(
+    """Builds an SsfcProbeableComponent proto."""
+    return rma_pb.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent(
         identifier = identifier,
         value = value,
     )
 
+def _create_ssfc_component_type_config(
+        component_type = None,
+        default_value = None,
+        probeable_components = None):
+    """Builds an SsfcComponentTypeConfig proto."""
+    return rma_pb.RmaConfig.SsfcConfig.SsfcComponentTypeConfig(
+        component_type = component_type,
+        default_value = default_value,
+        probeable_components = probeable_components,
+    )
+
 def _create_ssfc(
         mask = None,
-        components = None):
+        component_type_configs = None):
     """Builds an SsfcConfig proto."""
     return rma_pb.RmaConfig.SsfcConfig(
         mask = mask,
-        components = components,
+        component_type_configs = component_type_configs,
     )
 
 def _create_rma(
@@ -989,7 +1000,8 @@ sw_config = struct(
     create_fw_build_config_by_names = _create_fw_build_config_by_names,
     create_fw_build_targets = _create_fw_build_targets,
     create_health = _create_health,
-    create_ssfc_component = _create_ssfc_component,
+    create_ssfc_probeable_component = _create_ssfc_probeable_component,
+    create_ssfc_component_type_config = _create_ssfc_component_type_config,
     create_ssfc = _create_ssfc,
     create_rma = _create_rma,
     create_nnpalm = _create_nnpalm,

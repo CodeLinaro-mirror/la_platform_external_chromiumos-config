@@ -19,29 +19,29 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/api/software',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n/chromiumos/config/api/software/rma_config.proto\x12\x1e\x63hromiumos.config.api.software\"\xa1\x02\n\tRmaConfig\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\x12\x0f\n\x07has_cbi\x18\x02 \x01(\x08\x12I\n\x0bssfc_config\x18\x03 \x01(\x0b\x32\x34.chromiumos.config.api.software.RmaConfig.SsfcConfig\x1a\xa6\x01\n\nSsfcConfig\x12\x0c\n\x04mask\x18\x01 \x01(\r\x12V\n\ncomponents\x18\x02 \x03(\x0b\x32\x42.chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponent\x1a\x32\n\rSsfcComponent\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\rB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3'
+  serialized_pb=b'\n/chromiumos/config/api/software/rma_config.proto\x12\x1e\x63hromiumos.config.api.software\"\x8f\x04\n\tRmaConfig\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\x12\x0f\n\x07has_cbi\x18\x02 \x01(\x08\x12I\n\x0bssfc_config\x18\x03 \x01(\x0b\x32\x34.chromiumos.config.api.software.RmaConfig.SsfcConfig\x1a\x94\x03\n\nSsfcConfig\x12\x0c\n\x04mask\x18\x01 \x01(\r\x12l\n\x16\x63omponent_type_configs\x18\x02 \x03(\x0b\x32L.chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig\x1a\x89\x02\n\x17SsfcComponentTypeConfig\x12\x16\n\x0e\x63omponent_type\x18\x01 \x01(\t\x12\x15\n\rdefault_value\x18\x02 \x01(\r\x12\x81\x01\n\x14probeable_components\x18\x03 \x03(\x0b\x32\x63.chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent\x1a;\n\x16SsfcProbeableComponent\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\rB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3'
 )
 
 
 
 
-_RMACONFIG_SSFCCONFIG_SSFCCOMPONENT = _descriptor.Descriptor(
-  name='SsfcComponent',
-  full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponent',
+_RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG_SSFCPROBEABLECOMPONENT = _descriptor.Descriptor(
+  name='SsfcProbeableComponent',
+  full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='identifier', full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponent.identifier', index=0,
+      name='identifier', full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent.identifier', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='value', full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponent.value', index=1,
+      name='value', full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent.value', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -59,8 +59,53 @@ _RMACONFIG_SSFCCONFIG_SSFCCOMPONENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=323,
-  serialized_end=373,
+  serialized_start=552,
+  serialized_end=611,
+)
+
+_RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG = _descriptor.Descriptor(
+  name='SsfcComponentTypeConfig',
+  full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='component_type', full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.component_type', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='default_value', full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.default_value', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='probeable_components', full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.probeable_components', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG_SSFCPROBEABLECOMPONENT, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=346,
+  serialized_end=611,
 )
 
 _RMACONFIG_SSFCCONFIG = _descriptor.Descriptor(
@@ -79,7 +124,7 @@ _RMACONFIG_SSFCCONFIG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='components', full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.components', index=1,
+      name='component_type_configs', full_name='chromiumos.config.api.software.RmaConfig.SsfcConfig.component_type_configs', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -88,7 +133,7 @@ _RMACONFIG_SSFCCONFIG = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_RMACONFIG_SSFCCONFIG_SSFCCOMPONENT, ],
+  nested_types=[_RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -98,7 +143,7 @@ _RMACONFIG_SSFCCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=207,
-  serialized_end=373,
+  serialized_end=611,
 )
 
 _RMACONFIG = _descriptor.Descriptor(
@@ -143,11 +188,13 @@ _RMACONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=84,
-  serialized_end=373,
+  serialized_end=611,
 )
 
-_RMACONFIG_SSFCCONFIG_SSFCCOMPONENT.containing_type = _RMACONFIG_SSFCCONFIG
-_RMACONFIG_SSFCCONFIG.fields_by_name['components'].message_type = _RMACONFIG_SSFCCONFIG_SSFCCOMPONENT
+_RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG_SSFCPROBEABLECOMPONENT.containing_type = _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG
+_RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG.fields_by_name['probeable_components'].message_type = _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG_SSFCPROBEABLECOMPONENT
+_RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG.containing_type = _RMACONFIG_SSFCCONFIG
+_RMACONFIG_SSFCCONFIG.fields_by_name['component_type_configs'].message_type = _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG
 _RMACONFIG_SSFCCONFIG.containing_type = _RMACONFIG
 _RMACONFIG.fields_by_name['ssfc_config'].message_type = _RMACONFIG_SSFCCONFIG
 DESCRIPTOR.message_types_by_name['RmaConfig'] = _RMACONFIG
@@ -157,10 +204,17 @@ RmaConfig = _reflection.GeneratedProtocolMessageType('RmaConfig', (_message.Mess
 
   'SsfcConfig' : _reflection.GeneratedProtocolMessageType('SsfcConfig', (_message.Message,), {
 
-    'SsfcComponent' : _reflection.GeneratedProtocolMessageType('SsfcComponent', (_message.Message,), {
-      'DESCRIPTOR' : _RMACONFIG_SSFCCONFIG_SSFCCOMPONENT,
+    'SsfcComponentTypeConfig' : _reflection.GeneratedProtocolMessageType('SsfcComponentTypeConfig', (_message.Message,), {
+
+      'SsfcProbeableComponent' : _reflection.GeneratedProtocolMessageType('SsfcProbeableComponent', (_message.Message,), {
+        'DESCRIPTOR' : _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG_SSFCPROBEABLECOMPONENT,
+        '__module__' : 'chromiumos.config.api.software.rma_config_pb2'
+        # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent)
+        })
+      ,
+      'DESCRIPTOR' : _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG,
       '__module__' : 'chromiumos.config.api.software.rma_config_pb2'
-      # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponent)
+      # @@protoc_insertion_point(class_scope:chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig)
       })
     ,
     'DESCRIPTOR' : _RMACONFIG_SSFCCONFIG,
@@ -174,7 +228,8 @@ RmaConfig = _reflection.GeneratedProtocolMessageType('RmaConfig', (_message.Mess
   })
 _sym_db.RegisterMessage(RmaConfig)
 _sym_db.RegisterMessage(RmaConfig.SsfcConfig)
-_sym_db.RegisterMessage(RmaConfig.SsfcConfig.SsfcComponent)
+_sym_db.RegisterMessage(RmaConfig.SsfcConfig.SsfcComponentTypeConfig)
+_sym_db.RegisterMessage(RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent)
 
 
 DESCRIPTOR._options = None

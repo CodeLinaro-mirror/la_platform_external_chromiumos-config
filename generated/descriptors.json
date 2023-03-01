@@ -9360,12 +9360,12 @@
                   "type": "TYPE_UINT32"
                 },
                 {
-                  "jsonName": "components",
+                  "jsonName": "componentTypeConfigs",
                   "label": "LABEL_REPEATED",
-                  "name": "components",
+                  "name": "component_type_configs",
                   "number": 2,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponent"
+                  "typeName": ".chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig"
                 }
               ],
               "name": "SsfcConfig",
@@ -9373,21 +9373,50 @@
                 {
                   "field": [
                     {
-                      "jsonName": "identifier",
+                      "jsonName": "componentType",
                       "label": "LABEL_OPTIONAL",
-                      "name": "identifier",
+                      "name": "component_type",
                       "number": 1,
                       "type": "TYPE_STRING"
                     },
                     {
-                      "jsonName": "value",
+                      "jsonName": "defaultValue",
                       "label": "LABEL_OPTIONAL",
-                      "name": "value",
+                      "name": "default_value",
                       "number": 2,
                       "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "probeableComponents",
+                      "label": "LABEL_REPEATED",
+                      "name": "probeable_components",
+                      "number": 3,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent"
                     }
                   ],
-                  "name": "SsfcComponent"
+                  "name": "SsfcComponentTypeConfig",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "identifier",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "identifier",
+                          "number": 1,
+                          "type": "TYPE_STRING"
+                        },
+                        {
+                          "jsonName": "value",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "value",
+                          "number": 2,
+                          "type": "TYPE_UINT32"
+                        }
+                      ],
+                      "name": "SsfcProbeableComponent"
+                    }
+                  ]
                 }
               ]
             }
