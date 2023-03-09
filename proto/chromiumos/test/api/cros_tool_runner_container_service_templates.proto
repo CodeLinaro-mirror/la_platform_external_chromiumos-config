@@ -7,6 +7,7 @@ syntax = "proto3";
 package chromiumos.test.api;
 
 import "chromiumos/test/api/cros_provision_cli.proto";
+import "chromiumos/test/api/android_provision.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
@@ -21,6 +22,7 @@ message Template {
     CrosFirmwareProvisionTemplate cros_fw_provision = 5;
     CacheServerTemplate cache_server = 6;
     CrosTestFinderTemplate cros_test_finder = 7;
+    AndroidProvisionTemplate android_provision = 8;
   }
 }
 
@@ -44,6 +46,17 @@ message CrosProvisionTemplate {
   // and write to a json file inside the artifact directory and pass along to
   // cros-provision server. Note that inventory_server is no longer needed
   chromiumos.test.api.CrosProvisionRequest input_request = 3;
+}
+
+// Plain template to demonstrate the usage of android-provision container. All
+// fields are required.
+//
+// TODO (b/272519698) To be made generic with CrosProvisionTemplate.
+message AndroidProvisionTemplate {
+  // AndroidProvisionRequest payload can have template placeholders, to be populated
+  // and write to a json file inside the artifact directory and pass along to
+  // android-provision server.
+  chromiumos.test.api.AndroidProvisionRequest input_request = 1;
 }
 
 // Plain template to demonstrate the usage of cros-test container. network and

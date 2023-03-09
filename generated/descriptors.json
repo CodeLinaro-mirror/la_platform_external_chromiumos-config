@@ -19128,6 +19128,7 @@
       },
       "dependency": [
         "chromiumos/test/api/cros_provision_cli.proto",
+        "chromiumos/test/api/android_provision.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto"
       ],
       "messageType": [
@@ -19195,6 +19196,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CrosTestFinderTemplate"
+            },
+            {
+              "jsonName": "androidProvision",
+              "label": "LABEL_OPTIONAL",
+              "name": "android_provision",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AndroidProvisionTemplate"
             }
           ],
           "name": "Template",
@@ -19257,6 +19267,19 @@
               "start": 2
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "inputRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "input_request",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AndroidProvisionRequest"
+            }
+          ],
+          "name": "AndroidProvisionTemplate"
         },
         {
           "name": "CrosTestTemplate",
