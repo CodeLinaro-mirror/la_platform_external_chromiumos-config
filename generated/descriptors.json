@@ -497,6 +497,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwarePayload"
+            },
+            {
+              "jsonName": "ecRwPayload",
+              "label": "LABEL_OPTIONAL",
+              "name": "ec_rw_payload",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwarePayload"
             }
           ],
           "name": "FirmwareConfig",

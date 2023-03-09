@@ -72,7 +72,7 @@ message FirmwareConfig {
   // version, that the device was shipped with, and setting RW to latest.
   FirmwarePayload main_rw_payload = 2;
 
-  // The embedded controller read-only firmware.
+  // The embedded controller (EC) read-only (RO) firmware.
   // Will not update EC RW; you can flash EC RW as part of main image.
   FirmwarePayload ec_ro_payload = 3;
 
@@ -80,6 +80,9 @@ message FirmwareConfig {
 
   // The PD read-only firmware.
   FirmwarePayload pd_ro_payload = 5;
+
+  // The embedded controller (EC) read-write (RW) firmware.
+  FirmwarePayload ec_rw_payload = 6;
 }
 
 // Config for building firmware components. This is used in the following

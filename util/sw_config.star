@@ -140,12 +140,13 @@ def _create_fw_build_config_by_names(
         ),
     )
 
-def _create_fw_config(ro = None, rw = None, ec = None, pd = None):
+def _create_fw_config(ro = None, rw = None, ec_ro = None, ec_rw = None, pd = None):
     """Builds a FirmwareConfig proto."""
     return fw_pb.FirmwareConfig(
         main_ro_payload = ro,
         main_rw_payload = rw,
-        ec_ro_payload = ec,
+        ec_ro_payload = ec_ro,
+        ec_rw_payload = ec_rw,
         pd_ro_payload = pd,
     )
 
@@ -155,9 +156,15 @@ def _create_fw_payloads_by_names(
         pd_fw_name = None,
         ap_ro_version = None,
         ap_rw_version = None,
+        ec_ro_version = None,
+        ec_rw_version = None,
         ec_version = None,
         pd_version = None):
-    """Builds a FirmwareConfig proto using common naming patterns."""
+    """Builds a FirmwareConfig proto using common naming patterns.
+
+    NOTE: `ec_version` is deprecated. Please use `ec_ro_version` and
+    `ec_rw_version`.
+    """
     sc_fw_config = fw_pb.FirmwareConfig()
     if ap_fw_name:
         sc_fw_config.main_ro_payload = fw_pb.FirmwarePayload(
@@ -172,11 +179,18 @@ def _create_fw_payloads_by_names(
                 version = ap_rw_version,
             )
     if ec_fw_name or ap_fw_name:
+        ec_fw_name = ec_fw_name or "%s_EC" % ap_fw_name
         sc_fw_config.ec_ro_payload = fw_pb.FirmwarePayload(
-            firmware_image_name = ec_fw_name if ec_fw_name else ("%s_EC" % ap_fw_name),
+            firmware_image_name = ec_fw_name,
             type = _FW_TYPE.EC,
-            version = ec_version,
+            version = ec_ro_version or ec_version,
         )
+        if ec_rw_version:
+            sc_fw_config.ec_rw_payload = fw_pb.FirmwarePayload(
+                firmware_image_name = ec_fw_name,
+                type = _FW_TYPE.EC,
+                version = ec_rw_version,
+            )
     if pd_fw_name:
         sc_fw_config.pd_ro_payload = fw_pb.FirmwarePayload(
             firmware_image_name = pd_fw_name,
