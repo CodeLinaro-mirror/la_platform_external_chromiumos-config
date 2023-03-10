@@ -14,7 +14,7 @@ import "chromiumos/test/lab/api/ip_endpoint.proto";
 
 // AndroidProvisionState defines all of the installable (provisionable) elements on an
 // Android test device as part of device setup for test operations.
-// Next Tag: 3
+// Next Tag: 4
 message AndroidProvisionState {
   // Required. String encoded id that uniquely reflects a given AndroidProvisionState.
   message Id {
@@ -23,6 +23,8 @@ message AndroidProvisionState {
   Id id = 1;
   // Required. CIPD packages to provision.
   repeated CIPDPackage cipd_packages = 2;
+  // Android OS image to flash.
+  AndroidOsImage android_os_image = 3;
 }
 
 // Next Tag: 4

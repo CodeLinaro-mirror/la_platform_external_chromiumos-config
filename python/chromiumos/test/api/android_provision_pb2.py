@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+chromiumos/test/api/android_provision.proto\x12\x13\x63hromiumos.test.api\x1a\x34\x63hromiumos/test/api/android_provision_metadata.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xa0\x01\n\x15\x41ndroidProvisionState\x12\x39\n\x02id\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.AndroidProvisionState.Id\x12\x37\n\rcipd_packages\x18\x02 \x03(\x0b\x32 .chromiumos.test.api.CIPDPackage\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\"\xc2\x01\n\x17\x41ndroidProvisionRequest\x12)\n\x03\x64ut\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12\x43\n\x0fprovision_state\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.AndroidProvisionState\x12\x37\n\ndut_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpointB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n+chromiumos/test/api/android_provision.proto\x12\x13\x63hromiumos.test.api\x1a\x34\x63hromiumos/test/api/android_provision_metadata.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xdf\x01\n\x15\x41ndroidProvisionState\x12\x39\n\x02id\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.AndroidProvisionState.Id\x12\x37\n\rcipd_packages\x18\x02 \x03(\x0b\x32 .chromiumos.test.api.CIPDPackage\x12=\n\x10\x61ndroid_os_image\x18\x03 \x01(\x0b\x32#.chromiumos.test.api.AndroidOsImage\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\"\xc2\x01\n\x17\x41ndroidProvisionRequest\x12)\n\x03\x64ut\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12\x43\n\x0fprovision_state\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.AndroidProvisionState\x12\x37\n\ndut_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpointB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_android__provision__metadata__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
 
@@ -56,8 +56,8 @@ _ANDROIDPROVISIONSTATE_ID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=342,
-  serialized_end=361,
+  serialized_start=405,
+  serialized_end=424,
 )
 
 _ANDROIDPROVISIONSTATE = _descriptor.Descriptor(
@@ -82,6 +82,13 @@ _ANDROIDPROVISIONSTATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='android_os_image', full_name='chromiumos.test.api.AndroidProvisionState.android_os_image', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -95,7 +102,7 @@ _ANDROIDPROVISIONSTATE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=201,
-  serialized_end=361,
+  serialized_end=424,
 )
 
 
@@ -140,13 +147,14 @@ _ANDROIDPROVISIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=364,
-  serialized_end=558,
+  serialized_start=427,
+  serialized_end=621,
 )
 
 _ANDROIDPROVISIONSTATE_ID.containing_type = _ANDROIDPROVISIONSTATE
 _ANDROIDPROVISIONSTATE.fields_by_name['id'].message_type = _ANDROIDPROVISIONSTATE_ID
 _ANDROIDPROVISIONSTATE.fields_by_name['cipd_packages'].message_type = chromiumos_dot_test_dot_api_dot_android__provision__metadata__pb2._CIPDPACKAGE
+_ANDROIDPROVISIONSTATE.fields_by_name['android_os_image'].message_type = chromiumos_dot_test_dot_api_dot_android__provision__metadata__pb2._ANDROIDOSIMAGE
 _ANDROIDPROVISIONREQUEST.fields_by_name['dut'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2._DUT
 _ANDROIDPROVISIONREQUEST.fields_by_name['provision_state'].message_type = _ANDROIDPROVISIONSTATE
 _ANDROIDPROVISIONREQUEST.fields_by_name['dut_server'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT

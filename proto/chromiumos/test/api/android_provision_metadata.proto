@@ -87,11 +87,30 @@ message CIPDPackage {
   ApkDetails apk_details = 7;
 }
 
+// Next Tag: 4
+message GsPath {
+  // GS bucket. Optional, android-provisioning-images is used by default.
+  string bucket = 1;
+  // Folder name where the image file is stored.
+  string folder = 2;
+  // Required. Image file name.
+  string file = 3;
+}
 
 // Next Tag: 2
+message AndroidOsImage {
+  // Required. Location of the image file.
+  oneof location_oneof {
+    GsPath gs_path = 1;
+  }
+}
+
+// Next Tag: 3
 message AndroidProvisionRequestMetadata {
-  // Required. A list of CIPD packages to install.
+  // A list of CIPD packages to install.
   repeated CIPDPackage cipd_packages = 1;
+  // Android OS image to flash.
+  AndroidOsImage android_os_image = 2;
 }
 
 // Next Tag: 3

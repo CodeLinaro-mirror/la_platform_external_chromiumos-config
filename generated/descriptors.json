@@ -15338,12 +15338,65 @@
         {
           "field": [
             {
+              "jsonName": "bucket",
+              "label": "LABEL_OPTIONAL",
+              "name": "bucket",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "folder",
+              "label": "LABEL_OPTIONAL",
+              "name": "folder",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "file",
+              "label": "LABEL_OPTIONAL",
+              "name": "file",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GsPath"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "gsPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "gs_path",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GsPath"
+            }
+          ],
+          "name": "AndroidOsImage",
+          "oneofDecl": [
+            {
+              "name": "location_oneof"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
               "jsonName": "cipdPackages",
               "label": "LABEL_REPEATED",
               "name": "cipd_packages",
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CIPDPackage"
+            },
+            {
+              "jsonName": "androidOsImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "android_os_image",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AndroidOsImage"
             }
           ],
           "name": "AndroidProvisionRequestMetadata"
@@ -16428,6 +16481,14 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CIPDPackage"
+            },
+            {
+              "jsonName": "androidOsImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "android_os_image",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AndroidOsImage"
             }
           ],
           "name": "AndroidProvisionState",
