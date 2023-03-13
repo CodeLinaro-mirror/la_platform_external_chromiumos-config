@@ -3649,6 +3649,9 @@
               },
               "touchSupport": 1
             },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream"
+            },
             "storage": {
               "storageType": 1
             },
@@ -4036,6 +4039,18 @@
               "hardwareFeature": {},
               "id": "SD_READER",
               "type": 16
+            },
+            "soc": {
+              "description": {
+                "EN": "Default SoC"
+              },
+              "hardwareFeature": {
+                "soc": {
+                  "arcMediaCodecsSuffix": "mainstream"
+                }
+              },
+              "id": "SOC",
+              "type": 28
             },
             "stylus": {
               "description": {

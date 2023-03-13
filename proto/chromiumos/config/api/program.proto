@@ -170,6 +170,11 @@ message Program {
       uint32 boost_top_app = 4;
     }
     SchedulerTune scheduler_tune = 7;
+
+    message ArcSettings {
+      string media_codecs_suffix = 1;
+    }
+    ArcSettings arc_settings = 8;
   }
   Platform platform = 11;
 

@@ -77,7 +77,8 @@ def _create_platform(
         boost_urgent = None,
         cpuset_nonurgent = None,
         input_boost = None,
-        boost_top_app = None):
+        boost_top_app = None,
+        arc_media_codecs_suffix = None):
     capabilities = None
     if any([
         suspend_to_idle != None,
@@ -104,6 +105,14 @@ def _create_platform(
             boost_top_app = boost_top_app,
         )
 
+    arc_settings = None
+    if any([
+        arc_media_codecs_suffix != None,
+    ]):
+        arc_settings = program_pb.Program.Platform.ArcSettings(
+            media_codecs_suffix = arc_media_codecs_suffix,
+        )
+
     return program_pb.Program.Platform(
         soc_family = soc_family,
         soc_arch = soc_arch,
@@ -112,6 +121,7 @@ def _create_platform(
         video_codecs = video_codecs,
         capabilities = capabilities,
         scheduler_tune = scheduler_tune,
+        arc_settings = arc_settings,
     )
 
 def _create_audio_config(

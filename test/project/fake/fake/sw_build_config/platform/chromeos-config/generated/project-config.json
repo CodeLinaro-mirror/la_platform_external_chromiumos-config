@@ -14,6 +14,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design_2147483647.xml",
             "system-path": "/etc/hardware_features_fake_ref_design_2147483647.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_fake_ref_design_2147483647.xml",
             "system-path": "/etc/media_profiles_fake_ref_design_2147483647.xml"
@@ -344,6 +352,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design_0.xml",
             "system-path": "/etc/hardware_features_fake_ref_design_0.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_fake_ref_design_0.xml",
             "system-path": "/etc/media_profiles_fake_ref_design_0.xml"
@@ -607,6 +623,14 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design_1.xml",
             "system-path": "/etc/hardware_features_fake_ref_design_1.xml"
+          },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_fake_ref_design_1.xml",
@@ -873,6 +897,14 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_a.xml",
             "system-path": "/etc/hardware_features_project_a.xml"
+          },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_a.xml",
@@ -1220,6 +1252,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_b.xml",
             "system-path": "/etc/hardware_features_project_b.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_b.xml",
             "system-path": "/etc/media_profiles_project_b.xml"
@@ -1454,6 +1494,14 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_b.xml",
             "system-path": "/etc/hardware_features_project_b.xml"
+          },
+          "media-codecs": {
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_b.xml",
@@ -1725,6 +1773,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_b.xml",
             "system-path": "/etc/hardware_features_project_b.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_b.xml",
             "system-path": "/etc/media_profiles_project_b.xml"
@@ -1993,6 +2049,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_c.xml",
             "system-path": "/etc/hardware_features_project_c.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_c.xml",
             "system-path": "/etc/media_profiles_project_c.xml"
@@ -2236,6 +2300,14 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_d.xml",
             "system-path": "/etc/hardware_features_project_d.xml"
+          },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_d.xml",
@@ -2481,6 +2553,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
             "system-path": "/etc/hardware_features_project_wl.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_wl.xml",
             "system-path": "/etc/media_profiles_project_wl.xml"
@@ -2720,6 +2800,14 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
             "system-path": "/etc/hardware_features_project_wl.xml"
+          },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_wl.xml",
@@ -2962,6 +3050,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
             "system-path": "/etc/hardware_features_project_wl.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_wl.xml",
             "system-path": "/etc/media_profiles_project_wl.xml"
@@ -3202,6 +3298,14 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
             "system-path": "/etc/hardware_features_project_wl.xml"
+          },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_wl.xml",
@@ -3444,6 +3548,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_rebrand.xml",
             "system-path": "/etc/hardware_features_project_rebrand.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_project_rebrand.xml",
             "system-path": "/etc/media_profiles_project_rebrand.xml"
@@ -3670,6 +3782,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_box_128.xml",
             "system-path": "/etc/hardware_features_project_box_128.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "scale": 280
         },
         "audio": {
@@ -3881,6 +4001,14 @@
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_box_129.xml",
             "system-path": "/etc/hardware_features_project_box_129.xml"
           },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
+          },
           "scale": 280
         },
         "audio": {
@@ -4088,6 +4216,14 @@
           "hardware-features": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_box_130.xml",
             "system-path": "/etc/hardware_features_project_box_130.xml"
+          },
+          "media-codecs": {
+            "build-path": "media_codecs_c2.xml",
+            "system-path": "/etc/media_codecs_c2.xml"
+          },
+          "media-codecs-performance": {
+            "build-path": "media_codecs_performance_c2.xml",
+            "system-path": "/etc/media_codecs_performance_c2.xml"
           },
           "scale": 280
         },

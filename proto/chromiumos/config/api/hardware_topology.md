@@ -313,3 +313,9 @@ Changes that require new topology
 Changes that require new topology
 
 * Presence of the detachable base
+
+## SoC
+
+Changes that require new topology
+
+* Differences in SoC SKU requiring software or firmware differences

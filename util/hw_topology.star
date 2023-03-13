@@ -1535,6 +1535,21 @@ def _create_detachable_base(
         hardware_feature = hw_features,
     )
 
+def _create_soc(id, description, fw_configs = [], arc_media_codecs_suffix = None):
+    """Builds a Topology proto for soc."""
+    hw_features = _HW_FEAT()
+
+    hw_features.soc.arc_media_codecs_suffix = arc_media_codecs_suffix
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.SOC,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
 def _create_microphone_mute_switch(present = False):
     """Builds a Topology proto for an microphone mute switch.
 
@@ -1675,7 +1690,8 @@ def _create_hardware_topology(
         battery = None,
         dgpu = None,
         uwb = None,
-        detachable_base = None):
+        detachable_base = None,
+        soc = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -1778,6 +1794,9 @@ def _create_hardware_topology(
     if detachable_base and detachable_base.type != topo_pb.Topology.DETACHABLE_BASE:
         fail("Invalid detachable base type")
 
+    if soc and soc.type != topo_pb.Topology.SOC:
+        fail("Invalid SoC type")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -1812,6 +1831,7 @@ def _create_hardware_topology(
         dgpu = dgpu,
         uwb = uwb,
         detachable_base = detachable_base,
+        soc = soc,
     )
 
 def _accumulate_usbc(existing_usbc, new_usbc):
@@ -2019,6 +2039,11 @@ def _convert_to_hw_features(hardware_topology):
     if copy.detachable_base.hardware_feature.detachable_base != _HW_FEAT.DetachableBase():
         result.detachable_base = copy.detachable_base.hardware_feature.detachable_base
 
+    _accumulate_fw_config(result.fw_config, copy.soc.hardware_feature.fw_config)
+
+    if copy.soc.hardware_feature.soc != _HW_FEAT.Soc():
+        result.soc = copy.soc.hardware_feature.soc
+
     return result
 
 def _version_topology(topology):
@@ -2118,6 +2143,7 @@ hw_topo = struct(
     create_dgpu = _create_dgpu,
     create_uwb = _create_uwb,
     create_detachable_base = _create_detachable_base,
+    create_soc = _create_soc,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_cellular_dynamic_power_reduction_config = _make_cellular_dynamic_power_reduction_config,

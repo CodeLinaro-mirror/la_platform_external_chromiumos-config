@@ -155,4 +155,8 @@ message HardwareTopology {
   // Specify the  topology
   // See ./hardware_topology.md#detachable_base for more information.
   Topology detachable_base = 34;
+
+  // Specify the SoC topology
+  // See ./hardware_topology.md#soc for more information.
+  Topology soc = 35;
 }

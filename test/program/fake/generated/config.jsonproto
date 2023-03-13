@@ -219,6 +219,7 @@
       "mosysPlatformName": "fake",
       "name": "FAKE_PROGRAM",
       "platform": {
+        "arcSettings": {},
         "capabilities": {
           "darkResume": true,
           "suspendToIdle": true,

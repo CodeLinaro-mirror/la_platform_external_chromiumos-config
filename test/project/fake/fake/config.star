@@ -178,6 +178,12 @@ _UWB = hw_topo.create_uwb(
     "Default UWB",
 )
 
+_SOC = hw_topo.create_soc(
+    "SOC",
+    "Default SoC",
+    arc_media_codecs_suffix = "mainstream",
+)
+
 _BL_KEYBOARD = hw_topo.create_keyboard(
     backlight = True,
     pwr_btn_present = True,
@@ -776,7 +782,8 @@ def create_hardware_topology(
         battery = None,
         dgpu = None,
         uwb = None,
-        detachable_base = None):
+        detachable_base = None,
+        soc = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -809,6 +816,7 @@ def create_hardware_topology(
         dgpu = dgpu,
         uwb = uwb,
         detachable_base = detachable_base,
+        soc = soc,
     )
 
 # Create empty arrays that we will continually append new configurations to
@@ -1147,6 +1155,7 @@ design.append_configs(
             ),
         ),
         detachable_base = _DETACHABLE_BASE,
+        soc = _SOC,
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(

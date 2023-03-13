@@ -6192,6 +6192,13 @@
                   "number": 2,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.Component.Soc.Vulnerability"
+                },
+                {
+                  "jsonName": "arcMediaCodecsSuffix",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "arc_media_codecs_suffix",
+                  "number": 3,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Soc"
@@ -6735,6 +6742,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "detachable_base",
               "number": 34,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "soc",
+              "label": "LABEL_OPTIONAL",
+              "name": "soc",
+              "number": 35,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }
@@ -7930,6 +7945,14 @@
                   "number": 7,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.Program.Platform.SchedulerTune"
+                },
+                {
+                  "jsonName": "arcSettings",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "arc_settings",
+                  "number": 8,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Program.Platform.ArcSettings"
                 }
               ],
               "name": "Platform",
@@ -7992,6 +8015,18 @@
                     }
                   ],
                   "name": "SchedulerTune"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "mediaCodecsSuffix",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "media_codecs_suffix",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    }
+                  ],
+                  "name": "ArcSettings"
                 }
               ]
             },
