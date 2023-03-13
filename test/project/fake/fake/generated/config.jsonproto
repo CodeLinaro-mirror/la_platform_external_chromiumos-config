@@ -8435,6 +8435,15 @@
             "minor": 2
           }
         },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -8680,6 +8689,15 @@
           "version": {
             "major": 11111,
             "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
           }
         },
         "mainRoPayload": {
@@ -9033,6 +9051,15 @@
             "minor": 2
           }
         },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -9108,6 +9135,15 @@
           "version": {
             "major": 11111,
             "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
           }
         },
         "mainRoPayload": {
@@ -9187,6 +9223,15 @@
             "minor": 2
           }
         },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -9256,6 +9301,15 @@
           "version": {
             "major": 11111,
             "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
           }
         },
         "mainRoPayload": {
@@ -9355,6 +9409,15 @@
           "version": {
             "major": 11111,
             "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
           }
         },
         "mainRoPayload": {
@@ -9468,6 +9531,15 @@
             "minor": 2
           }
         },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -9529,6 +9601,15 @@
           "version": {
             "major": 11111,
             "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
           }
         },
         "mainRoPayload": {
@@ -9597,6 +9678,15 @@
             "minor": 2
           }
         },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -9663,6 +9753,15 @@
             "minor": 2
           }
         },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -9727,6 +9826,15 @@
           "version": {
             "major": 11111,
             "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
           }
         },
         "mainRoPayload": {

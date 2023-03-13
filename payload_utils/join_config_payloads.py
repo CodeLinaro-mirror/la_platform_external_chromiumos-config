@@ -279,6 +279,10 @@ def merge_firmware_config(sw_config, model):
   fw_config.ec_ro_payload.firmware_image_name = \
       fw_props.get('ec-ro-image', '')
 
+  fw_config.ec_rw_payload.type = firmware_config_pb2.FirmwareType.EC
+  fw_config.ec_rw_payload.firmware_image_name = \
+      fw_props.get('ec-rw-image', '')
+
   fw_config.pd_ro_payload.type = firmware_config_pb2.FirmwareType.PD
   fw_config.pd_ro_payload.firmware_image_name = \
       fw_props.get('pd-ro-image', '')
