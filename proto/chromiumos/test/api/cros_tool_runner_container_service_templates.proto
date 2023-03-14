@@ -74,9 +74,15 @@ message CrosTestTemplate {
 message CrosTestFinderTemplate {
 }
 
-// Plain template to demonstrate the usage of cache-server container. All fields are
-// required.
+// Plain template to demonstrate the usage of cache-server container.
 message CacheServerTemplate {
+  // Required if the container image needs authentication.
+  oneof application_default_credentials {
+    // This is the full path of service account keyfile in JSON. When provided,
+    // the template will find mount the directory, and export the environment
+    // variable `GOOGLE_APPLICATION_CREDENTIALS` to point it to the keyfile.
+    string service_account_keyfile = 1;
+  }
 }
 
 // Plain template to demonstrate the usage of cros-publish container. publish_type

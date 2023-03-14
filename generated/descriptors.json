@@ -19367,7 +19367,22 @@
           "name": "CrosTestFinderTemplate"
         },
         {
-          "name": "CacheServerTemplate"
+          "field": [
+            {
+              "jsonName": "serviceAccountKeyfile",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_account_keyfile",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CacheServerTemplate",
+          "oneofDecl": [
+            {
+              "name": "application_default_credentials"
+            }
+          ]
         },
         {
           "enumType": [
