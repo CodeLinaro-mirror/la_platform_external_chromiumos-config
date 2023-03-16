@@ -1623,9 +1623,70 @@
                       "name": "max_screen_brightness",
                       "number": 13,
                       "type": "TYPE_DOUBLE"
+                    },
+                    {
+                      "jsonName": "roundedCorners",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "rounded_corners",
+                      "number": 14,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners"
                     }
                   ],
                   "name": "Properties",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "topLeft",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "top_left",
+                          "number": 1,
+                          "type": "TYPE_MESSAGE",
+                          "typeName": ".chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner"
+                        },
+                        {
+                          "jsonName": "topRight",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "top_right",
+                          "number": 2,
+                          "type": "TYPE_MESSAGE",
+                          "typeName": ".chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner"
+                        },
+                        {
+                          "jsonName": "bottomLeft",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "bottom_left",
+                          "number": 3,
+                          "type": "TYPE_MESSAGE",
+                          "typeName": ".chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner"
+                        },
+                        {
+                          "jsonName": "bottomRight",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "bottom_right",
+                          "number": 4,
+                          "type": "TYPE_MESSAGE",
+                          "typeName": ".chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner"
+                        }
+                      ],
+                      "name": "RoundedCorners",
+                      "nestedType": [
+                        {
+                          "field": [
+                            {
+                              "jsonName": "radiusPx",
+                              "label": "LABEL_OPTIONAL",
+                              "name": "radius_px",
+                              "number": 1,
+                              "type": "TYPE_INT32"
+                            }
+                          ],
+                          "name": "RoundedCorner"
+                        }
+                      ]
+                    }
+                  ],
                   "oneofDecl": [
                     {
                       "name": "battery_brightness"
@@ -5011,7 +5072,30 @@
               "name": "LightSensor"
             },
             {
+              "enumType": [
+                {
+                  "name": "ConnectorType",
+                  "value": [
+                    {
+                      "name": "CONNECTOR_TYPE_UNSPECIFIED",
+                      "number": 0
+                    },
+                    {
+                      "name": "CONNECTOR_TYPE_EDP",
+                      "number": 1
+                    }
+                  ]
+                }
+              ],
               "field": [
+                {
+                  "jsonName": "connectorType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "connector_type",
+                  "number": 4,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Screen.ConnectorType"
+                },
                 {
                   "jsonName": "panelProperties",
                   "label": "LABEL_OPTIONAL",

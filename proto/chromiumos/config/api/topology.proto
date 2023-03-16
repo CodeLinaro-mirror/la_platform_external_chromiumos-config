@@ -454,6 +454,19 @@ message HardwareFeatures {
   // Screen properties of system
   Screen screen = 12;
   message Screen {
+    // The libdrm connector type that must match for the properties to
+    // apply to this display.  Right now, only eDP is supported, and
+    // is the most common.  Other connector types can be added as
+    // required.  See drm_mode.h in libdrm for valid options.
+    enum ConnectorType {
+      // Assume a reasonable default (right now eDP).
+      CONNECTOR_TYPE_UNSPECIFIED = 0;
+
+      // eDP connector type.
+      CONNECTOR_TYPE_EDP = 1;
+    }
+    ConnectorType connector_type = 4;
+
     Component.DisplayPanel.Properties panel_properties = 3;
 
     // If touch support is present on system

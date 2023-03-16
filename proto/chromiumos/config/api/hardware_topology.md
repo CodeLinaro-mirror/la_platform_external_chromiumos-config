@@ -13,6 +13,7 @@ Changes that require new topology
 *   Native screen resolution changes
 *   Technology change: e.g TFT vs IPS vs OLED
 *   Touch change: e.g. no touch vs touch
+*   Rounded corners
 
 Changes that do not require new topology
 

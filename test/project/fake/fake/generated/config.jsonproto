@@ -5378,6 +5378,20 @@
                 "noAlsAcBrightness": 80.1,
                 "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
                 "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
@@ -5932,6 +5946,20 @@
                     "noAlsAcBrightness": 80.1,
                     "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "roundedCorners": {
+                      "bottomLeft": {
+                        "radiusPx": 15
+                      },
+                      "bottomRight": {
+                        "radiusPx": 15
+                      },
+                      "topLeft": {
+                        "radiusPx": 15
+                      },
+                      "topRight": {
+                        "radiusPx": 15
+                      }
+                    },
                     "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
@@ -6340,6 +6368,20 @@
                 "noAlsAcBrightness": 80.1,
                 "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
                 "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
@@ -6647,6 +6689,20 @@
                     "noAlsAcBrightness": 80.1,
                     "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "roundedCorners": {
+                      "bottomLeft": {
+                        "radiusPx": 15
+                      },
+                      "bottomRight": {
+                        "radiusPx": 15
+                      },
+                      "topLeft": {
+                        "radiusPx": 15
+                      },
+                      "topRight": {
+                        "radiusPx": 15
+                      }
+                    },
                     "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
@@ -6844,6 +6900,20 @@
                 "noAlsAcBrightness": 80.1,
                 "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
                 "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
@@ -7139,6 +7209,20 @@
                     "noAlsAcBrightness": 80.1,
                     "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "roundedCorners": {
+                      "bottomLeft": {
+                        "radiusPx": 15
+                      },
+                      "bottomRight": {
+                        "radiusPx": 15
+                      },
+                      "topLeft": {
+                        "radiusPx": 15
+                      },
+                      "topRight": {
+                        "radiusPx": 15
+                      }
+                    },
                     "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
@@ -7309,6 +7393,20 @@
                 "noAlsAcBrightness": 80.1,
                 "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
                 "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
@@ -7588,6 +7686,20 @@
                     "noAlsAcBrightness": 80.1,
                     "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "roundedCorners": {
+                      "bottomLeft": {
+                        "radiusPx": 15
+                      },
+                      "bottomRight": {
+                        "radiusPx": 15
+                      },
+                      "topLeft": {
+                        "radiusPx": 15
+                      },
+                      "topRight": {
+                        "radiusPx": 15
+                      }
+                    },
                     "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },
@@ -7754,6 +7866,20 @@
                 "noAlsAcBrightness": 80.1,
                 "noAlsBatteryBrightness": 63.2,
                 "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
                 "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
@@ -8011,6 +8137,20 @@
                     "noAlsAcBrightness": 80.1,
                     "noAlsBatteryBrightness": 63.2,
                     "pixelsPerIn": 280,
+                    "roundedCorners": {
+                      "bottomLeft": {
+                        "radiusPx": 15
+                      },
+                      "bottomRight": {
+                        "radiusPx": 15
+                      },
+                      "topLeft": {
+                        "radiusPx": 15
+                      },
+                      "topRight": {
+                        "radiusPx": 15
+                      }
+                    },
                     "turnOffScreenTimeoutMs": 0,
                     "widthPx": 1920
                   },

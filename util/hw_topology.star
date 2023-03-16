@@ -250,7 +250,9 @@ def _create_screen(
         als_steps = None,
         fw_configs = [],
         seamless_refresh_rate_switching = False,
-        privacy_screen = False):
+        privacy_screen = False,
+        connector_type = None,
+        rounded_corners = None):
     """Builds a Topology proto for a screen."""
     hw_features = _HW_FEAT()
 
@@ -284,6 +286,7 @@ def _create_screen(
         pixels_per_in = pixels_per_in,
     )
     hw_features.screen.touch_support = _bool_to_present(touch)
+    hw_features.screen.connector_type = connector_type
     hw_features.screen.panel_properties.no_als_battery_brightness = no_als_battery_brightness
     hw_features.screen.panel_properties.no_als_battery_brightness_nits = no_als_battery_brightness_nits
     hw_features.screen.panel_properties.no_als_ac_brightness = no_als_ac_brightness
@@ -293,6 +296,7 @@ def _create_screen(
     hw_features.screen.panel_properties.max_screen_brightness = max_brightness_nits
     if turn_off_screen_timeout_ms != None:
         hw_features.screen.panel_properties.turn_off_screen_timeout_ms.value = turn_off_screen_timeout_ms
+    hw_features.screen.panel_properties.rounded_corners = rounded_corners
 
     if privacy_screen:
         hw_features.privacy_screen.present = _PRESENT.PRESENT

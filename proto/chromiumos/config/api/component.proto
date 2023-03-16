@@ -248,6 +248,18 @@ message Component {
 
       // The max luminance of the panel in nits.
       double max_screen_brightness = 13;
+
+      // The radius of each corner of this display (in physical pixels).
+      message RoundedCorners {
+        message RoundedCorner {
+          int32 radius_px = 1;
+        }
+        RoundedCorner top_left = 1;
+        RoundedCorner top_right = 2;
+        RoundedCorner bottom_left = 3;
+        RoundedCorner bottom_right = 4;
+      }
+      RoundedCorners rounded_corners = 14;
     }
   }
 

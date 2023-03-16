@@ -65,6 +65,25 @@ def _create_display_panel(
         ),
     )
 
+def _create_rounded_corners(
+        top_left,
+        top_right = None,
+        bottom_left = None,
+        bottom_right = None):
+    """Creates a Component.DisplayPanel.Properties.RoundedCorners."""
+    if top_right == None:
+        top_right = top_left
+    if bottom_left == None:
+        bottom_left = top_left
+    if bottom_right == None:
+        bottom_right = bottom_left
+    return comp_pb.Component.DisplayPanel.Properties.RoundedCorners(
+        top_left = comp_pb.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner(radius_px = top_left),
+        top_right = comp_pb.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner(radius_px = top_right),
+        bottom_left = comp_pb.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner(radius_px = bottom_left),
+        bottom_right = comp_pb.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner(radius_px = bottom_right),
+    )
+
 def _create_touch(
         product_id,
         fw_version,
@@ -335,6 +354,7 @@ comp = struct(
     create_bt = _create_bt,
     create_cellular = _create_cellular,
     create_display_panel = _create_display_panel,
+    create_rounded_corners = _create_rounded_corners,
     create_touchscreen = _create_touchscreen,
     create_touchpad = _create_touchpad,
     create_wifi = _create_wifi,

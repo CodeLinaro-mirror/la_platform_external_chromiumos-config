@@ -70,6 +70,7 @@ _SCREEN = hw_topo.create_screen(
     ],
     seamless_refresh_rate_switching = True,
     privacy_screen = False,
+    rounded_corners = comp.create_rounded_corners(15),
 )
 _TOUCHSCREEN = hw_topo.create_screen(
     id = "TOUCHSCREEN",
