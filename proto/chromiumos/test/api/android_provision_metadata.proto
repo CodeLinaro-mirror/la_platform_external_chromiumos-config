@@ -91,9 +91,9 @@ message CIPDPackage {
 message GsPath {
   // GS bucket. Optional, android-provisioning-images is used by default.
   string bucket = 1;
-  // Folder name where the image file is stored.
+  // Required. Folder name where the image files are stored.
   string folder = 2;
-  // Required. Image file name.
+  // Optional, zip file with all images to flash.
   string file = 3;
 }
 

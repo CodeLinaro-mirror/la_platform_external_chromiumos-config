@@ -530,9 +530,9 @@ type GsPath struct {
 
 	// GS bucket. Optional, android-provisioning-images is used by default.
 	Bucket string `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
-	// Folder name where the image file is stored.
+	// Required. Folder name where the image files are stored.
 	Folder string `protobuf:"bytes,2,opt,name=folder,proto3" json:"folder,omitempty"`
-	// Required. Image file name.
+	// Optional, zip file with all images to flash.
 	File string `protobuf:"bytes,3,opt,name=file,proto3" json:"file,omitempty"`
 }
 
