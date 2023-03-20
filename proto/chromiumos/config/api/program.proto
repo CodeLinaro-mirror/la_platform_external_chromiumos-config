@@ -162,6 +162,12 @@ message Program {
       // specifies how much CPUs will be boosted.
       // Minimum value: 0x0. Maximum value: 0x64.
       uint32 input_boost = 3;
+
+      // Scheduler's boost value(%) for topmost applications on ARCVM. When
+      // booting the ARCVM, chrome applies this value to the Android for top-app
+      // application classes.
+      // Minimum value: 0x0. Maximum value: 0x64.
+      uint32 boost_top_app = 4;
     }
     SchedulerTune scheduler_tune = 7;
   }

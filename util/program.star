@@ -76,7 +76,8 @@ def _create_platform(
         wake_on_dp = None,
         boost_urgent = None,
         cpuset_nonurgent = None,
-        input_boost = None):
+        input_boost = None,
+        boost_top_app = None):
     capabilities = None
     if any([
         suspend_to_idle != None,
@@ -94,11 +95,13 @@ def _create_platform(
         boost_urgent != None,
         cpuset_nonurgent != None,
         input_boost != None,
+        boost_top_app != None,
     ]):
         scheduler_tune = program_pb.Program.Platform.SchedulerTune(
             boost_urgent = boost_urgent,
             cpuset_nonurgent = cpuset_nonurgent,
             input_boost = input_boost,
+            boost_top_app = boost_top_app,
         )
 
     return program_pb.Program.Platform(

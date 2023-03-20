@@ -225,6 +225,7 @@
           1
         ],
         "schedulerTune": {
+          "boostTopApp": 60,
           "boostUrgent": 20,
           "cpusetNonurgent": "0-5",
           "inputBoost": 15

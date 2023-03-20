@@ -7840,6 +7840,13 @@
                       "name": "input_boost",
                       "number": 3,
                       "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "boostTopApp",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "boost_top_app",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
                     }
                   ],
                   "name": "SchedulerTune"
