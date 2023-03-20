@@ -377,6 +377,37 @@
         ],
         "fw_config": 90880
       },
+      "1": {
+        "component.fingerprint_board": "",
+        "component.has_daughter_board_usb_c": 0,
+        "component.has_fingerprint": false,
+        "component.has_keyboard_backlight": true,
+        "component.has_numeric_pad": true,
+        "component.has_rear_camera": true,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            2
+          ],
+          [
+            "touchscreen",
+            "==",
+            1
+          ],
+          [
+            "usb_host",
+            "==",
+            2
+          ],
+          [
+            "stylus",
+            "==",
+            1
+          ]
+        ],
+        "fw_config": 90880
+      },
       "2147483647": {
         "component.fingerprint_board": "fake_fingerprint_board",
         "component.has_daughter_board_usb_c": 1,

@@ -106,6 +106,56 @@
           "build-properties": {
             "device": "fake_program_cheets",
             "marketing-name": "",
+            "metrics-tag": "fake_ref_design",
+            "product": "fake_program"
+          },
+          "hardware-features": {
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design.xml",
+            "system-path": "/etc/hardware_features_fake_ref_design.xml"
+          }
+        },
+        "camera": {
+          "count": 0
+        },
+        "hardware-properties": {
+          "storage-type": "STORAGE_TYPE_UNKNOWN"
+        },
+        "identity": {
+          "frid": "Google_Fake",
+          "platform-name": "FAKE_PROGRAM",
+          "sku-id": 1
+        },
+        "name": "fake_ref_design",
+        "pvs": {
+          "program": "fake_program",
+          "project": "fake_ref_design"
+        },
+        "thermal": {
+          "dptf-dv": "fake/dptf.dv",
+          "files": [
+            {
+              "destination": "/etc/dptf/fake/dptf.dv",
+              "source": "fake/sw_build_config/platform/chromeos-config/thermal/dptf.dv"
+            }
+          ]
+        },
+        "ui": {
+          "extra-ash-flags": [
+            "--arc-build-properties={'device': 'fake_program_cheets', 'firstApiLevel': '28'}",
+            "--child-wallpaper-large=/usr/share/chromeos-assets/wallpaper/child_large.jpg",
+            "--child-wallpaper-small=/usr/share/chromeos-assets/wallpaper/child_small.jpg",
+            "--default-wallpaper-large=/usr/share/chromeos-assets/wallpaper/default_large.jpg",
+            "--default-wallpaper-small=/usr/share/chromeos-assets/wallpaper/default_small.jpg",
+            "--guest-wallpaper-large=/usr/share/chromeos-assets/wallpaper/guest_large.jpg",
+            "--guest-wallpaper-small=/usr/share/chromeos-assets/wallpaper/guest_small.jpg"
+          ]
+        }
+      },
+      {
+        "arc": {
+          "build-properties": {
+            "device": "fake_program_cheets",
+            "marketing-name": "",
             "metrics-tag": "project_a",
             "product": "fake_program"
           },

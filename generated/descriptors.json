@@ -2180,6 +2180,25 @@
             {
               "field": [
                 {
+                  "jsonName": "decreaseThreshold",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "decrease_threshold",
+                  "number": 1,
+                  "type": "TYPE_INT32"
+                },
+                {
+                  "jsonName": "increaseThreshold",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "increase_threshold",
+                  "number": 2,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "LuxThreshold"
+            },
+            {
+              "field": [
+                {
                   "jsonName": "acBacklightPercent",
                   "label": "LABEL_OPTIONAL",
                   "name": "ac_backlight_percent",
@@ -2212,18 +2231,12 @@
                   "type": "TYPE_DOUBLE"
                 },
                 {
-                  "jsonName": "luxDecreaseThreshold",
+                  "jsonName": "luxThreshold",
                   "label": "LABEL_OPTIONAL",
-                  "name": "lux_decrease_threshold",
+                  "name": "lux_threshold",
                   "number": 3,
-                  "type": "TYPE_INT32"
-                },
-                {
-                  "jsonName": "luxIncreaseThreshold",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "lux_increase_threshold",
-                  "number": 4,
-                  "type": "TYPE_INT32"
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Component.LuxThreshold"
                 },
                 {
                   "jsonName": "maxScreenBrightness",
@@ -5338,6 +5351,21 @@
                   "name": "backlight_user_steps",
                   "number": 5,
                   "type": "TYPE_DOUBLE"
+                },
+                {
+                  "jsonName": "alsSteps",
+                  "label": "LABEL_REPEATED",
+                  "name": "als_steps",
+                  "number": 7,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.KbAlsStep"
+                },
+                {
+                  "jsonName": "noAlsBrightness",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "no_als_brightness",
+                  "number": 8,
+                  "type": "TYPE_DOUBLE"
                 }
               ],
               "name": "Keyboard"
@@ -6344,6 +6372,26 @@
                 }
               ],
               "name": "HardwareProbe"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "backlightPercent",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "backlight_percent",
+                  "number": 1,
+                  "type": "TYPE_DOUBLE"
+                },
+                {
+                  "jsonName": "luxThreshold",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "lux_threshold",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Component.LuxThreshold"
+                }
+              ],
+              "name": "KbAlsStep"
             }
           ]
         }

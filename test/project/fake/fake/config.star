@@ -184,8 +184,14 @@ _BL_KEYBOARD = hw_topo.create_keyboard(
     kb_type = hw_topo.kb_type.INTERNAL,
     numpad_present = True,
     backlight_user_steps = [0, 10, 20, 40, 60, 100],
+    no_als_brightness = 40,
+    als_steps = [
+        hw_topo.create_kb_als_step(None, 20, 40),
+        hw_topo.create_kb_als_step(15, None, 0),
+    ],
     mcu_type = hw_topo.kb_mcu_type.MCU_PRISM,
 )
+
 _KEYBOARD = hw_topo.create_keyboard(
     backlight = False,
     pwr_btn_present = False,
@@ -264,6 +270,7 @@ _SENSOR_WITH_LIGHT = hw_topo.create_sensor(
     base_gyro_present = True,
     base_magno_present = True,
     lid_light_present = True,
+    base_light_present = True,
 )
 _FINGERPRINT = hw_topo.create_fingerprint(
     "FINGERPRINT",
@@ -861,6 +868,55 @@ design.append_configs(
             )],
         ),
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
+        keyboard = _BL_KEYBOARD,
+        battery = _BATTERY,
+    ),
+    firmware = sc.create_fw_payloads_by_names(
+        "Fake",
+        "Fake_EC",
+        "Fake_PD",
+        ap_ro_version = sc.create_fw_version(11111),
+        ap_rw_version = sc.create_fw_version(11111, 2, 3),
+        ec_ro_version = sc.create_fw_version(11111, 2),
+        # Leave out ec_rw_version intentionally for testing
+        pd_version = sc.create_fw_version(11111),
+    ),
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
+    power = sc.create_power({
+        "suspend-to-idle": "0",
+    }),
+    wifi = _SC_WIFI_RTW88,
+    camera = sc.create_camera(generate_media_profiles = True),
+    ui = sc.create_ui(extra_web_apps_dir = "apps2"),
+)
+
+design.append_configs(
+    hw_configs = _HW_CONFIGS,
+    sw_configs = _SW_CONFIGS,
+    design_id = _DESIGN_ID,
+    config_id = 1,
+    hardware_topology = create_hardware_topology(
+        form_factor = _FORM_FACTOR_CLAMSHELL_POWER_RECOV,
+        cellular_board = _LTE_BOARD_WITH_MODEL,
+        screen = _TOUCHSCREEN,
+        stylus = _STYLUS,
+        camera = _CAMERA2,
+        daughter_board = hw_topo.create_daughter_board(
+            "Non-default DB",
+            "Non-default daughter_board",
+            fw_configs = [hw_topo.make_fw_config(
+                program.fw_masks.DB,
+                0,
+                coreboot_customizations = ["0db"],
+            )],
+        ),
+        microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
+        sensor = _SENSOR_WITH_LIGHT,
         keyboard = _BL_KEYBOARD,
         battery = _BATTERY,
     ),

@@ -2455,6 +2455,67 @@ func (*Component_Cellular_Usb) isComponent_Cellular_Interface() {}
 // configures the brightness percentage while at that step as well as the
 // sensor value at which the next or previous step should be considered.
 // Steps should be specified in increasing order for each field.
+type Component_LuxThreshold struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The ALS sensor value below which the previous step should be considered.
+	// A value of -1 denotes negative infinity and should be used for the first
+	// step.
+	DecreaseThreshold int32 `protobuf:"varint,1,opt,name=decrease_threshold,json=decreaseThreshold,proto3" json:"decrease_threshold,omitempty"`
+	// The ALS sensor value above which the following step should be
+	// considered. A value of -1 denotes infinity and should be used for the
+	// last step.
+	IncreaseThreshold int32 `protobuf:"varint,2,opt,name=increase_threshold,json=increaseThreshold,proto3" json:"increase_threshold,omitempty"`
+}
+
+func (x *Component_LuxThreshold) Reset() {
+	*x = Component_LuxThreshold{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Component_LuxThreshold) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Component_LuxThreshold) ProtoMessage() {}
+
+func (x *Component_LuxThreshold) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Component_LuxThreshold.ProtoReflect.Descriptor instead.
+func (*Component_LuxThreshold) Descriptor() ([]byte, []int) {
+	return file_chromiumos_config_api_component_proto_rawDescGZIP(), []int{0, 20}
+}
+
+func (x *Component_LuxThreshold) GetDecreaseThreshold() int32 {
+	if x != nil {
+		return x.DecreaseThreshold
+	}
+	return 0
+}
+
+func (x *Component_LuxThreshold) GetIncreaseThreshold() int32 {
+	if x != nil {
+		return x.IncreaseThreshold
+	}
+	return 0
+}
+
 type Component_AlsStep struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2468,14 +2529,7 @@ type Component_AlsStep struct {
 	//	*Component_AlsStep_BatteryBacklightPercent
 	//	*Component_AlsStep_BatteryBacklightNits
 	BatteryBacklight isComponent_AlsStep_BatteryBacklight `protobuf_oneof:"battery_backlight"`
-	// The ALS sensor value below which the previous step should be considered.
-	// A value of -1 denotes negative infinity and should be used for the first
-	// step.
-	LuxDecreaseThreshold int32 `protobuf:"varint,3,opt,name=lux_decrease_threshold,json=luxDecreaseThreshold,proto3" json:"lux_decrease_threshold,omitempty"`
-	// The ALS sensor value above which the following step should be
-	// considered. A value of -1 denotes infinity and should be used for the
-	// last step.
-	LuxIncreaseThreshold int32 `protobuf:"varint,4,opt,name=lux_increase_threshold,json=luxIncreaseThreshold,proto3" json:"lux_increase_threshold,omitempty"`
+	LuxThreshold     *Component_LuxThreshold              `protobuf:"bytes,3,opt,name=lux_threshold,json=luxThreshold,proto3" json:"lux_threshold,omitempty"`
 	// The max luminance of the panel in nits.
 	MaxScreenBrightness float64 `protobuf:"fixed64,7,opt,name=max_screen_brightness,json=maxScreenBrightness,proto3" json:"max_screen_brightness,omitempty"`
 }
@@ -2483,7 +2537,7 @@ type Component_AlsStep struct {
 func (x *Component_AlsStep) Reset() {
 	*x = Component_AlsStep{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_config_api_component_proto_msgTypes[21]
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2496,7 +2550,7 @@ func (x *Component_AlsStep) String() string {
 func (*Component_AlsStep) ProtoMessage() {}
 
 func (x *Component_AlsStep) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_config_api_component_proto_msgTypes[21]
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2509,7 +2563,7 @@ func (x *Component_AlsStep) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Component_AlsStep.ProtoReflect.Descriptor instead.
 func (*Component_AlsStep) Descriptor() ([]byte, []int) {
-	return file_chromiumos_config_api_component_proto_rawDescGZIP(), []int{0, 20}
+	return file_chromiumos_config_api_component_proto_rawDescGZIP(), []int{0, 21}
 }
 
 func (m *Component_AlsStep) GetAcBacklight() isComponent_AlsStep_AcBacklight {
@@ -2554,18 +2608,11 @@ func (x *Component_AlsStep) GetBatteryBacklightNits() float64 {
 	return 0
 }
 
-func (x *Component_AlsStep) GetLuxDecreaseThreshold() int32 {
+func (x *Component_AlsStep) GetLuxThreshold() *Component_LuxThreshold {
 	if x != nil {
-		return x.LuxDecreaseThreshold
+		return x.LuxThreshold
 	}
-	return 0
-}
-
-func (x *Component_AlsStep) GetLuxIncreaseThreshold() int32 {
-	if x != nil {
-		return x.LuxIncreaseThreshold
-	}
-	return 0
+	return nil
 }
 
 func (x *Component_AlsStep) GetMaxScreenBrightness() float64 {
@@ -2623,7 +2670,7 @@ type Component_Interface_I2C struct {
 func (x *Component_Interface_I2C) Reset() {
 	*x = Component_Interface_I2C{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_config_api_component_proto_msgTypes[22]
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2636,7 +2683,7 @@ func (x *Component_Interface_I2C) String() string {
 func (*Component_Interface_I2C) ProtoMessage() {}
 
 func (x *Component_Interface_I2C) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_config_api_component_proto_msgTypes[22]
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2682,7 +2729,7 @@ type Component_Interface_Usb struct {
 func (x *Component_Interface_Usb) Reset() {
 	*x = Component_Interface_Usb{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_config_api_component_proto_msgTypes[23]
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2695,7 +2742,7 @@ func (x *Component_Interface_Usb) String() string {
 func (*Component_Interface_Usb) ProtoMessage() {}
 
 func (x *Component_Interface_Usb) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_config_api_component_proto_msgTypes[23]
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2750,7 +2797,7 @@ type Component_Interface_Pci struct {
 func (x *Component_Interface_Pci) Reset() {
 	*x = Component_Interface_Pci{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_config_api_component_proto_msgTypes[24]
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2763,7 +2810,7 @@ func (x *Component_Interface_Pci) String() string {
 func (*Component_Interface_Pci) ProtoMessage() {}
 
 func (x *Component_Interface_Pci) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_config_api_component_proto_msgTypes[24]
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2820,7 +2867,7 @@ type Component_Soc_Family struct {
 func (x *Component_Soc_Family) Reset() {
 	*x = Component_Soc_Family{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_config_api_component_proto_msgTypes[25]
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2833,7 +2880,7 @@ func (x *Component_Soc_Family) String() string {
 func (*Component_Soc_Family) ProtoMessage() {}
 
 func (x *Component_Soc_Family) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_config_api_component_proto_msgTypes[25]
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2876,7 +2923,7 @@ type Component_Memory_Profile struct {
 func (x *Component_Memory_Profile) Reset() {
 	*x = Component_Memory_Profile{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_config_api_component_proto_msgTypes[26]
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2889,7 +2936,7 @@ func (x *Component_Memory_Profile) String() string {
 func (*Component_Memory_Profile) ProtoMessage() {}
 
 func (x *Component_Memory_Profile) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_config_api_component_proto_msgTypes[26]
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2964,7 +3011,7 @@ type Component_DisplayPanel_Properties struct {
 func (x *Component_DisplayPanel_Properties) Reset() {
 	*x = Component_DisplayPanel_Properties{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_config_api_component_proto_msgTypes[27]
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2977,7 +3024,7 @@ func (x *Component_DisplayPanel_Properties) String() string {
 func (*Component_DisplayPanel_Properties) ProtoMessage() {}
 
 func (x *Component_DisplayPanel_Properties) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_config_api_component_proto_msgTypes[27]
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3164,7 +3211,7 @@ type Component_DisplayPanel_Properties_RoundedCorners struct {
 func (x *Component_DisplayPanel_Properties_RoundedCorners) Reset() {
 	*x = Component_DisplayPanel_Properties_RoundedCorners{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_config_api_component_proto_msgTypes[28]
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3177,7 +3224,7 @@ func (x *Component_DisplayPanel_Properties_RoundedCorners) String() string {
 func (*Component_DisplayPanel_Properties_RoundedCorners) ProtoMessage() {}
 
 func (x *Component_DisplayPanel_Properties_RoundedCorners) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_config_api_component_proto_msgTypes[28]
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3232,7 +3279,7 @@ type Component_DisplayPanel_Properties_RoundedCorners_RoundedCorner struct {
 func (x *Component_DisplayPanel_Properties_RoundedCorners_RoundedCorner) Reset() {
 	*x = Component_DisplayPanel_Properties_RoundedCorners_RoundedCorner{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_config_api_component_proto_msgTypes[29]
+		mi := &file_chromiumos_config_api_component_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3245,7 +3292,7 @@ func (x *Component_DisplayPanel_Properties_RoundedCorners_RoundedCorner) String(
 func (*Component_DisplayPanel_Properties_RoundedCorners_RoundedCorner) ProtoMessage() {}
 
 func (x *Component_DisplayPanel_Properties_RoundedCorners_RoundedCorner) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_config_api_component_proto_msgTypes[29]
+	mi := &file_chromiumos_config_api_component_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3282,7 +3329,7 @@ var file_chromiumos_config_api_component_proto_rawDesc = []byte{
 	0x70, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
 	0x66, 0x2f, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x22, 0xf4, 0x3f, 0x0a, 0x09, 0x43, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x12, 0x32,
+	0x22, 0xca, 0x40, 0x0a, 0x09, 0x43, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x12, 0x32,
 	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x63, 0x68, 0x72,
 	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x61,
 	0x70, 0x69, 0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x52, 0x02,
@@ -3758,45 +3805,51 @@ var file_chromiumos_config_api_component_proto_rawDesc = []byte{
 	0x66, 0x69, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e,
 	0x74, 0x2e, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2e, 0x55, 0x73, 0x62, 0x48,
 	0x00, 0x52, 0x03, 0x75, 0x73, 0x62, 0x42, 0x0b, 0x0a, 0x09, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66,
-	0x61, 0x63, 0x65, 0x1a, 0xa6, 0x03, 0x0a, 0x07, 0x41, 0x6c, 0x73, 0x53, 0x74, 0x65, 0x70, 0x12,
-	0x32, 0x0a, 0x14, 0x61, 0x63, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x5f,
-	0x70, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x01, 0x48, 0x00, 0x52,
-	0x12, 0x61, 0x63, 0x42, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x50, 0x65, 0x72, 0x63,
-	0x65, 0x6e, 0x74, 0x12, 0x2c, 0x0a, 0x11, 0x61, 0x63, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c, 0x69,
-	0x67, 0x68, 0x74, 0x5f, 0x6e, 0x69, 0x74, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x01, 0x48, 0x00,
-	0x52, 0x0f, 0x61, 0x63, 0x42, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x4e, 0x69, 0x74,
-	0x73, 0x12, 0x3c, 0x0a, 0x19, 0x62, 0x61, 0x74, 0x74, 0x65, 0x72, 0x79, 0x5f, 0x62, 0x61, 0x63,
-	0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x5f, 0x70, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x01, 0x48, 0x01, 0x52, 0x17, 0x62, 0x61, 0x74, 0x74, 0x65, 0x72, 0x79, 0x42,
-	0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x50, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x12,
-	0x36, 0x0a, 0x16, 0x62, 0x61, 0x74, 0x74, 0x65, 0x72, 0x79, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c,
-	0x69, 0x67, 0x68, 0x74, 0x5f, 0x6e, 0x69, 0x74, 0x73, 0x18, 0x06, 0x20, 0x01, 0x28, 0x01, 0x48,
-	0x01, 0x52, 0x14, 0x62, 0x61, 0x74, 0x74, 0x65, 0x72, 0x79, 0x42, 0x61, 0x63, 0x6b, 0x6c, 0x69,
-	0x67, 0x68, 0x74, 0x4e, 0x69, 0x74, 0x73, 0x12, 0x34, 0x0a, 0x16, 0x6c, 0x75, 0x78, 0x5f, 0x64,
-	0x65, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x5f, 0x74, 0x68, 0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c,
-	0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x14, 0x6c, 0x75, 0x78, 0x44, 0x65, 0x63, 0x72,
-	0x65, 0x61, 0x73, 0x65, 0x54, 0x68, 0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c, 0x64, 0x12, 0x34, 0x0a,
-	0x16, 0x6c, 0x75, 0x78, 0x5f, 0x69, 0x6e, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x5f, 0x74, 0x68,
-	0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x14, 0x6c,
-	0x75, 0x78, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x54, 0x68, 0x72, 0x65, 0x73, 0x68,
-	0x6f, 0x6c, 0x64, 0x12, 0x32, 0x0a, 0x15, 0x6d, 0x61, 0x78, 0x5f, 0x73, 0x63, 0x72, 0x65, 0x65,
-	0x6e, 0x5f, 0x62, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x18, 0x07, 0x20, 0x01,
-	0x28, 0x01, 0x52, 0x13, 0x6d, 0x61, 0x78, 0x53, 0x63, 0x72, 0x65, 0x65, 0x6e, 0x42, 0x72, 0x69,
-	0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x42, 0x0e, 0x0a, 0x0c, 0x61, 0x63, 0x5f, 0x62, 0x61,
-	0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x42, 0x13, 0x0a, 0x11, 0x62, 0x61, 0x74, 0x74, 0x65,
-	0x72, 0x79, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x22, 0x80, 0x01, 0x0a,
-	0x0d, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x12,
-	0x0a, 0x0e, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e,
-	0x10, 0x00, 0x12, 0x14, 0x0a, 0x10, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x53, 0x55, 0x50,
-	0x50, 0x4f, 0x52, 0x54, 0x45, 0x44, 0x10, 0x01, 0x12, 0x15, 0x0a, 0x11, 0x53, 0x54, 0x41, 0x54,
-	0x55, 0x53, 0x5f, 0x44, 0x45, 0x50, 0x52, 0x45, 0x43, 0x41, 0x54, 0x45, 0x44, 0x10, 0x02, 0x12,
-	0x16, 0x0a, 0x12, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55, 0x4e, 0x51, 0x55, 0x41, 0x4c,
-	0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x03, 0x12, 0x16, 0x0a, 0x12, 0x53, 0x54, 0x41, 0x54, 0x55,
-	0x53, 0x5f, 0x55, 0x4e, 0x53, 0x55, 0x50, 0x50, 0x4f, 0x52, 0x54, 0x45, 0x44, 0x10, 0x04, 0x42,
-	0x06, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x42, 0x2a, 0x5a, 0x28, 0x67, 0x6f, 0x2e, 0x63, 0x68,
-	0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d,
-	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f,
-	0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x61, 0x63, 0x65, 0x1a, 0x6c, 0x0a, 0x0c, 0x4c, 0x75, 0x78, 0x54, 0x68, 0x72, 0x65, 0x73, 0x68,
+	0x6f, 0x6c, 0x64, 0x12, 0x2d, 0x0a, 0x12, 0x64, 0x65, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x5f,
+	0x74, 0x68, 0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x11, 0x64, 0x65, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x54, 0x68, 0x72, 0x65, 0x73, 0x68, 0x6f,
+	0x6c, 0x64, 0x12, 0x2d, 0x0a, 0x12, 0x69, 0x6e, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x5f, 0x74,
+	0x68, 0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x11,
+	0x69, 0x6e, 0x63, 0x72, 0x65, 0x61, 0x73, 0x65, 0x54, 0x68, 0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c,
+	0x64, 0x1a, 0x8e, 0x03, 0x0a, 0x07, 0x41, 0x6c, 0x73, 0x53, 0x74, 0x65, 0x70, 0x12, 0x32, 0x0a,
+	0x14, 0x61, 0x63, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x5f, 0x70, 0x65,
+	0x72, 0x63, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x01, 0x48, 0x00, 0x52, 0x12, 0x61,
+	0x63, 0x42, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x50, 0x65, 0x72, 0x63, 0x65, 0x6e,
+	0x74, 0x12, 0x2c, 0x0a, 0x11, 0x61, 0x63, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68,
+	0x74, 0x5f, 0x6e, 0x69, 0x74, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x01, 0x48, 0x00, 0x52, 0x0f,
+	0x61, 0x63, 0x42, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x4e, 0x69, 0x74, 0x73, 0x12,
+	0x3c, 0x0a, 0x19, 0x62, 0x61, 0x74, 0x74, 0x65, 0x72, 0x79, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c,
+	0x69, 0x67, 0x68, 0x74, 0x5f, 0x70, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x01, 0x48, 0x01, 0x52, 0x17, 0x62, 0x61, 0x74, 0x74, 0x65, 0x72, 0x79, 0x42, 0x61, 0x63,
+	0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x50, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x12, 0x36, 0x0a,
+	0x16, 0x62, 0x61, 0x74, 0x74, 0x65, 0x72, 0x79, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67,
+	0x68, 0x74, 0x5f, 0x6e, 0x69, 0x74, 0x73, 0x18, 0x06, 0x20, 0x01, 0x28, 0x01, 0x48, 0x01, 0x52,
+	0x14, 0x62, 0x61, 0x74, 0x74, 0x65, 0x72, 0x79, 0x42, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68,
+	0x74, 0x4e, 0x69, 0x74, 0x73, 0x12, 0x52, 0x0a, 0x0d, 0x6c, 0x75, 0x78, 0x5f, 0x74, 0x68, 0x72,
+	0x65, 0x73, 0x68, 0x6f, 0x6c, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x63,
+	0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x2e, 0x4c,
+	0x75, 0x78, 0x54, 0x68, 0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c, 0x64, 0x52, 0x0c, 0x6c, 0x75, 0x78,
+	0x54, 0x68, 0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c, 0x64, 0x12, 0x32, 0x0a, 0x15, 0x6d, 0x61, 0x78,
+	0x5f, 0x73, 0x63, 0x72, 0x65, 0x65, 0x6e, 0x5f, 0x62, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65,
+	0x73, 0x73, 0x18, 0x07, 0x20, 0x01, 0x28, 0x01, 0x52, 0x13, 0x6d, 0x61, 0x78, 0x53, 0x63, 0x72,
+	0x65, 0x65, 0x6e, 0x42, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6e, 0x65, 0x73, 0x73, 0x42, 0x0e, 0x0a,
+	0x0c, 0x61, 0x63, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x42, 0x13, 0x0a,
+	0x11, 0x62, 0x61, 0x74, 0x74, 0x65, 0x72, 0x79, 0x5f, 0x62, 0x61, 0x63, 0x6b, 0x6c, 0x69, 0x67,
+	0x68, 0x74, 0x22, 0x80, 0x01, 0x0a, 0x0d, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x53, 0x74,
+	0x61, 0x74, 0x75, 0x73, 0x12, 0x12, 0x0a, 0x0e, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55,
+	0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x00, 0x12, 0x14, 0x0a, 0x10, 0x53, 0x54, 0x41, 0x54,
+	0x55, 0x53, 0x5f, 0x53, 0x55, 0x50, 0x50, 0x4f, 0x52, 0x54, 0x45, 0x44, 0x10, 0x01, 0x12, 0x15,
+	0x0a, 0x11, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x44, 0x45, 0x50, 0x52, 0x45, 0x43, 0x41,
+	0x54, 0x45, 0x44, 0x10, 0x02, 0x12, 0x16, 0x0a, 0x12, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f,
+	0x55, 0x4e, 0x51, 0x55, 0x41, 0x4c, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x03, 0x12, 0x16, 0x0a,
+	0x12, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55, 0x4e, 0x53, 0x55, 0x50, 0x50, 0x4f, 0x52,
+	0x54, 0x45, 0x44, 0x10, 0x04, 0x42, 0x06, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x42, 0x2a, 0x5a,
+	0x28, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67,
+	0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -3812,7 +3865,7 @@ func file_chromiumos_config_api_component_proto_rawDescGZIP() []byte {
 }
 
 var file_chromiumos_config_api_component_proto_enumTypes = make([]protoimpl.EnumInfo, 14)
-var file_chromiumos_config_api_component_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_chromiumos_config_api_component_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_chromiumos_config_api_component_proto_goTypes = []interface{}{
 	(Component_SupportStatus)(0),                                           // 0: chromiumos.config.api.Component.SupportStatus
 	(Component_Soc_Architecture)(0),                                        // 1: chromiumos.config.api.Component.Soc.Architecture
@@ -3849,22 +3902,23 @@ var file_chromiumos_config_api_component_proto_goTypes = []interface{}{
 	(*Component_Stylus)(nil),                                               // 32: chromiumos.config.api.Component.Stylus
 	(*Component_DisplayPortConverter)(nil),                                 // 33: chromiumos.config.api.Component.DisplayPortConverter
 	(*Component_Cellular)(nil),                                             // 34: chromiumos.config.api.Component.Cellular
-	(*Component_AlsStep)(nil),                                              // 35: chromiumos.config.api.Component.AlsStep
-	(*Component_Interface_I2C)(nil),                                        // 36: chromiumos.config.api.Component.Interface.I2C
-	(*Component_Interface_Usb)(nil),                                        // 37: chromiumos.config.api.Component.Interface.Usb
-	(*Component_Interface_Pci)(nil),                                        // 38: chromiumos.config.api.Component.Interface.Pci
-	(*Component_Soc_Family)(nil),                                           // 39: chromiumos.config.api.Component.Soc.Family
-	(*Component_Memory_Profile)(nil),                                       // 40: chromiumos.config.api.Component.Memory.Profile
-	(*Component_DisplayPanel_Properties)(nil),                              // 41: chromiumos.config.api.Component.DisplayPanel.Properties
-	(*Component_DisplayPanel_Properties_RoundedCorners)(nil),               // 42: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners
-	(*Component_DisplayPanel_Properties_RoundedCorners_RoundedCorner)(nil), // 43: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
-	(*ComponentId)(nil),                                                    // 44: chromiumos.config.api.ComponentId
-	(*PartnerId)(nil),                                                      // 45: chromiumos.config.api.PartnerId
-	(*wrapperspb.UInt32Value)(nil),                                         // 46: google.protobuf.UInt32Value
+	(*Component_LuxThreshold)(nil),                                         // 35: chromiumos.config.api.Component.LuxThreshold
+	(*Component_AlsStep)(nil),                                              // 36: chromiumos.config.api.Component.AlsStep
+	(*Component_Interface_I2C)(nil),                                        // 37: chromiumos.config.api.Component.Interface.I2C
+	(*Component_Interface_Usb)(nil),                                        // 38: chromiumos.config.api.Component.Interface.Usb
+	(*Component_Interface_Pci)(nil),                                        // 39: chromiumos.config.api.Component.Interface.Pci
+	(*Component_Soc_Family)(nil),                                           // 40: chromiumos.config.api.Component.Soc.Family
+	(*Component_Memory_Profile)(nil),                                       // 41: chromiumos.config.api.Component.Memory.Profile
+	(*Component_DisplayPanel_Properties)(nil),                              // 42: chromiumos.config.api.Component.DisplayPanel.Properties
+	(*Component_DisplayPanel_Properties_RoundedCorners)(nil),               // 43: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners
+	(*Component_DisplayPanel_Properties_RoundedCorners_RoundedCorner)(nil), // 44: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
+	(*ComponentId)(nil),                                                    // 45: chromiumos.config.api.ComponentId
+	(*PartnerId)(nil),                                                      // 46: chromiumos.config.api.PartnerId
+	(*wrapperspb.UInt32Value)(nil),                                         // 47: google.protobuf.UInt32Value
 }
 var file_chromiumos_config_api_component_proto_depIdxs = []int32{
-	44, // 0: chromiumos.config.api.Component.id:type_name -> chromiumos.config.api.ComponentId
-	45, // 1: chromiumos.config.api.Component.manufacturer_id:type_name -> chromiumos.config.api.PartnerId
+	45, // 0: chromiumos.config.api.Component.id:type_name -> chromiumos.config.api.ComponentId
+	46, // 1: chromiumos.config.api.Component.manufacturer_id:type_name -> chromiumos.config.api.PartnerId
 	15, // 2: chromiumos.config.api.Component.avl_id:type_name -> chromiumos.config.api.Component.AVLId
 	0,  // 3: chromiumos.config.api.Component.support_status:type_name -> chromiumos.config.api.Component.SupportStatus
 	17, // 4: chromiumos.config.api.Component.soc:type_name -> chromiumos.config.api.Component.Soc
@@ -3882,49 +3936,50 @@ var file_chromiumos_config_api_component_proto_depIdxs = []int32{
 	29, // 16: chromiumos.config.api.Component.ec:type_name -> chromiumos.config.api.Component.EmbeddedController
 	30, // 17: chromiumos.config.api.Component.storage:type_name -> chromiumos.config.api.Component.Storage
 	31, // 18: chromiumos.config.api.Component.tpm:type_name -> chromiumos.config.api.Component.Tpm
-	37, // 19: chromiumos.config.api.Component.usb_host:type_name -> chromiumos.config.api.Component.Interface.Usb
+	38, // 19: chromiumos.config.api.Component.usb_host:type_name -> chromiumos.config.api.Component.Interface.Usb
 	32, // 20: chromiumos.config.api.Component.stylus:type_name -> chromiumos.config.api.Component.Stylus
 	25, // 21: chromiumos.config.api.Component.amplifier:type_name -> chromiumos.config.api.Component.Amplifier
 	33, // 22: chromiumos.config.api.Component.dp_converter:type_name -> chromiumos.config.api.Component.DisplayPortConverter
 	34, // 23: chromiumos.config.api.Component.cellular:type_name -> chromiumos.config.api.Component.Cellular
-	39, // 24: chromiumos.config.api.Component.Soc.family:type_name -> chromiumos.config.api.Component.Soc.Family
+	40, // 24: chromiumos.config.api.Component.Soc.family:type_name -> chromiumos.config.api.Component.Soc.Family
 	2,  // 25: chromiumos.config.api.Component.Soc.features:type_name -> chromiumos.config.api.Component.Soc.Feature
 	3,  // 26: chromiumos.config.api.Component.Soc.vulnerabilities:type_name -> chromiumos.config.api.Component.Soc.Vulnerability
-	40, // 27: chromiumos.config.api.Component.Memory.profile:type_name -> chromiumos.config.api.Component.Memory.Profile
-	37, // 28: chromiumos.config.api.Component.Bluetooth.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
+	41, // 27: chromiumos.config.api.Component.Memory.profile:type_name -> chromiumos.config.api.Component.Memory.Profile
+	38, // 28: chromiumos.config.api.Component.Bluetooth.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
 	5,  // 29: chromiumos.config.api.Component.Camera.features:type_name -> chromiumos.config.api.Component.Camera.Feature
 	6,  // 30: chromiumos.config.api.Component.Camera.clock_type:type_name -> chromiumos.config.api.Component.Camera.ClockType
-	37, // 31: chromiumos.config.api.Component.Camera.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
-	38, // 32: chromiumos.config.api.Component.Camera.pci:type_name -> chromiumos.config.api.Component.Interface.Pci
-	41, // 33: chromiumos.config.api.Component.DisplayPanel.properties:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties
+	38, // 31: chromiumos.config.api.Component.Camera.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
+	39, // 32: chromiumos.config.api.Component.Camera.pci:type_name -> chromiumos.config.api.Component.Interface.Pci
+	42, // 33: chromiumos.config.api.Component.DisplayPanel.properties:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties
 	8,  // 34: chromiumos.config.api.Component.Touch.type:type_name -> chromiumos.config.api.Component.Touch.TouchType
-	37, // 35: chromiumos.config.api.Component.Touch.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
-	38, // 36: chromiumos.config.api.Component.Wifi.pci:type_name -> chromiumos.config.api.Component.Interface.Pci
+	38, // 35: chromiumos.config.api.Component.Touch.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
+	39, // 36: chromiumos.config.api.Component.Wifi.pci:type_name -> chromiumos.config.api.Component.Interface.Pci
 	9,  // 37: chromiumos.config.api.Component.Wifi.supported_wlan_protocols:type_name -> chromiumos.config.api.Component.Wifi.WLANProtocol
-	44, // 38: chromiumos.config.api.Component.Qualification.component_id:type_name -> chromiumos.config.api.ComponentId
+	45, // 38: chromiumos.config.api.Component.Qualification.component_id:type_name -> chromiumos.config.api.ComponentId
 	10, // 39: chromiumos.config.api.Component.Qualification.status:type_name -> chromiumos.config.api.Component.Qualification.Status
 	11, // 40: chromiumos.config.api.Component.Amplifier.features:type_name -> chromiumos.config.api.Component.Amplifier.Feature
 	12, // 41: chromiumos.config.api.Component.Battery.technology:type_name -> chromiumos.config.api.Component.Battery.Technology
 	13, // 42: chromiumos.config.api.Component.Storage.type:type_name -> chromiumos.config.api.Component.Storage.StorageType
-	38, // 43: chromiumos.config.api.Component.Storage.pci:type_name -> chromiumos.config.api.Component.Interface.Pci
-	37, // 44: chromiumos.config.api.Component.Stylus.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
-	36, // 45: chromiumos.config.api.Component.Stylus.i2c:type_name -> chromiumos.config.api.Component.Interface.I2C
-	37, // 46: chromiumos.config.api.Component.Cellular.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
-	1,  // 47: chromiumos.config.api.Component.Soc.Family.arch:type_name -> chromiumos.config.api.Component.Soc.Architecture
-	4,  // 48: chromiumos.config.api.Component.Memory.Profile.type:type_name -> chromiumos.config.api.Component.Memory.Type
-	7,  // 49: chromiumos.config.api.Component.DisplayPanel.Properties.features:type_name -> chromiumos.config.api.Component.DisplayPanel.Feature
-	46, // 50: chromiumos.config.api.Component.DisplayPanel.Properties.turn_off_screen_timeout_ms:type_name -> google.protobuf.UInt32Value
-	35, // 51: chromiumos.config.api.Component.DisplayPanel.Properties.als_steps:type_name -> chromiumos.config.api.Component.AlsStep
-	42, // 52: chromiumos.config.api.Component.DisplayPanel.Properties.rounded_corners:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners
-	43, // 53: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.top_left:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
-	43, // 54: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.top_right:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
-	43, // 55: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.bottom_left:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
-	43, // 56: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.bottom_right:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
-	57, // [57:57] is the sub-list for method output_type
-	57, // [57:57] is the sub-list for method input_type
-	57, // [57:57] is the sub-list for extension type_name
-	57, // [57:57] is the sub-list for extension extendee
-	0,  // [0:57] is the sub-list for field type_name
+	39, // 43: chromiumos.config.api.Component.Storage.pci:type_name -> chromiumos.config.api.Component.Interface.Pci
+	38, // 44: chromiumos.config.api.Component.Stylus.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
+	37, // 45: chromiumos.config.api.Component.Stylus.i2c:type_name -> chromiumos.config.api.Component.Interface.I2C
+	38, // 46: chromiumos.config.api.Component.Cellular.usb:type_name -> chromiumos.config.api.Component.Interface.Usb
+	35, // 47: chromiumos.config.api.Component.AlsStep.lux_threshold:type_name -> chromiumos.config.api.Component.LuxThreshold
+	1,  // 48: chromiumos.config.api.Component.Soc.Family.arch:type_name -> chromiumos.config.api.Component.Soc.Architecture
+	4,  // 49: chromiumos.config.api.Component.Memory.Profile.type:type_name -> chromiumos.config.api.Component.Memory.Type
+	7,  // 50: chromiumos.config.api.Component.DisplayPanel.Properties.features:type_name -> chromiumos.config.api.Component.DisplayPanel.Feature
+	47, // 51: chromiumos.config.api.Component.DisplayPanel.Properties.turn_off_screen_timeout_ms:type_name -> google.protobuf.UInt32Value
+	36, // 52: chromiumos.config.api.Component.DisplayPanel.Properties.als_steps:type_name -> chromiumos.config.api.Component.AlsStep
+	43, // 53: chromiumos.config.api.Component.DisplayPanel.Properties.rounded_corners:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners
+	44, // 54: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.top_left:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
+	44, // 55: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.top_right:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
+	44, // 56: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.bottom_left:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
+	44, // 57: chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.bottom_right:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners.RoundedCorner
+	58, // [58:58] is the sub-list for method output_type
+	58, // [58:58] is the sub-list for method input_type
+	58, // [58:58] is the sub-list for extension type_name
+	58, // [58:58] is the sub-list for extension extendee
+	0,  // [0:58] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_config_api_component_proto_init() }
@@ -4188,7 +4243,7 @@ func file_chromiumos_config_api_component_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_component_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Component_AlsStep); i {
+			switch v := v.(*Component_LuxThreshold); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4200,7 +4255,7 @@ func file_chromiumos_config_api_component_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_component_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Component_Interface_I2C); i {
+			switch v := v.(*Component_AlsStep); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4212,7 +4267,7 @@ func file_chromiumos_config_api_component_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_component_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Component_Interface_Usb); i {
+			switch v := v.(*Component_Interface_I2C); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4224,7 +4279,7 @@ func file_chromiumos_config_api_component_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_component_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Component_Interface_Pci); i {
+			switch v := v.(*Component_Interface_Usb); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4236,7 +4291,7 @@ func file_chromiumos_config_api_component_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_component_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Component_Soc_Family); i {
+			switch v := v.(*Component_Interface_Pci); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4248,7 +4303,7 @@ func file_chromiumos_config_api_component_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_component_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Component_Memory_Profile); i {
+			switch v := v.(*Component_Soc_Family); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4260,7 +4315,7 @@ func file_chromiumos_config_api_component_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_component_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Component_DisplayPanel_Properties); i {
+			switch v := v.(*Component_Memory_Profile); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4272,7 +4327,7 @@ func file_chromiumos_config_api_component_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_component_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Component_DisplayPanel_Properties_RoundedCorners); i {
+			switch v := v.(*Component_DisplayPanel_Properties); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4284,6 +4339,18 @@ func file_chromiumos_config_api_component_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_component_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Component_DisplayPanel_Properties_RoundedCorners); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_config_api_component_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Component_DisplayPanel_Properties_RoundedCorners_RoundedCorner); i {
 			case 0:
 				return &v.state
@@ -4335,13 +4402,13 @@ func file_chromiumos_config_api_component_proto_init() {
 	file_chromiumos_config_api_component_proto_msgTypes[20].OneofWrappers = []interface{}{
 		(*Component_Cellular_Usb)(nil),
 	}
-	file_chromiumos_config_api_component_proto_msgTypes[21].OneofWrappers = []interface{}{
+	file_chromiumos_config_api_component_proto_msgTypes[22].OneofWrappers = []interface{}{
 		(*Component_AlsStep_AcBacklightPercent)(nil),
 		(*Component_AlsStep_AcBacklightNits)(nil),
 		(*Component_AlsStep_BatteryBacklightPercent)(nil),
 		(*Component_AlsStep_BatteryBacklightNits)(nil),
 	}
-	file_chromiumos_config_api_component_proto_msgTypes[27].OneofWrappers = []interface{}{
+	file_chromiumos_config_api_component_proto_msgTypes[28].OneofWrappers = []interface{}{
 		(*Component_DisplayPanel_Properties_NoAlsBatteryBrightness)(nil),
 		(*Component_DisplayPanel_Properties_NoAlsBatteryBrightnessNits)(nil),
 		(*Component_DisplayPanel_Properties_NoAlsAcBrightness)(nil),
@@ -4353,7 +4420,7 @@ func file_chromiumos_config_api_component_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_config_api_component_proto_rawDesc,
 			NumEnums:      14,
-			NumMessages:   30,
+			NumMessages:   31,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

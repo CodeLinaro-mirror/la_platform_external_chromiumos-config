@@ -549,6 +549,14 @@ message HardwareFeatures {
     // increasing order. If set, the first value must be 0. This corresponds to
     // the keyboard_backlight_user_steps powerd pref.
     repeated double backlight_user_steps = 5;
+
+    // The configuration of the keyboard backlight percentage based on the
+    // ambient light sensor value. Steps should be in increasing order.
+    repeated KbAlsStep als_steps = 7;
+
+    // The default keyboard backlight percentage in the
+    // absence of an ambient light sensor controlling the keyboard backlight.
+    double no_als_brightness = 8;
   }
 
   // Memory properties of system
@@ -921,5 +929,16 @@ message HardwareFeatures {
     string gpu_family = 1;
     string gpu_vendor = 2;
     string cpu_soc_family = 3;
+  }
+
+  // A single step in an ambient light sensor configuration table. Each step
+  // configures the brightness percentage while at that step as well as the
+  // sensor value at which the next or previous step should be considered.
+  // Steps should be specified in increasing order for each field.
+  message KbAlsStep {
+    // The backlight brightness percentage for this step.
+    double backlight_percent = 1;
+
+    Component.LuxThreshold lux_threshold = 2;
   }
 }

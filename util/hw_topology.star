@@ -320,6 +320,16 @@ def _create_screen(
         hardware_feature = hw_features,
     )
 
+def _create_lux_threshold(
+        lux_decrease_threshold,
+        lux_increase_threshold):
+    """Builds a Component.LuxThreshold."""
+
+    lux_threshold = comp_pb.Component.LuxThreshold()
+    lux_threshold.increase_threshold = lux_increase_threshold if lux_increase_threshold != None else -1
+    lux_threshold.decrease_threshold = lux_decrease_threshold if lux_decrease_threshold != None else -1
+    return lux_threshold
+
 def _create_als_step(
         lux_decrease_threshold,
         lux_increase_threshold,
@@ -358,8 +368,7 @@ def _create_als_step(
         fail("battery_backlight: Specify percentage or nits, not both")
 
     step = comp_pb.Component.AlsStep()
-    step.lux_increase_threshold = lux_increase_threshold if lux_increase_threshold != None else -1
-    step.lux_decrease_threshold = lux_decrease_threshold if lux_decrease_threshold != None else -1
+    step.lux_threshold = _create_lux_threshold(lux_decrease_threshold, lux_increase_threshold)
     step.ac_backlight_percent = ac_backlight_percent
     step.ac_backlight_nits = ac_backlight_nits
     if battery_backlight_percent != None:
@@ -370,6 +379,30 @@ def _create_als_step(
         step.battery_backlight_nits = battery_backlight_nits
     else:
         step.battery_backlight_nits = step.ac_backlight_nits
+    return step
+
+def _create_kb_als_step(
+        lux_decrease_threshold,
+        lux_increase_threshold,
+        backlight_percent):
+    """Builds a Component.AlsStep.
+
+    Args:
+    lux_decrease_threshold: An int containing the sensor value below which the
+        previous step should be considered. A value of None indicates negative
+        infinity.
+    lux_increase_threshold: An int containing the sensor value above which the
+        next step should be considered. A value of None indicates infinity.
+    backlight_percent: A double containing the backlight brightness
+        percentage to use at this step.
+    """
+    if backlight_percent == None:
+        fail("backlight_percent must be set")
+
+    step = topo_pb.HardwareFeatures.KbAlsStep()
+    step.lux_threshold.increase_threshold = lux_increase_threshold if lux_increase_threshold != None else -1
+    step.lux_threshold.decrease_threshold = lux_decrease_threshold if lux_decrease_threshold != None else -1
+    step.backlight_percent = backlight_percent
     return step
 
 def _create_form_factor(
@@ -594,7 +627,7 @@ def _create_stylus(id, description, stylus_type, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None, backlight_user_steps = None, mcu_type = _KB_MCU_TYPE.NONE):
+def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None, backlight_user_steps = None, no_als_brightness = None, als_steps = None, mcu_type = _KB_MCU_TYPE.NONE):
     """Builds a Topology proto for a keyboard.
 
     Args:
@@ -610,6 +643,10 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
         backlight_user_steps: A list of doubles specifying the user-selectable
             backlight steps in increasing order, starting from 0. This controls
             the keyboard_backlight_user_steps powerd pref.
+        no_als_brightness: A double specifying the default keyboard backlight
+            percentage.
+        als_steps: A list of als_step setting with lux decrease and increase
+            threshold, and the backlight percentage of the step.
         mcu_type: A KeyboardMcuType enum. Optional.
     """
 
@@ -640,6 +677,8 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
     hw_features.keyboard.power_button = _bool_to_present(pwr_btn_present)
     hw_features.keyboard.numeric_pad = _bool_to_present(numpad_present)
     hw_features.keyboard.backlight_user_steps = backlight_user_steps
+    hw_features.keyboard.no_als_brightness = no_als_brightness
+    hw_features.keyboard.als_steps = als_steps
     hw_features.keyboard.mcu_type = mcu_type
 
     _accumulate_fw_configs(hw_features, fw_configs)
@@ -1973,6 +2012,7 @@ hw_topo = struct(
     create_features = _create_features,
     create_screen = _create_screen,
     create_als_step = _create_als_step,
+    create_kb_als_step = _create_kb_als_step,
     create_form_factor = _create_form_factor,
     create_audio = _create_audio,
     create_audio_card_config = _create_audio_card_config,

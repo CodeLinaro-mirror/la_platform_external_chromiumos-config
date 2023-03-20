@@ -11,6 +11,11 @@
           "id": {
             "value": "FAKE_REF_DESIGN:0"
           }
+        },
+        {
+          "id": {
+            "value": "FAKE_REF_DESIGN:1"
+          }
         }
       ],
       "id": {
@@ -178,6 +183,15 @@
         "value": "FAKE_REF_DESIGN:0"
       },
       "idScanConfig": {
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "FAKE_REF_DESIGN:1"
+      },
+      "idScanConfig": {
+        "firmwareSku": 1,
         "frid": "Google_Fake"
       }
     },

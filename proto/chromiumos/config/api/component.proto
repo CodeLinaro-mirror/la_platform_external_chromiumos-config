@@ -406,6 +406,18 @@ message Component {
   // configures the brightness percentage while at that step as well as the
   // sensor value at which the next or previous step should be considered.
   // Steps should be specified in increasing order for each field.
+  message LuxThreshold {
+    // The ALS sensor value below which the previous step should be considered.
+    // A value of -1 denotes negative infinity and should be used for the first
+    // step.
+    int32 decrease_threshold = 1;
+
+    // The ALS sensor value above which the following step should be
+    // considered. A value of -1 denotes infinity and should be used for the
+    // last step.
+    int32 increase_threshold = 2;
+  }
+
   message AlsStep {
     oneof ac_backlight {
       // The backlight brightness percentage on AC power for this step.
@@ -423,15 +435,7 @@ message Component {
       double battery_backlight_nits = 6;
     }
 
-    // The ALS sensor value below which the previous step should be considered.
-    // A value of -1 denotes negative infinity and should be used for the first
-    // step.
-    int32 lux_decrease_threshold = 3;
-
-    // The ALS sensor value above which the following step should be
-    // considered. A value of -1 denotes infinity and should be used for the
-    // last step.
-    int32 lux_increase_threshold = 4;
+    LuxThreshold lux_threshold = 3;
 
     // The max luminance of the panel in nits.
     double max_screen_brightness = 7;
