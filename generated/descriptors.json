@@ -18472,6 +18472,13 @@
               "number": 12,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "retry",
+              "label": "LABEL_OPTIONAL",
+              "name": "retry",
+              "number": 13,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "TestCaseResult",

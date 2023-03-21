@@ -50,6 +50,9 @@ message TestCaseResult {
   // Duration of the test case execution.
   google.protobuf.Duration duration = 12;
 
+  // Bool to show if the test was a retry or not.
+  bool retry = 13;
+
   message Artifacts {
   }
 

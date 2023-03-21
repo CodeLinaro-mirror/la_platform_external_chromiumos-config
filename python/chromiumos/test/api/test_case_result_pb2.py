@@ -24,7 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n*chromiumos/test/api/test_case_result.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a#chromiumos/test/api/test_case.proto\x1a&chromiumos/test/api/test_harness.proto\"\xd0\x05\n\x0eTestCaseResult\x12\x36\n\x0ctest_case_id\x18\x01 \x01(\x0b\x32 .chromiumos.test.api.TestCase.Id\x12\x30\n\x0fresult_dir_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x38\n\x04pass\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.PassH\x00\x12\x38\n\x04\x66\x61il\x18\x04 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.FailH\x00\x12:\n\x05\x63rash\x18\x05 \x01(\x0b\x32).chromiumos.test.api.TestCaseResult.CrashH\x00\x12:\n\x05\x61\x62ort\x18\x06 \x01(\x0b\x32).chromiumos.test.api.TestCaseResult.AbortH\x00\x12\x38\n\x04skip\x18\x07 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.SkipH\x00\x12=\n\x07not_run\x18\x08 \x01(\x0b\x32*.chromiumos.test.api.TestCaseResult.NotRunH\x00\x12\x0e\n\x06reason\x18\t \x01(\t\x12\x36\n\x0ctest_harness\x18\n \x01(\x0b\x32 .chromiumos.test.api.TestHarness\x12.\n\nstart_time\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12+\n\x08\x64uration\x18\x0c \x01(\x0b\x32\x19.google.protobuf.Duration\x1a\x0b\n\tArtifacts\x1a\x06\n\x04Pass\x1a\x06\n\x04\x46\x61il\x1a\x07\n\x05\x43rash\x1a\x07\n\x05\x41\x62ort\x1a\x06\n\x04Skip\x1a\x08\n\x06NotRunB\t\n\x07verdictB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n*chromiumos/test/api/test_case_result.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a#chromiumos/test/api/test_case.proto\x1a&chromiumos/test/api/test_harness.proto\"\xdf\x05\n\x0eTestCaseResult\x12\x36\n\x0ctest_case_id\x18\x01 \x01(\x0b\x32 .chromiumos.test.api.TestCase.Id\x12\x30\n\x0fresult_dir_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x38\n\x04pass\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.PassH\x00\x12\x38\n\x04\x66\x61il\x18\x04 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.FailH\x00\x12:\n\x05\x63rash\x18\x05 \x01(\x0b\x32).chromiumos.test.api.TestCaseResult.CrashH\x00\x12:\n\x05\x61\x62ort\x18\x06 \x01(\x0b\x32).chromiumos.test.api.TestCaseResult.AbortH\x00\x12\x38\n\x04skip\x18\x07 \x01(\x0b\x32(.chromiumos.test.api.TestCaseResult.SkipH\x00\x12=\n\x07not_run\x18\x08 \x01(\x0b\x32*.chromiumos.test.api.TestCaseResult.NotRunH\x00\x12\x0e\n\x06reason\x18\t \x01(\t\x12\x36\n\x0ctest_harness\x18\n \x01(\x0b\x32 .chromiumos.test.api.TestHarness\x12.\n\nstart_time\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12+\n\x08\x64uration\x18\x0c \x01(\x0b\x32\x19.google.protobuf.Duration\x12\r\n\x05retry\x18\r \x01(\x08\x1a\x0b\n\tArtifacts\x1a\x06\n\x04Pass\x1a\x06\n\x04\x46\x61il\x1a\x07\n\x05\x43rash\x1a\x07\n\x05\x41\x62ort\x1a\x06\n\x04Skip\x1a\x08\n\x06NotRunB\t\n\x07verdictB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__harness__pb2.DESCRIPTOR,])
 
@@ -51,8 +51,8 @@ _TESTCASERESULT_ARTIFACTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=887,
-  serialized_end=898,
+  serialized_start=902,
+  serialized_end=913,
 )
 
 _TESTCASERESULT_PASS = _descriptor.Descriptor(
@@ -75,8 +75,8 @@ _TESTCASERESULT_PASS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=900,
-  serialized_end=906,
+  serialized_start=915,
+  serialized_end=921,
 )
 
 _TESTCASERESULT_FAIL = _descriptor.Descriptor(
@@ -99,8 +99,8 @@ _TESTCASERESULT_FAIL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=908,
-  serialized_end=914,
+  serialized_start=923,
+  serialized_end=929,
 )
 
 _TESTCASERESULT_CRASH = _descriptor.Descriptor(
@@ -123,8 +123,8 @@ _TESTCASERESULT_CRASH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=916,
-  serialized_end=923,
+  serialized_start=931,
+  serialized_end=938,
 )
 
 _TESTCASERESULT_ABORT = _descriptor.Descriptor(
@@ -147,8 +147,8 @@ _TESTCASERESULT_ABORT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=925,
-  serialized_end=932,
+  serialized_start=940,
+  serialized_end=947,
 )
 
 _TESTCASERESULT_SKIP = _descriptor.Descriptor(
@@ -171,8 +171,8 @@ _TESTCASERESULT_SKIP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=934,
-  serialized_end=940,
+  serialized_start=949,
+  serialized_end=955,
 )
 
 _TESTCASERESULT_NOTRUN = _descriptor.Descriptor(
@@ -195,8 +195,8 @@ _TESTCASERESULT_NOTRUN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=942,
-  serialized_end=950,
+  serialized_start=957,
+  serialized_end=965,
 )
 
 _TESTCASERESULT = _descriptor.Descriptor(
@@ -291,6 +291,13 @@ _TESTCASERESULT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='retry', full_name='chromiumos.test.api.TestCaseResult.retry', index=12,
+      number=13, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -309,7 +316,7 @@ _TESTCASERESULT = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=241,
-  serialized_end=961,
+  serialized_end=976,
 )
 
 _TESTCASERESULT_ARTIFACTS.containing_type = _TESTCASERESULT
