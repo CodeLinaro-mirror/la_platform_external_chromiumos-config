@@ -220,6 +220,247 @@ def _create_design(
         custom_type = custom_type,
     )
 
+def _hoist_version(versioned_topologies, names):
+    return struct(
+        topology = dict(zip(names, [t.topology for t in versioned_topologies])),
+        version = max([t.version for t in versioned_topologies] + [0]),
+    )
+
+def _cartesian_product(hardware_topology_bundle):
+    result = [[]]
+    for values in hardware_topology_bundle:
+        intermediate_result = []
+        for previous_value in result:
+            intermediate_result.extend([previous_value + [next_value] for next_value in values.topologies])
+        result = intermediate_result
+
+    names = [field.name for field in hardware_topology_bundle]
+    return [_hoist_version(value, names) for value in result]
+
+def _find_unprovisioned_config(configs, unprovisioned_topologies):
+    for config in configs:
+        matches = True
+        for topology_type, topology in unprovisioned_topologies.items():
+            if config[topology_type] != topology:
+                matches = False
+                break
+        if matches:
+            return config
+
+    fail("Failed to find config matching unprovisioned_topologies: ", unprovisioned_topologies)
+
+def _foreach_topology(
+        initial_config_id,
+        hardware_topology_bundle,
+        config_factory,
+        unprovisioned_topologies):
+    configs = [config.topology for config in sorted(
+        _cartesian_product(hardware_topology_bundle),
+        key = lambda config: config.version,
+    )]
+
+    unprovisioned_config = _find_unprovisioned_config(configs, unprovisioned_topologies)
+    config_factory(_UNPROVISIONED_CONFIG_ID, unprovisioned_config)
+
+    config_id = initial_config_id
+    for config in configs:
+        if config_factory(config_id, config):
+            config_id += 1
+
+def _topology_name(topo):
+    if topo:
+        return topo.id
+    return "None"
+
+def _create_design_with_configs(
+        design_id,
+        program_id,
+        odm_id,
+        sw_configs,
+        hardware_topology_bundle,
+        initial_config_id,
+        include_unprovisioned = False,
+        unprovisioned_topologies = {},
+        extra_hw_configs = None,
+        public_fields = ["id", "name", "program_id"],
+        board_id_phases = None,
+        custom_type = _CUSTOMTYPE.NO_CUSTOM,
+        extra_hw_config_public_fields = [],
+        extra_sw_config_public_fields = [
+            "audio_configs",
+            "bluetooth_config",
+            "power_config",
+            "firmware_build_config.build_targets.ec",
+        ],
+        firmware = None,
+        firmware_build_config = None,
+        bluetooth = None,
+        power = None,
+        camera = None,
+        health = None,
+        ui = None,
+        frid = None,
+        hardware_topology_filter = None,
+        active_configs = None,
+        config_notes = {}):
+    """Create a design with configs for each topology combination in the bundle.
+
+    Parameters mirror those of design.append_configs() and design.create_design
+    (with id renamed to design_id, matching design.append_configs()). A config
+    is generated for each combination of topologies in
+    hardware_topology_bundle.
+
+    Args:
+        design_id: A DesignId to use for the Design.Config and SoftwareConfig.
+        program_id: ID that uniquely identifies the program.
+        odm_id: ODM for the given hardware design.
+        sw_configs: An array to append the new SoftwareConfig to.
+        hardware_topology_bundle: A bundle of hardware topology values created
+            by create_hardware_topology_bundle().
+        initial_config_id: The first design config ID to use. Consecutive IDs
+            will be used for the remaining configs, except those skipped due to
+            a hardware_topology_filter.
+        include_unprovisioned: Whether to generated a config for the
+            unprovisioned ID in addition to other configs. The same
+            configuration as used for initial_config_id will be used for the
+            unprovisioned config, unless unprovisioned_topologies is specified.
+        unprovisioned_topologies: A set of hardware topologies which the
+            unprovisioned config should incude. The unprovisioned config will be
+            set to the first generated config containing all of these topologies.
+            Implies include_unprovisioned.
+        extra_hw_configs: An array to append the extra Design.Config to.
+        public_fields:  A list of strings specifying fields that should be made
+            public. See comment on the PublicReplication proto for semantics
+            and example of how the proto works.
+        board_id_phases: Board version assignment for each build phase.
+        custom_type: Define custom type as custom label or rebrand.
+        extra_hw_config_public_fields: A list of str specifying fields on
+            Design.Config that will be made public in addition to the default
+            _DEFAULT_PUBLIC_HW_CONFIG_FIELDS. See PublicReplication proto
+            for details.
+        extra_sw_config_public_fields: A list of str specifying fields on
+            SoftwareConfig that will be made public in addition to the default
+            _DEFAULT_PUBLIC_SW_CONFIG_FIELDS. See PublicReplication proto for
+            details.
+        firmware: A FirmwareConfig to be used in the SoftwareConfig.
+        firmware_build_config: A FirmwareBuildConfig to be used in the
+            SoftwareConfig.
+        bluetooth: A BluetoothConfig to be used in the SoftwareConfig.
+        power: A PowerConfig to be used in the SoftwareConfig.
+        camera: A CameraConfig to be used in the SoftwareConfig.
+        health: A HealthConfig to be used in the SoftwareConfig.
+        ui: A UiConfig to be used in the SoftwareConfig.
+        frid: String which must match the AP firmware FRID (first part before the
+            period) in order for the config to match.  Leaving this value unset
+            will result in FRID being generated from coreboot target name or design ID.
+        hardware_topology_filter: An optional function taking the config ID and
+            the topologies to be used for that config. This function can return
+            True to skip this config but leave a gap in the config ID space,
+            False to skip it without leaving a gap, or None to allow it to
+            proceed.
+        active_configs: An array that contains the config IDs we need.
+        config_notes: Notes to document any particular DesignConfigId in the
+            generated markdown table.
+    """
+    hw_configs = []
+
+    if unprovisioned_topologies:
+        include_unprovisioned = True
+
+    if not active_configs:
+        active_configs = []
+    active_configs = list(active_configs)
+    active_configs += config_notes.keys()
+    if include_unprovisioned:
+        active_configs = [_UNPROVISIONED_CONFIG_ID] + active_configs
+
+    markdown = []
+    varying_topology_names = set(
+        [t.name for t in hardware_topology_bundle if len(t.topologies) > 1],
+    )
+    varying_topologies = []
+
+    def _is_active_config(config_id):
+        if config_id in active_configs:
+            return "v"
+        return ""
+
+    def config_factory(config_id, topologies):
+        if hardware_topology_filter:
+            filter_result = hardware_topology_filter(config_id = config_id, **topologies)
+            if filter_result != None:
+                return filter_result
+
+        fw_config = 0
+        for topology in topologies.values():
+            if topology and proto.has(topology.hardware_feature, "fw_config"):
+                fw_config |= topology.hardware_feature.fw_config.value
+
+        varying_topologies.append([
+            "0x%x" % config_id,
+            "0x%x" % fw_config,
+            _is_active_config(config_id),
+            config_notes.get(config_id, ""),
+        ] + [
+            _topology_name(t)
+            for name, t in sorted(topologies.items())
+            if name in varying_topology_names
+        ] + ["`cbi set 2 0x%x 4`" % config_id, "`cbi set 6 0x%x 4`" % fw_config])
+
+        if config_id in active_configs:
+            print(design_id.value, "configs added: 0x%x" % config_id)
+
+            _append_configs(
+                hw_configs = hw_configs,
+                sw_configs = sw_configs,
+                design_id = design_id,
+                extra_hw_config_public_fields = extra_hw_config_public_fields,
+                extra_sw_config_public_fields = extra_sw_config_public_fields,
+                config_id = config_id,
+                hardware_topology = hw_topo.create_hardware_topology(**topologies),
+                firmware_build_config = firmware_build_config,
+                firmware = firmware,
+                bluetooth = bluetooth,
+                power = power,
+                camera = camera,
+                health = health,
+                ui = ui,
+                frid = frid,
+            )
+        return True
+
+    _foreach_topology(
+        initial_config_id = initial_config_id,
+        hardware_topology_bundle = hardware_topology_bundle,
+        config_factory = config_factory,
+        unprovisioned_topologies = unprovisioned_topologies,
+    )
+    markdown = [
+        ["## Common topologies"],
+        ["type", "name"],
+        ["-"] * 2,
+    ] + [
+        [t.name, _topology_name(t.topologies[0].topology)]
+        for t in hardware_topology_bundle
+        if len(t.topologies) == 1
+    ] + [
+        [],
+        ["## Varying topologies"],
+        ["DesignConfigId", "fw_config", "active", "Notes"] + sorted(varying_topology_names) + ["CBI SKU_ID", "CBI FW_CONFIG"],
+        ["-"] * (len(varying_topology_names) + 6),
+    ] + varying_topologies + [[]]
+    designconfigid_table = "\n".join(["|".join(line) for line in markdown])
+    generate.gen_file(designconfigid_table, "_DesignConfigTable".join([design_id.value, ".md"]))
+    return _create_design(
+        id = design_id,
+        program_id = program_id,
+        odm_id = odm_id,
+        configs = hw_configs + (extra_hw_configs or []),
+        public_fields = public_fields,
+        board_id_phases = board_id_phases,
+        custom_type = custom_type,
+    )
+
 design = struct(
     append_configs = _append_configs,
     create_constraint = _create_constraint,
@@ -230,4 +471,5 @@ design = struct(
     custom_type = _CUSTOMTYPE,
     generate = generate.generate,
     UNPROVISIONED_CONFIG_ID = _UNPROVISIONED_CONFIG_ID,
+    create_design_with_configs = _create_design_with_configs,
 )

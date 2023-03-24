@@ -1919,6 +1919,55 @@ def _convert_to_hw_features(hardware_topology):
 
     return result
 
+def _version_topology(topology):
+    if type(topology) != "tuple":
+        return struct(
+            topology = topology,
+            version = 0,
+        )
+    version = topology[1]
+    if version < 0:
+        fail("Invalid version: %d" % version)
+    return struct(
+        topology = topology[0],
+        version = topology[1],
+    )
+
+def _create_hardware_topology_bundle(
+        sort_order = None,
+        **hardware_topologies):
+    """Creates a bundle of hardware topology values.
+
+    Parameters match those of hw_topo.create_hardware_topology. Each field may
+    be a single topology value, a list of topologies values returned by
+    create_versioned_topology(). Additionally, sort_order can be used to
+    control iteration order.
+
+    In order to maintain existing config ID allocations, any additional
+    topology values must be added with a greater version number than previous
+    values. Modifying an existing topology (including from unset/None to
+    non-None) is supported.
+    """
+    processed_topologies = []
+    for topology_type, topologies in hardware_topologies.items():
+        if not topologies:
+            continue
+        if type(topologies) != "list":
+            topologies = [topologies]
+        processed_topologies.append(struct(
+            name = topology_type,
+            topologies = [_version_topology(topology) for topology in topologies],
+        ))
+
+    if sort_order == None:
+        sort_order = []
+
+    order = sort_order + sorted([key for key in hardware_topologies.keys() if key not in sort_order])
+    return sorted(processed_topologies, key = lambda item: order.index(item.name))
+
+def _create_versioned_topology(topology, version):
+    return (topology, version)
+
 hw_topo = struct(
     create_design_features = _create_design_features,
     create_features = _create_features,
@@ -2001,4 +2050,8 @@ hw_topo = struct(
     TPM_THIRD_PARTY = _TPM_THIRD_PARTY,
     TPM_GSC_H1B = _TPM_GSC_H1B,
     TPM_GSC_H1D = _TPM_GSC_H1D,
+
+    # helper functions
+    create_hardware_topology_bundle = _create_hardware_topology_bundle,
+    create_versioned_topology = _create_versioned_topology,
 )
