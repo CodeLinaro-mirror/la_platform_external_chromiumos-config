@@ -64,6 +64,10 @@ type DutServiceClient interface {
 	// The returned scan config can then be used to reverse lookup
 	// the actual DeviceConfigId values and corresponding configs.
 	DetectDeviceConfigId(ctx context.Context, in *DetectDeviceConfigIdRequest, opts ...grpc.CallOption) (DutService_DetectDeviceConfigIdClient, error)
+	// Fetch a file or dir from the device.
+	//
+	// The files will be returned via a tar'd bytestream.
+	FetchFile(ctx context.Context, in *FetchFileRequest, opts ...grpc.CallOption) (DutService_FetchFileClient, error)
 	// Downloads files from GS to the DUT
 	//
 	// The files downloaded may be decompressed in this layer to save cycles (and
@@ -193,6 +197,38 @@ func (x *dutServiceDetectDeviceConfigIdClient) Recv() (*DetectDeviceConfigIdResp
 	return m, nil
 }
 
+func (c *dutServiceClient) FetchFile(ctx context.Context, in *FetchFileRequest, opts ...grpc.CallOption) (DutService_FetchFileClient, error) {
+	stream, err := c.cc.NewStream(ctx, &DutService_ServiceDesc.Streams[3], "/chromiumos.test.api.DutService/FetchFile", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &dutServiceFetchFileClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type DutService_FetchFileClient interface {
+	Recv() (*File, error)
+	grpc.ClientStream
+}
+
+type dutServiceFetchFileClient struct {
+	grpc.ClientStream
+}
+
+func (x *dutServiceFetchFileClient) Recv() (*File, error) {
+	m := new(File)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 func (c *dutServiceClient) Cache(ctx context.Context, in *CacheRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
 	out := new(longrunning.Operation)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.DutService/Cache", in, out, opts...)
@@ -256,6 +292,10 @@ type DutServiceServer interface {
 	// The returned scan config can then be used to reverse lookup
 	// the actual DeviceConfigId values and corresponding configs.
 	DetectDeviceConfigId(*DetectDeviceConfigIdRequest, DutService_DetectDeviceConfigIdServer) error
+	// Fetch a file or dir from the device.
+	//
+	// The files will be returned via a tar'd bytestream.
+	FetchFile(*FetchFileRequest, DutService_FetchFileServer) error
 	// Downloads files from GS to the DUT
 	//
 	// The files downloaded may be decompressed in this layer to save cycles (and
@@ -287,6 +327,9 @@ func (UnimplementedDutServiceServer) Restart(context.Context, *RestartRequest) (
 }
 func (UnimplementedDutServiceServer) DetectDeviceConfigId(*DetectDeviceConfigIdRequest, DutService_DetectDeviceConfigIdServer) error {
 	return status.Errorf(codes.Unimplemented, "method DetectDeviceConfigId not implemented")
+}
+func (UnimplementedDutServiceServer) FetchFile(*FetchFileRequest, DutService_FetchFileServer) error {
+	return status.Errorf(codes.Unimplemented, "method FetchFile not implemented")
 }
 func (UnimplementedDutServiceServer) Cache(context.Context, *CacheRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Cache not implemented")
@@ -387,6 +430,27 @@ func (x *dutServiceDetectDeviceConfigIdServer) Send(m *DetectDeviceConfigIdRespo
 	return x.ServerStream.SendMsg(m)
 }
 
+func _DutService_FetchFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(FetchFileRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(DutServiceServer).FetchFile(m, &dutServiceFetchFileServer{stream})
+}
+
+type DutService_FetchFileServer interface {
+	Send(*File) error
+	grpc.ServerStream
+}
+
+type dutServiceFetchFileServer struct {
+	grpc.ServerStream
+}
+
+func (x *dutServiceFetchFileServer) Send(m *File) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 func _DutService_Cache_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CacheRequest)
 	if err := dec(in); err != nil {
@@ -457,6 +521,11 @@ var DutService_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "DetectDeviceConfigId",
 			Handler:       _DutService_DetectDeviceConfigId_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "FetchFile",
+			Handler:       _DutService_FetchFile_Handler,
 			ServerStreams: true,
 		},
 	},
