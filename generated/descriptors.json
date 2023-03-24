@@ -20243,6 +20243,30 @@
         {
           "field": [
             {
+              "jsonName": "file",
+              "label": "LABEL_OPTIONAL",
+              "name": "file",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FetchFileRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "file",
+              "label": "LABEL_OPTIONAL",
+              "name": "file",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "File"
+        },
+        {
+          "field": [
+            {
               "jsonName": "fetchCore",
               "label": "LABEL_OPTIONAL",
               "name": "fetch_core",
@@ -20804,6 +20828,12 @@
               "inputType": ".chromiumos.test.api.DetectDeviceConfigIdRequest",
               "name": "DetectDeviceConfigId",
               "outputType": ".chromiumos.test.api.DetectDeviceConfigIdResponse",
+              "serverStreaming": true
+            },
+            {
+              "inputType": ".chromiumos.test.api.FetchFileRequest",
+              "name": "FetchFile",
+              "outputType": ".chromiumos.test.api.File",
               "serverStreaming": true
             },
             {

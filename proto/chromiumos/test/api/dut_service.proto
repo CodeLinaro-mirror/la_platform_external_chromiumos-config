@@ -68,6 +68,12 @@ service DutService {
   rpc DetectDeviceConfigId(DetectDeviceConfigIdRequest)
       returns (stream DetectDeviceConfigIdResponse);
 
+  // Fetch a file or dir from the device.
+  //
+  // The files will be returned via a tar'd bytestream.
+  rpc FetchFile(FetchFileRequest)
+    returns (stream File);
+
   // Downloads files from GS to the DUT
   //
   // The files downloaded may be decompressed in this layer to save cycles (and
@@ -176,6 +182,17 @@ enum Output {
   OUTPUT_STDOUT = 1;
 }
 
+
+// Fetch files from remote host into local /var/tmp/remotefiles
+message FetchFileRequest {
+  string file = 1;
+}
+
+// Byte stream of the requested file.
+message File {
+  bytes file = 1;
+}
+
 message FetchCrashesRequest {
     // If true, fetch the core file.
     // For uploads to the crash server, that should generally be false.
@@ -208,7 +225,7 @@ message FetchCrashesResponse {
       CrashInfo crash = 2;
       // Misc file (e.g. minidump, large binary log, etc)
       CrashBlob blob = 3;
-      // Coredump. Present iff fetch_core was true in FetchCrashesRequest and
+      // Coredump. Present if fetch_core was true in FetchCrashesRequest and
       // the crash has a coredump. (kernel warnings, for example, do not have
       // one).
       bytes core = 4;
