@@ -65,7 +65,7 @@ enum AndroidPackage {
 
 // Next Tag: 8
 message CIPDPackage {
-  // Required. CIPD package name.
+  // CIPD package name.
   string name = 1;
 
   // Required. CIPD package version.
@@ -121,12 +121,14 @@ message InstalledAndroidPackage {
   string version_code = 2;
 }
 
-// Next Tag: 3
+// Next Tag: 4
 message InstalledAndroidOS {
   // Android OS build ID (ro.build.id).
   string build_id  = 1;
+  // Android OS version (ro.build.version.release).
+  string os_version  = 2;
   // Android OS build incremental version (ro.build.version.incremental).
-  string incremental_version  = 2;
+  string incremental_version  = 3;
 }
 
 // Next Tag: 3
