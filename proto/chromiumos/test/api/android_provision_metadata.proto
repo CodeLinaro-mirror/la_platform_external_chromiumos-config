@@ -115,14 +115,24 @@ message AndroidProvisionRequestMetadata {
 
 // Next Tag: 3
 message InstalledAndroidPackage {
-  // Required. Name of the installed package.
+  // Name of the installed package.
   string name = 1;
-  // Required. Version of the installed package.
+  // Version of the installed package.
   string version_code = 2;
 }
 
-// Next Tag: 2
+// Next Tag: 3
+message InstalledAndroidOS {
+  // Android OS build ID (ro.build.id).
+  string build_id  = 1;
+  // Android OS build incremental version (ro.build.version.incremental).
+  string incremental_version  = 2;
+}
+
+// Next Tag: 3
 message AndroidProvisionResponseMetadata {
   // List of the provisioned Android packages.
   repeated InstalledAndroidPackage installed_android_packages = 1;
+  // Installed Android OS.
+  InstalledAndroidOS installed_android_os = 2;
 }

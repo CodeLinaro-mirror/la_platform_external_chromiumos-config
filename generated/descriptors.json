@@ -15507,12 +15507,39 @@
         {
           "field": [
             {
+              "jsonName": "buildId",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "incrementalVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "incremental_version",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "InstalledAndroidOS"
+        },
+        {
+          "field": [
+            {
               "jsonName": "installedAndroidPackages",
               "label": "LABEL_REPEATED",
               "name": "installed_android_packages",
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.InstalledAndroidPackage"
+            },
+            {
+              "jsonName": "installedAndroidOs",
+              "label": "LABEL_OPTIONAL",
+              "name": "installed_android_os",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstalledAndroidOS"
             }
           ],
           "name": "AndroidProvisionResponseMetadata"
