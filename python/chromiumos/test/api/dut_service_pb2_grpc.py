@@ -37,11 +37,6 @@ class DutServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdResponse.FromString,
                 )
-        self.FetchFile = channel.unary_stream(
-                '/chromiumos.test.api.DutService/FetchFile',
-                request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.FetchFileRequest.SerializeToString,
-                response_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.File.FromString,
-                )
         self.Cache = channel.unary_unary(
                 '/chromiumos.test.api.DutService/Cache',
                 request_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.CacheRequest.SerializeToString,
@@ -120,15 +115,6 @@ class DutServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def FetchFile(self, request, context):
-        """Fetch a file or dir from the device.
-
-        The files will be returned via a tar'd bytestream.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def Cache(self, request, context):
         """Downloads files from GS to the DUT
 
@@ -175,11 +161,6 @@ def add_DutServiceServicer_to_server(servicer, server):
                     servicer.DetectDeviceConfigId,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdResponse.SerializeToString,
-            ),
-            'FetchFile': grpc.unary_stream_rpc_method_handler(
-                    servicer.FetchFile,
-                    request_deserializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.FetchFileRequest.FromString,
-                    response_serializer=chromiumos_dot_test_dot_api_dot_dut__service__pb2.File.SerializeToString,
             ),
             'Cache': grpc.unary_unary_rpc_method_handler(
                     servicer.Cache,
@@ -268,23 +249,6 @@ class DutService(object):
         return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.DutService/DetectDeviceConfigId',
             chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_dut__service__pb2.DetectDeviceConfigIdResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def FetchFile(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/chromiumos.test.api.DutService/FetchFile',
-            chromiumos_dot_test_dot_api_dot_dut__service__pb2.FetchFileRequest.SerializeToString,
-            chromiumos_dot_test_dot_api_dot_dut__service__pb2.File.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
