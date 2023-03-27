@@ -180,6 +180,10 @@
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
+          "has-lid-light-sensor": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -456,6 +460,9 @@
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "POWER_BUTTON",
           "storage-type": "EMMC"
@@ -733,6 +740,9 @@
         "hardware-properties": {
           "form-factor": "CONVERTIBLE",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -1057,6 +1067,9 @@
         "hardware-properties": {
           "form-factor": "DETACHABLE",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -1289,6 +1302,9 @@
         "hardware-properties": {
           "form-factor": "DETACHABLE",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -1543,6 +1559,9 @@
         "hardware-properties": {
           "form-factor": "DETACHABLE",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -1784,6 +1803,9 @@
         "hardware-properties": {
           "form-factor": "CHROMESLATE",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "has-privacy-screen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
@@ -2025,6 +2047,9 @@
         "hardware-properties": {
           "form-factor": "CHROMESLATE",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "has-privacy-screen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
@@ -2259,6 +2284,9 @@
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -2496,6 +2524,9 @@
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -2734,6 +2765,9 @@
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -2972,6 +3006,9 @@
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -3223,6 +3260,9 @@
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
           "storage-type": "EMMC"
@@ -3432,6 +3472,9 @@
         "hardware-properties": {
           "form-factor": "CHROMEBOX",
           "has-backlight": false,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "AC_only",
           "recovery-input": "RECOVERY_BUTTON",
           "storage-type": "EMMC"
@@ -3641,6 +3684,9 @@
         "hardware-properties": {
           "form-factor": "CHROMEBASE",
           "has-backlight": true,
+          "has-base-accelerometer": true,
+          "has-base-gyroscope": true,
+          "has-base-magnetometer": true,
           "psu-type": "AC_only",
           "recovery-input": "RECOVERY_BUTTON",
           "storage-type": "EMMC"
@@ -3846,6 +3892,8 @@
         "hardware-properties": {
           "form-factor": "CHROMEBASE",
           "has-backlight": true,
+          "has-lid-accelerometer": true,
+          "has-lid-light-sensor": true,
           "psu-type": "AC_only",
           "recovery-input": "RECOVERY_BUTTON",
           "storage-type": "EMMC"
