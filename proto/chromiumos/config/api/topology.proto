@@ -109,7 +109,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 43
+// NEXT TAG: 44
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -915,4 +915,11 @@ message HardwareFeatures {
     // If UWB is present on system
     Present present = 1;
   };
+
+  HardwareProbe hardware_probe_config = 43;
+  message HardwareProbe {
+    string gpu_family = 1;
+    string gpu_vendor = 2;
+    string cpu_soc_family = 3;
+  }
 }

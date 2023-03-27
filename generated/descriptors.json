@@ -4246,6 +4246,14 @@
               "number": 42,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Uwb"
+            },
+            {
+              "jsonName": "hardwareProbeConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "hardware_probe_config",
+              "number": 43,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.HardwareProbe"
             }
           ],
           "name": "HardwareFeatures",
@@ -6310,6 +6318,32 @@
                 }
               ],
               "name": "Uwb"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "gpuFamily",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gpu_family",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "gpuVendor",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gpu_vendor",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "cpuSocFamily",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "cpu_soc_family",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "HardwareProbe"
             }
           ]
         }
