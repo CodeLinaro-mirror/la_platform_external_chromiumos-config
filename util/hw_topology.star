@@ -415,11 +415,11 @@ def _create_form_factor(
         recovery_input = {
             hw_feat.form_factor.CLAMSHELL: hw_feat.recovery_input.KEYBOARD,
             hw_feat.form_factor.CONVERTIBLE: hw_feat.recovery_input.KEYBOARD,
-            hw_feat.form_factor.DETACHABLE: hw_feat.recovery_input.POWER_BUTTON,
+            hw_feat.form_factor.DETACHABLE: hw_feat.recovery_input.KEYBOARD,
             hw_feat.form_factor.CHROMEBASE: hw_feat.recovery_input.RECOVERY_BUTTON,
             hw_feat.form_factor.CHROMEBOX: hw_feat.recovery_input.RECOVERY_BUTTON,
             hw_feat.form_factor.CHROMEBIT: hw_feat.recovery_input.RECOVERY_BUTTON,
-            hw_feat.form_factor.CHROMESLATE: hw_feat.recovery_input.POWER_BUTTON,
+            hw_feat.form_factor.CHROMESLATE: hw_feat.recovery_input.KEYBOARD,
         }[form_factor]
 
     hw_features = _HW_FEAT()
