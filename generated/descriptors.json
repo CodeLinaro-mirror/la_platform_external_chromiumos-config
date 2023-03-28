@@ -18537,7 +18537,8 @@
         "google/protobuf/timestamp.proto",
         "chromiumos/storage_path.proto",
         "chromiumos/test/api/test_case.proto",
-        "chromiumos/test/api/test_harness.proto"
+        "chromiumos/test/api/test_harness.proto",
+        "chromiumos/test/api/test_case_metadata.proto"
       ],
       "messageType": [
         {
@@ -18649,6 +18650,14 @@
               "name": "retry",
               "number": 13,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "testCaseMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_case_metadata",
+              "number": 14,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseMetadata"
             }
           ],
           "name": "TestCaseResult",

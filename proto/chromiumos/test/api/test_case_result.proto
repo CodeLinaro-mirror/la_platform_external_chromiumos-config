@@ -13,8 +13,10 @@ import "google/protobuf/timestamp.proto";
 import "chromiumos/storage_path.proto";
 import "chromiumos/test/api/test_case.proto";
 import "chromiumos/test/api/test_harness.proto";
+import "chromiumos/test/api/test_case_metadata.proto";
 
-// Result of a single execution of a given TestCase
+// Result of a single execution of a given TestCase.
+// NEXT TAG: 15
 message TestCaseResult {
   // Unique ID of test case executed
   TestCase.Id test_case_id = 1;
@@ -52,6 +54,9 @@ message TestCaseResult {
 
   // Bool to show if the test was a retry or not.
   bool retry = 13;
+
+  // The metadata of the test.
+  api.TestCaseMetadata test_case_metadata = 14;
 
   message Artifacts {
   }
