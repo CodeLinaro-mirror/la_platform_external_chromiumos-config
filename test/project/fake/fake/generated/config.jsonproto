@@ -2311,7 +2311,7 @@
             },
             "formFactor": {
               "formFactor": 3,
-              "recoveryInput": 2
+              "recoveryInput": 1
             },
             "fwConfig": {
               "mask": 69631,
@@ -2592,7 +2592,7 @@
               "hardwareFeature": {
                 "formFactor": {
                   "formFactor": 3,
-                  "recoveryInput": 2
+                  "recoveryInput": 1
                 }
               },
               "id": "DETACHABLE",
@@ -2894,7 +2894,7 @@
             },
             "formFactor": {
               "formFactor": 3,
-              "recoveryInput": 2
+              "recoveryInput": 1
             },
             "fwConfig": {
               "mask": 69631,
@@ -3187,7 +3187,7 @@
               "hardwareFeature": {
                 "formFactor": {
                   "formFactor": 3,
-                  "recoveryInput": 2
+                  "recoveryInput": 1
                 }
               },
               "id": "DETACHABLE",
@@ -3492,7 +3492,7 @@
             },
             "formFactor": {
               "formFactor": 3,
-              "recoveryInput": 2
+              "recoveryInput": 1
             },
             "fwConfig": {
               "mask": 69631,
@@ -3777,7 +3777,7 @@
               "hardwareFeature": {
                 "formFactor": {
                   "formFactor": 3,
-                  "recoveryInput": 2
+                  "recoveryInput": 1
                 }
               },
               "id": "DETACHABLE",
@@ -4083,7 +4083,7 @@
             },
             "formFactor": {
               "formFactor": 7,
-              "recoveryInput": 2
+              "recoveryInput": 1
             },
             "fwConfig": {
               "mask": 69631,
@@ -4363,7 +4363,7 @@
               "hardwareFeature": {
                 "formFactor": {
                   "formFactor": 7,
-                  "recoveryInput": 2
+                  "recoveryInput": 1
                 }
               },
               "id": "CHROMESLATE",
@@ -4676,7 +4676,7 @@
             },
             "formFactor": {
               "formFactor": 7,
-              "recoveryInput": 2
+              "recoveryInput": 1
             },
             "fwConfig": {
               "mask": 69631,
@@ -4956,7 +4956,7 @@
               "hardwareFeature": {
                 "formFactor": {
                   "formFactor": 7,
-                  "recoveryInput": 2
+                  "recoveryInput": 1
                 }
               },
               "id": "CHROMESLATE",
