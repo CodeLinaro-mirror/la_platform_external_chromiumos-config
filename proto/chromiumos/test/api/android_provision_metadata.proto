@@ -93,15 +93,14 @@ message GsPath {
   string bucket = 1;
   // Required. Folder name where the image files are stored.
   string folder = 2;
-  // Optional, zip file with all images to flash.
-  string file = 3;
 }
 
-// Next Tag: 2
+// Next Tag: 3
 message AndroidOsImage {
-  // Required. Location of the image file.
-  oneof location_oneof {
+  // Required. Reference to the image file.
+  oneof ref_oneof {
     GsPath gs_path = 1;
+    string os_version = 2;
   }
 }
 
