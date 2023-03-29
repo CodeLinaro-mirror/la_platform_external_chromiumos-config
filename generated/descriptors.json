@@ -15481,6 +15481,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "file",
               "number": 3,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             }
           ],
@@ -15496,6 +15499,14 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GsPath"
+            },
+            {
+              "jsonName": "osVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_version",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "AndroidOsImage",
