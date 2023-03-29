@@ -15441,6 +15441,13 @@
               "name": "folder",
               "number": 2,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "file",
+              "label": "LABEL_OPTIONAL",
+              "name": "file",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "GsPath"
@@ -15455,20 +15462,12 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GsPath"
-            },
-            {
-              "jsonName": "osVersion",
-              "label": "LABEL_OPTIONAL",
-              "name": "os_version",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_STRING"
             }
           ],
           "name": "AndroidOsImage",
           "oneofDecl": [
             {
-              "name": "ref_oneof"
+              "name": "location_oneof"
             }
           ]
         },
