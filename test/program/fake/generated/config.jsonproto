@@ -206,6 +206,10 @@
         {
           "mask": 65536,
           "name": "Touch controller"
+        },
+        {
+          "mask": 15728640,
+          "name": "Detachable Base"
         }
       ],
       "generateCameraMediaProfiles": true,

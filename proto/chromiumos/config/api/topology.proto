@@ -70,6 +70,7 @@ message Topology {
     PRIVACY_SCREEN = 34;
     DGPU = 35;
     UWB = 36;
+    DETACHABLE_BASE = 37;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -941,4 +942,28 @@ message HardwareFeatures {
 
     Component.LuxThreshold lux_threshold = 2;
   }
+
+  // Detachable base properties
+  DetachableBase detachable_base = 44;
+  message DetachableBase {
+    // The target EC binary name which is placed under /lib/firmware.
+    string ec_image_name = 1;
+
+    // The Product ID of the detachable base.
+    // This value can be queried by command 'lsusb'.
+    uint32 product_id = 2;
+
+    // The touchpad binary name which is placed under /lib/firmware
+    // This is only needed if the detachable base contains touchpad.
+    string touch_image_name = 3;
+
+    // Searches and finds the idVendor and idProduct under sysfs
+    // /sys/bus/usb/devices/* which matches the vendor-id and product-id.
+    string usb_path = 4;
+
+    // The Vendor ID of the detachable base.
+    // This value can be queried by command 'lsusb'.
+    uint32 vendor_id = 5;
+  }
+
 }

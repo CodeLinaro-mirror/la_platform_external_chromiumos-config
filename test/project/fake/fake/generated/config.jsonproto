@@ -3575,6 +3575,12 @@
               "present": 1,
               "type": 1
             },
+            "detachableBase": {
+              "ecImageName": "Fake_Detachable",
+              "productId": 1000,
+              "usbPath": "1-1.1",
+              "vendorId": 6353
+            },
             "fingerprint": {
               "location": 5
             },
@@ -3583,7 +3589,7 @@
               "recoveryInput": 1
             },
             "fwConfig": {
-              "mask": 69631,
+              "mask": 15798271,
               "value": 66336
             },
             "gyroscope": {
@@ -3847,6 +3853,24 @@
               },
               "id": "DB",
               "type": 11
+            },
+            "detachableBase": {
+              "description": {
+                "EN": "Detachable Base Without Touchpad"
+              },
+              "hardwareFeature": {
+                "detachableBase": {
+                  "ecImageName": "Fake_Detachable",
+                  "productId": 1000,
+                  "usbPath": "1-1.1",
+                  "vendorId": 6353
+                },
+                "fwConfig": {
+                  "mask": 15728640
+                }
+              },
+              "id": "DB_NO_TP",
+              "type": 37
             },
             "ec": {
               "hardwareFeature": {
@@ -4181,6 +4205,13 @@
               "present": 1,
               "type": 1
             },
+            "detachableBase": {
+              "ecImageName": "Fake_Detachable",
+              "productId": 1000,
+              "touchImageName": "Fake_Tp_Version",
+              "usbPath": "1-1.1",
+              "vendorId": 6353
+            },
             "fingerprint": {
               "location": 5
             },
@@ -4189,8 +4220,8 @@
               "recoveryInput": 1
             },
             "fwConfig": {
-              "mask": 69631,
-              "value": 66336
+              "mask": 15798271,
+              "value": 1114912
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -4445,6 +4476,26 @@
               },
               "id": "DB",
               "type": 11
+            },
+            "detachableBase": {
+              "description": {
+                "EN": "Detachable Base With Touchpad"
+              },
+              "hardwareFeature": {
+                "detachableBase": {
+                  "ecImageName": "Fake_Detachable",
+                  "productId": 1000,
+                  "touchImageName": "Fake_Tp_Version",
+                  "usbPath": "1-1.1",
+                  "vendorId": 6353
+                },
+                "fwConfig": {
+                  "mask": 15728640,
+                  "value": 1048576
+                }
+              },
+              "id": "DB_TP",
+              "type": 37
             },
             "ec": {
               "hardwareFeature": {

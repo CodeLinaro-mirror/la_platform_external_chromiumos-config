@@ -118,8 +118,7 @@
           1
         ]
       ],
-      "component.speaker_amp": "MAX98373",
-      "fw_config": 66336
+      "component.speaker_amp": "MAX98373"
     },
     "project_box": {
       "component.audio_card_name": "fakeaudiocard",
@@ -445,13 +444,16 @@
     },
     "project_b": {
       "33": {
-        "component.has_proximity_sensor": true
+        "component.has_proximity_sensor": true,
+        "fw_config": 66336
       },
       "34": {
-        "component.has_proximity_sensor": null
+        "component.has_proximity_sensor": null,
+        "fw_config": 66336
       },
       "35": {
-        "component.has_proximity_sensor": null
+        "component.has_proximity_sensor": null,
+        "fw_config": 1114912
       }
     },
     "project_box": {

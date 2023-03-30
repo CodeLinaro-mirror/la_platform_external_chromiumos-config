@@ -34,6 +34,7 @@ _FW_MASKS = struct(
     SENSOR = 0x00000F00,
     WIFI_SAR_ID = 0x0000F000,
     TOUCH = 0x00010000,
+    DETACHABLE_BASE = 0x00F00000,
 )
 
 _FIRMWARE_CONFIGURATION_SEGMENTS = [
@@ -42,6 +43,7 @@ _FIRMWARE_CONFIGURATION_SEGMENTS = [
     program_util.create_firmware_configuration_segment("Sensor", _FW_MASKS.SENSOR),
     program_util.create_firmware_configuration_segment("Intel wifi sar id", _FW_MASKS.WIFI_SAR_ID),
     program_util.create_firmware_configuration_segment("Touch controller", _FW_MASKS.TOUCH),
+    program_util.create_firmware_configuration_segment("Detachable Base", _FW_MASKS.DETACHABLE_BASE),
 ]
 
 _FEATURE_CONSTRAINTS = design.create_constraints([
