@@ -15523,19 +15523,15 @@
               "name": "folder",
               "number": 2,
               "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "file",
-              "label": "LABEL_OPTIONAL",
-              "name": "file",
-              "number": 3,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_STRING"
             }
           ],
-          "name": "GsPath"
+          "name": "GsPath",
+          "reservedRange": [
+            {
+              "end": 4,
+              "start": 3
+            }
+          ]
         },
         {
           "field": [
