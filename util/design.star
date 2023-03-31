@@ -353,11 +353,9 @@ def _create_design_with_configs(
         frid: String which must match the AP firmware FRID (first part before the
             period) in order for the config to match.  Leaving this value unset
             will result in FRID being generated from coreboot target name or design ID.
-        hardware_topology_filter: An optional function taking the config ID and
-            the topologies to be used for that config. This function can return
-            True to skip this config but leave a gap in the config ID space,
-            False to skip it without leaving a gap, or None to allow it to
-            proceed.
+        hardware_topology_filter: An optional function filtering out the config ID and
+            the topologies to be used for that config. Return True to skip generating
+            this config.
         active_configs: An array that contains the config IDs we need.
         config_notes: Notes to document any particular DesignConfigId in the
             generated markdown table.
@@ -388,8 +386,8 @@ def _create_design_with_configs(
     def config_factory(config_id, topologies):
         if hardware_topology_filter:
             filter_result = hardware_topology_filter(config_id = config_id, **topologies)
-            if filter_result != None:
-                return filter_result
+            if filter_result:
+                return False
 
         fw_config = 0
         for topology in topologies.values():
