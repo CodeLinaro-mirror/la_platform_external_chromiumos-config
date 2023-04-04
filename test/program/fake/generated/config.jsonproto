@@ -229,6 +229,7 @@
         "graphicsApis": [
           1
         ],
+        "hevcSupport": 1,
         "schedulerTune": {
           "boostTopApp": 60,
           "boostUrgent": 20,

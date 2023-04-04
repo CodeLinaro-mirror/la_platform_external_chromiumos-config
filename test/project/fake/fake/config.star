@@ -182,6 +182,7 @@ _SOC = hw_topo.create_soc(
     "SOC",
     "Default SoC",
     arc_media_codecs_suffix = "mainstream",
+    hevc_support = False,
 )
 
 _BL_KEYBOARD = hw_topo.create_keyboard(

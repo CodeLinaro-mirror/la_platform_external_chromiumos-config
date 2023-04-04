@@ -111,6 +111,7 @@ _PLATFORM = program_util.create_platform(
     input_boost = 15,
     boost_top_app = 60,
     arc_media_codecs_suffix = "",
+    hevc_support = True,
 )
 
 _HDMI_AUDIO_CARD = hw_topo.create_audio_card_config(

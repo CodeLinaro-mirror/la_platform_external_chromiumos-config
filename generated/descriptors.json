@@ -6199,6 +6199,14 @@
                   "name": "arc_media_codecs_suffix",
                   "number": 3,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "hevcSupport",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hevc_support",
+                  "number": 4,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "Soc"
@@ -7953,6 +7961,14 @@
                   "number": 8,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.Program.Platform.ArcSettings"
+                },
+                {
+                  "jsonName": "hevcSupport",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "hevc_support",
+                  "number": 9,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "Platform",

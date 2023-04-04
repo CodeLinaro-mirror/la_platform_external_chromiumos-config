@@ -846,6 +846,7 @@ message HardwareFeatures {
     repeated Component.Soc.Feature features = 1;
     repeated Component.Soc.Vulnerability vulnerabilities = 2;
     string arc_media_codecs_suffix = 3;
+    Present hevc_support = 4;
   };
 
   DisplayPortConverter dp_converter = 33;

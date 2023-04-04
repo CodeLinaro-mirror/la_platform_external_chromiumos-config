@@ -3650,7 +3650,8 @@
               "touchSupport": 1
             },
             "soc": {
-              "arcMediaCodecsSuffix": "mainstream"
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": 2
             },
             "storage": {
               "storageType": 1
@@ -4046,7 +4047,8 @@
               },
               "hardwareFeature": {
                 "soc": {
-                  "arcMediaCodecsSuffix": "mainstream"
+                  "arcMediaCodecsSuffix": "mainstream",
+                  "hevcSupport": 2
                 }
               },
               "id": "SOC",

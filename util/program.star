@@ -22,6 +22,7 @@ load(
     db_id_pb = "chromiumos.config.api",
 )
 load("//config/util/generate.star", "generate")
+load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/public_replication.star", "public_replication")
 
 def _create_firmware_configuration_segment(name, mask):
@@ -78,6 +79,7 @@ def _create_platform(
         cpuset_nonurgent = None,
         input_boost = None,
         boost_top_app = None,
+        hevc_support = None,
         arc_media_codecs_suffix = None):
     capabilities = None
     if any([
@@ -122,6 +124,7 @@ def _create_platform(
         capabilities = capabilities,
         scheduler_tune = scheduler_tune,
         arc_settings = arc_settings,
+        hevc_support = hw_topo.bool_to_present(hevc_support),
     )
 
 def _create_audio_config(

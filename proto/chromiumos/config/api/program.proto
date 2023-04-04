@@ -175,6 +175,8 @@ message Program {
       string media_codecs_suffix = 1;
     }
     ArcSettings arc_settings = 8;
+
+    HardwareFeatures.Present hevc_support = 9;
   }
   Platform platform = 11;
 
