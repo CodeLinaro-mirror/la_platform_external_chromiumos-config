@@ -22550,6 +22550,148 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/api/cros_test_finder_cli.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "passRatePolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "pass_rate_policy",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PassRatePolicy"
+            },
+            {
+              "jsonName": "stabilitySensorPolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "stability_sensor_policy",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.StabilitySensorPolicy"
+            },
+            {
+              "jsonName": "testFinderInput",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_finder_input",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestFinderResponse"
+            }
+          ],
+          "name": "FilterFlakyRequest",
+          "oneofDecl": [
+            {
+              "name": "policy"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "response",
+              "label": "LABEL_OPTIONAL",
+              "name": "response",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestFinderResponse"
+            },
+            {
+              "jsonName": "removedTests",
+              "label": "LABEL_REPEATED",
+              "name": "removed_tests",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FilterFlakyResponse"
+        },
+        {
+          "name": "StabilitySensorPolicy"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "passRate",
+              "label": "LABEL_OPTIONAL",
+              "name": "pass_rate",
+              "number": 1,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "minRuns",
+              "label": "LABEL_OPTIONAL",
+              "name": "min_runs",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "defaultEnabled",
+              "label": "LABEL_OPTIONAL",
+              "name": "default_enabled",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "numOfMilestones",
+              "label": "LABEL_OPTIONAL",
+              "name": "num_of_milestones",
+              "number": 4,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "forceEnabledTests",
+              "label": "LABEL_REPEATED",
+              "name": "force_enabled_tests",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "forceDisabledTests",
+              "label": "LABEL_REPEATED",
+              "name": "force_disabled_tests",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "forceEnabledBoards",
+              "label": "LABEL_REPEATED",
+              "name": "force_enabled_boards",
+              "number": 7,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PassRatePolicy"
+        }
+      ],
+      "name": "chromiumos/test/api/pre_test_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.FilterFlakyRequest",
+              "name": "FilterFlakyTests",
+              "outputType": ".chromiumos.test.api.FilterFlakyResponse"
+            }
+          ],
+          "name": "PreTestService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/longrunning/operations.proto",
         "chromiumos/storage_path.proto",
         "google/protobuf/any.proto"
