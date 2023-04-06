@@ -15,6 +15,7 @@ import "chromiumos/test/api/test_case_result.proto";
 import "chromiumos/test/api/test_suite.proto";
 import "chromiumos/test/lab/api/dut.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
+import "chromiumos/test/api/pre_test_service.proto";
 
 // CrosToolRunnerProvisionRequest specifies a list of DUTs to be provision.
 message CrosToolRunnerProvisionRequest {
@@ -89,4 +90,21 @@ message CrosToolRunnerTestFinderRequest {
 message CrosToolRunnerTestFinderResponse {
   // Test suites to run by an explicit list of tests.
   repeated TestSuite test_suites = 1;
+}
+
+message CrosToolRunnerPreTestRequest {
+  // The path of directory that will store all the pre-test-request artifacts.
+  string artifact_dir = 1 ;
+  // ContainerMetadataKey is the key to search in the ContainerMetadata map
+  // defined in container_metadata.proto
+  string container_metadata_key = 2;
+  // The caller should construct the entire request to go to the service.
+  FilterFlakyRequest request = 3;
+
+}
+
+// CrosToolRunnerPreTestResponse return filtered list.
+message CrosToolRunnerPreTestResponse {
+  // Service response from the caller.
+  FilterFlakyResponse response = 1;
 }
