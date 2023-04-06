@@ -22574,18 +22574,43 @@
               "typeName": ".chromiumos.test.api.StabilitySensorPolicy"
             },
             {
+              "jsonName": "milestone",
+              "label": "LABEL_OPTIONAL",
+              "name": "milestone",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
               "jsonName": "testFinderInput",
               "label": "LABEL_OPTIONAL",
               "name": "test_finder_input",
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CrosTestFinderResponse"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 5,
+              "oneofIndex": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "defaultEnabled",
+              "label": "LABEL_OPTIONAL",
+              "name": "default_enabled",
+              "number": 6,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "FilterFlakyRequest",
           "oneofDecl": [
             {
               "name": "policy"
+            },
+            {
+              "name": "variant"
             }
           ]
         },
@@ -22627,13 +22652,6 @@
               "name": "min_runs",
               "number": 2,
               "type": "TYPE_INT32"
-            },
-            {
-              "jsonName": "defaultEnabled",
-              "label": "LABEL_OPTIONAL",
-              "name": "default_enabled",
-              "number": 3,
-              "type": "TYPE_BOOL"
             },
             {
               "jsonName": "numOfMilestones",

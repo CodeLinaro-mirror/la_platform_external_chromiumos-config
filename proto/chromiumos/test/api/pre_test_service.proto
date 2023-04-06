@@ -32,9 +32,21 @@ message FilterFlakyRequest {
     StabilitySensorPolicy stability_sensor_policy = 2;
   }
 
+  // Milestone that the test filtering is for.
+  // Important as test flake can be very different per milestone based on
+  // breakages/fixes across branches.
+  string milestone = 4;
   CrosTestFinderResponse test_finder_input = 3;
+  // Currently filtering will be done on _board_ level.
+  // Other variants (model, hwid, etc) to follow.
+  oneof variant {
+  string board = 5;
+  }
 
+  // When there is not enough signal to determine stability (based on policy); default on/off.
+  bool default_enabled = 6;
 }
+
 
 message FilterFlakyResponse {
   CrosTestFinderResponse response = 1;
@@ -48,9 +60,7 @@ message StabilitySensorPolicy {}
 message PassRatePolicy {
   int32 pass_rate = 1;
   int32 min_runs = 2;
-  // When not enough runs are found based on milestone (below) OR there are no result,
-  // default the test enabled/disabled. Default will be "enabled".
-  bool default_enabled = 3;
+
   // NOTE: num_of_milestones determines how many milestones back to look for results.
   // The number here will default to 0 (meaning current only); however, if there are not enough
   // results on the current milestone to meet `min_runs`, then will go back up to 1 milestone.
