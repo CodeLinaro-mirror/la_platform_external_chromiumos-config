@@ -33,6 +33,7 @@ message TestCaseInfo {
   BugComponent bug_component = 3;
   Criteria criteria = 4;
   HwAgnostic hw_agnostic = 5;
+  LifeCycleStage life_cycle_stage = 6;
 }
 
 // Contact information of individuals or teams.
@@ -59,6 +60,18 @@ message Criteria {
 // Specifies if a test can be run on VM or not.
 message HwAgnostic {
   bool value = 1;
+}
+
+// LifeCycleStage denotes the overall usage of the test.
+message LifeCycleStage {
+  enum LifeCycle{
+    LIFE_CYCLE_PRODUCTION_READY = 0;
+    LIFE_CYCLE_DISABLED = 1;
+    LIFE_CYCLE_IN_DEVELOPMENT = 2;
+    LIFE_CYCLE_MANUAL_ONLY = 3;
+    LIFE_CYCLE_OWNER_MONITORED = 4;
+  }
+  LifeCycle value = 1;
 }
 
 // A list of TestCaseMetadata for ease of serialization into a file.

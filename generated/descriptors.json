@@ -18416,6 +18416,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.HwAgnostic"
+            },
+            {
+              "jsonName": "lifeCycleStage",
+              "label": "LABEL_OPTIONAL",
+              "name": "life_cycle_stage",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LifeCycleStage"
             }
           ],
           "name": "TestCaseInfo"
@@ -18479,6 +18487,46 @@
             }
           ],
           "name": "HwAgnostic"
+        },
+        {
+          "enumType": [
+            {
+              "name": "LifeCycle",
+              "value": [
+                {
+                  "name": "LIFE_CYCLE_PRODUCTION_READY",
+                  "number": 0
+                },
+                {
+                  "name": "LIFE_CYCLE_DISABLED",
+                  "number": 1
+                },
+                {
+                  "name": "LIFE_CYCLE_IN_DEVELOPMENT",
+                  "number": 2
+                },
+                {
+                  "name": "LIFE_CYCLE_MANUAL_ONLY",
+                  "number": 3
+                },
+                {
+                  "name": "LIFE_CYCLE_OWNER_MONITORED",
+                  "number": 4
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.LifeCycleStage.LifeCycle"
+            }
+          ],
+          "name": "LifeCycleStage"
         },
         {
           "field": [
