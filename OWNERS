@@ -1,4 +1,5 @@
 include chromiumos/owners:v1:/infra/OWNERS.build
+include chromiumos/owners:v1:/infra/OWNERS.fleetplatform
 include chromiumos/owners:v1:/platform/OWNERS.cros_config
 
 per-file OWNERS.platformconfig=file:/OWNERS.platformconfig
