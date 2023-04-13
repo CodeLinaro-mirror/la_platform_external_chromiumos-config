@@ -113,6 +113,47 @@
       "configs": [
         {
           "id": {
+            "value": "PROJECT_E:65536"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_E:65537"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_E:65538"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_E:65539"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_E:65541"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_E:65543"
+          }
+        }
+      ],
+      "id": {
+        "value": "PROJECT_E"
+      },
+      "name": "PROJECT_E",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
+          "id": {
             "value": "PROJECT_WL:64"
           }
         }
@@ -305,6 +346,150 @@
       "idScanConfig": {
         "firmwareSku": 130,
         "frid": "Google_Fake"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65536"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "ec": "fake"
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65536,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65537"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "ec": "fake"
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65537,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65538"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "ec": "fake"
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65538,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65539"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "ec": "fake"
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65539,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65541"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "ec": "fake"
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65541,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65543"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "ec": "fake"
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65543,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
       }
     }
   ]

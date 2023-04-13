@@ -214,6 +214,30 @@
       "component.speaker_amp": "AMPLIFIER_UNKNOWN",
       "fw_config": 66337
     },
+    "project_e": {
+      "component.audio_card_name": "fakeaudiocard",
+      "component.fingerprint_board": null,
+      "component.has_base_accelerometer": null,
+      "component.has_base_gyroscope": null,
+      "component.has_base_magnetometer": null,
+      "component.has_daughter_board_usb_a": 0,
+      "component.has_daughter_board_usb_c": 0,
+      "component.has_fingerprint": null,
+      "component.has_front_camera": true,
+      "component.has_lid_accelerometer": null,
+      "component.has_lid_gyroscope": null,
+      "component.has_lid_magnetometer": null,
+      "component.has_lte": false,
+      "component.has_mother_board_usb_a": 0,
+      "component.has_mother_board_usb_c": 2,
+      "component.has_rear_camera": false,
+      "component.has_sd_reader": true,
+      "component.has_tabletmode": true,
+      "component.has_wifi": true,
+      "component.headphone_codec": "ALC5682I",
+      "component.speaker_amp": "MAX98373",
+      "fw_config": 24608
+    },
     "project_rebrand": {
       "component.audio_card_name": "fakeaudiocard",
       "component.fingerprint_board": "",
@@ -332,6 +356,9 @@
     },
     "project_c": {
       "": "FAKE_OEMC"
+    },
+    "project_e": {
+      "": "FAKE_OEME"
     },
     "project_rebrand": {
       "branda": "FAKE_OEMD"
@@ -485,6 +512,178 @@
     "project_c": {
       "34": {},
       "40": {}
+    },
+    "project_e": {
+      "65536": {
+        "component.has_keyboard_backlight": false,
+        "component.has_proximity_sensor": null,
+        "component.has_stylus": false,
+        "component.has_touchscreen": false,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            1
+          ],
+          [
+            "touchscreen",
+            "==",
+            0
+          ],
+          [
+            "usb_host",
+            "==",
+            2
+          ],
+          [
+            "stylus",
+            "==",
+            0
+          ]
+        ]
+      },
+      "65537": {
+        "component.has_keyboard_backlight": false,
+        "component.has_proximity_sensor": null,
+        "component.has_stylus": true,
+        "component.has_touchscreen": true,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            1
+          ],
+          [
+            "touchscreen",
+            "==",
+            1
+          ],
+          [
+            "usb_host",
+            "==",
+            2
+          ],
+          [
+            "stylus",
+            "==",
+            1
+          ]
+        ]
+      },
+      "65538": {
+        "component.has_keyboard_backlight": false,
+        "component.has_proximity_sensor": true,
+        "component.has_stylus": false,
+        "component.has_touchscreen": false,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            1
+          ],
+          [
+            "touchscreen",
+            "==",
+            0
+          ],
+          [
+            "usb_host",
+            "==",
+            2
+          ],
+          [
+            "stylus",
+            "==",
+            0
+          ]
+        ]
+      },
+      "65539": {
+        "component.has_keyboard_backlight": false,
+        "component.has_proximity_sensor": true,
+        "component.has_stylus": true,
+        "component.has_touchscreen": true,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            1
+          ],
+          [
+            "touchscreen",
+            "==",
+            1
+          ],
+          [
+            "usb_host",
+            "==",
+            2
+          ],
+          [
+            "stylus",
+            "==",
+            1
+          ]
+        ]
+      },
+      "65541": {
+        "component.has_keyboard_backlight": true,
+        "component.has_numeric_pad": true,
+        "component.has_proximity_sensor": null,
+        "component.has_stylus": true,
+        "component.has_touchscreen": true,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            1
+          ],
+          [
+            "touchscreen",
+            "==",
+            1
+          ],
+          [
+            "usb_host",
+            "==",
+            2
+          ],
+          [
+            "stylus",
+            "==",
+            1
+          ]
+        ]
+      },
+      "65543": {
+        "component.has_keyboard_backlight": true,
+        "component.has_numeric_pad": true,
+        "component.has_proximity_sensor": true,
+        "component.has_stylus": true,
+        "component.has_touchscreen": true,
+        "component.match_sku_components": [
+          [
+            "camera",
+            "==",
+            1
+          ],
+          [
+            "touchscreen",
+            "==",
+            1
+          ],
+          [
+            "usb_host",
+            "==",
+            2
+          ],
+          [
+            "stylus",
+            "==",
+            1
+          ]
+        ]
+      }
     },
     "project_rebrand": {
       "65": {}

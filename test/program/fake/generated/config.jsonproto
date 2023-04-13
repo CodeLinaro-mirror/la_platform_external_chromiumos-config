@@ -175,6 +175,12 @@
         },
         {
           "designId": {
+            "value": "PROJECT_E"
+          },
+          "keyId": "KEYE"
+        },
+        {
+          "designId": {
             "value": "PROJECT_REBRAND"
           },
           "keyId": "KEYRB"

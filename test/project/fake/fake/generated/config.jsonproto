@@ -6010,6 +6010,2523 @@
       "configs": [
         {
           "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 1,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2,
+              "speakerAmp": 5
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": 1,
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": 1,
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": 1,
+                  "privacySwitch": 2
+                }
+              ]
+            },
+            "cellular": {
+              "present": 2
+            },
+            "formFactor": {
+              "formFactor": 2,
+              "recoveryInput": 1
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": 2
+            },
+            "keyboard": {
+              "backlight": 2,
+              "keyboardType": 3,
+              "numericPad": 2,
+              "powerButton": 2
+            },
+            "powerButton": {
+              "edge": 1,
+              "position": 0.9,
+              "region": 1
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    }
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    }
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "features": [
+                  2
+                ],
+                "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
+                "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
+                "turnOffScreenTimeoutMs": 0,
+                "widthPx": 1920
+              },
+              "touchSupport": 2
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "stylus": {
+              "stylus": 1
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": 2,
+              "position": 0.75,
+              "region": 1
+            }
+          },
+          "hardwareTopology": {
+            "audio": {
+              "description": {
+                "EN": "Default audio"
+              },
+              "hardwareFeature": {
+                "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 1,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2,
+                  "speakerAmp": 5
+                }
+              },
+              "id": "AUDIO",
+              "type": 3
+            },
+            "camera": {
+              "description": {
+                "EN": "1 USB camera"
+              },
+              "hardwareFeature": {
+                "camera": {
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "ids": [
+                        "0123:abcd"
+                      ],
+                      "interface": 1,
+                      "microphoneCount": {
+                        "value": 2
+                      },
+                      "orientation": 1,
+                      "privacySwitch": 2
+                    }
+                  ]
+                },
+                "fwConfig": {
+                  "mask": 240,
+                  "value": 32
+                }
+              },
+              "id": "CAMERA1",
+              "type": 7
+            },
+            "daughterBoard": {
+              "description": {
+                "EN": "Non-default daughter_board"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
+                "fwConfig": {
+                  "mask": 15
+                },
+                "hdmi": {
+                  "present": 2
+                },
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {}
+                }
+              },
+              "id": "DB",
+              "type": 11
+            },
+            "formFactor": {
+              "description": {
+                "EN": "Device can rotate 360 degrees"
+              },
+              "hardwareFeature": {
+                "formFactor": {
+                  "formFactor": 2,
+                  "recoveryInput": 1
+                }
+              },
+              "id": "CONVERTIBLE",
+              "type": 2
+            },
+            "keyboard": {
+              "description": {
+                "EN": "Detachable keyboard without backlight"
+              },
+              "hardwareFeature": {
+                "keyboard": {
+                  "backlight": 2,
+                  "keyboardType": 3,
+                  "numericPad": 2,
+                  "powerButton": 2
+                }
+              },
+              "id": "KB_NO_BL",
+              "type": 5
+            },
+            "motherboardUsb": {
+              "description": {
+                "EN": "Default motherboard_usb"
+              },
+              "hardwareFeature": {
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ],
+                  "usb4": true
+                }
+              },
+              "id": "MOTHERBOARD_USB",
+              "type": 17
+            },
+            "nonVolatileStorage": {
+              "description": {
+                "EN": "Default non_volatile_storage"
+              },
+              "hardwareFeature": {
+                "storage": {
+                  "storageType": 1
+                }
+              },
+              "id": "NON_VOLATILE_STORAGE",
+              "type": 12
+            },
+            "powerButton": {
+              "description": {
+                "EN": "Power button on the left edge of the screen"
+              },
+              "hardwareFeature": {
+                "powerButton": {
+                  "edge": 1,
+                  "position": 0.9,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_LEFT_POWER_BUTTON",
+              "type": 20
+            },
+            "screen": {
+              "description": {
+                "EN": "Default screen"
+              },
+              "hardwareFeature": {
+                "screen": {
+                  "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 60.1,
+                        "luxThreshold": {
+                          "decreaseThreshold": -1,
+                          "increaseThreshold": 400
+                        }
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 100.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": 100,
+                          "increaseThreshold": -1
+                        }
+                      }
+                    ],
+                    "diagonalMilliinch": 15000,
+                    "features": [
+                      2
+                    ],
+                    "heightPx": 1080,
+                    "minVisibleBacklightLevel": 1000,
+                    "noAlsAcBrightness": 80.1,
+                    "noAlsBatteryBrightness": 63.2,
+                    "pixelsPerIn": 280,
+                    "roundedCorners": {
+                      "bottomLeft": {
+                        "radiusPx": 15
+                      },
+                      "bottomRight": {
+                        "radiusPx": 15
+                      },
+                      "topLeft": {
+                        "radiusPx": 15
+                      },
+                      "topRight": {
+                        "radiusPx": 15
+                      }
+                    },
+                    "turnOffScreenTimeoutMs": 0,
+                    "widthPx": 1920
+                  },
+                  "touchSupport": 2
+                }
+              },
+              "id": "SCREEN",
+              "type": 1
+            },
+            "sdReader": {
+              "description": {
+                "EN": "Default sd_reader"
+              },
+              "hardwareFeature": {},
+              "id": "SD_READER",
+              "type": 16
+            },
+            "stylus": {
+              "description": {
+                "EN": "No Stylus"
+              },
+              "hardwareFeature": {
+                "stylus": {
+                  "stylus": 1
+                }
+              },
+              "id": "NO_STYLUS",
+              "type": 4
+            },
+            "thermal": {
+              "description": {
+                "EN": "Default thermal"
+              },
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
+              "id": "THERMAL",
+              "type": 6
+            },
+            "volumeButton": {
+              "description": {
+                "EN": "Volume button on the right edge of the screen"
+              },
+              "hardwareFeature": {
+                "volumeButton": {
+                  "edge": 2,
+                  "position": 0.75,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+              "type": 20
+            },
+            "wifi": {
+              "description": {
+                "EN": "Default wifi"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              },
+              "id": "WIFI",
+              "type": 14
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65536"
+          },
+          "publicReplication": {
+            "publicFields": "id"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 1,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2,
+              "speakerAmp": 5
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": 1,
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": 1,
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": 1,
+                  "privacySwitch": 2
+                }
+              ]
+            },
+            "cellular": {
+              "present": 2
+            },
+            "formFactor": {
+              "formFactor": 2,
+              "recoveryInput": 1
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": 2
+            },
+            "keyboard": {
+              "backlight": 2,
+              "keyboardType": 3,
+              "numericPad": 2,
+              "powerButton": 2
+            },
+            "powerButton": {
+              "edge": 1,
+              "position": 0.9,
+              "region": 1
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    },
+                    "maxScreenBrightness": 215.0
+                  },
+                  {
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    },
+                    "maxScreenBrightness": 215.0
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "heightPx": 1080,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
+                "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
+                "widthPx": 1920
+              },
+              "touchSupport": 1
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "stylus": {
+              "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": 2,
+              "position": 0.75,
+              "region": 1
+            }
+          },
+          "hardwareTopology": {
+            "audio": {
+              "description": {
+                "EN": "Default audio"
+              },
+              "hardwareFeature": {
+                "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 1,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2,
+                  "speakerAmp": 5
+                }
+              },
+              "id": "AUDIO",
+              "type": 3
+            },
+            "camera": {
+              "description": {
+                "EN": "1 USB camera"
+              },
+              "hardwareFeature": {
+                "camera": {
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "ids": [
+                        "0123:abcd"
+                      ],
+                      "interface": 1,
+                      "microphoneCount": {
+                        "value": 2
+                      },
+                      "orientation": 1,
+                      "privacySwitch": 2
+                    }
+                  ]
+                },
+                "fwConfig": {
+                  "mask": 240,
+                  "value": 32
+                }
+              },
+              "id": "CAMERA1",
+              "type": 7
+            },
+            "daughterBoard": {
+              "description": {
+                "EN": "Non-default daughter_board"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
+                "fwConfig": {
+                  "mask": 15
+                },
+                "hdmi": {
+                  "present": 2
+                },
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {}
+                }
+              },
+              "id": "DB",
+              "type": 11
+            },
+            "formFactor": {
+              "description": {
+                "EN": "Device can rotate 360 degrees"
+              },
+              "hardwareFeature": {
+                "formFactor": {
+                  "formFactor": 2,
+                  "recoveryInput": 1
+                }
+              },
+              "id": "CONVERTIBLE",
+              "type": 2
+            },
+            "keyboard": {
+              "description": {
+                "EN": "Detachable keyboard without backlight"
+              },
+              "hardwareFeature": {
+                "keyboard": {
+                  "backlight": 2,
+                  "keyboardType": 3,
+                  "numericPad": 2,
+                  "powerButton": 2
+                }
+              },
+              "id": "KB_NO_BL",
+              "type": 5
+            },
+            "motherboardUsb": {
+              "description": {
+                "EN": "Default motherboard_usb"
+              },
+              "hardwareFeature": {
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ],
+                  "usb4": true
+                }
+              },
+              "id": "MOTHERBOARD_USB",
+              "type": 17
+            },
+            "nonVolatileStorage": {
+              "description": {
+                "EN": "Default non_volatile_storage"
+              },
+              "hardwareFeature": {
+                "storage": {
+                  "storageType": 1
+                }
+              },
+              "id": "NON_VOLATILE_STORAGE",
+              "type": 12
+            },
+            "powerButton": {
+              "description": {
+                "EN": "Power button on the left edge of the screen"
+              },
+              "hardwareFeature": {
+                "powerButton": {
+                  "edge": 1,
+                  "position": 0.9,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_LEFT_POWER_BUTTON",
+              "type": 20
+            },
+            "screen": {
+              "description": {
+                "EN": "Touchscreen"
+              },
+              "hardwareFeature": {
+                "screen": {
+                  "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightNits": 133.0,
+                        "batteryBacklightNits": 80.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": -1,
+                          "increaseThreshold": 400
+                        },
+                        "maxScreenBrightness": 215.0
+                      },
+                      {
+                        "acBacklightNits": 215.0,
+                        "batteryBacklightNits": 215.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": 100,
+                          "increaseThreshold": -1
+                        },
+                        "maxScreenBrightness": 215.0
+                      }
+                    ],
+                    "diagonalMilliinch": 15000,
+                    "heightPx": 1080,
+                    "maxScreenBrightness": 215.0,
+                    "noAlsAcBrightnessNits": 135.0,
+                    "noAlsBatteryBrightnessNits": 80.0,
+                    "pixelsPerIn": 120,
+                    "turnOffScreenTimeoutMs": 3000,
+                    "widthPx": 1920
+                  },
+                  "touchSupport": 1
+                }
+              },
+              "id": "TOUCHSCREEN",
+              "type": 1
+            },
+            "sdReader": {
+              "description": {
+                "EN": "Default sd_reader"
+              },
+              "hardwareFeature": {},
+              "id": "SD_READER",
+              "type": 16
+            },
+            "stylus": {
+              "description": {
+                "EN": "Default stylus"
+              },
+              "hardwareFeature": {
+                "stylus": {
+                  "stylus": 2
+                }
+              },
+              "id": "STYLUS",
+              "type": 4
+            },
+            "thermal": {
+              "description": {
+                "EN": "Default thermal"
+              },
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
+              "id": "THERMAL",
+              "type": 6
+            },
+            "volumeButton": {
+              "description": {
+                "EN": "Volume button on the right edge of the screen"
+              },
+              "hardwareFeature": {
+                "volumeButton": {
+                  "edge": 2,
+                  "position": 0.75,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+              "type": 20
+            },
+            "wifi": {
+              "description": {
+                "EN": "Default wifi"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              },
+              "id": "WIFI",
+              "type": 14
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65537"
+          },
+          "publicReplication": {
+            "publicFields": "id"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 1,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2,
+              "speakerAmp": 5
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": 1,
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": 1,
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": 1,
+                  "privacySwitch": 2
+                }
+              ]
+            },
+            "cellular": {
+              "present": 2
+            },
+            "formFactor": {
+              "formFactor": 2,
+              "recoveryInput": 1
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": 2
+            },
+            "keyboard": {
+              "backlight": 2,
+              "keyboardType": 3,
+              "numericPad": 2,
+              "powerButton": 2
+            },
+            "powerButton": {
+              "edge": 1,
+              "position": 0.9,
+              "region": 1
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    }
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    }
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "features": [
+                  2
+                ],
+                "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
+                "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
+                "turnOffScreenTimeoutMs": 0,
+                "widthPx": 1920
+              },
+              "touchSupport": 2
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "stylus": {
+              "stylus": 1
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": 2,
+              "position": 0.75,
+              "region": 1
+            }
+          },
+          "hardwareTopology": {
+            "audio": {
+              "description": {
+                "EN": "Default audio"
+              },
+              "hardwareFeature": {
+                "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 1,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2,
+                  "speakerAmp": 5
+                }
+              },
+              "id": "AUDIO",
+              "type": 3
+            },
+            "camera": {
+              "description": {
+                "EN": "1 USB camera"
+              },
+              "hardwareFeature": {
+                "camera": {
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "ids": [
+                        "0123:abcd"
+                      ],
+                      "interface": 1,
+                      "microphoneCount": {
+                        "value": 2
+                      },
+                      "orientation": 1,
+                      "privacySwitch": 2
+                    }
+                  ]
+                },
+                "fwConfig": {
+                  "mask": 240,
+                  "value": 32
+                }
+              },
+              "id": "CAMERA1",
+              "type": 7
+            },
+            "daughterBoard": {
+              "description": {
+                "EN": "Non-default daughter_board"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
+                "fwConfig": {
+                  "mask": 15
+                },
+                "hdmi": {
+                  "present": 2
+                },
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {}
+                }
+              },
+              "id": "DB",
+              "type": 11
+            },
+            "formFactor": {
+              "description": {
+                "EN": "Device can rotate 360 degrees"
+              },
+              "hardwareFeature": {
+                "formFactor": {
+                  "formFactor": 2,
+                  "recoveryInput": 1
+                }
+              },
+              "id": "CONVERTIBLE",
+              "type": 2
+            },
+            "keyboard": {
+              "description": {
+                "EN": "Detachable keyboard without backlight"
+              },
+              "hardwareFeature": {
+                "keyboard": {
+                  "backlight": 2,
+                  "keyboardType": 3,
+                  "numericPad": 2,
+                  "powerButton": 2
+                }
+              },
+              "id": "KB_NO_BL",
+              "type": 5
+            },
+            "motherboardUsb": {
+              "description": {
+                "EN": "Default motherboard_usb"
+              },
+              "hardwareFeature": {
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ],
+                  "usb4": true
+                }
+              },
+              "id": "MOTHERBOARD_USB",
+              "type": 17
+            },
+            "nonVolatileStorage": {
+              "description": {
+                "EN": "Default non_volatile_storage"
+              },
+              "hardwareFeature": {
+                "storage": {
+                  "storageType": 1
+                }
+              },
+              "id": "NON_VOLATILE_STORAGE",
+              "type": 12
+            },
+            "powerButton": {
+              "description": {
+                "EN": "Power button on the left edge of the screen"
+              },
+              "hardwareFeature": {
+                "powerButton": {
+                  "edge": 1,
+                  "position": 0.9,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_LEFT_POWER_BUTTON",
+              "type": 20
+            },
+            "proximitySensor": {
+              "description": {
+                "EN": "Default proximity_sensor"
+              },
+              "hardwareFeature": {},
+              "id": "PROXIMITY_SENSOR",
+              "type": 10
+            },
+            "screen": {
+              "description": {
+                "EN": "Default screen"
+              },
+              "hardwareFeature": {
+                "screen": {
+                  "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightPercent": 80.1,
+                        "batteryBacklightPercent": 60.1,
+                        "luxThreshold": {
+                          "decreaseThreshold": -1,
+                          "increaseThreshold": 400
+                        }
+                      },
+                      {
+                        "acBacklightPercent": 100.0,
+                        "batteryBacklightPercent": 100.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": 100,
+                          "increaseThreshold": -1
+                        }
+                      }
+                    ],
+                    "diagonalMilliinch": 15000,
+                    "features": [
+                      2
+                    ],
+                    "heightPx": 1080,
+                    "minVisibleBacklightLevel": 1000,
+                    "noAlsAcBrightness": 80.1,
+                    "noAlsBatteryBrightness": 63.2,
+                    "pixelsPerIn": 280,
+                    "roundedCorners": {
+                      "bottomLeft": {
+                        "radiusPx": 15
+                      },
+                      "bottomRight": {
+                        "radiusPx": 15
+                      },
+                      "topLeft": {
+                        "radiusPx": 15
+                      },
+                      "topRight": {
+                        "radiusPx": 15
+                      }
+                    },
+                    "turnOffScreenTimeoutMs": 0,
+                    "widthPx": 1920
+                  },
+                  "touchSupport": 2
+                }
+              },
+              "id": "SCREEN",
+              "type": 1
+            },
+            "sdReader": {
+              "description": {
+                "EN": "Default sd_reader"
+              },
+              "hardwareFeature": {},
+              "id": "SD_READER",
+              "type": 16
+            },
+            "stylus": {
+              "description": {
+                "EN": "No Stylus"
+              },
+              "hardwareFeature": {
+                "stylus": {
+                  "stylus": 1
+                }
+              },
+              "id": "NO_STYLUS",
+              "type": 4
+            },
+            "thermal": {
+              "description": {
+                "EN": "Default thermal"
+              },
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
+              "id": "THERMAL",
+              "type": 6
+            },
+            "volumeButton": {
+              "description": {
+                "EN": "Volume button on the right edge of the screen"
+              },
+              "hardwareFeature": {
+                "volumeButton": {
+                  "edge": 2,
+                  "position": 0.75,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+              "type": 20
+            },
+            "wifi": {
+              "description": {
+                "EN": "Default wifi"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              },
+              "id": "WIFI",
+              "type": 14
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65538"
+          },
+          "publicReplication": {
+            "publicFields": "id"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 1,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2,
+              "speakerAmp": 5
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": 1,
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": 1,
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": 1,
+                  "privacySwitch": 2
+                }
+              ]
+            },
+            "cellular": {
+              "present": 2
+            },
+            "formFactor": {
+              "formFactor": 2,
+              "recoveryInput": 1
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": 2
+            },
+            "keyboard": {
+              "backlight": 2,
+              "keyboardType": 3,
+              "numericPad": 2,
+              "powerButton": 2
+            },
+            "powerButton": {
+              "edge": 1,
+              "position": 0.9,
+              "region": 1
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    },
+                    "maxScreenBrightness": 215.0
+                  },
+                  {
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    },
+                    "maxScreenBrightness": 215.0
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "heightPx": 1080,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
+                "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
+                "widthPx": 1920
+              },
+              "touchSupport": 1
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "stylus": {
+              "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": 2,
+              "position": 0.75,
+              "region": 1
+            }
+          },
+          "hardwareTopology": {
+            "audio": {
+              "description": {
+                "EN": "Default audio"
+              },
+              "hardwareFeature": {
+                "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 1,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2,
+                  "speakerAmp": 5
+                }
+              },
+              "id": "AUDIO",
+              "type": 3
+            },
+            "camera": {
+              "description": {
+                "EN": "1 USB camera"
+              },
+              "hardwareFeature": {
+                "camera": {
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "ids": [
+                        "0123:abcd"
+                      ],
+                      "interface": 1,
+                      "microphoneCount": {
+                        "value": 2
+                      },
+                      "orientation": 1,
+                      "privacySwitch": 2
+                    }
+                  ]
+                },
+                "fwConfig": {
+                  "mask": 240,
+                  "value": 32
+                }
+              },
+              "id": "CAMERA1",
+              "type": 7
+            },
+            "daughterBoard": {
+              "description": {
+                "EN": "Non-default daughter_board"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
+                "fwConfig": {
+                  "mask": 15
+                },
+                "hdmi": {
+                  "present": 2
+                },
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {}
+                }
+              },
+              "id": "DB",
+              "type": 11
+            },
+            "formFactor": {
+              "description": {
+                "EN": "Device can rotate 360 degrees"
+              },
+              "hardwareFeature": {
+                "formFactor": {
+                  "formFactor": 2,
+                  "recoveryInput": 1
+                }
+              },
+              "id": "CONVERTIBLE",
+              "type": 2
+            },
+            "keyboard": {
+              "description": {
+                "EN": "Detachable keyboard without backlight"
+              },
+              "hardwareFeature": {
+                "keyboard": {
+                  "backlight": 2,
+                  "keyboardType": 3,
+                  "numericPad": 2,
+                  "powerButton": 2
+                }
+              },
+              "id": "KB_NO_BL",
+              "type": 5
+            },
+            "motherboardUsb": {
+              "description": {
+                "EN": "Default motherboard_usb"
+              },
+              "hardwareFeature": {
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ],
+                  "usb4": true
+                }
+              },
+              "id": "MOTHERBOARD_USB",
+              "type": 17
+            },
+            "nonVolatileStorage": {
+              "description": {
+                "EN": "Default non_volatile_storage"
+              },
+              "hardwareFeature": {
+                "storage": {
+                  "storageType": 1
+                }
+              },
+              "id": "NON_VOLATILE_STORAGE",
+              "type": 12
+            },
+            "powerButton": {
+              "description": {
+                "EN": "Power button on the left edge of the screen"
+              },
+              "hardwareFeature": {
+                "powerButton": {
+                  "edge": 1,
+                  "position": 0.9,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_LEFT_POWER_BUTTON",
+              "type": 20
+            },
+            "proximitySensor": {
+              "description": {
+                "EN": "Default proximity_sensor"
+              },
+              "hardwareFeature": {},
+              "id": "PROXIMITY_SENSOR",
+              "type": 10
+            },
+            "screen": {
+              "description": {
+                "EN": "Touchscreen"
+              },
+              "hardwareFeature": {
+                "screen": {
+                  "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightNits": 133.0,
+                        "batteryBacklightNits": 80.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": -1,
+                          "increaseThreshold": 400
+                        },
+                        "maxScreenBrightness": 215.0
+                      },
+                      {
+                        "acBacklightNits": 215.0,
+                        "batteryBacklightNits": 215.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": 100,
+                          "increaseThreshold": -1
+                        },
+                        "maxScreenBrightness": 215.0
+                      }
+                    ],
+                    "diagonalMilliinch": 15000,
+                    "heightPx": 1080,
+                    "maxScreenBrightness": 215.0,
+                    "noAlsAcBrightnessNits": 135.0,
+                    "noAlsBatteryBrightnessNits": 80.0,
+                    "pixelsPerIn": 120,
+                    "turnOffScreenTimeoutMs": 3000,
+                    "widthPx": 1920
+                  },
+                  "touchSupport": 1
+                }
+              },
+              "id": "TOUCHSCREEN",
+              "type": 1
+            },
+            "sdReader": {
+              "description": {
+                "EN": "Default sd_reader"
+              },
+              "hardwareFeature": {},
+              "id": "SD_READER",
+              "type": 16
+            },
+            "stylus": {
+              "description": {
+                "EN": "Default stylus"
+              },
+              "hardwareFeature": {
+                "stylus": {
+                  "stylus": 2
+                }
+              },
+              "id": "STYLUS",
+              "type": 4
+            },
+            "thermal": {
+              "description": {
+                "EN": "Default thermal"
+              },
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
+              "id": "THERMAL",
+              "type": 6
+            },
+            "volumeButton": {
+              "description": {
+                "EN": "Volume button on the right edge of the screen"
+              },
+              "hardwareFeature": {
+                "volumeButton": {
+                  "edge": 2,
+                  "position": 0.75,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+              "type": 20
+            },
+            "wifi": {
+              "description": {
+                "EN": "Default wifi"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              },
+              "id": "WIFI",
+              "type": 14
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65539"
+          },
+          "publicReplication": {
+            "publicFields": "id"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 1,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2,
+              "speakerAmp": 5
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": 1,
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": 1,
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": 1,
+                  "privacySwitch": 2
+                }
+              ]
+            },
+            "cellular": {
+              "present": 2
+            },
+            "formFactor": {
+              "formFactor": 2,
+              "recoveryInput": 1
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": 2
+            },
+            "keyboard": {
+              "alsSteps": [
+                {
+                  "backlightPercent": 40.0,
+                  "luxThreshold": {
+                    "decreaseThreshold": -1,
+                    "increaseThreshold": 20
+                  }
+                },
+                {
+                  "luxThreshold": {
+                    "decreaseThreshold": 15,
+                    "increaseThreshold": -1
+                  }
+                }
+              ],
+              "backlight": 1,
+              "backlightUserSteps": [
+                0.0,
+                10.0,
+                20.0,
+                40.0,
+                60.0,
+                100.0
+              ],
+              "keyboardType": 1,
+              "mcuType": 1,
+              "noAlsBrightness": 40.0,
+              "numericPad": 1,
+              "powerButton": 1
+            },
+            "powerButton": {
+              "edge": 1,
+              "position": 0.9,
+              "region": 1
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    },
+                    "maxScreenBrightness": 215.0
+                  },
+                  {
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    },
+                    "maxScreenBrightness": 215.0
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "heightPx": 1080,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
+                "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
+                "widthPx": 1920
+              },
+              "touchSupport": 1
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "stylus": {
+              "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": 2,
+              "position": 0.75,
+              "region": 1
+            }
+          },
+          "hardwareTopology": {
+            "audio": {
+              "description": {
+                "EN": "Default audio"
+              },
+              "hardwareFeature": {
+                "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 1,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2,
+                  "speakerAmp": 5
+                }
+              },
+              "id": "AUDIO",
+              "type": 3
+            },
+            "camera": {
+              "description": {
+                "EN": "1 USB camera"
+              },
+              "hardwareFeature": {
+                "camera": {
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "ids": [
+                        "0123:abcd"
+                      ],
+                      "interface": 1,
+                      "microphoneCount": {
+                        "value": 2
+                      },
+                      "orientation": 1,
+                      "privacySwitch": 2
+                    }
+                  ]
+                },
+                "fwConfig": {
+                  "mask": 240,
+                  "value": 32
+                }
+              },
+              "id": "CAMERA1",
+              "type": 7
+            },
+            "daughterBoard": {
+              "description": {
+                "EN": "Non-default daughter_board"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
+                "fwConfig": {
+                  "mask": 15
+                },
+                "hdmi": {
+                  "present": 2
+                },
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {}
+                }
+              },
+              "id": "DB",
+              "type": 11
+            },
+            "formFactor": {
+              "description": {
+                "EN": "Device can rotate 360 degrees"
+              },
+              "hardwareFeature": {
+                "formFactor": {
+                  "formFactor": 2,
+                  "recoveryInput": 1
+                }
+              },
+              "id": "CONVERTIBLE",
+              "type": 2
+            },
+            "keyboard": {
+              "description": {
+                "EN": "Internal keyboard with backlight"
+              },
+              "hardwareFeature": {
+                "keyboard": {
+                  "alsSteps": [
+                    {
+                      "backlightPercent": 40.0,
+                      "luxThreshold": {
+                        "decreaseThreshold": -1,
+                        "increaseThreshold": 20
+                      }
+                    },
+                    {
+                      "luxThreshold": {
+                        "decreaseThreshold": 15,
+                        "increaseThreshold": -1
+                      }
+                    }
+                  ],
+                  "backlight": 1,
+                  "backlightUserSteps": [
+                    0.0,
+                    10.0,
+                    20.0,
+                    40.0,
+                    60.0,
+                    100.0
+                  ],
+                  "keyboardType": 1,
+                  "mcuType": 1,
+                  "noAlsBrightness": 40.0,
+                  "numericPad": 1,
+                  "powerButton": 1
+                }
+              },
+              "id": "KB_BL",
+              "type": 5
+            },
+            "motherboardUsb": {
+              "description": {
+                "EN": "Default motherboard_usb"
+              },
+              "hardwareFeature": {
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ],
+                  "usb4": true
+                }
+              },
+              "id": "MOTHERBOARD_USB",
+              "type": 17
+            },
+            "nonVolatileStorage": {
+              "description": {
+                "EN": "Default non_volatile_storage"
+              },
+              "hardwareFeature": {
+                "storage": {
+                  "storageType": 1
+                }
+              },
+              "id": "NON_VOLATILE_STORAGE",
+              "type": 12
+            },
+            "powerButton": {
+              "description": {
+                "EN": "Power button on the left edge of the screen"
+              },
+              "hardwareFeature": {
+                "powerButton": {
+                  "edge": 1,
+                  "position": 0.9,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_LEFT_POWER_BUTTON",
+              "type": 20
+            },
+            "screen": {
+              "description": {
+                "EN": "Touchscreen"
+              },
+              "hardwareFeature": {
+                "screen": {
+                  "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightNits": 133.0,
+                        "batteryBacklightNits": 80.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": -1,
+                          "increaseThreshold": 400
+                        },
+                        "maxScreenBrightness": 215.0
+                      },
+                      {
+                        "acBacklightNits": 215.0,
+                        "batteryBacklightNits": 215.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": 100,
+                          "increaseThreshold": -1
+                        },
+                        "maxScreenBrightness": 215.0
+                      }
+                    ],
+                    "diagonalMilliinch": 15000,
+                    "heightPx": 1080,
+                    "maxScreenBrightness": 215.0,
+                    "noAlsAcBrightnessNits": 135.0,
+                    "noAlsBatteryBrightnessNits": 80.0,
+                    "pixelsPerIn": 120,
+                    "turnOffScreenTimeoutMs": 3000,
+                    "widthPx": 1920
+                  },
+                  "touchSupport": 1
+                }
+              },
+              "id": "TOUCHSCREEN",
+              "type": 1
+            },
+            "sdReader": {
+              "description": {
+                "EN": "Default sd_reader"
+              },
+              "hardwareFeature": {},
+              "id": "SD_READER",
+              "type": 16
+            },
+            "stylus": {
+              "description": {
+                "EN": "Default stylus"
+              },
+              "hardwareFeature": {
+                "stylus": {
+                  "stylus": 2
+                }
+              },
+              "id": "STYLUS",
+              "type": 4
+            },
+            "thermal": {
+              "description": {
+                "EN": "Default thermal"
+              },
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
+              "id": "THERMAL",
+              "type": 6
+            },
+            "volumeButton": {
+              "description": {
+                "EN": "Volume button on the right edge of the screen"
+              },
+              "hardwareFeature": {
+                "volumeButton": {
+                  "edge": 2,
+                  "position": 0.75,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+              "type": 20
+            },
+            "wifi": {
+              "description": {
+                "EN": "Default wifi"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              },
+              "id": "WIFI",
+              "type": 14
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65541"
+          },
+          "publicReplication": {
+            "publicFields": "id"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": 1,
+                  "soundCardInitConfig": 1,
+                  "ucmConfig": 1
+                }
+              ],
+              "crasConfig": 1,
+              "headphoneCodec": 2,
+              "speakerAmp": 5
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": 1,
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": 1,
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": 1,
+                  "privacySwitch": 2
+                }
+              ]
+            },
+            "cellular": {
+              "present": 2
+            },
+            "formFactor": {
+              "formFactor": 2,
+              "recoveryInput": 1
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": 2
+            },
+            "keyboard": {
+              "alsSteps": [
+                {
+                  "backlightPercent": 40.0,
+                  "luxThreshold": {
+                    "decreaseThreshold": -1,
+                    "increaseThreshold": 20
+                  }
+                },
+                {
+                  "luxThreshold": {
+                    "decreaseThreshold": 15,
+                    "increaseThreshold": -1
+                  }
+                }
+              ],
+              "backlight": 1,
+              "backlightUserSteps": [
+                0.0,
+                10.0,
+                20.0,
+                40.0,
+                60.0,
+                100.0
+              ],
+              "keyboardType": 1,
+              "mcuType": 1,
+              "noAlsBrightness": 40.0,
+              "numericPad": 1,
+              "powerButton": 1
+            },
+            "powerButton": {
+              "edge": 1,
+              "position": 0.9,
+              "region": 1
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    },
+                    "maxScreenBrightness": 215.0
+                  },
+                  {
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    },
+                    "maxScreenBrightness": 215.0
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "heightPx": 1080,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
+                "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
+                "widthPx": 1920
+              },
+              "touchSupport": 1
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "stylus": {
+              "stylus": 2
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": 6
+                },
+                {
+                  "position": 5
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": 2,
+              "position": 0.75,
+              "region": 1
+            }
+          },
+          "hardwareTopology": {
+            "audio": {
+              "description": {
+                "EN": "Default audio"
+              },
+              "hardwareFeature": {
+                "audio": {
+                  "cardConfigs": [
+                    {
+                      "cardName": "fakeaudiocard.card_suffix",
+                      "crasConfig": 1,
+                      "soundCardInitConfig": 1,
+                      "ucmConfig": 1
+                    }
+                  ],
+                  "crasConfig": 1,
+                  "headphoneCodec": 2,
+                  "speakerAmp": 5
+                }
+              },
+              "id": "AUDIO",
+              "type": 3
+            },
+            "camera": {
+              "description": {
+                "EN": "1 USB camera"
+              },
+              "hardwareFeature": {
+                "camera": {
+                  "devices": [
+                    {
+                      "facing": 1,
+                      "ids": [
+                        "0123:abcd"
+                      ],
+                      "interface": 1,
+                      "microphoneCount": {
+                        "value": 2
+                      },
+                      "orientation": 1,
+                      "privacySwitch": 2
+                    }
+                  ]
+                },
+                "fwConfig": {
+                  "mask": 240,
+                  "value": 32
+                }
+              },
+              "id": "CAMERA1",
+              "type": 7
+            },
+            "daughterBoard": {
+              "description": {
+                "EN": "Non-default daughter_board"
+              },
+              "hardwareFeature": {
+                "cellular": {
+                  "present": 2
+                },
+                "fwConfig": {
+                  "mask": 15
+                },
+                "hdmi": {
+                  "present": 2
+                },
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {}
+                }
+              },
+              "id": "DB",
+              "type": 11
+            },
+            "formFactor": {
+              "description": {
+                "EN": "Device can rotate 360 degrees"
+              },
+              "hardwareFeature": {
+                "formFactor": {
+                  "formFactor": 2,
+                  "recoveryInput": 1
+                }
+              },
+              "id": "CONVERTIBLE",
+              "type": 2
+            },
+            "keyboard": {
+              "description": {
+                "EN": "Internal keyboard with backlight"
+              },
+              "hardwareFeature": {
+                "keyboard": {
+                  "alsSteps": [
+                    {
+                      "backlightPercent": 40.0,
+                      "luxThreshold": {
+                        "decreaseThreshold": -1,
+                        "increaseThreshold": 20
+                      }
+                    },
+                    {
+                      "luxThreshold": {
+                        "decreaseThreshold": 15,
+                        "increaseThreshold": -1
+                      }
+                    }
+                  ],
+                  "backlight": 1,
+                  "backlightUserSteps": [
+                    0.0,
+                    10.0,
+                    20.0,
+                    40.0,
+                    60.0,
+                    100.0
+                  ],
+                  "keyboardType": 1,
+                  "mcuType": 1,
+                  "noAlsBrightness": 40.0,
+                  "numericPad": 1,
+                  "powerButton": 1
+                }
+              },
+              "id": "KB_BL",
+              "type": 5
+            },
+            "motherboardUsb": {
+              "description": {
+                "EN": "Default motherboard_usb"
+              },
+              "hardwareFeature": {
+                "usbA": {
+                  "count": {}
+                },
+                "usbC": {
+                  "count": {
+                    "value": 2
+                  },
+                  "ports": [
+                    {
+                      "position": 6
+                    },
+                    {
+                      "position": 5
+                    }
+                  ],
+                  "usb4": true
+                }
+              },
+              "id": "MOTHERBOARD_USB",
+              "type": 17
+            },
+            "nonVolatileStorage": {
+              "description": {
+                "EN": "Default non_volatile_storage"
+              },
+              "hardwareFeature": {
+                "storage": {
+                  "storageType": 1
+                }
+              },
+              "id": "NON_VOLATILE_STORAGE",
+              "type": 12
+            },
+            "powerButton": {
+              "description": {
+                "EN": "Power button on the left edge of the screen"
+              },
+              "hardwareFeature": {
+                "powerButton": {
+                  "edge": 1,
+                  "position": 0.9,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_LEFT_POWER_BUTTON",
+              "type": 20
+            },
+            "proximitySensor": {
+              "description": {
+                "EN": "Default proximity_sensor"
+              },
+              "hardwareFeature": {},
+              "id": "PROXIMITY_SENSOR",
+              "type": 10
+            },
+            "screen": {
+              "description": {
+                "EN": "Touchscreen"
+              },
+              "hardwareFeature": {
+                "screen": {
+                  "panelProperties": {
+                    "alsSteps": [
+                      {
+                        "acBacklightNits": 133.0,
+                        "batteryBacklightNits": 80.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": -1,
+                          "increaseThreshold": 400
+                        },
+                        "maxScreenBrightness": 215.0
+                      },
+                      {
+                        "acBacklightNits": 215.0,
+                        "batteryBacklightNits": 215.0,
+                        "luxThreshold": {
+                          "decreaseThreshold": 100,
+                          "increaseThreshold": -1
+                        },
+                        "maxScreenBrightness": 215.0
+                      }
+                    ],
+                    "diagonalMilliinch": 15000,
+                    "heightPx": 1080,
+                    "maxScreenBrightness": 215.0,
+                    "noAlsAcBrightnessNits": 135.0,
+                    "noAlsBatteryBrightnessNits": 80.0,
+                    "pixelsPerIn": 120,
+                    "turnOffScreenTimeoutMs": 3000,
+                    "widthPx": 1920
+                  },
+                  "touchSupport": 1
+                }
+              },
+              "id": "TOUCHSCREEN",
+              "type": 1
+            },
+            "sdReader": {
+              "description": {
+                "EN": "Default sd_reader"
+              },
+              "hardwareFeature": {},
+              "id": "SD_READER",
+              "type": 16
+            },
+            "stylus": {
+              "description": {
+                "EN": "Default stylus"
+              },
+              "hardwareFeature": {
+                "stylus": {
+                  "stylus": 2
+                }
+              },
+              "id": "STYLUS",
+              "type": 4
+            },
+            "thermal": {
+              "description": {
+                "EN": "Default thermal"
+              },
+              "hardwareFeature": {
+                "thermal": {
+                  "configPathSuffix": "default"
+                }
+              },
+              "id": "THERMAL",
+              "type": 6
+            },
+            "volumeButton": {
+              "description": {
+                "EN": "Volume button on the right edge of the screen"
+              },
+              "hardwareFeature": {
+                "volumeButton": {
+                  "edge": 2,
+                  "position": 0.75,
+                  "region": 1
+                }
+              },
+              "id": "SCREEN_RIGHT_VOLUME_BUTTON",
+              "type": 20
+            },
+            "wifi": {
+              "description": {
+                "EN": "Default wifi"
+              },
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              },
+              "id": "WIFI",
+              "type": 14
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65543"
+          },
+          "publicReplication": {
+            "publicFields": "id"
+          }
+        }
+      ],
+      "id": {
+        "value": "PROJECT_E"
+      },
+      "name": "PROJECT_E",
+      "odmId": {
+        "value": "FAKE_ODM"
+      },
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      },
+      "publicReplication": {
+        "publicFields": "id,name,programId"
+      }
+    },
+    {
+      "configs": [
+        {
+          "hardwareFeatures": {
             "accelerometer": {
               "baseAccelerometer": 1
             },
@@ -9160,6 +11677,20 @@
       }
     },
     {
+      "brandCode": "FDCE",
+      "brandName": "ChromeOS Device Brandname E",
+      "designId": {
+        "value": "PROJECT_E"
+      },
+      "exportOemInfo": true,
+      "id": {
+        "value": "FDCE"
+      },
+      "oemId": {
+        "value": "FAKE_OEME"
+      }
+    },
+    {
       "brandCode": "WLZZ",
       "brandName": "ChromeOS Device Brandname WL",
       "designId": {
@@ -9280,6 +11811,12 @@
         "value": "FAKE_OEMD"
       },
       "name": "FAKE_OEMD"
+    },
+    {
+      "id": {
+        "value": "FAKE_OEME"
+      },
+      "name": "FAKE_OEME"
     },
     {
       "id": {
@@ -10951,6 +13488,564 @@
       },
       "uiConfig": {
         "cloudGamingDevice": true
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65536"
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "mainRwPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 3
+          }
+        },
+        "pdRoPayload": {
+          "firmwareImageName": "Fake_PD",
+          "type": 3,
+          "version": {
+            "major": 11111
+          }
+        }
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65536,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65537"
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "mainRwPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 3
+          }
+        },
+        "pdRoPayload": {
+          "firmwareImageName": "Fake_PD",
+          "type": 3,
+          "version": {
+            "major": 11111
+          }
+        }
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65537,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65538"
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "mainRwPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 3
+          }
+        },
+        "pdRoPayload": {
+          "firmwareImageName": "Fake_PD",
+          "type": 3,
+          "version": {
+            "major": 11111
+          }
+        }
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65538,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65539"
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "mainRwPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 3
+          }
+        },
+        "pdRoPayload": {
+          "firmwareImageName": "Fake_PD",
+          "type": 3,
+          "version": {
+            "major": 11111
+          }
+        }
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65539,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65541"
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "mainRwPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 3
+          }
+        },
+        "pdRoPayload": {
+          "firmwareImageName": "Fake_PD",
+          "type": 3,
+          "version": {
+            "major": 11111
+          }
+        }
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65541,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65543"
+      },
+      "firmware": {
+        "ecRoPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2
+          }
+        },
+        "ecRwPayload": {
+          "firmwareImageName": "Fake_EC",
+          "type": 2,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 4
+          }
+        },
+        "mainRoPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111
+          }
+        },
+        "mainRwPayload": {
+          "firmwareImageName": "Fake",
+          "type": 1,
+          "version": {
+            "major": 11111,
+            "minor": 2,
+            "patch": 3
+          }
+        },
+        "pdRoPayload": {
+          "firmwareImageName": "Fake_PD",
+          "type": 3,
+          "version": {
+            "major": 11111
+          }
+        }
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65543,
+        "frid": "Google_Fake"
+      },
+      "powerConfig": {
+        "preferences": {
+          "battery-poll-interval-initial-ms": "1000"
+        }
+      },
+      "publicReplication": {
+        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
       }
     }
   ]

@@ -16,12 +16,13 @@ _FAKE_OEMA = partner.create("FAKE_OEMA")
 _FAKE_OEMB = partner.create("FAKE_OEMB")
 _FAKE_OEMC = partner.create("FAKE_OEMC")
 _FAKE_OEMD = partner.create("FAKE_OEMD")
+_FAKE_OEME = partner.create("FAKE_OEME")
 _FAKE_LOEMA = partner.create("FAKE_LOEMA")
 _FAKE_LOEMB = partner.create("FAKE_LOEMB")
 _FAKE_LOEMC = partner.create("FAKE_LOEMC")
 
 _ODMS = [_FAKE_ODM]
-_OEMS = [_FAKE_OEM, _FAKE_OEMA, _FAKE_OEMB, _FAKE_OEMC, _FAKE_OEMD, _FAKE_LOEMA, _FAKE_LOEMB, _FAKE_LOEMC]
+_OEMS = [_FAKE_OEM, _FAKE_OEMA, _FAKE_OEMB, _FAKE_OEMC, _FAKE_OEMD, _FAKE_OEME, _FAKE_LOEMA, _FAKE_LOEMB, _FAKE_LOEMC]
 _COMPONENTS = []
 _COMPONENT_VENDORS = []
 
@@ -38,6 +39,7 @@ _DESIGN_ID_D = design.create_design_id(
     "PROJECT_D",
     model_name_design_id_override = _DESIGN_ID_C,
 )
+_DESIGN_ID_E = design.create_design_id("PROJECT_E")
 _DESIGN_ID_WL = design.create_design_id("PROJECT_WL")
 _DESIGN_ID_REBRAND = design.create_design_id("PROJECT_REBRAND")
 _DESIGN_ID_BOX = design.create_design_id("PROJECT_BOX")
@@ -165,6 +167,12 @@ _STYLUS = hw_topo.create_stylus(
     "STYLUS",
     "Default stylus",
     stylus_type = hw_topo.stylus.INTERNAL,
+)
+
+_NO_STYLUS = hw_topo.create_stylus(
+    "NO_STYLUS",
+    "No Stylus",
+    stylus_type = hw_topo.stylus.NONE,
 )
 
 _DGPU = hw_topo.create_dgpu(
@@ -1625,6 +1633,74 @@ _DESIGN_D = design.create_design(
     configs = _HW_CONFIGS_D,
 )
 
+def _filter_design_e(
+        screen,
+        stylus,
+        **kwargs):
+    if (screen == _TOUCHSCREEN) != (stylus == _STYLUS):
+        return True
+
+_DESIGN_E = design.create_design_with_configs(
+    design_id = _DESIGN_ID_E,
+    program_id = program.fake.id,
+    odm_id = _FAKE_ODM.id,
+    sw_configs = _SW_CONFIGS,
+    firmware_build_config = sc.create_fw_build_config_by_names(
+        "fake",
+        ec_name = "fake",
+        ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
+        zephyr_ec_name = "projects/fake/fake",
+    ),
+    firmware = sc.create_fw_payloads_by_names(
+        "Fake",
+        "Fake_EC",
+        "Fake_PD",
+        ap_ro_version = sc.create_fw_version(11111),
+        ap_rw_version = sc.create_fw_version(11111, 2, 3),
+        ec_ro_version = sc.create_fw_version(11111, 2),
+        ec_rw_version = sc.create_fw_version(11111, 2, 4),
+        pd_version = sc.create_fw_version(11111),
+    ),
+    include_unprovisioned = False,
+    initial_config_id = 0x10000,
+    hardware_topology_bundle = hw_topo.create_hardware_topology_bundle(
+        audio = _AUDIO_WITH_INIT,
+        form_factor = _FORM_FACTOR_CONVERTIBLE,
+        motherboard_usb = _MOTHERBOARD_USB,
+        non_volatile_storage = _NON_VOLATILE_STORAGE,
+        screen = [_SCREEN, _TOUCHSCREEN],
+        sd_reader = _SD_READER,
+        volume_button = _VOLUME_BUTTON,
+        power_button = _POWER_BUTTON,
+        wifi = _WIFI,
+        camera = [_CAMERA1, hw_topo.create_versioned_topology(_CAMERA2, 2)],
+        daughter_board = hw_topo.create_daughter_board(
+            "DB",
+            "Non-default daughter_board",
+            fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)],
+            cellular_support = False,
+        ),
+        keyboard = [_KEYBOARD, hw_topo.create_versioned_topology(_BL_KEYBOARD, 1)],
+        stylus = [_NO_STYLUS, _STYLUS],
+        proximity_sensor = [_NO_PROXIMITY_SENSOR, _PROXIMITY_SENSOR],
+        thermal = _THERMAL,
+    ),
+    bluetooth = _SC_BLUETOOTH,
+    power = _SC_POWER,
+    health = _SC_HEALTH,
+    hardware_topology_filter = _filter_design_e,
+    # active_configs can accept either list or range type
+    active_configs = list(range(0x10000, 0x10004)) + [0x10005, 0x10007],
+    config_notes = {
+        0x10000: "SKU1",
+        0x10001: "SKU2",
+        0x10002: "SKU3",
+        0x10003: "SKU4",
+        0x10005: "SKU5",
+        0x10007: "SKU6",
+    },
+)
+
 _DESIGN_WL = design.create_design(
     id = _DESIGN_ID_WL,
     program_id = program.fake.id,
@@ -1685,6 +1761,14 @@ _DEVICE_BRAND_D = device_brand.create(
     design_id = _DESIGN_ID_D,
     oem_id = _FAKE_OEMC.id,
     brand_code = "FDCD",
+    export_oem_info = True,
+)
+
+_DEVICE_BRAND_E = device_brand.create(
+    brand_name = "ChromeOS Device Brandname E",
+    design_id = _DESIGN_ID_E,
+    oem_id = _FAKE_OEME.id,
+    brand_code = "FDCE",
     export_oem_info = True,
 )
 
@@ -1847,8 +1931,8 @@ _COMPONENTS.append(
 
 _CONFIG = config_bundle.create(
     partners = _ODMS + _OEMS + _COMPONENT_VENDORS,
-    designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_D, _DESIGN_WL, _DESIGN_REBRAND, _DESIGN_BOX],
-    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _DEVICE_BRAND_D, _WL_DEVICE_BRAND, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _REBRAND_DEVICE_BRAND_D, _DEVICE_BRAND_BOX],
+    designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_D, _DESIGN_E, _DESIGN_WL, _DESIGN_REBRAND, _DESIGN_BOX],
+    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _DEVICE_BRAND_D, _DEVICE_BRAND_E, _WL_DEVICE_BRAND, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _REBRAND_DEVICE_BRAND_D, _DEVICE_BRAND_BOX],
     software_configs = _SW_CONFIGS,
     brand_configs = _BRAND_CONFIGS,
     components = _COMPONENTS,
