@@ -236,5 +236,5 @@ if __name__ == '__main__':
       os.path.realpath(
           os.path.join(
               script_dir,
-              "../../config-internal/testingconfig/generated/device_stability.cfg"
+              "../../config-internal/board_config/generated/device_stability.cfg"
           )), ufs_ds_client)
