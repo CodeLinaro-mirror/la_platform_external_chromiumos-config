@@ -968,4 +968,12 @@ message HardwareFeatures {
     uint32 vendor_id = 5;
   }
 
+  // Supported suspend modes
+  Suspend suspend = 45;
+  message Suspend {
+    // If S3 (suspend to mem) is supported
+    Present suspend_to_mem = 1;
+    // If S0ix (suspend to idle) is supported
+    Present suspend_to_idle = 2;
+  }
 }

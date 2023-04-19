@@ -4279,6 +4279,14 @@
               "number": 44,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.DetachableBase"
+            },
+            {
+              "jsonName": "suspend",
+              "label": "LABEL_OPTIONAL",
+              "name": "suspend",
+              "number": 45,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Suspend"
             }
           ],
           "name": "HardwareFeatures",
@@ -6459,6 +6467,27 @@
                 }
               ],
               "name": "DetachableBase"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "suspendToMem",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "suspend_to_mem",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "suspendToIdle",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "suspend_to_idle",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "Suspend"
             }
           ]
         }
