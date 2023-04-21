@@ -79,6 +79,7 @@ def _create_platform(
         cpuset_nonurgent = None,
         input_boost = None,
         boost_top_app = None,
+        boost_arcvm = None,
         hevc_support = None,
         arc_media_codecs_suffix = None):
     capabilities = None
@@ -99,12 +100,14 @@ def _create_platform(
         cpuset_nonurgent != None,
         input_boost != None,
         boost_top_app != None,
+        boost_arcvm != None,
     ]):
         scheduler_tune = program_pb.Program.Platform.SchedulerTune(
             boost_urgent = boost_urgent,
             cpuset_nonurgent = cpuset_nonurgent,
             input_boost = input_boost,
             boost_top_app = boost_top_app,
+            boost_arcvm = boost_arcvm,
         )
 
     arc_settings = None

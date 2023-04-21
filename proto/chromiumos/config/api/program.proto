@@ -168,6 +168,13 @@ message Program {
       // application classes.
       // Minimum value: 0x0. Maximum value: 0x64.
       uint32 boost_top_app = 4;
+
+      // Global scheduler's boost factor of the ARCVM vcores and host services.
+      // The boost_arcvm parameter is used to scale the boost depending on the
+      // little/big cores frequency. If the frequencies are the same, it's
+      // applied directly without further scaling.
+      // Minimum value: 0.0. Maximum value: 1.0.
+      double boost_arcvm = 5;
     }
     SchedulerTune scheduler_tune = 7;
 

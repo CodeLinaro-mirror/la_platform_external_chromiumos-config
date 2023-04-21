@@ -237,6 +237,7 @@
         ],
         "hevcSupport": 1,
         "schedulerTune": {
+          "boostArcvm": 0.5,
           "boostTopApp": 60,
           "boostUrgent": 20,
           "cpusetNonurgent": "0-5",

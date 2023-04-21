@@ -107,6 +107,7 @@ _PLATFORM = program_util.create_platform(
     suspend_to_idle = True,
     dark_resume = True,
     wake_on_dp = True,
+    boost_arcvm = 0.5,
     boost_urgent = 20,
     cpuset_nonurgent = "0-5",
     input_boost = 15,
