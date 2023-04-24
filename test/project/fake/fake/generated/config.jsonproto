@@ -12380,11 +12380,6 @@
               }
             }
           },
-          "vm-boot-power-preferences": {
-            "governor": {
-              "performance": {}
-            }
-          },
           "web-rtc-power-preferences": {
             "governor": {
               "ondemand": {
@@ -12413,11 +12408,6 @@
           "fullscreen-power-preferences": {
             "governor": {
               "schedutil": {}
-            }
-          },
-          "vm-boot-power-preferences": {
-            "governor": {
-              "performance": {}
             }
           },
           "web-rtc-power-preferences": {
