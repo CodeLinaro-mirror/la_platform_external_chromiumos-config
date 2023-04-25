@@ -71,6 +71,7 @@ message ResourceConfig {
     // 2) ARCVM gaming
     // 3) WebRTC
     // 4) Fullscreen Video
+    // 5) VM boot
     //
     // Default will be applied when no activity is active.
 
@@ -85,6 +86,10 @@ message ResourceConfig {
     // PowerPreferences to apply when full screen video is active.
     PowerPreferences fullscreen_video_power_preferences = 3
         [json_name = "fullscreen-power-preferences"];
+
+    // PowerPreferences to apply when performance mode is active.
+    PowerPreferences vm_boot_power_preferences = 4
+        [json_name = "vm-boot-power-preferences"];
 
     // PowerPreferences to apply when playing a Borealis game.
     PowerPreferences borealis_gaming_power_preferences = 5
