@@ -23,4 +23,5 @@ message AndroidProvisionCLIResponse {
   }
   // List of the provisioned Android packages.
   repeated InstalledAndroidPackage android_packages = 4;
+  InstalledAndroidOS installed_android_os = 5;
 }

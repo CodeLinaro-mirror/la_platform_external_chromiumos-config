@@ -17459,6 +17459,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.InstalledAndroidPackage"
+            },
+            {
+              "jsonName": "installedAndroidOs",
+              "label": "LABEL_OPTIONAL",
+              "name": "installed_android_os",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstalledAndroidOS"
             }
           ],
           "name": "AndroidProvisionCLIResponse",
