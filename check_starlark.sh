@@ -12,30 +12,14 @@ set -e
 
 source "${script_dir}/setup_cipd.sh"
 
-shopt -s globstar nullglob
-
 echo "Checking Starlark files formatted..."
-found_unformatted=0
-for f in util/**/*.star; do
-    if ! lucicfg fmt "${f}" -dry-run; then
-        found_unformatted=1
-    fi
-done
-
-if [[ ${found_unformatted} -ne 0 ]]; then
+if ! find util -name '*.star' -exec lucicfg fmt -dry-run {} +; then
     echo "Found unformatted Starlark files. Please format with lucicfg fmt (https://chromium.googlesource.com/infra/luci/luci-go/+/HEAD/lucicfg/doc/README.md#formatting_linting)."
     exit 1
 fi
 
 echo "Linting Starlark files..."
-found_lint_fail=0
-for f in util/**/*.star; do
-    if ! lucicfg lint "${f}"; then
-        found_lint_fail=1
-    fi
-done
-
-if [[ ${found_lint_fail} -ne 0 ]]; then
+if ! find util -name '*.star' -exec lucicfg lint {} +; then
     echo "Found linting errors in Starlark files. Please fix and re-lint with lucicfg lint (https://chromium.googlesource.com/infra/luci/luci-go/+/HEAD/lucicfg/doc/README.md#formatting_linting)."
     exit 1
 fi
