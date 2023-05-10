@@ -416,9 +416,11 @@ def merge_fingerprint_config(hw_feat, model):
 
   sensor_location = fing_prop.get('sensor-location', 'none')
   if sensor_location == 'none':
-    sensor_location = 'not-present'
-  hw_feat.fingerprint.location = location.Value(sensor_location.upper().replace(
-      '-', '_'))
+    hw_feat.fingerprint.present = False
+  else:
+    hw_feat.fingerprint.present = True
+    hw_feat.fingerprint.location = location.Value(
+        sensor_location.upper().replace('-', '_'))
 
 
 def merge_device_brand(config_bundle, design, model, project_name):
