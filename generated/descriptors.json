@@ -19343,7 +19343,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/api/cros_test_finder_cli.proto"
+        "chromiumos/test/api/test_suite.proto"
       ],
       "messageType": [
         {
@@ -19367,19 +19367,19 @@
               "typeName": ".chromiumos.test.api.StabilitySensorPolicy"
             },
             {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            },
+            {
               "jsonName": "milestone",
               "label": "LABEL_OPTIONAL",
               "name": "milestone",
               "number": 4,
               "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "testFinderInput",
-              "label": "LABEL_OPTIONAL",
-              "name": "test_finder_input",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CrosTestFinderResponse"
             },
             {
               "jsonName": "board",
@@ -19410,12 +19410,12 @@
         {
           "field": [
             {
-              "jsonName": "response",
-              "label": "LABEL_OPTIONAL",
-              "name": "response",
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
               "number": 1,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CrosTestFinderResponse"
+              "typeName": ".chromiumos.test.api.TestSuite"
             },
             {
               "jsonName": "removedTests",

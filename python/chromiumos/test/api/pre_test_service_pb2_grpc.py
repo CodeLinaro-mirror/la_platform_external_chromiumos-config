@@ -33,8 +33,8 @@ class PreTestServiceServicer(object):
     """
 
     def FilterFlakyTests(self, request, context):
-        """FilterFlakyTests will take in a policy + CrosTestFinderResponse
-        and will echo out the CrosTestFinderResponse; with the flaky tests removed.
+        """FilterFlakyTests will take in a policy + TestSuites
+        and will echo out the TestSuites; with the flaky tests removed.
         along with a list of removed tests for logging purposes.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)

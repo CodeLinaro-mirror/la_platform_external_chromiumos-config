@@ -8,7 +8,7 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
-import "chromiumos/test/api/cros_test_finder_cli.proto";
+import "chromiumos/test/api/test_suite.proto";
 
 // PreTestService acts as a pre-test landing point32 for needed services/actions.
 // For example:
@@ -16,8 +16,8 @@ import "chromiumos/test/api/cros_test_finder_cli.proto";
 // Could be expanded to include other services, like VM filtering, etc.
 service PreTestService {
 
-  // FilterFlakyTests will take in a policy + CrosTestFinderResponse
-  // and will echo out the CrosTestFinderResponse; with the flaky tests removed.
+  // FilterFlakyTests will take in a policy + TestSuites
+  // and will echo out the TestSuites; with the flaky tests removed.
   // along with a list of removed tests for logging purposes.
   rpc FilterFlakyTests(FilterFlakyRequest)
       returns (FilterFlakyResponse);
@@ -32,11 +32,12 @@ message FilterFlakyRequest {
     StabilitySensorPolicy stability_sensor_policy = 2;
   }
 
+  repeated TestSuite test_suites = 3;
+
   // Milestone that the test filtering is for.
   // Important as test flake can be very different per milestone based on
   // breakages/fixes across branches.
   string milestone = 4;
-  CrosTestFinderResponse test_finder_input = 3;
   // Currently filtering will be done on _board_ level.
   // Other variants (model, hwid, etc) to follow.
   oneof variant {
@@ -49,7 +50,7 @@ message FilterFlakyRequest {
 
 
 message FilterFlakyResponse {
-  CrosTestFinderResponse response = 1;
+  repeated TestSuite test_suites = 1;
   repeated string removed_tests = 2;
 }
 

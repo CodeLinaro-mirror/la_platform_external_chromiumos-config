@@ -22,8 +22,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PreTestServiceClient interface {
-	// FilterFlakyTests will take in a policy + CrosTestFinderResponse
-	// and will echo out the CrosTestFinderResponse; with the flaky tests removed.
+	// FilterFlakyTests will take in a policy + TestSuites
+	// and will echo out the TestSuites; with the flaky tests removed.
 	// along with a list of removed tests for logging purposes.
 	FilterFlakyTests(ctx context.Context, in *FilterFlakyRequest, opts ...grpc.CallOption) (*FilterFlakyResponse, error)
 }
@@ -49,8 +49,8 @@ func (c *preTestServiceClient) FilterFlakyTests(ctx context.Context, in *FilterF
 // All implementations should embed UnimplementedPreTestServiceServer
 // for forward compatibility
 type PreTestServiceServer interface {
-	// FilterFlakyTests will take in a policy + CrosTestFinderResponse
-	// and will echo out the CrosTestFinderResponse; with the flaky tests removed.
+	// FilterFlakyTests will take in a policy + TestSuites
+	// and will echo out the TestSuites; with the flaky tests removed.
 	// along with a list of removed tests for logging purposes.
 	FilterFlakyTests(context.Context, *FilterFlakyRequest) (*FilterFlakyResponse, error)
 }
