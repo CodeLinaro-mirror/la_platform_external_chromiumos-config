@@ -1702,6 +1702,9 @@ _DESIGN_E = design.create_design_with_configs(
         0x10005: "SKU5",
         0x10007: "SKU6",
     },
+    spi_flash_transform = {
+        "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV",
+    },
 )
 
 _DESIGN_WL = design.create_design(

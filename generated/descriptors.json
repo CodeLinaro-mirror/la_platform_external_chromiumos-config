@@ -7028,6 +7028,14 @@
               "number": 10,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.config.api.Design.CustomType"
+            },
+            {
+              "jsonName": "spiFlashTransform",
+              "label": "LABEL_REPEATED",
+              "name": "spi_flash_transform",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Design.SpiFlashTransformEntry"
             }
           ],
           "name": "Design",
@@ -7072,6 +7080,28 @@
                 }
               ],
               "name": "SsfcValueEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "SpiFlashTransformEntry",
               "options": {
                 "mapEntry": true
               }

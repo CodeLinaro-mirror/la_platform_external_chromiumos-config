@@ -236,7 +236,10 @@
       "component.has_wifi": true,
       "component.headphone_codec": "ALC5682I",
       "component.speaker_amp": "MAX98373",
-      "fw_config": 24608
+      "fw_config": 24608,
+      "spi_flash_transform": {
+        "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
+      }
     },
     "project_rebrand": {
       "component.audio_card_name": "fakeaudiocard",

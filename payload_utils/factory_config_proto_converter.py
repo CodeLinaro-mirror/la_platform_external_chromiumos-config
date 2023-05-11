@@ -277,6 +277,8 @@ def GetFactoryConfigs(config):
     design_name_to_testing_design_name[design_name] = testing_design_name
     design_table = product_sku.setdefault(testing_design_name, {})
     custom_type = hw_design.custom_type
+    # Convert spi_flash_transform proto map in json map
+    spi_flash_transform = dict(hw_design.spi_flash_transform)
     # Enumerate design config id (sku id).
     for design_config in hw_design.configs:
       second_design_name, sku_id = ParseDesignConfigId(design_config.id.value)
@@ -288,6 +290,10 @@ def GetFactoryConfigs(config):
         design_config_table.update({'custom_type': 'whitelabel'})
       elif custom_type == design_pb2.Design.CustomType.REBRAND:
         design_config_table.update({'custom_type': 'rebrand'})
+      # Add spi_flash_transform from project/design level to each config
+      # so it can be pulled out as common later. Omit if empty
+      if spi_flash_transform:
+        design_config_table.update({'spi_flash_transform': spi_flash_transform})
   # Create map from custom label to oem name.
   if config.device_brand_list:
     for device_brand in config.device_brand_list:

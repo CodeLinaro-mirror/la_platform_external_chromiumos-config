@@ -8490,6 +8490,9 @@
       },
       "publicReplication": {
         "publicFields": "id,name,programId"
+      },
+      "spiFlashTransform": {
+        "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
       }
     },
     {

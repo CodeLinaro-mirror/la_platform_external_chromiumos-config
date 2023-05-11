@@ -207,6 +207,7 @@ def _create_design(
         public_fields = ["id", "name", "program_id"],
         configs = None,
         board_id_phases = None,
+        spi_flash_transform = None,
         custom_type = _CUSTOMTYPE.NO_CUSTOM):
     """Builds a Design proto."""
     return design_pb.Design(
@@ -218,6 +219,7 @@ def _create_design(
         configs = configs,
         board_id_phase = board_id_phases,
         custom_type = custom_type,
+        spi_flash_transform = spi_flash_transform,
     )
 
 def _hoist_version(versioned_topologies, names):
@@ -302,6 +304,7 @@ def _create_design_with_configs(
         frid = None,
         hardware_topology_filter = None,
         active_configs = None,
+        spi_flash_transform = None,
         config_notes = {}):
     """Create a design with configs for each topology combination in the bundle.
 
@@ -357,6 +360,10 @@ def _create_design_with_configs(
             the topologies to be used for that config. Return True to skip generating
             this config.
         active_configs: An array that contains the config IDs we need.
+        spi_flash_transform: An optional mapping of AP SPI flash chip names that
+            that provide a transform for the output of futility flash --get-info
+            to the input required by ap_wpsr tool. This supports the AP RO
+            verification features.
         config_notes: Notes to document any particular DesignConfigId in the
             generated markdown table.
     """
@@ -457,6 +464,7 @@ def _create_design_with_configs(
         public_fields = public_fields,
         board_id_phases = board_id_phases,
         custom_type = custom_type,
+        spi_flash_transform = spi_flash_transform,
     )
 
 design = struct(

@@ -16,7 +16,7 @@ import "chromiumos/config/public_replication/public_replication.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/api";
 
-// Next ID: 10
+// Next ID: 12
 message Design {
   // Fields replicated to public configs.
   chromiumos.config.public_replication.PublicReplication public_replication = 7;
@@ -59,6 +59,13 @@ message Design {
 
   reserved "platform";
   reserved 9;
+
+  // A sparse list of flash name mappings. Keys are the flash name as determine
+  // by probing via futility flash --get-info, and the values are the flash
+  // names that are needed as input to the ap_wpsr tool that is used to
+  // determine the write protect status register values when software write
+  // protection is enabled.
+  map<string, string> spi_flash_transform = 11;
 
   // Defines a unique hardware configuration for a given hardware design
   // and the corresponding hardware features that will be supported.
