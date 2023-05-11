@@ -16680,6 +16680,29 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "powerUnitHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_unit_hostname",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "powerUnitOutlet",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_unit_outlet",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "hydraHostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hydra_hostname",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             }
           ],
           "name": "RPM"

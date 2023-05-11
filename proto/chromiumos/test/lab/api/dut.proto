@@ -225,8 +225,13 @@ message RPM {
   bool present = 1;
   // Address to the frontend service for accessing the RPM.
   // The frontend service is an HTTP service that supports XMLRPC calls.
-  // TODO(b/266591528): add rpm hostname and outlet port which are needed for XMLRPC call.
   IpEndpoint frontend_address = 2;
+  // Hostname of a particular PDU that assigned to the DUT.
+  IpEndpoint power_unit_hostname = 3;
+  // Outlet name/number assigned to the DUT
+  string power_unit_outlet = 4;
+  // (Optional) Hydra hostname if the PDU access require a hydra.
+  IpEndpoint hydra_hostname = 5;
 }
 
 // Servo control of the device.
