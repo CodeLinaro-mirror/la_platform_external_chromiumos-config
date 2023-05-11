@@ -3374,6 +3374,48 @@
                       "name": "limit_5g_4",
                       "number": 5,
                       "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit6g1",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_6g_1",
+                      "number": 6,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit6g2",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_6g_2",
+                      "number": 7,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit6g3",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_6g_3",
+                      "number": 8,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit6g4",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_6g_4",
+                      "number": 9,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit6g5",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_6g_5",
+                      "number": 10,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit6g6",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_6g_6",
+                      "number": 11,
+                      "type": "TYPE_UINT32"
                     }
                   ],
                   "name": "TransmitPowerChain"
@@ -3406,6 +3448,20 @@
                       "label": "LABEL_OPTIONAL",
                       "name": "offset_5g",
                       "number": 4,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "limit6g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "limit_6g",
+                      "number": 5,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "offset6g",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "offset_6g",
+                      "number": 6,
                       "type": "TYPE_UINT32"
                     }
                   ],

@@ -247,6 +247,18 @@ message WifiConfig {
       uint32 limit_5g_3 = 4;
       // 5G band 4 power limit: 5.725G-5.95G frequency. (0.25 dBm)
       uint32 limit_5g_4 = 5;
+      // 6G band 1 power limit: 5.945G-6.165G frequency. (0.25 dBm)
+      uint32 limit_6g_1 = 6;
+      // 6G band 2 power limit: 6.165G-6.405G frequency. (0.25 dBm)
+      uint32 limit_6g_2 = 7;
+      // 6G band 3 power limit: 6.405G-6.525G frequency. (0.25 dBm)
+      uint32 limit_6g_3 = 8;
+      // 6G band 4 power limit: 6.525G-6.705G frequency. (0.25 dBm)
+      uint32 limit_6g_4 = 9;
+      // 6G band 5 power limit: 6.705G-6.865G frequency. (0.25 dBm)
+      uint32 limit_6g_5 = 10;
+      // 6G band 6 power limit: 6.865G-7.125G frequency. (0.25 dBm)
+      uint32 limit_6g_6 = 11;
     }
 
     // TransmitPowerChain settings when operating in tablet and non-tablet
@@ -265,6 +277,10 @@ message WifiConfig {
       uint32 offset_2g = 3;
       // Value to be added to all 5GHz WiFi bands. (0.25 dBm)
       uint32 offset_5g = 4;
+      // 6G band geo power limit. (0.25 dBm)
+      uint32 limit_6g = 5;
+      // Value to be added to all 6GHz WiFi bands. (0.25 dBm)
+      uint32 offset_6g = 6;
     }
 
     // GeoTransmitPowerChain settings in different regulatory domains.
