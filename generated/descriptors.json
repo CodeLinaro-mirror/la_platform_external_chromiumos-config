@@ -17051,6 +17051,10 @@
                 {
                   "name": "REASON_SERVICE_CONTAINER_UNABLE_TO_PULL",
                   "number": 21
+                },
+                {
+                  "name": "REASON_IMAGE_MISMATCH_POST_PROVISION_UPDATE",
+                  "number": 22
                 }
               ]
             }
@@ -23827,6 +23831,10 @@
                 {
                   "name": "STATUS_SUCCESS",
                   "number": 20
+                },
+                {
+                  "name": "STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE",
+                  "number": 21
                 }
               ]
             }

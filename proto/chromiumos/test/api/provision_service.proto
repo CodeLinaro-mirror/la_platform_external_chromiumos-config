@@ -131,6 +131,8 @@ message InstallFailure {
     // TODO (b/266634996) Remove once CTRv1 is deprecated and move into TR.
     // status:code ABORT
     REASON_SERVICE_CONTAINER_UNABLE_TO_PULL = 21;
+    // status code: ABORTED
+    REASON_IMAGE_MISMATCH_POST_PROVISION_UPDATE = 22;
   }
 
   Reason reason = 1;

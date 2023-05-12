@@ -77,6 +77,8 @@ message InstallResponse {
     STATUS_GS_DOWNLOAD_FAILED = 19;
     // status code: SUCCESS
     STATUS_SUCCESS = 20;
+    // status code: ABORTED
+    STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE = 21;
   }
   Status status = 1;
 
