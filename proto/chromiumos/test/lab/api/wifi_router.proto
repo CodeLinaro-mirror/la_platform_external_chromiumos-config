@@ -8,6 +8,8 @@ package chromiumos.test.lab.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 
+import "google/protobuf/timestamp.proto";
+
 // Recognized hardware and software features of WiFi router peripherals in
 // our testbeds.
 //
@@ -67,4 +69,145 @@ enum WifiRouterDeviceType {
 
   // Ubuntu-based Intel NUC device.
   WIFI_ROUTER_DEVICE_TYPE_UBUNTU_INTEL_NUC = 5;
+}
+
+// WifiRouterConfig is the format of the Wifi router config JSON file stored in
+// GCS that contains configuration information for all router device types.
+message WifiRouterConfig {
+  // OpenWrt device configs by their device names.
+  map<string, OpenWrtWifiRouterDeviceConfig> openwrt = 1;
+}
+
+// OpenWrtWifiRouterConfig defines which OpenWrt OS image should be used for a
+// given OpenWrt device and DUT ChromeOS release version.
+//
+// Each device has its own set of versions and a pool of DUTs that are always on
+// the next version to assist in its verification.
+message OpenWrtWifiRouterDeviceConfig {
+  // OpenWrtOSImage describes an available OpenWrt OS image.
+  message OpenWrtOSImage {
+    // The unique ID of the image.
+    string image_uuid = 1;
+
+    // The path to the image archive file, relative to the config file this
+    // data was parsed from.
+    string archive_path = 2;
+
+    // The minimum DUT CHROMEOS_RELEASE_VERSION this image should be used with.
+    string min_dut_release_version = 3;
+  }
+
+  // Default OpenWrt packages included for this build target.
+  repeated string build_target_packages = 5;
+
+  // The image that should be used by default.
+  //
+  // If the testbed's DUT does not meet the version requirement of the image,
+  // the image with the highest minimum DUT version requirement that the DUT
+  // meets should be used instead. If the testbed's DUT does not meet any of the
+  // available images' version requirements, the image with the lowest version
+  // requirement should be used.
+  string current_image_uuid = 1;
+
+  // The image that should be used by routers in testbeds whose primary DUT is
+  // in the next_image_verification_dut_pool, irregardless of the image's DUT
+  // version requirement and overriding current_image_uuid for these routers.
+  string next_image_uuid = 2;
+
+  // Wifi routers that are in testbeds with these primary DUT hostnames should
+  // use the next_image_uuid instead of the current_image_uuid for image
+  // selection.
+  repeated string next_image_verification_dut_pool = 3;
+
+  // All available OpenWrt OS images for this build profile.
+  repeated OpenWrtOSImage images = 4;
+}
+
+// OpenWrtImageBuildInfo is the format of the build info JSON file included in
+// in all OpenWrt OS images built for ChromeOS test WiFi routers by the
+// cros_openwrt_image_builder tool.
+//
+// These fields identify the image and describe the deviations made from the
+// official OpenWrt image build profile so that it may be used for test WiFi
+// routers in ChromeOS testbeds.
+message CrosOpenWrtImageBuildInfo {
+  // Build information as returned by the OpenWrt image builder used by
+  // cros_openwrt_image_builder to package the image.
+  message StandardBuildConfig {
+    // The openwrt repository revision used to compile builder.
+    string openwrt_revision = 1;
+
+    // The builders' board build target.
+    string openwrt_build_target = 2;
+
+    // The name of the build profile used to build the image.
+    string build_profile = 3;
+
+    // Human-readable device name, as specified by OpenWrt.
+    //
+    // Expected to be unique by manufacturer, model, and version.
+    string device_name = 4;
+
+    // Default OpenWrt packages included for this build target.
+    repeated string build_target_packages = 5;
+
+    // Package customizations made by the build profile used to build the image.
+    repeated string profile_packages = 6;
+
+    // Devices supported by the build profile used to build the image.
+    repeated string supported_devices = 7;
+  }
+
+  // Useful information describing the image, as parsed from the os-release
+  // file included in the image.
+  message OSRelease {
+    string version = 1;
+    string build_id = 2;
+    string openwrt_board = 3;
+    string openwrt_arch = 4;
+    string openwrt_release = 5;
+  }
+
+  // Unique ID generated for this image.
+  string image_uuid = 1;
+
+  // The custom extra part of the final image name added to the image name
+  // created by the OpenWrt image builder.
+  string custom_image_name = 2;
+
+  OSRelease os_release = 3;
+
+  StandardBuildConfig standard_build_config = 4;
+
+  // The features that devices with this image can support for testing.
+  repeated WifiRouterFeature router_features = 5;
+
+  // The time the image was built.
+  google.protobuf.Timestamp build_time = 6;
+
+  // The version of cros_openwrt_image_builder used to build this image.
+  string cros_openwrt_image_builder_version = 7;
+
+  // Custom files included in the image.
+  //
+  // The key is the path of the file on the device when the image is installed
+  // and the value is a hash of the file contents.
+  map<string, string> custom_included_files = 8;
+
+  // Custom packages included in the image.
+  //
+  // The key is the name of the custom package IPK file and the value is a
+  // hash of the file contents.
+  map<string, string> custom_packages = 9;
+
+  // Names of the official OpenWrt packages included in the image that
+  // supplement the packages included in the official build profile.
+  repeated string extra_included_packages = 10;
+
+  // Names of the official OpenWrt packages that are excluded in the image
+  // that would otherwise be included in the official build profile.
+  repeated string excluded_packages = 11;
+
+  // Names of the services that are disabled by default upon image install.
+  repeated string disabled_services = 12;
 }
