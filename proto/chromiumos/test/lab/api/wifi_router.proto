@@ -1,0 +1,70 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+// Recognized hardware and software features of WiFi router peripherals in
+// our testbeds.
+//
+// This is not an exhaustive list of features supported by these test WiFi
+// routers. The intent is to only track features that may differ between the
+// different types of WiFi router devices in our labs.
+enum WifiRouterFeature {
+  // Features are not known.
+  WIFI_ROUTER_FEATURE_UNKNOWN = 0;
+
+  // Feature was parsed from device, but it did not match any known features.
+  WIFI_ROUTER_FEATURE_INVALID = 1;
+
+  // WiFi 1 (IEEE 802.11a) support.
+  WIFI_ROUTER_FEATURE_IEEE_802_11_A = 2;
+
+  // WiFi 2 (IEEE 802.11b) support.
+  WIFI_ROUTER_FEATURE_IEEE_802_11_B = 3;
+
+  // WiFi 3 (IEEE 802.11g) support.
+  WIFI_ROUTER_FEATURE_IEEE_802_11_G = 4;
+
+  // WiFi 4 (IEEE 802.11n) support.
+  WIFI_ROUTER_FEATURE_IEEE_802_11_N = 5;
+
+  // WiFi 5 (IEEE 802.11ac) support.
+  WIFI_ROUTER_FEATURE_IEEE_802_11_AC = 6;
+
+  // WiFi 6 (IEEE 802.11ax, 2.4GHz, 5GHz) support.
+  WIFI_ROUTER_FEATURE_IEEE_802_11_AX = 7;
+
+  // WiFi 6E (IEEE 802.11ax, 6GHz) support.
+  WIFI_ROUTER_FEATURE_IEEE_802_11_AX_E = 8;
+
+  // WiFi 7 (IEEE 802.11be) support.
+  WIFI_ROUTER_FEATURE_IEEE_802_11_BE = 9;
+}
+
+// The type of Wifi AP device a WiFi AP peripheral is, functionally speaking.
+enum WifiRouterDeviceType {
+  // Default. Type not yet determined.
+  WIFI_ROUTER_DEVICE_TYPE_UNKNOWN = 0;
+
+  // Attempted to identify device, but automatic identification failed.
+  WIFI_ROUTER_DEVICE_TYPE_INVALID = 1;
+
+  // Google Gale router with a customized ChromeOS image specifically for WiFi
+  // testing with Gales.
+  WIFI_ROUTER_DEVICE_TYPE_CHROMEOS_GALE = 2;
+
+  // WiFi router using an OpenWrt OS image that has been customized for
+  // ChromeOS testing.
+  WIFI_ROUTER_DEVICE_TYPE_OPENWRT = 3;
+
+  // Retail ASUS WiFi router with the ASUSWRT interface.
+  WIFI_ROUTER_DEVICE_TYPE_ASUSWRT = 4;
+
+  // Ubuntu-based Intel NUC device.
+  WIFI_ROUTER_DEVICE_TYPE_UBUNTU_INTEL_NUC = 5;
+}

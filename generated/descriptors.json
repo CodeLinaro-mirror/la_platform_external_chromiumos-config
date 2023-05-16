@@ -25834,6 +25834,94 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "enumType": [
+        {
+          "name": "WifiRouterFeature",
+          "value": [
+            {
+              "name": "WIFI_ROUTER_FEATURE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_INVALID",
+              "number": 1
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_A",
+              "number": 2
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_B",
+              "number": 3
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_G",
+              "number": 4
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_N",
+              "number": 5
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AC",
+              "number": 6
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX",
+              "number": 7
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX_E",
+              "number": 8
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_BE",
+              "number": 9
+            }
+          ]
+        },
+        {
+          "name": "WifiRouterDeviceType",
+          "value": [
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_INVALID",
+              "number": 1
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_CHROMEOS_GALE",
+              "number": 2
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_OPENWRT",
+              "number": 3
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_ASUSWRT",
+              "number": 4
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_UBUNTU_INTEL_NUC",
+              "number": 5
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/wifi_router.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
