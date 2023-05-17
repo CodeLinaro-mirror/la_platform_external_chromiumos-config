@@ -26355,6 +26355,9 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/test/api/test_suite.proto"
+      ],
       "messageType": [
         {
           "field": [
@@ -26405,9 +26408,39 @@
                   "name": "path",
                   "number": 3,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "templateParameters",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "template_parameters",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.plan.SourceTestPlan.TestPlanStarlarkFile.TemplateParameters"
                 }
               ],
-              "name": "TestPlanStarlarkFile"
+              "name": "TestPlanStarlarkFile",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "tagCriteria",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "tag_criteria",
+                      "number": 1,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.test.api.TestSuite.TestCaseTagCriteria"
+                    },
+                    {
+                      "jsonName": "suiteName",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "suite_name",
+                      "number": 2,
+                      "type": "TYPE_STRING"
+                    }
+                  ],
+                  "name": "TemplateParameters"
+                }
+              ]
             }
           ],
           "reservedRange": [

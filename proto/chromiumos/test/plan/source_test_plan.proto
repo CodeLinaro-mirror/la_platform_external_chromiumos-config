@@ -8,6 +8,8 @@ package chromiumos.test.plan;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/plan";
 
+import "chromiumos/test/api/test_suite.proto";
+
 // Describes the test cases that run when a given set of files are changed.
 //
 // This message is intended to be specified as text proto in a DIR_METADATA file
@@ -52,6 +54,29 @@ message SourceTestPlan {
     // Absolute path within the repo to the Starlark file. Regexes are not
     // allowed.
     string path = 3;
+
+    // Currently unimplemented in the interpreter.
+    // TODO(b/278886899): Update with templating documentation when implemented.
+    //
+    // Fields that will be made available to the Starlark file via interpreter
+    // builtins. Note that specifying these fields here does NOT automatically
+    // mean the HW/VMTestPlan protos generated will use them in all plans.
+    //
+    // Specifying these fields on a Starlark file that doesn't use them will
+    // cause `test_plan validate` to fail.
+    message TemplateParameters {
+      // TestCaseTagCriteria that will be made available to the Starlark file.
+      // Intended for the case where many different DIR_METADATA files want to
+      // run the same plan but with different tag criteria.
+      chromiumos.test.api.TestSuite.TestCaseTagCriteria tag_criteria = 1;
+
+      // Suite name that will be made available to the Starlark file. Intended
+      // to prevent suite name collisions when multiple DIR_METADATA files
+      // reference the same templated Starlark file with different tag_criteria.
+      string suite_name = 2;
+    }
+
+    TemplateParameters template_parameters = 4;
   }
 
   // Starlark files to evaluate to generate HW/VMTestPlan protos.
