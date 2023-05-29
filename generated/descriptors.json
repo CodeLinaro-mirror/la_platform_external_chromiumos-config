@@ -593,6 +593,13 @@
                   "name": "ish",
                   "number": 9,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "zephyrDetachableBase",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "zephyr_detachable_base",
+                  "number": 10,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "BuildTargets"

@@ -1714,6 +1714,7 @@
               "fake_ec_extra2"
             ],
             "libpayload": "fake",
+            "zephyr-detachable-base": "fake_zephyr_detachable_base",
             "zephyr-ec": "projects/fake/fake"
           },
           "detachable-ui": true,
@@ -2013,6 +2014,7 @@
               "fake_ec_extra2"
             ],
             "libpayload": "fake",
+            "zephyr-detachable-base": "fake_zephyr_detachable_base",
             "zephyr-ec": "projects/fake/fake"
           },
           "detachable-ui": true,

@@ -1241,6 +1241,7 @@ design.append_configs(
         ec_name = "fake",
         ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
         zephyr_ec_name = "projects/fake/fake",
+        zephyr_detachable_base_name = "fake_zephyr_detachable_base",
     ),
     power = _SC_POWER,
     camera = sc.create_camera(
@@ -1316,6 +1317,7 @@ design.append_configs(
         ec_name = "fake",
         ec_extras = ["fake_ec_extra1", "fake_ec_extra2"],
         zephyr_ec_name = "projects/fake/fake",
+        zephyr_detachable_base_name = "fake_zephyr_detachable_base",
     ),
     power = _SC_POWER,
     camera = sc.create_camera(

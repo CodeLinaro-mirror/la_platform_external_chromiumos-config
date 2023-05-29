@@ -124,6 +124,9 @@ message Firmware {
 
     // Build target for chromeos-ish.
     string ish = 9;
+
+    // Build target for Zephyr EC detachable base.
+    string zephyr_detachable_base = 10;
   }
 
   BuildTargets build_targets = 1;

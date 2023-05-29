@@ -292,6 +292,8 @@ def merge_firmware_config(sw_config, model):
   build_config.build_targets.ish = build_props.get('ish', '')
   build_config.build_targets.libpayload = build_props.get('libpayload', '')
   build_config.build_targets.zephyr_ec = build_props.get('zephyr-ec', '')
+  build_config.build_targets.zephyr_detachable_base = \
+      build_props.get('zephyr-detachable-base', '')
 
   for extra in build_props.get('ec-extras', []):
     build_config.build_targets.ec_extras.append(extra)
