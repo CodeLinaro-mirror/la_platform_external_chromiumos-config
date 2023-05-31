@@ -26041,13 +26041,6 @@
         {
           "field": [
             {
-              "jsonName": "buildTargetPackages",
-              "label": "LABEL_REPEATED",
-              "name": "build_target_packages",
-              "number": 5,
-              "type": "TYPE_STRING"
-            },
-            {
               "jsonName": "currentImageUuid",
               "label": "LABEL_OPTIONAL",
               "name": "current_image_uuid",

@@ -97,9 +97,6 @@ message OpenWrtWifiRouterDeviceConfig {
     string min_dut_release_version = 3;
   }
 
-  // Default OpenWrt packages included for this build target.
-  repeated string build_target_packages = 5;
-
   // The image that should be used by default.
   //
   // If the testbed's DUT does not meet the version requirement of the image,
