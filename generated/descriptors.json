@@ -5975,6 +5975,14 @@
                   "number": 7,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "featureAssertsPanic",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "feature_asserts_panic",
+                  "number": 8,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "EmbeddedController"

@@ -221,7 +221,7 @@ message HardwareFeatures {
       // Map of custom power level to modem index mapping.
       // E.g. HIGH -> 1, LOW -> 2
       map<string, uint32> power_level_mapping = 6;
-      // Map of regulatory domains and power level offset. 
+      // Map of regulatory domains and power level offset.
       // E.g. KCC -> 2
       map<string, uint32> regulatory_domain_mapping = 7;
     }
@@ -709,7 +709,7 @@ message HardwareFeatures {
   Button volume_button = 22;
 
   // EmbeddedController properties
-  // Next Tag: 8
+  // Next Tag: 9
   message EmbeddedController {
     // Whether any kind of EC is present on the system.
     Present present = 1;
@@ -737,6 +737,9 @@ message HardwareFeatures {
 
     // Whether the EC supports EC_CMD_CHARGE_CONTROL v2.
     Present feature_charge_control_v2 = 7;
+
+    // Whether the EC will panic on Asserts
+    Present feature_asserts_panic = 8;
   }
   EmbeddedController embedded_controller = 24;
 
