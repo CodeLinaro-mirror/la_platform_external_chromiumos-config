@@ -5983,6 +5983,14 @@
                   "number": 8,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "featureSystemSafeMode",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "feature_system_safe_mode",
+                  "number": 9,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "EmbeddedController"

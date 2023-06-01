@@ -709,7 +709,7 @@ message HardwareFeatures {
   Button volume_button = 22;
 
   // EmbeddedController properties
-  // Next Tag: 9
+  // Next Tag: 10
   message EmbeddedController {
     // Whether any kind of EC is present on the system.
     Present present = 1;
@@ -740,6 +740,9 @@ message HardwareFeatures {
 
     // Whether the EC will panic on Asserts
     Present feature_asserts_panic = 8;
+
+    // Whether the EC supports system safe mode recovery.
+    Present feature_system_safe_mode = 9;
   }
   EmbeddedController embedded_controller = 24;
 
