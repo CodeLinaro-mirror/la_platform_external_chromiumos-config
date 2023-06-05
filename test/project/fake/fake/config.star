@@ -141,6 +141,15 @@ _AUDIO_WITH_INIT = hw_topo.create_audio(
         ),
     ],
 )
+_AUDIO_WITH_UNDERSCORE = hw_topo.create_audio(
+    "AUDIO",
+    "Default audio",
+    speaker_amp = hw_topo.amplifier.ALC5650,
+    headphone_codec = hw_topo.audio_codec.ALC5650,
+    card_configs = [hw_topo.create_audio_card_config(
+        card_name = _AUDIO_CARD,
+    )],
+)
 
 _AUDIO_WITH_CUSTOM_MIC_SUFFIX = hw_topo.override_audio(
     _AUDIO_WITH_INIT,
@@ -1115,7 +1124,7 @@ design.append_configs(
     design_id = _DESIGN_ID_B,
     config_id = 34,
     hardware_topology = create_hardware_topology(
-        audio = _AUDIO_WITH_INIT,
+        audio = _AUDIO_WITH_UNDERSCORE,
         daughter_board = hw_topo.create_daughter_board(
             "DB",
             "Non-default daughter_board",

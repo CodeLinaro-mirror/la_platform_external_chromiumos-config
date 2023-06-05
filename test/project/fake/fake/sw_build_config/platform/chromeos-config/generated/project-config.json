@@ -187,15 +187,20 @@
         },
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-light-sensor": true,
           "has-base-magnetometer": true,
+          "has-hdmi": true,
           "has-lid-light-sensor": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "hps": {
           "has-hps": true
@@ -478,13 +483,17 @@
         },
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "POWER_BUTTON",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake_0Db_1Custom_2Cameras",
@@ -752,15 +761,19 @@
         },
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-light-sensor": true,
           "has-base-magnetometer": true,
           "has-lid-light-sensor": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "POWER_BUTTON",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake_0Db_1Custom_2Cameras",
@@ -1045,13 +1058,17 @@
         },
         "hardware-properties": {
           "form-factor": "CONVERTIBLE",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Ref_A",
@@ -1394,13 +1411,17 @@
         },
         "hardware-properties": {
           "form-factor": "DETACHABLE",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -1537,20 +1558,16 @@
             "cras-config-dir": "project_b",
             "files": [
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b/HiFi.conf",
-                "source": "project_b/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b/HiFi.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5650.alc5650.2uf.project_b/HiFi.conf",
+                "source": "project_b/audio/ucm-config/fakeaudiocard.alc5650.alc5650.2uf.project_b/HiFi.conf"
               },
               {
-                "destination": "/usr/share/alsa/ucm/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b.conf",
-                "source": "project_b/audio/ucm-config/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b/fakeaudiocard.card_suffix.max98373.alc5682i.2uf.project_b.conf"
+                "destination": "/usr/share/alsa/ucm/fakeaudiocard.alc5650.alc5650.2uf.project_b/fakeaudiocard.alc5650.alc5650.2uf.project_b.conf",
+                "source": "project_b/audio/ucm-config/fakeaudiocard.alc5650.alc5650.2uf.project_b/fakeaudiocard.alc5650.alc5650.2uf.project_b.conf"
               },
               {
                 "destination": "/etc/cras/project_b/fakeaudiocard.card_settings",
                 "source": "project_b/audio/cras-config/fakeaudiocard.card_settings"
-              },
-              {
-                "destination": "/etc/sound_card_init/project_b.MAX98373.yaml",
-                "source": "project_b/audio/sound-card-init-config/project_b.MAX98373.yaml"
               },
               {
                 "destination": "/usr/share/alsa/ucm/HDA ATI HDMI/HiFi.conf",
@@ -1577,9 +1594,7 @@
                 "source": "common/audio/alsa-module-config/alsa-fake_program.conf"
               }
             ],
-            "sound-card-init-conf": "project_b.MAX98373.yaml",
-            "speaker-amp": "MAX98373",
-            "ucm-suffix": "card_suffix.max98373.alc5682i.2uf.project_b"
+            "ucm-suffix": "alc5650.alc5650.2uf.project_b"
           }
         },
         "bluetooth": {
@@ -1654,13 +1669,17 @@
         },
         "hardware-properties": {
           "form-factor": "DETACHABLE",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -1942,13 +1961,17 @@
         },
         "hardware-properties": {
           "form-factor": "DETACHABLE",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -2213,14 +2236,17 @@
         },
         "hardware-properties": {
           "form-factor": "CHROMESLATE",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
           "has-privacy-screen": true,
+          "has-sd-reader": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -2467,14 +2493,17 @@
         },
         "hardware-properties": {
           "form-factor": "CHROMESLATE",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
           "has-privacy-screen": true,
+          "has-sd-reader": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -2750,10 +2779,13 @@
         },
         "hardware-properties": {
           "form-factor": "CONVERTIBLE",
+          "has-audio-jack": true,
           "has-backlight": true,
+          "has-sd-reader": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "none"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -2988,10 +3020,14 @@
         },
         "hardware-properties": {
           "form-factor": "CONVERTIBLE",
+          "has-audio-jack": true,
           "has-backlight": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -3237,10 +3273,13 @@
         },
         "hardware-properties": {
           "form-factor": "CONVERTIBLE",
+          "has-audio-jack": true,
           "has-backlight": true,
+          "has-sd-reader": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "none"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -3475,10 +3514,14 @@
         },
         "hardware-properties": {
           "form-factor": "CONVERTIBLE",
+          "has-audio-jack": true,
           "has-backlight": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -3712,10 +3755,14 @@
         },
         "hardware-properties": {
           "form-factor": "CONVERTIBLE",
+          "has-audio-jack": true,
           "has-backlight": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -3957,10 +4004,14 @@
         },
         "hardware-properties": {
           "form-factor": "CONVERTIBLE",
+          "has-audio-jack": true,
           "has-backlight": true,
+          "has-sd-reader": true,
+          "has-touchscreen": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "internal"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -4178,13 +4229,16 @@
         },
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "unknown"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -4428,13 +4482,16 @@
         },
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "unknown"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -4679,13 +4736,16 @@
         },
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "unknown"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -4930,13 +4990,16 @@
         },
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "unknown"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -5194,13 +5257,16 @@
         },
         "hardware-properties": {
           "form-factor": "CLAMSHELL",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
           "psu-type": "battery",
           "recovery-input": "KEYBOARD",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "unknown"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -5416,13 +5482,16 @@
         },
         "hardware-properties": {
           "form-factor": "CHROMEBOX",
+          "has-audio-jack": true,
           "has-backlight": false,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
           "psu-type": "AC_only",
           "recovery-input": "RECOVERY_BUTTON",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "unknown"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -5638,13 +5707,16 @@
         },
         "hardware-properties": {
           "form-factor": "CHROMEBASE",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-sd-reader": true,
           "psu-type": "AC_only",
           "recovery-input": "RECOVERY_BUTTON",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "unknown"
         },
         "identity": {
           "frid": "Google_Fake",
@@ -5856,12 +5928,15 @@
         },
         "hardware-properties": {
           "form-factor": "CHROMEBASE",
+          "has-audio-jack": true,
           "has-backlight": true,
           "has-lid-accelerometer": true,
           "has-lid-light-sensor": true,
+          "has-sd-reader": true,
           "psu-type": "AC_only",
           "recovery-input": "RECOVERY_BUTTON",
-          "storage-type": "EMMC"
+          "storage-type": "EMMC",
+          "stylus-category": "unknown"
         },
         "identity": {
           "frid": "Google_Fake",

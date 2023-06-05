@@ -91,16 +91,26 @@ def CastPresent(value):
   return None
 
 
+def GetAudioEnumName(audio_enum: topology_pb2.HardwareFeatures.Audio,
+                     numeric_value: int) -> str:
+  """Get name from last underscore."""
+  name = audio_enum.Name(numeric_value)
+  if numeric_value != 0:
+    # skip for unknown type
+    _, _, name = name.rpartition("_")
+  return name
+
+
 def CastAmplifier(value):
   if value is None:
     return None
-  return topology_pb2.HardwareFeatures.Audio.Amplifier.Name(value)
+  return GetAudioEnumName(topology_pb2.HardwareFeatures.Audio.Amplifier, value)
 
 
 def CastAudioCodec(value):
   if value is None:
     return None
-  return topology_pb2.HardwareFeatures.Audio.AudioCodec.Name(value)
+  return GetAudioEnumName(topology_pb2.HardwareFeatures.Audio.AudioCodec, value)
 
 
 def CastConvertible(value):

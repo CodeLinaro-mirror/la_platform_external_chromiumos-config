@@ -3519,15 +3519,14 @@
             "audio": {
               "cardConfigs": [
                 {
-                  "cardName": "fakeaudiocard.card_suffix",
+                  "cardName": "fakeaudiocard",
                   "crasConfig": 1,
-                  "soundCardInitConfig": 1,
                   "ucmConfig": 1
                 }
               ],
               "crasConfig": 1,
-              "headphoneCodec": 2,
-              "speakerAmp": 5
+              "headphoneCodec": 17,
+              "speakerAmp": 17
             },
             "bluetooth": {
               "component": {
@@ -3740,15 +3739,14 @@
                 "audio": {
                   "cardConfigs": [
                     {
-                      "cardName": "fakeaudiocard.card_suffix",
+                      "cardName": "fakeaudiocard",
                       "crasConfig": 1,
-                      "soundCardInitConfig": 1,
                       "ucmConfig": 1
                     }
                   ],
                   "crasConfig": 1,
-                  "headphoneCodec": 2,
-                  "speakerAmp": 5
+                  "headphoneCodec": 17,
+                  "speakerAmp": 17
                 }
               },
               "id": "AUDIO",

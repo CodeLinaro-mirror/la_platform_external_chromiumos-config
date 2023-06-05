@@ -296,6 +296,8 @@ message HardwareFeatures {
       CS42L42 = 11;
       ALC5682IVS = 12;
       WCD9385 = 13;
+      // 14 to 16 are still free to be used
+      AUDIO_CODEC_ALC5650 = 17;
     }
 
     enum Amplifier {
@@ -315,6 +317,7 @@ message HardwareFeatures {
       CS35L41 = 14;
       MAX98363 = 15;
       NAU8318 = 16;
+      AMPLIFIER_ALC5650 = 17;
     }
 
     enum AudioConfigStructure {
