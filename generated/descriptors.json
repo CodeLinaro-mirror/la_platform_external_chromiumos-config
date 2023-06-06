@@ -4343,6 +4343,14 @@
               "number": 45,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Suspend"
+            },
+            {
+              "jsonName": "vrr",
+              "label": "LABEL_OPTIONAL",
+              "name": "vrr",
+              "number": 46,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Vrr"
             }
           ],
           "name": "HardwareFeatures",
@@ -6569,6 +6577,19 @@
                 }
               ],
               "name": "Suspend"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "Vrr"
             }
           ]
         }

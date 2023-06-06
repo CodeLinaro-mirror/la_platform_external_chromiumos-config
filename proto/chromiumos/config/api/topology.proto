@@ -982,4 +982,11 @@ message HardwareFeatures {
     // If S0ix (suspend to idle) is supported
     Present suspend_to_idle = 2;
   }
+
+  // VRR (variable refresh rate) properties
+  Vrr vrr = 46;
+  message Vrr {
+    // If VRR is supported.
+    Present present = 1;
+  }
 }
