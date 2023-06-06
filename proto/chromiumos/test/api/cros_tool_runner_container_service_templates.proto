@@ -23,6 +23,7 @@ message Template {
     CacheServerTemplate cache_server = 6;
     CrosTestFinderTemplate cros_test_finder = 7;
     AndroidProvisionTemplate android_provision = 8;
+    GenericTemplate generic = 9;
   }
 }
 
@@ -72,6 +73,13 @@ message CrosTestTemplate {
 // Plain template to demonstrate the usage of cros-test-finder container. All fields are
 // required.
 message CrosTestFinderTemplate {
+}
+
+message GenericTemplate {
+  string docker_artifact_dir = 1;
+  repeated string additional_volumes = 2;
+  repeated string expose = 3;
+  repeated string args = 4;
 }
 
 // Plain template to demonstrate the usage of cache-server container.

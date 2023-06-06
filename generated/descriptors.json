@@ -20006,6 +20006,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.AndroidProvisionTemplate"
+            },
+            {
+              "jsonName": "generic",
+              "label": "LABEL_OPTIONAL",
+              "name": "generic",
+              "number": 9,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericTemplate"
             }
           ],
           "name": "Template",
@@ -20097,6 +20106,39 @@
         },
         {
           "name": "CrosTestFinderTemplate"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dockerArtifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "docker_artifact_dir",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "additionalVolumes",
+              "label": "LABEL_REPEATED",
+              "name": "additional_volumes",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "expose",
+              "label": "LABEL_REPEATED",
+              "name": "expose",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GenericTemplate"
         },
         {
           "field": [
