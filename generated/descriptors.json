@@ -20131,31 +20131,45 @@
         {
           "field": [
             {
+              "jsonName": "binaryName",
+              "label": "LABEL_OPTIONAL",
+              "name": "binary_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "binaryArgs",
+              "label": "LABEL_REPEATED",
+              "name": "binary_args",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
               "jsonName": "dockerArtifactDir",
               "label": "LABEL_OPTIONAL",
               "name": "docker_artifact_dir",
-              "number": 1,
+              "number": 3,
               "type": "TYPE_STRING"
             },
             {
               "jsonName": "additionalVolumes",
               "label": "LABEL_REPEATED",
               "name": "additional_volumes",
-              "number": 2,
+              "number": 4,
               "type": "TYPE_STRING"
             },
             {
               "jsonName": "expose",
               "label": "LABEL_REPEATED",
               "name": "expose",
-              "number": 3,
+              "number": 5,
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "args",
+              "jsonName": "env",
               "label": "LABEL_REPEATED",
-              "name": "args",
-              "number": 4,
+              "name": "env",
+              "number": 6,
               "type": "TYPE_STRING"
             }
           ],
