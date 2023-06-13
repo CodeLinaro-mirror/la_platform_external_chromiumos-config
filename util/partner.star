@@ -194,6 +194,12 @@ partner = struct(
             symlink_file_format = "ilitek_{product_id}.hex",
             destination_file_format = "{product_id}_{fw_version}.hex",
         ),
+        ILITDDI = _create_touch_partner(
+            name = "ilitddi",
+            vendor_id = "222A",
+            symlink_file_format = "ilitddi_{product_id}.hex",
+            destination_file_format = "{product_id}_{fw_version}.hex",
+        ),
     ),
     battery = struct(
         PANASONIC = _create_battery_partner(

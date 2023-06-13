@@ -1907,6 +1907,13 @@ comp.append_touchscreen(
     product_id = "2323",
     fw_version = "0700.0000.0000.0000",
 )
+comp.append_touchscreen(
+    _COMPONENTS,
+    _COMPONENT_VENDORS,
+    touch_vendor = partner.touch.ILITDDI,
+    product_id = "0001",
+    fw_version = "0C.00.02.00",
+)
 comp.append_touchpad(
     _COMPONENTS,
     _COMPONENT_VENDORS,
