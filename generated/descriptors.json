@@ -7282,6 +7282,25 @@
           "name": "DeviceBrandId",
           "nestedType": [
             {
+              "enumType": [
+                {
+                  "name": "FeatureDeviceType",
+                  "value": [
+                    {
+                      "name": "OFF",
+                      "number": 0
+                    },
+                    {
+                      "name": "LEGACY",
+                      "number": 1
+                    },
+                    {
+                      "name": "ON",
+                      "number": 2
+                    }
+                  ]
+                }
+              ],
               "field": [
                 {
                   "jsonName": "whitelabelTag",
@@ -7289,6 +7308,14 @@
                   "name": "whitelabel_tag",
                   "number": 1,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "featureDeviceType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "feature_device_type",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.DeviceBrandId.ScanConfig.FeatureDeviceType"
                 }
               ],
               "name": "ScanConfig"

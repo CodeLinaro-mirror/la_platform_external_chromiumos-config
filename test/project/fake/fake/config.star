@@ -1787,6 +1787,14 @@ _DEVICE_BRAND_E = device_brand.create(
     export_oem_info = True,
 )
 
+_DEVICE_BRAND_E_WITH_FEATURE_ON = device_brand.create(
+    brand_name = "ChromeOS Device Brandname E with feature device type on",
+    design_id = _DESIGN_ID_E,
+    oem_id = _FAKE_OEME.id,
+    brand_code = "FDDE",
+    export_oem_info = True,
+)
+
 _WL_DEVICE_BRAND = device_brand.create(
     brand_name = "ChromeOS Device Brandname WL",
     design_id = _DESIGN_ID_WL,
@@ -1863,6 +1871,10 @@ _BRAND_CONFIGS = [
         device_brand_id = _REBRAND_DEVICE_BRAND_D.id,
         whitelabel_tag = "branda",
         cloud_gaming_device = True,
+    ),
+    brand_config.create(
+        device_brand_id = _DEVICE_BRAND_E_WITH_FEATURE_ON.id,
+        feature_device_type = brand_config.feature_device_type.ON,
     ),
 ]
 
@@ -1954,7 +1966,7 @@ _COMPONENTS.append(
 _CONFIG = config_bundle.create(
     partners = _ODMS + _OEMS + _COMPONENT_VENDORS,
     designs = [_DESIGN, _DESIGN_A, _DESIGN_B, _DESIGN_C, _DESIGN_D, _DESIGN_E, _DESIGN_WL, _DESIGN_REBRAND, _DESIGN_BOX],
-    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _DEVICE_BRAND_D, _DEVICE_BRAND_E, _WL_DEVICE_BRAND, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _REBRAND_DEVICE_BRAND_D, _DEVICE_BRAND_BOX],
+    device_brands = [_DEVICE_BRAND, _DEVICE_BRAND_A, _DEVICE_BRAND_B, _DEVICE_BRAND_C, _DEVICE_BRAND_D, _DEVICE_BRAND_E, _DEVICE_BRAND_E_WITH_FEATURE_ON, _WL_DEVICE_BRAND, _WL_DEVICE_BRAND_A, _WL_DEVICE_BRAND_B, _WL_DEVICE_BRAND_C, _REBRAND_DEVICE_BRAND_D, _DEVICE_BRAND_BOX],
     software_configs = _SW_CONFIGS,
     brand_configs = _BRAND_CONFIGS,
     components = _COMPONENTS,

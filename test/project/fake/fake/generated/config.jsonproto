@@ -46,6 +46,14 @@
       "scanConfig": {
         "whitelabelTag": "branda"
       }
+    },
+    {
+      "brandId": {
+        "value": "FDDE"
+      },
+      "scanConfig": {
+        "featureDeviceType": 2
+      }
     }
   ],
   "components": [
@@ -11642,6 +11650,20 @@
       "exportOemInfo": true,
       "id": {
         "value": "FDCE"
+      },
+      "oemId": {
+        "value": "FAKE_OEME"
+      }
+    },
+    {
+      "brandCode": "FDDE",
+      "brandName": "ChromeOS Device Brandname E with feature device type on",
+      "designId": {
+        "value": "PROJECT_E"
+      },
+      "exportOemInfo": true,
+      "id": {
+        "value": "FDDE"
       },
       "oemId": {
         "value": "FAKE_OEME"

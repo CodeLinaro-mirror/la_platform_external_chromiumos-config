@@ -18,5 +18,13 @@ message DeviceBrandId {
     // See
     // https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#field-whitelabel_tag.
     string whitelabel_tag = 1;
+
+    FeatureDeviceType feature_device_type = 2;
+
+    enum FeatureDeviceType {
+      OFF = 0;
+      LEGACY = 1;
+      ON = 2;
+    }
   }
 }
