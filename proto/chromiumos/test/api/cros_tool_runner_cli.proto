@@ -46,6 +46,11 @@ message CrosToolRunnerProvisionResponse {
 
 // CrosToolRunnerTestRequest specifies tests to be run.
 message CrosToolRunnerTestRequest {
+  enum CrosTestContainerType {
+    ALL = 0;
+    CQ_LIGHT = 1;
+  }
+
   message Device {
     // DUT to be used in test execution.
     chromiumos.test.lab.api.Dut dut = 1;
@@ -65,6 +70,8 @@ message CrosToolRunnerTestRequest {
   string artifact_dir = 5 ;
   // Test harness specific metadata
   google.protobuf.Any metadata = 6;
+  // Supported cros-test container type
+  CrosTestContainerType cros_test_container_type = 7;
 }
 
 // CrosToolRunnerTestResponse includes all test results.

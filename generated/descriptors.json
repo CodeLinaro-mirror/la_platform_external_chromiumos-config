@@ -19874,6 +19874,21 @@
           "name": "CrosToolRunnerProvisionResponse"
         },
         {
+          "enumType": [
+            {
+              "name": "CrosTestContainerType",
+              "value": [
+                {
+                  "name": "ALL",
+                  "number": 0
+                },
+                {
+                  "name": "CQ_LIGHT",
+                  "number": 1
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "testSuites",
@@ -19921,6 +19936,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "crosTestContainerType",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_test_container_type",
+              "number": 7,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.CrosToolRunnerTestRequest.CrosTestContainerType"
             }
           ],
           "name": "CrosToolRunnerTestRequest",
