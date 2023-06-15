@@ -23,3 +23,18 @@ message AutotestExecutionMetadata {
     // path where results will live
     string results_sub_dir = 2;
 }
+
+// Arg defines a structure for general name/value pair for arguments.
+message Arg {
+    // The name of the argument.
+    string flag = 1;
+    // The value of the argument.
+    string value = 2;
+}
+
+//
+message TastExecutionMetadata {
+    // Custom arguments passed into the Tast.
+    repeated Arg args = 1;
+}
+

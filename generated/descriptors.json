@@ -25071,6 +25071,38 @@
               "name": "Arg"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "flag",
+              "label": "LABEL_OPTIONAL",
+              "name": "flag",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Arg"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Arg"
+            }
+          ],
+          "name": "TastExecutionMetadata"
         }
       ],
       "name": "chromiumos/test/api/test_execution_metadata.proto",
