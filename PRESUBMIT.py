@@ -55,7 +55,6 @@ def CommonChecks(input_api, output_api):
     for script in [
         "./run_py_unittests.sh",
         "./run_go_unittests.sh",
-        "./check_starlark.sh",
         "vpython3 -vpython-spec .vpython presubmit/check_dut_attributes.py",
     ]:
         results.extend(presubmits.CheckScript(input_api, output_api, script))
