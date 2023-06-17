@@ -27348,6 +27348,82 @@
         {
           "field": [
             {
+              "jsonName": "nextChameleondCommit",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_chameleond_commit",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "nextDutHosts",
+              "label": "LABEL_REPEATED",
+              "name": "next_dut_hosts",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "nextDutReleaseVersions",
+              "label": "LABEL_REPEATED",
+              "name": "next_dut_release_versions",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "bundles",
+              "label": "LABEL_REPEATED",
+              "name": "bundles",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.BluetoothPeerChameleondConfig.ChameleondBundle"
+            }
+          ],
+          "name": "BluetoothPeerChameleondConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "chameleondCommit",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "chameleond_commit",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "archivePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "archive_path",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "minDutReleaseVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "min_dut_release_version",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ChameleondBundle"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/bluetooth_peer.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "rawContents",
               "label": "LABEL_OPTIONAL",
               "name": "raw_contents",
