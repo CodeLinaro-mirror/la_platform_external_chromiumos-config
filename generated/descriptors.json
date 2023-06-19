@@ -5028,6 +5028,13 @@
                   "name": "features",
                   "number": 5,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "enumerated",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "enumerated",
+                  "number": 6,
+                  "type": "TYPE_BOOL"
                 }
               ],
               "name": "Camera",

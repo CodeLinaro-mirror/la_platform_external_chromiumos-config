@@ -413,6 +413,9 @@ message HardwareFeatures {
 
     // The list of camera features that are enabled on this device.
     repeated string features = 5;
+
+    // Whether expected camera devices were enumerated.
+    bool enumerated = 6;
   }
 
   // Accelerometer properties of system.
