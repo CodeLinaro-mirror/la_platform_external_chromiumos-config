@@ -8993,6 +8993,136 @@
       },
       "messageType": [
         {
+          "enumType": [
+            {
+              "name": "ExportType",
+              "value": [
+                {
+                  "name": "EXPORT_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "EXPORT_CIPD",
+                  "number": 1
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.build.api.SubtoolPackage.ExportType"
+            },
+            {
+              "jsonName": "maxFiles",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_files",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "cipdPrefix",
+              "label": "LABEL_OPTIONAL",
+              "name": "cipd_prefix",
+              "number": 4,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "paths",
+              "label": "LABEL_REPEATED",
+              "name": "paths",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.SubtoolPackage.PathMapping"
+            }
+          ],
+          "name": "SubtoolPackage",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "input",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "input",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "dest",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dest",
+                  "number": 2,
+                  "oneofIndex": 0,
+                  "proto3Optional": true,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "stripPrefixRegex",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "strip_prefix_regex",
+                  "number": 3,
+                  "oneofIndex": 1,
+                  "proto3Optional": true,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "ebuildFilter",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ebuild_filter",
+                  "number": 4,
+                  "oneofIndex": 2,
+                  "proto3Optional": true,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "PathMapping",
+              "oneofDecl": [
+                {
+                  "name": "_dest"
+                },
+                {
+                  "name": "_strip_prefix_regex"
+                },
+                {
+                  "name": "_ebuild_filter"
+                }
+              ]
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "_cipd_prefix"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/build/api/subtools.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
           "field": [
             {
               "jsonName": "path",

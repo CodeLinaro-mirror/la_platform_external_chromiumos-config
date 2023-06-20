@@ -1,0 +1,53 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+
+message SubtoolPackage {
+  // The name of the package.  May be referenced in cipd.  Must not contain a /.
+  string name = 1;
+
+  enum ExportType {
+    EXPORT_UNSPECIFIED = 0;
+    EXPORT_CIPD = 1;
+  }
+  // How the package should be exported.
+  ExportType type = 2;
+
+  // The maximum number of files expected to be packaged.  Export will fail if
+  // this would be exceeded.
+  int32 max_files = 3;
+
+  // The cipd package prefix.  If not specified, defaults to
+  // chromiumos/infra/tools/.
+  optional string cipd_prefix = 4;
+
+  // Input paths relative to the SDK root.  Pattern matching is permitted.
+  // Any dynamically linked ELFs are automatically wrapped with lddtree.
+  repeated PathMapping paths = 5;
+
+  message PathMapping {
+    // The source file (or files) to bundle.  Glob syntax used by pathlib.Path
+    // is supported (go/pathlib#pathlib.Path.glob).  Paths match files installed
+    // in the subtools chroot.  If nothing matches, export will fail.
+    string input = 1;
+
+    // The target path relative to the export destination.  Default: "/bin".
+    optional string dest = 2;
+
+    // The file prefix to strip before copying to `dest`.  Default: "^.*/".
+    // Export fails if this does not match all files matching `glob`.
+    optional string strip_prefix_regex = 3;
+
+    // A portage package (e.g., app-editors/vim) whose installed files are
+    // matched against `glob`.  If unspecified, all files in the chroot are
+    // candidates to match.
+    optional string ebuild_filter = 4;
+  }
+}
