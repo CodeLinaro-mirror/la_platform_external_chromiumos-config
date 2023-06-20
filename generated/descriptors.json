@@ -23851,9 +23851,38 @@
               "name": "testhaus_url",
               "number": 4,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "sources",
+              "label": "LABEL_OPTIONAL",
+              "name": "sources",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.metadata.PublishRdbMetadata.Sources"
             }
           ],
-          "name": "PublishRdbMetadata"
+          "name": "PublishRdbMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "gsPath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gs_path",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "isDeploymentDirty",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "is_deployment_dirty",
+                  "number": 2,
+                  "type": "TYPE_BOOL"
+                }
+              ],
+              "name": "Sources"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/metadata/publish_rdb_metadata.proto",

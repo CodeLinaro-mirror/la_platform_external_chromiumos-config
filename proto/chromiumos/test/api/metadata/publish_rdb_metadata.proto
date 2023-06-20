@@ -22,4 +22,29 @@ message PublishRdbMetadata {
 
   // Testhaus url where artifacts have been uploaded
   string testhaus_url = 4;
+
+  // Sources captures information about the code sources tested by
+  // the invocation.
+  message Sources {
+    // The path to the file in Google Cloud Storage that describes the
+    // sources used in the Chrome OS build.
+    // The sources themselves should be a JSON-serialized
+    // luci.resultdb.v1.Sources proto.
+    //
+    // Format: "gs://<bucket>/<build>/metadata/sources.jsonpb".
+    string gs_path = 1;
+
+    // Indicates whether the deployment contains items other than
+    // a Chrome OS system image built from the above sources.
+    // For example, a different version of Lacros (for Lacros CI),
+    // or a different version of firmware.
+    //
+    // When set, it indicates the sources above are incomplete and certain
+    // analyses (e.g. regression or changepoint analysis) cannot be
+    // reliably performed based on the Chrome OS source version alone.
+    bool is_deployment_dirty = 2;
+  }
+
+  // The code sources tested.
+  Sources sources = 5;
 }
