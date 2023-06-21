@@ -5035,6 +5035,13 @@
                   "name": "enumerated",
                   "number": 6,
                   "type": "TYPE_BOOL"
+                },
+                {
+                  "jsonName": "enumeratedUsbIds",
+                  "label": "LABEL_REPEATED",
+                  "name": "enumerated_usb_ids",
+                  "number": 7,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Camera",

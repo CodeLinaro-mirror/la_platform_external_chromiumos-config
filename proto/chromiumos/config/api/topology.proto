@@ -416,6 +416,9 @@ message HardwareFeatures {
 
     // Whether expected camera devices were enumerated.
     bool enumerated = 6;
+
+    // List of strings each identifies an enumerated USB camera module.
+    repeated string enumerated_usb_ids = 7;
   }
 
   // Accelerometer properties of system.
