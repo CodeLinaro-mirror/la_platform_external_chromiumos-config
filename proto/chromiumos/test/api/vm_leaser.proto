@@ -74,6 +74,7 @@ message VM {
   string id = 1;
   VMAddress address = 2;
   VMType type = 3;
+  string gce_region = 4;
 }
 
 message VMAddress {
