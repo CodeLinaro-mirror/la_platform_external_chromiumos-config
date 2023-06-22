@@ -22074,6 +22074,19 @@
               "number": 2
             }
           ]
+        },
+        {
+          "name": "VMTestingClient",
+          "value": [
+            {
+              "name": "VM_TESTING_CLIENT_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "VM_TESTING_CLIENT_CHROMEOS",
+              "number": 1
+            }
+          ]
         }
       ],
       "messageType": [
@@ -22115,6 +22128,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.VMRequirements"
+            },
+            {
+              "jsonName": "testingClient",
+              "label": "LABEL_OPTIONAL",
+              "name": "testing_client",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.VMTestingClient"
             }
           ],
           "name": "LeaseVMRequest"

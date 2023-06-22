@@ -49,6 +49,9 @@ message LeaseVMRequest {
 
   // The populated requirements will specify the requirements for a VM host.
   VMRequirements host_reqs = 5;
+
+  // The client that is calling VM Leaser for a VM host.
+  VMTestingClient testing_client = 6;
 }
 
 // NEXT TAG: 11
@@ -84,6 +87,12 @@ enum VMType {
   VM_TYPE_UNSPECIFIED = 0;
   VM_TYPE_DUT = 1;
   VM_TYPE_DRONE = 2;
+}
+
+// VMTestingClient specifies who the caller is (e.g. ChromeOS, Android, etc.)
+enum VMTestingClient {
+  VM_TESTING_CLIENT_UNSPECIFIED = 0;
+  VM_TESTING_CLIENT_CHROMEOS = 1;
 }
 
 message LeaseVMResponse {
