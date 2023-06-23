@@ -54,13 +54,17 @@ message LeaseVMRequest {
   VMTestingClient testing_client = 6;
 }
 
-// NEXT TAG: 11
+// NEXT TAG: 12
 message VMRequirements {
   string gce_image = 1;
   string gce_region = 2;
   string gce_project = 3;
+
+  // Networking-related params
   string gce_network = 4;
   string gce_subnet = 5;
+  bool subnet_mode_network_enabled = 11;
+
   string gce_machine_type = 6;
   string gce_scope = 7;
   // Specified IP address for VM. If not, use ephemeral IP.

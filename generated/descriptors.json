@@ -22178,6 +22178,13 @@
               "type": "TYPE_STRING"
             },
             {
+              "jsonName": "subnetModeNetworkEnabled",
+              "label": "LABEL_OPTIONAL",
+              "name": "subnet_mode_network_enabled",
+              "number": 11,
+              "type": "TYPE_BOOL"
+            },
+            {
               "jsonName": "gceMachineType",
               "label": "LABEL_OPTIONAL",
               "name": "gce_machine_type",

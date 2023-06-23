@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#chromiumos/test/api/vm_leaser.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfa\x01\n\x0eLeaseVMRequest\x12\x17\n\x0fidempotency_key\x18\x01 \x01(\t\x12\x14\n\x0con_behalf_of\x18\x02 \x01(\t\x12\x10\n\x08quota_id\x18\x03 \x01(\t\x12\x31\n\x0elease_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x36\n\thost_reqs\x18\x05 \x01(\x0b\x32#.chromiumos.test.api.VMRequirements\x12<\n\x0etesting_client\x18\x06 \x01(\x0e\x32$.chromiumos.test.api.VMTestingClient\"\xfc\x01\n\x0eVMRequirements\x12\x11\n\tgce_image\x18\x01 \x01(\t\x12\x12\n\ngce_region\x18\x02 \x01(\t\x12\x13\n\x0bgce_project\x18\x03 \x01(\t\x12\x13\n\x0bgce_network\x18\x04 \x01(\t\x12\x12\n\ngce_subnet\x18\x05 \x01(\t\x12\x18\n\x10gce_machine_type\x18\x06 \x01(\t\x12\x11\n\tgce_scope\x18\x07 \x01(\t\x12\x16\n\x0egce_ip_address\x18\x08 \x01(\t\x12\x15\n\rgce_disk_size\x18\n \x01(\x03\x12)\n\x04type\x18\t \x01(\x0e\x32\x1b.chromiumos.test.api.VMType\"\x80\x01\n\x02VM\x12\n\n\x02id\x18\x01 \x01(\t\x12/\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x1e.chromiumos.test.api.VMAddress\x12)\n\x04type\x18\x03 \x01(\x0e\x32\x1b.chromiumos.test.api.VMType\x12\x12\n\ngce_region\x18\x04 \x01(\t\"\'\n\tVMAddress\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"}\n\x0fLeaseVMResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12#\n\x02vm\x18\x02 \x01(\x0b\x32\x17.chromiumos.test.api.VM\x12\x33\n\x0f\x65xpiration_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Z\n\x12\x45xtendLeaseRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x32\n\x0f\x65xtend_duration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"\\\n\x13\x45xtendLeaseResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x33\n\x0f\x65xpiration_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"M\n\x10ReleaseVMRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x13\n\x0bgce_project\x18\x02 \x01(\t\x12\x12\n\ngce_region\x18\x03 \x01(\t\"%\n\x11ReleaseVMResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t*E\n\x06VMType\x12\x17\n\x13VM_TYPE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bVM_TYPE_DUT\x10\x01\x12\x11\n\rVM_TYPE_DRONE\x10\x02*T\n\x0fVMTestingClient\x12!\n\x1dVM_TESTING_CLIENT_UNSPECIFIED\x10\x00\x12\x1e\n\x1aVM_TESTING_CLIENT_CHROMEOS\x10\x01\x32\xab\x02\n\x0fVMLeaserService\x12V\n\x07LeaseVM\x12#.chromiumos.test.api.LeaseVMRequest\x1a$.chromiumos.test.api.LeaseVMResponse\"\x00\x12\\\n\tReleaseVM\x12%.chromiumos.test.api.ReleaseVMRequest\x1a&.chromiumos.test.api.ReleaseVMResponse\"\x00\x12\x62\n\x0b\x45xtendLease\x12\'.chromiumos.test.api.ExtendLeaseRequest\x1a(.chromiumos.test.api.ExtendLeaseResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n#chromiumos/test/api/vm_leaser.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfa\x01\n\x0eLeaseVMRequest\x12\x17\n\x0fidempotency_key\x18\x01 \x01(\t\x12\x14\n\x0con_behalf_of\x18\x02 \x01(\t\x12\x10\n\x08quota_id\x18\x03 \x01(\t\x12\x31\n\x0elease_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x36\n\thost_reqs\x18\x05 \x01(\x0b\x32#.chromiumos.test.api.VMRequirements\x12<\n\x0etesting_client\x18\x06 \x01(\x0e\x32$.chromiumos.test.api.VMTestingClient\"\xa1\x02\n\x0eVMRequirements\x12\x11\n\tgce_image\x18\x01 \x01(\t\x12\x12\n\ngce_region\x18\x02 \x01(\t\x12\x13\n\x0bgce_project\x18\x03 \x01(\t\x12\x13\n\x0bgce_network\x18\x04 \x01(\t\x12\x12\n\ngce_subnet\x18\x05 \x01(\t\x12#\n\x1bsubnet_mode_network_enabled\x18\x0b \x01(\x08\x12\x18\n\x10gce_machine_type\x18\x06 \x01(\t\x12\x11\n\tgce_scope\x18\x07 \x01(\t\x12\x16\n\x0egce_ip_address\x18\x08 \x01(\t\x12\x15\n\rgce_disk_size\x18\n \x01(\x03\x12)\n\x04type\x18\t \x01(\x0e\x32\x1b.chromiumos.test.api.VMType\"\x80\x01\n\x02VM\x12\n\n\x02id\x18\x01 \x01(\t\x12/\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32\x1e.chromiumos.test.api.VMAddress\x12)\n\x04type\x18\x03 \x01(\x0e\x32\x1b.chromiumos.test.api.VMType\x12\x12\n\ngce_region\x18\x04 \x01(\t\"\'\n\tVMAddress\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x05\"}\n\x0fLeaseVMResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12#\n\x02vm\x18\x02 \x01(\x0b\x32\x17.chromiumos.test.api.VM\x12\x33\n\x0f\x65xpiration_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Z\n\x12\x45xtendLeaseRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x32\n\x0f\x65xtend_duration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"\\\n\x13\x45xtendLeaseResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x33\n\x0f\x65xpiration_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"M\n\x10ReleaseVMRequest\x12\x10\n\x08lease_id\x18\x01 \x01(\t\x12\x13\n\x0bgce_project\x18\x02 \x01(\t\x12\x12\n\ngce_region\x18\x03 \x01(\t\"%\n\x11ReleaseVMResponse\x12\x10\n\x08lease_id\x18\x01 \x01(\t*E\n\x06VMType\x12\x17\n\x13VM_TYPE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bVM_TYPE_DUT\x10\x01\x12\x11\n\rVM_TYPE_DRONE\x10\x02*T\n\x0fVMTestingClient\x12!\n\x1dVM_TESTING_CLIENT_UNSPECIFIED\x10\x00\x12\x1e\n\x1aVM_TESTING_CLIENT_CHROMEOS\x10\x01\x32\xab\x02\n\x0fVMLeaserService\x12V\n\x07LeaseVM\x12#.chromiumos.test.api.LeaseVMRequest\x1a$.chromiumos.test.api.LeaseVMResponse\"\x00\x12\\\n\tReleaseVM\x12%.chromiumos.test.api.ReleaseVMRequest\x1a&.chromiumos.test.api.ReleaseVMResponse\"\x00\x12\x62\n\x0b\x45xtendLease\x12\'.chromiumos.test.api.ExtendLeaseRequest\x1a(.chromiumos.test.api.ExtendLeaseResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -51,8 +51,8 @@ _VMTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1236,
-  serialized_end=1305,
+  serialized_start=1273,
+  serialized_end=1342,
 )
 _sym_db.RegisterEnumDescriptor(_VMTYPE)
 
@@ -77,8 +77,8 @@ _VMTESTINGCLIENT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1307,
-  serialized_end=1391,
+  serialized_start=1344,
+  serialized_end=1428,
 )
 _sym_db.RegisterEnumDescriptor(_VMTESTINGCLIENT)
 
@@ -202,35 +202,42 @@ _VMREQUIREMENTS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='gce_machine_type', full_name='chromiumos.test.api.VMRequirements.gce_machine_type', index=5,
+      name='subnet_mode_network_enabled', full_name='chromiumos.test.api.VMRequirements.subnet_mode_network_enabled', index=5,
+      number=11, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='gce_machine_type', full_name='chromiumos.test.api.VMRequirements.gce_machine_type', index=6,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='gce_scope', full_name='chromiumos.test.api.VMRequirements.gce_scope', index=6,
+      name='gce_scope', full_name='chromiumos.test.api.VMRequirements.gce_scope', index=7,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='gce_ip_address', full_name='chromiumos.test.api.VMRequirements.gce_ip_address', index=7,
+      name='gce_ip_address', full_name='chromiumos.test.api.VMRequirements.gce_ip_address', index=8,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='gce_disk_size', full_name='chromiumos.test.api.VMRequirements.gce_disk_size', index=8,
+      name='gce_disk_size', full_name='chromiumos.test.api.VMRequirements.gce_disk_size', index=9,
       number=10, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='type', full_name='chromiumos.test.api.VMRequirements.type', index=9,
+      name='type', full_name='chromiumos.test.api.VMRequirements.type', index=10,
       number=9, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -249,7 +256,7 @@ _VMREQUIREMENTS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=379,
-  serialized_end=631,
+  serialized_end=668,
 )
 
 
@@ -301,8 +308,8 @@ _VM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=634,
-  serialized_end=762,
+  serialized_start=671,
+  serialized_end=799,
 )
 
 
@@ -340,8 +347,8 @@ _VMADDRESS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=764,
-  serialized_end=803,
+  serialized_start=801,
+  serialized_end=840,
 )
 
 
@@ -386,8 +393,8 @@ _LEASEVMRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=805,
-  serialized_end=930,
+  serialized_start=842,
+  serialized_end=967,
 )
 
 
@@ -425,8 +432,8 @@ _EXTENDLEASEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=932,
-  serialized_end=1022,
+  serialized_start=969,
+  serialized_end=1059,
 )
 
 
@@ -464,8 +471,8 @@ _EXTENDLEASERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1024,
-  serialized_end=1116,
+  serialized_start=1061,
+  serialized_end=1153,
 )
 
 
@@ -510,8 +517,8 @@ _RELEASEVMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1118,
-  serialized_end=1195,
+  serialized_start=1155,
+  serialized_end=1232,
 )
 
 
@@ -542,8 +549,8 @@ _RELEASEVMRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1197,
-  serialized_end=1234,
+  serialized_start=1234,
+  serialized_end=1271,
 )
 
 _LEASEVMREQUEST.fields_by_name['lease_duration'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
@@ -642,8 +649,8 @@ _VMLEASERSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1394,
-  serialized_end=1693,
+  serialized_start=1431,
+  serialized_end=1730,
   methods=[
   _descriptor.MethodDescriptor(
     name='LeaseVM',
