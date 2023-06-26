@@ -20291,6 +20291,9 @@
           "name": "CrosTestFinderTemplate"
         },
         {
+          "name": "CrosVMProvisionTemplate"
+        },
+        {
           "field": [
             {
               "jsonName": "binaryName",

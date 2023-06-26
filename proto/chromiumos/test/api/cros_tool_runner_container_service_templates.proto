@@ -75,6 +75,11 @@ message CrosTestTemplate {
 message CrosTestFinderTemplate {
 }
 
+// Plain template to demonstrate the usage of vm-provision container. All fields are
+// required.
+message CrosVMProvisionTemplate {
+}
+
 // Generic template to demonstrate the usage of any container.
 message GenericTemplate {
   // Name of the binary called within the container.
