@@ -20198,6 +20198,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GenericTemplate"
+            },
+            {
+              "jsonName": "crosVmProvision",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_vm_provision",
+              "number": 10,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosVMProvisionTemplate"
             }
           ],
           "name": "Template",

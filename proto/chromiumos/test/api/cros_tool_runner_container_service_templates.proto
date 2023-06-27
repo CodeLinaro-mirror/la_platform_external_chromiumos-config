@@ -24,6 +24,7 @@ message Template {
     CrosTestFinderTemplate cros_test_finder = 7;
     AndroidProvisionTemplate android_provision = 8;
     GenericTemplate generic = 9;
+    CrosVMProvisionTemplate cros_vm_provision = 10;
   }
 }
 
