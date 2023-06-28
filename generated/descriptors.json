@@ -20961,6 +20961,543 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/api/test_suite.proto",
+        "chromiumos/test/api/test_case_metadata.proto",
+        "chromiumos/build/api/container_metadata.proto",
+        "chromiumos/test/lab/api/dut.proto",
+        "google/protobuf/any.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "testSuite",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_suite",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            },
+            {
+              "jsonName": "hierarchicalPlan",
+              "label": "LABEL_OPTIONAL",
+              "name": "hierarchical_plan",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Reserved"
+            },
+            {
+              "jsonName": "hwTargets",
+              "label": "LABEL_OPTIONAL",
+              "name": "hw_targets",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HWTargets"
+            },
+            {
+              "jsonName": "swTargets",
+              "label": "LABEL_OPTIONAL",
+              "name": "sw_targets",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SWTargets"
+            },
+            {
+              "jsonName": "karbonFilters",
+              "label": "LABEL_REPEATED",
+              "name": "karbon_filters",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CTPFilter"
+            },
+            {
+              "jsonName": "koffeeFilters",
+              "label": "LABEL_REPEATED",
+              "name": "koffee_filters",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CTPFilter"
+            },
+            {
+              "jsonName": "pool",
+              "label": "LABEL_OPTIONAL",
+              "name": "pool",
+              "number": 8,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "schedukeMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "scheduke_metadata",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "CTPv2Request",
+          "oneofDecl": [
+            {
+              "name": "suite_request"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "legacyHw",
+              "label": "LABEL_OPTIONAL",
+              "name": "legacy_hw",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LegacyHW"
+            },
+            {
+              "jsonName": "dddHw",
+              "label": "LABEL_OPTIONAL",
+              "name": "ddd_hw",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DDDHW"
+            }
+          ],
+          "name": "HWTargets",
+          "oneofDecl": [
+            {
+              "name": "targets"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "legacySw",
+              "label": "LABEL_OPTIONAL",
+              "name": "legacy_sw",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LegacySWs"
+            },
+            {
+              "jsonName": "dddSw",
+              "label": "LABEL_OPTIONAL",
+              "name": "ddd_sw",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DDDSW"
+            }
+          ],
+          "name": "SWTargets",
+          "oneofDecl": [
+            {
+              "name": "sw_targets"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "legacySws",
+              "label": "LABEL_REPEATED",
+              "name": "legacy_sws",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LegacySWs.LegacySW"
+            }
+          ],
+          "name": "LegacySWs",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "build",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "build",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "gcsPath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gcs_path",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "LegacySW"
+            }
+          ]
+        },
+        {
+          "name": "DDDSW"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "board",
+              "label": "LABEL_REPEATED",
+              "name": "board",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_REPEATED",
+              "name": "model",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "anyModel",
+              "label": "LABEL_OPTIONAL",
+              "name": "any_model",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "variant",
+              "label": "LABEL_REPEATED",
+              "name": "variant",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "boardsExcludes",
+              "label": "LABEL_REPEATED",
+              "name": "boards_excludes",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "modelExcludes",
+              "label": "LABEL_REPEATED",
+              "name": "model_excludes",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "multiDut",
+              "label": "LABEL_OPTIONAL",
+              "name": "multi_dut",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.MultiDut"
+            }
+          ],
+          "name": "LegacyHW"
+        },
+        {
+          "name": "DDDHW"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "primary",
+              "label": "LABEL_OPTIONAL",
+              "name": "primary",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "secondary",
+              "label": "LABEL_OPTIONAL",
+              "name": "secondary",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Pair"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "boards",
+              "label": "LABEL_REPEATED",
+              "name": "boards",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Pair"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_REPEATED",
+              "name": "model",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Pair"
+            }
+          ],
+          "name": "MultiDut"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "container",
+              "label": "LABEL_OPTIONAL",
+              "name": "container",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.ContainerImageInfo"
+            },
+            {
+              "jsonName": "dependentContainers",
+              "label": "LABEL_REPEATED",
+              "name": "dependent_containers",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.ContainerImageInfo"
+            },
+            {
+              "jsonName": "containerMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_metadata",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "CTPFilter"
+        },
+        {
+          "name": "Reserved"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testCases",
+              "label": "LABEL_REPEATED",
+              "name": "test_cases",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CTPTestCase"
+            },
+            {
+              "jsonName": "suiteMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite_metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteMetadata"
+            }
+          ],
+          "name": "InternalTestplan"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseMetadata"
+            },
+            {
+              "jsonName": "hwRequirements",
+              "label": "LABEL_REPEATED",
+              "name": "hw_requirements",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HWRequirements"
+            },
+            {
+              "jsonName": "swRequirements",
+              "label": "LABEL_REPEATED",
+              "name": "sw_requirements",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SWRequirements"
+            }
+          ],
+          "name": "CTPTestCase"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hwRequirements",
+              "label": "LABEL_REPEATED",
+              "name": "hw_requirements",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HWRequirements"
+            },
+            {
+              "jsonName": "channels",
+              "label": "LABEL_REPEATED",
+              "name": "channels",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pool",
+              "label": "LABEL_OPTIONAL",
+              "name": "pool",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SuiteMetadata"
+        },
+        {
+          "enumType": [
+            {
+              "name": "State",
+              "value": [
+                {
+                  "name": "REQUIRED",
+                  "number": 0
+                },
+                {
+                  "name": "OPTIONAL",
+                  "number": 1
+                },
+                {
+                  "name": "PREFERRED",
+                  "number": 2
+                },
+                {
+                  "name": "BANNED",
+                  "number": 3
+                },
+                {
+                  "name": "ONEOF",
+                  "number": 4
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "hwDefinition",
+              "label": "LABEL_REPEATED",
+              "name": "hw_definition",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SwarmingDefinition"
+            }
+          ],
+          "name": "HWRequirements"
+        },
+        {
+          "name": "SWRequirements"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Type",
+              "value": [
+                {
+                  "name": "CROS",
+                  "number": 0
+                },
+                {
+                  "name": "ANDROID",
+                  "number": 1
+                },
+                {
+                  "name": "ROFW",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "installRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "install_request",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallInfo"
+            },
+            {
+              "jsonName": "identifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "identifier",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ProvisionInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dutInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            },
+            {
+              "jsonName": "provisionInfo",
+              "label": "LABEL_REPEATED",
+              "name": "provision_info",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionInfo"
+            }
+          ],
+          "name": "SwarmingDefinition"
+        },
+        {
+          "name": "InstallInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testRequests",
+              "label": "LABEL_REPEATED",
+              "name": "test_requests",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestRunnerRequest"
+            }
+          ],
+          "name": "CTPv2Response"
+        },
+        {
+          "name": "CrosTestRunnerRequest"
+        }
+      ],
+      "name": "chromiumos/test/api/ctp2.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.CTPv2Request",
+              "name": "RequestResolver",
+              "outputType": ".chromiumos.test.api.CTPv2Response"
+            }
+          ],
+          "name": "CTPv2Service"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/longrunning/operations.proto"
       ],
