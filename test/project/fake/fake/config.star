@@ -400,7 +400,16 @@ _LTE_BOARD_WITH_NO_DPR = hw_topo.create_cellular_board(
     type = hw_topo.cellular.CELLULAR_LTE,
     dynamic_power_reduction_config = None,
 )
-_SD_READER = hw_topo.create_sd_reader("SD_READER", "Default sd_reader")
+_SD_READER = hw_topo.create_sd_reader(
+    "SD_READER",
+    "Default sd_reader",
+    present = True,
+)
+_NO_SD_READER = hw_topo.create_sd_reader(
+    "SD_READER",
+    "No sd_reader",
+    present = False,
+)
 _MOTHERBOARD_USB = hw_topo.create_motherboard_usb(
     "MOTHERBOARD_USB",
     "Default motherboard_usb",
@@ -802,7 +811,8 @@ def create_hardware_topology(
         dgpu = None,
         uwb = None,
         detachable_base = None,
-        soc = None):
+        soc = None,
+        sd_reader = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -819,7 +829,7 @@ def create_hardware_topology(
         motherboard_usb = _MOTHERBOARD_USB,
         non_volatile_storage = _NON_VOLATILE_STORAGE,
         proximity_sensor = proximity_sensor,
-        sd_reader = _SD_READER,
+        sd_reader = sd_reader if sd_reader else _SD_READER,
         thermal = _THERMAL,
         wifi = wifi if wifi else _WIFI,
         power_button = _POWER_BUTTON,
@@ -864,6 +874,7 @@ design.append_configs(
         battery = _BATTERY,
         dgpu = _DGPU,
         uwb = _UWB,
+        sd_reader = _NO_SD_READER,
     ),
     bluetooth = _SC_BLUETOOTH,
     health = _SC_HEALTH,

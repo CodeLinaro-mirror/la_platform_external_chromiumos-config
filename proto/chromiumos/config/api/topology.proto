@@ -110,7 +110,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 44
+// NEXT TAG: 48
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -996,6 +996,13 @@ message HardwareFeatures {
   Vrr vrr = 46;
   message Vrr {
     // If VRR is supported.
+    Present present = 1;
+  }
+
+  // SD reader properties
+  SdReader sd_reader = 47;
+  message SdReader {
+    // If SD reader is supported.
     Present present = 1;
   }
 }

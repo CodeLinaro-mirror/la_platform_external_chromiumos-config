@@ -1146,11 +1146,12 @@ def _make_cellular_dynamic_power_reduction_config(
 
     return config
 
-def _create_sd_reader(id, description, fw_configs = []):
+def _create_sd_reader(id, description, present = True, fw_configs = []):
     """Builds a Topology proto for a SD reader."""
     hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
+    hw_features.sd_reader.present = _bool_to_present(present)
 
     return topo_pb.Topology(
         id = id,
@@ -2002,6 +2003,9 @@ def _convert_to_hw_features(hardware_topology):
 
     # Handle all possible sd reader hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.sd_reader.hardware_feature.fw_config)
+
+    if copy.sd_reader.hardware_feature.sd_reader != _HW_FEAT.SdReader():
+        result.sd_reader = copy.sd_reader.hardware_feature.sd_reader
 
     # Handle all possible bluetooth features attributes
     _accumulate_fw_config(result.fw_config, copy.bluetooth.hardware_feature.fw_config)

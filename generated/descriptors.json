@@ -4351,6 +4351,14 @@
               "number": 46,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Vrr"
+            },
+            {
+              "jsonName": "sdReader",
+              "label": "LABEL_OPTIONAL",
+              "name": "sd_reader",
+              "number": 47,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.SdReader"
             }
           ],
           "name": "HardwareFeatures",
@@ -6612,6 +6620,19 @@
                 }
               ],
               "name": "Vrr"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "SdReader"
             }
           ]
         }
