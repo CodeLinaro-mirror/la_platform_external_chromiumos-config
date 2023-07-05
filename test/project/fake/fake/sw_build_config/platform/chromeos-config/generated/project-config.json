@@ -287,9 +287,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -561,9 +561,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -846,9 +846,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -1248,9 +1248,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -1501,9 +1501,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -1764,9 +1764,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -2063,9 +2063,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -2341,9 +2341,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -2605,9 +2605,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -2892,9 +2892,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -3138,9 +3138,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -3396,9 +3396,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -3642,9 +3642,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -3896,9 +3896,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -4150,9 +4150,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -4409,9 +4409,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -4656,9 +4656,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -4915,9 +4915,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -5162,9 +5162,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -5417,9 +5417,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -5672,9 +5672,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -5925,9 +5925,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -6184,9 +6184,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -6443,9 +6443,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -6702,9 +6702,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -6951,9 +6951,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -7181,9 +7181,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -7406,9 +7406,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
@@ -7631,9 +7631,9 @@
               "symlink": "/lib/firmware/sis_111A.bin"
             },
             {
-              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
+              "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
-              "symlink": "/lib/firmware/ilitek_2323.hex"
+              "symlink": "/lib/firmware/ilitek_2323.bin"
             },
             {
               "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",

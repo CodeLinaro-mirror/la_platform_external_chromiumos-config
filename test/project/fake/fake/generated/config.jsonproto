@@ -12001,8 +12001,8 @@
       },
       "name": "ilitek",
       "touchVendor": {
-        "destinationFileFormat": "{product_id}_{fw_version}.hex",
-        "symlinkFileFormat": "ilitek_{product_id}.hex",
+        "destinationFileFormat": "{product_id}_{fw_version}.bin",
+        "symlinkFileFormat": "ilitek_{product_id}.bin",
         "vendorId": "222A"
       }
     },

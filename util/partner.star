@@ -191,8 +191,8 @@ partner = struct(
         ILITEK = _create_touch_partner(
             name = "ilitek",
             vendor_id = "222A",
-            symlink_file_format = "ilitek_{product_id}.hex",
-            destination_file_format = "{product_id}_{fw_version}.hex",
+            symlink_file_format = "ilitek_{product_id}.bin",
+            destination_file_format = "{product_id}_{fw_version}.bin",
         ),
         ILITDDI = _create_touch_partner(
             name = "ilitddi",
