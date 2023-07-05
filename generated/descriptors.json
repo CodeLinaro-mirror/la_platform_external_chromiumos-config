@@ -19063,6 +19063,15 @@
               "typeName": ".chromiumos.test.api.TestCaseResult.NotRun"
             },
             {
+              "jsonName": "warn",
+              "label": "LABEL_OPTIONAL",
+              "name": "warn",
+              "number": 15,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Warn"
+            },
+            {
               "jsonName": "reason",
               "label": "LABEL_OPTIONAL",
               "name": "reason",
@@ -19131,6 +19140,9 @@
             },
             {
               "name": "NotRun"
+            },
+            {
+              "name": "Warn"
             }
           ],
           "oneofDecl": [
