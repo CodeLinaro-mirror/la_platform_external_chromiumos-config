@@ -4405,6 +4405,11 @@
               "symlink": "/lib/firmware/ilitek_2323.hex"
             },
             {
+              "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitddi/0001_0C.00.02.00.bin",
+              "symlink": "/lib/firmware/ilitddi_0001.hex"
+            },
+            {
               "destination": "/opt/google/touch/firmware/99.0_9.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
               "symlink": "/lib/firmware/elan_i2c_99.0.bin"
@@ -4645,6 +4650,11 @@
               "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
               "symlink": "/lib/firmware/ilitek_2323.hex"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitddi/0001_0C.00.02.00.bin",
+              "symlink": "/lib/firmware/ilitddi_0001.hex"
             },
             {
               "destination": "/opt/google/touch/firmware/99.0_9.0.bin",
@@ -4901,6 +4911,11 @@
               "symlink": "/lib/firmware/ilitek_2323.hex"
             },
             {
+              "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitddi/0001_0C.00.02.00.bin",
+              "symlink": "/lib/firmware/ilitddi_0001.hex"
+            },
+            {
               "destination": "/opt/google/touch/firmware/99.0_9.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
               "symlink": "/lib/firmware/elan_i2c_99.0.bin"
@@ -5141,6 +5156,11 @@
               "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
               "symlink": "/lib/firmware/ilitek_2323.hex"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitddi/0001_0C.00.02.00.bin",
+              "symlink": "/lib/firmware/ilitddi_0001.hex"
             },
             {
               "destination": "/opt/google/touch/firmware/99.0_9.0.bin",
@@ -5393,6 +5413,11 @@
               "symlink": "/lib/firmware/ilitek_2323.hex"
             },
             {
+              "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitddi/0001_0C.00.02.00.bin",
+              "symlink": "/lib/firmware/ilitddi_0001.hex"
+            },
+            {
               "destination": "/opt/google/touch/firmware/99.0_9.0.bin",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/elan/99.0_9.0.bin",
               "symlink": "/lib/firmware/elan_i2c_99.0.bin"
@@ -5641,6 +5666,11 @@
               "destination": "/opt/google/touch/firmware/2323_0700.0000.0000.0000.hex",
               "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitek/2323_0700.0000.0000.0000.bin",
               "symlink": "/lib/firmware/ilitek_2323.hex"
+            },
+            {
+              "destination": "/opt/google/touch/firmware/0001_0C.00.02.00.hex",
+              "source": "fake/sw_build_config/platform/chromeos-config/touch/ilitddi/0001_0C.00.02.00.bin",
+              "symlink": "/lib/firmware/ilitddi_0001.hex"
             },
             {
               "destination": "/opt/google/touch/firmware/99.0_9.0.bin",
