@@ -16,7 +16,7 @@ import "chromiumos/test/api/test_harness.proto";
 import "chromiumos/test/api/test_case_metadata.proto";
 
 // Result of a single execution of a given TestCase.
-// NEXT TAG: 15
+// NEXT TAG: 17
 message TestCaseResult {
   // Unique ID of test case executed
   TestCase.Id test_case_id = 1;
@@ -43,6 +43,11 @@ message TestCaseResult {
   }
 
   // Reason associated with status above to provide more information.
+  //
+  // For fail/crash/abort statuses, the `errors` collection below
+  // should be populated in preference to this field. For skip or
+  // not_run status, this field may be used to communicate why the
+  // test was skipped or not run.
   string reason = 9;
 
   // Test harness information.
@@ -59,6 +64,27 @@ message TestCaseResult {
 
   // The metadata of the test.
   api.TestCaseMetadata test_case_metadata = 14;
+
+  // The error(s) that caused the test to fail.
+  //
+  // If there is more than one error (e.g. due to multiple expectation failures),
+  // a stable sorting should be used. A recommended form of stable sorting is:
+  // - Fatal errors (errors that cause the test to terminate immediately first,
+  //   then
+  // - Within fatal/non-fatal errors, sort by chronological order
+  //   (earliest error first).
+  repeated Error errors = 16;
+
+  // Error represents a problem that caused a test to fail, such as a crash
+  // or expectation failure.
+  message Error {
+    // The error message. This should only be the error message and
+    // should not include any stack traces. An example would be the
+    // message passed to .Error(...) in a Tast test.
+    //
+    // This message may be used to cluster related failures together.
+    string message = 1;
+  }
 
   message Artifacts {
   }

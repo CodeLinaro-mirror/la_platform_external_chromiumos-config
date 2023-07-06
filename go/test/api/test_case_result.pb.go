@@ -28,7 +28,7 @@ const (
 )
 
 // Result of a single execution of a given TestCase.
-// NEXT TAG: 15
+// NEXT TAG: 17
 type TestCaseResult struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -48,6 +48,11 @@ type TestCaseResult struct {
 	//	*TestCaseResult_Warn_
 	Verdict isTestCaseResult_Verdict `protobuf_oneof:"verdict"`
 	// Reason associated with status above to provide more information.
+	//
+	// For fail/crash/abort statuses, the `errors` collection below
+	// should be populated in preference to this field. For skip or
+	// not_run status, this field may be used to communicate why the
+	// test was skipped or not run.
 	Reason string `protobuf:"bytes,9,opt,name=reason,proto3" json:"reason,omitempty"`
 	// Test harness information.
 	TestHarness *TestHarness `protobuf:"bytes,10,opt,name=test_harness,json=testHarness,proto3" json:"test_harness,omitempty"`
@@ -59,6 +64,15 @@ type TestCaseResult struct {
 	Retry bool `protobuf:"varint,13,opt,name=retry,proto3" json:"retry,omitempty"`
 	// The metadata of the test.
 	TestCaseMetadata *TestCaseMetadata `protobuf:"bytes,14,opt,name=test_case_metadata,json=testCaseMetadata,proto3" json:"test_case_metadata,omitempty"`
+	// The error(s) that caused the test to fail.
+	//
+	// If there is more than one error (e.g. due to multiple expectation failures),
+	// a stable sorting should be used. A recommended form of stable sorting is:
+	// - Fatal errors (errors that cause the test to terminate immediately first,
+	//   then
+	// - Within fatal/non-fatal errors, sort by chronological order
+	//   (earliest error first).
+	Errors []*TestCaseResult_Error `protobuf:"bytes,16,rep,name=errors,proto3" json:"errors,omitempty"`
 }
 
 func (x *TestCaseResult) Reset() {
@@ -205,6 +219,13 @@ func (x *TestCaseResult) GetTestCaseMetadata() *TestCaseMetadata {
 	return nil
 }
 
+func (x *TestCaseResult) GetErrors() []*TestCaseResult_Error {
+	if x != nil {
+		return x.Errors
+	}
+	return nil
+}
+
 type isTestCaseResult_Verdict interface {
 	isTestCaseResult_Verdict()
 }
@@ -259,6 +280,60 @@ func (*TestCaseResult_NotRun_) isTestCaseResult_Verdict() {}
 
 func (*TestCaseResult_Warn_) isTestCaseResult_Verdict() {}
 
+// Error represents a problem that caused a test to fail, such as a crash
+// or expectation failure.
+type TestCaseResult_Error struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The error message. This should only be the error message and
+	// should not include any stack traces. An example would be the
+	// message passed to .Error(...) in a Tast test.
+	//
+	// This message may be used to cluster related failures together.
+	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *TestCaseResult_Error) Reset() {
+	*x = TestCaseResult_Error{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TestCaseResult_Error) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TestCaseResult_Error) ProtoMessage() {}
+
+func (x *TestCaseResult_Error) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TestCaseResult_Error.ProtoReflect.Descriptor instead.
+func (*TestCaseResult_Error) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 0}
+}
+
+func (x *TestCaseResult_Error) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 type TestCaseResult_Artifacts struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -268,7 +343,7 @@ type TestCaseResult_Artifacts struct {
 func (x *TestCaseResult_Artifacts) Reset() {
 	*x = TestCaseResult_Artifacts{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[1]
+		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -281,7 +356,7 @@ func (x *TestCaseResult_Artifacts) String() string {
 func (*TestCaseResult_Artifacts) ProtoMessage() {}
 
 func (x *TestCaseResult_Artifacts) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[1]
+	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -294,7 +369,7 @@ func (x *TestCaseResult_Artifacts) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseResult_Artifacts.ProtoReflect.Descriptor instead.
 func (*TestCaseResult_Artifacts) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 0}
+	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 1}
 }
 
 type TestCaseResult_Pass struct {
@@ -306,7 +381,7 @@ type TestCaseResult_Pass struct {
 func (x *TestCaseResult_Pass) Reset() {
 	*x = TestCaseResult_Pass{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[2]
+		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -319,7 +394,7 @@ func (x *TestCaseResult_Pass) String() string {
 func (*TestCaseResult_Pass) ProtoMessage() {}
 
 func (x *TestCaseResult_Pass) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[2]
+	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -332,7 +407,7 @@ func (x *TestCaseResult_Pass) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseResult_Pass.ProtoReflect.Descriptor instead.
 func (*TestCaseResult_Pass) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 1}
+	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 2}
 }
 
 type TestCaseResult_Fail struct {
@@ -344,7 +419,7 @@ type TestCaseResult_Fail struct {
 func (x *TestCaseResult_Fail) Reset() {
 	*x = TestCaseResult_Fail{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[3]
+		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -357,7 +432,7 @@ func (x *TestCaseResult_Fail) String() string {
 func (*TestCaseResult_Fail) ProtoMessage() {}
 
 func (x *TestCaseResult_Fail) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[3]
+	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -370,7 +445,7 @@ func (x *TestCaseResult_Fail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseResult_Fail.ProtoReflect.Descriptor instead.
 func (*TestCaseResult_Fail) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 2}
+	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 3}
 }
 
 type TestCaseResult_Crash struct {
@@ -382,7 +457,7 @@ type TestCaseResult_Crash struct {
 func (x *TestCaseResult_Crash) Reset() {
 	*x = TestCaseResult_Crash{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[4]
+		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -395,7 +470,7 @@ func (x *TestCaseResult_Crash) String() string {
 func (*TestCaseResult_Crash) ProtoMessage() {}
 
 func (x *TestCaseResult_Crash) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[4]
+	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -408,7 +483,7 @@ func (x *TestCaseResult_Crash) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseResult_Crash.ProtoReflect.Descriptor instead.
 func (*TestCaseResult_Crash) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 3}
+	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 4}
 }
 
 type TestCaseResult_Abort struct {
@@ -420,7 +495,7 @@ type TestCaseResult_Abort struct {
 func (x *TestCaseResult_Abort) Reset() {
 	*x = TestCaseResult_Abort{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[5]
+		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -433,7 +508,7 @@ func (x *TestCaseResult_Abort) String() string {
 func (*TestCaseResult_Abort) ProtoMessage() {}
 
 func (x *TestCaseResult_Abort) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[5]
+	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -446,7 +521,7 @@ func (x *TestCaseResult_Abort) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseResult_Abort.ProtoReflect.Descriptor instead.
 func (*TestCaseResult_Abort) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 4}
+	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 5}
 }
 
 type TestCaseResult_Skip struct {
@@ -458,7 +533,7 @@ type TestCaseResult_Skip struct {
 func (x *TestCaseResult_Skip) Reset() {
 	*x = TestCaseResult_Skip{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[6]
+		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -471,7 +546,7 @@ func (x *TestCaseResult_Skip) String() string {
 func (*TestCaseResult_Skip) ProtoMessage() {}
 
 func (x *TestCaseResult_Skip) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[6]
+	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -484,7 +559,7 @@ func (x *TestCaseResult_Skip) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseResult_Skip.ProtoReflect.Descriptor instead.
 func (*TestCaseResult_Skip) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 5}
+	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 6}
 }
 
 type TestCaseResult_NotRun struct {
@@ -496,7 +571,7 @@ type TestCaseResult_NotRun struct {
 func (x *TestCaseResult_NotRun) Reset() {
 	*x = TestCaseResult_NotRun{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[7]
+		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -509,7 +584,7 @@ func (x *TestCaseResult_NotRun) String() string {
 func (*TestCaseResult_NotRun) ProtoMessage() {}
 
 func (x *TestCaseResult_NotRun) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[7]
+	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -522,7 +597,7 @@ func (x *TestCaseResult_NotRun) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseResult_NotRun.ProtoReflect.Descriptor instead.
 func (*TestCaseResult_NotRun) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 6}
+	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 7}
 }
 
 type TestCaseResult_Warn struct {
@@ -534,7 +609,7 @@ type TestCaseResult_Warn struct {
 func (x *TestCaseResult_Warn) Reset() {
 	*x = TestCaseResult_Warn{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[8]
+		mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -547,7 +622,7 @@ func (x *TestCaseResult_Warn) String() string {
 func (*TestCaseResult_Warn) ProtoMessage() {}
 
 func (x *TestCaseResult_Warn) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[8]
+	mi := &file_chromiumos_test_api_test_case_result_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -560,7 +635,7 @@ func (x *TestCaseResult_Warn) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TestCaseResult_Warn.ProtoReflect.Descriptor instead.
 func (*TestCaseResult_Warn) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 7}
+	return file_chromiumos_test_api_test_case_result_proto_rawDescGZIP(), []int{0, 8}
 }
 
 var File_chromiumos_test_api_test_case_result_proto protoreflect.FileDescriptor
@@ -583,7 +658,7 @@ var file_chromiumos_test_api_test_case_result_proto_rawDesc = []byte{
 	0x5f, 0x68, 0x61, 0x72, 0x6e, 0x65, 0x73, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x2c,
 	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f,
 	0x61, 0x70, 0x69, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x63, 0x61, 0x73, 0x65, 0x5f, 0x6d, 0x65,
-	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xf0, 0x07, 0x0a,
+	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xd6, 0x08, 0x0a,
 	0x0e, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12,
 	0x42, 0x0a, 0x0c, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x63, 0x61, 0x73, 0x65, 0x5f, 0x69, 0x64, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d,
@@ -641,16 +716,22 @@ var file_chromiumos_test_api_test_case_result_proto_rawDesc = []byte{
 	0x28, 0x0b, 0x32, 0x25, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
 	0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73,
 	0x65, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x10, 0x74, 0x65, 0x73, 0x74, 0x43,
-	0x61, 0x73, 0x65, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x0b, 0x0a, 0x09, 0x41,
-	0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x73, 0x1a, 0x06, 0x0a, 0x04, 0x50, 0x61, 0x73, 0x73,
-	0x1a, 0x06, 0x0a, 0x04, 0x46, 0x61, 0x69, 0x6c, 0x1a, 0x07, 0x0a, 0x05, 0x43, 0x72, 0x61, 0x73,
-	0x68, 0x1a, 0x07, 0x0a, 0x05, 0x41, 0x62, 0x6f, 0x72, 0x74, 0x1a, 0x06, 0x0a, 0x04, 0x53, 0x6b,
-	0x69, 0x70, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x52, 0x75, 0x6e, 0x1a, 0x06, 0x0a, 0x04,
-	0x57, 0x61, 0x72, 0x6e, 0x42, 0x09, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x64, 0x69, 0x63, 0x74, 0x42,
-	0x2f, 0x5a, 0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f,
-	0x72, 0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f,
-	0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x61, 0x73, 0x65, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x41, 0x0a, 0x06, 0x65,
+	0x72, 0x72, 0x6f, 0x72, 0x73, 0x18, 0x10, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x63, 0x68,
+	0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x43, 0x61, 0x73, 0x65, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74,
+	0x2e, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x52, 0x06, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x73, 0x1a, 0x21,
+	0x0a, 0x05, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x1a, 0x0b, 0x0a, 0x09, 0x41, 0x72, 0x74, 0x69, 0x66, 0x61, 0x63, 0x74, 0x73, 0x1a, 0x06,
+	0x0a, 0x04, 0x50, 0x61, 0x73, 0x73, 0x1a, 0x06, 0x0a, 0x04, 0x46, 0x61, 0x69, 0x6c, 0x1a, 0x07,
+	0x0a, 0x05, 0x43, 0x72, 0x61, 0x73, 0x68, 0x1a, 0x07, 0x0a, 0x05, 0x41, 0x62, 0x6f, 0x72, 0x74,
+	0x1a, 0x06, 0x0a, 0x04, 0x53, 0x6b, 0x69, 0x70, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x52,
+	0x75, 0x6e, 0x1a, 0x06, 0x0a, 0x04, 0x57, 0x61, 0x72, 0x6e, 0x42, 0x09, 0x0a, 0x07, 0x76, 0x65,
+	0x72, 0x64, 0x69, 0x63, 0x74, 0x42, 0x2f, 0x5a, 0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75,
+	0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65,
+	0x73, 0x74, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -665,43 +746,45 @@ func file_chromiumos_test_api_test_case_result_proto_rawDescGZIP() []byte {
 	return file_chromiumos_test_api_test_case_result_proto_rawDescData
 }
 
-var file_chromiumos_test_api_test_case_result_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_chromiumos_test_api_test_case_result_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_chromiumos_test_api_test_case_result_proto_goTypes = []interface{}{
 	(*TestCaseResult)(nil),           // 0: chromiumos.test.api.TestCaseResult
-	(*TestCaseResult_Artifacts)(nil), // 1: chromiumos.test.api.TestCaseResult.Artifacts
-	(*TestCaseResult_Pass)(nil),      // 2: chromiumos.test.api.TestCaseResult.Pass
-	(*TestCaseResult_Fail)(nil),      // 3: chromiumos.test.api.TestCaseResult.Fail
-	(*TestCaseResult_Crash)(nil),     // 4: chromiumos.test.api.TestCaseResult.Crash
-	(*TestCaseResult_Abort)(nil),     // 5: chromiumos.test.api.TestCaseResult.Abort
-	(*TestCaseResult_Skip)(nil),      // 6: chromiumos.test.api.TestCaseResult.Skip
-	(*TestCaseResult_NotRun)(nil),    // 7: chromiumos.test.api.TestCaseResult.NotRun
-	(*TestCaseResult_Warn)(nil),      // 8: chromiumos.test.api.TestCaseResult.Warn
-	(*TestCase_Id)(nil),              // 9: chromiumos.test.api.TestCase.Id
-	(*_go.StoragePath)(nil),          // 10: chromiumos.StoragePath
-	(*TestHarness)(nil),              // 11: chromiumos.test.api.TestHarness
-	(*timestamppb.Timestamp)(nil),    // 12: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),      // 13: google.protobuf.Duration
-	(*TestCaseMetadata)(nil),         // 14: chromiumos.test.api.TestCaseMetadata
+	(*TestCaseResult_Error)(nil),     // 1: chromiumos.test.api.TestCaseResult.Error
+	(*TestCaseResult_Artifacts)(nil), // 2: chromiumos.test.api.TestCaseResult.Artifacts
+	(*TestCaseResult_Pass)(nil),      // 3: chromiumos.test.api.TestCaseResult.Pass
+	(*TestCaseResult_Fail)(nil),      // 4: chromiumos.test.api.TestCaseResult.Fail
+	(*TestCaseResult_Crash)(nil),     // 5: chromiumos.test.api.TestCaseResult.Crash
+	(*TestCaseResult_Abort)(nil),     // 6: chromiumos.test.api.TestCaseResult.Abort
+	(*TestCaseResult_Skip)(nil),      // 7: chromiumos.test.api.TestCaseResult.Skip
+	(*TestCaseResult_NotRun)(nil),    // 8: chromiumos.test.api.TestCaseResult.NotRun
+	(*TestCaseResult_Warn)(nil),      // 9: chromiumos.test.api.TestCaseResult.Warn
+	(*TestCase_Id)(nil),              // 10: chromiumos.test.api.TestCase.Id
+	(*_go.StoragePath)(nil),          // 11: chromiumos.StoragePath
+	(*TestHarness)(nil),              // 12: chromiumos.test.api.TestHarness
+	(*timestamppb.Timestamp)(nil),    // 13: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),      // 14: google.protobuf.Duration
+	(*TestCaseMetadata)(nil),         // 15: chromiumos.test.api.TestCaseMetadata
 }
 var file_chromiumos_test_api_test_case_result_proto_depIdxs = []int32{
-	9,  // 0: chromiumos.test.api.TestCaseResult.test_case_id:type_name -> chromiumos.test.api.TestCase.Id
-	10, // 1: chromiumos.test.api.TestCaseResult.result_dir_path:type_name -> chromiumos.StoragePath
-	2,  // 2: chromiumos.test.api.TestCaseResult.pass:type_name -> chromiumos.test.api.TestCaseResult.Pass
-	3,  // 3: chromiumos.test.api.TestCaseResult.fail:type_name -> chromiumos.test.api.TestCaseResult.Fail
-	4,  // 4: chromiumos.test.api.TestCaseResult.crash:type_name -> chromiumos.test.api.TestCaseResult.Crash
-	5,  // 5: chromiumos.test.api.TestCaseResult.abort:type_name -> chromiumos.test.api.TestCaseResult.Abort
-	6,  // 6: chromiumos.test.api.TestCaseResult.skip:type_name -> chromiumos.test.api.TestCaseResult.Skip
-	7,  // 7: chromiumos.test.api.TestCaseResult.not_run:type_name -> chromiumos.test.api.TestCaseResult.NotRun
-	8,  // 8: chromiumos.test.api.TestCaseResult.warn:type_name -> chromiumos.test.api.TestCaseResult.Warn
-	11, // 9: chromiumos.test.api.TestCaseResult.test_harness:type_name -> chromiumos.test.api.TestHarness
-	12, // 10: chromiumos.test.api.TestCaseResult.start_time:type_name -> google.protobuf.Timestamp
-	13, // 11: chromiumos.test.api.TestCaseResult.duration:type_name -> google.protobuf.Duration
-	14, // 12: chromiumos.test.api.TestCaseResult.test_case_metadata:type_name -> chromiumos.test.api.TestCaseMetadata
-	13, // [13:13] is the sub-list for method output_type
-	13, // [13:13] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	10, // 0: chromiumos.test.api.TestCaseResult.test_case_id:type_name -> chromiumos.test.api.TestCase.Id
+	11, // 1: chromiumos.test.api.TestCaseResult.result_dir_path:type_name -> chromiumos.StoragePath
+	3,  // 2: chromiumos.test.api.TestCaseResult.pass:type_name -> chromiumos.test.api.TestCaseResult.Pass
+	4,  // 3: chromiumos.test.api.TestCaseResult.fail:type_name -> chromiumos.test.api.TestCaseResult.Fail
+	5,  // 4: chromiumos.test.api.TestCaseResult.crash:type_name -> chromiumos.test.api.TestCaseResult.Crash
+	6,  // 5: chromiumos.test.api.TestCaseResult.abort:type_name -> chromiumos.test.api.TestCaseResult.Abort
+	7,  // 6: chromiumos.test.api.TestCaseResult.skip:type_name -> chromiumos.test.api.TestCaseResult.Skip
+	8,  // 7: chromiumos.test.api.TestCaseResult.not_run:type_name -> chromiumos.test.api.TestCaseResult.NotRun
+	9,  // 8: chromiumos.test.api.TestCaseResult.warn:type_name -> chromiumos.test.api.TestCaseResult.Warn
+	12, // 9: chromiumos.test.api.TestCaseResult.test_harness:type_name -> chromiumos.test.api.TestHarness
+	13, // 10: chromiumos.test.api.TestCaseResult.start_time:type_name -> google.protobuf.Timestamp
+	14, // 11: chromiumos.test.api.TestCaseResult.duration:type_name -> google.protobuf.Duration
+	15, // 12: chromiumos.test.api.TestCaseResult.test_case_metadata:type_name -> chromiumos.test.api.TestCaseMetadata
+	1,  // 13: chromiumos.test.api.TestCaseResult.errors:type_name -> chromiumos.test.api.TestCaseResult.Error
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_api_test_case_result_proto_init() }
@@ -726,7 +809,7 @@ func file_chromiumos_test_api_test_case_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_test_case_result_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TestCaseResult_Artifacts); i {
+			switch v := v.(*TestCaseResult_Error); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -738,7 +821,7 @@ func file_chromiumos_test_api_test_case_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_test_case_result_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TestCaseResult_Pass); i {
+			switch v := v.(*TestCaseResult_Artifacts); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -750,7 +833,7 @@ func file_chromiumos_test_api_test_case_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_test_case_result_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TestCaseResult_Fail); i {
+			switch v := v.(*TestCaseResult_Pass); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -762,7 +845,7 @@ func file_chromiumos_test_api_test_case_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_test_case_result_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TestCaseResult_Crash); i {
+			switch v := v.(*TestCaseResult_Fail); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -774,7 +857,7 @@ func file_chromiumos_test_api_test_case_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_test_case_result_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TestCaseResult_Abort); i {
+			switch v := v.(*TestCaseResult_Crash); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -786,7 +869,7 @@ func file_chromiumos_test_api_test_case_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_test_case_result_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TestCaseResult_Skip); i {
+			switch v := v.(*TestCaseResult_Abort); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -798,7 +881,7 @@ func file_chromiumos_test_api_test_case_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_test_case_result_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TestCaseResult_NotRun); i {
+			switch v := v.(*TestCaseResult_Skip); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -810,6 +893,18 @@ func file_chromiumos_test_api_test_case_result_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_test_case_result_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TestCaseResult_NotRun); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_test_case_result_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TestCaseResult_Warn); i {
 			case 0:
 				return &v.state
@@ -837,7 +932,7 @@ func file_chromiumos_test_api_test_case_result_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_api_test_case_result_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -19130,10 +19130,30 @@
               "number": 14,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCaseMetadata"
+            },
+            {
+              "jsonName": "errors",
+              "label": "LABEL_REPEATED",
+              "name": "errors",
+              "number": 16,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCaseResult.Error"
             }
           ],
           "name": "TestCaseResult",
           "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "message",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "message",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Error"
+            },
             {
               "name": "Artifacts"
             },
