@@ -20,6 +20,12 @@ service CTPv2Service {
       returns (CTPv2Response);
 }
 
+// GenericFilter is what all the filters will implement as their RPC.
+service GenericFilterService {
+  rpc Execute(InternalTestplan)
+      returns (InternalTestplan);
+}
+
 // CTPv2Request ...
 message CTPv2Request {
   oneof suite_request {

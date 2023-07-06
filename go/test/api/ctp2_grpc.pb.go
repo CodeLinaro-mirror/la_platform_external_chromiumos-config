@@ -101,3 +101,87 @@ var CTPv2Service_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "chromiumos/test/api/ctp2.proto",
 }
+
+// GenericFilterServiceClient is the client API for GenericFilterService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type GenericFilterServiceClient interface {
+	Execute(ctx context.Context, in *InternalTestplan, opts ...grpc.CallOption) (*InternalTestplan, error)
+}
+
+type genericFilterServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewGenericFilterServiceClient(cc grpc.ClientConnInterface) GenericFilterServiceClient {
+	return &genericFilterServiceClient{cc}
+}
+
+func (c *genericFilterServiceClient) Execute(ctx context.Context, in *InternalTestplan, opts ...grpc.CallOption) (*InternalTestplan, error) {
+	out := new(InternalTestplan)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.GenericFilterService/Execute", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// GenericFilterServiceServer is the server API for GenericFilterService service.
+// All implementations should embed UnimplementedGenericFilterServiceServer
+// for forward compatibility
+type GenericFilterServiceServer interface {
+	Execute(context.Context, *InternalTestplan) (*InternalTestplan, error)
+}
+
+// UnimplementedGenericFilterServiceServer should be embedded to have forward compatible implementations.
+type UnimplementedGenericFilterServiceServer struct {
+}
+
+func (UnimplementedGenericFilterServiceServer) Execute(context.Context, *InternalTestplan) (*InternalTestplan, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Execute not implemented")
+}
+
+// UnsafeGenericFilterServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to GenericFilterServiceServer will
+// result in compilation errors.
+type UnsafeGenericFilterServiceServer interface {
+	mustEmbedUnimplementedGenericFilterServiceServer()
+}
+
+func RegisterGenericFilterServiceServer(s grpc.ServiceRegistrar, srv GenericFilterServiceServer) {
+	s.RegisterService(&GenericFilterService_ServiceDesc, srv)
+}
+
+func _GenericFilterService_Execute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InternalTestplan)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GenericFilterServiceServer).Execute(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.GenericFilterService/Execute",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GenericFilterServiceServer).Execute(ctx, req.(*InternalTestplan))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// GenericFilterService_ServiceDesc is the grpc.ServiceDesc for GenericFilterService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var GenericFilterService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "chromiumos.test.api.GenericFilterService",
+	HandlerType: (*GenericFilterServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Execute",
+			Handler:    _GenericFilterService_Execute_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "chromiumos/test/api/ctp2.proto",
+}

@@ -21589,6 +21589,16 @@
             }
           ],
           "name": "CTPv2Service"
+        },
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.InternalTestplan",
+              "name": "Execute",
+              "outputType": ".chromiumos.test.api.InternalTestplan"
+            }
+          ],
+          "name": "GenericFilterService"
         }
       ],
       "syntax": "proto3"
