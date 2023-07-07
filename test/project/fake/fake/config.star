@@ -1051,20 +1051,56 @@ design.append_configs(
     power = _SC_POWER,
     resource = sc.create_resource(
         ac = sc.create_power_source_preference(
-            arcvm_gaming = sc.create_ondemand_governor_preference(0, 2),
-            borealis_gaming = sc.create_ondemand_governor_preference(0, 32),
-            default = sc.create_ondemand_governor_preference(0, 2),
-            vm_boot = sc.create_performance_governor_preference(),
-            fullscreen_video = sc.create_ondemand_governor_preference(600, 2),
-            web_rtc = sc.create_ondemand_governor_preference(400, 16),
+            arcvm_gaming = sc.create_power_preference(
+                governor = sc.create_ondemand_governor(0, 2),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            borealis_gaming = sc.create_power_preference(
+                governor = sc.create_ondemand_governor(0, 32),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            default = sc.create_power_preference(
+                governor = sc.create_ondemand_governor(0, 2),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            vm_boot = sc.create_power_preference(
+                governor = sc.create_performance_governor(),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            fullscreen_video = sc.create_power_preference(
+                governor = sc.create_ondemand_governor(600, 2),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            web_rtc = sc.create_power_preference(
+                governor = sc.create_ondemand_governor(400, 16),
+                epp = sc.create_balance_performance_epp(),
+            ),
         ),
         dc = sc.create_power_source_preference(
-            arcvm_gaming = sc.create_conservative_governor_preference(),
-            borealis_gaming = sc.create_performance_governor_preference(),
-            default = sc.create_powersave_governor_preference(),
-            vm_boot = sc.create_performance_governor_preference(),
-            fullscreen_video = sc.create_schedutil_governor_preference(),
-            web_rtc = sc.create_userspace_governor_preference(),
+            arcvm_gaming = sc.create_power_preference(
+                governor = sc.create_conservative_governor(),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            borealis_gaming = sc.create_power_preference(
+                governor = sc.create_performance_governor(),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            default = sc.create_power_preference(
+                governor = sc.create_powersave_governor(),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            vm_boot = sc.create_power_preference(
+                governor = sc.create_performance_governor(),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            fullscreen_video = sc.create_power_preference(
+                governor = sc.create_schedutil_governor(),
+                epp = sc.create_balance_power_epp(),
+            ),
+            web_rtc = sc.create_power_preference(
+                governor = sc.create_userspace_governor(),
+                epp = sc.create_balance_power_epp(),
+            ),
         ),
     ),
     wifi = _SC_WIFI_INTEL,

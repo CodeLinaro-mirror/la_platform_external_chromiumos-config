@@ -9780,6 +9780,76 @@
               ]
             },
             {
+              "name": "DefaultEpp"
+            },
+            {
+              "name": "PerformanceEpp"
+            },
+            {
+              "name": "BalancePerformanceEpp"
+            },
+            {
+              "name": "BalancePowerEpp"
+            },
+            {
+              "name": "PowerEpp"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "default",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "default",
+                  "number": 1,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.DefaultEpp"
+                },
+                {
+                  "jsonName": "performance",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "performance",
+                  "number": 2,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PerformanceEpp"
+                },
+                {
+                  "jsonName": "balance-performance",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "balance_performance",
+                  "number": 3,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.BalancePerformanceEpp"
+                },
+                {
+                  "jsonName": "balance-power",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "balance_power",
+                  "number": 4,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.BalancePowerEpp"
+                },
+                {
+                  "jsonName": "power",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "power",
+                  "number": 5,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerEpp"
+                }
+              ],
+              "name": "EnergyPerformancePreference",
+              "oneofDecl": [
+                {
+                  "name": "epp"
+                }
+              ]
+            },
+            {
               "field": [
                 {
                   "jsonName": "governor",
@@ -9788,6 +9858,14 @@
                   "number": 1,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.software.ResourceConfig.Governor"
+                },
+                {
+                  "jsonName": "epp",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "epp",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.EnergyPerformancePreference"
                 }
               ],
               "name": "PowerPreferences"

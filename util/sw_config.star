@@ -359,16 +359,26 @@ def _create_power_source_preference(
         arcvm_gaming_power_preferences = arcvm_gaming,
     )
 
-def _create_conservative_governor_preference():
-    """Builds a conservative governor PowerPreferences proto"""
+def _create_power_preference(governor = None, epp = None):
+    """Builds a PowerPreferences proto.
+
+    Args:
+        governor: Governor
+        epp: EnergyPerformancePreference
+    """
     return resource_pb.ResourceConfig.PowerPreferences(
-        governor = resource_pb.ResourceConfig.Governor(
-            conservative = resource_pb.ResourceConfig.ConservativeGovernor(),
-        ),
+        governor = governor,
+        epp = epp,
     )
 
-def _create_ondemand_governor_preference(powersave_bias, sampling_rate_ms = 0):
-    """Builds an ondemand governor PowerPreferences proto
+def _create_conservative_governor():
+    """Builds a conservative governor Governor proto"""
+    return resource_pb.ResourceConfig.Governor(
+        conservative = resource_pb.ResourceConfig.ConservativeGovernor(),
+    )
+
+def _create_ondemand_governor(powersave_bias, sampling_rate_ms = 0):
+    """Builds an ondemand governor Governor proto
 
     Args:
         powersave_bias: powersave bias for the ondemand governor
@@ -377,45 +387,65 @@ def _create_ondemand_governor_preference(powersave_bias, sampling_rate_ms = 0):
     if sampling_rate_ms == 1:
         fail("sampling_rate_ms should be set to 0 or >= 2")
 
-    return resource_pb.ResourceConfig.PowerPreferences(
-        governor = resource_pb.ResourceConfig.Governor(
-            ondemand = resource_pb.ResourceConfig.OndemandGovernor(
-                powersave_bias = powersave_bias,
-                sampling_rate_ms = sampling_rate_ms,
-            ),
+    return resource_pb.ResourceConfig.Governor(
+        ondemand = resource_pb.ResourceConfig.OndemandGovernor(
+            powersave_bias = powersave_bias,
+            sampling_rate_ms = sampling_rate_ms,
         ),
     )
 
-def _create_performance_governor_preference():
-    """Builds a performance governor PowerPreferences proto"""
-    return resource_pb.ResourceConfig.PowerPreferences(
-        governor = resource_pb.ResourceConfig.Governor(
-            performance = resource_pb.ResourceConfig.PerformanceGovernor(),
-        ),
+def _create_performance_governor():
+    """Builds a performance governor Governor proto"""
+    return resource_pb.ResourceConfig.Governor(
+        performance = resource_pb.ResourceConfig.PerformanceGovernor(),
     )
 
-def _create_powersave_governor_preference():
-    """Builds a powersave governor PowerPreferences proto"""
-    return resource_pb.ResourceConfig.PowerPreferences(
-        governor = resource_pb.ResourceConfig.Governor(
-            powersave = resource_pb.ResourceConfig.PowersaveGovernor(),
-        ),
+def _create_powersave_governor():
+    """Builds a powersave governor Governor proto"""
+    return resource_pb.ResourceConfig.Governor(
+        powersave = resource_pb.ResourceConfig.PowersaveGovernor(),
     )
 
-def _create_schedutil_governor_preference():
-    """Builds a schedutil governor PowerPreferences proto"""
-    return resource_pb.ResourceConfig.PowerPreferences(
-        governor = resource_pb.ResourceConfig.Governor(
-            schedutil = resource_pb.ResourceConfig.SchedutilGovernor(),
-        ),
+def _create_schedutil_governor():
+    """Builds a schedutil governor Governor proto"""
+    return resource_pb.ResourceConfig.Governor(
+        schedutil = resource_pb.ResourceConfig.SchedutilGovernor(),
     )
 
-def _create_userspace_governor_preference():
-    """Builds an userspace governor PowerPreferences proto"""
-    return resource_pb.ResourceConfig.PowerPreferences(
-        governor = resource_pb.ResourceConfig.Governor(
-            userspace = resource_pb.ResourceConfig.UserspaceGovernor(),
-        ),
+def _create_userspace_governor():
+    """Builds an userspace governor Governor proto"""
+    return resource_pb.ResourceConfig.Governor(
+        userspace = resource_pb.ResourceConfig.UserspaceGovernor(),
+    )
+
+def _create_default_epp():
+    """Builds a default epp EnergyPerformancePreference proto"""
+    return resource_pb.ResourceConfig.EnergyPerformancePreference(
+        default = resource_pb.ResourceConfig.DefaultEpp(),
+    )
+
+def _create_performance_epp():
+    """Builds a performance epp EnergyPerformancePreference proto"""
+    return resource_pb.ResourceConfig.EnergyPerformancePreference(
+        performance = resource_pb.ResourceConfig.PerformanceEpp(),
+    )
+
+def _create_balance_performance_epp():
+    """Builds a balance_performance epp EnergyPerformancePreference proto"""
+    return resource_pb.ResourceConfig.EnergyPerformancePreference(
+        balance_performance = resource_pb.ResourceConfig.BalancePerformanceEpp(),
+    )
+
+def _create_balance_power_epp():
+    """Builds a balance_power epp EnergyPerformancePreference proto"""
+    return resource_pb.ResourceConfig.EnergyPerformancePreference(
+        balance_power = resource_pb.ResourceConfig.BalancePowerEpp(),
+    )
+
+def _create_power_epp():
+    """Builds a power epp EnergyPerformancePreference proto"""
+    return resource_pb.ResourceConfig.EnergyPerformancePreference(
+        power = resource_pb.ResourceConfig.PowerEpp(),
     )
 
 def _create_ath10k_power_chain(limit_2g, limit_5g):
@@ -1049,12 +1079,18 @@ sw_config = struct(
     create_power = _create_power,
     create_resource = _create_resource,
     create_power_source_preference = _create_power_source_preference,
-    create_conservative_governor_preference = _create_conservative_governor_preference,
-    create_ondemand_governor_preference = _create_ondemand_governor_preference,
-    create_performance_governor_preference = _create_performance_governor_preference,
-    create_powersave_governor_preference = _create_powersave_governor_preference,
-    create_schedutil_governor_preference = _create_schedutil_governor_preference,
-    create_userspace_governor_preference = _create_userspace_governor_preference,
+    create_power_preference = _create_power_preference,
+    create_conservative_governor = _create_conservative_governor,
+    create_ondemand_governor = _create_ondemand_governor,
+    create_performance_governor = _create_performance_governor,
+    create_powersave_governor = _create_powersave_governor,
+    create_schedutil_governor = _create_schedutil_governor,
+    create_userspace_governor = _create_userspace_governor,
+    create_default_epp = _create_default_epp,
+    create_performance_epp = _create_performance_epp,
+    create_balance_performance_epp = _create_balance_performance_epp,
+    create_balance_power_epp = _create_balance_power_epp,
+    create_power_epp = _create_power_epp,
     create_intel_antenna_gain = _create_intel_antenna_gain,
     create_intel_antgain_table = _create_intel_antgain_table,
     create_intel_dsm = _create_intel_dsm,

@@ -1141,6 +1141,9 @@
         "resource": {
           "ac": {
             "arcvm-gaming-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "ondemand": {
                   "powersave-bias": 0,
@@ -1149,6 +1152,9 @@
               }
             },
             "borealis-gaming-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "ondemand": {
                   "powersave-bias": 0,
@@ -1157,6 +1163,9 @@
               }
             },
             "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "ondemand": {
                   "powersave-bias": 0,
@@ -1165,6 +1174,9 @@
               }
             },
             "fullscreen-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "ondemand": {
                   "powersave-bias": 600,
@@ -1173,11 +1185,17 @@
               }
             },
             "vm-boot-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "performance": {}
               }
             },
             "web-rtc-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "ondemand": {
                   "powersave-bias": 400,
@@ -1188,31 +1206,49 @@
           },
           "dc": {
             "arcvm-gaming-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "conservative": {}
               }
             },
             "borealis-gaming-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "performance": {}
               }
             },
             "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "powersave": {}
               }
             },
             "fullscreen-power-preferences": {
+              "epp": {
+                "balance-power": {}
+              },
               "governor": {
                 "schedutil": {}
               }
             },
             "vm-boot-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
               "governor": {
                 "performance": {}
               }
             },
             "web-rtc-power-preferences": {
+              "epp": {
+                "balance-power": {}
+              },
               "governor": {
                 "userspace": {}
               }

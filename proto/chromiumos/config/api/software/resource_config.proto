@@ -58,9 +58,29 @@ message ResourceConfig {
     }
   }
 
+  message DefaultEpp {}
+
+  message PerformanceEpp {}
+
+  message BalancePerformanceEpp {}
+
+  message BalancePowerEpp {}
+
+  message PowerEpp {}
+
+  message EnergyPerformancePreference {
+    oneof epp {
+      DefaultEpp default = 1;
+      PerformanceEpp performance = 2;
+      BalancePerformanceEpp balance_performance = 3 [json_name = "balance-performance"];
+      BalancePowerEpp balance_power = 4 [json_name = "balance-power"];
+      PowerEpp power = 5;
+    }
+  }
+
   message PowerPreferences {
     Governor governor = 1;
-    // TODO: Possibly add Intel EPP
+    EnergyPerformancePreference epp = 2;
   }
 
   message PowerSourcePreferences {
