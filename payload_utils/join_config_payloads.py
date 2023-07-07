@@ -74,12 +74,6 @@ def load_models(public_path, private_path):
     return CrosConfig(config_file)
 
 
-def load_hwid(hwid_path):
-  """Load a HWID database from the given path."""
-  with open(hwid_path) as infile:
-    return yaml.load(infile, Loader=yaml.FullLoader)
-
-
 def non_null_values(items):
   """Unwrap a HWID item block into a dictionary of key => values for non-null values.
 
