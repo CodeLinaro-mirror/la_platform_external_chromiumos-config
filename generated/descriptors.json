@@ -21113,6 +21113,66 @@
         {
           "field": [
             {
+              "jsonName": "suiteRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite_request",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteRequest"
+            },
+            {
+              "jsonName": "hwTargets",
+              "label": "LABEL_OPTIONAL",
+              "name": "hw_targets",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HWTargets"
+            },
+            {
+              "jsonName": "swTargets",
+              "label": "LABEL_OPTIONAL",
+              "name": "sw_targets",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SWTargets"
+            },
+            {
+              "jsonName": "karbonFilters",
+              "label": "LABEL_REPEATED",
+              "name": "karbon_filters",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CTPFilter"
+            },
+            {
+              "jsonName": "koffeeFilters",
+              "label": "LABEL_REPEATED",
+              "name": "koffee_filters",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CTPFilter"
+            },
+            {
+              "jsonName": "pool",
+              "label": "LABEL_OPTIONAL",
+              "name": "pool",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "schedukeMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "scheduke_metadata",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "CTPv2Request"
+        },
+        {
+          "field": [
+            {
               "jsonName": "testSuite",
               "label": "LABEL_OPTIONAL",
               "name": "test_suite",
@@ -21129,56 +21189,9 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Reserved"
-            },
-            {
-              "jsonName": "hwTargets",
-              "label": "LABEL_OPTIONAL",
-              "name": "hw_targets",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.HWTargets"
-            },
-            {
-              "jsonName": "swTargets",
-              "label": "LABEL_OPTIONAL",
-              "name": "sw_targets",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.SWTargets"
-            },
-            {
-              "jsonName": "karbonFilters",
-              "label": "LABEL_REPEATED",
-              "name": "karbon_filters",
-              "number": 6,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CTPFilter"
-            },
-            {
-              "jsonName": "koffeeFilters",
-              "label": "LABEL_REPEATED",
-              "name": "koffee_filters",
-              "number": 7,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.CTPFilter"
-            },
-            {
-              "jsonName": "pool",
-              "label": "LABEL_OPTIONAL",
-              "name": "pool",
-              "number": 8,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "schedukeMetadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "scheduke_metadata",
-              "number": 9,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
             }
           ],
-          "name": "CTPv2Request",
+          "name": "SuiteRequest",
           "oneofDecl": [
             {
               "name": "suite_request"
@@ -21419,12 +21432,12 @@
               "typeName": ".chromiumos.test.api.CTPTestCase"
             },
             {
-              "jsonName": "suiteMetadata",
+              "jsonName": "suiteInfo",
               "label": "LABEL_OPTIONAL",
-              "name": "suite_metadata",
+              "name": "suite_info",
               "number": 2,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.SuiteMetadata"
+              "typeName": ".chromiumos.test.api.SuiteInfo"
             }
           ],
           "name": "InternalTestplan"
@@ -21464,6 +21477,27 @@
             }
           ],
           "name": "CTPTestCase"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "suiteMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite_metadata",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteMetadata"
+            },
+            {
+              "jsonName": "suiteRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite_request",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteRequest"
+            }
+          ],
+          "name": "SuiteInfo"
         },
         {
           "field": [
@@ -21528,6 +21562,13 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SwarmingDefinition"
+            },
+            {
+              "jsonName": "swarmingLabels",
+              "label": "LABEL_REPEATED",
+              "name": "swarming_labels",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "HWRequirements"

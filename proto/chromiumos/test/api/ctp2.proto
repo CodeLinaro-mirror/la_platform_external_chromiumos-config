@@ -28,20 +28,24 @@ service GenericFilterService {
 
 // CTPv2Request ...
 message CTPv2Request {
+  SuiteRequest suite_request = 1;
+
+  HWTargets hw_targets = 2;
+  SWTargets sw_targets = 3;
+
+  repeated CTPFilter karbon_filters = 4;
+  repeated CTPFilter koffee_filters = 5;
+
+  string pool = 6;
+
+  google.protobuf.Any scheduke_metadata = 7;
+}
+
+message SuiteRequest {
   oneof suite_request {
     TestSuite test_suite = 1;
     Reserved hierarchical_plan = 2;
   }
-
-  HWTargets hw_targets = 4;
-  SWTargets sw_targets = 5;
-
-  repeated CTPFilter karbon_filters = 6;
-  repeated CTPFilter koffee_filters = 7;
-
-  string pool = 8;
-
-  google.protobuf.Any scheduke_metadata = 9;
 }
 
 message HWTargets {
@@ -107,7 +111,7 @@ message Reserved {}
 
 message InternalTestplan {
   repeated CTPTestCase test_cases = 1;
-  SuiteMetadata suite_metadata = 2;
+  SuiteInfo suite_info = 2;
 }
 
 
@@ -121,6 +125,11 @@ message CTPTestCase {
 
   // SWRequirement impl is still tbd.
   repeated SWRequirements sw_requirements = 4;
+}
+
+message SuiteInfo {
+  SuiteMetadata suite_metadata = 1;
+  SuiteRequest suite_request = 2;
 }
 
 // Everything by CTPv2, less provision_info.
@@ -140,6 +149,7 @@ message HWRequirements {
     BANNED = 3;
     ONEOF = 4;
   }
+ repeated string swarming_labels = 5;
 }
 
 message SWRequirements{}
