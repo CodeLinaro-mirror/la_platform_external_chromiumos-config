@@ -19826,6 +19826,20 @@
               "name": "default_enabled",
               "number": 6,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "bbid",
+              "label": "LABEL_OPTIONAL",
+              "name": "bbid",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "isDryRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_dry_run",
+              "number": 8,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "FilterFlakyRequest",

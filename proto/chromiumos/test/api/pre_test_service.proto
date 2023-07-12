@@ -46,6 +46,12 @@ message FilterFlakyRequest {
 
   // When there is not enough signal to determine stability (based on policy); default on/off.
   bool default_enabled = 6;
+
+  // BBID of the task
+  string bbid = 7;
+  // is_dry_run indicates if the results are to be used or not. This will only change
+  // how the system logs results.
+  bool is_dry_run = 8;
 }
 
 
