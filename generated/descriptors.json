@@ -21556,7 +21556,7 @@
             },
             {
               "jsonName": "swRequirements",
-              "label": "LABEL_OPTIONAL",
+              "label": "LABEL_REPEATED",
               "name": "sw_requirements",
               "number": 2,
               "type": "TYPE_MESSAGE",
