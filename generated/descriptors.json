@@ -21334,51 +21334,30 @@
           "field": [
             {
               "jsonName": "board",
-              "label": "LABEL_REPEATED",
+              "label": "LABEL_OPTIONAL",
               "name": "board",
               "number": 1,
               "type": "TYPE_STRING"
             },
             {
               "jsonName": "model",
-              "label": "LABEL_REPEATED",
+              "label": "LABEL_OPTIONAL",
               "name": "model",
               "number": 2,
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "anyModel",
-              "label": "LABEL_OPTIONAL",
-              "name": "any_model",
-              "number": 3,
-              "type": "TYPE_BOOL"
-            },
-            {
               "jsonName": "variant",
-              "label": "LABEL_REPEATED",
+              "label": "LABEL_OPTIONAL",
               "name": "variant",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "boardsExcludes",
-              "label": "LABEL_REPEATED",
-              "name": "boards_excludes",
-              "number": 5,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "modelExcludes",
-              "label": "LABEL_REPEATED",
-              "name": "model_excludes",
-              "number": 6,
+              "number": 3,
               "type": "TYPE_STRING"
             },
             {
               "jsonName": "multiDut",
               "label": "LABEL_OPTIONAL",
               "name": "multi_dut",
-              "number": 7,
+              "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.MultiDut"
             }
@@ -21411,7 +21390,7 @@
           "field": [
             {
               "jsonName": "boards",
-              "label": "LABEL_REPEATED",
+              "label": "LABEL_OPTIONAL",
               "name": "boards",
               "number": 1,
               "type": "TYPE_MESSAGE",
@@ -21419,7 +21398,7 @@
             },
             {
               "jsonName": "model",
-              "label": "LABEL_REPEATED",
+              "label": "LABEL_OPTIONAL",
               "name": "model",
               "number": 2,
               "type": "TYPE_MESSAGE",

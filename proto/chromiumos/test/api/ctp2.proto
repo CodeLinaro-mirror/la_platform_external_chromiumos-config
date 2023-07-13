@@ -80,13 +80,10 @@ message LegacySW {
 message DDDSW {}
 
 message LegacyHW {
-  repeated string board = 1;
-  repeated string model = 2;
-  bool any_model = 3;
-  repeated string variant = 4;
-  repeated string boards_excludes = 5;
-  repeated string model_excludes = 6;
-  MultiDut multi_dut = 7;
+  string board = 1;
+  string model = 2;
+  string variant = 3;
+  MultiDut multi_dut = 4;
 }
 
 message DDDHW{}
@@ -97,8 +94,8 @@ message Pair {
 }
 
 message MultiDut{
-  repeated Pair boards = 1;
-  repeated Pair model  = 2;
+  Pair boards = 1;
+  Pair model  = 2;
 }
 
 
