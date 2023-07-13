@@ -21135,26 +21135,18 @@
               "typeName": ".chromiumos.test.api.SuiteRequest"
             },
             {
-              "jsonName": "hwTargets",
-              "label": "LABEL_OPTIONAL",
-              "name": "hw_targets",
+              "jsonName": "targets",
+              "label": "LABEL_REPEATED",
+              "name": "targets",
               "number": 2,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.HWTargets"
-            },
-            {
-              "jsonName": "swTargets",
-              "label": "LABEL_OPTIONAL",
-              "name": "sw_targets",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.SWTargets"
+              "typeName": ".chromiumos.test.api.Targets"
             },
             {
               "jsonName": "karbonFilters",
               "label": "LABEL_REPEATED",
               "name": "karbon_filters",
-              "number": 4,
+              "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CTPFilter"
             },
@@ -21162,7 +21154,7 @@
               "jsonName": "koffeeFilters",
               "label": "LABEL_REPEATED",
               "name": "koffee_filters",
-              "number": 5,
+              "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CTPFilter"
             },
@@ -21170,14 +21162,14 @@
               "jsonName": "pool",
               "label": "LABEL_OPTIONAL",
               "name": "pool",
-              "number": 6,
+              "number": 5,
               "type": "TYPE_STRING"
             },
             {
               "jsonName": "schedukeMetadata",
               "label": "LABEL_OPTIONAL",
               "name": "scheduke_metadata",
-              "number": 7,
+              "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
             }
@@ -21215,6 +21207,46 @@
         {
           "field": [
             {
+              "jsonName": "key",
+              "label": "LABEL_OPTIONAL",
+              "name": "key",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "KeyValue"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hwTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "hw_target",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HWTarget"
+            },
+            {
+              "jsonName": "swTargets",
+              "label": "LABEL_REPEATED",
+              "name": "sw_targets",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SWTarget"
+            }
+          ],
+          "name": "Targets"
+        },
+        {
+          "field": [
+            {
               "jsonName": "legacyHw",
               "label": "LABEL_OPTIONAL",
               "name": "legacy_hw",
@@ -21233,10 +21265,10 @@
               "typeName": ".chromiumos.test.api.DDDHW"
             }
           ],
-          "name": "HWTargets",
+          "name": "HWTarget",
           "oneofDecl": [
             {
-              "name": "targets"
+              "name": "target"
             }
           ]
         },
@@ -21249,7 +21281,7 @@
               "number": 1,
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.LegacySWs"
+              "typeName": ".chromiumos.test.api.LegacySW"
             },
             {
               "jsonName": "dddSw",
@@ -21261,46 +21293,39 @@
               "typeName": ".chromiumos.test.api.DDDSW"
             }
           ],
-          "name": "SWTargets",
+          "name": "SWTarget",
           "oneofDecl": [
             {
-              "name": "sw_targets"
+              "name": "sw_target"
             }
           ]
         },
         {
           "field": [
             {
-              "jsonName": "legacySws",
+              "jsonName": "build",
+              "label": "LABEL_OPTIONAL",
+              "name": "build",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gcsPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "gcs_path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "keyValues",
               "label": "LABEL_REPEATED",
-              "name": "legacy_sws",
-              "number": 4,
+              "name": "key_values",
+              "number": 3,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.LegacySWs.LegacySW"
+              "typeName": ".chromiumos.test.api.KeyValue"
             }
           ],
-          "name": "LegacySWs",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "build",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "build",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "gcsPath",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "gcs_path",
-                  "number": 3,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "LegacySW"
-            }
-          ]
+          "name": "LegacySW"
         },
         {
           "name": "DDDSW"

@@ -29,16 +29,14 @@ service GenericFilterService {
 // CTPv2Request ...
 message CTPv2Request {
   SuiteRequest suite_request = 1;
+  repeated Targets targets = 2;
 
-  HWTargets hw_targets = 2;
-  SWTargets sw_targets = 3;
+  repeated CTPFilter karbon_filters = 3;
+  repeated CTPFilter koffee_filters = 4;
 
-  repeated CTPFilter karbon_filters = 4;
-  repeated CTPFilter koffee_filters = 5;
+  string pool = 5;
 
-  string pool = 6;
-
-  google.protobuf.Any scheduke_metadata = 7;
+  google.protobuf.Any scheduke_metadata = 6;
 }
 
 message SuiteRequest {
@@ -48,26 +46,34 @@ message SuiteRequest {
   }
 }
 
-message HWTargets {
-  oneof targets {
+message KeyValue {
+  string key = 1;
+  string value = 2;
+}
+
+message Targets {
+  HWTarget hw_target = 1;
+  repeated SWTarget sw_targets = 2;
+}
+
+message HWTarget {
+  oneof target {
     LegacyHW legacy_hw = 1;
     DDDHW ddd_hw = 2;
   }
 }
 
-message SWTargets {
-  oneof sw_targets {
-    LegacySWs legacy_sw = 1;
+message SWTarget {
+  oneof sw_target {
+    LegacySW legacy_sw = 1;
     DDDSW ddd_sw = 2;
   }
 }
 
-message LegacySWs {
-  message LegacySW {
-    string build = 2;
-    string gcs_path = 3;
-  }
-  repeated LegacySW legacy_sws = 4;
+message LegacySW {
+  string build = 1;
+  string gcs_path = 2;
+  repeated KeyValue key_values = 3;
 }
 
 // DDDSW is not yet defined.
