@@ -21541,12 +21541,12 @@
         {
           "field": [
             {
-              "jsonName": "hwRequirements",
+              "jsonName": "targetRequirements",
               "label": "LABEL_REPEATED",
-              "name": "hw_requirements",
+              "name": "target_requirements",
               "number": 1,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.HWRequirements"
+              "typeName": ".chromiumos.test.api.TargetRequirements"
             },
             {
               "jsonName": "channels",
@@ -21564,6 +21564,27 @@
             }
           ],
           "name": "SuiteMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hwRequirements",
+              "label": "LABEL_OPTIONAL",
+              "name": "hw_requirements",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HWRequirements"
+            },
+            {
+              "jsonName": "swRequirements",
+              "label": "LABEL_OPTIONAL",
+              "name": "sw_requirements",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LegacySW"
+            }
+          ],
+          "name": "TargetRequirements"
         },
         {
           "enumType": [

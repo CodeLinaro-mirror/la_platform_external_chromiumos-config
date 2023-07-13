@@ -140,11 +140,15 @@ message SuiteInfo {
 
 // Everything by CTPv2, less provision_info.
 message SuiteMetadata {
-  repeated HWRequirements hw_requirements = 1;
+  repeated TargetRequirements target_requirements = 1;
   repeated string channels = 2;
   string pool = 3;
 }
 
+message TargetRequirements {
+  HWRequirements hw_requirements = 1;
+  LegacySW sw_requirements = 2;
+}
 
 message HWRequirements {
   repeated SwarmingDefinition hw_definition = 1;
