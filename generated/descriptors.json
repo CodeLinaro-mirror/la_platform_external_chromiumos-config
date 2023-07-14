@@ -19996,6 +19996,34 @@
               "name": "force_enabled_boards",
               "number": 7,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "passRateRecent",
+              "label": "LABEL_OPTIONAL",
+              "name": "pass_rate_recent",
+              "number": 8,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "minRunsRecent",
+              "label": "LABEL_OPTIONAL",
+              "name": "min_runs_recent",
+              "number": 9,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "recentWindow",
+              "label": "LABEL_OPTIONAL",
+              "name": "recent_window",
+              "number": 10,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "dryrun",
+              "label": "LABEL_OPTIONAL",
+              "name": "dryrun",
+              "number": 11,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "PassRatePolicy"

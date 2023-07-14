@@ -84,5 +84,17 @@ message PassRatePolicy {
   // force_enabled_boards will not apply filter logic to any boards in the list.
   repeated string force_enabled_boards = 7;
 
+  // Recent results are a method to re-enable historically flaky tests, with
+  // more recent results. Its expected that the recent result will be more stringent
+  // than the long-term results. For example, if a test has a long-term passrate of
+  // 95% with 1000 samples, but a recent passrate of 100% with 200 samples, its
+  // signal that its stable enough to be re-enabled.
+  int32 pass_rate_recent = 8;
+  int32 min_runs_recent = 9;
+  int32 recent_window = 10;
+
+  bool dryrun = 11;
+
+
   // NEXT RULE = 8
 }
