@@ -21714,6 +21714,14 @@
               "name": "swarming_labels",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.HWRequirements.State"
             }
           ],
           "name": "HWRequirements"
@@ -21756,6 +21764,14 @@
               "name": "identifier",
               "number": 2,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.ProvisionInfo.Type"
             }
           ],
           "name": "ProvisionInfo"

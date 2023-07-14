@@ -158,6 +158,7 @@ message HWRequirements {
     ONEOF = 4;
   }
  repeated string swarming_labels = 5;
+ State state = 6;
 }
 
 message SWRequirements{}
@@ -170,6 +171,7 @@ message ProvisionInfo {
   }
   InstallInfo install_request = 1;
   string identifier = 2;
+  Type type = 3;
 
 }
 
