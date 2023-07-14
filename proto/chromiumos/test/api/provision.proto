@@ -10,6 +10,8 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/longrunning/operations.proto";
 import "chromiumos/storage_path.proto";
+import "chromiumos/test/lab/api/dut.proto";
+import "chromiumos/test/lab/api/ip_endpoint.proto";
 import "google/protobuf/any.proto";
 
 // Generic provisioning interface for CFT. Intended to be interchangeable across
@@ -27,6 +29,32 @@ service GenericProvisionService {
   }
 }
 
+
+// ProvisionStartupRequest provides a generic form for initializing
+// the provision services. This provides an alternative route for
+// the initialization rather than using the CLI arguments that
+// are used for starting the gRPC server.
+message ProvisionStartupRequest {
+  chromiumos.test.lab.api.Dut dut = 1;
+  chromiumos.test.lab.api.IpEndpoint dut_server = 2;
+  // Specific metadata to the individual provision services.
+  google.protobuf.Any metadata = 3;
+}
+
+// ProvisionStartupResponse provides a status message to signal
+// what the result of the startup call was.
+message ProvisionStartupResponse {
+  enum Status {
+    // In proto3, zero value fields are indistinguishable from unset fields,
+    // by design. They are not sent on the wire either.
+    // SHOULD NOT BE USED.
+    STATUS_UNSPECIFIED = 0;
+    STATUS_SUCCESS = 1;
+    STATUS_INVALID_REQUEST = 2;
+    STATUS_STARTUP_FAILED = 3;
+  }
+  Status status = 1;
+}
 
 message InstallResponse {
   // When the status code is other than OK, details in Status message should be

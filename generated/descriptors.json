@@ -25032,9 +25032,76 @@
       "dependency": [
         "chromiumos/longrunning/operations.proto",
         "chromiumos/storage_path.proto",
+        "chromiumos/test/lab/api/dut.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto",
         "google/protobuf/any.proto"
       ],
       "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "dut",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            },
+            {
+              "jsonName": "dutServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_server",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "ProvisionStartupRequest"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_SUCCESS",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_INVALID_REQUEST",
+                  "number": 2
+                },
+                {
+                  "name": "STATUS_STARTUP_FAILED",
+                  "number": 3
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.ProvisionStartupResponse.Status"
+            }
+          ],
+          "name": "ProvisionStartupResponse"
+        },
         {
           "enumType": [
             {
