@@ -192,7 +192,7 @@ message HardwareFeatures {
     CellularType type = 3;
 
     // bool to enable the cellular feature Attach APN.
-    bool attach_apn_required = 4;
+    bool attach_apn_required = 4 [deprecated = true];
 
     enum CellularType {
       CELLULAR_UNKNOWN = 0;

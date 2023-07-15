@@ -4502,6 +4502,9 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "attach_apn_required",
                   "number": 4,
+                  "options": {
+                    "deprecated": true
+                  },
                   "type": "TYPE_BOOL"
                 },
                 {

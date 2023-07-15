@@ -1094,7 +1094,6 @@ def _create_cellular_board(
         type = _CELLULAR.CELLULAR_UNKNOWN,
         fw_configs = [],
         model = None,
-        attach_apn_required = None,
         dynamic_power_reduction_config = None):
     """Builds a Topology proto for a Cellular board."""
     hw_features = _HW_FEAT()
@@ -1102,7 +1101,6 @@ def _create_cellular_board(
     hw_features.cellular.present = _bool_to_present(present)
     hw_features.cellular.model = model
     hw_features.cellular.type = type
-    hw_features.cellular.attach_apn_required = attach_apn_required
     hw_features.cellular.dynamic_power_reduction_config = dynamic_power_reduction_config
 
     _accumulate_fw_configs(hw_features, fw_configs)
@@ -1860,7 +1858,6 @@ def _accumulate_cellular(existing_cellular, new_cellular):
         if new_cellular.present == _PRESENT.PRESENT:
             existing_cellular.model = new_cellular.model
             existing_cellular.type = new_cellular.type
-            existing_cellular.attach_apn_required = new_cellular.attach_apn_required
             if proto.has(new_cellular, "dynamic_power_reduction_config"):
                 existing_cellular.dynamic_power_reduction_config = new_cellular.dynamic_power_reduction_config
 
