@@ -8,6 +8,7 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
+import "chromiumos/test/api/provision.proto";
 import "chromiumos/test/api/test_suite.proto";
 import "chromiumos/test/api/test_case_metadata.proto";
 import "chromiumos/build/api/container_metadata.proto";
@@ -169,7 +170,7 @@ message ProvisionInfo {
    ANDROID = 1;
    ROFW = 2;
   }
-  InstallInfo install_request = 1;
+  InstallRequest install_request = 1;
   string identifier = 2;
   Type type = 3;
 
@@ -181,9 +182,6 @@ message SwarmingDefinition {
   repeated ProvisionInfo provision_info = 2;
 
 };
-
-message InstallInfo {}
-
 
 // CTPv2Response...
 message CTPv2Response {

@@ -21230,6 +21230,266 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/longrunning/operations.proto",
+        "chromiumos/storage_path.proto",
+        "chromiumos/test/lab/api/dut.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto",
+        "google/protobuf/any.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "dut",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Dut"
+            },
+            {
+              "jsonName": "dutServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_server",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "ProvisionStartupRequest"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_SUCCESS",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_INVALID_REQUEST",
+                  "number": 2
+                },
+                {
+                  "name": "STATUS_STARTUP_FAILED",
+                  "number": 3
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.ProvisionStartupResponse.Status"
+            }
+          ],
+          "name": "ProvisionStartupResponse"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Status",
+              "value": [
+                {
+                  "name": "STATUS_OK",
+                  "number": 0
+                },
+                {
+                  "name": "STATUS_INVALID_REQUEST",
+                  "number": 1
+                },
+                {
+                  "name": "STATUS_DUT_UNREACHABLE_PRE_PROVISION",
+                  "number": 2
+                },
+                {
+                  "name": "STATUS_DOWNLOADING_IMAGE_FAILED",
+                  "number": 3
+                },
+                {
+                  "name": "STATUS_PROVISIONING_TIMEDOUT",
+                  "number": 4
+                },
+                {
+                  "name": "STATUS_PROVISIONING_FAILED",
+                  "number": 5
+                },
+                {
+                  "name": "STATUS_DUT_UNREACHABLE_POST_PROVISION",
+                  "number": 6
+                },
+                {
+                  "name": "STATUS_UPDATE_FIRMWARE_FAILED",
+                  "number": 7
+                },
+                {
+                  "name": "STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
+                  "number": 8
+                },
+                {
+                  "name": "STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
+                  "number": 9
+                },
+                {
+                  "name": "STATUS_UPDATE_MINIOS_FAILED",
+                  "number": 10
+                },
+                {
+                  "name": "STATUS_POST_PROVISION_SETUP_FAILED",
+                  "number": 11
+                },
+                {
+                  "name": "STATUS_CLEAR_TPM_FAILED",
+                  "number": 12
+                },
+                {
+                  "name": "STATUS_STABLIZE_DUT_FAILED",
+                  "number": 13
+                },
+                {
+                  "name": "STATUS_INSTALL_DLC_FAILED",
+                  "number": 14
+                },
+                {
+                  "name": "STATUS_PRE_PROVISION_SETUP_FAILED",
+                  "number": 15
+                },
+                {
+                  "name": "STATUS_CIPD_PACKAGE_LOOKUP_FAILED",
+                  "number": 16
+                },
+                {
+                  "name": "STATUS_CIPD_PACKAGE_FETCH_FAILED",
+                  "number": 17
+                },
+                {
+                  "name": "STATUS_GS_UPLOAD_FAILED",
+                  "number": 18
+                },
+                {
+                  "name": "STATUS_GS_DOWNLOAD_FAILED",
+                  "number": 19
+                },
+                {
+                  "name": "STATUS_SUCCESS",
+                  "number": 20
+                },
+                {
+                  "name": "STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE",
+                  "number": 21
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "status",
+              "label": "LABEL_OPTIONAL",
+              "name": "status",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.InstallResponse.Status"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "InstallResponse"
+        },
+        {
+          "name": "InstallMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "imagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "preventReboot",
+              "label": "LABEL_OPTIONAL",
+              "name": "prevent_reboot",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "overwritePayload",
+              "label": "LABEL_OPTIONAL",
+              "name": "overwrite_payload",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "InstallRequest"
+        }
+      ],
+      "name": "chromiumos/test/api/provision.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.InstallRequest",
+              "name": "Install",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallMetadata",
+                  "responseType": "InstallResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            }
+          ],
+          "name": "GenericProvisionService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/provision.proto",
         "chromiumos/test/api/test_suite.proto",
         "chromiumos/test/api/test_case_metadata.proto",
         "chromiumos/build/api/container_metadata.proto",
@@ -21763,7 +22023,7 @@
               "name": "install_request",
               "number": 1,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.InstallInfo"
+              "typeName": ".chromiumos.test.api.InstallRequest"
             },
             {
               "jsonName": "identifier",
@@ -21803,9 +22063,6 @@
             }
           ],
           "name": "SwarmingDefinition"
-        },
-        {
-          "name": "InstallInfo"
         },
         {
           "field": [
@@ -25043,265 +25300,6 @@
             }
           ],
           "name": "PostTestService"
-        }
-      ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/longrunning/operations.proto",
-        "chromiumos/storage_path.proto",
-        "chromiumos/test/lab/api/dut.proto",
-        "chromiumos/test/lab/api/ip_endpoint.proto",
-        "google/protobuf/any.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "dut",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.Dut"
-            },
-            {
-              "jsonName": "dutServer",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut_server",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "metadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
-            }
-          ],
-          "name": "ProvisionStartupRequest"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Status",
-              "value": [
-                {
-                  "name": "STATUS_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "STATUS_SUCCESS",
-                  "number": 1
-                },
-                {
-                  "name": "STATUS_INVALID_REQUEST",
-                  "number": 2
-                },
-                {
-                  "name": "STATUS_STARTUP_FAILED",
-                  "number": 3
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "status",
-              "label": "LABEL_OPTIONAL",
-              "name": "status",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.ProvisionStartupResponse.Status"
-            }
-          ],
-          "name": "ProvisionStartupResponse"
-        },
-        {
-          "enumType": [
-            {
-              "name": "Status",
-              "value": [
-                {
-                  "name": "STATUS_OK",
-                  "number": 0
-                },
-                {
-                  "name": "STATUS_INVALID_REQUEST",
-                  "number": 1
-                },
-                {
-                  "name": "STATUS_DUT_UNREACHABLE_PRE_PROVISION",
-                  "number": 2
-                },
-                {
-                  "name": "STATUS_DOWNLOADING_IMAGE_FAILED",
-                  "number": 3
-                },
-                {
-                  "name": "STATUS_PROVISIONING_TIMEDOUT",
-                  "number": 4
-                },
-                {
-                  "name": "STATUS_PROVISIONING_FAILED",
-                  "number": 5
-                },
-                {
-                  "name": "STATUS_DUT_UNREACHABLE_POST_PROVISION",
-                  "number": 6
-                },
-                {
-                  "name": "STATUS_UPDATE_FIRMWARE_FAILED",
-                  "number": 7
-                },
-                {
-                  "name": "STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
-                  "number": 8
-                },
-                {
-                  "name": "STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
-                  "number": 9
-                },
-                {
-                  "name": "STATUS_UPDATE_MINIOS_FAILED",
-                  "number": 10
-                },
-                {
-                  "name": "STATUS_POST_PROVISION_SETUP_FAILED",
-                  "number": 11
-                },
-                {
-                  "name": "STATUS_CLEAR_TPM_FAILED",
-                  "number": 12
-                },
-                {
-                  "name": "STATUS_STABLIZE_DUT_FAILED",
-                  "number": 13
-                },
-                {
-                  "name": "STATUS_INSTALL_DLC_FAILED",
-                  "number": 14
-                },
-                {
-                  "name": "STATUS_PRE_PROVISION_SETUP_FAILED",
-                  "number": 15
-                },
-                {
-                  "name": "STATUS_CIPD_PACKAGE_LOOKUP_FAILED",
-                  "number": 16
-                },
-                {
-                  "name": "STATUS_CIPD_PACKAGE_FETCH_FAILED",
-                  "number": 17
-                },
-                {
-                  "name": "STATUS_GS_UPLOAD_FAILED",
-                  "number": 18
-                },
-                {
-                  "name": "STATUS_GS_DOWNLOAD_FAILED",
-                  "number": 19
-                },
-                {
-                  "name": "STATUS_SUCCESS",
-                  "number": 20
-                },
-                {
-                  "name": "STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE",
-                  "number": 21
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "status",
-              "label": "LABEL_OPTIONAL",
-              "name": "status",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.InstallResponse.Status"
-            },
-            {
-              "jsonName": "metadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
-            }
-          ],
-          "name": "InstallResponse"
-        },
-        {
-          "name": "InstallMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "imagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "image_path",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "preventReboot",
-              "label": "LABEL_OPTIONAL",
-              "name": "prevent_reboot",
-              "number": 2,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "overwritePayload",
-              "label": "LABEL_OPTIONAL",
-              "name": "overwrite_payload",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "metadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Any"
-            }
-          ],
-          "name": "InstallRequest"
-        }
-      ],
-      "name": "chromiumos/test/api/provision.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.InstallRequest",
-              "name": "Install",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallMetadata",
-                  "responseType": "InstallResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            }
-          ],
-          "name": "GenericProvisionService"
         }
       ],
       "syntax": "proto3"
