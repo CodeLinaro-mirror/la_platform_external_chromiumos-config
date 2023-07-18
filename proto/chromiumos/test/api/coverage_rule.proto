@@ -40,3 +40,27 @@ message CoverageRule {
   // Graveyard
   repeated DutCriterion dut_criteria = 3 [deprecated = true];
 }
+
+// Describes a CoverageRule and the Starlark file it was generated from. For
+// use as a schema for a BigQuery table (or any other storage that uses a proto
+// schema).
+//
+// Only intended for use in an analytic context, i.e. this shouldn't be used for
+// config or execution during the actual test planning process.
+//
+// Note that the host, project, and path fields are essentially exactly the same
+// as in the TestPlanStarlarkfile message; that message isn't used because the
+// TemplateParameters don't make sense in this context.
+message CoverageRuleBqRow {
+  // Gitiles hostname, e.g. "chromium.googlesource.com".
+  string host = 1;
+
+  // Repository name on the host, e.g. "chromium/src".
+  string project = 2;
+
+  // Absolute path within the repo to the Starlark file. Regexes are not
+  // allowed.
+  string path = 3;
+
+  CoverageRule coverage_rule = 4;
+}

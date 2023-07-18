@@ -130,6 +130,91 @@ func (x *CoverageRule) GetDutCriteria() []*DutCriterion {
 	return nil
 }
 
+// Describes a CoverageRule and the Starlark file it was generated from. For
+// use as a schema for a BigQuery table (or any other storage that uses a proto
+// schema).
+//
+// Only intended for use in an analytic context, i.e. this shouldn't be used for
+// config or execution during the actual test planning process.
+//
+// Note that the host, project, and path fields are essentially exactly the same
+// as in the TestPlanStarlarkfile message; that message isn't used because the
+// TemplateParameters don't make sense in this context.
+type CoverageRuleBqRow struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Gitiles hostname, e.g. "chromium.googlesource.com".
+	Host string `protobuf:"bytes,1,opt,name=host,proto3" json:"host,omitempty"`
+	// Repository name on the host, e.g. "chromium/src".
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Absolute path within the repo to the Starlark file. Regexes are not
+	// allowed.
+	Path         string        `protobuf:"bytes,3,opt,name=path,proto3" json:"path,omitempty"`
+	CoverageRule *CoverageRule `protobuf:"bytes,4,opt,name=coverage_rule,json=coverageRule,proto3" json:"coverage_rule,omitempty"`
+}
+
+func (x *CoverageRuleBqRow) Reset() {
+	*x = CoverageRuleBqRow{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_coverage_rule_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CoverageRuleBqRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CoverageRuleBqRow) ProtoMessage() {}
+
+func (x *CoverageRuleBqRow) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_coverage_rule_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CoverageRuleBqRow.ProtoReflect.Descriptor instead.
+func (*CoverageRuleBqRow) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_coverage_rule_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CoverageRuleBqRow) GetHost() string {
+	if x != nil {
+		return x.Host
+	}
+	return ""
+}
+
+func (x *CoverageRuleBqRow) GetProject() string {
+	if x != nil {
+		return x.Project
+	}
+	return ""
+}
+
+func (x *CoverageRuleBqRow) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+func (x *CoverageRuleBqRow) GetCoverageRule() *CoverageRule {
+	if x != nil {
+		return x.CoverageRule
+	}
+	return nil
+}
+
 var File_chromiumos_test_api_coverage_rule_proto protoreflect.FileDescriptor
 
 var file_chromiumos_test_api_coverage_rule_proto_rawDesc = []byte{
@@ -164,7 +249,17 @@ var file_chromiumos_test_api_coverage_rule_proto_rawDesc = []byte{
 	0x28, 0x0b, 0x32, 0x21, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
 	0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x44, 0x75, 0x74, 0x43, 0x72, 0x69, 0x74,
 	0x65, 0x72, 0x69, 0x6f, 0x6e, 0x42, 0x02, 0x18, 0x01, 0x52, 0x0b, 0x64, 0x75, 0x74, 0x43, 0x72,
-	0x69, 0x74, 0x65, 0x72, 0x69, 0x61, 0x42, 0x2f, 0x5a, 0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72,
+	0x69, 0x74, 0x65, 0x72, 0x69, 0x61, 0x22, 0x9d, 0x01, 0x0a, 0x11, 0x43, 0x6f, 0x76, 0x65, 0x72,
+	0x61, 0x67, 0x65, 0x52, 0x75, 0x6c, 0x65, 0x42, 0x71, 0x52, 0x6f, 0x77, 0x12, 0x12, 0x0a, 0x04,
+	0x68, 0x6f, 0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x68, 0x6f, 0x73, 0x74,
+	0x12, 0x18, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61,
+	0x74, 0x68, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x12, 0x46,
+	0x0a, 0x0d, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x61, 0x67, 0x65, 0x5f, 0x72, 0x75, 0x6c, 0x65, 0x18,
+	0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d,
+	0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x6f, 0x76, 0x65,
+	0x72, 0x61, 0x67, 0x65, 0x52, 0x75, 0x6c, 0x65, 0x52, 0x0c, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x61,
+	0x67, 0x65, 0x52, 0x75, 0x6c, 0x65, 0x42, 0x2f, 0x5a, 0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72,
 	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69,
 	0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74,
 	0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
@@ -182,24 +277,26 @@ func file_chromiumos_test_api_coverage_rule_proto_rawDescGZIP() []byte {
 	return file_chromiumos_test_api_coverage_rule_proto_rawDescData
 }
 
-var file_chromiumos_test_api_coverage_rule_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_chromiumos_test_api_coverage_rule_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_chromiumos_test_api_coverage_rule_proto_goTypes = []interface{}{
 	(*CoverageRule)(nil),         // 0: chromiumos.test.api.CoverageRule
-	(*TestSuite)(nil),            // 1: chromiumos.test.api.TestSuite
-	(*DutTarget)(nil),            // 2: chromiumos.test.api.DutTarget
-	(*wrapperspb.BoolValue)(nil), // 3: google.protobuf.BoolValue
-	(*DutCriterion)(nil),         // 4: chromiumos.test.api.DutCriterion
+	(*CoverageRuleBqRow)(nil),    // 1: chromiumos.test.api.CoverageRuleBqRow
+	(*TestSuite)(nil),            // 2: chromiumos.test.api.TestSuite
+	(*DutTarget)(nil),            // 3: chromiumos.test.api.DutTarget
+	(*wrapperspb.BoolValue)(nil), // 4: google.protobuf.BoolValue
+	(*DutCriterion)(nil),         // 5: chromiumos.test.api.DutCriterion
 }
 var file_chromiumos_test_api_coverage_rule_proto_depIdxs = []int32{
-	1, // 0: chromiumos.test.api.CoverageRule.test_suites:type_name -> chromiumos.test.api.TestSuite
-	2, // 1: chromiumos.test.api.CoverageRule.dut_targets:type_name -> chromiumos.test.api.DutTarget
-	3, // 2: chromiumos.test.api.CoverageRule.critical:type_name -> google.protobuf.BoolValue
-	4, // 3: chromiumos.test.api.CoverageRule.dut_criteria:type_name -> chromiumos.test.api.DutCriterion
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	2, // 0: chromiumos.test.api.CoverageRule.test_suites:type_name -> chromiumos.test.api.TestSuite
+	3, // 1: chromiumos.test.api.CoverageRule.dut_targets:type_name -> chromiumos.test.api.DutTarget
+	4, // 2: chromiumos.test.api.CoverageRule.critical:type_name -> google.protobuf.BoolValue
+	5, // 3: chromiumos.test.api.CoverageRule.dut_criteria:type_name -> chromiumos.test.api.DutCriterion
+	0, // 4: chromiumos.test.api.CoverageRuleBqRow.coverage_rule:type_name -> chromiumos.test.api.CoverageRule
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_api_coverage_rule_proto_init() }
@@ -222,6 +319,18 @@ func file_chromiumos_test_api_coverage_rule_proto_init() {
 				return nil
 			}
 		}
+		file_chromiumos_test_api_coverage_rule_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CoverageRuleBqRow); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -229,7 +338,7 @@ func file_chromiumos_test_api_coverage_rule_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_api_coverage_rule_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -18873,6 +18873,40 @@
             }
           ],
           "name": "CoverageRule"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "host",
+              "label": "LABEL_OPTIONAL",
+              "name": "host",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "project",
+              "label": "LABEL_OPTIONAL",
+              "name": "project",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "coverageRule",
+              "label": "LABEL_OPTIONAL",
+              "name": "coverage_rule",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CoverageRule"
+            }
+          ],
+          "name": "CoverageRuleBqRow"
         }
       ],
       "name": "chromiumos/test/api/coverage_rule.proto",
