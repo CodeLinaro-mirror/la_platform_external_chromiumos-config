@@ -98,3 +98,41 @@ message PassRatePolicy {
 
   // NEXT RULE = 8
 }
+
+// FilterCfgs as a whole describes all the policies for test filtering.
+message FilterCfgs {
+  repeated FilterCfg filter_cfg = 1;
+}
+
+// FilterCfg is a policy which applies to one or more suites.
+// If there is/are no suite(s) set, it will be treated as the global policy.
+message FilterCfg {
+  // This applies to the entire suite. Any tests forced_enabled/disabled in this
+  // will apply to all boards.
+  PassRatePolicy pass_rate_policy = 1;
+
+  // Blank will be treated as the global policy. By setting this field, this policy
+  // will overwrite the global, and apply to all suites in this list.
+  repeated string test_suites = 2;
+
+  // Overrides force_enabled/disabled set in PassRatePolicy
+  repeated FilterTestConfig cfgs = 3;
+
+  // Fully opt the suite out of filtering.
+  bool opt_out = 4;
+}
+
+// FilterTestConfig contains a test, boards, and the state of the test.
+message FilterTestConfig {
+  string test = 1;
+  repeated string board = 2;
+
+  // Force enable/disabled the test on the boards in the cfg.
+  oneof setting {
+    bool enabled = 3;
+    bool disabled = 4;
+  }
+  // List of bugs associated with the cfg
+  repeated string bugs = 5;
+
+}

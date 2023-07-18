@@ -415,6 +415,241 @@ func (x *PassRatePolicy) GetDryrun() bool {
 	return false
 }
 
+// FilterCfgs as a whole describes all the policies for test filtering.
+type FilterCfgs struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	FilterCfg []*FilterCfg `protobuf:"bytes,1,rep,name=filter_cfg,json=filterCfg,proto3" json:"filter_cfg,omitempty"`
+}
+
+func (x *FilterCfgs) Reset() {
+	*x = FilterCfgs{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_pre_test_service_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FilterCfgs) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FilterCfgs) ProtoMessage() {}
+
+func (x *FilterCfgs) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_pre_test_service_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FilterCfgs.ProtoReflect.Descriptor instead.
+func (*FilterCfgs) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_pre_test_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *FilterCfgs) GetFilterCfg() []*FilterCfg {
+	if x != nil {
+		return x.FilterCfg
+	}
+	return nil
+}
+
+// FilterCfg is a policy which applies to one or more suites.
+// If there is/are no suite(s) set, it will be treated as the global policy.
+type FilterCfg struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// This applies to the entire suite. Any tests forced_enabled/disabled in this
+	// will apply to all boards.
+	PassRatePolicy *PassRatePolicy `protobuf:"bytes,1,opt,name=pass_rate_policy,json=passRatePolicy,proto3" json:"pass_rate_policy,omitempty"`
+	// Blank will be treated as the global policy. By setting this field, this policy
+	// will overwrite the global, and apply to all suites in this list.
+	TestSuites []string `protobuf:"bytes,2,rep,name=test_suites,json=testSuites,proto3" json:"test_suites,omitempty"`
+	// Overrides force_enabled/disabled set in PassRatePolicy
+	Cfgs []*FilterTestConfig `protobuf:"bytes,3,rep,name=cfgs,proto3" json:"cfgs,omitempty"`
+	// Fully opt the suite out of filtering.
+	OptOut bool `protobuf:"varint,4,opt,name=opt_out,json=optOut,proto3" json:"opt_out,omitempty"`
+}
+
+func (x *FilterCfg) Reset() {
+	*x = FilterCfg{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_pre_test_service_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FilterCfg) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FilterCfg) ProtoMessage() {}
+
+func (x *FilterCfg) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_pre_test_service_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FilterCfg.ProtoReflect.Descriptor instead.
+func (*FilterCfg) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_pre_test_service_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *FilterCfg) GetPassRatePolicy() *PassRatePolicy {
+	if x != nil {
+		return x.PassRatePolicy
+	}
+	return nil
+}
+
+func (x *FilterCfg) GetTestSuites() []string {
+	if x != nil {
+		return x.TestSuites
+	}
+	return nil
+}
+
+func (x *FilterCfg) GetCfgs() []*FilterTestConfig {
+	if x != nil {
+		return x.Cfgs
+	}
+	return nil
+}
+
+func (x *FilterCfg) GetOptOut() bool {
+	if x != nil {
+		return x.OptOut
+	}
+	return false
+}
+
+// FilterTestConfig contains a test, boards, and the state of the test.
+type FilterTestConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Test  string   `protobuf:"bytes,1,opt,name=test,proto3" json:"test,omitempty"`
+	Board []string `protobuf:"bytes,2,rep,name=board,proto3" json:"board,omitempty"`
+	// Force enable/disabled the test on the boards in the cfg.
+	//
+	// Types that are assignable to Setting:
+	//	*FilterTestConfig_Enabled
+	//	*FilterTestConfig_Disabled
+	Setting isFilterTestConfig_Setting `protobuf_oneof:"setting"`
+	// List of bugs associated with the cfg
+	Bugs []string `protobuf:"bytes,5,rep,name=bugs,proto3" json:"bugs,omitempty"`
+}
+
+func (x *FilterTestConfig) Reset() {
+	*x = FilterTestConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_pre_test_service_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FilterTestConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FilterTestConfig) ProtoMessage() {}
+
+func (x *FilterTestConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_pre_test_service_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FilterTestConfig.ProtoReflect.Descriptor instead.
+func (*FilterTestConfig) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_pre_test_service_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *FilterTestConfig) GetTest() string {
+	if x != nil {
+		return x.Test
+	}
+	return ""
+}
+
+func (x *FilterTestConfig) GetBoard() []string {
+	if x != nil {
+		return x.Board
+	}
+	return nil
+}
+
+func (m *FilterTestConfig) GetSetting() isFilterTestConfig_Setting {
+	if m != nil {
+		return m.Setting
+	}
+	return nil
+}
+
+func (x *FilterTestConfig) GetEnabled() bool {
+	if x, ok := x.GetSetting().(*FilterTestConfig_Enabled); ok {
+		return x.Enabled
+	}
+	return false
+}
+
+func (x *FilterTestConfig) GetDisabled() bool {
+	if x, ok := x.GetSetting().(*FilterTestConfig_Disabled); ok {
+		return x.Disabled
+	}
+	return false
+}
+
+func (x *FilterTestConfig) GetBugs() []string {
+	if x != nil {
+		return x.Bugs
+	}
+	return nil
+}
+
+type isFilterTestConfig_Setting interface {
+	isFilterTestConfig_Setting()
+}
+
+type FilterTestConfig_Enabled struct {
+	Enabled bool `protobuf:"varint,3,opt,name=enabled,proto3,oneof"`
+}
+
+type FilterTestConfig_Disabled struct {
+	Disabled bool `protobuf:"varint,4,opt,name=disabled,proto3,oneof"`
+}
+
+func (*FilterTestConfig_Enabled) isFilterTestConfig_Setting() {}
+
+func (*FilterTestConfig_Disabled) isFilterTestConfig_Setting() {}
+
 var File_chromiumos_test_api_pre_test_service_proto protoreflect.FileDescriptor
 
 var file_chromiumos_test_api_pre_test_service_proto_rawDesc = []byte{
@@ -486,18 +721,46 @@ var file_chromiumos_test_api_pre_test_service_proto_rawDesc = []byte{
 	0x23, 0x0a, 0x0d, 0x72, 0x65, 0x63, 0x65, 0x6e, 0x74, 0x5f, 0x77, 0x69, 0x6e, 0x64, 0x6f, 0x77,
 	0x18, 0x0a, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x72, 0x65, 0x63, 0x65, 0x6e, 0x74, 0x57, 0x69,
 	0x6e, 0x64, 0x6f, 0x77, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x72, 0x79, 0x72, 0x75, 0x6e, 0x18, 0x0b,
-	0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x64, 0x72, 0x79, 0x72, 0x75, 0x6e, 0x32, 0x77, 0x0a, 0x0e,
-	0x50, 0x72, 0x65, 0x54, 0x65, 0x73, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x65,
-	0x0a, 0x10, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x46, 0x6c, 0x61, 0x6b, 0x79, 0x54, 0x65, 0x73,
-	0x74, 0x73, 0x12, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
+	0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x64, 0x72, 0x79, 0x72, 0x75, 0x6e, 0x22, 0x4b, 0x0a, 0x0a,
+	0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x43, 0x66, 0x67, 0x73, 0x12, 0x3d, 0x0a, 0x0a, 0x66, 0x69,
+	0x6c, 0x74, 0x65, 0x72, 0x5f, 0x63, 0x66, 0x67, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e,
+	0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74,
+	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x43, 0x66, 0x67, 0x52, 0x09,
+	0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x43, 0x66, 0x67, 0x22, 0xcf, 0x01, 0x0a, 0x09, 0x46, 0x69,
+	0x6c, 0x74, 0x65, 0x72, 0x43, 0x66, 0x67, 0x12, 0x4d, 0x0a, 0x10, 0x70, 0x61, 0x73, 0x73, 0x5f,
+	0x72, 0x61, 0x74, 0x65, 0x5f, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x23, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74,
+	0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x50, 0x61, 0x73, 0x73, 0x52, 0x61, 0x74, 0x65,
+	0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x52, 0x0e, 0x70, 0x61, 0x73, 0x73, 0x52, 0x61, 0x74, 0x65,
+	0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x12, 0x1f, 0x0a, 0x0b, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x73,
+	0x75, 0x69, 0x74, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0a, 0x74, 0x65, 0x73,
+	0x74, 0x53, 0x75, 0x69, 0x74, 0x65, 0x73, 0x12, 0x39, 0x0a, 0x04, 0x63, 0x66, 0x67, 0x73, 0x18,
+	0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d,
+	0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x46, 0x69, 0x6c, 0x74,
+	0x65, 0x72, 0x54, 0x65, 0x73, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x04, 0x63, 0x66,
+	0x67, 0x73, 0x12, 0x17, 0x0a, 0x07, 0x6f, 0x70, 0x74, 0x5f, 0x6f, 0x75, 0x74, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x08, 0x52, 0x06, 0x6f, 0x70, 0x74, 0x4f, 0x75, 0x74, 0x22, 0x95, 0x01, 0x0a, 0x10,
+	0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x54, 0x65, 0x73, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x74, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x18, 0x02, 0x20,
+	0x03, 0x28, 0x09, 0x52, 0x05, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x12, 0x1a, 0x0a, 0x07, 0x65, 0x6e,
+	0x61, 0x62, 0x6c, 0x65, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x48, 0x00, 0x52, 0x07, 0x65,
+	0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x12, 0x1c, 0x0a, 0x08, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c,
+	0x65, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x48, 0x00, 0x52, 0x08, 0x64, 0x69, 0x73, 0x61,
+	0x62, 0x6c, 0x65, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x62, 0x75, 0x67, 0x73, 0x18, 0x05, 0x20, 0x03,
+	0x28, 0x09, 0x52, 0x04, 0x62, 0x75, 0x67, 0x73, 0x42, 0x09, 0x0a, 0x07, 0x73, 0x65, 0x74, 0x74,
+	0x69, 0x6e, 0x67, 0x32, 0x77, 0x0a, 0x0e, 0x50, 0x72, 0x65, 0x54, 0x65, 0x73, 0x74, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x65, 0x0a, 0x10, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x46,
+	0x6c, 0x61, 0x6b, 0x79, 0x54, 0x65, 0x73, 0x74, 0x73, 0x12, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x46, 0x6c, 0x61, 0x6b, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x28, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
 	0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x46,
-	0x6c, 0x61, 0x6b, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e, 0x63, 0x68,
-	0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70,
-	0x69, 0x2e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x46, 0x6c, 0x61, 0x6b, 0x79, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x2f, 0x5a, 0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f,
-	0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75,
-	0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65,
-	0x73, 0x74, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6c, 0x61, 0x6b, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x2f, 0x5a, 0x2d,
+	0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f,
+	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -512,26 +775,32 @@ func file_chromiumos_test_api_pre_test_service_proto_rawDescGZIP() []byte {
 	return file_chromiumos_test_api_pre_test_service_proto_rawDescData
 }
 
-var file_chromiumos_test_api_pre_test_service_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_chromiumos_test_api_pre_test_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_chromiumos_test_api_pre_test_service_proto_goTypes = []interface{}{
 	(*FilterFlakyRequest)(nil),    // 0: chromiumos.test.api.FilterFlakyRequest
 	(*FilterFlakyResponse)(nil),   // 1: chromiumos.test.api.FilterFlakyResponse
 	(*StabilitySensorPolicy)(nil), // 2: chromiumos.test.api.StabilitySensorPolicy
 	(*PassRatePolicy)(nil),        // 3: chromiumos.test.api.PassRatePolicy
-	(*TestSuite)(nil),             // 4: chromiumos.test.api.TestSuite
+	(*FilterCfgs)(nil),            // 4: chromiumos.test.api.FilterCfgs
+	(*FilterCfg)(nil),             // 5: chromiumos.test.api.FilterCfg
+	(*FilterTestConfig)(nil),      // 6: chromiumos.test.api.FilterTestConfig
+	(*TestSuite)(nil),             // 7: chromiumos.test.api.TestSuite
 }
 var file_chromiumos_test_api_pre_test_service_proto_depIdxs = []int32{
 	3, // 0: chromiumos.test.api.FilterFlakyRequest.pass_rate_policy:type_name -> chromiumos.test.api.PassRatePolicy
 	2, // 1: chromiumos.test.api.FilterFlakyRequest.stability_sensor_policy:type_name -> chromiumos.test.api.StabilitySensorPolicy
-	4, // 2: chromiumos.test.api.FilterFlakyRequest.test_suites:type_name -> chromiumos.test.api.TestSuite
-	4, // 3: chromiumos.test.api.FilterFlakyResponse.test_suites:type_name -> chromiumos.test.api.TestSuite
-	0, // 4: chromiumos.test.api.PreTestService.FilterFlakyTests:input_type -> chromiumos.test.api.FilterFlakyRequest
-	1, // 5: chromiumos.test.api.PreTestService.FilterFlakyTests:output_type -> chromiumos.test.api.FilterFlakyResponse
-	5, // [5:6] is the sub-list for method output_type
-	4, // [4:5] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	7, // 2: chromiumos.test.api.FilterFlakyRequest.test_suites:type_name -> chromiumos.test.api.TestSuite
+	7, // 3: chromiumos.test.api.FilterFlakyResponse.test_suites:type_name -> chromiumos.test.api.TestSuite
+	5, // 4: chromiumos.test.api.FilterCfgs.filter_cfg:type_name -> chromiumos.test.api.FilterCfg
+	3, // 5: chromiumos.test.api.FilterCfg.pass_rate_policy:type_name -> chromiumos.test.api.PassRatePolicy
+	6, // 6: chromiumos.test.api.FilterCfg.cfgs:type_name -> chromiumos.test.api.FilterTestConfig
+	0, // 7: chromiumos.test.api.PreTestService.FilterFlakyTests:input_type -> chromiumos.test.api.FilterFlakyRequest
+	1, // 8: chromiumos.test.api.PreTestService.FilterFlakyTests:output_type -> chromiumos.test.api.FilterFlakyResponse
+	8, // [8:9] is the sub-list for method output_type
+	7, // [7:8] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_api_pre_test_service_proto_init() }
@@ -589,11 +858,51 @@ func file_chromiumos_test_api_pre_test_service_proto_init() {
 				return nil
 			}
 		}
+		file_chromiumos_test_api_pre_test_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FilterCfgs); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_pre_test_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FilterCfg); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_pre_test_service_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FilterTestConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_chromiumos_test_api_pre_test_service_proto_msgTypes[0].OneofWrappers = []interface{}{
 		(*FilterFlakyRequest_PassRatePolicy)(nil),
 		(*FilterFlakyRequest_StabilitySensorPolicy)(nil),
 		(*FilterFlakyRequest_Board)(nil),
+	}
+	file_chromiumos_test_api_pre_test_service_proto_msgTypes[6].OneofWrappers = []interface{}{
+		(*FilterTestConfig_Enabled)(nil),
+		(*FilterTestConfig_Disabled)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -601,7 +910,7 @@ func file_chromiumos_test_api_pre_test_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_api_pre_test_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

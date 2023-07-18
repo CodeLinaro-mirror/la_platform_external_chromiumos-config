@@ -20034,6 +20034,101 @@
             }
           ],
           "name": "PassRatePolicy"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "filterCfg",
+              "label": "LABEL_REPEATED",
+              "name": "filter_cfg",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FilterCfg"
+            }
+          ],
+          "name": "FilterCfgs"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "passRatePolicy",
+              "label": "LABEL_OPTIONAL",
+              "name": "pass_rate_policy",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PassRatePolicy"
+            },
+            {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "cfgs",
+              "label": "LABEL_REPEATED",
+              "name": "cfgs",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FilterTestConfig"
+            },
+            {
+              "jsonName": "optOut",
+              "label": "LABEL_OPTIONAL",
+              "name": "opt_out",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "FilterCfg"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "test",
+              "label": "LABEL_OPTIONAL",
+              "name": "test",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_REPEATED",
+              "name": "board",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "enabled",
+              "label": "LABEL_OPTIONAL",
+              "name": "enabled",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "disabled",
+              "label": "LABEL_OPTIONAL",
+              "name": "disabled",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "bugs",
+              "label": "LABEL_REPEATED",
+              "name": "bugs",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FilterTestConfig",
+          "oneofDecl": [
+            {
+              "name": "setting"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/pre_test_service.proto",
