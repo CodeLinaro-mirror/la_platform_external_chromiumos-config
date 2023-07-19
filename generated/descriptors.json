@@ -21562,6 +21562,11 @@
         {
           "method": [
             {
+              "inputType": ".chromiumos.test.api.ProvisionStartupRequest",
+              "name": "StartUp",
+              "outputType": ".chromiumos.test.api.ProvisionStartupResponse"
+            },
+            {
               "inputType": ".chromiumos.test.api.InstallRequest",
               "name": "Install",
               "options": {

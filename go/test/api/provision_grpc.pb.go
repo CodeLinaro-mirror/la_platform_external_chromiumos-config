@@ -23,6 +23,10 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GenericProvisionServiceClient interface {
+	// StartUp prepares the provision service by providing
+	// necessary input values for initialization prior to
+	// calling any other provision related service calls.
+	StartUp(ctx context.Context, in *ProvisionStartupRequest, opts ...grpc.CallOption) (*ProvisionStartupResponse, error)
 	// Install installs a specified OS on the DUT.
 	// It is intended to be a generic installation grpc that may be used by all
 	// OS flavors.
@@ -35,6 +39,15 @@ type genericProvisionServiceClient struct {
 
 func NewGenericProvisionServiceClient(cc grpc.ClientConnInterface) GenericProvisionServiceClient {
 	return &genericProvisionServiceClient{cc}
+}
+
+func (c *genericProvisionServiceClient) StartUp(ctx context.Context, in *ProvisionStartupRequest, opts ...grpc.CallOption) (*ProvisionStartupResponse, error) {
+	out := new(ProvisionStartupResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.GenericProvisionService/StartUp", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *genericProvisionServiceClient) Install(ctx context.Context, in *InstallRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
@@ -50,6 +63,10 @@ func (c *genericProvisionServiceClient) Install(ctx context.Context, in *Install
 // All implementations should embed UnimplementedGenericProvisionServiceServer
 // for forward compatibility
 type GenericProvisionServiceServer interface {
+	// StartUp prepares the provision service by providing
+	// necessary input values for initialization prior to
+	// calling any other provision related service calls.
+	StartUp(context.Context, *ProvisionStartupRequest) (*ProvisionStartupResponse, error)
 	// Install installs a specified OS on the DUT.
 	// It is intended to be a generic installation grpc that may be used by all
 	// OS flavors.
@@ -60,6 +77,9 @@ type GenericProvisionServiceServer interface {
 type UnimplementedGenericProvisionServiceServer struct {
 }
 
+func (UnimplementedGenericProvisionServiceServer) StartUp(context.Context, *ProvisionStartupRequest) (*ProvisionStartupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartUp not implemented")
+}
 func (UnimplementedGenericProvisionServiceServer) Install(context.Context, *InstallRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Install not implemented")
 }
@@ -73,6 +93,24 @@ type UnsafeGenericProvisionServiceServer interface {
 
 func RegisterGenericProvisionServiceServer(s grpc.ServiceRegistrar, srv GenericProvisionServiceServer) {
 	s.RegisterService(&GenericProvisionService_ServiceDesc, srv)
+}
+
+func _GenericProvisionService_StartUp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProvisionStartupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GenericProvisionServiceServer).StartUp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.GenericProvisionService/StartUp",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GenericProvisionServiceServer).StartUp(ctx, req.(*ProvisionStartupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _GenericProvisionService_Install_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -100,6 +138,10 @@ var GenericProvisionService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "chromiumos.test.api.GenericProvisionService",
 	HandlerType: (*GenericProvisionServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "StartUp",
+			Handler:    _GenericProvisionService_StartUp_Handler,
+		},
 		{
 			MethodName: "Install",
 			Handler:    _GenericProvisionService_Install_Handler,

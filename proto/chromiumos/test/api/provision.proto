@@ -17,6 +17,12 @@ import "google/protobuf/any.proto";
 // Generic provisioning interface for CFT. Intended to be interchangeable across
 // services
 service GenericProvisionService {
+  // StartUp prepares the provision service by providing
+  // necessary input values for initialization prior to
+  // calling any other provision related service calls.
+  rpc StartUp(ProvisionStartupRequest)
+    returns (ProvisionStartupResponse);
+
   // Install installs a specified OS on the DUT.
   // It is intended to be a generic installation grpc that may be used by all 
   // OS flavors.
