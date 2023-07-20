@@ -2988,6 +2988,8 @@ type HardwareFeatures_LightSensor struct {
 	LidLightsensor HardwareFeatures_Present `protobuf:"varint,1,opt,name=lid_lightsensor,json=lidLightsensor,proto3,enum=chromiumos.config.api.HardwareFeatures_Present" json:"lid_lightsensor,omitempty"`
 	// If base light sensor is present on system
 	BaseLightsensor HardwareFeatures_Present `protobuf:"varint,2,opt,name=base_lightsensor,json=baseLightsensor,proto3,enum=chromiumos.config.api.HardwareFeatures_Present" json:"base_lightsensor,omitempty"`
+	// If camera light sensor is present on system
+	CameraLightsensor HardwareFeatures_Present `protobuf:"varint,3,opt,name=camera_lightsensor,json=cameraLightsensor,proto3,enum=chromiumos.config.api.HardwareFeatures_Present" json:"camera_lightsensor,omitempty"`
 }
 
 func (x *HardwareFeatures_LightSensor) Reset() {
@@ -3032,6 +3034,13 @@ func (x *HardwareFeatures_LightSensor) GetLidLightsensor() HardwareFeatures_Pres
 func (x *HardwareFeatures_LightSensor) GetBaseLightsensor() HardwareFeatures_Present {
 	if x != nil {
 		return x.BaseLightsensor
+	}
+	return HardwareFeatures_PRESENT_UNKNOWN
+}
+
+func (x *HardwareFeatures_LightSensor) GetCameraLightsensor() HardwareFeatures_Present {
+	if x != nil {
+		return x.CameraLightsensor
 	}
 	return HardwareFeatures_PRESENT_UNKNOWN
 }
@@ -6123,7 +6132,7 @@ var file_chromiumos_config_api_topology_proto_rawDesc = []byte{
 	0x4e, 0x44, 0x53, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x53, 0x45, 0x43, 0x4f, 0x4e, 0x44, 0x53,
 	0x10, 0x02, 0x12, 0x0b, 0x0a, 0x07, 0x4d, 0x49, 0x4e, 0x55, 0x54, 0x45, 0x53, 0x10, 0x03, 0x12,
 	0x09, 0x0a, 0x05, 0x48, 0x4f, 0x55, 0x52, 0x53, 0x10, 0x04, 0x12, 0x08, 0x0a, 0x04, 0x44, 0x41,
-	0x59, 0x53, 0x10, 0x05, 0x22, 0xec, 0x97, 0x01, 0x0a, 0x10, 0x48, 0x61, 0x72, 0x64, 0x77, 0x61,
+	0x59, 0x53, 0x10, 0x05, 0x22, 0xcc, 0x98, 0x01, 0x0a, 0x10, 0x48, 0x61, 0x72, 0x64, 0x77, 0x61,
 	0x72, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x12, 0x41, 0x0a, 0x05, 0x75, 0x73,
 	0x62, 0x5f, 0x63, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x63, 0x68, 0x72, 0x6f,
 	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x61, 0x70,
@@ -6711,7 +6720,7 @@ var file_chromiumos_config_api_topology_proto_rawDesc = []byte{
 	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x61,
 	0x70, 0x69, 0x2e, 0x48, 0x61, 0x72, 0x64, 0x77, 0x61, 0x72, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75,
 	0x72, 0x65, 0x73, 0x2e, 0x50, 0x72, 0x65, 0x73, 0x65, 0x6e, 0x74, 0x52, 0x10, 0x62, 0x61, 0x73,
-	0x65, 0x4d, 0x61, 0x67, 0x6e, 0x65, 0x74, 0x6f, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x1a, 0xc3, 0x01,
+	0x65, 0x4d, 0x61, 0x67, 0x6e, 0x65, 0x74, 0x6f, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x1a, 0xa3, 0x02,
 	0x0a, 0x0b, 0x4c, 0x69, 0x67, 0x68, 0x74, 0x53, 0x65, 0x6e, 0x73, 0x6f, 0x72, 0x12, 0x58, 0x0a,
 	0x0f, 0x6c, 0x69, 0x64, 0x5f, 0x6c, 0x69, 0x67, 0x68, 0x74, 0x73, 0x65, 0x6e, 0x73, 0x6f, 0x72,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75,
@@ -6724,6 +6733,12 @@ var file_chromiumos_config_api_topology_proto_rawDesc = []byte{
 	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x48, 0x61, 0x72, 0x64, 0x77, 0x61,
 	0x72, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x2e, 0x50, 0x72, 0x65, 0x73, 0x65,
 	0x6e, 0x74, 0x52, 0x0f, 0x62, 0x61, 0x73, 0x65, 0x4c, 0x69, 0x67, 0x68, 0x74, 0x73, 0x65, 0x6e,
+	0x73, 0x6f, 0x72, 0x12, 0x5e, 0x0a, 0x12, 0x63, 0x61, 0x6d, 0x65, 0x72, 0x61, 0x5f, 0x6c, 0x69,
+	0x67, 0x68, 0x74, 0x73, 0x65, 0x6e, 0x73, 0x6f, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32,
+	0x2f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x63, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x48, 0x61, 0x72, 0x64, 0x77, 0x61, 0x72, 0x65,
+	0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x2e, 0x50, 0x72, 0x65, 0x73, 0x65, 0x6e, 0x74,
+	0x52, 0x11, 0x63, 0x61, 0x6d, 0x65, 0x72, 0x61, 0x4c, 0x69, 0x67, 0x68, 0x74, 0x73, 0x65, 0x6e,
 	0x73, 0x6f, 0x72, 0x1a, 0xf7, 0x02, 0x0a, 0x06, 0x53, 0x63, 0x72, 0x65, 0x65, 0x6e, 0x12, 0x63,
 	0x0a, 0x0e, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65,
 	0x18, 0x04, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x3c, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75,
@@ -7544,98 +7559,99 @@ var file_chromiumos_config_api_topology_proto_depIdxs = []int32{
 	2,   // 74: chromiumos.config.api.HardwareFeatures.Magnetometer.base_magnetometer:type_name -> chromiumos.config.api.HardwareFeatures.Present
 	2,   // 75: chromiumos.config.api.HardwareFeatures.LightSensor.lid_lightsensor:type_name -> chromiumos.config.api.HardwareFeatures.Present
 	2,   // 76: chromiumos.config.api.HardwareFeatures.LightSensor.base_lightsensor:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	12,  // 77: chromiumos.config.api.HardwareFeatures.Screen.connector_type:type_name -> chromiumos.config.api.HardwareFeatures.Screen.ConnectorType
-	91,  // 78: chromiumos.config.api.HardwareFeatures.Screen.panel_properties:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties
-	2,   // 79: chromiumos.config.api.HardwareFeatures.Screen.touch_support:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	13,  // 80: chromiumos.config.api.HardwareFeatures.FormFactor.form_factor:type_name -> chromiumos.config.api.HardwareFeatures.FormFactor.FormFactorType
-	14,  // 81: chromiumos.config.api.HardwareFeatures.FormFactor.recovery_input:type_name -> chromiumos.config.api.HardwareFeatures.FormFactor.RecoveryInputType
-	92,  // 82: chromiumos.config.api.HardwareFeatures.FormFactor.detachable_ui:type_name -> google.protobuf.BoolValue
-	15,  // 83: chromiumos.config.api.HardwareFeatures.Stylus.stylus:type_name -> chromiumos.config.api.HardwareFeatures.Stylus.StylusType
-	16,  // 84: chromiumos.config.api.HardwareFeatures.Keyboard.keyboard_type:type_name -> chromiumos.config.api.HardwareFeatures.Keyboard.KeyboardType
-	2,   // 85: chromiumos.config.api.HardwareFeatures.Keyboard.backlight:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 86: chromiumos.config.api.HardwareFeatures.Keyboard.power_button:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 87: chromiumos.config.api.HardwareFeatures.Keyboard.numeric_pad:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	17,  // 88: chromiumos.config.api.HardwareFeatures.Keyboard.mcu_type:type_name -> chromiumos.config.api.HardwareFeatures.Keyboard.KeyboardMcuType
-	74,  // 89: chromiumos.config.api.HardwareFeatures.Keyboard.als_steps:type_name -> chromiumos.config.api.HardwareFeatures.KbAlsStep
-	93,  // 90: chromiumos.config.api.HardwareFeatures.Memory.profile:type_name -> chromiumos.config.api.Component.Memory.Profile
-	18,  // 91: chromiumos.config.api.HardwareFeatures.Fingerprint.location:type_name -> chromiumos.config.api.HardwareFeatures.Fingerprint.Location
-	85,  // 92: chromiumos.config.api.HardwareFeatures.Fingerprint.fingerprint_diag:type_name -> chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag
-	94,  // 93: chromiumos.config.api.HardwareFeatures.Storage.storage_type:type_name -> chromiumos.config.api.Component.Storage.StorageType
-	95,  // 94: chromiumos.config.api.HardwareFeatures.Bluetooth.component:type_name -> chromiumos.config.api.Component.Bluetooth
-	2,   // 95: chromiumos.config.api.HardwareFeatures.Bluetooth.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 96: chromiumos.config.api.HardwareFeatures.BarrelJack.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	96,  // 97: chromiumos.config.api.HardwareFeatures.Wifi.supported_wlan_protocols:type_name -> chromiumos.config.api.Component.Wifi.WLANProtocol
-	19,  // 98: chromiumos.config.api.HardwareFeatures.Wifi.wifi_chips:type_name -> chromiumos.config.api.HardwareFeatures.Wifi.WifiChip
-	97,  // 99: chromiumos.config.api.HardwareFeatures.Wifi.wifi_config:type_name -> chromiumos.config.api.WifiConfig
-	20,  // 100: chromiumos.config.api.HardwareFeatures.Button.region:type_name -> chromiumos.config.api.HardwareFeatures.Button.Region
-	21,  // 101: chromiumos.config.api.HardwareFeatures.Button.edge:type_name -> chromiumos.config.api.HardwareFeatures.Button.Edge
-	2,   // 102: chromiumos.config.api.HardwareFeatures.EmbeddedController.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	22,  // 103: chromiumos.config.api.HardwareFeatures.EmbeddedController.ec_type:type_name -> chromiumos.config.api.HardwareFeatures.EmbeddedController.EmbeddedControllerType
-	98,  // 104: chromiumos.config.api.HardwareFeatures.EmbeddedController.part:type_name -> chromiumos.config.api.Component.EmbeddedController
-	2,   // 105: chromiumos.config.api.HardwareFeatures.EmbeddedController.feature_typec_cmd:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 106: chromiumos.config.api.HardwareFeatures.EmbeddedController.cbi:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 107: chromiumos.config.api.HardwareFeatures.EmbeddedController.detachable_base:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 108: chromiumos.config.api.HardwareFeatures.EmbeddedController.feature_charge_control_v2:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 109: chromiumos.config.api.HardwareFeatures.EmbeddedController.feature_asserts_panic:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 110: chromiumos.config.api.HardwareFeatures.EmbeddedController.feature_system_safe_mode:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	23,  // 111: chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.tpm_type:type_name -> chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.TrustedPlatformModuleType
-	2,   // 112: chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.production_rw_key_id:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	24,  // 113: chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.runtime_tpm_version:type_name -> chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.RuntimeTpmVersion
-	2,   // 114: chromiumos.config.api.HardwareFeatures.Hotwording.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	25,  // 115: chromiumos.config.api.HardwareFeatures.Display.type:type_name -> chromiumos.config.api.HardwareFeatures.Display.Type
-	2,   // 116: chromiumos.config.api.HardwareFeatures.Touchpad.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 117: chromiumos.config.api.HardwareFeatures.MicrophoneMuteSwitch.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 118: chromiumos.config.api.HardwareFeatures.Battery.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	88,  // 119: chromiumos.config.api.HardwareFeatures.Battery.lifetime:type_name -> chromiumos.config.api.HardwareFeatures.Battery.Lifetime
-	89,  // 120: chromiumos.config.api.HardwareFeatures.Battery.charging:type_name -> chromiumos.config.api.HardwareFeatures.Battery.Charging
-	2,   // 121: chromiumos.config.api.HardwareFeatures.PrivacyScreen.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	99,  // 122: chromiumos.config.api.HardwareFeatures.Soc.features:type_name -> chromiumos.config.api.Component.Soc.Feature
-	100, // 123: chromiumos.config.api.HardwareFeatures.Soc.vulnerabilities:type_name -> chromiumos.config.api.Component.Soc.Vulnerability
-	2,   // 124: chromiumos.config.api.HardwareFeatures.Soc.hevc_support:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	101, // 125: chromiumos.config.api.HardwareFeatures.DisplayPortConverter.converters:type_name -> chromiumos.config.api.Component.DisplayPortConverter
-	2,   // 126: chromiumos.config.api.HardwareFeatures.Hps.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 127: chromiumos.config.api.HardwareFeatures.PoE.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 128: chromiumos.config.api.HardwareFeatures.PowerSupply.barreljack:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	102, // 129: chromiumos.config.api.HardwareFeatures.Proximity.configs:type_name -> chromiumos.config.api.ProximityConfig
-	103, // 130: chromiumos.config.api.HardwareFeatures.Touch.touch_slop_distance:type_name -> google.protobuf.UInt32Value
-	2,   // 131: chromiumos.config.api.HardwareFeatures.RuntimeProbeConfig.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 132: chromiumos.config.api.HardwareFeatures.Dgpu.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	26,  // 133: chromiumos.config.api.HardwareFeatures.Dgpu.dgpu_type:type_name -> chromiumos.config.api.HardwareFeatures.Dgpu.DgpuType
-	2,   // 134: chromiumos.config.api.HardwareFeatures.Uwb.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	104, // 135: chromiumos.config.api.HardwareFeatures.KbAlsStep.lux_threshold:type_name -> chromiumos.config.api.Component.LuxThreshold
-	2,   // 136: chromiumos.config.api.HardwareFeatures.Suspend.suspend_to_mem:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 137: chromiumos.config.api.HardwareFeatures.Suspend.suspend_to_idle:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 138: chromiumos.config.api.HardwareFeatures.Vrr.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	2,   // 139: chromiumos.config.api.HardwareFeatures.SdReader.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	3,   // 140: chromiumos.config.api.HardwareFeatures.UsbC.Port.position:type_name -> chromiumos.config.api.HardwareFeatures.PortPosition
-	103, // 141: chromiumos.config.api.HardwareFeatures.UsbC.Port.index_override:type_name -> google.protobuf.UInt32Value
-	81,  // 142: chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.power_level_mapping:type_name -> chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.PowerLevelMappingEntry
-	82,  // 143: chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.regulatory_domain_mapping:type_name -> chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.RegulatoryDomainMappingEntry
-	105, // 144: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.ucm_suffix:type_name -> google.protobuf.StringValue
-	7,   // 145: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.ucm_config:type_name -> chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure
-	7,   // 146: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.cras_config:type_name -> chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure
-	7,   // 147: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.sound_card_init_config:type_name -> chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure
-	105, // 148: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.cras_suffix:type_name -> google.protobuf.StringValue
-	8,   // 149: chromiumos.config.api.HardwareFeatures.Camera.Device.interface:type_name -> chromiumos.config.api.HardwareFeatures.Camera.Interface
-	9,   // 150: chromiumos.config.api.HardwareFeatures.Camera.Device.facing:type_name -> chromiumos.config.api.HardwareFeatures.Camera.Facing
-	10,  // 151: chromiumos.config.api.HardwareFeatures.Camera.Device.orientation:type_name -> chromiumos.config.api.HardwareFeatures.Camera.Orientation
-	2,   // 152: chromiumos.config.api.HardwareFeatures.Camera.Device.privacy_switch:type_name -> chromiumos.config.api.HardwareFeatures.Present
-	31,  // 153: chromiumos.config.api.HardwareFeatures.Camera.Device.microphone_count:type_name -> chromiumos.config.api.HardwareFeatures.Count
-	86,  // 154: chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.pixel_median:type_name -> chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.PixelMedian
-	87,  // 155: chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.detect_zones:type_name -> chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.DetectZone
-	28,  // 156: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.shipping_min:type_name -> chromiumos.config.api.Duration
-	28,  // 157: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.deep_sleep_min:type_name -> chromiumos.config.api.Duration
-	28,  // 158: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.suspend_min:type_name -> chromiumos.config.api.Duration
-	28,  // 159: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.lucid_sleep_min:type_name -> chromiumos.config.api.Duration
-	28,  // 160: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.active_min:type_name -> chromiumos.config.api.Duration
-	28,  // 161: chromiumos.config.api.HardwareFeatures.Battery.Charging.active_max:type_name -> chromiumos.config.api.Duration
-	28,  // 162: chromiumos.config.api.HardwareFeatures.Battery.Charging.suspend_max:type_name -> chromiumos.config.api.Duration
-	28,  // 163: chromiumos.config.api.HardwareFeatures.Battery.Charging.deep_sleep_max:type_name -> chromiumos.config.api.Duration
-	164, // [164:164] is the sub-list for method output_type
-	164, // [164:164] is the sub-list for method input_type
-	164, // [164:164] is the sub-list for extension type_name
-	164, // [164:164] is the sub-list for extension extendee
-	0,   // [0:164] is the sub-list for field type_name
+	2,   // 77: chromiumos.config.api.HardwareFeatures.LightSensor.camera_lightsensor:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	12,  // 78: chromiumos.config.api.HardwareFeatures.Screen.connector_type:type_name -> chromiumos.config.api.HardwareFeatures.Screen.ConnectorType
+	91,  // 79: chromiumos.config.api.HardwareFeatures.Screen.panel_properties:type_name -> chromiumos.config.api.Component.DisplayPanel.Properties
+	2,   // 80: chromiumos.config.api.HardwareFeatures.Screen.touch_support:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	13,  // 81: chromiumos.config.api.HardwareFeatures.FormFactor.form_factor:type_name -> chromiumos.config.api.HardwareFeatures.FormFactor.FormFactorType
+	14,  // 82: chromiumos.config.api.HardwareFeatures.FormFactor.recovery_input:type_name -> chromiumos.config.api.HardwareFeatures.FormFactor.RecoveryInputType
+	92,  // 83: chromiumos.config.api.HardwareFeatures.FormFactor.detachable_ui:type_name -> google.protobuf.BoolValue
+	15,  // 84: chromiumos.config.api.HardwareFeatures.Stylus.stylus:type_name -> chromiumos.config.api.HardwareFeatures.Stylus.StylusType
+	16,  // 85: chromiumos.config.api.HardwareFeatures.Keyboard.keyboard_type:type_name -> chromiumos.config.api.HardwareFeatures.Keyboard.KeyboardType
+	2,   // 86: chromiumos.config.api.HardwareFeatures.Keyboard.backlight:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 87: chromiumos.config.api.HardwareFeatures.Keyboard.power_button:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 88: chromiumos.config.api.HardwareFeatures.Keyboard.numeric_pad:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	17,  // 89: chromiumos.config.api.HardwareFeatures.Keyboard.mcu_type:type_name -> chromiumos.config.api.HardwareFeatures.Keyboard.KeyboardMcuType
+	74,  // 90: chromiumos.config.api.HardwareFeatures.Keyboard.als_steps:type_name -> chromiumos.config.api.HardwareFeatures.KbAlsStep
+	93,  // 91: chromiumos.config.api.HardwareFeatures.Memory.profile:type_name -> chromiumos.config.api.Component.Memory.Profile
+	18,  // 92: chromiumos.config.api.HardwareFeatures.Fingerprint.location:type_name -> chromiumos.config.api.HardwareFeatures.Fingerprint.Location
+	85,  // 93: chromiumos.config.api.HardwareFeatures.Fingerprint.fingerprint_diag:type_name -> chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag
+	94,  // 94: chromiumos.config.api.HardwareFeatures.Storage.storage_type:type_name -> chromiumos.config.api.Component.Storage.StorageType
+	95,  // 95: chromiumos.config.api.HardwareFeatures.Bluetooth.component:type_name -> chromiumos.config.api.Component.Bluetooth
+	2,   // 96: chromiumos.config.api.HardwareFeatures.Bluetooth.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 97: chromiumos.config.api.HardwareFeatures.BarrelJack.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	96,  // 98: chromiumos.config.api.HardwareFeatures.Wifi.supported_wlan_protocols:type_name -> chromiumos.config.api.Component.Wifi.WLANProtocol
+	19,  // 99: chromiumos.config.api.HardwareFeatures.Wifi.wifi_chips:type_name -> chromiumos.config.api.HardwareFeatures.Wifi.WifiChip
+	97,  // 100: chromiumos.config.api.HardwareFeatures.Wifi.wifi_config:type_name -> chromiumos.config.api.WifiConfig
+	20,  // 101: chromiumos.config.api.HardwareFeatures.Button.region:type_name -> chromiumos.config.api.HardwareFeatures.Button.Region
+	21,  // 102: chromiumos.config.api.HardwareFeatures.Button.edge:type_name -> chromiumos.config.api.HardwareFeatures.Button.Edge
+	2,   // 103: chromiumos.config.api.HardwareFeatures.EmbeddedController.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	22,  // 104: chromiumos.config.api.HardwareFeatures.EmbeddedController.ec_type:type_name -> chromiumos.config.api.HardwareFeatures.EmbeddedController.EmbeddedControllerType
+	98,  // 105: chromiumos.config.api.HardwareFeatures.EmbeddedController.part:type_name -> chromiumos.config.api.Component.EmbeddedController
+	2,   // 106: chromiumos.config.api.HardwareFeatures.EmbeddedController.feature_typec_cmd:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 107: chromiumos.config.api.HardwareFeatures.EmbeddedController.cbi:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 108: chromiumos.config.api.HardwareFeatures.EmbeddedController.detachable_base:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 109: chromiumos.config.api.HardwareFeatures.EmbeddedController.feature_charge_control_v2:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 110: chromiumos.config.api.HardwareFeatures.EmbeddedController.feature_asserts_panic:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 111: chromiumos.config.api.HardwareFeatures.EmbeddedController.feature_system_safe_mode:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	23,  // 112: chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.tpm_type:type_name -> chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.TrustedPlatformModuleType
+	2,   // 113: chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.production_rw_key_id:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	24,  // 114: chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.runtime_tpm_version:type_name -> chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.RuntimeTpmVersion
+	2,   // 115: chromiumos.config.api.HardwareFeatures.Hotwording.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	25,  // 116: chromiumos.config.api.HardwareFeatures.Display.type:type_name -> chromiumos.config.api.HardwareFeatures.Display.Type
+	2,   // 117: chromiumos.config.api.HardwareFeatures.Touchpad.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 118: chromiumos.config.api.HardwareFeatures.MicrophoneMuteSwitch.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 119: chromiumos.config.api.HardwareFeatures.Battery.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	88,  // 120: chromiumos.config.api.HardwareFeatures.Battery.lifetime:type_name -> chromiumos.config.api.HardwareFeatures.Battery.Lifetime
+	89,  // 121: chromiumos.config.api.HardwareFeatures.Battery.charging:type_name -> chromiumos.config.api.HardwareFeatures.Battery.Charging
+	2,   // 122: chromiumos.config.api.HardwareFeatures.PrivacyScreen.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	99,  // 123: chromiumos.config.api.HardwareFeatures.Soc.features:type_name -> chromiumos.config.api.Component.Soc.Feature
+	100, // 124: chromiumos.config.api.HardwareFeatures.Soc.vulnerabilities:type_name -> chromiumos.config.api.Component.Soc.Vulnerability
+	2,   // 125: chromiumos.config.api.HardwareFeatures.Soc.hevc_support:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	101, // 126: chromiumos.config.api.HardwareFeatures.DisplayPortConverter.converters:type_name -> chromiumos.config.api.Component.DisplayPortConverter
+	2,   // 127: chromiumos.config.api.HardwareFeatures.Hps.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 128: chromiumos.config.api.HardwareFeatures.PoE.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 129: chromiumos.config.api.HardwareFeatures.PowerSupply.barreljack:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	102, // 130: chromiumos.config.api.HardwareFeatures.Proximity.configs:type_name -> chromiumos.config.api.ProximityConfig
+	103, // 131: chromiumos.config.api.HardwareFeatures.Touch.touch_slop_distance:type_name -> google.protobuf.UInt32Value
+	2,   // 132: chromiumos.config.api.HardwareFeatures.RuntimeProbeConfig.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 133: chromiumos.config.api.HardwareFeatures.Dgpu.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	26,  // 134: chromiumos.config.api.HardwareFeatures.Dgpu.dgpu_type:type_name -> chromiumos.config.api.HardwareFeatures.Dgpu.DgpuType
+	2,   // 135: chromiumos.config.api.HardwareFeatures.Uwb.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	104, // 136: chromiumos.config.api.HardwareFeatures.KbAlsStep.lux_threshold:type_name -> chromiumos.config.api.Component.LuxThreshold
+	2,   // 137: chromiumos.config.api.HardwareFeatures.Suspend.suspend_to_mem:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 138: chromiumos.config.api.HardwareFeatures.Suspend.suspend_to_idle:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 139: chromiumos.config.api.HardwareFeatures.Vrr.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	2,   // 140: chromiumos.config.api.HardwareFeatures.SdReader.present:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	3,   // 141: chromiumos.config.api.HardwareFeatures.UsbC.Port.position:type_name -> chromiumos.config.api.HardwareFeatures.PortPosition
+	103, // 142: chromiumos.config.api.HardwareFeatures.UsbC.Port.index_override:type_name -> google.protobuf.UInt32Value
+	81,  // 143: chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.power_level_mapping:type_name -> chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.PowerLevelMappingEntry
+	82,  // 144: chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.regulatory_domain_mapping:type_name -> chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig.RegulatoryDomainMappingEntry
+	105, // 145: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.ucm_suffix:type_name -> google.protobuf.StringValue
+	7,   // 146: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.ucm_config:type_name -> chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure
+	7,   // 147: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.cras_config:type_name -> chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure
+	7,   // 148: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.sound_card_init_config:type_name -> chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure
+	105, // 149: chromiumos.config.api.HardwareFeatures.Audio.CardConfig.cras_suffix:type_name -> google.protobuf.StringValue
+	8,   // 150: chromiumos.config.api.HardwareFeatures.Camera.Device.interface:type_name -> chromiumos.config.api.HardwareFeatures.Camera.Interface
+	9,   // 151: chromiumos.config.api.HardwareFeatures.Camera.Device.facing:type_name -> chromiumos.config.api.HardwareFeatures.Camera.Facing
+	10,  // 152: chromiumos.config.api.HardwareFeatures.Camera.Device.orientation:type_name -> chromiumos.config.api.HardwareFeatures.Camera.Orientation
+	2,   // 153: chromiumos.config.api.HardwareFeatures.Camera.Device.privacy_switch:type_name -> chromiumos.config.api.HardwareFeatures.Present
+	31,  // 154: chromiumos.config.api.HardwareFeatures.Camera.Device.microphone_count:type_name -> chromiumos.config.api.HardwareFeatures.Count
+	86,  // 155: chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.pixel_median:type_name -> chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.PixelMedian
+	87,  // 156: chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.detect_zones:type_name -> chromiumos.config.api.HardwareFeatures.Fingerprint.FingerprintDiag.DetectZone
+	28,  // 157: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.shipping_min:type_name -> chromiumos.config.api.Duration
+	28,  // 158: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.deep_sleep_min:type_name -> chromiumos.config.api.Duration
+	28,  // 159: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.suspend_min:type_name -> chromiumos.config.api.Duration
+	28,  // 160: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.lucid_sleep_min:type_name -> chromiumos.config.api.Duration
+	28,  // 161: chromiumos.config.api.HardwareFeatures.Battery.Lifetime.active_min:type_name -> chromiumos.config.api.Duration
+	28,  // 162: chromiumos.config.api.HardwareFeatures.Battery.Charging.active_max:type_name -> chromiumos.config.api.Duration
+	28,  // 163: chromiumos.config.api.HardwareFeatures.Battery.Charging.suspend_max:type_name -> chromiumos.config.api.Duration
+	28,  // 164: chromiumos.config.api.HardwareFeatures.Battery.Charging.deep_sleep_max:type_name -> chromiumos.config.api.Duration
+	165, // [165:165] is the sub-list for method output_type
+	165, // [165:165] is the sub-list for method input_type
+	165, // [165:165] is the sub-list for extension type_name
+	165, // [165:165] is the sub-list for extension extendee
+	0,   // [0:165] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_config_api_topology_proto_init() }

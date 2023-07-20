@@ -334,6 +334,7 @@
             },
             "lightSensor": {
               "baseLightsensor": 1,
+              "cameraLightsensor": 1,
               "lidLightsensor": 1
             },
             "magnetometer": {
@@ -441,6 +442,7 @@
                 },
                 "lightSensor": {
                   "baseLightsensor": 1,
+                  "cameraLightsensor": 1,
                   "lidLightsensor": 1
                 },
                 "magnetometer": {
@@ -1666,6 +1668,7 @@
             },
             "lightSensor": {
               "baseLightsensor": 1,
+              "cameraLightsensor": 1,
               "lidLightsensor": 1
             },
             "magnetometer": {
@@ -1769,6 +1772,7 @@
                 },
                 "lightSensor": {
                   "baseLightsensor": 1,
+                  "cameraLightsensor": 1,
                   "lidLightsensor": 1
                 },
                 "magnetometer": {

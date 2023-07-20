@@ -805,7 +805,8 @@ def _create_sensor(
         lid_magno_present = None,
         base_magno_present = None,
         lid_light_present = None,
-        base_light_present = None):
+        base_light_present = None,
+        camera_light_present = None):
     """Builds a Topology proto for accelerometer/gyroscrope/magnometer sensors."""
     hw_features = _HW_FEAT()
 
@@ -834,6 +835,9 @@ def _create_sensor(
 
     if base_light_present:
         hw_features.light_sensor.base_lightsensor = _bool_to_present(base_light_present)
+
+    if camera_light_present:
+        hw_features.light_sensor.camera_lightsensor = _bool_to_present(camera_light_present)
 
     return topo_pb.Topology(
         id = id,

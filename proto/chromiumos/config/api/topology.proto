@@ -459,6 +459,9 @@ message HardwareFeatures {
 
     // If base light sensor is present on system
     Present base_lightsensor = 2;
+
+    // If camera light sensor is present on system
+    Present camera_lightsensor = 3;
   }
 
   // Screen properties of system

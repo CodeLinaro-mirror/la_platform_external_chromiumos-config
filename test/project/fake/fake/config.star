@@ -295,6 +295,7 @@ _SENSOR_WITH_LIGHT = hw_topo.create_sensor(
     base_magno_present = True,
     lid_light_present = True,
     base_light_present = True,
+    camera_light_present = True,
 )
 _FINGERPRINT = hw_topo.create_fingerprint(
     "FINGERPRINT",

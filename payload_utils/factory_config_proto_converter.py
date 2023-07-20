@@ -131,7 +131,7 @@ def TransformDesignTable(design_config, design_table):
   # component.match_sku_components from design_config.
   #
   # The list of missing component.has_*:
-  # has_lid_lightsensor, has_base_lightsensor
+  # has_lid_lightsensor, has_base_lightsensor, has_camera_lightsensor
   camera_pb = topology_pb2.HardwareFeatures.Camera
   features = design_config.hardware_features
   topology = design_config.hardware_topology

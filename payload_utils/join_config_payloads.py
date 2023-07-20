@@ -373,6 +373,8 @@ def merge_hardware_props(hw_feat, model):
       kw_to_present(hw_props, 'has-base-light-sensor')
   hw_feat.light_sensor.lid_lightsensor = \
       kw_to_present(hw_props, 'has-lid-light-sensor')
+  hw_feat.light_sensor.camera_lightsensor = \
+      kw_to_present(hw_props, 'has-camera-light-sensor')
   hw_feat.magnetometer.base_magnetometer = \
       kw_to_present(hw_props, 'has-base-magnetometer')
   hw_feat.magnetometer.lid_magnetometer = \
