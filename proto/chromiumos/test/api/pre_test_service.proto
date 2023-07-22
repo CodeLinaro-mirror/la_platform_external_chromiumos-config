@@ -74,14 +74,12 @@ message PassRatePolicy {
   // Setting this value will override the default behavior, and will not have the
   // logic to go back an additional milestone if not enough results.
   int32 num_of_milestones = 4;
-  // force_enabled tests will allow manual override to the filtering. Useful for when
-  // we want to force a test to run, even though it could be flaky.
+
+  // force_enabled_tests DEPRECATED
   repeated string force_enabled_tests = 5;
-  // force_disabled tests will allow manual override to the filtering. Useful for when
-  // we want to force disable a test, even when it might not be flaky. An example of this
-  // is a test is manually detected as "bad" (causes other tests to fail for example).
+  // force_disabled_tests DEPRECATED
   repeated string force_disabled_tests = 6;
-  // force_enabled_boards will not apply filter logic to any boards in the list.
+  // force_enabled_boards DEPRECATED
   repeated string force_enabled_boards = 7;
 
   // Recent results are a method to re-enable historically flaky tests, with
@@ -95,8 +93,7 @@ message PassRatePolicy {
 
   bool dryrun = 11;
 
-
-  // NEXT RULE = 8
+  repeated FilterTestConfig testconfigs = 12;
 }
 
 // FilterCfgs as a whole describes all the policies for test filtering.
@@ -114,9 +111,6 @@ message FilterCfg {
   // Blank will be treated as the global policy. By setting this field, this policy
   // will overwrite the global, and apply to all suites in this list.
   repeated string test_suites = 2;
-
-  // Overrides force_enabled/disabled set in PassRatePolicy
-  repeated FilterTestConfig cfgs = 3;
 
   // Fully opt the suite out of filtering.
   bool opt_out = 4;

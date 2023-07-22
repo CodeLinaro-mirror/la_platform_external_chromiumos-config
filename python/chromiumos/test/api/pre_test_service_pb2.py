@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n*chromiumos/test/api/pre_test_service.proto\x12\x13\x63hromiumos.test.api\x1a$chromiumos/test/api/test_suite.proto\"\xcd\x02\n\x12\x46ilterFlakyRequest\x12?\n\x10pass_rate_policy\x18\x01 \x01(\x0b\x32#.chromiumos.test.api.PassRatePolicyH\x00\x12M\n\x17stability_sensor_policy\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.StabilitySensorPolicyH\x00\x12\x33\n\x0btest_suites\x18\x03 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x11\n\tmilestone\x18\x04 \x01(\t\x12\x0f\n\x05\x62oard\x18\x05 \x01(\tH\x01\x12\x17\n\x0f\x64\x65\x66\x61ult_enabled\x18\x06 \x01(\x08\x12\x0c\n\x04\x62\x62id\x18\x07 \x01(\t\x12\x12\n\nis_dry_run\x18\x08 \x01(\x08\x42\x08\n\x06policyB\t\n\x07variant\"a\n\x13\x46ilterFlakyResponse\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x15\n\rremoved_tests\x18\x02 \x03(\t\"\x17\n\x15StabilitySensorPolicy\"\x83\x02\n\x0ePassRatePolicy\x12\x11\n\tpass_rate\x18\x01 \x01(\x05\x12\x10\n\x08min_runs\x18\x02 \x01(\x05\x12\x19\n\x11num_of_milestones\x18\x04 \x01(\x05\x12\x1b\n\x13\x66orce_enabled_tests\x18\x05 \x03(\t\x12\x1c\n\x14\x66orce_disabled_tests\x18\x06 \x03(\t\x12\x1c\n\x14\x66orce_enabled_boards\x18\x07 \x03(\t\x12\x18\n\x10pass_rate_recent\x18\x08 \x01(\x05\x12\x17\n\x0fmin_runs_recent\x18\t \x01(\x05\x12\x15\n\rrecent_window\x18\n \x01(\x05\x12\x0e\n\x06\x64ryrun\x18\x0b \x01(\x08\"@\n\nFilterCfgs\x12\x32\n\nfilter_cfg\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.FilterCfg\"\xa5\x01\n\tFilterCfg\x12=\n\x10pass_rate_policy\x18\x01 \x01(\x0b\x32#.chromiumos.test.api.PassRatePolicy\x12\x13\n\x0btest_suites\x18\x02 \x03(\t\x12\x33\n\x04\x63\x66gs\x18\x03 \x03(\x0b\x32%.chromiumos.test.api.FilterTestConfig\x12\x0f\n\x07opt_out\x18\x04 \x01(\x08\"o\n\x10\x46ilterTestConfig\x12\x0c\n\x04test\x18\x01 \x01(\t\x12\r\n\x05\x62oard\x18\x02 \x03(\t\x12\x11\n\x07\x65nabled\x18\x03 \x01(\x08H\x00\x12\x12\n\x08\x64isabled\x18\x04 \x01(\x08H\x00\x12\x0c\n\x04\x62ugs\x18\x05 \x03(\tB\t\n\x07setting2w\n\x0ePreTestService\x12\x65\n\x10\x46ilterFlakyTests\x12\'.chromiumos.test.api.FilterFlakyRequest\x1a(.chromiumos.test.api.FilterFlakyResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n*chromiumos/test/api/pre_test_service.proto\x12\x13\x63hromiumos.test.api\x1a$chromiumos/test/api/test_suite.proto\"\xcd\x02\n\x12\x46ilterFlakyRequest\x12?\n\x10pass_rate_policy\x18\x01 \x01(\x0b\x32#.chromiumos.test.api.PassRatePolicyH\x00\x12M\n\x17stability_sensor_policy\x18\x02 \x01(\x0b\x32*.chromiumos.test.api.StabilitySensorPolicyH\x00\x12\x33\n\x0btest_suites\x18\x03 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x11\n\tmilestone\x18\x04 \x01(\t\x12\x0f\n\x05\x62oard\x18\x05 \x01(\tH\x01\x12\x17\n\x0f\x64\x65\x66\x61ult_enabled\x18\x06 \x01(\x08\x12\x0c\n\x04\x62\x62id\x18\x07 \x01(\t\x12\x12\n\nis_dry_run\x18\x08 \x01(\x08\x42\x08\n\x06policyB\t\n\x07variant\"a\n\x13\x46ilterFlakyResponse\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x15\n\rremoved_tests\x18\x02 \x03(\t\"\x17\n\x15StabilitySensorPolicy\"\xbf\x02\n\x0ePassRatePolicy\x12\x11\n\tpass_rate\x18\x01 \x01(\x05\x12\x10\n\x08min_runs\x18\x02 \x01(\x05\x12\x19\n\x11num_of_milestones\x18\x04 \x01(\x05\x12\x1b\n\x13\x66orce_enabled_tests\x18\x05 \x03(\t\x12\x1c\n\x14\x66orce_disabled_tests\x18\x06 \x03(\t\x12\x1c\n\x14\x66orce_enabled_boards\x18\x07 \x03(\t\x12\x18\n\x10pass_rate_recent\x18\x08 \x01(\x05\x12\x17\n\x0fmin_runs_recent\x18\t \x01(\x05\x12\x15\n\rrecent_window\x18\n \x01(\x05\x12\x0e\n\x06\x64ryrun\x18\x0b \x01(\x08\x12:\n\x0btestconfigs\x18\x0c \x03(\x0b\x32%.chromiumos.test.api.FilterTestConfig\"@\n\nFilterCfgs\x12\x32\n\nfilter_cfg\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.FilterCfg\"p\n\tFilterCfg\x12=\n\x10pass_rate_policy\x18\x01 \x01(\x0b\x32#.chromiumos.test.api.PassRatePolicy\x12\x13\n\x0btest_suites\x18\x02 \x03(\t\x12\x0f\n\x07opt_out\x18\x04 \x01(\x08\"o\n\x10\x46ilterTestConfig\x12\x0c\n\x04test\x18\x01 \x01(\t\x12\r\n\x05\x62oard\x18\x02 \x03(\t\x12\x11\n\x07\x65nabled\x18\x03 \x01(\x08H\x00\x12\x12\n\x08\x64isabled\x18\x04 \x01(\x08H\x00\x12\x0c\n\x04\x62ugs\x18\x05 \x03(\tB\t\n\x07setting2w\n\x0ePreTestService\x12\x65\n\x10\x46ilterFlakyTests\x12\'.chromiumos.test.api.FilterFlakyRequest\x1a(.chromiumos.test.api.FilterFlakyResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,])
 
@@ -260,6 +260,13 @@ _PASSRATEPOLICY = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='testconfigs', full_name='chromiumos.test.api.PassRatePolicy.testconfigs', index=10,
+      number=12, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -273,7 +280,7 @@ _PASSRATEPOLICY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=566,
-  serialized_end=825,
+  serialized_end=885,
 )
 
 
@@ -304,8 +311,8 @@ _FILTERCFGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=827,
-  serialized_end=891,
+  serialized_start=887,
+  serialized_end=951,
 )
 
 
@@ -332,14 +339,7 @@ _FILTERCFG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='cfgs', full_name='chromiumos.test.api.FilterCfg.cfgs', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='opt_out', full_name='chromiumos.test.api.FilterCfg.opt_out', index=3,
+      name='opt_out', full_name='chromiumos.test.api.FilterCfg.opt_out', index=2,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -357,8 +357,8 @@ _FILTERCFG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=894,
-  serialized_end=1059,
+  serialized_start=953,
+  serialized_end=1065,
 )
 
 
@@ -422,8 +422,8 @@ _FILTERTESTCONFIG = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1061,
-  serialized_end=1172,
+  serialized_start=1067,
+  serialized_end=1178,
 )
 
 _FILTERFLAKYREQUEST.fields_by_name['pass_rate_policy'].message_type = _PASSRATEPOLICY
@@ -439,9 +439,9 @@ _FILTERFLAKYREQUEST.oneofs_by_name['variant'].fields.append(
   _FILTERFLAKYREQUEST.fields_by_name['board'])
 _FILTERFLAKYREQUEST.fields_by_name['board'].containing_oneof = _FILTERFLAKYREQUEST.oneofs_by_name['variant']
 _FILTERFLAKYRESPONSE.fields_by_name['test_suites'].message_type = chromiumos_dot_test_dot_api_dot_test__suite__pb2._TESTSUITE
+_PASSRATEPOLICY.fields_by_name['testconfigs'].message_type = _FILTERTESTCONFIG
 _FILTERCFGS.fields_by_name['filter_cfg'].message_type = _FILTERCFG
 _FILTERCFG.fields_by_name['pass_rate_policy'].message_type = _PASSRATEPOLICY
-_FILTERCFG.fields_by_name['cfgs'].message_type = _FILTERTESTCONFIG
 _FILTERTESTCONFIG.oneofs_by_name['setting'].fields.append(
   _FILTERTESTCONFIG.fields_by_name['enabled'])
 _FILTERTESTCONFIG.fields_by_name['enabled'].containing_oneof = _FILTERTESTCONFIG.oneofs_by_name['setting']
@@ -516,8 +516,8 @@ _PRETESTSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1174,
-  serialized_end=1293,
+  serialized_start=1180,
+  serialized_end=1299,
   methods=[
   _descriptor.MethodDescriptor(
     name='FilterFlakyTests',

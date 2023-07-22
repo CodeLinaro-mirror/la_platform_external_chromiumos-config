@@ -19942,6 +19942,14 @@
               "name": "dryrun",
               "number": 11,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "testconfigs",
+              "label": "LABEL_REPEATED",
+              "name": "testconfigs",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FilterTestConfig"
             }
           ],
           "name": "PassRatePolicy"
@@ -19975,14 +19983,6 @@
               "name": "test_suites",
               "number": 2,
               "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "cfgs",
-              "label": "LABEL_REPEATED",
-              "name": "cfgs",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.FilterTestConfig"
             },
             {
               "jsonName": "optOut",
