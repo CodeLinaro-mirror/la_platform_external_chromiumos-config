@@ -302,12 +302,14 @@ def _create_ssfc(
 def _create_rma(
         enabled = None,
         has_cbi = None,
-        ssfc_config = None):
+        ssfc_config = None,
+        use_legacy_custom_label = None):
     """Builds an RmaConfig proto."""
     return rma_pb.RmaConfig(
         enabled = enabled,
         has_cbi = has_cbi,
         ssfc_config = ssfc_config,
+        use_legacy_custom_label = use_legacy_custom_label,
     )
 
 def _create_nnpalm(

@@ -471,6 +471,7 @@ _SC_RMA = sc.create_rma(
             ),
         ],
     ),
+    use_legacy_custom_label = True,
 )
 _SC_NNPALM = sc.create_nnpalm(
     model = "alpha",

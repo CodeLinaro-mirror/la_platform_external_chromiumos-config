@@ -28,4 +28,5 @@ message RmaConfig {
   bool enabled = 1;
   bool has_cbi = 2;
   SsfcConfig ssfc_config = 3;
+  bool use_legacy_custom_label = 4;
 }

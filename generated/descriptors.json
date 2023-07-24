@@ -9977,6 +9977,13 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.RmaConfig.SsfcConfig"
+            },
+            {
+              "jsonName": "useLegacyCustomLabel",
+              "label": "LABEL_OPTIONAL",
+              "name": "use_legacy_custom_label",
+              "number": 4,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "RmaConfig",

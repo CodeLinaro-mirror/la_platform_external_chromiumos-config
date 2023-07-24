@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/api/software',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n/chromiumos/config/api/software/rma_config.proto\x12\x1e\x63hromiumos.config.api.software\"\x8f\x04\n\tRmaConfig\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\x12\x0f\n\x07has_cbi\x18\x02 \x01(\x08\x12I\n\x0bssfc_config\x18\x03 \x01(\x0b\x32\x34.chromiumos.config.api.software.RmaConfig.SsfcConfig\x1a\x94\x03\n\nSsfcConfig\x12\x0c\n\x04mask\x18\x01 \x01(\r\x12l\n\x16\x63omponent_type_configs\x18\x02 \x03(\x0b\x32L.chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig\x1a\x89\x02\n\x17SsfcComponentTypeConfig\x12\x16\n\x0e\x63omponent_type\x18\x01 \x01(\t\x12\x15\n\rdefault_value\x18\x02 \x01(\r\x12\x81\x01\n\x14probeable_components\x18\x03 \x03(\x0b\x32\x63.chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent\x1a;\n\x16SsfcProbeableComponent\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\rB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3'
+  serialized_pb=b'\n/chromiumos/config/api/software/rma_config.proto\x12\x1e\x63hromiumos.config.api.software\"\xb0\x04\n\tRmaConfig\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\x12\x0f\n\x07has_cbi\x18\x02 \x01(\x08\x12I\n\x0bssfc_config\x18\x03 \x01(\x0b\x32\x34.chromiumos.config.api.software.RmaConfig.SsfcConfig\x12\x1f\n\x17use_legacy_custom_label\x18\x04 \x01(\x08\x1a\x94\x03\n\nSsfcConfig\x12\x0c\n\x04mask\x18\x01 \x01(\r\x12l\n\x16\x63omponent_type_configs\x18\x02 \x03(\x0b\x32L.chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig\x1a\x89\x02\n\x17SsfcComponentTypeConfig\x12\x16\n\x0e\x63omponent_type\x18\x01 \x01(\t\x12\x15\n\rdefault_value\x18\x02 \x01(\r\x12\x81\x01\n\x14probeable_components\x18\x03 \x03(\x0b\x32\x63.chromiumos.config.api.software.RmaConfig.SsfcConfig.SsfcComponentTypeConfig.SsfcProbeableComponent\x1a;\n\x16SsfcProbeableComponent\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\rB3Z1go.chromium.org/chromiumos/config/go/api/softwareb\x06proto3'
 )
 
 
@@ -59,8 +59,8 @@ _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG_SSFCPROBEABLECOMPONENT = _descript
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=552,
-  serialized_end=611,
+  serialized_start=585,
+  serialized_end=644,
 )
 
 _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG = _descriptor.Descriptor(
@@ -104,8 +104,8 @@ _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=346,
-  serialized_end=611,
+  serialized_start=379,
+  serialized_end=644,
 )
 
 _RMACONFIG_SSFCCONFIG = _descriptor.Descriptor(
@@ -142,8 +142,8 @@ _RMACONFIG_SSFCCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=207,
-  serialized_end=611,
+  serialized_start=240,
+  serialized_end=644,
 )
 
 _RMACONFIG = _descriptor.Descriptor(
@@ -175,6 +175,13 @@ _RMACONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='use_legacy_custom_label', full_name='chromiumos.config.api.software.RmaConfig.use_legacy_custom_label', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -188,7 +195,7 @@ _RMACONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=84,
-  serialized_end=611,
+  serialized_end=644,
 )
 
 _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG_SSFCPROBEABLECOMPONENT.containing_type = _RMACONFIG_SSFCCONFIG_SSFCCOMPONENTTYPECONFIG

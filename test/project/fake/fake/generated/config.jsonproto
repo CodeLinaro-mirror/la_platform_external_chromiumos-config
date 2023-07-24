@@ -12172,7 +12172,8 @@
             }
           ],
           "mask": 4026531840
-        }
+        },
+        "useLegacyCustomLabel": true
       },
       "uiConfig": {
         "extraWebAppsDir": "apps1"
