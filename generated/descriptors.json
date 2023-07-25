@@ -19957,6 +19957,20 @@
               "number": 12,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.FilterTestConfig"
+            },
+            {
+              "jsonName": "maxFilteredPercent",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_filtered_percent",
+              "number": 13,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "maxFilteredInt",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_filtered_int",
+              "number": 14,
+              "type": "TYPE_INT32"
             }
           ],
           "name": "PassRatePolicy"

@@ -94,6 +94,17 @@ message PassRatePolicy {
   bool dryrun = 11;
 
   repeated FilterTestConfig testconfigs = 12;
+
+  // max_filtered_percent is the max % of tests that can be filtered. Eg 20%.
+  // If the limit is hit, the filtered tests will be ordered by flake.
+  int32 max_filtered_percent = 13;
+  // max_filtered_int follows the same logic as above.
+  // NOTE: if both fields are set, we will use the more restrictive of the two.
+  // For example:
+  //   100 tests with a max_filtered_percent=50% and max_filtered_int=5
+  //   20 tests hit the filter threshold,
+  //   Only 5 would get filtered out.
+  int32 max_filtered_int = 14;
 }
 
 // FilterCfgs as a whole describes all the policies for test filtering.
