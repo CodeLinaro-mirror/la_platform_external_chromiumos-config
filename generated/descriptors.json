@@ -20016,6 +20016,25 @@
           "name": "FilterCfg"
         },
         {
+          "enumType": [
+            {
+              "name": "Setting",
+              "value": [
+                {
+                  "name": "NOT_SET",
+                  "number": 0
+                },
+                {
+                  "name": "ENABLED",
+                  "number": 1
+                },
+                {
+                  "name": "DISABLED",
+                  "number": 2
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "test",
@@ -20032,35 +20051,22 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "enabled",
+              "jsonName": "setting",
               "label": "LABEL_OPTIONAL",
-              "name": "enabled",
+              "name": "setting",
               "number": 3,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "disabled",
-              "label": "LABEL_OPTIONAL",
-              "name": "disabled",
-              "number": 4,
-              "oneofIndex": 0,
-              "type": "TYPE_BOOL"
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.FilterTestConfig.Setting"
             },
             {
               "jsonName": "bugs",
               "label": "LABEL_REPEATED",
               "name": "bugs",
-              "number": 5,
+              "number": 4,
               "type": "TYPE_STRING"
             }
           ],
-          "name": "FilterTestConfig",
-          "oneofDecl": [
-            {
-              "name": "setting"
-            }
-          ]
+          "name": "FilterTestConfig"
         }
       ],
       "name": "chromiumos/test/api/pre_test_service.proto",

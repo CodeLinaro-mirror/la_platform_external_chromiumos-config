@@ -132,12 +132,14 @@ message FilterTestConfig {
   string test = 1;
   repeated string board = 2;
 
+  Setting setting = 3;
   // Force enable/disabled the test on the boards in the cfg.
-  oneof setting {
-    bool enabled = 3;
-    bool disabled = 4;
+  enum Setting {
+    NOT_SET =0;
+    ENABLED = 1;
+    DISABLED = 2;
   }
   // List of bugs associated with the cfg
-  repeated string bugs = 5;
+  repeated string bugs = 4;
 
 }
