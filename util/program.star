@@ -25,6 +25,19 @@ load("//config/util/generate.star", "generate")
 load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/public_replication.star", "public_replication")
 
+_DEFAULT_PUBLIC_FIELDS = ["name", "id"]
+
+_LAUNCHED_PUBLIC_FIELDS = [
+    "audio_config",
+    "platform.arc_settings",
+    "platform.capabilities",
+    "platform.hevc_support",
+    "platform.resource_config",
+    "platform.scheduler_tune",
+    "mosys_platform_name",
+    "generate_camera_media_profiles",
+]
+
 def _create_firmware_configuration_segment(name, mask):
     """Builds a FirmwareConfigurationSegment proto."""
     return program_pb.FirmwareConfigurationSegment(
@@ -165,6 +178,8 @@ def _create_audio_config(
                 {user_facing_mic_count}: The number of internal user-facing microphones.
                 {world_facing_mic_count}: The number of internal world-facing microphones.
         default_cras_suffix: Similar to default_ucm_suffix.
+        launched: A bool indicating whether this program is launched, and as
+            such whether additional preset fields should be made public.
     """
     return program_pb.Program.AudioConfig(
         card_configs = card_configs,
@@ -175,7 +190,7 @@ def _create_audio_config(
 
 def _create(
         name,
-        public_fields = ["name", "id"],
+        public_fields = [],
         component_quals = None,
         constraints = None,
         firmware_configuration_segments = None,
@@ -185,9 +200,16 @@ def _create(
         mosys_platform_name = None,
         platform = None,
         audio_config = None,
-        generate_camera_media_profiles = None):
+        generate_camera_media_profiles = None,
+        launched = False):
     """Builds a Program proto."""
     program_id = program_id_pb.ProgramId(value = name)
+
+    public_fields = list(public_fields)
+    public_fields += _DEFAULT_PUBLIC_FIELDS
+    if launched:
+        public_fields += _LAUNCHED_PUBLIC_FIELDS
+
     return program_pb.Program(
         public_replication = public_replication.create(public_fields = public_fields),
         id = program_id,

@@ -164,6 +164,12 @@
         },
         {
           "designId": {
+            "value": "PROJECT_BOX"
+          },
+          "keyId": "KEYBX"
+        },
+        {
+          "designId": {
             "value": "PROJECT_C"
           },
           "keyId": "KEYC"
@@ -185,12 +191,6 @@
             "value": "PROJECT_REBRAND"
           },
           "keyId": "KEYRB"
-        },
-        {
-          "designId": {
-            "value": "PROJECT_BOX"
-          },
-          "keyId": "KEYBX"
         }
       ],
       "firmwareConfigurationSegments": [
@@ -325,7 +325,7 @@
         ]
       },
       "publicReplication": {
-        "publicFields": "name,id"
+        "publicFields": "name,id,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,mosysPlatformName,generateCameraMediaProfiles"
       }
     }
   ]

@@ -6780,7 +6780,7 @@
             "value": "PROJECT_E:65536"
           },
           "publicReplication": {
-            "publicFields": "id"
+            "publicFields": "id,hardwareFeatures,hardwareTopology.wifi.hardwareFeature.fwConfig"
           }
         },
         {
@@ -7208,7 +7208,7 @@
             "value": "PROJECT_E:65537"
           },
           "publicReplication": {
-            "publicFields": "id"
+            "publicFields": "id,hardwareFeatures,hardwareTopology.wifi.hardwareFeature.fwConfig"
           }
         },
         {
@@ -7676,7 +7676,7 @@
             "value": "PROJECT_E:65538"
           },
           "publicReplication": {
-            "publicFields": "id"
+            "publicFields": "id,hardwareFeatures,hardwareTopology.wifi.hardwareFeature.fwConfig"
           }
         },
         {
@@ -8112,7 +8112,7 @@
             "value": "PROJECT_E:65539"
           },
           "publicReplication": {
-            "publicFields": "id"
+            "publicFields": "id,hardwareFeatures,hardwareTopology.wifi.hardwareFeature.fwConfig"
           }
         },
         {
@@ -8590,7 +8590,7 @@
             "value": "PROJECT_E:65541"
           },
           "publicReplication": {
-            "publicFields": "id"
+            "publicFields": "id,hardwareFeatures,hardwareTopology.wifi.hardwareFeature.fwConfig"
           }
         },
         {
@@ -9076,7 +9076,7 @@
             "value": "PROJECT_E:65543"
           },
           "publicReplication": {
-            "publicFields": "id"
+            "publicFields": "id,hardwareFeatures,hardwareTopology.wifi.hardwareFeature.fwConfig"
           }
         }
       ],
@@ -10159,7 +10159,7 @@
             "value": "PROJECT_WL:64"
           },
           "publicReplication": {
-            "publicFields": "id"
+            "publicFields": "id,hardwareFeatures,hardwareTopology.wifi.hardwareFeature.fwConfig"
           }
         }
       ],
@@ -13966,7 +13966,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId,idScanConfig"
+        "publicFields": "designConfigId,idScanConfig,bluetoothConfig,cameraConfig,firmwareBuildConfig,healthConfig,nnpalmConfig,uiConfig"
       }
     },
     {
@@ -14359,7 +14359,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+        "publicFields": "designConfigId,idScanConfig,bluetoothConfig,cameraConfig,firmwareBuildConfig,healthConfig,nnpalmConfig,uiConfig"
       }
     },
     {
@@ -14452,7 +14452,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+        "publicFields": "designConfigId,idScanConfig,bluetoothConfig,cameraConfig,firmwareBuildConfig,healthConfig,nnpalmConfig,uiConfig"
       }
     },
     {
@@ -14545,7 +14545,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+        "publicFields": "designConfigId,idScanConfig,bluetoothConfig,cameraConfig,firmwareBuildConfig,healthConfig,nnpalmConfig,uiConfig"
       }
     },
     {
@@ -14638,7 +14638,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+        "publicFields": "designConfigId,idScanConfig,bluetoothConfig,cameraConfig,firmwareBuildConfig,healthConfig,nnpalmConfig,uiConfig"
       }
     },
     {
@@ -14731,7 +14731,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+        "publicFields": "designConfigId,idScanConfig,bluetoothConfig,cameraConfig,firmwareBuildConfig,healthConfig,nnpalmConfig,uiConfig"
       }
     },
     {
@@ -14824,7 +14824,7 @@
         }
       },
       "publicReplication": {
-        "publicFields": "designConfigId,idScanConfig,audioConfigs,bluetoothConfig,powerConfig,firmwareBuildConfig.buildTargets.ec"
+        "publicFields": "designConfigId,idScanConfig,bluetoothConfig,cameraConfig,firmwareBuildConfig,healthConfig,nnpalmConfig,uiConfig"
       }
     }
   ]

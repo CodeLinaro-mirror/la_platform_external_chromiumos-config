@@ -85,11 +85,11 @@ _SIGNER_DESIGN_CONFIGS = program_util.create_signer_configs_by_design(
         "FAKE_REF_DESIGN": "DEFAULT",
         "PROJECT_A": "KEYA",  # Follow up design A
         "PROJECT_B": "KEYB",  # Follow up design B
+        "PROJECT_BOX": "KEYBX",  # Follow up design BOX
         "PROJECT_C": "KEYC",  # Follow up design C
         "PROJECT_D": "KEYD",  # Follow up design D
         "PROJECT_E": "KEYE",  # Follow up design E
         "PROJECT_REBRAND": "KEYRB",  # Follow up design REBRAND
-        "PROJECT_BOX": "KEYBX",  # Follow up design BOX
     },
 )
 
@@ -177,6 +177,7 @@ _FAKE = program_util.create(
         card_configs = [_HDMI_AUDIO_CARD],
     ),
     generate_camera_media_profiles = True,
+    launched = True,
 )
 
 program = struct(

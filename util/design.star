@@ -48,6 +48,20 @@ _DEFAULT_PUBLIC_SW_CONFIG_FIELDS = [
     "id_scan_config",
 ]
 
+_LAUNCHED_HW_PUBLIC_FIELDS = [
+    "hardware_features",
+    "hardware_topology.wifi.hardware_feature.fw_config",
+]
+
+_LAUNCHED_SW_PUBLIC_FIELDS = [
+    "bluetooth_config",
+    "camera_config",
+    "firmware_build_config",
+    "health_config",
+    "nnpalm_config",
+    "ui_config",
+]
+
 def _create_constraint(hw_features, level = _CONSTRAINT.REQUIRED):
     """Builds a Design.Config.Constraint proto."""
     return design_pb.Design.Config.Constraint(level = level, features = hw_features)
@@ -83,7 +97,8 @@ def _append_configs(
         rma = None,
         device_tree_compatible_match = None,
         smbios_name_match_override = None,
-        frid = None):
+        frid = None,
+        launched = False):
     """Creates and appends new SW and HW configs.
 
     Create new Software and Hardware Design Configuration with the
@@ -127,6 +142,8 @@ def _append_configs(
         frid: String which must match the AP firmware FRID (first part before the
             period) in order for the config to match.  Leaving this value unset
             will result in FRID being generated from coreboot target name or design ID.
+        launched: A bool indicating whether this config is launched, and as
+            such whether additional preset fields should be made public.
     """
 
     # Ensure that config_id is convertable to int and is serialized as a
@@ -147,8 +164,13 @@ def _append_configs(
     hw_config.hardware_features = hw_topo.convert_to_hw_features(
         hardware_topology,
     )
+    hw_config_public_fields = list(_DEFAULT_PUBLIC_HW_CONFIG_FIELDS)
+    sw_config_public_fields = list(_DEFAULT_PUBLIC_SW_CONFIG_FIELDS)
+    if launched:
+        hw_config_public_fields += _LAUNCHED_HW_PUBLIC_FIELDS
+        sw_config_public_fields += _LAUNCHED_SW_PUBLIC_FIELDS
     hw_config.public_replication = public_replication.create(
-        public_fields = _DEFAULT_PUBLIC_HW_CONFIG_FIELDS + extra_hw_config_public_fields,
+        public_fields = hw_config_public_fields + extra_hw_config_public_fields,
     )
     hw_configs.append(hw_config)
 
@@ -192,7 +214,7 @@ def _append_configs(
     sw_config.usb_config = usb
     sw_config.rma_config = rma
     sw_config.public_replication = public_replication.create(
-        public_fields = _DEFAULT_PUBLIC_SW_CONFIG_FIELDS + extra_sw_config_public_fields,
+        public_fields = sw_config_public_fields + extra_sw_config_public_fields,
     )
     sw_configs.append(sw_config)
 
@@ -292,12 +314,7 @@ def _create_design_with_configs(
         board_id_phases = None,
         custom_type = _CUSTOMTYPE.NO_CUSTOM,
         extra_hw_config_public_fields = [],
-        extra_sw_config_public_fields = [
-            "audio_configs",
-            "bluetooth_config",
-            "power_config",
-            "firmware_build_config.build_targets.ec",
-        ],
+        extra_sw_config_public_fields = [],
         firmware = None,
         firmware_build_config = None,
         firmware_info = None,
@@ -310,7 +327,8 @@ def _create_design_with_configs(
         hardware_topology_filter = None,
         active_configs = None,
         spi_flash_transform = None,
-        config_notes = {}):
+        config_notes = {},
+        launched = False):
     """Create a design with configs for each topology combination in the bundle.
 
     Parameters mirror those of design.append_configs() and design.create_design
@@ -372,6 +390,8 @@ def _create_design_with_configs(
             verification features.
         config_notes: Notes to document any particular DesignConfigId in the
             generated markdown table.
+        launched: A bool indicating whether this design is launched, and as
+            such whether additional preset fields should be made public.
     """
     hw_configs = []
 
@@ -438,6 +458,7 @@ def _create_design_with_configs(
                 health = health,
                 ui = ui,
                 frid = frid,
+                launched = launched,
             )
         return True
 

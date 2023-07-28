@@ -1,10 +1,65 @@
 {
   "programList": [
     {
+      "audioConfig": {
+        "cardConfigs": [
+          {
+            "cardName": "HDA ATI HDMI",
+            "ucmConfig": "COMMON",
+            "ucmSuffix": ""
+          }
+        ],
+        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
+        "hasModuleFile": true
+      },
+      "generateCameraMediaProfiles": true,
       "id": {
         "value": "FAKE_PROGRAM"
       },
-      "name": "FAKE_PROGRAM"
+      "mosysPlatformName": "fake",
+      "name": "FAKE_PROGRAM",
+      "platform": {
+        "capabilities": {
+          "darkResume": true,
+          "suspendToIdle": true,
+          "wakeOnDp": true
+        },
+        "hevcSupport": "PRESENT",
+        "resourceConfig": {
+          "ac": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {
+                  "min-active-threads": 4
+                }
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {
+                  "min-active-threads": 4
+                }
+              }
+            },
+            "web-rtc-power-preferences": {
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1
+                }
+              }
+            }
+          }
+        },
+        "schedulerTune": {
+          "boostArcvm": 0.5,
+          "boostTopApp": 60,
+          "boostUrgent": 20,
+          "cpusetNonurgent": "0-5",
+          "inputBoost": 15
+        }
+      }
     }
   ]
 }

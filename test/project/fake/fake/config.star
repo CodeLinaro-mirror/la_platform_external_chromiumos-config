@@ -1589,6 +1589,7 @@ design.append_configs(
         zephyr_ec_name = "projects/fake/fake",
     ),
     power = _SC_POWER,
+    launched = True,
 )
 
 design.append_configs(
@@ -1838,6 +1839,7 @@ _DESIGN_E = design.create_design_with_configs(
     spi_flash_transform = {
         "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV",
     },
+    launched = True,
 )
 
 _DESIGN_WL = design.create_design(
