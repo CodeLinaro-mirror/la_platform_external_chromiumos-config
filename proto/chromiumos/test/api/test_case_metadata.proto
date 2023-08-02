@@ -34,6 +34,7 @@ message TestCaseInfo {
   Criteria criteria = 4;
   HwAgnostic hw_agnostic = 5;
   LifeCycleStage life_cycle_stage = 6;
+  DDDVariantCategory variant_category = 7;
 }
 
 // Contact information of individuals or teams.
@@ -72,6 +73,13 @@ message LifeCycleStage {
     LIFE_CYCLE_OWNER_MONITORED = 4;
   }
   LifeCycle value = 1;
+}
+
+// Defines hardware and software capabilities of the device or test rigging it
+// needs, which can influence the behavior of the test and its outcome.
+// Not required for the legacy pipeline.
+message DDDVariantCategory {
+  string value = 1;
 }
 
 // A list of TestCaseMetadata for ease of serialization into a file.

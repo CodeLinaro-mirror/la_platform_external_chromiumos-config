@@ -18586,6 +18586,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.LifeCycleStage"
+            },
+            {
+              "jsonName": "variantCategory",
+              "label": "LABEL_OPTIONAL",
+              "name": "variant_category",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DDDVariantCategory"
             }
           ],
           "name": "TestCaseInfo"
@@ -18689,6 +18697,18 @@
             }
           ],
           "name": "LifeCycleStage"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DDDVariantCategory"
         },
         {
           "field": [
