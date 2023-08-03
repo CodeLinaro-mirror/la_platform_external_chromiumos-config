@@ -2,12 +2,12 @@
 registry, so protos can be imported as load("@proto//...").
 """
 
-lucicfg.check_version("1.39.11", "Please update depot_tools")
+lucicfg.check_version("1.8.6", "Please update depot_tools")
 
 # Descriptor set providing commonly used protocol buffers such
 # as duration, field_mask, etc.. See LUCI docs.
 # buildifier: disable=load-on-top
-load("@stdlib//internal/descpb.star", "annotations_descpb", "wellknown_descpb")
+load("@stdlib//internal/descpb.star", "wellknown_descpb")
 load("@proto//google/protobuf/descriptor.proto", descriptorpb = "google.protobuf")
 
 protos = proto.new_descriptor_set(
@@ -18,7 +18,7 @@ protos = proto.new_descriptor_set(
             "../../generated/descriptors.json",
         ),
     ),
-    deps = [annotations_descpb, wellknown_descpb],
+    deps = [wellknown_descpb],
 )
 
 # We register here so that users don't have to.
