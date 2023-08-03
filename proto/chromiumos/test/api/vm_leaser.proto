@@ -18,6 +18,8 @@ service VMLeaserService {
   rpc ReleaseVM(ReleaseVMRequest) returns (ReleaseVMResponse) {};
   // Extends a lease for a VM.
   rpc ExtendLease(ExtendLeaseRequest) returns (ExtendLeaseResponse) {};
+  // Lists the current VM leases.
+  rpc ListLeases(ListLeasesRequest) returns (ListLeasesResponse) {};
 }
 
 message LeaseVMRequest {
@@ -139,4 +141,45 @@ message ReleaseVMRequest {
 
 message ReleaseVMResponse {
   string lease_id = 1;
+}
+
+// ListLeasesRequest is the request to list VM Leases.
+//
+// TODO (b/294414530): Need support for googleapis protos enabled.
+// It follows AIP-132 (https://google.aip.dev/132) but do not have use the
+// google.api.* annotations as they are not currently supported in this repo.
+message ListLeasesRequest {
+  // The name of the GCP project for which to list VM leases.
+  // Format: projects/{project}
+  string parent = 1;
+
+  // The maximum number of VM leases to return. The service may return fewer
+  // than this value. If unspecified, at most 50 leases will be returned.
+  int32 page_size = 2;
+
+  // A page token, received from a previous `ListLeases` call. Provide this to
+  // retrieve the subsequent page.
+  //
+  // When paginating, all other parameters provided to `ListLeases` must match
+  // the call that provided the page token.
+  string page_token = 3;
+
+  // The string filter follows AIP-160 (https://google.aip.dev/160) for the
+  // filtering syntax. For the initial release, this filter only supports
+  // filtering by zone, tags, and metadata fields related to VMs.
+  //
+  // Examples:
+  // 1. `metadata.idempotency_key = "test-idempotency-uuid-key"` will find the
+  // VMs that have the key matched.
+  // 2. `metadata.expiration_time > 1690490598` will find the VMs that expire
+  // later than the specified unix time.
+  string filter = 4;
+}
+
+message ListLeasesResponse {
+  repeated VM vms = 1;
+
+  // A token, which can be sent as `page_token` to retrieve the next page. If
+  // this field is omitted, there are no subsequent pages.
+  string next_page_token = 2;
 }

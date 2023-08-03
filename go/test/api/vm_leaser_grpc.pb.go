@@ -28,6 +28,8 @@ type VMLeaserServiceClient interface {
 	ReleaseVM(ctx context.Context, in *ReleaseVMRequest, opts ...grpc.CallOption) (*ReleaseVMResponse, error)
 	// Extends a lease for a VM.
 	ExtendLease(ctx context.Context, in *ExtendLeaseRequest, opts ...grpc.CallOption) (*ExtendLeaseResponse, error)
+	// Lists the current VM leases.
+	ListLeases(ctx context.Context, in *ListLeasesRequest, opts ...grpc.CallOption) (*ListLeasesResponse, error)
 }
 
 type vMLeaserServiceClient struct {
@@ -65,6 +67,15 @@ func (c *vMLeaserServiceClient) ExtendLease(ctx context.Context, in *ExtendLease
 	return out, nil
 }
 
+func (c *vMLeaserServiceClient) ListLeases(ctx context.Context, in *ListLeasesRequest, opts ...grpc.CallOption) (*ListLeasesResponse, error) {
+	out := new(ListLeasesResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.VMLeaserService/ListLeases", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VMLeaserServiceServer is the server API for VMLeaserService service.
 // All implementations should embed UnimplementedVMLeaserServiceServer
 // for forward compatibility
@@ -75,6 +86,8 @@ type VMLeaserServiceServer interface {
 	ReleaseVM(context.Context, *ReleaseVMRequest) (*ReleaseVMResponse, error)
 	// Extends a lease for a VM.
 	ExtendLease(context.Context, *ExtendLeaseRequest) (*ExtendLeaseResponse, error)
+	// Lists the current VM leases.
+	ListLeases(context.Context, *ListLeasesRequest) (*ListLeasesResponse, error)
 }
 
 // UnimplementedVMLeaserServiceServer should be embedded to have forward compatible implementations.
@@ -89,6 +102,9 @@ func (UnimplementedVMLeaserServiceServer) ReleaseVM(context.Context, *ReleaseVMR
 }
 func (UnimplementedVMLeaserServiceServer) ExtendLease(context.Context, *ExtendLeaseRequest) (*ExtendLeaseResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExtendLease not implemented")
+}
+func (UnimplementedVMLeaserServiceServer) ListLeases(context.Context, *ListLeasesRequest) (*ListLeasesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListLeases not implemented")
 }
 
 // UnsafeVMLeaserServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -156,6 +172,24 @@ func _VMLeaserService_ExtendLease_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VMLeaserService_ListLeases_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListLeasesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VMLeaserServiceServer).ListLeases(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.VMLeaserService/ListLeases",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VMLeaserServiceServer).ListLeases(ctx, req.(*ListLeasesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VMLeaserService_ServiceDesc is the grpc.ServiceDesc for VMLeaserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -174,6 +208,10 @@ var VMLeaserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ExtendLease",
 			Handler:    _VMLeaserService_ExtendLease_Handler,
+		},
+		{
+			MethodName: "ListLeases",
+			Handler:    _VMLeaserService_ListLeases_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

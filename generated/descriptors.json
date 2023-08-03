@@ -23655,6 +23655,59 @@
             }
           ],
           "name": "ReleaseVMResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "parent",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pageSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_size",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_token",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "filter",
+              "label": "LABEL_OPTIONAL",
+              "name": "filter",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListLeasesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "vms",
+              "label": "LABEL_REPEATED",
+              "name": "vms",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.VM"
+            },
+            {
+              "jsonName": "nextPageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_page_token",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListLeasesResponse"
         }
       ],
       "name": "chromiumos/test/api/vm_leaser.proto",
@@ -23682,6 +23735,12 @@
               "name": "ExtendLease",
               "options": {},
               "outputType": ".chromiumos.test.api.ExtendLeaseResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ListLeasesRequest",
+              "name": "ListLeases",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ListLeasesResponse"
             }
           ],
           "name": "VMLeaserService"
