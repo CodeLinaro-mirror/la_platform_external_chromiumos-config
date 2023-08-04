@@ -783,6 +783,13 @@ message HardwareFeatures {
       TPM_VERSION_V2 = 2;
     }
     RuntimeTpmVersion runtime_tpm_version = 3;
+
+    enum GscFirmwareName {
+      GSC_NONE = 0;
+      GSC_CR50 = 1;
+      GSC_TI50 = 2;
+    }
+    GscFirmwareName gsc_fw_name = 4;
   }
   TrustedPlatformModule trusted_platform_module = 25;
 

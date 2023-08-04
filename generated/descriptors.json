@@ -6087,6 +6087,23 @@
                       "number": 2
                     }
                   ]
+                },
+                {
+                  "name": "GscFirmwareName",
+                  "value": [
+                    {
+                      "name": "GSC_NONE",
+                      "number": 0
+                    },
+                    {
+                      "name": "GSC_CR50",
+                      "number": 1
+                    },
+                    {
+                      "name": "GSC_TI50",
+                      "number": 2
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -6113,6 +6130,14 @@
                   "number": 3,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.RuntimeTpmVersion"
+                },
+                {
+                  "jsonName": "gscFwName",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gsc_fw_name",
+                  "number": 4,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.GscFirmwareName"
                 }
               ],
               "name": "TrustedPlatformModule"
