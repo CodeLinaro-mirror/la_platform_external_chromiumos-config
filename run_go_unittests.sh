@@ -16,8 +16,10 @@ cipd ensure \
   -root "${cipd_root}" \
   -ensure-file - \
   <<ENSURE_FILE
-infra/3pp/tools/go/\${platform} latest
+infra/3pp/tools/go/\${platform} Tf3SZrWyvwG41VbGwWrdVUkS7Vqxa_Mh8vApnidVgUkC
 ENSURE_FILE
+# TODO(b/295057050): See if we can use the common Chromium Golang version
+# as found in go/env.py.
 
 PATH="${cipd_root}/bin:${PATH}"
 
