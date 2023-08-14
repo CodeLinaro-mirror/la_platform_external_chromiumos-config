@@ -10,8 +10,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design.xml",
-            "system-path": "/etc/hardware_features_fake_ref_design.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -61,8 +61,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design.xml",
-            "system-path": "/etc/hardware_features_fake_ref_design.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -112,8 +112,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_fake_ref_design.xml",
-            "system-path": "/etc/hardware_features_fake_ref_design.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -163,8 +163,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_a.xml",
-            "system-path": "/etc/hardware_features_project_a.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "audio": {
@@ -220,8 +220,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_b.xml",
-            "system-path": "/etc/hardware_features_project_b.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -271,8 +271,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_b.xml",
-            "system-path": "/etc/hardware_features_project_b.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -322,8 +322,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_b.xml",
-            "system-path": "/etc/hardware_features_project_b.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -373,8 +373,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_c.xml",
-            "system-path": "/etc/hardware_features_project_c.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -424,8 +424,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_d.xml",
-            "system-path": "/etc/hardware_features_project_d.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -475,8 +475,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_e.xml",
-            "system-path": "/etc/hardware_features_project_e.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "bluetooth": {
@@ -541,8 +541,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_e.xml",
-            "system-path": "/etc/hardware_features_project_e.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "bluetooth": {
@@ -607,8 +607,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_e.xml",
-            "system-path": "/etc/hardware_features_project_e.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "bluetooth": {
@@ -673,8 +673,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_e.xml",
-            "system-path": "/etc/hardware_features_project_e.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "bluetooth": {
@@ -739,8 +739,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_e.xml",
-            "system-path": "/etc/hardware_features_project_e.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "bluetooth": {
@@ -805,8 +805,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_e.xml",
-            "system-path": "/etc/hardware_features_project_e.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "bluetooth": {
@@ -871,8 +871,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_wl.xml",
-            "system-path": "/etc/hardware_features_project_wl.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "audio": {
@@ -928,8 +928,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_rebrand.xml",
-            "system-path": "/etc/hardware_features_project_rebrand.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -979,8 +979,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_box.xml",
-            "system-path": "/etc/hardware_features_project_box.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -1030,8 +1030,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_box.xml",
-            "system-path": "/etc/hardware_features_project_box.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
@@ -1081,8 +1081,8 @@
             "product": "fake_program"
           },
           "hardware-features": {
-            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_project_box.xml",
-            "system-path": "/etc/hardware_features_project_box.xml"
+            "build-path": "fake/public_sw_build_config/platform/chromeos-config/generated/arc/hardware_features_0709fa9e.xml",
+            "system-path": "/etc/hardware_features_0709fa9e.xml"
           }
         },
         "camera": {
