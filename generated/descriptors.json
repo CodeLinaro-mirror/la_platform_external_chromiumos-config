@@ -24752,6 +24752,13 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.DutInfo.TagsEntry"
+            },
+            {
+              "jsonName": "cbx",
+              "label": "LABEL_OPTIONAL",
+              "name": "cbx",
+              "number": 4,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "DutInfo",

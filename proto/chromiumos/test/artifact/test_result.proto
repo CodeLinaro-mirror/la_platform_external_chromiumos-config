@@ -291,7 +291,7 @@ message BuildMetadata {
 }
 
 // Captures DUT related info.
-// NEXT TAG: 4
+// NEXT TAG: 5
 message DutInfo {
   // DUT associated with the test run.
   chromiumos.test.lab.api.Dut dut = 1;
@@ -303,6 +303,9 @@ message DutInfo {
   // additional identifier that could be specific to a certain TLE.
   // Example: "Moblab Install Id": "701c38ce144611ed86a50242c0a8640c"
   map<string, string> tags = 3;
+
+  // True is applicable to CBX SKU DUTs, otherwise they are non-CBX.
+  bool cbx = 4;
 }
 
 // Captures Drone related info.
