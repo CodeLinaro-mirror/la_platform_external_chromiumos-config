@@ -23511,6 +23511,13 @@
               "type": "TYPE_INT64"
             },
             {
+              "jsonName": "gceMinCpuPlatform",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_min_cpu_platform",
+              "number": 12,
+              "type": "TYPE_STRING"
+            },
+            {
               "jsonName": "type",
               "label": "LABEL_OPTIONAL",
               "name": "type",

@@ -56,7 +56,7 @@ message LeaseVMRequest {
   VMTestingClient testing_client = 6;
 }
 
-// NEXT TAG: 12
+// NEXT TAG: 13
 message VMRequirements {
   string gce_image = 1;
   string gce_region = 2;
@@ -72,6 +72,7 @@ message VMRequirements {
   // Specified IP address for VM. If not, use ephemeral IP.
   string gce_ip_address = 8;
   int64 gce_disk_size = 10;
+  string gce_min_cpu_platform = 12;
 
   VMType type = 9;
 }
