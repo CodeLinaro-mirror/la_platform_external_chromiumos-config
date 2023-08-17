@@ -158,7 +158,6 @@ message HWRequirements {
     BANNED = 3;
     ONEOF = 4;
   }
- repeated string swarming_labels = 5;
  State state = 6;
 }
 
@@ -180,7 +179,7 @@ message SwarmingDefinition {
  // This is effectively the UFS proto. This will be the universal language spoken by all filters.
   chromiumos.test.lab.api.Dut dut_info = 1;
   repeated ProvisionInfo provision_info = 2;
-
+  repeated string swarming_labels = 3;
 };
 
 // CTPv2Response...

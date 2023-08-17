@@ -22240,13 +22240,6 @@
               "typeName": ".chromiumos.test.api.SwarmingDefinition"
             },
             {
-              "jsonName": "swarmingLabels",
-              "label": "LABEL_REPEATED",
-              "name": "swarming_labels",
-              "number": 5,
-              "type": "TYPE_STRING"
-            },
-            {
               "jsonName": "state",
               "label": "LABEL_OPTIONAL",
               "name": "state",
@@ -22324,6 +22317,13 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ProvisionInfo"
+            },
+            {
+              "jsonName": "swarmingLabels",
+              "label": "LABEL_REPEATED",
+              "name": "swarming_labels",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "SwarmingDefinition"
