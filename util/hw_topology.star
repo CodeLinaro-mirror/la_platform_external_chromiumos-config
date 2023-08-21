@@ -1878,6 +1878,8 @@ def _convert_to_hw_features(hardware_topology):
 
     if copy.screen.hardware_feature.screen != _HW_FEAT.Screen():
         result.screen = copy.screen.hardware_feature.screen
+    if copy.screen.hardware_feature.privacy_screen != _HW_FEAT.PrivacyScreen():
+        result.privacy_screen = copy.screen.hardware_feature.privacy_screen
 
     # Handle all possible form factor hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.form_factor.hardware_feature.fw_config)
@@ -2043,6 +2045,8 @@ def _convert_to_hw_features(hardware_topology):
 
     # Handle all possible touch hardware features
     _accumulate_fw_config(result.fw_config, copy.touch.hardware_feature.fw_config)
+    if copy.touch.hardware_feature.touch != _HW_FEAT.Touch():
+        result.touch = copy.touch.hardware_feature.touch
 
     # Handle all possible detachable base attributes
     _accumulate_fw_config(result.fw_config, copy.detachable_base.hardware_feature.fw_config)
@@ -2054,6 +2058,14 @@ def _convert_to_hw_features(hardware_topology):
 
     if copy.soc.hardware_feature.soc != _HW_FEAT.Soc():
         result.soc = copy.soc.hardware_feature.soc
+
+    _accumulate_fw_config(result.fw_config, copy.uwb.hardware_feature.fw_config)
+    if copy.uwb.hardware_feature.uwb_config != _HW_FEAT.Uwb():
+        result.uwb_config = copy.uwb.hardware_feature.uwb_config
+
+    _accumulate_fw_config(result.fw_config, copy.dgpu.hardware_feature.fw_config)
+    if copy.dgpu.hardware_feature.dgpu_config != _HW_FEAT.Dgpu():
+        result.dgpu_config = copy.dgpu.hardware_feature.dgpu_config
 
     return result
 

@@ -1179,6 +1179,7 @@ design.append_configs(
             "Non-default daughter_board",
             fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)],
             cellular_support = False,
+            hdmi_support = True,
         ),
         bluetooth = _BLUETOOTH,
         camera = _CAMERA1,

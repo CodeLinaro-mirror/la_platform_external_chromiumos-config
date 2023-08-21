@@ -272,6 +272,10 @@
               "present": 1,
               "type": 1
             },
+            "dgpuConfig": {
+              "dgpuType": 1,
+              "present": 1
+            },
             "fingerprint": {
               "board": "fake_fingerprint_board",
               "fingerprintDiag": {
@@ -417,6 +421,9 @@
                 }
               ],
               "usb4": true
+            },
+            "uwbConfig": {
+              "present": 1
             },
             "volumeButton": {
               "edge": 2,
@@ -3640,7 +3647,7 @@
               "baseGyroscope": 1
             },
             "hdmi": {
-              "present": 2
+              "present": 1
             },
             "keyboard": {
               "backlight": 2,
@@ -3892,7 +3899,7 @@
                   "mask": 15
                 },
                 "hdmi": {
-                  "present": 2
+                  "present": 1
                 },
                 "usbA": {
                   "count": {}
@@ -4930,6 +4937,9 @@
               "barreljack": 2,
               "usbMinAcWatts": 20
             },
+            "privacyScreen": {
+              "present": 1
+            },
             "screen": {
               "panelProperties": {
                 "alsSteps": [
@@ -5532,6 +5542,9 @@
             "powerSupply": {
               "barreljack": 2,
               "usbMinAcWatts": 20
+            },
+            "privacyScreen": {
+              "present": 1
             },
             "screen": {
               "panelProperties": {

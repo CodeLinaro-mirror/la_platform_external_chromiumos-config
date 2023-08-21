@@ -461,9 +461,6 @@
             }
           ]
         },
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -744,9 +741,6 @@
               "orientation": 180
             }
           ]
-        },
-        "fingerprint": {
-          "sensor-location": "none"
         },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
@@ -1442,9 +1436,6 @@
             }
           ]
         },
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -1708,9 +1699,6 @@
           "usb-path": "1-1.1",
           "vendor-id": 6353
         },
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -1745,6 +1733,7 @@
           "has-base-accelerometer": true,
           "has-base-gyroscope": true,
           "has-base-magnetometer": true,
+          "has-hdmi": true,
           "has-sd-reader": true,
           "has-side-volume-button": true,
           "has-touchscreen": true,
@@ -2008,9 +1997,6 @@
           "touch-image-name": "Fake_Detachable-touch.fw",
           "usb-path": "1-1.1",
           "vendor-id": 6353
-        },
-        "fingerprint": {
-          "sensor-location": "none"
         },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
@@ -2293,9 +2279,6 @@
             }
           ]
         },
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -2557,9 +2540,6 @@
               "orientation": 0
             }
           ]
-        },
-        "fingerprint": {
-          "sensor-location": "none"
         },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
@@ -5866,9 +5846,6 @@
             }
           }
         ],
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -6125,9 +6102,6 @@
             }
           }
         ],
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -6385,9 +6359,6 @@
             }
           }
         ],
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -6645,9 +6616,6 @@
             }
           }
         ],
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -6918,9 +6886,6 @@
             }
           }
         ],
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -7150,9 +7115,6 @@
             }
           }
         ],
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -7380,9 +7342,6 @@
             }
           }
         ],
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -7607,9 +7566,6 @@
             }
           }
         ],
-        "fingerprint": {
-          "sensor-location": "none"
-        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
