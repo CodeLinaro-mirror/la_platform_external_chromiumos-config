@@ -4638,9 +4638,38 @@
                   "number": 1,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "cec",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "cec",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Hdmi.Cec"
                 }
               ],
-              "name": "Hdmi"
+              "name": "Hdmi",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "powerOnDisplaysOnBoot",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "power_on_displays_on_boot",
+                      "number": 1,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "powerOffDisplaysOnShutdown",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "power_off_displays_on_shutdown",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    }
+                  ],
+                  "name": "Cec"
+                }
+              ]
             },
             {
               "field": [

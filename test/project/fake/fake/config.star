@@ -119,6 +119,13 @@ _HDMI = hw_topo.create_hdmi(
     id = "HDMI",
     description = "HDMI port",
 )
+_HDMI_CEC_POWER_ON = hw_topo.create_hdmi(
+    id = "HDMI",
+    description = "HDMI port with CEC power on",
+    cec = hw_topo.create_hdmi_cec(
+        power_on_displays_on_boot = True,
+    ),
+)
 
 _AUDIO_CARD = "fakeaudiocard"
 _AUDIO = hw_topo.create_audio(
@@ -926,6 +933,7 @@ design.append_configs(
                 coreboot_customizations = ["0db"],
             )],
         ),
+        hdmi = _HDMI_CEC_POWER_ON,
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
         keyboard = _BL_KEYBOARD,
         battery = _BATTERY,
@@ -1180,6 +1188,10 @@ design.append_configs(
             fw_configs = [hw_topo.make_fw_config(program.fw_masks.DB, 0)],
             cellular_support = False,
             hdmi_support = True,
+            hdmi_cec = hw_topo.create_hdmi_cec(
+                power_on_displays_on_boot = True,
+                power_off_displays_on_shutdown = True,
+            ),
         ),
         bluetooth = _BLUETOOTH,
         camera = _CAMERA1,

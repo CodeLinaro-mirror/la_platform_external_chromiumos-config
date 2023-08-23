@@ -1026,7 +1026,10 @@
               "baseGyroscope": 1
             },
             "hdmi": {
-              "present": 2
+              "cec": {
+                "powerOnDisplaysOnBoot": true
+              },
+              "present": 1
             },
             "keyboard": {
               "alsSteps": [
@@ -1316,6 +1319,21 @@
               },
               "id": "CLAMSHELL",
               "type": 2
+            },
+            "hdmi": {
+              "description": {
+                "EN": "HDMI port with CEC power on"
+              },
+              "hardwareFeature": {
+                "hdmi": {
+                  "cec": {
+                    "powerOnDisplaysOnBoot": true
+                  },
+                  "present": 1
+                }
+              },
+              "id": "HDMI",
+              "type": 27
             },
             "keyboard": {
               "description": {
@@ -3647,6 +3665,10 @@
               "baseGyroscope": 1
             },
             "hdmi": {
+              "cec": {
+                "powerOffDisplaysOnShutdown": true,
+                "powerOnDisplaysOnBoot": true
+              },
               "present": 1
             },
             "keyboard": {
@@ -3899,6 +3921,10 @@
                   "mask": 15
                 },
                 "hdmi": {
+                  "cec": {
+                    "powerOffDisplaysOnShutdown": true,
+                    "powerOnDisplaysOnBoot": true
+                  },
                   "present": 1
                 },
                 "usbA": {

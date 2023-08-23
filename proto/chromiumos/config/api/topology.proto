@@ -232,6 +232,15 @@ message HardwareFeatures {
   message Hdmi {
     // If native HDMI support is present on system.
     Present present = 1;
+
+    // Configuration for HDMI-CEC.
+    Cec cec = 2;
+    message Cec {
+      // Automatically power on all connected displays on boot.
+      bool power_on_displays_on_boot = 1;
+      // Automatically power off all connected displays on shutdown.
+      bool power_off_displays_on_shutdown = 2;
+    }
   }
 
   // Firmware configuration field programmed in CBI. The value from each

@@ -998,19 +998,29 @@ def _create_proximity_sensor(id, description, fw_configs = [], proximity_config 
         hardware_feature = hw_features,
     )
 
-def _create_hdmi(id, description, fw_configs = []):
+def _create_hdmi(id, description, fw_configs = [], cec = None):
     """Builds a Topology proto for HDMI."""
     hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
     hw_features.hdmi.present = _PRESENT.PRESENT
+    hw_features.hdmi.cec = cec
 
     return topo_pb.Topology(
         id = id,
         type = topo_pb.Topology.HDMI,
         description = {"EN": description},
         hardware_feature = hw_features,
+    )
+
+def _create_hdmi_cec(
+        power_on_displays_on_boot = False,
+        power_off_displays_on_shutdown = False):
+    """ Build a proto for HDMI CEC."""
+    return _HW_FEAT.Hdmi.Cec(
+        power_on_displays_on_boot = power_on_displays_on_boot,
+        power_off_displays_on_shutdown = power_off_displays_on_shutdown,
     )
 
 def _create_daughter_board(
@@ -1026,6 +1036,7 @@ def _create_daughter_board(
         cellular_type = _CELLULAR.CELLULAR_UNKNOWN,
         cellular_dynamic_power_reduction_config = None,
         hdmi_support = False,
+        hdmi_cec = None,
         side = None,
         usbc_ports = None):
     """Builds a Topology proto for a daughter board."""
@@ -1048,6 +1059,9 @@ def _create_daughter_board(
     hw_features.cellular.dynamic_power_reduction_config = cellular_dynamic_power_reduction_config
 
     hw_features.hdmi.present = _bool_to_present(hdmi_support)
+    if hdmi_cec and not hdmi_support:
+        fail("Daughter board cannot have hdmi_cec without hdmi_support")
+    hw_features.hdmi.cec = hdmi_cec
 
     return topo_pb.Topology(
         id = id,
@@ -1866,6 +1880,11 @@ def _accumulate_hdmi(existing_hdmi, new_hdmi):
         if new_hdmi.present != _PRESENT.UNKNOWN:
             existing_hdmi.present = new_hdmi.present
 
+    if new_hdmi.cec != _HW_FEAT.Hdmi.Cec():
+        if existing_hdmi.cec != _HW_FEAT.Hdmi.Cec() and existing_hdmi.cec != new_hdmi.cec:
+            fail("All HDMI ports must have the same CEC settings")
+        existing_hdmi.cec = new_hdmi.cec
+
 def _convert_to_hw_features(hardware_topology):
     """Converts a HardwareTopology proto to a HardwareFeatures proto."""
     result = _HW_FEAT()
@@ -2159,6 +2178,7 @@ hw_topo = struct(
     create_touch = _create_touch,
     create_microphone_mute_switch = _create_microphone_mute_switch,
     create_hdmi = _create_hdmi,
+    create_hdmi_cec = _create_hdmi_cec,
     create_hps = _create_hps,
     create_dp_converter = _create_dp_converter,
     create_poe = _create_poe,
