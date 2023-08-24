@@ -78,20 +78,36 @@ message ResourceConfig {
     }
   }
 
+  message CpuOfflineSmallCore {}
+
+  message CpuOfflineSMT {}
+
+  message CpuOfflineHalf {}
+
+  message CpuOfflinePreference {
+    oneof cpu_offline {
+      CpuOfflineSmallCore small_core = 1 [json_name = "small-core"];
+      CpuOfflineSMT smt = 2;
+      CpuOfflineHalf half = 3;
+    }
+  }
+
   message PowerPreferences {
     Governor governor = 1;
     EnergyPerformancePreference epp = 2;
+    CpuOfflinePreference cpu_offline = 3 [json_name = "cpu-offline"];
   }
 
   message PowerSourcePreferences {
     // If more then one activity is enabled, the following priority list is used
     // to determine which settings to apply:
     //
-    // 1) Borealis gaming
-    // 2) ARCVM gaming
-    // 3) WebRTC
-    // 4) Fullscreen Video
-    // 5) VM boot
+    // 1) Battery saver
+    // 2) Borealis gaming
+    // 3) ARCVM gaming
+    // 4) WebRTC
+    // 5) Fullscreen Video
+    // 6) VM boot
     //
     // Default will be applied when no activity is active.
 
@@ -118,6 +134,10 @@ message ResourceConfig {
     // PowerPreferences to apply when playing an ARCVM game.
     PowerPreferences arcvm_gaming_power_preferences = 6
         [json_name = "arcvm-gaming-power-preferences"];
+
+    // PowerPreferences to apply when Battery Saver mode is on.
+    PowerPreferences battery_saver_power_preferences = 7
+        [json_name = "battery-saver-power-preferences"];
   }
 
   // Power Preferences to apply when the device is on AC power (Plugged-in).

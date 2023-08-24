@@ -10059,6 +10059,52 @@
               ]
             },
             {
+              "name": "CpuOfflineSmallCore"
+            },
+            {
+              "name": "CpuOfflineSMT"
+            },
+            {
+              "name": "CpuOfflineHalf"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "small-core",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "small_core",
+                  "number": 1,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.CpuOfflineSmallCore"
+                },
+                {
+                  "jsonName": "smt",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "smt",
+                  "number": 2,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.CpuOfflineSMT"
+                },
+                {
+                  "jsonName": "half",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "half",
+                  "number": 3,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.CpuOfflineHalf"
+                }
+              ],
+              "name": "CpuOfflinePreference",
+              "oneofDecl": [
+                {
+                  "name": "cpu_offline"
+                }
+              ]
+            },
+            {
               "field": [
                 {
                   "jsonName": "governor",
@@ -10075,6 +10121,14 @@
                   "number": 2,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.software.ResourceConfig.EnergyPerformancePreference"
+                },
+                {
+                  "jsonName": "cpu-offline",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "cpu_offline",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.CpuOfflinePreference"
                 }
               ],
               "name": "PowerPreferences"
@@ -10126,6 +10180,14 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "arcvm_gaming_power_preferences",
                   "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
+                },
+                {
+                  "jsonName": "battery-saver-power-preferences",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "battery_saver_power_preferences",
+                  "number": 7,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.software.ResourceConfig.PowerPreferences"
                 }

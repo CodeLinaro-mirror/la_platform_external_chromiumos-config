@@ -1085,6 +1085,11 @@ design.append_configs(
                 governor = sc.create_ondemand_governor(400, 16),
                 epp = sc.create_balance_performance_epp(),
             ),
+            battery_saver = sc.create_power_preference(
+                governor = sc.create_powersave_governor(),
+                epp = sc.create_balance_power_epp(),
+                cpu_offline = sc.create_cpu_offline_smt(),
+            ),
         ),
         dc = sc.create_power_source_preference(
             arcvm_gaming = sc.create_power_preference(
@@ -1110,6 +1115,11 @@ design.append_configs(
             web_rtc = sc.create_power_preference(
                 governor = sc.create_userspace_governor(),
                 epp = sc.create_balance_power_epp(),
+            ),
+            battery_saver = sc.create_power_preference(
+                governor = sc.create_powersave_governor(),
+                epp = sc.create_balance_power_epp(),
+                cpu_offline = sc.create_cpu_offline_half(),
             ),
         ),
     ),
