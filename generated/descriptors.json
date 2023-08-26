@@ -4366,6 +4366,13 @@
               "number": 47,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.SdReader"
+            },
+            {
+              "jsonName": "featureLevel",
+              "label": "LABEL_OPTIONAL",
+              "name": "feature_level",
+              "number": 48,
+              "type": "TYPE_UINT32"
             }
           ],
           "name": "HardwareFeatures",

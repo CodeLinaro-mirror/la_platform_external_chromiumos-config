@@ -1024,4 +1024,7 @@ message HardwareFeatures {
     // If SD reader is supported.
     Present present = 1;
   }
+
+  // FeatureLevel stores the feature level of a DUT
+  uint32 feature_level = 48;
 }
