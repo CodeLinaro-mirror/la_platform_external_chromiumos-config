@@ -345,7 +345,7 @@
       ],
       "name": "chromiumos/storage_path.proto",
       "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go;_go"
+        "goPackage": "go.chromium.org/chromiumos/config/go;storage_path"
       },
       "package": "chromiumos",
       "syntax": "proto3"
