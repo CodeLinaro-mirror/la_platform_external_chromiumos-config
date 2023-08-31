@@ -345,8 +345,7 @@ def _create_power_source_preference(
         fullscreen_video = None,
         vm_boot = None,
         borealis_gaming = None,
-        arcvm_gaming = None,
-        battery_saver = None):
+        arcvm_gaming = None):
     """Builds a PowerSourcePreferences proto.
 
     Args:
@@ -364,10 +363,9 @@ def _create_power_source_preference(
         vm_boot_power_preferences = vm_boot,
         borealis_gaming_power_preferences = borealis_gaming,
         arcvm_gaming_power_preferences = arcvm_gaming,
-        battery_saver_power_preferences = battery_saver,
     )
 
-def _create_power_preference(governor = None, epp = None, cpu_offline = None):
+def _create_power_preference(governor = None, epp = None):
     """Builds a PowerPreferences proto.
 
     Args:
@@ -377,7 +375,6 @@ def _create_power_preference(governor = None, epp = None, cpu_offline = None):
     return resource_pb.ResourceConfig.PowerPreferences(
         governor = governor,
         epp = epp,
-        cpu_offline = cpu_offline,
     )
 
 def _create_conservative_governor():
@@ -455,24 +452,6 @@ def _create_power_epp():
     """Builds a power epp EnergyPerformancePreference proto"""
     return resource_pb.ResourceConfig.EnergyPerformancePreference(
         power = resource_pb.ResourceConfig.PowerEpp(),
-    )
-
-def _create_cpu_offline_small_core():
-    """Builds a cpu offline small core policy CpuOfflinePreference proto"""
-    return resource_pb.ResourceConfig.CpuOfflinePreference(
-        small_core = resource_pb.ResourceConfig.CpuOfflineSmallCore(),
-    )
-
-def _create_cpu_offline_smt():
-    """Builds a cpu offline SMT policy CpuOfflinePreference proto"""
-    return resource_pb.ResourceConfig.CpuOfflinePreference(
-        smt = resource_pb.ResourceConfig.CpuOfflineSMT(),
-    )
-
-def _create_cpu_offline_half():
-    """Builds a cpu offline half policy CpuOfflinePreference proto"""
-    return resource_pb.ResourceConfig.CpuOfflinePreference(
-       half = resource_pb.ResourceConfig.CpuOfflineHalf(),
     )
 
 def _create_ath10k_power_chain(limit_2g, limit_5g):
@@ -1118,9 +1097,6 @@ sw_config = struct(
     create_balance_performance_epp = _create_balance_performance_epp,
     create_balance_power_epp = _create_balance_power_epp,
     create_power_epp = _create_power_epp,
-    create_cpu_offline_small_core = _create_cpu_offline_small_core,
-    create_cpu_offline_smt = _create_cpu_offline_smt,
-    create_cpu_offline_half = _create_cpu_offline_half,
     create_intel_antenna_gain = _create_intel_antenna_gain,
     create_intel_antgain_table = _create_intel_antgain_table,
     create_intel_dsm = _create_intel_dsm,
