@@ -18135,7 +18135,8 @@
         "chromiumos/build/api/dlc.proto",
         "chromiumos/build/api/firmware_config.proto",
         "chromiumos/build/api/portage.proto",
-        "chromiumos/storage_path.proto"
+        "chromiumos/storage_path.proto",
+        "google/protobuf/any.proto"
       ],
       "messageType": [
         {
@@ -18199,6 +18200,14 @@
               "name": "use_servo",
               "number": 8,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "provisionMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "provision_metadata",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
             }
           ],
           "name": "ProvisionState",

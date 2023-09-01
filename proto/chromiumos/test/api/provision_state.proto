@@ -12,6 +12,7 @@ import "chromiumos/build/api/dlc.proto";
 import "chromiumos/build/api/firmware_config.proto";
 import "chromiumos/build/api/portage.proto";
 import "chromiumos/storage_path.proto";
+import "google/protobuf/any.proto";
 
 // ProvisionState defines all of the installable (provisionable) elements on a
 // ChromeOS test device as part of device setup for test operations.
@@ -79,6 +80,9 @@ message ProvisionState {
   // requested from InventoryService.
   // If False, SSH to the DUT and provision it directly.
   bool use_servo = 8;
+
+  // Specific metadata for provisioning android etc for companion dut
+  google.protobuf.Any provision_metadata = 9;
 }
 
 // User configurable provisioning settings.  These inform the final
