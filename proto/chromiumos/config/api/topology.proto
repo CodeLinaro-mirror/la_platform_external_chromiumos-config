@@ -110,7 +110,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 48
+// NEXT TAG: 50
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -1027,4 +1027,11 @@ message HardwareFeatures {
 
   // FeatureLevel stores the feature level of a DUT
   uint32 feature_level = 48;
+
+  // OEM info
+  OEMInfo oem_info = 49;
+  message OEMInfo {
+    // Name stores the name of OEM.
+    string name = 1;
+  }
 }

@@ -4373,6 +4373,14 @@
               "name": "feature_level",
               "number": 48,
               "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "oemInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "oem_info",
+              "number": 49,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.OEMInfo"
             }
           ],
           "name": "HardwareFeatures",
@@ -6712,6 +6720,18 @@
                 }
               ],
               "name": "SdReader"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "name",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "name",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "OEMInfo"
             }
           ]
         }
