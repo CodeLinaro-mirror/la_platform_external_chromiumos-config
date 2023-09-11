@@ -266,6 +266,9 @@ message HardwareFeatures {
 
     // The AP firmware has the CONFIG_VBOOT_CBFS_INTEGRATION feature enabled.
     Present vboot_cbfs_integration = 5;
+
+    // The RW firmware version currently running on the DUT.
+    uint32 fw_rw_active_version = 6;
   }
 
   // Audio properties of system

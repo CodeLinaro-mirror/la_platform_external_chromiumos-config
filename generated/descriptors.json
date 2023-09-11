@@ -4731,6 +4731,13 @@
                   "number": 5,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "fwRwActiveVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "fw_rw_active_version",
+                  "number": 6,
+                  "type": "TYPE_UINT32"
                 }
               ],
               "name": "FirmwareConfiguration"
