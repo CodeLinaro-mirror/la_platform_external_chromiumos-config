@@ -4529,6 +4529,13 @@
                   "number": 5,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Cellular.DynamicPowerReductionConfig"
+                },
+                {
+                  "jsonName": "wedgeTimeoutInMs",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wedge_timeout_in_ms",
+                  "number": 6,
+                  "type": "TYPE_UINT32"
                 }
               ],
               "name": "Cellular",

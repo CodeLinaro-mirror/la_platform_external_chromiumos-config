@@ -1035,6 +1035,7 @@ def _create_daughter_board(
         cellular_model = None,
         cellular_type = _CELLULAR.CELLULAR_UNKNOWN,
         cellular_dynamic_power_reduction_config = None,
+        cellular_wedge_timeout_in_ms = None,
         hdmi_support = False,
         hdmi_cec = None,
         side = None,
@@ -1057,6 +1058,8 @@ def _create_daughter_board(
     hw_features.cellular.model = cellular_model
     hw_features.cellular.type = cellular_type
     hw_features.cellular.dynamic_power_reduction_config = cellular_dynamic_power_reduction_config
+    if cellular_wedge_timeout_in_ms:
+        hw_features.cellular.wedge_timeout_in_ms = cellular_wedge_timeout_in_ms
 
     hw_features.hdmi.present = _bool_to_present(hdmi_support)
     if hdmi_cec and not hdmi_support:
@@ -1108,7 +1111,8 @@ def _create_cellular_board(
         type = _CELLULAR.CELLULAR_UNKNOWN,
         fw_configs = [],
         model = None,
-        dynamic_power_reduction_config = None):
+        dynamic_power_reduction_config = None,
+        wedge_timeout_in_ms = None):
     """Builds a Topology proto for a Cellular board."""
     hw_features = _HW_FEAT()
 
@@ -1116,6 +1120,8 @@ def _create_cellular_board(
     hw_features.cellular.model = model
     hw_features.cellular.type = type
     hw_features.cellular.dynamic_power_reduction_config = dynamic_power_reduction_config
+    if wedge_timeout_in_ms:
+        hw_features.cellular.wedge_timeout_in_ms = wedge_timeout_in_ms
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -1874,6 +1880,8 @@ def _accumulate_cellular(existing_cellular, new_cellular):
             existing_cellular.type = new_cellular.type
             if proto.has(new_cellular, "dynamic_power_reduction_config"):
                 existing_cellular.dynamic_power_reduction_config = new_cellular.dynamic_power_reduction_config
+            if new_cellular.wedge_timeout_in_ms:
+                existing_cellular.wedge_timeout_in_ms = new_cellular.wedge_timeout_in_ms
 
 def _accumulate_hdmi(existing_hdmi, new_hdmi):
     if existing_hdmi.present != _PRESENT.PRESENT:

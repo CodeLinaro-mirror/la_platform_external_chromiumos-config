@@ -270,7 +270,8 @@
                 "tabletMode": true
               },
               "present": 1,
-              "type": 1
+              "type": 1,
+              "wedgeTimeoutInMs": 120000
             },
             "dgpuConfig": {
               "dgpuType": 1,
@@ -570,7 +571,8 @@
                     "tabletMode": true
                   },
                   "present": 1,
-                  "type": 1
+                  "type": 1,
+                  "wedgeTimeoutInMs": 120000
                 }
               },
               "id": "LTE_BOARD",
@@ -2284,7 +2286,8 @@
                 "tabletMode": true
               },
               "present": 1,
-              "type": 1
+              "type": 1,
+              "wedgeTimeoutInMs": 120000
             },
             "fingerprint": {
               "board": "fake_fingerprint_board",
@@ -2596,7 +2599,8 @@
                     "tabletMode": true
                   },
                   "present": 1,
-                  "type": 1
+                  "type": 1,
+                  "wedgeTimeoutInMs": 120000
                 }
               },
               "id": "LTE_BOARD",
@@ -8701,7 +8705,8 @@
                 "tabletMode": true
               },
               "present": 1,
-              "type": 1
+              "type": 1,
+              "wedgeTimeoutInMs": 210000
             },
             "formFactor": {
               "formFactor": 1,
@@ -9162,7 +9167,8 @@
                     "tabletMode": true
                   },
                   "present": 1,
-                  "type": 1
+                  "type": 1,
+                  "wedgeTimeoutInMs": 210000
                 },
                 "fwConfig": {
                   "mask": 15,
@@ -9757,7 +9763,8 @@
             },
             "cellular": {
               "present": 1,
-              "type": 1
+              "type": 1,
+              "wedgeTimeoutInMs": 180000
             },
             "formFactor": {
               "formFactor": 1,
@@ -9959,7 +9966,8 @@
               "hardwareFeature": {
                 "cellular": {
                   "present": 1,
-                  "type": 1
+                  "type": 1,
+                  "wedgeTimeoutInMs": 180000
                 }
               },
               "id": "LTE_BOARD_NO_DPR",

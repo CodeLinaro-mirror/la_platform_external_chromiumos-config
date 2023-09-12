@@ -225,6 +225,9 @@ message HardwareFeatures {
       // E.g. KCC -> 2
       map<string, uint32> regulatory_domain_mapping = 7;
     }
+
+    // Wedge detection timeout in ms.
+    uint32 wedge_timeout_in_ms = 6;
   }
 
   // HDMI properties
