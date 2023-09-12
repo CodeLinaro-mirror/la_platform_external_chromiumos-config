@@ -74,6 +74,13 @@ message SourceTestPlan {
       // to prevent suite name collisions when multiple DIR_METADATA files
       // reference the same templated Starlark file with different tag_criteria.
       string suite_name = 2;
+
+      // CURRENTLY UNIMPLEMENTED.
+      // Program name that will be made available to the Starlark file.
+      // Generally this will be passed to the v1_compatible_hw_test_plan and
+      // v1_compatible_vm_test_plan Starlark functions, but the Starlark file is
+      // free to use the name arbitrarily.
+      string program = 3;
     }
 
     TemplateParameters template_parameters = 4;

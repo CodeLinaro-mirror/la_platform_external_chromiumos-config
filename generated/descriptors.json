@@ -28295,6 +28295,13 @@
                       "name": "suite_name",
                       "number": 2,
                       "type": "TYPE_STRING"
+                    },
+                    {
+                      "jsonName": "program",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "program",
+                      "number": 3,
+                      "type": "TYPE_STRING"
                     }
                   ],
                   "name": "TemplateParameters"
