@@ -3807,6 +3807,10 @@
                 {
                   "name": "DETACHABLE_BASE",
                   "number": 37
+                },
+                {
+                  "name": "FAN",
+                  "number": 38
                 }
               ]
             }
@@ -4381,6 +4385,14 @@
               "number": 49,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.OEMInfo"
+            },
+            {
+              "jsonName": "fan",
+              "label": "LABEL_OPTIONAL",
+              "name": "fan",
+              "number": 50,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Fan"
             }
           ],
           "name": "HardwareFeatures",
@@ -6746,6 +6758,18 @@
                 }
               ],
               "name": "OEMInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "fanCount",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "fan_count",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "Fan"
             }
           ]
         }
@@ -7045,6 +7069,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "soc",
               "number": 35,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "fan",
+              "label": "LABEL_OPTIONAL",
+              "name": "fan",
+              "number": 36,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }

@@ -797,6 +797,12 @@ _DETACHABLE_BASE_WITH_TP = hw_topo.create_detachable_base(
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.DETACHABLE_BASE, 1)],
 )
 
+_FAN = hw_topo.create_fan(
+    id = "FAN",
+    description = "Fan info",
+    fan_count = 2,
+)
+
 def create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -823,7 +829,8 @@ def create_hardware_topology(
         uwb = None,
         detachable_base = None,
         soc = None,
-        sd_reader = None):
+        sd_reader = None,
+        fan = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -857,6 +864,7 @@ def create_hardware_topology(
         uwb = uwb,
         detachable_base = detachable_base,
         soc = soc,
+        fan = fan if fan else _FAN,
     )
 
 # Create empty arrays that we will continually append new configurations to
@@ -886,6 +894,7 @@ design.append_configs(
         dgpu = _DGPU,
         uwb = _UWB,
         sd_reader = _NO_SD_READER,
+        fan = _FAN,
     ),
     bluetooth = _SC_BLUETOOTH,
     health = _SC_HEALTH,

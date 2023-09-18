@@ -277,6 +277,9 @@
               "dgpuType": 1,
               "present": 1
             },
+            "fan": {
+              "fanCount": 2
+            },
             "fingerprint": {
               "board": "fake_fingerprint_board",
               "fingerprintDiag": {
@@ -634,6 +637,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -1011,6 +1026,9 @@
               "present": 1,
               "type": 1
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 2
@@ -1298,6 +1316,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -1643,6 +1673,9 @@
               "present": 1,
               "type": 1
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 2
@@ -1937,6 +1970,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -2288,6 +2333,9 @@
               "present": 1,
               "type": 1,
               "wedgeTimeoutInMs": 120000
+            },
+            "fan": {
+              "fanCount": 2
             },
             "fingerprint": {
               "board": "fake_fingerprint_board",
@@ -2649,6 +2697,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -3059,6 +3119,9 @@
               "present": 1,
               "type": 1
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 3,
               "recoveryInput": 1
@@ -3329,6 +3392,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -3657,6 +3732,9 @@
               "usbPath": "1-1.1",
               "vendorId": 6353
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 3,
               "recoveryInput": 1
@@ -3968,6 +4046,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -4314,6 +4404,9 @@
               "usbPath": "1-1.1",
               "vendorId": 6353
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 3,
               "recoveryInput": 1
@@ -4608,6 +4701,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -4935,6 +5040,9 @@
             "cellular": {
               "present": 2
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 7,
               "recoveryInput": 1
@@ -5207,6 +5315,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -5541,6 +5661,9 @@
             "cellular": {
               "present": 2
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 7,
               "recoveryInput": 1
@@ -5813,6 +5936,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -8708,6 +8843,9 @@
               "type": 1,
               "wedgeTimeoutInMs": 210000
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 1
@@ -9196,6 +9334,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -9766,6 +9916,9 @@
               "type": 1,
               "wedgeTimeoutInMs": 180000
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 1
@@ -10016,6 +10169,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -10309,6 +10474,9 @@
               "present": 1,
               "type": 1
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "formFactor": 5,
               "recoveryInput": 3
@@ -10546,6 +10714,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -10811,6 +10991,9 @@
             "cellular": {
               "present": 2
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "detachableUi": true,
               "formFactor": 4,
@@ -11032,6 +11215,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {
@@ -11297,6 +11492,9 @@
             "cellular": {
               "present": 2
             },
+            "fan": {
+              "fanCount": 2
+            },
             "formFactor": {
               "detachableUi": true,
               "formFactor": 4,
@@ -11493,6 +11691,18 @@
               },
               "id": "ec",
               "type": 22
+            },
+            "fan": {
+              "description": {
+                "EN": "Fan info"
+              },
+              "hardwareFeature": {
+                "fan": {
+                  "fanCount": 2
+                }
+              },
+              "id": "FAN",
+              "type": 38
             },
             "fingerprint": {
               "description": {

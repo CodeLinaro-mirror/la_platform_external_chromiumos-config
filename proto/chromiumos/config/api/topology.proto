@@ -71,6 +71,7 @@ message Topology {
     DGPU = 35;
     UWB = 36;
     DETACHABLE_BASE = 37;
+    FAN = 38;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -110,7 +111,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 50
+// NEXT TAG: 51
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -1039,5 +1040,12 @@ message HardwareFeatures {
   message OEMInfo {
     // Name stores the name of OEM.
     string name = 1;
+  }
+
+  // Fan
+  Fan fan = 50;
+  message Fan {
+    // The number of fan in the device.
+    uint32 fan_count = 1;
   }
 }

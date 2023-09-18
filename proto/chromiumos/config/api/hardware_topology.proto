@@ -159,4 +159,8 @@ message HardwareTopology {
   // Specify the SoC topology
   // See ./hardware_topology.md#soc for more information.
   Topology soc = 35;
+
+  // Specify the Fan topology
+  // See ./hardware_topology.md#fan for more information.
+  Topology fan = 36;
 }

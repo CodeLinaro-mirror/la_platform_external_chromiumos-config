@@ -846,6 +846,21 @@ def _create_sensor(
         hardware_feature = hw_features,
     )
 
+def _create_fan(id, description, fw_configs = [], fan_count = None):
+    """Builds a Topology proto for Fan."""
+    hw_features = topo_pb.HardwareFeatures()
+
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    hw_features.fan.fan_count = fan_count
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.FAN,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
 def _create_fingerprint(
         id,
         description,
@@ -1720,7 +1735,8 @@ def _create_hardware_topology(
         dgpu = None,
         uwb = None,
         detachable_base = None,
-        soc = None):
+        soc = None,
+        fan = None):
     """Builds a HardwareTopology proto from Topology protos."""
 
     # Only allow form_factor topologies for form factors
@@ -1826,6 +1842,9 @@ def _create_hardware_topology(
     if soc and soc.type != topo_pb.Topology.SOC:
         fail("Invalid SoC type")
 
+    if fan and fan.type != topo_pb.Topology.FAN:
+        fail("Invalid fan type")
+
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -1861,6 +1880,7 @@ def _create_hardware_topology(
         uwb = uwb,
         detachable_base = detachable_base,
         soc = soc,
+        fan = fan,
     )
 
 def _accumulate_usbc(existing_usbc, new_usbc):
@@ -2094,6 +2114,11 @@ def _convert_to_hw_features(hardware_topology):
     if copy.dgpu.hardware_feature.dgpu_config != _HW_FEAT.Dgpu():
         result.dgpu_config = copy.dgpu.hardware_feature.dgpu_config
 
+    # Handle all possible hdmi hardware features attributes
+    _accumulate_fw_config(result.fw_config, copy.fan.hardware_feature.fw_config)
+    if copy.fan.hardware_feature.fan != _HW_FEAT.Fan():
+        result.fan = copy.fan.hardware_feature.fan
+
     return result
 
 def _version_topology(topology):
@@ -2195,6 +2220,7 @@ hw_topo = struct(
     create_uwb = _create_uwb,
     create_detachable_base = _create_detachable_base,
     create_soc = _create_soc,
+    create_fan = _create_fan,
     convert_to_hw_features = _convert_to_hw_features,
     make_camera_device = _make_camera_device,
     make_cellular_dynamic_power_reduction_config = _make_cellular_dynamic_power_reduction_config,

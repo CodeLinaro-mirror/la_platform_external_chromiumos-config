@@ -319,3 +319,9 @@ Changes that require new topology
 Changes that require new topology
 
 * Differences in SoC SKU requiring software or firmware differences
+
+## Fan
+
+Changes that require new topology
+
+* Supports number of fan
