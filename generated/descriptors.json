@@ -6117,6 +6117,14 @@
                   "number": 9,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "featureMemoryDumpCommands",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "feature_memory_dump_commands",
+                  "number": 10,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "EmbeddedController"

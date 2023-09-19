@@ -737,7 +737,7 @@ message HardwareFeatures {
   Button volume_button = 22;
 
   // EmbeddedController properties
-  // Next Tag: 10
+  // Next Tag: 11
   message EmbeddedController {
     // Whether any kind of EC is present on the system.
     Present present = 1;
@@ -771,6 +771,9 @@ message HardwareFeatures {
 
     // Whether the EC supports system safe mode recovery.
     Present feature_system_safe_mode = 9;
+
+    // Whether the EC supports memory dump host commands.
+    Present feature_memory_dump_commands = 10;
   }
   EmbeddedController embedded_controller = 24;
 
