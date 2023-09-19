@@ -25563,6 +25563,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "stainless_url",
               "number": 3,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             },
             {

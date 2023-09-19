@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z6go.chromium.org/chromiumos/config/go/test/api/metadata',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n7chromiumos/test/api/metadata/publish_rdb_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\"\x9f\x02\n\x12PublishRdbMetadata\x12\x1d\n\x15\x63urrent_invocation_id\x18\x01 \x01(\t\x12\x39\n\x0btest_result\x18\x02 \x01(\x0b\x32$.chromiumos.test.artifact.TestResult\x12\x15\n\rstainless_url\x18\x03 \x01(\t\x12\x14\n\x0ctesthaus_url\x18\x04 \x01(\t\x12I\n\x07sources\x18\x05 \x01(\x0b\x32\x38.chromiumos.test.api.metadata.PublishRdbMetadata.Sources\x1a\x37\n\x07Sources\x12\x0f\n\x07gs_path\x18\x01 \x01(\t\x12\x1b\n\x13is_deployment_dirty\x18\x02 \x01(\x08\x42\x38Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
+  serialized_pb=b'\n7chromiumos/test/api/metadata/publish_rdb_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\"\xa3\x02\n\x12PublishRdbMetadata\x12\x1d\n\x15\x63urrent_invocation_id\x18\x01 \x01(\t\x12\x39\n\x0btest_result\x18\x02 \x01(\x0b\x32$.chromiumos.test.artifact.TestResult\x12\x19\n\rstainless_url\x18\x03 \x01(\tB\x02\x18\x01\x12\x14\n\x0ctesthaus_url\x18\x04 \x01(\t\x12I\n\x07sources\x18\x05 \x01(\x0b\x32\x38.chromiumos.test.api.metadata.PublishRdbMetadata.Sources\x1a\x37\n\x07Sources\x12\x0f\n\x07gs_path\x18\x01 \x01(\t\x12\x1b\n\x13is_deployment_dirty\x18\x02 \x01(\x08\x42\x38Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_artifact_dot_test__result__pb2.DESCRIPTOR,])
 
@@ -61,8 +61,8 @@ _PUBLISHRDBMETADATA_SOURCES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=366,
-  serialized_end=421,
+  serialized_start=370,
+  serialized_end=425,
 )
 
 _PUBLISHRDBMETADATA = _descriptor.Descriptor(
@@ -93,7 +93,7 @@ _PUBLISHRDBMETADATA = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='testhaus_url', full_name='chromiumos.test.api.metadata.PublishRdbMetadata.testhaus_url', index=3,
       number=4, type=9, cpp_type=9, label=1,
@@ -121,7 +121,7 @@ _PUBLISHRDBMETADATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=134,
-  serialized_end=421,
+  serialized_end=425,
 )
 
 _PUBLISHRDBMETADATA_SOURCES.containing_type = _PUBLISHRDBMETADATA
@@ -147,4 +147,5 @@ _sym_db.RegisterMessage(PublishRdbMetadata.Sources)
 
 
 DESCRIPTOR._options = None
+_PUBLISHRDBMETADATA.fields_by_name['stainless_url']._options = None
 # @@protoc_insertion_point(module_scope)
