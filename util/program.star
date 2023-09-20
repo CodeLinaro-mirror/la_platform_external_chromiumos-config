@@ -81,7 +81,8 @@ def _create_platform(
         boost_top_app = None,
         boost_arcvm = None,
         hevc_support = None,
-        arc_media_codecs_suffix = None):
+        arc_media_codecs_suffix = None,
+        resource = None):
     capabilities = None
     if any([
         suspend_to_idle != None,
@@ -128,6 +129,7 @@ def _create_platform(
         scheduler_tune = scheduler_tune,
         arc_settings = arc_settings,
         hevc_support = hw_topo.bool_to_present(hevc_support),
+        resource_config = resource,
     )
 
 def _create_audio_config(

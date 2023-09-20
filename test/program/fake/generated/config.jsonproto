@@ -237,6 +237,74 @@
           1
         ],
         "hevcSupport": 1,
+        "resourceConfig": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1
+                }
+              }
+            }
+          }
+        },
         "schedulerTune": {
           "boostArcvm": 0.5,
           "boostTopApp": 60,

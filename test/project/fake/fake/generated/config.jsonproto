@@ -3202,6 +3202,29 @@
             "sdReader": {
               "present": 1
             },
+            "soc": {
+              "resourceConfig": {
+                "ac": {
+                  "battery-saver-power-preferences": {
+                    "cpu-offline": {
+                      "smt": {}
+                    }
+                  },
+                  "default-power-preferences": {
+                    "epp": {
+                      "performance": {}
+                    }
+                  }
+                },
+                "dc": {
+                  "battery-saver-power-preferences": {
+                    "cpu-offline": {
+                      "half": {}
+                    }
+                  }
+                }
+              }
+            },
             "storage": {
               "storageType": 1
             },
@@ -3583,6 +3606,38 @@
               "id": "SD_READER",
               "type": 16
             },
+            "soc": {
+              "description": {
+                "EN": "Non-default SoC"
+              },
+              "hardwareFeature": {
+                "soc": {
+                  "resourceConfig": {
+                    "ac": {
+                      "battery-saver-power-preferences": {
+                        "cpu-offline": {
+                          "smt": {}
+                        }
+                      },
+                      "default-power-preferences": {
+                        "epp": {
+                          "performance": {}
+                        }
+                      }
+                    },
+                    "dc": {
+                      "battery-saver-power-preferences": {
+                        "cpu-offline": {
+                          "half": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "id": "SPECIAL_SOC",
+              "type": 28
+            },
             "stylus": {
               "description": {
                 "EN": "Default stylus"
@@ -3809,7 +3864,16 @@
             },
             "soc": {
               "arcMediaCodecsSuffix": "mainstream",
-              "hevcSupport": 2
+              "hevcSupport": 2,
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": 1
@@ -4223,7 +4287,16 @@
               "hardwareFeature": {
                 "soc": {
                   "arcMediaCodecsSuffix": "mainstream",
-                  "hevcSupport": 2
+                  "hevcSupport": 2,
+                  "resourceConfig": {
+                    "ac": {
+                      "default-power-preferences": {
+                        "epp": {
+                          "power": {}
+                        }
+                      }
+                    }
+                  }
                 }
               },
               "id": "SOC",
@@ -6347,6 +6420,19 @@
             "sdReader": {
               "present": 1
             },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": 2,
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
+            },
             "storage": {
               "storageType": 1
             },
@@ -6604,6 +6690,28 @@
               "id": "SD_READER",
               "type": 16
             },
+            "soc": {
+              "description": {
+                "EN": "Default SoC"
+              },
+              "hardwareFeature": {
+                "soc": {
+                  "arcMediaCodecsSuffix": "mainstream",
+                  "hevcSupport": 2,
+                  "resourceConfig": {
+                    "ac": {
+                      "default-power-preferences": {
+                        "epp": {
+                          "power": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "id": "SOC",
+              "type": 28
+            },
             "stylus": {
               "description": {
                 "EN": "No Stylus"
@@ -6754,6 +6862,19 @@
             },
             "sdReader": {
               "present": 1
+            },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": 2,
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": 1
@@ -6996,6 +7117,28 @@
               },
               "id": "SD_READER",
               "type": 16
+            },
+            "soc": {
+              "description": {
+                "EN": "Default SoC"
+              },
+              "hardwareFeature": {
+                "soc": {
+                  "arcMediaCodecsSuffix": "mainstream",
+                  "hevcSupport": 2,
+                  "resourceConfig": {
+                    "ac": {
+                      "default-power-preferences": {
+                        "epp": {
+                          "power": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "id": "SOC",
+              "type": 28
             },
             "stylus": {
               "description": {
@@ -7163,6 +7306,19 @@
             "sdReader": {
               "present": 1
             },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": 2,
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
+            },
             "storage": {
               "storageType": 1
             },
@@ -7428,6 +7584,28 @@
               "id": "SD_READER",
               "type": 16
             },
+            "soc": {
+              "description": {
+                "EN": "Default SoC"
+              },
+              "hardwareFeature": {
+                "soc": {
+                  "arcMediaCodecsSuffix": "mainstream",
+                  "hevcSupport": 2,
+                  "resourceConfig": {
+                    "ac": {
+                      "default-power-preferences": {
+                        "epp": {
+                          "power": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "id": "SOC",
+              "type": 28
+            },
             "stylus": {
               "description": {
                 "EN": "No Stylus"
@@ -7578,6 +7756,19 @@
             },
             "sdReader": {
               "present": 1
+            },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": 2,
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": 1
@@ -7828,6 +8019,28 @@
               },
               "id": "SD_READER",
               "type": 16
+            },
+            "soc": {
+              "description": {
+                "EN": "Default SoC"
+              },
+              "hardwareFeature": {
+                "soc": {
+                  "arcMediaCodecsSuffix": "mainstream",
+                  "hevcSupport": 2,
+                  "resourceConfig": {
+                    "ac": {
+                      "default-power-preferences": {
+                        "epp": {
+                          "power": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "id": "SOC",
+              "type": 28
             },
             "stylus": {
               "description": {
@@ -8005,6 +8218,19 @@
             "sdReader": {
               "present": 1
             },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": 2,
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
+            },
             "storage": {
               "storageType": 1
             },
@@ -8272,6 +8498,28 @@
               "id": "SD_READER",
               "type": 16
             },
+            "soc": {
+              "description": {
+                "EN": "Default SoC"
+              },
+              "hardwareFeature": {
+                "soc": {
+                  "arcMediaCodecsSuffix": "mainstream",
+                  "hevcSupport": 2,
+                  "resourceConfig": {
+                    "ac": {
+                      "default-power-preferences": {
+                        "epp": {
+                          "power": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "id": "SOC",
+              "type": 28
+            },
             "stylus": {
               "description": {
                 "EN": "Default stylus"
@@ -8447,6 +8695,19 @@
             },
             "sdReader": {
               "present": 1
+            },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": 2,
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": 1
@@ -8722,6 +8983,28 @@
               },
               "id": "SD_READER",
               "type": 16
+            },
+            "soc": {
+              "description": {
+                "EN": "Default SoC"
+              },
+              "hardwareFeature": {
+                "soc": {
+                  "arcMediaCodecsSuffix": "mainstream",
+                  "hevcSupport": 2,
+                  "resourceConfig": {
+                    "ac": {
+                      "default-power-preferences": {
+                        "epp": {
+                          "power": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "id": "SOC",
+              "type": 28
             },
             "stylus": {
               "description": {

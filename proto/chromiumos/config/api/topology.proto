@@ -8,6 +8,7 @@ package chromiumos.config.api;
 
 import "chromiumos/config/api/component.proto";
 import "chromiumos/config/api/proximity_config.proto";
+import "chromiumos/config/api/resource_config.proto";
 import "chromiumos/config/api/wifi_config.proto";
 import "google/protobuf/wrappers.proto";
 
@@ -891,6 +892,7 @@ message HardwareFeatures {
     repeated Component.Soc.Vulnerability vulnerabilities = 2;
     string arc_media_codecs_suffix = 3;
     Present hevc_support = 4;
+    ResourceConfig resource_config = 5;
   };
 
   DisplayPortConverter dp_converter = 33;

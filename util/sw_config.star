@@ -46,8 +46,8 @@ load(
     nnpalm_pb = "chromiumos.config.api.software",
 )
 load(
-    "@proto//chromiumos/config/api/software/resource_config.proto",
-    resource_pb = "chromiumos.config.api.software",
+    "@proto//chromiumos/config/api/resource_config.proto",
+    resource_pb = "chromiumos.config.api",
 )
 load(
     "@proto//chromiumos/config/api/wifi_config.proto",
@@ -472,7 +472,7 @@ def _create_cpu_offline_smt():
 def _create_cpu_offline_half():
     """Builds a cpu offline half policy CpuOfflinePreference proto"""
     return resource_pb.ResourceConfig.CpuOfflinePreference(
-       half = resource_pb.ResourceConfig.CpuOfflineHalf(),
+        half = resource_pb.ResourceConfig.CpuOfflineHalf(),
     )
 
 def _create_ath10k_power_chain(limit_2g, limit_5g):

@@ -11,6 +11,7 @@ import "chromiumos/config/api/design.proto";
 import "chromiumos/config/api/design_id.proto";
 import "chromiumos/config/api/device_brand_id.proto";
 import "chromiumos/config/api/program_id.proto";
+import "chromiumos/config/api/resource_config.proto";
 import "chromiumos/config/api/topology.proto";
 import "chromiumos/config/public_replication/public_replication.proto";
 
@@ -82,7 +83,7 @@ message Program {
   // set for most programs.
   string mosys_platform_name = 10;
 
-  // Next ID: 8
+  // Next ID: 11
   message Platform {
     enum Arch {
       ARCH_UNKNOWN = 0;
@@ -184,6 +185,8 @@ message Program {
     ArcSettings arc_settings = 8;
 
     HardwareFeatures.Present hevc_support = 9;
+
+    ResourceConfig resource_config = 10;
   }
   Platform platform = 11;
 

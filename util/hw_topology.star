@@ -1578,12 +1578,13 @@ def _create_detachable_base(
         hardware_feature = hw_features,
     )
 
-def _create_soc(id, description, fw_configs = [], hevc_support = None, arc_media_codecs_suffix = None):
+def _create_soc(id, description, fw_configs = [], hevc_support = None, arc_media_codecs_suffix = None, resource = None):
     """Builds a Topology proto for soc."""
     hw_features = _HW_FEAT()
 
     hw_features.soc.arc_media_codecs_suffix = arc_media_codecs_suffix
     hw_features.soc.hevc_support = _bool_to_present(hevc_support)
+    hw_features.soc.resource_config = resource
 
     _accumulate_fw_configs(hw_features, fw_configs)
 

@@ -8,6 +8,7 @@ motherboard_usb|MOTHERBOARD_USB
 non_volatile_storage|NON_VOLATILE_STORAGE
 power_button|SCREEN_LEFT_POWER_BUTTON
 sd_reader|SD_READER
+soc|SOC
 thermal|THERMAL
 volume_button|SCREEN_RIGHT_VOLUME_BUTTON
 wifi|WIFI

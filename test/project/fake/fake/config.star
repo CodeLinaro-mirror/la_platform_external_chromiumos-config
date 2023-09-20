@@ -207,6 +207,13 @@ _SOC = hw_topo.create_soc(
     "Default SoC",
     arc_media_codecs_suffix = "mainstream",
     hevc_support = False,
+    resource = sc.create_resource(
+        ac = sc.create_power_source_preference(
+            default = sc.create_power_preference(
+                epp = sc.create_power_epp(),
+            ),
+        ),
+    ),
 )
 
 _BL_KEYBOARD = hw_topo.create_keyboard(
@@ -1170,6 +1177,25 @@ design.append_configs(
             "Default proximity_sensor",
             proximity_config = hw_topo.create_activity_proximity(hw_topo.create_proximity_location(hw_topo.proximity_sensor_radio_type.CELLULAR)),
         ),
+        soc = hw_topo.create_soc(
+            "SPECIAL_SOC",
+            "Non-default SoC",
+            resource = sc.create_resource(
+                ac = sc.create_power_source_preference(
+                    default = sc.create_power_preference(
+                        epp = sc.create_performance_epp(),
+                    ),
+                    battery_saver = sc.create_power_preference(
+                        cpu_offline = sc.create_cpu_offline_smt(),
+                    ),
+                ),
+                dc = sc.create_power_source_preference(
+                    battery_saver = sc.create_power_preference(
+                        cpu_offline = sc.create_cpu_offline_half(),
+                    ),
+                ),
+            ),
+        ),
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(
@@ -1782,6 +1808,7 @@ _DESIGN_E = design.create_design_with_configs(
         stylus = [_NO_STYLUS, _STYLUS],
         proximity_sensor = [_NO_PROXIMITY_SENSOR, _PROXIMITY_SENSOR],
         thermal = _THERMAL,
+        soc = _SOC,
     ),
     bluetooth = _SC_BLUETOOTH,
     power = _SC_POWER,

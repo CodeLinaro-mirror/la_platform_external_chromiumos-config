@@ -239,6 +239,75 @@
           "project": "fake_ref_design"
         },
         "regulatory-label": "fake_regulatory_label",
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "rmad": {
           "enabled": true,
           "has-cbi": true,
@@ -541,6 +610,75 @@
           "project": "fake_ref_design"
         },
         "regulatory-label": "fake_regulatory_label",
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -826,6 +964,75 @@
           "project": "fake_ref_design"
         },
         "regulatory-label": "fake_regulatory_label",
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -1153,6 +1360,9 @@
         "resource": {
           "ac": {
             "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
               "epp": {
                 "balance-performance": {}
               },
@@ -1280,6 +1490,9 @@
               }
             },
             "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
               "epp": {
                 "balance-power": {}
               },
@@ -1540,6 +1753,75 @@
         "pvs": {
           "program": "fake_program",
           "project": "project_b"
+        },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
         },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
@@ -1808,6 +2090,75 @@
         "pvs": {
           "program": "fake_program",
           "project": "project_b"
+        },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
         },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
@@ -2108,6 +2459,75 @@
           "program": "fake_program",
           "project": "project_b"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -2385,6 +2805,75 @@
           "program": "fake_program",
           "project": "project_c"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -2648,6 +3137,75 @@
           "program": "fake_program",
           "project": "project_d"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -2760,12 +3318,12 @@
             "system-path": "/etc/hardware_features_4c6b9ba2.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -2936,6 +3494,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -2987,8 +3614,10 @@
           ]
         },
         "ui": {
+          "ash-disabled-features": [
+            "PlatformHEVCDecoderSupport"
+          ],
           "ash-enabled-features": [
-            "PlatformHEVCDecoderSupport",
             "SeamlessRefreshRateSwitching"
           ],
           "extra-ash-flags": [
@@ -3019,12 +3648,12 @@
             "system-path": "/etc/hardware_features_a08a77e4.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -3183,6 +3812,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -3234,7 +3932,7 @@
           ]
         },
         "ui": {
-          "ash-enabled-features": [
+          "ash-disabled-features": [
             "PlatformHEVCDecoderSupport"
           ],
           "extra-ash-flags": [
@@ -3266,12 +3964,12 @@
             "system-path": "/etc/hardware_features_4c6b9ba2.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -3442,6 +4140,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -3493,8 +4260,10 @@
           ]
         },
         "ui": {
+          "ash-disabled-features": [
+            "PlatformHEVCDecoderSupport"
+          ],
           "ash-enabled-features": [
-            "PlatformHEVCDecoderSupport",
             "SeamlessRefreshRateSwitching"
           ],
           "extra-ash-flags": [
@@ -3525,12 +4294,12 @@
             "system-path": "/etc/hardware_features_a08a77e4.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -3689,6 +4458,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -3740,7 +4578,7 @@
           ]
         },
         "ui": {
-          "ash-enabled-features": [
+          "ash-disabled-features": [
             "PlatformHEVCDecoderSupport"
           ],
           "extra-ash-flags": [
@@ -3772,12 +4610,12 @@
             "system-path": "/etc/hardware_features_a08a77e4.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -3944,6 +4782,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -3995,7 +4902,7 @@
           ]
         },
         "ui": {
-          "ash-enabled-features": [
+          "ash-disabled-features": [
             "PlatformHEVCDecoderSupport"
           ],
           "extra-ash-flags": [
@@ -4027,12 +4934,12 @@
             "system-path": "/etc/hardware_features_a08a77e4.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -4199,6 +5106,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -4250,7 +5226,7 @@
           ]
         },
         "ui": {
-          "ash-enabled-features": [
+          "ash-disabled-features": [
             "PlatformHEVCDecoderSupport"
           ],
           "extra-ash-flags": [
@@ -4282,12 +5258,12 @@
             "system-path": "/etc/hardware_features_4c6b9ba2.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -4459,6 +5435,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -4510,8 +5555,10 @@
           ]
         },
         "ui": {
+          "ash-disabled-features": [
+            "PlatformHEVCDecoderSupport"
+          ],
           "ash-enabled-features": [
-            "PlatformHEVCDecoderSupport",
             "SeamlessRefreshRateSwitching"
           ],
           "extra-ash-flags": [
@@ -4542,12 +5589,12 @@
             "system-path": "/etc/hardware_features_a08a77e4.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -4707,6 +5754,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -4758,7 +5874,7 @@
           ]
         },
         "ui": {
-          "ash-enabled-features": [
+          "ash-disabled-features": [
             "PlatformHEVCDecoderSupport"
           ],
           "extra-ash-flags": [
@@ -4790,12 +5906,12 @@
             "system-path": "/etc/hardware_features_4c6b9ba2.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -4967,6 +6083,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -5018,8 +6203,10 @@
           ]
         },
         "ui": {
+          "ash-disabled-features": [
+            "PlatformHEVCDecoderSupport"
+          ],
           "ash-enabled-features": [
-            "PlatformHEVCDecoderSupport",
             "SeamlessRefreshRateSwitching"
           ],
           "extra-ash-flags": [
@@ -5050,12 +6237,12 @@
             "system-path": "/etc/hardware_features_a08a77e4.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -5215,6 +6402,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -5266,7 +6522,7 @@
           ]
         },
         "ui": {
-          "ash-enabled-features": [
+          "ash-disabled-features": [
             "PlatformHEVCDecoderSupport"
           ],
           "extra-ash-flags": [
@@ -5298,12 +6554,12 @@
             "system-path": "/etc/hardware_features_a08a77e4.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -5471,6 +6727,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -5522,7 +6847,7 @@
           ]
         },
         "ui": {
-          "ash-enabled-features": [
+          "ash-disabled-features": [
             "PlatformHEVCDecoderSupport"
           ],
           "extra-ash-flags": [
@@ -5554,12 +6879,12 @@
             "system-path": "/etc/hardware_features_a08a77e4.xml"
           },
           "media-codecs": {
-            "build-path": "media_codecs_c2.xml",
-            "system-path": "/etc/media_codecs_c2.xml"
+            "build-path": "media_codecs_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_c2_mainstream.xml"
           },
           "media-codecs-performance": {
-            "build-path": "media_codecs_performance_c2.xml",
-            "system-path": "/etc/media_codecs_performance_c2.xml"
+            "build-path": "media_codecs_performance_c2_mainstream.xml",
+            "system-path": "/etc/media_codecs_performance_c2_mainstream.xml"
           },
           "media-profiles": {
             "build-path": "fake/sw_build_config/platform/chromeos-config/generated/arc/media_profiles_2e9050ac.xml",
@@ -5727,6 +7052,75 @@
           "program": "fake_program",
           "project": "project_e"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -5778,7 +7172,7 @@
           ]
         },
         "ui": {
-          "ash-enabled-features": [
+          "ash-disabled-features": [
             "PlatformHEVCDecoderSupport"
           ],
           "extra-ash-flags": [
@@ -5979,6 +7373,75 @@
         "pvs": {
           "program": "fake_program",
           "project": "project_wl"
+        },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
         },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
@@ -6239,6 +7702,75 @@
           "program": "fake_program",
           "project": "project_wl"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -6497,6 +8029,75 @@
         "pvs": {
           "program": "fake_program",
           "project": "project_wl"
+        },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
         },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
@@ -6757,6 +8358,75 @@
           "program": "fake_program",
           "project": "project_wl"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -7006,6 +8676,75 @@
           "program": "fake_program",
           "project": "project_rebrand"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -7235,6 +8974,75 @@
           "program": "fake_program",
           "project": "project_box"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -7459,6 +9267,75 @@
           "program": "fake_program",
           "project": "project_box"
         },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -7682,6 +9559,75 @@
         "pvs": {
           "program": "fake_program",
           "project": "project_box"
+        },
+        "resource": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {}
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1,
+                  "sampling-rate-ms": 0
+                }
+              }
+            }
+          }
         },
         "scheduler-tune": {
           "boost-arcvm": 0.5,

@@ -7,6 +7,7 @@ load("//config/util/design.star", "design")
 load("//config/util/hw_features.star", "hw_feat")
 load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/program.star", program_util = "program")
+load("//config/util/sw_config.star", sc = "sw_config")
 
 _FAKE_SOC = comp.create_soc_model(
     family = comp.create_soc_family(name = "FAKE_FAMILY"),
@@ -115,6 +116,40 @@ _PLATFORM = program_util.create_platform(
     boost_top_app = 60,
     arc_media_codecs_suffix = "",
     hevc_support = True,
+    resource = sc.create_resource(
+        ac = sc.create_power_source_preference(
+            default = sc.create_power_preference(
+                governor = sc.create_powersave_governor(),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            arcvm_gaming = sc.create_power_preference(
+                governor = sc.create_performance_governor(),
+                epp = sc.create_performance_epp(),
+                cpu_offline = sc.create_cpu_offline_smt(),
+            ),
+            battery_saver = sc.create_power_preference(
+                governor = sc.create_powersave_governor(),
+                epp = sc.create_balance_power_epp(),
+                cpu_offline = sc.create_cpu_offline_small_core(),
+            ),
+        ),
+        dc = sc.create_power_source_preference(
+            default = sc.create_power_preference(
+                governor = sc.create_powersave_governor(),
+                epp = sc.create_balance_performance_epp(),
+            ),
+            web_rtc = sc.create_power_preference(
+                governor = sc.create_ondemand_governor(1),
+                epp = sc.create_default_epp(),
+                cpu_offline = sc.create_cpu_offline_half(),
+            ),
+            battery_saver = sc.create_power_preference(
+                governor = sc.create_powersave_governor(),
+                epp = sc.create_power_epp(),
+                cpu_offline = sc.create_cpu_offline_small_core(),
+            ),
+        ),
+    ),
 )
 
 _HDMI_AUDIO_CARD = hw_topo.create_audio_card_config(
