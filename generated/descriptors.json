@@ -6573,6 +6573,14 @@
                   "number": 4,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.TrustedPlatformModule.GscFirmwareName"
+                },
+                {
+                  "jsonName": "enterpriseRollbackSpace",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "enterprise_rollback_space",
+                  "number": 5,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "TrustedPlatformModule"

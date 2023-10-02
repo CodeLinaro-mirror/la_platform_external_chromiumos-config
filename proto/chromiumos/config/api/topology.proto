@@ -811,6 +811,9 @@ message HardwareFeatures {
       GSC_TI50 = 2;
     }
     GscFirmwareName gsc_fw_name = 4;
+
+    // Whether the TPM has NVRAM space used for enterprise rollback.
+    Present enterprise_rollback_space = 5;
   }
   TrustedPlatformModule trusted_platform_module = 25;
 
