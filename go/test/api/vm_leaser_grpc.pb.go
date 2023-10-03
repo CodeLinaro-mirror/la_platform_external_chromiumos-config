@@ -30,6 +30,8 @@ type VMLeaserServiceClient interface {
 	ExtendLease(ctx context.Context, in *ExtendLeaseRequest, opts ...grpc.CallOption) (*ExtendLeaseResponse, error)
 	// Lists the current VM leases.
 	ListLeases(ctx context.Context, in *ListLeasesRequest, opts ...grpc.CallOption) (*ListLeasesResponse, error)
+	// Imports a VM custom image.
+	ImportImage(ctx context.Context, in *ImportImageRequest, opts ...grpc.CallOption) (*ImportImageResponse, error)
 }
 
 type vMLeaserServiceClient struct {
@@ -76,6 +78,15 @@ func (c *vMLeaserServiceClient) ListLeases(ctx context.Context, in *ListLeasesRe
 	return out, nil
 }
 
+func (c *vMLeaserServiceClient) ImportImage(ctx context.Context, in *ImportImageRequest, opts ...grpc.CallOption) (*ImportImageResponse, error) {
+	out := new(ImportImageResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.VMLeaserService/ImportImage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VMLeaserServiceServer is the server API for VMLeaserService service.
 // All implementations should embed UnimplementedVMLeaserServiceServer
 // for forward compatibility
@@ -88,6 +99,8 @@ type VMLeaserServiceServer interface {
 	ExtendLease(context.Context, *ExtendLeaseRequest) (*ExtendLeaseResponse, error)
 	// Lists the current VM leases.
 	ListLeases(context.Context, *ListLeasesRequest) (*ListLeasesResponse, error)
+	// Imports a VM custom image.
+	ImportImage(context.Context, *ImportImageRequest) (*ImportImageResponse, error)
 }
 
 // UnimplementedVMLeaserServiceServer should be embedded to have forward compatible implementations.
@@ -105,6 +118,9 @@ func (UnimplementedVMLeaserServiceServer) ExtendLease(context.Context, *ExtendLe
 }
 func (UnimplementedVMLeaserServiceServer) ListLeases(context.Context, *ListLeasesRequest) (*ListLeasesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListLeases not implemented")
+}
+func (UnimplementedVMLeaserServiceServer) ImportImage(context.Context, *ImportImageRequest) (*ImportImageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportImage not implemented")
 }
 
 // UnsafeVMLeaserServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -190,6 +206,24 @@ func _VMLeaserService_ListLeases_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VMLeaserService_ImportImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ImportImageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VMLeaserServiceServer).ImportImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.VMLeaserService/ImportImage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VMLeaserServiceServer).ImportImage(ctx, req.(*ImportImageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VMLeaserService_ServiceDesc is the grpc.ServiceDesc for VMLeaserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -212,6 +246,10 @@ var VMLeaserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListLeases",
 			Handler:    _VMLeaserService_ListLeases_Handler,
+		},
+		{
+			MethodName: "ImportImage",
+			Handler:    _VMLeaserService_ImportImage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

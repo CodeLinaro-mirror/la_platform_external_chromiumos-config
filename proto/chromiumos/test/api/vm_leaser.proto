@@ -20,6 +20,8 @@ service VMLeaserService {
   rpc ExtendLease(ExtendLeaseRequest) returns (ExtendLeaseResponse) {};
   // Lists the current VM leases.
   rpc ListLeases(ListLeasesRequest) returns (ListLeasesResponse) {};
+  // Imports a VM custom image.
+  rpc ImportImage(ImportImageRequest) returns (ImportImageResponse) {};
 }
 
 message LeaseVMRequest {
@@ -54,6 +56,10 @@ message LeaseVMRequest {
 
   // The client that is calling VM Leaser for a VM host.
   VMTestingClient testing_client = 6;
+
+  // Optional labels added to the VM. Useful for filtering.
+  // Requirements: https://cloud.google.com/compute/docs/labeling-resources
+  map<string, string> labels = 7;
 }
 
 // NEXT TAG: 13
@@ -101,6 +107,7 @@ enum VMType {
 enum VMTestingClient {
   VM_TESTING_CLIENT_UNSPECIFIED = 0;
   VM_TESTING_CLIENT_CHROMEOS = 1;
+  VM_TESTING_CLIENT_CROSFLEET = 2;
 }
 
 message LeaseVMResponse {
@@ -183,4 +190,14 @@ message ListLeasesResponse {
   // A token, which can be sent as `page_token` to retrieve the next page. If
   // this field is omitted, there are no subsequent pages.
   string next_page_token = 2;
+}
+
+message ImportImageRequest {
+  // Build path of the image, e.g. betty-arc-r-release/R119-15626.0.0
+  string image_path = 1;
+}
+
+message ImportImageResponse {
+  // Name of the imported custom image.
+  string image_name = 1;
 }
