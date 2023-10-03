@@ -19730,9 +19730,97 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AutotestExecutionMetadata.Arg"
+            },
+            {
+              "jsonName": "resultsSubDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "results_sub_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "AutotestExecutionMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "flag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "flag",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Arg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "flag",
+              "label": "LABEL_OPTIONAL",
+              "name": "flag",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Arg"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Arg"
+            }
+          ],
+          "name": "TastExecutionMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/test_execution_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "google/protobuf/any.proto",
         "chromiumos/test/api/test_case_result.proto",
+        "chromiumos/test/api/test_execution_metadata.proto",
         "chromiumos/test/api/test_suite.proto",
         "chromiumos/test/lab/api/dut.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto"
@@ -19779,6 +19867,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Arg"
             }
           ],
           "name": "CrosTestRequest",
@@ -22159,6 +22255,13 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.KeyValue"
+            },
+            {
+              "jsonName": "variant",
+              "label": "LABEL_OPTIONAL",
+              "name": "variant",
+              "number": 4,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "LegacySW"
@@ -22187,6 +22290,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "variant",
               "number": 3,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             },
             {
@@ -26601,93 +26707,6 @@
           "name": "ServodService"
         }
       ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "args",
-              "label": "LABEL_REPEATED",
-              "name": "args",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.AutotestExecutionMetadata.Arg"
-            },
-            {
-              "jsonName": "resultsSubDir",
-              "label": "LABEL_OPTIONAL",
-              "name": "results_sub_dir",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "AutotestExecutionMetadata",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "flag",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "flag",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Arg"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "flag",
-              "label": "LABEL_OPTIONAL",
-              "name": "flag",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "value",
-              "label": "LABEL_OPTIONAL",
-              "name": "value",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "Arg"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "args",
-              "label": "LABEL_REPEATED",
-              "name": "args",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Arg"
-            }
-          ],
-          "name": "TastExecutionMetadata"
-        }
-      ],
-      "name": "chromiumos/test/api/test_execution_metadata.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
       "syntax": "proto3"
     },
     {

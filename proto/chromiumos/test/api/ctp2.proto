@@ -75,6 +75,8 @@ message LegacySW {
   string build = 1;
   string gcs_path = 2;
   repeated KeyValue key_values = 3;
+  string variant = 4;
+
 }
 
 // DDDSW is not yet defined.
@@ -83,7 +85,8 @@ message DDDSW {}
 message LegacyHW {
   string board = 1;
   string model = 2;
-  string variant = 3;
+  // In the process of deprecation. Do not set.
+  string variant = 3 [deprecated = true];
   MultiDut multi_dut = 4;
 }
 
