@@ -17,6 +17,7 @@ proto_library(
         "portage.proto",
         "software_attribute.proto",
         "software_bundle.proto",
+        "subtools.proto",
         "system_image.proto",
         "test.proto",
     ],

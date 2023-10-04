@@ -28,6 +28,7 @@ proto_library(
         "program.proto",
         "program_id.proto",
         "proximity_config.proto",
+        "resource_config.proto",
         "topology.proto",
         "wifi_config.proto",
     ],

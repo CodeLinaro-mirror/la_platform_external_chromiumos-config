@@ -16,7 +16,6 @@ proto_library(
         "health_config.proto",
         "nnpalm_config.proto",
         "power_config.proto",
-        "resource_config.proto",
         "rma_config.proto",
         "software_config.proto",
         "ui_config.proto",
