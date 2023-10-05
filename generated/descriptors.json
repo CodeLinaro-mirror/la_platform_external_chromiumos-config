@@ -24075,6 +24075,14 @@
               "name": "gce_region",
               "number": 4,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "expirationTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "expiration_time",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
             }
           ],
           "name": "VM"
