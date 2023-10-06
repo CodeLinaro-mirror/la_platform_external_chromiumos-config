@@ -325,9 +325,3 @@ Changes that require new topology
 Changes that require new topology
 
 * Supports number of fan
-
-## Firmware Features
-
-Changes that require new topology
-
-* Supports a functional alternative-firmware (altfw) mode

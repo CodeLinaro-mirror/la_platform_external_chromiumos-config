@@ -73,7 +73,6 @@ message Topology {
     UWB = 36;
     DETACHABLE_BASE = 37;
     FAN = 38;
-    FIRMWARE_FEATURES = 39;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -1057,15 +1056,4 @@ message HardwareFeatures {
     // The number of fan in the device.
     uint32 fan_count = 1;
   }
-
-  // Describes features of the firmware, not part of CBI
-  FirmwareFeatures firmware_features = 51;
-  message FirmwareFeatures {
-    // Describes the altfw feature on the DUT.
-    AlternativeFirmware alternative_firmware = 7;
-    message AlternativeFirmware {
-      // Altfw is functional on the DUT.
-      Present present = 1;
-    };
-  };
 }

@@ -163,8 +163,4 @@ message HardwareTopology {
   // Specify the Fan topology
   // See ./hardware_topology.md#fan for more information.
   Topology fan = 36;
-
-  // Specify the FirmwareFeatures topology
-  Topology firmware_features = 37;
-  // See ./hardware_topology.md#firmware_features for more information.
 }

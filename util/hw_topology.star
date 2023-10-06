@@ -1627,21 +1627,6 @@ def _create_battery(no_battery_boot_supported = False):
         hardware_feature = hw_features,
     )
 
-def _create_firmware_features(altfw_present = False):
-    """Builds a Topology proto for FirmwareFeatures
-
-    Args:
-        altfw_present: flag indicating whether altfw is present.
-    """
-    hw_features = _HW_FEAT()
-    hw_features.firmware_features.alternative_firmware.present = _bool_to_present(altfw_present)
-
-    return topo_pb.Topology(
-        id = "Default",
-        type = topo_pb.Topology.FIRMWARE_FEATURES,
-        hardware_feature = hw_features,
-    )
-
 def _create_proximity_location(type, modifier = None):
     return prox_pb.ProximityConfig.Location(
         radio_type = type,
@@ -1727,7 +1712,6 @@ def _create_hardware_topology(
         camera = None,
         accelerometer_gyroscope_magnetometer = None,
         fingerprint = None,
-        firmware_features = None,
         proximity_sensor = None,
         daughter_board = None,
         non_volatile_storage = None,
@@ -1862,9 +1846,6 @@ def _create_hardware_topology(
     if fan and fan.type != topo_pb.Topology.FAN:
         fail("Invalid fan type")
 
-    if firmware_features and firmware_features.type != topo_pb.Topology.FIRMWARE_FEATURES:
-        fail("Invalid firmware_features type")
-
     return hw_topo_pb.HardwareTopology(
         screen = screen,
         form_factor = form_factor,
@@ -1901,7 +1882,6 @@ def _create_hardware_topology(
         detachable_base = detachable_base,
         soc = soc,
         fan = fan,
-        firmware_features = firmware_features,
     )
 
 def _accumulate_usbc(existing_usbc, new_usbc):
@@ -2237,7 +2217,6 @@ hw_topo = struct(
     create_dp_converter = _create_dp_converter,
     create_poe = _create_poe,
     create_battery = _create_battery,
-    create_firmware_features = _create_firmware_features,
     create_dgpu = _create_dgpu,
     create_uwb = _create_uwb,
     create_detachable_base = _create_detachable_base,

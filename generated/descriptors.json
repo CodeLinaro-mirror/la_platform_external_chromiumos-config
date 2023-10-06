@@ -4153,10 +4153,6 @@
                 {
                   "name": "FAN",
                   "number": 38
-                },
-                {
-                  "name": "FIRMWARE_FEATURES",
-                  "number": 39
                 }
               ]
             }
@@ -4739,14 +4735,6 @@
               "number": 50,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Fan"
-            },
-            {
-              "jsonName": "firmwareFeatures",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_features",
-              "number": 51,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.HardwareFeatures.FirmwareFeatures"
             }
           ],
           "name": "HardwareFeatures",
@@ -7148,34 +7136,6 @@
                 }
               ],
               "name": "Fan"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "alternativeFirmware",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "alternative_firmware",
-                  "number": 7,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.HardwareFeatures.FirmwareFeatures.AlternativeFirmware"
-                }
-              ],
-              "name": "FirmwareFeatures",
-              "nestedType": [
-                {
-                  "field": [
-                    {
-                      "jsonName": "present",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "present",
-                      "number": 1,
-                      "type": "TYPE_ENUM",
-                      "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
-                    }
-                  ],
-                  "name": "AlternativeFirmware"
-                }
-              ]
             }
           ]
         }
@@ -7483,14 +7443,6 @@
               "label": "LABEL_OPTIONAL",
               "name": "fan",
               "number": 36,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.Topology"
-            },
-            {
-              "jsonName": "firmwareFeatures",
-              "label": "LABEL_OPTIONAL",
-              "name": "firmware_features",
-              "number": 37,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }
