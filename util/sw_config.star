@@ -38,6 +38,10 @@ load(
     health_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/alt_firmware_config.proto",
+    alt_firmware_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/config/api/software/rma_config.proto",
     rma_pb = "chromiumos.config.api.software",
 )
@@ -269,6 +273,17 @@ def _create_health(
         ),
         routines = routines,
     )
+
+def _create_alt_firmware(has_altfw = None):
+    """Builds an AltFirmwareConfig proto."""
+    alt_firmware_config = None
+
+    if has_altfw != None:
+        alt_firmware_config = alt_firmware_pb.AltFirmwareConfig(
+            has_alt_firmware = has_altfw,
+        )
+
+    return alt_firmware_config
 
 def _create_ssfc_probeable_component(
         identifier = None,
@@ -1090,6 +1105,7 @@ sw_config = struct(
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
     create_camera = _create_camera,
+    create_alt_firmware = _create_alt_firmware,
     create_fw_version = _create_fw_version,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,

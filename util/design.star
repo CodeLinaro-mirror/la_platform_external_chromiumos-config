@@ -72,6 +72,7 @@ def _append_configs(
         power = None,
         resource = None,
         audio = None,
+        alt_firmware = None,
         wifi = None,
         camera = None,
         health = None,
@@ -112,6 +113,7 @@ def _append_configs(
         resource: A ResourceConfig to be used in the SoftwareConfig.
         audio: An AudioConfig to be used in the SoftwareConfig. Can be either a
             single AudioConfig or a list of AudioConfigs.
+        alt_firmware: An AlternativeFirmware to be used in the SoftwareConfig.
         wifi: A WifiConfig to be used in the SoftwareConfig.
         camera: A CameraConfig to be used in the SoftwareConfig.
         health: A HealthConfig to be used in the SoftwareConfig.
@@ -183,6 +185,7 @@ def _append_configs(
     sw_config.wifi_config = wifi
     sw_config.camera_config = camera
     sw_config.health_config = health
+    sw_config.alt_firmware_config = alt_firmware
     sw_config.nnpalm_config = nnpalm
     sw_config.ui_config = ui
     sw_config.usb_config = usb
