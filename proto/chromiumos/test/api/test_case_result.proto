@@ -18,6 +18,8 @@ import "chromiumos/test/api/test_case_metadata.proto";
 // Result of a single execution of a given TestCase.
 // NEXT TAG: 17
 message TestCaseResult {
+  reserved 15;
+
   // Unique ID of test case executed
   TestCase.Id test_case_id = 1;
 
@@ -38,8 +40,6 @@ message TestCaseResult {
     Skip skip = 7;
     // Set if test did not run.
     NotRun not_run = 8;
-    // Warn if the test emits a warning.
-    Warn warn = 15;
   }
 
   // Reason associated with status above to provide more information.
@@ -105,8 +105,5 @@ message TestCaseResult {
   }
 
   message NotRun {
-  }
-
-  message Warn {
   }
 }
