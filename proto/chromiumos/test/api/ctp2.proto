@@ -28,9 +28,13 @@ service GenericFilterService {
 }
 
 // CTPv2Request ...
+// next value = 8;
 message CTPv2Request {
   SuiteRequest suite_request = 1;
   repeated Targets targets = 2;
+  // TODO(b/305750675): Implement SchedulerTargets in CTPv2
+  // and deprecate old targets field above.
+  repeated ScheduleTargets schedule_targets = 7;
 
   repeated CTPFilter karbon_filters = 3;
   repeated CTPFilter koffee_filters = 4;
@@ -50,6 +54,12 @@ message SuiteRequest {
 message KeyValue {
   string key = 1;
   string value = 2;
+}
+
+// ScheduleTargets represents groups of targets for CTPv2.
+// Multi-DUT by design with targets length of 1 being single-dut.
+message ScheduleTargets {
+  repeated Targets targets = 1;
 }
 
 message Targets {
@@ -87,7 +97,8 @@ message LegacyHW {
   string model = 2;
   // In the process of deprecation. Do not set.
   string variant = 3 [deprecated = true];
-  MultiDut multi_dut = 4;
+  // In the process of deprecation. Do not set.
+  MultiDut multi_dut = 4 [deprecated = true];
 }
 
 message DDDHW{}
@@ -140,10 +151,18 @@ message SuiteInfo {
 }
 
 // Everything by CTPv2, less provision_info.
+// next value = 5;
 message SuiteMetadata {
   repeated TargetRequirements target_requirements = 1;
+  repeated ScheduleTargetRequirements schedule_target_requirements = 4;
   repeated string channels = 2;
   string pool = 3;
+}
+
+// ScheduleTargets represents groups of target requirements for CTPv2.
+// Multi-DUT by design with target requirements length of 1 being single-dut.
+message ScheduleTargetRequirements {
+  repeated TargetRequirements target_requirements = 1;
 }
 
 message TargetRequirements {

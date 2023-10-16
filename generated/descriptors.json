@@ -22112,6 +22112,14 @@
               "typeName": ".chromiumos.test.api.Targets"
             },
             {
+              "jsonName": "scheduleTargets",
+              "label": "LABEL_REPEATED",
+              "name": "schedule_targets",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ScheduleTargets"
+            },
+            {
               "jsonName": "karbonFilters",
               "label": "LABEL_REPEATED",
               "name": "karbon_filters",
@@ -22191,6 +22199,19 @@
             }
           ],
           "name": "KeyValue"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "targets",
+              "label": "LABEL_REPEATED",
+              "name": "targets",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Targets"
+            }
+          ],
+          "name": "ScheduleTargets"
         },
         {
           "field": [
@@ -22337,6 +22358,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "multi_dut",
               "number": 4,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.MultiDut"
             }
@@ -22507,6 +22531,14 @@
               "typeName": ".chromiumos.test.api.TargetRequirements"
             },
             {
+              "jsonName": "scheduleTargetRequirements",
+              "label": "LABEL_REPEATED",
+              "name": "schedule_target_requirements",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ScheduleTargetRequirements"
+            },
+            {
               "jsonName": "channels",
               "label": "LABEL_REPEATED",
               "name": "channels",
@@ -22522,6 +22554,19 @@
             }
           ],
           "name": "SuiteMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "targetRequirements",
+              "label": "LABEL_REPEATED",
+              "name": "target_requirements",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TargetRequirements"
+            }
+          ],
+          "name": "ScheduleTargetRequirements"
         },
         {
           "field": [
