@@ -254,7 +254,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -275,7 +277,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -625,7 +629,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -646,7 +652,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -979,7 +987,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -1000,7 +1010,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -2106,7 +2118,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -2127,7 +2141,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -2474,7 +2490,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -2495,7 +2513,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -2820,7 +2840,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -2841,7 +2863,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -3152,7 +3176,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -3173,7 +3199,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -3509,7 +3537,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -3530,7 +3560,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -3827,7 +3859,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -3848,7 +3882,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -4155,7 +4191,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -4176,7 +4214,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -4473,7 +4513,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -4494,7 +4536,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -4797,7 +4841,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -4818,7 +4864,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -5121,7 +5169,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -5142,7 +5192,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -5450,7 +5502,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -5471,7 +5525,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -5769,7 +5825,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -5790,7 +5848,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -6098,7 +6158,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -6119,7 +6181,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -6417,7 +6481,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -6438,7 +6504,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -6742,7 +6810,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -6763,7 +6833,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -7067,7 +7139,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -7088,7 +7162,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -7389,7 +7465,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -7410,7 +7488,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -7717,7 +7797,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -7738,7 +7820,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -8045,7 +8129,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -8066,7 +8152,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -8373,7 +8461,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -8394,7 +8484,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -8691,7 +8783,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -8712,7 +8806,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -8989,7 +9085,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -9010,7 +9108,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -9282,7 +9382,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -9303,7 +9405,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}
@@ -9575,7 +9679,9 @@
             },
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "balance-power": {}
@@ -9596,7 +9702,9 @@
           "dc": {
             "battery-saver-power-preferences": {
               "cpu-offline": {
-                "small-core": {}
+                "small-core": {
+                  "min-active-threads": 4
+                }
               },
               "epp": {
                 "power": {}

@@ -130,7 +130,9 @@ _PLATFORM = program_util.create_platform(
             battery_saver = sc.create_power_preference(
                 governor = sc.create_powersave_governor(),
                 epp = sc.create_balance_power_epp(),
-                cpu_offline = sc.create_cpu_offline_small_core(),
+                cpu_offline = sc.create_cpu_offline_small_core(
+                    min_active_threads = 4,
+                ),
             ),
         ),
         dc = sc.create_power_source_preference(
@@ -146,7 +148,9 @@ _PLATFORM = program_util.create_platform(
             battery_saver = sc.create_power_preference(
                 governor = sc.create_powersave_governor(),
                 epp = sc.create_power_epp(),
-                cpu_offline = sc.create_cpu_offline_small_core(),
+                cpu_offline = sc.create_cpu_offline_small_core(
+                    min_active_threads = 4,
+                ),
             ),
         ),
     ),

@@ -78,11 +78,23 @@ message ResourceConfig {
     }
   }
 
-  message CpuOfflineSmallCore {}
+  message CpuOfflineSmallCore {
+    // The minimum number of online threads the device must have. If not set,
+    // resourced sets default to 2.
+    uint32 min_active_threads = 1 [json_name = "min-active-threads"];
+  }
 
-  message CpuOfflineSMT {}
+  message CpuOfflineSMT {
+    // The minimum number of online threads the device must have. If not set,
+    // resourced sets default to 2.
+    uint32 min_active_threads = 1 [json_name = "min-active-threads"];
+  }
 
-  message CpuOfflineHalf {}
+  message CpuOfflineHalf {
+    // The minimum number of online threads the device must have. If not set,
+    // resourced sets default to 2.
+    uint32 min_active_threads = 1 [json_name = "min-active-threads"];
+  }
 
   message CpuOfflinePreference {
     oneof cpu_offline {

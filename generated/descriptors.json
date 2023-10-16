@@ -2663,12 +2663,39 @@
               ]
             },
             {
+              "field": [
+                {
+                  "jsonName": "min-active-threads",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "min_active_threads",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                }
+              ],
               "name": "CpuOfflineSmallCore"
             },
             {
+              "field": [
+                {
+                  "jsonName": "min-active-threads",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "min_active_threads",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                }
+              ],
               "name": "CpuOfflineSMT"
             },
             {
+              "field": [
+                {
+                  "jsonName": "min-active-threads",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "min_active_threads",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                }
+              ],
               "name": "CpuOfflineHalf"
             },
             {

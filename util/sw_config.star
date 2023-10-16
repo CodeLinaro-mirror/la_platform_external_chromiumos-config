@@ -472,22 +472,28 @@ def _create_power_epp():
         power = resource_pb.ResourceConfig.PowerEpp(),
     )
 
-def _create_cpu_offline_small_core():
+def _create_cpu_offline_small_core(min_active_threads = None):
     """Builds a cpu offline small core policy CpuOfflinePreference proto"""
     return resource_pb.ResourceConfig.CpuOfflinePreference(
-        small_core = resource_pb.ResourceConfig.CpuOfflineSmallCore(),
+        small_core = resource_pb.ResourceConfig.CpuOfflineSmallCore(
+            min_active_threads = min_active_threads,
+        ),
     )
 
-def _create_cpu_offline_smt():
+def _create_cpu_offline_smt(min_active_threads = None):
     """Builds a cpu offline SMT policy CpuOfflinePreference proto"""
     return resource_pb.ResourceConfig.CpuOfflinePreference(
-        smt = resource_pb.ResourceConfig.CpuOfflineSMT(),
+        smt = resource_pb.ResourceConfig.CpuOfflineSMT(
+            min_active_threads = min_active_threads,
+        ),
     )
 
-def _create_cpu_offline_half():
+def _create_cpu_offline_half(min_active_threads = None):
     """Builds a cpu offline half policy CpuOfflinePreference proto"""
     return resource_pb.ResourceConfig.CpuOfflinePreference(
-        half = resource_pb.ResourceConfig.CpuOfflineHalf(),
+        half = resource_pb.ResourceConfig.CpuOfflineHalf(
+            min_active_threads = min_active_threads,
+        ),
     )
 
 def _create_ath10k_power_chain(limit_2g, limit_5g):
