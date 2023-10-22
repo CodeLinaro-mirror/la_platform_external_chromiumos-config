@@ -9568,6 +9568,23 @@
                   "number": 1
                 }
               ]
+            },
+            {
+              "name": "Change",
+              "value": [
+                {
+                  "name": "CHANGE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "CHANGE_BUILD_ID_OR_REVISION",
+                  "number": 1
+                },
+                {
+                  "name": "CHANGE_REVISION_ONLY",
+                  "number": 2
+                }
+              ]
             }
           ],
           "field": [
@@ -9609,6 +9626,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.SubtoolPackage.PathMapping"
+            },
+            {
+              "jsonName": "uploadTrigger",
+              "label": "LABEL_OPTIONAL",
+              "name": "upload_trigger",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.build.api.SubtoolPackage.Change"
             }
           ],
           "name": "SubtoolPackage",

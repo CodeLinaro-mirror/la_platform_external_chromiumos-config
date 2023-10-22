@@ -50,4 +50,20 @@ message SubtoolPackage {
     // candidates to match.
     optional string ebuild_filter = 4;
   }
+
+  // Describes how a bundled package could have changed from a prior bundle.
+  enum Change {
+    // Select the default change type configured in the subtools builder.
+    CHANGE_UNSPECIFIED = 0;
+
+    // The Build ID of any binary in the bundle has changed, or any file without
+    // a Build ID has changed, or the revision of any ebuild that contributed
+    // files to the bundle has changed.
+    CHANGE_BUILD_ID_OR_REVISION = 1;
+
+    // The revision of any ebuild contributing files to the bundle has changed.
+    CHANGE_REVISION_ONLY = 2;
+  }
+  // The type of change that will trigger a new upload.
+  Change upload_trigger = 6;
 }
