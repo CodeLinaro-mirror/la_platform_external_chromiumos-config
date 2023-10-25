@@ -738,7 +738,7 @@ message HardwareFeatures {
   Button volume_button = 22;
 
   // EmbeddedController properties
-  // Next Tag: 11
+  // Next Tag: 12
   message EmbeddedController {
     // Whether any kind of EC is present on the system.
     Present present = 1;
@@ -775,6 +775,10 @@ message HardwareFeatures {
 
     // Whether the EC supports memory dump host commands.
     Present feature_memory_dump_commands = 10;
+
+    // The extracted EC build config options
+    // E.g. CONFIG_DEBUG_ASSERT, CONFIG_PLATFORM_EC_BATTERY
+    map<string, Present> build_config = 11;
   }
   EmbeddedController embedded_controller = 24;
 

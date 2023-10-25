@@ -6498,9 +6498,42 @@
                   "number": 10,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "buildConfig",
+                  "label": "LABEL_REPEATED",
+                  "name": "build_config",
+                  "number": 11,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.EmbeddedController.BuildConfigEntry"
                 }
               ],
-              "name": "EmbeddedController"
+              "name": "EmbeddedController",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "key",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "key",
+                      "number": 1,
+                      "type": "TYPE_STRING"
+                    },
+                    {
+                      "jsonName": "value",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "value",
+                      "number": 2,
+                      "type": "TYPE_ENUM",
+                      "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                    }
+                  ],
+                  "name": "BuildConfigEntry",
+                  "options": {
+                    "mapEntry": true
+                  }
+                }
+              ]
             },
             {
               "enumType": [
