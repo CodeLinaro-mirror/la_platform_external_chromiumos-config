@@ -133,7 +133,7 @@ message TestRun {
 }
 
 // Captures test case information associated with a test run.
-// NEXT TAG: 9
+// NEXT TAG: 10
 message TestCaseInfo {
   // Metadata related to test case and execution context.
   chromiumos.test.api.TestCaseMetadata test_case_metadata = 1;
@@ -162,6 +162,10 @@ message TestCaseInfo {
 
   // List of email addresses to contact in case of test failures.
   repeated string contacts = 8;
+
+  // The name of the testplan, if one is associated
+  // Example: ltl_testplan
+  string test_plan_id = 9;
 }
 
 // Captures ChromeOS build information associated with a test run.

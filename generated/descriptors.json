@@ -25104,6 +25104,13 @@
               "name": "contacts",
               "number": 8,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "testPlanId",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_plan_id",
+              "number": 9,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "TestCaseInfo"
