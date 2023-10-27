@@ -1508,6 +1508,10 @@
                     {
                       "name": "SEAMLESS_REFRESH_RATE_SWITCHING",
                       "number": 2
+                    },
+                    {
+                      "name": "VARIABLE_REFRESH_RATE_AVAILABLE",
+                      "number": 3
                     }
                   ]
                 }

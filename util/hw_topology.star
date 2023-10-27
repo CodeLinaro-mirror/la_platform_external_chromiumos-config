@@ -254,7 +254,8 @@ def _create_screen(
         seamless_refresh_rate_switching = False,
         privacy_screen = False,
         connector_type = None,
-        rounded_corners = None):
+        rounded_corners = None,
+        variable_refresh_rate_available = False):
     """Builds a Topology proto for a screen."""
     hw_features = _HW_FEAT()
 
@@ -314,6 +315,9 @@ def _create_screen(
 
     if seamless_refresh_rate_switching:
         hw_features.screen.panel_properties.features.append(comp_pb.Component.DisplayPanel.SEAMLESS_REFRESH_RATE_SWITCHING)
+
+    if variable_refresh_rate_available:
+        hw_features.screen.panel_properties.features.append(comp_pb.Component.DisplayPanel.VARIABLE_REFRESH_RATE_AVAILABLE)
 
     return topo_pb.Topology(
         id = screen_id,

@@ -73,6 +73,7 @@ _SCREEN = hw_topo.create_screen(
     seamless_refresh_rate_switching = True,
     privacy_screen = False,
     rounded_corners = comp.create_rounded_corners(15),
+    variable_refresh_rate_available = True,
 )
 _TOUCHSCREEN = hw_topo.create_screen(
     id = "TOUCHSCREEN",
@@ -114,6 +115,7 @@ _PRIVACY_SCREEN = hw_topo.create_screen(
     ],
     seamless_refresh_rate_switching = True,
     privacy_screen = True,
+    variable_refresh_rate_available = False,
 )
 _HDMI = hw_topo.create_hdmi(
     id = "HDMI",
