@@ -9673,6 +9673,13 @@
                   "oneofIndex": 2,
                   "proto3Optional": true,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "opaqueData",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "opaque_data",
+                  "number": 5,
+                  "type": "TYPE_BOOL"
                 }
               ],
               "name": "PathMapping",

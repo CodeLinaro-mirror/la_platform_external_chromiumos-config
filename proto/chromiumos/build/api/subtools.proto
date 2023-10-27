@@ -49,6 +49,10 @@ message SubtoolPackage {
     // matched against `glob`.  If unspecified, all files in the chroot are
     // candidates to match.
     optional string ebuild_filter = 4;
+
+    // Whether to treat all entries in this PathMapping as "opaque" data files.
+    // There will be no attempt to discover and bundle any dependencies.
+    bool opaque_data = 5;
   }
 
   // Describes how a bundled package could have changed from a prior bundle.
