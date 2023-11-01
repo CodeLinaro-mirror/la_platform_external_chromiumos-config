@@ -112,7 +112,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 51
+// NEXT TAG: 52
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -1059,5 +1059,12 @@ message HardwareFeatures {
   message Fan {
     // The number of fan in the device.
     uint32 fan_count = 1;
+  }
+
+  // Details about the Interrupt controller
+  InterruptControllerInfo interrupt_controller_info = 51;
+  message InterruptControllerInfo {
+    // If present then the Interrupt controller can support NMIs
+    Present nmi_support = 1;
   }
 }

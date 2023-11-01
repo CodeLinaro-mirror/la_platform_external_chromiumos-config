@@ -4766,6 +4766,14 @@
               "number": 50,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Fan"
+            },
+            {
+              "jsonName": "interruptControllerInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "interrupt_controller_info",
+              "number": 51,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.InterruptControllerInfo"
             }
           ],
           "name": "HardwareFeatures",
@@ -7200,6 +7208,19 @@
                 }
               ],
               "name": "Fan"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "nmiSupport",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "nmi_support",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "InterruptControllerInfo"
             }
           ]
         }
