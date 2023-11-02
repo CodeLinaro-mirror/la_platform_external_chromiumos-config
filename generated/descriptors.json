@@ -24114,20 +24114,10 @@
         {
           "field": [
             {
-              "jsonName": "simpleRequest",
-              "label": "LABEL_OPTIONAL",
-              "name": "simple_request",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.SimpleFirmwareRequest"
-            },
-            {
               "jsonName": "detailedRequest",
               "label": "LABEL_OPTIONAL",
               "name": "detailed_request",
               "number": 2,
-              "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwareConfig"
             },
@@ -24177,9 +24167,10 @@
             }
           ],
           "name": "ProvisionFirmwareRequest",
-          "oneofDecl": [
+          "reservedRange": [
             {
-              "name": "firmware_request"
+              "end": 2,
+              "start": 1
             }
           ]
         },

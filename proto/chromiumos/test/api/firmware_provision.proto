@@ -33,20 +33,13 @@ message SimpleFirmwareRequest {
 }
 
 message ProvisionFirmwareRequest {
-  // The path(s) to the firmware build artifact.
-  oneof firmware_request {
-    // Simple Request installs a single firmware image archive entirely.
-    // Recommended for most use-cases.
-    // Uses `futility update -a path/to/archive.tar` interface.
-    SimpleFirmwareRequest simple_request = 1;
-
-    // Detailed Request allows you to specify individual versions of
-    // AP_RW, AP_RO, EC_RO, and PD_RO.
-    // Service will extract the images from firmware archive and install
-    // them individually over futility.
-    // ec_ro over Servo is flashed using flash_ec.
-    chromiumos.build.api.FirmwareConfig detailed_request = 2;
-  }
+  reserved 1;
+  // Detailed Request allows you to specify individual versions of
+  // AP_RW, AP_RO, EC_RO, and PD_RO.
+  // Service will extract the images from firmware archive and install
+  // them individually over futility.
+  // ec_ro over Servo is flashed using flash_ec.
+  chromiumos.build.api.FirmwareConfig detailed_request = 2;
 
   // Access to DUT Service is required to flash over SSH.
   chromiumos.test.lab.api.IpEndpoint dut_server_address = 3;
