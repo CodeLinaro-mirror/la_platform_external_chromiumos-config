@@ -20737,6 +20737,225 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "request",
+              "label": "LABEL_OPTIONAL",
+              "name": "request",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Request"
+            }
+          ],
+          "name": "RunActivityRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "getFwInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_fw_info_request",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetFWInfoRequest"
+            },
+            {
+              "jsonName": "getFilesFromDutRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_files_from_dut_request",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetFilesFromDUTRequest"
+            }
+          ],
+          "name": "Request",
+          "oneofDecl": [
+            {
+              "name": "request"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "requests",
+              "label": "LABEL_REPEATED",
+              "name": "requests",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Request"
+            },
+            {
+              "jsonName": "dutServer",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_server",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "RunActivitiesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "responses",
+              "label": "LABEL_REPEATED",
+              "name": "responses",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.RunActivityResponse"
+            }
+          ],
+          "name": "RunActivitiesResponse"
+        },
+        {
+          "name": "GetFWInfoRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "files",
+              "label": "LABEL_REPEATED",
+              "name": "files",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetFilesFromDUTRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "getFwInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_fw_info_response",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetFWInfoResponse"
+            },
+            {
+              "jsonName": "getFilesFromDutResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_files_from_dut_response",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetFilesFromDUTResponse"
+            }
+          ],
+          "name": "RunActivityResponse",
+          "oneofDecl": [
+            {
+              "name": "response"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "roFwid",
+              "label": "LABEL_OPTIONAL",
+              "name": "ro_fwid",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "rwFwid",
+              "label": "LABEL_OPTIONAL",
+              "name": "rw_fwid",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "kernelVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "kernel_version",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscRo",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_ro",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscRw",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_rw",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetFWInfoResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fileMap",
+              "label": "LABEL_REPEATED",
+              "name": "file_map",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FileMap"
+            }
+          ],
+          "name": "GetFilesFromDUTResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fileName",
+              "label": "LABEL_OPTIONAL",
+              "name": "file_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "fileLocation",
+              "label": "LABEL_OPTIONAL",
+              "name": "file_location",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FileMap"
+        }
+      ],
+      "name": "chromiumos/test/api/post_test_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.RunActivityRequest",
+              "name": "RunActivity",
+              "outputType": ".chromiumos.test.api.RunActivityResponse"
+            }
+          ],
+          "name": "PostTestService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "google/protobuf/any.proto",
         "chromiumos/test/api/provision_state.proto",
         "chromiumos/test/api/cros_provision_cli.proto",
@@ -20744,7 +20963,8 @@
         "chromiumos/test/api/test_suite.proto",
         "chromiumos/test/lab/api/dut.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto",
-        "chromiumos/test/api/pre_test_service.proto"
+        "chromiumos/test/api/pre_test_service.proto",
+        "chromiumos/test/api/post_test_service.proto"
       ],
       "messageType": [
         {
@@ -21015,6 +21235,76 @@
             }
           ],
           "name": "CrosToolRunnerPreTestResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "artifactDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "artifact_dir",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "containerMetadataKey",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_metadata_key",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "request",
+              "label": "LABEL_OPTIONAL",
+              "name": "request",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.RunActivitiesRequest"
+            },
+            {
+              "jsonName": "primaryDut",
+              "label": "LABEL_OPTIONAL",
+              "name": "primary_dut",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosToolRunnerPostTestRequest.Device"
+            }
+          ],
+          "name": "CrosToolRunnerPostTestRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "dut",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.Dut"
+                },
+                {
+                  "jsonName": "containerMetadataKey",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "container_metadata_key",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Device"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "response",
+              "label": "LABEL_OPTIONAL",
+              "name": "response",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.RunActivitiesResponse"
+            }
+          ],
+          "name": "CrosToolRunnerPostTestResponse"
         }
       ],
       "name": "chromiumos/test/api/cros_tool_runner_cli.proto",
@@ -26040,161 +26330,6 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },
       "package": "chromiumos.test.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "getFwInfoRequest",
-              "label": "LABEL_OPTIONAL",
-              "name": "get_fw_info_request",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.GetFWInfoRequest"
-            },
-            {
-              "jsonName": "getFilesFromDutRequest",
-              "label": "LABEL_OPTIONAL",
-              "name": "get_files_from_dut_request",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.GetFilesFromDUTRequest"
-            }
-          ],
-          "name": "RunActivityRequest",
-          "oneofDecl": [
-            {
-              "name": "request"
-            }
-          ]
-        },
-        {
-          "name": "GetFWInfoRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "files",
-              "label": "LABEL_REPEATED",
-              "name": "files",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "GetFilesFromDUTRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "getFwInfoResponse",
-              "label": "LABEL_OPTIONAL",
-              "name": "get_fw_info_response",
-              "number": 1,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.GetFWInfoResponse"
-            },
-            {
-              "jsonName": "getFilesFromDutResponse",
-              "label": "LABEL_OPTIONAL",
-              "name": "get_files_from_dut_response",
-              "number": 2,
-              "oneofIndex": 0,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.GetFilesFromDUTResponse"
-            }
-          ],
-          "name": "RunActivityResponse",
-          "oneofDecl": [
-            {
-              "name": "response"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "roFwid",
-              "label": "LABEL_OPTIONAL",
-              "name": "ro_fwid",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "rwFwid",
-              "label": "LABEL_OPTIONAL",
-              "name": "rw_fwid",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "kernelVersion",
-              "label": "LABEL_OPTIONAL",
-              "name": "kernel_version",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "GetFWInfoResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "fileMap",
-              "label": "LABEL_REPEATED",
-              "name": "file_map",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.FileMap"
-            }
-          ],
-          "name": "GetFilesFromDUTResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "fileName",
-              "label": "LABEL_OPTIONAL",
-              "name": "file_name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "fileLocation",
-              "label": "LABEL_OPTIONAL",
-              "name": "file_location",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "FileMap"
-        }
-      ],
-      "name": "chromiumos/test/api/post_test_service.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.RunActivityRequest",
-              "name": "RunActivity",
-              "outputType": ".chromiumos.test.api.RunActivityResponse"
-            }
-          ],
-          "name": "PostTestService"
-        }
-      ],
       "syntax": "proto3"
     },
     {

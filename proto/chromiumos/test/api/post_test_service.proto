@@ -8,6 +8,8 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+
 
 // PostTestService acts as a post-test landing point for needed services/actions.
 // For example:
@@ -22,10 +24,25 @@ service PostTestService {
 
 // Specific request to run. Must be from the list below.
 message RunActivityRequest {
+  Request request = 1;
+}
+
+message Request {
   oneof request {
     GetFWInfoRequest get_fw_info_request = 1;
     GetFilesFromDUTRequest get_files_from_dut_request = 2;
+
   }
+}
+
+message RunActivitiesRequest {
+  repeated Request requests = 1;
+  // Address of the DUT Server.
+  chromiumos.test.lab.api.IpEndpoint dut_server = 2;
+}
+
+message RunActivitiesResponse {
+  repeated RunActivityResponse responses = 1;
 }
 
 // GetFWInfo gets the fwInfo needed for rdb uploads from DUT.
@@ -49,6 +66,8 @@ message GetFWInfoResponse {
   string ro_fwid  = 1;
   string rw_fwid  = 2;
   string kernel_version = 3;
+  string gsc_ro = 4;
+  string gsc_rw = 5;
 }
 
 
