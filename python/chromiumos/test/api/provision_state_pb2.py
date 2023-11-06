@@ -24,7 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n)chromiumos/test/api/provision_state.proto\x12\x13\x63hromiumos.test.api\x1a\x1e\x63hromiumos/build/api/dlc.proto\x1a*chromiumos/build/api/firmware_config.proto\x1a\"chromiumos/build/api/portage.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a\x19google/protobuf/any.proto\"\xd4\x05\n\x0eProvisionState\x12\x32\n\x02id\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.ProvisionState.Id\x12\x36\n\x08\x66irmware\x18\x02 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\x12\x45\n\x0csystem_image\x18\x03 \x01(\x0b\x32/.chromiumos.test.api.ProvisionState.SystemImage\x12=\n\x08packages\x18\x04 \x03(\x0b\x32+.chromiumos.test.api.ProvisionState.Package\x12\x16\n\x0eprevent_reboot\x18\x05 \x01(\x08\x12\x17\n\x0fupdate_firmware\x18\x06 \x01(\x08\x12\x16\n\x0e\x66irmware_force\x18\x07 \x01(\x08\x12\x11\n\tuse_servo\x18\x08 \x01(\x08\x12\x30\n\x12provision_metadata\x18\t \x01(\x0b\x32\x14.google.protobuf.Any\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\x1a\xb2\x01\n\x0bSystemImage\x12\x0f\n\x07version\x18\x01 \x01(\t\x12\x32\n\x11system_image_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12*\n\x04\x64lcs\x18\x03 \x03(\x0b\x32\x1c.chromiumos.build.api.Dlc.Id\x12\x32\n\x11overwrite_payload\x18\x04 \x01(\x0b\x32\x17.chromiumos.StoragePath\x1ax\n\x07Package\x12>\n\x0fportage_package\x18\x01 \x01(\x0b\x32%.chromiumos.build.api.Portage.Package\x12-\n\x0cpackage_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\x90\x02\n\x0fProvisionConfig\x12\x36\n\x08\x66irmware\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\x12*\n\x04\x64lcs\x18\x02 \x03(\x0b\x32\x1c.chromiumos.build.api.Dlc.Id\x12=\n\x08packages\x18\x03 \x03(\x0b\x32+.chromiumos.test.api.ProvisionState.Package\x12\x15\n\rboard_variant\x18\x04 \x01(\t\x12\x0f\n\x07profile\x18\x06 \x01(\t\x12\x32\n\x11overwrite_payload\x18\x05 \x01(\x0b\x32\x17.chromiumos.StoragePathB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n)chromiumos/test/api/provision_state.proto\x12\x13\x63hromiumos.test.api\x1a\x1e\x63hromiumos/build/api/dlc.proto\x1a*chromiumos/build/api/firmware_config.proto\x1a\"chromiumos/build/api/portage.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a\x19google/protobuf/any.proto\"\xd4\x05\n\x0eProvisionState\x12\x32\n\x02id\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.ProvisionState.Id\x12\x36\n\x08\x66irmware\x18\x02 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\x12\x45\n\x0csystem_image\x18\x03 \x01(\x0b\x32/.chromiumos.test.api.ProvisionState.SystemImage\x12=\n\x08packages\x18\x04 \x03(\x0b\x32+.chromiumos.test.api.ProvisionState.Package\x12\x16\n\x0eprevent_reboot\x18\x05 \x01(\x08\x12\x17\n\x0fupdate_firmware\x18\x06 \x01(\x08\x12\x16\n\x0e\x66irmware_force\x18\x07 \x01(\x08\x12\x11\n\tuse_servo\x18\x08 \x01(\x08\x12\x30\n\x12provision_metadata\x18\t \x01(\x0b\x32\x14.google.protobuf.Any\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\x1a\xb2\x01\n\x0bSystemImage\x12\x0f\n\x07version\x18\x01 \x01(\t\x12\x32\n\x11system_image_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12*\n\x04\x64lcs\x18\x03 \x03(\x0b\x32\x1c.chromiumos.build.api.Dlc.Id\x12\x32\n\x11overwrite_payload\x18\x04 \x01(\x0b\x32\x17.chromiumos.StoragePath\x1ax\n\x07Package\x12>\n\x0fportage_package\x18\x01 \x01(\x0b\x32%.chromiumos.build.api.Portage.Package\x12-\n\x0cpackage_path\x18\x02 \x01(\x0b\x32\x17.chromiumos.StoragePath\"\xc9\x02\n\x0fProvisionConfig\x12\x36\n\x08\x66irmware\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\x12*\n\x04\x64lcs\x18\x02 \x03(\x0b\x32\x1c.chromiumos.build.api.Dlc.Id\x12=\n\x08packages\x18\x03 \x03(\x0b\x32+.chromiumos.test.api.ProvisionState.Package\x12\x15\n\rboard_variant\x18\x04 \x01(\t\x12\x0f\n\x07profile\x18\x06 \x01(\t\x12\x32\n\x11overwrite_payload\x18\x05 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x37\n\tcompanion\x18\x07 \x01(\x0b\x32$.chromiumos.test.api.CompanionConfig\"\xf3\x01\n\x0f\x43ompanionConfig\x12\x44\n\ncros_build\x18\x01 \x01(\x0b\x32..chromiumos.test.api.CompanionConfig.CrosBuildH\x00\x12?\n\x07\x61ndroid\x18\x02 \x01(\x0b\x32,.chromiumos.test.api.CompanionConfig.AndroidH\x00\x1a\x0b\n\tCrosBuild\x1a\x42\n\x07\x41ndroid\x12\x1d\n\x15\x61ndroid_image_version\x18\x01 \x01(\t\x12\x18\n\x10gms_core_package\x18\x02 \x01(\tB\x08\n\x06\x63onfigB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_build_dot_api_dot_dlc__pb2.DESCRIPTOR,chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,chromiumos_dot_build_dot_api_dot_portage__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
@@ -290,6 +290,13 @@ _PROVISIONCONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='companion', full_name='chromiumos.test.api.ProvisionConfig.companion', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -303,7 +310,113 @@ _PROVISIONCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=964,
-  serialized_end=1236,
+  serialized_end=1293,
+)
+
+
+_COMPANIONCONFIG_CROSBUILD = _descriptor.Descriptor(
+  name='CrosBuild',
+  full_name='chromiumos.test.api.CompanionConfig.CrosBuild',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1450,
+  serialized_end=1461,
+)
+
+_COMPANIONCONFIG_ANDROID = _descriptor.Descriptor(
+  name='Android',
+  full_name='chromiumos.test.api.CompanionConfig.Android',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='android_image_version', full_name='chromiumos.test.api.CompanionConfig.Android.android_image_version', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='gms_core_package', full_name='chromiumos.test.api.CompanionConfig.Android.gms_core_package', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1463,
+  serialized_end=1529,
+)
+
+_COMPANIONCONFIG = _descriptor.Descriptor(
+  name='CompanionConfig',
+  full_name='chromiumos.test.api.CompanionConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='cros_build', full_name='chromiumos.test.api.CompanionConfig.cros_build', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='android', full_name='chromiumos.test.api.CompanionConfig.android', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_COMPANIONCONFIG_CROSBUILD, _COMPANIONCONFIG_ANDROID, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='config', full_name='chromiumos.test.api.CompanionConfig.config',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=1296,
+  serialized_end=1539,
 )
 
 _PROVISIONSTATE_ID.containing_type = _PROVISIONSTATE
@@ -323,8 +436,20 @@ _PROVISIONCONFIG.fields_by_name['firmware'].message_type = chromiumos_dot_build_
 _PROVISIONCONFIG.fields_by_name['dlcs'].message_type = chromiumos_dot_build_dot_api_dot_dlc__pb2._DLC_ID
 _PROVISIONCONFIG.fields_by_name['packages'].message_type = _PROVISIONSTATE_PACKAGE
 _PROVISIONCONFIG.fields_by_name['overwrite_payload'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
+_PROVISIONCONFIG.fields_by_name['companion'].message_type = _COMPANIONCONFIG
+_COMPANIONCONFIG_CROSBUILD.containing_type = _COMPANIONCONFIG
+_COMPANIONCONFIG_ANDROID.containing_type = _COMPANIONCONFIG
+_COMPANIONCONFIG.fields_by_name['cros_build'].message_type = _COMPANIONCONFIG_CROSBUILD
+_COMPANIONCONFIG.fields_by_name['android'].message_type = _COMPANIONCONFIG_ANDROID
+_COMPANIONCONFIG.oneofs_by_name['config'].fields.append(
+  _COMPANIONCONFIG.fields_by_name['cros_build'])
+_COMPANIONCONFIG.fields_by_name['cros_build'].containing_oneof = _COMPANIONCONFIG.oneofs_by_name['config']
+_COMPANIONCONFIG.oneofs_by_name['config'].fields.append(
+  _COMPANIONCONFIG.fields_by_name['android'])
+_COMPANIONCONFIG.fields_by_name['android'].containing_oneof = _COMPANIONCONFIG.oneofs_by_name['config']
 DESCRIPTOR.message_types_by_name['ProvisionState'] = _PROVISIONSTATE
 DESCRIPTOR.message_types_by_name['ProvisionConfig'] = _PROVISIONCONFIG
+DESCRIPTOR.message_types_by_name['CompanionConfig'] = _COMPANIONCONFIG
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ProvisionState = _reflection.GeneratedProtocolMessageType('ProvisionState', (_message.Message,), {
@@ -364,6 +489,29 @@ ProvisionConfig = _reflection.GeneratedProtocolMessageType('ProvisionConfig', (_
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.ProvisionConfig)
   })
 _sym_db.RegisterMessage(ProvisionConfig)
+
+CompanionConfig = _reflection.GeneratedProtocolMessageType('CompanionConfig', (_message.Message,), {
+
+  'CrosBuild' : _reflection.GeneratedProtocolMessageType('CrosBuild', (_message.Message,), {
+    'DESCRIPTOR' : _COMPANIONCONFIG_CROSBUILD,
+    '__module__' : 'chromiumos.test.api.provision_state_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.CompanionConfig.CrosBuild)
+    })
+  ,
+
+  'Android' : _reflection.GeneratedProtocolMessageType('Android', (_message.Message,), {
+    'DESCRIPTOR' : _COMPANIONCONFIG_ANDROID,
+    '__module__' : 'chromiumos.test.api.provision_state_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.CompanionConfig.Android)
+    })
+  ,
+  'DESCRIPTOR' : _COMPANIONCONFIG,
+  '__module__' : 'chromiumos.test.api.provision_state_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.CompanionConfig)
+  })
+_sym_db.RegisterMessage(CompanionConfig)
+_sym_db.RegisterMessage(CompanionConfig.CrosBuild)
+_sym_db.RegisterMessage(CompanionConfig.Android)
 
 
 DESCRIPTOR._options = None

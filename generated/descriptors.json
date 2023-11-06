@@ -18575,9 +18575,69 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "companion",
+              "label": "LABEL_OPTIONAL",
+              "name": "companion",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CompanionConfig"
             }
           ],
           "name": "ProvisionConfig"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "crosBuild",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_build",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CompanionConfig.CrosBuild"
+            },
+            {
+              "jsonName": "android",
+              "label": "LABEL_OPTIONAL",
+              "name": "android",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CompanionConfig.Android"
+            }
+          ],
+          "name": "CompanionConfig",
+          "nestedType": [
+            {
+              "name": "CrosBuild"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "androidImageVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "android_image_version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "gmsCorePackage",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gms_core_package",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Android"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "config"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/provision_state.proto",

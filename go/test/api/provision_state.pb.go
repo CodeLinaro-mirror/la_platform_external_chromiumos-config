@@ -191,6 +191,12 @@ type ProvisionConfig struct {
 	Profile string `protobuf:"bytes,6,opt,name=profile,proto3" json:"profile,omitempty"`
 	// Optional tarball to pass through to provisioning.
 	OverwritePayload *_go.StoragePath `protobuf:"bytes,5,opt,name=overwrite_payload,json=overwritePayload,proto3" json:"overwrite_payload,omitempty"`
+	// Optional config for one companion DUT. Note that this field is NOT used
+	// to determine whether the DUT is a companion, meaning setting the field on
+	// the first (primary) DutTarget is invalid and will be ignored. The field
+	// only provides additional provision config that may affect how the
+	// underlying DUT companion should be provisioned.
+	Companion *CompanionConfig `protobuf:"bytes,7,opt,name=companion,proto3" json:"companion,omitempty"`
 }
 
 func (x *ProvisionConfig) Reset() {
@@ -267,6 +273,99 @@ func (x *ProvisionConfig) GetOverwritePayload() *_go.StoragePath {
 	return nil
 }
 
+func (x *ProvisionConfig) GetCompanion() *CompanionConfig {
+	if x != nil {
+		return x.Companion
+	}
+	return nil
+}
+
+// Provision config for a companion DUT to override the default behavior, which
+// assumes the companion is a ChromeOS build and tries to find a build with
+// the same buildset (e.g. the same CQ orchestrator run).
+type CompanionConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Types that are assignable to Config:
+	//	*CompanionConfig_CrosBuild_
+	//	*CompanionConfig_Android_
+	Config isCompanionConfig_Config `protobuf_oneof:"config"`
+}
+
+func (x *CompanionConfig) Reset() {
+	*x = CompanionConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CompanionConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CompanionConfig) ProtoMessage() {}
+
+func (x *CompanionConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CompanionConfig.ProtoReflect.Descriptor instead.
+func (*CompanionConfig) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_provision_state_proto_rawDescGZIP(), []int{2}
+}
+
+func (m *CompanionConfig) GetConfig() isCompanionConfig_Config {
+	if m != nil {
+		return m.Config
+	}
+	return nil
+}
+
+func (x *CompanionConfig) GetCrosBuild() *CompanionConfig_CrosBuild {
+	if x, ok := x.GetConfig().(*CompanionConfig_CrosBuild_); ok {
+		return x.CrosBuild
+	}
+	return nil
+}
+
+func (x *CompanionConfig) GetAndroid() *CompanionConfig_Android {
+	if x, ok := x.GetConfig().(*CompanionConfig_Android_); ok {
+		return x.Android
+	}
+	return nil
+}
+
+type isCompanionConfig_Config interface {
+	isCompanionConfig_Config()
+}
+
+type CompanionConfig_CrosBuild_ struct {
+	// Optional. Only used when need to override the default provision behavior
+	// for ChromeOS device.
+	CrosBuild *CompanionConfig_CrosBuild `protobuf:"bytes,1,opt,name=cros_build,json=crosBuild,proto3,oneof"`
+}
+
+type CompanionConfig_Android_ struct {
+	// Mandatory for Android device.
+	Android *CompanionConfig_Android `protobuf:"bytes,2,opt,name=android,proto3,oneof"`
+}
+
+func (*CompanionConfig_CrosBuild_) isCompanionConfig_Config() {}
+
+func (*CompanionConfig_Android_) isCompanionConfig_Config() {}
+
 // String encoded id that uniquely reflects a given ProvisionState.
 // This is used for both scheduling and reporting purposes.
 // For scheduling, is used to determine if a device is in the requested
@@ -284,7 +383,7 @@ type ProvisionState_Id struct {
 func (x *ProvisionState_Id) Reset() {
 	*x = ProvisionState_Id{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[2]
+		mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -297,7 +396,7 @@ func (x *ProvisionState_Id) String() string {
 func (*ProvisionState_Id) ProtoMessage() {}
 
 func (x *ProvisionState_Id) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[2]
+	mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -339,7 +438,7 @@ type ProvisionState_SystemImage struct {
 func (x *ProvisionState_SystemImage) Reset() {
 	*x = ProvisionState_SystemImage{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[3]
+		mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -352,7 +451,7 @@ func (x *ProvisionState_SystemImage) String() string {
 func (*ProvisionState_SystemImage) ProtoMessage() {}
 
 func (x *ProvisionState_SystemImage) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[3]
+	mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -412,7 +511,7 @@ type ProvisionState_Package struct {
 func (x *ProvisionState_Package) Reset() {
 	*x = ProvisionState_Package{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[4]
+		mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -425,7 +524,7 @@ func (x *ProvisionState_Package) String() string {
 func (*ProvisionState_Package) ProtoMessage() {}
 
 func (x *ProvisionState_Package) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[4]
+	mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -453,6 +552,111 @@ func (x *ProvisionState_Package) GetPackagePath() *_go.StoragePath {
 		return x.PackagePath
 	}
 	return nil
+}
+
+// CrosBuild is used when the companion DUT is a ChromeOS device and needs to
+// be provisioned with a build that is different from the default build found
+// within the context (e.g. a CQ run).
+// The initial implementation of multi-dut doesn't support Cros provision
+// overriding. Fields will be added when requirements become clear.
+type CompanionConfig_CrosBuild struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *CompanionConfig_CrosBuild) Reset() {
+	*x = CompanionConfig_CrosBuild{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CompanionConfig_CrosBuild) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CompanionConfig_CrosBuild) ProtoMessage() {}
+
+func (x *CompanionConfig_CrosBuild) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CompanionConfig_CrosBuild.ProtoReflect.Descriptor instead.
+func (*CompanionConfig_CrosBuild) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_provision_state_proto_rawDescGZIP(), []int{2, 0}
+}
+
+// Android is used when the companion DUT is an Android device. As ChromeOS
+// doesn't build Android images, the config must provide information for each
+// Android companion.
+type CompanionConfig_Android struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Optional. The android image version for android provisioning.
+	AndroidImageVersion string `protobuf:"bytes,1,opt,name=android_image_version,json=androidImageVersion,proto3" json:"android_image_version,omitempty"`
+	// gms core cipd package for android provisioning. Recommend to use
+	// "latest_stable".
+	// See https://chrome-infra-packages.appspot.com/p/chromiumos/infra/skylab/third_party/gmscore/gmscore_prodsc_arm64_xxhdpi_release_apk/+/
+	GmsCorePackage string `protobuf:"bytes,2,opt,name=gms_core_package,json=gmsCorePackage,proto3" json:"gms_core_package,omitempty"`
+}
+
+func (x *CompanionConfig_Android) Reset() {
+	*x = CompanionConfig_Android{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CompanionConfig_Android) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CompanionConfig_Android) ProtoMessage() {}
+
+func (x *CompanionConfig_Android) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_provision_state_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CompanionConfig_Android.ProtoReflect.Descriptor instead.
+func (*CompanionConfig_Android) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_provision_state_proto_rawDescGZIP(), []int{2, 1}
+}
+
+func (x *CompanionConfig_Android) GetAndroidImageVersion() string {
+	if x != nil {
+		return x.AndroidImageVersion
+	}
+	return ""
+}
+
+func (x *CompanionConfig_Android) GetGmsCorePackage() string {
+	if x != nil {
+		return x.GmsCorePackage
+	}
+	return ""
 }
 
 var File_chromiumos_test_api_provision_state_proto protoreflect.FileDescriptor
@@ -530,7 +734,7 @@ var file_chromiumos_test_api_provision_state_proto_rawDesc = []byte{
 	0x70, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x02, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x17, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
 	0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x50, 0x61, 0x74, 0x68, 0x52, 0x0b, 0x70, 0x61, 0x63,
-	0x6b, 0x61, 0x67, 0x65, 0x50, 0x61, 0x74, 0x68, 0x22, 0xd3, 0x02, 0x0a, 0x0f, 0x50, 0x72, 0x6f,
+	0x6b, 0x61, 0x67, 0x65, 0x50, 0x61, 0x74, 0x68, 0x22, 0x97, 0x03, 0x0a, 0x0f, 0x50, 0x72, 0x6f,
 	0x76, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x40, 0x0a, 0x08,
 	0x66, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x24,
 	0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x75, 0x69, 0x6c,
@@ -551,11 +755,34 @@ var file_chromiumos_test_api_provision_state_proto_rawDesc = []byte{
 	0x77, 0x72, 0x69, 0x74, 0x65, 0x5f, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x05, 0x20,
 	0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73,
 	0x2e, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x50, 0x61, 0x74, 0x68, 0x52, 0x10, 0x6f, 0x76,
-	0x65, 0x72, 0x77, 0x72, 0x69, 0x74, 0x65, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x42, 0x2f,
-	0x5a, 0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72,
-	0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e,
-	0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x72, 0x77, 0x72, 0x69, 0x74, 0x65, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x12, 0x42,
+	0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x69, 0x6f, 0x6e, 0x18, 0x07, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x24, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74,
+	0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x69, 0x6f,
+	0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x69,
+	0x6f, 0x6e, 0x22, 0xac, 0x02, 0x0a, 0x0f, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x69, 0x6f, 0x6e,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x4f, 0x0a, 0x0a, 0x63, 0x72, 0x6f, 0x73, 0x5f, 0x62,
+	0x75, 0x69, 0x6c, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2e, 0x2e, 0x63, 0x68, 0x72,
+	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x2e, 0x43, 0x72, 0x6f, 0x73, 0x42, 0x75, 0x69, 0x6c, 0x64, 0x48, 0x00, 0x52, 0x09, 0x63, 0x72,
+	0x6f, 0x73, 0x42, 0x75, 0x69, 0x6c, 0x64, 0x12, 0x48, 0x0a, 0x07, 0x61, 0x6e, 0x64, 0x72, 0x6f,
+	0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d,
+	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43,
+	0x6f, 0x6d, 0x70, 0x61, 0x6e, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x41,
+	0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x48, 0x00, 0x52, 0x07, 0x61, 0x6e, 0x64, 0x72, 0x6f, 0x69,
+	0x64, 0x1a, 0x0b, 0x0a, 0x09, 0x43, 0x72, 0x6f, 0x73, 0x42, 0x75, 0x69, 0x6c, 0x64, 0x1a, 0x67,
+	0x0a, 0x07, 0x41, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x12, 0x32, 0x0a, 0x15, 0x61, 0x6e, 0x64,
+	0x72, 0x6f, 0x69, 0x64, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69,
+	0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x13, 0x61, 0x6e, 0x64, 0x72, 0x6f, 0x69,
+	0x64, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x28, 0x0a,
+	0x10, 0x67, 0x6d, 0x73, 0x5f, 0x63, 0x6f, 0x72, 0x65, 0x5f, 0x70, 0x61, 0x63, 0x6b, 0x61, 0x67,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x67, 0x6d, 0x73, 0x43, 0x6f, 0x72, 0x65,
+	0x50, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x42, 0x08, 0x0a, 0x06, 0x63, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x42, 0x2f, 0x5a, 0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d,
+	0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f,
+	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61,
+	0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -570,39 +797,45 @@ func file_chromiumos_test_api_provision_state_proto_rawDescGZIP() []byte {
 	return file_chromiumos_test_api_provision_state_proto_rawDescData
 }
 
-var file_chromiumos_test_api_provision_state_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_chromiumos_test_api_provision_state_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_chromiumos_test_api_provision_state_proto_goTypes = []interface{}{
 	(*ProvisionState)(nil),             // 0: chromiumos.test.api.ProvisionState
 	(*ProvisionConfig)(nil),            // 1: chromiumos.test.api.ProvisionConfig
-	(*ProvisionState_Id)(nil),          // 2: chromiumos.test.api.ProvisionState.Id
-	(*ProvisionState_SystemImage)(nil), // 3: chromiumos.test.api.ProvisionState.SystemImage
-	(*ProvisionState_Package)(nil),     // 4: chromiumos.test.api.ProvisionState.Package
-	(*api.FirmwareConfig)(nil),         // 5: chromiumos.build.api.FirmwareConfig
-	(*anypb.Any)(nil),                  // 6: google.protobuf.Any
-	(*api.Dlc_Id)(nil),                 // 7: chromiumos.build.api.Dlc.Id
-	(*_go.StoragePath)(nil),            // 8: chromiumos.StoragePath
-	(*api.Portage_Package)(nil),        // 9: chromiumos.build.api.Portage.Package
+	(*CompanionConfig)(nil),            // 2: chromiumos.test.api.CompanionConfig
+	(*ProvisionState_Id)(nil),          // 3: chromiumos.test.api.ProvisionState.Id
+	(*ProvisionState_SystemImage)(nil), // 4: chromiumos.test.api.ProvisionState.SystemImage
+	(*ProvisionState_Package)(nil),     // 5: chromiumos.test.api.ProvisionState.Package
+	(*CompanionConfig_CrosBuild)(nil),  // 6: chromiumos.test.api.CompanionConfig.CrosBuild
+	(*CompanionConfig_Android)(nil),    // 7: chromiumos.test.api.CompanionConfig.Android
+	(*api.FirmwareConfig)(nil),         // 8: chromiumos.build.api.FirmwareConfig
+	(*anypb.Any)(nil),                  // 9: google.protobuf.Any
+	(*api.Dlc_Id)(nil),                 // 10: chromiumos.build.api.Dlc.Id
+	(*_go.StoragePath)(nil),            // 11: chromiumos.StoragePath
+	(*api.Portage_Package)(nil),        // 12: chromiumos.build.api.Portage.Package
 }
 var file_chromiumos_test_api_provision_state_proto_depIdxs = []int32{
-	2,  // 0: chromiumos.test.api.ProvisionState.id:type_name -> chromiumos.test.api.ProvisionState.Id
-	5,  // 1: chromiumos.test.api.ProvisionState.firmware:type_name -> chromiumos.build.api.FirmwareConfig
-	3,  // 2: chromiumos.test.api.ProvisionState.system_image:type_name -> chromiumos.test.api.ProvisionState.SystemImage
-	4,  // 3: chromiumos.test.api.ProvisionState.packages:type_name -> chromiumos.test.api.ProvisionState.Package
-	6,  // 4: chromiumos.test.api.ProvisionState.provision_metadata:type_name -> google.protobuf.Any
-	5,  // 5: chromiumos.test.api.ProvisionConfig.firmware:type_name -> chromiumos.build.api.FirmwareConfig
-	7,  // 6: chromiumos.test.api.ProvisionConfig.dlcs:type_name -> chromiumos.build.api.Dlc.Id
-	4,  // 7: chromiumos.test.api.ProvisionConfig.packages:type_name -> chromiumos.test.api.ProvisionState.Package
-	8,  // 8: chromiumos.test.api.ProvisionConfig.overwrite_payload:type_name -> chromiumos.StoragePath
-	8,  // 9: chromiumos.test.api.ProvisionState.SystemImage.system_image_path:type_name -> chromiumos.StoragePath
-	7,  // 10: chromiumos.test.api.ProvisionState.SystemImage.dlcs:type_name -> chromiumos.build.api.Dlc.Id
-	8,  // 11: chromiumos.test.api.ProvisionState.SystemImage.overwrite_payload:type_name -> chromiumos.StoragePath
-	9,  // 12: chromiumos.test.api.ProvisionState.Package.portage_package:type_name -> chromiumos.build.api.Portage.Package
-	8,  // 13: chromiumos.test.api.ProvisionState.Package.package_path:type_name -> chromiumos.StoragePath
-	14, // [14:14] is the sub-list for method output_type
-	14, // [14:14] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	3,  // 0: chromiumos.test.api.ProvisionState.id:type_name -> chromiumos.test.api.ProvisionState.Id
+	8,  // 1: chromiumos.test.api.ProvisionState.firmware:type_name -> chromiumos.build.api.FirmwareConfig
+	4,  // 2: chromiumos.test.api.ProvisionState.system_image:type_name -> chromiumos.test.api.ProvisionState.SystemImage
+	5,  // 3: chromiumos.test.api.ProvisionState.packages:type_name -> chromiumos.test.api.ProvisionState.Package
+	9,  // 4: chromiumos.test.api.ProvisionState.provision_metadata:type_name -> google.protobuf.Any
+	8,  // 5: chromiumos.test.api.ProvisionConfig.firmware:type_name -> chromiumos.build.api.FirmwareConfig
+	10, // 6: chromiumos.test.api.ProvisionConfig.dlcs:type_name -> chromiumos.build.api.Dlc.Id
+	5,  // 7: chromiumos.test.api.ProvisionConfig.packages:type_name -> chromiumos.test.api.ProvisionState.Package
+	11, // 8: chromiumos.test.api.ProvisionConfig.overwrite_payload:type_name -> chromiumos.StoragePath
+	2,  // 9: chromiumos.test.api.ProvisionConfig.companion:type_name -> chromiumos.test.api.CompanionConfig
+	6,  // 10: chromiumos.test.api.CompanionConfig.cros_build:type_name -> chromiumos.test.api.CompanionConfig.CrosBuild
+	7,  // 11: chromiumos.test.api.CompanionConfig.android:type_name -> chromiumos.test.api.CompanionConfig.Android
+	11, // 12: chromiumos.test.api.ProvisionState.SystemImage.system_image_path:type_name -> chromiumos.StoragePath
+	10, // 13: chromiumos.test.api.ProvisionState.SystemImage.dlcs:type_name -> chromiumos.build.api.Dlc.Id
+	11, // 14: chromiumos.test.api.ProvisionState.SystemImage.overwrite_payload:type_name -> chromiumos.StoragePath
+	12, // 15: chromiumos.test.api.ProvisionState.Package.portage_package:type_name -> chromiumos.build.api.Portage.Package
+	11, // 16: chromiumos.test.api.ProvisionState.Package.package_path:type_name -> chromiumos.StoragePath
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_api_provision_state_proto_init() }
@@ -636,7 +869,7 @@ func file_chromiumos_test_api_provision_state_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_provision_state_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProvisionState_Id); i {
+			switch v := v.(*CompanionConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -648,7 +881,7 @@ func file_chromiumos_test_api_provision_state_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_provision_state_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProvisionState_SystemImage); i {
+			switch v := v.(*ProvisionState_Id); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -660,6 +893,18 @@ func file_chromiumos_test_api_provision_state_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_provision_state_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ProvisionState_SystemImage); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_provision_state_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ProvisionState_Package); i {
 			case 0:
 				return &v.state
@@ -671,6 +916,34 @@ func file_chromiumos_test_api_provision_state_proto_init() {
 				return nil
 			}
 		}
+		file_chromiumos_test_api_provision_state_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CompanionConfig_CrosBuild); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_provision_state_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CompanionConfig_Android); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+	}
+	file_chromiumos_test_api_provision_state_proto_msgTypes[2].OneofWrappers = []interface{}{
+		(*CompanionConfig_CrosBuild_)(nil),
+		(*CompanionConfig_Android_)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -678,7 +951,7 @@ func file_chromiumos_test_api_provision_state_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_api_provision_state_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -115,4 +115,44 @@ message ProvisionConfig {
 
     // Optional tarball to pass through to provisioning.
     StoragePath overwrite_payload = 5;
+
+    // Optional config for one companion DUT. Note that this field is NOT used
+    // to determine whether the DUT is a companion, meaning setting the field on
+    // the first (primary) DutTarget is invalid and will be ignored. The field
+    // only provides additional provision config that may affect how the
+    // underlying DUT companion should be provisioned.
+    CompanionConfig companion = 7;
+}
+
+// Provision config for a companion DUT to override the default behavior, which
+// assumes the companion is a ChromeOS build and tries to find a build with
+// the same buildset (e.g. the same CQ orchestrator run).
+message CompanionConfig {
+  // CrosBuild is used when the companion DUT is a ChromeOS device and needs to
+  // be provisioned with a build that is different from the default build found
+  // within the context (e.g. a CQ run).
+  // The initial implementation of multi-dut doesn't support Cros provision
+  // overriding. Fields will be added when requirements become clear.
+  message CrosBuild {}
+
+  // Android is used when the companion DUT is an Android device. As ChromeOS
+  // doesn't build Android images, the config must provide information for each
+  // Android companion.
+  message Android {
+    // Optional. The android image version for android provisioning.
+    string android_image_version = 1;
+
+    // gms core cipd package for android provisioning. Recommend to use
+    // "latest_stable".
+    // See https://chrome-infra-packages.appspot.com/p/chromiumos/infra/skylab/third_party/gmscore/gmscore_prodsc_arm64_xxhdpi_release_apk/+/
+    string gms_core_package = 2;
+  }
+
+  oneof config {
+    // Optional. Only used when need to override the default provision behavior
+    // for ChromeOS device.
+    CrosBuild cros_build = 1;
+    // Mandatory for Android device.
+    Android android = 2;
+  }
 }
