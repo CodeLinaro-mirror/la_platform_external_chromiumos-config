@@ -63,6 +63,14 @@ _CELLULAR = struct(
     CELLULAR_UNKNOWN = _HW_FEAT.Cellular.CELLULAR_UNKNOWN,
     CELLULAR_LTE = _HW_FEAT.Cellular.CELLULAR_LTE,
     CELLULAR_5G = _HW_FEAT.Cellular.CELLULAR_5G,
+    MODEM_UNKNOWN = _HW_FEAT.Cellular.MODEM_UNKNOWN,
+    MODEM_L850 = _HW_FEAT.Cellular.MODEM_L850,
+    MODEM_NL668 = _HW_FEAT.Cellular.MODEM_NL668,
+    MODEM_FM101 = _HW_FEAT.Cellular.MODEM_FM101,
+    MODEM_FM350 = _HW_FEAT.Cellular.MODEM_FM350,
+    MODEM_SC7180 = _HW_FEAT.Cellular.MODEM_SC7180,
+    MODEM_SC7280 = _HW_FEAT.Cellular.MODEM_SC7280,
+    MODEM_EM060 = _HW_FEAT.Cellular.MODEM_EM060,
 )
 
 _DGPU = struct(
@@ -1055,6 +1063,7 @@ def _create_daughter_board(
         cellular_type = _CELLULAR.CELLULAR_UNKNOWN,
         cellular_dynamic_power_reduction_config = None,
         cellular_wedge_timeout_in_ms = None,
+        cellular_modem_type = _CELLULAR.MODEM_UNKNOWN,
         hdmi_support = False,
         hdmi_cec = None,
         side = None,
@@ -1076,6 +1085,7 @@ def _create_daughter_board(
     hw_features.cellular.present = _bool_to_present(cellular_support)
     hw_features.cellular.model = cellular_model
     hw_features.cellular.type = cellular_type
+    hw_features.cellular.modem_type = cellular_modem_type
     hw_features.cellular.dynamic_power_reduction_config = cellular_dynamic_power_reduction_config
     if cellular_wedge_timeout_in_ms:
         hw_features.cellular.wedge_timeout_in_ms = cellular_wedge_timeout_in_ms
@@ -1131,13 +1141,15 @@ def _create_cellular_board(
         fw_configs = [],
         model = None,
         dynamic_power_reduction_config = None,
-        wedge_timeout_in_ms = None):
+        wedge_timeout_in_ms = None,
+        modem_type = _CELLULAR.MODEM_UNKNOWN):
     """Builds a Topology proto for a Cellular board."""
     hw_features = _HW_FEAT()
 
     hw_features.cellular.present = _bool_to_present(present)
     hw_features.cellular.model = model
     hw_features.cellular.type = type
+    hw_features.cellular.modem_type = modem_type
     hw_features.cellular.dynamic_power_reduction_config = dynamic_power_reduction_config
     if wedge_timeout_in_ms:
         hw_features.cellular.wedge_timeout_in_ms = wedge_timeout_in_ms
@@ -1903,6 +1915,7 @@ def _accumulate_cellular(existing_cellular, new_cellular):
         if new_cellular.present == _PRESENT.PRESENT:
             existing_cellular.model = new_cellular.model
             existing_cellular.type = new_cellular.type
+            existing_cellular.modem_type = new_cellular.modem_type
             if proto.has(new_cellular, "dynamic_power_reduction_config"):
                 existing_cellular.dynamic_power_reduction_config = new_cellular.dynamic_power_reduction_config
             if new_cellular.wedge_timeout_in_ms:

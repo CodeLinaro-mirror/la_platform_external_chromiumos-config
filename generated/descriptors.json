@@ -4879,6 +4879,43 @@
                       "number": 2
                     }
                   ]
+                },
+                {
+                  "name": "ModemType",
+                  "value": [
+                    {
+                      "name": "MODEM_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "MODEM_L850",
+                      "number": 1
+                    },
+                    {
+                      "name": "MODEM_NL668",
+                      "number": 2
+                    },
+                    {
+                      "name": "MODEM_FM101",
+                      "number": 3
+                    },
+                    {
+                      "name": "MODEM_FM350",
+                      "number": 4
+                    },
+                    {
+                      "name": "MODEM_SC7180",
+                      "number": 5
+                    },
+                    {
+                      "name": "MODEM_SC7280",
+                      "number": 6
+                    },
+                    {
+                      "name": "MODEM_EM060",
+                      "number": 7
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -4929,6 +4966,14 @@
                   "name": "wedge_timeout_in_ms",
                   "number": 6,
                   "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "modemType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "modem_type",
+                  "number": 7,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Cellular.ModemType"
                 }
               ],
               "name": "Cellular",

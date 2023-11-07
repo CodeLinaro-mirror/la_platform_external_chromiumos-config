@@ -230,6 +230,18 @@ message HardwareFeatures {
 
     // Wedge detection timeout in ms.
     uint32 wedge_timeout_in_ms = 6;
+    ModemType modem_type = 7;
+
+    enum ModemType {
+      MODEM_UNKNOWN = 0;
+      MODEM_L850 = 1;
+      MODEM_NL668 = 2;
+      MODEM_FM101 = 3;
+      MODEM_FM350 = 4;
+      MODEM_SC7180 = 5;
+      MODEM_SC7280 = 6;
+      MODEM_EM060 = 7;
+    }
   }
 
   // HDMI properties

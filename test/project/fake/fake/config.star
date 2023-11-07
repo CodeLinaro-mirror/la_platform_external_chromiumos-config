@@ -408,6 +408,7 @@ _LTE_BOARD_WITH_MODEL = hw_topo.create_cellular_board(
     "Default cellular_board w/ model",
     present = True,
     type = hw_topo.cellular.CELLULAR_LTE,
+    modem_type = hw_topo.cellular.MODEM_FM101,
     model = "FakeModem",
     dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(gpio = 0, tablet_mode = True),
 )
@@ -416,6 +417,7 @@ _LTE_BOARD_WITH_NO_DPR = hw_topo.create_cellular_board(
     "Default cellular_board without dynamic power reduction config",
     present = True,
     type = hw_topo.cellular.CELLULAR_LTE,
+    modem_type = hw_topo.cellular.MODEM_L850,
     dynamic_power_reduction_config = None,
     wedge_timeout_in_ms = 180000,
 )
@@ -1541,6 +1543,7 @@ design.append_configs(
             cellular_type = hw_topo.cellular.CELLULAR_LTE,
             cellular_dynamic_power_reduction_config = hw_topo.make_cellular_dynamic_power_reduction_config(gpio = 20, tablet_mode = True),
             cellular_wedge_timeout_in_ms = 210000,
+            cellular_modem_type = hw_topo.cellular.MODEM_NL668,
         ),
         proximity_sensor = hw_topo.create_proximity_sensor(
             "PROXIMITY_SENSOR",
