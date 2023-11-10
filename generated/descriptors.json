@@ -24138,6 +24138,14 @@
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             },
             {
+              "jsonName": "cacheServerAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "cache_server_address",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
               "jsonName": "board",
               "label": "LABEL_OPTIONAL",
               "name": "board",

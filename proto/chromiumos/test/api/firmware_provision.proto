@@ -47,6 +47,9 @@ message ProvisionFirmwareRequest {
   // Access to cros-servod is required to flash over Servo.
   chromiumos.test.lab.api.IpEndpoint cros_servod_address = 4;
 
+  // Access to cache service is required.
+  chromiumos.test.lab.api.IpEndpoint cache_server_address = 10;
+
   // Board of the DUT. Required.
   string board = 6;
 
