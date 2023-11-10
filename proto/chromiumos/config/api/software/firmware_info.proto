@@ -8,10 +8,12 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/software";
 
 package chromiumos.config.api.software;
 
-// The configuration of alternative firmware on the device, not part of CBI.
+// Firmware information for the device
 // For more details, see:
 // https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform2/chromeos-config/README.md
-message AltFirmwareConfig {
+message FirmwareInfo {
   // Altfw is functional on the DUT.
   bool has_alt_firmware = 1;
+  // Firmware is setting up the initial splash screen.
+  bool has_splash_screen = 2;
 };

@@ -1,13 +1,13 @@
 #!/usr/bin/env gen_config
 
+load("//config/util/brand_config.star", "brand_config")
 load("//config/util/component.star", "comp")
 load("//config/util/config_bundle.star", "config_bundle")
-load("//config/util/sw_config.star", sc = "sw_config")
-load("//config/util/brand_config.star", "brand_config")
 load("//config/util/design.star", "design")
 load("//config/util/device_brand.star", "device_brand")
 load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/partner.star", "partner")
+load("//config/util/sw_config.star", sc = "sw_config")
 load("//program/program.star", "program")
 
 _FAKE_ODM = partner.create("FAKE_ODM")
@@ -380,8 +380,8 @@ _WIFI = hw_topo.create_wifi(
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.WIFI_SAR_ID, 6)],
 )
 _REGULATORY_DOMAIN_MAPPING = {
-    "ISED": 2,
     "CE": 4,
+    "ISED": 2,
     "MIC": 4,
 }
 _POWER_LEVEL_MAPPING = {
@@ -461,6 +461,11 @@ _VOLUME_BUTTON = hw_topo.create_volume_button(
     region = hw_topo.region.SCREEN,
     edge = hw_topo.edge.RIGHT,
     position = 0.75,
+)
+
+_SC_FIRMWARE_INFO = sc.create_fw_info(
+    has_alt_fw = True,
+    has_splash_screen = True,
 )
 
 _SC_HEALTH = sc.create_health(
@@ -928,6 +933,7 @@ design.append_configs(
         zephyr_ec_name = "projects/fake/fake",
         ish_name = "fake",
     ),
+    firmware_info = _SC_FIRMWARE_INFO,
     power = _SC_POWER,
     wifi = _SC_WIFI_ATH10K,
     ui = sc.create_ui(extra_web_apps_dir = "apps1"),

@@ -336,6 +336,7 @@ design.append_configs(
     hardware_topology = None,
     firmware = None,
     firmware_build_config = None,
+    firmware_info = None,
     bluetooth = None,
     power = None,
     audio = None,
@@ -360,6 +361,7 @@ design.append_configs(
 * **hardware_topology**: A HardwareTopology to be used in the Design.Config.
 * **firmware**: A FirmwareConfig to be used in the SoftwareConfig.
 * **firmware_build_config**: A FirmwareBuildConfig to be used in the SoftwareConfig.
+* **firmware_info**: Information related to runtime firmware.
 * **bluetooth**: A BluetoothConfig to be used in the SoftwareConfig.
 * **power**: A PowerConfig to be used in the SoftwareConfig.
 * **audio**: An AudioConfig to be used in the SoftwareConfig. Can be either a single AudioConfig or a list of AudioConfigs.
@@ -1724,7 +1726,3 @@ sw_config.create_usb()
 ```python
 sw_config.make_resolution()
 ```
-
-
-
-

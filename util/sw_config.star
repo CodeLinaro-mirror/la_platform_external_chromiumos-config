@@ -3,19 +3,45 @@
 See proto definitions for descriptions of arguments.
 """
 
-# Needed to load from @proto. Add @unused to silence lint.
-load("//config/util/bindings/proto.star", "protos")
+load(
+    "@proto//chromiumos/build/api/firmware_config.proto",
+    fw_pb = "chromiumos.build.api",
+)
+load(
+    "@proto//chromiumos/config/api/resource_config.proto",
+    resource_pb = "chromiumos.config.api",
+)
 load(
     "@proto//chromiumos/config/api/software/audio_config.proto",
     audio_pb = "chromiumos.config.api.software",
+)
+load(
+    "@proto//chromiumos/config/api/software/bluetooth_config.proto",
+    bt_pb = "chromiumos.config.api.software",
 )
 load(
     "@proto//chromiumos/config/api/software/camera_config.proto",
     cam_pb = "chromiumos.config.api.software",
 )
 load(
-    "@proto//chromiumos/config/api/software/bluetooth_config.proto",
-    bt_pb = "chromiumos.config.api.software",
+    "@proto//chromiumos/config/api/software/firmware_info.proto",
+    fw_info_pb = "chromiumos.config.api.software",
+)
+load(
+    "@proto//chromiumos/config/api/software/health_config.proto",
+    health_pb = "chromiumos.config.api.software",
+)
+load(
+    "@proto//chromiumos/config/api/software/nnpalm_config.proto",
+    nnpalm_pb = "chromiumos.config.api.software",
+)
+load(
+    "@proto//chromiumos/config/api/software/power_config.proto",
+    pc_pb = "chromiumos.config.api.software",
+)
+load(
+    "@proto//chromiumos/config/api/software/rma_config.proto",
+    rma_pb = "chromiumos.config.api.software",
 )
 load(
     "@proto//chromiumos/config/api/software/ui_config.proto",
@@ -26,37 +52,12 @@ load(
     usb_pb = "chromiumos.config.api.software",
 )
 load(
-    "@proto//chromiumos/build/api/firmware_config.proto",
-    fw_pb = "chromiumos.build.api",
-)
-load(
-    "@proto//chromiumos/config/api/software/power_config.proto",
-    pc_pb = "chromiumos.config.api.software",
-)
-load(
-    "@proto//chromiumos/config/api/software/health_config.proto",
-    health_pb = "chromiumos.config.api.software",
-)
-load(
-    "@proto//chromiumos/config/api/software/alt_firmware_config.proto",
-    alt_firmware_pb = "chromiumos.config.api.software",
-)
-load(
-    "@proto//chromiumos/config/api/software/rma_config.proto",
-    rma_pb = "chromiumos.config.api.software",
-)
-load(
-    "@proto//chromiumos/config/api/software/nnpalm_config.proto",
-    nnpalm_pb = "chromiumos.config.api.software",
-)
-load(
-    "@proto//chromiumos/config/api/resource_config.proto",
-    resource_pb = "chromiumos.config.api",
-)
-load(
     "@proto//chromiumos/config/api/wifi_config.proto",
     wf_pb = "chromiumos.config.api",
 )
+
+# Needed to load from @proto. Add @unused to silence lint.
+load("//config/util/bindings/proto.star", "protos")
 load("//config/util/public_replication.star", "public_replication")
 
 _FW_TYPE = struct(
@@ -274,16 +275,19 @@ def _create_health(
         routines = routines,
     )
 
-def _create_alt_firmware(has_altfw = None):
-    """Builds an AltFirmwareConfig proto."""
-    alt_firmware_config = None
+def _create_fw_info(
+        has_alt_fw = None,
+        has_splash_screen = None):
+    """Builds an FirmwareInfo proto."""
+    firmware_info = None
 
-    if has_altfw != None:
-        alt_firmware_config = alt_firmware_pb.AltFirmwareConfig(
-            has_alt_firmware = has_altfw,
+    if has_alt_fw or has_splash_screen:
+        firmware_info = fw_info_pb.FirmwareInfo(
+            has_alt_firmware = has_alt_fw,
+            has_splash_screen = has_splash_screen,
         )
 
-    return alt_firmware_config
+    return firmware_info
 
 def _create_ssfc_probeable_component(
         identifier = None,
@@ -1111,7 +1115,7 @@ sw_config = struct(
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
     create_camera = _create_camera,
-    create_alt_firmware = _create_alt_firmware,
+    create_fw_info = _create_fw_info,
     create_fw_version = _create_fw_version,
     create_fw_payload = _create_fw_payload,
     create_fw_config = _create_fw_config,

@@ -9982,32 +9982,6 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "hasAltFirmware",
-              "label": "LABEL_OPTIONAL",
-              "name": "has_alt_firmware",
-              "number": 1,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "AltFirmwareConfig"
-        }
-      ],
-      "name": "chromiumos/config/api/software/alt_firmware_config.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
-      },
-      "package": "chromiumos.config.api.software",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
       "dependency": [
         "chromiumos/config/public_replication/public_replication.proto"
       ],
@@ -10281,6 +10255,39 @@
         }
       ],
       "name": "chromiumos/config/api/software/camera_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "hasAltFirmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "has_alt_firmware",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "hasSplashScreen",
+              "label": "LABEL_OPTIONAL",
+              "name": "has_splash_screen",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "FirmwareInfo"
+        }
+      ],
+      "name": "chromiumos/config/api/software/firmware_info.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
       },
@@ -10727,7 +10734,7 @@
         "chromiumos/config/api/software/audio_config.proto",
         "chromiumos/config/api/software/bluetooth_config.proto",
         "chromiumos/config/api/software/camera_config.proto",
-        "chromiumos/config/api/software/alt_firmware_config.proto",
+        "chromiumos/config/api/software/firmware_info.proto",
         "chromiumos/config/api/software/health_config.proto",
         "chromiumos/config/api/software/nnpalm_config.proto",
         "chromiumos/config/api/software/power_config.proto",
@@ -10893,12 +10900,12 @@
               "typeName": ".chromiumos.config.api.software.RmaConfig"
             },
             {
-              "jsonName": "altFirmwareConfig",
+              "jsonName": "firmwareInfo",
               "label": "LABEL_OPTIONAL",
-              "name": "alt_firmware_config",
+              "name": "firmware_info",
               "number": 23,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.config.api.software.AltFirmwareConfig"
+              "typeName": ".chromiumos.config.api.software.FirmwareInfo"
             }
           ],
           "name": "SoftwareConfig",

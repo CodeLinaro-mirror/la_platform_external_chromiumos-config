@@ -12689,6 +12689,10 @@
           "zephyrEc": "projects/fake/fake"
         }
       },
+      "firmwareInfo": {
+        "hasAltFirmware": true,
+        "hasSplashScreen": true
+      },
       "healthConfig": {
         "battery": {
           "hasSmartBatteryInfo": true

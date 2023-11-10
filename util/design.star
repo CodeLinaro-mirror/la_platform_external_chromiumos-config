@@ -3,8 +3,6 @@
 See proto definitions for descriptions of arguments.
 """
 
-# Needed to load from @proto. Add @unused to silence lint.
-load("//config/util/bindings/proto.star", "protos")
 load(
     "@proto//chromiumos/config/api/design.proto",
     design_pb = "chromiumos.config.api",
@@ -13,13 +11,16 @@ load(
     "@proto//chromiumos/config/api/design_id.proto",
     design_id_pb = "chromiumos.config.api",
 )
-load("//config/util/generate.star", "generate")
-load("//config/util/hw_topology.star", "hw_topo")
-load("//config/util/public_replication.star", "public_replication")
 load(
     "@proto//chromiumos/config/api/software/software_config.proto",
     sc_pb = "chromiumos.config.api.software",
 )
+
+# Needed to load from @proto. Add @unused to silence lint.
+load("//config/util/bindings/proto.star", "protos")
+load("//config/util/generate.star", "generate")
+load("//config/util/hw_topology.star", "hw_topo")
+load("//config/util/public_replication.star", "public_replication")
 
 # Config identifier used for an unprovisioned configuration.
 _UNPROVISIONED_CONFIG_ID = 0x7FFFFFFF
@@ -68,11 +69,11 @@ def _append_configs(
         hardware_topology = None,
         firmware = None,
         firmware_build_config = None,
+        firmware_info = None,
         bluetooth = None,
         power = None,
         resource = None,
         audio = None,
-        alt_firmware = None,
         wifi = None,
         camera = None,
         health = None,
@@ -108,12 +109,12 @@ def _append_configs(
         firmware: A FirmwareConfig to be used in the SoftwareConfig.
         firmware_build_config: A FirmwareBuildConfig to be used in the
             SoftwareConfig.
+        firmware_info: Information related to runtime firmware,
         bluetooth: A BluetoothConfig to be used in the SoftwareConfig.
         power: A PowerConfig to be used in the SoftwareConfig.
         resource: A ResourceConfig to be used in the SoftwareConfig.
         audio: An AudioConfig to be used in the SoftwareConfig. Can be either a
             single AudioConfig or a list of AudioConfigs.
-        alt_firmware: An AlternativeFirmware to be used in the SoftwareConfig.
         wifi: A WifiConfig to be used in the SoftwareConfig.
         camera: A CameraConfig to be used in the SoftwareConfig.
         health: A HealthConfig to be used in the SoftwareConfig.
@@ -174,6 +175,7 @@ def _append_configs(
     sw_config.id_scan_config.firmware_sku = config_id
     sw_config.firmware = firmware
     sw_config.firmware_build_config = firmware_build_config
+    sw_config.firmware_info = firmware_info
     sw_config.bluetooth_config = bluetooth
     sw_config.power_config = power
     sw_config.resource_config = resource
@@ -185,7 +187,6 @@ def _append_configs(
     sw_config.wifi_config = wifi
     sw_config.camera_config = camera
     sw_config.health_config = health
-    sw_config.alt_firmware_config = alt_firmware
     sw_config.nnpalm_config = nnpalm
     sw_config.ui_config = ui
     sw_config.usb_config = usb
@@ -299,6 +300,7 @@ def _create_design_with_configs(
         ],
         firmware = None,
         firmware_build_config = None,
+        firmware_info = None,
         bluetooth = None,
         power = None,
         camera = None,
@@ -351,6 +353,7 @@ def _create_design_with_configs(
         firmware: A FirmwareConfig to be used in the SoftwareConfig.
         firmware_build_config: A FirmwareBuildConfig to be used in the
             SoftwareConfig.
+        firmware_info: Information related to runtime firmware,
         bluetooth: A BluetoothConfig to be used in the SoftwareConfig.
         power: A PowerConfig to be used in the SoftwareConfig.
         camera: A CameraConfig to be used in the SoftwareConfig.
@@ -428,6 +431,7 @@ def _create_design_with_configs(
                 hardware_topology = hw_topo.create_hardware_topology(**topologies),
                 firmware_build_config = firmware_build_config,
                 firmware = firmware,
+                firmware_info = firmware_info,
                 bluetooth = bluetooth,
                 power = power,
                 camera = camera,

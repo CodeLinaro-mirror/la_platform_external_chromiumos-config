@@ -14,7 +14,7 @@ import "chromiumos/config/api/resource_config.proto";
 import "chromiumos/config/api/software/audio_config.proto";
 import "chromiumos/config/api/software/bluetooth_config.proto";
 import "chromiumos/config/api/software/camera_config.proto";
-import "chromiumos/config/api/software/alt_firmware_config.proto";
+import "chromiumos/config/api/software/firmware_info.proto";
 import "chromiumos/config/api/software/health_config.proto";
 import "chromiumos/config/api/software/nnpalm_config.proto";
 import "chromiumos/config/api/software/power_config.proto";
@@ -82,7 +82,7 @@ message SoftwareConfig {
 
   RmaConfig rma_config = 22;
 
-  AltFirmwareConfig alt_firmware_config = 23;
+  FirmwareInfo firmware_info = 23;
 
   reserved 1, 2, 6;
 }
