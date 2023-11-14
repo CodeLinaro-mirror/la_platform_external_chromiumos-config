@@ -9687,7 +9687,7 @@
               "field": [
                 {
                   "jsonName": "input",
-                  "label": "LABEL_OPTIONAL",
+                  "label": "LABEL_REPEATED",
                   "name": "input",
                   "number": 1,
                   "type": "TYPE_STRING"

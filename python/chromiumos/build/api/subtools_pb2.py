@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z.go.chromium.org/chromiumos/config/go/build/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#chromiumos/build/api/subtools.proto\x12\x14\x63hromiumos.build.api\"\xea\x04\n\x0eSubtoolPackage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12=\n\x04type\x18\x02 \x01(\x0e\x32/.chromiumos.build.api.SubtoolPackage.ExportType\x12\x11\n\tmax_files\x18\x03 \x01(\x05\x12\x18\n\x0b\x63ipd_prefix\x18\x04 \x01(\tH\x00\x88\x01\x01\x12?\n\x05paths\x18\x05 \x03(\x0b\x32\x30.chromiumos.build.api.SubtoolPackage.PathMapping\x12\x43\n\x0eupload_trigger\x18\x06 \x01(\x0e\x32+.chromiumos.build.api.SubtoolPackage.Change\x1a\xb3\x01\n\x0bPathMapping\x12\r\n\x05input\x18\x01 \x01(\t\x12\x11\n\x04\x64\x65st\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1f\n\x12strip_prefix_regex\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x1a\n\rebuild_filter\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x13\n\x0bopaque_data\x18\x05 \x01(\x08\x42\x07\n\x05_destB\x15\n\x13_strip_prefix_regexB\x10\n\x0e_ebuild_filter\"5\n\nExportType\x12\x16\n\x12\x45XPORT_UNSPECIFIED\x10\x00\x12\x0f\n\x0b\x45XPORT_CIPD\x10\x01\"[\n\x06\x43hange\x12\x16\n\x12\x43HANGE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x43HANGE_BUILD_ID_OR_REVISION\x10\x01\x12\x18\n\x14\x43HANGE_REVISION_ONLY\x10\x02\x42\x0e\n\x0c_cipd_prefixB0Z.go.chromium.org/chromiumos/config/go/build/apib\x06proto3'
+  serialized_pb=b'\n#chromiumos/build/api/subtools.proto\x12\x14\x63hromiumos.build.api\"\xea\x04\n\x0eSubtoolPackage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12=\n\x04type\x18\x02 \x01(\x0e\x32/.chromiumos.build.api.SubtoolPackage.ExportType\x12\x11\n\tmax_files\x18\x03 \x01(\x05\x12\x18\n\x0b\x63ipd_prefix\x18\x04 \x01(\tH\x00\x88\x01\x01\x12?\n\x05paths\x18\x05 \x03(\x0b\x32\x30.chromiumos.build.api.SubtoolPackage.PathMapping\x12\x43\n\x0eupload_trigger\x18\x06 \x01(\x0e\x32+.chromiumos.build.api.SubtoolPackage.Change\x1a\xb3\x01\n\x0bPathMapping\x12\r\n\x05input\x18\x01 \x03(\t\x12\x11\n\x04\x64\x65st\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1f\n\x12strip_prefix_regex\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x1a\n\rebuild_filter\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x13\n\x0bopaque_data\x18\x05 \x01(\x08\x42\x07\n\x05_destB\x15\n\x13_strip_prefix_regexB\x10\n\x0e_ebuild_filter\"5\n\nExportType\x12\x16\n\x12\x45XPORT_UNSPECIFIED\x10\x00\x12\x0f\n\x0b\x45XPORT_CIPD\x10\x01\"[\n\x06\x43hange\x12\x16\n\x12\x43HANGE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x43HANGE_BUILD_ID_OR_REVISION\x10\x01\x12\x18\n\x14\x43HANGE_REVISION_ONLY\x10\x02\x42\x0e\n\x0c_cipd_prefixB0Z.go.chromium.org/chromiumos/config/go/build/apib\x06proto3'
 )
 
 
@@ -90,8 +90,8 @@ _SUBTOOLPACKAGE_PATHMAPPING = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='input', full_name='chromiumos.build.api.SubtoolPackage.PathMapping.input', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),

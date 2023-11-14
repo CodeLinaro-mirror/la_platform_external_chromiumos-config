@@ -36,7 +36,7 @@ message SubtoolPackage {
     // The source file (or files) to bundle.  Glob syntax used by pathlib.Path
     // is supported (go/pathlib#pathlib.Path.glob).  Paths match files installed
     // in the subtools chroot.  If nothing matches, export will fail.
-    string input = 1;
+    repeated string input = 1;
 
     // The target path relative to the export destination.  Default: "/bin".
     optional string dest = 2;
