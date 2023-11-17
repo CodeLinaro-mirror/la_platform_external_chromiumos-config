@@ -274,6 +274,9 @@ def __apply_public_replication_internal(src: pb_message.Message,
       next_dst = getattr(dst, field_descriptor.name)
       __apply_public_replication_internal(next_src, next_dst, visited_messages)
       # If the newly added field doesn't have any fields set, remove it to
-      # avoid creating many empty messages on dst.
-      if not next_dst.ByteSize():
+      # avoid creating many empty messages on dst, unless it was also empty on
+      # src, since the presence of message fields may be meaningful in some
+      # cases. Additionally, this avoids clobbering fields nested within a
+      # message in a oneof where the currently-set oneof is a different field.
+      if not next_dst.ByteSize() and next_src.ByteSize():
         dst.ClearField(field_descriptor.name)

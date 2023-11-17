@@ -21,6 +21,26 @@ message PublicReplicationTestdata {
     string str2 = 3;
 
     map<string, int32> map1 = 4;
+
+    SimpleTestdata simple1 = 5;
+
+    OneofTestdata oneof1 = 6;
+}
+
+message SimpleTestdata {
+    string str1 = 1;
+}
+
+message NestedTestdata {
+    SimpleTestdata simple1 = 1;
+}
+
+message OneofTestdata {
+    oneof messages {
+        NestedTestdata nested1 = 1;
+        NestedTestdata nested2 = 2;
+        NestedTestdata nested3 = 3;
+    }
 }
 
 message WrapperTestdata1 {

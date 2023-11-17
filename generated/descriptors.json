@@ -15807,6 +15807,22 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.public_replication.testdata.PublicReplicationTestdata.Map1Entry"
+            },
+            {
+              "jsonName": "simple1",
+              "label": "LABEL_OPTIONAL",
+              "name": "simple1",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.testdata.SimpleTestdata"
+            },
+            {
+              "jsonName": "oneof1",
+              "label": "LABEL_OPTIONAL",
+              "name": "oneof1",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.testdata.OneofTestdata"
             }
           ],
           "name": "PublicReplicationTestdata",
@@ -15832,6 +15848,68 @@
               "options": {
                 "mapEntry": true
               }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "str1",
+              "label": "LABEL_OPTIONAL",
+              "name": "str1",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SimpleTestdata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "simple1",
+              "label": "LABEL_OPTIONAL",
+              "name": "simple1",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.testdata.SimpleTestdata"
+            }
+          ],
+          "name": "NestedTestdata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "nested1",
+              "label": "LABEL_OPTIONAL",
+              "name": "nested1",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.testdata.NestedTestdata"
+            },
+            {
+              "jsonName": "nested2",
+              "label": "LABEL_OPTIONAL",
+              "name": "nested2",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.testdata.NestedTestdata"
+            },
+            {
+              "jsonName": "nested3",
+              "label": "LABEL_OPTIONAL",
+              "name": "nested3",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.public_replication.testdata.NestedTestdata"
+            }
+          ],
+          "name": "OneofTestdata",
+          "oneofDecl": [
+            {
+              "name": "messages"
             }
           ]
         },

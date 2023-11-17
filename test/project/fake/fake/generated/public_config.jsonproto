@@ -211,6 +211,7 @@
                     "radiusPx": 15
                   }
                 },
+                "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
               "touchSupport": "NOT_PRESENT"
@@ -220,7 +221,16 @@
             },
             "soc": {
               "arcMediaCodecsSuffix": "mainstream",
-              "hevcSupport": "NOT_PRESENT"
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": "EMMC"
@@ -230,6 +240,9 @@
             },
             "thermal": {
               "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
             },
             "usbC": {
               "count": {
@@ -359,7 +372,16 @@
             },
             "soc": {
               "arcMediaCodecsSuffix": "mainstream",
-              "hevcSupport": "NOT_PRESENT"
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": "EMMC"
@@ -369,6 +391,9 @@
             },
             "thermal": {
               "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
             },
             "usbC": {
               "count": {
@@ -504,6 +529,7 @@
                     "radiusPx": 15
                   }
                 },
+                "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
               "touchSupport": "NOT_PRESENT"
@@ -513,7 +539,16 @@
             },
             "soc": {
               "arcMediaCodecsSuffix": "mainstream",
-              "hevcSupport": "NOT_PRESENT"
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": "EMMC"
@@ -523,6 +558,9 @@
             },
             "thermal": {
               "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
             },
             "usbC": {
               "count": {
@@ -652,7 +690,16 @@
             },
             "soc": {
               "arcMediaCodecsSuffix": "mainstream",
-              "hevcSupport": "NOT_PRESENT"
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": "EMMC"
@@ -662,6 +709,9 @@
             },
             "thermal": {
               "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
             },
             "usbC": {
               "count": {
@@ -816,7 +866,16 @@
             },
             "soc": {
               "arcMediaCodecsSuffix": "mainstream",
-              "hevcSupport": "NOT_PRESENT"
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": "EMMC"
@@ -826,6 +885,9 @@
             },
             "thermal": {
               "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
             },
             "usbC": {
               "count": {
@@ -980,7 +1042,16 @@
             },
             "soc": {
               "arcMediaCodecsSuffix": "mainstream",
-              "hevcSupport": "NOT_PRESENT"
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
             },
             "storage": {
               "storageType": "EMMC"
@@ -990,6 +1061,9 @@
             },
             "thermal": {
               "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
             },
             "usbC": {
               "count": {
@@ -1213,6 +1287,7 @@
                     "radiusPx": 15
                   }
                 },
+                "turnOffScreenTimeoutMs": 0,
                 "widthPx": 1920
               },
               "touchSupport": "NOT_PRESENT"
@@ -1225,6 +1300,9 @@
             },
             "thermal": {
               "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
             },
             "usbC": {
               "count": {
@@ -1244,6 +1322,214 @@
               "edge": "RIGHT",
               "position": 0.75,
               "region": "SCREEN"
+            },
+            "wifi": {
+              "wifiConfig": {
+                "intelConfig": {
+                  "antTable": {
+                    "antGainTableA": {
+                      "antGain2g": 1,
+                      "antGain5g1": 2,
+                      "antGain5g2": 3,
+                      "antGain5g3": 4,
+                      "antGain5g4": 5,
+                      "antGain5g5": 6,
+                      "antGain6g1": 7,
+                      "antGain6g2": 8,
+                      "antGain6g3": 9,
+                      "antGain6g4": 10,
+                      "antGain6g5": 11
+                    },
+                    "antGainTableB": {
+                      "antGain2g": 12,
+                      "antGain5g1": 13,
+                      "antGain5g2": 14,
+                      "antGain5g3": 15,
+                      "antGain5g4": 16,
+                      "antGain5g5": 17,
+                      "antGain6g1": 18,
+                      "antGain6g2": 19,
+                      "antGain6g3": 20,
+                      "antGain6g4": 21,
+                      "antGain6g5": 22
+                    },
+                    "antModePpag": 3,
+                    "antTableVersion": 2
+                  },
+                  "dsm": {
+                    "disableActiveSdrChannels": "1",
+                    "enablement11ax": "6",
+                    "regulatoryConfigurations": "4",
+                    "supportIndonesia5gBand": "2",
+                    "supportUltraHighBand": "3",
+                    "uartConfigurations": "5",
+                    "unii4": "7"
+                  },
+                  "sarTable": {
+                    "cdbNonTabletModePowerTableA": {
+                      "limit2g": 67,
+                      "limit5g1": 68,
+                      "limit5g2": 69,
+                      "limit5g3": 70,
+                      "limit5g4": 71,
+                      "limit5g5": 72,
+                      "limit6g1": 73,
+                      "limit6g2": 74,
+                      "limit6g3": 75,
+                      "limit6g4": 76,
+                      "limit6g5": 77
+                    },
+                    "cdbNonTabletModePowerTableB": {
+                      "limit2g": 78,
+                      "limit5g1": 79,
+                      "limit5g2": 80,
+                      "limit5g3": 81,
+                      "limit5g4": 82,
+                      "limit5g5": 83,
+                      "limit6g1": 84,
+                      "limit6g2": 85,
+                      "limit6g3": 86,
+                      "limit6g4": 87,
+                      "limit6g5": 88
+                    },
+                    "cdbTabletModePowerTableA": {
+                      "limit2g": 45,
+                      "limit5g1": 46,
+                      "limit5g2": 47,
+                      "limit5g3": 48,
+                      "limit5g4": 49,
+                      "limit5g5": 50,
+                      "limit6g1": 51,
+                      "limit6g2": 52,
+                      "limit6g3": 53,
+                      "limit6g4": 54,
+                      "limit6g5": 55
+                    },
+                    "cdbTabletModePowerTableB": {
+                      "limit2g": 56,
+                      "limit5g1": 57,
+                      "limit5g2": 58,
+                      "limit5g3": 59,
+                      "limit5g4": 60,
+                      "limit5g5": 61,
+                      "limit6g1": 62,
+                      "limit6g2": 63,
+                      "limit6g3": 64,
+                      "limit6g4": 65,
+                      "limit6g5": 66
+                    },
+                    "nonTabletModePowerTableA": {
+                      "limit2g": 23,
+                      "limit5g1": 24,
+                      "limit5g2": 25,
+                      "limit5g3": 26,
+                      "limit5g4": 27,
+                      "limit5g5": 28,
+                      "limit6g1": 29,
+                      "limit6g2": 30,
+                      "limit6g3": 31,
+                      "limit6g4": 32,
+                      "limit6g5": 33
+                    },
+                    "nonTabletModePowerTableB": {
+                      "limit2g": 34,
+                      "limit5g1": 35,
+                      "limit5g2": 36,
+                      "limit5g3": 37,
+                      "limit5g4": 38,
+                      "limit5g5": 39,
+                      "limit6g1": 40,
+                      "limit6g2": 41,
+                      "limit6g3": 42,
+                      "limit6g4": 43,
+                      "limit6g5": 44
+                    },
+                    "sarTableVersion": 2,
+                    "tabletModePowerTableA": {
+                      "limit2g": 1,
+                      "limit5g1": 2,
+                      "limit5g2": 3,
+                      "limit5g3": 4,
+                      "limit5g4": 5,
+                      "limit5g5": 6,
+                      "limit6g1": 7,
+                      "limit6g2": 8,
+                      "limit6g3": 9,
+                      "limit6g4": 10,
+                      "limit6g5": 11
+                    },
+                    "tabletModePowerTableB": {
+                      "limit2g": 12,
+                      "limit5g1": 13,
+                      "limit5g2": 14,
+                      "limit5g3": 15,
+                      "limit5g4": 16,
+                      "limit5g5": 17,
+                      "limit6g1": 18,
+                      "limit6g2": 19,
+                      "limit6g3": 20,
+                      "limit6g4": 21,
+                      "limit6g5": 22
+                    }
+                  },
+                  "wgdsTable": {
+                    "offsetEu": {
+                      "max2g": 10,
+                      "max5g": 13,
+                      "max6g": 16,
+                      "offset2gA": 11,
+                      "offset2gB": 12,
+                      "offset5gA": 14,
+                      "offset5gB": 15,
+                      "offset6gA": 17,
+                      "offset6gB": 18
+                    },
+                    "offsetFcc": {
+                      "max2g": 1,
+                      "max5g": 4,
+                      "max6g": 7,
+                      "offset2gA": 2,
+                      "offset2gB": 3,
+                      "offset5gA": 5,
+                      "offset5gB": 6,
+                      "offset6gA": 8,
+                      "offset6gB": 9
+                    },
+                    "offsetOther": {
+                      "max2g": 19,
+                      "max5g": 22,
+                      "max6g": 25,
+                      "offset2gA": 20,
+                      "offset2gB": 21,
+                      "offset5gA": 23,
+                      "offset5gB": 24,
+                      "offset6gA": 26,
+                      "offset6gB": 27
+                    },
+                    "wgdsVersion": 2
+                  },
+                  "wtasTable": {
+                    "denyListEntry1": 1,
+                    "denyListEntry10": 10,
+                    "denyListEntry11": 11,
+                    "denyListEntry12": 12,
+                    "denyListEntry13": 13,
+                    "denyListEntry14": 14,
+                    "denyListEntry15": 15,
+                    "denyListEntry16": 16,
+                    "denyListEntry2": 2,
+                    "denyListEntry3": 3,
+                    "denyListEntry4": 4,
+                    "denyListEntry5": 5,
+                    "denyListEntry6": 6,
+                    "denyListEntry7": 7,
+                    "denyListEntry8": 8,
+                    "denyListEntry9": 9,
+                    "tasListSize": 16,
+                    "tasSelection": 1
+                  }
+                }
+              }
             }
           },
           "hardwareTopology": {

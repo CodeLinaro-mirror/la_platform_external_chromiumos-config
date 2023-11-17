@@ -19,6 +19,7 @@
       "mosysPlatformName": "fake",
       "name": "FAKE_PROGRAM",
       "platform": {
+        "arcSettings": {},
         "capabilities": {
           "darkResume": true,
           "suspendToIdle": true,
@@ -27,11 +28,36 @@
         "hevcSupport": "PRESENT",
         "resourceConfig": {
           "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
             "battery-saver-power-preferences": {
               "cpu-offline": {
                 "small-core": {
                   "min-active-threads": 4
                 }
+              },
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
               }
             }
           },
@@ -41,9 +67,29 @@
                 "small-core": {
                   "min-active-threads": 4
                 }
+              },
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
               }
             },
             "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
               "governor": {
                 "ondemand": {
                   "powersave-bias": 1

@@ -16,6 +16,9 @@ from chromiumos.config.public_replication.public_replication_pb2 import (
     PublicReplication)
 from chromiumos.config.public_replication.testdata.public_replication_testdata_pb2 import (
     PublicReplicationTestdata,
+    SimpleTestdata,
+    NestedTestdata,
+    OneofTestdata,
     WrapperTestdata1,
     WrapperTestdata2,
     WrapperTestdata3,
@@ -103,8 +106,56 @@ class ProtoUtilsTest(unittest.TestCase):
         public_replication=PublicReplication(
             public_fields=field_mask_pb2.FieldMask(paths=['str1'])),
     )
+    src.simple1.SetInParent()
 
     expected = PublicReplicationTestdata(str1='abc')
+
+    dst = PublicReplicationTestdata()
+    proto_utils.apply_public_replication(src, dst)
+    self.assertEqual(dst, expected)
+
+  def test_apply_public_replication_empty_source(self):
+    """Tests applying the PublicReplication message in the case where it is a
+    field on the src argument.
+
+    In this case, since PublicReplication is a field on
+    PublicReplicationTestdata, no recursion is needed.
+    """
+    src = PublicReplicationTestdata(
+        str1='abc',
+        str2='def',
+        public_replication=PublicReplication(
+            public_fields=field_mask_pb2.FieldMask(paths=['str1', 'simple1'])),
+    )
+    src.simple1.SetInParent()
+
+    expected = PublicReplicationTestdata(str1='abc')
+    expected.simple1.SetInParent()
+
+    dst = PublicReplicationTestdata()
+    proto_utils.apply_public_replication(src, dst)
+    self.assertEqual(dst, expected)
+
+  def test_apply_public_replication_oneof(self):
+    """Tests applying the PublicReplication message in the case where it is a
+    field on the src argument.
+
+    In this case, since PublicReplication is a field on
+    PublicReplicationTestdata, no recursion is needed.
+    """
+    src = PublicReplicationTestdata(
+        str1='abc',
+        str2='def',
+        oneof1=OneofTestdata(
+            nested2=NestedTestdata(simple1=SimpleTestdata(str1='ghi'))),
+        public_replication=PublicReplication(
+            public_fields=field_mask_pb2.FieldMask(paths=['str1', 'oneof1'])),
+    )
+
+    expected = PublicReplicationTestdata(
+        str1='abc',
+        oneof1=OneofTestdata(
+            nested2=NestedTestdata(simple1=SimpleTestdata(str1='ghi'))))
 
     dst = PublicReplicationTestdata()
     proto_utils.apply_public_replication(src, dst)
