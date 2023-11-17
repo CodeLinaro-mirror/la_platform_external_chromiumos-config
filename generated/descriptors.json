@@ -20178,6 +20178,14 @@
                   "number": 4,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+                },
+                {
+                  "jsonName": "devboardServer",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "devboard_server",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.IpEndpoint"
                 }
               ],
               "name": "Device"
