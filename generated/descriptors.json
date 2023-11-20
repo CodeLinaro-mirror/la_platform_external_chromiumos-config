@@ -5176,6 +5176,13 @@
                   "name": "fw_rw_active_version",
                   "number": 6,
                   "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "fwRoVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "fw_ro_version",
+                  "number": 7,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "FirmwareConfiguration"

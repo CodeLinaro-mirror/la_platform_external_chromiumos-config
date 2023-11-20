@@ -283,6 +283,9 @@ message HardwareFeatures {
 
     // The RW firmware version currently running on the DUT.
     uint32 fw_rw_active_version = 6;
+
+    // The RO firmware version currently running on the DUT.
+    string fw_ro_version = 7;
   }
 
   // Audio properties of system
