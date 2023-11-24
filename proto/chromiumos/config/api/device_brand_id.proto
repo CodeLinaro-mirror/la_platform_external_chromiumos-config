@@ -21,6 +21,8 @@ message DeviceBrandId {
 
     FeatureDeviceType feature_device_type = 2;
 
+    string custom_label_tag = 3;
+
     enum FeatureDeviceType {
       OFF = 0;
       LEGACY = 1;

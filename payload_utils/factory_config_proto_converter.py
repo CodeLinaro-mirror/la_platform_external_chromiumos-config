@@ -320,8 +320,11 @@ def GetFactoryConfigs(config):
       key = ''
       value = partners[device_brand.oem_id.value].name
       brand_config = brand_configs.get(device_brand_id)
-      if brand_config and brand_config.scan_config.whitelabel_tag:
-        key = brand_config.scan_config.whitelabel_tag
+      if brand_config and brand_config.scan_config:
+        custom_label_tag = (
+            brand_config.scan_config.whitelabel_tag or
+            brand_config.scan_config.custom_label_tag)
+        key = custom_label_tag
       design_oem_name_table.setdefault(key, value)
   # Enumerate (design, sku id).
   for sw_design in config.software_configs:

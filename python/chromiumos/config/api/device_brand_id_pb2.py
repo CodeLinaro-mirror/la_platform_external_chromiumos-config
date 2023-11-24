@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z(go.chromium.org/chromiumos/config/go/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+chromiumos/config/api/device_brand_id.proto\x12\x15\x63hromiumos.config.api\"\xd7\x01\n\rDeviceBrandId\x12\r\n\x05value\x18\x01 \x01(\t\x1a\xb6\x01\n\nScanConfig\x12\x16\n\x0ewhitelabel_tag\x18\x01 \x01(\t\x12^\n\x13\x66\x65\x61ture_device_type\x18\x02 \x01(\x0e\x32\x41.chromiumos.config.api.DeviceBrandId.ScanConfig.FeatureDeviceType\"0\n\x11\x46\x65\x61tureDeviceType\x12\x07\n\x03OFF\x10\x00\x12\n\n\x06LEGACY\x10\x01\x12\x06\n\x02ON\x10\x02\x42*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
+  serialized_pb=b'\n+chromiumos/config/api/device_brand_id.proto\x12\x15\x63hromiumos.config.api\"\xf1\x01\n\rDeviceBrandId\x12\r\n\x05value\x18\x01 \x01(\t\x1a\xd0\x01\n\nScanConfig\x12\x16\n\x0ewhitelabel_tag\x18\x01 \x01(\t\x12^\n\x13\x66\x65\x61ture_device_type\x18\x02 \x01(\x0e\x32\x41.chromiumos.config.api.DeviceBrandId.ScanConfig.FeatureDeviceType\x12\x18\n\x10\x63ustom_label_tag\x18\x03 \x01(\t\"0\n\x11\x46\x65\x61tureDeviceType\x12\x07\n\x03OFF\x10\x00\x12\n\n\x06LEGACY\x10\x01\x12\x06\n\x02ON\x10\x02\x42*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
 )
 
 
@@ -49,8 +49,8 @@ _DEVICEBRANDID_SCANCONFIG_FEATUREDEVICETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=238,
-  serialized_end=286,
+  serialized_start=264,
+  serialized_end=312,
 )
 _sym_db.RegisterEnumDescriptor(_DEVICEBRANDID_SCANCONFIG_FEATUREDEVICETYPE)
 
@@ -77,6 +77,13 @@ _DEVICEBRANDID_SCANCONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='custom_label_tag', full_name='chromiumos.config.api.DeviceBrandId.ScanConfig.custom_label_tag', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -91,7 +98,7 @@ _DEVICEBRANDID_SCANCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=104,
-  serialized_end=286,
+  serialized_end=312,
 )
 
 _DEVICEBRANDID = _descriptor.Descriptor(
@@ -122,7 +129,7 @@ _DEVICEBRANDID = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=71,
-  serialized_end=286,
+  serialized_end=312,
 )
 
 _DEVICEBRANDID_SCANCONFIG.fields_by_name['feature_device_type'].enum_type = _DEVICEBRANDID_SCANCONFIG_FEATUREDEVICETYPE

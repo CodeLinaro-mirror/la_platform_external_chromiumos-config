@@ -7999,6 +7999,13 @@
                   "number": 2,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.DeviceBrandId.ScanConfig.FeatureDeviceType"
+                },
+                {
+                  "jsonName": "customLabelTag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "custom_label_tag",
+                  "number": 3,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "ScanConfig"

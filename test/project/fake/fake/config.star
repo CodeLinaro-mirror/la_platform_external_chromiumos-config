@@ -1982,19 +1982,20 @@ _BRAND_CONFIGS = [
     ),
     brand_config.create(
         device_brand_id = _WL_DEVICE_BRAND_A.id,
-        whitelabel_tag = "loema",
+        custom_label_tag = "loema",
     ),
     brand_config.create(
         device_brand_id = _WL_DEVICE_BRAND_B.id,
-        whitelabel_tag = "loemb",
+        custom_label_tag = "loemb",
     ),
     brand_config.create(
         device_brand_id = _WL_DEVICE_BRAND_C.id,
-        whitelabel_tag = "loemc",
+        custom_label_tag = "loemc",
         cloud_gaming_device = False,
     ),
     brand_config.create(
         device_brand_id = _REBRAND_DEVICE_BRAND_D.id,
+        # whitelabel_tag is deprecated, please use custom_label_tag.
         whitelabel_tag = "branda",
         cloud_gaming_device = True,
     ),

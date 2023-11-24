@@ -19,7 +19,7 @@
         "value": "WLAA"
       },
       "scanConfig": {
-        "whitelabelTag": "loema"
+        "customLabelTag": "loema"
       }
     },
     {
@@ -27,7 +27,7 @@
         "value": "WLBB"
       },
       "scanConfig": {
-        "whitelabelTag": "loemb"
+        "customLabelTag": "loemb"
       }
     },
     {
@@ -35,7 +35,7 @@
         "value": "WLCC"
       },
       "scanConfig": {
-        "whitelabelTag": "loemc"
+        "customLabelTag": "loemc"
       }
     },
     {

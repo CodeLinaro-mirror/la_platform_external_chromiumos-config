@@ -21,7 +21,8 @@ def _create(
         whitelabel_tag = None,
         help_content_id = None,
         cloud_gaming_device = None,
-        feature_device_type = None):
+        feature_device_type = None,
+        custom_label_tag = None):
     """Builds a BrandConfig proto.
 
     Args:
@@ -30,19 +31,24 @@ def _create(
         wallpaper: Base filename of the default wallpaper to show.
         regulatory_label: See chromeos-config readme
         whitelabel_tag: "whitelabel_tag" value set in the VPD, used to select a
-            BrandConfig at runtime. See https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#field-whitelabel_tag.
+            BrandConfig at runtime. Deprecated, please use custom_label_tag instead.
         help_content_id: help content identifier
         cloud_gaming_device: whether devices using this BrandConfig should
             enable cloud gaming features
+        custom_label_tag: "whitelabel_tag" is deprecated and renamed to "custom_label_tag".
+            See https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#field-custom_label_tag.
 
     Returns:
         A BrandConfig proto.
     """
+    if whitelabel_tag != None and custom_label_tag != None:
+        fail("whitelabel_tag and custom_label_tag both exist, please use only custom_label_tag.")
     scan_config = None
-    if whitelabel_tag or feature_device_type != None:
+    if whitelabel_tag or feature_device_type or custom_label_tag != None:
         scan_config = db_id_pb.DeviceBrandId.ScanConfig(
             whitelabel_tag = whitelabel_tag,
             feature_device_type = feature_device_type,
+            custom_label_tag = custom_label_tag,
         )
     return bc_pb.BrandConfig(
         brand_id = device_brand_id,
