@@ -30,7 +30,7 @@ message Dut {
   }
 
   // Chrome OS specific DUT details
-  // NEXT TAG: 21
+  // NEXT TAG: 22
   message ChromeOS {
     // Unique identifiers around the device's hardware, manufacturing, and brand
     // configuration.
@@ -58,6 +58,7 @@ message Dut {
     string sku = 18;
     string hwid = 19;
     Phase phase = 20;
+    repeated SIMInfo sim_infos = 21;
 
     reserved 1;
   }
@@ -175,6 +176,49 @@ message Cellular {
   }
   // Cellular operators supported by the SIM installed in the device.
   repeated Operator operators = 1;
+}
+
+message SIMInfo {
+  int32 slot_id = 1;
+  SIMType type = 2;
+  string eid = 3;
+  bool test_esim = 4;
+  repeated SIMProfileInfo profile_info = 5;
+}
+
+message SIMProfileInfo {
+  string iccid = 1;
+  string sim_pin = 2;
+  string sim_puk = 3;
+  NetworkProvider carrier_name = 4;
+  string own_number = 5;
+}
+
+enum NetworkProvider {
+  NETWORK_OTHER = 0;
+  NETWORK_UNSUPPORTED = 5;
+  NETWORK_TEST = 1;
+  NETWORK_ATT = 2;
+  NETWORK_TMOBILE = 3;
+  NETWORK_VERIZON = 4;
+  NETWORK_SPRINT = 6;
+  NETWORK_DOCOMO = 7;
+  NETWORK_SOFTBANK = 8;
+  NETWORK_KDDI = 9;
+  NETWORK_RAKUTEN = 10;
+  NETWORK_VODAFONE = 11;
+  NETWORK_EE = 12;
+  NETWORK_AMARISOFT = 13;
+  NETWORK_ROGER = 14;
+  NETWORK_BELL = 15;
+  NETWORK_TELUS = 16;
+  NETWORK_FI = 17;
+}
+
+enum SIMType {
+  SIM_UNKNOWN = 0;
+  SIM_PHYSICAL = 1;
+  SIM_DIGITAL = 2;
 }
 
 // See https://sites.google.com/a/google.com/cros-chameleon/home

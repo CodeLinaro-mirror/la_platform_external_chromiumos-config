@@ -16801,6 +16801,100 @@
       ],
       "enumType": [
         {
+          "name": "NetworkProvider",
+          "value": [
+            {
+              "name": "NETWORK_OTHER",
+              "number": 0
+            },
+            {
+              "name": "NETWORK_UNSUPPORTED",
+              "number": 5
+            },
+            {
+              "name": "NETWORK_TEST",
+              "number": 1
+            },
+            {
+              "name": "NETWORK_ATT",
+              "number": 2
+            },
+            {
+              "name": "NETWORK_TMOBILE",
+              "number": 3
+            },
+            {
+              "name": "NETWORK_VERIZON",
+              "number": 4
+            },
+            {
+              "name": "NETWORK_SPRINT",
+              "number": 6
+            },
+            {
+              "name": "NETWORK_DOCOMO",
+              "number": 7
+            },
+            {
+              "name": "NETWORK_SOFTBANK",
+              "number": 8
+            },
+            {
+              "name": "NETWORK_KDDI",
+              "number": 9
+            },
+            {
+              "name": "NETWORK_RAKUTEN",
+              "number": 10
+            },
+            {
+              "name": "NETWORK_VODAFONE",
+              "number": 11
+            },
+            {
+              "name": "NETWORK_EE",
+              "number": 12
+            },
+            {
+              "name": "NETWORK_AMARISOFT",
+              "number": 13
+            },
+            {
+              "name": "NETWORK_ROGER",
+              "number": 14
+            },
+            {
+              "name": "NETWORK_BELL",
+              "number": 15
+            },
+            {
+              "name": "NETWORK_TELUS",
+              "number": 16
+            },
+            {
+              "name": "NETWORK_FI",
+              "number": 17
+            }
+          ]
+        },
+        {
+          "name": "SIMType",
+          "value": [
+            {
+              "name": "SIM_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "SIM_PHYSICAL",
+              "number": 1
+            },
+            {
+              "name": "SIM_DIGITAL",
+              "number": 2
+            }
+          ]
+        },
+        {
           "name": "PeripheralState",
           "value": [
             {
@@ -17173,6 +17267,14 @@
                   "number": 20,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.test.lab.api.Phase"
+                },
+                {
+                  "jsonName": "simInfos",
+                  "label": "LABEL_REPEATED",
+                  "name": "sim_infos",
+                  "number": 21,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.SIMInfo"
                 }
               ],
               "name": "ChromeOS",
@@ -17462,6 +17564,89 @@
             }
           ],
           "name": "Cellular"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "slotId",
+              "label": "LABEL_OPTIONAL",
+              "name": "slot_id",
+              "number": 1,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.SIMType"
+            },
+            {
+              "jsonName": "eid",
+              "label": "LABEL_OPTIONAL",
+              "name": "eid",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "testEsim",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_esim",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "profileInfo",
+              "label": "LABEL_REPEATED",
+              "name": "profile_info",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.SIMProfileInfo"
+            }
+          ],
+          "name": "SIMInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "iccid",
+              "label": "LABEL_OPTIONAL",
+              "name": "iccid",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "simPin",
+              "label": "LABEL_OPTIONAL",
+              "name": "sim_pin",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "simPuk",
+              "label": "LABEL_OPTIONAL",
+              "name": "sim_puk",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "carrierName",
+              "label": "LABEL_OPTIONAL",
+              "name": "carrier_name",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.NetworkProvider"
+            },
+            {
+              "jsonName": "ownNumber",
+              "label": "LABEL_OPTIONAL",
+              "name": "own_number",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SIMProfileInfo"
         },
         {
           "enumType": [
