@@ -5181,11 +5181,46 @@
                   "jsonName": "fwRoVersion",
                   "label": "LABEL_OPTIONAL",
                   "name": "fw_ro_version",
-                  "number": 7,
-                  "type": "TYPE_STRING"
+                  "number": 8,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.FirmwareConfiguration.SemVer"
                 }
               ],
-              "name": "FirmwareConfiguration"
+              "name": "FirmwareConfiguration",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "majorVersion",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "major_version",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "minorVersion",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "minor_version",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "patchVersion",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "patch_version",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "SemVer"
+                }
+              ],
+              "reservedRange": [
+                {
+                  "end": 8,
+                  "start": 7
+                }
+              ]
             },
             {
               "enumType": [
