@@ -48,12 +48,13 @@ message Requirement {
   string value = 1;
 }
 
-// Bug component for filing bugs against test case
+// Bug component for filing bugs against.
 message BugComponent {
   string value = 1;
 }
 
-// A brief description of the test case.
+// A short summary capturing the quality guarantee validated by the Test, Suite,
+// SuiteSet, etc.
 message Criteria {
   string value = 1;
 }

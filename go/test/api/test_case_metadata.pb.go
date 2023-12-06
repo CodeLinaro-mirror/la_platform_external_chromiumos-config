@@ -387,7 +387,7 @@ func (x *Requirement) GetValue() string {
 	return ""
 }
 
-// Bug component for filing bugs against test case
+// Bug component for filing bugs against.
 type BugComponent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -435,7 +435,8 @@ func (x *BugComponent) GetValue() string {
 	return ""
 }
 
-// A brief description of the test case.
+// A short summary capturing the quality guarantee validated by the Test, Suite,
+// SuiteSet, etc.
 type Criteria struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

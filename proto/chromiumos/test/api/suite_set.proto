@@ -1,0 +1,69 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/test_case.proto";
+import "chromiumos/test/api/test_case_metadata.proto";
+
+// Defines a grouping of Suites either directly through a list of Suites or
+// indirectly through a list of other contained SuiteSets. A SuiteSet
+// is intended to represent a validation assertion that is satisfied if all its
+// containing Suites pass.
+message SuiteSet {
+	// Globally unique identifier across all SuiteSets and Suites.
+	Id id = 1;
+	message Id {
+		string value = 1;
+	}
+
+	// Defines all the metadata about a SuiteSet.
+	Metadata metadata = 2;
+
+	// A list SuiteSet Id's contained within the SuiteSet.
+	repeated Id suite_sets = 4;
+
+	// A list Suite Id's contained within the SuiteSet.
+	repeated Suite.Id suites = 3;
+}
+
+// Defines a grouping of Tests that represent scheduling units CTP can enforce
+// predefined Suite rules against like runtime limits. A Suite represents a
+// smaller validation assertion that is satisfied if all its containing Tests
+// pass.
+message Suite {
+	// Globally unique identifier across all SuiteSets and Suites.
+	Id id = 1;
+	message Id {
+		string value = 1;
+	}
+
+	// Defines all the metadata about a Suite.
+	Metadata metadata = 2;
+
+	// The list of Tests contained within the Suite.
+	repeated TestCase.Id tests = 3;
+}
+
+// Contains extra information regarding the Suite/SuiteSet that does not affect
+// execution or scheduling.
+message Metadata {
+	// Email contacts of owners that gate changes to the Suite/SuiteSet and
+	// should be notified regarding any Suite/SuiteSet issues (e.g. flakiness,
+	// runtime).
+	repeated Contact owners = 1;
+
+	// The Buganizer component to issue bugs against regarding the
+	// Suite/SuiteSet.
+	BugComponent bug_component = 2;
+
+	// A short summary capturing the quality guarantee validated by the
+	// Suite/SuiteSet (e.g. “Validates a device passes Engineering Verification
+	// Testing and is ready to continue to Design Verification Testing”).
+	Criteria criteria = 3;
+}
