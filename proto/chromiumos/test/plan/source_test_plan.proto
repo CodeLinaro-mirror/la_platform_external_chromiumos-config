@@ -55,15 +55,16 @@ message SourceTestPlan {
     // allowed.
     string path = 3;
 
-    // Currently unimplemented in the interpreter.
-    // TODO(b/278886899): Update with templating documentation when implemented.
-    //
     // Fields that will be made available to the Starlark file via interpreter
     // builtins. Note that specifying these fields here does NOT automatically
     // mean the HW/VMTestPlan protos generated will use them in all plans.
     //
     // Specifying these fields on a Starlark file that doesn't use them will
     // cause `test_plan validate` to fail.
+    //
+    // Unless otherwise noted, these parameters are made available in the
+    // Starlark interpreter with function calls named
+    // `testplan.get_<field_name>`; for example, `testplan.get_tag_criteria`.
     message TemplateParameters {
       // TestCaseTagCriteria that will be made available to the Starlark file.
       // Intended for the case where many different DIR_METADATA files want to
@@ -75,7 +76,6 @@ message SourceTestPlan {
       // reference the same templated Starlark file with different tag_criteria.
       string suite_name = 2;
 
-      // CURRENTLY UNIMPLEMENTED.
       // Program name that will be made available to the Starlark file.
       // Generally this will be passed to the v1_compatible_hw_test_plan and
       // v1_compatible_vm_test_plan Starlark functions, but the Starlark file is

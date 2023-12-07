@@ -192,15 +192,16 @@ func (x *SourceTestPlan_TestPlanStarlarkFile) GetTemplateParameters() *SourceTes
 	return nil
 }
 
-// Currently unimplemented in the interpreter.
-// TODO(b/278886899): Update with templating documentation when implemented.
-//
 // Fields that will be made available to the Starlark file via interpreter
 // builtins. Note that specifying these fields here does NOT automatically
 // mean the HW/VMTestPlan protos generated will use them in all plans.
 //
 // Specifying these fields on a Starlark file that doesn't use them will
 // cause `test_plan validate` to fail.
+//
+// Unless otherwise noted, these parameters are made available in the
+// Starlark interpreter with function calls named
+// `testplan.get_<field_name>`; for example, `testplan.get_tag_criteria`.
 type SourceTestPlan_TestPlanStarlarkFile_TemplateParameters struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -214,7 +215,6 @@ type SourceTestPlan_TestPlanStarlarkFile_TemplateParameters struct {
 	// to prevent suite name collisions when multiple DIR_METADATA files
 	// reference the same templated Starlark file with different tag_criteria.
 	SuiteName string `protobuf:"bytes,2,opt,name=suite_name,json=suiteName,proto3" json:"suite_name,omitempty"`
-	// CURRENTLY UNIMPLEMENTED.
 	// Program name that will be made available to the Starlark file.
 	// Generally this will be passed to the v1_compatible_hw_test_plan and
 	// v1_compatible_vm_test_plan Starlark functions, but the Starlark file is
