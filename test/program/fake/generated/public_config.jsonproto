@@ -98,6 +98,33 @@
             }
           }
         },
+        "schedqosConfig": {
+          "default": {
+            "backgroundCpuShare": 10,
+            "normalCpuShare": 1024,
+            "threadBackground": {},
+            "threadBalanced": {
+              "nice": 8,
+              "rtPriority": 0,
+              "uclampMin": 2
+            },
+            "threadUrgent": {
+              "cpusetCgroup": "CPUSET_CGROUP_EFFICIENT",
+              "latencySensitive": false,
+              "nice": 0,
+              "rtPriority": -1,
+              "uclampMin": 1
+            },
+            "threadUrgentBursty": {
+              "cpusetCgroup": "CPUSET_CGROUP_ALL",
+              "latencySensitive": true,
+              "nice": -8,
+              "rtPriority": 8,
+              "uclampMin": 0
+            },
+            "threadUtility": {}
+          }
+        },
         "schedulerTune": {
           "boostArcvm": 0.5,
           "boostTopApp": 60,

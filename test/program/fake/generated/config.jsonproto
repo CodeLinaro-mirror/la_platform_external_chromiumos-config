@@ -309,6 +309,33 @@
             }
           }
         },
+        "schedqosConfig": {
+          "default": {
+            "backgroundCpuShare": 10,
+            "normalCpuShare": 1024,
+            "threadBackground": {},
+            "threadBalanced": {
+              "nice": 8,
+              "rtPriority": 0,
+              "uclampMin": 2
+            },
+            "threadUrgent": {
+              "cpusetCgroup": 2,
+              "latencySensitive": false,
+              "nice": 0,
+              "rtPriority": -1,
+              "uclampMin": 1
+            },
+            "threadUrgentBursty": {
+              "cpusetCgroup": 1,
+              "latencySensitive": true,
+              "nice": -8,
+              "rtPriority": 8,
+              "uclampMin": 0
+            },
+            "threadUtility": {}
+          }
+        },
         "schedulerTune": {
           "boostArcvm": 0.5,
           "boostTopApp": 60,
@@ -325,7 +352,7 @@
         ]
       },
       "publicReplication": {
-        "publicFields": "name,id,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,mosysPlatformName,generateCameraMediaProfiles"
+        "publicFields": "name,id,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,mosysPlatformName,generateCameraMediaProfiles"
       }
     }
   ]

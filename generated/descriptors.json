@@ -8549,12 +8549,176 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/wrappers.proto"
+      ],
+      "messageType": [
+        {
+          "enumType": [
+            {
+              "name": "CpusetCgroup",
+              "value": [
+                {
+                  "name": "CPUSET_CGROUP_DEFAULT",
+                  "number": 0
+                },
+                {
+                  "name": "CPUSET_CGROUP_ALL",
+                  "number": 1
+                },
+                {
+                  "name": "CPUSET_CGROUP_EFFICIENT",
+                  "number": 2
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "default",
+              "label": "LABEL_OPTIONAL",
+              "name": "default",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.SchedqosConfig.ConfigSet"
+            }
+          ],
+          "name": "SchedqosConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "rtPriority",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "rt_priority",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Int32Value"
+                },
+                {
+                  "jsonName": "nice",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "nice",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Int32Value"
+                },
+                {
+                  "jsonName": "uclampMin",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "uclamp_min",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.UInt32Value"
+                },
+                {
+                  "jsonName": "cpusetCgroup",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "cpuset_cgroup",
+                  "number": 4,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.SchedqosConfig.CpusetCgroup"
+                },
+                {
+                  "jsonName": "latencySensitive",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "latency_sensitive",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.BoolValue"
+                }
+              ],
+              "name": "ThreadConfig"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "normalCpuShare",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "normal_cpu_share",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "backgroundCpuShare",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "background_cpu_share",
+                  "number": 2,
+                  "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "threadUrgentBursty",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thread_urgent_bursty",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.SchedqosConfig.ThreadConfig"
+                },
+                {
+                  "jsonName": "threadUrgent",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thread_urgent",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.SchedqosConfig.ThreadConfig"
+                },
+                {
+                  "jsonName": "threadBalanced",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thread_balanced",
+                  "number": 5,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.SchedqosConfig.ThreadConfig"
+                },
+                {
+                  "jsonName": "threadEco",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thread_eco",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.SchedqosConfig.ThreadConfig"
+                },
+                {
+                  "jsonName": "threadUtility",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thread_utility",
+                  "number": 7,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.SchedqosConfig.ThreadConfig"
+                },
+                {
+                  "jsonName": "threadBackground",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thread_background",
+                  "number": 8,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.SchedqosConfig.ThreadConfig"
+                }
+              ],
+              "name": "ConfigSet"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/config/api/schedqos_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api"
+      },
+      "package": "chromiumos.config.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/config/api/component.proto",
         "chromiumos/config/api/design.proto",
         "chromiumos/config/api/design_id.proto",
         "chromiumos/config/api/device_brand_id.proto",
         "chromiumos/config/api/program_id.proto",
         "chromiumos/config/api/resource_config.proto",
+        "chromiumos/config/api/schedqos_config.proto",
         "chromiumos/config/api/topology.proto",
         "chromiumos/config/public_replication/public_replication.proto"
       ],
@@ -8926,6 +9090,14 @@
                   "number": 10,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.ResourceConfig"
+                },
+                {
+                  "jsonName": "schedqosConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "schedqos_config",
+                  "number": 11,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.SchedqosConfig"
                 }
               ],
               "name": "Platform",

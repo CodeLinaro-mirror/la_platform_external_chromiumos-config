@@ -112,6 +112,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -254,6 +281,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -394,6 +448,33 @@
                 }
               }
             }
+          }
+        },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
           }
         },
         "scheduler-tune": {
@@ -544,6 +625,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -686,6 +794,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -826,6 +961,33 @@
                 }
               }
             }
+          }
+        },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
           }
         },
         "scheduler-tune": {
@@ -970,6 +1132,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -1112,6 +1301,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -1252,6 +1468,33 @@
                 }
               }
             }
+          }
+        },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
           }
         },
         "scheduler-tune": {
@@ -1531,6 +1774,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -1801,6 +2071,33 @@
                 }
               }
             }
+          }
+        },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
           }
         },
         "scheduler-tune": {
@@ -2084,6 +2381,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -2354,6 +2678,33 @@
                 }
               }
             }
+          }
+        },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
           }
         },
         "scheduler-tune": {
@@ -2633,6 +2984,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -2910,6 +3288,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -3160,6 +3565,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -3312,6 +3744,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -3452,6 +3911,33 @@
                 }
               }
             }
+          }
+        },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
           }
         },
         "scheduler-tune": {
@@ -3596,6 +4082,33 @@
             }
           }
         },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
+          }
+        },
         "scheduler-tune": {
           "boost-arcvm": 0.5,
           "boost-top-app": 60,
@@ -3736,6 +4249,33 @@
                 }
               }
             }
+          }
+        },
+        "schedqos": {
+          "default": {
+            "background-cpu-share": 10,
+            "normal-cpu-share": 1024,
+            "thread-background": {},
+            "thread-balanced": {
+              "nice": 8,
+              "rt-priority": 0,
+              "uclamp-min": 2
+            },
+            "thread-urgent": {
+              "cpuset-cgroup": "efficient",
+              "latency-sensitive": false,
+              "nice": 0,
+              "rt-priority": -1,
+              "uclamp-min": 1
+            },
+            "thread-urgent-bursty": {
+              "cpuset-cgroup": "all",
+              "latency-sensitive": true,
+              "nice": -8,
+              "rt-priority": 8,
+              "uclamp-min": 0
+            },
+            "thread-utility": {}
           }
         },
         "scheduler-tune": {

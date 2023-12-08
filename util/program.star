@@ -3,8 +3,14 @@
 See proto definitions for descriptions of arguments.
 """
 
-# Needed to load from @proto. Add @unused to silence lint.
-load("//config/util/bindings/proto.star", "protos")
+load(
+    "@proto//chromiumos/config/api/design_id.proto",
+    design_id_pb = "chromiumos.config.api",
+)
+load(
+    "@proto//chromiumos/config/api/device_brand_id.proto",
+    db_id_pb = "chromiumos.config.api",
+)
 load(
     "@proto//chromiumos/config/api/program.proto",
     program_pb = "chromiumos.config.api",
@@ -14,13 +20,12 @@ load(
     program_id_pb = "chromiumos.config.api",
 )
 load(
-    "@proto//chromiumos/config/api/design_id.proto",
-    design_id_pb = "chromiumos.config.api",
+    "@proto//chromiumos/config/api/schedqos_config.proto",
+    schedqos_pb = "chromiumos.config.api",
 )
-load(
-    "@proto//chromiumos/config/api/device_brand_id.proto",
-    db_id_pb = "chromiumos.config.api",
-)
+
+# Needed to load from @proto. Add @unused to silence lint.
+load("//config/util/bindings/proto.star", "protos")
 load("//config/util/generate.star", "generate")
 load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/public_replication.star", "public_replication")
@@ -34,9 +39,62 @@ _LAUNCHED_PUBLIC_FIELDS = [
     "platform.hevc_support",
     "platform.resource_config",
     "platform.scheduler_tune",
+    "platform.schedqos_config",
     "mosys_platform_name",
     "generate_camera_media_profiles",
 ]
+
+def _create_schedqos(default = None):
+    """Builds a SchedqosConfig proto"""
+    return schedqos_pb.SchedqosConfig(
+        default = default,
+    )
+
+def _create_schedqos_config_set(
+        normal_cpu_share = None,
+        background_cpu_share = None,
+        thread_urgent_bursty = None,
+        thread_urgent = None,
+        thread_balanced = None,
+        thread_eco = None,
+        thread_utility = None,
+        thread_background = None):
+    """Builds a ConfigSet proto for schedqos"""
+    return schedqos_pb.SchedqosConfig.ConfigSet(
+        normal_cpu_share = normal_cpu_share,
+        background_cpu_share = background_cpu_share,
+        thread_urgent_bursty = thread_urgent_bursty,
+        thread_urgent = thread_urgent,
+        thread_balanced = thread_balanced,
+        thread_eco = thread_eco,
+        thread_utility = thread_utility,
+        thread_background = thread_background,
+    )
+
+def _create_schedqos_thread_config(
+        rt_priority = None,
+        nice = None,
+        uclamp_min = None,
+        cpuset_cgroup = None,
+        latency_sensitive = None):
+    """Builds a ThreadConfig proto for schedqos"""
+    thread_config = schedqos_pb.SchedqosConfig.ThreadConfig(
+        cpuset_cgroup = cpuset_cgroup,
+    )
+    if rt_priority != None:
+        thread_config.rt_priority.value = rt_priority
+    if nice != None:
+        thread_config.nice.value = nice
+    if uclamp_min != None:
+        thread_config.uclamp_min.value = uclamp_min
+    if latency_sensitive != None:
+        thread_config.latency_sensitive.value = latency_sensitive
+    return thread_config
+
+_SCHEDQOS_CPUSET_CGROUP = struct(
+    ALL = schedqos_pb.SchedqosConfig.CPUSET_CGROUP_ALL,
+    EFFICIENT = schedqos_pb.SchedqosConfig.CPUSET_CGROUP_EFFICIENT,
+)
 
 def _create_firmware_configuration_segment(name, mask):
     """Builds a FirmwareConfigurationSegment proto."""
@@ -95,7 +153,8 @@ def _create_platform(
         boost_arcvm = None,
         hevc_support = None,
         arc_media_codecs_suffix = None,
-        resource = None):
+        resource = None,
+        schedqos = None):
     capabilities = None
     if any([
         suspend_to_idle != None,
@@ -143,6 +202,7 @@ def _create_platform(
         arc_settings = arc_settings,
         hevc_support = hw_topo.bool_to_present(hevc_support),
         resource_config = resource,
+        schedqos_config = schedqos,
     )
 
 def _create_audio_config(
@@ -237,6 +297,10 @@ program = struct(
     create_signer_configs_by_brand = _create_signer_configs_by_brand,
     create_signer_config_by_design = _create_signer_config_by_design,
     create_signer_configs_by_design = _create_signer_configs_by_design,
+    create_schedqos = _create_schedqos,
+    create_schedqos_config_set = _create_schedqos_config_set,
+    create_schedqos_thread_config = _create_schedqos_thread_config,
     generate = generate.generate,
     platform = program_pb.Program.Platform,
+    schedqos_cpuset_cgroup = _SCHEDQOS_CPUSET_CGROUP,
 )

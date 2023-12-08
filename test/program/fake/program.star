@@ -154,6 +154,34 @@ _PLATFORM = program_util.create_platform(
             ),
         ),
     ),
+    schedqos = program_util.create_schedqos(
+        default = program_util.create_schedqos_config_set(
+            normal_cpu_share = 1024,
+            background_cpu_share = 10,
+            thread_urgent_bursty = program_util.create_schedqos_thread_config(
+                rt_priority = 8,
+                nice = -8,
+                uclamp_min = 0,
+                cpuset_cgroup = program_util.schedqos_cpuset_cgroup.ALL,
+                latency_sensitive = True,
+            ),
+            thread_urgent = program_util.create_schedqos_thread_config(
+                rt_priority = -1,
+                nice = 0,
+                uclamp_min = 1,
+                cpuset_cgroup = program_util.schedqos_cpuset_cgroup.EFFICIENT,
+                latency_sensitive = False,
+            ),
+            thread_balanced = program_util.create_schedqos_thread_config(
+                rt_priority = 0,
+                nice = 8,
+                uclamp_min = 2,
+            ),
+            thread_eco = None,
+            thread_utility = program_util.create_schedqos_thread_config(),
+            thread_background = program_util.create_schedqos_thread_config(),
+        ),
+    ),
 )
 
 _HDMI_AUDIO_CARD = hw_topo.create_audio_card_config(
