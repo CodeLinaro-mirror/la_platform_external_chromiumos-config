@@ -87,6 +87,9 @@ message Dut {
 
   // Cache server for downloading artifacts related to this DUT.
   CacheServer cache_server = 4;
+
+  // The secret for wifi tests.
+  WifiSecret wifi_secret =  6;
 }
 
 // Defines the build target/board and model of the Dut
@@ -374,4 +377,12 @@ enum Phase {
   PVT_TUNE_BITS = 31;
   PVT_TELESU = 32;
   SR = 33;
+}
+
+// Next Tag: 4
+// WifiSecret is the secret used for wifi tests.
+message WifiSecret {
+  string ssid = 1; // wifi SSID
+  string security = 2; // security protocol, e.g. WEP, WPA, etc.
+  string password = 3; // wifi password
 }

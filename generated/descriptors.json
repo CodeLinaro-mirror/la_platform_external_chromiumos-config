@@ -17144,6 +17144,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.CacheServer"
+            },
+            {
+              "jsonName": "wifiSecret",
+              "label": "LABEL_OPTIONAL",
+              "name": "wifi_secret",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.WifiSecret"
             }
           ],
           "name": "Dut",
@@ -18010,6 +18018,32 @@
             }
           ],
           "name": "BluetoothPeer"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ssid",
+              "label": "LABEL_OPTIONAL",
+              "name": "ssid",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "security",
+              "label": "LABEL_OPTIONAL",
+              "name": "security",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "password",
+              "label": "LABEL_OPTIONAL",
+              "name": "password",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "WifiSecret"
         }
       ],
       "name": "chromiumos/test/lab/api/dut.proto",
