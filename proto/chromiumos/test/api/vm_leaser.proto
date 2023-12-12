@@ -10,6 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
+import "chromiumos/test/api/device_leasing.proto";
 
 service VMLeaserService {
   // Creates a lease record and returns a VM.
@@ -62,27 +63,6 @@ message LeaseVMRequest {
   map<string, string> labels = 7;
 }
 
-// NEXT TAG: 13
-message VMRequirements {
-  string gce_image = 1;
-  string gce_region = 2;
-  string gce_project = 3;
-
-  // Networking-related params
-  string gce_network = 4;
-  string gce_subnet = 5;
-  bool subnet_mode_network_enabled = 11;
-
-  string gce_machine_type = 6;
-  string gce_scope = 7;
-  // Specified IP address for VM. If not, use ephemeral IP.
-  string gce_ip_address = 8;
-  int64 gce_disk_size = 10;
-  string gce_min_cpu_platform = 12;
-
-  VMType type = 9;
-}
-
 message VM {
   string id = 1;
   VMAddress address = 2;
@@ -95,13 +75,6 @@ message VMAddress {
   // IP address of the device.
   string host = 1;
   int32 port = 2;
-}
-
-// VMType specifies the type of VM that is requested and will be created.
-enum VMType {
-  VM_TYPE_UNSPECIFIED = 0;
-  VM_TYPE_DUT = 1;
-  VM_TYPE_DRONE = 2;
 }
 
 // VMTestingClient specifies who the caller is (e.g. ChromeOS, Android, etc.)
@@ -122,24 +95,6 @@ message LeaseVMResponse {
   // Eventually we will include authentication token to access device for the
   // duration of the lease. Shared and long lived secrets are not good security.
   // Today there is no such enforcement so this is not a regression.
-}
-
-message ExtendLeaseRequest {
-  // Original lease_id obtained when the lease was created.
-  string lease_id = 1;
-
-  // Important to configure a good lifetime max for leases can not be extended
-  // indefinitely. Ideally, long running tasks should not exists and failing
-  // tasks should just fail without extension.
-  //
-  // It is also important to ensure same limits as those for
-  // LeaseVMRequest.duration.
-  google.protobuf.Duration extend_duration = 2;
-}
-
-message ExtendLeaseResponse {
-  string lease_id = 1;
-  google.protobuf.Timestamp expiration_time = 2;
 }
 
 message ReleaseVMRequest {

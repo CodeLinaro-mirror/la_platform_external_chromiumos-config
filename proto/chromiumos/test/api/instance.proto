@@ -9,9 +9,8 @@ package chromiumos.test.api;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "google/protobuf/duration.proto";
+import "chromiumos/test/api/device_leasing.proto";
 import "chromiumos/test/api/image.proto";
-import "chromiumos/test/api/vm_leaser.proto";
-
 
 // ProviderId is the ID of various VM service providers: GCloud, VM leaser
 // service etc.

@@ -23606,6 +23606,643 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/duration.proto",
+        "google/protobuf/timestamp.proto"
+      ],
+      "enumType": [
+        {
+          "name": "VMType",
+          "value": [
+            {
+              "name": "VM_TYPE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "VM_TYPE_DUT",
+              "number": 1
+            },
+            {
+              "name": "VM_TYPE_DRONE",
+              "number": 2
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "gceImage",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_image",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gceRegion",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_region",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gceProject",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_project",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gceNetwork",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_network",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gceSubnet",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_subnet",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "subnetModeNetworkEnabled",
+              "label": "LABEL_OPTIONAL",
+              "name": "subnet_mode_network_enabled",
+              "number": 11,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "gceMachineType",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_machine_type",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gceScope",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_scope",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gceIpAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_ip_address",
+              "number": 8,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gceDiskSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_disk_size",
+              "number": 10,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "gceMinCpuPlatform",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_min_cpu_platform",
+              "number": 12,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 9,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.VMType"
+            }
+          ],
+          "name": "VMRequirements"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "schedulableLabels",
+              "label": "LABEL_REPEATED",
+              "name": "schedulable_labels",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HardwareRequirements.SchedulableLabelsEntry"
+            }
+          ],
+          "name": "HardwareRequirements",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "values",
+                  "label": "LABEL_REPEATED",
+                  "name": "values",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "LabelValues"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.HardwareRequirements.LabelValues"
+                }
+              ],
+              "name": "SchedulableLabelsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "extendDuration",
+              "label": "LABEL_OPTIONAL",
+              "name": "extend_duration",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "idempotencyKey",
+              "label": "LABEL_OPTIONAL",
+              "name": "idempotency_key",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ExtendLeaseRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "expirationTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "expiration_time",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            }
+          ],
+          "name": "ExtendLeaseResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/device_leasing.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "google/protobuf/duration.proto",
+        "google/protobuf/timestamp.proto",
+        "chromiumos/test/api/device_leasing.proto"
+      ],
+      "enumType": [
+        {
+          "name": "DeviceType",
+          "value": [
+            {
+              "name": "DEVICE_TYPE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "DEVICE_TYPE_VIRTUAL",
+              "number": 1
+            },
+            {
+              "name": "DEVICE_TYPE_PHYSICAL",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "DeviceState",
+          "value": [
+            {
+              "name": "DEVICE_STATE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "DEVICE_STATE_AVAILABLE",
+              "number": 1
+            },
+            {
+              "name": "DEVICE_STATE_LEASED",
+              "number": 2
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "address",
+              "label": "LABEL_OPTIONAL",
+              "name": "address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DeviceAddress"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.DeviceType"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.DeviceState"
+            },
+            {
+              "jsonName": "hardwareReqs",
+              "label": "LABEL_OPTIONAL",
+              "name": "hardware_reqs",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HardwareRequirements"
+            }
+          ],
+          "name": "Device"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "host",
+              "label": "LABEL_OPTIONAL",
+              "name": "host",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "port",
+              "label": "LABEL_OPTIONAL",
+              "name": "port",
+              "number": 2,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "DeviceAddress"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "idempotencyKey",
+              "label": "LABEL_OPTIONAL",
+              "name": "idempotency_key",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "deviceAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_address",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DeviceAddress"
+            },
+            {
+              "jsonName": "deviceType",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_type",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.DeviceType"
+            },
+            {
+              "jsonName": "leasedTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "leased_time",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "releasedTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "released_time",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "expirationTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "expiration_time",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "lastUpdatedTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "last_updated_time",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "requestParameters",
+              "label": "LABEL_REPEATED",
+              "name": "request_parameters",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DeviceLeaseRecord.RequestParametersEntry"
+            }
+          ],
+          "name": "DeviceLeaseRecord",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "RequestParametersEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "idempotencyKey",
+              "label": "LABEL_OPTIONAL",
+              "name": "idempotency_key",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "onBehalfOf",
+              "label": "LABEL_OPTIONAL",
+              "name": "on_behalf_of",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "quotaId",
+              "label": "LABEL_OPTIONAL",
+              "name": "quota_id",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "leaseDuration",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_duration",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "vmHostReqs",
+              "label": "LABEL_OPTIONAL",
+              "name": "vm_host_reqs",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.VMRequirements"
+            },
+            {
+              "jsonName": "hardwareDeviceReqs",
+              "label": "LABEL_OPTIONAL",
+              "name": "hardware_device_reqs",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.HardwareRequirements"
+            }
+          ],
+          "name": "LeaseDeviceRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceLease",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_lease",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DeviceLeaseRecord"
+            }
+          ],
+          "name": "LeaseDeviceResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ReleaseDeviceRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ReleaseDeviceResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetDeviceRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "parent",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pageSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_size",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_token",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "filter",
+              "label": "LABEL_OPTIONAL",
+              "name": "filter",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListDevicesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "devices",
+              "label": "LABEL_REPEATED",
+              "name": "devices",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Device"
+            },
+            {
+              "jsonName": "nextPageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_page_token",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListDevicesResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/device_manager.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.LeaseDeviceRequest",
+              "name": "LeaseDevice",
+              "options": {},
+              "outputType": ".chromiumos.test.api.LeaseDeviceResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ReleaseDeviceRequest",
+              "name": "ReleaseDevice",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ReleaseDeviceResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ExtendLeaseRequest",
+              "name": "ExtendLease",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ExtendLeaseResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.GetDeviceRequest",
+              "name": "GetDevice",
+              "options": {},
+              "outputType": ".chromiumos.test.api.Device"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ListDevicesRequest",
+              "name": "ListDevices",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ListDevicesResponse"
+            }
+          ],
+          "name": "DeviceLeaseService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/longrunning/operations.proto"
       ],
@@ -24711,516 +25348,8 @@
       },
       "dependency": [
         "google/protobuf/duration.proto",
-        "google/protobuf/timestamp.proto"
-      ],
-      "enumType": [
-        {
-          "name": "VMType",
-          "value": [
-            {
-              "name": "VM_TYPE_UNSPECIFIED",
-              "number": 0
-            },
-            {
-              "name": "VM_TYPE_DUT",
-              "number": 1
-            },
-            {
-              "name": "VM_TYPE_DRONE",
-              "number": 2
-            }
-          ]
-        },
-        {
-          "name": "VMTestingClient",
-          "value": [
-            {
-              "name": "VM_TESTING_CLIENT_UNSPECIFIED",
-              "number": 0
-            },
-            {
-              "name": "VM_TESTING_CLIENT_CHROMEOS",
-              "number": 1
-            },
-            {
-              "name": "VM_TESTING_CLIENT_CROSFLEET",
-              "number": 2
-            }
-          ]
-        }
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "idempotencyKey",
-              "label": "LABEL_OPTIONAL",
-              "name": "idempotency_key",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "onBehalfOf",
-              "label": "LABEL_OPTIONAL",
-              "name": "on_behalf_of",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "quotaId",
-              "label": "LABEL_OPTIONAL",
-              "name": "quota_id",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "leaseDuration",
-              "label": "LABEL_OPTIONAL",
-              "name": "lease_duration",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Duration"
-            },
-            {
-              "jsonName": "hostReqs",
-              "label": "LABEL_OPTIONAL",
-              "name": "host_reqs",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.VMRequirements"
-            },
-            {
-              "jsonName": "testingClient",
-              "label": "LABEL_OPTIONAL",
-              "name": "testing_client",
-              "number": 6,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.VMTestingClient"
-            },
-            {
-              "jsonName": "labels",
-              "label": "LABEL_REPEATED",
-              "name": "labels",
-              "number": 7,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.LeaseVMRequest.LabelsEntry"
-            }
-          ],
-          "name": "LeaseVMRequest",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "key",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "key",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "LabelsEntry",
-              "options": {
-                "mapEntry": true
-              }
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "gceImage",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_image",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "gceRegion",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_region",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "gceProject",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_project",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "gceNetwork",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_network",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "gceSubnet",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_subnet",
-              "number": 5,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "subnetModeNetworkEnabled",
-              "label": "LABEL_OPTIONAL",
-              "name": "subnet_mode_network_enabled",
-              "number": 11,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "gceMachineType",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_machine_type",
-              "number": 6,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "gceScope",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_scope",
-              "number": 7,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "gceIpAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_ip_address",
-              "number": 8,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "gceDiskSize",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_disk_size",
-              "number": 10,
-              "type": "TYPE_INT64"
-            },
-            {
-              "jsonName": "gceMinCpuPlatform",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_min_cpu_platform",
-              "number": 12,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "type",
-              "label": "LABEL_OPTIONAL",
-              "name": "type",
-              "number": 9,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.VMType"
-            }
-          ],
-          "name": "VMRequirements"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "address",
-              "label": "LABEL_OPTIONAL",
-              "name": "address",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.VMAddress"
-            },
-            {
-              "jsonName": "type",
-              "label": "LABEL_OPTIONAL",
-              "name": "type",
-              "number": 3,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.VMType"
-            },
-            {
-              "jsonName": "gceRegion",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_region",
-              "number": 4,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "expirationTime",
-              "label": "LABEL_OPTIONAL",
-              "name": "expiration_time",
-              "number": 5,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Timestamp"
-            }
-          ],
-          "name": "VM"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "host",
-              "label": "LABEL_OPTIONAL",
-              "name": "host",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "port",
-              "label": "LABEL_OPTIONAL",
-              "name": "port",
-              "number": 2,
-              "type": "TYPE_INT32"
-            }
-          ],
-          "name": "VMAddress"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "leaseId",
-              "label": "LABEL_OPTIONAL",
-              "name": "lease_id",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "vm",
-              "label": "LABEL_OPTIONAL",
-              "name": "vm",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.VM"
-            },
-            {
-              "jsonName": "expirationTime",
-              "label": "LABEL_OPTIONAL",
-              "name": "expiration_time",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Timestamp"
-            }
-          ],
-          "name": "LeaseVMResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "leaseId",
-              "label": "LABEL_OPTIONAL",
-              "name": "lease_id",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "extendDuration",
-              "label": "LABEL_OPTIONAL",
-              "name": "extend_duration",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Duration"
-            }
-          ],
-          "name": "ExtendLeaseRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "leaseId",
-              "label": "LABEL_OPTIONAL",
-              "name": "lease_id",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "expirationTime",
-              "label": "LABEL_OPTIONAL",
-              "name": "expiration_time",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Timestamp"
-            }
-          ],
-          "name": "ExtendLeaseResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "leaseId",
-              "label": "LABEL_OPTIONAL",
-              "name": "lease_id",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "gceProject",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_project",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "gceRegion",
-              "label": "LABEL_OPTIONAL",
-              "name": "gce_region",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "ReleaseVMRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "leaseId",
-              "label": "LABEL_OPTIONAL",
-              "name": "lease_id",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "ReleaseVMResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "parent",
-              "label": "LABEL_OPTIONAL",
-              "name": "parent",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "pageSize",
-              "label": "LABEL_OPTIONAL",
-              "name": "page_size",
-              "number": 2,
-              "type": "TYPE_INT32"
-            },
-            {
-              "jsonName": "pageToken",
-              "label": "LABEL_OPTIONAL",
-              "name": "page_token",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "filter",
-              "label": "LABEL_OPTIONAL",
-              "name": "filter",
-              "number": 4,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "ListLeasesRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "vms",
-              "label": "LABEL_REPEATED",
-              "name": "vms",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.VM"
-            },
-            {
-              "jsonName": "nextPageToken",
-              "label": "LABEL_OPTIONAL",
-              "name": "next_page_token",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "ListLeasesResponse"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "imagePath",
-              "label": "LABEL_OPTIONAL",
-              "name": "image_path",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "ImportImageRequest"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "imageName",
-              "label": "LABEL_OPTIONAL",
-              "name": "image_name",
-              "number": 1,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "ImportImageResponse"
-        }
-      ],
-      "name": "chromiumos/test/api/vm_leaser.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.LeaseVMRequest",
-              "name": "LeaseVM",
-              "options": {},
-              "outputType": ".chromiumos.test.api.LeaseVMResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.ReleaseVMRequest",
-              "name": "ReleaseVM",
-              "options": {},
-              "outputType": ".chromiumos.test.api.ReleaseVMResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.ExtendLeaseRequest",
-              "name": "ExtendLease",
-              "options": {},
-              "outputType": ".chromiumos.test.api.ExtendLeaseResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.ListLeasesRequest",
-              "name": "ListLeases",
-              "options": {},
-              "outputType": ".chromiumos.test.api.ListLeasesResponse"
-            },
-            {
-              "inputType": ".chromiumos.test.api.ImportImageRequest",
-              "name": "ImportImage",
-              "options": {},
-              "outputType": ".chromiumos.test.api.ImportImageResponse"
-            }
-          ],
-          "name": "VMLeaserService"
-        }
-      ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "google/protobuf/duration.proto",
-        "chromiumos/test/api/image.proto",
-        "chromiumos/test/api/vm_leaser.proto"
+        "chromiumos/test/api/device_leasing.proto",
+        "chromiumos/test/api/image.proto"
       ],
       "enumType": [
         {
@@ -27971,6 +28100,368 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1"
       },
       "package": "chromiumos.test.api.v1",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "google/protobuf/duration.proto",
+        "google/protobuf/timestamp.proto",
+        "chromiumos/test/api/device_leasing.proto"
+      ],
+      "enumType": [
+        {
+          "name": "VMTestingClient",
+          "value": [
+            {
+              "name": "VM_TESTING_CLIENT_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "VM_TESTING_CLIENT_CHROMEOS",
+              "number": 1
+            },
+            {
+              "name": "VM_TESTING_CLIENT_CROSFLEET",
+              "number": 2
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "idempotencyKey",
+              "label": "LABEL_OPTIONAL",
+              "name": "idempotency_key",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "onBehalfOf",
+              "label": "LABEL_OPTIONAL",
+              "name": "on_behalf_of",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "quotaId",
+              "label": "LABEL_OPTIONAL",
+              "name": "quota_id",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "leaseDuration",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_duration",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "hostReqs",
+              "label": "LABEL_OPTIONAL",
+              "name": "host_reqs",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.VMRequirements"
+            },
+            {
+              "jsonName": "testingClient",
+              "label": "LABEL_OPTIONAL",
+              "name": "testing_client",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.VMTestingClient"
+            },
+            {
+              "jsonName": "labels",
+              "label": "LABEL_REPEATED",
+              "name": "labels",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LeaseVMRequest.LabelsEntry"
+            }
+          ],
+          "name": "LeaseVMRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "LabelsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "address",
+              "label": "LABEL_OPTIONAL",
+              "name": "address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.VMAddress"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.VMType"
+            },
+            {
+              "jsonName": "gceRegion",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_region",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "expirationTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "expiration_time",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            }
+          ],
+          "name": "VM"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "host",
+              "label": "LABEL_OPTIONAL",
+              "name": "host",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "port",
+              "label": "LABEL_OPTIONAL",
+              "name": "port",
+              "number": 2,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "VMAddress"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "vm",
+              "label": "LABEL_OPTIONAL",
+              "name": "vm",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.VM"
+            },
+            {
+              "jsonName": "expirationTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "expiration_time",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            }
+          ],
+          "name": "LeaseVMResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gceProject",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_project",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gceRegion",
+              "label": "LABEL_OPTIONAL",
+              "name": "gce_region",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ReleaseVMRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ReleaseVMResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "parent",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pageSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_size",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "page_token",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "filter",
+              "label": "LABEL_OPTIONAL",
+              "name": "filter",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListLeasesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "vms",
+              "label": "LABEL_REPEATED",
+              "name": "vms",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.VM"
+            },
+            {
+              "jsonName": "nextPageToken",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_page_token",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ListLeasesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "imagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ImportImageRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "imageName",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ImportImageResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/vm_leaser.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.LeaseVMRequest",
+              "name": "LeaseVM",
+              "options": {},
+              "outputType": ".chromiumos.test.api.LeaseVMResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ReleaseVMRequest",
+              "name": "ReleaseVM",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ReleaseVMResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ExtendLeaseRequest",
+              "name": "ExtendLease",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ExtendLeaseResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ListLeasesRequest",
+              "name": "ListLeases",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ListLeasesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.ImportImageRequest",
+              "name": "ImportImage",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ImportImageResponse"
+            }
+          ],
+          "name": "VMLeaserService"
+        }
+      ],
       "syntax": "proto3"
     },
     {
