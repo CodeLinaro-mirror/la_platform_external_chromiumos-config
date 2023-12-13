@@ -18,6 +18,7 @@ message TestHarness {
     Tast tast = 3;
     Gtest gtest = 4;
     Mobly mobly = 5;
+    Crosier crosier = 6;
   }
 
   message Manual {}
@@ -28,4 +29,5 @@ message TestHarness {
     string target_bin_location = 1;
   }
   message Mobly {}
+  message Crosier {}
 }

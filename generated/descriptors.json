@@ -19417,6 +19417,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestHarness.Mobly"
+            },
+            {
+              "jsonName": "crosier",
+              "label": "LABEL_OPTIONAL",
+              "name": "crosier",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Crosier"
             }
           ],
           "name": "TestHarness",
@@ -19444,6 +19453,9 @@
             },
             {
               "name": "Mobly"
+            },
+            {
+              "name": "Crosier"
             }
           ],
           "oneofDecl": [
