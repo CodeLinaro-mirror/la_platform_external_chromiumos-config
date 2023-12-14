@@ -1,0 +1,42 @@
+{
+	"suites": [
+		{
+			"id": {
+				"value": "example_suite"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "dbeckett@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1234567"
+				},
+				"criteria": {
+					"value": "Validates validates some things are working"
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.example.Pass"
+				},
+				{
+					"value": "tast.example.Fail"
+				},
+				{
+					"value": "tauto.stub_PassServer"
+				},
+				{
+					"value": "tauto.stub_FailServer"
+				}
+			]
+		}
+	]
+}

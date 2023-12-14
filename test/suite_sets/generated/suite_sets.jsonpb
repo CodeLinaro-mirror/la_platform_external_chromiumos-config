@@ -1,0 +1,33 @@
+{
+	"suiteSets": [
+		{
+			"id": {
+				"value": "example_suite_set"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "dbeckett@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1234567"
+				},
+				"criteria": {
+					"value": "Validates things are working"
+				}
+			},
+			"suites": [
+				{
+					"value": "example_suite"
+				}
+			]
+		}
+	]
+}
