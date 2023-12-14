@@ -32,6 +32,11 @@ message SuiteSet {
 	repeated Suite.Id suites = 3;
 }
 
+// Defines a list of SuiteSets
+message SuiteSetList {
+	repeated SuiteSet suite_sets = 1;
+}
+
 // Defines a grouping of Tests that represent scheduling units CTP can enforce
 // predefined Suite rules against like runtime limits. A Suite represents a
 // smaller validation assertion that is satisfied if all its containing Tests
@@ -48,6 +53,11 @@ message Suite {
 
 	// The list of Tests contained within the Suite.
 	repeated TestCase.Id tests = 3;
+}
+
+// Defines a list of Suites
+message SuiteList {
+	repeated Suite suites = 1;
 }
 
 // Contains extra information regarding the Suite/SuiteSet that does not affect

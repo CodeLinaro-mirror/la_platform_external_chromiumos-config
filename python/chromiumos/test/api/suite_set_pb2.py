@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#chromiumos/test/api/suite_set.proto\x12\x13\x63hromiumos.test.api\x1a#chromiumos/test/api/test_case.proto\x1a,chromiumos/test/api/test_case_metadata.proto\"\xe3\x01\n\x08SuiteSet\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.test.api.SuiteSet.Id\x12/\n\x08metadata\x18\x02 \x01(\x0b\x32\x1d.chromiumos.test.api.Metadata\x12\x34\n\nsuite_sets\x18\x04 \x03(\x0b\x32 .chromiumos.test.api.SuiteSet.Id\x12-\n\x06suites\x18\x03 \x03(\x0b\x32\x1d.chromiumos.test.api.Suite.Id\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\"\xa9\x01\n\x05Suite\x12)\n\x02id\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.Suite.Id\x12/\n\x08metadata\x18\x02 \x01(\x0b\x32\x1d.chromiumos.test.api.Metadata\x12/\n\x05tests\x18\x03 \x03(\x0b\x32 .chromiumos.test.api.TestCase.Id\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\"\xa3\x01\n\x08Metadata\x12,\n\x06owners\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.Contact\x12\x38\n\rbug_component\x18\x02 \x01(\x0b\x32!.chromiumos.test.api.BugComponent\x12/\n\x08\x63riteria\x18\x03 \x01(\x0b\x32\x1d.chromiumos.test.api.CriteriaB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n#chromiumos/test/api/suite_set.proto\x12\x13\x63hromiumos.test.api\x1a#chromiumos/test/api/test_case.proto\x1a,chromiumos/test/api/test_case_metadata.proto\"\xe3\x01\n\x08SuiteSet\x12,\n\x02id\x18\x01 \x01(\x0b\x32 .chromiumos.test.api.SuiteSet.Id\x12/\n\x08metadata\x18\x02 \x01(\x0b\x32\x1d.chromiumos.test.api.Metadata\x12\x34\n\nsuite_sets\x18\x04 \x03(\x0b\x32 .chromiumos.test.api.SuiteSet.Id\x12-\n\x06suites\x18\x03 \x03(\x0b\x32\x1d.chromiumos.test.api.Suite.Id\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\"A\n\x0cSuiteSetList\x12\x31\n\nsuite_sets\x18\x01 \x03(\x0b\x32\x1d.chromiumos.test.api.SuiteSet\"\xa9\x01\n\x05Suite\x12)\n\x02id\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.Suite.Id\x12/\n\x08metadata\x18\x02 \x01(\x0b\x32\x1d.chromiumos.test.api.Metadata\x12/\n\x05tests\x18\x03 \x03(\x0b\x32 .chromiumos.test.api.TestCase.Id\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\t\"7\n\tSuiteList\x12*\n\x06suites\x18\x01 \x03(\x0b\x32\x1a.chromiumos.test.api.Suite\"\xa3\x01\n\x08Metadata\x12,\n\x06owners\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.Contact\x12\x38\n\rbug_component\x18\x02 \x01(\x0b\x32!.chromiumos.test.api.BugComponent\x12/\n\x08\x63riteria\x18\x03 \x01(\x0b\x32\x1d.chromiumos.test.api.CriteriaB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_api_dot_test__case__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2.DESCRIPTOR,])
 
@@ -112,6 +112,38 @@ _SUITESET = _descriptor.Descriptor(
 )
 
 
+_SUITESETLIST = _descriptor.Descriptor(
+  name='SuiteSetList',
+  full_name='chromiumos.test.api.SuiteSetList',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='suite_sets', full_name='chromiumos.test.api.SuiteSetList.suite_sets', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=373,
+  serialized_end=438,
+)
+
+
 _SUITE_ID = _descriptor.Descriptor(
   name='Id',
   full_name='chromiumos.test.api.Suite.Id',
@@ -184,8 +216,40 @@ _SUITE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=374,
-  serialized_end=543,
+  serialized_start=441,
+  serialized_end=610,
+)
+
+
+_SUITELIST = _descriptor.Descriptor(
+  name='SuiteList',
+  full_name='chromiumos.test.api.SuiteList',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='suites', full_name='chromiumos.test.api.SuiteList.suites', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=612,
+  serialized_end=667,
 )
 
 
@@ -230,8 +294,8 @@ _METADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=546,
-  serialized_end=709,
+  serialized_start=670,
+  serialized_end=833,
 )
 
 _SUITESET_ID.containing_type = _SUITESET
@@ -239,15 +303,19 @@ _SUITESET.fields_by_name['id'].message_type = _SUITESET_ID
 _SUITESET.fields_by_name['metadata'].message_type = _METADATA
 _SUITESET.fields_by_name['suite_sets'].message_type = _SUITESET_ID
 _SUITESET.fields_by_name['suites'].message_type = _SUITE_ID
+_SUITESETLIST.fields_by_name['suite_sets'].message_type = _SUITESET
 _SUITE_ID.containing_type = _SUITE
 _SUITE.fields_by_name['id'].message_type = _SUITE_ID
 _SUITE.fields_by_name['metadata'].message_type = _METADATA
 _SUITE.fields_by_name['tests'].message_type = chromiumos_dot_test_dot_api_dot_test__case__pb2._TESTCASE_ID
+_SUITELIST.fields_by_name['suites'].message_type = _SUITE
 _METADATA.fields_by_name['owners'].message_type = chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2._CONTACT
 _METADATA.fields_by_name['bug_component'].message_type = chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2._BUGCOMPONENT
 _METADATA.fields_by_name['criteria'].message_type = chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2._CRITERIA
 DESCRIPTOR.message_types_by_name['SuiteSet'] = _SUITESET
+DESCRIPTOR.message_types_by_name['SuiteSetList'] = _SUITESETLIST
 DESCRIPTOR.message_types_by_name['Suite'] = _SUITE
+DESCRIPTOR.message_types_by_name['SuiteList'] = _SUITELIST
 DESCRIPTOR.message_types_by_name['Metadata'] = _METADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -266,6 +334,13 @@ SuiteSet = _reflection.GeneratedProtocolMessageType('SuiteSet', (_message.Messag
 _sym_db.RegisterMessage(SuiteSet)
 _sym_db.RegisterMessage(SuiteSet.Id)
 
+SuiteSetList = _reflection.GeneratedProtocolMessageType('SuiteSetList', (_message.Message,), {
+  'DESCRIPTOR' : _SUITESETLIST,
+  '__module__' : 'chromiumos.test.api.suite_set_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.SuiteSetList)
+  })
+_sym_db.RegisterMessage(SuiteSetList)
+
 Suite = _reflection.GeneratedProtocolMessageType('Suite', (_message.Message,), {
 
   'Id' : _reflection.GeneratedProtocolMessageType('Id', (_message.Message,), {
@@ -280,6 +355,13 @@ Suite = _reflection.GeneratedProtocolMessageType('Suite', (_message.Message,), {
   })
 _sym_db.RegisterMessage(Suite)
 _sym_db.RegisterMessage(Suite.Id)
+
+SuiteList = _reflection.GeneratedProtocolMessageType('SuiteList', (_message.Message,), {
+  'DESCRIPTOR' : _SUITELIST,
+  '__module__' : 'chromiumos.test.api.suite_set_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.SuiteList)
+  })
+_sym_db.RegisterMessage(SuiteList)
 
 Metadata = _reflection.GeneratedProtocolMessageType('Metadata', (_message.Message,), {
   'DESCRIPTOR' : _METADATA,

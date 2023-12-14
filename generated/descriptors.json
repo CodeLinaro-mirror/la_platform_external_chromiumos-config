@@ -27829,6 +27829,19 @@
         {
           "field": [
             {
+              "jsonName": "suiteSets",
+              "label": "LABEL_REPEATED",
+              "name": "suite_sets",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteSet"
+            }
+          ],
+          "name": "SuiteSetList"
+        },
+        {
+          "field": [
+            {
               "jsonName": "id",
               "label": "LABEL_OPTIONAL",
               "name": "id",
@@ -27868,6 +27881,19 @@
               "name": "Id"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "suites",
+              "label": "LABEL_REPEATED",
+              "name": "suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Suite"
+            }
+          ],
+          "name": "SuiteList"
         },
         {
           "field": [
