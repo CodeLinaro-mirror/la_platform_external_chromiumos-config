@@ -67,8 +67,8 @@ enum WifiRouterDeviceType {
   // Retail ASUS WiFi router with the ASUSWRT interface.
   WIFI_ROUTER_DEVICE_TYPE_ASUSWRT = 4;
 
-  // Ubuntu-based Intel NUC device.
-  WIFI_ROUTER_DEVICE_TYPE_UBUNTU_INTEL_NUC = 5;
+  // Ubuntu-based device configured to be used as WiFi router (e.g. Intel NUC).
+  WIFI_ROUTER_DEVICE_TYPE_UBUNTU = 5;
 }
 
 // WifiRouterConfig is the format of the Wifi router config JSON file stored in
