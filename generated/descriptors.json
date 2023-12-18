@@ -25839,6 +25839,13 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.TestInvocation.TagsEntry"
+            },
+            {
+              "jsonName": "isCftRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_cft_run",
+              "number": 7,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "TestInvocation",

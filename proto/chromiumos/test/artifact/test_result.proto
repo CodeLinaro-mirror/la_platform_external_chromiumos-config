@@ -31,7 +31,7 @@ message TestResult {
 }
 
 // Captures invocation-level information for test results.
-// NEXT TAG: 7
+// NEXT TAG: 8
 message TestInvocation {
   // The test environment specific information.
   TestEnvironment test_environment = 1;
@@ -70,6 +70,9 @@ message TestInvocation {
   // For added flexibility, additional key value pairs could be added and
   // associated with the given test invocation as needed.
   map<string, string> tags = 6;
+
+  // Flag to indicate whether tests are run in CFT.
+  bool is_cft_run = 7;
 }
 
 // Captures the test environment that produced the test invocation,
