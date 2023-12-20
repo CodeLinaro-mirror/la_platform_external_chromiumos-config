@@ -10,6 +10,8 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/test/api/test_case.proto";
 import "chromiumos/test/api/test_case_metadata.proto";
+import "chromiumos/test/api/test_execution_metadata.proto";
+
 
 // Defines a named collection of tests.
 //
@@ -51,4 +53,9 @@ message TestSuite {
     repeated string test_names = 3;
     repeated string test_name_excludes = 4;
   }
+
+  // K:Vs to be passed to the harness. Mostly will be used for args; but
+  // technically can go for others.
+  ExecutionMetadata execution_metadata = 7;
+
 }

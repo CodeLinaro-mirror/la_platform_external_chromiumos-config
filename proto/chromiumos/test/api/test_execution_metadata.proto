@@ -16,7 +16,8 @@ message AutotestExecutionMetadata {
         string value = 2;
     }
     // Custom arguments passed into the autotest test harness
-    repeated Arg args = 1;
+    // HARNESS SPECIFIC ARGS TO BE DEPRECATED IN FAVOR OF GENERIC ARGS.
+    repeated Arg args = 1 [deprecated = true];
     // A custom sub directory to which test results will be written. In
     // particular, this path will be appended to the results directory
     // path specified on cros-test server startup to determine the final
@@ -32,9 +33,16 @@ message Arg {
     string value = 2;
 }
 
-//
+// HARNESS SPECIFIC ARGS TO BE DEPRECATED IN FAVOR OF GENERIC ARGS.
 message TastExecutionMetadata {
+    option deprecated = true;
     // Custom arguments passed into the Tast.
     repeated Arg args = 1;
 }
 
+// This is what will be populated from CTP into testrunner args provided
+// on the CTP input request.
+message ExecutionMetadata {
+    // Custom arguments passed to the drivers. Drivers responsibility to handle.
+    repeated Arg args = 1;
+}

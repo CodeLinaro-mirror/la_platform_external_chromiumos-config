@@ -13,6 +13,7 @@ _sym_db = _symbol_database.Default()
 
 from chromiumos.test.api import test_case_pb2 as chromiumos_dot_test_dot_api_dot_test__case__pb2
 from chromiumos.test.api import test_case_metadata_pb2 as chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2
+from chromiumos.test.api import test_execution_metadata_pb2 as chromiumos_dot_test_dot_api_dot_test__execution__metadata__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n$chromiumos/test/api/test_suite.proto\x12\x13\x63hromiumos.test.api\x1a#chromiumos/test/api/test_case.proto\x1a,chromiumos/test/api/test_case_metadata.proto\"\xb9\x03\n\tTestSuite\x12\x0c\n\x04name\x18\x01 \x01(\t\x12<\n\rtest_case_ids\x18\x02 \x01(\x0b\x32#.chromiumos.test.api.TestCaseIdListH\x00\x12T\n\x16test_case_tag_criteria\x18\x03 \x01(\x0b\x32\x32.chromiumos.test.api.TestSuite.TestCaseTagCriteriaH\x00\x12\x37\n\ntest_cases\x18\x04 \x01(\x0b\x32!.chromiumos.test.api.TestCaseListH\x00\x12H\n\x13test_cases_metadata\x18\x06 \x01(\x0b\x32).chromiumos.test.api.TestCaseMetadataListH\x00\x12\x14\n\x0ctotal_shards\x18\x05 \x01(\x03\x1ai\n\x13TestCaseTagCriteria\x12\x0c\n\x04tags\x18\x01 \x03(\t\x12\x14\n\x0ctag_excludes\x18\x02 \x03(\t\x12\x12\n\ntest_names\x18\x03 \x03(\t\x12\x1a\n\x12test_name_excludes\x18\x04 \x03(\tB\x06\n\x04specB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n$chromiumos/test/api/test_suite.proto\x12\x13\x63hromiumos.test.api\x1a#chromiumos/test/api/test_case.proto\x1a,chromiumos/test/api/test_case_metadata.proto\x1a\x31\x63hromiumos/test/api/test_execution_metadata.proto\"\xfd\x03\n\tTestSuite\x12\x0c\n\x04name\x18\x01 \x01(\t\x12<\n\rtest_case_ids\x18\x02 \x01(\x0b\x32#.chromiumos.test.api.TestCaseIdListH\x00\x12T\n\x16test_case_tag_criteria\x18\x03 \x01(\x0b\x32\x32.chromiumos.test.api.TestSuite.TestCaseTagCriteriaH\x00\x12\x37\n\ntest_cases\x18\x04 \x01(\x0b\x32!.chromiumos.test.api.TestCaseListH\x00\x12H\n\x13test_cases_metadata\x18\x06 \x01(\x0b\x32).chromiumos.test.api.TestCaseMetadataListH\x00\x12\x14\n\x0ctotal_shards\x18\x05 \x01(\x03\x12\x42\n\x12\x65xecution_metadata\x18\x07 \x01(\x0b\x32&.chromiumos.test.api.ExecutionMetadata\x1ai\n\x13TestCaseTagCriteria\x12\x0c\n\x04tags\x18\x01 \x03(\t\x12\x14\n\x0ctag_excludes\x18\x02 \x03(\t\x12\x12\n\ntest_names\x18\x03 \x03(\t\x12\x1a\n\x12test_name_excludes\x18\x04 \x03(\tB\x06\n\x04specB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
-  dependencies=[chromiumos_dot_test_dot_api_dot_test__case__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_test_dot_api_dot_test__case__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__execution__metadata__pb2.DESCRIPTOR,])
 
 
 
@@ -76,8 +77,8 @@ _TESTSUITE_TESTCASETAGCRITERIA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=473,
-  serialized_end=578,
+  serialized_start=592,
+  serialized_end=697,
 )
 
 _TESTSUITE = _descriptor.Descriptor(
@@ -130,6 +131,13 @@ _TESTSUITE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='execution_metadata', full_name='chromiumos.test.api.TestSuite.execution_metadata', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -147,8 +155,8 @@ _TESTSUITE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=145,
-  serialized_end=586,
+  serialized_start=196,
+  serialized_end=705,
 )
 
 _TESTSUITE_TESTCASETAGCRITERIA.containing_type = _TESTSUITE
@@ -156,6 +164,7 @@ _TESTSUITE.fields_by_name['test_case_ids'].message_type = chromiumos_dot_test_do
 _TESTSUITE.fields_by_name['test_case_tag_criteria'].message_type = _TESTSUITE_TESTCASETAGCRITERIA
 _TESTSUITE.fields_by_name['test_cases'].message_type = chromiumos_dot_test_dot_api_dot_test__case__pb2._TESTCASELIST
 _TESTSUITE.fields_by_name['test_cases_metadata'].message_type = chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2._TESTCASEMETADATALIST
+_TESTSUITE.fields_by_name['execution_metadata'].message_type = chromiumos_dot_test_dot_api_dot_test__execution__metadata__pb2._EXECUTIONMETADATA
 _TESTSUITE.oneofs_by_name['spec'].fields.append(
   _TESTSUITE.fields_by_name['test_case_ids'])
 _TESTSUITE.fields_by_name['test_case_ids'].containing_oneof = _TESTSUITE.oneofs_by_name['spec']
