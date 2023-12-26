@@ -796,7 +796,7 @@ _PROXIMITY_CONFIG = [
     ),
 ]
 
-_DETACHABLE_BASE = hw_topo.create_detachable_base(
+_USB_DETACHABLE_BASE = hw_topo.create_detachable_base(
     ec_image_name = "Fake_Detachable",
     product_id = 1000,
     usb_path = "1-1.1",
@@ -804,13 +804,21 @@ _DETACHABLE_BASE = hw_topo.create_detachable_base(
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.DETACHABLE_BASE, 0)],
 )
 
-_DETACHABLE_BASE_WITH_TP = hw_topo.create_detachable_base(
+_USB_DETACHABLE_BASE_WITH_TP = hw_topo.create_detachable_base(
     ec_image_name = "Fake_Detachable",
     touch_image_name = "Fake_Tp_Version",
     product_id = 1000,
     usb_path = "1-1.1",
     vendor_id = 0x18d1,
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.DETACHABLE_BASE, 1)],
+)
+
+_I2C_DETACHABLE_BASE = hw_topo.create_detachable_base(
+    ec_image_name = "Fake_Detachable",
+    product_id = 1000,
+    i2c_path = "i2c-0",
+    vendor_id = 0x18d1,
+    fw_configs = [hw_topo.make_fw_config(program.fw_masks.DETACHABLE_BASE, 2)],
 )
 
 _FAN = hw_topo.create_fan(
@@ -1206,6 +1214,7 @@ design.append_configs(
                 ),
             ),
         ),
+        detachable_base = _I2C_DETACHABLE_BASE,
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(
@@ -1294,7 +1303,7 @@ design.append_configs(
                 ),
             ),
         ),
-        detachable_base = _DETACHABLE_BASE,
+        detachable_base = _USB_DETACHABLE_BASE,
         soc = _SOC,
     ),
     bluetooth = _SC_BLUETOOTH,
@@ -1371,7 +1380,7 @@ design.append_configs(
                 ),
             ),
         ),
-        detachable_base = _DETACHABLE_BASE_WITH_TP,
+        detachable_base = _USB_DETACHABLE_BASE_WITH_TP,
     ),
     bluetooth = _SC_BLUETOOTH,
     firmware = sc.create_fw_payloads_by_names(

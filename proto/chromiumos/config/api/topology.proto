@@ -1039,11 +1039,20 @@ message HardwareFeatures {
 
     // Searches and finds the idVendor and idProduct under sysfs
     // /sys/bus/usb/devices/* which matches the vendor-id and product-id.
+    // This is required for usb interface detachable base.
     string usb_path = 4;
 
     // The Vendor ID of the detachable base.
     // This value can be queried by command 'lsusb'.
     uint32 vendor_id = 5;
+
+    // Searches and finds the idVendor and idProduct under sysfs
+    // /sys/bus/i2c/devices/* which matches the vendor-id and product-id
+    // due to hid-over-i2c is used.
+    // This is required for i2c interface detachable base.
+    // Note - i2c bus numbering can shift across reboots, please have
+    // corresponding setup based on your platform to ensure consistency.
+    string i2c_path = 6;
   }
 
   // Supported suspend modes

@@ -7229,6 +7229,13 @@
                   "name": "vendor_id",
                   "number": 5,
                   "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "i2cPath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "i2c_path",
+                  "number": 6,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "DetachableBase"

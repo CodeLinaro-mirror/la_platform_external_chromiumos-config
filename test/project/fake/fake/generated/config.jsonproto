@@ -3124,6 +3124,12 @@
               "present": 1,
               "type": 1
             },
+            "detachableBase": {
+              "ecImageName": "Fake_Detachable",
+              "i2cPath": "i2c-0",
+              "productId": 1000,
+              "vendorId": 6353
+            },
             "fan": {
               "fanCount": 2
             },
@@ -3132,8 +3138,8 @@
               "recoveryInput": 1
             },
             "fwConfig": {
-              "mask": 69631,
-              "value": 66336
+              "mask": 15798271,
+              "value": 2163488
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -3411,6 +3417,25 @@
               },
               "id": "DB",
               "type": 11
+            },
+            "detachableBase": {
+              "description": {
+                "EN": "Detachable Base Without Touchpad"
+              },
+              "hardwareFeature": {
+                "detachableBase": {
+                  "ecImageName": "Fake_Detachable",
+                  "i2cPath": "i2c-0",
+                  "productId": 1000,
+                  "vendorId": 6353
+                },
+                "fwConfig": {
+                  "mask": 15728640,
+                  "value": 2097152
+                }
+              },
+              "id": "DB_NO_TP",
+              "type": 37
             },
             "ec": {
               "hardwareFeature": {

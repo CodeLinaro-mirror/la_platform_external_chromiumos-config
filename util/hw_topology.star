@@ -1549,9 +1549,10 @@ def _create_uwb(id, description, fw_configs = []):
 def _create_detachable_base(
         ec_image_name,
         product_id,
-        usb_path,
         vendor_id,
         fw_configs = [],
+        i2c_path = None,
+        usb_path = None,
         touch_image_name = None,
         id = None,
         description = None):
@@ -1560,11 +1561,18 @@ def _create_detachable_base(
     Args:
         ec_image_name: The target EC binary name.
         product_id: The Product ID of the detachable base.
-        usb_path: Searches and finds the idVendor and idProduct under sysfs
-            /sys/bus/usb/devices/* which matches the vendor-id and product-id.
         vendor_id: The Vendor ID of the detachable base.
         fw_configs: A list of FirmwareConfiguration protos for the detachable
             base topology.
+        i2c_path: Searches and finds the idVendor and idProduct under sysfs
+            /sys/bus/i2c/devices/* which matches the vendor-id and product-id
+            due to hid-over-i2c is used.
+            This is required if detachable base goes through i2c interface.
+            Note - i2c bus numbering can shift across reboots, please have
+            corresponding setup based on your platform to ensure consistency.
+        usb_path: Searches and finds the idVendor and idProduct under sysfs
+            /sys/bus/usb/devices/* which matches the vendor-id and product-id.
+            This is required if detachable base goes through usb interface.
         touch_image_name: The touchpad binary name. This is only needed if the
             detachable base contains touchpad.
         id: A string identifier for the Topology. If not passed, a default is
@@ -1584,8 +1592,12 @@ def _create_detachable_base(
             touchpad_str = "With Touchpad" if touch_image_name else "Without Touchpad",
         )
 
+    if (usb_path and i2c_path) or (not usb_path and not i2c_path):
+        fail("Specify either usb_path or i2c_path, but not both.")
+
     hw_features.detachable_base.ec_image_name = ec_image_name
     hw_features.detachable_base.product_id = product_id
+    hw_features.detachable_base.i2c_path = i2c_path
     hw_features.detachable_base.usb_path = usb_path
     hw_features.detachable_base.vendor_id = vendor_id
     hw_features.detachable_base.touch_image_name = touch_image_name

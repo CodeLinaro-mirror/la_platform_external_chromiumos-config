@@ -475,7 +475,7 @@
         "component.has_proximity_sensor": true,
         "component.headphone_codec": "ALC5682I",
         "component.speaker_amp": "MAX98373",
-        "fw_config": 66336
+        "fw_config": 2163488
       },
       "34": {
         "component.has_proximity_sensor": null,
