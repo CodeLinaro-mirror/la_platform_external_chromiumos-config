@@ -7094,6 +7094,14 @@
                   "number": 1,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "encryptedConfigPresent",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "encrypted_config_present",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "RuntimeProbeConfig"

@@ -983,6 +983,10 @@ message HardwareFeatures {
     // If the probe config file under /etc/runtime_probe/{model}/ present on
     // device.
     Present present = 1;
+
+    // If the encrypted probe config file under /etc/runtime_probe/{model}/
+    // present on device.
+    Present encrypted_config_present = 2;
   }
 
   Dgpu dgpu_config = 41;
