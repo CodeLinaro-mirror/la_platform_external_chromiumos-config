@@ -53,7 +53,7 @@ Benefits include:
 
 No. For the time being, the protobuf payloads will be translated backwards into
 JSON payloads conforming to
-[cros\_config\_schema.yaml](https://chromium.git.corp.google.com/chromiumos/platform2/+/refs/heads/master/chromeos-config/cros_config_host/cros_config_schema.yaml).
+[cros\_config\_schema.yaml](https://chromium.git.corp.google.com/chromiumos/platform2/+/HEAD/chromeos-config/cros_config_host/cros_config_schema.yaml).
 From the platform point-of-view, the configuration will not change.
 
 3. **Will this break my builds?**

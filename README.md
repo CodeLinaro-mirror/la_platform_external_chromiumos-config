@@ -187,7 +187,7 @@ at:
 `config.jsonproto` is a file containing the config protobuf
 [encoded as JSON](https://developers.google.com/protocol-buffers/docs/proto3#json).
 
-`project-config.json` is the config in the [legacy YAML schema](https://chromium.git.corp.google.com/chromiumos/platform2/+/refs/heads/master/chromeos-config/README.md#Config-Schema)
+`project-config.json` is the config in the [legacy YAML schema](https://chromium.git.corp.google.com/chromiumos/platform2/+/HEAD/chromeos-config/README.md#Config-Schema)
 and is present for backwards-compatibility.
 
 Before uploading the changes for review you should check to see if your
