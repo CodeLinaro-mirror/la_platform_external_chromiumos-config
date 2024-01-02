@@ -9,6 +9,7 @@ package chromiumos.test.api;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/test/api/test_suite.proto";
+import "chromiumos/test/api/suite_set.proto";
 
 // CrosTestFinderRequest specifies test suites with or without tags.
 message CrosTestFinderRequest {
@@ -17,10 +18,12 @@ message CrosTestFinderRequest {
   // Set this bool to true to get result with test metadata. Response will have
   // Test suites with TestCaseMetadataList instead of TestCaseList.
   bool metadata_required = 2;
+  // SuiteSet to run (cannot specify test_suites if this is specified and vise
+  // versa)
+  SuiteSet.Id suite_set = 3;
 }
 
 message CrosTestFinderResponse {
   // Test suites to run (explicit list of tests).
   repeated TestSuite test_suites = 1;
 }
-

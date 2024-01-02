@@ -20738,7 +20738,175 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/api/test_suite.proto"
+        "chromiumos/test/api/test_case.proto",
+        "chromiumos/test/api/test_case_metadata.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteSet.Id"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Metadata"
+            },
+            {
+              "jsonName": "suiteSets",
+              "label": "LABEL_REPEATED",
+              "name": "suite_sets",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteSet.Id"
+            },
+            {
+              "jsonName": "suites",
+              "label": "LABEL_REPEATED",
+              "name": "suites",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Suite.Id"
+            }
+          ],
+          "name": "SuiteSet",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "suiteSets",
+              "label": "LABEL_REPEATED",
+              "name": "suite_sets",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteSet"
+            }
+          ],
+          "name": "SuiteSetList"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Suite.Id"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Metadata"
+            },
+            {
+              "jsonName": "tests",
+              "label": "LABEL_REPEATED",
+              "name": "tests",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase.Id"
+            }
+          ],
+          "name": "Suite",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Id"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "suites",
+              "label": "LABEL_REPEATED",
+              "name": "suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Suite"
+            }
+          ],
+          "name": "SuiteList"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "owners",
+              "label": "LABEL_REPEATED",
+              "name": "owners",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Contact"
+            },
+            {
+              "jsonName": "bugComponent",
+              "label": "LABEL_OPTIONAL",
+              "name": "bug_component",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.BugComponent"
+            },
+            {
+              "jsonName": "criteria",
+              "label": "LABEL_OPTIONAL",
+              "name": "criteria",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Criteria"
+            }
+          ],
+          "name": "Metadata"
+        }
+      ],
+      "name": "chromiumos/test/api/suite_set.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/api/test_suite.proto",
+        "chromiumos/test/api/suite_set.proto"
       ],
       "messageType": [
         {
@@ -20757,6 +20925,14 @@
               "name": "metadata_required",
               "number": 2,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "suiteSet",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite_set",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteSet.Id"
             }
           ],
           "name": "CrosTestFinderRequest"
@@ -27763,173 +27939,6 @@
           "name": "ServodService"
         }
       ],
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "chromiumos/test/api/test_case.proto",
-        "chromiumos/test/api/test_case_metadata.proto"
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.SuiteSet.Id"
-            },
-            {
-              "jsonName": "metadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Metadata"
-            },
-            {
-              "jsonName": "suiteSets",
-              "label": "LABEL_REPEATED",
-              "name": "suite_sets",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.SuiteSet.Id"
-            },
-            {
-              "jsonName": "suites",
-              "label": "LABEL_REPEATED",
-              "name": "suites",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Suite.Id"
-            }
-          ],
-          "name": "SuiteSet",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Id"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "suiteSets",
-              "label": "LABEL_REPEATED",
-              "name": "suite_sets",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.SuiteSet"
-            }
-          ],
-          "name": "SuiteSetList"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "id",
-              "label": "LABEL_OPTIONAL",
-              "name": "id",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Suite.Id"
-            },
-            {
-              "jsonName": "metadata",
-              "label": "LABEL_OPTIONAL",
-              "name": "metadata",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Metadata"
-            },
-            {
-              "jsonName": "tests",
-              "label": "LABEL_REPEATED",
-              "name": "tests",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.TestCase.Id"
-            }
-          ],
-          "name": "Suite",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Id"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "suites",
-              "label": "LABEL_REPEATED",
-              "name": "suites",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Suite"
-            }
-          ],
-          "name": "SuiteList"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "owners",
-              "label": "LABEL_REPEATED",
-              "name": "owners",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Contact"
-            },
-            {
-              "jsonName": "bugComponent",
-              "label": "LABEL_OPTIONAL",
-              "name": "bug_component",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.BugComponent"
-            },
-            {
-              "jsonName": "criteria",
-              "label": "LABEL_OPTIONAL",
-              "name": "criteria",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.Criteria"
-            }
-          ],
-          "name": "Metadata"
-        }
-      ],
-      "name": "chromiumos/test/api/suite_set.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
-      },
-      "package": "chromiumos.test.api",
       "syntax": "proto3"
     },
     {
