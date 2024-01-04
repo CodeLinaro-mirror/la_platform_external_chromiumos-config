@@ -3,11 +3,9 @@
 See proto definitions for descriptions of arguments.
 """
 
-# Needed to load from @proto. Add @unused to silence lint.
-load("//config/util/bindings/proto.star", "protos")
 load(
-    "@proto//chromiumos/config/api/topology.proto",
-    topo_pb = "chromiumos.config.api",
+    "@proto//chromiumos/config/api/component.proto",
+    comp_pb = "chromiumos.config.api",
 )
 load(
     "@proto//chromiumos/config/api/hardware_topology.proto",
@@ -18,9 +16,12 @@ load(
     prox_pb = "chromiumos.config.api",
 )
 load(
-    "@proto//chromiumos/config/api/component.proto",
-    comp_pb = "chromiumos.config.api",
+    "@proto//chromiumos/config/api/topology.proto",
+    topo_pb = "chromiumos.config.api",
 )
+
+# Needed to load from @proto. Add @unused to silence lint.
+load("//config/util/bindings/proto.star", "protos")
 load("//config/util/hw_features.star", "hw_feat")
 
 _HW_FEAT = topo_pb.HardwareFeatures
@@ -600,11 +601,14 @@ def _override_audio(
         cras_config = None,
         cras_suffix = None,
         ucm_config = None,
-        sound_card_init_config = None):
+        sound_card_init_config = None,
+        id = None):
     if source_topo.type != topo_pb.Topology.AUDIO:
         fail("Invalid audio topology")
 
     topo = proto.clone(source_topo)
+    if id != None:
+        topo.id = "%s_%s" % (topo.id, id)
     hw_features = topo.hardware_feature
     if fw_configs != None:
         hw_features.fw_config = _HW_FEAT.FirmwareConfiguration()
@@ -753,8 +757,8 @@ def _make_camera_device(
     device = camera_pb.Device()
 
     device.interface = {
-        "usb": camera_pb.INTERFACE_USB,
         "mipi": camera_pb.INTERFACE_MIPI,
+        "usb": camera_pb.INTERFACE_USB,
     }[interface]
     device.facing = {
         "back": camera_pb.FACING_BACK,
