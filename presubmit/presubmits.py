@@ -96,9 +96,7 @@ def CheckGenerated(input_api, output_api, cmd='./generate.sh'):
 
   if input_api.subprocess.call(
       cmd,
-      shell=True,
-      stdout=input_api.subprocess.PIPE,
-      stderr=input_api.subprocess.PIPE):
+      shell=True):
     msg = 'Error: {} failed. Please fix and try again.'.format(cmd)
     results.append(output_api.PresubmitError(msg))
   elif input_api.subprocess.call(
