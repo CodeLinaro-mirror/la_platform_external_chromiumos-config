@@ -1,0 +1,28 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("//create.star", "create")
+
+def _bvt_cq():
+    return create.suite(
+        suite_id = "bvt-cq",
+        owners = [
+            "chromeos-cqw-help@google.com",
+        ],
+        bug_component = "b:1152900",  # ChromeOS > Infra > CQ and Waterfall
+        criteria = "This is the portion of the Build Verification Test suite required to \
+pass the ChromeOS Commit Queue and Pre-Flight Queue.",
+        tests = [
+            "logging_UserCrash",
+        ],
+    )
+
+def _all_suites():
+    return [
+        _bvt_cq(),
+    ]
+
+bvt_cq = struct(
+    all_suites = _all_suites,
+)
