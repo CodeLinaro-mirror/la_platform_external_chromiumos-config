@@ -293,6 +293,9 @@ message HardwareFeatures {
     }
     // The RO firmware version currently running on the DUT.
     SemVer fw_ro_version = 8;
+
+    // The Intel Integrated Sensor Hub is available and supported by firmware.
+    Present intel_ish = 9;
   }
 
   // Audio properties of system

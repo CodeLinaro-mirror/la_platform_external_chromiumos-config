@@ -5184,6 +5184,14 @@
                   "number": 8,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.FirmwareConfiguration.SemVer"
+                },
+                {
+                  "jsonName": "intelIsh",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "intel_ish",
+                  "number": 9,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "FirmwareConfiguration",
