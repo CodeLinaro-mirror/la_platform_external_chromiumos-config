@@ -278,7 +278,7 @@
               "present": 1
             },
             "fan": {
-              "fanCount": 2
+              "fanCount": 0
             },
             "fingerprint": {
               "board": "fake_fingerprint_board",
@@ -640,11 +640,11 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for no fan"
               },
               "hardwareFeature": {
                 "fan": {
-                  "fanCount": 2
+                  "fanCount": 0
                 }
               },
               "id": "FAN",
@@ -1321,7 +1321,7 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for two fans"
               },
               "hardwareFeature": {
                 "fan": {
@@ -1676,9 +1676,6 @@
               "present": 1,
               "type": 1
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 2
@@ -1977,13 +1974,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -2337,9 +2330,6 @@
               "present": 1,
               "type": 1,
               "wedgeTimeoutInMs": 120000
-            },
-            "fan": {
-              "fanCount": 2
             },
             "fingerprint": {
               "board": "fake_fingerprint_board",
@@ -2704,13 +2694,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -3130,9 +3116,6 @@
               "productId": 1000,
               "vendorId": 6353
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": 3,
               "recoveryInput": 1
@@ -3449,13 +3432,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -3819,9 +3798,6 @@
               "usbPath": "1-1.1",
               "vendorId": 6353
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": 3,
               "recoveryInput": 1
@@ -4146,13 +4122,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -4511,9 +4483,6 @@
               "usbPath": "1-1.1",
               "vendorId": 6353
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": 3,
               "recoveryInput": 1
@@ -4812,13 +4781,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -5148,9 +5113,6 @@
             "cellular": {
               "present": 2
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": 7,
               "recoveryInput": 1
@@ -5426,13 +5388,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -5769,9 +5727,6 @@
             "cellular": {
               "present": 2
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": 7,
               "recoveryInput": 1
@@ -6047,13 +6002,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -9166,9 +9117,6 @@
               "type": 1,
               "wedgeTimeoutInMs": 210000
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 1
@@ -9662,13 +9610,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -10243,9 +10187,6 @@
               "type": 1,
               "wedgeTimeoutInMs": 180000
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 1
@@ -10501,13 +10442,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -10805,9 +10742,6 @@
               "present": 1,
               "type": 1
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": 5,
               "recoveryInput": 3
@@ -11050,13 +10984,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -11325,9 +11255,6 @@
             "cellular": {
               "present": 2
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "detachableUi": true,
               "formFactor": 4,
@@ -11553,13 +11480,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },
@@ -11828,9 +11751,6 @@
             "cellular": {
               "present": 2
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "detachableUi": true,
               "formFactor": 4,
@@ -12031,13 +11951,9 @@
             },
             "fan": {
               "description": {
-                "EN": "Fan info"
+                "EN": "Fan info for when nothing is configured"
               },
-              "hardwareFeature": {
-                "fan": {
-                  "fanCount": 2
-                }
-              },
+              "hardwareFeature": {},
               "id": "FAN",
               "type": 38
             },

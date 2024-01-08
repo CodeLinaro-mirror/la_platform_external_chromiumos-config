@@ -3427,7 +3427,6 @@
           "firmware-config": 90914
         },
         "hardware-properties": {
-          "fan-count": 2,
           "form-factor": "CLAMSHELL",
           "has-audio-jack": true,
           "has-backlight": true,

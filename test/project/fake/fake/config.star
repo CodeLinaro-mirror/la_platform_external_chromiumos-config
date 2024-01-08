@@ -821,9 +821,21 @@ _I2C_DETACHABLE_BASE = hw_topo.create_detachable_base(
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.DETACHABLE_BASE, 2)],
 )
 
-_FAN = hw_topo.create_fan(
+_FAN_NOT_CONFIGURED = hw_topo.create_fan(
     id = "FAN",
-    description = "Fan info",
+    description = "Fan info for when nothing is configured",
+    fan_count = None,
+)
+
+_NO_FAN = hw_topo.create_fan(
+    id = "FAN",
+    description = "Fan info for no fan",
+    fan_count = 0,
+)
+
+_TWO_FAN = hw_topo.create_fan(
+    id = "FAN",
+    description = "Fan info for two fans",
     fan_count = 2,
 )
 
@@ -888,7 +900,7 @@ def create_hardware_topology(
         uwb = uwb,
         detachable_base = detachable_base,
         soc = soc,
-        fan = fan if fan else _FAN,
+        fan = fan if fan else _FAN_NOT_CONFIGURED,
     )
 
 # Create empty arrays that we will continually append new configurations to
@@ -918,7 +930,7 @@ design.append_configs(
         dgpu = _DGPU,
         uwb = _UWB,
         sd_reader = _NO_SD_READER,
-        fan = _FAN,
+        fan = _NO_FAN,
     ),
     bluetooth = _SC_BLUETOOTH,
     health = _SC_HEALTH,
@@ -973,6 +985,7 @@ design.append_configs(
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
         keyboard = _BL_KEYBOARD,
         battery = _BATTERY,
+        fan = _TWO_FAN,
     ),
     firmware = sc.create_fw_payloads_by_names(
         "Fake",

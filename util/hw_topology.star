@@ -869,7 +869,8 @@ def _create_fan(id, description, fw_configs = [], fan_count = None):
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
-    hw_features.fan.fan_count = fan_count
+    if fan_count != None:
+        hw_features.fan.fan_count.value = fan_count
 
     return topo_pb.Topology(
         id = id,

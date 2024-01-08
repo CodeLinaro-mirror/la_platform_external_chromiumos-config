@@ -1152,9 +1152,6 @@
               "type": "CELLULAR_LTE",
               "wedgeTimeoutInMs": 210000
             },
-            "fan": {
-              "fanCount": 2
-            },
             "formFactor": {
               "formFactor": "CLAMSHELL",
               "recoveryInput": "KEYBOARD"

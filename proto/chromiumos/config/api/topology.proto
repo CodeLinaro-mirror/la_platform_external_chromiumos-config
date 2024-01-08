@@ -1097,7 +1097,7 @@ message HardwareFeatures {
   Fan fan = 50;
   message Fan {
     // The number of fan in the device.
-    uint32 fan_count = 1;
+    google.protobuf.UInt32Value fan_count = 1;
   }
 
   // Details about the Interrupt controller

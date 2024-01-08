@@ -7318,7 +7318,8 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "fan_count",
                   "number": 1,
-                  "type": "TYPE_UINT32"
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.UInt32Value"
                 }
               ],
               "name": "Fan"
