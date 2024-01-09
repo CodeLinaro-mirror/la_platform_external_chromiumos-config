@@ -12,7 +12,6 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.test.api import test_suite_pb2 as chromiumos_dot_test_dot_api_dot_test__suite__pb2
-from chromiumos.test.api import suite_set_pb2 as chromiumos_dot_test_dot_api_dot_suite__set__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n.chromiumos/test/api/cros_test_finder_cli.proto\x12\x13\x63hromiumos.test.api\x1a$chromiumos/test/api/test_suite.proto\x1a#chromiumos/test/api/suite_set.proto\"\x9c\x01\n\x15\x43rosTestFinderRequest\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x19\n\x11metadata_required\x18\x02 \x01(\x08\x12\x33\n\tsuite_set\x18\x03 \x01(\x0b\x32 .chromiumos.test.api.SuiteSet.Id\"M\n\x16\x43rosTestFinderResponse\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuiteB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n.chromiumos/test/api/cros_test_finder_cli.proto\x12\x13\x63hromiumos.test.api\x1a$chromiumos/test/api/test_suite.proto\"\x82\x01\n\x15\x43rosTestFinderRequest\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x19\n\x11metadata_required\x18\x02 \x01(\x08\x12\x19\n\x11\x63\x65ntralized_suite\x18\x03 \x01(\t\"M\n\x16\x43rosTestFinderResponse\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuiteB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
-  dependencies=[chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_suite__set__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,])
 
 
 
@@ -51,9 +50,9 @@ _CROSTESTFINDERREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='suite_set', full_name='chromiumos.test.api.CrosTestFinderRequest.suite_set', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='centralized_suite', full_name='chromiumos.test.api.CrosTestFinderRequest.centralized_suite', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -69,8 +68,8 @@ _CROSTESTFINDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=147,
-  serialized_end=303,
+  serialized_start=110,
+  serialized_end=240,
 )
 
 
@@ -101,12 +100,11 @@ _CROSTESTFINDERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=305,
-  serialized_end=382,
+  serialized_start=242,
+  serialized_end=319,
 )
 
 _CROSTESTFINDERREQUEST.fields_by_name['test_suites'].message_type = chromiumos_dot_test_dot_api_dot_test__suite__pb2._TESTSUITE
-_CROSTESTFINDERREQUEST.fields_by_name['suite_set'].message_type = chromiumos_dot_test_dot_api_dot_suite__set__pb2._SUITESET_ID
 _CROSTESTFINDERRESPONSE.fields_by_name['test_suites'].message_type = chromiumos_dot_test_dot_api_dot_test__suite__pb2._TESTSUITE
 DESCRIPTOR.message_types_by_name['CrosTestFinderRequest'] = _CROSTESTFINDERREQUEST
 DESCRIPTOR.message_types_by_name['CrosTestFinderResponse'] = _CROSTESTFINDERRESPONSE
