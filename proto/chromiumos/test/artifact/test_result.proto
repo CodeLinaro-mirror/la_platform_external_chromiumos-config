@@ -415,7 +415,7 @@ message SkylabInfo {
 }
 
 // Captures Satlab related info.
-// NEXT TAG: 3
+// NEXT TAG: 4
 message SatlabInfo {
   // Swarming task associated with the test run. Mainly populated for tests
   // running on swarming bot.
@@ -424,6 +424,9 @@ message SatlabInfo {
   // Buildbucket build associated with the test run. Mainly populated for tests
   // scheduled by buildbucket.
   BuildbucketInfo buildbucket_info = 2;
+
+  // Drone info associated with the test run.
+  DroneInfo drone_info = 3;
 }
 
 // Captures test execution related information for the test run.

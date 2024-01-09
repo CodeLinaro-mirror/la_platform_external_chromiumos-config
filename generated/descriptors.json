@@ -26634,6 +26634,14 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.BuildbucketInfo"
+            },
+            {
+              "jsonName": "droneInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "drone_info",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DroneInfo"
             }
           ],
           "name": "SatlabInfo"
