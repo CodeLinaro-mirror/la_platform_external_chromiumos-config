@@ -25144,29 +25144,34 @@
       "dependency": [
         "chromiumos/build/api/firmware_config.proto",
         "chromiumos/longrunning/operations.proto",
-        "chromiumos/test/lab/api/ip_endpoint.proto",
-        "chromiumos/storage_path.proto"
+        "chromiumos/test/lab/api/ip_endpoint.proto"
       ],
       "messageType": [
         {
           "field": [
             {
-              "jsonName": "firmwareImagePath",
+              "jsonName": "cacheServerAddress",
               "label": "LABEL_OPTIONAL",
-              "name": "firmware_image_path",
+              "name": "cache_server_address",
               "number": 1,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.StoragePath"
-            },
-            {
-              "jsonName": "flashRo",
-              "label": "LABEL_OPTIONAL",
-              "name": "flash_ro",
-              "number": 2,
-              "type": "TYPE_BOOL"
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             }
           ],
-          "name": "SimpleFirmwareRequest"
+          "name": "FirmwareProvisionStartupMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "firmwareConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwareConfig"
+            }
+          ],
+          "name": "FirmwareProvisionInstallMetadata"
         },
         {
           "field": [
