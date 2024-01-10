@@ -5282,6 +5282,10 @@
                       "number": 13
                     },
                     {
+                      "name": "ES8326",
+                      "number": 14
+                    },
+                    {
                       "name": "AUDIO_CODEC_ALC5650",
                       "number": 17
                     }

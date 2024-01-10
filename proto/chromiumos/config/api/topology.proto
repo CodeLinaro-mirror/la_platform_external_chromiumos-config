@@ -338,7 +338,8 @@ message HardwareFeatures {
       CS42L42 = 11;
       ALC5682IVS = 12;
       WCD9385 = 13;
-      // 14 to 16 are still free to be used
+      ES8326 = 14;
+      // 15 to 16 are still free to be used
       AUDIO_CODEC_ALC5650 = 17;
     }
 
