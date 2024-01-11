@@ -20,12 +20,15 @@
 					"value": "b:1234567"
 				},
 				"criteria": {
-					"value": "Validates things are working"
+					"value": "Validates fail/pass tests with pass/fail."
 				}
 			},
 			"suites": [
 				{
-					"value": "example_suite"
+					"value": "example_pass"
+				},
+				{
+					"value": "example_fail"
 				}
 			]
 		}

@@ -24,12 +24,13 @@ def _example_suite_set():
         # A short summary capturing the quality guarantee validated by the
         # SuiteSet (e.g. “Validates a device passes Engineering Verification
         # Testing and is ready to continue to Design Verification Testing”).
-        criteria = "Validates things are working",
+        criteria = "Validates fail/pass tests with pass/fail.",
         # A list SuiteSet Id's contained within the SuiteSet.
         suite_sets = [],
         # A list Suite Id's contained within the SuiteSet.
         suites = [
-            "example_suite",
+            "example_pass",
+            "example_fail",
         ],
     )
 

@@ -4835,7 +4835,7 @@
 		},
 		{
 			"id": {
-				"value": "example_suite"
+				"value": "example_pass"
 			},
 			"metadata": {
 				"owners": [
@@ -4853,7 +4853,7 @@
 					"value": "b:1234567"
 				},
 				"criteria": {
-					"value": "Validates validates some things are working"
+					"value": "Validates basic pass tests will pass."
 				}
 			},
 			"tests": [
@@ -4861,10 +4861,36 @@
 					"value": "tast.example.Pass"
 				},
 				{
-					"value": "tast.example.Fail"
-				},
-				{
 					"value": "tauto.stub_PassServer"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "example_fail"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "dbeckett@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1234567"
+				},
+				"criteria": {
+					"value": "Validates fail pass tests will fail."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.example.Fail"
 				},
 				{
 					"value": "tauto.stub_FailServer"
