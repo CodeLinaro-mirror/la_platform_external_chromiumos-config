@@ -12,7 +12,6 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.build.api import firmware_config_pb2 as chromiumos_dot_build_dot_api_dot_firmware__config__pb2
-from chromiumos.longrunning import operations_pb2 as chromiumos_dot_longrunning_dot_operations__pb2
 from chromiumos.test.lab.api import ip_endpoint_pb2 as chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2
 
 
@@ -22,56 +21,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\x1a\'chromiumos/longrunning/operations.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"e\n FirmwareProvisionStartupMetadata\x12\x41\n\x14\x63\x61\x63he_server_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"a\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\"\xe6\x02\n\x18ProvisionFirmwareRequest\x12>\n\x10\x64\x65tailed_request\x18\x02 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\x12?\n\x12\x64ut_server_address\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12@\n\x13\x63ros_servod_address\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x41\n\x14\x63\x61\x63he_server_address\x18\n \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\r\n\x05\x62oard\x18\x06 \x01(\t\x12\r\n\x05model\x18\x07 \x01(\t\x12\r\n\x05\x66orce\x18\x08 \x01(\x08\x12\x11\n\tuse_servo\x18\t \x01(\x08J\x04\x08\x01\x10\x02\"\xc9\x02\n\x19ProvisionFirmwareResponse\x12\x45\n\x06status\x18\x01 \x01(\x0e\x32\x35.chromiumos.test.api.ProvisionFirmwareResponse.Status\"\xe4\x01\n\x06Status\x12\r\n\tSTATUS_OK\x10\x00\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x01\x12(\n$STATUS_DUT_UNREACHABLE_PRE_PROVISION\x10\x02\x12!\n\x1dSTATUS_UPDATE_FIRMWARE_FAILED\x10\x03\x12\x31\n-STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE\x10\x04\x12/\n+STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE\x10\x05\"\x1b\n\x19ProvisionFirmwareMetadata2\xb5\x01\n\x18\x46irmwareProvisionService\x12\x98\x01\n\tProvision\x12-.chromiumos.test.api.ProvisionFirmwareRequest\x1a!.chromiumos.longrunning.Operation\"9\xd2\x41\x36\n\x19ProvisionFirmwareResponse\x12\x19ProvisionFirmwareMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"e\n FirmwareProvisionStartupMetadata\x12\x41\n\x14\x63\x61\x63he_server_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"a\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfigB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
-  dependencies=[chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
 
 
-
-_PROVISIONFIRMWARERESPONSE_STATUS = _descriptor.EnumDescriptor(
-  name='Status',
-  full_name='chromiumos.test.api.ProvisionFirmwareResponse.Status',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='STATUS_OK', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='STATUS_INVALID_REQUEST', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='STATUS_DUT_UNREACHABLE_PRE_PROVISION', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='STATUS_UPDATE_FIRMWARE_FAILED', index=3, number=3,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE', index=4, number=4,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE', index=5, number=5,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=862,
-  serialized_end=1090,
-)
-_sym_db.RegisterEnumDescriptor(_PROVISIONFIRMWARERESPONSE_STATUS)
 
 
 _FIRMWAREPROVISIONSTARTUPMETADATA = _descriptor.Descriptor(
@@ -101,8 +55,8 @@ _FIRMWAREPROVISIONSTARTUPMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=197,
-  serialized_end=298,
+  serialized_start=156,
+  serialized_end=257,
 )
 
 
@@ -133,162 +87,14 @@ _FIRMWAREPROVISIONINSTALLMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=300,
-  serialized_end=397,
-)
-
-
-_PROVISIONFIRMWAREREQUEST = _descriptor.Descriptor(
-  name='ProvisionFirmwareRequest',
-  full_name='chromiumos.test.api.ProvisionFirmwareRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='detailed_request', full_name='chromiumos.test.api.ProvisionFirmwareRequest.detailed_request', index=0,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='dut_server_address', full_name='chromiumos.test.api.ProvisionFirmwareRequest.dut_server_address', index=1,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='cros_servod_address', full_name='chromiumos.test.api.ProvisionFirmwareRequest.cros_servod_address', index=2,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='cache_server_address', full_name='chromiumos.test.api.ProvisionFirmwareRequest.cache_server_address', index=3,
-      number=10, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='board', full_name='chromiumos.test.api.ProvisionFirmwareRequest.board', index=4,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='model', full_name='chromiumos.test.api.ProvisionFirmwareRequest.model', index=5,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='force', full_name='chromiumos.test.api.ProvisionFirmwareRequest.force', index=6,
-      number=8, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='use_servo', full_name='chromiumos.test.api.ProvisionFirmwareRequest.use_servo', index=7,
-      number=9, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=400,
-  serialized_end=758,
-)
-
-
-_PROVISIONFIRMWARERESPONSE = _descriptor.Descriptor(
-  name='ProvisionFirmwareResponse',
-  full_name='chromiumos.test.api.ProvisionFirmwareResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='chromiumos.test.api.ProvisionFirmwareResponse.status', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _PROVISIONFIRMWARERESPONSE_STATUS,
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=761,
-  serialized_end=1090,
-)
-
-
-_PROVISIONFIRMWAREMETADATA = _descriptor.Descriptor(
-  name='ProvisionFirmwareMetadata',
-  full_name='chromiumos.test.api.ProvisionFirmwareMetadata',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1092,
-  serialized_end=1119,
+  serialized_start=259,
+  serialized_end=356,
 )
 
 _FIRMWAREPROVISIONSTARTUPMETADATA.fields_by_name['cache_server_address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _FIRMWAREPROVISIONINSTALLMETADATA.fields_by_name['firmware_config'].message_type = chromiumos_dot_build_dot_api_dot_firmware__config__pb2._FIRMWARECONFIG
-_PROVISIONFIRMWAREREQUEST.fields_by_name['detailed_request'].message_type = chromiumos_dot_build_dot_api_dot_firmware__config__pb2._FIRMWARECONFIG
-_PROVISIONFIRMWAREREQUEST.fields_by_name['dut_server_address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
-_PROVISIONFIRMWAREREQUEST.fields_by_name['cros_servod_address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
-_PROVISIONFIRMWAREREQUEST.fields_by_name['cache_server_address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
-_PROVISIONFIRMWARERESPONSE.fields_by_name['status'].enum_type = _PROVISIONFIRMWARERESPONSE_STATUS
-_PROVISIONFIRMWARERESPONSE_STATUS.containing_type = _PROVISIONFIRMWARERESPONSE
 DESCRIPTOR.message_types_by_name['FirmwareProvisionStartupMetadata'] = _FIRMWAREPROVISIONSTARTUPMETADATA
 DESCRIPTOR.message_types_by_name['FirmwareProvisionInstallMetadata'] = _FIRMWAREPROVISIONINSTALLMETADATA
-DESCRIPTOR.message_types_by_name['ProvisionFirmwareRequest'] = _PROVISIONFIRMWAREREQUEST
-DESCRIPTOR.message_types_by_name['ProvisionFirmwareResponse'] = _PROVISIONFIRMWARERESPONSE
-DESCRIPTOR.message_types_by_name['ProvisionFirmwareMetadata'] = _PROVISIONFIRMWAREMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 FirmwareProvisionStartupMetadata = _reflection.GeneratedProtocolMessageType('FirmwareProvisionStartupMetadata', (_message.Message,), {
@@ -305,53 +111,6 @@ FirmwareProvisionInstallMetadata = _reflection.GeneratedProtocolMessageType('Fir
   })
 _sym_db.RegisterMessage(FirmwareProvisionInstallMetadata)
 
-ProvisionFirmwareRequest = _reflection.GeneratedProtocolMessageType('ProvisionFirmwareRequest', (_message.Message,), {
-  'DESCRIPTOR' : _PROVISIONFIRMWAREREQUEST,
-  '__module__' : 'chromiumos.test.api.firmware_provision_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ProvisionFirmwareRequest)
-  })
-_sym_db.RegisterMessage(ProvisionFirmwareRequest)
-
-ProvisionFirmwareResponse = _reflection.GeneratedProtocolMessageType('ProvisionFirmwareResponse', (_message.Message,), {
-  'DESCRIPTOR' : _PROVISIONFIRMWARERESPONSE,
-  '__module__' : 'chromiumos.test.api.firmware_provision_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ProvisionFirmwareResponse)
-  })
-_sym_db.RegisterMessage(ProvisionFirmwareResponse)
-
-ProvisionFirmwareMetadata = _reflection.GeneratedProtocolMessageType('ProvisionFirmwareMetadata', (_message.Message,), {
-  'DESCRIPTOR' : _PROVISIONFIRMWAREMETADATA,
-  '__module__' : 'chromiumos.test.api.firmware_provision_pb2'
-  # @@protoc_insertion_point(class_scope:chromiumos.test.api.ProvisionFirmwareMetadata)
-  })
-_sym_db.RegisterMessage(ProvisionFirmwareMetadata)
-
 
 DESCRIPTOR._options = None
-
-_FIRMWAREPROVISIONSERVICE = _descriptor.ServiceDescriptor(
-  name='FirmwareProvisionService',
-  full_name='chromiumos.test.api.FirmwareProvisionService',
-  file=DESCRIPTOR,
-  index=0,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=1122,
-  serialized_end=1303,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='Provision',
-    full_name='chromiumos.test.api.FirmwareProvisionService.Provision',
-    index=0,
-    containing_service=None,
-    input_type=_PROVISIONFIRMWAREREQUEST,
-    output_type=chromiumos_dot_longrunning_dot_operations__pb2._OPERATION,
-    serialized_options=b'\322A6\n\031ProvisionFirmwareResponse\022\031ProvisionFirmwareMetadata',
-    create_key=_descriptor._internal_create_key,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_FIRMWAREPROVISIONSERVICE)
-
-DESCRIPTOR.services_by_name['FirmwareProvisionService'] = _FIRMWAREPROVISIONSERVICE
-
 # @@protoc_insertion_point(module_scope)

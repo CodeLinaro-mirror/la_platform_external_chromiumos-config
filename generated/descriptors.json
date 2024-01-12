@@ -25437,7 +25437,6 @@
       },
       "dependency": [
         "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/longrunning/operations.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto"
       ],
       "messageType": [
@@ -25466,124 +25465,6 @@
             }
           ],
           "name": "FirmwareProvisionInstallMetadata"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "detailedRequest",
-              "label": "LABEL_OPTIONAL",
-              "name": "detailed_request",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.build.api.FirmwareConfig"
-            },
-            {
-              "jsonName": "dutServerAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "dut_server_address",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "crosServodAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "cros_servod_address",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "cacheServerAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "cache_server_address",
-              "number": 10,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            },
-            {
-              "jsonName": "board",
-              "label": "LABEL_OPTIONAL",
-              "name": "board",
-              "number": 6,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "model",
-              "label": "LABEL_OPTIONAL",
-              "name": "model",
-              "number": 7,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "force",
-              "label": "LABEL_OPTIONAL",
-              "name": "force",
-              "number": 8,
-              "type": "TYPE_BOOL"
-            },
-            {
-              "jsonName": "useServo",
-              "label": "LABEL_OPTIONAL",
-              "name": "use_servo",
-              "number": 9,
-              "type": "TYPE_BOOL"
-            }
-          ],
-          "name": "ProvisionFirmwareRequest",
-          "reservedRange": [
-            {
-              "end": 2,
-              "start": 1
-            }
-          ]
-        },
-        {
-          "enumType": [
-            {
-              "name": "Status",
-              "value": [
-                {
-                  "name": "STATUS_OK",
-                  "number": 0
-                },
-                {
-                  "name": "STATUS_INVALID_REQUEST",
-                  "number": 1
-                },
-                {
-                  "name": "STATUS_DUT_UNREACHABLE_PRE_PROVISION",
-                  "number": 2
-                },
-                {
-                  "name": "STATUS_UPDATE_FIRMWARE_FAILED",
-                  "number": 3
-                },
-                {
-                  "name": "STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE",
-                  "number": 4
-                },
-                {
-                  "name": "STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE",
-                  "number": 5
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "status",
-              "label": "LABEL_OPTIONAL",
-              "name": "status",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.api.ProvisionFirmwareResponse.Status"
-            }
-          ],
-          "name": "ProvisionFirmwareResponse"
-        },
-        {
-          "name": "ProvisionFirmwareMetadata"
         }
       ],
       "name": "chromiumos/test/api/firmware_provision.proto",
@@ -25591,24 +25472,6 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },
       "package": "chromiumos.test.api",
-      "service": [
-        {
-          "method": [
-            {
-              "inputType": ".chromiumos.test.api.ProvisionFirmwareRequest",
-              "name": "Provision",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "ProvisionFirmwareMetadata",
-                  "responseType": "ProvisionFirmwareResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            }
-          ],
-          "name": "FirmwareProvisionService"
-        }
-      ],
       "syntax": "proto3"
     },
     {

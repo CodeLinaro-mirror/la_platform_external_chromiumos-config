@@ -9,7 +9,6 @@ package chromiumos.test.api;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/build/api/firmware_config.proto";
-import "chromiumos/longrunning/operations.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 
 // FirmwareProvisionStartupMetadata can be passed to ProvisionStartupRequest.metadata
@@ -26,75 +25,4 @@ message FirmwareProvisionInstallMetadata {
   // them individually over futility.
   // ec_ro over Servo is flashed using flash_ec.
   chromiumos.build.api.FirmwareConfig firmware_config = 1;
-}
-
-// TODO(b/274780330): Delete this and use GenericProvisionService
-// Firmware Provisioning for CFT
-service FirmwareProvisionService {
-  // Install installs a specific firmware on a DUT.
-  rpc Provision(ProvisionFirmwareRequest)
-      returns (longrunning.Operation) {
-    option (longrunning.operation_info) = {
-      response_type: "ProvisionFirmwareResponse",
-      metadata_type: "ProvisionFirmwareMetadata"
-    };
-  }
-}
-
-// TODO(b/274780330): Delete this and use GenericProvisionService
-message ProvisionFirmwareRequest {
-  reserved 1;
-  // Detailed Request allows you to specify individual versions of
-  // AP_RW, AP_RO, EC_RO, and PD_RO.
-  // Service will extract the images from firmware archive and install
-  // them individually over futility.
-  // ec_ro over Servo is flashed using flash_ec.
-  chromiumos.build.api.FirmwareConfig detailed_request = 2;
-
-  // Access to DUT Service is required to flash over SSH.
-  chromiumos.test.lab.api.IpEndpoint dut_server_address = 3;
-
-  // Access to cros-servod is required to flash over Servo.
-  chromiumos.test.lab.api.IpEndpoint cros_servod_address = 4;
-
-  // Access to cache service is required.
-  chromiumos.test.lab.api.IpEndpoint cache_server_address = 10;
-
-  // Board of the DUT. Required.
-  string board = 6;
-
-  // Model of the DUT. Required.
-  string model = 7;
-
-  // Use force to pass "--force" to futility, which skips the TPM checks.
-  bool force = 8;
-
-  // If True, provision firmware over Servo, otherwise use SSH.
-  bool use_servo = 9;
-}
-
-// TODO(b/274780330): Delete this and use GenericProvisionService
-message ProvisionFirmwareResponse {
-  // When the status code is other than OK, details in Status message should be
-  // parsed for ErrorInfo message with the following Reasons as the reason.
-  enum Status {
-    STATUS_OK = 0;
-    // status code: INVALID_ARGUMENT
-    STATUS_INVALID_REQUEST = 1;
-    // status code: FAILED_PRECONDITION
-    STATUS_DUT_UNREACHABLE_PRE_PROVISION = 2;
-    // status code: ABORTED
-    STATUS_UPDATE_FIRMWARE_FAILED = 3;
-    // status code: ABORTED
-    STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE = 4;
-    // status code: ABORTED
-    STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE = 5;
-  }
-
-  Status status = 1;
-}
-
-// TODO(b/274780330): Delete this and use GenericProvisionService
-// Empty as required by longrunning to comply
-message ProvisionFirmwareMetadata {
 }
