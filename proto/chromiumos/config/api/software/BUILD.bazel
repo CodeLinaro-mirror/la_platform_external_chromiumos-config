@@ -9,11 +9,11 @@ load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 proto_library(
     name = "software_proto",
     srcs = [
-        "alt_firmware_config.proto",
         "audio_config.proto",
         "bluetooth_config.proto",
         "brand_config.proto",
         "camera_config.proto",
+        "firmware_info.proto",
         "health_config.proto",
         "nnpalm_config.proto",
         "power_config.proto",
