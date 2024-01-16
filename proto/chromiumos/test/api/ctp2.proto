@@ -14,6 +14,7 @@ import "chromiumos/test/api/test_case_metadata.proto";
 import "chromiumos/build/api/container_metadata.proto";
 import "chromiumos/test/lab/api/dut.proto";
 import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
 
 // CrosTestPlatform2 ...
 service CTPv2Service {
@@ -28,20 +29,50 @@ service GenericFilterService {
 }
 
 // CTPv2Request ...
-// next value = 8;
+// next value = 9;
 message CTPv2Request {
+  // TODO(b/319981532): Support multiple suite runs in ctpv2. Deprecate the
+  // fields below (1-7) when implementation is complete.
   SuiteRequest suite_request = 1;
   repeated Targets targets = 2;
-  // TODO(b/305750675): Implement SchedulerTargets in CTPv2
-  // and deprecate old targets field above.
+  repeated CTPFilter karbon_filters = 3;
+  repeated CTPFilter koffee_filters = 4;
+  string pool = 5;
+  google.protobuf.Any scheduke_metadata = 6;
   repeated ScheduleTargets schedule_targets = 7;
+
+  repeated CTPRequest requests = 8;
+}
+
+// Single CTPv2Request with one suite defining one or more targets. Filters
+// are build versioned so each suite will be capable of defining it's own
+// filters to execute.
+message CTPRequest {
+  SuiteRequest suite_request = 1;
+  repeated ScheduleTargets schedule_targets = 2;
 
   repeated CTPFilter karbon_filters = 3;
   repeated CTPFilter koffee_filters = 4;
 
-  string pool = 5;
+  SchedulerInfo scheduler_info = 5;
 
-  google.protobuf.Any scheduke_metadata = 6;
+  google.protobuf.Any scheduler_metadata = 6;
+}
+
+message SchedulerInfo {
+  enum Scheduler {
+    // UNSPECIFIED scheduler
+    UNSPECIFIED = 0;
+    // Quota Scheduler
+    QSCHEDULER = 1;
+    // Scheduke
+    SCHEDUKE = 2;
+    // Will only be used for debugging and local mode. The BB requests will be
+    // printed to luci log but won't be scheduled.
+    PRINT_REQUEST_ONLY = 3;
+  }
+
+  Scheduler scheduler = 1;
 }
 
 message SuiteRequest {
@@ -49,6 +80,9 @@ message SuiteRequest {
     TestSuite test_suite = 1;
     Reserved hierarchical_plan = 2;
   }
+
+  // Maximum duration for the entire request to be handled.
+  google.protobuf.Duration maximum_duration = 3;
 }
 
 message KeyValue {
@@ -99,6 +133,7 @@ message LegacyHW {
   string variant = 3 [deprecated = true];
   // In the process of deprecation. Do not set.
   MultiDut multi_dut = 4 [deprecated = true];
+  string pool = 5;
 }
 
 message DDDHW{}
@@ -112,8 +147,6 @@ message MultiDut{
   Pair boards = 1;
   Pair model  = 2;
 }
-
-
 
 message CTPFilter {
   chromiumos.build.api.ContainerImageInfo container = 1;
@@ -131,7 +164,6 @@ message InternalTestplan {
   repeated CTPTestCase test_cases = 1;
   SuiteInfo suite_info = 2;
 }
-
 
 // Information to be populated by the filters.
 message CTPTestCase {

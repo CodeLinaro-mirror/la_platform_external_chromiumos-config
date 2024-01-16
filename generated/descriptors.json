@@ -23210,7 +23210,8 @@
         "chromiumos/test/api/test_case_metadata.proto",
         "chromiumos/build/api/container_metadata.proto",
         "chromiumos/test/lab/api/dut.proto",
-        "google/protobuf/any.proto"
+        "google/protobuf/any.proto",
+        "google/protobuf/duration.proto"
       ],
       "messageType": [
         {
@@ -23230,14 +23231,6 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Targets"
-            },
-            {
-              "jsonName": "scheduleTargets",
-              "label": "LABEL_REPEATED",
-              "name": "schedule_targets",
-              "number": 7,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.api.ScheduleTargets"
             },
             {
               "jsonName": "karbonFilters",
@@ -23269,9 +23262,114 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "scheduleTargets",
+              "label": "LABEL_REPEATED",
+              "name": "schedule_targets",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ScheduleTargets"
+            },
+            {
+              "jsonName": "requests",
+              "label": "LABEL_REPEATED",
+              "name": "requests",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CTPRequest"
             }
           ],
           "name": "CTPv2Request"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "suiteRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite_request",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SuiteRequest"
+            },
+            {
+              "jsonName": "scheduleTargets",
+              "label": "LABEL_REPEATED",
+              "name": "schedule_targets",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ScheduleTargets"
+            },
+            {
+              "jsonName": "karbonFilters",
+              "label": "LABEL_REPEATED",
+              "name": "karbon_filters",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CTPFilter"
+            },
+            {
+              "jsonName": "koffeeFilters",
+              "label": "LABEL_REPEATED",
+              "name": "koffee_filters",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CTPFilter"
+            },
+            {
+              "jsonName": "schedulerInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "scheduler_info",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SchedulerInfo"
+            },
+            {
+              "jsonName": "schedulerMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "scheduler_metadata",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "CTPRequest"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Scheduler",
+              "value": [
+                {
+                  "name": "UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "QSCHEDULER",
+                  "number": 1
+                },
+                {
+                  "name": "SCHEDUKE",
+                  "number": 2
+                },
+                {
+                  "name": "PRINT_REQUEST_ONLY",
+                  "number": 3
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "scheduler",
+              "label": "LABEL_OPTIONAL",
+              "name": "scheduler",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.SchedulerInfo.Scheduler"
+            }
+          ],
+          "name": "SchedulerInfo"
         },
         {
           "field": [
@@ -23292,6 +23390,14 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Reserved"
+            },
+            {
+              "jsonName": "maximumDuration",
+              "label": "LABEL_OPTIONAL",
+              "name": "maximum_duration",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
             }
           ],
           "name": "SuiteRequest",
@@ -23483,6 +23589,13 @@
               },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.MultiDut"
+            },
+            {
+              "jsonName": "pool",
+              "label": "LABEL_OPTIONAL",
+              "name": "pool",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "LegacyHW"
