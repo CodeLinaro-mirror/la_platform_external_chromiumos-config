@@ -1586,6 +1586,16 @@ type SchedulingMetadata struct {
 	// allocated,
 	// e.g. Scheduling field in
 	// "go.chromium.org/chromiumos/infra/proto/go/test_platform/request.proto".
+	//
+	// The following args are supported:
+	// - analytics_name: Name of the config, used for analytics,
+	//    e.g. "Bluetooth_Sa_Perbuild". Source from the SchedulerConfig in:
+	//    "go.chromium.org/chromiumos/infra/proto/go/testplans/suite_scheduler.proto"
+	// - ctp-fwd-task-name: Suite scheduler config name,
+	//    e.g. "Bluetooth_Sa_Perbuild".
+	// - qs_account: Quota Scheduler account to use for DUT pool,
+	//    e.g. "unmanaged_p2". Source from the PoolOptions in:
+	//    "go.chromium.org/chromiumos/infra/proto/go/testplans/suite_scheduler.proto"
 	SchedulingArgs map[string]string `protobuf:"bytes,2,rep,name=scheduling_args,json=schedulingArgs,proto3" json:"scheduling_args,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// The timing information of the scheduling task,
 	// e.g. fast, slow, extendedtimeout, ordering etc.

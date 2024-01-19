@@ -495,6 +495,16 @@ message SchedulingMetadata {
   // allocated,
   // e.g. Scheduling field in
   // "go.chromium.org/chromiumos/infra/proto/go/test_platform/request.proto".
+  //
+  // The following args are supported:
+  // - analytics_name: Name of the config, used for analytics,
+  //    e.g. "Bluetooth_Sa_Perbuild". Source from the SchedulerConfig in:
+  //    "go.chromium.org/chromiumos/infra/proto/go/testplans/suite_scheduler.proto"
+  // - ctp-fwd-task-name: Suite scheduler config name,
+  //    e.g. "Bluetooth_Sa_Perbuild".
+  // - qs_account: Quota Scheduler account to use for DUT pool,
+  //    e.g. "unmanaged_p2". Source from the PoolOptions in:
+  //    "go.chromium.org/chromiumos/infra/proto/go/testplans/suite_scheduler.proto"
   map<string, string> scheduling_args = 2;
 
   // The timing information of the scheduling task,
