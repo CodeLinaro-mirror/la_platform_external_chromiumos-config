@@ -26436,6 +26436,14 @@
               "number": 9,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.BuildMetadata.Lacros"
+            },
+            {
+              "jsonName": "chameleon",
+              "label": "LABEL_OPTIONAL",
+              "name": "chameleon",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.Chameleon"
             }
           ],
           "name": "BuildMetadata",

@@ -217,7 +217,7 @@ message BuildInfo {
 }
 
 // The complete build metadata of the test case.
-// NEXT TAG: 10
+// NEXT TAG: 11
 message BuildMetadata {
   // ARC++ metadata
   message Arc {
@@ -295,6 +295,11 @@ message BuildMetadata {
   }
 
   Lacros lacros = 9;
+
+  // Chameleon metadata for for automated external display testing across USB-C,
+  // HDMI, and DisplayPort.
+  // See details: http://g3doc/company/teams/chromeos-audio/tests/chameleon
+  chromiumos.test.lab.api.Chameleon chameleon = 10;
 }
 
 // Captures DUT related info.
