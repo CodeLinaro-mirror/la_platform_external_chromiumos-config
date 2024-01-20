@@ -6794,6 +6794,29 @@
               "name": "Display"
             },
             {
+              "enumType": [
+                {
+                  "name": "TouchpadType",
+                  "value": [
+                    {
+                      "name": "TYPE_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "INTERNAL",
+                      "number": 1
+                    },
+                    {
+                      "name": "NONE",
+                      "number": 2
+                    },
+                    {
+                      "name": "DETACHABLE",
+                      "number": 3
+                    }
+                  ]
+                }
+              ],
               "field": [
                 {
                   "jsonName": "present",
@@ -6802,6 +6825,14 @@
                   "number": 1,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "touchpadType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "touchpad_type",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Touchpad.TouchpadType"
                 }
               ],
               "name": "Touchpad"

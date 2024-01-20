@@ -868,6 +868,15 @@ message HardwareFeatures {
   // Whether the system has a touchpad
   message Touchpad {
     Present present = 1;
+
+    // Type of touchpad present on system
+    TouchpadType touchpad_type = 2;
+    enum TouchpadType {
+      TYPE_UNKNOWN = 0;
+      INTERNAL = 1;    // E.g. Clamshell/Convertible
+      NONE = 2;        // E.g. Chromebox
+      DETACHABLE = 3;  // E.g. Tablet with detachable keyboard/touchpad
+    }
   }
   Touchpad touchpad = 28;
 
