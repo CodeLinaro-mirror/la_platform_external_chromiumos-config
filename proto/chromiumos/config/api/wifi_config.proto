@@ -287,6 +287,32 @@ message WifiConfig {
     GeoTransmitPowerChain fcc_power_table = 3;
     GeoTransmitPowerChain eu_power_table = 4;
     GeoTransmitPowerChain other_power_table = 5;
+
+    message MtclTable {
+      // MediaTek Country List definition.
+      uint32 version = 1;
+      // Support 6GHz. 0 is force disable, 1 enable if driver and BIOS table
+      // both support this country, 2 support depends only on kernel driver.
+      uint32 support_6ghz = 2;
+      // 6GHz country list bitmask. This is a bitmask that defines which
+      // countries shall have 6GHz operation enabled. The field is 6 bytes
+      // wide, with the last 2 bytes reserved.
+      // Valid values range 0x0 - 0xFFFFFFFF0000, with the last two bytes being
+      // zero.
+      uint64 bitmask_6ghz = 3;
+      // Support 5.9GHz. 0 is force disable, 1 enable if driver and BIOS table
+      // both support this country, 2 support depends only on kernel driver.
+      uint32 support_5p9ghz = 4;
+      // 5.9GHz country list bitmask. This is a bitmask that defines which
+      // countries shall have 5.9GHz operation enabled. The field is 6 bytes
+      // wide, with the last 2 bytes reserved.
+      // Valid values range 0x0 - 0xFFFFFFFF0000, with the last two bytes being
+      // zero.
+      uint64 bitmask_5p9ghz = 5;
+    }
+
+    // MtclTable optionally configures the MediaTek Country List.
+    MtclTable country_list = 6;
   }
 
   message Rtw89Config {

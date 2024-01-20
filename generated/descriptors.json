@@ -3713,6 +3713,14 @@
                   "number": 5,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain"
+                },
+                {
+                  "jsonName": "countryList",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "country_list",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.MtkConfig.MtclTable"
                 }
               ],
               "name": "MtkConfig",
@@ -3845,6 +3853,46 @@
                     }
                   ],
                   "name": "GeoTransmitPowerChain"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "version",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "version",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "support6ghz",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "support_6ghz",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "bitmask6ghz",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "bitmask_6ghz",
+                      "number": 3,
+                      "type": "TYPE_UINT64"
+                    },
+                    {
+                      "jsonName": "support5p9ghz",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "support_5p9ghz",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "bitmask5p9ghz",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "bitmask_5p9ghz",
+                      "number": 5,
+                      "type": "TYPE_UINT64"
+                    }
+                  ],
+                  "name": "MtclTable"
                 }
               ]
             },

@@ -66,6 +66,12 @@ _FW_TYPE = struct(
     PD = fw_pb.FirmwareType.PD,
 )
 
+_SUPPORT_BAND = struct(
+    DISABLED = 0,
+    BIOS_AND_OS = 1,
+    OS_ONLY = 2,
+)
+
 def _create_fw_version(major_version = None, minor_version = None, patch_version = None):
     """
     Builds a firmware Version proto.
@@ -1047,12 +1053,36 @@ def _create_mtk_power_chain(
         limit_6g_6 = limit_6g_6,
     )
 
+def _create_mtcl_table(
+        version,
+        support_6ghz,
+        bitmask_6ghz,
+        support_5p9ghz,
+        bitmask_5p9ghz):
+    """Builds a MtclTable for mtk drivers.
+
+    Args:
+        version: The version of the MTCL payload. Only version 2 is supported. Required.
+        support_6ghz: Support 6GHz operation. 0 disables, 1 enables if the driver and BIOS support this country, 2 enables if the kernel driver would enable operation. Required.
+        bitmask_6ghz: The bitmask representing which countries should have 6GHz operation enabled. Valid values are 0x0 - 0xFFFFFFFF0000 where the final two bytes MUST be zero. Required.
+        support_5p9ghz: Support 5.9GHz operation. 0 disables, 1 enables if the driver and BIOS support this country, 2 enables if the kernel driver would enable operation. Required.
+        bitmask_5p9ghz: The bitmask representing which countries should have 5.9GHz operation enabled. Valid values are 0x0 - 0xFFFFFFFF0000 where the final two bytes MUST be zero. Required.
+    """
+    return wf_pb.WifiConfig.MtkConfig.MtclTable(
+        version = version,
+        support_6ghz = support_6ghz,
+        bitmask_6ghz = bitmask_6ghz,
+        support_5p9ghz = support_5p9ghz,
+        bitmask_5p9ghz = bitmask_5p9ghz,
+    )
+
 def _create_mtk_wifi(
         non_tablet_mode_transmit_power_chain,
         tablet_mode_transmit_power_chain,
         fcc_transmit_power_chain = None,
         eu_transmit_power_chain = None,
-        other_transmit_power_chain = None):
+        other_transmit_power_chain = None,
+        country_list = None):
     """Builds a WifiConfig proto for use with mtk drivers.
 
     Args:
@@ -1061,6 +1091,7 @@ def _create_mtk_wifi(
         fcc_transmit_power_chain: power chain for regulatory domains that follow FCC guidelines.
         eu_transmit_power_chain: power chain for regulatory domains that follow ESTI guidelines.
         other_transmit_power_chain: power chain for regulatory domains that don't follow FCC or ETSI guidelines.
+        country_list: country list definition for MTCL ACPI method.
     """
     return wf_pb.WifiConfig(
         mtk_config = wf_pb.WifiConfig.MtkConfig(
@@ -1069,6 +1100,7 @@ def _create_mtk_wifi(
             fcc_power_table = fcc_transmit_power_chain,
             eu_power_table = eu_transmit_power_chain,
             other_power_table = other_transmit_power_chain,
+            country_list = country_list,
         ),
     )
 
@@ -1157,6 +1189,7 @@ sw_config = struct(
     create_intel_sar_avg_table = _create_intel_sar_avg_table,
     create_intel_wifi = _create_intel_wifi,
     create_legacy_intel_wifi = _create_legacy_intel_wifi,
+    create_mtcl_table = _create_mtcl_table,
     create_mtk_geo_power_chain = _create_mtk_geo_power_chain,
     create_mtk_power_chain = _create_mtk_power_chain,
     create_mtk_wifi = _create_mtk_wifi,
@@ -1169,6 +1202,7 @@ sw_config = struct(
     create_ui = _create_ui,
     create_usb = _create_usb,
     fw_type = _FW_TYPE,
+    support_band = _SUPPORT_BAND,
     ui_requisition = _UI_REQUISITION,
     make_resolution = _make_resolution,
 )

@@ -1314,6 +1314,13 @@ design.append_configs(
                     offset_2g = 21,
                     offset_5g = 22,
                 ),
+                country_list = sc.create_mtcl_table(
+                    version = 2,
+                    support_6ghz = sc.support_band.BIOS_AND_OS,
+                    bitmask_6ghz = 0x123456780000,
+                    support_5p9ghz = sc.support_band.BIOS_AND_OS,
+                    bitmask_5p9ghz = 0x876543210000,
+                ),
             ),
         ),
         detachable_base = _USB_DETACHABLE_BASE,

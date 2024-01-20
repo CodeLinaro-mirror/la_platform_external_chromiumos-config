@@ -3917,6 +3917,13 @@
             "wifi": {
               "wifiConfig": {
                 "mtkConfig": {
+                  "countryList": {
+                    "bitmask5p9ghz": "148868987682816",
+                    "bitmask6ghz": "20015998304256",
+                    "support5p9ghz": 1,
+                    "support6ghz": 1,
+                    "version": 2
+                  },
                   "euPowerTable": {
                     "limit2g": 15,
                     "limit5g": 16,
@@ -4375,6 +4382,13 @@
                 "wifi": {
                   "wifiConfig": {
                     "mtkConfig": {
+                      "countryList": {
+                        "bitmask5p9ghz": "148868987682816",
+                        "bitmask6ghz": "20015998304256",
+                        "support5p9ghz": 1,
+                        "support6ghz": 1,
+                        "version": 2
+                      },
                       "euPowerTable": {
                         "limit2g": 15,
                         "limit5g": 16,
