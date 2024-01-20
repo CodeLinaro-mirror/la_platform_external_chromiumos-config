@@ -25480,6 +25480,164 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/any.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericMessage"
+            }
+          ],
+          "name": "GenericStartRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericMessage"
+            }
+          ],
+          "name": "GenericStartResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericMessage"
+            }
+          ],
+          "name": "GenericRunRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericMessage"
+            }
+          ],
+          "name": "GenericRunResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericMessage"
+            }
+          ],
+          "name": "GenericStopRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericMessage"
+            }
+          ],
+          "name": "GenericStopResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericMessage.ValuesEntry"
+            }
+          ],
+          "name": "GenericMessage",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Any"
+                }
+              ],
+              "name": "ValuesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/generic_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.GenericStartRequest",
+              "name": "Start",
+              "options": {},
+              "outputType": ".chromiumos.test.api.GenericStartResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.GenericRunRequest",
+              "name": "Run",
+              "options": {},
+              "outputType": ".chromiumos.test.api.GenericRunResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.GenericStopRequest",
+              "name": "Stop",
+              "options": {},
+              "outputType": ".chromiumos.test.api.GenericStopResponse"
+            }
+          ],
+          "name": "GenericService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "google/protobuf/timestamp.proto"
       ],
       "messageType": [
