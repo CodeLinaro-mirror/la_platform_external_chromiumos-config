@@ -13,6 +13,7 @@ import "chromiumos/test/api/provision_state.proto";
 import "chromiumos/test/api/cros_provision_cli.proto";
 import "chromiumos/test/api/test_case_result.proto";
 import "chromiumos/test/api/test_suite.proto";
+import "chromiumos/test/api/cros_test_finder_cli.proto";
 import "chromiumos/test/lab/api/dut.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 import "chromiumos/test/api/pre_test_service.proto";
@@ -91,6 +92,11 @@ message CrosToolRunnerTestFinderRequest {
   // ContainerMetadataKey is the key to search in the ContainerMetadata map
   // defined in container_metadata.proto
   string container_metadata_key = 3;
+  // The caller should construct the entire request to go to the service. The
+  // test_suites field should not be provided if this field is provided and
+  // vise versa (test_suites field is not deleted for backwards compatibility
+  // reasons)
+  chromiumos.test.api.CrosTestFinderRequest request = 4;
 }
 
 // CrosToolRunnerTestFinderResponse return a lit of test suites

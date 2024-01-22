@@ -21706,6 +21706,7 @@
         "chromiumos/test/api/cros_provision_cli.proto",
         "chromiumos/test/api/test_case_result.proto",
         "chromiumos/test/api/test_suite.proto",
+        "chromiumos/test/api/cros_test_finder_cli.proto",
         "chromiumos/test/lab/api/dut.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto",
         "chromiumos/test/api/pre_test_service.proto",
@@ -21924,6 +21925,14 @@
               "name": "container_metadata_key",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "request",
+              "label": "LABEL_OPTIONAL",
+              "name": "request",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestFinderRequest"
             }
           ],
           "name": "CrosToolRunnerTestFinderRequest"
