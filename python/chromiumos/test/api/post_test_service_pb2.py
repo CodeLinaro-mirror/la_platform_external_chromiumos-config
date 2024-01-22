@@ -12,6 +12,7 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.test.lab.api import ip_endpoint_pb2 as chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2
+from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,11 +21,118 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+chromiumos/test/api/post_test_service.proto\x12\x13\x63hromiumos.test.api\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"C\n\x12RunActivityRequest\x12-\n\x07request\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.api.Request\"\xad\x01\n\x07Request\x12\x44\n\x13get_fw_info_request\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.GetFWInfoRequestH\x00\x12Q\n\x1aget_files_from_dut_request\x18\x02 \x01(\x0b\x32+.chromiumos.test.api.GetFilesFromDUTRequestH\x00\x42\t\n\x07request\"\x7f\n\x14RunActivitiesRequest\x12.\n\x08requests\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.Request\x12\x37\n\ndut_server\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"T\n\x15RunActivitiesResponse\x12;\n\tresponses\x18\x01 \x03(\x0b\x32(.chromiumos.test.api.RunActivityResponse\"\x12\n\x10GetFWInfoRequest\"\'\n\x16GetFilesFromDUTRequest\x12\r\n\x05\x66iles\x18\x01 \x03(\t\"\xbe\x01\n\x13RunActivityResponse\x12\x46\n\x14get_fw_info_response\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.GetFWInfoResponseH\x00\x12S\n\x1bget_files_from_dut_response\x18\x02 \x01(\x0b\x32,.chromiumos.test.api.GetFilesFromDUTResponseH\x00\x42\n\n\x08response\"m\n\x11GetFWInfoResponse\x12\x0f\n\x07ro_fwid\x18\x01 \x01(\t\x12\x0f\n\x07rw_fwid\x18\x02 \x01(\t\x12\x16\n\x0ekernel_version\x18\x03 \x01(\t\x12\x0e\n\x06gsc_ro\x18\x04 \x01(\t\x12\x0e\n\x06gsc_rw\x18\x05 \x01(\t\"I\n\x17GetFilesFromDUTResponse\x12.\n\x08\x66ile_map\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.FileMap\"3\n\x07\x46ileMap\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x15\n\rfile_location\x18\x02 \x01(\t2s\n\x0fPostTestService\x12`\n\x0bRunActivity\x12\'.chromiumos.test.api.RunActivityRequest\x1a(.chromiumos.test.api.RunActivityResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n+chromiumos/test/api/post_test_service.proto\x12\x13\x63hromiumos.test.api\x1a)chromiumos/test/lab/api/ip_endpoint.proto\x1a\x19google/protobuf/any.proto\"y\n\x16PostTestStartUpRequest\x12\x37\n\ndut_server\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\"\xcb\x01\n\x17PostTestStartUpResponse\x12\x43\n\x06status\x18\x01 \x01(\x0e\x32\x33.chromiumos.test.api.PostTestStartUpResponse.Status\"k\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x02\x12\x19\n\x15STATUS_STARTUP_FAILED\x10\x03\"C\n\x12RunActivityRequest\x12-\n\x07request\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.api.Request\"\xad\x01\n\x07Request\x12\x44\n\x13get_fw_info_request\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.GetFWInfoRequestH\x00\x12Q\n\x1aget_files_from_dut_request\x18\x02 \x01(\x0b\x32+.chromiumos.test.api.GetFilesFromDUTRequestH\x00\x42\t\n\x07request\"\x7f\n\x14RunActivitiesRequest\x12.\n\x08requests\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.Request\x12\x37\n\ndut_server\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"T\n\x15RunActivitiesResponse\x12;\n\tresponses\x18\x01 \x03(\x0b\x32(.chromiumos.test.api.RunActivityResponse\"\x12\n\x10GetFWInfoRequest\"\'\n\x16GetFilesFromDUTRequest\x12\r\n\x05\x66iles\x18\x01 \x03(\t\"\xbe\x01\n\x13RunActivityResponse\x12\x46\n\x14get_fw_info_response\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.GetFWInfoResponseH\x00\x12S\n\x1bget_files_from_dut_response\x18\x02 \x01(\x0b\x32,.chromiumos.test.api.GetFilesFromDUTResponseH\x00\x42\n\n\x08response\"m\n\x11GetFWInfoResponse\x12\x0f\n\x07ro_fwid\x18\x01 \x01(\t\x12\x0f\n\x07rw_fwid\x18\x02 \x01(\t\x12\x16\n\x0ekernel_version\x18\x03 \x01(\t\x12\x0e\n\x06gsc_ro\x18\x04 \x01(\t\x12\x0e\n\x06gsc_rw\x18\x05 \x01(\t\"I\n\x17GetFilesFromDUTResponse\x12.\n\x08\x66ile_map\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.FileMap\"3\n\x07\x46ileMap\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x15\n\rfile_location\x18\x02 \x01(\t2s\n\x0fPostTestService\x12`\n\x0bRunActivity\x12\'.chromiumos.test.api.RunActivityRequest\x1a(.chromiumos.test.api.RunActivityResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
-  dependencies=[chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
 
+
+_POSTTESTSTARTUPRESPONSE_STATUS = _descriptor.EnumDescriptor(
+  name='Status',
+  full_name='chromiumos.test.api.PostTestStartUpResponse.Status',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='STATUS_UNSPECIFIED', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STATUS_SUCCESS', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STATUS_INVALID_REQUEST', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STATUS_STARTUP_FAILED', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=358,
+  serialized_end=465,
+)
+_sym_db.RegisterEnumDescriptor(_POSTTESTSTARTUPRESPONSE_STATUS)
+
+
+_POSTTESTSTARTUPREQUEST = _descriptor.Descriptor(
+  name='PostTestStartUpRequest',
+  full_name='chromiumos.test.api.PostTestStartUpRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='dut_server', full_name='chromiumos.test.api.PostTestStartUpRequest.dut_server', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='metadata', full_name='chromiumos.test.api.PostTestStartUpRequest.metadata', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=138,
+  serialized_end=259,
+)
+
+
+_POSTTESTSTARTUPRESPONSE = _descriptor.Descriptor(
+  name='PostTestStartUpResponse',
+  full_name='chromiumos.test.api.PostTestStartUpResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='chromiumos.test.api.PostTestStartUpResponse.status', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _POSTTESTSTARTUPRESPONSE_STATUS,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=262,
+  serialized_end=465,
+)
 
 
 _RUNACTIVITYREQUEST = _descriptor.Descriptor(
@@ -54,8 +162,8 @@ _RUNACTIVITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=111,
-  serialized_end=178,
+  serialized_start=467,
+  serialized_end=534,
 )
 
 
@@ -98,8 +206,8 @@ _REQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=181,
-  serialized_end=354,
+  serialized_start=537,
+  serialized_end=710,
 )
 
 
@@ -137,8 +245,8 @@ _RUNACTIVITIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=356,
-  serialized_end=483,
+  serialized_start=712,
+  serialized_end=839,
 )
 
 
@@ -169,8 +277,8 @@ _RUNACTIVITIESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=485,
-  serialized_end=569,
+  serialized_start=841,
+  serialized_end=925,
 )
 
 
@@ -194,8 +302,8 @@ _GETFWINFOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=571,
-  serialized_end=589,
+  serialized_start=927,
+  serialized_end=945,
 )
 
 
@@ -226,8 +334,8 @@ _GETFILESFROMDUTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=591,
-  serialized_end=630,
+  serialized_start=947,
+  serialized_end=986,
 )
 
 
@@ -270,8 +378,8 @@ _RUNACTIVITYRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=633,
-  serialized_end=823,
+  serialized_start=989,
+  serialized_end=1179,
 )
 
 
@@ -330,8 +438,8 @@ _GETFWINFORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=825,
-  serialized_end=934,
+  serialized_start=1181,
+  serialized_end=1290,
 )
 
 
@@ -362,8 +470,8 @@ _GETFILESFROMDUTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=936,
-  serialized_end=1009,
+  serialized_start=1292,
+  serialized_end=1365,
 )
 
 
@@ -401,10 +509,14 @@ _FILEMAP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1011,
-  serialized_end=1062,
+  serialized_start=1367,
+  serialized_end=1418,
 )
 
+_POSTTESTSTARTUPREQUEST.fields_by_name['dut_server'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
+_POSTTESTSTARTUPREQUEST.fields_by_name['metadata'].message_type = google_dot_protobuf_dot_any__pb2._ANY
+_POSTTESTSTARTUPRESPONSE.fields_by_name['status'].enum_type = _POSTTESTSTARTUPRESPONSE_STATUS
+_POSTTESTSTARTUPRESPONSE_STATUS.containing_type = _POSTTESTSTARTUPRESPONSE
 _RUNACTIVITYREQUEST.fields_by_name['request'].message_type = _REQUEST
 _REQUEST.fields_by_name['get_fw_info_request'].message_type = _GETFWINFOREQUEST
 _REQUEST.fields_by_name['get_files_from_dut_request'].message_type = _GETFILESFROMDUTREQUEST
@@ -426,6 +538,8 @@ _RUNACTIVITYRESPONSE.oneofs_by_name['response'].fields.append(
   _RUNACTIVITYRESPONSE.fields_by_name['get_files_from_dut_response'])
 _RUNACTIVITYRESPONSE.fields_by_name['get_files_from_dut_response'].containing_oneof = _RUNACTIVITYRESPONSE.oneofs_by_name['response']
 _GETFILESFROMDUTRESPONSE.fields_by_name['file_map'].message_type = _FILEMAP
+DESCRIPTOR.message_types_by_name['PostTestStartUpRequest'] = _POSTTESTSTARTUPREQUEST
+DESCRIPTOR.message_types_by_name['PostTestStartUpResponse'] = _POSTTESTSTARTUPRESPONSE
 DESCRIPTOR.message_types_by_name['RunActivityRequest'] = _RUNACTIVITYREQUEST
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
 DESCRIPTOR.message_types_by_name['RunActivitiesRequest'] = _RUNACTIVITIESREQUEST
@@ -437,6 +551,20 @@ DESCRIPTOR.message_types_by_name['GetFWInfoResponse'] = _GETFWINFORESPONSE
 DESCRIPTOR.message_types_by_name['GetFilesFromDUTResponse'] = _GETFILESFROMDUTRESPONSE
 DESCRIPTOR.message_types_by_name['FileMap'] = _FILEMAP
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+PostTestStartUpRequest = _reflection.GeneratedProtocolMessageType('PostTestStartUpRequest', (_message.Message,), {
+  'DESCRIPTOR' : _POSTTESTSTARTUPREQUEST,
+  '__module__' : 'chromiumos.test.api.post_test_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.PostTestStartUpRequest)
+  })
+_sym_db.RegisterMessage(PostTestStartUpRequest)
+
+PostTestStartUpResponse = _reflection.GeneratedProtocolMessageType('PostTestStartUpResponse', (_message.Message,), {
+  'DESCRIPTOR' : _POSTTESTSTARTUPRESPONSE,
+  '__module__' : 'chromiumos.test.api.post_test_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.PostTestStartUpResponse)
+  })
+_sym_db.RegisterMessage(PostTestStartUpResponse)
 
 RunActivityRequest = _reflection.GeneratedProtocolMessageType('RunActivityRequest', (_message.Message,), {
   'DESCRIPTOR' : _RUNACTIVITYREQUEST,
@@ -518,8 +646,8 @@ _POSTTESTSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1064,
-  serialized_end=1179,
+  serialized_start=1420,
+  serialized_end=1535,
   methods=[
   _descriptor.MethodDescriptor(
     name='RunActivity',

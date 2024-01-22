@@ -9,6 +9,7 @@ package chromiumos.test.api;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/test/lab/api/ip_endpoint.proto";
+import "google/protobuf/any.proto";
 
 
 // PostTestService acts as a post-test landing point for needed services/actions.
@@ -20,6 +21,30 @@ import "chromiumos/test/lab/api/ip_endpoint.proto";
 service PostTestService {
   rpc RunActivity(RunActivityRequest)
       returns (RunActivityResponse);
+}
+
+// PostTestStartUpRequest provides a generic form for initializing
+// any post test service. This provides a route for initialization
+// rather than using the CLI arguments to provide this info.
+message PostTestStartUpRequest {
+  chromiumos.test.lab.api.IpEndpoint dut_server = 1;
+  // Specific metadata to the individual PostTest service implementation.
+  google.protobuf.Any metadata = 2;
+}
+
+// PostTestStartUpResponse provides a status message to signal
+// what the result of startup call was.
+message PostTestStartUpResponse {
+  enum Status {
+    // In proto3, zero value fields are indistinguishable from unset fields,
+    // by design. They are not sent on the wire either.
+    // SHOULD NOT BE USED.
+    STATUS_UNSPECIFIED = 0;
+    STATUS_SUCCESS = 1;
+    STATUS_INVALID_REQUEST = 2;
+    STATUS_STARTUP_FAILED = 3;
+  }
+  Status status = 1;
 }
 
 // Specific request to run. Must be from the list below.
