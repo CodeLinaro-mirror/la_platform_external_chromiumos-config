@@ -157,11 +157,13 @@ if ! git diff --quiet "${gen_owners}"; then
   echo "Please commit ${gen_owners} with your change."
 fi
 
-cp -rf "${GO_TEMP_DIR}"/chromiumos/config/* go/
-cp "${GO_TEMP_DIR}"/chromiumos/*.go go/
-cp "${GO_TEMP_DIR}"/chromiumos/longrunning/*.go go/longrunning
-cp -rf "${GO_TEMP_DIR}"/chromiumos/build/* go/build/
-cp -rf "${GO_TEMP_DIR}"/chromiumos/test/* go/test
+GO_OUT_DIR="go/src/go.chromium.org/chromiumos/config/go"
+
+cp -rf "${GO_TEMP_DIR}"/chromiumos/config/* "${GO_OUT_DIR}"/
+cp "${GO_TEMP_DIR}"/chromiumos/*.go "${GO_OUT_DIR}"/
+cp "${GO_TEMP_DIR}"/chromiumos/longrunning/*.go "${GO_OUT_DIR}"/longrunning/
+cp -rf "${GO_TEMP_DIR}"/chromiumos/build/* "${GO_OUT_DIR}"/build/
+cp -rf "${GO_TEMP_DIR}"/chromiumos/test/* "${GO_OUT_DIR}"/test/
 
 echo
 echo "== Regenerating DutAttributes"

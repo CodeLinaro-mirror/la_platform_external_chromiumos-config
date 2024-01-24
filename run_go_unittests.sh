@@ -24,5 +24,5 @@ ENSURE_FILE
 PATH="${cipd_root}/bin:${PATH}"
 
 echo "Running unittests..."
-cd go
+cd go/src/go.chromium.org/chromiumos/config/go
 GOROOT="${cipd_root}" go test -mod=readonly ./...
