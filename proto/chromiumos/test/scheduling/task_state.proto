@@ -1,0 +1,31 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.scheduling;
+
+option go_package = "./proto";
+
+enum TaskState {
+  REQUESTED = 0;
+  PENDING = 1;
+  LAUNCHED = 2;
+  COMPLETED = 3;
+  EXPIRED = 4;
+}
+
+message CreateTaskStatesResponse {
+  repeated int64 ids = 1;
+}
+
+message ReadTaskStatesResponse {
+  repeated TaskWithState tasks = 1;
+}
+
+message TaskWithState {
+  int64 task_state_id = 1;
+  TaskState state = 2;
+  int64 bbid = 3;
+}

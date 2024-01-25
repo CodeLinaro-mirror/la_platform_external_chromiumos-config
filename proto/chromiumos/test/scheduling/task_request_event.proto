@@ -1,0 +1,34 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.scheduling;
+
+import "chromiumos/test/scheduling/swarming_dimensions.proto";
+
+option go_package = "./proto";
+
+
+message TaskRequestEvent {
+  // Timestamp in microseconds.
+  int64 event_time = 1;
+  // Timestamp in microseconds.
+  int64 deadline = 2;
+  bool periodic = 3;
+  int64 priority = 4;
+  SwarmingDimensions requested_dimensions = 5;
+  int64 real_execution_minutes = 6;
+  int64 max_execution_minutes = 7;
+  string schedule_build_request_json = 8;
+  string qs_account = 9;
+  string pool = 10;
+  int64 bbid = 11;
+  bool asap = 12;
+  int64 task_state_id = 13;
+}
+
+message TaskRequestEvents {
+  repeated TaskRequestEvent events = 1;
+}

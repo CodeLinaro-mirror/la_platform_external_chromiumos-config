@@ -30466,6 +30466,364 @@
       },
       "package": "chromiumos.test.plan",
       "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "dimsMap",
+              "label": "LABEL_REPEATED",
+              "name": "dims_map",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.scheduling.SwarmingDimensions.DimsMapEntry"
+            }
+          ],
+          "name": "SwarmingDimensions",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.scheduling.DimValues"
+                }
+              ],
+              "name": "DimsMapEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DimValues"
+        }
+      ],
+      "name": "chromiumos/test/scheduling/swarming_dimensions.proto",
+      "options": {
+        "goPackage": "./proto"
+      },
+      "package": "chromiumos.test.scheduling",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/scheduling/swarming_dimensions.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "eventTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "event_time",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "podId",
+              "label": "LABEL_OPTIONAL",
+              "name": "pod_id",
+              "number": 3,
+              "options": {
+                "deprecated": true
+              },
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "deviceDimensions",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_dimensions",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.scheduling.SwarmingDimensions"
+            },
+            {
+              "jsonName": "deviceReady",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_ready",
+              "number": 4,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "DeviceEvent"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "events",
+              "label": "LABEL_REPEATED",
+              "name": "events",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.scheduling.DeviceEvent"
+            }
+          ],
+          "name": "DeviceEvents"
+        }
+      ],
+      "name": "chromiumos/test/scheduling/device_event.proto",
+      "options": {
+        "goPackage": "./proto"
+      },
+      "package": "chromiumos.test.scheduling",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/scheduling/swarming_dimensions.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "eventTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "event_time",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "deadline",
+              "label": "LABEL_OPTIONAL",
+              "name": "deadline",
+              "number": 2,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "periodic",
+              "label": "LABEL_OPTIONAL",
+              "name": "periodic",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "priority",
+              "label": "LABEL_OPTIONAL",
+              "name": "priority",
+              "number": 4,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "requestedDimensions",
+              "label": "LABEL_OPTIONAL",
+              "name": "requested_dimensions",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.scheduling.SwarmingDimensions"
+            },
+            {
+              "jsonName": "realExecutionMinutes",
+              "label": "LABEL_OPTIONAL",
+              "name": "real_execution_minutes",
+              "number": 6,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "maxExecutionMinutes",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_execution_minutes",
+              "number": 7,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "scheduleBuildRequestJson",
+              "label": "LABEL_OPTIONAL",
+              "name": "schedule_build_request_json",
+              "number": 8,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "qsAccount",
+              "label": "LABEL_OPTIONAL",
+              "name": "qs_account",
+              "number": 9,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pool",
+              "label": "LABEL_OPTIONAL",
+              "name": "pool",
+              "number": 10,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "bbid",
+              "label": "LABEL_OPTIONAL",
+              "name": "bbid",
+              "number": 11,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "asap",
+              "label": "LABEL_OPTIONAL",
+              "name": "asap",
+              "number": 12,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "taskStateId",
+              "label": "LABEL_OPTIONAL",
+              "name": "task_state_id",
+              "number": 13,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "TaskRequestEvent"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "events",
+              "label": "LABEL_REPEATED",
+              "name": "events",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.scheduling.TaskRequestEvent"
+            }
+          ],
+          "name": "TaskRequestEvents"
+        }
+      ],
+      "name": "chromiumos/test/scheduling/task_request_event.proto",
+      "options": {
+        "goPackage": "./proto"
+      },
+      "package": "chromiumos.test.scheduling",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "enumType": [
+        {
+          "name": "TaskState",
+          "value": [
+            {
+              "name": "REQUESTED",
+              "number": 0
+            },
+            {
+              "name": "PENDING",
+              "number": 1
+            },
+            {
+              "name": "LAUNCHED",
+              "number": 2
+            },
+            {
+              "name": "COMPLETED",
+              "number": 3
+            },
+            {
+              "name": "EXPIRED",
+              "number": 4
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "ids",
+              "label": "LABEL_REPEATED",
+              "name": "ids",
+              "number": 1,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "CreateTaskStatesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "tasks",
+              "label": "LABEL_REPEATED",
+              "name": "tasks",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.scheduling.TaskWithState"
+            }
+          ],
+          "name": "ReadTaskStatesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "taskStateId",
+              "label": "LABEL_OPTIONAL",
+              "name": "task_state_id",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.scheduling.TaskState"
+            },
+            {
+              "jsonName": "bbid",
+              "label": "LABEL_OPTIONAL",
+              "name": "bbid",
+              "number": 3,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "TaskWithState"
+        }
+      ],
+      "name": "chromiumos/test/scheduling/task_state.proto",
+      "options": {
+        "goPackage": "./proto"
+      },
+      "package": "chromiumos.test.scheduling",
+      "syntax": "proto3"
     }
   ]
 }
