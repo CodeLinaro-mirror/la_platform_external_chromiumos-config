@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\007./proto',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n3chromiumos/test/scheduling/task_request_event.proto\x12\x1a\x63hromiumos.test.scheduling\x1a\x34\x63hromiumos/test/scheduling/swarming_dimensions.proto\"\xe3\x02\n\x10TaskRequestEvent\x12\x12\n\nevent_time\x18\x01 \x01(\x03\x12\x10\n\x08\x64\x65\x61\x64line\x18\x02 \x01(\x03\x12\x10\n\x08periodic\x18\x03 \x01(\x08\x12\x10\n\x08priority\x18\x04 \x01(\x03\x12L\n\x14requested_dimensions\x18\x05 \x01(\x0b\x32..chromiumos.test.scheduling.SwarmingDimensions\x12\x1e\n\x16real_execution_minutes\x18\x06 \x01(\x03\x12\x1d\n\x15max_execution_minutes\x18\x07 \x01(\x03\x12#\n\x1bschedule_build_request_json\x18\x08 \x01(\t\x12\x12\n\nqs_account\x18\t \x01(\t\x12\x0c\n\x04pool\x18\n \x01(\t\x12\x0c\n\x04\x62\x62id\x18\x0b \x01(\x03\x12\x0c\n\x04\x61sap\x18\x0c \x01(\x08\x12\x15\n\rtask_state_id\x18\r \x01(\x03\"Q\n\x11TaskRequestEvents\x12<\n\x06\x65vents\x18\x01 \x03(\x0b\x32,.chromiumos.test.scheduling.TaskRequestEventB\tZ\x07./protob\x06proto3'
+  serialized_pb=b'\n3chromiumos/test/scheduling/task_request_event.proto\x12\x1a\x63hromiumos.test.scheduling\x1a\x34\x63hromiumos/test/scheduling/swarming_dimensions.proto\"\xe3\x02\n\x10TaskRequestEvent\x12\x12\n\nevent_time\x18\x01 \x01(\x03\x12\x10\n\x08\x64\x65\x61\x64line\x18\x02 \x01(\x03\x12\x10\n\x08periodic\x18\x03 \x01(\x08\x12\x10\n\x08priority\x18\x04 \x01(\x03\x12L\n\x14requested_dimensions\x18\x05 \x01(\x0b\x32..chromiumos.test.scheduling.SwarmingDimensions\x12\x1e\n\x16real_execution_minutes\x18\x06 \x01(\x03\x12\x1d\n\x15max_execution_minutes\x18\x07 \x01(\x03\x12#\n\x1bschedule_build_request_json\x18\x08 \x01(\t\x12\x12\n\nqs_account\x18\t \x01(\t\x12\x0c\n\x04pool\x18\n \x01(\t\x12\x0c\n\x04\x62\x62id\x18\x0b \x01(\x03\x12\x0c\n\x04\x61sap\x18\x0c \x01(\x08\x12\x15\n\rtask_state_id\x18\r \x01(\x03\"Q\n\x11TaskRequestEvents\x12<\n\x06\x65vents\x18\x01 \x03(\x0b\x32,.chromiumos.test.scheduling.TaskRequestEvent\"\xc5\x01\n\x16KeyedTaskRequestEvents\x12N\n\x06\x65vents\x18\x01 \x03(\x0b\x32>.chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry\x1a[\n\x0b\x45ventsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12;\n\x05value\x18\x02 \x01(\x0b\x32,.chromiumos.test.scheduling.TaskRequestEvent:\x02\x38\x01\x42\tZ\x07./protob\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_scheduling_dot_swarming__dimensions__pb2.DESCRIPTOR,])
 
@@ -174,10 +174,84 @@ _TASKREQUESTEVENTS = _descriptor.Descriptor(
   serialized_end=576,
 )
 
+
+_KEYEDTASKREQUESTEVENTS_EVENTSENTRY = _descriptor.Descriptor(
+  name='EventsEntry',
+  full_name='chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry.key', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=685,
+  serialized_end=776,
+)
+
+_KEYEDTASKREQUESTEVENTS = _descriptor.Descriptor(
+  name='KeyedTaskRequestEvents',
+  full_name='chromiumos.test.scheduling.KeyedTaskRequestEvents',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='events', full_name='chromiumos.test.scheduling.KeyedTaskRequestEvents.events', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_KEYEDTASKREQUESTEVENTS_EVENTSENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=579,
+  serialized_end=776,
+)
+
 _TASKREQUESTEVENT.fields_by_name['requested_dimensions'].message_type = chromiumos_dot_test_dot_scheduling_dot_swarming__dimensions__pb2._SWARMINGDIMENSIONS
 _TASKREQUESTEVENTS.fields_by_name['events'].message_type = _TASKREQUESTEVENT
+_KEYEDTASKREQUESTEVENTS_EVENTSENTRY.fields_by_name['value'].message_type = _TASKREQUESTEVENT
+_KEYEDTASKREQUESTEVENTS_EVENTSENTRY.containing_type = _KEYEDTASKREQUESTEVENTS
+_KEYEDTASKREQUESTEVENTS.fields_by_name['events'].message_type = _KEYEDTASKREQUESTEVENTS_EVENTSENTRY
 DESCRIPTOR.message_types_by_name['TaskRequestEvent'] = _TASKREQUESTEVENT
 DESCRIPTOR.message_types_by_name['TaskRequestEvents'] = _TASKREQUESTEVENTS
+DESCRIPTOR.message_types_by_name['KeyedTaskRequestEvents'] = _KEYEDTASKREQUESTEVENTS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TaskRequestEvent = _reflection.GeneratedProtocolMessageType('TaskRequestEvent', (_message.Message,), {
@@ -194,6 +268,22 @@ TaskRequestEvents = _reflection.GeneratedProtocolMessageType('TaskRequestEvents'
   })
 _sym_db.RegisterMessage(TaskRequestEvents)
 
+KeyedTaskRequestEvents = _reflection.GeneratedProtocolMessageType('KeyedTaskRequestEvents', (_message.Message,), {
+
+  'EventsEntry' : _reflection.GeneratedProtocolMessageType('EventsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _KEYEDTASKREQUESTEVENTS_EVENTSENTRY,
+    '__module__' : 'chromiumos.test.scheduling.task_request_event_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry)
+    })
+  ,
+  'DESCRIPTOR' : _KEYEDTASKREQUESTEVENTS,
+  '__module__' : 'chromiumos.test.scheduling.task_request_event_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.scheduling.KeyedTaskRequestEvents)
+  })
+_sym_db.RegisterMessage(KeyedTaskRequestEvents)
+_sym_db.RegisterMessage(KeyedTaskRequestEvents.EventsEntry)
+
 
 DESCRIPTOR._options = None
+_KEYEDTASKREQUESTEVENTS_EVENTSENTRY._options = None
 # @@protoc_insertion_point(module_scope)

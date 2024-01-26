@@ -30723,6 +30723,44 @@
             }
           ],
           "name": "TaskRequestEvents"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "events",
+              "label": "LABEL_REPEATED",
+              "name": "events",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry"
+            }
+          ],
+          "name": "KeyedTaskRequestEvents",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_INT64"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.scheduling.TaskRequestEvent"
+                }
+              ],
+              "name": "EventsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/scheduling/task_request_event.proto",
@@ -30772,10 +30810,35 @@
               "label": "LABEL_REPEATED",
               "name": "ids",
               "number": 1,
-              "type": "TYPE_INT64"
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.scheduling.CreateTaskStatesResponse.IdsEntry"
             }
           ],
-          "name": "CreateTaskStatesResponse"
+          "name": "CreateTaskStatesResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_INT64"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_INT64"
+                }
+              ],
+              "name": "IdsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "field": [

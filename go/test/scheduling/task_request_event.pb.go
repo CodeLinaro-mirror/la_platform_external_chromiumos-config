@@ -216,6 +216,53 @@ func (x *TaskRequestEvents) GetEvents() []*TaskRequestEvent {
 	return nil
 }
 
+type KeyedTaskRequestEvents struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Events map[int64]*TaskRequestEvent `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+}
+
+func (x *KeyedTaskRequestEvents) Reset() {
+	*x = KeyedTaskRequestEvents{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_scheduling_task_request_event_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *KeyedTaskRequestEvents) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*KeyedTaskRequestEvents) ProtoMessage() {}
+
+func (x *KeyedTaskRequestEvents) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_scheduling_task_request_event_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use KeyedTaskRequestEvents.ProtoReflect.Descriptor instead.
+func (*KeyedTaskRequestEvents) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_scheduling_task_request_event_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *KeyedTaskRequestEvents) GetEvents() map[int64]*TaskRequestEvent {
+	if x != nil {
+		return x.Events
+	}
+	return nil
+}
+
 var File_chromiumos_test_scheduling_task_request_event_proto protoreflect.FileDescriptor
 
 var file_chromiumos_test_scheduling_task_request_event_proto_rawDesc = []byte{
@@ -266,8 +313,22 @@ var file_chromiumos_test_scheduling_task_request_event_proto_rawDesc = []byte{
 	0x2c, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73,
 	0x74, 0x2e, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x69, 0x6e, 0x67, 0x2e, 0x54, 0x61, 0x73,
 	0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x06, 0x65,
-	0x76, 0x65, 0x6e, 0x74, 0x73, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x76, 0x65, 0x6e, 0x74, 0x73, 0x22, 0xd9, 0x01, 0x0a, 0x16, 0x4b, 0x65, 0x79, 0x65, 0x64, 0x54,
+	0x61, 0x73, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73,
+	0x12, 0x56, 0x0a, 0x06, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x3e, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
+	0x73, 0x74, 0x2e, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x69, 0x6e, 0x67, 0x2e, 0x4b, 0x65,
+	0x79, 0x65, 0x64, 0x54, 0x61, 0x73, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x73, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x52, 0x06, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x73, 0x1a, 0x67, 0x0a, 0x0b, 0x45, 0x76, 0x65, 0x6e,
+	0x74, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x42, 0x0a, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d,
+	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x73, 0x63, 0x68, 0x65, 0x64,
+	0x75, 0x6c, 0x69, 0x6e, 0x67, 0x2e, 0x54, 0x61, 0x73, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38,
+	0x01, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -282,20 +343,24 @@ func file_chromiumos_test_scheduling_task_request_event_proto_rawDescGZIP() []by
 	return file_chromiumos_test_scheduling_task_request_event_proto_rawDescData
 }
 
-var file_chromiumos_test_scheduling_task_request_event_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_chromiumos_test_scheduling_task_request_event_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_chromiumos_test_scheduling_task_request_event_proto_goTypes = []interface{}{
-	(*TaskRequestEvent)(nil),   // 0: chromiumos.test.scheduling.TaskRequestEvent
-	(*TaskRequestEvents)(nil),  // 1: chromiumos.test.scheduling.TaskRequestEvents
-	(*SwarmingDimensions)(nil), // 2: chromiumos.test.scheduling.SwarmingDimensions
+	(*TaskRequestEvent)(nil),       // 0: chromiumos.test.scheduling.TaskRequestEvent
+	(*TaskRequestEvents)(nil),      // 1: chromiumos.test.scheduling.TaskRequestEvents
+	(*KeyedTaskRequestEvents)(nil), // 2: chromiumos.test.scheduling.KeyedTaskRequestEvents
+	nil,                            // 3: chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry
+	(*SwarmingDimensions)(nil),     // 4: chromiumos.test.scheduling.SwarmingDimensions
 }
 var file_chromiumos_test_scheduling_task_request_event_proto_depIdxs = []int32{
-	2, // 0: chromiumos.test.scheduling.TaskRequestEvent.requested_dimensions:type_name -> chromiumos.test.scheduling.SwarmingDimensions
+	4, // 0: chromiumos.test.scheduling.TaskRequestEvent.requested_dimensions:type_name -> chromiumos.test.scheduling.SwarmingDimensions
 	0, // 1: chromiumos.test.scheduling.TaskRequestEvents.events:type_name -> chromiumos.test.scheduling.TaskRequestEvent
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	3, // 2: chromiumos.test.scheduling.KeyedTaskRequestEvents.events:type_name -> chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry
+	0, // 3: chromiumos.test.scheduling.KeyedTaskRequestEvents.EventsEntry.value:type_name -> chromiumos.test.scheduling.TaskRequestEvent
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_scheduling_task_request_event_proto_init() }
@@ -329,6 +394,18 @@ func file_chromiumos_test_scheduling_task_request_event_proto_init() {
 				return nil
 			}
 		}
+		file_chromiumos_test_scheduling_task_request_event_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*KeyedTaskRequestEvents); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -336,7 +413,7 @@ func file_chromiumos_test_scheduling_task_request_event_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_scheduling_task_request_event_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

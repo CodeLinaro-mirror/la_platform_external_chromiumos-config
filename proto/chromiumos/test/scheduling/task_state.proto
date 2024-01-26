@@ -17,7 +17,7 @@ enum TaskState {
 }
 
 message CreateTaskStatesResponse {
-  repeated int64 ids = 1;
+  map<int64, int64> ids = 1;
 }
 
 message ReadTaskStatesResponse {
