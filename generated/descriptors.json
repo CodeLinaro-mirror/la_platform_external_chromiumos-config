@@ -21662,6 +21662,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetFilesFromDUTRequest"
+            },
+            {
+              "jsonName": "getGfxInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_gfx_info_request",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetGfxInfoRequest"
             }
           ],
           "name": "Request",
@@ -21719,6 +21728,9 @@
             }
           ],
           "name": "GetFilesFromDUTRequest"
+        },
+        {
+          "name": "GetGfxInfoRequest"
         },
         {
           "field": [
@@ -21819,6 +21831,43 @@
             }
           ],
           "name": "FileMap"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "gfxLabels",
+              "label": "LABEL_REPEATED",
+              "name": "gfx_labels",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetGfxInfoResponse.GfxLabelsEntry"
+            }
+          ],
+          "name": "GetGfxInfoResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "GfxLabelsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",
