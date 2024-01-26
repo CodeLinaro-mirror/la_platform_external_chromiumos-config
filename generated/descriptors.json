@@ -465,6 +465,37 @@
           ]
         },
         {
+          "enumType": [
+            {
+              "name": "Algorithm",
+              "value": [
+                {
+                  "name": "MD5SUM",
+                  "number": 0
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "algorithm",
+              "label": "LABEL_OPTIONAL",
+              "name": "algorithm",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.build.api.FirmwarePayloadHash.Algorithm"
+            },
+            {
+              "jsonName": "digest",
+              "label": "LABEL_OPTIONAL",
+              "name": "digest",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "FirmwarePayloadHash"
+        },
+        {
           "field": [
             {
               "jsonName": "mainRoPayload",
@@ -505,6 +536,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwarePayload"
+            },
+            {
+              "jsonName": "mainRwAHash",
+              "label": "LABEL_OPTIONAL",
+              "name": "main_rw_a_hash",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwarePayloadHash"
             }
           ],
           "name": "FirmwareConfig",

@@ -51,6 +51,20 @@ message FirmwarePayload {
   Version version = 4;
 }
 
+// Specifies optional hash for the payload.
+message FirmwarePayloadHash {
+  // Enumeration of different hash algorithms.
+  enum Algorithm {
+    MD5SUM = 0;
+  }
+
+  // Hash algorithm in use.
+  Algorithm algorithm = 1;
+
+  // Hash digest.
+  string digest = 2;
+}
+
 // Specifies different firmware payloads to use. This is used in the following
 // contexts:
 //
@@ -83,6 +97,10 @@ message FirmwareConfig {
 
   // The embedded controller (EC) read-write (RW) firmware.
   FirmwarePayload ec_rw_payload = 6;
+
+  // Optional hash for main_rw FW_MAIN_A by replacing ec_rw in main_rw_payload
+  // with the one from ec_rw_payload.
+  FirmwarePayloadHash main_rw_a_hash = 7;
 }
 
 // Config for building firmware components. This is used in the following

@@ -942,6 +942,7 @@ design.append_configs(
         "Fake_PD",
         ap_ro_version = sc.create_fw_version(11111),
         ap_rw_version = sc.create_fw_version(11111, 2, 3),
+        ap_rw_a_hash = "b9392520207df3c79d1c5dd98171387f",
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),

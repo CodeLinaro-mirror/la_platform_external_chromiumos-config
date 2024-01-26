@@ -66,6 +66,10 @@ _FW_TYPE = struct(
     PD = fw_pb.FirmwareType.PD,
 )
 
+_HASH_ALGORITHM = struct(
+    MD5SUM = fw_pb.FirmwarePayloadHash.MD5SUM,
+)
+
 _SUPPORT_BAND = struct(
     DISABLED = 0,
     BIOS_AND_OS = 1,
@@ -155,7 +159,14 @@ def _create_fw_build_config_by_names(
         ),
     )
 
-def _create_fw_config(ro = None, rw = None, ec_ro = None, ec_rw = None, pd = None):
+def _create_fw_config(
+        ro = None,
+        rw = None,
+        ec_ro = None,
+        ec_rw = None,
+        pd = None,
+        ap_rw_a_hash = None,
+        ap_rw_a_hash_algorithm = _HASH_ALGORITHM.MD5SUM):
     """Builds a FirmwareConfig proto."""
     return fw_pb.FirmwareConfig(
         main_ro_payload = ro,
@@ -163,6 +174,10 @@ def _create_fw_config(ro = None, rw = None, ec_ro = None, ec_rw = None, pd = Non
         ec_ro_payload = ec_ro,
         ec_rw_payload = ec_rw,
         pd_ro_payload = pd,
+        main_rw_a_hash = fw_pb.FirmwarePayloadHash(
+            algorithm = ap_rw_a_hash_algorithm,
+            digest = ap_rw_a_hash,
+        ) if ap_rw_a_hash else None,
     )
 
 def _create_fw_payloads_by_names(
@@ -174,7 +189,9 @@ def _create_fw_payloads_by_names(
         ec_ro_version = None,
         ec_rw_version = None,
         ec_version = None,
-        pd_version = None):
+        pd_version = None,
+        ap_rw_a_hash = None,
+        ap_rw_a_hash_algorithm = _HASH_ALGORITHM.MD5SUM):
     """Builds a FirmwareConfig proto using common naming patterns.
 
     NOTE: `ec_version` is deprecated. Please use `ec_ro_version` and
@@ -212,6 +229,13 @@ def _create_fw_payloads_by_names(
             type = _FW_TYPE.PD,
             version = pd_version,
         )
+
+    if ap_rw_a_hash:
+        sc_fw_config.main_rw_a_hash = fw_pb.FirmwarePayloadHash(
+            algorithm = ap_rw_a_hash_algorithm,
+            digest = ap_rw_a_hash,
+        )
+
     return sc_fw_config if ap_fw_name else None
 
 def _create_audio(
@@ -1202,6 +1226,7 @@ sw_config = struct(
     create_ui = _create_ui,
     create_usb = _create_usb,
     fw_type = _FW_TYPE,
+    hash_algorithm = _HASH_ALGORITHM,
     support_band = _SUPPORT_BAND,
     ui_requisition = _UI_REQUISITION,
     make_resolution = _make_resolution,

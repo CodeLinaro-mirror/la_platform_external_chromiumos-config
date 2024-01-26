@@ -12613,6 +12613,9 @@
             "major": 11111
           }
         },
+        "mainRwAHash": {
+          "digest": "b9392520207df3c79d1c5dd98171387f"
+        },
         "mainRwPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
