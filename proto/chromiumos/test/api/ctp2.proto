@@ -134,6 +134,7 @@ message LegacyHW {
   // In the process of deprecation. Do not set.
   MultiDut multi_dut = 4 [deprecated = true];
   string pool = 5;
+  repeated string swarming_dimensions = 6;
 }
 
 message DDDHW{}

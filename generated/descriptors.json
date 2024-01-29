@@ -23694,6 +23694,13 @@
               "name": "pool",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "swarmingDimensions",
+              "label": "LABEL_REPEATED",
+              "name": "swarming_dimensions",
+              "number": 6,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "LegacyHW"
