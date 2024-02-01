@@ -23539,6 +23539,20 @@
               "name": "test_args",
               "number": 4,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "analyticsName",
+              "label": "LABEL_OPTIONAL",
+              "name": "analytics_name",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "maxInShard",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_in_shard",
+              "number": 6,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "SuiteRequest",

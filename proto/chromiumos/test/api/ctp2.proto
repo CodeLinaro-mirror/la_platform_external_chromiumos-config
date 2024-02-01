@@ -88,8 +88,12 @@ message SuiteRequest {
 
   // Maximum duration for the entire request to be handled.
   google.protobuf.Duration maximum_duration = 3;
-  // suite level test args
+  // suite level test args.
   string test_args = 4;
+  // Identifying suite name for analytics.
+  string analytics_name = 5;
+  // The total number of tests allowed to be used in a shard.
+  int64 max_in_shard = 6;
 }
 
 message KeyValue {
