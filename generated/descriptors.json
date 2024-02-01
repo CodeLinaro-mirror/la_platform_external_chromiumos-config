@@ -29733,6 +29733,87 @@
         {
           "field": [
             {
+              "jsonName": "bucket",
+              "label": "LABEL_OPTIONAL",
+              "name": "bucket",
+              "number": 1,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "objectPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "object_path",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "branch",
+              "label": "LABEL_OPTIONAL",
+              "name": "branch",
+              "number": 3,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 4,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 5,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PerfRecord",
+          "oneofDecl": [
+            {
+              "name": "_bucket"
+            },
+            {
+              "name": "_object_path"
+            },
+            {
+              "name": "_branch"
+            },
+            {
+              "name": "_version"
+            },
+            {
+              "name": "_board"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/hpt/perf_event.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/hpt"
+      },
+      "package": "chromiumos.test.hpt",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "nextChameleondCommit",
               "label": "LABEL_OPTIONAL",
               "name": "next_chameleond_commit",
