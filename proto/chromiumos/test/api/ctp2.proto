@@ -15,6 +15,7 @@ import "chromiumos/build/api/container_metadata.proto";
 import "chromiumos/test/lab/api/dut.proto";
 import "google/protobuf/any.proto";
 import "google/protobuf/duration.proto";
+import "chromiumos/test/api/test_execution_metadata.proto";
 
 // CrosTestPlatform2 ...
 service CTPv2Service {
@@ -33,13 +34,13 @@ service GenericFilterService {
 message CTPv2Request {
   // TODO(b/319981532): Support multiple suite runs in ctpv2. Deprecate the
   // fields below (1-7) when implementation is complete.
-  SuiteRequest suite_request = 1;
-  repeated Targets targets = 2;
-  repeated CTPFilter karbon_filters = 3;
-  repeated CTPFilter koffee_filters = 4;
-  string pool = 5;
-  google.protobuf.Any scheduke_metadata = 6;
-  repeated ScheduleTargets schedule_targets = 7;
+  SuiteRequest suite_request = 1 [deprecated = true];
+  repeated Targets targets = 2 [deprecated = true];
+  repeated CTPFilter karbon_filters = 3 [deprecated = true];
+  repeated CTPFilter koffee_filters = 4 [deprecated = true];
+  string pool = 5 [deprecated = true];
+  google.protobuf.Any scheduke_metadata = 6 [deprecated = true];
+  repeated ScheduleTargets schedule_targets = 7 [deprecated = true];
 
   repeated CTPRequest requests = 8;
 }
@@ -50,6 +51,7 @@ message CTPv2Request {
 message CTPRequest {
   SuiteRequest suite_request = 1;
   repeated ScheduleTargets schedule_targets = 2;
+  string pool = 7;
 
   repeated CTPFilter karbon_filters = 3;
   repeated CTPFilter koffee_filters = 4;
@@ -73,6 +75,9 @@ message SchedulerInfo {
   }
 
   Scheduler scheduler = 1;
+
+  // Will only be used when scheduler type is QSCHEDULER.
+  string qs_account = 2;
 }
 
 message SuiteRequest {
@@ -83,6 +88,8 @@ message SuiteRequest {
 
   // Maximum duration for the entire request to be handled.
   google.protobuf.Duration maximum_duration = 3;
+  // suite level test args
+  string test_args = 4;
 }
 
 message KeyValue {
@@ -133,7 +140,7 @@ message LegacyHW {
   string variant = 3 [deprecated = true];
   // In the process of deprecation. Do not set.
   MultiDut multi_dut = 4 [deprecated = true];
-  string pool = 5;
+  string pool = 5[deprecated = true];;
   repeated string swarming_dimensions = 6;
 }
 
@@ -150,13 +157,24 @@ message MultiDut{
 }
 
 message CTPFilter {
+  // will be deprecated. do not set.
   chromiumos.build.api.ContainerImageInfo container = 1;
+  // will be deprecated. do not set.
+  repeated chromiumos.build.api.ContainerImageInfo dependent_containers = 2;
+
+  google.protobuf.Any container_metadata = 3;
+  ContainerInfo container_info = 4;
   // Dependent Containers signal that a container has a need to be networked with
   // another. For example the filter is "container1", but needs to use "container2",
   // as part of its execution.
-  repeated chromiumos.build.api.ContainerImageInfo dependent_containers = 2;
-  google.protobuf.Any container_metadata = 3;
+  ContainerInfo dependent_containers_info = 5;
 
+}
+
+message ContainerInfo {
+  chromiumos.build.api.ContainerImageInfo container = 1;
+  // binary name that will be used to invoke grpc endpoint of the container.
+  string binary_name = 2;
 }
 
 message Reserved {}
@@ -190,6 +208,7 @@ message SuiteMetadata {
   repeated ScheduleTargetRequirements schedule_target_requirements = 4;
   repeated string channels = 2;
   string pool = 3;
+  chromiumos.test.api.ExecutionMetadata execution_metadata = 5;
 }
 
 // ScheduleTargets represents groups of target requirements for CTPv2.

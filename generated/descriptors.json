@@ -23309,7 +23309,8 @@
         "chromiumos/build/api/container_metadata.proto",
         "chromiumos/test/lab/api/dut.proto",
         "google/protobuf/any.proto",
-        "google/protobuf/duration.proto"
+        "google/protobuf/duration.proto",
+        "chromiumos/test/api/test_execution_metadata.proto"
       ],
       "messageType": [
         {
@@ -23319,6 +23320,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "suite_request",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SuiteRequest"
             },
@@ -23327,6 +23331,9 @@
               "label": "LABEL_REPEATED",
               "name": "targets",
               "number": 2,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Targets"
             },
@@ -23335,6 +23342,9 @@
               "label": "LABEL_REPEATED",
               "name": "karbon_filters",
               "number": 3,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CTPFilter"
             },
@@ -23343,6 +23353,9 @@
               "label": "LABEL_REPEATED",
               "name": "koffee_filters",
               "number": 4,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CTPFilter"
             },
@@ -23351,6 +23364,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "pool",
               "number": 5,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             },
             {
@@ -23358,6 +23374,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "scheduke_metadata",
               "number": 6,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
             },
@@ -23366,6 +23385,9 @@
               "label": "LABEL_REPEATED",
               "name": "schedule_targets",
               "number": 7,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ScheduleTargets"
             },
@@ -23397,6 +23419,13 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ScheduleTargets"
+            },
+            {
+              "jsonName": "pool",
+              "label": "LABEL_OPTIONAL",
+              "name": "pool",
+              "number": 7,
+              "type": "TYPE_STRING"
             },
             {
               "jsonName": "karbonFilters",
@@ -23465,6 +23494,13 @@
               "number": 1,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.api.SchedulerInfo.Scheduler"
+            },
+            {
+              "jsonName": "qsAccount",
+              "label": "LABEL_OPTIONAL",
+              "name": "qs_account",
+              "number": 2,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "SchedulerInfo"
@@ -23496,6 +23532,13 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "testArgs",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_args",
+              "number": 4,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "SuiteRequest",
@@ -23693,6 +23736,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "pool",
               "number": 5,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             },
             {
@@ -23773,9 +23819,45 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "containerInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_info",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ContainerInfo"
+            },
+            {
+              "jsonName": "dependentContainersInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "dependent_containers_info",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ContainerInfo"
             }
           ],
           "name": "CTPFilter"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "container",
+              "label": "LABEL_OPTIONAL",
+              "name": "container",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.ContainerImageInfo"
+            },
+            {
+              "jsonName": "binaryName",
+              "label": "LABEL_OPTIONAL",
+              "name": "binary_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ContainerInfo"
         },
         {
           "name": "Reserved"
@@ -23889,6 +23971,14 @@
               "name": "pool",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "executionMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "execution_metadata",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ExecutionMetadata"
             }
           ],
           "name": "SuiteMetadata"
