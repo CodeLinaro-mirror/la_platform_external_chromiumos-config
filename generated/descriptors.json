@@ -23993,6 +23993,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ExecutionMetadata"
+            },
+            {
+              "jsonName": "schedulerInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "scheduler_info",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SchedulerInfo"
             }
           ],
           "name": "SuiteMetadata"

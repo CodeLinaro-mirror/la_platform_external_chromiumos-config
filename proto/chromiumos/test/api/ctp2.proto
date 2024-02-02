@@ -213,6 +213,8 @@ message SuiteMetadata {
   repeated string channels = 2;
   string pool = 3;
   chromiumos.test.api.ExecutionMetadata execution_metadata = 5;
+  // Scheduler info for this suite
+  SchedulerInfo scheduler_info = 6;
 }
 
 // ScheduleTargets represents groups of target requirements for CTPv2.
