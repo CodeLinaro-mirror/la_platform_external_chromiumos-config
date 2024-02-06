@@ -392,7 +392,7 @@
 					"value": "tast.arc.PlayStore"
 				},
 				{
-					"value": "tast.arc.Print"
+					"value": "tast.arc.Print.container_p"
 				},
 				{
 					"value": "tast.arc.Print.container_r"
@@ -474,6 +474,9 @@
 				},
 				{
 					"value": "tast.arc.TextToSpeech.vm"
+				},
+				{
+					"value": "tast.arc.UreadaheadGuestCompat.vm"
 				},
 				{
 					"value": "tast.arc.VMPstoreDump"
@@ -914,6 +917,12 @@
 					"value": "tast.crash.KernelIwlwifiError"
 				},
 				{
+					"value": "tast.crash.KernelKfence.mock_consent"
+				},
+				{
+					"value": "tast.crash.KernelKfence.real_consent"
+				},
+				{
 					"value": "tast.crash.KernelWarning.mock_consent"
 				},
 				{
@@ -1058,6 +1067,24 @@
 					"value": "tast.crostini.AppAudacity.bullseye_clamshell_stable"
 				},
 				{
+					"value": "tast.crostini.AppAudacityWindowOperations.maximize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppAudacityWindowOperations.maximize_bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppAudacityWindowOperations.minimize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppAudacityWindowOperations.minimize_bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppAudacityWindowOperations.switch_tablet_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppAudacityWindowOperations.switch_tablet_bullseye_clamshell_stable"
+				},
+				{
 					"value": "tast.crostini.AppEclipse.bookworm_clamshell_stable"
 				},
 				{
@@ -1068,6 +1095,24 @@
 				},
 				{
 					"value": "tast.crostini.AppEmacs.bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacsWindowOperations.maximize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacsWindowOperations.maximize_bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacsWindowOperations.minimize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacsWindowOperations.minimize_bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacsWindowOperations.switch_tablet_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacsWindowOperations.switch_tablet_bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppFirefox.bookworm_clamshell_stable"
@@ -1098,6 +1143,24 @@
 				},
 				{
 					"value": "tast.crostini.AppFirefoxNonalphanumericInput.bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxWindowOperations.maximize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxWindowOperations.maximize_bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxWindowOperations.minimize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxWindowOperations.minimize_bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxWindowOperations.switch_tablet_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxWindowOperations.switch_tablet_bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppGedit.bookworm_clamshell_stable"
@@ -1206,6 +1269,24 @@
 				},
 				{
 					"value": "tast.crostini.AppVscodeUninstall.bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeWindowOperations.maximize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeWindowOperations.maximize_bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeWindowOperations.minimize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeWindowOperations.minimize_bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeWindowOperations.switch_tablet_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeWindowOperations.switch_tablet_bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AudioBasic.bookworm_lowperf"
@@ -2249,6 +2330,9 @@
 					"value": "tast.cryptohome.UpdateRecovery.no_id_rotation"
 				},
 				{
+					"value": "tast.cryptohome.UpdateRecovery.rotate_mediator_keys"
+				},
+				{
 					"value": "tast.cryptohome.UssMigrationChallengeCredential.rsassa_all"
 				},
 				{
@@ -2519,6 +2603,9 @@
 					"value": "tast.graphics.HardwareProbe"
 				},
 				{
+					"value": "tast.graphics.HardwareProbe.verify"
+				},
+				{
 					"value": "tast.graphics.Idle.dvfs"
 				},
 				{
@@ -2579,9 +2666,6 @@
 					"value": "tast.hardware.SensorAccel"
 				},
 				{
-					"value": "tast.health.DiagRoutineLED.v2_passed"
-				},
-				{
 					"value": "tast.health.DiagnosticsCancel.urandom"
 				},
 				{
@@ -2597,6 +2681,9 @@
 					"value": "tast.health.DiagnosticsPass.bluetooth_scanning"
 				},
 				{
+					"value": "tast.health.DiagnosticsPass.cpu_cache"
+				},
+				{
 					"value": "tast.health.DiagnosticsPass.disk_read"
 				},
 				{
@@ -2610,6 +2697,9 @@
 				},
 				{
 					"value": "tast.health.DiagnosticsPass.lan_connectivity"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.memory"
 				},
 				{
 					"value": "tast.health.DiagnosticsPass.prime_search"
@@ -2640,9 +2730,6 @@
 				},
 				{
 					"value": "tast.health.DiagnosticsRun.battery_health"
-				},
-				{
-					"value": "tast.health.DiagnosticsRun.cpu_cache"
 				},
 				{
 					"value": "tast.health.DiagnosticsRun.cpu_stress"
@@ -2787,6 +2874,9 @@
 				},
 				{
 					"value": "tast.health.ProbeWifiInfo"
+				},
+				{
+					"value": "tast.health.RunLEDRoutine"
 				},
 				{
 					"value": "tast.health.RunUrandomRoutine"
@@ -3524,6 +3614,9 @@
 					"value": "tast.lacros.CompareVersionWithAsh"
 				},
 				{
+					"value": "tast.lacros.DmaBufLeak"
+				},
+				{
 					"value": "tast.lacros.Guest"
 				},
 				{
@@ -3767,10 +3860,16 @@
 					"value": "tast.network.VPNRouting.wireguard_ipv6"
 				},
 				{
-					"value": "tast.oobe.Smoke.fieldtrial_testing_config_off"
+					"value": "tast.oobe.Smoke.fieldtrial_testing_config_off_with_fixture"
 				},
 				{
-					"value": "tast.oobe.Smoke.fieldtrial_testing_config_on"
+					"value": "tast.oobe.Smoke.fieldtrial_testing_config_off_without_fixture"
+				},
+				{
+					"value": "tast.oobe.Smoke.fieldtrial_testing_config_on_with_fixture"
+				},
+				{
+					"value": "tast.oobe.Smoke.fieldtrial_testing_config_on_without_fixture"
 				},
 				{
 					"value": "tast.peripherals.LaunchAppFromGuestSession.diagnostics"
@@ -3942,15 +4041,6 @@
 				},
 				{
 					"value": "tast.power.Reboot"
-				},
-				{
-					"value": "tast.power.SmartDim"
-				},
-				{
-					"value": "tast.power.SmartDim.flatbuffer"
-				},
-				{
-					"value": "tast.power.SmartDim.lacros"
 				},
 				{
 					"value": "tast.power.UtilCheck"
@@ -4256,7 +4346,28 @@
 					"value": "tast.quicksettings.OpenSettings"
 				},
 				{
+					"value": "tast.rollback.SmokeCleanup.cleanup_files_if_oobe_is_completed"
+				},
+				{
+					"value": "tast.rollback.SmokeCleanup.cleanup_metrics_when_oobe_is_not_completed"
+				},
+				{
+					"value": "tast.rollback.SmokeCleanup.cleanup_zeroes_tpm_space"
+				},
+				{
 					"value": "tast.rollback.SmokeEncryption.oobe_config_restore_running"
+				},
+				{
+					"value": "tast.rollback.SmokeEncryption.oobe_config_save_no_flag"
+				},
+				{
+					"value": "tast.rollback.SmokeEncryption.rollback_encrypt_and_failed_decrypt"
+				},
+				{
+					"value": "tast.rollback.SmokeEncryption.tpm_encryption"
+				},
+				{
+					"value": "tast.rollback.SmokeEncryption.tpm_encryption_corrupted_metrics"
 				},
 				{
 					"value": "tast.runtimeprobe.VerifySandbox"
@@ -4323,6 +4434,9 @@
 				},
 				{
 					"value": "tast.secagentd.AgentEvents"
+				},
+				{
+					"value": "tast.secagentd.AuthenticationEvents.mainline"
 				},
 				{
 					"value": "tast.secagentd.ProcessEvents"
@@ -4664,16 +4778,7 @@
 					"value": "tast.ui.ChromeRespawn"
 				},
 				{
-					"value": "tast.ui.ChromeValidity"
-				},
-				{
 					"value": "tast.ui.DesktopControl.unstable"
-				},
-				{
-					"value": "tast.ui.ForceRegion"
-				},
-				{
-					"value": "tast.ui.ForceRegion.lacros"
 				},
 				{
 					"value": "tast.ui.ScreenRecorder"
@@ -4698,6 +4803,12 @@
 				},
 				{
 					"value": "tast.video.HWDRMInit"
+				},
+				{
+					"value": "tast.videoconferencing.TrayTriggersExtension"
+				},
+				{
+					"value": "tast.videoconferencing.TrayTriggersExtension.lacros"
 				},
 				{
 					"value": "tast.vm.AudioAplay.virtio_cras_snd"
@@ -4770,42 +4881,6 @@
 				},
 				{
 					"value": "tast.wifi.WPAValidity"
-				},
-				{
-					"value": "tast.wilco.APIGetConfigurationDataEmpty"
-				},
-				{
-					"value": "tast.wilco.APIGetDriveSystemData"
-				},
-				{
-					"value": "tast.wilco.APIGetEcTelemetry"
-				},
-				{
-					"value": "tast.wilco.APIGetOsVersion"
-				},
-				{
-					"value": "tast.wilco.APIGetProcData"
-				},
-				{
-					"value": "tast.wilco.APIGetSysfsData"
-				},
-				{
-					"value": "tast.wilco.APIGetVPDField.optional_vpd"
-				},
-				{
-					"value": "tast.wilco.APIHandleBluetoothDataChanged"
-				},
-				{
-					"value": "tast.wilco.APIHandleECNotification"
-				},
-				{
-					"value": "tast.wilco.APIInvalidEnum"
-				},
-				{
-					"value": "tast.wilco.APIPerformWebRequestError"
-				},
-				{
-					"value": "tast.wilco.APIRequestBluetoothDataNotification"
 				},
 				{
 					"value": "tast.wilco.ECEvent"
