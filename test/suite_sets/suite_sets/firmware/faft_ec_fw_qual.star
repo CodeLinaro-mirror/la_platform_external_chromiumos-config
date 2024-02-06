@@ -1,0 +1,82 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("//create.star", "create")
+
+def _faft_ec_fw_qual():
+    return create.suite(
+        suite_id = "faft_ec_fw_qual",
+        owners = [
+            "chromeos-faft@google.com",
+            "jbettis@chromium.org",
+        ],
+        bug_component = "b:792402",
+        criteria = "Qualify the EC firmware for RW or RO+RW release.",
+        tests = [
+            "firmware_ECCharging",
+            "firmware_ECChargingState",
+            "firmware_ECSystemLocked",
+            "tast.crash.ECCrash.assert",
+            "tast.crash.ECCrash.divzero",
+            "tast.crash.ECCrash.unaligned",
+            "tast.crash.ECCrash.watchdog",
+            "tast.firmware.BaseECUpdate",
+            "tast.firmware.BatteryCharging",
+            "tast.firmware.BootTime.default",
+            "tast.firmware.BootTime.x86",
+            "tast.firmware.BootTime.zork",
+            "tast.firmware.ECADC",
+            "tast.firmware.ECBattery",
+            "tast.firmware.ECCbi",
+            "tast.firmware.ECConsole",
+            "tast.firmware.ECKeyboard",
+            "tast.firmware.ECKeyboard.convertible",
+            "tast.firmware.ECKeyboard.usb_keyboard",
+            "tast.firmware.ECLaptopMode",
+            "tast.firmware.ECLaptopMode.clamshell",
+            "tast.firmware.ECLaptopMode.detachable",
+            "tast.firmware.ECLidShutdown",
+            "tast.firmware.ECLidSwitch.check_key_press",
+            "tast.firmware.ECLidSwitch.close_lid_to_shutdown",
+            "tast.firmware.ECLidSwitch.open_lid_to_boot",
+            "tast.firmware.ECLidSwitch.open_lid_to_unsuspend",
+            "tast.firmware.ECPDRole",
+            "tast.firmware.ECPowerButton",
+            "tast.firmware.ECPowerG3.power_button",
+            "tast.firmware.ECPowerG3.shutdown",
+            "tast.firmware.ECReboot",
+            "tast.firmware.ECSharedMemory",
+            "tast.firmware.ECSize",
+            "tast.firmware.ECSystemLocked",
+            "tast.firmware.ECTabletMode",
+            "tast.firmware.ECTabletMode.chromeslate",
+            "tast.firmware.ECTabletMode.detachable",
+            "tast.firmware.ECUSBPorts.usb_pins_on_lid_close",
+            "tast.firmware.ECUSBPorts.usb_pins_on_shutdown",
+            "tast.firmware.ECUpdateID.dev_gbb",
+            "tast.firmware.ECUpdateID.normal_mode",
+            "tast.firmware.ECWakeSource.keypress",
+            "tast.firmware.ECWakeSource.lid",
+            "tast.firmware.ECWakeSource.power_btn",
+            "tast.firmware.ECWakeSource.usb_keyboard",
+            "tast.firmware.ECWatchdog",
+            "tast.firmware.SHANI",
+            "tast.firmware.SoftwareSync.dev",
+            "tast.firmware.SoftwareSync.normal",
+            "tast.firmware.USBResumeFromSuspend",
+            "tast.platform.CrosID",
+            "tast.power.ShutdownWithCommandBatteryCutoff",
+            "tast.power.TabletModeNotification.convertible",
+            "tast.power.TabletModeNotification.detachable",
+        ],
+    )
+
+def _all_suites():
+    return [
+        _faft_ec_fw_qual(),
+    ]
+
+faft_ec_fw_qual = struct(
+    all_suites = _all_suites,
+)

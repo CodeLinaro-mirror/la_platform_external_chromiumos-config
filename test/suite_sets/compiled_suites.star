@@ -9,6 +9,10 @@ load("//suite_sets/cq/bvt-cq.star", "bvt_cq")
 load("//suite_sets/cq/bvt-inline.star", "bvt_inline")
 load("//suite_sets/cq/bvt-tast-cq.star", "bvt_tast_cq")
 load("//suite_sets/example/example_suites.star", "example_suites")
+load("//suite_sets/firmware/faft_bios_ro_qual.star", "faft_bios_ro_qual")
+load("//suite_sets/firmware/faft_bios_rw_qual.star", "faft_bios_rw_qual")
+load("//suite_sets/firmware/faft_ec_fw_qual.star", "faft_ec_fw_qual")
+load("//suite_sets/firmware/faft_pd.star", "faft_pd")
 
 _suites = []
 
@@ -16,5 +20,9 @@ _suites.extend(bvt_cq.all_suites())
 _suites.extend(bvt_inline.all_suites())
 _suites.extend(bvt_tast_cq.all_suites())
 _suites.extend(example_suites.all_suites())
+_suites.extend(faft_bios_ro_qual.all_suites())
+_suites.extend(faft_bios_rw_qual.all_suites())
+_suites.extend(faft_ec_fw_qual.all_suites())
+_suites.extend(faft_pd.all_suites())
 
 compiled_suites = create.suite_list(suites = _suites)
