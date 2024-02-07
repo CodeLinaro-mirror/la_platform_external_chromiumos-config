@@ -6,9 +6,11 @@
 
 load("//create.star", "create")
 load("//suite_sets/example/example_suite_sets.star", "example_suite_sets")
+load("//suite_sets/firmware/firmware.star", "firmware_suite_sets")
 
 _suite_sets = []
 
 _suite_sets.extend(example_suite_sets.all_suite_sets())
+_suite_sets.extend(firmware_suite_sets.all_suite_sets())
 
 compiled_suite_sets = create.suite_set_list(suite_sets = _suite_sets)

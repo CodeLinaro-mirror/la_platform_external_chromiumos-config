@@ -31,6 +31,100 @@
 					"value": "example_fail"
 				}
 			]
+		},
+		{
+			"id": {
+				"value": "firmware_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "Common firmware suites/tests used to qualify the device firmware."
+				}
+			},
+			"suites": [
+				{
+					"value": "faft_ec_fw_qual"
+				},
+				{
+					"value": "faf_pd"
+				},
+				{
+					"value": "firmware_other"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "firmware_ro"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "Qualify the device firmware for RO/RW release."
+				}
+			},
+			"suiteSets": [
+				{
+					"value": "firmware_common"
+				}
+			],
+			"suites": [
+				{
+					"value": "faft_bios_ro_qual"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "firmware_rw"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "Qualify the device firmware for RW-only release."
+				}
+			},
+			"suiteSets": [
+				{
+					"value": "firmware_common"
+				}
+			],
+			"suites": [
+				{
+					"value": "faft_bios_rw_qual"
+				}
+			]
 		}
 	]
 }
