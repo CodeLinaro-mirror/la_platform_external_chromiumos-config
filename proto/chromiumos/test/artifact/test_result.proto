@@ -138,10 +138,12 @@ message TestRun {
 // Captures test case information associated with a test run.
 // NEXT TAG: 10
 message TestCaseInfo {
+  // Deprecated. Use TestCaseMetadata within TestCaseResult below instead.
   // Metadata related to test case and execution context.
-  chromiumos.test.api.TestCaseMetadata test_case_metadata = 1;
+  chromiumos.test.api.TestCaseMetadata test_case_metadata = 1 [deprecated = true];
 
-  // Result of a single execution of a given test case.
+  // Result of a single execution of a given test case, including test harness
+  // and test case metadata.
   chromiumos.test.api.TestCaseResult test_case_result = 2;
 
   // The display name of the test result.

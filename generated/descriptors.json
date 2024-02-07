@@ -26655,6 +26655,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "test_case_metadata",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCaseMetadata"
             },
