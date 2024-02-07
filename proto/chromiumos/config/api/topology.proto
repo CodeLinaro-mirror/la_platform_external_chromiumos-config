@@ -341,6 +341,7 @@ message HardwareFeatures {
       ES8326 = 14;
       // 15 to 16 are still free to be used
       AUDIO_CODEC_ALC5650 = 17;
+      AUDIO_CODEC_ALC256 = 18;
     }
 
     enum Amplifier {
@@ -361,6 +362,7 @@ message HardwareFeatures {
       MAX98363 = 15;
       NAU8318 = 16;
       AMPLIFIER_ALC5650 = 17;
+      AMPLIFIER_ALC256 = 18;
     }
 
     enum AudioConfigStructure {

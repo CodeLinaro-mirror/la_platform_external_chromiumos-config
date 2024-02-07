@@ -5336,6 +5336,10 @@
                     {
                       "name": "AUDIO_CODEC_ALC5650",
                       "number": 17
+                    },
+                    {
+                      "name": "AUDIO_CODEC_ALC256",
+                      "number": 18
                     }
                   ]
                 },
@@ -5407,6 +5411,10 @@
                     {
                       "name": "AMPLIFIER_ALC5650",
                       "number": 17
+                    },
+                    {
+                      "name": "AMPLIFIER_ALC256",
+                      "number": 18
                     }
                   ]
                 },
