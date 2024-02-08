@@ -25797,6 +25797,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "cache_server_address",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             }

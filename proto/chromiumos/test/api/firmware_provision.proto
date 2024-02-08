@@ -13,8 +13,8 @@ import "chromiumos/test/lab/api/ip_endpoint.proto";
 
 // FirmwareProvisionStartupMetadata can be passed to ProvisionStartupRequest.metadata
 message FirmwareProvisionStartupMetadata {
-  // Access to cache service is required.
-  chromiumos.test.lab.api.IpEndpoint cache_server_address = 1;
+  // Deprecated. Use ProvisionStartupRequest.dut.cache_server instead.
+  chromiumos.test.lab.api.IpEndpoint cache_server_address = 1 [deprecated = true];
 }
 
 // FirmwareProvisionInstallMetadata can be passed to InstallRequest.metadata

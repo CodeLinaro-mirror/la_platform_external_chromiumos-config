@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"e\n FirmwareProvisionStartupMetadata\x12\x41\n\x14\x63\x61\x63he_server_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"a\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfigB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"i\n FirmwareProvisionStartupMetadata\x12\x45\n\x14\x63\x61\x63he_server_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpointB\x02\x18\x01\"a\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfigB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
 
@@ -42,7 +42,7 @@ _FIRMWAREPROVISIONSTARTUPMETADATA = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -56,7 +56,7 @@ _FIRMWAREPROVISIONSTARTUPMETADATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=156,
-  serialized_end=257,
+  serialized_end=261,
 )
 
 
@@ -87,8 +87,8 @@ _FIRMWAREPROVISIONINSTALLMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=259,
-  serialized_end=356,
+  serialized_start=263,
+  serialized_end=360,
 )
 
 _FIRMWAREPROVISIONSTARTUPMETADATA.fields_by_name['cache_server_address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
@@ -113,4 +113,5 @@ _sym_db.RegisterMessage(FirmwareProvisionInstallMetadata)
 
 
 DESCRIPTOR._options = None
+_FIRMWAREPROVISIONSTARTUPMETADATA.fields_by_name['cache_server_address']._options = None
 # @@protoc_insertion_point(module_scope)
