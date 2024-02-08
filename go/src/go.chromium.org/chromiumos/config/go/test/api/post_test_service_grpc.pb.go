@@ -22,6 +22,10 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PostTestServiceClient interface {
+	// StartUp prepares the post test service by providing
+	// necessary input values for initialization prior to
+	// calling any other provision related service calls.
+	StartUp(ctx context.Context, in *PostTestStartUpRequest, opts ...grpc.CallOption) (*PostTestStartUpResponse, error)
 	RunActivity(ctx context.Context, in *RunActivityRequest, opts ...grpc.CallOption) (*RunActivityResponse, error)
 }
 
@@ -31,6 +35,15 @@ type postTestServiceClient struct {
 
 func NewPostTestServiceClient(cc grpc.ClientConnInterface) PostTestServiceClient {
 	return &postTestServiceClient{cc}
+}
+
+func (c *postTestServiceClient) StartUp(ctx context.Context, in *PostTestStartUpRequest, opts ...grpc.CallOption) (*PostTestStartUpResponse, error) {
+	out := new(PostTestStartUpResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.PostTestService/StartUp", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *postTestServiceClient) RunActivity(ctx context.Context, in *RunActivityRequest, opts ...grpc.CallOption) (*RunActivityResponse, error) {
@@ -46,6 +59,10 @@ func (c *postTestServiceClient) RunActivity(ctx context.Context, in *RunActivity
 // All implementations should embed UnimplementedPostTestServiceServer
 // for forward compatibility
 type PostTestServiceServer interface {
+	// StartUp prepares the post test service by providing
+	// necessary input values for initialization prior to
+	// calling any other provision related service calls.
+	StartUp(context.Context, *PostTestStartUpRequest) (*PostTestStartUpResponse, error)
 	RunActivity(context.Context, *RunActivityRequest) (*RunActivityResponse, error)
 }
 
@@ -53,6 +70,9 @@ type PostTestServiceServer interface {
 type UnimplementedPostTestServiceServer struct {
 }
 
+func (UnimplementedPostTestServiceServer) StartUp(context.Context, *PostTestStartUpRequest) (*PostTestStartUpResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartUp not implemented")
+}
 func (UnimplementedPostTestServiceServer) RunActivity(context.Context, *RunActivityRequest) (*RunActivityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RunActivity not implemented")
 }
@@ -66,6 +86,24 @@ type UnsafePostTestServiceServer interface {
 
 func RegisterPostTestServiceServer(s grpc.ServiceRegistrar, srv PostTestServiceServer) {
 	s.RegisterService(&PostTestService_ServiceDesc, srv)
+}
+
+func _PostTestService_StartUp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PostTestStartUpRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostTestServiceServer).StartUp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.PostTestService/StartUp",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostTestServiceServer).StartUp(ctx, req.(*PostTestStartUpRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _PostTestService_RunActivity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -93,6 +131,10 @@ var PostTestService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "chromiumos.test.api.PostTestService",
 	HandlerType: (*PostTestServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "StartUp",
+			Handler:    _PostTestService_StartUp_Handler,
+		},
 		{
 			MethodName: "RunActivity",
 			Handler:    _PostTestService_RunActivity_Handler,

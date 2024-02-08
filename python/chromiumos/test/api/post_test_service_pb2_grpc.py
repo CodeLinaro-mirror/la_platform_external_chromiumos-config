@@ -20,6 +20,11 @@ class PostTestServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.StartUp = channel.unary_unary(
+                '/chromiumos.test.api.PostTestService/StartUp',
+                request_serializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.PostTestStartUpRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.PostTestStartUpResponse.FromString,
+                )
         self.RunActivity = channel.unary_unary(
                 '/chromiumos.test.api.PostTestService/RunActivity',
                 request_serializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivityRequest.SerializeToString,
@@ -36,6 +41,15 @@ class PostTestServiceServicer(object):
     Could be expanded to include harness agnostic post-test cleanups, repairs, etc.
     """
 
+    def StartUp(self, request, context):
+        """StartUp prepares the post test service by providing
+        necessary input values for initialization prior to
+        calling any other provision related service calls.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def RunActivity(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -45,6 +59,11 @@ class PostTestServiceServicer(object):
 
 def add_PostTestServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'StartUp': grpc.unary_unary_rpc_method_handler(
+                    servicer.StartUp,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.PostTestStartUpRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.PostTestStartUpResponse.SerializeToString,
+            ),
             'RunActivity': grpc.unary_unary_rpc_method_handler(
                     servicer.RunActivity,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivityRequest.FromString,
@@ -65,6 +84,23 @@ class PostTestService(object):
     - getting specific file from the DUT
     Could be expanded to include harness agnostic post-test cleanups, repairs, etc.
     """
+
+    @staticmethod
+    def StartUp(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.PostTestService/StartUp',
+            chromiumos_dot_test_dot_api_dot_post__test__service__pb2.PostTestStartUpRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_post__test__service__pb2.PostTestStartUpResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def RunActivity(request,

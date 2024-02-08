@@ -21969,6 +21969,11 @@
         {
           "method": [
             {
+              "inputType": ".chromiumos.test.api.PostTestStartUpRequest",
+              "name": "StartUp",
+              "outputType": ".chromiumos.test.api.PostTestStartUpResponse"
+            },
+            {
               "inputType": ".chromiumos.test.api.RunActivityRequest",
               "name": "RunActivity",
               "outputType": ".chromiumos.test.api.RunActivityResponse"

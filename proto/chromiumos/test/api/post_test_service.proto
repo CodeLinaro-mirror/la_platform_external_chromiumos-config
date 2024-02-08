@@ -19,6 +19,12 @@ import "google/protobuf/any.proto";
 //  - getting specific file from the DUT
 // Could be expanded to include harness agnostic post-test cleanups, repairs, etc.
 service PostTestService {
+  // StartUp prepares the post test service by providing
+  // necessary input values for initialization prior to
+  // calling any other provision related service calls.
+  rpc StartUp(PostTestStartUpRequest)
+    returns (PostTestStartUpResponse);
+
   rpc RunActivity(RunActivityRequest)
       returns (RunActivityResponse);
 }
