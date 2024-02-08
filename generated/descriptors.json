@@ -23714,6 +23714,17 @@
               "label": "LABEL_REPEATED",
               "name": "sw_targets",
               "number": 2,
+              "options": {
+                "deprecated": true
+              },
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SWTarget"
+            },
+            {
+              "jsonName": "swTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "sw_target",
+              "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SWTarget"
             }
@@ -23920,6 +23931,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "container",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.ContainerImageInfo"
             },
@@ -23928,6 +23942,9 @@
               "label": "LABEL_REPEATED",
               "name": "dependent_containers",
               "number": 2,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.ContainerImageInfo"
             },

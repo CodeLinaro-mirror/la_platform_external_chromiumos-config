@@ -109,7 +109,8 @@ message ScheduleTargets {
 
 message Targets {
   HWTarget hw_target = 1;
-  repeated SWTarget sw_targets = 2;
+  repeated SWTarget sw_targets = 2 [deprecated = true];
+  SWTarget sw_target = 3;
 }
 
 message HWTarget {
@@ -162,9 +163,9 @@ message MultiDut{
 
 message CTPFilter {
   // will be deprecated. do not set.
-  chromiumos.build.api.ContainerImageInfo container = 1;
+  chromiumos.build.api.ContainerImageInfo container = 1 [deprecated = true];
   // will be deprecated. do not set.
-  repeated chromiumos.build.api.ContainerImageInfo dependent_containers = 2;
+  repeated chromiumos.build.api.ContainerImageInfo dependent_containers = 2 [deprecated = true];
 
   google.protobuf.Any container_metadata = 3;
   ContainerInfo container_info = 4;
