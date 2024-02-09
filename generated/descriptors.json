@@ -24155,6 +24155,17 @@
               "label": "LABEL_REPEATED",
               "name": "sw_requirements",
               "number": 2,
+              "options": {
+                "deprecated": true
+              },
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LegacySW"
+            },
+            {
+              "jsonName": "swRequirement",
+              "label": "LABEL_OPTIONAL",
+              "name": "sw_requirement",
+              "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.LegacySW"
             }

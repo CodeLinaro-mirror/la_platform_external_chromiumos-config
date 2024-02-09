@@ -227,7 +227,9 @@ message ScheduleTargetRequirements {
 message TargetRequirements {
   HWRequirements hw_requirements = 1;
   // One HW, can have multiple SW configs., eg Cros + Lacros + FW + Kernel.
-  repeated LegacySW sw_requirements = 2;
+  repeated LegacySW sw_requirements = 2 [deprecated = true];
+  LegacySW sw_requirement = 3;
+
 }
 
 message HWRequirements {
