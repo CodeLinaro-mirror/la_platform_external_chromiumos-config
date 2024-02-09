@@ -13,6 +13,7 @@ load("//suite_sets/firmware/faft_bios_ro_qual.star", "faft_bios_ro_qual")
 load("//suite_sets/firmware/faft_bios_rw_qual.star", "faft_bios_rw_qual")
 load("//suite_sets/firmware/faft_ec_fw_qual.star", "faft_ec_fw_qual")
 load("//suite_sets/firmware/faft_pd.star", "faft_pd")
+load("//suite_sets/firmware/firmware.star", "firmware_suites")
 
 _suites = []
 
@@ -24,5 +25,6 @@ _suites.extend(faft_bios_ro_qual.all_suites())
 _suites.extend(faft_bios_rw_qual.all_suites())
 _suites.extend(faft_ec_fw_qual.all_suites())
 _suites.extend(faft_pd.all_suites())
+_suites.extend(firmware_suites.all_suites())
 
 compiled_suites = create.suite_list(suites = _suites)

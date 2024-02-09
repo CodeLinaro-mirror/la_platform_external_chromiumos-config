@@ -6020,6 +6020,56 @@
 					"value": "tast.firmware.PDProtocol"
 				}
 			]
+		},
+		{
+			"id": {
+				"value": "firmware_other"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "Tests used to qualify the device firmware, that are not part of faft_* suites."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.storage.QuickStress"
+				},
+				{
+					"value": "tast.platform.BootPerf"
+				},
+				{
+					"value": "firmware_ConsecutiveBoot.dev.500"
+				},
+				{
+					"value": "firmware_ConsecutiveBoot.2500"
+				},
+				{
+					"value": "power_SuspendStress.bareFSI"
+				},
+				{
+					"value": "power_UiResume.freeze"
+				},
+				{
+					"value": "power_CPUFreq"
+				},
+				{
+					"value": "power_CPUIlde"
+				},
+				{
+					"value": "hardware_TPMCheck"
+				}
+			]
 		}
 	]
 }

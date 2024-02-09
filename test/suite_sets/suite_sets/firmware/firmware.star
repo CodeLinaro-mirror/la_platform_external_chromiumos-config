@@ -39,7 +39,7 @@ def _firmware_common():
         suite_sets = [],
         suites = [
             "faft_ec_fw_qual",
-            "faf_pd",
+            "faft_pd",
             "firmware_other",
         ],
     )
