@@ -46,6 +46,9 @@ enum WifiRouterFeature {
 
   // WiFi 7 (IEEE 802.11be) support.
   WIFI_ROUTER_FEATURE_IEEE_802_11_BE = 9;
+
+  // The CPU is fast enough to support a double bridge over veth.
+  WIFI_ROUTER_FEATURE_DOUBLE_BRIDGE_OVER_VETH = 10;
 }
 
 // The type of Wifi AP device a WiFi AP peripheral is, functionally speaking.

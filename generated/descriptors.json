@@ -30307,6 +30307,10 @@
             {
               "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_BE",
               "number": 9
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_DOUBLE_BRIDGE_OVER_VETH",
+              "number": 10
             }
           ]
         },
