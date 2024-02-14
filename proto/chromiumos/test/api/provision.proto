@@ -70,7 +70,7 @@ message InstallResponse {
     // by design. They are not sent on the wire either. Since changing this
     // field will break cros-provision service, we will keep this but this
     // SHOULD NOT BE USED. Treat it as UNSPECIFIED.
-    STATUS_OK = 0;
+    STATUS_OK = 0 [deprecated = true];
     // status code: INVALID_ARGUMENT
     STATUS_INVALID_REQUEST = 1;
     // status code: FAILED_PRECONDITION

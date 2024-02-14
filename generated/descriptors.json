@@ -23223,7 +23223,10 @@
               "value": [
                 {
                   "name": "STATUS_OK",
-                  "number": 0
+                  "number": 0,
+                  "options": {
+                    "deprecated": true
+                  }
                 },
                 {
                   "name": "STATUS_INVALID_REQUEST",
