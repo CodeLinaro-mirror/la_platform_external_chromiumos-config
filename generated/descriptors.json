@@ -23222,11 +23222,8 @@
               "name": "Status",
               "value": [
                 {
-                  "name": "STATUS_OK",
-                  "number": 0,
-                  "options": {
-                    "deprecated": true
-                  }
+                  "name": "STATUS_UNSPECIFIED",
+                  "number": 0
                 },
                 {
                   "name": "STATUS_INVALID_REQUEST",

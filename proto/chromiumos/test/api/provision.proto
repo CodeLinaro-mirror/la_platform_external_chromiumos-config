@@ -63,14 +63,12 @@ message ProvisionStartupResponse {
 }
 
 message InstallResponse {
-  // When the status code is other than OK, details in Status message should be
+  // When the status code is other than SUCCESS, details in Status message should be
   // parsed for ErrorInfo message with the following Reasons as the reason.
   enum Status {
     // In proto3, zero value fields are indistinguishable from unset fields,
-    // by design. They are not sent on the wire either. Since changing this
-    // field will break cros-provision service, we will keep this but this
-    // SHOULD NOT BE USED. Treat it as UNSPECIFIED.
-    STATUS_OK = 0 [deprecated = true];
+    // by design. They are not sent on the wire either.
+    STATUS_UNSPECIFIED = 0;
     // status code: INVALID_ARGUMENT
     STATUS_INVALID_REQUEST = 1;
     // status code: FAILED_PRECONDITION
