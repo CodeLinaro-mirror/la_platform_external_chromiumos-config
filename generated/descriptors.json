@@ -20285,6 +20285,13 @@
               "type": "TYPE_BOOL"
             },
             {
+              "jsonName": "enableAutotestSharding",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable_autotest_sharding",
+              "number": 7,
+              "type": "TYPE_BOOL"
+            },
+            {
               "jsonName": "dutCriteria",
               "label": "LABEL_REPEATED",
               "name": "dut_criteria",

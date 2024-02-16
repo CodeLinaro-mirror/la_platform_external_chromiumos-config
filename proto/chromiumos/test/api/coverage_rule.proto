@@ -37,6 +37,9 @@ message CoverageRule {
   // If true, then run test suites in this rule via CFT workflow.
   bool run_via_cft = 6;
 
+  // if enable_autotest_sharding is True, then autotest tests will be sharded
+  bool enable_autotest_sharding = 7;
+
   // Graveyard
   repeated DutCriterion dut_criteria = 3 [deprecated = true];
 }

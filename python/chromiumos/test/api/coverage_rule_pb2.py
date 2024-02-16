@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\'chromiumos/test/api/coverage_rule.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/wrappers.proto\x1a\'chromiumos/test/api/dut_attribute.proto\x1a$chromiumos/test/api/test_suite.proto\"\x86\x02\n\x0c\x43overageRule\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x33\n\x0btest_suites\x18\x02 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x33\n\x0b\x64ut_targets\x18\x04 \x03(\x0b\x32\x1e.chromiumos.test.api.DutTarget\x12,\n\x08\x63ritical\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x13\n\x0brun_via_cft\x18\x06 \x01(\x08\x12;\n\x0c\x64ut_criteria\x18\x03 \x03(\x0b\x32!.chromiumos.test.api.DutCriterionB\x02\x18\x01\"z\n\x11\x43overageRuleBqRow\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0f\n\x07project\x18\x02 \x01(\t\x12\x0c\n\x04path\x18\x03 \x01(\t\x12\x38\n\rcoverage_rule\x18\x04 \x01(\x0b\x32!.chromiumos.test.api.CoverageRuleB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n\'chromiumos/test/api/coverage_rule.proto\x12\x13\x63hromiumos.test.api\x1a\x1egoogle/protobuf/wrappers.proto\x1a\'chromiumos/test/api/dut_attribute.proto\x1a$chromiumos/test/api/test_suite.proto\"\xa8\x02\n\x0c\x43overageRule\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x33\n\x0btest_suites\x18\x02 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x33\n\x0b\x64ut_targets\x18\x04 \x03(\x0b\x32\x1e.chromiumos.test.api.DutTarget\x12,\n\x08\x63ritical\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x13\n\x0brun_via_cft\x18\x06 \x01(\x08\x12 \n\x18\x65nable_autotest_sharding\x18\x07 \x01(\x08\x12;\n\x0c\x64ut_criteria\x18\x03 \x03(\x0b\x32!.chromiumos.test.api.DutCriterionB\x02\x18\x01\"z\n\x11\x43overageRuleBqRow\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0f\n\x07project\x18\x02 \x01(\t\x12\x0c\n\x04path\x18\x03 \x01(\t\x12\x38\n\rcoverage_rule\x18\x04 \x01(\x0b\x32!.chromiumos.test.api.CoverageRuleB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_dut__attribute__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,])
 
@@ -73,7 +73,14 @@ _COVERAGERULE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='dut_criteria', full_name='chromiumos.test.api.CoverageRule.dut_criteria', index=5,
+      name='enable_autotest_sharding', full_name='chromiumos.test.api.CoverageRule.enable_autotest_sharding', index=5,
+      number=7, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='dut_criteria', full_name='chromiumos.test.api.CoverageRule.dut_criteria', index=6,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -92,7 +99,7 @@ _COVERAGERULE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=176,
-  serialized_end=438,
+  serialized_end=472,
 )
 
 
@@ -144,8 +151,8 @@ _COVERAGERULEBQROW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=440,
-  serialized_end=562,
+  serialized_start=474,
+  serialized_end=596,
 )
 
 _COVERAGERULE.fields_by_name['test_suites'].message_type = chromiumos_dot_test_dot_api_dot_test__suite__pb2._TESTSUITE
