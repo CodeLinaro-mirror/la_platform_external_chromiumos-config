@@ -27051,6 +27051,13 @@
                   "name": "hwid_sku",
                   "number": 1,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "dlmSkuId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dlm_sku_id",
+                  "number": 2,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Sku"
