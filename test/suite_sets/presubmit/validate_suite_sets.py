@@ -32,25 +32,24 @@ from src.tools import (  # noqa: E402 pylint: disable=wrong-import-position,no-n
 
 def main(args):
     """Entry point."""
-    if args.suite_set_file:
-        suite_set_utils.load_suite_sets([args.suite_set_file])
-    if args.suite_file:
-        suite_set_utils.load_suites([args.suite_file])
+    suite_sets = suite_set_utils.load_suite_sets([args.suite_set_file])
+    suites = suite_set_utils.load_suites([args.suite_file])
+    suite_set_utils.validate_centralized_suites(suite_sets + suites)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         prog="Validate SuiteSets",
         description=(
-            "Validates the given Suite/SuiteSet files are well formed. Only the"
-            "given files are validated so if no files are given, none are"
-            "validated."
+            "Validates the given Suite/SuiteSet files are well formed."
         ),
     )
     parser.add_argument(
-        "-ss", "--suite_set_file", help="Path to SuiteSet file to validate"
+        "--suite_set_file",
+        help="Path to SuiteSet file to validate",
+        required=True,
     )
     parser.add_argument(
-        "-s", "--suite_file", help="Path to Suite file to validate"
+        "--suite_file", help="Path to Suite file to validate", required=True
     )
     main(parser.parse_args())

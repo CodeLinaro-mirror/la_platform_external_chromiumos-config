@@ -38,18 +38,29 @@ def CheckSuiteSetsAreWellFormed(input_api, output_api):
     script_path = input_api.os_path.join(
         input_api.PresubmitLocalPath(), "presubmit/validate_suite_sets.py"
     )
-    cmd_name = "validate_suite_sets"
-    cmd = [input_api.python3_executable, script_path]
     suite_sets_proto_file = input_api.os_path.join(
         input_api.PresubmitLocalPath(), "generated/suite_sets.jsonpb"
     )
-    if _is_affected_file(input_api, suite_sets_proto_file):
-        cmd.extend(["--suite_set_file", suite_sets_proto_file])
     suites_proto_file = input_api.os_path.join(
         input_api.PresubmitLocalPath(), "generated/suites.jsonpb"
     )
-    if _is_affected_file(input_api, suites_proto_file):
-        cmd.extend(["--suite_file", suites_proto_file])
+    any_file_affected = (
+        _is_affected_file(input_api, script_path)
+        or _is_affected_file(input_api, suite_sets_proto_file)
+        or _is_affected_file(input_api, suites_proto_file)
+    )
+    if not any_file_affected:
+        return []
+
+    cmd_name = "validate_suite_sets"
+    cmd = [
+        input_api.python3_executable,
+        script_path,
+        "--suite_set_file",
+        suite_sets_proto_file,
+        "--suite_file",
+        suites_proto_file,
+    ]
     presubmit_cmd = input_api.Command(
         name=cmd_name,
         cmd=cmd,
