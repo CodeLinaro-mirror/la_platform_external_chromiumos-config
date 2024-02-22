@@ -27063,6 +27063,13 @@
                   "name": "wifi_chip",
                   "number": 1,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "wifiRouterModels",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wifi_router_models",
+                  "number": 2,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Chipset"

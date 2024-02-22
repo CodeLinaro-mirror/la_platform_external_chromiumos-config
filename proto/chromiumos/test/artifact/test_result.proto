@@ -272,9 +272,13 @@ message BuildMetadata {
   Sku sku = 6;
 
   // The Chip set metadata
+  // NEXT TAG: 3
   message Chipset {
     // Wifi chip info, e.g. "marvell".
     string wifi_chip = 1;
+
+    // Wifi router models within the testbed, e.g. "gale".
+    string wifi_router_models = 2;
   }
 
   Chipset chipset = 7;
