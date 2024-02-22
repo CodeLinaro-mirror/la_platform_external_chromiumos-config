@@ -6160,25 +6160,25 @@
 					"value": "tast.platform.BootPerf"
 				},
 				{
-					"value": "firmware_ConsecutiveBoot.dev.500"
+					"value": "tauto.firmware_ConsecutiveBoot.dev.500"
 				},
 				{
-					"value": "firmware_ConsecutiveBoot.2500"
+					"value": "tauto.firmware_ConsecutiveBoot.2500"
 				},
 				{
-					"value": "power_SuspendStress.bareFSI"
+					"value": "tauto.power_SuspendStress.bareFSI"
 				},
 				{
-					"value": "power_UiResume.freeze"
+					"value": "tauto.power_UiResume.freeze"
 				},
 				{
-					"value": "power_CPUFreq"
+					"value": "tauto.power_CPUFreq"
 				},
 				{
-					"value": "power_CPUIlde"
+					"value": "tauto.power_CPUIlde"
 				},
 				{
-					"value": "hardware_TPMCheck"
+					"value": "tauto.hardware_TPMCheck"
 				}
 			]
 		}

@@ -19,13 +19,13 @@ def _firmware_other():
         tests = [
             "tast.storage.QuickStress",
             "tast.platform.BootPerf",
-            "firmware_ConsecutiveBoot.dev.500",
-            "firmware_ConsecutiveBoot.2500",
-            "power_SuspendStress.bareFSI",
-            "power_UiResume.freeze",
-            "power_CPUFreq",
-            "power_CPUIlde",
-            "hardware_TPMCheck",
+            "tauto.firmware_ConsecutiveBoot.dev.500",
+            "tauto.firmware_ConsecutiveBoot.2500",
+            "tauto.power_SuspendStress.bareFSI",
+            "tauto.power_UiResume.freeze",
+            "tauto.power_CPUFreq",
+            "tauto.power_CPUIlde",
+            "tauto.hardware_TPMCheck",
             # TODO need power battery life test figure out if old or new should be added
         ],
     )
