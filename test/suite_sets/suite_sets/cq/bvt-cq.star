@@ -14,7 +14,7 @@ def _bvt_cq():
         criteria = "This is the portion of the Build Verification Test suite required to \
 pass the ChromeOS Commit Queue and Pre-Flight Queue.",
         tests = [
-            "logging_UserCrash",
+            "tauto.logging_UserCrash",
         ],
     )
 

@@ -14,10 +14,10 @@ def _bvt_inline():
         criteria = "This is the portion of the Build Verification Test suite required \
 to pass before any other tests may run.",
         tests = [
-            "autoupdate_Basic.full",
-            "autoupdate_Basic.m2n.full",
-            "autoupdate_CatchBadSignatures",
-            "autoupdate_WithDLC.full",
+            "tauto.autoupdate_Basic.full",
+            "tauto.autoupdate_Basic.m2n.full",
+            "tauto.autoupdate_CatchBadSignatures",
+            "tauto.autoupdate_WithDLC.full",
         ],
     )
 
