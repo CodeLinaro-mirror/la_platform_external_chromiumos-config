@@ -19576,6 +19576,14 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestCase.Dependency"
+            },
+            {
+              "jsonName": "buildDependencies",
+              "label": "LABEL_REPEATED",
+              "name": "build_dependencies",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase.BuildDeps"
             }
           ],
           "name": "TestCase",
@@ -19615,6 +19623,18 @@
                 }
               ],
               "name": "Dependency"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "BuildDeps"
             }
           ]
         },

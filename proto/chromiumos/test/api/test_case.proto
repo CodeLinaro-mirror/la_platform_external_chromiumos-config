@@ -43,6 +43,13 @@ message TestCase {
   message Dependency {
     string value = 1;
   }
+
+  // BuildDeps for a given test cases, which drive test filtering logic for
+  // scheduling.
+  repeated BuildDeps build_dependencies = 5;
+  message BuildDeps {
+    string value = 1;
+  }
 }
 
 // List of globally unique test case identifiers
