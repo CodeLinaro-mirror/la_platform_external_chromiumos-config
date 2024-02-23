@@ -24321,6 +24321,13 @@
               "name": "swarming_labels",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "variant",
+              "label": "LABEL_OPTIONAL",
+              "name": "variant",
+              "number": 4,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "SwarmingDefinition"

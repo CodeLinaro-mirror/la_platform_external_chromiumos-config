@@ -263,6 +263,7 @@ message SwarmingDefinition {
   chromiumos.test.lab.api.Dut dut_info = 1;
   repeated ProvisionInfo provision_info = 2;
   repeated string swarming_labels = 3;
+  string variant = 4;
 };
 
 // CTPv2Response...
