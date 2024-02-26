@@ -28894,6 +28894,574 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/any.proto",
+        "chromiumos/build/api/container_metadata.proto",
+        "chromiumos/test/api/cros_tool_runner_container_service_templates.proto",
+        "chromiumos/test/api/provision.proto",
+        "chromiumos/test/api/cros_publish_service.proto",
+        "chromiumos/test/api/cros_test_cli.proto",
+        "chromiumos/test/api/test_suite.proto",
+        "chromiumos/test/api/post_test_service.proto",
+        "chromiumos/test/api/generic_service.proto",
+        "chromiumos/test/lab/api/ip_endpoint.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "build",
+              "label": "LABEL_OPTIONAL",
+              "name": "build",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.BuildMode"
+            },
+            {
+              "jsonName": "params",
+              "label": "LABEL_OPTIONAL",
+              "name": "params",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestRunnerParams"
+            },
+            {
+              "jsonName": "orderedTasks",
+              "label": "LABEL_REPEATED",
+              "name": "ordered_tasks",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestRunnerDynamicRequest.Task"
+            }
+          ],
+          "name": "CrosTestRunnerDynamicRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "orderedContainerRequests",
+                  "label": "LABEL_REPEATED",
+                  "name": "ordered_container_requests",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.ContainerRequest"
+                },
+                {
+                  "jsonName": "provision",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "provision",
+                  "number": 2,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.ProvisionTask"
+                },
+                {
+                  "jsonName": "preTest",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "pre_test",
+                  "number": 3,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.PreTestTask"
+                },
+                {
+                  "jsonName": "test",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "test",
+                  "number": 4,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.TestTask"
+                },
+                {
+                  "jsonName": "postTest",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "post_test",
+                  "number": 5,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.PostTestTask"
+                },
+                {
+                  "jsonName": "publish",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "publish",
+                  "number": 6,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.PublishTask"
+                },
+                {
+                  "jsonName": "generic",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "generic",
+                  "number": 8,
+                  "oneofIndex": 0,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.GenericTask"
+                },
+                {
+                  "jsonName": "required",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "required",
+                  "number": 7,
+                  "type": "TYPE_BOOL"
+                }
+              ],
+              "name": "Task",
+              "oneofDecl": [
+                {
+                  "name": "task"
+                }
+              ]
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "start_request"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testSuites",
+              "label": "LABEL_REPEATED",
+              "name": "test_suites",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestSuite"
+            },
+            {
+              "jsonName": "containerMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.ContainerMetadata"
+            },
+            {
+              "jsonName": "keyvals",
+              "label": "LABEL_REPEATED",
+              "name": "keyvals",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestRunnerParams.KeyvalsEntry"
+            }
+          ],
+          "name": "CrosTestRunnerParams",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "KeyvalsEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "parentBuildId",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent_build_id",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "parentRequestUid",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent_request_uid",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "BuildMode"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "serviceAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_address",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "startupRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "startup_request",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ProvisionStartupRequest"
+            },
+            {
+              "jsonName": "installRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "install_request",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallRequest"
+            },
+            {
+              "jsonName": "dynamicDeps",
+              "label": "LABEL_REPEATED",
+              "name": "dynamic_deps",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DynamicDep"
+            },
+            {
+              "jsonName": "target",
+              "label": "LABEL_OPTIONAL",
+              "name": "target",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dynamicIdentifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "dynamic_identifier",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ProvisionTask"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "serviceAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_address",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "preTestRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "pre_test_request",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "dynamicDeps",
+              "label": "LABEL_REPEATED",
+              "name": "dynamic_deps",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DynamicDep"
+            },
+            {
+              "jsonName": "dynamicIdentifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "dynamic_identifier",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PreTestTask"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "serviceAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_address",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "testRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_request",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestRequest"
+            },
+            {
+              "jsonName": "dynamicDeps",
+              "label": "LABEL_REPEATED",
+              "name": "dynamic_deps",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DynamicDep"
+            },
+            {
+              "jsonName": "dynamicIdentifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "dynamic_identifier",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "TestTask"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "serviceAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_address",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "postTestRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "post_test_request",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "dynamicDeps",
+              "label": "LABEL_REPEATED",
+              "name": "dynamic_deps",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DynamicDep"
+            },
+            {
+              "jsonName": "runActivityRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "run_activity_request",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.RunActivityRequest"
+            },
+            {
+              "jsonName": "dynamicIdentifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "dynamic_identifier",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PostTestTask"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "serviceAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_address",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "publishRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "publish_request",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishRequest"
+            },
+            {
+              "jsonName": "dynamicDeps",
+              "label": "LABEL_REPEATED",
+              "name": "dynamic_deps",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DynamicDep"
+            },
+            {
+              "jsonName": "dynamicIdentifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "dynamic_identifier",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PublishTask"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "serviceAddress",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_address",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "startRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "start_request",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericStartRequest"
+            },
+            {
+              "jsonName": "runRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "run_request",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericRunRequest"
+            },
+            {
+              "jsonName": "stopRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "stop_request",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GenericStopRequest"
+            },
+            {
+              "jsonName": "dynamicDeps",
+              "label": "LABEL_REPEATED",
+              "name": "dynamic_deps",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DynamicDep"
+            },
+            {
+              "jsonName": "dynamicIdentifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "dynamic_identifier",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GenericTask"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "dynamicIdentifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "dynamic_identifier",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "container",
+              "label": "LABEL_OPTIONAL",
+              "name": "container",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Template"
+            },
+            {
+              "jsonName": "dynamicDeps",
+              "label": "LABEL_REPEATED",
+              "name": "dynamic_deps",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.DynamicDep"
+            },
+            {
+              "jsonName": "inputs",
+              "label": "LABEL_REPEATED",
+              "name": "inputs",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ContainerRequest.FileInput"
+            },
+            {
+              "jsonName": "network",
+              "label": "LABEL_OPTIONAL",
+              "name": "network",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "containerImageKey",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_image_key",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ContainerRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "identifier",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "identifier",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "content",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "content",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Any"
+                },
+                {
+                  "jsonName": "dynamicDeps",
+                  "label": "LABEL_REPEATED",
+                  "name": "dynamic_deps",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.DynamicDep"
+                }
+              ],
+              "name": "FileInput"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "key",
+              "label": "LABEL_OPTIONAL",
+              "name": "key",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DynamicDep"
+        }
+      ],
+      "name": "chromiumos/test/api/trv2_dynamic.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/test/api/coverage_rule.proto"
       ],
       "messageType": [
