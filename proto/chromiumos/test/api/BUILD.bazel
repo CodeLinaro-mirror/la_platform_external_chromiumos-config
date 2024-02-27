@@ -57,6 +57,7 @@ proto_library(
         "test_harness.proto",
         "test_libs_service.proto",
         "test_suite.proto",
+        "trv2_dynamic_updates.proto",
         "trv2_dynamic.proto",
         "vm_leaser.proto",
     ],

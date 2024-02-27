@@ -29516,6 +29516,274 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/any.proto",
+        "chromiumos/test/api/trv2_dynamic.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "focalTaskFinder",
+              "label": "LABEL_OPTIONAL",
+              "name": "focal_task_finder",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FocalTaskFinder"
+            },
+            {
+              "jsonName": "updateAction",
+              "label": "LABEL_OPTIONAL",
+              "name": "update_action",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.UpdateAction"
+            }
+          ],
+          "name": "UserDefinedDynamicUpdate"
+        },
+        {
+          "enumType": [
+            {
+              "name": "TaskType",
+              "value": [
+                {
+                  "name": "PROVISION",
+                  "number": 0
+                },
+                {
+                  "name": "PRETEST",
+                  "number": 1
+                },
+                {
+                  "name": "TEST",
+                  "number": 2
+                },
+                {
+                  "name": "POSTTEST",
+                  "number": 3
+                },
+                {
+                  "name": "PUBLISH",
+                  "number": 4
+                },
+                {
+                  "name": "GENERIC",
+                  "number": 5
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "first",
+              "label": "LABEL_OPTIONAL",
+              "name": "first",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FocalTaskFinder.First"
+            },
+            {
+              "jsonName": "last",
+              "label": "LABEL_OPTIONAL",
+              "name": "last",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FocalTaskFinder.Last"
+            }
+          ],
+          "name": "FocalTaskFinder",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "taskType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "task_type",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.api.FocalTaskFinder.TaskType"
+                }
+              ],
+              "name": "First"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "taskType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "task_type",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.api.FocalTaskFinder.TaskType"
+                }
+              ],
+              "name": "Last"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "finder"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "insert",
+              "label": "LABEL_OPTIONAL",
+              "name": "insert",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.UpdateAction.Insert"
+            },
+            {
+              "jsonName": "remove",
+              "label": "LABEL_OPTIONAL",
+              "name": "remove",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.UpdateAction.Remove"
+            },
+            {
+              "jsonName": "modify",
+              "label": "LABEL_OPTIONAL",
+              "name": "modify",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.UpdateAction.Modify"
+            }
+          ],
+          "name": "UpdateAction",
+          "nestedType": [
+            {
+              "enumType": [
+                {
+                  "name": "InsertType",
+                  "value": [
+                    {
+                      "name": "APPEND",
+                      "number": 0
+                    },
+                    {
+                      "name": "PREPEND",
+                      "number": 1
+                    },
+                    {
+                      "name": "REPLACE",
+                      "number": 2
+                    }
+                  ]
+                }
+              ],
+              "field": [
+                {
+                  "jsonName": "insertType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "insert_type",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.api.UpdateAction.Insert.InsertType"
+                },
+                {
+                  "jsonName": "task",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "task",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.CrosTestRunnerDynamicRequest.Task"
+                }
+              ],
+              "name": "Insert"
+            },
+            {
+              "name": "Remove"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "modifications",
+                  "label": "LABEL_REPEATED",
+                  "name": "modifications",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.UpdateAction.Modify.Modification"
+                }
+              ],
+              "name": "Modify",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "payload",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "payload",
+                      "number": 1,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".google.protobuf.Any"
+                    },
+                    {
+                      "jsonName": "instructions",
+                      "label": "LABEL_REPEATED",
+                      "name": "instructions",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.test.api.UpdateAction.Modify.Modification.InstructionsEntry"
+                    }
+                  ],
+                  "name": "Modification",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "key",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "key",
+                          "number": 1,
+                          "type": "TYPE_STRING"
+                        },
+                        {
+                          "jsonName": "value",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "value",
+                          "number": 2,
+                          "type": "TYPE_STRING"
+                        }
+                      ],
+                      "name": "InstructionsEntry",
+                      "options": {
+                        "mapEntry": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "action"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/api/trv2_dynamic_updates.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/test/api/coverage_rule.proto"
       ],
       "messageType": [
