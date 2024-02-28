@@ -17726,6 +17726,21 @@
                   "name": "fingerprint_module_id",
                   "number": 4,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "name",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "name",
+                  "number": 5,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "dutModel",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dut_model",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.DutModel"
                 }
               ],
               "name": "Devboard"

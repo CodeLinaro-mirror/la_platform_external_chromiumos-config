@@ -83,6 +83,9 @@ message Dut {
     Servo servo = 3;
     // An ID string for the fingerprint module.
     string fingerprint_module_id = 4;
+    // Devboard DUT name.
+    string name = 5;
+    DutModel dut_model = 6;
   }
 
   // Cache server for downloading artifacts related to this DUT.
