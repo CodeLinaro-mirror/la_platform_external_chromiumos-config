@@ -94,6 +94,8 @@ message SuiteRequest {
   string analytics_name = 5;
   // The total number of tests allowed to be used in a shard.
   int64 max_in_shard = 6;
+  // Should run the suite via 3d or not. Default false.
+  bool ddd_suite = 7;
 }
 
 message KeyValue {

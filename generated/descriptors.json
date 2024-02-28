@@ -23739,6 +23739,13 @@
               "name": "max_in_shard",
               "number": 6,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "dddSuite",
+              "label": "LABEL_OPTIONAL",
+              "name": "ddd_suite",
+              "number": 7,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "SuiteRequest",
