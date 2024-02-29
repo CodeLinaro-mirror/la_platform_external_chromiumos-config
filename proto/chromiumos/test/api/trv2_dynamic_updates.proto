@@ -40,12 +40,18 @@ message FocalTaskFinder {
     message Beginning {}
     // End always gives the last task in the list, ie the len(list)-1 index.
     message End {}
+    // ByDynamicIdentifier is a lookup finder that finds the task
+    // with the given dynamic identifier set.
+    message ByDynamicIdentifier {
+        string dynamic_identifier = 1;
+    }
 
     oneof finder {
         First first = 1;
         Last last = 2;
         Beginning beginning = 3;
         End end = 4;
+        ByDynamicIdentifier by_dynamic_identifier = 5;
     }
 }
 

@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n.chromiumos/test/api/trv2_dynamic_updates.proto\x12\x13\x63hromiumos.test.api\x1a\x19google/protobuf/any.proto\x1a&chromiumos/test/api/trv2_dynamic.proto\"\x95\x01\n\x18UserDefinedDynamicUpdate\x12?\n\x11\x66ocal_task_finder\x18\x01 \x01(\x0b\x32$.chromiumos.test.api.FocalTaskFinder\x12\x38\n\rupdate_action\x18\x02 \x01(\x0b\x32!.chromiumos.test.api.UpdateAction\"\x94\x04\n\x0f\x46ocalTaskFinder\x12;\n\x05\x66irst\x18\x01 \x01(\x0b\x32*.chromiumos.test.api.FocalTaskFinder.FirstH\x00\x12\x39\n\x04last\x18\x02 \x01(\x0b\x32).chromiumos.test.api.FocalTaskFinder.LastH\x00\x12\x43\n\tbeginning\x18\x03 \x01(\x0b\x32..chromiumos.test.api.FocalTaskFinder.BeginningH\x00\x12\x37\n\x03\x65nd\x18\x04 \x01(\x0b\x32(.chromiumos.test.api.FocalTaskFinder.EndH\x00\x1aI\n\x05\x46irst\x12@\n\ttask_type\x18\x01 \x01(\x0e\x32-.chromiumos.test.api.FocalTaskFinder.TaskType\x1aH\n\x04Last\x12@\n\ttask_type\x18\x01 \x01(\x0e\x32-.chromiumos.test.api.FocalTaskFinder.TaskType\x1a\x0b\n\tBeginning\x1a\x05\n\x03\x45nd\"X\n\x08TaskType\x12\r\n\tPROVISION\x10\x00\x12\x0b\n\x07PRETEST\x10\x01\x12\x08\n\x04TEST\x10\x02\x12\x0c\n\x08POSTTEST\x10\x03\x12\x0b\n\x07PUBLISH\x10\x04\x12\x0b\n\x07GENERIC\x10\x05\x42\x08\n\x06\x66inder\"\xca\x05\n\x0cUpdateAction\x12:\n\x06insert\x18\x01 \x01(\x0b\x32(.chromiumos.test.api.UpdateAction.InsertH\x00\x12:\n\x06remove\x18\x02 \x01(\x0b\x32(.chromiumos.test.api.UpdateAction.RemoveH\x00\x12:\n\x06modify\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.UpdateAction.ModifyH\x00\x1a\xcc\x01\n\x06Insert\x12H\n\x0binsert_type\x18\x01 \x01(\x0e\x32\x33.chromiumos.test.api.UpdateAction.Insert.InsertType\x12\x44\n\x04task\x18\x02 \x01(\x0b\x32\x36.chromiumos.test.api.CrosTestRunnerDynamicRequest.Task\"2\n\nInsertType\x12\n\n\x06\x41PPEND\x10\x00\x12\x0b\n\x07PREPEND\x10\x01\x12\x0b\n\x07REPLACE\x10\x02\x1a\x08\n\x06Remove\x1a\xa2\x02\n\x06Modify\x12L\n\rmodifications\x18\x01 \x03(\x0b\x32\x35.chromiumos.test.api.UpdateAction.Modify.Modification\x1a\xc9\x01\n\x0cModification\x12%\n\x07payload\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\x12]\n\x0cinstructions\x18\x02 \x03(\x0b\x32G.chromiumos.test.api.UpdateAction.Modify.Modification.InstructionsEntry\x1a\x33\n\x11InstructionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x08\n\x06\x61\x63tionB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n.chromiumos/test/api/trv2_dynamic_updates.proto\x12\x13\x63hromiumos.test.api\x1a\x19google/protobuf/any.proto\x1a&chromiumos/test/api/trv2_dynamic.proto\"\x95\x01\n\x18UserDefinedDynamicUpdate\x12?\n\x11\x66ocal_task_finder\x18\x01 \x01(\x0b\x32$.chromiumos.test.api.FocalTaskFinder\x12\x38\n\rupdate_action\x18\x02 \x01(\x0b\x32!.chromiumos.test.api.UpdateAction\"\xa2\x05\n\x0f\x46ocalTaskFinder\x12;\n\x05\x66irst\x18\x01 \x01(\x0b\x32*.chromiumos.test.api.FocalTaskFinder.FirstH\x00\x12\x39\n\x04last\x18\x02 \x01(\x0b\x32).chromiumos.test.api.FocalTaskFinder.LastH\x00\x12\x43\n\tbeginning\x18\x03 \x01(\x0b\x32..chromiumos.test.api.FocalTaskFinder.BeginningH\x00\x12\x37\n\x03\x65nd\x18\x04 \x01(\x0b\x32(.chromiumos.test.api.FocalTaskFinder.EndH\x00\x12Y\n\x15\x62y_dynamic_identifier\x18\x05 \x01(\x0b\x32\x38.chromiumos.test.api.FocalTaskFinder.ByDynamicIdentifierH\x00\x1aI\n\x05\x46irst\x12@\n\ttask_type\x18\x01 \x01(\x0e\x32-.chromiumos.test.api.FocalTaskFinder.TaskType\x1aH\n\x04Last\x12@\n\ttask_type\x18\x01 \x01(\x0e\x32-.chromiumos.test.api.FocalTaskFinder.TaskType\x1a\x0b\n\tBeginning\x1a\x05\n\x03\x45nd\x1a\x31\n\x13\x42yDynamicIdentifier\x12\x1a\n\x12\x64ynamic_identifier\x18\x01 \x01(\t\"X\n\x08TaskType\x12\r\n\tPROVISION\x10\x00\x12\x0b\n\x07PRETEST\x10\x01\x12\x08\n\x04TEST\x10\x02\x12\x0c\n\x08POSTTEST\x10\x03\x12\x0b\n\x07PUBLISH\x10\x04\x12\x0b\n\x07GENERIC\x10\x05\x42\x08\n\x06\x66inder\"\xca\x05\n\x0cUpdateAction\x12:\n\x06insert\x18\x01 \x01(\x0b\x32(.chromiumos.test.api.UpdateAction.InsertH\x00\x12:\n\x06remove\x18\x02 \x01(\x0b\x32(.chromiumos.test.api.UpdateAction.RemoveH\x00\x12:\n\x06modify\x18\x03 \x01(\x0b\x32(.chromiumos.test.api.UpdateAction.ModifyH\x00\x1a\xcc\x01\n\x06Insert\x12H\n\x0binsert_type\x18\x01 \x01(\x0e\x32\x33.chromiumos.test.api.UpdateAction.Insert.InsertType\x12\x44\n\x04task\x18\x02 \x01(\x0b\x32\x36.chromiumos.test.api.CrosTestRunnerDynamicRequest.Task\"2\n\nInsertType\x12\n\n\x06\x41PPEND\x10\x00\x12\x0b\n\x07PREPEND\x10\x01\x12\x0b\n\x07REPLACE\x10\x02\x1a\x08\n\x06Remove\x1a\xa2\x02\n\x06Modify\x12L\n\rmodifications\x18\x01 \x03(\x0b\x32\x35.chromiumos.test.api.UpdateAction.Modify.Modification\x1a\xc9\x01\n\x0cModification\x12%\n\x07payload\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\x12]\n\x0cinstructions\x18\x02 \x03(\x0b\x32G.chromiumos.test.api.UpdateAction.Modify.Modification.InstructionsEntry\x1a\x33\n\x11InstructionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x08\n\x06\x61\x63tionB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_trv2__dynamic__pb2.DESCRIPTOR,])
 
@@ -67,8 +67,8 @@ _FOCALTASKFINDER_TASKTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=725,
-  serialized_end=813,
+  serialized_start=867,
+  serialized_end=955,
 )
 _sym_db.RegisterEnumDescriptor(_FOCALTASKFINDER_TASKTYPE)
 
@@ -97,8 +97,8 @@ _UPDATEACTION_INSERT_INSERTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1177,
-  serialized_end=1227,
+  serialized_start=1319,
+  serialized_end=1369,
 )
 _sym_db.RegisterEnumDescriptor(_UPDATEACTION_INSERT_INSERTTYPE)
 
@@ -169,8 +169,8 @@ _FOCALTASKFINDER_FIRST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=556,
-  serialized_end=629,
+  serialized_start=647,
+  serialized_end=720,
 )
 
 _FOCALTASKFINDER_LAST = _descriptor.Descriptor(
@@ -200,8 +200,8 @@ _FOCALTASKFINDER_LAST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=631,
-  serialized_end=703,
+  serialized_start=722,
+  serialized_end=794,
 )
 
 _FOCALTASKFINDER_BEGINNING = _descriptor.Descriptor(
@@ -224,8 +224,8 @@ _FOCALTASKFINDER_BEGINNING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=705,
-  serialized_end=716,
+  serialized_start=796,
+  serialized_end=807,
 )
 
 _FOCALTASKFINDER_END = _descriptor.Descriptor(
@@ -248,8 +248,39 @@ _FOCALTASKFINDER_END = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=718,
-  serialized_end=723,
+  serialized_start=809,
+  serialized_end=814,
+)
+
+_FOCALTASKFINDER_BYDYNAMICIDENTIFIER = _descriptor.Descriptor(
+  name='ByDynamicIdentifier',
+  full_name='chromiumos.test.api.FocalTaskFinder.ByDynamicIdentifier',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='dynamic_identifier', full_name='chromiumos.test.api.FocalTaskFinder.ByDynamicIdentifier.dynamic_identifier', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=816,
+  serialized_end=865,
 )
 
 _FOCALTASKFINDER = _descriptor.Descriptor(
@@ -288,10 +319,17 @@ _FOCALTASKFINDER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='by_dynamic_identifier', full_name='chromiumos.test.api.FocalTaskFinder.by_dynamic_identifier', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[_FOCALTASKFINDER_FIRST, _FOCALTASKFINDER_LAST, _FOCALTASKFINDER_BEGINNING, _FOCALTASKFINDER_END, ],
+  nested_types=[_FOCALTASKFINDER_FIRST, _FOCALTASKFINDER_LAST, _FOCALTASKFINDER_BEGINNING, _FOCALTASKFINDER_END, _FOCALTASKFINDER_BYDYNAMICIDENTIFIER, ],
   enum_types=[
     _FOCALTASKFINDER_TASKTYPE,
   ],
@@ -307,7 +345,7 @@ _FOCALTASKFINDER = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=291,
-  serialized_end=823,
+  serialized_end=965,
 )
 
 
@@ -346,8 +384,8 @@ _UPDATEACTION_INSERT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1023,
-  serialized_end=1227,
+  serialized_start=1165,
+  serialized_end=1369,
 )
 
 _UPDATEACTION_REMOVE = _descriptor.Descriptor(
@@ -370,8 +408,8 @@ _UPDATEACTION_REMOVE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1229,
-  serialized_end=1237,
+  serialized_start=1371,
+  serialized_end=1379,
 )
 
 _UPDATEACTION_MODIFY_MODIFICATION_INSTRUCTIONSENTRY = _descriptor.Descriptor(
@@ -408,8 +446,8 @@ _UPDATEACTION_MODIFY_MODIFICATION_INSTRUCTIONSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1479,
-  serialized_end=1530,
+  serialized_start=1621,
+  serialized_end=1672,
 )
 
 _UPDATEACTION_MODIFY_MODIFICATION = _descriptor.Descriptor(
@@ -446,8 +484,8 @@ _UPDATEACTION_MODIFY_MODIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1329,
-  serialized_end=1530,
+  serialized_start=1471,
+  serialized_end=1672,
 )
 
 _UPDATEACTION_MODIFY = _descriptor.Descriptor(
@@ -477,8 +515,8 @@ _UPDATEACTION_MODIFY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1240,
-  serialized_end=1530,
+  serialized_start=1382,
+  serialized_end=1672,
 )
 
 _UPDATEACTION = _descriptor.Descriptor(
@@ -527,8 +565,8 @@ _UPDATEACTION = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=826,
-  serialized_end=1540,
+  serialized_start=968,
+  serialized_end=1682,
 )
 
 _USERDEFINEDDYNAMICUPDATE.fields_by_name['focal_task_finder'].message_type = _FOCALTASKFINDER
@@ -539,10 +577,12 @@ _FOCALTASKFINDER_LAST.fields_by_name['task_type'].enum_type = _FOCALTASKFINDER_T
 _FOCALTASKFINDER_LAST.containing_type = _FOCALTASKFINDER
 _FOCALTASKFINDER_BEGINNING.containing_type = _FOCALTASKFINDER
 _FOCALTASKFINDER_END.containing_type = _FOCALTASKFINDER
+_FOCALTASKFINDER_BYDYNAMICIDENTIFIER.containing_type = _FOCALTASKFINDER
 _FOCALTASKFINDER.fields_by_name['first'].message_type = _FOCALTASKFINDER_FIRST
 _FOCALTASKFINDER.fields_by_name['last'].message_type = _FOCALTASKFINDER_LAST
 _FOCALTASKFINDER.fields_by_name['beginning'].message_type = _FOCALTASKFINDER_BEGINNING
 _FOCALTASKFINDER.fields_by_name['end'].message_type = _FOCALTASKFINDER_END
+_FOCALTASKFINDER.fields_by_name['by_dynamic_identifier'].message_type = _FOCALTASKFINDER_BYDYNAMICIDENTIFIER
 _FOCALTASKFINDER_TASKTYPE.containing_type = _FOCALTASKFINDER
 _FOCALTASKFINDER.oneofs_by_name['finder'].fields.append(
   _FOCALTASKFINDER.fields_by_name['first'])
@@ -556,6 +596,9 @@ _FOCALTASKFINDER.fields_by_name['beginning'].containing_oneof = _FOCALTASKFINDER
 _FOCALTASKFINDER.oneofs_by_name['finder'].fields.append(
   _FOCALTASKFINDER.fields_by_name['end'])
 _FOCALTASKFINDER.fields_by_name['end'].containing_oneof = _FOCALTASKFINDER.oneofs_by_name['finder']
+_FOCALTASKFINDER.oneofs_by_name['finder'].fields.append(
+  _FOCALTASKFINDER.fields_by_name['by_dynamic_identifier'])
+_FOCALTASKFINDER.fields_by_name['by_dynamic_identifier'].containing_oneof = _FOCALTASKFINDER.oneofs_by_name['finder']
 _UPDATEACTION_INSERT.fields_by_name['insert_type'].enum_type = _UPDATEACTION_INSERT_INSERTTYPE
 _UPDATEACTION_INSERT.fields_by_name['task'].message_type = chromiumos_dot_test_dot_api_dot_trv2__dynamic__pb2._CROSTESTRUNNERDYNAMICREQUEST_TASK
 _UPDATEACTION_INSERT.containing_type = _UPDATEACTION
@@ -620,6 +663,13 @@ FocalTaskFinder = _reflection.GeneratedProtocolMessageType('FocalTaskFinder', (_
     # @@protoc_insertion_point(class_scope:chromiumos.test.api.FocalTaskFinder.End)
     })
   ,
+
+  'ByDynamicIdentifier' : _reflection.GeneratedProtocolMessageType('ByDynamicIdentifier', (_message.Message,), {
+    'DESCRIPTOR' : _FOCALTASKFINDER_BYDYNAMICIDENTIFIER,
+    '__module__' : 'chromiumos.test.api.trv2_dynamic_updates_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.FocalTaskFinder.ByDynamicIdentifier)
+    })
+  ,
   'DESCRIPTOR' : _FOCALTASKFINDER,
   '__module__' : 'chromiumos.test.api.trv2_dynamic_updates_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.FocalTaskFinder)
@@ -629,6 +679,7 @@ _sym_db.RegisterMessage(FocalTaskFinder.First)
 _sym_db.RegisterMessage(FocalTaskFinder.Last)
 _sym_db.RegisterMessage(FocalTaskFinder.Beginning)
 _sym_db.RegisterMessage(FocalTaskFinder.End)
+_sym_db.RegisterMessage(FocalTaskFinder.ByDynamicIdentifier)
 
 UpdateAction = _reflection.GeneratedProtocolMessageType('UpdateAction', (_message.Message,), {
 

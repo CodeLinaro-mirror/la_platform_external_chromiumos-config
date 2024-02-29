@@ -167,7 +167,11 @@ message ContainerRequest {
   repeated FileInput inputs = 4;
   // default = "host"
   string network = 5;
+  // Lookup key for containers from the metadata.
   string container_image_key = 6;
+  // Direct container image path to be called from docker.
+  // If set, used instead of the container_image_key.
+  string container_image_path = 7;
 }
 
 // Some information within TestRunnerV2 is required by the services it runs.

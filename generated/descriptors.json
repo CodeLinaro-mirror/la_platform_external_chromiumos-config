@@ -29456,6 +29456,13 @@
               "name": "container_image_key",
               "number": 6,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "containerImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_image_path",
+              "number": 7,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "ContainerRequest",
@@ -29616,6 +29623,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.FocalTaskFinder.End"
+            },
+            {
+              "jsonName": "byDynamicIdentifier",
+              "label": "LABEL_OPTIONAL",
+              "name": "by_dynamic_identifier",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FocalTaskFinder.ByDynamicIdentifier"
             }
           ],
           "name": "FocalTaskFinder",
@@ -29651,6 +29667,18 @@
             },
             {
               "name": "End"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "dynamicIdentifier",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dynamic_identifier",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ByDynamicIdentifier"
             }
           ],
           "oneofDecl": [
