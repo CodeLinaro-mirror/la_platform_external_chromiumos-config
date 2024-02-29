@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/hpt',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n$chromiumos/test/hpt/perf_event.proto\x12\x13\x63hromiumos.test.hpt\"\xb6\x01\n\nPerfRecord\x12\x13\n\x06\x62ucket\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x18\n\x0bobject_path\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x13\n\x06\x62ranch\x18\x03 \x01(\tH\x02\x88\x01\x01\x12\x14\n\x07version\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x12\n\x05\x62oard\x18\x05 \x01(\tH\x04\x88\x01\x01\x42\t\n\x07_bucketB\x0e\n\x0c_object_pathB\t\n\x07_branchB\n\n\x08_versionB\x08\n\x06_boardB/Z-go.chromium.org/chromiumos/config/go/test/hptb\x06proto3'
+  serialized_pb=b'\n$chromiumos/test/hpt/perf_event.proto\x12\x13\x63hromiumos.test.hpt\"\xf4\x01\n\nPerfRecord\x12\x13\n\x06\x62ucket\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x18\n\x0bobject_path\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x17\n\x06\x62ranch\x18\x03 \x01(\tB\x02\x18\x01H\x02\x88\x01\x01\x12\x14\n\x07version\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x12\n\x05\x62oard\x18\x05 \x01(\tH\x04\x88\x01\x01\x12 \n\x13snapshot_build_path\x18\x06 \x01(\tH\x05\x88\x01\x01\x42\t\n\x07_bucketB\x0e\n\x0c_object_pathB\t\n\x07_branchB\n\n\x08_versionB\x08\n\x06_boardB\x16\n\x14_snapshot_build_pathB/Z-go.chromium.org/chromiumos/config/go/test/hptb\x06proto3'
 )
 
 
@@ -53,7 +53,7 @@ _PERFRECORD = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='version', full_name='chromiumos.test.hpt.PerfRecord.version', index=3,
       number=4, type=9, cpp_type=9, label=1,
@@ -64,6 +64,13 @@ _PERFRECORD = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='board', full_name='chromiumos.test.hpt.PerfRecord.board', index=4,
       number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='snapshot_build_path', full_name='chromiumos.test.hpt.PerfRecord.snapshot_build_path', index=5,
+      number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -104,9 +111,14 @@ _PERFRECORD = _descriptor.Descriptor(
       index=4, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_snapshot_build_path', full_name='chromiumos.test.hpt.PerfRecord._snapshot_build_path',
+      index=5, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=62,
-  serialized_end=244,
+  serialized_end=306,
 )
 
 _PERFRECORD.oneofs_by_name['_bucket'].fields.append(
@@ -124,6 +136,9 @@ _PERFRECORD.fields_by_name['version'].containing_oneof = _PERFRECORD.oneofs_by_n
 _PERFRECORD.oneofs_by_name['_board'].fields.append(
   _PERFRECORD.fields_by_name['board'])
 _PERFRECORD.fields_by_name['board'].containing_oneof = _PERFRECORD.oneofs_by_name['_board']
+_PERFRECORD.oneofs_by_name['_snapshot_build_path'].fields.append(
+  _PERFRECORD.fields_by_name['snapshot_build_path'])
+_PERFRECORD.fields_by_name['snapshot_build_path'].containing_oneof = _PERFRECORD.oneofs_by_name['_snapshot_build_path']
 DESCRIPTOR.message_types_by_name['PerfRecord'] = _PERFRECORD
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -136,4 +151,5 @@ _sym_db.RegisterMessage(PerfRecord)
 
 
 DESCRIPTOR._options = None
+_PERFRECORD.fields_by_name['branch']._options = None
 # @@protoc_insertion_point(module_scope)

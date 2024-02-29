@@ -30864,6 +30864,9 @@
               "name": "branch",
               "number": 3,
               "oneofIndex": 2,
+              "options": {
+                "deprecated": true
+              },
               "proto3Optional": true,
               "type": "TYPE_STRING"
             },
@@ -30884,6 +30887,15 @@
               "oneofIndex": 4,
               "proto3Optional": true,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "snapshotBuildPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "snapshot_build_path",
+              "number": 6,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "PerfRecord",
@@ -30902,6 +30914,9 @@
             },
             {
               "name": "_board"
+            },
+            {
+              "name": "_snapshot_build_path"
             }
           ]
         }
