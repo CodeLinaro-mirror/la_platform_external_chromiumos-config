@@ -36,10 +36,16 @@ message FocalTaskFinder {
     message Last {
         TaskType task_type = 1;
     }
+    // Beginning always gives the first task in the list, ie the 0th index.
+    message Beginning {}
+    // End always gives the last task in the list, ie the len(list)-1 index.
+    message End {}
 
     oneof finder {
         First first = 1;
         Last last = 2;
+        Beginning beginning = 3;
+        End end = 4;
     }
 }
 

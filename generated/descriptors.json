@@ -29598,6 +29598,24 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.FocalTaskFinder.Last"
+            },
+            {
+              "jsonName": "beginning",
+              "label": "LABEL_OPTIONAL",
+              "name": "beginning",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FocalTaskFinder.Beginning"
+            },
+            {
+              "jsonName": "end",
+              "label": "LABEL_OPTIONAL",
+              "name": "end",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FocalTaskFinder.End"
             }
           ],
           "name": "FocalTaskFinder",
@@ -29627,6 +29645,12 @@
                 }
               ],
               "name": "Last"
+            },
+            {
+              "name": "Beginning"
+            },
+            {
+              "name": "End"
             }
           ],
           "oneofDecl": [
