@@ -816,7 +816,7 @@ _USB_DETACHABLE_BASE_WITH_TP = hw_topo.create_detachable_base(
 _I2C_DETACHABLE_BASE = hw_topo.create_detachable_base(
     ec_image_name = "Fake_Detachable",
     product_id = 1000,
-    i2c_path = "i2c-0",
+    i2c_path = "1-0023",
     vendor_id = 0x18d1,
     fw_configs = [hw_topo.make_fw_config(program.fw_masks.DETACHABLE_BASE, 2)],
 )

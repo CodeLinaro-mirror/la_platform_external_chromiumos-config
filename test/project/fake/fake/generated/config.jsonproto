@@ -3112,7 +3112,7 @@
             },
             "detachableBase": {
               "ecImageName": "Fake_Detachable",
-              "i2cPath": "i2c-0",
+              "i2cPath": "1-0023",
               "productId": 1000,
               "vendorId": 6353
             },
@@ -3408,7 +3408,7 @@
               "hardwareFeature": {
                 "detachableBase": {
                   "ecImageName": "Fake_Detachable",
-                  "i2cPath": "i2c-0",
+                  "i2cPath": "1-0023",
                   "productId": 1000,
                   "vendorId": 6353
                 },
