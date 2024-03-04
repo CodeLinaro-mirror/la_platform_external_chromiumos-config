@@ -1,0 +1,23 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "hpt_proto",
+    srcs = ["perf_event.proto"],
+    visibility = ["//visibility:public"],
+)
+
+go_proto_library(
+    name = "hpt_go_proto",
+    importpath = "go.chromium.org/chromiumos/config/go/test/hpt",
+    proto = ":hpt_proto",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "hpt",
+    embed = [":hpt_go_proto"],
+    importpath = "go.chromium.org/chromiumos/config/go/test/hpt",
+    visibility = ["//visibility:public"],
+)
