@@ -21832,6 +21832,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetFilesFromDUTResponse"
+            },
+            {
+              "jsonName": "getGfxInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_gfx_info_response",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetGfxInfoResponse"
             }
           ],
           "name": "RunActivityResponse",

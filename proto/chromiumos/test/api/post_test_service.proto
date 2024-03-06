@@ -86,6 +86,7 @@ message RunActivityResponse {
   oneof response {
     GetFWInfoResponse get_fw_info_response = 1;
     GetFilesFromDUTResponse get_files_from_dut_response = 2;
+    GetGfxInfoResponse get_gfx_info_response = 3;
   }
 }
 
