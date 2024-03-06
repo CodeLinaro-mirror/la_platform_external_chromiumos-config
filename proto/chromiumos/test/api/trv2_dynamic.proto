@@ -18,6 +18,7 @@ import "chromiumos/test/api/test_suite.proto";
 import "chromiumos/test/api/post_test_service.proto";
 import "chromiumos/test/api/generic_service.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
+import "chromiumos/test/lab/api/dut.proto";
 
 // CrosTestRunnerDynamicRequest is an input to CrosTestRunner that
 // provides greater flexibility in regards to the variability
@@ -58,6 +59,12 @@ message CrosTestRunnerParams {
   chromiumos.build.api.ContainerMetadata container_metadata = 2;
   // Keyvals are (key, value) pairs
   map<string, string> keyvals = 3;
+  // Key to grab container info.
+  string container_metadata_key = 4;
+  // Board and model of the primary dut.
+  chromiumos.test.lab.api.DutModel primary_dut = 5;
+  // Boards and models of the companion duts.
+  repeated chromiumos.test.lab.api.DutModel companion_duts = 6;
 }
 
 // BuildMode provides the necessary parameters by which
