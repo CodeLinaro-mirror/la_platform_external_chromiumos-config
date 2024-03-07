@@ -121,7 +121,7 @@ func ExampleExposePortToDutRequest() {
 
 	// Handle the response in various ways. For example:
 	// Run a client command to access the service started.
-	// Dummy example, see ExecDutCommandRequest for a possible implementation.
+	// Trivial example, see ExecDutCommandRequest for a possible implementation.
 	runCommandOnDut := func(args []string) {}
 	runCommandOnDut([]string{"curl", fmt.Sprintf("%s:%d/foo", resp.ExposedAddress, resp.ExposedPort)})
 }

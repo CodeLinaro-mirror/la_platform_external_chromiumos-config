@@ -142,10 +142,13 @@ protoc -Iproto \
 
 echo
 echo "== Generating OWNERS file for generated code paths"
-echo "##### AUTO-GENERATED FILE #####" > "${gen_owners}"
-echo "##### See generate.sh     #####" >> "${gen_owners}"
-find proto/* -type f -name "OWNERS*" | xargs cat | grep -E ^include | sort | uniq >> "${gen_owners}"
-find proto/* -type f -name "OWNERS*" | xargs cat | grep -E ^[a-z0-9]+@.+\..+ | sort | uniq >> "${gen_owners}"
+{
+    echo "##### AUTO-GENERATED FILE #####"
+    echo "##### See generate.sh     #####"
+} > "${gen_owners}"
+
+find proto/* -type f -name "OWNERS*" -exec cat {} + | grep -E '^include' | sort | uniq >> "${gen_owners}"
+find proto/* -type f -name "OWNERS*" -exec cat {} + | grep -E '^[a-z0-9]+@.+\..+' | sort | uniq >> "${gen_owners}"
 
 if ! git diff --quiet "${gen_owners}"; then
   echo
