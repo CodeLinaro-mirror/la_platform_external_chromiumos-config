@@ -29,4 +29,5 @@ message TaskWithState {
   int64 task_state_id = 1;
   TaskState state = 2;
   int64 bbid = 3;
+  string lease_id = 4;
 }

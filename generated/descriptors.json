@@ -32259,6 +32259,13 @@
               "name": "bbid",
               "number": 3,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "leaseId",
+              "label": "LABEL_OPTIONAL",
+              "name": "lease_id",
+              "number": 4,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "TaskWithState"
