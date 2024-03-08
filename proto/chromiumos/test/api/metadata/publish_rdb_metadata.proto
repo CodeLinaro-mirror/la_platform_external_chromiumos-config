@@ -10,6 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
 
 import "chromiumos/test/artifact/test_result.proto";
 
+// NEXT TAG: 7
 message PublishRdbMetadata {
   // Current invocation id
   string current_invocation_id = 1;
@@ -47,4 +48,9 @@ message PublishRdbMetadata {
 
   // The code sources tested.
   Sources sources = 5;
+
+  // BaseVariant will be added to the variant of each test result within an
+  // invocation. If there are duplicate keys, the variant value given by the
+  // test command always wins.
+  map<string, string> base_variant = 6;
 }
