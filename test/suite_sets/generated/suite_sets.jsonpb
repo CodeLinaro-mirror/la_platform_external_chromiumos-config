@@ -34,7 +34,7 @@
 		},
 		{
 			"id": {
-				"value": "firmware_common"
+				"value": "faft_common"
 			},
 			"metadata": {
 				"owners": [
@@ -58,9 +58,68 @@
 				},
 				{
 					"value": "faft_pd"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "faft_ro"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
 				},
+				"criteria": {
+					"value": "All the faft suites needed to qualify the device for a firmware for RO/RW release."
+				}
+			},
+			"suiteSets": [
 				{
-					"value": "firmware_other"
+					"value": "faft_common"
+				}
+			],
+			"suites": [
+				{
+					"value": "faft_bios_ro_qual"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "faft_rw"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "All the faft suites needed to qualify the device for a firmware for RW-only release."
+				}
+			},
+			"suiteSets": [
+				{
+					"value": "faft_common"
+				}
+			],
+			"suites": [
+				{
+					"value": "faft_bios_rw_qual"
 				}
 			]
 		},
@@ -81,17 +140,17 @@
 					"value": "b:chromiumos:platform:firmware"
 				},
 				"criteria": {
-					"value": "Qualify the device firmware for RO/RW release."
+					"value": "All tests needed to qualify the device firmware for RO/RW release."
 				}
 			},
 			"suiteSets": [
 				{
-					"value": "firmware_common"
+					"value": "faft_ro"
 				}
 			],
 			"suites": [
 				{
-					"value": "faft_bios_ro_qual"
+					"value": "firmware_other"
 				}
 			]
 		},
@@ -112,17 +171,17 @@
 					"value": "b:chromiumos:platform:firmware"
 				},
 				"criteria": {
-					"value": "Qualify the device firmware for RW-only release."
+					"value": "All tests needed to qualify the device firmware for RW-only release."
 				}
 			},
 			"suiteSets": [
 				{
-					"value": "firmware_common"
+					"value": "faft_rw"
 				}
 			],
 			"suites": [
 				{
-					"value": "faft_bios_rw_qual"
+					"value": "firmware_other"
 				}
 			]
 		}

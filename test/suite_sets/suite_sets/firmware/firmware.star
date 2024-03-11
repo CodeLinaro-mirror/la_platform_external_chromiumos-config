@@ -15,7 +15,7 @@ def _firmware_other():
         suite_id = "firmware_other",
         owners = shared_owners,
         bug_component = shared_bug_component,
-        criteria = "Tests used to qualify the device firmware, that are not part of faft_* suites.",
+        criteria = "Tests used to qualify the device firmware, that are not part of faft_* suites, includes longer running stress tests.",
         tests = [
             "tast.storage.QuickStress",
             "tast.platform.BootPerf",
@@ -30,9 +30,9 @@ def _firmware_other():
         ],
     )
 
-def _firmware_common():
+def _faft_common():
     return create.suite_set(
-        suite_set_id = "firmware_common",
+        suite_set_id = "faft_common",
         owners = shared_owners,
         bug_component = shared_bug_component,
         criteria = "Common firmware suites/tests used to qualify the device firmware.",
@@ -40,8 +40,27 @@ def _firmware_common():
         suites = [
             "faft_ec_fw_qual",
             "faft_pd",
-            "firmware_other",
         ],
+    )
+
+def _faft_ro():
+    return create.suite_set(
+        suite_set_id = "faft_ro",
+        owners = shared_owners,
+        bug_component = shared_bug_component,
+        criteria = "All the faft suites needed to qualify the device for a firmware for RO/RW release.",
+        suite_sets = ["faft_common"],
+        suites = ["faft_bios_ro_qual"],
+    )
+
+def _faft_rw():
+    return create.suite_set(
+        suite_set_id = "faft_rw",
+        owners = shared_owners,
+        bug_component = shared_bug_component,
+        criteria = "All the faft suites needed to qualify the device for a firmware for RW-only release.",
+        suite_sets = ["faft_common"],
+        suites = ["faft_bios_rw_qual"],
     )
 
 def _firmware_ro():
@@ -49,9 +68,9 @@ def _firmware_ro():
         suite_set_id = "firmware_ro",
         owners = shared_owners,
         bug_component = shared_bug_component,
-        criteria = "Qualify the device firmware for RO/RW release.",
-        suite_sets = ["firmware_common"],
-        suites = ["faft_bios_ro_qual"],
+        criteria = "All tests needed to qualify the device firmware for RO/RW release.",
+        suite_sets = ["faft_ro"],
+        suites = ["firmware_other"],
     )
 
 def _firmware_rw():
@@ -59,14 +78,16 @@ def _firmware_rw():
         suite_set_id = "firmware_rw",
         owners = shared_owners,
         bug_component = shared_bug_component,
-        criteria = "Qualify the device firmware for RW-only release.",
-        suite_sets = ["firmware_common"],
-        suites = ["faft_bios_rw_qual"],
+        criteria = "All tests needed to qualify the device firmware for RW-only release.",
+        suite_sets = ["faft_rw"],
+        suites = ["firmware_other"],
     )
 
 def _all_suite_sets():
     return [
-        _firmware_common(),
+        _faft_common(),
+        _faft_ro(),
+        _faft_rw(),
         _firmware_ro(),
         _firmware_rw(),
     ]

@@ -6149,7 +6149,7 @@
 					"value": "b:chromiumos:platform:firmware"
 				},
 				"criteria": {
-					"value": "Tests used to qualify the device firmware, that are not part of faft_* suites."
+					"value": "Tests used to qualify the device firmware, that are not part of faft_* suites, includes longer running stress tests."
 				}
 			},
 			"tests": [
