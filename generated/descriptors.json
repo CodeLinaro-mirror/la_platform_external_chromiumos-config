@@ -31619,6 +31619,13 @@
               "name": "disabled_services",
               "number": 12,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "reservedInterfaces",
+              "label": "LABEL_REPEATED",
+              "name": "reserved_interfaces",
+              "number": 13,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "CrosOpenWrtImageBuildInfo",

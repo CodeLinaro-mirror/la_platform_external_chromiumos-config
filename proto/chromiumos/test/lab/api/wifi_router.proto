@@ -210,4 +210,8 @@ message CrosOpenWrtImageBuildInfo {
 
   // Names of the services that are disabled by default upon image install.
   repeated string disabled_services = 12;
+
+  // Names of networking interfaces that are not expected to be removed or
+  // changed by users.
+  repeated string reserved_interfaces = 13;
 }
