@@ -166,7 +166,8 @@ def _create_fw_config(
         ec_rw = None,
         pd = None,
         ap_rw_a_hash = None,
-        ap_rw_a_hash_algorithm = _HASH_ALGORITHM.MD5SUM):
+        ap_rw_a_hash_algorithm = _HASH_ALGORITHM.MD5SUM,
+        has_ec_component_manifest = False):
     """Builds a FirmwareConfig proto."""
     return fw_pb.FirmwareConfig(
         main_ro_payload = ro,
@@ -178,6 +179,7 @@ def _create_fw_config(
             algorithm = ap_rw_a_hash_algorithm,
             digest = ap_rw_a_hash,
         ) if ap_rw_a_hash else None,
+        has_ec_component_manifest = has_ec_component_manifest,
     )
 
 def _create_fw_payloads_by_names(
@@ -191,7 +193,8 @@ def _create_fw_payloads_by_names(
         ec_version = None,
         pd_version = None,
         ap_rw_a_hash = None,
-        ap_rw_a_hash_algorithm = _HASH_ALGORITHM.MD5SUM):
+        ap_rw_a_hash_algorithm = _HASH_ALGORITHM.MD5SUM,
+        has_ec_component_manifest = False):
     """Builds a FirmwareConfig proto using common naming patterns.
 
     NOTE: `ec_version` is deprecated. Please use `ec_ro_version` and
@@ -235,6 +238,8 @@ def _create_fw_payloads_by_names(
             algorithm = ap_rw_a_hash_algorithm,
             digest = ap_rw_a_hash,
         )
+
+    sc_fw_config.has_ec_component_manifest = has_ec_component_manifest
 
     return sc_fw_config if ap_fw_name else None
 

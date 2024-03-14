@@ -544,6 +544,13 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwarePayloadHash"
+            },
+            {
+              "jsonName": "hasEcComponentManifest",
+              "label": "LABEL_OPTIONAL",
+              "name": "has_ec_component_manifest",
+              "number": 8,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "FirmwareConfig",

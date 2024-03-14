@@ -43,7 +43,7 @@ message FirmwarePayload {
     //
     // TODO(shapiroc): Migrate to use fimware_image_path instead so
     // that local provisioning can be supported also via provision_service
-    string firmware_image_name = 2 [deprecated = true];
+    string firmware_image_name = 2 [ deprecated = true ];
   }
 
   FirmwareType.Type type = 3;
@@ -101,6 +101,10 @@ message FirmwareConfig {
   // Optional hash for main_rw FW_MAIN_A by replacing ec_rw in main_rw_payload
   // with the one from ec_rw_payload.
   FirmwarePayloadHash main_rw_a_hash = 7;
+
+  // Whether the embedded controller (EC) component manifest is enabled. It
+  // should always be enabled on new projects for EC component probing.
+  bool has_ec_component_manifest = 8;
 }
 
 // Config for building firmware components. This is used in the following
@@ -152,6 +156,4 @@ message Firmware {
 
 // TODO(shapiroc): Remove once SoftwareConfig is migrated to
 // Firmware.build_targets
-message FirmwareBuildConfig {
-  Firmware.BuildTargets build_targets = 1;
-}
+message FirmwareBuildConfig { Firmware.BuildTargets build_targets = 1; }
