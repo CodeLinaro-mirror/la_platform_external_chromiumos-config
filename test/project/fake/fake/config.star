@@ -946,6 +946,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -997,6 +998,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         # Leave out ec_rw_version intentionally for testing
         pd_version = sc.create_fw_version(11111),
+        # Leave out has_ec_component_manifest for testing
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1046,6 +1048,8 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         # Leave out ec_rw_version intentionally for testing
         pd_version = sc.create_fw_version(11111),
+        # Set has_ec_component_manifest to False for testing
+        has_ec_component_manifest = False,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1100,6 +1104,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1240,6 +1245,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1337,6 +1343,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1413,6 +1420,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1457,6 +1465,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1523,6 +1532,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1611,6 +1621,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1646,6 +1657,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1684,6 +1696,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1714,6 +1727,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1744,6 +1758,7 @@ design.append_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     firmware_build_config = sc.create_fw_build_config_by_names(
         "fake",
@@ -1826,6 +1841,7 @@ _DESIGN_E = design.create_design_with_configs(
         ec_ro_version = sc.create_fw_version(11111, 2),
         ec_rw_version = sc.create_fw_version(11111, 2, 4),
         pd_version = sc.create_fw_version(11111),
+        has_ec_component_manifest = True,
     ),
     include_unprovisioned = False,
     initial_config_id = 0x10000,

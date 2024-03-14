@@ -12606,6 +12606,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -12967,6 +12968,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -13395,6 +13397,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -13481,6 +13484,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -13568,6 +13572,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -13649,6 +13654,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -13757,6 +13763,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -13877,6 +13884,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -13949,6 +13957,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -14024,6 +14033,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -14099,6 +14109,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -14174,6 +14185,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -14254,6 +14266,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -14347,6 +14360,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -14440,6 +14454,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -14533,6 +14548,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -14626,6 +14642,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
@@ -14719,6 +14736,7 @@
             "patch": 4
           }
         },
+        "hasEcComponentManifest": true,
         "mainRoPayload": {
           "firmwareImageName": "Fake",
           "type": 1,
