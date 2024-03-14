@@ -97,6 +97,9 @@ message SuiteRequest {
   int64 max_in_shard = 6;
   // Should run the suite via 3d or not. Default false.
   bool ddd_suite = 7;
+  // The total number of retries that should be done to failed test(s).
+  // By default it will be 0 which means no retry.
+  int64 retry_count = 8;
 }
 
 message KeyValue {

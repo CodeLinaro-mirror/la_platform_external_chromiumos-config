@@ -24831,6 +24831,13 @@
               "name": "ddd_suite",
               "number": 7,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "retryCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "retry_count",
+              "number": 8,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "SuiteRequest",
