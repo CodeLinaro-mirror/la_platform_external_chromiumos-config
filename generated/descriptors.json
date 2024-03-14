@@ -5286,6 +5286,14 @@
                   "number": 9,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "fwRwVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "fw_rw_version",
+                  "number": 10,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.FirmwareConfiguration.SemVer"
                 }
               ],
               "name": "FirmwareConfiguration",

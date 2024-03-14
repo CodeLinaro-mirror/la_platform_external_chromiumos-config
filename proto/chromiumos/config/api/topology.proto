@@ -296,6 +296,9 @@ message HardwareFeatures {
 
     // The Intel Integrated Sensor Hub is available and supported by firmware.
     Present intel_ish = 9;
+
+    // The RW firmware version currently running on the DUT.
+    SemVer fw_rw_version = 10;
   }
 
   // Audio properties of system
