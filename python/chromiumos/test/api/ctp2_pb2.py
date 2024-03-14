@@ -19,6 +19,7 @@ from chromiumos.test.lab.api import dut_pb2 as chromiumos_dot_test_dot_lab_dot_a
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
 from chromiumos.test.api import test_execution_metadata_pb2 as chromiumos_dot_test_dot_api_dot_test__execution__metadata__pb2
+from chromiumos.test.api import trv2_dynamic_updates_pb2 as chromiumos_dot_test_dot_api_dot_trv2__dynamic__updates__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -27,9 +28,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1e\x63hromiumos/test/api/ctp2.proto\x12\x13\x63hromiumos.test.api\x1a#chromiumos/test/api/provision.proto\x1a$chromiumos/test/api/test_suite.proto\x1a,chromiumos/test/api/test_case_metadata.proto\x1a-chromiumos/build/api/container_metadata.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a\x19google/protobuf/any.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x31\x63hromiumos/test/api/test_execution_metadata.proto\"\xb5\x03\n\x0c\x43TPv2Request\x12<\n\rsuite_request\x18\x01 \x01(\x0b\x32!.chromiumos.test.api.SuiteRequestB\x02\x18\x01\x12\x31\n\x07targets\x18\x02 \x03(\x0b\x32\x1c.chromiumos.test.api.TargetsB\x02\x18\x01\x12:\n\x0ekarbon_filters\x18\x03 \x03(\x0b\x32\x1e.chromiumos.test.api.CTPFilterB\x02\x18\x01\x12:\n\x0ekoffee_filters\x18\x04 \x03(\x0b\x32\x1e.chromiumos.test.api.CTPFilterB\x02\x18\x01\x12\x10\n\x04pool\x18\x05 \x01(\tB\x02\x18\x01\x12\x33\n\x11scheduke_metadata\x18\x06 \x01(\x0b\x32\x14.google.protobuf.AnyB\x02\x18\x01\x12\x42\n\x10schedule_targets\x18\x07 \x03(\x0b\x32$.chromiumos.test.api.ScheduleTargetsB\x02\x18\x01\x12\x31\n\x08requests\x18\x08 \x03(\x0b\x32\x1f.chromiumos.test.api.CTPRequest\"\xf2\x02\n\nCTPRequest\x12\x38\n\rsuite_request\x18\x01 \x01(\x0b\x32!.chromiumos.test.api.SuiteRequest\x12>\n\x10schedule_targets\x18\x02 \x03(\x0b\x32$.chromiumos.test.api.ScheduleTargets\x12\x0c\n\x04pool\x18\x07 \x01(\t\x12\x36\n\x0ekarbon_filters\x18\x03 \x03(\x0b\x32\x1e.chromiumos.test.api.CTPFilter\x12\x36\n\x0ekoffee_filters\x18\x04 \x03(\x0b\x32\x1e.chromiumos.test.api.CTPFilter\x12:\n\x0escheduler_info\x18\x05 \x01(\x0b\x32\".chromiumos.test.api.SchedulerInfo\x12\x30\n\x12scheduler_metadata\x18\x06 \x01(\x0b\x32\x14.google.protobuf.Any\"\xb8\x01\n\rSchedulerInfo\x12?\n\tscheduler\x18\x01 \x01(\x0e\x32,.chromiumos.test.api.SchedulerInfo.Scheduler\x12\x12\n\nqs_account\x18\x02 \x01(\t\"R\n\tScheduler\x12\x0f\n\x0bUNSPECIFIED\x10\x00\x12\x0e\n\nQSCHEDULER\x10\x01\x12\x0c\n\x08SCHEDUKE\x10\x02\x12\x16\n\x12PRINT_REQUEST_ONLY\x10\x03\"\x9a\x02\n\x0cSuiteRequest\x12\x34\n\ntest_suite\x18\x01 \x01(\x0b\x32\x1e.chromiumos.test.api.TestSuiteH\x00\x12:\n\x11hierarchical_plan\x18\x02 \x01(\x0b\x32\x1d.chromiumos.test.api.ReservedH\x00\x12\x33\n\x10maximum_duration\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x11\n\ttest_args\x18\x04 \x01(\t\x12\x16\n\x0e\x61nalytics_name\x18\x05 \x01(\t\x12\x14\n\x0cmax_in_shard\x18\x06 \x01(\x03\x12\x11\n\tddd_suite\x18\x07 \x01(\x08\x42\x0f\n\rsuite_request\"&\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"@\n\x0fScheduleTargets\x12-\n\x07targets\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.Targets\"\xa4\x01\n\x07Targets\x12\x30\n\thw_target\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.HWTarget\x12\x35\n\nsw_targets\x18\x02 \x03(\x0b\x32\x1d.chromiumos.test.api.SWTargetB\x02\x18\x01\x12\x30\n\tsw_target\x18\x03 \x01(\x0b\x32\x1d.chromiumos.test.api.SWTarget\"v\n\x08HWTarget\x12\x32\n\tlegacy_hw\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.LegacyHWH\x00\x12,\n\x06\x64\x64\x64_hw\x18\x02 \x01(\x0b\x32\x1a.chromiumos.test.api.DDDHWH\x00\x42\x08\n\x06target\"y\n\x08SWTarget\x12\x32\n\tlegacy_sw\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.LegacySWH\x00\x12,\n\x06\x64\x64\x64_sw\x18\x02 \x01(\x0b\x32\x1a.chromiumos.test.api.DDDSWH\x00\x42\x0b\n\tsw_target\"o\n\x08LegacySW\x12\r\n\x05\x62uild\x18\x01 \x01(\t\x12\x10\n\x08gcs_path\x18\x02 \x01(\t\x12\x31\n\nkey_values\x18\x03 \x03(\x0b\x32\x1d.chromiumos.test.api.KeyValue\x12\x0f\n\x07variant\x18\x04 \x01(\t\"\x07\n\x05\x44\x44\x44SW\"\xa2\x01\n\x08LegacyHW\x12\r\n\x05\x62oard\x18\x01 \x01(\t\x12\r\n\x05model\x18\x02 \x01(\t\x12\x13\n\x07variant\x18\x03 \x01(\tB\x02\x18\x01\x12\x34\n\tmulti_dut\x18\x04 \x01(\x0b\x32\x1d.chromiumos.test.api.MultiDutB\x02\x18\x01\x12\x10\n\x04pool\x18\x05 \x01(\tB\x02\x18\x01\x12\x1b\n\x13swarming_dimensions\x18\x06 \x03(\t\"\x07\n\x05\x44\x44\x44HW\"*\n\x04Pair\x12\x0f\n\x07primary\x18\x01 \x01(\t\x12\x11\n\tsecondary\x18\x02 \x01(\t\"_\n\x08MultiDut\x12)\n\x06\x62oards\x18\x01 \x01(\x0b\x32\x19.chromiumos.test.api.Pair\x12(\n\x05model\x18\x02 \x01(\x0b\x32\x19.chromiumos.test.api.Pair\"\xcd\x02\n\tCTPFilter\x12?\n\tcontainer\x18\x01 \x01(\x0b\x32(.chromiumos.build.api.ContainerImageInfoB\x02\x18\x01\x12J\n\x14\x64\x65pendent_containers\x18\x02 \x03(\x0b\x32(.chromiumos.build.api.ContainerImageInfoB\x02\x18\x01\x12\x30\n\x12\x63ontainer_metadata\x18\x03 \x01(\x0b\x32\x14.google.protobuf.Any\x12:\n\x0e\x63ontainer_info\x18\x04 \x01(\x0b\x32\".chromiumos.test.api.ContainerInfo\x12\x45\n\x19\x64\x65pendent_containers_info\x18\x05 \x01(\x0b\x32\".chromiumos.test.api.ContainerInfo\"a\n\rContainerInfo\x12;\n\tcontainer\x18\x01 \x01(\x0b\x32(.chromiumos.build.api.ContainerImageInfo\x12\x13\n\x0b\x62inary_name\x18\x02 \x01(\t\"\n\n\x08Reserved\"|\n\x10InternalTestplan\x12\x34\n\ntest_cases\x18\x01 \x03(\x0b\x32 .chromiumos.test.api.CTPTestCase\x12\x32\n\nsuite_info\x18\x02 \x01(\x0b\x32\x1e.chromiumos.test.api.SuiteInfo\"\xd0\x01\n\x0b\x43TPTestCase\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x37\n\x08metadata\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.TestCaseMetadata\x12<\n\x0fhw_requirements\x18\x03 \x03(\x0b\x32#.chromiumos.test.api.HWRequirements\x12<\n\x0fsw_requirements\x18\x04 \x03(\x0b\x32#.chromiumos.test.api.SWRequirements\"\x81\x01\n\tSuiteInfo\x12:\n\x0esuite_metadata\x18\x01 \x01(\x0b\x32\".chromiumos.test.api.SuiteMetadata\x12\x38\n\rsuite_request\x18\x02 \x01(\x0b\x32!.chromiumos.test.api.SuiteRequest\"\xcc\x02\n\rSuiteMetadata\x12\x44\n\x13target_requirements\x18\x01 \x03(\x0b\x32\'.chromiumos.test.api.TargetRequirements\x12U\n\x1cschedule_target_requirements\x18\x04 \x03(\x0b\x32/.chromiumos.test.api.ScheduleTargetRequirements\x12\x10\n\x08\x63hannels\x18\x02 \x03(\t\x12\x0c\n\x04pool\x18\x03 \x01(\t\x12\x42\n\x12\x65xecution_metadata\x18\x05 \x01(\x0b\x32&.chromiumos.test.api.ExecutionMetadata\x12:\n\x0escheduler_info\x18\x06 \x01(\x0b\x32\".chromiumos.test.api.SchedulerInfo\"b\n\x1aScheduleTargetRequirements\x12\x44\n\x13target_requirements\x18\x01 \x03(\x0b\x32\'.chromiumos.test.api.TargetRequirements\"\xc5\x01\n\x12TargetRequirements\x12<\n\x0fhw_requirements\x18\x01 \x01(\x0b\x32#.chromiumos.test.api.HWRequirements\x12:\n\x0fsw_requirements\x18\x02 \x03(\x0b\x32\x1d.chromiumos.test.api.LegacySWB\x02\x18\x01\x12\x35\n\x0esw_requirement\x18\x03 \x01(\x0b\x32\x1d.chromiumos.test.api.LegacySW\"\xd5\x01\n\x0eHWRequirements\x12>\n\rhw_definition\x18\x01 \x03(\x0b\x32\'.chromiumos.test.api.SwarmingDefinition\x12\x38\n\x05state\x18\x06 \x01(\x0e\x32).chromiumos.test.api.HWRequirements.State\"I\n\x05State\x12\x0c\n\x08REQUIRED\x10\x00\x12\x0c\n\x08OPTIONAL\x10\x01\x12\r\n\tPREFERRED\x10\x02\x12\n\n\x06\x42\x41NNED\x10\x03\x12\t\n\x05ONEOF\x10\x04\"\x10\n\x0eSWRequirements\"\xc1\x01\n\rProvisionInfo\x12<\n\x0finstall_request\x18\x01 \x01(\x0b\x32#.chromiumos.test.api.InstallRequest\x12\x12\n\nidentifier\x18\x02 \x01(\t\x12\x35\n\x04type\x18\x03 \x01(\x0e\x32\'.chromiumos.test.api.ProvisionInfo.Type\"\'\n\x04Type\x12\x08\n\x04\x43ROS\x10\x00\x12\x0b\n\x07\x41NDROID\x10\x01\x12\x08\n\x04ROFW\x10\x02\"\xaa\x01\n\x12SwarmingDefinition\x12.\n\x08\x64ut_info\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12:\n\x0eprovision_info\x18\x02 \x03(\x0b\x32\".chromiumos.test.api.ProvisionInfo\x12\x17\n\x0fswarming_labels\x18\x03 \x03(\t\x12\x0f\n\x07variant\x18\x04 \x01(\t\"R\n\rCTPv2Response\x12\x41\n\rtest_requests\x18\x01 \x03(\x0b\x32*.chromiumos.test.api.CrosTestRunnerRequest\"\x17\n\x15\x43rosTestRunnerRequest2h\n\x0c\x43TPv2Service\x12X\n\x0fRequestResolver\x12!.chromiumos.test.api.CTPv2Request\x1a\".chromiumos.test.api.CTPv2Response2o\n\x14GenericFilterService\x12W\n\x07\x45xecute\x12%.chromiumos.test.api.InternalTestplan\x1a%.chromiumos.test.api.InternalTestplanB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n\x1e\x63hromiumos/test/api/ctp2.proto\x12\x13\x63hromiumos.test.api\x1a#chromiumos/test/api/provision.proto\x1a$chromiumos/test/api/test_suite.proto\x1a,chromiumos/test/api/test_case_metadata.proto\x1a-chromiumos/build/api/container_metadata.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a\x19google/protobuf/any.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x31\x63hromiumos/test/api/test_execution_metadata.proto\x1a.chromiumos/test/api/trv2_dynamic_updates.proto\"\xb5\x03\n\x0c\x43TPv2Request\x12<\n\rsuite_request\x18\x01 \x01(\x0b\x32!.chromiumos.test.api.SuiteRequestB\x02\x18\x01\x12\x31\n\x07targets\x18\x02 \x03(\x0b\x32\x1c.chromiumos.test.api.TargetsB\x02\x18\x01\x12:\n\x0ekarbon_filters\x18\x03 \x03(\x0b\x32\x1e.chromiumos.test.api.CTPFilterB\x02\x18\x01\x12:\n\x0ekoffee_filters\x18\x04 \x03(\x0b\x32\x1e.chromiumos.test.api.CTPFilterB\x02\x18\x01\x12\x10\n\x04pool\x18\x05 \x01(\tB\x02\x18\x01\x12\x33\n\x11scheduke_metadata\x18\x06 \x01(\x0b\x32\x14.google.protobuf.AnyB\x02\x18\x01\x12\x42\n\x10schedule_targets\x18\x07 \x03(\x0b\x32$.chromiumos.test.api.ScheduleTargetsB\x02\x18\x01\x12\x31\n\x08requests\x18\x08 \x03(\x0b\x32\x1f.chromiumos.test.api.CTPRequest\"\xf2\x02\n\nCTPRequest\x12\x38\n\rsuite_request\x18\x01 \x01(\x0b\x32!.chromiumos.test.api.SuiteRequest\x12>\n\x10schedule_targets\x18\x02 \x03(\x0b\x32$.chromiumos.test.api.ScheduleTargets\x12\x0c\n\x04pool\x18\x07 \x01(\t\x12\x36\n\x0ekarbon_filters\x18\x03 \x03(\x0b\x32\x1e.chromiumos.test.api.CTPFilter\x12\x36\n\x0ekoffee_filters\x18\x04 \x03(\x0b\x32\x1e.chromiumos.test.api.CTPFilter\x12:\n\x0escheduler_info\x18\x05 \x01(\x0b\x32\".chromiumos.test.api.SchedulerInfo\x12\x30\n\x12scheduler_metadata\x18\x06 \x01(\x0b\x32\x14.google.protobuf.Any\"\xb8\x01\n\rSchedulerInfo\x12?\n\tscheduler\x18\x01 \x01(\x0e\x32,.chromiumos.test.api.SchedulerInfo.Scheduler\x12\x12\n\nqs_account\x18\x02 \x01(\t\"R\n\tScheduler\x12\x0f\n\x0bUNSPECIFIED\x10\x00\x12\x0e\n\nQSCHEDULER\x10\x01\x12\x0c\n\x08SCHEDUKE\x10\x02\x12\x16\n\x12PRINT_REQUEST_ONLY\x10\x03\"\x9a\x02\n\x0cSuiteRequest\x12\x34\n\ntest_suite\x18\x01 \x01(\x0b\x32\x1e.chromiumos.test.api.TestSuiteH\x00\x12:\n\x11hierarchical_plan\x18\x02 \x01(\x0b\x32\x1d.chromiumos.test.api.ReservedH\x00\x12\x33\n\x10maximum_duration\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x11\n\ttest_args\x18\x04 \x01(\t\x12\x16\n\x0e\x61nalytics_name\x18\x05 \x01(\t\x12\x14\n\x0cmax_in_shard\x18\x06 \x01(\x03\x12\x11\n\tddd_suite\x18\x07 \x01(\x08\x42\x0f\n\rsuite_request\"&\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"@\n\x0fScheduleTargets\x12-\n\x07targets\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.Targets\"\xa4\x01\n\x07Targets\x12\x30\n\thw_target\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.HWTarget\x12\x35\n\nsw_targets\x18\x02 \x03(\x0b\x32\x1d.chromiumos.test.api.SWTargetB\x02\x18\x01\x12\x30\n\tsw_target\x18\x03 \x01(\x0b\x32\x1d.chromiumos.test.api.SWTarget\"v\n\x08HWTarget\x12\x32\n\tlegacy_hw\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.LegacyHWH\x00\x12,\n\x06\x64\x64\x64_hw\x18\x02 \x01(\x0b\x32\x1a.chromiumos.test.api.DDDHWH\x00\x42\x08\n\x06target\"y\n\x08SWTarget\x12\x32\n\tlegacy_sw\x18\x01 \x01(\x0b\x32\x1d.chromiumos.test.api.LegacySWH\x00\x12,\n\x06\x64\x64\x64_sw\x18\x02 \x01(\x0b\x32\x1a.chromiumos.test.api.DDDSWH\x00\x42\x0b\n\tsw_target\"o\n\x08LegacySW\x12\r\n\x05\x62uild\x18\x01 \x01(\t\x12\x10\n\x08gcs_path\x18\x02 \x01(\t\x12\x31\n\nkey_values\x18\x03 \x03(\x0b\x32\x1d.chromiumos.test.api.KeyValue\x12\x0f\n\x07variant\x18\x04 \x01(\t\"\x07\n\x05\x44\x44\x44SW\"\xa2\x01\n\x08LegacyHW\x12\r\n\x05\x62oard\x18\x01 \x01(\t\x12\r\n\x05model\x18\x02 \x01(\t\x12\x13\n\x07variant\x18\x03 \x01(\tB\x02\x18\x01\x12\x34\n\tmulti_dut\x18\x04 \x01(\x0b\x32\x1d.chromiumos.test.api.MultiDutB\x02\x18\x01\x12\x10\n\x04pool\x18\x05 \x01(\tB\x02\x18\x01\x12\x1b\n\x13swarming_dimensions\x18\x06 \x03(\t\"\x07\n\x05\x44\x44\x44HW\"*\n\x04Pair\x12\x0f\n\x07primary\x18\x01 \x01(\t\x12\x11\n\tsecondary\x18\x02 \x01(\t\"_\n\x08MultiDut\x12)\n\x06\x62oards\x18\x01 \x01(\x0b\x32\x19.chromiumos.test.api.Pair\x12(\n\x05model\x18\x02 \x01(\x0b\x32\x19.chromiumos.test.api.Pair\"\xcd\x02\n\tCTPFilter\x12?\n\tcontainer\x18\x01 \x01(\x0b\x32(.chromiumos.build.api.ContainerImageInfoB\x02\x18\x01\x12J\n\x14\x64\x65pendent_containers\x18\x02 \x03(\x0b\x32(.chromiumos.build.api.ContainerImageInfoB\x02\x18\x01\x12\x30\n\x12\x63ontainer_metadata\x18\x03 \x01(\x0b\x32\x14.google.protobuf.Any\x12:\n\x0e\x63ontainer_info\x18\x04 \x01(\x0b\x32\".chromiumos.test.api.ContainerInfo\x12\x45\n\x19\x64\x65pendent_containers_info\x18\x05 \x01(\x0b\x32\".chromiumos.test.api.ContainerInfo\"a\n\rContainerInfo\x12;\n\tcontainer\x18\x01 \x01(\x0b\x32(.chromiumos.build.api.ContainerImageInfo\x12\x13\n\x0b\x62inary_name\x18\x02 \x01(\t\"\n\n\x08Reserved\"|\n\x10InternalTestplan\x12\x34\n\ntest_cases\x18\x01 \x03(\x0b\x32 .chromiumos.test.api.CTPTestCase\x12\x32\n\nsuite_info\x18\x02 \x01(\x0b\x32\x1e.chromiumos.test.api.SuiteInfo\"\xd0\x01\n\x0b\x43TPTestCase\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x37\n\x08metadata\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.TestCaseMetadata\x12<\n\x0fhw_requirements\x18\x03 \x03(\x0b\x32#.chromiumos.test.api.HWRequirements\x12<\n\x0fsw_requirements\x18\x04 \x03(\x0b\x32#.chromiumos.test.api.SWRequirements\"\x81\x01\n\tSuiteInfo\x12:\n\x0esuite_metadata\x18\x01 \x01(\x0b\x32\".chromiumos.test.api.SuiteMetadata\x12\x38\n\rsuite_request\x18\x02 \x01(\x0b\x32!.chromiumos.test.api.SuiteRequest\"\x94\x03\n\rSuiteMetadata\x12\x44\n\x13target_requirements\x18\x01 \x03(\x0b\x32\'.chromiumos.test.api.TargetRequirements\x12U\n\x1cschedule_target_requirements\x18\x04 \x03(\x0b\x32/.chromiumos.test.api.ScheduleTargetRequirements\x12\x10\n\x08\x63hannels\x18\x02 \x03(\t\x12\x0c\n\x04pool\x18\x03 \x01(\t\x12\x42\n\x12\x65xecution_metadata\x18\x05 \x01(\x0b\x32&.chromiumos.test.api.ExecutionMetadata\x12:\n\x0escheduler_info\x18\x06 \x01(\x0b\x32\".chromiumos.test.api.SchedulerInfo\x12\x46\n\x0f\x64ynamic_updates\x18\x07 \x03(\x0b\x32-.chromiumos.test.api.UserDefinedDynamicUpdate\"b\n\x1aScheduleTargetRequirements\x12\x44\n\x13target_requirements\x18\x01 \x03(\x0b\x32\'.chromiumos.test.api.TargetRequirements\"\xc5\x01\n\x12TargetRequirements\x12<\n\x0fhw_requirements\x18\x01 \x01(\x0b\x32#.chromiumos.test.api.HWRequirements\x12:\n\x0fsw_requirements\x18\x02 \x03(\x0b\x32\x1d.chromiumos.test.api.LegacySWB\x02\x18\x01\x12\x35\n\x0esw_requirement\x18\x03 \x01(\x0b\x32\x1d.chromiumos.test.api.LegacySW\"\xd5\x01\n\x0eHWRequirements\x12>\n\rhw_definition\x18\x01 \x03(\x0b\x32\'.chromiumos.test.api.SwarmingDefinition\x12\x38\n\x05state\x18\x06 \x01(\x0e\x32).chromiumos.test.api.HWRequirements.State\"I\n\x05State\x12\x0c\n\x08REQUIRED\x10\x00\x12\x0c\n\x08OPTIONAL\x10\x01\x12\r\n\tPREFERRED\x10\x02\x12\n\n\x06\x42\x41NNED\x10\x03\x12\t\n\x05ONEOF\x10\x04\"\x10\n\x0eSWRequirements\"\xc1\x01\n\rProvisionInfo\x12<\n\x0finstall_request\x18\x01 \x01(\x0b\x32#.chromiumos.test.api.InstallRequest\x12\x12\n\nidentifier\x18\x02 \x01(\t\x12\x35\n\x04type\x18\x03 \x01(\x0e\x32\'.chromiumos.test.api.ProvisionInfo.Type\"\'\n\x04Type\x12\x08\n\x04\x43ROS\x10\x00\x12\x0b\n\x07\x41NDROID\x10\x01\x12\x08\n\x04ROFW\x10\x02\"\xaa\x01\n\x12SwarmingDefinition\x12.\n\x08\x64ut_info\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12:\n\x0eprovision_info\x18\x02 \x03(\x0b\x32\".chromiumos.test.api.ProvisionInfo\x12\x17\n\x0fswarming_labels\x18\x03 \x03(\t\x12\x0f\n\x07variant\x18\x04 \x01(\t\"R\n\rCTPv2Response\x12\x41\n\rtest_requests\x18\x01 \x03(\x0b\x32*.chromiumos.test.api.CrosTestRunnerRequest\"\x17\n\x15\x43rosTestRunnerRequest2h\n\x0c\x43TPv2Service\x12X\n\x0fRequestResolver\x12!.chromiumos.test.api.CTPv2Request\x1a\".chromiumos.test.api.CTPv2Response2o\n\x14GenericFilterService\x12W\n\x07\x45xecute\x12%.chromiumos.test.api.InternalTestplan\x1a%.chromiumos.test.api.InternalTestplanB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
-  dependencies=[chromiumos_dot_test_dot_api_dot_provision__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2.DESCRIPTOR,chromiumos_dot_build_dot_api_dot_container__metadata__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__execution__metadata__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_test_dot_api_dot_provision__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2.DESCRIPTOR,chromiumos_dot_build_dot_api_dot_container__metadata__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__execution__metadata__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_trv2__dynamic__updates__pb2.DESCRIPTOR,])
 
 
 
@@ -63,8 +64,8 @@ _SCHEDULERINFO_SCHEDULER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1284,
-  serialized_end=1366,
+  serialized_start=1332,
+  serialized_end=1414,
 )
 _sym_db.RegisterEnumDescriptor(_SCHEDULERINFO_SCHEDULER)
 
@@ -103,8 +104,8 @@ _HWREQUIREMENTS_STATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4298,
-  serialized_end=4371,
+  serialized_start=4418,
+  serialized_end=4491,
 )
 _sym_db.RegisterEnumDescriptor(_HWREQUIREMENTS_STATE)
 
@@ -133,8 +134,8 @@ _PROVISIONINFO_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4546,
-  serialized_end=4585,
+  serialized_start=4666,
+  serialized_end=4705,
 )
 _sym_db.RegisterEnumDescriptor(_PROVISIONINFO_TYPE)
 
@@ -215,8 +216,8 @@ _CTPV2REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=369,
-  serialized_end=806,
+  serialized_start=417,
+  serialized_end=854,
 )
 
 
@@ -289,8 +290,8 @@ _CTPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=809,
-  serialized_end=1179,
+  serialized_start=857,
+  serialized_end=1227,
 )
 
 
@@ -329,8 +330,8 @@ _SCHEDULERINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1182,
-  serialized_end=1366,
+  serialized_start=1230,
+  serialized_end=1414,
 )
 
 
@@ -408,8 +409,8 @@ _SUITEREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1369,
-  serialized_end=1651,
+  serialized_start=1417,
+  serialized_end=1699,
 )
 
 
@@ -447,8 +448,8 @@ _KEYVALUE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1653,
-  serialized_end=1691,
+  serialized_start=1701,
+  serialized_end=1739,
 )
 
 
@@ -479,8 +480,8 @@ _SCHEDULETARGETS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1693,
-  serialized_end=1757,
+  serialized_start=1741,
+  serialized_end=1805,
 )
 
 
@@ -525,8 +526,8 @@ _TARGETS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1760,
-  serialized_end=1924,
+  serialized_start=1808,
+  serialized_end=1972,
 )
 
 
@@ -569,8 +570,8 @@ _HWTARGET = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1926,
-  serialized_end=2044,
+  serialized_start=1974,
+  serialized_end=2092,
 )
 
 
@@ -613,8 +614,8 @@ _SWTARGET = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2046,
-  serialized_end=2167,
+  serialized_start=2094,
+  serialized_end=2215,
 )
 
 
@@ -666,8 +667,8 @@ _LEGACYSW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2169,
-  serialized_end=2280,
+  serialized_start=2217,
+  serialized_end=2328,
 )
 
 
@@ -691,8 +692,8 @@ _DDDSW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2282,
-  serialized_end=2289,
+  serialized_start=2330,
+  serialized_end=2337,
 )
 
 
@@ -758,8 +759,8 @@ _LEGACYHW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2292,
-  serialized_end=2454,
+  serialized_start=2340,
+  serialized_end=2502,
 )
 
 
@@ -783,8 +784,8 @@ _DDDHW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2456,
-  serialized_end=2463,
+  serialized_start=2504,
+  serialized_end=2511,
 )
 
 
@@ -822,8 +823,8 @@ _PAIR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2465,
-  serialized_end=2507,
+  serialized_start=2513,
+  serialized_end=2555,
 )
 
 
@@ -861,8 +862,8 @@ _MULTIDUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2509,
-  serialized_end=2604,
+  serialized_start=2557,
+  serialized_end=2652,
 )
 
 
@@ -921,8 +922,8 @@ _CTPFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2607,
-  serialized_end=2940,
+  serialized_start=2655,
+  serialized_end=2988,
 )
 
 
@@ -960,8 +961,8 @@ _CONTAINERINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2942,
-  serialized_end=3039,
+  serialized_start=2990,
+  serialized_end=3087,
 )
 
 
@@ -985,8 +986,8 @@ _RESERVED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3041,
-  serialized_end=3051,
+  serialized_start=3089,
+  serialized_end=3099,
 )
 
 
@@ -1024,8 +1025,8 @@ _INTERNALTESTPLAN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3053,
-  serialized_end=3177,
+  serialized_start=3101,
+  serialized_end=3225,
 )
 
 
@@ -1077,8 +1078,8 @@ _CTPTESTCASE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3180,
-  serialized_end=3388,
+  serialized_start=3228,
+  serialized_end=3436,
 )
 
 
@@ -1116,8 +1117,8 @@ _SUITEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3391,
-  serialized_end=3520,
+  serialized_start=3439,
+  serialized_end=3568,
 )
 
 
@@ -1171,6 +1172,13 @@ _SUITEMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='dynamic_updates', full_name='chromiumos.test.api.SuiteMetadata.dynamic_updates', index=6,
+      number=7, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1183,8 +1191,8 @@ _SUITEMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3523,
-  serialized_end=3855,
+  serialized_start=3571,
+  serialized_end=3975,
 )
 
 
@@ -1215,8 +1223,8 @@ _SCHEDULETARGETREQUIREMENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3857,
-  serialized_end=3955,
+  serialized_start=3977,
+  serialized_end=4075,
 )
 
 
@@ -1261,8 +1269,8 @@ _TARGETREQUIREMENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3958,
-  serialized_end=4155,
+  serialized_start=4078,
+  serialized_end=4275,
 )
 
 
@@ -1301,8 +1309,8 @@ _HWREQUIREMENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4158,
-  serialized_end=4371,
+  serialized_start=4278,
+  serialized_end=4491,
 )
 
 
@@ -1326,8 +1334,8 @@ _SWREQUIREMENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4373,
-  serialized_end=4389,
+  serialized_start=4493,
+  serialized_end=4509,
 )
 
 
@@ -1373,8 +1381,8 @@ _PROVISIONINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4392,
-  serialized_end=4585,
+  serialized_start=4512,
+  serialized_end=4705,
 )
 
 
@@ -1426,8 +1434,8 @@ _SWARMINGDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4588,
-  serialized_end=4758,
+  serialized_start=4708,
+  serialized_end=4878,
 )
 
 
@@ -1458,8 +1466,8 @@ _CTPV2RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4760,
-  serialized_end=4842,
+  serialized_start=4880,
+  serialized_end=4962,
 )
 
 
@@ -1483,8 +1491,8 @@ _CROSTESTRUNNERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4844,
-  serialized_end=4867,
+  serialized_start=4964,
+  serialized_end=4987,
 )
 
 _CTPV2REQUEST.fields_by_name['suite_request'].message_type = _SUITEREQUEST
@@ -1552,6 +1560,7 @@ _SUITEMETADATA.fields_by_name['target_requirements'].message_type = _TARGETREQUI
 _SUITEMETADATA.fields_by_name['schedule_target_requirements'].message_type = _SCHEDULETARGETREQUIREMENTS
 _SUITEMETADATA.fields_by_name['execution_metadata'].message_type = chromiumos_dot_test_dot_api_dot_test__execution__metadata__pb2._EXECUTIONMETADATA
 _SUITEMETADATA.fields_by_name['scheduler_info'].message_type = _SCHEDULERINFO
+_SUITEMETADATA.fields_by_name['dynamic_updates'].message_type = chromiumos_dot_test_dot_api_dot_trv2__dynamic__updates__pb2._USERDEFINEDDYNAMICUPDATE
 _SCHEDULETARGETREQUIREMENTS.fields_by_name['target_requirements'].message_type = _TARGETREQUIREMENTS
 _TARGETREQUIREMENTS.fields_by_name['hw_requirements'].message_type = _HWREQUIREMENTS
 _TARGETREQUIREMENTS.fields_by_name['sw_requirements'].message_type = _LEGACYSW
@@ -1831,8 +1840,8 @@ _CTPV2SERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=4869,
-  serialized_end=4973,
+  serialized_start=4989,
+  serialized_end=5093,
   methods=[
   _descriptor.MethodDescriptor(
     name='RequestResolver',
@@ -1857,8 +1866,8 @@ _GENERICFILTERSERVICE = _descriptor.ServiceDescriptor(
   index=1,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=4975,
-  serialized_end=5086,
+  serialized_start=5095,
+  serialized_end=5206,
   methods=[
   _descriptor.MethodDescriptor(
     name='Execute',

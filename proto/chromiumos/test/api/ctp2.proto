@@ -16,6 +16,7 @@ import "chromiumos/test/lab/api/dut.proto";
 import "google/protobuf/any.proto";
 import "google/protobuf/duration.proto";
 import "chromiumos/test/api/test_execution_metadata.proto";
+import "chromiumos/test/api/trv2_dynamic_updates.proto";
 
 // CrosTestPlatform2 ...
 service CTPv2Service {
@@ -218,6 +219,11 @@ message SuiteMetadata {
   chromiumos.test.api.ExecutionMetadata execution_metadata = 5;
   // Scheduler info for this suite
   SchedulerInfo scheduler_info = 6;
+  // Updates for the dynamic TRv2 request object. Updates to be applied
+  // after the default request generation occurs, and before scheduling.
+  //
+  // Note: Applied updates in order given.
+  repeated UserDefinedDynamicUpdate dynamic_updates = 7;
 }
 
 // ScheduleTargets represents groups of target requirements for CTPv2.
