@@ -25496,9 +25496,41 @@
               "name": "variant",
               "number": 4,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dynamicUpdateLookupTable",
+              "label": "LABEL_REPEATED",
+              "name": "dynamic_update_lookup_table",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SwarmingDefinition.DynamicUpdateLookupTableEntry"
             }
           ],
-          "name": "SwarmingDefinition"
+          "name": "SwarmingDefinition",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "DynamicUpdateLookupTableEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "field": [

@@ -275,6 +275,9 @@ message SwarmingDefinition {
   repeated ProvisionInfo provision_info = 2;
   repeated string swarming_labels = 3;
   string variant = 4;
+  // Lookup Table for resolving placeholders set within the dynamic updates
+  // found under the suite metadata.
+  map<string, string> dynamic_update_lookup_table = 5;
 };
 
 // CTPv2Response...
