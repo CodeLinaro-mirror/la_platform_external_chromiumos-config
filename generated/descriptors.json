@@ -5294,6 +5294,22 @@
                   "number": 10,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.FirmwareConfiguration.SemVer"
+                },
+                {
+                  "jsonName": "bmpLogo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bmp_logo",
+                  "number": 11,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "fwSplashScreen",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "fw_splash_screen",
+                  "number": 12,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "FirmwareConfiguration",

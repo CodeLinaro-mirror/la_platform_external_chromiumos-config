@@ -299,6 +299,12 @@ message HardwareFeatures {
 
     // The RW firmware version currently running on the DUT.
     SemVer fw_rw_version = 10;
+
+    // The AP firmware has the CONFIG_BMP_LOGO feature enabled.
+    Present bmp_logo = 11;
+
+    // The AP firmware has the CONFIG_FW_SPLASH_SCREEN feature enabled.
+    Present fw_splash_screen = 12;
   }
 
   // Audio properties of system
