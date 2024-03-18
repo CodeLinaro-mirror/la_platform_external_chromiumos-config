@@ -124,8 +124,10 @@ message TestRun {
   // The timing information of the test run.
   TimingInfo time_info = 4;
 
+  // Deprecated. Use the `test_harness`` field from
+  // `chromiumos.test.api.TestCaseResult test_case_result` below instead.
   // Test harness that the test belongs to.
-  chromiumos.test.api.TestHarness test_harness = 5;
+  chromiumos.test.api.TestHarness test_harness = 5 [deprecated = true];
 
   // The metadata required to execute the test run.
   ExecutionMetadata execution_metadata = 6;
@@ -138,7 +140,8 @@ message TestRun {
 // Captures test case information associated with a test run.
 // NEXT TAG: 10
 message TestCaseInfo {
-  // Deprecated. Use TestCaseMetadata within TestCaseResult below instead.
+  // Deprecated. Use the `test_case_metadata` field from
+  // `chromiumos.test.api.TestCaseResult test_case_result` below instead.
   // Metadata related to test case and execution context.
   chromiumos.test.api.TestCaseMetadata test_case_metadata = 1 [deprecated = true];
 

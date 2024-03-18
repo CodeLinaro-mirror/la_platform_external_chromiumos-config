@@ -27782,6 +27782,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "test_harness",
               "number": 5,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestHarness"
             },
