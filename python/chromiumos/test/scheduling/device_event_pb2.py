@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\007./proto',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n-chromiumos/test/scheduling/device_event.proto\x12\x1a\x63hromiumos.test.scheduling\x1a\x34\x63hromiumos/test/scheduling/swarming_dimensions.proto\"\xa9\x01\n\x0b\x44\x65viceEvent\x12\x12\n\nevent_time\x18\x01 \x01(\x03\x12\x11\n\tdevice_id\x18\x02 \x01(\t\x12\x12\n\x06pod_id\x18\x03 \x01(\rB\x02\x18\x01\x12I\n\x11\x64\x65vice_dimensions\x18\x05 \x01(\x0b\x32..chromiumos.test.scheduling.SwarmingDimensions\x12\x14\n\x0c\x64\x65vice_ready\x18\x04 \x01(\x08\"G\n\x0c\x44\x65viceEvents\x12\x37\n\x06\x65vents\x18\x01 \x03(\x0b\x32\'.chromiumos.test.scheduling.DeviceEventB\tZ\x07./protob\x06proto3'
+  serialized_pb=b'\n-chromiumos/test/scheduling/device_event.proto\x12\x1a\x63hromiumos.test.scheduling\x1a\x34\x63hromiumos/test/scheduling/swarming_dimensions.proto\"\xbe\x01\n\x0b\x44\x65viceEvent\x12\x12\n\nevent_time\x18\x01 \x01(\x03\x12\x11\n\tdevice_id\x18\x02 \x01(\t\x12\x12\n\x06pod_id\x18\x03 \x01(\rB\x02\x18\x01\x12I\n\x11\x64\x65vice_dimensions\x18\x05 \x01(\x0b\x32..chromiumos.test.scheduling.SwarmingDimensions\x12\x14\n\x0c\x64\x65vice_ready\x18\x04 \x01(\x08\x12\x13\n\x0b\x64\x65vice_name\x18\x06 \x01(\t\"G\n\x0c\x44\x65viceEvents\x12\x37\n\x06\x65vents\x18\x01 \x03(\x0b\x32\'.chromiumos.test.scheduling.DeviceEventB\tZ\x07./protob\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_scheduling_dot_swarming__dimensions__pb2.DESCRIPTOR,])
 
@@ -70,6 +70,13 @@ _DEVICEEVENT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='device_name', full_name='chromiumos.test.scheduling.DeviceEvent.device_name', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -83,7 +90,7 @@ _DEVICEEVENT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=132,
-  serialized_end=301,
+  serialized_end=322,
 )
 
 
@@ -114,8 +121,8 @@ _DEVICEEVENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=303,
-  serialized_end=374,
+  serialized_start=324,
+  serialized_end=395,
 )
 
 _DEVICEEVENT.fields_by_name['device_dimensions'].message_type = chromiumos_dot_test_dot_scheduling_dot_swarming__dimensions__pb2._SWARMINGDIMENSIONS

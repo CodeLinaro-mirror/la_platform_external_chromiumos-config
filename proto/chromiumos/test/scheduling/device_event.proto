@@ -16,6 +16,7 @@ message DeviceEvent {
   uint32 pod_id = 3 [deprecated = true];
   SwarmingDimensions device_dimensions = 5;
   bool device_ready = 4;
+  string device_name = 6;
 }
 
 message DeviceEvents {

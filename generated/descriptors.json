@@ -32089,6 +32089,13 @@
               "name": "device_ready",
               "number": 4,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "deviceName",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_name",
+              "number": 6,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "DeviceEvent"
