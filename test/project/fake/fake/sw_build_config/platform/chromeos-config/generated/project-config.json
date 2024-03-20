@@ -264,6 +264,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -287,6 +288,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -664,6 +666,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -687,6 +690,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -1044,6 +1048,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -1067,6 +1072,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -1464,6 +1470,7 @@
               "cpu-offline": {
                 "smt": {}
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -1537,6 +1544,7 @@
               "cpu-offline": {
                 "half": {}
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -1899,6 +1907,7 @@
               "cpu-offline": {
                 "smt": {}
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -1920,6 +1929,7 @@
               "cpu-offline": {
                 "half": {}
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -2266,6 +2276,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -2289,6 +2300,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -2670,6 +2682,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -2693,6 +2706,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -3047,6 +3061,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -3070,6 +3085,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -3404,6 +3420,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -3427,6 +3444,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -3787,6 +3805,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -3810,6 +3829,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -4141,6 +4161,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -4164,6 +4185,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -4504,6 +4526,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -4527,6 +4550,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -4858,6 +4882,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -4881,6 +4906,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -5217,6 +5243,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -5240,6 +5267,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -5576,6 +5604,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -5599,6 +5628,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -5940,6 +5970,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -5963,6 +5994,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -6295,6 +6327,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -6318,6 +6351,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -6659,6 +6693,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -6682,6 +6717,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -7014,6 +7050,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -7037,6 +7074,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -7374,6 +7412,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -7397,6 +7436,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -7734,6 +7774,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -7757,6 +7798,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -8091,6 +8133,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -8114,6 +8157,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -8452,6 +8496,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -8475,6 +8520,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -8813,6 +8859,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -8836,6 +8883,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -9174,6 +9222,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -9197,6 +9246,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -9525,6 +9575,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -9548,6 +9599,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -9856,6 +9908,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -9879,6 +9932,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -10181,6 +10235,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -10204,6 +10259,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
@@ -10506,6 +10562,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -10529,6 +10586,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },

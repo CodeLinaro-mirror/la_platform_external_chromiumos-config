@@ -108,6 +108,7 @@ message ResourceConfig {
     Governor governor = 1;
     EnergyPerformancePreference epp = 2;
     CpuOfflinePreference cpu_offline = 3 [json_name = "cpu-offline"];
+    bool cpufreq_disable_boost = 4 [json_name = "cpufreq-disable-boost"];
   }
 
   message PowerSourcePreferences {

@@ -133,6 +133,7 @@ _PLATFORM = program_util.create_platform(
                 cpu_offline = sc.create_cpu_offline_small_core(
                     min_active_threads = 4,
                 ),
+                cpufreq_disable_boost = True,
             ),
         ),
         dc = sc.create_power_source_preference(
@@ -151,6 +152,7 @@ _PLATFORM = program_util.create_platform(
                 cpu_offline = sc.create_cpu_offline_small_core(
                     min_active_threads = 4,
                 ),
+                cpufreq_disable_boost = True,
             ),
         ),
     ),

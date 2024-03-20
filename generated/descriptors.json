@@ -2810,6 +2810,13 @@
                   "number": 3,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.ResourceConfig.CpuOfflinePreference"
+                },
+                {
+                  "jsonName": "cpufreq-disable-boost",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "cpufreq_disable_boost",
+                  "number": 4,
+                  "type": "TYPE_BOOL"
                 }
               ],
               "name": "PowerPreferences"

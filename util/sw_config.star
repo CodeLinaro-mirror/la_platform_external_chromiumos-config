@@ -421,17 +421,20 @@ def _create_power_source_preference(
         battery_saver_power_preferences = battery_saver,
     )
 
-def _create_power_preference(governor = None, epp = None, cpu_offline = None):
+def _create_power_preference(governor = None, epp = None, cpu_offline = None, cpufreq_disable_boost = False):
     """Builds a PowerPreferences proto.
 
     Args:
         governor: Governor
         epp: EnergyPerformancePreference
+        cpu_offline: CpuOfflinePreference
+        cpufreq_disable_boost: bool
     """
     return resource_pb.ResourceConfig.PowerPreferences(
         governor = governor,
         epp = epp,
         cpu_offline = cpu_offline,
+        cpufreq_disable_boost = cpufreq_disable_boost,
     )
 
 def _create_conservative_governor():

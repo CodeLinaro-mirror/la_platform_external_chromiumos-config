@@ -256,6 +256,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "balance-power": {}
               },
@@ -279,6 +280,7 @@
                   "min-active-threads": 4
                 }
               },
+              "cpufreq-disable-boost": true,
               "epp": {
                 "power": {}
               },
