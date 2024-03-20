@@ -30,7 +30,9 @@ message Dut {
   }
 
   // Chrome OS specific DUT details
-  // NEXT TAG: 22
+  // Populated by and should be kept in sync with UFS adapter in:
+  // https://source.chromium.org/chromium/infra/infra/+/main:go/src/infra/cros/cmd/labservice/internal/ufs/ufs.go
+  // NEXT TAG: 23
   message ChromeOS {
     // Unique identifiers around the device's hardware, manufacturing, and brand
     // configuration.
@@ -59,6 +61,7 @@ message Dut {
     string hwid = 19;
     Phase phase = 20;
     repeated SIMInfo sim_infos = 21;
+    ModemInfo modem_info = 22;
 
     reserved 1;
   }
@@ -182,6 +185,30 @@ message Cellular {
   }
   // Cellular operators supported by the SIM installed in the device.
   repeated Operator operators = 1;
+}
+
+// ModemInfo is adapted from ufs and should be kept in sync with:
+// https://source.chromium.org/chromium/infra/infra/+/main:go/src/infra/unifiedfleet/api/v1/models/chromeos/lab/modeminfo.proto
+// Next Tag: 6
+message ModemInfo {
+  ModemType type = 1;
+  string imei = 2;
+  string supported_bands = 3;
+  int32 sim_count = 4;
+  string model_variant = 5;
+}
+
+// Next Tag: 9
+enum ModemType {
+  MODEM_TYPE_UNSPECIFIED = 0;
+  MODEM_TYPE_UNSUPPORTED = 8;
+  MODEM_TYPE_QUALCOMM_SC7180 = 1;
+  MODEM_TYPE_FIBOCOMM_L850GL = 2;
+  MODEM_TYPE_NL668 = 3;
+  MODEM_TYPE_FM350 = 4;
+  MODEM_TYPE_FM101 = 5;
+  MODEM_TYPE_QUALCOMM_SC7280 = 6;
+  MODEM_TYPE_EM060 = 7;
 }
 
 message SIMInfo {

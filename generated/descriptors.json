@@ -17200,6 +17200,47 @@
       ],
       "enumType": [
         {
+          "name": "ModemType",
+          "value": [
+            {
+              "name": "MODEM_TYPE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "MODEM_TYPE_UNSUPPORTED",
+              "number": 8
+            },
+            {
+              "name": "MODEM_TYPE_QUALCOMM_SC7180",
+              "number": 1
+            },
+            {
+              "name": "MODEM_TYPE_FIBOCOMM_L850GL",
+              "number": 2
+            },
+            {
+              "name": "MODEM_TYPE_NL668",
+              "number": 3
+            },
+            {
+              "name": "MODEM_TYPE_FM350",
+              "number": 4
+            },
+            {
+              "name": "MODEM_TYPE_FM101",
+              "number": 5
+            },
+            {
+              "name": "MODEM_TYPE_QUALCOMM_SC7280",
+              "number": 6
+            },
+            {
+              "name": "MODEM_TYPE_EM060",
+              "number": 7
+            }
+          ]
+        },
+        {
           "name": "NetworkProvider",
           "value": [
             {
@@ -17682,6 +17723,14 @@
                   "number": 21,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.test.lab.api.SIMInfo"
+                },
+                {
+                  "jsonName": "modemInfo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "modem_info",
+                  "number": 22,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.ModemInfo"
                 }
               ],
               "name": "ChromeOS",
@@ -17986,6 +18035,47 @@
             }
           ],
           "name": "Cellular"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.ModemType"
+            },
+            {
+              "jsonName": "imei",
+              "label": "LABEL_OPTIONAL",
+              "name": "imei",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "supportedBands",
+              "label": "LABEL_OPTIONAL",
+              "name": "supported_bands",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "simCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "sim_count",
+              "number": 4,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "modelVariant",
+              "label": "LABEL_OPTIONAL",
+              "name": "model_variant",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ModemInfo"
         },
         {
           "field": [
