@@ -60,6 +60,10 @@ message CTPRequest {
   SchedulerInfo scheduler_info = 5;
 
   google.protobuf.Any scheduler_metadata = 6;
+
+  // Instruct ctpv2 to construct a dynamic trv2 request object
+  // instead of a CftTestRequest (non-dynamic).
+  bool run_dynamic = 8;
 }
 
 message SchedulerInfo {
