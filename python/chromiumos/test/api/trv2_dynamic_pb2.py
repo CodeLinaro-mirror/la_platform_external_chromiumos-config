@@ -12,6 +12,7 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from chromiumos.build.api import container_metadata_pb2 as chromiumos_dot_build_dot_api_dot_container__metadata__pb2
 from chromiumos.test.api import cros_tool_runner_container_service_templates_pb2 as chromiumos_dot_test_dot_api_dot_cros__tool__runner__container__service__templates__pb2
 from chromiumos.test.api import provision_pb2 as chromiumos_dot_test_dot_api_dot_provision__pb2
@@ -30,9 +31,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n&chromiumos/test/api/trv2_dynamic.proto\x12\x13\x63hromiumos.test.api\x1a\x19google/protobuf/any.proto\x1a-chromiumos/build/api/container_metadata.proto\x1a\x46\x63hromiumos/test/api/cros_tool_runner_container_service_templates.proto\x1a#chromiumos/test/api/provision.proto\x1a.chromiumos/test/api/cros_publish_service.proto\x1a\'chromiumos/test/api/cros_test_cli.proto\x1a$chromiumos/test/api/test_suite.proto\x1a+chromiumos/test/api/post_test_service.proto\x1a)chromiumos/test/api/generic_service.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\x1a!chromiumos/test/lab/api/dut.proto\"\x98\x05\n\x1c\x43rosTestRunnerDynamicRequest\x12/\n\x05\x62uild\x18\x01 \x01(\x0b\x32\x1e.chromiumos.test.api.BuildModeH\x00\x12\x39\n\x06params\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CrosTestRunnerParams\x12M\n\rordered_tasks\x18\x04 \x03(\x0b\x32\x36.chromiumos.test.api.CrosTestRunnerDynamicRequest.Task\x1a\xab\x03\n\x04Task\x12I\n\x1aordered_container_requests\x18\x01 \x03(\x0b\x32%.chromiumos.test.api.ContainerRequest\x12\x37\n\tprovision\x18\x02 \x01(\x0b\x32\".chromiumos.test.api.ProvisionTaskH\x00\x12\x34\n\x08pre_test\x18\x03 \x01(\x0b\x32 .chromiumos.test.api.PreTestTaskH\x00\x12-\n\x04test\x18\x04 \x01(\x0b\x32\x1d.chromiumos.test.api.TestTaskH\x00\x12\x36\n\tpost_test\x18\x05 \x01(\x0b\x32!.chromiumos.test.api.PostTestTaskH\x00\x12\x33\n\x07publish\x18\x06 \x01(\x0b\x32 .chromiumos.test.api.PublishTaskH\x00\x12\x33\n\x07generic\x18\x08 \x01(\x0b\x32 .chromiumos.test.api.GenericTaskH\x00\x12\x10\n\x08required\x18\x07 \x01(\x08\x42\x06\n\x04taskB\x0f\n\rstart_request\"\x9c\x03\n\x14\x43rosTestRunnerParams\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x43\n\x12\x63ontainer_metadata\x18\x02 \x01(\x0b\x32\'.chromiumos.build.api.ContainerMetadata\x12G\n\x07keyvals\x18\x03 \x03(\x0b\x32\x36.chromiumos.test.api.CrosTestRunnerParams.KeyvalsEntry\x12\x1e\n\x16\x63ontainer_metadata_key\x18\x04 \x01(\t\x12\x36\n\x0bprimary_dut\x18\x05 \x01(\x0b\x32!.chromiumos.test.lab.api.DutModel\x12\x39\n\x0e\x63ompanion_duts\x18\x06 \x03(\x0b\x32!.chromiumos.test.lab.api.DutModel\x1a.\n\x0cKeyvalsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"@\n\tBuildMode\x12\x17\n\x0fparent_build_id\x18\x01 \x01(\x03\x12\x1a\n\x12parent_request_uid\x18\x02 \x01(\t\"\xb5\x02\n\rProvisionTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x45\n\x0fstartup_request\x18\x02 \x01(\x0b\x32,.chromiumos.test.api.ProvisionStartupRequest\x12<\n\x0finstall_request\x18\x03 \x01(\x0b\x32#.chromiumos.test.api.InstallRequest\x12\x35\n\x0c\x64ynamic_deps\x18\x04 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x0e\n\x06target\x18\x05 \x01(\t\x12\x1a\n\x12\x64ynamic_identifier\x18\x06 \x01(\t\"\xce\x01\n\x0bPreTestTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12.\n\x10pre_test_request\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x1a\n\x12\x64ynamic_identifier\x18\x04 \x01(\t\"\xd7\x01\n\x08TestTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12:\n\x0ctest_request\x18\x02 \x01(\x0b\x32$.chromiumos.test.api.CrosTestRequest\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x1a\n\x12\x64ynamic_identifier\x18\x04 \x01(\t\"\x97\x02\n\x0cPostTestTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12/\n\x11post_test_request\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x45\n\x14run_activity_request\x18\x04 \x01(\x0b\x32\'.chromiumos.test.api.RunActivityRequest\x12\x1a\n\x12\x64ynamic_identifier\x18\x05 \x01(\t\"\xdc\x01\n\x0bPublishTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12<\n\x0fpublish_request\x18\x02 \x01(\x0b\x32#.chromiumos.test.api.PublishRequest\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x1a\n\x12\x64ynamic_identifier\x18\x04 \x01(\t\"\xdb\x02\n\x0bGenericTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12?\n\rstart_request\x18\x02 \x01(\x0b\x32(.chromiumos.test.api.GenericStartRequest\x12;\n\x0brun_request\x18\x03 \x01(\x0b\x32&.chromiumos.test.api.GenericRunRequest\x12=\n\x0cstop_request\x18\x04 \x01(\x0b\x32\'.chromiumos.test.api.GenericStopRequest\x12\x35\n\x0c\x64ynamic_deps\x18\x05 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x1a\n\x12\x64ynamic_identifier\x18\x06 \x01(\t\"\xa3\x03\n\x10\x43ontainerRequest\x12\x1a\n\x12\x64ynamic_identifier\x18\x01 \x01(\t\x12\x30\n\tcontainer\x18\x02 \x01(\x0b\x32\x1d.chromiumos.test.api.Template\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12?\n\x06inputs\x18\x04 \x03(\x0b\x32/.chromiumos.test.api.ContainerRequest.FileInput\x12\x0f\n\x07network\x18\x05 \x01(\t\x12\x1b\n\x13\x63ontainer_image_key\x18\x06 \x01(\t\x12\x1c\n\x14\x63ontainer_image_path\x18\x07 \x01(\t\x1a}\n\tFileInput\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12%\n\x07\x63ontent\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\"(\n\nDynamicDep\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n&chromiumos/test/api/trv2_dynamic.proto\x12\x13\x63hromiumos.test.api\x1a\x19google/protobuf/any.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a-chromiumos/build/api/container_metadata.proto\x1a\x46\x63hromiumos/test/api/cros_tool_runner_container_service_templates.proto\x1a#chromiumos/test/api/provision.proto\x1a.chromiumos/test/api/cros_publish_service.proto\x1a\'chromiumos/test/api/cros_test_cli.proto\x1a$chromiumos/test/api/test_suite.proto\x1a+chromiumos/test/api/post_test_service.proto\x1a)chromiumos/test/api/generic_service.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\x1a!chromiumos/test/lab/api/dut.proto\"\x98\x05\n\x1c\x43rosTestRunnerDynamicRequest\x12/\n\x05\x62uild\x18\x01 \x01(\x0b\x32\x1e.chromiumos.test.api.BuildModeH\x00\x12\x39\n\x06params\x18\x03 \x01(\x0b\x32).chromiumos.test.api.CrosTestRunnerParams\x12M\n\rordered_tasks\x18\x04 \x03(\x0b\x32\x36.chromiumos.test.api.CrosTestRunnerDynamicRequest.Task\x1a\xab\x03\n\x04Task\x12I\n\x1aordered_container_requests\x18\x01 \x03(\x0b\x32%.chromiumos.test.api.ContainerRequest\x12\x37\n\tprovision\x18\x02 \x01(\x0b\x32\".chromiumos.test.api.ProvisionTaskH\x00\x12\x34\n\x08pre_test\x18\x03 \x01(\x0b\x32 .chromiumos.test.api.PreTestTaskH\x00\x12-\n\x04test\x18\x04 \x01(\x0b\x32\x1d.chromiumos.test.api.TestTaskH\x00\x12\x36\n\tpost_test\x18\x05 \x01(\x0b\x32!.chromiumos.test.api.PostTestTaskH\x00\x12\x33\n\x07publish\x18\x06 \x01(\x0b\x32 .chromiumos.test.api.PublishTaskH\x00\x12\x33\n\x07generic\x18\x08 \x01(\x0b\x32 .chromiumos.test.api.GenericTaskH\x00\x12\x10\n\x08required\x18\x07 \x01(\x08\x42\x06\n\x04taskB\x0f\n\rstart_request\"\xca\x03\n\x14\x43rosTestRunnerParams\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12\x43\n\x12\x63ontainer_metadata\x18\x02 \x01(\x0b\x32\'.chromiumos.build.api.ContainerMetadata\x12G\n\x07keyvals\x18\x03 \x03(\x0b\x32\x36.chromiumos.test.api.CrosTestRunnerParams.KeyvalsEntry\x12\x1e\n\x16\x63ontainer_metadata_key\x18\x04 \x01(\t\x12\x36\n\x0bprimary_dut\x18\x05 \x01(\x0b\x32!.chromiumos.test.lab.api.DutModel\x12\x39\n\x0e\x63ompanion_duts\x18\x06 \x03(\x0b\x32!.chromiumos.test.lab.api.DutModel\x12,\n\x08\x64\x65\x61\x64line\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a.\n\x0cKeyvalsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"@\n\tBuildMode\x12\x17\n\x0fparent_build_id\x18\x01 \x01(\x03\x12\x1a\n\x12parent_request_uid\x18\x02 \x01(\t\"\xb5\x02\n\rProvisionTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x45\n\x0fstartup_request\x18\x02 \x01(\x0b\x32,.chromiumos.test.api.ProvisionStartupRequest\x12<\n\x0finstall_request\x18\x03 \x01(\x0b\x32#.chromiumos.test.api.InstallRequest\x12\x35\n\x0c\x64ynamic_deps\x18\x04 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x0e\n\x06target\x18\x05 \x01(\t\x12\x1a\n\x12\x64ynamic_identifier\x18\x06 \x01(\t\"\xce\x01\n\x0bPreTestTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12.\n\x10pre_test_request\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x1a\n\x12\x64ynamic_identifier\x18\x04 \x01(\t\"\xd7\x01\n\x08TestTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12:\n\x0ctest_request\x18\x02 \x01(\x0b\x32$.chromiumos.test.api.CrosTestRequest\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x1a\n\x12\x64ynamic_identifier\x18\x04 \x01(\t\"\x97\x02\n\x0cPostTestTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12/\n\x11post_test_request\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x45\n\x14run_activity_request\x18\x04 \x01(\x0b\x32\'.chromiumos.test.api.RunActivityRequest\x12\x1a\n\x12\x64ynamic_identifier\x18\x05 \x01(\t\"\xdc\x01\n\x0bPublishTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12<\n\x0fpublish_request\x18\x02 \x01(\x0b\x32#.chromiumos.test.api.PublishRequest\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x1a\n\x12\x64ynamic_identifier\x18\x04 \x01(\t\"\xdb\x02\n\x0bGenericTask\x12<\n\x0fservice_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12?\n\rstart_request\x18\x02 \x01(\x0b\x32(.chromiumos.test.api.GenericStartRequest\x12;\n\x0brun_request\x18\x03 \x01(\x0b\x32&.chromiumos.test.api.GenericRunRequest\x12=\n\x0cstop_request\x18\x04 \x01(\x0b\x32\'.chromiumos.test.api.GenericStopRequest\x12\x35\n\x0c\x64ynamic_deps\x18\x05 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12\x1a\n\x12\x64ynamic_identifier\x18\x06 \x01(\t\"\xa3\x03\n\x10\x43ontainerRequest\x12\x1a\n\x12\x64ynamic_identifier\x18\x01 \x01(\t\x12\x30\n\tcontainer\x18\x02 \x01(\x0b\x32\x1d.chromiumos.test.api.Template\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\x12?\n\x06inputs\x18\x04 \x03(\x0b\x32/.chromiumos.test.api.ContainerRequest.FileInput\x12\x0f\n\x07network\x18\x05 \x01(\t\x12\x1b\n\x13\x63ontainer_image_key\x18\x06 \x01(\t\x12\x1c\n\x14\x63ontainer_image_path\x18\x07 \x01(\t\x1a}\n\tFileInput\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12%\n\x07\x63ontent\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x35\n\x0c\x64ynamic_deps\x18\x03 \x03(\x0b\x32\x1f.chromiumos.test.api.DynamicDep\"(\n\nDynamicDep\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
-  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,chromiumos_dot_build_dot_api_dot_container__metadata__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_cros__tool__runner__container__service__templates__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_provision__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_cros__publish__service__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_cros__test__cli__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_post__test__service__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_generic__service__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,chromiumos_dot_build_dot_api_dot_container__metadata__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_cros__tool__runner__container__service__templates__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_provision__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_cros__publish__service__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_cros__test__cli__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_post__test__service__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_generic__service__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,])
 
 
 
@@ -118,8 +119,8 @@ _CROSTESTRUNNERDYNAMICREQUEST_TASK = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=760,
-  serialized_end=1187,
+  serialized_start=793,
+  serialized_end=1220,
 )
 
 _CROSTESTRUNNERDYNAMICREQUEST = _descriptor.Descriptor(
@@ -168,8 +169,8 @@ _CROSTESTRUNNERDYNAMICREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=540,
-  serialized_end=1204,
+  serialized_start=573,
+  serialized_end=1237,
 )
 
 
@@ -207,8 +208,8 @@ _CROSTESTRUNNERPARAMS_KEYVALSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1573,
-  serialized_end=1619,
+  serialized_start=1652,
+  serialized_end=1698,
 )
 
 _CROSTESTRUNNERPARAMS = _descriptor.Descriptor(
@@ -261,6 +262,13 @@ _CROSTESTRUNNERPARAMS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='deadline', full_name='chromiumos.test.api.CrosTestRunnerParams.deadline', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -273,8 +281,8 @@ _CROSTESTRUNNERPARAMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1207,
-  serialized_end=1619,
+  serialized_start=1240,
+  serialized_end=1698,
 )
 
 
@@ -312,8 +320,8 @@ _BUILDMODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1621,
-  serialized_end=1685,
+  serialized_start=1700,
+  serialized_end=1764,
 )
 
 
@@ -379,8 +387,8 @@ _PROVISIONTASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1688,
-  serialized_end=1997,
+  serialized_start=1767,
+  serialized_end=2076,
 )
 
 
@@ -432,8 +440,8 @@ _PRETESTTASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2000,
-  serialized_end=2206,
+  serialized_start=2079,
+  serialized_end=2285,
 )
 
 
@@ -485,8 +493,8 @@ _TESTTASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2209,
-  serialized_end=2424,
+  serialized_start=2288,
+  serialized_end=2503,
 )
 
 
@@ -545,8 +553,8 @@ _POSTTESTTASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2427,
-  serialized_end=2706,
+  serialized_start=2506,
+  serialized_end=2785,
 )
 
 
@@ -598,8 +606,8 @@ _PUBLISHTASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2709,
-  serialized_end=2929,
+  serialized_start=2788,
+  serialized_end=3008,
 )
 
 
@@ -665,8 +673,8 @@ _GENERICTASK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2932,
-  serialized_end=3279,
+  serialized_start=3011,
+  serialized_end=3358,
 )
 
 
@@ -711,8 +719,8 @@ _CONTAINERREQUEST_FILEINPUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3576,
-  serialized_end=3701,
+  serialized_start=3655,
+  serialized_end=3780,
 )
 
 _CONTAINERREQUEST = _descriptor.Descriptor(
@@ -784,8 +792,8 @@ _CONTAINERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3282,
-  serialized_end=3701,
+  serialized_start=3361,
+  serialized_end=3780,
 )
 
 
@@ -823,8 +831,8 @@ _DYNAMICDEP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3703,
-  serialized_end=3743,
+  serialized_start=3782,
+  serialized_end=3822,
 )
 
 _CROSTESTRUNNERDYNAMICREQUEST_TASK.fields_by_name['ordered_container_requests'].message_type = _CONTAINERREQUEST
@@ -865,6 +873,7 @@ _CROSTESTRUNNERPARAMS.fields_by_name['container_metadata'].message_type = chromi
 _CROSTESTRUNNERPARAMS.fields_by_name['keyvals'].message_type = _CROSTESTRUNNERPARAMS_KEYVALSENTRY
 _CROSTESTRUNNERPARAMS.fields_by_name['primary_dut'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2._DUTMODEL
 _CROSTESTRUNNERPARAMS.fields_by_name['companion_duts'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2._DUTMODEL
+_CROSTESTRUNNERPARAMS.fields_by_name['deadline'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _PROVISIONTASK.fields_by_name['service_address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _PROVISIONTASK.fields_by_name['startup_request'].message_type = chromiumos_dot_test_dot_api_dot_provision__pb2._PROVISIONSTARTUPREQUEST
 _PROVISIONTASK.fields_by_name['install_request'].message_type = chromiumos_dot_test_dot_api_dot_provision__pb2._INSTALLREQUEST

@@ -23783,6 +23783,7 @@
       },
       "dependency": [
         "google/protobuf/any.proto",
+        "google/protobuf/timestamp.proto",
         "chromiumos/build/api/container_metadata.proto",
         "chromiumos/test/api/cros_tool_runner_container_service_templates.proto",
         "chromiumos/test/api/provision.proto",
@@ -23959,6 +23960,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.DutModel"
+            },
+            {
+              "jsonName": "deadline",
+              "label": "LABEL_OPTIONAL",
+              "name": "deadline",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
             }
           ],
           "name": "CrosTestRunnerParams",
