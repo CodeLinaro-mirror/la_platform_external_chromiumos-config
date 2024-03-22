@@ -26,3 +26,14 @@ message FirmwareProvisionInstallMetadata {
   // ec_ro over Servo is flashed using flash_ec.
   chromiumos.build.api.FirmwareConfig firmware_config = 1;
 }
+
+// FirmwareProvisionResponse records the response of the firmware provisioning.
+message FirmwareProvisionResponse {
+  // If the provisioning failed, here is the detailed error message.
+  string error_message = 1;
+  // The firmware versions on the DUT (if success), or the versions that were attempted to be flashed (if failed).
+  string ap_ro_version = 2;
+  string ap_rw_version = 3;
+  string ec_ro_version = 4;
+  string ec_rw_version = 5;
+}

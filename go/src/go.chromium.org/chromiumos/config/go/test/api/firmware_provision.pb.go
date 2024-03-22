@@ -131,6 +131,88 @@ func (x *FirmwareProvisionInstallMetadata) GetFirmwareConfig() *api1.FirmwareCon
 	return nil
 }
 
+// FirmwareProvisionResponse records the response of the firmware provisioning.
+type FirmwareProvisionResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// If the provisioning failed, here is the detailed error message.
+	ErrorMessage string `protobuf:"bytes,1,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	// The firmware versions on the DUT (if success), or the versions that were attempted to be flashed (if failed).
+	ApRoVersion string `protobuf:"bytes,2,opt,name=ap_ro_version,json=apRoVersion,proto3" json:"ap_ro_version,omitempty"`
+	ApRwVersion string `protobuf:"bytes,3,opt,name=ap_rw_version,json=apRwVersion,proto3" json:"ap_rw_version,omitempty"`
+	EcRoVersion string `protobuf:"bytes,4,opt,name=ec_ro_version,json=ecRoVersion,proto3" json:"ec_ro_version,omitempty"`
+	EcRwVersion string `protobuf:"bytes,5,opt,name=ec_rw_version,json=ecRwVersion,proto3" json:"ec_rw_version,omitempty"`
+}
+
+func (x *FirmwareProvisionResponse) Reset() {
+	*x = FirmwareProvisionResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_firmware_provision_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FirmwareProvisionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FirmwareProvisionResponse) ProtoMessage() {}
+
+func (x *FirmwareProvisionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_firmware_provision_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FirmwareProvisionResponse.ProtoReflect.Descriptor instead.
+func (*FirmwareProvisionResponse) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_firmware_provision_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *FirmwareProvisionResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *FirmwareProvisionResponse) GetApRoVersion() string {
+	if x != nil {
+		return x.ApRoVersion
+	}
+	return ""
+}
+
+func (x *FirmwareProvisionResponse) GetApRwVersion() string {
+	if x != nil {
+		return x.ApRwVersion
+	}
+	return ""
+}
+
+func (x *FirmwareProvisionResponse) GetEcRoVersion() string {
+	if x != nil {
+		return x.EcRoVersion
+	}
+	return ""
+}
+
+func (x *FirmwareProvisionResponse) GetEcRwVersion() string {
+	if x != nil {
+		return x.EcRwVersion
+	}
+	return ""
+}
+
 var File_chromiumos_test_api_firmware_provision_proto protoreflect.FileDescriptor
 
 var file_chromiumos_test_api_firmware_provision_proto_rawDesc = []byte{
@@ -158,11 +240,24 @@ var file_chromiumos_test_api_firmware_provision_proto_rawDesc = []byte{
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75,
 	0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x75, 0x69, 0x6c, 0x64, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x46, 0x69,
 	0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x0e, 0x66, 0x69,
-	0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x42, 0x2f, 0x5a, 0x2d,
-	0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f,
-	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x22, 0xd0, 0x01, 0x0a,
+	0x19, 0x46, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x73, 0x69,
+	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x65, 0x72,
+	0x72, 0x6f, 0x72, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0c, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12,
+	0x22, 0x0a, 0x0d, 0x61, 0x70, 0x5f, 0x72, 0x6f, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x61, 0x70, 0x52, 0x6f, 0x56, 0x65, 0x72, 0x73,
+	0x69, 0x6f, 0x6e, 0x12, 0x22, 0x0a, 0x0d, 0x61, 0x70, 0x5f, 0x72, 0x77, 0x5f, 0x76, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x61, 0x70, 0x52, 0x77,
+	0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x22, 0x0a, 0x0d, 0x65, 0x63, 0x5f, 0x72, 0x6f,
+	0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
+	0x65, 0x63, 0x52, 0x6f, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x22, 0x0a, 0x0d, 0x65,
+	0x63, 0x5f, 0x72, 0x77, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0b, 0x65, 0x63, 0x52, 0x77, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x42,
+	0x2f, 0x5a, 0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f,
+	0x72, 0x67, 0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -177,16 +272,17 @@ func file_chromiumos_test_api_firmware_provision_proto_rawDescGZIP() []byte {
 	return file_chromiumos_test_api_firmware_provision_proto_rawDescData
 }
 
-var file_chromiumos_test_api_firmware_provision_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_chromiumos_test_api_firmware_provision_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_chromiumos_test_api_firmware_provision_proto_goTypes = []interface{}{
 	(*FirmwareProvisionStartupMetadata)(nil), // 0: chromiumos.test.api.FirmwareProvisionStartupMetadata
 	(*FirmwareProvisionInstallMetadata)(nil), // 1: chromiumos.test.api.FirmwareProvisionInstallMetadata
-	(*api.IpEndpoint)(nil),                   // 2: chromiumos.test.lab.api.IpEndpoint
-	(*api1.FirmwareConfig)(nil),              // 3: chromiumos.build.api.FirmwareConfig
+	(*FirmwareProvisionResponse)(nil),        // 2: chromiumos.test.api.FirmwareProvisionResponse
+	(*api.IpEndpoint)(nil),                   // 3: chromiumos.test.lab.api.IpEndpoint
+	(*api1.FirmwareConfig)(nil),              // 4: chromiumos.build.api.FirmwareConfig
 }
 var file_chromiumos_test_api_firmware_provision_proto_depIdxs = []int32{
-	2, // 0: chromiumos.test.api.FirmwareProvisionStartupMetadata.cache_server_address:type_name -> chromiumos.test.lab.api.IpEndpoint
-	3, // 1: chromiumos.test.api.FirmwareProvisionInstallMetadata.firmware_config:type_name -> chromiumos.build.api.FirmwareConfig
+	3, // 0: chromiumos.test.api.FirmwareProvisionStartupMetadata.cache_server_address:type_name -> chromiumos.test.lab.api.IpEndpoint
+	4, // 1: chromiumos.test.api.FirmwareProvisionInstallMetadata.firmware_config:type_name -> chromiumos.build.api.FirmwareConfig
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -224,6 +320,18 @@ func file_chromiumos_test_api_firmware_provision_proto_init() {
 				return nil
 			}
 		}
+		file_chromiumos_test_api_firmware_provision_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FirmwareProvisionResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -231,7 +339,7 @@ func file_chromiumos_test_api_firmware_provision_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_api_firmware_provision_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
