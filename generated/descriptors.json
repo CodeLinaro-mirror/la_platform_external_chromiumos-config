@@ -32372,6 +32372,13 @@
               "name": "task_state_id",
               "number": 13,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "deviceName",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_name",
+              "number": 14,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "TaskRequestEvent"

@@ -27,6 +27,7 @@ message TaskRequestEvent {
   int64 bbid = 11;
   bool asap = 12;
   int64 task_state_id = 13;
+  string device_name = 14;
 }
 
 message TaskRequestEvents {
