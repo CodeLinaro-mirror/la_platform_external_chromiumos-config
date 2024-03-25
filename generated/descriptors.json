@@ -4875,6 +4875,14 @@
               "number": 51,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.InterruptControllerInfo"
+            },
+            {
+              "jsonName": "tiledDisplay",
+              "label": "LABEL_OPTIONAL",
+              "name": "tiled_display",
+              "number": 52,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.TiledDisplay"
             }
           ],
           "name": "HardwareFeatures",
@@ -7500,6 +7508,19 @@
                 }
               ],
               "name": "InterruptControllerInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "TiledDisplay"
             }
           ]
         }
