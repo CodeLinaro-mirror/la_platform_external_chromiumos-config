@@ -222,7 +222,7 @@ message BuildInfo {
 }
 
 // The complete build metadata of the test case.
-// NEXT TAG: 11
+// NEXT TAG: 12
 message BuildMetadata {
   // ARC++ metadata
   message Arc {
@@ -313,6 +313,45 @@ message BuildMetadata {
   // HDMI, and DisplayPort.
   // See details: http://g3doc/company/teams/chromeos-audio/tests/chameleon
   chromiumos.test.lab.api.Chameleon chameleon = 10;
+
+  // Graphics info
+  // NEXT TAG: 15
+  message GfxInfo {
+    // GPU ID, e.g. "amd:15e7".
+    string gpu_id = 1;
+
+    // GPU family name, e.g. "cezanne".
+    string gpu_family = 2;
+
+    // OpenGL ES version, e.g. "3.2".
+    string gpu_open_gles_version = 3;
+
+    // GPU vendor name, e.g. "amd".
+    string gpu_vendor = 4;
+
+    // Vulkan version, e.g. "1.3.274".
+    string gpu_vulkan_version = 5;
+
+    // The following platform info is for the DUT in general.
+    // CPU vendor name, e.g. "amd".
+    string platform_cpu_vendor = 6;
+
+    // The disk size in GB, e.g. 32.
+    uint64 platform_disk_size = 7;
+
+    // The memory size in GB, e.g. 8.
+    uint64 platform_memory_size = 8;
+
+    // The following are the display config.
+    string display_panel_name = 9;
+    string display_present_hdr = 10;
+    string display_present_psr = 11;
+    string display_present_vrr = 12;
+    string display_refresh_rate = 13;
+    string display_resolution = 14;
+  }
+
+  GfxInfo gfx_info = 11;
 }
 
 // Captures DUT related info.

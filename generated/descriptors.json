@@ -28207,6 +28207,14 @@
               "number": 10,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.Chameleon"
+            },
+            {
+              "jsonName": "gfxInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "gfx_info",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.GfxInfo"
             }
           ],
           "name": "BuildMetadata",
@@ -28353,6 +28361,109 @@
                 }
               ],
               "name": "Lacros"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "gpuId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gpu_id",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "gpuFamily",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gpu_family",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "gpuOpenGlesVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gpu_open_gles_version",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "gpuVendor",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gpu_vendor",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "gpuVulkanVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "gpu_vulkan_version",
+                  "number": 5,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "platformCpuVendor",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "platform_cpu_vendor",
+                  "number": 6,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "platformDiskSize",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "platform_disk_size",
+                  "number": 7,
+                  "type": "TYPE_UINT64"
+                },
+                {
+                  "jsonName": "platformMemorySize",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "platform_memory_size",
+                  "number": 8,
+                  "type": "TYPE_UINT64"
+                },
+                {
+                  "jsonName": "displayPanelName",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "display_panel_name",
+                  "number": 9,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "displayPresentHdr",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "display_present_hdr",
+                  "number": 10,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "displayPresentPsr",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "display_present_psr",
+                  "number": 11,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "displayPresentVrr",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "display_present_vrr",
+                  "number": 12,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "displayRefreshRate",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "display_refresh_rate",
+                  "number": 13,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "displayResolution",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "display_resolution",
+                  "number": 14,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "GfxInfo"
             }
           ]
         },
