@@ -359,6 +359,9 @@
 					"value": "tast.arc.ManagedAppInstallLogging"
 				},
 				{
+					"value": "tast.arc.ManagedAppInstallLogging.using_encrypted_reporting"
+				},
+				{
 					"value": "tast.arc.ManagedBoot.disabled"
 				},
 				{
@@ -662,10 +665,22 @@
 					"value": "tast.audio.CrasNoiseCancellation.aec_nc_44100hz"
 				},
 				{
+					"value": "tast.audio.CrasNoiseCancellation.aec_nc_ast"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.aec_nc_ast_44100hz"
+				},
+				{
 					"value": "tast.audio.CrasNoiseCancellation.nc"
 				},
 				{
 					"value": "tast.audio.CrasNoiseCancellation.nc_44100hz"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.nc_ast"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.nc_ast_44100hz"
 				},
 				{
 					"value": "tast.audio.CrasNoiseCancellation.no_effects"
@@ -1112,91 +1127,46 @@
 					"value": "tast.crostini.AppAndroidStudio.bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppAndroidStudio.bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppAudacity.bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppAudacity.bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppAudacityWindowOperations.maximize_bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppAudacityWindowOperations.maximize_bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppAudacityWindowOperations.minimize_bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppAudacityWindowOperations.minimize_bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppAudacityWindowOperations.switch_tablet_bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppAudacityWindowOperations.switch_tablet_bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppEclipse.bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppEclipse.bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppEmacs.bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppEmacs.bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppEmacsWindowOperations.maximize_bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppEmacsWindowOperations.maximize_bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppEmacsWindowOperations.minimize_bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppEmacsWindowOperations.minimize_bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppEmacsWindowOperations.switch_tablet_bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppEmacsWindowOperations.switch_tablet_bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppFirefox.bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppFirefox.bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppFirefoxNonalphanumericInput.bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppFirefoxNonalphanumericInput.bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppFirefoxWindowOperations.maximize_bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppFirefoxWindowOperations.maximize_bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppFirefoxWindowOperations.minimize_bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppFirefoxWindowOperations.minimize_bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppFirefoxWindowOperations.switch_tablet_bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppFirefoxWindowOperations.switch_tablet_bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppGedit.bookworm_clamshell_stable"
@@ -1208,31 +1178,16 @@
 					"value": "tast.crostini.AppGeditFilesharing.bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppGeditFilesharing.bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppGeditNonalphanumericInput.bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppGeditNonalphanumericInput.bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppGeditUnshareFolder.bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppGeditUnshareFolder.bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppLibreOffice.bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppLibreOffice.bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppVSCodeNonalphanumericInput.bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppVSCodeNonalphanumericInput.bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppVscode.bookworm_clamshell_stable"
@@ -1244,31 +1199,16 @@
 					"value": "tast.crostini.AppVscodeFromFileManager.bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppVscodeFromFileManager.bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppVscodeUninstall.bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppVscodeUninstall.bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AppVscodeWindowOperations.maximize_bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppVscodeWindowOperations.maximize_bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppVscodeWindowOperations.minimize_bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.AppVscodeWindowOperations.minimize_bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.AppVscodeWindowOperations.switch_tablet_bookworm_clamshell_stable"
-				},
-				{
-					"value": "tast.crostini.AppVscodeWindowOperations.switch_tablet_bullseye_clamshell_stable"
 				},
 				{
 					"value": "tast.crostini.AudioBasic.bookworm_lowperf"
@@ -1286,13 +1226,7 @@
 					"value": "tast.crostini.AudioPlaybackConfigurations.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.AudioPlaybackConfigurations.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.BackupRestore.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.BackupRestore.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.Basic.bookworm_lowperf"
@@ -1355,9 +1289,6 @@
 					"value": "tast.crostini.CopyFilesToLinuxFiles.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.CopyFilesToLinuxFiles.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.CopyPaste.wayland_to_wayland_bookworm_stable"
 				},
 				{
@@ -1385,9 +1316,6 @@
 					"value": "tast.crostini.CrashReporter.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.CrashReporter.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.DebianUpgradeAlert.stable"
 				},
 				{
@@ -1406,9 +1334,6 @@
 					"value": "tast.crostini.Docker.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.Docker.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.DragDrop.bookworm_lowperf"
 				},
 				{
@@ -1424,13 +1349,7 @@
 					"value": "tast.crostini.FilesAppWatch.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.FilesAppWatch.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.FsCorruption.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.FsCorruption.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.GPUEnabled.gpu_bullseye_stable"
@@ -1440,9 +1359,6 @@
 				},
 				{
 					"value": "tast.crostini.HomeDirectoryShare.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.HomeDirectoryShare.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.LaunchBrowser.bookworm_stable"
@@ -1458,9 +1374,6 @@
 				},
 				{
 					"value": "tast.crostini.LaunchTerminal.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.LaunchTerminal.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.Launcher.local_wayland_bookworm_stable"
@@ -1490,13 +1403,7 @@
 					"value": "tast.crostini.NestedVM.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.NestedVM.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.NoAccessToDownloads.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.NoAccessToDownloads.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.NoAccessToDrive.bookworm_stable_gaia"
@@ -1508,49 +1415,25 @@
 					"value": "tast.crostini.NoSharedFolder.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.NoSharedFolder.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.Notify.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.Notify.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.OOMEvent.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.OOMEvent.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.OpenWithTerminal.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.OpenWithTerminal.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.PackageInfo.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.PackageInfo.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.PackageInstallUninstall.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.PackageInstallUninstall.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.PodmanRoot.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.PodmanRoot.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.PodmanUser.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.PodmanUser.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.RemoveCancel.bookworm_lowperf"
@@ -1580,58 +1463,31 @@
 					"value": "tast.crostini.ResizeCancel.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.ResizeCancel.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.ResizeInstallation.stable"
 				},
 				{
 					"value": "tast.crostini.ResizeOk.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.ResizeOk.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.ResizeRestart.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.ResizeRestart.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.ResizeSpaceConstrained.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.ResizeSpaceConstrained.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.Restart.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.Restart.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.RestartApp.bookworm_clamshell_stable"
 				},
 				{
-					"value": "tast.crostini.RestartApp.bullseye_clamshell_stable"
-				},
-				{
 					"value": "tast.crostini.RestartIcon.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.RestartIcon.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.RunWithARC.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.RunWithARC.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.SSHFSMount.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.SSHFSMount.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.SecureCopyPaste.copy_wayland_bookworm_stable"
@@ -1664,16 +1520,7 @@
 					"value": "tast.crostini.ShareDownloads.bookworm_stable_no_downloads_bind_mount"
 				},
 				{
-					"value": "tast.crostini.ShareDownloads.bullseye_stable"
-				},
-				{
-					"value": "tast.crostini.ShareDownloads.bullseye_stable_no_downloads_bind_mount"
-				},
-				{
 					"value": "tast.crostini.ShareDownloadsAddFiles.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.ShareDownloadsAddFiles.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.ShareDrive.bookworm_stable_gaia"
@@ -1685,13 +1532,7 @@
 					"value": "tast.crostini.ShareFilesCancel.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.ShareFilesCancel.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.ShareFilesManage.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.ShareFilesManage.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.ShareFilesOK.bookworm_lowperf"
@@ -1709,31 +1550,16 @@
 					"value": "tast.crostini.ShareFilesRestart.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.ShareFilesRestart.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.ShareFilesToast.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.ShareFilesToast.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.ShareFolderZipFile.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.ShareFolderZipFile.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.ShareFolders.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.ShareFolders.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.ShareInvalidPaths.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.ShareInvalidPaths.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.ShareMovies.bookworm_stable_gaia"
@@ -1757,19 +1583,10 @@
 					"value": "tast.crostini.Snapshot.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.Snapshot.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.SyncTime.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.SyncTime.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.TaskManager.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.TaskManager.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.Toolkit.gtk3_wayland_bookworm_stable"
@@ -1811,9 +1628,6 @@
 					"value": "tast.crostini.UninstallInvalidApp.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.UninstallInvalidApp.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.VerifyAppWayland.bookworm_stable"
 				},
 				{
@@ -1829,19 +1643,10 @@
 					"value": "tast.crostini.VerifyAppX11.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.VerifyAppX11.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.VmcExtraDisk.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.VmcExtraDisk.bullseye_stable"
-				},
-				{
 					"value": "tast.crostini.VmcStart.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.VmcStart.bullseye_stable"
 				},
 				{
 					"value": "tast.crostini.Webserver.bookworm_lowperf"
@@ -1857,9 +1662,6 @@
 				},
 				{
 					"value": "tast.crostini.Xattrs.bookworm_stable"
-				},
-				{
-					"value": "tast.crostini.Xattrs.bullseye_stable"
 				},
 				{
 					"value": "tast.cryptohome.AddRemoveFactorsEphemeral"
@@ -2294,6 +2096,12 @@
 					"value": "tast.health.DiagnosticsPass.dns_resolver_present"
 				},
 				{
+					"value": "tast.health.DiagnosticsPass.fingerprint"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.fingerprint_alive"
+				},
+				{
 					"value": "tast.health.DiagnosticsPass.floating_point_accuracy"
 				},
 				{
@@ -2393,13 +2201,22 @@
 					"value": "tast.health.MonitorThunderboltEvent"
 				},
 				{
+					"value": "tast.health.MonitorTouchpadEvent.clamshell"
+				},
+				{
 					"value": "tast.health.MonitorTouchscreenEvent"
 				},
 				{
 					"value": "tast.health.MonitorUnuploadedCrashEvent.user_logged_in"
 				},
 				{
+					"value": "tast.health.MonitorUnuploadedCrashEvent.user_not_logged_in"
+				},
+				{
 					"value": "tast.health.MonitorUploadedCrashEvent.user_logged_in"
+				},
+				{
+					"value": "tast.health.MonitorUploadedCrashEvent.user_not_logged_in"
 				},
 				{
 					"value": "tast.health.MonitorUsbEvent"
@@ -3785,6 +3602,9 @@
 					"value": "tast.printer.PrintUSB"
 				},
 				{
+					"value": "tast.printer.PrintscanDebug"
+				},
+				{
 					"value": "tast.printer.Printscanmgr"
 				},
 				{
@@ -3980,7 +3800,13 @@
 					"value": "tast.runtimeprobe.VerifySandbox.camera"
 				},
 				{
+					"value": "tast.runtimeprobe.VerifySandbox.ec_component"
+				},
+				{
 					"value": "tast.runtimeprobe.VerifySandbox.edid"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.generic_cpu"
 				},
 				{
 					"value": "tast.runtimeprobe.VerifySandbox.gpu"
@@ -4448,7 +4274,22 @@
 					"value": "tast.vm.AudioResumeAfterCrasRestarted.virtio_cras_snd"
 				},
 				{
+					"value": "tast.vm.ListSlimRootfsVM"
+				},
+				{
 					"value": "tast.vm.ShutdownVMServices"
+				},
+				{
+					"value": "tast.vm.StartAndStopSlimRootfs"
+				},
+				{
+					"value": "tast.vm.StartSlimRootfs"
+				},
+				{
+					"value": "tast.vm.StopAllSlimRootfsVMs"
+				},
+				{
+					"value": "tast.vm.SyncTimeSlimRootfsVM"
 				},
 				{
 					"value": "tast.wifi.Caps"
@@ -4485,9 +4326,6 @@
 				},
 				{
 					"value": "tast.wifi.WPAValidity"
-				},
-				{
-					"value": "tast.wilco.ECEvent"
 				},
 				{
 					"value": "tast.wilco.ECRTC"
@@ -4962,6 +4800,9 @@
 				},
 				{
 					"value": "tast.wifi.CheckIntelSARTable"
+				},
+				{
+					"value": "tast.wifi.CheckMtkMTCL"
 				},
 				{
 					"value": "tast.wifi.SetTXPower"
@@ -5488,6 +5329,9 @@
 					"value": "tast.wifi.CheckIntelSARTable"
 				},
 				{
+					"value": "tast.wifi.CheckMtkMTCL"
+				},
+				{
 					"value": "tast.wifi.SetTXPower"
 				},
 				{
@@ -5782,6 +5626,15 @@
 				},
 				{
 					"value": "tast.firmware.ECUpdateID.normal_mode"
+				},
+				{
+					"value": "tast.firmware.ECVerifyVK"
+				},
+				{
+					"value": "tast.firmware.ECVerifyVK.chromeslate"
+				},
+				{
+					"value": "tast.firmware.ECVerifyVK.detachable"
 				},
 				{
 					"value": "tast.firmware.ECWakeSource.keypress"

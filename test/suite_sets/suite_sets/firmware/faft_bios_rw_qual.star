@@ -123,6 +123,7 @@ def _faft_bios_rw_qual():
             "tast.hwsec.TPMContest",
             "tast.video.HWDRMInit",
             "tast.wifi.CheckIntelSARTable",
+            "tast.wifi.CheckMtkMTCL",
             "tast.wifi.SetTXPower",
             "tast.wifi.SetTXPower.vpd",
             "tauto.firmware_CbfsMcache",
