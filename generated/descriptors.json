@@ -25358,6 +25358,9 @@
               "label": "LABEL_REPEATED",
               "name": "hw_requirements",
               "number": 3,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.HWRequirements"
             },
@@ -25366,8 +25369,19 @@
               "label": "LABEL_REPEATED",
               "name": "sw_requirements",
               "number": 4,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SWRequirements"
+            },
+            {
+              "jsonName": "schedulingUnitOptions",
+              "label": "LABEL_REPEATED",
+              "name": "scheduling_unit_options",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SchedulingUnitOptions"
             }
           ],
           "name": "CTPTestCase"
@@ -25400,6 +25414,9 @@
               "label": "LABEL_REPEATED",
               "name": "target_requirements",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TargetRequirements"
             },
@@ -25408,6 +25425,9 @@
               "label": "LABEL_REPEATED",
               "name": "schedule_target_requirements",
               "number": 4,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.ScheduleTargetRequirements"
             },
@@ -25448,6 +25468,14 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.UserDefinedDynamicUpdate"
+            },
+            {
+              "jsonName": "schedulingUnits",
+              "label": "LABEL_REPEATED",
+              "name": "scheduling_units",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SchedulingUnit"
             }
           ],
           "name": "SuiteMetadata"
@@ -25527,6 +25555,54 @@
           ],
           "field": [
             {
+              "jsonName": "schedulingUnits",
+              "label": "LABEL_REPEATED",
+              "name": "scheduling_units",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SchedulingUnit"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.SchedulingUnitOptions.State"
+            }
+          ],
+          "name": "SchedulingUnitOptions"
+        },
+        {
+          "enumType": [
+            {
+              "name": "State",
+              "value": [
+                {
+                  "name": "REQUIRED",
+                  "number": 0
+                },
+                {
+                  "name": "OPTIONAL",
+                  "number": 1
+                },
+                {
+                  "name": "PREFERRED",
+                  "number": 2
+                },
+                {
+                  "name": "BANNED",
+                  "number": 3
+                },
+                {
+                  "name": "ONEOF",
+                  "number": 4
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
               "jsonName": "hwDefinition",
               "label": "LABEL_REPEATED",
               "name": "hw_definition",
@@ -25544,6 +25620,27 @@
             }
           ],
           "name": "HWRequirements"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "primaryTarget",
+              "label": "LABEL_OPTIONAL",
+              "name": "primary_target",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Target"
+            },
+            {
+              "jsonName": "companionTargets",
+              "label": "LABEL_REPEATED",
+              "name": "companion_targets",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Target"
+            }
+          ],
+          "name": "SchedulingUnit"
         },
         {
           "name": "SWRequirements"
@@ -25594,6 +25691,27 @@
             }
           ],
           "name": "ProvisionInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "swarmingDef",
+              "label": "LABEL_OPTIONAL",
+              "name": "swarming_def",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SwarmingDefinition"
+            },
+            {
+              "jsonName": "swReq",
+              "label": "LABEL_OPTIONAL",
+              "name": "sw_req",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LegacySW"
+            }
+          ],
+          "name": "Target"
         },
         {
           "field": [

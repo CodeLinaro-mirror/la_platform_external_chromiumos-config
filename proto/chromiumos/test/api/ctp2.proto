@@ -205,10 +205,11 @@ message CTPTestCase {
   TestCaseMetadata metadata = 2;
 
   // HWRequirements are an AND field
-  repeated HWRequirements hw_requirements = 3;
+  repeated HWRequirements hw_requirements = 3 [deprecated = true];
 
   // SWRequirement impl is still tbd.
-  repeated SWRequirements sw_requirements = 4;
+  repeated SWRequirements sw_requirements = 4 [deprecated = true];
+  repeated SchedulingUnitOptions scheduling_unit_options = 5;
 }
 
 message SuiteInfo {
@@ -217,10 +218,10 @@ message SuiteInfo {
 }
 
 // Everything by CTPv2, less provision_info.
-// next value = 5;
+// next value = 9;
 message SuiteMetadata {
-  repeated TargetRequirements target_requirements = 1;
-  repeated ScheduleTargetRequirements schedule_target_requirements = 4;
+  repeated TargetRequirements target_requirements = 1[deprecated = true];
+  repeated ScheduleTargetRequirements schedule_target_requirements = 4[deprecated = true];
   repeated string channels = 2;
   string pool = 3;
   chromiumos.test.api.ExecutionMetadata execution_metadata = 5;
@@ -231,6 +232,7 @@ message SuiteMetadata {
   //
   // Note: Applied updates in order given.
   repeated UserDefinedDynamicUpdate dynamic_updates = 7;
+  repeated SchedulingUnit scheduling_units = 8;
 }
 
 // ScheduleTargets represents groups of target requirements for CTPv2.
@@ -247,6 +249,18 @@ message TargetRequirements {
 
 }
 
+message SchedulingUnitOptions {
+  repeated SchedulingUnit scheduling_units = 1;
+  enum State {
+    REQUIRED = 0;
+    OPTIONAL = 1;
+    PREFERRED = 2;
+    BANNED = 3;
+    ONEOF = 4;
+  }
+ State state = 6;
+}
+
 message HWRequirements {
   repeated SwarmingDefinition hw_definition = 1;
   enum State {
@@ -257,6 +271,11 @@ message HWRequirements {
     ONEOF = 4;
   }
  State state = 6;
+}
+
+message SchedulingUnit {
+  Target primary_target = 1;
+  repeated Target companion_targets = 2;
 }
 
 message SWRequirements{}
@@ -270,7 +289,11 @@ message ProvisionInfo {
   InstallRequest install_request = 1;
   string identifier = 2;
   Type type = 3;
+}
 
+message Target {
+  SwarmingDefinition swarming_def =1;
+  LegacySW sw_req =2;
 }
 
 message SwarmingDefinition {
