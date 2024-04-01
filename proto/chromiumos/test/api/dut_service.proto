@@ -118,7 +118,9 @@ message ExecCommandRequest {
   // Otherwise, this is treated as a path relative to the working
   // directory.
   string command = 2;
-  // args are the arguments to pass to the command.
+  // args are the arguments to pass to the command. The arguments
+  // are not quoted in any way, so passing shell variables and
+  // arguments containing spaces could fail.
   repeated string args = 3;
   // stdin is passed to the command as the program's stdin.
   // The stream does not support seeking.

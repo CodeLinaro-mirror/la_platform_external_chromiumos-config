@@ -92,7 +92,9 @@ type ExecCommandRequest struct {
 	// Otherwise, this is treated as a path relative to the working
 	// directory.
 	Command string `protobuf:"bytes,2,opt,name=command,proto3" json:"command,omitempty"`
-	// args are the arguments to pass to the command.
+	// args are the arguments to pass to the command. The arguments
+	// are not quoted in any way, so passing shell variables and
+	// arguments containing spaces could fail.
 	Args []string `protobuf:"bytes,3,rep,name=args,proto3" json:"args,omitempty"`
 	// stdin is passed to the command as the program's stdin.
 	// The stream does not support seeking.
