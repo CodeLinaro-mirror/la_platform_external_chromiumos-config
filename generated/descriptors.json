@@ -28171,6 +28171,13 @@
               "name": "test_plan_id",
               "number": 9,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "channel",
+              "label": "LABEL_OPTIONAL",
+              "name": "channel",
+              "number": 10,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "TestCaseInfo"
