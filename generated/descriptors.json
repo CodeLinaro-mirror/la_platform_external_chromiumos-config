@@ -32622,6 +32622,13 @@
               "name": "device_name",
               "number": 14,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "user",
+              "label": "LABEL_OPTIONAL",
+              "name": "user",
+              "number": 15,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "TaskRequestEvent"
@@ -32801,6 +32808,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "lease_id",
               "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "deviceName",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_name",
+              "number": 5,
               "type": "TYPE_STRING"
             }
           ],

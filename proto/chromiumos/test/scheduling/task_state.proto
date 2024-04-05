@@ -30,4 +30,5 @@ message TaskWithState {
   TaskState state = 2;
   int64 bbid = 3;
   string lease_id = 4;
+  string device_name = 5;
 }

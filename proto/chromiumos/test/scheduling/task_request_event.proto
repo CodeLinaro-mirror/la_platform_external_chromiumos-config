@@ -28,6 +28,7 @@ message TaskRequestEvent {
   bool asap = 12;
   int64 task_state_id = 13;
   string device_name = 14;
+  string user = 15;
 }
 
 message TaskRequestEvents {
