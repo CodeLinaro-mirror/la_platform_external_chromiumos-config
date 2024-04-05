@@ -28347,6 +28347,14 @@
               "number": 11,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.BuildMetadata.GfxInfo"
+            },
+            {
+              "jsonName": "modemInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "modem_info",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.ModemInfo"
             }
           ],
           "name": "BuildMetadata",

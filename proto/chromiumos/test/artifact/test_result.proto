@@ -226,7 +226,7 @@ message BuildInfo {
 }
 
 // The complete build metadata of the test case.
-// NEXT TAG: 12
+// NEXT TAG: 13
 message BuildMetadata {
   // ARC++ metadata
   message Arc {
@@ -356,6 +356,9 @@ message BuildMetadata {
   }
 
   GfxInfo gfx_info = 11;
+
+  // Modem info that defines modem labels in lab config of a DUT
+  chromiumos.test.lab.api.ModemInfo modem_info = 12;
 }
 
 // Captures DUT related info.
