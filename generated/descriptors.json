@@ -28792,6 +28792,18 @@
         {
           "field": [
             {
+              "jsonName": "ufsZone",
+              "label": "LABEL_OPTIONAL",
+              "name": "ufs_zone",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "InventoryInfo"
+        },
+        {
+          "field": [
+            {
               "jsonName": "project",
               "label": "LABEL_OPTIONAL",
               "name": "project",
@@ -28935,6 +28947,14 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.SatlabInfo"
+            },
+            {
+              "jsonName": "inventoryInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "inventory_info",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.InventoryInfo"
             }
           ],
           "name": "ExecutionInfo",
