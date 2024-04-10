@@ -276,6 +276,11 @@ message HWRequirements {
 message SchedulingUnit {
   Target primary_target = 1;
   repeated Target companion_targets = 2;
+
+  // Lookup Table for resolving placeholders set within the dynamic updates
+  // found under the suite metadata. Stores provision/DUT related
+  // information in regards to an entire SchedulingUnit.
+  map<string, string> dynamic_update_lookup_table = 3;
 }
 
 message SWRequirements{}
@@ -304,7 +309,7 @@ message SwarmingDefinition {
   string variant = 4;
   // Lookup Table for resolving placeholders set within the dynamic updates
   // found under the suite metadata.
-  map<string, string> dynamic_update_lookup_table = 5;
+  map<string, string> dynamic_update_lookup_table = 5[deprecated = true];
 };
 
 // CTPv2Response...

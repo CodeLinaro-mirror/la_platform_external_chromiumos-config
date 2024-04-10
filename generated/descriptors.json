@@ -25666,9 +25666,41 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Target"
+            },
+            {
+              "jsonName": "dynamicUpdateLookupTable",
+              "label": "LABEL_REPEATED",
+              "name": "dynamic_update_lookup_table",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SchedulingUnit.DynamicUpdateLookupTableEntry"
             }
           ],
-          "name": "SchedulingUnit"
+          "name": "SchedulingUnit",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "DynamicUpdateLookupTableEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "name": "SWRequirements"
@@ -25778,6 +25810,9 @@
               "label": "LABEL_REPEATED",
               "name": "dynamic_update_lookup_table",
               "number": 5,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SwarmingDefinition.DynamicUpdateLookupTableEntry"
             }
