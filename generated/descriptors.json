@@ -31707,6 +31707,319 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/timestamp.proto"
+      ],
+      "enumType": [
+        {
+          "name": "BluetoothStack",
+          "value": [
+            {
+              "name": "BLUETOOTH_STACK_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "BLUETOOTH_STACK_BLUEZ",
+              "number": 1
+            },
+            {
+              "name": "BLUETOOTH_STACK_FLOSS",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "BluetoothStackAPI",
+          "value": [
+            {
+              "name": "BLUETOOTH_STACK_API_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "BLUETOOTH_STACK_API_CHAMELEOND",
+              "number": 1
+            },
+            {
+              "name": "BLUETOOTH_STACK_API_PANDORA_FLOSS",
+              "number": 2
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "name": "DeviceInfoRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "macEth0",
+              "label": "LABEL_OPTIONAL",
+              "name": "mac_eth0",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "ipv4Address",
+              "label": "LABEL_OPTIONAL",
+              "name": "ipv4_address",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "osVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_version",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "bluezVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "bluez_version",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "chameleondCommit",
+              "label": "LABEL_OPTIONAL",
+              "name": "chameleond_commit",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "btpeerdCommit",
+              "label": "LABEL_OPTIONAL",
+              "name": "btpeerd_commit",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DeviceInfoResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "activeState",
+              "label": "LABEL_OPTIONAL",
+              "name": "active_state",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "stateChangeTimestamp",
+              "label": "LABEL_OPTIONAL",
+              "name": "state_change_timestamp",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            }
+          ],
+          "name": "SystemdUnitStatus"
+        },
+        {
+          "name": "DeviceStatusRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "btpeerdServiceStatus",
+              "label": "LABEL_OPTIONAL",
+              "name": "btpeerd_service_status",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.btpeerd.SystemdUnitStatus"
+            },
+            {
+              "jsonName": "chameleondServiceStatus",
+              "label": "LABEL_OPTIONAL",
+              "name": "chameleond_service_status",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.btpeerd.SystemdUnitStatus"
+            },
+            {
+              "jsonName": "bluetoothServiceStatus",
+              "label": "LABEL_OPTIONAL",
+              "name": "bluetooth_service_status",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.btpeerd.SystemdUnitStatus"
+            },
+            {
+              "jsonName": "uptime",
+              "label": "LABEL_OPTIONAL",
+              "name": "uptime",
+              "number": 4,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DeviceStatusResponse"
+        },
+        {
+          "name": "RebootRequest"
+        },
+        {
+          "name": "RebootResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "bluetoothStack",
+              "label": "LABEL_OPTIONAL",
+              "name": "bluetooth_stack",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.btpeerd.BluetoothStack"
+            }
+          ],
+          "name": "SetActiveBluetoothStackRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stackChanged",
+              "label": "LABEL_OPTIONAL",
+              "name": "stack_changed",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "SetActiveBluetoothStackResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "bluetoothStackApi",
+              "label": "LABEL_OPTIONAL",
+              "name": "bluetooth_stack_api",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.btpeerd.BluetoothStackAPI"
+            }
+          ],
+          "name": "SetActiveBluetoothStackAPIRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stackApiChanged",
+              "label": "LABEL_OPTIONAL",
+              "name": "stack_api_changed",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "servicePort",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_port",
+              "number": 2,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "SetActiveBluetoothStackAPIResponse"
+        },
+        {
+          "name": "GetActiveBluetoothStackRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "bluetoothStack",
+              "label": "LABEL_OPTIONAL",
+              "name": "bluetooth_stack",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.btpeerd.BluetoothStack"
+            }
+          ],
+          "name": "GetActiveBluetoothStackResponse"
+        },
+        {
+          "name": "GetActiveBluetoothStackAPIRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "bluetoothStackApi",
+              "label": "LABEL_OPTIONAL",
+              "name": "bluetooth_stack_api",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.btpeerd.BluetoothStackAPI"
+            }
+          ],
+          "name": "GetActiveBluetoothStackAPIResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/btpeerd/btpeer_management_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/btpeerd"
+      },
+      "package": "chromiumos.test.lab.api.btpeerd",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.btpeerd.DeviceInfoRequest",
+              "name": "DeviceInfo",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.btpeerd.DeviceInfoResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.btpeerd.DeviceStatusRequest",
+              "name": "DeviceStatus",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.btpeerd.DeviceStatusResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.btpeerd.RebootRequest",
+              "name": "Reboot",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.btpeerd.RebootResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackRequest",
+              "name": "GetActiveBluetoothStack",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackRequest",
+              "name": "SetActiveBluetoothStack",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackAPIRequest",
+              "name": "GetActiveBluetoothStackAPI",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackAPIResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackAPIRequest",
+              "name": "SetActiveBluetoothStackAPI",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackAPIResponse"
+            }
+          ],
+          "name": "BtpeerManagementService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
