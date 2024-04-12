@@ -184,7 +184,12 @@ message Cellular {
     TMOBILE = 3;
   }
   // Cellular operators supported by the SIM installed in the device.
+  // Note this is not used as it has been superseded by SimInfo.
   repeated Operator operators = 1;
+
+  // Carrier is the DUTs carrier name/type from:
+  // https://source.chromium.org/chromium/infra/infra/+/main:go/src/infra/unifiedfleet/api/v1/models/chromeos/lab/peripherals.proto;l=31
+  string carrier = 2;
 }
 
 // ModemInfo is adapted from ufs and should be kept in sync with:

@@ -18060,6 +18060,13 @@
               "number": 1,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.Cellular.Operator"
+            },
+            {
+              "jsonName": "carrier",
+              "label": "LABEL_OPTIONAL",
+              "name": "carrier",
+              "number": 2,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "Cellular"
