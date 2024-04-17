@@ -125,7 +125,7 @@
 		},
 		{
 			"id": {
-				"value": "firmware_ro"
+				"value": "firmware_rorw"
 			},
 			"metadata": {
 				"owners": [

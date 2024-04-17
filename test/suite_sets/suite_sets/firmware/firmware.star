@@ -63,9 +63,9 @@ def _faft_rw():
         suites = ["faft_bios_rw_qual"],
     )
 
-def _firmware_ro():
+def _firmware_rorw():
     return create.suite_set(
-        suite_set_id = "firmware_ro",
+        suite_set_id = "firmware_rorw",
         owners = shared_owners,
         bug_component = shared_bug_component,
         criteria = "All tests needed to qualify the device firmware for RO/RW release.",
@@ -88,7 +88,7 @@ def _all_suite_sets():
         _faft_common(),
         _faft_ro(),
         _faft_rw(),
-        _firmware_ro(),
+        _firmware_rorw(),
         _firmware_rw(),
     ]
 
