@@ -107,10 +107,16 @@
 					"value": "tast.apps.LaunchGalleryFromNotifications.stable"
 				},
 				{
-					"value": "tast.apps.LaunchHelpAppFromLauncher.stable"
+					"value": "tast.apps.LaunchHelpAppFromLauncher.stable_fieldtrial_testing_config_off"
 				},
 				{
-					"value": "tast.apps.LaunchHelpAppFromSettings.stable"
+					"value": "tast.apps.LaunchHelpAppFromLauncher.stable_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppFromSettings.stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppFromSettings.stable_fieldtrial_testing_config_on"
 				},
 				{
 					"value": "tast.apps.LaunchHelpAppFromShortcut.stable"
@@ -119,22 +125,34 @@
 					"value": "tast.apps.LaunchHelpAppFromShortcut.stable_guest"
 				},
 				{
-					"value": "tast.apps.LaunchHelpAppInBrowserMenu.stable"
+					"value": "tast.apps.LaunchHelpAppInBrowserMenu.stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppInBrowserMenu.stable_fieldtrial_testing_config_on"
 				},
 				{
 					"value": "tast.apps.LaunchHelpAppOffline"
 				},
 				{
-					"value": "tast.apps.LaunchHelpAppOnManagedDevice.logged_in_stable"
+					"value": "tast.apps.LaunchHelpAppOnManagedDevice.logged_in_stable_fieldtrial_testing_config_off"
 				},
 				{
-					"value": "tast.apps.LaunchHelpAppOnManagedDevice.oobe_stable"
+					"value": "tast.apps.LaunchHelpAppOnManagedDevice.logged_in_stable_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppOnManagedDevice.oobe_stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppOnManagedDevice.oobe_stable_fieldtrial_testing_config_on"
 				},
 				{
 					"value": "tast.apps.LaunchHelpLanguage"
 				},
 				{
-					"value": "tast.apps.LaunchReleaseNotesFromSettings.stable"
+					"value": "tast.apps.LaunchReleaseNotesFromSettings.stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchReleaseNotesFromSettings.stable_fieldtrial_testing_config_on"
 				},
 				{
 					"value": "tast.apps.LaunchSystemWebAppsFromURL"
@@ -356,9 +374,6 @@
 					"value": "tast.arc.MIDIClient.vm"
 				},
 				{
-					"value": "tast.arc.ManagedAppInstallLogging"
-				},
-				{
 					"value": "tast.arc.ManagedAppInstallLogging.using_encrypted_reporting"
 				},
 				{
@@ -371,15 +386,6 @@
 					"value": "tast.arc.ManagedBoot.enabled"
 				},
 				{
-					"value": "tast.arc.ManagedConfigurationVars"
-				},
-				{
-					"value": "tast.arc.ManagedPlayAvailableAppInstall"
-				},
-				{
-					"value": "tast.arc.ManagedPlayAvailableAppUninstall"
-				},
-				{
 					"value": "tast.arc.ManagedPlayBlockedAppInstall"
 				},
 				{
@@ -387,12 +393,6 @@
 				},
 				{
 					"value": "tast.arc.ManagedPlayForcedAppInstall"
-				},
-				{
-					"value": "tast.arc.ManagedPlayStore3pEmm"
-				},
-				{
-					"value": "tast.arc.ManagedPlayStoreIcon.disabled"
 				},
 				{
 					"value": "tast.arc.ManagedPlayStoreIcon.disabled_vm"
@@ -1664,7 +1664,16 @@
 					"value": "tast.crostini.Xattrs.bookworm_stable"
 				},
 				{
+					"value": "tast.cryptohome.AddRemoveFactors"
+				},
+				{
 					"value": "tast.cryptohome.AddRemoveFactorsEphemeral"
+				},
+				{
+					"value": "tast.cryptohome.AddRemoveFactorsPasswordless.password_first"
+				},
+				{
+					"value": "tast.cryptohome.AddRemoveFactorsPasswordless.pin_only"
 				},
 				{
 					"value": "tast.cryptohome.AddRemovePIN"
@@ -1674,6 +1683,9 @@
 				},
 				{
 					"value": "tast.cryptohome.AuthSessionUnlockEphemeral"
+				},
+				{
+					"value": "tast.cryptohome.ConcurrentSessions"
 				},
 				{
 					"value": "tast.cryptohome.FileStability.normal"
@@ -1694,10 +1706,28 @@
 					"value": "tast.cryptohome.KioskEphemeralMount"
 				},
 				{
+					"value": "tast.cryptohome.KioskPersistentMount"
+				},
+				{
 					"value": "tast.cryptohome.LegacyLabelAuthSession.with_key_data"
 				},
 				{
 					"value": "tast.cryptohome.LegacyLabelAuthSession.without_key_data"
+				},
+				{
+					"value": "tast.cryptohome.Recovery"
+				},
+				{
+					"value": "tast.cryptohome.RecoveryLockedForAuth"
+				},
+				{
+					"value": "tast.cryptohome.RecoveryWithUSSMigration"
+				},
+				{
+					"value": "tast.cryptohome.RelabelFactors"
+				},
+				{
+					"value": "tast.cryptohome.ReplaceFactors"
 				},
 				{
 					"value": "tast.cryptohome.SequentialConsistency.normal"
@@ -1952,12 +1982,6 @@
 					"value": "tast.firmware.FpUpdaterSucceeded"
 				},
 				{
-					"value": "tast.firmware.FwupdDetectPS175"
-				},
-				{
-					"value": "tast.firmware.FwupdDetectRTD2142"
-				},
-				{
 					"value": "tast.firmware.GSCtool"
 				},
 				{
@@ -2150,6 +2174,9 @@
 					"value": "tast.health.DiagnosticsRun.dns_latency"
 				},
 				{
+					"value": "tast.health.DiagnosticsRun.emmc_lifetime"
+				},
+				{
 					"value": "tast.health.DiagnosticsRun.gateway_can_be_pinged"
 				},
 				{
@@ -2160,9 +2187,6 @@
 				},
 				{
 					"value": "tast.health.DiagnosticsRun.nvme_self_test"
-				},
-				{
-					"value": "tast.health.DiagnosticsRun.nvme_wear_level"
 				},
 				{
 					"value": "tast.health.DiagnosticsRun.signal_strength"
@@ -2250,6 +2274,9 @@
 				},
 				{
 					"value": "tast.health.ProbeCPUInfo"
+				},
+				{
+					"value": "tast.health.ProbeDisplayInfo"
 				},
 				{
 					"value": "tast.health.ProbeFanInfo"
@@ -2858,12 +2885,6 @@
 					"value": "tast.inputs.VirtualKeyboardJapaneseInputMode"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardLoginScreen.clamshell"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardLoginScreen.tablet"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardMultipaste"
 				},
 				{
@@ -2898,24 +2919,6 @@
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardTypingInputFields.lacros"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardTypingOmnibox"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardTypingOmnibox.a11y"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardTypingOmnibox.a11y_lacros"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardTypingOmnibox.guest"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardTypingOmnibox.guest_lacros"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardTypingOmnibox.lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardTypingUserMode.guest"
@@ -3096,12 +3099,6 @@
 				},
 				{
 					"value": "tast.network.ARCIPv6Connectivity.v6only"
-				},
-				{
-					"value": "tast.network.ARCMultiNetworking"
-				},
-				{
-					"value": "tast.network.ARCMultiNetworking.vm"
 				},
 				{
 					"value": "tast.network.ARCMultiNetworkingConnectivity"
@@ -3447,6 +3444,12 @@
 				},
 				{
 					"value": "tast.power.SetupCheck"
+				},
+				{
+					"value": "tast.power.Suspend"
+				},
+				{
+					"value": "tast.power.Suspend.nofwupd"
 				},
 				{
 					"value": "tast.power.UtilCheck"
@@ -3962,22 +3965,22 @@
 					"value": "tast.security.RunOCI"
 				},
 				{
-					"value": "tast.security.SELinuxFilesARC"
+					"value": "tast.security.SELinuxFilesARC.arcpp_user"
 				},
 				{
-					"value": "tast.security.SELinuxFilesARC.vm"
+					"value": "tast.security.SELinuxFilesARC.arcvm_user"
 				},
 				{
-					"value": "tast.security.SELinuxFilesDataDir"
+					"value": "tast.security.SELinuxFilesDataDir.arcpp_user"
 				},
 				{
-					"value": "tast.security.SELinuxFilesDataDir.vm"
-				},
-				{
-					"value": "tast.security.SELinuxFilesSystem"
+					"value": "tast.security.SELinuxFilesDataDir.arcvm_user"
 				},
 				{
 					"value": "tast.security.SELinuxProcesses"
+				},
+				{
+					"value": "tast.security.SELinuxRootFS"
 				},
 				{
 					"value": "tast.security.SELinuxValidity"
@@ -4070,6 +4073,9 @@
 					"value": "tast.terminal.SSH"
 				},
 				{
+					"value": "tast.tflite.DTS"
+				},
+				{
 					"value": "tast.typec.Typecd"
 				},
 				{
@@ -4106,10 +4112,22 @@
 					"value": "tast.ui.ChromeCrashLoggedIn.browser_crashpad_mock_consent"
 				},
 				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_crashpad_mock_consent_field_trials_off"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_crashpad_mock_consent_field_trials_on"
+				},
+				{
 					"value": "tast.ui.ChromeCrashLoggedIn.browser_lacros_crashpad"
 				},
 				{
 					"value": "tast.ui.ChromeCrashLoggedIn.browser_lacros_crashpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_lacros_crashpad_mock_consent_field_trials_off"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_lacros_crashpad_mock_consent_field_trials_on"
 				},
 				{
 					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_breakpad"
@@ -4124,10 +4142,22 @@
 					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_crashpad_mock_consent"
 				},
 				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_crashpad_mock_consent_field_trial_off"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_crashpad_mock_consent_field_trial_on"
+				},
+				{
 					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_lacros_crashpad"
 				},
 				{
 					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_lacros_crashpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_lacros_crashpad_mock_consent_field_trial_off"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_lacros_crashpad_mock_consent_field_trial_on"
 				},
 				{
 					"value": "tast.ui.ChromeCrashLoggedInDirect.breakpad"
@@ -4226,6 +4256,21 @@
 					"value": "tast.ui.WebUIJSErrors"
 				},
 				{
+					"value": "tast.ui.WebUIJSErrors.field_trial_off"
+				},
+				{
+					"value": "tast.ui.WebUIJSErrors.field_trial_on"
+				},
+				{
+					"value": "tast.ui.WebUIJSErrors.lacros"
+				},
+				{
+					"value": "tast.ui.WebUIJSErrors.lacros_field_trial_off"
+				},
+				{
+					"value": "tast.ui.WebUIJSErrors.lacros_field_trial_on"
+				},
+				{
 					"value": "tast.ui.WindowControl"
 				},
 				{
@@ -4290,6 +4335,9 @@
 				},
 				{
 					"value": "tast.vm.SyncTimeSlimRootfsVM"
+				},
+				{
+					"value": "tast.vm.VhostUserNet"
 				},
 				{
 					"value": "tast.wifi.Caps"
@@ -5741,13 +5789,25 @@
 					"value": "tast.firmware.PDDataSwap.dtsoff"
 				},
 				{
+					"value": "tast.firmware.PDDataSwap.dtsoff_snk"
+				},
+				{
 					"value": "tast.firmware.PDDataSwap.flipcc"
 				},
 				{
 					"value": "tast.firmware.PDDataSwap.flipcc_dtsoff"
 				},
 				{
+					"value": "tast.firmware.PDDataSwap.flipcc_dtsoff_snk"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.flipcc_snk"
+				},
+				{
 					"value": "tast.firmware.PDDataSwap.normal"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.normal_snk"
 				},
 				{
 					"value": "tast.firmware.PDDataSwap.shutdown"
