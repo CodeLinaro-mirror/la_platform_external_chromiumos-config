@@ -872,6 +872,9 @@
 					"value": "tast.bruschetta.Basic"
 				},
 				{
+					"value": "tast.bruschetta.Basic.with_fieldtrial_config"
+				},
+				{
 					"value": "tast.bruschetta.CommandVim"
 				},
 				{
@@ -930,6 +933,9 @@
 				},
 				{
 					"value": "tast.bruschetta.Toolkit.tkinter"
+				},
+				{
+					"value": "tast.bruschetta.USBStorage"
 				},
 				{
 					"value": "tast.bruschetta.VerifyAppWayland"
@@ -1718,10 +1724,19 @@
 					"value": "tast.cryptohome.Recovery"
 				},
 				{
+					"value": "tast.cryptohome.Recovery.legacy"
+				},
+				{
 					"value": "tast.cryptohome.RecoveryLockedForAuth"
 				},
 				{
+					"value": "tast.cryptohome.RecoveryLockedForAuth.legacy"
+				},
+				{
 					"value": "tast.cryptohome.RecoveryWithUSSMigration"
+				},
+				{
+					"value": "tast.cryptohome.RecoveryWithUSSMigration.legacy"
 				},
 				{
 					"value": "tast.cryptohome.RelabelFactors"
