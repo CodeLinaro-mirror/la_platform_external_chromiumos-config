@@ -501,8 +501,15 @@ message SatlabInfo {
   DroneInfo drone_info = 3;
 }
 
+// Captures Partner related info.
+// NEXT TAG: 2
+message PartnerInfo {
+  // Teshaus account id of the partner.
+  int64 account_id = 1;
+}
+
 // Captures test execution related information for the test run.
-// NEXT TAG: 6
+// NEXT TAG: 7
 message ExecutionInfo {
   // ChromeOS build associated with the test run.
   BuildInfo build_info = 1;
@@ -518,6 +525,9 @@ message ExecutionInfo {
 
   // Inventory info associated with the test run.
   InventoryInfo inventory_info = 5;
+
+  // Partner info associated with the test run.
+  PartnerInfo partner_info = 6;
 }
 
 // Represents custom result, as a way for tests to produce arbitrary artifacts.

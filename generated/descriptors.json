@@ -28922,6 +28922,18 @@
         {
           "field": [
             {
+              "jsonName": "accountId",
+              "label": "LABEL_OPTIONAL",
+              "name": "account_id",
+              "number": 1,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "PartnerInfo"
+        },
+        {
+          "field": [
+            {
               "jsonName": "buildInfo",
               "label": "LABEL_OPTIONAL",
               "name": "build_info",
@@ -28962,6 +28974,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.InventoryInfo"
+            },
+            {
+              "jsonName": "partnerInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "partner_info",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.PartnerInfo"
             }
           ],
           "name": "ExecutionInfo",
