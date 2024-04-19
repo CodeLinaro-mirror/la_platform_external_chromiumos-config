@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copyright 2020 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -18,12 +20,26 @@ if [[ -z "${script_dir}" ]]; then
      exit 1
 fi
 
+# Check if you're in a git checkout. If you're not, you're very likely in a cog
+# and should place cipd outside the current working dir.
+# TODO(engeg): Clean up the created tmp directory.
+set +e
+
+if ! git status &>/dev/null; then
+     echo "Not within a git repo, setting CIPD_ROOT to a temp dir."
+     CIPD_ROOT=$(mktemp -d)
+     readonly CIPD_ROOT
+else
+     CIPD_ROOT="${script_dir}/.cipd_bin"
+     readonly CIPD_ROOT
+fi
+set -e
+
 # Versions of packages to get from CIPD.
 readonly CIPD_PROTOC_VERSION='3.17.1'
 readonly CIPD_BUF_VERSION='0.46.0'
 
 GOBIN="${script_dir}/.go_bin"
-readonly CIPD_ROOT="${script_dir}/.cipd_bin"
 cipd ensure \
      -log-level warning \
      -root "${CIPD_ROOT}" \

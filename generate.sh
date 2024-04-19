@@ -9,8 +9,22 @@
 # Allows the recursive glob for proto files below to work.
 shopt -s globstar
 
+sha256_even_empty() {
+  sha256sum <( [ -e "${1}" ] || echo )
+}
+
+script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
+readonly script_dir
+cd "${script_dir}"
+
 readonly desc_file="generated/descriptors.json"
 readonly gen_owners="generated/OWNERS"
+
+desc_file_sha=$(sha256_even_empty "${desc_file}")
+readonly desc_file_sha
+
+gen_owners_sha=$(sha256_even_empty "${gen_owners}")
+readonly gen_owners_sha
 
 regenerate_golden() {
     # We want to split --path from the filenames so silence warning.
@@ -37,12 +51,9 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
-readonly script_dir
-
-cd "${script_dir}"
 ./generate_grpc_py_bindings.sh
-source "./setup_cipd.sh" # uses script_dir
+
+source "setup_cipd.sh"
 
 if [[ "${regen_golden}" -eq 1 ]]; then
   echo "Forcing regenerating of golden proto descriptors."
@@ -85,7 +96,7 @@ buf build --exclude-imports --exclude-source-info \
     | jq -S > "${desc_file}"
 
 # Check if golden file changed and inform use to commit it.
-if ! git diff --quiet "${desc_file}"; then
+if [[ "$(sha256_even_empty "${desc_file}")" != "${desc_file_sha}" ]]; then
   echo
   echo "Please commit ${desc_file} with your change"
 else
@@ -150,7 +161,8 @@ echo "== Generating OWNERS file for generated code paths"
 find proto/* -type f -name "OWNERS*" -exec cat {} + | grep -E '^include' | sort | uniq >> "${gen_owners}"
 find proto/* -type f -name "OWNERS*" -exec cat {} + | grep -E '^[a-z0-9]+@.+\..+' | sort | uniq >> "${gen_owners}"
 
-if ! git diff --quiet "${gen_owners}"; then
+
+if [[ $(sha256_even_empty "${gen_owners}") != "${gen_owners_sha}" ]]; then
   echo
   echo "An OWNERS file was updated in the src/config/proto directory."
   echo "${gen_owners} was automatically updated based on this change."
