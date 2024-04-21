@@ -28007,6 +28007,14 @@
               "name": "is_cft_run",
               "number": 7,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "projectTrackerMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "project_tracker_metadata",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.ProjectTrackerMetadata"
             }
           ],
           "name": "TestInvocation",
@@ -29126,6 +29134,18 @@
               }
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "bugId",
+              "label": "LABEL_OPTIONAL",
+              "name": "bug_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ProjectTrackerMetadata"
         },
         {
           "field": [

@@ -31,7 +31,7 @@ message TestResult {
 }
 
 // Captures invocation-level information for test results.
-// NEXT TAG: 8
+// NEXT TAG: 9
 message TestInvocation {
   // The test environment specific information.
   TestEnvironment test_environment = 1;
@@ -73,6 +73,10 @@ message TestInvocation {
 
   // Flag to indicate whether tests are run in CFT.
   bool is_cft_run = 7;
+
+  // The metadata associated with project tracker within the same test
+  // invocation.
+  ProjectTrackerMetadata project_tracker_metadata = 8;
 }
 
 // Captures the test environment that produced the test invocation,
@@ -590,6 +594,14 @@ message SchedulingMetadata {
   // The timing information of the scheduling task,
   // e.g. fast, slow, extendedtimeout, ordering etc.
   TimingInfo time_info = 3;
+}
+
+// Metadata associated with project tracker.
+// NEXT TAG: 2
+message ProjectTrackerMetadata {
+  // Bug ID from test args that are set by users.
+  // Example: "12345"
+  string bug_id = 1;
 }
 
 // Metadata associated with the test execution. The execution metadata are
