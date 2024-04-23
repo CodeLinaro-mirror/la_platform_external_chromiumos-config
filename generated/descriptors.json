@@ -25343,6 +25343,13 @@
               "name": "binary_name",
               "number": 2,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "binaryArgs",
+              "label": "LABEL_REPEATED",
+              "name": "binary_args",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "ContainerInfo"

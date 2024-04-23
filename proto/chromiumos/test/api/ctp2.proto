@@ -190,6 +190,8 @@ message ContainerInfo {
   chromiumos.build.api.ContainerImageInfo container = 1;
   // binary name that will be used to invoke grpc endpoint of the container.
   string binary_name = 2;
+  // binary args that act as configuration settings for the container.
+  repeated string binary_args = 3;
 }
 
 message Reserved {}
