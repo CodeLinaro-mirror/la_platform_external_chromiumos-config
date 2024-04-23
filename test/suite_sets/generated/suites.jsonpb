@@ -3281,16 +3281,10 @@
 					"value": "tast.network.VPNRouting.wireguard_ipv6"
 				},
 				{
-					"value": "tast.oobe.Smoke.fieldtrial_testing_config_off_with_fixture"
+					"value": "tast.oobe.Smoke.fieldtrial_testing_config_off"
 				},
 				{
-					"value": "tast.oobe.Smoke.fieldtrial_testing_config_off_without_fixture"
-				},
-				{
-					"value": "tast.oobe.Smoke.fieldtrial_testing_config_on_with_fixture"
-				},
-				{
-					"value": "tast.oobe.Smoke.fieldtrial_testing_config_on_without_fixture"
+					"value": "tast.oobe.Smoke.fieldtrial_testing_config_on"
 				},
 				{
 					"value": "tast.peripherals.LaunchAppFromGuestSession.diagnostics"
