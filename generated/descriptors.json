@@ -28022,6 +28022,14 @@
               "number": 8,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.ProjectTrackerMetadata"
+            },
+            {
+              "jsonName": "partnerInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "partner_info",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.PartnerInfo"
             }
           ],
           "name": "TestInvocation",
@@ -28989,14 +28997,6 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.InventoryInfo"
-            },
-            {
-              "jsonName": "partnerInfo",
-              "label": "LABEL_OPTIONAL",
-              "name": "partner_info",
-              "number": 6,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.PartnerInfo"
             }
           ],
           "name": "ExecutionInfo",
