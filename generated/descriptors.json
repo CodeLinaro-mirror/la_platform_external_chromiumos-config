@@ -31638,6 +31638,9 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/timestamp.proto"
+      ],
       "messageType": [
         {
           "field": [
@@ -31698,6 +31701,113 @@
                 }
               ],
               "name": "ChameleondBundle"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "currentImageUuid",
+              "label": "LABEL_OPTIONAL",
+              "name": "current_image_uuid",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "nextImageUuid",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_image_uuid",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "nextImageVerificationDutPool",
+              "label": "LABEL_REPEATED",
+              "name": "next_image_verification_dut_pool",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "images",
+              "label": "LABEL_REPEATED",
+              "name": "images",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.OSImage"
+            }
+          ],
+          "name": "RaspiosCrosBtpeerImageConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "uuid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "uuid",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "path",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "path",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "OSImage"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "imageUuid",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_uuid",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "imageBuildTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_build_time",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "sources",
+              "label": "LABEL_REPEATED",
+              "name": "sources",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo.SourcesEntry"
+            }
+          ],
+          "name": "RaspiosCrosBtpeerImageBuildInfo",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "SourcesEntry",
+              "options": {
+                "mapEntry": true
+              }
             }
           ]
         }

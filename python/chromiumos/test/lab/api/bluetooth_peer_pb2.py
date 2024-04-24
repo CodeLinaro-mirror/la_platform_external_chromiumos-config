@@ -11,6 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -19,8 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/test/lab/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n,chromiumos/test/lab/api/bluetooth_peer.proto\x12\x17\x63hromiumos.test.lab.api\"\xba\x02\n\x1d\x42luetoothPeerChameleondConfig\x12\x1e\n\x16next_chameleond_commit\x18\x01 \x01(\t\x12\x16\n\x0enext_dut_hosts\x18\x02 \x03(\t\x12!\n\x19next_dut_release_versions\x18\x03 \x03(\t\x12X\n\x07\x62undles\x18\x04 \x03(\x0b\x32G.chromiumos.test.lab.api.BluetoothPeerChameleondConfig.ChameleondBundle\x1a\x64\n\x10\x43hameleondBundle\x12\x19\n\x11\x63hameleond_commit\x18\x01 \x01(\t\x12\x14\n\x0c\x61rchive_path\x18\x02 \x01(\t\x12\x1f\n\x17min_dut_release_version\x18\x03 \x01(\tB3Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
-)
+  serialized_pb=b'\n,chromiumos/test/lab/api/bluetooth_peer.proto\x12\x17\x63hromiumos.test.lab.api\x1a\x1fgoogle/protobuf/timestamp.proto\"\xba\x02\n\x1d\x42luetoothPeerChameleondConfig\x12\x1e\n\x16next_chameleond_commit\x18\x01 \x01(\t\x12\x16\n\x0enext_dut_hosts\x18\x02 \x03(\t\x12!\n\x19next_dut_release_versions\x18\x03 \x03(\t\x12X\n\x07\x62undles\x18\x04 \x03(\x0b\x32G.chromiumos.test.lab.api.BluetoothPeerChameleondConfig.ChameleondBundle\x1a\x64\n\x10\x43hameleondBundle\x12\x19\n\x11\x63hameleond_commit\x18\x01 \x01(\t\x12\x14\n\x0c\x61rchive_path\x18\x02 \x01(\t\x12\x1f\n\x17min_dut_release_version\x18\x03 \x01(\t\"\xf3\x01\n\x1cRaspiosCrosBtpeerImageConfig\x12\x1a\n\x12\x63urrent_image_uuid\x18\x01 \x01(\t\x12\x17\n\x0fnext_image_uuid\x18\x02 \x01(\t\x12(\n next_image_verification_dut_pool\x18\x03 \x03(\t\x12M\n\x06images\x18\x04 \x03(\x0b\x32=.chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.OSImage\x1a%\n\x07OSImage\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\"\xf3\x01\n\x1fRaspiosCrosBtpeerImageBuildInfo\x12\x12\n\nimage_uuid\x18\x01 \x01(\t\x12\x34\n\x10image_build_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12V\n\x07sources\x18\x03 \x03(\x0b\x32\x45.chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo.SourcesEntry\x1a.\n\x0cSourcesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x33Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
+  ,
+  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 
 
@@ -66,8 +68,8 @@ _BLUETOOTHPEERCHAMELEONDCONFIG_CHAMELEONDBUNDLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=288,
-  serialized_end=388,
+  serialized_start=321,
+  serialized_end=421,
 )
 
 _BLUETOOTHPEERCHAMELEONDCONFIG = _descriptor.Descriptor(
@@ -118,13 +120,195 @@ _BLUETOOTHPEERCHAMELEONDCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=74,
-  serialized_end=388,
+  serialized_start=107,
+  serialized_end=421,
+)
+
+
+_RASPIOSCROSBTPEERIMAGECONFIG_OSIMAGE = _descriptor.Descriptor(
+  name='OSImage',
+  full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.OSImage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='uuid', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.OSImage.uuid', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='path', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.OSImage.path', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=630,
+  serialized_end=667,
+)
+
+_RASPIOSCROSBTPEERIMAGECONFIG = _descriptor.Descriptor(
+  name='RaspiosCrosBtpeerImageConfig',
+  full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='current_image_uuid', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.current_image_uuid', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='next_image_uuid', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.next_image_uuid', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='next_image_verification_dut_pool', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.next_image_verification_dut_pool', index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='images', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.images', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_RASPIOSCROSBTPEERIMAGECONFIG_OSIMAGE, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=424,
+  serialized_end=667,
+)
+
+
+_RASPIOSCROSBTPEERIMAGEBUILDINFO_SOURCESENTRY = _descriptor.Descriptor(
+  name='SourcesEntry',
+  full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo.SourcesEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo.SourcesEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo.SourcesEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=867,
+  serialized_end=913,
+)
+
+_RASPIOSCROSBTPEERIMAGEBUILDINFO = _descriptor.Descriptor(
+  name='RaspiosCrosBtpeerImageBuildInfo',
+  full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='image_uuid', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo.image_uuid', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='image_build_time', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo.image_build_time', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='sources', full_name='chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo.sources', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_RASPIOSCROSBTPEERIMAGEBUILDINFO_SOURCESENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=670,
+  serialized_end=913,
 )
 
 _BLUETOOTHPEERCHAMELEONDCONFIG_CHAMELEONDBUNDLE.containing_type = _BLUETOOTHPEERCHAMELEONDCONFIG
 _BLUETOOTHPEERCHAMELEONDCONFIG.fields_by_name['bundles'].message_type = _BLUETOOTHPEERCHAMELEONDCONFIG_CHAMELEONDBUNDLE
+_RASPIOSCROSBTPEERIMAGECONFIG_OSIMAGE.containing_type = _RASPIOSCROSBTPEERIMAGECONFIG
+_RASPIOSCROSBTPEERIMAGECONFIG.fields_by_name['images'].message_type = _RASPIOSCROSBTPEERIMAGECONFIG_OSIMAGE
+_RASPIOSCROSBTPEERIMAGEBUILDINFO_SOURCESENTRY.containing_type = _RASPIOSCROSBTPEERIMAGEBUILDINFO
+_RASPIOSCROSBTPEERIMAGEBUILDINFO.fields_by_name['image_build_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_RASPIOSCROSBTPEERIMAGEBUILDINFO.fields_by_name['sources'].message_type = _RASPIOSCROSBTPEERIMAGEBUILDINFO_SOURCESENTRY
 DESCRIPTOR.message_types_by_name['BluetoothPeerChameleondConfig'] = _BLUETOOTHPEERCHAMELEONDCONFIG
+DESCRIPTOR.message_types_by_name['RaspiosCrosBtpeerImageConfig'] = _RASPIOSCROSBTPEERIMAGECONFIG
+DESCRIPTOR.message_types_by_name['RaspiosCrosBtpeerImageBuildInfo'] = _RASPIOSCROSBTPEERIMAGEBUILDINFO
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 BluetoothPeerChameleondConfig = _reflection.GeneratedProtocolMessageType('BluetoothPeerChameleondConfig', (_message.Message,), {
@@ -142,6 +326,37 @@ BluetoothPeerChameleondConfig = _reflection.GeneratedProtocolMessageType('Blueto
 _sym_db.RegisterMessage(BluetoothPeerChameleondConfig)
 _sym_db.RegisterMessage(BluetoothPeerChameleondConfig.ChameleondBundle)
 
+RaspiosCrosBtpeerImageConfig = _reflection.GeneratedProtocolMessageType('RaspiosCrosBtpeerImageConfig', (_message.Message,), {
+
+  'OSImage' : _reflection.GeneratedProtocolMessageType('OSImage', (_message.Message,), {
+    'DESCRIPTOR' : _RASPIOSCROSBTPEERIMAGECONFIG_OSIMAGE,
+    '__module__' : 'chromiumos.test.lab.api.bluetooth_peer_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig.OSImage)
+    })
+  ,
+  'DESCRIPTOR' : _RASPIOSCROSBTPEERIMAGECONFIG,
+  '__module__' : 'chromiumos.test.lab.api.bluetooth_peer_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.RaspiosCrosBtpeerImageConfig)
+  })
+_sym_db.RegisterMessage(RaspiosCrosBtpeerImageConfig)
+_sym_db.RegisterMessage(RaspiosCrosBtpeerImageConfig.OSImage)
+
+RaspiosCrosBtpeerImageBuildInfo = _reflection.GeneratedProtocolMessageType('RaspiosCrosBtpeerImageBuildInfo', (_message.Message,), {
+
+  'SourcesEntry' : _reflection.GeneratedProtocolMessageType('SourcesEntry', (_message.Message,), {
+    'DESCRIPTOR' : _RASPIOSCROSBTPEERIMAGEBUILDINFO_SOURCESENTRY,
+    '__module__' : 'chromiumos.test.lab.api.bluetooth_peer_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo.SourcesEntry)
+    })
+  ,
+  'DESCRIPTOR' : _RASPIOSCROSBTPEERIMAGEBUILDINFO,
+  '__module__' : 'chromiumos.test.lab.api.bluetooth_peer_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.lab.api.RaspiosCrosBtpeerImageBuildInfo)
+  })
+_sym_db.RegisterMessage(RaspiosCrosBtpeerImageBuildInfo)
+_sym_db.RegisterMessage(RaspiosCrosBtpeerImageBuildInfo.SourcesEntry)
+
 
 DESCRIPTOR._options = None
+_RASPIOSCROSBTPEERIMAGEBUILDINFO_SOURCESENTRY._options = None
 # @@protoc_insertion_point(module_scope)

@@ -8,6 +8,8 @@ package chromiumos.test.lab.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 
+import "google/protobuf/timestamp.proto";
+
 // BluetoothPeerChameleondConfig is the format of the btpeer chameleond config
 // JSON file stored in GCS that contains configuration information which maps
 // different chameleond bundles to use for btpeers to DUT release versions.
@@ -94,4 +96,56 @@ message BluetoothPeerChameleondConfig {
 
   // The released bundles to available for btpeers.
   repeated ChameleondBundle bundles = 4;
+}
+
+// RaspiosCrosBtpeerImageConfig defines which custom ChromeOS Raspios image
+// should be used for a given Raspberry Pi btpeer and DUT.
+message RaspiosCrosBtpeerImageConfig {
+  // OSImage describes a released OS image available for download.
+  // Must contain images with uuids that match current_image_uuid and non-empty
+  // next_image_uuid values.
+  message OSImage {
+    // The unique ID of the image.
+    string uuid = 1;
+
+    // The path to the image file. Should be a full GCS path.
+    //
+    // Image file extension should describe the compression format used:
+    //  *.img = no compression
+    //  *.img.gz = gz compression
+    //  *.img.xz = xz compression
+    string path = 2;
+  }
+
+  // The image that should be used for btpeers in testbeds whose primary DUT
+  // is not in the next_image_verification_dut_pool. Must not be empty.
+  string current_image_uuid = 1;
+
+  // The image that should be used for btpeers in testbeds whose primary DUT
+  // is in the next_image_verification_dut_pool. If empty, current_image_uuid
+  // should be used instead.
+  string next_image_uuid = 2;
+
+  // Btpeers that are in testbeds with these primary DUT hostnames should
+  // use the next_image_uuid instead of the current_image_uuid for image
+  // selection.
+  repeated string next_image_verification_dut_pool = 3;
+
+  // All available OS image releases.
+  repeated OSImage images = 4;
+}
+
+// RaspiosCrosBtpeerImageBuildInfo is the format of the image build info JSON
+// file present on ChromeOS Raspios images built with pi-gen-btpeer for btpeers.
+message RaspiosCrosBtpeerImageBuildInfo {
+  // A unique identifier of the image, generated at build time.
+  string image_uuid = 1;
+
+  // The time the image was built.
+  google.protobuf.Timestamp image_build_time = 2;
+
+  // A mapping of repository URLs to git commit hashes for each source
+  // repository used during the image building process which are relevant to
+  // ChromeOS customizations (e.g pi-gen-btpeer, chameleon, btpeerd).
+  map<string, string> sources = 3;
 }
