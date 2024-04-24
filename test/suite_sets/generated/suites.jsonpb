@@ -4637,6 +4637,12 @@
 					"value": "tast.firmware.DevBootInternal.menu"
 				},
 				{
+					"value": "tast.firmware.DevBootInvalidUSB.back"
+				},
+				{
+					"value": "tast.firmware.DevBootInvalidUSB.restore_usb"
+				},
+				{
 					"value": "tast.firmware.DevBootTimeout"
 				},
 				{
@@ -4769,10 +4775,10 @@
 					"value": "tast.firmware.RecScreenInvalidUSB"
 				},
 				{
-					"value": "tast.firmware.RecScreenMiniOSMenu"
+					"value": "tast.firmware.RecScreenMiniOS.menu"
 				},
 				{
-					"value": "tast.firmware.RecScreenMiniOSMenu.old"
+					"value": "tast.firmware.RecScreenMiniOS.menu_old"
 				},
 				{
 					"value": "tast.firmware.RecScreenUSBInserted.dev"
@@ -5186,6 +5192,12 @@
 				},
 				{
 					"value": "tast.firmware.DevBootInternal.menu"
+				},
+				{
+					"value": "tast.firmware.DevBootInvalidUSB.back"
+				},
+				{
+					"value": "tast.firmware.DevBootInvalidUSB.restore_usb"
 				},
 				{
 					"value": "tast.firmware.DevBootTimeout"
@@ -5795,6 +5807,12 @@
 					"value": "tast.firmware.ECPDPowerSwap.suspend"
 				},
 				{
+					"value": "tast.firmware.ECPDTrysrc.flipcc"
+				},
+				{
+					"value": "tast.firmware.ECPDTrysrc.normal"
+				},
+				{
 					"value": "tast.firmware.PDDataSwap.dtsoff"
 				},
 				{
@@ -5856,12 +5874,6 @@
 				},
 				{
 					"value": "tauto.firmware_PDResetSoft.shutdown"
-				},
-				{
-					"value": "tauto.firmware_PDTrySrc"
-				},
-				{
-					"value": "tauto.firmware_PDTrySrc.flip"
 				},
 				{
 					"value": "tauto.firmware_PDVbusRequest"

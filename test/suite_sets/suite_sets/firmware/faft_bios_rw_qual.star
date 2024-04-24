@@ -57,6 +57,8 @@ def _faft_bios_rw_qual():
             "tast.firmware.DevBootInternal.keyboard",
             "tast.firmware.DevBootInternal.keyboard_with_usb",
             "tast.firmware.DevBootInternal.menu",
+            "tast.firmware.DevBootInvalidUSB.back",
+            "tast.firmware.DevBootInvalidUSB.restore_usb",
             "tast.firmware.DevBootTimeout",
             "tast.firmware.DevBootUSB.button",
             "tast.firmware.DevBootUSB.keyboard",
