@@ -29,6 +29,7 @@ message TaskRequestEvent {
   int64 task_state_id = 13;
   string device_name = 14;
   string user = 15;
+  repeated string experiments = 16;
 }
 
 message TaskRequestEvents {

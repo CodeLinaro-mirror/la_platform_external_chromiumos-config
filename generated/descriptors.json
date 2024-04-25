@@ -33190,6 +33190,13 @@
               "name": "user",
               "number": 15,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "experiments",
+              "label": "LABEL_REPEATED",
+              "name": "experiments",
+              "number": 16,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "TaskRequestEvent"
