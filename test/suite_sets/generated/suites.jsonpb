@@ -3416,9 +3416,6 @@
 					"value": "tast.platform.PerfettoSystemTracing"
 				},
 				{
-					"value": "tast.platform.Resourced.baseline"
-				},
-				{
 					"value": "tast.platform.RootPartitionsNotMounted"
 				},
 				{
@@ -3768,6 +3765,9 @@
 				},
 				{
 					"value": "tast.quicksettings.OpenSettings"
+				},
+				{
+					"value": "tast.resourced.QueryMemoryStatus"
 				},
 				{
 					"value": "tast.rollback.SmokeCleanup.cleanup_files_if_oobe_is_completed"
