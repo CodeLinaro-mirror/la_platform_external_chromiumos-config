@@ -30356,6 +30356,112 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "chromiumos/test/api/test_case_metadata.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "tastMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "tast_metadata",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarnessMetadata.TastMetadata"
+            }
+          ],
+          "name": "TestHarnessMetadata",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "tastFixtureMetadata",
+                  "label": "LABEL_REPEATED",
+                  "name": "tast_fixture_metadata",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.TastFixtureMetadata"
+                }
+              ],
+              "name": "TastMetadata"
+            }
+          ],
+          "oneofDecl": [
+            {
+              "name": "metadata_type"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "owners",
+              "label": "LABEL_REPEATED",
+              "name": "owners",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Contact"
+            },
+            {
+              "jsonName": "bugComponent",
+              "label": "LABEL_OPTIONAL",
+              "name": "bug_component",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.BugComponent"
+            },
+            {
+              "jsonName": "pathToFile",
+              "label": "LABEL_OPTIONAL",
+              "name": "path_to_file",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "parent",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "TastFixtureMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "values",
+              "label": "LABEL_REPEATED",
+              "name": "values",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarnessMetadata"
+            }
+          ],
+          "name": "TestHarnessMetadataList"
+        }
+      ],
+      "name": "chromiumos/test/api/test_harness_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
