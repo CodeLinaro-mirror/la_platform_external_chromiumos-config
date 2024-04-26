@@ -449,6 +449,9 @@
 					"value": "tast.arc.PlayStore"
 				},
 				{
+					"value": "tast.arc.PlayStore.vm"
+				},
+				{
 					"value": "tast.arc.Print.container_p"
 				},
 				{
@@ -623,6 +626,18 @@
 					"value": "tast.audio.CrasEffects.dsp_echo_ref_not_blocked_by_playback"
 				},
 				{
+					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_nc_button_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_nc_button_enabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_nc_button_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_nc_button_enabled"
+				},
+				{
 					"value": "tast.audio.CrasEffects.nc_both_disabled"
 				},
 				{
@@ -651,6 +666,12 @@
 				},
 				{
 					"value": "tast.audio.CrasEffects.nc_only_dsp_enabled_with_aec"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_then_unprocessed_stream"
+				},
+				{
+					"value": "tast.audio.CrasEffects.unprocessed_then_nc_stream"
 				},
 				{
 					"value": "tast.audio.CrasFeatures"
@@ -2126,6 +2147,9 @@
 					"value": "tast.health.DiagnosticsPass.cpu_cache"
 				},
 				{
+					"value": "tast.health.DiagnosticsPass.cpu_stress"
+				},
+				{
 					"value": "tast.health.DiagnosticsPass.disk_read"
 				},
 				{
@@ -2331,6 +2355,9 @@
 				},
 				{
 					"value": "tast.health.ProbeWifiInfo"
+				},
+				{
+					"value": "tast.health.RunFanRoutine"
 				},
 				{
 					"value": "tast.health.RunLEDRoutine"
@@ -4359,6 +4386,9 @@
 				},
 				{
 					"value": "tast.wifi.CheckIntelSARTable"
+				},
+				{
+					"value": "tast.wifi.CheckMtkMTCL"
 				},
 				{
 					"value": "tast.wifi.Driver"
