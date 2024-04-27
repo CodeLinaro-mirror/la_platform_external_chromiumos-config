@@ -2318,6 +2318,9 @@
 					"value": "tast.health.ProbeDisplayInfo"
 				},
 				{
+					"value": "tast.health.ProbeDisplayInfo.has_privacy_screen"
+				},
+				{
 					"value": "tast.health.ProbeFanInfo"
 				},
 				{
