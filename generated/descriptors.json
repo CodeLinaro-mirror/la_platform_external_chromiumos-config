@@ -32016,6 +32016,13 @@
               "name": "btpeerd_commit",
               "number": 6,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 7,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "DeviceInfoResponse"

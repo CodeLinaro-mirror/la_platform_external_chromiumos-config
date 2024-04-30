@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z9go.chromium.org/chromiumos/config/go/test/lab/api/btpeerd',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n?chromiumos/test/lab/api/btpeerd/btpeer_management_service.proto\x12\x1f\x63hromiumos.test.lab.api.btpeerd\x1a\x1fgoogle/protobuf/timestamp.proto\"\x13\n\x11\x44\x65viceInfoRequest\"\x9a\x01\n\x12\x44\x65viceInfoResponse\x12\x10\n\x08mac_eth0\x18\x01 \x01(\t\x12\x14\n\x0cipv4_address\x18\x02 \x01(\t\x12\x12\n\nos_version\x18\x03 \x01(\t\x12\x15\n\rbluez_version\x18\x04 \x01(\t\x12\x19\n\x11\x63hameleond_commit\x18\x05 \x01(\t\x12\x16\n\x0e\x62tpeerd_commit\x18\x06 \x01(\t\"q\n\x11SystemdUnitStatus\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63tive_state\x18\x02 \x01(\t\x12:\n\x16state_change_timestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x15\n\x13\x44\x65viceStatusRequest\"\xa7\x02\n\x14\x44\x65viceStatusResponse\x12R\n\x16\x62tpeerd_service_status\x18\x01 \x01(\x0b\x32\x32.chromiumos.test.lab.api.btpeerd.SystemdUnitStatus\x12U\n\x19\x63hameleond_service_status\x18\x02 \x01(\x0b\x32\x32.chromiumos.test.lab.api.btpeerd.SystemdUnitStatus\x12T\n\x18\x62luetooth_service_status\x18\x03 \x01(\x0b\x32\x32.chromiumos.test.lab.api.btpeerd.SystemdUnitStatus\x12\x0e\n\x06uptime\x18\x04 \x01(\t\"\x0f\n\rRebootRequest\"\x10\n\x0eRebootResponse\"j\n\x1eSetActiveBluetoothStackRequest\x12H\n\x0f\x62luetooth_stack\x18\x01 \x01(\x0e\x32/.chromiumos.test.lab.api.btpeerd.BluetoothStack\"8\n\x1fSetActiveBluetoothStackResponse\x12\x15\n\rstack_changed\x18\x01 \x01(\x08\"t\n!SetActiveBluetoothStackAPIRequest\x12O\n\x13\x62luetooth_stack_api\x18\x01 \x01(\x0e\x32\x32.chromiumos.test.lab.api.btpeerd.BluetoothStackAPI\"U\n\"SetActiveBluetoothStackAPIResponse\x12\x19\n\x11stack_api_changed\x18\x01 \x01(\x08\x12\x14\n\x0cservice_port\x18\x02 \x01(\x05\" \n\x1eGetActiveBluetoothStackRequest\"k\n\x1fGetActiveBluetoothStackResponse\x12H\n\x0f\x62luetooth_stack\x18\x01 \x01(\x0e\x32/.chromiumos.test.lab.api.btpeerd.BluetoothStack\"#\n!GetActiveBluetoothStackAPIRequest\"u\n\"GetActiveBluetoothStackAPIResponse\x12O\n\x13\x62luetooth_stack_api\x18\x01 \x01(\x0e\x32\x32.chromiumos.test.lab.api.btpeerd.BluetoothStackAPI*c\n\x0e\x42luetoothStack\x12\x1b\n\x17\x42LUETOOTH_STACK_UNKNOWN\x10\x00\x12\x19\n\x15\x42LUETOOTH_STACK_BLUEZ\x10\x01\x12\x19\n\x15\x42LUETOOTH_STACK_FLOSS\x10\x02*\x7f\n\x11\x42luetoothStackAPI\x12\x1f\n\x1b\x42LUETOOTH_STACK_API_UNKNOWN\x10\x00\x12\"\n\x1e\x42LUETOOTH_STACK_API_CHAMELEOND\x10\x01\x12%\n!BLUETOOTH_STACK_API_PANDORA_FLOSS\x10\x02\x32\x94\x08\n\x17\x42tpeerManagementService\x12w\n\nDeviceInfo\x12\x32.chromiumos.test.lab.api.btpeerd.DeviceInfoRequest\x1a\x33.chromiumos.test.lab.api.btpeerd.DeviceInfoResponse\"\x00\x12}\n\x0c\x44\x65viceStatus\x12\x34.chromiumos.test.lab.api.btpeerd.DeviceStatusRequest\x1a\x35.chromiumos.test.lab.api.btpeerd.DeviceStatusResponse\"\x00\x12k\n\x06Reboot\x12..chromiumos.test.lab.api.btpeerd.RebootRequest\x1a/.chromiumos.test.lab.api.btpeerd.RebootResponse\"\x00\x12\x9e\x01\n\x17GetActiveBluetoothStack\x12?.chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackRequest\x1a@.chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackResponse\"\x00\x12\x9e\x01\n\x17SetActiveBluetoothStack\x12?.chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackRequest\x1a@.chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackResponse\"\x00\x12\xa7\x01\n\x1aGetActiveBluetoothStackAPI\x12\x42.chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackAPIRequest\x1a\x43.chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackAPIResponse\"\x00\x12\xa7\x01\n\x1aSetActiveBluetoothStackAPI\x12\x42.chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackAPIRequest\x1a\x43.chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackAPIResponse\"\x00\x42;Z9go.chromium.org/chromiumos/config/go/test/lab/api/btpeerdb\x06proto3'
+  serialized_pb=b'\n?chromiumos/test/lab/api/btpeerd/btpeer_management_service.proto\x12\x1f\x63hromiumos.test.lab.api.btpeerd\x1a\x1fgoogle/protobuf/timestamp.proto\"\x13\n\x11\x44\x65viceInfoRequest\"\xa9\x01\n\x12\x44\x65viceInfoResponse\x12\x10\n\x08mac_eth0\x18\x01 \x01(\t\x12\x14\n\x0cipv4_address\x18\x02 \x01(\t\x12\x12\n\nos_version\x18\x03 \x01(\t\x12\x15\n\rbluez_version\x18\x04 \x01(\t\x12\x19\n\x11\x63hameleond_commit\x18\x05 \x01(\t\x12\x16\n\x0e\x62tpeerd_commit\x18\x06 \x01(\t\x12\r\n\x05model\x18\x07 \x01(\t\"q\n\x11SystemdUnitStatus\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63tive_state\x18\x02 \x01(\t\x12:\n\x16state_change_timestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x15\n\x13\x44\x65viceStatusRequest\"\xa7\x02\n\x14\x44\x65viceStatusResponse\x12R\n\x16\x62tpeerd_service_status\x18\x01 \x01(\x0b\x32\x32.chromiumos.test.lab.api.btpeerd.SystemdUnitStatus\x12U\n\x19\x63hameleond_service_status\x18\x02 \x01(\x0b\x32\x32.chromiumos.test.lab.api.btpeerd.SystemdUnitStatus\x12T\n\x18\x62luetooth_service_status\x18\x03 \x01(\x0b\x32\x32.chromiumos.test.lab.api.btpeerd.SystemdUnitStatus\x12\x0e\n\x06uptime\x18\x04 \x01(\t\"\x0f\n\rRebootRequest\"\x10\n\x0eRebootResponse\"j\n\x1eSetActiveBluetoothStackRequest\x12H\n\x0f\x62luetooth_stack\x18\x01 \x01(\x0e\x32/.chromiumos.test.lab.api.btpeerd.BluetoothStack\"8\n\x1fSetActiveBluetoothStackResponse\x12\x15\n\rstack_changed\x18\x01 \x01(\x08\"t\n!SetActiveBluetoothStackAPIRequest\x12O\n\x13\x62luetooth_stack_api\x18\x01 \x01(\x0e\x32\x32.chromiumos.test.lab.api.btpeerd.BluetoothStackAPI\"U\n\"SetActiveBluetoothStackAPIResponse\x12\x19\n\x11stack_api_changed\x18\x01 \x01(\x08\x12\x14\n\x0cservice_port\x18\x02 \x01(\x05\" \n\x1eGetActiveBluetoothStackRequest\"k\n\x1fGetActiveBluetoothStackResponse\x12H\n\x0f\x62luetooth_stack\x18\x01 \x01(\x0e\x32/.chromiumos.test.lab.api.btpeerd.BluetoothStack\"#\n!GetActiveBluetoothStackAPIRequest\"u\n\"GetActiveBluetoothStackAPIResponse\x12O\n\x13\x62luetooth_stack_api\x18\x01 \x01(\x0e\x32\x32.chromiumos.test.lab.api.btpeerd.BluetoothStackAPI*c\n\x0e\x42luetoothStack\x12\x1b\n\x17\x42LUETOOTH_STACK_UNKNOWN\x10\x00\x12\x19\n\x15\x42LUETOOTH_STACK_BLUEZ\x10\x01\x12\x19\n\x15\x42LUETOOTH_STACK_FLOSS\x10\x02*\x7f\n\x11\x42luetoothStackAPI\x12\x1f\n\x1b\x42LUETOOTH_STACK_API_UNKNOWN\x10\x00\x12\"\n\x1e\x42LUETOOTH_STACK_API_CHAMELEOND\x10\x01\x12%\n!BLUETOOTH_STACK_API_PANDORA_FLOSS\x10\x02\x32\x94\x08\n\x17\x42tpeerManagementService\x12w\n\nDeviceInfo\x12\x32.chromiumos.test.lab.api.btpeerd.DeviceInfoRequest\x1a\x33.chromiumos.test.lab.api.btpeerd.DeviceInfoResponse\"\x00\x12}\n\x0c\x44\x65viceStatus\x12\x34.chromiumos.test.lab.api.btpeerd.DeviceStatusRequest\x1a\x35.chromiumos.test.lab.api.btpeerd.DeviceStatusResponse\"\x00\x12k\n\x06Reboot\x12..chromiumos.test.lab.api.btpeerd.RebootRequest\x1a/.chromiumos.test.lab.api.btpeerd.RebootResponse\"\x00\x12\x9e\x01\n\x17GetActiveBluetoothStack\x12?.chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackRequest\x1a@.chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackResponse\"\x00\x12\x9e\x01\n\x17SetActiveBluetoothStack\x12?.chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackRequest\x1a@.chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackResponse\"\x00\x12\xa7\x01\n\x1aGetActiveBluetoothStackAPI\x12\x42.chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackAPIRequest\x1a\x43.chromiumos.test.lab.api.btpeerd.GetActiveBluetoothStackAPIResponse\"\x00\x12\xa7\x01\n\x1aSetActiveBluetoothStackAPI\x12\x42.chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackAPIRequest\x1a\x43.chromiumos.test.lab.api.btpeerd.SetActiveBluetoothStackAPIResponse\"\x00\x42;Z9go.chromium.org/chromiumos/config/go/test/lab/api/btpeerdb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -50,8 +50,8 @@ _BLUETOOTHSTACK = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1452,
-  serialized_end=1551,
+  serialized_start=1467,
+  serialized_end=1566,
 )
 _sym_db.RegisterEnumDescriptor(_BLUETOOTHSTACK)
 
@@ -81,8 +81,8 @@ _BLUETOOTHSTACKAPI = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1553,
-  serialized_end=1680,
+  serialized_start=1568,
+  serialized_end=1695,
 )
 _sym_db.RegisterEnumDescriptor(_BLUETOOTHSTACKAPI)
 
@@ -171,6 +171,13 @@ _DEVICEINFORESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='model', full_name='chromiumos.test.lab.api.btpeerd.DeviceInfoResponse.model', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -184,7 +191,7 @@ _DEVICEINFORESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=155,
-  serialized_end=309,
+  serialized_end=324,
 )
 
 
@@ -229,8 +236,8 @@ _SYSTEMDUNITSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=311,
-  serialized_end=424,
+  serialized_start=326,
+  serialized_end=439,
 )
 
 
@@ -254,8 +261,8 @@ _DEVICESTATUSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=426,
-  serialized_end=447,
+  serialized_start=441,
+  serialized_end=462,
 )
 
 
@@ -307,8 +314,8 @@ _DEVICESTATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=450,
-  serialized_end=745,
+  serialized_start=465,
+  serialized_end=760,
 )
 
 
@@ -332,8 +339,8 @@ _REBOOTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=747,
-  serialized_end=762,
+  serialized_start=762,
+  serialized_end=777,
 )
 
 
@@ -357,8 +364,8 @@ _REBOOTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=764,
-  serialized_end=780,
+  serialized_start=779,
+  serialized_end=795,
 )
 
 
@@ -389,8 +396,8 @@ _SETACTIVEBLUETOOTHSTACKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=782,
-  serialized_end=888,
+  serialized_start=797,
+  serialized_end=903,
 )
 
 
@@ -421,8 +428,8 @@ _SETACTIVEBLUETOOTHSTACKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=890,
-  serialized_end=946,
+  serialized_start=905,
+  serialized_end=961,
 )
 
 
@@ -453,8 +460,8 @@ _SETACTIVEBLUETOOTHSTACKAPIREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=948,
-  serialized_end=1064,
+  serialized_start=963,
+  serialized_end=1079,
 )
 
 
@@ -492,8 +499,8 @@ _SETACTIVEBLUETOOTHSTACKAPIRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1066,
-  serialized_end=1151,
+  serialized_start=1081,
+  serialized_end=1166,
 )
 
 
@@ -517,8 +524,8 @@ _GETACTIVEBLUETOOTHSTACKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1153,
-  serialized_end=1185,
+  serialized_start=1168,
+  serialized_end=1200,
 )
 
 
@@ -549,8 +556,8 @@ _GETACTIVEBLUETOOTHSTACKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1187,
-  serialized_end=1294,
+  serialized_start=1202,
+  serialized_end=1309,
 )
 
 
@@ -574,8 +581,8 @@ _GETACTIVEBLUETOOTHSTACKAPIREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1296,
-  serialized_end=1331,
+  serialized_start=1311,
+  serialized_end=1346,
 )
 
 
@@ -606,8 +613,8 @@ _GETACTIVEBLUETOOTHSTACKAPIRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1333,
-  serialized_end=1450,
+  serialized_start=1348,
+  serialized_end=1465,
 )
 
 _SYSTEMDUNITSTATUS.fields_by_name['state_change_timestamp'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -752,8 +759,8 @@ _BTPEERMANAGEMENTSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1683,
-  serialized_end=2727,
+  serialized_start=1698,
+  serialized_end=2742,
   methods=[
   _descriptor.MethodDescriptor(
     name='DeviceInfo',

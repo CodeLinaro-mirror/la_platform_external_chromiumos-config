@@ -63,6 +63,9 @@ message DeviceInfoResponse {
 
   // The commit of the btpeerd repository used to build this service.
   string btpeerd_commit = 6;
+
+  // The model name of the device (e.g. "Raspberry Pi 4 Model B Rev 1.2").
+  string model = 7;
 }
 
 // SystemdUnitStatus includes a subset of systemd unit properties related to
