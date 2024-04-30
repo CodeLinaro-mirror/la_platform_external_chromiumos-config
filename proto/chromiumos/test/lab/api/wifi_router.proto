@@ -49,6 +49,9 @@ enum WifiRouterFeature {
 
   // The CPU is fast enough to support a double bridge over veth.
   WIFI_ROUTER_FEATURE_DOUBLE_BRIDGE_OVER_VETH = 10;
+
+  // GCMP and GCMP-256 pairwise and group cipher support.
+  WIFI_ROUTER_FEATURE_GCMP = 11;
 }
 
 // The type of Wifi AP device a WiFi AP peripheral is, functionally speaking.

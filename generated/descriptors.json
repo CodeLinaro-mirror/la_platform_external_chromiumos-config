@@ -32539,6 +32539,10 @@
             {
               "name": "WIFI_ROUTER_FEATURE_DOUBLE_BRIDGE_OVER_VETH",
               "number": 10
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_GCMP",
+              "number": 11
             }
           ]
         },
