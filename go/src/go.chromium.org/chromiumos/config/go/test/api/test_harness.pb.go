@@ -26,6 +26,7 @@ const (
 
 // Defines a test execution framework that can execute test cases and report
 // results.
+// LINT.IfChange
 type TestHarness struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

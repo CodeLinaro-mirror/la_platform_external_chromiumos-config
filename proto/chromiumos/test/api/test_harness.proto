@@ -10,6 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 // Defines a test execution framework that can execute test cases and report
 // results.
+// LINT.IfChange
 message TestHarness {
   // Globally unique (for ChromeOS) identifier of a given test harness
   oneof test_harness_type {
@@ -31,3 +32,4 @@ message TestHarness {
   message Mobly {}
   message Crosier {}
 }
+// LINT.ThenChange(//chromium/infra/infra_superproject/main/infra/go/src/infra/tools/result_adapter/util.go)
