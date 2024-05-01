@@ -3311,6 +3311,9 @@
 					"value": "tast.network.VPNRouting.wireguard_ipv6"
 				},
 				{
+					"value": "tast.network.WireguardCrosh"
+				},
+				{
 					"value": "tast.oobe.Smoke.fieldtrial_testing_config_off"
 				},
 				{
