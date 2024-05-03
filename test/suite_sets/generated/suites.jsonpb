@@ -522,6 +522,41 @@
 		},
 		{
 			"id": {
+				"value": "performance_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "baseos-perf@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167279"
+				},
+				"criteria": {
+					"value": "Performance tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.platform.BootPerf"
+				},
+				{
+					"value": "tast.platform.BootPerf.ec_reboot"
+				},
+				{
+					"value": "tast.platform.BootPerf.from_g3"
+				},
+				{
+					"value": "tast.platform.BootPerf.from_s5"
+				},
+				{
+					"value": "tauto.power_UiResume.freeze"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "labqual"
 			},
 			"metadata": {

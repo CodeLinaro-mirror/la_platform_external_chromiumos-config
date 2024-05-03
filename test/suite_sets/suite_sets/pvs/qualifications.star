@@ -17,6 +17,7 @@ def _pre_fsi():
             "fingerprint_pre_fsi",
             "graphics_pre_fsi",
             "input_pre_fsi",
+            "performance_pre_fsi",
             "platform_pre_fsi",
         ],
         suites = [
@@ -36,6 +37,7 @@ def _fsi():
             "fingerprint_fsi",
             "graphics_fsi",
             "input_fsi",
+            "performance_fsi",
             "platform_fsi",
         ],
         suites = [],

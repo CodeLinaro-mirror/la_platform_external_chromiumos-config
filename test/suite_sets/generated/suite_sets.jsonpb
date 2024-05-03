@@ -252,6 +252,52 @@
 		},
 		{
 			"id": {
+				"value": "performance_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "baseos-perf@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167279"
+				},
+				"criteria": {
+					"value": "Performance tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "performance_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "performance_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "baseos-perf@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167279"
+				},
+				"criteria": {
+					"value": "Performance tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "performance_common"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "platform_pre_fsi"
 			},
 			"metadata": {
@@ -530,6 +576,9 @@
 					"value": "input_pre_fsi"
 				},
 				{
+					"value": "performance_pre_fsi"
+				},
+				{
 					"value": "platform_pre_fsi"
 				}
 			],
@@ -574,6 +623,9 @@
 				},
 				{
 					"value": "input_fsi"
+				},
+				{
+					"value": "performance_fsi"
 				},
 				{
 					"value": "platform_fsi"
