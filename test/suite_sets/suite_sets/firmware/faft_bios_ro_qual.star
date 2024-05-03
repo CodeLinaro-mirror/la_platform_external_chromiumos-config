@@ -111,6 +111,8 @@ def _faft_bios_ro_qual():
             "tast.firmware.RecScreenInvalidUSB",
             "tast.firmware.RecScreenMiniOS.menu",
             "tast.firmware.RecScreenMiniOS.menu_old",
+            "tast.firmware.RecScreenMiniOS.priority_minios_a",
+            "tast.firmware.RecScreenMiniOS.priority_minios_b",
             "tast.firmware.RecScreenUSBInserted.dev",
             "tast.firmware.RecScreenUSBInserted.normal",
             "tast.firmware.RecToDevUntrusted",

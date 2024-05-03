@@ -4817,6 +4817,12 @@
 					"value": "tast.firmware.RecScreenMiniOS.menu_old"
 				},
 				{
+					"value": "tast.firmware.RecScreenMiniOS.priority_minios_a"
+				},
+				{
+					"value": "tast.firmware.RecScreenMiniOS.priority_minios_b"
+				},
+				{
 					"value": "tast.firmware.RecScreenUSBInserted.dev"
 				},
 				{
