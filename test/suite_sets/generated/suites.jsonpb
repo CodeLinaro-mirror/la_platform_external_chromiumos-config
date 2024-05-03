@@ -493,6 +493,35 @@
 		},
 		{
 			"id": {
+				"value": "input_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "essential-inputs-gardener-oncall@google.com"
+					},
+					{
+						"email": "essential-inputs-team@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:95887"
+				},
+				"criteria": {
+					"value": "Input tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardSpeech"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "bvt-cq"
 			},
 			"metadata": {

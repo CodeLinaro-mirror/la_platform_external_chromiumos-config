@@ -200,6 +200,58 @@
 		},
 		{
 			"id": {
+				"value": "input_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "essential-inputs-gardener-oncall@google.com"
+					},
+					{
+						"email": "essential-inputs-team@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:95887"
+				},
+				"criteria": {
+					"value": "Input tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "input_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "input_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "essential-inputs-gardener-oncall@google.com"
+					},
+					{
+						"email": "essential-inputs-team@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:95887"
+				},
+				"criteria": {
+					"value": "Input tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "input_common"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "example_suite_set"
 			},
 			"metadata": {
@@ -415,6 +467,9 @@
 				},
 				{
 					"value": "graphics_pre_fsi"
+				},
+				{
+					"value": "input_pre_fsi"
 				}
 			],
 			"suites": [
@@ -455,6 +510,9 @@
 				},
 				{
 					"value": "graphics_fsi"
+				},
+				{
+					"value": "input_fsi"
 				}
 			]
 		}

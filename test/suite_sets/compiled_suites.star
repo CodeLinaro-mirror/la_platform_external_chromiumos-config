@@ -19,6 +19,7 @@ load("//suite_sets/firmware/faft_ec_fw_qual.star", "faft_ec_fw_qual")
 load("//suite_sets/firmware/faft_pd.star", "faft_pd")
 load("//suite_sets/firmware/firmware.star", "firmware_suites")
 load("//suite_sets/graphics/graphics.star", "graphics_suites")
+load("//suite_sets/input/input.star", "input_suites")
 
 _suites = []
 
@@ -27,6 +28,7 @@ _suites.extend(camera_suites.all_suites())
 _suites.extend(cellular_suites.all_suites())
 _suites.extend(fingerprint_suites.all_suites())
 _suites.extend(graphics_suites.all_suites())
+_suites.extend(input_suites.all_suites())
 _suites.extend(bvt_cq.all_suites())
 _suites.extend(bvt_inline.all_suites())
 _suites.extend(bvt_tast_cq.all_suites())
