@@ -651,6 +651,122 @@
 		},
 		{
 			"id": {
+				"value": "power_qual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Power tests qualify a device for battery life while running."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.meta.PowerQual.qual"
+				},
+				{
+					"value": "tast.meta.PowerQual.browsingheavy"
+				},
+				{
+					"value": "tast.meta.PowerQual.videocall"
+				},
+				{
+					"value": "tast.meta.PowerQual.videoplayback"
+				},
+				{
+					"value": "tast.meta.PowerQual.browsing"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "power_low_power_qual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Power tests qualify a device for power consumption while in suspend/shutdown mode."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.power.LowPowerConsumption.suspend"
+				},
+				{
+					"value": "tast.power.LowPowerConsumption.shutdown"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "thermal_qual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Tests to qualify thermal performance of the device."
+				}
+			},
+			"tests": [
+				{
+					"value": "tauto.pvs_Sequence.ThermalQualChargingVideoCall"
+				},
+				{
+					"value": "tauto.pvs_Sequence.ThermalQualDischargingVideoCall"
+				},
+				{
+					"value": "tauto.pvs_Sequence.ThermalQualChargingThermalLoad"
+				},
+				{
+					"value": "tauto.pvs_Sequence.ThermalQualDischargingThermalLoad"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "power_other"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Other tests for validating power related performance and functionality."
+				}
+			},
+			"tests": [
+				{
+					"value": "tauto.power_WakeSources"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "bvt-cq"
 			},
 			"metadata": {

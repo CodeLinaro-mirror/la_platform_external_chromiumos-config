@@ -360,6 +360,67 @@
 		},
 		{
 			"id": {
+				"value": "power_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Power tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "power_qual"
+				},
+				{
+					"value": "thermal_qual"
+				},
+				{
+					"value": "power_low_power_qual"
+				},
+				{
+					"value": "power_other"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "power_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Power tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "power_qual"
+				},
+				{
+					"value": "thermal_qual"
+				},
+				{
+					"value": "power_low_power_qual"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "example_suite_set"
 			},
 			"metadata": {
@@ -584,6 +645,9 @@
 				},
 				{
 					"value": "platform_pre_fsi"
+				},
+				{
+					"value": "power_pre_fsi"
 				}
 			],
 			"suites": [
@@ -636,6 +700,9 @@
 				},
 				{
 					"value": "platform_fsi"
+				},
+				{
+					"value": "power_fsi"
 				}
 			],
 			"suites": [

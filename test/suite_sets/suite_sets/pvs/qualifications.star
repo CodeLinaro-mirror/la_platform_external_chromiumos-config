@@ -19,6 +19,7 @@ def _pre_fsi():
             "input_pre_fsi",
             "performance_pre_fsi",
             "platform_pre_fsi",
+            "power_pre_fsi",
         ],
         suites = [
             "audio_pre_fsi",
@@ -40,6 +41,7 @@ def _fsi():
             "input_fsi",
             "performance_fsi",
             "platform_fsi",
+            "power_fsi",
         ],
         suites = [
             "virtualization_fsi",
