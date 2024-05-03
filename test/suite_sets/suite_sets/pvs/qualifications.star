@@ -13,6 +13,7 @@ def _pre_fsi():
         criteria = "Automated tests that must be passed for device before FSI.",
         suite_sets = [
             "camera_pre_fsi",
+            "cellular_pre_fsi",
         ],
         suites = [
             "audio_pre_fsi",
@@ -27,6 +28,7 @@ def _fsi():
         criteria = "Automated tests that must pass before FSI.",
         suite_sets = [
             "camera_fsi",
+            "cellular_fsi",
         ],
         suites = [],
     )

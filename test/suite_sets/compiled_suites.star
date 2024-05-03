@@ -7,6 +7,7 @@
 load("//create.star", "create")
 load("//suite_sets/audio/audio.star", "audio_suites")
 load("//suite_sets/camera/camera.star", "camera_suites")
+load("//suite_sets/cellular/cellular.star", "cellular_suites")
 load("//suite_sets/cq/bvt-cq.star", "bvt_cq")
 load("//suite_sets/cq/bvt-inline.star", "bvt_inline")
 load("//suite_sets/cq/bvt-tast-cq.star", "bvt_tast_cq")
@@ -21,6 +22,7 @@ _suites = []
 
 _suites.extend(audio_suites.all_suites())
 _suites.extend(camera_suites.all_suites())
+_suites.extend(cellular_suites.all_suites())
 _suites.extend(bvt_cq.all_suites())
 _suites.extend(bvt_inline.all_suites())
 _suites.extend(bvt_tast_cq.all_suites())

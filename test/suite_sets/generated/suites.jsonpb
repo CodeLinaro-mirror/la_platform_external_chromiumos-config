@@ -100,6 +100,160 @@
 		},
 		{
 			"id": {
+				"value": "cellular_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cellular-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167157"
+				},
+				"criteria": {
+					"value": "Cellular tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.cellular.ConnectivityPerf"
+				},
+				{
+					"value": "tast.cellular.ModemfwdSmoke"
+				},
+				{
+					"value": "tast.cellular.ShillSafetyDance"
+				},
+				{
+					"value": "tast.cellular.Smoke"
+				},
+				{
+					"value": "tast.cellular.Smoke.amarisoft"
+				},
+				{
+					"value": "tast.cellular.Smoke.att"
+				},
+				{
+					"value": "tast.cellular.Smoke.bell"
+				},
+				{
+					"value": "tast.cellular.Smoke.docomo"
+				},
+				{
+					"value": "tast.cellular.Smoke.ee"
+				},
+				{
+					"value": "tast.cellular.Smoke.fi"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.amarisoft"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.att"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.bell"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.docomo"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.ee"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.fi"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.kddi"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.rak"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.rakuten"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.roger"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.softbank"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.telus"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.tmobile"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.verizon"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.vodafone"
+				},
+				{
+					"value": "tast.cellular.Smoke.kddi"
+				},
+				{
+					"value": "tast.cellular.Smoke.rak"
+				},
+				{
+					"value": "tast.cellular.Smoke.rakuten"
+				},
+				{
+					"value": "tast.cellular.Smoke.roger"
+				},
+				{
+					"value": "tast.cellular.Smoke.softbank"
+				},
+				{
+					"value": "tast.cellular.Smoke.telus"
+				},
+				{
+					"value": "tast.cellular.Smoke.tmobile"
+				},
+				{
+					"value": "tast.cellular.Smoke.verizon"
+				},
+				{
+					"value": "tast.cellular.Smoke.vodafone"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "_cellular_pre_fsi_only"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cellular-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167157"
+				},
+				"criteria": {
+					"value": "Cellular tests which should be run for Pre FSI testing only."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.cellular.ShillCellularEnableAndConnect"
+				},
+				{
+					"value": "tast.cellular.HostCellularNetworkConnectivity"
+				},
+				{
+					"value": "tast.cellular.ShillCellularApn"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "bvt-cq"
 			},
 			"metadata": {

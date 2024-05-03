@@ -47,6 +47,55 @@
 		},
 		{
 			"id": {
+				"value": "cellular_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cellular-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167157"
+				},
+				"criteria": {
+					"value": "Cellular tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "cellular_common"
+				},
+				{
+					"value": "cellular_pre_fsi_only"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "cellular_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cellular-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167157"
+				},
+				"criteria": {
+					"value": "Cellular tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "cellular_common"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "example_suite_set"
 			},
 			"metadata": {
@@ -253,6 +302,9 @@
 			"suiteSets": [
 				{
 					"value": "camera_pre_fsi"
+				},
+				{
+					"value": "cellular_pre_fsi"
 				}
 			],
 			"suites": [
@@ -284,6 +336,9 @@
 			"suiteSets": [
 				{
 					"value": "camera_fsi"
+				},
+				{
+					"value": "cellular_fsi"
 				}
 			]
 		}

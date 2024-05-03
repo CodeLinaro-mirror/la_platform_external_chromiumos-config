@@ -6,6 +6,7 @@
 
 load("//create.star", "create")
 load("//suite_sets/camera/camera.star", "camera_suite_sets")
+load("//suite_sets/cellular/cellular.star", "cellular_suite_sets")
 load("//suite_sets/example/example_suite_sets.star", "example_suite_sets")
 load("//suite_sets/firmware/firmware.star", "firmware_suite_sets")
 load("//suite_sets/pvs/qualifications.star", "pvs_qualifications")
@@ -13,6 +14,7 @@ load("//suite_sets/pvs/qualifications.star", "pvs_qualifications")
 _suite_sets = []
 
 _suite_sets.extend(camera_suite_sets.all_suite_sets())
+_suite_sets.extend(cellular_suite_sets.all_suite_sets())
 _suite_sets.extend(example_suite_sets.all_suite_sets())
 _suite_sets.extend(firmware_suite_sets.all_suite_sets())
 _suite_sets.extend(pvs_qualifications.all_suite_sets())
