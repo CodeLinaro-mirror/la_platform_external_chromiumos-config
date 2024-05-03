@@ -313,6 +313,186 @@
 		},
 		{
 			"id": {
+				"value": "graphics_hw"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for validating hardware pre FSI."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_addfb_basic"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_atomic"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_atomic_interruptible"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_bw"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_concurrent"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_cursor_crc"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_cursor_legacy"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_dp_aux_dev"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_flip"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_invalid_mode"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_panel_fitting"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_pipe_crc_basic"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_plane"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_plane_alpha_blend"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_plane_cursor"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_plane_scaling"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_rotation_crc"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_scaling_modes"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_setmode"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_sysfs_edid_timing"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.testdisplay"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "graphics_video"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for validating video playback pre FSI."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.video.Play.h264_hw_mse"
+				},
+				{
+					"value": "tast.video.Play.vp8_hw_mse"
+				},
+				{
+					"value": "tast.video.Play.vp9_hw_mse"
+				},
+				{
+					"value": "tast.video.Play.h264_hw"
+				},
+				{
+					"value": "tast.video.Play.vp8_hw"
+				},
+				{
+					"value": "tast.video.Play.vp9_hw"
+				},
+				{
+					"value": "tast.video.Seek.h264"
+				},
+				{
+					"value": "tast.video.Seek.vp8"
+				},
+				{
+					"value": "tast.video.Seek.vp9"
+				},
+				{
+					"value": "tauto.video_ChromeVidResChangeHWDecode"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "_graphics_webgl"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for WebGL FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.graphics.WebGLAquarium.50_fishes"
+				},
+				{
+					"value": "tast.graphics.WebGLAquarium.1000_fishes"
+				},
+				{
+					"value": "tast.graphics.WebGLAquarium.50_fishes_lacros"
+				},
+				{
+					"value": "tast.graphics.WebGLAquarium.1000_fishes_lacros"
+				},
+				{
+					"value": "tast.graphics.WebGLManyPlanetsDeep"
+				},
+				{
+					"value": "tast.graphics.WebGLManyPlanetsDeep.lacros"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "bvt-cq"
 			},
 			"metadata": {

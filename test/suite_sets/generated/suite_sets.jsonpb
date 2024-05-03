@@ -142,6 +142,64 @@
 		},
 		{
 			"id": {
+				"value": "graphics_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "graphics_hw"
+				},
+				{
+					"value": "graphics_webgl"
+				},
+				{
+					"value": "graphics_video"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "graphics_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "graphics_hw"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "example_suite_set"
 			},
 			"metadata": {
@@ -354,6 +412,9 @@
 				},
 				{
 					"value": "fingerprint_pre_fsi"
+				},
+				{
+					"value": "graphics_pre_fsi"
 				}
 			],
 			"suites": [
@@ -391,6 +452,9 @@
 				},
 				{
 					"value": "fingerprint_fsi"
+				},
+				{
+					"value": "graphics_fsi"
 				}
 			]
 		}
