@@ -40,7 +40,9 @@ def _fsi():
             "performance_fsi",
             "platform_fsi",
         ],
-        suites = [],
+        suites = [
+            "virtualization_fsi",
+        ],
     )
 
 def _all_suite_sets():

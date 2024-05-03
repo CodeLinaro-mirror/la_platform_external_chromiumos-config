@@ -6631,6 +6631,32 @@
 					"value": "tauto.hardware_TPMCheck"
 				}
 			]
+		},
+		{
+			"id": {
+				"value": "virtualization_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "cros-arc-te@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1052117"
+				},
+				"criteria": {
+					"value": "Validate Virtualization related functionality for FSI."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.arc.OobeArcAppOpen"
+				},
+				{
+					"value": "tast.arc.VerifyDefaultApps"
+				}
+			]
 		}
 	]
 }
