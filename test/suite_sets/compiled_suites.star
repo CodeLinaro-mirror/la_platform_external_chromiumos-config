@@ -23,6 +23,7 @@ load("//suite_sets/input/input.star", "input_suites")
 load("//suite_sets/performance/performance.star", "performance_suites")
 load("//suite_sets/platform/platform.star", "platform_suites")
 load("//suite_sets/virtualization/virtualization.star", "virtualization_suites")
+load("//suite_sets/wifi/wifi.star", "wifi_suites")
 
 _suites = []
 
@@ -44,5 +45,6 @@ _suites.extend(faft_ec_fw_qual.all_suites())
 _suites.extend(faft_pd.all_suites())
 _suites.extend(firmware_suites.all_suites())
 _suites.extend(virtualization_suites.all_suites())
+_suites.extend(wifi_suites.all_suites())
 
 compiled_suites = create.suite_list(suites = _suites)

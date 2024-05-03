@@ -585,6 +585,9 @@
 			"suites": [
 				{
 					"value": "audio_pre_fsi"
+				},
+				{
+					"value": "wifi_pre_fsi"
 				}
 			]
 		},

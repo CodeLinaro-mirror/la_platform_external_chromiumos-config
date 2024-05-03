@@ -22,6 +22,7 @@ def _pre_fsi():
         ],
         suites = [
             "audio_pre_fsi",
+            "wifi_pre_fsi",
         ],
     )
 

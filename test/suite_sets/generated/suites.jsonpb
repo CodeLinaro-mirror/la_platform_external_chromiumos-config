@@ -6657,6 +6657,35 @@
 					"value": "tast.arc.VerifyDefaultApps"
 				}
 			]
+		},
+		{
+			"id": {
+				"value": "wifi_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-wifi-champs@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:893827"
+				},
+				"criteria": {
+					"value": "Wi-Fi tests that run pre FSI and are not part of AVL/require no special testbed."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.wifi.SetTXPower"
+				},
+				{
+					"value": "tast.wifi.SetTXPower.vpd"
+				},
+				{
+					"value": "tast.wifi.CheckIntelSARTable"
+				}
+			]
 		}
 	]
 }
