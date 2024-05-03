@@ -522,6 +522,96 @@
 		},
 		{
 			"id": {
+				"value": "labqual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests to check device readiness for lab entry."
+				}
+			},
+			"tests": [
+				{
+					"value": "tauto.platform_ServoPowerStateController.usb"
+				},
+				{
+					"value": "tauto.firmware_DevMode"
+				},
+				{
+					"value": "tauto.firmware_UserRequestRecovery"
+				},
+				{
+					"value": "tauto.firmware_FAFTSetup"
+				},
+				{
+					"value": "tauto.firmware_UserRequestRecovery.dev"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "_platform_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.lockscreen.PINUnlock"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "_platform_fsi_only"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests which should be run for Pre FSI testing only."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.quicksettings.BasicLayout.tablet"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "bvt-cq"
 			},
 			"metadata": {

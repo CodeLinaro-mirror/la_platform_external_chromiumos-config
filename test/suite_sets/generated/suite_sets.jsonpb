@@ -252,6 +252,64 @@
 		},
 		{
 			"id": {
+				"value": "platform_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "labqual"
+				},
+				{
+					"value": "platform_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "platform_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "platform_common"
+				},
+				{
+					"value": "platform_fsi_only"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "example_suite_set"
 			},
 			"metadata": {
@@ -470,6 +528,9 @@
 				},
 				{
 					"value": "input_pre_fsi"
+				},
+				{
+					"value": "platform_pre_fsi"
 				}
 			],
 			"suites": [
@@ -513,6 +574,9 @@
 				},
 				{
 					"value": "input_fsi"
+				},
+				{
+					"value": "platform_fsi"
 				}
 			]
 		}
