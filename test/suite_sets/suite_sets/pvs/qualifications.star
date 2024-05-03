@@ -14,6 +14,7 @@ def _pre_fsi():
         suite_sets = [
             "camera_pre_fsi",
             "cellular_pre_fsi",
+            "fingerprint_pre_fsi",
         ],
         suites = [
             "audio_pre_fsi",
@@ -29,6 +30,7 @@ def _fsi():
         suite_sets = [
             "camera_fsi",
             "cellular_fsi",
+            "fingerprint_fsi",
         ],
         suites = [],
     )

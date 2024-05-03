@@ -96,6 +96,52 @@
 		},
 		{
 			"id": {
+				"value": "fingerprint_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-fingerprint@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:782045"
+				},
+				"criteria": {
+					"value": "Fingerprint tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "fingerprint_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "fingerprint_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-fingerprint@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:782045"
+				},
+				"criteria": {
+					"value": "Fingerprint tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "fingerprint_common"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "example_suite_set"
 			},
 			"metadata": {
@@ -305,6 +351,9 @@
 				},
 				{
 					"value": "cellular_pre_fsi"
+				},
+				{
+					"value": "fingerprint_pre_fsi"
 				}
 			],
 			"suites": [
@@ -339,6 +388,9 @@
 				},
 				{
 					"value": "cellular_fsi"
+				},
+				{
+					"value": "fingerprint_fsi"
 				}
 			]
 		}

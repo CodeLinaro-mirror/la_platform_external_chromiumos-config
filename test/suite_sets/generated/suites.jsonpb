@@ -254,6 +254,65 @@
 		},
 		{
 			"id": {
+				"value": "fingerprint_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-fingerprint@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:782045"
+				},
+				"criteria": {
+					"value": "Fingerprint tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tauto.firmware_Fingerprint.RDP1"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.RebootToRO"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.ObeysRollback"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.CrosConfig"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.ROOnlyBootsValidRW"
+				},
+				{
+					"value": "tauto.firmware_FingerprintSigner"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.RDP0"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.SoftwareWriteProtect"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.SystemIsLocked"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.RWNoUpdateRO"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.ROCanUpdateRW"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.AddEntropy"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.ReadFlash"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "bvt-cq"
 			},
 			"metadata": {
