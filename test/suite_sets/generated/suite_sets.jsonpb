@@ -204,7 +204,12 @@
 				"criteria": {
 					"value": "Automated tests that must be passed for device before FSI."
 				}
-			}
+			},
+			"suites": [
+				{
+					"value": "audio_pre_fsi"
+				}
+			]
 		},
 		{
 			"id": {

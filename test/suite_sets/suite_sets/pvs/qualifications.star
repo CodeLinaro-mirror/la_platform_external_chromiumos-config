@@ -12,7 +12,9 @@ def _pre_fsi():
         bug_component = pvs_common.bug_component,
         criteria = "Automated tests that must be passed for device before FSI.",
         suite_sets = [],
-        suites = [],
+        suites = [
+            "audio_pre_fsi",
+        ],
     )
 
 def _fsi():

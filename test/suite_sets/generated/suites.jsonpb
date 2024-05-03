@@ -2,6 +2,56 @@
 	"suites": [
 		{
 			"id": {
+				"value": "audio_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-audio-bugs@google.com"
+					},
+					{
+						"email": "aaronyu@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:776546"
+				},
+				"criteria": {
+					"value": "Audio tests for PVS pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.audio.UCMSequences.section_verb"
+				},
+				{
+					"value": "tast.audio.UCMSequences.section_device"
+				},
+				{
+					"value": "tast.audio.UCMSequences.section_modifier"
+				},
+				{
+					"value": "tast.audio.SoundCardInit.run_success"
+				},
+				{
+					"value": "tast.audio.SoundCardInit.validate_rdc_range"
+				},
+				{
+					"value": "tast.audio.EchoRefDevice.frequency_200"
+				},
+				{
+					"value": "tast.audio.EchoRefDevice.frequency_400"
+				},
+				{
+					"value": "tast.audio.EchoRefDevice.frequency_1000"
+				},
+				{
+					"value": "tast.audio.EchoRefDevice.frequency_2000"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "bvt-cq"
 			},
 			"metadata": {
