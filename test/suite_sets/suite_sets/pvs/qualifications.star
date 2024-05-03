@@ -11,7 +11,9 @@ def _pre_fsi():
         owners = pvs_common.owners,
         bug_component = pvs_common.bug_component,
         criteria = "Automated tests that must be passed for device before FSI.",
-        suite_sets = [],
+        suite_sets = [
+            "camera_pre_fsi",
+        ],
         suites = [
             "audio_pre_fsi",
         ],
@@ -23,7 +25,9 @@ def _fsi():
         owners = pvs_common.owners,
         bug_component = pvs_common.bug_component,
         criteria = "Automated tests that must pass before FSI.",
-        suite_sets = [],
+        suite_sets = [
+            "camera_fsi",
+        ],
         suites = [],
     )
 

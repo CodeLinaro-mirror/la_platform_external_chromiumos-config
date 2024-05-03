@@ -52,6 +52,54 @@
 		},
 		{
 			"id": {
+				"value": "camera_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-camera-eng@google.com"
+					}
+				],
+				"bugComponent": {},
+				"criteria": {
+					"value": "Camera tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.camera.CCAUITakePicture"
+				},
+				{
+					"value": "tast.camera.CCAUIRecordVideo"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "camera_pre_fsi_only"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-camera-eng@google.com"
+					}
+				],
+				"bugComponent": {},
+				"criteria": {
+					"value": "Camera tests which should be run for Pre FSI testing only."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.camera.CCAUISmoke.real"
+				},
+				{
+					"value": "tast.camera.CCAUISmoke.vivid"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "bvt-cq"
 			},
 			"metadata": {

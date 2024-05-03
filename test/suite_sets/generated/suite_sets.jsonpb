@@ -2,6 +2,51 @@
 	"suiteSets": [
 		{
 			"id": {
+				"value": "camera_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-camera-eng@google.com"
+					}
+				],
+				"bugComponent": {},
+				"criteria": {
+					"value": "Camera tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "camera_common"
+				},
+				{
+					"value": "camera_pre_fsi_only"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "camera_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-camera-eng@google.com"
+					}
+				],
+				"bugComponent": {},
+				"criteria": {
+					"value": "Camera tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "camera_common"
+				}
+			]
+		},
+		{
+			"id": {
 				"value": "example_suite_set"
 			},
 			"metadata": {
@@ -205,6 +250,11 @@
 					"value": "Automated tests that must be passed for device before FSI."
 				}
 			},
+			"suiteSets": [
+				{
+					"value": "camera_pre_fsi"
+				}
+			],
 			"suites": [
 				{
 					"value": "audio_pre_fsi"
@@ -230,7 +280,12 @@
 				"criteria": {
 					"value": "Automated tests that must pass before FSI."
 				}
-			}
+			},
+			"suiteSets": [
+				{
+					"value": "camera_fsi"
+				}
+			]
 		}
 	]
 }
