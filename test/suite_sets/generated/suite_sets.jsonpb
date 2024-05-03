@@ -184,6 +184,48 @@
 					"value": "firmware_other"
 				}
 			]
+		},
+		{
+			"id": {
+				"value": "pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1110659"
+				},
+				"criteria": {
+					"value": "Automated tests that must be passed for device before FSI."
+				}
+			}
+		},
+		{
+			"id": {
+				"value": "fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "jackgelinas@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1110659"
+				},
+				"criteria": {
+					"value": "Automated tests that must pass before FSI."
+				}
+			}
 		}
 	]
 }
