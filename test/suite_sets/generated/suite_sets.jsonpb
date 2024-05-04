@@ -10,7 +10,9 @@
 						"email": "chromeos-camera-eng@google.com"
 					}
 				],
-				"bugComponent": {},
+				"bugComponent": {
+					"value": "b:1475606"
+				},
 				"criteria": {
 					"value": "Camera tests for PVS pre FSI testing."
 				}
@@ -34,7 +36,9 @@
 						"email": "chromeos-camera-eng@google.com"
 					}
 				],
-				"bugComponent": {},
+				"bugComponent": {
+					"value": "b:1475606"
+				},
 				"criteria": {
 					"value": "Camera tests for PVS FSI testing."
 				}

@@ -60,7 +60,9 @@
 						"email": "chromeos-camera-eng@google.com"
 					}
 				],
-				"bugComponent": {},
+				"bugComponent": {
+					"value": "b:1475606"
+				},
 				"criteria": {
 					"value": "Camera tests common to FSI/Pre FSI testing."
 				}
@@ -84,7 +86,9 @@
 						"email": "chromeos-camera-eng@google.com"
 					}
 				],
-				"bugComponent": {},
+				"bugComponent": {
+					"value": "b:1475606"
+				},
 				"criteria": {
 					"value": "Camera tests which should be run for Pre FSI testing only."
 				}

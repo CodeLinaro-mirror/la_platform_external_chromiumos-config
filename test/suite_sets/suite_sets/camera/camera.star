@@ -8,7 +8,7 @@ shared_owners = [
     "chromeos-camera-eng@google.com",
 ]
 
-shared_bug_component = ""
+shared_bug_component = "b:1475606"
 
 def _camera_pre_fsi():
     return create.suite_set(
