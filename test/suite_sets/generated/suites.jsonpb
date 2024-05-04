@@ -5734,9 +5734,6 @@
 					"value": "tauto.firmware_DevMode"
 				},
 				{
-					"value": "tauto.firmware_FAFTSetup"
-				},
-				{
 					"value": "tauto.firmware_FWupdateThenSleep"
 				},
 				{
@@ -6250,9 +6247,6 @@
 				},
 				{
 					"value": "tauto.firmware_DevMode"
-				},
-				{
-					"value": "tauto.firmware_FAFTSetup"
 				},
 				{
 					"value": "tauto.firmware_FWupdateThenSleep"

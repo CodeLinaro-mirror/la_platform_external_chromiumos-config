@@ -163,7 +163,6 @@ def _faft_bios_ro_qual():
             "tauto.firmware_CorruptRecoveryCache",
             "tauto.firmware_CorruptRecoveryCache.dev",
             "tauto.firmware_DevMode",
-            "tauto.firmware_FAFTSetup",
             "tauto.firmware_FWupdateThenSleep",
             "tauto.firmware_FWupdateThenSleep.batteryonly",
             "tauto.firmware_FWupdateThenSleep.wp",

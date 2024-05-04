@@ -142,7 +142,6 @@ def _faft_bios_rw_qual():
             "tauto.firmware_CorruptFwSigB",
             "tauto.firmware_CorruptFwSigB.dev",
             "tauto.firmware_DevMode",
-            "tauto.firmware_FAFTSetup",
             "tauto.firmware_FWupdateThenSleep",
             "tauto.firmware_FWupdateThenSleep.batteryonly",
             "tauto.firmware_FWupdateThenSleep.wp",
