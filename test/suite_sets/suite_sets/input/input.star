@@ -38,7 +38,12 @@ def _input_common():
         bug_component = shared_bug_component,
         criteria = "Input tests common to FSI/Pre FSI testing.",
         tests = [
-            "tast.inputs.VirtualKeyboardHandwriting",
+            "tast.inputs.VirtualKeyboardHandwriting.docked",
+            "tast.inputs.VirtualKeyboardHandwriting.docked_informational",
+            "tast.inputs.VirtualKeyboardHandwriting.floating",
+            "tast.inputs.VirtualKeyboardHandwriting.floating_informational",
+            "tast.inputs.VirtualKeyboardHandwriting.docked_lacros",
+            "tast.inputs.VirtualKeyboardHandwriting.floating_lacros",
             "tast.inputs.VirtualKeyboardSpeech",
         ],
     )

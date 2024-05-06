@@ -82,9 +82,7 @@ def _cellular_pre_fsi_only():
         bug_component = shared_bug_component,
         criteria = "Cellular tests which should be run for Pre FSI testing only.",
         tests = [
-            "tast.cellular.ShillCellularEnableAndConnect",
-            "tast.cellular.HostCellularNetworkConnectivity",
-            "tast.cellular.ShillCellularApn",
+            "tast.cellular.ShillEnableAndConnect",
         ],
     )
 

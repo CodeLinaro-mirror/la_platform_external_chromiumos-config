@@ -78,7 +78,6 @@ def _graphics_video():
             "tast.video.Seek.h264",
             "tast.video.Seek.vp8",
             "tast.video.Seek.vp9",
-            "tauto.video_ChromeVidResChangeHWDecode",
         ],
     )
 

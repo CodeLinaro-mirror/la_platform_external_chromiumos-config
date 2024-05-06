@@ -17,14 +17,16 @@ def _firmware_other():
         bug_component = shared_bug_component,
         criteria = "Tests used to qualify the device firmware, that are not part of faft_* suites, includes longer running stress tests.",
         tests = [
-            "tast.storage.QuickStress",
+            "tast.storage.QuickStress.setup",
+            "tast.storage.QuickStress.stress",
+            "tast.storage.QuickStress.teardown",
             "tast.platform.BootPerf",
             "tauto.firmware_ConsecutiveBoot.dev.500",
             "tauto.firmware_ConsecutiveBoot.2500",
             "tauto.power_SuspendStress.bareFSI",
             "tauto.power_UiResume.freeze",
             "tauto.power_CPUFreq",
-            "tauto.power_CPUIlde",
+            "tauto.power_CPUIdle",
             "tauto.hardware_TPMCheck",
             # TODO need power battery life test figure out if old or new should be added
         ],

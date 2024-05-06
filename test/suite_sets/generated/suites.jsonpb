@@ -246,13 +246,7 @@
 			},
 			"tests": [
 				{
-					"value": "tast.cellular.ShillCellularEnableAndConnect"
-				},
-				{
-					"value": "tast.cellular.HostCellularNetworkConnectivity"
-				},
-				{
-					"value": "tast.cellular.ShillCellularApn"
+					"value": "tast.cellular.ShillEnableAndConnect"
 				}
 			]
 		},
@@ -448,9 +442,6 @@
 				},
 				{
 					"value": "tast.video.Seek.vp9"
-				},
-				{
-					"value": "tauto.video_ChromeVidResChangeHWDecode"
 				}
 			]
 		},
@@ -517,7 +508,22 @@
 			},
 			"tests": [
 				{
-					"value": "tast.inputs.VirtualKeyboardHandwriting"
+					"value": "tast.inputs.VirtualKeyboardHandwriting.docked"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.docked_informational"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.floating"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.floating_informational"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.docked_lacros"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.floating_lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardSpeech"
@@ -6718,7 +6724,13 @@
 			},
 			"tests": [
 				{
-					"value": "tast.storage.QuickStress"
+					"value": "tast.storage.QuickStress.setup"
+				},
+				{
+					"value": "tast.storage.QuickStress.stress"
+				},
+				{
+					"value": "tast.storage.QuickStress.teardown"
 				},
 				{
 					"value": "tast.platform.BootPerf"
@@ -6739,7 +6751,7 @@
 					"value": "tauto.power_CPUFreq"
 				},
 				{
-					"value": "tauto.power_CPUIlde"
+					"value": "tauto.power_CPUIdle"
 				},
 				{
 					"value": "tauto.hardware_TPMCheck"
