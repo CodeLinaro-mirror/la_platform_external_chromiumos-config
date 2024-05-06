@@ -28353,6 +28353,86 @@
           "name": "BuildInfo"
         },
         {
+          "enumType": [
+            {
+              "name": "ChameleonType",
+              "reservedRange": [
+                {
+                  "end": 1,
+                  "start": 1
+                },
+                {
+                  "end": 8,
+                  "start": 6
+                }
+              ],
+              "value": [
+                {
+                  "name": "CHAMELEON_TYPE_INVALID",
+                  "number": 0
+                },
+                {
+                  "name": "CHAMELEON_TYPE_DP",
+                  "number": 2
+                },
+                {
+                  "name": "CHAMELEON_TYPE_DP_HDMI",
+                  "number": 3,
+                  "options": {
+                    "deprecated": true
+                  }
+                },
+                {
+                  "name": "CHAMELEON_TYPE_VGA",
+                  "number": 4,
+                  "options": {
+                    "deprecated": true
+                  }
+                },
+                {
+                  "name": "CHAMELEON_TYPE_HDMI",
+                  "number": 5
+                },
+                {
+                  "name": "CHAMELEON_TYPE_V2",
+                  "number": 9
+                },
+                {
+                  "name": "CHAMELEON_TYPE_V3",
+                  "number": 10
+                },
+                {
+                  "name": "CHAMELEON_TYPE_RPI",
+                  "number": 11
+                }
+              ]
+            },
+            {
+              "name": "ChameleonConnectionType",
+              "value": [
+                {
+                  "name": "CHAMELEON_CONNECTION_TYPE_INVALID",
+                  "number": 0
+                },
+                {
+                  "name": "CHAMELEON_CONNECTION_TYPE_AUDIOJACK",
+                  "number": 1
+                },
+                {
+                  "name": "CHAMELEON_CONNECTION_TYPE_USB",
+                  "number": 2
+                },
+                {
+                  "name": "CHAMELEON_CONNECTION_TYPE_HDMI",
+                  "number": 3
+                },
+                {
+                  "name": "CHAMELEON_CONNECTION_TYPE_DP",
+                  "number": 4
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "arc",
@@ -28431,6 +28511,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "chameleon",
               "number": 10,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.Chameleon"
             },
@@ -28449,6 +28532,14 @@
               "number": 12,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.ModemInfo"
+            },
+            {
+              "jsonName": "chameleonInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "chameleon_info",
+              "number": 13,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.ChameleonInfo"
             }
           ],
           "name": "BuildMetadata",
@@ -28698,6 +28789,27 @@
                 }
               ],
               "name": "GfxInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "chameleonType",
+                  "label": "LABEL_REPEATED",
+                  "name": "chameleon_type",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.artifact.BuildMetadata.ChameleonType"
+                },
+                {
+                  "jsonName": "chameleonConnectionTypes",
+                  "label": "LABEL_REPEATED",
+                  "name": "chameleon_connection_types",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.artifact.BuildMetadata.ChameleonConnectionType"
+                }
+              ],
+              "name": "ChameleonInfo"
             }
           ]
         },

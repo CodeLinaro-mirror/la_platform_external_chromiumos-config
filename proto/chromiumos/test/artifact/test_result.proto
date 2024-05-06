@@ -233,7 +233,7 @@ message BuildInfo {
 }
 
 // The complete build metadata of the test case.
-// NEXT TAG: 13
+// NEXT TAG: 14
 message BuildMetadata {
   // ARC++ metadata
   message Arc {
@@ -320,10 +320,8 @@ message BuildMetadata {
 
   Lacros lacros = 9;
 
-  // Chameleon metadata for for automated external display testing across USB-C,
-  // HDMI, and DisplayPort.
-  // See details: http://g3doc/company/teams/chromeos-audio/tests/chameleon
-  chromiumos.test.lab.api.Chameleon chameleon = 10;
+  // Deprecated. Use ChameleonInfo from below instead.
+  chromiumos.test.lab.api.Chameleon chameleon = 10 [deprecated = true];
 
   // Graphics info
   // NEXT TAG: 15
@@ -366,6 +364,40 @@ message BuildMetadata {
 
   // Modem info that defines modem labels in lab config of a DUT
   chromiumos.test.lab.api.ModemInfo modem_info = 12;
+
+  // Chameleon metadata for for automated external display testing across USB-C,
+  // HDMI, and DisplayPort.
+  // See details: http://g3doc/company/teams/chromeos-audio/tests/chameleon
+  // This is a mirror of the proto stored in chrome repository under
+  // https://source.chromium.org/chromium/infra/infra/+/main:go/src/infra/unifiedfleet/api/v1/models/chromeos/lab/chameleon.proto
+  // Next Tag: 12
+  enum ChameleonType {
+    reserved 1, 6 to 8;
+    CHAMELEON_TYPE_INVALID = 0;
+    CHAMELEON_TYPE_DP = 2;
+    CHAMELEON_TYPE_DP_HDMI = 3 [deprecated = true];
+    CHAMELEON_TYPE_VGA = 4 [deprecated = true];
+    CHAMELEON_TYPE_HDMI = 5;
+    CHAMELEON_TYPE_V2 = 9;
+    CHAMELEON_TYPE_V3 = 10;
+    CHAMELEON_TYPE_RPI = 11;
+  }
+
+  // Next Tag: 5
+  enum ChameleonConnectionType {
+    CHAMELEON_CONNECTION_TYPE_INVALID = 0;
+    CHAMELEON_CONNECTION_TYPE_AUDIOJACK = 1;
+    CHAMELEON_CONNECTION_TYPE_USB = 2;
+    CHAMELEON_CONNECTION_TYPE_HDMI = 3;
+    CHAMELEON_CONNECTION_TYPE_DP = 4;
+  }
+
+  // Next Tag: 3
+  message ChameleonInfo {
+    repeated ChameleonType chameleon_type = 1;
+    repeated ChameleonConnectionType chameleon_connection_types = 2;
+  }
+  ChameleonInfo chameleon_info = 13;
 }
 
 // Captures DUT related info.
