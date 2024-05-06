@@ -84,7 +84,7 @@ def _graphics_video():
 
 def _graphics_webgl():
     return create.suite(
-        suite_id = "_graphics_webgl",
+        suite_id = "graphics_webgl",
         owners = shared_owners,
         bug_component = shared_bug_component,
         criteria = "Graphics tests for WebGL FSI testing.",

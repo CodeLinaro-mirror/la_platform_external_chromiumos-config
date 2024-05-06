@@ -48,7 +48,7 @@ def labqual():
 
 def _platform_common():
     return create.suite(
-        suite_id = "_platform_common",
+        suite_id = "platform_common",
         owners = shared_owners,
         bug_component = shared_bug_component,
         criteria = "Platform tests common to FSI/Pre FSI testing.",
@@ -59,7 +59,7 @@ def _platform_common():
 
 def _platform_fsi_only():
     return create.suite(
-        suite_id = "_platform_fsi_only",
+        suite_id = "platform_fsi_only",
         owners = shared_owners,
         bug_component = shared_bug_component,
         criteria = "Platform tests which should be run for Pre FSI testing only.",

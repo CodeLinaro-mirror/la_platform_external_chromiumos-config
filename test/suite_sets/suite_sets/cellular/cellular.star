@@ -77,7 +77,7 @@ def _cellular_common():
 
 def _cellular_pre_fsi_only():
     return create.suite(
-        suite_id = "_cellular_pre_fsi_only",
+        suite_id = "cellular_pre_fsi_only",
         owners = shared_owners,
         bug_component = shared_bug_component,
         criteria = "Cellular tests which should be run for Pre FSI testing only.",

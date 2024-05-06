@@ -229,7 +229,7 @@
 		},
 		{
 			"id": {
-				"value": "_cellular_pre_fsi_only"
+				"value": "cellular_pre_fsi_only"
 			},
 			"metadata": {
 				"owners": [
@@ -456,7 +456,7 @@
 		},
 		{
 			"id": {
-				"value": "_graphics_webgl"
+				"value": "graphics_webgl"
 			},
 			"metadata": {
 				"owners": [
@@ -599,7 +599,7 @@
 		},
 		{
 			"id": {
-				"value": "_platform_common"
+				"value": "platform_common"
 			},
 			"metadata": {
 				"owners": [
@@ -625,7 +625,7 @@
 		},
 		{
 			"id": {
-				"value": "_platform_fsi_only"
+				"value": "platform_fsi_only"
 			},
 			"metadata": {
 				"owners": [
