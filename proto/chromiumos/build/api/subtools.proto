@@ -16,6 +16,7 @@ message SubtoolPackage {
   enum ExportType {
     EXPORT_UNSPECIFIED = 0;
     EXPORT_CIPD = 1;
+    EXPORT_GCS = 2;
   }
   // How the package should be exported.
   ExportType type = 2;
@@ -70,4 +71,23 @@ message SubtoolPackage {
   }
   // The type of change that will trigger a new upload.
   Change upload_trigger = 6;
+
+  // When exporting to GCS, archives will be written to:
+  //   gs://${BUCKET}/${PREFIX}/${NAME}/${VERSION}.${EXTENSION}
+  // Where BUCKET, PREFIX, and EXTENSION are configurable using
+  // GcsExportOptions.  NAME is the package name, and VERSION is the computed
+  // version.
+  message GcsExportOptions {
+    // The bucket name to export to.
+    string bucket = 1;
+    // An optional subdirectory prefix to use in the bucket.
+    optional string prefix = 2;
+    // The archive format to use.  Right now only .tar.zst is supported.
+    enum ArchiveFormat {
+      ARCHIVE_FORMAT_UNSPECIFIED = 0;
+      ARCHIVE_FORMAT_TAR_ZST = 1;
+    }
+    ArchiveFormat archive_format = 3;
+  }
+  optional GcsExportOptions gcs_export_options = 7;
 }
