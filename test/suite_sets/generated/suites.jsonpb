@@ -4676,7 +4676,7 @@
 					"value": "tast.secagentd.AgentEvents"
 				},
 				{
-					"value": "tast.secagentd.AuthenticationEvents.mainline"
+					"value": "tast.secagentd.AuthenticationEvents"
 				},
 				{
 					"value": "tast.secagentd.ProcessEvents"
@@ -4884,6 +4884,9 @@
 				},
 				{
 					"value": "tast.terminal.SSH"
+				},
+				{
+					"value": "tast.tflite.AndroidHardwareBuffer"
 				},
 				{
 					"value": "tast.tflite.DTS"
@@ -5579,6 +5582,9 @@
 					"value": "tast.firmware.MemoryTrainingUI"
 				},
 				{
+					"value": "tast.firmware.MiniDiag"
+				},
+				{
 					"value": "tast.firmware.RecScreenInvalidUSB"
 				},
 				{
@@ -5598,6 +5604,9 @@
 				},
 				{
 					"value": "tast.firmware.RecScreenUSBInserted.normal"
+				},
+				{
+					"value": "tast.firmware.RecToDevFromECRW"
 				},
 				{
 					"value": "tast.firmware.RecToDevUntrusted"
@@ -5762,9 +5771,6 @@
 					"value": "tauto.firmware_InvalidUSB"
 				},
 				{
-					"value": "tauto.firmware_LegacyRecovery"
-				},
-				{
 					"value": "tauto.firmware_MenuPowerOff"
 				},
 				{
@@ -5820,12 +5826,6 @@
 				},
 				{
 					"value": "tauto.firmware_UpdaterModes"
-				},
-				{
-					"value": "tauto.firmware_UserRequestRecovery"
-				},
-				{
-					"value": "tauto.firmware_UserRequestRecovery.dev"
 				},
 				{
 					"value": "tauto.firmware_WilcoDiagnosticsMode"
@@ -6127,6 +6127,9 @@
 					"value": "tast.firmware.MemoryTrainingUI"
 				},
 				{
+					"value": "tast.firmware.MiniDiag"
+				},
+				{
 					"value": "tast.firmware.RecScreenInvalidUSB"
 				},
 				{
@@ -6134,6 +6137,9 @@
 				},
 				{
 					"value": "tast.firmware.RecScreenUSBInserted.normal"
+				},
+				{
+					"value": "tast.firmware.RecToDevFromECRW"
 				},
 				{
 					"value": "tast.firmware.RecToDevUntrusted"
@@ -6314,12 +6320,6 @@
 				},
 				{
 					"value": "tauto.firmware_UpdaterModes"
-				},
-				{
-					"value": "tauto.firmware_UserRequestRecovery"
-				},
-				{
-					"value": "tauto.firmware_UserRequestRecovery.dev"
 				},
 				{
 					"value": "tauto.firmware_WilcoDiagnosticsMode"
