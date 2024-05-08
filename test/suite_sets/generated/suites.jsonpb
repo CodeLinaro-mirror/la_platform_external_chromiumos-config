@@ -2516,19 +2516,10 @@
 					"value": "tast.cryptohome.Recovery"
 				},
 				{
-					"value": "tast.cryptohome.Recovery.legacy"
-				},
-				{
 					"value": "tast.cryptohome.RecoveryLockedForAuth"
 				},
 				{
-					"value": "tast.cryptohome.RecoveryLockedForAuth.legacy"
-				},
-				{
 					"value": "tast.cryptohome.RecoveryWithUSSMigration"
-				},
-				{
-					"value": "tast.cryptohome.RecoveryWithUSSMigration.legacy"
 				},
 				{
 					"value": "tast.cryptohome.RelabelFactors"
@@ -4889,7 +4880,7 @@
 					"value": "tast.tflite.AndroidHardwareBuffer"
 				},
 				{
-					"value": "tast.tflite.DTS"
+					"value": "tast.tflite.DTS.sample"
 				},
 				{
 					"value": "tast.typec.Typecd"
