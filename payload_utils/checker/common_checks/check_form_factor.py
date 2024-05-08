@@ -8,7 +8,6 @@ import pathlib
 from typing import Iterable
 
 from checker import constraint_suite
-from checker import config_bundle_utils
 
 from chromiumos.config.payload import config_bundle_pb2
 from chromiumos.config.api import design_pb2
@@ -38,16 +37,16 @@ class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
     """Checks a project uses a form factor allowed by a program."""
     del factory_dir
 
-    program = config_bundle_utils.get_program(program_config)
     allowed_form_factors = []
     # Alias the FormFactor.Name fn. to increase readability. This fn. is used to
     # produce human-readable error messages.
     form_factor_name = (
         topology_pb2.HardwareFeatures.FormFactor.FormFactorType.Name)
 
-    for constraint in get_form_factor_constraints(program):
-      allowed_form_factors.append(
-          form_factor_name(constraint.features.form_factor.form_factor))
+    for program in program_config.program_list:
+      for constraint in get_form_factor_constraints(program):
+        allowed_form_factors.append(
+            form_factor_name(constraint.features.form_factor.form_factor))
 
     for design in project_config.design_list:
       for config in design.configs:
@@ -63,9 +62,9 @@ class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
   ):
     """Checks all form factor constraints are REQUIRED."""
     del project_config, factory_dir
-    program = config_bundle_utils.get_program(program_config)
 
-    for constraint in program.design_config_constraints:
-      self.assertEqual(constraint.level,
-                       design_pb2.Design.Config.Constraint.REQUIRED,
-                       'FormFactor constraints must be REQUIRED.')
+    for program in program_config.program_list:
+      for constraint in program.design_config_constraints:
+        self.assertEqual(constraint.level,
+                         design_pb2.Design.Config.Constraint.REQUIRED,
+                         'FormFactor constraints must be REQUIRED.')

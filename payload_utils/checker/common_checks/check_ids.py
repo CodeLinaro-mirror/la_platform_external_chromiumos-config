@@ -22,7 +22,6 @@ import logging
 import pathlib
 
 from checker import constraint_suite
-from checker import config_bundle_utils
 
 from chromiumos.config.payload import config_bundle_pb2
 
@@ -38,10 +37,9 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
   ):
     """Checks all project ids are consistent with the program."""
     del factory_dir
-
-    program_id = config_bundle_utils.get_program(program_config).id.value
+    program_ids = [program.id.value for program in program_config.program_list]
     for design in project_config.design_list:
-      self.assertEqual(program_id, design.program_id.value)
+      self.assertIn(design.program_id.value, program_ids)
 
   def check_design_config_id_segments(
       self,
@@ -51,11 +49,10 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
   ):
     """Check that all DesignConfigIds fall within their segment."""
     del factory_dir
-
-    program = config_bundle_utils.get_program(program_config)
-    segment_map = {
-        s.design_id.value: s for s in program.design_config_id_segments
-    }
+    segment_map = {}
+    for program in program_config.program_list:
+      for segment in program.design_config_id_segments:
+        segment_map[segment.design_id.value] = segment
 
     for design in project_config.design_list:
       # It is valid for designs to not have a corresponding segment.
@@ -96,13 +93,13 @@ class IdConstraintSuite(constraint_suite.ConstraintSuite):
   ):
     """Check that no DesignConfigIdSegments overlap."""
     del project_config, factory_dir
-
-    program = config_bundle_utils.get_program(program_config)
-
+    programs = program_config.program_list
+    # Flatten design config ID segments across programs
+    design_config_id_segments = itertools.chain.from_iterable(
+        program.design_config_id_segments for program in programs)
     # Get all pairs as permutations, so we can assume that one segment is lower
     # than the other.
-    for seg_a, seg_b in itertools.permutations(
-        program.design_config_id_segments, 2):
+    for seg_a, seg_b in itertools.permutations(design_config_id_segments, 2):
       error_message = 'Segments {} and {} overlap'.format(seg_a, seg_b)
 
       # Segment min_ids can never be equal.

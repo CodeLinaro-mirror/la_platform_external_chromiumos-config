@@ -6,7 +6,6 @@
 import itertools
 import pathlib
 
-from checker import config_bundle_utils
 from checker import constraint_suite
 
 from chromiumos.config.payload import config_bundle_pb2
@@ -30,41 +29,46 @@ class SecondSourceFactoryCacheConstraintSuite(constraint_suite.ConstraintSuite):
     """
     del factory_dir
 
-    segments = config_bundle_utils.get_program(program_config).ssfc_segments
+    for program in program_config.program_list:
+      segments = program.ssfc_segments
 
-    for segment_a, segment_b in itertools.combinations(segments, 2):
-      overlap = segment_a.mask & segment_b.mask
-      self.assertEqual(
-          overlap,
-          0,
-          msg='Overlap in masks {} and {}: {:b} & {:b} = {:b}'.format(
-              segment_a.name, segment_b.name, segment_a.mask, segment_b.mask,
-              overlap))
+      for segment_a, segment_b in itertools.combinations(segments, 2):
+        overlap = segment_a.mask & segment_b.mask
+        self.assertEqual(
+            overlap,
+            0,
+            msg='Overlap in masks {} and {}: {:b} & {:b} = {:b}'.format(
+                segment_a.name, segment_b.name, segment_a.mask, segment_b.mask,
+                overlap))
 
-    # For every SSFC value within a project design, check the value aligns with
-    # a segment.
-    for design in project_config.design_list:
-      for value, name in design.ssfc_value.items():
+      # For every SSFC value within a project design, check the value aligns with
+      # a segment.
+      for design in project_config.design_list:
 
-        self.assertNotEqual(
-            value, 0, 'SSFC value {} cannot have a value of 0'.format(name))
+        if design.program_id.value != program.id.value:
+          continue
 
-        match_found = False
-        for seg in segments:
-          overlap = value & seg.mask
-          # Must be another SSFC segment
-          if overlap == 0:
-            continue
+        for value, name in design.ssfc_value.items():
 
-          match_found = True
+          self.assertNotEqual(
+              value, 0, 'SSFC value {} cannot have a value of 0'.format(name))
 
-          self.assertEqual(
-              overlap, value,
-              'SSFC value {} = 0x{:08x} does not align with SSFC Segment {} '
-              '0x{:08X}'.format(name, value, seg.name, seg.mask))
+          match_found = False
+          for seg in segments:
+            overlap = value & seg.mask
+            # Must be another SSFC segment
+            if overlap == 0:
+              continue
 
-        # After looping through all valid SSFC segments, ensure it was found
-        self.assertTrue(
-            match_found,
-            'SSFC {} = 0x{:08x} does not belong to a SSFC segment. Please '
-            'define a new segment at the program level.'.format(name, value))
+            match_found = True
+
+            self.assertEqual(
+                overlap, value,
+                'SSFC value {} = 0x{:08x} does not align with SSFC Segment {} '
+                '0x{:08X}'.format(name, value, seg.name, seg.mask))
+
+          # After looping through all valid SSFC segments, ensure it was found
+          self.assertTrue(
+              match_found,
+              'SSFC {} = 0x{:08x} does not belong to a SSFC segment. Please '
+              'define a new segment at the program level.'.format(name, value))

@@ -6,7 +6,6 @@
 import itertools
 import pathlib
 
-from checker import config_bundle_utils
 from checker import constraint_suite
 from common import proto_utils
 
@@ -35,21 +34,23 @@ class FirmwareConfigurationConstraintSuite(constraint_suite.ConstraintSuite):
     segment.
     """
     del factory_dir
-
-    segments = config_bundle_utils.get_program(
-        program_config).firmware_configuration_segments
-
-    for segment_a, segment_b in itertools.combinations(segments, 2):
-      overlap = segment_a.mask & segment_b.mask
-      self.assertFalse(
-          overlap,
-          msg='Overlap in masks {} and {}: {:b} & {:b} = {:b}'.format(
-              segment_a.name, segment_b.name, segment_a.mask, segment_b.mask,
-              overlap))
+    fw_cfg_segments = {
+        program.id.value: program.firmware_configuration_segments
+        for program in program_config.program_list
+    }
+    for segments in fw_cfg_segments.values():
+      for segment_a, segment_b in itertools.combinations(segments, 2):
+        overlap = segment_a.mask & segment_b.mask
+        self.assertFalse(
+            overlap,
+            msg='Overlap in masks {} and {}: {:b} & {:b} = {:b}'.format(
+                segment_a.name, segment_b.name, segment_a.mask, segment_b.mask,
+                overlap))
 
     # For every topology that defines a FirmwareConfiguration, check the mask
     # aligns with a segment.
     for design in project_config.design_list:
+      segments = fw_cfg_segments[design.program_id.value]
       for config in design.configs:
         for topology in proto_utils.get_all_fields(config.hardware_topology):
           mask = topology.hardware_feature.fw_config.mask
