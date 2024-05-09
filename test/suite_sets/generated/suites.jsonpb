@@ -5321,6 +5321,9 @@
 					"value": "tast.firmware.BrokenToDev"
 				},
 				{
+					"value": "tast.firmware.CorruptBothMiniOSAB"
+				},
+				{
 					"value": "tast.firmware.CorruptBothSignedAMDFWAB.dev_mode"
 				},
 				{
