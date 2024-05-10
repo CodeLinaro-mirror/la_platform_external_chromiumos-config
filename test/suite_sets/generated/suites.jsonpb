@@ -5705,9 +5705,6 @@
 					"value": "tauto.firmware_CorruptBothKernelAB"
 				},
 				{
-					"value": "tauto.firmware_CorruptBothMiniosAB"
-				},
-				{
 					"value": "tauto.firmware_CorruptFwBodyA"
 				},
 				{
@@ -5756,31 +5753,7 @@
 					"value": "tauto.firmware_FWupdateThenSleep.wp"
 				},
 				{
-					"value": "tauto.firmware_FwScreenCloseLid"
-				},
-				{
 					"value": "tauto.firmware_FwScreenPressPower"
-				},
-				{
-					"value": "tauto.firmware_InvalidUSB"
-				},
-				{
-					"value": "tauto.firmware_MenuPowerOff"
-				},
-				{
-					"value": "tauto.firmware_MiniDiag"
-				},
-				{
-					"value": "tauto.firmware_MiniosMenu"
-				},
-				{
-					"value": "tauto.firmware_MiniosMenu.old"
-				},
-				{
-					"value": "tauto.firmware_MiniosPriority.minios_a"
-				},
-				{
-					"value": "tauto.firmware_MiniosPriority.minios_b"
 				},
 				{
 					"value": "tauto.firmware_RecoveryCacheBootKeys"
@@ -6268,19 +6241,7 @@
 					"value": "tauto.firmware_FWupdateThenSleep.wp"
 				},
 				{
-					"value": "tauto.firmware_FwScreenCloseLid"
-				},
-				{
 					"value": "tauto.firmware_FwScreenPressPower"
-				},
-				{
-					"value": "tauto.firmware_InvalidUSB"
-				},
-				{
-					"value": "tauto.firmware_MenuPowerOff"
-				},
-				{
-					"value": "tauto.firmware_MiniDiag"
 				},
 				{
 					"value": "tauto.firmware_RollbackKernel"
