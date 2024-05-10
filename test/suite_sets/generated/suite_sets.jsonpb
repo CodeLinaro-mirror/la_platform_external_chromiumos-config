@@ -645,9 +645,6 @@
 				},
 				{
 					"value": "platform_pre_fsi"
-				},
-				{
-					"value": "power_pre_fsi"
 				}
 			],
 			"suites": [

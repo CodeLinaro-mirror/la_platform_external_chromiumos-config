@@ -675,18 +675,6 @@
 			"tests": [
 				{
 					"value": "tast.meta.PowerQual.qual"
-				},
-				{
-					"value": "tast.meta.PowerQual.browsingheavy"
-				},
-				{
-					"value": "tast.meta.PowerQual.videocall"
-				},
-				{
-					"value": "tast.meta.PowerQual.videoplayback"
-				},
-				{
-					"value": "tast.meta.PowerQual.browsing"
 				}
 			]
 		},
@@ -6689,15 +6677,6 @@
 				},
 				{
 					"value": "tast.platform.BootPerf"
-				},
-				{
-					"value": "tauto.firmware_ConsecutiveBoot.dev.500"
-				},
-				{
-					"value": "tauto.firmware_ConsecutiveBoot.2500"
-				},
-				{
-					"value": "tauto.power_SuspendStress.bareFSI"
 				},
 				{
 					"value": "tauto.power_UiResume.freeze"

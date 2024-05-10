@@ -38,10 +38,6 @@ def _power_qual():
         criteria = "Power tests qualify a device for battery life while running.",
         tests = [
             "tast.meta.PowerQual.qual",
-            "tast.meta.PowerQual.browsingheavy",
-            "tast.meta.PowerQual.videocall",
-            "tast.meta.PowerQual.videoplayback",
-            "tast.meta.PowerQual.browsing",
         ],
     )
 

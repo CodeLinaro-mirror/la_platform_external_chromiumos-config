@@ -21,9 +21,11 @@ def _firmware_other():
             "tast.storage.QuickStress.stress",
             "tast.storage.QuickStress.teardown",
             "tast.platform.BootPerf",
-            "tauto.firmware_ConsecutiveBoot.dev.500",
-            "tauto.firmware_ConsecutiveBoot.2500",
-            "tauto.power_SuspendStress.bareFSI",
+            # temporarily disable long running tests as they will
+            # time out with 10 hour max runtime
+            # "tauto.firmware_ConsecutiveBoot.dev.500",
+            # "tauto.firmware_ConsecutiveBoot.2500",
+            # "tauto.power_SuspendStress.bareFSI",
             "tauto.power_UiResume.freeze",
             "tauto.power_CPUFreq",
             "tauto.power_CPUIdle",

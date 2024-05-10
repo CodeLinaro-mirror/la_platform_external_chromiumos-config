@@ -19,7 +19,9 @@ def _pre_fsi():
             "input_pre_fsi",
             "performance_pre_fsi",
             "platform_pre_fsi",
-            "power_pre_fsi",
+            # power/thermal tests take a very long time temporarily remove
+            # to allow validation of other tests
+            # "power_pre_fsi",
         ],
         suites = [
             "audio_pre_fsi",
