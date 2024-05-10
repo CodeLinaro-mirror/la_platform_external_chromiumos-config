@@ -33128,6 +33128,10 @@
             {
               "name": "WIFI_ROUTER_FEATURE_GCMP",
               "number": 11
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_SAE_EXT_KEY",
+              "number": 12
             }
           ]
         },
