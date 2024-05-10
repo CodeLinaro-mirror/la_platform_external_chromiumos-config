@@ -18,7 +18,7 @@ def _platform_pre_fsi():
         bug_component = shared_bug_component,
         criteria = "Platform tests for PVS pre FSI testing.",
         suite_sets = [],
-        suites = ["labqual", "platform_common"],
+        suites = ["labqual_stable", "platform_common"],
     )
 
 def _platform_fsi():
@@ -31,18 +31,27 @@ def _platform_fsi():
         suites = ["platform_common", "platform_fsi_only"],
     )
 
-def labqual():
+def _labqual_stable():
     return create.suite(
-        suite_id = "labqual",
+        suite_id = "labqual_stable",
         owners = shared_owners,
         bug_component = shared_bug_component,
         criteria = "Platform tests to check device readiness for lab entry.",
         tests = [
-            "tauto.platform_ServoPowerStateController.usb",
-            "tauto.firmware_DevMode",
-            "tauto.firmware_UserRequestRecovery",
-            "tauto.firmware_FAFTSetup",
-            "tauto.firmware_UserRequestRecovery.dev",
+            "tast.labqual.BootupTimesUSB.usb_recovery",
+            "tast.labqual.TPMReset.rec_mode",
+            "tast.labqual.SerialNumber",
+            "tast.labqual.DeviceHwid",
+            "tast.labqual.ServoGBBFlagsFutility",
+            "tast.labqual.DevToSecureMode.dev_mode",
+            "tast.labqual.InternalStorage",
+            "tast.labqual.BootupTimesUSB.usb_dev",
+            "tast.labqual.TPMStatus",
+            "tast.labqual.ECControlRead",
+            "tast.labqual.SSHStability",
+            "tast.labqual.ServoGSCFlags",
+            "tast.labqual.ServoDeviceBatteryCheck",
+            "tast.labqual.UpdateDutFirmware",
         ],
     )
 
@@ -80,7 +89,7 @@ platform_suite_sets = struct(
 
 def _all_suites():
     return [
-        labqual(),
+        _labqual_stable(),
         _platform_common(),
         _platform_fsi_only(),
     ]

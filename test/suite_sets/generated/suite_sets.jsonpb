@@ -322,7 +322,7 @@
 			},
 			"suites": [
 				{
-					"value": "labqual"
+					"value": "labqual_stable"
 				},
 				{
 					"value": "platform_common"

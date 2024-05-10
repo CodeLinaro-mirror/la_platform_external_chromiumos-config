@@ -567,7 +567,7 @@
 		},
 		{
 			"id": {
-				"value": "labqual"
+				"value": "labqual_stable"
 			},
 			"metadata": {
 				"owners": [
@@ -587,19 +587,46 @@
 			},
 			"tests": [
 				{
-					"value": "tauto.platform_ServoPowerStateController.usb"
+					"value": "tast.labqual.BootupTimesUSB.usb_recovery"
 				},
 				{
-					"value": "tauto.firmware_DevMode"
+					"value": "tast.labqual.TPMReset.rec_mode"
 				},
 				{
-					"value": "tauto.firmware_UserRequestRecovery"
+					"value": "tast.labqual.SerialNumber"
 				},
 				{
-					"value": "tauto.firmware_FAFTSetup"
+					"value": "tast.labqual.DeviceHwid"
 				},
 				{
-					"value": "tauto.firmware_UserRequestRecovery.dev"
+					"value": "tast.labqual.ServoGBBFlagsFutility"
+				},
+				{
+					"value": "tast.labqual.DevToSecureMode.dev_mode"
+				},
+				{
+					"value": "tast.labqual.InternalStorage"
+				},
+				{
+					"value": "tast.labqual.BootupTimesUSB.usb_dev"
+				},
+				{
+					"value": "tast.labqual.TPMStatus"
+				},
+				{
+					"value": "tast.labqual.ECControlRead"
+				},
+				{
+					"value": "tast.labqual.SSHStability"
+				},
+				{
+					"value": "tast.labqual.ServoGSCFlags"
+				},
+				{
+					"value": "tast.labqual.ServoDeviceBatteryCheck"
+				},
+				{
+					"value": "tast.labqual.UpdateDutFirmware"
 				}
 			]
 		},
