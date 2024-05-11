@@ -2789,9 +2789,6 @@
 					"value": "tast.firmware.FpTpmSeed"
 				},
 				{
-					"value": "tast.firmware.FpUpdater"
-				},
-				{
 					"value": "tast.firmware.FpUpdaterSucceeded"
 				},
 				{
@@ -4683,6 +4680,18 @@
 				},
 				{
 					"value": "tast.secagentd.AuthenticationEvents"
+				},
+				{
+					"value": "tast.secagentd.NetworkEvents.relaxed_icmp"
+				},
+				{
+					"value": "tast.secagentd.NetworkEvents.relaxed_tcp"
+				},
+				{
+					"value": "tast.secagentd.NetworkEvents.relaxed_tcp_v6"
+				},
+				{
+					"value": "tast.secagentd.NetworkEvents.relaxed_udp"
 				},
 				{
 					"value": "tast.secagentd.ProcessEvents"
