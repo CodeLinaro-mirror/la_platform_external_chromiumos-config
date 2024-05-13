@@ -37,18 +37,21 @@ class FormFactorConstraintSuite(constraint_suite.ConstraintSuite):
     """Checks a project uses a form factor allowed by a program."""
     del factory_dir
 
-    allowed_form_factors = []
     # Alias the FormFactor.Name fn. to increase readability. This fn. is used to
     # produce human-readable error messages.
     form_factor_name = (
         topology_pb2.HardwareFeatures.FormFactor.FormFactorType.Name)
 
+    form_factor_constraints = {}
     for program in program_config.program_list:
+      allowed_form_factors = []
       for constraint in get_form_factor_constraints(program):
         allowed_form_factors.append(
             form_factor_name(constraint.features.form_factor.form_factor))
+      form_factor_constraints[program.id.value] = allowed_form_factors
 
     for design in project_config.design_list:
+      allowed_form_factors = form_factor_constraints[design.program_id.value]
       for config in design.configs:
         self.assertIn(
             form_factor_name(config.hardware_features.form_factor.form_factor),
