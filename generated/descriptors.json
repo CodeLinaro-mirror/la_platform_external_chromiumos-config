@@ -26567,7 +26567,7 @@
           "name": "ListDevicesResponse"
         }
       ],
-      "name": "chromiumos/test/api/device_manager.proto",
+      "name": "chromiumos/test/api/device_manager_service.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },

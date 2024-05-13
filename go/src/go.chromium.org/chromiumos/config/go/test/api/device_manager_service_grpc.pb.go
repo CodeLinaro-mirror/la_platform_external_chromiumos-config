@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.1.0
 // - protoc             v3.17.1
-// source: chromiumos/test/api/device_manager.proto
+// source: chromiumos/test/api/device_manager_service.proto
 
 package api
 
@@ -257,5 +257,5 @@ var DeviceLeaseService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "chromiumos/test/api/device_manager.proto",
+	Metadata: "chromiumos/test/api/device_manager_service.proto",
 }
