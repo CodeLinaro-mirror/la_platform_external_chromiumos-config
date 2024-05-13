@@ -5280,13 +5280,6 @@
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 },
                 {
-                  "jsonName": "fwRwActiveVersion",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "fw_rw_active_version",
-                  "number": 6,
-                  "type": "TYPE_UINT32"
-                },
-                {
                   "jsonName": "fwRoVersion",
                   "label": "LABEL_OPTIONAL",
                   "name": "fw_ro_version",
@@ -5357,6 +5350,10 @@
                 }
               ],
               "reservedRange": [
+                {
+                  "end": 7,
+                  "start": 6
+                },
                 {
                   "end": 8,
                   "start": 7
