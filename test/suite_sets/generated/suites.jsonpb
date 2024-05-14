@@ -5111,12 +5111,6 @@
 					"value": "tast.video.HWDRMInit"
 				},
 				{
-					"value": "tast.videoconferencing.TrayTriggersExtension"
-				},
-				{
-					"value": "tast.videoconferencing.TrayTriggersExtension.lacros"
-				},
-				{
 					"value": "tast.vm.AudioAplay.virtio_cras_snd"
 				},
 				{
