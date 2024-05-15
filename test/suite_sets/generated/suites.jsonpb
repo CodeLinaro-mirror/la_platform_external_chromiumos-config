@@ -1145,6 +1145,12 @@
 					"value": "tast.arc.IntentForward"
 				},
 				{
+					"value": "tast.arc.IntentForward.lacros"
+				},
+				{
+					"value": "tast.arc.IntentForward.lacros_vm"
+				},
+				{
 					"value": "tast.arc.IntentForward.vm"
 				},
 				{
@@ -2787,6 +2793,9 @@
 				},
 				{
 					"value": "tast.firmware.FpTpmSeed"
+				},
+				{
+					"value": "tast.firmware.FpUpdater"
 				},
 				{
 					"value": "tast.firmware.FpUpdaterSucceeded"
@@ -4887,6 +4896,15 @@
 				},
 				{
 					"value": "tast.shelf.LaunchedApps.tablet_form_factor_lacros"
+				},
+				{
+					"value": "tast.shimlessrma.SelectComponentsNoneNextCancel.critical"
+				},
+				{
+					"value": "tast.shimlessrma.WelcomeCancel.critical"
+				},
+				{
+					"value": "tast.shimlessrma.WelcomeNextCancel.critical"
 				},
 				{
 					"value": "tast.system.PortageSmoke"
