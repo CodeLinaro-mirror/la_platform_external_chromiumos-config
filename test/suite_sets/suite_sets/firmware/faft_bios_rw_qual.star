@@ -112,6 +112,8 @@ def _faft_bios_rw_qual():
             "tast.firmware.TPMKernelVersion.dev",
             "tast.firmware.TPMKernelVersion.dev_usb",
             "tast.firmware.TPMKernelVersion.normal",
+            "tast.firmware.TryFWB.dev_mode",
+            "tast.firmware.TryFWB.normal_mode",
             "tast.firmware.UIModeTransition",
             "tast.firmware.USBAnnotations",
             "tast.firmware.UpdateKernelVersion",

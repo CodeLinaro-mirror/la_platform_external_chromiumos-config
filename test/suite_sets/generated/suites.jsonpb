@@ -1610,10 +1610,25 @@
 					"value": "tast.audio.UIInput.mute_fieldtrial_config_disable"
 				},
 				{
+					"value": "tast.biod.BioCryptoInitSuccess"
+				},
+				{
 					"value": "tast.biod.CrosConfig"
 				},
 				{
 					"value": "tast.biod.CrosConfigMatchesDevice"
+				},
+				{
+					"value": "tast.biod.DeviceAccess"
+				},
+				{
+					"value": "tast.biod.DevicePermissions"
+				},
+				{
+					"value": "tast.biod.FirmwareFile"
+				},
+				{
+					"value": "tast.biod.Running"
 				},
 				{
 					"value": "tast.borealis.ConfirmLogs"
@@ -2730,6 +2745,60 @@
 				},
 				{
 					"value": "tast.firmware.FlashromWriteProtect"
+				},
+				{
+					"value": "tast.firmware.FpAddEntropy"
+				},
+				{
+					"value": "tast.firmware.FpBioWash"
+				},
+				{
+					"value": "tast.firmware.FpCheckWriteProtect"
+				},
+				{
+					"value": "tast.firmware.FpFlashFpMcuHello"
+				},
+				{
+					"value": "tast.firmware.FpObeysRollback"
+				},
+				{
+					"value": "tast.firmware.FpRDP0"
+				},
+				{
+					"value": "tast.firmware.FpRDP1"
+				},
+				{
+					"value": "tast.firmware.FpROCanUpdateRW"
+				},
+				{
+					"value": "tast.firmware.FpROOnlyBootsValidRW"
+				},
+				{
+					"value": "tast.firmware.FpRWNoUpdateRO"
+				},
+				{
+					"value": "tast.firmware.FpReadFlash"
+				},
+				{
+					"value": "tast.firmware.FpRebootPowerCycle"
+				},
+				{
+					"value": "tast.firmware.FpRebootToRO"
+				},
+				{
+					"value": "tast.firmware.FpSoftwareWriteProtect"
+				},
+				{
+					"value": "tast.firmware.FpSystemIsLocked"
+				},
+				{
+					"value": "tast.firmware.FpTpmSeed"
+				},
+				{
+					"value": "tast.firmware.FpUpdater"
+				},
+				{
+					"value": "tast.firmware.FpUpdaterSucceeded"
 				},
 				{
 					"value": "tast.firmware.GSCtool"
@@ -4514,7 +4583,19 @@
 					"value": "tast.quicksettings.OpenSettings"
 				},
 				{
+					"value": "tast.resourced.MemoryPressureSignal"
+				},
+				{
 					"value": "tast.resourced.QueryMemoryStatus"
+				},
+				{
+					"value": "tast.resourced.SetGameMode"
+				},
+				{
+					"value": "tast.resourced.SetGameModeWithTimeout"
+				},
+				{
+					"value": "tast.resourced.SetRTCAudioActive"
 				},
 				{
 					"value": "tast.rollback.SmokeCleanup.cleanup_files_if_oobe_is_completed"
@@ -5603,6 +5684,12 @@
 					"value": "tast.firmware.TPMKernelVersion.normal"
 				},
 				{
+					"value": "tast.firmware.TryFWB.dev_mode"
+				},
+				{
+					"value": "tast.firmware.TryFWB.normal_mode"
+				},
+				{
 					"value": "tast.firmware.UIModeTransition"
 				},
 				{
@@ -6101,6 +6188,12 @@
 				},
 				{
 					"value": "tast.firmware.TPMKernelVersion.normal"
+				},
+				{
+					"value": "tast.firmware.TryFWB.dev_mode"
+				},
+				{
+					"value": "tast.firmware.TryFWB.normal_mode"
 				},
 				{
 					"value": "tast.firmware.UIModeTransition"
