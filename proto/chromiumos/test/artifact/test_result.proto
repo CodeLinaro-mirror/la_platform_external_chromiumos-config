@@ -435,7 +435,7 @@ message DroneInfo {
 }
 
 // Captures the Swarming task related info.
-// NEXT TAG: 6
+// NEXT TAG: 7
 message SwarmingInfo {
   // The Swarming task id.
   // Example: "59f0e13fe7af0710"
@@ -458,6 +458,10 @@ message SwarmingInfo {
   // A pool dimension for swarming task scheduling.
   // Example: "DUT_POOL_QUOTA"
   string label_pool = 5;
+
+  // An ID to identify the bot that is running the tests.
+  // Example: "cloudbots-prod-2-5c8s"
+  string bot_id = 6;
 }
 
 // Captures the Inventory related info.
