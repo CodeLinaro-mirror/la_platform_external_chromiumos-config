@@ -17293,9 +17293,208 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "hostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hostname",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "devices",
+              "label": "LABEL_REPEATED",
+              "name": "devices",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.PasitHost.Device"
+            },
+            {
+              "jsonName": "connections",
+              "label": "LABEL_REPEATED",
+              "name": "connections",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.PasitHost.Connection"
+            }
+          ],
+          "name": "PasitHost",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "parentPort",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "parent_port",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "parentId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "parent_id",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "childId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "child_id",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "speed",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "speed",
+                  "number": 4,
+                  "type": "TYPE_FLOAT"
+                },
+                {
+                  "jsonName": "type",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "type",
+                  "number": 5,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "Connection"
+            },
+            {
+              "enumType": [
+                {
+                  "name": "Type",
+                  "value": [
+                    {
+                      "name": "UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "DUT",
+                      "number": 1
+                    },
+                    {
+                      "name": "SWITCH_FIXTURE",
+                      "number": 2
+                    },
+                    {
+                      "name": "DOCKING_STATION",
+                      "number": 3
+                    },
+                    {
+                      "name": "MONITOR",
+                      "number": 4
+                    },
+                    {
+                      "name": "CAMERA",
+                      "number": 5
+                    },
+                    {
+                      "name": "STORAGE",
+                      "number": 6
+                    },
+                    {
+                      "name": "HID",
+                      "number": 7
+                    },
+                    {
+                      "name": "NETWORK",
+                      "number": 8
+                    },
+                    {
+                      "name": "HEADPHONE",
+                      "number": 9
+                    },
+                    {
+                      "name": "SPEAKER",
+                      "number": 10
+                    }
+                  ]
+                }
+              ],
+              "field": [
+                {
+                  "jsonName": "id",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "id",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "model",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "model",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "type",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "type",
+                  "number": 3,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.test.lab.api.PasitHost.Device.Type"
+                },
+                {
+                  "jsonName": "powerSupply",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "power_supply",
+                  "number": 4,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.PasitHost.Device.PowerSupply"
+                }
+              ],
+              "name": "Device",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "current",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "current",
+                      "number": 1,
+                      "type": "TYPE_FLOAT"
+                    },
+                    {
+                      "jsonName": "voltage",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "voltage",
+                      "number": 2,
+                      "type": "TYPE_FLOAT"
+                    },
+                    {
+                      "jsonName": "power",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "power",
+                      "number": 3,
+                      "type": "TYPE_FLOAT"
+                    }
+                  ],
+                  "name": "PowerSupply"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/pasit_host.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/device_config_id.proto",
-        "chromiumos/test/lab/api/ip_endpoint.proto"
+        "chromiumos/test/lab/api/ip_endpoint.proto",
+        "chromiumos/test/lab/api/pasit_host.proto"
       ],
       "enumType": [
         {
@@ -18620,190 +18819,6 @@
             }
           ],
           "name": "WifiSecret"
-        },
-        {
-          "field": [
-            {
-              "jsonName": "hostname",
-              "label": "LABEL_OPTIONAL",
-              "name": "hostname",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "devices",
-              "label": "LABEL_REPEATED",
-              "name": "devices",
-              "number": 2,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.PasitHost.Device"
-            },
-            {
-              "jsonName": "connections",
-              "label": "LABEL_REPEATED",
-              "name": "connections",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.PasitHost.Connection"
-            }
-          ],
-          "name": "PasitHost",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "parentPort",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "parent_port",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "parentId",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "parent_id",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "childId",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "child_id",
-                  "number": 3,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "speed",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "speed",
-                  "number": 4,
-                  "type": "TYPE_FLOAT"
-                },
-                {
-                  "jsonName": "type",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "type",
-                  "number": 5,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "Connection"
-            },
-            {
-              "enumType": [
-                {
-                  "name": "Type",
-                  "value": [
-                    {
-                      "name": "UNKNOWN",
-                      "number": 0
-                    },
-                    {
-                      "name": "DUT",
-                      "number": 1
-                    },
-                    {
-                      "name": "SWITCH_FIXTURE",
-                      "number": 2
-                    },
-                    {
-                      "name": "DOCKING_STATION",
-                      "number": 3
-                    },
-                    {
-                      "name": "MONITOR",
-                      "number": 4
-                    },
-                    {
-                      "name": "CAMERA",
-                      "number": 5
-                    },
-                    {
-                      "name": "STORAGE",
-                      "number": 6
-                    },
-                    {
-                      "name": "HID",
-                      "number": 7
-                    },
-                    {
-                      "name": "NETWORK",
-                      "number": 8
-                    },
-                    {
-                      "name": "HEADPHONE",
-                      "number": 9
-                    },
-                    {
-                      "name": "SPEAKER",
-                      "number": 10
-                    }
-                  ]
-                }
-              ],
-              "field": [
-                {
-                  "jsonName": "id",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "id",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "model",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "model",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "type",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "type",
-                  "number": 3,
-                  "type": "TYPE_ENUM",
-                  "typeName": ".chromiumos.test.lab.api.PasitHost.Device.Type"
-                },
-                {
-                  "jsonName": "powerSupply",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "power_supply",
-                  "number": 4,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.PasitHost.Device.PowerSupply"
-                }
-              ],
-              "name": "Device",
-              "nestedType": [
-                {
-                  "field": [
-                    {
-                      "jsonName": "current",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "current",
-                      "number": 1,
-                      "type": "TYPE_FLOAT"
-                    },
-                    {
-                      "jsonName": "voltage",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "voltage",
-                      "number": 2,
-                      "type": "TYPE_FLOAT"
-                    },
-                    {
-                      "jsonName": "power",
-                      "label": "LABEL_OPTIONAL",
-                      "name": "power",
-                      "number": 3,
-                      "type": "TYPE_FLOAT"
-                    }
-                  ],
-                  "name": "PowerSupply"
-                }
-              ]
-            }
-          ]
         }
       ],
       "name": "chromiumos/test/lab/api/dut.proto",
