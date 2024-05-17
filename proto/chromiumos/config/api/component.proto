@@ -206,6 +206,11 @@ message Component {
       VARIABLE_REFRESH_RATE_AVAILABLE = 3;
     };
 
+    enum PanelType {
+      PANEL_TYPE_UNKNOWN = 0;
+      OLED = 1;
+    };
+
     message Properties {
       int32 width_px = 1;
       int32 height_px = 2;
@@ -262,6 +267,9 @@ message Component {
         RoundedCorner bottom_right = 4;
       }
       RoundedCorners rounded_corners = 14;
+
+      // Display panel type
+      PanelType panel_type = 15;
     }
   }
 

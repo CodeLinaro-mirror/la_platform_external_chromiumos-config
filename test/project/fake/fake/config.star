@@ -117,6 +117,30 @@ _PRIVACY_SCREEN = hw_topo.create_screen(
     privacy_screen = True,
     variable_refresh_rate_available = False,
 )
+
+_OLED_TOUCHSCREEN = hw_topo.create_screen(
+    id = "OLED_TOUCHSCREEN",
+    description = "OLED Touchscreen",
+    inches = 15,
+    width_px = 1920,
+    height_px = 1080,
+    pixels_per_in = 120,
+    touch = True,
+    turn_off_screen_timeout_ms = 3000,
+    no_als_ac_brightness_nits = 135,
+    max_brightness_nits = 215,
+    panel_type = hw_topo.panel_type.OLED,
+    als_steps = [
+        hw_topo.create_als_step(
+            None,
+            400,
+            ac_backlight_nits = 133,
+            battery_backlight_nits = 80,
+        ),
+        hw_topo.create_als_step(100, None, ac_backlight_nits = 215),
+    ],
+)
+
 _HDMI = hw_topo.create_hdmi(
     id = "HDMI",
     description = "HDMI port",
@@ -1022,7 +1046,7 @@ design.append_configs(
     hardware_topology = create_hardware_topology(
         form_factor = _FORM_FACTOR_CLAMSHELL_POWER_RECOV,
         cellular_board = _LTE_BOARD_WITH_MODEL,
-        screen = _TOUCHSCREEN,
+        screen = _OLED_TOUCHSCREEN,
         stylus = _STYLUS,
         camera = _CAMERA2,
         daughter_board = hw_topo.create_daughter_board(

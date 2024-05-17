@@ -113,6 +113,11 @@ _STORAGE = struct(
     BRIDGED_EMMC = comp_pb.Component.Storage.BRIDGED_EMMC,
 )
 
+_DISPLAY_PANEL_TYPE = struct(
+    UNKNOWN = comp_pb.Component.DisplayPanel.PANEL_TYPE_UNKNOWN,
+    OLED = comp_pb.Component.DisplayPanel.OLED,
+)
+
 _KB_TYPE = struct(
     NONE = _HW_FEAT.Keyboard.NONE,
     INTERNAL = _HW_FEAT.Keyboard.INTERNAL,
@@ -271,7 +276,8 @@ def _create_screen(
         privacy_screen = False,
         connector_type = None,
         rounded_corners = None,
-        variable_refresh_rate_available = False):
+        variable_refresh_rate_available = False,
+        panel_type = None):
     """Builds a Topology proto for a screen."""
     hw_features = _HW_FEAT()
 
@@ -316,6 +322,7 @@ def _create_screen(
     if turn_off_screen_timeout_ms != None:
         hw_features.screen.panel_properties.turn_off_screen_timeout_ms.value = turn_off_screen_timeout_ms
     hw_features.screen.panel_properties.rounded_corners = rounded_corners
+    hw_features.screen.panel_properties.panel_type = panel_type
 
     if privacy_screen:
         hw_features.privacy_screen.present = _PRESENT.PRESENT
@@ -2285,6 +2292,7 @@ hw_topo = struct(
     port_position = _PORT_POSITION,
     audio_config_structure = _AUDIO_CONFIG_STRUCTURE,
     recovery_input = _RECOVERY_INPUT,
+    panel_type = _DISPLAY_PANEL_TYPE,
 
     # embedded controller exports
     ec_type = _EC_TYPE,

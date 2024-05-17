@@ -1773,6 +1773,7 @@
                 "maxScreenBrightness": 215.0,
                 "noAlsAcBrightnessNits": 135.0,
                 "noAlsBatteryBrightnessNits": 80.0,
+                "panelType": 1,
                 "pixelsPerIn": 120,
                 "turnOffScreenTimeoutMs": 3000,
                 "widthPx": 1920
@@ -2119,7 +2120,7 @@
             },
             "screen": {
               "description": {
-                "EN": "Touchscreen"
+                "EN": "OLED Touchscreen"
               },
               "hardwareFeature": {
                 "screen": {
@@ -2149,6 +2150,7 @@
                     "maxScreenBrightness": 215.0,
                     "noAlsAcBrightnessNits": 135.0,
                     "noAlsBatteryBrightnessNits": 80.0,
+                    "panelType": 1,
                     "pixelsPerIn": 120,
                     "turnOffScreenTimeoutMs": 3000,
                     "widthPx": 1920
@@ -2156,7 +2158,7 @@
                   "touchSupport": 1
                 }
               },
-              "id": "TOUCHSCREEN",
+              "id": "OLED_TOUCHSCREEN",
               "type": 1
             },
             "sdReader": {

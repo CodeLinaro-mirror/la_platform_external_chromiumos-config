@@ -1560,6 +1560,19 @@
                       "number": 3
                     }
                   ]
+                },
+                {
+                  "name": "PanelType",
+                  "value": [
+                    {
+                      "name": "PANEL_TYPE_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "OLED",
+                      "number": 1
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -1688,6 +1701,14 @@
                       "number": 14,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.Component.DisplayPanel.Properties.RoundedCorners"
+                    },
+                    {
+                      "jsonName": "panelType",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "panel_type",
+                      "number": 15,
+                      "type": "TYPE_ENUM",
+                      "typeName": ".chromiumos.config.api.Component.DisplayPanel.PanelType"
                     }
                   ],
                   "name": "Properties",
