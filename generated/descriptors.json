@@ -22186,6 +22186,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetGfxInfoRequest"
+            },
+            {
+              "jsonName": "getAvlInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_avl_info_request",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetAvlInfoRequest"
             }
           ],
           "name": "Request",
@@ -22248,6 +22257,9 @@
           "name": "GetGfxInfoRequest"
         },
         {
+          "name": "GetAvlInfoRequest"
+        },
+        {
           "field": [
             {
               "jsonName": "getFwInfoResponse",
@@ -22275,6 +22287,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetGfxInfoResponse"
+            },
+            {
+              "jsonName": "getAvlInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_avl_info_response",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetAvlInfoResponse"
             }
           ],
           "name": "RunActivityResponse",
@@ -22392,6 +22413,32 @@
               }
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "avlPartModel",
+              "label": "LABEL_OPTIONAL",
+              "name": "avl_part_model",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "avlPartFirmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "avl_part_firmware",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "avlComponentType",
+              "label": "LABEL_OPTIONAL",
+              "name": "avl_component_type",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetAvlInfoResponse"
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",
