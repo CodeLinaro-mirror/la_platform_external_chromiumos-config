@@ -1367,6 +1367,12 @@
 					"value": "tast.audio.AloopLoadedFixture.without_ui"
 				},
 				{
+					"value": "tast.audio.BrowserPlay"
+				},
+				{
+					"value": "tast.audio.BrowserRecord"
+				},
+				{
 					"value": "tast.audio.CheckingAudioFormats"
 				},
 				{
