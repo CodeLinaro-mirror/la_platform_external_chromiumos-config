@@ -4940,6 +4940,9 @@
 					"value": "tast.tflite.AndroidHardwareBuffer"
 				},
 				{
+					"value": "tast.tflite.DTS.apu"
+				},
+				{
 					"value": "tast.tflite.DTS.sample"
 				},
 				{
