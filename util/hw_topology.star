@@ -77,6 +77,8 @@ _CELLULAR = struct(
     MODEM_SC7180 = _HW_FEAT.Cellular.MODEM_SC7180,
     MODEM_SC7280 = _HW_FEAT.Cellular.MODEM_SC7280,
     MODEM_EM060 = _HW_FEAT.Cellular.MODEM_EM060,
+    MODEM_RW101 = _HW_FEAT.Cellular.MODEM_RW101,
+    MODEM_RW135 = _HW_FEAT.Cellular.MODEM_RW135,
 )
 
 _DGPU = struct(

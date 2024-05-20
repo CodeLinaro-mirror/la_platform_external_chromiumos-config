@@ -241,6 +241,8 @@ message HardwareFeatures {
       MODEM_SC7180 = 5;
       MODEM_SC7280 = 6;
       MODEM_EM060 = 7;
+      MODEM_RW101 = 8;
+      MODEM_RW135 = 9;
     }
   }
 

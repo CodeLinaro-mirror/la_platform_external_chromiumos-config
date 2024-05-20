@@ -5023,6 +5023,14 @@
                     {
                       "name": "MODEM_EM060",
                       "number": 7
+                    },
+                    {
+                      "name": "MODEM_RW101",
+                      "number": 8
+                    },
+                    {
+                      "name": "MODEM_RW135",
+                      "number": 9
                     }
                   ]
                 }
