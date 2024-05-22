@@ -4523,7 +4523,16 @@
 					"value": "tast.resourced.MemoryPressureSignal"
 				},
 				{
+					"value": "tast.resourced.PowerSupplyChange"
+				},
+				{
 					"value": "tast.resourced.QueryMemoryStatus"
+				},
+				{
+					"value": "tast.resourced.SchedQos"
+				},
+				{
+					"value": "tast.resourced.SetFullscreenVideo"
 				},
 				{
 					"value": "tast.resourced.SetGameMode"
