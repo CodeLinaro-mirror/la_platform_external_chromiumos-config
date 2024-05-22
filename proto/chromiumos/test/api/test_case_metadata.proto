@@ -35,6 +35,7 @@ message TestCaseInfo {
   HwAgnostic hw_agnostic = 5;
   LifeCycleStage life_cycle_stage = 6;
   DDDVariantCategory variant_category = 7;
+  map<string, string> extra_info = 8;
 }
 
 // Contact information of individuals or teams.
