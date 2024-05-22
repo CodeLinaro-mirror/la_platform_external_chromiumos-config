@@ -5455,6 +5455,10 @@
                     {
                       "name": "AUDIO_CODEC_ALC3247",
                       "number": 19
+                    },
+                    {
+                      "name": "AUDIO_CODEC_ALC257",
+                      "number": 20
                     }
                   ]
                 },
@@ -5534,6 +5538,10 @@
                     {
                       "name": "AMPLIFIER_ALC3247",
                       "number": 19
+                    },
+                    {
+                      "name": "AMPLIFIER_ALC257",
+                      "number": 20
                     }
                   ]
                 },
