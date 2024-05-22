@@ -90,8 +90,13 @@ message GetFilesFromDUTRequest{
 message GetGfxInfoRequest {}
 
 // GetAvlInfoRequest captures AVL qualification values for reporting
-// NEXT TAG: 1
-message GetAvlInfoRequest {}
+// NEXT TAG: 2
+message GetAvlInfoRequest {
+    // Mapping from test name to its own avl info JSON file location.
+    // Location format:
+    // "<local_output_dir>/cros-test/artifact/tast/tests/<test_name>/avl_info.json"
+    map<string, string> avl_files = 1;
+}
 
 // Specific response to be matched with the request.
 // NEXT TAG: 5
@@ -131,8 +136,15 @@ message GetGfxInfoResponse {
 }
 
 // GetAvlInfoResponse contents of the reporting section of AVL qualification info
-// NEXT TAG: 4
+// NEXT TAG: 2
 message GetAvlInfoResponse {
+    // Mapping from test name to its avl info.
+    map<string, AvlInfo> avl_infos = 1;
+}
+
+// AvlInfo AVL qualification info for a test run.
+// NEXT TAG: 4
+message AvlInfo {
     string avl_part_model = 1;
     string avl_part_firmware = 2;
     string avl_component_type = 3;

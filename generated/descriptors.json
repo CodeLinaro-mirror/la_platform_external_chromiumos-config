@@ -22326,7 +22326,41 @@
           "name": "GetGfxInfoRequest"
         },
         {
-          "name": "GetAvlInfoRequest"
+          "field": [
+            {
+              "jsonName": "avlFiles",
+              "label": "LABEL_REPEATED",
+              "name": "avl_files",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetAvlInfoRequest.AvlFilesEntry"
+            }
+          ],
+          "name": "GetAvlInfoRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "AvlFilesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         },
         {
           "field": [
@@ -22486,6 +22520,44 @@
         {
           "field": [
             {
+              "jsonName": "avlInfos",
+              "label": "LABEL_REPEATED",
+              "name": "avl_infos",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetAvlInfoResponse.AvlInfosEntry"
+            }
+          ],
+          "name": "GetAvlInfoResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.AvlInfo"
+                }
+              ],
+              "name": "AvlInfosEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
               "jsonName": "avlPartModel",
               "label": "LABEL_OPTIONAL",
               "name": "avl_part_model",
@@ -22507,7 +22579,7 @@
               "type": "TYPE_STRING"
             }
           ],
-          "name": "GetAvlInfoResponse"
+          "name": "AvlInfo"
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",
