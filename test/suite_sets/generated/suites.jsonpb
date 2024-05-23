@@ -3794,10 +3794,10 @@
 					"value": "tast.login.AuthError"
 				},
 				{
-					"value": "tast.login.ChangePassword.consumer_update"
+					"value": "tast.login.ChangePassword.user_with_recovery"
 				},
 				{
-					"value": "tast.login.ChangePassword.no_consumer_update"
+					"value": "tast.login.ChangePassword.user_without_recovery"
 				},
 				{
 					"value": "tast.login.Chrome"
@@ -6475,6 +6475,12 @@
 				},
 				{
 					"value": "tast.firmware.ECVerifyVK.detachable"
+				},
+				{
+					"value": "tast.firmware.ECWakeFromULP.lid_switch"
+				},
+				{
+					"value": "tast.firmware.ECWakeFromULP.power_button"
 				},
 				{
 					"value": "tast.firmware.ECWakeSource.keypress"
