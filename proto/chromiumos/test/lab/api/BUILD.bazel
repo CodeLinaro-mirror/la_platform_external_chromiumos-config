@@ -8,16 +8,7 @@ load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 
 proto_library(
     name = "api_proto",
-    srcs = [
-        "bluetooth_peer.proto",
-        "cbi.proto",
-        "dut.proto",
-        "inventory_service.proto",
-        "ip_endpoint.proto",
-        "tape_service.proto",
-        "usb_drive.proto",
-        "wifi_router.proto",
-    ],
+    srcs = glob(["*.proto"]),
     visibility = ["//visibility:public"],
     deps = [
         "//chromiumos/config/api:api_proto",
