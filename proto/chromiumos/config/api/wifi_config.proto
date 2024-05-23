@@ -224,6 +224,14 @@ message WifiConfig {
       int64 enablement_11ax = 7;
       // Function 7
       int64 unii_4 = 8;
+
+      // For different regions
+      message Enablement11beCountries {
+          bool china = 1;
+          bool south_korea = 2;
+      }
+      // Function 12
+      Enablement11beCountries enablement_11be_countries = 9;
     }
     DSM dsm = 5;
   }

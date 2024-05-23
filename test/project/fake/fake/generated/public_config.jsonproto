@@ -1158,7 +1158,7 @@
             },
             "fwConfig": {
               "mask": 131071,
-              "value": 90914
+              "value": 95010
             },
             "gyroscope": {
               "baseGyroscope": "PRESENT"
@@ -1356,6 +1356,7 @@
                   "dsm": {
                     "disableActiveSdrChannels": "1",
                     "enablement11ax": "6",
+                    "enablement11beCountries": {},
                     "regulatoryConfigurations": "4",
                     "supportIndonesia5gBand": "2",
                     "supportUltraHighBand": "3",
@@ -1534,7 +1535,7 @@
               "hardwareFeature": {
                 "fwConfig": {
                   "mask": 61440,
-                  "value": 24576
+                  "value": 28672
                 }
               }
             }

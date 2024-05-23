@@ -11,7 +11,7 @@ sd_reader|SD_READER
 soc|SOC
 thermal|THERMAL
 volume_button|SCREEN_RIGHT_VOLUME_BUTTON
-wifi|WIFI
+wifi|WIFI6
 
 ## Varying topologies
 DesignConfigId|fw_config|active|Notes|camera|keyboard|proximity_sensor|screen|stylus|CBI SKU_ID|CBI FW_CONFIG

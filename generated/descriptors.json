@@ -3737,9 +3737,38 @@
                       "name": "unii_4",
                       "number": 8,
                       "type": "TYPE_INT64"
+                    },
+                    {
+                      "jsonName": "enablement11beCountries",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "enablement_11be_countries",
+                      "number": 9,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries"
                     }
                   ],
-                  "name": "DSM"
+                  "name": "DSM",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "china",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "china",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "southKorea",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "south_korea",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "Enablement11beCountries"
+                    }
+                  ]
                 }
               ]
             },

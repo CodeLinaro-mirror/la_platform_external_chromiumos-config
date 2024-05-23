@@ -958,7 +958,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -1607,7 +1607,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -2243,7 +2243,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -3030,7 +3030,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -6764,7 +6764,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -7192,7 +7192,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -7660,7 +7660,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -8096,7 +8096,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -8574,7 +8574,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -9060,7 +9060,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -9139,7 +9139,7 @@
             },
             "fwConfig": {
               "mask": 131071,
-              "value": 90914
+              "value": 95010
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -9337,6 +9337,7 @@
                   "dsm": {
                     "disableActiveSdrChannels": "1",
                     "enablement11ax": "6",
+                    "enablement11beCountries": {},
                     "regulatoryConfigurations": "4",
                     "supportIndonesia5gBand": "2",
                     "supportUltraHighBand": "3",
@@ -9920,12 +9921,12 @@
             },
             "wifi": {
               "description": {
-                "EN": "intel wifi"
+                "EN": "intel wifi7"
               },
               "hardwareFeature": {
                 "fwConfig": {
                   "mask": 61440,
-                  "value": 24576
+                  "value": 28672
                 },
                 "wifi": {
                   "wifiConfig": {
@@ -9963,6 +9964,7 @@
                       "dsm": {
                         "disableActiveSdrChannels": "1",
                         "enablement11ax": "6",
+                        "enablement11beCountries": {},
                         "regulatoryConfigurations": "4",
                         "supportIndonesia5gBand": "2",
                         "supportUltraHighBand": "3",
@@ -10136,7 +10138,7 @@
                   }
                 }
               },
-              "id": "WIFI_INTEL",
+              "id": "WIFI_INTEL7",
               "type": 14
             }
           },
@@ -10209,7 +10211,7 @@
             },
             "fwConfig": {
               "mask": 131071,
-              "value": 95009
+              "value": 90913
             },
             "gyroscope": {
               "baseGyroscope": 1
@@ -10692,7 +10694,7 @@
               "hardwareFeature": {
                 "fwConfig": {
                   "mask": 61440,
-                  "value": 28672
+                  "value": 24576
                 },
                 "wifi": {
                   "wifiConfig": {
@@ -11237,7 +11239,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -11734,7 +11736,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },
@@ -12205,7 +12207,7 @@
                   "value": 24576
                 }
               },
-              "id": "WIFI",
+              "id": "WIFI6",
               "type": 14
             }
           },

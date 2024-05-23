@@ -838,6 +838,20 @@ def _create_intel_antgain_table(
         ant_gain_table_b = ant_gain_chain_b,
     )
 
+def _create_intel_dsm_enablement_11be_countries(
+        china = False,
+        south_korea = False):
+    """Builds enablement11be parameters for intel drivers.
+
+    Args:
+        china: enable channel for China region.
+        south_korea: enable channel for South Korea region.
+    """
+    return wf_pb.WifiConfig.IntelConfig.DSM.Enablement11beCountries(
+        china = china,
+        south_korea = south_korea,
+    )
+
 def _create_intel_dsm(
         disable_active_sdr_channels = -1,
         support_indonesia_5g_band = -1,
@@ -845,7 +859,8 @@ def _create_intel_dsm(
         regulatory_configurations = -1,
         uart_configurations = -1,
         enablement_11ax = -1,
-        unii_4 = -1):
+        unii_4 = -1,
+        enablement_11be_countries = None):
     """Builds a DSM for intel drivers.
 
     Args:
@@ -856,6 +871,7 @@ def _create_intel_dsm(
         uart_configurations: M.2 UART interface configuration.
         enablement_11ax: Control enablement of 11ax on certificated modules.
         unii_4: Control enablement of UNII-4 over certificate modules.
+        enablement_11be_countries: Control enablement of 11be on certificated modules.
     """
     return wf_pb.WifiConfig.IntelConfig.DSM(
         disable_active_sdr_channels = disable_active_sdr_channels,
@@ -865,6 +881,7 @@ def _create_intel_dsm(
         uart_configurations = uart_configurations,
         enablement_11ax = enablement_11ax,
         unii_4 = unii_4,
+        enablement_11be_countries = enablement_11be_countries,
     )
 
 def _create_intel_sar_table(
@@ -1213,6 +1230,7 @@ sw_config = struct(
     create_cpu_offline_half = _create_cpu_offline_half,
     create_intel_antenna_gain = _create_intel_antenna_gain,
     create_intel_antgain_table = _create_intel_antgain_table,
+    create_intel_dsm_enablement_11be_countries = _create_intel_dsm_enablement_11be_countries,
     create_intel_dsm = _create_intel_dsm,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
