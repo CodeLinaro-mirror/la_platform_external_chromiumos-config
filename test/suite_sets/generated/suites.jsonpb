@@ -3860,6 +3860,9 @@
 					"value": "tast.nacl.Pnacl"
 				},
 				{
+					"value": "tast.nacl.Pnacl.lacros"
+				},
+				{
 					"value": "tast.network.ARCIPv6Connectivity"
 				},
 				{
