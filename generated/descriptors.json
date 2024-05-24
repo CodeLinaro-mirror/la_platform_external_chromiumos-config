@@ -5457,7 +5457,7 @@
                       "number": 19
                     },
                     {
-                      "name": "AUDIO_CODEC_ALC257",
+                      "name": "AUDIO_CODEC_ALC3287",
                       "number": 20
                     }
                   ]
@@ -5540,7 +5540,7 @@
                       "number": 19
                     },
                     {
-                      "name": "AMPLIFIER_ALC257",
+                      "name": "AMPLIFIER_ALC3287",
                       "number": 20
                     }
                   ]
