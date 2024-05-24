@@ -30,6 +30,11 @@ class PostTestServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivityRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivityResponse.FromString,
                 )
+        self.RunActivities = channel.unary_unary(
+                '/chromiumos.test.api.PostTestService/RunActivities',
+                request_serializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivitiesRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivitiesResponse.FromString,
+                )
 
 
 class PostTestServiceServicer(object):
@@ -56,6 +61,12 @@ class PostTestServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def RunActivities(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PostTestServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -68,6 +79,11 @@ def add_PostTestServiceServicer_to_server(servicer, server):
                     servicer.RunActivity,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivityRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivityResponse.SerializeToString,
+            ),
+            'RunActivities': grpc.unary_unary_rpc_method_handler(
+                    servicer.RunActivities,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivitiesRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivitiesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -116,5 +132,22 @@ class PostTestService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.PostTestService/RunActivity',
             chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivityRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivityResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def RunActivities(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.PostTestService/RunActivities',
+            chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivitiesRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_post__test__service__pb2.RunActivitiesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

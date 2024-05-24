@@ -27,6 +27,7 @@ type PostTestServiceClient interface {
 	// calling any other provision related service calls.
 	StartUp(ctx context.Context, in *PostTestStartUpRequest, opts ...grpc.CallOption) (*PostTestStartUpResponse, error)
 	RunActivity(ctx context.Context, in *RunActivityRequest, opts ...grpc.CallOption) (*RunActivityResponse, error)
+	RunActivities(ctx context.Context, in *RunActivitiesRequest, opts ...grpc.CallOption) (*RunActivitiesResponse, error)
 }
 
 type postTestServiceClient struct {
@@ -55,6 +56,15 @@ func (c *postTestServiceClient) RunActivity(ctx context.Context, in *RunActivity
 	return out, nil
 }
 
+func (c *postTestServiceClient) RunActivities(ctx context.Context, in *RunActivitiesRequest, opts ...grpc.CallOption) (*RunActivitiesResponse, error) {
+	out := new(RunActivitiesResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.PostTestService/RunActivities", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PostTestServiceServer is the server API for PostTestService service.
 // All implementations should embed UnimplementedPostTestServiceServer
 // for forward compatibility
@@ -64,6 +74,7 @@ type PostTestServiceServer interface {
 	// calling any other provision related service calls.
 	StartUp(context.Context, *PostTestStartUpRequest) (*PostTestStartUpResponse, error)
 	RunActivity(context.Context, *RunActivityRequest) (*RunActivityResponse, error)
+	RunActivities(context.Context, *RunActivitiesRequest) (*RunActivitiesResponse, error)
 }
 
 // UnimplementedPostTestServiceServer should be embedded to have forward compatible implementations.
@@ -75,6 +86,9 @@ func (UnimplementedPostTestServiceServer) StartUp(context.Context, *PostTestStar
 }
 func (UnimplementedPostTestServiceServer) RunActivity(context.Context, *RunActivityRequest) (*RunActivityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RunActivity not implemented")
+}
+func (UnimplementedPostTestServiceServer) RunActivities(context.Context, *RunActivitiesRequest) (*RunActivitiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunActivities not implemented")
 }
 
 // UnsafePostTestServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -124,6 +138,24 @@ func _PostTestService_RunActivity_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PostTestService_RunActivities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RunActivitiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostTestServiceServer).RunActivities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.PostTestService/RunActivities",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostTestServiceServer).RunActivities(ctx, req.(*RunActivitiesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PostTestService_ServiceDesc is the grpc.ServiceDesc for PostTestService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -138,6 +170,10 @@ var PostTestService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RunActivity",
 			Handler:    _PostTestService_RunActivity_Handler,
+		},
+		{
+			MethodName: "RunActivities",
+			Handler:    _PostTestService_RunActivities_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

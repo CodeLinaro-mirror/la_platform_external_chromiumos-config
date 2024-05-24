@@ -27,6 +27,9 @@ service PostTestService {
 
   rpc RunActivity(RunActivityRequest)
       returns (RunActivityResponse);
+
+  rpc RunActivities(RunActivitiesRequest)
+      returns (RunActivitiesResponse);
 }
 
 // PostTestStartUpRequest provides a generic form for initializing

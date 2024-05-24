@@ -117,13 +117,18 @@ message TestTask {
 
 // PostTestTask targets requests towards services that implement
 // the PostTestService.
+// NEXT TAG: 8
 message PostTestTask {
   chromiumos.test.lab.api.IpEndpoint service_address = 1;
   google.protobuf.Any post_test_request = 2;
   repeated DynamicDep dynamic_deps = 3;
+  PostTestStartUpRequest startup_request = 6;
   // RunActivityRequest will trigger a call to RunActivity
   // within the rpc service `PostTestService`.
   RunActivityRequest run_activity_request = 4;
+  // RunActivitiesRequest will trigger a call to RunActivities
+  // within the rpc service `PostTestService`.
+  RunActivitiesRequest run_activities_request = 7;
   // Task identifier for cross-referencing within dynamic dependencies.
   string dynamic_identifier = 5;
 }

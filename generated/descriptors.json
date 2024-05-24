@@ -22599,6 +22599,11 @@
               "inputType": ".chromiumos.test.api.RunActivityRequest",
               "name": "RunActivity",
               "outputType": ".chromiumos.test.api.RunActivityResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.RunActivitiesRequest",
+              "name": "RunActivities",
+              "outputType": ".chromiumos.test.api.RunActivitiesResponse"
             }
           ],
           "name": "PostTestService"
@@ -24666,12 +24671,28 @@
               "typeName": ".chromiumos.test.api.DynamicDep"
             },
             {
+              "jsonName": "startupRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "startup_request",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PostTestStartUpRequest"
+            },
+            {
               "jsonName": "runActivityRequest",
               "label": "LABEL_OPTIONAL",
               "name": "run_activity_request",
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.RunActivityRequest"
+            },
+            {
+              "jsonName": "runActivitiesRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "run_activities_request",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.RunActivitiesRequest"
             },
             {
               "jsonName": "dynamicIdentifier",
