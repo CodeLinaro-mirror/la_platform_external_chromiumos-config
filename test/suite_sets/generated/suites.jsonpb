@@ -5866,9 +5866,6 @@
 			},
 			"tests": [
 				{
-					"value": "tast.firmware.APBmpblk"
-				},
-				{
 					"value": "tast.firmware.BootMode.dev_cold"
 				},
 				{
@@ -6085,25 +6082,10 @@
 					"value": "tast.firmware.FlagsPreservation"
 				},
 				{
-					"value": "tast.firmware.Fmap.bios"
-				},
-				{
-					"value": "tast.firmware.Fmap.bios_dev"
-				},
-				{
-					"value": "tast.firmware.Fmap.ec"
-				},
-				{
-					"value": "tast.firmware.Fmap.ec_dev"
-				},
-				{
 					"value": "tast.firmware.FwScreenPowerOff.broken"
 				},
 				{
 					"value": "tast.firmware.FwScreenPowerOff.dev"
-				},
-				{
-					"value": "tast.firmware.FwScreenPowerOff.rec"
 				},
 				{
 					"value": "tast.firmware.FwmpDevDisableBoot"
@@ -6119,15 +6101,6 @@
 				},
 				{
 					"value": "tast.firmware.MiniDiag"
-				},
-				{
-					"value": "tast.firmware.RecScreenInvalidUSB"
-				},
-				{
-					"value": "tast.firmware.RecScreenUSBInserted.dev"
-				},
-				{
-					"value": "tast.firmware.RecScreenUSBInserted.normal"
 				},
 				{
 					"value": "tast.firmware.RecToDevFromECRW"
@@ -6173,12 +6146,6 @@
 				},
 				{
 					"value": "tast.firmware.UpdateKernelVersion"
-				},
-				{
-					"value": "tast.firmware.UserRequestRecovery.dev"
-				},
-				{
-					"value": "tast.firmware.UserRequestRecovery.normal"
 				},
 				{
 					"value": "tast.firmware.VerityCorruptRootfs.dev"
