@@ -9066,6 +9066,13 @@
               "type": "TYPE_STRING"
             },
             {
+              "jsonName": "baseProgram",
+              "label": "LABEL_OPTIONAL",
+              "name": "base_program",
+              "number": 14,
+              "type": "TYPE_STRING"
+            },
+            {
               "jsonName": "mosysPlatformName",
               "label": "LABEL_OPTIONAL",
               "name": "mosys_platform_name",

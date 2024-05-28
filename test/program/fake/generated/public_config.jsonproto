@@ -136,6 +136,32 @@
           "inputBoost": 15
         }
       }
+    },
+    {
+      "audioConfig": {
+        "cardConfigs": [
+          {
+            "cardName": "HDA ATI HDMI",
+            "ucmConfig": "COMMON",
+            "ucmSuffix": ""
+          }
+        ],
+        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
+        "hasModuleFile": true
+      },
+      "baseProgram": "FAKE_PROGRAM",
+      "generateCameraMediaProfiles": true,
+      "id": {
+        "value": "FAKE_A_PROGRAM"
+      },
+      "mosysPlatformName": "fake_a",
+      "name": "FAKE_A_PROGRAM",
+      "platform": {
+        "capabilities": {
+          "darkResume": true,
+          "suspendToIdle": true
+        }
+      }
     }
   ]
 }

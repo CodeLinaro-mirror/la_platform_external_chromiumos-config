@@ -1,0 +1,65 @@
+{
+  "model": {
+    "fake_a_ref_design": {
+      "component.audio_card_name": "fakeaudiocard",
+      "component.fingerprint_board": "fake_fingerprint_board",
+      "component.has_base_accelerometer": true,
+      "component.has_base_gyroscope": true,
+      "component.has_base_magnetometer": true,
+      "component.has_daughter_board_usb_a": 0,
+      "component.has_daughter_board_usb_c": 1,
+      "component.has_fingerprint": true,
+      "component.has_front_camera": true,
+      "component.has_hps": true,
+      "component.has_keyboard_backlight": false,
+      "component.has_lid_accelerometer": null,
+      "component.has_lid_gyroscope": null,
+      "component.has_lid_magnetometer": null,
+      "component.has_lte": true,
+      "component.has_mother_board_usb_a": 0,
+      "component.has_mother_board_usb_c": 2,
+      "component.has_proximity_sensor": null,
+      "component.has_rear_camera": false,
+      "component.has_sd_reader": true,
+      "component.has_stylus": true,
+      "component.has_tabletmode": false,
+      "component.has_touchscreen": true,
+      "component.has_wifi": true,
+      "component.headphone_codec": "ALC5682I",
+      "component.match_sku_components": [
+        [
+          "camera",
+          "==",
+          1
+        ],
+        [
+          "touchscreen",
+          "==",
+          1
+        ],
+        [
+          "usb_host",
+          "==",
+          3
+        ],
+        [
+          "stylus",
+          "==",
+          1
+        ]
+      ],
+      "component.speaker_amp": "AMPLIFIER_UNKNOWN",
+      "fw_config": 90913
+    }
+  },
+  "oem_name": {
+    "fake_a_ref_design": {
+      "": "FAKE_OEM"
+    }
+  },
+  "product_sku": {
+    "fake_a_ref_design": {
+      "2147483647": {}
+    }
+  }
+}

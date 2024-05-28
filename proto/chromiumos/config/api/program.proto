@@ -69,7 +69,7 @@ message DeviceSignerConfig {
 // other hardware design project.  They will either fully comply with the
 // prescribed program constraints or provide waivers that highlight any
 // constraint violations.
-// Next ID: 14
+// Next ID: 15
 message Program {
   // Fields replicated to public configs.
   chromiumos.config.public_replication.PublicReplication public_replication = 8;
@@ -79,6 +79,12 @@ message Program {
 
   // Program codename (human friendly).
   string name = 2;
+
+  // The base program associated with this program. The programs can be defined
+  // separately, but can still build from same overlay and board. This field is
+  // optional and needs to be only defined if multiple program definitions are
+  // present and share the same build packages as the base program.
+  string base_program = 14;
 
   // platform-name override for mosys.  This should not need to be
   // set for most programs.

@@ -30,7 +30,7 @@ load("//config/util/generate.star", "generate")
 load("//config/util/hw_topology.star", "hw_topo")
 load("//config/util/public_replication.star", "public_replication")
 
-_DEFAULT_PUBLIC_FIELDS = ["name", "id"]
+_DEFAULT_PUBLIC_FIELDS = ["name", "id", "base_program"]
 
 _LAUNCHED_PUBLIC_FIELDS = [
     "audio_config",
@@ -252,6 +252,7 @@ def _create_audio_config(
 
 def _create(
         name,
+        base_program = None,
         public_fields = [],
         component_quals = None,
         constraints = None,
@@ -276,6 +277,7 @@ def _create(
         public_replication = public_replication.create(public_fields = public_fields),
         id = program_id,
         name = name,
+        base_program = base_program,
         component_quals = component_quals,
         design_config_constraints = constraints,
         firmware_configuration_segments = firmware_configuration_segments,

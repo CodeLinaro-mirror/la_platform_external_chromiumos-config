@@ -355,7 +355,153 @@
         ]
       },
       "publicReplication": {
-        "publicFields": "name,id,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,mosysPlatformName,generateCameraMediaProfiles"
+        "publicFields": "name,id,baseProgram,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,mosysPlatformName,generateCameraMediaProfiles"
+      }
+    },
+    {
+      "audioConfig": {
+        "cardConfigs": [
+          {
+            "cardName": "HDA ATI HDMI",
+            "ucmConfig": 2,
+            "ucmSuffix": ""
+          }
+        ],
+        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
+        "hasModuleFile": true
+      },
+      "baseProgram": "FAKE_PROGRAM",
+      "componentQuals": [
+        {
+          "componentId": {
+            "value": "FAKE_MODEL_2"
+          },
+          "status": 3
+        },
+        {
+          "componentId": {
+            "value": "0001:0002:0003"
+          },
+          "status": 3
+        }
+      ],
+      "designConfigConstraints": [
+        {
+          "features": {
+            "bluetooth": {
+              "present": 1
+            },
+            "camera": {
+              "devices": [
+                {}
+              ]
+            },
+            "display": {
+              "type": 1
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
+            "fingerprint": {
+              "board": "test_board",
+              "location": 7,
+              "present": true,
+              "roVersion": "ro-test"
+            },
+            "formFactor": {
+              "formFactor": 1
+            },
+            "keyboard": {
+              "backlight": 2,
+              "keyboardType": 1,
+              "numericPad": 2,
+              "powerButton": 2
+            },
+            "screen": {
+              "panelProperties": {},
+              "touchSupport": 1
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "stylus": {
+              "stylus": 2
+            },
+            "touchpad": {
+              "present": 1
+            }
+          },
+          "level": 1
+        },
+        {
+          "features": {
+            "formFactor": {
+              "formFactor": 1
+            }
+          },
+          "level": 1
+        },
+        {
+          "features": {
+            "formFactor": {
+              "formFactor": 2
+            }
+          },
+          "level": 1
+        }
+      ],
+      "deviceSignerConfigs": [
+        {
+          "designId": {
+            "value": "FAKE_A_REF_DESIGN"
+          },
+          "keyId": "DEFAULT"
+        }
+      ],
+      "firmwareConfigurationSegments": [
+        {
+          "mask": 15,
+          "name": "Daughter board"
+        },
+        {
+          "mask": 240,
+          "name": "Camera"
+        },
+        {
+          "mask": 3840,
+          "name": "Sensor"
+        },
+        {
+          "mask": 61440,
+          "name": "Intel wifi sar id"
+        },
+        {
+          "mask": 65536,
+          "name": "Touch controller"
+        },
+        {
+          "mask": 15728640,
+          "name": "Detachable Base"
+        }
+      ],
+      "generateCameraMediaProfiles": true,
+      "id": {
+        "value": "FAKE_A_PROGRAM"
+      },
+      "mosysPlatformName": "fake_a",
+      "name": "FAKE_A_PROGRAM",
+      "platform": {
+        "capabilities": {
+          "darkResume": true,
+          "suspendToIdle": true
+        },
+        "gpuFamily": "FAKE_INTEL_GPU_A",
+        "socArch": 2,
+        "socFamily": "FAKE_INTEL_PLATFORM_A"
+      },
+      "publicReplication": {
+        "publicFields": "name,id,baseProgram,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,mosysPlatformName,generateCameraMediaProfiles"
       }
     }
   ]
