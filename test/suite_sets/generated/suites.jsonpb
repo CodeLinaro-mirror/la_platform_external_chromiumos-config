@@ -3977,6 +3977,48 @@
 					"value": "tast.network.RoutingNoIP"
 				},
 				{
+					"value": "tast.network.ShillCaptivePortalDNS"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.1byte200answer"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.checkportalfalse"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.empty200asnwer"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.invalidredirect"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.managednetworkdevicepolicy"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.managednetworknone"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.managednetworkuserpolicy"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.noconnectivity"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.online"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.portalsuspected"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.redirectfound"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.redirectfoundtempredirect"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalProperties.ethernet_online_with_no_captive_portal"
+				},
+				{
 					"value": "tast.network.ShillInitScriptsLoginStartShill"
 				},
 				{
