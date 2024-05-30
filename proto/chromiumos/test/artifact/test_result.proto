@@ -145,7 +145,7 @@ message TestRun {
 }
 
 // Captures test case information associated with a test run.
-// NEXT TAG: 11
+// NEXT TAG: 12
 message TestCaseInfo {
   // Deprecated. Use the `test_case_metadata` field from
   // `chromiumos.test.api.TestCaseResult test_case_result` below instead.
@@ -185,6 +185,9 @@ message TestCaseInfo {
   // The channel of the build.
   // Example: "BETA", "DEV", "CANARY", "STABLE"
   string channel = 10;
+
+  // AVL component qualification info.
+  AvlInfo avl_info = 11;
 }
 
 // Captures ChromeOS build information associated with a test run.
@@ -657,4 +660,22 @@ message ExecutionMetadata {
   // each of the Test Case that’s contained by the Test Invocation. This is
   // useful for retrying or rerunning the test again if needed.
   map<string, string> test_args = 2;
+}
+
+// AVL component qualification info associated with the test run.
+// NEXT TAG: 4
+message AvlInfo {
+  // The tested component model (same meaning as Part Number in DLM, but the
+  // exact string representation might be different).
+  // Example: "0x0000f5 MMC32G"
+  string avl_part_model = 1;
+
+  // The tested component firmware (same meaning as Part Firmware in DLM, but
+  // the exact string representation might be different).
+  // Example: "0xa200000000000000"
+  string avl_part_firmware = 2;
+
+  // AVL component type.
+  // Example: "storage"
+  string avl_component_type = 3;
 }

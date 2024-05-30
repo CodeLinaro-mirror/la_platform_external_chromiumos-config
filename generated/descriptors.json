@@ -28730,6 +28730,14 @@
               "name": "channel",
               "number": 10,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "avlInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "avl_info",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.AvlInfo"
             }
           ],
           "name": "TestCaseInfo"
@@ -29805,6 +29813,32 @@
               }
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "avlPartModel",
+              "label": "LABEL_OPTIONAL",
+              "name": "avl_part_model",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "avlPartFirmware",
+              "label": "LABEL_OPTIONAL",
+              "name": "avl_part_firmware",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "avlComponentType",
+              "label": "LABEL_OPTIONAL",
+              "name": "avl_component_type",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "AvlInfo"
         }
       ],
       "name": "chromiumos/test/artifact/test_result.proto",
