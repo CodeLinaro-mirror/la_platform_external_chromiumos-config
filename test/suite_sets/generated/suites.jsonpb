@@ -2936,9 +2936,6 @@
 					"value": "tast.health.DiagnosticsPassV2.prime_search_v2"
 				},
 				{
-					"value": "tast.health.DiagnosticsPassV2.ufs_lifetime"
-				},
-				{
 					"value": "tast.health.DiagnosticsRun.battery_capacity"
 				},
 				{
@@ -2973,6 +2970,9 @@
 				},
 				{
 					"value": "tast.health.DiagnosticsRunV2.audio_driver"
+				},
+				{
+					"value": "tast.health.DiagnosticsRunV2.ufs_lifetime"
 				},
 				{
 					"value": "tast.health.MonitorBluetoothEvent"
@@ -3524,6 +3524,9 @@
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.kn"
 				},
 				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.kn_lacros"
+				},
+				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ml"
 				},
 				{
@@ -3531,6 +3534,9 @@
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.mr"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.mr_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ne"
@@ -3546,6 +3552,9 @@
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.pa"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.pa_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.sa"
@@ -5390,6 +5399,18 @@
 					"value": "tast.firmware.CorruptBothSignedAMDFWAB.normal_mode"
 				},
 				{
+					"value": "tast.firmware.CorruptFW.body_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.body_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.sig_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.sig_normal"
+				},
+				{
 					"value": "tast.firmware.CorruptFWBothAB.body_dev"
 				},
 				{
@@ -5810,15 +5831,6 @@
 					"value": "tauto.firmware_DevMode"
 				},
 				{
-					"value": "tauto.firmware_FWupdateThenSleep"
-				},
-				{
-					"value": "tauto.firmware_FWupdateThenSleep.batteryonly"
-				},
-				{
-					"value": "tauto.firmware_FWupdateThenSleep.wp"
-				},
-				{
 					"value": "tauto.firmware_FwScreenPressPower"
 				},
 				{
@@ -5927,6 +5939,18 @@
 				},
 				{
 					"value": "tast.firmware.BrokenToDev"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.body_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.body_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.sig_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.sig_normal"
 				},
 				{
 					"value": "tast.firmware.CorruptFWBothAB.body_dev"
@@ -6269,15 +6293,6 @@
 				},
 				{
 					"value": "tauto.firmware_DevMode"
-				},
-				{
-					"value": "tauto.firmware_FWupdateThenSleep"
-				},
-				{
-					"value": "tauto.firmware_FWupdateThenSleep.batteryonly"
-				},
-				{
-					"value": "tauto.firmware_FWupdateThenSleep.wp"
 				},
 				{
 					"value": "tauto.firmware_FwScreenPressPower"
