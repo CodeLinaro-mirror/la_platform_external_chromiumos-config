@@ -5783,37 +5783,7 @@
 					"value": "tauto.firmware_CheckEOPState"
 				},
 				{
-					"value": "tauto.firmware_CorruptBothFwSigAB"
-				},
-				{
-					"value": "tauto.firmware_CorruptBothFwSigAB.dev"
-				},
-				{
 					"value": "tauto.firmware_CorruptBothKernelAB"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwBodyA"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwBodyA.dev"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwBodyB"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwBodyB.dev"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwSigA"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwSigA.dev"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwSigB"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwSigB.dev"
 				},
 				{
 					"value": "tauto.firmware_CorruptMinios.minios_a"
@@ -5850,12 +5820,6 @@
 				},
 				{
 					"value": "tauto.firmware_TPMNotCorruptedDevMode"
-				},
-				{
-					"value": "tauto.firmware_TryFwB"
-				},
-				{
-					"value": "tauto.firmware_TryFwB.dev"
 				},
 				{
 					"value": "tauto.firmware_UpdateFirmwareDataKeyVersion"
@@ -6259,37 +6223,7 @@
 					"value": "tauto.firmware_CheckEOPState"
 				},
 				{
-					"value": "tauto.firmware_CorruptBothFwSigAB"
-				},
-				{
-					"value": "tauto.firmware_CorruptBothFwSigAB.dev"
-				},
-				{
 					"value": "tauto.firmware_CorruptBothKernelAB"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwBodyA"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwBodyA.dev"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwBodyB"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwBodyB.dev"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwSigA"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwSigA.dev"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwSigB"
-				},
-				{
-					"value": "tauto.firmware_CorruptFwSigB.dev"
 				},
 				{
 					"value": "tauto.firmware_DevMode"
@@ -6308,12 +6242,6 @@
 				},
 				{
 					"value": "tauto.firmware_TPMNotCorruptedDevMode"
-				},
-				{
-					"value": "tauto.firmware_TryFwB"
-				},
-				{
-					"value": "tauto.firmware_TryFwB.dev"
 				},
 				{
 					"value": "tauto.firmware_UpdateFirmwareDataKeyVersion"
