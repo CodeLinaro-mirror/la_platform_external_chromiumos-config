@@ -36,7 +36,6 @@ def _faft_pd():
             "tast.firmware.PDDataSwap.normal_snk",
             "tast.firmware.PDDataSwap.shutdown",
             "tast.firmware.PDProtocol",
-            "tauto.firmware_ECWakeFromULP",
             "tauto.firmware_PDResetHard",
             "tauto.firmware_PDResetHard.dts",
             "tauto.firmware_PDResetHard.dts_flip",
