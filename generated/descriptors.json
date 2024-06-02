@@ -23112,6 +23112,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.CrosVMProvisionTemplate"
+            },
+            {
+              "jsonName": "postProcess",
+              "label": "LABEL_OPTIONAL",
+              "name": "post_process",
+              "number": 11,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PostProcessTemplate"
             }
           ],
           "name": "Template",
@@ -23321,6 +23330,9 @@
         },
         {
           "name": "CrosFirmwareProvisionTemplate"
+        },
+        {
+          "name": "PostProcessTemplate"
         }
       ],
       "name": "chromiumos/test/api/cros_tool_runner_container_service_templates.proto",

@@ -13,6 +13,7 @@ import "chromiumos/test/lab/api/ip_endpoint.proto";
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 // Wrapper message of one of container-specific templates
+// NEXT TAG: 12
 message Template {
   oneof container {
     CrosDutTemplate cros_dut = 1;
@@ -25,6 +26,7 @@ message Template {
     AndroidProvisionTemplate android_provision = 8;
     GenericTemplate generic = 9;
     CrosVMProvisionTemplate cros_vm_provision = 10;
+    PostProcessTemplate post_process = 11;
   }
 }
 
@@ -125,4 +127,9 @@ message CrosPublishTemplate {
 
 // Plain template to demonstrate the usage of cros-fw-provision container.
 message CrosFirmwareProvisionTemplate {
+}
+
+// Plain template to demonstrate the usage of post-process container.
+// NEXT TAG: 1
+message PostProcessTemplate {
 }
