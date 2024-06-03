@@ -124,6 +124,7 @@
               "rtPriority": 8,
               "uclampMin": 0
             },
+            "threadUrgentBurstyServer": {},
             "threadUtility": {}
           }
         },

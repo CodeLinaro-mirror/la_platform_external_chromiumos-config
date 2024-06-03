@@ -70,6 +70,9 @@ message SchedqosConfig {
 
     // The thread config for BACKGROUND state.
     ThreadConfig thread_background = 8;
+
+    // The thread config for URGENT_BURSTY_SERVER state.
+    ThreadConfig thread_urgent_bursty_server = 9;
   }
 
   // The default config set.

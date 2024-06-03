@@ -368,6 +368,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -746,6 +747,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -1128,6 +1130,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -1622,6 +1625,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -1986,6 +1990,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -2357,6 +2362,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -2763,6 +2769,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -3142,6 +3149,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -3501,6 +3509,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -3886,6 +3895,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -4242,6 +4252,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -4607,6 +4618,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -4963,6 +4975,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -5324,6 +5337,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -5685,6 +5699,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -6051,6 +6066,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -6408,6 +6424,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -6774,6 +6791,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -7131,6 +7149,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -7493,6 +7512,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -7855,6 +7875,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -8214,6 +8235,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -8577,6 +8599,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -8940,6 +8963,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -9303,6 +9327,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -9656,6 +9681,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -9989,6 +10015,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -10316,6 +10343,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
@@ -10643,6 +10671,7 @@
               "rt-priority": 8,
               "uclamp-min": 0
             },
+            "thread-urgent-bursty-server": {},
             "thread-utility": {}
           }
         },
