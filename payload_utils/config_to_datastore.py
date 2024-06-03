@@ -171,8 +171,25 @@ def handle_device_stability_list(dev_stab_list_path, client):
   dev_stab_list = io_utils.read_json_proto(
       protodb.GetSymbol(DEV_STAB_INPUT_TYPE)(), dev_stab_list_path)
 
+  all_boards = {}
   for dev_stab in dev_stab_list.values:
     update_device_stability(dev_stab, client)
+    for eid in dev_stab.dut_criteria[0].values:
+      all_boards[eid] = True
+
+  clean_up_device_stability(all_boards, client)
+
+
+def clean_up_device_stability(all_boards, client):
+  """Clean up boards/models that are deleted from device stability config files"""
+  query = client.query(kind=DEVICE_STABILITY_KIND)
+  query.keys_only()
+  to_delete_keys = []
+  for record in query.fetch():
+    if record.key.name not in all_boards:
+      to_delete_keys.append(record.key)
+
+  client.delete_multi(to_delete_keys)
 
 
 def update_device_stability(dev_stab, client):
