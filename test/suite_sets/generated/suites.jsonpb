@@ -1949,6 +1949,18 @@
 					"value": "tast.crash.User.root_crasher_real_consent"
 				},
 				{
+					"value": "tast.crash.ValidateFirmwareDumpGeneration.multi_session_policy_all"
+				},
+				{
+					"value": "tast.crash.ValidateFirmwareDumpGeneration.policy_all"
+				},
+				{
+					"value": "tast.crash.ValidateFirmwareDumpGeneration.policy_none"
+				},
+				{
+					"value": "tast.crash.ValidateFirmwareDumpGeneration.policy_wifi"
+				},
+				{
 					"value": "tast.crosh.DisplayDebug"
 				},
 				{
