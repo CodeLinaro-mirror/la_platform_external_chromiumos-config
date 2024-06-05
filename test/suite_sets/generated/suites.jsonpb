@@ -3764,9 +3764,6 @@
 					"value": "tast.kernel.FileExist.latency_sensitive"
 				},
 				{
-					"value": "tast.kernel.HighResTimers"
-				},
-				{
 					"value": "tast.kernel.Limits"
 				},
 				{
@@ -4221,9 +4218,6 @@
 				},
 				{
 					"value": "tast.platform.Mtpd"
-				},
-				{
-					"value": "tast.platform.NNAPI"
 				},
 				{
 					"value": "tast.platform.P2PClient"
