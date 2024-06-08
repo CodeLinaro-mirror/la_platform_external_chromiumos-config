@@ -3167,7 +3167,10 @@
 					"value": "tast.hwsec.CrossVersionAuthFactor.ti50_r114"
 				},
 				{
-					"value": "tast.hwsec.CrossVersionAuthFactor.ti50_r119"
+					"value": "tast.hwsec.CrossVersionAuthFactor.ti50_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.ti50_r125"
 				},
 				{
 					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r102"
@@ -3185,7 +3188,10 @@
 					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r114"
 				},
 				{
-					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r119"
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r125"
 				},
 				{
 					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r88"
@@ -3215,7 +3221,10 @@
 					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r114"
 				},
 				{
-					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r119"
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r125"
 				},
 				{
 					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r96"
@@ -3227,7 +3236,10 @@
 					"value": "tast.hwsec.CrossVersionChromeLogin.ti50_r114"
 				},
 				{
-					"value": "tast.hwsec.CrossVersionChromeLogin.ti50_r119"
+					"value": "tast.hwsec.CrossVersionChromeLogin.ti50_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.ti50_r125"
 				},
 				{
 					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r102"
@@ -3245,7 +3257,10 @@
 					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r114"
 				},
 				{
-					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r119"
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r125"
 				},
 				{
 					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r88"
@@ -3275,7 +3290,10 @@
 					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r114"
 				},
 				{
-					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r119"
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r125"
 				},
 				{
 					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r96"
@@ -3813,9 +3831,6 @@
 				},
 				{
 					"value": "tast.launcher.SearchSettingsSections.fingerprint_tests_clamshell_mode"
-				},
-				{
-					"value": "tast.launcher.SearchSettingsSections.fingerprint_tests_tablet_mode"
 				},
 				{
 					"value": "tast.lockscreen.CloseLid.fieldtrial_testing_config_off"
@@ -5720,6 +5735,9 @@
 					"value": "tast.firmware.TPMKernelVersion.normal"
 				},
 				{
+					"value": "tast.firmware.TPMNotCorruptedDevMode"
+				},
+				{
 					"value": "tast.firmware.TryFWB.dev_mode"
 				},
 				{
@@ -6164,6 +6182,9 @@
 				},
 				{
 					"value": "tast.firmware.TPMKernelVersion.normal"
+				},
+				{
+					"value": "tast.firmware.TPMNotCorruptedDevMode"
 				},
 				{
 					"value": "tast.firmware.TryFWB.dev_mode"
