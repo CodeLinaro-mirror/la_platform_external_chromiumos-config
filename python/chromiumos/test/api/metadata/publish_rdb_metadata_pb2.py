@@ -12,6 +12,7 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.test.artifact import test_result_pb2 as chromiumos_dot_test_dot_artifact_dot_test__result__pb2
+from chromiumos.test.api import post_test_service_pb2 as chromiumos_dot_test_dot_api_dot_post__test__service__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z6go.chromium.org/chromiumos/config/go/test/api/metadata',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n7chromiumos/test/api/metadata/publish_rdb_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\"\xb0\x03\n\x12PublishRdbMetadata\x12\x1d\n\x15\x63urrent_invocation_id\x18\x01 \x01(\t\x12\x39\n\x0btest_result\x18\x02 \x01(\x0b\x32$.chromiumos.test.artifact.TestResult\x12\x19\n\rstainless_url\x18\x03 \x01(\tB\x02\x18\x01\x12\x14\n\x0ctesthaus_url\x18\x04 \x01(\t\x12I\n\x07sources\x18\x05 \x01(\x0b\x32\x38.chromiumos.test.api.metadata.PublishRdbMetadata.Sources\x12W\n\x0c\x62\x61se_variant\x18\x06 \x03(\x0b\x32\x41.chromiumos.test.api.metadata.PublishRdbMetadata.BaseVariantEntry\x1a\x37\n\x07Sources\x12\x0f\n\x07gs_path\x18\x01 \x01(\t\x12\x1b\n\x13is_deployment_dirty\x18\x02 \x01(\x08\x1a\x32\n\x10\x42\x61seVariantEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x38Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
+  serialized_pb=b'\n7chromiumos/test/api/metadata/publish_rdb_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\x1a+chromiumos/test/api/post_test_service.proto\"\xfc\x03\n\x12PublishRdbMetadata\x12\x1d\n\x15\x63urrent_invocation_id\x18\x01 \x01(\t\x12\x39\n\x0btest_result\x18\x02 \x01(\x0b\x32$.chromiumos.test.artifact.TestResult\x12\x19\n\rstainless_url\x18\x03 \x01(\tB\x02\x18\x01\x12\x14\n\x0ctesthaus_url\x18\x04 \x01(\t\x12I\n\x07sources\x18\x05 \x01(\x0b\x32\x38.chromiumos.test.api.metadata.PublishRdbMetadata.Sources\x12W\n\x0c\x62\x61se_variant\x18\x06 \x03(\x0b\x32\x41.chromiumos.test.api.metadata.PublishRdbMetadata.BaseVariantEntry\x12J\n\x16post_process_responses\x18\x07 \x01(\x0b\x32*.chromiumos.test.api.RunActivitiesResponse\x1a\x37\n\x07Sources\x12\x0f\n\x07gs_path\x18\x01 \x01(\t\x12\x1b\n\x13is_deployment_dirty\x18\x02 \x01(\x08\x1a\x32\n\x10\x42\x61seVariantEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x38Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
   ,
-  dependencies=[chromiumos_dot_test_dot_artifact_dot_test__result__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_test_dot_artifact_dot_test__result__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_post__test__service__pb2.DESCRIPTOR,])
 
 
 
@@ -61,8 +62,8 @@ _PUBLISHRDBMETADATA_SOURCES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=459,
-  serialized_end=514,
+  serialized_start=580,
+  serialized_end=635,
 )
 
 _PUBLISHRDBMETADATA_BASEVARIANTENTRY = _descriptor.Descriptor(
@@ -99,8 +100,8 @@ _PUBLISHRDBMETADATA_BASEVARIANTENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=516,
-  serialized_end=566,
+  serialized_start=637,
+  serialized_end=687,
 )
 
 _PUBLISHRDBMETADATA = _descriptor.Descriptor(
@@ -153,6 +154,13 @@ _PUBLISHRDBMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='post_process_responses', full_name='chromiumos.test.api.metadata.PublishRdbMetadata.post_process_responses', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -165,8 +173,8 @@ _PUBLISHRDBMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=134,
-  serialized_end=566,
+  serialized_start=179,
+  serialized_end=687,
 )
 
 _PUBLISHRDBMETADATA_SOURCES.containing_type = _PUBLISHRDBMETADATA
@@ -174,6 +182,7 @@ _PUBLISHRDBMETADATA_BASEVARIANTENTRY.containing_type = _PUBLISHRDBMETADATA
 _PUBLISHRDBMETADATA.fields_by_name['test_result'].message_type = chromiumos_dot_test_dot_artifact_dot_test__result__pb2._TESTRESULT
 _PUBLISHRDBMETADATA.fields_by_name['sources'].message_type = _PUBLISHRDBMETADATA_SOURCES
 _PUBLISHRDBMETADATA.fields_by_name['base_variant'].message_type = _PUBLISHRDBMETADATA_BASEVARIANTENTRY
+_PUBLISHRDBMETADATA.fields_by_name['post_process_responses'].message_type = chromiumos_dot_test_dot_api_dot_post__test__service__pb2._RUNACTIVITIESRESPONSE
 DESCRIPTOR.message_types_by_name['PublishRdbMetadata'] = _PUBLISHRDBMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

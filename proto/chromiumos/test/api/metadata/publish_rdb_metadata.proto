@@ -9,8 +9,9 @@ package chromiumos.test.api.metadata;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
 
 import "chromiumos/test/artifact/test_result.proto";
+import "chromiumos/test/api/post_test_service.proto";
 
-// NEXT TAG: 7
+// NEXT TAG: 8
 message PublishRdbMetadata {
   // Current invocation id
   string current_invocation_id = 1;
@@ -53,4 +54,8 @@ message PublishRdbMetadata {
   // invocation. If there are duplicate keys, the variant value given by the
   // test command always wins.
   map<string, string> base_variant = 6;
+
+  // Post process responses capture the results returned from the post process
+  // container which handles complex log artifacts parsing.
+  chromiumos.test.api.RunActivitiesResponse post_process_responses = 7;
 }

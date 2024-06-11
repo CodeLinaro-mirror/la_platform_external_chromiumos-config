@@ -24691,9 +24691,9 @@
               "typeName": ".chromiumos.test.api.DynamicDep"
             },
             {
-              "jsonName": "startupRequest",
+              "jsonName": "startUpRequest",
               "label": "LABEL_OPTIONAL",
-              "name": "startup_request",
+              "name": "start_up_request",
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.PostTestStartUpRequest"
@@ -29895,7 +29895,8 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/test/artifact/test_result.proto"
+        "chromiumos/test/artifact/test_result.proto",
+        "chromiumos/test/api/post_test_service.proto"
       ],
       "messageType": [
         {
@@ -29947,6 +29948,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.metadata.PublishRdbMetadata.BaseVariantEntry"
+            },
+            {
+              "jsonName": "postProcessResponses",
+              "label": "LABEL_OPTIONAL",
+              "name": "post_process_responses",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.RunActivitiesResponse"
             }
           ],
           "name": "PublishRdbMetadata",

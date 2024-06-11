@@ -122,7 +122,7 @@ message PostTestTask {
   chromiumos.test.lab.api.IpEndpoint service_address = 1;
   google.protobuf.Any post_test_request = 2;
   repeated DynamicDep dynamic_deps = 3;
-  PostTestStartUpRequest startup_request = 6;
+  PostTestStartUpRequest start_up_request = 6;
   // RunActivityRequest will trigger a call to RunActivity
   // within the rpc service `PostTestService`.
   RunActivityRequest run_activity_request = 4;
