@@ -1142,6 +1142,12 @@
 					"value": "tast.arc.IMEBlockingVK.vm"
 				},
 				{
+					"value": "tast.arc.IMESwitchShortcut"
+				},
+				{
+					"value": "tast.arc.IMESwitchShortcut.vm"
+				},
+				{
 					"value": "tast.arc.IntentForward"
 				},
 				{
@@ -1326,6 +1332,12 @@
 				},
 				{
 					"value": "tast.arc.TextToSpeech.vm"
+				},
+				{
+					"value": "tast.arc.UnhandledKey"
+				},
+				{
+					"value": "tast.arc.UnhandledKey.vm"
 				},
 				{
 					"value": "tast.arc.UreadaheadGuestCompat.vm"
@@ -1785,6 +1797,9 @@
 				},
 				{
 					"value": "tast.camera.EncodeAccelJPEG"
+				},
+				{
+					"value": "tast.camera.PlatformServiceSmoke"
 				},
 				{
 					"value": "tast.camera.PrivacySwitch"
@@ -5663,6 +5678,21 @@
 					"value": "tast.firmware.FwScreenPowerOff.rec"
 				},
 				{
+					"value": "tast.firmware.FwScreenPressPower.broken_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.dev_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.invalid_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.rec_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.to_norm_screen"
+				},
+				{
 					"value": "tast.firmware.FwmpDevDisableBoot"
 				},
 				{
@@ -6137,6 +6167,21 @@
 				},
 				{
 					"value": "tast.firmware.FwScreenPowerOff.dev"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.broken_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.dev_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.invalid_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.rec_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.to_norm_screen"
 				},
 				{
 					"value": "tast.firmware.FwmpDevDisableBoot"
