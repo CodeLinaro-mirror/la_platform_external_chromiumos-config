@@ -26231,6 +26231,14 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SchedulingUnit.DynamicUpdateLookupTableEntry"
+            },
+            {
+              "jsonName": "secondaryDynamicUpdates",
+              "label": "LABEL_REPEATED",
+              "name": "secondary_dynamic_updates",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.UserDefinedDynamicUpdate"
             }
           ],
           "name": "SchedulingUnit",

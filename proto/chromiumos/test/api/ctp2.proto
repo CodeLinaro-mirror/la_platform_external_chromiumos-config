@@ -283,6 +283,15 @@ message SchedulingUnit {
   // found under the suite metadata. Stores provision/DUT related
   // information in regards to an entire SchedulingUnit.
   map<string, string> dynamic_update_lookup_table = 3;
+  // Updates for the dynamic TRv2 request object. Updates to be applied
+  // after the SuiteMetadata dynamic updates are applied, and before scheduling.
+  // To be used only for specific situations in which normal dynamic updates
+  // won't work due to conflicting scenarios between SchedulingUnits.
+  // i.e. VM leasing requires no provisioning but needs a vm cache-server
+  // and a vm-dut container.
+  //
+  // Note: Applied updates in order given.
+  repeated UserDefinedDynamicUpdate secondary_dynamic_updates = 4;
 }
 
 message SWRequirements{}
