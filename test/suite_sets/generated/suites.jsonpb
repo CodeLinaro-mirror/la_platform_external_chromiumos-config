@@ -5870,9 +5870,6 @@
 					"value": "tauto.firmware_SelfSignedBoot"
 				},
 				{
-					"value": "tauto.firmware_TPMNotCorruptedDevMode"
-				},
-				{
 					"value": "tauto.firmware_UpdateFirmwareDataKeyVersion"
 				},
 				{
@@ -6308,9 +6305,6 @@
 				},
 				{
 					"value": "tauto.firmware_SelfSignedBoot"
-				},
-				{
-					"value": "tauto.firmware_TPMNotCorruptedDevMode"
 				},
 				{
 					"value": "tauto.firmware_UpdateFirmwareDataKeyVersion"
