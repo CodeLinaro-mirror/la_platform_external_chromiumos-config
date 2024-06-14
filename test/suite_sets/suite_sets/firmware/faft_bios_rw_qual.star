@@ -95,7 +95,6 @@ def _faft_bios_rw_qual():
             "tast.firmware.FwScreenPressPower.broken_screen",
             "tast.firmware.FwScreenPressPower.dev_screen",
             "tast.firmware.FwScreenPressPower.invalid_screen",
-            "tast.firmware.FwScreenPressPower.rec_screen",
             "tast.firmware.FwScreenPressPower.to_norm_screen",
             "tast.firmware.FwmpDevDisableBoot",
             "tast.firmware.ISH",

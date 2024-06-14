@@ -2804,6 +2804,18 @@
 					"value": "tast.graphics.DEQP.smoke"
 				},
 				{
+					"value": "tast.graphics.DEQP.smoke_gles2"
+				},
+				{
+					"value": "tast.graphics.DEQP.smoke_gles3"
+				},
+				{
+					"value": "tast.graphics.DEQP.smoke_gles31"
+				},
+				{
+					"value": "tast.graphics.DEQP.smoke_vk"
+				},
+				{
 					"value": "tast.graphics.DRM.drm_cursor_test"
 				},
 				{
@@ -3096,6 +3108,9 @@
 				},
 				{
 					"value": "tast.health.ProbeInputInfo.with_internal_touchpad"
+				},
+				{
+					"value": "tast.health.ProbeInputInfo.with_touchpad_flex"
 				},
 				{
 					"value": "tast.health.ProbeMemoryInfo"
@@ -6173,9 +6188,6 @@
 				},
 				{
 					"value": "tast.firmware.FwScreenPressPower.invalid_screen"
-				},
-				{
-					"value": "tast.firmware.FwScreenPressPower.rec_screen"
 				},
 				{
 					"value": "tast.firmware.FwScreenPressPower.to_norm_screen"
