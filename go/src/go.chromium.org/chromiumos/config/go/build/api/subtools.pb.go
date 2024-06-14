@@ -441,10 +441,11 @@ func (x *SubtoolPackage_PathMapping) GetOpaqueData() bool {
 }
 
 // When exporting to GCS, archives will be written to:
-//   gs://${BUCKET}/${PREFIX}/${NAME}/${VERSION}.${EXTENSION}
+//   gs://${BUCKET}/${PREFIX}/${NAME}/${PVR}/${HASH}.${EXTENSION}
 // Where BUCKET, PREFIX, and EXTENSION are configurable using
-// GcsExportOptions.  NAME is the package name, and VERSION is the computed
-// version.
+// GcsExportOptions.  NAME is the package name, and HASH is a checksum of the
+// bundle contents.  PVR is the package version and revision of the package
+// that installed the subtool config.
 type SubtoolPackage_GcsExportOptions struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
