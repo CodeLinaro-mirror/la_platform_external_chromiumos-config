@@ -10125,6 +10125,23 @@
                   "number": 2
                 }
               ]
+            },
+            {
+              "name": "SymlinkMode",
+              "value": [
+                {
+                  "name": "SYMLINK_DEFAULT",
+                  "number": 0
+                },
+                {
+                  "name": "SYMLINK_RESOLVE",
+                  "number": 1
+                },
+                {
+                  "name": "SYMLINK_PRESERVE",
+                  "number": 2
+                }
+              ]
             }
           ],
           "field": [
@@ -10184,6 +10201,14 @@
               "proto3Optional": true,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.SubtoolPackage.GcsExportOptions"
+            },
+            {
+              "jsonName": "symlinkMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "symlink_mode",
+              "number": 8,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.build.api.SubtoolPackage.SymlinkMode"
             }
           ],
           "name": "SubtoolPackage",

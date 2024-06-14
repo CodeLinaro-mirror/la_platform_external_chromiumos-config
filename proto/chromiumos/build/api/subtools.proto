@@ -90,4 +90,27 @@ message SubtoolPackage {
     ArchiveFormat archive_format = 3;
   }
   optional GcsExportOptions gcs_export_options = 7;
+
+  enum SymlinkMode {
+    // Default behavior (currently SYMLINK_RESOLVE, but subject to change).
+    SYMLINK_DEFAULT = 0;
+
+    // Resolve symlinks to files, potentially creating duplicate files.  This is
+    // the safest behavior, but potentially creates sub-optimal archives.
+    SYMLINK_RESOLVE = 1;
+
+    // Preserve original symlinks.  Beware of the limitations:
+    //
+    // - Installing a symlink to an absolute path will result in an error.
+    // - Absolutely no translation of symlink paths is attempted.  I.e., if you
+    //   re-locate files with PathMappings, things may not work.
+    // - Symlinks which do not resolve to a path inside the result bundle will
+    //   result in an error.
+    //
+    // That being said, it's an effective way to reduce the size of large
+    // bundles like toolchains, so if you think you can work around these
+    // thorns, go for it.
+    SYMLINK_PRESERVE = 2;
+  }
+  SymlinkMode symlink_mode = 8;
 }
