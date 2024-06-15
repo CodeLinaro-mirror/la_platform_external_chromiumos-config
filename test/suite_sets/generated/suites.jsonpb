@@ -4763,6 +4763,9 @@
 					"value": "tast.sched.CoreSchedTag.lacros"
 				},
 				{
+					"value": "tast.sched.WrapPidDuration"
+				},
+				{
 					"value": "tast.secagentd.AgentEvents"
 				},
 				{
