@@ -243,6 +243,7 @@ message HardwareFeatures {
       MODEM_EM060 = 7;
       MODEM_RW101 = 8;
       MODEM_RW135 = 9;
+      MODEM_LCUK54 = 10;
     }
   }
 

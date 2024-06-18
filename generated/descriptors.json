@@ -5052,6 +5052,10 @@
                     {
                       "name": "MODEM_RW135",
                       "number": 9
+                    },
+                    {
+                      "name": "MODEM_LCUK54",
+                      "number": 10
                     }
                   ]
                 }
