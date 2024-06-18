@@ -14,7 +14,6 @@ def _example_suite_set():
         # should be notified regarding any SuiteSet issues (e.g. flakiness,
         # runtime).
         owners = [
-            "jackgelinas@google.com",
             "dbeckett@google.com",
             "bbrotherton@google.com",
         ],

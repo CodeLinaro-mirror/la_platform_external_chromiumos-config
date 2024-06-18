@@ -3,7 +3,6 @@
 # found in the LICENSE file.
 
 _owners = [
-    "jackgelinas@google.com",
     "bbrotherton@google.com",
 ]
 

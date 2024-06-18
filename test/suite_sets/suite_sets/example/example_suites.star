@@ -14,7 +14,6 @@ def _example_pass():
         # should be notified regarding any Suite issues (e.g. flakiness,
         # runtime).
         owners = [
-            "jackgelinas@google.com",
             "dbeckett@google.com",
             "bbrotherton@google.com",
         ],
@@ -39,7 +38,6 @@ def _example_fail():
         # should be notified regarding any Suite issues (e.g. flakiness,
         # runtime).
         owners = [
-            "jackgelinas@google.com",
             "dbeckett@google.com",
             "bbrotherton@google.com",
         ],

@@ -5,7 +5,6 @@
 load("//create.star", "create")
 
 shared_owners = [
-    "jackgelinas@google.com",
     "bbrotherton@google.com",
 ]
 shared_bug_component = "b:chromiumos:platform:firmware"

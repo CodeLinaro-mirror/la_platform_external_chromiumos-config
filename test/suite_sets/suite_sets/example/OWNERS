@@ -1,3 +1,5 @@
-jackgelinas@google.com
+# PVS Team
+include chromiumos/owners:v1:/pvs/OWNERS.suites
+
+# TSE Team
 dbeckett@chromium.org
-bbrotherton@google.com
