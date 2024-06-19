@@ -1388,6 +1388,21 @@
 					"value": "tast.audio.CheckingAudioFormats"
 				},
 				{
+					"value": "tast.audio.CrasAEC.16000_mono"
+				},
+				{
+					"value": "tast.audio.CrasAEC.16000_stereo"
+				},
+				{
+					"value": "tast.audio.CrasAEC.44100_mono"
+				},
+				{
+					"value": "tast.audio.CrasAEC.48000_mono"
+				},
+				{
+					"value": "tast.audio.CrasAEC.48000_stereo"
+				},
+				{
 					"value": "tast.audio.CrasBench.alsa"
 				},
 				{
@@ -1404,6 +1419,9 @@
 				},
 				{
 					"value": "tast.audio.CrasDLCManager"
+				},
+				{
+					"value": "tast.audio.CrasDebugDump"
 				},
 				{
 					"value": "tast.audio.CrasEffects.dsp_0x0_conflict"
@@ -2960,6 +2978,9 @@
 					"value": "tast.health.DiagnosticsPass.urandom"
 				},
 				{
+					"value": "tast.health.DiagnosticsPassV2.audio_driver"
+				},
+				{
 					"value": "tast.health.DiagnosticsPassV2.cpu_cache_v2"
 				},
 				{
@@ -3006,9 +3027,6 @@
 				},
 				{
 					"value": "tast.health.DiagnosticsRun.smartctl_check"
-				},
-				{
-					"value": "tast.health.DiagnosticsRunV2.audio_driver"
 				},
 				{
 					"value": "tast.health.DiagnosticsRunV2.ufs_lifetime"
