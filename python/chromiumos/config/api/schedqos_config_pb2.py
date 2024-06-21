@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z(go.chromium.org/chromiumos/config/go/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+chromiumos/config/api/schedqos_config.proto\x12\x15\x63hromiumos.config.api\x1a\x1egoogle/protobuf/wrappers.proto\"\xbf\x08\n\x0eSchedqosConfig\x12@\n\x07\x64\x65\x66\x61ult\x18\x01 \x01(\x0b\x32/.chromiumos.config.api.SchedqosConfig.ConfigSet\x1a\x9f\x02\n\x0cThreadConfig\x12\x30\n\x0brt_priority\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12)\n\x04nice\x18\x02 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12\x30\n\nuclamp_min\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.UInt32Value\x12I\n\rcpuset_cgroup\x18\x04 \x01(\x0e\x32\x32.chromiumos.config.api.SchedqosConfig.CpusetCgroup\x12\x35\n\x11latency_sensitive\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x1a\xe9\x04\n\tConfigSet\x12\x18\n\x10normal_cpu_share\x18\x01 \x01(\r\x12\x1c\n\x14\x62\x61\x63kground_cpu_share\x18\x02 \x01(\r\x12P\n\x14thread_urgent_bursty\x18\x03 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12I\n\rthread_urgent\x18\x04 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12K\n\x0fthread_balanced\x18\x05 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12\x46\n\nthread_eco\x18\x06 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12J\n\x0ethread_utility\x18\x07 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12M\n\x11thread_background\x18\x08 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12W\n\x1bthread_urgent_bursty_server\x18\t \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\"]\n\x0c\x43pusetCgroup\x12\x19\n\x15\x43PUSET_CGROUP_DEFAULT\x10\x00\x12\x15\n\x11\x43PUSET_CGROUP_ALL\x10\x01\x12\x1b\n\x17\x43PUSET_CGROUP_EFFICIENT\x10\x02\x42*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
+  serialized_pb=b'\n+chromiumos/config/api/schedqos_config.proto\x12\x15\x63hromiumos.config.api\x1a\x1egoogle/protobuf/wrappers.proto\"\x98\t\n\x0eSchedqosConfig\x12@\n\x07\x64\x65\x66\x61ult\x18\x01 \x01(\x0b\x32/.chromiumos.config.api.SchedqosConfig.ConfigSet\x1a\x9f\x02\n\x0cThreadConfig\x12\x30\n\x0brt_priority\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12)\n\x04nice\x18\x02 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12\x30\n\nuclamp_min\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.UInt32Value\x12I\n\rcpuset_cgroup\x18\x04 \x01(\x0e\x32\x32.chromiumos.config.api.SchedqosConfig.CpusetCgroup\x12\x35\n\x11latency_sensitive\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x1a\xc2\x05\n\tConfigSet\x12\x18\n\x10normal_cpu_share\x18\x01 \x01(\r\x12\x1c\n\x14\x62\x61\x63kground_cpu_share\x18\x02 \x01(\r\x12P\n\x14thread_urgent_bursty\x18\x03 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12I\n\rthread_urgent\x18\x04 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12K\n\x0fthread_balanced\x18\x05 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12\x46\n\nthread_eco\x18\x06 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12J\n\x0ethread_utility\x18\x07 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12M\n\x11thread_background\x18\x08 \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12W\n\x1bthread_urgent_bursty_server\x18\t \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\x12W\n\x1bthread_urgent_bursty_client\x18\n \x01(\x0b\x32\x32.chromiumos.config.api.SchedqosConfig.ThreadConfig\"]\n\x0c\x43pusetCgroup\x12\x19\n\x15\x43PUSET_CGROUP_DEFAULT\x10\x00\x12\x15\n\x11\x43PUSET_CGROUP_ALL\x10\x01\x12\x1b\n\x17\x43PUSET_CGROUP_EFFICIENT\x10\x02\x42*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,])
 
@@ -51,8 +51,8 @@ _SCHEDQOSCONFIG_CPUSETCGROUP = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1097,
-  serialized_end=1190,
+  serialized_start=1186,
+  serialized_end=1279,
 )
 _sym_db.RegisterEnumDescriptor(_SCHEDQOSCONFIG_CPUSETCGROUP)
 
@@ -187,6 +187,13 @@ _SCHEDQOSCONFIG_CONFIGSET = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='thread_urgent_bursty_client', full_name='chromiumos.config.api.SchedqosConfig.ConfigSet.thread_urgent_bursty_client', index=9,
+      number=10, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -200,7 +207,7 @@ _SCHEDQOSCONFIG_CONFIGSET = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=478,
-  serialized_end=1095,
+  serialized_end=1184,
 )
 
 _SCHEDQOSCONFIG = _descriptor.Descriptor(
@@ -232,7 +239,7 @@ _SCHEDQOSCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=103,
-  serialized_end=1190,
+  serialized_end=1279,
 )
 
 _SCHEDQOSCONFIG_THREADCONFIG.fields_by_name['rt_priority'].message_type = google_dot_protobuf_dot_wrappers__pb2._INT32VALUE
@@ -248,6 +255,7 @@ _SCHEDQOSCONFIG_CONFIGSET.fields_by_name['thread_eco'].message_type = _SCHEDQOSC
 _SCHEDQOSCONFIG_CONFIGSET.fields_by_name['thread_utility'].message_type = _SCHEDQOSCONFIG_THREADCONFIG
 _SCHEDQOSCONFIG_CONFIGSET.fields_by_name['thread_background'].message_type = _SCHEDQOSCONFIG_THREADCONFIG
 _SCHEDQOSCONFIG_CONFIGSET.fields_by_name['thread_urgent_bursty_server'].message_type = _SCHEDQOSCONFIG_THREADCONFIG
+_SCHEDQOSCONFIG_CONFIGSET.fields_by_name['thread_urgent_bursty_client'].message_type = _SCHEDQOSCONFIG_THREADCONFIG
 _SCHEDQOSCONFIG_CONFIGSET.containing_type = _SCHEDQOSCONFIG
 _SCHEDQOSCONFIG.fields_by_name['default'].message_type = _SCHEDQOSCONFIG_CONFIGSET
 _SCHEDQOSCONFIG_CPUSETCGROUP.containing_type = _SCHEDQOSCONFIG

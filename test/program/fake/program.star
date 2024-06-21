@@ -195,6 +195,7 @@ _PLATFORM = program_util.create_platform(
             thread_utility = program_util.create_schedqos_thread_config(),
             thread_background = program_util.create_schedqos_thread_config(),
             thread_urgent_bursty_server = program_util.create_schedqos_thread_config(),
+            thread_urgent_bursty_client = program_util.create_schedqos_thread_config(),
         ),
     ),
 )

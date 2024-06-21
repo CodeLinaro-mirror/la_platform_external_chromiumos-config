@@ -8932,6 +8932,14 @@
                   "number": 9,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.SchedqosConfig.ThreadConfig"
+                },
+                {
+                  "jsonName": "threadUrgentBurstyClient",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "thread_urgent_bursty_client",
+                  "number": 10,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.SchedqosConfig.ThreadConfig"
                 }
               ],
               "name": "ConfigSet"

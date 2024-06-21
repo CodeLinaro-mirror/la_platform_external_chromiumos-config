@@ -73,6 +73,9 @@ message SchedqosConfig {
 
     // The thread config for URGENT_BURSTY_SERVER state.
     ThreadConfig thread_urgent_bursty_server = 9;
+
+    // The thread config for URGENT_BURSTY_CLIENT state.
+    ThreadConfig thread_urgent_bursty_client = 10;
   }
 
   // The default config set.

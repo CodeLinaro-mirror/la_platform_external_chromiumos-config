@@ -59,7 +59,8 @@ def _create_schedqos_config_set(
         thread_eco = None,
         thread_utility = None,
         thread_background = None,
-        thread_urgent_bursty_server = None):
+        thread_urgent_bursty_server = None,
+        thread_urgent_bursty_client = None):
     """Builds a ConfigSet proto for schedqos"""
     return schedqos_pb.SchedqosConfig.ConfigSet(
         normal_cpu_share = normal_cpu_share,
@@ -71,6 +72,7 @@ def _create_schedqos_config_set(
         thread_utility = thread_utility,
         thread_background = thread_background,
         thread_urgent_bursty_server = thread_urgent_bursty_server,
+        thread_urgent_bursty_client = thread_urgent_bursty_client,
     )
 
 def _create_schedqos_thread_config(
