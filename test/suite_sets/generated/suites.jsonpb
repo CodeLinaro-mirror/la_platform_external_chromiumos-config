@@ -4103,6 +4103,12 @@
 					"value": "tast.network.ShillStability"
 				},
 				{
+					"value": "tast.network.SimulatedWifiServiceSmoke.ipv4"
+				},
+				{
+					"value": "tast.network.SimulatedWifiServiceSmoke.ipv6"
+				},
+				{
 					"value": "tast.network.SupportedProtocols"
 				},
 				{
