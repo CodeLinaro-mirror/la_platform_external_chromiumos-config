@@ -981,6 +981,7 @@ _SC_WIFI7_INTEL = sc.create_intel_wifi(
         unii_4 = 7,
         enablement_11be_countries = sc.create_intel_dsm_enablement_11be_countries(),
     ),
+    bsar = sc.create_intel_bsar(revision = 1),
 )
 _TOUCH = hw_topo.create_touch(
     "TOUCH",

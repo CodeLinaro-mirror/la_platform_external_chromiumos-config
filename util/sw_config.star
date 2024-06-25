@@ -919,6 +919,41 @@ def _create_intel_sar_table(
         cdb_non_tablet_mode_power_table_b = cdb_non_tablet_mode_transmit_power_chain_b,
     )
 
+def _create_intel_bsar(
+        revision,  # only revision 1 is supported at the moment
+        increased_power_mode_limitation = 0,
+        sar_lb_power_restriction = 0,
+        br_modulation = 0,
+        edr2_modulation = 0,
+        edr3_modulation = 0,
+        le_modulation = 0,
+        le2_mhz_modulation = 0,
+        le_lr_modulation = 0):
+    """Builds a Bluetooth SAR proto for use with intel drivers.
+
+    Args:
+        revision: Bluetooth SAR table revision.
+        increased_power_mode_limitation: Enable/Disable Increased Power Mode Limitation.
+        sar_lb_power_restriction: Power Restriction for the Lower Band (LB).
+        br_modulation: power restriction for BR Modulation.
+        edr2_modulation: power restriction for EDR2 Modulation.
+        edr3_modulation: power restriction for EDR3 Modulation.
+        le_modulation: power restriction for LE Modulation.
+        le2_mhz_modulation: power restriction for LE 2 MHz Modulation.
+        le_lr_modulation: power restriction for LE LR Modulation.
+    """
+    return wf_pb.WifiConfig.IntelConfig.BluetoothSAR(
+        revision = revision,
+        increased_power_mode_limitation = increased_power_mode_limitation,
+        sar_lb_power_restriction = sar_lb_power_restriction,
+        br_modulation = br_modulation,
+        edr2_modulation = edr2_modulation,
+        edr3_modulation = edr3_modulation,
+        le_modulation = le_modulation,
+        le2_mhz_modulation = le2_mhz_modulation,
+        le_lr_modulation = le_lr_modulation,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1010,7 +1045,8 @@ def _create_intel_wifi(
         wgds_table = _create_intel_offsets_table(),
         ant_table = _create_intel_antgain_table(),
         wtas_table = _create_intel_sar_avg_table(),
-        dsm = _create_intel_dsm()):
+        dsm = _create_intel_dsm(),
+        bsar = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1019,6 +1055,7 @@ def _create_intel_wifi(
         ant_table: Antenna Gains for use with intel driver.
         wtas_table: Time average SAR for use with intel driver.
         dsm: Device specific methods return values for intel driver.
+        bsar: BluetoothSAR proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1027,6 +1064,7 @@ def _create_intel_wifi(
             ant_table = ant_table,
             wtas_table = wtas_table,
             dsm = dsm,
+            bsar = bsar,
         ),
     )
 
@@ -1232,6 +1270,7 @@ sw_config = struct(
     create_intel_antgain_table = _create_intel_antgain_table,
     create_intel_dsm_enablement_11be_countries = _create_intel_dsm_enablement_11be_countries,
     create_intel_dsm = _create_intel_dsm,
+    create_intel_bsar = _create_intel_bsar,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,

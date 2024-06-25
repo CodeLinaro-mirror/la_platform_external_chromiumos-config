@@ -3160,6 +3160,14 @@
                   "number": 5,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM"
+                },
+                {
+                  "jsonName": "bsar",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bsar",
+                  "number": 6,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR"
                 }
               ],
               "name": "IntelConfig",
@@ -3769,6 +3777,74 @@
                       "name": "Enablement11beCountries"
                     }
                   ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "increasedPowerModeLimitation",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "increased_power_mode_limitation",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "sarLbPowerRestriction",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "sar_lb_power_restriction",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "brModulation",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "br_modulation",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "edr2Modulation",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "edr2_modulation",
+                      "number": 5,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "edr3Modulation",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "edr3_modulation",
+                      "number": 6,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "leModulation",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "le_modulation",
+                      "number": 7,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "le2MhzModulation",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "le2_mhz_modulation",
+                      "number": 8,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "leLrModulation",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "le_lr_modulation",
+                      "number": 9,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "BluetoothSAR"
                 }
               ]
             },

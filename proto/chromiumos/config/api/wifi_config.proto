@@ -234,6 +234,28 @@ message WifiConfig {
       Enablement11beCountries enablement_11be_countries = 9;
     }
     DSM dsm = 5;
+
+    message BluetoothSAR {
+      // Bluetooth SAR table
+      uint32 revision = 1;
+      // Increased Power Mode Limitation
+      uint32 increased_power_mode_limitation = 2;
+      // SAR Power Restriction for the Lower Band (LB)
+      uint32 sar_lb_power_restriction = 3;
+      // SAR power restriction for BR Modulation
+      uint32 br_modulation = 4;
+      // SAR power restriction for EDR2 Modulation
+      uint32 edr2_modulation = 5;
+      // SAR power restriction for EDR3 Modulation
+      uint32 edr3_modulation = 6;
+      // SAR power restriction for LE Modulation
+      uint32 le_modulation = 7;
+      // SAR power restriction for LE 2 MHz Modulation
+      uint32 le2_mhz_modulation = 8;
+      // SAR power restriction for LE LR Modulation
+      uint32 le_lr_modulation = 9;
+    }
+    BluetoothSAR bsar = 6;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values
