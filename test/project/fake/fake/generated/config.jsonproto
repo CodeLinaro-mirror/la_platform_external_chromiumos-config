@@ -9454,6 +9454,9 @@
                       "limit6g5": 22
                     }
                   },
+                  "wbem": {
+                    "enablementWbemCountries": {}
+                  },
                   "wgdsTable": {
                     "offsetEu": {
                       "max2g": 10,
@@ -10083,6 +10086,9 @@
                           "limit6g4": 21,
                           "limit6g5": 22
                         }
+                      },
+                      "wbem": {
+                        "enablementWbemCountries": {}
                       },
                       "wgdsTable": {
                         "offsetEu": {

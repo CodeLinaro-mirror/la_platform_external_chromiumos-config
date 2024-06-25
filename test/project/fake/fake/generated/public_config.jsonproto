@@ -1473,6 +1473,9 @@
                       "limit6g5": 22
                     }
                   },
+                  "wbem": {
+                    "enablementWbemCountries": {}
+                  },
                   "wgdsTable": {
                     "offsetEu": {
                       "max2g": 10,

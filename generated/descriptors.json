@@ -3168,6 +3168,14 @@
                   "number": 6,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR"
+                },
+                {
+                  "jsonName": "wbem",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wbem",
+                  "number": 7,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.WBEM"
                 }
               ],
               "name": "IntelConfig",
@@ -3845,6 +3853,47 @@
                     }
                   ],
                   "name": "BluetoothSAR"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "enablementWbemCountries",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "enablement_wbem_countries",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries"
+                    }
+                  ],
+                  "name": "WBEM",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "japan",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "japan",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "southKorea",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "south_korea",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "EnablementWbemCountries"
+                    }
+                  ]
                 }
               ]
             },

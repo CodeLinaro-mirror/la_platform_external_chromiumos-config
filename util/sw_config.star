@@ -954,6 +954,34 @@ def _create_intel_bsar(
         le_lr_modulation = le_lr_modulation,
     )
 
+def _create_intel_wbem_country_enablement(
+        japan = False,
+        south_korea = False):
+    """Builds country enablement parameters for intel drivers.
+
+    Args:
+        japan: enable channel for Japan region.
+        south_korea: enable channel for South Korea region.
+    """
+    return wf_pb.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries(
+        japan = japan,
+        south_korea = south_korea,
+    )
+
+def _create_intel_wbem(
+        revision,  # only revision 0 is supported at the moment
+        enablement_wbem_countries = _create_intel_wbem_country_enablement()):
+    """Builds a WBEM proto for use with intel drivers.
+
+    Args:
+        revision: WBEM table revision.
+        enablement_wbem_countries: Enable/Disable of Wi-Fi 320MHz per MCC.
+    """
+    return wf_pb.WifiConfig.IntelConfig.WBEM(
+        revision = revision,
+        enablement_wbem_countries = enablement_wbem_countries,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1046,7 +1074,8 @@ def _create_intel_wifi(
         ant_table = _create_intel_antgain_table(),
         wtas_table = _create_intel_sar_avg_table(),
         dsm = _create_intel_dsm(),
-        bsar = None):
+        bsar = None,
+        wbem = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1056,6 +1085,7 @@ def _create_intel_wifi(
         wtas_table: Time average SAR for use with intel driver.
         dsm: Device specific methods return values for intel driver.
         bsar: BluetoothSAR proto for use with intel driver.
+        wbem: WBEM proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1065,6 +1095,7 @@ def _create_intel_wifi(
             wtas_table = wtas_table,
             dsm = dsm,
             bsar = bsar,
+            wbem = wbem,
         ),
     )
 
@@ -1271,6 +1302,8 @@ sw_config = struct(
     create_intel_dsm_enablement_11be_countries = _create_intel_dsm_enablement_11be_countries,
     create_intel_dsm = _create_intel_dsm,
     create_intel_bsar = _create_intel_bsar,
+    create_intel_wbem_country_enablement = _create_intel_wbem_country_enablement,
+    create_intel_wbem = _create_intel_wbem,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,

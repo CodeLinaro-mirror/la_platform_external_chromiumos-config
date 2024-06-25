@@ -256,6 +256,20 @@ message WifiConfig {
       uint32 le_lr_modulation = 9;
     }
     BluetoothSAR bsar = 6;
+
+    message WBEM {
+      // Wi-Fi 320MHz Bandwidth Enablement table
+      uint32 revision = 1;
+
+      // For different regions
+      message EnablementWbemCountries {
+          bool japan = 1;
+          bool south_korea = 2;
+      }
+      // Enablement of Wi-Fi 320MHz per MCC
+      EnablementWbemCountries enablement_wbem_countries = 2;
+    }
+    WBEM wbem = 7;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values
