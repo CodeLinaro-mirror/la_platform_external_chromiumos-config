@@ -4904,6 +4904,14 @@
               "number": 52,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.TiledDisplay"
+            },
+            {
+              "jsonName": "cpuInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "cpu_info",
+              "number": 53,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.CpuInfo"
             }
           ],
           "name": "HardwareFeatures",
@@ -7567,6 +7575,40 @@
                 }
               ],
               "name": "TiledDisplay"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "vendorInfo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "vendor_info",
+                  "number": 1,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.CpuInfo.VendorInfo"
+                }
+              ],
+              "name": "CpuInfo",
+              "nestedType": [
+                {
+                  "field": [
+                    {
+                      "jsonName": "cpuFamilyNum",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "cpu_family_num",
+                      "number": 1,
+                      "type": "TYPE_INT64"
+                    },
+                    {
+                      "jsonName": "cpuModelNum",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "cpu_model_num",
+                      "number": 2,
+                      "type": "TYPE_INT64"
+                    }
+                  ],
+                  "name": "VendorInfo"
+                }
+              ]
             }
           ]
         }
