@@ -19,8 +19,7 @@ def _overlay(build_metadata):
 
 def _kernel_version(build_metadata):
     """Gets the major kernel version for the overlay"""
-    version = build_metadata.package_summary.kernel.version
-    return version if float(version) else ""
+    return build_metadata.package_summary.kernel.version
 
 def _soc_family(build_metadata):
     """Gets the SoC Family name for a given overlay"""
