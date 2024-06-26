@@ -2390,9 +2390,6 @@
 					"value": "tast.crostini.ShareDownloads.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.ShareDownloads.bookworm_stable_no_downloads_bind_mount"
-				},
-				{
 					"value": "tast.crostini.ShareDownloadsAddFiles.bookworm_stable"
 				},
 				{
