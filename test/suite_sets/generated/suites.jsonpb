@@ -5483,6 +5483,12 @@
 					"value": "tast.firmware.CorruptFWBothAB.body_normal"
 				},
 				{
+					"value": "tast.firmware.CorruptFWBothAB.sig_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.sig_normal"
+				},
+				{
 					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_depthcharge_file"
 				},
 				{
@@ -5882,9 +5888,6 @@
 					"value": "tauto.firmware_CorruptRecoveryCache.dev"
 				},
 				{
-					"value": "tauto.firmware_DevMode"
-				},
-				{
 					"value": "tauto.firmware_FwScreenPressPower"
 				},
 				{
@@ -6002,6 +6005,12 @@
 				},
 				{
 					"value": "tast.firmware.CorruptFWBothAB.body_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.sig_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.sig_normal"
 				},
 				{
 					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_depthcharge_file"
@@ -6320,9 +6329,6 @@
 				},
 				{
 					"value": "tauto.firmware_CorruptBothKernelAB"
-				},
-				{
-					"value": "tauto.firmware_DevMode"
 				},
 				{
 					"value": "tauto.firmware_FwScreenPressPower"
