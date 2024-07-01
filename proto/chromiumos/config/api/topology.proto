@@ -336,6 +336,9 @@ message HardwareFeatures {
       // The source config file layout used for card-agnostic cras config.
     AudioConfigStructure cras_config = 8;
 
+    // If audio DSP firmware is SOF-backed.
+    Present sof_audio_dsp = 9;
+
     enum AudioCodec {
       AUDIO_CODEC_UNKNOWN = 0;  // Also used for non-public audio codecs
       RT5682 = 1;

@@ -5639,6 +5639,14 @@
                   "number": 8,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Audio.AudioConfigStructure"
+                },
+                {
+                  "jsonName": "sofAudioDsp",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "sof_audio_dsp",
+                  "number": 9,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "Audio",
