@@ -919,7 +919,7 @@ def _create_intel_sar_table(
         cdb_non_tablet_mode_power_table_b = cdb_non_tablet_mode_transmit_power_chain_b,
     )
 
-def _create_intel_bsar(
+def _create_intel_bt_sar(
         revision,  # only revision 1 is supported at the moment
         increased_power_mode_limitation = 0,
         sar_lb_power_restriction = 0,
@@ -1069,12 +1069,12 @@ def _create_intel_sar_avg_table(
     )
 
 def _create_intel_wifi(
-        sar_table = _create_intel_sar_table(),
-        wgds_table = _create_intel_offsets_table(),
-        ant_table = _create_intel_antgain_table(),
-        wtas_table = _create_intel_sar_avg_table(),
-        dsm = _create_intel_dsm(),
-        bsar = None,
+        sar_table = None,
+        wgds_table = None,
+        ant_table = None,
+        wtas_table = None,
+        dsm = None,
+        bt_sar = None,
         wbem = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
@@ -1084,7 +1084,7 @@ def _create_intel_wifi(
         ant_table: Antenna Gains for use with intel driver.
         wtas_table: Time average SAR for use with intel driver.
         dsm: Device specific methods return values for intel driver.
-        bsar: BluetoothSAR proto for use with intel driver.
+        bt_sar: BluetoothSAR proto for use with intel driver.
         wbem: WBEM proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
@@ -1094,7 +1094,7 @@ def _create_intel_wifi(
             ant_table = ant_table,
             wtas_table = wtas_table,
             dsm = dsm,
-            bsar = bsar,
+            bt_sar = bt_sar,
             wbem = wbem,
         ),
     )
@@ -1301,7 +1301,7 @@ sw_config = struct(
     create_intel_antgain_table = _create_intel_antgain_table,
     create_intel_dsm_enablement_11be_countries = _create_intel_dsm_enablement_11be_countries,
     create_intel_dsm = _create_intel_dsm,
-    create_intel_bsar = _create_intel_bsar,
+    create_intel_bt_sar = _create_intel_bt_sar,
     create_intel_wbem_country_enablement = _create_intel_wbem_country_enablement,
     create_intel_wbem = _create_intel_wbem,
     create_intel_geo_offsets = _create_intel_geo_offsets,

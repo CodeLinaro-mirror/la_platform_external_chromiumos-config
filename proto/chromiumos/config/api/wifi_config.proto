@@ -255,7 +255,7 @@ message WifiConfig {
       // SAR power restriction for LE LR Modulation
       uint32 le_lr_modulation = 9;
     }
-    BluetoothSAR bsar = 6;
+    BluetoothSAR bt_sar = 6;
 
     message WBEM {
       // Wi-Fi 320MHz Bandwidth Enablement table

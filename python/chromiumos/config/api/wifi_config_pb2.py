@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z(go.chromium.org/chromiumos/config/go/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\'chromiumos/config/api/wifi_config.proto\x12\x15\x63hromiumos.config.api\"\xd7\x38\n\nWifiConfig\x12G\n\rath10k_config\x18\x01 \x01(\x0b\x32..chromiumos.config.api.WifiConfig.Ath10kConfigH\x00\x12\x45\n\x0crtw88_config\x18\x02 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.Rtw88ConfigH\x00\x12\x45\n\x0cintel_config\x18\x03 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.IntelConfigH\x00\x12\x41\n\nmtk_config\x18\x04 \x01(\x0b\x32+.chromiumos.config.api.WifiConfig.MtkConfigH\x00\x12\x45\n\x0crtw89_config\x18\x05 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.Rtw89ConfigH\x00\x12R\n\x13legacy_intel_config\x18\x06 \x01(\x0b\x32\x33.chromiumos.config.api.WifiConfig.LegacyIntelConfigH\x00\x1a\x94\x02\n\x0c\x41th10kConfig\x12\x62\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.Ath10kConfig.TransmitPowerChain\x12\x66\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.Ath10kConfig.TransmitPowerChain\x1a\x38\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x10\n\x08limit_5g\x18\x02 \x01(\r\x1a\xda\x04\n\x0bRtw88Config\x12\x61\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw88Config.TransmitPowerChain\x12\x65\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw88Config.TransmitPowerChain\x12L\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x12K\n\toffset_eu\x18\x04 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x12N\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x1a\x62\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\r\x1a\x32\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\r\x12\x11\n\toffset_5g\x18\x02 \x01(\r\x1a\xe8\x1f\n\x0bIntelConfig\x12I\n\tsar_table\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.api.WifiConfig.IntelConfig.SarTable\x12I\n\nwgds_table\x18\x02 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.IntelConfig.Offsets\x12\x46\n\tant_table\x18\x03 \x01(\x0b\x32\x33.chromiumos.config.api.WifiConfig.IntelConfig.Gains\x12I\n\nwtas_table\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.IntelConfig.Average\x12>\n\x03\x64sm\x18\x05 \x01(\x0b\x32\x31.chromiumos.config.api.WifiConfig.IntelConfig.DSM\x12H\n\x04\x62sar\x18\x06 \x01(\x0b\x32:.chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR\x12@\n\x04wbem\x18\x07 \x01(\x0b\x32\x32.chromiumos.config.api.WifiConfig.IntelConfig.WBEM\x1a\xa6\t\n\x08SarTable\x12\x19\n\x11sar_table_version\x18\x01 \x01(\r\x12l\n\x19tablet_mode_power_table_a\x18\x03 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12l\n\x19tablet_mode_power_table_b\x18\x04 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1dnon_tablet_mode_power_table_a\x18\x05 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1dnon_tablet_mode_power_table_b\x18\x06 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1d\x63\x64\x62_tablet_mode_power_table_a\x18\x07 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1d\x63\x64\x62_tablet_mode_power_table_b\x18\x08 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12t\n!cdb_non_tablet_mode_power_table_a\x18\t \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12t\n!cdb_non_tablet_mode_power_table_b\x18\n \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x1a\xee\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_2\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x04 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x05 \x01(\r\x12\x12\n\nlimit_5g_5\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_3\x18\t \x01(\r\x12\x12\n\nlimit_6g_4\x18\n \x01(\r\x12\x12\n\nlimit_6g_5\x18\x0b \x01(\r\x1a\xdf\x03\n\x07Offsets\x12\x14\n\x0cwgds_version\x18\x01 \x01(\r\x12T\n\noffset_fcc\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x12S\n\toffset_eu\x18\x03 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x12V\n\x0coffset_other\x18\x04 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x1a\xba\x01\n\nGeoOffsets\x12\x0e\n\x06max_2g\x18\x01 \x01(\r\x12\x13\n\x0boffset_2g_a\x18\x02 \x01(\r\x12\x13\n\x0boffset_2g_b\x18\x03 \x01(\r\x12\x0e\n\x06max_5g\x18\x04 \x01(\r\x12\x13\n\x0boffset_5g_a\x18\x05 \x01(\r\x12\x13\n\x0boffset_5g_b\x18\x06 \x01(\r\x12\x0e\n\x06max_6g\x18\x07 \x01(\r\x12\x13\n\x0boffset_6g_a\x18\x08 \x01(\r\x12\x13\n\x0boffset_6g_b\x18\t \x01(\r\x1a\xfa\x03\n\x05Gains\x12\x19\n\x11\x61nt_table_version\x18\x01 \x01(\r\x12\x15\n\rant_mode_ppag\x18\x02 \x01(\r\x12Y\n\x10\x61nt_gain_table_a\x18\x03 \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain\x12Y\n\x10\x61nt_gain_table_b\x18\x04 \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain\x1a\x88\x02\n\x0b\x41ntennaGain\x12\x13\n\x0b\x61nt_gain_2g\x18\x01 \x01(\r\x12\x15\n\rant_gain_5g_1\x18\x02 \x01(\r\x12\x15\n\rant_gain_5g_2\x18\x03 \x01(\r\x12\x15\n\rant_gain_5g_3\x18\x04 \x01(\r\x12\x15\n\rant_gain_5g_4\x18\x05 \x01(\r\x12\x15\n\rant_gain_5g_5\x18\x06 \x01(\r\x12\x15\n\rant_gain_6g_1\x18\x07 \x01(\r\x12\x15\n\rant_gain_6g_2\x18\x08 \x01(\r\x12\x15\n\rant_gain_6g_3\x18\t \x01(\r\x12\x15\n\rant_gain_6g_4\x18\n \x01(\r\x12\x15\n\rant_gain_6g_5\x18\x0b \x01(\r\x1a\x87\x04\n\x07\x41verage\x12\x17\n\x0fsar_avg_version\x18\x01 \x01(\r\x12\x15\n\rtas_selection\x18\x02 \x01(\r\x12\x15\n\rtas_list_size\x18\x03 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_1\x18\x04 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_2\x18\x05 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_3\x18\x06 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_4\x18\x07 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_5\x18\x08 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_6\x18\t \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_7\x18\n \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_8\x18\x0b \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_9\x18\x0c \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_10\x18\r \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_11\x18\x0e \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_12\x18\x0f \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_13\x18\x10 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_14\x18\x11 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_15\x18\x12 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_16\x18\x13 \x01(\r\x1a\x84\x03\n\x03\x44SM\x12#\n\x1b\x64isable_active_sdr_channels\x18\x02 \x01(\x03\x12!\n\x19support_indonesia_5g_band\x18\x03 \x01(\x03\x12\x1f\n\x17support_ultra_high_band\x18\x04 \x01(\x03\x12!\n\x19regulatory_configurations\x18\x05 \x01(\x03\x12\x1b\n\x13uart_configurations\x18\x06 \x01(\x03\x12\x17\n\x0f\x65nablement_11ax\x18\x07 \x01(\x03\x12\x0e\n\x06unii_4\x18\x08 \x01(\x03\x12l\n\x19\x65nablement_11be_countries\x18\t \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries\x1a=\n\x17\x45nablement11beCountries\x12\r\n\x05\x63hina\x18\x01 \x01(\x08\x12\x13\n\x0bsouth_korea\x18\x02 \x01(\x08\x1a\x81\x02\n\x0c\x42luetoothSAR\x12\x10\n\x08revision\x18\x01 \x01(\r\x12\'\n\x1fincreased_power_mode_limitation\x18\x02 \x01(\r\x12 \n\x18sar_lb_power_restriction\x18\x03 \x01(\r\x12\x15\n\rbr_modulation\x18\x04 \x01(\r\x12\x17\n\x0f\x65\x64r2_modulation\x18\x05 \x01(\r\x12\x17\n\x0f\x65\x64r3_modulation\x18\x06 \x01(\r\x12\x15\n\rle_modulation\x18\x07 \x01(\r\x12\x1a\n\x12le2_mhz_modulation\x18\x08 \x01(\r\x12\x18\n\x10le_lr_modulation\x18\t \x01(\r\x1a\xc6\x01\n\x04WBEM\x12\x10\n\x08revision\x18\x01 \x01(\r\x12m\n\x19\x65nablement_wbem_countries\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries\x1a=\n\x17\x45nablementWbemCountries\x12\r\n\x05japan\x18\x01 \x01(\x08\x12\x13\n\x0bsouth_korea\x18\x02 \x01(\x08\x1a\x13\n\x11LegacyIntelConfig\x1a\xa7\x08\n\tMtkConfig\x12_\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32>.chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain\x12\x63\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32>.chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain\x12Z\n\x0f\x66\x63\x63_power_table\x18\x03 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12Y\n\x0e\x65u_power_table\x18\x04 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12\\\n\x11other_power_table\x18\x05 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12K\n\x0c\x63ountry_list\x18\x06 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.MtkConfig.MtclTable\x1a\xee\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_2\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x04 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x05 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_3\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_4\x18\t \x01(\r\x12\x12\n\nlimit_6g_5\x18\n \x01(\r\x12\x12\n\nlimit_6g_6\x18\x0b \x01(\r\x1a\x86\x01\n\x15GeoTransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x10\n\x08limit_5g\x18\x02 \x01(\r\x12\x11\n\toffset_2g\x18\x03 \x01(\r\x12\x11\n\toffset_5g\x18\x04 \x01(\r\x12\x10\n\x08limit_6g\x18\x05 \x01(\r\x12\x11\n\toffset_6g\x18\x06 \x01(\r\x1ax\n\tMtclTable\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x14\n\x0csupport_6ghz\x18\x02 \x01(\r\x12\x14\n\x0c\x62itmask_6ghz\x18\x03 \x01(\x04\x12\x16\n\x0esupport_5p9ghz\x18\x04 \x01(\r\x12\x16\n\x0e\x62itmask_5p9ghz\x18\x05 \x01(\x04\x1a\xe6\x05\n\x0bRtw89Config\x12\x61\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw89Config.TransmitPowerChain\x12\x65\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw89Config.TransmitPowerChain\x12L\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x12K\n\toffset_eu\x18\x04 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x12N\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x1a\xda\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x05 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_3\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_4\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_5\x18\t \x01(\r\x12\x12\n\nlimit_6g_6\x18\n \x01(\r\x1a\x45\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\r\x12\x11\n\toffset_5g\x18\x02 \x01(\r\x12\x11\n\toffset_6g\x18\x03 \x01(\rB\r\n\x0bwifi_configB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
+  serialized_pb=b'\n\'chromiumos/config/api/wifi_config.proto\x12\x15\x63hromiumos.config.api\"\xd9\x38\n\nWifiConfig\x12G\n\rath10k_config\x18\x01 \x01(\x0b\x32..chromiumos.config.api.WifiConfig.Ath10kConfigH\x00\x12\x45\n\x0crtw88_config\x18\x02 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.Rtw88ConfigH\x00\x12\x45\n\x0cintel_config\x18\x03 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.IntelConfigH\x00\x12\x41\n\nmtk_config\x18\x04 \x01(\x0b\x32+.chromiumos.config.api.WifiConfig.MtkConfigH\x00\x12\x45\n\x0crtw89_config\x18\x05 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.Rtw89ConfigH\x00\x12R\n\x13legacy_intel_config\x18\x06 \x01(\x0b\x32\x33.chromiumos.config.api.WifiConfig.LegacyIntelConfigH\x00\x1a\x94\x02\n\x0c\x41th10kConfig\x12\x62\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.Ath10kConfig.TransmitPowerChain\x12\x66\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.Ath10kConfig.TransmitPowerChain\x1a\x38\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x10\n\x08limit_5g\x18\x02 \x01(\r\x1a\xda\x04\n\x0bRtw88Config\x12\x61\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw88Config.TransmitPowerChain\x12\x65\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw88Config.TransmitPowerChain\x12L\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x12K\n\toffset_eu\x18\x04 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x12N\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x1a\x62\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\r\x1a\x32\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\r\x12\x11\n\toffset_5g\x18\x02 \x01(\r\x1a\xea\x1f\n\x0bIntelConfig\x12I\n\tsar_table\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.api.WifiConfig.IntelConfig.SarTable\x12I\n\nwgds_table\x18\x02 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.IntelConfig.Offsets\x12\x46\n\tant_table\x18\x03 \x01(\x0b\x32\x33.chromiumos.config.api.WifiConfig.IntelConfig.Gains\x12I\n\nwtas_table\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.IntelConfig.Average\x12>\n\x03\x64sm\x18\x05 \x01(\x0b\x32\x31.chromiumos.config.api.WifiConfig.IntelConfig.DSM\x12J\n\x06\x62t_sar\x18\x06 \x01(\x0b\x32:.chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR\x12@\n\x04wbem\x18\x07 \x01(\x0b\x32\x32.chromiumos.config.api.WifiConfig.IntelConfig.WBEM\x1a\xa6\t\n\x08SarTable\x12\x19\n\x11sar_table_version\x18\x01 \x01(\r\x12l\n\x19tablet_mode_power_table_a\x18\x03 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12l\n\x19tablet_mode_power_table_b\x18\x04 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1dnon_tablet_mode_power_table_a\x18\x05 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1dnon_tablet_mode_power_table_b\x18\x06 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1d\x63\x64\x62_tablet_mode_power_table_a\x18\x07 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1d\x63\x64\x62_tablet_mode_power_table_b\x18\x08 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12t\n!cdb_non_tablet_mode_power_table_a\x18\t \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12t\n!cdb_non_tablet_mode_power_table_b\x18\n \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x1a\xee\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_2\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x04 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x05 \x01(\r\x12\x12\n\nlimit_5g_5\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_3\x18\t \x01(\r\x12\x12\n\nlimit_6g_4\x18\n \x01(\r\x12\x12\n\nlimit_6g_5\x18\x0b \x01(\r\x1a\xdf\x03\n\x07Offsets\x12\x14\n\x0cwgds_version\x18\x01 \x01(\r\x12T\n\noffset_fcc\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x12S\n\toffset_eu\x18\x03 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x12V\n\x0coffset_other\x18\x04 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x1a\xba\x01\n\nGeoOffsets\x12\x0e\n\x06max_2g\x18\x01 \x01(\r\x12\x13\n\x0boffset_2g_a\x18\x02 \x01(\r\x12\x13\n\x0boffset_2g_b\x18\x03 \x01(\r\x12\x0e\n\x06max_5g\x18\x04 \x01(\r\x12\x13\n\x0boffset_5g_a\x18\x05 \x01(\r\x12\x13\n\x0boffset_5g_b\x18\x06 \x01(\r\x12\x0e\n\x06max_6g\x18\x07 \x01(\r\x12\x13\n\x0boffset_6g_a\x18\x08 \x01(\r\x12\x13\n\x0boffset_6g_b\x18\t \x01(\r\x1a\xfa\x03\n\x05Gains\x12\x19\n\x11\x61nt_table_version\x18\x01 \x01(\r\x12\x15\n\rant_mode_ppag\x18\x02 \x01(\r\x12Y\n\x10\x61nt_gain_table_a\x18\x03 \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain\x12Y\n\x10\x61nt_gain_table_b\x18\x04 \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain\x1a\x88\x02\n\x0b\x41ntennaGain\x12\x13\n\x0b\x61nt_gain_2g\x18\x01 \x01(\r\x12\x15\n\rant_gain_5g_1\x18\x02 \x01(\r\x12\x15\n\rant_gain_5g_2\x18\x03 \x01(\r\x12\x15\n\rant_gain_5g_3\x18\x04 \x01(\r\x12\x15\n\rant_gain_5g_4\x18\x05 \x01(\r\x12\x15\n\rant_gain_5g_5\x18\x06 \x01(\r\x12\x15\n\rant_gain_6g_1\x18\x07 \x01(\r\x12\x15\n\rant_gain_6g_2\x18\x08 \x01(\r\x12\x15\n\rant_gain_6g_3\x18\t \x01(\r\x12\x15\n\rant_gain_6g_4\x18\n \x01(\r\x12\x15\n\rant_gain_6g_5\x18\x0b \x01(\r\x1a\x87\x04\n\x07\x41verage\x12\x17\n\x0fsar_avg_version\x18\x01 \x01(\r\x12\x15\n\rtas_selection\x18\x02 \x01(\r\x12\x15\n\rtas_list_size\x18\x03 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_1\x18\x04 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_2\x18\x05 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_3\x18\x06 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_4\x18\x07 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_5\x18\x08 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_6\x18\t \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_7\x18\n \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_8\x18\x0b \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_9\x18\x0c \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_10\x18\r \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_11\x18\x0e \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_12\x18\x0f \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_13\x18\x10 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_14\x18\x11 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_15\x18\x12 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_16\x18\x13 \x01(\r\x1a\x84\x03\n\x03\x44SM\x12#\n\x1b\x64isable_active_sdr_channels\x18\x02 \x01(\x03\x12!\n\x19support_indonesia_5g_band\x18\x03 \x01(\x03\x12\x1f\n\x17support_ultra_high_band\x18\x04 \x01(\x03\x12!\n\x19regulatory_configurations\x18\x05 \x01(\x03\x12\x1b\n\x13uart_configurations\x18\x06 \x01(\x03\x12\x17\n\x0f\x65nablement_11ax\x18\x07 \x01(\x03\x12\x0e\n\x06unii_4\x18\x08 \x01(\x03\x12l\n\x19\x65nablement_11be_countries\x18\t \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries\x1a=\n\x17\x45nablement11beCountries\x12\r\n\x05\x63hina\x18\x01 \x01(\x08\x12\x13\n\x0bsouth_korea\x18\x02 \x01(\x08\x1a\x81\x02\n\x0c\x42luetoothSAR\x12\x10\n\x08revision\x18\x01 \x01(\r\x12\'\n\x1fincreased_power_mode_limitation\x18\x02 \x01(\r\x12 \n\x18sar_lb_power_restriction\x18\x03 \x01(\r\x12\x15\n\rbr_modulation\x18\x04 \x01(\r\x12\x17\n\x0f\x65\x64r2_modulation\x18\x05 \x01(\r\x12\x17\n\x0f\x65\x64r3_modulation\x18\x06 \x01(\r\x12\x15\n\rle_modulation\x18\x07 \x01(\r\x12\x1a\n\x12le2_mhz_modulation\x18\x08 \x01(\r\x12\x18\n\x10le_lr_modulation\x18\t \x01(\r\x1a\xc6\x01\n\x04WBEM\x12\x10\n\x08revision\x18\x01 \x01(\r\x12m\n\x19\x65nablement_wbem_countries\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries\x1a=\n\x17\x45nablementWbemCountries\x12\r\n\x05japan\x18\x01 \x01(\x08\x12\x13\n\x0bsouth_korea\x18\x02 \x01(\x08\x1a\x13\n\x11LegacyIntelConfig\x1a\xa7\x08\n\tMtkConfig\x12_\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32>.chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain\x12\x63\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32>.chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain\x12Z\n\x0f\x66\x63\x63_power_table\x18\x03 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12Y\n\x0e\x65u_power_table\x18\x04 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12\\\n\x11other_power_table\x18\x05 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12K\n\x0c\x63ountry_list\x18\x06 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.MtkConfig.MtclTable\x1a\xee\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_2\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x04 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x05 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_3\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_4\x18\t \x01(\r\x12\x12\n\nlimit_6g_5\x18\n \x01(\r\x12\x12\n\nlimit_6g_6\x18\x0b \x01(\r\x1a\x86\x01\n\x15GeoTransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x10\n\x08limit_5g\x18\x02 \x01(\r\x12\x11\n\toffset_2g\x18\x03 \x01(\r\x12\x11\n\toffset_5g\x18\x04 \x01(\r\x12\x10\n\x08limit_6g\x18\x05 \x01(\r\x12\x11\n\toffset_6g\x18\x06 \x01(\r\x1ax\n\tMtclTable\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x14\n\x0csupport_6ghz\x18\x02 \x01(\r\x12\x14\n\x0c\x62itmask_6ghz\x18\x03 \x01(\x04\x12\x16\n\x0esupport_5p9ghz\x18\x04 \x01(\r\x12\x16\n\x0e\x62itmask_5p9ghz\x18\x05 \x01(\x04\x1a\xe6\x05\n\x0bRtw89Config\x12\x61\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw89Config.TransmitPowerChain\x12\x65\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw89Config.TransmitPowerChain\x12L\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x12K\n\toffset_eu\x18\x04 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x12N\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x1a\xda\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x05 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_3\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_4\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_5\x18\t \x01(\r\x12\x12\n\nlimit_6g_6\x18\n \x01(\r\x1a\x45\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\r\x12\x11\n\toffset_5g\x18\x02 \x01(\r\x12\x11\n\toffset_6g\x18\x03 \x01(\rB\r\n\x0bwifi_configB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
 )
 
 
@@ -347,8 +347,8 @@ _WIFICONFIG_INTELCONFIG_SARTABLE_TRANSMITPOWERCHAIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2872,
-  serialized_end=3110,
+  serialized_start=2874,
+  serialized_end=3112,
 )
 
 _WIFICONFIG_INTELCONFIG_SARTABLE = _descriptor.Descriptor(
@@ -434,8 +434,8 @@ _WIFICONFIG_INTELCONFIG_SARTABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1920,
-  serialized_end=3110,
+  serialized_start=1922,
+  serialized_end=3112,
 )
 
 _WIFICONFIG_INTELCONFIG_OFFSETS_GEOOFFSETS = _descriptor.Descriptor(
@@ -521,8 +521,8 @@ _WIFICONFIG_INTELCONFIG_OFFSETS_GEOOFFSETS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3406,
-  serialized_end=3592,
+  serialized_start=3408,
+  serialized_end=3594,
 )
 
 _WIFICONFIG_INTELCONFIG_OFFSETS = _descriptor.Descriptor(
@@ -573,8 +573,8 @@ _WIFICONFIG_INTELCONFIG_OFFSETS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3113,
-  serialized_end=3592,
+  serialized_start=3115,
+  serialized_end=3594,
 )
 
 _WIFICONFIG_INTELCONFIG_GAINS_ANTENNAGAIN = _descriptor.Descriptor(
@@ -674,8 +674,8 @@ _WIFICONFIG_INTELCONFIG_GAINS_ANTENNAGAIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3837,
-  serialized_end=4101,
+  serialized_start=3839,
+  serialized_end=4103,
 )
 
 _WIFICONFIG_INTELCONFIG_GAINS = _descriptor.Descriptor(
@@ -726,8 +726,8 @@ _WIFICONFIG_INTELCONFIG_GAINS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3595,
-  serialized_end=4101,
+  serialized_start=3597,
+  serialized_end=4103,
 )
 
 _WIFICONFIG_INTELCONFIG_AVERAGE = _descriptor.Descriptor(
@@ -883,8 +883,8 @@ _WIFICONFIG_INTELCONFIG_AVERAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4104,
-  serialized_end=4623,
+  serialized_start=4106,
+  serialized_end=4625,
 )
 
 _WIFICONFIG_INTELCONFIG_DSM_ENABLEMENT11BECOUNTRIES = _descriptor.Descriptor(
@@ -921,8 +921,8 @@ _WIFICONFIG_INTELCONFIG_DSM_ENABLEMENT11BECOUNTRIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4953,
-  serialized_end=5014,
+  serialized_start=4955,
+  serialized_end=5016,
 )
 
 _WIFICONFIG_INTELCONFIG_DSM = _descriptor.Descriptor(
@@ -1001,8 +1001,8 @@ _WIFICONFIG_INTELCONFIG_DSM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4626,
-  serialized_end=5014,
+  serialized_start=4628,
+  serialized_end=5016,
 )
 
 _WIFICONFIG_INTELCONFIG_BLUETOOTHSAR = _descriptor.Descriptor(
@@ -1088,8 +1088,8 @@ _WIFICONFIG_INTELCONFIG_BLUETOOTHSAR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5017,
-  serialized_end=5274,
+  serialized_start=5019,
+  serialized_end=5276,
 )
 
 _WIFICONFIG_INTELCONFIG_WBEM_ENABLEMENTWBEMCOUNTRIES = _descriptor.Descriptor(
@@ -1126,8 +1126,8 @@ _WIFICONFIG_INTELCONFIG_WBEM_ENABLEMENTWBEMCOUNTRIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5414,
-  serialized_end=5475,
+  serialized_start=5416,
+  serialized_end=5477,
 )
 
 _WIFICONFIG_INTELCONFIG_WBEM = _descriptor.Descriptor(
@@ -1164,8 +1164,8 @@ _WIFICONFIG_INTELCONFIG_WBEM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5277,
-  serialized_end=5475,
+  serialized_start=5279,
+  serialized_end=5477,
 )
 
 _WIFICONFIG_INTELCONFIG = _descriptor.Descriptor(
@@ -1212,7 +1212,7 @@ _WIFICONFIG_INTELCONFIG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='bsar', full_name='chromiumos.config.api.WifiConfig.IntelConfig.bsar', index=5,
+      name='bt_sar', full_name='chromiumos.config.api.WifiConfig.IntelConfig.bt_sar', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1238,7 +1238,7 @@ _WIFICONFIG_INTELCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1403,
-  serialized_end=5475,
+  serialized_end=5477,
 )
 
 _WIFICONFIG_LEGACYINTELCONFIG = _descriptor.Descriptor(
@@ -1261,8 +1261,8 @@ _WIFICONFIG_LEGACYINTELCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5477,
-  serialized_end=5496,
+  serialized_start=5479,
+  serialized_end=5498,
 )
 
 _WIFICONFIG_MTKCONFIG_TRANSMITPOWERCHAIN = _descriptor.Descriptor(
@@ -1362,8 +1362,8 @@ _WIFICONFIG_MTKCONFIG_TRANSMITPOWERCHAIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6065,
-  serialized_end=6303,
+  serialized_start=6067,
+  serialized_end=6305,
 )
 
 _WIFICONFIG_MTKCONFIG_GEOTRANSMITPOWERCHAIN = _descriptor.Descriptor(
@@ -1428,8 +1428,8 @@ _WIFICONFIG_MTKCONFIG_GEOTRANSMITPOWERCHAIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6306,
-  serialized_end=6440,
+  serialized_start=6308,
+  serialized_end=6442,
 )
 
 _WIFICONFIG_MTKCONFIG_MTCLTABLE = _descriptor.Descriptor(
@@ -1487,8 +1487,8 @@ _WIFICONFIG_MTKCONFIG_MTCLTABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6442,
-  serialized_end=6562,
+  serialized_start=6444,
+  serialized_end=6564,
 )
 
 _WIFICONFIG_MTKCONFIG = _descriptor.Descriptor(
@@ -1553,8 +1553,8 @@ _WIFICONFIG_MTKCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5499,
-  serialized_end=6562,
+  serialized_start=5501,
+  serialized_end=6564,
 )
 
 _WIFICONFIG_RTW89CONFIG_TRANSMITPOWERCHAIN = _descriptor.Descriptor(
@@ -1647,8 +1647,8 @@ _WIFICONFIG_RTW89CONFIG_TRANSMITPOWERCHAIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7018,
-  serialized_end=7236,
+  serialized_start=7020,
+  serialized_end=7238,
 )
 
 _WIFICONFIG_RTW89CONFIG_GEOOFFSETS = _descriptor.Descriptor(
@@ -1692,8 +1692,8 @@ _WIFICONFIG_RTW89CONFIG_GEOOFFSETS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7238,
-  serialized_end=7307,
+  serialized_start=7240,
+  serialized_end=7309,
 )
 
 _WIFICONFIG_RTW89CONFIG = _descriptor.Descriptor(
@@ -1751,8 +1751,8 @@ _WIFICONFIG_RTW89CONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6565,
-  serialized_end=7307,
+  serialized_start=6567,
+  serialized_end=7309,
 )
 
 _WIFICONFIG = _descriptor.Descriptor(
@@ -1823,7 +1823,7 @@ _WIFICONFIG = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=67,
-  serialized_end=7322,
+  serialized_end=7324,
 )
 
 _WIFICONFIG_ATH10KCONFIG_TRANSMITPOWERCHAIN.containing_type = _WIFICONFIG_ATH10KCONFIG
@@ -1870,7 +1870,7 @@ _WIFICONFIG_INTELCONFIG.fields_by_name['wgds_table'].message_type = _WIFICONFIG_
 _WIFICONFIG_INTELCONFIG.fields_by_name['ant_table'].message_type = _WIFICONFIG_INTELCONFIG_GAINS
 _WIFICONFIG_INTELCONFIG.fields_by_name['wtas_table'].message_type = _WIFICONFIG_INTELCONFIG_AVERAGE
 _WIFICONFIG_INTELCONFIG.fields_by_name['dsm'].message_type = _WIFICONFIG_INTELCONFIG_DSM
-_WIFICONFIG_INTELCONFIG.fields_by_name['bsar'].message_type = _WIFICONFIG_INTELCONFIG_BLUETOOTHSAR
+_WIFICONFIG_INTELCONFIG.fields_by_name['bt_sar'].message_type = _WIFICONFIG_INTELCONFIG_BLUETOOTHSAR
 _WIFICONFIG_INTELCONFIG.fields_by_name['wbem'].message_type = _WIFICONFIG_INTELCONFIG_WBEM
 _WIFICONFIG_INTELCONFIG.containing_type = _WIFICONFIG
 _WIFICONFIG_LEGACYINTELCONFIG.containing_type = _WIFICONFIG

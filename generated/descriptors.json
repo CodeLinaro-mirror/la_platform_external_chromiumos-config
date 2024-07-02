@@ -3162,9 +3162,9 @@
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM"
                 },
                 {
-                  "jsonName": "bsar",
+                  "jsonName": "btSar",
                   "label": "LABEL_OPTIONAL",
-                  "name": "bsar",
+                  "name": "bt_sar",
                   "number": 6,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR"
