@@ -5554,6 +5554,10 @@
                     {
                       "name": "AMPLIFIER_ALC3287",
                       "number": 20
+                    },
+                    {
+                      "name": "TAS2563",
+                      "number": 21
                     }
                   ]
                 },

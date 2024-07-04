@@ -381,6 +381,7 @@ message HardwareFeatures {
       AMPLIFIER_ALC256 = 18;
       AMPLIFIER_ALC3247 = 19;
       AMPLIFIER_ALC3287 = 20;
+      TAS2563 = 21;
     }
 
     enum AudioConfigStructure {
