@@ -549,16 +549,16 @@
 			},
 			"tests": [
 				{
-					"value": "tast.platform.BootPerf"
+					"value": "tast.platform.BootPerf.default_bounds"
 				},
 				{
-					"value": "tast.platform.BootPerf.ec_reboot"
+					"value": "tast.platform.BootPerf.ec_reboot_bounds"
 				},
 				{
-					"value": "tast.platform.BootPerf.from_g3"
+					"value": "tast.platform.BootPerf.from_g3_bounds"
 				},
 				{
-					"value": "tast.platform.BootPerf.from_s5"
+					"value": "tast.platform.BootPerf.from_s5_bounds"
 				},
 				{
 					"value": "tauto.power_UiResume.freeze"

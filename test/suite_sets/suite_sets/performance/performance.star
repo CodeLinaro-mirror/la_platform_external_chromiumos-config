@@ -37,10 +37,10 @@ def _performance_common():
         bug_component = shared_bug_component,
         criteria = "Performance tests common to FSI/Pre FSI testing.",
         tests = [
-            "tast.platform.BootPerf",
-            "tast.platform.BootPerf.ec_reboot",
-            "tast.platform.BootPerf.from_g3",
-            "tast.platform.BootPerf.from_s5",
+            "tast.platform.BootPerf.default_bounds",
+            "tast.platform.BootPerf.ec_reboot_bounds",
+            "tast.platform.BootPerf.from_g3_bounds",
+            "tast.platform.BootPerf.from_s5_bounds",
             "tauto.power_UiResume.freeze",
         ],
     )
