@@ -17930,6 +17930,23 @@
           ]
         },
         {
+          "name": "RPMType",
+          "value": [
+            {
+              "name": "RPM_TYPE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "RPM_TYPE_SENTRY",
+              "number": 1
+            },
+            {
+              "name": "RPM_TYPE_IP9850",
+              "number": 2
+            }
+          ]
+        },
+        {
           "name": "PeripheralState",
           "value": [
             {
@@ -18948,6 +18965,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "type",
+              "label": "LABEL_OPTIONAL",
+              "name": "type",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.RPMType"
             }
           ],
           "name": "RPM"

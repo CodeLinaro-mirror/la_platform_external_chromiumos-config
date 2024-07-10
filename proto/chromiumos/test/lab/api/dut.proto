@@ -305,6 +305,13 @@ message ExternalCamera {
   Type type = 1;
 }
 
+// Next Tag: 3
+enum RPMType {
+  RPM_TYPE_UNKNOWN = 0;
+  RPM_TYPE_SENTRY = 1;
+  RPM_TYPE_IP9850 = 2;
+}
+
 // Remote power management capability for the device.
 message RPM {
   bool present = 1;
@@ -317,6 +324,8 @@ message RPM {
   string power_unit_outlet = 4;
   // (Optional) Hydra hostname if the PDU access require a hydra.
   IpEndpoint hydra_hostname = 5;
+  // RPM type
+  RPMType type = 6;
 }
 
 // Servo control of the device.
