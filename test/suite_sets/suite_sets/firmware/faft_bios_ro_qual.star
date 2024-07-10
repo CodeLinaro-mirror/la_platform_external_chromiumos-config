@@ -132,6 +132,7 @@ def _faft_bios_ro_qual():
             "tast.firmware.RecToDevUntrusted",
             "tast.firmware.RollbackFirmware.dev",
             "tast.firmware.RollbackFirmware.normal",
+            "tast.firmware.SelfSignedBoot",
             "tast.firmware.ServoGBBFlags",
             "tast.firmware.TPMExtend.dev",
             "tast.firmware.TPMExtend.dev_recovery",

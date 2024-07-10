@@ -3839,6 +3839,9 @@
 					"value": "tast.kernel.PstoreConsoleRamoops"
 				},
 				{
+					"value": "tast.kernel.StackEntropy"
+				},
+				{
 					"value": "tast.lacros.Activate.keep_alive"
 				},
 				{
@@ -5784,6 +5787,9 @@
 				},
 				{
 					"value": "tast.firmware.RollbackFirmware.normal"
+				},
+				{
+					"value": "tast.firmware.SelfSignedBoot"
 				},
 				{
 					"value": "tast.firmware.ServoGBBFlags"
