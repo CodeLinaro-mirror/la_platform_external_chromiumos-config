@@ -174,7 +174,6 @@ def _faft_bios_ro_qual():
             "tauto.firmware_RecoveryCacheBootKeys.dev",
             "tauto.firmware_RollbackKernel",
             "tauto.firmware_RollbackKernel.dev",
-            "tauto.firmware_SelfSignedBoot",
             "tauto.firmware_UpdateFirmwareDataKeyVersion",
             "tauto.firmware_UpdateFirmwareVersion",
             "tauto.firmware_UpdateKernelDataKeyVersion",

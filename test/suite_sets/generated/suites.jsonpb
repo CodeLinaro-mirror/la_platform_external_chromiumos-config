@@ -4010,6 +4010,30 @@
 					"value": "tast.network.ConfigureServiceForUserProfile.normal"
 				},
 				{
+					"value": "tast.network.DHCPInitBound"
+				},
+				{
+					"value": "tast.network.DHCPInitBound.non_std_port"
+				},
+				{
+					"value": "tast.network.DHCPNonASCIIParam"
+				},
+				{
+					"value": "tast.network.DHCPRebootNAK"
+				},
+				{
+					"value": "tast.network.DHCPTwoServersConflict"
+				},
+				{
+					"value": "tast.network.DHCPTwoServersNAK.ack_first"
+				},
+				{
+					"value": "tast.network.DHCPTwoServersNAK.nak_first"
+				},
+				{
+					"value": "tast.network.DHCPWebProxy"
+				},
+				{
 					"value": "tast.network.DNSProxyQueries"
 				},
 				{
@@ -4029,6 +4053,12 @@
 				},
 				{
 					"value": "tast.network.HostToARCVPN"
+				},
+				{
+					"value": "tast.network.QosNetworkControl"
+				},
+				{
+					"value": "tast.network.QosWebRTC"
 				},
 				{
 					"value": "tast.network.ResolveLocalHostname"
@@ -4308,9 +4338,6 @@
 				},
 				{
 					"value": "tast.platform.PerfettoChromeProducer"
-				},
-				{
-					"value": "tast.platform.PerfettoChromeProducer.lacros"
 				},
 				{
 					"value": "tast.platform.PerfettoSystemTracing"
@@ -5915,9 +5942,6 @@
 					"value": "tauto.firmware_RollbackKernel.dev"
 				},
 				{
-					"value": "tauto.firmware_SelfSignedBoot"
-				},
-				{
 					"value": "tauto.firmware_UpdateFirmwareDataKeyVersion"
 				},
 				{
@@ -6350,9 +6374,6 @@
 				},
 				{
 					"value": "tauto.firmware_RollbackKernel.dev"
-				},
-				{
-					"value": "tauto.firmware_SelfSignedBoot"
 				},
 				{
 					"value": "tauto.firmware_UpdateFirmwareDataKeyVersion"
