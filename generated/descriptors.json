@@ -29734,6 +29734,13 @@
               "name": "bot_id",
               "number": 6,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "botConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "bot_config",
+              "number": 7,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "SwarmingInfo"

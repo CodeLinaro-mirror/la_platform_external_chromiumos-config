@@ -438,7 +438,7 @@ message DroneInfo {
 }
 
 // Captures the Swarming task related info.
-// NEXT TAG: 7
+// NEXT TAG: 8
 message SwarmingInfo {
   // The Swarming task id.
   // Example: "59f0e13fe7af0710"
@@ -465,6 +465,10 @@ message SwarmingInfo {
   // An ID to identify the bot that is running the tests.
   // Example: "cloudbots-prod-2-5c8s"
   string bot_id = 6;
+  
+  // The config file to run to decide where the bot is running tests at.
+  // Example: "skylab.py"
+  string bot_config = 7;
 }
 
 // Captures the Inventory related info.
