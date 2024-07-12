@@ -5051,6 +5051,18 @@
 					"value": "tast.system.Version"
 				},
 				{
+					"value": "tast.telemetryextension.PlatformAPIAvailableRoutines.lacros"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIEventsAudioJack.lacros"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIEventsKeyboardDiagnostic.lacros_no_keyboard"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformMessagePipe.lacros"
+				},
+				{
 					"value": "tast.terminal.Crosh"
 				},
 				{
