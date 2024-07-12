@@ -3769,6 +3769,14 @@
                       "number": 10,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold"
+                    },
+                    {
+                      "jsonName": "rfiMitigation",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "rfi_mitigation",
+                      "number": 11,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation"
                     }
                   ],
                   "name": "DSM",
@@ -3887,6 +3895,25 @@
                         }
                       ],
                       "name": "EnergyDetectionThreshold"
+                    },
+                    {
+                      "field": [
+                        {
+                          "jsonName": "dlvr",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "dlvr",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "ddr",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ddr",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "RFIMitigation"
                     }
                   ]
                 },

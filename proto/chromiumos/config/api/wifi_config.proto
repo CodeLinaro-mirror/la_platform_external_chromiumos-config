@@ -251,6 +251,13 @@ message WifiConfig {
 
       // Function 10
       EnergyDetectionThreshold energy_detection_threshold = 10;
+
+      message RFIMitigation {
+          bool dlvr = 1;
+          bool ddr = 2;
+      }
+
+      RFIMitigation rfi_mitigation = 11;
     }
     DSM dsm = 5;
 

@@ -899,6 +899,20 @@ def _create_intel_dsm_energy_detection_threshold(
         uhb_7g0 = uhb_7g0,
     )
 
+def _create_intel_dsm_rfi_mitigation(
+        dlvr = False,
+        ddr = False):
+    """Builds rfi_mitigation for Intel drivers.
+
+    Args:
+        dlvr: Enable DLVR mitigation
+        ddr: Enable DDR mitigation
+    """
+    return wf_pb.WifiConfig.IntelConfig.DSM.RFIMitigation(
+        dlvr = dlvr,
+        ddr = ddr,
+    )
+
 def _create_intel_dsm(
         disable_active_sdr_channels = -1,
         support_indonesia_5g_band = -1,
@@ -908,6 +922,7 @@ def _create_intel_dsm(
         enablement_11ax = -1,
         unii_4 = -1,
         enablement_11be_countries = None,
+        rfi_mitigation = None,
         energy_detection_threshold = None):
     """Builds a DSM for intel drivers.
 
@@ -921,6 +936,7 @@ def _create_intel_dsm(
         unii_4: Control enablement of UNII-4 over certificate modules.
         enablement_11be_countries: Control enablement of 11be on certificated modules.
         energy_detection_threshold: Control enablement of EDT optimization.
+        rfi_mitigation: Control of RFI mitigation
     """
     return wf_pb.WifiConfig.IntelConfig.DSM(
         disable_active_sdr_channels = disable_active_sdr_channels,
@@ -932,6 +948,7 @@ def _create_intel_dsm(
         unii_4 = unii_4,
         enablement_11be_countries = enablement_11be_countries,
         energy_detection_threshold = energy_detection_threshold,
+        rfi_mitigation = rfi_mitigation,
     )
 
 def _create_intel_sar_table(
@@ -1351,6 +1368,7 @@ sw_config = struct(
     create_intel_antgain_table = _create_intel_antgain_table,
     create_intel_dsm_enablement_11be_countries = _create_intel_dsm_enablement_11be_countries,
     create_intel_dsm_energy_detection_threshold = _create_intel_dsm_energy_detection_threshold,
+    create_intel_dsm_rfi_mitigation = _create_intel_dsm_rfi_mitigation,
     create_intel_dsm = _create_intel_dsm,
     create_intel_bt_sar = _create_intel_bt_sar,
     create_intel_wbem_country_enablement = _create_intel_wbem_country_enablement,
