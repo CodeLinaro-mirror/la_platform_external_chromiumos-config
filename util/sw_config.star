@@ -852,6 +852,53 @@ def _create_intel_dsm_enablement_11be_countries(
         south_korea = south_korea,
     )
 
+def _create_intel_dsm_energy_detection_threshold(
+        revision = 0,
+        etsi_hb = False,
+        fcc_uhb = False,
+        hb_5g2_3 = False,
+        hb_5g4 = False,
+        hb_5g6 = False,
+        hb_5g8_9 = False,
+        uhb_6g1 = False,
+        uhb_6g3 = False,
+        uhb_6g5 = False,
+        uhb_6g6 = False,
+        uhb_6g8 = False,
+        uhb_7g0 = False):
+    """Builds energy_detection_threshold parameters for Intel drivers.
+
+    Args:
+        revision: Revision of the EDT
+        etsi_hb: Enable EDT optimization for ETSI HB,
+        fcc_uhb: Enable EDT optimization for FCC UHB
+        hb_5g2_3: Enable EDT optimization for HB_5G2/3
+        hb_5g4: Enable EDT optimization for HB_5G4
+        hb_5g6: Enable EDT optimization for HB_5G6
+        hb_5g8_9: Enable EDT optimization for HB_5G8/9
+        uhb_6g1: Enable EDT optimization for UHB_6G1
+        uhb_6g3: Enable EDT optimization for UHB_6G3
+        uhb_6g5: Enable EDT optimization for UHB_6G5
+        uhb_6g6: Enable EDT optimization for UHB_6G6
+        uhb_6g8: Enable EDT optimization for UHB_6G8
+        uhb_7g0: Enable EDT optimization for UHB_7G0
+    """
+    return wf_pb.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold(
+        revision = revision,
+        etsi_hb = etsi_hb,
+        fcc_uhb = fcc_uhb,
+        hb_5g2_3 = hb_5g2_3,
+        hb_5g4 = hb_5g4,
+        hb_5g6 = hb_5g6,
+        hb_5g8_9 = hb_5g8_9,
+        uhb_6g1 = uhb_6g1,
+        uhb_6g3 = uhb_6g3,
+        uhb_6g5 = uhb_6g5,
+        uhb_6g6 = uhb_6g6,
+        uhb_6g8 = uhb_6g8,
+        uhb_7g0 = uhb_7g0,
+    )
+
 def _create_intel_dsm(
         disable_active_sdr_channels = -1,
         support_indonesia_5g_band = -1,
@@ -860,7 +907,8 @@ def _create_intel_dsm(
         uart_configurations = -1,
         enablement_11ax = -1,
         unii_4 = -1,
-        enablement_11be_countries = None):
+        enablement_11be_countries = None,
+        energy_detection_threshold = None):
     """Builds a DSM for intel drivers.
 
     Args:
@@ -872,6 +920,7 @@ def _create_intel_dsm(
         enablement_11ax: Control enablement of 11ax on certificated modules.
         unii_4: Control enablement of UNII-4 over certificate modules.
         enablement_11be_countries: Control enablement of 11be on certificated modules.
+        energy_detection_threshold: Control enablement of EDT optimization.
     """
     return wf_pb.WifiConfig.IntelConfig.DSM(
         disable_active_sdr_channels = disable_active_sdr_channels,
@@ -882,6 +931,7 @@ def _create_intel_dsm(
         enablement_11ax = enablement_11ax,
         unii_4 = unii_4,
         enablement_11be_countries = enablement_11be_countries,
+        energy_detection_threshold = energy_detection_threshold,
     )
 
 def _create_intel_sar_table(
@@ -1300,6 +1350,7 @@ sw_config = struct(
     create_intel_antenna_gain = _create_intel_antenna_gain,
     create_intel_antgain_table = _create_intel_antgain_table,
     create_intel_dsm_enablement_11be_countries = _create_intel_dsm_enablement_11be_countries,
+    create_intel_dsm_energy_detection_threshold = _create_intel_dsm_energy_detection_threshold,
     create_intel_dsm = _create_intel_dsm,
     create_intel_bt_sar = _create_intel_bt_sar,
     create_intel_wbem_country_enablement = _create_intel_wbem_country_enablement,

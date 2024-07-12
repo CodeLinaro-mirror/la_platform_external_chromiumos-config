@@ -980,6 +980,7 @@ _SC_WIFI7_INTEL = sc.create_intel_wifi(
         enablement_11ax = 6,
         unii_4 = 7,
         enablement_11be_countries = sc.create_intel_dsm_enablement_11be_countries(),
+        energy_detection_threshold = sc.create_intel_dsm_energy_detection_threshold(),
     ),
     bt_sar = sc.create_intel_bt_sar(revision = 1),
     wbem = sc.create_intel_wbem(revision = 0),

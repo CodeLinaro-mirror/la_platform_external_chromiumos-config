@@ -3761,6 +3761,14 @@
                       "number": 9,
                       "type": "TYPE_MESSAGE",
                       "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries"
+                    },
+                    {
+                      "jsonName": "energyDetectionThreshold",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "energy_detection_threshold",
+                      "number": 10,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold"
                     }
                   ],
                   "name": "DSM",
@@ -3783,6 +3791,102 @@
                         }
                       ],
                       "name": "Enablement11beCountries"
+                    },
+                    {
+                      "field": [
+                        {
+                          "jsonName": "revision",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "revision",
+                          "number": 1,
+                          "type": "TYPE_UINT32"
+                        },
+                        {
+                          "jsonName": "etsiHb",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "etsi_hb",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "fccUhb",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "fcc_uhb",
+                          "number": 3,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "hb5g23",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "hb_5g2_3",
+                          "number": 4,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "hb5g4",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "hb_5g4",
+                          "number": 5,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "hb5g6",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "hb_5g6",
+                          "number": 6,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "hb5g89",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "hb_5g8_9",
+                          "number": 7,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "uhb6g1",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "uhb_6g1",
+                          "number": 8,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "uhb6g3",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "uhb_6g3",
+                          "number": 9,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "uhb6g5",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "uhb_6g5",
+                          "number": 10,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "uhb6g6",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "uhb_6g6",
+                          "number": 11,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "uhb6g8",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "uhb_6g8",
+                          "number": 12,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "uhb7g0",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "uhb_7g0",
+                          "number": 13,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "EnergyDetectionThreshold"
                     }
                   ]
                 },

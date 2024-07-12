@@ -1360,6 +1360,7 @@
                     "disableActiveSdrChannels": "1",
                     "enablement11ax": "6",
                     "enablement11beCountries": {},
+                    "energyDetectionThreshold": {},
                     "regulatoryConfigurations": "4",
                     "supportIndonesia5gBand": "2",
                     "supportUltraHighBand": "3",

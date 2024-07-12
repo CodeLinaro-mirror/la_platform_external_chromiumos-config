@@ -232,6 +232,25 @@ message WifiConfig {
       }
       // Function 12
       Enablement11beCountries enablement_11be_countries = 9;
+
+      message EnergyDetectionThreshold {
+          uint32 revision = 1;
+          bool etsi_hb = 2;
+          bool fcc_uhb = 3;
+          bool hb_5g2_3 = 4;
+          bool hb_5g4 = 5;
+          bool hb_5g6 = 6;
+          bool hb_5g8_9 = 7;
+          bool uhb_6g1 = 8;
+          bool uhb_6g3 = 9;
+          bool uhb_6g5 = 10;
+          bool uhb_6g6 = 11;
+          bool uhb_6g8 = 12;
+          bool uhb_7g0 = 13;
+      }
+
+      // Function 10
+      EnergyDetectionThreshold energy_detection_threshold = 10;
     }
     DSM dsm = 5;
 
