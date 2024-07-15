@@ -465,8 +465,8 @@ message SwarmingInfo {
   // An ID to identify the bot that is running the tests.
   // Example: "cloudbots-prod-2-5c8s"
   string bot_id = 6;
-  
-  // The config file to run to decide where the bot is running tests at.
+
+  // The bot config file to run to decide where the bot is running tests at.
   // Example: "skylab.py"
   string bot_config = 7;
 }

@@ -1164,7 +1164,7 @@ type SwarmingInfo struct {
 	// An ID to identify the bot that is running the tests.
 	// Example: "cloudbots-prod-2-5c8s"
 	BotId string `protobuf:"bytes,6,opt,name=bot_id,json=botId,proto3" json:"bot_id,omitempty"`
-	// The config file to run to decide where the bot is running tests at.
+	// The bot config file to run to decide where the bot is running tests at.
 	// Example: "skylab.py"
 	BotConfig string `protobuf:"bytes,7,opt,name=bot_config,json=botConfig,proto3" json:"bot_config,omitempty"`
 }
