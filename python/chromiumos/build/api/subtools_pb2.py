@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z.go.chromium.org/chromiumos/config/go/build/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#chromiumos/build/api/subtools.proto\x12\x14\x63hromiumos.build.api\"\xef\x08\n\x0eSubtoolPackage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12=\n\x04type\x18\x02 \x01(\x0e\x32/.chromiumos.build.api.SubtoolPackage.ExportType\x12\x11\n\tmax_files\x18\x03 \x01(\x05\x12\x18\n\x0b\x63ipd_prefix\x18\x04 \x01(\tH\x00\x88\x01\x01\x12?\n\x05paths\x18\x05 \x03(\x0b\x32\x30.chromiumos.build.api.SubtoolPackage.PathMapping\x12\x43\n\x0eupload_trigger\x18\x06 \x01(\x0e\x32+.chromiumos.build.api.SubtoolPackage.Change\x12V\n\x12gcs_export_options\x18\x07 \x01(\x0b\x32\x35.chromiumos.build.api.SubtoolPackage.GcsExportOptionsH\x01\x88\x01\x01\x12\x46\n\x0csymlink_mode\x18\x08 \x01(\x0e\x32\x30.chromiumos.build.api.SubtoolPackage.SymlinkMode\x1a\xb3\x01\n\x0bPathMapping\x12\r\n\x05input\x18\x01 \x03(\t\x12\x11\n\x04\x64\x65st\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1f\n\x12strip_prefix_regex\x18\x03 \x01(\tH\x01\x88\x01\x01\x12\x1a\n\rebuild_filter\x18\x04 \x01(\tH\x02\x88\x01\x01\x12\x13\n\x0bopaque_data\x18\x05 \x01(\x08\x42\x07\n\x05_destB\x15\n\x13_strip_prefix_regexB\x10\n\x0e_ebuild_filter\x1a\xec\x01\n\x10GcsExportOptions\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x13\n\x06prefix\x18\x02 \x01(\tH\x00\x88\x01\x01\x12[\n\x0e\x61rchive_format\x18\x03 \x01(\x0e\x32\x43.chromiumos.build.api.SubtoolPackage.GcsExportOptions.ArchiveFormat\"K\n\rArchiveFormat\x12\x1e\n\x1a\x41RCHIVE_FORMAT_UNSPECIFIED\x10\x00\x12\x1a\n\x16\x41RCHIVE_FORMAT_TAR_ZST\x10\x01\x42\t\n\x07_prefix\"E\n\nExportType\x12\x16\n\x12\x45XPORT_UNSPECIFIED\x10\x00\x12\x0f\n\x0b\x45XPORT_CIPD\x10\x01\x12\x0e\n\nEXPORT_GCS\x10\x02\"[\n\x06\x43hange\x12\x16\n\x12\x43HANGE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x43HANGE_BUILD_ID_OR_REVISION\x10\x01\x12\x18\n\x14\x43HANGE_REVISION_ONLY\x10\x02\"M\n\x0bSymlinkMode\x12\x13\n\x0fSYMLINK_DEFAULT\x10\x00\x12\x13\n\x0fSYMLINK_RESOLVE\x10\x01\x12\x14\n\x10SYMLINK_PRESERVE\x10\x02\x42\x0e\n\x0c_cipd_prefixB\x15\n\x13_gcs_export_optionsB0Z.go.chromium.org/chromiumos/config/go/build/apib\x06proto3'
+  serialized_pb=b'\n#chromiumos/build/api/subtools.proto\x12\x14\x63hromiumos.build.api\"\xec\x07\n\x0eSubtoolPackage\x12\x0c\n\x04name\x18\x01 \x01(\t\x12=\n\x04type\x18\x02 \x01(\x0e\x32/.chromiumos.build.api.SubtoolPackage.ExportType\x12\x11\n\tmax_files\x18\x03 \x01(\x05\x12\x13\n\x0b\x63ipd_prefix\x18\x04 \x01(\t\x12?\n\x05paths\x18\x05 \x03(\x0b\x32\x30.chromiumos.build.api.SubtoolPackage.PathMapping\x12\x43\n\x0eupload_trigger\x18\x06 \x01(\x0e\x32+.chromiumos.build.api.SubtoolPackage.Change\x12Q\n\x12gcs_export_options\x18\x07 \x01(\x0b\x32\x35.chromiumos.build.api.SubtoolPackage.GcsExportOptions\x12\x46\n\x0csymlink_mode\x18\x08 \x01(\x0e\x32\x30.chromiumos.build.api.SubtoolPackage.SymlinkMode\x1ar\n\x0bPathMapping\x12\r\n\x05input\x18\x01 \x03(\t\x12\x0c\n\x04\x64\x65st\x18\x02 \x01(\t\x12\x1a\n\x12strip_prefix_regex\x18\x03 \x01(\t\x12\x15\n\rebuild_filter\x18\x04 \x01(\t\x12\x13\n\x0bopaque_data\x18\x05 \x01(\x08\x1a\xdc\x01\n\x10GcsExportOptions\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x0e\n\x06prefix\x18\x02 \x01(\t\x12[\n\x0e\x61rchive_format\x18\x03 \x01(\x0e\x32\x43.chromiumos.build.api.SubtoolPackage.GcsExportOptions.ArchiveFormat\"K\n\rArchiveFormat\x12\x1e\n\x1a\x41RCHIVE_FORMAT_UNSPECIFIED\x10\x00\x12\x1a\n\x16\x41RCHIVE_FORMAT_TAR_ZST\x10\x01\"E\n\nExportType\x12\x16\n\x12\x45XPORT_UNSPECIFIED\x10\x00\x12\x0f\n\x0b\x45XPORT_CIPD\x10\x01\x12\x0e\n\nEXPORT_GCS\x10\x02\"[\n\x06\x43hange\x12\x16\n\x12\x43HANGE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x43HANGE_BUILD_ID_OR_REVISION\x10\x01\x12\x18\n\x14\x43HANGE_REVISION_ONLY\x10\x02\"M\n\x0bSymlinkMode\x12\x13\n\x0fSYMLINK_DEFAULT\x10\x00\x12\x13\n\x0fSYMLINK_RESOLVE\x10\x01\x12\x14\n\x10SYMLINK_PRESERVE\x10\x02\x42\x30Z.go.chromium.org/chromiumos/config/go/build/apib\x06proto3'
 )
 
 
@@ -44,8 +44,8 @@ _SUBTOOLPACKAGE_GCSEXPORTOPTIONS_ARCHIVEFORMAT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=829,
-  serialized_end=904,
+  serialized_start=748,
+  serialized_end=823,
 )
 _sym_db.RegisterEnumDescriptor(_SUBTOOLPACKAGE_GCSEXPORTOPTIONS_ARCHIVEFORMAT)
 
@@ -74,8 +74,8 @@ _SUBTOOLPACKAGE_EXPORTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=917,
-  serialized_end=986,
+  serialized_start=825,
+  serialized_end=894,
 )
 _sym_db.RegisterEnumDescriptor(_SUBTOOLPACKAGE_EXPORTTYPE)
 
@@ -104,8 +104,8 @@ _SUBTOOLPACKAGE_CHANGE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=988,
-  serialized_end=1079,
+  serialized_start=896,
+  serialized_end=987,
 )
 _sym_db.RegisterEnumDescriptor(_SUBTOOLPACKAGE_CHANGE)
 
@@ -134,8 +134,8 @@ _SUBTOOLPACKAGE_SYMLINKMODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1081,
-  serialized_end=1158,
+  serialized_start=989,
+  serialized_end=1066,
 )
 _sym_db.RegisterEnumDescriptor(_SUBTOOLPACKAGE_SYMLINKMODE)
 
@@ -194,24 +194,9 @@ _SUBTOOLPACKAGE_PATHMAPPING = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
-    _descriptor.OneofDescriptor(
-      name='_dest', full_name='chromiumos.build.api.SubtoolPackage.PathMapping._dest',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-    _descriptor.OneofDescriptor(
-      name='_strip_prefix_regex', full_name='chromiumos.build.api.SubtoolPackage.PathMapping._strip_prefix_regex',
-      index=1, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-    _descriptor.OneofDescriptor(
-      name='_ebuild_filter', full_name='chromiumos.build.api.SubtoolPackage.PathMapping._ebuild_filter',
-      index=2, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
   ],
-  serialized_start=497,
-  serialized_end=676,
+  serialized_start=486,
+  serialized_end=600,
 )
 
 _SUBTOOLPACKAGE_GCSEXPORTOPTIONS = _descriptor.Descriptor(
@@ -255,14 +240,9 @@ _SUBTOOLPACKAGE_GCSEXPORTOPTIONS = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
-    _descriptor.OneofDescriptor(
-      name='_prefix', full_name='chromiumos.build.api.SubtoolPackage.GcsExportOptions._prefix',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
   ],
-  serialized_start=679,
-  serialized_end=915,
+  serialized_start=603,
+  serialized_end=823,
 )
 
 _SUBTOOLPACKAGE = _descriptor.Descriptor(
@@ -343,37 +323,15 @@ _SUBTOOLPACKAGE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
-    _descriptor.OneofDescriptor(
-      name='_cipd_prefix', full_name='chromiumos.build.api.SubtoolPackage._cipd_prefix',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-    _descriptor.OneofDescriptor(
-      name='_gcs_export_options', full_name='chromiumos.build.api.SubtoolPackage._gcs_export_options',
-      index=1, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
   ],
   serialized_start=62,
-  serialized_end=1197,
+  serialized_end=1066,
 )
 
 _SUBTOOLPACKAGE_PATHMAPPING.containing_type = _SUBTOOLPACKAGE
-_SUBTOOLPACKAGE_PATHMAPPING.oneofs_by_name['_dest'].fields.append(
-  _SUBTOOLPACKAGE_PATHMAPPING.fields_by_name['dest'])
-_SUBTOOLPACKAGE_PATHMAPPING.fields_by_name['dest'].containing_oneof = _SUBTOOLPACKAGE_PATHMAPPING.oneofs_by_name['_dest']
-_SUBTOOLPACKAGE_PATHMAPPING.oneofs_by_name['_strip_prefix_regex'].fields.append(
-  _SUBTOOLPACKAGE_PATHMAPPING.fields_by_name['strip_prefix_regex'])
-_SUBTOOLPACKAGE_PATHMAPPING.fields_by_name['strip_prefix_regex'].containing_oneof = _SUBTOOLPACKAGE_PATHMAPPING.oneofs_by_name['_strip_prefix_regex']
-_SUBTOOLPACKAGE_PATHMAPPING.oneofs_by_name['_ebuild_filter'].fields.append(
-  _SUBTOOLPACKAGE_PATHMAPPING.fields_by_name['ebuild_filter'])
-_SUBTOOLPACKAGE_PATHMAPPING.fields_by_name['ebuild_filter'].containing_oneof = _SUBTOOLPACKAGE_PATHMAPPING.oneofs_by_name['_ebuild_filter']
 _SUBTOOLPACKAGE_GCSEXPORTOPTIONS.fields_by_name['archive_format'].enum_type = _SUBTOOLPACKAGE_GCSEXPORTOPTIONS_ARCHIVEFORMAT
 _SUBTOOLPACKAGE_GCSEXPORTOPTIONS.containing_type = _SUBTOOLPACKAGE
 _SUBTOOLPACKAGE_GCSEXPORTOPTIONS_ARCHIVEFORMAT.containing_type = _SUBTOOLPACKAGE_GCSEXPORTOPTIONS
-_SUBTOOLPACKAGE_GCSEXPORTOPTIONS.oneofs_by_name['_prefix'].fields.append(
-  _SUBTOOLPACKAGE_GCSEXPORTOPTIONS.fields_by_name['prefix'])
-_SUBTOOLPACKAGE_GCSEXPORTOPTIONS.fields_by_name['prefix'].containing_oneof = _SUBTOOLPACKAGE_GCSEXPORTOPTIONS.oneofs_by_name['_prefix']
 _SUBTOOLPACKAGE.fields_by_name['type'].enum_type = _SUBTOOLPACKAGE_EXPORTTYPE
 _SUBTOOLPACKAGE.fields_by_name['paths'].message_type = _SUBTOOLPACKAGE_PATHMAPPING
 _SUBTOOLPACKAGE.fields_by_name['upload_trigger'].enum_type = _SUBTOOLPACKAGE_CHANGE
@@ -382,12 +340,6 @@ _SUBTOOLPACKAGE.fields_by_name['symlink_mode'].enum_type = _SUBTOOLPACKAGE_SYMLI
 _SUBTOOLPACKAGE_EXPORTTYPE.containing_type = _SUBTOOLPACKAGE
 _SUBTOOLPACKAGE_CHANGE.containing_type = _SUBTOOLPACKAGE
 _SUBTOOLPACKAGE_SYMLINKMODE.containing_type = _SUBTOOLPACKAGE
-_SUBTOOLPACKAGE.oneofs_by_name['_cipd_prefix'].fields.append(
-  _SUBTOOLPACKAGE.fields_by_name['cipd_prefix'])
-_SUBTOOLPACKAGE.fields_by_name['cipd_prefix'].containing_oneof = _SUBTOOLPACKAGE.oneofs_by_name['_cipd_prefix']
-_SUBTOOLPACKAGE.oneofs_by_name['_gcs_export_options'].fields.append(
-  _SUBTOOLPACKAGE.fields_by_name['gcs_export_options'])
-_SUBTOOLPACKAGE.fields_by_name['gcs_export_options'].containing_oneof = _SUBTOOLPACKAGE.oneofs_by_name['_gcs_export_options']
 DESCRIPTOR.message_types_by_name['SubtoolPackage'] = _SUBTOOLPACKAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

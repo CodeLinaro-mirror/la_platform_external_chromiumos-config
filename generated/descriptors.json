@@ -10523,8 +10523,6 @@
               "label": "LABEL_OPTIONAL",
               "name": "cipd_prefix",
               "number": 4,
-              "oneofIndex": 0,
-              "proto3Optional": true,
               "type": "TYPE_STRING"
             },
             {
@@ -10548,8 +10546,6 @@
               "label": "LABEL_OPTIONAL",
               "name": "gcs_export_options",
               "number": 7,
-              "oneofIndex": 1,
-              "proto3Optional": true,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.SubtoolPackage.GcsExportOptions"
             },
@@ -10578,8 +10574,6 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "dest",
                   "number": 2,
-                  "oneofIndex": 0,
-                  "proto3Optional": true,
                   "type": "TYPE_STRING"
                 },
                 {
@@ -10587,8 +10581,6 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "strip_prefix_regex",
                   "number": 3,
-                  "oneofIndex": 1,
-                  "proto3Optional": true,
                   "type": "TYPE_STRING"
                 },
                 {
@@ -10596,8 +10588,6 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "ebuild_filter",
                   "number": 4,
-                  "oneofIndex": 2,
-                  "proto3Optional": true,
                   "type": "TYPE_STRING"
                 },
                 {
@@ -10608,18 +10598,7 @@
                   "type": "TYPE_BOOL"
                 }
               ],
-              "name": "PathMapping",
-              "oneofDecl": [
-                {
-                  "name": "_dest"
-                },
-                {
-                  "name": "_strip_prefix_regex"
-                },
-                {
-                  "name": "_ebuild_filter"
-                }
-              ]
+              "name": "PathMapping"
             },
             {
               "enumType": [
@@ -10650,8 +10629,6 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "prefix",
                   "number": 2,
-                  "oneofIndex": 0,
-                  "proto3Optional": true,
                   "type": "TYPE_STRING"
                 },
                 {
@@ -10663,20 +10640,7 @@
                   "typeName": ".chromiumos.build.api.SubtoolPackage.GcsExportOptions.ArchiveFormat"
                 }
               ],
-              "name": "GcsExportOptions",
-              "oneofDecl": [
-                {
-                  "name": "_prefix"
-                }
-              ]
-            }
-          ],
-          "oneofDecl": [
-            {
-              "name": "_cipd_prefix"
-            },
-            {
-              "name": "_gcs_export_options"
+              "name": "GcsExportOptions"
             }
           ]
         }

@@ -27,7 +27,7 @@ message SubtoolPackage {
 
   // The cipd package prefix.  If not specified, defaults to
   // chromiumos/infra/tools/.
-  optional string cipd_prefix = 4;
+  string cipd_prefix = 4;
 
   // Input paths relative to the SDK root.  Pattern matching is permitted.
   // Any dynamically linked ELFs are automatically wrapped with lddtree.
@@ -40,16 +40,16 @@ message SubtoolPackage {
     repeated string input = 1;
 
     // The target path relative to the export destination.  Default: "/bin".
-    optional string dest = 2;
+    string dest = 2;
 
     // The file prefix to strip before copying to `dest`.  Default: "^.*/".
     // Export fails if this does not match all files matching `glob`.
-    optional string strip_prefix_regex = 3;
+    string strip_prefix_regex = 3;
 
     // A portage package (e.g., app-editors/vim) whose installed files are
     // matched against `glob`.  If unspecified, all files in the chroot are
     // candidates to match.
-    optional string ebuild_filter = 4;
+    string ebuild_filter = 4;
 
     // Whether to treat all entries in this PathMapping as "opaque" data files.
     // There will be no attempt to discover and bundle any dependencies.
@@ -82,7 +82,7 @@ message SubtoolPackage {
     // The bucket name to export to.
     string bucket = 1;
     // An optional subdirectory prefix to use in the bucket.
-    optional string prefix = 2;
+    string prefix = 2;
     // The archive format to use.  Right now only .tar.zst is supported.
     enum ArchiveFormat {
       ARCHIVE_FORMAT_UNSPECIFIED = 0;
@@ -90,7 +90,7 @@ message SubtoolPackage {
     }
     ArchiveFormat archive_format = 3;
   }
-  optional GcsExportOptions gcs_export_options = 7;
+  GcsExportOptions gcs_export_options = 7;
 
   enum SymlinkMode {
     // Default behavior (currently SYMLINK_RESOLVE, but subject to change).
