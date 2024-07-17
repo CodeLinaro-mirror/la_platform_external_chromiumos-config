@@ -6737,6 +6737,21 @@
 					"value": "tast.firmware.PDProtocol"
 				},
 				{
+					"value": "tast.firmware.PDVbusRequest.dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDVbusRequest.flipcc"
+				},
+				{
+					"value": "tast.firmware.PDVbusRequest.flipcc_dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDVbusRequest.normal"
+				},
+				{
+					"value": "tast.firmware.PDVbusRequest.shutdown"
+				},
+				{
 					"value": "tauto.firmware_PDResetHard"
 				},
 				{
