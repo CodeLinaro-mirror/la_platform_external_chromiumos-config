@@ -47,6 +47,7 @@ def _faft_ec_fw_qual():
             "tast.firmware.ECPDRole",
             "tast.firmware.ECPowerButton",
             "tast.firmware.ECPowerG3.power_button",
+            "tast.firmware.ECPowerG3.power_state_snk",
             "tast.firmware.ECPowerG3.shutdown",
             "tast.firmware.ECReboot",
             "tast.firmware.ECSharedMemory",

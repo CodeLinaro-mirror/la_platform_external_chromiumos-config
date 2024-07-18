@@ -3158,6 +3158,9 @@
 					"value": "tast.health.ProbeWifiInfo"
 				},
 				{
+					"value": "tast.health.RunCameraFrameAnalysisRoutine"
+				},
+				{
 					"value": "tast.health.RunFanRoutine"
 				},
 				{
@@ -5684,7 +5687,16 @@
 					"value": "tast.firmware.DevInsertUSBScreen.insert_usb"
 				},
 				{
+					"value": "tast.firmware.ECPowerG3.power_button_from_ro"
+				},
+				{
 					"value": "tast.firmware.ECPowerG3.power_state"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_state_rec_off"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_state_usb_plugged_in"
 				},
 				{
 					"value": "tast.firmware.Eventlog.dev"
@@ -6547,6 +6559,9 @@
 				},
 				{
 					"value": "tast.firmware.ECPowerG3.power_button"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_state_snk"
 				},
 				{
 					"value": "tast.firmware.ECPowerG3.shutdown"
