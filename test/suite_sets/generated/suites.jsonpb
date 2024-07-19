@@ -4013,6 +4013,9 @@
 					"value": "tast.network.ConfigureServiceForUserProfile.normal"
 				},
 				{
+					"value": "tast.network.DHCPClientOptions"
+				},
+				{
 					"value": "tast.network.DHCPInitBound"
 				},
 				{
@@ -4070,6 +4073,12 @@
 					"value": "tast.network.ResolveLocalHostnameInvalidAddress"
 				},
 				{
+					"value": "tast.network.RoutingConnectionPinning"
+				},
+				{
+					"value": "tast.network.RoutingDHCPClasslessStatic"
+				},
+				{
 					"value": "tast.network.RoutingFallthrough.ipv4_only_primary"
 				},
 				{
@@ -4082,10 +4091,16 @@
 					"value": "tast.network.RoutingIPv4Static"
 				},
 				{
+					"value": "tast.network.RoutingIPv4Static.apply_when_connecting"
+				},
+				{
 					"value": "tast.network.RoutingIPv4StaticWithDHCP"
 				},
 				{
 					"value": "tast.network.RoutingIPv6Only"
+				},
+				{
+					"value": "tast.network.RoutingLowPriority"
 				},
 				{
 					"value": "tast.network.RoutingNoIP"
@@ -5034,9 +5049,6 @@
 				},
 				{
 					"value": "tast.shelf.LaunchedApps.tablet_form_factor"
-				},
-				{
-					"value": "tast.shelf.LaunchedApps.tablet_form_factor_lacros"
 				},
 				{
 					"value": "tast.shimlessrma.SelectComponentsNoneNextCancel.critical"
@@ -5996,9 +6008,6 @@
 					"value": "tauto.hardware_TPMCheck"
 				},
 				{
-					"value": "tauto.platform_ServoPowerStateController.usb"
-				},
-				{
 					"value": "tauto.power_CPUFreq"
 				},
 				{
@@ -6428,9 +6437,6 @@
 				},
 				{
 					"value": "tauto.hardware_TPMCheck"
-				},
-				{
-					"value": "tauto.platform_ServoPowerStateController.usb"
 				},
 				{
 					"value": "tauto.power_CPUFreq"

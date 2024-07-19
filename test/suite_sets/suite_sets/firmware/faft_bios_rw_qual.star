@@ -148,7 +148,6 @@ def _faft_bios_rw_qual():
             "tauto.firmware_WriteProtect.dev",
             "tauto.firmware_WriteProtectFunc",
             "tauto.hardware_TPMCheck",
-            "tauto.platform_ServoPowerStateController.usb",
             "tauto.power_CPUFreq",
             "tauto.power_CPUIdle",
         ],
