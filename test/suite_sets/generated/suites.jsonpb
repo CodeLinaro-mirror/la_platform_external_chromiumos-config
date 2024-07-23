@@ -4052,6 +4052,15 @@
 					"value": "tast.network.DiagFailDNSResolution"
 				},
 				{
+					"value": "tast.network.EhideCommandSupport.scp"
+				},
+				{
+					"value": "tast.network.EhideCommandSupport.sftp"
+				},
+				{
+					"value": "tast.network.EhideNoEthernet"
+				},
+				{
 					"value": "tast.network.Ethernet8021X.peap_mschapv2"
 				},
 				{
