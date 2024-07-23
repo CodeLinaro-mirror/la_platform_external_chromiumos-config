@@ -145,7 +145,7 @@ message TestRun {
 }
 
 // Captures test case information associated with a test run.
-// NEXT TAG: 12
+// NEXT TAG: 13
 message TestCaseInfo {
   // Deprecated. Use the `test_case_metadata` field from
   // `chromiumos.test.api.TestCaseResult test_case_result` below instead.
@@ -188,6 +188,9 @@ message TestCaseInfo {
 
   // AVL component qualification info.
   AvlInfo avl_info = 11;
+
+  // GSC devboard info
+  GscInfo gsc_info = 12;
 }
 
 // Captures ChromeOS build information associated with a test run.
@@ -682,4 +685,67 @@ message AvlInfo {
   // AVL component type.
   // Example: "storage"
   string avl_component_type = 3;
+}
+
+// GSC devboard info associated with the test run.
+// See more details at go/gsc-devboard-rdb-tags
+// NEXT TAG: 15
+message GscInfo {
+    // The FW image flashed to the chip in the provision stage of the test.
+    // Example: "gs://chromeos-image-archive/firmware-ti50-postsubmit/R126-15855.0.0-97601-8750535029452566225"
+    string gsc_buildurl = 1;
+
+    // Serial number of the GSC chip (and CCD USB serial).
+    // Example: "1482101a-4c2ac261"
+    string gsc_ccd_serial = 2;
+
+    // Version number of the devboardservice container.
+    // Example: "1.30"
+    string gsc_devboardservice_version = 3;
+
+    // Serial number of the hyperdebug HW (and USB serial).
+    // Example: "206636793452"
+    string gsc_hyperdebug_serial = 4;
+
+    // Version number of the hyperdebug firmware.
+    // Example: "hyperdebug_20230517_01"
+    string gsc_hyperdebug_version = 5;
+
+    // Version number of the opentitantool.
+    string gsc_opentitantool_version = 6;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Example: "0.0.53"
+    string gsc_ro_version = 7;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Extract from version string ti50_common_tot:v0.0.1235-a1605766.
+    // Example: "tot"
+    string gsc_rw_branch = 8;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Extract from version string ti50_common_tot:v0.0.1235-a1605766.
+    // Example: "1235"
+    string gsc_rw_rev = 9;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Extract from version string ti50_common_tot:v0.0.1235-a1605766
+    // Example: "a1605766"
+    string gsc_rw_sha = 10;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Example: "0.26.81"
+    string gsc_rw_version = 11;
+
+    // Version number for the tast tests.
+    // Example: "R125-15837.0.0"
+    string gsc_tast_version = 12;
+
+    // Serial number of the GSC board.
+    // Example: "123882-0008"
+    string gsc_testbed_serial = 13;
+
+    // From devboardservice Query grpc.
+    // Example: "gsc_dt_shield"
+    string gsc_testbed_type = 14;
 }

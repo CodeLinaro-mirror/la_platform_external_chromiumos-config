@@ -29159,6 +29159,14 @@
               "number": 11,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.AvlInfo"
+            },
+            {
+              "jsonName": "gscInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_info",
+              "number": 12,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.GscInfo"
             }
           ],
           "name": "TestCaseInfo"
@@ -30267,6 +30275,109 @@
             }
           ],
           "name": "AvlInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "gscBuildurl",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_buildurl",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscCcdSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_ccd_serial",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscDevboardserviceVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_devboardservice_version",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscHyperdebugSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_hyperdebug_serial",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscHyperdebugVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_hyperdebug_version",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscOpentitantoolVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_opentitantool_version",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscRoVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_ro_version",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscRwBranch",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_rw_branch",
+              "number": 8,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscRwRev",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_rw_rev",
+              "number": 9,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscRwSha",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_rw_sha",
+              "number": 10,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscRwVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_rw_version",
+              "number": 11,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscTastVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_tast_version",
+              "number": 12,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscTestbedSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_testbed_serial",
+              "number": 13,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "gscTestbedType",
+              "label": "LABEL_OPTIONAL",
+              "name": "gsc_testbed_type",
+              "number": 14,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GscInfo"
         }
       ],
       "name": "chromiumos/test/artifact/test_result.proto",
