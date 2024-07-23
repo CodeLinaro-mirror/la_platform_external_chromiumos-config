@@ -870,6 +870,19 @@ message HardwareFeatures {
     // The extracted EC build config options
     // E.g. CONFIG_DEBUG_ASSERT, CONFIG_PLATFORM_EC_BATTERY
     map<string, Present> build_config = 11;
+
+    // Maximal ODR (Online data rate) of the MEMS sensors
+    // (accelerometer/gyroscope). Usually EC can handle ODR up to ~200Hz. On
+    // some EC, we need to reduce to 100Hz otherwise the sensor task is not
+    // scheduled fast enough. It can lead to failing the CTS tests or worse EC
+    // crashes (watchdog timer) if the idle stack is never scheduled. Normally,
+    // the maximal ODR is set in the firmware, we find the right maximal ODR
+    // during bring up. However, if we have to reduce the ODR between firmware
+    // qual we can do it here: 0 (default) means the EC default is used by
+    // iioservice to set the maximal sensor frequency. If |max_sensor_odr_mhz|
+    // is greater than 0, iioservice will never set a maximal frequency above
+    // it.
+    google.protobuf.UInt32Value max_sensor_odr_mhz = 12;
   }
   EmbeddedController embedded_controller = 24;
 

@@ -1152,6 +1152,10 @@
               "type": "CELLULAR_LTE",
               "wedgeTimeoutInMs": 210000
             },
+            "embeddedController": {
+              "ecType": "EC_CHROME",
+              "present": "PRESENT"
+            },
             "formFactor": {
               "formFactor": "CLAMSHELL",
               "recoveryInput": "KEYBOARD"

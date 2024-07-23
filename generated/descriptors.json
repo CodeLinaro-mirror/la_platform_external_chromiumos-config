@@ -7861,6 +7861,14 @@
                   "number": 11,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.EmbeddedController.BuildConfigEntry"
+                },
+                {
+                  "jsonName": "maxSensorOdrMhz",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "max_sensor_odr_mhz",
+                  "number": 12,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.UInt32Value"
                 }
               ],
               "name": "EmbeddedController",

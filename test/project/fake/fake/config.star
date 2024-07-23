@@ -1091,6 +1091,10 @@ _TWO_FAN = hw_topo.create_fan(
     fan_count = 2,
 )
 
+_EC_LIMITED = hw_topo.create_ec(
+    max_sensor_odr_mhz = 50000,
+)
+
 def create_hardware_topology(
         screen = None,
         form_factor = None,
@@ -1330,6 +1334,7 @@ design.append_configs(
         fingerprint = _FINGERPRINT,
         form_factor = _FORM_FACTOR_CONVERTIBLE,
         cellular_board = _LTE_BOARD,
+        ec = _EC_LIMITED,
         proximity_sensor = hw_topo.create_proximity_sensor(
             "PROXIMITY_SENSOR",
             "Default proximity_sensor",

@@ -277,6 +277,10 @@
               "dgpuType": 1,
               "present": 1
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "fan": {
               "fanCount": 0
             },
@@ -1027,6 +1031,10 @@
               "present": 1,
               "type": 1
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "fan": {
               "fanCount": 2
             },
@@ -1676,6 +1684,10 @@
               "present": 1,
               "type": 1
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 2
@@ -2289,6 +2301,11 @@
               "type": 1,
               "wedgeTimeoutInMs": 120000
             },
+            "embeddedController": {
+              "ecType": 1,
+              "maxSensorOdrMhz": 50000,
+              "present": 1
+            },
             "fingerprint": {
               "board": "fake_fingerprint_board",
               "fingerprintDiag": {
@@ -2644,6 +2661,7 @@
               "hardwareFeature": {
                 "embeddedController": {
                   "ecType": 1,
+                  "maxSensorOdrMhz": 50000,
                   "present": 1
                 }
               },
@@ -3073,6 +3091,10 @@
               "i2cPath": "1-0023",
               "productId": 1000,
               "vendorId": 6353
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
             },
             "formFactor": {
               "formFactor": 3,
@@ -3755,6 +3777,10 @@
               "productId": 1000,
               "usbPath": "1-1.1",
               "vendorId": 6353
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
             },
             "formFactor": {
               "formFactor": 3,
@@ -4455,6 +4481,10 @@
               "usbPath": "1-1.1",
               "vendorId": 6353
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 3,
               "recoveryInput": 1
@@ -5085,6 +5115,10 @@
             "cellular": {
               "present": 2
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 7,
               "recoveryInput": 1
@@ -5698,6 +5732,10 @@
             },
             "cellular": {
               "present": 2
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
             },
             "formFactor": {
               "formFactor": 7,
@@ -9089,6 +9127,10 @@
               "type": 1,
               "wedgeTimeoutInMs": 210000
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 1
@@ -10251,6 +10293,10 @@
               "type": 1,
               "wedgeTimeoutInMs": 180000
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 1
@@ -10806,6 +10852,10 @@
               "present": 1,
               "type": 1
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 5,
               "recoveryInput": 3
@@ -11319,6 +11369,10 @@
             "cellular": {
               "present": 2
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "detachableUi": true,
               "formFactor": 4,
@@ -11814,6 +11868,10 @@
             },
             "cellular": {
               "present": 2
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
             },
             "formFactor": {
               "detachableUi": true,

@@ -917,7 +917,7 @@ def _create_sensor(
 
 def _create_fan(id, description, fw_configs = [], fan_count = None):
     """Builds a Topology proto for Fan."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -1511,7 +1511,7 @@ def _create_volume_button(region, edge, position, id = None, description = None)
         ),
     )
 
-def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None):
+def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None, max_sensor_odr_mhz = None):
     """Builds a Topology proto for an embedded controller.
 
     Args:
@@ -1519,10 +1519,13 @@ def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None):
         ec_type: An EmbeddedControllerType enum
         id: A string identifier for the Topology. If not passed, a default is
             provided.
+        max_sensor_odr_mhz: Maximal Sensor ODR override.
     """
     hw_features = _HW_FEAT()
     hw_features.embedded_controller.ec_type = ec_type
     hw_features.embedded_controller.present = _bool_to_present(present)
+    if max_sensor_odr_mhz != None:
+        hw_features.embedded_controller.max_sensor_odr_mhz.value = max_sensor_odr_mhz
 
     return topo_pb.Topology(
         id = id or "ec",
@@ -2202,10 +2205,13 @@ def _convert_to_hw_features(hardware_topology):
     if copy.dgpu.hardware_feature.dgpu_config != _HW_FEAT.Dgpu():
         result.dgpu_config = copy.dgpu.hardware_feature.dgpu_config
 
-    # Handle all possible hdmi hardware features attributes
+    # Handle all possible fan hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.fan.hardware_feature.fw_config)
     if copy.fan.hardware_feature.fan != _HW_FEAT.Fan():
         result.fan = copy.fan.hardware_feature.fan
+
+    if copy.ec.hardware_feature.embedded_controller != _HW_FEAT.EmbeddedController():
+        result.embedded_controller = copy.ec.hardware_feature.embedded_controller
 
     return result
 
