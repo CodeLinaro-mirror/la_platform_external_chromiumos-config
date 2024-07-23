@@ -61,13 +61,14 @@ message RunActivityRequest {
   Request request = 1;
 }
 
-// NEXT TAG: 5
+// NEXT TAG: 6
 message Request {
   oneof request {
     GetFWInfoRequest get_fw_info_request = 1;
     GetFilesFromDUTRequest get_files_from_dut_request = 2;
     GetGfxInfoRequest get_gfx_info_request = 3;
     GetAvlInfoRequest get_avl_info_request = 4;
+    GetGscInfoRequest get_gsc_info_request = 5;
   }
 }
 
@@ -89,10 +90,10 @@ message GetFilesFromDUTRequest{
   repeated string files = 1;
 }
 
-// GetGfxInfo captures graphics/hardware_probe values for reporting
+// GetGfxInfo captures graphics/hardware_probe values for reporting.
 message GetGfxInfoRequest {}
 
-// GetAvlInfoRequest captures AVL qualification values for reporting
+// GetAvlInfoRequest captures AVL qualification values for reporting.
 // NEXT TAG: 2
 message GetAvlInfoRequest {
     // Mapping from test name to its own avl info JSON file location.
@@ -101,14 +102,24 @@ message GetAvlInfoRequest {
     map<string, string> avl_files = 1;
 }
 
+// GetGscInfoRequest captures GSC devboard tags for reporting.
+// NEXT TAG: 2
+message GetGscInfoRequest {
+    // Mapping from test name to its own GSC devboard tags file location.
+    // Location format:
+    // "<local_output_dir>/cros-test/results/tast/tests/<test_name>/result_tags.json"
+    map<string, string> gsc_files = 1;
+}
+
 // Specific response to be matched with the request.
-// NEXT TAG: 5
+// NEXT TAG: 6
 message RunActivityResponse {
   oneof response {
     GetFWInfoResponse get_fw_info_response = 1;
     GetFilesFromDUTResponse get_files_from_dut_response = 2;
     GetGfxInfoResponse get_gfx_info_response = 3;
     GetAvlInfoResponse get_avl_info_response = 4;
+    GetGscInfoResponse get_gsc_info_response = 5;
   }
 }
 
@@ -138,7 +149,8 @@ message GetGfxInfoResponse {
   map<string, string> gfx_labels = 1;
 }
 
-// GetAvlInfoResponse contents of the reporting section of AVL qualification info
+// GetAvlInfoResponse contents of the reporting section of AVL qualification
+// info.
 // NEXT TAG: 2
 message GetAvlInfoResponse {
     // Mapping from test name to its avl info.
@@ -151,4 +163,13 @@ message AvlInfo {
     string avl_part_model = 1;
     string avl_part_firmware = 2;
     string avl_component_type = 3;
+}
+
+// GetGscInfoResponse contents of the reporting section of GSC devboard info.
+// NEXT TAG: 2
+message GetGscInfoResponse {
+    // Mapping from test name to its GSC devboard info:
+    // "chromiumos.test.artifact.GscInfo". Note that the GscInfo proto cannot
+    // be imported directly due to cyclic import issue.
+    map<string, google.protobuf.Any> gsc_infos = 1;
 }

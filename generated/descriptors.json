@@ -22644,6 +22644,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetAvlInfoRequest"
+            },
+            {
+              "jsonName": "getGscInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_gsc_info_request",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetGscInfoRequest"
             }
           ],
           "name": "Request",
@@ -22745,6 +22754,43 @@
         {
           "field": [
             {
+              "jsonName": "gscFiles",
+              "label": "LABEL_REPEATED",
+              "name": "gsc_files",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetGscInfoRequest.GscFilesEntry"
+            }
+          ],
+          "name": "GetGscInfoRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "GscFilesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
               "jsonName": "getFwInfoResponse",
               "label": "LABEL_OPTIONAL",
               "name": "get_fw_info_response",
@@ -22779,6 +22825,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetAvlInfoResponse"
+            },
+            {
+              "jsonName": "getGscInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_gsc_info_response",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetGscInfoResponse"
             }
           ],
           "name": "RunActivityResponse",
@@ -22960,6 +23015,44 @@
             }
           ],
           "name": "AvlInfo"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "gscInfos",
+              "label": "LABEL_REPEATED",
+              "name": "gsc_infos",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetGscInfoResponse.GscInfosEntry"
+            }
+          ],
+          "name": "GetGscInfoResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.Any"
+                }
+              ],
+              "name": "GscInfosEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",
