@@ -5644,6 +5644,14 @@
                   "number": 12,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "lateCseSync",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "late_cse_sync",
+                  "number": 13,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "FirmwareConfiguration",

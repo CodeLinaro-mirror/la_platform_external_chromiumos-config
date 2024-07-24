@@ -307,6 +307,10 @@ message HardwareFeatures {
 
     // The AP firmware has the CONFIG_FW_SPLASH_SCREEN feature enabled.
     Present fw_splash_screen = 12;
+
+    // The CSE sync is late at payload with CONFIG_SOC_INTEL_CSE_LITE_SYNC_BY_PAYLOAD
+    // feature enabled.
+    Present late_cse_sync = 13;
   }
 
   // Audio properties of system
