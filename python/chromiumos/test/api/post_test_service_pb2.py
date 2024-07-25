@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+chromiumos/test/api/post_test_service.proto\x12\x13\x63hromiumos.test.api\x1a)chromiumos/test/lab/api/ip_endpoint.proto\x1a\x19google/protobuf/any.proto\"y\n\x16PostTestStartUpRequest\x12\x37\n\ndut_server\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\"\xcb\x01\n\x17PostTestStartUpResponse\x12\x43\n\x06status\x18\x01 \x01(\x0e\x32\x33.chromiumos.test.api.PostTestStartUpResponse.Status\"k\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x02\x12\x19\n\x15STATUS_STARTUP_FAILED\x10\x03\"C\n\x12RunActivityRequest\x12-\n\x07request\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.api.Request\"\x85\x03\n\x07Request\x12\x44\n\x13get_fw_info_request\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.GetFWInfoRequestH\x00\x12Q\n\x1aget_files_from_dut_request\x18\x02 \x01(\x0b\x32+.chromiumos.test.api.GetFilesFromDUTRequestH\x00\x12\x46\n\x14get_gfx_info_request\x18\x03 \x01(\x0b\x32&.chromiumos.test.api.GetGfxInfoRequestH\x00\x12\x46\n\x14get_avl_info_request\x18\x04 \x01(\x0b\x32&.chromiumos.test.api.GetAvlInfoRequestH\x00\x12\x46\n\x14get_gsc_info_request\x18\x05 \x01(\x0b\x32&.chromiumos.test.api.GetGscInfoRequestH\x00\x42\t\n\x07request\"\x7f\n\x14RunActivitiesRequest\x12.\n\x08requests\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.Request\x12\x37\n\ndut_server\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"T\n\x15RunActivitiesResponse\x12;\n\tresponses\x18\x01 \x03(\x0b\x32(.chromiumos.test.api.RunActivityResponse\"\x12\n\x10GetFWInfoRequest\"\'\n\x16GetFilesFromDUTRequest\x12\r\n\x05\x66iles\x18\x01 \x03(\t\"\x13\n\x11GetGfxInfoRequest\"\x8d\x01\n\x11GetAvlInfoRequest\x12G\n\tavl_files\x18\x01 \x03(\x0b\x32\x34.chromiumos.test.api.GetAvlInfoRequest.AvlFilesEntry\x1a/\n\rAvlFilesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8d\x01\n\x11GetGscInfoRequest\x12G\n\tgsc_files\x18\x01 \x03(\x0b\x32\x34.chromiumos.test.api.GetGscInfoRequest.GscFilesEntry\x1a/\n\rGscFilesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x9c\x03\n\x13RunActivityResponse\x12\x46\n\x14get_fw_info_response\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.GetFWInfoResponseH\x00\x12S\n\x1bget_files_from_dut_response\x18\x02 \x01(\x0b\x32,.chromiumos.test.api.GetFilesFromDUTResponseH\x00\x12H\n\x15get_gfx_info_response\x18\x03 \x01(\x0b\x32\'.chromiumos.test.api.GetGfxInfoResponseH\x00\x12H\n\x15get_avl_info_response\x18\x04 \x01(\x0b\x32\'.chromiumos.test.api.GetAvlInfoResponseH\x00\x12H\n\x15get_gsc_info_response\x18\x05 \x01(\x0b\x32\'.chromiumos.test.api.GetGscInfoResponseH\x00\x42\n\n\x08response\"m\n\x11GetFWInfoResponse\x12\x0f\n\x07ro_fwid\x18\x01 \x01(\t\x12\x0f\n\x07rw_fwid\x18\x02 \x01(\t\x12\x16\n\x0ekernel_version\x18\x03 \x01(\t\x12\x0e\n\x06gsc_ro\x18\x04 \x01(\t\x12\x0e\n\x06gsc_rw\x18\x05 \x01(\t\"I\n\x17GetFilesFromDUTResponse\x12.\n\x08\x66ile_map\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.FileMap\"3\n\x07\x46ileMap\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x15\n\rfile_location\x18\x02 \x01(\t\"\x92\x01\n\x12GetGfxInfoResponse\x12J\n\ngfx_labels\x18\x01 \x03(\x0b\x32\x36.chromiumos.test.api.GetGfxInfoResponse.GfxLabelsEntry\x1a\x30\n\x0eGfxLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xad\x01\n\x12GetAvlInfoResponse\x12H\n\tavl_infos\x18\x01 \x03(\x0b\x32\x35.chromiumos.test.api.GetAvlInfoResponse.AvlInfosEntry\x1aM\n\rAvlInfosEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12+\n\x05value\x18\x02 \x01(\x0b\x32\x1c.chromiumos.test.api.AvlInfo:\x02\x38\x01\"X\n\x07\x41vlInfo\x12\x16\n\x0e\x61vl_part_model\x18\x01 \x01(\t\x12\x19\n\x11\x61vl_part_firmware\x18\x02 \x01(\t\x12\x1a\n\x12\x61vl_component_type\x18\x03 \x01(\t\"\xa5\x01\n\x12GetGscInfoResponse\x12H\n\tgsc_infos\x18\x01 \x03(\x0b\x32\x35.chromiumos.test.api.GetGscInfoResponse.GscInfosEntry\x1a\x45\n\rGscInfosEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any:\x02\x38\x01\x32\xc1\x02\n\x0fPostTestService\x12\x64\n\x07StartUp\x12+.chromiumos.test.api.PostTestStartUpRequest\x1a,.chromiumos.test.api.PostTestStartUpResponse\x12`\n\x0bRunActivity\x12\'.chromiumos.test.api.RunActivityRequest\x1a(.chromiumos.test.api.RunActivityResponse\x12\x66\n\rRunActivities\x12).chromiumos.test.api.RunActivitiesRequest\x1a*.chromiumos.test.api.RunActivitiesResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n+chromiumos/test/api/post_test_service.proto\x12\x13\x63hromiumos.test.api\x1a)chromiumos/test/lab/api/ip_endpoint.proto\x1a\x19google/protobuf/any.proto\"y\n\x16PostTestStartUpRequest\x12\x37\n\ndut_server\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\"\xcb\x01\n\x17PostTestStartUpResponse\x12\x43\n\x06status\x18\x01 \x01(\x0e\x32\x33.chromiumos.test.api.PostTestStartUpResponse.Status\"k\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x02\x12\x19\n\x15STATUS_STARTUP_FAILED\x10\x03\"C\n\x12RunActivityRequest\x12-\n\x07request\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.api.Request\"\x85\x03\n\x07Request\x12\x44\n\x13get_fw_info_request\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.GetFWInfoRequestH\x00\x12Q\n\x1aget_files_from_dut_request\x18\x02 \x01(\x0b\x32+.chromiumos.test.api.GetFilesFromDUTRequestH\x00\x12\x46\n\x14get_gfx_info_request\x18\x03 \x01(\x0b\x32&.chromiumos.test.api.GetGfxInfoRequestH\x00\x12\x46\n\x14get_avl_info_request\x18\x04 \x01(\x0b\x32&.chromiumos.test.api.GetAvlInfoRequestH\x00\x12\x46\n\x14get_gsc_info_request\x18\x05 \x01(\x0b\x32&.chromiumos.test.api.GetGscInfoRequestH\x00\x42\t\n\x07request\"\xaa\x01\n\x14RunActivitiesRequest\x12.\n\x08requests\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.Request\x12\x37\n\ndut_server\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12)\n\x0btest_result\x18\x03 \x01(\x0b\x32\x14.google.protobuf.Any\"T\n\x15RunActivitiesResponse\x12;\n\tresponses\x18\x01 \x03(\x0b\x32(.chromiumos.test.api.RunActivityResponse\"\x12\n\x10GetFWInfoRequest\"\'\n\x16GetFilesFromDUTRequest\x12\r\n\x05\x66iles\x18\x01 \x03(\t\"\x13\n\x11GetGfxInfoRequest\"\x91\x01\n\x11GetAvlInfoRequest\x12K\n\tavl_files\x18\x01 \x03(\x0b\x32\x34.chromiumos.test.api.GetAvlInfoRequest.AvlFilesEntryB\x02\x18\x01\x1a/\n\rAvlFilesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x91\x01\n\x11GetGscInfoRequest\x12K\n\tgsc_files\x18\x01 \x03(\x0b\x32\x34.chromiumos.test.api.GetGscInfoRequest.GscFilesEntryB\x02\x18\x01\x1a/\n\rGscFilesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x9c\x03\n\x13RunActivityResponse\x12\x46\n\x14get_fw_info_response\x18\x01 \x01(\x0b\x32&.chromiumos.test.api.GetFWInfoResponseH\x00\x12S\n\x1bget_files_from_dut_response\x18\x02 \x01(\x0b\x32,.chromiumos.test.api.GetFilesFromDUTResponseH\x00\x12H\n\x15get_gfx_info_response\x18\x03 \x01(\x0b\x32\'.chromiumos.test.api.GetGfxInfoResponseH\x00\x12H\n\x15get_avl_info_response\x18\x04 \x01(\x0b\x32\'.chromiumos.test.api.GetAvlInfoResponseH\x00\x12H\n\x15get_gsc_info_response\x18\x05 \x01(\x0b\x32\'.chromiumos.test.api.GetGscInfoResponseH\x00\x42\n\n\x08response\"m\n\x11GetFWInfoResponse\x12\x0f\n\x07ro_fwid\x18\x01 \x01(\t\x12\x0f\n\x07rw_fwid\x18\x02 \x01(\t\x12\x16\n\x0ekernel_version\x18\x03 \x01(\t\x12\x0e\n\x06gsc_ro\x18\x04 \x01(\t\x12\x0e\n\x06gsc_rw\x18\x05 \x01(\t\"I\n\x17GetFilesFromDUTResponse\x12.\n\x08\x66ile_map\x18\x01 \x03(\x0b\x32\x1c.chromiumos.test.api.FileMap\"3\n\x07\x46ileMap\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x15\n\rfile_location\x18\x02 \x01(\t\"\x92\x01\n\x12GetGfxInfoResponse\x12J\n\ngfx_labels\x18\x01 \x03(\x0b\x32\x36.chromiumos.test.api.GetGfxInfoResponse.GfxLabelsEntry\x1a\x30\n\x0eGfxLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xad\x01\n\x12GetAvlInfoResponse\x12H\n\tavl_infos\x18\x01 \x03(\x0b\x32\x35.chromiumos.test.api.GetAvlInfoResponse.AvlInfosEntry\x1aM\n\rAvlInfosEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12+\n\x05value\x18\x02 \x01(\x0b\x32\x1c.chromiumos.test.api.AvlInfo:\x02\x38\x01\"X\n\x07\x41vlInfo\x12\x16\n\x0e\x61vl_part_model\x18\x01 \x01(\t\x12\x19\n\x11\x61vl_part_firmware\x18\x02 \x01(\t\x12\x1a\n\x12\x61vl_component_type\x18\x03 \x01(\t\"\xa5\x01\n\x12GetGscInfoResponse\x12H\n\tgsc_infos\x18\x01 \x03(\x0b\x32\x35.chromiumos.test.api.GetGscInfoResponse.GscInfosEntry\x1a\x45\n\rGscInfosEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12#\n\x05value\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any:\x02\x38\x01\x32\xc1\x02\n\x0fPostTestService\x12\x64\n\x07StartUp\x12+.chromiumos.test.api.PostTestStartUpRequest\x1a,.chromiumos.test.api.PostTestStartUpResponse\x12`\n\x0bRunActivity\x12\'.chromiumos.test.api.RunActivityRequest\x1a(.chromiumos.test.api.RunActivityResponse\x12\x66\n\rRunActivities\x12).chromiumos.test.api.RunActivitiesRequest\x1a*.chromiumos.test.api.RunActivitiesResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
@@ -254,6 +254,13 @@ _RUNACTIVITIESREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='test_result', full_name='chromiumos.test.api.RunActivitiesRequest.test_result', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -266,8 +273,8 @@ _RUNACTIVITIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=928,
-  serialized_end=1055,
+  serialized_start=929,
+  serialized_end=1099,
 )
 
 
@@ -298,8 +305,8 @@ _RUNACTIVITIESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1057,
-  serialized_end=1141,
+  serialized_start=1101,
+  serialized_end=1185,
 )
 
 
@@ -323,8 +330,8 @@ _GETFWINFOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1143,
-  serialized_end=1161,
+  serialized_start=1187,
+  serialized_end=1205,
 )
 
 
@@ -355,8 +362,8 @@ _GETFILESFROMDUTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1163,
-  serialized_end=1202,
+  serialized_start=1207,
+  serialized_end=1246,
 )
 
 
@@ -380,8 +387,8 @@ _GETGFXINFOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1204,
-  serialized_end=1223,
+  serialized_start=1248,
+  serialized_end=1267,
 )
 
 
@@ -419,8 +426,8 @@ _GETAVLINFOREQUEST_AVLFILESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1320,
-  serialized_end=1367,
+  serialized_start=1368,
+  serialized_end=1415,
 )
 
 _GETAVLINFOREQUEST = _descriptor.Descriptor(
@@ -437,7 +444,7 @@ _GETAVLINFOREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -450,8 +457,8 @@ _GETAVLINFOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1226,
-  serialized_end=1367,
+  serialized_start=1270,
+  serialized_end=1415,
 )
 
 
@@ -489,8 +496,8 @@ _GETGSCINFOREQUEST_GSCFILESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1464,
-  serialized_end=1511,
+  serialized_start=1516,
+  serialized_end=1563,
 )
 
 _GETGSCINFOREQUEST = _descriptor.Descriptor(
@@ -507,7 +514,7 @@ _GETGSCINFOREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -520,8 +527,8 @@ _GETGSCINFOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1370,
-  serialized_end=1511,
+  serialized_start=1418,
+  serialized_end=1563,
 )
 
 
@@ -585,8 +592,8 @@ _RUNACTIVITYRESPONSE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1514,
-  serialized_end=1926,
+  serialized_start=1566,
+  serialized_end=1978,
 )
 
 
@@ -645,8 +652,8 @@ _GETFWINFORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1928,
-  serialized_end=2037,
+  serialized_start=1980,
+  serialized_end=2089,
 )
 
 
@@ -677,8 +684,8 @@ _GETFILESFROMDUTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2039,
-  serialized_end=2112,
+  serialized_start=2091,
+  serialized_end=2164,
 )
 
 
@@ -716,8 +723,8 @@ _FILEMAP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2114,
-  serialized_end=2165,
+  serialized_start=2166,
+  serialized_end=2217,
 )
 
 
@@ -755,8 +762,8 @@ _GETGFXINFORESPONSE_GFXLABELSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2266,
-  serialized_end=2314,
+  serialized_start=2318,
+  serialized_end=2366,
 )
 
 _GETGFXINFORESPONSE = _descriptor.Descriptor(
@@ -786,8 +793,8 @@ _GETGFXINFORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2168,
-  serialized_end=2314,
+  serialized_start=2220,
+  serialized_end=2366,
 )
 
 
@@ -825,8 +832,8 @@ _GETAVLINFORESPONSE_AVLINFOSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2413,
-  serialized_end=2490,
+  serialized_start=2465,
+  serialized_end=2542,
 )
 
 _GETAVLINFORESPONSE = _descriptor.Descriptor(
@@ -856,8 +863,8 @@ _GETAVLINFORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2317,
-  serialized_end=2490,
+  serialized_start=2369,
+  serialized_end=2542,
 )
 
 
@@ -902,8 +909,8 @@ _AVLINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2492,
-  serialized_end=2580,
+  serialized_start=2544,
+  serialized_end=2632,
 )
 
 
@@ -941,8 +948,8 @@ _GETGSCINFORESPONSE_GSCINFOSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2679,
-  serialized_end=2748,
+  serialized_start=2731,
+  serialized_end=2800,
 )
 
 _GETGSCINFORESPONSE = _descriptor.Descriptor(
@@ -972,8 +979,8 @@ _GETGSCINFORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2583,
-  serialized_end=2748,
+  serialized_start=2635,
+  serialized_end=2800,
 )
 
 _POSTTESTSTARTUPREQUEST.fields_by_name['dut_server'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
@@ -1003,6 +1010,7 @@ _REQUEST.oneofs_by_name['request'].fields.append(
 _REQUEST.fields_by_name['get_gsc_info_request'].containing_oneof = _REQUEST.oneofs_by_name['request']
 _RUNACTIVITIESREQUEST.fields_by_name['requests'].message_type = _REQUEST
 _RUNACTIVITIESREQUEST.fields_by_name['dut_server'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
+_RUNACTIVITIESREQUEST.fields_by_name['test_result'].message_type = google_dot_protobuf_dot_any__pb2._ANY
 _RUNACTIVITIESRESPONSE.fields_by_name['responses'].message_type = _RUNACTIVITYRESPONSE
 _GETAVLINFOREQUEST_AVLFILESENTRY.containing_type = _GETAVLINFOREQUEST
 _GETAVLINFOREQUEST.fields_by_name['avl_files'].message_type = _GETAVLINFOREQUEST_AVLFILESENTRY
@@ -1234,7 +1242,9 @@ _sym_db.RegisterMessage(GetGscInfoResponse.GscInfosEntry)
 
 DESCRIPTOR._options = None
 _GETAVLINFOREQUEST_AVLFILESENTRY._options = None
+_GETAVLINFOREQUEST.fields_by_name['avl_files']._options = None
 _GETGSCINFOREQUEST_GSCFILESENTRY._options = None
+_GETGSCINFOREQUEST.fields_by_name['gsc_files']._options = None
 _GETGFXINFORESPONSE_GFXLABELSENTRY._options = None
 _GETAVLINFORESPONSE_AVLINFOSENTRY._options = None
 _GETGSCINFORESPONSE_GSCINFOSENTRY._options = None
@@ -1246,8 +1256,8 @@ _POSTTESTSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=2751,
-  serialized_end=3072,
+  serialized_start=2803,
+  serialized_end=3124,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartUp',

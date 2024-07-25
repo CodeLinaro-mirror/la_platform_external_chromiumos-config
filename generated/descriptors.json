@@ -22687,6 +22687,14 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            },
+            {
+              "jsonName": "testResult",
+              "label": "LABEL_OPTIONAL",
+              "name": "test_result",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
             }
           ],
           "name": "RunActivitiesRequest"
@@ -22729,6 +22737,9 @@
               "label": "LABEL_REPEATED",
               "name": "avl_files",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetAvlInfoRequest.AvlFilesEntry"
             }
@@ -22766,6 +22777,9 @@
               "label": "LABEL_REPEATED",
               "name": "gsc_files",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetGscInfoRequest.GscFilesEntry"
             }

@@ -72,10 +72,17 @@ message Request {
   }
 }
 
+// Request to run post process activities.
+// NEXT TAG: 4
 message RunActivitiesRequest {
   repeated Request requests = 1;
   // Address of the DUT Server.
   chromiumos.test.lab.api.IpEndpoint dut_server = 2;
+
+  // Test results corresponding to "chromiumos.test.artifact.TestResult" proto.
+  // Note that the TestResult proto cannot be imported directly due to the
+  // cyclic import issue.
+  google.protobuf.Any test_result = 3;
 }
 
 message RunActivitiesResponse {
@@ -99,7 +106,7 @@ message GetAvlInfoRequest {
     // Mapping from test name to its own avl info JSON file location.
     // Location format:
     // "<local_output_dir>/cros-test/artifact/tast/tests/<test_name>/avl_info.json"
-    map<string, string> avl_files = 1;
+    map<string, string> avl_files = 1 [deprecated = true];
 }
 
 // GetGscInfoRequest captures GSC devboard tags for reporting.
@@ -108,7 +115,7 @@ message GetGscInfoRequest {
     // Mapping from test name to its own GSC devboard tags file location.
     // Location format:
     // "<local_output_dir>/cros-test/results/tast/tests/<test_name>/result_tags.json"
-    map<string, string> gsc_files = 1;
+    map<string, string> gsc_files = 1 [deprecated = true];
 }
 
 // Specific response to be matched with the request.
