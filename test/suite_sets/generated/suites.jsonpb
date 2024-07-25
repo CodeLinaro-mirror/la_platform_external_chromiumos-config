@@ -1256,12 +1256,6 @@
 					"value": "tast.arc.Print.container_r"
 				},
 				{
-					"value": "tast.arc.RemovableMedia"
-				},
-				{
-					"value": "tast.arc.RemovableMedia.vm"
-				},
-				{
 					"value": "tast.arc.SettingsBridge"
 				},
 				{
@@ -1757,9 +1751,6 @@
 					"value": "tast.bruschetta.SecureBoot"
 				},
 				{
-					"value": "tast.bruschetta.ShareDownloads"
-				},
-				{
 					"value": "tast.bruschetta.Toolkit.gtk3_wayland"
 				},
 				{
@@ -2229,9 +2220,6 @@
 				},
 				{
 					"value": "tast.crostini.GPUEnabled.sw_bullseye_stable"
-				},
-				{
-					"value": "tast.crostini.HomeDirectoryShare.bookworm_stable"
 				},
 				{
 					"value": "tast.crostini.LaunchBrowser.bookworm_stable"
@@ -3885,6 +3873,9 @@
 				},
 				{
 					"value": "tast.launcher.SearchSettingsSections.fingerprint_tests_clamshell_mode"
+				},
+				{
+					"value": "tast.lldb.ServerRun"
 				},
 				{
 					"value": "tast.lockscreen.CloseLid.fieldtrial_testing_config_off"
@@ -5904,6 +5895,9 @@
 				},
 				{
 					"value": "tast.firmware.UpdateKernelVersion"
+				},
+				{
+					"value": "tast.firmware.UpdateVersion.kernel_subkey_version"
 				},
 				{
 					"value": "tast.firmware.UserRequestRecovery.dev"

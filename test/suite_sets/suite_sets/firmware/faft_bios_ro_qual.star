@@ -150,6 +150,7 @@ def _faft_bios_ro_qual():
             "tast.firmware.UIModeTransition",
             "tast.firmware.USBAnnotations",
             "tast.firmware.UpdateKernelVersion",
+            "tast.firmware.UpdateVersion.kernel_subkey_version",
             "tast.firmware.UserRequestRecovery.dev",
             "tast.firmware.UserRequestRecovery.normal",
             "tast.firmware.VerityCorruptRootfs.dev",
