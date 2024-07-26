@@ -5735,6 +5735,12 @@
 					"value": "tast.firmware.Eventlog.watchdog"
 				},
 				{
+					"value": "tast.firmware.FWCorruptRecoveryCache.dev"
+				},
+				{
+					"value": "tast.firmware.FWCorruptRecoveryCache.normal"
+				},
+				{
 					"value": "tast.firmware.FWScreenCloseLid.broken"
 				},
 				{

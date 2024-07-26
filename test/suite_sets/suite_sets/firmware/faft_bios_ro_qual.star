@@ -96,6 +96,8 @@ def _faft_bios_ro_qual():
             "tast.firmware.Eventlog.rec_normal",
             "tast.firmware.Eventlog.suspend_resume",
             "tast.firmware.Eventlog.watchdog",
+            "tast.firmware.FWCorruptRecoveryCache.dev",
+            "tast.firmware.FWCorruptRecoveryCache.normal",
             "tast.firmware.FWScreenCloseLid.broken",
             "tast.firmware.FWScreenCloseLid.dev",
             "tast.firmware.FWScreenCloseLid.to_norm",
