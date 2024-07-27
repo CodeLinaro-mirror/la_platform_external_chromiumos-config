@@ -1808,6 +1808,9 @@
 					"value": "tast.camera.EncodeAccelJPEG"
 				},
 				{
+					"value": "tast.camera.KernelSmokeMIPI"
+				},
+				{
 					"value": "tast.camera.PlatformServiceSmoke"
 				},
 				{
@@ -4067,6 +4070,69 @@
 					"value": "tast.network.QosWebRTC"
 				},
 				{
+					"value": "tast.network.ResolvConfConfigUpdate.dual_stack_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.dual_stack_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.ipv4_only_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.ipv4_only_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.ipv6_only_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.ipv6_only_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.controller_crash_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.controller_crash_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.shill_crash_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.shill_crash_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.system_proxy_crash_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfLowerPriorityConfigUpdate.proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfLowerPriorityConfigUpdate.proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.high_priority_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.high_priority_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.low_priority_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.low_priority_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.vpn_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.vpn_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfPortal.proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfPortal.proxy_enabled"
+				},
+				{
 					"value": "tast.network.ResolveLocalHostname"
 				},
 				{
@@ -4359,6 +4425,9 @@
 				},
 				{
 					"value": "tast.platform.PerfettoSystemTracing"
+				},
+				{
+					"value": "tast.platform.ResourcedCgroups"
 				},
 				{
 					"value": "tast.platform.RootPartitionsNotMounted"
