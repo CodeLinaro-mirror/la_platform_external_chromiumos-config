@@ -27159,6 +27159,19 @@
               "number": 2
             }
           ]
+        },
+        {
+          "name": "ReleaseDeviceResponseErrorType",
+          "value": [
+            {
+              "name": "ERROR_TYPE_NONE",
+              "number": 0
+            },
+            {
+              "name": "ERROR_TYPE_DEVICE_ALREADY_RELEASED",
+              "number": 1
+            }
+          ]
         }
       ],
       "messageType": [
@@ -27413,6 +27426,21 @@
               "label": "LABEL_OPTIONAL",
               "name": "lease_id",
               "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "errorType",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_type",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.ReleaseDeviceResponseErrorType"
+            },
+            {
+              "jsonName": "errorString",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_string",
+              "number": 3,
               "type": "TYPE_STRING"
             }
           ],

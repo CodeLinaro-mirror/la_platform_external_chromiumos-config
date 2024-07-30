@@ -151,6 +151,13 @@ message ReleaseDeviceRequest {
 
 message ReleaseDeviceResponse {
   string lease_id = 1;
+  ReleaseDeviceResponseErrorType error_type = 2;
+  string error_string = 3;
+}
+
+enum ReleaseDeviceResponseErrorType {
+  ERROR_TYPE_NONE = 0;
+  ERROR_TYPE_DEVICE_ALREADY_RELEASED = 1;
 }
 
 message GetDeviceRequest {
