@@ -5664,6 +5664,14 @@
                   "number": 14,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "mainboardHasEarlySignOfLife",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "mainboard_has_early_sign_of_life",
+                  "number": 15,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "FirmwareConfiguration",

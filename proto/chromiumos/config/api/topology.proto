@@ -314,6 +314,11 @@ message HardwareFeatures {
 
     // The AP firmware has the CONFIG_HAS_RECOVERY_MRC_CACHE feature enabled.
     Present has_recovery_mrc_cache = 14;
+
+    // The AP firmware has the CONFIG_CHROMEOS_ENABLE_ESOL feature enabled.
+    Present mainboard_has_early_sign_of_life = 15;
+
+
   }
 
   // Audio properties of system
