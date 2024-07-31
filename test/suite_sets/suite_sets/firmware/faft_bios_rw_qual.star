@@ -141,7 +141,6 @@ def _faft_bios_rw_qual():
             "tauto.firmware_UpdateFirmwareDataKeyVersion",
             "tauto.firmware_UpdateFirmwareVersion",
             "tauto.firmware_UpdateKernelDataKeyVersion",
-            "tauto.firmware_UpdateKernelSubkeyVersion",
             "tauto.firmware_UpdaterModes",
             "tauto.firmware_WilcoDiagnosticsMode",
             "tauto.firmware_WriteProtect",

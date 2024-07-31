@@ -3983,7 +3983,22 @@
 					"value": "tast.network.ARCVPNCrash.vm"
 				},
 				{
+					"value": "tast.network.ARCVPNDatapath"
+				},
+				{
 					"value": "tast.network.ARCVPNDisabled"
+				},
+				{
+					"value": "tast.network.AlwaysOnVPNRouting.best_effort_mode_ikev2"
+				},
+				{
+					"value": "tast.network.AlwaysOnVPNRouting.best_effort_mode_l2tp_ipsec_psk"
+				},
+				{
+					"value": "tast.network.AlwaysOnVPNRouting.strict_mode_ikev2"
+				},
+				{
+					"value": "tast.network.AlwaysOnVPNRouting.strict_mode_l2tp_ipsec_psk"
 				},
 				{
 					"value": "tast.network.BasicProfileProperties"
@@ -4175,6 +4190,9 @@
 					"value": "tast.network.RoutingNoIP"
 				},
 				{
+					"value": "tast.network.ShillCAPPORT"
+				},
+				{
 					"value": "tast.network.ShillCaptivePortalDNS"
 				},
 				{
@@ -4221,6 +4239,9 @@
 				},
 				{
 					"value": "tast.network.ShillStability"
+				},
+				{
+					"value": "tast.network.ShillTethering"
 				},
 				{
 					"value": "tast.network.SimulatedWifiServiceSmoke.ipv4"
@@ -6038,12 +6059,6 @@
 					"value": "tauto.firmware_CorruptMinios.minios_b"
 				},
 				{
-					"value": "tauto.firmware_CorruptRecoveryCache"
-				},
-				{
-					"value": "tauto.firmware_CorruptRecoveryCache.dev"
-				},
-				{
 					"value": "tauto.firmware_FwScreenPressPower"
 				},
 				{
@@ -6066,9 +6081,6 @@
 				},
 				{
 					"value": "tauto.firmware_UpdateKernelDataKeyVersion"
-				},
-				{
-					"value": "tauto.firmware_UpdateKernelSubkeyVersion"
 				},
 				{
 					"value": "tauto.firmware_UpdaterModes"
@@ -6497,9 +6509,6 @@
 				},
 				{
 					"value": "tauto.firmware_UpdateKernelDataKeyVersion"
-				},
-				{
-					"value": "tauto.firmware_UpdateKernelSubkeyVersion"
 				},
 				{
 					"value": "tauto.firmware_UpdaterModes"
