@@ -24,6 +24,8 @@ def _faft_bios_ro_qual():
             "tast.firmware.BootMode.rec_cold",
             "tast.firmware.BootMode.rec_warm",
             "tast.firmware.BrokenToDev",
+            "tast.firmware.CheckEOPState.get_boot_state",
+            "tast.firmware.CheckEOPState.get_eop_state",
             "tast.firmware.CorruptBothMiniOSAB",
             "tast.firmware.CorruptBothSignedAMDFWAB.dev_mode",
             "tast.firmware.CorruptBothSignedAMDFWAB.normal_mode",

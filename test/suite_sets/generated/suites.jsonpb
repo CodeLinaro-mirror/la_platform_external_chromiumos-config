@@ -4028,16 +4028,7 @@
 					"value": "tast.network.DHCPHostname"
 				},
 				{
-					"value": "tast.network.DHCPInitBound"
-				},
-				{
-					"value": "tast.network.DHCPInitBound.non_std_port"
-				},
-				{
 					"value": "tast.network.DHCPNonASCIIParam"
-				},
-				{
-					"value": "tast.network.DHCPRebootNAK"
 				},
 				{
 					"value": "tast.network.DHCPTwoServersConflict"
@@ -4416,9 +4407,6 @@
 				},
 				{
 					"value": "tast.platform.LocalPerfettoTBMTracedProbes"
-				},
-				{
-					"value": "tast.platform.Memd"
 				},
 				{
 					"value": "tast.platform.Mosys.memory"
@@ -5612,6 +5600,12 @@
 					"value": "tast.firmware.BrokenToDev"
 				},
 				{
+					"value": "tast.firmware.CheckEOPState.get_boot_state"
+				},
+				{
+					"value": "tast.firmware.CheckEOPState.get_eop_state"
+				},
+				{
 					"value": "tast.firmware.CorruptBothMiniOSAB"
 				},
 				{
@@ -6149,6 +6143,12 @@
 				},
 				{
 					"value": "tast.firmware.BrokenToDev"
+				},
+				{
+					"value": "tast.firmware.CheckEOPState.get_boot_state"
+				},
+				{
+					"value": "tast.firmware.CheckEOPState.get_eop_state"
 				},
 				{
 					"value": "tast.firmware.CorruptFW.body_dev"

@@ -21,6 +21,8 @@ def _faft_bios_rw_qual():
             "tast.firmware.BootMode.normal_dev",
             "tast.firmware.BootMode.normal_warm",
             "tast.firmware.BrokenToDev",
+            "tast.firmware.CheckEOPState.get_boot_state",
+            "tast.firmware.CheckEOPState.get_eop_state",
             "tast.firmware.CorruptFW.body_dev",
             "tast.firmware.CorruptFW.body_normal",
             "tast.firmware.CorruptFW.sig_dev",
