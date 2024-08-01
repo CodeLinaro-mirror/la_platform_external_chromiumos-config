@@ -324,6 +324,7 @@ def _create_design_with_configs(
         health = None,
         ui = None,
         frid = None,
+        rma = None,
         hardware_topology_filter = None,
         active_configs = None,
         spi_flash_transform = None,
@@ -380,6 +381,7 @@ def _create_design_with_configs(
         frid: String which must match the AP firmware FRID (first part before the
             period) in order for the config to match.  Leaving this value unset
             will result in FRID being generated from coreboot target name or design ID.
+        rma: An RmaConfig to be used in the SoftwareConfig.
         hardware_topology_filter: An optional function filtering out the config ID and
             the topologies to be used for that config. Return True to skip generating
             this config.
@@ -458,6 +460,7 @@ def _create_design_with_configs(
                 health = health,
                 ui = ui,
                 frid = frid,
+                rma = rma,
                 launched = launched,
             )
         return True
