@@ -20646,6 +20646,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.TestHarness.Crosier"
+            },
+            {
+              "jsonName": "tradefed",
+              "label": "LABEL_OPTIONAL",
+              "name": "tradefed",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestHarness.Tradefed"
             }
           ],
           "name": "TestHarness",
@@ -20676,6 +20685,9 @@
             },
             {
               "name": "Crosier"
+            },
+            {
+              "name": "Tradefed"
             }
           ],
           "oneofDecl": [

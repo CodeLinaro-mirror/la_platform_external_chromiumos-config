@@ -20,6 +20,7 @@ message TestHarness {
     Gtest gtest = 4;
     Mobly mobly = 5;
     Crosier crosier = 6;
+    Tradefed tradefed = 7;
   }
 
   message Manual {}
@@ -31,5 +32,6 @@ message TestHarness {
   }
   message Mobly {}
   message Crosier {}
+  message Tradefed {}
 }
 // LINT.ThenChange(//chromium/infra/infra_superproject/main/infra/go/src/infra/tools/result_adapter/util.go)
