@@ -1256,6 +1256,12 @@
 					"value": "tast.arc.Print.container_r"
 				},
 				{
+					"value": "tast.arc.RemovableMedia"
+				},
+				{
+					"value": "tast.arc.RemovableMedia.vm"
+				},
+				{
 					"value": "tast.arc.SettingsBridge"
 				},
 				{
@@ -1751,6 +1757,9 @@
 					"value": "tast.bruschetta.SecureBoot"
 				},
 				{
+					"value": "tast.bruschetta.ShareDownloads"
+				},
+				{
 					"value": "tast.bruschetta.Toolkit.gtk3_wayland"
 				},
 				{
@@ -2223,6 +2232,9 @@
 				},
 				{
 					"value": "tast.crostini.GPUEnabled.sw_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.HomeDirectoryShare.bookworm_stable"
 				},
 				{
 					"value": "tast.crostini.LaunchBrowser.bookworm_stable"
@@ -5168,7 +5180,7 @@
 					"value": "tast.tflite.AndroidHardwareBuffer"
 				},
 				{
-					"value": "tast.tflite.DTS.apu"
+					"value": "tast.tflite.DTS.neuron"
 				},
 				{
 					"value": "tast.tflite.DTS.sample"
@@ -6041,9 +6053,6 @@
 					"value": "tauto.firmware_CbfsMcache"
 				},
 				{
-					"value": "tauto.firmware_CheckEOPState"
-				},
-				{
 					"value": "tauto.firmware_CorruptBothKernelAB"
 				},
 				{
@@ -6485,9 +6494,6 @@
 				},
 				{
 					"value": "tauto.firmware_CbfsMcache"
-				},
-				{
-					"value": "tauto.firmware_CheckEOPState"
 				},
 				{
 					"value": "tauto.firmware_CorruptBothKernelAB"

@@ -171,7 +171,6 @@ def _faft_bios_ro_qual():
             "tast.wifi.SetTXPower",
             "tast.wifi.SetTXPower.vpd",
             "tauto.firmware_CbfsMcache",
-            "tauto.firmware_CheckEOPState",
             "tauto.firmware_CorruptBothKernelAB",
             "tauto.firmware_CorruptMinios.minios_a",
             "tauto.firmware_CorruptMinios.minios_b",
