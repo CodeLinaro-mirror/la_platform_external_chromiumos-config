@@ -23105,6 +23105,9 @@
             {
               "inputType": ".chromiumos.test.api.RunActivityRequest",
               "name": "RunActivity",
+              "options": {
+                "deprecated": true
+              },
               "outputType": ".chromiumos.test.api.RunActivityResponse"
             },
             {

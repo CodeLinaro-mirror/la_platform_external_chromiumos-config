@@ -26,6 +26,7 @@ type PostTestServiceClient interface {
 	// necessary input values for initialization prior to
 	// calling any other provision related service calls.
 	StartUp(ctx context.Context, in *PostTestStartUpRequest, opts ...grpc.CallOption) (*PostTestStartUpResponse, error)
+	// Deprecated: Do not use.
 	RunActivity(ctx context.Context, in *RunActivityRequest, opts ...grpc.CallOption) (*RunActivityResponse, error)
 	RunActivities(ctx context.Context, in *RunActivitiesRequest, opts ...grpc.CallOption) (*RunActivitiesResponse, error)
 }
@@ -47,6 +48,7 @@ func (c *postTestServiceClient) StartUp(ctx context.Context, in *PostTestStartUp
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *postTestServiceClient) RunActivity(ctx context.Context, in *RunActivityRequest, opts ...grpc.CallOption) (*RunActivityResponse, error) {
 	out := new(RunActivityResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.PostTestService/RunActivity", in, out, opts...)
@@ -73,6 +75,7 @@ type PostTestServiceServer interface {
 	// necessary input values for initialization prior to
 	// calling any other provision related service calls.
 	StartUp(context.Context, *PostTestStartUpRequest) (*PostTestStartUpResponse, error)
+	// Deprecated: Do not use.
 	RunActivity(context.Context, *RunActivityRequest) (*RunActivityResponse, error)
 	RunActivities(context.Context, *RunActivitiesRequest) (*RunActivitiesResponse, error)
 }

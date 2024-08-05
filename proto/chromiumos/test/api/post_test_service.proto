@@ -26,7 +26,9 @@ service PostTestService {
     returns (PostTestStartUpResponse);
 
   rpc RunActivity(RunActivityRequest)
-      returns (RunActivityResponse);
+      returns (RunActivityResponse) {
+        option deprecated = true;
+      };
 
   rpc RunActivities(RunActivitiesRequest)
       returns (RunActivitiesResponse);
