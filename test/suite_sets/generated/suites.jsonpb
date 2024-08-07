@@ -2855,9 +2855,6 @@
 					"value": "tast.graphics.FPS"
 				},
 				{
-					"value": "tast.graphics.FPS.lacros"
-				},
-				{
 					"value": "tast.graphics.GLAPICheck"
 				},
 				{
@@ -5181,6 +5178,9 @@
 				},
 				{
 					"value": "tast.tflite.DTS.neuron"
+				},
+				{
+					"value": "tast.tflite.DTS.openvino"
 				},
 				{
 					"value": "tast.tflite.DTS.sample"
