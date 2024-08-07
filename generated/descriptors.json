@@ -34738,6 +34738,10 @@
             {
               "name": "CANCELED",
               "number": 5
+            },
+            {
+              "name": "FAILED_TO_LAUNCH",
+              "number": 6
             }
           ]
         }

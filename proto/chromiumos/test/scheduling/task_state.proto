@@ -15,6 +15,7 @@ enum TaskState {
   COMPLETED = 3;
   EXPIRED = 4;
   CANCELED = 5;
+  FAILED_TO_LAUNCH = 6;
 }
 
 message CreateTaskStatesResponse {
