@@ -4919,6 +4919,9 @@
 					"value": "tast.scanner.ScanESCLIPP.usb"
 				},
 				{
+					"value": "tast.sched.ChromeQoS"
+				},
+				{
 					"value": "tast.sched.CoreSchedTag"
 				},
 				{
