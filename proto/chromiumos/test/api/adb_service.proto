@@ -1,0 +1,35 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+service ADBService {
+  // ExecCommand runs a command on ABD.
+  rpc ExecCommand(ADBCommandRequest) returns (ADBCommandResponse){}
+}
+
+message ADBCommandRequest {
+  // command is the command of ADB to run.
+  string command = 1;
+  // args are the arguments to pass to the command. The arguments
+  // are not quoted in any way, so passing shell variables and
+  // arguments containing spaces could fail.
+  repeated string args = 2;
+}
+message ADBCommandResponse {
+  // stdout contains the shell command's stdout output since the last
+  // response in the stream.
+  // The implementation MAY batch or delay output to later
+  // responses in the stream.
+  bytes stdout = 1;
+  // stderr contains the shell command's stderr output since the last
+  // response in the stream.
+  // The implementation MAY batch or delay output to later
+  // responses in the stream.
+  bytes stderr = 2;
+}

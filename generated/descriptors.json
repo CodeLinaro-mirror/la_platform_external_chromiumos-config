@@ -17261,6 +17261,71 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "command",
+              "label": "LABEL_OPTIONAL",
+              "name": "command",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "args",
+              "label": "LABEL_REPEATED",
+              "name": "args",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ADBCommandRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "stdout",
+              "label": "LABEL_OPTIONAL",
+              "name": "stdout",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "stderr",
+              "label": "LABEL_OPTIONAL",
+              "name": "stderr",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "ADBCommandResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/adb_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.api.ADBCommandRequest",
+              "name": "ExecCommand",
+              "options": {},
+              "outputType": ".chromiumos.test.api.ADBCommandResponse"
+            }
+          ],
+          "name": "ADBService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "enumType": [
         {
           "name": "AndroidPackage",
