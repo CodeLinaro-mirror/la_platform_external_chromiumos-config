@@ -29126,6 +29126,13 @@
               "type": "TYPE_BOOL"
             },
             {
+              "jsonName": "isTrv2Run",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_trv2_run",
+              "number": 10,
+              "type": "TYPE_BOOL"
+            },
+            {
               "jsonName": "projectTrackerMetadata",
               "label": "LABEL_OPTIONAL",
               "name": "project_tracker_metadata",

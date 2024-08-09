@@ -31,7 +31,7 @@ message TestResult {
 }
 
 // Captures invocation-level information for test results.
-// NEXT TAG: 10
+// NEXT TAG: 11
 message TestInvocation {
   // The test environment specific information.
   TestEnvironment test_environment = 1;
@@ -73,6 +73,9 @@ message TestInvocation {
 
   // Flag to indicate whether tests are run in CFT.
   bool is_cft_run = 7;
+
+  // Flag to indicate whether tests are run via test_runner V2.
+  bool is_trv2_run = 10;
 
   // The metadata associated with project tracker within the same test
   // invocation.
