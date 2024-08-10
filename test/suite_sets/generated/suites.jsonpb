@@ -4052,7 +4052,13 @@
 					"value": "tast.network.DHCPWebProxy"
 				},
 				{
+					"value": "tast.network.DNSProxyCaptivePortal"
+				},
+				{
 					"value": "tast.network.DNSProxyQueries"
+				},
+				{
+					"value": "tast.network.DNSProxyUISettings"
 				},
 				{
 					"value": "tast.network.DefaultProfile"
@@ -6065,9 +6071,6 @@
 					"value": "tauto.firmware_CorruptMinios.minios_b"
 				},
 				{
-					"value": "tauto.firmware_FwScreenPressPower"
-				},
-				{
 					"value": "tauto.firmware_RecoveryCacheBootKeys"
 				},
 				{
@@ -6500,9 +6503,6 @@
 				},
 				{
 					"value": "tauto.firmware_CorruptBothKernelAB"
-				},
-				{
-					"value": "tauto.firmware_FwScreenPressPower"
 				},
 				{
 					"value": "tauto.firmware_RollbackKernel"

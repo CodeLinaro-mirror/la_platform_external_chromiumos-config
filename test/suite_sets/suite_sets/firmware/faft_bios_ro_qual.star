@@ -174,7 +174,6 @@ def _faft_bios_ro_qual():
             "tauto.firmware_CorruptBothKernelAB",
             "tauto.firmware_CorruptMinios.minios_a",
             "tauto.firmware_CorruptMinios.minios_b",
-            "tauto.firmware_FwScreenPressPower",
             "tauto.firmware_RecoveryCacheBootKeys",
             "tauto.firmware_RecoveryCacheBootKeys.dev",
             "tauto.firmware_RollbackKernel",
