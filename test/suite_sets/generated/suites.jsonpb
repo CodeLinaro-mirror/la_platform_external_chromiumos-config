@@ -3155,6 +3155,9 @@
 					"value": "tast.health.ProbeTimezoneInfo"
 				},
 				{
+					"value": "tast.health.ProbeTpmInfo"
+				},
+				{
 					"value": "tast.health.ProbeWifiInfo"
 				},
 				{
