@@ -1655,13 +1655,7 @@
 					"value": "tast.borealis.ConfirmLogs"
 				},
 				{
-					"value": "tast.borealis.ConfirmLogs.lacros"
-				},
-				{
 					"value": "tast.borealis.CrashReporter"
-				},
-				{
-					"value": "tast.borealis.CrashReporter.lacros"
 				},
 				{
 					"value": "tast.borealis.DEQP.info"
@@ -1670,13 +1664,7 @@
 					"value": "tast.borealis.FailureReporting"
 				},
 				{
-					"value": "tast.borealis.FailureReporting.lacros"
-				},
-				{
 					"value": "tast.borealis.FontCheck"
-				},
-				{
-					"value": "tast.borealis.FontCheck.lacros"
 				},
 				{
 					"value": "tast.borealis.GLVersion"
@@ -1691,13 +1679,7 @@
 					"value": "tast.borealis.SuspendResume"
 				},
 				{
-					"value": "tast.borealis.SuspendResume.lacros"
-				},
-				{
 					"value": "tast.borealis.TimezoneCheck"
-				},
-				{
-					"value": "tast.borealis.TimezoneCheck.lacros"
 				},
 				{
 					"value": "tast.bruschetta.AppEmacs"
@@ -1748,10 +1730,7 @@
 					"value": "tast.bruschetta.HomeDirectoryShare"
 				},
 				{
-					"value": "tast.bruschetta.LaunchBrowser.ash"
-				},
-				{
-					"value": "tast.bruschetta.LaunchBrowser.lacros"
+					"value": "tast.bruschetta.LaunchBrowser"
 				},
 				{
 					"value": "tast.bruschetta.SecureBoot"
@@ -1818,6 +1797,9 @@
 				},
 				{
 					"value": "tast.camera.KernelSmokeMIPI"
+				},
+				{
+					"value": "tast.camera.KernelSmokeUSB"
 				},
 				{
 					"value": "tast.camera.PlatformServiceSmoke"
@@ -3002,6 +2984,9 @@
 					"value": "tast.health.DiagnosticsRun.battery_health"
 				},
 				{
+					"value": "tast.health.DiagnosticsRun.captive_portal"
+				},
+				{
 					"value": "tast.health.DiagnosticsRun.cpu_stress"
 				},
 				{
@@ -3102,6 +3087,9 @@
 				},
 				{
 					"value": "tast.health.ProbeBusInfo"
+				},
+				{
+					"value": "tast.health.ProbeBusInfo.progif"
 				},
 				{
 					"value": "tast.health.ProbeBusInfo.thunderbolt"
