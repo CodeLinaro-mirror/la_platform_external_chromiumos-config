@@ -143,6 +143,15 @@ message LeaseDeviceResponse {
   // Eventually we will include authentication token to access device for the
   // duration of the lease. Shared and long lived secrets are not good security.
   // Today there is no such enforcement so this is not a regression.
+
+  LeaseDeviceResponseErrorType error_type = 2;
+  string error_string = 3;
+}
+
+enum LeaseDeviceResponseErrorType {
+  LEASE_ERROR_TYPE_NONE = 0;
+  LEASE_ERROR_TYPE_DEVICE_NOT_FOUND = 1;
+  LEASE_ERROR_TYPE_DEVICE_ALREADY_LEASED = 2;
 }
 
 message ReleaseDeviceRequest {

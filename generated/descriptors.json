@@ -27255,6 +27255,23 @@
           ]
         },
         {
+          "name": "LeaseDeviceResponseErrorType",
+          "value": [
+            {
+              "name": "LEASE_ERROR_TYPE_NONE",
+              "number": 0
+            },
+            {
+              "name": "LEASE_ERROR_TYPE_DEVICE_NOT_FOUND",
+              "number": 1
+            },
+            {
+              "name": "LEASE_ERROR_TYPE_DEVICE_ALREADY_LEASED",
+              "number": 2
+            }
+          ]
+        },
+        {
           "name": "ReleaseDeviceResponseErrorType",
           "value": [
             {
@@ -27497,6 +27514,21 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.DeviceLeaseRecord"
+            },
+            {
+              "jsonName": "errorType",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_type",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.LeaseDeviceResponseErrorType"
+            },
+            {
+              "jsonName": "errorString",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_string",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "LeaseDeviceResponse"
