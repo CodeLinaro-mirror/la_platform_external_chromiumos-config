@@ -4280,6 +4280,27 @@
 					"value": "tast.network.VPNConnect.wireguard_psk"
 				},
 				{
+					"value": "tast.network.VPNDNS.ikev2_ipv4"
+				},
+				{
+					"value": "tast.network.VPNDNS.ikev2_ipv6"
+				},
+				{
+					"value": "tast.network.VPNDNS.l2tp_ipsec"
+				},
+				{
+					"value": "tast.network.VPNDNS.openvpn_ipv4"
+				},
+				{
+					"value": "tast.network.VPNDNS.openvpn_ipv6"
+				},
+				{
+					"value": "tast.network.VPNDNS.wireguard_ipv4"
+				},
+				{
+					"value": "tast.network.VPNDNS.wireguard_ipv6"
+				},
+				{
 					"value": "tast.network.VPNRouting.ikev2_ipv4"
 				},
 				{
