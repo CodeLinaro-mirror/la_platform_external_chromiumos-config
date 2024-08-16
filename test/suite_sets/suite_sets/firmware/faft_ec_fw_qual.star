@@ -30,6 +30,7 @@ def _faft_ec_fw_qual():
             "tast.firmware.ECADC",
             "tast.firmware.ECBattery",
             "tast.firmware.ECCbi",
+            "tast.firmware.ECCbiFlashrom",
             "tast.firmware.ECChargingState.discharge",
             "tast.firmware.ECChargingState.full_charge",
             "tast.firmware.ECConsole",

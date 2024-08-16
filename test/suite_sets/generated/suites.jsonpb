@@ -1775,13 +1775,7 @@
 					"value": "tast.bruschetta.VerifyAppX11"
 				},
 				{
-					"value": "tast.camera.CCAAPI"
-				},
-				{
 					"value": "tast.camera.CCAQRCode"
-				},
-				{
-					"value": "tast.camera.CCAUILauncher"
 				},
 				{
 					"value": "tast.camera.CCAUISmoke.photo_fake_vcd"
@@ -6625,6 +6619,9 @@
 				},
 				{
 					"value": "tast.firmware.ECCbi"
+				},
+				{
+					"value": "tast.firmware.ECCbiFlashrom"
 				},
 				{
 					"value": "tast.firmware.ECChargingState.discharge"
