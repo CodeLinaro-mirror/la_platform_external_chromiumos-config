@@ -1340,9 +1340,6 @@
 					"value": "tast.arc.UnhandledKey.vm"
 				},
 				{
-					"value": "tast.arc.UreadaheadGuestCompat.vm"
-				},
-				{
 					"value": "tast.arc.VMPstoreDump"
 				},
 				{
