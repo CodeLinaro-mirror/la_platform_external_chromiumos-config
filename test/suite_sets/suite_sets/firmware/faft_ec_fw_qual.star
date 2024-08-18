@@ -64,7 +64,6 @@ def _faft_ec_fw_qual():
             "tast.firmware.ECVerifyVK",
             "tast.firmware.ECVerifyVK.chromeslate",
             "tast.firmware.ECVerifyVK.detachable",
-            "tast.firmware.ECWakeFromULP.lid_switch",
             "tast.firmware.ECWakeFromULP.power_button",
             "tast.firmware.ECWakeSource.keypress",
             "tast.firmware.ECWakeSource.lid",

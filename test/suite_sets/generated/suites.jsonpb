@@ -6720,9 +6720,6 @@
 					"value": "tast.firmware.ECVerifyVK.detachable"
 				},
 				{
-					"value": "tast.firmware.ECWakeFromULP.lid_switch"
-				},
-				{
 					"value": "tast.firmware.ECWakeFromULP.power_button"
 				},
 				{
@@ -6831,6 +6828,9 @@
 				},
 				{
 					"value": "tast.firmware.ECPDTrysrc.normal"
+				},
+				{
+					"value": "tast.firmware.ECWakeFromULP.lid_switch"
 				},
 				{
 					"value": "tast.firmware.PDDataSwap.dtsoff"
