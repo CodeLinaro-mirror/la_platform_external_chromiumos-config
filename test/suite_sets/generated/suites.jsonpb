@@ -3149,6 +3149,9 @@
 					"value": "tast.health.RunLEDRoutine"
 				},
 				{
+					"value": "tast.health.RunSensitiveSensorRoutine.v2_finished"
+				},
+				{
 					"value": "tast.health.RunUrandomRoutine"
 				},
 				{
@@ -4241,6 +4244,30 @@
 					"value": "tast.network.SupportedProtocols"
 				},
 				{
+					"value": "tast.network.TrafficCounters.arc_ipv4"
+				},
+				{
+					"value": "tast.network.TrafficCounters.arc_ipv6"
+				},
+				{
+					"value": "tast.network.TrafficCounters.crostini_ipv4"
+				},
+				{
+					"value": "tast.network.TrafficCounters.crostini_ipv6"
+				},
+				{
+					"value": "tast.network.TrafficCounters.users_ipv4"
+				},
+				{
+					"value": "tast.network.TrafficCounters.users_ipv6"
+				},
+				{
+					"value": "tast.network.TrafficCounters.vpn_ipv4"
+				},
+				{
+					"value": "tast.network.TrafficCounters.vpn_ipv6"
+				},
+				{
 					"value": "tast.network.TwoShills"
 				},
 				{
@@ -5166,6 +5193,12 @@
 				},
 				{
 					"value": "tast.system.Version"
+				},
+				{
+					"value": "tast.telemetryextension.HasCorrectOrEmptyOEMName.asus"
+				},
+				{
+					"value": "tast.telemetryextension.HasCorrectOrEmptyOEMName.hp"
 				},
 				{
 					"value": "tast.telemetryextension.PlatformAPIAvailableRoutines.lacros"
