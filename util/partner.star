@@ -200,6 +200,11 @@ partner = struct(
             symlink_file_format = "ilitddi_{product_id}.hex",
             destination_file_format = "{product_id}_{fw_version}.hex",
         ),
+        FOCALTECH = _create_touch_partner(
+            name = "focaltech",
+            vendor_id = "2808",
+            symlink_file_format = "{product_id}_{fw_version}.bin",
+        ),
     ),
     battery = struct(
         PANASONIC = _create_battery_partner(
