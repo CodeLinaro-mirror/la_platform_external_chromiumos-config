@@ -1775,12 +1775,6 @@
 					"value": "tast.camera.CCAQRCode"
 				},
 				{
-					"value": "tast.camera.CCAUISmoke.photo_fake_vcd"
-				},
-				{
-					"value": "tast.camera.CCAUISmoke.video_fake_vcd"
-				},
-				{
 					"value": "tast.camera.Characteristics"
 				},
 				{
@@ -3131,6 +3125,9 @@
 					"value": "tast.health.ProbeSystemInfo.platform_service_record"
 				},
 				{
+					"value": "tast.health.ProbeThermalInfo"
+				},
+				{
 					"value": "tast.health.ProbeTimezoneInfo"
 				},
 				{
@@ -3138,6 +3135,9 @@
 				},
 				{
 					"value": "tast.health.ProbeWifiInfo"
+				},
+				{
+					"value": "tast.health.RunCameraAvailabilityRoutine"
 				},
 				{
 					"value": "tast.health.RunCameraFrameAnalysisRoutine"
@@ -4152,6 +4152,9 @@
 				},
 				{
 					"value": "tast.network.RoutingDHCPClasslessStatic"
+				},
+				{
+					"value": "tast.network.RoutingDualStackWithStatic"
 				},
 				{
 					"value": "tast.network.RoutingFallthrough.ipv4_only_primary"
@@ -5786,6 +5789,12 @@
 					"value": "tast.firmware.CorruptSignedAMDFW.normal_mode"
 				},
 				{
+					"value": "tast.firmware.CsmeFwUpdate.dev"
+				},
+				{
+					"value": "tast.firmware.CsmeFwUpdate.normal"
+				},
+				{
 					"value": "tast.firmware.DevBootInternal.button"
 				},
 				{
@@ -5996,10 +6005,22 @@
 					"value": "tast.firmware.RecToDevUntrusted"
 				},
 				{
+					"value": "tast.firmware.RecoveryCacheBootKeys.dev"
+				},
+				{
+					"value": "tast.firmware.RecoveryCacheBootKeys.normal"
+				},
+				{
 					"value": "tast.firmware.RollbackFirmware.dev"
 				},
 				{
 					"value": "tast.firmware.RollbackFirmware.normal"
+				},
+				{
+					"value": "tast.firmware.RollbackKernel.dev"
+				},
+				{
+					"value": "tast.firmware.RollbackKernel.normal"
 				},
 				{
 					"value": "tast.firmware.SelfSignedBoot"
@@ -6045,6 +6066,12 @@
 				},
 				{
 					"value": "tast.firmware.UpdateKernelVersion"
+				},
+				{
+					"value": "tast.firmware.UpdateVersion.firmware_data_key_version"
+				},
+				{
+					"value": "tast.firmware.UpdateVersion.firmware_version"
 				},
 				{
 					"value": "tast.firmware.UpdateVersion.kernel_subkey_version"
@@ -6310,6 +6337,12 @@
 					"value": "tast.firmware.CorruptKernelAB.b_dev"
 				},
 				{
+					"value": "tast.firmware.CsmeFwUpdate.dev"
+				},
+				{
+					"value": "tast.firmware.CsmeFwUpdate.normal"
+				},
+				{
 					"value": "tast.firmware.DevBootInternal.button"
 				},
 				{
@@ -6454,6 +6487,12 @@
 					"value": "tast.firmware.RecToDevUntrusted"
 				},
 				{
+					"value": "tast.firmware.RollbackKernel.dev"
+				},
+				{
+					"value": "tast.firmware.RollbackKernel.normal"
+				},
+				{
 					"value": "tast.firmware.ServoGBBFlags"
 				},
 				{
@@ -6494,6 +6533,9 @@
 				},
 				{
 					"value": "tast.firmware.UpdateKernelVersion"
+				},
+				{
+					"value": "tast.firmware.UpdateVersion.kernel_subkey_version"
 				},
 				{
 					"value": "tast.firmware.VerityCorruptRootfs.dev"
