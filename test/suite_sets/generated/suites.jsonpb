@@ -1451,16 +1451,28 @@
 					"value": "tast.audio.CrasEffects.dsp_echo_ref_not_blocked_by_playback"
 				},
 				{
+					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_ast_button_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_ast_button_enabled"
+				},
+				{
 					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_nc_button_disabled"
 				},
 				{
 					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_nc_button_enabled"
 				},
 				{
+					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_ast_button_disabled"
+				},
+				{
 					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_nc_button_disabled"
 				},
 				{
 					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_nc_button_enabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_ast_disabled"
 				},
 				{
 					"value": "tast.audio.CrasEffects.nc_both_disabled"
@@ -3896,9 +3908,6 @@
 					"value": "tast.login.Chrome"
 				},
 				{
-					"value": "tast.login.Chrome.lacros"
-				},
-				{
 					"value": "tast.login.ChromeGAIA"
 				},
 				{
@@ -5210,6 +5219,9 @@
 					"value": "tast.telemetryextension.PlatformAPIEventsAudioJack.lacros"
 				},
 				{
+					"value": "tast.telemetryextension.PlatformAPIEventsKeyboardDiagnostic.ash_no_keyboard"
+				},
+				{
 					"value": "tast.telemetryextension.PlatformAPIEventsKeyboardDiagnostic.lacros_no_keyboard"
 				},
 				{
@@ -6140,18 +6152,6 @@
 					"value": "tauto.firmware_RecoveryCacheBootKeys.dev"
 				},
 				{
-					"value": "tauto.firmware_RollbackKernel"
-				},
-				{
-					"value": "tauto.firmware_RollbackKernel.dev"
-				},
-				{
-					"value": "tauto.firmware_UpdateFirmwareDataKeyVersion"
-				},
-				{
-					"value": "tauto.firmware_UpdateFirmwareVersion"
-				},
-				{
 					"value": "tauto.firmware_UpdateKernelDataKeyVersion"
 				},
 				{
@@ -6581,18 +6581,6 @@
 				},
 				{
 					"value": "tauto.firmware_CorruptBothKernelAB"
-				},
-				{
-					"value": "tauto.firmware_RollbackKernel"
-				},
-				{
-					"value": "tauto.firmware_RollbackKernel.dev"
-				},
-				{
-					"value": "tauto.firmware_UpdateFirmwareDataKeyVersion"
-				},
-				{
-					"value": "tauto.firmware_UpdateFirmwareVersion"
 				},
 				{
 					"value": "tauto.firmware_UpdateKernelDataKeyVersion"
