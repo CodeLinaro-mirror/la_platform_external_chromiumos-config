@@ -5652,6 +5652,14 @@
                   "number": 13,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "hasRecoveryMrcCache",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "has_recovery_mrc_cache",
+                  "number": 14,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "FirmwareConfiguration",

@@ -112,7 +112,7 @@ message Duration {
 // an unspecified value and from the 0-value; this can be down with
 // messages or enums. Each field also defines how multiple values should be
 // combined.
-// NEXT TAG: 54
+// NEXT TAG: 55
 message HardwareFeatures {
   enum Present {
     PRESENT_UNKNOWN = 0;
@@ -311,6 +311,9 @@ message HardwareFeatures {
     // The CSE sync is late at payload with CONFIG_SOC_INTEL_CSE_LITE_SYNC_BY_PAYLOAD
     // feature enabled.
     Present late_cse_sync = 13;
+
+    // The AP firmware has the CONFIG_HAS_RECOVERY_MRC_CACHE feature enabled.
+    Present has_recovery_mrc_cache = 14;
   }
 
   // Audio properties of system
