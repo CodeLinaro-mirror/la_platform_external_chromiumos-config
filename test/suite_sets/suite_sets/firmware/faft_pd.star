@@ -27,6 +27,7 @@ def _faft_pd():
             "tast.firmware.ECPDTrysrc.flipcc",
             "tast.firmware.ECPDTrysrc.normal",
             "tast.firmware.ECWakeFromULP.lid_switch",
+            "tast.firmware.ECWakeFromULP.power_button",
             "tast.firmware.PDDataSwap.dtsoff",
             "tast.firmware.PDDataSwap.dtsoff_snk",
             "tast.firmware.PDDataSwap.flipcc",
