@@ -22,6 +22,8 @@ def _faft_bios_ro_qual():
             "tast.firmware.BootMode.normal_dev",
             "tast.firmware.BootMode.normal_warm",
             "tast.firmware.BootMode.rec_cold",
+            "tast.firmware.BootMode.rec_to_dev",
+            "tast.firmware.BootMode.rec_to_dev_gbb",
             "tast.firmware.BootMode.rec_warm",
             "tast.firmware.BrokenToDev",
             "tast.firmware.CheckEOPState.get_boot_state",

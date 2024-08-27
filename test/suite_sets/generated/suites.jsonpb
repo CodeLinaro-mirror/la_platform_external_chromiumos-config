@@ -2987,6 +2987,15 @@
 					"value": "tast.health.DiagnosticsPassV2.prime_search_v2"
 				},
 				{
+					"value": "tast.health.DiagnosticsRun.ac_power"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.arc_dns_resolution"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.arc_http"
+				},
+				{
 					"value": "tast.health.DiagnosticsRun.battery_capacity"
 				},
 				{
@@ -5660,6 +5669,12 @@
 					"value": "tast.firmware.BootMode.rec_cold"
 				},
 				{
+					"value": "tast.firmware.BootMode.rec_to_dev"
+				},
+				{
+					"value": "tast.firmware.BootMode.rec_to_dev_gbb"
+				},
+				{
 					"value": "tast.firmware.BootMode.rec_warm"
 				},
 				{
@@ -6212,6 +6227,12 @@
 				},
 				{
 					"value": "tast.firmware.BootMode.normal_warm"
+				},
+				{
+					"value": "tast.firmware.BootMode.rec_to_dev"
+				},
+				{
+					"value": "tast.firmware.BootMode.rec_to_dev_gbb"
 				},
 				{
 					"value": "tast.firmware.BrokenToDev"
