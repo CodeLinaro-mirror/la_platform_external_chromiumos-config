@@ -31,7 +31,7 @@ message TestResult {
 }
 
 // Captures invocation-level information for test results.
-// NEXT TAG: 11
+// NEXT TAG: 12
 message TestInvocation {
   // The test environment specific information.
   TestEnvironment test_environment = 1;
@@ -76,6 +76,9 @@ message TestInvocation {
 
   // Flag to indicate whether tests are run via test_runner V2.
   bool is_trv2_run = 10;
+
+  // Flag to distinguish AL test runs.
+  bool is_al_run = 11;
 
   // The metadata associated with project tracker within the same test
   // invocation.
