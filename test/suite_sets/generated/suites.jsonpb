@@ -866,9 +866,6 @@
 					"value": "tast.a11y.Smoke"
 				},
 				{
-					"value": "tast.a11y.Smoke.lacros"
-				},
-				{
 					"value": "tast.ad.KerberosDaemon"
 				},
 				{
@@ -881,13 +878,7 @@
 					"value": "tast.apps.LaunchCanvas.unstable"
 				},
 				{
-					"value": "tast.apps.LaunchGallery.lacros"
-				},
-				{
 					"value": "tast.apps.LaunchGallery.stable"
-				},
-				{
-					"value": "tast.apps.LaunchGalleryFromNotifications.lacros"
 				},
 				{
 					"value": "tast.apps.LaunchGalleryFromNotifications.stable"
@@ -4080,6 +4071,9 @@
 				},
 				{
 					"value": "tast.network.DiagFailDNSResolution"
+				},
+				{
+					"value": "tast.network.DropInvalidPackets"
 				},
 				{
 					"value": "tast.network.EhideCommandSupport.scp"
