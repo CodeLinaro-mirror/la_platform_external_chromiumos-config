@@ -3026,7 +3026,7 @@
 					"value": "tast.health.DiagnosticsRunV2.ufs_lifetime"
 				},
 				{
-					"value": "tast.health.MonitorBluetoothEvent"
+					"value": "tast.health.MonitorBluetoothEvent.bluez_only"
 				},
 				{
 					"value": "tast.health.MonitorEventStartup.audio_jack"
