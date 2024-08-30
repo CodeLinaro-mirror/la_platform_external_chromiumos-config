@@ -23915,6 +23915,15 @@
           "name": "CrosFirmwareProvisionTemplate"
         },
         {
+          "field": [
+            {
+              "jsonName": "postProcessSrcDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "post_process_src_dir",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
           "name": "PostProcessTemplate"
         }
       ],

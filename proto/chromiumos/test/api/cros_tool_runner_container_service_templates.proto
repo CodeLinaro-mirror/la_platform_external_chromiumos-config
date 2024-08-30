@@ -130,6 +130,10 @@ message CrosFirmwareProvisionTemplate {
 }
 
 // Plain template to demonstrate the usage of post-process container.
-// NEXT TAG: 1
+// NEXT TAG: 2
 message PostProcessTemplate {
+  // Source directory of artifacts that needs to be processed.
+  // This is also required to specify the location where the artifacts should
+  // be mounted.
+  string post_process_src_dir = 1;
 }
