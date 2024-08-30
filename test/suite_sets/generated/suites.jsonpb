@@ -5645,6 +5645,9 @@
 					"value": "tast.firmware.BootMode.dev_cold"
 				},
 				{
+					"value": "tast.firmware.BootMode.dev_gbb_to_rec"
+				},
+				{
 					"value": "tast.firmware.BootMode.dev_to_rec"
 				},
 				{
@@ -6206,6 +6209,9 @@
 			"tests": [
 				{
 					"value": "tast.firmware.BootMode.dev_cold"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_gbb_to_rec"
 				},
 				{
 					"value": "tast.firmware.BootMode.dev_to_rec"

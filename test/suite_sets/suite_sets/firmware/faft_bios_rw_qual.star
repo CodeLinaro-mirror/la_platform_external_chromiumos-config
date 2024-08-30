@@ -15,6 +15,7 @@ def _faft_bios_rw_qual():
         criteria = "Qualify the AP firmware for RW-only release.",
         tests = [
             "tast.firmware.BootMode.dev_cold",
+            "tast.firmware.BootMode.dev_gbb_to_rec",
             "tast.firmware.BootMode.dev_to_rec",
             "tast.firmware.BootMode.dev_warm",
             "tast.firmware.BootMode.normal_cold",

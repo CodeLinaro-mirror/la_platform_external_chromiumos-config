@@ -16,6 +16,7 @@ def _faft_bios_ro_qual():
         tests = [
             "tast.firmware.APBmpblk",
             "tast.firmware.BootMode.dev_cold",
+            "tast.firmware.BootMode.dev_gbb_to_rec",
             "tast.firmware.BootMode.dev_to_rec",
             "tast.firmware.BootMode.dev_warm",
             "tast.firmware.BootMode.normal_cold",
