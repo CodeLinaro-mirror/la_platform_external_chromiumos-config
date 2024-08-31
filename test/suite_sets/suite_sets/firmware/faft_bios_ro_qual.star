@@ -18,6 +18,7 @@ def _faft_bios_ro_qual():
             "tast.firmware.BootMode.dev_cold",
             "tast.firmware.BootMode.dev_gbb_to_rec",
             "tast.firmware.BootMode.dev_to_rec",
+            "tast.firmware.BootMode.dev_usb_cold",
             "tast.firmware.BootMode.dev_warm",
             "tast.firmware.BootMode.normal_cold",
             "tast.firmware.BootMode.normal_dev",

@@ -2834,6 +2834,12 @@
 					"value": "tast.graphics.DRM.swrast_test"
 				},
 				{
+					"value": "tast.graphics.ErrorStateDecode.cfm_m120"
+				},
+				{
+					"value": "tast.graphics.ErrorStateDecode.cfm_m120_full"
+				},
+				{
 					"value": "tast.graphics.FPS"
 				},
 				{
@@ -4250,6 +4256,9 @@
 					"value": "tast.network.ShillCaptivePortalProperties.ethernet_online_with_no_captive_portal"
 				},
 				{
+					"value": "tast.network.ShillEthernetReady"
+				},
+				{
 					"value": "tast.network.ShillInitScriptsLoginStartShill"
 				},
 				{
@@ -5651,6 +5660,9 @@
 					"value": "tast.firmware.BootMode.dev_to_rec"
 				},
 				{
+					"value": "tast.firmware.BootMode.dev_usb_cold"
+				},
+				{
 					"value": "tast.firmware.BootMode.dev_warm"
 				},
 				{
@@ -6215,6 +6227,9 @@
 				},
 				{
 					"value": "tast.firmware.BootMode.dev_to_rec"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_usb_cold"
 				},
 				{
 					"value": "tast.firmware.BootMode.dev_warm"
