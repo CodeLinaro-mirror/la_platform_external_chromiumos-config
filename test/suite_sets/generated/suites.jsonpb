@@ -2564,12 +2564,6 @@
 					"value": "tast.cryptohome.RecoveryLockedForAuth"
 				},
 				{
-					"value": "tast.cryptohome.RecoveryWithUssMigration.legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.RecoveryWithUssMigration.modern_pin"
-				},
-				{
 					"value": "tast.cryptohome.RelabelFactors"
 				},
 				{
@@ -2610,18 +2604,6 @@
 				},
 				{
 					"value": "tast.cryptohome.UssMigrationChallengeCredential.rsassa_sha1_tpm_dynamic"
-				},
-				{
-					"value": "tast.cryptohome.UssMigrationPasswordPin.legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.UssMigrationPasswordPin.modern_pin"
-				},
-				{
-					"value": "tast.cryptohome.UssMigrationPinAfterPasswordMigration.legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.UssMigrationPinAfterPasswordMigration.modern_pin"
 				},
 				{
 					"value": "tast.cryptohome.UssMigrationPinPassword.legacy_pin"
@@ -3035,6 +3017,9 @@
 					"value": "tast.health.MonitorBluetoothEvent.bluez_only"
 				},
 				{
+					"value": "tast.health.MonitorBluetoothEventFloss"
+				},
+				{
 					"value": "tast.health.MonitorEventStartup.audio_jack"
 				},
 				{
@@ -3096,6 +3081,9 @@
 				},
 				{
 					"value": "tast.health.ProbeBluetoothInfo"
+				},
+				{
+					"value": "tast.health.ProbeBluetoothInfo.floss"
 				},
 				{
 					"value": "tast.health.ProbeBootPerformanceInfo"
