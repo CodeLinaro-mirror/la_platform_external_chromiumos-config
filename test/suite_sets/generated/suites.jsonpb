@@ -2558,10 +2558,22 @@
 					"value": "tast.cryptohome.LegacyLabelAuthSession.without_key_data"
 				},
 				{
+					"value": "tast.cryptohome.PinLockoutOnLockScreen.legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.PinLockoutOnLockScreen.modern_pin"
+				},
+				{
 					"value": "tast.cryptohome.Recovery"
 				},
 				{
 					"value": "tast.cryptohome.RecoveryLockedForAuth"
+				},
+				{
+					"value": "tast.cryptohome.RecoveryWithUssMigration.legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.RecoveryWithUssMigration.modern_pin"
 				},
 				{
 					"value": "tast.cryptohome.RelabelFactors"
@@ -2606,10 +2618,22 @@
 					"value": "tast.cryptohome.UssMigrationChallengeCredential.rsassa_sha1_tpm_dynamic"
 				},
 				{
+					"value": "tast.cryptohome.UssMigrationPasswordPin.legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationPasswordPin.modern_pin"
+				},
+				{
 					"value": "tast.cryptohome.UssMigrationPinPassword.legacy_pin"
 				},
 				{
 					"value": "tast.cryptohome.UssMigrationPinPassword.modern_pin"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationUpdateAuthFactor.legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationUpdateAuthFactor.modern_pin"
 				},
 				{
 					"value": "tast.dbus.EventWatcher"
@@ -3165,6 +3189,12 @@
 				},
 				{
 					"value": "tast.health.RunLEDRoutine"
+				},
+				{
+					"value": "tast.health.RunSensitiveSensorRoutine.v1"
+				},
+				{
+					"value": "tast.health.RunSensitiveSensorRoutine.v2"
 				},
 				{
 					"value": "tast.health.RunUrandomRoutine"
