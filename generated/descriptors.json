@@ -29545,6 +29545,13 @@
               "name": "critical",
               "number": 10,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "boardType",
+              "label": "LABEL_OPTIONAL",
+              "name": "board_type",
+              "number": 11,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "BuildInfo"

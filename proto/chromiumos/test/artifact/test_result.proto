@@ -200,7 +200,7 @@ message TestCaseInfo {
 }
 
 // Captures ChromeOS build information associated with a test run.
-// NEXT TAG: 11
+// NEXT TAG: 12
 message BuildInfo {
   // The name associated with a given build, e.g. image name.
   // Format: "<source>/R<milestone>-<chrome_os_version>[.<additional_suffix>]"
@@ -242,6 +242,10 @@ message BuildInfo {
   // whether it's tagged with informational (non-critical) or not.
   // Note that the default is false if it's not set.
   bool critical = 10;
+
+  // The type associated with the given board.
+  // Example: "HW", or "VM".
+  string board_type = 11;
 }
 
 // The complete build metadata of the test case.
