@@ -2999,6 +2999,9 @@
 					"value": "tast.health.DiagnosticsRun.arc_http"
 				},
 				{
+					"value": "tast.health.DiagnosticsRun.arc_ping"
+				},
+				{
 					"value": "tast.health.DiagnosticsRun.battery_capacity"
 				},
 				{
@@ -6113,6 +6116,9 @@
 					"value": "tast.firmware.USBAnnotations"
 				},
 				{
+					"value": "tast.firmware.UpdateKernelDataKeyVersion"
+				},
+				{
 					"value": "tast.firmware.UpdateKernelVersion"
 				},
 				{
@@ -6578,6 +6584,9 @@
 				},
 				{
 					"value": "tast.firmware.USBAnnotations"
+				},
+				{
+					"value": "tast.firmware.UpdateKernelDataKeyVersion"
 				},
 				{
 					"value": "tast.firmware.UpdateKernelVersion"

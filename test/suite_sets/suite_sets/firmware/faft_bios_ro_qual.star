@@ -163,6 +163,7 @@ def _faft_bios_ro_qual():
             "tast.firmware.TryFWB.normal_mode",
             "tast.firmware.UIModeTransition",
             "tast.firmware.USBAnnotations",
+            "tast.firmware.UpdateKernelDataKeyVersion",
             "tast.firmware.UpdateKernelVersion",
             "tast.firmware.UpdateVersion.firmware_data_key_version",
             "tast.firmware.UpdateVersion.firmware_version",
