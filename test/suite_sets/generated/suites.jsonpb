@@ -3107,7 +3107,7 @@
 					"value": "tast.health.ProbeBlockDevices"
 				},
 				{
-					"value": "tast.health.ProbeBluetoothInfo"
+					"value": "tast.health.ProbeBluetoothInfo.bluez"
 				},
 				{
 					"value": "tast.health.ProbeBluetoothInfo.floss"
@@ -3180,6 +3180,12 @@
 				},
 				{
 					"value": "tast.health.ProbeWifiInfo"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v2_discovery"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v2_scanning"
 				},
 				{
 					"value": "tast.health.RunCameraAvailabilityRoutine"
@@ -4082,7 +4088,61 @@
 					"value": "tast.network.DHCPWebProxy"
 				},
 				{
+					"value": "tast.network.DNSProxy.arc_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxy.arc_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxy.arc_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxy.chrome_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxy.chrome_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxy.chrome_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxy.crostini_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxy.crostini_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxy.crostini_doh_off"
+				},
+				{
 					"value": "tast.network.DNSProxyCaptivePortal"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.arc_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.arc_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.arc_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.chrome_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.chrome_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.chrome_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.crostini_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.crostini_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.crostini_doh_off"
 				},
 				{
 					"value": "tast.network.DNSProxyQueries"
@@ -6188,15 +6248,6 @@
 					"value": "tauto.firmware_CorruptMinios.minios_b"
 				},
 				{
-					"value": "tauto.firmware_RecoveryCacheBootKeys"
-				},
-				{
-					"value": "tauto.firmware_RecoveryCacheBootKeys.dev"
-				},
-				{
-					"value": "tauto.firmware_UpdateKernelDataKeyVersion"
-				},
-				{
 					"value": "tauto.firmware_UpdaterModes"
 				},
 				{
@@ -6638,9 +6689,6 @@
 				},
 				{
 					"value": "tauto.firmware_CorruptBothKernelAB"
-				},
-				{
-					"value": "tauto.firmware_UpdateKernelDataKeyVersion"
 				},
 				{
 					"value": "tauto.firmware_UpdaterModes"

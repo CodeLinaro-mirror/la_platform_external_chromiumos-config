@@ -146,7 +146,6 @@ def _faft_bios_rw_qual():
             "tast.wifi.SetTXPower.vpd",
             "tauto.firmware_CbfsMcache",
             "tauto.firmware_CorruptBothKernelAB",
-            "tauto.firmware_UpdateKernelDataKeyVersion",
             "tauto.firmware_UpdaterModes",
             "tauto.firmware_WilcoDiagnosticsMode",
             "tauto.firmware_WriteProtect",
