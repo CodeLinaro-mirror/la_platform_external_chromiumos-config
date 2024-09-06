@@ -25,5 +25,7 @@ message StoragePath {
     LOCAL = 1;
     // The resources are hosted in Google Storage.
     GS = 2;
+    // The resources are hosted by android build system.
+    ANDROID_BUILD = 3;
   }
 }

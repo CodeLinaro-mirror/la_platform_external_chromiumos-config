@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go;storage_path',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1d\x63hromiumos/storage_path.proto\x12\nchromiumos\"\x89\x01\n\x0bStoragePath\x12\x33\n\thost_type\x18\x01 \x01(\x0e\x32 .chromiumos.StoragePath.HostType\x12\x0c\n\x04path\x18\x02 \x01(\t\"7\n\x08HostType\x12\x18\n\x14HOSTTYPE_UNSPECIFIED\x10\x00\x12\t\n\x05LOCAL\x10\x01\x12\x06\n\x02GS\x10\x02\x42\x33Z1go.chromium.org/chromiumos/config/go;storage_pathb\x06proto3'
+  serialized_pb=b'\n\x1d\x63hromiumos/storage_path.proto\x12\nchromiumos\"\x9c\x01\n\x0bStoragePath\x12\x33\n\thost_type\x18\x01 \x01(\x0e\x32 .chromiumos.StoragePath.HostType\x12\x0c\n\x04path\x18\x02 \x01(\t\"J\n\x08HostType\x12\x18\n\x14HOSTTYPE_UNSPECIFIED\x10\x00\x12\t\n\x05LOCAL\x10\x01\x12\x06\n\x02GS\x10\x02\x12\x11\n\rANDROID_BUILD\x10\x03\x42\x33Z1go.chromium.org/chromiumos/config/go;storage_pathb\x06proto3'
 )
 
 
@@ -46,11 +46,16 @@ _STORAGEPATH_HOSTTYPE = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ANDROID_BUILD', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=128,
-  serialized_end=183,
+  serialized_end=202,
 )
 _sym_db.RegisterEnumDescriptor(_STORAGEPATH_HOSTTYPE)
 
@@ -91,7 +96,7 @@ _STORAGEPATH = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=46,
-  serialized_end=183,
+  serialized_end=202,
 )
 
 _STORAGEPATH.fields_by_name['host_type'].enum_type = _STORAGEPATH_HOSTTYPE
