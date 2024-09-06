@@ -18085,6 +18085,22 @@
             {
               "name": "NETWORK_FI",
               "number": 17
+            },
+            {
+              "name": "NETWORK_CBRS",
+              "number": 18
+            },
+            {
+              "name": "NETWORK_LINEMO",
+              "number": 19
+            },
+            {
+              "name": "NETWORK_POVO",
+              "number": 20
+            },
+            {
+              "name": "NETWORK_HANSHIN",
+              "number": 21
             }
           ]
         },
