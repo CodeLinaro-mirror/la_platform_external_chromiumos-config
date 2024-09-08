@@ -1142,12 +1142,6 @@
 					"value": "tast.arc.IntentForward"
 				},
 				{
-					"value": "tast.arc.IntentForward.lacros"
-				},
-				{
-					"value": "tast.arc.IntentForward.lacros_vm"
-				},
-				{
 					"value": "tast.arc.IntentForward.vm"
 				},
 				{
@@ -1457,10 +1451,16 @@
 					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_ast_button_disabled"
 				},
 				{
+					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_ast_button_enabled"
+				},
+				{
 					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_nc_button_disabled"
 				},
 				{
 					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_nc_button_enabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_ast"
 				},
 				{
 					"value": "tast.audio.CrasEffects.nc_both_ast_disabled"
@@ -1473,6 +1473,9 @@
 				},
 				{
 					"value": "tast.audio.CrasEffects.nc_both_fallback_ap_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_prefer_ast"
 				},
 				{
 					"value": "tast.audio.CrasEffects.nc_both_prefer_dsp"
@@ -1497,6 +1500,9 @@
 				},
 				{
 					"value": "tast.audio.CrasEffects.nc_then_unprocessed_stream"
+				},
+				{
+					"value": "tast.audio.CrasEffects.style_transfer"
 				},
 				{
 					"value": "tast.audio.CrasEffects.unprocessed_then_nc_stream"
