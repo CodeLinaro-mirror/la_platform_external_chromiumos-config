@@ -205,6 +205,11 @@ partner = struct(
             vendor_id = "2808",
             symlink_file_format = "{product_id}_{fw_version}.bin",
         ),
+        PARADETECH = _create_touch_partner(
+            name = "paradetech",
+            vendor_id = "1DA0",
+            symlink_file_format = "paradetech_{product_id}.bin",
+        ),
     ),
     battery = struct(
         PANASONIC = _create_battery_partner(
