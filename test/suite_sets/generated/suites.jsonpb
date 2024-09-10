@@ -1238,9 +1238,6 @@
 					"value": "tast.arc.Print.container_p"
 				},
 				{
-					"value": "tast.arc.Print.container_r"
-				},
-				{
 					"value": "tast.arc.RemovableMedia"
 				},
 				{
@@ -6224,6 +6221,24 @@
 					"value": "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen"
 				},
 				{
+					"value": "tast.firmware.WriteProtect.ap"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ap_dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ec"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ec_dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtectCrossystem.dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtectCrossystem.normal"
+				},
+				{
 					"value": "tast.hwsec.TPMContest"
 				},
 				{
@@ -6258,15 +6273,6 @@
 				},
 				{
 					"value": "tauto.firmware_WilcoDiagnosticsMode"
-				},
-				{
-					"value": "tauto.firmware_WriteProtect"
-				},
-				{
-					"value": "tauto.firmware_WriteProtect.dev"
-				},
-				{
-					"value": "tauto.firmware_WriteProtectFunc"
 				},
 				{
 					"value": "tauto.hardware_TPMCheck"
@@ -6673,6 +6679,24 @@
 					"value": "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen"
 				},
 				{
+					"value": "tast.firmware.WriteProtect.ap"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ap_dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ec"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ec_dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtectCrossystem.dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtectCrossystem.normal"
+				},
+				{
 					"value": "tast.hwsec.TPMContest"
 				},
 				{
@@ -6701,15 +6725,6 @@
 				},
 				{
 					"value": "tauto.firmware_WilcoDiagnosticsMode"
-				},
-				{
-					"value": "tauto.firmware_WriteProtect"
-				},
-				{
-					"value": "tauto.firmware_WriteProtect.dev"
-				},
-				{
-					"value": "tauto.firmware_WriteProtectFunc"
 				},
 				{
 					"value": "tauto.hardware_TPMCheck"
