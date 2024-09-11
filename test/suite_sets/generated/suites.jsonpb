@@ -2213,13 +2213,7 @@
 					"value": "tast.crostini.LaunchBrowser.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.LaunchBrowser.bookworm_stable_lacros"
-				},
-				{
 					"value": "tast.crostini.LaunchBrowser.bullseye_stable"
-				},
-				{
-					"value": "tast.crostini.LaunchBrowser.bullseye_stable_lacros"
 				},
 				{
 					"value": "tast.crostini.LaunchTerminal.bookworm_stable"
@@ -2477,13 +2471,7 @@
 					"value": "tast.crostini.VerifyAppWayland.bookworm_stable"
 				},
 				{
-					"value": "tast.crostini.VerifyAppWayland.bookworm_stable_lacros"
-				},
-				{
 					"value": "tast.crostini.VerifyAppWayland.bullseye_stable"
-				},
-				{
-					"value": "tast.crostini.VerifyAppWayland.bullseye_stable_lacros"
 				},
 				{
 					"value": "tast.crostini.VerifyAppX11.bookworm_stable"
@@ -6995,13 +6983,25 @@
 					"value": "tast.firmware.ECPDPowerSwap.dtsoff"
 				},
 				{
+					"value": "tast.firmware.ECPDPowerSwap.dtsoff_stress"
+				},
+				{
 					"value": "tast.firmware.ECPDPowerSwap.flipcc"
 				},
 				{
 					"value": "tast.firmware.ECPDPowerSwap.flipcc_dtsoff"
 				},
 				{
+					"value": "tast.firmware.ECPDPowerSwap.flipcc_dtsoff_stress"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.flipcc_stress"
+				},
+				{
 					"value": "tast.firmware.ECPDPowerSwap.normal"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.normal_stress"
 				},
 				{
 					"value": "tast.firmware.ECPDPowerSwap.shutdown"
