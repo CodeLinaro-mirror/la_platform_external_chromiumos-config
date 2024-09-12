@@ -2915,6 +2915,9 @@
 					"value": "tast.health.DiagnosticsList"
 				},
 				{
+					"value": "tast.health.DiagnosticsPass.ac_power"
+				},
+				{
 					"value": "tast.health.DiagnosticsPass.bluetooth_discovery"
 				},
 				{
@@ -2981,9 +2984,6 @@
 					"value": "tast.health.DiagnosticsPassV2.prime_search_v2"
 				},
 				{
-					"value": "tast.health.DiagnosticsRun.ac_power"
-				},
-				{
 					"value": "tast.health.DiagnosticsRun.arc_dns_resolution"
 				},
 				{
@@ -3032,7 +3032,7 @@
 					"value": "tast.health.DiagnosticsRunV2.ufs_lifetime"
 				},
 				{
-					"value": "tast.health.MonitorBluetoothEvent.bluez_only"
+					"value": "tast.health.MonitorBluetoothEventBluez"
 				},
 				{
 					"value": "tast.health.MonitorBluetoothEventFloss"
@@ -3974,13 +3974,7 @@
 					"value": "tast.mlservice.WebHandwritingRecognition"
 				},
 				{
-					"value": "tast.mlservice.WebHandwritingRecognition.lacros"
-				},
-				{
 					"value": "tast.mlservice.WebHandwritingRecognitionNotSupported"
-				},
-				{
-					"value": "tast.mlservice.WebHandwritingRecognitionNotSupported.lacros"
 				},
 				{
 					"value": "tast.mojo.ServiceManagerPolicy"
