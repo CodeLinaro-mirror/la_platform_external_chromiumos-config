@@ -5006,9 +5006,6 @@
 					"value": "tast.sched.CoreSchedTag"
 				},
 				{
-					"value": "tast.sched.CoreSchedTag.lacros"
-				},
-				{
 					"value": "tast.sched.SetQoSState"
 				},
 				{
