@@ -2855,12 +2855,6 @@
 					"value": "tast.graphics.Idle.dvfs_arc"
 				},
 				{
-					"value": "tast.graphics.Idle.i915_min_clock"
-				},
-				{
-					"value": "tast.graphics.Idle.i915_min_clock_arc"
-				},
-				{
 					"value": "tast.graphics.Idle.psr"
 				},
 				{
