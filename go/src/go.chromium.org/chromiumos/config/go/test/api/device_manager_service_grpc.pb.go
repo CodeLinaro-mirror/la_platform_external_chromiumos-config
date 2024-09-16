@@ -24,6 +24,8 @@ const _ = grpc.SupportPackageIsVersion7
 type DeviceLeaseServiceClient interface {
 	// Lease a device and create a lease.
 	LeaseDevice(ctx context.Context, in *LeaseDeviceRequest, opts ...grpc.CallOption) (*LeaseDeviceResponse, error)
+	// Bulk lease devices and create leases for all of them.
+	BulkLeaseDevices(ctx context.Context, in *BulkLeaseDevicesRequest, opts ...grpc.CallOption) (*BulkLeaseDevicesResponse, error)
 	// Release a device lease.
 	ReleaseDevice(ctx context.Context, in *ReleaseDeviceRequest, opts ...grpc.CallOption) (*ReleaseDeviceResponse, error)
 	// Extend a device lease by modifying the expiration time.
@@ -47,6 +49,15 @@ func NewDeviceLeaseServiceClient(cc grpc.ClientConnInterface) DeviceLeaseService
 func (c *deviceLeaseServiceClient) LeaseDevice(ctx context.Context, in *LeaseDeviceRequest, opts ...grpc.CallOption) (*LeaseDeviceResponse, error) {
 	out := new(LeaseDeviceResponse)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.DeviceLeaseService/LeaseDevice", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deviceLeaseServiceClient) BulkLeaseDevices(ctx context.Context, in *BulkLeaseDevicesRequest, opts ...grpc.CallOption) (*BulkLeaseDevicesResponse, error) {
+	out := new(BulkLeaseDevicesResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.DeviceLeaseService/BulkLeaseDevices", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -95,6 +106,8 @@ func (c *deviceLeaseServiceClient) ListDevices(ctx context.Context, in *ListDevi
 type DeviceLeaseServiceServer interface {
 	// Lease a device and create a lease.
 	LeaseDevice(context.Context, *LeaseDeviceRequest) (*LeaseDeviceResponse, error)
+	// Bulk lease devices and create leases for all of them.
+	BulkLeaseDevices(context.Context, *BulkLeaseDevicesRequest) (*BulkLeaseDevicesResponse, error)
 	// Release a device lease.
 	ReleaseDevice(context.Context, *ReleaseDeviceRequest) (*ReleaseDeviceResponse, error)
 	// Extend a device lease by modifying the expiration time.
@@ -113,6 +126,9 @@ type UnimplementedDeviceLeaseServiceServer struct {
 
 func (UnimplementedDeviceLeaseServiceServer) LeaseDevice(context.Context, *LeaseDeviceRequest) (*LeaseDeviceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LeaseDevice not implemented")
+}
+func (UnimplementedDeviceLeaseServiceServer) BulkLeaseDevices(context.Context, *BulkLeaseDevicesRequest) (*BulkLeaseDevicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BulkLeaseDevices not implemented")
 }
 func (UnimplementedDeviceLeaseServiceServer) ReleaseDevice(context.Context, *ReleaseDeviceRequest) (*ReleaseDeviceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReleaseDevice not implemented")
@@ -152,6 +168,24 @@ func _DeviceLeaseService_LeaseDevice_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DeviceLeaseServiceServer).LeaseDevice(ctx, req.(*LeaseDeviceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeviceLeaseService_BulkLeaseDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkLeaseDevicesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceLeaseServiceServer).BulkLeaseDevices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.DeviceLeaseService/BulkLeaseDevices",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceLeaseServiceServer).BulkLeaseDevices(ctx, req.(*BulkLeaseDevicesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -238,6 +272,10 @@ var DeviceLeaseService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LeaseDevice",
 			Handler:    _DeviceLeaseService_LeaseDevice_Handler,
+		},
+		{
+			MethodName: "BulkLeaseDevices",
+			Handler:    _DeviceLeaseService_BulkLeaseDevices_Handler,
 		},
 		{
 			MethodName: "ReleaseDevice",

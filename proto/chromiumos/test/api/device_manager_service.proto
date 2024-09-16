@@ -16,6 +16,9 @@ service DeviceLeaseService {
   // Lease a device and create a lease.
   rpc LeaseDevice(LeaseDeviceRequest) returns (LeaseDeviceResponse) {};
 
+  // Bulk lease devices and create leases for all of them.
+  rpc BulkLeaseDevices(BulkLeaseDevicesRequest) returns (BulkLeaseDevicesResponse) {};
+
   // Release a device lease.
   rpc ReleaseDevice(ReleaseDeviceRequest) returns (ReleaseDeviceResponse) {};
 
@@ -152,6 +155,26 @@ enum LeaseDeviceResponseErrorType {
   LEASE_ERROR_TYPE_NONE = 0;
   LEASE_ERROR_TYPE_DEVICE_NOT_FOUND = 1;
   LEASE_ERROR_TYPE_DEVICE_ALREADY_LEASED = 2;
+}
+
+message BulkLeaseDevicesRequest {
+  // A list of LeaseDeviceRequests.
+  repeated LeaseDeviceRequest lease_device_requests = 1;
+}
+
+message BulkLeaseDevicesResponse {
+  // One LeaseDeviceResponse for each LeaseDeviceRequest in the
+  // BulkLeaseDevicesRequest.
+  repeated LeaseDeviceResponse lease_device_responses = 1;
+
+  // Overall error for the bulk request.
+  // If this is set, all lease_device_responses will be errored.
+  BulkLeaseDevicesResponseErrorType error_type = 2;
+  string error_string = 3;
+}
+
+enum BulkLeaseDevicesResponseErrorType {
+  BULK_LEASE_ERROR_TYPE_NONE = 0;
 }
 
 message ReleaseDeviceRequest {

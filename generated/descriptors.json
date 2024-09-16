@@ -27305,6 +27305,15 @@
           ]
         },
         {
+          "name": "BulkLeaseDevicesResponseErrorType",
+          "value": [
+            {
+              "name": "BULK_LEASE_ERROR_TYPE_NONE",
+              "number": 0
+            }
+          ]
+        },
+        {
           "name": "ReleaseDeviceResponseErrorType",
           "value": [
             {
@@ -27569,6 +27578,47 @@
         {
           "field": [
             {
+              "jsonName": "leaseDeviceRequests",
+              "label": "LABEL_REPEATED",
+              "name": "lease_device_requests",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LeaseDeviceRequest"
+            }
+          ],
+          "name": "BulkLeaseDevicesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "leaseDeviceResponses",
+              "label": "LABEL_REPEATED",
+              "name": "lease_device_responses",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LeaseDeviceResponse"
+            },
+            {
+              "jsonName": "errorType",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_type",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.BulkLeaseDevicesResponseErrorType"
+            },
+            {
+              "jsonName": "errorString",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_string",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "BulkLeaseDevicesResponse"
+        },
+        {
+          "field": [
+            {
               "jsonName": "leaseId",
               "label": "LABEL_OPTIONAL",
               "name": "lease_id",
@@ -27684,6 +27734,12 @@
               "name": "LeaseDevice",
               "options": {},
               "outputType": ".chromiumos.test.api.LeaseDeviceResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.BulkLeaseDevicesRequest",
+              "name": "BulkLeaseDevices",
+              "options": {},
+              "outputType": ".chromiumos.test.api.BulkLeaseDevicesResponse"
             },
             {
               "inputType": ".chromiumos.test.api.ReleaseDeviceRequest",
