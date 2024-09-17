@@ -26012,6 +26012,13 @@
               "name": "run_dynamic",
               "number": 8,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "isAlRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_al_run",
+              "number": 9,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "CTPRequest"

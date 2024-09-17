@@ -64,6 +64,9 @@ message CTPRequest {
   // Instruct ctpv2 to construct a dynamic trv2 request object
   // instead of a CftTestRequest (non-dynamic).
   bool run_dynamic = 8;
+
+  // If true then the request is an AL type run in CTPv2 and TRv2.
+  bool is_al_run = 9;
 }
 
 message SchedulerInfo {
