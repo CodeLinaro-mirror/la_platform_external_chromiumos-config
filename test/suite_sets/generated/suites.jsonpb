@@ -3167,6 +3167,12 @@
 					"value": "tast.health.ProbeWifiInfo"
 				},
 				{
+					"value": "tast.health.RunBluetoothRoutine.v1_scanning_bluez"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v1_scanning_floss"
+				},
+				{
 					"value": "tast.health.RunBluetoothRoutine.v2_discovery"
 				},
 				{
