@@ -5758,6 +5758,10 @@
                       "number": 14
                     },
                     {
+                      "name": "ALC272",
+                      "number": 15
+                    },
+                    {
                       "name": "AUDIO_CODEC_ALC5650",
                       "number": 17
                     },
