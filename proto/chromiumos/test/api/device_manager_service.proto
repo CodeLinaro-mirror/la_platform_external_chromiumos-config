@@ -167,14 +167,18 @@ message BulkLeaseDevicesResponse {
   // BulkLeaseDevicesRequest.
   repeated LeaseDeviceResponse lease_device_responses = 1;
 
-  // Overall error for the bulk request.
-  // If this is set, all lease_device_responses will be errored.
+  // Overall error for the bulk request. It is possible for the response to
+  // error with partial success of leasing.
   BulkLeaseDevicesResponseErrorType error_type = 2;
   string error_string = 3;
 }
 
 enum BulkLeaseDevicesResponseErrorType {
   BULK_LEASE_ERROR_TYPE_NONE = 0;
+  // Internal Postgres errors.
+  BULK_LEASE_ERROR_TYPE_INTERNAL_DATABASE_ERR = 1;
+  // Some Devices failed to be leased. See individual lease request errors.
+  BULK_LEASE_ERROR_TYPE_PARTIAL_LEASE_FAILURE = 2;
 }
 
 message ReleaseDeviceRequest {

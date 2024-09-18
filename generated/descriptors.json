@@ -27321,6 +27321,14 @@
             {
               "name": "BULK_LEASE_ERROR_TYPE_NONE",
               "number": 0
+            },
+            {
+              "name": "BULK_LEASE_ERROR_TYPE_INTERNAL_DATABASE_ERR",
+              "number": 1
+            },
+            {
+              "name": "BULK_LEASE_ERROR_TYPE_PARTIAL_LEASE_FAILURE",
+              "number": 2
             }
           ]
         },
