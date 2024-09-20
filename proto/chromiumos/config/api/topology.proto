@@ -361,11 +361,13 @@ message HardwareFeatures {
       WCD9385 = 13;
       ES8326 = 14;
       ALC272 = 15;
-      // 16 is still free to be used
+      // 16 is free to be used
       AUDIO_CODEC_ALC5650 = 17;
       AUDIO_CODEC_ALC256 = 18;
       AUDIO_CODEC_ALC3247 = 19;
       AUDIO_CODEC_ALC3287 = 20;
+      // 21 is free to be used
+      AUDIO_CODEC_ALC772 = 22;
     }
 
     enum Amplifier {
@@ -390,6 +392,7 @@ message HardwareFeatures {
       AMPLIFIER_ALC3247 = 19;
       AMPLIFIER_ALC3287 = 20;
       TAS2563 = 21;
+      AMPLIFIER_ALC772 = 22;
     }
 
     enum AudioConfigStructure {

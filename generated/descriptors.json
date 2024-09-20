@@ -5776,6 +5776,10 @@
                     {
                       "name": "AUDIO_CODEC_ALC3287",
                       "number": 20
+                    },
+                    {
+                      "name": "AUDIO_CODEC_ALC772",
+                      "number": 22
                     }
                   ]
                 },
@@ -5863,6 +5867,10 @@
                     {
                       "name": "TAS2563",
                       "number": 21
+                    },
+                    {
+                      "name": "AMPLIFIER_ALC772",
+                      "number": 22
                     }
                   ]
                 },
