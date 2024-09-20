@@ -2552,7 +2552,10 @@
 					"value": "tast.cryptohome.PinLockoutOnLockScreen.legacy_pin"
 				},
 				{
-					"value": "tast.cryptohome.PinLockoutOnLockScreen.modern_pin"
+					"value": "tast.cryptohome.PinLockoutOnLockScreen.migrate_legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.PinLockoutOnLockScreen.modern_pin_no_migration"
 				},
 				{
 					"value": "tast.cryptohome.Recovery"
@@ -5243,7 +5246,28 @@
 					"value": "tast.telemetryextension.HasCorrectOrEmptyOEMName.hp"
 				},
 				{
+					"value": "tast.telemetryextension.PlatformAPIAvailableRoutines"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPICPUPrimeSearchRoutine"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIEventsAudioJack"
+				},
+				{
 					"value": "tast.telemetryextension.PlatformAPIEventsKeyboardDiagnostic.no_keyboard"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIMemoryInfo"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIRoutinesMemory"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIVPDInfo"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformMessagePipe"
 				},
 				{
 					"value": "tast.terminal.Crosh"
