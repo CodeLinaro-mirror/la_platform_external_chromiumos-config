@@ -38,6 +38,9 @@ message Device {
   // In the case of VMs, device id could be the GCE instance name. For physical
   // DUTs we use the IDs we get from UFS.
   string id = 1;
+  // dut_id is the asset tag for a Device
+  string dut_id = 6;
+
   DeviceAddress address = 2;
   DeviceType type = 3;
   DeviceState state = 4;
@@ -80,8 +83,10 @@ message DeviceLeaseRecord {
   string idempotency_key = 2;
 
   // Device data.
-  // Id corresponding to the device name.
+  // Id (hostname) corresponding to the device name.
   string device_id = 3;
+  // DUT ID (asset tag) corresponding to the device name.
+  string dut_id = 11;
   // SSH-able address to access the device.
   DeviceAddress device_address = 4;
   // Type of device leased.

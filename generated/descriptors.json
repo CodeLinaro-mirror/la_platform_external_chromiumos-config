@@ -27357,6 +27357,13 @@
               "type": "TYPE_STRING"
             },
             {
+              "jsonName": "dutId",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_id",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
               "jsonName": "address",
               "label": "LABEL_OPTIONAL",
               "name": "address",
@@ -27431,6 +27438,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "device_id",
               "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "dutId",
+              "label": "LABEL_OPTIONAL",
+              "name": "dut_id",
+              "number": 11,
               "type": "TYPE_STRING"
             },
             {
