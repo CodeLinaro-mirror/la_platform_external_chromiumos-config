@@ -3191,6 +3191,9 @@
 					"value": "tast.health.RunFanRoutine"
 				},
 				{
+					"value": "tast.health.RunKeyboardBacklightRoutine"
+				},
+				{
 					"value": "tast.health.RunLEDRoutine"
 				},
 				{
@@ -3425,9 +3428,6 @@
 					"value": "tast.inputs.InputMethodShelfInputs"
 				},
 				{
-					"value": "tast.inputs.InputMethodShelfInputs.lacros"
-				},
-				{
 					"value": "tast.inputs.InputMethodSystemLanguage.es"
 				},
 				{
@@ -3440,19 +3440,10 @@
 					"value": "tast.inputs.PhysicalKeyboardAltgr"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardAltgr.lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardAutocorrect.en_us_1"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardAutocorrect.en_us_1_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardAutocorrect.en_us_2"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardAutocorrect.en_us_2_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardAutocorrectAccentKey"
@@ -3461,13 +3452,7 @@
 					"value": "tast.inputs.PhysicalKeyboardCantoneseTyping"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardCantoneseTyping.lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardCapsLock"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardCapsLock.lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardChangeInput"
@@ -3479,22 +3464,10 @@
 					"value": "tast.inputs.PhysicalKeyboardDeadKeys.french"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardDeadKeys.french_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardDeadKeys.us_intl_acute"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardDeadKeys.us_intl_acute_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardDeadKeys.us_intl_double"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardDeadKeys.us_intl_double_lacros"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardEmoji.lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardEmojiSearch"
@@ -3509,34 +3482,16 @@
 					"value": "tast.inputs.PhysicalKeyboardEmojiSuggestion.guest"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardEmojiSuggestion.guest_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardEmojiSuggestion.incognito"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardEmojiSuggestion.incognito_lacros"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardEmojiSuggestion.lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardEnglishTyping"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardEnglishTyping.lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardGrammarCheck"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardGrammarCheck.lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardInputFields.us_en"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardInputFields.us_en_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardKoreanTyping"
@@ -3545,19 +3500,10 @@
 					"value": "tast.inputs.PhysicalKeyboardLongpressDiacritics"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardLongpressDiacritics.lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardMultiwordSuggestion.informational"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardMultiwordSuggestion.lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardPinyinTyping.simplified"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardPinyinTyping.simplified_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardPinyinTyping.traditional"
@@ -3566,133 +3512,67 @@
 					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.array"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.array_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.cangjie"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.cangjie_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.dayi"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.dayi_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.quick"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.quick_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.wubi"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.wubi_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardTextEditing"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardTextEditing.lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.el"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.el_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.fa"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.fa_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.gu"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.gu_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.hi"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.hi_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.kn"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.kn_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ml"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ml_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.mr"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.mr_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ne"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ne_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.or"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.or_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.pa"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.pa_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.sa"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.sa_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ta"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ta_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.te"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.te_lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ur"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ur_lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardZhuyinTyping"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardZhuyinTyping.lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardAccent"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardAccent.lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardAccessibility"
@@ -3707,31 +3587,16 @@
 					"value": "tast.inputs.VirtualKeyboardChangeInput.a11y"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardChangeInput.a11y_lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardChangeInput.tablet"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardChangeInput.tablet_lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardDeadKeys.catalan"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardDeadKeys.catalan_lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardDeadKeys.french"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardDeadKeys.french_lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardEnglishSettings"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardEnglishSettings.lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardFloat.clamshell"
@@ -3743,37 +3608,19 @@
 					"value": "tast.inputs.VirtualKeyboardGlideTyping.clamshell_a11y_docked"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardGlideTyping.clamshell_a11y_docked_lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardGlideTyping.clamshell_a11y_floating"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardGlideTyping.clamshell_a11y_floating_lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardGlideTyping.tablet_docked"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardGlideTyping.tablet_docked_lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardGlideTyping.tablet_floating"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardGlideTyping.tablet_floating_lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardHandwriting.docked"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardHandwriting.docked_lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardHandwriting.floating"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardHandwriting.floating_lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardJapaneseInputMode"
@@ -3782,13 +3629,7 @@
 					"value": "tast.inputs.VirtualKeyboardMultipaste"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardMultipaste.lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardMultipasteSuggestion"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardMultipasteSuggestion.lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardMultitouch"
@@ -3812,19 +3653,10 @@
 					"value": "tast.inputs.VirtualKeyboardTypingInputFields"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardTypingInputFields.lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardTypingUserMode.guest"
 				},
 				{
-					"value": "tast.inputs.VirtualKeyboardTypingUserMode.guest_lacros"
-				},
-				{
 					"value": "tast.inputs.VirtualKeyboardTypingUserMode.incognito"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardTypingUserMode.incognito_lacros"
 				},
 				{
 					"value": "tast.kdump.ProbeKernelLimits"
@@ -4995,6 +4827,9 @@
 				},
 				{
 					"value": "tast.scanner.EnumerateIPPUSB.async"
+				},
+				{
+					"value": "tast.scanner.InstallDLC"
 				},
 				{
 					"value": "tast.scanner.ScanESCLIPP.network"
