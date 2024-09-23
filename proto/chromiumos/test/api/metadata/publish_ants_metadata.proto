@@ -1,0 +1,19 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api.metadata;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
+
+// NEXT TAG: 4
+message PublishAntsMetadata {
+  // The invocation id of the overall ANTS invocation.
+  string ants_invocation_id = 1;
+
+  // The work unit id of the parent work unit underlying all the modules.
+  string parent_work_unit_id = 2;
+  string account_id = 3;
+}
