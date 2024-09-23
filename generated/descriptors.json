@@ -34339,6 +34339,125 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "enumType": [
+        {
+          "name": "SwitchPortState",
+          "value": [
+            {
+              "name": "SWITCH_PORT_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "SWITCH_PORT_DISABLED",
+              "number": 1
+            },
+            {
+              "name": "SWITCH_PORT_ENABLED",
+              "number": 2
+            },
+            {
+              "name": "SWITCH_PORT_FLIP",
+              "number": 3
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SwitchFixture"
+        },
+        {
+          "name": "GetSwitchesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "switches",
+              "label": "LABEL_REPEATED",
+              "name": "switches",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.SwitchFixture"
+            }
+          ],
+          "name": "GetSwitchesResponse"
+        },
+        {
+          "name": "ResetAllSwitchesRequest"
+        },
+        {
+          "name": "ResetAllSwitchesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "switchId",
+              "label": "LABEL_OPTIONAL",
+              "name": "switch_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.SwitchPortState"
+            }
+          ],
+          "name": "ConfigureSwitchPortRequest"
+        },
+        {
+          "name": "ConfigureSwitchPortResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/switch_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetSwitchesRequest",
+              "name": "GetSwitches",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetSwitchesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.ResetAllSwitchesRequest",
+              "name": "ResetAllSwitches",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.ResetAllSwitchesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.ConfigureSwitchPortRequest",
+              "name": "ConfigureSwitchPort",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.ConfigureSwitchPortResponse"
+            }
+          ],
+          "name": "SwitchService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
