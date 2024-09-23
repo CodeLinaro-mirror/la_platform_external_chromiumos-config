@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n%chromiumos/test/api/adb_service.proto\x12\x13\x63hromiumos.test.api\"2\n\x11\x41\x44\x42\x43ommandRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x02 \x03(\t\"4\n\x12\x41\x44\x42\x43ommandResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x32n\n\nADBService\x12`\n\x0b\x45xecCommand\x12&.chromiumos.test.api.ADBCommandRequest\x1a\'.chromiumos.test.api.ADBCommandResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n%chromiumos/test/api/adb_service.proto\x12\x13\x63hromiumos.test.api\"2\n\x11\x41\x44\x42\x43ommandRequest\x12\x0f\n\x07\x63ommand\x18\x01 \x01(\t\x12\x0c\n\x04\x61rgs\x18\x02 \x03(\t\"G\n\x12\x41\x44\x42\x43ommandResponse\x12\x0e\n\x06stdout\x18\x01 \x01(\x0c\x12\x0e\n\x06stderr\x18\x02 \x01(\x0c\x12\x11\n\texit_code\x18\x03 \x01(\x05\x32n\n\nADBService\x12`\n\x0b\x45xecCommand\x12&.chromiumos.test.api.ADBCommandRequest\x1a\'.chromiumos.test.api.ADBCommandResponse\"\x00\x42/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
 )
 
 
@@ -86,6 +86,13 @@ _ADBCOMMANDRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='exit_code', full_name='chromiumos.test.api.ADBCommandResponse.exit_code', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -99,7 +106,7 @@ _ADBCOMMANDRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=114,
-  serialized_end=166,
+  serialized_end=185,
 )
 
 DESCRIPTOR.message_types_by_name['ADBCommandRequest'] = _ADBCOMMANDREQUEST
@@ -130,8 +137,8 @@ _ADBSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=168,
-  serialized_end=278,
+  serialized_start=187,
+  serialized_end=297,
   methods=[
   _descriptor.MethodDescriptor(
     name='ExecCommand',

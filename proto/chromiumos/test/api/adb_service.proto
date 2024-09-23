@@ -32,4 +32,7 @@ message ADBCommandResponse {
   // The implementation MAY batch or delay output to later
   // responses in the stream.
   bytes stderr = 2;
+  // Exit code from shell command.
+  // At this point only support exit code 1 or 0.
+  int32 exit_code = 3;
 }

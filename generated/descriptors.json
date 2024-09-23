@@ -17316,6 +17316,13 @@
               "name": "stderr",
               "number": 2,
               "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "exitCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "exit_code",
+              "number": 3,
+              "type": "TYPE_INT32"
             }
           ],
           "name": "ADBCommandResponse"
