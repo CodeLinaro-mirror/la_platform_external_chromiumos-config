@@ -34339,6 +34339,139 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "name": "GetCamerasRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Camera"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "cameras",
+              "label": "LABEL_REPEATED",
+              "name": "cameras",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.Camera"
+            }
+          ],
+          "name": "GetCamerasResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetAveragePixelRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "r",
+              "label": "LABEL_OPTIONAL",
+              "name": "r",
+              "number": 1,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "g",
+              "label": "LABEL_OPTIONAL",
+              "name": "g",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "b",
+              "label": "LABEL_OPTIONAL",
+              "name": "b",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "a",
+              "label": "LABEL_OPTIONAL",
+              "name": "a",
+              "number": 4,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "Pixel"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "pixel",
+              "label": "LABEL_OPTIONAL",
+              "name": "pixel",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.Pixel"
+            },
+            {
+              "jsonName": "frame",
+              "label": "LABEL_OPTIONAL",
+              "name": "frame",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "GetAveragePixelResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/camera_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetCamerasRequest",
+              "name": "GetCameras",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetCamerasResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetAveragePixelRequest",
+              "name": "GetAveragePixel",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetAveragePixelResponse"
+            }
+          ],
+          "name": "CameraService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "enumType": [
         {
           "name": "SwitchPortState",

@@ -1,0 +1,57 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api.passport;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/passport";
+
+// CameraService is a service which controls a set of cameras connected to a
+// dedicated host. These cameras are used to verify that individual peripheral
+// components are functioning at runtime. E.g. verify that a monitor is turned
+// off when expected.
+service CameraService {
+    // GetCameras probes all cameras connected to the host device.
+    rpc GetCameras(GetCamerasRequest) returns (GetCamerasResponse) {}
+    // GetAveragePixel gets the average pixel color detected by the specified camera.
+    rpc GetAveragePixel(GetAveragePixelRequest) returns (GetAveragePixelResponse) {}
+}
+
+message GetCamerasRequest{}
+
+message Camera{
+    // The unique ID of the camera.
+    string id = 1;
+    // The name of the camera, may be non-unique e.g. camera model.
+    string name = 2;
+}
+
+message GetCamerasResponse{
+    // The found cameras.
+    repeated Camera cameras = 1;
+}
+
+message GetAveragePixelRequest{
+    // The unique ID of the camera to query.
+    string device_id = 1;
+}
+
+message Pixel {
+    // The pixels red value.
+    int32 r = 1;
+    // The pixels green value.
+    int32 g = 2;
+    // The pixels blue value.
+    int32 b = 3;
+    // The pixels alpha value.
+    int32 a = 4;
+}
+
+message GetAveragePixelResponse {
+    // The average pixel color.
+    Pixel pixel = 1;
+    // The frame used to generate the image (.jpeg)
+    bytes frame = 2;
+}
