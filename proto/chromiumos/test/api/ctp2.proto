@@ -67,6 +67,11 @@ message CTPRequest {
 
   // If true then the request is an AL type run in CTPv2 and TRv2.
   bool is_al_run = 9;
+
+  // Encoded test job message that will be provided by ATP.
+  // CTP will use this to construct ctpv2 request.
+  // is_al_run must be set to true for this.
+  string encoded_atp_test_job_msg = 10;
 }
 
 message SchedulerInfo {

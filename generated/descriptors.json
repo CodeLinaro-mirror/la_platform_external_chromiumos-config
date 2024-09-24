@@ -26034,6 +26034,13 @@
               "name": "is_al_run",
               "number": 9,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "encodedAtpTestJobMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "encoded_atp_test_job_msg",
+              "number": 10,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "CTPRequest"
