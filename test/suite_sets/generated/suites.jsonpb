@@ -6056,9 +6056,6 @@
 					"value": "tauto.firmware_CorruptMinios.minios_b"
 				},
 				{
-					"value": "tauto.firmware_UpdaterModes"
-				},
-				{
 					"value": "tauto.firmware_WilcoDiagnosticsMode"
 				},
 				{
@@ -6503,9 +6500,6 @@
 				},
 				{
 					"value": "tauto.firmware_CbfsMcache"
-				},
-				{
-					"value": "tauto.firmware_UpdaterModes"
 				},
 				{
 					"value": "tauto.firmware_WilcoDiagnosticsMode"

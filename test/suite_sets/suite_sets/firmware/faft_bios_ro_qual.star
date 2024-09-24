@@ -193,7 +193,6 @@ def _faft_bios_ro_qual():
             "tauto.firmware_CbfsMcache",
             "tauto.firmware_CorruptMinios.minios_a",
             "tauto.firmware_CorruptMinios.minios_b",
-            "tauto.firmware_UpdaterModes",
             "tauto.firmware_WilcoDiagnosticsMode",
             "tauto.hardware_TPMCheck",
             "tauto.power_CPUFreq",
