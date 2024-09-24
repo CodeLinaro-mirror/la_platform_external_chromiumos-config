@@ -5778,7 +5778,7 @@
                       "number": 20
                     },
                     {
-                      "name": "AUDIO_CODEC_ALC772",
+                      "name": "AUDIO_CODEC_ALC722",
                       "number": 22
                     }
                   ]
@@ -5869,7 +5869,7 @@
                       "number": 21
                     },
                     {
-                      "name": "AMPLIFIER_ALC772",
+                      "name": "AMPLIFIER_ALC722",
                       "number": 22
                     }
                   ]

@@ -367,7 +367,7 @@ message HardwareFeatures {
       AUDIO_CODEC_ALC3247 = 19;
       AUDIO_CODEC_ALC3287 = 20;
       // 21 is free to be used
-      AUDIO_CODEC_ALC772 = 22;
+      AUDIO_CODEC_ALC722 = 22;
     }
 
     enum Amplifier {
@@ -392,7 +392,7 @@ message HardwareFeatures {
       AMPLIFIER_ALC3247 = 19;
       AMPLIFIER_ALC3287 = 20;
       TAS2563 = 21;
-      AMPLIFIER_ALC772 = 22;
+      AMPLIFIER_ALC722 = 22;
     }
 
     enum AudioConfigStructure {
