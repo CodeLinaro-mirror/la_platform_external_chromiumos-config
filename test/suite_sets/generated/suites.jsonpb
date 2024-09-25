@@ -2915,15 +2915,6 @@
 					"value": "tast.health.DiagnosticsPass.ac_power"
 				},
 				{
-					"value": "tast.health.DiagnosticsPass.bluetooth_discovery"
-				},
-				{
-					"value": "tast.health.DiagnosticsPass.bluetooth_power"
-				},
-				{
-					"value": "tast.health.DiagnosticsPass.bluetooth_scanning"
-				},
-				{
 					"value": "tast.health.DiagnosticsPass.cpu_cache"
 				},
 				{
@@ -2931,9 +2922,6 @@
 				},
 				{
 					"value": "tast.health.DiagnosticsPass.disk_read"
-				},
-				{
-					"value": "tast.health.DiagnosticsPass.dns_resolution"
 				},
 				{
 					"value": "tast.health.DiagnosticsPass.dns_resolver_present"
@@ -3168,6 +3156,12 @@
 				},
 				{
 					"value": "tast.health.ProbeWifiInfo"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v1_discovery_bluez"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v1_power_bluez"
 				},
 				{
 					"value": "tast.health.RunBluetoothRoutine.v1_scanning_bluez"
