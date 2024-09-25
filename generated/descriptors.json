@@ -5201,6 +5201,14 @@
               "number": 53,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.CpuInfo"
+            },
+            {
+              "jsonName": "pendrive",
+              "label": "LABEL_OPTIONAL",
+              "name": "pendrive",
+              "number": 54,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.Pendrive"
             }
           ],
           "name": "HardwareFeatures",
@@ -7946,6 +7954,19 @@
                   "name": "VendorInfo"
                 }
               ]
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                }
+              ],
+              "name": "Pendrive"
             }
           ]
         }

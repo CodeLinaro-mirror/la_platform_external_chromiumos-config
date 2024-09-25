@@ -1171,4 +1171,10 @@ message HardwareFeatures {
     }
     VendorInfo vendor_info = 1;
   }
+
+  // Details about pendrive.
+  Pendrive pendrive = 54;
+  message Pendrive {
+    Present present = 1;
+  }
 }
