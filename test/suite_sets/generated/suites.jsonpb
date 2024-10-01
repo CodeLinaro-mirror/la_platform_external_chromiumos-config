@@ -5123,22 +5123,13 @@
 					"value": "tast.ui.ChromeCrashEarly.loose"
 				},
 				{
-					"value": "tast.ui.ChromeCrashEarly.loose_lacros"
-				},
-				{
 					"value": "tast.ui.ChromeCrashEarly.strict"
-				},
-				{
-					"value": "tast.ui.ChromeCrashEarly.strict_lacros"
 				},
 				{
 					"value": "tast.ui.ChromeCrashLoggedIn.broker_breakpad_mock_consent"
 				},
 				{
 					"value": "tast.ui.ChromeCrashLoggedIn.broker_crashpad_mock_consent"
-				},
-				{
-					"value": "tast.ui.ChromeCrashLoggedIn.broker_lacros_crashpad_mock_consent"
 				},
 				{
 					"value": "tast.ui.ChromeCrashLoggedIn.browser_breakpad"
@@ -5159,18 +5150,6 @@
 					"value": "tast.ui.ChromeCrashLoggedIn.browser_crashpad_mock_consent_field_trials_on"
 				},
 				{
-					"value": "tast.ui.ChromeCrashLoggedIn.browser_lacros_crashpad"
-				},
-				{
-					"value": "tast.ui.ChromeCrashLoggedIn.browser_lacros_crashpad_mock_consent"
-				},
-				{
-					"value": "tast.ui.ChromeCrashLoggedIn.browser_lacros_crashpad_mock_consent_field_trials_off"
-				},
-				{
-					"value": "tast.ui.ChromeCrashLoggedIn.browser_lacros_crashpad_mock_consent_field_trials_on"
-				},
-				{
 					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_breakpad"
 				},
 				{
@@ -5189,25 +5168,10 @@
 					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_crashpad_mock_consent_field_trial_on"
 				},
 				{
-					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_lacros_crashpad"
-				},
-				{
-					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_lacros_crashpad_mock_consent"
-				},
-				{
-					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_lacros_crashpad_mock_consent_field_trial_off"
-				},
-				{
-					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_lacros_crashpad_mock_consent_field_trial_on"
-				},
-				{
 					"value": "tast.ui.ChromeCrashLoggedInDirect.breakpad"
 				},
 				{
 					"value": "tast.ui.ChromeCrashLoggedInDirect.crashpad"
-				},
-				{
-					"value": "tast.ui.ChromeCrashLoggedInDirect.crashpad_lacros"
 				},
 				{
 					"value": "tast.ui.ChromeCrashLoopV2.breakpad"
@@ -5264,16 +5228,10 @@
 					"value": "tast.ui.ChromeCrashReporterMetrics.miss_crashpad"
 				},
 				{
-					"value": "tast.ui.ChromeCrashReporterMetrics.miss_crashpad_lacros"
-				},
-				{
 					"value": "tast.ui.ChromeCrashReporterMetrics.success_breakpad"
 				},
 				{
 					"value": "tast.ui.ChromeCrashReporterMetrics.success_crashpad"
-				},
-				{
-					"value": "tast.ui.ChromeCrashReporterMetrics.success_crashpad_lacros"
 				},
 				{
 					"value": "tast.ui.ChromeRespawn"
@@ -5288,10 +5246,7 @@
 					"value": "tast.ui.SessionManagerRespawn"
 				},
 				{
-					"value": "tast.ui.StackSampledMetricsV2.ash"
-				},
-				{
-					"value": "tast.ui.StackSampledMetricsV2.lacros"
+					"value": "tast.ui.StackSampledMetricsV2"
 				},
 				{
 					"value": "tast.ui.WebUIJSErrors"
@@ -5301,15 +5256,6 @@
 				},
 				{
 					"value": "tast.ui.WebUIJSErrors.field_trial_on"
-				},
-				{
-					"value": "tast.ui.WebUIJSErrors.lacros"
-				},
-				{
-					"value": "tast.ui.WebUIJSErrors.lacros_field_trial_off"
-				},
-				{
-					"value": "tast.ui.WebUIJSErrors.lacros_field_trial_on"
 				},
 				{
 					"value": "tast.ui.WindowControl"
