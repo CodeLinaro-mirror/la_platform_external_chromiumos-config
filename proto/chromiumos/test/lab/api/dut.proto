@@ -233,6 +233,40 @@ message SIMProfileInfo {
   string sim_puk = 3;
   NetworkProvider carrier_name = 4;
   string own_number = 5;
+  // The SIM state as reported by the cellular modem.
+  State state = 6;
+
+  // Possible states of the SIM profile.
+  enum State {
+    // State not set.
+    UNSPECIFIED = 0;
+    // The device is unusable.
+    BROKEN = 1;
+    // The device needs to be unlocked.
+    LOCKED = 2;
+    // No data connection available and not in a failed state.
+    NO_NETWORK = 3;
+    // The device is registered with a network provider, and data connections and messaging may be available for use.
+    WORKING = 4;
+    // The device has an invalid configuration in UFS.
+    WRONG_CONFIG = 5;
+  }
+
+  // Features supported by the profile.
+  // These features are used to determine what tests can be run against which SIMs
+  // in the lab, see go/cros-cellular-features for more information.
+  // File bugs against buganizer component: 979102.
+  repeated Feature features = 7;
+
+  // Possible features that the SIM supports.
+  enum Feature {
+    // Unset feature.
+    FEATURE_UNSPECIFIED = 0;
+    // The SIM supports a generic live network.
+    FEATURE_LIVE_NETWORK = 1;
+    // The SIM supports SMS messaging.
+    FEATURE_SMS = 2;
+  }
 }
 
 enum NetworkProvider {

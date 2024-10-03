@@ -18962,6 +18962,54 @@
           "name": "SIMInfo"
         },
         {
+          "enumType": [
+            {
+              "name": "State",
+              "value": [
+                {
+                  "name": "UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "BROKEN",
+                  "number": 1
+                },
+                {
+                  "name": "LOCKED",
+                  "number": 2
+                },
+                {
+                  "name": "NO_NETWORK",
+                  "number": 3
+                },
+                {
+                  "name": "WORKING",
+                  "number": 4
+                },
+                {
+                  "name": "WRONG_CONFIG",
+                  "number": 5
+                }
+              ]
+            },
+            {
+              "name": "Feature",
+              "value": [
+                {
+                  "name": "FEATURE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "FEATURE_LIVE_NETWORK",
+                  "number": 1
+                },
+                {
+                  "name": "FEATURE_SMS",
+                  "number": 2
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "iccid",
@@ -18998,6 +19046,22 @@
               "name": "own_number",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.SIMProfileInfo.State"
+            },
+            {
+              "jsonName": "features",
+              "label": "LABEL_REPEATED",
+              "name": "features",
+              "number": 7,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.SIMProfileInfo.Feature"
             }
           ],
           "name": "SIMProfileInfo"
