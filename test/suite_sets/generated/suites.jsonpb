@@ -875,10 +875,10 @@
 					"value": "tast.apps.LaunchCanvas.stable"
 				},
 				{
-					"value": "tast.apps.LaunchCanvas.unstable"
+					"value": "tast.apps.LaunchCanvas.stable_fieldtrial_testing_config_off"
 				},
 				{
-					"value": "tast.apps.LaunchGallery.stable"
+					"value": "tast.apps.LaunchCanvas.unstable"
 				},
 				{
 					"value": "tast.apps.LaunchGalleryFromNotifications.stable"
@@ -1188,9 +1188,6 @@
 				},
 				{
 					"value": "tast.arc.ManagedPlayStoreMode.allowlist"
-				},
-				{
-					"value": "tast.arc.ManagedPlayStoreMode.blocklist"
 				},
 				{
 					"value": "tast.arc.ManagedProvisioning"
@@ -2781,6 +2778,9 @@
 				},
 				{
 					"value": "tast.firmware.FlashromWriteProtect"
+				},
+				{
+					"value": "tast.firmware.FwupdPluginStartup"
 				},
 				{
 					"value": "tast.firmware.GSCtool"
@@ -4877,9 +4877,6 @@
 					"value": "tast.security.ChromeSandboxed"
 				},
 				{
-					"value": "tast.security.ChromeSandboxed.lacros"
-				},
-				{
 					"value": "tast.security.ExecStack"
 				},
 				{
@@ -4887,9 +4884,6 @@
 				},
 				{
 					"value": "tast.security.GPUSandboxed"
-				},
-				{
-					"value": "tast.security.GPUSandboxed.lacros"
 				},
 				{
 					"value": "tast.security.HardLinkRestrictions"
@@ -5807,6 +5801,9 @@
 					"value": "tast.firmware.FwScreenPressPower.to_norm_screen"
 				},
 				{
+					"value": "tast.firmware.FwSplashScreen"
+				},
+				{
 					"value": "tast.firmware.FwmpDevDisableBoot"
 				},
 				{
@@ -6305,6 +6302,9 @@
 				},
 				{
 					"value": "tast.firmware.FwScreenPressPower.to_norm_screen"
+				},
+				{
+					"value": "tast.firmware.FwSplashScreen"
 				},
 				{
 					"value": "tast.firmware.FwmpDevDisableBoot"

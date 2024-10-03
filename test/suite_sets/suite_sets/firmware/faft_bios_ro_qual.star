@@ -133,6 +133,7 @@ def _faft_bios_ro_qual():
             "tast.firmware.FwScreenPressPower.invalid_screen",
             "tast.firmware.FwScreenPressPower.rec_screen",
             "tast.firmware.FwScreenPressPower.to_norm_screen",
+            "tast.firmware.FwSplashScreen",
             "tast.firmware.FwmpDevDisableBoot",
             "tast.firmware.ISH",
             "tast.firmware.LockedME",
