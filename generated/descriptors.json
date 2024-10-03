@@ -24571,6 +24571,14 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "servoNexusAddr",
+              "label": "LABEL_OPTIONAL",
+              "name": "servo_nexus_addr",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
             }
           ],
           "name": "ProvisionStartupRequest"

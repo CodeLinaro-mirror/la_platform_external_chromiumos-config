@@ -45,6 +45,8 @@ message ProvisionStartupRequest {
   chromiumos.test.lab.api.IpEndpoint dut_server = 2;
   // Specific metadata to the individual provision services.
   google.protobuf.Any metadata = 3;
+  // Address where servoNexus cft service can be reached.
+  chromiumos.test.lab.api.IpEndpoint servo_nexus_addr = 4;
 }
 
 // ProvisionStartupResponse provides a status message to signal
