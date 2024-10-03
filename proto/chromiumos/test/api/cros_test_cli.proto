@@ -47,4 +47,11 @@ message CrosTestRequest {
 message CrosTestResponse {
   repeated TestCaseResult test_case_results = 1;
   google.protobuf.Any metadata = 2;
+  repeated GivenTestResult given_test_results =3;
+
+ // useful when 1 given TC results in many child results
+  message GivenTestResult {
+    string parent_test = 1;
+    repeated TestCaseResult child_test_case_results = 2;
+  }
 }

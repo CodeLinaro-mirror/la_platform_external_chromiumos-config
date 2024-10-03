@@ -22042,9 +22042,39 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "givenTestResults",
+              "label": "LABEL_REPEATED",
+              "name": "given_test_results",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.CrosTestResponse.GivenTestResult"
             }
           ],
-          "name": "CrosTestResponse"
+          "name": "CrosTestResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "parentTest",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "parent_test",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "childTestCaseResults",
+                  "label": "LABEL_REPEATED",
+                  "name": "child_test_case_results",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.api.TestCaseResult"
+                }
+              ],
+              "name": "GivenTestResult"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/cros_test_cli.proto",
