@@ -1190,6 +1190,9 @@
 					"value": "tast.arc.ManagedPlayStoreMode.allowlist"
 				},
 				{
+					"value": "tast.arc.ManagedPlayStoreMode.blocklist"
+				},
+				{
 					"value": "tast.arc.ManagedProvisioning"
 				},
 				{
@@ -1776,6 +1779,9 @@
 				},
 				{
 					"value": "tast.camera.CCAQRCode"
+				},
+				{
+					"value": "tast.camera.CCAUISmoke.fake_hal"
 				},
 				{
 					"value": "tast.camera.Characteristics"
@@ -3452,9 +3458,6 @@
 					"value": "tast.inputs.PhysicalKeyboardChangeInput"
 				},
 				{
-					"value": "tast.inputs.PhysicalKeyboardChangeInput.lacros"
-				},
-				{
 					"value": "tast.inputs.PhysicalKeyboardDeadKeys.french"
 				},
 				{
@@ -3465,9 +3468,6 @@
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardEmojiSearch"
-				},
-				{
-					"value": "tast.inputs.PhysicalKeyboardEmojiSearch.lacros"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardEmojiSuggestion"
@@ -3573,9 +3573,6 @@
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardAutoShift"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardAutoShift.lacros"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardChangeInput.a11y"
