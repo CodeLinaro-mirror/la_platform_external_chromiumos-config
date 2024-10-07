@@ -75,6 +75,9 @@ _CELLULAR = struct(
     CELLULAR_UNKNOWN = _HW_FEAT.Cellular.CELLULAR_UNKNOWN,
     CELLULAR_LTE = _HW_FEAT.Cellular.CELLULAR_LTE,
     CELLULAR_5G = _HW_FEAT.Cellular.CELLULAR_5G,
+)
+
+_MODEM = struct(
     MODEM_UNKNOWN = _HW_FEAT.Cellular.MODEM_UNKNOWN,
     MODEM_L850 = _HW_FEAT.Cellular.MODEM_L850,
     MODEM_NL668 = _HW_FEAT.Cellular.MODEM_NL668,
@@ -1089,7 +1092,7 @@ def _create_daughter_board(
         cellular_type = _CELLULAR.CELLULAR_UNKNOWN,
         cellular_dynamic_power_reduction_config = None,
         cellular_wedge_timeout_in_ms = None,
-        cellular_modem_type = _CELLULAR.MODEM_UNKNOWN,
+        cellular_modem_type = _MODEM.MODEM_UNKNOWN,
         hdmi_support = False,
         hdmi_cec = None,
         side = None,
@@ -1168,7 +1171,7 @@ def _create_cellular_board(
         model = None,
         dynamic_power_reduction_config = None,
         wedge_timeout_in_ms = None,
-        modem_type = _CELLULAR.MODEM_UNKNOWN):
+        modem_type = _MODEM.MODEM_UNKNOWN):
     """Builds a Topology proto for a Cellular board."""
     hw_features = _HW_FEAT()
 
@@ -2285,6 +2288,7 @@ hw_topo = struct(
     amplifier = _AMPLIFIER,
     audio_codec = _AUDIO_CODEC,
     cellular = _CELLULAR,
+    modem = _MODEM,
     dgpu = _DGPU,
     fp_loc = _FP_LOC,
     proximity_sensor_radio_type = _PS_RADIO_TYPE,
