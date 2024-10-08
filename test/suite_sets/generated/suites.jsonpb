@@ -2930,6 +2930,9 @@
 					"value": "tast.health.DiagnosticsPass.disk_read"
 				},
 				{
+					"value": "tast.health.DiagnosticsPass.dns_resolution"
+				},
+				{
 					"value": "tast.health.DiagnosticsPass.dns_resolver_present"
 				},
 				{
@@ -3603,9 +3606,6 @@
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardGlideTyping.tablet_docked"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardGlideTyping.tablet_floating"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardHandwriting.docked"
