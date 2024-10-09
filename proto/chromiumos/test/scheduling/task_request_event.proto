@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package chromiumos.test.scheduling;
 
+import "chromiumos/test/scheduling/os_type.proto";
 import "chromiumos/test/scheduling/swarming_dimensions.proto";
 
 option go_package = "./proto";
@@ -30,6 +31,7 @@ message TaskRequestEvent {
   string device_name = 14;
   string user = 15;
   repeated string experiments = 16;
+  OsType os_type = 17;
 }
 
 message TaskRequestEvents {

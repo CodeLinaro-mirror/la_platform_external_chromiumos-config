@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package chromiumos.test.scheduling;
 
+import "chromiumos/test/scheduling/os_type.proto";
 import "chromiumos/test/scheduling/swarming_dimensions.proto";
 
 option go_package = "./proto";
@@ -17,6 +18,7 @@ message DeviceEvent {
   SwarmingDimensions device_dimensions = 5;
   bool device_ready = 4;
   string device_name = 6;
+  OsType os_type = 7;
 }
 
 message DeviceEvents {

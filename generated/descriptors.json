@@ -34861,6 +34861,33 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "enumType": [
+        {
+          "name": "OsType",
+          "value": [
+            {
+              "name": "CHROMEOS",
+              "number": 0
+            },
+            {
+              "name": "ANDROID",
+              "number": 1
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/scheduling/os_type.proto",
+      "options": {
+        "goPackage": "./proto"
+      },
+      "package": "chromiumos.test.scheduling",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
@@ -34926,6 +34953,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/scheduling/os_type.proto",
         "chromiumos/test/scheduling/swarming_dimensions.proto"
       ],
       "messageType": [
@@ -34976,6 +35004,14 @@
               "name": "device_name",
               "number": 6,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "osType",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_type",
+              "number": 7,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.scheduling.OsType"
             }
           ],
           "name": "DeviceEvent"
@@ -35007,6 +35043,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/test/scheduling/os_type.proto",
         "chromiumos/test/scheduling/swarming_dimensions.proto"
       ],
       "messageType": [
@@ -35124,6 +35161,14 @@
               "name": "experiments",
               "number": 16,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "osType",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_type",
+              "number": 17,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.scheduling.OsType"
             }
           ],
           "name": "TaskRequestEvent"
