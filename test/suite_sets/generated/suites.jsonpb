@@ -2786,6 +2786,9 @@
 					"value": "tast.firmware.FlashromWriteProtect"
 				},
 				{
+					"value": "tast.firmware.FwupdGetDevices"
+				},
+				{
 					"value": "tast.firmware.FwupdPluginStartup"
 				},
 				{
@@ -6777,6 +6780,36 @@
 				},
 				{
 					"value": "tast.firmware.PDProtocol"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.flipcc"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.flipcc_dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.normal"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.shutdown"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.flipcc"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.flipcc_dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.normal"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.shutdown"
 				},
 				{
 					"value": "tast.firmware.PDVbusRequest.dtsoff"
