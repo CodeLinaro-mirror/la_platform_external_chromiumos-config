@@ -11,6 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from chromiumos.test.artifact import test_result_pb2 as chromiumos_dot_test_dot_artifact_dot_test__result__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -19,8 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z6go.chromium.org/chromiumos/config/go/test/api/metadata',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n8chromiumos/test/api/metadata/publish_ants_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\"b\n\x13PublishAntsMetadata\x12\x1a\n\x12\x61nts_invocation_id\x18\x01 \x01(\t\x12\x1b\n\x13parent_work_unit_id\x18\x02 \x01(\t\x12\x12\n\naccount_id\x18\x03 \x01(\tB8Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
-)
+  serialized_pb=b'\n8chromiumos/test/api/metadata/publish_ants_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\"\xab\x01\n\x13PublishAntsMetadata\x12\x1a\n\x12\x61nts_invocation_id\x18\x01 \x01(\t\x12\x1b\n\x13parent_work_unit_id\x18\x02 \x01(\t\x12\x12\n\naccount_id\x18\x03 \x01(\t\x12G\n\x12\x65xecution_metadata\x18\x04 \x01(\x0b\x32+.chromiumos.test.artifact.ExecutionMetadataB8Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
+  ,
+  dependencies=[chromiumos_dot_test_dot_artifact_dot_test__result__pb2.DESCRIPTOR,])
 
 
 
@@ -54,6 +56,13 @@ _PUBLISHANTSMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='execution_metadata', full_name='chromiumos.test.api.metadata.PublishAntsMetadata.execution_metadata', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -66,10 +75,11 @@ _PUBLISHANTSMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=90,
-  serialized_end=188,
+  serialized_start=135,
+  serialized_end=306,
 )
 
+_PUBLISHANTSMETADATA.fields_by_name['execution_metadata'].message_type = chromiumos_dot_test_dot_artifact_dot_test__result__pb2._EXECUTIONMETADATA
 DESCRIPTOR.message_types_by_name['PublishAntsMetadata'] = _PUBLISHANTSMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

@@ -8,7 +8,9 @@ package chromiumos.test.api.metadata;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
 
-// NEXT TAG: 4
+import "chromiumos/test/artifact/test_result.proto";
+
+// NEXT TAG: 5
 message PublishAntsMetadata {
   // The invocation id of the overall ANTS invocation.
   string ants_invocation_id = 1;
@@ -16,4 +18,7 @@ message PublishAntsMetadata {
   // The work unit id of the parent work unit underlying all the modules.
   string parent_work_unit_id = 2;
   string account_id = 3;
+
+  // Metadata related options
+  chromiumos.test.artifact.ExecutionMetadata execution_metadata = 4;
 }

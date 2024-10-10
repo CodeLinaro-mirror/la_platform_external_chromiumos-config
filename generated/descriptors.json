@@ -29359,46 +29359,6 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "antsInvocationId",
-              "label": "LABEL_OPTIONAL",
-              "name": "ants_invocation_id",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "parentWorkUnitId",
-              "label": "LABEL_OPTIONAL",
-              "name": "parent_work_unit_id",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "accountId",
-              "label": "LABEL_OPTIONAL",
-              "name": "account_id",
-              "number": 3,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "PublishAntsMetadata"
-        }
-      ],
-      "name": "chromiumos/test/api/metadata/publish_ants_metadata.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/metadata"
-      },
-      "package": "chromiumos.test.api.metadata",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
       "dependency": [
         "chromiumos/storage_path.proto",
         "chromiumos/test/api/provision_state.proto",
@@ -31006,6 +30966,57 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/test/artifact"
       },
       "package": "chromiumos.test.artifact",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/test/artifact/test_result.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "antsInvocationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "ants_invocation_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "parentWorkUnitId",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent_work_unit_id",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "accountId",
+              "label": "LABEL_OPTIONAL",
+              "name": "account_id",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "executionMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "execution_metadata",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.ExecutionMetadata"
+            }
+          ],
+          "name": "PublishAntsMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/metadata/publish_ants_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api/metadata"
+      },
+      "package": "chromiumos.test.api.metadata",
       "syntax": "proto3"
     },
     {
