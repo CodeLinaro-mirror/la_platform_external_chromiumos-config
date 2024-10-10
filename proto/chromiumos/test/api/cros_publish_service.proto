@@ -28,7 +28,7 @@ service GenericPublishService {
   }
 }
 
-// NEXT_TAG: 5
+// NEXT_TAG: 6
 message PublishRequest {
   // Local path to tests artifact directory
   StoragePath artifact_dir_path = 1;
@@ -41,6 +41,9 @@ message PublishRequest {
 
   // Endpoint specific metadata
   google.protobuf.Any metadata = 4;
+
+  // Flag to indicate whether tests are run via 3d.
+  bool is_3d_run = 5;
 }
 
 message PublishResponse {

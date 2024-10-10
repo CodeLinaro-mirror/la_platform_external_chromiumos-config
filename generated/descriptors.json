@@ -22136,6 +22136,13 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "is3dRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_3d_run",
+              "number": 5,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "PublishRequest"
@@ -29467,6 +29474,13 @@
               "label": "LABEL_OPTIONAL",
               "name": "is_al_run",
               "number": 11,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "is3dRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "is_3d_run",
+              "number": 12,
               "type": "TYPE_BOOL"
             },
             {

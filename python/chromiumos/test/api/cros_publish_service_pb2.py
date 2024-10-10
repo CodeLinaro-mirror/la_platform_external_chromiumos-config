@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n.chromiumos/test/api/cros_publish_service.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\x1a\x19google/protobuf/any.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a\'chromiumos/test/api/cros_test_cli.proto\"\xbf\x01\n\x0ePublishRequest\x12\x32\n\x11\x61rtifact_dir_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12<\n\rtest_response\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.CrosTestResponse\x12\x13\n\x0bretry_count\x18\x03 \x01(\x05\x12&\n\x08metadata\x18\x04 \x01(\x0b\x32\x14.google.protobuf.Any\"\xed\x01\n\x0fPublishResponse\x12;\n\x06status\x18\x01 \x01(\x0e\x32+.chromiumos.test.api.PublishResponse.Status\x12\x0f\n\x07message\x18\x02 \x01(\t\x12&\n\x08metadata\x18\x03 \x01(\x0b\x32\x14.google.protobuf.Any\"d\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x02\x12\x12\n\x0eSTATUS_FAILURE\x10\x03\x32\x91\x01\n\x15GenericPublishService\x12x\n\x07Publish\x12#.chromiumos.test.api.PublishRequest\x1a!.chromiumos.longrunning.Operation\"%\xd2\x41\"\n\x0fPublishResponse\x12\x0fPublishMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n.chromiumos/test/api/cros_publish_service.proto\x12\x13\x63hromiumos.test.api\x1a\'chromiumos/longrunning/operations.proto\x1a\x19google/protobuf/any.proto\x1a\x1d\x63hromiumos/storage_path.proto\x1a\'chromiumos/test/api/cros_test_cli.proto\"\xd2\x01\n\x0ePublishRequest\x12\x32\n\x11\x61rtifact_dir_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12<\n\rtest_response\x18\x02 \x01(\x0b\x32%.chromiumos.test.api.CrosTestResponse\x12\x13\n\x0bretry_count\x18\x03 \x01(\x05\x12&\n\x08metadata\x18\x04 \x01(\x0b\x32\x14.google.protobuf.Any\x12\x11\n\tis_3d_run\x18\x05 \x01(\x08\"\xed\x01\n\x0fPublishResponse\x12;\n\x06status\x18\x01 \x01(\x0e\x32+.chromiumos.test.api.PublishResponse.Status\x12\x0f\n\x07message\x18\x02 \x01(\t\x12&\n\x08metadata\x18\x03 \x01(\x0b\x32\x14.google.protobuf.Any\"d\n\x06Status\x12\x16\n\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n\x0eSTATUS_SUCCESS\x10\x01\x12\x1a\n\x16STATUS_INVALID_REQUEST\x10\x02\x12\x12\n\x0eSTATUS_FAILURE\x10\x03\x32\x91\x01\n\x15GenericPublishService\x12x\n\x07Publish\x12#.chromiumos.test.api.PublishRequest\x1a!.chromiumos.longrunning.Operation\"%\xd2\x41\"\n\x0fPublishResponse\x12\x0fPublishMetadataB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,chromiumos_dot_storage__path__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_cros__test__cli__pb2.DESCRIPTOR,])
 
@@ -59,8 +59,8 @@ _PUBLISHRESPONSE_STATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=543,
-  serialized_end=643,
+  serialized_start=562,
+  serialized_end=662,
 )
 _sym_db.RegisterEnumDescriptor(_PUBLISHRESPONSE_STATUS)
 
@@ -101,6 +101,13 @@ _PUBLISHREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='is_3d_run', full_name='chromiumos.test.api.PublishRequest.is_3d_run', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -114,7 +121,7 @@ _PUBLISHREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=212,
-  serialized_end=403,
+  serialized_end=422,
 )
 
 
@@ -160,8 +167,8 @@ _PUBLISHRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=406,
-  serialized_end=643,
+  serialized_start=425,
+  serialized_end=662,
 )
 
 _PUBLISHREQUEST.fields_by_name['artifact_dir_path'].message_type = chromiumos_dot_storage__path__pb2._STORAGEPATH
@@ -198,8 +205,8 @@ _GENERICPUBLISHSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=646,
-  serialized_end=791,
+  serialized_start=665,
+  serialized_end=810,
   methods=[
   _descriptor.MethodDescriptor(
     name='Publish',
