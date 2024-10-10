@@ -3944,6 +3944,9 @@
 					"value": "tast.network.HostToARCVPN"
 				},
 				{
+					"value": "tast.network.PasspointCerts"
+				},
+				{
 					"value": "tast.network.QosNetworkControl"
 				},
 				{
@@ -4116,6 +4119,9 @@
 				},
 				{
 					"value": "tast.network.SimulatedWifiServiceSmoke.ipv6"
+				},
+				{
+					"value": "tast.network.StableShillEAPSlot"
 				},
 				{
 					"value": "tast.network.SupportedProtocols"
@@ -6825,36 +6831,6 @@
 				},
 				{
 					"value": "tast.firmware.PDVbusRequest.shutdown"
-				},
-				{
-					"value": "tauto.firmware_PDResetHard"
-				},
-				{
-					"value": "tauto.firmware_PDResetHard.dts"
-				},
-				{
-					"value": "tauto.firmware_PDResetHard.dts_flip"
-				},
-				{
-					"value": "tauto.firmware_PDResetHard.flip"
-				},
-				{
-					"value": "tauto.firmware_PDResetHard.shutdown"
-				},
-				{
-					"value": "tauto.firmware_PDResetSoft"
-				},
-				{
-					"value": "tauto.firmware_PDResetSoft.dts"
-				},
-				{
-					"value": "tauto.firmware_PDResetSoft.dts_flip"
-				},
-				{
-					"value": "tauto.firmware_PDResetSoft.flip"
-				},
-				{
-					"value": "tauto.firmware_PDResetSoft.shutdown"
 				},
 				{
 					"value": "tauto.firmware_PDVbusRequest"
