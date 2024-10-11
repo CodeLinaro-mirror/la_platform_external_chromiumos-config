@@ -3056,6 +3056,12 @@
 					"value": "tast.health.MonitorEventStartup.touchscreen"
 				},
 				{
+					"value": "tast.health.MonitorKeyboardDiagnosticEvent.non_tablet_mode_form_factors"
+				},
+				{
+					"value": "tast.health.MonitorKeyboardDiagnosticEvent.tablet_mode_form_factors"
+				},
+				{
 					"value": "tast.health.MonitorThunderboltEvent"
 				},
 				{
