@@ -2792,6 +2792,9 @@
 					"value": "tast.firmware.FwupdPluginStartup"
 				},
 				{
+					"value": "tast.firmware.FwupdPluginStartup.uefi"
+				},
+				{
 					"value": "tast.firmware.GSCtool"
 				},
 				{
