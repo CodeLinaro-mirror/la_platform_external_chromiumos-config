@@ -60,12 +60,6 @@ def _faft_pd():
             "tast.firmware.PDVbusRequest.flipcc_dtsoff",
             "tast.firmware.PDVbusRequest.normal",
             "tast.firmware.PDVbusRequest.shutdown",
-            "tauto.firmware_PDVbusRequest",
-            "tauto.firmware_PDVbusRequest.dts",
-            "tauto.firmware_PDVbusRequest.dts_flip",
-            "tauto.firmware_PDVbusRequest.flip",
-            "tauto.firmware_PDVbusRequest.shutdown",
-            "tauto.firmware_PDVbusRequest.suspend",
         ],
     )
 

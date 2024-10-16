@@ -6840,24 +6840,6 @@
 				},
 				{
 					"value": "tast.firmware.PDVbusRequest.shutdown"
-				},
-				{
-					"value": "tauto.firmware_PDVbusRequest"
-				},
-				{
-					"value": "tauto.firmware_PDVbusRequest.dts"
-				},
-				{
-					"value": "tauto.firmware_PDVbusRequest.dts_flip"
-				},
-				{
-					"value": "tauto.firmware_PDVbusRequest.flip"
-				},
-				{
-					"value": "tauto.firmware_PDVbusRequest.shutdown"
-				},
-				{
-					"value": "tauto.firmware_PDVbusRequest.suspend"
 				}
 			]
 		},
