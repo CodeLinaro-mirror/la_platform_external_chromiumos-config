@@ -1625,6 +1625,9 @@
 					"value": "tast.audio.PlaybackAudioControls.fieldtrial_config_disable"
 				},
 				{
+					"value": "tast.audio.SofProfileDump"
+				},
+				{
 					"value": "tast.audio.SoundCardInit.boot_time_calibration"
 				},
 				{
@@ -4049,10 +4052,10 @@
 					"value": "tast.network.RoutingHighPriority"
 				},
 				{
-					"value": "tast.network.RoutingIPv4Static"
+					"value": "tast.network.RoutingIPv4Static.apply_when_connecting"
 				},
 				{
-					"value": "tast.network.RoutingIPv4Static.apply_when_connecting"
+					"value": "tast.network.RoutingIPv4Static.apply_when_idle"
 				},
 				{
 					"value": "tast.network.RoutingIPv4StaticWithDHCP"
