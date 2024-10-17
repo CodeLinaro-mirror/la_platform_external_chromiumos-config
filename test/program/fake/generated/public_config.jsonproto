@@ -135,6 +135,9 @@
           "boostUrgent": 20,
           "cpusetNonurgent": "0-5",
           "inputBoost": 15
+        },
+        "swapConfig": {
+          "sizeMultiplier": 1.5
         }
       }
     },

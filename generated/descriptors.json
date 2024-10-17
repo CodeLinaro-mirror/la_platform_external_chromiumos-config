@@ -9764,6 +9764,14 @@
                   "number": 11,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.SchedqosConfig"
+                },
+                {
+                  "jsonName": "swapConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "swap_config",
+                  "number": 12,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Program.Platform.SwapConfig"
                 }
               ],
               "name": "Platform",
@@ -9845,6 +9853,18 @@
                     }
                   ],
                   "name": "ArcSettings"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "sizeMultiplier",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "size_multiplier",
+                      "number": 1,
+                      "type": "TYPE_DOUBLE"
+                    }
+                  ],
+                  "name": "SwapConfig"
                 }
               ]
             },
