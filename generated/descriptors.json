@@ -31915,6 +31915,130 @@
         },
         {
           "name": "CallServodMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "servoHostPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "servo_host_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "servodDockerContainerName",
+              "label": "LABEL_OPTIONAL",
+              "name": "servod_docker_container_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "paths",
+              "label": "LABEL_REPEATED",
+              "name": "paths",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "LogCheckPointRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "pathToLineNumber",
+              "label": "LABEL_REPEATED",
+              "name": "path_to_line_number",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LogCheckPointResponse.PathToLineNumberEntry"
+            }
+          ],
+          "name": "LogCheckPointResponse",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "PathToLineNumberEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "servoHostPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "servo_host_path",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "servodDockerContainerName",
+              "label": "LABEL_OPTIONAL",
+              "name": "servod_docker_container_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "servodPorts",
+              "label": "LABEL_REPEATED",
+              "name": "servod_ports",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pathToLineNumber",
+              "label": "LABEL_REPEATED",
+              "name": "path_to_line_number",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry"
+            }
+          ],
+          "name": "SaveLogsRequest",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_INT32"
+                }
+              ],
+              "name": "PathToLineNumberEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "SaveLogsResponse"
         }
       ],
       "name": "chromiumos/test/api/servod_service.proto",

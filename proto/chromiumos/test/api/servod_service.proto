@@ -11,7 +11,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 import "chromiumos/config/api/test/xmlrpc/xmlrpc.proto";
 import "chromiumos/longrunning/operations.proto";
 
-// Provides the ability to start/stop servod daemon and execute servod 
+// Provides the ability to start/stop servod daemon and execute servod
 // commands on it.
 // Servod daemon can be running either inside a Docker container or directly
 // on the host.
@@ -59,6 +59,35 @@ service ServodService {
   // Allowed methods: doc, get, set, and hwinit.
   rpc CallServod(CallServodRequest)
       returns (CallServodResponse);
+
+  // TODO: Uncomment this service after the implementation code in cros_servod
+  //       lands. Currently, this is an issue with the builder that the
+  //       build of cros_servod could not pick the latest build of this
+  //       proto change even with Cq-Depend.
+  //
+  // LogCheckPoint will create checkpoint certain files so that some files
+  // can be saved partially when SaveLogs is called.
+  // For example, /var/log/messages in a labstation can be
+  // very big and include information from a few days ago.
+  // Getting the checkpoint of the current /var/log/messages will
+  // allow SaveLogs to save the portion only relevant to the current
+  // testing session.
+  // rpc LogCheckPoint(LogCheckPointRequest) returns (LogCheckPointResponse) {}
+
+  // TODO: Uncomment this service after the implementation code in cros_servod
+  //       lands. Currently, this is an issue with the builder that the
+  //       build of cros_servod could not pick the latest build of this
+  //       proto change even with Cq-Depend.
+  //
+  // SaveLogs will save servod related logs on the host that this service
+  // is running.
+  // Logs include:
+  //     /var/log/message from the servod host.
+  //     /var/log/servod_<port>/ latest.DEBUG from servod host.
+  //     /var/log/servod_<port>.STARTUP.log from servod host.
+  //     The output of  "dmesg -H"  from the servod host.
+  //     The extraction of the MCU console logs from latest.DEBUG
+  // rpc SaveLogs(SaveLogsRequest) returns (SaveLogsResponse) {}
 }
 
 message StartServodRequest {
@@ -264,4 +293,49 @@ message CallServodResponse {
 }
 
 message CallServodMetadata {
+}
+
+
+message LogCheckPointRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servo_host_path = 1;
+
+  // The servod Docker container name.
+  string servod_docker_container_name = 2;
+
+  // The paths to the files that need checkpoint information.
+  repeated string paths = 3;
+}
+
+message LogCheckPointResponse {
+  // A mapping between the paths in the requests and their current
+  // line numbers.
+  // If a file does not exist on the host, it will not be included in
+  // this map. There will be no errors.
+  map<string, int32> path_to_line_number = 1;
+}
+
+message SaveLogsRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servo_host_path = 1;
+
+  // The servod Docker container name.
+  string servod_docker_container_name = 2;
+
+  // A list of ports that servod is running on the servo host.
+  repeated int32 servod_ports = 3;
+
+  // A mapping between the paths in the requests and their checkpoint
+  // line numbers.
+  // For all files in the map, only the content will be saved after their
+  // corresponding line number.
+  // For the files that are no in the map, the whole file will be saved.
+  map<string, int32> path_to_line_number = 4;
+}
+
+message SaveLogsResponse {
 }

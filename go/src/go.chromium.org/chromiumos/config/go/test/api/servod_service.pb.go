@@ -924,6 +924,244 @@ func (*CallServodMetadata) Descriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_servod_service_proto_rawDescGZIP(), []int{11}
 }
 
+type LogCheckPointRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The path (URI) for the servod (containerized or running as a daemon) host.
+	// If cros-servod and docker-servod live on the same host, this parameter
+	// should be empty.
+	ServoHostPath string `protobuf:"bytes,1,opt,name=servo_host_path,json=servoHostPath,proto3" json:"servo_host_path,omitempty"`
+	// The servod Docker container name.
+	ServodDockerContainerName string `protobuf:"bytes,2,opt,name=servod_docker_container_name,json=servodDockerContainerName,proto3" json:"servod_docker_container_name,omitempty"`
+	// The paths to the files that need checkpoint information.
+	Paths []string `protobuf:"bytes,3,rep,name=paths,proto3" json:"paths,omitempty"`
+}
+
+func (x *LogCheckPointRequest) Reset() {
+	*x = LogCheckPointRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LogCheckPointRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogCheckPointRequest) ProtoMessage() {}
+
+func (x *LogCheckPointRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LogCheckPointRequest.ProtoReflect.Descriptor instead.
+func (*LogCheckPointRequest) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_servod_service_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *LogCheckPointRequest) GetServoHostPath() string {
+	if x != nil {
+		return x.ServoHostPath
+	}
+	return ""
+}
+
+func (x *LogCheckPointRequest) GetServodDockerContainerName() string {
+	if x != nil {
+		return x.ServodDockerContainerName
+	}
+	return ""
+}
+
+func (x *LogCheckPointRequest) GetPaths() []string {
+	if x != nil {
+		return x.Paths
+	}
+	return nil
+}
+
+type LogCheckPointResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// A mapping between the paths in the requests and their current
+	// line numbers.
+	// If a file does not exist on the host, it will not be included in
+	// this map. There will be no errors.
+	PathToLineNumber map[string]int32 `protobuf:"bytes,1,rep,name=path_to_line_number,json=pathToLineNumber,proto3" json:"path_to_line_number,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
+}
+
+func (x *LogCheckPointResponse) Reset() {
+	*x = LogCheckPointResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LogCheckPointResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogCheckPointResponse) ProtoMessage() {}
+
+func (x *LogCheckPointResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LogCheckPointResponse.ProtoReflect.Descriptor instead.
+func (*LogCheckPointResponse) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_servod_service_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *LogCheckPointResponse) GetPathToLineNumber() map[string]int32 {
+	if x != nil {
+		return x.PathToLineNumber
+	}
+	return nil
+}
+
+type SaveLogsRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The path (URI) for the servod (containerized or running as a daemon) host.
+	// If cros-servod and docker-servod live on the same host, this parameter
+	// should be empty.
+	ServoHostPath string `protobuf:"bytes,1,opt,name=servo_host_path,json=servoHostPath,proto3" json:"servo_host_path,omitempty"`
+	// The servod Docker container name.
+	ServodDockerContainerName string `protobuf:"bytes,2,opt,name=servod_docker_container_name,json=servodDockerContainerName,proto3" json:"servod_docker_container_name,omitempty"`
+	// A list of ports that servod is running on the servo host.
+	ServodPorts []int32 `protobuf:"varint,3,rep,packed,name=servod_ports,json=servodPorts,proto3" json:"servod_ports,omitempty"`
+	// A mapping between the paths in the requests and their checkpoint
+	// line numbers.
+	// For all files in the map, only the content will be saved after their
+	// corresponding line number.
+	// For the files that are no in the map, the whole file will be saved.
+	PathToLineNumber map[string]int32 `protobuf:"bytes,4,rep,name=path_to_line_number,json=pathToLineNumber,proto3" json:"path_to_line_number,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
+}
+
+func (x *SaveLogsRequest) Reset() {
+	*x = SaveLogsRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SaveLogsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SaveLogsRequest) ProtoMessage() {}
+
+func (x *SaveLogsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SaveLogsRequest.ProtoReflect.Descriptor instead.
+func (*SaveLogsRequest) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_servod_service_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *SaveLogsRequest) GetServoHostPath() string {
+	if x != nil {
+		return x.ServoHostPath
+	}
+	return ""
+}
+
+func (x *SaveLogsRequest) GetServodDockerContainerName() string {
+	if x != nil {
+		return x.ServodDockerContainerName
+	}
+	return ""
+}
+
+func (x *SaveLogsRequest) GetServodPorts() []int32 {
+	if x != nil {
+		return x.ServodPorts
+	}
+	return nil
+}
+
+func (x *SaveLogsRequest) GetPathToLineNumber() map[string]int32 {
+	if x != nil {
+		return x.PathToLineNumber
+	}
+	return nil
+}
+
+type SaveLogsResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *SaveLogsResponse) Reset() {
+	*x = SaveLogsResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SaveLogsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SaveLogsResponse) ProtoMessage() {}
+
+func (x *SaveLogsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SaveLogsResponse.ProtoReflect.Descriptor instead.
+func (*SaveLogsResponse) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_servod_service_proto_rawDescGZIP(), []int{15}
+}
+
 // Empty response for success.
 type StartServodResponse_Success struct {
 	state         protoimpl.MessageState
@@ -934,7 +1172,7 @@ type StartServodResponse_Success struct {
 func (x *StartServodResponse_Success) Reset() {
 	*x = StartServodResponse_Success{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[12]
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -947,7 +1185,7 @@ func (x *StartServodResponse_Success) String() string {
 func (*StartServodResponse_Success) ProtoMessage() {}
 
 func (x *StartServodResponse_Success) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[12]
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -975,7 +1213,7 @@ type StartServodResponse_Failure struct {
 func (x *StartServodResponse_Failure) Reset() {
 	*x = StartServodResponse_Failure{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[13]
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -988,7 +1226,7 @@ func (x *StartServodResponse_Failure) String() string {
 func (*StartServodResponse_Failure) ProtoMessage() {}
 
 func (x *StartServodResponse_Failure) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[13]
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1021,7 +1259,7 @@ type StopServodResponse_Success struct {
 func (x *StopServodResponse_Success) Reset() {
 	*x = StopServodResponse_Success{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[14]
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1034,7 +1272,7 @@ func (x *StopServodResponse_Success) String() string {
 func (*StopServodResponse_Success) ProtoMessage() {}
 
 func (x *StopServodResponse_Success) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[14]
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1062,7 +1300,7 @@ type StopServodResponse_Failure struct {
 func (x *StopServodResponse_Failure) Reset() {
 	*x = StopServodResponse_Failure{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[15]
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1075,7 +1313,7 @@ func (x *StopServodResponse_Failure) String() string {
 func (*StopServodResponse_Failure) ProtoMessage() {}
 
 func (x *StopServodResponse_Failure) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[15]
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1132,7 +1370,7 @@ type ExecCmdResponse_ExitInfo struct {
 func (x *ExecCmdResponse_ExitInfo) Reset() {
 	*x = ExecCmdResponse_ExitInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[16]
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1145,7 +1383,7 @@ func (x *ExecCmdResponse_ExitInfo) String() string {
 func (*ExecCmdResponse_ExitInfo) ProtoMessage() {}
 
 func (x *ExecCmdResponse_ExitInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[16]
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1201,7 +1439,7 @@ type CallServodResponse_Success struct {
 func (x *CallServodResponse_Success) Reset() {
 	*x = CallServodResponse_Success{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[17]
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1214,7 +1452,7 @@ func (x *CallServodResponse_Success) String() string {
 func (*CallServodResponse_Success) ProtoMessage() {}
 
 func (x *CallServodResponse_Success) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[17]
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1249,7 +1487,7 @@ type CallServodResponse_Failure struct {
 func (x *CallServodResponse_Failure) Reset() {
 	*x = CallServodResponse_Failure{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[18]
+		mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1262,7 +1500,7 @@ func (x *CallServodResponse_Failure) String() string {
 func (*CallServodResponse_Failure) ProtoMessage() {}
 
 func (x *CallServodResponse_Failure) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[18]
+	mi := &file_chromiumos_test_api_servod_service_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1438,40 +1676,85 @@ var file_chromiumos_test_api_servod_service_proto_rawDesc = []byte{
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x4d, 0x65, 0x73,
 	0x73, 0x61, 0x67, 0x65, 0x42, 0x08, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x14,
 	0x0a, 0x12, 0x43, 0x61, 0x6c, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x4d, 0x65, 0x74, 0x61,
-	0x64, 0x61, 0x74, 0x61, 0x32, 0xd6, 0x03, 0x0a, 0x0d, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x88, 0x01, 0x0a, 0x0b, 0x53, 0x74, 0x61, 0x72, 0x74,
-	0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x12, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75,
-	0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x74, 0x61,
-	0x72, 0x74, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x21, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x6c, 0x6f, 0x6e,
-	0x67, 0x72, 0x75, 0x6e, 0x6e, 0x69, 0x6e, 0x67, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x22, 0x2d, 0xd2, 0x41, 0x2a, 0x0a, 0x13, 0x53, 0x74, 0x61, 0x72, 0x74, 0x53, 0x65,
-	0x72, 0x76, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x13, 0x53, 0x74,
-	0x61, 0x72, 0x74, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
-	0x61, 0x12, 0x84, 0x01, 0x0a, 0x0a, 0x53, 0x74, 0x6f, 0x70, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64,
-	0x12, 0x26, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
-	0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x74, 0x6f, 0x70, 0x53, 0x65, 0x72, 0x76, 0x6f,
-	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d,
-	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x6c, 0x6f, 0x6e, 0x67, 0x72, 0x75, 0x6e, 0x6e, 0x69, 0x6e,
-	0x67, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x2b, 0xd2, 0x41, 0x28,
-	0x0a, 0x12, 0x53, 0x74, 0x6f, 0x70, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x53, 0x74, 0x6f, 0x70, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64,
-	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x54, 0x0a, 0x07, 0x45, 0x78, 0x65, 0x63,
-	0x43, 0x6d, 0x64, 0x12, 0x23, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73,
-	0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x45, 0x78, 0x65, 0x63, 0x43, 0x6d,
-	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d,
-	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x45,
-	0x78, 0x65, 0x63, 0x43, 0x6d, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5d,
-	0x0a, 0x0a, 0x43, 0x61, 0x6c, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x12, 0x26, 0x2e, 0x63,
+	0x64, 0x61, 0x74, 0x61, 0x22, 0x95, 0x01, 0x0a, 0x14, 0x4c, 0x6f, 0x67, 0x43, 0x68, 0x65, 0x63,
+	0x6b, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x26, 0x0a,
+	0x0f, 0x73, 0x65, 0x72, 0x76, 0x6f, 0x5f, 0x68, 0x6f, 0x73, 0x74, 0x5f, 0x70, 0x61, 0x74, 0x68,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x73, 0x65, 0x72, 0x76, 0x6f, 0x48, 0x6f, 0x73,
+	0x74, 0x50, 0x61, 0x74, 0x68, 0x12, 0x3f, 0x0a, 0x1c, 0x73, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x5f,
+	0x64, 0x6f, 0x63, 0x6b, 0x65, 0x72, 0x5f, 0x63, 0x6f, 0x6e, 0x74, 0x61, 0x69, 0x6e, 0x65, 0x72,
+	0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x19, 0x73, 0x65, 0x72,
+	0x76, 0x6f, 0x64, 0x44, 0x6f, 0x63, 0x6b, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x74, 0x61, 0x69, 0x6e,
+	0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x61, 0x74, 0x68, 0x73, 0x18,
+	0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x70, 0x61, 0x74, 0x68, 0x73, 0x22, 0xcd, 0x01, 0x0a,
+	0x15, 0x4c, 0x6f, 0x67, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x6f, 0x0a, 0x13, 0x70, 0x61, 0x74, 0x68, 0x5f, 0x74,
+	0x6f, 0x5f, 0x6c, 0x69, 0x6e, 0x65, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x40, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73,
+	0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x4c, 0x6f, 0x67, 0x43, 0x68, 0x65,
+	0x63, 0x6b, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e,
+	0x50, 0x61, 0x74, 0x68, 0x54, 0x6f, 0x4c, 0x69, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72,
+	0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x10, 0x70, 0x61, 0x74, 0x68, 0x54, 0x6f, 0x4c, 0x69, 0x6e,
+	0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x1a, 0x43, 0x0a, 0x15, 0x50, 0x61, 0x74, 0x68, 0x54,
+	0x6f, 0x4c, 0x69, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b,
+	0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xcd, 0x02, 0x0a,
+	0x0f, 0x53, 0x61, 0x76, 0x65, 0x4c, 0x6f, 0x67, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x26, 0x0a, 0x0f, 0x73, 0x65, 0x72, 0x76, 0x6f, 0x5f, 0x68, 0x6f, 0x73, 0x74, 0x5f, 0x70,
+	0x61, 0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x73, 0x65, 0x72, 0x76, 0x6f,
+	0x48, 0x6f, 0x73, 0x74, 0x50, 0x61, 0x74, 0x68, 0x12, 0x3f, 0x0a, 0x1c, 0x73, 0x65, 0x72, 0x76,
+	0x6f, 0x64, 0x5f, 0x64, 0x6f, 0x63, 0x6b, 0x65, 0x72, 0x5f, 0x63, 0x6f, 0x6e, 0x74, 0x61, 0x69,
+	0x6e, 0x65, 0x72, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x19,
+	0x73, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x44, 0x6f, 0x63, 0x6b, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x74,
+	0x61, 0x69, 0x6e, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x73, 0x65, 0x72,
+	0x76, 0x6f, 0x64, 0x5f, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x05, 0x52,
+	0x0b, 0x73, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x50, 0x6f, 0x72, 0x74, 0x73, 0x12, 0x69, 0x0a, 0x13,
+	0x70, 0x61, 0x74, 0x68, 0x5f, 0x74, 0x6f, 0x5f, 0x6c, 0x69, 0x6e, 0x65, 0x5f, 0x6e, 0x75, 0x6d,
+	0x62, 0x65, 0x72, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x3a, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x53, 0x61, 0x76, 0x65, 0x4c, 0x6f, 0x67, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e,
+	0x50, 0x61, 0x74, 0x68, 0x54, 0x6f, 0x4c, 0x69, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72,
+	0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x10, 0x70, 0x61, 0x74, 0x68, 0x54, 0x6f, 0x4c, 0x69, 0x6e,
+	0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x1a, 0x43, 0x0a, 0x15, 0x50, 0x61, 0x74, 0x68, 0x54,
+	0x6f, 0x4c, 0x69, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b,
+	0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x12, 0x0a, 0x10,
+	0x53, 0x61, 0x76, 0x65, 0x4c, 0x6f, 0x67, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x32, 0xd6, 0x03, 0x0a, 0x0d, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x12, 0x88, 0x01, 0x0a, 0x0b, 0x53, 0x74, 0x61, 0x72, 0x74, 0x53, 0x65, 0x72, 0x76,
+	0x6f, 0x64, 0x12, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
+	0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x53, 0x65,
+	0x72, 0x76, 0x6f, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x63, 0x68,
+	0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x6c, 0x6f, 0x6e, 0x67, 0x72, 0x75, 0x6e,
+	0x6e, 0x69, 0x6e, 0x67, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x2d,
+	0xd2, 0x41, 0x2a, 0x0a, 0x13, 0x53, 0x74, 0x61, 0x72, 0x74, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x13, 0x53, 0x74, 0x61, 0x72, 0x74, 0x53,
+	0x65, 0x72, 0x76, 0x6f, 0x64, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x84, 0x01,
+	0x0a, 0x0a, 0x53, 0x74, 0x6f, 0x70, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x12, 0x26, 0x2e, 0x63,
 	0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61,
-	0x70, 0x69, 0x2e, 0x43, 0x61, 0x6c, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f,
-	0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x61, 0x6c, 0x6c, 0x53,
-	0x65, 0x72, 0x76, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x2f, 0x5a,
-	0x2d, 0x67, 0x6f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67,
-	0x2f, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66,
-	0x69, 0x67, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x70, 0x69, 0x2e, 0x53, 0x74, 0x6f, 0x70, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f,
+	0x73, 0x2e, 0x6c, 0x6f, 0x6e, 0x67, 0x72, 0x75, 0x6e, 0x6e, 0x69, 0x6e, 0x67, 0x2e, 0x4f, 0x70,
+	0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x2b, 0xd2, 0x41, 0x28, 0x0a, 0x12, 0x53, 0x74,
+	0x6f, 0x70, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x12, 0x53, 0x74, 0x6f, 0x70, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x4d, 0x65, 0x74, 0x61,
+	0x64, 0x61, 0x74, 0x61, 0x12, 0x54, 0x0a, 0x07, 0x45, 0x78, 0x65, 0x63, 0x43, 0x6d, 0x64, 0x12,
+	0x23, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73,
+	0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x45, 0x78, 0x65, 0x63, 0x43, 0x6d, 0x64, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f,
+	0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x45, 0x78, 0x65, 0x63, 0x43,
+	0x6d, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5d, 0x0a, 0x0a, 0x43, 0x61,
+	0x6c, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x12, 0x26, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d,
+	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43,
+	0x61, 0x6c, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x27, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
+	0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x61, 0x6c, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x6f,
+	0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x2f, 0x5a, 0x2d, 0x67, 0x6f, 0x2e,
+	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x63, 0x68, 0x72,
+	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2f, 0x67,
+	0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -1487,7 +1770,7 @@ func file_chromiumos_test_api_servod_service_proto_rawDescGZIP() []byte {
 }
 
 var file_chromiumos_test_api_servod_service_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_chromiumos_test_api_servod_service_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_chromiumos_test_api_servod_service_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_chromiumos_test_api_servod_service_proto_goTypes = []interface{}{
 	(CallServodRequest_Method)(0),       // 0: chromiumos.test.api.CallServodRequest.Method
 	(*StartServodRequest)(nil),          // 1: chromiumos.test.api.StartServodRequest
@@ -1502,40 +1785,48 @@ var file_chromiumos_test_api_servod_service_proto_goTypes = []interface{}{
 	(*CallServodRequest)(nil),           // 10: chromiumos.test.api.CallServodRequest
 	(*CallServodResponse)(nil),          // 11: chromiumos.test.api.CallServodResponse
 	(*CallServodMetadata)(nil),          // 12: chromiumos.test.api.CallServodMetadata
-	(*StartServodResponse_Success)(nil), // 13: chromiumos.test.api.StartServodResponse.Success
-	(*StartServodResponse_Failure)(nil), // 14: chromiumos.test.api.StartServodResponse.Failure
-	(*StopServodResponse_Success)(nil),  // 15: chromiumos.test.api.StopServodResponse.Success
-	(*StopServodResponse_Failure)(nil),  // 16: chromiumos.test.api.StopServodResponse.Failure
-	(*ExecCmdResponse_ExitInfo)(nil),    // 17: chromiumos.test.api.ExecCmdResponse.ExitInfo
-	(*CallServodResponse_Success)(nil),  // 18: chromiumos.test.api.CallServodResponse.Success
-	(*CallServodResponse_Failure)(nil),  // 19: chromiumos.test.api.CallServodResponse.Failure
-	(*xmlrpc.Value)(nil),                // 20: chromiumos.config.api.test.xmlrpc.Value
-	(*longrunning.Operation)(nil),       // 21: chromiumos.longrunning.Operation
+	(*LogCheckPointRequest)(nil),        // 13: chromiumos.test.api.LogCheckPointRequest
+	(*LogCheckPointResponse)(nil),       // 14: chromiumos.test.api.LogCheckPointResponse
+	(*SaveLogsRequest)(nil),             // 15: chromiumos.test.api.SaveLogsRequest
+	(*SaveLogsResponse)(nil),            // 16: chromiumos.test.api.SaveLogsResponse
+	(*StartServodResponse_Success)(nil), // 17: chromiumos.test.api.StartServodResponse.Success
+	(*StartServodResponse_Failure)(nil), // 18: chromiumos.test.api.StartServodResponse.Failure
+	(*StopServodResponse_Success)(nil),  // 19: chromiumos.test.api.StopServodResponse.Success
+	(*StopServodResponse_Failure)(nil),  // 20: chromiumos.test.api.StopServodResponse.Failure
+	(*ExecCmdResponse_ExitInfo)(nil),    // 21: chromiumos.test.api.ExecCmdResponse.ExitInfo
+	(*CallServodResponse_Success)(nil),  // 22: chromiumos.test.api.CallServodResponse.Success
+	(*CallServodResponse_Failure)(nil),  // 23: chromiumos.test.api.CallServodResponse.Failure
+	nil,                                 // 24: chromiumos.test.api.LogCheckPointResponse.PathToLineNumberEntry
+	nil,                                 // 25: chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry
+	(*xmlrpc.Value)(nil),                // 26: chromiumos.config.api.test.xmlrpc.Value
+	(*longrunning.Operation)(nil),       // 27: chromiumos.longrunning.Operation
 }
 var file_chromiumos_test_api_servod_service_proto_depIdxs = []int32{
-	13, // 0: chromiumos.test.api.StartServodResponse.success:type_name -> chromiumos.test.api.StartServodResponse.Success
-	14, // 1: chromiumos.test.api.StartServodResponse.failure:type_name -> chromiumos.test.api.StartServodResponse.Failure
-	15, // 2: chromiumos.test.api.StopServodResponse.success:type_name -> chromiumos.test.api.StopServodResponse.Success
-	16, // 3: chromiumos.test.api.StopServodResponse.failure:type_name -> chromiumos.test.api.StopServodResponse.Failure
-	17, // 4: chromiumos.test.api.ExecCmdResponse.exit_info:type_name -> chromiumos.test.api.ExecCmdResponse.ExitInfo
+	17, // 0: chromiumos.test.api.StartServodResponse.success:type_name -> chromiumos.test.api.StartServodResponse.Success
+	18, // 1: chromiumos.test.api.StartServodResponse.failure:type_name -> chromiumos.test.api.StartServodResponse.Failure
+	19, // 2: chromiumos.test.api.StopServodResponse.success:type_name -> chromiumos.test.api.StopServodResponse.Success
+	20, // 3: chromiumos.test.api.StopServodResponse.failure:type_name -> chromiumos.test.api.StopServodResponse.Failure
+	21, // 4: chromiumos.test.api.ExecCmdResponse.exit_info:type_name -> chromiumos.test.api.ExecCmdResponse.ExitInfo
 	0,  // 5: chromiumos.test.api.CallServodRequest.method:type_name -> chromiumos.test.api.CallServodRequest.Method
-	20, // 6: chromiumos.test.api.CallServodRequest.args:type_name -> chromiumos.config.api.test.xmlrpc.Value
-	18, // 7: chromiumos.test.api.CallServodResponse.success:type_name -> chromiumos.test.api.CallServodResponse.Success
-	19, // 8: chromiumos.test.api.CallServodResponse.failure:type_name -> chromiumos.test.api.CallServodResponse.Failure
-	20, // 9: chromiumos.test.api.CallServodResponse.Success.result:type_name -> chromiumos.config.api.test.xmlrpc.Value
-	1,  // 10: chromiumos.test.api.ServodService.StartServod:input_type -> chromiumos.test.api.StartServodRequest
-	4,  // 11: chromiumos.test.api.ServodService.StopServod:input_type -> chromiumos.test.api.StopServodRequest
-	7,  // 12: chromiumos.test.api.ServodService.ExecCmd:input_type -> chromiumos.test.api.ExecCmdRequest
-	10, // 13: chromiumos.test.api.ServodService.CallServod:input_type -> chromiumos.test.api.CallServodRequest
-	21, // 14: chromiumos.test.api.ServodService.StartServod:output_type -> chromiumos.longrunning.Operation
-	21, // 15: chromiumos.test.api.ServodService.StopServod:output_type -> chromiumos.longrunning.Operation
-	8,  // 16: chromiumos.test.api.ServodService.ExecCmd:output_type -> chromiumos.test.api.ExecCmdResponse
-	11, // 17: chromiumos.test.api.ServodService.CallServod:output_type -> chromiumos.test.api.CallServodResponse
-	14, // [14:18] is the sub-list for method output_type
-	10, // [10:14] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	26, // 6: chromiumos.test.api.CallServodRequest.args:type_name -> chromiumos.config.api.test.xmlrpc.Value
+	22, // 7: chromiumos.test.api.CallServodResponse.success:type_name -> chromiumos.test.api.CallServodResponse.Success
+	23, // 8: chromiumos.test.api.CallServodResponse.failure:type_name -> chromiumos.test.api.CallServodResponse.Failure
+	24, // 9: chromiumos.test.api.LogCheckPointResponse.path_to_line_number:type_name -> chromiumos.test.api.LogCheckPointResponse.PathToLineNumberEntry
+	25, // 10: chromiumos.test.api.SaveLogsRequest.path_to_line_number:type_name -> chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry
+	26, // 11: chromiumos.test.api.CallServodResponse.Success.result:type_name -> chromiumos.config.api.test.xmlrpc.Value
+	1,  // 12: chromiumos.test.api.ServodService.StartServod:input_type -> chromiumos.test.api.StartServodRequest
+	4,  // 13: chromiumos.test.api.ServodService.StopServod:input_type -> chromiumos.test.api.StopServodRequest
+	7,  // 14: chromiumos.test.api.ServodService.ExecCmd:input_type -> chromiumos.test.api.ExecCmdRequest
+	10, // 15: chromiumos.test.api.ServodService.CallServod:input_type -> chromiumos.test.api.CallServodRequest
+	27, // 16: chromiumos.test.api.ServodService.StartServod:output_type -> chromiumos.longrunning.Operation
+	27, // 17: chromiumos.test.api.ServodService.StopServod:output_type -> chromiumos.longrunning.Operation
+	8,  // 18: chromiumos.test.api.ServodService.ExecCmd:output_type -> chromiumos.test.api.ExecCmdResponse
+	11, // 19: chromiumos.test.api.ServodService.CallServod:output_type -> chromiumos.test.api.CallServodResponse
+	16, // [16:20] is the sub-list for method output_type
+	12, // [12:16] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_api_servod_service_proto_init() }
@@ -1689,7 +1980,7 @@ func file_chromiumos_test_api_servod_service_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_servod_service_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartServodResponse_Success); i {
+			switch v := v.(*LogCheckPointRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1701,7 +1992,7 @@ func file_chromiumos_test_api_servod_service_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_servod_service_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartServodResponse_Failure); i {
+			switch v := v.(*LogCheckPointResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1713,7 +2004,7 @@ func file_chromiumos_test_api_servod_service_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_servod_service_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StopServodResponse_Success); i {
+			switch v := v.(*SaveLogsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1725,7 +2016,7 @@ func file_chromiumos_test_api_servod_service_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_servod_service_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StopServodResponse_Failure); i {
+			switch v := v.(*SaveLogsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1737,7 +2028,7 @@ func file_chromiumos_test_api_servod_service_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_servod_service_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExecCmdResponse_ExitInfo); i {
+			switch v := v.(*StartServodResponse_Success); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1749,7 +2040,7 @@ func file_chromiumos_test_api_servod_service_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_servod_service_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CallServodResponse_Success); i {
+			switch v := v.(*StartServodResponse_Failure); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1761,6 +2052,54 @@ func file_chromiumos_test_api_servod_service_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_servod_service_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StopServodResponse_Success); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_servod_service_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StopServodResponse_Failure); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_servod_service_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ExecCmdResponse_ExitInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_servod_service_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CallServodResponse_Success); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_servod_service_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CallServodResponse_Failure); i {
 			case 0:
 				return &v.state
@@ -1791,7 +2130,7 @@ func file_chromiumos_test_api_servod_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_api_servod_service_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   19,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

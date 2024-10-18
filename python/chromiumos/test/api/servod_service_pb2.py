@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n(chromiumos/test/api/servod_service.proto\x12\x13\x63hromiumos.test.api\x1a.chromiumos/config/api/test/xmlrpc/xmlrpc.proto\x1a\'chromiumos/longrunning/operations.proto\"\x8a\x02\n\x12StartServodRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12 \n\x18servod_docker_image_path\x18\x03 \x01(\t\x12\x13\n\x0bservod_port\x18\x04 \x01(\x05\x12\r\n\x05\x62oard\x18\x05 \x01(\t\x12\r\n\x05model\x18\x06 \x01(\t\x12\x13\n\x0bserial_name\x18\x07 \x01(\t\x12\r\n\x05\x64\x65\x62ug\x18\x08 \x01(\t\x12\x15\n\rrecovery_mode\x18\t \x01(\t\x12\x0e\n\x06\x63onfig\x18\n \x01(\t\x12\x15\n\rallow_dual_v4\x18\x0b \x01(\t\"\xd6\x01\n\x13StartServodResponse\x12\x43\n\x07success\x18\x01 \x01(\x0b\x32\x30.chromiumos.test.api.StartServodResponse.SuccessH\x00\x12\x43\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x30.chromiumos.test.api.StartServodResponse.FailureH\x00\x1a\t\n\x07Success\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x15\n\x13StartServodMetadata\"g\n\x11StopServodRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12\x13\n\x0bservod_port\x18\x03 \x01(\x05\"\xd3\x01\n\x12StopServodResponse\x12\x42\n\x07success\x18\x01 \x01(\x0b\x32/.chromiumos.test.api.StopServodResponse.SuccessH\x00\x12\x42\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32/.chromiumos.test.api.StopServodResponse.FailureH\x00\x1a\t\n\x07Success\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x14\n\x12StopServodMetadata\"o\n\x0e\x45xecCmdRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x03 \x01(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\"\xc9\x01\n\x0f\x45xecCmdResponse\x12@\n\texit_info\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.ExecCmdResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x11\n\x0f\x45xecCmdMetadata\"\x8f\x02\n\x11\x43\x61llServodRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12\x13\n\x0bservod_port\x18\x03 \x01(\x05\x12=\n\x06method\x18\x04 \x01(\x0e\x32-.chromiumos.test.api.CallServodRequest.Method\x12\x36\n\x04\x61rgs\x18\x05 \x03(\x0b\x32(.chromiumos.config.api.test.xmlrpc.Value\"/\n\x06Method\x12\x07\n\x03\x44OC\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03SET\x10\x02\x12\n\n\x06HWINIT\x10\x03\"\x8d\x02\n\x12\x43\x61llServodResponse\x12\x42\n\x07success\x18\x01 \x01(\x0b\x32/.chromiumos.test.api.CallServodResponse.SuccessH\x00\x12\x42\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32/.chromiumos.test.api.CallServodResponse.FailureH\x00\x1a\x43\n\x07Success\x12\x38\n\x06result\x18\x01 \x01(\x0b\x32(.chromiumos.config.api.test.xmlrpc.Value\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x14\n\x12\x43\x61llServodMetadata2\xd6\x03\n\rServodService\x12\x88\x01\n\x0bStartServod\x12\'.chromiumos.test.api.StartServodRequest\x1a!.chromiumos.longrunning.Operation\"-\xd2\x41*\n\x13StartServodResponse\x12\x13StartServodMetadata\x12\x84\x01\n\nStopServod\x12&.chromiumos.test.api.StopServodRequest\x1a!.chromiumos.longrunning.Operation\"+\xd2\x41(\n\x12StopServodResponse\x12\x12StopServodMetadata\x12T\n\x07\x45xecCmd\x12#.chromiumos.test.api.ExecCmdRequest\x1a$.chromiumos.test.api.ExecCmdResponse\x12]\n\nCallServod\x12&.chromiumos.test.api.CallServodRequest\x1a\'.chromiumos.test.api.CallServodResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n(chromiumos/test/api/servod_service.proto\x12\x13\x63hromiumos.test.api\x1a.chromiumos/config/api/test/xmlrpc/xmlrpc.proto\x1a\'chromiumos/longrunning/operations.proto\"\x8a\x02\n\x12StartServodRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12 \n\x18servod_docker_image_path\x18\x03 \x01(\t\x12\x13\n\x0bservod_port\x18\x04 \x01(\x05\x12\r\n\x05\x62oard\x18\x05 \x01(\t\x12\r\n\x05model\x18\x06 \x01(\t\x12\x13\n\x0bserial_name\x18\x07 \x01(\t\x12\r\n\x05\x64\x65\x62ug\x18\x08 \x01(\t\x12\x15\n\rrecovery_mode\x18\t \x01(\t\x12\x0e\n\x06\x63onfig\x18\n \x01(\t\x12\x15\n\rallow_dual_v4\x18\x0b \x01(\t\"\xd6\x01\n\x13StartServodResponse\x12\x43\n\x07success\x18\x01 \x01(\x0b\x32\x30.chromiumos.test.api.StartServodResponse.SuccessH\x00\x12\x43\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32\x30.chromiumos.test.api.StartServodResponse.FailureH\x00\x1a\t\n\x07Success\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x15\n\x13StartServodMetadata\"g\n\x11StopServodRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12\x13\n\x0bservod_port\x18\x03 \x01(\x05\"\xd3\x01\n\x12StopServodResponse\x12\x42\n\x07success\x18\x01 \x01(\x0b\x32/.chromiumos.test.api.StopServodResponse.SuccessH\x00\x12\x42\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32/.chromiumos.test.api.StopServodResponse.FailureH\x00\x1a\t\n\x07Success\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x14\n\x12StopServodMetadata\"o\n\x0e\x45xecCmdRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12\x0f\n\x07\x63ommand\x18\x03 \x01(\t\x12\r\n\x05stdin\x18\x04 \x01(\x0c\"\xc9\x01\n\x0f\x45xecCmdResponse\x12@\n\texit_info\x18\x01 \x01(\x0b\x32-.chromiumos.test.api.ExecCmdResponse.ExitInfo\x12\x0e\n\x06stdout\x18\x02 \x01(\x0c\x12\x0e\n\x06stderr\x18\x03 \x01(\x0c\x1aT\n\x08\x45xitInfo\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x10\n\x08signaled\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x08\x12\x15\n\rerror_message\x18\x04 \x01(\t\"\x11\n\x0f\x45xecCmdMetadata\"\x8f\x02\n\x11\x43\x61llServodRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12\x13\n\x0bservod_port\x18\x03 \x01(\x05\x12=\n\x06method\x18\x04 \x01(\x0e\x32-.chromiumos.test.api.CallServodRequest.Method\x12\x36\n\x04\x61rgs\x18\x05 \x03(\x0b\x32(.chromiumos.config.api.test.xmlrpc.Value\"/\n\x06Method\x12\x07\n\x03\x44OC\x10\x00\x12\x07\n\x03GET\x10\x01\x12\x07\n\x03SET\x10\x02\x12\n\n\x06HWINIT\x10\x03\"\x8d\x02\n\x12\x43\x61llServodResponse\x12\x42\n\x07success\x18\x01 \x01(\x0b\x32/.chromiumos.test.api.CallServodResponse.SuccessH\x00\x12\x42\n\x07\x66\x61ilure\x18\x02 \x01(\x0b\x32/.chromiumos.test.api.CallServodResponse.FailureH\x00\x1a\x43\n\x07Success\x12\x38\n\x06result\x18\x01 \x01(\x0b\x32(.chromiumos.config.api.test.xmlrpc.Value\x1a \n\x07\x46\x61ilure\x12\x15\n\rerror_message\x18\x01 \x01(\tB\x08\n\x06result\"\x14\n\x12\x43\x61llServodMetadata\"d\n\x14LogCheckPointRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12\r\n\x05paths\x18\x03 \x03(\t\"\xaf\x01\n\x15LogCheckPointResponse\x12]\n\x13path_to_line_number\x18\x01 \x03(\x0b\x32@.chromiumos.test.api.LogCheckPointResponse.PathToLineNumberEntry\x1a\x37\n\x15PathToLineNumberEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\xf8\x01\n\x0fSaveLogsRequest\x12\x17\n\x0fservo_host_path\x18\x01 \x01(\t\x12$\n\x1cservod_docker_container_name\x18\x02 \x01(\t\x12\x14\n\x0cservod_ports\x18\x03 \x03(\x05\x12W\n\x13path_to_line_number\x18\x04 \x03(\x0b\x32:.chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry\x1a\x37\n\x15PathToLineNumberEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x12\n\x10SaveLogsResponse2\xd6\x03\n\rServodService\x12\x88\x01\n\x0bStartServod\x12\'.chromiumos.test.api.StartServodRequest\x1a!.chromiumos.longrunning.Operation\"-\xd2\x41*\n\x13StartServodResponse\x12\x13StartServodMetadata\x12\x84\x01\n\nStopServod\x12&.chromiumos.test.api.StopServodRequest\x1a!.chromiumos.longrunning.Operation\"+\xd2\x41(\n\x12StopServodResponse\x12\x12StopServodMetadata\x12T\n\x07\x45xecCmd\x12#.chromiumos.test.api.ExecCmdRequest\x1a$.chromiumos.test.api.ExecCmdResponse\x12]\n\nCallServod\x12&.chromiumos.test.api.CallServodRequest\x1a\'.chromiumos.test.api.CallServodResponseB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_config_dot_api_dot_test_dot_xmlrpc_dot_xmlrpc__pb2.DESCRIPTOR,chromiumos_dot_longrunning_dot_operations__pb2.DESCRIPTOR,])
 
@@ -826,6 +826,238 @@ _CALLSERVODMETADATA = _descriptor.Descriptor(
   serialized_end=1906,
 )
 
+
+_LOGCHECKPOINTREQUEST = _descriptor.Descriptor(
+  name='LogCheckPointRequest',
+  full_name='chromiumos.test.api.LogCheckPointRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='servo_host_path', full_name='chromiumos.test.api.LogCheckPointRequest.servo_host_path', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='servod_docker_container_name', full_name='chromiumos.test.api.LogCheckPointRequest.servod_docker_container_name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='paths', full_name='chromiumos.test.api.LogCheckPointRequest.paths', index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1908,
+  serialized_end=2008,
+)
+
+
+_LOGCHECKPOINTRESPONSE_PATHTOLINENUMBERENTRY = _descriptor.Descriptor(
+  name='PathToLineNumberEntry',
+  full_name='chromiumos.test.api.LogCheckPointResponse.PathToLineNumberEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.api.LogCheckPointResponse.PathToLineNumberEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.api.LogCheckPointResponse.PathToLineNumberEntry.value', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2131,
+  serialized_end=2186,
+)
+
+_LOGCHECKPOINTRESPONSE = _descriptor.Descriptor(
+  name='LogCheckPointResponse',
+  full_name='chromiumos.test.api.LogCheckPointResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='path_to_line_number', full_name='chromiumos.test.api.LogCheckPointResponse.path_to_line_number', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_LOGCHECKPOINTRESPONSE_PATHTOLINENUMBERENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2011,
+  serialized_end=2186,
+)
+
+
+_SAVELOGSREQUEST_PATHTOLINENUMBERENTRY = _descriptor.Descriptor(
+  name='PathToLineNumberEntry',
+  full_name='chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry.value', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2131,
+  serialized_end=2186,
+)
+
+_SAVELOGSREQUEST = _descriptor.Descriptor(
+  name='SaveLogsRequest',
+  full_name='chromiumos.test.api.SaveLogsRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='servo_host_path', full_name='chromiumos.test.api.SaveLogsRequest.servo_host_path', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='servod_docker_container_name', full_name='chromiumos.test.api.SaveLogsRequest.servod_docker_container_name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='servod_ports', full_name='chromiumos.test.api.SaveLogsRequest.servod_ports', index=2,
+      number=3, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='path_to_line_number', full_name='chromiumos.test.api.SaveLogsRequest.path_to_line_number', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_SAVELOGSREQUEST_PATHTOLINENUMBERENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2189,
+  serialized_end=2437,
+)
+
+
+_SAVELOGSRESPONSE = _descriptor.Descriptor(
+  name='SaveLogsResponse',
+  full_name='chromiumos.test.api.SaveLogsResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2439,
+  serialized_end=2457,
+)
+
 _STARTSERVODRESPONSE_SUCCESS.containing_type = _STARTSERVODRESPONSE
 _STARTSERVODRESPONSE_FAILURE.containing_type = _STARTSERVODRESPONSE
 _STARTSERVODRESPONSE.fields_by_name['success'].message_type = _STARTSERVODRESPONSE_SUCCESS
@@ -862,6 +1094,10 @@ _CALLSERVODRESPONSE.fields_by_name['success'].containing_oneof = _CALLSERVODRESP
 _CALLSERVODRESPONSE.oneofs_by_name['result'].fields.append(
   _CALLSERVODRESPONSE.fields_by_name['failure'])
 _CALLSERVODRESPONSE.fields_by_name['failure'].containing_oneof = _CALLSERVODRESPONSE.oneofs_by_name['result']
+_LOGCHECKPOINTRESPONSE_PATHTOLINENUMBERENTRY.containing_type = _LOGCHECKPOINTRESPONSE
+_LOGCHECKPOINTRESPONSE.fields_by_name['path_to_line_number'].message_type = _LOGCHECKPOINTRESPONSE_PATHTOLINENUMBERENTRY
+_SAVELOGSREQUEST_PATHTOLINENUMBERENTRY.containing_type = _SAVELOGSREQUEST
+_SAVELOGSREQUEST.fields_by_name['path_to_line_number'].message_type = _SAVELOGSREQUEST_PATHTOLINENUMBERENTRY
 DESCRIPTOR.message_types_by_name['StartServodRequest'] = _STARTSERVODREQUEST
 DESCRIPTOR.message_types_by_name['StartServodResponse'] = _STARTSERVODRESPONSE
 DESCRIPTOR.message_types_by_name['StartServodMetadata'] = _STARTSERVODMETADATA
@@ -874,6 +1110,10 @@ DESCRIPTOR.message_types_by_name['ExecCmdMetadata'] = _EXECCMDMETADATA
 DESCRIPTOR.message_types_by_name['CallServodRequest'] = _CALLSERVODREQUEST
 DESCRIPTOR.message_types_by_name['CallServodResponse'] = _CALLSERVODRESPONSE
 DESCRIPTOR.message_types_by_name['CallServodMetadata'] = _CALLSERVODMETADATA
+DESCRIPTOR.message_types_by_name['LogCheckPointRequest'] = _LOGCHECKPOINTREQUEST
+DESCRIPTOR.message_types_by_name['LogCheckPointResponse'] = _LOGCHECKPOINTRESPONSE
+DESCRIPTOR.message_types_by_name['SaveLogsRequest'] = _SAVELOGSREQUEST
+DESCRIPTOR.message_types_by_name['SaveLogsResponse'] = _SAVELOGSRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 StartServodRequest = _reflection.GeneratedProtocolMessageType('StartServodRequest', (_message.Message,), {
@@ -1016,8 +1256,54 @@ CallServodMetadata = _reflection.GeneratedProtocolMessageType('CallServodMetadat
   })
 _sym_db.RegisterMessage(CallServodMetadata)
 
+LogCheckPointRequest = _reflection.GeneratedProtocolMessageType('LogCheckPointRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LOGCHECKPOINTREQUEST,
+  '__module__' : 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.LogCheckPointRequest)
+  })
+_sym_db.RegisterMessage(LogCheckPointRequest)
+
+LogCheckPointResponse = _reflection.GeneratedProtocolMessageType('LogCheckPointResponse', (_message.Message,), {
+
+  'PathToLineNumberEntry' : _reflection.GeneratedProtocolMessageType('PathToLineNumberEntry', (_message.Message,), {
+    'DESCRIPTOR' : _LOGCHECKPOINTRESPONSE_PATHTOLINENUMBERENTRY,
+    '__module__' : 'chromiumos.test.api.servod_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.LogCheckPointResponse.PathToLineNumberEntry)
+    })
+  ,
+  'DESCRIPTOR' : _LOGCHECKPOINTRESPONSE,
+  '__module__' : 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.LogCheckPointResponse)
+  })
+_sym_db.RegisterMessage(LogCheckPointResponse)
+_sym_db.RegisterMessage(LogCheckPointResponse.PathToLineNumberEntry)
+
+SaveLogsRequest = _reflection.GeneratedProtocolMessageType('SaveLogsRequest', (_message.Message,), {
+
+  'PathToLineNumberEntry' : _reflection.GeneratedProtocolMessageType('PathToLineNumberEntry', (_message.Message,), {
+    'DESCRIPTOR' : _SAVELOGSREQUEST_PATHTOLINENUMBERENTRY,
+    '__module__' : 'chromiumos.test.api.servod_service_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry)
+    })
+  ,
+  'DESCRIPTOR' : _SAVELOGSREQUEST,
+  '__module__' : 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.SaveLogsRequest)
+  })
+_sym_db.RegisterMessage(SaveLogsRequest)
+_sym_db.RegisterMessage(SaveLogsRequest.PathToLineNumberEntry)
+
+SaveLogsResponse = _reflection.GeneratedProtocolMessageType('SaveLogsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SAVELOGSRESPONSE,
+  '__module__' : 'chromiumos.test.api.servod_service_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.SaveLogsResponse)
+  })
+_sym_db.RegisterMessage(SaveLogsResponse)
+
 
 DESCRIPTOR._options = None
+_LOGCHECKPOINTRESPONSE_PATHTOLINENUMBERENTRY._options = None
+_SAVELOGSREQUEST_PATHTOLINENUMBERENTRY._options = None
 
 _SERVODSERVICE = _descriptor.ServiceDescriptor(
   name='ServodService',
@@ -1026,8 +1312,8 @@ _SERVODSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1909,
-  serialized_end=2379,
+  serialized_start=2460,
+  serialized_end=2930,
   methods=[
   _descriptor.MethodDescriptor(
     name='StartServod',

@@ -7,7 +7,7 @@ from chromiumos.test.api import servod_service_pb2 as chromiumos_dot_test_dot_ap
 
 
 class ServodServiceStub(object):
-    """Provides the ability to start/stop servod daemon and execute servod 
+    """Provides the ability to start/stop servod daemon and execute servod
     commands on it.
     Servod daemon can be running either inside a Docker container or directly
     on the host.
@@ -44,7 +44,7 @@ class ServodServiceStub(object):
 
 
 class ServodServiceServicer(object):
-    """Provides the ability to start/stop servod daemon and execute servod 
+    """Provides the ability to start/stop servod daemon and execute servod
     commands on it.
     Servod daemon can be running either inside a Docker container or directly
     on the host.
@@ -127,7 +127,7 @@ def add_ServodServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class ServodService(object):
-    """Provides the ability to start/stop servod daemon and execute servod 
+    """Provides the ability to start/stop servod daemon and execute servod
     commands on it.
     Servod daemon can be running either inside a Docker container or directly
     on the host.
