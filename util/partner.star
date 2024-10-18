@@ -203,7 +203,8 @@ partner = struct(
         FOCALTECH = _create_touch_partner(
             name = "focaltech",
             vendor_id = "2808",
-            symlink_file_format = "{product_id}_{fw_version}.bin",
+            symlink_file_format = "focal_hid_{product_id}.bin",
+            destination_file_format = "{product_id}_{fw_version}.bin",
         ),
         PARADETECH = _create_touch_partner(
             name = "paradetech",
