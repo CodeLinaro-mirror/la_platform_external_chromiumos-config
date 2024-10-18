@@ -22,6 +22,11 @@ class ProvisionServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallCrosRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
                 )
+        self.InstallLacros = channel.unary_unary(
+                '/chromiumos.test.api.ProvisionService/InstallLacros',
+                request_serializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallLacrosRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
+                )
         self.InstallAsh = channel.unary_unary(
                 '/chromiumos.test.api.ProvisionService/InstallAsh',
                 request_serializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallAshRequest.SerializeToString,
@@ -53,6 +58,16 @@ class ProvisionServiceServicer(object):
 
         If the DUT already has the specified list of DLCs, only the missing DLCs
         will be installed.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InstallLacros(self, request, context):
+        """InstallLacros installs a specified version of Lacros on the DUT.
+
+        If the DUT already has the specified version of Lacros, Lacros will not be
+        installed.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -91,6 +106,11 @@ def add_ProvisionServiceServicer_to_server(servicer, server):
             'InstallCros': grpc.unary_unary_rpc_method_handler(
                     servicer.InstallCros,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallCrosRequest.FromString,
+                    response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
+            ),
+            'InstallLacros': grpc.unary_unary_rpc_method_handler(
+                    servicer.InstallLacros,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallLacrosRequest.FromString,
                     response_serializer=chromiumos_dot_longrunning_dot_operations__pb2.Operation.SerializeToString,
             ),
             'InstallAsh': grpc.unary_unary_rpc_method_handler(
@@ -133,6 +153,23 @@ class ProvisionService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ProvisionService/InstallCros',
             chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallCrosRequest.SerializeToString,
+            chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InstallLacros(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ProvisionService/InstallLacros',
+            chromiumos_dot_test_dot_api_dot_provision__service__pb2.InstallLacrosRequest.SerializeToString,
             chromiumos_dot_longrunning_dot_operations__pb2.Operation.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

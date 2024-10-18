@@ -19773,6 +19773,64 @@
         {
           "field": [
             {
+              "jsonName": "lacrosImagePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "lacros_image_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "overrideVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_version",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "overrideInstallPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "override_install_path",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "InstallLacrosRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallLacrosResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
+        },
+        {
+          "name": "InstallLacrosMetadata"
+        },
+        {
+          "field": [
+            {
               "jsonName": "ashImagePath",
               "label": "LABEL_OPTIONAL",
               "name": "ash_image_path",
@@ -19932,6 +19990,17 @@
                 "[chromiumos.longrunning.operation_info]": {
                   "metadataType": "InstallCrosMetadata",
                   "responseType": "InstallCrosResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallLacrosRequest",
+              "name": "InstallLacros",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallLacrosMetadata",
+                  "responseType": "InstallLacrosResponse"
                 }
               },
               "outputType": ".chromiumos.longrunning.Operation"

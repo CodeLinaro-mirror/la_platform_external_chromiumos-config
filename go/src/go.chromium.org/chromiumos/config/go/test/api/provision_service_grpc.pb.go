@@ -32,6 +32,11 @@ type ProvisionServiceClient interface {
 	// If the DUT already has the specified list of DLCs, only the missing DLCs
 	// will be installed.
 	InstallCros(ctx context.Context, in *InstallCrosRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
+	// InstallLacros installs a specified version of Lacros on the DUT.
+	//
+	// If the DUT already has the specified version of Lacros, Lacros will not be
+	// installed.
+	InstallLacros(ctx context.Context, in *InstallLacrosRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// InstallAsh installs a specified version of ash-chrome on the DUT.
 	//
 	// This directly overwrites the version of ash-chrome on the current root
@@ -57,6 +62,15 @@ func NewProvisionServiceClient(cc grpc.ClientConnInterface) ProvisionServiceClie
 func (c *provisionServiceClient) InstallCros(ctx context.Context, in *InstallCrosRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
 	out := new(longrunning.Operation)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.api.ProvisionService/InstallCros", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *provisionServiceClient) InstallLacros(ctx context.Context, in *InstallLacrosRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
+	out := new(longrunning.Operation)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.ProvisionService/InstallLacros", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -103,6 +117,11 @@ type ProvisionServiceServer interface {
 	// If the DUT already has the specified list of DLCs, only the missing DLCs
 	// will be installed.
 	InstallCros(context.Context, *InstallCrosRequest) (*longrunning.Operation, error)
+	// InstallLacros installs a specified version of Lacros on the DUT.
+	//
+	// If the DUT already has the specified version of Lacros, Lacros will not be
+	// installed.
+	InstallLacros(context.Context, *InstallLacrosRequest) (*longrunning.Operation, error)
 	// InstallAsh installs a specified version of ash-chrome on the DUT.
 	//
 	// This directly overwrites the version of ash-chrome on the current root
@@ -123,6 +142,9 @@ type UnimplementedProvisionServiceServer struct {
 
 func (UnimplementedProvisionServiceServer) InstallCros(context.Context, *InstallCrosRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InstallCros not implemented")
+}
+func (UnimplementedProvisionServiceServer) InstallLacros(context.Context, *InstallLacrosRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InstallLacros not implemented")
 }
 func (UnimplementedProvisionServiceServer) InstallAsh(context.Context, *InstallAshRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InstallAsh not implemented")
@@ -159,6 +181,24 @@ func _ProvisionService_InstallCros_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProvisionServiceServer).InstallCros(ctx, req.(*InstallCrosRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProvisionService_InstallLacros_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InstallLacrosRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProvisionServiceServer).InstallLacros(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.ProvisionService/InstallLacros",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProvisionServiceServer).InstallLacros(ctx, req.(*InstallLacrosRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -227,6 +267,10 @@ var ProvisionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "InstallCros",
 			Handler:    _ProvisionService_InstallCros_Handler,
+		},
+		{
+			MethodName: "InstallLacros",
+			Handler:    _ProvisionService_InstallLacros_Handler,
 		},
 		{
 			MethodName: "InstallAsh",
