@@ -5602,14 +5602,6 @@
                   "type": "TYPE_STRING"
                 },
                 {
-                  "jsonName": "mainboardHasEarlyLibgfxinit",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "mainboard_has_early_libgfxinit",
-                  "number": 4,
-                  "type": "TYPE_ENUM",
-                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
-                },
-                {
                   "jsonName": "vbootCbfsIntegration",
                   "label": "LABEL_OPTIONAL",
                   "name": "vboot_cbfs_integration",
@@ -5712,6 +5704,10 @@
                 }
               ],
               "reservedRange": [
+                {
+                  "end": 5,
+                  "start": 4
+                },
                 {
                   "end": 7,
                   "start": 6

@@ -278,8 +278,7 @@ message HardwareFeatures {
     // firmware packaging.
     repeated string coreboot_customizations = 3;
 
-    // The AP firmware has the CONFIG_MAINBOARD_HAS_EARLY_LIBGFXINIT feature enabled.
-    Present mainboard_has_early_libgfxinit = 4;
+    reserved 4;
 
     // The AP firmware has the CONFIG_VBOOT_CBFS_INTEGRATION feature enabled.
     Present vboot_cbfs_integration = 5;
