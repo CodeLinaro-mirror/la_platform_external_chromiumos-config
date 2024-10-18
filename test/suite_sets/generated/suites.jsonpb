@@ -3779,6 +3779,18 @@
 					"value": "tast.nacl.Pnacl"
 				},
 				{
+					"value": "tast.network.ARCCreateWifiInShillByCmd.auto_reconnect_disabled"
+				},
+				{
+					"value": "tast.network.ARCCreateWifiInShillByCmd.auto_reconnect_disabled_with_pac_url"
+				},
+				{
+					"value": "tast.network.ARCCreateWifiInShillByCmd.dns_and_search_domains"
+				},
+				{
+					"value": "tast.network.ARCCreateWifiInShillByCmd.manual_proxy"
+				},
+				{
 					"value": "tast.network.ARCIPv6Connectivity"
 				},
 				{
