@@ -206,7 +206,7 @@ message ModemInfo {
   string model_variant = 5;
 }
 
-// Next Tag: 9
+// Next Tag: 12
 enum ModemType {
   MODEM_TYPE_UNSPECIFIED = 0;
   MODEM_TYPE_UNSUPPORTED = 8;
@@ -217,6 +217,9 @@ enum ModemType {
   MODEM_TYPE_FM101 = 5;
   MODEM_TYPE_QUALCOMM_SC7280 = 6;
   MODEM_TYPE_EM060 = 7;
+  MODEM_TYPE_RW101 = 9;
+  MODEM_TYPE_RW135 = 10;
+  MODEM_TYPE_LCUK54 = 11;
 }
 
 message SIMInfo {

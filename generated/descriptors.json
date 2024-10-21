@@ -18060,6 +18060,18 @@
             {
               "name": "MODEM_TYPE_EM060",
               "number": 7
+            },
+            {
+              "name": "MODEM_TYPE_RW101",
+              "number": 9
+            },
+            {
+              "name": "MODEM_TYPE_RW135",
+              "number": 10
+            },
+            {
+              "name": "MODEM_TYPE_LCUK54",
+              "number": 11
             }
           ]
         },
