@@ -20007,17 +20007,6 @@
               "outputType": ".chromiumos.longrunning.Operation"
             },
             {
-              "inputType": ".chromiumos.test.api.InstallLacrosRequest",
-              "name": "InstallLacros",
-              "options": {
-                "[chromiumos.longrunning.operation_info]": {
-                  "metadataType": "InstallLacrosMetadata",
-                  "responseType": "InstallLacrosResponse"
-                }
-              },
-              "outputType": ".chromiumos.longrunning.Operation"
-            },
-            {
               "inputType": ".chromiumos.test.api.InstallAshRequest",
               "name": "InstallAsh",
               "options": {

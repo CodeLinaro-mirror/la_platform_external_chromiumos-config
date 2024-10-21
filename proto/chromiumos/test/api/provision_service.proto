@@ -31,18 +31,6 @@ service ProvisionService {
     };
   }
 
-  // InstallLacros installs a specified version of Lacros on the DUT.
-  //
-  // If the DUT already has the specified version of Lacros, Lacros will not be
-  // installed.
-  rpc InstallLacros(InstallLacrosRequest)
-      returns (longrunning.Operation) {
-    option (longrunning.operation_info) = {
-      response_type: "InstallLacrosResponse",
-      metadata_type: "InstallLacrosMetadata"
-    };
-  }
-
   // InstallAsh installs a specified version of ash-chrome on the DUT.
   //
   // This directly overwrites the version of ash-chrome on the current root
