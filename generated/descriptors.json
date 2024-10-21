@@ -7748,6 +7748,13 @@
                   "name": "cpu_soc_family",
                   "number": 3,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "dmiProductName",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dmi_product_name",
+                  "number": 4,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "HardwareProbe"

@@ -1060,6 +1060,7 @@ message HardwareFeatures {
     string gpu_family = 1;
     string gpu_vendor = 2;
     string cpu_soc_family = 3;
+    string dmi_product_name = 4;
   }
 
   // A single step in an ambient light sensor configuration table. Each step
