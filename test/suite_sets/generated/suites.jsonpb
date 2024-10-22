@@ -3188,6 +3188,9 @@
 					"value": "tast.health.RunBluetoothRoutine.v1_power_bluez"
 				},
 				{
+					"value": "tast.health.RunBluetoothRoutine.v1_power_floss"
+				},
+				{
 					"value": "tast.health.RunBluetoothRoutine.v1_scanning_bluez"
 				},
 				{
@@ -3195,6 +3198,9 @@
 				},
 				{
 					"value": "tast.health.RunBluetoothRoutine.v2_discovery"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v2_power"
 				},
 				{
 					"value": "tast.health.RunBluetoothRoutine.v2_scanning"
