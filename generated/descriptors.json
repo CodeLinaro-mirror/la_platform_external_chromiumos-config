@@ -30986,12 +30986,19 @@
               "type": "TYPE_STRING"
             },
             {
-              "jsonName": "executionMetadata",
+              "jsonName": "primaryExecutionInfo",
               "label": "LABEL_OPTIONAL",
-              "name": "execution_metadata",
+              "name": "primary_execution_info",
               "number": 4,
               "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.artifact.ExecutionMetadata"
+              "typeName": ".chromiumos.test.artifact.ExecutionInfo"
+            },
+            {
+              "jsonName": "luciInvocationId",
+              "label": "LABEL_OPTIONAL",
+              "name": "luci_invocation_id",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "PublishAntsMetadata"
