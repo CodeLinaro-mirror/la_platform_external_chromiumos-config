@@ -1790,6 +1790,9 @@
 					"value": "tast.camera.Characteristics"
 				},
 				{
+					"value": "tast.camera.CrosConfig"
+				},
+				{
 					"value": "tast.camera.EncodeAccelJPEG"
 				},
 				{
@@ -3624,9 +3627,6 @@
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardGlideTyping.clamshell_a11y_floating"
-				},
-				{
-					"value": "tast.inputs.VirtualKeyboardGlideTyping.tablet_docked"
 				},
 				{
 					"value": "tast.inputs.VirtualKeyboardHandwriting.docked"
