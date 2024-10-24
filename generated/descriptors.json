@@ -5796,6 +5796,10 @@
                     {
                       "name": "AUDIO_CODEC_ALC722",
                       "number": 22
+                    },
+                    {
+                      "name": "AUDIO_CODEC_ALC721",
+                      "number": 23
                     }
                   ]
                 },
@@ -5887,6 +5891,10 @@
                     {
                       "name": "AMPLIFIER_ALC722",
                       "number": 22
+                    },
+                    {
+                      "name": "AMPLIFIER_ALC721",
+                      "number": 23
                     }
                   ]
                 },
