@@ -296,6 +296,23 @@ message WifiConfig {
       EnablementWbemCountries enablement_wbem_countries = 2;
     }
     Wbem wbem = 7;
+
+    message BluetoothPpag {
+      // Bluetooth PPAG table.
+      uint32 revision = 1;
+
+      // For different regions.
+      message EnablementBpagCountries {
+          bool eu = 1;
+          bool china = 2;
+          bool eu_uhb = 3;
+          bool fcc_uhb = 4;
+          bool ised_uhb = 5;
+      }
+
+      EnablementBpagCountries enablement_bpag_countries = 2;
+    }
+    BluetoothPpag bpag = 8;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

@@ -1049,6 +1049,44 @@ def _create_intel_wbem(
         enablement_wbem_countries = enablement_wbem_countries,
     )
 
+def _create_intel_bpag_country_enablement(
+        eu = False,
+        china = False,
+        eu_uhb = False,
+        fcc_uhb = False,
+        ised_uhb = False):
+    """Builds country enablement parameters for intel drivers.
+
+    Args:
+        eu: enable per platform antenna gain mode for EU region.
+        china: enable per platform antenna gain mode for china region.
+        eu_uhb: enable per platform antenna gain mode for EU UHB region.
+        fcc_uhb: enable per platform antenna gain mode for FCC UHB region.
+        ised_uhb: enable per platform antenna gain mode for ISED UHB region.
+
+    """
+    return wf_pb.WifiConfig.IntelConfig.BluetoothPpag.EnablementBpagCountries(
+        eu = eu,
+        china = china,
+        eu_uhb = eu_uhb,
+        fcc_uhb = fcc_uhb,
+        ised_uhb = ised_uhb,
+    )
+
+def _create_intel_bpag(
+        revision,  # only revision 1 is supported at the moment
+        enablement_bpag_countries = _create_intel_bpag_country_enablement()):
+    """Builds a BluetoothPpag proto for use with intel drivers.
+
+    Args:
+        revision: BluetoothPPAG table revision.
+        enablement_bpag_countries: Enable/Disable Antenna Gain Mode per region.
+    """
+    return wf_pb.WifiConfig.IntelConfig.BluetoothPpag(
+        revision = revision,
+        enablement_bpag_countries = enablement_bpag_countries,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1142,7 +1180,8 @@ def _create_intel_wifi(
         wtas_table = None,
         dsm = None,
         bt_sar = None,
-        wbem = None):
+        wbem = None,
+        bpag = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1153,6 +1192,7 @@ def _create_intel_wifi(
         dsm: Device specific methods return values for intel driver.
         bt_sar: BluetoothSar proto for use with intel driver.
         wbem: Wbem proto for use with intel driver.
+        bpag: BluetoothPpag proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1163,6 +1203,7 @@ def _create_intel_wifi(
             dsm = dsm,
             bt_sar = bt_sar,
             wbem = wbem,
+            bpag = bpag,
         ),
     )
 
@@ -1373,6 +1414,8 @@ sw_config = struct(
     create_intel_bt_sar = _create_intel_bt_sar,
     create_intel_wbem_country_enablement = _create_intel_wbem_country_enablement,
     create_intel_wbem = _create_intel_wbem,
+    create_intel_bpag_country_enablement = _create_intel_bpag_country_enablement,
+    create_intel_bpag = _create_intel_bpag,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,

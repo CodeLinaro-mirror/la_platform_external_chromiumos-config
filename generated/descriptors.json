@@ -3180,6 +3180,14 @@
                   "number": 7,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Wbem"
+                },
+                {
+                  "jsonName": "bpag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bpag",
+                  "number": 8,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothPpag"
                 }
               ],
               "name": "IntelConfig",
@@ -4027,6 +4035,68 @@
                         }
                       ],
                       "name": "EnablementWbemCountries"
+                    }
+                  ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "enablementBpagCountries",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "enablement_bpag_countries",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothPpag.EnablementBpagCountries"
+                    }
+                  ],
+                  "name": "BluetoothPpag",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "eu",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "eu",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "china",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "china",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "euUhb",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "eu_uhb",
+                          "number": 3,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "fccUhb",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "fcc_uhb",
+                          "number": 4,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "isedUhb",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ised_uhb",
+                          "number": 5,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "EnablementBpagCountries"
                     }
                   ]
                 }
