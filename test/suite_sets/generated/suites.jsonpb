@@ -863,6 +863,9 @@
 					"value": "tast.a11y.LiveCaption.fieldtrial_testing_config_off"
 				},
 				{
+					"value": "tast.a11y.LiveCaption.fieldtrial_testing_config_on"
+				},
+				{
 					"value": "tast.a11y.Smoke"
 				},
 				{
@@ -2892,6 +2895,9 @@
 				},
 				{
 					"value": "tast.graphics.KernelConfig"
+				},
+				{
+					"value": "tast.graphics.KernelConfig.flex"
 				},
 				{
 					"value": "tast.graphics.KernelMemory"
