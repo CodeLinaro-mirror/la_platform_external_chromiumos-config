@@ -987,6 +987,7 @@ _SC_WIFI7_INTEL = sc.create_intel_wifi(
     bpag = sc.create_intel_bpag(revision = 2),
     bbfb = sc.create_intel_bbfb(revision = 1),
     bdcm = sc.create_intel_bdcm(revision = 1),
+    bbsm = sc.create_intel_bbsm(revision = 1),
 )
 _TOUCH = hw_topo.create_touch(
     "TOUCH",

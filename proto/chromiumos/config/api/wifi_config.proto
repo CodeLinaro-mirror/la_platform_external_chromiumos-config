@@ -334,6 +334,22 @@ message WifiConfig {
       BdcmDualChainMode bdcm_dual_chain_mode = 2;
     }
     Bdcm bdcm = 10;
+
+    message Bbsm {
+      // Bluetooth BBSM table.
+      uint32 revision = 1;
+
+      // Bluetooth Bands Selection.
+      message BbsmBandsSelection {
+          bool band_2_4_ghz_disable = 1;
+          bool band_5_2_ghz_disable = 2;
+          bool band_5_8_ghz_disable = 3;
+          bool band_6_2_ghz_disable = 4;
+      }
+
+      BbsmBandsSelection bands_selection = 2;
+    }
+    Bbsm bbsm = 11;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

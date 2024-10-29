@@ -9337,6 +9337,10 @@
                   "bbfb": {
                     "revision": 1
                   },
+                  "bbsm": {
+                    "bandsSelection": {},
+                    "revision": 1
+                  },
                   "bdcm": {
                     "bdcmDualChainMode": {},
                     "revision": 1
@@ -9980,6 +9984,10 @@
                         "antTableVersion": 2
                       },
                       "bbfb": {
+                        "revision": 1
+                      },
+                      "bbsm": {
+                        "bandsSelection": {},
                         "revision": 1
                       },
                       "bdcm": {

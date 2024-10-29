@@ -1356,6 +1356,10 @@
                   "bbfb": {
                     "revision": 1
                   },
+                  "bbsm": {
+                    "bandsSelection": {},
+                    "revision": 1
+                  },
                   "bdcm": {
                     "bdcmDualChainMode": {},
                     "revision": 1

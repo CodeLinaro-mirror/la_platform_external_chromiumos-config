@@ -3204,6 +3204,14 @@
                   "number": 10,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bdcm"
+                },
+                {
+                  "jsonName": "bbsm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bbsm",
+                  "number": 11,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bbsm"
                 }
               ],
               "name": "IntelConfig",
@@ -4166,6 +4174,61 @@
                         }
                       ],
                       "name": "BdcmDualChainMode"
+                    }
+                  ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "bandsSelection",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "bands_selection",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bbsm.BbsmBandsSelection"
+                    }
+                  ],
+                  "name": "Bbsm",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "band24GhzDisable",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "band_2_4_ghz_disable",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "band52GhzDisable",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "band_5_2_ghz_disable",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "band58GhzDisable",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "band_5_8_ghz_disable",
+                          "number": 3,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "band62GhzDisable",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "band_6_2_ghz_disable",
+                          "number": 4,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "BbsmBandsSelection"
                     }
                   ]
                 }

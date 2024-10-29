@@ -1126,6 +1126,40 @@ def _create_intel_bdcm(
         bdcm_dual_chain_mode = bdcm_dual_chain_mode,
     )
 
+def _create_intel_bbsm_bands_selection(
+        band_2_4_ghz_disable = False,
+        band_5_2_ghz_disable = False,
+        band_5_8_ghz_disable = False,
+        band_6_2_ghz_disable = False):
+    """Builds Bluetooth bands selection parameters for intel drivers.
+
+    Args:
+        band_2_4_ghz_disable: Force disable 2.4 GHz band.
+        band_5_2_ghz_disable: Force disable 5.2 GHz band.
+        band_5_8_ghz_disable: Force disable 5.8 GHz band.
+        band_6_2_ghz_disable: Force disable 6.2 GHz band.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bbsm.BbsmBandsSelection(
+        band_2_4_ghz_disable = band_2_4_ghz_disable,
+        band_5_2_ghz_disable = band_5_2_ghz_disable,
+        band_5_8_ghz_disable = band_5_8_ghz_disable,
+        band_6_2_ghz_disable = band_6_2_ghz_disable,
+    )
+
+def _create_intel_bbsm(
+        revision,  # only revision 1 is supported at the moment
+        bands_selection = _create_intel_bbsm_bands_selection()):
+    """Builds a Bbsm proto for use with intel drivers.
+
+    Args:
+        revision: BBSM table revision.
+        bands_selection: Bluetooth bands selection.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bbsm(
+        revision = revision,
+        bands_selection = bands_selection,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1222,7 +1256,8 @@ def _create_intel_wifi(
         wbem = None,
         bpag = None,
         bbfb = None,
-        bdcm = None):
+        bdcm = None,
+        bbsm = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1236,6 +1271,7 @@ def _create_intel_wifi(
         bpag: BluetoothPpag proto for use with intel driver.
         bbfb: Bbfb proto for use with intel driver.
         bdcm: Bdcm proto for use with intel driver.
+        bbsm: Bbsm proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1249,6 +1285,7 @@ def _create_intel_wifi(
             bpag = bpag,
             bbfb = bbfb,
             bdcm = bdcm,
+            bbsm = bbsm,
         ),
     )
 
@@ -1464,6 +1501,8 @@ sw_config = struct(
     create_intel_bbfb = _create_intel_bbfb,
     create_intel_bdcm_dual_chain_mode = _create_intel_bdcm_dual_chain_mode,
     create_intel_bdcm = _create_intel_bdcm,
+    create_intel_bbsm_bands_selection = _create_intel_bbsm_bands_selection,
+    create_intel_bbsm = _create_intel_bbsm,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,
