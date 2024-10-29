@@ -9334,6 +9334,9 @@
                     "antModePpag": 3,
                     "antTableVersion": 2
                   },
+                  "bbfb": {
+                    "revision": 1
+                  },
                   "bpag": {
                     "enablementBpagCountries": {},
                     "revision": 2
@@ -9971,6 +9974,9 @@
                         },
                         "antModePpag": 3,
                         "antTableVersion": 2
+                      },
+                      "bbfb": {
+                        "revision": 1
                       },
                       "bpag": {
                         "enablementBpagCountries": {},

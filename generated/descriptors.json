@@ -3188,6 +3188,14 @@
                   "number": 8,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothPpag"
+                },
+                {
+                  "jsonName": "bbfb",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bbfb",
+                  "number": 9,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bbfb"
                 }
               ],
               "name": "IntelConfig",
@@ -4099,6 +4107,25 @@
                       "name": "EnablementBpagCountries"
                     }
                   ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "enableQuadFilterBypass",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "enable_quad_filter_bypass",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    }
+                  ],
+                  "name": "Bbfb"
                 }
               ]
             },

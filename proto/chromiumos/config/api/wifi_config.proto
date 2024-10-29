@@ -313,6 +313,14 @@ message WifiConfig {
       EnablementBpagCountries enablement_bpag_countries = 2;
     }
     BluetoothPpag bpag = 8;
+
+    message Bbfb {
+      // Bluetooth BBFB table.
+      uint32 revision = 1;
+      // Bluetooth ByPassFilter.
+      bool enable_quad_filter_bypass = 2;
+    }
+    Bbfb bbfb = 9;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

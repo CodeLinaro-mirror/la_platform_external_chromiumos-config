@@ -1087,6 +1087,20 @@ def _create_intel_bpag(
         enablement_bpag_countries = enablement_bpag_countries,
     )
 
+def _create_intel_bbfb(
+        revision,  # only revision 1 is supported at the moment
+        enable_quad_filter_bypass = False):
+    """Builds a Bbfb proto for use with intel drivers.
+
+    Args:
+        revision: BBFB table revision.
+        enable_quad_filter_bypass: Enable/Disable quad filter bypass.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bbfb(
+        revision = revision,
+        enable_quad_filter_bypass = enable_quad_filter_bypass,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1181,7 +1195,8 @@ def _create_intel_wifi(
         dsm = None,
         bt_sar = None,
         wbem = None,
-        bpag = None):
+        bpag = None,
+        bbfb = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1193,6 +1208,7 @@ def _create_intel_wifi(
         bt_sar: BluetoothSar proto for use with intel driver.
         wbem: Wbem proto for use with intel driver.
         bpag: BluetoothPpag proto for use with intel driver.
+        bbfb: Bbfb proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1204,6 +1220,7 @@ def _create_intel_wifi(
             bt_sar = bt_sar,
             wbem = wbem,
             bpag = bpag,
+            bbfb = bbfb,
         ),
     )
 
@@ -1416,6 +1433,7 @@ sw_config = struct(
     create_intel_wbem = _create_intel_wbem,
     create_intel_bpag_country_enablement = _create_intel_bpag_country_enablement,
     create_intel_bpag = _create_intel_bpag,
+    create_intel_bbfb = _create_intel_bbfb,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,
