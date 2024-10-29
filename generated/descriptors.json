@@ -3212,6 +3212,14 @@
                   "number": 11,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bbsm"
+                },
+                {
+                  "jsonName": "bucs",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bucs",
+                  "number": 12,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bucs"
                 }
               ],
               "name": "IntelConfig",
@@ -4229,6 +4237,166 @@
                         }
                       ],
                       "name": "BbsmBandsSelection"
+                    }
+                  ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "uhbCountrySelection",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "uhb_country_selection",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bucs.BucsUhbCountrySelection"
+                    }
+                  ],
+                  "name": "Bucs",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "forceDisableBtInAllOtherCountries",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "force_disable_bt_in_all_other_countries",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInUsa",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_usa",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInRestOfTheWorld",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_rest_of_the_world",
+                          "number": 3,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInEu",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_eu",
+                          "number": 4,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInSouthKorea",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_south_korea",
+                          "number": 5,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInBrazil",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_brazil",
+                          "number": 6,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInChile",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_chile",
+                          "number": 7,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInJapan",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_japan",
+                          "number": 8,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInCanada",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_canada",
+                          "number": 9,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInMorocco",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_morocco",
+                          "number": 10,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInMongolia",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_mongolia",
+                          "number": 11,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInMalaysia",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_malaysia",
+                          "number": 12,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInSaudiArabia",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_saudi_arabia",
+                          "number": 13,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInMexico",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_mexico",
+                          "number": 14,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInNigeria",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_nigeria",
+                          "number": 15,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInThailand",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_thailand",
+                          "number": 16,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInSingapore",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_singapore",
+                          "number": 17,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInTaiwan",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_taiwan",
+                          "number": 18,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInSouthAfrica",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_south_africa",
+                          "number": 19,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "BucsUhbCountrySelection"
                     }
                   ]
                 }

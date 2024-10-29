@@ -1160,6 +1160,85 @@ def _create_intel_bbsm(
         bands_selection = bands_selection,
     )
 
+def _create_intel_bucs_uhb_country_selection(
+        force_disable_bt_in_all_other_countries = False,
+        allow_6_ghz_in_usa = False,
+        allow_6_ghz_in_rest_of_the_world = False,
+        allow_6_ghz_in_eu = False,
+        allow_6_ghz_in_south_korea = False,
+        allow_6_ghz_in_brazil = False,
+        allow_6_ghz_in_chile = False,
+        allow_6_ghz_in_japan = False,
+        allow_6_ghz_in_canada = False,
+        allow_6_ghz_in_morocco = False,
+        allow_6_ghz_in_mongolia = False,
+        allow_6_ghz_in_malaysia = False,
+        allow_6_ghz_in_saudi_arabia = False,
+        allow_6_ghz_in_mexico = False,
+        allow_6_ghz_in_nigeria = False,
+        allow_6_ghz_in_thailand = False,
+        allow_6_ghz_in_singapore = False,
+        allow_6_ghz_in_taiwan = False,
+        allow_6_ghz_in_south_africa = False):
+    """Builds Bluetooth Ultra-High band country selection parameters for intel drivers.
+
+    Args:
+        force_disable_bt_in_all_other_countries: Disable for all countries not covered by the other fields,
+        allow_6_ghz_in_usa: Allow 6 GHz band for the Allow 6 GHz band for the USA
+        allow_6_ghz_in_rest_of_the_world: Allow 6 GHz band for the rest of the world
+        allow_6_ghz_in_eu: Allow 6 GHz band for the European Union
+        allow_6_ghz_in_south_korea: Allow 6 GHz band for South Korea
+        allow_6_ghz_in_brazil: Allow 6 GHz band for Brazil
+        allow_6_ghz_in_chile: Allow 6 GHz band for Chile
+        allow_6_ghz_in_japan: Allow 6 GHz band for Japan
+        allow_6_ghz_in_canada: Allow 6 GHz band for Canada
+        allow_6_ghz_in_morocco: Allow 6 GHz band for Morocco
+        allow_6_ghz_in_mongolia: Allow 6 GHz band for the Mongolia
+        allow_6_ghz_in_malaysia: Allow 6 GHz band for the Malaysia
+        allow_6_ghz_in_saudi_arabia = Allow 6 GHz band for Saudi Arabia
+        allow_6_ghz_in_mexico = Allow 6 GHz band for Mexico
+        allow_6_ghz_in_nigeria = Allow 6 GHz band for Nigeria
+        allow_6_ghz_in_thailand = Allow 6 GHz band for Thailand
+        allow_6_ghz_in_singapore = Allow 6 GHz band for Singapore
+        allow_6_ghz_in_taiwan = Allow 6 GHz band for Taiwan
+        allow_6_ghz_in_south_africa = Allow 6 GHz band for South Africa
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bucs.BucsUhbCountrySelection(
+        force_disable_bt_in_all_other_countries = force_disable_bt_in_all_other_countries,
+        allow_6_ghz_in_usa = allow_6_ghz_in_usa,
+        allow_6_ghz_in_rest_of_the_world = allow_6_ghz_in_rest_of_the_world,
+        allow_6_ghz_in_eu = allow_6_ghz_in_eu,
+        allow_6_ghz_in_south_korea = allow_6_ghz_in_south_korea,
+        allow_6_ghz_in_brazil = allow_6_ghz_in_brazil,
+        allow_6_ghz_in_chile = allow_6_ghz_in_chile,
+        allow_6_ghz_in_japan = allow_6_ghz_in_japan,
+        allow_6_ghz_in_canada = allow_6_ghz_in_canada,
+        allow_6_ghz_in_morocco = allow_6_ghz_in_morocco,
+        allow_6_ghz_in_mongolia = allow_6_ghz_in_mongolia,
+        allow_6_ghz_in_malaysia = allow_6_ghz_in_malaysia,
+        allow_6_ghz_in_saudi_arabia = allow_6_ghz_in_saudi_arabia,
+        allow_6_ghz_in_mexico = allow_6_ghz_in_mexico,
+        allow_6_ghz_in_nigeria = allow_6_ghz_in_nigeria,
+        allow_6_ghz_in_thailand = allow_6_ghz_in_thailand,
+        allow_6_ghz_in_singapore = allow_6_ghz_in_singapore,
+        allow_6_ghz_in_taiwan = allow_6_ghz_in_taiwan,
+        allow_6_ghz_in_south_africa = allow_6_ghz_in_south_africa,
+    )
+
+def _create_intel_bucs(
+        revision,  # only revision 1 is supported at the moment
+        uhb_country_selection = _create_intel_bucs_uhb_country_selection()):
+    """Builds a Bucs proto for use with intel drivers.
+
+    Args:
+        revision: BUCS table revision.
+        uhb_country_selection: Ultra-High Band Country selection.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bucs(
+        revision = revision,
+        uhb_country_selection = uhb_country_selection,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1257,7 +1336,8 @@ def _create_intel_wifi(
         bpag = None,
         bbfb = None,
         bdcm = None,
-        bbsm = None):
+        bbsm = None,
+        bucs = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1272,6 +1352,7 @@ def _create_intel_wifi(
         bbfb: Bbfb proto for use with intel driver.
         bdcm: Bdcm proto for use with intel driver.
         bbsm: Bbsm proto for use with intel driver.
+        bucs: Bucs proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1286,6 +1367,7 @@ def _create_intel_wifi(
             bbfb = bbfb,
             bdcm = bdcm,
             bbsm = bbsm,
+            bucs = bucs,
         ),
     )
 
@@ -1503,6 +1585,8 @@ sw_config = struct(
     create_intel_bdcm = _create_intel_bdcm,
     create_intel_bbsm_bands_selection = _create_intel_bbsm_bands_selection,
     create_intel_bbsm = _create_intel_bbsm,
+    create_intel_bucs_uhb_country_selection = _create_intel_bucs_uhb_country_selection,
+    create_intel_bucs = _create_intel_bucs,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,

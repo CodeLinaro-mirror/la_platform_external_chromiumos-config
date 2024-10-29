@@ -9352,6 +9352,10 @@
                   "btSar": {
                     "revision": 1
                   },
+                  "bucs": {
+                    "revision": 1,
+                    "uhbCountrySelection": {}
+                  },
                   "dsm": {
                     "disableActiveSdrChannels": "1",
                     "enablement11ax": "6",
@@ -10000,6 +10004,10 @@
                       },
                       "btSar": {
                         "revision": 1
+                      },
+                      "bucs": {
+                        "revision": 1,
+                        "uhbCountrySelection": {}
                       },
                       "dsm": {
                         "disableActiveSdrChannels": "1",

@@ -350,6 +350,37 @@ message WifiConfig {
       BbsmBandsSelection bands_selection = 2;
     }
     Bbsm bbsm = 11;
+
+    message Bucs {
+      // Bluetooth BUCS table.
+      uint32 revision = 1;
+
+      // Bluetooth Bands Selection.
+      message BucsUhbCountrySelection {
+          bool force_disable_bt_in_all_other_countries = 1;
+          bool allow_6_ghz_in_usa = 2;
+          bool allow_6_ghz_in_rest_of_the_world = 3;
+          bool allow_6_ghz_in_eu = 4;
+          bool allow_6_ghz_in_south_korea = 5;
+          bool allow_6_ghz_in_brazil = 6;
+          bool allow_6_ghz_in_chile = 7;
+          bool allow_6_ghz_in_japan = 8;
+          bool allow_6_ghz_in_canada = 9;
+          bool allow_6_ghz_in_morocco = 10;
+          bool allow_6_ghz_in_mongolia = 11;
+          bool allow_6_ghz_in_malaysia = 12;
+          bool allow_6_ghz_in_saudi_arabia = 13;
+          bool allow_6_ghz_in_mexico = 14;
+          bool allow_6_ghz_in_nigeria = 15;
+          bool allow_6_ghz_in_thailand = 16;
+          bool allow_6_ghz_in_singapore = 17;
+          bool allow_6_ghz_in_taiwan = 18;
+          bool allow_6_ghz_in_south_africa = 19;
+      }
+
+      BucsUhbCountrySelection uhb_country_selection = 2;
+    }
+    Bucs bucs = 12;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values
