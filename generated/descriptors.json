@@ -3220,6 +3220,14 @@
                   "number": 12,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bucs"
+                },
+                {
+                  "jsonName": "bdmm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bdmm",
+                  "number": 13,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bdmm"
                 }
               ],
               "name": "IntelConfig",
@@ -4399,6 +4407,25 @@
                       "name": "BucsUhbCountrySelection"
                     }
                   ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "dualMacEnable",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "dual_mac_enable",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    }
+                  ],
+                  "name": "Bdmm"
                 }
               ]
             },

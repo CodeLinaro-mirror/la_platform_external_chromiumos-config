@@ -9345,6 +9345,9 @@
                     "bdcmDualChainMode": {},
                     "revision": 1
                   },
+                  "bdmm": {
+                    "revision": 1
+                  },
                   "bpag": {
                     "enablementBpagCountries": {},
                     "revision": 2
@@ -9996,6 +9999,9 @@
                       },
                       "bdcm": {
                         "bdcmDualChainMode": {},
+                        "revision": 1
+                      },
+                      "bdmm": {
                         "revision": 1
                       },
                       "bpag": {

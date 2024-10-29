@@ -381,6 +381,15 @@ message WifiConfig {
       BucsUhbCountrySelection uhb_country_selection = 2;
     }
     Bucs bucs = 12;
+
+    message Bdmm {
+      // Bluetooth BDMM table.
+      uint32 revision = 1;
+
+      // Bluetooth Dual Mac Mode.
+      bool dual_mac_enable = 2;
+    }
+    Bdmm bdmm = 13;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

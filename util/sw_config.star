@@ -1239,6 +1239,20 @@ def _create_intel_bucs(
         uhb_country_selection = uhb_country_selection,
     )
 
+def _create_intel_bdmm(
+        revision,  # only revision 1 is supported at the moment
+        dual_mac_enable = False):
+    """Builds a Bdmm proto for use with intel drivers.
+
+    Args:
+        revision: BDMM table revision.
+        dual_mac_enable: Bluetooth Dual Mac enable.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bdmm(
+        revision = revision,
+        dual_mac_enable = dual_mac_enable,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1337,7 +1351,8 @@ def _create_intel_wifi(
         bbfb = None,
         bdcm = None,
         bbsm = None,
-        bucs = None):
+        bucs = None,
+        bdmm = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1353,6 +1368,7 @@ def _create_intel_wifi(
         bdcm: Bdcm proto for use with intel driver.
         bbsm: Bbsm proto for use with intel driver.
         bucs: Bucs proto for use with intel driver.
+        bdmm: Bdmm proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1368,6 +1384,7 @@ def _create_intel_wifi(
             bdcm = bdcm,
             bbsm = bbsm,
             bucs = bucs,
+            bdmm = bdmm,
         ),
     )
 
@@ -1587,6 +1604,7 @@ sw_config = struct(
     create_intel_bbsm = _create_intel_bbsm,
     create_intel_bucs_uhb_country_selection = _create_intel_bucs_uhb_country_selection,
     create_intel_bucs = _create_intel_bucs,
+    create_intel_bdmm = _create_intel_bdmm,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,
