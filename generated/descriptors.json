@@ -3196,6 +3196,14 @@
                   "number": 9,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bbfb"
+                },
+                {
+                  "jsonName": "bdcm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bdcm",
+                  "number": 10,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bdcm"
                 }
               ],
               "name": "IntelConfig",
@@ -4126,6 +4134,40 @@
                     }
                   ],
                   "name": "Bbfb"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "bdcmDualChainMode",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "bdcm_dual_chain_mode",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bdcm.BdcmDualChainMode"
+                    }
+                  ],
+                  "name": "Bdcm",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "chainAAndChainB",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "chain_a_and_chain_b",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "BdcmDualChainMode"
+                    }
+                  ]
                 }
               ]
             },

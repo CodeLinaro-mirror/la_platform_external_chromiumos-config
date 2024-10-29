@@ -321,6 +321,19 @@ message WifiConfig {
       bool enable_quad_filter_bypass = 2;
     }
     Bbfb bbfb = 9;
+
+    message Bdcm {
+      // Bluetooth BDCM table.
+      uint32 revision = 1;
+
+      // Dual Chain Mode.
+      message BdcmDualChainMode {
+          bool chain_a_and_chain_b = 1;
+      }
+
+      BdcmDualChainMode bdcm_dual_chain_mode = 2;
+    }
+    Bdcm bdcm = 10;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

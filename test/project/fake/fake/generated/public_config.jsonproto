@@ -1356,6 +1356,10 @@
                   "bbfb": {
                     "revision": 1
                   },
+                  "bdcm": {
+                    "bdcmDualChainMode": {},
+                    "revision": 1
+                  },
                   "bpag": {
                     "enablementBpagCountries": {},
                     "revision": 2

@@ -1101,6 +1101,31 @@ def _create_intel_bbfb(
         enable_quad_filter_bypass = enable_quad_filter_bypass,
     )
 
+def _create_intel_bdcm_dual_chain_mode(
+        chain_a_and_chain_b = False):
+    """Builds dual chain mode parameters for intel drivers.
+
+    Args:
+        chain_a_and_chain_b: enable chain A and chain B dual mode.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bdcm.BdcmDualChainMode(
+        chain_a_and_chain_b = chain_a_and_chain_b,
+    )
+
+def _create_intel_bdcm(
+        revision,  # only revision 1 is supported at the moment
+        bdcm_dual_chain_mode = _create_intel_bdcm_dual_chain_mode()):
+    """Builds a Bdcm proto for use with intel drivers.
+
+    Args:
+        revision: BDCM table revision.
+        bdcm_dual_chain_mode: Dual Chain Mode setting.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bdcm(
+        revision = revision,
+        bdcm_dual_chain_mode = bdcm_dual_chain_mode,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1196,7 +1221,8 @@ def _create_intel_wifi(
         bt_sar = None,
         wbem = None,
         bpag = None,
-        bbfb = None):
+        bbfb = None,
+        bdcm = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1209,6 +1235,7 @@ def _create_intel_wifi(
         wbem: Wbem proto for use with intel driver.
         bpag: BluetoothPpag proto for use with intel driver.
         bbfb: Bbfb proto for use with intel driver.
+        bdcm: Bdcm proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1221,6 +1248,7 @@ def _create_intel_wifi(
             wbem = wbem,
             bpag = bpag,
             bbfb = bbfb,
+            bdcm = bdcm,
         ),
     )
 
@@ -1434,6 +1462,8 @@ sw_config = struct(
     create_intel_bpag_country_enablement = _create_intel_bpag_country_enablement,
     create_intel_bpag = _create_intel_bpag,
     create_intel_bbfb = _create_intel_bbfb,
+    create_intel_bdcm_dual_chain_mode = _create_intel_bdcm_dual_chain_mode,
+    create_intel_bdcm = _create_intel_bdcm,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,
