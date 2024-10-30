@@ -47,6 +47,23 @@ type ServodServiceClient interface {
 	// is physically connected to.
 	// Allowed methods: doc, get, set, and hwinit.
 	CallServod(ctx context.Context, in *CallServodRequest, opts ...grpc.CallOption) (*CallServodResponse, error)
+	// LogCheckPoint will create checkpoint certain files so that some files
+	// can be saved partially when SaveLogs is called.
+	// For example, /var/log/messages in a labstation can be
+	// very big and include information from a few days ago.
+	// Getting the checkpoint of the current /var/log/messages will
+	// allow SaveLogs to save the portion only relevant to the current
+	// testing session.
+	LogCheckPoint(ctx context.Context, in *LogCheckPointRequest, opts ...grpc.CallOption) (*LogCheckPointResponse, error)
+	// SaveLogs will save servod related logs on the host that this service
+	// is running.
+	// Logs include:
+	//     /var/log/message from the servod host.
+	//     /var/log/servod_<port>/ latest.DEBUG from servod host.
+	//     /var/log/servod_<port>.STARTUP.log from servod host.
+	//     The output of  "dmesg -H"  from the servod host.
+	//     The extraction of the MCU console logs from latest.DEBUG
+	SaveLogs(ctx context.Context, in *SaveLogsRequest, opts ...grpc.CallOption) (*SaveLogsResponse, error)
 }
 
 type servodServiceClient struct {
@@ -93,6 +110,24 @@ func (c *servodServiceClient) CallServod(ctx context.Context, in *CallServodRequ
 	return out, nil
 }
 
+func (c *servodServiceClient) LogCheckPoint(ctx context.Context, in *LogCheckPointRequest, opts ...grpc.CallOption) (*LogCheckPointResponse, error) {
+	out := new(LogCheckPointResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.ServodService/LogCheckPoint", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *servodServiceClient) SaveLogs(ctx context.Context, in *SaveLogsRequest, opts ...grpc.CallOption) (*SaveLogsResponse, error) {
+	out := new(SaveLogsResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.api.ServodService/SaveLogs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServodServiceServer is the server API for ServodService service.
 // All implementations should embed UnimplementedServodServiceServer
 // for forward compatibility
@@ -121,6 +156,23 @@ type ServodServiceServer interface {
 	// is physically connected to.
 	// Allowed methods: doc, get, set, and hwinit.
 	CallServod(context.Context, *CallServodRequest) (*CallServodResponse, error)
+	// LogCheckPoint will create checkpoint certain files so that some files
+	// can be saved partially when SaveLogs is called.
+	// For example, /var/log/messages in a labstation can be
+	// very big and include information from a few days ago.
+	// Getting the checkpoint of the current /var/log/messages will
+	// allow SaveLogs to save the portion only relevant to the current
+	// testing session.
+	LogCheckPoint(context.Context, *LogCheckPointRequest) (*LogCheckPointResponse, error)
+	// SaveLogs will save servod related logs on the host that this service
+	// is running.
+	// Logs include:
+	//     /var/log/message from the servod host.
+	//     /var/log/servod_<port>/ latest.DEBUG from servod host.
+	//     /var/log/servod_<port>.STARTUP.log from servod host.
+	//     The output of  "dmesg -H"  from the servod host.
+	//     The extraction of the MCU console logs from latest.DEBUG
+	SaveLogs(context.Context, *SaveLogsRequest) (*SaveLogsResponse, error)
 }
 
 // UnimplementedServodServiceServer should be embedded to have forward compatible implementations.
@@ -138,6 +190,12 @@ func (UnimplementedServodServiceServer) ExecCmd(context.Context, *ExecCmdRequest
 }
 func (UnimplementedServodServiceServer) CallServod(context.Context, *CallServodRequest) (*CallServodResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CallServod not implemented")
+}
+func (UnimplementedServodServiceServer) LogCheckPoint(context.Context, *LogCheckPointRequest) (*LogCheckPointResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LogCheckPoint not implemented")
+}
+func (UnimplementedServodServiceServer) SaveLogs(context.Context, *SaveLogsRequest) (*SaveLogsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SaveLogs not implemented")
 }
 
 // UnsafeServodServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -223,6 +281,42 @@ func _ServodService_CallServod_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ServodService_LogCheckPoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LogCheckPointRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServodServiceServer).LogCheckPoint(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.ServodService/LogCheckPoint",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServodServiceServer).LogCheckPoint(ctx, req.(*LogCheckPointRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ServodService_SaveLogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SaveLogsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServodServiceServer).SaveLogs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.api.ServodService/SaveLogs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServodServiceServer).SaveLogs(ctx, req.(*SaveLogsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ServodService_ServiceDesc is the grpc.ServiceDesc for ServodService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -245,6 +339,14 @@ var ServodService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CallServod",
 			Handler:    _ServodService_CallServod_Handler,
+		},
+		{
+			MethodName: "LogCheckPoint",
+			Handler:    _ServodService_LogCheckPoint_Handler,
+		},
+		{
+			MethodName: "SaveLogs",
+			Handler:    _ServodService_SaveLogs_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

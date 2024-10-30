@@ -32080,6 +32080,18 @@
               "inputType": ".chromiumos.test.api.CallServodRequest",
               "name": "CallServod",
               "outputType": ".chromiumos.test.api.CallServodResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.LogCheckPointRequest",
+              "name": "LogCheckPoint",
+              "options": {},
+              "outputType": ".chromiumos.test.api.LogCheckPointResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.api.SaveLogsRequest",
+              "name": "SaveLogs",
+              "options": {},
+              "outputType": ".chromiumos.test.api.SaveLogsResponse"
             }
           ],
           "name": "ServodService"

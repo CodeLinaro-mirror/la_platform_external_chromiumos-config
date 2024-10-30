@@ -41,6 +41,16 @@ class ServodServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.FromString,
                 )
+        self.LogCheckPoint = channel.unary_unary(
+                '/chromiumos.test.api.ServodService/LogCheckPoint',
+                request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.LogCheckPointRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.LogCheckPointResponse.FromString,
+                )
+        self.SaveLogs = channel.unary_unary(
+                '/chromiumos.test.api.ServodService/SaveLogs',
+                request_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.SaveLogsRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.SaveLogsResponse.FromString,
+                )
 
 
 class ServodServiceServicer(object):
@@ -96,6 +106,33 @@ class ServodServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def LogCheckPoint(self, request, context):
+        """LogCheckPoint will create checkpoint certain files so that some files
+        can be saved partially when SaveLogs is called.
+        For example, /var/log/messages in a labstation can be
+        very big and include information from a few days ago.
+        Getting the checkpoint of the current /var/log/messages will
+        allow SaveLogs to save the portion only relevant to the current
+        testing session.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SaveLogs(self, request, context):
+        """SaveLogs will save servod related logs on the host that this service
+        is running.
+        Logs include:
+        /var/log/message from the servod host.
+        /var/log/servod_<port>/ latest.DEBUG from servod host.
+        /var/log/servod_<port>.STARTUP.log from servod host.
+        The output of  "dmesg -H"  from the servod host.
+        The extraction of the MCU console logs from latest.DEBUG
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ServodServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -118,6 +155,16 @@ def add_ServodServiceServicer_to_server(servicer, server):
                     servicer.CallServod,
                     request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.SerializeToString,
+            ),
+            'LogCheckPoint': grpc.unary_unary_rpc_method_handler(
+                    servicer.LogCheckPoint,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.LogCheckPointRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.LogCheckPointResponse.SerializeToString,
+            ),
+            'SaveLogs': grpc.unary_unary_rpc_method_handler(
+                    servicer.SaveLogs,
+                    request_deserializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.SaveLogsRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_api_dot_servod__service__pb2.SaveLogsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -200,5 +247,39 @@ class ServodService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ServodService/CallServod',
             chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodRequest.SerializeToString,
             chromiumos_dot_test_dot_api_dot_servod__service__pb2.CallServodResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def LogCheckPoint(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ServodService/LogCheckPoint',
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.LogCheckPointRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.LogCheckPointResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SaveLogs(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.api.ServodService/SaveLogs',
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.SaveLogsRequest.SerializeToString,
+            chromiumos_dot_test_dot_api_dot_servod__service__pb2.SaveLogsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

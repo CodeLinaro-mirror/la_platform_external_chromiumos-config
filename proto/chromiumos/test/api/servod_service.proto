@@ -60,11 +60,6 @@ service ServodService {
   rpc CallServod(CallServodRequest)
       returns (CallServodResponse);
 
-  // TODO: Uncomment this service after the implementation code in cros_servod
-  //       lands. Currently, this is an issue with the builder that the
-  //       build of cros_servod could not pick the latest build of this
-  //       proto change even with Cq-Depend.
-  //
   // LogCheckPoint will create checkpoint certain files so that some files
   // can be saved partially when SaveLogs is called.
   // For example, /var/log/messages in a labstation can be
@@ -72,13 +67,8 @@ service ServodService {
   // Getting the checkpoint of the current /var/log/messages will
   // allow SaveLogs to save the portion only relevant to the current
   // testing session.
-  // rpc LogCheckPoint(LogCheckPointRequest) returns (LogCheckPointResponse) {}
+  rpc LogCheckPoint(LogCheckPointRequest) returns (LogCheckPointResponse) {}
 
-  // TODO: Uncomment this service after the implementation code in cros_servod
-  //       lands. Currently, this is an issue with the builder that the
-  //       build of cros_servod could not pick the latest build of this
-  //       proto change even with Cq-Depend.
-  //
   // SaveLogs will save servod related logs on the host that this service
   // is running.
   // Logs include:
@@ -87,7 +77,7 @@ service ServodService {
   //     /var/log/servod_<port>.STARTUP.log from servod host.
   //     The output of  "dmesg -H"  from the servod host.
   //     The extraction of the MCU console logs from latest.DEBUG
-  // rpc SaveLogs(SaveLogsRequest) returns (SaveLogsResponse) {}
+  rpc SaveLogs(SaveLogsRequest) returns (SaveLogsResponse) {}
 }
 
 message StartServodRequest {
