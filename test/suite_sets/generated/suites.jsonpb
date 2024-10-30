@@ -2873,6 +2873,9 @@
 					"value": "tast.graphics.HardwareProbe.verify"
 				},
 				{
+					"value": "tast.graphics.HardwareProbe.verify_flex"
+				},
+				{
 					"value": "tast.graphics.Idle.dvfs"
 				},
 				{
@@ -4448,6 +4451,18 @@
 					"value": "tast.power.UtilCheck"
 				},
 				{
+					"value": "tast.printer.Add.brother_1200dpi"
+				},
+				{
+					"value": "tast.printer.Add.brother_2400x600dpi"
+				},
+				{
+					"value": "tast.printer.Add.brother_300dpi"
+				},
+				{
+					"value": "tast.printer.Add.brother_mlaser"
+				},
+				{
 					"value": "tast.printer.Add.canon"
 				},
 				{
@@ -4602,6 +4617,18 @@
 				},
 				{
 					"value": "tast.printer.Printscanmgr"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.brother_1200dpi"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.brother_2400x600dpi"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.brother_300dpi"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.brother_mlaser"
 				},
 				{
 					"value": "tast.printer.ProxyAdd.canon"
