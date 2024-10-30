@@ -9353,7 +9353,9 @@
                     "revision": 2
                   },
                   "btSar": {
-                    "revision": 1
+                    "revision": 2,
+                    "set1ChainA": {},
+                    "set1ChainB": {}
                   },
                   "bucs": {
                     "revision": 1,
@@ -9369,6 +9371,15 @@
                     "supportUltraHighBand": "3",
                     "uartConfigurations": "5",
                     "unii4": "7"
+                  },
+                  "ebrd": {
+                    "revision": 1,
+                    "set2ChainA": {},
+                    "set2ChainB": {},
+                    "set3ChainA": {},
+                    "set3ChainB": {},
+                    "set4ChainA": {},
+                    "set4ChainB": {}
                   },
                   "sarTable": {
                     "cdbNonTabletModePowerTableA": {
@@ -10009,7 +10020,9 @@
                         "revision": 2
                       },
                       "btSar": {
-                        "revision": 1
+                        "revision": 2,
+                        "set1ChainA": {},
+                        "set1ChainB": {}
                       },
                       "bucs": {
                         "revision": 1,
@@ -10025,6 +10038,15 @@
                         "supportUltraHighBand": "3",
                         "uartConfigurations": "5",
                         "unii4": "7"
+                      },
+                      "ebrd": {
+                        "revision": 1,
+                        "set2ChainA": {},
+                        "set2ChainB": {},
+                        "set3ChainA": {},
+                        "set3ChainB": {},
+                        "set4ChainA": {},
+                        "set4ChainB": {}
                       },
                       "sarTable": {
                         "cdbNonTabletModePowerTableA": {

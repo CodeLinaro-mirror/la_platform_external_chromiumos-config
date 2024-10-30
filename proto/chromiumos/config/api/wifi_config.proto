@@ -261,6 +261,14 @@ message WifiConfig {
     }
     Dsm dsm = 5;
 
+    message BluetoothSarPowerTable {
+        uint32 restriction_for_2g4 = 1;
+        uint32 restriction_for_5g2 = 2;
+        uint32 restriction_for_5g8_5g9 = 3;
+        uint32 restriction_for_6g1 = 4;
+        uint32 restriction_for_6g3 = 5;
+    }
+
     message BluetoothSar {
       // Bluetooth SAR table.
       uint32 revision = 1;
@@ -280,6 +288,9 @@ message WifiConfig {
       uint32 le2_mhz_modulation = 8;
       // SAR power restriction for LE LR Modulation.
       uint32 le_lr_modulation = 9;
+
+      BluetoothSarPowerTable set_1_chain_a = 10;
+      BluetoothSarPowerTable set_1_chain_b = 11;
     }
     BluetoothSar bt_sar = 6;
 
@@ -390,6 +401,25 @@ message WifiConfig {
       bool dual_mac_enable = 2;
     }
     Bdmm bdmm = 13;
+
+    message Ebrd {
+      // Bluetooth EBRD table.
+      uint32 revision = 1;
+
+      bool dynamic_sar_enable = 2;
+
+      uint32 number_of_optional_sar = 3;
+
+      BluetoothSarPowerTable set_2_chain_a = 4;
+      BluetoothSarPowerTable set_2_chain_b = 5;
+
+      BluetoothSarPowerTable set_3_chain_a = 6;
+      BluetoothSarPowerTable set_3_chain_b = 7;
+
+      BluetoothSarPowerTable set_4_chain_a = 8;
+      BluetoothSarPowerTable set_4_chain_b = 9;
+    }
+    Ebrd ebrd = 14;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

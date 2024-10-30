@@ -986,8 +986,31 @@ def _create_intel_sar_table(
         cdb_non_tablet_mode_power_table_b = cdb_non_tablet_mode_transmit_power_chain_b,
     )
 
+def _create_intel_bluetooth_sar_power_table(
+        restriction_for_2g4 = 0,
+        restriction_for_5g2 = 0,
+        restriction_for_5g8_5g9 = 0,
+        restriction_for_6g1 = 0,
+        restriction_for_6g3 = 0):
+    """Builds Bluetooth SAR Power Table for intel drivers.
+
+    Args:
+        restriction_for_2g4: power restriction for chain in sub-band 2G4.
+        restriction_for_5g2: power restriction for chain in sub-band 5G2.
+        restriction_for_5g8_5g9: power restriction for chain in sub-band 5G8 and 5G9.
+        restriction_for_6g1: power restriction for chain in sub-band 6G1.
+        restriction_for_6g3: power restriction for chain in sub-band 6G3.
+    """
+    return wf_pb.WifiConfig.IntelConfig.BluetoothSarPowerTable(
+        restriction_for_2g4 = restriction_for_2g4,
+        restriction_for_5g2 = restriction_for_5g2,
+        restriction_for_5g8_5g9 = restriction_for_5g8_5g9,
+        restriction_for_6g1 = restriction_for_6g1,
+        restriction_for_6g3 = restriction_for_6g3,
+    )
+
 def _create_intel_bt_sar(
-        revision,  # only revision 1 is supported at the moment
+        revision,  # only revision 1 and 2 are supported at the moment
         increased_power_mode_limitation = 0,
         sar_lb_power_restriction = 0,
         br_modulation = 0,
@@ -995,7 +1018,9 @@ def _create_intel_bt_sar(
         edr3_modulation = 0,
         le_modulation = 0,
         le2_mhz_modulation = 0,
-        le_lr_modulation = 0):
+        le_lr_modulation = 0,
+        set_1_chain_a = None,
+        set_1_chain_b = None):
     """Builds a Bluetooth SAR proto for use with intel drivers.
 
     Args:
@@ -1008,18 +1033,30 @@ def _create_intel_bt_sar(
         le_modulation: power restriction for LE Modulation.
         le2_mhz_modulation: power restriction for LE 2 MHz Modulation.
         le_lr_modulation: power restriction for LE LR Modulation.
+        set_1_chain_a: First set Chain A SAR power table.
+        set_1_chain_b: First set Chain B SAR power table.
     """
-    return wf_pb.WifiConfig.IntelConfig.BluetoothSar(
-        revision = revision,
-        increased_power_mode_limitation = increased_power_mode_limitation,
-        sar_lb_power_restriction = sar_lb_power_restriction,
-        br_modulation = br_modulation,
-        edr2_modulation = edr2_modulation,
-        edr3_modulation = edr3_modulation,
-        le_modulation = le_modulation,
-        le2_mhz_modulation = le2_mhz_modulation,
-        le_lr_modulation = le_lr_modulation,
-    )
+    if revision == 1:
+        return wf_pb.WifiConfig.IntelConfig.BluetoothSar(
+            revision = revision,
+            increased_power_mode_limitation = increased_power_mode_limitation,
+            sar_lb_power_restriction = sar_lb_power_restriction,
+            br_modulation = br_modulation,
+            edr2_modulation = edr2_modulation,
+            edr3_modulation = edr3_modulation,
+            le_modulation = le_modulation,
+            le2_mhz_modulation = le2_mhz_modulation,
+            le_lr_modulation = le_lr_modulation,
+        )
+    elif revision == 2:
+        return wf_pb.WifiConfig.IntelConfig.BluetoothSar(
+            revision = revision,
+            increased_power_mode_limitation = increased_power_mode_limitation,
+            set_1_chain_a = set_1_chain_a or _create_intel_bluetooth_sar_power_table(),
+            set_1_chain_b = set_1_chain_b or _create_intel_bluetooth_sar_power_table(),
+        )
+    else:
+        fail("Invalid Intel Bluetooth SAR revision (should be 1 or 2)")
 
 def _create_intel_wbem_country_enablement(
         japan = False,
@@ -1253,6 +1290,41 @@ def _create_intel_bdmm(
         dual_mac_enable = dual_mac_enable,
     )
 
+def _create_intel_ebrd(
+        revision,  # only revision 1 is supported at the moment
+        dynamic_sar_enable = False,
+        number_of_optional_sar = 0,
+        set_2_chain_a = _create_intel_bluetooth_sar_power_table(),
+        set_2_chain_b = _create_intel_bluetooth_sar_power_table(),
+        set_3_chain_a = _create_intel_bluetooth_sar_power_table(),
+        set_3_chain_b = _create_intel_bluetooth_sar_power_table(),
+        set_4_chain_a = _create_intel_bluetooth_sar_power_table(),
+        set_4_chain_b = _create_intel_bluetooth_sar_power_table()):
+    """Builds a Extended Bluetooth Regulatory Descriptor (Ebrd) proto for use with intel drivers.
+
+    Args:
+        revision: EBRD table revision.
+        dynamic_sar_enable: Enable Bluetooth Dynamic SAR.
+        number_of_optional_sar = Number of optional sets defined.
+        set_2_chain_a: Second set Chain A SAR power table.
+        set_2_chain_b: Second set Chain B SAR power table.
+        set_3_chain_a: Third set Chain A SAR power table.
+        set_3_chain_b: Third set Chain B SAR power table.
+        set_4_chain_a: Fourth set Chain A SAR power table.
+        set_4_chain_b: Fourth set Chain B SAR power table.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Ebrd(
+        revision = revision,
+        dynamic_sar_enable = dynamic_sar_enable,
+        number_of_optional_sar = number_of_optional_sar,
+        set_2_chain_a = set_2_chain_a,
+        set_2_chain_b = set_2_chain_b,
+        set_3_chain_a = set_3_chain_a,
+        set_3_chain_b = set_3_chain_b,
+        set_4_chain_a = set_4_chain_a,
+        set_4_chain_b = set_4_chain_b,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1352,7 +1424,8 @@ def _create_intel_wifi(
         bdcm = None,
         bbsm = None,
         bucs = None,
-        bdmm = None):
+        bdmm = None,
+        ebrd = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1369,6 +1442,7 @@ def _create_intel_wifi(
         bbsm: Bbsm proto for use with intel driver.
         bucs: Bucs proto for use with intel driver.
         bdmm: Bdmm proto for use with intel driver.
+        ebrd: Ebrd proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1385,6 +1459,7 @@ def _create_intel_wifi(
             bbsm = bbsm,
             bucs = bucs,
             bdmm = bdmm,
+            ebrd = ebrd,
         ),
     )
 
@@ -1592,6 +1667,7 @@ sw_config = struct(
     create_intel_dsm_energy_detection_threshold = _create_intel_dsm_energy_detection_threshold,
     create_intel_dsm_rfi_mitigation = _create_intel_dsm_rfi_mitigation,
     create_intel_dsm = _create_intel_dsm,
+    create_intel_bluetooth_sar_power_table = _create_intel_bluetooth_sar_power_table,
     create_intel_bt_sar = _create_intel_bt_sar,
     create_intel_wbem_country_enablement = _create_intel_wbem_country_enablement,
     create_intel_wbem = _create_intel_wbem,
@@ -1605,6 +1681,7 @@ sw_config = struct(
     create_intel_bucs_uhb_country_selection = _create_intel_bucs_uhb_country_selection,
     create_intel_bucs = _create_intel_bucs,
     create_intel_bdmm = _create_intel_bdmm,
+    create_intel_ebrd = _create_intel_ebrd,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,

@@ -3228,6 +3228,14 @@
                   "number": 13,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bdmm"
+                },
+                {
+                  "jsonName": "ebrd",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ebrd",
+                  "number": 14,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Ebrd"
                 }
               ],
               "name": "IntelConfig",
@@ -3972,6 +3980,46 @@
                 {
                   "field": [
                     {
+                      "jsonName": "restrictionFor2g4",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_2g4",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "restrictionFor5g2",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_5g2",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "restrictionFor5g85g9",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_5g8_5g9",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "restrictionFor6g1",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_6g1",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "restrictionFor6g3",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_6g3",
+                      "number": 5,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "BluetoothSarPowerTable"
+                },
+                {
+                  "field": [
+                    {
                       "jsonName": "revision",
                       "label": "LABEL_OPTIONAL",
                       "name": "revision",
@@ -4033,6 +4081,22 @@
                       "name": "le_lr_modulation",
                       "number": 9,
                       "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "set1ChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_1_chain_a",
+                      "number": 10,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set1ChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_1_chain_b",
+                      "number": 11,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
                     }
                   ],
                   "name": "BluetoothSar"
@@ -4426,6 +4490,80 @@
                     }
                   ],
                   "name": "Bdmm"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "dynamicSarEnable",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "dynamic_sar_enable",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "numberOfOptionalSar",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "number_of_optional_sar",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "set2ChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_2_chain_a",
+                      "number": 4,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set2ChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_2_chain_b",
+                      "number": 5,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set3ChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_3_chain_a",
+                      "number": 6,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set3ChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_3_chain_b",
+                      "number": 7,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set4ChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_4_chain_a",
+                      "number": 8,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set4ChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_4_chain_b",
+                      "number": 9,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    }
+                  ],
+                  "name": "Ebrd"
                 }
               ]
             },

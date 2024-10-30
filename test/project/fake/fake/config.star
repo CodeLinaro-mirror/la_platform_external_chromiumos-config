@@ -982,7 +982,7 @@ _SC_WIFI7_INTEL = sc.create_intel_wifi(
         enablement_11be_countries = sc.create_intel_dsm_enablement_11be_countries(),
         energy_detection_threshold = sc.create_intel_dsm_energy_detection_threshold(),
     ),
-    bt_sar = sc.create_intel_bt_sar(revision = 1),
+    bt_sar = sc.create_intel_bt_sar(revision = 2),
     wbem = sc.create_intel_wbem(revision = 0),
     bpag = sc.create_intel_bpag(revision = 2),
     bbfb = sc.create_intel_bbfb(revision = 1),
@@ -990,6 +990,7 @@ _SC_WIFI7_INTEL = sc.create_intel_wifi(
     bbsm = sc.create_intel_bbsm(revision = 1),
     bucs = sc.create_intel_bucs(revision = 1),
     bdmm = sc.create_intel_bdmm(revision = 1),
+    ebrd = sc.create_intel_ebrd(revision = 1),
 )
 _TOUCH = hw_topo.create_touch(
     "TOUCH",
