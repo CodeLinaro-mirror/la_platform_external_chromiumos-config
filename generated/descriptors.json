@@ -11934,6 +11934,21 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "enumType": [
+        {
+          "name": "OperatingSystem",
+          "value": [
+            {
+              "name": "OS_CHROMEOS",
+              "number": 0
+            },
+            {
+              "name": "OS_ANDROID",
+              "number": 1
+            }
+          ]
+        }
+      ],
       "messageType": [
         {
           "field": [
@@ -11983,9 +11998,55 @@
               "name": "board",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "oses",
+              "label": "LABEL_REPEATED",
+              "name": "oses",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromium.config.api.test.benchy.v1.OperatingSystem"
             }
           ],
           "name": "Device"
+        },
+        {
+          "enumType": [
+            {
+              "name": "InstallationMethod",
+              "value": [
+                {
+                  "name": "METHOD_LOCAL_APK",
+                  "number": 0
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "installationMethod",
+              "label": "LABEL_OPTIONAL",
+              "name": "installation_method",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromium.config.api.test.benchy.v1.Application.InstallationMethod"
+            },
+            {
+              "jsonName": "source",
+              "label": "LABEL_OPTIONAL",
+              "name": "source",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Application"
         },
         {
           "field": [
@@ -12002,6 +12063,22 @@
               "name": "version",
               "number": 2,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "os",
+              "label": "LABEL_OPTIONAL",
+              "name": "os",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromium.config.api.test.benchy.v1.OperatingSystem"
+            },
+            {
+              "jsonName": "applications",
+              "label": "LABEL_REPEATED",
+              "name": "applications",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromium.config.api.test.benchy.v1.Application"
             }
           ],
           "name": "Build"
@@ -12073,6 +12150,40 @@
               "type": "TYPE_STRING"
             },
             {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ConfigOption"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Runner",
+              "value": [
+                {
+                  "name": "RUNNER_TAST",
+                  "number": 0
+                },
+                {
+                  "name": "RUNNER_CROSSBENCH",
+                  "number": 1
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
               "jsonName": "commandLine",
               "label": "LABEL_OPTIONAL",
               "name": "command_line",
@@ -12092,6 +12203,22 @@
               "name": "repeat_count",
               "number": 4,
               "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "runner",
+              "label": "LABEL_OPTIONAL",
+              "name": "runner",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromium.config.api.test.benchy.v1.Workload.Runner"
+            },
+            {
+              "jsonName": "options",
+              "label": "LABEL_REPEATED",
+              "name": "options",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromium.config.api.test.benchy.v1.ConfigOption"
             }
           ],
           "name": "Workload"
