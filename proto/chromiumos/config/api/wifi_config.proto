@@ -420,6 +420,24 @@ message WifiConfig {
       BluetoothSarPowerTable set_4_chain_b = 9;
     }
     Ebrd ebrd = 14;
+
+    message Wpfc {
+      // Wi-Fi PHY Filter Configuration Table.
+      uint32 revision = 1;
+
+      // Chain A Filter Platform Configuration.
+      uint32 filter_cfg_chain_a = 2;
+
+      // Chain B Filter Platform Configuration.
+      uint32 filter_cfg_chain_b = 3;
+
+      // Chain C Filter Platform Configuration.
+      uint32 filter_cfg_chain_c = 4;
+
+      // Chain D Filter Platform Configuration.
+      uint32 filter_cfg_chain_d = 5;
+    }
+    Wpfc wpfc = 15;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

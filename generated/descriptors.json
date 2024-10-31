@@ -3236,6 +3236,14 @@
                   "number": 14,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Ebrd"
+                },
+                {
+                  "jsonName": "wpfc",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wpfc",
+                  "number": 15,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Wpfc"
                 }
               ],
               "name": "IntelConfig",
@@ -4564,6 +4572,46 @@
                     }
                   ],
                   "name": "Ebrd"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "filterCfgChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "filter_cfg_chain_a",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "filterCfgChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "filter_cfg_chain_b",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "filterCfgChainC",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "filter_cfg_chain_c",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "filterCfgChainD",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "filter_cfg_chain_d",
+                      "number": 5,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "Wpfc"
                 }
               ]
             },

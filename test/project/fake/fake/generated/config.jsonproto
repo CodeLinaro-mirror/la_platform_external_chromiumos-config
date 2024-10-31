@@ -9527,6 +9527,7 @@
                     },
                     "wgdsVersion": 2
                   },
+                  "wpfc": {},
                   "wtasTable": {
                     "denyListEntry1": 1,
                     "denyListEntry10": 10,
@@ -10194,6 +10195,7 @@
                         },
                         "wgdsVersion": 2
                       },
+                      "wpfc": {},
                       "wtasTable": {
                         "denyListEntry1": 1,
                         "denyListEntry10": 10,

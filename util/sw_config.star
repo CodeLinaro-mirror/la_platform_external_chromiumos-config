@@ -1325,6 +1325,29 @@ def _create_intel_ebrd(
         set_4_chain_b = set_4_chain_b,
     )
 
+def _create_intel_wpfc(
+        revision,  # only revision 0 is supported at the moment
+        filter_cfg_chain_a = 0,
+        filter_cfg_chain_b = 0,
+        filter_cfg_chain_c = 0,
+        filter_cfg_chain_d = 0):
+    """Builds a Wpfc proto for use with intel drivers.
+
+    Args:
+        revision: WPFC table revision.
+        filter_cfg_chain_a: Chain A Filter Platform Configuration
+        filter_cfg_chain_b: Chain B Filter Platform Configuration
+        filter_cfg_chain_c: Chain C Filter Platform Configuration
+        filter_cfg_chain_d: Chain D Filter Platform Configuration
+    """
+    return wf_pb.WifiConfig.IntelConfig.Wpfc(
+        revision = revision,
+        filter_cfg_chain_a = filter_cfg_chain_a,
+        filter_cfg_chain_b = filter_cfg_chain_b,
+        filter_cfg_chain_c = filter_cfg_chain_c,
+        filter_cfg_chain_d = filter_cfg_chain_d,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1425,7 +1448,8 @@ def _create_intel_wifi(
         bbsm = None,
         bucs = None,
         bdmm = None,
-        ebrd = None):
+        ebrd = None,
+        wpfc = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1443,6 +1467,7 @@ def _create_intel_wifi(
         bucs: Bucs proto for use with intel driver.
         bdmm: Bdmm proto for use with intel driver.
         ebrd: Ebrd proto for use with intel driver.
+        wpfc: Wpfc proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1460,6 +1485,7 @@ def _create_intel_wifi(
             bucs = bucs,
             bdmm = bdmm,
             ebrd = ebrd,
+            wpfc = wpfc,
         ),
     )
 
@@ -1682,6 +1708,7 @@ sw_config = struct(
     create_intel_bucs = _create_intel_bucs,
     create_intel_bdmm = _create_intel_bdmm,
     create_intel_ebrd = _create_intel_ebrd,
+    create_intel_wpfc = _create_intel_wpfc,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,
