@@ -10,7 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
 
 import "chromiumos/test/artifact/test_result.proto";
 
-// NEXT TAG: 6
+// NEXT TAG: 7
 message PublishAntsMetadata {
   // The invocation id of the overall ANTS invocation.
   string ants_invocation_id = 1;
@@ -29,4 +29,7 @@ message PublishAntsMetadata {
   // invocations or any other bb info.
   // TODO(srinivashegde): Add more bb details when ready.
   string luci_invocation_id = 5;
+
+  // The metadata required to schedule the test(s) within the same invocation.
+  chromiumos.test.artifact.SchedulingMetadata scheduling_metadata = 6;
 }
