@@ -1348,6 +1348,23 @@ def _create_intel_wpfc(
         filter_cfg_chain_d = filter_cfg_chain_d,
     )
 
+def _create_intel_dsbr(
+        revision,  # only revision 0 is supported at the moment
+        override = True,
+        bluetooth_radio_resistor_ohm = 33):
+    """Builds a Dsbr proto for use with intel drivers.
+
+    Args:
+        revision: DSBR table revision.
+        override: Override device FW default values
+        bluetooth_radio_resistor_ohm: Override value
+    """
+    return wf_pb.WifiConfig.IntelConfig.Dsbr(
+        revision = revision,
+        override = override,
+        bluetooth_radio_resistor_ohm = bluetooth_radio_resistor_ohm,
+    )
+
 def _create_intel_offsets_table(
         wgds_revision = 0xff,
         fcc_offsets = None,
@@ -1449,7 +1466,8 @@ def _create_intel_wifi(
         bucs = None,
         bdmm = None,
         ebrd = None,
-        wpfc = None):
+        wpfc = None,
+        dsbr = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1468,6 +1486,7 @@ def _create_intel_wifi(
         bdmm: Bdmm proto for use with intel driver.
         ebrd: Ebrd proto for use with intel driver.
         wpfc: Wpfc proto for use with intel driver.
+        dsbr: Dsbr proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1486,6 +1505,7 @@ def _create_intel_wifi(
             bdmm = bdmm,
             ebrd = ebrd,
             wpfc = wpfc,
+            dsbr = dsbr,
         ),
     )
 
@@ -1709,6 +1729,7 @@ sw_config = struct(
     create_intel_bdmm = _create_intel_bdmm,
     create_intel_ebrd = _create_intel_ebrd,
     create_intel_wpfc = _create_intel_wpfc,
+    create_intel_dsbr = _create_intel_dsbr,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,

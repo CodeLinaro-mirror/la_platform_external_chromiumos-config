@@ -438,6 +438,18 @@ message WifiConfig {
       uint32 filter_cfg_chain_d = 5;
     }
     Wpfc wpfc = 15;
+
+    message Dsbr {
+      // Drive Strength BRI Rsp Table.
+      uint32 revision = 1;
+
+      // Override device FW default values.
+      bool override = 2;
+
+      // Bluetooth Radio Interface.
+      uint32 bluetooth_radio_resistor_ohm = 3;
+    }
+    Dsbr dsbr = 16;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

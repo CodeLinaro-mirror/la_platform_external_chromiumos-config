@@ -1380,6 +1380,10 @@
                     "revision": 1,
                     "uhbCountrySelection": {}
                   },
+                  "dsbr": {
+                    "bluetoothRadioResistorOhm": 33,
+                    "override": true
+                  },
                   "dsm": {
                     "disableActiveSdrChannels": "1",
                     "enablement11ax": "6",

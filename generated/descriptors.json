@@ -3244,6 +3244,14 @@
                   "number": 15,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Wpfc"
+                },
+                {
+                  "jsonName": "dsbr",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dsbr",
+                  "number": 16,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsbr"
                 }
               ],
               "name": "IntelConfig",
@@ -4612,6 +4620,32 @@
                     }
                   ],
                   "name": "Wpfc"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "override",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "override",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "bluetoothRadioResistorOhm",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "bluetooth_radio_resistor_ohm",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "Dsbr"
                 }
               ]
             },
