@@ -24843,6 +24843,13 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "InstallResponse"

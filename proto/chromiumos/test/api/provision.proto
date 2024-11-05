@@ -118,6 +118,9 @@ message InstallResponse {
 
   // OS flavor specific metadata
   google.protobuf.Any metadata = 2;
+
+  // Error/other messages to accompany the status
+  string message = 3;
 }
 
 // Metadata for long running operation
