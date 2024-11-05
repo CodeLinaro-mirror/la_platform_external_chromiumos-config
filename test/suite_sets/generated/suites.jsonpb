@@ -1790,6 +1790,9 @@
 					"value": "tast.camera.CCAUISmoke.fake_hal"
 				},
 				{
+					"value": "tast.camera.CCAUISmoke.vivid"
+				},
+				{
 					"value": "tast.camera.Characteristics"
 				},
 				{
@@ -2795,6 +2798,12 @@
 					"value": "tast.firmware.FlashromWriteProtect"
 				},
 				{
+					"value": "tast.firmware.FwupdDetectPS175"
+				},
+				{
+					"value": "tast.firmware.FwupdDetectRTD2142"
+				},
+				{
 					"value": "tast.firmware.FwupdGetDevices"
 				},
 				{
@@ -3195,6 +3204,9 @@
 				},
 				{
 					"value": "tast.health.RunBluetoothRoutine.v1_discovery_bluez"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v1_discovery_floss"
 				},
 				{
 					"value": "tast.health.RunBluetoothRoutine.v1_power_bluez"
@@ -3873,6 +3885,12 @@
 				},
 				{
 					"value": "tast.network.DHCPHostname"
+				},
+				{
+					"value": "tast.network.DHCPInitBound"
+				},
+				{
+					"value": "tast.network.DHCPInitBound.non_std_port"
 				},
 				{
 					"value": "tast.network.DHCPNonASCIIParam"
@@ -4580,9 +4598,6 @@
 					"value": "tast.printer.Add.unsupported_pin"
 				},
 				{
-					"value": "tast.printer.AddBrotherPrinter"
-				},
-				{
 					"value": "tast.printer.AddHTTPPrinter"
 				},
 				{
@@ -4748,28 +4763,7 @@
 					"value": "tast.printer.ProxyAdd.unsupported_pin"
 				},
 				{
-					"value": "tast.printer.ProxyAddBrotherPrinter"
-				},
-				{
-					"value": "tast.printer.ProxyResolutionBrother.1200dpi"
-				},
-				{
-					"value": "tast.printer.ProxyResolutionBrother.2400x600dpi"
-				},
-				{
-					"value": "tast.printer.ProxyResolutionBrother.300dpi"
-				},
-				{
 					"value": "tast.printer.RejectDocumentFormat"
-				},
-				{
-					"value": "tast.printer.ResolutionBrother.1200dpi"
-				},
-				{
-					"value": "tast.printer.ResolutionBrother.2400x600dpi"
-				},
-				{
-					"value": "tast.printer.ResolutionBrother.300dpi"
 				},
 				{
 					"value": "tast.printer.TestPPDs"
