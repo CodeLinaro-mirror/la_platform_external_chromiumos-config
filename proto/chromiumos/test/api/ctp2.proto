@@ -228,7 +228,7 @@ message SuiteInfo {
 }
 
 // Everything by CTPv2, less provision_info.
-// next value = 9;
+// next value = 10;
 message SuiteMetadata {
   repeated TargetRequirements target_requirements = 1[deprecated = true];
   repeated ScheduleTargetRequirements schedule_target_requirements = 4[deprecated = true];
@@ -242,7 +242,9 @@ message SuiteMetadata {
   //
   // Note: Applied updates in order given.
   repeated UserDefinedDynamicUpdate dynamic_updates = 7;
+  // will be deprecated when field #9 is being used in all filters
   repeated SchedulingUnit scheduling_units = 8;
+  repeated SchedulingUnitOptions scheduling_unit_options = 9;
 }
 
 // ScheduleTargets represents groups of target requirements for CTPv2.

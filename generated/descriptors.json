@@ -26819,6 +26819,14 @@
               "number": 8,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SchedulingUnit"
+            },
+            {
+              "jsonName": "schedulingUnitOptions",
+              "label": "LABEL_REPEATED",
+              "name": "scheduling_unit_options",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SchedulingUnitOptions"
             }
           ],
           "name": "SuiteMetadata"
