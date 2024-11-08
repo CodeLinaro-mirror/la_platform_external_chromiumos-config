@@ -4322,19 +4322,10 @@
 					"value": "tast.peripherals.LaunchAppFromSettings.diagnostics"
 				},
 				{
-					"value": "tast.peripherals.LaunchAppFromSettings.diagnostics_revamp_enabled"
-				},
-				{
 					"value": "tast.peripherals.LaunchAppFromSettings.print_management"
 				},
 				{
-					"value": "tast.peripherals.LaunchAppFromSettings.print_management_revamp_enabled"
-				},
-				{
 					"value": "tast.peripherals.LaunchAppFromSettings.scan"
-				},
-				{
-					"value": "tast.peripherals.LaunchAppFromSettings.scan_revamp_enabled"
 				},
 				{
 					"value": "tast.pita.Install"
