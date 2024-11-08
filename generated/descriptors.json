@@ -28841,25 +28841,20 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/test/lab/api/ip_endpoint.proto"
+        "chromiumos/build/api/firmware_config.proto"
       ],
       "messageType": [
         {
-          "field": [
-            {
-              "jsonName": "cacheServerAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "cache_server_address",
-              "number": 1,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            }
+          "name": "FirmwareProvisionStartupMetadata",
+          "reservedName": [
+            "cache_server_address"
           ],
-          "name": "FirmwareProvisionStartupMetadata"
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            }
+          ]
         },
         {
           "field": [
