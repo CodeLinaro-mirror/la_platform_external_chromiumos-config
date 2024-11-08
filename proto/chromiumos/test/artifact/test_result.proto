@@ -252,7 +252,7 @@ message BuildInfo {
 }
 
 // The complete build metadata of the test case.
-// NEXT TAG: 14
+// NEXT TAG: 15
 message BuildMetadata {
   // ARC++ metadata
   message Arc {
@@ -417,6 +417,27 @@ message BuildMetadata {
     repeated ChameleonConnectionType chameleon_connection_types = 2;
   }
   ChameleonInfo chameleon_info = 13;
+
+  // Servo info associated with the test invocation.
+  // NEXT TAG: 4
+  message ServoInfo {
+    // Servod version
+    // Example: "v1.0.2345-4b2de21e 2024-08-17 00:30:57"
+    string servod_version = 1;
+
+    // Servo firmware versions
+    // Example: "c2d2_v2.4.73-d771c18ba9,0.24.40/ti50_common_prepvt-15086.B:v0.0.355-15c69d7f,
+    // fizz-labstation-release/R115-15474.55.0,servo_v4_v2.4.58-c37246f9c"
+    string servo_versions = 2;
+
+    // Servo type
+    // Sourced from the servo_type field in the sysinfo/servo file
+    // Example: "servo_v4_with_c2d2_and_ccd_ti50"
+    string servo_type = 3;
+  }
+
+  // Servo info associated with test invocation.
+  ServoInfo servo_info = 14;
 }
 
 // Captures DUT related info.

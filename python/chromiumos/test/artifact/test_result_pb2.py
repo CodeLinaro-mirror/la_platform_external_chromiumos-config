@@ -27,7 +27,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z2go.chromium.org/chromiumos/config/go/test/artifact',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n*chromiumos/test/artifact/test_result.proto\x12\x18\x63hromiumos.test.artifact\x1a\x1d\x63hromiumos/storage_path.proto\x1a)chromiumos/test/api/provision_state.proto\x1a,chromiumos/test/api/test_case_metadata.proto\x1a*chromiumos/test/api/test_case_result.proto\x1a&chromiumos/test/api/test_harness.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x96\x01\n\nTestResult\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x41\n\x0ftest_invocation\x18\x02 \x01(\x0b\x32(.chromiumos.test.artifact.TestInvocation\x12\x34\n\ttest_runs\x18\x03 \x03(\x0b\x32!.chromiumos.test.artifact.TestRun\"\xc0\x05\n\x0eTestInvocation\x12\x43\n\x10test_environment\x18\x01 \x01(\x0b\x32).chromiumos.test.artifact.TestEnvironment\x12:\n\x0c\x64ut_topology\x18\x02 \x01(\x0b\x32$.chromiumos.test.lab.api.DutTopology\x12G\n\x16primary_execution_info\x18\x03 \x01(\x0b\x32\'.chromiumos.test.artifact.ExecutionInfo\x12J\n\x19secondary_executions_info\x18\x04 \x03(\x0b\x32\'.chromiumos.test.artifact.ExecutionInfo\x12I\n\x13scheduling_metadata\x18\x05 \x01(\x0b\x32,.chromiumos.test.artifact.SchedulingMetadata\x12@\n\x04tags\x18\x06 \x03(\x0b\x32\x32.chromiumos.test.artifact.TestInvocation.TagsEntry\x12\x12\n\nis_cft_run\x18\x07 \x01(\x08\x12\x13\n\x0bis_trv2_run\x18\n \x01(\x08\x12\x11\n\tis_al_run\x18\x0b \x01(\x08\x12\x11\n\tis_3d_run\x18\x0c \x01(\x08\x12R\n\x18project_tracker_metadata\x18\x08 \x01(\x0b\x32\x30.chromiumos.test.artifact.ProjectTrackerMetadata\x12;\n\x0cpartner_info\x18\t \x01(\x0b\x32%.chromiumos.test.artifact.PartnerInfo\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xaf\x01\n\x0fTestEnvironment\x12\x38\n\x02id\x18\x01 \x01(\x0b\x32,.chromiumos.test.artifact.TestEnvironment.Id\x12\x42\n\x0c\x61ncestor_ids\x18\x02 \x03(\x0b\x32,.chromiumos.test.artifact.TestEnvironment.Id\x1a\x1e\n\x02Id\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\xdb\x03\n\x07TestRun\x12>\n\x0etest_case_info\x18\x01 \x01(\x0b\x32&.chromiumos.test.artifact.TestCaseInfo\x12*\n\tlogs_info\x18\x02 \x03(\x0b\x32\x17.chromiumos.StoragePath\x12>\n\x0e\x63ustom_results\x18\x03 \x03(\x0b\x32&.chromiumos.test.artifact.CustomResult\x12\x37\n\ttime_info\x18\x04 \x01(\x0b\x32$.chromiumos.test.artifact.TimingInfo\x12:\n\x0ctest_harness\x18\x05 \x01(\x0b\x32 .chromiumos.test.api.TestHarnessB\x02\x18\x01\x12G\n\x12\x65xecution_metadata\x18\x06 \x01(\x0b\x32+.chromiumos.test.artifact.ExecutionMetadata\x12\x39\n\x04tags\x18\x07 \x03(\x0b\x32+.chromiumos.test.artifact.TestRun.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x9a\x03\n\x0cTestCaseInfo\x12\x45\n\x12test_case_metadata\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.TestCaseMetadataB\x02\x18\x01\x12=\n\x10test_case_result\x18\x02 \x01(\x0b\x32#.chromiumos.test.api.TestCaseResult\x12\x14\n\x0c\x64isplay_name\x18\x03 \x01(\t\x12\r\n\x05suite\x18\x04 \x01(\t\x12\x0e\n\x06\x62ranch\x18\x05 \x01(\t\x12\x19\n\x11main_builder_name\x18\x06 \x01(\t\x12\x11\n\trequester\x18\x07 \x01(\t\x12\x10\n\x08\x63ontacts\x18\x08 \x03(\t\x12\x14\n\x0ctest_plan_id\x18\t \x01(\t\x12\x0f\n\x07\x63hannel\x18\n \x01(\t\x12\x33\n\x08\x61vl_info\x18\x0b \x01(\x0b\x32!.chromiumos.test.artifact.AvlInfo\x12\x33\n\x08gsc_info\x18\x0c \x01(\x0b\x32!.chromiumos.test.artifact.GscInfo\"\x94\x02\n\tBuildInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tmilestone\x18\x02 \x01(\x04\x12\x19\n\x11\x63hrome_os_version\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\x18\n\x10snapshot_version\x18\x05 \x01(\t\x12\x14\n\x0c\x62uild_target\x18\x06 \x01(\t\x12\x15\n\rboard_variant\x18\x07 \x01(\t\x12\r\n\x05\x62oard\x18\x08 \x01(\t\x12?\n\x0e\x62uild_metadata\x18\t \x01(\x0b\x32\'.chromiumos.test.artifact.BuildMetadata\x12\x10\n\x08\x63ritical\x18\n \x01(\x08\x12\x12\n\nboard_type\x18\x0b \x01(\t\"\xcb\x11\n\rBuildMetadata\x12\x38\n\x03\x61rc\x18\x01 \x01(\x0b\x32+.chromiumos.test.artifact.BuildMetadata.Arc\x12>\n\x06\x63hrome\x18\x02 \x01(\x0b\x32..chromiumos.test.artifact.BuildMetadata.Chrome\x12\x43\n\tchrome_os\x18\x03 \x01(\x0b\x32\x30.chromiumos.test.artifact.BuildMetadata.ChromeOs\x12\x42\n\x08\x66irmware\x18\x04 \x01(\x0b\x32\x30.chromiumos.test.artifact.BuildMetadata.Firmware\x12>\n\x06kernel\x18\x05 \x01(\x0b\x32..chromiumos.test.artifact.BuildMetadata.Kernel\x12\x38\n\x03sku\x18\x06 \x01(\x0b\x32+.chromiumos.test.artifact.BuildMetadata.Sku\x12@\n\x07\x63hipset\x18\x07 \x01(\x0b\x32/.chromiumos.test.artifact.BuildMetadata.Chipset\x12\x42\n\x08\x63\x65llular\x18\x08 \x01(\x0b\x32\x30.chromiumos.test.artifact.BuildMetadata.Cellular\x12>\n\x06lacros\x18\t \x01(\x0b\x32..chromiumos.test.artifact.BuildMetadata.Lacros\x12\x39\n\tchameleon\x18\n \x01(\x0b\x32\".chromiumos.test.lab.api.ChameleonB\x02\x18\x01\x12\x41\n\x08gfx_info\x18\x0b \x01(\x0b\x32/.chromiumos.test.artifact.BuildMetadata.GfxInfo\x12\x36\n\nmodem_info\x18\x0c \x01(\x0b\x32\".chromiumos.test.lab.api.ModemInfo\x12M\n\x0e\x63hameleon_info\x18\r \x01(\x0b\x32\x35.chromiumos.test.artifact.BuildMetadata.ChameleonInfo\x1a&\n\x03\x41rc\x12\x0f\n\x07version\x18\x01 \x01(\t\x12\x0e\n\x06\x62ranch\x18\x02 \x01(\t\x1a\x19\n\x06\x43hrome\x12\x0f\n\x07version\x18\x01 \x01(\t\x1a\x1b\n\x08\x43hromeOs\x12\x0f\n\x07version\x18\x01 \x01(\t\x1a\x32\n\x08\x46irmware\x12\x12\n\nro_version\x18\x01 \x01(\t\x12\x12\n\nrw_version\x18\x02 \x01(\t\x1a\x19\n\x06Kernel\x12\x0f\n\x07version\x18\x01 \x01(\t\x1a+\n\x03Sku\x12\x10\n\x08hwid_sku\x18\x01 \x01(\t\x12\x12\n\ndlm_sku_id\x18\x02 \x01(\t\x1a\x38\n\x07\x43hipset\x12\x11\n\twifi_chip\x18\x01 \x01(\t\x12\x1a\n\x12wifi_router_models\x18\x02 \x01(\t\x1a\x1b\n\x08\x43\x65llular\x12\x0f\n\x07\x63\x61rrier\x18\x01 \x01(\t\x1a\x35\n\x06Lacros\x12\x13\n\x0b\x61sh_version\x18\x01 \x01(\t\x12\x16\n\x0elacros_version\x18\x02 \x01(\t\x1a\x80\x03\n\x07GfxInfo\x12\x0e\n\x06gpu_id\x18\x01 \x01(\t\x12\x12\n\ngpu_family\x18\x02 \x01(\t\x12\x1d\n\x15gpu_open_gles_version\x18\x03 \x01(\t\x12\x12\n\ngpu_vendor\x18\x04 \x01(\t\x12\x1a\n\x12gpu_vulkan_version\x18\x05 \x01(\t\x12\x1b\n\x13platform_cpu_vendor\x18\x06 \x01(\t\x12\x1a\n\x12platform_disk_size\x18\x07 \x01(\x04\x12\x1c\n\x14platform_memory_size\x18\x08 \x01(\x04\x12\x1a\n\x12\x64isplay_panel_name\x18\t \x01(\t\x12\x1b\n\x13\x64isplay_present_hdr\x18\n \x01(\t\x12\x1b\n\x13\x64isplay_present_psr\x18\x0b \x01(\t\x12\x1b\n\x13\x64isplay_present_vrr\x18\x0c \x01(\t\x12\x1c\n\x14\x64isplay_refresh_rate\x18\r \x01(\t\x12\x1a\n\x12\x64isplay_resolution\x18\x0e \x01(\t\x1a\xc3\x01\n\rChameleonInfo\x12M\n\x0e\x63hameleon_type\x18\x01 \x03(\x0e\x32\x35.chromiumos.test.artifact.BuildMetadata.ChameleonType\x12\x63\n\x1a\x63hameleon_connection_types\x18\x02 \x03(\x0e\x32?.chromiumos.test.artifact.BuildMetadata.ChameleonConnectionType\"\xe9\x01\n\rChameleonType\x12\x1a\n\x16\x43HAMELEON_TYPE_INVALID\x10\x00\x12\x15\n\x11\x43HAMELEON_TYPE_DP\x10\x02\x12\x1e\n\x16\x43HAMELEON_TYPE_DP_HDMI\x10\x03\x1a\x02\x08\x01\x12\x1a\n\x12\x43HAMELEON_TYPE_VGA\x10\x04\x1a\x02\x08\x01\x12\x17\n\x13\x43HAMELEON_TYPE_HDMI\x10\x05\x12\x15\n\x11\x43HAMELEON_TYPE_V2\x10\t\x12\x15\n\x11\x43HAMELEON_TYPE_V3\x10\n\x12\x16\n\x12\x43HAMELEON_TYPE_RPI\x10\x0b\"\x04\x08\x01\x10\x01\"\x04\x08\x06\x10\x08\"\xd2\x01\n\x17\x43hameleonConnectionType\x12%\n!CHAMELEON_CONNECTION_TYPE_INVALID\x10\x00\x12\'\n#CHAMELEON_CONNECTION_TYPE_AUDIOJACK\x10\x01\x12!\n\x1d\x43HAMELEON_CONNECTION_TYPE_USB\x10\x02\x12\"\n\x1e\x43HAMELEON_CONNECTION_TYPE_HDMI\x10\x03\x12 \n\x1c\x43HAMELEON_CONNECTION_TYPE_DP\x10\x04\"\xe7\x01\n\x07\x44utInfo\x12)\n\x03\x64ut\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12<\n\x0fprovision_state\x18\x02 \x01(\x0b\x32#.chromiumos.test.api.ProvisionState\x12\x39\n\x04tags\x18\x03 \x03(\x0b\x32+.chromiumos.test.artifact.DutInfo.TagsEntry\x12\x0b\n\x03\x63\x62x\x18\x04 \x01(\x08\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"E\n\tDroneInfo\x12\r\n\x05\x64rone\x18\x01 \x01(\t\x12\x13\n\x0b\x64rone_image\x18\x02 \x01(\t\x12\x14\n\x0c\x64rone_server\x18\x03 \x01(\t\"\x8f\x01\n\x0cSwarmingInfo\x12\x0f\n\x07task_id\x18\x01 \x01(\t\x12\x15\n\rsuite_task_id\x18\x02 \x01(\t\x12\x11\n\ttask_name\x18\x03 \x01(\t\x12\x0c\n\x04pool\x18\x04 \x01(\t\x12\x12\n\nlabel_pool\x18\x05 \x01(\t\x12\x0e\n\x06\x62ot_id\x18\x06 \x01(\t\x12\x12\n\nbot_config\x18\x07 \x01(\t\"!\n\rInventoryInfo\x12\x10\n\x08ufs_zone\x18\x01 \x01(\t\"=\n\tBuilderID\x12\x0f\n\x07project\x18\x01 \x01(\t\x12\x0e\n\x06\x62ucket\x18\x02 \x01(\t\x12\x0f\n\x07\x62uilder\x18\x03 \x01(\t\"i\n\x0f\x42uildbucketInfo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x34\n\x07\x62uilder\x18\x02 \x01(\x0b\x32#.chromiumos.test.artifact.BuilderID\x12\x14\n\x0c\x61ncestor_ids\x18\x03 \x03(\x03\"\xc9\x01\n\nSkylabInfo\x12\x37\n\ndrone_info\x18\x01 \x01(\x0b\x32#.chromiumos.test.artifact.DroneInfo\x12=\n\rswarming_info\x18\x02 \x01(\x0b\x32&.chromiumos.test.artifact.SwarmingInfo\x12\x43\n\x10\x62uildbucket_info\x18\x03 \x01(\x0b\x32).chromiumos.test.artifact.BuildbucketInfo\"\xc9\x01\n\nSatlabInfo\x12=\n\rswarming_info\x18\x01 \x01(\x0b\x32&.chromiumos.test.artifact.SwarmingInfo\x12\x43\n\x10\x62uildbucket_info\x18\x02 \x01(\x0b\x32).chromiumos.test.artifact.BuildbucketInfo\x12\x37\n\ndrone_info\x18\x03 \x01(\x0b\x32#.chromiumos.test.artifact.DroneInfo\"!\n\x0bPartnerInfo\x12\x12\n\naccount_id\x18\x01 \x01(\x03\"\xc4\x02\n\rExecutionInfo\x12\x37\n\nbuild_info\x18\x01 \x01(\x0b\x32#.chromiumos.test.artifact.BuildInfo\x12\x33\n\x08\x64ut_info\x18\x02 \x01(\x0b\x32!.chromiumos.test.artifact.DutInfo\x12;\n\x0bskylab_info\x18\x03 \x01(\x0b\x32$.chromiumos.test.artifact.SkylabInfoH\x00\x12;\n\x0bsatlab_info\x18\x04 \x01(\x0b\x32$.chromiumos.test.artifact.SatlabInfoH\x00\x12?\n\x0einventory_info\x18\x05 \x01(\x0b\x32\'.chromiumos.test.artifact.InventoryInfoB\n\n\x08\x65nv_info\"\x8f\x01\n\x0c\x43ustomResult\x12\x35\n\x14result_artifact_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x39\n\x03\x63ts\x18\x02 \x01(\x0b\x32*.chromiumos.test.artifact.CustomResult.CtsH\x00\x1a\x05\n\x03\x43tsB\x06\n\x04type\"\x9c\x01\n\nTimingInfo\x12/\n\x0bqueued_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x30\n\x0cstarted_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12+\n\x08\x64uration\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\"\x83\x03\n\x12SchedulingMetadata\x12\x65\n\x15hardware_dependencies\x18\x01 \x03(\x0b\x32\x46.chromiumos.test.artifact.SchedulingMetadata.HardwareDependenciesEntry\x12Y\n\x0fscheduling_args\x18\x02 \x03(\x0b\x32@.chromiumos.test.artifact.SchedulingMetadata.SchedulingArgsEntry\x12\x37\n\ttime_info\x18\x03 \x01(\x0b\x32$.chromiumos.test.artifact.TimingInfo\x1a;\n\x19HardwareDependenciesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x35\n\x13SchedulingArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"(\n\x16ProjectTrackerMetadata\x12\x0e\n\x06\x62ug_id\x18\x01 \x01(\t\"\xb5\x02\n\x11\x45xecutionMetadata\x12\x64\n\x15software_dependencies\x18\x01 \x03(\x0b\x32\x45.chromiumos.test.artifact.ExecutionMetadata.SoftwareDependenciesEntry\x12L\n\ttest_args\x18\x02 \x03(\x0b\x32\x39.chromiumos.test.artifact.ExecutionMetadata.TestArgsEntry\x1a;\n\x19SoftwareDependenciesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a/\n\rTestArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"X\n\x07\x41vlInfo\x12\x16\n\x0e\x61vl_part_model\x18\x01 \x01(\t\x12\x19\n\x11\x61vl_part_firmware\x18\x02 \x01(\t\x12\x1a\n\x12\x61vl_component_type\x18\x03 \x01(\t\"\xfd\x02\n\x07GscInfo\x12\x14\n\x0cgsc_buildurl\x18\x01 \x01(\t\x12\x16\n\x0egsc_ccd_serial\x18\x02 \x01(\t\x12#\n\x1bgsc_devboardservice_version\x18\x03 \x01(\t\x12\x1d\n\x15gsc_hyperdebug_serial\x18\x04 \x01(\t\x12\x1e\n\x16gsc_hyperdebug_version\x18\x05 \x01(\t\x12!\n\x19gsc_opentitantool_version\x18\x06 \x01(\t\x12\x16\n\x0egsc_ro_version\x18\x07 \x01(\t\x12\x15\n\rgsc_rw_branch\x18\x08 \x01(\t\x12\x12\n\ngsc_rw_rev\x18\t \x01(\t\x12\x12\n\ngsc_rw_sha\x18\n \x01(\t\x12\x16\n\x0egsc_rw_version\x18\x0b \x01(\t\x12\x18\n\x10gsc_tast_version\x18\x0c \x01(\t\x12\x1a\n\x12gsc_testbed_serial\x18\r \x01(\t\x12\x18\n\x10gsc_testbed_type\x18\x0e \x01(\tB4Z2go.chromium.org/chromiumos/config/go/test/artifactb\x06proto3'
+  serialized_pb=b'\n*chromiumos/test/artifact/test_result.proto\x12\x18\x63hromiumos.test.artifact\x1a\x1d\x63hromiumos/storage_path.proto\x1a)chromiumos/test/api/provision_state.proto\x1a,chromiumos/test/api/test_case_metadata.proto\x1a*chromiumos/test/api/test_case_result.proto\x1a&chromiumos/test/api/test_harness.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x96\x01\n\nTestResult\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x41\n\x0ftest_invocation\x18\x02 \x01(\x0b\x32(.chromiumos.test.artifact.TestInvocation\x12\x34\n\ttest_runs\x18\x03 \x03(\x0b\x32!.chromiumos.test.artifact.TestRun\"\xc0\x05\n\x0eTestInvocation\x12\x43\n\x10test_environment\x18\x01 \x01(\x0b\x32).chromiumos.test.artifact.TestEnvironment\x12:\n\x0c\x64ut_topology\x18\x02 \x01(\x0b\x32$.chromiumos.test.lab.api.DutTopology\x12G\n\x16primary_execution_info\x18\x03 \x01(\x0b\x32\'.chromiumos.test.artifact.ExecutionInfo\x12J\n\x19secondary_executions_info\x18\x04 \x03(\x0b\x32\'.chromiumos.test.artifact.ExecutionInfo\x12I\n\x13scheduling_metadata\x18\x05 \x01(\x0b\x32,.chromiumos.test.artifact.SchedulingMetadata\x12@\n\x04tags\x18\x06 \x03(\x0b\x32\x32.chromiumos.test.artifact.TestInvocation.TagsEntry\x12\x12\n\nis_cft_run\x18\x07 \x01(\x08\x12\x13\n\x0bis_trv2_run\x18\n \x01(\x08\x12\x11\n\tis_al_run\x18\x0b \x01(\x08\x12\x11\n\tis_3d_run\x18\x0c \x01(\x08\x12R\n\x18project_tracker_metadata\x18\x08 \x01(\x0b\x32\x30.chromiumos.test.artifact.ProjectTrackerMetadata\x12;\n\x0cpartner_info\x18\t \x01(\x0b\x32%.chromiumos.test.artifact.PartnerInfo\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xaf\x01\n\x0fTestEnvironment\x12\x38\n\x02id\x18\x01 \x01(\x0b\x32,.chromiumos.test.artifact.TestEnvironment.Id\x12\x42\n\x0c\x61ncestor_ids\x18\x02 \x03(\x0b\x32,.chromiumos.test.artifact.TestEnvironment.Id\x1a\x1e\n\x02Id\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\xdb\x03\n\x07TestRun\x12>\n\x0etest_case_info\x18\x01 \x01(\x0b\x32&.chromiumos.test.artifact.TestCaseInfo\x12*\n\tlogs_info\x18\x02 \x03(\x0b\x32\x17.chromiumos.StoragePath\x12>\n\x0e\x63ustom_results\x18\x03 \x03(\x0b\x32&.chromiumos.test.artifact.CustomResult\x12\x37\n\ttime_info\x18\x04 \x01(\x0b\x32$.chromiumos.test.artifact.TimingInfo\x12:\n\x0ctest_harness\x18\x05 \x01(\x0b\x32 .chromiumos.test.api.TestHarnessB\x02\x18\x01\x12G\n\x12\x65xecution_metadata\x18\x06 \x01(\x0b\x32+.chromiumos.test.artifact.ExecutionMetadata\x12\x39\n\x04tags\x18\x07 \x03(\x0b\x32+.chromiumos.test.artifact.TestRun.TagsEntry\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x9a\x03\n\x0cTestCaseInfo\x12\x45\n\x12test_case_metadata\x18\x01 \x01(\x0b\x32%.chromiumos.test.api.TestCaseMetadataB\x02\x18\x01\x12=\n\x10test_case_result\x18\x02 \x01(\x0b\x32#.chromiumos.test.api.TestCaseResult\x12\x14\n\x0c\x64isplay_name\x18\x03 \x01(\t\x12\r\n\x05suite\x18\x04 \x01(\t\x12\x0e\n\x06\x62ranch\x18\x05 \x01(\t\x12\x19\n\x11main_builder_name\x18\x06 \x01(\t\x12\x11\n\trequester\x18\x07 \x01(\t\x12\x10\n\x08\x63ontacts\x18\x08 \x03(\t\x12\x14\n\x0ctest_plan_id\x18\t \x01(\t\x12\x0f\n\x07\x63hannel\x18\n \x01(\t\x12\x33\n\x08\x61vl_info\x18\x0b \x01(\x0b\x32!.chromiumos.test.artifact.AvlInfo\x12\x33\n\x08gsc_info\x18\x0c \x01(\x0b\x32!.chromiumos.test.artifact.GscInfo\"\x94\x02\n\tBuildInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tmilestone\x18\x02 \x01(\x04\x12\x19\n\x11\x63hrome_os_version\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\x18\n\x10snapshot_version\x18\x05 \x01(\t\x12\x14\n\x0c\x62uild_target\x18\x06 \x01(\t\x12\x15\n\rboard_variant\x18\x07 \x01(\t\x12\r\n\x05\x62oard\x18\x08 \x01(\t\x12?\n\x0e\x62uild_metadata\x18\t \x01(\x0b\x32\'.chromiumos.test.artifact.BuildMetadata\x12\x10\n\x08\x63ritical\x18\n \x01(\x08\x12\x12\n\nboard_type\x18\x0b \x01(\t\"\xe3\x12\n\rBuildMetadata\x12\x38\n\x03\x61rc\x18\x01 \x01(\x0b\x32+.chromiumos.test.artifact.BuildMetadata.Arc\x12>\n\x06\x63hrome\x18\x02 \x01(\x0b\x32..chromiumos.test.artifact.BuildMetadata.Chrome\x12\x43\n\tchrome_os\x18\x03 \x01(\x0b\x32\x30.chromiumos.test.artifact.BuildMetadata.ChromeOs\x12\x42\n\x08\x66irmware\x18\x04 \x01(\x0b\x32\x30.chromiumos.test.artifact.BuildMetadata.Firmware\x12>\n\x06kernel\x18\x05 \x01(\x0b\x32..chromiumos.test.artifact.BuildMetadata.Kernel\x12\x38\n\x03sku\x18\x06 \x01(\x0b\x32+.chromiumos.test.artifact.BuildMetadata.Sku\x12@\n\x07\x63hipset\x18\x07 \x01(\x0b\x32/.chromiumos.test.artifact.BuildMetadata.Chipset\x12\x42\n\x08\x63\x65llular\x18\x08 \x01(\x0b\x32\x30.chromiumos.test.artifact.BuildMetadata.Cellular\x12>\n\x06lacros\x18\t \x01(\x0b\x32..chromiumos.test.artifact.BuildMetadata.Lacros\x12\x39\n\tchameleon\x18\n \x01(\x0b\x32\".chromiumos.test.lab.api.ChameleonB\x02\x18\x01\x12\x41\n\x08gfx_info\x18\x0b \x01(\x0b\x32/.chromiumos.test.artifact.BuildMetadata.GfxInfo\x12\x36\n\nmodem_info\x18\x0c \x01(\x0b\x32\".chromiumos.test.lab.api.ModemInfo\x12M\n\x0e\x63hameleon_info\x18\r \x01(\x0b\x32\x35.chromiumos.test.artifact.BuildMetadata.ChameleonInfo\x12\x45\n\nservo_info\x18\x0e \x01(\x0b\x32\x31.chromiumos.test.artifact.BuildMetadata.ServoInfo\x1a&\n\x03\x41rc\x12\x0f\n\x07version\x18\x01 \x01(\t\x12\x0e\n\x06\x62ranch\x18\x02 \x01(\t\x1a\x19\n\x06\x43hrome\x12\x0f\n\x07version\x18\x01 \x01(\t\x1a\x1b\n\x08\x43hromeOs\x12\x0f\n\x07version\x18\x01 \x01(\t\x1a\x32\n\x08\x46irmware\x12\x12\n\nro_version\x18\x01 \x01(\t\x12\x12\n\nrw_version\x18\x02 \x01(\t\x1a\x19\n\x06Kernel\x12\x0f\n\x07version\x18\x01 \x01(\t\x1a+\n\x03Sku\x12\x10\n\x08hwid_sku\x18\x01 \x01(\t\x12\x12\n\ndlm_sku_id\x18\x02 \x01(\t\x1a\x38\n\x07\x43hipset\x12\x11\n\twifi_chip\x18\x01 \x01(\t\x12\x1a\n\x12wifi_router_models\x18\x02 \x01(\t\x1a\x1b\n\x08\x43\x65llular\x12\x0f\n\x07\x63\x61rrier\x18\x01 \x01(\t\x1a\x35\n\x06Lacros\x12\x13\n\x0b\x61sh_version\x18\x01 \x01(\t\x12\x16\n\x0elacros_version\x18\x02 \x01(\t\x1a\x80\x03\n\x07GfxInfo\x12\x0e\n\x06gpu_id\x18\x01 \x01(\t\x12\x12\n\ngpu_family\x18\x02 \x01(\t\x12\x1d\n\x15gpu_open_gles_version\x18\x03 \x01(\t\x12\x12\n\ngpu_vendor\x18\x04 \x01(\t\x12\x1a\n\x12gpu_vulkan_version\x18\x05 \x01(\t\x12\x1b\n\x13platform_cpu_vendor\x18\x06 \x01(\t\x12\x1a\n\x12platform_disk_size\x18\x07 \x01(\x04\x12\x1c\n\x14platform_memory_size\x18\x08 \x01(\x04\x12\x1a\n\x12\x64isplay_panel_name\x18\t \x01(\t\x12\x1b\n\x13\x64isplay_present_hdr\x18\n \x01(\t\x12\x1b\n\x13\x64isplay_present_psr\x18\x0b \x01(\t\x12\x1b\n\x13\x64isplay_present_vrr\x18\x0c \x01(\t\x12\x1c\n\x14\x64isplay_refresh_rate\x18\r \x01(\t\x12\x1a\n\x12\x64isplay_resolution\x18\x0e \x01(\t\x1a\xc3\x01\n\rChameleonInfo\x12M\n\x0e\x63hameleon_type\x18\x01 \x03(\x0e\x32\x35.chromiumos.test.artifact.BuildMetadata.ChameleonType\x12\x63\n\x1a\x63hameleon_connection_types\x18\x02 \x03(\x0e\x32?.chromiumos.test.artifact.BuildMetadata.ChameleonConnectionType\x1aO\n\tServoInfo\x12\x16\n\x0eservod_version\x18\x01 \x01(\t\x12\x16\n\x0eservo_versions\x18\x02 \x01(\t\x12\x12\n\nservo_type\x18\x03 \x01(\t\"\xe9\x01\n\rChameleonType\x12\x1a\n\x16\x43HAMELEON_TYPE_INVALID\x10\x00\x12\x15\n\x11\x43HAMELEON_TYPE_DP\x10\x02\x12\x1e\n\x16\x43HAMELEON_TYPE_DP_HDMI\x10\x03\x1a\x02\x08\x01\x12\x1a\n\x12\x43HAMELEON_TYPE_VGA\x10\x04\x1a\x02\x08\x01\x12\x17\n\x13\x43HAMELEON_TYPE_HDMI\x10\x05\x12\x15\n\x11\x43HAMELEON_TYPE_V2\x10\t\x12\x15\n\x11\x43HAMELEON_TYPE_V3\x10\n\x12\x16\n\x12\x43HAMELEON_TYPE_RPI\x10\x0b\"\x04\x08\x01\x10\x01\"\x04\x08\x06\x10\x08\"\xd2\x01\n\x17\x43hameleonConnectionType\x12%\n!CHAMELEON_CONNECTION_TYPE_INVALID\x10\x00\x12\'\n#CHAMELEON_CONNECTION_TYPE_AUDIOJACK\x10\x01\x12!\n\x1d\x43HAMELEON_CONNECTION_TYPE_USB\x10\x02\x12\"\n\x1e\x43HAMELEON_CONNECTION_TYPE_HDMI\x10\x03\x12 \n\x1c\x43HAMELEON_CONNECTION_TYPE_DP\x10\x04\"\xe7\x01\n\x07\x44utInfo\x12)\n\x03\x64ut\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12<\n\x0fprovision_state\x18\x02 \x01(\x0b\x32#.chromiumos.test.api.ProvisionState\x12\x39\n\x04tags\x18\x03 \x03(\x0b\x32+.chromiumos.test.artifact.DutInfo.TagsEntry\x12\x0b\n\x03\x63\x62x\x18\x04 \x01(\x08\x1a+\n\tTagsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"E\n\tDroneInfo\x12\r\n\x05\x64rone\x18\x01 \x01(\t\x12\x13\n\x0b\x64rone_image\x18\x02 \x01(\t\x12\x14\n\x0c\x64rone_server\x18\x03 \x01(\t\"\x8f\x01\n\x0cSwarmingInfo\x12\x0f\n\x07task_id\x18\x01 \x01(\t\x12\x15\n\rsuite_task_id\x18\x02 \x01(\t\x12\x11\n\ttask_name\x18\x03 \x01(\t\x12\x0c\n\x04pool\x18\x04 \x01(\t\x12\x12\n\nlabel_pool\x18\x05 \x01(\t\x12\x0e\n\x06\x62ot_id\x18\x06 \x01(\t\x12\x12\n\nbot_config\x18\x07 \x01(\t\"!\n\rInventoryInfo\x12\x10\n\x08ufs_zone\x18\x01 \x01(\t\"=\n\tBuilderID\x12\x0f\n\x07project\x18\x01 \x01(\t\x12\x0e\n\x06\x62ucket\x18\x02 \x01(\t\x12\x0f\n\x07\x62uilder\x18\x03 \x01(\t\"i\n\x0f\x42uildbucketInfo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x34\n\x07\x62uilder\x18\x02 \x01(\x0b\x32#.chromiumos.test.artifact.BuilderID\x12\x14\n\x0c\x61ncestor_ids\x18\x03 \x03(\x03\"\xc9\x01\n\nSkylabInfo\x12\x37\n\ndrone_info\x18\x01 \x01(\x0b\x32#.chromiumos.test.artifact.DroneInfo\x12=\n\rswarming_info\x18\x02 \x01(\x0b\x32&.chromiumos.test.artifact.SwarmingInfo\x12\x43\n\x10\x62uildbucket_info\x18\x03 \x01(\x0b\x32).chromiumos.test.artifact.BuildbucketInfo\"\xc9\x01\n\nSatlabInfo\x12=\n\rswarming_info\x18\x01 \x01(\x0b\x32&.chromiumos.test.artifact.SwarmingInfo\x12\x43\n\x10\x62uildbucket_info\x18\x02 \x01(\x0b\x32).chromiumos.test.artifact.BuildbucketInfo\x12\x37\n\ndrone_info\x18\x03 \x01(\x0b\x32#.chromiumos.test.artifact.DroneInfo\"!\n\x0bPartnerInfo\x12\x12\n\naccount_id\x18\x01 \x01(\x03\"\xc4\x02\n\rExecutionInfo\x12\x37\n\nbuild_info\x18\x01 \x01(\x0b\x32#.chromiumos.test.artifact.BuildInfo\x12\x33\n\x08\x64ut_info\x18\x02 \x01(\x0b\x32!.chromiumos.test.artifact.DutInfo\x12;\n\x0bskylab_info\x18\x03 \x01(\x0b\x32$.chromiumos.test.artifact.SkylabInfoH\x00\x12;\n\x0bsatlab_info\x18\x04 \x01(\x0b\x32$.chromiumos.test.artifact.SatlabInfoH\x00\x12?\n\x0einventory_info\x18\x05 \x01(\x0b\x32\'.chromiumos.test.artifact.InventoryInfoB\n\n\x08\x65nv_info\"\x8f\x01\n\x0c\x43ustomResult\x12\x35\n\x14result_artifact_path\x18\x01 \x01(\x0b\x32\x17.chromiumos.StoragePath\x12\x39\n\x03\x63ts\x18\x02 \x01(\x0b\x32*.chromiumos.test.artifact.CustomResult.CtsH\x00\x1a\x05\n\x03\x43tsB\x06\n\x04type\"\x9c\x01\n\nTimingInfo\x12/\n\x0bqueued_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x30\n\x0cstarted_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12+\n\x08\x64uration\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\"\x83\x03\n\x12SchedulingMetadata\x12\x65\n\x15hardware_dependencies\x18\x01 \x03(\x0b\x32\x46.chromiumos.test.artifact.SchedulingMetadata.HardwareDependenciesEntry\x12Y\n\x0fscheduling_args\x18\x02 \x03(\x0b\x32@.chromiumos.test.artifact.SchedulingMetadata.SchedulingArgsEntry\x12\x37\n\ttime_info\x18\x03 \x01(\x0b\x32$.chromiumos.test.artifact.TimingInfo\x1a;\n\x19HardwareDependenciesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x35\n\x13SchedulingArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"(\n\x16ProjectTrackerMetadata\x12\x0e\n\x06\x62ug_id\x18\x01 \x01(\t\"\xb5\x02\n\x11\x45xecutionMetadata\x12\x64\n\x15software_dependencies\x18\x01 \x03(\x0b\x32\x45.chromiumos.test.artifact.ExecutionMetadata.SoftwareDependenciesEntry\x12L\n\ttest_args\x18\x02 \x03(\x0b\x32\x39.chromiumos.test.artifact.ExecutionMetadata.TestArgsEntry\x1a;\n\x19SoftwareDependenciesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a/\n\rTestArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"X\n\x07\x41vlInfo\x12\x16\n\x0e\x61vl_part_model\x18\x01 \x01(\t\x12\x19\n\x11\x61vl_part_firmware\x18\x02 \x01(\t\x12\x1a\n\x12\x61vl_component_type\x18\x03 \x01(\t\"\xfd\x02\n\x07GscInfo\x12\x14\n\x0cgsc_buildurl\x18\x01 \x01(\t\x12\x16\n\x0egsc_ccd_serial\x18\x02 \x01(\t\x12#\n\x1bgsc_devboardservice_version\x18\x03 \x01(\t\x12\x1d\n\x15gsc_hyperdebug_serial\x18\x04 \x01(\t\x12\x1e\n\x16gsc_hyperdebug_version\x18\x05 \x01(\t\x12!\n\x19gsc_opentitantool_version\x18\x06 \x01(\t\x12\x16\n\x0egsc_ro_version\x18\x07 \x01(\t\x12\x15\n\rgsc_rw_branch\x18\x08 \x01(\t\x12\x12\n\ngsc_rw_rev\x18\t \x01(\t\x12\x12\n\ngsc_rw_sha\x18\n \x01(\t\x12\x16\n\x0egsc_rw_version\x18\x0b \x01(\t\x12\x18\n\x10gsc_tast_version\x18\x0c \x01(\t\x12\x1a\n\x12gsc_testbed_serial\x18\r \x01(\t\x12\x18\n\x10gsc_testbed_type\x18\x0e \x01(\tB4Z2go.chromium.org/chromiumos/config/go/test/artifactb\x06proto3'
   ,
   dependencies=[chromiumos_dot_storage__path__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_provision__state__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__metadata__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__result__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__harness__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -83,8 +83,8 @@ _BUILDMETADATA_CHAMELEONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4390,
-  serialized_end=4623,
+  serialized_start=4542,
+  serialized_end=4775,
 )
 _sym_db.RegisterEnumDescriptor(_BUILDMETADATA_CHAMELEONTYPE)
 
@@ -123,8 +123,8 @@ _BUILDMETADATA_CHAMELEONCONNECTIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4626,
-  serialized_end=4836,
+  serialized_start=4778,
+  serialized_end=4988,
 )
 _sym_db.RegisterEnumDescriptor(_BUILDMETADATA_CHAMELEONCONNECTIONTYPE)
 
@@ -756,8 +756,8 @@ _BUILDMETADATA_ARC = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3442,
-  serialized_end=3480,
+  serialized_start=3513,
+  serialized_end=3551,
 )
 
 _BUILDMETADATA_CHROME = _descriptor.Descriptor(
@@ -787,8 +787,8 @@ _BUILDMETADATA_CHROME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3482,
-  serialized_end=3507,
+  serialized_start=3553,
+  serialized_end=3578,
 )
 
 _BUILDMETADATA_CHROMEOS = _descriptor.Descriptor(
@@ -818,8 +818,8 @@ _BUILDMETADATA_CHROMEOS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3509,
-  serialized_end=3536,
+  serialized_start=3580,
+  serialized_end=3607,
 )
 
 _BUILDMETADATA_FIRMWARE = _descriptor.Descriptor(
@@ -856,8 +856,8 @@ _BUILDMETADATA_FIRMWARE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3538,
-  serialized_end=3588,
+  serialized_start=3609,
+  serialized_end=3659,
 )
 
 _BUILDMETADATA_KERNEL = _descriptor.Descriptor(
@@ -887,8 +887,8 @@ _BUILDMETADATA_KERNEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3590,
-  serialized_end=3615,
+  serialized_start=3661,
+  serialized_end=3686,
 )
 
 _BUILDMETADATA_SKU = _descriptor.Descriptor(
@@ -925,8 +925,8 @@ _BUILDMETADATA_SKU = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3617,
-  serialized_end=3660,
+  serialized_start=3688,
+  serialized_end=3731,
 )
 
 _BUILDMETADATA_CHIPSET = _descriptor.Descriptor(
@@ -963,8 +963,8 @@ _BUILDMETADATA_CHIPSET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3662,
-  serialized_end=3718,
+  serialized_start=3733,
+  serialized_end=3789,
 )
 
 _BUILDMETADATA_CELLULAR = _descriptor.Descriptor(
@@ -994,8 +994,8 @@ _BUILDMETADATA_CELLULAR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3720,
-  serialized_end=3747,
+  serialized_start=3791,
+  serialized_end=3818,
 )
 
 _BUILDMETADATA_LACROS = _descriptor.Descriptor(
@@ -1032,8 +1032,8 @@ _BUILDMETADATA_LACROS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3749,
-  serialized_end=3802,
+  serialized_start=3820,
+  serialized_end=3873,
 )
 
 _BUILDMETADATA_GFXINFO = _descriptor.Descriptor(
@@ -1154,8 +1154,8 @@ _BUILDMETADATA_GFXINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3805,
-  serialized_end=4189,
+  serialized_start=3876,
+  serialized_end=4260,
 )
 
 _BUILDMETADATA_CHAMELEONINFO = _descriptor.Descriptor(
@@ -1192,8 +1192,53 @@ _BUILDMETADATA_CHAMELEONINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4192,
-  serialized_end=4387,
+  serialized_start=4263,
+  serialized_end=4458,
+)
+
+_BUILDMETADATA_SERVOINFO = _descriptor.Descriptor(
+  name='ServoInfo',
+  full_name='chromiumos.test.artifact.BuildMetadata.ServoInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='servod_version', full_name='chromiumos.test.artifact.BuildMetadata.ServoInfo.servod_version', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='servo_versions', full_name='chromiumos.test.artifact.BuildMetadata.ServoInfo.servo_versions', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='servo_type', full_name='chromiumos.test.artifact.BuildMetadata.ServoInfo.servo_type', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=4460,
+  serialized_end=4539,
 )
 
 _BUILDMETADATA = _descriptor.Descriptor(
@@ -1295,10 +1340,17 @@ _BUILDMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='servo_info', full_name='chromiumos.test.artifact.BuildMetadata.servo_info', index=13,
+      number=14, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[_BUILDMETADATA_ARC, _BUILDMETADATA_CHROME, _BUILDMETADATA_CHROMEOS, _BUILDMETADATA_FIRMWARE, _BUILDMETADATA_KERNEL, _BUILDMETADATA_SKU, _BUILDMETADATA_CHIPSET, _BUILDMETADATA_CELLULAR, _BUILDMETADATA_LACROS, _BUILDMETADATA_GFXINFO, _BUILDMETADATA_CHAMELEONINFO, ],
+  nested_types=[_BUILDMETADATA_ARC, _BUILDMETADATA_CHROME, _BUILDMETADATA_CHROMEOS, _BUILDMETADATA_FIRMWARE, _BUILDMETADATA_KERNEL, _BUILDMETADATA_SKU, _BUILDMETADATA_CHIPSET, _BUILDMETADATA_CELLULAR, _BUILDMETADATA_LACROS, _BUILDMETADATA_GFXINFO, _BUILDMETADATA_CHAMELEONINFO, _BUILDMETADATA_SERVOINFO, ],
   enum_types=[
     _BUILDMETADATA_CHAMELEONTYPE,
     _BUILDMETADATA_CHAMELEONCONNECTIONTYPE,
@@ -1310,7 +1362,7 @@ _BUILDMETADATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=2585,
-  serialized_end=4836,
+  serialized_end=4988,
 )
 
 
@@ -1400,8 +1452,8 @@ _DUTINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4839,
-  serialized_end=5070,
+  serialized_start=4991,
+  serialized_end=5222,
 )
 
 
@@ -1446,8 +1498,8 @@ _DRONEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5072,
-  serialized_end=5141,
+  serialized_start=5224,
+  serialized_end=5293,
 )
 
 
@@ -1520,8 +1572,8 @@ _SWARMINGINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5144,
-  serialized_end=5287,
+  serialized_start=5296,
+  serialized_end=5439,
 )
 
 
@@ -1552,8 +1604,8 @@ _INVENTORYINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5289,
-  serialized_end=5322,
+  serialized_start=5441,
+  serialized_end=5474,
 )
 
 
@@ -1598,8 +1650,8 @@ _BUILDERID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5324,
-  serialized_end=5385,
+  serialized_start=5476,
+  serialized_end=5537,
 )
 
 
@@ -1644,8 +1696,8 @@ _BUILDBUCKETINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5387,
-  serialized_end=5492,
+  serialized_start=5539,
+  serialized_end=5644,
 )
 
 
@@ -1690,8 +1742,8 @@ _SKYLABINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5495,
-  serialized_end=5696,
+  serialized_start=5647,
+  serialized_end=5848,
 )
 
 
@@ -1736,8 +1788,8 @@ _SATLABINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5699,
-  serialized_end=5900,
+  serialized_start=5851,
+  serialized_end=6052,
 )
 
 
@@ -1768,8 +1820,8 @@ _PARTNERINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5902,
-  serialized_end=5935,
+  serialized_start=6054,
+  serialized_end=6087,
 )
 
 
@@ -1833,8 +1885,8 @@ _EXECUTIONINFO = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=5938,
-  serialized_end=6262,
+  serialized_start=6090,
+  serialized_end=6414,
 )
 
 
@@ -1858,8 +1910,8 @@ _CUSTOMRESULT_CTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6395,
-  serialized_end=6400,
+  serialized_start=6547,
+  serialized_end=6552,
 )
 
 _CUSTOMRESULT = _descriptor.Descriptor(
@@ -1901,8 +1953,8 @@ _CUSTOMRESULT = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=6265,
-  serialized_end=6408,
+  serialized_start=6417,
+  serialized_end=6560,
 )
 
 
@@ -1947,8 +1999,8 @@ _TIMINGINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6411,
-  serialized_end=6567,
+  serialized_start=6563,
+  serialized_end=6719,
 )
 
 
@@ -1986,8 +2038,8 @@ _SCHEDULINGMETADATA_HARDWAREDEPENDENCIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6843,
-  serialized_end=6902,
+  serialized_start=6995,
+  serialized_end=7054,
 )
 
 _SCHEDULINGMETADATA_SCHEDULINGARGSENTRY = _descriptor.Descriptor(
@@ -2024,8 +2076,8 @@ _SCHEDULINGMETADATA_SCHEDULINGARGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6904,
-  serialized_end=6957,
+  serialized_start=7056,
+  serialized_end=7109,
 )
 
 _SCHEDULINGMETADATA = _descriptor.Descriptor(
@@ -2069,8 +2121,8 @@ _SCHEDULINGMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6570,
-  serialized_end=6957,
+  serialized_start=6722,
+  serialized_end=7109,
 )
 
 
@@ -2101,8 +2153,8 @@ _PROJECTTRACKERMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6959,
-  serialized_end=6999,
+  serialized_start=7111,
+  serialized_end=7151,
 )
 
 
@@ -2140,8 +2192,8 @@ _EXECUTIONMETADATA_SOFTWAREDEPENDENCIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7203,
-  serialized_end=7262,
+  serialized_start=7355,
+  serialized_end=7414,
 )
 
 _EXECUTIONMETADATA_TESTARGSENTRY = _descriptor.Descriptor(
@@ -2178,8 +2230,8 @@ _EXECUTIONMETADATA_TESTARGSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7264,
-  serialized_end=7311,
+  serialized_start=7416,
+  serialized_end=7463,
 )
 
 _EXECUTIONMETADATA = _descriptor.Descriptor(
@@ -2216,8 +2268,8 @@ _EXECUTIONMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7002,
-  serialized_end=7311,
+  serialized_start=7154,
+  serialized_end=7463,
 )
 
 
@@ -2262,8 +2314,8 @@ _AVLINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7313,
-  serialized_end=7401,
+  serialized_start=7465,
+  serialized_end=7553,
 )
 
 
@@ -2385,8 +2437,8 @@ _GSCINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7404,
-  serialized_end=7785,
+  serialized_start=7556,
+  serialized_end=7937,
 )
 
 _TESTRESULT.fields_by_name['test_invocation'].message_type = _TESTINVOCATION
@@ -2429,6 +2481,7 @@ _BUILDMETADATA_GFXINFO.containing_type = _BUILDMETADATA
 _BUILDMETADATA_CHAMELEONINFO.fields_by_name['chameleon_type'].enum_type = _BUILDMETADATA_CHAMELEONTYPE
 _BUILDMETADATA_CHAMELEONINFO.fields_by_name['chameleon_connection_types'].enum_type = _BUILDMETADATA_CHAMELEONCONNECTIONTYPE
 _BUILDMETADATA_CHAMELEONINFO.containing_type = _BUILDMETADATA
+_BUILDMETADATA_SERVOINFO.containing_type = _BUILDMETADATA
 _BUILDMETADATA.fields_by_name['arc'].message_type = _BUILDMETADATA_ARC
 _BUILDMETADATA.fields_by_name['chrome'].message_type = _BUILDMETADATA_CHROME
 _BUILDMETADATA.fields_by_name['chrome_os'].message_type = _BUILDMETADATA_CHROMEOS
@@ -2442,6 +2495,7 @@ _BUILDMETADATA.fields_by_name['chameleon'].message_type = chromiumos_dot_test_do
 _BUILDMETADATA.fields_by_name['gfx_info'].message_type = _BUILDMETADATA_GFXINFO
 _BUILDMETADATA.fields_by_name['modem_info'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2._MODEMINFO
 _BUILDMETADATA.fields_by_name['chameleon_info'].message_type = _BUILDMETADATA_CHAMELEONINFO
+_BUILDMETADATA.fields_by_name['servo_info'].message_type = _BUILDMETADATA_SERVOINFO
 _BUILDMETADATA_CHAMELEONTYPE.containing_type = _BUILDMETADATA
 _BUILDMETADATA_CHAMELEONCONNECTIONTYPE.containing_type = _BUILDMETADATA
 _DUTINFO_TAGSENTRY.containing_type = _DUTINFO
@@ -2654,6 +2708,13 @@ BuildMetadata = _reflection.GeneratedProtocolMessageType('BuildMetadata', (_mess
     # @@protoc_insertion_point(class_scope:chromiumos.test.artifact.BuildMetadata.ChameleonInfo)
     })
   ,
+
+  'ServoInfo' : _reflection.GeneratedProtocolMessageType('ServoInfo', (_message.Message,), {
+    'DESCRIPTOR' : _BUILDMETADATA_SERVOINFO,
+    '__module__' : 'chromiumos.test.artifact.test_result_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.artifact.BuildMetadata.ServoInfo)
+    })
+  ,
   'DESCRIPTOR' : _BUILDMETADATA,
   '__module__' : 'chromiumos.test.artifact.test_result_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.artifact.BuildMetadata)
@@ -2670,6 +2731,7 @@ _sym_db.RegisterMessage(BuildMetadata.Cellular)
 _sym_db.RegisterMessage(BuildMetadata.Lacros)
 _sym_db.RegisterMessage(BuildMetadata.GfxInfo)
 _sym_db.RegisterMessage(BuildMetadata.ChameleonInfo)
+_sym_db.RegisterMessage(BuildMetadata.ServoInfo)
 
 DutInfo = _reflection.GeneratedProtocolMessageType('DutInfo', (_message.Message,), {
 

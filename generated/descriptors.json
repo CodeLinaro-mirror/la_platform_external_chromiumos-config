@@ -30052,6 +30052,14 @@
               "number": 13,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.BuildMetadata.ChameleonInfo"
+            },
+            {
+              "jsonName": "servoInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "servo_info",
+              "number": 14,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.ServoInfo"
             }
           ],
           "name": "BuildMetadata",
@@ -30322,6 +30330,32 @@
                 }
               ],
               "name": "ChameleonInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "servodVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servod_version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "servoVersions",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo_versions",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "servoType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo_type",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ServoInfo"
             }
           ]
         },
