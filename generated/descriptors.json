@@ -26144,6 +26144,14 @@
               "typeName": ".chromiumos.test.api.ScheduleTargets"
             },
             {
+              "jsonName": "groupedScheduleTargets",
+              "label": "LABEL_REPEATED",
+              "name": "grouped_schedule_targets",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GroupedScheduleTargets"
+            },
+            {
               "jsonName": "pool",
               "label": "LABEL_OPTIONAL",
               "name": "pool",
@@ -26338,6 +26346,19 @@
             }
           ],
           "name": "KeyValue"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groupedTargets",
+              "label": "LABEL_REPEATED",
+              "name": "grouped_targets",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ScheduleTargets"
+            }
+          ],
+          "name": "GroupedScheduleTargets"
         },
         {
           "field": [

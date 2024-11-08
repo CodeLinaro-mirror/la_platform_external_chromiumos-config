@@ -137,7 +137,7 @@ func (x SchedulingUnitOptions_State) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use SchedulingUnitOptions_State.Descriptor instead.
 func (SchedulingUnitOptions_State) EnumDescriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{24, 0}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{25, 0}
 }
 
 type HWRequirements_State int32
@@ -192,7 +192,7 @@ func (x HWRequirements_State) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use HWRequirements_State.Descriptor instead.
 func (HWRequirements_State) EnumDescriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{25, 0}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{26, 0}
 }
 
 // Should this be a generic string? Then we don't have to touch proto when new provision comes.
@@ -242,7 +242,7 @@ func (x ProvisionInfo_Type) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ProvisionInfo_Type.Descriptor instead.
 func (ProvisionInfo_Type) EnumDescriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{28, 0}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{29, 0}
 }
 
 // CTPv2Request ...
@@ -375,13 +375,20 @@ type CTPRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	SuiteRequest      *SuiteRequest      `protobuf:"bytes,1,opt,name=suite_request,json=suiteRequest,proto3" json:"suite_request,omitempty"`
-	ScheduleTargets   []*ScheduleTargets `protobuf:"bytes,2,rep,name=schedule_targets,json=scheduleTargets,proto3" json:"schedule_targets,omitempty"`
-	Pool              string             `protobuf:"bytes,7,opt,name=pool,proto3" json:"pool,omitempty"`
-	KarbonFilters     []*CTPFilter       `protobuf:"bytes,3,rep,name=karbon_filters,json=karbonFilters,proto3" json:"karbon_filters,omitempty"`
-	KoffeeFilters     []*CTPFilter       `protobuf:"bytes,4,rep,name=koffee_filters,json=koffeeFilters,proto3" json:"koffee_filters,omitempty"`
-	SchedulerInfo     *SchedulerInfo     `protobuf:"bytes,5,opt,name=scheduler_info,json=schedulerInfo,proto3" json:"scheduler_info,omitempty"`
-	SchedulerMetadata *anypb.Any         `protobuf:"bytes,6,opt,name=scheduler_metadata,json=schedulerMetadata,proto3" json:"scheduler_metadata,omitempty"`
+	SuiteRequest *SuiteRequest `protobuf:"bytes,1,opt,name=suite_request,json=suiteRequest,proto3" json:"suite_request,omitempty"`
+	// will be deprecated when #11 field is in use 100%
+	ScheduleTargets []*ScheduleTargets `protobuf:"bytes,2,rep,name=schedule_targets,json=scheduleTargets,proto3" json:"schedule_targets,omitempty"`
+	// Grouped targets allow setting and/or relationship between targets.
+	// inner i.e. {a, b} is OR relationship: a or b
+	// outer i.e. {a}, {b} is AND relationship: a and b
+	// [{shedTarget1, schedTarget2}, {shedTarget3, schedTarget4}]
+	// --> (shedTarget1 OR schedTarget2) AND (shedTarget3 OR schedTarget4)
+	GroupedScheduleTargets []*GroupedScheduleTargets `protobuf:"bytes,11,rep,name=grouped_schedule_targets,json=groupedScheduleTargets,proto3" json:"grouped_schedule_targets,omitempty"`
+	Pool                   string                    `protobuf:"bytes,7,opt,name=pool,proto3" json:"pool,omitempty"`
+	KarbonFilters          []*CTPFilter              `protobuf:"bytes,3,rep,name=karbon_filters,json=karbonFilters,proto3" json:"karbon_filters,omitempty"`
+	KoffeeFilters          []*CTPFilter              `protobuf:"bytes,4,rep,name=koffee_filters,json=koffeeFilters,proto3" json:"koffee_filters,omitempty"`
+	SchedulerInfo          *SchedulerInfo            `protobuf:"bytes,5,opt,name=scheduler_info,json=schedulerInfo,proto3" json:"scheduler_info,omitempty"`
+	SchedulerMetadata      *anypb.Any                `protobuf:"bytes,6,opt,name=scheduler_metadata,json=schedulerMetadata,proto3" json:"scheduler_metadata,omitempty"`
 	// Instruct ctpv2 to construct a dynamic trv2 request object
 	// instead of a CftTestRequest (non-dynamic).
 	RunDynamic bool `protobuf:"varint,8,opt,name=run_dynamic,json=runDynamic,proto3" json:"run_dynamic,omitempty"`
@@ -435,6 +442,13 @@ func (x *CTPRequest) GetSuiteRequest() *SuiteRequest {
 func (x *CTPRequest) GetScheduleTargets() []*ScheduleTargets {
 	if x != nil {
 		return x.ScheduleTargets
+	}
+	return nil
+}
+
+func (x *CTPRequest) GetGroupedScheduleTargets() []*GroupedScheduleTargets {
+	if x != nil {
+		return x.GroupedScheduleTargets
 	}
 	return nil
 }
@@ -741,6 +755,53 @@ func (x *KeyValue) GetValue() string {
 	return ""
 }
 
+type GroupedScheduleTargets struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupedTargets []*ScheduleTargets `protobuf:"bytes,1,rep,name=grouped_targets,json=groupedTargets,proto3" json:"grouped_targets,omitempty"`
+}
+
+func (x *GroupedScheduleTargets) Reset() {
+	*x = GroupedScheduleTargets{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GroupedScheduleTargets) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupedScheduleTargets) ProtoMessage() {}
+
+func (x *GroupedScheduleTargets) ProtoReflect() protoreflect.Message {
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupedScheduleTargets.ProtoReflect.Descriptor instead.
+func (*GroupedScheduleTargets) Descriptor() ([]byte, []int) {
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GroupedScheduleTargets) GetGroupedTargets() []*ScheduleTargets {
+	if x != nil {
+		return x.GroupedTargets
+	}
+	return nil
+}
+
 // ScheduleTargets represents groups of targets for CTPv2.
 // Multi-DUT by design with targets length of 1 being single-dut.
 type ScheduleTargets struct {
@@ -754,7 +815,7 @@ type ScheduleTargets struct {
 func (x *ScheduleTargets) Reset() {
 	*x = ScheduleTargets{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[5]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -767,7 +828,7 @@ func (x *ScheduleTargets) String() string {
 func (*ScheduleTargets) ProtoMessage() {}
 
 func (x *ScheduleTargets) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[5]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -780,7 +841,7 @@ func (x *ScheduleTargets) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScheduleTargets.ProtoReflect.Descriptor instead.
 func (*ScheduleTargets) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{5}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ScheduleTargets) GetTargets() []*Targets {
@@ -804,7 +865,7 @@ type Targets struct {
 func (x *Targets) Reset() {
 	*x = Targets{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[6]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -817,7 +878,7 @@ func (x *Targets) String() string {
 func (*Targets) ProtoMessage() {}
 
 func (x *Targets) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[6]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -830,7 +891,7 @@ func (x *Targets) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Targets.ProtoReflect.Descriptor instead.
 func (*Targets) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{6}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Targets) GetHwTarget() *HWTarget {
@@ -869,7 +930,7 @@ type HWTarget struct {
 func (x *HWTarget) Reset() {
 	*x = HWTarget{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[7]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -882,7 +943,7 @@ func (x *HWTarget) String() string {
 func (*HWTarget) ProtoMessage() {}
 
 func (x *HWTarget) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[7]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -895,7 +956,7 @@ func (x *HWTarget) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HWTarget.ProtoReflect.Descriptor instead.
 func (*HWTarget) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{7}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{8}
 }
 
 func (m *HWTarget) GetTarget() isHWTarget_Target {
@@ -949,7 +1010,7 @@ type SWTarget struct {
 func (x *SWTarget) Reset() {
 	*x = SWTarget{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[8]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -962,7 +1023,7 @@ func (x *SWTarget) String() string {
 func (*SWTarget) ProtoMessage() {}
 
 func (x *SWTarget) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[8]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -975,7 +1036,7 @@ func (x *SWTarget) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SWTarget.ProtoReflect.Descriptor instead.
 func (*SWTarget) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{8}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{9}
 }
 
 func (m *SWTarget) GetSwTarget() isSWTarget_SwTarget {
@@ -1029,7 +1090,7 @@ type LegacySW struct {
 func (x *LegacySW) Reset() {
 	*x = LegacySW{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[9]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1042,7 +1103,7 @@ func (x *LegacySW) String() string {
 func (*LegacySW) ProtoMessage() {}
 
 func (x *LegacySW) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[9]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1055,7 +1116,7 @@ func (x *LegacySW) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LegacySW.ProtoReflect.Descriptor instead.
 func (*LegacySW) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{9}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *LegacySW) GetBuild() string {
@@ -1096,7 +1157,7 @@ type DDDSW struct {
 func (x *DDDSW) Reset() {
 	*x = DDDSW{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[10]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1109,7 +1170,7 @@ func (x *DDDSW) String() string {
 func (*DDDSW) ProtoMessage() {}
 
 func (x *DDDSW) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[10]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1122,7 +1183,7 @@ func (x *DDDSW) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DDDSW.ProtoReflect.Descriptor instead.
 func (*DDDSW) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{10}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{11}
 }
 
 type LegacyHW struct {
@@ -1148,7 +1209,7 @@ type LegacyHW struct {
 func (x *LegacyHW) Reset() {
 	*x = LegacyHW{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[11]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1161,7 +1222,7 @@ func (x *LegacyHW) String() string {
 func (*LegacyHW) ProtoMessage() {}
 
 func (x *LegacyHW) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[11]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1174,7 +1235,7 @@ func (x *LegacyHW) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LegacyHW.ProtoReflect.Descriptor instead.
 func (*LegacyHW) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{11}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *LegacyHW) GetBoard() string {
@@ -1231,7 +1292,7 @@ type DDDHW struct {
 func (x *DDDHW) Reset() {
 	*x = DDDHW{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[12]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1244,7 +1305,7 @@ func (x *DDDHW) String() string {
 func (*DDDHW) ProtoMessage() {}
 
 func (x *DDDHW) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[12]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1257,7 +1318,7 @@ func (x *DDDHW) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DDDHW.ProtoReflect.Descriptor instead.
 func (*DDDHW) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{12}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{13}
 }
 
 type Pair struct {
@@ -1272,7 +1333,7 @@ type Pair struct {
 func (x *Pair) Reset() {
 	*x = Pair{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[13]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1285,7 +1346,7 @@ func (x *Pair) String() string {
 func (*Pair) ProtoMessage() {}
 
 func (x *Pair) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[13]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1298,7 +1359,7 @@ func (x *Pair) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Pair.ProtoReflect.Descriptor instead.
 func (*Pair) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{13}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *Pair) GetPrimary() string {
@@ -1327,7 +1388,7 @@ type MultiDut struct {
 func (x *MultiDut) Reset() {
 	*x = MultiDut{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[14]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1340,7 +1401,7 @@ func (x *MultiDut) String() string {
 func (*MultiDut) ProtoMessage() {}
 
 func (x *MultiDut) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[14]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1353,7 +1414,7 @@ func (x *MultiDut) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MultiDut.ProtoReflect.Descriptor instead.
 func (*MultiDut) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{14}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *MultiDut) GetBoards() *Pair {
@@ -1394,7 +1455,7 @@ type CTPFilter struct {
 func (x *CTPFilter) Reset() {
 	*x = CTPFilter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[15]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1407,7 +1468,7 @@ func (x *CTPFilter) String() string {
 func (*CTPFilter) ProtoMessage() {}
 
 func (x *CTPFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[15]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1420,7 +1481,7 @@ func (x *CTPFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CTPFilter.ProtoReflect.Descriptor instead.
 func (*CTPFilter) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{15}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{16}
 }
 
 // Deprecated: Do not use.
@@ -1475,7 +1536,7 @@ type ContainerInfo struct {
 func (x *ContainerInfo) Reset() {
 	*x = ContainerInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[16]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1488,7 +1549,7 @@ func (x *ContainerInfo) String() string {
 func (*ContainerInfo) ProtoMessage() {}
 
 func (x *ContainerInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[16]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1501,7 +1562,7 @@ func (x *ContainerInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ContainerInfo.ProtoReflect.Descriptor instead.
 func (*ContainerInfo) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{16}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ContainerInfo) GetContainer() *api.ContainerImageInfo {
@@ -1534,7 +1595,7 @@ type Reserved struct {
 func (x *Reserved) Reset() {
 	*x = Reserved{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[17]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1547,7 +1608,7 @@ func (x *Reserved) String() string {
 func (*Reserved) ProtoMessage() {}
 
 func (x *Reserved) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[17]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1560,7 +1621,7 @@ func (x *Reserved) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Reserved.ProtoReflect.Descriptor instead.
 func (*Reserved) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{17}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{18}
 }
 
 type InternalTestplan struct {
@@ -1575,7 +1636,7 @@ type InternalTestplan struct {
 func (x *InternalTestplan) Reset() {
 	*x = InternalTestplan{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[18]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1588,7 +1649,7 @@ func (x *InternalTestplan) String() string {
 func (*InternalTestplan) ProtoMessage() {}
 
 func (x *InternalTestplan) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[18]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1601,7 +1662,7 @@ func (x *InternalTestplan) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InternalTestplan.ProtoReflect.Descriptor instead.
 func (*InternalTestplan) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{18}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *InternalTestplan) GetTestCases() []*CTPTestCase {
@@ -1640,7 +1701,7 @@ type CTPTestCase struct {
 func (x *CTPTestCase) Reset() {
 	*x = CTPTestCase{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[19]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1653,7 +1714,7 @@ func (x *CTPTestCase) String() string {
 func (*CTPTestCase) ProtoMessage() {}
 
 func (x *CTPTestCase) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[19]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1666,7 +1727,7 @@ func (x *CTPTestCase) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CTPTestCase.ProtoReflect.Descriptor instead.
 func (*CTPTestCase) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{19}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CTPTestCase) GetName() string {
@@ -1718,7 +1779,7 @@ type SuiteInfo struct {
 func (x *SuiteInfo) Reset() {
 	*x = SuiteInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[20]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1731,7 +1792,7 @@ func (x *SuiteInfo) String() string {
 func (*SuiteInfo) ProtoMessage() {}
 
 func (x *SuiteInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[20]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1744,7 +1805,7 @@ func (x *SuiteInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SuiteInfo.ProtoReflect.Descriptor instead.
 func (*SuiteInfo) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{20}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *SuiteInfo) GetSuiteMetadata() *SuiteMetadata {
@@ -1790,7 +1851,7 @@ type SuiteMetadata struct {
 func (x *SuiteMetadata) Reset() {
 	*x = SuiteMetadata{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[21]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1803,7 +1864,7 @@ func (x *SuiteMetadata) String() string {
 func (*SuiteMetadata) ProtoMessage() {}
 
 func (x *SuiteMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[21]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1816,7 +1877,7 @@ func (x *SuiteMetadata) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SuiteMetadata.ProtoReflect.Descriptor instead.
 func (*SuiteMetadata) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{21}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{22}
 }
 
 // Deprecated: Do not use.
@@ -1897,7 +1958,7 @@ type ScheduleTargetRequirements struct {
 func (x *ScheduleTargetRequirements) Reset() {
 	*x = ScheduleTargetRequirements{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[22]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1910,7 +1971,7 @@ func (x *ScheduleTargetRequirements) String() string {
 func (*ScheduleTargetRequirements) ProtoMessage() {}
 
 func (x *ScheduleTargetRequirements) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[22]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1923,7 +1984,7 @@ func (x *ScheduleTargetRequirements) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScheduleTargetRequirements.ProtoReflect.Descriptor instead.
 func (*ScheduleTargetRequirements) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{22}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ScheduleTargetRequirements) GetTargetRequirements() []*TargetRequirements {
@@ -1949,7 +2010,7 @@ type TargetRequirements struct {
 func (x *TargetRequirements) Reset() {
 	*x = TargetRequirements{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[23]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1962,7 +2023,7 @@ func (x *TargetRequirements) String() string {
 func (*TargetRequirements) ProtoMessage() {}
 
 func (x *TargetRequirements) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[23]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1975,7 +2036,7 @@ func (x *TargetRequirements) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TargetRequirements.ProtoReflect.Descriptor instead.
 func (*TargetRequirements) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{23}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *TargetRequirements) GetHwRequirements() *HWRequirements {
@@ -2012,7 +2073,7 @@ type SchedulingUnitOptions struct {
 func (x *SchedulingUnitOptions) Reset() {
 	*x = SchedulingUnitOptions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[24]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2025,7 +2086,7 @@ func (x *SchedulingUnitOptions) String() string {
 func (*SchedulingUnitOptions) ProtoMessage() {}
 
 func (x *SchedulingUnitOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[24]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2038,7 +2099,7 @@ func (x *SchedulingUnitOptions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchedulingUnitOptions.ProtoReflect.Descriptor instead.
 func (*SchedulingUnitOptions) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{24}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *SchedulingUnitOptions) GetSchedulingUnits() []*SchedulingUnit {
@@ -2067,7 +2128,7 @@ type HWRequirements struct {
 func (x *HWRequirements) Reset() {
 	*x = HWRequirements{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[25]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2080,7 +2141,7 @@ func (x *HWRequirements) String() string {
 func (*HWRequirements) ProtoMessage() {}
 
 func (x *HWRequirements) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[25]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2093,7 +2154,7 @@ func (x *HWRequirements) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HWRequirements.ProtoReflect.Descriptor instead.
 func (*HWRequirements) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{25}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *HWRequirements) GetHwDefinition() []*SwarmingDefinition {
@@ -2135,7 +2196,7 @@ type SchedulingUnit struct {
 func (x *SchedulingUnit) Reset() {
 	*x = SchedulingUnit{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[26]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2148,7 +2209,7 @@ func (x *SchedulingUnit) String() string {
 func (*SchedulingUnit) ProtoMessage() {}
 
 func (x *SchedulingUnit) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[26]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2161,7 +2222,7 @@ func (x *SchedulingUnit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchedulingUnit.ProtoReflect.Descriptor instead.
 func (*SchedulingUnit) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{26}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *SchedulingUnit) GetPrimaryTarget() *Target {
@@ -2201,7 +2262,7 @@ type SWRequirements struct {
 func (x *SWRequirements) Reset() {
 	*x = SWRequirements{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[27]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2214,7 +2275,7 @@ func (x *SWRequirements) String() string {
 func (*SWRequirements) ProtoMessage() {}
 
 func (x *SWRequirements) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[27]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2227,7 +2288,7 @@ func (x *SWRequirements) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SWRequirements.ProtoReflect.Descriptor instead.
 func (*SWRequirements) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{27}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{28}
 }
 
 type ProvisionInfo struct {
@@ -2243,7 +2304,7 @@ type ProvisionInfo struct {
 func (x *ProvisionInfo) Reset() {
 	*x = ProvisionInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[28]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2256,7 +2317,7 @@ func (x *ProvisionInfo) String() string {
 func (*ProvisionInfo) ProtoMessage() {}
 
 func (x *ProvisionInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[28]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2269,7 +2330,7 @@ func (x *ProvisionInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProvisionInfo.ProtoReflect.Descriptor instead.
 func (*ProvisionInfo) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{28}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *ProvisionInfo) GetInstallRequest() *InstallRequest {
@@ -2305,7 +2366,7 @@ type Target struct {
 func (x *Target) Reset() {
 	*x = Target{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[29]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2318,7 +2379,7 @@ func (x *Target) String() string {
 func (*Target) ProtoMessage() {}
 
 func (x *Target) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[29]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2331,7 +2392,7 @@ func (x *Target) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Target.ProtoReflect.Descriptor instead.
 func (*Target) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{29}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *Target) GetSwarmingDef() *SwarmingDefinition {
@@ -2368,7 +2429,7 @@ type SwarmingDefinition struct {
 func (x *SwarmingDefinition) Reset() {
 	*x = SwarmingDefinition{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[30]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2381,7 +2442,7 @@ func (x *SwarmingDefinition) String() string {
 func (*SwarmingDefinition) ProtoMessage() {}
 
 func (x *SwarmingDefinition) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[30]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2394,7 +2455,7 @@ func (x *SwarmingDefinition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwarmingDefinition.ProtoReflect.Descriptor instead.
 func (*SwarmingDefinition) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{30}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *SwarmingDefinition) GetDutInfo() *api1.Dut {
@@ -2445,7 +2506,7 @@ type CTPv2Response struct {
 func (x *CTPv2Response) Reset() {
 	*x = CTPv2Response{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[31]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[32]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2458,7 +2519,7 @@ func (x *CTPv2Response) String() string {
 func (*CTPv2Response) ProtoMessage() {}
 
 func (x *CTPv2Response) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[31]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[32]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2471,7 +2532,7 @@ func (x *CTPv2Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CTPv2Response.ProtoReflect.Descriptor instead.
 func (*CTPv2Response) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{31}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CTPv2Response) GetTestRequests() []*CrosTestRunnerRequest {
@@ -2490,7 +2551,7 @@ type CrosTestRunnerRequest struct {
 func (x *CrosTestRunnerRequest) Reset() {
 	*x = CrosTestRunnerRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[32]
+		mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[33]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2503,7 +2564,7 @@ func (x *CrosTestRunnerRequest) String() string {
 func (*CrosTestRunnerRequest) ProtoMessage() {}
 
 func (x *CrosTestRunnerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[32]
+	mi := &file_chromiumos_test_api_ctp2_proto_msgTypes[33]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2516,7 +2577,7 @@ func (x *CrosTestRunnerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CrosTestRunnerRequest.ProtoReflect.Descriptor instead.
 func (*CrosTestRunnerRequest) Descriptor() ([]byte, []int) {
-	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{32}
+	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{33}
 }
 
 var File_chromiumos_test_api_ctp2_proto protoreflect.FileDescriptor
@@ -2581,8 +2642,8 @@ var file_chromiumos_test_api_ctp2_proto_rawDesc = []byte{
 	0x73, 0x12, 0x3b, 0x0a, 0x08, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x73, 0x18, 0x08, 0x20,
 	0x03, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73,
 	0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x54, 0x50, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x52, 0x08, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x73, 0x22, 0xcc,
-	0x04, 0x0a, 0x0a, 0x43, 0x54, 0x50, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x46, 0x0a,
+	0x75, 0x65, 0x73, 0x74, 0x52, 0x08, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x73, 0x22, 0xb3,
+	0x05, 0x0a, 0x0a, 0x43, 0x54, 0x50, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x46, 0x0a,
 	0x0d, 0x73, 0x75, 0x69, 0x74, 0x65, 0x5f, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f,
 	0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x75, 0x69, 0x74, 0x65,
@@ -2592,75 +2653,88 @@ var file_chromiumos_test_api_ctp2_proto_rawDesc = []byte{
 	0x24, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73,
 	0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x54, 0x61,
 	0x72, 0x67, 0x65, 0x74, 0x73, 0x52, 0x0f, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x54,
-	0x61, 0x72, 0x67, 0x65, 0x74, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x6f, 0x6f, 0x6c, 0x18, 0x07,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x6f, 0x6f, 0x6c, 0x12, 0x45, 0x0a, 0x0e, 0x6b, 0x61,
-	0x72, 0x62, 0x6f, 0x6e, 0x5f, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03,
-	0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
-	0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x54, 0x50, 0x46, 0x69, 0x6c, 0x74,
-	0x65, 0x72, 0x52, 0x0d, 0x6b, 0x61, 0x72, 0x62, 0x6f, 0x6e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72,
-	0x73, 0x12, 0x45, 0x0a, 0x0e, 0x6b, 0x6f, 0x66, 0x66, 0x65, 0x65, 0x5f, 0x66, 0x69, 0x6c, 0x74,
-	0x65, 0x72, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x61, 0x72, 0x67, 0x65, 0x74, 0x73, 0x12, 0x65, 0x0a, 0x18, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x65,
+	0x64, 0x5f, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x5f, 0x74, 0x61, 0x72, 0x67, 0x65,
+	0x74, 0x73, 0x18, 0x0b, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d,
+	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x65, 0x64, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x54, 0x61,
+	0x72, 0x67, 0x65, 0x74, 0x73, 0x52, 0x16, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x65, 0x64, 0x53, 0x63,
+	0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x73, 0x12, 0x12, 0x0a,
+	0x04, 0x70, 0x6f, 0x6f, 0x6c, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x6f, 0x6f,
+	0x6c, 0x12, 0x45, 0x0a, 0x0e, 0x6b, 0x61, 0x72, 0x62, 0x6f, 0x6e, 0x5f, 0x66, 0x69, 0x6c, 0x74,
+	0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x63, 0x68, 0x72, 0x6f,
 	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e,
-	0x43, 0x54, 0x50, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x0d, 0x6b, 0x6f, 0x66, 0x66, 0x65,
-	0x65, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x73, 0x12, 0x49, 0x0a, 0x0e, 0x73, 0x63, 0x68, 0x65,
-	0x64, 0x75, 0x6c, 0x65, 0x72, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x22, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
-	0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72,
-	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0d, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x49,
-	0x6e, 0x66, 0x6f, 0x12, 0x43, 0x0a, 0x12, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72,
-	0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32,
-	0x14, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
-	0x66, 0x2e, 0x41, 0x6e, 0x79, 0x52, 0x11, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72,
-	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x1f, 0x0a, 0x0b, 0x72, 0x75, 0x6e, 0x5f,
-	0x64, 0x79, 0x6e, 0x61, 0x6d, 0x69, 0x63, 0x18, 0x08, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x72,
-	0x75, 0x6e, 0x44, 0x79, 0x6e, 0x61, 0x6d, 0x69, 0x63, 0x12, 0x1a, 0x0a, 0x09, 0x69, 0x73, 0x5f,
-	0x61, 0x6c, 0x5f, 0x72, 0x75, 0x6e, 0x18, 0x09, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x69, 0x73,
-	0x41, 0x6c, 0x52, 0x75, 0x6e, 0x12, 0x36, 0x0a, 0x18, 0x65, 0x6e, 0x63, 0x6f, 0x64, 0x65, 0x64,
-	0x5f, 0x61, 0x74, 0x70, 0x5f, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x6a, 0x6f, 0x62, 0x5f, 0x6d, 0x73,
-	0x67, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x14, 0x65, 0x6e, 0x63, 0x6f, 0x64, 0x65, 0x64,
-	0x41, 0x74, 0x70, 0x54, 0x65, 0x73, 0x74, 0x4a, 0x6f, 0x62, 0x4d, 0x73, 0x67, 0x22, 0xce, 0x01,
-	0x0a, 0x0d, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12,
-	0x4a, 0x0a, 0x09, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x0e, 0x32, 0x2c, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
-	0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c,
-	0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x2e, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72,
-	0x52, 0x09, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x12, 0x1d, 0x0a, 0x0a, 0x71,
-	0x73, 0x5f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x09, 0x71, 0x73, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x52, 0x0a, 0x09, 0x53, 0x63,
-	0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x12, 0x0f, 0x0a, 0x0b, 0x55, 0x4e, 0x53, 0x50, 0x45,
-	0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0e, 0x0a, 0x0a, 0x51, 0x53, 0x43, 0x48,
-	0x45, 0x44, 0x55, 0x4c, 0x45, 0x52, 0x10, 0x01, 0x12, 0x0c, 0x0a, 0x08, 0x53, 0x43, 0x48, 0x45,
-	0x44, 0x55, 0x4b, 0x45, 0x10, 0x02, 0x12, 0x16, 0x0a, 0x12, 0x50, 0x52, 0x49, 0x4e, 0x54, 0x5f,
-	0x52, 0x45, 0x51, 0x55, 0x45, 0x53, 0x54, 0x5f, 0x4f, 0x4e, 0x4c, 0x59, 0x10, 0x03, 0x22, 0x98,
-	0x03, 0x0a, 0x0c, 0x53, 0x75, 0x69, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x3f, 0x0a, 0x0a, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x73, 0x75, 0x69, 0x74, 0x65, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73,
-	0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x53, 0x75,
-	0x69, 0x74, 0x65, 0x48, 0x00, 0x52, 0x09, 0x74, 0x65, 0x73, 0x74, 0x53, 0x75, 0x69, 0x74, 0x65,
-	0x12, 0x4c, 0x0a, 0x11, 0x68, 0x69, 0x65, 0x72, 0x61, 0x72, 0x63, 0x68, 0x69, 0x63, 0x61, 0x6c,
-	0x5f, 0x70, 0x6c, 0x61, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x63, 0x68,
-	0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70,
-	0x69, 0x2e, 0x52, 0x65, 0x73, 0x65, 0x72, 0x76, 0x65, 0x64, 0x48, 0x00, 0x52, 0x10, 0x68, 0x69,
-	0x65, 0x72, 0x61, 0x72, 0x63, 0x68, 0x69, 0x63, 0x61, 0x6c, 0x50, 0x6c, 0x61, 0x6e, 0x12, 0x44,
-	0x0a, 0x10, 0x6d, 0x61, 0x78, 0x69, 0x6d, 0x75, 0x6d, 0x5f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
-	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x44, 0x75, 0x72, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x52, 0x0f, 0x6d, 0x61, 0x78, 0x69, 0x6d, 0x75, 0x6d, 0x44, 0x75, 0x72, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1b, 0x0a, 0x09, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x61, 0x72, 0x67,
-	0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x74, 0x65, 0x73, 0x74, 0x41, 0x72, 0x67,
-	0x73, 0x12, 0x25, 0x0a, 0x0e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x5f, 0x6e,
-	0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x61, 0x6e, 0x61, 0x6c, 0x79,
-	0x74, 0x69, 0x63, 0x73, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0c, 0x6d, 0x61, 0x78, 0x5f,
-	0x69, 0x6e, 0x5f, 0x73, 0x68, 0x61, 0x72, 0x64, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a,
-	0x6d, 0x61, 0x78, 0x49, 0x6e, 0x53, 0x68, 0x61, 0x72, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x64,
-	0x64, 0x5f, 0x73, 0x75, 0x69, 0x74, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x64,
-	0x64, 0x64, 0x53, 0x75, 0x69, 0x74, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x72, 0x65, 0x74, 0x72, 0x79,
-	0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x72, 0x65,
-	0x74, 0x72, 0x79, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x42, 0x0f, 0x0a, 0x0d, 0x73, 0x75, 0x69, 0x74,
-	0x65, 0x5f, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x32, 0x0a, 0x08, 0x4b, 0x65, 0x79,
-	0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x49, 0x0a,
+	0x43, 0x54, 0x50, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x0d, 0x6b, 0x61, 0x72, 0x62, 0x6f,
+	0x6e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x73, 0x12, 0x45, 0x0a, 0x0e, 0x6b, 0x6f, 0x66, 0x66,
+	0x65, 0x65, 0x5f, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x1e, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
+	0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x54, 0x50, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72,
+	0x52, 0x0d, 0x6b, 0x6f, 0x66, 0x66, 0x65, 0x65, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x73, 0x12,
+	0x49, 0x0a, 0x0e, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x5f, 0x69, 0x6e, 0x66,
+	0x6f, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69,
+	0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x63,
+	0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0d, 0x73, 0x63, 0x68,
+	0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x43, 0x0a, 0x12, 0x73, 0x63,
+	0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61,
+	0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x41, 0x6e, 0x79, 0x52, 0x11, 0x73, 0x63,
+	0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12,
+	0x1f, 0x0a, 0x0b, 0x72, 0x75, 0x6e, 0x5f, 0x64, 0x79, 0x6e, 0x61, 0x6d, 0x69, 0x63, 0x18, 0x08,
+	0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x72, 0x75, 0x6e, 0x44, 0x79, 0x6e, 0x61, 0x6d, 0x69, 0x63,
+	0x12, 0x1a, 0x0a, 0x09, 0x69, 0x73, 0x5f, 0x61, 0x6c, 0x5f, 0x72, 0x75, 0x6e, 0x18, 0x09, 0x20,
+	0x01, 0x28, 0x08, 0x52, 0x07, 0x69, 0x73, 0x41, 0x6c, 0x52, 0x75, 0x6e, 0x12, 0x36, 0x0a, 0x18,
+	0x65, 0x6e, 0x63, 0x6f, 0x64, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x70, 0x5f, 0x74, 0x65, 0x73, 0x74,
+	0x5f, 0x6a, 0x6f, 0x62, 0x5f, 0x6d, 0x73, 0x67, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x14,
+	0x65, 0x6e, 0x63, 0x6f, 0x64, 0x65, 0x64, 0x41, 0x74, 0x70, 0x54, 0x65, 0x73, 0x74, 0x4a, 0x6f,
+	0x62, 0x4d, 0x73, 0x67, 0x22, 0xce, 0x01, 0x0a, 0x0d, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c,
+	0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x4a, 0x0a, 0x09, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75,
+	0x6c, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2c, 0x2e, 0x63, 0x68, 0x72, 0x6f,
+	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e,
+	0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x2e, 0x53, 0x63,
+	0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x52, 0x09, 0x73, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c,
+	0x65, 0x72, 0x12, 0x1d, 0x0a, 0x0a, 0x71, 0x73, 0x5f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x71, 0x73, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e,
+	0x74, 0x22, 0x52, 0x0a, 0x09, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x72, 0x12, 0x0f,
+	0x0a, 0x0b, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12,
+	0x0e, 0x0a, 0x0a, 0x51, 0x53, 0x43, 0x48, 0x45, 0x44, 0x55, 0x4c, 0x45, 0x52, 0x10, 0x01, 0x12,
+	0x0c, 0x0a, 0x08, 0x53, 0x43, 0x48, 0x45, 0x44, 0x55, 0x4b, 0x45, 0x10, 0x02, 0x12, 0x16, 0x0a,
+	0x12, 0x50, 0x52, 0x49, 0x4e, 0x54, 0x5f, 0x52, 0x45, 0x51, 0x55, 0x45, 0x53, 0x54, 0x5f, 0x4f,
+	0x4e, 0x4c, 0x59, 0x10, 0x03, 0x22, 0x98, 0x03, 0x0a, 0x0c, 0x53, 0x75, 0x69, 0x74, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x3f, 0x0a, 0x0a, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x73,
+	0x75, 0x69, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x63, 0x68, 0x72,
+	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69,
+	0x2e, 0x54, 0x65, 0x73, 0x74, 0x53, 0x75, 0x69, 0x74, 0x65, 0x48, 0x00, 0x52, 0x09, 0x74, 0x65,
+	0x73, 0x74, 0x53, 0x75, 0x69, 0x74, 0x65, 0x12, 0x4c, 0x0a, 0x11, 0x68, 0x69, 0x65, 0x72, 0x61,
+	0x72, 0x63, 0x68, 0x69, 0x63, 0x61, 0x6c, 0x5f, 0x70, 0x6c, 0x61, 0x6e, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
+	0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x52, 0x65, 0x73, 0x65, 0x72, 0x76, 0x65,
+	0x64, 0x48, 0x00, 0x52, 0x10, 0x68, 0x69, 0x65, 0x72, 0x61, 0x72, 0x63, 0x68, 0x69, 0x63, 0x61,
+	0x6c, 0x50, 0x6c, 0x61, 0x6e, 0x12, 0x44, 0x0a, 0x10, 0x6d, 0x61, 0x78, 0x69, 0x6d, 0x75, 0x6d,
+	0x5f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x19, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2e, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0f, 0x6d, 0x61, 0x78, 0x69,
+	0x6d, 0x75, 0x6d, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1b, 0x0a, 0x09, 0x74,
+	0x65, 0x73, 0x74, 0x5f, 0x61, 0x72, 0x67, 0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08,
+	0x74, 0x65, 0x73, 0x74, 0x41, 0x72, 0x67, 0x73, 0x12, 0x25, 0x0a, 0x0e, 0x61, 0x6e, 0x61, 0x6c,
+	0x79, 0x74, 0x69, 0x63, 0x73, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0d, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x4e, 0x61, 0x6d, 0x65, 0x12,
+	0x20, 0x0a, 0x0c, 0x6d, 0x61, 0x78, 0x5f, 0x69, 0x6e, 0x5f, 0x73, 0x68, 0x61, 0x72, 0x64, 0x18,
+	0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x6d, 0x61, 0x78, 0x49, 0x6e, 0x53, 0x68, 0x61, 0x72,
+	0x64, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x64, 0x64, 0x5f, 0x73, 0x75, 0x69, 0x74, 0x65, 0x18, 0x07,
+	0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x64, 0x64, 0x64, 0x53, 0x75, 0x69, 0x74, 0x65, 0x12, 0x1f,
+	0x0a, 0x0b, 0x72, 0x65, 0x74, 0x72, 0x79, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x08, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x0a, 0x72, 0x65, 0x74, 0x72, 0x79, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x42,
+	0x0f, 0x0a, 0x0d, 0x73, 0x75, 0x69, 0x74, 0x65, 0x5f, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x22, 0x32, 0x0a, 0x08, 0x4b, 0x65, 0x79, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x10, 0x0a, 0x03,
+	0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14,
+	0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x22, 0x67, 0x0a, 0x16, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x65, 0x64, 0x53,
+	0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x73, 0x12, 0x4d,
+	0x0a, 0x0f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x65, 0x64, 0x5f, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74,
+	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69,
+	0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x53, 0x63,
+	0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x73, 0x52, 0x0e, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x65, 0x64, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x73, 0x22, 0x49, 0x0a,
 	0x0f, 0x53, 0x63, 0x68, 0x65, 0x64, 0x75, 0x6c, 0x65, 0x54, 0x61, 0x72, 0x67, 0x65, 0x74, 0x73,
 	0x12, 0x36, 0x0a, 0x07, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
 	0x0b, 0x32, 0x1c, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74,
@@ -3030,7 +3104,7 @@ func file_chromiumos_test_api_ctp2_proto_rawDescGZIP() []byte {
 }
 
 var file_chromiumos_test_api_ctp2_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_chromiumos_test_api_ctp2_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
+var file_chromiumos_test_api_ctp2_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
 var file_chromiumos_test_api_ctp2_proto_goTypes = []interface{}{
 	(SchedulerInfo_Scheduler)(0),       // 0: chromiumos.test.api.SchedulerInfo.Scheduler
 	(SchedulingUnitOptions_State)(0),   // 1: chromiumos.test.api.SchedulingUnitOptions.State
@@ -3041,126 +3115,129 @@ var file_chromiumos_test_api_ctp2_proto_goTypes = []interface{}{
 	(*SchedulerInfo)(nil),              // 6: chromiumos.test.api.SchedulerInfo
 	(*SuiteRequest)(nil),               // 7: chromiumos.test.api.SuiteRequest
 	(*KeyValue)(nil),                   // 8: chromiumos.test.api.KeyValue
-	(*ScheduleTargets)(nil),            // 9: chromiumos.test.api.ScheduleTargets
-	(*Targets)(nil),                    // 10: chromiumos.test.api.Targets
-	(*HWTarget)(nil),                   // 11: chromiumos.test.api.HWTarget
-	(*SWTarget)(nil),                   // 12: chromiumos.test.api.SWTarget
-	(*LegacySW)(nil),                   // 13: chromiumos.test.api.LegacySW
-	(*DDDSW)(nil),                      // 14: chromiumos.test.api.DDDSW
-	(*LegacyHW)(nil),                   // 15: chromiumos.test.api.LegacyHW
-	(*DDDHW)(nil),                      // 16: chromiumos.test.api.DDDHW
-	(*Pair)(nil),                       // 17: chromiumos.test.api.Pair
-	(*MultiDut)(nil),                   // 18: chromiumos.test.api.MultiDut
-	(*CTPFilter)(nil),                  // 19: chromiumos.test.api.CTPFilter
-	(*ContainerInfo)(nil),              // 20: chromiumos.test.api.ContainerInfo
-	(*Reserved)(nil),                   // 21: chromiumos.test.api.Reserved
-	(*InternalTestplan)(nil),           // 22: chromiumos.test.api.InternalTestplan
-	(*CTPTestCase)(nil),                // 23: chromiumos.test.api.CTPTestCase
-	(*SuiteInfo)(nil),                  // 24: chromiumos.test.api.SuiteInfo
-	(*SuiteMetadata)(nil),              // 25: chromiumos.test.api.SuiteMetadata
-	(*ScheduleTargetRequirements)(nil), // 26: chromiumos.test.api.ScheduleTargetRequirements
-	(*TargetRequirements)(nil),         // 27: chromiumos.test.api.TargetRequirements
-	(*SchedulingUnitOptions)(nil),      // 28: chromiumos.test.api.SchedulingUnitOptions
-	(*HWRequirements)(nil),             // 29: chromiumos.test.api.HWRequirements
-	(*SchedulingUnit)(nil),             // 30: chromiumos.test.api.SchedulingUnit
-	(*SWRequirements)(nil),             // 31: chromiumos.test.api.SWRequirements
-	(*ProvisionInfo)(nil),              // 32: chromiumos.test.api.ProvisionInfo
-	(*Target)(nil),                     // 33: chromiumos.test.api.Target
-	(*SwarmingDefinition)(nil),         // 34: chromiumos.test.api.SwarmingDefinition
-	(*CTPv2Response)(nil),              // 35: chromiumos.test.api.CTPv2Response
-	(*CrosTestRunnerRequest)(nil),      // 36: chromiumos.test.api.CrosTestRunnerRequest
-	nil,                                // 37: chromiumos.test.api.SchedulingUnit.DynamicUpdateLookupTableEntry
-	nil,                                // 38: chromiumos.test.api.SwarmingDefinition.DynamicUpdateLookupTableEntry
-	(*anypb.Any)(nil),                  // 39: google.protobuf.Any
-	(*TestSuite)(nil),                  // 40: chromiumos.test.api.TestSuite
-	(*durationpb.Duration)(nil),        // 41: google.protobuf.Duration
-	(*api.ContainerImageInfo)(nil),     // 42: chromiumos.build.api.ContainerImageInfo
-	(*TestCaseMetadata)(nil),           // 43: chromiumos.test.api.TestCaseMetadata
-	(*ExecutionMetadata)(nil),          // 44: chromiumos.test.api.ExecutionMetadata
-	(*UserDefinedDynamicUpdate)(nil),   // 45: chromiumos.test.api.UserDefinedDynamicUpdate
-	(*InstallRequest)(nil),             // 46: chromiumos.test.api.InstallRequest
-	(*api1.Dut)(nil),                   // 47: chromiumos.test.lab.api.Dut
+	(*GroupedScheduleTargets)(nil),     // 9: chromiumos.test.api.GroupedScheduleTargets
+	(*ScheduleTargets)(nil),            // 10: chromiumos.test.api.ScheduleTargets
+	(*Targets)(nil),                    // 11: chromiumos.test.api.Targets
+	(*HWTarget)(nil),                   // 12: chromiumos.test.api.HWTarget
+	(*SWTarget)(nil),                   // 13: chromiumos.test.api.SWTarget
+	(*LegacySW)(nil),                   // 14: chromiumos.test.api.LegacySW
+	(*DDDSW)(nil),                      // 15: chromiumos.test.api.DDDSW
+	(*LegacyHW)(nil),                   // 16: chromiumos.test.api.LegacyHW
+	(*DDDHW)(nil),                      // 17: chromiumos.test.api.DDDHW
+	(*Pair)(nil),                       // 18: chromiumos.test.api.Pair
+	(*MultiDut)(nil),                   // 19: chromiumos.test.api.MultiDut
+	(*CTPFilter)(nil),                  // 20: chromiumos.test.api.CTPFilter
+	(*ContainerInfo)(nil),              // 21: chromiumos.test.api.ContainerInfo
+	(*Reserved)(nil),                   // 22: chromiumos.test.api.Reserved
+	(*InternalTestplan)(nil),           // 23: chromiumos.test.api.InternalTestplan
+	(*CTPTestCase)(nil),                // 24: chromiumos.test.api.CTPTestCase
+	(*SuiteInfo)(nil),                  // 25: chromiumos.test.api.SuiteInfo
+	(*SuiteMetadata)(nil),              // 26: chromiumos.test.api.SuiteMetadata
+	(*ScheduleTargetRequirements)(nil), // 27: chromiumos.test.api.ScheduleTargetRequirements
+	(*TargetRequirements)(nil),         // 28: chromiumos.test.api.TargetRequirements
+	(*SchedulingUnitOptions)(nil),      // 29: chromiumos.test.api.SchedulingUnitOptions
+	(*HWRequirements)(nil),             // 30: chromiumos.test.api.HWRequirements
+	(*SchedulingUnit)(nil),             // 31: chromiumos.test.api.SchedulingUnit
+	(*SWRequirements)(nil),             // 32: chromiumos.test.api.SWRequirements
+	(*ProvisionInfo)(nil),              // 33: chromiumos.test.api.ProvisionInfo
+	(*Target)(nil),                     // 34: chromiumos.test.api.Target
+	(*SwarmingDefinition)(nil),         // 35: chromiumos.test.api.SwarmingDefinition
+	(*CTPv2Response)(nil),              // 36: chromiumos.test.api.CTPv2Response
+	(*CrosTestRunnerRequest)(nil),      // 37: chromiumos.test.api.CrosTestRunnerRequest
+	nil,                                // 38: chromiumos.test.api.SchedulingUnit.DynamicUpdateLookupTableEntry
+	nil,                                // 39: chromiumos.test.api.SwarmingDefinition.DynamicUpdateLookupTableEntry
+	(*anypb.Any)(nil),                  // 40: google.protobuf.Any
+	(*TestSuite)(nil),                  // 41: chromiumos.test.api.TestSuite
+	(*durationpb.Duration)(nil),        // 42: google.protobuf.Duration
+	(*api.ContainerImageInfo)(nil),     // 43: chromiumos.build.api.ContainerImageInfo
+	(*TestCaseMetadata)(nil),           // 44: chromiumos.test.api.TestCaseMetadata
+	(*ExecutionMetadata)(nil),          // 45: chromiumos.test.api.ExecutionMetadata
+	(*UserDefinedDynamicUpdate)(nil),   // 46: chromiumos.test.api.UserDefinedDynamicUpdate
+	(*InstallRequest)(nil),             // 47: chromiumos.test.api.InstallRequest
+	(*api1.Dut)(nil),                   // 48: chromiumos.test.lab.api.Dut
 }
 var file_chromiumos_test_api_ctp2_proto_depIdxs = []int32{
 	7,  // 0: chromiumos.test.api.CTPv2Request.suite_request:type_name -> chromiumos.test.api.SuiteRequest
-	10, // 1: chromiumos.test.api.CTPv2Request.targets:type_name -> chromiumos.test.api.Targets
-	19, // 2: chromiumos.test.api.CTPv2Request.karbon_filters:type_name -> chromiumos.test.api.CTPFilter
-	19, // 3: chromiumos.test.api.CTPv2Request.koffee_filters:type_name -> chromiumos.test.api.CTPFilter
-	39, // 4: chromiumos.test.api.CTPv2Request.scheduke_metadata:type_name -> google.protobuf.Any
-	9,  // 5: chromiumos.test.api.CTPv2Request.schedule_targets:type_name -> chromiumos.test.api.ScheduleTargets
+	11, // 1: chromiumos.test.api.CTPv2Request.targets:type_name -> chromiumos.test.api.Targets
+	20, // 2: chromiumos.test.api.CTPv2Request.karbon_filters:type_name -> chromiumos.test.api.CTPFilter
+	20, // 3: chromiumos.test.api.CTPv2Request.koffee_filters:type_name -> chromiumos.test.api.CTPFilter
+	40, // 4: chromiumos.test.api.CTPv2Request.scheduke_metadata:type_name -> google.protobuf.Any
+	10, // 5: chromiumos.test.api.CTPv2Request.schedule_targets:type_name -> chromiumos.test.api.ScheduleTargets
 	5,  // 6: chromiumos.test.api.CTPv2Request.requests:type_name -> chromiumos.test.api.CTPRequest
 	7,  // 7: chromiumos.test.api.CTPRequest.suite_request:type_name -> chromiumos.test.api.SuiteRequest
-	9,  // 8: chromiumos.test.api.CTPRequest.schedule_targets:type_name -> chromiumos.test.api.ScheduleTargets
-	19, // 9: chromiumos.test.api.CTPRequest.karbon_filters:type_name -> chromiumos.test.api.CTPFilter
-	19, // 10: chromiumos.test.api.CTPRequest.koffee_filters:type_name -> chromiumos.test.api.CTPFilter
-	6,  // 11: chromiumos.test.api.CTPRequest.scheduler_info:type_name -> chromiumos.test.api.SchedulerInfo
-	39, // 12: chromiumos.test.api.CTPRequest.scheduler_metadata:type_name -> google.protobuf.Any
-	0,  // 13: chromiumos.test.api.SchedulerInfo.scheduler:type_name -> chromiumos.test.api.SchedulerInfo.Scheduler
-	40, // 14: chromiumos.test.api.SuiteRequest.test_suite:type_name -> chromiumos.test.api.TestSuite
-	21, // 15: chromiumos.test.api.SuiteRequest.hierarchical_plan:type_name -> chromiumos.test.api.Reserved
-	41, // 16: chromiumos.test.api.SuiteRequest.maximum_duration:type_name -> google.protobuf.Duration
-	10, // 17: chromiumos.test.api.ScheduleTargets.targets:type_name -> chromiumos.test.api.Targets
-	11, // 18: chromiumos.test.api.Targets.hw_target:type_name -> chromiumos.test.api.HWTarget
-	12, // 19: chromiumos.test.api.Targets.sw_targets:type_name -> chromiumos.test.api.SWTarget
-	12, // 20: chromiumos.test.api.Targets.sw_target:type_name -> chromiumos.test.api.SWTarget
-	15, // 21: chromiumos.test.api.HWTarget.legacy_hw:type_name -> chromiumos.test.api.LegacyHW
-	16, // 22: chromiumos.test.api.HWTarget.ddd_hw:type_name -> chromiumos.test.api.DDDHW
-	13, // 23: chromiumos.test.api.SWTarget.legacy_sw:type_name -> chromiumos.test.api.LegacySW
-	14, // 24: chromiumos.test.api.SWTarget.ddd_sw:type_name -> chromiumos.test.api.DDDSW
-	8,  // 25: chromiumos.test.api.LegacySW.key_values:type_name -> chromiumos.test.api.KeyValue
-	18, // 26: chromiumos.test.api.LegacyHW.multi_dut:type_name -> chromiumos.test.api.MultiDut
-	17, // 27: chromiumos.test.api.MultiDut.boards:type_name -> chromiumos.test.api.Pair
-	17, // 28: chromiumos.test.api.MultiDut.model:type_name -> chromiumos.test.api.Pair
-	42, // 29: chromiumos.test.api.CTPFilter.container:type_name -> chromiumos.build.api.ContainerImageInfo
-	42, // 30: chromiumos.test.api.CTPFilter.dependent_containers:type_name -> chromiumos.build.api.ContainerImageInfo
-	39, // 31: chromiumos.test.api.CTPFilter.container_metadata:type_name -> google.protobuf.Any
-	20, // 32: chromiumos.test.api.CTPFilter.container_info:type_name -> chromiumos.test.api.ContainerInfo
-	20, // 33: chromiumos.test.api.CTPFilter.dependent_containers_info:type_name -> chromiumos.test.api.ContainerInfo
-	42, // 34: chromiumos.test.api.ContainerInfo.container:type_name -> chromiumos.build.api.ContainerImageInfo
-	23, // 35: chromiumos.test.api.InternalTestplan.test_cases:type_name -> chromiumos.test.api.CTPTestCase
-	24, // 36: chromiumos.test.api.InternalTestplan.suite_info:type_name -> chromiumos.test.api.SuiteInfo
-	43, // 37: chromiumos.test.api.CTPTestCase.metadata:type_name -> chromiumos.test.api.TestCaseMetadata
-	29, // 38: chromiumos.test.api.CTPTestCase.hw_requirements:type_name -> chromiumos.test.api.HWRequirements
-	31, // 39: chromiumos.test.api.CTPTestCase.sw_requirements:type_name -> chromiumos.test.api.SWRequirements
-	28, // 40: chromiumos.test.api.CTPTestCase.scheduling_unit_options:type_name -> chromiumos.test.api.SchedulingUnitOptions
-	25, // 41: chromiumos.test.api.SuiteInfo.suite_metadata:type_name -> chromiumos.test.api.SuiteMetadata
-	7,  // 42: chromiumos.test.api.SuiteInfo.suite_request:type_name -> chromiumos.test.api.SuiteRequest
-	27, // 43: chromiumos.test.api.SuiteMetadata.target_requirements:type_name -> chromiumos.test.api.TargetRequirements
-	26, // 44: chromiumos.test.api.SuiteMetadata.schedule_target_requirements:type_name -> chromiumos.test.api.ScheduleTargetRequirements
-	44, // 45: chromiumos.test.api.SuiteMetadata.execution_metadata:type_name -> chromiumos.test.api.ExecutionMetadata
-	6,  // 46: chromiumos.test.api.SuiteMetadata.scheduler_info:type_name -> chromiumos.test.api.SchedulerInfo
-	45, // 47: chromiumos.test.api.SuiteMetadata.dynamic_updates:type_name -> chromiumos.test.api.UserDefinedDynamicUpdate
-	30, // 48: chromiumos.test.api.SuiteMetadata.scheduling_units:type_name -> chromiumos.test.api.SchedulingUnit
-	28, // 49: chromiumos.test.api.SuiteMetadata.scheduling_unit_options:type_name -> chromiumos.test.api.SchedulingUnitOptions
-	27, // 50: chromiumos.test.api.ScheduleTargetRequirements.target_requirements:type_name -> chromiumos.test.api.TargetRequirements
-	29, // 51: chromiumos.test.api.TargetRequirements.hw_requirements:type_name -> chromiumos.test.api.HWRequirements
-	13, // 52: chromiumos.test.api.TargetRequirements.sw_requirements:type_name -> chromiumos.test.api.LegacySW
-	13, // 53: chromiumos.test.api.TargetRequirements.sw_requirement:type_name -> chromiumos.test.api.LegacySW
-	30, // 54: chromiumos.test.api.SchedulingUnitOptions.scheduling_units:type_name -> chromiumos.test.api.SchedulingUnit
-	1,  // 55: chromiumos.test.api.SchedulingUnitOptions.state:type_name -> chromiumos.test.api.SchedulingUnitOptions.State
-	34, // 56: chromiumos.test.api.HWRequirements.hw_definition:type_name -> chromiumos.test.api.SwarmingDefinition
-	2,  // 57: chromiumos.test.api.HWRequirements.state:type_name -> chromiumos.test.api.HWRequirements.State
-	33, // 58: chromiumos.test.api.SchedulingUnit.primary_target:type_name -> chromiumos.test.api.Target
-	33, // 59: chromiumos.test.api.SchedulingUnit.companion_targets:type_name -> chromiumos.test.api.Target
-	37, // 60: chromiumos.test.api.SchedulingUnit.dynamic_update_lookup_table:type_name -> chromiumos.test.api.SchedulingUnit.DynamicUpdateLookupTableEntry
-	45, // 61: chromiumos.test.api.SchedulingUnit.secondary_dynamic_updates:type_name -> chromiumos.test.api.UserDefinedDynamicUpdate
-	46, // 62: chromiumos.test.api.ProvisionInfo.install_request:type_name -> chromiumos.test.api.InstallRequest
-	3,  // 63: chromiumos.test.api.ProvisionInfo.type:type_name -> chromiumos.test.api.ProvisionInfo.Type
-	34, // 64: chromiumos.test.api.Target.swarming_def:type_name -> chromiumos.test.api.SwarmingDefinition
-	13, // 65: chromiumos.test.api.Target.sw_req:type_name -> chromiumos.test.api.LegacySW
-	47, // 66: chromiumos.test.api.SwarmingDefinition.dut_info:type_name -> chromiumos.test.lab.api.Dut
-	32, // 67: chromiumos.test.api.SwarmingDefinition.provision_info:type_name -> chromiumos.test.api.ProvisionInfo
-	38, // 68: chromiumos.test.api.SwarmingDefinition.dynamic_update_lookup_table:type_name -> chromiumos.test.api.SwarmingDefinition.DynamicUpdateLookupTableEntry
-	36, // 69: chromiumos.test.api.CTPv2Response.test_requests:type_name -> chromiumos.test.api.CrosTestRunnerRequest
-	4,  // 70: chromiumos.test.api.CTPv2Service.RequestResolver:input_type -> chromiumos.test.api.CTPv2Request
-	22, // 71: chromiumos.test.api.GenericFilterService.Execute:input_type -> chromiumos.test.api.InternalTestplan
-	35, // 72: chromiumos.test.api.CTPv2Service.RequestResolver:output_type -> chromiumos.test.api.CTPv2Response
-	22, // 73: chromiumos.test.api.GenericFilterService.Execute:output_type -> chromiumos.test.api.InternalTestplan
-	72, // [72:74] is the sub-list for method output_type
-	70, // [70:72] is the sub-list for method input_type
-	70, // [70:70] is the sub-list for extension type_name
-	70, // [70:70] is the sub-list for extension extendee
-	0,  // [0:70] is the sub-list for field type_name
+	10, // 8: chromiumos.test.api.CTPRequest.schedule_targets:type_name -> chromiumos.test.api.ScheduleTargets
+	9,  // 9: chromiumos.test.api.CTPRequest.grouped_schedule_targets:type_name -> chromiumos.test.api.GroupedScheduleTargets
+	20, // 10: chromiumos.test.api.CTPRequest.karbon_filters:type_name -> chromiumos.test.api.CTPFilter
+	20, // 11: chromiumos.test.api.CTPRequest.koffee_filters:type_name -> chromiumos.test.api.CTPFilter
+	6,  // 12: chromiumos.test.api.CTPRequest.scheduler_info:type_name -> chromiumos.test.api.SchedulerInfo
+	40, // 13: chromiumos.test.api.CTPRequest.scheduler_metadata:type_name -> google.protobuf.Any
+	0,  // 14: chromiumos.test.api.SchedulerInfo.scheduler:type_name -> chromiumos.test.api.SchedulerInfo.Scheduler
+	41, // 15: chromiumos.test.api.SuiteRequest.test_suite:type_name -> chromiumos.test.api.TestSuite
+	22, // 16: chromiumos.test.api.SuiteRequest.hierarchical_plan:type_name -> chromiumos.test.api.Reserved
+	42, // 17: chromiumos.test.api.SuiteRequest.maximum_duration:type_name -> google.protobuf.Duration
+	10, // 18: chromiumos.test.api.GroupedScheduleTargets.grouped_targets:type_name -> chromiumos.test.api.ScheduleTargets
+	11, // 19: chromiumos.test.api.ScheduleTargets.targets:type_name -> chromiumos.test.api.Targets
+	12, // 20: chromiumos.test.api.Targets.hw_target:type_name -> chromiumos.test.api.HWTarget
+	13, // 21: chromiumos.test.api.Targets.sw_targets:type_name -> chromiumos.test.api.SWTarget
+	13, // 22: chromiumos.test.api.Targets.sw_target:type_name -> chromiumos.test.api.SWTarget
+	16, // 23: chromiumos.test.api.HWTarget.legacy_hw:type_name -> chromiumos.test.api.LegacyHW
+	17, // 24: chromiumos.test.api.HWTarget.ddd_hw:type_name -> chromiumos.test.api.DDDHW
+	14, // 25: chromiumos.test.api.SWTarget.legacy_sw:type_name -> chromiumos.test.api.LegacySW
+	15, // 26: chromiumos.test.api.SWTarget.ddd_sw:type_name -> chromiumos.test.api.DDDSW
+	8,  // 27: chromiumos.test.api.LegacySW.key_values:type_name -> chromiumos.test.api.KeyValue
+	19, // 28: chromiumos.test.api.LegacyHW.multi_dut:type_name -> chromiumos.test.api.MultiDut
+	18, // 29: chromiumos.test.api.MultiDut.boards:type_name -> chromiumos.test.api.Pair
+	18, // 30: chromiumos.test.api.MultiDut.model:type_name -> chromiumos.test.api.Pair
+	43, // 31: chromiumos.test.api.CTPFilter.container:type_name -> chromiumos.build.api.ContainerImageInfo
+	43, // 32: chromiumos.test.api.CTPFilter.dependent_containers:type_name -> chromiumos.build.api.ContainerImageInfo
+	40, // 33: chromiumos.test.api.CTPFilter.container_metadata:type_name -> google.protobuf.Any
+	21, // 34: chromiumos.test.api.CTPFilter.container_info:type_name -> chromiumos.test.api.ContainerInfo
+	21, // 35: chromiumos.test.api.CTPFilter.dependent_containers_info:type_name -> chromiumos.test.api.ContainerInfo
+	43, // 36: chromiumos.test.api.ContainerInfo.container:type_name -> chromiumos.build.api.ContainerImageInfo
+	24, // 37: chromiumos.test.api.InternalTestplan.test_cases:type_name -> chromiumos.test.api.CTPTestCase
+	25, // 38: chromiumos.test.api.InternalTestplan.suite_info:type_name -> chromiumos.test.api.SuiteInfo
+	44, // 39: chromiumos.test.api.CTPTestCase.metadata:type_name -> chromiumos.test.api.TestCaseMetadata
+	30, // 40: chromiumos.test.api.CTPTestCase.hw_requirements:type_name -> chromiumos.test.api.HWRequirements
+	32, // 41: chromiumos.test.api.CTPTestCase.sw_requirements:type_name -> chromiumos.test.api.SWRequirements
+	29, // 42: chromiumos.test.api.CTPTestCase.scheduling_unit_options:type_name -> chromiumos.test.api.SchedulingUnitOptions
+	26, // 43: chromiumos.test.api.SuiteInfo.suite_metadata:type_name -> chromiumos.test.api.SuiteMetadata
+	7,  // 44: chromiumos.test.api.SuiteInfo.suite_request:type_name -> chromiumos.test.api.SuiteRequest
+	28, // 45: chromiumos.test.api.SuiteMetadata.target_requirements:type_name -> chromiumos.test.api.TargetRequirements
+	27, // 46: chromiumos.test.api.SuiteMetadata.schedule_target_requirements:type_name -> chromiumos.test.api.ScheduleTargetRequirements
+	45, // 47: chromiumos.test.api.SuiteMetadata.execution_metadata:type_name -> chromiumos.test.api.ExecutionMetadata
+	6,  // 48: chromiumos.test.api.SuiteMetadata.scheduler_info:type_name -> chromiumos.test.api.SchedulerInfo
+	46, // 49: chromiumos.test.api.SuiteMetadata.dynamic_updates:type_name -> chromiumos.test.api.UserDefinedDynamicUpdate
+	31, // 50: chromiumos.test.api.SuiteMetadata.scheduling_units:type_name -> chromiumos.test.api.SchedulingUnit
+	29, // 51: chromiumos.test.api.SuiteMetadata.scheduling_unit_options:type_name -> chromiumos.test.api.SchedulingUnitOptions
+	28, // 52: chromiumos.test.api.ScheduleTargetRequirements.target_requirements:type_name -> chromiumos.test.api.TargetRequirements
+	30, // 53: chromiumos.test.api.TargetRequirements.hw_requirements:type_name -> chromiumos.test.api.HWRequirements
+	14, // 54: chromiumos.test.api.TargetRequirements.sw_requirements:type_name -> chromiumos.test.api.LegacySW
+	14, // 55: chromiumos.test.api.TargetRequirements.sw_requirement:type_name -> chromiumos.test.api.LegacySW
+	31, // 56: chromiumos.test.api.SchedulingUnitOptions.scheduling_units:type_name -> chromiumos.test.api.SchedulingUnit
+	1,  // 57: chromiumos.test.api.SchedulingUnitOptions.state:type_name -> chromiumos.test.api.SchedulingUnitOptions.State
+	35, // 58: chromiumos.test.api.HWRequirements.hw_definition:type_name -> chromiumos.test.api.SwarmingDefinition
+	2,  // 59: chromiumos.test.api.HWRequirements.state:type_name -> chromiumos.test.api.HWRequirements.State
+	34, // 60: chromiumos.test.api.SchedulingUnit.primary_target:type_name -> chromiumos.test.api.Target
+	34, // 61: chromiumos.test.api.SchedulingUnit.companion_targets:type_name -> chromiumos.test.api.Target
+	38, // 62: chromiumos.test.api.SchedulingUnit.dynamic_update_lookup_table:type_name -> chromiumos.test.api.SchedulingUnit.DynamicUpdateLookupTableEntry
+	46, // 63: chromiumos.test.api.SchedulingUnit.secondary_dynamic_updates:type_name -> chromiumos.test.api.UserDefinedDynamicUpdate
+	47, // 64: chromiumos.test.api.ProvisionInfo.install_request:type_name -> chromiumos.test.api.InstallRequest
+	3,  // 65: chromiumos.test.api.ProvisionInfo.type:type_name -> chromiumos.test.api.ProvisionInfo.Type
+	35, // 66: chromiumos.test.api.Target.swarming_def:type_name -> chromiumos.test.api.SwarmingDefinition
+	14, // 67: chromiumos.test.api.Target.sw_req:type_name -> chromiumos.test.api.LegacySW
+	48, // 68: chromiumos.test.api.SwarmingDefinition.dut_info:type_name -> chromiumos.test.lab.api.Dut
+	33, // 69: chromiumos.test.api.SwarmingDefinition.provision_info:type_name -> chromiumos.test.api.ProvisionInfo
+	39, // 70: chromiumos.test.api.SwarmingDefinition.dynamic_update_lookup_table:type_name -> chromiumos.test.api.SwarmingDefinition.DynamicUpdateLookupTableEntry
+	37, // 71: chromiumos.test.api.CTPv2Response.test_requests:type_name -> chromiumos.test.api.CrosTestRunnerRequest
+	4,  // 72: chromiumos.test.api.CTPv2Service.RequestResolver:input_type -> chromiumos.test.api.CTPv2Request
+	23, // 73: chromiumos.test.api.GenericFilterService.Execute:input_type -> chromiumos.test.api.InternalTestplan
+	36, // 74: chromiumos.test.api.CTPv2Service.RequestResolver:output_type -> chromiumos.test.api.CTPv2Response
+	23, // 75: chromiumos.test.api.GenericFilterService.Execute:output_type -> chromiumos.test.api.InternalTestplan
+	74, // [74:76] is the sub-list for method output_type
+	72, // [72:74] is the sub-list for method input_type
+	72, // [72:72] is the sub-list for extension type_name
+	72, // [72:72] is the sub-list for extension extendee
+	0,  // [0:72] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_api_ctp2_proto_init() }
@@ -3235,7 +3312,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScheduleTargets); i {
+			switch v := v.(*GroupedScheduleTargets); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3247,7 +3324,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Targets); i {
+			switch v := v.(*ScheduleTargets); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3259,7 +3336,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HWTarget); i {
+			switch v := v.(*Targets); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3271,7 +3348,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SWTarget); i {
+			switch v := v.(*HWTarget); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3283,7 +3360,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LegacySW); i {
+			switch v := v.(*SWTarget); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3295,7 +3372,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DDDSW); i {
+			switch v := v.(*LegacySW); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3307,7 +3384,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LegacyHW); i {
+			switch v := v.(*DDDSW); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3319,7 +3396,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DDDHW); i {
+			switch v := v.(*LegacyHW); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3331,7 +3408,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Pair); i {
+			switch v := v.(*DDDHW); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3343,7 +3420,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MultiDut); i {
+			switch v := v.(*Pair); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3355,7 +3432,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CTPFilter); i {
+			switch v := v.(*MultiDut); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3367,7 +3444,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ContainerInfo); i {
+			switch v := v.(*CTPFilter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3379,7 +3456,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Reserved); i {
+			switch v := v.(*ContainerInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3391,7 +3468,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InternalTestplan); i {
+			switch v := v.(*Reserved); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3403,7 +3480,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CTPTestCase); i {
+			switch v := v.(*InternalTestplan); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3415,7 +3492,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SuiteInfo); i {
+			switch v := v.(*CTPTestCase); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3427,7 +3504,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SuiteMetadata); i {
+			switch v := v.(*SuiteInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3439,7 +3516,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScheduleTargetRequirements); i {
+			switch v := v.(*SuiteMetadata); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3451,7 +3528,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TargetRequirements); i {
+			switch v := v.(*ScheduleTargetRequirements); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3463,7 +3540,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SchedulingUnitOptions); i {
+			switch v := v.(*TargetRequirements); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3475,7 +3552,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HWRequirements); i {
+			switch v := v.(*SchedulingUnitOptions); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3487,7 +3564,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SchedulingUnit); i {
+			switch v := v.(*HWRequirements); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3499,7 +3576,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SWRequirements); i {
+			switch v := v.(*SchedulingUnit); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3511,7 +3588,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProvisionInfo); i {
+			switch v := v.(*SWRequirements); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3523,7 +3600,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Target); i {
+			switch v := v.(*ProvisionInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3535,7 +3612,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SwarmingDefinition); i {
+			switch v := v.(*Target); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3547,7 +3624,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CTPv2Response); i {
+			switch v := v.(*SwarmingDefinition); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3559,6 +3636,18 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			}
 		}
 		file_chromiumos_test_api_ctp2_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CTPv2Response); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_chromiumos_test_api_ctp2_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CrosTestRunnerRequest); i {
 			case 0:
 				return &v.state
@@ -3575,11 +3664,11 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 		(*SuiteRequest_TestSuite)(nil),
 		(*SuiteRequest_HierarchicalPlan)(nil),
 	}
-	file_chromiumos_test_api_ctp2_proto_msgTypes[7].OneofWrappers = []interface{}{
+	file_chromiumos_test_api_ctp2_proto_msgTypes[8].OneofWrappers = []interface{}{
 		(*HWTarget_LegacyHw)(nil),
 		(*HWTarget_DddHw)(nil),
 	}
-	file_chromiumos_test_api_ctp2_proto_msgTypes[8].OneofWrappers = []interface{}{
+	file_chromiumos_test_api_ctp2_proto_msgTypes[9].OneofWrappers = []interface{}{
 		(*SWTarget_LegacySw)(nil),
 		(*SWTarget_DddSw)(nil),
 	}
@@ -3589,7 +3678,7 @@ func file_chromiumos_test_api_ctp2_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_chromiumos_test_api_ctp2_proto_rawDesc,
 			NumEnums:      4,
-			NumMessages:   35,
+			NumMessages:   36,
 			NumExtensions: 0,
 			NumServices:   2,
 		},

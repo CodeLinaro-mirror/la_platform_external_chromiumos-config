@@ -51,7 +51,14 @@ message CTPv2Request {
 // filters to execute.
 message CTPRequest {
   SuiteRequest suite_request = 1;
+  // will be deprecated when #11 field is in use 100%
   repeated ScheduleTargets schedule_targets = 2;
+  // Grouped targets allow setting and/or relationship between targets.
+  // inner i.e. {a, b} is OR relationship: a or b
+  // outer i.e. {a}, {b} is AND relationship: a and b
+  // [{shedTarget1, schedTarget2}, {shedTarget3, schedTarget4}]
+  // --> (shedTarget1 OR schedTarget2) AND (shedTarget3 OR schedTarget4)
+  repeated GroupedScheduleTargets grouped_schedule_targets = 11;
   string pool = 7;
 
   repeated CTPFilter karbon_filters = 3;
@@ -117,6 +124,10 @@ message SuiteRequest {
 message KeyValue {
   string key = 1;
   string value = 2;
+}
+
+message GroupedScheduleTargets {
+  repeated ScheduleTargets grouped_targets = 1;
 }
 
 // ScheduleTargets represents groups of targets for CTPv2.
