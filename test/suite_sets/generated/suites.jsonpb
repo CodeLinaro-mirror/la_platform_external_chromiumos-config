@@ -2663,6 +2663,15 @@
 					"value": "tast.debugd.Printer"
 				},
 				{
+					"value": "tast.diagnostics.MemoryRoutine.no_mojo_check"
+				},
+				{
+					"value": "tast.diagnostics.RenderApp.no_mojo_check"
+				},
+				{
+					"value": "tast.diagnostics.RoutineSection.no_mojo_check"
+				},
+				{
 					"value": "tast.dlp.DataLeakPreventionRulesListClipboard.ash_warn_proceeded"
 				},
 				{
