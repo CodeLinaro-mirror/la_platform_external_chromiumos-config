@@ -23097,6 +23097,9 @@
           ]
         },
         {
+          "name": "GetServoInfoRequest"
+        },
+        {
           "field": [
             {
               "jsonName": "getFwInfoResponse",
@@ -23142,6 +23145,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetGscInfoResponse"
+            },
+            {
+              "jsonName": "getServoInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_servo_info_response",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetServoInfoResponse"
             }
           ],
           "name": "RunActivityResponse",
@@ -23361,6 +23373,19 @@
               }
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "servoInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "servo_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "GetServoInfoResponse"
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",

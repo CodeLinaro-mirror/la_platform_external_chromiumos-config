@@ -120,8 +120,12 @@ message GetGscInfoRequest {
     map<string, string> gsc_files = 1 [deprecated = true];
 }
 
+// GetServoInfoRequest captures the servo information for reporting.
+// NEXT TAG: 1
+message GetServoInfoRequest {}
+
 // Specific response to be matched with the request.
-// NEXT TAG: 6
+// NEXT TAG: 7
 message RunActivityResponse {
   oneof response {
     GetFWInfoResponse get_fw_info_response = 1;
@@ -129,6 +133,7 @@ message RunActivityResponse {
     GetGfxInfoResponse get_gfx_info_response = 3;
     GetAvlInfoResponse get_avl_info_response = 4;
     GetGscInfoResponse get_gsc_info_response = 5;
+    GetServoInfoResponse get_servo_info_response = 6;
   }
 }
 
@@ -181,4 +186,13 @@ message GetGscInfoResponse {
     // "chromiumos.test.artifact.GscInfo". Note that the GscInfo proto cannot
     // be imported directly due to cyclic import issue.
     map<string, google.protobuf.Any> gsc_infos = 1;
+}
+
+// GetServoInfoResponse contents of the information from the servo file
+// NEXT TAG: 2
+message GetServoInfoResponse {
+    // Stores servo info:
+    // "chromiumos.test.artifact.BuildMetadata.ServoInfo". Note that the ServoInfo proto cannot
+    // be imported directly due to cyclic import issue.
+    google.protobuf.Any servo_info = 1;
 }
