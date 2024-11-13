@@ -2663,13 +2663,13 @@
 					"value": "tast.debugd.Printer"
 				},
 				{
-					"value": "tast.diagnostics.MemoryRoutine.no_mojo_check"
+					"value": "tast.diagnostics.MemoryRoutine"
 				},
 				{
-					"value": "tast.diagnostics.RenderApp.no_mojo_check"
+					"value": "tast.diagnostics.RenderApp"
 				},
 				{
-					"value": "tast.diagnostics.RoutineSection.no_mojo_check"
+					"value": "tast.diagnostics.RoutineSection"
 				},
 				{
 					"value": "tast.dlp.DataLeakPreventionRulesListClipboard.ash_warn_proceeded"
@@ -3146,18 +3146,6 @@
 					"value": "tast.health.ProbeBootPerformanceInfo"
 				},
 				{
-					"value": "tast.health.ProbeBusInfo"
-				},
-				{
-					"value": "tast.health.ProbeBusInfo.progif"
-				},
-				{
-					"value": "tast.health.ProbeBusInfo.thunderbolt"
-				},
-				{
-					"value": "tast.health.ProbeCPUInfo"
-				},
-				{
 					"value": "tast.health.ProbeDisplayInfo"
 				},
 				{
@@ -3177,9 +3165,6 @@
 				},
 				{
 					"value": "tast.health.ProbeInputInfo.with_touchpad_flex"
-				},
-				{
-					"value": "tast.health.ProbeMemoryInfo"
 				},
 				{
 					"value": "tast.health.ProbeNetworkInfo"
@@ -3207,9 +3192,6 @@
 				},
 				{
 					"value": "tast.health.ProbeTpmInfo"
-				},
-				{
-					"value": "tast.health.ProbeWifiInfo"
 				},
 				{
 					"value": "tast.health.RunBluetoothRoutine.v1_discovery_bluez"
