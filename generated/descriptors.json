@@ -31063,6 +31063,25 @@
       ],
       "messageType": [
         {
+          "enumType": [
+            {
+              "name": "ATPEnvironment",
+              "value": [
+                {
+                  "name": "ENV_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "ENV_STAGING",
+                  "number": 1
+                },
+                {
+                  "name": "ENV_PROD",
+                  "number": 2
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "antsInvocationId",
@@ -31107,6 +31126,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.SchedulingMetadata"
+            },
+            {
+              "jsonName": "atpEnvironment",
+              "label": "LABEL_OPTIONAL",
+              "name": "atp_environment",
+              "number": 7,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.metadata.PublishAntsMetadata.ATPEnvironment"
             }
           ],
           "name": "PublishAntsMetadata"

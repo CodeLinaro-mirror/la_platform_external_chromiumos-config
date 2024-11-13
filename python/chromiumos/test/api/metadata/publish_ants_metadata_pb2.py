@@ -20,11 +20,41 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z6go.chromium.org/chromiumos/config/go/test/api/metadata',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n8chromiumos/test/api/metadata/publish_ants_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\"\x92\x02\n\x13PublishAntsMetadata\x12\x1a\n\x12\x61nts_invocation_id\x18\x01 \x01(\t\x12\x1b\n\x13parent_work_unit_id\x18\x02 \x01(\t\x12\x12\n\naccount_id\x18\x03 \x01(\t\x12G\n\x16primary_execution_info\x18\x04 \x01(\x0b\x32\'.chromiumos.test.artifact.ExecutionInfo\x12\x1a\n\x12luci_invocation_id\x18\x05 \x01(\t\x12I\n\x13scheduling_metadata\x18\x06 \x01(\x0b\x32,.chromiumos.test.artifact.SchedulingMetadataB8Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
+  serialized_pb=b'\n8chromiumos/test/api/metadata/publish_ants_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\"\xaf\x03\n\x13PublishAntsMetadata\x12\x1a\n\x12\x61nts_invocation_id\x18\x01 \x01(\t\x12\x1b\n\x13parent_work_unit_id\x18\x02 \x01(\t\x12\x12\n\naccount_id\x18\x03 \x01(\t\x12G\n\x16primary_execution_info\x18\x04 \x01(\x0b\x32\'.chromiumos.test.artifact.ExecutionInfo\x12\x1a\n\x12luci_invocation_id\x18\x05 \x01(\t\x12I\n\x13scheduling_metadata\x18\x06 \x01(\x0b\x32,.chromiumos.test.artifact.SchedulingMetadata\x12Y\n\x0f\x61tp_environment\x18\x07 \x01(\x0e\x32@.chromiumos.test.api.metadata.PublishAntsMetadata.ATPEnvironment\"@\n\x0e\x41TPEnvironment\x12\x0f\n\x0b\x45NV_UNKNOWN\x10\x00\x12\x0f\n\x0b\x45NV_STAGING\x10\x01\x12\x0c\n\x08\x45NV_PROD\x10\x02\x42\x38Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
   ,
   dependencies=[chromiumos_dot_test_dot_artifact_dot_test__result__pb2.DESCRIPTOR,])
 
 
+
+_PUBLISHANTSMETADATA_ATPENVIRONMENT = _descriptor.EnumDescriptor(
+  name='ATPEnvironment',
+  full_name='chromiumos.test.api.metadata.PublishAntsMetadata.ATPEnvironment',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='ENV_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ENV_STAGING', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ENV_PROD', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=502,
+  serialized_end=566,
+)
+_sym_db.RegisterEnumDescriptor(_PUBLISHANTSMETADATA_ATPENVIRONMENT)
 
 
 _PUBLISHANTSMETADATA = _descriptor.Descriptor(
@@ -77,11 +107,19 @@ _PUBLISHANTSMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='atp_environment', full_name='chromiumos.test.api.metadata.PublishAntsMetadata.atp_environment', index=6,
+      number=7, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
+    _PUBLISHANTSMETADATA_ATPENVIRONMENT,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -90,11 +128,13 @@ _PUBLISHANTSMETADATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=135,
-  serialized_end=409,
+  serialized_end=566,
 )
 
 _PUBLISHANTSMETADATA.fields_by_name['primary_execution_info'].message_type = chromiumos_dot_test_dot_artifact_dot_test__result__pb2._EXECUTIONINFO
 _PUBLISHANTSMETADATA.fields_by_name['scheduling_metadata'].message_type = chromiumos_dot_test_dot_artifact_dot_test__result__pb2._SCHEDULINGMETADATA
+_PUBLISHANTSMETADATA.fields_by_name['atp_environment'].enum_type = _PUBLISHANTSMETADATA_ATPENVIRONMENT
+_PUBLISHANTSMETADATA_ATPENVIRONMENT.containing_type = _PUBLISHANTSMETADATA
 DESCRIPTOR.message_types_by_name['PublishAntsMetadata'] = _PUBLISHANTSMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
