@@ -2663,13 +2663,13 @@
 					"value": "tast.debugd.Printer"
 				},
 				{
-					"value": "tast.diagnostics.MemoryRoutine"
+					"value": "tast.diagnostics.CheckCPURoutine"
+				},
+				{
+					"value": "tast.diagnostics.CheckMemoryRoutine"
 				},
 				{
 					"value": "tast.diagnostics.RenderApp"
-				},
-				{
-					"value": "tast.diagnostics.RoutineSection"
 				},
 				{
 					"value": "tast.dlp.DataLeakPreventionRulesListClipboard.ash_warn_proceeded"
@@ -2805,12 +2805,6 @@
 				},
 				{
 					"value": "tast.firmware.FlashromWriteProtect"
-				},
-				{
-					"value": "tast.firmware.FwupdDetectPS175"
-				},
-				{
-					"value": "tast.firmware.FwupdDetectRTD2142"
 				},
 				{
 					"value": "tast.firmware.FwupdGetDevices"
@@ -6615,9 +6609,6 @@
 					"value": "tast.firmware.ECLidSwitch.open_lid_to_unsuspend"
 				},
 				{
-					"value": "tast.firmware.ECPDRole"
-				},
-				{
 					"value": "tast.firmware.ECPowerButton"
 				},
 				{
@@ -6783,6 +6774,9 @@
 				},
 				{
 					"value": "tast.firmware.ECPDPowerSwap.suspend"
+				},
+				{
+					"value": "tast.firmware.ECPDRole"
 				},
 				{
 					"value": "tast.firmware.ECPDTrysrc.flipcc"

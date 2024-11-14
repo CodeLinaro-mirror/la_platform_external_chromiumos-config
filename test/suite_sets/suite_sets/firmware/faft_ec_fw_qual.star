@@ -48,7 +48,6 @@ def _faft_ec_fw_qual():
             "tast.firmware.ECLidSwitch.close_lid_to_shutdown",
             "tast.firmware.ECLidSwitch.open_lid_to_boot",
             "tast.firmware.ECLidSwitch.open_lid_to_unsuspend",
-            "tast.firmware.ECPDRole",
             "tast.firmware.ECPowerButton",
             "tast.firmware.ECPowerG3.power_button",
             "tast.firmware.ECPowerG3.power_state_snk",

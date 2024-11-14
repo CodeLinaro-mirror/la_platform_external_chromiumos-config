@@ -31,6 +31,7 @@ def _faft_pd():
             "tast.firmware.ECPDPowerSwap.normal_stress",
             "tast.firmware.ECPDPowerSwap.shutdown",
             "tast.firmware.ECPDPowerSwap.suspend",
+            "tast.firmware.ECPDRole",
             "tast.firmware.ECPDTrysrc.flipcc",
             "tast.firmware.ECPDTrysrc.normal",
             "tast.firmware.ECWakeFromULP.lid_switch",
