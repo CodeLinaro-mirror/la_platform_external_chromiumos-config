@@ -24909,9 +24909,36 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "partnerMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "partner_metadata",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PartnerMetadata"
             }
           ],
           "name": "InstallRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "accountId",
+              "label": "LABEL_OPTIONAL",
+              "name": "account_id",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "partnerGcsBucket",
+              "label": "LABEL_OPTIONAL",
+              "name": "partner_gcs_bucket",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PartnerMetadata"
         }
       ],
       "name": "chromiumos/test/api/provision.proto",

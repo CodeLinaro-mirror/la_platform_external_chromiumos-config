@@ -136,5 +136,14 @@ message InstallRequest {
   StoragePath overwrite_payload = 3;
   // Specific metadata to the install flavor. May be ignored if unneeded.
   google.protobuf.Any metadata = 4;
+  // Provides partner specific metadata for install request.
+  PartnerMetadata partner_metadata = 5;
 }
 
+// PartnerMetadata determines any configuration around Partner settings.
+message PartnerMetadata {
+  // Account ID for the partner.
+  int64 account_id = 1;
+  // The bucket with the partner images and artifacts
+  string partner_gcs_bucket = 2;
+}
