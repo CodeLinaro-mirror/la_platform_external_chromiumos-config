@@ -4244,6 +4244,9 @@
 					"value": "tast.network.VPNDNS.wireguard_ipv6"
 				},
 				{
+					"value": "tast.network.VPNMojoConf"
+				},
+				{
 					"value": "tast.network.VPNRouting.ikev2_ipv4"
 				},
 				{
@@ -4278,6 +4281,15 @@
 				},
 				{
 					"value": "tast.network.VPNRouting.wireguard_ipv6"
+				},
+				{
+					"value": "tast.network.VPNSourceRouting"
+				},
+				{
+					"value": "tast.network.VPNSplitRouting.ikev2"
+				},
+				{
+					"value": "tast.network.VPNSplitRouting.openvpn"
 				},
 				{
 					"value": "tast.network.WireguardCrosh"
