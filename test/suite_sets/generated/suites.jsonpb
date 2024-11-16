@@ -5552,6 +5552,12 @@
 					"value": "tast.firmware.CheckEOPState.get_eop_state"
 				},
 				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.dev"
+				},
+				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.normal"
+				},
+				{
 					"value": "tast.firmware.CorruptBothKernelCopies"
 				},
 				{
@@ -6118,6 +6124,12 @@
 					"value": "tast.firmware.CheckEOPState.get_eop_state"
 				},
 				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.dev"
+				},
+				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.normal"
+				},
+				{
 					"value": "tast.firmware.CorruptFW.body_dev"
 				},
 				{
@@ -6565,6 +6577,12 @@
 				},
 				{
 					"value": "tast.firmware.CheckKeyboardBacklightFunctionality.lid_close_and_open"
+				},
+				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.dev"
+				},
+				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.normal"
 				},
 				{
 					"value": "tast.firmware.ECADC"

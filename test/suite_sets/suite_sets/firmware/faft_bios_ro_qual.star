@@ -33,6 +33,8 @@ def _faft_bios_ro_qual():
             "tast.firmware.BrokenToDev",
             "tast.firmware.CheckEOPState.get_boot_state",
             "tast.firmware.CheckEOPState.get_eop_state",
+            "tast.firmware.CorruptBothFWSigABAndEC.dev",
+            "tast.firmware.CorruptBothFWSigABAndEC.normal",
             "tast.firmware.CorruptBothKernelCopies",
             "tast.firmware.CorruptBothMiniOSAB",
             "tast.firmware.CorruptBothSignedAMDFWAB.dev_mode",

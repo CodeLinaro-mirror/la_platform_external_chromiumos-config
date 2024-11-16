@@ -30,6 +30,8 @@ def _faft_ec_fw_qual():
             "tast.firmware.BootTime.zork",
             "tast.firmware.CheckKeyboardBacklightFunctionality",
             "tast.firmware.CheckKeyboardBacklightFunctionality.lid_close_and_open",
+            "tast.firmware.CorruptBothFWSigABAndEC.dev",
+            "tast.firmware.CorruptBothFWSigABAndEC.normal",
             "tast.firmware.ECADC",
             "tast.firmware.ECBattery",
             "tast.firmware.ECCbi",
