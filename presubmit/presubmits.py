@@ -67,7 +67,7 @@ def CheckChecker(input_api, output_api,
   """
   results = []
 
-  cmd = [checker_cmd]
+  cmd = ["vpython3", "-vpython-spec", "./config/.vpython", checker_cmd]
   cmd.extend(['--program', program])
   cmd.extend(['--project', project])
   cmd.extend(['--factory_dir', factory_dir])
