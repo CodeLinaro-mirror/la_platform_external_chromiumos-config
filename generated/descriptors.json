@@ -19351,6 +19351,14 @@
               "name": "serial",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.PeripheralState"
             }
           ],
           "name": "Servo"

@@ -377,6 +377,8 @@ message Servo {
   IpEndpoint servod_address = 2;
   // Serial number of the servo.
   string serial = 3;
+  // Current state of the servo, updated by latest auto-repair.
+  PeripheralState state = 4;
 }
 
 message Touch {

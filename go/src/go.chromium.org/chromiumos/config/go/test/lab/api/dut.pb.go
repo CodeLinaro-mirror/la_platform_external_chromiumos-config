@@ -2079,6 +2079,8 @@ type Servo struct {
 	ServodAddress *IpEndpoint `protobuf:"bytes,2,opt,name=servod_address,json=servodAddress,proto3" json:"servod_address,omitempty"`
 	// Serial number of the servo.
 	Serial string `protobuf:"bytes,3,opt,name=serial,proto3" json:"serial,omitempty"`
+	// Current state of the servo, updated by latest auto-repair.
+	State PeripheralState `protobuf:"varint,4,opt,name=state,proto3,enum=chromiumos.test.lab.api.PeripheralState" json:"state,omitempty"`
 }
 
 func (x *Servo) Reset() {
@@ -2132,6 +2134,13 @@ func (x *Servo) GetSerial() string {
 		return x.Serial
 	}
 	return ""
+}
+
+func (x *Servo) GetState() PeripheralState {
+	if x != nil {
+		return x.State
+	}
+	return PeripheralState_PERIPHERAL_STATE_UNSPECIFIED
 }
 
 type Touch struct {
@@ -3221,7 +3230,7 @@ var file_chromiumos_test_lab_api_dut_proto_rawDesc = []byte{
 	0x61, 0x6d, 0x65, 0x12, 0x34, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28,
 	0x0e, 0x32, 0x20, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74,
 	0x65, 0x73, 0x74, 0x2e, 0x6c, 0x61, 0x62, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x52, 0x50, 0x4d, 0x54,
-	0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0x85, 0x01, 0x0a, 0x05, 0x53, 0x65,
+	0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0xc5, 0x01, 0x0a, 0x05, 0x53, 0x65,
 	0x72, 0x76, 0x6f, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x72, 0x65, 0x73, 0x65, 0x6e, 0x74, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x70, 0x72, 0x65, 0x73, 0x65, 0x6e, 0x74, 0x12, 0x4a, 0x0a,
 	0x0e, 0x73, 0x65, 0x72, 0x76, 0x6f, 0x64, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18,
@@ -3230,7 +3239,11 @@ var file_chromiumos_test_lab_api_dut_proto_rawDesc = []byte{
 	0x49, 0x70, 0x45, 0x6e, 0x64, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x0d, 0x73, 0x65, 0x72, 0x76,
 	0x6f, 0x64, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x65, 0x72,
 	0x69, 0x61, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x65, 0x72, 0x69, 0x61,
-	0x6c, 0x22, 0x1b, 0x0a, 0x05, 0x54, 0x6f, 0x75, 0x63, 0x68, 0x12, 0x12, 0x0a, 0x04, 0x6d, 0x69,
+	0x6c, 0x12, 0x3e, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0e,
+	0x32, 0x28, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x74, 0x65,
+	0x73, 0x74, 0x2e, 0x6c, 0x61, 0x62, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x50, 0x65, 0x72, 0x69, 0x70,
+	0x68, 0x65, 0x72, 0x61, 0x6c, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74,
+	0x65, 0x22, 0x1b, 0x0a, 0x05, 0x54, 0x6f, 0x75, 0x63, 0x68, 0x12, 0x12, 0x0a, 0x04, 0x6d, 0x69,
 	0x6d, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x04, 0x6d, 0x69, 0x6d, 0x6f, 0x22, 0xfc,
 	0x01, 0x0a, 0x04, 0x57, 0x69, 0x66, 0x69, 0x12, 0x4b, 0x0a, 0x0b, 0x65, 0x6e, 0x76, 0x69, 0x72,
 	0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x29, 0x2e, 0x63,
@@ -3460,37 +3473,38 @@ var file_chromiumos_test_lab_api_dut_proto_depIdxs = []int32{
 	41, // 24: chromiumos.test.lab.api.RPM.hydra_hostname:type_name -> chromiumos.test.lab.api.IpEndpoint
 	3,  // 25: chromiumos.test.lab.api.RPM.type:type_name -> chromiumos.test.lab.api.RPMType
 	41, // 26: chromiumos.test.lab.api.Servo.servod_address:type_name -> chromiumos.test.lab.api.IpEndpoint
-	14, // 27: chromiumos.test.lab.api.Wifi.environment:type_name -> chromiumos.test.lab.api.Wifi.Environment
-	33, // 28: chromiumos.test.lab.api.Wifi.antenna:type_name -> chromiumos.test.lab.api.WifiAntenna
-	15, // 29: chromiumos.test.lab.api.WifiAntenna.connection:type_name -> chromiumos.test.lab.api.WifiAntenna.Connection
-	4,  // 30: chromiumos.test.lab.api.BluetoothPeer.state:type_name -> chromiumos.test.lab.api.PeripheralState
-	42, // 31: chromiumos.test.lab.api.Dut.ChromeOS.device_config_id:type_name -> chromiumos.config.api.DeviceConfigId
-	41, // 32: chromiumos.test.lab.api.Dut.ChromeOS.ssh:type_name -> chromiumos.test.lab.api.IpEndpoint
-	17, // 33: chromiumos.test.lab.api.Dut.ChromeOS.dut_model:type_name -> chromiumos.test.lab.api.DutModel
-	30, // 34: chromiumos.test.lab.api.Dut.ChromeOS.servo:type_name -> chromiumos.test.lab.api.Servo
-	27, // 35: chromiumos.test.lab.api.Dut.ChromeOS.chameleon:type_name -> chromiumos.test.lab.api.Chameleon
-	29, // 36: chromiumos.test.lab.api.Dut.ChromeOS.rpm:type_name -> chromiumos.test.lab.api.RPM
-	28, // 37: chromiumos.test.lab.api.Dut.ChromeOS.external_cameras:type_name -> chromiumos.test.lab.api.ExternalCamera
-	19, // 38: chromiumos.test.lab.api.Dut.ChromeOS.audio:type_name -> chromiumos.test.lab.api.Audio
-	32, // 39: chromiumos.test.lab.api.Dut.ChromeOS.wifi:type_name -> chromiumos.test.lab.api.Wifi
-	31, // 40: chromiumos.test.lab.api.Dut.ChromeOS.touch:type_name -> chromiumos.test.lab.api.Touch
-	22, // 41: chromiumos.test.lab.api.Dut.ChromeOS.camerabox:type_name -> chromiumos.test.lab.api.Camerabox
-	20, // 42: chromiumos.test.lab.api.Dut.ChromeOS.cables:type_name -> chromiumos.test.lab.api.Cable
-	23, // 43: chromiumos.test.lab.api.Dut.ChromeOS.cellular:type_name -> chromiumos.test.lab.api.Cellular
-	34, // 44: chromiumos.test.lab.api.Dut.ChromeOS.bluetooth_peers:type_name -> chromiumos.test.lab.api.BluetoothPeer
-	5,  // 45: chromiumos.test.lab.api.Dut.ChromeOS.phase:type_name -> chromiumos.test.lab.api.Phase
-	25, // 46: chromiumos.test.lab.api.Dut.ChromeOS.sim_infos:type_name -> chromiumos.test.lab.api.SIMInfo
-	24, // 47: chromiumos.test.lab.api.Dut.ChromeOS.modem_info:type_name -> chromiumos.test.lab.api.ModemInfo
-	43, // 48: chromiumos.test.lab.api.Dut.ChromeOS.pasit_host:type_name -> chromiumos.test.lab.api.PasitHost
-	41, // 49: chromiumos.test.lab.api.Dut.Android.associated_hostname:type_name -> chromiumos.test.lab.api.IpEndpoint
-	17, // 50: chromiumos.test.lab.api.Dut.Android.dut_model:type_name -> chromiumos.test.lab.api.DutModel
-	30, // 51: chromiumos.test.lab.api.Dut.Devboard.servo:type_name -> chromiumos.test.lab.api.Servo
-	17, // 52: chromiumos.test.lab.api.Dut.Devboard.dut_model:type_name -> chromiumos.test.lab.api.DutModel
-	53, // [53:53] is the sub-list for method output_type
-	53, // [53:53] is the sub-list for method input_type
-	53, // [53:53] is the sub-list for extension type_name
-	53, // [53:53] is the sub-list for extension extendee
-	0,  // [0:53] is the sub-list for field type_name
+	4,  // 27: chromiumos.test.lab.api.Servo.state:type_name -> chromiumos.test.lab.api.PeripheralState
+	14, // 28: chromiumos.test.lab.api.Wifi.environment:type_name -> chromiumos.test.lab.api.Wifi.Environment
+	33, // 29: chromiumos.test.lab.api.Wifi.antenna:type_name -> chromiumos.test.lab.api.WifiAntenna
+	15, // 30: chromiumos.test.lab.api.WifiAntenna.connection:type_name -> chromiumos.test.lab.api.WifiAntenna.Connection
+	4,  // 31: chromiumos.test.lab.api.BluetoothPeer.state:type_name -> chromiumos.test.lab.api.PeripheralState
+	42, // 32: chromiumos.test.lab.api.Dut.ChromeOS.device_config_id:type_name -> chromiumos.config.api.DeviceConfigId
+	41, // 33: chromiumos.test.lab.api.Dut.ChromeOS.ssh:type_name -> chromiumos.test.lab.api.IpEndpoint
+	17, // 34: chromiumos.test.lab.api.Dut.ChromeOS.dut_model:type_name -> chromiumos.test.lab.api.DutModel
+	30, // 35: chromiumos.test.lab.api.Dut.ChromeOS.servo:type_name -> chromiumos.test.lab.api.Servo
+	27, // 36: chromiumos.test.lab.api.Dut.ChromeOS.chameleon:type_name -> chromiumos.test.lab.api.Chameleon
+	29, // 37: chromiumos.test.lab.api.Dut.ChromeOS.rpm:type_name -> chromiumos.test.lab.api.RPM
+	28, // 38: chromiumos.test.lab.api.Dut.ChromeOS.external_cameras:type_name -> chromiumos.test.lab.api.ExternalCamera
+	19, // 39: chromiumos.test.lab.api.Dut.ChromeOS.audio:type_name -> chromiumos.test.lab.api.Audio
+	32, // 40: chromiumos.test.lab.api.Dut.ChromeOS.wifi:type_name -> chromiumos.test.lab.api.Wifi
+	31, // 41: chromiumos.test.lab.api.Dut.ChromeOS.touch:type_name -> chromiumos.test.lab.api.Touch
+	22, // 42: chromiumos.test.lab.api.Dut.ChromeOS.camerabox:type_name -> chromiumos.test.lab.api.Camerabox
+	20, // 43: chromiumos.test.lab.api.Dut.ChromeOS.cables:type_name -> chromiumos.test.lab.api.Cable
+	23, // 44: chromiumos.test.lab.api.Dut.ChromeOS.cellular:type_name -> chromiumos.test.lab.api.Cellular
+	34, // 45: chromiumos.test.lab.api.Dut.ChromeOS.bluetooth_peers:type_name -> chromiumos.test.lab.api.BluetoothPeer
+	5,  // 46: chromiumos.test.lab.api.Dut.ChromeOS.phase:type_name -> chromiumos.test.lab.api.Phase
+	25, // 47: chromiumos.test.lab.api.Dut.ChromeOS.sim_infos:type_name -> chromiumos.test.lab.api.SIMInfo
+	24, // 48: chromiumos.test.lab.api.Dut.ChromeOS.modem_info:type_name -> chromiumos.test.lab.api.ModemInfo
+	43, // 49: chromiumos.test.lab.api.Dut.ChromeOS.pasit_host:type_name -> chromiumos.test.lab.api.PasitHost
+	41, // 50: chromiumos.test.lab.api.Dut.Android.associated_hostname:type_name -> chromiumos.test.lab.api.IpEndpoint
+	17, // 51: chromiumos.test.lab.api.Dut.Android.dut_model:type_name -> chromiumos.test.lab.api.DutModel
+	30, // 52: chromiumos.test.lab.api.Dut.Devboard.servo:type_name -> chromiumos.test.lab.api.Servo
+	17, // 53: chromiumos.test.lab.api.Dut.Devboard.dut_model:type_name -> chromiumos.test.lab.api.DutModel
+	54, // [54:54] is the sub-list for method output_type
+	54, // [54:54] is the sub-list for method input_type
+	54, // [54:54] is the sub-list for extension type_name
+	54, // [54:54] is the sub-list for extension extendee
+	0,  // [0:54] is the sub-list for field type_name
 }
 
 func init() { file_chromiumos_test_lab_api_dut_proto_init() }
