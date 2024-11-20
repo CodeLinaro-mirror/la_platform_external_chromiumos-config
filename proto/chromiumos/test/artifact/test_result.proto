@@ -31,7 +31,7 @@ message TestResult {
 }
 
 // Captures invocation-level information for test results.
-// NEXT TAG: 13
+// NEXT TAG: 14
 message TestInvocation {
   // The test environment specific information.
   TestEnvironment test_environment = 1;
@@ -89,6 +89,9 @@ message TestInvocation {
 
   // Partner info associated with the test run.
   PartnerInfo partner_info = 9;
+
+  // 3D equivalence classes (EqC) info associated with the test run.
+  EqcInfo eqc_info = 13;
 }
 
 // Captures the test environment that produced the test invocation,
@@ -122,6 +125,28 @@ message TestEnvironment {
   // All the ancestor ids of this test environment. The order represents the
   // relationship of the ancestors and the first one is the root.
   repeated Id ancestor_ids = 2;
+}
+
+// Captures the 3D equivalence classes (EqC) information.
+// NEXT TAG: 5
+message EqcInfo {
+    // Unique hash for an EqC from the 3D source.
+    // Example: "A310930190d11"
+    string eqc_hash = 1;
+
+    // Optional. Human readable name for an EqC. Set by the user in the 3D
+    // source.
+    // Example: "IntelRaptorLakeKernelNext"
+    string eqc_name = 2;
+
+    // EqC category expression name which is set on the test.
+    // Example: "WifiBtChipset_Soc_Kernel_80211_AX"
+    string eqc_category_expression = 3;
+
+    // A map of dimension names and values for an EqC. The dimension names
+    // should be aligned with the EqC category expression.
+    // Example: {"wifiChip":"bar", "soc":"foo"}
+    map<string, string> eqc_dimensions = 4;
 }
 
 // Captures information regarding a test run.

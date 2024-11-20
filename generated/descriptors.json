@@ -29602,6 +29602,14 @@
               "number": 9,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.PartnerInfo"
+            },
+            {
+              "jsonName": "eqcInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_info",
+              "number": 13,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.EqcInfo"
             }
           ],
           "name": "TestInvocation",
@@ -29669,6 +29677,64 @@
                 }
               ],
               "name": "Id"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "eqcHash",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_hash",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcName",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcCategoryExpression",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_category_expression",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcDimensions",
+              "label": "LABEL_REPEATED",
+              "name": "eqc_dimensions",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.EqcInfo.EqcDimensionsEntry"
+            }
+          ],
+          "name": "EqcInfo",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "EqcDimensionsEntry",
+              "options": {
+                "mapEntry": true
+              }
             }
           ]
         },
