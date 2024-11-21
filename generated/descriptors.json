@@ -31606,6 +31606,53 @@
         {
           "field": [
             {
+              "jsonName": "alRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "al_run",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "product",
+              "label": "LABEL_OPTIONAL",
+              "name": "product",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "build",
+              "label": "LABEL_OPTIONAL",
+              "name": "build",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "parentSwarmingTaskId",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent_swarming_task_id",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "resultsGcsPrefix",
+              "label": "LABEL_OPTIONAL",
+              "name": "results_gcs_prefix",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "apfeGcsPrefix",
+              "label": "LABEL_OPTIONAL",
+              "name": "apfe_gcs_prefix",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "XtsArchiverMetadata"
+        },
+        {
+          "field": [
+            {
               "jsonName": "gcsPath",
               "label": "LABEL_OPTIONAL",
               "name": "gcs_path",
@@ -31620,6 +31667,14 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "xtsArchiverMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "xts_archiver_metadata",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.XtsArchiverMetadata"
             }
           ],
           "name": "PublishGcsMetadata"
