@@ -22963,6 +22963,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetGscInfoRequest"
+            },
+            {
+              "jsonName": "getServoInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_servo_info_request",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetServoInfoRequest"
             }
           ],
           "name": "Request",

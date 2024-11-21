@@ -63,7 +63,7 @@ message RunActivityRequest {
   Request request = 1;
 }
 
-// NEXT TAG: 6
+// NEXT TAG: 7
 message Request {
   oneof request {
     GetFWInfoRequest get_fw_info_request = 1;
@@ -71,6 +71,7 @@ message Request {
     GetGfxInfoRequest get_gfx_info_request = 3;
     GetAvlInfoRequest get_avl_info_request = 4;
     GetGscInfoRequest get_gsc_info_request = 5;
+    GetServoInfoRequest get_servo_info_request = 6;
   }
 }
 
