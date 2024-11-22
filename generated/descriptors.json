@@ -7284,6 +7284,14 @@
                   "number": 5,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "validAdid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "valid_adid",
+                  "number": 6,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "TrustedPlatformModule"

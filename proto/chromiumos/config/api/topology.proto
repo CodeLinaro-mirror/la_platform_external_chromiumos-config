@@ -881,6 +881,10 @@ message HardwareFeatures {
 
     // Whether the TPM has NVRAM space used for enterprise rollback.
     Present enterprise_rollback_space = 5;
+
+    // Whether GSC ADID is valid. This is true if there's a valid
+    // attested_device_id in the RO_VPD that matches the sn bits stored in GSC.
+    Present valid_adid = 6;
   }
   TrustedPlatformModule trusted_platform_module = 25;
 
