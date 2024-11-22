@@ -45,7 +45,7 @@ message XtsArchiverMetadata {
   string apfe_gcs_prefix = 6;
 }
 
-// NEXT TAG: 4
+// NEXT TAG: 5
 message PublishGcsMetadata {
   // GCS location where artifacts will be uploaded.
   StoragePath gcs_path = 1;
@@ -54,4 +54,7 @@ message PublishGcsMetadata {
 
   // Metadata for the XTS archiving process.
   XtsArchiverMetadata xts_archiver_metadata = 3;
+
+  // Whether to include the step to archive XTS results.
+  bool enable_xts_archiver = 4;
 }

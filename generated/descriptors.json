@@ -31692,6 +31692,13 @@
               "number": 3,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.XtsArchiverMetadata"
+            },
+            {
+              "jsonName": "enableXtsArchiver",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable_xts_archiver",
+              "number": 4,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "PublishGcsMetadata"
