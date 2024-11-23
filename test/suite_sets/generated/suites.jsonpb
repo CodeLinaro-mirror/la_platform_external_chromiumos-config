@@ -3128,6 +3128,18 @@
 					"value": "tast.health.ProbeBootPerformanceInfo"
 				},
 				{
+					"value": "tast.health.ProbeBusInfo"
+				},
+				{
+					"value": "tast.health.ProbeBusInfo.progif"
+				},
+				{
+					"value": "tast.health.ProbeBusInfo.thunderbolt"
+				},
+				{
+					"value": "tast.health.ProbeCPUInfo"
+				},
+				{
 					"value": "tast.health.ProbeDisplayInfo"
 				},
 				{
@@ -3147,6 +3159,9 @@
 				},
 				{
 					"value": "tast.health.ProbeInputInfo.with_touchpad_flex"
+				},
+				{
+					"value": "tast.health.ProbeMemoryInfo"
 				},
 				{
 					"value": "tast.health.ProbeNetworkInfo"
@@ -3174,6 +3189,9 @@
 				},
 				{
 					"value": "tast.health.ProbeTpmInfo"
+				},
+				{
+					"value": "tast.health.ProbeWifiInfo"
 				},
 				{
 					"value": "tast.health.RunBluetoothRoutine.v1_discovery_bluez"
