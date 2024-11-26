@@ -35931,6 +35931,713 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "dependency": [
+        "google/protobuf/duration.proto"
+      ],
+      "enumType": [
+        {
+          "name": "Capability",
+          "value": [
+            {
+              "name": "CAPABILITY_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "PIN_ASSIGMENT",
+              "number": 1
+            },
+            {
+              "name": "USB_CHANNEL",
+              "number": 2
+            },
+            {
+              "name": "POWER_ROLE",
+              "number": 3
+            },
+            {
+              "name": "DATA_ROLE",
+              "number": 4
+            },
+            {
+              "name": "ACTIVE_CC",
+              "number": 5
+            },
+            {
+              "name": "CABLE_MODE",
+              "number": 6
+            },
+            {
+              "name": "INIT_PD_STATE",
+              "number": 7
+            },
+            {
+              "name": "CURRENT_LOAD",
+              "number": 9
+            },
+            {
+              "name": "SRC_PULL_UP",
+              "number": 10
+            },
+            {
+              "name": "SNK_PDO_COUNT",
+              "number": 11
+            },
+            {
+              "name": "SRC_PDO_COUNT",
+              "number": 12
+            },
+            {
+              "name": "VBUS_VOLTAGE",
+              "number": 13
+            },
+            {
+              "name": "VBUS_CURRENT",
+              "number": 14
+            },
+            {
+              "name": "VBUS_CURRENT_LANE",
+              "number": 15
+            },
+            {
+              "name": "GND_CURRENT_LANE",
+              "number": 16
+            },
+            {
+              "name": "VBUS_EPU_VOLTAGE",
+              "number": 17
+            },
+            {
+              "name": "VBUS_CC1",
+              "number": 18
+            },
+            {
+              "name": "VBUS_CC2",
+              "number": 19
+            },
+            {
+              "name": "VBUS_SBU1",
+              "number": 20
+            },
+            {
+              "name": "VBUS_SBU2",
+              "number": 21
+            }
+          ]
+        },
+        {
+          "name": "ActiveCc",
+          "value": [
+            {
+              "name": "ACTIVE_CC_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "CC1",
+              "number": 1
+            },
+            {
+              "name": "CC2",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "PinAassignment",
+          "value": [
+            {
+              "name": "PIN_AASSIGNMENT_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "C",
+              "number": 1
+            },
+            {
+              "name": "D",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "PowerRole",
+          "value": [
+            {
+              "name": "POWER_ROLE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "SNK",
+              "number": 1
+            },
+            {
+              "name": "SRC",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "DataRole",
+          "value": [
+            {
+              "name": "DATA_ROLE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "DATA_UFP",
+              "number": 1
+            },
+            {
+              "name": "DATA_DFP",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "UsbChannel",
+          "value": [
+            {
+              "name": "USB_CHANNEL_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "USB_2_HS",
+              "number": 1
+            },
+            {
+              "name": "USB_3_AND_2_HS",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "CableMode",
+          "value": [
+            {
+              "name": "CABLE_MODE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "NORMAL",
+              "number": 1
+            },
+            {
+              "name": "ELEC_TEST",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "InitPdState",
+          "value": [
+            {
+              "name": "INIT_PD_STATE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "PD_UFP",
+              "number": 1
+            },
+            {
+              "name": "PD_DFP",
+              "number": 2
+            },
+            {
+              "name": "PD_DRP",
+              "number": 3
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "HardResetTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "HardResetTesterReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DoCableReplugRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DoCableReplugReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "OpenTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "OpenTesterReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CloseTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CloseTesterReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "UsbTester"
+        },
+        {
+          "name": "GetTestersRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testers",
+              "label": "LABEL_REPEATED",
+              "name": "testers",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.UsbTester"
+            }
+          ],
+          "name": "GetTestersReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "capability",
+              "label": "LABEL_OPTIONAL",
+              "name": "capability",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Capability"
+            }
+          ],
+          "name": "GetUsbTesterCapabilityRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "activeCc",
+              "label": "LABEL_OPTIONAL",
+              "name": "active_cc",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.ActiveCc"
+            },
+            {
+              "jsonName": "pinMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "pin_mode",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PinAassignment"
+            },
+            {
+              "jsonName": "powerRole",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PowerRole"
+            },
+            {
+              "jsonName": "dataRole",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DataRole"
+            },
+            {
+              "jsonName": "usbChannel",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_channel",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.UsbChannel"
+            },
+            {
+              "jsonName": "cableMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "cable_mode",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.CableMode"
+            },
+            {
+              "jsonName": "initPdState",
+              "label": "LABEL_OPTIONAL",
+              "name": "init_pd_state",
+              "number": 9,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.InitPdState"
+            },
+            {
+              "jsonName": "nonDescrete",
+              "label": "LABEL_OPTIONAL",
+              "name": "non_descrete",
+              "number": 10,
+              "oneofIndex": 0,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "GetUsbTesterCapabilityReply",
+          "oneofDecl": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "delay",
+              "label": "LABEL_OPTIONAL",
+              "name": "delay",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "timeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "timeout",
+              "number": 3,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "capability",
+              "label": "LABEL_OPTIONAL",
+              "name": "capability",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Capability"
+            },
+            {
+              "jsonName": "activeCc",
+              "label": "LABEL_OPTIONAL",
+              "name": "active_cc",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.ActiveCc"
+            },
+            {
+              "jsonName": "pinMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "pin_mode",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PinAassignment"
+            },
+            {
+              "jsonName": "powerRole",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PowerRole"
+            },
+            {
+              "jsonName": "dataRole",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DataRole"
+            },
+            {
+              "jsonName": "usbChannel",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_channel",
+              "number": 9,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.UsbChannel"
+            },
+            {
+              "jsonName": "cableMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "cable_mode",
+              "number": 10,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.CableMode"
+            },
+            {
+              "jsonName": "initPdState",
+              "label": "LABEL_OPTIONAL",
+              "name": "init_pd_state",
+              "number": 11,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.InitPdState"
+            },
+            {
+              "jsonName": "nonDescrete",
+              "label": "LABEL_OPTIONAL",
+              "name": "non_descrete",
+              "number": 12,
+              "oneofIndex": 0,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "SetUsbTesterCapabilityRequest",
+          "oneofDecl": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "_delay"
+            },
+            {
+              "name": "_timeout"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 2,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 3,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SetUsbTesterCapabilityReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/usb_tester_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetTestersRequest",
+              "name": "GetTesters",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetTestersReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetUsbTesterCapabilityRequest",
+              "name": "GetTesterCapability",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetUsbTesterCapabilityReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SetUsbTesterCapabilityRequest",
+              "name": "SetTesterCapability",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.SetUsbTesterCapabilityReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.DoCableReplugRequest",
+              "name": "ReplugCable",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.DoCableReplugReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.HardResetTesterRequest",
+              "name": "HardResetTester",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.HardResetTesterReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.OpenTesterRequest",
+              "name": "OpenTester",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.OpenTesterReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.CloseTesterRequest",
+              "name": "CloseTester",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.CloseTesterReply"
+            }
+          ],
+          "name": "UsbTesterService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [

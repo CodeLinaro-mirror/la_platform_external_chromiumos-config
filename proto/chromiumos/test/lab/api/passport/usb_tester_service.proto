@@ -1,0 +1,254 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api.passport;
+
+import "google/protobuf/duration.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/passport";
+
+service UsbTesterService {
+  // Probe all testers connected to the host device.
+  rpc GetTesters(GetTestersRequest) returns (GetTestersReply) {}
+
+  // Get the value of a certain capability, eg: data role, power role etc ...
+  rpc GetTesterCapability (GetUsbTesterCapabilityRequest) returns (GetUsbTesterCapabilityReply) {}
+
+  // Set the value of a certain capability, eg: data role, power role etc ...
+  rpc SetTesterCapability (SetUsbTesterCapabilityRequest) returns (SetUsbTesterCapabilityReply) {}
+
+  // Simulate the physical disconnect and reconnect of the cable between the
+  // tester and the DUT.
+  rpc ReplugCable(DoCableReplugRequest) returns (DoCableReplugReply) {}
+
+  // This method is used to do a hard reset.
+  rpc HardResetTester(HardResetTesterRequest) returns (HardResetTesterReply) {}
+
+  // This method is used to open the serial of the USB tester being used.
+  rpc OpenTester(OpenTesterRequest) returns (OpenTesterReply) {}
+
+  // This method is used to close the serial of the USB tester being used.
+  rpc CloseTester(CloseTesterRequest) returns (CloseTesterReply) {}
+}
+
+// Request to do hard reset.
+message HardResetTesterRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+}
+
+// Reply message for the HardResetTesterReply message
+message HardResetTesterReply {
+  // Error code indicating the success or failure of the open operation.
+  // 0 indicates success, while other values represent specific errors.
+  int64 err_code = 1;
+  // Human-readable error message providing more details about any errors encountered.
+  string error_msg = 2;
+}
+
+// Request to do a simulated cable replug.
+message DoCableReplugRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+}
+
+// Reply message for the DoCableReplugRequest message
+message DoCableReplugReply {
+    // Error code indicating the success or failure of the open operation.
+    // 0 indicates success, while other values represent specific errors.
+    int64 err_code = 1;
+    // Human-readable error message providing more details about any errors encountered.
+    string error_msg = 2;
+}
+
+// Request to open the serial of the usb tester.
+message OpenTesterRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+}
+
+// Reply to OpenTesterRequest.
+message OpenTesterReply {
+  // Error code indicating the success or failure of the open operation.
+  // 0 indicates success, while other values represent specific errors.
+  int64 err_code = 1;
+  // Human-readable error message providing more details about any errors encountered.
+  string error_msg = 2;
+}
+
+// Request to close the serial of the usb tester.
+message CloseTesterRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+}
+
+// Reply to CloseTesterRequest.
+message CloseTesterReply {
+  // Error code indicating the success or failure of the close operation.
+  // 0 indicates success, while other values represent specific errors.
+  int64 err_code = 1;
+  // Human-readable error message providing more details about any errors encountered.
+  string error_msg = 2;
+}
+
+// Struct for representing a usb tester.
+message UsbTester{
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+
+  // This field indicates the manufacturer of the usb tester.
+  string name = 2;
+}
+
+// Request to retrieve a list of USB testers.
+message GetTestersRequest{}
+
+// Reply for GetTestersRequest.
+message GetTestersReply{
+  repeated UsbTester testers = 1;
+}
+
+// A USB tester capability is used to describe the attributes of a
+// USB tester.Examples: power role, data rola, vbus voltage, etc ...
+enum Capability {
+  CAPABILITY_NOT_SET = 0;
+  PIN_ASSIGMENT      = 1;
+  USB_CHANNEL        = 2;
+  POWER_ROLE         = 3;
+  DATA_ROLE          = 4;
+  ACTIVE_CC          = 5;
+  CABLE_MODE         = 6;
+  INIT_PD_STATE      = 7;
+  CURRENT_LOAD       = 9;
+  SRC_PULL_UP        = 10;
+  SNK_PDO_COUNT      = 11;
+  SRC_PDO_COUNT      = 12;
+  VBUS_VOLTAGE       = 13;
+  VBUS_CURRENT       = 14;
+  VBUS_CURRENT_LANE  = 15;
+  GND_CURRENT_LANE   = 16;
+  VBUS_EPU_VOLTAGE   = 17;
+  VBUS_CC1           = 18;
+  VBUS_CC2           = 19;
+  VBUS_SBU1          = 20;
+  VBUS_SBU2          = 21;
+}
+
+enum ActiveCc {
+  ACTIVE_CC_NOT_SET = 0;
+  CC1               = 1;
+  CC2               = 2;
+}
+
+enum PinAassignment {
+  PIN_AASSIGNMENT_NOT_SET = 0;
+  C                       = 1;
+  D                       = 2;
+}
+
+enum PowerRole {
+  POWER_ROLE_NOT_SET = 0;
+  SNK                = 1;
+  SRC                = 2;
+}
+
+enum DataRole {
+  DATA_ROLE_NOT_SET = 0;
+  DATA_UFP          = 1;
+  DATA_DFP          = 2;
+}
+
+enum UsbChannel {
+  USB_CHANNEL_NOT_SET = 0;
+  USB_2_HS            = 1;
+  USB_3_AND_2_HS      = 2;
+}
+
+enum CableMode {
+  CABLE_MODE_NOT_SET = 0;
+  NORMAL             = 1;
+  ELEC_TEST          = 2;
+}
+
+enum InitPdState {
+  INIT_PD_STATE_NOT_SET = 0;
+  PD_UFP                = 1;
+  PD_DFP                = 2;
+  PD_DRP                = 3;
+}
+
+// Request to get the value of a capability.
+message GetUsbTesterCapabilityRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+
+  // Indicates what capability the operation is targeting.
+  Capability capability = 2;
+}
+
+// Reply of GetUsbTesterCapabilityRequest.
+message GetUsbTesterCapabilityReply {
+  // Error code indicating the success or failure of the open operation.
+  // 0 indicates success, while other values represent specific errors.
+  int64 err_code = 1;
+
+  // Human-readable error message providing more details about any errors
+  // encountered.
+  optional string error_msg = 2;
+
+  // The value to be set. This can be either be a discrete value for well defined
+  // capabilities (power role, data role etc .. ) or a just a plain number for
+  // capabilities that can take on a big and not well defined range of values.
+  oneof value {
+    ActiveCc active_cc        = 3;
+    PinAassignment pin_mode   = 4;
+    PowerRole power_role      = 5;
+    DataRole data_role        = 6;
+    UsbChannel usb_channel    = 7;
+    CableMode cable_mode      = 8;
+    InitPdState init_pd_state = 9;
+    int64 non_descrete        = 10;
+  }
+}
+
+message SetUsbTesterCapabilityRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+
+  // Specifies the delay before doing the operation. This is optional. If left
+  // empty it will default to 0.
+  optional google.protobuf.Duration delay = 2;
+  // Specifies the max duration of the operation. This is optional. If left
+  // empty it will default to 0.
+  optional google.protobuf.Duration timeout = 3;
+
+  // Indicate what capability the operation is targeting.
+  Capability capability = 4;
+
+  // The value to be set. This can be either be a discrete value for well defined
+  // capabilities (power role, data role etc .. ) or a just a plain number for
+  // capabilities that can take on a big and not well defined range of values.
+  oneof value {
+    ActiveCc active_cc        = 5;
+    PinAassignment pin_mode   = 6;
+    PowerRole power_role      = 7;
+    DataRole data_role        = 8;
+    UsbChannel usb_channel    = 9;
+    CableMode cable_mode      = 10;
+    InitPdState init_pd_state = 11;
+    int64 non_descrete        = 12;
+  }
+}
+
+message SetUsbTesterCapabilityReply {
+    // Error code indicating the success or failure of the open operation.
+    // 0 indicates success, while other values represent specific errors.
+    int64 err_code = 2;
+
+    // Human-readable error message providing more details about any errors
+    // encountered.
+    optional string error_msg = 3;
+}
