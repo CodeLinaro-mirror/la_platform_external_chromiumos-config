@@ -22051,6 +22051,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Arg"
+            },
+            {
+              "jsonName": "publishServers",
+              "label": "LABEL_REPEATED",
+              "name": "publish_servers",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishServer"
             }
           ],
           "name": "CrosTestRequest",
@@ -22101,6 +22109,26 @@
               "name": "Device"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "address",
+              "label": "LABEL_OPTIONAL",
+              "name": "address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "PublishServer"
         },
         {
           "field": [
