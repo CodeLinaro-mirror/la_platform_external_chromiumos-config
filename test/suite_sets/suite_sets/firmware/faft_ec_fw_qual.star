@@ -32,6 +32,7 @@ def _faft_ec_fw_qual():
             "tast.firmware.CheckKeyboardBacklightFunctionality.lid_close_and_open",
             "tast.firmware.CorruptBothFWSigABAndEC.dev",
             "tast.firmware.CorruptBothFWSigABAndEC.normal",
+            "tast.firmware.DeepSleep",
             "tast.firmware.ECADC",
             "tast.firmware.ECBattery",
             "tast.firmware.ECCbi",

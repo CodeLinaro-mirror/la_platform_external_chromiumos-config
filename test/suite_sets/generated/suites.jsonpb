@@ -6591,6 +6591,9 @@
 					"value": "tast.firmware.CorruptBothFWSigABAndEC.normal"
 				},
 				{
+					"value": "tast.firmware.DeepSleep"
+				},
+				{
 					"value": "tast.firmware.ECADC"
 				},
 				{
@@ -6770,31 +6773,31 @@
 			},
 			"tests": [
 				{
-					"value": "tast.firmware.ECPDConnect.dtsoff"
+					"value": "tast.firmware.ECPDConnect.dts"
 				},
 				{
 					"value": "tast.firmware.ECPDConnect.flipcc"
 				},
 				{
-					"value": "tast.firmware.ECPDConnect.flipcc_dtsoff"
+					"value": "tast.firmware.ECPDConnect.flipcc_dts"
 				},
 				{
 					"value": "tast.firmware.ECPDConnect.normal"
 				},
 				{
-					"value": "tast.firmware.ECPDPowerSwap.dtsoff"
+					"value": "tast.firmware.ECPDPowerSwap.dts"
 				},
 				{
-					"value": "tast.firmware.ECPDPowerSwap.dtsoff_stress"
+					"value": "tast.firmware.ECPDPowerSwap.dts_stress"
 				},
 				{
 					"value": "tast.firmware.ECPDPowerSwap.flipcc"
 				},
 				{
-					"value": "tast.firmware.ECPDPowerSwap.flipcc_dtsoff"
+					"value": "tast.firmware.ECPDPowerSwap.flipcc_dts"
 				},
 				{
-					"value": "tast.firmware.ECPDPowerSwap.flipcc_dtsoff_stress"
+					"value": "tast.firmware.ECPDPowerSwap.flipcc_dts_stress"
 				},
 				{
 					"value": "tast.firmware.ECPDPowerSwap.flipcc_stress"
@@ -6827,19 +6830,19 @@
 					"value": "tast.firmware.ECWakeFromULP.power_button"
 				},
 				{
-					"value": "tast.firmware.PDDataSwap.dtsoff"
+					"value": "tast.firmware.PDDataSwap.dts"
 				},
 				{
-					"value": "tast.firmware.PDDataSwap.dtsoff_snk"
+					"value": "tast.firmware.PDDataSwap.dts_snk"
 				},
 				{
 					"value": "tast.firmware.PDDataSwap.flipcc"
 				},
 				{
-					"value": "tast.firmware.PDDataSwap.flipcc_dtsoff"
+					"value": "tast.firmware.PDDataSwap.flipcc_dts"
 				},
 				{
-					"value": "tast.firmware.PDDataSwap.flipcc_dtsoff_snk"
+					"value": "tast.firmware.PDDataSwap.flipcc_dts_snk"
 				},
 				{
 					"value": "tast.firmware.PDDataSwap.flipcc_snk"
@@ -6857,13 +6860,13 @@
 					"value": "tast.firmware.PDProtocol"
 				},
 				{
-					"value": "tast.firmware.PDResetHard.dtsoff"
+					"value": "tast.firmware.PDResetHard.dts"
 				},
 				{
 					"value": "tast.firmware.PDResetHard.flipcc"
 				},
 				{
-					"value": "tast.firmware.PDResetHard.flipcc_dtsoff"
+					"value": "tast.firmware.PDResetHard.flipcc_dts"
 				},
 				{
 					"value": "tast.firmware.PDResetHard.normal"
@@ -6872,13 +6875,13 @@
 					"value": "tast.firmware.PDResetHard.shutdown"
 				},
 				{
-					"value": "tast.firmware.PDResetSoft.dtsoff"
+					"value": "tast.firmware.PDResetSoft.dts"
 				},
 				{
 					"value": "tast.firmware.PDResetSoft.flipcc"
 				},
 				{
-					"value": "tast.firmware.PDResetSoft.flipcc_dtsoff"
+					"value": "tast.firmware.PDResetSoft.flipcc_dts"
 				},
 				{
 					"value": "tast.firmware.PDResetSoft.normal"
@@ -6887,13 +6890,13 @@
 					"value": "tast.firmware.PDResetSoft.shutdown"
 				},
 				{
-					"value": "tast.firmware.PDVbusRequest.dtsoff"
+					"value": "tast.firmware.PDVbusRequest.dts"
 				},
 				{
 					"value": "tast.firmware.PDVbusRequest.flipcc"
 				},
 				{
-					"value": "tast.firmware.PDVbusRequest.flipcc_dtsoff"
+					"value": "tast.firmware.PDVbusRequest.flipcc_dts"
 				},
 				{
 					"value": "tast.firmware.PDVbusRequest.normal"
