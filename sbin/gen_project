@@ -134,7 +134,7 @@ load("//config/util/brand_config.star", "brand_config")
 _ODMs = []
 _OEMs = []
 
-DESIGN_ID_${project^^} = design.create_design_id("${project}")
+DESIGN_ID_${project^^} = design.create_design_id("${project^}")
 
 _DESIGN_ID_LIST = [DESIGN_ID_${project^^}]
 
