@@ -651,6 +651,31 @@ message HardwareFeatures {
     // The default keyboard backlight percentage in the
     // absence of an ambient light sensor controlling the keyboard backlight.
     double no_als_brightness = 8;
+
+    // The number of keys on the left side of bottom row.
+    KeyboardBottomLeftLayout bottom_left_layout = 9;
+    enum KeyboardBottomLeftLayout {
+      KEYBOARD_BOTTOM_LEFT_LAYOUT_UNKNOWN = 0;
+      KEYBOARD_BOTTOM_LEFT_3_KEYS = 1;
+      KEYBOARD_BOTTOM_LEFT_4_KEYS = 2;
+    }
+
+    // The number of keys on the right side of bottom row.
+    KeyboardBottomRightLayout bottom_right_layout = 10;
+    enum KeyboardBottomRightLayout {
+      KEYBOARD_BOTTOM_RIGHT_LAYOUT_UNKNOWN = 0;
+      KEYBOARD_BOTTOM_RIGHT_2_KEYS = 1;
+      KEYBOARD_BOTTOM_RIGHT_3_KEYS = 2;
+      KEYBOARD_BOTTOM_RIGHT_4_KEYS = 3;
+    }
+
+    // The number of columns of numeric pad.
+    NumericPadLayout numeric_pad_layout = 11;
+    enum NumericPadLayout {
+        NUMERIC_PAD_LAYOUT_UNKNOWN = 0;
+        NUMERIC_PAD_3_COLUMN = 1;
+        NUMERIC_PAD_4_COLUMN = 2;
+    }
   }
 
   // Memory properties of system

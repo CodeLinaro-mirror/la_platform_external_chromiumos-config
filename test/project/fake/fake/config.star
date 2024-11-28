@@ -256,6 +256,16 @@ _BL_KEYBOARD = hw_topo.create_keyboard(
     mcu_type = hw_topo.kb_mcu_type.MCU_PRISM,
 )
 
+_KEYBOARD_WITH_LAYOUT = hw_topo.create_keyboard(
+    backlight = True,
+    pwr_btn_present = True,
+    kb_type = hw_topo.kb_type.INTERNAL,
+    numpad_present = True,
+    bottom_left_layout = hw_topo.kb_bottom_left_layout.BOTTOM_LEFT_3_KEYS,
+    bottom_right_layout = hw_topo.kb_bottom_right_layout.BOTTOM_RIGHT_2_KEYS,
+    numeric_pad_layout = hw_topo.kb_numeric_pad_layout.NUMERIC_PAD_4_COLUMN,
+)
+
 _KEYBOARD = hw_topo.create_keyboard(
     backlight = False,
     pwr_btn_present = False,
@@ -1278,7 +1288,7 @@ design.append_configs(
         ),
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
         sensor = _SENSOR_WITH_LIGHT,
-        keyboard = _BL_KEYBOARD,
+        keyboard = _KEYBOARD_WITH_LAYOUT,
         battery = _BATTERY,
     ),
     firmware = sc.create_fw_payloads_by_names(

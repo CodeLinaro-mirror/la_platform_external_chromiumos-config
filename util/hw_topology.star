@@ -141,6 +141,25 @@ _KB_MCU_TYPE = struct(
     MCU_PRISM = _HW_FEAT.Keyboard.KEYBOARD_MCU_PRISM,
 )
 
+_KB_BOTTOM_LEFT_LAYOUT = struct(
+    UNKNOWN = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_LEFT_LAYOUT_UNKNOWN,
+    BOTTOM_LEFT_3_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_LEFT_3_KEYS,
+    BOTTOM_LEFT_4_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_LEFT_4_KEYS,
+)
+
+_KB_BOTTOM_RIGHT_LAYOUT = struct(
+    UNKNOWN = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_RIGHT_LAYOUT_UNKNOWN,
+    BOTTOM_RIGHT_2_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_RIGHT_2_KEYS,
+    BOTTOM_RIGHT_3_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_RIGHT_3_KEYS,
+    BOTTOM_RIGHT_4_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_RIGHT_4_KEYS,
+)
+
+_KB_NUMERIC_PAD_LAYOUT = struct(
+    UNKNOWN = _HW_FEAT.Keyboard.NUMERIC_PAD_LAYOUT_UNKNOWN,
+    NUMERIC_PAD_3_COLUMN = _HW_FEAT.Keyboard.NUMERIC_PAD_3_COLUMN,
+    NUMERIC_PAD_4_COLUMN = _HW_FEAT.Keyboard.NUMERIC_PAD_4_COLUMN,
+)
+
 _STYLUS = struct(
     NONE = _HW_FEAT.Stylus.NONE,
     INTERNAL = _HW_FEAT.Stylus.INTERNAL,
@@ -671,7 +690,7 @@ def _create_stylus(id, description, stylus_type, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None, backlight_user_steps = None, no_als_brightness = None, als_steps = None, mcu_type = _KB_MCU_TYPE.NONE):
+def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None, backlight_user_steps = None, no_als_brightness = None, als_steps = None, mcu_type = _KB_MCU_TYPE.NONE, bottom_left_layout = _KB_BOTTOM_LEFT_LAYOUT.UNKNOWN, bottom_right_layout = _KB_BOTTOM_RIGHT_LAYOUT.UNKNOWN, numeric_pad_layout = _KB_NUMERIC_PAD_LAYOUT.UNKNOWN):
     """Builds a Topology proto for a keyboard.
 
     Args:
@@ -692,6 +711,9 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
         als_steps: A list of als_step setting with lux decrease and increase
             threshold, and the backlight percentage of the step.
         mcu_type: A KeyboardMcuType enum. Optional.
+	bottom_left_layout: A KeyboardBottomLeftLayout enum. Optional.
+	bottom_right_layout: A KeyboardBottomRightLayout enum. Optional.
+	numeric_pad_layout: A NumericPadLayout enum. Optional.
     """
 
     if not id:
@@ -724,6 +746,9 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
     hw_features.keyboard.no_als_brightness = no_als_brightness
     hw_features.keyboard.als_steps = als_steps
     hw_features.keyboard.mcu_type = mcu_type
+    hw_features.keyboard.bottom_left_layout = bottom_left_layout
+    hw_features.keyboard.bottom_right_layout = bottom_right_layout
+    hw_features.keyboard.numeric_pad_layout = numeric_pad_layout
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -2297,6 +2322,9 @@ hw_topo = struct(
     storage = _STORAGE,
     kb_type = _KB_TYPE,
     kb_mcu_type = _KB_MCU_TYPE,
+    kb_bottom_left_layout = _KB_BOTTOM_LEFT_LAYOUT,
+    kb_bottom_right_layout = _KB_BOTTOM_RIGHT_LAYOUT,
+    kb_numeric_pad_layout = _KB_NUMERIC_PAD_LAYOUT,
     stylus = _STYLUS,
     region = _REGION,
     edge = _EDGE,

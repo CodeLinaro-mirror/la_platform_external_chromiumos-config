@@ -7145,6 +7145,61 @@
                       "number": 1
                     }
                   ]
+                },
+                {
+                  "name": "KeyboardBottomLeftLayout",
+                  "value": [
+                    {
+                      "name": "KEYBOARD_BOTTOM_LEFT_LAYOUT_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_LEFT_3_KEYS",
+                      "number": 1
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_LEFT_4_KEYS",
+                      "number": 2
+                    }
+                  ]
+                },
+                {
+                  "name": "KeyboardBottomRightLayout",
+                  "value": [
+                    {
+                      "name": "KEYBOARD_BOTTOM_RIGHT_LAYOUT_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_RIGHT_2_KEYS",
+                      "number": 1
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_RIGHT_3_KEYS",
+                      "number": 2
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_RIGHT_4_KEYS",
+                      "number": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "NumericPadLayout",
+                  "value": [
+                    {
+                      "name": "NUMERIC_PAD_LAYOUT_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "NUMERIC_PAD_3_COLUMN",
+                      "number": 1
+                    },
+                    {
+                      "name": "NUMERIC_PAD_4_COLUMN",
+                      "number": 2
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -7209,6 +7264,30 @@
                   "name": "no_als_brightness",
                   "number": 8,
                   "type": "TYPE_DOUBLE"
+                },
+                {
+                  "jsonName": "bottomLeftLayout",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bottom_left_layout",
+                  "number": 9,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Keyboard.KeyboardBottomLeftLayout"
+                },
+                {
+                  "jsonName": "bottomRightLayout",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bottom_right_layout",
+                  "number": 10,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Keyboard.KeyboardBottomRightLayout"
+                },
+                {
+                  "jsonName": "numericPadLayout",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "numeric_pad_layout",
+                  "number": 11,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Keyboard.NumericPadLayout"
                 }
               ],
               "name": "Keyboard"

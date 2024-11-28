@@ -1696,34 +1696,12 @@
               "present": 2
             },
             "keyboard": {
-              "alsSteps": [
-                {
-                  "backlightPercent": 40.0,
-                  "luxThreshold": {
-                    "decreaseThreshold": -1,
-                    "increaseThreshold": 20
-                  }
-                },
-                {
-                  "luxThreshold": {
-                    "decreaseThreshold": 15,
-                    "increaseThreshold": -1
-                  }
-                }
-              ],
               "backlight": 1,
-              "backlightUserSteps": [
-                0.0,
-                10.0,
-                20.0,
-                40.0,
-                60.0,
-                100.0
-              ],
+              "bottomLeftLayout": 1,
+              "bottomRightLayout": 1,
               "keyboardType": 1,
-              "mcuType": 1,
-              "noAlsBrightness": 40.0,
               "numericPad": 1,
+              "numericPadLayout": 2,
               "powerButton": 1
             },
             "lightSensor": {
@@ -2010,34 +1988,12 @@
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "alsSteps": [
-                    {
-                      "backlightPercent": 40.0,
-                      "luxThreshold": {
-                        "decreaseThreshold": -1,
-                        "increaseThreshold": 20
-                      }
-                    },
-                    {
-                      "luxThreshold": {
-                        "decreaseThreshold": 15,
-                        "increaseThreshold": -1
-                      }
-                    }
-                  ],
                   "backlight": 1,
-                  "backlightUserSteps": [
-                    0.0,
-                    10.0,
-                    20.0,
-                    40.0,
-                    60.0,
-                    100.0
-                  ],
+                  "bottomLeftLayout": 1,
+                  "bottomRightLayout": 1,
                   "keyboardType": 1,
-                  "mcuType": 1,
-                  "noAlsBrightness": 40.0,
                   "numericPad": 1,
+                  "numericPadLayout": 2,
                   "powerButton": 1
                 }
               },
