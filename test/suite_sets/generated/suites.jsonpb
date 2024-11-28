@@ -4151,6 +4151,9 @@
 					"value": "tast.network.ShillCaptivePortalProperties.ethernet_online_with_no_captive_portal"
 				},
 				{
+					"value": "tast.network.ShillDisableEnableTechnology"
+				},
+				{
 					"value": "tast.network.ShillEthernetReady"
 				},
 				{
