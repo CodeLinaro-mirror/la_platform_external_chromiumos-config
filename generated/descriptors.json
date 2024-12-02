@@ -31475,6 +31475,7 @@
       },
       "dependency": [
         "chromiumos/test/artifact/test_result.proto",
+        "chromiumos/test/api/firmware_provision.proto",
         "chromiumos/test/api/post_test_service.proto"
       ],
       "messageType": [
@@ -31535,6 +31536,14 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.RunActivitiesResponse"
+            },
+            {
+              "jsonName": "firmwareProvisionResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_provision_response",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FirmwareProvisionResponse"
             }
           ],
           "name": "PublishRdbMetadata",
