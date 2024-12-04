@@ -21402,6 +21402,16 @@
               "label": "LABEL_OPTIONAL",
               "name": "total_shards",
               "number": 5,
+              "options": {
+                "deprecated": true
+              },
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "maxInShard",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_in_shard",
+              "number": 8,
               "type": "TYPE_INT64"
             },
             {
