@@ -30308,6 +30308,20 @@
                   "name": "rw_version",
                   "number": 2,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "apRoVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ap_ro_version",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "apRwVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ap_rw_version",
+                  "number": 4,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Firmware"

@@ -305,11 +305,23 @@ message BuildMetadata {
   ChromeOs chrome_os = 3;
 
   // Firmware metadata
+  // NEXT TAG: 5
   message Firmware {
-    // Read-only firmware version, e.g. "Google_Voema.13672.224.0".
+    // Read-only AP firmware version running on the DUT,
+    // e.g. "Google_Voema.13672.224.0".
     string ro_version = 1;
-    // Read-write firmware version, e.g. "Google_Voema.13672.224.0".
+
+    // Read-write AP firmware version running on the DUT,
+    // e.g. "Google_Voema.13672.224.0".
     string rw_version = 2;
+
+    // Read-only AP firmware version specified in the firmware provision
+    // request, e.g. "Google_Voxel.13672.415.0".
+    string ap_ro_version = 3;
+
+    // Read-write AP firmware version specified in the firmware provision
+    // request, e.g. "Google_Voxel.13672.415.0".
+    string ap_rw_version = 4;
   }
 
   Firmware firmware = 4;
