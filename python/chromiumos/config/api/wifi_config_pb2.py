@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z(go.chromium.org/chromiumos/config/go/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\'chromiumos/config/api/wifi_config.proto\x12\x15\x63hromiumos.config.api\"\xc9<\n\nWifiConfig\x12G\n\rath10k_config\x18\x01 \x01(\x0b\x32..chromiumos.config.api.WifiConfig.Ath10kConfigH\x00\x12\x45\n\x0crtw88_config\x18\x02 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.Rtw88ConfigH\x00\x12\x45\n\x0cintel_config\x18\x03 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.IntelConfigH\x00\x12\x41\n\nmtk_config\x18\x04 \x01(\x0b\x32+.chromiumos.config.api.WifiConfig.MtkConfigH\x00\x12\x45\n\x0crtw89_config\x18\x05 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.Rtw89ConfigH\x00\x12R\n\x13legacy_intel_config\x18\x06 \x01(\x0b\x32\x33.chromiumos.config.api.WifiConfig.LegacyIntelConfigH\x00\x1a\x94\x02\n\x0c\x41th10kConfig\x12\x62\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.Ath10kConfig.TransmitPowerChain\x12\x66\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.Ath10kConfig.TransmitPowerChain\x1a\x38\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x10\n\x08limit_5g\x18\x02 \x01(\r\x1a\xda\x04\n\x0bRtw88Config\x12\x61\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw88Config.TransmitPowerChain\x12\x65\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw88Config.TransmitPowerChain\x12L\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x12K\n\toffset_eu\x18\x04 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x12N\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x1a\x62\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\r\x1a\x32\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\r\x12\x11\n\toffset_5g\x18\x02 \x01(\r\x1a\xda#\n\x0bIntelConfig\x12I\n\tsar_table\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.api.WifiConfig.IntelConfig.SarTable\x12I\n\nwgds_table\x18\x02 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.IntelConfig.Offsets\x12\x46\n\tant_table\x18\x03 \x01(\x0b\x32\x33.chromiumos.config.api.WifiConfig.IntelConfig.Gains\x12I\n\nwtas_table\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.IntelConfig.Average\x12>\n\x03\x64sm\x18\x05 \x01(\x0b\x32\x31.chromiumos.config.api.WifiConfig.IntelConfig.DSM\x12J\n\x06\x62t_sar\x18\x06 \x01(\x0b\x32:.chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR\x12@\n\x04wbem\x18\x07 \x01(\x0b\x32\x32.chromiumos.config.api.WifiConfig.IntelConfig.WBEM\x1a\xa6\t\n\x08SarTable\x12\x19\n\x11sar_table_version\x18\x01 \x01(\r\x12l\n\x19tablet_mode_power_table_a\x18\x03 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12l\n\x19tablet_mode_power_table_b\x18\x04 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1dnon_tablet_mode_power_table_a\x18\x05 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1dnon_tablet_mode_power_table_b\x18\x06 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1d\x63\x64\x62_tablet_mode_power_table_a\x18\x07 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1d\x63\x64\x62_tablet_mode_power_table_b\x18\x08 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12t\n!cdb_non_tablet_mode_power_table_a\x18\t \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12t\n!cdb_non_tablet_mode_power_table_b\x18\n \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x1a\xee\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_2\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x04 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x05 \x01(\r\x12\x12\n\nlimit_5g_5\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_3\x18\t \x01(\r\x12\x12\n\nlimit_6g_4\x18\n \x01(\r\x12\x12\n\nlimit_6g_5\x18\x0b \x01(\r\x1a\xdf\x03\n\x07Offsets\x12\x14\n\x0cwgds_version\x18\x01 \x01(\r\x12T\n\noffset_fcc\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x12S\n\toffset_eu\x18\x03 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x12V\n\x0coffset_other\x18\x04 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x1a\xba\x01\n\nGeoOffsets\x12\x0e\n\x06max_2g\x18\x01 \x01(\r\x12\x13\n\x0boffset_2g_a\x18\x02 \x01(\r\x12\x13\n\x0boffset_2g_b\x18\x03 \x01(\r\x12\x0e\n\x06max_5g\x18\x04 \x01(\r\x12\x13\n\x0boffset_5g_a\x18\x05 \x01(\r\x12\x13\n\x0boffset_5g_b\x18\x06 \x01(\r\x12\x0e\n\x06max_6g\x18\x07 \x01(\r\x12\x13\n\x0boffset_6g_a\x18\x08 \x01(\r\x12\x13\n\x0boffset_6g_b\x18\t \x01(\r\x1a\xfa\x03\n\x05Gains\x12\x19\n\x11\x61nt_table_version\x18\x01 \x01(\r\x12\x15\n\rant_mode_ppag\x18\x02 \x01(\r\x12Y\n\x10\x61nt_gain_table_a\x18\x03 \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain\x12Y\n\x10\x61nt_gain_table_b\x18\x04 \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain\x1a\x88\x02\n\x0b\x41ntennaGain\x12\x13\n\x0b\x61nt_gain_2g\x18\x01 \x01(\r\x12\x15\n\rant_gain_5g_1\x18\x02 \x01(\r\x12\x15\n\rant_gain_5g_2\x18\x03 \x01(\r\x12\x15\n\rant_gain_5g_3\x18\x04 \x01(\r\x12\x15\n\rant_gain_5g_4\x18\x05 \x01(\r\x12\x15\n\rant_gain_5g_5\x18\x06 \x01(\r\x12\x15\n\rant_gain_6g_1\x18\x07 \x01(\r\x12\x15\n\rant_gain_6g_2\x18\x08 \x01(\r\x12\x15\n\rant_gain_6g_3\x18\t \x01(\r\x12\x15\n\rant_gain_6g_4\x18\n \x01(\r\x12\x15\n\rant_gain_6g_5\x18\x0b \x01(\r\x1a\x87\x04\n\x07\x41verage\x12\x17\n\x0fsar_avg_version\x18\x01 \x01(\r\x12\x15\n\rtas_selection\x18\x02 \x01(\r\x12\x15\n\rtas_list_size\x18\x03 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_1\x18\x04 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_2\x18\x05 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_3\x18\x06 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_4\x18\x07 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_5\x18\x08 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_6\x18\t \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_7\x18\n \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_8\x18\x0b \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_9\x18\x0c \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_10\x18\r \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_11\x18\x0e \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_12\x18\x0f \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_13\x18\x10 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_14\x18\x11 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_15\x18\x12 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_16\x18\x13 \x01(\r\x1a\xf4\x06\n\x03\x44SM\x12#\n\x1b\x64isable_active_sdr_channels\x18\x02 \x01(\x03\x12!\n\x19support_indonesia_5g_band\x18\x03 \x01(\x03\x12\x1f\n\x17support_ultra_high_band\x18\x04 \x01(\x03\x12!\n\x19regulatory_configurations\x18\x05 \x01(\x03\x12\x1b\n\x13uart_configurations\x18\x06 \x01(\x03\x12\x17\n\x0f\x65nablement_11ax\x18\x07 \x01(\x03\x12\x0e\n\x06unii_4\x18\x08 \x01(\x03\x12l\n\x19\x65nablement_11be_countries\x18\t \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries\x12n\n\x1a\x65nergy_detection_threshold\x18\n \x01(\x0b\x32J.chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold\x12W\n\x0erfi_mitigation\x18\x0b \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation\x1a=\n\x17\x45nablement11beCountries\x12\r\n\x05\x63hina\x18\x01 \x01(\x08\x12\x13\n\x0bsouth_korea\x18\x02 \x01(\x08\x1a\xf8\x01\n\x18\x45nergyDetectionThreshold\x12\x10\n\x08revision\x18\x01 \x01(\r\x12\x0f\n\x07\x65tsi_hb\x18\x02 \x01(\x08\x12\x0f\n\x07\x66\x63\x63_uhb\x18\x03 \x01(\x08\x12\x10\n\x08hb_5g2_3\x18\x04 \x01(\x08\x12\x0e\n\x06hb_5g4\x18\x05 \x01(\x08\x12\x0e\n\x06hb_5g6\x18\x06 \x01(\x08\x12\x10\n\x08hb_5g8_9\x18\x07 \x01(\x08\x12\x0f\n\x07uhb_6g1\x18\x08 \x01(\x08\x12\x0f\n\x07uhb_6g3\x18\t \x01(\x08\x12\x0f\n\x07uhb_6g5\x18\n \x01(\x08\x12\x0f\n\x07uhb_6g6\x18\x0b \x01(\x08\x12\x0f\n\x07uhb_6g8\x18\x0c \x01(\x08\x12\x0f\n\x07uhb_7g0\x18\r \x01(\x08\x1a*\n\rRFIMitigation\x12\x0c\n\x04\x64lvr\x18\x01 \x01(\x08\x12\x0b\n\x03\x64\x64r\x18\x02 \x01(\x08\x1a\x81\x02\n\x0c\x42luetoothSAR\x12\x10\n\x08revision\x18\x01 \x01(\r\x12\'\n\x1fincreased_power_mode_limitation\x18\x02 \x01(\r\x12 \n\x18sar_lb_power_restriction\x18\x03 \x01(\r\x12\x15\n\rbr_modulation\x18\x04 \x01(\r\x12\x17\n\x0f\x65\x64r2_modulation\x18\x05 \x01(\r\x12\x17\n\x0f\x65\x64r3_modulation\x18\x06 \x01(\r\x12\x15\n\rle_modulation\x18\x07 \x01(\r\x12\x1a\n\x12le2_mhz_modulation\x18\x08 \x01(\r\x12\x18\n\x10le_lr_modulation\x18\t \x01(\r\x1a\xc6\x01\n\x04WBEM\x12\x10\n\x08revision\x18\x01 \x01(\r\x12m\n\x19\x65nablement_wbem_countries\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries\x1a=\n\x17\x45nablementWbemCountries\x12\r\n\x05japan\x18\x01 \x01(\x08\x12\x13\n\x0bsouth_korea\x18\x02 \x01(\x08\x1a\x13\n\x11LegacyIntelConfig\x1a\xa7\x08\n\tMtkConfig\x12_\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32>.chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain\x12\x63\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32>.chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain\x12Z\n\x0f\x66\x63\x63_power_table\x18\x03 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12Y\n\x0e\x65u_power_table\x18\x04 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12\\\n\x11other_power_table\x18\x05 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12K\n\x0c\x63ountry_list\x18\x06 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.MtkConfig.MtclTable\x1a\xee\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_2\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x04 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x05 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_3\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_4\x18\t \x01(\r\x12\x12\n\nlimit_6g_5\x18\n \x01(\r\x12\x12\n\nlimit_6g_6\x18\x0b \x01(\r\x1a\x86\x01\n\x15GeoTransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x10\n\x08limit_5g\x18\x02 \x01(\r\x12\x11\n\toffset_2g\x18\x03 \x01(\r\x12\x11\n\toffset_5g\x18\x04 \x01(\r\x12\x10\n\x08limit_6g\x18\x05 \x01(\r\x12\x11\n\toffset_6g\x18\x06 \x01(\r\x1ax\n\tMtclTable\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x14\n\x0csupport_6ghz\x18\x02 \x01(\r\x12\x14\n\x0c\x62itmask_6ghz\x18\x03 \x01(\x04\x12\x16\n\x0esupport_5p9ghz\x18\x04 \x01(\r\x12\x16\n\x0e\x62itmask_5p9ghz\x18\x05 \x01(\x04\x1a\xe6\x05\n\x0bRtw89Config\x12\x61\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw89Config.TransmitPowerChain\x12\x65\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw89Config.TransmitPowerChain\x12L\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x12K\n\toffset_eu\x18\x04 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x12N\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x1a\xda\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x05 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_3\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_4\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_5\x18\t \x01(\r\x12\x12\n\nlimit_6g_6\x18\n \x01(\r\x1a\x45\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\r\x12\x11\n\toffset_5g\x18\x02 \x01(\r\x12\x11\n\toffset_6g\x18\x03 \x01(\rB\r\n\x0bwifi_configB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
+  serialized_pb=b'\n\'chromiumos/config/api/wifi_config.proto\x12\x15\x63hromiumos.config.api\"\xc9<\n\nWifiConfig\x12G\n\rath10k_config\x18\x01 \x01(\x0b\x32..chromiumos.config.api.WifiConfig.Ath10kConfigH\x00\x12\x45\n\x0crtw88_config\x18\x02 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.Rtw88ConfigH\x00\x12\x45\n\x0cintel_config\x18\x03 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.IntelConfigH\x00\x12\x41\n\nmtk_config\x18\x04 \x01(\x0b\x32+.chromiumos.config.api.WifiConfig.MtkConfigH\x00\x12\x45\n\x0crtw89_config\x18\x05 \x01(\x0b\x32-.chromiumos.config.api.WifiConfig.Rtw89ConfigH\x00\x12R\n\x13legacy_intel_config\x18\x06 \x01(\x0b\x32\x33.chromiumos.config.api.WifiConfig.LegacyIntelConfigH\x00\x1a\x94\x02\n\x0c\x41th10kConfig\x12\x62\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.Ath10kConfig.TransmitPowerChain\x12\x66\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.Ath10kConfig.TransmitPowerChain\x1a\x38\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x10\n\x08limit_5g\x18\x02 \x01(\r\x1a\xda\x04\n\x0bRtw88Config\x12\x61\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw88Config.TransmitPowerChain\x12\x65\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw88Config.TransmitPowerChain\x12L\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x12K\n\toffset_eu\x18\x04 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x12N\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw88Config.GeoOffsets\x1a\x62\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\r\x1a\x32\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\r\x12\x11\n\toffset_5g\x18\x02 \x01(\r\x1a\xda#\n\x0bIntelConfig\x12I\n\tsar_table\x18\x01 \x01(\x0b\x32\x36.chromiumos.config.api.WifiConfig.IntelConfig.SarTable\x12I\n\nwgds_table\x18\x02 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.IntelConfig.Offsets\x12\x46\n\tant_table\x18\x03 \x01(\x0b\x32\x33.chromiumos.config.api.WifiConfig.IntelConfig.Gains\x12I\n\nwtas_table\x18\x04 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.IntelConfig.Average\x12>\n\x03\x64sm\x18\x05 \x01(\x0b\x32\x31.chromiumos.config.api.WifiConfig.IntelConfig.Dsm\x12J\n\x06\x62t_sar\x18\x06 \x01(\x0b\x32:.chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar\x12@\n\x04wbem\x18\x07 \x01(\x0b\x32\x32.chromiumos.config.api.WifiConfig.IntelConfig.Wbem\x1a\xa6\t\n\x08SarTable\x12\x19\n\x11sar_table_version\x18\x01 \x01(\r\x12l\n\x19tablet_mode_power_table_a\x18\x03 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12l\n\x19tablet_mode_power_table_b\x18\x04 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1dnon_tablet_mode_power_table_a\x18\x05 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1dnon_tablet_mode_power_table_b\x18\x06 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1d\x63\x64\x62_tablet_mode_power_table_a\x18\x07 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12p\n\x1d\x63\x64\x62_tablet_mode_power_table_b\x18\x08 \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12t\n!cdb_non_tablet_mode_power_table_a\x18\t \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x12t\n!cdb_non_tablet_mode_power_table_b\x18\n \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain\x1a\xee\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_2\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x04 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x05 \x01(\r\x12\x12\n\nlimit_5g_5\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_3\x18\t \x01(\r\x12\x12\n\nlimit_6g_4\x18\n \x01(\r\x12\x12\n\nlimit_6g_5\x18\x0b \x01(\r\x1a\xdf\x03\n\x07Offsets\x12\x14\n\x0cwgds_version\x18\x01 \x01(\r\x12T\n\noffset_fcc\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x12S\n\toffset_eu\x18\x03 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x12V\n\x0coffset_other\x18\x04 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets\x1a\xba\x01\n\nGeoOffsets\x12\x0e\n\x06max_2g\x18\x01 \x01(\r\x12\x13\n\x0boffset_2g_a\x18\x02 \x01(\r\x12\x13\n\x0boffset_2g_b\x18\x03 \x01(\r\x12\x0e\n\x06max_5g\x18\x04 \x01(\r\x12\x13\n\x0boffset_5g_a\x18\x05 \x01(\r\x12\x13\n\x0boffset_5g_b\x18\x06 \x01(\r\x12\x0e\n\x06max_6g\x18\x07 \x01(\r\x12\x13\n\x0boffset_6g_a\x18\x08 \x01(\r\x12\x13\n\x0boffset_6g_b\x18\t \x01(\r\x1a\xfa\x03\n\x05Gains\x12\x19\n\x11\x61nt_table_version\x18\x01 \x01(\r\x12\x15\n\rant_mode_ppag\x18\x02 \x01(\r\x12Y\n\x10\x61nt_gain_table_a\x18\x03 \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain\x12Y\n\x10\x61nt_gain_table_b\x18\x04 \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain\x1a\x88\x02\n\x0b\x41ntennaGain\x12\x13\n\x0b\x61nt_gain_2g\x18\x01 \x01(\r\x12\x15\n\rant_gain_5g_1\x18\x02 \x01(\r\x12\x15\n\rant_gain_5g_2\x18\x03 \x01(\r\x12\x15\n\rant_gain_5g_3\x18\x04 \x01(\r\x12\x15\n\rant_gain_5g_4\x18\x05 \x01(\r\x12\x15\n\rant_gain_5g_5\x18\x06 \x01(\r\x12\x15\n\rant_gain_6g_1\x18\x07 \x01(\r\x12\x15\n\rant_gain_6g_2\x18\x08 \x01(\r\x12\x15\n\rant_gain_6g_3\x18\t \x01(\r\x12\x15\n\rant_gain_6g_4\x18\n \x01(\r\x12\x15\n\rant_gain_6g_5\x18\x0b \x01(\r\x1a\x87\x04\n\x07\x41verage\x12\x17\n\x0fsar_avg_version\x18\x01 \x01(\r\x12\x15\n\rtas_selection\x18\x02 \x01(\r\x12\x15\n\rtas_list_size\x18\x03 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_1\x18\x04 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_2\x18\x05 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_3\x18\x06 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_4\x18\x07 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_5\x18\x08 \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_6\x18\t \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_7\x18\n \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_8\x18\x0b \x01(\r\x12\x19\n\x11\x64\x65ny_list_entry_9\x18\x0c \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_10\x18\r \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_11\x18\x0e \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_12\x18\x0f \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_13\x18\x10 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_14\x18\x11 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_15\x18\x12 \x01(\r\x12\x1a\n\x12\x64\x65ny_list_entry_16\x18\x13 \x01(\r\x1a\xf4\x06\n\x03\x44sm\x12#\n\x1b\x64isable_active_sdr_channels\x18\x02 \x01(\x03\x12!\n\x19support_indonesia_5g_band\x18\x03 \x01(\x03\x12\x1f\n\x17support_ultra_high_band\x18\x04 \x01(\x03\x12!\n\x19regulatory_configurations\x18\x05 \x01(\x03\x12\x1b\n\x13uart_configurations\x18\x06 \x01(\x03\x12\x17\n\x0f\x65nablement_11ax\x18\x07 \x01(\x03\x12\x0e\n\x06unii_4\x18\x08 \x01(\x03\x12l\n\x19\x65nablement_11be_countries\x18\t \x01(\x0b\x32I.chromiumos.config.api.WifiConfig.IntelConfig.Dsm.Enablement11beCountries\x12n\n\x1a\x65nergy_detection_threshold\x18\n \x01(\x0b\x32J.chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold\x12W\n\x0erfi_mitigation\x18\x0b \x01(\x0b\x32?.chromiumos.config.api.WifiConfig.IntelConfig.Dsm.RfiMitigation\x1a=\n\x17\x45nablement11beCountries\x12\r\n\x05\x63hina\x18\x01 \x01(\x08\x12\x13\n\x0bsouth_korea\x18\x02 \x01(\x08\x1a\xf8\x01\n\x18\x45nergyDetectionThreshold\x12\x10\n\x08revision\x18\x01 \x01(\r\x12\x0f\n\x07\x65tsi_hb\x18\x02 \x01(\x08\x12\x0f\n\x07\x66\x63\x63_uhb\x18\x03 \x01(\x08\x12\x10\n\x08hb_5g2_3\x18\x04 \x01(\x08\x12\x0e\n\x06hb_5g4\x18\x05 \x01(\x08\x12\x0e\n\x06hb_5g6\x18\x06 \x01(\x08\x12\x10\n\x08hb_5g8_9\x18\x07 \x01(\x08\x12\x0f\n\x07uhb_6g1\x18\x08 \x01(\x08\x12\x0f\n\x07uhb_6g3\x18\t \x01(\x08\x12\x0f\n\x07uhb_6g5\x18\n \x01(\x08\x12\x0f\n\x07uhb_6g6\x18\x0b \x01(\x08\x12\x0f\n\x07uhb_6g8\x18\x0c \x01(\x08\x12\x0f\n\x07uhb_7g0\x18\r \x01(\x08\x1a*\n\rRfiMitigation\x12\x0c\n\x04\x64lvr\x18\x01 \x01(\x08\x12\x0b\n\x03\x64\x64r\x18\x02 \x01(\x08\x1a\x81\x02\n\x0c\x42luetoothSar\x12\x10\n\x08revision\x18\x01 \x01(\r\x12\'\n\x1fincreased_power_mode_limitation\x18\x02 \x01(\r\x12 \n\x18sar_lb_power_restriction\x18\x03 \x01(\r\x12\x15\n\rbr_modulation\x18\x04 \x01(\r\x12\x17\n\x0f\x65\x64r2_modulation\x18\x05 \x01(\r\x12\x17\n\x0f\x65\x64r3_modulation\x18\x06 \x01(\r\x12\x15\n\rle_modulation\x18\x07 \x01(\r\x12\x1a\n\x12le2_mhz_modulation\x18\x08 \x01(\r\x12\x18\n\x10le_lr_modulation\x18\t \x01(\r\x1a\xc6\x01\n\x04Wbem\x12\x10\n\x08revision\x18\x01 \x01(\r\x12m\n\x19\x65nablement_wbem_countries\x18\x02 \x01(\x0b\x32J.chromiumos.config.api.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries\x1a=\n\x17\x45nablementWbemCountries\x12\r\n\x05japan\x18\x01 \x01(\x08\x12\x13\n\x0bsouth_korea\x18\x02 \x01(\x08\x1a\x13\n\x11LegacyIntelConfig\x1a\xa7\x08\n\tMtkConfig\x12_\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32>.chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain\x12\x63\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32>.chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain\x12Z\n\x0f\x66\x63\x63_power_table\x18\x03 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12Y\n\x0e\x65u_power_table\x18\x04 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12\\\n\x11other_power_table\x18\x05 \x01(\x0b\x32\x41.chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain\x12K\n\x0c\x63ountry_list\x18\x06 \x01(\x0b\x32\x35.chromiumos.config.api.WifiConfig.MtkConfig.MtclTable\x1a\xee\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_2\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x04 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x05 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_3\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_4\x18\t \x01(\r\x12\x12\n\nlimit_6g_5\x18\n \x01(\r\x12\x12\n\nlimit_6g_6\x18\x0b \x01(\r\x1a\x86\x01\n\x15GeoTransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x10\n\x08limit_5g\x18\x02 \x01(\r\x12\x11\n\toffset_2g\x18\x03 \x01(\r\x12\x11\n\toffset_5g\x18\x04 \x01(\r\x12\x10\n\x08limit_6g\x18\x05 \x01(\r\x12\x11\n\toffset_6g\x18\x06 \x01(\r\x1ax\n\tMtclTable\x12\x0f\n\x07version\x18\x01 \x01(\r\x12\x14\n\x0csupport_6ghz\x18\x02 \x01(\r\x12\x14\n\x0c\x62itmask_6ghz\x18\x03 \x01(\x04\x12\x16\n\x0esupport_5p9ghz\x18\x04 \x01(\r\x12\x16\n\x0e\x62itmask_5p9ghz\x18\x05 \x01(\x04\x1a\xe6\x05\n\x0bRtw89Config\x12\x61\n\x17tablet_mode_power_table\x18\x01 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw89Config.TransmitPowerChain\x12\x65\n\x1bnon_tablet_mode_power_table\x18\x02 \x01(\x0b\x32@.chromiumos.config.api.WifiConfig.Rtw89Config.TransmitPowerChain\x12L\n\noffset_fcc\x18\x03 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x12K\n\toffset_eu\x18\x04 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x12N\n\x0coffset_other\x18\x05 \x01(\x0b\x32\x38.chromiumos.config.api.WifiConfig.Rtw89Config.GeoOffsets\x1a\xda\x01\n\x12TransmitPowerChain\x12\x10\n\x08limit_2g\x18\x01 \x01(\r\x12\x12\n\nlimit_5g_1\x18\x02 \x01(\r\x12\x12\n\nlimit_5g_3\x18\x03 \x01(\r\x12\x12\n\nlimit_5g_4\x18\x04 \x01(\r\x12\x12\n\nlimit_6g_1\x18\x05 \x01(\r\x12\x12\n\nlimit_6g_2\x18\x06 \x01(\r\x12\x12\n\nlimit_6g_3\x18\x07 \x01(\r\x12\x12\n\nlimit_6g_4\x18\x08 \x01(\r\x12\x12\n\nlimit_6g_5\x18\t \x01(\r\x12\x12\n\nlimit_6g_6\x18\n \x01(\r\x1a\x45\n\nGeoOffsets\x12\x11\n\toffset_2g\x18\x01 \x01(\r\x12\x11\n\toffset_5g\x18\x02 \x01(\r\x12\x11\n\toffset_6g\x18\x03 \x01(\rB\r\n\x0bwifi_configB*Z(go.chromium.org/chromiumos/config/go/apib\x06proto3'
 )
 
 
@@ -889,21 +889,21 @@ _WIFICONFIG_INTELCONFIG_AVERAGE = _descriptor.Descriptor(
 
 _WIFICONFIG_INTELCONFIG_DSM_ENABLEMENT11BECOUNTRIES = _descriptor.Descriptor(
   name='Enablement11beCountries',
-  full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries',
+  full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.Enablement11beCountries',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='china', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries.china', index=0,
+      name='china', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.Enablement11beCountries.china', index=0,
       number=1, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='south_korea', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries.south_korea', index=1,
+      name='south_korea', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.Enablement11beCountries.south_korea', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -927,98 +927,98 @@ _WIFICONFIG_INTELCONFIG_DSM_ENABLEMENT11BECOUNTRIES = _descriptor.Descriptor(
 
 _WIFICONFIG_INTELCONFIG_DSM_ENERGYDETECTIONTHRESHOLD = _descriptor.Descriptor(
   name='EnergyDetectionThreshold',
-  full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold',
+  full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='revision', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.revision', index=0,
+      name='revision', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.revision', index=0,
       number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='etsi_hb', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.etsi_hb', index=1,
+      name='etsi_hb', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.etsi_hb', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='fcc_uhb', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.fcc_uhb', index=2,
+      name='fcc_uhb', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.fcc_uhb', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='hb_5g2_3', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.hb_5g2_3', index=3,
+      name='hb_5g2_3', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.hb_5g2_3', index=3,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='hb_5g4', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.hb_5g4', index=4,
+      name='hb_5g4', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.hb_5g4', index=4,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='hb_5g6', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.hb_5g6', index=5,
+      name='hb_5g6', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.hb_5g6', index=5,
       number=6, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='hb_5g8_9', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.hb_5g8_9', index=6,
+      name='hb_5g8_9', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.hb_5g8_9', index=6,
       number=7, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='uhb_6g1', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.uhb_6g1', index=7,
+      name='uhb_6g1', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.uhb_6g1', index=7,
       number=8, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='uhb_6g3', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.uhb_6g3', index=8,
+      name='uhb_6g3', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.uhb_6g3', index=8,
       number=9, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='uhb_6g5', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.uhb_6g5', index=9,
+      name='uhb_6g5', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.uhb_6g5', index=9,
       number=10, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='uhb_6g6', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.uhb_6g6', index=10,
+      name='uhb_6g6', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.uhb_6g6', index=10,
       number=11, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='uhb_6g8', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.uhb_6g8', index=11,
+      name='uhb_6g8', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.uhb_6g8', index=11,
       number=12, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='uhb_7g0', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold.uhb_7g0', index=12,
+      name='uhb_7g0', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold.uhb_7g0', index=12,
       number=13, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -1041,22 +1041,22 @@ _WIFICONFIG_INTELCONFIG_DSM_ENERGYDETECTIONTHRESHOLD = _descriptor.Descriptor(
 )
 
 _WIFICONFIG_INTELCONFIG_DSM_RFIMITIGATION = _descriptor.Descriptor(
-  name='RFIMitigation',
-  full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation',
+  name='RfiMitigation',
+  full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.RfiMitigation',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='dlvr', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation.dlvr', index=0,
+      name='dlvr', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.RfiMitigation.dlvr', index=0,
       number=1, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='ddr', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation.ddr', index=1,
+      name='ddr', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.RfiMitigation.ddr', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -1079,78 +1079,78 @@ _WIFICONFIG_INTELCONFIG_DSM_RFIMITIGATION = _descriptor.Descriptor(
 )
 
 _WIFICONFIG_INTELCONFIG_DSM = _descriptor.Descriptor(
-  name='DSM',
-  full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM',
+  name='Dsm',
+  full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='disable_active_sdr_channels', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.disable_active_sdr_channels', index=0,
+      name='disable_active_sdr_channels', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.disable_active_sdr_channels', index=0,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='support_indonesia_5g_band', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.support_indonesia_5g_band', index=1,
+      name='support_indonesia_5g_band', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.support_indonesia_5g_band', index=1,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='support_ultra_high_band', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.support_ultra_high_band', index=2,
+      name='support_ultra_high_band', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.support_ultra_high_band', index=2,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='regulatory_configurations', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.regulatory_configurations', index=3,
+      name='regulatory_configurations', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.regulatory_configurations', index=3,
       number=5, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='uart_configurations', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.uart_configurations', index=4,
+      name='uart_configurations', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.uart_configurations', index=4,
       number=6, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='enablement_11ax', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.enablement_11ax', index=5,
+      name='enablement_11ax', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.enablement_11ax', index=5,
       number=7, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='unii_4', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.unii_4', index=6,
+      name='unii_4', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.unii_4', index=6,
       number=8, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='enablement_11be_countries', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.enablement_11be_countries', index=7,
+      name='enablement_11be_countries', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.enablement_11be_countries', index=7,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='energy_detection_threshold', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.energy_detection_threshold', index=8,
+      name='energy_detection_threshold', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.energy_detection_threshold', index=8,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='rfi_mitigation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.DSM.rfi_mitigation', index=9,
+      name='rfi_mitigation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Dsm.rfi_mitigation', index=9,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1173,71 +1173,71 @@ _WIFICONFIG_INTELCONFIG_DSM = _descriptor.Descriptor(
 )
 
 _WIFICONFIG_INTELCONFIG_BLUETOOTHSAR = _descriptor.Descriptor(
-  name='BluetoothSAR',
-  full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR',
+  name='BluetoothSar',
+  full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='revision', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR.revision', index=0,
+      name='revision', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar.revision', index=0,
       number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='increased_power_mode_limitation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR.increased_power_mode_limitation', index=1,
+      name='increased_power_mode_limitation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar.increased_power_mode_limitation', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='sar_lb_power_restriction', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR.sar_lb_power_restriction', index=2,
+      name='sar_lb_power_restriction', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar.sar_lb_power_restriction', index=2,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='br_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR.br_modulation', index=3,
+      name='br_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar.br_modulation', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='edr2_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR.edr2_modulation', index=4,
+      name='edr2_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar.edr2_modulation', index=4,
       number=5, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='edr3_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR.edr3_modulation', index=5,
+      name='edr3_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar.edr3_modulation', index=5,
       number=6, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='le_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR.le_modulation', index=6,
+      name='le_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar.le_modulation', index=6,
       number=7, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='le2_mhz_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR.le2_mhz_modulation', index=7,
+      name='le2_mhz_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar.le2_mhz_modulation', index=7,
       number=8, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='le_lr_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR.le_lr_modulation', index=8,
+      name='le_lr_modulation', full_name='chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar.le_lr_modulation', index=8,
       number=9, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -1261,21 +1261,21 @@ _WIFICONFIG_INTELCONFIG_BLUETOOTHSAR = _descriptor.Descriptor(
 
 _WIFICONFIG_INTELCONFIG_WBEM_ENABLEMENTWBEMCOUNTRIES = _descriptor.Descriptor(
   name='EnablementWbemCountries',
-  full_name='chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries',
+  full_name='chromiumos.config.api.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='japan', full_name='chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries.japan', index=0,
+      name='japan', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries.japan', index=0,
       number=1, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='south_korea', full_name='chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries.south_korea', index=1,
+      name='south_korea', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries.south_korea', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -1298,22 +1298,22 @@ _WIFICONFIG_INTELCONFIG_WBEM_ENABLEMENTWBEMCOUNTRIES = _descriptor.Descriptor(
 )
 
 _WIFICONFIG_INTELCONFIG_WBEM = _descriptor.Descriptor(
-  name='WBEM',
-  full_name='chromiumos.config.api.WifiConfig.IntelConfig.WBEM',
+  name='Wbem',
+  full_name='chromiumos.config.api.WifiConfig.IntelConfig.Wbem',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='revision', full_name='chromiumos.config.api.WifiConfig.IntelConfig.WBEM.revision', index=0,
+      name='revision', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Wbem.revision', index=0,
       number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='enablement_wbem_countries', full_name='chromiumos.config.api.WifiConfig.IntelConfig.WBEM.enablement_wbem_countries', index=1,
+      name='enablement_wbem_countries', full_name='chromiumos.config.api.WifiConfig.IntelConfig.Wbem.enablement_wbem_countries', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -2178,52 +2178,52 @@ WifiConfig = _reflection.GeneratedProtocolMessageType('WifiConfig', (_message.Me
       })
     ,
 
-    'DSM' : _reflection.GeneratedProtocolMessageType('DSM', (_message.Message,), {
+    'Dsm' : _reflection.GeneratedProtocolMessageType('Dsm', (_message.Message,), {
 
       'Enablement11beCountries' : _reflection.GeneratedProtocolMessageType('Enablement11beCountries', (_message.Message,), {
         'DESCRIPTOR' : _WIFICONFIG_INTELCONFIG_DSM_ENABLEMENT11BECOUNTRIES,
         '__module__' : 'chromiumos.config.api.wifi_config_pb2'
-        # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries)
+        # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.Dsm.Enablement11beCountries)
         })
       ,
 
       'EnergyDetectionThreshold' : _reflection.GeneratedProtocolMessageType('EnergyDetectionThreshold', (_message.Message,), {
         'DESCRIPTOR' : _WIFICONFIG_INTELCONFIG_DSM_ENERGYDETECTIONTHRESHOLD,
         '__module__' : 'chromiumos.config.api.wifi_config_pb2'
-        # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold)
+        # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold)
         })
       ,
 
-      'RFIMitigation' : _reflection.GeneratedProtocolMessageType('RFIMitigation', (_message.Message,), {
+      'RfiMitigation' : _reflection.GeneratedProtocolMessageType('RfiMitigation', (_message.Message,), {
         'DESCRIPTOR' : _WIFICONFIG_INTELCONFIG_DSM_RFIMITIGATION,
         '__module__' : 'chromiumos.config.api.wifi_config_pb2'
-        # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation)
+        # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.Dsm.RfiMitigation)
         })
       ,
       'DESCRIPTOR' : _WIFICONFIG_INTELCONFIG_DSM,
       '__module__' : 'chromiumos.config.api.wifi_config_pb2'
-      # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.DSM)
+      # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.Dsm)
       })
     ,
 
-    'BluetoothSAR' : _reflection.GeneratedProtocolMessageType('BluetoothSAR', (_message.Message,), {
+    'BluetoothSar' : _reflection.GeneratedProtocolMessageType('BluetoothSar', (_message.Message,), {
       'DESCRIPTOR' : _WIFICONFIG_INTELCONFIG_BLUETOOTHSAR,
       '__module__' : 'chromiumos.config.api.wifi_config_pb2'
-      # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR)
+      # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar)
       })
     ,
 
-    'WBEM' : _reflection.GeneratedProtocolMessageType('WBEM', (_message.Message,), {
+    'Wbem' : _reflection.GeneratedProtocolMessageType('Wbem', (_message.Message,), {
 
       'EnablementWbemCountries' : _reflection.GeneratedProtocolMessageType('EnablementWbemCountries', (_message.Message,), {
         'DESCRIPTOR' : _WIFICONFIG_INTELCONFIG_WBEM_ENABLEMENTWBEMCOUNTRIES,
         '__module__' : 'chromiumos.config.api.wifi_config_pb2'
-        # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries)
+        # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries)
         })
       ,
       'DESCRIPTOR' : _WIFICONFIG_INTELCONFIG_WBEM,
       '__module__' : 'chromiumos.config.api.wifi_config_pb2'
-      # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.WBEM)
+      # @@protoc_insertion_point(class_scope:chromiumos.config.api.WifiConfig.IntelConfig.Wbem)
       })
     ,
     'DESCRIPTOR' : _WIFICONFIG_INTELCONFIG,
@@ -2305,13 +2305,13 @@ _sym_db.RegisterMessage(WifiConfig.IntelConfig.Offsets.GeoOffsets)
 _sym_db.RegisterMessage(WifiConfig.IntelConfig.Gains)
 _sym_db.RegisterMessage(WifiConfig.IntelConfig.Gains.AntennaGain)
 _sym_db.RegisterMessage(WifiConfig.IntelConfig.Average)
-_sym_db.RegisterMessage(WifiConfig.IntelConfig.DSM)
-_sym_db.RegisterMessage(WifiConfig.IntelConfig.DSM.Enablement11beCountries)
-_sym_db.RegisterMessage(WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold)
-_sym_db.RegisterMessage(WifiConfig.IntelConfig.DSM.RFIMitigation)
-_sym_db.RegisterMessage(WifiConfig.IntelConfig.BluetoothSAR)
-_sym_db.RegisterMessage(WifiConfig.IntelConfig.WBEM)
-_sym_db.RegisterMessage(WifiConfig.IntelConfig.WBEM.EnablementWbemCountries)
+_sym_db.RegisterMessage(WifiConfig.IntelConfig.Dsm)
+_sym_db.RegisterMessage(WifiConfig.IntelConfig.Dsm.Enablement11beCountries)
+_sym_db.RegisterMessage(WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold)
+_sym_db.RegisterMessage(WifiConfig.IntelConfig.Dsm.RfiMitigation)
+_sym_db.RegisterMessage(WifiConfig.IntelConfig.BluetoothSar)
+_sym_db.RegisterMessage(WifiConfig.IntelConfig.Wbem)
+_sym_db.RegisterMessage(WifiConfig.IntelConfig.Wbem.EnablementWbemCountries)
 _sym_db.RegisterMessage(WifiConfig.LegacyIntelConfig)
 _sym_db.RegisterMessage(WifiConfig.MtkConfig)
 _sym_db.RegisterMessage(WifiConfig.MtkConfig.TransmitPowerChain)

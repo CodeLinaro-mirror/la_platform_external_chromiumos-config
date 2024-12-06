@@ -3163,7 +3163,7 @@
                   "name": "dsm",
                   "number": 5,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM"
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsm"
                 },
                 {
                   "jsonName": "btSar",
@@ -3171,7 +3171,7 @@
                   "name": "bt_sar",
                   "number": 6,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR"
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar"
                 },
                 {
                   "jsonName": "wbem",
@@ -3179,7 +3179,7 @@
                   "name": "wbem",
                   "number": 7,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.WBEM"
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Wbem"
                 }
               ],
               "name": "IntelConfig",
@@ -3764,7 +3764,7 @@
                       "name": "enablement_11be_countries",
                       "number": 9,
                       "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries"
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsm.Enablement11beCountries"
                     },
                     {
                       "jsonName": "energyDetectionThreshold",
@@ -3772,7 +3772,7 @@
                       "name": "energy_detection_threshold",
                       "number": 10,
                       "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold"
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold"
                     },
                     {
                       "jsonName": "rfiMitigation",
@@ -3780,10 +3780,10 @@
                       "name": "rfi_mitigation",
                       "number": 11,
                       "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation"
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsm.RfiMitigation"
                     }
                   ],
-                  "name": "DSM",
+                  "name": "Dsm",
                   "nestedType": [
                     {
                       "field": [
@@ -3917,7 +3917,7 @@
                           "type": "TYPE_BOOL"
                         }
                       ],
-                      "name": "RFIMitigation"
+                      "name": "RfiMitigation"
                     }
                   ]
                 },
@@ -3987,7 +3987,7 @@
                       "type": "TYPE_UINT32"
                     }
                   ],
-                  "name": "BluetoothSAR"
+                  "name": "BluetoothSar"
                 },
                 {
                   "field": [
@@ -4004,10 +4004,10 @@
                       "name": "enablement_wbem_countries",
                       "number": 2,
                       "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries"
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries"
                     }
                   ],
-                  "name": "WBEM",
+                  "name": "Wbem",
                   "nestedType": [
                     {
                       "field": [

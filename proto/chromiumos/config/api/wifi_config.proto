@@ -209,28 +209,28 @@ message WifiConfig {
     Average wtas_table = 4;
 
     // Device Specific methods used by intel wifi driver.
-    message DSM {
-      // Function 1
+    message Dsm {
+      // Function 1.
       int64 disable_active_sdr_channels = 2;
-      // Function 2
+      // Function 2.
       int64 support_indonesia_5g_band = 3;
-      // Function 3
+      // Function 3.
       int64 support_ultra_high_band = 4;
-      // Function 4
+      // Function 4.
       int64 regulatory_configurations = 5;
-      // Function 5
+      // Function 5.
       int64 uart_configurations = 6;
-      // Function 6
+      // Function 6.
       int64 enablement_11ax = 7;
-      // Function 7
+      // Function 7.
       int64 unii_4 = 8;
 
-      // For different regions
+      // For different regions.
       message Enablement11beCountries {
           bool china = 1;
           bool south_korea = 2;
       }
-      // Function 12
+      // Function 12.
       Enablement11beCountries enablement_11be_countries = 9;
 
       message EnergyDetectionThreshold {
@@ -249,53 +249,53 @@ message WifiConfig {
           bool uhb_7g0 = 13;
       }
 
-      // Function 10
+      // Function 10.
       EnergyDetectionThreshold energy_detection_threshold = 10;
 
-      message RFIMitigation {
+      message RfiMitigation {
           bool dlvr = 1;
           bool ddr = 2;
       }
 
-      RFIMitigation rfi_mitigation = 11;
+      RfiMitigation rfi_mitigation = 11;
     }
-    DSM dsm = 5;
+    Dsm dsm = 5;
 
-    message BluetoothSAR {
-      // Bluetooth SAR table
+    message BluetoothSar {
+      // Bluetooth SAR table.
       uint32 revision = 1;
-      // Increased Power Mode Limitation
+      // Increased Power Mode Limitation.
       uint32 increased_power_mode_limitation = 2;
-      // SAR Power Restriction for the Lower Band (LB)
+      // SAR Power Restriction for the Lower Band (LB).
       uint32 sar_lb_power_restriction = 3;
-      // SAR power restriction for BR Modulation
+      // SAR power restriction for BR Modulation.
       uint32 br_modulation = 4;
-      // SAR power restriction for EDR2 Modulation
+      // SAR power restriction for EDR2 Modulation.
       uint32 edr2_modulation = 5;
-      // SAR power restriction for EDR3 Modulation
+      // SAR power restriction for EDR3 Modulation.
       uint32 edr3_modulation = 6;
-      // SAR power restriction for LE Modulation
+      // SAR power restriction for LE Modulation.
       uint32 le_modulation = 7;
-      // SAR power restriction for LE 2 MHz Modulation
+      // SAR power restriction for LE 2 MHz Modulation.
       uint32 le2_mhz_modulation = 8;
-      // SAR power restriction for LE LR Modulation
+      // SAR power restriction for LE LR Modulation.
       uint32 le_lr_modulation = 9;
     }
-    BluetoothSAR bt_sar = 6;
+    BluetoothSar bt_sar = 6;
 
-    message WBEM {
-      // Wi-Fi 320MHz Bandwidth Enablement table
+    message Wbem {
+      // Wi-Fi 320MHz Bandwidth Enablement table.
       uint32 revision = 1;
 
-      // For different regions
+      // For different regions.
       message EnablementWbemCountries {
           bool japan = 1;
           bool south_korea = 2;
       }
-      // Enablement of Wi-Fi 320MHz per MCC
+      // Enablement of Wi-Fi 320MHz per MCC.
       EnablementWbemCountries enablement_wbem_countries = 2;
     }
-    WBEM wbem = 7;
+    Wbem wbem = 7;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

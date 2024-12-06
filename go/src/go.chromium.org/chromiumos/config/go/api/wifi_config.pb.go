@@ -311,9 +311,9 @@ type WifiConfig_IntelConfig struct {
 	WgdsTable *WifiConfig_IntelConfig_Offsets      `protobuf:"bytes,2,opt,name=wgds_table,json=wgdsTable,proto3" json:"wgds_table,omitempty"`
 	AntTable  *WifiConfig_IntelConfig_Gains        `protobuf:"bytes,3,opt,name=ant_table,json=antTable,proto3" json:"ant_table,omitempty"`
 	WtasTable *WifiConfig_IntelConfig_Average      `protobuf:"bytes,4,opt,name=wtas_table,json=wtasTable,proto3" json:"wtas_table,omitempty"`
-	Dsm       *WifiConfig_IntelConfig_DSM          `protobuf:"bytes,5,opt,name=dsm,proto3" json:"dsm,omitempty"`
-	BtSar     *WifiConfig_IntelConfig_BluetoothSAR `protobuf:"bytes,6,opt,name=bt_sar,json=btSar,proto3" json:"bt_sar,omitempty"`
-	Wbem      *WifiConfig_IntelConfig_WBEM         `protobuf:"bytes,7,opt,name=wbem,proto3" json:"wbem,omitempty"`
+	Dsm       *WifiConfig_IntelConfig_Dsm          `protobuf:"bytes,5,opt,name=dsm,proto3" json:"dsm,omitempty"`
+	BtSar     *WifiConfig_IntelConfig_BluetoothSar `protobuf:"bytes,6,opt,name=bt_sar,json=btSar,proto3" json:"bt_sar,omitempty"`
+	Wbem      *WifiConfig_IntelConfig_Wbem         `protobuf:"bytes,7,opt,name=wbem,proto3" json:"wbem,omitempty"`
 }
 
 func (x *WifiConfig_IntelConfig) Reset() {
@@ -376,21 +376,21 @@ func (x *WifiConfig_IntelConfig) GetWtasTable() *WifiConfig_IntelConfig_Average 
 	return nil
 }
 
-func (x *WifiConfig_IntelConfig) GetDsm() *WifiConfig_IntelConfig_DSM {
+func (x *WifiConfig_IntelConfig) GetDsm() *WifiConfig_IntelConfig_Dsm {
 	if x != nil {
 		return x.Dsm
 	}
 	return nil
 }
 
-func (x *WifiConfig_IntelConfig) GetBtSar() *WifiConfig_IntelConfig_BluetoothSAR {
+func (x *WifiConfig_IntelConfig) GetBtSar() *WifiConfig_IntelConfig_BluetoothSar {
 	if x != nil {
 		return x.BtSar
 	}
 	return nil
 }
 
-func (x *WifiConfig_IntelConfig) GetWbem() *WifiConfig_IntelConfig_WBEM {
+func (x *WifiConfig_IntelConfig) GetWbem() *WifiConfig_IntelConfig_Wbem {
 	if x != nil {
 		return x.Wbem
 	}
@@ -1266,34 +1266,34 @@ func (x *WifiConfig_IntelConfig_Average) GetDenyListEntry_16() uint32 {
 }
 
 // Device Specific methods used by intel wifi driver.
-type WifiConfig_IntelConfig_DSM struct {
+type WifiConfig_IntelConfig_Dsm struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Function 1
+	// Function 1.
 	DisableActiveSdrChannels int64 `protobuf:"varint,2,opt,name=disable_active_sdr_channels,json=disableActiveSdrChannels,proto3" json:"disable_active_sdr_channels,omitempty"`
-	// Function 2
+	// Function 2.
 	SupportIndonesia_5GBand int64 `protobuf:"varint,3,opt,name=support_indonesia_5g_band,json=supportIndonesia5gBand,proto3" json:"support_indonesia_5g_band,omitempty"`
-	// Function 3
+	// Function 3.
 	SupportUltraHighBand int64 `protobuf:"varint,4,opt,name=support_ultra_high_band,json=supportUltraHighBand,proto3" json:"support_ultra_high_band,omitempty"`
-	// Function 4
+	// Function 4.
 	RegulatoryConfigurations int64 `protobuf:"varint,5,opt,name=regulatory_configurations,json=regulatoryConfigurations,proto3" json:"regulatory_configurations,omitempty"`
-	// Function 5
+	// Function 5.
 	UartConfigurations int64 `protobuf:"varint,6,opt,name=uart_configurations,json=uartConfigurations,proto3" json:"uart_configurations,omitempty"`
-	// Function 6
+	// Function 6.
 	Enablement_11Ax int64 `protobuf:"varint,7,opt,name=enablement_11ax,json=enablement11ax,proto3" json:"enablement_11ax,omitempty"`
-	// Function 7
+	// Function 7.
 	Unii_4 int64 `protobuf:"varint,8,opt,name=unii_4,json=unii4,proto3" json:"unii_4,omitempty"`
-	// Function 12
-	Enablement_11BeCountries *WifiConfig_IntelConfig_DSM_Enablement11BeCountries `protobuf:"bytes,9,opt,name=enablement_11be_countries,json=enablement11beCountries,proto3" json:"enablement_11be_countries,omitempty"`
-	// Function 10
-	EnergyDetectionThreshold *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold `protobuf:"bytes,10,opt,name=energy_detection_threshold,json=energyDetectionThreshold,proto3" json:"energy_detection_threshold,omitempty"`
-	RfiMitigation            *WifiConfig_IntelConfig_DSM_RFIMitigation            `protobuf:"bytes,11,opt,name=rfi_mitigation,json=rfiMitigation,proto3" json:"rfi_mitigation,omitempty"`
+	// Function 12.
+	Enablement_11BeCountries *WifiConfig_IntelConfig_Dsm_Enablement11BeCountries `protobuf:"bytes,9,opt,name=enablement_11be_countries,json=enablement11beCountries,proto3" json:"enablement_11be_countries,omitempty"`
+	// Function 10.
+	EnergyDetectionThreshold *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold `protobuf:"bytes,10,opt,name=energy_detection_threshold,json=energyDetectionThreshold,proto3" json:"energy_detection_threshold,omitempty"`
+	RfiMitigation            *WifiConfig_IntelConfig_Dsm_RfiMitigation            `protobuf:"bytes,11,opt,name=rfi_mitigation,json=rfiMitigation,proto3" json:"rfi_mitigation,omitempty"`
 }
 
-func (x *WifiConfig_IntelConfig_DSM) Reset() {
-	*x = WifiConfig_IntelConfig_DSM{}
+func (x *WifiConfig_IntelConfig_Dsm) Reset() {
+	*x = WifiConfig_IntelConfig_Dsm{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1301,13 +1301,13 @@ func (x *WifiConfig_IntelConfig_DSM) Reset() {
 	}
 }
 
-func (x *WifiConfig_IntelConfig_DSM) String() string {
+func (x *WifiConfig_IntelConfig_Dsm) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WifiConfig_IntelConfig_DSM) ProtoMessage() {}
+func (*WifiConfig_IntelConfig_Dsm) ProtoMessage() {}
 
-func (x *WifiConfig_IntelConfig_DSM) ProtoReflect() protoreflect.Message {
+func (x *WifiConfig_IntelConfig_Dsm) ProtoReflect() protoreflect.Message {
 	mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1319,108 +1319,108 @@ func (x *WifiConfig_IntelConfig_DSM) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WifiConfig_IntelConfig_DSM.ProtoReflect.Descriptor instead.
-func (*WifiConfig_IntelConfig_DSM) Descriptor() ([]byte, []int) {
+// Deprecated: Use WifiConfig_IntelConfig_Dsm.ProtoReflect.Descriptor instead.
+func (*WifiConfig_IntelConfig_Dsm) Descriptor() ([]byte, []int) {
 	return file_chromiumos_config_api_wifi_config_proto_rawDescGZIP(), []int{0, 2, 4}
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetDisableActiveSdrChannels() int64 {
+func (x *WifiConfig_IntelConfig_Dsm) GetDisableActiveSdrChannels() int64 {
 	if x != nil {
 		return x.DisableActiveSdrChannels
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetSupportIndonesia_5GBand() int64 {
+func (x *WifiConfig_IntelConfig_Dsm) GetSupportIndonesia_5GBand() int64 {
 	if x != nil {
 		return x.SupportIndonesia_5GBand
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetSupportUltraHighBand() int64 {
+func (x *WifiConfig_IntelConfig_Dsm) GetSupportUltraHighBand() int64 {
 	if x != nil {
 		return x.SupportUltraHighBand
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetRegulatoryConfigurations() int64 {
+func (x *WifiConfig_IntelConfig_Dsm) GetRegulatoryConfigurations() int64 {
 	if x != nil {
 		return x.RegulatoryConfigurations
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetUartConfigurations() int64 {
+func (x *WifiConfig_IntelConfig_Dsm) GetUartConfigurations() int64 {
 	if x != nil {
 		return x.UartConfigurations
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetEnablement_11Ax() int64 {
+func (x *WifiConfig_IntelConfig_Dsm) GetEnablement_11Ax() int64 {
 	if x != nil {
 		return x.Enablement_11Ax
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetUnii_4() int64 {
+func (x *WifiConfig_IntelConfig_Dsm) GetUnii_4() int64 {
 	if x != nil {
 		return x.Unii_4
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetEnablement_11BeCountries() *WifiConfig_IntelConfig_DSM_Enablement11BeCountries {
+func (x *WifiConfig_IntelConfig_Dsm) GetEnablement_11BeCountries() *WifiConfig_IntelConfig_Dsm_Enablement11BeCountries {
 	if x != nil {
 		return x.Enablement_11BeCountries
 	}
 	return nil
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetEnergyDetectionThreshold() *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold {
+func (x *WifiConfig_IntelConfig_Dsm) GetEnergyDetectionThreshold() *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold {
 	if x != nil {
 		return x.EnergyDetectionThreshold
 	}
 	return nil
 }
 
-func (x *WifiConfig_IntelConfig_DSM) GetRfiMitigation() *WifiConfig_IntelConfig_DSM_RFIMitigation {
+func (x *WifiConfig_IntelConfig_Dsm) GetRfiMitigation() *WifiConfig_IntelConfig_Dsm_RfiMitigation {
 	if x != nil {
 		return x.RfiMitigation
 	}
 	return nil
 }
 
-type WifiConfig_IntelConfig_BluetoothSAR struct {
+type WifiConfig_IntelConfig_BluetoothSar struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Bluetooth SAR table
+	// Bluetooth SAR table.
 	Revision uint32 `protobuf:"varint,1,opt,name=revision,proto3" json:"revision,omitempty"`
-	// Increased Power Mode Limitation
+	// Increased Power Mode Limitation.
 	IncreasedPowerModeLimitation uint32 `protobuf:"varint,2,opt,name=increased_power_mode_limitation,json=increasedPowerModeLimitation,proto3" json:"increased_power_mode_limitation,omitempty"`
-	// SAR Power Restriction for the Lower Band (LB)
+	// SAR Power Restriction for the Lower Band (LB).
 	SarLbPowerRestriction uint32 `protobuf:"varint,3,opt,name=sar_lb_power_restriction,json=sarLbPowerRestriction,proto3" json:"sar_lb_power_restriction,omitempty"`
-	// SAR power restriction for BR Modulation
+	// SAR power restriction for BR Modulation.
 	BrModulation uint32 `protobuf:"varint,4,opt,name=br_modulation,json=brModulation,proto3" json:"br_modulation,omitempty"`
-	// SAR power restriction for EDR2 Modulation
+	// SAR power restriction for EDR2 Modulation.
 	Edr2Modulation uint32 `protobuf:"varint,5,opt,name=edr2_modulation,json=edr2Modulation,proto3" json:"edr2_modulation,omitempty"`
-	// SAR power restriction for EDR3 Modulation
+	// SAR power restriction for EDR3 Modulation.
 	Edr3Modulation uint32 `protobuf:"varint,6,opt,name=edr3_modulation,json=edr3Modulation,proto3" json:"edr3_modulation,omitempty"`
-	// SAR power restriction for LE Modulation
+	// SAR power restriction for LE Modulation.
 	LeModulation uint32 `protobuf:"varint,7,opt,name=le_modulation,json=leModulation,proto3" json:"le_modulation,omitempty"`
-	// SAR power restriction for LE 2 MHz Modulation
+	// SAR power restriction for LE 2 MHz Modulation.
 	Le2MhzModulation uint32 `protobuf:"varint,8,opt,name=le2_mhz_modulation,json=le2MhzModulation,proto3" json:"le2_mhz_modulation,omitempty"`
-	// SAR power restriction for LE LR Modulation
+	// SAR power restriction for LE LR Modulation.
 	LeLrModulation uint32 `protobuf:"varint,9,opt,name=le_lr_modulation,json=leLrModulation,proto3" json:"le_lr_modulation,omitempty"`
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) Reset() {
-	*x = WifiConfig_IntelConfig_BluetoothSAR{}
+func (x *WifiConfig_IntelConfig_BluetoothSar) Reset() {
+	*x = WifiConfig_IntelConfig_BluetoothSar{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1428,13 +1428,13 @@ func (x *WifiConfig_IntelConfig_BluetoothSAR) Reset() {
 	}
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) String() string {
+func (x *WifiConfig_IntelConfig_BluetoothSar) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WifiConfig_IntelConfig_BluetoothSAR) ProtoMessage() {}
+func (*WifiConfig_IntelConfig_BluetoothSar) ProtoMessage() {}
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) ProtoReflect() protoreflect.Message {
+func (x *WifiConfig_IntelConfig_BluetoothSar) ProtoReflect() protoreflect.Message {
 	mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1446,87 +1446,87 @@ func (x *WifiConfig_IntelConfig_BluetoothSAR) ProtoReflect() protoreflect.Messag
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WifiConfig_IntelConfig_BluetoothSAR.ProtoReflect.Descriptor instead.
-func (*WifiConfig_IntelConfig_BluetoothSAR) Descriptor() ([]byte, []int) {
+// Deprecated: Use WifiConfig_IntelConfig_BluetoothSar.ProtoReflect.Descriptor instead.
+func (*WifiConfig_IntelConfig_BluetoothSar) Descriptor() ([]byte, []int) {
 	return file_chromiumos_config_api_wifi_config_proto_rawDescGZIP(), []int{0, 2, 5}
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) GetRevision() uint32 {
+func (x *WifiConfig_IntelConfig_BluetoothSar) GetRevision() uint32 {
 	if x != nil {
 		return x.Revision
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) GetIncreasedPowerModeLimitation() uint32 {
+func (x *WifiConfig_IntelConfig_BluetoothSar) GetIncreasedPowerModeLimitation() uint32 {
 	if x != nil {
 		return x.IncreasedPowerModeLimitation
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) GetSarLbPowerRestriction() uint32 {
+func (x *WifiConfig_IntelConfig_BluetoothSar) GetSarLbPowerRestriction() uint32 {
 	if x != nil {
 		return x.SarLbPowerRestriction
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) GetBrModulation() uint32 {
+func (x *WifiConfig_IntelConfig_BluetoothSar) GetBrModulation() uint32 {
 	if x != nil {
 		return x.BrModulation
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) GetEdr2Modulation() uint32 {
+func (x *WifiConfig_IntelConfig_BluetoothSar) GetEdr2Modulation() uint32 {
 	if x != nil {
 		return x.Edr2Modulation
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) GetEdr3Modulation() uint32 {
+func (x *WifiConfig_IntelConfig_BluetoothSar) GetEdr3Modulation() uint32 {
 	if x != nil {
 		return x.Edr3Modulation
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) GetLeModulation() uint32 {
+func (x *WifiConfig_IntelConfig_BluetoothSar) GetLeModulation() uint32 {
 	if x != nil {
 		return x.LeModulation
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) GetLe2MhzModulation() uint32 {
+func (x *WifiConfig_IntelConfig_BluetoothSar) GetLe2MhzModulation() uint32 {
 	if x != nil {
 		return x.Le2MhzModulation
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_BluetoothSAR) GetLeLrModulation() uint32 {
+func (x *WifiConfig_IntelConfig_BluetoothSar) GetLeLrModulation() uint32 {
 	if x != nil {
 		return x.LeLrModulation
 	}
 	return 0
 }
 
-type WifiConfig_IntelConfig_WBEM struct {
+type WifiConfig_IntelConfig_Wbem struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Wi-Fi 320MHz Bandwidth Enablement table
+	// Wi-Fi 320MHz Bandwidth Enablement table.
 	Revision uint32 `protobuf:"varint,1,opt,name=revision,proto3" json:"revision,omitempty"`
-	// Enablement of Wi-Fi 320MHz per MCC
-	EnablementWbemCountries *WifiConfig_IntelConfig_WBEM_EnablementWbemCountries `protobuf:"bytes,2,opt,name=enablement_wbem_countries,json=enablementWbemCountries,proto3" json:"enablement_wbem_countries,omitempty"`
+	// Enablement of Wi-Fi 320MHz per MCC.
+	EnablementWbemCountries *WifiConfig_IntelConfig_Wbem_EnablementWbemCountries `protobuf:"bytes,2,opt,name=enablement_wbem_countries,json=enablementWbemCountries,proto3" json:"enablement_wbem_countries,omitempty"`
 }
 
-func (x *WifiConfig_IntelConfig_WBEM) Reset() {
-	*x = WifiConfig_IntelConfig_WBEM{}
+func (x *WifiConfig_IntelConfig_Wbem) Reset() {
+	*x = WifiConfig_IntelConfig_Wbem{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1534,13 +1534,13 @@ func (x *WifiConfig_IntelConfig_WBEM) Reset() {
 	}
 }
 
-func (x *WifiConfig_IntelConfig_WBEM) String() string {
+func (x *WifiConfig_IntelConfig_Wbem) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WifiConfig_IntelConfig_WBEM) ProtoMessage() {}
+func (*WifiConfig_IntelConfig_Wbem) ProtoMessage() {}
 
-func (x *WifiConfig_IntelConfig_WBEM) ProtoReflect() protoreflect.Message {
+func (x *WifiConfig_IntelConfig_Wbem) ProtoReflect() protoreflect.Message {
 	mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1552,19 +1552,19 @@ func (x *WifiConfig_IntelConfig_WBEM) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WifiConfig_IntelConfig_WBEM.ProtoReflect.Descriptor instead.
-func (*WifiConfig_IntelConfig_WBEM) Descriptor() ([]byte, []int) {
+// Deprecated: Use WifiConfig_IntelConfig_Wbem.ProtoReflect.Descriptor instead.
+func (*WifiConfig_IntelConfig_Wbem) Descriptor() ([]byte, []int) {
 	return file_chromiumos_config_api_wifi_config_proto_rawDescGZIP(), []int{0, 2, 6}
 }
 
-func (x *WifiConfig_IntelConfig_WBEM) GetRevision() uint32 {
+func (x *WifiConfig_IntelConfig_Wbem) GetRevision() uint32 {
 	if x != nil {
 		return x.Revision
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_WBEM) GetEnablementWbemCountries() *WifiConfig_IntelConfig_WBEM_EnablementWbemCountries {
+func (x *WifiConfig_IntelConfig_Wbem) GetEnablementWbemCountries() *WifiConfig_IntelConfig_Wbem_EnablementWbemCountries {
 	if x != nil {
 		return x.EnablementWbemCountries
 	}
@@ -1969,8 +1969,8 @@ func (x *WifiConfig_IntelConfig_Gains_AntennaGain) GetAntGain_6G_5() uint32 {
 	return 0
 }
 
-// For different regions
-type WifiConfig_IntelConfig_DSM_Enablement11BeCountries struct {
+// For different regions.
+type WifiConfig_IntelConfig_Dsm_Enablement11BeCountries struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -1979,8 +1979,8 @@ type WifiConfig_IntelConfig_DSM_Enablement11BeCountries struct {
 	SouthKorea bool `protobuf:"varint,2,opt,name=south_korea,json=southKorea,proto3" json:"south_korea,omitempty"`
 }
 
-func (x *WifiConfig_IntelConfig_DSM_Enablement11BeCountries) Reset() {
-	*x = WifiConfig_IntelConfig_DSM_Enablement11BeCountries{}
+func (x *WifiConfig_IntelConfig_Dsm_Enablement11BeCountries) Reset() {
+	*x = WifiConfig_IntelConfig_Dsm_Enablement11BeCountries{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1988,13 +1988,13 @@ func (x *WifiConfig_IntelConfig_DSM_Enablement11BeCountries) Reset() {
 	}
 }
 
-func (x *WifiConfig_IntelConfig_DSM_Enablement11BeCountries) String() string {
+func (x *WifiConfig_IntelConfig_Dsm_Enablement11BeCountries) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WifiConfig_IntelConfig_DSM_Enablement11BeCountries) ProtoMessage() {}
+func (*WifiConfig_IntelConfig_Dsm_Enablement11BeCountries) ProtoMessage() {}
 
-func (x *WifiConfig_IntelConfig_DSM_Enablement11BeCountries) ProtoReflect() protoreflect.Message {
+func (x *WifiConfig_IntelConfig_Dsm_Enablement11BeCountries) ProtoReflect() protoreflect.Message {
 	mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2006,26 +2006,26 @@ func (x *WifiConfig_IntelConfig_DSM_Enablement11BeCountries) ProtoReflect() prot
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WifiConfig_IntelConfig_DSM_Enablement11BeCountries.ProtoReflect.Descriptor instead.
-func (*WifiConfig_IntelConfig_DSM_Enablement11BeCountries) Descriptor() ([]byte, []int) {
+// Deprecated: Use WifiConfig_IntelConfig_Dsm_Enablement11BeCountries.ProtoReflect.Descriptor instead.
+func (*WifiConfig_IntelConfig_Dsm_Enablement11BeCountries) Descriptor() ([]byte, []int) {
 	return file_chromiumos_config_api_wifi_config_proto_rawDescGZIP(), []int{0, 2, 4, 0}
 }
 
-func (x *WifiConfig_IntelConfig_DSM_Enablement11BeCountries) GetChina() bool {
+func (x *WifiConfig_IntelConfig_Dsm_Enablement11BeCountries) GetChina() bool {
 	if x != nil {
 		return x.China
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_Enablement11BeCountries) GetSouthKorea() bool {
+func (x *WifiConfig_IntelConfig_Dsm_Enablement11BeCountries) GetSouthKorea() bool {
 	if x != nil {
 		return x.SouthKorea
 	}
 	return false
 }
 
-type WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold struct {
+type WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -2045,8 +2045,8 @@ type WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold struct {
 	Uhb_7G0  bool   `protobuf:"varint,13,opt,name=uhb_7g0,json=uhb7g0,proto3" json:"uhb_7g0,omitempty"`
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) Reset() {
-	*x = WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold{}
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) Reset() {
+	*x = WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2054,13 +2054,13 @@ func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) Reset() {
 	}
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) String() string {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) ProtoMessage() {}
+func (*WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) ProtoMessage() {}
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) ProtoReflect() protoreflect.Message {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) ProtoReflect() protoreflect.Message {
 	mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2072,103 +2072,103 @@ func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) ProtoReflect() pro
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold.ProtoReflect.Descriptor instead.
-func (*WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) Descriptor() ([]byte, []int) {
+// Deprecated: Use WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold.ProtoReflect.Descriptor instead.
+func (*WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) Descriptor() ([]byte, []int) {
 	return file_chromiumos_config_api_wifi_config_proto_rawDescGZIP(), []int{0, 2, 4, 1}
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetRevision() uint32 {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetRevision() uint32 {
 	if x != nil {
 		return x.Revision
 	}
 	return 0
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetEtsiHb() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetEtsiHb() bool {
 	if x != nil {
 		return x.EtsiHb
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetFccUhb() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetFccUhb() bool {
 	if x != nil {
 		return x.FccUhb
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetHb_5G2_3() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetHb_5G2_3() bool {
 	if x != nil {
 		return x.Hb_5G2_3
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetHb_5G4() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetHb_5G4() bool {
 	if x != nil {
 		return x.Hb_5G4
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetHb_5G6() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetHb_5G6() bool {
 	if x != nil {
 		return x.Hb_5G6
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetHb_5G8_9() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetHb_5G8_9() bool {
 	if x != nil {
 		return x.Hb_5G8_9
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetUhb_6G1() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetUhb_6G1() bool {
 	if x != nil {
 		return x.Uhb_6G1
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetUhb_6G3() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetUhb_6G3() bool {
 	if x != nil {
 		return x.Uhb_6G3
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetUhb_6G5() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetUhb_6G5() bool {
 	if x != nil {
 		return x.Uhb_6G5
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetUhb_6G6() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetUhb_6G6() bool {
 	if x != nil {
 		return x.Uhb_6G6
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetUhb_6G8() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetUhb_6G8() bool {
 	if x != nil {
 		return x.Uhb_6G8
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold) GetUhb_7G0() bool {
+func (x *WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold) GetUhb_7G0() bool {
 	if x != nil {
 		return x.Uhb_7G0
 	}
 	return false
 }
 
-type WifiConfig_IntelConfig_DSM_RFIMitigation struct {
+type WifiConfig_IntelConfig_Dsm_RfiMitigation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -2177,8 +2177,8 @@ type WifiConfig_IntelConfig_DSM_RFIMitigation struct {
 	Ddr  bool `protobuf:"varint,2,opt,name=ddr,proto3" json:"ddr,omitempty"`
 }
 
-func (x *WifiConfig_IntelConfig_DSM_RFIMitigation) Reset() {
-	*x = WifiConfig_IntelConfig_DSM_RFIMitigation{}
+func (x *WifiConfig_IntelConfig_Dsm_RfiMitigation) Reset() {
+	*x = WifiConfig_IntelConfig_Dsm_RfiMitigation{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2186,13 +2186,13 @@ func (x *WifiConfig_IntelConfig_DSM_RFIMitigation) Reset() {
 	}
 }
 
-func (x *WifiConfig_IntelConfig_DSM_RFIMitigation) String() string {
+func (x *WifiConfig_IntelConfig_Dsm_RfiMitigation) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WifiConfig_IntelConfig_DSM_RFIMitigation) ProtoMessage() {}
+func (*WifiConfig_IntelConfig_Dsm_RfiMitigation) ProtoMessage() {}
 
-func (x *WifiConfig_IntelConfig_DSM_RFIMitigation) ProtoReflect() protoreflect.Message {
+func (x *WifiConfig_IntelConfig_Dsm_RfiMitigation) ProtoReflect() protoreflect.Message {
 	mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2204,27 +2204,27 @@ func (x *WifiConfig_IntelConfig_DSM_RFIMitigation) ProtoReflect() protoreflect.M
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WifiConfig_IntelConfig_DSM_RFIMitigation.ProtoReflect.Descriptor instead.
-func (*WifiConfig_IntelConfig_DSM_RFIMitigation) Descriptor() ([]byte, []int) {
+// Deprecated: Use WifiConfig_IntelConfig_Dsm_RfiMitigation.ProtoReflect.Descriptor instead.
+func (*WifiConfig_IntelConfig_Dsm_RfiMitigation) Descriptor() ([]byte, []int) {
 	return file_chromiumos_config_api_wifi_config_proto_rawDescGZIP(), []int{0, 2, 4, 2}
 }
 
-func (x *WifiConfig_IntelConfig_DSM_RFIMitigation) GetDlvr() bool {
+func (x *WifiConfig_IntelConfig_Dsm_RfiMitigation) GetDlvr() bool {
 	if x != nil {
 		return x.Dlvr
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_DSM_RFIMitigation) GetDdr() bool {
+func (x *WifiConfig_IntelConfig_Dsm_RfiMitigation) GetDdr() bool {
 	if x != nil {
 		return x.Ddr
 	}
 	return false
 }
 
-// For different regions
-type WifiConfig_IntelConfig_WBEM_EnablementWbemCountries struct {
+// For different regions.
+type WifiConfig_IntelConfig_Wbem_EnablementWbemCountries struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -2233,8 +2233,8 @@ type WifiConfig_IntelConfig_WBEM_EnablementWbemCountries struct {
 	SouthKorea bool `protobuf:"varint,2,opt,name=south_korea,json=southKorea,proto3" json:"south_korea,omitempty"`
 }
 
-func (x *WifiConfig_IntelConfig_WBEM_EnablementWbemCountries) Reset() {
-	*x = WifiConfig_IntelConfig_WBEM_EnablementWbemCountries{}
+func (x *WifiConfig_IntelConfig_Wbem_EnablementWbemCountries) Reset() {
+	*x = WifiConfig_IntelConfig_Wbem_EnablementWbemCountries{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2242,13 +2242,13 @@ func (x *WifiConfig_IntelConfig_WBEM_EnablementWbemCountries) Reset() {
 	}
 }
 
-func (x *WifiConfig_IntelConfig_WBEM_EnablementWbemCountries) String() string {
+func (x *WifiConfig_IntelConfig_Wbem_EnablementWbemCountries) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WifiConfig_IntelConfig_WBEM_EnablementWbemCountries) ProtoMessage() {}
+func (*WifiConfig_IntelConfig_Wbem_EnablementWbemCountries) ProtoMessage() {}
 
-func (x *WifiConfig_IntelConfig_WBEM_EnablementWbemCountries) ProtoReflect() protoreflect.Message {
+func (x *WifiConfig_IntelConfig_Wbem_EnablementWbemCountries) ProtoReflect() protoreflect.Message {
 	mi := &file_chromiumos_config_api_wifi_config_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2260,19 +2260,19 @@ func (x *WifiConfig_IntelConfig_WBEM_EnablementWbemCountries) ProtoReflect() pro
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WifiConfig_IntelConfig_WBEM_EnablementWbemCountries.ProtoReflect.Descriptor instead.
-func (*WifiConfig_IntelConfig_WBEM_EnablementWbemCountries) Descriptor() ([]byte, []int) {
+// Deprecated: Use WifiConfig_IntelConfig_Wbem_EnablementWbemCountries.ProtoReflect.Descriptor instead.
+func (*WifiConfig_IntelConfig_Wbem_EnablementWbemCountries) Descriptor() ([]byte, []int) {
 	return file_chromiumos_config_api_wifi_config_proto_rawDescGZIP(), []int{0, 2, 6, 0}
 }
 
-func (x *WifiConfig_IntelConfig_WBEM_EnablementWbemCountries) GetJapan() bool {
+func (x *WifiConfig_IntelConfig_Wbem_EnablementWbemCountries) GetJapan() bool {
 	if x != nil {
 		return x.Japan
 	}
 	return false
 }
 
-func (x *WifiConfig_IntelConfig_WBEM_EnablementWbemCountries) GetSouthKorea() bool {
+func (x *WifiConfig_IntelConfig_Wbem_EnablementWbemCountries) GetSouthKorea() bool {
 	if x != nil {
 		return x.SouthKorea
 	}
@@ -2949,17 +2949,17 @@ var file_chromiumos_config_api_wifi_config_proto_rawDesc = []byte{
 	0x64, 0x73, 0x6d, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x31, 0x2e, 0x63, 0x68, 0x72, 0x6f,
 	0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x61, 0x70,
 	0x69, 0x2e, 0x57, 0x69, 0x66, 0x69, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x49, 0x6e, 0x74,
-	0x65, 0x6c, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x44, 0x53, 0x4d, 0x52, 0x03, 0x64, 0x73,
+	0x65, 0x6c, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x44, 0x73, 0x6d, 0x52, 0x03, 0x64, 0x73,
 	0x6d, 0x12, 0x51, 0x0a, 0x06, 0x62, 0x74, 0x5f, 0x73, 0x61, 0x72, 0x18, 0x06, 0x20, 0x01, 0x28,
 	0x0b, 0x32, 0x3a, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x63,
 	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x57, 0x69, 0x66, 0x69, 0x43, 0x6f,
 	0x6e, 0x66, 0x69, 0x67, 0x2e, 0x49, 0x6e, 0x74, 0x65, 0x6c, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
-	0x2e, 0x42, 0x6c, 0x75, 0x65, 0x74, 0x6f, 0x6f, 0x74, 0x68, 0x53, 0x41, 0x52, 0x52, 0x05, 0x62,
+	0x2e, 0x42, 0x6c, 0x75, 0x65, 0x74, 0x6f, 0x6f, 0x74, 0x68, 0x53, 0x61, 0x72, 0x52, 0x05, 0x62,
 	0x74, 0x53, 0x61, 0x72, 0x12, 0x46, 0x0a, 0x04, 0x77, 0x62, 0x65, 0x6d, 0x18, 0x07, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x32, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
 	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x57, 0x69, 0x66, 0x69, 0x43,
 	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x49, 0x6e, 0x74, 0x65, 0x6c, 0x43, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x2e, 0x57, 0x42, 0x45, 0x4d, 0x52, 0x04, 0x77, 0x62, 0x65, 0x6d, 0x1a, 0xfc, 0x0b, 0x0a,
+	0x67, 0x2e, 0x57, 0x62, 0x65, 0x6d, 0x52, 0x04, 0x77, 0x62, 0x65, 0x6d, 0x1a, 0xfc, 0x0b, 0x0a,
 	0x08, 0x53, 0x61, 0x72, 0x54, 0x61, 0x62, 0x6c, 0x65, 0x12, 0x2a, 0x0a, 0x11, 0x73, 0x61, 0x72,
 	0x5f, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x0d, 0x52, 0x0f, 0x73, 0x61, 0x72, 0x54, 0x61, 0x62, 0x6c, 0x65, 0x56, 0x65,
@@ -3190,7 +3190,7 @@ var file_chromiumos_config_api_wifi_config_proto_rawDesc = []byte{
 	0x12, 0x64, 0x65, 0x6e, 0x79, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x5f, 0x65, 0x6e, 0x74, 0x72, 0x79,
 	0x5f, 0x31, 0x36, 0x18, 0x13, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x0f, 0x64, 0x65, 0x6e, 0x79, 0x4c,
 	0x69, 0x73, 0x74, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x31, 0x36, 0x1a, 0xcb, 0x09, 0x0a, 0x03, 0x44,
-	0x53, 0x4d, 0x12, 0x3d, 0x0a, 0x1b, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x61, 0x63,
+	0x73, 0x6d, 0x12, 0x3d, 0x0a, 0x1b, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x61, 0x63,
 	0x74, 0x69, 0x76, 0x65, 0x5f, 0x73, 0x64, 0x72, 0x5f, 0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c,
 	0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x18, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65,
 	0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x53, 0x64, 0x72, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c,
@@ -3217,7 +3217,7 @@ var file_chromiumos_config_api_wifi_config_proto_rawDesc = []byte{
 	0x09, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x49, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d,
 	0x6f, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x57, 0x69,
 	0x66, 0x69, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x49, 0x6e, 0x74, 0x65, 0x6c, 0x43, 0x6f,
-	0x6e, 0x66, 0x69, 0x67, 0x2e, 0x44, 0x53, 0x4d, 0x2e, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x6d,
+	0x6e, 0x66, 0x69, 0x67, 0x2e, 0x44, 0x73, 0x6d, 0x2e, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x6d,
 	0x65, 0x6e, 0x74, 0x31, 0x31, 0x62, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73,
 	0x52, 0x17, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x31, 0x31, 0x62, 0x65,
 	0x43, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73, 0x12, 0x88, 0x01, 0x0a, 0x1a, 0x65, 0x6e,
@@ -3225,16 +3225,16 @@ var file_chromiumos_config_api_wifi_config_proto_rawDesc = []byte{
 	0x68, 0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c, 0x64, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x4a,
 	0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x66,
 	0x69, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x57, 0x69, 0x66, 0x69, 0x43, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x2e, 0x49, 0x6e, 0x74, 0x65, 0x6c, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x44, 0x53,
-	0x4d, 0x2e, 0x45, 0x6e, 0x65, 0x72, 0x67, 0x79, 0x44, 0x65, 0x74, 0x65, 0x63, 0x74, 0x69, 0x6f,
+	0x67, 0x2e, 0x49, 0x6e, 0x74, 0x65, 0x6c, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x44, 0x73,
+	0x6d, 0x2e, 0x45, 0x6e, 0x65, 0x72, 0x67, 0x79, 0x44, 0x65, 0x74, 0x65, 0x63, 0x74, 0x69, 0x6f,
 	0x6e, 0x54, 0x68, 0x72, 0x65, 0x73, 0x68, 0x6f, 0x6c, 0x64, 0x52, 0x18, 0x65, 0x6e, 0x65, 0x72,
 	0x67, 0x79, 0x44, 0x65, 0x74, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x68, 0x72, 0x65, 0x73,
 	0x68, 0x6f, 0x6c, 0x64, 0x12, 0x66, 0x0a, 0x0e, 0x72, 0x66, 0x69, 0x5f, 0x6d, 0x69, 0x74, 0x69,
 	0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x3f, 0x2e, 0x63,
 	0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
 	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x57, 0x69, 0x66, 0x69, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e,
-	0x49, 0x6e, 0x74, 0x65, 0x6c, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x44, 0x53, 0x4d, 0x2e,
-	0x52, 0x46, 0x49, 0x4d, 0x69, 0x74, 0x69, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0d, 0x72,
+	0x49, 0x6e, 0x74, 0x65, 0x6c, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x44, 0x73, 0x6d, 0x2e,
+	0x52, 0x66, 0x69, 0x4d, 0x69, 0x74, 0x69, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0d, 0x72,
 	0x66, 0x69, 0x4d, 0x69, 0x74, 0x69, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x50, 0x0a, 0x17,
 	0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x31, 0x31, 0x62, 0x65, 0x43, 0x6f,
 	0x75, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x68, 0x69, 0x6e, 0x61,
@@ -3263,11 +3263,11 @@ var file_chromiumos_config_api_wifi_config_proto_rawDesc = []byte{
 	0x17, 0x0a, 0x07, 0x75, 0x68, 0x62, 0x5f, 0x36, 0x67, 0x38, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x08,
 	0x52, 0x06, 0x75, 0x68, 0x62, 0x36, 0x67, 0x38, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x68, 0x62, 0x5f,
 	0x37, 0x67, 0x30, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x75, 0x68, 0x62, 0x37, 0x67,
-	0x30, 0x1a, 0x35, 0x0a, 0x0d, 0x52, 0x46, 0x49, 0x4d, 0x69, 0x74, 0x69, 0x67, 0x61, 0x74, 0x69,
+	0x30, 0x1a, 0x35, 0x0a, 0x0d, 0x52, 0x66, 0x69, 0x4d, 0x69, 0x74, 0x69, 0x67, 0x61, 0x74, 0x69,
 	0x6f, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x6c, 0x76, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08,
 	0x52, 0x04, 0x64, 0x6c, 0x76, 0x72, 0x12, 0x10, 0x0a, 0x03, 0x64, 0x64, 0x72, 0x18, 0x02, 0x20,
 	0x01, 0x28, 0x08, 0x52, 0x03, 0x64, 0x64, 0x72, 0x1a, 0x9e, 0x03, 0x0a, 0x0c, 0x42, 0x6c, 0x75,
-	0x65, 0x74, 0x6f, 0x6f, 0x74, 0x68, 0x53, 0x41, 0x52, 0x12, 0x1a, 0x0a, 0x08, 0x72, 0x65, 0x76,
+	0x65, 0x74, 0x6f, 0x6f, 0x74, 0x68, 0x53, 0x61, 0x72, 0x12, 0x1a, 0x0a, 0x08, 0x72, 0x65, 0x76,
 	0x69, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x08, 0x72, 0x65, 0x76,
 	0x69, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x45, 0x0a, 0x1f, 0x69, 0x6e, 0x63, 0x72, 0x65, 0x61, 0x73,
 	0x65, 0x64, 0x5f, 0x70, 0x6f, 0x77, 0x65, 0x72, 0x5f, 0x6d, 0x6f, 0x64, 0x65, 0x5f, 0x6c, 0x69,
@@ -3292,15 +3292,15 @@ var file_chromiumos_config_api_wifi_config_proto_rawDesc = []byte{
 	0x65, 0x32, 0x4d, 0x68, 0x7a, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12,
 	0x28, 0x0a, 0x10, 0x6c, 0x65, 0x5f, 0x6c, 0x72, 0x5f, 0x6d, 0x6f, 0x64, 0x75, 0x6c, 0x61, 0x74,
 	0x69, 0x6f, 0x6e, 0x18, 0x09, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x0e, 0x6c, 0x65, 0x4c, 0x72, 0x4d,
-	0x6f, 0x64, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0xfd, 0x01, 0x0a, 0x04, 0x57, 0x42,
-	0x45, 0x4d, 0x12, 0x1a, 0x0a, 0x08, 0x72, 0x65, 0x76, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01,
+	0x6f, 0x64, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0xfd, 0x01, 0x0a, 0x04, 0x57, 0x62,
+	0x65, 0x6d, 0x12, 0x1a, 0x0a, 0x08, 0x72, 0x65, 0x76, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x0d, 0x52, 0x08, 0x72, 0x65, 0x76, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x86,
 	0x01, 0x0a, 0x19, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x5f, 0x77, 0x62,
 	0x65, 0x6d, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73, 0x18, 0x02, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x4a, 0x2e, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2e,
 	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x57, 0x69, 0x66, 0x69, 0x43,
 	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x49, 0x6e, 0x74, 0x65, 0x6c, 0x43, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x2e, 0x57, 0x42, 0x45, 0x4d, 0x2e, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x6d, 0x65, 0x6e,
+	0x67, 0x2e, 0x57, 0x62, 0x65, 0x6d, 0x2e, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x6d, 0x65, 0x6e,
 	0x74, 0x57, 0x62, 0x65, 0x6d, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73, 0x52, 0x17,
 	0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x57, 0x62, 0x65, 0x6d, 0x43, 0x6f,
 	0x75, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73, 0x1a, 0x50, 0x0a, 0x17, 0x45, 0x6e, 0x61, 0x62, 0x6c,
@@ -3492,16 +3492,16 @@ var file_chromiumos_config_api_wifi_config_proto_goTypes = []interface{}{
 	(*WifiConfig_IntelConfig_Offsets)(nil),                      // 11: chromiumos.config.api.WifiConfig.IntelConfig.Offsets
 	(*WifiConfig_IntelConfig_Gains)(nil),                        // 12: chromiumos.config.api.WifiConfig.IntelConfig.Gains
 	(*WifiConfig_IntelConfig_Average)(nil),                      // 13: chromiumos.config.api.WifiConfig.IntelConfig.Average
-	(*WifiConfig_IntelConfig_DSM)(nil),                          // 14: chromiumos.config.api.WifiConfig.IntelConfig.DSM
-	(*WifiConfig_IntelConfig_BluetoothSAR)(nil),                 // 15: chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR
-	(*WifiConfig_IntelConfig_WBEM)(nil),                         // 16: chromiumos.config.api.WifiConfig.IntelConfig.WBEM
+	(*WifiConfig_IntelConfig_Dsm)(nil),                          // 14: chromiumos.config.api.WifiConfig.IntelConfig.Dsm
+	(*WifiConfig_IntelConfig_BluetoothSar)(nil),                 // 15: chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar
+	(*WifiConfig_IntelConfig_Wbem)(nil),                         // 16: chromiumos.config.api.WifiConfig.IntelConfig.Wbem
 	(*WifiConfig_IntelConfig_SarTable_TransmitPowerChain)(nil),  // 17: chromiumos.config.api.WifiConfig.IntelConfig.SarTable.TransmitPowerChain
 	(*WifiConfig_IntelConfig_Offsets_GeoOffsets)(nil),           // 18: chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets
 	(*WifiConfig_IntelConfig_Gains_AntennaGain)(nil),            // 19: chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain
-	(*WifiConfig_IntelConfig_DSM_Enablement11BeCountries)(nil),  // 20: chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries
-	(*WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold)(nil), // 21: chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold
-	(*WifiConfig_IntelConfig_DSM_RFIMitigation)(nil),            // 22: chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation
-	(*WifiConfig_IntelConfig_WBEM_EnablementWbemCountries)(nil), // 23: chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries
+	(*WifiConfig_IntelConfig_Dsm_Enablement11BeCountries)(nil),  // 20: chromiumos.config.api.WifiConfig.IntelConfig.Dsm.Enablement11beCountries
+	(*WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold)(nil), // 21: chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold
+	(*WifiConfig_IntelConfig_Dsm_RfiMitigation)(nil),            // 22: chromiumos.config.api.WifiConfig.IntelConfig.Dsm.RfiMitigation
+	(*WifiConfig_IntelConfig_Wbem_EnablementWbemCountries)(nil), // 23: chromiumos.config.api.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries
 	(*WifiConfig_MtkConfig_TransmitPowerChain)(nil),             // 24: chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain
 	(*WifiConfig_MtkConfig_GeoTransmitPowerChain)(nil),          // 25: chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain
 	(*WifiConfig_MtkConfig_MtclTable)(nil),                      // 26: chromiumos.config.api.WifiConfig.MtkConfig.MtclTable
@@ -3526,9 +3526,9 @@ var file_chromiumos_config_api_wifi_config_proto_depIdxs = []int32{
 	11, // 14: chromiumos.config.api.WifiConfig.IntelConfig.wgds_table:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Offsets
 	12, // 15: chromiumos.config.api.WifiConfig.IntelConfig.ant_table:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Gains
 	13, // 16: chromiumos.config.api.WifiConfig.IntelConfig.wtas_table:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Average
-	14, // 17: chromiumos.config.api.WifiConfig.IntelConfig.dsm:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.DSM
-	15, // 18: chromiumos.config.api.WifiConfig.IntelConfig.bt_sar:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR
-	16, // 19: chromiumos.config.api.WifiConfig.IntelConfig.wbem:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.WBEM
+	14, // 17: chromiumos.config.api.WifiConfig.IntelConfig.dsm:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Dsm
+	15, // 18: chromiumos.config.api.WifiConfig.IntelConfig.bt_sar:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar
+	16, // 19: chromiumos.config.api.WifiConfig.IntelConfig.wbem:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Wbem
 	24, // 20: chromiumos.config.api.WifiConfig.MtkConfig.tablet_mode_power_table:type_name -> chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain
 	24, // 21: chromiumos.config.api.WifiConfig.MtkConfig.non_tablet_mode_power_table:type_name -> chromiumos.config.api.WifiConfig.MtkConfig.TransmitPowerChain
 	25, // 22: chromiumos.config.api.WifiConfig.MtkConfig.fcc_power_table:type_name -> chromiumos.config.api.WifiConfig.MtkConfig.GeoTransmitPowerChain
@@ -3553,10 +3553,10 @@ var file_chromiumos_config_api_wifi_config_proto_depIdxs = []int32{
 	18, // 41: chromiumos.config.api.WifiConfig.IntelConfig.Offsets.offset_other:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Offsets.GeoOffsets
 	19, // 42: chromiumos.config.api.WifiConfig.IntelConfig.Gains.ant_gain_table_a:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain
 	19, // 43: chromiumos.config.api.WifiConfig.IntelConfig.Gains.ant_gain_table_b:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Gains.AntennaGain
-	20, // 44: chromiumos.config.api.WifiConfig.IntelConfig.DSM.enablement_11be_countries:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries
-	21, // 45: chromiumos.config.api.WifiConfig.IntelConfig.DSM.energy_detection_threshold:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold
-	22, // 46: chromiumos.config.api.WifiConfig.IntelConfig.DSM.rfi_mitigation:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation
-	23, // 47: chromiumos.config.api.WifiConfig.IntelConfig.WBEM.enablement_wbem_countries:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries
+	20, // 44: chromiumos.config.api.WifiConfig.IntelConfig.Dsm.enablement_11be_countries:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Dsm.Enablement11beCountries
+	21, // 45: chromiumos.config.api.WifiConfig.IntelConfig.Dsm.energy_detection_threshold:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold
+	22, // 46: chromiumos.config.api.WifiConfig.IntelConfig.Dsm.rfi_mitigation:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Dsm.RfiMitigation
+	23, // 47: chromiumos.config.api.WifiConfig.IntelConfig.Wbem.enablement_wbem_countries:type_name -> chromiumos.config.api.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries
 	48, // [48:48] is the sub-list for method output_type
 	48, // [48:48] is the sub-list for method input_type
 	48, // [48:48] is the sub-list for extension type_name
@@ -3739,7 +3739,7 @@ func file_chromiumos_config_api_wifi_config_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_wifi_config_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WifiConfig_IntelConfig_DSM); i {
+			switch v := v.(*WifiConfig_IntelConfig_Dsm); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3751,7 +3751,7 @@ func file_chromiumos_config_api_wifi_config_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_wifi_config_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WifiConfig_IntelConfig_BluetoothSAR); i {
+			switch v := v.(*WifiConfig_IntelConfig_BluetoothSar); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3763,7 +3763,7 @@ func file_chromiumos_config_api_wifi_config_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_wifi_config_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WifiConfig_IntelConfig_WBEM); i {
+			switch v := v.(*WifiConfig_IntelConfig_Wbem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3811,7 +3811,7 @@ func file_chromiumos_config_api_wifi_config_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_wifi_config_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WifiConfig_IntelConfig_DSM_Enablement11BeCountries); i {
+			switch v := v.(*WifiConfig_IntelConfig_Dsm_Enablement11BeCountries); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3823,7 +3823,7 @@ func file_chromiumos_config_api_wifi_config_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_wifi_config_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WifiConfig_IntelConfig_DSM_EnergyDetectionThreshold); i {
+			switch v := v.(*WifiConfig_IntelConfig_Dsm_EnergyDetectionThreshold); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3835,7 +3835,7 @@ func file_chromiumos_config_api_wifi_config_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_wifi_config_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WifiConfig_IntelConfig_DSM_RFIMitigation); i {
+			switch v := v.(*WifiConfig_IntelConfig_Dsm_RfiMitigation); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3847,7 +3847,7 @@ func file_chromiumos_config_api_wifi_config_proto_init() {
 			}
 		}
 		file_chromiumos_config_api_wifi_config_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WifiConfig_IntelConfig_WBEM_EnablementWbemCountries); i {
+			switch v := v.(*WifiConfig_IntelConfig_Wbem_EnablementWbemCountries); i {
 			case 0:
 				return &v.state
 			case 1:

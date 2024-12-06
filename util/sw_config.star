@@ -847,7 +847,7 @@ def _create_intel_dsm_enablement_11be_countries(
         china: enable channel for China region.
         south_korea: enable channel for South Korea region.
     """
-    return wf_pb.WifiConfig.IntelConfig.DSM.Enablement11beCountries(
+    return wf_pb.WifiConfig.IntelConfig.Dsm.Enablement11beCountries(
         china = china,
         south_korea = south_korea,
     )
@@ -883,7 +883,7 @@ def _create_intel_dsm_energy_detection_threshold(
         uhb_6g8: Enable EDT optimization for UHB_6G8
         uhb_7g0: Enable EDT optimization for UHB_7G0
     """
-    return wf_pb.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold(
+    return wf_pb.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold(
         revision = revision,
         etsi_hb = etsi_hb,
         fcc_uhb = fcc_uhb,
@@ -908,7 +908,7 @@ def _create_intel_dsm_rfi_mitigation(
         dlvr: Enable DLVR mitigation
         ddr: Enable DDR mitigation
     """
-    return wf_pb.WifiConfig.IntelConfig.DSM.RFIMitigation(
+    return wf_pb.WifiConfig.IntelConfig.Dsm.RfiMitigation(
         dlvr = dlvr,
         ddr = ddr,
     )
@@ -924,7 +924,7 @@ def _create_intel_dsm(
         enablement_11be_countries = None,
         rfi_mitigation = None,
         energy_detection_threshold = None):
-    """Builds a DSM for intel drivers.
+    """Builds a Dsm for intel drivers.
 
     Args:
         disable_active_sdr_channels: Allow OEMs to set ETSI 5.8GHz SRD Channels to Passive/Disabled.
@@ -938,7 +938,7 @@ def _create_intel_dsm(
         energy_detection_threshold: Control enablement of EDT optimization.
         rfi_mitigation: Control of RFI mitigation
     """
-    return wf_pb.WifiConfig.IntelConfig.DSM(
+    return wf_pb.WifiConfig.IntelConfig.Dsm(
         disable_active_sdr_channels = disable_active_sdr_channels,
         support_indonesia_5g_band = support_indonesia_5g_band,
         support_ultra_high_band = support_ultra_high_band,
@@ -1009,7 +1009,7 @@ def _create_intel_bt_sar(
         le2_mhz_modulation: power restriction for LE 2 MHz Modulation.
         le_lr_modulation: power restriction for LE LR Modulation.
     """
-    return wf_pb.WifiConfig.IntelConfig.BluetoothSAR(
+    return wf_pb.WifiConfig.IntelConfig.BluetoothSar(
         revision = revision,
         increased_power_mode_limitation = increased_power_mode_limitation,
         sar_lb_power_restriction = sar_lb_power_restriction,
@@ -1030,7 +1030,7 @@ def _create_intel_wbem_country_enablement(
         japan: enable channel for Japan region.
         south_korea: enable channel for South Korea region.
     """
-    return wf_pb.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries(
+    return wf_pb.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries(
         japan = japan,
         south_korea = south_korea,
     )
@@ -1038,13 +1038,13 @@ def _create_intel_wbem_country_enablement(
 def _create_intel_wbem(
         revision,  # only revision 0 is supported at the moment
         enablement_wbem_countries = _create_intel_wbem_country_enablement()):
-    """Builds a WBEM proto for use with intel drivers.
+    """Builds a Wbem proto for use with intel drivers.
 
     Args:
         revision: WBEM table revision.
         enablement_wbem_countries: Enable/Disable of Wi-Fi 320MHz per MCC.
     """
-    return wf_pb.WifiConfig.IntelConfig.WBEM(
+    return wf_pb.WifiConfig.IntelConfig.Wbem(
         revision = revision,
         enablement_wbem_countries = enablement_wbem_countries,
     )
@@ -1151,8 +1151,8 @@ def _create_intel_wifi(
         ant_table: Antenna Gains for use with intel driver.
         wtas_table: Time average SAR for use with intel driver.
         dsm: Device specific methods return values for intel driver.
-        bt_sar: BluetoothSAR proto for use with intel driver.
-        wbem: WBEM proto for use with intel driver.
+        bt_sar: BluetoothSar proto for use with intel driver.
+        wbem: Wbem proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
