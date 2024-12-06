@@ -1241,6 +1241,9 @@
 					"value": "tast.arc.Print.container_p"
 				},
 				{
+					"value": "tast.arc.Print.vm_t"
+				},
+				{
 					"value": "tast.arc.RemovableMedia"
 				},
 				{
