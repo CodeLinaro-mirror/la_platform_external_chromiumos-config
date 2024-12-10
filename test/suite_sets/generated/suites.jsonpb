@@ -1793,6 +1793,9 @@
 					"value": "tast.camera.CCAUISmoke.fake_hal"
 				},
 				{
+					"value": "tast.camera.CCAUISmoke.fake_vcd"
+				},
+				{
 					"value": "tast.camera.CCAUISmoke.vivid"
 				},
 				{
@@ -3747,6 +3750,9 @@
 				},
 				{
 					"value": "tast.login.ChangePassword.user_without_recovery"
+				},
+				{
+					"value": "tast.login.ChangePassword.user_without_recovery_and_setup"
 				},
 				{
 					"value": "tast.login.Chrome"
