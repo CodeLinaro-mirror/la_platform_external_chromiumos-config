@@ -282,6 +282,7 @@ message SchedulingUnitOptions {
     ONEOF = 4;
   }
  State state = 6;
+ repeated PublishKey publish_keys = 7;
 }
 
 message HWRequirements {
@@ -350,3 +351,8 @@ message CTPv2Response {
 }
 
 message CrosTestRunnerRequest {}
+
+message PublishKey {
+  string subject = 1;
+  map<string, string> key_values = 2;
+}

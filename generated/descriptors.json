@@ -27203,6 +27203,14 @@
               "number": 6,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.api.SchedulingUnitOptions.State"
+            },
+            {
+              "jsonName": "publishKeys",
+              "label": "LABEL_REPEATED",
+              "name": "publish_keys",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishKey"
             }
           ],
           "name": "SchedulingUnitOptions"
@@ -27472,6 +27480,50 @@
         },
         {
           "name": "CrosTestRunnerRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "subject",
+              "label": "LABEL_OPTIONAL",
+              "name": "subject",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "keyValues",
+              "label": "LABEL_REPEATED",
+              "name": "key_values",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishKey.KeyValuesEntry"
+            }
+          ],
+          "name": "PublishKey",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "KeyValuesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/ctp2.proto",
