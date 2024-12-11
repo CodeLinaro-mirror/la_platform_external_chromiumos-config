@@ -33191,6 +33191,13 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry"
+            },
+            {
+              "jsonName": "dest",
+              "label": "LABEL_OPTIONAL",
+              "name": "dest",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "SaveLogsRequest",
