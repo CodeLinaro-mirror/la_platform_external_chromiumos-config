@@ -2666,6 +2666,9 @@
 					"value": "tast.diagnostics.RenderApp"
 				},
 				{
+					"value": "tast.diagnostics.SessionLog"
+				},
+				{
 					"value": "tast.dlp.DataLeakPreventionRulesListClipboard.ash_warn_proceeded"
 				},
 				{
@@ -3696,6 +3699,9 @@
 				},
 				{
 					"value": "tast.kernel.ConfigVerify.chromeos"
+				},
+				{
+					"value": "tast.kernel.ConfigVerify.chromeos_flex"
 				},
 				{
 					"value": "tast.kernel.ConfigVerify.chromeos_kernelci"
