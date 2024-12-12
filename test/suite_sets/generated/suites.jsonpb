@@ -3752,7 +3752,13 @@
 					"value": "tast.login.AuthError"
 				},
 				{
-					"value": "tast.login.ChangePassword.user_with_recovery"
+					"value": "tast.login.ChangePassword.user_with_recovery_gaia"
+				},
+				{
+					"value": "tast.login.ChangePassword.user_with_recovery_local_password"
+				},
+				{
+					"value": "tast.login.ChangePassword.user_with_recovery_pin"
 				},
 				{
 					"value": "tast.login.ChangePassword.user_without_recovery"
@@ -4923,6 +4929,18 @@
 				},
 				{
 					"value": "tast.secagentd.AuthenticationEvents"
+				},
+				{
+					"value": "tast.secagentd.FileEvents.auth_factors"
+				},
+				{
+					"value": "tast.secagentd.FileEvents.cookies"
+				},
+				{
+					"value": "tast.secagentd.FileEvents.user_credential"
+				},
+				{
+					"value": "tast.secagentd.FileEvents.user_fs"
 				},
 				{
 					"value": "tast.secagentd.NetworkEvents.relaxed_icmp"
