@@ -1036,7 +1036,9 @@ def _create_intel_bt_sar(
         set_1_chain_a: First set Chain A SAR power table.
         set_1_chain_b: First set Chain B SAR power table.
     """
-    if revision == 1:
+    if revision not in [1, 2]:
+        fail("Invalid Intel Bluetooth SAR revision (should be 1 or 2)")
+    elif revision == 1:
         return wf_pb.WifiConfig.IntelConfig.BluetoothSar(
             revision = revision,
             increased_power_mode_limitation = increased_power_mode_limitation,
@@ -1048,15 +1050,13 @@ def _create_intel_bt_sar(
             le2_mhz_modulation = le2_mhz_modulation,
             le_lr_modulation = le_lr_modulation,
         )
-    elif revision == 2:
+    else:
         return wf_pb.WifiConfig.IntelConfig.BluetoothSar(
             revision = revision,
             increased_power_mode_limitation = increased_power_mode_limitation,
             set_1_chain_a = set_1_chain_a or _create_intel_bluetooth_sar_power_table(),
             set_1_chain_b = set_1_chain_b or _create_intel_bluetooth_sar_power_table(),
         )
-    else:
-        fail("Invalid Intel Bluetooth SAR revision (should be 1 or 2)")
 
 def _create_intel_wbem_country_enablement(
         japan = False,
@@ -1081,6 +1081,8 @@ def _create_intel_wbem(
         revision: WBEM table revision.
         enablement_wbem_countries: Enable/Disable of Wi-Fi 320MHz per MCC.
     """
+    if revision != 0:
+        fail("Invalid Intel WBEM revision (should be 0)")
     return wf_pb.WifiConfig.IntelConfig.Wbem(
         revision = revision,
         enablement_wbem_countries = enablement_wbem_countries,
@@ -1111,7 +1113,7 @@ def _create_intel_bpag_country_enablement(
     )
 
 def _create_intel_bpag(
-        revision,  # only revision 1 is supported at the moment
+        revision,  # only revision 1 and 2 are supported at the moment
         enablement_bpag_countries = _create_intel_bpag_country_enablement()):
     """Builds a BluetoothPpag proto for use with intel drivers.
 
@@ -1119,6 +1121,8 @@ def _create_intel_bpag(
         revision: BluetoothPPAG table revision.
         enablement_bpag_countries: Enable/Disable Antenna Gain Mode per region.
     """
+    if revision not in [1, 2]:
+        fail("Invalid Intel BPAG revision (should be 1 or 2)")
     return wf_pb.WifiConfig.IntelConfig.BluetoothPpag(
         revision = revision,
         enablement_bpag_countries = enablement_bpag_countries,
@@ -1133,6 +1137,8 @@ def _create_intel_bbfb(
         revision: BBFB table revision.
         enable_quad_filter_bypass: Enable/Disable quad filter bypass.
     """
+    if revision != 1:
+        fail("Invalid Intel BBFB revision (should be 1)")
     return wf_pb.WifiConfig.IntelConfig.Bbfb(
         revision = revision,
         enable_quad_filter_bypass = enable_quad_filter_bypass,
@@ -1158,6 +1164,8 @@ def _create_intel_bdcm(
         revision: BDCM table revision.
         bdcm_dual_chain_mode: Dual Chain Mode setting.
     """
+    if revision != 1:
+        fail("Invalid Intel BDCM revision (should be 1)")
     return wf_pb.WifiConfig.IntelConfig.Bdcm(
         revision = revision,
         bdcm_dual_chain_mode = bdcm_dual_chain_mode,
@@ -1192,6 +1200,8 @@ def _create_intel_bbsm(
         revision: BBSM table revision.
         bands_selection: Bluetooth bands selection.
     """
+    if revision != 1:
+        fail("Invalid Intel BBSM revision (should be 1)")
     return wf_pb.WifiConfig.IntelConfig.Bbsm(
         revision = revision,
         bands_selection = bands_selection,
@@ -1271,6 +1281,8 @@ def _create_intel_bucs(
         revision: BUCS table revision.
         uhb_country_selection: Ultra-High Band Country selection.
     """
+    if revision != 1:
+        fail("Invalid Intel BUCS revision (should be 1)")
     return wf_pb.WifiConfig.IntelConfig.Bucs(
         revision = revision,
         uhb_country_selection = uhb_country_selection,
@@ -1285,6 +1297,8 @@ def _create_intel_bdmm(
         revision: BDMM table revision.
         dual_mac_enable: Bluetooth Dual Mac enable.
     """
+    if revision != 1:
+        fail("Invalid Intel BDMM revision (should be 1)")
     return wf_pb.WifiConfig.IntelConfig.Bdmm(
         revision = revision,
         dual_mac_enable = dual_mac_enable,
@@ -1313,6 +1327,8 @@ def _create_intel_ebrd(
         set_4_chain_a: Fourth set Chain A SAR power table.
         set_4_chain_b: Fourth set Chain B SAR power table.
     """
+    if revision != 1:
+        fail("Invalid Intel EBRD revision (should be 1)")
     return wf_pb.WifiConfig.IntelConfig.Ebrd(
         revision = revision,
         dynamic_sar_enable = dynamic_sar_enable,
@@ -1340,6 +1356,8 @@ def _create_intel_wpfc(
         filter_cfg_chain_c: Chain C Filter Platform Configuration
         filter_cfg_chain_d: Chain D Filter Platform Configuration
     """
+    if revision != 0:
+        fail("Invalid Intel WPFC revision (should be 0)")
     return wf_pb.WifiConfig.IntelConfig.Wpfc(
         revision = revision,
         filter_cfg_chain_a = filter_cfg_chain_a,
@@ -1349,7 +1367,7 @@ def _create_intel_wpfc(
     )
 
 def _create_intel_dsbr(
-        revision,  # only revision 0 is supported at the moment
+        revision,  # only revision 0 and 1 are supported at the moment
         override = True,
         bluetooth_radio_resistor_ohm = 33):
     """Builds a Dsbr proto for use with intel drivers.
@@ -1359,6 +1377,8 @@ def _create_intel_dsbr(
         override: Override device FW default values
         bluetooth_radio_resistor_ohm: Override value
     """
+    if revision not in [0, 1]:
+        fail("Invalid Intel DSBR revision (should be 0 or 1)")
     return wf_pb.WifiConfig.IntelConfig.Dsbr(
         revision = revision,
         override = override,
