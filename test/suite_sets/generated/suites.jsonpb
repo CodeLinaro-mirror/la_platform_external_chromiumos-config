@@ -5546,9 +5546,6 @@
 			},
 			"tests": [
 				{
-					"value": "tast.firmware.APBmpblk"
-				},
-				{
 					"value": "tast.firmware.BootMode.dev_cold"
 				},
 				{
@@ -6041,12 +6038,6 @@
 					"value": "tast.firmware.WilcoPowerBehavior.lid_close_open"
 				},
 				{
-					"value": "tast.firmware.WilcoTPMKeyLadderVerification"
-				},
-				{
-					"value": "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen"
-				},
-				{
 					"value": "tast.firmware.WriteProtect.ap"
 				},
 				{
@@ -6500,12 +6491,6 @@
 				},
 				{
 					"value": "tast.firmware.WilcoPowerBehavior.lid_close_open"
-				},
-				{
-					"value": "tast.firmware.WilcoTPMKeyLadderVerification"
-				},
-				{
-					"value": "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen"
 				},
 				{
 					"value": "tast.firmware.WriteProtect.ap"

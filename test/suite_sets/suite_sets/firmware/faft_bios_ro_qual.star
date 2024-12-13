@@ -17,7 +17,6 @@ def _faft_bios_ro_qual():
         bug_component = "b:792402",
         criteria = "Qualify the AP firmware for RO+RW release.",
         tests = [
-            "tast.firmware.APBmpblk",
             "tast.firmware.BootMode.dev_cold",
             "tast.firmware.BootMode.dev_gbb_to_rec",
             "tast.firmware.BootMode.dev_to_rec",
@@ -182,8 +181,6 @@ def _faft_bios_ro_qual():
             "tast.firmware.WilcoNormalToDev",
             "tast.firmware.WilcoPowerBehavior",
             "tast.firmware.WilcoPowerBehavior.lid_close_open",
-            "tast.firmware.WilcoTPMKeyLadderVerification",
-            "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen",
             "tast.firmware.WriteProtect.ap",
             "tast.firmware.WriteProtect.ap_dev",
             "tast.firmware.WriteProtect.ec",

@@ -142,8 +142,6 @@ def _faft_bios_rw_qual():
             "tast.firmware.WilcoNormalToDev",
             "tast.firmware.WilcoPowerBehavior",
             "tast.firmware.WilcoPowerBehavior.lid_close_open",
-            "tast.firmware.WilcoTPMKeyLadderVerification",
-            "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen",
             "tast.firmware.WriteProtect.ap",
             "tast.firmware.WriteProtect.ap_dev",
             "tast.firmware.WriteProtect.ec",
