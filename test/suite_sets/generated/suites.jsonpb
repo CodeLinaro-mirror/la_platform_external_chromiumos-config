@@ -3860,6 +3860,9 @@
 					"value": "tast.network.ARCVPNDisabled"
 				},
 				{
+					"value": "tast.network.AllowClientCertificateManagement"
+				},
+				{
 					"value": "tast.network.AlwaysOnVPNRouting.best_effort_mode_ikev2"
 				},
 				{
@@ -4884,9 +4887,6 @@
 				},
 				{
 					"value": "tast.runtimeprobe.VerifySandbox.storage"
-				},
-				{
-					"value": "tast.runtimeprobe.VerifySandbox.tcpc"
 				},
 				{
 					"value": "tast.scanner.ADFJustification"
