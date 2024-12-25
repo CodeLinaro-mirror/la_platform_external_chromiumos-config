@@ -3830,6 +3830,12 @@
 					"value": "tast.network.ARCCreateWifiInShillByCmd.manual_proxy"
 				},
 				{
+					"value": "tast.network.ARCEAPWifiProvisioning.eap_wifi_tls"
+				},
+				{
+					"value": "tast.network.ARCEAPWifiProvisioning.eap_wifi_ttls"
+				},
+				{
 					"value": "tast.network.ARCIPv6Connectivity"
 				},
 				{
@@ -3899,6 +3905,9 @@
 					"value": "tast.network.DHCPClientOptions"
 				},
 				{
+					"value": "tast.network.DHCPClientOptions.dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPHostname"
 				},
 				{
@@ -3911,6 +3920,9 @@
 					"value": "tast.network.DHCPNonASCIIParam"
 				},
 				{
+					"value": "tast.network.DHCPNonASCIIParam.dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPTwoServersConflict"
 				},
 				{
@@ -3921,6 +3933,9 @@
 				},
 				{
 					"value": "tast.network.DHCPWebProxy"
+				},
+				{
+					"value": "tast.network.DHCPWebProxy.dhcpcd10"
 				},
 				{
 					"value": "tast.network.DNSProxy.arc_doh_always_on"
@@ -4017,6 +4032,72 @@
 				},
 				{
 					"value": "tast.network.PasspointCerts"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.home_to_home"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.home_to_roaming"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.oi_to_oi"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.roaming_to_home"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.roaming_to_roaming"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_only_required_ois"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_with_domain"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_with_oi"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_with_required_oi"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_with_tls_realm"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_over_roaming_ap"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_over_roaming_credentials"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_with_two_domains"
+				},
+				{
+					"value": "tast.network.PasspointSelection.match_with_oui"
+				},
+				{
+					"value": "tast.network.PasspointSelection.match_with_oui36"
+				},
+				{
+					"value": "tast.network.PasspointSelection.match_with_oui36_with_leading_zeros"
+				},
+				{
+					"value": "tast.network.PasspointSelection.match_with_oui_with_leading_zeros"
+				},
+				{
+					"value": "tast.network.PasspointSelection.roaming_match_with_domain"
+				},
+				{
+					"value": "tast.network.PasspointSelection.roaming_match_with_oi"
+				},
+				{
+					"value": "tast.network.PasspointSelection.roaming_match_with_security"
+				},
+				{
+					"value": "tast.network.PasspointSelection.two_home_credentials"
+				},
+				{
+					"value": "tast.network.PasspointSelection.two_roaming_credentials"
 				},
 				{
 					"value": "tast.network.QosNetworkControl"
