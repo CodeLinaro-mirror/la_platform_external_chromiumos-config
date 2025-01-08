@@ -1409,6 +1409,12 @@
 					"value": "tast.audio.CrasDebugDump"
 				},
 				{
+					"value": "tast.audio.CrasEffects.beamforming_enabled_by_client"
+				},
+				{
+					"value": "tast.audio.CrasEffects.beamforming_enabled_by_ui"
+				},
+				{
 					"value": "tast.audio.CrasEffects.dsp_0x0_conflict"
 				},
 				{
@@ -3911,10 +3917,19 @@
 					"value": "tast.network.DHCPHostname"
 				},
 				{
+					"value": "tast.network.DHCPHostname.dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPInitBound"
 				},
 				{
+					"value": "tast.network.DHCPInitBound.dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPInitBound.non_std_port"
+				},
+				{
+					"value": "tast.network.DHCPInitBound.non_std_port_dhcpcd10"
 				},
 				{
 					"value": "tast.network.DHCPNonASCIIParam"
@@ -3926,10 +3941,19 @@
 					"value": "tast.network.DHCPTwoServersConflict"
 				},
 				{
+					"value": "tast.network.DHCPTwoServersConflict.dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPTwoServersNAK.ack_first"
 				},
 				{
+					"value": "tast.network.DHCPTwoServersNAK.ack_first_dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPTwoServersNAK.nak_first"
+				},
+				{
+					"value": "tast.network.DHCPTwoServersNAK.nak_first_dhcpcd10"
 				},
 				{
 					"value": "tast.network.DHCPWebProxy"
