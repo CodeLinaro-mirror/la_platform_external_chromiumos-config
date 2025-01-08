@@ -119,6 +119,9 @@ message SuiteRequest {
   // The total number of retries that should be done to failed test(s).
   // By default it will be 0 which means no retry.
   int64 retry_count = 8;
+  // tags gives us a location to store decorations from the v1 proto without
+  // requiring a proto addition each time.
+  repeated string tags = 9;
 }
 
 message KeyValue {

@@ -27285,6 +27285,13 @@
               "name": "retry_count",
               "number": 8,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "tags",
+              "label": "LABEL_REPEATED",
+              "name": "tags",
+              "number": 9,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "SuiteRequest",
