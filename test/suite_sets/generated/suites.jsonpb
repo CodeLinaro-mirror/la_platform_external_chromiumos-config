@@ -4442,6 +4442,9 @@
 					"value": "tast.oobe.Smoke.fieldtrial_testing_config_on"
 				},
 				{
+					"value": "tast.oobe.SmokeEndToEnd"
+				},
+				{
 					"value": "tast.peripherals.LaunchAppFromGuestSession.diagnostics"
 				},
 				{
