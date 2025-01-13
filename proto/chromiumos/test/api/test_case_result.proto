@@ -16,12 +16,15 @@ import "chromiumos/test/api/test_harness.proto";
 import "chromiumos/test/api/test_case_metadata.proto";
 
 // Result of a single execution of a given TestCase.
-// NEXT TAG: 17
+// NEXT TAG: 18
 message TestCaseResult {
   reserved 15;
 
   // Unique ID of test case executed
   TestCase.Id test_case_id = 1;
+
+  // Additional properties of the test case.
+  repeated TestCase.Tag tags = 17;
 
   // Location of the test result artifacts generated during execution.
   StoragePath result_dir_path = 2;

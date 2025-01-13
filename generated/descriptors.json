@@ -22657,6 +22657,14 @@
               "typeName": ".chromiumos.test.api.TestCase.Id"
             },
             {
+              "jsonName": "tags",
+              "label": "LABEL_REPEATED",
+              "name": "tags",
+              "number": 17,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase.Tag"
+            },
+            {
               "jsonName": "resultDirPath",
               "label": "LABEL_OPTIONAL",
               "name": "result_dir_path",
