@@ -13,7 +13,7 @@ import "chromiumos/test/api/firmware_provision.proto";
 import "chromiumos/test/api/post_test_service.proto";
 
 
-// NEXT TAG: 9
+// NEXT TAG: 10
 message PublishRdbMetadata {
   // Current invocation id
   string current_invocation_id = 1;
@@ -63,4 +63,9 @@ message PublishRdbMetadata {
 
   // Captures the response of the firmware provisioning.
   chromiumos.test.api.FirmwareProvisionResponse firmware_provision_response = 8;
+
+  // Captures the 3D equivalence classes (EqC) information. The contents of the
+  // map should be aligned with the EqcInfo proto:
+  // https://source.chromium.org/chromium/infra/infra_superproject/+/main:infra/go/src/go.chromium.org/chromiumos/config/proto/chromiumos/test/artifact/test_result.proto;l=130-150
+  map<string, string> eqc_info = 9;
 }

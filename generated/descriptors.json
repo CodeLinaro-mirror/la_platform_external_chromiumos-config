@@ -32315,6 +32315,14 @@
               "number": 8,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.FirmwareProvisionResponse"
+            },
+            {
+              "jsonName": "eqcInfo",
+              "label": "LABEL_REPEATED",
+              "name": "eqc_info",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.metadata.PublishRdbMetadata.EqcInfoEntry"
             }
           ],
           "name": "PublishRdbMetadata",
@@ -32356,6 +32364,28 @@
                 }
               ],
               "name": "BaseVariantEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "EqcInfoEntry",
               "options": {
                 "mapEntry": true
               }
