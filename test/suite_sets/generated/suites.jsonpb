@@ -1409,12 +1409,6 @@
 					"value": "tast.audio.CrasDebugDump"
 				},
 				{
-					"value": "tast.audio.CrasEffects.beamforming_enabled_by_client"
-				},
-				{
-					"value": "tast.audio.CrasEffects.beamforming_enabled_by_ui"
-				},
-				{
 					"value": "tast.audio.CrasEffects.dsp_0x0_conflict"
 				},
 				{
@@ -3501,6 +3495,15 @@
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardAutocorrectAccentKey"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardBasicTyping"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardBasicTyping.first_party_vietnamese"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardBasicTyping.informational"
 				},
 				{
 					"value": "tast.inputs.PhysicalKeyboardCantoneseTyping"
