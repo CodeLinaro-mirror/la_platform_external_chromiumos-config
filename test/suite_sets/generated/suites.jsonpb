@@ -2570,13 +2570,7 @@
 					"value": "tast.cryptohome.LegacyLabelAuthSession.without_key_data"
 				},
 				{
-					"value": "tast.cryptohome.PinLockoutOnLockScreen.legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.PinLockoutOnLockScreen.migrate_legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.PinLockoutOnLockScreen.modern_pin_no_migration"
+					"value": "tast.cryptohome.PinLockoutOnLockScreen"
 				},
 				{
 					"value": "tast.cryptohome.Recovery"
