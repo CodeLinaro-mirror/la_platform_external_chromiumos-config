@@ -27684,6 +27684,18 @@
         {
           "field": [
             {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "InternalTestplanFragment"
+        },
+        {
+          "field": [
+            {
               "jsonName": "name",
               "label": "LABEL_OPTIONAL",
               "name": "name",
@@ -28267,6 +28279,13 @@
               "inputType": ".chromiumos.test.api.InternalTestplan",
               "name": "Execute",
               "outputType": ".chromiumos.test.api.InternalTestplan"
+            },
+            {
+              "clientStreaming": true,
+              "inputType": ".chromiumos.test.api.InternalTestplanFragment",
+              "name": "ExecuteStream",
+              "outputType": ".chromiumos.test.api.InternalTestplanFragment",
+              "serverStreaming": true
             }
           ],
           "name": "GenericFilterService"
