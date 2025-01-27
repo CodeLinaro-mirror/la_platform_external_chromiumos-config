@@ -32654,6 +32654,65 @@
         {
           "field": [
             {
+              "jsonName": "gcsPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "gcs_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "serviceAccountCredsFilePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_account_creds_file_path",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "build",
+              "label": "LABEL_OPTIONAL",
+              "name": "build",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "suite",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "parentSwarmingTaskId",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent_swarming_task_id",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PublishCpconMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/publish_cpcon_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "alRun",
               "label": "LABEL_OPTIONAL",
               "name": "al_run",
