@@ -32265,6 +32265,7 @@
       },
       "dependency": [
         "chromiumos/test/artifact/test_result.proto",
+        "chromiumos/test/api/ctp2.proto",
         "chromiumos/test/api/firmware_provision.proto",
         "chromiumos/test/api/post_test_service.proto"
       ],
@@ -32340,8 +32341,19 @@
               "label": "LABEL_REPEATED",
               "name": "eqc_info",
               "number": 9,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.metadata.PublishRdbMetadata.EqcInfoEntry"
+            },
+            {
+              "jsonName": "publishKeys",
+              "label": "LABEL_REPEATED",
+              "name": "publish_keys",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishKey"
             }
           ],
           "name": "PublishRdbMetadata",
