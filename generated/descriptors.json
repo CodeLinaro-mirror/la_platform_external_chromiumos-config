@@ -37100,6 +37100,13 @@
               "name": "device_name",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "endTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "end_time",
+              "number": 6,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "TaskWithState"
