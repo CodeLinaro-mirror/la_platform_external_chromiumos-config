@@ -25844,6 +25844,14 @@
               "number": 5,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.PartnerMetadata"
+            },
+            {
+              "jsonName": "kernelPrebuilts",
+              "label": "LABEL_OPTIONAL",
+              "name": "kernel_prebuilts",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.KernelPrebuilts"
             }
           ],
           "name": "InstallRequest"
@@ -25866,6 +25874,9 @@
             }
           ],
           "name": "PartnerMetadata"
+        },
+        {
+          "name": "KernelPrebuilts"
         }
       ],
       "name": "chromiumos/test/api/provision.proto",
