@@ -1118,9 +1118,6 @@
 					"value": "tast.arc.FileSystemXattrs"
 				},
 				{
-					"value": "tast.arc.Gamepad"
-				},
-				{
 					"value": "tast.arc.Gamepad.vm"
 				},
 				{
@@ -1257,9 +1254,6 @@
 				},
 				{
 					"value": "tast.arc.SocProperties"
-				},
-				{
-					"value": "tast.arc.StandardizedKeyboardCopyPaste"
 				},
 				{
 					"value": "tast.arc.StandardizedKeyboardCopyPaste.tablet_mode"
