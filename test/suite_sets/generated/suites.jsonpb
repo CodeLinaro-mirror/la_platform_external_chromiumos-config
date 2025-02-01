@@ -5021,6 +5021,9 @@
 					"value": "tast.sched.CoreSchedTag"
 				},
 				{
+					"value": "tast.sched.NoNestedCPUCgroups"
+				},
+				{
 					"value": "tast.sched.SetQoSState"
 				},
 				{
