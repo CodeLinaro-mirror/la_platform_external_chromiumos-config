@@ -13487,6 +13487,9 @@
       "designConfigId": {
         "value": "PROJECT_B:33"
       },
+      "diskLayout": {
+        "defaultKeyStateful": true
+      },
       "firmware": {
         "ecRoPayload": {
           "firmwareImageName": "Fake_EC",

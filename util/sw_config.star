@@ -24,6 +24,10 @@ load(
     cam_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/disk_layout.proto",
+    disk_layout_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/config/api/software/firmware_info.proto",
     fw_info_pb = "chromiumos.config.api.software",
 )
@@ -323,6 +327,15 @@ def _create_fw_info(
         )
 
     return firmware_info
+
+def _create_disk_layout(
+        default_key_stateful = False):
+    """Builds an DiskLayout proto."""
+    disk_layout = None
+    if default_key_stateful:
+        disk_layout = disk_layout_pb.DiskLayout(default_key_stateful = default_key_stateful)
+
+    return disk_layout
 
 def _create_ssfc_probeable_component(
         identifier = None,
@@ -1695,6 +1708,7 @@ sw_config = struct(
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
     create_camera = _create_camera,
+    create_disk_layout = _create_disk_layout,
     create_fw_info = _create_fw_info,
     create_fw_version = _create_fw_version,
     create_fw_payload = _create_fw_payload,

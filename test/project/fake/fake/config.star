@@ -497,6 +497,8 @@ _VOLUME_BUTTON = hw_topo.create_volume_button(
     position = 0.75,
 )
 
+_SC_DISK_LAYOUT = sc.create_disk_layout(default_key_stateful = True)
+
 _SC_FIRMWARE_INFO = sc.create_fw_info(
     has_alt_fw = True,
     has_splash_screen = True,
@@ -1493,6 +1495,7 @@ design.append_configs(
         detachable_base = _I2C_DETACHABLE_BASE,
     ),
     bluetooth = _SC_BLUETOOTH,
+    disk_layout = _SC_DISK_LAYOUT,
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
         "Fake_EC",

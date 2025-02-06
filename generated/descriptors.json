@@ -11979,6 +11979,32 @@
         {
           "field": [
             {
+              "jsonName": "defaultKeyStateful",
+              "label": "LABEL_OPTIONAL",
+              "name": "default_key_stateful",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "DiskLayout"
+        }
+      ],
+      "name": "chromiumos/config/api/software/disk_layout.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "hasAltFirmware",
               "label": "LABEL_OPTIONAL",
               "name": "has_alt_firmware",
@@ -12443,6 +12469,7 @@
         "chromiumos/config/api/software/audio_config.proto",
         "chromiumos/config/api/software/bluetooth_config.proto",
         "chromiumos/config/api/software/camera_config.proto",
+        "chromiumos/config/api/software/disk_layout.proto",
         "chromiumos/config/api/software/firmware_info.proto",
         "chromiumos/config/api/software/health_config.proto",
         "chromiumos/config/api/software/nnpalm_config.proto",
@@ -12615,6 +12642,14 @@
               "number": 23,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.FirmwareInfo"
+            },
+            {
+              "jsonName": "diskLayout",
+              "label": "LABEL_OPTIONAL",
+              "name": "disk_layout",
+              "number": 24,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.DiskLayout"
             }
           ],
           "name": "SoftwareConfig",
