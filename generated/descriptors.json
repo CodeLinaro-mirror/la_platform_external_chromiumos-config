@@ -18887,9 +18887,457 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/timestamp.proto"
+      ],
+      "enumType": [
+        {
+          "name": "WifiRouterFeature",
+          "value": [
+            {
+              "name": "WIFI_ROUTER_FEATURE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_INVALID",
+              "number": 1
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_A",
+              "number": 2
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_B",
+              "number": 3
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_G",
+              "number": 4
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_N",
+              "number": 5
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AC",
+              "number": 6
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX",
+              "number": 7
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX_E",
+              "number": 8
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_BE",
+              "number": 9
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_DOUBLE_BRIDGE_OVER_VETH",
+              "number": 10
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_GCMP",
+              "number": 11
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_SAE_EXT_KEY",
+              "number": 12
+            }
+          ]
+        },
+        {
+          "name": "WifiRouterDeviceType",
+          "value": [
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_INVALID",
+              "number": 1
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_CHROMEOS_GALE",
+              "number": 2
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_OPENWRT",
+              "number": 3
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_ASUSWRT",
+              "number": 4
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_UBUNTU",
+              "number": 5
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "openwrt",
+              "label": "LABEL_REPEATED",
+              "name": "openwrt",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.WifiRouterConfig.OpenwrtEntry"
+            }
+          ],
+          "name": "WifiRouterConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.OpenWrtWifiRouterDeviceConfig"
+                }
+              ],
+              "name": "OpenwrtEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "currentImageUuid",
+              "label": "LABEL_OPTIONAL",
+              "name": "current_image_uuid",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "nextImageUuid",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_image_uuid",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "nextImageVerificationDutPool",
+              "label": "LABEL_REPEATED",
+              "name": "next_image_verification_dut_pool",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "images",
+              "label": "LABEL_REPEATED",
+              "name": "images",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.OpenWrtWifiRouterDeviceConfig.OpenWrtOSImage"
+            }
+          ],
+          "name": "OpenWrtWifiRouterDeviceConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "imageUuid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "image_uuid",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "archivePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "archive_path",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "minDutReleaseVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "min_dut_release_version",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "OpenWrtOSImage"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "imageUuid",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_uuid",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "customImageName",
+              "label": "LABEL_OPTIONAL",
+              "name": "custom_image_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "osRelease",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_release",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.OSRelease"
+            },
+            {
+              "jsonName": "standardBuildConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "standard_build_config",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.StandardBuildConfig"
+            },
+            {
+              "jsonName": "routerFeatures",
+              "label": "LABEL_REPEATED",
+              "name": "router_features",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.WifiRouterFeature"
+            },
+            {
+              "jsonName": "buildTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_time",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "crosOpenwrtImageBuilderVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_openwrt_image_builder_version",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "customIncludedFiles",
+              "label": "LABEL_REPEATED",
+              "name": "custom_included_files",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.CustomIncludedFilesEntry"
+            },
+            {
+              "jsonName": "customPackages",
+              "label": "LABEL_REPEATED",
+              "name": "custom_packages",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.CustomPackagesEntry"
+            },
+            {
+              "jsonName": "extraIncludedPackages",
+              "label": "LABEL_REPEATED",
+              "name": "extra_included_packages",
+              "number": 10,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "excludedPackages",
+              "label": "LABEL_REPEATED",
+              "name": "excluded_packages",
+              "number": 11,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "disabledServices",
+              "label": "LABEL_REPEATED",
+              "name": "disabled_services",
+              "number": 12,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "reservedInterfaces",
+              "label": "LABEL_REPEATED",
+              "name": "reserved_interfaces",
+              "number": 13,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrosOpenWrtImageBuildInfo",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "openwrtRevision",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_revision",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "openwrtBuildTarget",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_build_target",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "buildProfile",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "build_profile",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "deviceName",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "device_name",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "buildTargetPackages",
+                  "label": "LABEL_REPEATED",
+                  "name": "build_target_packages",
+                  "number": 5,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "profilePackages",
+                  "label": "LABEL_REPEATED",
+                  "name": "profile_packages",
+                  "number": 6,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "supportedDevices",
+                  "label": "LABEL_REPEATED",
+                  "name": "supported_devices",
+                  "number": 7,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "StandardBuildConfig"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "version",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "buildId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "build_id",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "openwrtBoard",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_board",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "openwrtArch",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_arch",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "openwrtRelease",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_release",
+                  "number": 5,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "OSRelease"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "CustomIncludedFilesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "CustomPackagesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/wifi_router.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto",
-        "chromiumos/test/lab/api/pasit_host.proto"
+        "chromiumos/test/lab/api/pasit_host.proto",
+        "chromiumos/test/lab/api/wifi_router.proto"
       ],
       "enumType": [
         {
@@ -20258,6 +20706,14 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.WifiAntenna"
+            },
+            {
+              "jsonName": "wifiRouters",
+              "label": "LABEL_REPEATED",
+              "name": "wifi_routers",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.WifiRouter"
             }
           ],
           "name": "Wifi"
@@ -20293,6 +20749,57 @@
             }
           ],
           "name": "WifiAntenna"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hostname",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.PeripheralState"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "rpm",
+              "label": "LABEL_OPTIONAL",
+              "name": "rpm",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.RPM"
+            },
+            {
+              "jsonName": "supportedFeatures",
+              "label": "LABEL_REPEATED",
+              "name": "supported_features",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.WifiRouterFeature"
+            },
+            {
+              "jsonName": "deviceType",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_type",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.WifiRouterDeviceType"
+            }
+          ],
+          "name": "WifiRouter"
         },
         {
           "field": [
@@ -36801,453 +37308,6 @@
         }
       ],
       "name": "chromiumos/test/lab/api/usb_drive.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
-      },
-      "package": "chromiumos.test.lab.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "google/protobuf/timestamp.proto"
-      ],
-      "enumType": [
-        {
-          "name": "WifiRouterFeature",
-          "value": [
-            {
-              "name": "WIFI_ROUTER_FEATURE_UNKNOWN",
-              "number": 0
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_INVALID",
-              "number": 1
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_A",
-              "number": 2
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_B",
-              "number": 3
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_G",
-              "number": 4
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_N",
-              "number": 5
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AC",
-              "number": 6
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX",
-              "number": 7
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX_E",
-              "number": 8
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_BE",
-              "number": 9
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_DOUBLE_BRIDGE_OVER_VETH",
-              "number": 10
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_GCMP",
-              "number": 11
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_SAE_EXT_KEY",
-              "number": 12
-            }
-          ]
-        },
-        {
-          "name": "WifiRouterDeviceType",
-          "value": [
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_UNKNOWN",
-              "number": 0
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_INVALID",
-              "number": 1
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_CHROMEOS_GALE",
-              "number": 2
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_OPENWRT",
-              "number": 3
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_ASUSWRT",
-              "number": 4
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_UBUNTU",
-              "number": 5
-            }
-          ]
-        }
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "openwrt",
-              "label": "LABEL_REPEATED",
-              "name": "openwrt",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.WifiRouterConfig.OpenwrtEntry"
-            }
-          ],
-          "name": "WifiRouterConfig",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "key",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "key",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.OpenWrtWifiRouterDeviceConfig"
-                }
-              ],
-              "name": "OpenwrtEntry",
-              "options": {
-                "mapEntry": true
-              }
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "currentImageUuid",
-              "label": "LABEL_OPTIONAL",
-              "name": "current_image_uuid",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "nextImageUuid",
-              "label": "LABEL_OPTIONAL",
-              "name": "next_image_uuid",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "nextImageVerificationDutPool",
-              "label": "LABEL_REPEATED",
-              "name": "next_image_verification_dut_pool",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "images",
-              "label": "LABEL_REPEATED",
-              "name": "images",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.OpenWrtWifiRouterDeviceConfig.OpenWrtOSImage"
-            }
-          ],
-          "name": "OpenWrtWifiRouterDeviceConfig",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "imageUuid",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "image_uuid",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "archivePath",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "archive_path",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "minDutReleaseVersion",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "min_dut_release_version",
-                  "number": 3,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "OpenWrtOSImage"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "imageUuid",
-              "label": "LABEL_OPTIONAL",
-              "name": "image_uuid",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "customImageName",
-              "label": "LABEL_OPTIONAL",
-              "name": "custom_image_name",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "osRelease",
-              "label": "LABEL_OPTIONAL",
-              "name": "os_release",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.OSRelease"
-            },
-            {
-              "jsonName": "standardBuildConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "standard_build_config",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.StandardBuildConfig"
-            },
-            {
-              "jsonName": "routerFeatures",
-              "label": "LABEL_REPEATED",
-              "name": "router_features",
-              "number": 5,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.WifiRouterFeature"
-            },
-            {
-              "jsonName": "buildTime",
-              "label": "LABEL_OPTIONAL",
-              "name": "build_time",
-              "number": 6,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Timestamp"
-            },
-            {
-              "jsonName": "crosOpenwrtImageBuilderVersion",
-              "label": "LABEL_OPTIONAL",
-              "name": "cros_openwrt_image_builder_version",
-              "number": 7,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "customIncludedFiles",
-              "label": "LABEL_REPEATED",
-              "name": "custom_included_files",
-              "number": 8,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.CustomIncludedFilesEntry"
-            },
-            {
-              "jsonName": "customPackages",
-              "label": "LABEL_REPEATED",
-              "name": "custom_packages",
-              "number": 9,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.CustomPackagesEntry"
-            },
-            {
-              "jsonName": "extraIncludedPackages",
-              "label": "LABEL_REPEATED",
-              "name": "extra_included_packages",
-              "number": 10,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "excludedPackages",
-              "label": "LABEL_REPEATED",
-              "name": "excluded_packages",
-              "number": 11,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "disabledServices",
-              "label": "LABEL_REPEATED",
-              "name": "disabled_services",
-              "number": 12,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "reservedInterfaces",
-              "label": "LABEL_REPEATED",
-              "name": "reserved_interfaces",
-              "number": 13,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CrosOpenWrtImageBuildInfo",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "openwrtRevision",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_revision",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "openwrtBuildTarget",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_build_target",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "buildProfile",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "build_profile",
-                  "number": 3,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "deviceName",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "device_name",
-                  "number": 4,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "buildTargetPackages",
-                  "label": "LABEL_REPEATED",
-                  "name": "build_target_packages",
-                  "number": 5,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "profilePackages",
-                  "label": "LABEL_REPEATED",
-                  "name": "profile_packages",
-                  "number": 6,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "supportedDevices",
-                  "label": "LABEL_REPEATED",
-                  "name": "supported_devices",
-                  "number": 7,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "StandardBuildConfig"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "version",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "version",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "buildId",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "build_id",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "openwrtBoard",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_board",
-                  "number": 3,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "openwrtArch",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_arch",
-                  "number": 4,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "openwrtRelease",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_release",
-                  "number": 5,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "OSRelease"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "key",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "key",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "CustomIncludedFilesEntry",
-              "options": {
-                "mapEntry": true
-              }
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "key",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "key",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "CustomPackagesEntry",
-              "options": {
-                "mapEntry": true
-              }
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/lab/api/wifi_router.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
       },
