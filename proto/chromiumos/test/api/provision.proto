@@ -153,6 +153,14 @@ message PartnerMetadata {
 // KernelPrebuilts contains paths to kernel artifacts to provision, replacing
 // the OS image's kernel.
 message KernelPrebuilts {
-  // TODO: b/392692756 - Add whatever structured data is needed, based on the
-  // kernel-mixing approach we choose.
+  // PartitionImage defines an image to flash onto an OS partition.
+  message PartitionImage {
+    // The name of the OS partition to flash onto.
+    string partition_name = 1;
+    // Path to the new image file for that partition.
+    StoragePath image_path = 2;
+  }
+  repeated PartitionImage partition_images = 1;
+  // TODO: b/392692756 - Add whatever info is necessary for flashing specific
+  // modules onto the ramdisk.
 }

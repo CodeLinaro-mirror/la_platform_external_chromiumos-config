@@ -26383,7 +26383,39 @@
           "name": "PartnerMetadata"
         },
         {
-          "name": "KernelPrebuilts"
+          "field": [
+            {
+              "jsonName": "partitionImages",
+              "label": "LABEL_REPEATED",
+              "name": "partition_images",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.KernelPrebuilts.PartitionImage"
+            }
+          ],
+          "name": "KernelPrebuilts",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "partitionName",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "partition_name",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "imagePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "image_path",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.StoragePath"
+                }
+              ],
+              "name": "PartitionImage"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/provision.proto",
