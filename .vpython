@@ -171,11 +171,6 @@ wheel: <
 >
 
 wheel: <
-  name: "infra/python/wheels/pylint-quotes-py3"
-  version: "version:0.2.1"
->
-
-wheel: <
   name: "infra/python/wheels/pyrsistent-py2_py3"
   version: "version:0.16.0"
 >
