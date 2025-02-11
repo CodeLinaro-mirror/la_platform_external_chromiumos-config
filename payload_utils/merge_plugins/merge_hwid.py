@@ -123,7 +123,7 @@ class MergeHwid(MergePlugin):
       raise RuntimeError('Only one of hwid_path or hwid_data can be specified')
 
     if hwid_path:
-      with open(hwid_path) as hwid_file:
+      with open(hwid_path, 'r', encoding='utf-8') as hwid_file:
         self.data = yaml.load(hwid_file, Loader=yaml.SafeLoader)
     else:
       self.data = copy.deepcopy(hwid_data)

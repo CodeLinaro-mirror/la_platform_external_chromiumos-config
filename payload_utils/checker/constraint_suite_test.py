@@ -102,7 +102,7 @@ class ConstraintSuiteTest(unittest.TestCase):
     """Tests running checks that a file in factory_dir is present."""
 
     with tempfile.TemporaryDirectory() as tmpdir:
-      with open(os.path.join(tmpdir, 'test.txt'), 'w') as fp:
+      with open(os.path.join(tmpdir, 'test.txt'), 'w', encoding='utf-8') as fp:
         fp.write('test file\n')
 
       FactoryDirSuite().run_checks(

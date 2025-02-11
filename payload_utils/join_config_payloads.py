@@ -706,7 +706,7 @@ def merge_configs(options):
     merger.merge(config_bundle)
 
     if options.hwid_residual:
-      with open(options.hwid_residual, 'w') as outfile:
+      with open(options.hwid_residual, 'w', encoding='utf-8') as outfile:
         json.dump(merger.residual(), outfile, indent=2)
 
   return config_bundle
