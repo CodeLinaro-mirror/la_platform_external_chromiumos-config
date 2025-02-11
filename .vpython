@@ -91,7 +91,7 @@ wheel: <
 >
 
 wheel: <
-  name: "infra/python/wheels/google-crc32c/linux-amd64_cp38_cp38"
+  name: "infra/python/wheels/google-crc32c/${vpython_platform}"
   version: "version:1.1.2"
 >
 
@@ -106,17 +106,17 @@ wheel: <
 >
 
 wheel: <
-  name: "infra/python/wheels/grpcio/linux-amd64_cp38_cp38"
+  name: "infra/python/wheels/grpcio/${vpython_platform}"
   version: "version:1.39.0"
 >
 
 wheel: <
-  name: "infra/python/wheels/grpcio-tools/linux-amd64_cp38_cp38"
+  name: "infra/python/wheels/grpcio-tools/${vpython_platform}"
   version: "version:1.39.0"
 >
 
 wheel: <
-  name: "infra/python/wheels/lazy-object-proxy/linux-amd64_cp38_cp38"
+  name: "infra/python/wheels/lazy-object-proxy/${vpython_platform}"
   version: "version:1.4.3"
 >
 
@@ -126,7 +126,7 @@ wheel: <
 >
 
 wheel: <
-  name: "infra/python/wheels/lxml/linux-amd64_cp38_cp38"
+  name: "infra/python/wheels/lxml/${vpython_platform}"
   version: "version:4.6.2"
 >
 
@@ -231,7 +231,7 @@ wheel: <
 >
 
 wheel: <
-  name: "infra/python/wheels/wrapt/linux-amd64_cp38_cp38"
+  name: "infra/python/wheels/wrapt/${vpython_platform}"
   version: "version:1.12.1"
 >
 
