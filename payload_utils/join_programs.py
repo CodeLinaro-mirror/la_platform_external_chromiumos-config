@@ -55,10 +55,10 @@ def main(opts):
       config.program.CopyFrom(program_config)
 
   logging.debug('Writing output')
-  io_utils.write_message_json(project_configs, args.output)
+  io_utils.write_message_json(project_configs, opts.output)
 
-  if args.binary_output:
-    io_utils.write_message_binary(project_configs, args.binary_output)
+  if opts.binary_output:
+    io_utils.write_message_binary(project_configs, opts.binary_output)
 
 
 if __name__ == "__main__":
