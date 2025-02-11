@@ -549,7 +549,7 @@ class MergeHwid(MergePlugin):
         ['emmc5_fw_ver', 'manfid', 'name', 'oemid', 'prv', 'sectors'])
 
     pcie_fields = ['class', 'device', 'vendor']
-    if all([field in values for field in pcie_fields]):
+    if all(field in values for field in pcie_fields):
       component.storage.type = component.storage.NVME
       component.storage.pci.vendor_id = values['vendor']
       component.storage.pci.device_id = values['device']
