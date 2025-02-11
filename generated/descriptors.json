@@ -31228,10 +31228,11 @@
             },
             {
               "jsonName": "eqcCategoryExpression",
-              "label": "LABEL_OPTIONAL",
+              "label": "LABEL_REPEATED",
               "name": "eqc_category_expression",
               "number": 3,
-              "type": "TYPE_STRING"
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.EqcInfo.EqcCategoryExpressionEntry"
             },
             {
               "jsonName": "eqcDimensions",
@@ -31244,6 +31245,28 @@
           ],
           "name": "EqcInfo",
           "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "EqcCategoryExpressionEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
             {
               "field": [
                 {

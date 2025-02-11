@@ -140,8 +140,8 @@ message EqcInfo {
     string eqc_name = 2;
 
     // EqC category expression name which is set on the test.
-    // Example: "WifiBtChipset_Soc_Kernel_80211_AX"
-    string eqc_category_expression = 3;
+    // Example: "{\"name\": \"Audio_SoC_Codec_Amp\"}"
+    map<string, string> eqc_category_expression = 3;
 
     // A map of dimension names and values for an EqC. The dimension names
     // should be aligned with the EqC category expression.
