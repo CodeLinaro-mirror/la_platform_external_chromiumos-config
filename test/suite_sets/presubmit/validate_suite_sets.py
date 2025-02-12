@@ -7,8 +7,8 @@
 # [VPYTHON:BEGIN]
 # python_version: "3.8"
 # wheel: <
-#   name: "infra/python/wheels/protobuf-py2_py3"
-#   version: "version:3.18.1"
+#   name: "infra/python/wheels/protobuf-py3"
+#   version: "version:3.20.1"
 # >
 # [VPYTHON:END]
 
