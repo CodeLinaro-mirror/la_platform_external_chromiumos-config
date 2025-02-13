@@ -7,7 +7,7 @@
 import importlib
 import os
 
-from typing import Any, Dict, List, Set, Text, NamedTuple
+from typing import Any, Dict, List, Set, NamedTuple
 
 from google.protobuf import message as pb_message
 from google.protobuf import symbol_database
@@ -148,7 +148,7 @@ def get_all_fields(message: pb_message.Message) -> List[Any]:
   return fields
 
 
-def get_dep_graph(message: pb_message.Message) -> Dict[Text, List[Text]]:
+def get_dep_graph(message: pb_message.Message) -> Dict[str, List[str]]:
   """Compute the dep graph of a message.
 
   This is a sparse representation of a DAG as a dict where the key is the
@@ -169,7 +169,7 @@ def get_dep_graph(message: pb_message.Message) -> Dict[Text, List[Text]]:
   return graph
 
 
-def get_dep_order(message: pb_message.Message) -> List[Text]:
+def get_dep_order(message: pb_message.Message) -> List[str]:
   """Compute dependency order of protobuf type and its dependencies.
 
   This is a list from a preorder traversal of the dependency graph above.
