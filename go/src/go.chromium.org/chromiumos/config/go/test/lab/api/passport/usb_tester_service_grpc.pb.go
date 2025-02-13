@@ -28,6 +28,8 @@ type UsbTesterServiceClient interface {
 	GetTesterCapability(ctx context.Context, in *GetUsbTesterCapabilityRequest, opts ...grpc.CallOption) (*GetUsbTesterCapabilityReply, error)
 	// Set the value of a certain capability, eg: data role, power role etc ...
 	SetTesterCapability(ctx context.Context, in *SetUsbTesterCapabilityRequest, opts ...grpc.CallOption) (*SetUsbTesterCapabilityReply, error)
+	// Get the display port alternate mode information.
+	GetDpInfo(ctx context.Context, in *GetDpInfoRequest, opts ...grpc.CallOption) (*GetDpInfoReply, error)
 	// Simulate the physical disconnect and reconnect of the cable between the
 	// tester and the DUT.
 	ReplugCable(ctx context.Context, in *DoCableReplugRequest, opts ...grpc.CallOption) (*DoCableReplugReply, error)
@@ -68,6 +70,15 @@ func (c *usbTesterServiceClient) GetTesterCapability(ctx context.Context, in *Ge
 func (c *usbTesterServiceClient) SetTesterCapability(ctx context.Context, in *SetUsbTesterCapabilityRequest, opts ...grpc.CallOption) (*SetUsbTesterCapabilityReply, error) {
 	out := new(SetUsbTesterCapabilityReply)
 	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/SetTesterCapability", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usbTesterServiceClient) GetDpInfo(ctx context.Context, in *GetDpInfoRequest, opts ...grpc.CallOption) (*GetDpInfoReply, error) {
+	out := new(GetDpInfoReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/GetDpInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -120,6 +131,8 @@ type UsbTesterServiceServer interface {
 	GetTesterCapability(context.Context, *GetUsbTesterCapabilityRequest) (*GetUsbTesterCapabilityReply, error)
 	// Set the value of a certain capability, eg: data role, power role etc ...
 	SetTesterCapability(context.Context, *SetUsbTesterCapabilityRequest) (*SetUsbTesterCapabilityReply, error)
+	// Get the display port alternate mode information.
+	GetDpInfo(context.Context, *GetDpInfoRequest) (*GetDpInfoReply, error)
 	// Simulate the physical disconnect and reconnect of the cable between the
 	// tester and the DUT.
 	ReplugCable(context.Context, *DoCableReplugRequest) (*DoCableReplugReply, error)
@@ -143,6 +156,9 @@ func (UnimplementedUsbTesterServiceServer) GetTesterCapability(context.Context, 
 }
 func (UnimplementedUsbTesterServiceServer) SetTesterCapability(context.Context, *SetUsbTesterCapabilityRequest) (*SetUsbTesterCapabilityReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetTesterCapability not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) GetDpInfo(context.Context, *GetDpInfoRequest) (*GetDpInfoReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDpInfo not implemented")
 }
 func (UnimplementedUsbTesterServiceServer) ReplugCable(context.Context, *DoCableReplugRequest) (*DoCableReplugReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReplugCable not implemented")
@@ -218,6 +234,24 @@ func _UsbTesterService_SetTesterCapability_Handler(srv interface{}, ctx context.
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UsbTesterServiceServer).SetTesterCapability(ctx, req.(*SetUsbTesterCapabilityRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsbTesterService_GetDpInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetDpInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).GetDpInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/GetDpInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).GetDpInfo(ctx, req.(*GetDpInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -312,6 +346,10 @@ var UsbTesterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetTesterCapability",
 			Handler:    _UsbTesterService_SetTesterCapability_Handler,
+		},
+		{
+			MethodName: "GetDpInfo",
+			Handler:    _UsbTesterService_GetDpInfo_Handler,
 		},
 		{
 			MethodName: "ReplugCable",

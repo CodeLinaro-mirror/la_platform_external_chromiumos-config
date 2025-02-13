@@ -36810,6 +36810,85 @@
               "number": 3
             }
           ]
+        },
+        {
+          "name": "DpLinkRate",
+          "value": [
+            {
+              "name": "DP_LINK_RATE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "RBR",
+              "number": 1
+            },
+            {
+              "name": "HBR",
+              "number": 2
+            },
+            {
+              "name": "HBR2",
+              "number": 3
+            },
+            {
+              "name": "HBR3",
+              "number": 4
+            }
+          ]
+        },
+        {
+          "name": "DpColorDepth",
+          "value": [
+            {
+              "name": "DP_COLOR_DEPTH",
+              "number": 0
+            },
+            {
+              "name": "BIT6",
+              "number": 1
+            },
+            {
+              "name": "BIT8",
+              "number": 2
+            },
+            {
+              "name": "BIT10",
+              "number": 3
+            },
+            {
+              "name": "BIT12",
+              "number": 4
+            },
+            {
+              "name": "BIT16",
+              "number": 5
+            }
+          ]
+        },
+        {
+          "name": "DpColorMode",
+          "value": [
+            {
+              "name": "DP_COLOR_MODE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "RGB",
+              "number": 1
+            },
+            {
+              "name": "YCBCR444",
+              "number": 2
+            },
+            {
+              "name": "YCBCR422",
+              "number": 3
+            },
+            {
+              "name": "YCBCR420",
+              "number": 4
+            }
+          ]
         }
       ],
       "messageType": [
@@ -37239,6 +37318,207 @@
               "name": "_error_msg"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "delay",
+              "label": "LABEL_OPTIONAL",
+              "name": "delay",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "timeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "timeout",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            }
+          ],
+          "name": "GetDpInfoRequest",
+          "oneofDecl": [
+            {
+              "name": "_delay"
+            },
+            {
+              "name": "_timeout"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "linkRate",
+              "label": "LABEL_OPTIONAL",
+              "name": "link_rate",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DpLinkRate"
+            },
+            {
+              "jsonName": "laneCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "lane_count",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pixelClock",
+              "label": "LABEL_OPTIONAL",
+              "name": "pixel_clock",
+              "number": 5,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "hActive",
+              "label": "LABEL_OPTIONAL",
+              "name": "h_active",
+              "number": 6,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "vActive",
+              "label": "LABEL_OPTIONAL",
+              "name": "v_active",
+              "number": 7,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "hTotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "h_total",
+              "number": 8,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "vTotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "v_total",
+              "number": 9,
+              "oneofIndex": 7,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "framerate",
+              "label": "LABEL_OPTIONAL",
+              "name": "framerate",
+              "number": 10,
+              "oneofIndex": 8,
+              "proto3Optional": true,
+              "type": "TYPE_DOUBLE"
+            },
+            {
+              "jsonName": "colorMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "color_mode",
+              "number": 11,
+              "oneofIndex": 9,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DpColorMode"
+            },
+            {
+              "jsonName": "colorDepth",
+              "label": "LABEL_OPTIONAL",
+              "name": "color_depth",
+              "number": 12,
+              "oneofIndex": 10,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DpColorDepth"
+            },
+            {
+              "jsonName": "audioSampleRate",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_sample_rate",
+              "number": 13,
+              "oneofIndex": 11,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "GetDpInfoReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            },
+            {
+              "name": "_link_rate"
+            },
+            {
+              "name": "_lane_count"
+            },
+            {
+              "name": "_pixel_clock"
+            },
+            {
+              "name": "_h_active"
+            },
+            {
+              "name": "_v_active"
+            },
+            {
+              "name": "_h_total"
+            },
+            {
+              "name": "_v_total"
+            },
+            {
+              "name": "_framerate"
+            },
+            {
+              "name": "_color_mode"
+            },
+            {
+              "name": "_color_depth"
+            },
+            {
+              "name": "_audio_sample_rate"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/lab/api/passport/usb_tester_service.proto",
@@ -37266,6 +37546,12 @@
               "name": "SetTesterCapability",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.SetUsbTesterCapabilityReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetDpInfoRequest",
+              "name": "GetDpInfo",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetDpInfoReply"
             },
             {
               "inputType": ".chromiumos.test.lab.api.passport.DoCableReplugRequest",

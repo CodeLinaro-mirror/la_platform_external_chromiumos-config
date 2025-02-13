@@ -20,6 +20,9 @@ service UsbTesterService {
   // Set the value of a certain capability, eg: data role, power role etc ...
   rpc SetTesterCapability (SetUsbTesterCapabilityRequest) returns (SetUsbTesterCapabilityReply) {}
 
+  // Get the display port alternate mode information.
+  rpc GetDpInfo (GetDpInfoRequest) returns (GetDpInfoReply) {}
+
   // Simulate the physical disconnect and reconnect of the cable between the
   // tester and the DUT.
   rpc ReplugCable(DoCableReplugRequest) returns (DoCableReplugReply) {}
@@ -251,4 +254,85 @@ message SetUsbTesterCapabilityReply {
     // Human-readable error message providing more details about any errors
     // encountered.
     optional string error_msg = 3;
+}
+
+enum DpLinkRate {
+  DP_LINK_RATE_NOT_SET = 0;
+  RBR   = 1;
+  HBR   = 2;
+  HBR2  = 3;
+  HBR3  = 4;
+}
+
+enum DpColorDepth {
+  DP_COLOR_DEPTH = 0;
+  BIT6   = 1;
+  BIT8   = 2;
+  BIT10  = 3;
+  BIT12  = 4;
+  BIT16  = 5;
+}
+
+enum DpColorMode {
+  DP_COLOR_MODE_NOT_SET = 0;
+  RGB       = 1;
+  YCBCR444  = 2;
+  YCBCR422  = 3;
+  YCBCR420  = 4;
+}
+
+message GetDpInfoRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+
+  // Specifies the delay before doing the operation. This is optional. If left
+  // empty it will default to 0.
+  optional google.protobuf.Duration delay = 2;
+
+  // Specifies the max duration of the operation. This is optional. If left
+  // empty it will default to 0.
+  optional google.protobuf.Duration timeout = 3;
+}
+
+message GetDpInfoReply {
+  // Error code indicating the success or failure of the operation.
+  // 0 indicates success, while other values represent specific errors.
+  int64 err_code = 1;
+
+  // Human-readable error message providing more details about any errors
+  // encountered.
+  optional string error_msg = 2;
+
+  // Link rate of the DP link, rbr, hbr, etc ...
+  optional DpLinkRate link_rate = 3;
+
+  // Value corresponding to number of lanes.
+  optional int32 lane_count = 4;
+
+  // Value in HZ.
+  optional int32 pixel_clock = 5;
+
+  // Value in pixels.
+  optional int32 h_active = 6;
+
+  // Value in pixels.
+  optional int32 v_active = 7;
+
+  // Value in pixels.
+  optional int32 h_total = 8;
+
+  // Value in pixels.
+  optional int32 v_total = 9;
+
+  // Value in HZ.
+  optional double framerate = 10;
+
+  // DP link color mode.
+  optional DpColorMode color_mode = 11;
+
+  // DP link color depth.
+  optional DpColorDepth color_depth = 12;
+
+  // Value in kHZ.
+  optional int32 audio_sample_rate = 13;
 }

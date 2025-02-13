@@ -29,6 +29,11 @@ class UsbTesterServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetUsbTesterCapabilityRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetUsbTesterCapabilityReply.FromString,
                 )
+        self.GetDpInfo = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.UsbTesterService/GetDpInfo',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoReply.FromString,
+                )
         self.ReplugCable = channel.unary_unary(
                 '/chromiumos.test.lab.api.passport.UsbTesterService/ReplugCable',
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.DoCableReplugRequest.SerializeToString,
@@ -70,6 +75,13 @@ class UsbTesterServiceServicer(object):
 
     def SetTesterCapability(self, request, context):
         """Set the value of a certain capability, eg: data role, power role etc ...
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetDpInfo(self, request, context):
+        """Get the display port alternate mode information.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -121,6 +133,11 @@ def add_UsbTesterServiceServicer_to_server(servicer, server):
                     servicer.SetTesterCapability,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetUsbTesterCapabilityRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetUsbTesterCapabilityReply.SerializeToString,
+            ),
+            'GetDpInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDpInfo,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoReply.SerializeToString,
             ),
             'ReplugCable': grpc.unary_unary_rpc_method_handler(
                     servicer.ReplugCable,
@@ -200,6 +217,23 @@ class UsbTesterService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/SetTesterCapability',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetUsbTesterCapabilityRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetUsbTesterCapabilityReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetDpInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/GetDpInfo',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetDpInfoReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
