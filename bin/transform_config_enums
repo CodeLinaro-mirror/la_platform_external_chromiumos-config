@@ -7,15 +7,8 @@
 # Based on the output of lucicfg, transforms the enum values to readable
 # strings.
 
-readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
-
-source "${script_dir}/../setup_cipd.sh"
-source "${script_dir}/common.sh"
-
 # Exit if any command fails.
 set -e
-
-create_venv
 
 # Path to the generated config protobuf.
 readonly output_dir=$1
