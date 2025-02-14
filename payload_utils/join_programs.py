@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env vpython3
 # -*- coding: utf-8 -*-
 
 # Copyright 2021 The ChromiumOS Authors
