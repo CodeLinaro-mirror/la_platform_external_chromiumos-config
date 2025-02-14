@@ -124,6 +124,12 @@ partner = struct(
             symlink_file_format = "himax_i2chid_{product_id}.bin",
             destination_file_format = "{product_id}_{fw_version}.bin",
         ),
+        HIMAX2 = _create_touch_partner(
+            name = "himax",
+            vendor_id = "3558",
+            symlink_file_format = "himax_i2chid_{product_id}.bin",
+            destination_file_format = "{product_id}_{fw_version}.bin",
+        ),
         MELFAS = _create_touch_partner(
             name = "melfas",
             vendor_id = "1FD2",
