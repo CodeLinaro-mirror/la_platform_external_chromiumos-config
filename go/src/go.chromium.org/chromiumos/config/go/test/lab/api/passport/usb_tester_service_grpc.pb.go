@@ -39,6 +39,10 @@ type UsbTesterServiceClient interface {
 	OpenTester(ctx context.Context, in *OpenTesterRequest, opts ...grpc.CallOption) (*OpenTesterReply, error)
 	// This method is used to close the serial of the USB tester being used.
 	CloseTester(ctx context.Context, in *CloseTesterRequest, opts ...grpc.CallOption) (*CloseTesterReply, error)
+	// This method is used to get the active test port on the testing device.
+	GetActivePort(ctx context.Context, in *GetActivePortRequest, opts ...grpc.CallOption) (*GetActivePortReply, error)
+	// This method is used to set the active test port on the testing device.
+	SetActivePort(ctx context.Context, in *SetActivePortRequest, opts ...grpc.CallOption) (*SetActivePortReply, error)
 }
 
 type usbTesterServiceClient struct {
@@ -121,6 +125,24 @@ func (c *usbTesterServiceClient) CloseTester(ctx context.Context, in *CloseTeste
 	return out, nil
 }
 
+func (c *usbTesterServiceClient) GetActivePort(ctx context.Context, in *GetActivePortRequest, opts ...grpc.CallOption) (*GetActivePortReply, error) {
+	out := new(GetActivePortReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/GetActivePort", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usbTesterServiceClient) SetActivePort(ctx context.Context, in *SetActivePortRequest, opts ...grpc.CallOption) (*SetActivePortReply, error) {
+	out := new(SetActivePortReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/SetActivePort", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UsbTesterServiceServer is the server API for UsbTesterService service.
 // All implementations should embed UnimplementedUsbTesterServiceServer
 // for forward compatibility
@@ -142,6 +164,10 @@ type UsbTesterServiceServer interface {
 	OpenTester(context.Context, *OpenTesterRequest) (*OpenTesterReply, error)
 	// This method is used to close the serial of the USB tester being used.
 	CloseTester(context.Context, *CloseTesterRequest) (*CloseTesterReply, error)
+	// This method is used to get the active test port on the testing device.
+	GetActivePort(context.Context, *GetActivePortRequest) (*GetActivePortReply, error)
+	// This method is used to set the active test port on the testing device.
+	SetActivePort(context.Context, *SetActivePortRequest) (*SetActivePortReply, error)
 }
 
 // UnimplementedUsbTesterServiceServer should be embedded to have forward compatible implementations.
@@ -171,6 +197,12 @@ func (UnimplementedUsbTesterServiceServer) OpenTester(context.Context, *OpenTest
 }
 func (UnimplementedUsbTesterServiceServer) CloseTester(context.Context, *CloseTesterRequest) (*CloseTesterReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CloseTester not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) GetActivePort(context.Context, *GetActivePortRequest) (*GetActivePortReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetActivePort not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) SetActivePort(context.Context, *SetActivePortRequest) (*SetActivePortReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetActivePort not implemented")
 }
 
 // UnsafeUsbTesterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -328,6 +360,42 @@ func _UsbTesterService_CloseTester_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UsbTesterService_GetActivePort_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetActivePortRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).GetActivePort(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/GetActivePort",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).GetActivePort(ctx, req.(*GetActivePortRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsbTesterService_SetActivePort_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetActivePortRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).SetActivePort(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/SetActivePort",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).SetActivePort(ctx, req.(*SetActivePortRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UsbTesterService_ServiceDesc is the grpc.ServiceDesc for UsbTesterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -366,6 +434,14 @@ var UsbTesterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CloseTester",
 			Handler:    _UsbTesterService_CloseTester_Handler,
+		},
+		{
+			MethodName: "GetActivePort",
+			Handler:    _UsbTesterService_GetActivePort_Handler,
+		},
+		{
+			MethodName: "SetActivePort",
+			Handler:    _UsbTesterService_SetActivePort_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

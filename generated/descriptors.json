@@ -37519,6 +37519,103 @@
               "name": "_audio_sample_rate"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetActivePortRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "portId",
+              "label": "LABEL_OPTIONAL",
+              "name": "port_id",
+              "number": 3,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "maxNumPorts",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_num_ports",
+              "number": 4,
+              "type": "TYPE_UINT32"
+            }
+          ],
+          "name": "GetActivePortReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "portId",
+              "label": "LABEL_OPTIONAL",
+              "name": "port_id",
+              "number": 2,
+              "type": "TYPE_UINT32"
+            }
+          ],
+          "name": "SetActivePortRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SetActivePortReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/lab/api/passport/usb_tester_service.proto",
@@ -37576,6 +37673,18 @@
               "name": "CloseTester",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.CloseTesterReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetActivePortRequest",
+              "name": "GetActivePort",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetActivePortReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SetActivePortRequest",
+              "name": "SetActivePort",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.SetActivePortReply"
             }
           ],
           "name": "UsbTesterService"

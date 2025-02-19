@@ -35,6 +35,12 @@ service UsbTesterService {
 
   // This method is used to close the serial of the USB tester being used.
   rpc CloseTester(CloseTesterRequest) returns (CloseTesterReply) {}
+
+  // This method is used to get the active test port on the testing device.
+  rpc GetActivePort(GetActivePortRequest) returns (GetActivePortReply) {}
+
+  // This method is used to set the active test port on the testing device.
+  rpc SetActivePort(SetActivePortRequest) returns (SetActivePortReply) {}
 }
 
 // Request to do hard reset.
@@ -335,4 +341,48 @@ message GetDpInfoReply {
 
   // Value in kHZ.
   optional int32 audio_sample_rate = 13;
+}
+
+// Data used in a GetActivePort call.
+message GetActivePortRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+}
+
+// Data returned as part of a GetActivePort call.
+message GetActivePortReply {
+  // Error code indicating the success or failure of the operation.
+  // 0 indicates success, while other values represent specific errors.
+  int64 err_code = 1;
+
+  // Human-readable error message providing more details about any errors
+  // encountered.
+  optional string error_msg = 2;
+
+  // The id of the port that is active.
+  uint32 port_id = 3;
+
+  // The maximum number of ports on the device.
+  uint32 max_num_ports = 4;
+}
+
+// Data used in a SetActivePort call.
+message SetActivePortRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+
+  // The id of the port that we want to mark as active. If port_id is already
+  // active then this method will do nothing.
+  uint32 port_id = 2;
+}
+
+// Data returned as part of a SetActivePort call.
+message SetActivePortReply {
+  // Error code indicating the success or failure of the operation.
+  // 0 indicates success, while other values represent specific errors.
+  int64 err_code = 1;
+
+  // Human-readable error message providing more details about any errors
+  // encountered.
+  optional string error_msg = 2;
 }

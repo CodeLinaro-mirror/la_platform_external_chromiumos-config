@@ -54,6 +54,16 @@ class UsbTesterServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.CloseTesterRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.CloseTesterReply.FromString,
                 )
+        self.GetActivePort = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.UsbTesterService/GetActivePort',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetActivePortRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetActivePortReply.FromString,
+                )
+        self.SetActivePort = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.UsbTesterService/SetActivePort',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortReply.FromString,
+                )
 
 
 class UsbTesterServiceServicer(object):
@@ -116,6 +126,20 @@ class UsbTesterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetActivePort(self, request, context):
+        """This method is used to get the active test port on the testing device.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetActivePort(self, request, context):
+        """This method is used to set the active test port on the testing device.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_UsbTesterServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -158,6 +182,16 @@ def add_UsbTesterServiceServicer_to_server(servicer, server):
                     servicer.CloseTester,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.CloseTesterRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.CloseTesterReply.SerializeToString,
+            ),
+            'GetActivePort': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetActivePort,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetActivePortRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetActivePortReply.SerializeToString,
+            ),
+            'SetActivePort': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetActivePort,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -302,5 +336,39 @@ class UsbTesterService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/CloseTester',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.CloseTesterRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.CloseTesterReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetActivePort(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/GetActivePort',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetActivePortRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.GetActivePortReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SetActivePort(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/SetActivePort',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
