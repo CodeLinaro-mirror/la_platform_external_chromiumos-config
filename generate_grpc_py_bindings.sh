@@ -10,15 +10,10 @@ readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
 
 cd "${script_dir}"
 
-source "${script_dir}/bin/common.sh"
-create_venv
-
 echo "Generating proto and grpc bindings"
 find proto/ -type f -name '*_service.proto' -exec \
-python3 -m grpc_tools.protoc \
+vpython3 -m grpc_tools.protoc \
     -Iproto \
     --python_out=python \
     --grpc_python_out=python \
     {} +
-
-deactivate
