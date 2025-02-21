@@ -1,0 +1,5 @@
+include /OWNERS.platformconfig
+
+# Allow fleet to modify the logic for uploading to UFS
+per-file config_to_datastore.py=justinsuen@google.com,xixuan@google.com
+per-file config_to_datastore.py=justinsuen@chromium.org,xixuan@chromium.org

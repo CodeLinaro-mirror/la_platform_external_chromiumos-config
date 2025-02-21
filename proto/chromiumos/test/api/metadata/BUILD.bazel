@@ -1,0 +1,32 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "metadata_proto",
+    srcs = [
+        "publish_ants_metadata.proto",
+        "publish_rdb_metadata.proto"
+    ],
+    visibility = ["//visibility:public"],
+    deps = ["//chromiumos/test/artifact:artifact_proto"],
+)
+
+go_proto_library(
+    name = "metadata_go_proto",
+    importpath = "go.chromium.org/chromiumos/config/go/test/api/metadata",
+    proto = ":metadata_proto",
+    visibility = ["//visibility:public"],
+    deps = ["//chromiumos/test/artifact"],
+)
+
+go_library(
+    name = "metadata",
+    embed = [":metadata_go_proto"],
+    importpath = "go.chromium.org/chromiumos/config/go/test/api/metadata",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,14 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.scheduling;
+
+option go_package = "./proto";
+
+enum OsType {
+  CHROMEOS = 0;
+  ANDROID = 1;
+}

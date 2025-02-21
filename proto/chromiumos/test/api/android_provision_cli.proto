@@ -1,0 +1,27 @@
+// Copyright 2022 The ChromiumOS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/android_provision_metadata.proto";
+import "chromiumos/test/api/provision_service.proto";
+import "chromiumos/test/lab/api/dut.proto";
+
+// Next Tag: 5
+message AndroidProvisionCLIResponse {
+  // Required. The DUT Id.
+  chromiumos.test.lab.api.Dut.Id id = 1;
+  // Required. Outcome represents the result of performing provisioning on the DUT.
+  oneof outcome {
+    InstallSuccess success = 2;
+    InstallFailure failure = 3;
+  }
+  // List of the provisioned Android packages.
+  repeated InstalledAndroidPackage android_packages = 4;
+  InstalledAndroidOS installed_android_os = 5;
+}

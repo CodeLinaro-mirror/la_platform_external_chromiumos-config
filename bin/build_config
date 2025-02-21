@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Used to generate starlark protojson config output. Expects to be able
+# to find the protocol buffer generating script in the directory with the
+# config file at config/generate.sh and expects to be able to find the
+# lucicfg binary on the path from depot_tools.
+
+readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
+source "${script_dir}/common.sh"
+
+# Exit if any command fails.
+set -e
+trap "summarize" EXIT
+
+source "${script_dir}/../setup_cipd.sh"
+
+output_dir="."
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --output-dir|-o)
+            output_dir="$2"
+            shift
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+if [[ $# -ne 1 ]]; then
+  config_usage
+fi
+
+readonly file_path=$1
+readonly config_file=$(basename "${file_path}")
+readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
+
+# Hitting some relative links so change to the directory.
+cd "${config_dir}"
+
+echo "Formatting .star files with lucicfg fmt..."
+lucicfg fmt
+
+# luci requires -config-dir be relative to cwd
+lucicfg         \
+    generate    \
+    -config-dir \
+    "$(realpath -m --relative-to="$(pwd)" "${output_dir}/generated")" \
+    "${config_file}"

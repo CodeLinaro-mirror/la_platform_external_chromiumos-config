@@ -1,0 +1,159 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+import "chromiumos/build/api/portage.proto";
+import "chromiumos/storage_path.proto";
+
+// The type of a firmware binary.
+message FirmwareType {
+  enum Type {
+    UNKNOWN = 0;
+    MAIN = 1;
+    EC = 2;
+    PD = 3;
+  }
+}
+
+// Specifies the version of a firmware binary.
+message Version {
+  int32 major = 1;
+  int32 minor = 2;
+  int32 patch = 3;
+}
+
+// Specifies the location of a firmware binary.
+message FirmwarePayload {
+  reserved 1;
+
+  // The path to the firmware build artifact
+  oneof firmware_image {
+    // Path to the firmware artifact (either local or GS path)
+    StoragePath firmware_image_path = 5;
+
+    // NOTE: Deprecated (use firmware_image_path instead)
+    //
+    // Image path in BCS format: "bcs://Coral.10068.118.0.tbz2"
+    //
+    // TODO(shapiroc): Migrate to use fimware_image_path instead so
+    // that local provisioning can be supported also via provision_service
+    string firmware_image_name = 2 [ deprecated = true ];
+  }
+
+  FirmwareType.Type type = 3;
+
+  Version version = 4;
+}
+
+// Specifies optional hash for the payload.
+message FirmwarePayloadHash {
+  // Enumeration of different hash algorithms.
+  enum Algorithm {
+    MD5SUM = 0;
+  }
+
+  // Hash algorithm in use.
+  Algorithm algorithm = 1;
+
+  // Hash digest.
+  string digest = 2;
+}
+
+// Specifies different firmware payloads to use. This is used in the following
+// contexts:
+//
+// - OS images that specify BCS payloads.
+// - In the factory to flash the RO firmware.
+// - F20 firmware provisioning.
+//
+// Building firmware is configured with the FirmwareBuildConfig message.
+//
+// TODO(crbug.com/1071918): Rename to FirmwarePayloadConfig.
+message FirmwareConfig {
+  // The main firmware image. Updates both RO and RW sections.
+  FirmwarePayload main_ro_payload = 1;
+
+  // The main firmware image. Updates only RW section.
+  //
+  // main_rw image is flashed after main_ro image, which allows to reproduce
+  // the setup of real devices in a single request by setting RO to some old
+  // version, that the device was shipped with, and setting RW to latest.
+  FirmwarePayload main_rw_payload = 2;
+
+  // The embedded controller (EC) read-only (RO) firmware.
+  // Will not update EC RW; you can flash EC RW as part of main image.
+  FirmwarePayload ec_ro_payload = 3;
+
+  reserved 4;
+
+  // The PD read-only firmware.
+  FirmwarePayload pd_ro_payload = 5;
+
+  // The embedded controller (EC) read-write (RW) firmware.
+  FirmwarePayload ec_rw_payload = 6;
+
+  // Optional hash for main_rw FW_MAIN_A by replacing ec_rw in main_rw_payload
+  // with the one from ec_rw_payload.
+  FirmwarePayloadHash main_rw_a_hash = 7;
+
+  // Whether the embedded controller (EC) component manifest is enabled. It
+  // should always be enabled on new projects for EC component probing.
+  bool has_ec_component_manifest = 8;
+}
+
+// Config for building firmware components. This is used in the following
+// contexts:
+//
+// - Firmware builders.
+// - Local development when building from source (i.e. cros_workon start).
+// - New projects that don't yet specify BCS payloads.
+//
+// When building OS images, firmware payloads are usually pulled from BCS, as
+// specified by the FirmwareConfig message.
+message Firmware {
+  // Build targets for building firmware components.
+  message BuildTargets {
+    // Build target for coreboot.
+    string coreboot = 1;
+
+    // Build target for depthcharge.
+    string depthcharge = 2;
+
+    // Build target for EC firmware.
+    string ec = 3;
+
+    // Extra EC build targets to build/include in the EC firmware.
+    repeated string ec_extras = 4;
+
+    // Build target for libpayload.
+    string libpayload = 5;
+
+    // Firmware builds currently use portage, but this could change over time
+    // as pieces become more decoupled.
+    Portage.BuildTarget portage_build_target = 6;
+
+    // Build target for zephyr_ec.
+    string zephyr_ec = 7;
+
+    // Build target for chromeos-bmpblk.
+    string bmpblk = 8;
+
+    // Build target for chromeos-ish.
+    string ish = 9;
+
+    // Build target for Zephyr EC detachable base.
+    string zephyr_detachable_base = 10;
+  }
+
+  BuildTargets build_targets = 1;
+}
+
+// TODO(shapiroc): Remove once SoftwareConfig is migrated to
+// Firmware.build_targets
+message FirmwareBuildConfig { Firmware.BuildTargets build_targets = 1; }

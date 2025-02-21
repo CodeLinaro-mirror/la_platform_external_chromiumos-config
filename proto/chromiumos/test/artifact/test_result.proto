@@ -1,0 +1,764 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.artifact;
+
+import "chromiumos/storage_path.proto";
+import "chromiumos/test/api/provision_state.proto";
+import "chromiumos/test/api/test_case_metadata.proto";
+import "chromiumos/test/api/test_case_result.proto";
+import "chromiumos/test/api/test_harness.proto";
+import "chromiumos/test/lab/api/dut.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/artifact";
+
+// Captures rich information for test results.
+// NEXT TAG: 4
+message TestResult {
+  // Captures the test result artifact version.
+  uint32 version = 1;
+
+  // The test invocation which contains invocation-level information.
+  TestInvocation test_invocation = 2;
+
+  // List of test runs which contains specific test-level information.
+  repeated TestRun test_runs = 3;
+}
+
+// Captures invocation-level information for test results.
+// NEXT TAG: 13
+message TestInvocation {
+  // The test environment specific information.
+  TestEnvironment test_environment = 1;
+
+  // The topology of the connected devices under test. The DUT topology
+  // represents the hardware specs of devices and includes a full list of
+  // available DUTs of a given schedule-able unit (e.g. swarming bot) from
+  // inventory server.
+  // Multi-dut Sarming bot example:
+  // https://chromeos-swarming.appspot.com/bot?id=crossk-chromeos15-row3-metro1-unit4
+  //
+  // For multi-dut testing, it's possible that only a subset of DUTs are used
+  // to run tests. In addition, only those DUT that are used for testing will
+  // have provision info and build info. Refer to ExecutionInfo fields for
+  // detailed test execution info of DUTs.
+  chromiumos.test.lab.api.DutTopology dut_topology = 2;
+
+  // The execution information for the test run that consists of software
+  // information (e.g. build) and hardware information (e.g. DUT).
+  // Generally, this will contain a single Dut for an functional test that
+  // doesn't depend on other devices, but can include a collection of devices
+  // used in multi-dut testing (e.g. ChromeOS to ChromeOS, ChromeOS to Android,
+  // etc...). For multi-dut testing, there are only one primary DUT and one or
+  // more secondary DUTs.
+  //
+  // Test execution related information for the primary DUT.
+  ExecutionInfo primary_execution_info = 3;
+
+  // Test execution related information for the secondary DUTs.
+  repeated ExecutionInfo secondary_executions_info = 4;
+
+  // The metadata required to schedule the test(s) within the same test
+  // invocation.
+  SchedulingMetadata scheduling_metadata = 5;
+
+  // For added flexibility, additional key value pairs could be added and
+  // associated with the given test invocation as needed.
+  map<string, string> tags = 6;
+
+  // Flag to indicate whether tests are run in CFT.
+  bool is_cft_run = 7;
+
+  // Flag to indicate whether tests are run via test_runner V2.
+  bool is_trv2_run = 10;
+
+  // Flag to distinguish AL test runs.
+  bool is_al_run = 11;
+
+  // Flag to indicate whether tests are run via 3d.
+  bool is_3d_run = 12;
+
+  // The metadata associated with project tracker within the same test
+  // invocation.
+  ProjectTrackerMetadata project_tracker_metadata = 8;
+
+  // Partner info associated with the test run.
+  PartnerInfo partner_info = 9;
+}
+
+// Captures the test environment that produced the test invocation,
+// e.g. internal labs via buildbucket, partner labs via Satlab for Partner,
+// local LED testing via swarming.
+// NEXT TAG: 3
+message TestEnvironment {
+  // Unique identifier for the test environment that produced results in this
+  // invocation.
+  // NEXT TAG: 3
+  message Id {
+    // The unique id of the test environment that produced results in this
+    // invocation.
+    // Example: buildbucket id: "8799081636806167121".
+    string id = 1;
+
+    // The full name of the test environment that produced results in this
+    // invocation. See also https://aip.dev/122#full-resource-names
+    // e.g.
+    // - Swarming task:
+    // "//chromeos-swarming.appspot.com//tasks/5e91083c29fc0810"
+    // - Buildbucket build:
+    // "//cr-buildbucket.appspot.com/builds/8799081636806167121".
+    string name = 2;
+  }
+
+  // The unique id of the test environment that produced results in this
+  // invocation.
+  Id id = 1;
+
+  // All the ancestor ids of this test environment. The order represents the
+  // relationship of the ancestors and the first one is the root.
+  repeated Id ancestor_ids = 2;
+}
+
+// Captures information regarding a test run.
+// NEXT TAG: 8
+message TestRun {
+  // Test case information for the test result.
+  TestCaseInfo test_case_info = 1;
+
+  // List of paths to the result artifacts that are used to derive test result
+  // information.
+  repeated chromiumos.StoragePath logs_info = 2;
+
+  // List of additional custom results.
+  repeated CustomResult custom_results = 3;
+
+  // The timing information of the test run.
+  TimingInfo time_info = 4;
+
+  // Deprecated. Use the `test_harness`` field from
+  // `chromiumos.test.api.TestCaseResult test_case_result` below instead.
+  // Test harness that the test belongs to.
+  chromiumos.test.api.TestHarness test_harness = 5 [deprecated = true];
+
+  // The metadata required to execute the test run.
+  ExecutionMetadata execution_metadata = 6;
+
+  // For added flexibility, additional key value pairs could be added and
+  // associated with the given test run as needed.
+  map<string, string> tags = 7;
+}
+
+// Captures test case information associated with a test run.
+// NEXT TAG: 13
+message TestCaseInfo {
+  // Deprecated. Use the `test_case_metadata` field from
+  // `chromiumos.test.api.TestCaseResult test_case_result` below instead.
+  // Metadata related to test case and execution context.
+  chromiumos.test.api.TestCaseMetadata test_case_metadata = 1 [deprecated = true];
+
+  // Result of a single execution of a given test case, including test harness
+  // and test case metadata.
+  chromiumos.test.api.TestCaseResult test_case_result = 2;
+
+  // The display name of the test result.
+  // Example: "hatch-cq/R102-14632.0.0/wificell-cq/tast.wificell-cq"
+  string display_name = 3;
+
+  // Test suite name.
+  // Example: "crosbolt_perf_perbuild"
+  string suite = 4;
+
+  // The branch name.
+  // Example: main
+  string branch = 5;
+
+  // The main builder name.
+  // Example: main-release
+  string main_builder_name = 6;
+
+  // The requester who triggered the test run.
+  string requester = 7;
+
+  // List of email addresses to contact in case of test failures.
+  repeated string contacts = 8;
+
+  // The name of the testplan, if one is associated
+  // Example: ltl_testplan
+  string test_plan_id = 9;
+
+  // The channel of the build.
+  // Example: "BETA", "DEV", "CANARY", "STABLE"
+  string channel = 10;
+
+  // AVL component qualification info.
+  AvlInfo avl_info = 11;
+
+  // GSC devboard info
+  GscInfo gsc_info = 12;
+}
+
+// Captures ChromeOS build information associated with a test run.
+// NEXT TAG: 12
+message BuildInfo {
+  // The name associated with a given build, e.g. image name.
+  // Format: "<source>/R<milestone>-<chrome_os_version>[.<additional_suffix>]"
+  // Example: "drallion-cq/R106-15048.0.0-69541-8805781873765277729"
+  string name = 1;
+
+  // The ChromeOS Milestone associated with the build.
+  // Example: 100, 101
+  uint64 milestone = 2;
+
+  // The ChromeOS Version associated with the build.
+  // Example: "15048.0.0"
+  string chrome_os_version = 3;
+
+  // The source where the build is created.
+  // Example: "drallion-cq", "kevin-release"
+  string source = 4;
+
+  // The snapshot version associated with the build.
+  // Example: "59b0b491b0aac1aedbac9334f9ddb4d1c448260a"
+  string snapshot_version = 5;
+
+  // The full name of the build target which includes any variant if available.
+  // Example: "grunt-arc-r-vmrvc-android-pfq"
+  string build_target = 6;
+
+  // The variant associated with the given board.
+  // Example: "grunt-arc-r"
+  string board_variant = 7;
+
+  // The plain board name associated with the given build.
+  // Example: "grunt".
+  string board = 8;
+
+  // The build metadata associated with a test run.
+  BuildMetadata build_metadata = 9;
+
+  // The criticality is for the build tied to the board/model from GoldenEye
+  // whether it's tagged with informational (non-critical) or not.
+  // Note that the default is false if it's not set.
+  bool critical = 10;
+
+  // The type associated with the given board.
+  // Example: "HW", or "VM".
+  string board_type = 11;
+}
+
+// The complete build metadata of the test case.
+// NEXT TAG: 14
+message BuildMetadata {
+  // ARC++ metadata
+  message Arc {
+    // The ARC++ version associated with the build.
+    string version = 1;
+
+    // The particular ARC++ branch associated with the build.
+    string branch = 2;
+  }
+
+  Arc arc = 1;
+
+  // Chrome metadata
+  message Chrome {
+    string version = 1;
+  }
+
+  Chrome chrome = 2;
+
+  message ChromeOs {
+    string version = 1;
+  }
+
+  // Chrome OS metadata
+  ChromeOs chrome_os = 3;
+
+  // Firmware metadata
+  message Firmware {
+    // Read-only firmware version, e.g. "Google_Voema.13672.224.0".
+    string ro_version = 1;
+    // Read-write firmware version, e.g. "Google_Voema.13672.224.0".
+    string rw_version = 2;
+  }
+
+  Firmware firmware = 4;
+
+  // Kernel metadata
+  message Kernel {
+    // Kernel version, e.g. "5.4.151-16902-g93699f4e73de".
+    string version = 1;
+  }
+
+  Kernel kernel = 5;
+
+  // SKU metadata
+  message Sku {
+    string hwid_sku = 1;
+    // dlm_sku_id is identifier set in VPD at factory on new devices which
+    // correlates to an entry in DLM device SKUs table, should be an integer
+    // value in the string eg: "12345"
+    string dlm_sku_id = 2;
+  }
+
+  Sku sku = 6;
+
+  // The Chip set metadata
+  // NEXT TAG: 3
+  message Chipset {
+    // Wifi chip info, e.g. "marvell".
+    string wifi_chip = 1;
+
+    // Wifi router models within the testbed, e.g. "gale".
+    string wifi_router_models = 2;
+  }
+
+  Chipset chipset = 7;
+
+  // ChromeOS cellular metadata
+  message Cellular {
+    // Carrier info, e.g. "CARRIER_ESIM"
+    string carrier = 1;
+  }
+
+  Cellular cellular = 8;
+
+  // Lacros metadata
+  message Lacros {
+    // Ash Chrome browser version, e.g. "109.0.5391.0".
+    string ash_version = 1;
+
+    // Lacros browser version, e.g. "109.0.5391.0".
+    string lacros_version = 2;
+  }
+
+  Lacros lacros = 9;
+
+  // Deprecated. Use ChameleonInfo from below instead.
+  chromiumos.test.lab.api.Chameleon chameleon = 10 [deprecated = true];
+
+  // Graphics info
+  // NEXT TAG: 15
+  message GfxInfo {
+    // GPU ID, e.g. "amd:15e7".
+    string gpu_id = 1;
+
+    // GPU family name, e.g. "cezanne".
+    string gpu_family = 2;
+
+    // OpenGL ES version, e.g. "3.2".
+    string gpu_open_gles_version = 3;
+
+    // GPU vendor name, e.g. "amd".
+    string gpu_vendor = 4;
+
+    // Vulkan version, e.g. "1.3.274".
+    string gpu_vulkan_version = 5;
+
+    // The following platform info is for the DUT in general.
+    // CPU vendor name, e.g. "amd".
+    string platform_cpu_vendor = 6;
+
+    // The disk size in GB, e.g. 32.
+    uint64 platform_disk_size = 7;
+
+    // The memory size in GB, e.g. 8.
+    uint64 platform_memory_size = 8;
+
+    // The following are the display config.
+    string display_panel_name = 9;
+    string display_present_hdr = 10;
+    string display_present_psr = 11;
+    string display_present_vrr = 12;
+    string display_refresh_rate = 13;
+    string display_resolution = 14;
+  }
+
+  GfxInfo gfx_info = 11;
+
+  // Modem info that defines modem labels in lab config of a DUT
+  chromiumos.test.lab.api.ModemInfo modem_info = 12;
+
+  // Chameleon metadata for for automated external display testing across USB-C,
+  // HDMI, and DisplayPort.
+  // See details: http://g3doc/company/teams/chromeos-audio/tests/chameleon
+  // This is a mirror of the proto stored in chrome repository under
+  // https://source.chromium.org/chromium/infra/infra/+/main:go/src/infra/unifiedfleet/api/v1/models/chromeos/lab/chameleon.proto
+  // Next Tag: 12
+  enum ChameleonType {
+    reserved 1, 6 to 8;
+    CHAMELEON_TYPE_INVALID = 0;
+    CHAMELEON_TYPE_DP = 2;
+    CHAMELEON_TYPE_DP_HDMI = 3 [deprecated = true];
+    CHAMELEON_TYPE_VGA = 4 [deprecated = true];
+    CHAMELEON_TYPE_HDMI = 5;
+    CHAMELEON_TYPE_V2 = 9;
+    CHAMELEON_TYPE_V3 = 10;
+    CHAMELEON_TYPE_RPI = 11;
+  }
+
+  // Next Tag: 5
+  enum ChameleonConnectionType {
+    CHAMELEON_CONNECTION_TYPE_INVALID = 0;
+    CHAMELEON_CONNECTION_TYPE_AUDIOJACK = 1;
+    CHAMELEON_CONNECTION_TYPE_USB = 2;
+    CHAMELEON_CONNECTION_TYPE_HDMI = 3;
+    CHAMELEON_CONNECTION_TYPE_DP = 4;
+  }
+
+  // Next Tag: 3
+  message ChameleonInfo {
+    repeated ChameleonType chameleon_type = 1;
+    repeated ChameleonConnectionType chameleon_connection_types = 2;
+  }
+  ChameleonInfo chameleon_info = 13;
+}
+
+// Captures DUT related info.
+// NEXT TAG: 5
+message DutInfo {
+  // DUT associated with the test run.
+  chromiumos.test.lab.api.Dut dut = 1;
+
+  // Provision state associated with the DUT.
+  chromiumos.test.api.ProvisionState provision_state = 2;
+
+  // Additional DUT related information for more flexibility. For example,
+  // additional identifier that could be specific to a certain TLE.
+  // Example: "Moblab Install Id": "701c38ce144611ed86a50242c0a8640c"
+  map<string, string> tags = 3;
+
+  // True is applicable to CBX SKU DUTs, otherwise they are non-CBX.
+  bool cbx = 4;
+}
+
+// Captures Drone related info.
+// NEXT TAG: 4
+message DroneInfo {
+  // The UUID assigned to the drone.
+  // Example: "skylab-drone-deployment-prod-6dc79d4f9-czjlj"
+  string drone = 1;
+
+  // The image installed in the drone.
+  // Example: "gcr.io/chromeos-drone-images/drone:20221110T150226-chromeos-test"
+  string drone_image = 2;
+
+  // The drone server id.
+  // Example: "kube20-e"
+  string drone_server = 3;
+}
+
+// Captures the Swarming task related info.
+// NEXT TAG: 8
+message SwarmingInfo {
+  // The Swarming task id.
+  // Example: "59f0e13fe7af0710"
+  string task_id = 1;
+
+  // The parent's swarming task id.
+  // Example: "59ef5e9532bbd611"
+  string suite_task_id = 2;
+
+  // The swarming task name (swarming request name).
+  // Format: "bb-<buildbucket_id>-{project}/{bucket}/{builder}"
+  // Example: "bb-8818737803155059937-chromeos/general/Full"
+  string task_name = 3;
+
+  // Device pool, an optional dimension to Swarming, which is used only by
+  // ChromeOS.
+  // Example: "ChromeOSSkylab"
+  string pool = 4;
+
+  // A pool dimension for swarming task scheduling.
+  // Example: "DUT_POOL_QUOTA"
+  string label_pool = 5;
+
+  // An ID to identify the bot that is running the tests.
+  // Example: "cloudbots-prod-2-5c8s"
+  string bot_id = 6;
+
+  // The bot config file to run to decide where the bot is running tests at.
+  // Example: "skylab.py"
+  string bot_config = 7;
+}
+
+// Captures the Inventory related info.
+// NEXT TAG: 2
+message InventoryInfo {
+    // UFS zone config,
+    // Example: "ZONE_SFO36_OS"
+    string ufs_zone = 1;
+}
+
+// Identifies a buildbucket builder.
+// Canonical string representation: "{project}/{bucket}/{builder}".
+// See the BuilderID in the buildbucket build.proto:
+// https://chromium.googlesource.com/infra/luci/luci-go/+/master/buildbucket/proto/builder_common.proto
+// NEXT TAG: 4
+message BuilderID {
+  // Project ID, e.g. "chromeos". Unique within a LUCI deployment.
+  // Regex: ^[a-z0-9\-_]+$
+  string project = 1;
+
+  // Bucket name, e.g. "try". Unique within the project.
+  // Regex: ^[a-z0-9\-_.]{1,100}$
+  // Together with project, defines an ACL.
+  string bucket = 2;
+
+  // Builder name, e.g. "linux-rel". Unique within the bucket.
+  // Regex: ^[a-zA-Z0-9\-_.\(\) ]{1,128}$
+  string builder = 3;
+}
+
+// BuildbucketInfo contains fields extracted from the buildbucket build.proto
+// https://chromium.googlesource.com/infra/luci/luci-go/+/master/buildbucket/proto/build.proto
+// NEXT TAG: 4
+message BuildbucketInfo {
+  // Identifier of the build, unique per LUCI deployment.
+  // IDs are monotonically decreasing.
+  int64 id = 1;
+
+  // Required. The builder this build belongs to.
+  //
+  // Tuple (builder.project, builder.bucket) defines build ACL
+  // which may change after build has ended.
+  BuilderID builder = 2;
+
+  // IDs of the build's ancestors. This includes all parents/grandparents/etc.
+  // This is ordered from top-to-bottom so `ancestor_ids[0]` is the root of
+  // the builds tree, and `ancestor_ids[-1]` is this build's immediate parent.
+  // This does not include any "siblings" at higher levels of the tree, just
+  // the direct chain of ancestors from root to this build.
+  repeated int64 ancestor_ids = 3;
+}
+
+// Captures Skylab related info.
+// NEXT TAG: 4
+message SkylabInfo {
+  // Drone info associated with the test run.
+  DroneInfo drone_info = 1;
+
+  // Swarming task associated with the test run. Mainly populated for tests
+  // running on swarming bot.
+  SwarmingInfo swarming_info = 2;
+
+  // Buildbucket build associated with the test run. Mainly populated for tests
+  // scheduled by buildbucket.
+  BuildbucketInfo buildbucket_info = 3;
+}
+
+// Captures Satlab related info.
+// NEXT TAG: 4
+message SatlabInfo {
+  // Swarming task associated with the test run. Mainly populated for tests
+  // running on swarming bot.
+  SwarmingInfo swarming_info = 1;
+
+  // Buildbucket build associated with the test run. Mainly populated for tests
+  // scheduled by buildbucket.
+  BuildbucketInfo buildbucket_info = 2;
+
+  // Drone info associated with the test run.
+  DroneInfo drone_info = 3;
+}
+
+// Captures Partner related info.
+// NEXT TAG: 2
+message PartnerInfo {
+  // Teshaus account id of the partner.
+  int64 account_id = 1;
+}
+
+// Captures test execution related information for the test run.
+// NEXT TAG: 6
+message ExecutionInfo {
+  // ChromeOS build associated with the test run.
+  BuildInfo build_info = 1;
+
+  // DUT associated with the test run.
+  DutInfo dut_info = 2;
+
+  // Execution architecture specific information.
+  oneof env_info {
+    SkylabInfo skylab_info = 3;
+    SatlabInfo satlab_info = 4;
+  }
+
+  // Inventory info associated with the test run.
+  InventoryInfo inventory_info = 5;
+}
+
+// Represents custom result, as a way for tests to produce arbitrary artifacts.
+// Custom results can be used by the pipeline to kick off post processing jobs
+// or to hand off results to downstream pipelines.
+// NEXT TAG: 3
+message CustomResult {
+  // Path to the custom result artifacts generated during execution.
+  chromiumos.StoragePath result_artifact_path = 1;
+
+  // Type of the custom result.
+  oneof type {
+    Cts cts = 2;
+  }
+
+  // CTS related custom results
+  message Cts {
+    // TODO: Add fields as needed.
+  }
+}
+
+// Captures the timing information.
+// NEXT TAG: 4
+message TimingInfo {
+  // The time when the execution was created and pending in queue.
+  google.protobuf.Timestamp queued_time = 1;
+
+  // The time when the execution started to execute.
+  google.protobuf.Timestamp started_time = 2;
+
+  // Duration of the execution.
+  google.protobuf.Duration duration = 3;
+}
+
+// Metadata associated with the scheduling of the test. The scheduling metadata
+// are mainly related to the hardware aspect.
+// NEXT TAG: 4
+message SchedulingMetadata {
+  // HardwareAttributes defines the hardware-bound characteristics of the
+  // devices to run tests on.
+  map<string, string> hardware_dependencies = 1;
+
+  // Captures scheduling arguments that affect how the tests in this request are
+  // prioritized relative to other requests, and how capacity for them is
+  // allocated,
+  // e.g. Scheduling field in
+  // "go.chromium.org/chromiumos/infra/proto/go/test_platform/request.proto".
+  //
+  // The following args are supported:
+  // - analytics_name: Name of the config, used for analytics,
+  //    e.g. "Bluetooth_Sa_Perbuild". Source from the SchedulerConfig in:
+  //    "go.chromium.org/chromiumos/infra/proto/go/testplans/suite_scheduler.proto"
+  // - ctp-fwd-task-name: Suite scheduler config name,
+  //    e.g. "Bluetooth_Sa_Perbuild".
+  // - qs_account: Quota Scheduler account to use for DUT pool,
+  //    e.g. "unmanaged_p2". Source from the PoolOptions in:
+  //    "go.chromium.org/chromiumos/infra/proto/go/testplans/suite_scheduler.proto"
+  map<string, string> scheduling_args = 2;
+
+  // The timing information of the scheduling task,
+  // e.g. fast, slow, extendedtimeout, ordering etc.
+  TimingInfo time_info = 3;
+}
+
+// Metadata associated with project tracker.
+// NEXT TAG: 2
+message ProjectTrackerMetadata {
+  // Bug ID from test args that are set by users.
+  // Example: "12345"
+  string bug_id = 1;
+}
+
+// Metadata associated with the test execution. The execution metadata are
+// mainly related to the software respect.
+// NEXT TAG: 3
+message ExecutionMetadata {
+  // List of software dependencies needed to be installed onto the DUT for the
+  // particular Test Case,
+  // e.g. provisioning requirements, additional supplemental files to download.
+  //
+  // Aligned with the SoftwareDependency in
+  // "go.chromium.org/chromiumos/infra/proto/go/test_platform/request.proto".
+  map<string, string> software_dependencies = 1;
+
+  // Captures the command and arguments used to run the particular Test Case.
+  // This could be at the Test Invocation level which would be propagated to
+  // each of the Test Case that’s contained by the Test Invocation. This is
+  // useful for retrying or rerunning the test again if needed.
+  map<string, string> test_args = 2;
+}
+
+// AVL component qualification info associated with the test run.
+// NEXT TAG: 4
+message AvlInfo {
+  // The tested component model (same meaning as Part Number in DLM, but the
+  // exact string representation might be different).
+  // Example: "0x0000f5 MMC32G"
+  string avl_part_model = 1;
+
+  // The tested component firmware (same meaning as Part Firmware in DLM, but
+  // the exact string representation might be different).
+  // Example: "0xa200000000000000"
+  string avl_part_firmware = 2;
+
+  // AVL component type.
+  // Example: "storage"
+  string avl_component_type = 3;
+}
+
+// GSC devboard info associated with the test run.
+// See more details at go/gsc-devboard-rdb-tags
+// NEXT TAG: 15
+message GscInfo {
+    // The FW image flashed to the chip in the provision stage of the test.
+    // Example: "gs://chromeos-image-archive/firmware-ti50-postsubmit/R126-15855.0.0-97601-8750535029452566225"
+    string gsc_buildurl = 1;
+
+    // Serial number of the GSC chip (and CCD USB serial).
+    // Example: "1482101a-4c2ac261"
+    string gsc_ccd_serial = 2;
+
+    // Version number of the devboardservice container.
+    // Example: "1.30"
+    string gsc_devboardservice_version = 3;
+
+    // Serial number of the hyperdebug HW (and USB serial).
+    // Example: "206636793452"
+    string gsc_hyperdebug_serial = 4;
+
+    // Version number of the hyperdebug firmware.
+    // Example: "hyperdebug_20230517_01"
+    string gsc_hyperdebug_version = 5;
+
+    // Version number of the opentitantool.
+    string gsc_opentitantool_version = 6;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Example: "0.0.53"
+    string gsc_ro_version = 7;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Extract from version string ti50_common_tot:v0.0.1235-a1605766.
+    // Example: "tot"
+    string gsc_rw_branch = 8;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Extract from version string ti50_common_tot:v0.0.1235-a1605766.
+    // Example: "1235"
+    string gsc_rw_rev = 9;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Extract from version string ti50_common_tot:v0.0.1235-a1605766
+    // Example: "a1605766"
+    string gsc_rw_sha = 10;
+
+    // From console of live image, via devboardservice GscVersion grpc.
+    // Example: "0.26.81"
+    string gsc_rw_version = 11;
+
+    // Version number for the tast tests.
+    // Example: "R125-15837.0.0"
+    string gsc_tast_version = 12;
+
+    // Serial number of the GSC board.
+    // Example: "123882-0008"
+    string gsc_testbed_serial = 13;
+
+    // From devboardservice Query grpc.
+    // Example: "gsc_dt_shield"
+    string gsc_testbed_type = 14;
+}

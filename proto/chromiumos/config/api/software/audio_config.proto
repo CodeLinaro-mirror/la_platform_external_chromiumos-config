@@ -1,0 +1,54 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+package chromiumos.config.api.software;
+
+import "chromiumos/config/public_replication/public_replication.proto";
+
+// Note that all files should be specified as paths relative to the root of a
+// chromiumos checkout, e.g. "src/overlays/overlay-<target>/audio/HiFi.conf".
+message AudioConfig {
+  // Configures fields of AudioConfig that are made public.
+  chromiumos.config.public_replication.PublicReplication public_replication = 9;
+
+  // The name of the audio card.
+  string card_name = 1;
+
+  // Path to the CRAS card configuration file.
+  // See
+  // https://chromium.googlesource.com/chromiumos/third_party/adhd/+/HEAD/cras/#card-configuration.
+  string card_config_file = 2;
+
+  // Path to the dsp.ini configuration file.
+  string dsp_file = 3;
+
+  // Path to the UCM file. Note that this is the UCM verb file (e.g.
+  // "HiFi.conf"), NOT the UCM master file (e.g. <sound card name>.conf).
+  string ucm_file = 4;
+
+  // Path to the UCM master file (e.g. <sound card name>.conf).
+  string ucm_master_file = 5;
+
+  // UCM suffix, if any.
+  string ucm_suffix = 6;
+
+  // Path to the ALSA module config file.
+  string module_file = 7;
+
+  // Path to the boards specific settings board.ini file.
+  string board_file = 8;
+
+  // Path to the sound_card_init config (e.g. <card_id>.yaml).
+  string sound_card_init_file = 10;
+
+  // The short name of sound card.
+  string card_id = 11;
+
+  // The custom project name of cras path
+  string cras_custom_name = 12;
+}

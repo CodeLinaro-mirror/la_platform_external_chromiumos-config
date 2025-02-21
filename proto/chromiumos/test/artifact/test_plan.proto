@@ -1,0 +1,19 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.artifact;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/artifact";
+
+import "chromiumos/test/api/v1/plan.proto";
+
+// Captures artifact for test plans.
+// NEXT TAG: 2
+message TestPlanArtifact {
+
+  // Captures hardware test plans
+  repeated chromiumos.test.api.v1.HWTestPlan hw_test_plans = 1;
+}

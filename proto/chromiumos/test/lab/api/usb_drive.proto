@@ -1,0 +1,23 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+import "google/protobuf/timestamp.proto";
+
+// UsbDrive describes details of the USB drive.
+message UsbDrive {
+  // serial provides the serial number of the USB drive.
+  string serial = 1;
+  // manufacturer provides the manufacturer name of the USB drive.
+  string manufacturer = 2;
+  // first_seen_time provides the time when the USB drive was first seen
+  // in lab or test systems. This is used as an optional heuristic to track
+  // the lifetime of USB drives and failure rates.
+  google.protobuf.Timestamp first_seen_time = 3;
+}

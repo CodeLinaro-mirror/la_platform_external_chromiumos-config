@@ -1,0 +1,37 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/component_package.proto";
+import "chromiumos/config/api/mfg_config_id.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Contains the full configuration of manufacturing configuration
+// for a given set of devices, including detailed component info
+// and RO eeprom/flashrom settings.
+message MfgConfig {
+  // Unique id scoped to a Design within a Platform.
+  MfgConfigId id = 1;
+
+  // Name of 2nd sourced PCB Vendor.
+  string pcb_vendor = 2;
+
+  // Ram part number. The characteristics are encoded in HardwareTopology.
+  string ram_part_number = 3;
+
+  // Defines the market region of the device.
+  // Region determines keyboard layout, language, and timezone.
+  // For valid region codes, see:
+  // https://storage.googleapis.com/chromeos-factory-docs/sdk/regions.html#available-regions
+  string region = 4;
+
+  // All of the components used to manufacture the device
+  ComponentPackage component_package = 6;
+
+  reserved 5;
+}

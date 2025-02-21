@@ -1,0 +1,26 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+package chromiumos.config.api.software;
+
+message UiConfig {
+  // If set, additional web apps will be installed from the given subdirectory
+  // of the web_apps directory.
+  string extra_web_apps_dir = 1;
+
+  // Select device type. Models that identify as Meet Hardware may use
+  // different UI flags
+  enum Requisition {
+    REQUISITION_UNSPECIFIED = 0;
+    REQUISITION_CHROMEOS = 1;
+    REQUISITION_MEETHW = 2;
+  }
+  Requisition requisition = 2;
+
+  bool cloud_gaming_device = 3;
+}

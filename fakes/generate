@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Copyright 2021 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Required for setup_cipd
+readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
+
+# Exit if any command fails.
+set -e
+
+source "../setup_cipd.sh"
+
+
+# Get all unique directories with at least one fake config
+for config in $(find . -type f -name "*.star");
+do
+    echo "Formatting .star with lucicfg fmt..."
+    lucicfg fmt "${config}"
+    config_dir="$(dirname "${config}")"
+
+    lucicfg         \
+        generate    \
+        -config-dir \
+        "$(realpath -m --relative-to="$(pwd)" "${config_dir}/generated")" \
+        "${config}"
+
+done
+
+# Replaces tabs with spaces for easier diff'ing
+for config in $(find . -type f -name "*.jsonproto");
+do
+    sed -i 's/\t/  /g' "${config}"
+done
