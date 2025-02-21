@@ -30521,6 +30521,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "error_message",
               "number": 1,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_STRING"
             },
             {

@@ -29,7 +29,8 @@ message FirmwareProvisionInstallMetadata {
 // FirmwareProvisionResponse records the response of the firmware provisioning.
 message FirmwareProvisionResponse {
   // If the provisioning failed, here is the detailed error message.
-  string error_message = 1;
+  // Deprecated: Use InstallResponse.message instead.
+  string error_message = 1 [deprecated = true];
   // The firmware versions on the DUT (if success), or the versions that were attempted to be flashed (if failed).
   string ap_ro_version = 2;
   string ap_rw_version = 3;
