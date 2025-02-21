@@ -384,6 +384,10 @@
                 {
                   "name": "PD",
                   "number": 3
+                },
+                {
+                  "name": "ISH",
+                  "number": 4
                 }
               ]
             }
@@ -555,6 +559,14 @@
               "name": "has_ec_component_manifest",
               "number": 8,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "ishPayload",
+              "label": "LABEL_OPTIONAL",
+              "name": "ish_payload",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwarePayload"
             }
           ],
           "name": "FirmwareConfig",

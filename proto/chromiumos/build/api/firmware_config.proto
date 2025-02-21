@@ -18,6 +18,7 @@ message FirmwareType {
     MAIN = 1;
     EC = 2;
     PD = 3;
+    ISH = 4;
   }
 }
 
@@ -105,6 +106,9 @@ message FirmwareConfig {
   // Whether the embedded controller (EC) component manifest is enabled. It
   // should always be enabled on new projects for EC component probing.
   bool has_ec_component_manifest = 8;
+
+  // The ISH firmware.
+  FirmwarePayload ish_payload = 9;
 }
 
 // Config for building firmware components. This is used in the following

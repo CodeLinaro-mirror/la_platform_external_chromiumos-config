@@ -68,6 +68,7 @@ _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,
     EC = fw_pb.FirmwareType.EC,
     PD = fw_pb.FirmwareType.PD,
+    ISH = fw_pb.FirmwareType.ISH,
 )
 
 _HASH_ALGORITHM = struct(
@@ -190,12 +191,14 @@ def _create_fw_payloads_by_names(
         ap_fw_name = None,
         ec_fw_name = None,
         pd_fw_name = None,
+        ish_fw_name = None,
         ap_ro_version = None,
         ap_rw_version = None,
         ec_ro_version = None,
         ec_rw_version = None,
         ec_version = None,
         pd_version = None,
+        ish_version = None,
         ap_rw_a_hash = None,
         ap_rw_a_hash_algorithm = _HASH_ALGORITHM.MD5SUM,
         has_ec_component_manifest = False):
@@ -235,6 +238,12 @@ def _create_fw_payloads_by_names(
             firmware_image_name = pd_fw_name,
             type = _FW_TYPE.PD,
             version = pd_version,
+        )
+    if ish_fw_name:
+        sc_fw_config.ish_payload = fw_pb.FirmwarePayload(
+            firmware_image_name = ish_fw_name,
+            type = _FW_TYPE.ISH,
+            version = ish_version,
         )
 
     if ap_rw_a_hash:
