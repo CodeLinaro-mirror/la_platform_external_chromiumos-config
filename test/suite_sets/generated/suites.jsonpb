@@ -6006,6 +6006,9 @@
 					"value": "tast.firmware.RollbackKernel.normal"
 				},
 				{
+					"value": "tast.firmware.SHANI"
+				},
+				{
 					"value": "tast.firmware.SelfSignedBoot"
 				},
 				{
@@ -6103,6 +6106,9 @@
 				},
 				{
 					"value": "tast.hwsec.TPMContest"
+				},
+				{
+					"value": "tast.platform.CrosID"
 				},
 				{
 					"value": "tast.video.HWDRMInit"
@@ -6476,6 +6482,9 @@
 					"value": "tast.firmware.RollbackKernel.normal"
 				},
 				{
+					"value": "tast.firmware.SHANI"
+				},
+				{
 					"value": "tast.firmware.ServoGBBFlags"
 				},
 				{
@@ -6558,6 +6567,9 @@
 				},
 				{
 					"value": "tast.hwsec.TPMContest"
+				},
+				{
+					"value": "tast.platform.CrosID"
 				},
 				{
 					"value": "tast.video.HWDRMInit"
@@ -6784,9 +6796,6 @@
 					"value": "tast.firmware.ECWatchdog"
 				},
 				{
-					"value": "tast.firmware.SHANI"
-				},
-				{
 					"value": "tast.firmware.ScreenWakeTabletMode"
 				},
 				{
@@ -6803,9 +6812,6 @@
 				},
 				{
 					"value": "tast.firmware.USBResumeFromSuspend"
-				},
-				{
-					"value": "tast.platform.CrosID"
 				},
 				{
 					"value": "tast.power.ShutdownWithCommandBatteryCutoff"
