@@ -37709,6 +37709,53 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "enumType": [
+        {
+          "name": "StorageType",
+          "value": [
+            {
+              "name": "UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "UNRECOGNIZED",
+              "number": 1
+            },
+            {
+              "name": "SSD",
+              "number": 2
+            },
+            {
+              "name": "HDD",
+              "number": 3
+            },
+            {
+              "name": "MMC",
+              "number": 4
+            },
+            {
+              "name": "NVME",
+              "number": 5
+            },
+            {
+              "name": "UFS",
+              "number": 6
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/storage.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "messageType": [
         {
           "field": [
