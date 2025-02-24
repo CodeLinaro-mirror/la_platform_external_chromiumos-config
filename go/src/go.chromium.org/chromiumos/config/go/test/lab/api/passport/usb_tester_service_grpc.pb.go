@@ -43,6 +43,8 @@ type UsbTesterServiceClient interface {
 	GetActivePort(ctx context.Context, in *GetActivePortRequest, opts ...grpc.CallOption) (*GetActivePortReply, error)
 	// This method is used to set the active test port on the testing device.
 	SetActivePort(ctx context.Context, in *SetActivePortRequest, opts ...grpc.CallOption) (*SetActivePortReply, error)
+	// This method is used to load an EDID.
+	LoadEdid(ctx context.Context, in *LoadEdidRequest, opts ...grpc.CallOption) (*LoadEdidReply, error)
 }
 
 type usbTesterServiceClient struct {
@@ -143,6 +145,15 @@ func (c *usbTesterServiceClient) SetActivePort(ctx context.Context, in *SetActiv
 	return out, nil
 }
 
+func (c *usbTesterServiceClient) LoadEdid(ctx context.Context, in *LoadEdidRequest, opts ...grpc.CallOption) (*LoadEdidReply, error) {
+	out := new(LoadEdidReply)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.UsbTesterService/LoadEdid", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UsbTesterServiceServer is the server API for UsbTesterService service.
 // All implementations should embed UnimplementedUsbTesterServiceServer
 // for forward compatibility
@@ -168,6 +179,8 @@ type UsbTesterServiceServer interface {
 	GetActivePort(context.Context, *GetActivePortRequest) (*GetActivePortReply, error)
 	// This method is used to set the active test port on the testing device.
 	SetActivePort(context.Context, *SetActivePortRequest) (*SetActivePortReply, error)
+	// This method is used to load an EDID.
+	LoadEdid(context.Context, *LoadEdidRequest) (*LoadEdidReply, error)
 }
 
 // UnimplementedUsbTesterServiceServer should be embedded to have forward compatible implementations.
@@ -203,6 +216,9 @@ func (UnimplementedUsbTesterServiceServer) GetActivePort(context.Context, *GetAc
 }
 func (UnimplementedUsbTesterServiceServer) SetActivePort(context.Context, *SetActivePortRequest) (*SetActivePortReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetActivePort not implemented")
+}
+func (UnimplementedUsbTesterServiceServer) LoadEdid(context.Context, *LoadEdidRequest) (*LoadEdidReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoadEdid not implemented")
 }
 
 // UnsafeUsbTesterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -396,6 +412,24 @@ func _UsbTesterService_SetActivePort_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UsbTesterService_LoadEdid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoadEdidRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsbTesterServiceServer).LoadEdid(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.UsbTesterService/LoadEdid",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsbTesterServiceServer).LoadEdid(ctx, req.(*LoadEdidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UsbTesterService_ServiceDesc is the grpc.ServiceDesc for UsbTesterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -442,6 +476,10 @@ var UsbTesterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetActivePort",
 			Handler:    _UsbTesterService_SetActivePort_Handler,
+		},
+		{
+			MethodName: "LoadEdid",
+			Handler:    _UsbTesterService_LoadEdid_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

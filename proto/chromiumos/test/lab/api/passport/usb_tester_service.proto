@@ -43,6 +43,9 @@ service UsbTesterService {
 
   // This method is used to set the active test port on the testing device.
   rpc SetActivePort(SetActivePortRequest) returns (SetActivePortReply) {}
+
+  // This method is used to load an EDID.
+  rpc LoadEdid(LoadEdidRequest) returns (LoadEdidReply) {}
 }
 
 // Request to do hard reset.
@@ -386,6 +389,24 @@ message SetActivePortRequest {
 
 // Data returned as part of a SetActivePort call.
 message SetActivePortReply {
+  // Error code indicating the success or failure of the operation.
+  // 0 indicates success, while other values represent specific errors.
+  int64 err_code = 1;
+
+  // Human-readable error message providing more details about any errors
+  // encountered.
+  optional string error_msg = 2;
+}
+
+message LoadEdidRequest {
+  // Id (or serial) of the usb tester for which the request is intended.
+  string id = 1;
+
+  // The edid to be loaded.
+  bytes edid = 2;
+}
+
+message LoadEdidReply {
   // Error code indicating the success or failure of the operation.
   // 0 indicates success, while other values represent specific errors.
   int64 err_code = 1;

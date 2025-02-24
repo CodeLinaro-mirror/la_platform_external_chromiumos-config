@@ -37713,6 +37713,51 @@
               "name": "_error_msg"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "edid",
+              "label": "LABEL_OPTIONAL",
+              "name": "edid",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "LoadEdidRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "LoadEdidReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/lab/api/passport/usb_tester_service.proto",
@@ -37782,6 +37827,12 @@
               "name": "SetActivePort",
               "options": {},
               "outputType": ".chromiumos.test.lab.api.passport.SetActivePortReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.LoadEdidRequest",
+              "name": "LoadEdid",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.LoadEdidReply"
             }
           ],
           "name": "UsbTesterService"
