@@ -256,6 +256,16 @@ _BL_KEYBOARD = hw_topo.create_keyboard(
     mcu_type = hw_topo.kb_mcu_type.MCU_PRISM,
 )
 
+_KEYBOARD_WITH_LAYOUT = hw_topo.create_keyboard(
+    backlight = True,
+    pwr_btn_present = True,
+    kb_type = hw_topo.kb_type.INTERNAL,
+    numpad_present = True,
+    bottom_left_layout = hw_topo.kb_bottom_left_layout.BOTTOM_LEFT_3_KEYS,
+    bottom_right_layout = hw_topo.kb_bottom_right_layout.BOTTOM_RIGHT_2_KEYS,
+    numeric_pad_layout = hw_topo.kb_numeric_pad_layout.NUMERIC_PAD_4_COLUMN,
+)
+
 _KEYBOARD = hw_topo.create_keyboard(
     backlight = False,
     pwr_btn_present = False,
@@ -486,6 +496,8 @@ _VOLUME_BUTTON = hw_topo.create_volume_button(
     edge = hw_topo.edge.RIGHT,
     position = 0.75,
 )
+
+_SC_DISK_LAYOUT = sc.create_disk_layout(default_key_stateful = True)
 
 _SC_FIRMWARE_INFO = sc.create_fw_info(
     has_alt_fw = True,
@@ -982,8 +994,17 @@ _SC_WIFI7_INTEL = sc.create_intel_wifi(
         enablement_11be_countries = sc.create_intel_dsm_enablement_11be_countries(),
         energy_detection_threshold = sc.create_intel_dsm_energy_detection_threshold(),
     ),
-    bt_sar = sc.create_intel_bt_sar(revision = 1),
+    bt_sar = sc.create_intel_bt_sar(revision = 2),
     wbem = sc.create_intel_wbem(revision = 0),
+    bpag = sc.create_intel_bpag(revision = 2),
+    bbfb = sc.create_intel_bbfb(revision = 1),
+    bdcm = sc.create_intel_bdcm(revision = 1),
+    bbsm = sc.create_intel_bbsm(revision = 1),
+    bucs = sc.create_intel_bucs(revision = 1),
+    bdmm = sc.create_intel_bdmm(revision = 1),
+    ebrd = sc.create_intel_ebrd(revision = 1),
+    wpfc = sc.create_intel_wpfc(revision = 0),
+    dsbr = sc.create_intel_dsbr(revision = 0),
 )
 _TOUCH = hw_topo.create_touch(
     "TOUCH",
@@ -1070,6 +1091,10 @@ _TWO_FAN = hw_topo.create_fan(
     id = "FAN",
     description = "Fan info for two fans",
     fan_count = 2,
+)
+
+_EC_LIMITED = hw_topo.create_ec(
+    max_sensor_odr_mhz = 50000,
 )
 
 def create_hardware_topology(
@@ -1269,7 +1294,7 @@ design.append_configs(
         ),
         microphone_mute_switch = _MICROPHONE_MUTE_SWITCH,
         sensor = _SENSOR_WITH_LIGHT,
-        keyboard = _BL_KEYBOARD,
+        keyboard = _KEYBOARD_WITH_LAYOUT,
         battery = _BATTERY,
     ),
     firmware = sc.create_fw_payloads_by_names(
@@ -1311,6 +1336,7 @@ design.append_configs(
         fingerprint = _FINGERPRINT,
         form_factor = _FORM_FACTOR_CONVERTIBLE,
         cellular_board = _LTE_BOARD,
+        ec = _EC_LIMITED,
         proximity_sensor = hw_topo.create_proximity_sensor(
             "PROXIMITY_SENSOR",
             "Default proximity_sensor",
@@ -1469,6 +1495,7 @@ design.append_configs(
         detachable_base = _I2C_DETACHABLE_BASE,
     ),
     bluetooth = _SC_BLUETOOTH,
+    disk_layout = _SC_DISK_LAYOUT,
     firmware = sc.create_fw_payloads_by_names(
         "Fake",
         "Fake_EC",

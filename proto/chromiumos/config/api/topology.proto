@@ -373,6 +373,7 @@ message HardwareFeatures {
       // 21 is free to be used
       AUDIO_CODEC_ALC722 = 22;
       AUDIO_CODEC_ALC721 = 23;
+      AUDIO_CODEC_ALC3204 = 24;
     }
 
     enum Amplifier {
@@ -399,6 +400,7 @@ message HardwareFeatures {
       TAS2563 = 21;
       AMPLIFIER_ALC722 = 22;
       AMPLIFIER_ALC721 = 23;
+      AMPLIFIER_ALC3204 = 24;
     }
 
     enum AudioConfigStructure {
@@ -651,6 +653,31 @@ message HardwareFeatures {
     // The default keyboard backlight percentage in the
     // absence of an ambient light sensor controlling the keyboard backlight.
     double no_als_brightness = 8;
+
+    // The number of keys on the left side of bottom row.
+    KeyboardBottomLeftLayout bottom_left_layout = 9;
+    enum KeyboardBottomLeftLayout {
+      KEYBOARD_BOTTOM_LEFT_LAYOUT_UNKNOWN = 0;
+      KEYBOARD_BOTTOM_LEFT_3_KEYS = 1;
+      KEYBOARD_BOTTOM_LEFT_4_KEYS = 2;
+    }
+
+    // The number of keys on the right side of bottom row.
+    KeyboardBottomRightLayout bottom_right_layout = 10;
+    enum KeyboardBottomRightLayout {
+      KEYBOARD_BOTTOM_RIGHT_LAYOUT_UNKNOWN = 0;
+      KEYBOARD_BOTTOM_RIGHT_2_KEYS = 1;
+      KEYBOARD_BOTTOM_RIGHT_3_KEYS = 2;
+      KEYBOARD_BOTTOM_RIGHT_4_KEYS = 3;
+    }
+
+    // The number of columns of numeric pad.
+    NumericPadLayout numeric_pad_layout = 11;
+    enum NumericPadLayout {
+        NUMERIC_PAD_LAYOUT_UNKNOWN = 0;
+        NUMERIC_PAD_3_COLUMN = 1;
+        NUMERIC_PAD_4_COLUMN = 2;
+    }
   }
 
   // Memory properties of system
@@ -843,6 +870,19 @@ message HardwareFeatures {
     // The extracted EC build config options
     // E.g. CONFIG_DEBUG_ASSERT, CONFIG_PLATFORM_EC_BATTERY
     map<string, Present> build_config = 11;
+
+    // Maximal ODR (Online data rate) of the MEMS sensors
+    // (accelerometer/gyroscope). Usually EC can handle ODR up to ~200Hz. On
+    // some EC, we need to reduce to 100Hz otherwise the sensor task is not
+    // scheduled fast enough. It can lead to failing the CTS tests or worse EC
+    // crashes (watchdog timer) if the idle stack is never scheduled. Normally,
+    // the maximal ODR is set in the firmware, we find the right maximal ODR
+    // during bring up. However, if we have to reduce the ODR between firmware
+    // qual we can do it here: 0 (default) means the EC default is used by
+    // iioservice to set the maximal sensor frequency. If |max_sensor_odr_mhz|
+    // is greater than 0, iioservice will never set a maximal frequency above
+    // it.
+    google.protobuf.UInt32Value max_sensor_odr_mhz = 12;
   }
   EmbeddedController embedded_controller = 24;
 
@@ -881,6 +921,10 @@ message HardwareFeatures {
 
     // Whether the TPM has NVRAM space used for enterprise rollback.
     Present enterprise_rollback_space = 5;
+
+    // Whether GSC ADID is valid. This is true if there's a valid
+    // attested_device_id in the RO_VPD that matches the sn bits stored in GSC.
+    Present valid_adid = 6;
   }
   TrustedPlatformModule trusted_platform_module = 25;
 

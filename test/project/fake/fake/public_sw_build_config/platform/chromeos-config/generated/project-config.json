@@ -150,6 +150,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -323,6 +326,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -495,6 +501,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -675,6 +684,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -848,6 +860,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -1020,6 +1035,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -1194,6 +1212,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -1367,6 +1388,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -1539,6 +1563,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -1848,6 +1875,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -2150,6 +2180,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -2463,6 +2496,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -2765,6 +2801,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -3074,6 +3113,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -3382,6 +3424,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -3662,6 +3707,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -3845,6 +3893,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -4017,6 +4068,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
@@ -4191,6 +4245,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",
           "files": [
@@ -4363,6 +4420,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/dptf.dv",

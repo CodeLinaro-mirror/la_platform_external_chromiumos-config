@@ -209,28 +209,28 @@ message WifiConfig {
     Average wtas_table = 4;
 
     // Device Specific methods used by intel wifi driver.
-    message DSM {
-      // Function 1
+    message Dsm {
+      // Function 1.
       int64 disable_active_sdr_channels = 2;
-      // Function 2
+      // Function 2.
       int64 support_indonesia_5g_band = 3;
-      // Function 3
+      // Function 3.
       int64 support_ultra_high_band = 4;
-      // Function 4
+      // Function 4.
       int64 regulatory_configurations = 5;
-      // Function 5
+      // Function 5.
       int64 uart_configurations = 6;
-      // Function 6
+      // Function 6.
       int64 enablement_11ax = 7;
-      // Function 7
+      // Function 7.
       int64 unii_4 = 8;
 
-      // For different regions
+      // For different regions.
       message Enablement11beCountries {
           bool china = 1;
           bool south_korea = 2;
       }
-      // Function 12
+      // Function 12.
       Enablement11beCountries enablement_11be_countries = 9;
 
       message EnergyDetectionThreshold {
@@ -249,53 +249,207 @@ message WifiConfig {
           bool uhb_7g0 = 13;
       }
 
-      // Function 10
+      // Function 10.
       EnergyDetectionThreshold energy_detection_threshold = 10;
 
-      message RFIMitigation {
+      message RfiMitigation {
           bool dlvr = 1;
           bool ddr = 2;
       }
 
-      RFIMitigation rfi_mitigation = 11;
+      RfiMitigation rfi_mitigation = 11;
     }
-    DSM dsm = 5;
+    Dsm dsm = 5;
 
-    message BluetoothSAR {
-      // Bluetooth SAR table
+    message BluetoothSarPowerTable {
+        uint32 restriction_for_2g4 = 1;
+        uint32 restriction_for_5g2 = 2;
+        uint32 restriction_for_5g8_5g9 = 3;
+        uint32 restriction_for_6g1 = 4;
+        uint32 restriction_for_6g3 = 5;
+    }
+
+    message BluetoothSar {
+      // Bluetooth SAR table.
       uint32 revision = 1;
-      // Increased Power Mode Limitation
+      // Increased Power Mode Limitation.
       uint32 increased_power_mode_limitation = 2;
-      // SAR Power Restriction for the Lower Band (LB)
+      // SAR Power Restriction for the Lower Band (LB).
       uint32 sar_lb_power_restriction = 3;
-      // SAR power restriction for BR Modulation
+      // SAR power restriction for BR Modulation.
       uint32 br_modulation = 4;
-      // SAR power restriction for EDR2 Modulation
+      // SAR power restriction for EDR2 Modulation.
       uint32 edr2_modulation = 5;
-      // SAR power restriction for EDR3 Modulation
+      // SAR power restriction for EDR3 Modulation.
       uint32 edr3_modulation = 6;
-      // SAR power restriction for LE Modulation
+      // SAR power restriction for LE Modulation.
       uint32 le_modulation = 7;
-      // SAR power restriction for LE 2 MHz Modulation
+      // SAR power restriction for LE 2 MHz Modulation.
       uint32 le2_mhz_modulation = 8;
-      // SAR power restriction for LE LR Modulation
+      // SAR power restriction for LE LR Modulation.
       uint32 le_lr_modulation = 9;
-    }
-    BluetoothSAR bt_sar = 6;
 
-    message WBEM {
-      // Wi-Fi 320MHz Bandwidth Enablement table
+      BluetoothSarPowerTable set_1_chain_a = 10;
+      BluetoothSarPowerTable set_1_chain_b = 11;
+    }
+    BluetoothSar bt_sar = 6;
+
+    message Wbem {
+      // Wi-Fi 320MHz Bandwidth Enablement table.
       uint32 revision = 1;
 
-      // For different regions
+      // For different regions.
       message EnablementWbemCountries {
           bool japan = 1;
           bool south_korea = 2;
       }
-      // Enablement of Wi-Fi 320MHz per MCC
+      // Enablement of Wi-Fi 320MHz per MCC.
       EnablementWbemCountries enablement_wbem_countries = 2;
     }
-    WBEM wbem = 7;
+    Wbem wbem = 7;
+
+    message BluetoothPpag {
+      // Bluetooth PPAG table.
+      uint32 revision = 1;
+
+      // For different regions.
+      message EnablementBpagCountries {
+          bool eu = 1;
+          bool china = 2;
+          bool eu_uhb = 3;
+          bool fcc_uhb = 4;
+          bool ised_uhb = 5;
+      }
+
+      EnablementBpagCountries enablement_bpag_countries = 2;
+    }
+    BluetoothPpag bpag = 8;
+
+    message Bbfb {
+      // Bluetooth BBFB table.
+      uint32 revision = 1;
+      // Bluetooth ByPassFilter.
+      bool enable_quad_filter_bypass = 2;
+    }
+    Bbfb bbfb = 9;
+
+    message Bdcm {
+      // Bluetooth BDCM table.
+      uint32 revision = 1;
+
+      // Dual Chain Mode.
+      message BdcmDualChainMode {
+          bool chain_a_and_chain_b = 1;
+      }
+
+      BdcmDualChainMode bdcm_dual_chain_mode = 2;
+    }
+    Bdcm bdcm = 10;
+
+    message Bbsm {
+      // Bluetooth BBSM table.
+      uint32 revision = 1;
+
+      // Bluetooth Bands Selection.
+      message BbsmBandsSelection {
+          bool band_2_4_ghz_disable = 1;
+          bool band_5_2_ghz_disable = 2;
+          bool band_5_8_ghz_disable = 3;
+          bool band_6_2_ghz_disable = 4;
+      }
+
+      BbsmBandsSelection bands_selection = 2;
+    }
+    Bbsm bbsm = 11;
+
+    message Bucs {
+      // Bluetooth BUCS table.
+      uint32 revision = 1;
+
+      // Bluetooth Bands Selection.
+      message BucsUhbCountrySelection {
+          bool force_disable_bt_in_all_other_countries = 1;
+          bool allow_6_ghz_in_usa = 2;
+          bool allow_6_ghz_in_rest_of_the_world = 3;
+          bool allow_6_ghz_in_eu = 4;
+          bool allow_6_ghz_in_south_korea = 5;
+          bool allow_6_ghz_in_brazil = 6;
+          bool allow_6_ghz_in_chile = 7;
+          bool allow_6_ghz_in_japan = 8;
+          bool allow_6_ghz_in_canada = 9;
+          bool allow_6_ghz_in_morocco = 10;
+          bool allow_6_ghz_in_mongolia = 11;
+          bool allow_6_ghz_in_malaysia = 12;
+          bool allow_6_ghz_in_saudi_arabia = 13;
+          bool allow_6_ghz_in_mexico = 14;
+          bool allow_6_ghz_in_nigeria = 15;
+          bool allow_6_ghz_in_thailand = 16;
+          bool allow_6_ghz_in_singapore = 17;
+          bool allow_6_ghz_in_taiwan = 18;
+          bool allow_6_ghz_in_south_africa = 19;
+      }
+
+      BucsUhbCountrySelection uhb_country_selection = 2;
+    }
+    Bucs bucs = 12;
+
+    message Bdmm {
+      // Bluetooth BDMM table.
+      uint32 revision = 1;
+
+      // Bluetooth Dual Mac Mode.
+      bool dual_mac_enable = 2;
+    }
+    Bdmm bdmm = 13;
+
+    message Ebrd {
+      // Bluetooth EBRD table.
+      uint32 revision = 1;
+
+      bool dynamic_sar_enable = 2;
+
+      uint32 number_of_optional_sar = 3;
+
+      BluetoothSarPowerTable set_2_chain_a = 4;
+      BluetoothSarPowerTable set_2_chain_b = 5;
+
+      BluetoothSarPowerTable set_3_chain_a = 6;
+      BluetoothSarPowerTable set_3_chain_b = 7;
+
+      BluetoothSarPowerTable set_4_chain_a = 8;
+      BluetoothSarPowerTable set_4_chain_b = 9;
+    }
+    Ebrd ebrd = 14;
+
+    message Wpfc {
+      // Wi-Fi PHY Filter Configuration Table.
+      uint32 revision = 1;
+
+      // Chain A Filter Platform Configuration.
+      uint32 filter_cfg_chain_a = 2;
+
+      // Chain B Filter Platform Configuration.
+      uint32 filter_cfg_chain_b = 3;
+
+      // Chain C Filter Platform Configuration.
+      uint32 filter_cfg_chain_c = 4;
+
+      // Chain D Filter Platform Configuration.
+      uint32 filter_cfg_chain_d = 5;
+    }
+    Wpfc wpfc = 15;
+
+    message Dsbr {
+      // Drive Strength BRI Rsp Table.
+      uint32 revision = 1;
+
+      // Override device FW default values.
+      bool override = 2;
+
+      // Bluetooth Radio Interface.
+      uint32 bluetooth_radio_resistor_ohm = 3;
+    }
+    Dsbr dsbr = 16;
   }
 
   // An empty message indicating that Intel wifi is used, but the config values

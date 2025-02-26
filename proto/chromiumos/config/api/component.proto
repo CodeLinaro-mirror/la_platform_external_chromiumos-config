@@ -23,7 +23,7 @@ message Component {
 
   // Additional optional label to provide alternative value for eg:
   // HWID string rather than relying on id.value directly.
-  string hwid_type  = 25;
+  string hwid_type = 25;
   string hwid_label = 20;
 
   // IDs used to join against AVL database
@@ -71,8 +71,8 @@ message Component {
   // Defines common component version identifiers based on interface standards.
   message Interface {
     message I2C {
-        string product = 1;
-        string vendor = 2;
+      string product = 1;
+      string vendor = 2;
     }
 
     message Usb {
@@ -240,8 +240,8 @@ message Component {
       }
 
       oneof ac_brightness {
-        // The default display backlight percentage on AC power in the absence of
-        // an ambient light sensor controlling the display backlight.
+        // The default display backlight percentage on AC power in the absence
+        // of an ambient light sensor controlling the display backlight.
         double no_als_ac_brightness = 9;
 
         // The default display backlight nits on AC power in the absence of
@@ -258,9 +258,7 @@ message Component {
 
       // The radius of each corner of this display (in physical pixels).
       message RoundedCorners {
-        message RoundedCorner {
-          int32 radius_px = 1;
-        }
+        message RoundedCorner { int32 radius_px = 1; }
         RoundedCorner top_left = 1;
         RoundedCorner top_right = 2;
         RoundedCorner bottom_left = 3;
@@ -332,9 +330,7 @@ message Component {
     repeated Feature features = 2;
   }
 
-  message AudioCodec {
-    string name = 1;
-  }
+  message AudioCodec { string name = 1; }
 
   message Battery {
     enum Technology {
@@ -346,13 +342,9 @@ message Component {
     Technology technology = 2;
   }
 
-  message FlashChip {
-    string part_number = 1;
-  }
+  message FlashChip { string part_number = 1; }
 
-  message EmbeddedController {
-    string part_number = 1;
-  }
+  message EmbeddedController { string part_number = 1; }
 
   message Storage {
     enum StorageType {
@@ -374,7 +366,7 @@ message Component {
     uint32 size_gb = 8;
 
     oneof interface {
-        Interface.Pci pci = 9;
+      Interface.Pci pci = 9;
     }
   }
 
@@ -387,19 +379,18 @@ message Component {
 
   message Stylus {
     oneof interface {
-        Interface.Usb usb = 1;
-        Interface.I2C i2c = 2;
+      Interface.Usb usb = 1;
+      Interface.I2C i2c = 2;
     }
   }
 
-  // Defines a peripheral IC that converts DP signal to another format like HDMI.
-  message DisplayPortConverter {
-    string name = 1;
-  }
+  // Defines a peripheral IC that converts DP signal to another format like
+  // HDMI.
+  message DisplayPortConverter { string name = 1; }
 
   message Cellular {
     oneof interface {
-        Interface.Usb usb = 1;
+      Interface.Usb usb = 1;
     }
   }
 

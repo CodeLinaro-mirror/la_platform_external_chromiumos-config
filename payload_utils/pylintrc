@@ -1,4 +1,7 @@
-[MASTER]
+[MAIN]
+
+load-plugins=
+    pylint.extensions.no_self_use,
 
 ignore=
     chromiumos,
@@ -20,10 +23,19 @@ good-names=
     fp,
 
 [FORMAT]
+
 indent-string="  "
+
+[REPORTS]
+
+score=no
+
+[MESSAGES CONTROL]
 
 disable=
     too-few-public-methods,
     no-member,
     fixme,
+    consider-using-f-string,
     duplicate-code,
+    possibly-used-before-assignment,

@@ -28,6 +28,9 @@ service CTPv2Service {
 service GenericFilterService {
   rpc Execute(InternalTestplan)
       returns (InternalTestplan);
+
+  rpc ExecuteStream(stream InternalTestplanFragment)
+      returns (stream InternalTestplanFragment);
 }
 
 // CTPv2Request ...
@@ -51,7 +54,14 @@ message CTPv2Request {
 // filters to execute.
 message CTPRequest {
   SuiteRequest suite_request = 1;
+  // will be deprecated when #11 field is in use 100%
   repeated ScheduleTargets schedule_targets = 2;
+  // Grouped targets allow setting and/or relationship between targets.
+  // inner i.e. {a, b} is OR relationship: a or b
+  // outer i.e. {a}, {b} is AND relationship: a and b
+  // [{shedTarget1, schedTarget2}, {shedTarget3, schedTarget4}]
+  // --> (shedTarget1 OR schedTarget2) AND (shedTarget3 OR schedTarget4)
+  repeated GroupedScheduleTargets grouped_schedule_targets = 11;
   string pool = 7;
 
   repeated CTPFilter karbon_filters = 3;
@@ -112,11 +122,18 @@ message SuiteRequest {
   // The total number of retries that should be done to failed test(s).
   // By default it will be 0 which means no retry.
   int64 retry_count = 8;
+  // tags gives us a location to store decorations from the v1 proto without
+  // requiring a proto addition each time.
+  repeated string tags = 9;
 }
 
 message KeyValue {
   string key = 1;
   string value = 2;
+}
+
+message GroupedScheduleTargets {
+  repeated ScheduleTargets grouped_targets = 1;
 }
 
 // ScheduleTargets represents groups of targets for CTPv2.
@@ -209,6 +226,10 @@ message InternalTestplan {
   SuiteInfo suite_info = 2;
 }
 
+message InternalTestplanFragment {
+  bytes fragment = 1;
+}
+
 // Information to be populated by the filters.
 message CTPTestCase {
   string name = 1;
@@ -228,7 +249,7 @@ message SuiteInfo {
 }
 
 // Everything by CTPv2, less provision_info.
-// next value = 9;
+// next value = 10;
 message SuiteMetadata {
   repeated TargetRequirements target_requirements = 1[deprecated = true];
   repeated ScheduleTargetRequirements schedule_target_requirements = 4[deprecated = true];
@@ -242,7 +263,9 @@ message SuiteMetadata {
   //
   // Note: Applied updates in order given.
   repeated UserDefinedDynamicUpdate dynamic_updates = 7;
+  // will be deprecated when field #9 is being used in all filters
   repeated SchedulingUnit scheduling_units = 8;
+  repeated SchedulingUnitOptions scheduling_unit_options = 9;
 }
 
 // ScheduleTargets represents groups of target requirements for CTPv2.
@@ -269,6 +292,7 @@ message SchedulingUnitOptions {
     ONEOF = 4;
   }
  State state = 6;
+ repeated PublishKey publish_keys = 7;
 }
 
 message HWRequirements {
@@ -337,3 +361,8 @@ message CTPv2Response {
 }
 
 message CrosTestRunnerRequest {}
+
+message PublishKey {
+  string subject = 1;
+  map<string, string> key_values = 2;
+}

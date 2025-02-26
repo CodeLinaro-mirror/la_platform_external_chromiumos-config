@@ -12,6 +12,8 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.test.artifact import test_result_pb2 as chromiumos_dot_test_dot_artifact_dot_test__result__pb2
+from chromiumos.test.api import ctp2_pb2 as chromiumos_dot_test_dot_api_dot_ctp2__pb2
+from chromiumos.test.api import firmware_provision_pb2 as chromiumos_dot_test_dot_api_dot_firmware__provision__pb2
 from chromiumos.test.api import post_test_service_pb2 as chromiumos_dot_test_dot_api_dot_post__test__service__pb2
 
 
@@ -21,9 +23,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z6go.chromium.org/chromiumos/config/go/test/api/metadata',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n7chromiumos/test/api/metadata/publish_rdb_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\x1a+chromiumos/test/api/post_test_service.proto\"\xfc\x03\n\x12PublishRdbMetadata\x12\x1d\n\x15\x63urrent_invocation_id\x18\x01 \x01(\t\x12\x39\n\x0btest_result\x18\x02 \x01(\x0b\x32$.chromiumos.test.artifact.TestResult\x12\x19\n\rstainless_url\x18\x03 \x01(\tB\x02\x18\x01\x12\x14\n\x0ctesthaus_url\x18\x04 \x01(\t\x12I\n\x07sources\x18\x05 \x01(\x0b\x32\x38.chromiumos.test.api.metadata.PublishRdbMetadata.Sources\x12W\n\x0c\x62\x61se_variant\x18\x06 \x03(\x0b\x32\x41.chromiumos.test.api.metadata.PublishRdbMetadata.BaseVariantEntry\x12J\n\x16post_process_responses\x18\x07 \x01(\x0b\x32*.chromiumos.test.api.RunActivitiesResponse\x1a\x37\n\x07Sources\x12\x0f\n\x07gs_path\x18\x01 \x01(\t\x12\x1b\n\x13is_deployment_dirty\x18\x02 \x01(\x08\x1a\x32\n\x10\x42\x61seVariantEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x38Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
+  serialized_pb=b'\n7chromiumos/test/api/metadata/publish_rdb_metadata.proto\x12\x1c\x63hromiumos.test.api.metadata\x1a*chromiumos/test/artifact/test_result.proto\x1a\x1e\x63hromiumos/test/api/ctp2.proto\x1a,chromiumos/test/api/firmware_provision.proto\x1a+chromiumos/test/api/post_test_service.proto\"\x8d\x06\n\x12PublishRdbMetadata\x12\x1d\n\x15\x63urrent_invocation_id\x18\x01 \x01(\t\x12\x39\n\x0btest_result\x18\x02 \x01(\x0b\x32$.chromiumos.test.artifact.TestResult\x12\x19\n\rstainless_url\x18\x03 \x01(\tB\x02\x18\x01\x12\x14\n\x0ctesthaus_url\x18\x04 \x01(\t\x12I\n\x07sources\x18\x05 \x01(\x0b\x32\x38.chromiumos.test.api.metadata.PublishRdbMetadata.Sources\x12W\n\x0c\x62\x61se_variant\x18\x06 \x03(\x0b\x32\x41.chromiumos.test.api.metadata.PublishRdbMetadata.BaseVariantEntry\x12J\n\x16post_process_responses\x18\x07 \x01(\x0b\x32*.chromiumos.test.api.RunActivitiesResponse\x12S\n\x1b\x66irmware_provision_response\x18\x08 \x01(\x0b\x32..chromiumos.test.api.FirmwareProvisionResponse\x12S\n\x08\x65qc_info\x18\t \x03(\x0b\x32=.chromiumos.test.api.metadata.PublishRdbMetadata.EqcInfoEntryB\x02\x18\x01\x12\x35\n\x0cpublish_keys\x18\n \x03(\x0b\x32\x1f.chromiumos.test.api.PublishKey\x1a\x37\n\x07Sources\x12\x0f\n\x07gs_path\x18\x01 \x01(\t\x12\x1b\n\x13is_deployment_dirty\x18\x02 \x01(\x08\x1a\x32\n\x10\x42\x61seVariantEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a.\n\x0c\x45qcInfoEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x38Z6go.chromium.org/chromiumos/config/go/test/api/metadatab\x06proto3'
   ,
-  dependencies=[chromiumos_dot_test_dot_artifact_dot_test__result__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_post__test__service__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_test_dot_artifact_dot_test__result__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_ctp2__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_firmware__provision__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_post__test__service__pb2.DESCRIPTOR,])
 
 
 
@@ -62,8 +64,8 @@ _PUBLISHRDBMETADATA_SOURCES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=580,
-  serialized_end=635,
+  serialized_start=883,
+  serialized_end=938,
 )
 
 _PUBLISHRDBMETADATA_BASEVARIANTENTRY = _descriptor.Descriptor(
@@ -100,8 +102,46 @@ _PUBLISHRDBMETADATA_BASEVARIANTENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=637,
-  serialized_end=687,
+  serialized_start=940,
+  serialized_end=990,
+)
+
+_PUBLISHRDBMETADATA_EQCINFOENTRY = _descriptor.Descriptor(
+  name='EqcInfoEntry',
+  full_name='chromiumos.test.api.metadata.PublishRdbMetadata.EqcInfoEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='chromiumos.test.api.metadata.PublishRdbMetadata.EqcInfoEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='chromiumos.test.api.metadata.PublishRdbMetadata.EqcInfoEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=992,
+  serialized_end=1038,
 )
 
 _PUBLISHRDBMETADATA = _descriptor.Descriptor(
@@ -161,10 +201,31 @@ _PUBLISHRDBMETADATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='firmware_provision_response', full_name='chromiumos.test.api.metadata.PublishRdbMetadata.firmware_provision_response', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='eqc_info', full_name='chromiumos.test.api.metadata.PublishRdbMetadata.eqc_info', index=8,
+      number=9, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='publish_keys', full_name='chromiumos.test.api.metadata.PublishRdbMetadata.publish_keys', index=9,
+      number=10, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[_PUBLISHRDBMETADATA_SOURCES, _PUBLISHRDBMETADATA_BASEVARIANTENTRY, ],
+  nested_types=[_PUBLISHRDBMETADATA_SOURCES, _PUBLISHRDBMETADATA_BASEVARIANTENTRY, _PUBLISHRDBMETADATA_EQCINFOENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -173,16 +234,20 @@ _PUBLISHRDBMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=179,
-  serialized_end=687,
+  serialized_start=257,
+  serialized_end=1038,
 )
 
 _PUBLISHRDBMETADATA_SOURCES.containing_type = _PUBLISHRDBMETADATA
 _PUBLISHRDBMETADATA_BASEVARIANTENTRY.containing_type = _PUBLISHRDBMETADATA
+_PUBLISHRDBMETADATA_EQCINFOENTRY.containing_type = _PUBLISHRDBMETADATA
 _PUBLISHRDBMETADATA.fields_by_name['test_result'].message_type = chromiumos_dot_test_dot_artifact_dot_test__result__pb2._TESTRESULT
 _PUBLISHRDBMETADATA.fields_by_name['sources'].message_type = _PUBLISHRDBMETADATA_SOURCES
 _PUBLISHRDBMETADATA.fields_by_name['base_variant'].message_type = _PUBLISHRDBMETADATA_BASEVARIANTENTRY
 _PUBLISHRDBMETADATA.fields_by_name['post_process_responses'].message_type = chromiumos_dot_test_dot_api_dot_post__test__service__pb2._RUNACTIVITIESRESPONSE
+_PUBLISHRDBMETADATA.fields_by_name['firmware_provision_response'].message_type = chromiumos_dot_test_dot_api_dot_firmware__provision__pb2._FIRMWAREPROVISIONRESPONSE
+_PUBLISHRDBMETADATA.fields_by_name['eqc_info'].message_type = _PUBLISHRDBMETADATA_EQCINFOENTRY
+_PUBLISHRDBMETADATA.fields_by_name['publish_keys'].message_type = chromiumos_dot_test_dot_api_dot_ctp2__pb2._PUBLISHKEY
 DESCRIPTOR.message_types_by_name['PublishRdbMetadata'] = _PUBLISHRDBMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -201,6 +266,13 @@ PublishRdbMetadata = _reflection.GeneratedProtocolMessageType('PublishRdbMetadat
     # @@protoc_insertion_point(class_scope:chromiumos.test.api.metadata.PublishRdbMetadata.BaseVariantEntry)
     })
   ,
+
+  'EqcInfoEntry' : _reflection.GeneratedProtocolMessageType('EqcInfoEntry', (_message.Message,), {
+    'DESCRIPTOR' : _PUBLISHRDBMETADATA_EQCINFOENTRY,
+    '__module__' : 'chromiumos.test.api.metadata.publish_rdb_metadata_pb2'
+    # @@protoc_insertion_point(class_scope:chromiumos.test.api.metadata.PublishRdbMetadata.EqcInfoEntry)
+    })
+  ,
   'DESCRIPTOR' : _PUBLISHRDBMETADATA,
   '__module__' : 'chromiumos.test.api.metadata.publish_rdb_metadata_pb2'
   # @@protoc_insertion_point(class_scope:chromiumos.test.api.metadata.PublishRdbMetadata)
@@ -208,9 +280,12 @@ PublishRdbMetadata = _reflection.GeneratedProtocolMessageType('PublishRdbMetadat
 _sym_db.RegisterMessage(PublishRdbMetadata)
 _sym_db.RegisterMessage(PublishRdbMetadata.Sources)
 _sym_db.RegisterMessage(PublishRdbMetadata.BaseVariantEntry)
+_sym_db.RegisterMessage(PublishRdbMetadata.EqcInfoEntry)
 
 
 DESCRIPTOR._options = None
 _PUBLISHRDBMETADATA_BASEVARIANTENTRY._options = None
+_PUBLISHRDBMETADATA_EQCINFOENTRY._options = None
 _PUBLISHRDBMETADATA.fields_by_name['stainless_url']._options = None
+_PUBLISHRDBMETADATA.fields_by_name['eqc_info']._options = None
 # @@protoc_insertion_point(module_scope)

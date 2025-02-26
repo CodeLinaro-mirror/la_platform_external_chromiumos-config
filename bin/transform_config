@@ -13,9 +13,6 @@ readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
 set -e
 
 source "${script_dir}/../setup_cipd.sh"
-source "${script_dir}/common.sh"
-
-create_venv
 
 readonly output_dir=$1
 
@@ -63,7 +60,8 @@ proto_converter(){
 
   # Call cros_conifg_proto_converter from chromeos-config.
   PYTHONPATH="${script_dir}/../../platform2/chromeos-config" \
-    python -m cros_config_host.cros_config_proto_converter \
+    vpython3 -vpython-spec "${script_dir}/../.vpython3" \
+    -m cros_config_host.cros_config_proto_converter \
     --output "${_output_dir}/project-config.json" \
     --program_config "${_program_config}" \
     --project_configs "${_project_config}"
@@ -97,5 +95,3 @@ config/payload_utils/factory_config_proto_converter.py \
   --output "${factory_gen_dir}/model_sku.json" \
   --program_config program/generated/config.jsonproto \
   --project_configs "${output_dir}/${private_config_path_rel}"
-
-deactivate

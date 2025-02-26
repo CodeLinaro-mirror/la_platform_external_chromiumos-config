@@ -9,9 +9,12 @@ package chromiumos.test.api.metadata;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
 
 import "chromiumos/test/artifact/test_result.proto";
+import "chromiumos/test/api/ctp2.proto";
+import "chromiumos/test/api/firmware_provision.proto";
 import "chromiumos/test/api/post_test_service.proto";
 
-// NEXT TAG: 8
+
+// NEXT TAG: 11
 message PublishRdbMetadata {
   // Current invocation id
   string current_invocation_id = 1;
@@ -58,4 +61,15 @@ message PublishRdbMetadata {
   // Post process responses capture the results returned from the post process
   // container which handles complex log artifacts parsing.
   chromiumos.test.api.RunActivitiesResponse post_process_responses = 7;
+
+  // Captures the response of the firmware provisioning.
+  chromiumos.test.api.FirmwareProvisionResponse firmware_provision_response = 8;
+
+  // Captures the 3D equivalence classes (EqC) information. The contents of the
+  // map should be aligned with the EqcInfo proto:
+  // https://source.chromium.org/chromium/infra/infra_superproject/+/main:infra/go/src/go.chromium.org/chromiumos/config/proto/chromiumos/test/artifact/test_result.proto;l=130-150
+  map<string, string> eqc_info = 9 [deprecated = true];
+
+  // Captures the publish keys in the scheduling unit options, e.g. 3D subject.
+  repeated chromiumos.test.api.PublishKey publish_keys = 10;
 }

@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
+#!/usr/bin/env vpython3
 # Copyright 2020 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -706,7 +704,7 @@ def merge_configs(options):
     merger.merge(config_bundle)
 
     if options.hwid_residual:
-      with open(options.hwid_residual, 'w') as outfile:
+      with open(options.hwid_residual, 'w', encoding='utf-8') as outfile:
         json.dump(merger.residual(), outfile, indent=2)
 
   return config_bundle
