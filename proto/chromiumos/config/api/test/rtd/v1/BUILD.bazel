@@ -1,0 +1,33 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "rtd_proto",
+    srcs = [
+        "invocation.proto",
+        "progress.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = ["//chromiumos/config/api/test/results/v2:results_proto"],
+)
+
+go_proto_library(
+    name = "rtd_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "go.chromium.org/chromiumos/config/go/api/test/rtd/v1",
+    proto = ":rtd_proto",
+    visibility = ["//visibility:public"],
+    deps = ["//chromiumos/config/api/test/results/v2:results"],
+)
+
+go_library(
+    name = "rtd",
+    embed = [":rtd_go_proto"],
+    importpath = "go.chromium.org/chromiumos/config/go/api/test/rtd/v1",
+    visibility = ["//visibility:public"],
+)

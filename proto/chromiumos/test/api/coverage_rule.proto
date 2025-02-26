@@ -1,0 +1,69 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "google/protobuf/wrappers.proto";
+import "chromiumos/test/api/dut_attribute.proto";
+import "chromiumos/test/api/test_suite.proto";
+
+// CoverageRule specifies a set of tests that must be executed, and criteria for
+// the DUTs to execute tests on.
+// Next ID: 7
+message CoverageRule {
+  // Optional human friendly name of the rule, e.g.
+  // "kernel:5.4_soc:geminilake_wifi:intel-5600".
+  string name = 1;
+
+  // Test suites that must be executed.
+  repeated TestSuite test_suites = 2;
+
+  // DutTargets to execute the tests on.
+  //   - At least one target must be specified.
+  //   - Additional targets will target compound scheduling units (for units
+  //     with multiple physical duts)
+  repeated DutTarget dut_targets = 4;
+
+  // Whether the rule is considered critical. For example, this value determines
+  // whether failures in this rule fail a CQ or postsubmit run. Note that the
+  // default is true.
+  google.protobuf.BoolValue critical = 5;
+
+  // If true, then run test suites in this rule via CFT workflow.
+  bool run_via_cft = 6;
+
+  // if enable_autotest_sharding is True, then autotest tests will be sharded
+  bool enable_autotest_sharding = 7;
+
+  // Graveyard
+  repeated DutCriterion dut_criteria = 3 [deprecated = true];
+}
+
+// Describes a CoverageRule and the Starlark file it was generated from. For
+// use as a schema for a BigQuery table (or any other storage that uses a proto
+// schema).
+//
+// Only intended for use in an analytic context, i.e. this shouldn't be used for
+// config or execution during the actual test planning process.
+//
+// Note that the host, project, and path fields are essentially exactly the same
+// as in the TestPlanStarlarkfile message; that message isn't used because the
+// TemplateParameters don't make sense in this context.
+message CoverageRuleBqRow {
+  // Gitiles hostname, e.g. "chromium.googlesource.com".
+  string host = 1;
+
+  // Repository name on the host, e.g. "chromium/src".
+  string project = 2;
+
+  // Absolute path within the repo to the Starlark file. Regexes are not
+  // allowed.
+  string path = 3;
+
+  CoverageRule coverage_rule = 4;
+}

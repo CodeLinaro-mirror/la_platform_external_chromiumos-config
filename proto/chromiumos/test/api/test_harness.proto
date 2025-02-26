@@ -1,0 +1,37 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// Defines a test execution framework that can execute test cases and report
+// results.
+// LINT.IfChange
+message TestHarness {
+  // Globally unique (for ChromeOS) identifier of a given test harness
+  oneof test_harness_type {
+    Manual manual = 1;
+    Tauto tauto = 2;
+    Tast tast = 3;
+    Gtest gtest = 4;
+    Mobly mobly = 5;
+    Crosier crosier = 6;
+    Tradefed tradefed = 7;
+  }
+
+  message Manual {}
+  message Tast {}
+  message Tauto {}
+  message Gtest {
+    // Location of the test binary on the DUT
+    string target_bin_location = 1;
+  }
+  message Mobly {}
+  message Crosier {}
+  message Tradefed {}
+}
+// LINT.ThenChange(//chromium/infra/infra_superproject/main/infra/go/src/infra/tools/result_adapter/util.go)

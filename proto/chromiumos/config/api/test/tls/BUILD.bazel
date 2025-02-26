@@ -1,0 +1,40 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "tls_proto",
+    srcs = [
+        "commontls.proto",
+        "wiring.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//chromiumos/config/api/test/tls/dependencies/longrunning:longrunning_proto",
+        "//chromiumos/config/api/test/xmlrpc:xmlrpc_proto",
+        "@com_google_protobuf//:empty_proto",
+    ],
+)
+
+go_proto_library(
+    name = "tls_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "go.chromium.org/chromiumos/config/go/api/test/tls",
+    proto = ":tls_proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//chromiumos/config/api/test/tls/dependencies/longrunning",
+        "//chromiumos/config/api/test/xmlrpc",
+    ],
+)
+
+go_library(
+    name = "tls",
+    embed = [":tls_go_proto"],
+    importpath = "go.chromium.org/chromiumos/config/go/api/test/tls",
+    visibility = ["//visibility:public"],
+)

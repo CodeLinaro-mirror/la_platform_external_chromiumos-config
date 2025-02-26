@@ -1,0 +1,86 @@
+// Copyright 2019 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.test.results.v2;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/results/v2;results";
+
+import "google/protobuf/struct.proto";
+
+// Result for a single invocation request.
+message Result {
+  // Enum entries *may* be added to this enum in the future.
+  enum State {
+    // No end state specified. MUST NOT be used.
+    STATE_UNSPECIFIED = 0;
+    // Test request succeeded. All was well.
+    SUCCEEDED = 1;
+    // Test request failed. See `error` for more information.
+    FAILED = 2;
+    // Test did not run because the Remote Test Driver decided to skip it.
+    //
+    // Common reasons a test may be skipped:
+    //
+    // * A runtime check by the Remote Test Driver concluded that the test is
+    //   not applicable to the targeted device(s). The Remote Test Driver SHOULD
+    //   include detailed reasons in `errors`.
+    SKIPPED = 3;
+  }
+  // Final state of the test execution.
+  //
+  // Error details MUST be available in `errors` if state != SUCCEEDED.
+  State state = 1;
+
+  message Error {
+    // Enum entries *may* be added in the future.
+    enum Source {
+      // No Source specified. SHOULD NOT be used.
+      //
+      // If source is unspecified, the Test Lab Environment SHOULD assume the
+      // source to be the Remote Test Driver.
+      SOURCE_UNSPECIFIED = 0;
+      // The test failed.
+      TEST = 1;
+      // There was an error in Remote Test Driver invocation.
+      REMOTE_TEST_DRIVER = 2;
+      // There was an error in a Test Lab Services API call.
+      TEST_LAB_SERVICES = 3;
+    }
+
+    // Provenance of the detected error.
+    Source source = 1;
+
+    // Enum entries *may* be added in the future.
+    enum Severity {
+      // No Severity set. SHOULD NOT be used.
+      SEVERITY_UNSPECIFIED = 0;
+      // Remote Test Server SHOULD validate that a Result contains a CRITICAL
+      // message iff state == FAILED.
+      CRITICAL = 1;
+      // MUST NOT, by itself, lead to a FAILED Result.state.
+      WARNING = 2;
+    }
+
+    // Severity of reported error.
+    Severity severity = 2;
+
+    // Machine parseable details about the error.
+    //
+    // Test Lab Environments and Remote Test Servers MUST NOT interpret the
+    // details.
+    //
+    // Remote Test Drivers SHOULD use uniform stable schema for `details` to
+    // enable robust analytics.
+    google.protobuf.Struct details = 3;
+  }
+
+  // errors MUST be set if state != SUCCEEDED.
+  //
+  // errors may be provided even if state == SUCCEEDED. Remote Test Drivers are
+  // encouraged to provide multiple observed errors in Result to aid end-user
+  // visibility of problems encountered.
+  repeated Error errors = 2;
+}

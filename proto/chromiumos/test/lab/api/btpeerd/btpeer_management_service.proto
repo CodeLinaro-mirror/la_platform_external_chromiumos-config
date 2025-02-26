@@ -1,0 +1,143 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api.btpeerd;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/btpeerd";
+
+import "google/protobuf/timestamp.proto";
+
+// BtpeerManagementService is the service run by go/btpeerd on btpeers for
+// managing the state of the device for testing and maintenance purposes.
+//
+// Note: This API is a work in progress and breaking changes are allowed until
+// btpeers with this service are deployed to the main lab pools.
+service BtpeerManagementService {
+  // DeviceInfo returns basic hardware and software information about the btpeer
+  // that is generally constant for this installation. Useful for logging.
+  rpc DeviceInfo(DeviceInfoRequest) returns (DeviceInfoResponse) {}
+
+  // DeviceStatus returns the current status of things this service manages in
+  // additional to general device health info. Useful for logging.
+  rpc DeviceStatus(DeviceStatusRequest) returns (DeviceStatusResponse) {}
+
+  // Reboot will return a successful response and then reboot the btpeer.
+  // When it reboots, the ssh connection will be severed. Allow up to 2 minutes
+  // for the device to be reachable again.
+  rpc Reboot(RebootRequest) returns (RebootResponse) {}
+
+  // GetActiveBluetoothStack sets the active bluetooth stack.
+  rpc GetActiveBluetoothStack(GetActiveBluetoothStackRequest) returns (GetActiveBluetoothStackResponse) {}
+
+  // SetActiveBluetoothStack sets the active bluetooth stack.
+  rpc SetActiveBluetoothStack(SetActiveBluetoothStackRequest) returns (SetActiveBluetoothStackResponse) {}
+
+  // GetActiveBluetoothStack sets the active bluetooth stack API.
+  rpc GetActiveBluetoothStackAPI(GetActiveBluetoothStackAPIRequest) returns (GetActiveBluetoothStackAPIResponse) {}
+
+  // SetActiveBluetoothStack sets the active bluetooth stack API.
+  rpc SetActiveBluetoothStackAPI(SetActiveBluetoothStackAPIRequest) returns (SetActiveBluetoothStackAPIResponse) {}
+}
+
+message DeviceInfoRequest {}
+message DeviceInfoResponse {
+  // The MAC address of ethernet port 0, used for the identification of the
+  // device in the lab.
+  string mac_eth0 = 1;
+
+  // The IPv4 address of the device in the lab network.
+  string ipv4_address = 2;
+
+  // The version of the operating system running btpeerd.
+  string os_version = 3;
+
+  // The version of the bluez package installed on the system.
+  string bluez_version = 4;
+
+  // The commit of the chameleon repository used to build the chameleond
+  // bundle installed on the device.
+  string chameleond_commit = 5;
+
+  // The commit of the btpeerd repository used to build this service.
+  string btpeerd_commit = 6;
+
+  // The model name of the device (e.g. "Raspberry Pi 4 Model B Rev 1.2").
+  string model = 7;
+}
+
+// SystemdUnitStatus includes a subset of systemd unit properties related to
+// service status.
+message SystemdUnitStatus {
+  string id = 1;
+  string active_state = 2;
+  google.protobuf.Timestamp state_change_timestamp = 3;
+}
+
+message DeviceStatusRequest {}
+message DeviceStatusResponse {
+  // Status of the btpeerd system service (the service running this API).
+  SystemdUnitStatus btpeerd_service_status = 1;
+
+  // Status of the chameleond system service.
+  SystemdUnitStatus chameleond_service_status = 2;
+
+  // Status of the bluetooth system service.
+  SystemdUnitStatus bluetooth_service_status = 3;
+
+  // Result of running 'uptime' on the device.
+  string uptime = 4;
+}
+
+message RebootRequest {}
+message RebootResponse {}
+
+// BluetoothStack refers to a bluetooth stack.
+enum BluetoothStack {
+  // Default value. Bluetooth stack not identified.
+  BLUETOOTH_STACK_UNKNOWN = 0;
+  // The bluez bluetooth stack.
+  BLUETOOTH_STACK_BLUEZ = 1;
+  // The floss bluetooth stack.
+  BLUETOOTH_STACK_FLOSS = 2;
+}
+
+// BluetoothStackAPI refers to an API for a bluetooth stack.
+enum BluetoothStackAPI {
+  // Default value. Bluetooth stack API not identified.
+  BLUETOOTH_STACK_API_UNKNOWN = 0;
+  // The chameleond stack API, used for bluez.
+  BLUETOOTH_STACK_API_CHAMELEOND = 1;
+  // The pandora bluetooth stack API, implemented for floss.
+  BLUETOOTH_STACK_API_PANDORA_FLOSS = 2;
+}
+
+message SetActiveBluetoothStackRequest {
+  BluetoothStack bluetooth_stack = 1;
+}
+message SetActiveBluetoothStackResponse {
+  // True iff the previous active stack was different than the requested stack.
+  bool stack_changed = 1;
+}
+
+message SetActiveBluetoothStackAPIRequest {
+  BluetoothStackAPI bluetooth_stack_api = 1;
+}
+message SetActiveBluetoothStackAPIResponse {
+  // True iff the previous active stack API was different than the requested stack API.
+  bool stack_api_changed = 1;
+  // The port the service for the stack API is listening on.
+  int32 service_port = 2;
+}
+
+message GetActiveBluetoothStackRequest {}
+message GetActiveBluetoothStackResponse {
+  BluetoothStack bluetooth_stack = 1;
+}
+
+message GetActiveBluetoothStackAPIRequest {}
+message GetActiveBluetoothStackAPIResponse {
+  BluetoothStackAPI bluetooth_stack_api = 1;
+}

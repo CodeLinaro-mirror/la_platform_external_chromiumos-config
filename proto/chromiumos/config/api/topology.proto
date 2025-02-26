@@ -1,0 +1,1182 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/component.proto";
+import "chromiumos/config/api/proximity_config.proto";
+import "chromiumos/config/api/resource_config.proto";
+import "chromiumos/config/api/wifi_config.proto";
+import "google/protobuf/wrappers.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Represents a specific hardware topology option for a hardware feature, e.g.
+// camera, microphone, gyroscope, daughter board connection. For example. one
+// camera topology would be represented by a unique instance of this Topology
+// message.
+//
+// All Topology instances are scoped to a particular Design.
+message Topology {
+  // Short, but meaningful string that represents the topology. Blank id is
+  // not valid. Id values are validated by Design repo. Ids are
+  // meaningful within a Design. Ids are scoped and unique within a
+  // particular hardware features for a Design. For example, it is valid to have
+  // a "NONE" id for both the camera and microphone hardware feature within the
+  // same Design.
+  string id = 1;
+
+  // The type of hardware feature this topology describes. This is used to
+  // ensure that the correct Topology values are used correctly within the
+  // HardwareTopology message
+  Type type = 2;
+  enum Type {
+    TYPE_UNKNOWN = 0;
+    SCREEN = 1;
+    FORM_FACTOR = 2;
+    AUDIO = 3;
+    STYLUS = 4;
+    KEYBOARD = 5;
+    THERMAL = 6;
+    CAMERA = 7;
+    ACCELEROMETER_GYROSCOPE_MAGNETOMETER = 8;
+    FINGERPRINT = 9;
+    PROXIMITY_SENSOR = 10;
+    DAUGHTER_BOARD = 11;
+    NON_VOLATILE_STORAGE = 12;
+    RAM = 13;  // deprecated
+    WIFI = 14;
+    CELLULAR_BOARD = 15;
+    SD_READER = 16;
+    MOTHERBOARD_USB = 17;
+    BLUETOOTH = 18;
+    BARRELJACK = 19;
+    POWER_BUTTON = 20;
+    VOLUME_BUTTON = 21;
+    EC = 22;
+    TOUCH = 23;
+    TPM = 24;
+    MICROPHONE_MUTE_SWITCH = 25;
+    BATTERY = 26;
+    HDMI = 27;
+    SOC = 28;
+    HPS = 29;
+    DP_CONVERTER = 30;
+    POE = 31;
+    POWER_SUPPLY = 32;
+    RECOVERY_INPUT = 33;
+    PRIVACY_SCREEN = 34;
+    DGPU = 35;
+    UWB = 36;
+    DETACHABLE_BASE = 37;
+    FAN = 38;
+  }
+
+  // Map of human readable descriptions in various languages. Maps language
+  // code, e.g. "EN" or "ZH", to description of topology. These descriptions can
+  // be displayed to factory operators to select the correct options that
+  // applies to the board they are assembling.
+  map<string, string> description = 3;
+
+  // Specify the subset of hardware features that this hardware topology
+  // provides
+  HardwareFeatures hardware_feature = 4;
+}
+
+// Defines a time duration that's targeted for easier reading/understanding
+// of program requirements (versus normalizing everything to millis).
+message Duration {
+  enum Type {
+    TYPE_UNKNOWN = 0;
+    MILLISECONDS = 1;
+    SECONDS = 2;
+    MINUTES = 3;
+    HOURS = 4;
+    DAYS = 5;
+  }
+  Type type = 1;
+  int32 value = 2;
+}
+
+// Each Topology message specifies what that topology means in a 1st class
+// queryable way. Each Topology will only the subset of hardware features that
+// are applicable to that value.
+// The DesignConfig layer will combine all of the Topology messages
+// HardwareFeature messages into a wholistic view of the hardware design
+// configuration.
+//
+// Note to API designers: each field needs to be able to differentiate
+// an unspecified value and from the 0-value; this can be down with
+// messages or enums. Each field also defines how multiple values should be
+// combined.
+// NEXT TAG: 55
+message HardwareFeatures {
+  enum Present {
+    PRESENT_UNKNOWN = 0;
+    PRESENT = 1;
+    NOT_PRESENT = 2;
+  }
+
+  // Copied from PowerSupplyProperties.PowerSource.Port in
+  // src/platform2/system_api/dbus/power_manager/power_supply_properties.proto.
+  enum PortPosition {
+    UNKNOWN = 0;
+
+    // Various positions on the device. The first word describes the side of
+    // the device where the port is located while the second clarifies the
+    // position. For example, LEFT_BACK means the farthest-back port on the
+    // left side, while BACK_LEFT means the leftmost port on the back of the
+    // device.
+    LEFT        = 1;
+    RIGHT       = 2;
+    BACK        = 3;
+    FRONT       = 4;
+    LEFT_FRONT  = 5;
+    LEFT_BACK   = 6;
+    RIGHT_FRONT = 7;
+    RIGHT_BACK  = 8;
+    BACK_LEFT   = 9;
+    BACK_RIGHT  = 10;
+  }
+
+  message Count {
+    uint32 value = 1;
+  }
+
+  // USB-C properties
+  UsbC usb_c = 1;
+  message UsbC {
+    // The number of USB-C ports
+    Count count = 1;
+
+    // Details about each USB-C port.
+    repeated Port ports = 2;
+
+    message Port {
+      // The position of the port on the chassis.
+      PortPosition position = 1;
+
+      // The 0-indexed index of this USB-C port. If set, this is used as the
+      // port index rather than numbering the motherboard ports in order
+      // followed by daughter board ports, in the order they are specified.
+      // This value must be in the range [0, number_of_usb_c_ports).
+      google.protobuf.UInt32Value index_override = 2;
+    }
+
+    // Whether port(s) are USB4
+    bool usb4 = 3;
+
+    // Optional field to manually override the external display timeout
+    uint32 defer_external_display_timeout = 4;
+  }
+
+  // USB-A properties
+  UsbA usb_a = 2;
+  message UsbA {
+    // The number of USB-A ports
+    Count count = 1;
+  }
+
+  // Cellular properties
+  Cellular cellular = 3;
+  message Cellular {
+    // If Cellular is present on system
+    Present present = 1;
+
+    // Optional string identifying the model of the modem to select the proper
+    // helper and firmwares on platforms with several supported modems.
+    string model = 2;
+
+    // Cellular type
+    CellularType type = 3;
+
+    // bool to enable the cellular feature Attach APN.
+    bool attach_apn_required = 4 [deprecated = true];
+
+    enum CellularType {
+      CELLULAR_UNKNOWN = 0;
+      CELLULAR_LTE = 1;
+      CELLULAR_5G = 2;
+    }
+
+    // Optional config for dynamic power reduction control.
+    DynamicPowerReductionConfig dynamic_power_reduction_config = 5;
+    message DynamicPowerReductionConfig {
+      oneof dynamic_power_reduction_config {
+        // A uint identifying the GPIO to use to toggle dynamic power
+        // reduction.
+        uint32 gpio = 1;
+
+        // A dummy value identifying that modem manager should be used to
+        // toggle dynamic power reduction.
+        bool modem_manager = 2;
+      }
+      // Whether tablet mode should be a trigger for dynamic power reduction.
+      bool tablet_mode = 3;
+      // Whether multi level dynamic power reduction is enabled.
+      bool enable_multi_power_level_sar = 4;
+      // Whether we should set the initial proximity state to far.
+      bool enable_default_proximity_state_far = 5;
+      // Map of custom power level to modem index mapping.
+      // E.g. HIGH -> 1, LOW -> 2
+      map<string, uint32> power_level_mapping = 6;
+      // Map of regulatory domains and power level offset.
+      // E.g. KCC -> 2
+      map<string, uint32> regulatory_domain_mapping = 7;
+    }
+
+    // Wedge detection timeout in ms.
+    uint32 wedge_timeout_in_ms = 6;
+    ModemType modem_type = 7;
+
+    enum ModemType {
+      MODEM_UNKNOWN = 0;
+      MODEM_L850 = 1;
+      MODEM_NL668 = 2;
+      MODEM_FM101 = 3;
+      MODEM_FM350 = 4;
+      MODEM_SC7180 = 5;
+      MODEM_SC7280 = 6;
+      MODEM_EM060 = 7;
+      MODEM_RW101 = 8;
+      MODEM_RW135 = 9;
+      MODEM_LCUK54 = 10;
+    }
+  }
+
+  // HDMI properties
+  Hdmi hdmi = 4;
+  message Hdmi {
+    // If native HDMI support is present on system.
+    Present present = 1;
+
+    // Configuration for HDMI-CEC.
+    Cec cec = 2;
+    message Cec {
+      // Automatically power on all connected displays on boot.
+      bool power_on_displays_on_boot = 1;
+      // Automatically power off all connected displays on shutdown.
+      bool power_off_displays_on_shutdown = 2;
+    }
+  }
+
+  // Firmware configuration field programmed in CBI. The value from each
+  // topology value will be summed to create the final DesignConfig level
+  // firmware configuration value.
+  FirmwareConfiguration fw_config = 5;
+  message FirmwareConfiguration {
+    // The firmware configuration value
+    uint32 value = 1;
+
+    // The mask of valid bits that could be used by above value
+    uint32 mask = 2;
+
+    // Customizations to append as a suffix to the coreboot build target and AP
+    // firmware packaging.
+    repeated string coreboot_customizations = 3;
+
+    reserved 4;
+
+    // The AP firmware has the CONFIG_VBOOT_CBFS_INTEGRATION feature enabled.
+    Present vboot_cbfs_integration = 5;
+
+    reserved 6;
+
+    reserved 7;
+
+    message SemVer {
+      uint32 major_version = 1;
+      uint32 minor_version = 2;
+      uint32 patch_version = 3;
+    }
+    // The RO firmware version currently running on the DUT.
+    SemVer fw_ro_version = 8;
+
+    // The Intel Integrated Sensor Hub is available and supported by firmware.
+    Present intel_ish = 9;
+
+    // The RW firmware version currently running on the DUT.
+    SemVer fw_rw_version = 10;
+
+    // The AP firmware has the CONFIG_BMP_LOGO feature enabled.
+    Present bmp_logo = 11;
+
+    // The AP firmware has the CONFIG_FW_SPLASH_SCREEN feature enabled.
+    Present fw_splash_screen = 12;
+
+    // The CSE sync is late at payload with CONFIG_SOC_INTEL_CSE_LITE_SYNC_BY_PAYLOAD
+    // feature enabled.
+    Present late_cse_sync = 13;
+
+    // The AP firmware has the CONFIG_HAS_RECOVERY_MRC_CACHE feature enabled.
+    Present has_recovery_mrc_cache = 14;
+
+    // The AP firmware has the CONFIG_CHROMEOS_ENABLE_ESOL feature enabled.
+    Present mainboard_has_early_sign_of_life = 15;
+
+
+  }
+
+  // Audio properties of system
+  Audio audio = 6;
+  message Audio {
+    // Which audio codec is in use (deprecated)
+    AudioCodec audio_codec = 1;
+
+    // Which amplifier is in use for the speakers
+    Amplifier speaker_amp = 2;
+
+    // Which audio codec is in use for the headphones
+    AudioCodec headphone_codec = 3;
+
+    // The number of microphones present in the lid
+    Count lid_microphone = 4;
+
+    // The number of microphones present in the base
+    Count base_microphone = 5;
+
+    // Which amplifier is in use for the speakers if one is present
+    Component.Amplifier speaker_amplifier = 6;
+
+    // The card configs for this topology.
+    repeated CardConfig card_configs = 7;
+
+      // The source config file layout used for card-agnostic cras config.
+    AudioConfigStructure cras_config = 8;
+
+    // If audio DSP firmware is SOF-backed.
+    Present sof_audio_dsp = 9;
+
+    enum AudioCodec {
+      AUDIO_CODEC_UNKNOWN = 0;  // Also used for non-public audio codecs
+      RT5682 = 1;
+      ALC5682I = 2;
+      ALC5682 = 3;
+      reserved 4 to 7;  // Not to conflict with existing amplifiers
+      DA7219 = 8;
+      reserved 9;  // Not to conflict with existing amplifiers
+      // New audio codecs
+      NAU88L25B = 10;
+      CS42L42 = 11;
+      ALC5682IVS = 12;
+      WCD9385 = 13;
+      ES8326 = 14;
+      ALC272 = 15;
+      // 16 is free to be used
+      AUDIO_CODEC_ALC5650 = 17;
+      AUDIO_CODEC_ALC256 = 18;
+      AUDIO_CODEC_ALC3247 = 19;
+      AUDIO_CODEC_ALC3287 = 20;
+      // 21 is free to be used
+      AUDIO_CODEC_ALC722 = 22;
+      AUDIO_CODEC_ALC721 = 23;
+    }
+
+    enum Amplifier {
+      AMPLIFIER_UNKNOWN = 0;  // Also used for non-public amplifier
+      reserved 1 to 3;        // Not to conflict with existing audio codecs
+      MAX98357 = 4;
+      MAX98373 = 5;
+      MAX98360 = 6;
+      RT1015 = 7;
+      reserved 8;  // Not to conflict with existing audio codecs
+      ALC1011 = 9;
+      // New amplifiers
+      RT1015P = 10;
+      ALC1019 = 11;
+      MAX98390 = 12;
+      MAX98396 = 13;
+      CS35L41 = 14;
+      MAX98363 = 15;
+      NAU8318 = 16;
+      AMPLIFIER_ALC5650 = 17;
+      AMPLIFIER_ALC256 = 18;
+      AMPLIFIER_ALC3247 = 19;
+      AMPLIFIER_ALC3287 = 20;
+      TAS2563 = 21;
+      AMPLIFIER_ALC722 = 22;
+      AMPLIFIER_ALC721 = 23;
+    }
+
+    enum AudioConfigStructure {
+      AUDIO_CONFIG_STRUCTURE_NONE = 0;
+      DESIGN = 1;
+      COMMON = 2;
+    }
+
+    // The configuration file layout structure for a single card.
+    message CardConfig {
+      // The name of the audio card.
+      string card_name = 1;
+
+      // The UCM suffix pattern for this card if different to the program-level
+      // default.
+      google.protobuf.StringValue ucm_suffix = 2;
+
+      // The source config file layout used for UCM config. May not be
+      // AUDIO_CONFIG_STRUCTURE_NONE.
+      AudioConfigStructure ucm_config = 3;
+
+      // The source config file layout used for card-level cras config.
+      AudioConfigStructure cras_config = 4;
+
+      // The source config file layout used for sound card init config.
+      AudioConfigStructure sound_card_init_config = 5;
+
+      // The cras suffix pattern for this card if different to the program-level
+      // default.
+      google.protobuf.StringValue cras_suffix = 6;
+    }
+  }
+
+  // Camera properties of system.
+  Camera camera = 7;
+  message Camera {
+    enum Interface {
+      INTERFACE_UNKNOWN = 0;
+      INTERFACE_USB = 1;
+      INTERFACE_MIPI = 2;
+    }
+
+    enum Facing {
+      FACING_UNKNOWN = 0;
+      FACING_FRONT = 1;
+      FACING_BACK = 2;
+    }
+
+    enum Orientation {
+      ORIENTATION_UNKNOWN = 0;
+      ORIENTATION_0 = 1;
+      ORIENTATION_90 = 2;
+      ORIENTATION_180 = 3;
+      ORIENTATION_270 = 4;
+    }
+
+    enum Flags {
+      FLAGS_NONE = 0x0;
+      FLAGS_SUPPORT_1080P = 0x1;
+      FLAGS_SUPPORT_AUTOFOCUS = 0x2;
+    }
+
+    message Device {
+      // The interface type of the camera device.
+      Interface interface = 2;
+
+      // Direction the camera faces relative to device screen.
+      Facing facing = 3;
+
+      // Clockwise angle through which the output image needs to be rotated to
+      // be upright on the device screen in its native orientation.
+      Orientation orientation = 4;
+
+      // Bit flags representing camera capabilities of this device. A camera
+      // module can be mounted on this slot only if all the flags match.
+      uint32 flags = 5;
+
+      // List of strings each identifies a possible camera module on this slot.
+      repeated string ids = 6;
+
+      // If privacy switch is present on the camera
+      Present privacy_switch = 7;
+
+      // The number of microphones associated with this device.
+      Count microphone_count = 8;
+
+      // Whether the camera module is detachable.
+      bool detachable = 9;
+    }
+
+    // List of camera devices on the model.
+    repeated Device devices = 4;
+
+    // The list of camera features that are enabled on this device.
+    repeated string features = 5;
+
+    // Whether expected camera devices were enumerated.
+    bool enumerated = 6;
+
+    // List of strings each identifies an enumerated USB camera module.
+    repeated string enumerated_usb_ids = 7;
+  }
+
+  // Accelerometer properties of system.
+  Accelerometer accelerometer = 8;
+  message Accelerometer {
+    // If lid accelerometer is present on system
+    Present lid_accelerometer = 1;
+
+    // If base accelerometer is present on system
+    Present base_accelerometer = 2;
+  }
+
+  // Gyroscope properties of system.
+  Gyroscope gyroscope = 9;
+  message Gyroscope {
+    // If lid gyroscope is present on system
+    Present lid_gyroscope = 1;
+
+    // If base gyroscope is present on system
+    Present base_gyroscope = 2;
+  }
+
+  // Magnetometer properties of system.
+  Magnetometer magnetometer = 10;
+  message Magnetometer {
+    // If lid magnometer is present on system
+    Present lid_magnetometer = 1;
+
+    // If base magnometer is present on system
+    Present base_magnetometer = 2;
+  }
+
+  // LightSensor properties of system.
+  LightSensor light_sensor = 11;
+  message LightSensor {
+    // If lid light sensor is present on system
+    Present lid_lightsensor = 1;
+
+    // If base light sensor is present on system
+    Present base_lightsensor = 2;
+
+    // If camera light sensor is present on system
+    Present camera_lightsensor = 3;
+  }
+
+  // Screen properties of system
+  Screen screen = 12;
+  message Screen {
+    // The libdrm connector type that must match for the properties to
+    // apply to this display.  Right now, only eDP is supported, and
+    // is the most common.  Other connector types can be added as
+    // required.  See drm_mode.h in libdrm for valid options.
+    enum ConnectorType {
+      // Assume a reasonable default (right now eDP).
+      CONNECTOR_TYPE_UNSPECIFIED = 0;
+
+      // eDP connector type.
+      CONNECTOR_TYPE_EDP = 1;
+    }
+    ConnectorType connector_type = 4;
+
+    Component.DisplayPanel.Properties panel_properties = 3;
+
+    // If touch support is present on system
+    Present touch_support = 2;
+
+    reserved 1;
+  }
+
+  // Function form factor of system
+  FormFactor form_factor = 13;
+  message FormFactor {
+    // Form factory of system
+    FormFactorType form_factor = 1;
+    enum FormFactorType {
+      FORM_FACTOR_UNKNOWN = 0;
+      CLAMSHELL = 1;
+      CONVERTIBLE = 2;
+      DETACHABLE = 3;
+      CHROMEBASE = 4;
+      CHROMEBOX = 5;
+      CHROMEBIT = 6;
+      CHROMESLATE = 7;
+    }
+
+    // Input to enter recovery
+    RecoveryInputType recovery_input = 2;
+    enum RecoveryInputType {
+      RECOVERY_INPUT_UNKNOWN = 0;
+      KEYBOARD = 1;
+      POWER_BUTTON = 2;
+      RECOVERY_BUTTON = 3;
+    }
+
+    // Whether to enable detachable UI in firmware build.
+    google.protobuf.BoolValue detachable_ui = 3;
+  }
+
+  // Stylus properites of system.
+  Stylus stylus = 14;
+  message Stylus {
+    // Type of stylus
+    StylusType stylus = 1;
+    enum StylusType {
+      STYLUS_UNKNOWN = 0;
+      NONE = 1;
+      INTERNAL = 2;  // Garaged stylus
+      EXTERNAL = 3;  // Non-garaged stylus
+    }
+  }
+
+  // Keyboard properties of system
+  Keyboard keyboard = 15;
+  message Keyboard {
+    // Type of keyboard present on system
+    KeyboardType keyboard_type = 1;
+    enum KeyboardType {
+      KEYBOARD_TYPE_UNKNOWN = 0;
+      INTERNAL = 1;    // E.g. Clamshell/Convertible
+      NONE = 2;        // E.g. Chromebox
+      DETACHABLE = 3;  // E.g. Tablet with detachable keyboard
+    }
+
+    // If keyboard backlight is present on system
+    Present backlight = 2;
+
+    // If power button is present on keyboard
+    Present power_button = 3;
+
+    // If numeric pad is present on keyboard
+    Present numeric_pad = 4;
+
+    // Type of the MCU used in the system
+    KeyboardMcuType mcu_type = 6;
+    enum KeyboardMcuType {
+      KEYBOARD_MCU_NOT_PRESENT = 0;
+      KEYBOARD_MCU_PRISM = 1;
+    }
+
+    // The keyboard backlight level step values. Values must be in
+    // increasing order. If set, the first value must be 0. This corresponds to
+    // the keyboard_backlight_user_steps powerd pref.
+    repeated double backlight_user_steps = 5;
+
+    // The configuration of the keyboard backlight percentage based on the
+    // ambient light sensor value. Steps should be in increasing order.
+    repeated KbAlsStep als_steps = 7;
+
+    // The default keyboard backlight percentage in the
+    // absence of an ambient light sensor controlling the keyboard backlight.
+    double no_als_brightness = 8;
+  }
+
+  // Memory properties of system
+  Memory memory = 16;
+  message Memory {
+    Component.Memory.Profile profile = 1;
+  }
+
+  // Fingerprint properties of system
+  Fingerprint fingerprint = 17;
+  message Fingerprint {
+    // Location of fingerprint sensor
+    Location location = 1;
+    // Fingerprint board used.
+    string board = 2;
+    // Read-only (RO) firmware version to use (empty means use default).
+    string ro_version = 3;
+    // Healthd fingerprint diagnostic routine parameters.
+    FingerprintDiag fingerprint_diag = 4;
+    // If fingerprint sensor is present on system
+    bool present = 5;
+
+    enum Location {
+      LOCATION_UNKNOWN = 0;
+      // Top of the screen (e.g. Pixel Slate) at the left
+      POWER_BUTTON_TOP_LEFT = 1;
+      // Bottom of keyboard at the left
+      KEYBOARD_BOTTOM_LEFT = 2;
+      // Bottom of keyboard at the right
+      KEYBOARD_BOTTOM_RIGHT = 3;
+      // Top of keyboard at the right (e.g. Galaxy Chromebook)
+      KEYBOARD_TOP_RIGHT = 4;
+      reserved 5;  // Not to conflict with NOT_PRESENT
+      // At the right side
+      RIGHT_SIDE = 6;
+      // At the left side
+      LEFT_SIDE = 7;
+      reserved 8;  // Not to conflict with PRESENT
+      // Left of power button at top right corner (of the keyboard)
+      LEFT_OF_POWER_BUTTON_TOP_RIGHT = 9;
+    }
+
+    message FingerprintDiag {
+      bool routine_enable = 1;
+      uint32 max_pixel_dev = 2;
+      uint32 max_dead_pixels = 3;
+      PixelMedian pixel_median = 4;
+      uint32 num_detect_zone = 5;
+      repeated DetectZone detect_zones = 6;
+      uint32 max_dead_pixels_in_detect_zone = 7;
+      uint32 max_reset_pixel_dev = 8;
+      uint32 max_error_reset_pixels = 9;
+
+      message PixelMedian {
+        uint32 cb_type1_lower = 1;
+        uint32 cb_type1_upper = 2;
+        uint32 cb_type2_lower = 3;
+        uint32 cb_type2_upper = 4;
+        uint32 icb_type1_lower = 5;
+        uint32 icb_type1_upper = 6;
+        uint32 icb_type2_lower = 7;
+        uint32 icb_type2_upper = 8;
+      }
+
+      message DetectZone {
+        uint32 x1 = 1;
+        uint32 y1 = 2;
+        uint32 x2 = 3;
+        uint32 y2 = 4;
+      }
+    }
+  }
+
+  // Non-volatile storage properties of system
+  Storage storage = 18;
+  message Storage {
+    Component.Storage.StorageType storage_type = 1;
+    uint32 size_gb = 2;
+  }
+
+  // Bluetooth properties
+  Bluetooth bluetooth = 19;
+  message Bluetooth {
+    // Defines the specific bt component used in the design config
+    Component.Bluetooth component = 1;
+
+    Present present = 2;
+  }
+
+  // BarrelJack properties
+  BarrelJack barreljack = 20;
+  message BarrelJack {
+    // If BarrelJack support is present on system.
+    Present present = 1;
+  }
+
+  // Wifi properties
+  // NEXT TAG: 3
+  message Wifi {
+    enum WifiChip {
+      WIFI_CHIP_UNKNOWN = 0;
+      WIRELESS_86ED801D = 1;
+      WIRELESS_REALTEK = 2;
+    }
+
+    // WLAN protocols supported by the Wifi chipset(s).
+    repeated Component.Wifi.WLANProtocol supported_wlan_protocols = 1;
+
+    repeated WifiChip wifi_chips = 2;
+
+    WifiConfig wifi_config = 3;
+
+    bool wifi_vpd_sar = 4;
+  }
+  Wifi wifi = 23;
+
+  message Button {
+    // A general part of the device that contains the button,
+    // e.g. "on the screen", "on the keyboard".
+    enum Region {
+      REGION_UNKNOWN = 0;
+      SCREEN = 1;
+      KEYBOARD = 2;
+    }
+
+    // The edge of the Region that contains the button.
+    enum Edge {
+      EDGE_UNKNOWN = 0;
+      LEFT = 1;
+      RIGHT = 2;
+      TOP = 3;
+      BOTTOM = 4;
+    }
+
+    Region region = 1;
+
+    Edge edge = 2;
+
+    // The percentage for button center position to the display's width/height
+    // in primary landscape screen orientation. If Edge is LEFT or RIGHT,
+    // specifies the button's center position as a fraction of the Region's
+    // height relative to the top of the Region. For TOP and BOTTOM, specifies
+    // the position as a fraction of the Region's width relative to the left
+    // side of the Region.
+    float position = 3;
+  }
+
+  Button power_button = 21;
+  Button volume_button = 22;
+
+  // EmbeddedController properties
+  // Next Tag: 12
+  message EmbeddedController {
+    // Whether any kind of EC is present on the system.
+    Present present = 1;
+
+    // The type of EC on the device.
+    // Next Tag: 3
+    enum EmbeddedControllerType {
+      EC_TYPE_UNKNOWN = 0;
+      EC_CHROME = 1;
+      EC_WILCO = 2;
+    }
+    EmbeddedControllerType ec_type = 2;
+
+    // The physical component of the EC.
+    Component.EmbeddedController part = 3;
+
+    // Whether the EC supports EC_FEATURE_TYPEC_CMD.
+    Present feature_typec_cmd = 4;
+
+    // Whether the EC supports CBI (CrOS Board Info stored on the EEPROM).
+    Present cbi = 5;
+
+    // Whether the EC detects the detachable base at runtime
+    Present detachable_base = 6;
+
+    // Whether the EC supports EC_CMD_CHARGE_CONTROL v2.
+    Present feature_charge_control_v2 = 7;
+
+    // Whether the EC will panic on Asserts
+    Present feature_asserts_panic = 8;
+
+    // Whether the EC supports system safe mode recovery.
+    Present feature_system_safe_mode = 9;
+
+    // Whether the EC supports memory dump host commands.
+    Present feature_memory_dump_commands = 10;
+
+    // The extracted EC build config options
+    // E.g. CONFIG_DEBUG_ASSERT, CONFIG_PLATFORM_EC_BATTERY
+    map<string, Present> build_config = 11;
+  }
+  EmbeddedController embedded_controller = 24;
+
+  message TrustedPlatformModule {
+    enum TrustedPlatformModuleType {
+      TPM_TYPE_UNKNOWN = 0;
+      THIRD_PARTY = 1;
+      // GSCs (Google Security Chips) provide additional functionality beyond
+      // serving as the Trusted Platform Module.
+      GSC_H1B = 2;
+      GSC_H1D = 3;
+    }
+    TrustedPlatformModuleType tpm_type = 1;
+
+    // Whether GSC image is signed with production RW keyid.
+    Present production_rw_key_id = 2;
+
+    // The runtime-determined TPM version. This field is needed because a flex
+    // device couldn't determine its TPM version using USE flags, so it needs
+    // to rely on this hardware feature which is detected during runtime.
+    enum RuntimeTpmVersion {
+      TPM_VERSION_DISABLED = 0;
+      // TPM 1.2
+      TPM_VERSION_V1_2 = 1;
+      // TPM 2.0
+      TPM_VERSION_V2 = 2;
+    }
+    RuntimeTpmVersion runtime_tpm_version = 3;
+
+    enum GscFirmwareName {
+      GSC_NONE = 0;
+      GSC_CR50 = 1;
+      GSC_TI50 = 2;
+    }
+    GscFirmwareName gsc_fw_name = 4;
+
+    // Whether the TPM has NVRAM space used for enterprise rollback.
+    Present enterprise_rollback_space = 5;
+  }
+  TrustedPlatformModule trusted_platform_module = 25;
+
+  // Whether the system supports 'Hotwording' (ie wake-on-voice: "Hey Google")
+  message Hotwording {
+    Present present = 1;
+  }
+  Hotwording hotwording = 26;
+
+  // Whether the system has an internal display, external display only or both
+  message Display {
+    enum Type {
+      TYPE_UNKNOWN = 0;
+      TYPE_INTERNAL = 1;
+      TYPE_EXTERNAL = 2;
+      TYPE_INTERNAL_EXTERNAL = 3;
+    }
+
+    Type type = 1;
+  }
+  Display display = 27;
+
+  // Whether the system has a touchpad
+  message Touchpad {
+    Present present = 1;
+
+    // Type of touchpad present on system
+    TouchpadType touchpad_type = 2;
+    enum TouchpadType {
+      TYPE_UNKNOWN = 0;
+      INTERNAL = 1;    // E.g. Clamshell/Convertible
+      NONE = 2;        // E.g. Chromebox
+      DETACHABLE = 3;  // E.g. Tablet with detachable keyboard/touchpad
+    }
+  }
+  Touchpad touchpad = 28;
+
+  // Whether the system has an audio input mute switch
+  message MicrophoneMuteSwitch {
+    Present present = 1;
+  }
+  MicrophoneMuteSwitch microphone_mute_switch = 29;
+
+  message Battery {
+    // Battery present (e.g. not present on chromebox)
+    Present present = 1;
+    Lifetime lifetime = 2;
+    Charging charging = 3;
+    // Device supports the feature to boot with no battery.
+    bool no_battery_boot_supported = 4;
+    message Lifetime {
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Shipping state.
+      Duration shipping_min = 1;
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Deep Sleep state.
+      Duration deep_sleep_min = 2;
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Suspend state.
+      Duration suspend_min = 3;
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Lucid Sleep state.
+      Duration lucid_sleep_min = 4;
+      // Starting with a fully-charged battery, the amount of time a Chrome
+      // device must remain operational in the Active state.
+      Duration active_min = 5;
+    }
+
+    message Charging {
+      // Max time to charge from 0 to 100% in the Active state at average load.
+      Duration active_max = 1;
+      // Max time to charge from 0 to 100% in the Suspend state.
+      Duration suspend_max = 2;
+      // Max time to charge from 0 to 100% in the Deep sleep state.
+      Duration deep_sleep_max = 3;
+    }
+  }
+  Battery battery = 30;
+
+  message PrivacyScreen {
+    // If privacy screen is present on system
+    Present present = 1;
+  }
+  PrivacyScreen privacy_screen = 31;
+
+  Soc soc = 32;
+  message Soc {
+    repeated Component.Soc.Feature features = 1;
+    repeated Component.Soc.Vulnerability vulnerabilities = 2;
+    string arc_media_codecs_suffix = 3;
+    Present hevc_support = 4;
+    ResourceConfig resource_config = 5;
+  };
+
+  DisplayPortConverter dp_converter = 33;
+  message DisplayPortConverter {
+    repeated Component.DisplayPortConverter converters = 1;
+  };
+
+  // HPS properties of system
+  Hps hps = 34;
+  message Hps {
+    // If hps is present on system
+    Present present = 1;
+  };
+
+  PoE poe = 35;
+  message PoE {
+    // If PoE peripheral support is present on system
+    Present present = 1;
+  };
+
+  // Power supply properties
+  PowerSupply power_supply = 36;
+  message PowerSupply {
+    // If BarrelJack support is present on system.
+    Present barreljack = 1;
+
+    // The input power below which a warning should be shown to use a
+    // higher-power USB adapter.
+    int32 usb_min_ac_watts = 2;
+  }
+
+  Proximity proximity = 37;
+  message Proximity {
+    repeated ProximityConfig configs = 1;
+  }
+
+  // Touch screen properties
+  Touch touch = 38;
+  message Touch {
+     // Configures touch slop distance in Chrome.
+     // This is the number of pixels a touch event can wander before being
+     // recognized as a scroll rather than a tap.
+     google.protobuf.UInt32Value touch_slop_distance = 1;
+  }
+
+  Thermal thermal = 39;
+  message Thermal {
+    // A suffix to be added to the design name to determine the directory to
+    // search for thermal config files, e.g. dptf.dv.
+    string config_path_suffix = 1;
+  }
+
+  RuntimeProbeConfig runtime_probe_config = 40;
+  message RuntimeProbeConfig {
+    // If the probe config file under /etc/runtime_probe/{model}/ present on
+    // device.
+    Present present = 1;
+
+    // If the encrypted probe config file under /etc/runtime_probe/{model}/
+    // present on device.
+    Present encrypted_config_present = 2;
+  }
+
+  Dgpu dgpu_config = 41;
+  message Dgpu {
+    Present present = 1;
+
+    // The type of dGPU on the device.
+    // Next Tag: 3
+    enum DgpuType {
+      DGPU_UNKNOWN = 0;
+      DGPU_NV3050 = 1;
+      DGPU_NV4050 = 2;
+    }
+    DgpuType dgpu_type = 2;
+  }
+
+  // UWB properties of system
+  Uwb uwb_config = 42;
+  message Uwb {
+    // If UWB is present on system
+    Present present = 1;
+  };
+
+  HardwareProbe hardware_probe_config = 43;
+  message HardwareProbe {
+    string gpu_family = 1;
+    string gpu_vendor = 2;
+    string cpu_soc_family = 3;
+    string dmi_product_name = 4;
+  }
+
+  // A single step in an ambient light sensor configuration table. Each step
+  // configures the brightness percentage while at that step as well as the
+  // sensor value at which the next or previous step should be considered.
+  // Steps should be specified in increasing order for each field.
+  message KbAlsStep {
+    // The backlight brightness percentage for this step.
+    double backlight_percent = 1;
+
+    Component.LuxThreshold lux_threshold = 2;
+  }
+
+  // Detachable base properties
+  DetachableBase detachable_base = 44;
+  message DetachableBase {
+    // The target EC binary name which is placed under /lib/firmware.
+    string ec_image_name = 1;
+
+    // The Product ID of the detachable base.
+    // This value can be queried by command 'lsusb'.
+    uint32 product_id = 2;
+
+    // The touchpad binary name which is placed under /lib/firmware
+    // This is only needed if the detachable base contains touchpad.
+    string touch_image_name = 3;
+
+    // Searches and finds the idVendor and idProduct under sysfs
+    // /sys/bus/usb/devices/* which matches the vendor-id and product-id.
+    // This is required for usb interface detachable base.
+    string usb_path = 4;
+
+    // The Vendor ID of the detachable base.
+    // This value can be queried by command 'lsusb'.
+    uint32 vendor_id = 5;
+
+    // Searches and finds the idVendor and idProduct under sysfs
+    // /sys/bus/i2c/devices/* which matches the vendor-id and product-id
+    // due to hid-over-i2c is used.
+    // This is required for i2c interface detachable base.
+    // Note - i2c bus numbering can shift across reboots, please have
+    // corresponding setup based on your platform to ensure consistency.
+    string i2c_path = 6;
+  }
+
+  // Supported suspend modes
+  Suspend suspend = 45;
+  message Suspend {
+    // If S3 (suspend to mem) is supported
+    Present suspend_to_mem = 1;
+    // If S0ix (suspend to idle) is supported
+    Present suspend_to_idle = 2;
+  }
+
+  // VRR (variable refresh rate) properties
+  Vrr vrr = 46;
+  message Vrr {
+    // If VRR is supported.
+    Present present = 1;
+  }
+
+  // SD reader properties
+  SdReader sd_reader = 47;
+  message SdReader {
+    // If SD reader is supported.
+    Present present = 1;
+  }
+
+  // FeatureLevel stores the feature level of a DUT
+  uint32 feature_level = 48;
+
+  // OEM info
+  OEMInfo oem_info = 49;
+  message OEMInfo {
+    // Name stores the name of OEM.
+    string name = 1;
+  }
+
+  // Fan
+  Fan fan = 50;
+  message Fan {
+    // The number of fan in the device.
+    google.protobuf.UInt32Value fan_count = 1;
+  }
+
+  // Details about the Interrupt controller
+  InterruptControllerInfo interrupt_controller_info = 51;
+  message InterruptControllerInfo {
+    // If present then the Interrupt controller can support NMIs
+    Present nmi_support = 1;
+  }
+
+  // Properties of tiled display, which consists of multiple panels each driven
+  // by separate connectors.
+  TiledDisplay tiled_display = 52;
+  message TiledDisplay {
+    // If the device is connected to a tiled display.
+    Present present = 1;
+  }
+
+  // Details about cpu info.
+  CpuInfo cpu_info = 53;
+  message CpuInfo {
+    // Details about cpu vendor info.
+    message VendorInfo {
+      int64 cpu_family_num = 1;
+      int64 cpu_model_num = 2;
+    }
+    VendorInfo vendor_info = 1;
+  }
+
+  // Details about pendrive.
+  Pendrive pendrive = 54;
+  message Pendrive {
+    Present present = 1;
+  }
+}

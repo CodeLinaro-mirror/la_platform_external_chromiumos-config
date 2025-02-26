@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Used to generate program and project configuration. Expects to be able
+# to find the protocol buffer generating script in the directory with the
+# config file at config/generate.sh and expects to be able to find the
+# lucicfg binary on the path from depot_tools.
+
+# Exit if any command fails.
+set -e
+
+readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
+source "${script_dir}/common.sh"
+
+output_dir="."
+help=""
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --output-dir|-o)
+            output_dir="$2"
+            shift
+            shift
+            ;;
+        --help|-h)
+            help="yes"
+            shift
+            ;;
+        --*)
+            echo "Unknown long option $1" >&2
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+if [[ -n "${help}" ]]; then
+  config_usage
+  exit 0
+fi
+
+if [[ $# -ne 1 ]]; then
+  config_usage
+fi
+
+readonly file_path="${1}"
+readonly config_dir="$(dirname "$(realpath -e "${file_path}")")"
+
+if [[ -e "${config_dir}"/program/config.star ]]; then
+  echo "Making sure program config is fresh..."
+  "${script_dir}"/gen_config "${config_dir}"/program/config.star
+fi
+
+echo "Building config from source starlark config files."
+"${script_dir}"/build_config -o "${output_dir}" "$@"
+echo "Transforming generated protojson config enums"
+cd "${config_dir}"
+"${script_dir}"/transform_config_enums "${output_dir}"
+echo "Transforming generated protojson config to build config"
+cd "${config_dir}"
+"${script_dir}"/transform_config "${output_dir}"

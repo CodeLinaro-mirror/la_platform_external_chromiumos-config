@@ -1,0 +1,331 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/config/api/test/xmlrpc/xmlrpc.proto";
+import "chromiumos/longrunning/operations.proto";
+
+// Provides the ability to start/stop servod daemon and execute servod
+// commands on it.
+// Servod daemon can be running either inside a Docker container or directly
+// on the host.
+// The servo host could also be the same as the service host or a remote host.
+// go/cros-servod-design to learn more about the design.
+service ServodService {
+  // StartServod runs a servod Docker container and starts the servod daemon
+  // inside the container if servod is containerized. Otherwise, it simply
+  // starts the servod daemon.
+  rpc StartServod(StartServodRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "StartServodResponse",
+      metadata_type: "StartServodMetadata"
+    };
+  }
+
+  // StopServod stops the servod daemon inside the container and stops the
+  // servod Docker container if servod is containerized. Otherwise, it simply
+  // stops the servod daemon.
+  rpc StopServod(StopServodRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "StopServodResponse",
+      metadata_type: "StopServodMetadata"
+    };
+  }
+
+  // ExecCmd executes a system command that is provided through the command
+  // parameter in the request. It allows the user to execute arbitrary commands
+  // that can't be handled by calling servod (e.g. update firmware through
+  // "futility", remote file copy through "scp").
+  // It executes the command inside the servod Docker container if the
+  // servod_docker_container_name parameter is provided in the request.
+  // Otherwise, it executes the command directly inside the host that the servo
+  // is physically connected to.
+  rpc ExecCmd(ExecCmdRequest)
+      returns (ExecCmdResponse);
+
+  // CallServod runs a servod command through an XML-RPC call.
+  // It runs the command inside the servod Docker container if the
+  // servod_docker_container_name parameter is provided in the request.
+  // Otherwise, it runs the command directly inside the host that the servo
+  // is physically connected to.
+  // Allowed methods: doc, get, set, and hwinit.
+  rpc CallServod(CallServodRequest)
+      returns (CallServodResponse);
+
+  // LogCheckPoint will create checkpoint certain files so that some files
+  // can be saved partially when SaveLogs is called.
+  // For example, /var/log/messages in a labstation can be
+  // very big and include information from a few days ago.
+  // Getting the checkpoint of the current /var/log/messages will
+  // allow SaveLogs to save the portion only relevant to the current
+  // testing session.
+  rpc LogCheckPoint(LogCheckPointRequest) returns (LogCheckPointResponse) {}
+
+  // SaveLogs will save servod related logs on the host that this service
+  // is running.
+  // Logs include:
+  //     /var/log/message from the servod host.
+  //     /var/log/servod_<port>/ latest.DEBUG from servod host.
+  //     /var/log/servod_<port>.STARTUP.log from servod host.
+  //     The output of  "dmesg -H"  from the servod host.
+  //     The extraction of the MCU console logs from latest.DEBUG
+  rpc SaveLogs(SaveLogsRequest) returns (SaveLogsResponse) {}
+}
+
+message StartServodRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servo_host_path = 1;
+
+  // The servod Docker container name.
+  string servod_docker_container_name = 2;
+
+  // The servod Docker image path to pull from GCR.
+  // Example: gcr.io/chromeos-bot/servod@sha256:2d25f6313c7bbac349607
+  string servod_docker_image_path = 3;
+
+  // The --PORT parameter value for servod command.
+  int32 servod_port = 4;
+
+  // The --BOARD parameter value for servod command.
+  string board = 5;
+
+  // The --MODEL parameter value for servod command.
+  string model = 6;
+
+  // The --SERIALNAME parameter value for servod command.
+  string serial_name = 7;
+
+  // The --DEBUG parameter value for servod command.
+  string debug = 8;
+
+  // The --RECOVERY_MODE parameter value for servod command.
+  string recovery_mode = 9;
+
+  // The --CONFIG parameter value for servod command.
+  string config = 10;
+
+  // The --ALLOW-DUAL-V4 parameter value for servod command.
+  string allow_dual_v4 = 11;
+}
+
+message StartServodResponse {
+  // Empty response for success.
+  message Success {
+  }
+
+  // Error message for failure.
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
+
+message StartServodMetadata {
+}
+
+message StopServodRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servo_host_path = 1;
+
+  // The servod Docker container name.
+  string servod_docker_container_name = 2;
+
+  // The port that servod is running on the servo host.
+  int32 servod_port = 3;
+}
+
+message StopServodResponse {
+  // Empty response for success.
+  message Success {
+  }
+
+  // Error message for failure.
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
+
+message StopServodMetadata {
+}
+
+message ExecCmdRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servo_host_path = 1;
+
+  // The servod Docker container name.
+  string servod_docker_container_name = 2;
+
+  // The command to execute on the servo host.
+  // Example (Flash firmware with the provided image):
+  // "futility update -i <IMAGE> --servo_port=<PORT>"
+  // Example (Copy a file from B to A while logged into B):
+  // "scp /path/to/file username@A:/path/to/destination"
+  string command = 3;
+
+  // stdin is passed to the command as the program's stdin.
+  // An empty bytes is not treated specially; if the command reads
+  // from stdin, it will receive zero bytes.
+  bytes stdin = 4;
+}
+
+message ExecCmdResponse {
+  message ExitInfo {
+    // status provides information about how the command process
+    // terminated.
+    //
+    // If the command failed to start, status is set to an arbitrary
+    // non-zero value.
+    //
+    // If signaled is set, status is set to the signal that caused
+    // the command to terminate.
+    //
+    // Otherwise, status is set to the exit status of the process.
+    // Exit statuses outside of 0 to 255 inclusive are not supported;
+    // they will be mapped to an arbitrary non-zero value.
+    //
+    // status is zero if and only if the process was successfully
+    // started and exited with a zero status.
+    int32 status = 1;
+    // signaled indicates whether the command exited due to a signal.
+    // If set, status contains the signal.
+    bool signaled = 2;
+    // started indicates whether the command was started.
+    bool started = 3;
+    // error_message provides a human readable explanation for some errors.
+    // This MUST NOT be inspected by programs.
+    string error_message = 4;
+  }
+  // The exit information that is set when the command has exited
+  // or failed to start.
+  ExitInfo exit_info = 1;
+  // The shell command's stdout output since the last response.
+  bytes stdout = 2;
+  // The shell command's stderr output since the last response.
+  bytes stderr = 3;
+}
+
+message ExecCmdMetadata {
+}
+
+message CallServodRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servo_host_path = 1;
+
+  // The servod Docker container name.
+  string servod_docker_container_name = 2;
+
+  // The port that servod is running on the servo host.
+  int32 servod_port = 3;
+
+  // The allowed methods to run.
+  enum Method {
+    // Shows info about control.
+    DOC = 0;
+    // Gets the value of control.
+    GET = 1;
+    // Sets the value of control.
+    SET = 2;
+    // Initializes all controls.
+    HWINIT = 3;
+  }
+
+  // The method to run.
+  Method method = 4;
+
+  // The arguments to pass to the servod call.
+  // For the doc and get methods, it will be control name as single
+  // array value (e.g. ["lid_open"]).
+  // For the set method, it will be control name and the value as
+  // separate array values (e.g. ["lid_open", "yes"]).
+  repeated chromiumos.config.api.test.xmlrpc.Value args = 5;
+}
+
+message CallServodResponse {
+  // Response for success.
+  message Success {
+    chromiumos.config.api.test.xmlrpc.Value result = 1;
+  }
+
+  // Error message for failure.
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
+
+message CallServodMetadata {
+}
+
+
+message LogCheckPointRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servo_host_path = 1;
+
+  // The servod Docker container name.
+  string servod_docker_container_name = 2;
+
+  // The paths to the files that need checkpoint information.
+  repeated string paths = 3;
+}
+
+message LogCheckPointResponse {
+  // A mapping between the paths in the requests and their current
+  // line numbers.
+  // If a file does not exist on the host, it will not be included in
+  // this map. There will be no errors.
+  map<string, int32> path_to_line_number = 1;
+}
+
+message SaveLogsRequest {
+  // The path (URI) for the servod (containerized or running as a daemon) host.
+  // If cros-servod and docker-servod live on the same host, this parameter
+  // should be empty.
+  string servo_host_path = 1;
+
+  // The servod Docker container name.
+  string servod_docker_container_name = 2;
+
+  // A list of ports that servod is running on the servo host.
+  repeated int32 servod_ports = 3;
+
+  // A mapping between the paths in the requests and their checkpoint
+  // line numbers.
+  // For all files in the map, only the content will be saved after their
+  // corresponding line number.
+  // For the files that are no in the map, the whole file will be saved.
+  map<string, int32> path_to_line_number = 4;
+}
+
+message SaveLogsResponse {
+}

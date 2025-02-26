@@ -1,0 +1,68 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.test.dut.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/dut/v1;dut";
+
+import "chromiumos/config/api/component.proto";
+import "chromiumos/config/api/design.proto";
+import "chromiumos/config/api/device_brand.proto";
+import "chromiumos/config/api/partner.proto";
+import "chromiumos/config/api/program.proto";
+
+// Specification of Device Under Test for test execution.
+message DeviceUnderTest {
+  Program program = 2;
+  Design hw_design = 3;
+  Partner odm = 4;
+  Design.Config hw_design_config = 5;
+  Components hw_components = 11;
+  DeviceBrand device_brand = 6;
+  Partner oem = 7;
+  Firmware firmware = 12;
+
+  reserved 1;
+  reserved "peripheral";
+}
+
+// Defines all of the schedulable characteristics
+// of the hardware components for a given device.
+message Components {
+  Component.Soc soc = 2;
+  // Specific memory chips can't be targeted for scheduling.
+  // Only the memory chip characteristics (e.g. DDR4)
+  Component.Memory.Profile memory_profile = 3;
+  Component.Bluetooth bluetooth = 4;
+  Component.Camera camera = 5;
+  Component.Touch touchscreen = 6;
+  Component.Wifi wifi = 7;
+  Component.Touch touchpad = 10;
+  Component.DisplayPanel display_panel = 11;
+  Component.AudioCodec audio_codec = 12;
+  Component.Battery battery = 13;
+  Component.FlashChip ec_flash_chip = 14;
+  Component.FlashChip system_flash_chip = 15;
+  Component.EmbeddedController ec = 16;
+  Component.Storage storage = 17;
+  Component.Tpm tpm = 18;
+
+  // So the numbering aligns nicely to Component.type
+  reserved 1;
+}
+
+// Defines required firmware state/versions for a given
+// device under test.
+message Firmware {
+  // Readonly firmware build name, e.g.
+  // "firmware-reef-9042.B-firmwarebranch/R72-11311.0.0"
+  string ap_ro_version = 1;
+
+  // Read-write firmware build name, e.g.
+  // "firmware-reef-9042.B-firmwarebranch/R72-11311.0.0"
+  string ap_rw_version = 2;
+}
+

@@ -1,0 +1,415 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/config/api/device_config_id.proto";
+
+import "chromiumos/longrunning/operations.proto";
+
+// Provides network based access to a device under test for remote
+// command execution and device state/identity retrieval.
+service DutService {
+  // ExecCommand runs a command on a DUT.
+  //
+  // The working directory is /.
+  // A tty is not spawned for the command.
+  // The user and group is root.
+  // All signals have their default dispositions and are not masked.
+  // The umask is set to 0.
+  //
+  // The environment contains:
+  //
+  //   TERM=dumb
+  //   PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin
+  //   LANG=en_US.UTF-8
+  //   USER=root
+  //   HOME=/root
+  //
+  // The environment MAY also contain SSH client variables.
+  // The environment SHALL NOT contain variables not mentioned above.
+  //
+  // If the stream is interrupted, the implementation MAY attempt to
+  // stop the command by sending SIGINT, SIGHUP, SIGTERM, or SIGKILL.
+  rpc ExecCommand(ExecCommandRequest)
+      returns (stream ExecCommandResponse);
+
+  // FetchCrashes gets a stream of all crash reports currently on the DUT.
+  //
+  // The stream returned may split up a crash over multiple
+  // `FetchCrashesResponse` protos. See the definition of that proto for
+  // details.
+  //
+  // This call is read-only: it doesn't delete the crashes that it reads.
+  rpc FetchCrashes(FetchCrashesRequest) returns (stream FetchCrashesResponse);
+
+  // Restart simply reboots a DUT and returns when done.
+  //
+  // This is necessary as we need to refresh our connection to the DUT at
+  // restart, and this allows a signaling to the server that the connection
+  // will be severed.
+  rpc Restart(RestartRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "RestartResponse",
+      metadata_type: "RestartMetadata"
+    };
+  }
+
+  // Scans the live device to determine device config identifiers.
+  //
+  // The returned scan config can then be used to reverse lookup
+  // the actual DeviceConfigId values and corresponding configs.
+  rpc DetectDeviceConfigId(DetectDeviceConfigIdRequest)
+      returns (stream DetectDeviceConfigIdResponse);
+
+  // Fetch a file or dir from the device.
+  //
+  // The files will be returned via a tar'd bytestream.
+  rpc FetchFile(FetchFileRequest)
+    returns (stream File);
+
+  // Downloads files from GS to the DUT
+  //
+  // The files downloaded may be decompressed in this layer to save cycles (and
+  // space) in the DUT. This utilizes the cacheForDUT endpoint to download the
+  // files.
+  rpc Cache(CacheRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "CacheResponse",
+      metadata_type: "CacheMetadata"
+    };
+  }
+
+
+  // Used to reestablish connection to DUT in case of drops.
+  //
+  // This is needed in case the connection to the DUT is lost and we need to
+  // keep the connection. Previously this was done by the service, but as we try
+  // to accomplish true microservice functionality (i.e.: no side-effects) we
+  // removed it and gave the option for the user to reconnect if needed with
+  // whichever algorithm they prefer.
+  rpc ForceReconnect(ForceReconnectRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "ForceReconnectResponse",
+      metadata_type: "ForceReconnectMetadata"
+    };
+  }
+
+}
+
+
+message ExecCommandRequest {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+  // command is the command to run.
+  // If this contains no slashes, it is resolved using PATH.
+  // If this starts with /, it is used as an absolute path to the
+  // program to run.
+  // Otherwise, this is treated as a path relative to the working
+  // directory.
+  string command = 2;
+  // args are the arguments to pass to the command. The arguments
+  // are not quoted in any way, so passing shell variables and
+  // arguments containing spaces could fail.
+  repeated string args = 3;
+  // stdin is passed to the command as the program's stdin.
+  // The stream does not support seeking.
+  // An empty bytes is not treated specially; if the command reads
+  // from stdin, it will receive zero bytes.
+  bytes stdin = 4;
+  // stdout indicates how to handle the command's stdout.
+  Output stdout = 5;
+  // stderr indicates how to handle the command's stderr.
+  Output stderr = 6;
+}
+message ExecCommandResponse {
+  message ExitInfo {
+    // status provides information about how the command process
+    // terminated.
+    //
+    // If the command failed to start, status is set to an arbitrary
+    // non-zero value.
+    //
+    // If signaled is set, status is set to the signal that caused
+    // the command to terminate.
+    //
+    // Otherwise, status is set to the exit status of the process.
+    // Exit statuses outside of 0 to 255 inclusive are not supported;
+    // they will be mapped to an arbitrary non-zero value.
+    //
+    // status is zero if and only if the process was successfully
+    // started and exited with a zero status.
+    int32 status = 1;
+    // signaled indicates whether the command exited due to a signal.
+    // If set, status contains the signal.
+    bool signaled = 2;
+    // started indicates whether the command was started.
+    bool started = 3;
+    // error_message provides a human readable explanation for some errors.
+    // This MUST NOT be inspected by programs.
+    string error_message = 4;
+  }
+  // exit_info contains exit information.
+  // This is set when the command has exited or failed to start.
+  // This is set on the last message in the response stream.
+  ExitInfo exit_info = 1;
+  // stdout contains the shell command's stdout output since the last
+  // response in the stream.
+  // The implementation MAY batch or delay output to later
+  // responses in the stream.
+  bytes stdout = 2;
+  // stderr contains the shell command's stderr output since the last
+  // response in the stream.
+  // The implementation MAY batch or delay output to later
+  // responses in the stream.
+  bytes stderr = 3;
+}
+
+// Output enumeration for ExecCommandRequest.
+enum Output {
+  // OUTPUT_PIPE means to collect output and return it.
+  OUTPUT_PIPE = 0;
+  // OUTPUT_STDOUT is a special value for stderr which means to merge stderr
+  // into stdout.
+  OUTPUT_STDOUT = 1;
+}
+
+
+// Fetch files from remote host into local /var/tmp/remotefiles
+message FetchFileRequest {
+  string file = 1;
+}
+
+// Byte stream of the requested file.
+message File {
+  bytes file = 1;
+}
+
+message FetchCrashesRequest {
+    // If true, fetch the core file.
+    // For uploads to the crash server, that should generally be false.
+    // If the crash file is likely to be used for manual debugging (e.g. on
+    // a manually-invoked test suite run), this might be true.
+    // Coredumps can be extremely large (even gigabytes), so if resource usage
+    // is a concern, this should probably be false.
+    bool fetch_core = 2;
+
+    // dut is no longer necessary since this service is run on a per-dut basis.
+    // Reserving field in order to keep wire compatible with old proto.
+    reserved 1;
+}
+
+// When this response is streamed, the first proto with a given crash ID will
+// always contain the CrashInfo.
+// Files and core dumps (if present) may be streamed. If they are,
+// subsequent protos with the same crash ID will follow, each containing a chunk
+// of file/coredump. To reassemble these, concatenate the bytes received from
+// each subsequent proto with a matching crash_id (concatenate blobs that have
+// matching crash_ids and keys).
+// Additional crashes may be reported in the same stream with a new crash ID.
+message FetchCrashesResponse {
+    // Crash id. unique only within responses to a single FetchCrashes request.
+    // Used to assemble multiple streamed |FetchCrashesResponse| protos into a
+    // single crash report.
+    int64 crash_id = 1;
+    oneof data {
+      // Full details of crash report.
+      CrashInfo crash = 2;
+      // Misc file (e.g. minidump, large binary log, etc)
+      CrashBlob blob = 3;
+      // Coredump. Present if fetch_core was true in FetchCrashesRequest and
+      // the crash has a coredump. (kernel warnings, for example, do not have
+      // one).
+      bytes core = 4;
+    }
+}
+
+// The data in this proto matches the metadata from crash-reporter's meta files.
+// Sender::CreateCrashFormData puts this data into crash upload POST requests.
+// (See src/platform2/crash-reporter/crash_sender_util.cc.)
+// The names in this proto MUST match the names that crash-reporter uses so
+// that, when crashes are uploaded to the crash server, they are interpreted
+// as they are when crash-reporter uploads them.
+// Similarly, when this proto is converted into a POST request to send to the
+// crash server, the names must not be altered.
+message CrashInfo {
+    // Name of executable that crashed (e.g. "chrome")
+    string exec_name = 1;
+    // Product name (e.g. "Chrome_ChromeOS" or "ChromeOS")
+    string prod = 2;
+    // Product version (e.g. "12345.0.0")
+    string ver = 3;
+    // Crash signature (may not be populated for all crashes)
+    string sig = 4;
+    // The name of the integration test that was running when this crash
+    // happened, if any.
+    string in_progress_integration_test = 5;
+    // The name of the collector (e.g. chrome_collector, arc_collector)
+    string collector = 6;
+    // Additional key-value pairs of metadata (e.g. "crash_loop_mode = true").
+    // These should be included in any POSTs to the crash server in a standard
+    // POST form, as seen in CreateCrashFormData.
+    // (despite the fact that this message is a subfield, it should be a flat
+    // structure in any POSTs).
+    repeated CrashMetadata fields = 7;
+}
+
+// Arbitrary text-only key-value pair corresponding to the key-value pairs in
+// crash report metadata files.
+message CrashMetadata {
+    // This value is a UTF8, human-readable, description of the data.
+    string key = 1;
+    // The value will be a human-readable string (e.g. "12345.0.0"), which must
+    // be valid UTF-8.
+    string text = 2;
+};
+
+// Arbitrary non-UTF8 key-value pair from crash report metadata files.
+message CrashBlob {
+    // This value is a UTF8, human-readable, description of the data.
+    // This should be passed as the 'name' to the crash server.
+    // For instance, upload_file_fake_payload
+    string key = 1;
+    // The value is a blob (e.g. a file from sysfs or a minidump), which need
+    // not be valid UTF-8, and may be large.
+    bytes blob = 2;
+    // The basename of the file. Must be specified as the filename in data
+    // uploaded to the crash server.
+    // e.g. foo_binary.20201027.102345.0.dmp
+    string filename = 3;
+};
+
+message RestartRequest {
+  // args are the arguments to pass to the reboot command.
+  repeated string args = 1;
+
+  message ReconnectRetry {
+    int32 times = 1;
+    int64 interval_ms = 2;
+  }
+
+  ReconnectRetry retry = 2;
+};
+
+message RestartResponse {
+  // output represents the stdout for the reboot. Useful if the verbose flag is
+  // used.
+  string output = 1;
+
+}
+
+message RestartMetadata {
+}
+
+message CacheRequest {
+  // Where to place the file in the DUT:
+  // * Local DUT File
+  // * Pipe to command
+  message LocalFile {
+    string path = 1;
+  }
+
+  message Pipe {
+    string commands = 1;
+  }
+
+  oneof destination {
+    LocalFile file = 1;
+    Pipe pipe = 2;
+  }
+
+  // A file downloaded may be one of:
+  //  * A regular file
+  //  * A tar'd directory from which we fetch one file (source_file)
+  //  * A zipped file
+  message GSFile {
+    string source_path = 1;
+  }
+
+  message GSZipFile {
+    string source_path = 1;
+  }
+
+  message GSTARFile {
+    string source_path = 1;
+    string source_file = 2;
+  }
+
+  message Retry {
+    int32 times = 1;
+    int64 interval_ms = 2;
+  }
+
+  oneof source {
+    GSFile gs_file = 3;
+    GSZipFile gs_zip_file = 4;
+    GSTARFile gs_tar_file = 5;
+  }
+
+  Retry retry = 6;
+}
+
+message CacheResponse {
+  message Success {
+  }
+
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
+
+message CacheMetadata {
+}
+
+message ForceReconnectRequest {
+}
+
+message ForceReconnectResponse {
+  message Success {
+  }
+
+  message Failure {
+    string error_message = 1;
+  }
+
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+}
+
+message ForceReconnectMetadata {
+}
+
+message DetectDeviceConfigIdRequest {
+};
+
+message DetectDeviceConfigIdResponse {
+  oneof result {
+    Success success = 1;
+    Failure failure = 2;
+  }
+
+  message Success {
+    chromiumos.config.api.DeviceConfigId.ScanConfig detected_scan_config = 1;
+  }
+
+  message Failure {
+    string error_message = 1;
+  }
+}

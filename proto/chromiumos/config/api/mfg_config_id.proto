@@ -1,0 +1,21 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Uniquely identifies Manufacturing configuration that was used
+// for a production run. This value is unique within a Design for
+// a particular Program
+message MfgConfigId {
+  string value = 1;
+
+  // Scanned values off a device to correlate to a given MfgConfigId
+  message ScanConfig {
+    string hwid = 1;
+  }
+}

@@ -1,0 +1,61 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/test_case.proto";
+import "chromiumos/test/api/test_case_metadata.proto";
+import "chromiumos/test/api/test_execution_metadata.proto";
+
+
+// Defines a named collection of tests.
+//
+// For test scheduling/execution purposes, there is no guarantee on ordering.
+// Tests can be batched/unbatched in different sequences and can be
+// executed on different devices altogether.
+message TestSuite {
+  // Optional human friendly name
+  string name = 1;
+
+  oneof spec {
+    // Explicit list of tests
+    TestCaseIdList test_case_ids = 2;
+    // Tests are included via tag inclusion/exclusion criteria.
+    TestCaseTagCriteria test_case_tag_criteria = 3;
+    // List of all test_cases
+    TestCaseList test_cases = 4;
+    // List of TestCaseMetadata which is list of test case with metadata.
+    TestCaseMetadataList test_cases_metadata = 6;
+  }
+
+  // The total number of shards to be used in a test run.
+  // Currently only supported for Tast VM tests which are not run by CFT.
+  int64 total_shards = 5;
+
+  // Defines a combination of tag and test name based selection criteria,
+  // which is applied against a list of TestCase definitions to determine
+  // test suite inclusion.
+  //
+  // Tests are included if they meet the following:
+  //  - MATCH ALL of the [include] tags and at least one from [include] test names
+  //  - DO NOT MATCH ANY of the exclude tags or test names
+  //
+  // Tags must match exactly (i.e. no regexp, wildcard, etc. allowed).
+  // Test names allow usage of wildcard.
+  message TestCaseTagCriteria {
+    repeated string tags = 1;
+    repeated string tag_excludes = 2;
+    repeated string test_names = 3;
+    repeated string test_name_excludes = 4;
+  }
+
+  // K:Vs to be passed to the harness. Mostly will be used for args; but
+  // technically can go for others.
+  ExecutionMetadata execution_metadata = 7;
+
+}

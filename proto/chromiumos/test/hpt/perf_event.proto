@@ -1,0 +1,35 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.hpt;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/hpt";
+
+// PerfRecord is the metadata of perf event collected from the DUT.
+message PerfRecord {
+  // Bucket where perf data can be found in GCS.
+  optional string bucket = 1;
+
+  // object_path path to perf data in GCS
+  optional string object_path = 2;
+
+  // Deprecated. See version field.
+  optional string branch = 3  [deprecated = true];
+
+  // Version of the ChromeOS on the DUT where the perf data was collected.
+  // Example R123-15771.0.0-94488 (R123 is branch, 15771.0.0 is buildID, 94488
+  // is annealing build id)
+  optional string version = 4;
+
+  // Board of DUT where the perf data was collected.
+  // Example brya
+  optional string board = 5;
+
+  // Path to corresponding snapshot builder where debug.tgz and image.zip can be
+  // found.For Example:
+  // gs://chromeos-image-archive/brya-snapshot/R123-15771.0.0-94488-8756732549715473217
+  optional string snapshot_build_path = 6;
+}

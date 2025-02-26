@@ -1,0 +1,45 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.public_replication;
+
+option go_package = "go.chromium.org/chromiumos/config/go/public_replication";
+
+import "google/protobuf/field_mask.proto";
+
+// Configures which fields in a ConfigBundle are made public.
+//
+// Any message in a ConfigBundle that has a PublicReplication message as a field
+// will have the fields specified by the public_fields FieldMask made public.
+// For example, consider the ConfigBundle:
+//
+// software_configs {
+//   audio_configs {
+//     card_name: "testcard"
+//     private_field: "secretA"
+//     public_replication {
+//       public_fields {
+//         paths: "card_name"
+//       }
+//     }
+//   }
+// }
+//
+// "card_name" will be made public, "private_field" will not be.
+//
+// A few notes:
+// - Currently PublicReplication just wraps a FieldMask. This is done so that
+//   it can be discovered via proto reflection without accidentally using
+//   FieldMasks that are not meant to control public fields.
+// - In FieldMasks a repeated field is only allowed in the last position of a
+//   path (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask).
+//   Using a single FieldMask for a ConfigBundle would not be very useful, since
+//   more granularity is needed (i.e. saying all or none of
+//   "software_configs" is public is not useful). Thus, FieldMasks to control
+//   public fields are specified in child messages of ConfigBundle.
+message PublicReplication {
+    google.protobuf.FieldMask public_fields = 1;
+}

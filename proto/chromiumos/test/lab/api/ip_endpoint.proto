@@ -1,0 +1,20 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+// IP endpoint to a given service port.
+message IpEndpoint {
+  // Contains oneof:
+  //   Hostname that can be resolved via DNS
+  //   IPv4 address in dotted decimal notation.
+  //   IPv6 address in RFC4291 notation.
+  string address = 1;
+  // Service port on the target host
+  int32 port = 2;
+}

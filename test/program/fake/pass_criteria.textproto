@@ -1,0 +1,552 @@
+criteria: {
+	name_regex: "seconds_system_suspend$"
+	upper_bound: {
+		bound: 1
+	}
+	requirement_id_regex: "boot-perf-0005-v01"
+	program: "fake"
+}
+criteria: {
+	name_regex: "seconds_system_resume$"
+	upper_bound: {
+		bound: 1
+	}
+	requirement_id_regex: "boot-perf-0006-v01"
+	program: "fake"
+}
+criteria: {
+	name_regex: "seconds_system_suspend$"
+	upper_bound: {
+		bound: 0.5
+	}
+	requirement_id_regex: "boot-perf-0008-v01"
+	program: "fake"
+}
+criteria: {
+	name_regex: "seconds_system_resume$"
+	upper_bound: {
+		bound: 0.5
+	}
+	requirement_id_regex: "boot-perf-0009-v01"
+	program: "fake"
+}
+criteria: {
+	name_regex: "VideoCall.power_Speedometer2.result.summary"
+	lower_bound: {
+		bound: 0
+	}
+	requirement_id_regex: "pwr-therm-000[1,2].*"
+	program: "fake"
+}
+criteria: {
+	name_regex: "VideoCall.power_VideoCall.video_720p30_vp.*min"
+	lower_bound: {
+		bound: 29
+	}
+	requirement_id_regex: "pwr-therm-000[1,2].*"
+	program: "fake"
+}
+criteria: {
+	name_regex: "VideoCall.power_VideoCall.keypress_latency_us_avg"
+	upper_bound: {
+		bound: 50000
+	}
+	requirement_id_regex: "pwr-therm-000[1,2].*"
+	program: "fake"
+}
+criteria: {
+	name_regex: "ThermalLoad.power_Speedometer2.result.summary"
+	lower_bound: {
+		bound: 0
+	}
+	requirement_id_regex: "pwr-therm-000[3,4].*"
+	program: "fake"
+}
+criteria: {
+	name_regex: "ThermalLoad.power_ThermalLoad.avg_fps_3000_fishes_fps_avg"
+	lower_bound: {
+		bound: 55
+	}
+	requirement_id_regex: "pwr-therm-000[3,4].*"
+	program: "fake"
+}
+criteria: {
+	name_regex: "ThermalLoad.power_ThermalLoad.avg_fps_3000_fishes_fps_std"
+	upper_bound: {
+		bound: 15
+	}
+	requirement_id_regex: "pwr-therm-000[3,4].*"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.minutes_battery_life$"
+	lower_bound: {
+		bound: 600
+	}
+	testname_regex: "pvs_Sequence.PowerLoadTest"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.minutes_battery_life_tested$"
+	lower_bound: {
+		bound: 500
+	}
+	testname_regex: "pvs_Sequence.PowerLoadTest"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.percent_usb_suspended_time$"
+	lower_bound: {
+		bound: 95
+	}
+	upper_bound: {
+		bound: 100
+	}
+	testname_regex: "pvs_Sequence.PowerLoadTest"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.b_on_ac$"
+	lower_bound: {
+		bound: 0
+	}
+	upper_bound: {
+		bound: 0
+	}
+	testname_regex: "pvs_Sequence.PowerLoadTest"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.force_discharge$"
+	lower_bound: {
+		bound: 1
+	}
+	upper_bound: {
+		bound: 1
+	}
+	testname_regex: "pvs_Sequence.PowerLoadTest"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.gaia_login$"
+	lower_bound: {
+		bound: 1
+	}
+	upper_bound: {
+		bound: 1
+	}
+	testname_regex: "pvs_Sequence.PowerLoadTest"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.loop\\d\\d_level_backlight_percent$"
+	lower_bound: {
+		bound: 20
+	}
+	upper_bound: {
+		bound: 100
+	}
+	testname_regex: "pvs_Sequence.PowerLoadTest"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.percent_failed_(docs|email|web)_loads$"
+	upper_bound: {
+		bound: 10
+	}
+	testname_regex: "pvs_Sequence.PowerLoadTest"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.percent_failed_audio_loads$"
+	upper_bound: {
+		bound: 0
+	}
+	testname_regex: "pvs_Sequence.PowerLoadTest"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoPlayback.minutes_battery_life$"
+	lower_bound: {
+		bound: 600
+	}
+	testname_regex: "pvs_Sequence.PowerVideoPlayback"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoPlayback.minutes_tested$"
+	lower_bound: {
+		bound: 120
+	}
+	testname_regex: "pvs_Sequence.PowerVideoPlayback"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoPlayback.percent_usb_suspended_time$"
+	lower_bound: {
+		bound: 95
+	}
+	upper_bound: {
+		bound: 100
+	}
+	testname_regex: "pvs_Sequence.PowerVideoPlayback"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoPlayback.level_backlight_current$"
+	lower_bound: {
+		bound: 1
+	}
+	testname_regex: "pvs_Sequence.PowerVideoPlayback"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoPlayback.level_backlight_max$"
+	lower_bound: {
+		bound: 1
+	}
+	testname_regex: "pvs_Sequence.PowerVideoPlayback"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoPlayback.level_backlight_percent$"
+	lower_bound: {
+		bound: 20
+	}
+	upper_bound: {
+		bound: 100
+	}
+	testname_regex: "pvs_Sequence.PowerVideoPlayback"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoPlayback.b_on_ac$"
+	lower_bound: {
+		bound: 0
+	}
+	upper_bound: {
+		bound: 0
+	}
+	testname_regex: "pvs_Sequence.PowerVideoPlayback"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoPlayback.force_discharge$"
+	lower_bound: {
+		bound: 1
+	}
+	upper_bound: {
+		bound: 1
+	}
+	testname_regex: "pvs_Sequence.PowerVideoPlayback"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoPlayback.*dropped_frame_percent$"
+	lower_bound: {
+		bound: 0
+	}
+	upper_bound: {
+		bound: 5
+	}
+	testname_regex: "pvs_Sequence.PowerVideoPlayback"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.minutes_battery_life$"
+	lower_bound: {
+		bound: 300
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.minutes_tested$"
+	lower_bound: {
+		bound: 120
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.level_backlight_current$"
+	lower_bound: {
+		bound: 1
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.level_backlight_percent$"
+	lower_bound: {
+		bound: 20
+	}
+	upper_bound: {
+		bound: 100
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.b_on_ac$"
+	lower_bound: {
+		bound: 0
+	}
+	upper_bound: {
+		bound: 0
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.force_discharge$"
+	lower_bound: {
+		bound: 1
+	}
+	upper_bound: {
+		bound: 1
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria {
+	name_regex: "power_VideoCall.camera_[0-9]*p24_vp8_fps_avg$"
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	lower_bound: {
+		bound: 23
+	}
+	upper_bound: {
+		bound: 25
+	}
+	group: "camera_framerate_avg_check"
+	program: "fake"
+}
+criteria {
+	name_regex: "power_VideoCall.camera_[0-9]*p30_vp9_fps_avg$"
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	group: "camera_framerate_avg_check"
+	program: "fake"
+}
+criteria {
+	name_regex: "power_VideoCall.camera_[0-9]*p24_vp8_fps_min$"
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	lower_bound: {
+		bound: 23
+	}
+	upper_bound: {
+		bound: 25
+	}
+	group: "camera_framerate_check"
+	program: "fake"
+}
+criteria {
+	name_regex: "power_VideoCall.camera_[0-9]*p30_vp9_fps_min$"
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	group: "camera_framerate_check"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.video_720p30_vp8_1_fps_avg$"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.video_720p30_vp8_1_fps_min$"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.video_720p30_vp8_2_fps_avg$"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.video_720p30_vp8_2_fps_min$"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.video_720p30_vp9_1_fps_avg$"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.video_720p30_vp9_1_fps_min$"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.video_720p30_vp9_2_fps_avg$"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_VideoCall.video_720p30_vp9_2_fps_min$"
+	lower_bound: {
+		bound: 29
+	}
+	upper_bound: {
+		bound: 31
+	}
+	testname_regex: "pvs_Sequence.PowerVideoCall"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.fast.minutes_battery_life$"
+	lower_bound: {
+		bound: 500
+	}
+	requirement_id_regex: "pwr-qCheck-0001.*"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.fast.minutes_battery_life_tested$"
+	lower_bound: {
+		bound: 2
+	}
+	requirement_id_regex: "pwr-qCheck-0001.*"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.fast.b_on_ac$"
+	lower_bound: {
+		bound: 0
+	}
+	upper_bound: {
+		bound: 0
+	}
+	requirement_id_regex: "pwr-qCheck-0001.*"
+	program: "fake"
+}
+criteria: {
+	name_regex: "power_LoadTest.fast.force_discharge$"
+	lower_bound: {
+		bound: 1
+	}
+	upper_bound: {
+		bound: 1
+	}
+	requirement_id_regex: "pwr-qCheck-0001.*"
+	program: "fake"
+}
+criteria: {
+	name_regex: ".*\\.minutes_tested$"
+	lower_bound: {
+		bound: 60
+	}
+	upper_bound: {
+		bound: 240
+	}
+	requirement_id_regex: "pwr-chg-0003-v01"
+	program: "fake"
+}
+criteria: {
+	name_regex: ".*\\.percent_usb_suspended_time$"
+	lower_bound: {
+		bound: 95
+	}
+	upper_bound: {
+		bound: 100
+	}
+	requirement_id_regex: "pwr-chg-0003-v01"
+	program: "fake"
+}
+criteria: {
+	name_regex: ".*\\.b_on_ac$"
+	lower_bound: {
+		bound: 1
+	}
+	upper_bound: {
+		bound: 1
+	}
+	requirement_id_regex: "pwr-chg-0003-v01"
+	program: "fake"
+}
+criteria: {
+	name_regex: ".*\\.force_discharge$"
+	lower_bound: {
+		bound: 0
+	}
+	upper_bound: {
+		bound: 0
+	}
+	requirement_id_regex: "pwr-chg-0003-v01"
+	program: "fake"
+}
+criteria: {
+	name_regex: ".*\\.percent_initial_charge$"
+	lower_bound: {
+		bound: 0
+	}
+	upper_bound: {
+		bound: 10
+	}
+	requirement_id_regex: "pwr-chg-0003-v01"
+	program: "fake"
+}
+criteria: {
+	name_regex: ".*\\.percent_final_charge$"
+	lower_bound: {
+		bound: 95
+	}
+	upper_bound: {
+		bound: 100
+	}
+	requirement_id_regex: "pwr-chg-0003-v01"
+	program: "fake"
+}
+

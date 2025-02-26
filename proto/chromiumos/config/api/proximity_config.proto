@@ -1,0 +1,74 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+package chromiumos.config.api;
+
+// Configure Semtech proximity sensors.
+message ProximityConfig {
+  // Define which antenna(s) the proximity sensor protects.
+  message Location {
+    enum RadioType {
+      UNKNOWN = 0;
+      WIFI = 1;
+      CELLULAR = 2;
+    }
+    RadioType radio_type = 1;
+
+    // For suffixes like "LEFT", "RIGHT", "0",  "1"
+    // One modifier per location, to match device tree.
+    string modifier = 2;
+  }
+  repeated Location location = 1;
+
+  // An empty message indicating that proximity sensor(s) are used,
+  // but the config values are stored elsewhere.
+  message LegacyProximityConfig {
+  }
+
+  message SemtechProximityConfig {
+    message ChannelConfig {
+      // Proximity sensor channel: i.e.: 0,1, 3, 3_comb.
+      string channel = 1;
+
+      // Proximity sensor hardware gain.
+      uint32 hardwaregain = 2;
+
+      // Proximity sensor falling threshold.
+      uint32 thresh_falling = 3;
+
+      // Proximity sensor falling hysteresis.
+      uint32 thresh_falling_hysteresis = 4;
+
+      // Proximity sensor rising threshold.
+      uint32 thresh_rising = 5;
+
+      // Proximity sensor rising hysteresis.
+      uint32 thresh_rising_hysteresis = 6;
+    }
+
+    repeated ChannelConfig channel_config = 1;
+
+    // Proximity sensor sampling frequency.
+    float sampling_frequency = 2;
+
+    // Proximity sensor falling threshold period (debounce).
+    uint32 thresh_falling_period = 3;
+
+    // Proximity sensor rising threshold period (debounce).
+    uint32 thresh_rising_period = 4;
+  }
+
+  message ActivityProximityConfig {
+  }
+
+  oneof config {
+    LegacyProximityConfig legacy_config = 2;
+    SemtechProximityConfig semtech_config = 3;
+    ActivityProximityConfig activity_config = 4;
+  }
+}

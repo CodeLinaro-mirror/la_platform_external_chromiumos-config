@@ -1,0 +1,32 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api.metadata;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
+
+import "chromiumos/test/artifact/test_result.proto";
+
+// NEXT TAG: 6
+message PublishAntsMetadata {
+  // The invocation id of the overall ANTS invocation.
+  string ants_invocation_id = 1;
+
+  // The work unit id of the parent work unit underlying all the modules.
+  string parent_work_unit_id = 2;
+
+  // Partner account id.
+  string account_id = 3;
+
+  // Execution information associated with this run. Re-using one from classic.
+  // But, we will be only looking at buildbucket and dut information.
+  chromiumos.test.artifact.ExecutionInfo primary_execution_info = 4;
+
+  // The current luci invocation id. This does not include parent/child
+  // invocations or any other bb info.
+  // TODO(srinivashegde): Add more bb details when ready.
+  string luci_invocation_id = 5;
+}

@@ -1,0 +1,32 @@
+// Copyright 2019 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.test.xmlrpc;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/xmlrpc";
+
+// Value represents a value in XML-RPC.
+message Value {
+  oneof scalar_oneof {
+    sint32 int = 2;
+    bool boolean = 3;
+    string string = 4;
+    double double = 5;
+    // ISO8601 datetime
+    string datetime = 6;
+    bytes base64 = 7;
+    Struct struct = 8;
+    Array array = 9;
+  }
+}
+
+message Struct {
+  map<string, Value> members = 1;
+}
+
+message Array {
+  repeated Value values = 1;
+}

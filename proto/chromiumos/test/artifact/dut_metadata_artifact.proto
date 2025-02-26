@@ -1,0 +1,32 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.artifact;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/artifact";
+
+import "chromiumos/test/api/provision_state.proto";
+import "chromiumos/test/lab/api/dut.proto";
+
+// Captures artifact for dut metadata.
+// NEXT TAG: 2
+message DutMetadataArtifact {
+
+  // All the related protos referred by ids in dut info in test_result
+  //  should be included here.
+  repeated DutInfoArtifact dut_info_artifacts = 1;
+}
+
+// Captures dut & provision related artifact info.
+// NEXT TAG: 3
+message DutInfoArtifact {
+
+  // Dut referred by id in test_result.
+  chromiumos.test.lab.api.Dut dut = 1;
+
+  // Provision state referred by id in test_result.
+  chromiumos.test.api.ProvisionState provision_state = 2;
+}
