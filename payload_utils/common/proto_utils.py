@@ -7,7 +7,7 @@
 import importlib
 import os
 
-from typing import Any, Dict, List, Set, NamedTuple
+from typing import Any, Dict, List, NamedTuple, Optional, Set
 
 from google.protobuf import message as pb_message
 from google.protobuf import symbol_database
@@ -44,7 +44,7 @@ class FieldInfo(NamedTuple):
   repeated: bool
 
 
-def create_symbol_db() -> symbol_database.SymbolDatabase():
+def create_symbol_db() -> symbol_database.SymbolDatabase:
   """Load any generated messages from python/ and return symbol database.
 
   Messages auto-register when imported, so we just recursively import and
@@ -54,7 +54,7 @@ def create_symbol_db() -> symbol_database.SymbolDatabase():
       symbol_database.Default()
   """
 
-  def __import_modules(dirname: str, paths: [str]):
+  def __import_modules(dirname: str, paths: List[str]) -> None:
     """Recurse through a list of paths and automatically load protobufs.
 
       This starts with dirname and recursively descends looking for python files
@@ -83,7 +83,7 @@ def create_symbol_db() -> symbol_database.SymbolDatabase():
 def resolve_field_path(
     message: pb_message.Message,
     path: str,
-) -> List[FieldInfo]:
+) -> List[Optional[FieldInfo]]:
   """Resolve a dotted field path into specific information about the fields.
 
   A field path is of the format foo.bar.baz where the dotted notation .field
