@@ -118,6 +118,9 @@ message InstallResponse {
 
   // OS flavor specific metadata
   google.protobuf.Any metadata = 2;
+
+  // Error/other messages to accompany the status
+  string message = 3;
 }
 
 // Metadata for long running operation
@@ -129,9 +132,35 @@ message InstallRequest {
   StoragePath image_path = 1;
   // Prevents device reboot during system image provisioning.
   bool prevent_reboot = 2;
-  // Provides a possible tar file to overwrite current install files
+  // Provides a possible tar file to overwrite current install files.
   StoragePath overwrite_payload = 3;
   // Specific metadata to the install flavor. May be ignored if unneeded.
   google.protobuf.Any metadata = 4;
+  // Provides partner specific metadata for install request.
+  PartnerMetadata partner_metadata = 5;
+  // Provides kernel prebuilts to replace the OS image's kernel.
+  KernelPrebuilts kernel_prebuilts = 6;
 }
 
+// PartnerMetadata determines any configuration around Partner settings.
+message PartnerMetadata {
+  // Account ID for the partner.
+  int64 account_id = 1;
+  // The bucket with the partner images and artifacts
+  string partner_gcs_bucket = 2;
+}
+
+// KernelPrebuilts contains paths to kernel artifacts to provision, replacing
+// the OS image's kernel.
+message KernelPrebuilts {
+  // PartitionImage defines an image to flash onto an OS partition.
+  message PartitionImage {
+    // The name of the OS partition to flash onto.
+    string partition_name = 1;
+    // Path to the new image file for that partition.
+    StoragePath image_path = 2;
+  }
+  repeated PartitionImage partition_images = 1;
+  // TODO: b/392692756 - Add whatever info is necessary for flashing specific
+  // modules onto the ramdisk.
+}

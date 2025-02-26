@@ -31,7 +31,7 @@ message TestResult {
 }
 
 // Captures invocation-level information for test results.
-// NEXT TAG: 13
+// NEXT TAG: 14
 message TestInvocation {
   // The test environment specific information.
   TestEnvironment test_environment = 1;
@@ -89,6 +89,9 @@ message TestInvocation {
 
   // Partner info associated with the test run.
   PartnerInfo partner_info = 9;
+
+  // 3D equivalence classes (EqC) info associated with the test run.
+  EqcInfo eqc_info = 13;
 }
 
 // Captures the test environment that produced the test invocation,
@@ -122,6 +125,28 @@ message TestEnvironment {
   // All the ancestor ids of this test environment. The order represents the
   // relationship of the ancestors and the first one is the root.
   repeated Id ancestor_ids = 2;
+}
+
+// Captures the 3D equivalence classes (EqC) information.
+// NEXT TAG: 5
+message EqcInfo {
+    // Unique hash for an EqC from the 3D source.
+    // Example: "A310930190d11"
+    string eqc_hash = 1;
+
+    // Optional. Human readable name for an EqC. Set by the user in the 3D
+    // source.
+    // Example: "IntelRaptorLakeKernelNext"
+    string eqc_name = 2;
+
+    // EqC category expression name which is set on the test.
+    // Example: "{\"name\": \"Audio_SoC_Codec_Amp\"}"
+    map<string, string> eqc_category_expression = 3;
+
+    // A map of dimension names and values for an EqC. The dimension names
+    // should be aligned with the EqC category expression.
+    // Example: {"wifiChip":"bar", "soc":"foo"}
+    map<string, string> eqc_dimensions = 4;
 }
 
 // Captures information regarding a test run.
@@ -252,7 +277,7 @@ message BuildInfo {
 }
 
 // The complete build metadata of the test case.
-// NEXT TAG: 14
+// NEXT TAG: 15
 message BuildMetadata {
   // ARC++ metadata
   message Arc {
@@ -280,11 +305,23 @@ message BuildMetadata {
   ChromeOs chrome_os = 3;
 
   // Firmware metadata
+  // NEXT TAG: 5
   message Firmware {
-    // Read-only firmware version, e.g. "Google_Voema.13672.224.0".
+    // Read-only AP firmware version running on the DUT,
+    // e.g. "Google_Voema.13672.224.0".
     string ro_version = 1;
-    // Read-write firmware version, e.g. "Google_Voema.13672.224.0".
+
+    // Read-write AP firmware version running on the DUT,
+    // e.g. "Google_Voema.13672.224.0".
     string rw_version = 2;
+
+    // Read-only AP firmware version specified in the firmware provision
+    // request, e.g. "Google_Voxel.13672.415.0".
+    string ap_ro_version = 3;
+
+    // Read-write AP firmware version specified in the firmware provision
+    // request, e.g. "Google_Voxel.13672.415.0".
+    string ap_rw_version = 4;
   }
 
   Firmware firmware = 4;
@@ -417,6 +454,27 @@ message BuildMetadata {
     repeated ChameleonConnectionType chameleon_connection_types = 2;
   }
   ChameleonInfo chameleon_info = 13;
+
+  // Servo info associated with the test invocation.
+  // NEXT TAG: 4
+  message ServoInfo {
+    // Servod version
+    // Example: "v1.0.2345-4b2de21e 2024-08-17 00:30:57"
+    string servod_version = 1;
+
+    // Servo firmware versions
+    // Example: "c2d2_v2.4.73-d771c18ba9,0.24.40/ti50_common_prepvt-15086.B:v0.0.355-15c69d7f,
+    // fizz-labstation-release/R115-15474.55.0,servo_v4_v2.4.58-c37246f9c"
+    string servo_versions = 2;
+
+    // Servo type
+    // Sourced from the servo_type field in the sysinfo/servo file
+    // Example: "servo_v4_with_c2d2_and_ccd_ti50"
+    string servo_type = 3;
+  }
+
+  // Servo info associated with test invocation.
+  ServoInfo servo_info = 14;
 }
 
 // Captures DUT related info.

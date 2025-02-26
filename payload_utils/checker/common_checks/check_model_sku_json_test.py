@@ -31,7 +31,7 @@ class CheckModelSkuTest(unittest.TestCase):
         }]
     }
 
-    with open(generated_dir / 'model_sku.json', 'w') as f:
+    with open(generated_dir / 'model_sku.json', 'w', encoding='utf-8') as f:
       json.dump(model_sku, f)
 
   def test_check_model_present(self):
@@ -42,7 +42,10 @@ class CheckModelSkuTest(unittest.TestCase):
   def test_check_model_present_violated(self):
     """Tests check_model_present with invalid configs."""
 
-    with open(self.factory_dir / 'generated' / 'model_sku.json', 'w') as f:
+    with open(
+        self.factory_dir / 'generated' / 'model_sku.json',
+        'w',
+        encoding='utf-8') as f:
       json.dump({'a': 1}, f)
 
     with self.assertRaisesRegex(

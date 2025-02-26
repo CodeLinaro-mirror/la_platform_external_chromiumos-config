@@ -277,6 +277,10 @@
               "dgpuType": 1,
               "present": 1
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "fan": {
               "fanCount": 0
             },
@@ -1027,6 +1031,10 @@
               "present": 1,
               "type": 1
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "fan": {
               "fanCount": 2
             },
@@ -1676,6 +1684,10 @@
               "present": 1,
               "type": 1
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 2
@@ -1696,34 +1708,12 @@
               "present": 2
             },
             "keyboard": {
-              "alsSteps": [
-                {
-                  "backlightPercent": 40.0,
-                  "luxThreshold": {
-                    "decreaseThreshold": -1,
-                    "increaseThreshold": 20
-                  }
-                },
-                {
-                  "luxThreshold": {
-                    "decreaseThreshold": 15,
-                    "increaseThreshold": -1
-                  }
-                }
-              ],
               "backlight": 1,
-              "backlightUserSteps": [
-                0.0,
-                10.0,
-                20.0,
-                40.0,
-                60.0,
-                100.0
-              ],
+              "bottomLeftLayout": 1,
+              "bottomRightLayout": 1,
               "keyboardType": 1,
-              "mcuType": 1,
-              "noAlsBrightness": 40.0,
               "numericPad": 1,
+              "numericPadLayout": 2,
               "powerButton": 1
             },
             "lightSensor": {
@@ -2010,34 +2000,12 @@
               },
               "hardwareFeature": {
                 "keyboard": {
-                  "alsSteps": [
-                    {
-                      "backlightPercent": 40.0,
-                      "luxThreshold": {
-                        "decreaseThreshold": -1,
-                        "increaseThreshold": 20
-                      }
-                    },
-                    {
-                      "luxThreshold": {
-                        "decreaseThreshold": 15,
-                        "increaseThreshold": -1
-                      }
-                    }
-                  ],
                   "backlight": 1,
-                  "backlightUserSteps": [
-                    0.0,
-                    10.0,
-                    20.0,
-                    40.0,
-                    60.0,
-                    100.0
-                  ],
+                  "bottomLeftLayout": 1,
+                  "bottomRightLayout": 1,
                   "keyboardType": 1,
-                  "mcuType": 1,
-                  "noAlsBrightness": 40.0,
                   "numericPad": 1,
+                  "numericPadLayout": 2,
                   "powerButton": 1
                 }
               },
@@ -2332,6 +2300,11 @@
               "present": 1,
               "type": 1,
               "wedgeTimeoutInMs": 120000
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "maxSensorOdrMhz": 50000,
+              "present": 1
             },
             "fingerprint": {
               "board": "fake_fingerprint_board",
@@ -2688,6 +2661,7 @@
               "hardwareFeature": {
                 "embeddedController": {
                   "ecType": 1,
+                  "maxSensorOdrMhz": 50000,
                   "present": 1
                 }
               },
@@ -3117,6 +3091,10 @@
               "i2cPath": "1-0023",
               "productId": 1000,
               "vendorId": 6353
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
             },
             "formFactor": {
               "formFactor": 3,
@@ -3799,6 +3777,10 @@
               "productId": 1000,
               "usbPath": "1-1.1",
               "vendorId": 6353
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
             },
             "formFactor": {
               "formFactor": 3,
@@ -4499,6 +4481,10 @@
               "usbPath": "1-1.1",
               "vendorId": 6353
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 3,
               "recoveryInput": 1
@@ -5129,6 +5115,10 @@
             "cellular": {
               "present": 2
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 7,
               "recoveryInput": 1
@@ -5742,6 +5732,10 @@
             },
             "cellular": {
               "present": 2
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
             },
             "formFactor": {
               "formFactor": 7,
@@ -9133,6 +9127,10 @@
               "type": 1,
               "wedgeTimeoutInMs": 210000
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 1,
               "recoveryInput": 1
@@ -9334,8 +9332,36 @@
                     "antModePpag": 3,
                     "antTableVersion": 2
                   },
-                  "btSar": {
+                  "bbfb": {
                     "revision": 1
+                  },
+                  "bbsm": {
+                    "bandsSelection": {},
+                    "revision": 1
+                  },
+                  "bdcm": {
+                    "bdcmDualChainMode": {},
+                    "revision": 1
+                  },
+                  "bdmm": {
+                    "revision": 1
+                  },
+                  "bpag": {
+                    "enablementBpagCountries": {},
+                    "revision": 2
+                  },
+                  "btSar": {
+                    "revision": 2,
+                    "set1ChainA": {},
+                    "set1ChainB": {}
+                  },
+                  "bucs": {
+                    "revision": 1,
+                    "uhbCountrySelection": {}
+                  },
+                  "dsbr": {
+                    "bluetoothRadioResistorOhm": 33,
+                    "override": true
                   },
                   "dsm": {
                     "disableActiveSdrChannels": "1",
@@ -9347,6 +9373,15 @@
                     "supportUltraHighBand": "3",
                     "uartConfigurations": "5",
                     "unii4": "7"
+                  },
+                  "ebrd": {
+                    "revision": 1,
+                    "set2ChainA": {},
+                    "set2ChainB": {},
+                    "set3ChainA": {},
+                    "set3ChainB": {},
+                    "set4ChainA": {},
+                    "set4ChainB": {}
                   },
                   "sarTable": {
                     "cdbNonTabletModePowerTableA": {
@@ -9494,6 +9529,7 @@
                     },
                     "wgdsVersion": 2
                   },
+                  "wpfc": {},
                   "wtasTable": {
                     "denyListEntry1": 1,
                     "denyListEntry10": 10,
@@ -9968,8 +10004,36 @@
                         "antModePpag": 3,
                         "antTableVersion": 2
                       },
-                      "btSar": {
+                      "bbfb": {
                         "revision": 1
+                      },
+                      "bbsm": {
+                        "bandsSelection": {},
+                        "revision": 1
+                      },
+                      "bdcm": {
+                        "bdcmDualChainMode": {},
+                        "revision": 1
+                      },
+                      "bdmm": {
+                        "revision": 1
+                      },
+                      "bpag": {
+                        "enablementBpagCountries": {},
+                        "revision": 2
+                      },
+                      "btSar": {
+                        "revision": 2,
+                        "set1ChainA": {},
+                        "set1ChainB": {}
+                      },
+                      "bucs": {
+                        "revision": 1,
+                        "uhbCountrySelection": {}
+                      },
+                      "dsbr": {
+                        "bluetoothRadioResistorOhm": 33,
+                        "override": true
                       },
                       "dsm": {
                         "disableActiveSdrChannels": "1",
@@ -9981,6 +10045,15 @@
                         "supportUltraHighBand": "3",
                         "uartConfigurations": "5",
                         "unii4": "7"
+                      },
+                      "ebrd": {
+                        "revision": 1,
+                        "set2ChainA": {},
+                        "set2ChainB": {},
+                        "set3ChainA": {},
+                        "set3ChainB": {},
+                        "set4ChainA": {},
+                        "set4ChainB": {}
                       },
                       "sarTable": {
                         "cdbNonTabletModePowerTableA": {
@@ -10128,6 +10201,7 @@
                         },
                         "wgdsVersion": 2
                       },
+                      "wpfc": {},
                       "wtasTable": {
                         "denyListEntry1": 1,
                         "denyListEntry10": 10,
@@ -10218,6 +10292,10 @@
               "present": 1,
               "type": 1,
               "wedgeTimeoutInMs": 180000
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
             },
             "formFactor": {
               "formFactor": 1,
@@ -10774,6 +10852,10 @@
               "present": 1,
               "type": 1
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "formFactor": 5,
               "recoveryInput": 3
@@ -11287,6 +11369,10 @@
             "cellular": {
               "present": 2
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "formFactor": {
               "detachableUi": true,
               "formFactor": 4,
@@ -11782,6 +11868,10 @@
             },
             "cellular": {
               "present": 2
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
             },
             "formFactor": {
               "detachableUi": true,
@@ -13396,6 +13486,9 @@
       },
       "designConfigId": {
         "value": "PROJECT_B:33"
+      },
+      "diskLayout": {
+        "defaultKeyStateful": true
       },
       "firmware": {
         "ecRoPayload": {

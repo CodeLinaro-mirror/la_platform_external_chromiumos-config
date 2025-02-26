@@ -32,4 +32,6 @@ message TaskWithState {
   int64 bbid = 3;
   string lease_id = 4;
   string device_name = 5;
+  // Timestamp in microseconds.
+  int64 end_time = 6;
 }

@@ -23,26 +23,3 @@ function config_usage() {
   echo "  --output-dir/-o <dir> - Directory to write output to (default cwd)"
   exit 1
 }
-
-# Creates a python venv using vpython
-#
-# This piggybacks on the venv created by vpython itself. Once the venv is active
-# the python/python3 commands will be symlinked to the vpython ones and we'll
-# have access to the vpython site-packages (installed according to .vpython)
-function create_venv() {
-  # Bash gets variable scoping very wrong, even though we're declaring
-  # a local variable here, it can still conflict with a read-only global
-  # and throw an error, so use __ prefix as a workaround
-  local -r __script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
-  local -r __config_dir="$(realpath -e "${__script_dir}/../")"
-
-  # Create and activate venv.  We use vpython3 here specifically because
-  # depot_tools bundles its own python3 interpreter, which gives us a more
-  # hermetic experience for vpython dependencies.
-  local -r __vpython="vpython3 -vpython-spec ${__config_dir}/.vpython"
-  local -r __venv_root="$(${__vpython} -c 'print(__import__("sys").prefix)')"
-
-  # Ignore shellcheck non-constant source warning.
-  # shellcheck source=/dev/null
-  source "${__venv_root}/bin/activate"
-}

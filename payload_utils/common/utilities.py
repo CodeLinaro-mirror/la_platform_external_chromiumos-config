@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 # Copyright 2021 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 """General-purpose utility functions that don't belong elsewhere."""
 
-from typing import Text
 
-
-def levenshtein_distance(aa: Text, bb: Text) -> int:
+def levenshtein_distance(aa: str, bb: str) -> int:
   """Compute the Levenshtein distance between two strings.
 
     This is the minimum number of single-character edits required to change aa

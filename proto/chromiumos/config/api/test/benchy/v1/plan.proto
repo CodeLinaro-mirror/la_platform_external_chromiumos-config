@@ -21,9 +21,16 @@ message Payload {
         string destination = 3;
 }
 
+enum OperatingSystem {
+        // ChromeOS image.
+        OS_CHROMEOS = 0;
+        // Android image.
+        OS_ANDROID = 1;
+}
+
 message Device {
         // Name of the device.
-        // For lab/crosfleet machines, use skylabe_HOSTNAME, e.g.
+        // For lab/crosfleet machines, use skylab_HOSTNAME, e.g.
         // "skylab_chromeos1-row3-rack1-host2"
         // For developer machines, use MODEL-BUILDSTAGE-SKU-ASSET
         // "copano-evt-sku2-C123456"
@@ -36,7 +43,28 @@ message Device {
         // Board of the device. e.g.
         // "volteer"
         string board = 3;
+
+        // List of supported operating systems. e.g.
+        // [ OS_CHROMEOS ]
+        repeated OperatingSystem oses = 4;
 }
+
+message Application {
+        // Name of the application. e.g.
+        // "com.chrome.dev"
+        string name = 1;
+
+        // Installation method of the application being installed.
+        enum InstallationMethod {
+          // Local Android APK.
+          METHOD_LOCAL_APK = 0;
+        }
+        InstallationMethod installation_method = 2;
+
+        // Full path of the application to be installed. e.g.
+        // "clankium/src/out/Default/apks/Chrome.apk"
+        string source = 3;
+};
 
 message Build {
         // Name of the build.  Usually the same as the version.  e.g.
@@ -46,6 +74,12 @@ message Build {
         // Version of the build. e.g.
         // "R108-15183.8.0"
         string version = 2;
+
+        // Operating system of the build.
+        OperatingSystem os = 3;
+
+        // List of applications to be installed.
+        repeated Application applications = 4;
 }
 
 message Parameter {
@@ -76,10 +110,22 @@ message Parameter {
         ExecutionMode execution_mode = 4;
 }
 
+message ConfigOption {
+        // Name of the configuration option. e.g.
+        // "--probe-config"
+        string name = 1;
+
+        // Value of the configuration option. e.g.
+        // "probe-config.hjson"
+        string value = 2;
+}
+
 message Workload {
         // Name of the workload.
         // For tast test names, use the name of the test. e.g.
         // "borealis.TraceReplay.glxgears"
+        // For crossbench, use the name of the crossbench test. e.g.
+        // "jetstream_2.0"
         string name = 1;
 
         // Command line that should be run to run the workload include named
@@ -94,6 +140,18 @@ message Workload {
         // TODO: results, processing
         // Repeat count for this workload
         uint32 repeat_count = 4;
+
+        // Test runner that should be used to run the workload.
+        enum Runner {
+          // Run via tast.
+          RUNNER_TAST = 0;
+          // Run via crossbench.
+          RUNNER_CROSSBENCH = 1;
+        };
+        Runner runner = 5;
+
+        // List of configuration options for the runner. e.g.
+        repeated ConfigOption options = 6;
 }
 
 message Plan {

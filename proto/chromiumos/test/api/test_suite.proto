@@ -33,9 +33,11 @@ message TestSuite {
     TestCaseMetadataList test_cases_metadata = 6;
   }
 
-  // The total number of shards to be used in a test run.
-  // Currently only supported for Tast VM tests which are not run by CFT.
-  int64 total_shards = 5;
+  // No-op with CTP2 rollout, use max_in_shard instead.
+  int64 total_shards = 5 [deprecated = true];
+
+  // See test_platform.Request.TestPlan.max_in_shard.
+  int64 max_in_shard = 8;
 
   // Defines a combination of tag and test name based selection criteria,
   // which is applied against a list of TestCase definitions to determine

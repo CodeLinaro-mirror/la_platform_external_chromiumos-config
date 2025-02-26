@@ -349,6 +349,9 @@
         },
         "socArch": 2,
         "socFamily": "FAKE_INTEL_PLATFORM",
+        "swapConfig": {
+          "sizeMultiplier": 1.5
+        },
         "videoCodecs": [
           1,
           1,
@@ -356,7 +359,7 @@
         ]
       },
       "publicReplication": {
-        "publicFields": "name,id,baseProgram,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,mosysPlatformName,generateCameraMediaProfiles"
+        "publicFields": "name,id,baseProgram,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,platform.swapConfig,mosysPlatformName,generateCameraMediaProfiles"
       }
     },
     {
@@ -502,7 +505,7 @@
         "socFamily": "FAKE_INTEL_PLATFORM_A"
       },
       "publicReplication": {
-        "publicFields": "name,id,baseProgram,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,mosysPlatformName,generateCameraMediaProfiles"
+        "publicFields": "name,id,baseProgram,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,platform.swapConfig,mosysPlatformName,generateCameraMediaProfiles"
       }
     }
   ]

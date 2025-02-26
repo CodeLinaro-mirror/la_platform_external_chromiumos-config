@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+#!/usr/bin/env vpython3
 # Copyright 2020 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -23,16 +22,16 @@ def Main(input_config, output_config):  # pylint: disable=invalid-name
   """
   config = config_bundle_pb2.ConfigBundle()
   try:
-    with open(input_config, 'r') as f:
+    with open(input_config, 'r', encoding='utf-8') as f:
       json_format.Parse(f.read(), config)
   except json_format.ParseError:
     config = prototype_config_bundle_pb2.PrototypeConfigBundle()
-    with open(input_config, 'r') as f:
+    with open(input_config, 'r', encoding='utf-8') as f:
       json_format.Parse(f.read(), config)
 
   json_output = json_format.MessageToJson(
       config, sort_keys=True, use_integers_for_enums=True)
-  with open(output_config, 'w') as f:
+  with open(output_config, 'w', encoding='utf-8') as f:
     print(json_output, file=f)
 
 

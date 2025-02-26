@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2021 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -123,7 +122,7 @@ class MergeHwid(MergePlugin):
       raise RuntimeError('Only one of hwid_path or hwid_data can be specified')
 
     if hwid_path:
-      with open(hwid_path) as hwid_file:
+      with open(hwid_path, 'r', encoding='utf-8') as hwid_file:
         self.data = yaml.load(hwid_file, Loader=yaml.SafeLoader)
     else:
       self.data = copy.deepcopy(hwid_data)
@@ -549,7 +548,7 @@ class MergeHwid(MergePlugin):
         ['emmc5_fw_ver', 'manfid', 'name', 'oemid', 'prv', 'sectors'])
 
     pcie_fields = ['class', 'device', 'vendor']
-    if all([field in values for field in pcie_fields]):
+    if all(field in values for field in pcie_fields):
       component.storage.type = component.storage.NVME
       component.storage.pci.vendor_id = values['vendor']
       component.storage.pci.device_id = values['device']

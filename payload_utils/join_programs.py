@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
+#!/usr/bin/env vpython3
 # Copyright 2021 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -55,10 +53,10 @@ def main(opts):
       config.program.CopyFrom(program_config)
 
   logging.debug('Writing output')
-  io_utils.write_message_json(project_configs, args.output)
+  io_utils.write_message_json(project_configs, opts.output)
 
-  if args.binary_output:
-    io_utils.write_message_binary(project_configs, args.binary_output)
+  if opts.binary_output:
+    io_utils.write_message_binary(project_configs, opts.binary_output)
 
 
 if __name__ == "__main__":

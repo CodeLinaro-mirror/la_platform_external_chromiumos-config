@@ -5,10 +5,10 @@
 """Contains all the pre-upload and pre-commit validation checks for SuiteSets"""
 
 # [VPYTHON:BEGIN]
-# python_version: "3.8"
+# python_version: "3.11"
 # wheel: <
-#   name: "infra/python/wheels/protobuf-py2_py3"
-#   version: "version:3.18.1"
+#   name: "infra/python/wheels/protobuf-py3"
+#   version: "version:4.21.9"
 # >
 # [VPYTHON:END]
 

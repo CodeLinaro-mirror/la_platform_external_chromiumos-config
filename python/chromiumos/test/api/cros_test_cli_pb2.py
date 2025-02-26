@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\'chromiumos/test/api/cros_test_cli.proto\x12\x13\x63hromiumos.test.api\x1a\x19google/protobuf/any.proto\x1a*chromiumos/test/api/test_case_result.proto\x1a\x31\x63hromiumos/test/api/test_execution_metadata.proto\x1a$chromiumos/test/api/test_suite.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xfa\x04\n\x0f\x43rosTestRequest\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12<\n\x07primary\x18\x02 \x01(\x0b\x32+.chromiumos.test.api.CrosTestRequest.Device\x12?\n\ncompanions\x18\x03 \x03(\x0b\x32+.chromiumos.test.api.CrosTestRequest.Device\x12=\n\x10inventory_server\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12&\n\x08metadata\x18\x05 \x01(\x0b\x32\x14.google.protobuf.Any\x12&\n\x04\x61rgs\x18\x06 \x03(\x0b\x32\x18.chromiumos.test.api.Arg\x1a\xa3\x02\n\x06\x44\x65vice\x12)\n\x03\x64ut\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12\x37\n\ndut_server\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12=\n\x10provision_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x38\n\x0blibs_server\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12<\n\x0f\x64\x65vboard_server\x18\x05 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"\xbb\x02\n\x10\x43rosTestResponse\x12>\n\x11test_case_results\x18\x01 \x03(\x0b\x32#.chromiumos.test.api.TestCaseResult\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12Q\n\x12given_test_results\x18\x03 \x03(\x0b\x32\x35.chromiumos.test.api.CrosTestResponse.GivenTestResult\x1al\n\x0fGivenTestResult\x12\x13\n\x0bparent_test\x18\x01 \x01(\t\x12\x44\n\x17\x63hild_test_case_results\x18\x02 \x03(\x0b\x32#.chromiumos.test.api.TestCaseResultB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n\'chromiumos/test/api/cros_test_cli.proto\x12\x13\x63hromiumos.test.api\x1a\x19google/protobuf/any.proto\x1a*chromiumos/test/api/test_case_result.proto\x1a\x31\x63hromiumos/test/api/test_execution_metadata.proto\x1a$chromiumos/test/api/test_suite.proto\x1a!chromiumos/test/lab/api/dut.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"\xb7\x05\n\x0f\x43rosTestRequest\x12\x33\n\x0btest_suites\x18\x01 \x03(\x0b\x32\x1e.chromiumos.test.api.TestSuite\x12<\n\x07primary\x18\x02 \x01(\x0b\x32+.chromiumos.test.api.CrosTestRequest.Device\x12?\n\ncompanions\x18\x03 \x03(\x0b\x32+.chromiumos.test.api.CrosTestRequest.Device\x12=\n\x10inventory_server\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12&\n\x08metadata\x18\x05 \x01(\x0b\x32\x14.google.protobuf.Any\x12&\n\x04\x61rgs\x18\x06 \x03(\x0b\x32\x18.chromiumos.test.api.Arg\x12;\n\x0fpublish_servers\x18\x07 \x03(\x0b\x32\".chromiumos.test.api.PublishServer\x1a\xa3\x02\n\x06\x44\x65vice\x12)\n\x03\x64ut\x18\x01 \x01(\x0b\x32\x1c.chromiumos.test.lab.api.Dut\x12\x37\n\ndut_server\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12=\n\x10provision_server\x18\x03 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12\x38\n\x0blibs_server\x18\x04 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\x12<\n\x0f\x64\x65vboard_server\x18\x05 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"S\n\rPublishServer\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x34\n\x07\x61\x64\x64ress\x18\x02 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpoint\"\xbb\x02\n\x10\x43rosTestResponse\x12>\n\x11test_case_results\x18\x01 \x03(\x0b\x32#.chromiumos.test.api.TestCaseResult\x12&\n\x08metadata\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\x12Q\n\x12given_test_results\x18\x03 \x03(\x0b\x32\x35.chromiumos.test.api.CrosTestResponse.GivenTestResult\x1al\n\x0fGivenTestResult\x12\x13\n\x0bparent_test\x18\x01 \x01(\t\x12\x44\n\x17\x63hild_test_case_results\x18\x02 \x03(\x0b\x32#.chromiumos.test.api.TestCaseResultB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__case__result__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__execution__metadata__pb2.DESCRIPTOR,chromiumos_dot_test_dot_api_dot_test__suite__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
 
@@ -87,8 +87,8 @@ _CROSTESTREQUEST_DEVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=646,
-  serialized_end=937,
+  serialized_start=707,
+  serialized_end=998,
 )
 
 _CROSTESTREQUEST = _descriptor.Descriptor(
@@ -141,6 +141,13 @@ _CROSTESTREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='publish_servers', full_name='chromiumos.test.api.CrosTestRequest.publish_servers', index=6,
+      number=7, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -154,7 +161,46 @@ _CROSTESTREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=303,
-  serialized_end=937,
+  serialized_end=998,
+)
+
+
+_PUBLISHSERVER = _descriptor.Descriptor(
+  name='PublishServer',
+  full_name='chromiumos.test.api.PublishServer',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='chromiumos.test.api.PublishServer.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='address', full_name='chromiumos.test.api.PublishServer.address', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1000,
+  serialized_end=1083,
 )
 
 
@@ -192,8 +238,8 @@ _CROSTESTRESPONSE_GIVENTESTRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1147,
-  serialized_end=1255,
+  serialized_start=1293,
+  serialized_end=1401,
 )
 
 _CROSTESTRESPONSE = _descriptor.Descriptor(
@@ -237,8 +283,8 @@ _CROSTESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=940,
-  serialized_end=1255,
+  serialized_start=1086,
+  serialized_end=1401,
 )
 
 _CROSTESTREQUEST_DEVICE.fields_by_name['dut'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_dut__pb2._DUT
@@ -253,12 +299,15 @@ _CROSTESTREQUEST.fields_by_name['companions'].message_type = _CROSTESTREQUEST_DE
 _CROSTESTREQUEST.fields_by_name['inventory_server'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _CROSTESTREQUEST.fields_by_name['metadata'].message_type = google_dot_protobuf_dot_any__pb2._ANY
 _CROSTESTREQUEST.fields_by_name['args'].message_type = chromiumos_dot_test_dot_api_dot_test__execution__metadata__pb2._ARG
+_CROSTESTREQUEST.fields_by_name['publish_servers'].message_type = _PUBLISHSERVER
+_PUBLISHSERVER.fields_by_name['address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _CROSTESTRESPONSE_GIVENTESTRESULT.fields_by_name['child_test_case_results'].message_type = chromiumos_dot_test_dot_api_dot_test__case__result__pb2._TESTCASERESULT
 _CROSTESTRESPONSE_GIVENTESTRESULT.containing_type = _CROSTESTRESPONSE
 _CROSTESTRESPONSE.fields_by_name['test_case_results'].message_type = chromiumos_dot_test_dot_api_dot_test__case__result__pb2._TESTCASERESULT
 _CROSTESTRESPONSE.fields_by_name['metadata'].message_type = google_dot_protobuf_dot_any__pb2._ANY
 _CROSTESTRESPONSE.fields_by_name['given_test_results'].message_type = _CROSTESTRESPONSE_GIVENTESTRESULT
 DESCRIPTOR.message_types_by_name['CrosTestRequest'] = _CROSTESTREQUEST
+DESCRIPTOR.message_types_by_name['PublishServer'] = _PUBLISHSERVER
 DESCRIPTOR.message_types_by_name['CrosTestResponse'] = _CROSTESTRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -276,6 +325,13 @@ CrosTestRequest = _reflection.GeneratedProtocolMessageType('CrosTestRequest', (_
   })
 _sym_db.RegisterMessage(CrosTestRequest)
 _sym_db.RegisterMessage(CrosTestRequest.Device)
+
+PublishServer = _reflection.GeneratedProtocolMessageType('PublishServer', (_message.Message,), {
+  'DESCRIPTOR' : _PUBLISHSERVER,
+  '__module__' : 'chromiumos.test.api.cros_test_cli_pb2'
+  # @@protoc_insertion_point(class_scope:chromiumos.test.api.PublishServer)
+  })
+_sym_db.RegisterMessage(PublishServer)
 
 CrosTestResponse = _reflection.GeneratedProtocolMessageType('CrosTestResponse', (_message.Message,), {
 

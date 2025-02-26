@@ -252,65 +252,6 @@
 		},
 		{
 			"id": {
-				"value": "fingerprint_common"
-			},
-			"metadata": {
-				"owners": [
-					{
-						"email": "chromeos-fingerprint@google.com"
-					}
-				],
-				"bugComponent": {
-					"value": "b:782045"
-				},
-				"criteria": {
-					"value": "Fingerprint tests common to FSI/Pre FSI testing."
-				}
-			},
-			"tests": [
-				{
-					"value": "tauto.firmware_Fingerprint.RDP1"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.RebootToRO"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.ObeysRollback"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.CrosConfig"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.ROOnlyBootsValidRW"
-				},
-				{
-					"value": "tauto.firmware_FingerprintSigner"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.RDP0"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.SoftwareWriteProtect"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.SystemIsLocked"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.RWNoUpdateRO"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.ROCanUpdateRW"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.AddEntropy"
-				},
-				{
-					"value": "tauto.firmware_Fingerprint.ReadFlash"
-				}
-			]
-		},
-		{
-			"id": {
 				"value": "graphics_hw"
 			},
 			"metadata": {
@@ -1118,9 +1059,6 @@
 					"value": "tast.arc.FileSystemXattrs"
 				},
 				{
-					"value": "tast.arc.Gamepad"
-				},
-				{
 					"value": "tast.arc.Gamepad.vm"
 				},
 				{
@@ -1241,6 +1179,9 @@
 					"value": "tast.arc.Print.container_p"
 				},
 				{
+					"value": "tast.arc.Print.vm_t"
+				},
+				{
 					"value": "tast.arc.RemovableMedia"
 				},
 				{
@@ -1254,9 +1195,6 @@
 				},
 				{
 					"value": "tast.arc.SocProperties"
-				},
-				{
-					"value": "tast.arc.StandardizedKeyboardCopyPaste"
 				},
 				{
 					"value": "tast.arc.StandardizedKeyboardCopyPaste.tablet_mode"
@@ -1788,6 +1726,12 @@
 				},
 				{
 					"value": "tast.camera.CCAUISmoke.fake_hal"
+				},
+				{
+					"value": "tast.camera.CCAUISmoke.fake_vcd"
+				},
+				{
+					"value": "tast.camera.CCAUISmoke.vivid"
 				},
 				{
 					"value": "tast.camera.Characteristics"
@@ -2561,13 +2505,7 @@
 					"value": "tast.cryptohome.LegacyLabelAuthSession.without_key_data"
 				},
 				{
-					"value": "tast.cryptohome.PinLockoutOnLockScreen.legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.PinLockoutOnLockScreen.migrate_legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.PinLockoutOnLockScreen.modern_pin_no_migration"
+					"value": "tast.cryptohome.PinLockoutOnLockScreen"
 				},
 				{
 					"value": "tast.cryptohome.Recovery"
@@ -2576,10 +2514,7 @@
 					"value": "tast.cryptohome.RecoveryLockedForAuth"
 				},
 				{
-					"value": "tast.cryptohome.RecoveryWithUssMigration.legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.RecoveryWithUssMigration.modern_pin"
+					"value": "tast.cryptohome.RecoveryWithUssMigration"
 				},
 				{
 					"value": "tast.cryptohome.RelabelFactors"
@@ -2624,22 +2559,13 @@
 					"value": "tast.cryptohome.UssMigrationChallengeCredential.rsassa_sha1_tpm_dynamic"
 				},
 				{
-					"value": "tast.cryptohome.UssMigrationPasswordPin.legacy_pin"
+					"value": "tast.cryptohome.UssMigrationPasswordPin"
 				},
 				{
-					"value": "tast.cryptohome.UssMigrationPasswordPin.modern_pin"
+					"value": "tast.cryptohome.UssMigrationPinPassword"
 				},
 				{
-					"value": "tast.cryptohome.UssMigrationPinPassword.legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.UssMigrationPinPassword.modern_pin"
-				},
-				{
-					"value": "tast.cryptohome.UssMigrationUpdateAuthFactor.legacy_pin"
-				},
-				{
-					"value": "tast.cryptohome.UssMigrationUpdateAuthFactor.modern_pin"
+					"value": "tast.cryptohome.UssMigrationUpdateAuthFactor"
 				},
 				{
 					"value": "tast.dbus.EventWatcher"
@@ -2658,6 +2584,18 @@
 				},
 				{
 					"value": "tast.debugd.Printer"
+				},
+				{
+					"value": "tast.diagnostics.CheckCPURoutine"
+				},
+				{
+					"value": "tast.diagnostics.CheckMemoryRoutine"
+				},
+				{
+					"value": "tast.diagnostics.RenderApp"
+				},
+				{
+					"value": "tast.diagnostics.SessionLog"
 				},
 				{
 					"value": "tast.dlp.DataLeakPreventionRulesListClipboard.ash_warn_proceeded"
@@ -3197,6 +3135,9 @@
 					"value": "tast.health.RunBluetoothRoutine.v1_discovery_bluez"
 				},
 				{
+					"value": "tast.health.RunBluetoothRoutine.v1_discovery_floss"
+				},
+				{
 					"value": "tast.health.RunBluetoothRoutine.v1_power_bluez"
 				},
 				{
@@ -3485,6 +3426,15 @@
 					"value": "tast.inputs.PhysicalKeyboardAutocorrectAccentKey"
 				},
 				{
+					"value": "tast.inputs.PhysicalKeyboardBasicTyping"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardBasicTyping.first_party_vietnamese"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardBasicTyping.informational"
+				},
+				{
 					"value": "tast.inputs.PhysicalKeyboardCantoneseTyping"
 				},
 				{
@@ -3689,6 +3639,9 @@
 					"value": "tast.kernel.ConfigVerify.chromeos"
 				},
 				{
+					"value": "tast.kernel.ConfigVerify.chromeos_flex"
+				},
+				{
 					"value": "tast.kernel.ConfigVerify.chromeos_kernelci"
 				},
 				{
@@ -3737,10 +3690,19 @@
 					"value": "tast.login.AuthError"
 				},
 				{
-					"value": "tast.login.ChangePassword.user_with_recovery"
+					"value": "tast.login.ChangePassword.user_with_recovery_gaia"
+				},
+				{
+					"value": "tast.login.ChangePassword.user_with_recovery_local_password"
+				},
+				{
+					"value": "tast.login.ChangePassword.user_with_recovery_pin"
 				},
 				{
 					"value": "tast.login.ChangePassword.user_without_recovery"
+				},
+				{
+					"value": "tast.login.ChangePassword.user_without_recovery_and_setup"
 				},
 				{
 					"value": "tast.login.Chrome"
@@ -3806,6 +3768,12 @@
 					"value": "tast.network.ARCCreateWifiInShillByCmd.manual_proxy"
 				},
 				{
+					"value": "tast.network.ARCEAPWifiProvisioning.eap_wifi_tls"
+				},
+				{
+					"value": "tast.network.ARCEAPWifiProvisioning.eap_wifi_ttls"
+				},
+				{
 					"value": "tast.network.ARCIPv6Connectivity"
 				},
 				{
@@ -3834,6 +3802,12 @@
 				},
 				{
 					"value": "tast.network.ARCVPNDisabled"
+				},
+				{
+					"value": "tast.network.AllowCACertificateManagement"
+				},
+				{
+					"value": "tast.network.AllowClientCertificateManagement"
 				},
 				{
 					"value": "tast.network.AlwaysOnVPNRouting.best_effort_mode_ikev2"
@@ -3872,22 +3846,55 @@
 					"value": "tast.network.DHCPClientOptions"
 				},
 				{
+					"value": "tast.network.DHCPClientOptions.dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPHostname"
+				},
+				{
+					"value": "tast.network.DHCPHostname.dhcpcd10"
+				},
+				{
+					"value": "tast.network.DHCPInitBound"
+				},
+				{
+					"value": "tast.network.DHCPInitBound.dhcpcd10"
+				},
+				{
+					"value": "tast.network.DHCPInitBound.non_std_port"
+				},
+				{
+					"value": "tast.network.DHCPInitBound.non_std_port_dhcpcd10"
 				},
 				{
 					"value": "tast.network.DHCPNonASCIIParam"
 				},
 				{
+					"value": "tast.network.DHCPNonASCIIParam.dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPTwoServersConflict"
+				},
+				{
+					"value": "tast.network.DHCPTwoServersConflict.dhcpcd10"
 				},
 				{
 					"value": "tast.network.DHCPTwoServersNAK.ack_first"
 				},
 				{
+					"value": "tast.network.DHCPTwoServersNAK.ack_first_dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPTwoServersNAK.nak_first"
 				},
 				{
+					"value": "tast.network.DHCPTwoServersNAK.nak_first_dhcpcd10"
+				},
+				{
 					"value": "tast.network.DHCPWebProxy"
+				},
+				{
+					"value": "tast.network.DHCPWebProxy.dhcpcd10"
 				},
 				{
 					"value": "tast.network.DNSProxy.arc_doh_always_on"
@@ -3984,6 +3991,72 @@
 				},
 				{
 					"value": "tast.network.PasspointCerts"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.home_to_home"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.home_to_roaming"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.oi_to_oi"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.roaming_to_home"
+				},
+				{
+					"value": "tast.network.PasspointRoaming.roaming_to_roaming"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_only_required_ois"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_with_domain"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_with_oi"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_with_required_oi"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_match_with_tls_realm"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_over_roaming_ap"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_over_roaming_credentials"
+				},
+				{
+					"value": "tast.network.PasspointSelection.home_with_two_domains"
+				},
+				{
+					"value": "tast.network.PasspointSelection.match_with_oui"
+				},
+				{
+					"value": "tast.network.PasspointSelection.match_with_oui36"
+				},
+				{
+					"value": "tast.network.PasspointSelection.match_with_oui36_with_leading_zeros"
+				},
+				{
+					"value": "tast.network.PasspointSelection.match_with_oui_with_leading_zeros"
+				},
+				{
+					"value": "tast.network.PasspointSelection.roaming_match_with_domain"
+				},
+				{
+					"value": "tast.network.PasspointSelection.roaming_match_with_oi"
+				},
+				{
+					"value": "tast.network.PasspointSelection.roaming_match_with_security"
+				},
+				{
+					"value": "tast.network.PasspointSelection.two_home_credentials"
+				},
+				{
+					"value": "tast.network.PasspointSelection.two_roaming_credentials"
 				},
 				{
 					"value": "tast.network.QosNetworkControl"
@@ -4142,6 +4215,9 @@
 					"value": "tast.network.ShillCaptivePortalProperties.ethernet_online_with_no_captive_portal"
 				},
 				{
+					"value": "tast.network.ShillDisableEnableTechnology"
+				},
+				{
 					"value": "tast.network.ShillEthernetReady"
 				},
 				{
@@ -4241,6 +4317,9 @@
 					"value": "tast.network.VPNDNS.wireguard_ipv6"
 				},
 				{
+					"value": "tast.network.VPNMojoConf"
+				},
+				{
 					"value": "tast.network.VPNRouting.ikev2_ipv4"
 				},
 				{
@@ -4277,6 +4356,15 @@
 					"value": "tast.network.VPNRouting.wireguard_ipv6"
 				},
 				{
+					"value": "tast.network.VPNSourceRouting"
+				},
+				{
+					"value": "tast.network.VPNSplitRouting.ikev2"
+				},
+				{
+					"value": "tast.network.VPNSplitRouting.openvpn"
+				},
+				{
 					"value": "tast.network.WireguardCrosh"
 				},
 				{
@@ -4284,6 +4372,9 @@
 				},
 				{
 					"value": "tast.oobe.Smoke.fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.oobe.SmokeEndToEnd"
 				},
 				{
 					"value": "tast.peripherals.LaunchAppFromGuestSession.diagnostics"
@@ -4304,19 +4395,10 @@
 					"value": "tast.peripherals.LaunchAppFromSettings.diagnostics"
 				},
 				{
-					"value": "tast.peripherals.LaunchAppFromSettings.diagnostics_revamp_enabled"
-				},
-				{
 					"value": "tast.peripherals.LaunchAppFromSettings.print_management"
 				},
 				{
-					"value": "tast.peripherals.LaunchAppFromSettings.print_management_revamp_enabled"
-				},
-				{
 					"value": "tast.peripherals.LaunchAppFromSettings.scan"
-				},
-				{
-					"value": "tast.peripherals.LaunchAppFromSettings.scan_revamp_enabled"
 				},
 				{
 					"value": "tast.pita.Install"
@@ -4580,9 +4662,6 @@
 					"value": "tast.printer.Add.unsupported_pin"
 				},
 				{
-					"value": "tast.printer.AddBrotherPrinter"
-				},
-				{
 					"value": "tast.printer.AddHTTPPrinter"
 				},
 				{
@@ -4748,28 +4827,7 @@
 					"value": "tast.printer.ProxyAdd.unsupported_pin"
 				},
 				{
-					"value": "tast.printer.ProxyAddBrotherPrinter"
-				},
-				{
-					"value": "tast.printer.ProxyResolutionBrother.1200dpi"
-				},
-				{
-					"value": "tast.printer.ProxyResolutionBrother.2400x600dpi"
-				},
-				{
-					"value": "tast.printer.ProxyResolutionBrother.300dpi"
-				},
-				{
 					"value": "tast.printer.RejectDocumentFormat"
-				},
-				{
-					"value": "tast.printer.ResolutionBrother.1200dpi"
-				},
-				{
-					"value": "tast.printer.ResolutionBrother.2400x600dpi"
-				},
-				{
-					"value": "tast.printer.ResolutionBrother.300dpi"
 				},
 				{
 					"value": "tast.printer.TestPPDs"
@@ -4874,9 +4932,6 @@
 					"value": "tast.runtimeprobe.VerifySandbox.storage"
 				},
 				{
-					"value": "tast.runtimeprobe.VerifySandbox.tcpc"
-				},
-				{
 					"value": "tast.scanner.ADFJustification"
 				},
 				{
@@ -4907,6 +4962,9 @@
 					"value": "tast.sched.CoreSchedTag"
 				},
 				{
+					"value": "tast.sched.NoNestedCPUCgroups"
+				},
+				{
 					"value": "tast.sched.SetQoSState"
 				},
 				{
@@ -4917,6 +4975,18 @@
 				},
 				{
 					"value": "tast.secagentd.AuthenticationEvents"
+				},
+				{
+					"value": "tast.secagentd.FileEvents.auth_factors"
+				},
+				{
+					"value": "tast.secagentd.FileEvents.cookies"
+				},
+				{
+					"value": "tast.secagentd.FileEvents.user_credential"
+				},
+				{
+					"value": "tast.secagentd.FileEvents.user_fs"
 				},
 				{
 					"value": "tast.secagentd.NetworkEvents.relaxed_icmp"
@@ -5522,9 +5592,6 @@
 			},
 			"tests": [
 				{
-					"value": "tast.firmware.APBmpblk"
-				},
-				{
 					"value": "tast.firmware.BootMode.dev_cold"
 				},
 				{
@@ -5568,6 +5635,12 @@
 				},
 				{
 					"value": "tast.firmware.CheckEOPState.get_eop_state"
+				},
+				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.dev"
+				},
+				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.normal"
 				},
 				{
 					"value": "tast.firmware.CorruptBothKernelCopies"
@@ -5933,6 +6006,9 @@
 					"value": "tast.firmware.RollbackKernel.normal"
 				},
 				{
+					"value": "tast.firmware.SHANI"
+				},
+				{
 					"value": "tast.firmware.SelfSignedBoot"
 				},
 				{
@@ -6011,12 +6087,6 @@
 					"value": "tast.firmware.WilcoPowerBehavior.lid_close_open"
 				},
 				{
-					"value": "tast.firmware.WilcoTPMKeyLadderVerification"
-				},
-				{
-					"value": "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen"
-				},
-				{
 					"value": "tast.firmware.WriteProtect.ap"
 				},
 				{
@@ -6036,6 +6106,9 @@
 				},
 				{
 					"value": "tast.hwsec.TPMContest"
+				},
+				{
+					"value": "tast.platform.CrosID"
 				},
 				{
 					"value": "tast.video.HWDRMInit"
@@ -6134,6 +6207,12 @@
 				},
 				{
 					"value": "tast.firmware.CheckEOPState.get_eop_state"
+				},
+				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.dev"
+				},
+				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.normal"
 				},
 				{
 					"value": "tast.firmware.CorruptFW.body_dev"
@@ -6403,6 +6482,9 @@
 					"value": "tast.firmware.RollbackKernel.normal"
 				},
 				{
+					"value": "tast.firmware.SHANI"
+				},
+				{
 					"value": "tast.firmware.ServoGBBFlags"
 				},
 				{
@@ -6466,12 +6548,6 @@
 					"value": "tast.firmware.WilcoPowerBehavior.lid_close_open"
 				},
 				{
-					"value": "tast.firmware.WilcoTPMKeyLadderVerification"
-				},
-				{
-					"value": "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen"
-				},
-				{
 					"value": "tast.firmware.WriteProtect.ap"
 				},
 				{
@@ -6491,6 +6567,9 @@
 				},
 				{
 					"value": "tast.hwsec.TPMContest"
+				},
+				{
+					"value": "tast.platform.CrosID"
 				},
 				{
 					"value": "tast.video.HWDRMInit"
@@ -6585,6 +6664,15 @@
 					"value": "tast.firmware.CheckKeyboardBacklightFunctionality.lid_close_and_open"
 				},
 				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.dev"
+				},
+				{
+					"value": "tast.firmware.CorruptBothFWSigABAndEC.normal"
+				},
+				{
+					"value": "tast.firmware.DeepSleep"
+				},
+				{
 					"value": "tast.firmware.ECADC"
 				},
 				{
@@ -6637,9 +6725,6 @@
 				},
 				{
 					"value": "tast.firmware.ECLidSwitch.open_lid_to_unsuspend"
-				},
-				{
-					"value": "tast.firmware.ECPDRole"
 				},
 				{
 					"value": "tast.firmware.ECPowerButton"
@@ -6711,9 +6796,6 @@
 					"value": "tast.firmware.ECWatchdog"
 				},
 				{
-					"value": "tast.firmware.SHANI"
-				},
-				{
 					"value": "tast.firmware.ScreenWakeTabletMode"
 				},
 				{
@@ -6730,9 +6812,6 @@
 				},
 				{
 					"value": "tast.firmware.USBResumeFromSuspend"
-				},
-				{
-					"value": "tast.platform.CrosID"
 				},
 				{
 					"value": "tast.power.ShutdownWithCommandBatteryCutoff"
@@ -6767,31 +6846,31 @@
 			},
 			"tests": [
 				{
-					"value": "tast.firmware.ECPDConnect.dtsoff"
+					"value": "tast.firmware.ECPDConnect.dts"
 				},
 				{
 					"value": "tast.firmware.ECPDConnect.flipcc"
 				},
 				{
-					"value": "tast.firmware.ECPDConnect.flipcc_dtsoff"
+					"value": "tast.firmware.ECPDConnect.flipcc_dts"
 				},
 				{
 					"value": "tast.firmware.ECPDConnect.normal"
 				},
 				{
-					"value": "tast.firmware.ECPDPowerSwap.dtsoff"
+					"value": "tast.firmware.ECPDPowerSwap.dts"
 				},
 				{
-					"value": "tast.firmware.ECPDPowerSwap.dtsoff_stress"
+					"value": "tast.firmware.ECPDPowerSwap.dts_stress"
 				},
 				{
 					"value": "tast.firmware.ECPDPowerSwap.flipcc"
 				},
 				{
-					"value": "tast.firmware.ECPDPowerSwap.flipcc_dtsoff"
+					"value": "tast.firmware.ECPDPowerSwap.flipcc_dts"
 				},
 				{
-					"value": "tast.firmware.ECPDPowerSwap.flipcc_dtsoff_stress"
+					"value": "tast.firmware.ECPDPowerSwap.flipcc_dts_stress"
 				},
 				{
 					"value": "tast.firmware.ECPDPowerSwap.flipcc_stress"
@@ -6809,6 +6888,9 @@
 					"value": "tast.firmware.ECPDPowerSwap.suspend"
 				},
 				{
+					"value": "tast.firmware.ECPDRole"
+				},
+				{
 					"value": "tast.firmware.ECPDTrysrc.flipcc"
 				},
 				{
@@ -6821,19 +6903,19 @@
 					"value": "tast.firmware.ECWakeFromULP.power_button"
 				},
 				{
-					"value": "tast.firmware.PDDataSwap.dtsoff"
+					"value": "tast.firmware.PDDataSwap.dts"
 				},
 				{
-					"value": "tast.firmware.PDDataSwap.dtsoff_snk"
+					"value": "tast.firmware.PDDataSwap.dts_snk"
 				},
 				{
 					"value": "tast.firmware.PDDataSwap.flipcc"
 				},
 				{
-					"value": "tast.firmware.PDDataSwap.flipcc_dtsoff"
+					"value": "tast.firmware.PDDataSwap.flipcc_dts"
 				},
 				{
-					"value": "tast.firmware.PDDataSwap.flipcc_dtsoff_snk"
+					"value": "tast.firmware.PDDataSwap.flipcc_dts_snk"
 				},
 				{
 					"value": "tast.firmware.PDDataSwap.flipcc_snk"
@@ -6851,13 +6933,13 @@
 					"value": "tast.firmware.PDProtocol"
 				},
 				{
-					"value": "tast.firmware.PDResetHard.dtsoff"
+					"value": "tast.firmware.PDResetHard.dts"
 				},
 				{
 					"value": "tast.firmware.PDResetHard.flipcc"
 				},
 				{
-					"value": "tast.firmware.PDResetHard.flipcc_dtsoff"
+					"value": "tast.firmware.PDResetHard.flipcc_dts"
 				},
 				{
 					"value": "tast.firmware.PDResetHard.normal"
@@ -6866,13 +6948,13 @@
 					"value": "tast.firmware.PDResetHard.shutdown"
 				},
 				{
-					"value": "tast.firmware.PDResetSoft.dtsoff"
+					"value": "tast.firmware.PDResetSoft.dts"
 				},
 				{
 					"value": "tast.firmware.PDResetSoft.flipcc"
 				},
 				{
-					"value": "tast.firmware.PDResetSoft.flipcc_dtsoff"
+					"value": "tast.firmware.PDResetSoft.flipcc_dts"
 				},
 				{
 					"value": "tast.firmware.PDResetSoft.normal"
@@ -6881,13 +6963,13 @@
 					"value": "tast.firmware.PDResetSoft.shutdown"
 				},
 				{
-					"value": "tast.firmware.PDVbusRequest.dtsoff"
+					"value": "tast.firmware.PDVbusRequest.dts"
 				},
 				{
 					"value": "tast.firmware.PDVbusRequest.flipcc"
 				},
 				{
-					"value": "tast.firmware.PDVbusRequest.flipcc_dtsoff"
+					"value": "tast.firmware.PDVbusRequest.flipcc_dts"
 				},
 				{
 					"value": "tast.firmware.PDVbusRequest.normal"

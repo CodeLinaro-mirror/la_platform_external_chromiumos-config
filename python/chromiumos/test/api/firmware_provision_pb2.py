@@ -12,7 +12,6 @@ _sym_db = _symbol_database.Default()
 
 
 from chromiumos.build.api import firmware_config_pb2 as chromiumos_dot_build_dot_api_dot_firmware__config__pb2
-from chromiumos.test.lab.api import ip_endpoint_pb2 as chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\x1a)chromiumos/test/lab/api/ip_endpoint.proto\"i\n FirmwareProvisionStartupMetadata\x12\x45\n\x14\x63\x61\x63he_server_address\x18\x01 \x01(\x0b\x32#.chromiumos.test.lab.api.IpEndpointB\x02\x18\x01\"a\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\"\x8e\x01\n\x19\x46irmwareProvisionResponse\x12\x15\n\rerror_message\x18\x01 \x01(\t\x12\x15\n\rap_ro_version\x18\x02 \x01(\t\x12\x15\n\rap_rw_version\x18\x03 \x01(\t\x12\x15\n\rec_ro_version\x18\x04 \x01(\t\x12\x15\n\rec_rw_version\x18\x05 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\">\n FirmwareProvisionStartupMetadataJ\x04\x08\x01\x10\x02R\x14\x63\x61\x63he_server_address\"a\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\"\x8e\x01\n\x19\x46irmwareProvisionResponse\x12\x15\n\rerror_message\x18\x01 \x01(\t\x12\x15\n\rap_ro_version\x18\x02 \x01(\t\x12\x15\n\rap_rw_version\x18\x03 \x01(\t\x12\x15\n\rec_ro_version\x18\x04 \x01(\t\x12\x15\n\rec_rw_version\x18\x05 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
-  dependencies=[chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2.DESCRIPTOR,])
+  dependencies=[chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,])
 
 
 
@@ -36,13 +35,6 @@ _FIRMWAREPROVISIONSTARTUPMETADATA = _descriptor.Descriptor(
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
-    _descriptor.FieldDescriptor(
-      name='cache_server_address', full_name='chromiumos.test.api.FirmwareProvisionStartupMetadata.cache_server_address', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -55,8 +47,8 @@ _FIRMWAREPROVISIONSTARTUPMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=156,
-  serialized_end=261,
+  serialized_start=113,
+  serialized_end=175,
 )
 
 
@@ -87,8 +79,8 @@ _FIRMWAREPROVISIONINSTALLMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=360,
+  serialized_start=177,
+  serialized_end=274,
 )
 
 
@@ -147,11 +139,10 @@ _FIRMWAREPROVISIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=363,
-  serialized_end=505,
+  serialized_start=277,
+  serialized_end=419,
 )
 
-_FIRMWAREPROVISIONSTARTUPMETADATA.fields_by_name['cache_server_address'].message_type = chromiumos_dot_test_dot_lab_dot_api_dot_ip__endpoint__pb2._IPENDPOINT
 _FIRMWAREPROVISIONINSTALLMETADATA.fields_by_name['firmware_config'].message_type = chromiumos_dot_build_dot_api_dot_firmware__config__pb2._FIRMWARECONFIG
 DESCRIPTOR.message_types_by_name['FirmwareProvisionStartupMetadata'] = _FIRMWAREPROVISIONSTARTUPMETADATA
 DESCRIPTOR.message_types_by_name['FirmwareProvisionInstallMetadata'] = _FIRMWAREPROVISIONINSTALLMETADATA
@@ -181,5 +172,4 @@ _sym_db.RegisterMessage(FirmwareProvisionResponse)
 
 
 DESCRIPTOR._options = None
-_FIRMWAREPROVISIONSTARTUPMETADATA.fields_by_name['cache_server_address']._options = None
 # @@protoc_insertion_point(module_scope)
