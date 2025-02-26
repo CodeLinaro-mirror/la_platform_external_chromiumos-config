@@ -31,14 +31,14 @@ class IoUtilsTest(unittest.TestCase):
     self.config_path = os.path.join(repo_path, 'generated', 'config.jsonproto')
     json_output = json_format.MessageToJson(
         self.config, sort_keys=True, use_integers_for_enums=True)
-    with open(self.config_path, 'w') as f:
+    with open(self.config_path, 'w', encoding='utf-8') as f:
       print(json_output, file=f)
 
     self.flat_config_path = os.path.join(repo_path, 'generated',
                                          'flattened.jsonproto')
     json_output = json_format.MessageToJson(
         self.flat_config, sort_keys=True, use_integers_for_enums=True)
-    with open(self.flat_config_path, 'w') as f:
+    with open(self.flat_config_path, 'w', encoding='utf-8') as f:
       print(json_output, file=f)
 
     self.factory_path = os.path.join(repo_path, 'factory')
@@ -46,7 +46,8 @@ class IoUtilsTest(unittest.TestCase):
     self.model_sku = {"model": {"a": 1}}
     with open(
         os.path.join(self.factory_path, 'generated', 'model_sku.json'),
-        'w') as f:
+        'w',
+        encoding='utf-8') as f:
       json.dump(self.model_sku, f)
 
   def test_read_config(self):

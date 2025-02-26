@@ -2387,7 +2387,8 @@ func (*Component_Stylus_Usb) isComponent_Stylus_Interface() {}
 
 func (*Component_Stylus_I2C) isComponent_Stylus_Interface() {}
 
-// Defines a peripheral IC that converts DP signal to another format like HDMI.
+// Defines a peripheral IC that converts DP signal to another format like
+// HDMI.
 type Component_DisplayPortConverter struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3238,8 +3239,8 @@ type isComponent_DisplayPanel_Properties_AcBrightness interface {
 }
 
 type Component_DisplayPanel_Properties_NoAlsAcBrightness struct {
-	// The default display backlight percentage on AC power in the absence of
-	// an ambient light sensor controlling the display backlight.
+	// The default display backlight percentage on AC power in the absence
+	// of an ambient light sensor controlling the display backlight.
 	NoAlsAcBrightness float64 `protobuf:"fixed64,9,opt,name=no_als_ac_brightness,json=noAlsAcBrightness,proto3,oneof"`
 }
 

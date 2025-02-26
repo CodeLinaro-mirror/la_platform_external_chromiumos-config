@@ -1152,6 +1152,10 @@
               "type": "CELLULAR_LTE",
               "wedgeTimeoutInMs": 210000
             },
+            "embeddedController": {
+              "ecType": "EC_CHROME",
+              "present": "PRESENT"
+            },
             "formFactor": {
               "formFactor": "CLAMSHELL",
               "recoveryInput": "KEYBOARD"
@@ -1353,8 +1357,36 @@
                     "antModePpag": 3,
                     "antTableVersion": 2
                   },
-                  "btSar": {
+                  "bbfb": {
                     "revision": 1
+                  },
+                  "bbsm": {
+                    "bandsSelection": {},
+                    "revision": 1
+                  },
+                  "bdcm": {
+                    "bdcmDualChainMode": {},
+                    "revision": 1
+                  },
+                  "bdmm": {
+                    "revision": 1
+                  },
+                  "bpag": {
+                    "enablementBpagCountries": {},
+                    "revision": 2
+                  },
+                  "btSar": {
+                    "revision": 2,
+                    "set1ChainA": {},
+                    "set1ChainB": {}
+                  },
+                  "bucs": {
+                    "revision": 1,
+                    "uhbCountrySelection": {}
+                  },
+                  "dsbr": {
+                    "bluetoothRadioResistorOhm": 33,
+                    "override": true
                   },
                   "dsm": {
                     "disableActiveSdrChannels": "1",
@@ -1366,6 +1398,15 @@
                     "supportUltraHighBand": "3",
                     "uartConfigurations": "5",
                     "unii4": "7"
+                  },
+                  "ebrd": {
+                    "revision": 1,
+                    "set2ChainA": {},
+                    "set2ChainB": {},
+                    "set3ChainA": {},
+                    "set3ChainB": {},
+                    "set4ChainA": {},
+                    "set4ChainB": {}
                   },
                   "sarTable": {
                     "cdbNonTabletModePowerTableA": {
@@ -1513,6 +1554,7 @@
                     },
                     "wgdsVersion": 2
                   },
+                  "wpfc": {},
                   "wtasTable": {
                     "denyListEntry1": 1,
                     "denyListEntry10": 10,

@@ -28,11 +28,6 @@ if [[ $# -ne 0  ]]; then
   usage
 fi
 
-readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
-source "${script_dir}/common.sh"
-
-create_venv
-
 if ! ./config/payload_utils/checker.py \
   --program ./program/generated/config.jsonproto \
   --project ./generated/config.jsonproto \
@@ -40,5 +35,3 @@ if ! ./config/payload_utils/checker.py \
   echo 'checker.py constraint checks failed'
   exit 1
 fi
-
-deactivate

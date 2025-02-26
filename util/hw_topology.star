@@ -49,6 +49,7 @@ _AUDIO_CODEC = struct(
     ALC272 = _HW_FEAT.Audio.ALC272,
     ALC722 = _HW_FEAT.Audio.AUDIO_CODEC_ALC722,
     ALC721 = _HW_FEAT.Audio.AUDIO_CODEC_ALC721,
+    ALC3204 = _HW_FEAT.Audio.AUDIO_CODEC_ALC3204,
 )
 
 _AMPLIFIER = struct(
@@ -71,6 +72,7 @@ _AMPLIFIER = struct(
     TAS2563 = _HW_FEAT.Audio.TAS2563,
     ALC722 = _HW_FEAT.Audio.AMPLIFIER_ALC722,
     ALC721 = _HW_FEAT.Audio.AMPLIFIER_ALC721,
+    ALC3204 = _HW_FEAT.Audio.AMPLIFIER_ALC3204,
 )
 
 _CELLULAR = struct(
@@ -139,6 +141,25 @@ _KB_TYPE = struct(
 _KB_MCU_TYPE = struct(
     NONE = _HW_FEAT.Keyboard.KEYBOARD_MCU_NOT_PRESENT,
     MCU_PRISM = _HW_FEAT.Keyboard.KEYBOARD_MCU_PRISM,
+)
+
+_KB_BOTTOM_LEFT_LAYOUT = struct(
+    UNKNOWN = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_LEFT_LAYOUT_UNKNOWN,
+    BOTTOM_LEFT_3_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_LEFT_3_KEYS,
+    BOTTOM_LEFT_4_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_LEFT_4_KEYS,
+)
+
+_KB_BOTTOM_RIGHT_LAYOUT = struct(
+    UNKNOWN = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_RIGHT_LAYOUT_UNKNOWN,
+    BOTTOM_RIGHT_2_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_RIGHT_2_KEYS,
+    BOTTOM_RIGHT_3_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_RIGHT_3_KEYS,
+    BOTTOM_RIGHT_4_KEYS = _HW_FEAT.Keyboard.KEYBOARD_BOTTOM_RIGHT_4_KEYS,
+)
+
+_KB_NUMERIC_PAD_LAYOUT = struct(
+    UNKNOWN = _HW_FEAT.Keyboard.NUMERIC_PAD_LAYOUT_UNKNOWN,
+    NUMERIC_PAD_3_COLUMN = _HW_FEAT.Keyboard.NUMERIC_PAD_3_COLUMN,
+    NUMERIC_PAD_4_COLUMN = _HW_FEAT.Keyboard.NUMERIC_PAD_4_COLUMN,
 )
 
 _STYLUS = struct(
@@ -671,7 +692,7 @@ def _create_stylus(id, description, stylus_type, fw_configs = []):
         hardware_feature = hw_features,
     )
 
-def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None, backlight_user_steps = None, no_als_brightness = None, als_steps = None, mcu_type = _KB_MCU_TYPE.NONE):
+def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False, fw_configs = [], id = None, description = None, backlight_user_steps = None, no_als_brightness = None, als_steps = None, mcu_type = _KB_MCU_TYPE.NONE, bottom_left_layout = _KB_BOTTOM_LEFT_LAYOUT.UNKNOWN, bottom_right_layout = _KB_BOTTOM_RIGHT_LAYOUT.UNKNOWN, numeric_pad_layout = _KB_NUMERIC_PAD_LAYOUT.UNKNOWN):
     """Builds a Topology proto for a keyboard.
 
     Args:
@@ -692,6 +713,9 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
         als_steps: A list of als_step setting with lux decrease and increase
             threshold, and the backlight percentage of the step.
         mcu_type: A KeyboardMcuType enum. Optional.
+	bottom_left_layout: A KeyboardBottomLeftLayout enum. Optional.
+	bottom_right_layout: A KeyboardBottomRightLayout enum. Optional.
+	numeric_pad_layout: A NumericPadLayout enum. Optional.
     """
 
     if not id:
@@ -724,6 +748,9 @@ def _create_keyboard(backlight, pwr_btn_present, kb_type, numpad_present = False
     hw_features.keyboard.no_als_brightness = no_als_brightness
     hw_features.keyboard.als_steps = als_steps
     hw_features.keyboard.mcu_type = mcu_type
+    hw_features.keyboard.bottom_left_layout = bottom_left_layout
+    hw_features.keyboard.bottom_right_layout = bottom_right_layout
+    hw_features.keyboard.numeric_pad_layout = numeric_pad_layout
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -890,7 +917,7 @@ def _create_sensor(
 
 def _create_fan(id, description, fw_configs = [], fan_count = None):
     """Builds a Topology proto for Fan."""
-    hw_features = topo_pb.HardwareFeatures()
+    hw_features = _HW_FEAT()
 
     _accumulate_fw_configs(hw_features, fw_configs)
 
@@ -1484,7 +1511,7 @@ def _create_volume_button(region, edge, position, id = None, description = None)
         ),
     )
 
-def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None):
+def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None, max_sensor_odr_mhz = None):
     """Builds a Topology proto for an embedded controller.
 
     Args:
@@ -1492,10 +1519,13 @@ def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None):
         ec_type: An EmbeddedControllerType enum
         id: A string identifier for the Topology. If not passed, a default is
             provided.
+        max_sensor_odr_mhz: Maximal Sensor ODR override.
     """
     hw_features = _HW_FEAT()
     hw_features.embedded_controller.ec_type = ec_type
     hw_features.embedded_controller.present = _bool_to_present(present)
+    if max_sensor_odr_mhz != None:
+        hw_features.embedded_controller.max_sensor_odr_mhz.value = max_sensor_odr_mhz
 
     return topo_pb.Topology(
         id = id or "ec",
@@ -2175,10 +2205,13 @@ def _convert_to_hw_features(hardware_topology):
     if copy.dgpu.hardware_feature.dgpu_config != _HW_FEAT.Dgpu():
         result.dgpu_config = copy.dgpu.hardware_feature.dgpu_config
 
-    # Handle all possible hdmi hardware features attributes
+    # Handle all possible fan hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.fan.hardware_feature.fw_config)
     if copy.fan.hardware_feature.fan != _HW_FEAT.Fan():
         result.fan = copy.fan.hardware_feature.fan
+
+    if copy.ec.hardware_feature.embedded_controller != _HW_FEAT.EmbeddedController():
+        result.embedded_controller = copy.ec.hardware_feature.embedded_controller
 
     return result
 
@@ -2297,6 +2330,9 @@ hw_topo = struct(
     storage = _STORAGE,
     kb_type = _KB_TYPE,
     kb_mcu_type = _KB_MCU_TYPE,
+    kb_bottom_left_layout = _KB_BOTTOM_LEFT_LAYOUT,
+    kb_bottom_right_layout = _KB_BOTTOM_RIGHT_LAYOUT,
+    kb_numeric_pad_layout = _KB_NUMERIC_PAD_LAYOUT,
     stylus = _STYLUS,
     region = _REGION,
     edge = _EDGE,

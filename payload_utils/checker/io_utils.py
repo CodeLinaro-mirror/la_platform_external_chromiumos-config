@@ -29,7 +29,7 @@ def write_message_json(
     default_fields: If true, include default values for fields
     use_integers_for_enums: If true, print integers instead of enum names.
   """
-  with open(path, 'w') as outfile:
+  with open(path, 'w', encoding='utf-8') as outfile:
     outfile.write(
         json_format.MessageToJson(
             message,
@@ -61,7 +61,7 @@ def read_json_proto(message, path):
     reference to message
   """
 
-  with open(path, 'r') as f:
+  with open(path, 'r', encoding='utf-8') as f:
     json_format.Parse(f.read(), message)
   return message
 
@@ -105,5 +105,7 @@ def read_model_sku_json(factory_dir: pathlib.Path) -> Dict[str, Any]:
   Returns:
     Parsed model_sku.json as a dict
   """
-  with open(factory_dir.joinpath('generated', 'model_sku.json')) as f:
+  with open(
+      factory_dir.joinpath('generated', 'model_sku.json'),
+      encoding='utf-8') as f:
     return json.load(f)

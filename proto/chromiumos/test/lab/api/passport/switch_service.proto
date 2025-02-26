@@ -1,0 +1,60 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api.passport;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/passport";
+
+// SwitchService is a service which controls a set of physical switches connected to a
+// dedicated host. These switches are used to disable/enable individual peripheral components
+// at runtime.
+service SwitchService {
+    // GetSwitches probes all connected switches to the host device.
+    rpc GetSwitches(GetSwitchesRequest) returns (GetSwitchesResponse) {}
+
+    // ResetAllSwitches re-initializes all found switches and sets them to the "disabled" state.
+    rpc ResetAllSwitches(ResetAllSwitchesRequest) returns (ResetAllSwitchesResponse) {}
+
+    // ConfigureSwitchPort configures a single port on a switch.
+    rpc ConfigureSwitchPort(ConfigureSwitchPortRequest) returns (ConfigureSwitchPortResponse) {}
+}
+
+// SwitchFixture represents a switch connected to a host.
+message SwitchFixture{
+    // The switches unique Id.
+    string id = 1;
+}
+
+message GetSwitchesRequest{}
+message GetSwitchesResponse{
+    // The probed switches.
+    repeated SwitchFixture switches = 1;
+}
+
+message ResetAllSwitchesRequest{}
+message ResetAllSwitchesResponse{}
+
+// A switches state or action to be applied to the switch.
+enum SwitchPortState {
+    // Default, the switch port is in an "unknown" state.
+    SWITCH_PORT_UNKNOWN = 0;
+    // The switch port is disabled.
+    SWITCH_PORT_DISABLED = 1;
+    // The switch port is enabled.
+    SWITCH_PORT_ENABLED = 2;
+    // The switch port orientation should be "flipped" (only supported for symmetrical swiches e.g. USBC).
+    // Note: This isn't a detectable state as much as it is an "action"
+    SWITCH_PORT_FLIP = 3;
+}
+
+message ConfigureSwitchPortRequest{
+    // The unique switch ID to be configured.
+    string switch_id = 1;
+    // The requested state to be applied to the switch.
+    SwitchPortState state = 2;
+}
+
+message ConfigureSwitchPortResponse{}
