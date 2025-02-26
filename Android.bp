@@ -23,6 +23,6 @@ license {
         "legacy_restricted",
     ],
     license_text: [
-        "NOTICE",
+        "LICENSE",
     ],
 }
