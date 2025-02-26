@@ -28,6 +28,7 @@ import os
 from google.cloud import datastore
 
 from checker import io_utils
+from common import logging_utils
 from common import proto_utils
 
 # type constants
@@ -215,11 +216,11 @@ def update_device_stability(dev_stab, client):
 
 
 if __name__ == '__main__':
-  logging.basicConfig(level=logging.INFO)
   parser = argparse.ArgumentParser(
       description=__doc__,
       formatter_class=argparse.RawDescriptionHelpFormatter,
   )
+  logging_utils.parser_add_argument(parser)
 
   parser.add_argument(
       '--env',
@@ -231,6 +232,7 @@ if __name__ == '__main__':
   # load database of protobuffer name -> Type
   protodb = proto_utils.create_symbol_db()
   options = parser.parse_args()
+  logging_utils.config_logging(options)
   ufs_ds_client = datastore.Client(
       project=get_ufs_project(options.env),
       namespace="os",

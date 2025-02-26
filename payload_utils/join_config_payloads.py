@@ -28,6 +28,7 @@ from google.cloud import bigquery
 from merge_plugins.merge_hwid import MergeHwid
 
 from common import config_bundle_utils
+from common import logging_utils
 
 from checker import io_utils
 from chromiumos.build.api import firmware_config_pb2
@@ -771,6 +772,7 @@ def main(options):
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description=__doc__)
+  logging_utils.parser_add_argument(parser)
   parser.add_argument(
       '-o',
       '--output',
@@ -820,24 +822,8 @@ only use the config bundle to propagate models to imported payload.""")
   parser.add_argument(
       '--private-model', type=str, help='private model.yaml file to merge')
   parser.add_argument('--hwid', type=str, help='HWID database to merge')
-  parser.add_argument(
-      '-v', '--verbose', help='increase output verbosity', action='store_true')
-  parser.add_argument('-l', '--log', type=str, help='set logging level')
 
   args = parser.parse_args()
-  # pylint: disable=invalid-name
-  loglevel = logging.INFO if args.verbose else logging.WARNING
-  if args.log:
-    loglevel = {
-        'critical': logging.CRITICAL,
-        'error': logging.ERROR,
-        'warning': logging.WARNING,
-        'info': logging.INFO,
-        'debug': logging.DEBUG,
-    }.get(args.log.lower())
+  logging_utils.config_logging(args)
 
-    if not loglevel:
-      logging.error("invalid value for -l/--log '%s'", args.log)
-
-  logging.basicConfig(level=loglevel)
   main(args)

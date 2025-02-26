@@ -11,6 +11,7 @@ import argparse
 import logging
 
 from checker import io_utils
+from common import logging_utils
 
 from chromiumos.config.payload.config_bundle_pb2 import ConfigBundleList
 from chromiumos.config.payload.flat_config_pb2 import FlatConfigList
@@ -61,6 +62,7 @@ def main(opts):
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description=__doc__)
+  logging_utils.parser_add_argument(parser)
   parser.add_argument(
       '-o',
       '--output',
@@ -89,29 +91,7 @@ if __name__ == "__main__":
       required=True,
       help='file containing ConfigBundleList with program ConfigBundles')
 
-  parser.add_argument(
-      "-v", "--verbose", help="increase output verbosity", action="store_true")
-  parser.add_argument("-l", "--log", type=str, help='set logging level')
-
   args = parser.parse_args()
-
-  LOGLEVEL = logging.INFO if args.verbose else logging.WARNING
-  if args.log:
-    LOGLEVEL = {
-        "critical": logging.CRITICAL,
-        "debug": logging.DEBUG,
-        "error": logging.ERROR,
-        "info": logging.INFO,
-        "warning": logging.WARNING,
-    }.get(args.log.lower())
-
-    if not LOGLEVEL:
-      logging.error("invalid value for -l/--log '%s'", args.log)
-
-  logging.basicConfig(
-      level=LOGLEVEL,
-      format='%(asctime)s %(levelname)-8s %(message)s',
-      datefmt='%Y-%m-%dT%H:%M:%S',
-  )
+  logging_utils.config_logging(args)
 
   main(args)

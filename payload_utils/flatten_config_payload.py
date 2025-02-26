@@ -8,9 +8,9 @@ ConfigBundle is a fully normalized format, where eg: Partners are referred to by
 id. By denormalizing into a flattened format, we can more easily query projects."""
 
 import argparse
-import logging
 
 from common import config_bundle_utils
+from common import logging_utils
 from checker import io_utils
 
 
@@ -33,6 +33,7 @@ def flatten(infile, outfile):
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description=__doc__)
+  logging_utils.parser_add_argument(parser)
   parser.add_argument(
       '-i',
       '--input',
@@ -45,24 +46,8 @@ if __name__ == "__main__":
       type=str,
       required=True,
       help='output file to write FlatConfigList jsonproto to')
-  parser.add_argument("-l", "--log", type=str, help='set logging level')
-  parser.add_argument(
-      "-v", "--verbose", help="increase output verbosity", action="store_true")
 
   args = parser.parse_args()
-  # pylint: disable=invalid-name
-  loglevel = logging.INFO if args.verbose else logging.WARNING
-  if args.log:
-    loglevel = {
-        "critical": logging.CRITICAL,
-        "error": logging.ERROR,
-        "warning": logging.WARNING,
-        "info": logging.INFO,
-        "debug": logging.DEBUG,
-    }.get(args.log.lower())
+  logging_utils.config_logging(args)
 
-    if not loglevel:
-      logging.error("invalid value for -l/--log '%s'", args.log)
-
-  logging.basicConfig(level=loglevel)
   flatten(args.input, args.output)
