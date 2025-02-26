@@ -131,6 +131,21 @@ wheel: <
 >
 
 wheel: <
+  name: "infra/python/wheels/immutabledict-py3"
+  version: "version:4.2.1"
+>
+
+wheel: <
+  name: "infra/python/wheels/importlab-py3"
+  version: "version:0.8.1"
+>
+
+wheel: <
+  name: "infra/python/wheels/jinja2-py3"
+  version: "version:3.1.4"
+>
+
+wheel: <
   name: "infra/python/wheels/lazy-object-proxy/${vpython_platform}"
   version: "version:1.4.3"
 >
@@ -146,13 +161,33 @@ wheel: <
 >
 
 wheel: <
+  name: "infra/python/wheels/markupsafe/${vpython_platform}"
+  version: "version:2.1.5"
+>
+
+wheel: <
   name: "infra/python/wheels/mccabe-py2_py3"
   version: "version:0.6.1"
 >
 
 wheel: <
+  name: "infra/python/wheels/msgspec/${vpython_platform}"
+  version: "version:0.18.6"
+>
+
+wheel: <
   name: "infra/python/wheels/mypy-extensions-py3"
   version: "version:0.4.3"
+>
+
+wheel: <
+  name: "infra/python/wheels/networkx-py3"
+  version: "version:3.1"
+>
+
+wheel: <
+  name: "infra/python/wheels/ninja/${vpython_platform}"
+  version: "version:1.10.2.4.chromium.1"
 >
 
 wheel: <
@@ -191,8 +226,23 @@ wheel: <
 >
 
 wheel: <
+  name: "infra/python/wheels/pycnite-py3"
+  version: "version:2024.07.31"
+>
+
+wheel: <
+  name: "infra/python/wheels/pydot-py2_py3"
+  version: "version:1.4.2"
+>
+
+wheel: <
   name: "infra/python/wheels/pylint-py3"
   version: "version:3.2.7"
+>
+
+wheel: <
+  name: "infra/python/wheels/pyparsing-py3"
+  version: "version:3.2.0"
 >
 
 wheel: <
@@ -203,6 +253,11 @@ wheel: <
 wheel: <
   name: "infra/python/wheels/python-dateutil-py3"
   version: "version:2.8.1"
+>
+
+wheel: <
+  name: "infra/python/wheels/pytype/${vpython_platform}"
+  version: "version:2024.9.13"
 >
 
 wheel: <
@@ -238,6 +293,16 @@ wheel: <
 wheel: <
   name: "infra/python/wheels/six-py2_py3"
   version: "version:1.17.0"
+>
+
+wheel: <
+  name: "infra/python/wheels/tabulate-py3"
+  version: "version:0.9.0"
+>
+
+wheel: <
+  name: "infra/python/wheels/toml-py3"
+  version: "version:0.10.2"
 >
 
 wheel: <
