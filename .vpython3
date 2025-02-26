@@ -7,7 +7,7 @@ wheel: <
 
 wheel: <
   name: "infra/python/wheels/attrs-py2_py3"
-  version: "version:19.3.0"
+  version: "version:21.4.0"
 >
 
 wheel: <
@@ -136,8 +136,8 @@ wheel: <
 >
 
 wheel: <
-  name: "infra/python/wheels/libcst-py3"
-  version: "version:0.3.19"
+  name: "infra/python/wheels/libcst/${vpython_platform}"
+  version: "version:1.1.0"
 >
 
 wheel: <
@@ -237,7 +237,7 @@ wheel: <
 
 wheel: <
   name: "infra/python/wheels/six-py2_py3"
-  version: "version:1.16.0"
+  version: "version:1.17.0"
 >
 
 wheel: <
@@ -257,7 +257,7 @@ wheel: <
 
 wheel: <
   name: "infra/python/wheels/typing-extensions-py3"
-  version: "version:4.0.1"
+  version: "version:4.12.2"
 >
 
 wheel: <
