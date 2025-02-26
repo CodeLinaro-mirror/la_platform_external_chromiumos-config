@@ -1,0 +1,31 @@
+{
+  "designList": [
+    {
+      "configs": [
+        {
+          "id": {
+            "value": "FAKE_A_REF_DESIGN:2147483647"
+          }
+        }
+      ],
+      "id": {
+        "value": "FAKE_A_REF_DESIGN"
+      },
+      "name": "FAKE_A_REF_DESIGN",
+      "programId": {
+        "value": "FAKE_A_PROGRAM"
+      }
+    }
+  ],
+  "softwareConfigs": [
+    {
+      "designConfigId": {
+        "value": "FAKE_A_REF_DESIGN:2147483647"
+      },
+      "idScanConfig": {
+        "firmwareSku": 2147483647,
+        "frid": "Google_Ref"
+      }
+    }
+  ]
+}

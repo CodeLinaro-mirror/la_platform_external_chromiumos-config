@@ -1,0 +1,93 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.plan;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/plan";
+
+import "chromiumos/test/api/test_suite.proto";
+
+// Describes the test cases that run when a given set of files are changed.
+//
+// This message is intended to be specified as text proto in a DIR_METADATA file
+// in the source tree, and should be concise enough Starlark, or another config
+// generation tool, is not needed.
+//
+// NEXT ID: 15
+message SourceTestPlan {
+  reserved 1;
+
+  // Paths that will trigger the SourceTestPlan.
+  //
+  // Must be a repo-absolute ChromeOS path. For example,
+  // “arc/adbd/.*” for
+  // https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/arc/adbd.
+  //
+  // Paths can only match files in the subtree of the DIR_METADATA file.
+  // For example, paths specified in "a/b/DIR_METADATA" must start with "a/b/".
+  //
+  // Patterns use Google Re2 syntax. The comparison is a full match. The pattern
+  // is implicitly anchored with ^ and $, so there is no need to add them.
+  //
+  // If path_regexp is not specified, it is implied to be all files in
+  // the directory of the DIR_METADATA file and all files in subdirectories.
+  //
+  // If a file is matched by both path_regexp and path_regexp_exclude, it is
+  // excluded.
+  repeated string path_regexps = 2;
+  repeated string path_regexp_excludes = 3;
+
+  // A Starlark file that will be evaluated to generate HW/VMTestPlan protos.
+  //
+  // The Starlark file must output a list of HW/VMTestPlan protos based on an
+  // input BuildMetadataList and FlatConfigList.
+  message TestPlanStarlarkFile {
+    // Gitiles hostname, e.g. "chromium.googlesource.com".
+    string host = 1;
+
+    // Repository name on the host, e.g. "chromium/src".
+    string project = 2;
+
+    // Absolute path within the repo to the Starlark file. Regexes are not
+    // allowed.
+    string path = 3;
+
+    // Fields that will be made available to the Starlark file via interpreter
+    // builtins. Note that specifying these fields here does NOT automatically
+    // mean the HW/VMTestPlan protos generated will use them in all plans.
+    //
+    // Specifying these fields on a Starlark file that doesn't use them will
+    // cause `test_plan validate` to fail.
+    //
+    // Unless otherwise noted, these parameters are made available in the
+    // Starlark interpreter with function calls named
+    // `testplan.get_<field_name>`; for example, `testplan.get_tag_criteria`.
+    message TemplateParameters {
+      // TestCaseTagCriteria that will be made available to the Starlark file.
+      // Intended for the case where many different DIR_METADATA files want to
+      // run the same plan but with different tag criteria.
+      chromiumos.test.api.TestSuite.TestCaseTagCriteria tag_criteria = 1;
+
+      // Suite name that will be made available to the Starlark file. Intended
+      // to prevent suite name collisions when multiple DIR_METADATA files
+      // reference the same templated Starlark file with different tag_criteria.
+      string suite_name = 2;
+
+      // Program name that will be made available to the Starlark file.
+      // Generally this will be passed to the v1_compatible_hw_test_plan and
+      // v1_compatible_vm_test_plan Starlark functions, but the Starlark file is
+      // free to use the name arbitrarily.
+      string program = 3;
+    }
+
+    TemplateParameters template_parameters = 4;
+  }
+
+  // Starlark files to evaluate to generate HW/VMTestPlan protos.
+  repeated TestPlanStarlarkFile test_plan_starlark_files = 15;
+
+  reserved 4 to 14;
+}

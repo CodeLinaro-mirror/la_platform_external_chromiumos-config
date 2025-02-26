@@ -1,0 +1,7000 @@
+{
+	"suites": [
+		{
+			"id": {
+				"value": "audio_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-audio-bugs@google.com"
+					},
+					{
+						"email": "aaronyu@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:776546"
+				},
+				"criteria": {
+					"value": "Audio tests for PVS pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.audio.UCMSequences.section_verb"
+				},
+				{
+					"value": "tast.audio.UCMSequences.section_device"
+				},
+				{
+					"value": "tast.audio.UCMSequences.section_modifier"
+				},
+				{
+					"value": "tast.audio.SoundCardInit.run_success"
+				},
+				{
+					"value": "tast.audio.SoundCardInit.validate_rdc_range"
+				},
+				{
+					"value": "tast.audio.EchoRefDevice.frequency_200"
+				},
+				{
+					"value": "tast.audio.EchoRefDevice.frequency_400"
+				},
+				{
+					"value": "tast.audio.EchoRefDevice.frequency_1000"
+				},
+				{
+					"value": "tast.audio.EchoRefDevice.frequency_2000"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "camera_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-camera-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1475606"
+				},
+				"criteria": {
+					"value": "Camera tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.camera.CCAUITakePicture"
+				},
+				{
+					"value": "tast.camera.CCAUIRecordVideo"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "camera_pre_fsi_only"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-camera-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1475606"
+				},
+				"criteria": {
+					"value": "Camera tests which should be run for Pre FSI testing only."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.camera.CCAUISmoke.real"
+				},
+				{
+					"value": "tast.camera.CCAUISmoke.vivid"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "cellular_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cellular-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167157"
+				},
+				"criteria": {
+					"value": "Cellular tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.cellular.ConnectivityPerf"
+				},
+				{
+					"value": "tast.cellular.ModemfwdSmoke"
+				},
+				{
+					"value": "tast.cellular.ShillSafetyDance"
+				},
+				{
+					"value": "tast.cellular.Smoke"
+				},
+				{
+					"value": "tast.cellular.Smoke.amarisoft"
+				},
+				{
+					"value": "tast.cellular.Smoke.att"
+				},
+				{
+					"value": "tast.cellular.Smoke.bell"
+				},
+				{
+					"value": "tast.cellular.Smoke.docomo"
+				},
+				{
+					"value": "tast.cellular.Smoke.ee"
+				},
+				{
+					"value": "tast.cellular.Smoke.fi"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.amarisoft"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.att"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.bell"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.docomo"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.ee"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.fi"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.kddi"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.rak"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.rakuten"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.roger"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.softbank"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.telus"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.tmobile"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.verizon"
+				},
+				{
+					"value": "tast.cellular.SmokeIPConnectivity.vodafone"
+				},
+				{
+					"value": "tast.cellular.Smoke.kddi"
+				},
+				{
+					"value": "tast.cellular.Smoke.rak"
+				},
+				{
+					"value": "tast.cellular.Smoke.rakuten"
+				},
+				{
+					"value": "tast.cellular.Smoke.roger"
+				},
+				{
+					"value": "tast.cellular.Smoke.softbank"
+				},
+				{
+					"value": "tast.cellular.Smoke.telus"
+				},
+				{
+					"value": "tast.cellular.Smoke.tmobile"
+				},
+				{
+					"value": "tast.cellular.Smoke.verizon"
+				},
+				{
+					"value": "tast.cellular.Smoke.vodafone"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "cellular_pre_fsi_only"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cellular-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167157"
+				},
+				"criteria": {
+					"value": "Cellular tests which should be run for Pre FSI testing only."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.cellular.ShillEnableAndConnect"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "fingerprint_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-fingerprint@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:782045"
+				},
+				"criteria": {
+					"value": "Fingerprint tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tauto.firmware_Fingerprint.RDP1"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.RebootToRO"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.ObeysRollback"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.CrosConfig"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.ROOnlyBootsValidRW"
+				},
+				{
+					"value": "tauto.firmware_FingerprintSigner"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.RDP0"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.SoftwareWriteProtect"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.SystemIsLocked"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.RWNoUpdateRO"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.ROCanUpdateRW"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.AddEntropy"
+				},
+				{
+					"value": "tauto.firmware_Fingerprint.ReadFlash"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "graphics_hw"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for validating hardware pre FSI."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_addfb_basic"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_atomic"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_atomic_interruptible"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_bw"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_concurrent"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_cursor_crc"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_cursor_legacy"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_dp_aux_dev"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_flip"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_invalid_mode"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_panel_fitting"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_pipe_crc_basic"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_plane"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_plane_alpha_blend"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_plane_cursor"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_plane_scaling"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_rotation_crc"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_scaling_modes"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_setmode"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.kms_sysfs_edid_timing"
+				},
+				{
+					"value": "tast.graphics.DisplayHwValidation.testdisplay"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "graphics_video"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for validating video playback pre FSI."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.video.Play.h264_hw_mse"
+				},
+				{
+					"value": "tast.video.Play.vp8_hw_mse"
+				},
+				{
+					"value": "tast.video.Play.vp9_hw_mse"
+				},
+				{
+					"value": "tast.video.Play.h264_hw"
+				},
+				{
+					"value": "tast.video.Play.vp8_hw"
+				},
+				{
+					"value": "tast.video.Play.vp9_hw"
+				},
+				{
+					"value": "tast.video.Seek.h264"
+				},
+				{
+					"value": "tast.video.Seek.vp8"
+				},
+				{
+					"value": "tast.video.Seek.vp9"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "graphics_webgl"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for WebGL FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.graphics.WebGLAquarium.50_fishes"
+				},
+				{
+					"value": "tast.graphics.WebGLAquarium.1000_fishes"
+				},
+				{
+					"value": "tast.graphics.WebGLAquarium.50_fishes_lacros"
+				},
+				{
+					"value": "tast.graphics.WebGLAquarium.1000_fishes_lacros"
+				},
+				{
+					"value": "tast.graphics.WebGLManyPlanetsDeep"
+				},
+				{
+					"value": "tast.graphics.WebGLManyPlanetsDeep.lacros"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "input_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "essential-inputs-gardener-oncall@google.com"
+					},
+					{
+						"email": "essential-inputs-team@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:95887"
+				},
+				"criteria": {
+					"value": "Input tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.docked"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.docked_informational"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.floating"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.floating_informational"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.docked_lacros"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.floating_lacros"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardSpeech"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "performance_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "baseos-perf@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167279"
+				},
+				"criteria": {
+					"value": "Performance tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.platform.BootPerf.default_bounds"
+				},
+				{
+					"value": "tast.platform.BootPerf.ec_reboot_bounds"
+				},
+				{
+					"value": "tast.platform.BootPerf.from_g3_bounds"
+				},
+				{
+					"value": "tast.platform.BootPerf.from_s5_bounds"
+				},
+				{
+					"value": "tauto.power_UiResume.freeze"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "labqual_stable"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests to check device readiness for lab entry."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.labqual.BootupTimesUSB.usb_recovery"
+				},
+				{
+					"value": "tast.labqual.TPMReset.rec_mode"
+				},
+				{
+					"value": "tast.labqual.SerialNumber"
+				},
+				{
+					"value": "tast.labqual.DeviceHwid"
+				},
+				{
+					"value": "tast.labqual.ServoGBBFlagsFutility"
+				},
+				{
+					"value": "tast.labqual.DevToSecureMode.dev_mode"
+				},
+				{
+					"value": "tast.labqual.InternalStorage"
+				},
+				{
+					"value": "tast.labqual.BootupTimesUSB.usb_dev"
+				},
+				{
+					"value": "tast.labqual.TPMStatus"
+				},
+				{
+					"value": "tast.labqual.ECControlRead"
+				},
+				{
+					"value": "tast.labqual.SSHStability"
+				},
+				{
+					"value": "tast.labqual.ServoGSCFlags"
+				},
+				{
+					"value": "tast.labqual.ServoDeviceBatteryCheck"
+				},
+				{
+					"value": "tast.labqual.UpdateDutFirmware"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "platform_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests common to FSI/Pre FSI testing."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.lockscreen.PINUnlock"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "platform_fsi_only"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests which should be run for Pre FSI testing only."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.quicksettings.BasicLayout.tablet"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "power_qual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Power tests qualify a device for battery life while running."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.meta.PowerQual.qual"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "power_low_power_qual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Power tests qualify a device for power consumption while in suspend/shutdown mode."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.power.LowPowerConsumption.suspend"
+				},
+				{
+					"value": "tast.power.LowPowerConsumption.shutdown"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "thermal_qual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Tests to qualify thermal performance of the device."
+				}
+			},
+			"tests": [
+				{
+					"value": "tauto.pvs_Sequence.ThermalQualChargingVideoCall"
+				},
+				{
+					"value": "tauto.pvs_Sequence.ThermalQualDischargingVideoCall"
+				},
+				{
+					"value": "tauto.pvs_Sequence.ThermalQualChargingThermalLoad"
+				},
+				{
+					"value": "tauto.pvs_Sequence.ThermalQualDischargingThermalLoad"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "power_other"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Other tests for validating power related performance and functionality."
+				}
+			},
+			"tests": [
+				{
+					"value": "tauto.power_WakeSources"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "bvt-cq"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cqw-help@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1152900"
+				},
+				"criteria": {
+					"value": "This is the portion of the Build Verification Test suite required to pass the ChromeOS Commit Queue and Pre-Flight Queue."
+				}
+			},
+			"tests": [
+				{
+					"value": "tauto.logging_UserCrash"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "bvt-inline"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cqw-help@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1152900"
+				},
+				"criteria": {
+					"value": "This is the portion of the Build Verification Test suite required to pass before any other tests may run."
+				}
+			},
+			"tests": [
+				{
+					"value": "tauto.autoupdate_Basic.full"
+				},
+				{
+					"value": "tauto.autoupdate_Basic.m2n.full"
+				},
+				{
+					"value": "tauto.autoupdate_CatchBadSignatures"
+				},
+				{
+					"value": "tauto.autoupdate_WithDLC.full"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "bvt-tast-cq"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cqw-help@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1152900"
+				},
+				"criteria": {
+					"value": "This suite verifies ChromeOS's basic functionality for the ChromeOS Commit Queue by running all Tast integration tests (exercising ARC, Chrome, and the OS itself) that must always pass against a DUT."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.a11y.LiveCaption.fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.a11y.LiveCaption.fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.a11y.Smoke"
+				},
+				{
+					"value": "tast.ad.KerberosDaemon"
+				},
+				{
+					"value": "tast.apps.CalculatorSmoke"
+				},
+				{
+					"value": "tast.apps.LaunchCanvas.stable"
+				},
+				{
+					"value": "tast.apps.LaunchCanvas.stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchCanvas.unstable"
+				},
+				{
+					"value": "tast.apps.LaunchGalleryFromNotifications.stable"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppFromLauncher.stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppFromLauncher.stable_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppFromSettings.stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppFromSettings.stable_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppFromShortcut.stable"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppFromShortcut.stable_guest"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppInBrowserMenu.stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppOffline"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppOnManagedDevice.logged_in_stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppOnManagedDevice.logged_in_stable_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppOnManagedDevice.oobe_stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchHelpAppOnManagedDevice.oobe_stable_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.apps.LaunchHelpLanguage"
+				},
+				{
+					"value": "tast.apps.LaunchReleaseNotesFromSettings.stable_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.apps.LaunchReleaseNotesFromSettings.stable_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.apps.LaunchSystemWebAppsFromURL"
+				},
+				{
+					"value": "tast.apps.Sharesheet"
+				},
+				{
+					"value": "tast.apps.SystemWebAppsInstallGuest"
+				},
+				{
+					"value": "tast.arc.ADBValidity.vm"
+				},
+				{
+					"value": "tast.arc.Appfuse"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.5point1_11025"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.5point1_16000"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.5point1_22050"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.5point1_32000"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.5point1_44100"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.5point1_48000"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.5point1_48000_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.5point1_48000_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.5point1_8000"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.quad_48000"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.quad_48000_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.quad_48000_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_11025"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_16000"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_22050"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_32000"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_44100"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_48000"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_48000_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_48000_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_48000_lowlatency"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_48000_lowlatency_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_48000_lowlatency_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_48000_powersaving"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_48000_powersaving_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_48000_powersaving_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.arc.AudioLoopbackCorrectness.stereo_8000"
+				},
+				{
+					"value": "tast.arc.AudioValidity.playback"
+				},
+				{
+					"value": "tast.arc.AudioValidity.playback_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.arc.AudioValidity.playback_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.arc.AudioValidity.playback_vm"
+				},
+				{
+					"value": "tast.arc.AudioValidity.playback_vm_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.arc.AudioValidity.playback_vm_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.arc.AudioValidity.record"
+				},
+				{
+					"value": "tast.arc.AudioValidity.record_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.arc.AudioValidity.record_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.arc.AudioValidity.record_vm"
+				},
+				{
+					"value": "tast.arc.AudioValidity.record_vm_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.arc.AudioValidity.record_vm_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.arc.Boot"
+				},
+				{
+					"value": "tast.arc.Boot.vm"
+				},
+				{
+					"value": "tast.arc.Boot.vm_with_per_vcpu_core_scheduling"
+				},
+				{
+					"value": "tast.arc.BuildProperties"
+				},
+				{
+					"value": "tast.arc.BuildProperties.vm"
+				},
+				{
+					"value": "tast.arc.CPUSet"
+				},
+				{
+					"value": "tast.arc.CPUSet.vm"
+				},
+				{
+					"value": "tast.arc.CheckAndroidVersion"
+				},
+				{
+					"value": "tast.arc.CheckAndroidVersion.vm"
+				},
+				{
+					"value": "tast.arc.ChromeCrash.vm_logged_in"
+				},
+				{
+					"value": "tast.arc.Clipboard"
+				},
+				{
+					"value": "tast.arc.ContainerMount"
+				},
+				{
+					"value": "tast.arc.DownloadManager"
+				},
+				{
+					"value": "tast.arc.Downloads"
+				},
+				{
+					"value": "tast.arc.DragDrop.chrome_to_android"
+				},
+				{
+					"value": "tast.arc.Drivefs"
+				},
+				{
+					"value": "tast.arc.Drivefs.vm"
+				},
+				{
+					"value": "tast.arc.FileSystemXattrs"
+				},
+				{
+					"value": "tast.arc.Gamepad"
+				},
+				{
+					"value": "tast.arc.Gamepad.vm"
+				},
+				{
+					"value": "tast.arc.GlobalActionsMenu"
+				},
+				{
+					"value": "tast.arc.GuestPlayStore"
+				},
+				{
+					"value": "tast.arc.GuestPlayStore.vm"
+				},
+				{
+					"value": "tast.arc.IMEBlockingVK.vm"
+				},
+				{
+					"value": "tast.arc.IMESwitchShortcut"
+				},
+				{
+					"value": "tast.arc.IMESwitchShortcut.vm"
+				},
+				{
+					"value": "tast.arc.IntentForward"
+				},
+				{
+					"value": "tast.arc.IntentForward.vm"
+				},
+				{
+					"value": "tast.arc.LaunchIntent"
+				},
+				{
+					"value": "tast.arc.LaunchIntent.vm"
+				},
+				{
+					"value": "tast.arc.MIDIClient"
+				},
+				{
+					"value": "tast.arc.MIDIClient.vm"
+				},
+				{
+					"value": "tast.arc.ManagedAppInstallLogging.using_encrypted_reporting"
+				},
+				{
+					"value": "tast.arc.ManagedBoot.disabled"
+				},
+				{
+					"value": "tast.arc.ManagedBoot.disabled_vm"
+				},
+				{
+					"value": "tast.arc.ManagedBoot.enabled"
+				},
+				{
+					"value": "tast.arc.ManagedPlayBlockedAppInstall"
+				},
+				{
+					"value": "tast.arc.ManagedPlayBlockedAppUninstall"
+				},
+				{
+					"value": "tast.arc.ManagedPlayForcedAppInstall"
+				},
+				{
+					"value": "tast.arc.ManagedPlayStoreIcon.disabled_vm"
+				},
+				{
+					"value": "tast.arc.ManagedPlayStoreIconTablet"
+				},
+				{
+					"value": "tast.arc.ManagedPlayStoreIconTablet.vm"
+				},
+				{
+					"value": "tast.arc.ManagedPlayStoreMode.allowlist"
+				},
+				{
+					"value": "tast.arc.ManagedPlayStoreMode.blocklist"
+				},
+				{
+					"value": "tast.arc.ManagedProvisioning"
+				},
+				{
+					"value": "tast.arc.ManagedProvisioning.vm"
+				},
+				{
+					"value": "tast.arc.MountOBB"
+				},
+				{
+					"value": "tast.arc.MyFiles"
+				},
+				{
+					"value": "tast.arc.Notification"
+				},
+				{
+					"value": "tast.arc.Notification.vm"
+				},
+				{
+					"value": "tast.arc.Optin"
+				},
+				{
+					"value": "tast.arc.Optin.vm"
+				},
+				{
+					"value": "tast.arc.OptinHealth"
+				},
+				{
+					"value": "tast.arc.OptinNetworkError"
+				},
+				{
+					"value": "tast.arc.OptinNetworkError.vm"
+				},
+				{
+					"value": "tast.arc.PIPRoundedCornersUnderlay"
+				},
+				{
+					"value": "tast.arc.PlayStore"
+				},
+				{
+					"value": "tast.arc.PlayStore.vm"
+				},
+				{
+					"value": "tast.arc.Print.container_p"
+				},
+				{
+					"value": "tast.arc.RemovableMedia"
+				},
+				{
+					"value": "tast.arc.RemovableMedia.vm"
+				},
+				{
+					"value": "tast.arc.SettingsBridge"
+				},
+				{
+					"value": "tast.arc.SettingsBridge.vm"
+				},
+				{
+					"value": "tast.arc.SocProperties"
+				},
+				{
+					"value": "tast.arc.StandardizedKeyboardCopyPaste"
+				},
+				{
+					"value": "tast.arc.StandardizedKeyboardCopyPaste.tablet_mode"
+				},
+				{
+					"value": "tast.arc.StandardizedKeyboardKeys"
+				},
+				{
+					"value": "tast.arc.StandardizedKeyboardKeys.tablet_mode"
+				},
+				{
+					"value": "tast.arc.StandardizedKeyboardKeys.vm"
+				},
+				{
+					"value": "tast.arc.StandardizedKeyboardTyping"
+				},
+				{
+					"value": "tast.arc.StandardizedKeyboardTyping.tablet_mode"
+				},
+				{
+					"value": "tast.arc.StandardizedKeyboardTyping.vm"
+				},
+				{
+					"value": "tast.arc.StandardizedKeyboardTyping.vm_tablet_mode"
+				},
+				{
+					"value": "tast.arc.StandardizedMouseHover"
+				},
+				{
+					"value": "tast.arc.StandardizedMouseHover.vm"
+				},
+				{
+					"value": "tast.arc.StandardizedMouseLeftClick"
+				},
+				{
+					"value": "tast.arc.StandardizedMouseLeftClick.vm"
+				},
+				{
+					"value": "tast.arc.StandardizedMouseRightClick"
+				},
+				{
+					"value": "tast.arc.StandardizedMouseRightClick.vm"
+				},
+				{
+					"value": "tast.arc.StandardizedMouseScroll"
+				},
+				{
+					"value": "tast.arc.StandardizedMouseScroll.vm"
+				},
+				{
+					"value": "tast.arc.StartStop"
+				},
+				{
+					"value": "tast.arc.StartStop.vm"
+				},
+				{
+					"value": "tast.arc.TextToSpeech"
+				},
+				{
+					"value": "tast.arc.TextToSpeech.vm"
+				},
+				{
+					"value": "tast.arc.UnhandledKey"
+				},
+				{
+					"value": "tast.arc.UnhandledKey.vm"
+				},
+				{
+					"value": "tast.arc.VMPstoreDump"
+				},
+				{
+					"value": "tast.arc.WindowState.clamshell"
+				},
+				{
+					"value": "tast.arc.WindowState.clamshell_vm"
+				},
+				{
+					"value": "tast.assistant.Hotkey.assistant_key"
+				},
+				{
+					"value": "tast.assistant.Hotkey.search_plus_a"
+				},
+				{
+					"value": "tast.assistant.StartupInSignedOutMode"
+				},
+				{
+					"value": "tast.assistant.VolumeQueries"
+				},
+				{
+					"value": "tast.audio.ALSAConformance"
+				},
+				{
+					"value": "tast.audio.AloopLoadedFixture"
+				},
+				{
+					"value": "tast.audio.AloopLoadedFixture.stereo"
+				},
+				{
+					"value": "tast.audio.AloopLoadedFixture.stereo_without_ui"
+				},
+				{
+					"value": "tast.audio.AloopLoadedFixture.without_ui"
+				},
+				{
+					"value": "tast.audio.BrowserPlay"
+				},
+				{
+					"value": "tast.audio.BrowserRecord"
+				},
+				{
+					"value": "tast.audio.CheckingAudioFormats"
+				},
+				{
+					"value": "tast.audio.CrasAEC.16000_mono"
+				},
+				{
+					"value": "tast.audio.CrasAEC.16000_stereo"
+				},
+				{
+					"value": "tast.audio.CrasAEC.44100_mono"
+				},
+				{
+					"value": "tast.audio.CrasAEC.48000_mono"
+				},
+				{
+					"value": "tast.audio.CrasAEC.48000_stereo"
+				},
+				{
+					"value": "tast.audio.CrasBench.alsa"
+				},
+				{
+					"value": "tast.audio.CrasBench.apm"
+				},
+				{
+					"value": "tast.audio.CrasBench.cras_mixer_ops"
+				},
+				{
+					"value": "tast.audio.CrasBench.dsp"
+				},
+				{
+					"value": "tast.audio.CrasBench.dsp_am"
+				},
+				{
+					"value": "tast.audio.CrasDLCManager"
+				},
+				{
+					"value": "tast.audio.CrasDebugDump"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_0x0_conflict"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_0x0_dont_care"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_0x10_0x11_conflict"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_0x10_conflict"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_aec"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_aec_0x0_conflict"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_aec_0x0_dont_care"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_echo_ref_blocked_by_playback"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_echo_ref_blocked_by_selection"
+				},
+				{
+					"value": "tast.audio.CrasEffects.dsp_echo_ref_not_blocked_by_playback"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_ast_button_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_ast_button_enabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_nc_button_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_disabled_voice_isolation_with_nc_button_enabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_ast_button_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_ast_button_enabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_nc_button_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.forced_voice_isolation_with_nc_button_enabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_ast"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_ast_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_fallback_ap"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_fallback_ap_disabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_prefer_ast"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_both_prefer_dsp"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_only_dsp_block_pin_internal_speaker"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_only_dsp_block_pin_internal_speaker_with_aec"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_only_dsp_block_select_internal_speaker"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_only_dsp_block_select_internal_speaker_with_aec"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_only_dsp_enabled"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_only_dsp_enabled_with_aec"
+				},
+				{
+					"value": "tast.audio.CrasEffects.nc_then_unprocessed_stream"
+				},
+				{
+					"value": "tast.audio.CrasEffects.style_transfer"
+				},
+				{
+					"value": "tast.audio.CrasEffects.unprocessed_then_nc_stream"
+				},
+				{
+					"value": "tast.audio.CrasFeatures"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.aec"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.aec_nc"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.aec_nc_44100hz"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.aec_nc_ast"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.aec_nc_ast_44100hz"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.nc"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.nc_44100hz"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.nc_ast"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.nc_ast_44100hz"
+				},
+				{
+					"value": "tast.audio.CrasNoiseCancellation.no_effects"
+				},
+				{
+					"value": "tast.audio.CrasPlay"
+				},
+				{
+					"value": "tast.audio.CrasRecord"
+				},
+				{
+					"value": "tast.audio.CrasRecordQuality"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetection.non_rtc_stream_with_apm"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetection.non_rtc_stream_without_apm"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetection.rtc_stream_with_apm"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetection.rtc_stream_with_apm_at_speaker"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetection.rtc_stream_with_apm_feature_disabled"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetection.rtc_stream_with_apm_unmuted"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetection.rtc_stream_with_apm_unmuted_feature_disabled"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetection.rtc_stream_without_apm"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetection.rtc_stream_without_apm_at_speaker"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetectionTransitions.disable_feature_unmuted"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetectionTransitions.disable_feature_while_muted"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetectionTransitions.enable_feature_unmuted"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetectionTransitions.enable_feature_while_muted"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetectionTransitions.mute"
+				},
+				{
+					"value": "tast.audio.CrasSpeakOnMuteDetectionTransitions.unmute"
+				},
+				{
+					"value": "tast.audio.CrasStreamMix.all"
+				},
+				{
+					"value": "tast.audio.CrasStreamMix.blocksize"
+				},
+				{
+					"value": "tast.audio.CrasStreamMix.channel"
+				},
+				{
+					"value": "tast.audio.CrasStreamMix.rate"
+				},
+				{
+					"value": "tast.audio.DBusStreamCounts"
+				},
+				{
+					"value": "tast.audio.DevicePlay"
+				},
+				{
+					"value": "tast.audio.DeviceRecord"
+				},
+				{
+					"value": "tast.audio.FileOwnershipMigration"
+				},
+				{
+					"value": "tast.audio.FloopBasic"
+				},
+				{
+					"value": "tast.audio.Microphone"
+				},
+				{
+					"value": "tast.audio.PlaybackAudioControls.fieldtrial_config_disable"
+				},
+				{
+					"value": "tast.audio.SofProfileDump"
+				},
+				{
+					"value": "tast.audio.SoundCardInit.boot_time_calibration"
+				},
+				{
+					"value": "tast.audio.SoundCardInit.recent_reboot"
+				},
+				{
+					"value": "tast.audio.SoundCardInit.run_success"
+				},
+				{
+					"value": "tast.audio.UCMSequences.section_device"
+				},
+				{
+					"value": "tast.audio.UCMSequences.section_modifier"
+				},
+				{
+					"value": "tast.audio.UCMSequences.section_verb"
+				},
+				{
+					"value": "tast.audio.UIInput.gain_fieldtrial_config_disable"
+				},
+				{
+					"value": "tast.audio.UIInput.mute_fieldtrial_config_disable"
+				},
+				{
+					"value": "tast.biod.CrosConfig"
+				},
+				{
+					"value": "tast.biod.CrosConfigMatchesDevice"
+				},
+				{
+					"value": "tast.borealis.ConfirmLogs"
+				},
+				{
+					"value": "tast.borealis.CrashReporter"
+				},
+				{
+					"value": "tast.borealis.DEQP.info"
+				},
+				{
+					"value": "tast.borealis.FailureReporting"
+				},
+				{
+					"value": "tast.borealis.FontCheck"
+				},
+				{
+					"value": "tast.borealis.GLVersion"
+				},
+				{
+					"value": "tast.borealis.InstallDlc"
+				},
+				{
+					"value": "tast.borealis.Piglit.smoke"
+				},
+				{
+					"value": "tast.borealis.SuspendResume"
+				},
+				{
+					"value": "tast.borealis.TimezoneCheck"
+				},
+				{
+					"value": "tast.bruschetta.AppEmacs"
+				},
+				{
+					"value": "tast.bruschetta.AppEmacsWindowOperations.maximize"
+				},
+				{
+					"value": "tast.bruschetta.AppEmacsWindowOperations.minimize"
+				},
+				{
+					"value": "tast.bruschetta.AppEmacsWindowOperations.switch_tablet"
+				},
+				{
+					"value": "tast.bruschetta.AppVscodeWindowOperations.maximize"
+				},
+				{
+					"value": "tast.bruschetta.AppVscodeWindowOperations.minimize"
+				},
+				{
+					"value": "tast.bruschetta.AppVscodeWindowOperations.switch_tablet"
+				},
+				{
+					"value": "tast.bruschetta.Basic"
+				},
+				{
+					"value": "tast.bruschetta.Basic.with_fieldtrial_config"
+				},
+				{
+					"value": "tast.bruschetta.CommandVim"
+				},
+				{
+					"value": "tast.bruschetta.CopyFilesToGuest"
+				},
+				{
+					"value": "tast.bruschetta.CopyPaste.wayland_to_wayland"
+				},
+				{
+					"value": "tast.bruschetta.CopyPaste.wayland_to_x11"
+				},
+				{
+					"value": "tast.bruschetta.CopyPaste.x11_to_wayland"
+				},
+				{
+					"value": "tast.bruschetta.CopyPaste.x11_to_x11"
+				},
+				{
+					"value": "tast.bruschetta.HomeDirectoryShare"
+				},
+				{
+					"value": "tast.bruschetta.LaunchBrowser"
+				},
+				{
+					"value": "tast.bruschetta.SecureBoot"
+				},
+				{
+					"value": "tast.bruschetta.ShareDownloads"
+				},
+				{
+					"value": "tast.bruschetta.Toolkit.gtk3_wayland"
+				},
+				{
+					"value": "tast.bruschetta.Toolkit.gtk3_x11"
+				},
+				{
+					"value": "tast.bruschetta.Toolkit.gtk4_wayland"
+				},
+				{
+					"value": "tast.bruschetta.Toolkit.gtk4_x11"
+				},
+				{
+					"value": "tast.bruschetta.Toolkit.qt5_wayland"
+				},
+				{
+					"value": "tast.bruschetta.Toolkit.qt5_x11"
+				},
+				{
+					"value": "tast.bruschetta.Toolkit.qt6_wayland"
+				},
+				{
+					"value": "tast.bruschetta.Toolkit.qt6_x11"
+				},
+				{
+					"value": "tast.bruschetta.Toolkit.tkinter"
+				},
+				{
+					"value": "tast.bruschetta.USBStorage"
+				},
+				{
+					"value": "tast.bruschetta.VerifyAppWayland"
+				},
+				{
+					"value": "tast.bruschetta.VerifyAppX11"
+				},
+				{
+					"value": "tast.camera.CCAQRCode"
+				},
+				{
+					"value": "tast.camera.CCAUISmoke.fake_hal"
+				},
+				{
+					"value": "tast.camera.Characteristics"
+				},
+				{
+					"value": "tast.camera.CrosConfig"
+				},
+				{
+					"value": "tast.camera.EncodeAccelJPEG"
+				},
+				{
+					"value": "tast.camera.KernelSmokeMIPI"
+				},
+				{
+					"value": "tast.camera.KernelSmokeUSB"
+				},
+				{
+					"value": "tast.camera.PlatformServiceSmoke"
+				},
+				{
+					"value": "tast.camera.PrivacySwitch"
+				},
+				{
+					"value": "tast.camera.V4L2Compliance"
+				},
+				{
+					"value": "tast.crash.AuthFailure"
+				},
+				{
+					"value": "tast.crash.AuthFailure.tpm_dynamic"
+				},
+				{
+					"value": "tast.crash.Ephemeral.post_oobe_no_consent"
+				},
+				{
+					"value": "tast.crash.Ephemeral.post_oobe_with_consent"
+				},
+				{
+					"value": "tast.crash.Ephemeral.pre_oobe_collection"
+				},
+				{
+					"value": "tast.crash.Histograms"
+				},
+				{
+					"value": "tast.crash.KernelIwlwifiError"
+				},
+				{
+					"value": "tast.crash.KernelKfence.mock_consent"
+				},
+				{
+					"value": "tast.crash.KernelKfence.real_consent"
+				},
+				{
+					"value": "tast.crash.KernelWarning.mock_consent"
+				},
+				{
+					"value": "tast.crash.MountFailure"
+				},
+				{
+					"value": "tast.crash.ReporterCrash.mock_consent"
+				},
+				{
+					"value": "tast.crash.Rust"
+				},
+				{
+					"value": "tast.crash.Seccomp"
+				},
+				{
+					"value": "tast.crash.SelinuxViolation.mock_consent"
+				},
+				{
+					"value": "tast.crash.Sender.mock_consent_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.crash.Sender.mock_consent_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.crash.SenderKcrash"
+				},
+				{
+					"value": "tast.crash.SenderLock"
+				},
+				{
+					"value": "tast.crash.SenderNoConsent.fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.crash.SenderNoConsent.fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.crash.SenderOld"
+				},
+				{
+					"value": "tast.crash.SenderPaused"
+				},
+				{
+					"value": "tast.crash.SenderRateLimit"
+				},
+				{
+					"value": "tast.crash.SenderRetry"
+				},
+				{
+					"value": "tast.crash.Serializer"
+				},
+				{
+					"value": "tast.crash.Serializer.fetch_core"
+				},
+				{
+					"value": "tast.crash.ServiceFailure.mock_consent"
+				},
+				{
+					"value": "tast.crash.SuspendFailure"
+				},
+				{
+					"value": "tast.crash.Udev"
+				},
+				{
+					"value": "tast.crash.UncleanShutdownCollector"
+				},
+				{
+					"value": "tast.crash.User.chronos_crasher_mock_consent_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.crash.User.chronos_crasher_mock_consent_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.crash.User.chronos_crasher_no_consent_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.crash.User.chronos_crasher_no_consent_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.crash.User.chronos_crasher_real_consent_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.crash.User.chronos_crasher_real_consent_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.crash.User.core2md_failure"
+				},
+				{
+					"value": "tast.crash.User.core_file_removed_in_production"
+				},
+				{
+					"value": "tast.crash.User.crash_blocking"
+				},
+				{
+					"value": "tast.crash.User.crash_filtering"
+				},
+				{
+					"value": "tast.crash.User.crash_log_infinite_recursion"
+				},
+				{
+					"value": "tast.crash.User.crash_logs_creation"
+				},
+				{
+					"value": "tast.crash.User.internal_directory_failure"
+				},
+				{
+					"value": "tast.crash.User.max_enqueued_crash"
+				},
+				{
+					"value": "tast.crash.User.no_crash"
+				},
+				{
+					"value": "tast.crash.User.reporter_shutdown"
+				},
+				{
+					"value": "tast.crash.User.reporter_startup"
+				},
+				{
+					"value": "tast.crash.User.root_crasher_mock_consent_fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.crash.User.root_crasher_mock_consent_fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.crash.User.root_crasher_no_consent"
+				},
+				{
+					"value": "tast.crash.User.root_crasher_real_consent"
+				},
+				{
+					"value": "tast.crash.ValidateFirmwareDumpGeneration.multi_session_policy_all"
+				},
+				{
+					"value": "tast.crash.ValidateFirmwareDumpGeneration.policy_all"
+				},
+				{
+					"value": "tast.crash.ValidateFirmwareDumpGeneration.policy_none"
+				},
+				{
+					"value": "tast.crash.ValidateFirmwareDumpGeneration.policy_wifi"
+				},
+				{
+					"value": "tast.crosh.DisplayDebug"
+				},
+				{
+					"value": "tast.crostini.AppAndroidStudio.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppAudacity.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppAudacityWindowOperations.maximize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppAudacityWindowOperations.minimize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppAudacityWindowOperations.switch_tablet_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEclipse.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacs.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacsWindowOperations.maximize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacsWindowOperations.minimize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppEmacsWindowOperations.switch_tablet_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefox.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxNonalphanumericInput.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxWindowOperations.maximize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxWindowOperations.minimize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppFirefoxWindowOperations.switch_tablet_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppGedit.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppGedit.bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppGeditFilesharing.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppGeditNonalphanumericInput.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppGeditUnshareFolder.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppLibreOffice.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVSCodeNonalphanumericInput.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscode.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscode.bullseye_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeFromFileManager.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeUninstall.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeWindowOperations.maximize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeWindowOperations.minimize_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AppVscodeWindowOperations.switch_tablet_bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.AudioBasic.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.AudioBasic.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.AudioBasic.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.AudioBasic.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.AudioPlaybackConfigurations.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.BackupRestore.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Basic.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.Basic.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Basic.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.Basic.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.CheckUsers.stable"
+				},
+				{
+					"value": "tast.crostini.CheckValidUsers.stable"
+				},
+				{
+					"value": "tast.crostini.Chrony.stable"
+				},
+				{
+					"value": "tast.crostini.CommandCd.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.CommandCd.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.CommandCd.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.CommandCd.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.CommandPs.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.CommandPs.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.CommandPs.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.CommandPs.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.CommandVim.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.CommandVim.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.CommandVim.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.CommandVim.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.CopyFilesToLinuxFiles.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.CopyPaste.wayland_to_wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.CopyPaste.wayland_to_wayland_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.CopyPaste.wayland_to_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.CopyPaste.wayland_to_x11_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.CopyPaste.x11_to_wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.CopyPaste.x11_to_wayland_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.CopyPaste.x11_to_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.CopyPaste.x11_to_x11_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.CrashReporter.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.DebianUpgradeAlert.stable"
+				},
+				{
+					"value": "tast.crostini.DisplayDensity.wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.DisplayDensity.wayland_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.DisplayDensity.x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.DisplayDensity.x11_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.Docker.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.DragDrop.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.DragDrop.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.DragDrop.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.DragDrop.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.FilesAppWatch.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.FsCorruption.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.GPUEnabled.gpu_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.GPUEnabled.sw_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.HomeDirectoryShare.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.LaunchBrowser.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.LaunchBrowser.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.LaunchTerminal.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Launcher.local_wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Launcher.local_wayland_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.Launcher.local_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Launcher.local_x11_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.Launcher.system_wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Launcher.system_wayland_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.Launcher.system_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Launcher.system_x11_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.NestedVM.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.NoAccessToDownloads.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.NoAccessToDrive.bookworm_stable_gaia"
+				},
+				{
+					"value": "tast.crostini.NoAccessToDrive.bullseye_stable_gaia"
+				},
+				{
+					"value": "tast.crostini.NoSharedFolder.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Notify.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.OOMEvent.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.OpenWithTerminal.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.PackageInfo.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.PackageInstallUninstall.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.PodmanRoot.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.PodmanUser.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.RemoveCancel.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.RemoveCancel.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.RemoveCancel.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.RemoveCancel.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.RemoveOk.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.RemoveOk.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.RemoveOk.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.RemoveOk.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.ResizeCancel.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ResizeInstallation.stable"
+				},
+				{
+					"value": "tast.crostini.ResizeOk.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ResizeRestart.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ResizeSpaceConstrained.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Restart.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.RestartApp.bookworm_clamshell_stable"
+				},
+				{
+					"value": "tast.crostini.RestartIcon.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.RunWithARC.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.SSHFSMount.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.SecureCopyPaste.copy_wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.SecureCopyPaste.copy_wayland_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.SecureCopyPaste.copy_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.SecureCopyPaste.copy_x11_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.SecureCopyPaste.paste_wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.SecureCopyPaste.paste_wayland_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.SecureCopyPaste.paste_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.SecureCopyPaste.paste_x11_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.ShareDownloads.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareDownloadsAddFiles.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareDrive.bookworm_stable_gaia"
+				},
+				{
+					"value": "tast.crostini.ShareDrive.bullseye_stable_gaia"
+				},
+				{
+					"value": "tast.crostini.ShareFilesCancel.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareFilesManage.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareFilesOK.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.ShareFilesOK.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareFilesOK.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.ShareFilesOK.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.ShareFilesRestart.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareFilesToast.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareFolderZipFile.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareFolders.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareInvalidPaths.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.ShareMovies.bookworm_stable_gaia"
+				},
+				{
+					"value": "tast.crostini.ShareMovies.bullseye_stable_gaia"
+				},
+				{
+					"value": "tast.crostini.SharedFontFiles.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.SharedFontFiles.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.SharedFontFiles.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.SharedFontFiles.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.Snapshot.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.SyncTime.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.TaskManager.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.gtk3_wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.gtk3_wayland_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.gtk3_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.gtk3_x11_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.gtk4_wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.gtk4_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.qt5_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.qt5_x11_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.qt6_wayland_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.qt6_x11_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.tkinter_bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Toolkit.tkinter_bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.UninstallInvalidApp.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.VerifyAppWayland.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.VerifyAppWayland.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.VerifyAppX11.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.VmcExtraDisk.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.VmcStart.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Webserver.bookworm_lowperf"
+				},
+				{
+					"value": "tast.crostini.Webserver.bookworm_stable"
+				},
+				{
+					"value": "tast.crostini.Webserver.bullseye_lowperf"
+				},
+				{
+					"value": "tast.crostini.Webserver.bullseye_stable"
+				},
+				{
+					"value": "tast.crostini.Xattrs.bookworm_stable"
+				},
+				{
+					"value": "tast.cryptohome.AddRemoveFactors"
+				},
+				{
+					"value": "tast.cryptohome.AddRemoveFactorsEphemeral"
+				},
+				{
+					"value": "tast.cryptohome.AddRemoveFactorsPasswordless.password_first"
+				},
+				{
+					"value": "tast.cryptohome.AddRemoveFactorsPasswordless.pin_only"
+				},
+				{
+					"value": "tast.cryptohome.AddRemovePIN"
+				},
+				{
+					"value": "tast.cryptohome.AuthSessionUnlock"
+				},
+				{
+					"value": "tast.cryptohome.AuthSessionUnlockEphemeral"
+				},
+				{
+					"value": "tast.cryptohome.ConcurrentSessions"
+				},
+				{
+					"value": "tast.cryptohome.FileStability.normal"
+				},
+				{
+					"value": "tast.cryptohome.FileStability.subdirectory"
+				},
+				{
+					"value": "tast.cryptohome.FscryptEncryptionPolicy.v1"
+				},
+				{
+					"value": "tast.cryptohome.FscryptEncryptionPolicy.v2"
+				},
+				{
+					"value": "tast.cryptohome.GuestAuthSession"
+				},
+				{
+					"value": "tast.cryptohome.KioskEphemeralMount"
+				},
+				{
+					"value": "tast.cryptohome.KioskPersistentMount"
+				},
+				{
+					"value": "tast.cryptohome.LegacyLabelAuthSession.with_key_data"
+				},
+				{
+					"value": "tast.cryptohome.LegacyLabelAuthSession.without_key_data"
+				},
+				{
+					"value": "tast.cryptohome.PinLockoutOnLockScreen.legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.PinLockoutOnLockScreen.migrate_legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.PinLockoutOnLockScreen.modern_pin_no_migration"
+				},
+				{
+					"value": "tast.cryptohome.Recovery"
+				},
+				{
+					"value": "tast.cryptohome.RecoveryLockedForAuth"
+				},
+				{
+					"value": "tast.cryptohome.RecoveryWithUssMigration.legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.RecoveryWithUssMigration.modern_pin"
+				},
+				{
+					"value": "tast.cryptohome.RelabelFactors"
+				},
+				{
+					"value": "tast.cryptohome.ReplaceFactors"
+				},
+				{
+					"value": "tast.cryptohome.SequentialConsistency.normal"
+				},
+				{
+					"value": "tast.cryptohome.SequentialConsistency.normal_chronos"
+				},
+				{
+					"value": "tast.cryptohome.SequentialConsistency.subdirectory"
+				},
+				{
+					"value": "tast.cryptohome.SequentialConsistency.subdirectory_chronos"
+				},
+				{
+					"value": "tast.cryptohome.UpdatePassword"
+				},
+				{
+					"value": "tast.cryptohome.UpdatePin"
+				},
+				{
+					"value": "tast.cryptohome.UpdateRecovery"
+				},
+				{
+					"value": "tast.cryptohome.UpdateRecovery.no_id_rotation"
+				},
+				{
+					"value": "tast.cryptohome.UpdateRecovery.rotate_mediator_keys"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationChallengeCredential.rsassa_all"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationChallengeCredential.rsassa_all_tpm_dynamic"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationChallengeCredential.rsassa_sha1_tpm_dynamic"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationPasswordPin.legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationPasswordPin.modern_pin"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationPinPassword.legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationPinPassword.modern_pin"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationUpdateAuthFactor.legacy_pin"
+				},
+				{
+					"value": "tast.cryptohome.UssMigrationUpdateAuthFactor.modern_pin"
+				},
+				{
+					"value": "tast.dbus.EventWatcher"
+				},
+				{
+					"value": "tast.dbus.SystemBusClose"
+				},
+				{
+					"value": "tast.debugd.CoreScheduler"
+				},
+				{
+					"value": "tast.debugd.DRMTraceTool.stable"
+				},
+				{
+					"value": "tast.debugd.ParsePrinterUris"
+				},
+				{
+					"value": "tast.debugd.Printer"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListClipboard.ash_warn_proceeded"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListClipboardExt.ash_blocked"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListDragdrop.ash_blocked"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListFilesUSB.ash_blocked"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListPrinting.ash_blocked"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListPrinting.ash_warn_cancelled"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListScreenshareEntireScreen.ash_warn_proceeded"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListScreenshareTab.ash_blocked"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListScreenshareWindow.ash_warn_cancelled"
+				},
+				{
+					"value": "tast.dlp.DataLeakPreventionRulesListScreenshot.ash_warn_cancelled"
+				},
+				{
+					"value": "tast.documentscanapi.Scan"
+				},
+				{
+					"value": "tast.example.CommandContextUser"
+				},
+				{
+					"value": "tast.example.DBus"
+				},
+				{
+					"value": "tast.example.DataFiles"
+				},
+				{
+					"value": "tast.example.HWDeps"
+				},
+				{
+					"value": "tast.example.HWDeps.fingerprint"
+				},
+				{
+					"value": "tast.example.Param.dog"
+				},
+				{
+					"value": "tast.example.Param.duck"
+				},
+				{
+					"value": "tast.example.Pass"
+				},
+				{
+					"value": "tast.example.Perf"
+				},
+				{
+					"value": "tast.example.PublicVars"
+				},
+				{
+					"value": "tast.example.RemoteFileSystem"
+				},
+				{
+					"value": "tast.example.SecretVars"
+				},
+				{
+					"value": "tast.factory.FAI"
+				},
+				{
+					"value": "tast.factory.Goofy"
+				},
+				{
+					"value": "tast.factory.Kiosk"
+				},
+				{
+					"value": "tast.factory.Toolkit"
+				},
+				{
+					"value": "tast.featured.FeatureLibraryLateBoot.experiment_default"
+				},
+				{
+					"value": "tast.featured.FeatureLibraryLateBoot.experiment_disabled_without_params"
+				},
+				{
+					"value": "tast.featured.FeatureLibraryLateBoot.experiment_enabled_with_params"
+				},
+				{
+					"value": "tast.featured.FeatureLibraryLateBoot.experiment_enabled_without_params"
+				},
+				{
+					"value": "tast.featured.FieldTrialEarlyBoot.active_trial"
+				},
+				{
+					"value": "tast.featured.FieldTrialEarlyBoot.inactive_trial"
+				},
+				{
+					"value": "tast.featured.LatePlatformFeatures.file_exists_disabled"
+				},
+				{
+					"value": "tast.featured.LatePlatformFeatures.file_exists_enabled"
+				},
+				{
+					"value": "tast.featured.LatePlatformFeatures.file_not_exist_disabled"
+				},
+				{
+					"value": "tast.featured.LatePlatformFeatures.file_not_exist_enabled"
+				},
+				{
+					"value": "tast.filemanager.DrivefsUI.fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.filemanager.DrivefsUI.fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.filemanager.Fusebox.basic"
+				},
+				{
+					"value": "tast.filemanager.Fusebox.fsp"
+				},
+				{
+					"value": "tast.filemanager.ZipMount"
+				},
+				{
+					"value": "tast.firmware.Config"
+				},
+				{
+					"value": "tast.firmware.Flashrom"
+				},
+				{
+					"value": "tast.firmware.FlashromWriteProtect"
+				},
+				{
+					"value": "tast.firmware.FwupdGetDevices"
+				},
+				{
+					"value": "tast.firmware.FwupdPluginStartup"
+				},
+				{
+					"value": "tast.firmware.FwupdPluginStartup.uefi"
+				},
+				{
+					"value": "tast.firmware.GSCtool"
+				},
+				{
+					"value": "tast.flex.FlexConfigDbusSmoke"
+				},
+				{
+					"value": "tast.flex.FlexID"
+				},
+				{
+					"value": "tast.flex.HWIS"
+				},
+				{
+					"value": "tast.flex.UEFIBoot"
+				},
+				{
+					"value": "tast.graphics.Clvk.simple_test"
+				},
+				{
+					"value": "tast.graphics.Connector"
+				},
+				{
+					"value": "tast.graphics.DEQP.smoke"
+				},
+				{
+					"value": "tast.graphics.DEQP.smoke_gles2"
+				},
+				{
+					"value": "tast.graphics.DEQP.smoke_gles3"
+				},
+				{
+					"value": "tast.graphics.DEQP.smoke_gles31"
+				},
+				{
+					"value": "tast.graphics.DEQP.smoke_vk"
+				},
+				{
+					"value": "tast.graphics.DRM.drm_cursor_test"
+				},
+				{
+					"value": "tast.graphics.DRM.linear_bo_test"
+				},
+				{
+					"value": "tast.graphics.DRM.mmap_test"
+				},
+				{
+					"value": "tast.graphics.DRM.null_platform_test"
+				},
+				{
+					"value": "tast.graphics.DRM.swrast_test"
+				},
+				{
+					"value": "tast.graphics.ErrorStateDecode.cfm_m120"
+				},
+				{
+					"value": "tast.graphics.ErrorStateDecode.cfm_m120_full"
+				},
+				{
+					"value": "tast.graphics.FPS"
+				},
+				{
+					"value": "tast.graphics.GLAPICheck"
+				},
+				{
+					"value": "tast.graphics.HardwareProbe"
+				},
+				{
+					"value": "tast.graphics.HardwareProbe.verify"
+				},
+				{
+					"value": "tast.graphics.HardwareProbe.verify_flex"
+				},
+				{
+					"value": "tast.graphics.Idle.dvfs"
+				},
+				{
+					"value": "tast.graphics.Idle.dvfs_arc"
+				},
+				{
+					"value": "tast.graphics.Idle.psr"
+				},
+				{
+					"value": "tast.graphics.Idle.psr_arc"
+				},
+				{
+					"value": "tast.graphics.Idle.rc6"
+				},
+				{
+					"value": "tast.graphics.Idle.rc6_arc"
+				},
+				{
+					"value": "tast.graphics.IgtKms.template"
+				},
+				{
+					"value": "tast.graphics.KernelConfig"
+				},
+				{
+					"value": "tast.graphics.KernelConfig.flex"
+				},
+				{
+					"value": "tast.graphics.KernelMemory"
+				},
+				{
+					"value": "tast.graphics.KmsvncConnect"
+				},
+				{
+					"value": "tast.graphics.LibDRM.modetest"
+				},
+				{
+					"value": "tast.graphics.LibDRM.proptest"
+				},
+				{
+					"value": "tast.graphics.ScreenshotCLI"
+				},
+				{
+					"value": "tast.graphics.ScreenshotCLI.passthrough"
+				},
+				{
+					"value": "tast.graphics.Vulkaninfo"
+				},
+				{
+					"value": "tast.graphics.Vulkaninfo.no_vulkan"
+				},
+				{
+					"value": "tast.hardware.DiskErrors"
+				},
+				{
+					"value": "tast.hardware.SensorAccel"
+				},
+				{
+					"value": "tast.health.DiagnosticsCancel.urandom"
+				},
+				{
+					"value": "tast.health.DiagnosticsList"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.ac_power"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.cpu_cache"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.cpu_stress"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.disk_read"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.dns_resolution"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.dns_resolver_present"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.fingerprint"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.fingerprint_alive"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.floating_point_accuracy"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.lan_connectivity"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.memory"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.power_button"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.prime_search"
+				},
+				{
+					"value": "tast.health.DiagnosticsPass.urandom"
+				},
+				{
+					"value": "tast.health.DiagnosticsPassV2.audio_driver"
+				},
+				{
+					"value": "tast.health.DiagnosticsPassV2.cpu_cache_v2"
+				},
+				{
+					"value": "tast.health.DiagnosticsPassV2.cpu_stress_v2"
+				},
+				{
+					"value": "tast.health.DiagnosticsPassV2.floating_point_v2"
+				},
+				{
+					"value": "tast.health.DiagnosticsPassV2.memory_v2"
+				},
+				{
+					"value": "tast.health.DiagnosticsPassV2.prime_search_v2"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.arc_dns_resolution"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.arc_http"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.arc_ping"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.battery_capacity"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.battery_health"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.captive_portal"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.cpu_stress"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.dns_latency"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.emmc_lifetime"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.gateway_can_be_pinged"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.has_secure_wifi_connection"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.https_latency"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.nvme_self_test"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.signal_strength"
+				},
+				{
+					"value": "tast.health.DiagnosticsRun.smartctl_check"
+				},
+				{
+					"value": "tast.health.DiagnosticsRunV2.ufs_lifetime"
+				},
+				{
+					"value": "tast.health.MonitorBluetoothEventBluez"
+				},
+				{
+					"value": "tast.health.MonitorBluetoothEventFloss"
+				},
+				{
+					"value": "tast.health.MonitorEventStartup.audio_jack"
+				},
+				{
+					"value": "tast.health.MonitorEventStartup.external_display"
+				},
+				{
+					"value": "tast.health.MonitorEventStartup.sd_card"
+				},
+				{
+					"value": "tast.health.MonitorEventStartup.stylus"
+				},
+				{
+					"value": "tast.health.MonitorEventStartup.stylus_garage"
+				},
+				{
+					"value": "tast.health.MonitorEventStartup.touchpad"
+				},
+				{
+					"value": "tast.health.MonitorEventStartup.touchscreen"
+				},
+				{
+					"value": "tast.health.MonitorKeyboardDiagnosticEvent.non_tablet_mode_form_factors"
+				},
+				{
+					"value": "tast.health.MonitorKeyboardDiagnosticEvent.tablet_mode_form_factors"
+				},
+				{
+					"value": "tast.health.MonitorThunderboltEvent"
+				},
+				{
+					"value": "tast.health.MonitorTouchpadEvent.clamshell"
+				},
+				{
+					"value": "tast.health.MonitorTouchscreenEvent"
+				},
+				{
+					"value": "tast.health.MonitorUnuploadedCrashEvent.user_logged_in"
+				},
+				{
+					"value": "tast.health.MonitorUnuploadedCrashEvent.user_not_logged_in"
+				},
+				{
+					"value": "tast.health.MonitorUploadedCrashEvent.user_logged_in"
+				},
+				{
+					"value": "tast.health.MonitorUploadedCrashEvent.user_not_logged_in"
+				},
+				{
+					"value": "tast.health.MonitorUsbEvent"
+				},
+				{
+					"value": "tast.health.ProbeAudioHardwareInfo"
+				},
+				{
+					"value": "tast.health.ProbeAudioInfo"
+				},
+				{
+					"value": "tast.health.ProbeBacklightInfo"
+				},
+				{
+					"value": "tast.health.ProbeBatteryMetrics"
+				},
+				{
+					"value": "tast.health.ProbeBlockDevices"
+				},
+				{
+					"value": "tast.health.ProbeBluetoothInfo.bluez"
+				},
+				{
+					"value": "tast.health.ProbeBluetoothInfo.floss"
+				},
+				{
+					"value": "tast.health.ProbeBootPerformanceInfo"
+				},
+				{
+					"value": "tast.health.ProbeBusInfo"
+				},
+				{
+					"value": "tast.health.ProbeBusInfo.progif"
+				},
+				{
+					"value": "tast.health.ProbeBusInfo.thunderbolt"
+				},
+				{
+					"value": "tast.health.ProbeCPUInfo"
+				},
+				{
+					"value": "tast.health.ProbeDisplayInfo"
+				},
+				{
+					"value": "tast.health.ProbeDisplayInfo.has_privacy_screen"
+				},
+				{
+					"value": "tast.health.ProbeFanInfo"
+				},
+				{
+					"value": "tast.health.ProbeGraphicsInfo"
+				},
+				{
+					"value": "tast.health.ProbeInputInfo"
+				},
+				{
+					"value": "tast.health.ProbeInputInfo.with_internal_touchpad"
+				},
+				{
+					"value": "tast.health.ProbeInputInfo.with_touchpad_flex"
+				},
+				{
+					"value": "tast.health.ProbeMemoryInfo"
+				},
+				{
+					"value": "tast.health.ProbeNetworkInfo"
+				},
+				{
+					"value": "tast.health.ProbeProcessInfo"
+				},
+				{
+					"value": "tast.health.ProbeSensorInfo"
+				},
+				{
+					"value": "tast.health.ProbeStatefulPartitionInfo"
+				},
+				{
+					"value": "tast.health.ProbeSystemInfo"
+				},
+				{
+					"value": "tast.health.ProbeSystemInfo.platform_service_record"
+				},
+				{
+					"value": "tast.health.ProbeThermalInfo"
+				},
+				{
+					"value": "tast.health.ProbeTimezoneInfo"
+				},
+				{
+					"value": "tast.health.ProbeTpmInfo"
+				},
+				{
+					"value": "tast.health.ProbeWifiInfo"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v1_discovery_bluez"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v1_power_bluez"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v1_power_floss"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v1_scanning_bluez"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v1_scanning_floss"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v2_discovery"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v2_power"
+				},
+				{
+					"value": "tast.health.RunBluetoothRoutine.v2_scanning"
+				},
+				{
+					"value": "tast.health.RunCameraAvailabilityRoutine"
+				},
+				{
+					"value": "tast.health.RunCameraFrameAnalysisRoutine"
+				},
+				{
+					"value": "tast.health.RunFanRoutine"
+				},
+				{
+					"value": "tast.health.RunKeyboardBacklightRoutine"
+				},
+				{
+					"value": "tast.health.RunLEDRoutine"
+				},
+				{
+					"value": "tast.health.RunSensitiveSensorRoutine.v1"
+				},
+				{
+					"value": "tast.health.RunSensitiveSensorRoutine.v2"
+				},
+				{
+					"value": "tast.health.RunUrandomRoutine"
+				},
+				{
+					"value": "tast.health.RunVolumeButtonRoutine"
+				},
+				{
+					"value": "tast.hps.DBus"
+				},
+				{
+					"value": "tast.hps.DBus.fake"
+				},
+				{
+					"value": "tast.hwsec.AccountDiskUsage"
+				},
+				{
+					"value": "tast.hwsec.AttestationEID"
+				},
+				{
+					"value": "tast.hwsec.ChapsAttributePolicy"
+				},
+				{
+					"value": "tast.hwsec.ChapsAttributePolicy.tpm_dynamic"
+				},
+				{
+					"value": "tast.hwsec.ChapsCloseAllSessions"
+				},
+				{
+					"value": "tast.hwsec.ChapsECDSA"
+				},
+				{
+					"value": "tast.hwsec.ChapsECDSA.tpm_dynamic"
+				},
+				{
+					"value": "tast.hwsec.ChapsPKCS1V15"
+				},
+				{
+					"value": "tast.hwsec.ChapsPKCS1V15.tpm_dynamic"
+				},
+				{
+					"value": "tast.hwsec.ChapsRSAPSS"
+				},
+				{
+					"value": "tast.hwsec.ChapsRSAPSS.tpm_dynamic"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.ti50_r112"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.ti50_r114"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.ti50_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.ti50_r125"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r102"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r108"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r110"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r112"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r114"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r125"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r88"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r91"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r93"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm2_r96"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r102"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r108"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r110"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r112"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r114"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r125"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionAuthFactor.tpm_dynamic_r96"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.ti50_r112"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.ti50_r114"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.ti50_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.ti50_r125"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r102"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r108"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r110"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r112"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r114"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r125"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r88"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r91"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r93"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm2_r96"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r102"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r108"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r110"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r112"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r114"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r120"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r125"
+				},
+				{
+					"value": "tast.hwsec.CrossVersionChromeLogin.tpm_dynamic_r96"
+				},
+				{
+					"value": "tast.hwsec.CryptohomeBadPerms"
+				},
+				{
+					"value": "tast.hwsec.CryptohomeNonDirs"
+				},
+				{
+					"value": "tast.hwsec.DaemonsRestartStress.tpm2"
+				},
+				{
+					"value": "tast.hwsec.DaemonsRestartStress.tpm_dynamic_2"
+				},
+				{
+					"value": "tast.hwsec.Login"
+				},
+				{
+					"value": "tast.hwsec.LoginGuest"
+				},
+				{
+					"value": "tast.hwsec.SanitizedUsernameAndSalt"
+				},
+				{
+					"value": "tast.hwsec.TPMContest"
+				},
+				{
+					"value": "tast.hwsec.UnmountAll"
+				},
+				{
+					"value": "tast.hwsec.UnmountAll.with_tpm_dynamic"
+				},
+				{
+					"value": "tast.inputs.InputMethodManagement"
+				},
+				{
+					"value": "tast.inputs.InputMethodManagement.guest"
+				},
+				{
+					"value": "tast.inputs.InputMethodShelf"
+				},
+				{
+					"value": "tast.inputs.InputMethodShelfInputs"
+				},
+				{
+					"value": "tast.inputs.InputMethodSystemLanguage.es"
+				},
+				{
+					"value": "tast.inputs.InputMethodSystemLanguage.fr"
+				},
+				{
+					"value": "tast.inputs.InputMethodSystemLanguage.jp"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardAltgr"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardAutocorrect.en_us_1"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardAutocorrect.en_us_2"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardAutocorrectAccentKey"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardCantoneseTyping"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardCapsLock"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardChangeInput"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardDeadKeys.french"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardDeadKeys.us_intl_acute"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardDeadKeys.us_intl_double"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardEmojiSearch"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardEmojiSuggestion"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardEmojiSuggestion.guest"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardEmojiSuggestion.incognito"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardEnglishTyping"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardGrammarCheck"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardInputFields.us_en"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardKoreanTyping"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardLongpressDiacritics"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardMultiwordSuggestion.informational"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardPinyinTyping.simplified"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardPinyinTyping.traditional"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.array"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.cangjie"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.dayi"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.quick"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardShapeBasedChineseTyping.wubi"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTextEditing"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.el"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.fa"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.gu"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.hi"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.kn"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ml"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.mr"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ne"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.or"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.pa"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.sa"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ta"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.te"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardTransliterationTyping.ur"
+				},
+				{
+					"value": "tast.inputs.PhysicalKeyboardZhuyinTyping"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardAccent"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardAccessibility"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardAutoShift"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardChangeInput.a11y"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardChangeInput.tablet"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardDeadKeys.catalan"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardDeadKeys.french"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardEnglishSettings"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardFloat.clamshell"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardFloat.tablet"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardGlideTyping.clamshell_a11y_docked"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardGlideTyping.clamshell_a11y_floating"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.docked"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardHandwriting.floating"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardJapaneseInputMode"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardMultipaste"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardMultipasteSuggestion"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardMultitouch"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardOOBE"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardOverscroll.clamshell"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardOverscroll.tablet"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardSpeech"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardTypingApps"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardTypingInputFields"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardTypingUserMode.guest"
+				},
+				{
+					"value": "tast.inputs.VirtualKeyboardTypingUserMode.incognito"
+				},
+				{
+					"value": "tast.kdump.ProbeKernelLimits"
+				},
+				{
+					"value": "tast.kernel.CPUCgroup"
+				},
+				{
+					"value": "tast.kernel.ConfigVerify.chromeos"
+				},
+				{
+					"value": "tast.kernel.ConfigVerify.chromeos_kernelci"
+				},
+				{
+					"value": "tast.kernel.Cpuidle"
+				},
+				{
+					"value": "tast.kernel.CryptoAPI"
+				},
+				{
+					"value": "tast.kernel.CryptoDigest"
+				},
+				{
+					"value": "tast.kernel.ECDeviceNode"
+				},
+				{
+					"value": "tast.kernel.FileExist.latency_sensitive"
+				},
+				{
+					"value": "tast.kernel.Limits"
+				},
+				{
+					"value": "tast.kernel.PerfCallgraph"
+				},
+				{
+					"value": "tast.kernel.PstoreConsoleRamoops"
+				},
+				{
+					"value": "tast.kernel.StackEntropy"
+				},
+				{
+					"value": "tast.launcher.SearchSettingsSections.fingerprint_tests_clamshell_mode"
+				},
+				{
+					"value": "tast.lldb.ServerRun"
+				},
+				{
+					"value": "tast.lockscreen.CloseLid.fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.lockscreen.CloseLid.fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.lockscreen.KeyboardShortcut"
+				},
+				{
+					"value": "tast.login.AuthError"
+				},
+				{
+					"value": "tast.login.ChangePassword.user_with_recovery"
+				},
+				{
+					"value": "tast.login.ChangePassword.user_without_recovery"
+				},
+				{
+					"value": "tast.login.Chrome"
+				},
+				{
+					"value": "tast.login.ChromeGAIA"
+				},
+				{
+					"value": "tast.login.ExistingUser"
+				},
+				{
+					"value": "tast.login.Offline"
+				},
+				{
+					"value": "tast.login.ProfileExtension"
+				},
+				{
+					"value": "tast.meta.ListTests"
+				},
+				{
+					"value": "tast.meta.RunTests.files"
+				},
+				{
+					"value": "tast.meta.RunTests.panic"
+				},
+				{
+					"value": "tast.meta.ServiceOutput"
+				},
+				{
+					"value": "tast.meta.Stdio"
+				},
+				{
+					"value": "tast.metrics.RustBindings"
+				},
+				{
+					"value": "tast.mlservice.WebHandwritingRecognition"
+				},
+				{
+					"value": "tast.mlservice.WebHandwritingRecognitionNotSupported"
+				},
+				{
+					"value": "tast.mojo.ServiceManagerPolicy"
+				},
+				{
+					"value": "tast.mojo.ServiceManagerTestService"
+				},
+				{
+					"value": "tast.mojo.ServiceManagerTestSharedBuffer"
+				},
+				{
+					"value": "tast.nacl.Pnacl"
+				},
+				{
+					"value": "tast.network.ARCCreateWifiInShillByCmd.auto_reconnect_disabled"
+				},
+				{
+					"value": "tast.network.ARCCreateWifiInShillByCmd.auto_reconnect_disabled_with_pac_url"
+				},
+				{
+					"value": "tast.network.ARCCreateWifiInShillByCmd.dns_and_search_domains"
+				},
+				{
+					"value": "tast.network.ARCCreateWifiInShillByCmd.manual_proxy"
+				},
+				{
+					"value": "tast.network.ARCIPv6Connectivity"
+				},
+				{
+					"value": "tast.network.ARCIPv6Connectivity.v6only"
+				},
+				{
+					"value": "tast.network.ARCMultiNetworkingConnectivity"
+				},
+				{
+					"value": "tast.network.ARCToHostVPN"
+				},
+				{
+					"value": "tast.network.ARCVPNConfigs"
+				},
+				{
+					"value": "tast.network.ARCVPNConnect"
+				},
+				{
+					"value": "tast.network.ARCVPNCrash.container"
+				},
+				{
+					"value": "tast.network.ARCVPNCrash.vm"
+				},
+				{
+					"value": "tast.network.ARCVPNDatapath"
+				},
+				{
+					"value": "tast.network.ARCVPNDisabled"
+				},
+				{
+					"value": "tast.network.AlwaysOnVPNRouting.best_effort_mode_ikev2"
+				},
+				{
+					"value": "tast.network.AlwaysOnVPNRouting.best_effort_mode_l2tp_ipsec_psk"
+				},
+				{
+					"value": "tast.network.AlwaysOnVPNRouting.strict_mode_ikev2"
+				},
+				{
+					"value": "tast.network.AlwaysOnVPNRouting.strict_mode_l2tp_ipsec_psk"
+				},
+				{
+					"value": "tast.network.BasicProfileProperties"
+				},
+				{
+					"value": "tast.network.BruschettaConnectivity.dualstack"
+				},
+				{
+					"value": "tast.network.BruschettaConnectivity.v6only"
+				},
+				{
+					"value": "tast.network.ConfigBaseline.login"
+				},
+				{
+					"value": "tast.network.ConfigBaseline.oobe"
+				},
+				{
+					"value": "tast.network.ConfigureServiceForUserProfile.guest"
+				},
+				{
+					"value": "tast.network.ConfigureServiceForUserProfile.normal"
+				},
+				{
+					"value": "tast.network.DHCPClientOptions"
+				},
+				{
+					"value": "tast.network.DHCPHostname"
+				},
+				{
+					"value": "tast.network.DHCPNonASCIIParam"
+				},
+				{
+					"value": "tast.network.DHCPTwoServersConflict"
+				},
+				{
+					"value": "tast.network.DHCPTwoServersNAK.ack_first"
+				},
+				{
+					"value": "tast.network.DHCPTwoServersNAK.nak_first"
+				},
+				{
+					"value": "tast.network.DHCPWebProxy"
+				},
+				{
+					"value": "tast.network.DNSProxy.arc_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxy.arc_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxy.arc_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxy.chrome_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxy.chrome_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxy.chrome_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxy.crostini_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxy.crostini_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxy.crostini_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxyCaptivePortal"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.arc_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.arc_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.arc_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.chrome_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.chrome_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.chrome_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.crostini_doh_always_on"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.crostini_doh_automatic"
+				},
+				{
+					"value": "tast.network.DNSProxyOverVPN.crostini_doh_off"
+				},
+				{
+					"value": "tast.network.DNSProxyQueries"
+				},
+				{
+					"value": "tast.network.DNSProxyUISettings"
+				},
+				{
+					"value": "tast.network.DefaultProfile"
+				},
+				{
+					"value": "tast.network.DefaultProfileServices"
+				},
+				{
+					"value": "tast.network.DiagFailDNSResolution"
+				},
+				{
+					"value": "tast.network.DropInvalidPackets"
+				},
+				{
+					"value": "tast.network.EhideCommandSupport.scp"
+				},
+				{
+					"value": "tast.network.EhideCommandSupport.sftp"
+				},
+				{
+					"value": "tast.network.EhideNoEthernet"
+				},
+				{
+					"value": "tast.network.Ethernet8021X.peap_mschapv2"
+				},
+				{
+					"value": "tast.network.Ethernet8021X.ttls_mschapv2"
+				},
+				{
+					"value": "tast.network.HostToARCVPN"
+				},
+				{
+					"value": "tast.network.PasspointCerts"
+				},
+				{
+					"value": "tast.network.QosNetworkControl"
+				},
+				{
+					"value": "tast.network.QosWebRTC"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.dual_stack_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.dual_stack_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.ipv4_only_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.ipv4_only_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.ipv6_only_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfConfigUpdate.ipv6_only_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.controller_crash_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.controller_crash_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.shill_crash_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.shill_crash_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfCrash.system_proxy_crash_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfLowerPriorityConfigUpdate.proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfLowerPriorityConfigUpdate.proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.high_priority_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.high_priority_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.low_priority_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.low_priority_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.vpn_proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfNewNetwork.vpn_proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolvConfPortal.proxy_disabled"
+				},
+				{
+					"value": "tast.network.ResolvConfPortal.proxy_enabled"
+				},
+				{
+					"value": "tast.network.ResolveLocalHostname"
+				},
+				{
+					"value": "tast.network.ResolveLocalHostnameInvalidAddress"
+				},
+				{
+					"value": "tast.network.RoutingConnectionPinning"
+				},
+				{
+					"value": "tast.network.RoutingDHCPClasslessStatic"
+				},
+				{
+					"value": "tast.network.RoutingDualStackWithStatic"
+				},
+				{
+					"value": "tast.network.RoutingFallthrough.ipv4_only_primary"
+				},
+				{
+					"value": "tast.network.RoutingFallthrough.ipv6_only_primary"
+				},
+				{
+					"value": "tast.network.RoutingHighPriority"
+				},
+				{
+					"value": "tast.network.RoutingIPv4Static.apply_when_connecting"
+				},
+				{
+					"value": "tast.network.RoutingIPv4Static.apply_when_idle"
+				},
+				{
+					"value": "tast.network.RoutingIPv4StaticWithDHCP"
+				},
+				{
+					"value": "tast.network.RoutingIPv6Only"
+				},
+				{
+					"value": "tast.network.RoutingLowPriority"
+				},
+				{
+					"value": "tast.network.RoutingNoIP"
+				},
+				{
+					"value": "tast.network.ShillCAPPORT"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalDNS"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.1byte200answer"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.checkportalfalse"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.empty200asnwer"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.invalidredirect"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.managednetworkdevicepolicy"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.managednetworknone"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.managednetworkuserpolicy"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.noconnectivity"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.online"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.portalsuspected"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.redirectfound"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalHTTP.redirectfoundtempredirect"
+				},
+				{
+					"value": "tast.network.ShillCaptivePortalProperties.ethernet_online_with_no_captive_portal"
+				},
+				{
+					"value": "tast.network.ShillEthernetReady"
+				},
+				{
+					"value": "tast.network.ShillInitScriptsLoginStartShill"
+				},
+				{
+					"value": "tast.network.ShillStability"
+				},
+				{
+					"value": "tast.network.ShillTethering"
+				},
+				{
+					"value": "tast.network.SimulatedWifiServiceSmoke.ipv4"
+				},
+				{
+					"value": "tast.network.SimulatedWifiServiceSmoke.ipv6"
+				},
+				{
+					"value": "tast.network.StableShillEAPSlot"
+				},
+				{
+					"value": "tast.network.SupportedProtocols"
+				},
+				{
+					"value": "tast.network.TrafficCounters.arc_ipv4"
+				},
+				{
+					"value": "tast.network.TrafficCounters.arc_ipv6"
+				},
+				{
+					"value": "tast.network.TrafficCounters.crostini_ipv4"
+				},
+				{
+					"value": "tast.network.TrafficCounters.crostini_ipv6"
+				},
+				{
+					"value": "tast.network.TrafficCounters.users_ipv4"
+				},
+				{
+					"value": "tast.network.TrafficCounters.users_ipv6"
+				},
+				{
+					"value": "tast.network.TrafficCounters.vpn_ipv4"
+				},
+				{
+					"value": "tast.network.TrafficCounters.vpn_ipv6"
+				},
+				{
+					"value": "tast.network.TwoShills"
+				},
+				{
+					"value": "tast.network.VPNConnect.ikev2_cert"
+				},
+				{
+					"value": "tast.network.VPNConnect.ikev2_eap_mschapv2"
+				},
+				{
+					"value": "tast.network.VPNConnect.l2tp_ipsec_cert"
+				},
+				{
+					"value": "tast.network.VPNConnect.l2tp_ipsec_psk_xauth"
+				},
+				{
+					"value": "tast.network.VPNConnect.openvpn"
+				},
+				{
+					"value": "tast.network.VPNConnect.openvpn_cert_verify"
+				},
+				{
+					"value": "tast.network.VPNConnect.openvpn_user_pass"
+				},
+				{
+					"value": "tast.network.VPNConnect.wireguard_generate_key"
+				},
+				{
+					"value": "tast.network.VPNConnect.wireguard_psk"
+				},
+				{
+					"value": "tast.network.VPNDNS.ikev2_ipv4"
+				},
+				{
+					"value": "tast.network.VPNDNS.ikev2_ipv6"
+				},
+				{
+					"value": "tast.network.VPNDNS.l2tp_ipsec"
+				},
+				{
+					"value": "tast.network.VPNDNS.openvpn_ipv4"
+				},
+				{
+					"value": "tast.network.VPNDNS.openvpn_ipv6"
+				},
+				{
+					"value": "tast.network.VPNDNS.wireguard_ipv4"
+				},
+				{
+					"value": "tast.network.VPNDNS.wireguard_ipv6"
+				},
+				{
+					"value": "tast.network.VPNRouting.ikev2_ipv4"
+				},
+				{
+					"value": "tast.network.VPNRouting.ikev2_ipv4_ipv6"
+				},
+				{
+					"value": "tast.network.VPNRouting.ikev2_ipv6"
+				},
+				{
+					"value": "tast.network.VPNRouting.l2tp_ipsec"
+				},
+				{
+					"value": "tast.network.VPNRouting.l2tp_ipsec_evil"
+				},
+				{
+					"value": "tast.network.VPNRouting.openvpn_ipv4"
+				},
+				{
+					"value": "tast.network.VPNRouting.openvpn_ipv4_ipv6"
+				},
+				{
+					"value": "tast.network.VPNRouting.openvpn_ipv6"
+				},
+				{
+					"value": "tast.network.VPNRouting.wireguard_ipv4"
+				},
+				{
+					"value": "tast.network.VPNRouting.wireguard_ipv4_ipv6"
+				},
+				{
+					"value": "tast.network.VPNRouting.wireguard_ipv4_two_peers"
+				},
+				{
+					"value": "tast.network.VPNRouting.wireguard_ipv6"
+				},
+				{
+					"value": "tast.network.WireguardCrosh"
+				},
+				{
+					"value": "tast.oobe.Smoke.fieldtrial_testing_config_off"
+				},
+				{
+					"value": "tast.oobe.Smoke.fieldtrial_testing_config_on"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromGuestSession.diagnostics"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromLauncher.diagnostics"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromLauncher.feedback"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromLauncher.print_management"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromLauncher.scan"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromSettings.diagnostics"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromSettings.diagnostics_revamp_enabled"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromSettings.print_management"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromSettings.print_management_revamp_enabled"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromSettings.scan"
+				},
+				{
+					"value": "tast.peripherals.LaunchAppFromSettings.scan_revamp_enabled"
+				},
+				{
+					"value": "tast.pita.Install"
+				},
+				{
+					"value": "tast.pita.RuntimeDependencies"
+				},
+				{
+					"value": "tast.platform.CheckDiskSpace"
+				},
+				{
+					"value": "tast.platform.CheckProcesses"
+				},
+				{
+					"value": "tast.platform.CrosDisks"
+				},
+				{
+					"value": "tast.platform.CrosDisksArchive"
+				},
+				{
+					"value": "tast.platform.CrosDisksArchiveBig"
+				},
+				{
+					"value": "tast.platform.CrosDisksFilesystem"
+				},
+				{
+					"value": "tast.platform.CrosDisksFormat"
+				},
+				{
+					"value": "tast.platform.CrosDisksRename"
+				},
+				{
+					"value": "tast.platform.CrosDisksSSHFS"
+				},
+				{
+					"value": "tast.platform.CrosID"
+				},
+				{
+					"value": "tast.platform.DLCService"
+				},
+				{
+					"value": "tast.platform.DLCServiceCrosDeploy"
+				},
+				{
+					"value": "tast.platform.DLCServicePreloading"
+				},
+				{
+					"value": "tast.platform.DMVerity"
+				},
+				{
+					"value": "tast.platform.Drivefs"
+				},
+				{
+					"value": "tast.platform.Firewall"
+				},
+				{
+					"value": "tast.platform.LocalPerfettoTBMTracedProbes"
+				},
+				{
+					"value": "tast.platform.Mosys.memory"
+				},
+				{
+					"value": "tast.platform.Mtpd"
+				},
+				{
+					"value": "tast.platform.P2PClient"
+				},
+				{
+					"value": "tast.platform.P2PServer"
+				},
+				{
+					"value": "tast.platform.PartitionSizes"
+				},
+				{
+					"value": "tast.platform.PerfETM"
+				},
+				{
+					"value": "tast.platform.PerfettoBatteryDataSource"
+				},
+				{
+					"value": "tast.platform.PerfettoChromeProducer"
+				},
+				{
+					"value": "tast.platform.PerfettoSystemTracing"
+				},
+				{
+					"value": "tast.platform.ResourcedCgroups"
+				},
+				{
+					"value": "tast.platform.RootPartitionsNotMounted"
+				},
+				{
+					"value": "tast.platform.ServicesOnBoot.cras"
+				},
+				{
+					"value": "tast.platform.ServicesOnBoot.smoke"
+				},
+				{
+					"value": "tast.platform.ServicesOnBoot.sound_card_init"
+				},
+				{
+					"value": "tast.platform.TPMResponsive"
+				},
+				{
+					"value": "tast.policy.NotEnterpriseOwned"
+				},
+				{
+					"value": "tast.policy.PluginVMDataCollectionAllowed"
+				},
+				{
+					"value": "tast.policy.ReadyErrorLog"
+				},
+				{
+					"value": "tast.power.CheckStatus"
+				},
+				{
+					"value": "tast.power.CpufreqConf"
+				},
+				{
+					"value": "tast.power.Reboot"
+				},
+				{
+					"value": "tast.power.SetupCheck"
+				},
+				{
+					"value": "tast.power.Suspend"
+				},
+				{
+					"value": "tast.power.Suspend.nofwupd"
+				},
+				{
+					"value": "tast.power.UtilCheck"
+				},
+				{
+					"value": "tast.printer.Add.brother_1200dpi"
+				},
+				{
+					"value": "tast.printer.Add.brother_2400x600dpi"
+				},
+				{
+					"value": "tast.printer.Add.brother_300dpi"
+				},
+				{
+					"value": "tast.printer.Add.brother_mlaser"
+				},
+				{
+					"value": "tast.printer.Add.canon"
+				},
+				{
+					"value": "tast.printer.Add.dymo_lm"
+				},
+				{
+					"value": "tast.printer.Add.dymo_lw"
+				},
+				{
+					"value": "tast.printer.Add.epson"
+				},
+				{
+					"value": "tast.printer.Add.epson_color"
+				},
+				{
+					"value": "tast.printer.Add.epson_hardware_collate"
+				},
+				{
+					"value": "tast.printer.Add.epson_hardware_uncollated"
+				},
+				{
+					"value": "tast.printer.Add.epson_monochrome"
+				},
+				{
+					"value": "tast.printer.Add.epson_software_collate"
+				},
+				{
+					"value": "tast.printer.Add.epson_software_uncollated"
+				},
+				{
+					"value": "tast.printer.Add.generic"
+				},
+				{
+					"value": "tast.printer.Add.hp_hpcups_hbpl1"
+				},
+				{
+					"value": "tast.printer.Add.hp_hpcups_ljcolor"
+				},
+				{
+					"value": "tast.printer.Add.hp_no_pin"
+				},
+				{
+					"value": "tast.printer.Add.hp_pin"
+				},
+				{
+					"value": "tast.printer.Add.hp_pwg_raster_color"
+				},
+				{
+					"value": "tast.printer.Add.hp_pwg_raster_monochrome"
+				},
+				{
+					"value": "tast.printer.Add.lexmark_1200dpi"
+				},
+				{
+					"value": "tast.printer.Add.lexmark_2400x600dpi"
+				},
+				{
+					"value": "tast.printer.Add.lexmark_600dpi"
+				},
+				{
+					"value": "tast.printer.Add.lexmark_no_pin"
+				},
+				{
+					"value": "tast.printer.Add.lexmark_pin"
+				},
+				{
+					"value": "tast.printer.Add.media_source_bottom"
+				},
+				{
+					"value": "tast.printer.Add.media_source_by_pass_tray"
+				},
+				{
+					"value": "tast.printer.Add.nec"
+				},
+				{
+					"value": "tast.printer.Add.oki_tray4"
+				},
+				{
+					"value": "tast.printer.Add.ricoh_jobpassword_no_pin"
+				},
+				{
+					"value": "tast.printer.Add.ricoh_jobpassword_pin"
+				},
+				{
+					"value": "tast.printer.Add.ricoh_lockedprintpassword_nopin"
+				},
+				{
+					"value": "tast.printer.Add.ricoh_lockedprintpassword_pin"
+				},
+				{
+					"value": "tast.printer.Add.ricoh_password_no_pin"
+				},
+				{
+					"value": "tast.printer.Add.ricoh_password_pin"
+				},
+				{
+					"value": "tast.printer.Add.sharp_no_pin"
+				},
+				{
+					"value": "tast.printer.Add.sharp_pin"
+				},
+				{
+					"value": "tast.printer.Add.star"
+				},
+				{
+					"value": "tast.printer.Add.star_lm"
+				},
+				{
+					"value": "tast.printer.Add.star_m"
+				},
+				{
+					"value": "tast.printer.Add.unsupported_no_pin"
+				},
+				{
+					"value": "tast.printer.Add.unsupported_pin"
+				},
+				{
+					"value": "tast.printer.AddBrotherPrinter"
+				},
+				{
+					"value": "tast.printer.AddHTTPPrinter"
+				},
+				{
+					"value": "tast.printer.AddUSBPrinter"
+				},
+				{
+					"value": "tast.printer.Gstopdf"
+				},
+				{
+					"value": "tast.printer.Gstoraster"
+				},
+				{
+					"value": "tast.printer.GstorasterUnembeddedFont"
+				},
+				{
+					"value": "tast.printer.IPPUSBPPDCopiesSupported"
+				},
+				{
+					"value": "tast.printer.IPPUSBPPDCopiesUnsupported"
+				},
+				{
+					"value": "tast.printer.IPPUSBPPDNoCopies"
+				},
+				{
+					"value": "tast.printer.PrintIPPUSB"
+				},
+				{
+					"value": "tast.printer.PrintUSB"
+				},
+				{
+					"value": "tast.printer.PrintscanDebug"
+				},
+				{
+					"value": "tast.printer.Printscanmgr"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.brother_1200dpi"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.brother_2400x600dpi"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.brother_300dpi"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.brother_mlaser"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.canon"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.dymo_lm"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.dymo_lw"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.epson"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.epson_color"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.epson_hardware_collate"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.epson_hardware_uncollated"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.epson_monochrome"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.epson_software_collate"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.epson_software_uncollated"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.generic"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.hp_hpcups_hbpl1"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.hp_hpcups_ljcolor"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.hp_no_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.hp_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.hp_pwg_raster_color"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.hp_pwg_raster_monochrome"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.lexmark_1200dpi"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.lexmark_2400x600dpi"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.lexmark_600dpi"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.lexmark_no_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.lexmark_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.media_source_bottom"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.media_source_by_pass_tray"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.nec"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.oki_tray4"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.ricoh_jobpassword_no_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.ricoh_jobpassword_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.ricoh_lockedprintpassword_nopin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.ricoh_lockedprintpassword_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.ricoh_password_no_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.ricoh_password_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.sharp_no_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.sharp_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.star"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.star_lm"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.star_m"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.unsupported_no_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAdd.unsupported_pin"
+				},
+				{
+					"value": "tast.printer.ProxyAddBrotherPrinter"
+				},
+				{
+					"value": "tast.printer.ProxyResolutionBrother.1200dpi"
+				},
+				{
+					"value": "tast.printer.ProxyResolutionBrother.2400x600dpi"
+				},
+				{
+					"value": "tast.printer.ProxyResolutionBrother.300dpi"
+				},
+				{
+					"value": "tast.printer.RejectDocumentFormat"
+				},
+				{
+					"value": "tast.printer.ResolutionBrother.1200dpi"
+				},
+				{
+					"value": "tast.printer.ResolutionBrother.2400x600dpi"
+				},
+				{
+					"value": "tast.printer.ResolutionBrother.300dpi"
+				},
+				{
+					"value": "tast.printer.TestPPDs"
+				},
+				{
+					"value": "tast.printer.USBPrinterTimeout"
+				},
+				{
+					"value": "tast.quicksettings.OpenSettings"
+				},
+				{
+					"value": "tast.resourced.MemoryPressureSignal"
+				},
+				{
+					"value": "tast.resourced.PowerSupplyChange"
+				},
+				{
+					"value": "tast.resourced.QueryMemoryStatus"
+				},
+				{
+					"value": "tast.resourced.SchedQos"
+				},
+				{
+					"value": "tast.resourced.SetFullscreenVideo"
+				},
+				{
+					"value": "tast.resourced.SetGameMode"
+				},
+				{
+					"value": "tast.resourced.SetGameModeWithTimeout"
+				},
+				{
+					"value": "tast.resourced.SetRTCAudioActive"
+				},
+				{
+					"value": "tast.rollback.SmokeCleanup.cleanup_files_if_oobe_is_completed"
+				},
+				{
+					"value": "tast.rollback.SmokeCleanup.cleanup_metrics_when_oobe_is_not_completed"
+				},
+				{
+					"value": "tast.rollback.SmokeCleanup.cleanup_zeroes_tpm_space"
+				},
+				{
+					"value": "tast.rollback.SmokeEncryption.oobe_config_restore_running"
+				},
+				{
+					"value": "tast.rollback.SmokeEncryption.oobe_config_save_no_flag"
+				},
+				{
+					"value": "tast.rollback.SmokeEncryption.rollback_encrypt_and_failed_decrypt"
+				},
+				{
+					"value": "tast.rollback.SmokeEncryption.tpm_encryption"
+				},
+				{
+					"value": "tast.rollback.SmokeEncryption.tpm_encryption_corrupted_metrics"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifyConfig.released"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifyConfig.unreleased"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.audio_codec"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.battery"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.camera"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.ec_component"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.edid"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.generic_cpu"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.gpu"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.input_device"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.memory_amd64"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.mmc_host"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.network"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.storage"
+				},
+				{
+					"value": "tast.runtimeprobe.VerifySandbox.tcpc"
+				},
+				{
+					"value": "tast.scanner.ADFJustification"
+				},
+				{
+					"value": "tast.scanner.AdvancedScan.network"
+				},
+				{
+					"value": "tast.scanner.AdvancedScan.usb"
+				},
+				{
+					"value": "tast.scanner.EnumerateIPPUSB"
+				},
+				{
+					"value": "tast.scanner.EnumerateIPPUSB.async"
+				},
+				{
+					"value": "tast.scanner.InstallDLC"
+				},
+				{
+					"value": "tast.scanner.ScanESCLIPP.network"
+				},
+				{
+					"value": "tast.scanner.ScanESCLIPP.usb"
+				},
+				{
+					"value": "tast.sched.ChromeQoS"
+				},
+				{
+					"value": "tast.sched.CoreSchedTag"
+				},
+				{
+					"value": "tast.sched.SetQoSState"
+				},
+				{
+					"value": "tast.sched.WrapPidDuration"
+				},
+				{
+					"value": "tast.secagentd.AgentEvents"
+				},
+				{
+					"value": "tast.secagentd.AuthenticationEvents"
+				},
+				{
+					"value": "tast.secagentd.NetworkEvents.relaxed_icmp"
+				},
+				{
+					"value": "tast.secagentd.NetworkEvents.relaxed_tcp"
+				},
+				{
+					"value": "tast.secagentd.NetworkEvents.relaxed_tcp_v6"
+				},
+				{
+					"value": "tast.secagentd.NetworkEvents.relaxed_udp"
+				},
+				{
+					"value": "tast.secagentd.ProcessEvents"
+				},
+				{
+					"value": "tast.security.ASLR"
+				},
+				{
+					"value": "tast.security.AltSyscall"
+				},
+				{
+					"value": "tast.security.CPUVulnerabilities"
+				},
+				{
+					"value": "tast.security.ChromeSandboxed"
+				},
+				{
+					"value": "tast.security.ExecStack"
+				},
+				{
+					"value": "tast.security.Firewall"
+				},
+				{
+					"value": "tast.security.GPUSandboxed"
+				},
+				{
+					"value": "tast.security.HardLinkRestrictions"
+				},
+				{
+					"value": "tast.security.LogPerms"
+				},
+				{
+					"value": "tast.security.MemoryFileExecTelemetry"
+				},
+				{
+					"value": "tast.security.Minijail.dynamic"
+				},
+				{
+					"value": "tast.security.Minijail.static"
+				},
+				{
+					"value": "tast.security.MinijailLandlock"
+				},
+				{
+					"value": "tast.security.MinijailLandlockWalk"
+				},
+				{
+					"value": "tast.security.MinijailSeccomp"
+				},
+				{
+					"value": "tast.security.ModuleLocking"
+				},
+				{
+					"value": "tast.security.MountSymlink"
+				},
+				{
+					"value": "tast.security.Mprotect"
+				},
+				{
+					"value": "tast.security.Mtab.flex"
+				},
+				{
+					"value": "tast.security.Mtab.non_flex"
+				},
+				{
+					"value": "tast.security.NetworkListenersARC"
+				},
+				{
+					"value": "tast.security.NetworkListenersNonARC"
+				},
+				{
+					"value": "tast.security.OpenSSLBlocklist"
+				},
+				{
+					"value": "tast.security.PrivilegedFiles"
+				},
+				{
+					"value": "tast.security.ProtocolFamilies"
+				},
+				{
+					"value": "tast.security.PtraceProcess"
+				},
+				{
+					"value": "tast.security.PtraceThread"
+				},
+				{
+					"value": "tast.security.RootCA"
+				},
+				{
+					"value": "tast.security.RunFiles"
+				},
+				{
+					"value": "tast.security.RunOCI"
+				},
+				{
+					"value": "tast.security.SELinuxFilesARC.arcpp_user"
+				},
+				{
+					"value": "tast.security.SELinuxFilesARC.arcvm_user"
+				},
+				{
+					"value": "tast.security.SELinuxFilesDataDir.arcpp_user"
+				},
+				{
+					"value": "tast.security.SELinuxFilesDataDir.arcvm_user"
+				},
+				{
+					"value": "tast.security.SELinuxProcesses"
+				},
+				{
+					"value": "tast.security.SELinuxRootFS"
+				},
+				{
+					"value": "tast.security.SELinuxValidity"
+				},
+				{
+					"value": "tast.security.SafesetidEnsurePolicy"
+				},
+				{
+					"value": "tast.security.SandboxedServices"
+				},
+				{
+					"value": "tast.security.SharedFilesystemState.arcpp_user"
+				},
+				{
+					"value": "tast.security.SharedFilesystemState.arcvm_user"
+				},
+				{
+					"value": "tast.security.SharedFilesystemState.guest"
+				},
+				{
+					"value": "tast.security.StatefulFiles"
+				},
+				{
+					"value": "tast.security.StatefulPartitionHardening"
+				},
+				{
+					"value": "tast.security.SymlinkRestrictions"
+				},
+				{
+					"value": "tast.security.SystemDirs"
+				},
+				{
+					"value": "tast.security.ToolchainOptions"
+				},
+				{
+					"value": "tast.security.ToolchainOptions.allowlist"
+				},
+				{
+					"value": "tast.security.ToolchainOptions.dlc"
+				},
+				{
+					"value": "tast.security.USBGuard"
+				},
+				{
+					"value": "tast.security.UserFilesGuest"
+				},
+				{
+					"value": "tast.security.UserFilesLoggedIn"
+				},
+				{
+					"value": "tast.session.LogoutCleanup"
+				},
+				{
+					"value": "tast.session.MultiUserPolicy"
+				},
+				{
+					"value": "tast.session.OwnershipTaken"
+				},
+				{
+					"value": "tast.session.RejectDuplicate"
+				},
+				{
+					"value": "tast.session.RemoteOwnership"
+				},
+				{
+					"value": "tast.session.RetrieveActiveSessions"
+				},
+				{
+					"value": "tast.session.UserPolicyKeys"
+				},
+				{
+					"value": "tast.shelf.HotseatSmoke"
+				},
+				{
+					"value": "tast.shelf.LaunchedApps.tablet_form_factor"
+				},
+				{
+					"value": "tast.shimlessrma.SelectComponentsNoneNextCancel.critical"
+				},
+				{
+					"value": "tast.shimlessrma.WelcomeCancel.critical"
+				},
+				{
+					"value": "tast.shimlessrma.WelcomeNextCancel.critical"
+				},
+				{
+					"value": "tast.system.PortageSmoke"
+				},
+				{
+					"value": "tast.system.Version"
+				},
+				{
+					"value": "tast.telemetryextension.HasCorrectOrEmptyOEMName.asus"
+				},
+				{
+					"value": "tast.telemetryextension.HasCorrectOrEmptyOEMName.hp"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIAvailableRoutines"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPICPUPrimeSearchRoutine"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIEventsAudioJack"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIEventsKeyboardDiagnostic.no_keyboard"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIMemoryInfo"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIRoutinesMemory"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformAPIVPDInfo"
+				},
+				{
+					"value": "tast.telemetryextension.PlatformMessagePipe"
+				},
+				{
+					"value": "tast.terminal.Crosh"
+				},
+				{
+					"value": "tast.terminal.SSH"
+				},
+				{
+					"value": "tast.tflite.AndroidHardwareBuffer"
+				},
+				{
+					"value": "tast.tflite.DTS.neuron"
+				},
+				{
+					"value": "tast.tflite.DTS.openvino"
+				},
+				{
+					"value": "tast.tflite.DTS.sample"
+				},
+				{
+					"value": "tast.typec.Typecd"
+				},
+				{
+					"value": "tast.ui.ChromeCrashEarly.loose"
+				},
+				{
+					"value": "tast.ui.ChromeCrashEarly.strict"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.broker_breakpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.broker_crashpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_breakpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_breakpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_crashpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_crashpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_crashpad_mock_consent_field_trials_off"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.browser_crashpad_mock_consent_field_trials_on"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_breakpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_breakpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_crashpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_crashpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_crashpad_mock_consent_field_trial_off"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedIn.gpu_process_crashpad_mock_consent_field_trial_on"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedInDirect.breakpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoggedInDirect.crashpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoopV2.breakpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoopV2.breakpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoopV2.crashpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashLoopV2.crashpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.broker_breakpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.broker_crashpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.browser_breakpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.browser_breakpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.browser_crashpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.browser_crashpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.gpu_process_breakpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.gpu_process_breakpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.gpu_process_crashpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedIn.gpu_process_crashpad_mock_consent"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedInDirect.breakpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashNotLoggedInDirect.crashpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashReporterMetrics.miss_breakpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashReporterMetrics.miss_crashpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashReporterMetrics.success_breakpad"
+				},
+				{
+					"value": "tast.ui.ChromeCrashReporterMetrics.success_crashpad"
+				},
+				{
+					"value": "tast.ui.ChromeRespawn"
+				},
+				{
+					"value": "tast.ui.DesktopControl.unstable"
+				},
+				{
+					"value": "tast.ui.ScreenRecorder"
+				},
+				{
+					"value": "tast.ui.SessionManagerRespawn"
+				},
+				{
+					"value": "tast.ui.StackSampledMetricsV2"
+				},
+				{
+					"value": "tast.ui.WebUIJSErrors"
+				},
+				{
+					"value": "tast.ui.WebUIJSErrors.field_trial_off"
+				},
+				{
+					"value": "tast.ui.WebUIJSErrors.field_trial_on"
+				},
+				{
+					"value": "tast.ui.WindowControl"
+				},
+				{
+					"value": "tast.usbip.DeviceList"
+				},
+				{
+					"value": "tast.video.HWDRMInit"
+				},
+				{
+					"value": "tast.vm.AudioAplay.virtio_cras_snd"
+				},
+				{
+					"value": "tast.vm.AudioAplay.virtio_cras_snd_1_device_3_streams"
+				},
+				{
+					"value": "tast.vm.AudioAplay.virtio_cras_snd_3_devices_1_stream"
+				},
+				{
+					"value": "tast.vm.AudioAplay.virtio_cras_snd_3_devices_4_streams"
+				},
+				{
+					"value": "tast.vm.AudioAplay.virtio_null_snd"
+				},
+				{
+					"value": "tast.vm.AudioArecord.virtio_cras_snd"
+				},
+				{
+					"value": "tast.vm.AudioArecord.virtio_cras_snd_1_device_3_streams"
+				},
+				{
+					"value": "tast.vm.AudioArecord.virtio_cras_snd_3_devices_1_stream"
+				},
+				{
+					"value": "tast.vm.AudioArecord.virtio_cras_snd_3_devices_4_streams"
+				},
+				{
+					"value": "tast.vm.AudioArecord.virtio_null_snd"
+				},
+				{
+					"value": "tast.vm.AudioResumeAfterCrasRestarted.virtio_cras_snd"
+				},
+				{
+					"value": "tast.vm.ListSlimRootfsVM"
+				},
+				{
+					"value": "tast.vm.ShutdownVMServices"
+				},
+				{
+					"value": "tast.vm.StartAndStopSlimRootfs"
+				},
+				{
+					"value": "tast.vm.StartSlimRootfs"
+				},
+				{
+					"value": "tast.vm.StopAllSlimRootfsVMs"
+				},
+				{
+					"value": "tast.vm.SyncTimeSlimRootfsVM"
+				},
+				{
+					"value": "tast.vm.VhostUserNet"
+				},
+				{
+					"value": "tast.wifi.Caps"
+				},
+				{
+					"value": "tast.wifi.Caps80211ac"
+				},
+				{
+					"value": "tast.wifi.CheckIntelFWDump"
+				},
+				{
+					"value": "tast.wifi.CheckIntelSARTable"
+				},
+				{
+					"value": "tast.wifi.CheckMtkMTCL"
+				},
+				{
+					"value": "tast.wifi.Driver"
+				},
+				{
+					"value": "tast.wifi.HeCaps"
+				},
+				{
+					"value": "tast.wifi.HostapHwsim.validity"
+				},
+				{
+					"value": "tast.wifi.IWScan"
+				},
+				{
+					"value": "tast.wifi.SetTXPower"
+				},
+				{
+					"value": "tast.wifi.SetTXPower.vpd"
+				},
+				{
+					"value": "tast.wifi.UdevRename"
+				},
+				{
+					"value": "tast.wifi.WPAValidity"
+				},
+				{
+					"value": "tast.wilco.ECRTC"
+				},
+				{
+					"value": "tast.wmp.AdminTemplatesLaunch"
+				},
+				{
+					"value": "tast.wmp.DeskTemplatesDelete"
+				},
+				{
+					"value": "tast.wmp.DesksTemplatesBasic"
+				},
+				{
+					"value": "tast.wmp.DesksTemplatesLaunch"
+				},
+				{
+					"value": "tast.wmp.SavedDeskDelete"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "example_pass"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "dbeckett@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1234567"
+				},
+				"criteria": {
+					"value": "Validates basic pass tests will pass."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.example.Pass"
+				},
+				{
+					"value": "tauto.stub_PassServer"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "example_fail"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "dbeckett@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1234567"
+				},
+				"criteria": {
+					"value": "Validates fail pass tests will fail."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.example.Fail"
+				},
+				{
+					"value": "tauto.stub_FailServer"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "faft_bios_ro_qual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Qualify the AP firmware for RO+RW release."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.firmware.APBmpblk"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_cold"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_gbb_to_rec"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_to_rec"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_usb_cold"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_warm"
+				},
+				{
+					"value": "tast.firmware.BootMode.normal_cold"
+				},
+				{
+					"value": "tast.firmware.BootMode.normal_dev"
+				},
+				{
+					"value": "tast.firmware.BootMode.normal_warm"
+				},
+				{
+					"value": "tast.firmware.BootMode.rec_cold"
+				},
+				{
+					"value": "tast.firmware.BootMode.rec_to_dev"
+				},
+				{
+					"value": "tast.firmware.BootMode.rec_to_dev_gbb"
+				},
+				{
+					"value": "tast.firmware.BootMode.rec_warm"
+				},
+				{
+					"value": "tast.firmware.BrokenToDev"
+				},
+				{
+					"value": "tast.firmware.CheckEOPState.get_boot_state"
+				},
+				{
+					"value": "tast.firmware.CheckEOPState.get_eop_state"
+				},
+				{
+					"value": "tast.firmware.CorruptBothKernelCopies"
+				},
+				{
+					"value": "tast.firmware.CorruptBothMiniOSAB"
+				},
+				{
+					"value": "tast.firmware.CorruptBothSignedAMDFWAB.dev_mode"
+				},
+				{
+					"value": "tast.firmware.CorruptBothSignedAMDFWAB.normal_mode"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.body_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.body_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.sig_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.sig_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.body_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.body_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.sig_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.sig_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_depthcharge_file"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_attributes"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_header"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_length"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_loaded_in_ramstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_loaded_in_romstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_depthcharge_file"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_attributes"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_header"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_length"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_loaded_in_ramstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_loaded_in_romstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_depthcharge_file"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_attributes"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_header"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_length"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_loaded_in_ramstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_loaded_in_romstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_depthcharge_file"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_attributes"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_header"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_length"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_loaded_in_ramstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_loaded_in_romstage"
+				},
+				{
+					"value": "tast.firmware.CorruptKernelAB.a"
+				},
+				{
+					"value": "tast.firmware.CorruptKernelAB.a_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptKernelAB.b"
+				},
+				{
+					"value": "tast.firmware.CorruptKernelAB.b_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptSignedAMDFW.dev_mode"
+				},
+				{
+					"value": "tast.firmware.CorruptSignedAMDFW.normal_mode"
+				},
+				{
+					"value": "tast.firmware.CsmeFwUpdate.dev"
+				},
+				{
+					"value": "tast.firmware.CsmeFwUpdate.normal"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.button"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.insert_usb_screen"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.keyboard"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.keyboard_with_usb"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.menu"
+				},
+				{
+					"value": "tast.firmware.DevBootInvalidUSB.back"
+				},
+				{
+					"value": "tast.firmware.DevBootInvalidUSB.restore_usb"
+				},
+				{
+					"value": "tast.firmware.DevBootTimeout"
+				},
+				{
+					"value": "tast.firmware.DevBootUSB.button"
+				},
+				{
+					"value": "tast.firmware.DevBootUSB.keyboard"
+				},
+				{
+					"value": "tast.firmware.DevBootUSB.late_insert"
+				},
+				{
+					"value": "tast.firmware.DevBootUSB.menu"
+				},
+				{
+					"value": "tast.firmware.DevBootUSBDisallowed"
+				},
+				{
+					"value": "tast.firmware.DevDefaultBoot.menu_internal"
+				},
+				{
+					"value": "tast.firmware.DevDefaultBoot.menu_usb"
+				},
+				{
+					"value": "tast.firmware.DevDefaultBoot.timeout_internal"
+				},
+				{
+					"value": "tast.firmware.DevDefaultBoot.timeout_usb"
+				},
+				{
+					"value": "tast.firmware.DevInsertUSBScreen.back"
+				},
+				{
+					"value": "tast.firmware.DevInsertUSBScreen.insert_usb"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_button_from_ro"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_state"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_state_rec_off"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_state_usb_plugged_in"
+				},
+				{
+					"value": "tast.firmware.Eventlog.dev"
+				},
+				{
+					"value": "tast.firmware.Eventlog.normal"
+				},
+				{
+					"value": "tast.firmware.Eventlog.normal_rec"
+				},
+				{
+					"value": "tast.firmware.Eventlog.rammus_dev"
+				},
+				{
+					"value": "tast.firmware.Eventlog.rammus_normal"
+				},
+				{
+					"value": "tast.firmware.Eventlog.rec_normal"
+				},
+				{
+					"value": "tast.firmware.Eventlog.suspend_resume"
+				},
+				{
+					"value": "tast.firmware.Eventlog.watchdog"
+				},
+				{
+					"value": "tast.firmware.FWCorruptRecoveryCache.dev"
+				},
+				{
+					"value": "tast.firmware.FWCorruptRecoveryCache.normal"
+				},
+				{
+					"value": "tast.firmware.FWScreenCloseLid.broken"
+				},
+				{
+					"value": "tast.firmware.FWScreenCloseLid.dev"
+				},
+				{
+					"value": "tast.firmware.FWScreenCloseLid.to_norm"
+				},
+				{
+					"value": "tast.firmware.FWScreenPressTab.chromebox"
+				},
+				{
+					"value": "tast.firmware.FWScreenPressTab.dev"
+				},
+				{
+					"value": "tast.firmware.FWSysfsVPD"
+				},
+				{
+					"value": "tast.firmware.FWTries.dev"
+				},
+				{
+					"value": "tast.firmware.FWTries.normal"
+				},
+				{
+					"value": "tast.firmware.Fixture.dev_rec"
+				},
+				{
+					"value": "tast.firmware.Fixture.rec"
+				},
+				{
+					"value": "tast.firmware.FlagsPreservation"
+				},
+				{
+					"value": "tast.firmware.Fmap.bios"
+				},
+				{
+					"value": "tast.firmware.Fmap.bios_dev"
+				},
+				{
+					"value": "tast.firmware.Fmap.ec"
+				},
+				{
+					"value": "tast.firmware.Fmap.ec_dev"
+				},
+				{
+					"value": "tast.firmware.FwScreenPowerOff.broken"
+				},
+				{
+					"value": "tast.firmware.FwScreenPowerOff.dev"
+				},
+				{
+					"value": "tast.firmware.FwScreenPowerOff.rec"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.broken_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.dev_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.invalid_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.rec_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.to_norm_screen"
+				},
+				{
+					"value": "tast.firmware.FwSplashScreen"
+				},
+				{
+					"value": "tast.firmware.FwmpDevDisableBoot"
+				},
+				{
+					"value": "tast.firmware.ISH"
+				},
+				{
+					"value": "tast.firmware.LockedME"
+				},
+				{
+					"value": "tast.firmware.MemoryTrainingUI"
+				},
+				{
+					"value": "tast.firmware.MiniDiag"
+				},
+				{
+					"value": "tast.firmware.RecScreenInvalidUSB"
+				},
+				{
+					"value": "tast.firmware.RecScreenMiniOS.menu"
+				},
+				{
+					"value": "tast.firmware.RecScreenMiniOS.menu_old"
+				},
+				{
+					"value": "tast.firmware.RecScreenMiniOS.priority_minios_a"
+				},
+				{
+					"value": "tast.firmware.RecScreenMiniOS.priority_minios_b"
+				},
+				{
+					"value": "tast.firmware.RecScreenUSBInserted.dev"
+				},
+				{
+					"value": "tast.firmware.RecScreenUSBInserted.normal"
+				},
+				{
+					"value": "tast.firmware.RecToDevFromECRW"
+				},
+				{
+					"value": "tast.firmware.RecToDevUntrusted"
+				},
+				{
+					"value": "tast.firmware.RecoveryCacheBootKeys.dev"
+				},
+				{
+					"value": "tast.firmware.RecoveryCacheBootKeys.normal"
+				},
+				{
+					"value": "tast.firmware.RollbackFirmware.dev"
+				},
+				{
+					"value": "tast.firmware.RollbackFirmware.normal"
+				},
+				{
+					"value": "tast.firmware.RollbackKernel.dev"
+				},
+				{
+					"value": "tast.firmware.RollbackKernel.normal"
+				},
+				{
+					"value": "tast.firmware.SelfSignedBoot"
+				},
+				{
+					"value": "tast.firmware.ServoGBBFlags"
+				},
+				{
+					"value": "tast.firmware.TPMExtend.dev"
+				},
+				{
+					"value": "tast.firmware.TPMExtend.dev_recovery"
+				},
+				{
+					"value": "tast.firmware.TPMExtend.normal"
+				},
+				{
+					"value": "tast.firmware.TPMExtend.recovery"
+				},
+				{
+					"value": "tast.firmware.TPMKernelVersion.dev"
+				},
+				{
+					"value": "tast.firmware.TPMKernelVersion.dev_usb"
+				},
+				{
+					"value": "tast.firmware.TPMKernelVersion.normal"
+				},
+				{
+					"value": "tast.firmware.TPMNotCorruptedDevMode"
+				},
+				{
+					"value": "tast.firmware.TryFWB.dev_mode"
+				},
+				{
+					"value": "tast.firmware.TryFWB.normal_mode"
+				},
+				{
+					"value": "tast.firmware.UIModeTransition"
+				},
+				{
+					"value": "tast.firmware.USBAnnotations"
+				},
+				{
+					"value": "tast.firmware.UpdateKernelDataKeyVersion"
+				},
+				{
+					"value": "tast.firmware.UpdateKernelVersion"
+				},
+				{
+					"value": "tast.firmware.UpdateVersion.firmware_data_key_version"
+				},
+				{
+					"value": "tast.firmware.UpdateVersion.firmware_version"
+				},
+				{
+					"value": "tast.firmware.UpdateVersion.kernel_subkey_version"
+				},
+				{
+					"value": "tast.firmware.UserRequestRecovery.dev"
+				},
+				{
+					"value": "tast.firmware.UserRequestRecovery.normal"
+				},
+				{
+					"value": "tast.firmware.VerityCorruptRootfs.dev"
+				},
+				{
+					"value": "tast.firmware.VerityCorruptRootfs.normal"
+				},
+				{
+					"value": "tast.firmware.WilcoNormalToDev"
+				},
+				{
+					"value": "tast.firmware.WilcoPowerBehavior"
+				},
+				{
+					"value": "tast.firmware.WilcoPowerBehavior.lid_close_open"
+				},
+				{
+					"value": "tast.firmware.WilcoTPMKeyLadderVerification"
+				},
+				{
+					"value": "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ap"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ap_dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ec"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ec_dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtectCrossystem.dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtectCrossystem.normal"
+				},
+				{
+					"value": "tast.hwsec.TPMContest"
+				},
+				{
+					"value": "tast.video.HWDRMInit"
+				},
+				{
+					"value": "tast.wifi.CheckIntelSARTable"
+				},
+				{
+					"value": "tast.wifi.CheckMtkMTCL"
+				},
+				{
+					"value": "tast.wifi.SetTXPower"
+				},
+				{
+					"value": "tast.wifi.SetTXPower.vpd"
+				},
+				{
+					"value": "tauto.firmware_CbfsMcache"
+				},
+				{
+					"value": "tauto.firmware_CorruptMinios.minios_a"
+				},
+				{
+					"value": "tauto.firmware_CorruptMinios.minios_b"
+				},
+				{
+					"value": "tauto.firmware_WilcoDiagnosticsMode"
+				},
+				{
+					"value": "tauto.hardware_TPMCheck"
+				},
+				{
+					"value": "tauto.power_CPUFreq"
+				},
+				{
+					"value": "tauto.power_CPUIdle"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "faft_bios_rw_qual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Qualify the AP firmware for RW-only release."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.firmware.BootMode.dev_cold"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_gbb_to_rec"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_to_rec"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_usb_cold"
+				},
+				{
+					"value": "tast.firmware.BootMode.dev_warm"
+				},
+				{
+					"value": "tast.firmware.BootMode.normal_cold"
+				},
+				{
+					"value": "tast.firmware.BootMode.normal_dev"
+				},
+				{
+					"value": "tast.firmware.BootMode.normal_warm"
+				},
+				{
+					"value": "tast.firmware.BootMode.rec_to_dev"
+				},
+				{
+					"value": "tast.firmware.BootMode.rec_to_dev_gbb"
+				},
+				{
+					"value": "tast.firmware.BrokenToDev"
+				},
+				{
+					"value": "tast.firmware.CheckEOPState.get_boot_state"
+				},
+				{
+					"value": "tast.firmware.CheckEOPState.get_eop_state"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.body_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.body_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.sig_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFW.sig_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.body_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.body_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.sig_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptFWBothAB.sig_normal"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_depthcharge_file"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_attributes"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_header"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_length"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_loaded_in_ramstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_a_file_loaded_in_romstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_depthcharge_file"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_attributes"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_header"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_length"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_loaded_in_ramstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.dev_mode_b_file_loaded_in_romstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_depthcharge_file"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_attributes"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_header"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_length"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_loaded_in_ramstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_a_file_loaded_in_romstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_depthcharge_file"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_attributes"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_header"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_length"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_loaded_in_ramstage"
+				},
+				{
+					"value": "tast.firmware.CorruptFWCBFS.normal_mode_b_file_loaded_in_romstage"
+				},
+				{
+					"value": "tast.firmware.CorruptKernelAB.a"
+				},
+				{
+					"value": "tast.firmware.CorruptKernelAB.a_dev"
+				},
+				{
+					"value": "tast.firmware.CorruptKernelAB.b"
+				},
+				{
+					"value": "tast.firmware.CorruptKernelAB.b_dev"
+				},
+				{
+					"value": "tast.firmware.CsmeFwUpdate.dev"
+				},
+				{
+					"value": "tast.firmware.CsmeFwUpdate.normal"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.button"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.insert_usb_screen"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.keyboard"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.keyboard_with_usb"
+				},
+				{
+					"value": "tast.firmware.DevBootInternal.menu"
+				},
+				{
+					"value": "tast.firmware.DevBootInvalidUSB.back"
+				},
+				{
+					"value": "tast.firmware.DevBootInvalidUSB.restore_usb"
+				},
+				{
+					"value": "tast.firmware.DevBootTimeout"
+				},
+				{
+					"value": "tast.firmware.DevBootUSB.button"
+				},
+				{
+					"value": "tast.firmware.DevBootUSB.keyboard"
+				},
+				{
+					"value": "tast.firmware.DevBootUSB.late_insert"
+				},
+				{
+					"value": "tast.firmware.DevBootUSB.menu"
+				},
+				{
+					"value": "tast.firmware.DevBootUSBDisallowed"
+				},
+				{
+					"value": "tast.firmware.DevDefaultBoot.menu_internal"
+				},
+				{
+					"value": "tast.firmware.DevDefaultBoot.menu_usb"
+				},
+				{
+					"value": "tast.firmware.DevDefaultBoot.timeout_internal"
+				},
+				{
+					"value": "tast.firmware.DevDefaultBoot.timeout_usb"
+				},
+				{
+					"value": "tast.firmware.DevInsertUSBScreen.back"
+				},
+				{
+					"value": "tast.firmware.DevInsertUSBScreen.insert_usb"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_state"
+				},
+				{
+					"value": "tast.firmware.Eventlog.dev"
+				},
+				{
+					"value": "tast.firmware.Eventlog.normal"
+				},
+				{
+					"value": "tast.firmware.Eventlog.rammus_dev"
+				},
+				{
+					"value": "tast.firmware.Eventlog.rammus_normal"
+				},
+				{
+					"value": "tast.firmware.Eventlog.suspend_resume"
+				},
+				{
+					"value": "tast.firmware.Eventlog.watchdog"
+				},
+				{
+					"value": "tast.firmware.FWScreenCloseLid.broken"
+				},
+				{
+					"value": "tast.firmware.FWScreenCloseLid.dev"
+				},
+				{
+					"value": "tast.firmware.FWScreenCloseLid.to_norm"
+				},
+				{
+					"value": "tast.firmware.FWScreenPressTab.chromebox"
+				},
+				{
+					"value": "tast.firmware.FWScreenPressTab.dev"
+				},
+				{
+					"value": "tast.firmware.FWSysfsVPD"
+				},
+				{
+					"value": "tast.firmware.FWTries.dev"
+				},
+				{
+					"value": "tast.firmware.FWTries.normal"
+				},
+				{
+					"value": "tast.firmware.FlagsPreservation"
+				},
+				{
+					"value": "tast.firmware.FwScreenPowerOff.broken"
+				},
+				{
+					"value": "tast.firmware.FwScreenPowerOff.dev"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.broken_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.dev_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.invalid_screen"
+				},
+				{
+					"value": "tast.firmware.FwScreenPressPower.to_norm_screen"
+				},
+				{
+					"value": "tast.firmware.FwSplashScreen"
+				},
+				{
+					"value": "tast.firmware.FwmpDevDisableBoot"
+				},
+				{
+					"value": "tast.firmware.ISH"
+				},
+				{
+					"value": "tast.firmware.LockedME"
+				},
+				{
+					"value": "tast.firmware.MemoryTrainingUI"
+				},
+				{
+					"value": "tast.firmware.MiniDiag"
+				},
+				{
+					"value": "tast.firmware.RecToDevFromECRW"
+				},
+				{
+					"value": "tast.firmware.RecToDevUntrusted"
+				},
+				{
+					"value": "tast.firmware.RollbackKernel.dev"
+				},
+				{
+					"value": "tast.firmware.RollbackKernel.normal"
+				},
+				{
+					"value": "tast.firmware.ServoGBBFlags"
+				},
+				{
+					"value": "tast.firmware.TPMExtend.dev"
+				},
+				{
+					"value": "tast.firmware.TPMExtend.dev_recovery"
+				},
+				{
+					"value": "tast.firmware.TPMExtend.normal"
+				},
+				{
+					"value": "tast.firmware.TPMExtend.recovery"
+				},
+				{
+					"value": "tast.firmware.TPMKernelVersion.dev"
+				},
+				{
+					"value": "tast.firmware.TPMKernelVersion.dev_usb"
+				},
+				{
+					"value": "tast.firmware.TPMKernelVersion.normal"
+				},
+				{
+					"value": "tast.firmware.TPMNotCorruptedDevMode"
+				},
+				{
+					"value": "tast.firmware.TryFWB.dev_mode"
+				},
+				{
+					"value": "tast.firmware.TryFWB.normal_mode"
+				},
+				{
+					"value": "tast.firmware.UIModeTransition"
+				},
+				{
+					"value": "tast.firmware.USBAnnotations"
+				},
+				{
+					"value": "tast.firmware.UpdateKernelDataKeyVersion"
+				},
+				{
+					"value": "tast.firmware.UpdateKernelVersion"
+				},
+				{
+					"value": "tast.firmware.UpdateVersion.kernel_subkey_version"
+				},
+				{
+					"value": "tast.firmware.VerityCorruptRootfs.dev"
+				},
+				{
+					"value": "tast.firmware.VerityCorruptRootfs.normal"
+				},
+				{
+					"value": "tast.firmware.WilcoNormalToDev"
+				},
+				{
+					"value": "tast.firmware.WilcoPowerBehavior"
+				},
+				{
+					"value": "tast.firmware.WilcoPowerBehavior.lid_close_open"
+				},
+				{
+					"value": "tast.firmware.WilcoTPMKeyLadderVerification"
+				},
+				{
+					"value": "tast.firmware.WilcoTPMKeyLadderVerification.verify_recovery_screen"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ap"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ap_dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ec"
+				},
+				{
+					"value": "tast.firmware.WriteProtect.ec_dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtectCrossystem.dev"
+				},
+				{
+					"value": "tast.firmware.WriteProtectCrossystem.normal"
+				},
+				{
+					"value": "tast.hwsec.TPMContest"
+				},
+				{
+					"value": "tast.video.HWDRMInit"
+				},
+				{
+					"value": "tast.wifi.CheckIntelSARTable"
+				},
+				{
+					"value": "tast.wifi.CheckMtkMTCL"
+				},
+				{
+					"value": "tast.wifi.SetTXPower"
+				},
+				{
+					"value": "tast.wifi.SetTXPower.vpd"
+				},
+				{
+					"value": "tauto.firmware_CbfsMcache"
+				},
+				{
+					"value": "tauto.firmware_WilcoDiagnosticsMode"
+				},
+				{
+					"value": "tauto.hardware_TPMCheck"
+				},
+				{
+					"value": "tauto.power_CPUFreq"
+				},
+				{
+					"value": "tauto.power_CPUIdle"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "faft_ec_fw_qual"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Qualify the EC firmware for RW or RO+RW release."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.crash.ECCrash.assert"
+				},
+				{
+					"value": "tast.crash.ECCrash.divzero"
+				},
+				{
+					"value": "tast.crash.ECCrash.unaligned"
+				},
+				{
+					"value": "tast.crash.ECCrash.watchdog"
+				},
+				{
+					"value": "tast.firmware.BaseECUpdate"
+				},
+				{
+					"value": "tast.firmware.BatteryCharging"
+				},
+				{
+					"value": "tast.firmware.BootBatteryCutoff"
+				},
+				{
+					"value": "tast.firmware.BootBatteryCutoff.chromeslate"
+				},
+				{
+					"value": "tast.firmware.BootTime.default"
+				},
+				{
+					"value": "tast.firmware.BootTime.x86"
+				},
+				{
+					"value": "tast.firmware.BootTime.zork"
+				},
+				{
+					"value": "tast.firmware.CheckKeyboardBacklightFunctionality"
+				},
+				{
+					"value": "tast.firmware.CheckKeyboardBacklightFunctionality.lid_close_and_open"
+				},
+				{
+					"value": "tast.firmware.ECADC"
+				},
+				{
+					"value": "tast.firmware.ECBattery"
+				},
+				{
+					"value": "tast.firmware.ECCbi"
+				},
+				{
+					"value": "tast.firmware.ECCbiFlashrom"
+				},
+				{
+					"value": "tast.firmware.ECChargingState.discharge"
+				},
+				{
+					"value": "tast.firmware.ECChargingState.full_charge"
+				},
+				{
+					"value": "tast.firmware.ECConsole"
+				},
+				{
+					"value": "tast.firmware.ECKeyboard"
+				},
+				{
+					"value": "tast.firmware.ECKeyboard.convertible"
+				},
+				{
+					"value": "tast.firmware.ECKeyboard.usb_keyboard"
+				},
+				{
+					"value": "tast.firmware.ECLaptopMode"
+				},
+				{
+					"value": "tast.firmware.ECLaptopMode.clamshell"
+				},
+				{
+					"value": "tast.firmware.ECLaptopMode.detachable"
+				},
+				{
+					"value": "tast.firmware.ECLidShutdown"
+				},
+				{
+					"value": "tast.firmware.ECLidSwitch.check_key_press"
+				},
+				{
+					"value": "tast.firmware.ECLidSwitch.close_lid_to_shutdown"
+				},
+				{
+					"value": "tast.firmware.ECLidSwitch.open_lid_to_boot"
+				},
+				{
+					"value": "tast.firmware.ECLidSwitch.open_lid_to_unsuspend"
+				},
+				{
+					"value": "tast.firmware.ECPDRole"
+				},
+				{
+					"value": "tast.firmware.ECPowerButton"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_button"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.power_state_snk"
+				},
+				{
+					"value": "tast.firmware.ECPowerG3.shutdown"
+				},
+				{
+					"value": "tast.firmware.ECReboot"
+				},
+				{
+					"value": "tast.firmware.ECSharedMemory"
+				},
+				{
+					"value": "tast.firmware.ECSize"
+				},
+				{
+					"value": "tast.firmware.ECSystemLocked"
+				},
+				{
+					"value": "tast.firmware.ECTabletMode"
+				},
+				{
+					"value": "tast.firmware.ECTabletMode.chromeslate"
+				},
+				{
+					"value": "tast.firmware.ECTabletMode.detachable"
+				},
+				{
+					"value": "tast.firmware.ECUSBPorts.usb_pins_on_lid_close"
+				},
+				{
+					"value": "tast.firmware.ECUSBPorts.usb_pins_on_shutdown"
+				},
+				{
+					"value": "tast.firmware.ECUpdateID.dev_gbb"
+				},
+				{
+					"value": "tast.firmware.ECUpdateID.normal_mode"
+				},
+				{
+					"value": "tast.firmware.ECVerifyVK"
+				},
+				{
+					"value": "tast.firmware.ECVerifyVK.chromeslate"
+				},
+				{
+					"value": "tast.firmware.ECVerifyVK.detachable"
+				},
+				{
+					"value": "tast.firmware.ECWakeSource.keypress"
+				},
+				{
+					"value": "tast.firmware.ECWakeSource.lid"
+				},
+				{
+					"value": "tast.firmware.ECWakeSource.power_btn"
+				},
+				{
+					"value": "tast.firmware.ECWakeSource.usb_keyboard"
+				},
+				{
+					"value": "tast.firmware.ECWatchdog"
+				},
+				{
+					"value": "tast.firmware.SHANI"
+				},
+				{
+					"value": "tast.firmware.ScreenWakeTabletMode"
+				},
+				{
+					"value": "tast.firmware.ScreenWakeTabletMode.chromeslates"
+				},
+				{
+					"value": "tast.firmware.ScreenWakeTabletMode.detachables"
+				},
+				{
+					"value": "tast.firmware.SoftwareSync.dev"
+				},
+				{
+					"value": "tast.firmware.SoftwareSync.normal"
+				},
+				{
+					"value": "tast.firmware.USBResumeFromSuspend"
+				},
+				{
+					"value": "tast.platform.CrosID"
+				},
+				{
+					"value": "tast.power.ShutdownWithCommandBatteryCutoff"
+				},
+				{
+					"value": "tast.power.TabletModeNotification.convertible"
+				},
+				{
+					"value": "tast.power.TabletModeNotification.detachable"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "faft_pd"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Verify the behaviors of the USB PD stack."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.firmware.ECPDConnect.dtsoff"
+				},
+				{
+					"value": "tast.firmware.ECPDConnect.flipcc"
+				},
+				{
+					"value": "tast.firmware.ECPDConnect.flipcc_dtsoff"
+				},
+				{
+					"value": "tast.firmware.ECPDConnect.normal"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.dtsoff"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.dtsoff_stress"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.flipcc"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.flipcc_dtsoff"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.flipcc_dtsoff_stress"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.flipcc_stress"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.normal"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.normal_stress"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.shutdown"
+				},
+				{
+					"value": "tast.firmware.ECPDPowerSwap.suspend"
+				},
+				{
+					"value": "tast.firmware.ECPDTrysrc.flipcc"
+				},
+				{
+					"value": "tast.firmware.ECPDTrysrc.normal"
+				},
+				{
+					"value": "tast.firmware.ECWakeFromULP.lid_switch"
+				},
+				{
+					"value": "tast.firmware.ECWakeFromULP.power_button"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.dtsoff_snk"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.flipcc"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.flipcc_dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.flipcc_dtsoff_snk"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.flipcc_snk"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.normal"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.normal_snk"
+				},
+				{
+					"value": "tast.firmware.PDDataSwap.shutdown"
+				},
+				{
+					"value": "tast.firmware.PDProtocol"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.flipcc"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.flipcc_dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.normal"
+				},
+				{
+					"value": "tast.firmware.PDResetHard.shutdown"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.flipcc"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.flipcc_dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.normal"
+				},
+				{
+					"value": "tast.firmware.PDResetSoft.shutdown"
+				},
+				{
+					"value": "tast.firmware.PDVbusRequest.dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDVbusRequest.flipcc"
+				},
+				{
+					"value": "tast.firmware.PDVbusRequest.flipcc_dtsoff"
+				},
+				{
+					"value": "tast.firmware.PDVbusRequest.normal"
+				},
+				{
+					"value": "tast.firmware.PDVbusRequest.shutdown"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "firmware_other"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "Tests used to qualify the device firmware, that are not part of faft_* suites, includes longer running stress tests."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.storage.QuickStress.setup"
+				},
+				{
+					"value": "tast.storage.QuickStress.stress"
+				},
+				{
+					"value": "tast.storage.QuickStress.teardown"
+				},
+				{
+					"value": "tast.platform.BootPerf"
+				},
+				{
+					"value": "tauto.power_UiResume.freeze"
+				},
+				{
+					"value": "tauto.power_CPUFreq"
+				},
+				{
+					"value": "tauto.power_CPUIdle"
+				},
+				{
+					"value": "tauto.hardware_TPMCheck"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "virtualization_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "cros-arc-te@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1052117"
+				},
+				"criteria": {
+					"value": "Validate Virtualization related functionality for FSI."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.arc.OobeArcAppOpen"
+				},
+				{
+					"value": "tast.arc.VerifyDefaultApps"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "wifi_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-wifi-champs@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:893827"
+				},
+				"criteria": {
+					"value": "Wi-Fi tests that run pre FSI and are not part of AVL/require no special testbed."
+				}
+			},
+			"tests": [
+				{
+					"value": "tast.wifi.SetTXPower"
+				},
+				{
+					"value": "tast.wifi.SetTXPower.vpd"
+				},
+				{
+					"value": "tast.wifi.CheckIntelSARTable"
+				}
+			]
+		}
+	]
+}

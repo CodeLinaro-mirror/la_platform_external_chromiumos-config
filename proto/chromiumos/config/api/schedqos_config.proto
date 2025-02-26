@@ -1,0 +1,83 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "google/protobuf/wrappers.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Defines configuration settings for schedqos of resourced.
+//
+// NEXT ID: 2
+message SchedqosConfig {
+  enum CpusetCgroup {
+    CPUSET_CGROUP_DEFAULT = 0;
+    // The task runs on all cores
+    CPUSET_CGROUP_ALL = 1;
+    // The task runs on efficient cores only
+    CPUSET_CGROUP_EFFICIENT = 2;
+  }
+
+  message ThreadConfig {
+    // The priority on RT mode.
+    // Negative value to disable RT.
+    google.protobuf.Int32Value rt_priority = 1;
+
+    // nice value
+    //
+    // Valid values: -20 ~ 19
+    google.protobuf.Int32Value nice = 2;
+
+    // The UCLAMP_MIN value.
+    //
+    // Valid values: 0 ~ 1024
+    google.protobuf.UInt32Value uclamp_min = 3;
+
+    // The cpuset cgroup to use.
+    CpusetCgroup cpuset_cgroup = 4;
+
+    // Whether the task is latency sensitive or not.
+    //
+    // This value is set to `/proc/pid/task/tid/latency_sensitive`
+    google.protobuf.BoolValue latency_sensitive = 5;
+  }
+
+  message ConfigSet {
+    // The cpu share of normal cpu cgroup.
+    uint32 normal_cpu_share = 1;
+
+    // The cpu share of background cpu cgroup.
+    uint32 background_cpu_share = 2;
+
+    // The thread config for URGENT_BURSTY state.
+    ThreadConfig thread_urgent_bursty = 3;
+
+    // The thread config for URGENT state.
+    ThreadConfig thread_urgent = 4;
+
+    // The thread config for BALANCED state.
+    ThreadConfig thread_balanced = 5;
+
+    // The thread config for ECO state.
+    ThreadConfig thread_eco = 6;
+
+    // The thread config for UTILITY state.
+    ThreadConfig thread_utility = 7;
+
+    // The thread config for BACKGROUND state.
+    ThreadConfig thread_background = 8;
+
+    // The thread config for URGENT_BURSTY_SERVER state.
+    ThreadConfig thread_urgent_bursty_server = 9;
+
+    // The thread config for URGENT_BURSTY_CLIENT state.
+    ThreadConfig thread_urgent_bursty_client = 10;
+  }
+
+  // The default config set.
+  ConfigSet default = 1;
+}

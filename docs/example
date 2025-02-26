@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#
+# Copyright 2021 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Example doc generation commands.
+#
+# Requires both protodot to be in path
+#   https://github.com/seamia/protodot
+#
+# And CROS_ROOT to be set to the root of the Chrome OS checkout
+
+TEST_PLATFORM="${CROS_ROOT}"/infra/proto/src/test_platform
+
+# infra/proto rooted schema
+./render -s "*" "CTP2 API" \
+         "${TEST_PLATFORM}"/v2/request.proto test_api.html
+./render -s "*" "Legacy CTP API" \
+         "${TEST_PLATFORM}"/request.proto legacy_test_api.html
+
+# src/config rooted schema
+./render "Boxster ConfigBundle Proto" \
+         ../proto/chromiumos/config/payload/config_bundle.proto \
+         config_bundle.html
+./render "Boxster FlatConfig Proto" \
+         ../proto/chromiumos/config/payload/flat_config.proto \
+         flat_config.html

@@ -1,0 +1,453 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/component_id.proto";
+import "chromiumos/config/api/partner_id.proto";
+import "google/protobuf/wrappers.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// next field: 29
+message Component {
+  // Globally unique component identifier.
+  ComponentId id = 1;
+  // Original component manufacturer.
+  PartnerId manufacturer_id = 8;
+  // Human readable name of the component.
+  string name = 9;
+
+  // Additional optional label to provide alternative value for eg:
+  // HWID string rather than relying on id.value directly.
+  string hwid_type  = 25;
+  string hwid_label = 20;
+
+  // IDs used to join against AVL database
+  AVLId avl_id = 21;
+
+  // AVL-compatible part number information
+  string part_number = 22;
+
+  // Current support status of the component
+  SupportStatus support_status = 28;
+
+  oneof type {
+    Soc soc = 2;
+    Memory memory = 3;
+    Bluetooth bluetooth = 4;
+    Camera camera = 5;
+    Touch touchscreen = 6;
+    Wifi wifi = 7;
+    Touch touchpad = 10;
+    DisplayPanel display_panel = 11;
+    AudioCodec audio_codec = 12;
+    Battery battery = 13;
+    FlashChip ec_flash_chip = 14;
+    FlashChip system_flash_chip = 15;
+    EmbeddedController ec = 16;
+    Storage storage = 17;
+    Tpm tpm = 18;
+    Interface.Usb usb_host = 19;
+    Stylus stylus = 23;
+    Amplifier amplifier = 24;
+    DisplayPortConverter dp_converter = 26;
+    Cellular cellular = 27;
+  }
+
+  /////////////////////////////////////
+  // Message Definitions Only
+  /////////////////////////////////////
+
+  // IDs to map into AVL database
+  message AVLId {
+    int32 cid = 1; // component id
+    int32 qid = 2; // qualification id
+  }
+
+  // Defines common component version identifiers based on interface standards.
+  message Interface {
+    message I2C {
+        string product = 1;
+        string vendor = 2;
+    }
+
+    message Usb {
+      // 4-digit hex
+      string vendor_id = 1;
+      // 4-digit hex
+      string product_id = 2;
+      // 4-digit hex
+      string bcd_device = 3;
+    }
+
+    message Pci {
+      // 4-digit hex
+      string vendor_id = 1;
+      // 4-digit hex
+      string device_id = 2;
+      // 2-digit hex
+      string revision_id = 3;
+      // 6-digit hex (2 digit for class 4 for subclass)
+      string class_id = 4;
+    }
+  }
+
+  message Soc {
+    enum Architecture {
+      ARCHITECTURE_UNDEFINED = 0;
+      X86 = 1;
+      X86_64 = 2;
+      ARM = 3;
+      ARM64 = 4;
+    }
+
+    enum Feature {
+      FEATURE_UNKNOWN = 0;
+      // Supports Symmetric Multi-Threading (SMT; a.k.a. Hyper-Threading, or
+      // other vendor-specific terms).
+      SMT = 1;
+      // Supports x86 SHA-NI (instruction extension set for SHA1 and SHA256)
+      SHA_NI = 2;
+    };
+
+    message Family {
+      Architecture arch = 1;
+      // Common name (human friendly) for the family
+      string name = 2;
+    }
+
+    enum Vulnerability {
+      VULNERABILITY_UNDEFINED = 0;
+      // CPU is vulnerable to the L1 Terminal Fault (a.k.a., L1TF) side
+      // channel.
+      L1TF = 1;
+      // CPU is vulnerable to Microarchitectural Data Sampling (MDS).
+      MDS = 2;
+    }
+
+    Family family = 1;
+    // Unique model name reported by the SoC and detected
+    // through probing.
+    // For ARM/x86 specific probing logic, see:
+    // platform/factory/py/probe/functions/generic_cpu.py
+    string model = 2;
+    // Number of cores present on the SoC model
+    int32 cores = 3;
+    repeated Feature features = 4;
+    repeated Vulnerability vulnerabilities = 5;
+  }
+
+  message Memory {
+    Profile profile = 1;
+    string part_number = 2;
+
+    message Profile {
+      Type type = 1;
+      int32 speed_mhz = 2;
+      int32 size_megabytes = 3;
+      // Any new fields here should be messages or enums that can differentiate
+      // the unspecified value from the 0-value (or the 0-value is not valid)
+    }
+
+    enum Type {
+      TYPE_UNDEFINED = 0;
+      DDR = 1;
+      DDR2 = 2;
+      DDR3 = 3;
+      DDR4 = 4;
+      LP_DDR3 = 5;
+      LP_DDR4 = 6;
+    }
+
+    reserved 3;
+  }
+
+  message Bluetooth {
+    Interface.Usb usb = 4;
+
+    reserved 1, 2, 3;
+  }
+
+  message Camera {
+    enum Feature {
+      FEATURE_UNKNOWN = 0;
+      ACTIVITY_LED = 1;
+    }
+    enum ClockType {
+      CLOCK_TYPE_UNDEFINED = 0;
+      MONOTONIC = 1;
+      BOOTTIME = 2;
+    }
+
+    repeated Feature features = 1;
+    ClockType clock_type = 2;
+
+    oneof interface {
+      Interface.Usb usb = 3;
+      Interface.Pci pci = 4;
+    }
+  }
+
+  message DisplayPanel {
+    string product_id = 1;
+    Properties properties = 2;
+
+    enum Feature {
+      FEATURE_UNKNOWN = 0;
+      // Supports high dynamic range.
+      HDR = 1;
+      // Supports seamless refresh rate switching.
+      SEAMLESS_REFRESH_RATE_SWITCHING = 2;
+      // variable refresh rate available.
+      VARIABLE_REFRESH_RATE_AVAILABLE = 3;
+    };
+
+    enum PanelType {
+      PANEL_TYPE_UNKNOWN = 0;
+      OLED = 1;
+    };
+
+    message Properties {
+      int32 width_px = 1;
+      int32 height_px = 2;
+      // Generally expressed as double (e.g. 11.7 inches) in specs, but storing
+      // as milliinch to remove double ambiguities.
+      int32 diagonal_milliinch = 3;
+      // PPI or also referred to as DPI (density per inch)
+      int32 pixels_per_in = 4;
+      repeated Feature features = 5;
+
+      // The minimum backlight level to use before turning the backlight off
+      // entirely.
+      uint32 min_visible_backlight_level = 6;
+
+      // The delay between setting the backlight level to 0 and turning off the
+      // display.
+      google.protobuf.UInt32Value turn_off_screen_timeout_ms = 7;
+
+      oneof battery_brightness {
+        // The default display backlight percentage on battery power in the
+        // absence of an ambient light sensor controlling the display backlight.
+        double no_als_battery_brightness = 8;
+
+        // The default display backlight nits on battery power in the
+        // absence of an ambient light sensor controlling the display backlight.
+        double no_als_battery_brightness_nits = 11;
+      }
+
+      oneof ac_brightness {
+        // The default display backlight percentage on AC power in the absence of
+        // an ambient light sensor controlling the display backlight.
+        double no_als_ac_brightness = 9;
+
+        // The default display backlight nits on AC power in the absence of
+        // an ambient light sensor controlling the display backlight.
+        double no_als_ac_brightness_nits = 12;
+      }
+
+      // The configuration of the display backlight percentage based on the
+      // ambient light sensor value. Steps should be in increasing order.
+      repeated AlsStep als_steps = 10;
+
+      // The max luminance of the panel in nits.
+      double max_screen_brightness = 13;
+
+      // The radius of each corner of this display (in physical pixels).
+      message RoundedCorners {
+        message RoundedCorner {
+          int32 radius_px = 1;
+        }
+        RoundedCorner top_left = 1;
+        RoundedCorner top_right = 2;
+        RoundedCorner bottom_left = 3;
+        RoundedCorner bottom_right = 4;
+      }
+      RoundedCorners rounded_corners = 14;
+
+      // Display panel type
+      PanelType panel_type = 15;
+    }
+  }
+
+  message Touch {
+    enum TouchType {
+      TOUCH_TYPE_UNDEFINED = 0;
+      USB = 1;
+      I2C = 2;
+    }
+
+    string product_id = 2;
+    string fw_version = 3;
+    // Optional product brand/series name
+    // For some vendors, this is used in the firmware naming schema
+    string product_series = 5;
+
+    string fw_checksum = 6;
+    TouchType type = 7;
+    Interface.Usb usb = 8;
+
+    reserved 1, 4;
+  }
+
+  message Wifi {
+    oneof interface {
+      Interface.Pci pci = 1;
+    }
+
+    enum WLANProtocol {
+      WLAN_PROTOCOL_UNKNOWN = 0;
+      IEEE_802_11_A = 1;
+      IEEE_802_11_B = 2;
+      IEEE_802_11_G = 3;
+      IEEE_802_11_N = 4;
+      IEEE_802_11_AC = 5;
+      IEEE_802_11_AX = 6;
+    }
+    // WLAN protocols supported by this Wifi chipset.
+    repeated WLANProtocol supported_wlan_protocols = 2;
+  }
+
+  // Record of a component level qualification and the corresponding status.
+  message Qualification {
+    enum Status {
+      STATUS_UNKNOWN = 0;
+      REQUESTED = 1;
+      TECHNICALLY_QUALIFIED = 2;
+      QUALIFIED = 3;
+    }
+    ComponentId component_id = 1;
+    Status status = 2;
+  }
+
+  message Amplifier {
+    enum Feature {
+      FEATURE_UNKNOWN = 0;
+      BOOT_TIME_CALIBRATION = 1;
+    }
+    string name = 1;
+    repeated Feature features = 2;
+  }
+
+  message AudioCodec {
+    string name = 1;
+  }
+
+  message Battery {
+    enum Technology {
+      TECH_UNKNOWN = 0;
+      LI_ION = 1;
+      LI_POLY = 2;
+    }
+    string model = 1;
+    Technology technology = 2;
+  }
+
+  message FlashChip {
+    string part_number = 1;
+  }
+
+  message EmbeddedController {
+    string part_number = 1;
+  }
+
+  message Storage {
+    enum StorageType {
+      STORAGE_TYPE_UNKNOWN = 0;
+      EMMC = 1;
+      NVME = 2;
+      SATA = 3;
+      UFS = 4;
+      BRIDGED_EMMC = 5;
+    }
+
+    string emmc5_fw_ver = 1;
+    string manfid = 2;
+    string name = 3;
+    string oemid = 4;
+    string prv = 5;
+    string sectors = 6;
+    StorageType type = 7;
+    uint32 size_gb = 8;
+
+    oneof interface {
+        Interface.Pci pci = 9;
+    }
+  }
+
+  // Defines a Trusted Platform Module, for more information see here:
+  //   https://www.chromium.org/developers/design-documents/tpm-usage
+  message Tpm {
+    string manufacturer_info = 1;
+    string version = 2;
+  }
+
+  message Stylus {
+    oneof interface {
+        Interface.Usb usb = 1;
+        Interface.I2C i2c = 2;
+    }
+  }
+
+  // Defines a peripheral IC that converts DP signal to another format like HDMI.
+  message DisplayPortConverter {
+    string name = 1;
+  }
+
+  message Cellular {
+    oneof interface {
+        Interface.Usb usb = 1;
+    }
+  }
+
+  // Various levels of component support.
+  enum SupportStatus {
+    STATUS_UNKNOWN = 0;
+    STATUS_SUPPORTED = 1;
+    STATUS_DEPRECATED = 2;
+    STATUS_UNQUALIFIED = 3;
+    STATUS_UNSUPPORTED = 4;
+  }
+
+  // A single step in an ambient light sensor configuration table. Each step
+  // configures the brightness percentage while at that step as well as the
+  // sensor value at which the next or previous step should be considered.
+  // Steps should be specified in increasing order for each field.
+  message LuxThreshold {
+    // The ALS sensor value below which the previous step should be considered.
+    // A value of -1 denotes negative infinity and should be used for the first
+    // step.
+    int32 decrease_threshold = 1;
+
+    // The ALS sensor value above which the following step should be
+    // considered. A value of -1 denotes infinity and should be used for the
+    // last step.
+    int32 increase_threshold = 2;
+  }
+
+  message AlsStep {
+    oneof ac_backlight {
+      // The backlight brightness percentage on AC power for this step.
+      double ac_backlight_percent = 1;
+
+      // The backlight brightness nits on AC power for this step.
+      double ac_backlight_nits = 5;
+    }
+
+    oneof battery_backlight {
+      // The backlight brightness percentage on battery power for this step.
+      double battery_backlight_percent = 2;
+
+      // The backlight brightness nits on battery power for this step
+      double battery_backlight_nits = 6;
+    }
+
+    LuxThreshold lux_threshold = 3;
+
+    // The max luminance of the panel in nits.
+    double max_screen_brightness = 7;
+  }
+}

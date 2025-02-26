@@ -1,0 +1,30 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/design_id.proto";
+import "chromiumos/config/api/device_brand_id.proto";
+import "chromiumos/config/api/partner_id.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Defines device branding characteristics for each unique Chromium OS device
+// brand.
+message DeviceBrand {
+  // Globally unique device brand identifier.
+  DeviceBrandId id = 1;
+  // Hardware design used for the given brand.
+  DesignId design_id = 2;
+  // OEM for the given device brand.
+  PartnerId oem_id = 3;
+  // Whether to export oem_id information to OS image via cros_config.
+  bool export_oem_info = 6;
+  // Brand code assigned and set during manufacturing.
+  string brand_code = 4;
+  // Brand marketing name.
+  string brand_name = 5;
+}

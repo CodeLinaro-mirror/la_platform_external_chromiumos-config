@@ -1,0 +1,69 @@
+// Copyright 2023 The ChromiumOS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+// NEXT TAG: 13
+message VMRequirements {
+  string gce_image = 1;
+  string gce_region = 2;
+  string gce_project = 3;
+
+  // Networking-related params
+  string gce_network = 4;
+  string gce_subnet = 5;
+  bool subnet_mode_network_enabled = 11;
+
+  string gce_machine_type = 6;
+  string gce_scope = 7;
+  // Specified IP address for VM. If not, use ephemeral IP.
+  string gce_ip_address = 8;
+  int64 gce_disk_size = 10;
+  string gce_min_cpu_platform = 12;
+
+  VMType type = 9;
+}
+
+// VMType specifies the type of VM that is requested and will be created.
+enum VMType {
+  VM_TYPE_UNSPECIFIED = 0;
+  VM_TYPE_DUT = 1;
+  VM_TYPE_DRONE = 2;
+}
+
+message HardwareRequirements {
+  message LabelValues {
+    repeated string values = 1;
+  }
+
+  // A map for schedulable labels used to request a matching device.
+  map<string, LabelValues> schedulable_labels = 1;
+}
+
+message ExtendLeaseRequest {
+  // Original lease_id obtained when the lease was created.
+  string lease_id = 1;
+
+  // Important to configure a good lifetime max for leases can not be extended
+  // indefinitely. It is also important to ensure same limits as those for
+  // LeaseDeviceRequest.duration or LeaseVMRequest.duration.
+  google.protobuf.Duration extend_duration = 2;
+
+  // Generated on the client side, shared across retries but pseudo-unique
+  // across different logical requests. Requests with the same key will be
+  // treated as duplicate of original request, return the same response.
+  string idempotency_key = 3;
+}
+
+message ExtendLeaseResponse {
+  string lease_id = 1;
+  google.protobuf.Timestamp expiration_time = 2;
+}

@@ -1,0 +1,69 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/partner_id.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Defines contributing partners participating in the design, execution,
+// and support of chromiumos projects.
+message Partner {
+  // Globally unique partner identifier.
+  PartnerId id = 1;
+  // Descriptive name (for humans) of the partner.
+  string name = 2;
+  // Email alias used for coordinating project execution.
+  string email_group = 3;
+
+  // Optional config for touch vendors.
+  TouchVendor touch_vendor = 4;
+
+  // Optional config for display panel vendors.
+  DisplayPanelVendor display_panel_vendor = 5;
+
+  // Optional config for battery vendors.
+  BatteryVendor battery_vendor = 6;
+
+  // Defines partner config unique to touch manufacturers.
+  message TouchVendor {
+    // 4-digit hex vendor id assigned
+    string vendor_id = 4;
+
+    // Defines vendor-specific touch fw file formatting
+    // conventions using any of the following fields:
+    // - vendor_name
+    // - vendor_id
+    // - product_id
+    // - fw_version
+    // - product_series
+
+    // This formatting (via python format) will be applied to the symlinks
+    // that will be present in /lib/firmware
+    // E.g.
+    // "{vendor_name}_{product_id}.bin"
+    // "{vendor_name}_{vendor_id}_{product_id}_{fw_version}.bin"
+    // "{vendor_name}_{product_series}_{product_id}.hex"
+    string symlink_file_format = 5;
+    // Same formatting as symlink_file_format, except this controls
+    // the actual destination file that will be written to
+    // /opt/google/touch/firmware, which the symlink references.
+    string destination_file_format = 6;
+  }
+
+  // Defines partner config unique to display panel manufacturers.
+  message DisplayPanelVendor {
+    // Vendor code assigned (generally 3 char [A-Z])
+    string vendor_code = 1;
+  }
+
+  // Defines partner config unique to battery manufacturers.
+  message BatteryVendor {
+    // Vendor name assigned (generally 16 char)
+    string vendor_name = 4;
+  }
+}

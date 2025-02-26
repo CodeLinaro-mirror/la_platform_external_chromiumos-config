@@ -1,0 +1,5 @@
+# Copyright 2020 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+Examples of ConstraintSuites used to test the discover and load behavior. This
+package should never be imported by real code.

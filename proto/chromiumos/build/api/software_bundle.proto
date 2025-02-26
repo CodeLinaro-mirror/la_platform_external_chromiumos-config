@@ -1,0 +1,23 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+import "chromiumos/build/api/firmware_config.proto";
+import "chromiumos/build/api/system_image.proto";
+
+// Bundles the metadata for all the different software
+// components that exist on a given ChromeOS device.
+//
+// Based on this bundle, test coverage rules can be generated
+// that target various combinations of these attributes.
+// E.g. (linux-version, arc-version)
+message SoftwareBundle {
+  SystemImage system_image = 1;
+  Firmware firmware = 2;
+}

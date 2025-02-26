@@ -1,0 +1,31 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/test_suite.proto";
+
+// CrosTestFinderRequest specifies test suites with or without tags.
+message CrosTestFinderRequest {
+  // Test suites to run (by tag or explicit list of tests).
+  repeated TestSuite test_suites = 1;
+
+  // Set this bool to true to get result with test metadata. Response will have
+  // Test suites with TestCaseMetadataList instead of TestCaseList.
+  bool metadata_required = 2;
+
+  // Specifies the Suite ID or SuiteSet ID to get tests for (cannot specify the
+  // test_suites field if the centralized_suite field is specified and vise
+  // versa)
+  string centralized_suite = 3;
+}
+
+message CrosTestFinderResponse {
+  // Test suites to run (explicit list of tests).
+  repeated TestSuite test_suites = 1;
+}

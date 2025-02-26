@@ -1,0 +1,238 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/component.proto";
+import "chromiumos/config/api/design.proto";
+import "chromiumos/config/api/design_id.proto";
+import "chromiumos/config/api/device_brand_id.proto";
+import "chromiumos/config/api/program_id.proto";
+import "chromiumos/config/api/resource_config.proto";
+import "chromiumos/config/api/schedqos_config.proto";
+import "chromiumos/config/api/topology.proto";
+import "chromiumos/config/public_replication/public_replication.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Defines how space in a firmware configuration field is allocated.
+//
+// This is used for both FW_CONFIG and Second Source Factory Cache (SSFC) fields
+//
+// Every FirmwareConfiguration must specify a mask that aligns with a segment.
+// No segments for a program within a field can overlap.
+message FirmwareConfigurationSegment {
+  // Human-readable name describing the segment, e.g. "Daughter board".
+  string name = 1;
+
+  // The mask of valid bits that could be used by this type of Topology.
+  uint32 mask = 2;
+}
+
+// A segment of DesignConfigIds allocated to a given Design.
+//
+// To ensure that DesignConfigIds are unique within a Program, a segment can be
+// allocated to each Design. For example, Design "A" gets ids [11, 20], Design
+// "B" gets ids [21, 30], etc.
+//
+// The "unprovisioned" id 0x7FFFFFFF is exempt from this check.
+//
+// No segments in a program can overlap.
+message DesignConfigIdSegment {
+  // Design the segment applies to.
+  DesignId design_id = 1;
+
+  // Min and max DesignConfigIds the Design can use. Both are inclusive.
+  uint32 min_id = 2;
+  uint32 max_id = 3;
+}
+
+// Defines the signing key that will be used for a given device brand.
+message DeviceSignerConfig {
+  // Associates a key to either a specific brand or design.
+  // Per brand association supports Whitelabel devices with separate brands.
+  oneof identifier {
+    DeviceBrandId brand_id = 1;
+    DesignId design_id = 3;
+  }
+  string key_id = 2;
+}
+
+// Defines a Chromium OS program, which establishes the set of constraints and
+// guidelines for all hardware design projects developed under the given
+// program.
+//
+// Reference designs developed for a given program will be treated like any
+// other hardware design project.  They will either fully comply with the
+// prescribed program constraints or provide waivers that highlight any
+// constraint violations.
+// Next ID: 15
+message Program {
+  // Fields replicated to public configs.
+  chromiumos.config.public_replication.PublicReplication public_replication = 8;
+
+  // Globally unique program identifier.
+  ProgramId id = 1;
+
+  // Program codename (human friendly).
+  string name = 2;
+
+  // The base program associated with this program. The programs can be defined
+  // separately, but can still build from same overlay and board. This field is
+  // optional and needs to be only defined if multiple program definitions are
+  // present and share the same build packages as the base program.
+  string base_program = 14;
+
+  // platform-name override for mosys.  This should not need to be
+  // set for most programs.
+  string mosys_platform_name = 10;
+
+  // Next ID: 12
+  message Platform {
+    enum Arch {
+      ARCH_UNKNOWN = 0;
+      X86 = 1;
+      X86_64 = 2;
+      ARM = 3;
+      ARM64 = 4;
+    }
+
+    // Next ID: 13
+    enum AcceleratedVideoCodec {
+      CODEC_UNDEFINED = 0;
+      H264_DECODE = 1;
+      H264_ENCODE = 2;
+      VP8_DECODE = 3;
+      VP8_ENCODE = 4;
+      VP9_DECODE = 5;
+      VP9_ENCODE = 6;
+      VP9_2_DECODE = 7;
+      VP9_2_ENCODE = 8;
+      H265_DECODE = 9;
+      H265_ENCODE = 10;
+      MJPG_DECODE = 11;
+      MJPG_ENCODE = 12;
+    }
+
+    enum GraphicsApi {
+      GRAPHICS_API_UNDEFINED = 0;
+      GRAPHICS_API_OPENGL = 1;
+      GRAPHICS_API_OPENGL_ES = 2;
+    }
+
+    // Specify the SoC for the design as a canonicalized string representing the
+    // SoC family.  Store a string to prevent leakage of non public platform
+    // names.
+    //
+    // Replace spaces with underscores, upper case everything and specify
+    // variants separated by dashes:
+    //   KABY_LAKE_U_R -- indicates KBL-U or KBL-R chips (both ultra-low power)
+    //
+    string soc_family = 1;
+    Arch   soc_arch   = 2;
+
+    string gpu_family = 3; // canonicalized gpu family name
+
+    // supported graphics APIs
+    repeated GraphicsApi graphics_apis = 4;
+
+    // Hardware accelerated video codecs supported
+    repeated AcceleratedVideoCodec video_codecs = 5;
+
+    message Capabilities {
+      // Whether suspend to idle (S0ix/S0i3) is supported on this platform.
+      bool suspend_to_idle = 1;
+
+      // Whether dark resume is supported on this platform.
+      bool dark_resume = 2;
+
+      // Whether wake on DisplayPort plug is supported on this platform.
+      bool wake_on_dp = 3;
+    }
+    Capabilities capabilities = 6;
+
+    message SchedulerTune {
+      // Scheduler's boost value(%) for urgent tasks. When an urgent thread is
+      // created, chrome applies this value to scheduler attribute. Tasks with
+      // higher boost value are more likely to have higher operating power point
+      // even when the system is low utilized.
+      // Minimum value: 0x0. Maximum value: 0x64.
+      uint32 boost_urgent = 1;
+
+      // Non-urgent task are only allowed to use given CPUs.
+      string cpuset_nonurgent = 2;
+
+      // Chromium kernel has a cpu-boost feature, which boosts CPUs for a short
+      // duration when user interaction is detected from input devices. This value
+      // specifies how much CPUs will be boosted.
+      // Minimum value: 0x0. Maximum value: 0x64.
+      uint32 input_boost = 3;
+
+      // Scheduler's boost value(%) for topmost applications on ARCVM. When
+      // booting the ARCVM, chrome applies this value to the Android for top-app
+      // application classes.
+      // Minimum value: 0x0. Maximum value: 0x64.
+      uint32 boost_top_app = 4;
+
+      // Global scheduler's boost factor of the ARCVM vcores and host services.
+      // The boost_arcvm parameter is used to scale the boost depending on the
+      // little/big cores frequency. If the frequencies are the same, it's
+      // applied directly without further scaling.
+      // Minimum value: 0.0. Maximum value: 1.0.
+      double boost_arcvm = 5;
+    }
+    SchedulerTune scheduler_tune = 7;
+
+    message ArcSettings {
+      string media_codecs_suffix = 1;
+    }
+    ArcSettings arc_settings = 8;
+
+    HardwareFeatures.Present hevc_support = 9;
+
+    ResourceConfig resource_config = 10;
+
+    SchedqosConfig schedqos_config = 11;
+  }
+  Platform platform = 11;
+
+  message AudioConfig {
+    // The card configs to include for all design configs within this program.
+    repeated HardwareFeatures.Audio.CardConfig card_configs = 1;
+
+    // Whether an alsa-<program>.conf should be installed.
+    bool has_module_file = 2;
+
+    // The UCM suffix pattern to use as the program-level default.
+    string default_ucm_suffix = 3;
+
+    // The cras suffix pattern to use as the program-level default.
+    string default_cras_suffix = 4;
+  }
+  AudioConfig audio_config = 12;
+
+  // If true, the ARC media_profiles.xml will be generated from Boxster and
+  // override the one installed by overlays.
+  bool generate_camera_media_profiles = 13;
+
+  // Defines program constraints for all proposed design configs.
+  repeated Design.Config.Constraint design_config_constraints = 3;
+
+  // Components for the given program and their corresponding qualification
+  // status.
+  repeated Component.Qualification component_quals = 4;
+
+  // Firmware segment allocations for the given program.
+  repeated FirmwareConfigurationSegment firmware_configuration_segments = 5;
+
+  // Second Source Factory Cache (SSFC) allocations for the given program.
+  repeated FirmwareConfigurationSegment ssfc_segments = 9;
+
+  // DesignConfigId segment allocations for the given program.
+  repeated DesignConfigIdSegment design_config_id_segments = 7;
+
+  repeated DeviceSignerConfig device_signer_configs = 6;
+}

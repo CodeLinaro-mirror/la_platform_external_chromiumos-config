@@ -1,0 +1,139 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+import "chromiumos/test/api/cros_provision_cli.proto";
+import "chromiumos/test/api/android_provision.proto";
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// Wrapper message of one of container-specific templates
+// NEXT TAG: 12
+message Template {
+  oneof container {
+    CrosDutTemplate cros_dut = 1;
+    CrosProvisionTemplate cros_provision = 2;
+    CrosTestTemplate cros_test = 3;
+    CrosPublishTemplate cros_publish = 4;
+    CrosFirmwareProvisionTemplate cros_fw_provision = 5;
+    CacheServerTemplate cache_server = 6;
+    CrosTestFinderTemplate cros_test_finder = 7;
+    AndroidProvisionTemplate android_provision = 8;
+    GenericTemplate generic = 9;
+    CrosVMProvisionTemplate cros_vm_provision = 10;
+    PostProcessTemplate post_process = 11;
+  }
+}
+
+// Plain template to demonstrate the usage of cros-dut container. All fields are
+// required.
+message CrosDutTemplate {
+  // Reserved for network and artifact_dir that have been moved to upper level.
+  reserved 1, 2;
+  // Cache server address
+  chromiumos.test.lab.api.IpEndpoint cache_server = 3;
+  // Dut ssh address
+  chromiumos.test.lab.api.IpEndpoint dut_address = 4;
+}
+
+// Plain template to demonstrate the usage of cros-provision container. All
+// fields are required.
+message CrosProvisionTemplate {
+  // Reserved for network and artifact_dir that have been moved to upper level.
+  reserved 1, 2;
+  // CrosProvisionRequest payload can have template placeholders, to be populated
+  // and write to a json file inside the artifact directory and pass along to
+  // cros-provision server. Note that inventory_server is no longer needed
+  chromiumos.test.api.CrosProvisionRequest input_request = 3;
+}
+
+// Plain template to demonstrate the usage of android-provision container. All
+// fields are required.
+//
+// TODO (b/272519698) To be made generic with CrosProvisionTemplate.
+message AndroidProvisionTemplate {
+  // AndroidProvisionRequest payload can have template placeholders, to be populated
+  // and write to a json file inside the artifact directory and pass along to
+  // android-provision server.
+  chromiumos.test.api.AndroidProvisionRequest input_request = 1;
+}
+
+// Plain template to demonstrate the usage of cros-test container. network and
+// artifact_dir in the StartTemplatedContainer message are required.
+// artifact_dir: Host directory, two sub-directories will be created and mounted
+// into the container. `<artifact_dir>/cros-test/cros-test` for logs and
+// `<artifact_dir>/cros-test/results` for result artifacts to be published
+message CrosTestTemplate {
+  // Reserved for network and artifact_dir that have been moved to upper level.
+  reserved 1, 2;
+}
+
+// Plain template to demonstrate the usage of cros-test-finder container. All fields are
+// required.
+message CrosTestFinderTemplate {
+}
+
+// Plain template to demonstrate the usage of vm-provision container. All fields are
+// required.
+message CrosVMProvisionTemplate {
+}
+
+// Generic template to demonstrate the usage of any container.
+message GenericTemplate {
+  // Name of the binary called within the container.
+  string binary_name = 1;
+  // Args passed to the call to the binary.
+  repeated string binary_args = 2;
+  // Directory mount from the perspective of the docker container.
+  string docker_artifact_dir = 3;
+  repeated string additional_volumes = 4;
+  repeated string expose = 5;
+  repeated string env = 6;
+}
+
+// Plain template to demonstrate the usage of cache-server container.
+message CacheServerTemplate {
+  // Required if the container image needs authentication.
+  oneof application_default_credentials {
+    // This is the full path of service account keyfile in JSON. When provided,
+    // the template will find mount the directory, and export the environment
+    // variable `GOOGLE_APPLICATION_CREDENTIALS` to point it to the keyfile.
+    string service_account_keyfile = 1;
+  }
+}
+
+// Plain template to demonstrate the usage of cros-publish container. publish_type
+// is required. publish_src_dir is required for GCS, TKO, and CPCON publish types.
+message CrosPublishTemplate {
+  enum PublishType {
+    PUBLISH_UNSPECIFIED = 0;
+    PUBLISH_GCS = 1;
+    PUBLISH_TKO = 2;
+    PUBLISH_RDB = 3;
+    PUBLISH_CPCON = 4;
+  }
+
+  PublishType publish_type = 1;
+  // Source directory of artifacts that needs to be published.
+  // If provided, will be mounted to "/tmp/<publish_type>-publish-test-artifacts/"
+  // (Ex: gcs-publish-test-artifacts). Required for GCS, TKO, and CPCON publish types.
+  string publish_src_dir = 2;
+}
+
+// Plain template to demonstrate the usage of cros-fw-provision container.
+message CrosFirmwareProvisionTemplate {
+}
+
+// Plain template to demonstrate the usage of post-process container.
+// NEXT TAG: 2
+message PostProcessTemplate {
+  // Source directory of artifacts that needs to be processed.
+  // This is also required to specify the location where the artifacts should
+  // be mounted.
+  string post_process_src_dir = 1;
+}
