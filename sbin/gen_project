@@ -1,0 +1,333 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Used for first time generation of the basic structure of a project.
+
+# Exit if any command fails.
+set -e
+
+function usage() {
+  echo "Usage: $0 <config dir> <program name> <program dir> <project name> <project dir>" >&2
+  echo "where" >&2
+  echo "  <config_dir> is the mount path of the chromiumos/config repo" >&2
+  echo "  <program name> is the name of the program the project belongs to" >&2
+  echo "  <program dir> is the mount path of the program repo" >&2
+  echo "  <project name> is name of the new project" >&2
+  echo "  <project dir> is directory to generate the new project config in" >&2
+  exit 1
+}
+
+function _make_symlink() {
+  local target="${1}"
+  local name="${2}"
+  # Shift target and name off, remaining arguments used as ln options.
+  shift 2
+  if [[ -e "${name}" ]]; then
+    echo "${name} already exists, skipping symlinking."
+  else
+    echo "Symlinking ${target} to ${name}."
+    ln "${@}" "${target}" "${name}"
+  fi
+}
+
+function make_relative_symlink() {
+  _make_symlink "${1}" "${2}" -sr
+}
+
+function make_symlink() {
+  _make_symlink "${1}" "${2}" -s
+}
+
+function write_project_config() {
+  local file="${1}"
+  local program="${2}"
+  local project="${3}"
+  cat << EOF > "${file}"
+#!/usr/bin/env gen_config
+
+"""Generates a ConfigBundle proto for the ${project} project."""
+
+load("//components_config.star", "COMPONENTS", "COMPONENT_VENDORS")
+load("//config/util/config_bundle.star", "config_bundle")
+load("//config/util/design.star", "design")
+load("//config/util/hw_topology.star", "hw_topo")
+load("//device_brand_config.star", "device_brand_config")
+load("//fw_version_config.star", "SC_FW_CONFIG_${project^^}")
+load("//program/program.star", "program")
+
+_${project^^}="${project^}"
+
+_DESIGN_ID = design.create_design_id(_${project^^})
+
+_CLAMSHELL = hw_topo.create_form_factor(hw_topo.ff.CLAMSHELL)
+
+_HW_TOPO = hw_topo.create_hardware_topology(
+    form_factor = _CLAMSHELL,
+)
+
+_FW_BUILD_CONFIG = None
+
+_AUDIO = None
+
+_SW_CONFIGS = []
+_HW_CONFIGS = []
+
+design.append_configs(
+    sw_configs=_SW_CONFIGS,
+    hw_configs=_HW_CONFIGS,
+    design_id=_DESIGN_ID,
+    config_id=design.UNPROVISIONED_CONFIG_ID,
+    hardware_topology=_HW_TOPO,
+    firmware_build_config=_FW_BUILD_CONFIG,
+    audio=_AUDIO,
+    firmware = SC_FW_CONFIG_${project^^},
+)
+
+_DESIGN = design.create_design(
+    id=_DESIGN_ID,
+    program_id=program.${program}.id,
+    odm_id=None,
+    configs=_HW_CONFIGS,
+)
+
+_CONFIG_BUNDLE = config_bundle.create(
+    designs=[_DESIGN],
+    software_configs = _SW_CONFIGS,
+    device_brands = device_brand_config.DEVICE_BRAND_LIST,
+    components = COMPONENTS,
+    partners = device_brand_config.ODMs + device_brand_config.OEMs + COMPONENT_VENDORS,
+    brand_configs = device_brand_config.BRAND_CONFIGS,
+)
+
+design.generate(_CONFIG_BUNDLE)
+EOF
+}
+
+function write_project_components() {
+  local file="${1}"
+  local project="${2}"
+  cat << EOF > "${file}"
+# Components and Component vendors configuration for ${project^}
+
+load("//config/util/partner.star", "partner")
+load("//config/util/component.star", "comp")
+
+COMPONENT_VENDORS = []
+COMPONENTS = []
+EOF
+}
+
+function write_device_brand_config() {
+  local file="${1}"
+  local project="${2}"
+  cat << EOF > "${file}"
+# Device brands, brand configs and partner configuration for ${project^}
+
+load("//config/util/partner.star", "partner")
+load("//config/util/design.star", "design")
+load("//config/util/device_brand.star", "device_brand")
+load("//config/util/brand_config.star", "brand_config")
+
+_ODMs = []
+_OEMs = []
+
+DESIGN_ID_${project^^} = design.create_design_id("${project^}")
+
+_DESIGN_ID_LIST = [DESIGN_ID_${project^^}]
+
+DEVICE_BRAND_${project^^}_ZZCR = device_brand.create(
+    brand_name = "",
+    oem_id = None,
+    brand_code = "ZZCR",
+    design_id = DESIGN_ID_${project^^},
+)
+
+_DEVICE_BRAND_LIST = [DEVICE_BRAND_${project^^}_ZZCR]
+
+_BRAND_CONFIGS = []
+
+device_brand_config = struct(
+    ODMs = _ODMs,
+    OEMs = _OEMs,
+    DESIGN_ID_LIST = _DESIGN_ID_LIST,
+    DEVICE_BRAND_LIST = _DEVICE_BRAND_LIST,
+    BRAND_CONFIGS = _BRAND_CONFIGS,
+)
+EOF
+}
+
+function write_fw_version_config() {
+  local file="${1}"
+  local project="${2}"
+  cat << EOF > "${file}"
+# Software firmware configuration for ${project^}
+
+load("//config/util/sw_config.star", sc = "sw_config")
+
+SC_FW_CONFIG_${project^^} = sc.create_fw_payloads_by_names(
+    ap_fw_name = "",
+    ec_fw_name = "",
+    ap_ro_version = sc.create_fw_version(0, 0, 0),
+    ap_rw_a_hash = None,
+    ap_rw_version = sc.create_fw_version(0, 0, 0),
+    ec_ro_version = sc.create_fw_version(0, 0, 0),
+)
+EOF
+}
+
+function write_program_config() {
+  local file="${1}"
+  local program="${2}"
+  cat << EOF > "${file}"
+#!/usr/bin/env gen_config
+
+# Copyright $(date +%Y) The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+"""Generates a ConfigBundle proto for the ${program} program."""
+
+load("//config/util/config_bundle.star", "config_bundle")
+load("//program.star", "program")
+load("//config/util/program.star", program_util = "program")
+
+_CONFIG = config_bundle.create(
+    programs = [program.${program}],
+)
+
+program_util.generate(_CONFIG)
+EOF
+}
+
+function write_program_signer() {
+  local file="${1}"
+  cat << EOF > "${file}"
+# Copyright $(date +%Y) The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("//config/util/program.star", program_util = "program")
+
+_SIGNER_BRAND_CONFIGS = program_util.create_signer_configs_by_brand(
+    {
+    },
+)
+
+_SIGNER_DESIGN_CONFIGS = program_util.create_signer_configs_by_design(
+    {
+    },
+)
+
+SIGNER_CONFIGS = _SIGNER_BRAND_CONFIGS + _SIGNER_DESIGN_CONFIGS
+EOF
+}
+
+function write_program_program() {
+  local file="${1}"
+  local program="${2}"
+  cat << EOF > "${file}"
+# Copyright $(date +%Y) The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("//config/util/design.star", "design")
+load("//config/util/device_brand.star", device_brand = "device_brand")
+load("//config/util/hw_topology.star", "hw_topo")
+load("//config/util/program.star", program_util = "program")
+load("//program_configs/signer_config.star", "SIGNER_CONFIGS")
+
+_FEATURE_CONSTRAINTS = design.create_constraints(
+    hw_topo.create_features(),
+)  # Default for now
+
+_${program^^} = program_util.create(
+    name = "${program^}",
+    constraints = _FEATURE_CONSTRAINTS,
+    device_signer_configs = SIGNER_CONFIGS,
+)
+
+program = struct(
+    ${program} = _${program^^},
+)
+EOF
+}
+
+function write_git_ignore() {
+  cat << EOF > .gitignore
+.venv
+EOF
+}
+
+if [[ $# -ne 5 ]]; then
+  usage
+fi
+
+config_dir="$(realpath -e "${1}")"
+program="${2}"
+program_dir="$(realpath -e "${3}")"
+project="${4}"
+project_dir="$(realpath -e "${5}")"
+
+# Move to the project directory.
+cd "${project_dir}"
+
+make_relative_symlink "${config_dir}" config
+make_symlink config/presubmit/_PRESUBMIT.cfg PRESUBMIT.cfg
+make_symlink config/presubmit/_PROJECT_PRESUBMIT.py PRESUBMIT.py
+
+if [[ -e config.star ]]; then
+  echo "Project config.star already existing, skipping."
+else
+  echo "Writing project config.star."
+  write_project_config config.star "${program}" "${project}"
+  chmod 750 config.star
+fi
+if [[ -e components_config.star ]]; then
+  echo "Project components_config.star already existing, skipping."
+else
+  echo "Writing project components_config.star."
+  write_project_components components_config.star "${project}"
+fi
+if [[ -e device_brand_config.star ]]; then
+  echo "Project device_brand_config.star already existing, skipping."
+else
+  echo "Writing project device_brand_config.star."
+  write_device_brand_config device_brand_config.star "${project}"
+fi
+if [[ -e fw_version_config.star ]]; then
+  echo "Project fw_version_config.star already existing, skipping."
+else
+  echo "Writing project fw_version_config.star."
+  write_fw_version_config fw_version_config.star "${project}"
+fi
+make_relative_symlink "${program_dir}" program
+make_relative_symlink "${program_dir}/program_configs" program_configs
+make_relative_symlink "${config_dir}" program/config
+
+if [[ -e program/config.star ]]; then
+  echo "Program config.star already existing, skipping."
+else
+  echo "Writing program config.star."
+  write_program_config program/config.star "${program}"
+  chmod 750 program/config.star
+fi
+
+if [[ -e program/program.star ]]; then
+  echo "Program program.star already existing, skipping."
+else
+  echo "Writing program program.star."
+  write_program_program program/program.star "${program}"
+fi
+
+if [[ -e program/program_configs/signer_config.star ]]; then
+  echo "Program signer_config.star already existing, skipping."
+else
+  echo "Writing program signer_config.star."
+  mkdir -p program/program_configs
+  write_program_signer program/program_configs/signer_config.star
+fi
+
+write_git_ignore

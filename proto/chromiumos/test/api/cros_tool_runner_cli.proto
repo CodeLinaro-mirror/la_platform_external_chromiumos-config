@@ -1,0 +1,149 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "google/protobuf/any.proto";
+import "chromiumos/test/api/provision_state.proto";
+import "chromiumos/test/api/cros_provision_cli.proto";
+import "chromiumos/test/api/test_case_result.proto";
+import "chromiumos/test/api/test_suite.proto";
+import "chromiumos/test/api/cros_test_finder_cli.proto";
+import "chromiumos/test/lab/api/dut.proto";
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+import "chromiumos/test/api/pre_test_service.proto";
+import "chromiumos/test/api/post_test_service.proto";
+
+// CrosToolRunnerProvisionRequest specifies a list of DUTs to be provision.
+message CrosToolRunnerProvisionRequest {
+  message Device {
+    // DUT to be provisioned.
+    chromiumos.test.lab.api.Dut dut = 1;
+    // Provision state is pass through request to the provision service.
+    ProvisionState provision_state = 2;
+    // ContainerMetadataKey is the key to search in the ContainerMetadata map
+    // defined in container_metadata.proto
+    string container_metadata_key = 3;
+  }
+
+  // The device information for each DUT's provision request.
+  repeated Device devices = 1;
+  // The server that can provide inventory service.
+  chromiumos.test.lab.api.IpEndpoint inventory_server = 2;
+  // The path of directory that will store all the cros-provision artifacts.
+  string artifact_dir = 3 ;
+}
+
+// CrosToolRunnerProvisionResponse includes provision result for each DUT.
+message CrosToolRunnerProvisionResponse {
+  // Responses for all the requests specified in
+  // CrosToolRunnerProvisionRequest.details.
+  repeated CrosProvisionResponse responses = 1;
+}
+
+// CrosToolRunnerTestRequest specifies tests to be run.
+message CrosToolRunnerTestRequest {
+  enum CrosTestContainerType {
+    ALL = 0;
+    CQ_LIGHT = 1;
+  }
+
+  message Device {
+    // DUT to be used in test execution.
+    chromiumos.test.lab.api.Dut dut = 1;
+    // ContainerMetadataKey is the key to search in the ContainerMetadata map
+    // defined in container_metadata.proto
+    string container_metadata_key = 2;
+  }
+  // Test suites to run (by tag or explicit list of tests)
+  repeated TestSuite test_suites = 1;
+  // Primary DUT.
+  Device primary_dut = 2;
+  // A list of companion DUTs to be used for running tests.
+  repeated Device companion_duts = 3;
+  // Inventory Server address.
+  chromiumos.test.lab.api.IpEndpoint inventory_server = 4;
+  // The path of directory that will store all the cros-test artifacts.
+  string artifact_dir = 5 ;
+  // Test harness specific metadata
+  google.protobuf.Any metadata = 6;
+  // Supported cros-test container type
+  CrosTestContainerType cros_test_container_type = 7;
+}
+
+// CrosToolRunnerTestResponse includes all test results.
+message CrosToolRunnerTestResponse {
+  repeated TestCaseResult test_case_results = 1;
+  google.protobuf.Any metadata = 2;
+}
+
+// CrosToolRunnerTestFinderRequest specifies a list of test suites
+// with or without tags.
+message CrosToolRunnerTestFinderRequest {
+  // Test suites to run by tag or explicit list of tests.
+  repeated TestSuite test_suites = 1;
+  // The path of directory that will store all the cros-test-finder artifacts.
+  string artifact_dir = 2 ;
+  // ContainerMetadataKey is the key to search in the ContainerMetadata map
+  // defined in container_metadata.proto
+  string container_metadata_key = 3;
+  // The caller should construct the entire request to go to the service. The
+  // test_suites field should not be provided if this field is provided and
+  // vise versa (test_suites field is not deleted for backwards compatibility
+  // reasons)
+  chromiumos.test.api.CrosTestFinderRequest request = 4;
+}
+
+// CrosToolRunnerTestFinderResponse return a lit of test suites
+// without tags.
+message CrosToolRunnerTestFinderResponse {
+  // Test suites to run by an explicit list of tests.
+  repeated TestSuite test_suites = 1;
+}
+
+message CrosToolRunnerPreTestRequest {
+  // The path of directory that will store all the pre-test-request artifacts.
+  string artifact_dir = 1 ;
+  // ContainerMetadataKey is the key to search in the ContainerMetadata map
+  // defined in container_metadata.proto
+  string container_metadata_key = 2;
+  // The caller should construct the entire request to go to the service.
+  FilterFlakyRequest request = 3;
+
+}
+
+// CrosToolRunnerPreTestResponse return filtered list.
+message CrosToolRunnerPreTestResponse {
+  // Service response from the caller.
+  FilterFlakyResponse response = 1;
+}
+
+message CrosToolRunnerPostTestRequest {
+  // The path of directory that will store all the post-test-request artifacts.
+  string artifact_dir = 1 ;
+  // ContainerMetadataKey is the key to search in the ContainerMetadata map
+  // defined in container_metadata.proto
+  string container_metadata_key = 2;
+  // The caller should construct the entire request to go to the service.
+  RunActivitiesRequest request = 3;
+
+  message Device {
+    // DUT to be used in test execution.
+    chromiumos.test.lab.api.Dut dut = 1;
+    // ContainerMetadataKey is the key to search in the ContainerMetadata map
+    // defined in container_metadata.proto
+    string container_metadata_key = 2;
+  }
+  // Primary DUT.
+  Device primary_dut = 4;
+}
+
+message CrosToolRunnerPostTestResponse {
+  // Service response from the caller.
+  RunActivitiesResponse response = 1;
+}

@@ -1,0 +1,115 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/provision_state.proto";
+
+// NEXT TAG: 8
+// DutAttribute defines how attributes of a DUT are encoded into key-value pairs
+// for use in test coverage rules.
+message DutAttribute {
+  // Globally unique identifier for the attribute. Value must match:
+  //   ^([a-zA-Z0-9]+-?)+[a-zA-Z0-9]+$
+  //
+  // That is, valid identifiers are alphanumberic strings with - joining them.
+  //
+  // Examples:
+  //   valid
+  //     attr-device-model
+  //     attr-label-2
+  //
+  //   invalid
+  //     attr_device_model
+  //     _attr-device-model
+  //     attr-device-model-
+  message Id {
+    string value = 1;
+  }
+  Id id = 1;
+
+  // Alternate names to make the label available under (for migration and
+  // backwards compatibility support).  No restrictions on name format.
+  repeated string aliases = 2;
+
+  // Definition of the attribute source data
+  oneof data_source {
+    FlatConfigSource flat_config_source = 3;
+    HwidSource       hwid_source        = 4;
+    TleSource        tle_source         = 7;
+  }
+
+  // Optional values and excluded values.
+  //   If these are specified then if the attribute matches _any_ value in
+  // allowed_values and _zero_ values in exclude_values, the attribute is
+  // exposed with a True value and otherwise it is exposed with a False value.
+  //
+  // Values are compared case insensitively.
+  //
+  // Example:
+  // {
+  //   "id" : {
+  //     "value": "starts-with-a-but-not-atlas"
+  //   },
+  //   "static_field" : {
+  //     "field_specs" : ["program.platform.soc_arch"]
+  //   },
+  //   "allowed_values" : ["asuka", "asurada"],
+  //   "exclude_values" : ["atlas"]
+  // }
+  repeated string allowed_values = 5;
+  repeated string exclude_values = 6;
+
+  // A field spec is a chain of field names ending in a scalar or enum, excluding
+  // floating point values.
+  //   eg: 'program.platform.soc_arch'
+  message FieldSpec {
+      string path = 1;
+  }
+
+  // FlatConfigSource specifies an attribute value that comes directly from the
+  // FlatConfig payload.  Fields are tried in-order, taking the first one that
+  // matches.
+  message FlatConfigSource {
+    repeated FieldSpec fields = 1;
+  }
+
+  // HwidSource specifies an attribute value that's mediated by HWID server
+  // Fields are tried in-order, taking the first one that matches.
+  message HwidSource {
+    string component_type = 1;
+    repeated FieldSpec fields = 2;
+  }
+
+  // TleSource specifies the information for querying attribute values based on
+  // the definition provided at the TLE level.
+  message TleSource {}
+}
+
+message DutAttributeList {
+  repeated DutAttribute dut_attributes = 1;
+}
+
+// DutCriterion describes a groups of DUTs, based on DUT attributes.
+message DutCriterion {
+  // ID of the DUT attribute that must meet the criterion.
+  DutAttribute.Id attribute_id = 1;
+
+  // List of ANY acceptable values to match (OR logic is applied).
+  // Values are compared as simple strings case insensitively.
+  repeated string values = 2;
+}
+
+// DutTarget is a list of DutCriterion that must be met by the DUT executing
+// tests. All criteria must be met (AND logic is applied) by the DUT.
+message DutTarget {
+    repeated DutCriterion criteria = 1;
+
+    // Provisioning configuration for this device
+    ProvisionConfig provision_config = 2;
+}

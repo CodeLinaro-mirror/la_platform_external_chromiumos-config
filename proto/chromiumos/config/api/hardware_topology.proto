@@ -1,0 +1,166 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/topology.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Contains hardware related system features that are tracked by Google to
+// differentiate distinct hardware build configurations. Generally these
+// hardware-related system features are not easily probe-able at run time.
+//
+// This SHOULD NOT be used to track second sourced components that are drop in
+// replacements.
+//
+// Note the types here are Topology values instead of enums. The individual
+// Design repos should check that any CL landing has acceptable Topology values.
+// Most values are effectively stringly typed enums.
+message HardwareTopology {
+  // Specify hardware screen topology hardware.
+  // See ./hardware_topology.md#screen for more information.
+  Topology screen = 1;
+
+  // Specify functional form factor type of hardware.
+  // See ./hardware_topology.md#form-factor for more information.
+  Topology form_factor = 2;
+
+  // Specify the audio codec topology.
+  // See ./hardware_topology.md#audio for more information
+  Topology audio = 3;
+
+  // Specify the stylus topology.
+  // See ./hardware_topology.md#stylus for more information.
+  Topology stylus = 4;
+
+  // Specify the internal keyboard topology.
+  // See ./hardware_topology.md#keyboard for more information.
+  Topology keyboard = 5;
+
+  // Specify which thermal topology.
+  // See ./hardware_topology.md#thermal for more information.
+  Topology thermal = 6;
+
+  // Specify the camera topology.
+  // See ./hardware_topology.md#camera for more information.
+  Topology camera = 7;
+
+  // Specify the accelerometer/gyroscope/magetometer topology.
+  // See ./hardware_topology.md#sensor for more information.
+  Topology accelerometer_gyroscope_magnetometer = 8;
+
+  // Specify the fingerprint sensor topology.
+  // See ./hardware_topology.md#fingerprint-sensor for more information.
+  Topology fingerprint = 9;
+
+  // Specify the proximity sensor topology.
+  // See ./hardware_topology.md#sensor for more information.
+  Topology proximity_sensor = 10;
+
+  // Specify the daughter board topology.
+  // See ./hardware_topology.md#daughter-board for more information.
+  Topology daughter_board = 11;
+
+  // Specify the non-volatile storage topology.
+  // See ./hardware_topology.md#non_volatile-storage for more information.
+  Topology non_volatile_storage = 12;
+
+  // Deprecated
+  Topology ram = 13;
+
+  // Specify the wifi topology.
+  // See ./hardware_topology.md#wifi for more information.
+  Topology wifi = 14;
+
+  // Specify the cellular sub-board topology.
+  // See ./hardware_topology.md#cellular-board for more information.
+  Topology cellular_board = 15;
+
+  // Specify the SD card reader topology.
+  // See ./hardware_topology.md#sd-reader for more information.
+  Topology sd_reader = 16;
+
+  // Specify the motherboard USB topology
+  // See ./hardware_topology.md#motherboard-usb for more information.
+  Topology motherboard_usb = 17;
+
+  // Specify the bluetooth topology
+  // See ./hardware_topology.md#bluetooth for more information.
+  Topology bluetooth = 18;
+
+  // Specify the barreljack topology
+  // See ./hardware_topology.md#barreljack for more information.
+  Topology barreljack = 19;
+
+  // Specify the power button topology.
+  // See ./hardware_topology.md#power-button for more information.
+  Topology power_button = 20;
+
+  // Specify the volume button topology.
+  // See ./hardware_topology.md#volume-button for more information.
+  Topology volume_button = 21;
+
+  // Specify the EC topology.
+  // See ./hardware_topology.md#ec for more information.
+  Topology ec = 22;
+
+  // Specify the touch topology.
+  // See ./hardware_topology.md#touch for more information.
+  Topology touch = 23;
+
+  // Specify the tpm topology.
+  // See ./hardware_topology.md#tpm for more information.
+  Topology tpm = 24;
+
+  // Specify the microphone mute switch topology.
+  // See ./hardware_topology.md#microphone_mute_switch for more information.
+  Topology microphone_mute_switch = 25;
+
+  // Specify the HDMI topology.
+  // See ./hardware_topology.md#hdmi for more information.
+  Topology hdmi = 26;
+
+  // Specify the HPS topology.
+  // See ./hardware_topology.md#hps for more information.
+  Topology hps = 27;
+
+  // Specify the DisplayPort converter topology.
+  // See ./hardware_topology.md#dp_converter for more information.
+  Topology dp_converter = 28;
+
+  // Specify the PoE peripheral support topology.
+  // See ./hardware_topology.md#poe_peripheral_support for more information.
+  Topology poe = 29;
+
+  // Specify the power supply topology
+  // See ./hardware_topology.md#power-supply for more information.
+  Topology power_supply = 30;
+
+  // Specify the battery topology
+  // See ./hardware_topology.md#battery for more information.
+  Topology battery = 31;
+
+  // Specify the dGPU topology
+  // See ./hardware_topology.md#dgpu for more information.
+  Topology dgpu = 32;
+
+  // Specify the UWB (Ultra Wideband) topology
+  // See ./hardware_topology.md#uwb for more information.
+  Topology uwb = 33;
+
+  // Specify the  topology
+  // See ./hardware_topology.md#detachable_base for more information.
+  Topology detachable_base = 34;
+
+  // Specify the SoC topology
+  // See ./hardware_topology.md#soc for more information.
+  Topology soc = 35;
+
+  // Specify the Fan topology
+  // See ./hardware_topology.md#fan for more information.
+  Topology fan = 36;
+}

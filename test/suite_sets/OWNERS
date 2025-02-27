@@ -1,0 +1,7 @@
+# PVS Team
+include chromiumos/owners:v1:/pvs/OWNERS.infra
+
+# TSE Team
+dbeckett@chromium.org
+
+include chromiumos/owners:v1:/bots/OWNERS.suite_sets

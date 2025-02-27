@@ -1,0 +1,140 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// Next Tag: 5
+message ApkDetails {
+  // Supported Android architectures.
+  enum Architecture {
+    ARCHITECTURE_UNSPECIFIED = 0;
+    ARMV7 = 1;
+    ARM64 = 2;
+    X86 = 3;
+    X86_64 = 4;
+  }
+  Architecture architecture = 1;
+
+  // Supported APK build types.
+  enum BuildType {
+    BUILD_TYPE_UNSPECIFIED = 0;
+    PHONE_PRE_LMP = 1;
+    PHONE_LMP = 2;
+    PHONE_MNC = 3;
+    PHONE_PI = 4;
+    PHONE_RVC = 5;
+    PHONE_SC = 6;
+    PHONE_NEXT = 7;
+    PHONE_GO = 8;
+    PHONE_GO_R = 9;
+    PHONE_GO_S = 10;
+  }
+  BuildType build_type = 2;
+
+  // Supported APK build purposes.
+  enum BuildPurpose {
+    BUILD_PURPOSE_UNSPECIFIED = 0;
+    RAW = 1;
+    RELEASE = 2;
+    DEBUG = 3;
+    DEBUG_SHRUNK = 4;
+  }
+  BuildPurpose build_purpose = 3;
+
+  // Supported APK densities.
+  enum Density {
+    DENSITY_UNSPECIFIED = 0;
+    MDPI = 1;
+    HDPI = 2;
+    XHDPI = 3;
+    XXHDPI = 4;
+    ALLDPI = 5;
+  }
+  Density density = 4;
+}
+
+enum AndroidPackage {
+  ANDROID_PACKAGE_UNSPECIFIED = 0;
+  GMS_CORE = 1;
+}
+
+// Next Tag: 8
+message CIPDPackage {
+  // CIPD package name.
+  string name = 1;
+
+  // Required. CIPD package version.
+  // Can be defined by ref, tag or specific instance Id.
+  oneof version_oneof {
+    string ref = 2;
+    string tag = 3;
+    string instance_id = 4;
+  }
+
+  // CIPD server URL to fetch this package from.
+  // chrome-infra-packages.appspot.com is used by default.
+  string service_url = 5;
+
+  // Required. Android package type.
+  AndroidPackage android_package = 6;
+
+  // APK details (arch, build type, screen density)
+  ApkDetails apk_details = 7;
+}
+
+// Next Tag: 4
+message GsPath {
+  reserved 3;
+  // GS bucket. Optional, android-provisioning-images is used by default.
+  string bucket = 1;
+  // Required. Folder name where the image files are stored.
+  string folder = 2;
+}
+
+// Next Tag: 3
+message AndroidOsImage {
+  // Required. Reference to the image file.
+  oneof location_oneof {
+    GsPath gs_path = 1;
+    string os_version = 2;
+  }
+}
+
+// Next Tag: 3
+message AndroidProvisionRequestMetadata {
+  // A list of CIPD packages to install.
+  repeated CIPDPackage cipd_packages = 1;
+  // Android OS image to flash.
+  AndroidOsImage android_os_image = 2;
+}
+
+// Next Tag: 3
+message InstalledAndroidPackage {
+  // Name of the installed package.
+  string name = 1;
+  // Version of the installed package.
+  string version_code = 2;
+}
+
+// Next Tag: 4
+message InstalledAndroidOS {
+  // Android OS build ID (ro.build.id).
+  string build_id  = 1;
+  // Android OS version (ro.build.version.release).
+  string os_version  = 2;
+  // Android OS build incremental version (ro.build.version.incremental).
+  string incremental_version  = 3;
+}
+
+// Next Tag: 3
+message AndroidProvisionResponseMetadata {
+  // List of the provisioned Android packages.
+  repeated InstalledAndroidPackage installed_android_packages = 1;
+  // Installed Android OS.
+  InstalledAndroidOS installed_android_os = 2;
+}

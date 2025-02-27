@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package chromiumos.config.api.software;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+message BluetoothConfig {
+  // Flags that are passed to the bluetooth daemon on startup.
+  // For more details on allowed flags, see:
+  //   https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/chromeos-config/#flags
+  map<string, bool> flags = 1;
+}

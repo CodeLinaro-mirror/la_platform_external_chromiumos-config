@@ -1,0 +1,183 @@
+#!/usr/bin/env python3
+# Copyright 2020 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+"""Wrapper around bb invocation of the cl_factory recipe."""
+
+import argparse
+import json
+import re
+import subprocess
+import sys
+
+from shlex import quote
+
+
+def Main(args):  # pylint: disable=invalid-name
+  """Wrapper around `bb add` invocation to invoke cl_factory.
+
+  Friendlier wrapper around the `bb add` command to aid invoking the cl_factory
+  recipe. A typical invocation would look like the following:
+
+  cl_factory \
+    --cl https://chrome-internal-review.googlesource.com/c/chromeos/program/galaxy/+/3095418 \
+    --regex src/program src/project \
+    --reviewers reviewer1@chromium.org reviewer2@google.com \
+    --ccs cc1@google.com \
+    --hashtag regen-audio-configs \
+    --replace_strings *.star foo bar \
+    --message "Hello world
+
+BUG=chromium:1092954
+TEST=CQ"
+
+  Note that by default the command is only printed out but not ran. To run the
+  command and cause the invocation of the cl_factory recipe additionally pass:
+
+  --nodryrun
+
+  Also note that you likely to want to provide a "hashtag". This will allow
+  gerrit cli commands to accurately target the generated CLs for batch review,
+  verify, and commit. These commands are output in the "summarize results" step
+  of the ClFactory recipe.
+
+  For more information on arguments, such as the variables available for
+  interpolation in the CL message, see:
+
+  http://cs/chromeos_public/infra/recipes/recipes/cl_factory.proto
+
+  Args:
+    args: Namespace object holding parsed args.
+  """
+  cmd = ['bb', 'add']
+
+  for cl in args.cl or []:
+    cmd.extend(['-cl', cl])
+
+  cmd.extend(csv_param('repo_regexes', args.regex))
+  cmd.extend(csv_param('reviewers', args.reviewers))
+  cmd.extend(csv_param('ccs', args.ccs))
+  cmd.extend(csv_param('hashtags', args.hashtag))
+
+  if args.set_source_depends:
+    cmd.extend(['-p', 'set_source_depends=true'])
+
+  replace_strings = list(map(lambda rs: replace_strings_dict(rs),
+                             args.replace_strings or []))
+  if replace_strings:
+    cmd.extend(
+        ['-p', '\'replace_strings={}\''.format(json.dumps(replace_strings))])
+
+  if args.manifest_branch:
+    cmd.extend(['-p', '\'manifest_branch={}\''.format(args.manifest_branch)])
+
+  cmd.extend(['-p', quote('message_template={}'.format(args.message))])
+  cmd.append('chromeos/infra/ClFactory')
+
+  cmd = ' '.join(cmd)
+
+  print('Command:')
+  print(cmd)
+  print('\n')
+
+  if args.dryrun:
+    print('Dry run only. Command not executed. Pass:')
+    print('  --nodryrun')
+    print('to invoke the recipe.')
+  else:
+    print('Executing command.')
+    subprocess.run(cmd, shell=True, check=True)
+
+
+def csv_param(name, values):
+  if not values:
+    return []
+  values = ', '.join(map(lambda v: '"{}"'.format(v), values))
+  return ['-p', '\'{}=[{}]\''.format(name, values)]
+
+
+def replace_strings_dict(rs):
+  return {
+      'file_glob': rs[0],
+      'before': rs[1],
+      'after': rs[2],
+  }
+
+
+def validate_regex(value):
+  try:
+    re.compile(value)
+    return value
+  except:
+    raise argparse.ArgumentTypeError('Invalid regex "{}"'.format(value))
+
+
+def main():
+  """Main program which parses args and runs Main."""
+  parser = argparse.ArgumentParser(description=__doc__)
+  parser.add_argument(
+      '--cl',
+      nargs='+',
+      type=str,
+      required=False,
+      help='CL URL(s) input to patch into the projects.')
+  parser.add_argument(
+      '--regex',
+      nargs='+',
+      type=validate_regex,
+      required=True,
+      help='Operate on projects matching the regex or '
+      'wildcard. Usage as in `repo forall`.')
+  parser.add_argument(
+      '--reviewers',
+      nargs='+',
+      type=str,
+      required=True,
+      help='Reviewers to add to the generated CLs.')
+  parser.add_argument(
+      '--ccs',
+      nargs='+',
+      type=str,
+      required=False,
+      help='CCs to add to the generated CLs.')
+  parser.add_argument(
+      '--hashtag',
+      nargs='+',
+      type=str,
+      default=[],
+      help='Hashtags to add to the generated CLs.')
+  parser.add_argument(
+      '--replace_strings',
+      action='append',
+      nargs=3,
+      metavar=('glob', 'before', 'after'),
+      help='String replacements to perform on the generated CLs.')
+  parser.add_argument(
+      '--message',
+      type=str,
+      required=True,
+      help='Message template for the generated CLs.')
+  parser.add_argument(
+      '--set_source_depends',
+      type=bool,
+      required=False,
+      default=False,
+      help='Whether to set Cq-Depends on the input CLs to the list '
+      'of generated CLs.')
+  parser.add_argument(
+      '--nodryrun',
+      dest='dryrun',
+      default=True,
+      action='store_false')
+  parser.add_argument(
+      '--manifest_branch',
+      type=str,
+      required=False,
+      help='Manifest branch to checkout and upload changes for. '
+      'If not specified, ToT is used.')
+  args = parser.parse_args()
+  Main(args)
+
+
+if __name__ == '__main__':
+  sys.exit(main())

@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+#
+# Copyright 2021 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Disable expansion
+set -f
+
+script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
+readonly script_dir
+
+# Print usage string
+usage() {
+    echo "Usage: $(basename "$0") [options] <title> <proto> <output>"
+    echo
+    echo "Generate an SVG rendering of the protobuffer schema and embed"
+    echo "it in a static html page for documentation."
+    echo
+    echo "Arguments:"
+    echo "   title - Title for output HTML page"
+    echo "   proto - Path to protobuffer to generate SVG output for"
+    echo "  output - Output filename (relative to script directory)"
+    echo
+    echo "Options:"
+    echo "  --select/-s - Alternate select string to pass to protodot"
+}
+
+# Check that a binary with a given name exists.
+checkbin_exists() {
+    type "$1" &> /dev/null
+}
+
+# Convert a file into a data url
+make_data_url() {
+    mimetype=$(file -bN --mime-type "$1")
+    content=$(base64 -w0 < "$1")
+    echo "data:$mimetype;base64,$content"
+}
+
+if ! checkbin_exists "protodot"; then
+    echo "Protodot not found, please install and add to PATH"
+    exit 1
+fi
+
+# Parse options
+select=""
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --select|-s)
+            select=$2
+            shift 2
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+if [[ $# -lt 3 ]]; then
+    (
+        echo "Error, not enough arguments."
+        usage
+    ) >&2
+    exit 1
+fi
+
+# Get arguments
+title=$1
+proto=$2
+output=$3
+
+cd "${script_dir}" || exit 1
+
+# Generate SVG output
+cmd=(protodot -src "${proto}" -inc "$(realpath "${script_dir}/../proto")")
+if [[ -n "${select}" ]]; then
+    cmd+=(-select "${select}")
+fi
+
+# tee >(cat 1>&2) |
+file=$(${cmd[*]} | grep "creating file" | cut -d: -f2 | xargs echo)
+
+# Encode SVG to a data url and write it to a scratch file that we'll clean up.
+make_data_url "${file}.svg" > __data.url
+trap "rm -f __data.url" EXIT
+
+# Copy template to output location and replace template fields.
+cp "template/index.html" "${output}"
+sed -i "s/{{TITLE}}/${title}/g" "${output}"
+sed -i "s/{{DATE}}/$(date -u +%Y-%m-%d)/g" "${output}"
+
+python - <<EOF
+dataurl = open("__data.url").read().strip()
+lines = [line.replace("{{DATA_URL}}", dataurl)
+         for line in open("${output}").readlines()]
+
+open("${output}", "w").writelines(lines)
+EOF

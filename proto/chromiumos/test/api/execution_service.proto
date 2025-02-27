@@ -1,0 +1,28 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/longrunning/operations.proto";
+import "chromiumos/test/api/cros_test_cli.proto";
+
+// Stable (build-agnostic) testing interface for executing tests and
+// extracting results.
+service ExecutionService {
+  // Provides the ability to run tests as specified per the request.
+  rpc RunTests(CrosTestRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "CrosTestResponse",
+      metadata_type: "RunCrosTestMetadata"
+    };
+  }
+}
+
+message RunCrosTestMetadata {
+}

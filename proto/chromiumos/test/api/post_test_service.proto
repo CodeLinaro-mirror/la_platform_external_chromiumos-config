@@ -1,0 +1,199 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+import "google/protobuf/any.proto";
+
+
+// PostTestService acts as a post-test landing point for needed services/actions.
+// For example:
+//  - getting the fw versions for RDB uploading
+//  - getting crash logs in the event of a harness crash
+//  - getting specific file from the DUT
+// Could be expanded to include harness agnostic post-test cleanups, repairs, etc.
+service PostTestService {
+  // StartUp prepares the post test service by providing
+  // necessary input values for initialization prior to
+  // calling any other provision related service calls.
+  rpc StartUp(PostTestStartUpRequest)
+    returns (PostTestStartUpResponse);
+
+  rpc RunActivity(RunActivityRequest)
+      returns (RunActivityResponse) {
+        option deprecated = true;
+      };
+
+  rpc RunActivities(RunActivitiesRequest)
+      returns (RunActivitiesResponse);
+}
+
+// PostTestStartUpRequest provides a generic form for initializing
+// any post test service. This provides a route for initialization
+// rather than using the CLI arguments to provide this info.
+message PostTestStartUpRequest {
+  chromiumos.test.lab.api.IpEndpoint dut_server = 1;
+  // Specific metadata to the individual PostTest service implementation.
+  google.protobuf.Any metadata = 2;
+}
+
+// PostTestStartUpResponse provides a status message to signal
+// what the result of startup call was.
+message PostTestStartUpResponse {
+  enum Status {
+    // In proto3, zero value fields are indistinguishable from unset fields,
+    // by design. They are not sent on the wire either.
+    // SHOULD NOT BE USED.
+    STATUS_UNSPECIFIED = 0;
+    STATUS_SUCCESS = 1;
+    STATUS_INVALID_REQUEST = 2;
+    STATUS_STARTUP_FAILED = 3;
+  }
+  Status status = 1;
+}
+
+// Specific request to run. Must be from the list below.
+message RunActivityRequest {
+  Request request = 1;
+}
+
+// NEXT TAG: 7
+message Request {
+  oneof request {
+    GetFWInfoRequest get_fw_info_request = 1;
+    GetFilesFromDUTRequest get_files_from_dut_request = 2;
+    GetGfxInfoRequest get_gfx_info_request = 3;
+    GetAvlInfoRequest get_avl_info_request = 4;
+    GetGscInfoRequest get_gsc_info_request = 5;
+    GetServoInfoRequest get_servo_info_request = 6;
+  }
+}
+
+// Request to run post process activities.
+// NEXT TAG: 4
+message RunActivitiesRequest {
+  repeated Request requests = 1;
+  // Address of the DUT Server.
+  chromiumos.test.lab.api.IpEndpoint dut_server = 2;
+
+  // Test results corresponding to "chromiumos.test.artifact.TestResult" proto.
+  // Note that the TestResult proto cannot be imported directly due to the
+  // cyclic import issue.
+  google.protobuf.Any test_result = 3;
+}
+
+message RunActivitiesResponse {
+  repeated RunActivityResponse responses = 1;
+}
+
+// GetFWInfo gets the fwInfo needed for rdb uploads from DUT.
+message GetFWInfoRequest {}
+
+// GetFilesFromDUT will gather files from the DUT post test.
+message GetFilesFromDUTRequest{
+  repeated string files = 1;
+}
+
+// GetGfxInfo captures graphics/hardware_probe values for reporting.
+message GetGfxInfoRequest {}
+
+// GetAvlInfoRequest captures AVL qualification values for reporting.
+// NEXT TAG: 2
+message GetAvlInfoRequest {
+    // Mapping from test name to its own avl info JSON file location.
+    // Location format:
+    // "<local_output_dir>/cros-test/artifact/tast/tests/<test_name>/avl_info.json"
+    map<string, string> avl_files = 1 [deprecated = true];
+}
+
+// GetGscInfoRequest captures GSC devboard tags for reporting.
+// NEXT TAG: 2
+message GetGscInfoRequest {
+    // Mapping from test name to its own GSC devboard tags file location.
+    // Location format:
+    // "<local_output_dir>/cros-test/results/tast/tests/<test_name>/result_tags.json"
+    map<string, string> gsc_files = 1 [deprecated = true];
+}
+
+// GetServoInfoRequest captures the servo information for reporting.
+// NEXT TAG: 1
+message GetServoInfoRequest {}
+
+// Specific response to be matched with the request.
+// NEXT TAG: 7
+message RunActivityResponse {
+  oneof response {
+    GetFWInfoResponse get_fw_info_response = 1;
+    GetFilesFromDUTResponse get_files_from_dut_response = 2;
+    GetGfxInfoResponse get_gfx_info_response = 3;
+    GetAvlInfoResponse get_avl_info_response = 4;
+    GetGscInfoResponse get_gsc_info_response = 5;
+    GetServoInfoResponse get_servo_info_response = 6;
+  }
+}
+
+// GetFWInfoResponse provides the value of each field from the DUT.
+message GetFWInfoResponse {
+  string ro_fwid  = 1;
+  string rw_fwid  = 2;
+  string kernel_version = 3;
+  string gsc_ro = 4;
+  string gsc_rw = 5;
+}
+
+
+// GetFWInfoResponse is a list of filemaps in relation to the service.
+message GetFilesFromDUTResponse{
+  repeated FileMap file_map = 1;
+}
+
+// FileMap file_name:location in relation to the service.
+message FileMap {
+  string file_name = 1;
+  string file_location = 2;
+}
+
+// GetGfxInfoResponse contents of the reporting section of graphics/hardware_probe
+message GetGfxInfoResponse {
+  map<string, string> gfx_labels = 1;
+}
+
+// GetAvlInfoResponse contents of the reporting section of AVL qualification
+// info.
+// NEXT TAG: 2
+message GetAvlInfoResponse {
+    // Mapping from test name to its avl info.
+    map<string, AvlInfo> avl_infos = 1;
+}
+
+// AvlInfo AVL qualification info for a test run.
+// NEXT TAG: 4
+message AvlInfo {
+    string avl_part_model = 1;
+    string avl_part_firmware = 2;
+    string avl_component_type = 3;
+}
+
+// GetGscInfoResponse contents of the reporting section of GSC devboard info.
+// NEXT TAG: 2
+message GetGscInfoResponse {
+    // Mapping from test name to its GSC devboard info:
+    // "chromiumos.test.artifact.GscInfo". Note that the GscInfo proto cannot
+    // be imported directly due to cyclic import issue.
+    map<string, google.protobuf.Any> gsc_infos = 1;
+}
+
+// GetServoInfoResponse contents of the information from the servo file
+// NEXT TAG: 2
+message GetServoInfoResponse {
+    // Stores servo info:
+    // "chromiumos.test.artifact.BuildMetadata.ServoInfo". Note that the ServoInfo proto cannot
+    // be imported directly due to cyclic import issue.
+    google.protobuf.Any servo_info = 1;
+}

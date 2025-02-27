@@ -1,0 +1,59 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Define a schema for representing container images generated during a build.
+// For a given build target, we map container name to metadata about the image
+// Then, for multiple builds, we map build target to each one's metadata.
+//
+// Joining multiple builds container metadata is simply achieved by using
+// MergeFrom on the individual ContainerMetadata instances.
+//
+// Example metadata:
+//    {
+//      "containers" : {
+//        "amd64-generic" : {
+//          "images" : {
+//            "cros-provision" : {
+//              "repository" : { "hostname" : "gcr.io", "project" : "chromeos-bot" },
+//              "name"       : "cros-provision",
+//              "digest"     : "sha256:3e36d3622f5adad01080cc2120bb72c0714ecec6118eb9523586410b7435ae80",
+//              "tags" : [
+//                 "8835841547076258945",
+//                 "amd64-generic-release.R96-1.2.3"
+//              ]
+//            }
+//          }
+//        }
+//    }
+//
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+message GcrRepository {
+  string hostname = 1; // Hostname without protocol (eg: gcr.io)
+  string project  = 2; // Project name (eg: chromeos-bot)
+}
+
+message ContainerImageInfo {
+  GcrRepository repository = 1; // repository images are stored in
+  string        name       = 2; // name of the image (eg: cros-provision)
+  string        digest     = 3; // docker provided hash of the image
+  repeated string tags     = 4; // list of tags attached to image
+}
+
+// Map from container name (canonically lowercase) to its metadata
+message ContainerImageMap {
+  map<string, ContainerImageInfo> images = 1;
+}
+
+// Map from a string identifier to container metadata.
+//   For build we'll map the build target to container metadata for it
+//   For provisioning, we'll map from specific boards to metadata
+message ContainerMetadata {
+  map<string, ContainerImageMap> containers = 1;
+}

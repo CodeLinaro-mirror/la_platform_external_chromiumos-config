@@ -1,0 +1,145 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/test_suite.proto";
+
+// PreTestService acts as a pre-test landing point32 for needed services/actions.
+// For example:
+//  - filtering flaky tests
+// Could be expanded to include other services, like VM filtering, etc.
+service PreTestService {
+
+  // FilterFlakyTests will take in a policy + TestSuites
+  // and will echo out the TestSuites; with the flaky tests removed.
+  // along with a list of removed tests for logging purposes.
+  rpc FilterFlakyTests(FilterFlakyRequest)
+      returns (FilterFlakyResponse);
+}
+
+// FilterFlakyRequest request to run. Must be from the list below.
+message FilterFlakyRequest {
+  // Policy can be expanded to have new policies as needed.
+  // Note they must be implemented in the service.
+  oneof policy {
+    PassRatePolicy pass_rate_policy = 1;
+    StabilitySensorPolicy stability_sensor_policy = 2;
+  }
+
+  repeated TestSuite test_suites = 3;
+
+  // Milestone that the test filtering is for.
+  // Important as test flake can be very different per milestone based on
+  // breakages/fixes across branches.
+  string milestone = 4;
+  // Currently filtering will be done on _board_ level.
+  // Other variants (model, hwid, etc) to follow.
+  oneof variant {
+  string board = 5;
+  }
+
+  // When there is not enough signal to determine stability (based on policy); default on/off.
+  bool default_enabled = 6;
+
+  // BBID of the task
+  string bbid = 7;
+  // is_dry_run indicates if the results are to be used or not. This will only change
+  // how the system logs results.
+  bool is_dry_run = 8;
+}
+
+
+message FilterFlakyResponse {
+  repeated TestSuite test_suites = 1;
+  repeated string removed_tests = 2;
+}
+
+// StabilitySensorPolicy indicates to use the StabilitySensor for determine flake.
+message StabilitySensorPolicy {}
+
+// PassRatePolicy indicates to use the StabilitySensor for determine flake.
+message PassRatePolicy {
+  int32 pass_rate = 1;
+  int32 min_runs = 2;
+
+  // NOTE: num_of_milestones determines how many milestones back to look for results.
+  // The number here will default to 0 (meaning current only); however, if there are not enough
+  // results on the current milestone to meet `min_runs`, then will go back up to 1 milestone.
+  // Setting this value will override the default behavior, and will not have the
+  // logic to go back an additional milestone if not enough results.
+  int32 num_of_milestones = 4;
+
+  // force_enabled_tests DEPRECATED
+  repeated string force_enabled_tests = 5;
+  // force_disabled_tests DEPRECATED
+  repeated string force_disabled_tests = 6;
+  // force_enabled_boards DEPRECATED
+  repeated string force_enabled_boards = 7;
+
+  // Recent results are a method to re-enable historically flaky tests, with
+  // more recent results. Its expected that the recent result will be more stringent
+  // than the long-term results. For example, if a test has a long-term passrate of
+  // 95% with 1000 samples, but a recent passrate of 100% with 200 samples, its
+  // signal that its stable enough to be re-enabled.
+  int32 pass_rate_recent = 8;
+  int32 min_runs_recent = 9;
+  int32 recent_window = 10;
+
+  bool dryrun = 11;
+
+  repeated FilterTestConfig testconfigs = 12;
+
+  // max_filtered_percent is the max % of tests that can be filtered. Eg 20%.
+  // If the limit is hit, the filtered tests will be ordered by flake.
+  int32 max_filtered_percent = 13;
+  // max_filtered_int follows the same logic as above.
+  // NOTE: if both fields are set, we will use the more restrictive of the two.
+  // For example:
+  //   100 tests with a max_filtered_percent=50% and max_filtered_int=5
+  //   20 tests hit the filter threshold,
+  //   Only 5 would get filtered out.
+  int32 max_filtered_int = 14;
+}
+
+// FilterCfgs as a whole describes all the policies for test filtering.
+message FilterCfgs {
+  repeated FilterCfg filter_cfg = 1;
+}
+
+// FilterCfg is a policy which applies to one or more suites.
+// If there is/are no suite(s) set, it will be treated as the global policy.
+message FilterCfg {
+  // This applies to the entire suite. Any tests forced_enabled/disabled in this
+  // will apply to all boards.
+  PassRatePolicy pass_rate_policy = 1;
+
+  // Blank will be treated as the global policy. By setting this field, this policy
+  // will overwrite the global, and apply to all suites in this list.
+  repeated string test_suites = 2;
+
+  // Fully opt the suite out of filtering.
+  bool opt_out = 4;
+}
+
+// FilterTestConfig contains a test, boards, and the state of the test.
+message FilterTestConfig {
+  string test = 1;
+  repeated string board = 2;
+
+  Setting setting = 3;
+  // Force enable/disabled the test on the boards in the cfg.
+  enum Setting {
+    NOT_SET =0;
+    ENABLED = 1;
+    DISABLED = 2;
+  }
+  // List of bugs associated with the cfg
+  repeated string bugs = 4;
+
+}

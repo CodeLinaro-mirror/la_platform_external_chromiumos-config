@@ -1,0 +1,137 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/design_config_id.proto";
+import "chromiumos/config/api/design_id.proto";
+import "chromiumos/config/api/hardware_topology.proto";
+import "chromiumos/config/api/partner_id.proto";
+import "chromiumos/config/api/program_id.proto";
+import "chromiumos/config/api/topology.proto";
+import "chromiumos/config/public_replication/public_replication.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Next ID: 12
+message Design {
+  // Fields replicated to public configs.
+  chromiumos.config.public_replication.PublicReplication public_replication = 7;
+
+  // Globally unique design identifier.
+  DesignId id = 1;
+
+  // Program that defines the constraints for this design.
+  ProgramId program_id = 2;
+
+  // ODM for the given hardware design.
+  PartnerId odm_id = 3;
+
+  // Design codename (human friendly).
+  string name = 4;
+
+  // Board version assignment for each build phase.
+  // Example:
+  //  1 --> proto
+  //  2 --> proto2 ...
+  map<uint32, string> board_id_phase = 5;
+
+  // Supported hardware configurations for a given design.
+  repeated Config configs = 6;
+
+  // Map of SSFC values for this project. These values must fit within the
+  // program's definitions of SSFC Segments. The string represents the human-
+  // readable description of the SSFC value (e.g. BMI160, PS8751)
+  // E.g 0x0010 -> "CameraA"; 0x0020 -> "CameraB" within SsfcSegment 0x0030
+  map<uint32, string> ssfc_value = 8;
+
+  // Define custom type as whitelabel or rebrand
+  // More details in go/custom_label_introduction
+  CustomType custom_type = 10;
+  enum CustomType {
+    NO_CUSTOM = 0;
+    WHITELABEL = 1;
+    REBRAND = 2;
+  }
+
+  reserved "platform";
+  reserved 9;
+
+  // A sparse list of flash name mappings. Keys are the flash name as determine
+  // by probing via futility flash --get-info, and the values are the flash
+  // names that are needed as input to the ap_wpsr tool that is used to
+  // determine the write protect status register values when software write
+  // protection is enabled.
+  map<string, string> spi_flash_transform = 11;
+
+  // Defines a unique hardware configuration for a given hardware design
+  // and the corresponding hardware features that will be supported.
+  // Next ID: 6
+  message Config {
+    // Fields replicated to public configs.
+    chromiumos.config.public_replication.PublicReplication public_replication = 5;
+
+    // The ID encoded in hardware on a device, typically in CBI.
+    DesignConfigId id = 1;
+
+    // Each unique value of hardware_topology requires a unique DesignConfigId
+    HardwareTopology hardware_topology = 2;
+
+    // This field is generated from hardware_topology by combining all of the
+    // partial HardwareFeatures definitions from each selected hardware topology
+    HardwareFeatures hardware_features = 3;
+
+    // Constraints on HardwareFeatures.
+    //
+    // Each Constraint should specify exactly one HardwareFeature to constrain.
+    // Constraints are OR'd across the same type of HardwareFeatures, and AND'd
+    // across different types of HardwareFeatures. For example, the following
+    // specifies CLAMSHELL or CONVERTIBLE form factors are allowed, and the
+    // screen must have touch support:
+    //
+    //   design_config_constraints: <
+    //     level: REQUIRED
+    //     features: <
+    //       form_factor: <
+    //         form_factor: CLAMSHELL
+    //       >
+    //     >
+    //   >
+    //   design_config_constraints: <
+    //     level: REQUIRED
+    //     features: <
+    //       form_factor: <
+    //         form_factor: CONVERTIBLE
+    //       >
+    //     >
+    //   >
+    //   design_config_constraints: <
+    //     level: REQUIRED
+    //     features: <
+    //       screen: <
+    //         touch_support: PRESENT
+    //       >
+    //     >
+    //   >
+    //
+    // TODO: Formalize constraint definitions further, e.g. what are the
+    // semantics of level?
+    // TODO: should this be moved into Design or Program? This isn't used here
+    message Constraint {
+      enum Level {
+        TYPE_UNKNOWN = 0;
+        REQUIRED = 1;
+        PREFERRED = 2;
+        OPTIONAL = 3;
+      }
+
+      Level level = 1;
+      HardwareFeatures features = 2;
+    }
+
+    reserved 4, 7;
+  }
+}

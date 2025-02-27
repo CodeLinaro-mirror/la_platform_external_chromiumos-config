@@ -1,0 +1,32 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Uniquely identifies a Chromium OS device brand.
+message DeviceBrandId {
+  string value = 1;
+
+  // Scan config to determine the BrandId
+  message ScanConfig {
+    // 'whitelabel_tag' value set in the VPD.
+    // See
+    // https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#field-whitelabel_tag.
+    string whitelabel_tag = 1;
+
+    FeatureDeviceType feature_device_type = 2;
+
+    string custom_label_tag = 3;
+
+    enum FeatureDeviceType {
+      OFF = 0;
+      LEGACY = 1;
+      ON = 2;
+    }
+  }
+}

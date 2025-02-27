@@ -1,0 +1,8 @@
+.cipd_bin
+util/bindings/descpb.bin
+payload_utils/bindings/api/*
+recipes/.recipe_deps
+*.pyc
+.venv
+.pytype
+.idea/*

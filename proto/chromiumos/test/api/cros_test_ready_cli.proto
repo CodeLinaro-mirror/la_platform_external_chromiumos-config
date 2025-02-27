@@ -1,0 +1,25 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// CrosTestReadyConfig specifies what conditions needed to be checked
+// to determine if a DUT is test ready
+// information to run tests.
+message CrosTestReadyConfig {
+  message KeyValue {
+    // Key specifies the key of a configuration parameter.
+    string key = 1;
+    // Value specifies the string value of a configuration parameter.
+    string value = 2;
+  }
+
+  // Checksum specifies the files to be checked and their expected checksums.
+  repeated KeyValue checksums = 1;
+}
+
