@@ -198,6 +198,9 @@ _PLATFORM = program_util.create_platform(
             thread_urgent_bursty_client = program_util.create_schedqos_thread_config(),
         ),
     ),
+    swap_config = program_util.create_swap_config(
+        size_multiplier = 1.5,
+    ),
 )
 
 _PLATFORM_A = program_util.create_platform(

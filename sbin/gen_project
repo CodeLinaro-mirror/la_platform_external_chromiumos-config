@@ -134,7 +134,7 @@ load("//config/util/brand_config.star", "brand_config")
 _ODMs = []
 _OEMs = []
 
-DESIGN_ID_${project^^} = design.create_design_id("${project}")
+DESIGN_ID_${project^^} = design.create_design_id("${project^}")
 
 _DESIGN_ID_LIST = [DESIGN_ID_${project^^}]
 
@@ -205,7 +205,7 @@ EOF
 function write_program_signer() {
   local file="${1}"
   cat << EOF > "${file}"
-# Copyright $(date +%Y) The Chromium OS Authors. All rights reserved.
+# Copyright $(date +%Y) The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 

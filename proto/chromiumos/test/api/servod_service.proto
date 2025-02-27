@@ -325,6 +325,9 @@ message SaveLogsRequest {
   // corresponding line number.
   // For the files that are no in the map, the whole file will be saved.
   map<string, int32> path_to_line_number = 4;
+
+  // The directory where servo and servo host log files should be saved to.
+  string dest = 5;
 }
 
 message SaveLogsResponse {

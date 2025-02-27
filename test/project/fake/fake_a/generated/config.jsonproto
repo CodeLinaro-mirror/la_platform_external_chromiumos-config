@@ -159,6 +159,10 @@
               "dgpuType": 1,
               "present": 1
             },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
             "fan": {
               "fanCount": 0
             },

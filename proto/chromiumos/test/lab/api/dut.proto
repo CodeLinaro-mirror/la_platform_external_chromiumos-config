@@ -11,6 +11,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 import "chromiumos/config/api/device_config_id.proto";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 import "chromiumos/test/lab/api/pasit_host.proto";
+import "chromiumos/test/lab/api/wifi_router.proto";
 
 // Specification of Device Under Test.
 // Next Tag: 7
@@ -377,6 +378,8 @@ message Servo {
   IpEndpoint servod_address = 2;
   // Serial number of the servo.
   string serial = 3;
+  // Current state of the servo, updated by latest auto-repair.
+  PeripheralState state = 4;
 }
 
 message Touch {
@@ -401,6 +404,9 @@ message Wifi {
   }
   Environment environment = 1;
   WifiAntenna antenna = 2;
+
+  // WiFi APs assigned to the device.
+  repeated WifiRouter wifi_routers = 3;
 }
 
 message WifiAntenna {
@@ -413,6 +419,27 @@ message WifiAntenna {
     OTA = 2;
   }
   Connection connection = 1;
+}
+
+// WiFi APs attached to the DUT.
+// Note: Define here rather than in wifi_router.proto so we can reference RPM in
+// the future even though it's not used at the moment.
+//
+// Source of truth: https://source.chromium.org/chromium/infra/infra_superproject/+/main:infra/go/src/infra/unifiedfleet/api/v1/models/chromeos/lab/peripherals.proto
+message WifiRouter {
+  string hostname = 1;
+  PeripheralState state = 2;
+  // Model of the router (e.g. OPENWRT[Ubiquiti_UniFi_6_Lite], gale).
+  string model = 3;
+
+  // RPM to perform remote power management.
+  RPM rpm = 4;
+
+  // Supported test router hardware and software features.
+  repeated WifiRouterFeature supported_features = 5;
+
+  // The type of router device this is (e.g. OpenWrt-based, ChromeOS Gale).
+  WifiRouterDeviceType device_type = 6;
 }
 
 // Bluetooth Peers attached to the DUT.

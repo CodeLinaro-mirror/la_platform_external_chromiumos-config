@@ -384,6 +384,10 @@
                 {
                   "name": "PD",
                   "number": 3
+                },
+                {
+                  "name": "ISH",
+                  "number": 4
                 }
               ]
             }
@@ -555,6 +559,14 @@
               "name": "has_ec_component_manifest",
               "number": 8,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "ishPayload",
+              "label": "LABEL_OPTIONAL",
+              "name": "ish_payload",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.FirmwarePayload"
             }
           ],
           "name": "FirmwareConfig",
@@ -3163,7 +3175,7 @@
                   "name": "dsm",
                   "number": 5,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM"
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsm"
                 },
                 {
                   "jsonName": "btSar",
@@ -3171,7 +3183,7 @@
                   "name": "bt_sar",
                   "number": 6,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSAR"
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSar"
                 },
                 {
                   "jsonName": "wbem",
@@ -3179,7 +3191,79 @@
                   "name": "wbem",
                   "number": 7,
                   "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.WBEM"
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Wbem"
+                },
+                {
+                  "jsonName": "bpag",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bpag",
+                  "number": 8,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothPpag"
+                },
+                {
+                  "jsonName": "bbfb",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bbfb",
+                  "number": 9,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bbfb"
+                },
+                {
+                  "jsonName": "bdcm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bdcm",
+                  "number": 10,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bdcm"
+                },
+                {
+                  "jsonName": "bbsm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bbsm",
+                  "number": 11,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bbsm"
+                },
+                {
+                  "jsonName": "bucs",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bucs",
+                  "number": 12,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bucs"
+                },
+                {
+                  "jsonName": "bdmm",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bdmm",
+                  "number": 13,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bdmm"
+                },
+                {
+                  "jsonName": "ebrd",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ebrd",
+                  "number": 14,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Ebrd"
+                },
+                {
+                  "jsonName": "wpfc",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "wpfc",
+                  "number": 15,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Wpfc"
+                },
+                {
+                  "jsonName": "dsbr",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "dsbr",
+                  "number": 16,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsbr"
                 }
               ],
               "name": "IntelConfig",
@@ -3764,7 +3848,7 @@
                       "name": "enablement_11be_countries",
                       "number": 9,
                       "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.Enablement11beCountries"
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsm.Enablement11beCountries"
                     },
                     {
                       "jsonName": "energyDetectionThreshold",
@@ -3772,7 +3856,7 @@
                       "name": "energy_detection_threshold",
                       "number": 10,
                       "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold"
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold"
                     },
                     {
                       "jsonName": "rfiMitigation",
@@ -3780,10 +3864,10 @@
                       "name": "rfi_mitigation",
                       "number": 11,
                       "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.DSM.RFIMitigation"
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Dsm.RfiMitigation"
                     }
                   ],
-                  "name": "DSM",
+                  "name": "Dsm",
                   "nestedType": [
                     {
                       "field": [
@@ -3917,9 +4001,49 @@
                           "type": "TYPE_BOOL"
                         }
                       ],
-                      "name": "RFIMitigation"
+                      "name": "RfiMitigation"
                     }
                   ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "restrictionFor2g4",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_2g4",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "restrictionFor5g2",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_5g2",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "restrictionFor5g85g9",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_5g8_5g9",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "restrictionFor6g1",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_6g1",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "restrictionFor6g3",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "restriction_for_6g3",
+                      "number": 5,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "BluetoothSarPowerTable"
                 },
                 {
                   "field": [
@@ -3985,9 +4109,25 @@
                       "name": "le_lr_modulation",
                       "number": 9,
                       "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "set1ChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_1_chain_a",
+                      "number": 10,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set1ChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_1_chain_b",
+                      "number": 11,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
                     }
                   ],
-                  "name": "BluetoothSAR"
+                  "name": "BluetoothSar"
                 },
                 {
                   "field": [
@@ -4004,10 +4144,10 @@
                       "name": "enablement_wbem_countries",
                       "number": 2,
                       "type": "TYPE_MESSAGE",
-                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries"
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries"
                     }
                   ],
-                  "name": "WBEM",
+                  "name": "Wbem",
                   "nestedType": [
                     {
                       "field": [
@@ -4029,6 +4169,495 @@
                       "name": "EnablementWbemCountries"
                     }
                   ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "enablementBpagCountries",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "enablement_bpag_countries",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothPpag.EnablementBpagCountries"
+                    }
+                  ],
+                  "name": "BluetoothPpag",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "eu",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "eu",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "china",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "china",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "euUhb",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "eu_uhb",
+                          "number": 3,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "fccUhb",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "fcc_uhb",
+                          "number": 4,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "isedUhb",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "ised_uhb",
+                          "number": 5,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "EnablementBpagCountries"
+                    }
+                  ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "enableQuadFilterBypass",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "enable_quad_filter_bypass",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    }
+                  ],
+                  "name": "Bbfb"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "bdcmDualChainMode",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "bdcm_dual_chain_mode",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bdcm.BdcmDualChainMode"
+                    }
+                  ],
+                  "name": "Bdcm",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "chainAAndChainB",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "chain_a_and_chain_b",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "BdcmDualChainMode"
+                    }
+                  ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "bandsSelection",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "bands_selection",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bbsm.BbsmBandsSelection"
+                    }
+                  ],
+                  "name": "Bbsm",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "band24GhzDisable",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "band_2_4_ghz_disable",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "band52GhzDisable",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "band_5_2_ghz_disable",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "band58GhzDisable",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "band_5_8_ghz_disable",
+                          "number": 3,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "band62GhzDisable",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "band_6_2_ghz_disable",
+                          "number": 4,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "BbsmBandsSelection"
+                    }
+                  ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "uhbCountrySelection",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "uhb_country_selection",
+                      "number": 2,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.Bucs.BucsUhbCountrySelection"
+                    }
+                  ],
+                  "name": "Bucs",
+                  "nestedType": [
+                    {
+                      "field": [
+                        {
+                          "jsonName": "forceDisableBtInAllOtherCountries",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "force_disable_bt_in_all_other_countries",
+                          "number": 1,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInUsa",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_usa",
+                          "number": 2,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInRestOfTheWorld",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_rest_of_the_world",
+                          "number": 3,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInEu",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_eu",
+                          "number": 4,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInSouthKorea",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_south_korea",
+                          "number": 5,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInBrazil",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_brazil",
+                          "number": 6,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInChile",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_chile",
+                          "number": 7,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInJapan",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_japan",
+                          "number": 8,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInCanada",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_canada",
+                          "number": 9,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInMorocco",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_morocco",
+                          "number": 10,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInMongolia",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_mongolia",
+                          "number": 11,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInMalaysia",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_malaysia",
+                          "number": 12,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInSaudiArabia",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_saudi_arabia",
+                          "number": 13,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInMexico",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_mexico",
+                          "number": 14,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInNigeria",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_nigeria",
+                          "number": 15,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInThailand",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_thailand",
+                          "number": 16,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInSingapore",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_singapore",
+                          "number": 17,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInTaiwan",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_taiwan",
+                          "number": 18,
+                          "type": "TYPE_BOOL"
+                        },
+                        {
+                          "jsonName": "allow6GhzInSouthAfrica",
+                          "label": "LABEL_OPTIONAL",
+                          "name": "allow_6_ghz_in_south_africa",
+                          "number": 19,
+                          "type": "TYPE_BOOL"
+                        }
+                      ],
+                      "name": "BucsUhbCountrySelection"
+                    }
+                  ]
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "dualMacEnable",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "dual_mac_enable",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    }
+                  ],
+                  "name": "Bdmm"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "dynamicSarEnable",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "dynamic_sar_enable",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "numberOfOptionalSar",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "number_of_optional_sar",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "set2ChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_2_chain_a",
+                      "number": 4,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set2ChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_2_chain_b",
+                      "number": 5,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set3ChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_3_chain_a",
+                      "number": 6,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set3ChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_3_chain_b",
+                      "number": 7,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set4ChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_4_chain_a",
+                      "number": 8,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    },
+                    {
+                      "jsonName": "set4ChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "set_4_chain_b",
+                      "number": 9,
+                      "type": "TYPE_MESSAGE",
+                      "typeName": ".chromiumos.config.api.WifiConfig.IntelConfig.BluetoothSarPowerTable"
+                    }
+                  ],
+                  "name": "Ebrd"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "filterCfgChainA",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "filter_cfg_chain_a",
+                      "number": 2,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "filterCfgChainB",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "filter_cfg_chain_b",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "filterCfgChainC",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "filter_cfg_chain_c",
+                      "number": 4,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "filterCfgChainD",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "filter_cfg_chain_d",
+                      "number": 5,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "Wpfc"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "revision",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "revision",
+                      "number": 1,
+                      "type": "TYPE_UINT32"
+                    },
+                    {
+                      "jsonName": "override",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "override",
+                      "number": 2,
+                      "type": "TYPE_BOOL"
+                    },
+                    {
+                      "jsonName": "bluetoothRadioResistorOhm",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "bluetooth_radio_resistor_ohm",
+                      "number": 3,
+                      "type": "TYPE_UINT32"
+                    }
+                  ],
+                  "name": "Dsbr"
                 }
               ]
             },
@@ -5800,6 +6429,10 @@
                     {
                       "name": "AUDIO_CODEC_ALC721",
                       "number": 23
+                    },
+                    {
+                      "name": "AUDIO_CODEC_ALC3204",
+                      "number": 24
                     }
                   ]
                 },
@@ -5895,6 +6528,10 @@
                     {
                       "name": "AMPLIFIER_ALC721",
                       "number": 23
+                    },
+                    {
+                      "name": "AMPLIFIER_ALC3204",
+                      "number": 24
                     }
                   ]
                 },
@@ -6528,6 +7165,61 @@
                       "number": 1
                     }
                   ]
+                },
+                {
+                  "name": "KeyboardBottomLeftLayout",
+                  "value": [
+                    {
+                      "name": "KEYBOARD_BOTTOM_LEFT_LAYOUT_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_LEFT_3_KEYS",
+                      "number": 1
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_LEFT_4_KEYS",
+                      "number": 2
+                    }
+                  ]
+                },
+                {
+                  "name": "KeyboardBottomRightLayout",
+                  "value": [
+                    {
+                      "name": "KEYBOARD_BOTTOM_RIGHT_LAYOUT_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_RIGHT_2_KEYS",
+                      "number": 1
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_RIGHT_3_KEYS",
+                      "number": 2
+                    },
+                    {
+                      "name": "KEYBOARD_BOTTOM_RIGHT_4_KEYS",
+                      "number": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "NumericPadLayout",
+                  "value": [
+                    {
+                      "name": "NUMERIC_PAD_LAYOUT_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "NUMERIC_PAD_3_COLUMN",
+                      "number": 1
+                    },
+                    {
+                      "name": "NUMERIC_PAD_4_COLUMN",
+                      "number": 2
+                    }
+                  ]
                 }
               ],
               "field": [
@@ -6592,6 +7284,30 @@
                   "name": "no_als_brightness",
                   "number": 8,
                   "type": "TYPE_DOUBLE"
+                },
+                {
+                  "jsonName": "bottomLeftLayout",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bottom_left_layout",
+                  "number": 9,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Keyboard.KeyboardBottomLeftLayout"
+                },
+                {
+                  "jsonName": "bottomRightLayout",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "bottom_right_layout",
+                  "number": 10,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Keyboard.KeyboardBottomRightLayout"
+                },
+                {
+                  "jsonName": "numericPadLayout",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "numeric_pad_layout",
+                  "number": 11,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Keyboard.NumericPadLayout"
                 }
               ],
               "name": "Keyboard"
@@ -7157,6 +7873,14 @@
                   "number": 11,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.EmbeddedController.BuildConfigEntry"
+                },
+                {
+                  "jsonName": "maxSensorOdrMhz",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "max_sensor_odr_mhz",
+                  "number": 12,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.UInt32Value"
                 }
               ],
               "name": "EmbeddedController",
@@ -7282,6 +8006,14 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "enterprise_rollback_space",
                   "number": 5,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "validAdid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "valid_adid",
+                  "number": 6,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
@@ -9764,6 +10496,14 @@
                   "number": 11,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.SchedqosConfig"
+                },
+                {
+                  "jsonName": "swapConfig",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "swap_config",
+                  "number": 12,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.Program.Platform.SwapConfig"
                 }
               ],
               "name": "Platform",
@@ -9845,6 +10585,18 @@
                     }
                   ],
                   "name": "ArcSettings"
+                },
+                {
+                  "field": [
+                    {
+                      "jsonName": "sizeMultiplier",
+                      "label": "LABEL_OPTIONAL",
+                      "name": "size_multiplier",
+                      "number": 1,
+                      "type": "TYPE_DOUBLE"
+                    }
+                  ],
+                  "name": "SwapConfig"
                 }
               ]
             },
@@ -11239,6 +11991,32 @@
         {
           "field": [
             {
+              "jsonName": "defaultKeyStateful",
+              "label": "LABEL_OPTIONAL",
+              "name": "default_key_stateful",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "DiskLayout"
+        }
+      ],
+      "name": "chromiumos/config/api/software/disk_layout.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/api/software"
+      },
+      "package": "chromiumos.config.api.software",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
+          "field": [
+            {
               "jsonName": "hasAltFirmware",
               "label": "LABEL_OPTIONAL",
               "name": "has_alt_firmware",
@@ -11703,6 +12481,7 @@
         "chromiumos/config/api/software/audio_config.proto",
         "chromiumos/config/api/software/bluetooth_config.proto",
         "chromiumos/config/api/software/camera_config.proto",
+        "chromiumos/config/api/software/disk_layout.proto",
         "chromiumos/config/api/software/firmware_info.proto",
         "chromiumos/config/api/software/health_config.proto",
         "chromiumos/config/api/software/nnpalm_config.proto",
@@ -11875,6 +12654,14 @@
               "number": 23,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.software.FirmwareInfo"
+            },
+            {
+              "jsonName": "diskLayout",
+              "label": "LABEL_OPTIONAL",
+              "name": "disk_layout",
+              "number": 24,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.software.DiskLayout"
             }
           ],
           "name": "SoftwareConfig",
@@ -11906,6 +12693,21 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "enumType": [
+        {
+          "name": "OperatingSystem",
+          "value": [
+            {
+              "name": "OS_CHROMEOS",
+              "number": 0
+            },
+            {
+              "name": "OS_ANDROID",
+              "number": 1
+            }
+          ]
+        }
+      ],
       "messageType": [
         {
           "field": [
@@ -11955,9 +12757,55 @@
               "name": "board",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "oses",
+              "label": "LABEL_REPEATED",
+              "name": "oses",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromium.config.api.test.benchy.v1.OperatingSystem"
             }
           ],
           "name": "Device"
+        },
+        {
+          "enumType": [
+            {
+              "name": "InstallationMethod",
+              "value": [
+                {
+                  "name": "METHOD_LOCAL_APK",
+                  "number": 0
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "installationMethod",
+              "label": "LABEL_OPTIONAL",
+              "name": "installation_method",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromium.config.api.test.benchy.v1.Application.InstallationMethod"
+            },
+            {
+              "jsonName": "source",
+              "label": "LABEL_OPTIONAL",
+              "name": "source",
+              "number": 3,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Application"
         },
         {
           "field": [
@@ -11974,6 +12822,22 @@
               "name": "version",
               "number": 2,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "os",
+              "label": "LABEL_OPTIONAL",
+              "name": "os",
+              "number": 3,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromium.config.api.test.benchy.v1.OperatingSystem"
+            },
+            {
+              "jsonName": "applications",
+              "label": "LABEL_REPEATED",
+              "name": "applications",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromium.config.api.test.benchy.v1.Application"
             }
           ],
           "name": "Build"
@@ -12045,6 +12909,40 @@
               "type": "TYPE_STRING"
             },
             {
+              "jsonName": "value",
+              "label": "LABEL_OPTIONAL",
+              "name": "value",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "ConfigOption"
+        },
+        {
+          "enumType": [
+            {
+              "name": "Runner",
+              "value": [
+                {
+                  "name": "RUNNER_TAST",
+                  "number": 0
+                },
+                {
+                  "name": "RUNNER_CROSSBENCH",
+                  "number": 1
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
               "jsonName": "commandLine",
               "label": "LABEL_OPTIONAL",
               "name": "command_line",
@@ -12064,6 +12962,22 @@
               "name": "repeat_count",
               "number": 4,
               "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "runner",
+              "label": "LABEL_OPTIONAL",
+              "name": "runner",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromium.config.api.test.benchy.v1.Workload.Runner"
+            },
+            {
+              "jsonName": "options",
+              "label": "LABEL_REPEATED",
+              "name": "options",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromium.config.api.test.benchy.v1.ConfigOption"
             }
           ],
           "name": "Workload"
@@ -18028,9 +18942,457 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "google/protobuf/timestamp.proto"
+      ],
+      "enumType": [
+        {
+          "name": "WifiRouterFeature",
+          "value": [
+            {
+              "name": "WIFI_ROUTER_FEATURE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_INVALID",
+              "number": 1
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_A",
+              "number": 2
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_B",
+              "number": 3
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_G",
+              "number": 4
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_N",
+              "number": 5
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AC",
+              "number": 6
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX",
+              "number": 7
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX_E",
+              "number": 8
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_BE",
+              "number": 9
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_DOUBLE_BRIDGE_OVER_VETH",
+              "number": 10
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_GCMP",
+              "number": 11
+            },
+            {
+              "name": "WIFI_ROUTER_FEATURE_SAE_EXT_KEY",
+              "number": 12
+            }
+          ]
+        },
+        {
+          "name": "WifiRouterDeviceType",
+          "value": [
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_INVALID",
+              "number": 1
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_CHROMEOS_GALE",
+              "number": 2
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_OPENWRT",
+              "number": 3
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_ASUSWRT",
+              "number": 4
+            },
+            {
+              "name": "WIFI_ROUTER_DEVICE_TYPE_UBUNTU",
+              "number": 5
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "openwrt",
+              "label": "LABEL_REPEATED",
+              "name": "openwrt",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.WifiRouterConfig.OpenwrtEntry"
+            }
+          ],
+          "name": "WifiRouterConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.test.lab.api.OpenWrtWifiRouterDeviceConfig"
+                }
+              ],
+              "name": "OpenwrtEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "currentImageUuid",
+              "label": "LABEL_OPTIONAL",
+              "name": "current_image_uuid",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "nextImageUuid",
+              "label": "LABEL_OPTIONAL",
+              "name": "next_image_uuid",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "nextImageVerificationDutPool",
+              "label": "LABEL_REPEATED",
+              "name": "next_image_verification_dut_pool",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "images",
+              "label": "LABEL_REPEATED",
+              "name": "images",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.OpenWrtWifiRouterDeviceConfig.OpenWrtOSImage"
+            }
+          ],
+          "name": "OpenWrtWifiRouterDeviceConfig",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "imageUuid",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "image_uuid",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "archivePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "archive_path",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "minDutReleaseVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "min_dut_release_version",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "OpenWrtOSImage"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "imageUuid",
+              "label": "LABEL_OPTIONAL",
+              "name": "image_uuid",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "customImageName",
+              "label": "LABEL_OPTIONAL",
+              "name": "custom_image_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "osRelease",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_release",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.OSRelease"
+            },
+            {
+              "jsonName": "standardBuildConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "standard_build_config",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.StandardBuildConfig"
+            },
+            {
+              "jsonName": "routerFeatures",
+              "label": "LABEL_REPEATED",
+              "name": "router_features",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.WifiRouterFeature"
+            },
+            {
+              "jsonName": "buildTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_time",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Timestamp"
+            },
+            {
+              "jsonName": "crosOpenwrtImageBuilderVersion",
+              "label": "LABEL_OPTIONAL",
+              "name": "cros_openwrt_image_builder_version",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "customIncludedFiles",
+              "label": "LABEL_REPEATED",
+              "name": "custom_included_files",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.CustomIncludedFilesEntry"
+            },
+            {
+              "jsonName": "customPackages",
+              "label": "LABEL_REPEATED",
+              "name": "custom_packages",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.CustomPackagesEntry"
+            },
+            {
+              "jsonName": "extraIncludedPackages",
+              "label": "LABEL_REPEATED",
+              "name": "extra_included_packages",
+              "number": 10,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "excludedPackages",
+              "label": "LABEL_REPEATED",
+              "name": "excluded_packages",
+              "number": 11,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "disabledServices",
+              "label": "LABEL_REPEATED",
+              "name": "disabled_services",
+              "number": 12,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "reservedInterfaces",
+              "label": "LABEL_REPEATED",
+              "name": "reserved_interfaces",
+              "number": 13,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CrosOpenWrtImageBuildInfo",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "openwrtRevision",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_revision",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "openwrtBuildTarget",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_build_target",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "buildProfile",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "build_profile",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "deviceName",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "device_name",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "buildTargetPackages",
+                  "label": "LABEL_REPEATED",
+                  "name": "build_target_packages",
+                  "number": 5,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "profilePackages",
+                  "label": "LABEL_REPEATED",
+                  "name": "profile_packages",
+                  "number": 6,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "supportedDevices",
+                  "label": "LABEL_REPEATED",
+                  "name": "supported_devices",
+                  "number": 7,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "StandardBuildConfig"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "version",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "buildId",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "build_id",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "openwrtBoard",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_board",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "openwrtArch",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_arch",
+                  "number": 4,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "openwrtRelease",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "openwrt_release",
+                  "number": 5,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "OSRelease"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "CustomIncludedFilesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "CustomPackagesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/wifi_router.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
         "chromiumos/config/api/device_config_id.proto",
         "chromiumos/test/lab/api/ip_endpoint.proto",
-        "chromiumos/test/lab/api/pasit_host.proto"
+        "chromiumos/test/lab/api/pasit_host.proto",
+        "chromiumos/test/lab/api/wifi_router.proto"
       ],
       "enumType": [
         {
@@ -19331,6 +20693,14 @@
               "name": "serial",
               "number": 3,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.PeripheralState"
             }
           ],
           "name": "Servo"
@@ -19391,6 +20761,14 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.lab.api.WifiAntenna"
+            },
+            {
+              "jsonName": "wifiRouters",
+              "label": "LABEL_REPEATED",
+              "name": "wifi_routers",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.WifiRouter"
             }
           ],
           "name": "Wifi"
@@ -19426,6 +20804,57 @@
             }
           ],
           "name": "WifiAntenna"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "hostname",
+              "label": "LABEL_OPTIONAL",
+              "name": "hostname",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.PeripheralState"
+            },
+            {
+              "jsonName": "model",
+              "label": "LABEL_OPTIONAL",
+              "name": "model",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "rpm",
+              "label": "LABEL_OPTIONAL",
+              "name": "rpm",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.RPM"
+            },
+            {
+              "jsonName": "supportedFeatures",
+              "label": "LABEL_REPEATED",
+              "name": "supported_features",
+              "number": 5,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.WifiRouterFeature"
+            },
+            {
+              "jsonName": "deviceType",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_type",
+              "number": 6,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.WifiRouterDeviceType"
+            }
+          ],
+          "name": "WifiRouter"
         },
         {
           "field": [
@@ -21366,6 +22795,16 @@
               "label": "LABEL_OPTIONAL",
               "name": "total_shards",
               "number": 5,
+              "options": {
+                "deprecated": true
+              },
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "maxInShard",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_in_shard",
+              "number": 8,
               "type": "TYPE_INT64"
             },
             {
@@ -21780,6 +23219,14 @@
               "typeName": ".chromiumos.test.api.TestCase.Id"
             },
             {
+              "jsonName": "tags",
+              "label": "LABEL_REPEATED",
+              "name": "tags",
+              "number": 17,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.TestCase.Tag"
+            },
+            {
               "jsonName": "resultDirPath",
               "label": "LABEL_OPTIONAL",
               "name": "result_dir_path",
@@ -22015,6 +23462,14 @@
               "number": 6,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.Arg"
+            },
+            {
+              "jsonName": "publishServers",
+              "label": "LABEL_REPEATED",
+              "name": "publish_servers",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishServer"
             }
           ],
           "name": "CrosTestRequest",
@@ -22065,6 +23520,26 @@
               "name": "Device"
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "address",
+              "label": "LABEL_OPTIONAL",
+              "name": "address",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
+            }
+          ],
+          "name": "PublishServer"
         },
         {
           "field": [
@@ -22927,6 +24402,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetGscInfoRequest"
+            },
+            {
+              "jsonName": "getServoInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_servo_info_request",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetServoInfoRequest"
             }
           ],
           "name": "Request",
@@ -23077,6 +24561,9 @@
           ]
         },
         {
+          "name": "GetServoInfoRequest"
+        },
+        {
           "field": [
             {
               "jsonName": "getFwInfoResponse",
@@ -23122,6 +24609,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetGscInfoResponse"
+            },
+            {
+              "jsonName": "getServoInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_servo_info_response",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetServoInfoResponse"
             }
           ],
           "name": "RunActivityResponse",
@@ -23341,6 +24837,19 @@
               }
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "servoInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "servo_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "GetServoInfoResponse"
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",
@@ -24843,6 +26352,13 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "message",
+              "label": "LABEL_OPTIONAL",
+              "name": "message",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "InstallResponse"
@@ -24882,9 +26398,79 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".google.protobuf.Any"
+            },
+            {
+              "jsonName": "partnerMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "partner_metadata",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PartnerMetadata"
+            },
+            {
+              "jsonName": "kernelPrebuilts",
+              "label": "LABEL_OPTIONAL",
+              "name": "kernel_prebuilts",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.KernelPrebuilts"
             }
           ],
           "name": "InstallRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "accountId",
+              "label": "LABEL_OPTIONAL",
+              "name": "account_id",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "partnerGcsBucket",
+              "label": "LABEL_OPTIONAL",
+              "name": "partner_gcs_bucket",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PartnerMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "partitionImages",
+              "label": "LABEL_REPEATED",
+              "name": "partition_images",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.KernelPrebuilts.PartitionImage"
+            }
+          ],
+          "name": "KernelPrebuilts",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "partitionName",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "partition_name",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "imagePath",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "image_path",
+                  "number": 2,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.StoragePath"
+                }
+              ],
+              "name": "PartitionImage"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/provision.proto",
@@ -26137,6 +27723,14 @@
               "typeName": ".chromiumos.test.api.ScheduleTargets"
             },
             {
+              "jsonName": "groupedScheduleTargets",
+              "label": "LABEL_REPEATED",
+              "name": "grouped_schedule_targets",
+              "number": 11,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GroupedScheduleTargets"
+            },
+            {
               "jsonName": "pool",
               "label": "LABEL_OPTIONAL",
               "name": "pool",
@@ -26304,6 +27898,13 @@
               "name": "retry_count",
               "number": 8,
               "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "tags",
+              "label": "LABEL_REPEATED",
+              "name": "tags",
+              "number": 9,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "SuiteRequest",
@@ -26331,6 +27932,19 @@
             }
           ],
           "name": "KeyValue"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "groupedTargets",
+              "label": "LABEL_REPEATED",
+              "name": "grouped_targets",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.ScheduleTargets"
+            }
+          ],
+          "name": "GroupedScheduleTargets"
         },
         {
           "field": [
@@ -26675,6 +28289,18 @@
         {
           "field": [
             {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "InternalTestplanFragment"
+        },
+        {
+          "field": [
+            {
               "jsonName": "name",
               "label": "LABEL_OPTIONAL",
               "name": "name",
@@ -26812,6 +28438,14 @@
               "number": 8,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SchedulingUnit"
+            },
+            {
+              "jsonName": "schedulingUnitOptions",
+              "label": "LABEL_REPEATED",
+              "name": "scheduling_unit_options",
+              "number": 9,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.SchedulingUnitOptions"
             }
           ],
           "name": "SuiteMetadata"
@@ -26905,6 +28539,14 @@
               "number": 6,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.api.SchedulingUnitOptions.State"
+            },
+            {
+              "jsonName": "publishKeys",
+              "label": "LABEL_REPEATED",
+              "name": "publish_keys",
+              "number": 7,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishKey"
             }
           ],
           "name": "SchedulingUnitOptions"
@@ -27174,6 +28816,50 @@
         },
         {
           "name": "CrosTestRunnerRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "subject",
+              "label": "LABEL_OPTIONAL",
+              "name": "subject",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "keyValues",
+              "label": "LABEL_REPEATED",
+              "name": "key_values",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishKey.KeyValuesEntry"
+            }
+          ],
+          "name": "PublishKey",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "KeyValuesEntry",
+              "options": {
+                "mapEntry": true
+              }
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/ctp2.proto",
@@ -27198,6 +28884,13 @@
               "inputType": ".chromiumos.test.api.InternalTestplan",
               "name": "Execute",
               "outputType": ".chromiumos.test.api.InternalTestplan"
+            },
+            {
+              "clientStreaming": true,
+              "inputType": ".chromiumos.test.api.InternalTestplanFragment",
+              "name": "ExecuteStream",
+              "outputType": ".chromiumos.test.api.InternalTestplanFragment",
+              "serverStreaming": true
             }
           ],
           "name": "GenericFilterService"
@@ -28785,25 +30478,20 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
-        "chromiumos/build/api/firmware_config.proto",
-        "chromiumos/test/lab/api/ip_endpoint.proto"
+        "chromiumos/build/api/firmware_config.proto"
       ],
       "messageType": [
         {
-          "field": [
-            {
-              "jsonName": "cacheServerAddress",
-              "label": "LABEL_OPTIONAL",
-              "name": "cache_server_address",
-              "number": 1,
-              "options": {
-                "deprecated": true
-              },
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.IpEndpoint"
-            }
+          "name": "FirmwareProvisionStartupMetadata",
+          "reservedName": [
+            "cache_server_address"
           ],
-          "name": "FirmwareProvisionStartupMetadata"
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            }
+          ]
         },
         {
           "field": [
@@ -29491,6 +31179,14 @@
               "number": 9,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.PartnerInfo"
+            },
+            {
+              "jsonName": "eqcInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_info",
+              "number": 13,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.EqcInfo"
             }
           ],
           "name": "TestInvocation",
@@ -29558,6 +31254,87 @@
                 }
               ],
               "name": "Id"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "eqcHash",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_hash",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcName",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "eqcCategoryExpression",
+              "label": "LABEL_REPEATED",
+              "name": "eqc_category_expression",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.EqcInfo.EqcCategoryExpressionEntry"
+            },
+            {
+              "jsonName": "eqcDimensions",
+              "label": "LABEL_REPEATED",
+              "name": "eqc_dimensions",
+              "number": 4,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.EqcInfo.EqcDimensionsEntry"
+            }
+          ],
+          "name": "EqcInfo",
+          "nestedType": [
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "EqcCategoryExpressionEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "EqcDimensionsEntry",
+              "options": {
+                "mapEntry": true
+              }
             }
           ]
         },
@@ -30016,6 +31793,14 @@
               "number": 13,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.BuildMetadata.ChameleonInfo"
+            },
+            {
+              "jsonName": "servoInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "servo_info",
+              "number": 14,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.BuildMetadata.ServoInfo"
             }
           ],
           "name": "BuildMetadata",
@@ -30077,6 +31862,20 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "rw_version",
                   "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "apRoVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ap_ro_version",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "apRwVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ap_rw_version",
+                  "number": 4,
                   "type": "TYPE_STRING"
                 }
               ],
@@ -30286,6 +32085,32 @@
                 }
               ],
               "name": "ChameleonInfo"
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "servodVersion",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servod_version",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "servoVersions",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo_versions",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "servoType",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "servo_type",
+                  "number": 3,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "ServoInfo"
             }
           ]
         },
@@ -30978,6 +32803,25 @@
       ],
       "messageType": [
         {
+          "enumType": [
+            {
+              "name": "ATPEnvironment",
+              "value": [
+                {
+                  "name": "ENV_UNKNOWN",
+                  "number": 0
+                },
+                {
+                  "name": "ENV_STAGING",
+                  "number": 1
+                },
+                {
+                  "name": "ENV_PROD",
+                  "number": 2
+                }
+              ]
+            }
+          ],
           "field": [
             {
               "jsonName": "antsInvocationId",
@@ -31014,6 +32858,22 @@
               "name": "luci_invocation_id",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "schedulingMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "scheduling_metadata",
+              "number": 6,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.SchedulingMetadata"
+            },
+            {
+              "jsonName": "atpEnvironment",
+              "label": "LABEL_OPTIONAL",
+              "name": "atp_environment",
+              "number": 7,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.api.metadata.PublishAntsMetadata.ATPEnvironment"
             }
           ],
           "name": "PublishAntsMetadata"
@@ -31033,6 +32893,8 @@
       },
       "dependency": [
         "chromiumos/test/artifact/test_result.proto",
+        "chromiumos/test/api/ctp2.proto",
+        "chromiumos/test/api/firmware_provision.proto",
         "chromiumos/test/api/post_test_service.proto"
       ],
       "messageType": [
@@ -31093,6 +32955,33 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.RunActivitiesResponse"
+            },
+            {
+              "jsonName": "firmwareProvisionResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "firmware_provision_response",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FirmwareProvisionResponse"
+            },
+            {
+              "jsonName": "eqcInfo",
+              "label": "LABEL_REPEATED",
+              "name": "eqc_info",
+              "number": 9,
+              "options": {
+                "deprecated": true
+              },
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.metadata.PublishRdbMetadata.EqcInfoEntry"
+            },
+            {
+              "jsonName": "publishKeys",
+              "label": "LABEL_REPEATED",
+              "name": "publish_keys",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.PublishKey"
             }
           ],
           "name": "PublishRdbMetadata",
@@ -31134,6 +33023,28 @@
                 }
               ],
               "name": "BaseVariantEntry",
+              "options": {
+                "mapEntry": true
+              }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "key",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "key",
+                  "number": 1,
+                  "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "value",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "value",
+                  "number": 2,
+                  "type": "TYPE_STRING"
+                }
+              ],
+              "name": "EqcInfoEntry",
               "options": {
                 "mapEntry": true
               }
@@ -31374,6 +33285,127 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "build",
+              "label": "LABEL_OPTIONAL",
+              "name": "build",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "suite",
+              "label": "LABEL_OPTIONAL",
+              "name": "suite",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "parentSwarmingTaskId",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent_swarming_task_id",
+              "number": 5,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PublishCpconMetadata"
+        }
+      ],
+      "name": "chromiumos/test/api/publish_cpcon_metadata.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "alRun",
+              "label": "LABEL_OPTIONAL",
+              "name": "al_run",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "product",
+              "label": "LABEL_OPTIONAL",
+              "name": "product",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "build",
+              "label": "LABEL_OPTIONAL",
+              "name": "build",
+              "number": 3,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "parentSwarmingTaskId",
+              "label": "LABEL_OPTIONAL",
+              "name": "parent_swarming_task_id",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "resultsGcsPrefix",
+              "label": "LABEL_OPTIONAL",
+              "name": "results_gcs_prefix",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "apfeGcsPrefix",
+              "label": "LABEL_OPTIONAL",
+              "name": "apfe_gcs_prefix",
+              "number": 6,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "XtsArchiverMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "gcsPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "gcs_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "serviceAccountCredsFilePath",
+              "label": "LABEL_OPTIONAL",
+              "name": "service_account_creds_file_path",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "xtsArchiverMetadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "xts_archiver_metadata",
+              "number": 3,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.XtsArchiverMetadata"
+            },
+            {
+              "jsonName": "enableXtsArchiver",
+              "label": "LABEL_OPTIONAL",
+              "name": "enable_xts_archiver",
+              "number": 4,
+              "type": "TYPE_BOOL"
             }
           ],
           "name": "PublishGcsMetadata"
@@ -32009,6 +34041,13 @@
               "number": 4,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.SaveLogsRequest.PathToLineNumberEntry"
+            },
+            {
+              "jsonName": "dest",
+              "label": "LABEL_OPTIONAL",
+              "name": "dest",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "SaveLogsRequest",
@@ -34318,6 +36357,1407 @@
       },
       "messageType": [
         {
+          "name": "GetCamerasRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "Camera"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "cameras",
+              "label": "LABEL_REPEATED",
+              "name": "cameras",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.Camera"
+            }
+          ],
+          "name": "GetCamerasResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "deviceId",
+              "label": "LABEL_OPTIONAL",
+              "name": "device_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetAveragePixelRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "r",
+              "label": "LABEL_OPTIONAL",
+              "name": "r",
+              "number": 1,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "g",
+              "label": "LABEL_OPTIONAL",
+              "name": "g",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "b",
+              "label": "LABEL_OPTIONAL",
+              "name": "b",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "a",
+              "label": "LABEL_OPTIONAL",
+              "name": "a",
+              "number": 4,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "Pixel"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "pixel",
+              "label": "LABEL_OPTIONAL",
+              "name": "pixel",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.Pixel"
+            },
+            {
+              "jsonName": "frame",
+              "label": "LABEL_OPTIONAL",
+              "name": "frame",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "GetAveragePixelResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/camera_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetCamerasRequest",
+              "name": "GetCameras",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetCamerasResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetAveragePixelRequest",
+              "name": "GetAveragePixel",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetAveragePixelResponse"
+            }
+          ],
+          "name": "CameraService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "enumType": [
+        {
+          "name": "SwitchPortState",
+          "value": [
+            {
+              "name": "SWITCH_PORT_UNKNOWN",
+              "number": 0
+            },
+            {
+              "name": "SWITCH_PORT_DISABLED",
+              "number": 1
+            },
+            {
+              "name": "SWITCH_PORT_ENABLED",
+              "number": 2
+            },
+            {
+              "name": "SWITCH_PORT_FLIP",
+              "number": 3
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SwitchFixture"
+        },
+        {
+          "name": "GetSwitchesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "switches",
+              "label": "LABEL_REPEATED",
+              "name": "switches",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.SwitchFixture"
+            }
+          ],
+          "name": "GetSwitchesResponse"
+        },
+        {
+          "name": "ResetAllSwitchesRequest"
+        },
+        {
+          "name": "ResetAllSwitchesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "switchId",
+              "label": "LABEL_OPTIONAL",
+              "name": "switch_id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "state",
+              "label": "LABEL_OPTIONAL",
+              "name": "state",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.SwitchPortState"
+            }
+          ],
+          "name": "ConfigureSwitchPortRequest"
+        },
+        {
+          "name": "ConfigureSwitchPortResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/switch_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetSwitchesRequest",
+              "name": "GetSwitches",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetSwitchesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.ResetAllSwitchesRequest",
+              "name": "ResetAllSwitches",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.ResetAllSwitchesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.ConfigureSwitchPortRequest",
+              "name": "ConfigureSwitchPort",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.ConfigureSwitchPortResponse"
+            }
+          ],
+          "name": "SwitchService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "google/protobuf/duration.proto"
+      ],
+      "enumType": [
+        {
+          "name": "Capability",
+          "value": [
+            {
+              "name": "CAPABILITY_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "PIN_ASSIGMENT",
+              "number": 1
+            },
+            {
+              "name": "USB_CHANNEL",
+              "number": 2
+            },
+            {
+              "name": "POWER_ROLE",
+              "number": 3
+            },
+            {
+              "name": "DATA_ROLE",
+              "number": 4
+            },
+            {
+              "name": "ACTIVE_CC",
+              "number": 5
+            },
+            {
+              "name": "CABLE_MODE",
+              "number": 6
+            },
+            {
+              "name": "INIT_PD_STATE",
+              "number": 7
+            },
+            {
+              "name": "CURRENT_LOAD",
+              "number": 9
+            },
+            {
+              "name": "SRC_PULL_UP",
+              "number": 10
+            },
+            {
+              "name": "SNK_PDO_COUNT",
+              "number": 11
+            },
+            {
+              "name": "SRC_PDO_COUNT",
+              "number": 12
+            },
+            {
+              "name": "VBUS_VOLTAGE",
+              "number": 13
+            },
+            {
+              "name": "VBUS_CURRENT",
+              "number": 14
+            },
+            {
+              "name": "VBUS_CURRENT_LANE",
+              "number": 15
+            },
+            {
+              "name": "GND_CURRENT_LANE",
+              "number": 16
+            },
+            {
+              "name": "VBUS_EPU_VOLTAGE",
+              "number": 17
+            },
+            {
+              "name": "VBUS_CC1",
+              "number": 18
+            },
+            {
+              "name": "VBUS_CC2",
+              "number": 19
+            },
+            {
+              "name": "VBUS_SBU1",
+              "number": 20
+            },
+            {
+              "name": "VBUS_SBU2",
+              "number": 21
+            }
+          ]
+        },
+        {
+          "name": "ActiveCc",
+          "value": [
+            {
+              "name": "ACTIVE_CC_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "CC1",
+              "number": 1
+            },
+            {
+              "name": "CC2",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "PinAassignment",
+          "value": [
+            {
+              "name": "PIN_AASSIGNMENT_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "C",
+              "number": 1
+            },
+            {
+              "name": "D",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "PowerRole",
+          "value": [
+            {
+              "name": "POWER_ROLE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "SNK",
+              "number": 1
+            },
+            {
+              "name": "SRC",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "DataRole",
+          "value": [
+            {
+              "name": "DATA_ROLE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "DATA_UFP",
+              "number": 1
+            },
+            {
+              "name": "DATA_DFP",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "UsbChannel",
+          "value": [
+            {
+              "name": "USB_CHANNEL_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "USB_2_HS",
+              "number": 1
+            },
+            {
+              "name": "USB_3_AND_2_HS",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "CableMode",
+          "value": [
+            {
+              "name": "CABLE_MODE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "NORMAL",
+              "number": 1
+            },
+            {
+              "name": "ELEC_TEST",
+              "number": 2
+            }
+          ]
+        },
+        {
+          "name": "InitPdState",
+          "value": [
+            {
+              "name": "INIT_PD_STATE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "PD_UFP",
+              "number": 1
+            },
+            {
+              "name": "PD_DFP",
+              "number": 2
+            },
+            {
+              "name": "PD_DRP",
+              "number": 3
+            }
+          ]
+        },
+        {
+          "name": "DpLinkRate",
+          "value": [
+            {
+              "name": "DP_LINK_RATE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "RBR",
+              "number": 1
+            },
+            {
+              "name": "HBR",
+              "number": 2
+            },
+            {
+              "name": "HBR2",
+              "number": 3
+            },
+            {
+              "name": "HBR3",
+              "number": 4
+            }
+          ]
+        },
+        {
+          "name": "DpColorDepth",
+          "value": [
+            {
+              "name": "DP_COLOR_DEPTH",
+              "number": 0
+            },
+            {
+              "name": "BIT6",
+              "number": 1
+            },
+            {
+              "name": "BIT8",
+              "number": 2
+            },
+            {
+              "name": "BIT10",
+              "number": 3
+            },
+            {
+              "name": "BIT12",
+              "number": 4
+            },
+            {
+              "name": "BIT16",
+              "number": 5
+            }
+          ]
+        },
+        {
+          "name": "DpColorMode",
+          "value": [
+            {
+              "name": "DP_COLOR_MODE_NOT_SET",
+              "number": 0
+            },
+            {
+              "name": "RGB",
+              "number": 1
+            },
+            {
+              "name": "YCBCR444",
+              "number": 2
+            },
+            {
+              "name": "YCBCR422",
+              "number": 3
+            },
+            {
+              "name": "YCBCR420",
+              "number": 4
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "HardResetTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "HardResetTesterReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DoCableReplugRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "DoCableReplugReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "OpenTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "OpenTesterReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CloseTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CloseTesterReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "UsbTester"
+        },
+        {
+          "name": "GetTestersRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testers",
+              "label": "LABEL_REPEATED",
+              "name": "testers",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.UsbTester"
+            }
+          ],
+          "name": "GetTestersReply"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "capability",
+              "label": "LABEL_OPTIONAL",
+              "name": "capability",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Capability"
+            }
+          ],
+          "name": "GetUsbTesterCapabilityRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "activeCc",
+              "label": "LABEL_OPTIONAL",
+              "name": "active_cc",
+              "number": 3,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.ActiveCc"
+            },
+            {
+              "jsonName": "pinMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "pin_mode",
+              "number": 4,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PinAassignment"
+            },
+            {
+              "jsonName": "powerRole",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PowerRole"
+            },
+            {
+              "jsonName": "dataRole",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DataRole"
+            },
+            {
+              "jsonName": "usbChannel",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_channel",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.UsbChannel"
+            },
+            {
+              "jsonName": "cableMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "cable_mode",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.CableMode"
+            },
+            {
+              "jsonName": "initPdState",
+              "label": "LABEL_OPTIONAL",
+              "name": "init_pd_state",
+              "number": 9,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.InitPdState"
+            },
+            {
+              "jsonName": "nonDescrete",
+              "label": "LABEL_OPTIONAL",
+              "name": "non_descrete",
+              "number": 10,
+              "oneofIndex": 0,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "GetUsbTesterCapabilityReply",
+          "oneofDecl": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "delay",
+              "label": "LABEL_OPTIONAL",
+              "name": "delay",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "timeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "timeout",
+              "number": 3,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "capability",
+              "label": "LABEL_OPTIONAL",
+              "name": "capability",
+              "number": 4,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Capability"
+            },
+            {
+              "jsonName": "activeCc",
+              "label": "LABEL_OPTIONAL",
+              "name": "active_cc",
+              "number": 5,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.ActiveCc"
+            },
+            {
+              "jsonName": "pinMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "pin_mode",
+              "number": 6,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PinAassignment"
+            },
+            {
+              "jsonName": "powerRole",
+              "label": "LABEL_OPTIONAL",
+              "name": "power_role",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.PowerRole"
+            },
+            {
+              "jsonName": "dataRole",
+              "label": "LABEL_OPTIONAL",
+              "name": "data_role",
+              "number": 8,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DataRole"
+            },
+            {
+              "jsonName": "usbChannel",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_channel",
+              "number": 9,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.UsbChannel"
+            },
+            {
+              "jsonName": "cableMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "cable_mode",
+              "number": 10,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.CableMode"
+            },
+            {
+              "jsonName": "initPdState",
+              "label": "LABEL_OPTIONAL",
+              "name": "init_pd_state",
+              "number": 11,
+              "oneofIndex": 0,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.InitPdState"
+            },
+            {
+              "jsonName": "nonDescrete",
+              "label": "LABEL_OPTIONAL",
+              "name": "non_descrete",
+              "number": 12,
+              "oneofIndex": 0,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "SetUsbTesterCapabilityRequest",
+          "oneofDecl": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "_delay"
+            },
+            {
+              "name": "_timeout"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 2,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 3,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SetUsbTesterCapabilityReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "delay",
+              "label": "LABEL_OPTIONAL",
+              "name": "delay",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            },
+            {
+              "jsonName": "timeout",
+              "label": "LABEL_OPTIONAL",
+              "name": "timeout",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Duration"
+            }
+          ],
+          "name": "GetDpInfoRequest",
+          "oneofDecl": [
+            {
+              "name": "_delay"
+            },
+            {
+              "name": "_timeout"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "linkRate",
+              "label": "LABEL_OPTIONAL",
+              "name": "link_rate",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DpLinkRate"
+            },
+            {
+              "jsonName": "laneCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "lane_count",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "pixelClock",
+              "label": "LABEL_OPTIONAL",
+              "name": "pixel_clock",
+              "number": 5,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "hActive",
+              "label": "LABEL_OPTIONAL",
+              "name": "h_active",
+              "number": 6,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "vActive",
+              "label": "LABEL_OPTIONAL",
+              "name": "v_active",
+              "number": 7,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "hTotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "h_total",
+              "number": 8,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "vTotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "v_total",
+              "number": 9,
+              "oneofIndex": 7,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "framerate",
+              "label": "LABEL_OPTIONAL",
+              "name": "framerate",
+              "number": 10,
+              "oneofIndex": 8,
+              "proto3Optional": true,
+              "type": "TYPE_DOUBLE"
+            },
+            {
+              "jsonName": "colorMode",
+              "label": "LABEL_OPTIONAL",
+              "name": "color_mode",
+              "number": 11,
+              "oneofIndex": 9,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DpColorMode"
+            },
+            {
+              "jsonName": "colorDepth",
+              "label": "LABEL_OPTIONAL",
+              "name": "color_depth",
+              "number": 12,
+              "oneofIndex": 10,
+              "proto3Optional": true,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.DpColorDepth"
+            },
+            {
+              "jsonName": "audioSampleRate",
+              "label": "LABEL_OPTIONAL",
+              "name": "audio_sample_rate",
+              "number": 13,
+              "oneofIndex": 11,
+              "proto3Optional": true,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "GetDpInfoReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            },
+            {
+              "name": "_link_rate"
+            },
+            {
+              "name": "_lane_count"
+            },
+            {
+              "name": "_pixel_clock"
+            },
+            {
+              "name": "_h_active"
+            },
+            {
+              "name": "_v_active"
+            },
+            {
+              "name": "_h_total"
+            },
+            {
+              "name": "_v_total"
+            },
+            {
+              "name": "_framerate"
+            },
+            {
+              "name": "_color_mode"
+            },
+            {
+              "name": "_color_depth"
+            },
+            {
+              "name": "_audio_sample_rate"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetActivePortRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "portId",
+              "label": "LABEL_OPTIONAL",
+              "name": "port_id",
+              "number": 3,
+              "type": "TYPE_UINT32"
+            },
+            {
+              "jsonName": "maxNumPorts",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_num_ports",
+              "number": 4,
+              "type": "TYPE_UINT32"
+            }
+          ],
+          "name": "GetActivePortReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "portId",
+              "label": "LABEL_OPTIONAL",
+              "name": "port_id",
+              "number": 2,
+              "type": "TYPE_UINT32"
+            }
+          ],
+          "name": "SetActivePortRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "errCode",
+              "label": "LABEL_OPTIONAL",
+              "name": "err_code",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "errorMsg",
+              "label": "LABEL_OPTIONAL",
+              "name": "error_msg",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "SetActivePortReply",
+          "oneofDecl": [
+            {
+              "name": "_error_msg"
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/usb_tester_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetTestersRequest",
+              "name": "GetTesters",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetTestersReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetUsbTesterCapabilityRequest",
+              "name": "GetTesterCapability",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetUsbTesterCapabilityReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SetUsbTesterCapabilityRequest",
+              "name": "SetTesterCapability",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.SetUsbTesterCapabilityReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetDpInfoRequest",
+              "name": "GetDpInfo",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetDpInfoReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.DoCableReplugRequest",
+              "name": "ReplugCable",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.DoCableReplugReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.HardResetTesterRequest",
+              "name": "HardResetTester",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.HardResetTesterReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.OpenTesterRequest",
+              "name": "OpenTester",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.OpenTesterReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.CloseTesterRequest",
+              "name": "CloseTester",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.CloseTesterReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetActivePortRequest",
+              "name": "GetActivePort",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.GetActivePortReply"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SetActivePortRequest",
+              "name": "SetActivePort",
+              "options": {},
+              "outputType": ".chromiumos.test.lab.api.passport.SetActivePortReply"
+            }
+          ],
+          "name": "UsbTesterService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "enumType": [
+        {
+          "name": "StorageType",
+          "value": [
+            {
+              "name": "UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "UNRECOGNIZED",
+              "number": 1
+            },
+            {
+              "name": "SSD",
+              "number": 2
+            },
+            {
+              "name": "HDD",
+              "number": 3
+            },
+            {
+              "name": "MMC",
+              "number": 4
+            },
+            {
+              "name": "NVME",
+              "number": 5
+            },
+            {
+              "name": "UFS",
+              "number": 6
+            }
+          ]
+        }
+      ],
+      "name": "chromiumos/test/lab/api/storage.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
+      },
+      "package": "chromiumos.test.lab.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
           "field": [
             {
               "jsonName": "requestEndpoint",
@@ -34420,453 +37860,6 @@
         }
       ],
       "name": "chromiumos/test/lab/api/usb_drive.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
-      },
-      "package": "chromiumos.test.lab.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "dependency": [
-        "google/protobuf/timestamp.proto"
-      ],
-      "enumType": [
-        {
-          "name": "WifiRouterFeature",
-          "value": [
-            {
-              "name": "WIFI_ROUTER_FEATURE_UNKNOWN",
-              "number": 0
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_INVALID",
-              "number": 1
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_A",
-              "number": 2
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_B",
-              "number": 3
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_G",
-              "number": 4
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_N",
-              "number": 5
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AC",
-              "number": 6
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX",
-              "number": 7
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_AX_E",
-              "number": 8
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_IEEE_802_11_BE",
-              "number": 9
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_DOUBLE_BRIDGE_OVER_VETH",
-              "number": 10
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_GCMP",
-              "number": 11
-            },
-            {
-              "name": "WIFI_ROUTER_FEATURE_SAE_EXT_KEY",
-              "number": 12
-            }
-          ]
-        },
-        {
-          "name": "WifiRouterDeviceType",
-          "value": [
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_UNKNOWN",
-              "number": 0
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_INVALID",
-              "number": 1
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_CHROMEOS_GALE",
-              "number": 2
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_OPENWRT",
-              "number": 3
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_ASUSWRT",
-              "number": 4
-            },
-            {
-              "name": "WIFI_ROUTER_DEVICE_TYPE_UBUNTU",
-              "number": 5
-            }
-          ]
-        }
-      ],
-      "messageType": [
-        {
-          "field": [
-            {
-              "jsonName": "openwrt",
-              "label": "LABEL_REPEATED",
-              "name": "openwrt",
-              "number": 1,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.WifiRouterConfig.OpenwrtEntry"
-            }
-          ],
-          "name": "WifiRouterConfig",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "key",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "key",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_MESSAGE",
-                  "typeName": ".chromiumos.test.lab.api.OpenWrtWifiRouterDeviceConfig"
-                }
-              ],
-              "name": "OpenwrtEntry",
-              "options": {
-                "mapEntry": true
-              }
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "currentImageUuid",
-              "label": "LABEL_OPTIONAL",
-              "name": "current_image_uuid",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "nextImageUuid",
-              "label": "LABEL_OPTIONAL",
-              "name": "next_image_uuid",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "nextImageVerificationDutPool",
-              "label": "LABEL_REPEATED",
-              "name": "next_image_verification_dut_pool",
-              "number": 3,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "images",
-              "label": "LABEL_REPEATED",
-              "name": "images",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.OpenWrtWifiRouterDeviceConfig.OpenWrtOSImage"
-            }
-          ],
-          "name": "OpenWrtWifiRouterDeviceConfig",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "imageUuid",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "image_uuid",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "archivePath",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "archive_path",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "minDutReleaseVersion",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "min_dut_release_version",
-                  "number": 3,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "OpenWrtOSImage"
-            }
-          ]
-        },
-        {
-          "field": [
-            {
-              "jsonName": "imageUuid",
-              "label": "LABEL_OPTIONAL",
-              "name": "image_uuid",
-              "number": 1,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "customImageName",
-              "label": "LABEL_OPTIONAL",
-              "name": "custom_image_name",
-              "number": 2,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "osRelease",
-              "label": "LABEL_OPTIONAL",
-              "name": "os_release",
-              "number": 3,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.OSRelease"
-            },
-            {
-              "jsonName": "standardBuildConfig",
-              "label": "LABEL_OPTIONAL",
-              "name": "standard_build_config",
-              "number": 4,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.StandardBuildConfig"
-            },
-            {
-              "jsonName": "routerFeatures",
-              "label": "LABEL_REPEATED",
-              "name": "router_features",
-              "number": 5,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.test.lab.api.WifiRouterFeature"
-            },
-            {
-              "jsonName": "buildTime",
-              "label": "LABEL_OPTIONAL",
-              "name": "build_time",
-              "number": 6,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".google.protobuf.Timestamp"
-            },
-            {
-              "jsonName": "crosOpenwrtImageBuilderVersion",
-              "label": "LABEL_OPTIONAL",
-              "name": "cros_openwrt_image_builder_version",
-              "number": 7,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "customIncludedFiles",
-              "label": "LABEL_REPEATED",
-              "name": "custom_included_files",
-              "number": 8,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.CustomIncludedFilesEntry"
-            },
-            {
-              "jsonName": "customPackages",
-              "label": "LABEL_REPEATED",
-              "name": "custom_packages",
-              "number": 9,
-              "type": "TYPE_MESSAGE",
-              "typeName": ".chromiumos.test.lab.api.CrosOpenWrtImageBuildInfo.CustomPackagesEntry"
-            },
-            {
-              "jsonName": "extraIncludedPackages",
-              "label": "LABEL_REPEATED",
-              "name": "extra_included_packages",
-              "number": 10,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "excludedPackages",
-              "label": "LABEL_REPEATED",
-              "name": "excluded_packages",
-              "number": 11,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "disabledServices",
-              "label": "LABEL_REPEATED",
-              "name": "disabled_services",
-              "number": 12,
-              "type": "TYPE_STRING"
-            },
-            {
-              "jsonName": "reservedInterfaces",
-              "label": "LABEL_REPEATED",
-              "name": "reserved_interfaces",
-              "number": 13,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "CrosOpenWrtImageBuildInfo",
-          "nestedType": [
-            {
-              "field": [
-                {
-                  "jsonName": "openwrtRevision",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_revision",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "openwrtBuildTarget",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_build_target",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "buildProfile",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "build_profile",
-                  "number": 3,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "deviceName",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "device_name",
-                  "number": 4,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "buildTargetPackages",
-                  "label": "LABEL_REPEATED",
-                  "name": "build_target_packages",
-                  "number": 5,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "profilePackages",
-                  "label": "LABEL_REPEATED",
-                  "name": "profile_packages",
-                  "number": 6,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "supportedDevices",
-                  "label": "LABEL_REPEATED",
-                  "name": "supported_devices",
-                  "number": 7,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "StandardBuildConfig"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "version",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "version",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "buildId",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "build_id",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "openwrtBoard",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_board",
-                  "number": 3,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "openwrtArch",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_arch",
-                  "number": 4,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "openwrtRelease",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "openwrt_release",
-                  "number": 5,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "OSRelease"
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "key",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "key",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "CustomIncludedFilesEntry",
-              "options": {
-                "mapEntry": true
-              }
-            },
-            {
-              "field": [
-                {
-                  "jsonName": "key",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "key",
-                  "number": 1,
-                  "type": "TYPE_STRING"
-                },
-                {
-                  "jsonName": "value",
-                  "label": "LABEL_OPTIONAL",
-                  "name": "value",
-                  "number": 2,
-                  "type": "TYPE_STRING"
-                }
-              ],
-              "name": "CustomPackagesEntry",
-              "options": {
-                "mapEntry": true
-              }
-            }
-          ]
-        }
-      ],
-      "name": "chromiumos/test/lab/api/wifi_router.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api"
       },
@@ -35496,6 +38489,13 @@
               "name": "device_name",
               "number": 5,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "endTime",
+              "label": "LABEL_OPTIONAL",
+              "name": "end_time",
+              "number": 6,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "TaskWithState"

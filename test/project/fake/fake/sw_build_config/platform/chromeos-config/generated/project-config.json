@@ -380,6 +380,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -760,6 +763,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -1006,8 +1012,10 @@
         },
         "keyboard": {
           "backlight": true,
-          "mcutype": "prism_rgb_controller",
-          "numpad": true
+          "bottom-left-layout": "keyboard_bottom_left_3_keys",
+          "bottom-right-layout": "keyboard_bottom_right_2_keys",
+          "numpad": true,
+          "numpad-layout": "numeric_pad_4_column"
         },
         "modem": {
           "firmware-variant": "fakemodem",
@@ -1021,8 +1029,6 @@
           "has-ambient-light-sensor": "3",
           "has-keyboard-backlight": "1",
           "internal-backlight-als-steps": "80.0 63.4 -1 400\n100.0 100 -1",
-          "keyboard-backlight-als-steps": "40.0 -1 20\n0.0 15 -1",
-          "keyboard-backlight-user-steps": "0.0\n10.0\n20.0\n40.0\n60.0\n100.0",
           "suspend-to-idle": "0",
           "turn-off-screen-timeout-ms": "3000",
           "usb-min-ac-watts": "20",
@@ -1144,6 +1150,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -1388,6 +1397,7 @@
           "signature-id": "project_a"
         },
         "hardware-properties": {
+          "ec-max-sensor-odr": 50000,
           "form-factor": "CONVERTIBLE",
           "has-audio-jack": true,
           "has-backlight": true,
@@ -1641,6 +1651,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -1827,6 +1840,9 @@
           "product-id": 1000,
           "vendor-id": 6353
         },
+        "disk-layout": {
+          "default-key-stateful": true
+        },
         "firmware": {
           "bcs-overlay": "overlay-fake_program-private",
           "build-targets": {
@@ -2006,6 +2022,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/project_b_default/33/dptf.dv",
@@ -2379,6 +2398,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/project_b_default/dptf.dv",
@@ -2788,6 +2810,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/project_b_default/dptf.dv",
           "files": [
@@ -3169,6 +3194,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/project_b_default/dptf.dv",
           "files": [
@@ -3530,6 +3558,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -3920,6 +3951,9 @@
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -4277,6 +4311,9 @@
         },
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -4645,6 +4682,9 @@
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -5002,6 +5042,9 @@
         },
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -5366,6 +5409,9 @@
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -5728,6 +5774,9 @@
         },
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -6097,6 +6146,9 @@
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -6455,6 +6507,9 @@
         },
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -6824,6 +6879,9 @@
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -7182,6 +7240,9 @@
         },
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -7547,6 +7608,9 @@
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -7911,6 +7975,9 @@
         "spi-flash-transform": {
           "W25Q32BV/W25Q32CV/W25Q32DV": "W25Q32DV"
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -8268,6 +8335,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -8634,6 +8704,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -8998,6 +9071,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -9364,6 +9440,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -9719,6 +9798,9 @@
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
         },
+        "swap": {
+          "size-multiplier": 1.5
+        },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
           "files": [
@@ -9934,6 +10016,7 @@
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
+          "shutdown-from-suspend-sec": "0",
           "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "90",
@@ -10053,6 +10136,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -10263,6 +10349,7 @@
           "internal-backlight-no-als-ac-brightness": "80.1",
           "internal-backlight-no-als-battery-brightness": "63.2",
           "min-visible-backlight-level": "1000",
+          "shutdown-from-suspend-sec": "0",
           "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
@@ -10382,6 +10469,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",
@@ -10592,6 +10682,7 @@
           "has-ambient-light-sensor": "1",
           "internal-backlight-als-steps": "80.1 60.1 -1 400\n100.0 100 -1",
           "min-visible-backlight-level": "1000",
+          "shutdown-from-suspend-sec": "0",
           "suspend-to-idle": "1",
           "turn-off-screen-timeout-ms": "0",
           "usb-min-ac-watts": "20",
@@ -10711,6 +10802,9 @@
           "boost-urgent": 20,
           "cpuset-nonurgent": "0-5",
           "input-boost": 15
+        },
+        "swap": {
+          "size-multiplier": 1.5
         },
         "thermal": {
           "dptf-dv": "fake/default/dptf.dv",

@@ -40,6 +40,7 @@ _LAUNCHED_PUBLIC_FIELDS = [
     "platform.resource_config",
     "platform.scheduler_tune",
     "platform.schedqos_config",
+    "platform.swap_config",
     "mosys_platform_name",
     "generate_camera_media_profiles",
 ]
@@ -141,6 +142,17 @@ def _create_signer_config_by_design(design_id, key_id):
 def _create_signer_configs_by_design(configs):
     return [_create_signer_config_by_design(id, key) for id, key in configs.items()]
 
+def _create_swap_config(
+        size_multiplier = None):
+    swap_config = None
+    if any([
+        size_multiplier != None,
+    ]):
+        swap_config = program_pb.Program.Platform.SwapConfig(
+            size_multiplier = size_multiplier,
+        )
+    return swap_config
+
 def _create_platform(
         soc_family,
         soc_arch,
@@ -158,7 +170,8 @@ def _create_platform(
         hevc_support = None,
         arc_media_codecs_suffix = None,
         resource = None,
-        schedqos = None):
+        schedqos = None,
+        swap_config = None):
     capabilities = None
     if any([
         suspend_to_idle != None,
@@ -207,6 +220,7 @@ def _create_platform(
         hevc_support = hw_topo.bool_to_present(hevc_support),
         resource_config = resource,
         schedqos_config = schedqos,
+        swap_config = swap_config,
     )
 
 def _create_audio_config(
@@ -306,6 +320,7 @@ program = struct(
     create_schedqos = _create_schedqos,
     create_schedqos_config_set = _create_schedqos_config_set,
     create_schedqos_thread_config = _create_schedqos_thread_config,
+    create_swap_config = _create_swap_config,
     generate = generate.generate,
     platform = program_pb.Program.Platform,
     schedqos_cpuset_cgroup = _SCHEDQOS_CPUSET_CGROUP,

@@ -90,6 +90,7 @@ def _append_configs(
         audio = None,
         wifi = None,
         camera = None,
+        disk_layout = None,
         health = None,
         nnpalm = None,
         ui = None,
@@ -132,6 +133,7 @@ def _append_configs(
             single AudioConfig or a list of AudioConfigs.
         wifi: A WifiConfig to be used in the SoftwareConfig.
         camera: A CameraConfig to be used in the SoftwareConfig.
+        disk_layout: Define disk layout override, to be used in the SoftwareConfig.
         health: A HealthConfig to be used in the SoftwareConfig.
         nnpalm: A NnpalmConfig to be used in the SoftwareConfig.
         ui: A UiConfig to be used in the SoftwareConfig.
@@ -208,6 +210,7 @@ def _append_configs(
             sw_config.audio_configs.append(audio)
     sw_config.wifi_config = wifi
     sw_config.camera_config = camera
+    sw_config.disk_layout = disk_layout
     sw_config.health_config = health
     sw_config.nnpalm_config = nnpalm
     sw_config.ui_config = ui
@@ -321,6 +324,7 @@ def _create_design_with_configs(
         bluetooth = None,
         power = None,
         camera = None,
+        disk_layout = None,
         health = None,
         ui = None,
         frid = None,
@@ -375,6 +379,7 @@ def _create_design_with_configs(
         firmware_info: Information related to runtime firmware,
         bluetooth: A BluetoothConfig to be used in the SoftwareConfig.
         power: A PowerConfig to be used in the SoftwareConfig.
+        disk_layout: Define disk layout override, to be used in the SoftwareConfig.
         camera: A CameraConfig to be used in the SoftwareConfig.
         health: A HealthConfig to be used in the SoftwareConfig.
         ui: A UiConfig to be used in the SoftwareConfig.
@@ -457,6 +462,7 @@ def _create_design_with_configs(
                 bluetooth = bluetooth,
                 power = power,
                 camera = camera,
+                disk_layout = disk_layout,
                 health = health,
                 ui = ui,
                 frid = frid,

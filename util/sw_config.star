@@ -24,6 +24,10 @@ load(
     cam_pb = "chromiumos.config.api.software",
 )
 load(
+    "@proto//chromiumos/config/api/software/disk_layout.proto",
+    disk_layout_pb = "chromiumos.config.api.software",
+)
+load(
     "@proto//chromiumos/config/api/software/firmware_info.proto",
     fw_info_pb = "chromiumos.config.api.software",
 )
@@ -64,6 +68,7 @@ _FW_TYPE = struct(
     MAIN = fw_pb.FirmwareType.MAIN,
     EC = fw_pb.FirmwareType.EC,
     PD = fw_pb.FirmwareType.PD,
+    ISH = fw_pb.FirmwareType.ISH,
 )
 
 _HASH_ALGORITHM = struct(
@@ -186,12 +191,14 @@ def _create_fw_payloads_by_names(
         ap_fw_name = None,
         ec_fw_name = None,
         pd_fw_name = None,
+        ish_fw_name = None,
         ap_ro_version = None,
         ap_rw_version = None,
         ec_ro_version = None,
         ec_rw_version = None,
         ec_version = None,
         pd_version = None,
+        ish_version = None,
         ap_rw_a_hash = None,
         ap_rw_a_hash_algorithm = _HASH_ALGORITHM.MD5SUM,
         has_ec_component_manifest = False):
@@ -231,6 +238,12 @@ def _create_fw_payloads_by_names(
             firmware_image_name = pd_fw_name,
             type = _FW_TYPE.PD,
             version = pd_version,
+        )
+    if ish_fw_name:
+        sc_fw_config.ish_payload = fw_pb.FirmwarePayload(
+            firmware_image_name = ish_fw_name,
+            type = _FW_TYPE.ISH,
+            version = ish_version,
         )
 
     if ap_rw_a_hash:
@@ -323,6 +336,15 @@ def _create_fw_info(
         )
 
     return firmware_info
+
+def _create_disk_layout(
+        default_key_stateful = False):
+    """Builds an DiskLayout proto."""
+    disk_layout = None
+    if default_key_stateful:
+        disk_layout = disk_layout_pb.DiskLayout(default_key_stateful = default_key_stateful)
+
+    return disk_layout
 
 def _create_ssfc_probeable_component(
         identifier = None,
@@ -847,7 +869,7 @@ def _create_intel_dsm_enablement_11be_countries(
         china: enable channel for China region.
         south_korea: enable channel for South Korea region.
     """
-    return wf_pb.WifiConfig.IntelConfig.DSM.Enablement11beCountries(
+    return wf_pb.WifiConfig.IntelConfig.Dsm.Enablement11beCountries(
         china = china,
         south_korea = south_korea,
     )
@@ -883,7 +905,7 @@ def _create_intel_dsm_energy_detection_threshold(
         uhb_6g8: Enable EDT optimization for UHB_6G8
         uhb_7g0: Enable EDT optimization for UHB_7G0
     """
-    return wf_pb.WifiConfig.IntelConfig.DSM.EnergyDetectionThreshold(
+    return wf_pb.WifiConfig.IntelConfig.Dsm.EnergyDetectionThreshold(
         revision = revision,
         etsi_hb = etsi_hb,
         fcc_uhb = fcc_uhb,
@@ -908,7 +930,7 @@ def _create_intel_dsm_rfi_mitigation(
         dlvr: Enable DLVR mitigation
         ddr: Enable DDR mitigation
     """
-    return wf_pb.WifiConfig.IntelConfig.DSM.RFIMitigation(
+    return wf_pb.WifiConfig.IntelConfig.Dsm.RfiMitigation(
         dlvr = dlvr,
         ddr = ddr,
     )
@@ -924,7 +946,7 @@ def _create_intel_dsm(
         enablement_11be_countries = None,
         rfi_mitigation = None,
         energy_detection_threshold = None):
-    """Builds a DSM for intel drivers.
+    """Builds a Dsm for intel drivers.
 
     Args:
         disable_active_sdr_channels: Allow OEMs to set ETSI 5.8GHz SRD Channels to Passive/Disabled.
@@ -938,7 +960,7 @@ def _create_intel_dsm(
         energy_detection_threshold: Control enablement of EDT optimization.
         rfi_mitigation: Control of RFI mitigation
     """
-    return wf_pb.WifiConfig.IntelConfig.DSM(
+    return wf_pb.WifiConfig.IntelConfig.Dsm(
         disable_active_sdr_channels = disable_active_sdr_channels,
         support_indonesia_5g_band = support_indonesia_5g_band,
         support_ultra_high_band = support_ultra_high_band,
@@ -986,8 +1008,31 @@ def _create_intel_sar_table(
         cdb_non_tablet_mode_power_table_b = cdb_non_tablet_mode_transmit_power_chain_b,
     )
 
+def _create_intel_bluetooth_sar_power_table(
+        restriction_for_2g4 = 0,
+        restriction_for_5g2 = 0,
+        restriction_for_5g8_5g9 = 0,
+        restriction_for_6g1 = 0,
+        restriction_for_6g3 = 0):
+    """Builds Bluetooth SAR Power Table for intel drivers.
+
+    Args:
+        restriction_for_2g4: power restriction for chain in sub-band 2G4.
+        restriction_for_5g2: power restriction for chain in sub-band 5G2.
+        restriction_for_5g8_5g9: power restriction for chain in sub-band 5G8 and 5G9.
+        restriction_for_6g1: power restriction for chain in sub-band 6G1.
+        restriction_for_6g3: power restriction for chain in sub-band 6G3.
+    """
+    return wf_pb.WifiConfig.IntelConfig.BluetoothSarPowerTable(
+        restriction_for_2g4 = restriction_for_2g4,
+        restriction_for_5g2 = restriction_for_5g2,
+        restriction_for_5g8_5g9 = restriction_for_5g8_5g9,
+        restriction_for_6g1 = restriction_for_6g1,
+        restriction_for_6g3 = restriction_for_6g3,
+    )
+
 def _create_intel_bt_sar(
-        revision,  # only revision 1 is supported at the moment
+        revision,  # only revision 1 and 2 are supported at the moment
         increased_power_mode_limitation = 0,
         sar_lb_power_restriction = 0,
         br_modulation = 0,
@@ -995,7 +1040,9 @@ def _create_intel_bt_sar(
         edr3_modulation = 0,
         le_modulation = 0,
         le2_mhz_modulation = 0,
-        le_lr_modulation = 0):
+        le_lr_modulation = 0,
+        set_1_chain_a = None,
+        set_1_chain_b = None):
     """Builds a Bluetooth SAR proto for use with intel drivers.
 
     Args:
@@ -1008,18 +1055,30 @@ def _create_intel_bt_sar(
         le_modulation: power restriction for LE Modulation.
         le2_mhz_modulation: power restriction for LE 2 MHz Modulation.
         le_lr_modulation: power restriction for LE LR Modulation.
+        set_1_chain_a: First set Chain A SAR power table.
+        set_1_chain_b: First set Chain B SAR power table.
     """
-    return wf_pb.WifiConfig.IntelConfig.BluetoothSAR(
-        revision = revision,
-        increased_power_mode_limitation = increased_power_mode_limitation,
-        sar_lb_power_restriction = sar_lb_power_restriction,
-        br_modulation = br_modulation,
-        edr2_modulation = edr2_modulation,
-        edr3_modulation = edr3_modulation,
-        le_modulation = le_modulation,
-        le2_mhz_modulation = le2_mhz_modulation,
-        le_lr_modulation = le_lr_modulation,
-    )
+    if revision not in [1, 2]:
+        fail("Invalid Intel Bluetooth SAR revision (should be 1 or 2)")
+    elif revision == 1:
+        return wf_pb.WifiConfig.IntelConfig.BluetoothSar(
+            revision = revision,
+            increased_power_mode_limitation = increased_power_mode_limitation,
+            sar_lb_power_restriction = sar_lb_power_restriction,
+            br_modulation = br_modulation,
+            edr2_modulation = edr2_modulation,
+            edr3_modulation = edr3_modulation,
+            le_modulation = le_modulation,
+            le2_mhz_modulation = le2_mhz_modulation,
+            le_lr_modulation = le_lr_modulation,
+        )
+    else:
+        return wf_pb.WifiConfig.IntelConfig.BluetoothSar(
+            revision = revision,
+            increased_power_mode_limitation = increased_power_mode_limitation,
+            set_1_chain_a = set_1_chain_a or _create_intel_bluetooth_sar_power_table(),
+            set_1_chain_b = set_1_chain_b or _create_intel_bluetooth_sar_power_table(),
+        )
 
 def _create_intel_wbem_country_enablement(
         japan = False,
@@ -1030,7 +1089,7 @@ def _create_intel_wbem_country_enablement(
         japan: enable channel for Japan region.
         south_korea: enable channel for South Korea region.
     """
-    return wf_pb.WifiConfig.IntelConfig.WBEM.EnablementWbemCountries(
+    return wf_pb.WifiConfig.IntelConfig.Wbem.EnablementWbemCountries(
         japan = japan,
         south_korea = south_korea,
     )
@@ -1038,15 +1097,314 @@ def _create_intel_wbem_country_enablement(
 def _create_intel_wbem(
         revision,  # only revision 0 is supported at the moment
         enablement_wbem_countries = _create_intel_wbem_country_enablement()):
-    """Builds a WBEM proto for use with intel drivers.
+    """Builds a Wbem proto for use with intel drivers.
 
     Args:
         revision: WBEM table revision.
         enablement_wbem_countries: Enable/Disable of Wi-Fi 320MHz per MCC.
     """
-    return wf_pb.WifiConfig.IntelConfig.WBEM(
+    if revision != 0:
+        fail("Invalid Intel WBEM revision (should be 0)")
+    return wf_pb.WifiConfig.IntelConfig.Wbem(
         revision = revision,
         enablement_wbem_countries = enablement_wbem_countries,
+    )
+
+def _create_intel_bpag_country_enablement(
+        eu = False,
+        china = False,
+        eu_uhb = False,
+        fcc_uhb = False,
+        ised_uhb = False):
+    """Builds country enablement parameters for intel drivers.
+
+    Args:
+        eu: enable per platform antenna gain mode for EU region.
+        china: enable per platform antenna gain mode for china region.
+        eu_uhb: enable per platform antenna gain mode for EU UHB region.
+        fcc_uhb: enable per platform antenna gain mode for FCC UHB region.
+        ised_uhb: enable per platform antenna gain mode for ISED UHB region.
+
+    """
+    return wf_pb.WifiConfig.IntelConfig.BluetoothPpag.EnablementBpagCountries(
+        eu = eu,
+        china = china,
+        eu_uhb = eu_uhb,
+        fcc_uhb = fcc_uhb,
+        ised_uhb = ised_uhb,
+    )
+
+def _create_intel_bpag(
+        revision,  # only revision 1 and 2 are supported at the moment
+        enablement_bpag_countries = _create_intel_bpag_country_enablement()):
+    """Builds a BluetoothPpag proto for use with intel drivers.
+
+    Args:
+        revision: BluetoothPPAG table revision.
+        enablement_bpag_countries: Enable/Disable Antenna Gain Mode per region.
+    """
+    if revision not in [1, 2]:
+        fail("Invalid Intel BPAG revision (should be 1 or 2)")
+    return wf_pb.WifiConfig.IntelConfig.BluetoothPpag(
+        revision = revision,
+        enablement_bpag_countries = enablement_bpag_countries,
+    )
+
+def _create_intel_bbfb(
+        revision,  # only revision 1 is supported at the moment
+        enable_quad_filter_bypass = False):
+    """Builds a Bbfb proto for use with intel drivers.
+
+    Args:
+        revision: BBFB table revision.
+        enable_quad_filter_bypass: Enable/Disable quad filter bypass.
+    """
+    if revision != 1:
+        fail("Invalid Intel BBFB revision (should be 1)")
+    return wf_pb.WifiConfig.IntelConfig.Bbfb(
+        revision = revision,
+        enable_quad_filter_bypass = enable_quad_filter_bypass,
+    )
+
+def _create_intel_bdcm_dual_chain_mode(
+        chain_a_and_chain_b = False):
+    """Builds dual chain mode parameters for intel drivers.
+
+    Args:
+        chain_a_and_chain_b: enable chain A and chain B dual mode.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bdcm.BdcmDualChainMode(
+        chain_a_and_chain_b = chain_a_and_chain_b,
+    )
+
+def _create_intel_bdcm(
+        revision,  # only revision 1 is supported at the moment
+        bdcm_dual_chain_mode = _create_intel_bdcm_dual_chain_mode()):
+    """Builds a Bdcm proto for use with intel drivers.
+
+    Args:
+        revision: BDCM table revision.
+        bdcm_dual_chain_mode: Dual Chain Mode setting.
+    """
+    if revision != 1:
+        fail("Invalid Intel BDCM revision (should be 1)")
+    return wf_pb.WifiConfig.IntelConfig.Bdcm(
+        revision = revision,
+        bdcm_dual_chain_mode = bdcm_dual_chain_mode,
+    )
+
+def _create_intel_bbsm_bands_selection(
+        band_2_4_ghz_disable = False,
+        band_5_2_ghz_disable = False,
+        band_5_8_ghz_disable = False,
+        band_6_2_ghz_disable = False):
+    """Builds Bluetooth bands selection parameters for intel drivers.
+
+    Args:
+        band_2_4_ghz_disable: Force disable 2.4 GHz band.
+        band_5_2_ghz_disable: Force disable 5.2 GHz band.
+        band_5_8_ghz_disable: Force disable 5.8 GHz band.
+        band_6_2_ghz_disable: Force disable 6.2 GHz band.
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bbsm.BbsmBandsSelection(
+        band_2_4_ghz_disable = band_2_4_ghz_disable,
+        band_5_2_ghz_disable = band_5_2_ghz_disable,
+        band_5_8_ghz_disable = band_5_8_ghz_disable,
+        band_6_2_ghz_disable = band_6_2_ghz_disable,
+    )
+
+def _create_intel_bbsm(
+        revision,  # only revision 1 is supported at the moment
+        bands_selection = _create_intel_bbsm_bands_selection()):
+    """Builds a Bbsm proto for use with intel drivers.
+
+    Args:
+        revision: BBSM table revision.
+        bands_selection: Bluetooth bands selection.
+    """
+    if revision != 1:
+        fail("Invalid Intel BBSM revision (should be 1)")
+    return wf_pb.WifiConfig.IntelConfig.Bbsm(
+        revision = revision,
+        bands_selection = bands_selection,
+    )
+
+def _create_intel_bucs_uhb_country_selection(
+        force_disable_bt_in_all_other_countries = False,
+        allow_6_ghz_in_usa = False,
+        allow_6_ghz_in_rest_of_the_world = False,
+        allow_6_ghz_in_eu = False,
+        allow_6_ghz_in_south_korea = False,
+        allow_6_ghz_in_brazil = False,
+        allow_6_ghz_in_chile = False,
+        allow_6_ghz_in_japan = False,
+        allow_6_ghz_in_canada = False,
+        allow_6_ghz_in_morocco = False,
+        allow_6_ghz_in_mongolia = False,
+        allow_6_ghz_in_malaysia = False,
+        allow_6_ghz_in_saudi_arabia = False,
+        allow_6_ghz_in_mexico = False,
+        allow_6_ghz_in_nigeria = False,
+        allow_6_ghz_in_thailand = False,
+        allow_6_ghz_in_singapore = False,
+        allow_6_ghz_in_taiwan = False,
+        allow_6_ghz_in_south_africa = False):
+    """Builds Bluetooth Ultra-High band country selection parameters for intel drivers.
+
+    Args:
+        force_disable_bt_in_all_other_countries: Disable for all countries not covered by the other fields,
+        allow_6_ghz_in_usa: Allow 6 GHz band for the Allow 6 GHz band for the USA
+        allow_6_ghz_in_rest_of_the_world: Allow 6 GHz band for the rest of the world
+        allow_6_ghz_in_eu: Allow 6 GHz band for the European Union
+        allow_6_ghz_in_south_korea: Allow 6 GHz band for South Korea
+        allow_6_ghz_in_brazil: Allow 6 GHz band for Brazil
+        allow_6_ghz_in_chile: Allow 6 GHz band for Chile
+        allow_6_ghz_in_japan: Allow 6 GHz band for Japan
+        allow_6_ghz_in_canada: Allow 6 GHz band for Canada
+        allow_6_ghz_in_morocco: Allow 6 GHz band for Morocco
+        allow_6_ghz_in_mongolia: Allow 6 GHz band for the Mongolia
+        allow_6_ghz_in_malaysia: Allow 6 GHz band for the Malaysia
+        allow_6_ghz_in_saudi_arabia = Allow 6 GHz band for Saudi Arabia
+        allow_6_ghz_in_mexico = Allow 6 GHz band for Mexico
+        allow_6_ghz_in_nigeria = Allow 6 GHz band for Nigeria
+        allow_6_ghz_in_thailand = Allow 6 GHz band for Thailand
+        allow_6_ghz_in_singapore = Allow 6 GHz band for Singapore
+        allow_6_ghz_in_taiwan = Allow 6 GHz band for Taiwan
+        allow_6_ghz_in_south_africa = Allow 6 GHz band for South Africa
+    """
+    return wf_pb.WifiConfig.IntelConfig.Bucs.BucsUhbCountrySelection(
+        force_disable_bt_in_all_other_countries = force_disable_bt_in_all_other_countries,
+        allow_6_ghz_in_usa = allow_6_ghz_in_usa,
+        allow_6_ghz_in_rest_of_the_world = allow_6_ghz_in_rest_of_the_world,
+        allow_6_ghz_in_eu = allow_6_ghz_in_eu,
+        allow_6_ghz_in_south_korea = allow_6_ghz_in_south_korea,
+        allow_6_ghz_in_brazil = allow_6_ghz_in_brazil,
+        allow_6_ghz_in_chile = allow_6_ghz_in_chile,
+        allow_6_ghz_in_japan = allow_6_ghz_in_japan,
+        allow_6_ghz_in_canada = allow_6_ghz_in_canada,
+        allow_6_ghz_in_morocco = allow_6_ghz_in_morocco,
+        allow_6_ghz_in_mongolia = allow_6_ghz_in_mongolia,
+        allow_6_ghz_in_malaysia = allow_6_ghz_in_malaysia,
+        allow_6_ghz_in_saudi_arabia = allow_6_ghz_in_saudi_arabia,
+        allow_6_ghz_in_mexico = allow_6_ghz_in_mexico,
+        allow_6_ghz_in_nigeria = allow_6_ghz_in_nigeria,
+        allow_6_ghz_in_thailand = allow_6_ghz_in_thailand,
+        allow_6_ghz_in_singapore = allow_6_ghz_in_singapore,
+        allow_6_ghz_in_taiwan = allow_6_ghz_in_taiwan,
+        allow_6_ghz_in_south_africa = allow_6_ghz_in_south_africa,
+    )
+
+def _create_intel_bucs(
+        revision,  # only revision 1 is supported at the moment
+        uhb_country_selection = _create_intel_bucs_uhb_country_selection()):
+    """Builds a Bucs proto for use with intel drivers.
+
+    Args:
+        revision: BUCS table revision.
+        uhb_country_selection: Ultra-High Band Country selection.
+    """
+    if revision != 1:
+        fail("Invalid Intel BUCS revision (should be 1)")
+    return wf_pb.WifiConfig.IntelConfig.Bucs(
+        revision = revision,
+        uhb_country_selection = uhb_country_selection,
+    )
+
+def _create_intel_bdmm(
+        revision,  # only revision 1 is supported at the moment
+        dual_mac_enable = False):
+    """Builds a Bdmm proto for use with intel drivers.
+
+    Args:
+        revision: BDMM table revision.
+        dual_mac_enable: Bluetooth Dual Mac enable.
+    """
+    if revision != 1:
+        fail("Invalid Intel BDMM revision (should be 1)")
+    return wf_pb.WifiConfig.IntelConfig.Bdmm(
+        revision = revision,
+        dual_mac_enable = dual_mac_enable,
+    )
+
+def _create_intel_ebrd(
+        revision,  # only revision 1 is supported at the moment
+        dynamic_sar_enable = False,
+        number_of_optional_sar = 0,
+        set_2_chain_a = _create_intel_bluetooth_sar_power_table(),
+        set_2_chain_b = _create_intel_bluetooth_sar_power_table(),
+        set_3_chain_a = _create_intel_bluetooth_sar_power_table(),
+        set_3_chain_b = _create_intel_bluetooth_sar_power_table(),
+        set_4_chain_a = _create_intel_bluetooth_sar_power_table(),
+        set_4_chain_b = _create_intel_bluetooth_sar_power_table()):
+    """Builds a Extended Bluetooth Regulatory Descriptor (Ebrd) proto for use with intel drivers.
+
+    Args:
+        revision: EBRD table revision.
+        dynamic_sar_enable: Enable Bluetooth Dynamic SAR.
+        number_of_optional_sar = Number of optional sets defined.
+        set_2_chain_a: Second set Chain A SAR power table.
+        set_2_chain_b: Second set Chain B SAR power table.
+        set_3_chain_a: Third set Chain A SAR power table.
+        set_3_chain_b: Third set Chain B SAR power table.
+        set_4_chain_a: Fourth set Chain A SAR power table.
+        set_4_chain_b: Fourth set Chain B SAR power table.
+    """
+    if revision != 1:
+        fail("Invalid Intel EBRD revision (should be 1)")
+    return wf_pb.WifiConfig.IntelConfig.Ebrd(
+        revision = revision,
+        dynamic_sar_enable = dynamic_sar_enable,
+        number_of_optional_sar = number_of_optional_sar,
+        set_2_chain_a = set_2_chain_a,
+        set_2_chain_b = set_2_chain_b,
+        set_3_chain_a = set_3_chain_a,
+        set_3_chain_b = set_3_chain_b,
+        set_4_chain_a = set_4_chain_a,
+        set_4_chain_b = set_4_chain_b,
+    )
+
+def _create_intel_wpfc(
+        revision,  # only revision 0 is supported at the moment
+        filter_cfg_chain_a = 0,
+        filter_cfg_chain_b = 0,
+        filter_cfg_chain_c = 0,
+        filter_cfg_chain_d = 0):
+    """Builds a Wpfc proto for use with intel drivers.
+
+    Args:
+        revision: WPFC table revision.
+        filter_cfg_chain_a: Chain A Filter Platform Configuration
+        filter_cfg_chain_b: Chain B Filter Platform Configuration
+        filter_cfg_chain_c: Chain C Filter Platform Configuration
+        filter_cfg_chain_d: Chain D Filter Platform Configuration
+    """
+    if revision != 0:
+        fail("Invalid Intel WPFC revision (should be 0)")
+    return wf_pb.WifiConfig.IntelConfig.Wpfc(
+        revision = revision,
+        filter_cfg_chain_a = filter_cfg_chain_a,
+        filter_cfg_chain_b = filter_cfg_chain_b,
+        filter_cfg_chain_c = filter_cfg_chain_c,
+        filter_cfg_chain_d = filter_cfg_chain_d,
+    )
+
+def _create_intel_dsbr(
+        revision,  # only revision 0 and 1 are supported at the moment
+        override = True,
+        bluetooth_radio_resistor_ohm = 33):
+    """Builds a Dsbr proto for use with intel drivers.
+
+    Args:
+        revision: DSBR table revision.
+        override: Override device FW default values
+        bluetooth_radio_resistor_ohm: Override value
+    """
+    if revision not in [0, 1]:
+        fail("Invalid Intel DSBR revision (should be 0 or 1)")
+    return wf_pb.WifiConfig.IntelConfig.Dsbr(
+        revision = revision,
+        override = override,
+        bluetooth_radio_resistor_ohm = bluetooth_radio_resistor_ohm,
     )
 
 def _create_intel_offsets_table(
@@ -1142,7 +1500,16 @@ def _create_intel_wifi(
         wtas_table = None,
         dsm = None,
         bt_sar = None,
-        wbem = None):
+        wbem = None,
+        bpag = None,
+        bbfb = None,
+        bdcm = None,
+        bbsm = None,
+        bucs = None,
+        bdmm = None,
+        ebrd = None,
+        wpfc = None,
+        dsbr = None):
     """Builds a IntelConfig proto for use with intel drivers.
 
     Args:
@@ -1151,8 +1518,17 @@ def _create_intel_wifi(
         ant_table: Antenna Gains for use with intel driver.
         wtas_table: Time average SAR for use with intel driver.
         dsm: Device specific methods return values for intel driver.
-        bt_sar: BluetoothSAR proto for use with intel driver.
-        wbem: WBEM proto for use with intel driver.
+        bt_sar: BluetoothSar proto for use with intel driver.
+        wbem: Wbem proto for use with intel driver.
+        bpag: BluetoothPpag proto for use with intel driver.
+        bbfb: Bbfb proto for use with intel driver.
+        bdcm: Bdcm proto for use with intel driver.
+        bbsm: Bbsm proto for use with intel driver.
+        bucs: Bucs proto for use with intel driver.
+        bdmm: Bdmm proto for use with intel driver.
+        ebrd: Ebrd proto for use with intel driver.
+        wpfc: Wpfc proto for use with intel driver.
+        dsbr: Dsbr proto for use with intel driver.
     """
     return wf_pb.WifiConfig(
         intel_config = wf_pb.WifiConfig.IntelConfig(
@@ -1163,6 +1539,15 @@ def _create_intel_wifi(
             dsm = dsm,
             bt_sar = bt_sar,
             wbem = wbem,
+            bpag = bpag,
+            bbfb = bbfb,
+            bdcm = bdcm,
+            bbsm = bbsm,
+            bucs = bucs,
+            bdmm = bdmm,
+            ebrd = ebrd,
+            wpfc = wpfc,
+            dsbr = dsbr,
         ),
     )
 
@@ -1332,6 +1717,7 @@ sw_config = struct(
     create_audio = _create_audio,
     create_bluetooth = _create_bluetooth,
     create_camera = _create_camera,
+    create_disk_layout = _create_disk_layout,
     create_fw_info = _create_fw_info,
     create_fw_version = _create_fw_version,
     create_fw_payload = _create_fw_payload,
@@ -1370,9 +1756,23 @@ sw_config = struct(
     create_intel_dsm_energy_detection_threshold = _create_intel_dsm_energy_detection_threshold,
     create_intel_dsm_rfi_mitigation = _create_intel_dsm_rfi_mitigation,
     create_intel_dsm = _create_intel_dsm,
+    create_intel_bluetooth_sar_power_table = _create_intel_bluetooth_sar_power_table,
     create_intel_bt_sar = _create_intel_bt_sar,
     create_intel_wbem_country_enablement = _create_intel_wbem_country_enablement,
     create_intel_wbem = _create_intel_wbem,
+    create_intel_bpag_country_enablement = _create_intel_bpag_country_enablement,
+    create_intel_bpag = _create_intel_bpag,
+    create_intel_bbfb = _create_intel_bbfb,
+    create_intel_bdcm_dual_chain_mode = _create_intel_bdcm_dual_chain_mode,
+    create_intel_bdcm = _create_intel_bdcm,
+    create_intel_bbsm_bands_selection = _create_intel_bbsm_bands_selection,
+    create_intel_bbsm = _create_intel_bbsm,
+    create_intel_bucs_uhb_country_selection = _create_intel_bucs_uhb_country_selection,
+    create_intel_bucs = _create_intel_bucs,
+    create_intel_bdmm = _create_intel_bdmm,
+    create_intel_ebrd = _create_intel_ebrd,
+    create_intel_wpfc = _create_intel_wpfc,
+    create_intel_dsbr = _create_intel_dsbr,
     create_intel_geo_offsets = _create_intel_geo_offsets,
     create_intel_offsets_table = _create_intel_offsets_table,
     create_intel_power_chain = _create_intel_power_chain,

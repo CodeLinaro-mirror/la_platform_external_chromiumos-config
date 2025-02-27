@@ -196,6 +196,12 @@ message Program {
     ResourceConfig resource_config = 10;
 
     SchedqosConfig schedqos_config = 11;
+
+    message SwapConfig {
+      // The size of zram swap in the multiplier of the physical memory.
+      double size_multiplier = 1;
+    }
+    SwapConfig swap_config = 12;
   }
   Platform platform = 11;
 

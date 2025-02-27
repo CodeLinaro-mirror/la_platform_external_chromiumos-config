@@ -42,6 +42,14 @@ message CrosTestRequest {
   google.protobuf.Any metadata = 5;
   // Generic args which will be directly passed to the harness. The driver is responsible for handling them
   repeated Arg args = 6;
+
+  // Publish server address.
+  repeated PublishServer publish_servers = 7;
+}
+
+message PublishServer {
+  string name = 1;
+  chromiumos.test.lab.api.IpEndpoint address = 2;
 }
 
 message CrosTestResponse {

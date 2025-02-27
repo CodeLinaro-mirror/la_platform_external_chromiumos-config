@@ -107,6 +107,7 @@ var CTPv2Service_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GenericFilterServiceClient interface {
 	Execute(ctx context.Context, in *InternalTestplan, opts ...grpc.CallOption) (*InternalTestplan, error)
+	ExecuteStream(ctx context.Context, opts ...grpc.CallOption) (GenericFilterService_ExecuteStreamClient, error)
 }
 
 type genericFilterServiceClient struct {
@@ -126,11 +127,43 @@ func (c *genericFilterServiceClient) Execute(ctx context.Context, in *InternalTe
 	return out, nil
 }
 
+func (c *genericFilterServiceClient) ExecuteStream(ctx context.Context, opts ...grpc.CallOption) (GenericFilterService_ExecuteStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &GenericFilterService_ServiceDesc.Streams[0], "/chromiumos.test.api.GenericFilterService/ExecuteStream", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &genericFilterServiceExecuteStreamClient{stream}
+	return x, nil
+}
+
+type GenericFilterService_ExecuteStreamClient interface {
+	Send(*InternalTestplanFragment) error
+	Recv() (*InternalTestplanFragment, error)
+	grpc.ClientStream
+}
+
+type genericFilterServiceExecuteStreamClient struct {
+	grpc.ClientStream
+}
+
+func (x *genericFilterServiceExecuteStreamClient) Send(m *InternalTestplanFragment) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *genericFilterServiceExecuteStreamClient) Recv() (*InternalTestplanFragment, error) {
+	m := new(InternalTestplanFragment)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // GenericFilterServiceServer is the server API for GenericFilterService service.
 // All implementations should embed UnimplementedGenericFilterServiceServer
 // for forward compatibility
 type GenericFilterServiceServer interface {
 	Execute(context.Context, *InternalTestplan) (*InternalTestplan, error)
+	ExecuteStream(GenericFilterService_ExecuteStreamServer) error
 }
 
 // UnimplementedGenericFilterServiceServer should be embedded to have forward compatible implementations.
@@ -139,6 +172,9 @@ type UnimplementedGenericFilterServiceServer struct {
 
 func (UnimplementedGenericFilterServiceServer) Execute(context.Context, *InternalTestplan) (*InternalTestplan, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Execute not implemented")
+}
+func (UnimplementedGenericFilterServiceServer) ExecuteStream(GenericFilterService_ExecuteStreamServer) error {
+	return status.Errorf(codes.Unimplemented, "method ExecuteStream not implemented")
 }
 
 // UnsafeGenericFilterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -170,6 +206,32 @@ func _GenericFilterService_Execute_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GenericFilterService_ExecuteStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(GenericFilterServiceServer).ExecuteStream(&genericFilterServiceExecuteStreamServer{stream})
+}
+
+type GenericFilterService_ExecuteStreamServer interface {
+	Send(*InternalTestplanFragment) error
+	Recv() (*InternalTestplanFragment, error)
+	grpc.ServerStream
+}
+
+type genericFilterServiceExecuteStreamServer struct {
+	grpc.ServerStream
+}
+
+func (x *genericFilterServiceExecuteStreamServer) Send(m *InternalTestplanFragment) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *genericFilterServiceExecuteStreamServer) Recv() (*InternalTestplanFragment, error) {
+	m := new(InternalTestplanFragment)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // GenericFilterService_ServiceDesc is the grpc.ServiceDesc for GenericFilterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -182,6 +244,13 @@ var GenericFilterService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _GenericFilterService_Execute_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "ExecuteStream",
+			Handler:       _GenericFilterService_ExecuteStream_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
 	Metadata: "chromiumos/test/api/ctp2.proto",
 }
