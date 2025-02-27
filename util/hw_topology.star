@@ -1511,7 +1511,7 @@ def _create_volume_button(region, edge, position, id = None, description = None)
         ),
     )
 
-def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None, max_sensor_odr_mhz = None):
+def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None, max_sensor_odr_mhz = None, max_accelerometer_calibration = None):
     """Builds a Topology proto for an embedded controller.
 
     Args:
@@ -1526,6 +1526,8 @@ def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None, max_sensor_
     hw_features.embedded_controller.present = _bool_to_present(present)
     if max_sensor_odr_mhz != None:
         hw_features.embedded_controller.max_sensor_odr_mhz.value = max_sensor_odr_mhz
+    if max_accelerometer_calibration != None:
+        hw_features.embedded_controller.max_accelerometer_calibration.value = max_accelerometer_calibration
 
     return topo_pb.Topology(
         id = id or "ec",

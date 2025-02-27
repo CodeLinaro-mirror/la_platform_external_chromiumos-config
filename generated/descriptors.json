@@ -7889,6 +7889,14 @@
                   "number": 12,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".google.protobuf.UInt32Value"
+                },
+                {
+                  "jsonName": "maxAccelerometerCalibration",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "max_accelerometer_calibration",
+                  "number": 13,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".google.protobuf.UInt32Value"
                 }
               ],
               "name": "EmbeddedController",

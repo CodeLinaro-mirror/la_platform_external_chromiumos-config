@@ -2303,6 +2303,7 @@
             },
             "embeddedController": {
               "ecType": 1,
+              "maxAccelerometerCalibration": 100,
               "maxSensorOdrMhz": 50000,
               "present": 1
             },
@@ -2661,6 +2662,7 @@
               "hardwareFeature": {
                 "embeddedController": {
                   "ecType": 1,
+                  "maxAccelerometerCalibration": 100,
                   "maxSensorOdrMhz": 50000,
                   "present": 1
                 }

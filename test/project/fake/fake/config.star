@@ -1095,6 +1095,7 @@ _TWO_FAN = hw_topo.create_fan(
 
 _EC_LIMITED = hw_topo.create_ec(
     max_sensor_odr_mhz = 50000,
+    max_accelerometer_calibration = 100,
 )
 
 def create_hardware_topology(

@@ -884,6 +884,13 @@ message HardwareFeatures {
     // is greater than 0, iioservice will never set a maximal frequency above
     // it.
     google.protobuf.UInt32Value max_sensor_odr_mhz = 12;
+
+    // Some Chromebook have been miscalibrated, and the calibration information
+    // in the VPD are erroneous.
+    // If accelerometer calibration in the VPD (in mg) is greater than
+    // |max_accelerometer_calibration|, it is ignored.
+    // The default is 250mg, but it may be too high to detect a miscalibration.
+    google.protobuf.UInt32Value max_accelerometer_calibration = 13;
   }
   EmbeddedController embedded_controller = 24;
 
