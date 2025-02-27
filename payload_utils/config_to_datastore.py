@@ -228,6 +228,21 @@ if __name__ == '__main__':
       default='dev',
       help='environment flag for UFS service',
   )
+  parser.add_argument(
+      "--generate-config-bundle-list",
+      action="store_const",
+      const=True,
+      help="generate hw_design/generated/configs.jsonproto")
+  parser.add_argument(
+      "--generate-dut-attribute-list",
+      action="store_const",
+      const=True,
+      help="generate dut_attributes.jsonproto")
+  parser.add_argument(
+      "--generate-flat-config-list",
+      action="store_const",
+      const=True,
+      help="generate hw_design/generated/flattened.jsonproto")
 
   # load database of protobuffer name -> Type
   protodb = proto_utils.create_symbol_db()
@@ -239,16 +254,19 @@ if __name__ == '__main__':
   )
   script_dir = os.path.dirname(os.path.realpath(__file__))
 
-  handle_config_bundle_list("hw_design/generated/configs.jsonproto",
+  if options.generate_config_bundle_list:
+    handle_config_bundle_list("hw_design/generated/configs.jsonproto",
+                              ufs_ds_client)
+  if options.generate_dut_attribute_list:
+    handle_dut_attribute_list(
+        os.path.realpath(
+            os.path.join(
+                script_dir,
+                "../generated/dut_attributes.jsonproto",
+            )), ufs_ds_client)
+  if options.generate_flat_config_list:
+    handle_flat_config_list("hw_design/generated/flattened.jsonproto",
                             ufs_ds_client)
-  handle_dut_attribute_list(
-      os.path.realpath(
-          os.path.join(
-              script_dir,
-              "../generated/dut_attributes.jsonproto",
-          )), ufs_ds_client)
-  handle_flat_config_list("hw_design/generated/flattened.jsonproto",
-                          ufs_ds_client)
   handle_device_stability_list(
       os.path.realpath(
           os.path.join(
