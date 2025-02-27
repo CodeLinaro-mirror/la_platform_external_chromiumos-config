@@ -171,6 +171,9 @@ message HardwareFeatures {
 
     // Optional field to manually override the external display timeout
     uint32 defer_external_display_timeout = 4;
+
+    // Whether port(s) are controlled by a PDC
+    Present pdc = 5;
   }
 
   // USB-A properties
