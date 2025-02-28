@@ -98,9 +98,9 @@ func (PasitHost_Device_Type) EnumDescriptor() ([]byte, []int) {
 	return file_chromiumos_test_lab_api_pasit_host_proto_rawDescGZIP(), []int{0, 1, 0}
 }
 
-// PASIT is a connected set of peripheral components used in interop testing. The
-// components connected are controlled via an external host. PasitHost describes the
-// devices in the testbed and their connection topology.
+// PASIT is a connected set of peripheral components used in interop testing.
+// The components connected are controlled via an external host. PasitHost
+// describes the devices in the testbed and their connection topology.
 type PasitHost struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -108,7 +108,8 @@ type PasitHost struct {
 
 	// The name of the host that controls the devices (e.g. switches)
 	Hostname string `protobuf:"bytes,1,opt,name=hostname,proto3" json:"hostname,omitempty"`
-	// The components/devices in the PASIT testbed (e.g. docks, switches, cameras, monitors, etc)
+	// The components/devices in the PASIT testbed (e.g. docks, switches, cameras,
+	// monitors, etc)
 	Devices []*PasitHost_Device `protobuf:"bytes,2,rep,name=devices,proto3" json:"devices,omitempty"`
 	// The connections between devices/components in the testbed.
 	Connections []*PasitHost_Connection `protobuf:"bytes,3,rep,name=connections,proto3" json:"connections,omitempty"`

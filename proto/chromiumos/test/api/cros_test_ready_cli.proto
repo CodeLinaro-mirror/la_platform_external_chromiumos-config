@@ -22,4 +22,3 @@ message CrosTestReadyConfig {
   // Checksum specifies the files to be checked and their expected checksums.
   repeated KeyValue checksums = 1;
 }
-

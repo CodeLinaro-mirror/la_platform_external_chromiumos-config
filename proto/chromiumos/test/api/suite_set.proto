@@ -16,25 +16,25 @@ import "chromiumos/test/api/test_case_metadata.proto";
 // is intended to represent a validation assertion that is satisfied if all its
 // containing Suites pass.
 message SuiteSet {
-	// Globally unique identifier across all SuiteSets and Suites.
-	Id id = 1;
-	message Id {
-		string value = 1;
-	}
+  // Globally unique identifier across all SuiteSets and Suites.
+  Id id = 1;
+  message Id {
+    string value = 1;
+  }
 
-	// Defines all the metadata about a SuiteSet.
-	Metadata metadata = 2;
+  // Defines all the metadata about a SuiteSet.
+  Metadata metadata = 2;
 
-	// A list SuiteSet Id's contained within the SuiteSet.
-	repeated Id suite_sets = 4;
+  // A list SuiteSet Id's contained within the SuiteSet.
+  repeated Id suite_sets = 4;
 
-	// A list Suite Id's contained within the SuiteSet.
-	repeated Suite.Id suites = 3;
+  // A list Suite Id's contained within the SuiteSet.
+  repeated Suite.Id suites = 3;
 }
 
 // Defines a list of SuiteSets
 message SuiteSetList {
-	repeated SuiteSet suite_sets = 1;
+  repeated SuiteSet suite_sets = 1;
 }
 
 // Defines a grouping of Tests that represent scheduling units CTP can enforce
@@ -42,38 +42,38 @@ message SuiteSetList {
 // smaller validation assertion that is satisfied if all its containing Tests
 // pass.
 message Suite {
-	// Globally unique identifier across all SuiteSets and Suites.
-	Id id = 1;
-	message Id {
-		string value = 1;
-	}
+  // Globally unique identifier across all SuiteSets and Suites.
+  Id id = 1;
+  message Id {
+    string value = 1;
+  }
 
-	// Defines all the metadata about a Suite.
-	Metadata metadata = 2;
+  // Defines all the metadata about a Suite.
+  Metadata metadata = 2;
 
-	// The list of Tests contained within the Suite.
-	repeated TestCase.Id tests = 3;
+  // The list of Tests contained within the Suite.
+  repeated TestCase.Id tests = 3;
 }
 
 // Defines a list of Suites
 message SuiteList {
-	repeated Suite suites = 1;
+  repeated Suite suites = 1;
 }
 
 // Contains extra information regarding the Suite/SuiteSet that does not affect
 // execution or scheduling.
 message Metadata {
-	// Email contacts of owners that gate changes to the Suite/SuiteSet and
-	// should be notified regarding any Suite/SuiteSet issues (e.g. flakiness,
-	// runtime).
-	repeated Contact owners = 1;
+  // Email contacts of owners that gate changes to the Suite/SuiteSet and
+  // should be notified regarding any Suite/SuiteSet issues (e.g. flakiness,
+  // runtime).
+  repeated Contact owners = 1;
 
-	// The Buganizer component to issue bugs against regarding the
-	// Suite/SuiteSet.
-	BugComponent bug_component = 2;
+  // The Buganizer component to issue bugs against regarding the
+  // Suite/SuiteSet.
+  BugComponent bug_component = 2;
 
-	// A short summary capturing the quality guarantee validated by the
-	// Suite/SuiteSet (e.g. “Validates a device passes Engineering Verification
-	// Testing and is ready to continue to Design Verification Testing”).
-	Criteria criteria = 3;
+  // A short summary capturing the quality guarantee validated by the
+  // Suite/SuiteSet (e.g. “Validates a device passes Engineering Verification
+  // Testing and is ready to continue to Design Verification Testing”).
+  Criteria criteria = 3;
 }

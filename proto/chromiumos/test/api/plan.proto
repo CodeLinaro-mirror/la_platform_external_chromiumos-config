@@ -13,15 +13,15 @@ import "chromiumos/test/api/coverage_rule.proto";
 // A hardware test plan is composed of coverage rules
 // Deprecated: Use v1/plan.proto instead.
 message HWTestPlan {
-    option deprecated = true;
+  option deprecated = true;
 
-    // Unique name to identify the test plan, recommend reverse domain name
-    // rooted at chromeos:
-    //   chromeos.release.wifi....
-    message TestPlanId {
-        string value = 1;
-    }
+  // Unique name to identify the test plan, recommend reverse domain name
+  // rooted at chromeos:
+  //   chromeos.release.wifi....
+  message TestPlanId {
+    string value = 1;
+  }
 
-    TestPlanId id = 1;
-    repeated CoverageRule coverage_rules = 2;
+  TestPlanId id = 1;
+  repeated CoverageRule coverage_rules = 2;
 }

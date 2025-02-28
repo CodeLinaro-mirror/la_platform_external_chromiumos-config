@@ -13,7 +13,6 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/artifact";
 // Manifest for test result artifacts.
 // NEXT TAG: 3
 message Manifest {
-
   // Captures the manifest version.
   uint32 version = 1;
 
@@ -24,7 +23,6 @@ message Manifest {
 // Artifact information.
 // NEXT TAG: 3
 message Artifact {
-
   // Capture the various artifact types.
   // NEXT TAG: 4
   enum ArtifactType {

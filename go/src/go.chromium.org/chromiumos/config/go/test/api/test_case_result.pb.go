@@ -67,8 +67,9 @@ type TestCaseResult struct {
 	TestCaseMetadata *TestCaseMetadata `protobuf:"bytes,14,opt,name=test_case_metadata,json=testCaseMetadata,proto3" json:"test_case_metadata,omitempty"`
 	// The error(s) that caused the test to fail.
 	//
-	// If there is more than one error (e.g. due to multiple expectation failures),
-	// a stable sorting should be used. A recommended form of stable sorting is:
+	// If there is more than one error (e.g. due to multiple expectation
+	// failures), a stable sorting should be used. A recommended form of stable
+	// sorting is:
 	// - Fatal errors (errors that cause the test to terminate immediately first,
 	//   then
 	// - Within fatal/non-fatal errors, sort by chronological order

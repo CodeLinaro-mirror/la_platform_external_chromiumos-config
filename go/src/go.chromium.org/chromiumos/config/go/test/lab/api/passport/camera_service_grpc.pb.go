@@ -24,7 +24,8 @@ const _ = grpc.SupportPackageIsVersion7
 type CameraServiceClient interface {
 	// GetCameras probes all cameras connected to the host device.
 	GetCameras(ctx context.Context, in *GetCamerasRequest, opts ...grpc.CallOption) (*GetCamerasResponse, error)
-	// GetAveragePixel gets the average pixel color detected by the specified camera.
+	// GetAveragePixel gets the average pixel color detected by the specified
+	// camera.
 	GetAveragePixel(ctx context.Context, in *GetAveragePixelRequest, opts ...grpc.CallOption) (*GetAveragePixelResponse, error)
 }
 
@@ -60,7 +61,8 @@ func (c *cameraServiceClient) GetAveragePixel(ctx context.Context, in *GetAverag
 type CameraServiceServer interface {
 	// GetCameras probes all cameras connected to the host device.
 	GetCameras(context.Context, *GetCamerasRequest) (*GetCamerasResponse, error)
-	// GetAveragePixel gets the average pixel color detected by the specified camera.
+	// GetAveragePixel gets the average pixel color detected by the specified
+	// camera.
 	GetAveragePixel(context.Context, *GetAveragePixelRequest) (*GetAveragePixelResponse, error)
 }
 

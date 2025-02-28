@@ -8,7 +8,6 @@ package chromiumos.build.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/build/api";
 
-
 message SubtoolPackage {
   // The name of the package.  May be referenced in cipd.  Must not contain a /.
   string name = 1;

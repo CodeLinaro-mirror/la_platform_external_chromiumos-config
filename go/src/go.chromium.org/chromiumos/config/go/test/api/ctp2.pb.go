@@ -195,7 +195,8 @@ func (HWRequirements_State) EnumDescriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_ctp2_proto_rawDescGZIP(), []int{27, 0}
 }
 
-// Should this be a generic string? Then we don't have to touch proto when new provision comes.
+// Should this be a generic string? Then we don't have to touch proto when new
+// provision comes.
 type ProvisionInfo_Type int32
 
 const (
@@ -1456,9 +1457,9 @@ type CTPFilter struct {
 	DependentContainers []*api.ContainerImageInfo `protobuf:"bytes,2,rep,name=dependent_containers,json=dependentContainers,proto3" json:"dependent_containers,omitempty"`
 	ContainerMetadata   *anypb.Any                `protobuf:"bytes,3,opt,name=container_metadata,json=containerMetadata,proto3" json:"container_metadata,omitempty"`
 	ContainerInfo       *ContainerInfo            `protobuf:"bytes,4,opt,name=container_info,json=containerInfo,proto3" json:"container_info,omitempty"`
-	// Dependent Containers signal that a container has a need to be networked with
-	// another. For example the filter is "container1", but needs to use "container2",
-	// as part of its execution.
+	// Dependent Containers signal that a container has a need to be networked
+	// with another. For example the filter is "container1", but needs to use
+	// "container2", as part of its execution.
 	DependentContainersInfo *ContainerInfo `protobuf:"bytes,5,opt,name=dependent_containers_info,json=dependentContainersInfo,proto3" json:"dependent_containers_info,omitempty"`
 }
 
@@ -2479,7 +2480,8 @@ type SwarmingDefinition struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// This is effectively the UFS proto. This will be the universal language spoken by all filters.
+	// This is effectively the UFS proto. This will be the universal language
+	// spoken by all filters.
 	DutInfo        *api1.Dut        `protobuf:"bytes,1,opt,name=dut_info,json=dutInfo,proto3" json:"dut_info,omitempty"`
 	ProvisionInfo  []*ProvisionInfo `protobuf:"bytes,2,rep,name=provision_info,json=provisionInfo,proto3" json:"provision_info,omitempty"`
 	SwarmingLabels []string         `protobuf:"bytes,3,rep,name=swarming_labels,json=swarmingLabels,proto3" json:"swarming_labels,omitempty"`

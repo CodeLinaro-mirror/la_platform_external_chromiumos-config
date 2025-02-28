@@ -11,15 +11,9 @@ import "google/protobuf/any.proto";
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 service GenericService {
-  rpc Start(GenericStartRequest)
-      returns (GenericStartResponse) {
-  }
-  rpc Run(GenericRunRequest)
-      returns (GenericRunResponse) {
-  }
-  rpc Stop(GenericStopRequest)
-      returns (GenericStopResponse) {
-  }
+  rpc Start(GenericStartRequest) returns (GenericStartResponse) {}
+  rpc Run(GenericRunRequest) returns (GenericRunResponse) {}
+  rpc Stop(GenericStopRequest) returns (GenericStopResponse) {}
 }
 
 message GenericStartRequest {
@@ -49,4 +43,3 @@ message GenericStopResponse {
 message GenericMessage {
   map<string, google.protobuf.Any> values = 1;
 }
-

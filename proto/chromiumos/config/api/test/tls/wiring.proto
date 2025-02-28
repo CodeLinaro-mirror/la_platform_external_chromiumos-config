@@ -90,8 +90,7 @@ service Wiring {
   // By default, the implementation MAY expose a port that cannot persist
   // across DUT reboots.
   // By default, the implementation MAY use 'localhost' as the exposed address.
-  rpc ExposePortToDut(ExposePortToDutRequest)
-      returns (ExposePortToDutResponse);
+  rpc ExposePortToDut(ExposePortToDutRequest) returns (ExposePortToDutResponse);
 }
 
 message GetDutRequest {
@@ -132,7 +131,6 @@ message License {
   }
   // type is the type of the license.
   Type type = 2;
-
 }
 
 message OpenDutPortRequest {
@@ -208,8 +206,7 @@ message CacheForDutResponse {
   string url = 1;
 }
 
-message CacheForDutMetadata {
-}
+message CacheForDutMetadata {}
 
 message CallServoRequest {
   string dut = 1;

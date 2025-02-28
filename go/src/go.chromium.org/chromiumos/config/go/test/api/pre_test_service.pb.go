@@ -98,12 +98,13 @@ type FilterFlakyRequest struct {
 	// Types that are assignable to Variant:
 	//	*FilterFlakyRequest_Board
 	Variant isFilterFlakyRequest_Variant `protobuf_oneof:"variant"`
-	// When there is not enough signal to determine stability (based on policy); default on/off.
+	// When there is not enough signal to determine stability (based on policy);
+	// default on/off.
 	DefaultEnabled bool `protobuf:"varint,6,opt,name=default_enabled,json=defaultEnabled,proto3" json:"default_enabled,omitempty"`
 	// BBID of the task
 	Bbid string `protobuf:"bytes,7,opt,name=bbid,proto3" json:"bbid,omitempty"`
-	// is_dry_run indicates if the results are to be used or not. This will only change
-	// how the system logs results.
+	// is_dry_run indicates if the results are to be used or not. This will only
+	// change how the system logs results.
 	IsDryRun bool `protobuf:"varint,8,opt,name=is_dry_run,json=isDryRun,proto3" json:"is_dry_run,omitempty"`
 }
 
@@ -290,7 +291,8 @@ func (x *FilterFlakyResponse) GetRemovedTests() []string {
 	return nil
 }
 
-// StabilitySensorPolicy indicates to use the StabilitySensor for determine flake.
+// StabilitySensorPolicy indicates to use the StabilitySensor for determine
+// flake.
 type StabilitySensorPolicy struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -337,11 +339,12 @@ type PassRatePolicy struct {
 
 	PassRate int32 `protobuf:"varint,1,opt,name=pass_rate,json=passRate,proto3" json:"pass_rate,omitempty"`
 	MinRuns  int32 `protobuf:"varint,2,opt,name=min_runs,json=minRuns,proto3" json:"min_runs,omitempty"`
-	// NOTE: num_of_milestones determines how many milestones back to look for results.
-	// The number here will default to 0 (meaning current only); however, if there are not enough
-	// results on the current milestone to meet `min_runs`, then will go back up to 1 milestone.
-	// Setting this value will override the default behavior, and will not have the
-	// logic to go back an additional milestone if not enough results.
+	// NOTE: num_of_milestones determines how many milestones back to look for
+	// results. The number here will default to 0 (meaning current only); however,
+	// if there are not enough results on the current milestone to meet
+	// `min_runs`, then will go back up to 1 milestone. Setting this value will
+	// override the default behavior, and will not have the logic to go back an
+	// additional milestone if not enough results.
 	NumOfMilestones int32 `protobuf:"varint,4,opt,name=num_of_milestones,json=numOfMilestones,proto3" json:"num_of_milestones,omitempty"`
 	// force_enabled_tests DEPRECATED
 	ForceEnabledTests []string `protobuf:"bytes,5,rep,name=force_enabled_tests,json=forceEnabledTests,proto3" json:"force_enabled_tests,omitempty"`
@@ -350,10 +353,10 @@ type PassRatePolicy struct {
 	// force_enabled_boards DEPRECATED
 	ForceEnabledBoards []string `protobuf:"bytes,7,rep,name=force_enabled_boards,json=forceEnabledBoards,proto3" json:"force_enabled_boards,omitempty"`
 	// Recent results are a method to re-enable historically flaky tests, with
-	// more recent results. Its expected that the recent result will be more stringent
-	// than the long-term results. For example, if a test has a long-term passrate of
-	// 95% with 1000 samples, but a recent passrate of 100% with 200 samples, its
-	// signal that its stable enough to be re-enabled.
+	// more recent results. Its expected that the recent result will be more
+	// stringent than the long-term results. For example, if a test has a
+	// long-term passrate of 95% with 1000 samples, but a recent passrate of 100%
+	// with 200 samples, its signal that its stable enough to be re-enabled.
 	PassRateRecent int32               `protobuf:"varint,8,opt,name=pass_rate_recent,json=passRateRecent,proto3" json:"pass_rate_recent,omitempty"`
 	MinRunsRecent  int32               `protobuf:"varint,9,opt,name=min_runs_recent,json=minRunsRecent,proto3" json:"min_runs_recent,omitempty"`
 	RecentWindow   int32               `protobuf:"varint,10,opt,name=recent_window,json=recentWindow,proto3" json:"recent_window,omitempty"`
@@ -552,8 +555,8 @@ type FilterCfg struct {
 	// This applies to the entire suite. Any tests forced_enabled/disabled in this
 	// will apply to all boards.
 	PassRatePolicy *PassRatePolicy `protobuf:"bytes,1,opt,name=pass_rate_policy,json=passRatePolicy,proto3" json:"pass_rate_policy,omitempty"`
-	// Blank will be treated as the global policy. By setting this field, this policy
-	// will overwrite the global, and apply to all suites in this list.
+	// Blank will be treated as the global policy. By setting this field, this
+	// policy will overwrite the global, and apply to all suites in this list.
 	TestSuites []string `protobuf:"bytes,2,rep,name=test_suites,json=testSuites,proto3" json:"test_suites,omitempty"`
 	// Fully opt the suite out of filtering.
 	OptOut bool `protobuf:"varint,4,opt,name=opt_out,json=optOut,proto3" json:"opt_out,omitempty"`

@@ -3036,8 +3036,8 @@ type HardwareFeatures_FirmwareConfiguration struct {
 	BmpLogo HardwareFeatures_Present `protobuf:"varint,11,opt,name=bmp_logo,json=bmpLogo,proto3,enum=chromiumos.config.api.HardwareFeatures_Present" json:"bmp_logo,omitempty"`
 	// The AP firmware has the CONFIG_FW_SPLASH_SCREEN feature enabled.
 	FwSplashScreen HardwareFeatures_Present `protobuf:"varint,12,opt,name=fw_splash_screen,json=fwSplashScreen,proto3,enum=chromiumos.config.api.HardwareFeatures_Present" json:"fw_splash_screen,omitempty"`
-	// The CSE sync is late at payload with CONFIG_SOC_INTEL_CSE_LITE_SYNC_BY_PAYLOAD
-	// feature enabled.
+	// The CSE sync is late at payload with
+	// CONFIG_SOC_INTEL_CSE_LITE_SYNC_BY_PAYLOAD feature enabled.
 	LateCseSync HardwareFeatures_Present `protobuf:"varint,13,opt,name=late_cse_sync,json=lateCseSync,proto3,enum=chromiumos.config.api.HardwareFeatures_Present" json:"late_cse_sync,omitempty"`
 	// The AP firmware has the CONFIG_HAS_RECOVERY_MRC_CACHE feature enabled.
 	HasRecoveryMrcCache HardwareFeatures_Present `protobuf:"varint,14,opt,name=has_recovery_mrc_cache,json=hasRecoveryMrcCache,proto3,enum=chromiumos.config.api.HardwareFeatures_Present" json:"has_recovery_mrc_cache,omitempty"`

@@ -31,14 +31,15 @@ type CrOSProvisionMetadata struct {
 
 	// dlc_specs specifies which DLCs to install on the DUT after provisioning.
 	DlcSpecs []*CrOSProvisionMetadata_DLCSpec `protobuf:"bytes,2,rep,name=dlc_specs,json=dlcSpecs,proto3" json:"dlc_specs,omitempty"`
-	// preserve_stateful specifies whether the stateful partition should be preserved during
-	// provisioning. If preserve_stateful is not set to true, the stateful partition is
-	// block-level wiped and reset during provisioning.
+	// preserve_stateful specifies whether the stateful partition should be
+	// preserved during provisioning. If preserve_stateful is not set to true, the
+	// stateful partition is block-level wiped and reset during provisioning.
 	PreserveStateful bool `protobuf:"varint,3,opt,name=preserve_stateful,json=preserveStateful,proto3" json:"preserve_stateful,omitempty"`
-	// update_firmware will update OS bundled firmware(RW only) during the provision.
-	// Please note this firmware update only update RW firmware that built in the
-	// target_build OS image and it is different from firmware provision which
-	// download and update a separate firmware image based on request.
+	// update_firmware will update OS bundled firmware(RW only) during the
+	// provision. Please note this firmware update only update RW firmware that
+	// built in the target_build OS image and it is different from firmware
+	// provision which download and update a separate firmware image based on
+	// request.
 	UpdateFirmware bool `protobuf:"varint,6,opt,name=update_firmware,json=updateFirmware,proto3" json:"update_firmware,omitempty"`
 	// only_googler_ssh_keys controls if we provision googler ssh key only.
 	// If true, provision will only enable googler ssh key on the DUT.

@@ -702,7 +702,8 @@ type HardResetTesterReply struct {
 	// Error code indicating the success or failure of the open operation.
 	// 0 indicates success, while other values represent specific errors.
 	ErrCode int64 `protobuf:"varint,1,opt,name=err_code,json=errCode,proto3" json:"err_code,omitempty"`
-	// Human-readable error message providing more details about any errors encountered.
+	// Human-readable error message providing more details about any errors
+	// encountered.
 	ErrorMsg string `protobuf:"bytes,2,opt,name=error_msg,json=errorMsg,proto3" json:"error_msg,omitempty"`
 }
 
@@ -810,7 +811,8 @@ type DoCableReplugReply struct {
 	// Error code indicating the success or failure of the open operation.
 	// 0 indicates success, while other values represent specific errors.
 	ErrCode int64 `protobuf:"varint,1,opt,name=err_code,json=errCode,proto3" json:"err_code,omitempty"`
-	// Human-readable error message providing more details about any errors encountered.
+	// Human-readable error message providing more details about any errors
+	// encountered.
 	ErrorMsg string `protobuf:"bytes,2,opt,name=error_msg,json=errorMsg,proto3" json:"error_msg,omitempty"`
 }
 
@@ -918,7 +920,8 @@ type OpenTesterReply struct {
 	// Error code indicating the success or failure of the open operation.
 	// 0 indicates success, while other values represent specific errors.
 	ErrCode int64 `protobuf:"varint,1,opt,name=err_code,json=errCode,proto3" json:"err_code,omitempty"`
-	// Human-readable error message providing more details about any errors encountered.
+	// Human-readable error message providing more details about any errors
+	// encountered.
 	ErrorMsg string `protobuf:"bytes,2,opt,name=error_msg,json=errorMsg,proto3" json:"error_msg,omitempty"`
 }
 
@@ -1026,7 +1029,8 @@ type CloseTesterReply struct {
 	// Error code indicating the success or failure of the close operation.
 	// 0 indicates success, while other values represent specific errors.
 	ErrCode int64 `protobuf:"varint,1,opt,name=err_code,json=errCode,proto3" json:"err_code,omitempty"`
-	// Human-readable error message providing more details about any errors encountered.
+	// Human-readable error message providing more details about any errors
+	// encountered.
 	ErrorMsg string `protobuf:"bytes,2,opt,name=error_msg,json=errorMsg,proto3" json:"error_msg,omitempty"`
 }
 
@@ -1291,9 +1295,10 @@ type GetUsbTesterCapabilityReply struct {
 	// Human-readable error message providing more details about any errors
 	// encountered.
 	ErrorMsg *string `protobuf:"bytes,2,opt,name=error_msg,json=errorMsg,proto3,oneof" json:"error_msg,omitempty"`
-	// The value to be set. This can be either be a discrete value for well defined
-	// capabilities (power role, data role etc .. ) or a just a plain number for
-	// capabilities that can take on a big and not well defined range of values.
+	// The value to be set. This can be either be a discrete value for well
+	// defined capabilities (power role, data role etc .. ) or a just a plain
+	// number for capabilities that can take on a big and not well defined range
+	// of values.
 	//
 	// Types that are assignable to Value:
 	//	*GetUsbTesterCapabilityReply_ActiveCc
@@ -1483,9 +1488,10 @@ type SetUsbTesterCapabilityRequest struct {
 	Timeout *durationpb.Duration `protobuf:"bytes,3,opt,name=timeout,proto3,oneof" json:"timeout,omitempty"`
 	// Indicate what capability the operation is targeting.
 	Capability Capability `protobuf:"varint,4,opt,name=capability,proto3,enum=chromiumos.test.lab.api.passport.Capability" json:"capability,omitempty"`
-	// The value to be set. This can be either be a discrete value for well defined
-	// capabilities (power role, data role etc .. ) or a just a plain number for
-	// capabilities that can take on a big and not well defined range of values.
+	// The value to be set. This can be either be a discrete value for well
+	// defined capabilities (power role, data role etc .. ) or a just a plain
+	// number for capabilities that can take on a big and not well defined range
+	// of values.
 	//
 	// Types that are assignable to Value:
 	//	*SetUsbTesterCapabilityRequest_ActiveCc

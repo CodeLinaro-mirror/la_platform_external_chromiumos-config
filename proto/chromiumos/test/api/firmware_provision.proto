@@ -10,7 +10,8 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "chromiumos/build/api/firmware_config.proto";
 
-// FirmwareProvisionStartupMetadata can be passed to ProvisionStartupRequest.metadata
+// FirmwareProvisionStartupMetadata can be passed to
+// ProvisionStartupRequest.metadata
 message FirmwareProvisionStartupMetadata {
   reserved 1;
   reserved "cache_server_address";
@@ -31,7 +32,8 @@ message FirmwareProvisionResponse {
   // If the provisioning failed, here is the detailed error message.
   // Deprecated: Use InstallResponse.message instead.
   string error_message = 1 [deprecated = true];
-  // The firmware versions on the DUT (if success), or the versions that were attempted to be flashed (if failed).
+  // The firmware versions on the DUT (if success), or the versions that were
+  // attempted to be flashed (if failed).
   string ap_ro_version = 2;
   string ap_rw_version = 3;
   string ec_ro_version = 4;

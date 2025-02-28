@@ -2336,7 +2336,8 @@ type GscInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The FW image flashed to the chip in the provision stage of the test.
-	// Example: "gs://chromeos-image-archive/firmware-ti50-postsubmit/R126-15855.0.0-97601-8750535029452566225"
+	// Example:
+	// "gs://chromeos-image-archive/firmware-ti50-postsubmit/R126-15855.0.0-97601-8750535029452566225"
 	GscBuildurl string `protobuf:"bytes,1,opt,name=gsc_buildurl,json=gscBuildurl,proto3" json:"gsc_buildurl,omitempty"`
 	// Serial number of the GSC chip (and CCD USB serial).
 	// Example: "1482101a-4c2ac261"
@@ -3317,7 +3318,8 @@ type BuildMetadata_ServoInfo struct {
 	// Example: "v1.0.2345-4b2de21e 2024-08-17 00:30:57"
 	ServodVersion string `protobuf:"bytes,1,opt,name=servod_version,json=servodVersion,proto3" json:"servod_version,omitempty"`
 	// Servo firmware versions
-	// Example: "c2d2_v2.4.73-d771c18ba9,0.24.40/ti50_common_prepvt-15086.B:v0.0.355-15c69d7f,
+	// Example:
+	// "c2d2_v2.4.73-d771c18ba9,0.24.40/ti50_common_prepvt-15086.B:v0.0.355-15c69d7f,
 	// fizz-labstation-release/R115-15474.55.0,servo_v4_v2.4.58-c37246f9c"
 	ServoVersions string `protobuf:"bytes,2,opt,name=servo_versions,json=servoVersions,proto3" json:"servo_versions,omitempty"`
 	// Servo type

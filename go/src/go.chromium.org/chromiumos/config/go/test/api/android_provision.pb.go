@@ -25,9 +25,9 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// AndroidProvisionState defines all of the installable (provisionable) elements on an
-// Android test device as part of device setup for test operations.
-// Next Tag: 4
+// AndroidProvisionState defines all of the installable (provisionable) elements
+// on an Android test device as part of device setup for test operations. Next
+// Tag: 4
 type AndroidProvisionState struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -101,7 +101,8 @@ type AndroidProvisionRequest struct {
 
 	// Required. DUT information.
 	Dut *api.Dut `protobuf:"bytes,1,opt,name=dut,proto3" json:"dut,omitempty"`
-	// Required. Provision state is a pass through request to the provision service.
+	// Required. Provision state is a pass through request to the provision
+	// service.
 	ProvisionState *AndroidProvisionState `protobuf:"bytes,2,opt,name=provision_state,json=provisionState,proto3" json:"provision_state,omitempty"`
 	// Required. Address of the DUT Server.
 	DutServer *api.IpEndpoint `protobuf:"bytes,3,opt,name=dut_server,json=dutServer,proto3" json:"dut_server,omitempty"`
@@ -160,7 +161,8 @@ func (x *AndroidProvisionRequest) GetDutServer() *api.IpEndpoint {
 	return nil
 }
 
-// Required. String encoded id that uniquely reflects a given AndroidProvisionState.
+// Required. String encoded id that uniquely reflects a given
+// AndroidProvisionState.
 type AndroidProvisionState_Id struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -130,16 +130,16 @@ message HardwareFeatures {
     // position. For example, LEFT_BACK means the farthest-back port on the
     // left side, while BACK_LEFT means the leftmost port on the back of the
     // device.
-    LEFT        = 1;
-    RIGHT       = 2;
-    BACK        = 3;
-    FRONT       = 4;
-    LEFT_FRONT  = 5;
-    LEFT_BACK   = 6;
+    LEFT = 1;
+    RIGHT = 2;
+    BACK = 3;
+    FRONT = 4;
+    LEFT_FRONT = 5;
+    LEFT_BACK = 6;
     RIGHT_FRONT = 7;
-    RIGHT_BACK  = 8;
-    BACK_LEFT   = 9;
-    BACK_RIGHT  = 10;
+    RIGHT_BACK = 8;
+    BACK_LEFT = 9;
+    BACK_RIGHT = 10;
   }
 
   message Count {
@@ -310,8 +310,8 @@ message HardwareFeatures {
     // The AP firmware has the CONFIG_FW_SPLASH_SCREEN feature enabled.
     Present fw_splash_screen = 12;
 
-    // The CSE sync is late at payload with CONFIG_SOC_INTEL_CSE_LITE_SYNC_BY_PAYLOAD
-    // feature enabled.
+    // The CSE sync is late at payload with
+    // CONFIG_SOC_INTEL_CSE_LITE_SYNC_BY_PAYLOAD feature enabled.
     Present late_cse_sync = 13;
 
     // The AP firmware has the CONFIG_HAS_RECOVERY_MRC_CACHE feature enabled.
@@ -319,8 +319,6 @@ message HardwareFeatures {
 
     // The AP firmware has the CONFIG_CHROMEOS_ENABLE_ESOL feature enabled.
     Present mainboard_has_early_sign_of_life = 15;
-
-
   }
 
   // Audio properties of system
@@ -347,7 +345,7 @@ message HardwareFeatures {
     // The card configs for this topology.
     repeated CardConfig card_configs = 7;
 
-      // The source config file layout used for card-agnostic cras config.
+    // The source config file layout used for card-agnostic cras config.
     AudioConfigStructure cras_config = 8;
 
     // If audio DSP firmware is SOF-backed.
@@ -677,9 +675,9 @@ message HardwareFeatures {
     // The number of columns of numeric pad.
     NumericPadLayout numeric_pad_layout = 11;
     enum NumericPadLayout {
-        NUMERIC_PAD_LAYOUT_UNKNOWN = 0;
-        NUMERIC_PAD_3_COLUMN = 1;
-        NUMERIC_PAD_4_COLUMN = 2;
+      NUMERIC_PAD_LAYOUT_UNKNOWN = 0;
+      NUMERIC_PAD_3_COLUMN = 1;
+      NUMERIC_PAD_4_COLUMN = 2;
     }
   }
 
@@ -1059,10 +1057,10 @@ message HardwareFeatures {
   // Touch screen properties
   Touch touch = 38;
   message Touch {
-     // Configures touch slop distance in Chrome.
-     // This is the number of pixels a touch event can wander before being
-     // recognized as a scroll rather than a tap.
-     google.protobuf.UInt32Value touch_slop_distance = 1;
+    // Configures touch slop distance in Chrome.
+    // This is the number of pixels a touch event can wander before being
+    // recognized as a scroll rather than a tap.
+    google.protobuf.UInt32Value touch_slop_distance = 1;
   }
 
   Thermal thermal = 39;

@@ -25,7 +25,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// FirmwareProvisionStartupMetadata can be passed to ProvisionStartupRequest.metadata
+// FirmwareProvisionStartupMetadata can be passed to
+// ProvisionStartupRequest.metadata
 type FirmwareProvisionStartupMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -128,7 +129,8 @@ type FirmwareProvisionResponse struct {
 	//
 	// Deprecated: Do not use.
 	ErrorMessage string `protobuf:"bytes,1,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
-	// The firmware versions on the DUT (if success), or the versions that were attempted to be flashed (if failed).
+	// The firmware versions on the DUT (if success), or the versions that were
+	// attempted to be flashed (if failed).
 	ApRoVersion string `protobuf:"bytes,2,opt,name=ap_ro_version,json=apRoVersion,proto3" json:"ap_ro_version,omitempty"`
 	ApRwVersion string `protobuf:"bytes,3,opt,name=ap_rw_version,json=apRwVersion,proto3" json:"ap_rw_version,omitempty"`
 	EcRoVersion string `protobuf:"bytes,4,opt,name=ec_ro_version,json=ecRoVersion,proto3" json:"ec_ro_version,omitempty"`

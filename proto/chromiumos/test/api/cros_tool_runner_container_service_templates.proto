@@ -46,9 +46,10 @@ message CrosDutTemplate {
 message CrosProvisionTemplate {
   // Reserved for network and artifact_dir that have been moved to upper level.
   reserved 1, 2;
-  // CrosProvisionRequest payload can have template placeholders, to be populated
-  // and write to a json file inside the artifact directory and pass along to
-  // cros-provision server. Note that inventory_server is no longer needed
+  // CrosProvisionRequest payload can have template placeholders, to be
+  // populated and write to a json file inside the artifact directory and pass
+  // along to cros-provision server. Note that inventory_server is no longer
+  // needed
   chromiumos.test.api.CrosProvisionRequest input_request = 3;
 }
 
@@ -57,9 +58,9 @@ message CrosProvisionTemplate {
 //
 // TODO (b/272519698) To be made generic with CrosProvisionTemplate.
 message AndroidProvisionTemplate {
-  // AndroidProvisionRequest payload can have template placeholders, to be populated
-  // and write to a json file inside the artifact directory and pass along to
-  // android-provision server.
+  // AndroidProvisionRequest payload can have template placeholders, to be
+  // populated and write to a json file inside the artifact directory and pass
+  // along to android-provision server.
   chromiumos.test.api.AndroidProvisionRequest input_request = 1;
 }
 
@@ -73,15 +74,13 @@ message CrosTestTemplate {
   reserved 1, 2;
 }
 
-// Plain template to demonstrate the usage of cros-test-finder container. All fields are
-// required.
-message CrosTestFinderTemplate {
-}
+// Plain template to demonstrate the usage of cros-test-finder container. All
+// fields are required.
+message CrosTestFinderTemplate {}
 
-// Plain template to demonstrate the usage of vm-provision container. All fields are
-// required.
-message CrosVMProvisionTemplate {
-}
+// Plain template to demonstrate the usage of vm-provision container. All fields
+// are required.
+message CrosVMProvisionTemplate {}
 
 // Generic template to demonstrate the usage of any container.
 message GenericTemplate {
@@ -107,8 +106,9 @@ message CacheServerTemplate {
   }
 }
 
-// Plain template to demonstrate the usage of cros-publish container. publish_type
-// is required. publish_src_dir is required for GCS, TKO, and CPCON publish types.
+// Plain template to demonstrate the usage of cros-publish container.
+// publish_type is required. publish_src_dir is required for GCS, TKO, and CPCON
+// publish types.
 message CrosPublishTemplate {
   enum PublishType {
     PUBLISH_UNSPECIFIED = 0;
@@ -120,14 +120,15 @@ message CrosPublishTemplate {
 
   PublishType publish_type = 1;
   // Source directory of artifacts that needs to be published.
-  // If provided, will be mounted to "/tmp/<publish_type>-publish-test-artifacts/"
-  // (Ex: gcs-publish-test-artifacts). Required for GCS, TKO, and CPCON publish types.
+  // If provided, will be mounted to
+  // "/tmp/<publish_type>-publish-test-artifacts/" (Ex:
+  // gcs-publish-test-artifacts). Required for GCS, TKO, and CPCON publish
+  // types.
   string publish_src_dir = 2;
 }
 
 // Plain template to demonstrate the usage of cros-fw-provision container.
-message CrosFirmwareProvisionTemplate {
-}
+message CrosFirmwareProvisionTemplate {}
 
 // Plain template to demonstrate the usage of post-process container.
 // NEXT TAG: 2

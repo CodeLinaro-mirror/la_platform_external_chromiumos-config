@@ -916,9 +916,9 @@ type Program_Platform_SchedulerTune struct {
 	// Non-urgent task are only allowed to use given CPUs.
 	CpusetNonurgent string `protobuf:"bytes,2,opt,name=cpuset_nonurgent,json=cpusetNonurgent,proto3" json:"cpuset_nonurgent,omitempty"`
 	// Chromium kernel has a cpu-boost feature, which boosts CPUs for a short
-	// duration when user interaction is detected from input devices. This value
-	// specifies how much CPUs will be boosted.
-	// Minimum value: 0x0. Maximum value: 0x64.
+	// duration when user interaction is detected from input devices. This
+	// value specifies how much CPUs will be boosted. Minimum value: 0x0.
+	// Maximum value: 0x64.
 	InputBoost uint32 `protobuf:"varint,3,opt,name=input_boost,json=inputBoost,proto3" json:"input_boost,omitempty"`
 	// Scheduler's boost value(%) for topmost applications on ARCVM. When
 	// booting the ARCVM, chrome applies this value to the Android for top-app

@@ -1088,7 +1088,8 @@ func (x *FileMap) GetFileLocation() string {
 	return ""
 }
 
-// GetGfxInfoResponse contents of the reporting section of graphics/hardware_probe
+// GetGfxInfoResponse contents of the reporting section of
+// graphics/hardware_probe
 type GetGfxInfoResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1312,8 +1313,8 @@ type GetServoInfoResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Stores servo info:
-	// "chromiumos.test.artifact.BuildMetadata.ServoInfo". Note that the ServoInfo proto cannot
-	// be imported directly due to cyclic import issue.
+	// "chromiumos.test.artifact.BuildMetadata.ServoInfo". Note that the ServoInfo
+	// proto cannot be imported directly due to cyclic import issue.
 	ServoInfo *anypb.Any `protobuf:"bytes,1,opt,name=servo_info,json=servoInfo,proto3" json:"servo_info,omitempty"`
 }
 

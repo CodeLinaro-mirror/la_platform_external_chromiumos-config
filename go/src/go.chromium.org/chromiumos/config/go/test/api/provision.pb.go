@@ -83,8 +83,9 @@ func (ProvisionStartupResponse_Status) EnumDescriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_provision_proto_rawDescGZIP(), []int{1, 0}
 }
 
-// When the status code is other than SUCCESS, details in Status message should be
-// parsed for ErrorInfo message with the following Reasons as the reason.
+// When the status code is other than SUCCESS, details in Status message
+// should be parsed for ErrorInfo message with the following Reasons as the
+// reason.
 type InstallResponse_Status int32
 
 const (

@@ -20,14 +20,12 @@ import "chromiumos/test/api/trv2_dynamic_updates.proto";
 
 // CrosTestPlatform2 ...
 service CTPv2Service {
-  rpc RequestResolver(CTPv2Request)
-      returns (CTPv2Response);
+  rpc RequestResolver(CTPv2Request) returns (CTPv2Response);
 }
 
 // GenericFilter is what all the filters will implement as their RPC.
 service GenericFilterService {
-  rpc Execute(InternalTestplan)
-      returns (InternalTestplan);
+  rpc Execute(InternalTestplan) returns (InternalTestplan);
 
   rpc ExecuteStream(stream InternalTestplanFragment)
       returns (stream InternalTestplanFragment);
@@ -167,7 +165,6 @@ message LegacySW {
   string gcs_path = 2;
   repeated KeyValue key_values = 3;
   string variant = 4;
-
 }
 
 // DDDSW is not yet defined.
@@ -180,35 +177,36 @@ message LegacyHW {
   string variant = 3 [deprecated = true];
   // In the process of deprecation. Do not set.
   MultiDut multi_dut = 4 [deprecated = true];
-  string pool = 5[deprecated = true];;
+  string pool = 5 [deprecated = true];
+  ;
   repeated string swarming_dimensions = 6;
 }
 
-message DDDHW{}
+message DDDHW {}
 
 message Pair {
   string primary = 1;
   string secondary = 2;
 }
 
-message MultiDut{
+message MultiDut {
   Pair boards = 1;
-  Pair model  = 2;
+  Pair model = 2;
 }
 
 message CTPFilter {
   // will be deprecated. do not set.
   chromiumos.build.api.ContainerImageInfo container = 1 [deprecated = true];
   // will be deprecated. do not set.
-  repeated chromiumos.build.api.ContainerImageInfo dependent_containers = 2 [deprecated = true];
+  repeated chromiumos.build.api.ContainerImageInfo dependent_containers = 2
+      [deprecated = true];
 
   google.protobuf.Any container_metadata = 3;
   ContainerInfo container_info = 4;
-  // Dependent Containers signal that a container has a need to be networked with
-  // another. For example the filter is "container1", but needs to use "container2",
-  // as part of its execution.
+  // Dependent Containers signal that a container has a need to be networked
+  // with another. For example the filter is "container1", but needs to use
+  // "container2", as part of its execution.
   ContainerInfo dependent_containers_info = 5;
-
 }
 
 message ContainerInfo {
@@ -251,8 +249,9 @@ message SuiteInfo {
 // Everything by CTPv2, less provision_info.
 // next value = 10;
 message SuiteMetadata {
-  repeated TargetRequirements target_requirements = 1[deprecated = true];
-  repeated ScheduleTargetRequirements schedule_target_requirements = 4[deprecated = true];
+  repeated TargetRequirements target_requirements = 1 [deprecated = true];
+  repeated ScheduleTargetRequirements schedule_target_requirements = 4
+      [deprecated = true];
   repeated string channels = 2;
   string pool = 3;
   chromiumos.test.api.ExecutionMetadata execution_metadata = 5;
@@ -279,7 +278,6 @@ message TargetRequirements {
   // One HW, can have multiple SW configs., eg Cros + Lacros + FW + Kernel.
   repeated LegacySW sw_requirements = 2 [deprecated = true];
   LegacySW sw_requirement = 3;
-
 }
 
 message SchedulingUnitOptions {
@@ -291,8 +289,8 @@ message SchedulingUnitOptions {
     BANNED = 3;
     ONEOF = 4;
   }
- State state = 6;
- repeated PublishKey publish_keys = 7;
+  State state = 6;
+  repeated PublishKey publish_keys = 7;
 }
 
 message HWRequirements {
@@ -304,7 +302,7 @@ message HWRequirements {
     BANNED = 3;
     ONEOF = 4;
   }
- State state = 6;
+  State state = 6;
 }
 
 message SchedulingUnit {
@@ -326,13 +324,14 @@ message SchedulingUnit {
   repeated UserDefinedDynamicUpdate secondary_dynamic_updates = 4;
 }
 
-message SWRequirements{}
+message SWRequirements {}
 message ProvisionInfo {
-  // Should this be a generic string? Then we don't have to touch proto when new provision comes.
+  // Should this be a generic string? Then we don't have to touch proto when new
+  // provision comes.
   enum Type {
-   CROS = 0;
-   ANDROID = 1;
-   ROFW = 2;
+    CROS = 0;
+    ANDROID = 1;
+    ROFW = 2;
   }
   InstallRequest install_request = 1;
   string identifier = 2;
@@ -340,19 +339,20 @@ message ProvisionInfo {
 }
 
 message Target {
-  SwarmingDefinition swarming_def =1;
-  LegacySW sw_req =2;
+  SwarmingDefinition swarming_def = 1;
+  LegacySW sw_req = 2;
 }
 
 message SwarmingDefinition {
- // This is effectively the UFS proto. This will be the universal language spoken by all filters.
+  // This is effectively the UFS proto. This will be the universal language
+  // spoken by all filters.
   chromiumos.test.lab.api.Dut dut_info = 1;
   repeated ProvisionInfo provision_info = 2;
   repeated string swarming_labels = 3;
   string variant = 4;
   // Lookup Table for resolving placeholders set within the dynamic updates
   // found under the suite metadata.
-  map<string, string> dynamic_update_lookup_table = 5[deprecated = true];
+  map<string, string> dynamic_update_lookup_table = 5 [deprecated = true];
 };
 
 // CTPv2Response...
