@@ -336,12 +336,18 @@ message BuildMetadata {
   Kernel kernel = 5;
 
   // SKU metadata
+  // NEXT TAG: 4
   message Sku {
     string hwid_sku = 1;
     // dlm_sku_id is identifier set in VPD at factory on new devices which
     // correlates to an entry in DLM device SKUs table, should be an integer
     // value in the string eg: "12345"
     string dlm_sku_id = 2;
+
+    // Hardware ID that that uniquely identifies the hardware configuration of a
+    // ChromeOS device.
+    // Example: "RULL-MLST B3B-E3D-A2A-E4C-L6I-A2C".
+    string hwid = 3;
   }
 
   Sku sku = 6;
