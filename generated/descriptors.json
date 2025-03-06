@@ -5838,6 +5838,14 @@
               "number": 54,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.HardwareFeatures.Pendrive"
+            },
+            {
+              "jsonName": "dspCore",
+              "label": "LABEL_OPTIONAL",
+              "name": "dsp_core",
+              "number": 55,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.HardwareFeatures.DspCore"
             }
           ],
           "name": "HardwareFeatures",
@@ -8734,6 +8742,42 @@
                 }
               ],
               "name": "Pendrive"
+            },
+            {
+              "enumType": [
+                {
+                  "name": "Vendor",
+                  "value": [
+                    {
+                      "name": "VENDOR_UNKNOWN",
+                      "number": 0
+                    },
+                    {
+                      "name": "VENDOR_INTEL",
+                      "number": 1
+                    }
+                  ]
+                }
+              ],
+              "field": [
+                {
+                  "jsonName": "present",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "present",
+                  "number": 1,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "vendor",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "vendor",
+                  "number": 2,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.DspCore.Vendor"
+                }
+              ],
+              "name": "DspCore"
             }
           ]
         }

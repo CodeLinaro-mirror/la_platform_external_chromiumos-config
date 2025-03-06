@@ -1232,4 +1232,17 @@ message HardwareFeatures {
   message Pendrive {
     Present present = 1;
   }
+
+  // Digital-Signal-Processor (DSP) core information
+  DspCore dsp_core = 55;
+  message DspCore {
+    Present present = 1;
+
+    enum Vendor {
+      VENDOR_UNKNOWN = 0;
+      // Intel's DSP core is the ISH.
+      VENDOR_INTEL = 1;
+    };
+    Vendor vendor = 2;
+  };
 }
