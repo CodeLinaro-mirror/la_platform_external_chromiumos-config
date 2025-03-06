@@ -6415,6 +6415,10 @@
                       "number": 15
                     },
                     {
+                      "name": "ALC712",
+                      "number": 16
+                    },
+                    {
                       "name": "AUDIO_CODEC_ALC5650",
                       "number": 17
                     },
@@ -6540,6 +6544,10 @@
                     {
                       "name": "AMPLIFIER_ALC3204",
                       "number": 24
+                    },
+                    {
+                      "name": "ALC1320",
+                      "number": 25
                     }
                   ]
                 },
