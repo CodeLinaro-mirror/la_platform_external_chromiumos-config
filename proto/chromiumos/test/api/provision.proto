@@ -156,8 +156,8 @@ message KernelPrebuilts {
     string partition_name = 1;
     // Path to the new image file for that partition.
     StoragePath image_path = 2;
+    // Optional: Name of the ramdisk on that partition that this image file should be installed to.
+    string ramdisk_name = 3;
   }
   repeated PartitionImage partition_images = 1;
-  // TODO: b/392692756 - Add whatever info is necessary for flashing specific
-  // modules onto the ramdisk.
 }

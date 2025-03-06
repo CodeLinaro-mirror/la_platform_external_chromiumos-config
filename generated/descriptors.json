@@ -26490,6 +26490,13 @@
                   "number": 2,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.StoragePath"
+                },
+                {
+                  "jsonName": "ramdiskName",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ramdisk_name",
+                  "number": 3,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "PartitionImage"
