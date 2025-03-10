@@ -10,10 +10,11 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 
 enum StorageType {
   UNSPECIFIED = 0;
-  UNRECOGNIZED = 1;
+  UNRECOGNIZED = 1 [deprecated = true];
   SSD = 2;
   HDD = 3;
   MMC = 4;
   NVME = 5;
   UFS = 6;
+  NOT_RECOGNIZED = 7;
 }

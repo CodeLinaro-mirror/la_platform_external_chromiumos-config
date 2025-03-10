@@ -37855,7 +37855,10 @@
             },
             {
               "name": "UNRECOGNIZED",
-              "number": 1
+              "number": 1,
+              "options": {
+                "deprecated": true
+              }
             },
             {
               "name": "SSD",
@@ -37876,6 +37879,10 @@
             {
               "name": "UFS",
               "number": 6
+            },
+            {
+              "name": "NOT_RECOGNIZED",
+              "number": 7
             }
           ]
         }
