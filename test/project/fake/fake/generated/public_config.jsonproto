@@ -1,0 +1,2059 @@
+{
+  "designList": [
+    {
+      "configs": [
+        {
+          "id": {
+            "value": "FAKE_REF_DESIGN:2147483647"
+          }
+        },
+        {
+          "id": {
+            "value": "FAKE_REF_DESIGN:0"
+          }
+        },
+        {
+          "id": {
+            "value": "FAKE_REF_DESIGN:1"
+          }
+        }
+      ],
+      "id": {
+        "value": "FAKE_REF_DESIGN"
+      },
+      "name": "FAKE_REF_DESIGN",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
+          "id": {
+            "value": "PROJECT_A:32"
+          }
+        }
+      ],
+      "id": {
+        "value": "PROJECT_A"
+      },
+      "name": "PROJECT_A",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
+          "id": {
+            "value": "PROJECT_B:33"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_B:34"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_B:35"
+          }
+        }
+      ],
+      "id": {
+        "value": "PROJECT_B"
+      },
+      "name": "PROJECT_B",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
+          "id": {
+            "value": "PROJECT_C:34"
+          }
+        }
+      ],
+      "id": {
+        "configDesignIdOverride": {
+          "value": "PROJECT_B"
+        },
+        "value": "PROJECT_C"
+      },
+      "name": "PROJECT_C",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
+          "id": {
+            "value": "PROJECT_D:40"
+          }
+        }
+      ],
+      "id": {
+        "modelNameDesignIdOverride": {
+          "configDesignIdOverride": {
+            "value": "PROJECT_B"
+          },
+          "value": "PROJECT_C"
+        },
+        "value": "PROJECT_D"
+      },
+      "name": "PROJECT_D",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": "DESIGN",
+                  "soundCardInitConfig": "DESIGN",
+                  "ucmConfig": "DESIGN"
+                }
+              ],
+              "crasConfig": "DESIGN",
+              "headphoneCodec": "ALC5682I",
+              "speakerAmp": "MAX98373"
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": "FACING_FRONT",
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": "INTERFACE_USB",
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": "ORIENTATION_0",
+                  "privacySwitch": "NOT_PRESENT"
+                }
+              ]
+            },
+            "cellular": {
+              "present": "NOT_PRESENT"
+            },
+            "formFactor": {
+              "formFactor": "CONVERTIBLE",
+              "recoveryInput": "KEYBOARD"
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": "NOT_PRESENT"
+            },
+            "keyboard": {
+              "backlight": "NOT_PRESENT",
+              "keyboardType": "DETACHABLE",
+              "numericPad": "NOT_PRESENT",
+              "powerButton": "NOT_PRESENT"
+            },
+            "powerButton": {
+              "edge": "LEFT",
+              "position": 0.9,
+              "region": "SCREEN"
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    }
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    }
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "features": [
+                  "SEAMLESS_REFRESH_RATE_SWITCHING",
+                  "VARIABLE_REFRESH_RATE_AVAILABLE"
+                ],
+                "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
+                "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
+                "turnOffScreenTimeoutMs": 0,
+                "widthPx": 1920
+              },
+              "touchSupport": "NOT_PRESENT"
+            },
+            "sdReader": {
+              "present": "PRESENT"
+            },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
+            },
+            "storage": {
+              "storageType": "EMMC"
+            },
+            "stylus": {
+              "stylus": "NONE"
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": "LEFT_BACK"
+                },
+                {
+                  "position": "LEFT_FRONT"
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": "RIGHT",
+              "position": 0.75,
+              "region": "SCREEN"
+            }
+          },
+          "hardwareTopology": {
+            "wifi": {
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              }
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65536"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": "DESIGN",
+                  "soundCardInitConfig": "DESIGN",
+                  "ucmConfig": "DESIGN"
+                }
+              ],
+              "crasConfig": "DESIGN",
+              "headphoneCodec": "ALC5682I",
+              "speakerAmp": "MAX98373"
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": "FACING_FRONT",
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": "INTERFACE_USB",
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": "ORIENTATION_0",
+                  "privacySwitch": "NOT_PRESENT"
+                }
+              ]
+            },
+            "cellular": {
+              "present": "NOT_PRESENT"
+            },
+            "formFactor": {
+              "formFactor": "CONVERTIBLE",
+              "recoveryInput": "KEYBOARD"
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": "NOT_PRESENT"
+            },
+            "keyboard": {
+              "backlight": "NOT_PRESENT",
+              "keyboardType": "DETACHABLE",
+              "numericPad": "NOT_PRESENT",
+              "powerButton": "NOT_PRESENT"
+            },
+            "powerButton": {
+              "edge": "LEFT",
+              "position": 0.9,
+              "region": "SCREEN"
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    },
+                    "maxScreenBrightness": 215.0
+                  },
+                  {
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    },
+                    "maxScreenBrightness": 215.0
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "heightPx": 1080,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
+                "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
+                "widthPx": 1920
+              },
+              "touchSupport": "PRESENT"
+            },
+            "sdReader": {
+              "present": "PRESENT"
+            },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
+            },
+            "storage": {
+              "storageType": "EMMC"
+            },
+            "stylus": {
+              "stylus": "INTERNAL"
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": "LEFT_BACK"
+                },
+                {
+                  "position": "LEFT_FRONT"
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": "RIGHT",
+              "position": 0.75,
+              "region": "SCREEN"
+            }
+          },
+          "hardwareTopology": {
+            "wifi": {
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              }
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65537"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": "DESIGN",
+                  "soundCardInitConfig": "DESIGN",
+                  "ucmConfig": "DESIGN"
+                }
+              ],
+              "crasConfig": "DESIGN",
+              "headphoneCodec": "ALC5682I",
+              "speakerAmp": "MAX98373"
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": "FACING_FRONT",
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": "INTERFACE_USB",
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": "ORIENTATION_0",
+                  "privacySwitch": "NOT_PRESENT"
+                }
+              ]
+            },
+            "cellular": {
+              "present": "NOT_PRESENT"
+            },
+            "formFactor": {
+              "formFactor": "CONVERTIBLE",
+              "recoveryInput": "KEYBOARD"
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": "NOT_PRESENT"
+            },
+            "keyboard": {
+              "backlight": "NOT_PRESENT",
+              "keyboardType": "DETACHABLE",
+              "numericPad": "NOT_PRESENT",
+              "powerButton": "NOT_PRESENT"
+            },
+            "powerButton": {
+              "edge": "LEFT",
+              "position": 0.9,
+              "region": "SCREEN"
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    }
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    }
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "features": [
+                  "SEAMLESS_REFRESH_RATE_SWITCHING",
+                  "VARIABLE_REFRESH_RATE_AVAILABLE"
+                ],
+                "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
+                "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
+                "turnOffScreenTimeoutMs": 0,
+                "widthPx": 1920
+              },
+              "touchSupport": "NOT_PRESENT"
+            },
+            "sdReader": {
+              "present": "PRESENT"
+            },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
+            },
+            "storage": {
+              "storageType": "EMMC"
+            },
+            "stylus": {
+              "stylus": "NONE"
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": "LEFT_BACK"
+                },
+                {
+                  "position": "LEFT_FRONT"
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": "RIGHT",
+              "position": 0.75,
+              "region": "SCREEN"
+            }
+          },
+          "hardwareTopology": {
+            "wifi": {
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              }
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65538"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": "DESIGN",
+                  "soundCardInitConfig": "DESIGN",
+                  "ucmConfig": "DESIGN"
+                }
+              ],
+              "crasConfig": "DESIGN",
+              "headphoneCodec": "ALC5682I",
+              "speakerAmp": "MAX98373"
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": "FACING_FRONT",
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": "INTERFACE_USB",
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": "ORIENTATION_0",
+                  "privacySwitch": "NOT_PRESENT"
+                }
+              ]
+            },
+            "cellular": {
+              "present": "NOT_PRESENT"
+            },
+            "formFactor": {
+              "formFactor": "CONVERTIBLE",
+              "recoveryInput": "KEYBOARD"
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": "NOT_PRESENT"
+            },
+            "keyboard": {
+              "backlight": "NOT_PRESENT",
+              "keyboardType": "DETACHABLE",
+              "numericPad": "NOT_PRESENT",
+              "powerButton": "NOT_PRESENT"
+            },
+            "powerButton": {
+              "edge": "LEFT",
+              "position": 0.9,
+              "region": "SCREEN"
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    },
+                    "maxScreenBrightness": 215.0
+                  },
+                  {
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    },
+                    "maxScreenBrightness": 215.0
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "heightPx": 1080,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
+                "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
+                "widthPx": 1920
+              },
+              "touchSupport": "PRESENT"
+            },
+            "sdReader": {
+              "present": "PRESENT"
+            },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
+            },
+            "storage": {
+              "storageType": "EMMC"
+            },
+            "stylus": {
+              "stylus": "INTERNAL"
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": "LEFT_BACK"
+                },
+                {
+                  "position": "LEFT_FRONT"
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": "RIGHT",
+              "position": 0.75,
+              "region": "SCREEN"
+            }
+          },
+          "hardwareTopology": {
+            "wifi": {
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              }
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65539"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": "DESIGN",
+                  "soundCardInitConfig": "DESIGN",
+                  "ucmConfig": "DESIGN"
+                }
+              ],
+              "crasConfig": "DESIGN",
+              "headphoneCodec": "ALC5682I",
+              "speakerAmp": "MAX98373"
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": "FACING_FRONT",
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": "INTERFACE_USB",
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": "ORIENTATION_0",
+                  "privacySwitch": "NOT_PRESENT"
+                }
+              ]
+            },
+            "cellular": {
+              "present": "NOT_PRESENT"
+            },
+            "formFactor": {
+              "formFactor": "CONVERTIBLE",
+              "recoveryInput": "KEYBOARD"
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": "NOT_PRESENT"
+            },
+            "keyboard": {
+              "alsSteps": [
+                {
+                  "backlightPercent": 40.0,
+                  "luxThreshold": {
+                    "decreaseThreshold": -1,
+                    "increaseThreshold": 20
+                  }
+                },
+                {
+                  "luxThreshold": {
+                    "decreaseThreshold": 15,
+                    "increaseThreshold": -1
+                  }
+                }
+              ],
+              "backlight": "PRESENT",
+              "backlightUserSteps": [
+                0.0,
+                10.0,
+                20.0,
+                40.0,
+                60.0,
+                100.0
+              ],
+              "keyboardType": "INTERNAL",
+              "mcuType": "KEYBOARD_MCU_PRISM",
+              "noAlsBrightness": 40.0,
+              "numericPad": "PRESENT",
+              "powerButton": "PRESENT"
+            },
+            "powerButton": {
+              "edge": "LEFT",
+              "position": 0.9,
+              "region": "SCREEN"
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    },
+                    "maxScreenBrightness": 215.0
+                  },
+                  {
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    },
+                    "maxScreenBrightness": 215.0
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "heightPx": 1080,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
+                "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
+                "widthPx": 1920
+              },
+              "touchSupport": "PRESENT"
+            },
+            "sdReader": {
+              "present": "PRESENT"
+            },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
+            },
+            "storage": {
+              "storageType": "EMMC"
+            },
+            "stylus": {
+              "stylus": "INTERNAL"
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": "LEFT_BACK"
+                },
+                {
+                  "position": "LEFT_FRONT"
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": "RIGHT",
+              "position": 0.75,
+              "region": "SCREEN"
+            }
+          },
+          "hardwareTopology": {
+            "wifi": {
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              }
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65541"
+          }
+        },
+        {
+          "hardwareFeatures": {
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard.card_suffix",
+                  "crasConfig": "DESIGN",
+                  "soundCardInitConfig": "DESIGN",
+                  "ucmConfig": "DESIGN"
+                }
+              ],
+              "crasConfig": "DESIGN",
+              "headphoneCodec": "ALC5682I",
+              "speakerAmp": "MAX98373"
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": "FACING_FRONT",
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": "INTERFACE_USB",
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": "ORIENTATION_0",
+                  "privacySwitch": "NOT_PRESENT"
+                }
+              ]
+            },
+            "cellular": {
+              "present": "NOT_PRESENT"
+            },
+            "formFactor": {
+              "formFactor": "CONVERTIBLE",
+              "recoveryInput": "KEYBOARD"
+            },
+            "fwConfig": {
+              "mask": 61695,
+              "value": 24608
+            },
+            "hdmi": {
+              "present": "NOT_PRESENT"
+            },
+            "keyboard": {
+              "alsSteps": [
+                {
+                  "backlightPercent": 40.0,
+                  "luxThreshold": {
+                    "decreaseThreshold": -1,
+                    "increaseThreshold": 20
+                  }
+                },
+                {
+                  "luxThreshold": {
+                    "decreaseThreshold": 15,
+                    "increaseThreshold": -1
+                  }
+                }
+              ],
+              "backlight": "PRESENT",
+              "backlightUserSteps": [
+                0.0,
+                10.0,
+                20.0,
+                40.0,
+                60.0,
+                100.0
+              ],
+              "keyboardType": "INTERNAL",
+              "mcuType": "KEYBOARD_MCU_PRISM",
+              "noAlsBrightness": 40.0,
+              "numericPad": "PRESENT",
+              "powerButton": "PRESENT"
+            },
+            "powerButton": {
+              "edge": "LEFT",
+              "position": 0.9,
+              "region": "SCREEN"
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightNits": 133.0,
+                    "batteryBacklightNits": 80.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    },
+                    "maxScreenBrightness": 215.0
+                  },
+                  {
+                    "acBacklightNits": 215.0,
+                    "batteryBacklightNits": 215.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    },
+                    "maxScreenBrightness": 215.0
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "heightPx": 1080,
+                "maxScreenBrightness": 215.0,
+                "noAlsAcBrightnessNits": 135.0,
+                "noAlsBatteryBrightnessNits": 80.0,
+                "pixelsPerIn": 120,
+                "turnOffScreenTimeoutMs": 3000,
+                "widthPx": 1920
+              },
+              "touchSupport": "PRESENT"
+            },
+            "sdReader": {
+              "present": "PRESENT"
+            },
+            "soc": {
+              "arcMediaCodecsSuffix": "mainstream",
+              "hevcSupport": "NOT_PRESENT",
+              "resourceConfig": {
+                "ac": {
+                  "default-power-preferences": {
+                    "epp": {
+                      "power": {}
+                    }
+                  }
+                }
+              }
+            },
+            "storage": {
+              "storageType": "EMMC"
+            },
+            "stylus": {
+              "stylus": "INTERNAL"
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": "LEFT_BACK"
+                },
+                {
+                  "position": "LEFT_FRONT"
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": "RIGHT",
+              "position": 0.75,
+              "region": "SCREEN"
+            }
+          },
+          "hardwareTopology": {
+            "wifi": {
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 24576
+                }
+              }
+            }
+          },
+          "id": {
+            "value": "PROJECT_E:65543"
+          }
+        }
+      ],
+      "id": {
+        "value": "PROJECT_E"
+      },
+      "name": "PROJECT_E",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
+          "hardwareFeatures": {
+            "accelerometer": {
+              "baseAccelerometer": "PRESENT"
+            },
+            "audio": {
+              "cardConfigs": [
+                {
+                  "cardName": "fakeaudiocard",
+                  "crasConfig": "DESIGN",
+                  "ucmConfig": "DESIGN"
+                }
+              ],
+              "crasConfig": "DESIGN",
+              "headphoneCodec": "ALC5682I"
+            },
+            "camera": {
+              "devices": [
+                {
+                  "facing": "FACING_FRONT",
+                  "ids": [
+                    "0123:abcd"
+                  ],
+                  "interface": "INTERFACE_USB",
+                  "microphoneCount": {
+                    "value": 2
+                  },
+                  "orientation": "ORIENTATION_0",
+                  "privacySwitch": "NOT_PRESENT"
+                }
+              ]
+            },
+            "cellular": {
+              "dynamicPowerReductionConfig": {
+                "gpio": 20,
+                "tabletMode": true
+              },
+              "modemType": "MODEM_NL668",
+              "present": "PRESENT",
+              "type": "CELLULAR_LTE",
+              "wedgeTimeoutInMs": 210000
+            },
+            "embeddedController": {
+              "ecType": "EC_CHROME",
+              "present": "PRESENT"
+            },
+            "formFactor": {
+              "formFactor": "CLAMSHELL",
+              "recoveryInput": "KEYBOARD"
+            },
+            "fwConfig": {
+              "mask": 131071,
+              "value": 95010
+            },
+            "gyroscope": {
+              "baseGyroscope": "PRESENT"
+            },
+            "hdmi": {
+              "present": "NOT_PRESENT"
+            },
+            "keyboard": {
+              "backlight": "NOT_PRESENT",
+              "keyboardType": "DETACHABLE",
+              "numericPad": "NOT_PRESENT",
+              "powerButton": "NOT_PRESENT"
+            },
+            "magnetometer": {
+              "baseMagnetometer": "PRESENT"
+            },
+            "powerButton": {
+              "edge": "LEFT",
+              "position": 0.9,
+              "region": "SCREEN"
+            },
+            "powerSupply": {
+              "barreljack": "NOT_PRESENT",
+              "usbMinAcWatts": 20
+            },
+            "proximity": {
+              "configs": [
+                {
+                  "location": [
+                    {
+                      "modifier": "left",
+                      "radioType": "WIFI"
+                    },
+                    {
+                      "radioType": "CELLULAR"
+                    }
+                  ],
+                  "semtechConfig": {
+                    "channelConfig": [
+                      {
+                        "channel": "0",
+                        "hardwaregain": 4
+                      },
+                      {
+                        "channel": "1"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "location": [
+                    {
+                      "modifier": "right",
+                      "radioType": "WIFI"
+                    }
+                  ],
+                  "semtechConfig": {
+                    "channelConfig": [
+                      {
+                        "channel": "0",
+                        "hardwaregain": 2
+                      },
+                      {
+                        "channel": "1"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "activityConfig": {},
+                  "location": [
+                    {
+                      "radioType": "WIFI"
+                    },
+                    {
+                      "radioType": "CELLULAR"
+                    }
+                  ]
+                }
+              ]
+            },
+            "screen": {
+              "panelProperties": {
+                "alsSteps": [
+                  {
+                    "acBacklightPercent": 80.1,
+                    "batteryBacklightPercent": 60.1,
+                    "luxThreshold": {
+                      "decreaseThreshold": -1,
+                      "increaseThreshold": 400
+                    }
+                  },
+                  {
+                    "acBacklightPercent": 100.0,
+                    "batteryBacklightPercent": 100.0,
+                    "luxThreshold": {
+                      "decreaseThreshold": 100,
+                      "increaseThreshold": -1
+                    }
+                  }
+                ],
+                "diagonalMilliinch": 15000,
+                "features": [
+                  "SEAMLESS_REFRESH_RATE_SWITCHING",
+                  "VARIABLE_REFRESH_RATE_AVAILABLE"
+                ],
+                "heightPx": 1080,
+                "minVisibleBacklightLevel": 1000,
+                "noAlsAcBrightness": 80.1,
+                "noAlsBatteryBrightness": 63.2,
+                "pixelsPerIn": 280,
+                "roundedCorners": {
+                  "bottomLeft": {
+                    "radiusPx": 15
+                  },
+                  "bottomRight": {
+                    "radiusPx": 15
+                  },
+                  "topLeft": {
+                    "radiusPx": 15
+                  },
+                  "topRight": {
+                    "radiusPx": 15
+                  }
+                },
+                "turnOffScreenTimeoutMs": 0,
+                "widthPx": 1920
+              },
+              "touchSupport": "NOT_PRESENT"
+            },
+            "sdReader": {
+              "present": "PRESENT"
+            },
+            "storage": {
+              "storageType": "EMMC"
+            },
+            "thermal": {
+              "configPathSuffix": "default"
+            },
+            "usbA": {
+              "count": {}
+            },
+            "usbC": {
+              "count": {
+                "value": 2
+              },
+              "ports": [
+                {
+                  "position": "LEFT_BACK"
+                },
+                {
+                  "position": "LEFT_FRONT"
+                }
+              ],
+              "usb4": true
+            },
+            "volumeButton": {
+              "edge": "RIGHT",
+              "position": 0.75,
+              "region": "SCREEN"
+            },
+            "wifi": {
+              "wifiConfig": {
+                "intelConfig": {
+                  "antTable": {
+                    "antGainTableA": {
+                      "antGain2g": 1,
+                      "antGain5g1": 2,
+                      "antGain5g2": 3,
+                      "antGain5g3": 4,
+                      "antGain5g4": 5,
+                      "antGain5g5": 6,
+                      "antGain6g1": 7,
+                      "antGain6g2": 8,
+                      "antGain6g3": 9,
+                      "antGain6g4": 10,
+                      "antGain6g5": 11
+                    },
+                    "antGainTableB": {
+                      "antGain2g": 12,
+                      "antGain5g1": 13,
+                      "antGain5g2": 14,
+                      "antGain5g3": 15,
+                      "antGain5g4": 16,
+                      "antGain5g5": 17,
+                      "antGain6g1": 18,
+                      "antGain6g2": 19,
+                      "antGain6g3": 20,
+                      "antGain6g4": 21,
+                      "antGain6g5": 22
+                    },
+                    "antModePpag": 3,
+                    "antTableVersion": 2
+                  },
+                  "bbfb": {
+                    "revision": 1
+                  },
+                  "bbsm": {
+                    "bandsSelection": {},
+                    "revision": 1
+                  },
+                  "bdcm": {
+                    "bdcmDualChainMode": {},
+                    "revision": 1
+                  },
+                  "bdmm": {
+                    "revision": 1
+                  },
+                  "bpag": {
+                    "enablementBpagCountries": {},
+                    "revision": 2
+                  },
+                  "btSar": {
+                    "revision": 2,
+                    "set1ChainA": {},
+                    "set1ChainB": {}
+                  },
+                  "bucs": {
+                    "revision": 1,
+                    "uhbCountrySelection": {}
+                  },
+                  "dsbr": {
+                    "bluetoothRadioResistorOhm": 33,
+                    "override": true
+                  },
+                  "dsm": {
+                    "disableActiveSdrChannels": "1",
+                    "enablement11ax": "6",
+                    "enablement11beCountries": {},
+                    "energyDetectionThreshold": {},
+                    "regulatoryConfigurations": "4",
+                    "supportIndonesia5gBand": "2",
+                    "supportUltraHighBand": "3",
+                    "uartConfigurations": "5",
+                    "unii4": "7"
+                  },
+                  "ebrd": {
+                    "revision": 1,
+                    "set2ChainA": {},
+                    "set2ChainB": {},
+                    "set3ChainA": {},
+                    "set3ChainB": {},
+                    "set4ChainA": {},
+                    "set4ChainB": {}
+                  },
+                  "sarTable": {
+                    "cdbNonTabletModePowerTableA": {
+                      "limit2g": 67,
+                      "limit5g1": 68,
+                      "limit5g2": 69,
+                      "limit5g3": 70,
+                      "limit5g4": 71,
+                      "limit5g5": 72,
+                      "limit6g1": 73,
+                      "limit6g2": 74,
+                      "limit6g3": 75,
+                      "limit6g4": 76,
+                      "limit6g5": 77
+                    },
+                    "cdbNonTabletModePowerTableB": {
+                      "limit2g": 78,
+                      "limit5g1": 79,
+                      "limit5g2": 80,
+                      "limit5g3": 81,
+                      "limit5g4": 82,
+                      "limit5g5": 83,
+                      "limit6g1": 84,
+                      "limit6g2": 85,
+                      "limit6g3": 86,
+                      "limit6g4": 87,
+                      "limit6g5": 88
+                    },
+                    "cdbTabletModePowerTableA": {
+                      "limit2g": 45,
+                      "limit5g1": 46,
+                      "limit5g2": 47,
+                      "limit5g3": 48,
+                      "limit5g4": 49,
+                      "limit5g5": 50,
+                      "limit6g1": 51,
+                      "limit6g2": 52,
+                      "limit6g3": 53,
+                      "limit6g4": 54,
+                      "limit6g5": 55
+                    },
+                    "cdbTabletModePowerTableB": {
+                      "limit2g": 56,
+                      "limit5g1": 57,
+                      "limit5g2": 58,
+                      "limit5g3": 59,
+                      "limit5g4": 60,
+                      "limit5g5": 61,
+                      "limit6g1": 62,
+                      "limit6g2": 63,
+                      "limit6g3": 64,
+                      "limit6g4": 65,
+                      "limit6g5": 66
+                    },
+                    "nonTabletModePowerTableA": {
+                      "limit2g": 23,
+                      "limit5g1": 24,
+                      "limit5g2": 25,
+                      "limit5g3": 26,
+                      "limit5g4": 27,
+                      "limit5g5": 28,
+                      "limit6g1": 29,
+                      "limit6g2": 30,
+                      "limit6g3": 31,
+                      "limit6g4": 32,
+                      "limit6g5": 33
+                    },
+                    "nonTabletModePowerTableB": {
+                      "limit2g": 34,
+                      "limit5g1": 35,
+                      "limit5g2": 36,
+                      "limit5g3": 37,
+                      "limit5g4": 38,
+                      "limit5g5": 39,
+                      "limit6g1": 40,
+                      "limit6g2": 41,
+                      "limit6g3": 42,
+                      "limit6g4": 43,
+                      "limit6g5": 44
+                    },
+                    "sarTableVersion": 2,
+                    "tabletModePowerTableA": {
+                      "limit2g": 1,
+                      "limit5g1": 2,
+                      "limit5g2": 3,
+                      "limit5g3": 4,
+                      "limit5g4": 5,
+                      "limit5g5": 6,
+                      "limit6g1": 7,
+                      "limit6g2": 8,
+                      "limit6g3": 9,
+                      "limit6g4": 10,
+                      "limit6g5": 11
+                    },
+                    "tabletModePowerTableB": {
+                      "limit2g": 12,
+                      "limit5g1": 13,
+                      "limit5g2": 14,
+                      "limit5g3": 15,
+                      "limit5g4": 16,
+                      "limit5g5": 17,
+                      "limit6g1": 18,
+                      "limit6g2": 19,
+                      "limit6g3": 20,
+                      "limit6g4": 21,
+                      "limit6g5": 22
+                    }
+                  },
+                  "wbem": {
+                    "enablementWbemCountries": {}
+                  },
+                  "wgdsTable": {
+                    "offsetEu": {
+                      "max2g": 10,
+                      "max5g": 13,
+                      "max6g": 16,
+                      "offset2gA": 11,
+                      "offset2gB": 12,
+                      "offset5gA": 14,
+                      "offset5gB": 15,
+                      "offset6gA": 17,
+                      "offset6gB": 18
+                    },
+                    "offsetFcc": {
+                      "max2g": 1,
+                      "max5g": 4,
+                      "max6g": 7,
+                      "offset2gA": 2,
+                      "offset2gB": 3,
+                      "offset5gA": 5,
+                      "offset5gB": 6,
+                      "offset6gA": 8,
+                      "offset6gB": 9
+                    },
+                    "offsetOther": {
+                      "max2g": 19,
+                      "max5g": 22,
+                      "max6g": 25,
+                      "offset2gA": 20,
+                      "offset2gB": 21,
+                      "offset5gA": 23,
+                      "offset5gB": 24,
+                      "offset6gA": 26,
+                      "offset6gB": 27
+                    },
+                    "wgdsVersion": 2
+                  },
+                  "wpfc": {},
+                  "wtasTable": {
+                    "denyListEntry1": 1,
+                    "denyListEntry10": 10,
+                    "denyListEntry11": 11,
+                    "denyListEntry12": 12,
+                    "denyListEntry13": 13,
+                    "denyListEntry14": 14,
+                    "denyListEntry15": 15,
+                    "denyListEntry16": 16,
+                    "denyListEntry2": 2,
+                    "denyListEntry3": 3,
+                    "denyListEntry4": 4,
+                    "denyListEntry5": 5,
+                    "denyListEntry6": 6,
+                    "denyListEntry7": 7,
+                    "denyListEntry8": 8,
+                    "denyListEntry9": 9,
+                    "tasListSize": 16,
+                    "tasSelection": 1
+                  }
+                }
+              }
+            }
+          },
+          "hardwareTopology": {
+            "wifi": {
+              "hardwareFeature": {
+                "fwConfig": {
+                  "mask": 61440,
+                  "value": 28672
+                }
+              }
+            }
+          },
+          "id": {
+            "value": "PROJECT_WL:64"
+          }
+        }
+      ],
+      "id": {
+        "value": "PROJECT_WL"
+      },
+      "name": "PROJECT_WL",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
+          "id": {
+            "value": "PROJECT_REBRAND:65"
+          }
+        }
+      ],
+      "id": {
+        "value": "PROJECT_REBRAND"
+      },
+      "name": "PROJECT_REBRAND",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    },
+    {
+      "configs": [
+        {
+          "id": {
+            "value": "PROJECT_BOX:128"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_BOX:129"
+          }
+        },
+        {
+          "id": {
+            "value": "PROJECT_BOX:130"
+          }
+        }
+      ],
+      "id": {
+        "value": "PROJECT_BOX"
+      },
+      "name": "PROJECT_BOX",
+      "programId": {
+        "value": "FAKE_PROGRAM"
+      }
+    }
+  ],
+  "softwareConfigs": [
+    {
+      "designConfigId": {
+        "value": "FAKE_REF_DESIGN:2147483647"
+      },
+      "idScanConfig": {
+        "firmwareSku": 2147483647,
+        "frid": "Google_Ref"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "FAKE_REF_DESIGN:0"
+      },
+      "idScanConfig": {
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "FAKE_REF_DESIGN:1"
+      },
+      "idScanConfig": {
+        "firmwareSku": 1,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        }
+      ],
+      "designConfigId": {
+        "value": "PROJECT_A:32"
+      },
+      "idScanConfig": {
+        "firmwareSku": 32,
+        "frid": "Google_Ref_A"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_B:33"
+      },
+      "idScanConfig": {
+        "firmwareSku": 33,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_B:34"
+      },
+      "idScanConfig": {
+        "firmwareSku": 34,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_B:35"
+      },
+      "idScanConfig": {
+        "firmwareSku": 35,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_C:34"
+      },
+      "idScanConfig": {
+        "firmwareSku": 34,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_D:40"
+      },
+      "idScanConfig": {
+        "firmwareSku": 40,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "audioConfigs": [
+        {
+          "cardName": "fakeaudiocard"
+        },
+        {
+          "cardName": "HDA ATI HDMI"
+        }
+      ],
+      "designConfigId": {
+        "value": "PROJECT_WL:64"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 64,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_REBRAND:65"
+      },
+      "idScanConfig": {
+        "firmwareSku": 65,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_BOX:128"
+      },
+      "idScanConfig": {
+        "firmwareSku": 128,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_BOX:129"
+      },
+      "idScanConfig": {
+        "firmwareSku": 129,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "PROJECT_BOX:130"
+      },
+      "idScanConfig": {
+        "firmwareSku": 130,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65536"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65536,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65537"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65537,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65538"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65538,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65539"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65539,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65541"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65541,
+        "frid": "Google_Fake"
+      }
+    },
+    {
+      "bluetoothConfig": {
+        "flags": {
+          "enable-suspend-management": true
+        }
+      },
+      "designConfigId": {
+        "value": "PROJECT_E:65543"
+      },
+      "firmwareBuildConfig": {
+        "buildTargets": {
+          "coreboot": "fake",
+          "depthcharge": "fake",
+          "ec": "fake",
+          "ecExtras": [
+            "fake_ec_extra1",
+            "fake_ec_extra2"
+          ],
+          "libpayload": "fake",
+          "zephyrEc": "projects/fake/fake"
+        }
+      },
+      "healthConfig": {
+        "battery": {
+          "hasSmartBatteryInfo": true
+        },
+        "cachedVpd": {
+          "hasSkuNumber": true
+        },
+        "routines": {
+          "batteryHealth": {
+            "percentBatteryWearAllowed": 50
+          },
+          "nvmeWearLevel": {
+            "wearLevelThreshold": 50
+          }
+        }
+      },
+      "idScanConfig": {
+        "firmwareSku": 65543,
+        "frid": "Google_Fake"
+      }
+    }
+  ]
+}

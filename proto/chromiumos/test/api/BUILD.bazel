@@ -1,0 +1,101 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "api_proto",
+    srcs = [
+        "android_provision.proto",
+        "android_provision_cli.proto",
+        "android_provision_metadata.proto",
+        "callbox_service.proto",
+        "chameleon_lib_service.proto",
+        "coverage_rule.proto",
+        "cros_provision_cli.proto",
+        "cros_provision_metadata.proto",
+        "cros_publish_cli.proto",
+        "cros_publish_service.proto",
+        "cros_test_cli.proto",
+        "cros_test_finder_cli.proto",
+        "cros_test_ready_cli.proto",
+        "cros_test_runner_service.proto",
+        "cros_tool_runner_cli.proto",
+        "cros_tool_runner_container_service.proto",
+        "cros_tool_runner_container_service_extensions.proto",
+        "cros_tool_runner_container_service_templates.proto",
+        "ctp2.proto",
+        "device_leasing.proto",
+        "device_manager_service.proto",
+        "dut_attribute.proto",
+        "dut_service.proto",
+        "execution_service.proto",
+        "firmware_provision.proto",
+        "generic_service.proto",
+        "image.proto",
+        "instance.proto",
+        "lacros_provision_metadata.proto",
+        "plan.proto",
+        "post_test_service.proto",
+        "pre_test_service.proto",
+        "provision.proto",
+        "provision_cli.proto",
+        "provision_service.proto",
+        "provision_state.proto",
+        "publish_gcs_metadata.proto",
+        "publish_service.proto",
+        "publish_tko_metadata.proto",
+        "servod_service.proto",
+        "suite_set.proto",
+        "test_case.proto",
+        "test_case_metadata.proto",
+        "test_case_result.proto",
+        "test_execution_metadata.proto",
+        "test_finder_service.proto",
+        "test_harness.proto",
+        "test_libs_service.proto",
+        "test_suite.proto",
+        "trv2_dynamic.proto",
+        "trv2_dynamic_updates.proto",
+        "vm_leaser.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//chromiumos:_go_proto",
+        "//chromiumos/build/api:api_proto",
+        "//chromiumos/config/api:api_proto",
+        "//chromiumos/config/api/test/xmlrpc:xmlrpc_proto",
+        "//chromiumos/longrunning:longrunning_proto",
+        "//chromiumos/test/lab/api:api_proto",
+        "@com_google_protobuf//:any_proto",
+        "@com_google_protobuf//:duration_proto",
+        "@com_google_protobuf//:timestamp_proto",
+        "@com_google_protobuf//:wrappers_proto",
+    ],
+)
+
+go_proto_library(
+    name = "api_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "go.chromium.org/chromiumos/config/go/test/api",
+    proto = ":api_proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//chromiumos:go",
+        "//chromiumos/build/api",
+        "//chromiumos/config/api",
+        "//chromiumos/config/api/test/xmlrpc",
+        "//chromiumos/longrunning",
+        "//chromiumos/test/lab/api",
+    ],
+)
+
+go_library(
+    name = "api",
+    embed = [":api_go_proto"],
+    importpath = "go.chromium.org/chromiumos/config/go/test/api",
+    visibility = ["//visibility:public"],
+)

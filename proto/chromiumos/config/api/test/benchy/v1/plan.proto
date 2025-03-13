@@ -1,0 +1,180 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromium.config.api.test.benchy.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/benchy/v1;benchy";
+
+message Payload {
+        // Name of the payload to stage.
+        string name = 1;
+
+        // Full path of payload to be staged including globs.  e.g.
+        // "artifacts/set_parameter.sh"
+        string source = 2;
+
+        // Destination path payload should be copied to. e.g.
+        // "/usr/local/bin"
+        string destination = 3;
+}
+
+enum OperatingSystem {
+        // ChromeOS image.
+        OS_CHROMEOS = 0;
+        // Android image.
+        OS_ANDROID = 1;
+}
+
+message Device {
+        // Name of the device.
+        // For lab/crosfleet machines, use skylab_HOSTNAME, e.g.
+        // "skylab_chromeos1-row3-rack1-host2"
+        // For developer machines, use MODEL-BUILDSTAGE-SKU-ASSET
+        // "copano-evt-sku2-C123456"
+        string name = 1;
+
+        // Host or IP of the device. e.g.
+        // "chromeos1-row2-rack8-host2.cros" or "192.168.1.123"
+        string host_name = 2;
+
+        // Board of the device. e.g.
+        // "volteer"
+        string board = 3;
+
+        // List of supported operating systems. e.g.
+        // [ OS_CHROMEOS ]
+        repeated OperatingSystem oses = 4;
+}
+
+message Application {
+        // Name of the application. e.g.
+        // "com.chrome.dev"
+        string name = 1;
+
+        // Installation method of the application being installed.
+        enum InstallationMethod {
+          // Local Android APK.
+          METHOD_LOCAL_APK = 0;
+        }
+        InstallationMethod installation_method = 2;
+
+        // Full path of the application to be installed. e.g.
+        // "clankium/src/out/Default/apks/Chrome.apk"
+        string source = 3;
+};
+
+message Build {
+        // Name of the build.  Usually the same as the version.  e.g.
+        // "R108-15183.8.0"
+        string name = 1;
+
+        // Version of the build. e.g.
+        // "R108-15183.8.0"
+        string version = 2;
+
+        // Operating system of the build.
+        OperatingSystem os = 3;
+
+        // List of applications to be installed.
+        repeated Application applications = 4;
+}
+
+message Parameter {
+        // Name of the parameter. e.g.
+        // "host_swappiness"
+        string name = 1;
+
+        // List of values for the parameter. e.g.
+        // ["15", "30", "60"]
+        repeated string values = 2;
+
+        // Command line that should be run to set the parameter include named
+        // % substituion. e.g.
+        // "sudo sysctl vm.swappiness=%(parameter_value)s"
+        string command_line = 3;
+
+        // Whether the command should be executed locally or on DUT host
+        // or on DUT guest.
+        enum ExecutionMode {
+          EXECUTION_UNSPECIFIED = 0;
+          // Running locally
+          EXECUTION_LOCAL = 1;
+          // Running on DUT host
+          EXECUTION_DUT = 2;
+          // Running on DUT guest via tast parameter
+          EXECUTION_TAST_VARIABLE = 3;
+        }
+        ExecutionMode execution_mode = 4;
+}
+
+message ConfigOption {
+        // Name of the configuration option. e.g.
+        // "--probe-config"
+        string name = 1;
+
+        // Value of the configuration option. e.g.
+        // "probe-config.hjson"
+        string value = 2;
+}
+
+message Workload {
+        // Name of the workload.
+        // For tast test names, use the name of the test. e.g.
+        // "borealis.TraceReplay.glxgears"
+        // For crossbench, use the name of the crossbench test. e.g.
+        // "jetstream_2.0"
+        string name = 1;
+
+        // Command line that should be run to run the workload include named
+        // % substituion. e.g.
+        // "borealis-sh env DISPLAY=:0 apitrace replay %(workload_name)s"
+        string command_line = 2;
+
+        // Whether the command should be executed on the host or the DUT.
+        bool local_execution = 3;
+
+        // TODO: trace, test, script
+        // TODO: results, processing
+        // Repeat count for this workload
+        uint32 repeat_count = 4;
+
+        // Test runner that should be used to run the workload.
+        enum Runner {
+          // Run via tast.
+          RUNNER_TAST = 0;
+          // Run via crossbench.
+          RUNNER_CROSSBENCH = 1;
+        };
+        Runner runner = 5;
+
+        // List of configuration options for the runner. e.g.
+        repeated ConfigOption options = 6;
+}
+
+message Plan {
+        // Name of the plan.
+        string name = 1;
+
+        // List of payloads.
+        repeated Payload payloads = 2;
+
+        // List of devices.
+        repeated Device devices = 3;
+
+        // List of builds.
+        repeated Build builds = 4;
+
+        // List of workloads
+        repeated Workload workloads = 5;
+
+        // List of parameters.
+        repeated Parameter parameters = 6;
+
+        // Cooldown time between running workloads.
+        uint32 cooldown_seconds = 7;
+
+        // TODO: extra labels
+}

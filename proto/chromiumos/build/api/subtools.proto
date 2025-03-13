@@ -1,0 +1,117 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+
+message SubtoolPackage {
+  // The name of the package.  May be referenced in cipd.  Must not contain a /.
+  string name = 1;
+
+  enum ExportType {
+    EXPORT_UNSPECIFIED = 0;
+    EXPORT_CIPD = 1;
+    EXPORT_GCS = 2;
+  }
+  // How the package should be exported.
+  ExportType type = 2;
+
+  // The maximum number of files expected to be packaged.  Export will fail if
+  // this would be exceeded.
+  int32 max_files = 3;
+
+  // The cipd package prefix.  If not specified, defaults to
+  // chromiumos/infra/tools/.
+  string cipd_prefix = 4;
+
+  // Input paths relative to the SDK root.  Pattern matching is permitted.
+  // Any dynamically linked ELFs are automatically wrapped with lddtree.
+  repeated PathMapping paths = 5;
+
+  message PathMapping {
+    // The source file (or files) to bundle.  Glob syntax used by pathlib.Path
+    // is supported (go/pathlib#pathlib.Path.glob).  Paths match files installed
+    // in the subtools chroot.  If nothing matches, export will fail.
+    repeated string input = 1;
+
+    // The target path relative to the export destination.  Default: "/bin".
+    string dest = 2;
+
+    // The file prefix to strip before copying to `dest`.  Default: "^.*/".
+    // Export fails if this does not match all files matching `glob`.
+    string strip_prefix_regex = 3;
+
+    // A portage package (e.g., app-editors/vim) whose installed files are
+    // matched against `glob`.  If unspecified, all files in the chroot are
+    // candidates to match.
+    string ebuild_filter = 4;
+
+    // Whether to treat all entries in this PathMapping as "opaque" data files.
+    // There will be no attempt to discover and bundle any dependencies.
+    bool opaque_data = 5;
+  }
+
+  // Describes how a bundled package could have changed from a prior bundle.
+  enum Change {
+    // Select the default change type configured in the subtools builder.
+    CHANGE_UNSPECIFIED = 0;
+
+    // The Build ID of any binary in the bundle has changed, or any file without
+    // a Build ID has changed, or the revision of any ebuild that contributed
+    // files to the bundle has changed.
+    CHANGE_BUILD_ID_OR_REVISION = 1;
+
+    // The revision of any ebuild contributing files to the bundle has changed.
+    CHANGE_REVISION_ONLY = 2;
+  }
+  // The type of change that will trigger a new upload.
+  Change upload_trigger = 6;
+
+  // When exporting to GCS, archives will be written to:
+  //   gs://${BUCKET}/${PREFIX}/${NAME}/${PVR}/${HASH}.${EXTENSION}
+  // Where BUCKET, PREFIX, and EXTENSION are configurable using
+  // GcsExportOptions.  NAME is the package name, and HASH is a checksum of the
+  // bundle contents.  PVR is the package version and revision of the package
+  // that installed the subtool config.
+  message GcsExportOptions {
+    // The bucket name to export to.
+    string bucket = 1;
+    // An optional subdirectory prefix to use in the bucket.
+    string prefix = 2;
+    // The archive format to use.  Right now only .tar.zst is supported.
+    enum ArchiveFormat {
+      ARCHIVE_FORMAT_UNSPECIFIED = 0;
+      ARCHIVE_FORMAT_TAR_ZST = 1;
+    }
+    ArchiveFormat archive_format = 3;
+  }
+  GcsExportOptions gcs_export_options = 7;
+
+  enum SymlinkMode {
+    // Default behavior (currently SYMLINK_RESOLVE, but subject to change).
+    SYMLINK_DEFAULT = 0;
+
+    // Resolve symlinks to files, potentially creating duplicate files.  This is
+    // the safest behavior, but potentially creates sub-optimal archives.
+    SYMLINK_RESOLVE = 1;
+
+    // Preserve original symlinks.  Beware of the limitations:
+    //
+    // - Installing a symlink to an absolute path will result in an error.
+    // - Absolutely no translation of symlink paths is attempted.  I.e., if you
+    //   re-locate files with PathMappings, things may not work.
+    // - Symlinks which do not resolve to a path inside the result bundle will
+    //   result in an error.
+    //
+    // That being said, it's an effective way to reduce the size of large
+    // bundles like toolchains, so if you think you can work around these
+    // thorns, go for it.
+    SYMLINK_PRESERVE = 2;
+  }
+  SymlinkMode symlink_mode = 8;
+}

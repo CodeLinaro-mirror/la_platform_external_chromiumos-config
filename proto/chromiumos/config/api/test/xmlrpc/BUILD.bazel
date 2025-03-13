@@ -1,0 +1,27 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "xmlrpc_proto",
+    srcs = ["xmlrpc.proto"],
+    visibility = ["//visibility:public"],
+)
+
+go_proto_library(
+    name = "xmlrpc_go_proto",
+    importpath = "go.chromium.org/chromiumos/config/go/api/test/xmlrpc",
+    proto = ":xmlrpc_proto",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "xmlrpc",
+    embed = [":xmlrpc_go_proto"],
+    importpath = "go.chromium.org/chromiumos/config/go/api/test/xmlrpc",
+    visibility = ["//visibility:public"],
+)

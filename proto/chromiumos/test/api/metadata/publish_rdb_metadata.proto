@@ -1,0 +1,75 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api.metadata;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api/metadata";
+
+import "chromiumos/test/artifact/test_result.proto";
+import "chromiumos/test/api/ctp2.proto";
+import "chromiumos/test/api/firmware_provision.proto";
+import "chromiumos/test/api/post_test_service.proto";
+
+
+// NEXT TAG: 11
+message PublishRdbMetadata {
+  // Current invocation id
+  string current_invocation_id = 1;
+
+  // Test results
+  chromiumos.test.artifact.TestResult test_result = 2;
+
+  // Stainless url where artifacts have been uploaded
+  string stainless_url = 3 [deprecated = true];
+
+  // Testhaus url where artifacts have been uploaded
+  string testhaus_url = 4;
+
+  // Sources captures information about the code sources tested by
+  // the invocation.
+  message Sources {
+    // The path to the file in Google Cloud Storage that describes the
+    // sources used in the Chrome OS build.
+    // The sources themselves should be a JSON-serialized
+    // luci.resultdb.v1.Sources proto.
+    //
+    // Format: "gs://<bucket>/<build>/metadata/sources.jsonpb".
+    string gs_path = 1;
+
+    // Indicates whether the deployment contains items other than
+    // a Chrome OS system image built from the above sources.
+    // For example, a different version of Lacros (for Lacros CI),
+    // or a different version of firmware.
+    //
+    // When set, it indicates the sources above are incomplete and certain
+    // analyses (e.g. regression or changepoint analysis) cannot be
+    // reliably performed based on the Chrome OS source version alone.
+    bool is_deployment_dirty = 2;
+  }
+
+  // The code sources tested.
+  Sources sources = 5;
+
+  // BaseVariant will be added to the variant of each test result within an
+  // invocation. If there are duplicate keys, the variant value given by the
+  // test command always wins.
+  map<string, string> base_variant = 6;
+
+  // Post process responses capture the results returned from the post process
+  // container which handles complex log artifacts parsing.
+  chromiumos.test.api.RunActivitiesResponse post_process_responses = 7;
+
+  // Captures the response of the firmware provisioning.
+  chromiumos.test.api.FirmwareProvisionResponse firmware_provision_response = 8;
+
+  // Captures the 3D equivalence classes (EqC) information. The contents of the
+  // map should be aligned with the EqcInfo proto:
+  // https://source.chromium.org/chromium/infra/infra_superproject/+/main:infra/go/src/go.chromium.org/chromiumos/config/proto/chromiumos/test/artifact/test_result.proto;l=130-150
+  map<string, string> eqc_info = 9 [deprecated = true];
+
+  // Captures the publish keys in the scheduling unit options, e.g. 3D subject.
+  repeated chromiumos.test.api.PublishKey publish_keys = 10;
+}

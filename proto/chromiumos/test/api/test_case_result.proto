@@ -1,0 +1,112 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "chromiumos/storage_path.proto";
+import "chromiumos/test/api/test_case.proto";
+import "chromiumos/test/api/test_harness.proto";
+import "chromiumos/test/api/test_case_metadata.proto";
+
+// Result of a single execution of a given TestCase.
+// NEXT TAG: 18
+message TestCaseResult {
+  reserved 15;
+
+  // Unique ID of test case executed
+  TestCase.Id test_case_id = 1;
+
+  // Additional properties of the test case.
+  repeated TestCase.Tag tags = 17;
+
+  // Location of the test result artifacts generated during execution.
+  StoragePath result_dir_path = 2;
+
+  oneof verdict {
+    // Set if test ran successfully and passed.
+    Pass pass = 3;
+    // Set if test ran successfully and failed.
+    Fail fail = 4;
+    // Set if test execution encountered errors (i.e. started/attempted).
+    Crash crash = 5;
+    // Set if test execution was aborted before finishing either due to system
+    // limitation or user requests.
+    Abort abort = 6;
+    // Set if test was skipped due to dependency requirements.
+    Skip skip = 7;
+    // Set if test did not run.
+    NotRun not_run = 8;
+  }
+
+  // Reason associated with status above to provide more information.
+  //
+  // For fail/crash/abort statuses, the `errors` collection below
+  // should be populated in preference to this field. For skip or
+  // not_run status, this field may be used to communicate why the
+  // test was skipped or not run.
+  string reason = 9;
+
+  // Test harness information.
+  TestHarness test_harness = 10;
+
+  // The time when the test case started to execute.
+  google.protobuf.Timestamp start_time = 11;
+
+  // Duration of the test case execution.
+  google.protobuf.Duration duration = 12;
+
+  // Bool to show if the test was a retry or not.
+  bool retry = 13;
+
+  // The metadata of the test.
+  api.TestCaseMetadata test_case_metadata = 14;
+
+  // The error(s) that caused the test to fail.
+  //
+  // If there is more than one error (e.g. due to multiple expectation failures),
+  // a stable sorting should be used. A recommended form of stable sorting is:
+  // - Fatal errors (errors that cause the test to terminate immediately first,
+  //   then
+  // - Within fatal/non-fatal errors, sort by chronological order
+  //   (earliest error first).
+  repeated Error errors = 16;
+
+  // Error represents a problem that caused a test to fail, such as a crash
+  // or expectation failure.
+  message Error {
+    // The error message. This should only be the error message and
+    // should not include any stack traces. An example would be the
+    // message passed to .Error(...) in a Tast test.
+    //
+    // This message may be used to cluster related failures together.
+    string message = 1;
+  }
+
+  message Artifacts {
+  }
+
+  message Pass {
+  }
+
+  message Fail {
+  }
+
+  message Crash {
+  }
+
+  message Abort {
+  }
+
+  message Skip {
+  }
+
+  message NotRun {
+  }
+}

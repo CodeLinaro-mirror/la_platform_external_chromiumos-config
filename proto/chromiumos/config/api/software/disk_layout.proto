@@ -1,0 +1,16 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+package chromiumos.config.api.software;
+
+// The configuration of device specific disk layout.
+// For more details, see:
+// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform2/chromeos-config/README.md
+message DiskLayout {
+  bool default_key_stateful = 1;
+}

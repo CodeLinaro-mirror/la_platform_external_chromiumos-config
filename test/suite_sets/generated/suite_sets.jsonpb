@@ -1,0 +1,636 @@
+{
+	"suiteSets": [
+		{
+			"id": {
+				"value": "camera_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-camera-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1475606"
+				},
+				"criteria": {
+					"value": "Camera tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "camera_common"
+				},
+				{
+					"value": "camera_pre_fsi_only"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "camera_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-camera-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1475606"
+				},
+				"criteria": {
+					"value": "Camera tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "camera_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "cellular_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cellular-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167157"
+				},
+				"criteria": {
+					"value": "Cellular tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "cellular_common"
+				},
+				{
+					"value": "cellular_pre_fsi_only"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "cellular_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-cellular-eng@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167157"
+				},
+				"criteria": {
+					"value": "Cellular tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "cellular_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "graphics_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "graphics_hw"
+				},
+				{
+					"value": "graphics_webgl"
+				},
+				{
+					"value": "graphics_video"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "graphics_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-gfx-display@google.com"
+					},
+					{
+						"email": "markyacoub@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:188154"
+				},
+				"criteria": {
+					"value": "Graphics tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "graphics_hw"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "input_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "essential-inputs-gardener-oncall@google.com"
+					},
+					{
+						"email": "essential-inputs-team@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:95887"
+				},
+				"criteria": {
+					"value": "Input tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "input_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "input_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "essential-inputs-gardener-oncall@google.com"
+					},
+					{
+						"email": "essential-inputs-team@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:95887"
+				},
+				"criteria": {
+					"value": "Input tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "input_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "performance_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "baseos-perf@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167279"
+				},
+				"criteria": {
+					"value": "Performance tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "performance_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "performance_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "baseos-perf@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:167279"
+				},
+				"criteria": {
+					"value": "Performance tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "performance_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "platform_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "labqual_stable"
+				},
+				{
+					"value": "platform_common"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "platform_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-faft@google.com"
+					},
+					{
+						"email": "jbettis@chromium.org"
+					}
+				],
+				"bugComponent": {
+					"value": "b:792402"
+				},
+				"criteria": {
+					"value": "Platform tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "platform_common"
+				},
+				{
+					"value": "platform_fsi_only"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "power_pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Power tests for PVS pre FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "power_qual"
+				},
+				{
+					"value": "thermal_qual"
+				},
+				{
+					"value": "power_low_power_qual"
+				},
+				{
+					"value": "power_other"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "power_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "chromeos-platform-power@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1361410"
+				},
+				"criteria": {
+					"value": "Power tests for PVS FSI testing."
+				}
+			},
+			"suites": [
+				{
+					"value": "power_qual"
+				},
+				{
+					"value": "thermal_qual"
+				},
+				{
+					"value": "power_low_power_qual"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "example_suite_set"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "dbeckett@google.com"
+					},
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1234567"
+				},
+				"criteria": {
+					"value": "Validates fail/pass tests with pass/fail."
+				}
+			},
+			"suites": [
+				{
+					"value": "example_pass"
+				},
+				{
+					"value": "example_fail"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "faft_common"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "Common firmware suites/tests used to qualify the device firmware."
+				}
+			},
+			"suites": [
+				{
+					"value": "faft_ec_fw_qual"
+				},
+				{
+					"value": "faft_pd"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "faft_ro"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "All the faft suites needed to qualify the device for a firmware for RO/RW release."
+				}
+			},
+			"suiteSets": [
+				{
+					"value": "faft_common"
+				}
+			],
+			"suites": [
+				{
+					"value": "faft_bios_ro_qual"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "faft_rw"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "All the faft suites needed to qualify the device for a firmware for RW-only release."
+				}
+			},
+			"suiteSets": [
+				{
+					"value": "faft_common"
+				}
+			],
+			"suites": [
+				{
+					"value": "faft_bios_rw_qual"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "firmware_rorw"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "All tests needed to qualify the device firmware for RO/RW release."
+				}
+			},
+			"suiteSets": [
+				{
+					"value": "faft_ro"
+				}
+			],
+			"suites": [
+				{
+					"value": "firmware_other"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "firmware_rw"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:chromiumos:platform:firmware"
+				},
+				"criteria": {
+					"value": "All tests needed to qualify the device firmware for RW-only release."
+				}
+			},
+			"suiteSets": [
+				{
+					"value": "faft_rw"
+				}
+			],
+			"suites": [
+				{
+					"value": "firmware_other"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "pre_fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1110659"
+				},
+				"criteria": {
+					"value": "Automated tests that must be passed for device before FSI."
+				}
+			},
+			"suiteSets": [
+				{
+					"value": "camera_pre_fsi"
+				},
+				{
+					"value": "cellular_pre_fsi"
+				},
+				{
+					"value": "graphics_pre_fsi"
+				},
+				{
+					"value": "input_pre_fsi"
+				},
+				{
+					"value": "performance_pre_fsi"
+				},
+				{
+					"value": "platform_pre_fsi"
+				}
+			],
+			"suites": [
+				{
+					"value": "audio_pre_fsi"
+				},
+				{
+					"value": "wifi_pre_fsi"
+				}
+			]
+		},
+		{
+			"id": {
+				"value": "fsi"
+			},
+			"metadata": {
+				"owners": [
+					{
+						"email": "bbrotherton@google.com"
+					}
+				],
+				"bugComponent": {
+					"value": "b:1110659"
+				},
+				"criteria": {
+					"value": "Automated tests that must pass before FSI."
+				}
+			},
+			"suiteSets": [
+				{
+					"value": "camera_fsi"
+				},
+				{
+					"value": "cellular_fsi"
+				},
+				{
+					"value": "graphics_fsi"
+				},
+				{
+					"value": "input_fsi"
+				},
+				{
+					"value": "performance_fsi"
+				},
+				{
+					"value": "platform_fsi"
+				},
+				{
+					"value": "power_fsi"
+				}
+			],
+			"suites": [
+				{
+					"value": "virtualization_fsi"
+				}
+			]
+		}
+	]
+}

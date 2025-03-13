@@ -1,0 +1,37 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/storage_path.proto";
+
+// NEXT TAG: 6
+message PublishCpconMetadata {
+  // GCS location where artifacts will be uploaded.
+  StoragePath gcs_path = 1;
+
+  // Local file path to GCS creds that should be used for GCS upload.
+  StoragePath service_account_creds_file_path = 2;
+
+  // A full build name.
+  // For ChromeOS the format is:
+  // <board_name>_<board_variant>-<channel>/<build_version>
+  // e.g. hatch-release/R108-15183.0.0
+  //
+  // For AL the format is:
+  // <build_target>/<build_id>
+  // e.g. brya-trunk_staging-userdebug/brya-ota-12644700
+  string build = 3;
+
+  // The name of the xTS suite.
+  string suite = 4;
+
+  // ID of the parent swarming task for the build. Can be empty if job
+  // is not scheduled through swarming.
+  string parent_swarming_task_id = 5;
+}

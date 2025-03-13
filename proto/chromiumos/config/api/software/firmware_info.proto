@@ -1,0 +1,19 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+package chromiumos.config.api.software;
+
+// Firmware information for the device
+// For more details, see:
+// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform2/chromeos-config/README.md
+message FirmwareInfo {
+  // Altfw is functional on the DUT.
+  bool has_alt_firmware = 1;
+  // Firmware is setting up the initial splash screen.
+  bool has_splash_screen = 2;
+};

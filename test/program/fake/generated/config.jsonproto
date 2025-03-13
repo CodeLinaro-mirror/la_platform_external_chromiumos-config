@@ -1,0 +1,512 @@
+{
+  "components": [
+    {
+      "id": {
+        "value": "FAKE_MODEL_2"
+      },
+      "soc": {
+        "cores": 2,
+        "family": {
+          "arch": 2,
+          "name": "FAKE_FAMILY"
+        },
+        "model": "FAKE_MODEL"
+      }
+    },
+    {
+      "bluetooth": {
+        "usb": {
+          "bcdDevice": "0003",
+          "productId": "0002",
+          "vendorId": "0001"
+        }
+      },
+      "id": {
+        "value": "0001:0002:0003"
+      }
+    }
+  ],
+  "programList": [
+    {
+      "audioConfig": {
+        "cardConfigs": [
+          {
+            "cardName": "HDA ATI HDMI",
+            "ucmConfig": 2,
+            "ucmSuffix": ""
+          }
+        ],
+        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
+        "hasModuleFile": true
+      },
+      "componentQuals": [
+        {
+          "componentId": {
+            "value": "FAKE_MODEL_2"
+          },
+          "status": 3
+        },
+        {
+          "componentId": {
+            "value": "0001:0002:0003"
+          },
+          "status": 3
+        }
+      ],
+      "designConfigConstraints": [
+        {
+          "features": {
+            "bluetooth": {
+              "present": 1
+            },
+            "camera": {
+              "devices": [
+                {}
+              ]
+            },
+            "display": {
+              "type": 1
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
+            "fingerprint": {
+              "board": "test_board",
+              "location": 7,
+              "present": true,
+              "roVersion": "ro-test"
+            },
+            "formFactor": {
+              "formFactor": 1
+            },
+            "keyboard": {
+              "backlight": 2,
+              "keyboardType": 1,
+              "numericPad": 2,
+              "powerButton": 2
+            },
+            "screen": {
+              "panelProperties": {},
+              "touchSupport": 1
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "stylus": {
+              "stylus": 2
+            },
+            "touchpad": {
+              "present": 1
+            }
+          },
+          "level": 1
+        },
+        {
+          "features": {
+            "formFactor": {
+              "formFactor": 1
+            }
+          },
+          "level": 1
+        },
+        {
+          "features": {
+            "formFactor": {
+              "formFactor": 2
+            }
+          },
+          "level": 1
+        }
+      ],
+      "deviceSignerConfigs": [
+        {
+          "brandId": {
+            "value": "WLAA"
+          },
+          "keyId": "KEYD"
+        },
+        {
+          "brandId": {
+            "value": "WLBB"
+          },
+          "keyId": "KEYE"
+        },
+        {
+          "brandId": {
+            "value": "WLCC"
+          },
+          "keyId": "KEYF"
+        },
+        {
+          "brandId": {
+            "value": "WLZZ"
+          },
+          "keyId": "DEFAULT"
+        },
+        {
+          "designId": {
+            "value": "FAKE_REF_DESIGN"
+          },
+          "keyId": "DEFAULT"
+        },
+        {
+          "designId": {
+            "value": "PROJECT_A"
+          },
+          "keyId": "KEYA"
+        },
+        {
+          "designId": {
+            "value": "PROJECT_B"
+          },
+          "keyId": "KEYB"
+        },
+        {
+          "designId": {
+            "value": "PROJECT_BOX"
+          },
+          "keyId": "KEYBX"
+        },
+        {
+          "designId": {
+            "value": "PROJECT_C"
+          },
+          "keyId": "KEYC"
+        },
+        {
+          "designId": {
+            "value": "PROJECT_D"
+          },
+          "keyId": "KEYD"
+        },
+        {
+          "designId": {
+            "value": "PROJECT_E"
+          },
+          "keyId": "KEYE"
+        },
+        {
+          "designId": {
+            "value": "PROJECT_REBRAND"
+          },
+          "keyId": "KEYRB"
+        }
+      ],
+      "firmwareConfigurationSegments": [
+        {
+          "mask": 15,
+          "name": "Daughter board"
+        },
+        {
+          "mask": 240,
+          "name": "Camera"
+        },
+        {
+          "mask": 3840,
+          "name": "Sensor"
+        },
+        {
+          "mask": 61440,
+          "name": "Intel wifi sar id"
+        },
+        {
+          "mask": 65536,
+          "name": "Touch controller"
+        },
+        {
+          "mask": 15728640,
+          "name": "Detachable Base"
+        }
+      ],
+      "generateCameraMediaProfiles": true,
+      "id": {
+        "value": "FAKE_PROGRAM"
+      },
+      "mosysPlatformName": "fake",
+      "name": "FAKE_PROGRAM",
+      "platform": {
+        "arcSettings": {},
+        "capabilities": {
+          "darkResume": true,
+          "suspendToIdle": true,
+          "wakeOnDp": true
+        },
+        "gpuFamily": "FAKE_INTEL_GPU",
+        "graphicsApis": [
+          1
+        ],
+        "hevcSupport": 1,
+        "resourceConfig": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {
+                  "min-active-threads": 4
+                }
+              },
+              "cpufreq-disable-boost": true,
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {
+                  "min-active-threads": 4
+                }
+              },
+              "cpufreq-disable-boost": true,
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1
+                }
+              }
+            }
+          }
+        },
+        "schedqosConfig": {
+          "default": {
+            "backgroundCpuShare": 10,
+            "normalCpuShare": 1024,
+            "threadBackground": {},
+            "threadBalanced": {
+              "nice": 8,
+              "rtPriority": 0,
+              "uclampMin": 2
+            },
+            "threadUrgent": {
+              "cpusetCgroup": 2,
+              "latencySensitive": false,
+              "nice": 0,
+              "rtPriority": -1,
+              "uclampMin": 1
+            },
+            "threadUrgentBursty": {
+              "cpusetCgroup": 1,
+              "latencySensitive": true,
+              "nice": -8,
+              "rtPriority": 8,
+              "uclampMin": 0
+            },
+            "threadUrgentBurstyClient": {},
+            "threadUrgentBurstyServer": {},
+            "threadUtility": {}
+          }
+        },
+        "schedulerTune": {
+          "boostArcvm": 0.5,
+          "boostTopApp": 60,
+          "boostUrgent": 20,
+          "cpusetNonurgent": "0-5",
+          "inputBoost": 15
+        },
+        "socArch": 2,
+        "socFamily": "FAKE_INTEL_PLATFORM",
+        "swapConfig": {
+          "sizeMultiplier": 1.5
+        },
+        "videoCodecs": [
+          1,
+          1,
+          9
+        ]
+      },
+      "publicReplication": {
+        "publicFields": "name,id,baseProgram,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,platform.swapConfig,mosysPlatformName,generateCameraMediaProfiles"
+      }
+    },
+    {
+      "audioConfig": {
+        "cardConfigs": [
+          {
+            "cardName": "HDA ATI HDMI",
+            "ucmConfig": 2,
+            "ucmSuffix": ""
+          }
+        ],
+        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
+        "hasModuleFile": true
+      },
+      "baseProgram": "FAKE_PROGRAM",
+      "componentQuals": [
+        {
+          "componentId": {
+            "value": "FAKE_MODEL_2"
+          },
+          "status": 3
+        },
+        {
+          "componentId": {
+            "value": "0001:0002:0003"
+          },
+          "status": 3
+        }
+      ],
+      "designConfigConstraints": [
+        {
+          "features": {
+            "bluetooth": {
+              "present": 1
+            },
+            "camera": {
+              "devices": [
+                {}
+              ]
+            },
+            "display": {
+              "type": 1
+            },
+            "embeddedController": {
+              "ecType": 1,
+              "present": 1
+            },
+            "fingerprint": {
+              "board": "test_board",
+              "location": 7,
+              "present": true,
+              "roVersion": "ro-test"
+            },
+            "formFactor": {
+              "formFactor": 1
+            },
+            "keyboard": {
+              "backlight": 2,
+              "keyboardType": 1,
+              "numericPad": 2,
+              "powerButton": 2
+            },
+            "screen": {
+              "panelProperties": {},
+              "touchSupport": 1
+            },
+            "storage": {
+              "storageType": 1
+            },
+            "stylus": {
+              "stylus": 2
+            },
+            "touchpad": {
+              "present": 1
+            }
+          },
+          "level": 1
+        },
+        {
+          "features": {
+            "formFactor": {
+              "formFactor": 1
+            }
+          },
+          "level": 1
+        },
+        {
+          "features": {
+            "formFactor": {
+              "formFactor": 2
+            }
+          },
+          "level": 1
+        }
+      ],
+      "deviceSignerConfigs": [
+        {
+          "designId": {
+            "value": "FAKE_A_REF_DESIGN"
+          },
+          "keyId": "DEFAULT"
+        }
+      ],
+      "firmwareConfigurationSegments": [
+        {
+          "mask": 15,
+          "name": "Daughter board"
+        },
+        {
+          "mask": 240,
+          "name": "Camera"
+        },
+        {
+          "mask": 3840,
+          "name": "Sensor"
+        },
+        {
+          "mask": 61440,
+          "name": "Intel wifi sar id"
+        },
+        {
+          "mask": 65536,
+          "name": "Touch controller"
+        },
+        {
+          "mask": 15728640,
+          "name": "Detachable Base"
+        }
+      ],
+      "generateCameraMediaProfiles": true,
+      "id": {
+        "value": "FAKE_A_PROGRAM"
+      },
+      "mosysPlatformName": "fake_a",
+      "name": "FAKE_A_PROGRAM",
+      "platform": {
+        "capabilities": {
+          "darkResume": true,
+          "suspendToIdle": true
+        },
+        "gpuFamily": "FAKE_INTEL_GPU_A",
+        "socArch": 2,
+        "socFamily": "FAKE_INTEL_PLATFORM_A"
+      },
+      "publicReplication": {
+        "publicFields": "name,id,baseProgram,audioConfig,platform.arcSettings,platform.capabilities,platform.hevcSupport,platform.resourceConfig,platform.schedulerTune,platform.schedqosConfig,platform.swapConfig,mosysPlatformName,generateCameraMediaProfiles"
+      }
+    }
+  ]
+}
