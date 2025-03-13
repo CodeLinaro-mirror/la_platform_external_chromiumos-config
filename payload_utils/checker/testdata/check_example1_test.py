@@ -3,6 +3,7 @@
 # found in the LICENSE file.
 
 # pylint: skip-file
+
 """An example unittest on a ConstraintSuite."""
 
 # Note that this file is currently only here to test the case where a

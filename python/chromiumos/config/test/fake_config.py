@@ -5,9 +5,10 @@
 
 import os
 
+
 THIS_DIR = os.path.dirname(__file__)
 
-CONFIG_JSON = 'config.jsonproto'
+CONFIG_JSON = "config.jsonproto"
 
-FAKE_PROGRAM_CONFIG = '%s/fake_program/%s' % (THIS_DIR, CONFIG_JSON)
-FAKE_PROJECT_CONFIG = '%s/fake_project/%s' % (THIS_DIR, CONFIG_JSON)
+FAKE_PROGRAM_CONFIG = "%s/fake_program/%s" % (THIS_DIR, CONFIG_JSON)
+FAKE_PROJECT_CONFIG = "%s/fake_project/%s" % (THIS_DIR, CONFIG_JSON)

@@ -22,10 +22,6 @@ good-names=
     f,
     fp,
 
-[FORMAT]
-
-indent-string="  "
-
 [REPORTS]
 
 score=no

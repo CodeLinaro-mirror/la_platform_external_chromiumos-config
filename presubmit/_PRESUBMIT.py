@@ -4,15 +4,18 @@
 
 import sys
 
+
 USE_PYTHON3 = True
 
 # TODO(https://crbug.com/1046543): is there a better way to do this cross
 # repo import?
-sys.path.insert(1, 'config/presubmit')
+sys.path.insert(1, "config/presubmit")
 import presubmits
 
+
 def CheckChangeOnUpload(input_api, output_api):
-  return presubmits.CheckGenConfig(input_api, output_api)
+    return presubmits.CheckGenConfig(input_api, output_api)
+
 
 def CheckChangeOnCommit(input_api, output_api):
-  return presubmits.CheckGenConfig(input_api, output_api)
+    return presubmits.CheckGenConfig(input_api, output_api)
