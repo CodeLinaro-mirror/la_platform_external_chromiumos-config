@@ -12,7 +12,6 @@ changes using the tip-of-tree code vs what's running in production.
 import argparse
 import collections
 import functools
-import itertools
 import json
 import logging
 import multiprocessing
@@ -23,7 +22,6 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import time
 
 from common import utilities
 

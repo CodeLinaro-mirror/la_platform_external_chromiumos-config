@@ -5,22 +5,15 @@
 """Regenerate all project configs locally and generate a diff for them."""
 
 import argparse
-import atexit
-import collections
 import functools
 import glob
-import itertools
-import json
-import logging
 import multiprocessing
 import multiprocessing.pool
 import os
 import pathlib
-import shutil
 import subprocess
 import sys
 import tempfile
-import time
 
 from common import utilities
 
