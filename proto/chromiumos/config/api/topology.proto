@@ -403,6 +403,7 @@ message HardwareFeatures {
       AMPLIFIER_ALC721 = 23;
       AMPLIFIER_ALC3204 = 24;
       ALC1320 = 25;
+      RT9123 = 26;
     }
 
     enum AudioConfigStructure {
