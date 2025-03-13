@@ -185,7 +185,7 @@ partner = struct(
         ZINITIX = _create_touch_partner(
             name = "zinitix",
             vendor_id = "14E5",
-            symlink_file_format = "zinitix_firmware.bin",
+            symlink_file_format = "zinitix_firmware_{product_id}.bin",
             destination_file_format = "zinitix_{product_id}_{fw_version}.bin",
         ),
         WACOM_BUGZZY = _create_touch_partner(
