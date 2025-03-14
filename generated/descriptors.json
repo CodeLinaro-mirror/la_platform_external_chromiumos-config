@@ -8052,6 +8052,14 @@
                   "number": 6,
                   "type": "TYPE_ENUM",
                   "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
+                },
+                {
+                  "jsonName": "ccdTestlabMode",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "ccd_testlab_mode",
+                  "number": 7,
+                  "type": "TYPE_ENUM",
+                  "typeName": ".chromiumos.config.api.HardwareFeatures.Present"
                 }
               ],
               "name": "TrustedPlatformModule"
