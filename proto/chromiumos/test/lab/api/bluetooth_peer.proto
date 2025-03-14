@@ -1,0 +1,151 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+import "google/protobuf/timestamp.proto";
+
+// BluetoothPeerChameleondConfig is the format of the btpeer chameleond config
+// JSON file stored in GCS that contains configuration information which maps
+// different chameleond bundles to use for btpeers to DUT release versions.
+//
+// All available chameleond bundles are specified in bundles. The "next" bundle
+// is only used by a smaller set of hosts whose test results are monitored to
+// check whether or not this next bundle is good to release to all other
+// testbeds. The next bundle is identified by the next_chameleond_commit, which
+// will match its chameleond_commit.
+//
+// When the primary DUT's hostname is in next_dut_hosts AND its release version
+// is in next_dut_release_versions, the next bundle should be used if
+// next_chameleond_commit is set. Otherwise, the bundle with the the highest
+// min_dut_release_version that is less than or equal to the testbed's primary
+// DUT's release version (excluding the next bundle) should be used. If all
+// bundles have a higher min_dut_release_version than the primary DUT, the
+// bundle with the lowest min_dut_release_version (excluding the next bundle)
+// should be used.
+//
+// For example, let's say we have the following config:
+// {
+//   "nextChameleondCommit": "8e331c7",
+//   "nextDutHosts": [
+//     "chromeos15-row8-metro4-host5",
+//     "chromeos15-row8-metro4-host6",
+//     "chromeos15-row5-rack7-host7",
+//     "chromeos15-row5-rack8-host7",
+//     "chromeos15-row5-rack1-host4",
+//     "chromeos15-row5-rack2-host4"
+//   ],
+//   "nextDutReleaseVersions": [
+//     "14051.0.0"
+//   ],
+//   "bundles": [
+//     {
+//       "chameleondCommit": "723e87b",
+//       "archivePath": "gs://chromeos-connectivity-test-artifacts/btpeer/chameleond/chameleond-0.0.2-723e87b.tar.gz",
+//       "minDutReleaseVersion": "0"
+//     },
+//     {
+//       "chameleondCommit": "cf50534",
+//       "archivePath": "gs://chromeos-connectivity-test-artifacts/btpeer/chameleond/chameleond-0.0.2-cf50534.tar.gz",
+//       "minDutReleaseVersion": "1234.5.6"
+//     },
+//     {
+//       "chameleondCommit": "8e331c7",
+//       "archivePath": "gs://chromeos-connectivity-test-artifacts/btpeer/chameleond/chameleond-0.0.2-8e331c7.tar.gz",
+//       "minDutReleaseVersion": "14051.0.0"
+//     }
+//   ]
+// }
+//
+// The following are examples of chameleond commits to use for each host and
+// release version combinations:
+//  - "chromeos15-row8-metro4-host5","14051.0.0" => "8e331c7" (next)
+//  - "chromeos15-row1-rack2-host4","14051.0.0" => "cf50534"
+//  - "chromeos15-row8-metro4-host5","1500.0.0" => "cf50534"
+//  - "chromeos15-row1-rack2-host4","1000.0.0" => "723e87b"
+message BluetoothPeerChameleondConfig {
+  message ChameleondBundle {
+    // The commit of the chameleond repo that this bundle was created at.
+    string chameleond_commit = 1;
+
+    // The path to the bundle archive file in GCS.
+    string archive_path = 2;
+
+    // The minimum DUT CHROMEOS_RELEASE_VERSION this bundle should be used with.
+    string min_dut_release_version = 3;
+  }
+
+  // The chameleond commit is used to identify the "next" bundle in bundles.
+  // An empty value means there is no next bundle currently under evaluation and
+  // the standard chameleon bundle selection method should be used to determine
+  // which bundle to use.
+  string next_chameleond_commit = 1;
+
+  // Hostnames of primary testbed DUTs that, if matched along with
+  // next_dut_release_versions, signify that the next bundle should be used.
+  repeated string next_dut_hosts = 2;
+
+  // ChromeOS release versions of primary testbed DUTs that, if matched along
+  // with next_dut_hosts, signify that the next bundle should be used.
+  repeated string next_dut_release_versions = 3;
+
+  // The released bundles to available for btpeers.
+  repeated ChameleondBundle bundles = 4;
+}
+
+// RaspiosCrosBtpeerImageConfig defines which custom ChromeOS Raspios image
+// should be used for a given Raspberry Pi btpeer and DUT.
+message RaspiosCrosBtpeerImageConfig {
+  // OSImage describes a released OS image available for download.
+  // Must contain images with uuids that match current_image_uuid and non-empty
+  // next_image_uuid values.
+  message OSImage {
+    // The unique ID of the image.
+    string uuid = 1;
+
+    // The path to the image file. Should be a full GCS path.
+    //
+    // Image file extension should describe the compression format used:
+    //  *.img = no compression
+    //  *.img.gz = gz compression
+    //  *.img.xz = xz compression
+    string path = 2;
+  }
+
+  // The image that should be used for btpeers in testbeds whose primary DUT
+  // is not in the next_image_verification_dut_pool. Must not be empty.
+  string current_image_uuid = 1;
+
+  // The image that should be used for btpeers in testbeds whose primary DUT
+  // is in the next_image_verification_dut_pool. If empty, current_image_uuid
+  // should be used instead.
+  string next_image_uuid = 2;
+
+  // Btpeers that are in testbeds with these primary DUT hostnames should
+  // use the next_image_uuid instead of the current_image_uuid for image
+  // selection.
+  repeated string next_image_verification_dut_pool = 3;
+
+  // All available OS image releases.
+  repeated OSImage images = 4;
+}
+
+// RaspiosCrosBtpeerImageBuildInfo is the format of the image build info JSON
+// file present on ChromeOS Raspios images built with pi-gen-btpeer for btpeers.
+message RaspiosCrosBtpeerImageBuildInfo {
+  // A unique identifier of the image, generated at build time.
+  string image_uuid = 1;
+
+  // The time the image was built.
+  google.protobuf.Timestamp image_build_time = 2;
+
+  // A mapping of repository URLs to git commit hashes for each source
+  // repository used during the image building process which are relevant to
+  // ChromeOS customizations (e.g pi-gen-btpeer, chameleon, btpeerd).
+  map<string, string> sources = 3;
+}

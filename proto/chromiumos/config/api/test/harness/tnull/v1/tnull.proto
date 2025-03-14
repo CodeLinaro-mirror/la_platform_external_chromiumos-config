@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+import "chromiumos/config/api/test/rtd/v1/progress.proto";
+import "chromiumos/config/api/test/results/v2/result.proto";
+
+package chromiumos.config.api.test.tnull.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/tnull/v1;tnull";
+
+// A test with the TNull RTD consists of a Setup step (always executed first)
+// and then a sequence of zero or more Step specifications, each specifying a
+// method to call and the arguments to call it with.
+message Steps {
+  SetupStep setup = 1;
+  repeated Step steps = 2;
+}
+
+// The method arguments for a Setup call
+message SetupStep {
+  reserved 1;
+  chromiumos.config.api.test.rtd.v1.ProgressSinkClientConfig config = 2;
+  chromiumos.config.api.test.results.v2.Result result = 3;
+  repeated MockLog logs = 4;
+  repeated MockArtifact artifacts = 5;
+}
+
+message CommonArgSet {
+  string request_name = 1;
+}
+
+message ArchiveStep {
+  CommonArgSet common_args = 1;
+}
+
+message LogStep {
+  CommonArgSet common_args = 1;
+}
+
+message ResultStep {
+  CommonArgSet common_args = 1;
+}
+
+// Catchall for rapid iteration. Not guaranteed safe or reliable.
+message UnknownStep {
+  string method_name = 1;
+
+  // Where the value is a complex object - if that is ever necessary - it will
+  // be interpreted as a JSON-serialized object of whatever type the method
+  // expects for that argument.
+  map<string, string> args = 2;
+}
+
+message MockLog {
+  string name = 1;
+  repeated string messages = 2;
+}
+
+message MockArtifact {
+  string name = 1;
+  bytes file_bytes = 2;
+}
+
+// A Step is a action to take to execute a test.
+message Step {
+
+  oneof step {
+    UnknownStep other = 1;
+    ArchiveStep archive = 2;
+    LogStep log = 3;
+    ResultStep result = 4;
+  }
+}
+
+// A TestMap is a purely internal-use format for storing mappings from test
+// names to Steps protos
+message TestMap {
+  map<string, Steps> lookup = 1;
+}

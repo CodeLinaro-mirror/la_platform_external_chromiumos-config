@@ -1,0 +1,26 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.scheduling;
+
+import "chromiumos/test/scheduling/os_type.proto";
+import "chromiumos/test/scheduling/swarming_dimensions.proto";
+
+option go_package = "./proto";
+
+message DeviceEvent {
+  int64 event_time = 1;
+  string device_id = 2;
+  uint32 pod_id = 3 [deprecated = true];
+  SwarmingDimensions device_dimensions = 5;
+  bool device_ready = 4;
+  string device_name = 6;
+  OsType os_type = 7;
+}
+
+message DeviceEvents {
+  repeated DeviceEvent events = 1;
+}

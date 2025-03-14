@@ -1,0 +1,158 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/build/api/dlc.proto";
+import "chromiumos/build/api/firmware_config.proto";
+import "chromiumos/build/api/portage.proto";
+import "chromiumos/storage_path.proto";
+import "google/protobuf/any.proto";
+
+// ProvisionState defines all of the installable (provisionable) elements on a
+// ChromeOS test device as part of device setup for test operations.
+//
+// This record is used to define the following:
+//   How devices should be provisioned based on the client's respective needs.
+//     E.g.
+//       CrOS CI - System image only
+//       Lacros CI - System image + Lacros component
+//   How device provisioning state is reported for corresponding test results.
+//     Every test result will link to a provisioning record for
+//     analysis/debugging.
+message ProvisionState {
+  // String encoded id that uniquely reflects a given ProvisionState.
+  // This is used for both scheduling and reporting purposes.
+  // For scheduling, is used to determine if a device is in the requested
+  // provisioning state for testing or it needs to be reprovisioned.
+  // For reporting, this can be used to compare the entire provision state
+  // (in a summarized string) across different test results.
+  message Id {
+    string value = 1;
+  }
+  Id id = 1;
+
+  chromiumos.build.api.FirmwareConfig firmware = 2;
+
+  message SystemImage {
+    // Unique version used in constructing the overall Id
+    string version = 1;
+    StoragePath system_image_path = 2;
+    // List of DLCs that were built/archived for a given system image and are
+    // installed as part of provisioning.
+    repeated chromiumos.build.api.Dlc.Id dlcs = 3;
+
+    // An optional tarball to be extracted at the root of the filesystem to
+    // overwrite existing binary payloads.
+    StoragePath overwrite_payload = 4;
+  }
+  SystemImage system_image = 3;
+
+  message Package {
+    // Package names must match actual portage package names that
+    // exist in a given ChromeOS test image.
+    // Package versions may be in any scheme that is relevant to the clients
+    // versioning scheme (e.g. Lacros build versions).
+    chromiumos.build.api.Portage.Package portage_package = 1;
+    StoragePath package_path = 2;
+  }
+  repeated Package packages = 4;
+
+  // Prevents device reboot during system image provisioning.
+  bool prevent_reboot = 5;
+
+  // update_firmware will update OS bundled firmware(RW only) during the provision.
+  // Please note this firmware update only update RW firmware that built in the
+  // target_build OS image and it is different from firmware provision which
+  // download and update a separate firmware image based on request.
+  bool update_firmware = 6;
+
+  // Use force to pass "--force" to futility, which skips the TPM checks.
+  bool firmware_force = 7;
+
+  // If True, provision firmware over servo; information about
+  // servo to use will be pulled from a `Dut` proto, that will be
+  // requested from InventoryService.
+  // If False, SSH to the DUT and provision it directly.
+  bool use_servo = 8;
+
+  // Specific metadata for provisioning android etc for companion dut
+  google.protobuf.Any provision_metadata = 9;
+}
+
+// User configurable provisioning settings.  These inform the final
+// ProvisionState that's requested from the provisioning service.
+message ProvisionConfig {
+    chromiumos.build.api.FirmwareConfig  firmware = 1;
+    repeated chromiumos.build.api.Dlc.Id dlcs     = 2;
+    repeated ProvisionState.Package      packages = 3;
+
+    // Variant on the primary build target to test with.
+    //
+    // E.g.: If we were targeting a 'coral' board for testing, setting this to
+    // 'kernelnext' would use the coral-kernelnext image from the build for
+    // testing.
+    //
+    // Note that this looks for an overlay called <build target>-<variant>,
+    // (in the above example, there is an overlay called 'coral-kernelnext').
+    // If you are targeting a non-base profile of a build target, use the
+    // 'profile' field.
+    string board_variant = 4;
+
+    // Profile to test with. If not set, the 'base' profile is used.
+    //
+    // E.g. If you are targeting a 'amd64-generic' board for testing, setting
+    // this to 'asan' would use the amd64-generic ASAN image for testing.
+    //
+    // Note that if you are looking to use the 'base' profile of a variant
+    // overlay ('coral-kernelnext') use the 'board_variant' field above.
+    string profile = 6;
+
+    // Optional tarball to pass through to provisioning.
+    StoragePath overwrite_payload = 5;
+
+    // Optional config for one companion DUT. Note that this field is NOT used
+    // to determine whether the DUT is a companion, meaning setting the field on
+    // the first (primary) DutTarget is invalid and will be ignored. The field
+    // only provides additional provision config that may affect how the
+    // underlying DUT companion should be provisioned.
+    CompanionConfig companion = 7;
+}
+
+// Provision config for a companion DUT to override the default behavior, which
+// assumes the companion is a ChromeOS build and tries to find a build with
+// the same buildset (e.g. the same CQ orchestrator run).
+message CompanionConfig {
+  // CrosBuild is used when the companion DUT is a ChromeOS device and needs to
+  // be provisioned with a build that is different from the default build found
+  // within the context (e.g. a CQ run).
+  // The initial implementation of multi-dut doesn't support Cros provision
+  // overriding. Fields will be added when requirements become clear.
+  message CrosBuild {}
+
+  // Android is used when the companion DUT is an Android device. As ChromeOS
+  // doesn't build Android images, the config must provide information for each
+  // Android companion.
+  message Android {
+    // Optional. The android image version for android provisioning.
+    string android_image_version = 1;
+
+    // gms core cipd package for android provisioning. Recommend to use
+    // "latest_stable".
+    // See https://chrome-infra-packages.appspot.com/p/chromiumos/infra/skylab/third_party/gmscore/gmscore_prodsc_arm64_xxhdpi_release_apk/+/
+    string gms_core_package = 2;
+  }
+
+  oneof config {
+    // Optional. Only used when need to override the default provision behavior
+    // for ChromeOS device.
+    CrosBuild cros_build = 1;
+    // Mandatory for Android device.
+    Android android = 2;
+  }
+}

@@ -1,0 +1,268 @@
+// Copyright 2019 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.test.tls;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/tls";
+
+import "chromiumos/config/api/test/tls/dependencies/longrunning/operations.proto";
+import "chromiumos/config/api/test/xmlrpc/xmlrpc.proto";
+
+// Wiring APIs are implemented by TLS wiring providers for all low
+// level access to lab services.
+//
+// The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+// NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
+// "OPTIONAL" in this document are to be interpreted as described in
+// RFC 2119.
+//
+// Implementations of the service MAY leave methods unimplemented.
+//
+// All clients SHOULD pass the gRPC metadata key request_trace_id with one
+// value. The value is a unique string that is associated with the method call
+// in metrics. Clients that do not pass request_trace_id MAY be rejected so that
+// they can be fixed.
+service Wiring {
+  // GetDut gets a DUT resource, which contains various information
+  // about a DUT.
+  rpc GetDut(GetDutRequest) returns (Dut);
+
+  // Open a port on the DUT and return an address which the client can
+  // use to connect to the port on the DUT.
+  // The TLE SHOULD attempt to keep this address-to-port connection open for
+  // the duration of the RTD's runtime.
+  // The connection is not restarted if it is interrupted.
+  //
+  // If the connection from a previous call with the same arguments is
+  // still open, this RPC SHOULD do nothing and return the same
+  // response.
+  // If the previous connection was closed, the implementation SHOULD
+  // attempt to rebind and return the same address.
+  // If the implementation lost and cannot reobtain the previous
+  // address, it MAY return a new address.
+  //
+  // This RPC does NOT ensure that there is a service running on the
+  // DUT for the given port.
+  // A service running on the given port MUST NOT required for this RPC
+  // to succeed.
+  // It is not specified whether this RPC will open the given port in
+  // the DUT's firewall, if the DUT has a firewall.
+  rpc OpenDutPort(OpenDutPortRequest) returns (OpenDutPortResponse);
+
+  // SetDutPowerSupply sets the connected power state for the DUT.  It is
+  // the caller's responsibility to wait for the effects of the call
+  // to propagate, e.g. waiting in between calls to set the power OFF
+  // and ON.
+  //
+  // EXPERIMENTAL
+  rpc SetDutPowerSupply(SetDutPowerSupplyRequest)
+      returns (SetDutPowerSupplyResponse);
+
+  // CacheForDut caches some data to be accessible for the DUT.
+  // This will be made available to the DUT via a returned URL.
+  // The implementation MUST ensure the returned URL is usable at least for the
+  // lifetime of the RTD invocation.
+  rpc CacheForDut(CacheForDutRequest) returns (google.longrunning.Operation) {
+    option (google.longrunning.operation_info) = {
+      response_type: "CacheForDutResponse",
+      metadata_type: "CacheForDutMetadata"
+    };
+  }
+
+  // CallServo performs an XML-RPC call against the servod for
+  // the servo connected to a DUT.
+  //
+  // The implementation, not the caller, ensures that there is a
+  // running servod instance for the DUT's servo, or is otherwise able
+  // to provide identical functionality.
+  //
+  // This RPC mirrors the XML-RPC specification (http://xmlrpc.com/spec.md).
+  rpc CallServo(CallServoRequest) returns (CallServoResponse);
+
+  // ExposePortToDut exposes an RTD port to the specified DUT.
+  //
+  // The TLE SHOULD attempt to keep this address-to-port connection open for
+  // the duration of the RTD's runtime.
+  // The connection is not restarted if it is interrupted.
+  // By default, the implementation MAY expose a port that cannot persist
+  // across DUT reboots.
+  // By default, the implementation MAY use 'localhost' as the exposed address.
+  rpc ExposePortToDut(ExposePortToDutRequest)
+      returns (ExposePortToDutResponse);
+}
+
+message GetDutRequest {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+}
+
+message Dut {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+
+  // licenses are the licenses assigned to the DUT, e.g. Windows
+  // licenses.
+  repeated License licenses = 2;
+}
+
+message License {
+  // name is the resource name for the license.
+  // This is used for tracking licenses.
+  // Clients MUST NOT use the name to identify the type of license,
+  // even if the implementation names the resources after the license
+  // type.
+  string name = 1;
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+
+    // Microsoft Windows 10 Professional Desktop Operating System.
+    // Contact the Chrome OS Parallels team for license specifics.
+    WINDOWS_10_PRO = 1;
+
+    // Microsoft Office Standard.
+    // Contact the Chrome OS Parallels team for version and license specifics.
+    MS_OFFICE_STANDARD = 2;
+  }
+  // type is the type of the license.
+  Type type = 2;
+
+}
+
+message OpenDutPortRequest {
+  // name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  string name = 1;
+  // port is the port to open on the DUT.
+  int32 port = 2;
+}
+message OpenDutPortResponse {
+  // address for which a port is forwarded to the DUT.
+  // TLEs SHOULD return an IPv4 or IPv6 address to avoid name
+  // resolution issues.
+  // IPv4 addresses MUST be in standard dotted decimal notation.
+  // IPv6 addresses MUST be formatted according to RFC4291, Section
+  // 2.2.  The mixed IPv4 and IPv6 form MUST NOT be used.
+  // If TLEs return a hostname, they SHOULD ensure that the hostname
+  // can be resolved by the RTD via standard name resolution
+  // facilities.
+  string address = 1;
+  // port on the address which is forwarded to the DUT.
+  int32 port = 2;
+}
+
+message SetDutPowerSupplyRequest {
+  string dut = 1;
+  enum State {
+    STATE_UNKNOWN = 0;
+    STATE_ON = 1;
+    STATE_OFF = 2;
+  }
+  State state = 2;
+}
+message SetDutPowerSupplyResponse {
+  enum Status {
+    STATUS_UNKNOWN = 0;
+    STATUS_OK = 1;
+    // STATUS_BAD_DUT indicates that the DUT is not known,
+    // or the caller does not have access to it.
+    STATUS_BAD_DUT = 2;
+    // STATUS_BAD_REQUEST indicates that the request was invalid,
+    // e.g., passing an invalid state.
+    STATUS_BAD_REQUEST = 3;
+    STATUS_NO_RPM = 4;
+    STATUS_RPM_ERROR = 5;
+  }
+  Status status = 1;
+  // reason provides human friendly context for any error status.
+  string reason = 2;
+}
+
+message CacheForDutRequest {
+  // url identifies the resource to cache.
+  // Only http, https, and gs schemes are supported. The resource to cache MUST
+  // be accessible from the service. The implementation MAY use
+  // implementation-specific credentials to attempt to access resources.
+  string url = 1;
+  // dut_name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  // (-- aip.dev/not-precedent: This preceded the AIP standards.
+  //     Ordinarily, this field should be either `name` or `dut`,
+  //     depending on whether this is a method on Dut resources. --)
+  string dut_name = 2;
+}
+
+message CacheForDutResponse {
+  // url is where the resource is cached at.
+  // This MUST be accessible to the DUT.
+  // If the host part of the url is a name, it MUST be resolvable by the DUT
+  // via standard name resolution facilities.
+  string url = 1;
+}
+
+message CacheForDutMetadata {
+}
+
+message CallServoRequest {
+  string dut = 1;
+  string method = 2;
+  repeated xmlrpc.Value args = 3;
+}
+message CallServoResponse {
+  xmlrpc.Value value = 1;
+  // fault indicates that the servo XML-RPC returned a fault.
+  // The fault value is stored in the value field.
+  bool fault = 2;
+}
+
+message ExposePortToDutRequest {
+  // dut_name is the resource name for the DUT.
+  // The DUT name is passed to the RTD when the RTD is started.
+  // It is not specified whether the name is the DUT hostname.
+  // (-- aip.dev/not-precedent: This preceded the AIP standards.
+  //     Ordinarily, this field should be either `name` or `dut`,
+  //     depending on whether this is a method on Dut resources. --)
+  string dut_name = 1;
+  // local_port is the port of a service running inside the RTD container to
+  // expose. It MUST be in the range of [1, 65535] as defined in RFC 1700
+  // (http://https://tools.ietf.org/html/rfc1700).
+  // A client MAY bind to the special port number "0" from inside an RTD to get
+  // an OS assigned free port number without race condition. Then the client
+  // MUST get the real port number assigned and pass it to "local_port" here.
+  int32 local_port = 2;
+  // require_remote_proxy indicates if the implementation SHOULD use a DUT
+  // reachable server as a proxy and return the address and port of the proxy
+  // server.
+  // If require_remote_proxy is set, the exposed port SHOULD persist across DUT
+  // reboots.
+  // If require_remote_proxy is set but an implementation cannot provide a
+  // remote proxy, the implementation SHOULD return FAILED_PRECONDITION.
+  // If require_remote_proxy is not set, the implementation MAY expose a port
+  // that cannot persist across DUT reboots.
+  // If require_remote_proxy is not set, the implementation MAY use 'localhost'
+  // as the exposed address.
+  bool require_remote_proxy = 3;
+}
+
+message ExposePortToDutResponse {
+  // exposed_address is the address reachable by the requesting DUT.
+  // TLEs SHOULD return an IPv4 or IPv6 address to avoid name resolution
+  // issues.
+  // IPv4 addresses MUST be in standard dotted decimal notation.
+  // IPv6 addresses MUST be formatted according to RFC4291, Section 2.2. The
+  // mixed IPv4 and IPv6 form MUST NOT be used.
+  // If TLEs return a hostname, they SHOULD ensure that the hostname can be
+  // resolved by the DUT via standard name resolution facilities.
+  string exposed_address = 1;
+  // exposed_port is the port on the exposed_address which is reachable from
+  // the DUT.
+  int32 exposed_port = 2;
+}

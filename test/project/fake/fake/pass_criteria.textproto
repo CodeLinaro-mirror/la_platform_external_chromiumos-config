@@ -1,0 +1,8 @@
+criteria: {
+	name_regex: "seconds_system_suspend$"
+	upper_bound: {
+		bound: 100
+	}
+	requirement_id_regex: "boot-perf-0005-v01"
+	model: "project_a"
+}

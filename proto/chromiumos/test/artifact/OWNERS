@@ -1,0 +1,2 @@
+include chromiumos/config:/OWNERS.testplatform
+include chromiumos/config:/OWNERS.testresultsplatform

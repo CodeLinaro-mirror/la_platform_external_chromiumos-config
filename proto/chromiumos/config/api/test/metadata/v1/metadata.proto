@@ -1,0 +1,434 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+// This package contains the definitions for the test metadata generated as
+// build artifacts for all supported tests.
+//
+// This metadata is used for test execution requests, scheduling decisions and
+// results analytics in various Test Lab Environments.
+//
+// Metadata MUST be generated for all tests in supported Remote Test Drivers and
+// MUST be respected in all Test Lab Environments.
+package chromiumos.config.api.test.metadata.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/metadata/v1;metadata";
+option java_outer_classname = "MetadataProto";
+
+import "google/protobuf/struct.proto";
+import "chromiumos/config/api/test/dut/v1/dut.proto";
+import "chromiumos/config/api/hardware_topology.proto";
+import "chromiumos/config/api/topology.proto";
+
+// The test metadata specification.
+//
+// Test metadata MUST be generated for each Remote Test Driver as one of the
+// test artifacts generated from Chrome OS build system.
+message Specification {
+  // A set of Remote Test Driver packages.
+  //
+  // In practice, a complete specification of all known Remote Test Drivers may
+  // consist of multiple Specification instances. In that case the test names
+  // MUST be unique across different Specification instances.
+  //
+  // Unlike tests, a RemoteTestDriver (identified by its name) may be specified
+  // multiple times, in a single Specification or across different Specification
+  // instances. In that case, all fields except the list of tests MUST be
+  // identical across these RemoteTestDriver instances. The list of tests across
+  // these instances will be concatenated together.
+  repeated RemoteTestDriver remote_test_drivers = 1;
+}
+
+// go/cros-rtd-spec describes the Remote Test Driver bootstrapping flow inside
+// the Remote Test Server. Remote Test Driver configures the bootstrapping flow
+// for a test invocation.
+message RemoteTestDriver {
+  // Globally unique name for a Remote Test Driver package.
+  //
+  //
+  // MUST be a valid resource per https://aip.dev/122.
+  //
+  // Pattern: remoteTestDrivers/{remoteTestDriver}
+  //
+  // The two most commonly used Remote Test Drivers are named
+  // - remoteTestDrivers/tauto
+  // - remoteTestDrivers/tast
+  // and contain the common public tests written in the Tauto and Tast framework
+  // respectively.
+  string name = 1;
+
+  // A Docker image containing all the required dependencies and other build
+  // artifacts required for test invocations.
+  //
+  // Test Lab Environments SHOULD fail with an error indicating that the request
+  // was invalid if the image fails to be found for a test invocation.
+  //
+  // See go/cros-f20-rtd-design for details about how the docker image should
+  // be prepared.
+  DockerImage docker_image = 5;
+
+  // Command to invoke the Remote Test Driver inside `image`.
+  //
+  // Remote Test Servers MUST run `command` as
+  //   $ ${command} -input ${input}
+  // where ${command} and ${input} are absolute paths inside the container.
+  //
+  // Remote Test Servers MUST populate `input` with a binaryproto file
+  // representing a test.invocation.Invocation message.
+  string command = 3;
+
+  // Metadata for the smallest schedulable test units.
+  repeated Test tests = 4;
+
+  // Replaced by "docker_image".
+  reserved 2;
+  reserved "image";
+}
+
+// Remote Test Driver images are pre-packaged Docker images.
+message DockerImage {
+  // The Docker image digest is a content-addressable identifier for an image.
+  //
+  // The source of the Remote Test Driver images (e.g., a Docker registry, or
+  // a local Docker server) is specified in the Test Lab Environment request.
+  // The test metadata only contains the digest of the image to use.
+  //
+  // TLEs SHOULD verify the downloaded image against the digest.
+  //
+  // The digest MUST be set in metadata payload used by the Test Lab
+  // Environments. There is only one case where the digest may be elided:
+  //
+  // It may be useful for Remote Test Driver images to contain a
+  // copy of the metadata payload (e.g. to map from Test name to some Remote
+  // Test Driver-internal execution behaviour). This creates a chicken-and-egg
+  // problem: Changing the image name changes the image content, thereby
+  // changing the image hash again. In such cases, digest may be elided in the
+  // metadata payload inside the Remote Test Driver image.
+  string digest = 1;
+}
+
+// The smallest schedulable test unit.
+//
+// A Test is an atomic schedulable unit. In particular, it is not possible to
+// modify the behaviour of a Remote Test Driver execution for a given Test by
+// supplying test arguments, e.g. two tests that ssh into the DUT and run the
+// same command with different arguments must be represented by two separate
+// Test objects.
+
+// Related Test objects may be marked as such via the Informational field. See
+// the documentation of test.metadata.v1.Informational for details.
+//
+// A single test platform request or Remote Test Driver invocation may contain
+// multiple instances of multiple Tests, but each instance of a Test MUST
+// correspond to exactly one reported result.
+//
+// See Also:
+//    Test Platform request: TODO(pprabhu)
+//    Remote Test Driver invocation request: test/rtd/invocation.proto
+//    Remote Test Driver progress API: test/rtd/progress.proto
+message Test {
+  // Superseded by "dut_constraint".
+  reserved 3;
+  reserved "conditions";
+
+  // Globally unique name for this test.
+  //
+  // MUST be a valid resource per https://aip.dev/122.
+  //
+  // Pattern: remoteTestDrivers/{remoteTestDriver}/tests/{test}
+  //   where {remoteTestDriver} is the Remote Test Driver package that
+  //   contains this test.
+  string name = 1;
+
+  // Attributes are used to include tests in test plans.
+  //
+  // See Also:
+  //   Test plans: test/plan/plan.proto
+  repeated Attribute attributes = 2;
+
+  // Required conditions to be met for the Devices Under Test targeted by this
+  // test.
+  //
+  // Constraint enforcement is an optional feature for test scheduling, i.e.,
+  // some Test Lab Environments may ignore conditions entirely.
+  //
+  // If the test execution is sharded over multiple devices, each must satisfy
+  // these conditions.
+  DUTConstraint dut_constraint = 6;
+
+  // Metadata about the test that doesn't affect scheduling.
+  Informational informational = 4;
+
+  // Will be deleted (& reserved) once all clients have migrated.
+  DUTCondition dut_condition = 5 [deprecated = true];
+}
+
+// Attributes used to include tests in test plans.
+message Attribute {
+  // Opaque name for this attribute.
+  //
+  // Value MUST be valid resource names per https://aip.dev/122.
+  //
+  // MUST NOT be interpreted by Test Lab Environments.
+  string name = 1;
+}
+
+// Conditions to be met for each Device Under Test targeted by a test.
+message DUTConstraint {
+  // Conditions on the Chrome OS configuration payload.
+  DUTConfigConstraint config = 1;
+  // Conditions on device setup.
+  DUTSetupConstraint setup = 2;
+}
+
+// Conditions to be met for the Chrome OS configuration of each Device Under
+// Test targeted by a test.
+message DUTConfigConstraint {
+  // A Common Expression Language (CEL) expression to specify constraints on a
+  // Device Under Test's Chrome OS configuration payload. `expression` MUST
+  // evaluate to a boolean value in the evaluation context described below.
+  //
+  // Test Lab Environments may optionally support scheduling test requests on
+  // Devices Under Test that satisfy some constraints on their Chrome OS
+  // configuration.
+  // When supported, the Test Lab Environment MUST effectively evaluate
+  // `expression` with the following declarations in scope for each available
+  // Device Under Test and ensure that the test is scheduled on a Device Under
+  // Test for which `expression` evaluates to true.
+  //
+  // - Constant: `dut` of type DUTConfigConstraint.DUT defined below, set to the
+  //   Chrome OS configuration payload of a particular Device Under Test.
+  // - Types: Protobuf messages from `chromiumos.config.api.*`
+  //   - Additionally available with the short-hand `api.*`
+  //
+  // ## Examples
+  //
+  // Typical examples of expressions are:
+  //
+  // - Must run on a device with a given screen size:
+  //     dut.hardware_features.screen.milliinch.value == 14000
+  // - Must run on a device with LTE support:
+  //     dut.hardware_features.lte == api.HardwareFeatures.Present.PRESENT
+  //     - or equivalently,
+  //       (dut.hardware_features.lte ==
+  //        chromiumos.config.api.HardwareFeatures.Present.PRESENT)
+  // - Must not run on a device with a specific form factor:
+  //     (dut.hardware_features.form_factor.form_factor !=
+  //      api.HardwareFeatures.FormFactor.CLAMSHELL)
+  //
+  // ## CEL support
+  //
+  // The full CEL spec can be found at https://github.com/google/cel-spec.
+  //
+  // Current support for `expression` evaluation is very restricted due to
+  // limitations in the scheduling infrastructure used by Test Platform.
+  //
+  // As this API matures, features will be added to the scheduling
+  // infrastructure of Test Platform and restrictions here will be lifted based
+  // on requirements collected from test authors. See milestones in
+  // go/cros-f20-plan for expected feature iterations. Test Lab Environments
+  // SHOULD validate the expression and reject use of unsupported features.
+  //
+  // TODO(crbug.com/1051689) Add reference to the metadata validator package.
+  //
+  // ### Syntax
+  //
+  // See full syntax definition at
+  // https://github.com/google/cel-spec/blob/master/doc/langdef.md#syntax
+  //
+  // CEL standard syntax allows expressions that evaluate to errors (e.g.,
+  // syntax allows negation of lists, which has no semantics in CEL).
+  // Thus, this spec does not attempt to restrict the syntax, but specifies what
+  // operations are unsupported to aid metadata producers. Ultimately, the
+  // reference metadata validator is the authority on what expressions are
+  // allowed.
+  //
+  // Unsupported standard CEL semantics:
+  //   - Binary arithmetic operations
+  //     e.g.: +, *, /, % ...
+  //   - Relational Operators beyond (in)equality are not supported.
+  //     e.g.: (>, <, >=, <= ...)
+  //   - Logical OR in expressions is not supported.
+  //     e.g.: (a || b), !(a && b) ...
+  //
+  // ### Macros
+  //
+  // See full macro definition at
+  // https://github.com/google/cel-spec/blob/master/doc/langdef.md#macros
+  //
+  // Supported macros: has(), e.all()
+  // Unsupported macros: e.exists(), e.exists_one(), e.map(), e.filter()
+  //
+  // ### Standard functions
+  //
+  // See full list of standard definitions at
+  // https://github.com/google/cel-spec/blob/master/doc/langdef.md#standard-definitions
+  //
+  // Most standard functions are not supported.
+  //
+  // - Supported operators: !_, -_, _!=_, _&&_, _=_, _[_]
+  //   - All other operators are not supported.
+  // - All other standard functions are not supported. In particular:
+  //   - size() is not supported.
+  //   - string functions like endsWith() and contains() are not supported.
+  //   - type conversions like int() and string() are not supported.
+  //   - reflection with type(), null_type() and dyn() is not supported.
+  string expression = 1;
+
+  // The evaluation context for `expression` MUST include the Chrome OS
+  // configuration payload for a particular Device Under Test as a typed
+  // constant of the following type.
+  message DUT {
+    chromiumos.config.api.HardwareFeatures hardware_features = 1;
+  }
+}
+
+// Conditions to be met for the setup of each Device Under Test targeted by a
+// test.
+message DUTSetupConstraint {
+  // A Common Expression Language (CEL) expression to specify constraints on a
+  // Device Under Test setup. `expression` MUST evaluate to a boolean value in
+  // the evaluation context described below.
+  //
+  // Test Lab Environments may optionally support scheduling test requests on
+  // Devices Under Test that satisfy some constraints on how they are setup.
+  // When supported, the Test Lab Environment MUST effectively evaluate
+  // `expression` with the following declarations in scope for each available
+  // Device Under Test and ensure that the test is scheduled on a Device Under
+  // Test for which `expression` evaluates to true.
+  //
+  // - Constant: `dut` of type DUTSetupConstraint.DUT defined below, set to the
+  //   setup configuration payload of a particular Device Under Test.
+  // - Type: Protobuf messages `chromiumos.config.api.test.dut.v1.*`, e.g.
+  //   `chromiumos.config.api.test.dut.v1.DeviceUnderTest`
+  //   - Additionally available with short-hands `DeviceUnderTest` etc.
+  //
+  // ## Examples
+  //
+  // Typical examples of expressions are:
+  //
+  // - Must run on a DUT with servo present:
+  //     dut.setup.peripheral.servo.present
+  // - Must run on a DUT which is in a camera box with a front facing camera:
+  //     dut.setup.peripheral.camerabox.facing == Camerabox.Facing.FRONT
+  //   - Or, equivalently:
+  //       (dut.setup.peripheral.camerabox.facing ==
+  //        chromiumos.config.api.test.dut.v1.Camerabox.Facing.FRONT)
+  //
+  // ## CEL support
+  //
+  // The full CEL spec can be found at https://github.com/google/cel-spec.
+  //
+  // Current support for `expression` evaluation is very restricted due to
+  // limitations in the scheduling infrastructure used by Test Platform.
+  //
+  // As this API matures, features will be added to the scheduling
+  // infrastructure of Test Platform and restrictions here will be lifted based
+  // on requirements collected from test authors. See milestones in
+  // go/cros-f20-plan for expected feature iterations. Test Lab Environments
+  // SHOULD validate the expression and reject use of unsupported features.
+  //
+  // TODO(crbug.com/1051689) Add reference to the metadata validator package.
+  //
+  // ### Syntax
+  //
+  // See full syntax definition at
+  // https://github.com/google/cel-spec/blob/master/doc/langdef.md#syntax
+  //
+  // CEL standard syntax allows expressions that evaluate to errors (e.g.,
+  // syntax allows negation of lists, which has no semantics in CEL).
+  // Thus, this spec does not attempt to restrict the syntax, but specifies what
+  // operations are unsupported to aid metadata producers. Ultimately, the
+  // reference metadata validator is the authority on what expressions are
+  // allowed.
+  //
+  // Unsupported standard CEL semantics:
+  //   - Binary arithmetic operations
+  //     e.g.: +, *, /, % ...
+  //   - Relational Operators beyond (in)equality are not supported.
+  //     e.g.: (>, <, >=, <= ...)
+  //   - Logical OR in expressions is not supported.
+  //     e.g.: (a || b), !(a && b) ...
+  //
+  // ### Macros
+  //
+  // See full macro definition at
+  // https://github.com/google/cel-spec/blob/master/doc/langdef.md#macros
+  //
+  // Supported macros: has(), e.all()
+  // Unsupported macros: e.exists(), e.exists_one(), e.map(), e.filter()
+  //
+  // ### Standard functions
+  //
+  // See full list of standard definitions at
+  // https://github.com/google/cel-spec/blob/master/doc/langdef.md#standard-definitions
+  //
+  // Most standard functions are not supported.
+  //
+  // - Supported operators: !_, -_, _!=_, _&&_, _=_, _[_]
+  //   - All other operators are not supported.
+  // - All other standard functions are not supported. In particular:
+  //   - size() is not supported.
+  //   - string functions like endsWith() and contains() are not supported.
+  //   - type conversions like int() and string() are not supported.
+  //   - reflection with type(), null_type() and dyn() is not supported.
+  string expression = 1;
+
+  // The evaluation context for `expression` MUST include the dut setup
+  // configuration payload for a particular Device Under Test as a typed
+  // constant of the following type.
+  message DUT {
+    // Peripherals information about the lab deployment of the device
+    chromiumos.config.api.test.dut.v1.DeviceUnderTest setup = 1;
+  }
+}
+
+// Deprecated.
+// Use DutConstraint instead.
+// This message will be deleted once all clients have migrated.
+message DUTCondition {
+  string expression = 1;
+  message Scope {
+    chromiumos.config.api.test.dut.v1.DeviceUnderTest setup = 1;
+    chromiumos.config.api.HardwareTopology hardware_topology = 2;
+    chromiumos.config.api.HardwareFeatures hardware_features = 3;
+  }
+}
+
+// Contains metadata about the test that doesn't affect scheduling or execution.
+message Informational {
+  // Contacts for ownership / flakiness notification etc.
+  repeated Contact authors = 1;
+
+  // Machine readable test-specific information.
+  //
+  // Remote Test Drivers SHOULD include detailed information to aid analytics.
+  // For example, test authors may minimize code duplication by writing
+  // paramterized tests. Thus, multiple test metadata may refer to the
+  // same test implementation with different arguments. It is useful to include
+  // this information as details. An example for Tauto:
+  //   {
+  //      "test_project": "chromiumos/third_party/autotest",
+  //      "control_file": "site_tests/dummy_Pass/control.stress",
+  //      "args": {
+  //        "run_count": 35
+  //      }
+  //   }
+  //
+  // This field MUST NOT be interpreted by the Test Lab Environments, but Remote
+  // Test Drivers can enrich analytics by using uniform stable schema for
+  // details across all their tests.
+  google.protobuf.Struct details = 2;
+}
+
+// Contact information of individuals or teams.
+message Contact {
+  oneof type {
+    // e.g.: user@google.com
+    string email = 1;
+    // e.g.: team-name (not mdb/team-name)
+    string mdb_group = 2;
+  }
+}

@@ -1,0 +1,62 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// Defines an atomic unit of test work that's independently executable.
+//
+// Test cases are the atomic building blocks used to define/generate test plans
+// and then ultimately scheduling units of work (batched or independent).
+//
+// Test case definitions can come from any execution workflow/environment.
+// E.g. Automated test cases will generally be defined/reported by the
+//      various test-drivers (e.g. Tast/Tauto/...) at build time.
+//
+//      Manual test cases will be defined/managed directly in starlark config
+//      and then act as the building blocks for manual test planning/scheduling.
+//
+// Test cases also are the atom at which test results can be reported.
+message TestCase {
+  // Globally unique (for ChromeOS) string id for a given test case.
+  Id id = 1;
+  message Id {
+    string value = 1;
+  }
+  // Human friendly name
+  string name = 2;
+
+  // Tags associated with a given test case, which drive scheduling logic
+  // based on tag inclusion or exclusion criteria.
+  repeated Tag tags = 3;
+  message Tag {
+    string value = 1;
+  }
+
+  // Dependencies for a given test cases, which drive scheduling logic for
+  // dut matching.
+  repeated Dependency dependencies = 4;
+  message Dependency {
+    string value = 1;
+  }
+
+  // BuildDeps for a given test cases, which drive test filtering logic for
+  // scheduling.
+  repeated BuildDeps build_dependencies = 5;
+  message BuildDeps {
+    string value = 1;
+  }
+}
+
+// List of globally unique test case identifiers
+message TestCaseIdList {
+  repeated TestCase.Id test_case_ids = 1;
+}
+
+message TestCaseList {
+  repeated TestCase test_cases = 1;
+}

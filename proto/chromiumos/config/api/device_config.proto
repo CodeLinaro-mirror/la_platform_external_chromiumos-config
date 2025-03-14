@@ -1,0 +1,26 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/design.proto";
+import "chromiumos/config/api/device_brand.proto";
+import "chromiumos/config/api/mfg_config.proto";
+import "chromiumos/config/api/partner.proto";
+import "chromiumos/config/api/program.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Defines all of the hardware configuration known about a given device.
+message DeviceConfig {
+  api.Program program = 1;
+  api.Design hw_design = 2;
+  api.Partner odm = 3;
+  api.Design.Config hw_design_config = 4;
+  api.DeviceBrand device_brand = 5;
+  api.Partner oem = 6;
+  api.MfgConfig mfg_config = 7;
+}

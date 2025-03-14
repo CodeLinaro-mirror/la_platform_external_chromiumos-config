@@ -1,0 +1,31 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos;
+
+option go_package = "go.chromium.org/chromiumos/config/go;storage_path";
+
+// Defines remote/local path to storage resources
+// E.g. build/test artifacts, logs, telemetry, etc...
+//
+// This abstraction enables consistent API usage regardless of test
+// execution environment (local dev, managed labs, ...).
+message StoragePath {
+  // Host of the storage resources.
+  HostType host_type = 1;
+  // Path to a directory on the host containing the resources.
+  string path = 2;
+
+  enum HostType {
+    HOSTTYPE_UNSPECIFIED = 0;
+    // The resources are hosted locally.
+    LOCAL = 1;
+    // The resources are hosted in Google Storage.
+    GS = 2;
+    // The resources are hosted by android build system.
+    ANDROID_BUILD = 3;
+  }
+}

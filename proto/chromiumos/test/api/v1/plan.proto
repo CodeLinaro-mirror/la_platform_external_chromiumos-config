@@ -1,0 +1,36 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api/v1;test_api_v1";
+
+import "chromiumos/test/api/coverage_rule.proto";
+
+// A hardware test plan is composed of coverage rules
+message HWTestPlan {
+    // Unique name to identify the test plan, recommend reverse domain name
+    // rooted at chromeos:
+    //   chromeos.release.wifi....
+    message TestPlanId {
+        string value = 1;
+    }
+
+    TestPlanId id = 1;
+    repeated CoverageRule coverage_rules = 2;
+}
+
+message VMTestPlan {
+    // Unique name to identify the test plan, recommend reverse domain name
+    // rooted at chromeos:
+    //   chromeos.release.wifi....
+    message TestPlanId {
+        string value = 1;
+    }
+
+    TestPlanId id = 1;
+    repeated CoverageRule coverage_rules = 2;
+}

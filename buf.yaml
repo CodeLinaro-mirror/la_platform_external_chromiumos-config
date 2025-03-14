@@ -1,0 +1,26 @@
+version: v1beta1
+build:
+  roots:
+    - proto/
+lint:
+  enum_zero_value_suffix: UNDEFINED
+  use:
+    - DEFAULT
+  except:
+    - ENUM_VALUE_PREFIX           # Don't require enums entries to be prefixed.
+    - ENUM_ZERO_VALUE_SUFFIX      # We're not consistent with zero suffix
+    - PACKAGE_VERSION_SUFFIX      # Don't require eg: .v1 suffix
+    - RPC_REQUEST_RESPONSE_UNIQUE # Don't require RPC request/response types to be used once
+    - RPC_RESPONSE_STANDARD_NAME  # We have a lot of requests that return longrunning.Operation
+    - RPC_REQUEST_STANDARD_NAME   # We have requests that abstraction is useful for.
+  ignore:
+    - chromiumos/config/api/test # Deprecated
+
+  # Opt-outs for backwards compatibility with existing protos
+  ignore_only:
+    SERVICE_SUFFIX:
+      - chromiumos/longrunning
+
+breaking:
+  use:
+    - FILE

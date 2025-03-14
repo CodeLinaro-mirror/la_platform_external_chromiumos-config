@@ -1,0 +1,19 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+package chromiumos.config.api.software;
+
+message UsbConfig {
+  message TypeCD {
+    // AP driven alternate mode entry on this system should be restricted
+    // to DisplayPort alternate mode
+    bool dp_only = 1;
+  }
+
+  TypeCD typecd = 1;
+}

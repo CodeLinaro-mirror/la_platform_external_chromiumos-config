@@ -1,0 +1,36 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+package chromiumos.config.api.software;
+
+// The configuration of diagnostic and telemetry handled by cros_healthd.
+// For more details, see:
+// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform2/chromeos-config/README.md
+message HealthConfig {
+  message Battery {
+    bool has_smart_battery_info = 1;
+  }
+  message CachedVpd {
+    bool has_sku_number = 1;
+  }
+
+  message BatteryHealth {
+    uint32 percent_battery_wear_allowed = 1;
+  }
+  message NvmeWearLevel {
+    uint32 wear_level_threshold = 1;
+  }
+  message Routines {
+    BatteryHealth battery_health = 1;
+    NvmeWearLevel nvme_wear_level = 2;
+  }
+
+  Battery battery = 1;
+  CachedVpd cached_vpd = 2;
+  Routines routines = 3;
+}
