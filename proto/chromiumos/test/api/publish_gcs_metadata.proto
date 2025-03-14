@@ -1,0 +1,60 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/storage_path.proto";
+
+// Defines the properties needed for archiving XTS suite results to be ingested
+// by the XTS pipeline for release qualification and monitoring.
+// NEXT TAG: 7
+message XtsArchiverMetadata {
+  // Whether the run is for AL project.
+  bool al_run = 1;
+
+  // The full product/device information.
+  // For ChromeOS the format is:
+  // <board_name>.<model_name>-<board_variant>
+  // e.g.: brya.brya-arcnext
+  string product = 2;
+
+  // A full build name.
+  // For ChromeOS the format is:
+  // <board_name>_<board_variant>-<channel>/<build_version>
+  // e.g. hatch-release/R108-15183.0.0
+  //
+  // For AL the format is:
+  // <build_target>/<build_id>
+  // e.g. brya-trunk_staging-userdebug/brya-ota-12644700
+  string build = 3;
+
+  // ID of the parent swarming task for the build. Can be empty if job
+  // is not scheduled through swarming.
+  string parent_swarming_task_id = 4;
+
+  // The GCS path prefix to upload XTS result file to be ingested by
+  // the XTS pipeline.
+  string results_gcs_prefix = 5;
+
+  // The GCS path prefix to upload XTS result file for APFE approval.
+  string apfe_gcs_prefix = 6;
+}
+
+// NEXT TAG: 5
+message PublishGcsMetadata {
+  // GCS location where artifacts will be uploaded.
+  StoragePath gcs_path = 1;
+  // Local file path to GCS creds that should be used for GCS upload.
+  StoragePath service_account_creds_file_path = 2;
+
+  // Metadata for the XTS archiving process.
+  XtsArchiverMetadata xts_archiver_metadata = 3;
+
+  // Whether to include the step to archive XTS results.
+  bool enable_xts_archiver = 4;
+}

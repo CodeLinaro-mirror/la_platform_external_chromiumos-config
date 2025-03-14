@@ -1,0 +1,41 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.payload;
+
+import "chromiumos/config/api/component.proto";
+import "chromiumos/config/api/design.proto";
+import "chromiumos/config/api/device_brand.proto";
+import "chromiumos/config/api/partner.proto";
+import "chromiumos/config/api/program.proto";
+import "chromiumos/config/api/software/brand_config.proto";
+import "chromiumos/config/api/software/software_config.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/payload";
+
+// Defines a config payload that can be generated from a given config git
+// repo. Based on the distributed nature of the config, these bundles are then
+// eventually stitched together to drive build config payloads or any
+// infra/analysis related access/processing.
+message ConfigBundle {
+  // Chrome OS program and hw design project config
+  repeated api.Partner partner_list = 11;
+  repeated api.Component components = 12;
+  repeated api.Program program_list = 13;
+  repeated api.Design design_list = 14;
+  repeated api.DeviceBrand device_brand_list = 15;
+
+  // Chrome OS build and software config
+  repeated api.software.SoftwareConfig software_configs = 9;
+  repeated api.software.BrandConfig brand_configs = 10;
+
+  reserved 2, 6, 7, 8, 16, 17;
+}
+
+// List to hold multiple ConfigBundles
+message ConfigBundleList {
+  repeated ConfigBundle values = 1;
+}

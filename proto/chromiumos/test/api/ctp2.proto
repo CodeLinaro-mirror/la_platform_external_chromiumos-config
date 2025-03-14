@@ -1,0 +1,368 @@
+// Copyright 2023 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/provision.proto";
+import "chromiumos/test/api/test_suite.proto";
+import "chromiumos/test/api/test_case_metadata.proto";
+import "chromiumos/build/api/container_metadata.proto";
+import "chromiumos/test/lab/api/dut.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
+import "chromiumos/test/api/test_execution_metadata.proto";
+import "chromiumos/test/api/trv2_dynamic_updates.proto";
+
+// CrosTestPlatform2 ...
+service CTPv2Service {
+  rpc RequestResolver(CTPv2Request)
+      returns (CTPv2Response);
+}
+
+// GenericFilter is what all the filters will implement as their RPC.
+service GenericFilterService {
+  rpc Execute(InternalTestplan)
+      returns (InternalTestplan);
+
+  rpc ExecuteStream(stream InternalTestplanFragment)
+      returns (stream InternalTestplanFragment);
+}
+
+// CTPv2Request ...
+// next value = 9;
+message CTPv2Request {
+  // TODO(b/319981532): Support multiple suite runs in ctpv2. Deprecate the
+  // fields below (1-7) when implementation is complete.
+  SuiteRequest suite_request = 1 [deprecated = true];
+  repeated Targets targets = 2 [deprecated = true];
+  repeated CTPFilter karbon_filters = 3 [deprecated = true];
+  repeated CTPFilter koffee_filters = 4 [deprecated = true];
+  string pool = 5 [deprecated = true];
+  google.protobuf.Any scheduke_metadata = 6 [deprecated = true];
+  repeated ScheduleTargets schedule_targets = 7 [deprecated = true];
+
+  repeated CTPRequest requests = 8;
+}
+
+// Single CTPv2Request with one suite defining one or more targets. Filters
+// are build versioned so each suite will be capable of defining it's own
+// filters to execute.
+message CTPRequest {
+  SuiteRequest suite_request = 1;
+  // will be deprecated when #11 field is in use 100%
+  repeated ScheduleTargets schedule_targets = 2;
+  // Grouped targets allow setting and/or relationship between targets.
+  // inner i.e. {a, b} is OR relationship: a or b
+  // outer i.e. {a}, {b} is AND relationship: a and b
+  // [{shedTarget1, schedTarget2}, {shedTarget3, schedTarget4}]
+  // --> (shedTarget1 OR schedTarget2) AND (shedTarget3 OR schedTarget4)
+  repeated GroupedScheduleTargets grouped_schedule_targets = 11;
+  string pool = 7;
+
+  repeated CTPFilter karbon_filters = 3;
+  repeated CTPFilter koffee_filters = 4;
+
+  SchedulerInfo scheduler_info = 5;
+
+  google.protobuf.Any scheduler_metadata = 6;
+
+  // Instruct ctpv2 to construct a dynamic trv2 request object
+  // instead of a CftTestRequest (non-dynamic).
+  bool run_dynamic = 8;
+
+  // If true then the request is an AL type run in CTPv2 and TRv2.
+  bool is_al_run = 9;
+
+  // Encoded test job message that will be provided by ATP.
+  // CTP will use this to construct ctpv2 request.
+  // is_al_run must be set to true for this.
+  string encoded_atp_test_job_msg = 10;
+}
+
+message SchedulerInfo {
+  enum Scheduler {
+    // UNSPECIFIED scheduler
+    UNSPECIFIED = 0;
+    // Quota Scheduler
+    QSCHEDULER = 1;
+    // Scheduke
+    SCHEDUKE = 2;
+    // Will only be used for debugging and local mode. The BB requests will be
+    // printed to luci log but won't be scheduled.
+    PRINT_REQUEST_ONLY = 3;
+  }
+
+  Scheduler scheduler = 1;
+
+  // Will only be used when scheduler type is QSCHEDULER.
+  string qs_account = 2;
+}
+
+message SuiteRequest {
+  oneof suite_request {
+    TestSuite test_suite = 1;
+    Reserved hierarchical_plan = 2;
+  }
+
+  // Maximum duration for the entire request to be handled.
+  google.protobuf.Duration maximum_duration = 3;
+  // suite level test args.
+  string test_args = 4;
+  // Identifying suite name for analytics.
+  string analytics_name = 5;
+  // The total number of tests allowed to be used in a shard.
+  int64 max_in_shard = 6;
+  // Should run the suite via 3d or not. Default false.
+  bool ddd_suite = 7;
+  // The total number of retries that should be done to failed test(s).
+  // By default it will be 0 which means no retry.
+  int64 retry_count = 8;
+  // tags gives us a location to store decorations from the v1 proto without
+  // requiring a proto addition each time.
+  repeated string tags = 9;
+}
+
+message KeyValue {
+  string key = 1;
+  string value = 2;
+}
+
+message GroupedScheduleTargets {
+  repeated ScheduleTargets grouped_targets = 1;
+}
+
+// ScheduleTargets represents groups of targets for CTPv2.
+// Multi-DUT by design with targets length of 1 being single-dut.
+message ScheduleTargets {
+  repeated Targets targets = 1;
+}
+
+message Targets {
+  HWTarget hw_target = 1;
+  repeated SWTarget sw_targets = 2 [deprecated = true];
+  SWTarget sw_target = 3;
+}
+
+message HWTarget {
+  oneof target {
+    LegacyHW legacy_hw = 1;
+    DDDHW ddd_hw = 2;
+  }
+}
+
+message SWTarget {
+  oneof sw_target {
+    LegacySW legacy_sw = 1;
+    DDDSW ddd_sw = 2;
+  }
+}
+
+message LegacySW {
+  string build = 1;
+  string gcs_path = 2;
+  repeated KeyValue key_values = 3;
+  string variant = 4;
+
+}
+
+// DDDSW is not yet defined.
+message DDDSW {}
+
+message LegacyHW {
+  string board = 1;
+  string model = 2;
+  // In the process of deprecation. Do not set.
+  string variant = 3 [deprecated = true];
+  // In the process of deprecation. Do not set.
+  MultiDut multi_dut = 4 [deprecated = true];
+  string pool = 5[deprecated = true];;
+  repeated string swarming_dimensions = 6;
+}
+
+message DDDHW{}
+
+message Pair {
+  string primary = 1;
+  string secondary = 2;
+}
+
+message MultiDut{
+  Pair boards = 1;
+  Pair model  = 2;
+}
+
+message CTPFilter {
+  // will be deprecated. do not set.
+  chromiumos.build.api.ContainerImageInfo container = 1 [deprecated = true];
+  // will be deprecated. do not set.
+  repeated chromiumos.build.api.ContainerImageInfo dependent_containers = 2 [deprecated = true];
+
+  google.protobuf.Any container_metadata = 3;
+  ContainerInfo container_info = 4;
+  // Dependent Containers signal that a container has a need to be networked with
+  // another. For example the filter is "container1", but needs to use "container2",
+  // as part of its execution.
+  ContainerInfo dependent_containers_info = 5;
+
+}
+
+message ContainerInfo {
+  chromiumos.build.api.ContainerImageInfo container = 1;
+  // binary name that will be used to invoke grpc endpoint of the container.
+  string binary_name = 2;
+  // binary args that act as configuration settings for the container.
+  repeated string binary_args = 3;
+}
+
+message Reserved {}
+
+message InternalTestplan {
+  repeated CTPTestCase test_cases = 1;
+  SuiteInfo suite_info = 2;
+}
+
+message InternalTestplanFragment {
+  bytes fragment = 1;
+}
+
+// Information to be populated by the filters.
+message CTPTestCase {
+  string name = 1;
+  TestCaseMetadata metadata = 2;
+
+  // HWRequirements are an AND field
+  repeated HWRequirements hw_requirements = 3 [deprecated = true];
+
+  // SWRequirement impl is still tbd.
+  repeated SWRequirements sw_requirements = 4 [deprecated = true];
+  repeated SchedulingUnitOptions scheduling_unit_options = 5;
+}
+
+message SuiteInfo {
+  SuiteMetadata suite_metadata = 1;
+  SuiteRequest suite_request = 2;
+}
+
+// Everything by CTPv2, less provision_info.
+// next value = 10;
+message SuiteMetadata {
+  repeated TargetRequirements target_requirements = 1[deprecated = true];
+  repeated ScheduleTargetRequirements schedule_target_requirements = 4[deprecated = true];
+  repeated string channels = 2;
+  string pool = 3;
+  chromiumos.test.api.ExecutionMetadata execution_metadata = 5;
+  // Scheduler info for this suite
+  SchedulerInfo scheduler_info = 6;
+  // Updates for the dynamic TRv2 request object. Updates to be applied
+  // after the default request generation occurs, and before scheduling.
+  //
+  // Note: Applied updates in order given.
+  repeated UserDefinedDynamicUpdate dynamic_updates = 7;
+  // will be deprecated when field #9 is being used in all filters
+  repeated SchedulingUnit scheduling_units = 8;
+  repeated SchedulingUnitOptions scheduling_unit_options = 9;
+}
+
+// ScheduleTargets represents groups of target requirements for CTPv2.
+// Multi-DUT by design with target requirements length of 1 being single-dut.
+message ScheduleTargetRequirements {
+  repeated TargetRequirements target_requirements = 1;
+}
+
+message TargetRequirements {
+  HWRequirements hw_requirements = 1;
+  // One HW, can have multiple SW configs., eg Cros + Lacros + FW + Kernel.
+  repeated LegacySW sw_requirements = 2 [deprecated = true];
+  LegacySW sw_requirement = 3;
+
+}
+
+message SchedulingUnitOptions {
+  repeated SchedulingUnit scheduling_units = 1;
+  enum State {
+    REQUIRED = 0;
+    OPTIONAL = 1;
+    PREFERRED = 2;
+    BANNED = 3;
+    ONEOF = 4;
+  }
+ State state = 6;
+ repeated PublishKey publish_keys = 7;
+}
+
+message HWRequirements {
+  repeated SwarmingDefinition hw_definition = 1;
+  enum State {
+    REQUIRED = 0;
+    OPTIONAL = 1;
+    PREFERRED = 2;
+    BANNED = 3;
+    ONEOF = 4;
+  }
+ State state = 6;
+}
+
+message SchedulingUnit {
+  Target primary_target = 1;
+  repeated Target companion_targets = 2;
+
+  // Lookup Table for resolving placeholders set within the dynamic updates
+  // found under the suite metadata. Stores provision/DUT related
+  // information in regards to an entire SchedulingUnit.
+  map<string, string> dynamic_update_lookup_table = 3;
+  // Updates for the dynamic TRv2 request object. Updates to be applied
+  // after the SuiteMetadata dynamic updates are applied, and before scheduling.
+  // To be used only for specific situations in which normal dynamic updates
+  // won't work due to conflicting scenarios between SchedulingUnits.
+  // i.e. VM leasing requires no provisioning but needs a vm cache-server
+  // and a vm-dut container.
+  //
+  // Note: Applied updates in order given.
+  repeated UserDefinedDynamicUpdate secondary_dynamic_updates = 4;
+}
+
+message SWRequirements{}
+message ProvisionInfo {
+  // Should this be a generic string? Then we don't have to touch proto when new provision comes.
+  enum Type {
+   CROS = 0;
+   ANDROID = 1;
+   ROFW = 2;
+  }
+  InstallRequest install_request = 1;
+  string identifier = 2;
+  Type type = 3;
+}
+
+message Target {
+  SwarmingDefinition swarming_def =1;
+  LegacySW sw_req =2;
+}
+
+message SwarmingDefinition {
+ // This is effectively the UFS proto. This will be the universal language spoken by all filters.
+  chromiumos.test.lab.api.Dut dut_info = 1;
+  repeated ProvisionInfo provision_info = 2;
+  repeated string swarming_labels = 3;
+  string variant = 4;
+  // Lookup Table for resolving placeholders set within the dynamic updates
+  // found under the suite metadata.
+  map<string, string> dynamic_update_lookup_table = 5[deprecated = true];
+};
+
+// CTPv2Response...
+message CTPv2Response {
+  repeated CrosTestRunnerRequest test_requests = 1;
+}
+
+message CrosTestRunnerRequest {}
+
+message PublishKey {
+  string subject = 1;
+  map<string, string> key_values = 2;
+}

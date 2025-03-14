@@ -1,0 +1,161 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Defines configuration settings for resourced.
+// For more details, see:
+// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/resourced/README.md
+//
+// NEXT ID: 7
+message ResourceConfig {
+  // See https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html
+  message ConservativeGovernor {
+    // TODO: Add conservative specific parameters.
+  }
+
+  message OndemandGovernor {
+    uint32 powersave_bias = 1 [json_name = "powersave-bias"];
+
+    // This field has a min of 2ms. If this field is set to 0 or unset,
+    // resourced will not update the sampling_rate on the governor.
+    uint32 sampling_rate_ms = 2 [json_name = "sampling-rate-ms"];
+  }
+
+  message PerformanceGovernor {
+    // No parameter for the performance governor. The CPU frequency is set to
+    // the highest within scalinng_max_freq.
+  }
+
+  message PowersaveGovernor {
+    // No parameter for the powersave governor. The CPU frequency is set to the
+    // lowest within scaling_min_freq.
+  }
+
+  message SchedutilGovernor {
+    // TODO: Add schedutil specific parameters.
+  }
+
+  message UserspaceGovernor {
+    // No parameter for the userspace governor. The user space can set CPU
+    // frequency by writing to scaling_setspeed.
+  }
+
+
+  message Governor {
+    oneof governor {
+      ConservativeGovernor conservative = 2;
+      OndemandGovernor ondemand = 1;
+      PerformanceGovernor performance = 3;
+      PowersaveGovernor powersave = 4;
+      SchedutilGovernor schedutil = 5;
+      UserspaceGovernor userspace = 6;
+    }
+  }
+
+  message DefaultEpp {}
+
+  message PerformanceEpp {}
+
+  message BalancePerformanceEpp {}
+
+  message BalancePowerEpp {}
+
+  message PowerEpp {}
+
+  message EnergyPerformancePreference {
+    oneof epp {
+      DefaultEpp default = 1;
+      PerformanceEpp performance = 2;
+      BalancePerformanceEpp balance_performance = 3 [json_name = "balance-performance"];
+      BalancePowerEpp balance_power = 4 [json_name = "balance-power"];
+      PowerEpp power = 5;
+    }
+  }
+
+  message CpuOfflineSmallCore {
+    // The minimum number of online threads the device must have. If not set,
+    // resourced sets default to 2.
+    uint32 min_active_threads = 1 [json_name = "min-active-threads"];
+  }
+
+  message CpuOfflineSMT {
+    // The minimum number of online threads the device must have. If not set,
+    // resourced sets default to 2.
+    uint32 min_active_threads = 1 [json_name = "min-active-threads"];
+  }
+
+  message CpuOfflineHalf {
+    // The minimum number of online threads the device must have. If not set,
+    // resourced sets default to 2.
+    uint32 min_active_threads = 1 [json_name = "min-active-threads"];
+  }
+
+  message CpuOfflinePreference {
+    oneof cpu_offline {
+      CpuOfflineSmallCore small_core = 1 [json_name = "small-core"];
+      CpuOfflineSMT smt = 2;
+      CpuOfflineHalf half = 3;
+    }
+  }
+
+  message PowerPreferences {
+    Governor governor = 1;
+    EnergyPerformancePreference epp = 2;
+    CpuOfflinePreference cpu_offline = 3 [json_name = "cpu-offline"];
+    bool cpufreq_disable_boost = 4 [json_name = "cpufreq-disable-boost"];
+  }
+
+  message PowerSourcePreferences {
+    // If more then one activity is enabled, the following priority list is used
+    // to determine which settings to apply:
+    //
+    // 1) Battery saver
+    // 2) Borealis gaming
+    // 3) ARCVM gaming
+    // 4) WebRTC
+    // 5) Fullscreen Video
+    // 6) VM boot
+    //
+    // Default will be applied when no activity is active.
+
+    // PowerPreferences to apply at boot and when no other activity is active.
+    PowerPreferences default_power_preferences = 1
+        [json_name = "default-power-preferences"];
+
+    // PowerPreferences to apply when RTC audio is active.
+    PowerPreferences web_rtc_power_preferences = 2
+        [json_name = "web-rtc-power-preferences"];
+
+    // PowerPreferences to apply when full screen video is active.
+    PowerPreferences fullscreen_video_power_preferences = 3
+        [json_name = "fullscreen-power-preferences"];
+
+    // PowerPreferences to apply when performance mode is active.
+    PowerPreferences vm_boot_power_preferences = 4
+        [json_name = "vm-boot-power-preferences"];
+
+    // PowerPreferences to apply when playing a Borealis game.
+    PowerPreferences borealis_gaming_power_preferences = 5
+        [json_name = "borealis-gaming-power-preferences"];
+
+    // PowerPreferences to apply when playing an ARCVM game.
+    PowerPreferences arcvm_gaming_power_preferences = 6
+        [json_name = "arcvm-gaming-power-preferences"];
+
+    // PowerPreferences to apply when Battery Saver mode is on.
+    PowerPreferences battery_saver_power_preferences = 7
+        [json_name = "battery-saver-power-preferences"];
+  }
+
+  // Power Preferences to apply when the device is on AC power (Plugged-in).
+  PowerSourcePreferences ac = 5;
+
+  // Power Preferences to apply when the device is on DC power (Battery).
+  PowerSourcePreferences dc = 6;
+}

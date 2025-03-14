@@ -1,0 +1,49 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+// SoftwareAttribute defines how attributes of the SoftwareBundle
+// are encoded into key-value pairs.
+//
+// This encoding allows branch/build agnostic systems (e.g. CI/CQ)
+// to perform matching/optimization around test coverage requirements
+// for a given set of builds without having to couple to branch/build
+// specific proto-definitions.
+message SoftwareAttribute {
+  // Globally unique identifier for the attribute. Usually reflects the
+  // contents of the attribute, e.g. "arc_version".
+  message Id {
+    string value = 1;
+  }
+
+  Id id = 1;
+
+  // Field in a chromiumos.build.api.SoftwareBundle proto that defines the
+  // value of the attribute.
+  //
+  // The path should start at SoftwareBundle and be delimited by ".". For
+  // example, "system_image.metadata.arc.version". Only scalar fields are
+  // allowed as the last component of the path.
+  string field_path = 2;
+}
+
+message SoftwareAttributeList {
+  repeated SoftwareAttribute sw_attributes = 1;
+}
+
+// SoftwareCriterion describes a group of sw builds,
+// based on a set of criteria that will be evaluated against a collection
+// of SoftwareBundle payloads.
+message SoftwareCriterion {
+  // ID of the Sw attribute that must meet the criterion.
+  SoftwareAttribute.Id attribute_id = 1;
+  // List of ANY acceptable values to match (OR logic is applied).
+  // Values must match exactly (i.e. no regexp, wildcard, etc. allowed).
+  repeated string values = 2;
+}

@@ -1,0 +1,35 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.dut;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/dut";
+
+import "chromiumos/test/api/dut_attribute.proto";
+
+// DeviceStability describes the stability of a groups of DUTs.
+//
+// Stability can be used for decisions such as test planning. Stability is a
+// temporary characteristic of a DUT; for example, due to a known hardware issue
+// on a device.
+message DeviceStability {
+  // DUTs included in the stability description.
+  // All criteria must be met (AND logic is applied).
+  repeated chromiumos.test.api.DutCriterion dut_criteria = 1;
+
+  // Stability status of a DUT.
+  enum Stability {
+      STABILITY_UNKNOWN = 0;
+      STABLE = 1;
+      UNSTABLE = 2;
+  }
+
+  Stability stability = 2;
+}
+
+message DeviceStabilityList {
+  repeated DeviceStability values = 1;
+}

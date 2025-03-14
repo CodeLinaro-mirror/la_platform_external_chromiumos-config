@@ -1,0 +1,90 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/test_case.proto";
+import "chromiumos/test/api/test_harness.proto";
+
+// Defines all metadata about a given test case to support the entire
+// test case lifecycle (planning, execution, debugging, triage, reporting, ...).
+message TestCaseMetadata {
+  api.TestCase test_case = 1;
+  TestCaseExec test_case_exec = 2;
+  TestCaseInfo test_case_info = 3;
+}
+
+// Contains details needed to execute a given test case.
+message TestCaseExec {
+  TestHarness test_harness = 1;
+}
+
+// Contains informational details about a test case which doesn't affect
+// scheduling or execution behavior.
+message TestCaseInfo {
+  // Contacts for ownership / flakiness notification etc.
+  repeated Contact owners = 1;
+  repeated Requirement requirements = 2;
+  BugComponent bug_component = 3;
+  Criteria criteria = 4;
+  HwAgnostic hw_agnostic = 5;
+  LifeCycleStage life_cycle_stage = 6;
+  DDDVariantCategory variant_category = 7;
+  map<string, string> extra_info = 8;
+}
+
+// Contact information of individuals or teams.
+message Contact {
+  // Can be individual user or group email
+  string email = 1;
+}
+
+// Requirements satisfied by test case
+message Requirement {
+  string value = 1;
+}
+
+// Bug component for filing bugs against.
+message BugComponent {
+  string value = 1;
+}
+
+// A short summary capturing the quality guarantee validated by the Test, Suite,
+// SuiteSet, etc.
+message Criteria {
+  string value = 1;
+}
+
+// Specifies if a test can be run on VM or not.
+message HwAgnostic {
+  bool value = 1;
+}
+
+// LifeCycleStage denotes the overall usage of the test.
+message LifeCycleStage {
+  enum LifeCycle{
+    LIFE_CYCLE_PRODUCTION_READY = 0;
+    LIFE_CYCLE_DISABLED = 1;
+    LIFE_CYCLE_IN_DEVELOPMENT = 2;
+    LIFE_CYCLE_MANUAL_ONLY = 3;
+    LIFE_CYCLE_OWNER_MONITORED = 4;
+  }
+  LifeCycle value = 1;
+}
+
+// Defines hardware and software capabilities of the device or test rigging it
+// needs, which can influence the behavior of the test and its outcome.
+// Not required for the legacy pipeline.
+message DDDVariantCategory {
+  string value = 1;
+}
+
+// A list of TestCaseMetadata for ease of serialization into a file.
+message TestCaseMetadataList {
+  repeated TestCaseMetadata values = 1;
+}

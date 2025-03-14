@@ -1,0 +1,47 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "artifact_proto",
+    srcs = [
+        "dut_metadata_artifact.proto",
+        "manifest.proto",
+        "test_plan.proto",
+        "test_result.proto",
+        "tko.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//chromiumos:_go_proto",
+        "//chromiumos/test/api:api_proto",
+        "//chromiumos/test/api/v1:test_api_v1_proto",
+        "//chromiumos/test/lab/api:api_proto",
+        "@com_google_protobuf//:duration_proto",
+        "@com_google_protobuf//:timestamp_proto",
+    ],
+)
+
+go_proto_library(
+    name = "artifact_go_proto",
+    importpath = "go.chromium.org/chromiumos/config/go/test/artifact",
+    proto = ":artifact_proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//chromiumos:go",
+        "//chromiumos/test/api",
+        "//chromiumos/test/api/v1:api",
+        "//chromiumos/test/lab/api",
+    ],
+)
+
+go_library(
+    name = "artifact",
+    embed = [":artifact_go_proto"],
+    importpath = "go.chromium.org/chromiumos/config/go/test/artifact",
+    visibility = ["//visibility:public"],
+)

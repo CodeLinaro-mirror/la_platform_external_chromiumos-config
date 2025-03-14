@@ -1,0 +1,460 @@
+{
+  "dutAttributes": [
+    {
+      "id": {
+        "value": "attr-cts-abi"
+      },
+      "aliases": [
+        "label-cts_abi",
+        "label-cts_cpu"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "program.platform.soc_arch"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "attr-design"
+      },
+      "aliases": [
+        "attr-model",
+        "label-model"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design.id.value"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "attr-ec-type"
+      },
+      "aliases": [
+        "label-ec_type"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.embedded_controller.ec_type"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "attr-fingerprint-location"
+      },
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.fingerprint.location"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "attr-program"
+      },
+      "aliases": [
+        "attr-board",
+        "label-platform",
+        "label-board"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "program.id.value"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "feature-bluetooth"
+      },
+      "aliases": [
+        "label-bluetooth"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.bluetooth.present"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "feature-fingerprint"
+      },
+      "aliases": [
+        "label-fingerprint"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.fingerprint.location"
+          }
+        ]
+      },
+      "excludeValues": [
+        "LOCATION_UNKNOWN",
+        "NOT_PRESENT"
+      ]
+    },
+    {
+      "id": {
+        "value": "feature-hotwording"
+      },
+      "aliases": [
+        "label-hotwording"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.hotwording.present"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "feature-internal-display"
+      },
+      "aliases": [
+        "label-internal_display"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.display.type"
+          }
+        ]
+      },
+      "allowedValues": [
+        "TYPE_INTERNAL",
+        "TYPE_INTERNAL_EXTERNAL"
+      ]
+    },
+    {
+      "id": {
+        "value": "feature-stylus"
+      },
+      "aliases": [
+        "label-stylus"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.stylus.stylus"
+          }
+        ]
+      },
+      "allowedValues": [
+        "INTERNAL",
+        "EXTERNAL"
+      ]
+    },
+    {
+      "id": {
+        "value": "feature-touchpad"
+      },
+      "aliases": [
+        "label-touchpad"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.touchpad.present"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "feature-touchscreen"
+      },
+      "aliases": [
+        "label-touchscreen"
+      ],
+      "flatConfigSource": {
+        "fields": [
+          {
+            "path": "hw_design_config.hardware_features.screen.touch_support"
+          }
+        ]
+      },
+      "allowedValues": [
+        "PRESENT"
+      ]
+    },
+    {
+      "id": {
+        "value": "hw-wireless"
+      },
+      "aliases": [
+        "label-wifi_chip"
+      ],
+      "hwidSource": {
+        "componentType": "wifi",
+        "fields": [
+          {
+            "path": "hwid_label"
+          }
+        ]
+      }
+    },
+    {
+      "id": {
+        "value": "attr-cr50-phase"
+      },
+      "aliases": [
+        "label-cr50_phase"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "attr-cr50-key-env"
+      },
+      "aliases": [
+        "label-cr50_ro_keyid"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "attr-dut-id"
+      },
+      "aliases": [
+        "dut_id"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "attr-dut-name"
+      },
+      "aliases": [
+        "dut_name"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "misc-license"
+      },
+      "aliases": [
+        "label-license"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-arc"
+      },
+      "aliases": [
+        "label-arc"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-atrus"
+      },
+      "aliases": [
+        "label-atrus"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-audio-board"
+      },
+      "aliases": [
+        "label-audio_board"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-audio-box"
+      },
+      "aliases": [
+        "label-audio_box"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-audio-cable"
+      },
+      "aliases": [
+        "label-audio_cable"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-audio-loopback"
+      },
+      "aliases": [
+        "label-audio_loopback_dongle"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-bluetooth-state"
+      },
+      "aliases": [
+        "label-bluetooth_state"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-camerabox-facing"
+      },
+      "aliases": [
+        "label-camerabox_facing"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-camerabox-light"
+      },
+      "aliases": [
+        "label-camerabox_light"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-carrier"
+      },
+      "aliases": [
+        "label-carrier"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-chameleon"
+      },
+      "aliases": [
+        "label-chameleon"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-chaos"
+      },
+      "aliases": [
+        "label-chaos_dut"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-mimo"
+      },
+      "aliases": [
+        "label-mimo"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-num-btpeer"
+      },
+      "aliases": [
+        "label-working_bluetooth_btpeer"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-power"
+      },
+      "aliases": [
+        "label-power"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-servo"
+      },
+      "aliases": [
+        "label-servo"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-servo-component"
+      },
+      "aliases": [
+        "label-servo_component"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-servo-state"
+      },
+      "aliases": [
+        "label-servo_state"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-servo-usb-state"
+      },
+      "aliases": [
+        "label-servo_usb_state",
+        "servo_usb_state"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-wificell"
+      },
+      "aliases": [
+        "label-wificell"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "peripheral-wifi-state"
+      },
+      "aliases": [
+        "label-wifi_state"
+      ],
+      "tleSource": {}
+    },
+    {
+      "id": {
+        "value": "swarming-pool"
+      },
+      "aliases": [
+        "label-pool"
+      ],
+      "tleSource": {}
+    }
+  ]
+}
