@@ -31267,6 +31267,9 @@
               "label": "LABEL_OPTIONAL",
               "name": "eqc_info",
               "number": 13,
+              "options": {
+                "deprecated": true
+              },
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.EqcInfo"
             }
@@ -31480,6 +31483,14 @@
               "number": 7,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.artifact.TestRun.TagsEntry"
+            },
+            {
+              "jsonName": "eqcInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "eqc_info",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.EqcInfo"
             }
           ],
           "name": "TestRun",

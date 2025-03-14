@@ -90,8 +90,9 @@ message TestInvocation {
   // Partner info associated with the test run.
   PartnerInfo partner_info = 9;
 
+  // Deprecated. Use the EqcInfo in the TestRun proto instead.
   // 3D equivalence classes (EqC) info associated with the test run.
-  EqcInfo eqc_info = 13;
+  EqcInfo eqc_info = 13 [deprecated = true];
 }
 
 // Captures the test environment that produced the test invocation,
@@ -150,7 +151,7 @@ message EqcInfo {
 }
 
 // Captures information regarding a test run.
-// NEXT TAG: 8
+// NEXT TAG: 9
 message TestRun {
   // Test case information for the test result.
   TestCaseInfo test_case_info = 1;
@@ -176,6 +177,9 @@ message TestRun {
   // For added flexibility, additional key value pairs could be added and
   // associated with the given test run as needed.
   map<string, string> tags = 7;
+
+  // 3D equivalence classes (EqC) info associated with the test run.
+  EqcInfo eqc_info = 8;
 }
 
 // Captures test case information associated with a test run.
