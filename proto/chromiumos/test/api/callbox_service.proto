@@ -1,0 +1,21 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+// TODO(latware): Define API
+service CallboxService {
+  // Verifies the connection/status of the callbox
+  rpc CheckHealth(CheckHealthRequest)
+      returns (stream CheckHealthResponse);
+}
+
+message CheckHealthRequest {
+}
+message CheckHealthResponse {
+}

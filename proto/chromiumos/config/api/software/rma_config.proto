@@ -1,0 +1,32 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/software";
+
+package chromiumos.config.api.software;
+
+// Defines configuration of Shimless RMA (rmad).
+// For more details, see:
+// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform2/chromeos-config/README.md
+message RmaConfig {
+  message SsfcConfig {
+    message SsfcComponentTypeConfig{
+      message SsfcProbeableComponent {
+        string identifier = 1;
+        uint32 value = 2;
+      }
+      string component_type = 1;
+      uint32 default_value = 2;
+      repeated SsfcProbeableComponent probeable_components = 3;
+    }
+    uint32 mask = 1;
+    repeated SsfcComponentTypeConfig component_type_configs = 2;
+  }
+  bool enabled = 1;
+  bool has_cbi = 2;
+  SsfcConfig ssfc_config = 3;
+  bool use_legacy_custom_label = 4;
+}

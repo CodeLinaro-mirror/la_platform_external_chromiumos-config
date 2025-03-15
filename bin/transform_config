@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Applies transforms to the program/config jsonconfig payload and generates
+# configuration derivatives used by the build system.
+
+readonly script_dir="$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"
+
+# Exit if any command fails.
+set -e
+
+source "${script_dir}/../setup_cipd.sh"
+
+readonly output_dir=$1
+
+# Path to the generated config protobuf.
+readonly private_config_path_rel="generated/config.jsonproto"
+# Path to output the filtered public config protobuf to.
+readonly public_config_path_rel="generated/public_config.jsonproto"
+
+# Generated filtered public configs. Note that this should be done for both
+# programs and projects.
+config/payload_utils/public_replication.py \
+  --input "${output_dir}/${private_config_path_rel}" \
+  --output "${output_dir}/${public_config_path_rel}"
+
+# If we don't see the program symlink in the cwd, then
+# we are not a project and we are done.
+[[ ! -L program ]] && exit
+
+# If we did see the program symlink in the cwd, then
+# we are a project and we continue with generation of
+# platform json.
+
+# Call cros_config_proto_converter to transform a Protocol Buffer to config
+# readable by the ChromeOS platform.
+#
+# If either the program or project configs do not exist (e.g. because they are
+# public configs with all fields filtered) the function will return 0 without
+# calling cros_config_proto_converter.
+#
+# Args:
+#   $1: Path to the protobuf input. E.g. "generated/config.jsonproto".
+#   $2: Output directory to write platform JSON and other artifacts to. Note
+#       that this directory will be deleted and recreated.
+proto_converter(){
+  local _program_config=$1
+  local _project_config=$2
+  local _output_dir=$3
+
+  if [[ ! -e "${_program_config}" || ! -e "${_project_config}" ]]; then
+    return 0
+  fi
+
+  rm -rf "${_output_dir}"
+  mkdir -p "${_output_dir}"
+
+  # Call cros_conifg_proto_converter from chromeos-config.
+  PYTHONPATH="${script_dir}/../../platform2/chromeos-config" \
+    vpython3 -vpython-spec "${script_dir}/../.vpython3" \
+    -m cros_config_host.cros_config_proto_converter \
+    --output "${_output_dir}/project-config.json" \
+    --program_config "${_program_config}" \
+    --project_configs "${_project_config}"
+}
+
+resolve_rel_path() {
+  realpath -m --relative-to="$(pwd)" "$1"
+}
+
+# Output dirs for private and public software configs.
+readonly sw_output_dir='sw_build_config/platform/chromeos-config/generated'
+readonly public_sw_output_dir="public_${sw_output_dir}"
+
+# convert private protos
+proto_converter \
+    "program/${private_config_path_rel}" \
+    "$(resolve_rel_path "${output_dir}/${private_config_path_rel}")" \
+    "$(resolve_rel_path "${output_dir}/${sw_output_dir}")"
+
+# convert public protos
+proto_converter \
+    "program/${public_config_path_rel}" \
+    "$(resolve_rel_path "${output_dir}/${public_config_path_rel}")" \
+    "$(resolve_rel_path "${output_dir}/${public_sw_output_dir}")"
+
+# and convert factory config
+factory_gen_dir="$(realpath -m "${output_dir}/factory/generated")"
+rm -rf "${factory_gen_dir}"
+mkdir -p "${factory_gen_dir}"
+config/payload_utils/factory_config_proto_converter.py \
+  --output "${factory_gen_dir}/model_sku.json" \
+  --program_config program/generated/config.jsonproto \
+  --project_configs "${output_dir}/${private_config_path_rel}"

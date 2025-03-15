@@ -1,0 +1,34 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/lab/api/dut.proto";
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+import "chromiumos/test/api/provision_state.proto";
+import "chromiumos/test/api/provision_service.proto";
+
+message CrosProvisionRequest {
+  // DUT information.
+  chromiumos.test.lab.api.Dut dut = 1;
+  // Provision state is pass through request to the provision service.
+  ProvisionState provision_state = 2;
+  // Address of the DUT Server.
+  chromiumos.test.lab.api.IpEndpoint dut_server = 3;
+  // Address of the server that provide inventory service.
+  chromiumos.test.lab.api.IpEndpoint inventory_server = 4;
+}
+
+message CrosProvisionResponse {
+  chromiumos.test.lab.api.Dut.Id id = 1;
+  // Outcome represents the result of performing provisioning on the DUT.
+  oneof outcome {
+    InstallSuccess success = 2;
+    InstallFailure failure = 3;
+  }
+}

@@ -1,0 +1,544 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+# Script creates partner program or project git repo, gerrit groups, apply ACLs
+#
+# Requirements :
+# 1.  Script runner needs to be added to group mdb/chrome-git-admins
+#     and gerrit group chromeos-partner-admins
+# 2.  Install jq for json file parsing
+#     $ sudo apt-get install jq
+#
+# The script can get re-run with out any problems.
+#   The apis check if repo and gerrit groups exist.
+#   ACLs can be re-applied and gets deduped.
+#   Creating local_manifest step will be skipped if one already exist.
+#   Update of Manifest-internal will be skipped if the project is already added.
+#   Creating already existing project buckets is a noop.
+#
+# TODO(b/152909984): Script should check script runner's env for correct setup
+
+readonly INTERNAL_GERRIT_HOST='https://chrome-internal-review.googlesource.com'
+readonly INTERNAL_GITILES_HOST='https://chrome-internal.googlesource.com'
+readonly CONTENT_TYPE_JSON='Content-Type: application/json'
+readonly PROGRAM_CONFIG_BUCKET_PREFIX='gs://chromeos-device-lifecycle-config-'
+
+# Name of the program
+program=''
+# Name of the project
+project=''
+# Command to run if provided, otherwise run through entire script.
+run=''
+# Path of the repo depending on program and project
+repo_path=''
+# Name used to create repo and gerrit groups
+name=''
+# Parsed project json object
+global_project_obj=''
+# Groups parsed from program config with ACL roles ODM, OEM, or SOC
+committer_groups=''
+# Users parsed from program config with ACL roles ODM, OEM, or SOC
+committer_users=''
+# environment Program.config bucket setting could be prod or dev
+env='prod'
+
+readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+readonly WORK_DIR=$(mktemp --tmpdir -d programrepoXXXXXX)
+trap "rm -rf ${WORK_DIR}" EXIT
+
+usage() {
+  echo "usage: ./create_partner_repo --program <programName> --project <projectName> --run <command> --env <prod/dev>"
+  echo "--program is required"
+  echo "--project is optional"
+  echo "--run is optional. Supported commands:"
+  echo "    acls - apply ACLs to project's committer and access groups"
+  echo "    gerritgroups - create and apply default permissions to gerrit groups"
+  echo "    localmanifest - create local_manifest.xml for the project repo"
+  echo "    manifestinternal - update manifest_internal repo internal_full.xml"
+  echo "    createprogrambuckets - create gs buckets for the program"
+  echo "    createprojectbuckets - create gs buckets for the project"
+  echo "    createprojectbranches - create firmware and factory branches for the project and calls manifestinternal"
+  echo "--env is optional. prod or dev. prod is default"
+}
+
+gob_post() {
+  local body="${1}"
+  local url="${2}"
+  gob-curl -X POST -H "${CONTENT_TYPE_JSON}" -d "${body}" "${url}"
+}
+
+gob_put() {
+  local body="${1}"
+  local url="${2}"
+  gob-curl -X PUT -H "${CONTENT_TYPE_JSON}" -d "${body}" "${url}"
+}
+
+gob_curl() {
+  local url="${1}"
+  local output="${2}"
+  tempfile=$(mktemp)
+  gob-curl --silent --output "${tempfile}" "${url}"
+
+  # Expect a magic prefix as the first line, see
+  # https://gerrit-review.googlesource.com/Documentation/rest-api.html#output.
+  if [[ $(head -1 "${tempfile}") != ')]}'\' ]]; then
+    echo "Unexpected prefix line in JSON response."
+    return 1
+  fi
+
+  tail -n +2 "${tempfile}" > "${output}"
+}
+
+apply_acls_with_static_members() {
+  if [[ -n "${project}" ]]; then
+    local groups=(
+      '"google/'"${project}"'-odm-external@google.com"'
+      '"google/'"${project}"'-oem-external@google.com"'
+      '"google/'"${project}"'-soc-external@google.com"')
+    local url="${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${project}-committers/groups"
+
+    for group in "${groups[@]}"; do
+      echo "## adding group ${group}"
+      local body='{"groups": ['"${group}"']}'
+      gob_post "${body}" "${url}"
+    done
+  fi
+
+  apply_default_access
+}
+
+parse_program_config() {
+  local config_file="${PROGRAM_CONFIG_BUCKET_PREFIX}${env}/${program}_program_config.json"
+
+  if [[ -z "${project}" ]]; then
+    global_project_obj=$(gsutil cat "${config_file}" | \
+      jq 'select(.name=="'$program'")')
+  else
+    global_project_obj=$(gsutil cat "${config_file}" | \
+      jq 'select(.name=="'$program'") | .deviceProjects[] | select(.googleCodeName=="'$project'")')
+  fi
+
+  if [[ -z "${global_project_obj}" ]]; then
+    if [[ -z "${project}" ]]; then
+      echo "Program not found in config. ACLs are not parsed."
+    else
+      echo "Project not found in config. ACLs are not parsed."
+    fi
+    return;
+  fi
+
+  local committer_acls
+  committer_acls=$(echo "${global_project_obj}" | \
+    jq '.acls[]? | select(.role=="DEVICE_OEM"), select(.role=="DEVICE_ODM"), select(.role=="PLATFORM_SUPPLIER")')
+
+  # groups should end with google.com and should be prefixed with "google/"
+  # Can't add non google.com entries.
+  committer_groups=$(echo "${committer_acls}" | \
+    jq -r '[.groupEmails] | add | .[]? | select( . | contains("google.com"))');
+  echo "committer groups: ${committer_groups}"
+
+  committer_users=$(echo "${committer_acls}" | \
+    jq -r '[.userEmails] | add | .[]?');
+  echo "committer users: ${committer_users}"
+}
+
+# Gerrit request fails if any of the group or user in list is invalid. Add serially
+apply_acls_from_config() {
+  if [[ -n "${project}" ]]; then
+    # Add groups
+    if [[ -n "${committer_groups}" ]]; then
+      local url="${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${name}-committers/groups"
+      for group in ${committer_groups}; do
+        local json='{"groups": ["google/'"${group}"'"]}'
+        echo "Applying ACL : ${json} to ${url}"
+        gob_post "${json}" "${url}"
+      done
+    else
+      echo "No groups found in program config, no groups added."
+    fi
+
+     # Add users
+    if [[ -n "${committer_users}" ]]; then
+      local url="${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${name}-committers/members"
+      for user in ${committer_users}; do
+        local json='{"members": ["'"${user}"'"]}'
+        echo "Applying ACL : ${json} to ${url}"
+        gob_post "${json}" "${url}"
+      done
+    else
+      echo "No users found in program config, no users added."
+    fi
+  fi
+
+  apply_default_access
+}
+
+apply_default_access() {
+  echo -e "\n## Add default required reader access  ${INTERNAL_GERRIT_HOST}/${repo_path//%2f/\/}"
+  gob-ctl acl "${INTERNAL_GERRIT_HOST}/${repo_path//%2f/\/}" \
+   -reader "email/chromeos-commit-bot@chromium.org"
+
+  gob-ctl acl "${INTERNAL_GERRIT_HOST}/${repo_path//%2f/\/}" \
+   -reader "mdbgroup/chromeos-ci-oncalls"
+
+  gob-ctl acl "${INTERNAL_GERRIT_HOST}/${repo_path//%2f/\/}" \
+   -reader "mdbgroup/chromeos-ci-server"
+
+  echo -e "## Project's access group gets added to the program's access group"
+  echo "If project is a reference-board, its committer groups gets added to chromeos-partner-${program}-committers"
+  if [[ -n "${project}" ]] && [[ "${project}" != "${program}" ]]; then
+    gob-curl -X PUT "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${program}-access/groups/chromeos-partner-${project}-access"
+
+    if [[ -n "${global_project_obj}" ]]; then
+       local referenceBoardName
+       referenceBoardName=$(echo "${global_project_obj}" | jq '.referenceBoardName')
+       if [[ "referenceBoardName" ==  "${project}" ]]; then
+          gob-curl -X PUT "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${program}-committers/groups/chromeos-partner-${project}-committers"
+       fi
+    fi
+  fi
+}
+
+create_gerrit_groups() {
+  #Create an admin gerrit group"
+  echo -e "## Create an admin gerrit group"
+  gob_put \
+   '{"owner": "chromeos-partner-admins"}' \
+   "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${name}-admin"
+
+  gob_put \
+   '{"owner": "chromeos-partner-admins"}' \
+   "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${name}-admin/owner"
+
+  # Create committers gerrit group"
+  echo -e "\n## Create committers gerrit group"
+  gob_put \
+   '{"owner": "chromeos-partner-'"${name}"'-admin", "visible_to_all": "true"}' \
+   "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${name}-committers"
+
+  gob_put \
+   '{"owner": "chromeos-partner-'"${name}"'-admin"}' \
+   "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${name}-committers/owner"
+
+  # Create access gerrit group"
+  echo -e "\n## Create access gerrit group"
+  gob_put \
+   '{"owner": "chromeos-partner-'"${name}"'-admin", "visible_to_all": "true"}' \
+   "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${name}-access"
+
+  gob_put \
+   '{"owner": "chromeos-partner-'"${name}"'-admin"}' \
+   "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${name}-access/owner"
+
+  echo -e "\n## Add committer to access group"
+  gob-curl -X PUT "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${name}-access/groups/chromeos-partner-${name}-committers"
+  if [[ -n "${project}" ]] && [[ "${project}" != "${program}" ]]; then
+    echo -e "\n## Add "chromeos-partner-"$project"-access" as an included group in the program's access group"
+    gob-curl -X PUT "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-${program}-access/groups/chromeos-partner-${project}-access"
+  fi
+
+  # Add chromeos-partner-${name}-access group to chromeos-allpartners"
+  gob-curl -X PUT "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-allpartners/groups/chromeos-partner-${name}-access"
+
+  # Add the chromeos-partner-${name}-access group as an included group of chromeos-partner-project-cheets-access"
+  gob-curl -X PUT "${INTERNAL_GERRIT_HOST}/a/groups/chromeos-partner-project-cheets-access/groups/chromeos-partner-${name}-access"
+
+  # Permissions at /google3/third_party/java_src/gerritcodereview/gerrit/java/com/google/gerrit/common/data/Permission.java
+  #Step 9:
+  echo -e "\n## Set up access permission"
+  refs_acls=(
+  '{"add": {"refs/*": {"permissions": {"forgeAuthor": {"rules": {"chromeos-partner-'"$name"'-committers": {"action": "ALLOW"}}}}}}}'
+  '{"add": {"refs/*": {"permissions": {"label-Code-Review": {"rules": {"chromeos-partner-'"$name"'-committers": {"action": "ALLOW", "min": -1, "max": 1}}}}}}}'
+  '{"add": {"refs/*": {"permissions": {"label-Commit-Queue": {"rules": {"chromeos-partner-'"$name"'-committers": {"action": "ALLOW", "min": 0, "max": 1}}}}}}}'
+  '{"add": {"refs/*": {"permissions": {"label-Verified": {"rules": {"chromeos-partner-'"$name"'-committers": {"action": "ALLOW", "min": -1, "max": 1}}}}}}}'
+  '{"add": {"refs/*": {"permissions": {"read": {"rules": {"chromeos-partner-'"$name"'-access": {"action": "ALLOW"}}}}}}}'
+  '{"add": {"refs/for/*": {"permissions": {"create": {"rules": {"chromeos-partner-'"$name"'-committers": {"action": "ALLOW"}}}}}}}'
+  '{"add": {"refs/for/*": {"permissions": {"push": {"rules": {"chromeos-partner-'"$name"'-committers": {"action": "ALLOW"}}}}}}}'
+  '{"add": {"refs/for/refs/*": {"permissions": {"pushMerge": {"rules": {"chromeos-partner-'"$name"'-committers": {"action": "ALLOW"}}}}}}}'
+  '{"add": {"refs/for/refs/*": {"permissions": {"push": {"rules": {"chromeos-partner-'"$name"'-committers": {"action": "ALLOW"}}}}}}}')
+
+  for ref_acl in "${refs_acls[@]}"; do
+    echo "## adding ${ref_acl}"
+    gob_post "${ref_acl}" "${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}/access"
+  done
+}
+
+# Update manifest once when all the projects have been created
+# TODO(b/153167560): Determine how to update_manifest once for all projects.
+#
+# Args:
+#   branch: Optional, the branch to update the manifest on.
+update_manifest_internal() {
+  local branch="${1}"
+  cd "${WORK_DIR}"
+  if [[ -n "${branch}" ]]; then
+    echo -e "\n## Add ${program}-${name} to manifest-internal/internal_full.xml (branch ${branch})"
+    git clone "https://chrome-internal.googlesource.com/chromeos/manifest-internal" --branch "${branch}"
+  else
+    echo -e "\n## Add ${program}-${name} to manifest-internal/internal_full.xml"
+    git clone "https://chrome-internal.googlesource.com/chromeos/manifest-internal"
+  fi
+
+  cd manifest-internal
+
+  #Read internal_full, add only if project is not already there
+  if [[ -z "${project}" ]]; then
+    if [[ -n $(grep 'name="chromeos/program/'"${program}"'"' internal_full.xml) ]]; then
+      echo "Program already exist in internal_full.xml. Do nothing."
+      return 0
+    fi
+  else
+    if [[ -n $(grep 'name="chromeos/project/'"${program}"'/'"${name}"'"' internal_full.xml) ]]; then
+      echo "Project already exist in internal_full.xml. Do nothing."
+      return 0
+    fi
+  fi
+
+  if [[ -z "${project}" ]]; then
+    local project_xml='<project remote="cros-internal"\n '
+    project_xml+='        path="src\/program\/'"${name}"'"\n '
+    project_xml+='        name="chromeos\/program\/'"${name}"'"\n '
+    project_xml+='        groups="partner-config" \/>\n'
+    project_xml+='<\/manifest>'
+  else
+    local project_xml='<project remote="cros-internal"\n '
+    project_xml+='        path="src\/project\/'"${program}"'\/'"${name}"'"\n '
+    project_xml+='        groups="partner-config"\n '
+    project_xml+='        name="chromeos\/project\/'"${program}"'\/'"${name}"'" \/>\n'
+    project_xml+='<\/manifest>'
+  fi
+
+  sed -i "s/<\/manifest>/${project_xml}/" internal_full.xml
+  git add internal_full.xml
+  git commit -m "Add to the internal manifest. ${program}/${name}"
+  git cl upload -r "chromeos-continuous-integration-team@google.com" --force
+}
+
+create_local_manifest() {
+  if [[ -n "${project}" ]]; then
+    local source_manifest="${SCRIPT_DIR}/manifests/${program}_local_manifest.xml"
+    if [[ ! -f "${source_manifest}" ]]; then
+      echo "Source manifest ${source_manifest} does not exist."
+      echo "Skipping local manifest creation."
+      return
+    fi
+
+    echo -e "\n## Add local_manifest.xml at  ${INTERNAL_GITILES_HOST}/${repo_path//%2f/\/}"
+    cd "$WORK_DIR"
+    git clone "${INTERNAL_GITILES_HOST}/${repo_path//%2f/\/}"
+    cd "${name}"
+    if [[ -e local_manifest.xml ]]; then
+      echo "local_manifest.xml already exist in repo. Do nothing."
+      return 0
+    fi
+
+    git checkout -b "${program}"-"${name}"
+    cp "${source_manifest}" local_manifest.xml
+    git add local_manifest.xml
+    git commit -m "Add local_manifest.xml for project. ${program}/${project}"
+    git cl upload -r "chromeos-continuous-integration-team@google.com" --force
+  fi
+}
+
+create_git_repo() {
+  echo -e "\n## Create internal repo at ${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}"
+  repo_description='{"description": "Partner Chromeos internal project repo",
+    "submit_type":"INHERIT",
+    "owners": ["mdb/chrome-git-admins"],
+    "create_empty_commit": "true",
+    "parent": "chromeos",
+    "branches": ["main"]}'
+  gob_put "${repo_description}" "${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}"
+}
+
+try_set_group_viewer() {
+  local group="${1}"
+  local bucket="${2}"
+  if ! gsutil iam ch "group:${group}:objectViewer" "${bucket}"; then
+    echo "Skipping setting objectViewer for ${group} on ${bucket}." >&2
+  else
+    echo "Set objectViewer for ${group} on ${bucket}."
+  fi
+}
+
+try_set_user_viewer() {
+  local user="${1}"
+  local bucket="${2}"
+  if ! gsutil iam ch "user:${user}:objectViewer" "${bucket}"; then
+    echo "Skipping setting objectViewer for ${user} on ${bucket}." >&2
+  else
+    echo "Set objectViewer for ${user} on ${bucket}."
+  fi
+}
+
+create_project_buckets() {
+  # setup() guaranteed that we have a $program.
+  if [[ -n "${project}" ]]; then
+    gcloud config set project chromeos-partner-devices
+    local bucket="gs://chromeos-${program}-${project}"
+    gsutil mb "${bucket}"
+    gsutil iam ch serviceAccount:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com:objectAdmin "${bucket}"
+    gsutil iam ch user:chromeos-ci-server@prod.google.com:objectViewer "${bucket}"
+    for id in ${committer_groups}; do
+      try_set_group_viewer "${id}" "${bucket}"
+    done
+    for id in ${committer_users}; do
+      try_set_user_viewer "${id}" "${bucket}"
+    done
+  else
+    echo "No project specified, skipping creation of project bucket."
+  fi
+}
+
+create_program_buckets() {
+  # setup() guaranteed that we have a $program.
+  gcloud config set project chromeos-partner-devices
+  local bucket="gs://chromeos-${program}"
+  gsutil mb "${bucket}"
+  gsutil iam ch serviceAccount:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com:objectAdmin "${bucket}"
+  gsutil iam ch user:chromeos-ci-server@prod.google.com:objectViewer "${bucket}"
+  for id in ${committer_groups}; do
+    try_set_group_viewer "${id}" "${bucket}"
+  done
+  for id in ${committer_users}; do
+    try_set_user_viewer "${id}" "${bucket}"
+  done
+}
+
+create_project_branches() {
+  # setup() guaranteed that we have a $program.
+  if [[ -z "${project}" ]]; then
+    echo "No project specified, skipping creation of project branches."
+    return
+  fi
+
+  local branch_info
+  branch_info=$(mktemp)
+  local branch_types=( 'firmware' 'factory')
+
+  # Search for firmware and factory branches on manifest-internal based on
+  # regex.
+  gob_curl "${INTERNAL_GERRIT_HOST}/a/projects/chromeos%2fmanifest-internal/branches" "${branch_info}"
+
+  for type in "${branch_types[@]}"; do
+    local branches
+    mapfile -t branches < <(jq --raw-output ".[] | select(.ref|test(\"^refs/heads/${type}-${program}-[1-9]+.B$\")) | .ref" < "${branch_info}")
+
+    if [[ "${#branches[@]}" = 1 ]]; then
+      # Strip refs/heads/ for the Gerrit API call.
+      local branch="${branches[0]#refs/heads/}"
+      echo "Manifest branch ${branch} found, creating corresponding project branch."
+      gob_put '{}' "${INTERNAL_GERRIT_HOST}/a/projects/${repo_path}/branches/${branch}"
+
+      update_manifest_internal "${branch}"
+    elif [[ "${#branches[@]}" -ge 2 ]]; then
+      echo "More than one manifest branch found: ${branches[*]}. Please create corresponding project branch manually."
+    else
+      echo "No existing ${type} branch found, skipping creation."
+    fi
+  done
+}
+
+setup() {
+  # Setup checks for program and project defined
+  if [[ -z "${program}" ]]; then
+    usage
+    exit 1
+  elif [[ -z "${project}" ]]; then
+    name=${program}
+    repo_path="chromeos/program/${program}"
+  else
+    name=${project}
+    repo_path="chromeos/project/${program}/${project}"
+  fi
+  repo_path=${repo_path//\//%2f}
+  #set -x
+}
+
+run_command() {
+  # Script will run commands
+  if [[ -n "$run" ]]; then
+    if [[ "$run" == "acls" ]]; then
+      parse_program_config
+      apply_acls_from_config
+    elif [[ "$run" == "gerritgroups" ]]; then
+      create_gerrit_groups
+    elif [[ "$run" == "localmanifest" ]]; then
+      create_local_manifest
+    elif [[ "$run" == "manifestinternal" ]]; then
+      update_manifest_internal
+    elif [[ "$run" == "createprojectbuckets" ]]; then
+      parse_program_config
+      create_project_buckets
+    elif [[ "$run" == "createprogrambuckets" ]]; then
+      parse_program_config
+      create_program_buckets
+    elif [[ "$run" == "createprojectbranches" ]]; then
+      create_project_branches
+    else
+      echo 'Unknown --run command'
+      usage
+    fi
+    exit 0
+  fi
+}
+
+if ! prodcertstatus; then
+  # Some of the commands require LOAS credentials. For example, without LOAS
+  # credentials, the gob-ctl to set readers on repos will fail.
+  echo "LOAS credentials missing. Please log in with prodaccess." >&2
+  exit 1
+fi
+
+while [[ "$1" != "" ]]; do
+  case $1 in
+    --program)
+      shift
+      program=$1
+      ;;
+    --project)
+      shift
+      project=$1
+      ;;
+    --env)
+      shift
+      env=$1
+      ;;
+    --run)
+      shift
+      run=$1
+      ;;
+    -h | --help)
+      usage
+      exit
+      ;;
+    *)
+       echo "Unknown option $1"
+       usage
+       exit
+      ;;
+  esac
+  shift
+done
+
+setup
+run_command
+# If fall through, run script from AtoZ
+#Step 1:
+create_git_repo
+#Step 2:
+create_gerrit_groups
+#Step 3:
+parse_program_config
+apply_acls_from_config
+#Step 4:
+create_local_manifest
+#Step 5:
+create_program_buckets
+#Step 6:
+create_project_buckets
+#Step 7:
+create_project_branches
+echo '## Script completed'

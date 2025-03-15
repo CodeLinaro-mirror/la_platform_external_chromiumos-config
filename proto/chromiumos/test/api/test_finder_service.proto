@@ -1,0 +1,18 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/test/api/cros_test_finder_cli.proto";
+
+// TestFinderService defines interactions with the test finder service.
+service TestFinderService {
+  // FindTests finds test associated with the provided input.
+  rpc FindTests(CrosTestFinderRequest)
+      returns (CrosTestFinderResponse);
+}

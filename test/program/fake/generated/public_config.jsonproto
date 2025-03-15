@@ -1,0 +1,171 @@
+{
+  "programList": [
+    {
+      "audioConfig": {
+        "cardConfigs": [
+          {
+            "cardName": "HDA ATI HDMI",
+            "ucmConfig": "COMMON",
+            "ucmSuffix": ""
+          }
+        ],
+        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
+        "hasModuleFile": true
+      },
+      "generateCameraMediaProfiles": true,
+      "id": {
+        "value": "FAKE_PROGRAM"
+      },
+      "mosysPlatformName": "fake",
+      "name": "FAKE_PROGRAM",
+      "platform": {
+        "arcSettings": {},
+        "capabilities": {
+          "darkResume": true,
+          "suspendToIdle": true,
+          "wakeOnDp": true
+        },
+        "hevcSupport": "PRESENT",
+        "resourceConfig": {
+          "ac": {
+            "arcvm-gaming-power-preferences": {
+              "cpu-offline": {
+                "smt": {}
+              },
+              "epp": {
+                "performance": {}
+              },
+              "governor": {
+                "performance": {}
+              }
+            },
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {
+                  "min-active-threads": 4
+                }
+              },
+              "cpufreq-disable-boost": true,
+              "epp": {
+                "balance-power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            }
+          },
+          "dc": {
+            "battery-saver-power-preferences": {
+              "cpu-offline": {
+                "small-core": {
+                  "min-active-threads": 4
+                }
+              },
+              "cpufreq-disable-boost": true,
+              "epp": {
+                "power": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "default-power-preferences": {
+              "epp": {
+                "balance-performance": {}
+              },
+              "governor": {
+                "powersave": {}
+              }
+            },
+            "web-rtc-power-preferences": {
+              "cpu-offline": {
+                "half": {}
+              },
+              "epp": {
+                "default": {}
+              },
+              "governor": {
+                "ondemand": {
+                  "powersave-bias": 1
+                }
+              }
+            }
+          }
+        },
+        "schedqosConfig": {
+          "default": {
+            "backgroundCpuShare": 10,
+            "normalCpuShare": 1024,
+            "threadBackground": {},
+            "threadBalanced": {
+              "nice": 8,
+              "rtPriority": 0,
+              "uclampMin": 2
+            },
+            "threadUrgent": {
+              "cpusetCgroup": "CPUSET_CGROUP_EFFICIENT",
+              "latencySensitive": false,
+              "nice": 0,
+              "rtPriority": -1,
+              "uclampMin": 1
+            },
+            "threadUrgentBursty": {
+              "cpusetCgroup": "CPUSET_CGROUP_ALL",
+              "latencySensitive": true,
+              "nice": -8,
+              "rtPriority": 8,
+              "uclampMin": 0
+            },
+            "threadUrgentBurstyClient": {},
+            "threadUrgentBurstyServer": {},
+            "threadUtility": {}
+          }
+        },
+        "schedulerTune": {
+          "boostArcvm": 0.5,
+          "boostTopApp": 60,
+          "boostUrgent": 20,
+          "cpusetNonurgent": "0-5",
+          "inputBoost": 15
+        },
+        "swapConfig": {
+          "sizeMultiplier": 1.5
+        }
+      }
+    },
+    {
+      "audioConfig": {
+        "cardConfigs": [
+          {
+            "cardName": "HDA ATI HDMI",
+            "ucmConfig": "COMMON",
+            "ucmSuffix": ""
+          }
+        ],
+        "defaultUcmSuffix": "{speaker_amp}.{headset_codec}.{mic_description}.{design}",
+        "hasModuleFile": true
+      },
+      "baseProgram": "FAKE_PROGRAM",
+      "generateCameraMediaProfiles": true,
+      "id": {
+        "value": "FAKE_A_PROGRAM"
+      },
+      "mosysPlatformName": "fake_a",
+      "name": "FAKE_A_PROGRAM",
+      "platform": {
+        "capabilities": {
+          "darkResume": true,
+          "suspendToIdle": true
+        }
+      }
+    }
+  ]
+}

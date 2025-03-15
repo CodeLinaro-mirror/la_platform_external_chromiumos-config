@@ -1,0 +1,28 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/design_config_id.proto";
+import "chromiumos/config/api/device_brand_id.proto";
+import "chromiumos/config/api/mfg_config_id.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Defines all of the config identifiers set for a given device during
+// manufacturing.
+message DeviceConfigId {
+  DesignConfigId design_config_id = 1;
+  DeviceBrandId device_brand_id = 2;
+  MfgConfigId mfg_config_id = 3;
+
+  // Scanning config to probe for unique device identifiers
+  message ScanConfig {
+    DesignConfigId.ScanConfig design_scan_config = 1;
+    DeviceBrandId.ScanConfig brand_scan_config = 2;
+    MfgConfigId.ScanConfig mfg_scan_config = 3;
+  }
+}

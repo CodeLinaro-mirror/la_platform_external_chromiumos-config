@@ -1,0 +1,29 @@
+{
+  "id": {
+    "value": "fake_primary_hostname"
+  },
+  "duts": [
+    {
+      "id": {
+        "value": "fake_primary_hostname"
+      },
+      "chromeos": {
+        "ssh": {
+          "address": "fake_primary_hostname",
+          "port": 22
+        }
+      }
+    },
+    {
+      "id": {
+        "value": "fake_peer_dut_hostname"
+      },
+      "chromeos": {
+        "ssh": {
+          "address": "fake_peer_dut_hostname",
+          "port": 22
+        }
+      }
+    }
+  ]
+}

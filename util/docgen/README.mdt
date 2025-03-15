@@ -1,0 +1,66 @@
+# Config API Reference
+
+[TOC]
+
+
+## Updating this Reference
+
+This reference is automatically generated based on Starlark docstrings. If you
+change a Starlark util function, run `util/docgen/generate.sh` to regenerate. A
+few tips:
+
+- Templating is based on Go's [`text/template`](https://golang.org/pkg/text/template/)
+package. Usually, the contents this template file won't need to be changed in
+order to regenerate.
+
+- Generation is based on docstrings, not the actual Starlark signatures. Thus,
+an "Args" section needs to be specified in the docstring in order for args to
+be picked up. Similarly, a "Returns" section needs to be specified in the
+docstring for returns to get picked up.
+
+- Specify "Required." after an argument to make it a required argument in the
+generated documentation.
+
+{{define "gen-funcs-doc"}}
+## {{.Module}}
+{{range $sym := .Symbols "func"}}
+### {{.FullName}} {#{{$sym.Anchor}}}
+{{$sym.Doc.Description | LinkifySymbols}}
+
+```python
+{{$sym.InvocationSnippet}}
+```
+{{if $sym.Doc.Args}}
+#### Arguments {#{{$sym.Anchor "args"}}}
+{{range $sym.Doc.Args}}
+* **{{.Name | EscapeMD}}**: {{.Desc | LinkifySymbols}}
+{{- end}}
+{{- end}}
+{{if $sym.Doc.Returns}}
+#### Returns  {#{{$sym.Anchor "returns"}}}
+{{$sym.Doc.Returns | LinkifySymbols}}
+{{end}}
+{{end}}
+{{end}}
+
+{{ $brand_config := Symbol "//config/util/brand_config.star" "brand_config" }}
+{{ $component := Symbol "//config/util/component.star" "comp" }}
+{{ $config_bundle := Symbol "//config/util/config_bundle.star" "config_bundle" }}
+{{ $design := Symbol "//config/util/design.star" "design" }}
+{{ $device_brand := Symbol "//config/util/device_brand.star" "device_brand" }}
+{{ $hw_topology := Symbol "//config/util/hw_topology.star" "hw_topo" }}
+{{ $partner := Symbol "//config/util/partner.star" "partner" }}
+{{ $program := Symbol "//config/util/program.star" "program" }}
+{{ $public_replication := Symbol "//config/util/public_replication.star" "public_replication" }}
+{{ $sw_config := Symbol "//config/util/sw_config.star" "sw_config" }}
+
+{{ template "gen-funcs-doc" $brand_config }}
+{{ template "gen-funcs-doc" $component }}
+{{ template "gen-funcs-doc" $config_bundle }}
+{{ template "gen-funcs-doc" $design }}
+{{ template "gen-funcs-doc" $device_brand }}
+{{ template "gen-funcs-doc" $hw_topology }}
+{{ template "gen-funcs-doc" $partner }}
+{{ template "gen-funcs-doc" $program }}
+{{ template "gen-funcs-doc" $public_replication }}
+{{ template "gen-funcs-doc" $sw_config }}

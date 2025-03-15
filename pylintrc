@@ -1,0 +1,20 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+[MAIN]
+
+init-hook='import sys; sys.path.append("presubmit")'
+
+load-plugins=
+    pylint.extensions.no_self_use,
+
+[MESSAGES CONTROL]
+
+disable=
+    consider-using-f-string,
+    possibly-used-before-assignment,
+
+[REPORTS]
+
+score=no

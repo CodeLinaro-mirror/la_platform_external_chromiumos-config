@@ -1,0 +1,18 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.lab.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
+
+// CBI (CROS Board Info) contains hardware identifiers stored in
+// EEPROM on the DUT (go/cros-board-info, go/cbi-auto-recovery-dd)
+message Cbi {
+    // All CBI contents stored on the DUT (Up to 256 bytes represented
+    // in hex format "0x43 0x42 0x49 00 0xff...") as read directly from the DUT
+    // using the `ectool i2cxfer` utility.
+    string raw_contents = 1;
+}

@@ -1,0 +1,21 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/design.proto";
+import "chromiumos/config/api/partner.proto";
+import "chromiumos/config/api/program.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Bundle of all configs related to a given Design.Config
+message DesignConfigPackage {
+  Design.Config design_config = 1;
+  Design design = 2;
+  Partner odm = 3;
+  Program program = 4;
+}

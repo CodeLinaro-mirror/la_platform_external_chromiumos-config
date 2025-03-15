@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Based on the output of lucicfg, transforms the enum values to readable
+# strings.
+
+# Exit if any command fails.
+set -e
+
+# Path to the generated config protobuf.
+readonly output_dir=$1
+readonly config_path="${output_dir}/generated/config.jsonproto"
+
+# TODO(crbug.com/1073530): Ideally lucicfg's to_jsonpb could handle writing
+# JSON PB with enums serialized as ints. For now we do it with a python
+# helper. Note that we overwrite the input file so only the converted result
+# remains.
+config/payload_utils/convert_config_enums.py \
+  --input_config="${config_path}" \
+  --output_config="${config_path}"

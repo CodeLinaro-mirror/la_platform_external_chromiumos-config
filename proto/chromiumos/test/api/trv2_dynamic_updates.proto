@@ -1,0 +1,108 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "google/protobuf/any.proto";
+import "chromiumos/test/api/trv2_dynamic.proto";
+
+// UserDefinedDynamicUpdate is what updates a dynamic trv2 request.
+message UserDefinedDynamicUpdate {
+    FocalTaskFinder focal_task_finder = 1;
+    UpdateAction update_action = 2;
+}
+
+// FocalTaskFinder describes which task is the update based around.
+message FocalTaskFinder {
+    // TaskType defines which task type is being targeted.
+    enum TaskType {
+        PROVISION = 0;
+        PRETEST = 1;
+        TEST= 2;
+        POSTTEST = 3;
+        PUBLISH = 4;
+        GENERIC = 5;
+    }
+    // First gives back the first task that is of the type provided.
+    message First {
+        TaskType task_type = 1;
+    }
+    // Last gives back the last task that is of the type provided.
+    message Last {
+        TaskType task_type = 1;
+    }
+    // Beginning always gives the first task in the list, ie the 0th index.
+    message Beginning {}
+    // End always gives the last task in the list, ie the len(list)-1 index.
+    message End {}
+    // ByDynamicIdentifier is a lookup finder that finds the task
+    // with the given dynamic identifier set.
+    message ByDynamicIdentifier {
+        string dynamic_identifier = 1;
+    }
+
+    oneof finder {
+        First first = 1;
+        Last last = 2;
+        Beginning beginning = 3;
+        End end = 4;
+        ByDynamicIdentifier by_dynamic_identifier = 5;
+    }
+}
+
+// UpdateAction describes what action will be taken around the focal task.
+message UpdateAction {
+    // Insert places the entire task provided within the ordered
+    // task list based on the insert type.
+    message Insert {
+        // InsertType describes how the task should be placed within
+        // ordered task list around the focal task.
+        enum InsertType {
+            APPEND = 0;
+            PREPEND = 1;
+            REPLACE = 2;
+        }
+        InsertType insert_type = 1;
+        // Task payload that will be inserted into the task list.
+        CrosTestRunnerDynamicRequest.Task task = 2;
+    }
+    // Remove will fully remove the focal task, shrinking
+    // the ordered task list by one.
+    message Remove {}
+    // Modify deploys in-place modifications to the focal task
+    // based on the given payloads and their corresponding instructions.
+    message Modify {
+        message Modification {
+            // Payload is the reference object for modifying the task in-place.
+            google.protobuf.Any payload = 1;
+            // Instructions follow the DynamicDeps formatting rules in which the
+            // key represents where in the task the modification is occurring, and
+            // the value represents which part of the payload is being deployed to
+            // that portion of the task.
+            // Note: An empty value within an instruction represents a one-to-one
+            //  mapping between the type of the modified task portion and the payload.
+            //
+            // Example:
+            //  Payload = {
+            //      Value = "example string"
+            //  }
+            //  Instructions = {
+            //      "provision.provisionRequest.target": "value"
+            //  }
+            map<string, string> instructions = 2;
+        }
+        // May bundle modifications within a single action.
+        repeated Modification modifications = 1;
+    }
+
+    oneof action {
+        Insert insert = 1;
+        Remove remove = 2;
+        Modify modify = 3;
+    }
+}

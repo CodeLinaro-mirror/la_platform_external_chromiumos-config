@@ -1,0 +1,16 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.prototype;
+
+option go_package = "go.chromium.org/chromiumos/config/go/prototype";
+
+// An id that other messages can use as a foreign key to specify a
+// ReleaseTarget. Id messages are equal iff their binary serialization is
+// equal.
+message ReleaseTargetId {
+  string value = 1;
+}
