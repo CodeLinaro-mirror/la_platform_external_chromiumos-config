@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z1go.chromium.org/chromiumos/config/go/test/lab/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n%chromiumos/test/lab/api/storage.proto\x12\x17\x63hromiumos.test.lab.api*v\n\x0bStorageType\x12\x0f\n\x0bUNSPECIFIED\x10\x00\x12\x14\n\x0cUNRECOGNIZED\x10\x01\x1a\x02\x08\x01\x12\x07\n\x03SSD\x10\x02\x12\x07\n\x03HDD\x10\x03\x12\x07\n\x03MMC\x10\x04\x12\x08\n\x04NVME\x10\x05\x12\x07\n\x03UFS\x10\x06\x12\x12\n\x0eNOT_RECOGNIZED\x10\x07\x42\x33Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
+  serialized_pb=b'\n%chromiumos/test/lab/api/storage.proto\x12\x17\x63hromiumos.test.lab.api*`\n\x0bStorageType\x12\x0f\n\x0bUNSPECIFIED\x10\x00\x12\x07\n\x03SSD\x10\x02\x12\x07\n\x03HDD\x10\x03\x12\x07\n\x03MMC\x10\x04\x12\x08\n\x04NVME\x10\x05\x12\x07\n\x03UFS\x10\x06\x12\x12\n\x0eNOT_RECOGNIZED\x10\x07\x42\x33Z1go.chromium.org/chromiumos/config/go/test/lab/apib\x06proto3'
 )
 
 _STORAGETYPE = _descriptor.EnumDescriptor(
@@ -36,37 +36,32 @@ _STORAGETYPE = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='UNRECOGNIZED', index=1, number=1,
-      serialized_options=b'\010\001',
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='SSD', index=2, number=2,
+      name='SSD', index=1, number=2,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='HDD', index=3, number=3,
+      name='HDD', index=2, number=3,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='MMC', index=4, number=4,
+      name='MMC', index=3, number=4,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='NVME', index=5, number=5,
+      name='NVME', index=4, number=5,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='UFS', index=6, number=6,
+      name='UFS', index=5, number=6,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='NOT_RECOGNIZED', index=7, number=7,
+      name='NOT_RECOGNIZED', index=6, number=7,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
@@ -74,13 +69,12 @@ _STORAGETYPE = _descriptor.EnumDescriptor(
   containing_type=None,
   serialized_options=None,
   serialized_start=66,
-  serialized_end=184,
+  serialized_end=162,
 )
 _sym_db.RegisterEnumDescriptor(_STORAGETYPE)
 
 StorageType = enum_type_wrapper.EnumTypeWrapper(_STORAGETYPE)
 UNSPECIFIED = 0
-UNRECOGNIZED = 1
 SSD = 2
 HDD = 3
 MMC = 4
@@ -94,5 +88,4 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 DESCRIPTOR._options = None
-_STORAGETYPE.values_by_name["UNRECOGNIZED"]._options = None
 # @@protoc_insertion_point(module_scope)

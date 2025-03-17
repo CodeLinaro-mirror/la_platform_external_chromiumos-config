@@ -37877,13 +37877,6 @@
               "number": 0
             },
             {
-              "name": "UNRECOGNIZED",
-              "number": 1,
-              "options": {
-                "deprecated": true
-              }
-            },
-            {
               "name": "SSD",
               "number": 2
             },
