@@ -12188,6 +12188,13 @@
                   "name": "percent_battery_wear_allowed",
                   "number": 1,
                   "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "maximumCycleCount",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "maximum_cycle_count",
+                  "number": 2,
+                  "type": "TYPE_UINT32"
                 }
               ],
               "name": "BatteryHealth"
@@ -12207,6 +12214,25 @@
             {
               "field": [
                 {
+                  "jsonName": "highMah",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "high_mah",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "lowMah",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "low_mah",
+                  "number": 2,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "BatteryCapacity"
+            },
+            {
+              "field": [
+                {
                   "jsonName": "batteryHealth",
                   "label": "LABEL_OPTIONAL",
                   "name": "battery_health",
@@ -12221,6 +12247,14 @@
                   "number": 2,
                   "type": "TYPE_MESSAGE",
                   "typeName": ".chromiumos.config.api.software.HealthConfig.NvmeWearLevel"
+                },
+                {
+                  "jsonName": "batteryCapacity",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "battery_capacity",
+                  "number": 3,
+                  "type": "TYPE_MESSAGE",
+                  "typeName": ".chromiumos.config.api.software.HealthConfig.BatteryCapacity"
                 }
               ],
               "name": "Routines"

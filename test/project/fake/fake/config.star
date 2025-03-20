@@ -507,6 +507,9 @@ _SC_FIRMWARE_INFO = sc.create_fw_info(
 _SC_HEALTH = sc.create_health(
     vpd_has_sku_number = True,
     battery_has_smart_battery_info = True,
+    routines_battery_capacity_high_mah = 10000,
+    routines_battery_capacity_low_mah = 1000,
+    routines_battery_health_maximum_cycle_count = 1000,
     routines_battery_health_percent_battery_wear_allowed = 50,
     routines_nvme_wear_level_wear_level_threshold = 50,
 )

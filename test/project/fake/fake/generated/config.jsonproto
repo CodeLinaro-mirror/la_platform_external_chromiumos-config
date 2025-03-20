@@ -12770,7 +12770,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14425,7 +14430,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14519,7 +14529,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14613,7 +14628,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14707,7 +14727,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14801,7 +14826,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14895,7 +14925,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
