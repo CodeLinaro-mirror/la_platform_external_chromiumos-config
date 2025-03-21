@@ -73,6 +73,7 @@ message Topology {
     UWB = 36;
     DETACHABLE_BASE = 37;
     FAN = 38;
+    DSP = 39;
   }
 
   // Map of human readable descriptions in various languages. Maps language

@@ -223,6 +223,12 @@ _DGPU = hw_topo.create_dgpu(
     dgpu_type = hw_topo.dgpu.DGPU_NV3050,
 )
 
+_DSP_ISH = hw_topo.create_dsp(
+    "ISH",
+    "Intel ISH",
+    dsp_vendor = hw_topo.dsp.DSP_VENDOR_INTEL,
+)
+
 _UWB = hw_topo.create_uwb(
     "UWB",
     "Default UWB",
@@ -1128,7 +1134,8 @@ def create_hardware_topology(
         detachable_base = None,
         soc = None,
         sd_reader = None,
-        fan = None):
+        fan = None,
+        dsp = None):
     return hw_topo.create_hardware_topology(
         bluetooth = bluetooth if bluetooth else None,
         barreljack = barreljack if barreljack else None,
@@ -1159,6 +1166,7 @@ def create_hardware_topology(
         power_supply = power_supply if power_supply else _POWER_SUPPLY,
         battery = battery,
         dgpu = dgpu,
+        dsp = dsp,
         uwb = uwb,
         detachable_base = detachable_base,
         soc = soc,
@@ -1190,6 +1198,7 @@ design.append_configs(
         hps = _HPS,
         battery = _BATTERY,
         dgpu = _DGPU,
+        dsp = _DSP_ISH,
         uwb = _UWB,
         sd_reader = _NO_SD_READER,
         fan = _NO_FAN,

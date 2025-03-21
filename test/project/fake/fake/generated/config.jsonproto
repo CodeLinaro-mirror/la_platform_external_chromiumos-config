@@ -277,6 +277,10 @@
               "dgpuType": 1,
               "present": 1
             },
+            "dspCore": {
+              "present": 1,
+              "vendor": 1
+            },
             "embeddedController": {
               "ecType": 1,
               "present": 1
@@ -631,6 +635,19 @@
               },
               "id": "NV3050",
               "type": 35
+            },
+            "dsp": {
+              "description": {
+                "EN": "Intel ISH"
+              },
+              "hardwareFeature": {
+                "dspCore": {
+                  "present": 1,
+                  "vendor": 1
+                }
+              },
+              "id": "ISH",
+              "type": 39
             },
             "ec": {
               "hardwareFeature": {

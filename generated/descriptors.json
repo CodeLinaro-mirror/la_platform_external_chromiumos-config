@@ -5224,6 +5224,10 @@
                 {
                   "name": "FAN",
                   "number": 38
+                },
+                {
+                  "name": "DSP",
+                  "number": 39
                 }
               ]
             }
@@ -9097,6 +9101,14 @@
               "label": "LABEL_OPTIONAL",
               "name": "fan",
               "number": 36,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.config.api.Topology"
+            },
+            {
+              "jsonName": "dsp",
+              "label": "LABEL_OPTIONAL",
+              "name": "dsp",
+              "number": 37,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.config.api.Topology"
             }
