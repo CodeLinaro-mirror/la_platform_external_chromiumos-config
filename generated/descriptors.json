@@ -26412,6 +26412,10 @@
                 {
                   "name": "STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE",
                   "number": 21
+                },
+                {
+                  "name": "STATUS_BROKEN_USB",
+                  "number": 22
                 }
               ]
             }

@@ -111,6 +111,8 @@ message InstallResponse {
     STATUS_SUCCESS = 20;
     // status code: ABORTED
     STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE = 21;
+    // status code: ABORTED
+    STATUS_BROKEN_USB = 22;
   }
   Status status = 1;
 
