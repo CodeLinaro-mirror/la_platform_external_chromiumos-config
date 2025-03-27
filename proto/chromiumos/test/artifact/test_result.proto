@@ -310,7 +310,7 @@ message BuildMetadata {
   ChromeOs chrome_os = 3;
 
   // Firmware metadata
-  // NEXT TAG: 5
+  // NEXT TAG: 7
   message Firmware {
     // Read-only AP firmware version running on the DUT,
     // e.g. "Google_Voema.13672.224.0".
@@ -327,6 +327,14 @@ message BuildMetadata {
     // Read-write AP firmware version specified in the firmware provision
     // request, e.g. "Google_Voxel.13672.415.0".
     string ap_rw_version = 4;
+
+    // Read-only EC firmware version specified in the firmware provision
+    // request, e.g. "vilboz_v2.0.5705-a8a7681f94".
+    string ec_ro_version = 5;
+
+    // Read-write EC firmware version specified in the firmware provision
+    // request, e.g. "vilboz_v2.0.5705-a8a7681f94".
+    string ec_rw_version = 6;
   }
 
   Firmware firmware = 4;
