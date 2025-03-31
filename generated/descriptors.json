@@ -26448,7 +26448,7 @@
                   "number": 21
                 },
                 {
-                  "name": "STATUS_BROKEN_USB",
+                  "name": "STATUS_PRE_PROVISION_USB_BOOT_FAILURE",
                   "number": 22
                 }
               ]
