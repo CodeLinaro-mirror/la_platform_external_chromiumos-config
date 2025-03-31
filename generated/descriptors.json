@@ -38279,6 +38279,255 @@
       },
       "enumType": [
         {
+          "name": "Role",
+          "value": [
+            {
+              "name": "ROLE_UNSPECIFIED",
+              "number": 0
+            },
+            {
+              "name": "ROLE_DPSOURCE_USBCSINK",
+              "number": 1
+            },
+            {
+              "name": "ROLE_DPSOURCE_DPSINK",
+              "number": 2
+            },
+            {
+              "name": "ROLE_USBCSOURCE_USBCSINK",
+              "number": 3
+            },
+            {
+              "name": "ROLE_USBCSOURCE_DPSINK",
+              "number": 4
+            }
+          ]
+        }
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "VideoTester"
+        },
+        {
+          "name": "GetVideoTestersRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "testers",
+              "label": "LABEL_REPEATED",
+              "name": "testers",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.VideoTester"
+            }
+          ],
+          "name": "GetVideoTestersResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "OpenVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "OpenVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "CloseVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "CloseVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetRolesRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "roles",
+              "label": "LABEL_REPEATED",
+              "name": "roles",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Role"
+            }
+          ],
+          "name": "GetRolesResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "role",
+              "label": "LABEL_OPTIONAL",
+              "name": "role",
+              "number": 2,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.test.lab.api.passport.Role"
+            }
+          ],
+          "name": "SetRoleRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "SetRoleResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "edid",
+              "label": "LABEL_OPTIONAL",
+              "name": "edid",
+              "number": 2,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "LoadEdidVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "LoadEdidVideoTesterResponse"
+        }
+      ],
+      "name": "chromiumos/test/lab/api/passport/video_tester_service.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/lab/api/passport"
+      },
+      "package": "chromiumos.test.lab.api.passport",
+      "service": [
+        {
+          "method": [
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetVideoTestersRequest",
+              "name": "GetVideoTesters",
+              "outputType": ".chromiumos.test.lab.api.passport.GetVideoTestersResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.OpenVideoTesterRequest",
+              "name": "OpenVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.OpenVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.CloseVideoTesterRequest",
+              "name": "CloseVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.CloseVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetRolesRequest",
+              "name": "GetRolesVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.GetRolesResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SetRoleRequest",
+              "name": "SetRoleVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.SetRoleResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest",
+              "name": "LoadEdidVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponse"
+            }
+          ],
+          "name": "VideoTesterService"
+        }
+      ],
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "enumType": [
+        {
           "name": "StorageType",
           "value": [
             {
