@@ -17,6 +17,7 @@ import "google/protobuf/any.proto";
 import "google/protobuf/duration.proto";
 import "chromiumos/test/api/test_execution_metadata.proto";
 import "chromiumos/test/api/trv2_dynamic_updates.proto";
+import "chromiumos/test/api/ctp2_filters.proto";
 
 // CrosTestPlatform2 ...
 service CTPv2Service {
@@ -28,7 +29,12 @@ service GenericFilterService {
   rpc Execute(InternalTestplan) returns (InternalTestplan);
 
   rpc ExecuteStream(stream InternalTestplanFragment)
-      returns (stream InternalTestplanFragment);
+      returns (stream InternalTestplanFragment) {
+        option deprecated = true;
+      };
+
+  rpc ExecuteWithStream(stream GenericFilterStreamRequest)
+      returns (stream GenericFilterStreamResponse);
 }
 
 // CTPv2Request ...
@@ -222,10 +228,6 @@ message Reserved {}
 message InternalTestplan {
   repeated CTPTestCase test_cases = 1;
   SuiteInfo suite_info = 2;
-}
-
-message InternalTestplanFragment {
-  bytes fragment = 1;
 }
 
 // Information to be populated by the filters.

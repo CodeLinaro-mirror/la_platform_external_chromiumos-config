@@ -27728,6 +27728,140 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "internalTestplanFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "internal_testplan_fragment",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InternalTestplanFragment"
+            }
+          ],
+          "name": "GenericFilterStreamRequest",
+          "oneofDecl": [
+            {
+              "name": "message"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "internalTestplanFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "internal_testplan_fragment",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InternalTestplanFragment"
+            },
+            {
+              "jsonName": "logFragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "log_fragment",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.LogFragment"
+            }
+          ],
+          "name": "GenericFilterStreamResponse",
+          "oneofDecl": [
+            {
+              "name": "message"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "totalSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "total_size",
+              "number": 1,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "totalFragments",
+              "label": "LABEL_OPTIONAL",
+              "name": "total_fragments",
+              "number": 2,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "index",
+              "label": "LABEL_OPTIONAL",
+              "name": "index",
+              "number": 3,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "fragmentSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment_size",
+              "number": 4,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "FragmentMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FragmentMetadata"
+            }
+          ],
+          "name": "InternalTestplanFragment"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "fragment",
+              "label": "LABEL_OPTIONAL",
+              "name": "fragment",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "metadata",
+              "label": "LABEL_OPTIONAL",
+              "name": "metadata",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.FragmentMetadata"
+            }
+          ],
+          "name": "LogFragment"
+        }
+      ],
+      "name": "chromiumos/test/api/ctp2_filters.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/test/api/provision.proto",
         "chromiumos/test/api/test_suite.proto",
@@ -27737,7 +27871,8 @@
         "google/protobuf/any.proto",
         "google/protobuf/duration.proto",
         "chromiumos/test/api/test_execution_metadata.proto",
-        "chromiumos/test/api/trv2_dynamic_updates.proto"
+        "chromiumos/test/api/trv2_dynamic_updates.proto",
+        "chromiumos/test/api/ctp2_filters.proto"
       ],
       "messageType": [
         {
@@ -28414,18 +28549,6 @@
         {
           "field": [
             {
-              "jsonName": "fragment",
-              "label": "LABEL_OPTIONAL",
-              "name": "fragment",
-              "number": 1,
-              "type": "TYPE_BYTES"
-            }
-          ],
-          "name": "InternalTestplanFragment"
-        },
-        {
-          "field": [
-            {
               "jsonName": "name",
               "label": "LABEL_OPTIONAL",
               "name": "name",
@@ -29014,7 +29137,17 @@
               "clientStreaming": true,
               "inputType": ".chromiumos.test.api.InternalTestplanFragment",
               "name": "ExecuteStream",
+              "options": {
+                "deprecated": true
+              },
               "outputType": ".chromiumos.test.api.InternalTestplanFragment",
+              "serverStreaming": true
+            },
+            {
+              "clientStreaming": true,
+              "inputType": ".chromiumos.test.api.GenericFilterStreamRequest",
+              "name": "ExecuteWithStream",
+              "outputType": ".chromiumos.test.api.GenericFilterStreamResponse",
               "serverStreaming": true
             }
           ],

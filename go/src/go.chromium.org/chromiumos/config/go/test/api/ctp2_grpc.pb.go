@@ -107,7 +107,9 @@ var CTPv2Service_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GenericFilterServiceClient interface {
 	Execute(ctx context.Context, in *InternalTestplan, opts ...grpc.CallOption) (*InternalTestplan, error)
+	// Deprecated: Do not use.
 	ExecuteStream(ctx context.Context, opts ...grpc.CallOption) (GenericFilterService_ExecuteStreamClient, error)
+	ExecuteWithStream(ctx context.Context, opts ...grpc.CallOption) (GenericFilterService_ExecuteWithStreamClient, error)
 }
 
 type genericFilterServiceClient struct {
@@ -127,6 +129,7 @@ func (c *genericFilterServiceClient) Execute(ctx context.Context, in *InternalTe
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *genericFilterServiceClient) ExecuteStream(ctx context.Context, opts ...grpc.CallOption) (GenericFilterService_ExecuteStreamClient, error) {
 	stream, err := c.cc.NewStream(ctx, &GenericFilterService_ServiceDesc.Streams[0], "/chromiumos.test.api.GenericFilterService/ExecuteStream", opts...)
 	if err != nil {
@@ -158,12 +161,45 @@ func (x *genericFilterServiceExecuteStreamClient) Recv() (*InternalTestplanFragm
 	return m, nil
 }
 
+func (c *genericFilterServiceClient) ExecuteWithStream(ctx context.Context, opts ...grpc.CallOption) (GenericFilterService_ExecuteWithStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &GenericFilterService_ServiceDesc.Streams[1], "/chromiumos.test.api.GenericFilterService/ExecuteWithStream", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &genericFilterServiceExecuteWithStreamClient{stream}
+	return x, nil
+}
+
+type GenericFilterService_ExecuteWithStreamClient interface {
+	Send(*GenericFilterStreamRequest) error
+	Recv() (*GenericFilterStreamResponse, error)
+	grpc.ClientStream
+}
+
+type genericFilterServiceExecuteWithStreamClient struct {
+	grpc.ClientStream
+}
+
+func (x *genericFilterServiceExecuteWithStreamClient) Send(m *GenericFilterStreamRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *genericFilterServiceExecuteWithStreamClient) Recv() (*GenericFilterStreamResponse, error) {
+	m := new(GenericFilterStreamResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // GenericFilterServiceServer is the server API for GenericFilterService service.
 // All implementations should embed UnimplementedGenericFilterServiceServer
 // for forward compatibility
 type GenericFilterServiceServer interface {
 	Execute(context.Context, *InternalTestplan) (*InternalTestplan, error)
+	// Deprecated: Do not use.
 	ExecuteStream(GenericFilterService_ExecuteStreamServer) error
+	ExecuteWithStream(GenericFilterService_ExecuteWithStreamServer) error
 }
 
 // UnimplementedGenericFilterServiceServer should be embedded to have forward compatible implementations.
@@ -175,6 +211,9 @@ func (UnimplementedGenericFilterServiceServer) Execute(context.Context, *Interna
 }
 func (UnimplementedGenericFilterServiceServer) ExecuteStream(GenericFilterService_ExecuteStreamServer) error {
 	return status.Errorf(codes.Unimplemented, "method ExecuteStream not implemented")
+}
+func (UnimplementedGenericFilterServiceServer) ExecuteWithStream(GenericFilterService_ExecuteWithStreamServer) error {
+	return status.Errorf(codes.Unimplemented, "method ExecuteWithStream not implemented")
 }
 
 // UnsafeGenericFilterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -232,6 +271,32 @@ func (x *genericFilterServiceExecuteStreamServer) Recv() (*InternalTestplanFragm
 	return m, nil
 }
 
+func _GenericFilterService_ExecuteWithStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(GenericFilterServiceServer).ExecuteWithStream(&genericFilterServiceExecuteWithStreamServer{stream})
+}
+
+type GenericFilterService_ExecuteWithStreamServer interface {
+	Send(*GenericFilterStreamResponse) error
+	Recv() (*GenericFilterStreamRequest, error)
+	grpc.ServerStream
+}
+
+type genericFilterServiceExecuteWithStreamServer struct {
+	grpc.ServerStream
+}
+
+func (x *genericFilterServiceExecuteWithStreamServer) Send(m *GenericFilterStreamResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *genericFilterServiceExecuteWithStreamServer) Recv() (*GenericFilterStreamRequest, error) {
+	m := new(GenericFilterStreamRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // GenericFilterService_ServiceDesc is the grpc.ServiceDesc for GenericFilterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -248,6 +313,12 @@ var GenericFilterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "ExecuteStream",
 			Handler:       _GenericFilterService_ExecuteStream_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "ExecuteWithStream",
+			Handler:       _GenericFilterService_ExecuteWithStream_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
