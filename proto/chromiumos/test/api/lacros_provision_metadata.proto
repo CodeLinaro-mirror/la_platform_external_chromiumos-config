@@ -1,0 +1,23 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+message LaCrOSProvisionMetadata {
+  // override_version is the Lacros version string used to override when Lacros
+  // is provisioned from the image source in the |LacrosImage| to the component
+  // path. This is useful for simulating any desired version of Lacros for
+  // autoupdate testing.
+  // By default, if not specified, the actual version in the |LacrosImage| is
+  // used.
+  string override_version = 1;
+  // override_install_path changes the install location from the default
+  // imageloader component path.
+  // If not specified, it defaults to the imageloader component path.
+  string override_install_path = 2;
+}

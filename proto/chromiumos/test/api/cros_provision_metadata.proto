@@ -1,0 +1,35 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+message CrOSProvisionMetadata {
+  // Reference DLCs developer documentation:
+  // https://source.corp.google.com/chromeos_public/src/platform2/dlcservice/docs/developer.md
+  message DLCSpec {
+    // id is the DLC ID which is a unique identifier.
+    // The DLC ID must follow a specific format that can be found in the DLC
+    // developer doc below.
+    string id = 1;
+  }
+  // dlc_specs specifies which DLCs to install on the DUT after provisioning.
+  repeated DLCSpec dlc_specs = 2;
+  // preserve_stateful specifies whether the stateful partition should be preserved during
+  // provisioning. If preserve_stateful is not set to true, the stateful partition is
+  // block-level wiped and reset during provisioning.
+  bool preserve_stateful = 3;
+  // update_firmware will update OS bundled firmware(RW only) during the provision.
+  // Please note this firmware update only update RW firmware that built in the
+  // target_build OS image and it is different from firmware provision which
+  // download and update a separate firmware image based on request.
+  bool update_firmware = 6;
+  // only_googler_ssh_keys controls if we provision googler ssh key only.
+  // If true, provision will only enable googler ssh key on the DUT.
+  // If false, provision will enable external & googler ssh key on the DUT.
+  bool only_googler_ssh_keys = 4;
+}

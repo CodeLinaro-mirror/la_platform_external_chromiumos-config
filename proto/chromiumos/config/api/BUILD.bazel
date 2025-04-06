@@ -1,0 +1,56 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "api_proto",
+    srcs = [
+        "component.proto",
+        "component_id.proto",
+        "component_package.proto",
+        "design.proto",
+        "design_config_id.proto",
+        "design_config_package.proto",
+        "design_id.proto",
+        "device_brand.proto",
+        "device_brand_id.proto",
+        "device_config.proto",
+        "device_config_id.proto",
+        "hardware_topology.proto",
+        "mfg_config.proto",
+        "mfg_config_id.proto",
+        "partner.proto",
+        "partner_id.proto",
+        "program.proto",
+        "program_id.proto",
+        "proximity_config.proto",
+        "resource_config.proto",
+        "schedqos_config.proto",
+        "topology.proto",
+        "wifi_config.proto",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//chromiumos/config/public_replication:public_replication_proto",
+        "@com_google_protobuf//:wrappers_proto",
+    ],
+)
+
+go_proto_library(
+    name = "api_go_proto",
+    importpath = "go.chromium.org/chromiumos/config/go/api",
+    proto = ":api_proto",
+    visibility = ["//visibility:public"],
+    deps = ["//chromiumos/config/public_replication"],
+)
+
+go_library(
+    name = "api",
+    embed = [":api_go_proto"],
+    importpath = "go.chromium.org/chromiumos/config/go/api",
+    visibility = ["//visibility:public"],
+)

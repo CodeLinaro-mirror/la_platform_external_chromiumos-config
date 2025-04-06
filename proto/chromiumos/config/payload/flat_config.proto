@@ -1,0 +1,42 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.payload;
+
+import "chromiumos/config/api/component.proto";
+import "chromiumos/config/api/design.proto";
+import "chromiumos/config/api/device_brand.proto";
+import "chromiumos/config/api/partner.proto";
+import "chromiumos/config/api/program.proto";
+import "chromiumos/config/api/software/brand_config.proto";
+import "chromiumos/config/api/software/software_config.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/payload";
+
+// Provides a configuration that has been completely flattened with all ids
+// already resolved.
+// This is specifically targeted at supporting easier analysis from declarative
+// languages that query over the configs.  It reduces join operations and also
+// simplifies queries greatly.
+message FlatConfig {
+  api.Program program = 1;
+  api.Design hw_design = 3;
+  api.Partner odm = 4;
+  api.Design.Config hw_design_config = 5;
+  repeated api.Component hw_components = 11;
+  api.DeviceBrand device_brand = 6;
+  api.Partner oem = 7;
+
+  api.software.SoftwareConfig sw_config = 9;
+  api.software.BrandConfig brand_sw_config = 10;
+
+  reserved 2, 8;
+}
+
+// A list of FlatConfigs for ease of serialization into a file.
+message FlatConfigList {
+  repeated FlatConfig values = 1;
+}

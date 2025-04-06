@@ -1,0 +1,189 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.test.plan.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/plan/v1;plan";
+
+// A set of known test plans.
+//
+// In practice, a complete specification of all known plans may consist of
+// multiple Specification instances. In that case the plan names MUST be unique
+// across different Specification instances.
+message Specification {
+  repeated Plan plans = 1;
+}
+
+// A Plan fully specifies a Test Platform end-user's coverage needs.
+//
+// Plans SHOULD associate platform software and Device Under Test condition
+// coverage rules with tests that exercise those components. Plans MUST be used
+// in the Test Platform request API. Other Test Lab Environments may use plans
+// to ease interoperation with the Test Platform.
+message Plan {
+  // A globally unique test plan name.
+  //
+  // MUST be valid resource name per https://aip.dev/122.
+  //
+  // Pattern: plans/{plan}
+  string name = 1;
+
+  // Each test plan unit specifies a particular set of tests to be run to meet
+  // specific conditions.
+  repeated Unit units = 2;
+}
+
+// Defines the device rule that must be met in for a given set of tests.
+// Examples:
+// attribute='hw_components.soc.family.arch', value=['X86']
+message DutCriterion {
+  // String encoded path to the attribute from DeviceUnderTest
+  string attribute = 1;
+  // String encoded values, where enums are encoded as their name (not value)
+  // Setting multiple values here treats this as an OR clause wrt matching.
+  // This gives freedom to the scheduling system to find devices with the most
+  // available idle capacity that match one of these values.
+  repeated string values = 2;
+}
+
+message CoverageRule {
+  // Human friendly name for easier analysis of test coverage rules/criteria.
+  // E.g. kernel:5.4_soc:geminilake_wifi:intel-5600
+  // Specifically, this helps when generalizing OR criteria (e.g. kernel
+  // versions)
+  string name = 1;
+  // These are criteria that must be met.  ANDs and ORs.
+  repeated DutCriterion dut_criteria = 2;
+
+  // Optional exclusion that applies to only to the given dut coverage criteria.
+  // E.g. If a specific device was failing the wifi test suite.
+  Exclusion exclusion = 4;
+}
+
+// Specifies a particular set of tests to be run for a given set of coverage
+// rules.
+message Unit {
+  // A globally unique test plan unit name.
+  //
+  // MUST be valid resource name per https://aip.dev/122.
+  //
+  // Pattern: plans/{plan}/units/{unit}
+  //   where {plan} is the parent Plan of this Unit.
+  string name = 1;
+
+  // Defines the tests that are included.
+  repeated Suite suites = 2;
+  repeated Test tests = 3;
+
+  message Suite {
+    // Name of the test suite to be executed
+    string name = 1;
+  }
+  message Test {
+    // Name of the test as specified in test.metadata.Test.name
+    string name = 1;
+
+    // The test attribute name as specified in the test.metadata.Attribute.name
+    //
+    // attributes are populated from test.metadata.Test.attributes.
+    repeated string attributes = 2;
+  }
+
+  // Defines all of the coverage rules that need to be executed
+  // for the given tests.
+  // Separate test results will be generated for each distinct coverage rule.
+  repeated CoverageRule coverage_rules = 4;
+
+  // Optional exclusion that applies to tests in the given unit.
+  // E.g. If the test itself was bad, regardless of the device tested
+  // against.
+  Exclusion exclusion = 5;
+}
+
+// Exclusion is used to record exceptions to the test plan
+// specification for devices that are known to cause test failures for some
+// temporary or permanent reasons.
+message Exclusion {
+  enum Type {
+    // Do not use.
+    TYPE_UNSPECIFIED = 0;
+    // There are no active plans to remove these exclusions becuase it is
+    // prohibitive to fix the issue or business needs do not justify the effort
+    // to fix the issue.
+    //
+    // Each PERMANENT exclusion MUST include references that point to a business
+    // justification for its addition.
+    PERMANENT = 1;
+
+    // Use for excluding new tests from running on devices where the test has
+    // not yet been stabilized. The intention is to support incremental rollout
+    // of new tests.
+    //
+    // These exclsusion are temporary. These exclusions SHOULD be routinely
+    // audited and resolved or promoted to PERMANENT exclusions.
+    TEMPORARY_NEW_TEST = 2;
+
+    // Use for excluding broken / flakey tests while a fix is being worked on.
+    //
+    // These exclsusion are temporary. These exclusions SHOULD be routinely
+    // audited and resolved or promoted to PERMANENT exclusions.
+    TEMPORARY_PENDING_FIX = 3;
+
+    // No lab devices are deployed matching the coverage rule DUT criteria.
+    TEMPORARY_NO_LAB_DEVICES_DEPLOYED = 4;
+
+    // Insufficient lab devices available to run the coverage rule.
+    TEMPORARY_INSUFFICIENT_LAB_DEVICES_AVAILABLE = 5;
+  }
+  // Required.
+  Type type = 1;
+
+  enum Action {
+    // Specify no action.
+    //
+    // The Test Lab Environment may choose any of the available actions based
+    // on internal heuristics.
+    //
+    // The default Action is a good default if none of the considersations for
+    // the specific actions below apply.
+    ACTION_UNSPECIFIED = 0;
+
+    // Do not schedule the selected Tests on specified Devices Under Test.
+    //
+    // It is especially useful to set this Action for permanent exceptions as it
+    // is definitely not useful to run the Tests at all in those cases.
+    DO_NOT_SCHEDULE = 1;
+
+    // Schedule the Test on Devices Under Test as required by the test plan
+    // unit, but mark the results for selected tests on the specified Devices
+    // Under Test as non-critical. Results marked non-critical are intended to
+    // be ignored by result consumers (e.g, presubmit system should consider the
+    // result irrelevant for validatting a Chrome OS build).
+    //
+    // This action does not guarantee that results for the selected (Test,
+    // Device Under Test) pairs are always available because that depends no how
+    // the test plan Unit is interpreted overall. When this action is set, the
+    // Test Lab Environment SHOULD NOT make any special effort to include /
+    // exclude the selected (Test, Device Under Test) pairs.
+    //
+    // It is useful to set this Action for temporary exclusions where the
+    // results generated from test execution can be uesd to root cause and fix
+    // the underlying issues.
+    MARK_NON_CRITICAL = 2;
+  }
+  Action action = 5;
+
+  // External references useful for archeology for this exclusion.
+  //
+  // PERMANENT exclusions MUST add references for the decision to make the
+  // exclusion PERMANENT.
+  //
+  // References should be links with more context behind the decision.
+  // Suggested forms:
+  // * Monorail bug: https://bugs.chromium.org/p/chromium/issues/detail?id=XXX
+  // * Buganizer bug: https://b.corp.google.com/issues/XXX
+  repeated string references = 4;
+}

@@ -1,0 +1,48 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.prototype;
+
+option go_package = "go.chromium.org/chromiumos/config/go/prototype";
+
+// Defines the specific version of keyset used for mp/premp signing.
+// Keysets are managed agnostic of milestone branches, however, since
+// different milestones may use different keyset versions, this config
+// needs to be versioned as such.
+message SigningInstructions {
+  // Managing separate keysets for premp/mp allows projects to co-exist (still
+  // share the build) that are in different development stages.
+  // This could potentially be used to generate separate signed builds that
+  // group premp versus mp projects together.
+  //
+  // Prototyping notes:
+  //
+  // Channel signing configuration is going to be tied to
+  // design projects configs instead, since that is the driving factor as to
+  // whether a build should be pushed that far into release.
+  // Design projects will manage their first stable channel and once the
+  // project progresses to MP, it will trigger signing on those respective
+  // channels.
+  string premp_keyset = 1;
+  string mp_keyset = 2;
+
+  // Force enable firmware update.
+  bool firmware_update = 3;
+
+  // Should we ensure the image is not configured with a login password.
+  // Note: The old .instructions was 'ensure_no_password` but we'll take a
+  // default (safe) value of false.
+  bool allow_password = 4;
+
+  // This is overridden to control firmware image output names.
+  // e.g. chromeos_@VERSION@_bloonchipper_@KEYSET_VER@
+  string output_names = 5;
+
+  // This is used for firmware signing to locate ec files embedded in the
+  // firmware.
+  // e.g. nami_fp/release/ec.bin
+  string input_files = 6;
+}

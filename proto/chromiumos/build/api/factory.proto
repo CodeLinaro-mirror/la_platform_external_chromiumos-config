@@ -1,0 +1,21 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+import "chromiumos/build/api/portage.proto";
+
+// Defines config used to generate Chrome OS factory builds.
+// See: https://chromium.googlesource.com/chromiumos/platform/factory
+message Factory {
+  message BuildTarget {
+    // Factory builds currently use portage, but this could change over time
+    // as pieces become more decoupled.
+    Portage.BuildTarget portage_build_target = 1;
+  }
+}

@@ -1,0 +1,159 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "chromiumos/test/api/device_leasing.proto";
+
+service VMLeaserService {
+  // Creates a lease record and returns a VM.
+  rpc LeaseVM(LeaseVMRequest) returns (LeaseVMResponse) {};
+  // Releases a lease for a VM.
+  rpc ReleaseVM(ReleaseVMRequest) returns (ReleaseVMResponse) {};
+  // Extends a lease for a VM.
+  rpc ExtendLease(ExtendLeaseRequest) returns (ExtendLeaseResponse) {};
+  // Lists the current VM leases.
+  rpc ListLeases(ListLeasesRequest) returns (ListLeasesResponse) {};
+  // Imports a VM custom image.
+  rpc ImportImage(ImportImageRequest) returns (ImportImageResponse) {};
+}
+
+message LeaseVMRequest {
+  // Generated on the client side, shared across retries but pseudo-unique
+  // across different logical requests. Requests with the same key will be
+  // treated as duplicate of original request, return the same response.
+  string idempotency_key = 1;
+
+  // This is the final end user (can be human or robot). Useful for both
+  // debugging and analytics. For example for a tests triggered for a CL, this
+  // field could indicate the CL author as they are the end user.
+  //
+  // For direct invocations like CLI, this is enforced at first entry point but
+  // trusted from there.
+  //
+  // Not to be confused with LUCI auth which is done by the caller assuming the
+  // appropriate identity from a permissions perspective — like LUCI project.
+  string on_behalf_of = 2;
+
+  // This is the quota the end user is requesting to use. One user can have
+  // access to multiple quotas. For example, release, CQ, performance testing,
+  // etc.
+  string quota_id = 3;
+
+  // Optional with a good default.
+  // Important to configure a good max (e.g. 10 min). This will put a ceiling on
+  // time wasted if the client dies.
+  google.protobuf.Duration lease_duration = 4;
+
+  // The populated requirements will specify the requirements for a VM host.
+  VMRequirements host_reqs = 5;
+
+  // The client that is calling VM Leaser for a VM host.
+  VMTestingClient testing_client = 6;
+
+  // Optional labels added to the VM. Useful for filtering.
+  // Requirements: https://cloud.google.com/compute/docs/labeling-resources
+  map<string, string> labels = 7;
+}
+
+message VM {
+  string id = 1;
+  VMAddress address = 2;
+  VMType type = 3;
+  string gce_region = 4;
+  google.protobuf.Timestamp expiration_time = 5;
+}
+
+message VMAddress {
+  // IP address of the device.
+  string host = 1;
+  int32 port = 2;
+}
+
+// VMTestingClient specifies who the caller is (e.g. ChromeOS, Android, etc.)
+enum VMTestingClient {
+  VM_TESTING_CLIENT_UNSPECIFIED = 0;
+  VM_TESTING_CLIENT_CHROMEOS = 1;
+  VM_TESTING_CLIENT_CROSFLEET = 2;
+}
+
+message LeaseVMResponse {
+  // Relevant information for the lease.
+  string lease_id = 1;
+  VM vm = 2;
+
+  // Client is responsible for extending the lease as needed.
+  google.protobuf.Timestamp expiration_time = 3;
+
+  // Eventually we will include authentication token to access device for the
+  // duration of the lease. Shared and long lived secrets are not good security.
+  // Today there is no such enforcement so this is not a regression.
+}
+
+message ReleaseVMRequest {
+  string lease_id = 1;
+  string gce_project = 2;
+  string gce_region = 3;
+}
+
+message ReleaseVMResponse {
+  string lease_id = 1;
+}
+
+// ListLeasesRequest is the request to list VM Leases.
+//
+// TODO (b/294414530): Need support for googleapis protos enabled.
+// It follows AIP-132 (https://google.aip.dev/132) but do not have use the
+// google.api.* annotations as they are not currently supported in this repo.
+message ListLeasesRequest {
+  // The name of the GCP project for which to list VM leases.
+  // Format: projects/{project}
+  string parent = 1;
+
+  // The maximum number of VM leases to return. The service may return fewer
+  // than this value. If unspecified, at most 50 leases will be returned.
+  int32 page_size = 2;
+
+  // A page token, received from a previous `ListLeases` call. Provide this to
+  // retrieve the subsequent page.
+  //
+  // When paginating, all other parameters provided to `ListLeases` must match
+  // the call that provided the page token.
+  string page_token = 3;
+
+  // The string filter follows AIP-160 (https://google.aip.dev/160) for the
+  // filtering syntax. For the initial release, this filter only supports
+  // filtering by zone, tags, and metadata fields related to VMs.
+  //
+  // Examples:
+  // 1. `metadata.idempotency_key = "test-idempotency-uuid-key"` will find the
+  // VMs that have the key matched.
+  // 2. `metadata.expiration_time > 1690490598` will find the VMs that expire
+  // later than the specified unix time.
+  string filter = 4;
+}
+
+message ListLeasesResponse {
+  repeated VM vms = 1;
+
+  // A token, which can be sent as `page_token` to retrieve the next page. If
+  // this field is omitted, there are no subsequent pages.
+  string next_page_token = 2;
+}
+
+message ImportImageRequest {
+  // Build path of the image, e.g. betty-arc-r-release/R119-15626.0.0
+  string image_path = 1;
+}
+
+message ImportImageResponse {
+  // Name of the imported custom image.
+  string image_name = 1;
+}

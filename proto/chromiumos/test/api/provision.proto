@@ -1,0 +1,166 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/longrunning/operations.proto";
+import "chromiumos/storage_path.proto";
+import "chromiumos/test/lab/api/dut.proto";
+import "chromiumos/test/lab/api/ip_endpoint.proto";
+import "google/protobuf/any.proto";
+
+// Generic provisioning interface for CFT. Intended to be interchangeable across
+// services
+service GenericProvisionService {
+  // StartUp prepares the provision service by providing
+  // necessary input values for initialization prior to
+  // calling any other provision related service calls.
+  rpc StartUp(ProvisionStartupRequest)
+    returns (ProvisionStartupResponse);
+
+  // Install installs a specified OS on the DUT.
+  // It is intended to be a generic installation grpc that may be used by all 
+  // OS flavors.
+  rpc Install(InstallRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "InstallResponse",
+      metadata_type: "InstallMetadata"
+    };
+  }
+}
+
+
+// ProvisionStartupRequest provides a generic form for initializing
+// the provision services. This provides an alternative route for
+// the initialization rather than using the CLI arguments that
+// are used for starting the gRPC server.
+message ProvisionStartupRequest {
+  chromiumos.test.lab.api.Dut dut = 1;
+  chromiumos.test.lab.api.IpEndpoint dut_server = 2;
+  // Specific metadata to the individual provision services.
+  google.protobuf.Any metadata = 3;
+  // Address where servoNexus cft service can be reached.
+  chromiumos.test.lab.api.IpEndpoint servo_nexus_addr = 4;
+}
+
+// ProvisionStartupResponse provides a status message to signal
+// what the result of the startup call was.
+message ProvisionStartupResponse {
+  enum Status {
+    // In proto3, zero value fields are indistinguishable from unset fields,
+    // by design. They are not sent on the wire either.
+    // SHOULD NOT BE USED.
+    STATUS_UNSPECIFIED = 0;
+    STATUS_SUCCESS = 1;
+    STATUS_INVALID_REQUEST = 2;
+    STATUS_STARTUP_FAILED = 3;
+  }
+  Status status = 1;
+}
+
+message InstallResponse {
+  // When the status code is other than SUCCESS, details in Status message should be
+  // parsed for ErrorInfo message with the following Reasons as the reason.
+  enum Status {
+    // In proto3, zero value fields are indistinguishable from unset fields,
+    // by design. They are not sent on the wire either.
+    STATUS_UNSPECIFIED = 0;
+    // status code: INVALID_ARGUMENT
+    STATUS_INVALID_REQUEST = 1;
+    // status code: FAILED_PRECONDITION
+    STATUS_DUT_UNREACHABLE_PRE_PROVISION = 2;
+    // status code: FAILED_PRECONDITION
+    STATUS_DOWNLOADING_IMAGE_FAILED = 3;
+    // status code: DEADLINE_EXCEEDED
+    STATUS_PROVISIONING_TIMEDOUT = 4;
+    // status code: ABORTED
+    STATUS_PROVISIONING_FAILED = 5;
+    // status code: ABORTED
+    STATUS_DUT_UNREACHABLE_POST_PROVISION = 6;
+    // status code: ABORTED
+    STATUS_UPDATE_FIRMWARE_FAILED = 7;
+    // status code: ABORTED
+    STATUS_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE = 8;
+    // status code: ABORTED
+    STATUS_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE = 9;
+    // status code: ABORTED
+    STATUS_UPDATE_MINIOS_FAILED = 10;
+    // status code: ABORTED
+    STATUS_POST_PROVISION_SETUP_FAILED = 11;
+    // status code: ABORTED
+    STATUS_CLEAR_TPM_FAILED = 12;
+    // status code: ABORTED
+    STATUS_STABLIZE_DUT_FAILED = 13;
+    // status code: ABORTED
+    STATUS_INSTALL_DLC_FAILED = 14;
+    // status code: ABORTED
+    STATUS_PRE_PROVISION_SETUP_FAILED = 15;
+    // status code: ABORTED
+    STATUS_CIPD_PACKAGE_LOOKUP_FAILED = 16;
+    // status code: ABORTED
+    STATUS_CIPD_PACKAGE_FETCH_FAILED = 17;
+    // status code: ABORTED
+    STATUS_GS_UPLOAD_FAILED = 18;
+    // status code: ABORTED
+    STATUS_GS_DOWNLOAD_FAILED = 19;
+    // status code: SUCCESS
+    STATUS_SUCCESS = 20;
+    // status code: ABORTED
+    STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE = 21;
+  }
+  Status status = 1;
+
+  // OS flavor specific metadata
+  google.protobuf.Any metadata = 2;
+
+  // Error/other messages to accompany the status
+  string message = 3;
+}
+
+// Metadata for long running operation
+message InstallMetadata {
+}
+
+message InstallRequest {
+  // Local or remote path to where the OS to be installed lives.
+  StoragePath image_path = 1;
+  // Prevents device reboot during system image provisioning.
+  bool prevent_reboot = 2;
+  // Provides a possible tar file to overwrite current install files.
+  StoragePath overwrite_payload = 3;
+  // Specific metadata to the install flavor. May be ignored if unneeded.
+  google.protobuf.Any metadata = 4;
+  // Provides partner specific metadata for install request.
+  PartnerMetadata partner_metadata = 5;
+  // Provides kernel prebuilts to replace the OS image's kernel.
+  KernelPrebuilts kernel_prebuilts = 6;
+}
+
+// PartnerMetadata determines any configuration around Partner settings.
+message PartnerMetadata {
+  // Account ID for the partner.
+  int64 account_id = 1;
+  // The bucket with the partner images and artifacts
+  string partner_gcs_bucket = 2;
+}
+
+// KernelPrebuilts contains paths to kernel artifacts to provision, replacing
+// the OS image's kernel.
+message KernelPrebuilts {
+  // PartitionImage defines an image to flash onto an OS partition.
+  message PartitionImage {
+    // The name of the OS partition to flash onto.
+    string partition_name = 1;
+    // Path to the new image file for that partition.
+    StoragePath image_path = 2;
+  }
+  repeated PartitionImage partition_images = 1;
+  // TODO: b/392692756 - Add whatever info is necessary for flashing specific
+  // modules onto the ramdisk.
+}

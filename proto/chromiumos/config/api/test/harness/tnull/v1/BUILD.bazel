@@ -1,0 +1,35 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "tnull_proto",
+    srcs = ["tnull.proto"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//chromiumos/config/api/test/results/v2:results_proto",
+        "//chromiumos/config/api/test/rtd/v1:rtd_proto",
+    ],
+)
+
+go_proto_library(
+    name = "tnull_go_proto",
+    importpath = "go.chromium.org/chromiumos/config/go/api/test/tnull/v1",
+    proto = ":tnull_proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//chromiumos/config/api/test/results/v2:results",
+        "//chromiumos/config/api/test/rtd/v1:rtd",
+    ],
+)
+
+go_library(
+    name = "tnull",
+    embed = [":tnull_go_proto"],
+    importpath = "go.chromium.org/chromiumos/config/go/api/test/tnull/v1",
+    visibility = ["//visibility:public"],
+)

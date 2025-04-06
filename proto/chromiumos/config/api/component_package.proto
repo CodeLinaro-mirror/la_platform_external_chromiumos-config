@@ -1,0 +1,34 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api;
+
+import "chromiumos/config/api/component.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/api";
+
+// Defines a full collection of components that are used to
+// manufacture a device.
+message ComponentPackage {
+  Component.Soc soc = 1;
+  repeated Component.Memory memory = 2;
+  Component.Bluetooth bluetooth = 3;
+  Component.Camera camera = 4;
+  Component.Touch touchscreen = 5;
+  Component.Wifi wifi = 6;
+  Component.Touch touchpad = 7;
+  Component.DisplayPanel display_panel = 8;
+  Component.AudioCodec audio_codec = 9;
+  Component.Battery battery = 10;
+  Component.FlashChip ec_flash_chip = 11;
+  Component.FlashChip system_flash_chip = 12;
+  Component.EmbeddedController ec = 13;
+  Component.Storage storage = 14;
+  Component.Tpm tpm = 15;
+  Component.Interface.Usb usb_host = 16;
+  Component.Stylus stylus = 17;
+  Component.Amplifier amplifier = 18;
+}

@@ -1,0 +1,23 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.prototype;
+
+import "chromiumos/config/api/test/plan/v1/plan.proto";
+import "chromiumos/build/api/system_image.proto";
+import "chromiumos/config/prototype/release_target.proto";
+
+option go_package = "go.chromium.org/chromiumos/config/go/prototype";
+
+// Configuration payload that is generated for prototyping purposes.
+message PrototypeConfigBundle {
+  // Chrome OS test planning & coverage rule config
+  repeated api.test.plan.v1.Specification test_plan_specs = 1;
+
+  repeated ReleaseTarget release_targets = 2;
+
+  repeated chromiumos.build.api.SystemImage.BuildMetadata system_builds = 3;
+}

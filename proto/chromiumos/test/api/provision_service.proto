@@ -1,0 +1,234 @@
+// Copyright 2021 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api";
+
+import "chromiumos/build/api/firmware_config.proto";
+import "chromiumos/longrunning/operations.proto";
+import "chromiumos/storage_path.proto";
+
+// Stable (build-agnostic) interface for installing software (provisioning)
+// on a Chrome OS device.
+service ProvisionService {
+  // InstallCros installs a specified version of Chrome OS on the DUT, along
+  // with any specified DLCs.
+  //
+  // If the DUT is already on the specified version of Chrome OS, the OS will
+  // not be installed.
+  //
+  // If the DUT already has the specified list of DLCs, only the missing DLCs
+  // will be installed.
+  rpc InstallCros(InstallCrosRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "InstallCrosResponse",
+      metadata_type: "InstallCrosMetadata"
+    };
+  }
+
+  // InstallAsh installs a specified version of ash-chrome on the DUT.
+  //
+  // This directly overwrites the version of ash-chrome on the current root
+  // disk partition.
+  rpc InstallAsh(InstallAshRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "InstallAshResponse",
+      metadata_type: "InstallAshMetadata"
+    };
+  }
+
+  // InstallArc installs a specified version of ARC on the DUT.
+  //
+  // This directly overwrites the version of ARC on the current root
+  // disk partition.
+  rpc InstallArc(InstallArcRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "InstallArcResponse",
+      metadata_type: "InstallArcMetadata"
+    };
+  }
+
+  // InstallFirmware installs all of the firmware images specified.
+  rpc InstallFirmware(InstallFirmwareRequest)
+      returns (longrunning.Operation) {
+    option (longrunning.operation_info) = {
+      response_type: "InstallFirmwareResponse",
+      metadata_type: "InstallFirmwareMetadata"
+    };
+  }
+}
+
+message InstallSuccess {
+}
+
+message InstallFailure {
+  // When the status code is other than OK, details in Status message should be
+  // parsed for ErrorInfo message with the following Reasons as the reason.
+  enum Reason {
+    // status code: INVALID_ARGUMENT
+    REASON_INVALID_REQUEST = 0;
+    // status code: FAILED_PRECONDITION
+    REASON_DUT_UNREACHABLE_PRE_PROVISION = 1;
+    // status code: FAILED_PRECONDITION
+    REASON_DOWNLOADING_IMAGE_FAILED = 2;
+    // status code: DEADLINE_EXCEEDED
+    REASON_PROVISIONING_TIMEDOUT = 3;
+    // status code: ABORTED
+    REASON_PROVISIONING_FAILED = 4;
+    // status code: ABORTED
+    REASON_DUT_UNREACHABLE_POST_PROVISION = 5;
+    // status code: ABORTED
+    REASON_UPDATE_FIRMWARE_FAILED = 6;
+    // status code: ABORTED
+    REASON_FIRMWARE_MISMATCH_POST_FIRMWARE_UPDATE = 7;
+    // status code: ABORTED
+    REASON_DUT_UNREACHABLE_POST_FIRMWARE_UPDATE = 8;
+    // status code: ABORTED
+    REASON_UPDATE_MINIOS_FAILED = 9;
+    // status code: ABORTED
+    REASON_POST_PROVISION_SETUP_FAILED = 10;
+    // status code: ABORTED
+    REASON_CLEAR_TPM_FAILED = 11;
+    // status code: ABORTED
+    REASON_STABLIZE_DUT_FAILED = 12;
+    // status code: ABORTED
+    REASON_INSTALL_DLC_FAILED = 13;
+    // status code: ABORTED
+    REASON_PRE_PROVISION_SETUP_FAILED = 14;
+    // status code: ABORTED
+    REASON_CIPD_PACKAGE_LOOKUP_FAILED = 15;
+    // status code: ABORTED
+    REASON_CIPD_PACKAGE_FETCH_FAILED = 16;
+    // status code: ABORTED
+    REASON_GS_UPLOAD_FAILED = 17;
+    // status code: ABORTED
+    REASON_GS_DOWNLOAD_FAILED = 18;
+    // status code: ABORTED
+    // TODO (b/266634996) Remove once CTRv1 is deprecated and move into TR.
+    REASON_DOCKER_UNABLE_TO_START = 19;
+    // TODO (b/266634996) Remove once CTRv1 is deprecated and move into TR.
+    // status code: ABORTED
+    REASON_SERVICE_UNABLE_TO_START = 20;
+    // TODO (b/266634996) Remove once CTRv1 is deprecated and move into TR.
+    // status:code ABORT
+    REASON_SERVICE_CONTAINER_UNABLE_TO_PULL = 21;
+    // status code: ABORTED
+    REASON_IMAGE_MISMATCH_POST_PROVISION_UPDATE = 22;
+  }
+
+  Reason reason = 1;
+}
+
+message InstallCrosRequest {
+  StoragePath cros_image_path = 1;
+
+  // Reference DLCs developer documentation:
+  // https://source.corp.google.com/chromeos_public/src/platform2/dlcservice/docs/developer.md
+  message DLCSpec {
+    // id is the DLC ID which is a unique identifier.
+    // The DLC ID must follow a specific format that can be found in the DLC
+    // developer doc below.
+    string id = 1;
+  }
+  // dlc_specs specifies which DLCs to install on the DUT after provisioning.
+  repeated DLCSpec dlc_specs = 2;
+  // preserve_stateful specifies whether the stateful partition should be preserved during
+  // provisioning. If preserve_stateful is not set to true, the stateful partition is
+  // block-level wiped and reset during provisioning.
+  bool preserve_stateful = 3;
+  // Prevents device reboot during system image provisioning.
+  bool prevent_reboot = 4;
+
+  // Provides a possible tar file to overwrite current install files
+  StoragePath overwrite_payload = 5;
+
+  // update_firmware will update OS bundled firmware(RW only) during the provision.
+  // Please note this firmware update only update RW firmware that built in the
+  // target_build OS image and it is different from firmware provision which
+  // download and update a separate firmware image based on request.
+  bool update_firmware = 6;
+}
+
+message InstallCrosResponse {
+  oneof outcome {
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
+  }
+}
+
+message InstallCrosMetadata {
+}
+
+message InstallLacrosRequest {
+  StoragePath lacros_image_path = 1;
+  string override_version = 2;
+  string override_install_path = 3;
+}
+
+message InstallLacrosResponse {
+  oneof outcome {
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
+  }
+}
+
+message InstallLacrosMetadata {
+}
+
+message InstallAshRequest {
+  StoragePath ash_image_path = 1;
+}
+
+message InstallAshResponse {
+  oneof outcome {
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
+  }
+}
+
+message InstallAshMetadata {
+}
+
+message InstallArcRequest {
+  StoragePath ash_image_path = 1;
+}
+
+message InstallArcResponse {
+  oneof outcome {
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
+  }
+}
+
+message InstallArcMetadata {
+}
+
+message InstallFirmwareRequest {
+  chromiumos.build.api.FirmwareConfig firmware_config = 1;
+
+  // Use force to pass "--force" to futility, which skips the TPM checks.
+  bool force = 8;
+
+  // If True, provision firmware over servo; information about
+  // servo to use will be pulled from a `Dut` proto, that will be
+  // requested from InventoryService.
+  // If False, SSH to the DUT and provision it directly.
+  bool use_servo = 9;
+}
+
+message InstallFirmwareResponse {
+  oneof outcome {
+    InstallSuccess success = 1;
+    InstallFailure failure = 2;
+  }
+}
+
+message InstallFirmwareMetadata {
+}

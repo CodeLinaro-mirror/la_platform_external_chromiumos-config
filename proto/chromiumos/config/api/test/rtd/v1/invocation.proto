@@ -1,0 +1,118 @@
+// Copyright 2020 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.config.api.test.rtd.v1;
+
+option go_package = "go.chromium.org/chromiumos/config/go/api/test/rtd/v1;rtd";
+
+import "chromiumos/config/api/test/rtd/v1/progress.proto";
+
+// Input to a Remote Test Driver invocation.
+//
+// TODO(crbug.com/1051691): Link to a reference implementation of Remote Test
+// Server & Remote Test Driver.
+message Invocation {
+  // Smallest unit of an invocation request for which results MUST be reported.
+  //
+  // An invocation SHOULD execute requests in a deterministic order based on
+  // the ordering of this list. The invocation MAY do this my executing the
+  // requests serially in the input order.
+  repeated Request requests = 1;
+
+  // Progress sink to be used to report progress of the Remote Test Driver
+  // invocation to the surrounding Remote Test Server.
+  ProgressSinkClientConfig progress_sink_client_config = 2;
+
+  // Configuration information for using Test Lab Services to interact
+  // with DUTs and their peripherals.
+  TLSClientConfig test_lab_services_config = 3;
+
+  // Set of DUTs usable in this invocation.
+  //
+  // Contains more than one dut if the test execution is sharded.
+  repeated DUT duts = 4;
+}
+
+// Request for execution of a single test.metadata.Test
+message Request {
+  // name MUST be unique across all requests in this invocation.
+  //
+  // ProgressSink methods require the inclusion of this value in reported
+  // results. This provides additional safety from leaked Remote Test Driver
+  // processes in the case that a single container is used to run multiple
+  // invocations sequentially.
+  //
+  // Remote Test Drivers are recommended to use name as the opaque tag
+  // required by the Test Lab Services API. Thus, name SHOULD be unique across
+  // all invocations to simplify analytics. UUIDs are recommended.
+  //
+  // See also:
+  //   Test Lab Services API: tls/README.md
+  string name = 1;
+
+  // The test to execute, identified by the test.metadata.Test.name field.
+  //
+  // Note that the request does not contain a reference to the Remote Test
+  // Driver to use, as the request is an input to the Remote Test Driver
+  // invocation.
+  string test = 2;
+
+  // Per-request Remote Test Server environment configuration.
+  message Environment {
+    // Absolute path to a directory for writing arbitrary files.
+    //
+    // This directory MUST be created by Remote Test Server prior to the Remote
+    // Test Driver invocation.
+    //
+    // * Remote Test Drivers SHOULD use
+    // test.invocation.ProgressClient.ReportLog() to report logs.
+    // * Remote Test Drivers SHOULD use
+    // test.invocation.ProgressClient.ArchiveArtifact() to archive critical
+    // artifacts.
+    //
+    // Remote Test Servers may archive the work_dir contents to non-ephemeral
+    // storage as a best effort asynchronous task.
+    string work_dir = 1;
+  }
+
+  // Environment configuration set by the Remote Test Server for a specific
+  // request of the Remote Test Driver.
+  Environment environment = 3;
+}
+
+// Contains all configuration data required to interact with a single device
+// under test during a test invocation.
+message DUT {
+  // Name for the DUT for using Test Lab Services to interact with the
+  // device and its peripherals.
+  //
+  // The RTD MUST pass this to Test Lab Service RPCs that act on a particular
+  // DUT. See the tls.OpenDutPortRequest message for an example of where
+  // this is used.
+  string tls_dut_name = 1;
+}
+
+// Configuration information required for using Test Lab & Wiring Services.
+message TLSClientConfig {
+  // Address where Test Lab Services is reachable.
+  // This should be an IPv4 or IPv6 address to avoid name
+  // resolution issues.
+  // IPv4 addresses will be in standard dotted decimal notation.
+  // IPv6 addresses will be formatted according to RFC4291, Section
+  // 2.2, 1. (no zero compression)
+  // If this is a hostname, the RTS should ensure that the hostname
+  // can be resolved by the RTD via standard name resolution
+  // facilities.
+  string tls_address = 1;
+  // Port on the tls_address where the service is reachable.
+  int32 tls_port = 2;
+
+  // Address where Test Lab Services Wiring is reachable.
+  // This has the same format as tls_address.
+  string tlw_address = 3;
+  // Port on the tlw_address where the service is reachable.
+  int32 tlw_port = 4;
+}
