@@ -129,6 +129,9 @@ message SuiteRequest {
   // tags gives us a location to store decorations from the v1 proto without
   // requiring a proto addition each time.
   repeated string tags = 9;
+  // For non 3D this will result in each selected device being executed n times
+  // For 3D this will result in each EQC being executed n times
+  Iterations iterations = 10;
 }
 
 message KeyValue {
@@ -367,4 +370,8 @@ message CrosTestRunnerRequest {}
 message PublishKey {
   string subject = 1;
   map<string, string> key_values = 2;
+}
+
+message Iterations {
+  int64 num_retries = 1;
 }

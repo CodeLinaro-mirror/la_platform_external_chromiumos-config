@@ -28177,6 +28177,14 @@
               "name": "tags",
               "number": 9,
               "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "iterations",
+              "label": "LABEL_OPTIONAL",
+              "name": "iterations",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.Iterations"
             }
           ],
           "name": "SuiteRequest",
@@ -29120,6 +29128,18 @@
               }
             }
           ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "numRetries",
+              "label": "LABEL_OPTIONAL",
+              "name": "num_retries",
+              "number": 1,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "Iterations"
         }
       ],
       "name": "chromiumos/test/api/ctp2.proto",
