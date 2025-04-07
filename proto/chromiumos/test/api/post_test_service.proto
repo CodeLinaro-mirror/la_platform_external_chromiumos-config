@@ -60,7 +60,7 @@ message RunActivityRequest {
   Request request = 1;
 }
 
-// NEXT TAG: 7
+// NEXT TAG: 8
 message Request {
   oneof request {
     GetFWInfoRequest get_fw_info_request = 1;
@@ -69,6 +69,7 @@ message Request {
     GetAvlInfoRequest get_avl_info_request = 4;
     GetGscInfoRequest get_gsc_info_request = 5;
     GetServoInfoRequest get_servo_info_request = 6;
+    GetUsbInfoRequest get_usb_info_request = 7;
   }
 }
 
@@ -122,8 +123,13 @@ message GetGscInfoRequest {
 // NEXT TAG: 1
 message GetServoInfoRequest {}
 
+// GetUsbInfoRequest captures the information about the USB-C ports on
+// device for reporting.
+// NEXT TAG: 1
+message GetUsbInfoRequest {}
+
 // Specific response to be matched with the request.
-// NEXT TAG: 7
+// NEXT TAG: 8
 message RunActivityResponse {
   oneof response {
     GetFWInfoResponse get_fw_info_response = 1;
@@ -132,6 +138,7 @@ message RunActivityResponse {
     GetAvlInfoResponse get_avl_info_response = 4;
     GetGscInfoResponse get_gsc_info_response = 5;
     GetServoInfoResponse get_servo_info_response = 6;
+    GetUsbInfoResponse get_usb_info_response = 7;
   }
 }
 
@@ -194,3 +201,14 @@ message GetServoInfoResponse {
   // proto cannot be imported directly due to cyclic import issue.
   google.protobuf.Any servo_info = 1;
 }
+
+// GetUsbInfoResponse contents of the information about the USB-C ports on device.
+// info.
+// NEXT TAG: 2
+message GetUsbInfoResponse {
+  // Stores USB-C info:
+  // "chromiumos.test.artifact.UsbInfo". Note that the UsbInfo proto cannot
+  // be imported directly due to cyclic import issue.
+  google.protobuf.Any usb_info = 1;
+}
+

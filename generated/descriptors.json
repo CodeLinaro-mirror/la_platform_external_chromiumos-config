@@ -24537,6 +24537,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetServoInfoRequest"
+            },
+            {
+              "jsonName": "getUsbInfoRequest",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_usb_info_request",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetUsbInfoRequest"
             }
           ],
           "name": "Request",
@@ -24690,6 +24699,9 @@
           "name": "GetServoInfoRequest"
         },
         {
+          "name": "GetUsbInfoRequest"
+        },
+        {
           "field": [
             {
               "jsonName": "getFwInfoResponse",
@@ -24744,6 +24756,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.GetServoInfoResponse"
+            },
+            {
+              "jsonName": "getUsbInfoResponse",
+              "label": "LABEL_OPTIONAL",
+              "name": "get_usb_info_response",
+              "number": 7,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.GetUsbInfoResponse"
             }
           ],
           "name": "RunActivityResponse",
@@ -24976,6 +24997,19 @@
             }
           ],
           "name": "GetServoInfoResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "usbInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_info",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".google.protobuf.Any"
+            }
+          ],
+          "name": "GetUsbInfoResponse"
         }
       ],
       "name": "chromiumos/test/api/post_test_service.proto",
