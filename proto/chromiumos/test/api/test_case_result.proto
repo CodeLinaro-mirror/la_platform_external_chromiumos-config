@@ -81,6 +81,7 @@ message TestCaseResult {
 
   // Error represents a problem that caused a test to fail, such as a crash
   // or expectation failure.
+  // NEXT TAG: 3
   message Error {
     // The error message. This should only be the error message and
     // should not include any stack traces. An example would be the
@@ -88,6 +89,9 @@ message TestCaseResult {
     //
     // This message may be used to cluster related failures together.
     string message = 1;
+
+    // The stack trace.
+    string stack_trace = 2;
   }
 
   message Artifacts {}

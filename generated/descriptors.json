@@ -23483,6 +23483,13 @@
                   "name": "message",
                   "number": 1,
                   "type": "TYPE_STRING"
+                },
+                {
+                  "jsonName": "stackTrace",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "stack_trace",
+                  "number": 2,
+                  "type": "TYPE_STRING"
                 }
               ],
               "name": "Error"
