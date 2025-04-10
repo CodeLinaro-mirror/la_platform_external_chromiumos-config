@@ -18986,6 +18986,10 @@
                     {
                       "name": "SPEAKER",
                       "number": 10
+                    },
+                    {
+                      "name": "IP_POWER",
+                      "number": 11
                     }
                   ]
                 }

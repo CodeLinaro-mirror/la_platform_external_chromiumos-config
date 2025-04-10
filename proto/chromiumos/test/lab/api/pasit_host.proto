@@ -63,6 +63,7 @@ message PasitHost {
       NETWORK = 8;
       HEADPHONE = 9;
       SPEAKER = 10;
+      IP_POWER = 11;
     }
 
     // Information on the power capabilities of the device.
