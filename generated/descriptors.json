@@ -32663,6 +32663,14 @@
               "name": "cbx",
               "number": 4,
               "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "usbInfo",
+              "label": "LABEL_OPTIONAL",
+              "name": "usb_info",
+              "number": 5,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.artifact.DutInfo.UsbInfo"
             }
           ],
           "name": "DutInfo",
@@ -32688,6 +32696,25 @@
               "options": {
                 "mapEntry": true
               }
+            },
+            {
+              "field": [
+                {
+                  "jsonName": "powerDeliveryPortServo",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "power_delivery_port_servo",
+                  "number": 1,
+                  "type": "TYPE_UINT32"
+                },
+                {
+                  "jsonName": "powerDeliveryPortCount",
+                  "label": "LABEL_OPTIONAL",
+                  "name": "power_delivery_port_count",
+                  "number": 2,
+                  "type": "TYPE_UINT32"
+                }
+              ],
+              "name": "UsbInfo"
             }
           ]
         },

@@ -498,7 +498,7 @@ message BuildMetadata {
 }
 
 // Captures DUT related info.
-// NEXT TAG: 5
+// NEXT TAG: 6
 message DutInfo {
   // DUT associated with the test run.
   chromiumos.test.lab.api.Dut dut = 1;
@@ -513,6 +513,19 @@ message DutInfo {
 
   // True is applicable to CBX SKU DUTs, otherwise they are non-CBX.
   bool cbx = 4;
+
+  // USB-C ports on device associated with test invocation.
+  // NEXT TAG: 3
+  message UsbInfo {
+    // The USB-C power delivery port servo is connected to (C0-C3).
+    uint32 power_delivery_port_servo = 1;
+
+    // Total number of USB-C power delivery ports on device.
+    uint32 power_delivery_port_count = 2;
+  }
+
+  // USB-C ports on device.
+  UsbInfo usb_info = 5;
 }
 
 // Captures Drone related info.
