@@ -10,6 +10,9 @@ ignore=
     # TODO(crbug.com/1092516): Enable linting on proto_converter files.
     factory_config_proto_converter.py,
     factory_config_proto_converter_unittest.py,
+    # Linting on cros_to_al_unittest causes spurious no-name-in-module lints in
+    # the checker module.
+    cros_to_al_unittest.py
 
 # Specifying 0 will auto-detect the number of processors available to use.
 jobs=0
@@ -21,10 +24,6 @@ extension-pkg-whitelist=lxml
 good-names=
     f,
     fp,
-
-[FORMAT]
-
-indent-string="  "
 
 [REPORTS]
 

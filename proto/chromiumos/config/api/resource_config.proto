@@ -46,7 +46,6 @@ message ResourceConfig {
     // frequency by writing to scaling_setspeed.
   }
 
-
   message Governor {
     oneof governor {
       ConservativeGovernor conservative = 2;
@@ -72,7 +71,8 @@ message ResourceConfig {
     oneof epp {
       DefaultEpp default = 1;
       PerformanceEpp performance = 2;
-      BalancePerformanceEpp balance_performance = 3 [json_name = "balance-performance"];
+      BalancePerformanceEpp balance_performance = 3
+          [json_name = "balance-performance"];
       BalancePowerEpp balance_power = 4 [json_name = "balance-power"];
       PowerEpp power = 5;
     }

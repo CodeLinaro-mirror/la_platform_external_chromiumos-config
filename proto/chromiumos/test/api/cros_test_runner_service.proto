@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-
 // Note: This grpc service is a short term solution that will be deprecated
 // once the CTRv2 is complete
 
@@ -13,36 +12,36 @@ package chromiumos.test.api;
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 service CrosTestRunnerService {
-    // Executes the given tests on the given dut
-    rpc Run(RunCrosTestRequest) returns (RunCrosTestResponse) {}
+  // Executes the given tests on the given dut
+  rpc Run(RunCrosTestRequest) returns (RunCrosTestResponse) {}
 }
 
 message RunCrosTestRequest {
-    message AutotestArg {
-        // The name of the autotest argument
-        string flag = 1;
-        // The value of the autotest argument
-        string value = 2;
-    }
-    // The ip of the dut
-    string host = 1;
-    // The board name of the dut
-    string board = 2;
-    // The tast and tauto tests to run on the dut
-    repeated string tests = 3;
-    // The directory where test results and logs will be placed
-    string results_dir_name = 4;
-    // Custom arguments passed into the autotest test harness
-    repeated AutotestArg autotest_args = 5;
-    // The docker image tag of cros-test container to run
-    string cros_test_image_tag = 6;
+  message AutotestArg {
+    // The name of the autotest argument
+    string flag = 1;
+    // The value of the autotest argument
+    string value = 2;
+  }
+  // The ip of the dut
+  string host = 1;
+  // The board name of the dut
+  string board = 2;
+  // The tast and tauto tests to run on the dut
+  repeated string tests = 3;
+  // The directory where test results and logs will be placed
+  string results_dir_name = 4;
+  // Custom arguments passed into the autotest test harness
+  repeated AutotestArg autotest_args = 5;
+  // The docker image tag of cros-test container to run
+  string cros_test_image_tag = 6;
 }
 
 message RunCrosTestResponse {
-    // standard out from the run
-    string stdout = 1;
-    // standard err from the run
-    string stderr = 2;
-    // return code
-    int32 return_code = 3;
+  // standard out from the run
+  string stdout = 1;
+  // standard err from the run
+  string stderr = 2;
+  // return code
+  int32 return_code = 3;
 }

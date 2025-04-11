@@ -13,6 +13,5 @@ import "chromiumos/test/api/cros_test_finder_cli.proto";
 // TestFinderService defines interactions with the test finder service.
 service TestFinderService {
   // FindTests finds test associated with the provided input.
-  rpc FindTests(CrosTestFinderRequest)
-      returns (CrosTestFinderResponse);
+  rpc FindTests(CrosTestFinderRequest) returns (CrosTestFinderResponse);
 }

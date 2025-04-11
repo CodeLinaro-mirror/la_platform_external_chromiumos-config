@@ -19,8 +19,7 @@ service MetadataService {
   // Retrieves all of the known device hardware configuration
   // based on a unique id or hardware/manufacturing identifiers
   // scanned off of a live device.
-  rpc GetDeviceConfig(GetDeviceConfigRequest)
-      returns (GetDeviceConfigResponse);
+  rpc GetDeviceConfig(GetDeviceConfigRequest) returns (GetDeviceConfigResponse);
 }
 
 message GetDeviceConfigRequest {

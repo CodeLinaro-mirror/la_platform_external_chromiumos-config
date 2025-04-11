@@ -49,10 +49,11 @@ type ProvisionState struct {
 	Packages    []*ProvisionState_Package   `protobuf:"bytes,4,rep,name=packages,proto3" json:"packages,omitempty"`
 	// Prevents device reboot during system image provisioning.
 	PreventReboot bool `protobuf:"varint,5,opt,name=prevent_reboot,json=preventReboot,proto3" json:"prevent_reboot,omitempty"`
-	// update_firmware will update OS bundled firmware(RW only) during the provision.
-	// Please note this firmware update only update RW firmware that built in the
-	// target_build OS image and it is different from firmware provision which
-	// download and update a separate firmware image based on request.
+	// update_firmware will update OS bundled firmware(RW only) during the
+	// provision. Please note this firmware update only update RW firmware that
+	// built in the target_build OS image and it is different from firmware
+	// provision which download and update a separate firmware image based on
+	// request.
 	UpdateFirmware bool `protobuf:"varint,6,opt,name=update_firmware,json=updateFirmware,proto3" json:"update_firmware,omitempty"`
 	// Use force to pass "--force" to futility, which skips the TPM checks.
 	FirmwareForce bool `protobuf:"varint,7,opt,name=firmware_force,json=firmwareForce,proto3" json:"firmware_force,omitempty"`
@@ -609,7 +610,8 @@ type CompanionConfig_Android struct {
 	AndroidImageVersion string `protobuf:"bytes,1,opt,name=android_image_version,json=androidImageVersion,proto3" json:"android_image_version,omitempty"`
 	// gms core cipd package for android provisioning. Recommend to use
 	// "latest_stable".
-	// See https://chrome-infra-packages.appspot.com/p/chromiumos/infra/skylab/third_party/gmscore/gmscore_prodsc_arm64_xxhdpi_release_apk/+/
+	// See
+	// https://chrome-infra-packages.appspot.com/p/chromiumos/infra/skylab/third_party/gmscore/gmscore_prodsc_arm64_xxhdpi_release_apk/+/
 	GmsCorePackage string `protobuf:"bytes,2,opt,name=gms_core_package,json=gmsCorePackage,proto3" json:"gms_core_package,omitempty"`
 }
 

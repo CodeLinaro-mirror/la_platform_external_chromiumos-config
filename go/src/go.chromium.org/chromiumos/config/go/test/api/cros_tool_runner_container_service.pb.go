@@ -708,7 +708,8 @@ type StartTemplatedContainerRequest struct {
 	Template *Template `protobuf:"bytes,3,opt,name=template,proto3" json:"template,omitempty"`
 	// Name of an existing network to join
 	Network string `protobuf:"bytes,4,opt,name=network,proto3" json:"network,omitempty"`
-	// Host directory to be mounted into the container for logs and other artifacts
+	// Host directory to be mounted into the container for logs and other
+	// artifacts
 	ArtifactDir string `protobuf:"bytes,5,opt,name=artifact_dir,json=artifactDir,proto3" json:"artifact_dir,omitempty"`
 }
 

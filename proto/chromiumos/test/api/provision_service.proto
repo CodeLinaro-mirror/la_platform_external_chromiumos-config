@@ -23,8 +23,7 @@ service ProvisionService {
   //
   // If the DUT already has the specified list of DLCs, only the missing DLCs
   // will be installed.
-  rpc InstallCros(InstallCrosRequest)
-      returns (longrunning.Operation) {
+  rpc InstallCros(InstallCrosRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "InstallCrosResponse",
       metadata_type: "InstallCrosMetadata"
@@ -35,8 +34,7 @@ service ProvisionService {
   //
   // This directly overwrites the version of ash-chrome on the current root
   // disk partition.
-  rpc InstallAsh(InstallAshRequest)
-      returns (longrunning.Operation) {
+  rpc InstallAsh(InstallAshRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "InstallAshResponse",
       metadata_type: "InstallAshMetadata"
@@ -47,8 +45,7 @@ service ProvisionService {
   //
   // This directly overwrites the version of ARC on the current root
   // disk partition.
-  rpc InstallArc(InstallArcRequest)
-      returns (longrunning.Operation) {
+  rpc InstallArc(InstallArcRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "InstallArcResponse",
       metadata_type: "InstallArcMetadata"
@@ -56,8 +53,7 @@ service ProvisionService {
   }
 
   // InstallFirmware installs all of the firmware images specified.
-  rpc InstallFirmware(InstallFirmwareRequest)
-      returns (longrunning.Operation) {
+  rpc InstallFirmware(InstallFirmwareRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "InstallFirmwareResponse",
       metadata_type: "InstallFirmwareMetadata"
@@ -65,8 +61,7 @@ service ProvisionService {
   }
 }
 
-message InstallSuccess {
-}
+message InstallSuccess {}
 
 message InstallFailure {
   // When the status code is other than OK, details in Status message should be
@@ -139,9 +134,9 @@ message InstallCrosRequest {
   }
   // dlc_specs specifies which DLCs to install on the DUT after provisioning.
   repeated DLCSpec dlc_specs = 2;
-  // preserve_stateful specifies whether the stateful partition should be preserved during
-  // provisioning. If preserve_stateful is not set to true, the stateful partition is
-  // block-level wiped and reset during provisioning.
+  // preserve_stateful specifies whether the stateful partition should be
+  // preserved during provisioning. If preserve_stateful is not set to true, the
+  // stateful partition is block-level wiped and reset during provisioning.
   bool preserve_stateful = 3;
   // Prevents device reboot during system image provisioning.
   bool prevent_reboot = 4;
@@ -149,10 +144,11 @@ message InstallCrosRequest {
   // Provides a possible tar file to overwrite current install files
   StoragePath overwrite_payload = 5;
 
-  // update_firmware will update OS bundled firmware(RW only) during the provision.
-  // Please note this firmware update only update RW firmware that built in the
-  // target_build OS image and it is different from firmware provision which
-  // download and update a separate firmware image based on request.
+  // update_firmware will update OS bundled firmware(RW only) during the
+  // provision. Please note this firmware update only update RW firmware that
+  // built in the target_build OS image and it is different from firmware
+  // provision which download and update a separate firmware image based on
+  // request.
   bool update_firmware = 6;
 }
 
@@ -163,8 +159,7 @@ message InstallCrosResponse {
   }
 }
 
-message InstallCrosMetadata {
-}
+message InstallCrosMetadata {}
 
 message InstallLacrosRequest {
   StoragePath lacros_image_path = 1;
@@ -179,8 +174,7 @@ message InstallLacrosResponse {
   }
 }
 
-message InstallLacrosMetadata {
-}
+message InstallLacrosMetadata {}
 
 message InstallAshRequest {
   StoragePath ash_image_path = 1;
@@ -193,8 +187,7 @@ message InstallAshResponse {
   }
 }
 
-message InstallAshMetadata {
-}
+message InstallAshMetadata {}
 
 message InstallArcRequest {
   StoragePath ash_image_path = 1;
@@ -207,8 +200,7 @@ message InstallArcResponse {
   }
 }
 
-message InstallArcMetadata {
-}
+message InstallArcMetadata {}
 
 message InstallFirmwareRequest {
   chromiumos.build.api.FirmwareConfig firmware_config = 1;
@@ -230,5 +222,4 @@ message InstallFirmwareResponse {
   }
 }
 
-message InstallFirmwareMetadata {
-}
+message InstallFirmwareMetadata {}

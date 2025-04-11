@@ -64,6 +64,11 @@ class UsbTesterServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortReply.FromString,
                 )
+        self.LoadEdid = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.UsbTesterService/LoadEdid',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.LoadEdidRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.LoadEdidReply.FromString,
+                )
 
 
 class UsbTesterServiceServicer(object):
@@ -140,6 +145,13 @@ class UsbTesterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def LoadEdid(self, request, context):
+        """This method is used to load an EDID.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_UsbTesterServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -192,6 +204,11 @@ def add_UsbTesterServiceServicer_to_server(servicer, server):
                     servicer.SetActivePort,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortReply.SerializeToString,
+            ),
+            'LoadEdid': grpc.unary_unary_rpc_method_handler(
+                    servicer.LoadEdid,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.LoadEdidRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.LoadEdidReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -370,5 +387,22 @@ class UsbTesterService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/SetActivePort',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.SetActivePortReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def LoadEdid(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.UsbTesterService/LoadEdid',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.LoadEdidRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_usb__tester__service__pb2.LoadEdidReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

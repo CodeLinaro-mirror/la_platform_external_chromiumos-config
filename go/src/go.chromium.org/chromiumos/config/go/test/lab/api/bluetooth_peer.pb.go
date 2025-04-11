@@ -61,17 +61,20 @@ const (
 //   "bundles": [
 //     {
 //       "chameleondCommit": "723e87b",
-//       "archivePath": "gs://chromeos-connectivity-test-artifacts/btpeer/chameleond/chameleond-0.0.2-723e87b.tar.gz",
+//       "archivePath":
+//       "gs://chromeos-connectivity-test-artifacts/btpeer/chameleond/chameleond-0.0.2-723e87b.tar.gz",
 //       "minDutReleaseVersion": "0"
 //     },
 //     {
 //       "chameleondCommit": "cf50534",
-//       "archivePath": "gs://chromeos-connectivity-test-artifacts/btpeer/chameleond/chameleond-0.0.2-cf50534.tar.gz",
+//       "archivePath":
+//       "gs://chromeos-connectivity-test-artifacts/btpeer/chameleond/chameleond-0.0.2-cf50534.tar.gz",
 //       "minDutReleaseVersion": "1234.5.6"
 //     },
 //     {
 //       "chameleondCommit": "8e331c7",
-//       "archivePath": "gs://chromeos-connectivity-test-artifacts/btpeer/chameleond/chameleond-0.0.2-8e331c7.tar.gz",
+//       "archivePath":
+//       "gs://chromeos-connectivity-test-artifacts/btpeer/chameleond/chameleond-0.0.2-8e331c7.tar.gz",
 //       "minDutReleaseVersion": "14051.0.0"
 //     }
 //   ]

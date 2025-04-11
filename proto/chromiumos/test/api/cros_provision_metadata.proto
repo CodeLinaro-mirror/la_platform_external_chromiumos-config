@@ -19,14 +19,15 @@ message CrOSProvisionMetadata {
   }
   // dlc_specs specifies which DLCs to install on the DUT after provisioning.
   repeated DLCSpec dlc_specs = 2;
-  // preserve_stateful specifies whether the stateful partition should be preserved during
-  // provisioning. If preserve_stateful is not set to true, the stateful partition is
-  // block-level wiped and reset during provisioning.
+  // preserve_stateful specifies whether the stateful partition should be
+  // preserved during provisioning. If preserve_stateful is not set to true, the
+  // stateful partition is block-level wiped and reset during provisioning.
   bool preserve_stateful = 3;
-  // update_firmware will update OS bundled firmware(RW only) during the provision.
-  // Please note this firmware update only update RW firmware that built in the
-  // target_build OS image and it is different from firmware provision which
-  // download and update a separate firmware image based on request.
+  // update_firmware will update OS bundled firmware(RW only) during the
+  // provision. Please note this firmware update only update RW firmware that
+  // built in the target_build OS image and it is different from firmware
+  // provision which download and update a separate firmware image based on
+  // request.
   bool update_firmware = 6;
   // only_googler_ssh_keys controls if we provision googler ssh key only.
   // If true, provision will only enable googler ssh key on the DUT.

@@ -277,6 +277,10 @@
               "dgpuType": 1,
               "present": 1
             },
+            "dspCore": {
+              "present": 1,
+              "vendor": 1
+            },
             "embeddedController": {
               "ecType": 1,
               "present": 1
@@ -631,6 +635,19 @@
               },
               "id": "NV3050",
               "type": 35
+            },
+            "dsp": {
+              "description": {
+                "EN": "Intel ISH"
+              },
+              "hardwareFeature": {
+                "dspCore": {
+                  "present": 1,
+                  "vendor": 1
+                }
+              },
+              "id": "ISH",
+              "type": 39
             },
             "ec": {
               "hardwareFeature": {
@@ -2303,6 +2320,7 @@
             },
             "embeddedController": {
               "ecType": 1,
+              "maxAccelerometerCalibration": 100,
               "maxSensorOdrMhz": 50000,
               "present": 1
             },
@@ -2661,6 +2679,7 @@
               "hardwareFeature": {
                 "embeddedController": {
                   "ecType": 1,
+                  "maxAccelerometerCalibration": 100,
                   "maxSensorOdrMhz": 50000,
                   "present": 1
                 }
@@ -12768,7 +12787,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14423,7 +14447,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14517,7 +14546,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14611,7 +14645,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14705,7 +14744,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14799,7 +14843,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {
@@ -14893,7 +14942,12 @@
           "hasSkuNumber": true
         },
         "routines": {
+          "batteryCapacity": {
+            "highMah": 10000,
+            "lowMah": 1000
+          },
           "batteryHealth": {
+            "maximumCycleCount": 1000,
             "percentBatteryWearAllowed": 50
           },
           "nvmeWearLevel": {

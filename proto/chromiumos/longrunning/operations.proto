@@ -14,7 +14,6 @@
 
 syntax = "proto3";
 
-
 package chromiumos.longrunning;
 
 import "google/protobuf/any.proto";
@@ -24,37 +23,33 @@ import "google/protobuf/empty.proto";
 
 option go_package = "go.chromium.org/chromiumos/config/go/longrunning";
 
-
 // Manages long-running operations with an API service.
 //
 // When an API method normally takes long time to complete, it can be designed
-// to return [Operation][google.longrunning.Operation] to the client, and the client can use this
-// interface to receive the real response asynchronously by polling the
-// operation resource, or pass the operation resource to another API (such as
-// Google Cloud Pub/Sub API) to receive the response.  Any API service that
-// returns long-running operations should implement the `Operations` interface
-// so developers can have a consistent client experience.
+// to return [Operation][google.longrunning.Operation] to the client, and the
+// client can use this interface to receive the real response asynchronously by
+// polling the operation resource, or pass the operation resource to another API
+// (such as Google Cloud Pub/Sub API) to receive the response.  Any API service
+// that returns long-running operations should implement the `Operations`
+// interface so developers can have a consistent client experience.
 service Operations {
   // Lists operations that match the specified filter in the request. If the
   // server doesn't support this method, it returns `UNIMPLEMENTED`.
   //
   // NOTE: the `name` binding below allows API services to override the binding
   // to use different resource name schemes, such as `users/*/operations`.
-  rpc ListOperations(ListOperationsRequest) returns (ListOperationsResponse) {
-  }
+  rpc ListOperations(ListOperationsRequest) returns (ListOperationsResponse) {}
 
   // Gets the latest state of a long-running operation.  Clients can use this
   // method to poll the operation result at intervals as recommended by the API
   // service.
-  rpc GetOperation(GetOperationRequest) returns (Operation) {
-  }
+  rpc GetOperation(GetOperationRequest) returns (Operation) {}
 
   // Deletes a long-running operation. This method indicates that the client is
   // no longer interested in the operation result. It does not cancel the
   // operation. If the server doesn't support this method, it returns
   // `google.rpc.Code.UNIMPLEMENTED`.
-  rpc DeleteOperation(DeleteOperationRequest) returns (google.protobuf.Empty) {
-  }
+  rpc DeleteOperation(DeleteOperationRequest) returns (google.protobuf.Empty) {}
 
   // Starts asynchronous cancellation on a long-running operation.  The server
   // makes a best effort to cancel the operation, but success is not
@@ -64,10 +59,10 @@ service Operations {
   // other methods to check whether the cancellation succeeded or whether the
   // operation completed despite cancellation. On successful cancellation,
   // the operation is not deleted; instead, it becomes an operation with
-  // an [Operation.error][google.longrunning.Operation.error] value with a [google.rpc.Status.code][google.rpc.Status.code] of 1,
-  // corresponding to `Code.CANCELLED`.
-  rpc CancelOperation(CancelOperationRequest) returns (google.protobuf.Empty) {
-  }
+  // an [Operation.error][google.longrunning.Operation.error] value with a
+  // [google.rpc.Status.code][google.rpc.Status.code] of 1, corresponding to
+  // `Code.CANCELLED`.
+  rpc CancelOperation(CancelOperationRequest) returns (google.protobuf.Empty) {}
   // Waits for the specified long-running operation until it is done or reaches
   // at most a specified timeout, returning the latest state.  If the operation
   // is already done, the latest state is immediately returned.  If the timeout
@@ -77,8 +72,7 @@ service Operations {
   // Note that this method is on a best-effort basis.  It may return the latest
   // state before the specified timeout (including immediately), meaning even an
   // immediate response is no guarantee that the operation is done.
-  rpc WaitOperation(WaitOperationRequest) returns (Operation) {
-  }
+  rpc WaitOperation(WaitOperationRequest) returns (Operation) {}
 }
 
 // This resource represents a long-running operation that is the result of a
@@ -119,13 +113,15 @@ message Operation {
   }
 }
 
-// The request message for [Operations.GetOperation][google.longrunning.Operations.GetOperation].
+// The request message for
+// [Operations.GetOperation][google.longrunning.Operations.GetOperation].
 message GetOperationRequest {
   // The name of the operation resource.
   string name = 1;
 }
 
-// The request message for [Operations.ListOperations][google.longrunning.Operations.ListOperations].
+// The request message for
+// [Operations.ListOperations][google.longrunning.Operations.ListOperations].
 message ListOperationsRequest {
   // The name of the operation collection.
   string name = 4;
@@ -140,7 +136,8 @@ message ListOperationsRequest {
   string page_token = 3;
 }
 
-// The response message for [Operations.ListOperations][google.longrunning.Operations.ListOperations].
+// The response message for
+// [Operations.ListOperations][google.longrunning.Operations.ListOperations].
 message ListOperationsResponse {
   // A list of operations that matches the specified filter in the request.
   repeated Operation operations = 1;
@@ -149,19 +146,22 @@ message ListOperationsResponse {
   string next_page_token = 2;
 }
 
-// The request message for [Operations.CancelOperation][google.longrunning.Operations.CancelOperation].
+// The request message for
+// [Operations.CancelOperation][google.longrunning.Operations.CancelOperation].
 message CancelOperationRequest {
   // The name of the operation resource to be cancelled.
   string name = 1;
 }
 
-// The request message for [Operations.DeleteOperation][google.longrunning.Operations.DeleteOperation].
+// The request message for
+// [Operations.DeleteOperation][google.longrunning.Operations.DeleteOperation].
 message DeleteOperationRequest {
   // The name of the operation resource to be deleted.
   string name = 1;
 }
 
-// The request message for [Operations.WaitOperation][google.longrunning.Operations.WaitOperation].
+// The request message for
+// [Operations.WaitOperation][google.longrunning.Operations.WaitOperation].
 message WaitOperationRequest {
   // The name of the operation resource to wait on.
   string name = 1;
@@ -214,24 +214,25 @@ extend google.protobuf.MethodOptions {
   OperationInfo operation_info = 1050;
 }
 
-// The `Status` type defines a logical error model that is suitable for different
-// programming environments, including REST APIs and RPC APIs. It is used by
-// [gRPC](https://github.com/grpc). The error model is designed to be:
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). The error model is designed to be:
 //
 // - Simple to use and understand for most users
 // - Flexible enough to meet unexpected needs
 //
 // # Overview
 //
-// The `Status` message contains three pieces of data: error code, error message,
-// and error details. The error code should be an enum value of
-// [google.rpc.Code][google.rpc.Code], but it may accept additional error codes if needed.  The
-// error message should be a developer-facing English message that helps
-// developers *understand* and *resolve* the error. If a localized user-facing
-// error message is needed, put the localized message in the error details or
-// localize it in the client. The optional error details may contain arbitrary
-// information about the error. There is a predefined set of error detail types
-// in the package `google.rpc` that can be used for common error conditions.
+// The `Status` message contains three pieces of data: error code, error
+// message, and error details. The error code should be an enum value of
+// [google.rpc.Code][google.rpc.Code], but it may accept additional error codes
+// if needed.  The error message should be a developer-facing English message
+// that helps developers *understand* and *resolve* the error. If a localized
+// user-facing error message is needed, put the localized message in the error
+// details or localize it in the client. The optional error details may contain
+// arbitrary information about the error. There is a predefined set of error
+// detail types in the package `google.rpc` that can be used for common error
+// conditions.
 //
 // # Language mapping
 //
@@ -267,12 +268,14 @@ extend google.protobuf.MethodOptions {
 // - Logging. If some API errors are stored in logs, the message `Status` could
 //     be used directly after any stripping needed for security/privacy reasons.
 message Status {
-  // The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
+  // The status code, which should be an enum value of
+  // [google.rpc.Code][google.rpc.Code].
   int32 code = 1;
 
   // A developer-facing error message, which should be in English. Any
   // user-facing error message should be localized and sent in the
-  // [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+  // [google.rpc.Status.details][google.rpc.Status.details] field, or localized
+  // by the client.
   string message = 2;
 
   // A list of messages that carry the error details.  There is a common set of

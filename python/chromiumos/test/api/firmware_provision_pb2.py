@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z-go.chromium.org/chromiumos/config/go/test/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\">\n FirmwareProvisionStartupMetadataJ\x04\x08\x01\x10\x02R\x14\x63\x61\x63he_server_address\"a\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\"\x8e\x01\n\x19\x46irmwareProvisionResponse\x12\x15\n\rerror_message\x18\x01 \x01(\t\x12\x15\n\rap_ro_version\x18\x02 \x01(\t\x12\x15\n\rap_rw_version\x18\x03 \x01(\t\x12\x15\n\rec_ro_version\x18\x04 \x01(\t\x12\x15\n\rec_rw_version\x18\x05 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
+  serialized_pb=b'\n,chromiumos/test/api/firmware_provision.proto\x12\x13\x63hromiumos.test.api\x1a*chromiumos/build/api/firmware_config.proto\">\n FirmwareProvisionStartupMetadataJ\x04\x08\x01\x10\x02R\x14\x63\x61\x63he_server_address\"a\n FirmwareProvisionInstallMetadata\x12=\n\x0f\x66irmware_config\x18\x01 \x01(\x0b\x32$.chromiumos.build.api.FirmwareConfig\"\x92\x01\n\x19\x46irmwareProvisionResponse\x12\x19\n\rerror_message\x18\x01 \x01(\tB\x02\x18\x01\x12\x15\n\rap_ro_version\x18\x02 \x01(\t\x12\x15\n\rap_rw_version\x18\x03 \x01(\t\x12\x15\n\rec_ro_version\x18\x04 \x01(\t\x12\x15\n\rec_rw_version\x18\x05 \x01(\tB/Z-go.chromium.org/chromiumos/config/go/test/apib\x06proto3'
   ,
   dependencies=[chromiumos_dot_build_dot_api_dot_firmware__config__pb2.DESCRIPTOR,])
 
@@ -98,7 +98,7 @@ _FIRMWAREPROVISIONRESPONSE = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='ap_ro_version', full_name='chromiumos.test.api.FirmwareProvisionResponse.ap_ro_version', index=1,
       number=2, type=9, cpp_type=9, label=1,
@@ -140,7 +140,7 @@ _FIRMWAREPROVISIONRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=277,
-  serialized_end=419,
+  serialized_end=423,
 )
 
 _FIRMWAREPROVISIONINSTALLMETADATA.fields_by_name['firmware_config'].message_type = chromiumos_dot_build_dot_api_dot_firmware__config__pb2._FIRMWARECONFIG
@@ -172,4 +172,5 @@ _sym_db.RegisterMessage(FirmwareProvisionResponse)
 
 
 DESCRIPTOR._options = None
+_FIRMWAREPROVISIONRESPONSE.fields_by_name['error_message']._options = None
 # @@protoc_insertion_point(module_scope)

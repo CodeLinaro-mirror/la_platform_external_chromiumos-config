@@ -17,7 +17,8 @@ service DeviceLeaseService {
   rpc LeaseDevice(LeaseDeviceRequest) returns (LeaseDeviceResponse) {};
 
   // Bulk lease devices and create leases for all of them.
-  rpc BulkLeaseDevices(BulkLeaseDevicesRequest) returns (BulkLeaseDevicesResponse) {};
+  rpc BulkLeaseDevices(BulkLeaseDevicesRequest)
+      returns (BulkLeaseDevicesResponse) {};
 
   // Release a device lease.
   rpc ReleaseDevice(ReleaseDeviceRequest) returns (ReleaseDeviceResponse) {};
@@ -107,7 +108,7 @@ message DeviceLeaseRecord {
   // Request data.
   // All parameters used to create a device will be saved for further analysis.
   // Possible that the data will be removed later if established as not needed.
-  map<string,string> request_parameters = 10;
+  map<string, string> request_parameters = 10;
 }
 
 message LeaseDeviceRequest {

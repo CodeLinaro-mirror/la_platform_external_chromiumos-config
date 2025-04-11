@@ -9,30 +9,30 @@ option go_package = "go.chromium.org/chromiumos/config/go/api/test/harness/tauto
 // This message is the schema for the contents of
 // chromiumos.config.api.test.metadata.v1.Informational.details for Tauto tests.
 message TestMetadata {
-    // The Main invocation entry for this test.
-    // Used by the Tauto test harness to execute the test.
-    message Main {
-        // Fully qualified python package path for the main function.
-        //
-        // The provided package MUST have a public function with the signature:
-        //
-        //   def run(test_args, other args...):
-        //   """TODO(pprabhu) Document arguments once harness is in shape.
-        //
-        //   Args:
-        //       test_args: A list of test specific arguments, set via the test
-        //               metadata. See ...tauto.v1.TestMetadata.Main.test_args
-        //   """
-        //
-        // The Tauto harness imports package_path in Tauto-specific python
-        // environment and calls run() to execute the test.
-        string python_package = 1;
+  // The Main invocation entry for this test.
+  // Used by the Tauto test harness to execute the test.
+  message Main {
+    // Fully qualified python package path for the main function.
+    //
+    // The provided package MUST have a public function with the signature:
+    //
+    //   def run(test_args, other args...):
+    //   """TODO(pprabhu) Document arguments once harness is in shape.
+    //
+    //   Args:
+    //       test_args: A list of test specific arguments, set via the test
+    //               metadata. See ...tauto.v1.TestMetadata.Main.test_args
+    //   """
+    //
+    // The Tauto harness imports package_path in Tauto-specific python
+    // environment and calls run() to execute the test.
+    string python_package = 1;
 
-        // A list of arguments for the run() function for this test.
-        //
-        // The Tauto harness provide theses arguments as the test_args
-        // argument to the run() function.
-        repeated string test_args = 2;
-    }
-    Main main = 1;
+    // A list of arguments for the run() function for this test.
+    //
+    // The Tauto harness provide theses arguments as the test_args
+    // argument to the run() function.
+    repeated string test_args = 2;
+  }
+  Main main = 1;
 }
