@@ -7,6 +7,100 @@
       },
       "messageType": [
         {
+          "enumType": [
+            {
+              "name": "HostType",
+              "value": [
+                {
+                  "name": "HOSTTYPE_UNSPECIFIED",
+                  "number": 0
+                },
+                {
+                  "name": "LOCAL",
+                  "number": 1
+                },
+                {
+                  "name": "GS",
+                  "number": 2
+                },
+                {
+                  "name": "ANDROID_BUILD",
+                  "number": 3
+                }
+              ]
+            }
+          ],
+          "field": [
+            {
+              "jsonName": "hostType",
+              "label": "LABEL_OPTIONAL",
+              "name": "host_type",
+              "number": 1,
+              "type": "TYPE_ENUM",
+              "typeName": ".chromiumos.StoragePath.HostType"
+            },
+            {
+              "jsonName": "path",
+              "label": "LABEL_OPTIONAL",
+              "name": "path",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "StoragePath"
+        }
+      ],
+      "name": "chromiumos/storage_path.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go;storage_path"
+      },
+      "package": "chromiumos",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/storage_path.proto"
+      ],
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "chromeBuilderArtifactPath",
+              "label": "LABEL_OPTIONAL",
+              "name": "chrome_builder_artifact_path",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.StoragePath"
+            },
+            {
+              "jsonName": "buildOutputDir",
+              "label": "LABEL_OPTIONAL",
+              "name": "build_output_dir",
+              "number": 2,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "AshChromeConfig"
+        }
+      ],
+      "name": "chromiumos/build/api/ash_chrome_config.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "messageType": [
+        {
           "field": [
             {
               "jsonName": "hostname",
@@ -295,63 +389,6 @@
         "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
       },
       "package": "chromiumos.build.api",
-      "syntax": "proto3"
-    },
-    {
-      "bufExtension": {
-        "isImport": false,
-        "isSyntaxUnspecified": false
-      },
-      "messageType": [
-        {
-          "enumType": [
-            {
-              "name": "HostType",
-              "value": [
-                {
-                  "name": "HOSTTYPE_UNSPECIFIED",
-                  "number": 0
-                },
-                {
-                  "name": "LOCAL",
-                  "number": 1
-                },
-                {
-                  "name": "GS",
-                  "number": 2
-                },
-                {
-                  "name": "ANDROID_BUILD",
-                  "number": 3
-                }
-              ]
-            }
-          ],
-          "field": [
-            {
-              "jsonName": "hostType",
-              "label": "LABEL_OPTIONAL",
-              "name": "host_type",
-              "number": 1,
-              "type": "TYPE_ENUM",
-              "typeName": ".chromiumos.StoragePath.HostType"
-            },
-            {
-              "jsonName": "path",
-              "label": "LABEL_OPTIONAL",
-              "name": "path",
-              "number": 2,
-              "type": "TYPE_STRING"
-            }
-          ],
-          "name": "StoragePath"
-        }
-      ],
-      "name": "chromiumos/storage_path.proto",
-      "options": {
-        "goPackage": "go.chromium.org/chromiumos/config/go;storage_path"
-      },
-      "package": "chromiumos",
       "syntax": "proto3"
     },
     {
@@ -21137,6 +21174,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/build/api/ash_chrome_config.proto",
         "chromiumos/build/api/firmware_config.proto",
         "chromiumos/longrunning/operations.proto",
         "chromiumos/storage_path.proto"
@@ -21555,6 +21593,54 @@
         },
         {
           "name": "InstallFirmwareMetadata"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ashChromeConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_chrome_config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.AshChromeConfig"
+            },
+            {
+              "jsonName": "strip",
+              "label": "LABEL_OPTIONAL",
+              "name": "strip",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "InstallAshChromeRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "success",
+              "label": "LABEL_OPTIONAL",
+              "name": "success",
+              "number": 1,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallSuccess"
+            },
+            {
+              "jsonName": "failure",
+              "label": "LABEL_OPTIONAL",
+              "name": "failure",
+              "number": 2,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.InstallFailure"
+            }
+          ],
+          "name": "InstallAshChromeResponse",
+          "oneofDecl": [
+            {
+              "name": "outcome"
+            }
+          ]
         }
       ],
       "name": "chromiumos/test/api/provision_service.proto",
@@ -21605,6 +21691,17 @@
                 "[chromiumos.longrunning.operation_info]": {
                   "metadataType": "InstallFirmwareMetadata",
                   "responseType": "InstallFirmwareResponse"
+                }
+              },
+              "outputType": ".chromiumos.longrunning.Operation"
+            },
+            {
+              "inputType": ".chromiumos.test.api.InstallAshChromeRequest",
+              "name": "InstallAshChrome",
+              "options": {
+                "[chromiumos.longrunning.operation_info]": {
+                  "metadataType": "InstallAshChromeMetadata",
+                  "responseType": "InstallAshChromeResponse"
                 }
               },
               "outputType": ".chromiumos.longrunning.Operation"
@@ -21680,6 +21777,51 @@
         }
       ],
       "name": "chromiumos/test/api/android_provision_cli.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
+      },
+      "package": "chromiumos.test.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
+      "dependency": [
+        "chromiumos/build/api/ash_chrome_config.proto"
+      ],
+      "messageType": [
+        {
+          "name": "AshChromeProvisionStartupMetadata",
+          "reservedName": [
+            "cache_server_address"
+          ],
+          "reservedRange": [
+            {
+              "end": 2,
+              "start": 1
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "ashChromeConfig",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_chrome_config",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.AshChromeConfig"
+            }
+          ],
+          "name": "AshChromeProvisionInstallMetadata"
+        },
+        {
+          "name": "AshChromeProvisionInstallResponse"
+        }
+      ],
+      "name": "chromiumos/test/api/ash_chrome_provision.proto",
       "options": {
         "goPackage": "go.chromium.org/chromiumos/config/go/test/api"
       },
@@ -23347,6 +23489,7 @@
         "isSyntaxUnspecified": false
       },
       "dependency": [
+        "chromiumos/build/api/ash_chrome_config.proto",
         "chromiumos/build/api/dlc.proto",
         "chromiumos/build/api/firmware_config.proto",
         "chromiumos/build/api/portage.proto",
@@ -23371,6 +23514,14 @@
               "number": 2,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "ashChrome",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_chrome",
+              "number": 10,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.AshChromeConfig"
             },
             {
               "jsonName": "systemImage",
@@ -23507,6 +23658,14 @@
               "number": 1,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.build.api.FirmwareConfig"
+            },
+            {
+              "jsonName": "ashChrome",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_chrome",
+              "number": 8,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.AshChromeConfig"
             },
             {
               "jsonName": "dlcs",
@@ -27154,6 +27313,15 @@
               "oneofIndex": 0,
               "type": "TYPE_MESSAGE",
               "typeName": ".chromiumos.test.api.PostProcessTemplate"
+            },
+            {
+              "jsonName": "ashChromeProvision",
+              "label": "LABEL_OPTIONAL",
+              "name": "ash_chrome_provision",
+              "number": 12,
+              "oneofIndex": 0,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.api.AshChromeProvisionTemplate"
             }
           ],
           "name": "Template",
@@ -27375,6 +27543,9 @@
             }
           ],
           "name": "PostProcessTemplate"
+        },
+        {
+          "name": "AshChromeProvisionTemplate"
         }
       ],
       "name": "chromiumos/test/api/cros_tool_runner_container_service_templates.proto",
