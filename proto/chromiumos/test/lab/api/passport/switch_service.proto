@@ -59,6 +59,8 @@ message ConfigureSwitchPortRequest {
   string switch_id = 1;
   // The requested state to be applied to the switch.
   SwitchPortState state = 2;
+  // The requested port to be configured.
+  string port_id = 3;
 }
 
 message ConfigureSwitchPortResponse {}

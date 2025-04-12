@@ -39996,6 +39996,13 @@
               "number": 2,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.passport.SwitchPortState"
+            },
+            {
+              "jsonName": "portId",
+              "label": "LABEL_OPTIONAL",
+              "name": "port_id",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "ConfigureSwitchPortRequest"
