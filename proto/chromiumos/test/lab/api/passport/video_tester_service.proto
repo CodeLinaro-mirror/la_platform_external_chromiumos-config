@@ -1,0 +1,127 @@
+syntax = "proto3";
+
+package chromiumos.test.lab.api.passport;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api/passport";
+/*
+This proto files defines the interface for interacting with video tester devices.
+It allows clients to:
+
+- Discover available video testers:** Use the GetVideoTesters RPC to retrieve a
+  list of connected and usable video tester devices, identified by a unique ID
+  and a human-readable name.
+- Manage individual video tester sessions:
+  - Open a specific video tester using the OpenVideoTester RPC,
+    preparing it for subsequent commands.
+  - Close an opened video tester using the CloseVideoTester RPC,
+    releasing any associated resources.
+
+- Configure the role of a video tester:
+  - Query the supported roles of a video tester using the GetRolesVideoTester
+    RPC. The Role enum defines the possible operating modes (e.g., acting as a
+    DisplayPort source and a USB-C sink, or vice-versa).
+  - Set the active role of a video tester using the SetRoleVideoTester RPC,
+    instructing it to function in a specific video testing configuration.
+
+- Emulate display characteristics:
+  - Load Extended Display Identification Data (EDID) onto a video tester using
+    the LoadEdidVideoTester RPC. This allows the video tester to simulate the
+    presence and capabilities of a specific display, which is crucial for
+    testing device compatibility and video output behavior under various
+    display profiles.
+*/
+
+
+// Define the supported roles for the video tester device.
+enum Role {
+  ROLE_UNSPECIFIED = 0; // Default or unspecified role.
+  ROLE_DPSOURCE_USBCSINK = 1;
+  ROLE_DPSOURCE_DPSINK = 2;
+  ROLE_USBCSOURCE_USBCSINK = 3;
+  ROLE_USBCSOURCE_DPSINK = 4;
+}
+
+// Represents a video tester device.
+message VideoTester {
+  string id = 1; // Unique identifier for the video tester.
+  string name = 2; // Human-readable name of the video tester.
+}
+
+// Request message for getting a list of available video testers.
+message GetVideoTestersRequest {}
+
+// Response message containing a list of available video testers.
+message GetVideoTestersResponse {
+  repeated VideoTester testers = 1; // List of video tester devices.
+}
+
+// Request message for opening a specific video tester.
+message OpenVideoTesterRequest {
+  string id = 1; // ID of the video tester to open.
+}
+
+// Response message indicating the success of opening a video tester.
+message OpenVideoTesterResponse {
+  bool success = 1; // True if the video tester was successfully opened.
+}
+
+// Request message for closing a specific video tester.
+message CloseVideoTesterRequest {
+  string id = 1; // ID of the video tester to close.
+}
+
+// Response message indicating the success of closing a video tester.
+message CloseVideoTesterResponse {
+  bool success = 1; // True if the video tester was successfully closed.
+}
+
+// Request message for getting the list of supported roles for a video tester.
+message GetRolesRequest {
+  string id = 1; // ID of the video tester to get roles for.
+}
+
+// Response message containing the list of supported roles for a video tester.
+message GetRolesResponse {
+  repeated Role roles = 1; // List of supported roles for the video tester.
+}
+
+// Request message for selecting a specific role for a video tester.
+message SetRoleRequest {
+  string id = 1; // ID of the video tester to select the role for.
+  Role role = 2; // The role to be selected.
+}
+
+// Response message indicating the success of selecting a role for a video tester.
+message SetRoleResponse {
+  bool success = 1; // True if the role was successfully selected.
+}
+
+// Request message for loading an EDID (Extended Display Identification Data) for a video tester.
+message LoadEdidVideoTesterRequest {
+  string id = 1; // ID of the video tester to load the EDID for.
+  bytes edid = 2; // The EDID data to be loaded.
+}
+
+// Response message indicating the success of loading an EDID for a video tester.
+message LoadEdidVideoTesterResponse {
+  bool success = 1; // True if the EDID was successfully loaded.
+}
+
+// Service definition for interacting with video tester devices.
+service VideoTesterService {
+  // Retrieves a list of available video testers.
+  rpc GetVideoTesters(GetVideoTestersRequest) returns (GetVideoTestersResponse);
+
+  // Opens a specific video tester for interaction.
+  rpc OpenVideoTester(OpenVideoTesterRequest) returns (OpenVideoTesterResponse);
+  // Closes an opened video tester.
+  rpc CloseVideoTester(CloseVideoTesterRequest) returns (CloseVideoTesterResponse);
+
+  // Gets the list of supported roles for a given video tester.
+  rpc GetRolesVideoTester(GetRolesRequest) returns (GetRolesResponse);
+  // Selects a specific role for a given video tester.
+  rpc SetRoleVideoTester(SetRoleRequest) returns (SetRoleResponse);
+
+  // Loads the provided EDID data onto a given video tester.
+  rpc LoadEdidVideoTester(LoadEdidVideoTesterRequest) returns (LoadEdidVideoTesterResponse);
+}

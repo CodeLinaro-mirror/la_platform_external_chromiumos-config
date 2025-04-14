@@ -186,7 +186,8 @@ func (*TestSuite_TestCasesMetadata) isTestSuite_Spec() {}
 // test suite inclusion.
 //
 // Tests are included if they meet the following:
-//  - MATCH ALL of the [include] tags and at least one from [include] test names
+//  - MATCH ALL of the [include] tags and at least one from [include] test
+//  names
 //  - DO NOT MATCH ANY of the exclude tags or test names
 //
 // Tags must match exactly (i.e. no regexp, wildcard, etc. allowed).

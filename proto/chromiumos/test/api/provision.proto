@@ -20,21 +20,18 @@ service GenericProvisionService {
   // StartUp prepares the provision service by providing
   // necessary input values for initialization prior to
   // calling any other provision related service calls.
-  rpc StartUp(ProvisionStartupRequest)
-    returns (ProvisionStartupResponse);
+  rpc StartUp(ProvisionStartupRequest) returns (ProvisionStartupResponse);
 
   // Install installs a specified OS on the DUT.
-  // It is intended to be a generic installation grpc that may be used by all 
+  // It is intended to be a generic installation grpc that may be used by all
   // OS flavors.
-  rpc Install(InstallRequest)
-      returns (longrunning.Operation) {
+  rpc Install(InstallRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "InstallResponse",
       metadata_type: "InstallMetadata"
     };
   }
 }
-
 
 // ProvisionStartupRequest provides a generic form for initializing
 // the provision services. This provides an alternative route for
@@ -65,8 +62,9 @@ message ProvisionStartupResponse {
 }
 
 message InstallResponse {
-  // When the status code is other than SUCCESS, details in Status message should be
-  // parsed for ErrorInfo message with the following Reasons as the reason.
+  // When the status code is other than SUCCESS, details in Status message
+  // should be parsed for ErrorInfo message with the following Reasons as the
+  // reason.
   enum Status {
     // In proto3, zero value fields are indistinguishable from unset fields,
     // by design. They are not sent on the wire either.
@@ -113,6 +111,8 @@ message InstallResponse {
     STATUS_SUCCESS = 20;
     // status code: ABORTED
     STATUS_IMAGE_MISMATCH_POST_PROVISION_UPDATE = 21;
+    // status code: ABORTED
+    STATUS_PRE_PROVISION_USB_BOOT_FAILURE = 22;
   }
   Status status = 1;
 
@@ -124,8 +124,7 @@ message InstallResponse {
 }
 
 // Metadata for long running operation
-message InstallMetadata {
-}
+message InstallMetadata {}
 
 message InstallRequest {
   // Local or remote path to where the OS to be installed lives.
@@ -159,8 +158,8 @@ message KernelPrebuilts {
     string partition_name = 1;
     // Path to the new image file for that partition.
     StoragePath image_path = 2;
+    // Optional: Name of the ramdisk on that partition that this image file should be installed to.
+    string ramdisk_name = 3;
   }
   repeated PartitionImage partition_images = 1;
-  // TODO: b/392692756 - Add whatever info is necessary for flashing specific
-  // modules onto the ramdisk.
 }

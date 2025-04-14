@@ -16,7 +16,5 @@ service ChameleonLibService {
       returns (stream CheckChameleonHealthResponse);
 }
 
-message CheckChameleonHealthRequest {
-}
-message CheckChameleonHealthResponse {
-}
+message CheckChameleonHealthRequest {}
+message CheckChameleonHealthResponse {}

@@ -27,8 +27,7 @@ message ProximityConfig {
 
   // An empty message indicating that proximity sensor(s) are used,
   // but the config values are stored elsewhere.
-  message LegacyProximityConfig {
-  }
+  message LegacyProximityConfig {}
 
   message SemtechProximityConfig {
     message ChannelConfig {
@@ -63,8 +62,7 @@ message ProximityConfig {
     uint32 thresh_rising_period = 4;
   }
 
-  message ActivityProximityConfig {
-  }
+  message ActivityProximityConfig {}
 
   oneof config {
     LegacyProximityConfig legacy_config = 2;

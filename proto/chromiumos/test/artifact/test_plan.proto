@@ -13,7 +13,6 @@ import "chromiumos/test/api/v1/plan.proto";
 // Captures artifact for test plans.
 // NEXT TAG: 2
 message TestPlanArtifact {
-
   // Captures hardware test plans
   repeated chromiumos.test.api.v1.HWTestPlan hw_test_plans = 1;
 }

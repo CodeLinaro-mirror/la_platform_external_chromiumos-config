@@ -17,7 +17,7 @@ message PerfRecord {
   optional string object_path = 2;
 
   // Deprecated. See version field.
-  optional string branch = 3  [deprecated = true];
+  optional string branch = 3 [deprecated = true];
 
   // Version of the ChromeOS on the DUT where the perf data was collected.
   // Example R123-15771.0.0-94488 (R123 is branch, 15771.0.0 is buildID, 94488

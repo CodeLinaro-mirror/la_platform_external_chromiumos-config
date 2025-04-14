@@ -1,0 +1,21 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Defines the Chromium OS style for automatic reformatting.
+# http://clang.llvm.org/docs/ClangFormatStyleOptions.html
+# Please keep all directives after this one sorted alphabetically.
+BasedOnStyle: Chromium
+
+# Always end files with a newline.
+InsertNewlineAtEOF: true
+
+# This is permitted by the Google and Chromium style guides, and existing code
+# uses it heavily.
+AllowAllParametersOfDeclarationOnNextLine: true
+
+# NOLINT(reason) is used heavily by existing code.
+CommentPragmas: 'NOLINT:.*'
+
+# From upstream: crrev/c/4097043.
+InsertBraces: true

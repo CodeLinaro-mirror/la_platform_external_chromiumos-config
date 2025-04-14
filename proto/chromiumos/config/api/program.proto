@@ -132,9 +132,9 @@ message Program {
     //   KABY_LAKE_U_R -- indicates KBL-U or KBL-R chips (both ultra-low power)
     //
     string soc_family = 1;
-    Arch   soc_arch   = 2;
+    Arch soc_arch = 2;
 
-    string gpu_family = 3; // canonicalized gpu family name
+    string gpu_family = 3;  // canonicalized gpu family name
 
     // supported graphics APIs
     repeated GraphicsApi graphics_apis = 4;
@@ -166,9 +166,9 @@ message Program {
       string cpuset_nonurgent = 2;
 
       // Chromium kernel has a cpu-boost feature, which boosts CPUs for a short
-      // duration when user interaction is detected from input devices. This value
-      // specifies how much CPUs will be boosted.
-      // Minimum value: 0x0. Maximum value: 0x64.
+      // duration when user interaction is detected from input devices. This
+      // value specifies how much CPUs will be boosted. Minimum value: 0x0.
+      // Maximum value: 0x64.
       uint32 input_boost = 3;
 
       // Scheduler's boost value(%) for topmost applications on ARCVM. When

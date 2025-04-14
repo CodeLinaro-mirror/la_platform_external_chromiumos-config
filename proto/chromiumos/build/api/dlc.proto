@@ -18,6 +18,6 @@ message Dlc {
   // The DLC ID must follow a specific format that can be found in the DLC
   // developer doc below.
   message Id {
-      string value = 1;
+    string value = 1;
   }
 }

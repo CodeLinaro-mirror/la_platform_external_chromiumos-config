@@ -292,14 +292,25 @@ def _create_bluetooth(flags):
 def _create_health(
         vpd_has_sku_number = None,
         battery_has_smart_battery_info = None,
+        routines_battery_capacity_high_mah = None,
+        routines_battery_capacity_low_mah = None,
+        routines_battery_health_maximum_cycle_count = None,
         routines_battery_health_percent_battery_wear_allowed = None,
         routines_nvme_wear_level_wear_level_threshold = None):
     """Builds a HealthConfig proto."""
     routines = None
+    battery_capacity = None
     battery_health = None
     nvme_wear_level = None
-    if routines_battery_health_percent_battery_wear_allowed != None:
+    if routines_battery_capacity_high_mah != None or routines_battery_capacity_low_mah != None:
+        battery_capacity = health_pb.HealthConfig.BatteryCapacity(
+            high_mah = routines_battery_capacity_high_mah,
+            low_mah = routines_battery_capacity_low_mah,
+        )
+    if routines_battery_health_maximum_cycle_count != None or routines_battery_health_percent_battery_wear_allowed != None:
         battery_health = health_pb.HealthConfig.BatteryHealth(
+            maximum_cycle_count =
+                routines_battery_health_maximum_cycle_count,
             percent_battery_wear_allowed =
                 routines_battery_health_percent_battery_wear_allowed,
         )
@@ -308,8 +319,9 @@ def _create_health(
             wear_level_threshold =
                 routines_nvme_wear_level_wear_level_threshold,
         )
-    if battery_health or nvme_wear_level:
+    if battery_capacity or battery_health or nvme_wear_level:
         routines = health_pb.HealthConfig.Routines(
+            battery_capacity = battery_capacity,
             battery_health = battery_health,
             nvme_wear_level = nvme_wear_level,
         )

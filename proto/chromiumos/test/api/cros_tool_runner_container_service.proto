@@ -14,16 +14,13 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 // Exposes common docker commands as services
 service CrosToolRunnerContainerService {
   // Creates a docker network
-  rpc CreateNetwork(CreateNetworkRequest)
-    returns (CreateNetworkResponse);
+  rpc CreateNetwork(CreateNetworkRequest) returns (CreateNetworkResponse);
 
   // Retrieves info of a docker network
-  rpc GetNetwork(GetNetworkRequest)
-    returns (GetNetworkResponse);
+  rpc GetNetwork(GetNetworkRequest) returns (GetNetworkResponse);
 
   // Shuts down CTR container service
-  rpc Shutdown(ShutdownRequest)
-    returns (ShutdownResponse);
+  rpc Shutdown(ShutdownRequest) returns (ShutdownResponse);
 
   // Logs in a docker image registry server
   // Call LoginRegistry before StartContainer to avoid permission denied errors.
@@ -32,8 +29,7 @@ service CrosToolRunnerContainerService {
   // activate-service-account`; for local development, the command is `gcloud
   // auth login`.
   // Note that the token is short lived for an hour.
-  rpc LoginRegistry(LoginRegistryRequest)
-    returns (LoginRegistryResponse);
+  rpc LoginRegistry(LoginRegistryRequest) returns (LoginRegistryResponse);
 
   // Runs a docker container with the provided start command.
   // This assumes docker is already authenticated to pull the supplied image.
@@ -43,8 +39,7 @@ service CrosToolRunnerContainerService {
   // StartContainer always returns a success response (for valid requests) as
   // detached mode starts a container in the background. Clients may call
   // GetContainer to verify the container has successfully started before use.
-  rpc StartContainer(StartContainerRequest)
-    returns (StartContainerResponse);
+  rpc StartContainer(StartContainerRequest) returns (StartContainerResponse);
 
   // Runs a docker container that has a template implemented. A template
   // simplifies the data required in the request, and provides placeholders to
@@ -53,15 +48,13 @@ service CrosToolRunnerContainerService {
   // A template implementation converts the request to the generic
   // StartContainer endpoint, and returns the generic StartContainerResponse.
   rpc StartTemplatedContainer(StartTemplatedContainerRequest)
-    returns (StartContainerResponse);
+      returns (StartContainerResponse);
 
   // Executes a stack of commands in order. Only certain commands are supported.
-  rpc StackCommands(StackCommandsRequest)
-    returns (StackCommandsResponse);
+  rpc StackCommands(StackCommandsRequest) returns (StackCommandsResponse);
 
   // Retrieves information of a container
-  rpc GetContainer(GetContainerRequest)
-    returns (GetContainerResponse);
+  rpc GetContainer(GetContainerRequest) returns (GetContainerResponse);
 }
 
 // Represents basic info of a docker network
@@ -189,7 +182,8 @@ message StartTemplatedContainerRequest {
   Template template = 3;
   // Name of an existing network to join
   string network = 4;
-  // Host directory to be mounted into the container for logs and other artifacts
+  // Host directory to be mounted into the container for logs and other
+  // artifacts
   string artifact_dir = 5;
 }
 

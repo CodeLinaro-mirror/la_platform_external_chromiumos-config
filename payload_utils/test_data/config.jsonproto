@@ -1,0 +1,91 @@
+{
+  "designList": [
+    {
+      "id": {
+        "value": "TestDesignNoCell"
+      },
+      "name": "TestDesignNoCell",
+      "programId": {
+        "value": "TestProgram"
+      },
+      "configs": [
+        {
+          "id": {
+            "value": "TestDesignNoCell:123"
+          },
+          "hardwareFeatures": {
+             "cellular": {
+                "present": "NOT_PRESENT"
+             }
+          }
+        }
+      ]
+    },
+    {
+      "id": {
+        "value": "TestDesignWithCell"
+      },
+      "name": "TestDesignWithCell",
+      "programId": {
+        "value": "TestProgram"
+      },
+      "configs": [
+        {
+          "id": {
+            "value": "TestDesignWithCell:456"
+          },
+          "hardwareFeatures": {
+            "cellular": {
+              "present": "PRESENT",
+              "model": "testdesignwithcell_fm101",
+              "modemType": "MODEM_FM101"
+            }
+          }
+        },
+        {
+          "id": {
+            "value": "TestDesignWithCell:789"
+          },
+          "hardwareFeatures": {
+            "cellular": {
+              "present": "PRESENT",
+              "model": "testdesignwithcell_em060",
+              "modemType": "MODEM_EM060"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "softwareConfigs": [
+    {
+      "designConfigId": {
+        "value": "TestDesignNoCell:123"
+      },
+      "idScanConfig": {
+        "firmwareSku": 123
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "TestDesignWithCell:456"
+      },
+      "idScanConfig": {
+        "firmwareSku": 456
+      }
+    },
+    {
+      "designConfigId": {
+        "value": "TestDesignWithCell:789"
+      },
+      "idScanConfig": {
+        "firmwareSku": 789
+      }
+    }
+  ],
+  "partnerList": [],
+  "components": [],
+  "programList": [],
+  "deviceBrandList": [],
+  "brandConfigs": []
+}

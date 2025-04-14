@@ -21,8 +21,11 @@ echo "Running pylint..."
 PYTHONPATH=payload_utils vpython3 -m pylint "$(pwd)/payload_utils" \
     --rcfile=payload_utils/pylintrc
 
-echo "Checking Python files formatted with yapf..."
-if ! vpython3 -m yapf --style .style.yapf --diff -r payload_utils ; then
-    echo "Python files require reformatting. Please run 'yapf --style .style.yapf --in-place -r payload_utils'."
-    exit 1
+echo "Checking Python files formatted..."
+files=(
+  $(git ls-tree -r HEAD | awk '$1 != "120000" && $NF ~ /\.py$/ {print $NF}')
+)
+if ! ./black --diff "${files[@]}"; then
+  echo "Python files require reformatting."
+  exit 1
 fi

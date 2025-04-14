@@ -70,8 +70,9 @@ message TestCaseResult {
 
   // The error(s) that caused the test to fail.
   //
-  // If there is more than one error (e.g. due to multiple expectation failures),
-  // a stable sorting should be used. A recommended form of stable sorting is:
+  // If there is more than one error (e.g. due to multiple expectation
+  // failures), a stable sorting should be used. A recommended form of stable
+  // sorting is:
   // - Fatal errors (errors that cause the test to terminate immediately first,
   //   then
   // - Within fatal/non-fatal errors, sort by chronological order
@@ -80,6 +81,7 @@ message TestCaseResult {
 
   // Error represents a problem that caused a test to fail, such as a crash
   // or expectation failure.
+  // NEXT TAG: 3
   message Error {
     // The error message. This should only be the error message and
     // should not include any stack traces. An example would be the
@@ -87,26 +89,22 @@ message TestCaseResult {
     //
     // This message may be used to cluster related failures together.
     string message = 1;
+
+    // The stack trace.
+    string stack_trace = 2;
   }
 
-  message Artifacts {
-  }
+  message Artifacts {}
 
-  message Pass {
-  }
+  message Pass {}
 
-  message Fail {
-  }
+  message Fail {}
 
-  message Crash {
-  }
+  message Crash {}
 
-  message Abort {
-  }
+  message Abort {}
 
-  message Skip {
-  }
+  message Skip {}
 
-  message NotRun {
-  }
+  message NotRun {}
 }
