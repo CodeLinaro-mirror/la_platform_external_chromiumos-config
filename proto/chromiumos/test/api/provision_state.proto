@@ -8,7 +8,6 @@ package chromiumos.test.api;
 
 option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
-import "chromiumos/build/api/ash_chrome_config.proto";
 import "chromiumos/build/api/dlc.proto";
 import "chromiumos/build/api/firmware_config.proto";
 import "chromiumos/build/api/portage.proto";
@@ -39,7 +38,6 @@ message ProvisionState {
   Id id = 1;
 
   chromiumos.build.api.FirmwareConfig firmware = 2;
-  chromiumos.build.api.AshChromeConfig ash_chrome = 10;
 
   message SystemImage {
     // Unique version used in constructing the overall Id
@@ -92,7 +90,6 @@ message ProvisionState {
 // ProvisionState that's requested from the provisioning service.
 message ProvisionConfig {
   chromiumos.build.api.FirmwareConfig firmware = 1;
-  chromiumos.build.api.AshChromeConfig ash_chrome = 8;
   repeated chromiumos.build.api.Dlc.Id dlcs = 2;
   repeated ProvisionState.Package packages = 3;
 

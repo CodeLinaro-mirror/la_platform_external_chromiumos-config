@@ -27,7 +27,6 @@ message Template {
     GenericTemplate generic = 9;
     CrosVMProvisionTemplate cros_vm_provision = 10;
     PostProcessTemplate post_process = 11;
-    AshChromeProvisionTemplate ash_chrome_provision = 12;
   }
 }
 
@@ -139,6 +138,3 @@ message PostProcessTemplate {
   // be mounted.
   string post_process_src_dir = 1;
 }
-
-// Plain template to demonstrate the usage of ash-chrome-provision container.
-message AshChromeProvisionTemplate {}

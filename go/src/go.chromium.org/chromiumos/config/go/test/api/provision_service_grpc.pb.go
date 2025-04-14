@@ -44,8 +44,6 @@ type ProvisionServiceClient interface {
 	InstallArc(ctx context.Context, in *InstallArcRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// InstallFirmware installs all of the firmware images specified.
 	InstallFirmware(ctx context.Context, in *InstallFirmwareRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// InstallAshChrome installs the ash-chrome from particular source.
-	InstallAshChrome(ctx context.Context, in *InstallAshChromeRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
 type provisionServiceClient struct {
@@ -92,15 +90,6 @@ func (c *provisionServiceClient) InstallFirmware(ctx context.Context, in *Instal
 	return out, nil
 }
 
-func (c *provisionServiceClient) InstallAshChrome(ctx context.Context, in *InstallAshChromeRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
-	out := new(longrunning.Operation)
-	err := c.cc.Invoke(ctx, "/chromiumos.test.api.ProvisionService/InstallAshChrome", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // ProvisionServiceServer is the server API for ProvisionService service.
 // All implementations should embed UnimplementedProvisionServiceServer
 // for forward compatibility
@@ -126,8 +115,6 @@ type ProvisionServiceServer interface {
 	InstallArc(context.Context, *InstallArcRequest) (*longrunning.Operation, error)
 	// InstallFirmware installs all of the firmware images specified.
 	InstallFirmware(context.Context, *InstallFirmwareRequest) (*longrunning.Operation, error)
-	// InstallAshChrome installs the ash-chrome from particular source.
-	InstallAshChrome(context.Context, *InstallAshChromeRequest) (*longrunning.Operation, error)
 }
 
 // UnimplementedProvisionServiceServer should be embedded to have forward compatible implementations.
@@ -145,9 +132,6 @@ func (UnimplementedProvisionServiceServer) InstallArc(context.Context, *InstallA
 }
 func (UnimplementedProvisionServiceServer) InstallFirmware(context.Context, *InstallFirmwareRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InstallFirmware not implemented")
-}
-func (UnimplementedProvisionServiceServer) InstallAshChrome(context.Context, *InstallAshChromeRequest) (*longrunning.Operation, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method InstallAshChrome not implemented")
 }
 
 // UnsafeProvisionServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -233,24 +217,6 @@ func _ProvisionService_InstallFirmware_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProvisionService_InstallAshChrome_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(InstallAshChromeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProvisionServiceServer).InstallAshChrome(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/chromiumos.test.api.ProvisionService/InstallAshChrome",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProvisionServiceServer).InstallAshChrome(ctx, req.(*InstallAshChromeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // ProvisionService_ServiceDesc is the grpc.ServiceDesc for ProvisionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -273,10 +239,6 @@ var ProvisionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "InstallFirmware",
 			Handler:    _ProvisionService_InstallFirmware_Handler,
-		},
-		{
-			MethodName: "InstallAshChrome",
-			Handler:    _ProvisionService_InstallAshChrome_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
