@@ -1,0 +1,73 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// This proto defines third-party software inventory metadata schema.
+//
+// Chromite service/third_party_inventory.py produces messages conforming to
+// this schema, which are then uploaded to ChromeOS internal infra for further
+// processing.
+//
+// The schema here is intended for internal toolings. It isn't part of (and
+// shouldn't be depended on by) the Build API.
+//
+// Introducing breaking changes here is okay as long as we make corresponding
+// internal changes (e.g. Google Cloud resources).
+
+syntax = "proto3";
+
+package chromiumos.build.api;
+
+option go_package = "go.chromium.org/chromiumos/config/go/build/api";
+
+// OS version tuple. A version string can be constructed as:
+// `milestone.build.branch.patch`.
+message OsVersion {
+  // Milestone number (a.k.a Chrome version).
+  int32 milestone = 1;
+
+  // Build number.
+  int32 build = 2;
+
+  // Branch number.
+  int32 branch = 3;
+
+  // Patch number.
+  int32 patch = 4;
+};
+
+// Metadata about a portage package.
+message PackageMetadata {
+  // Board name, like amd64-generic.
+  string board = 1;
+
+  // OS version.
+  OsVersion os_ver = 2;
+
+  // Whether this package is shipped.
+  bool shipped = 3;
+
+  // Portage repository of this package.
+  string portage_repository = 4;
+
+  // Portage package category, like "app-shells".
+  string category = 5;
+
+  // Portage package name, like "bash".
+  string name = 6;
+
+  // Portage package version, without the revision part.
+  string version = 7;
+
+  // Portage package revision.
+  int32 revision = 8;
+
+  // Package description.
+  string description = 9;
+
+  // Installed size reported by Portage.
+  int64 installed_size = 10;
+
+  // Package homepage URLs.
+  repeated string homepages = 11;
+};

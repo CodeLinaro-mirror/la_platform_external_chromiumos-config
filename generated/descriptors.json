@@ -11776,6 +11776,136 @@
         "isImport": false,
         "isSyntaxUnspecified": false
       },
+      "messageType": [
+        {
+          "field": [
+            {
+              "jsonName": "milestone",
+              "label": "LABEL_OPTIONAL",
+              "name": "milestone",
+              "number": 1,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "build",
+              "label": "LABEL_OPTIONAL",
+              "name": "build",
+              "number": 2,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "branch",
+              "label": "LABEL_OPTIONAL",
+              "name": "branch",
+              "number": 3,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "patch",
+              "label": "LABEL_OPTIONAL",
+              "name": "patch",
+              "number": 4,
+              "type": "TYPE_INT32"
+            }
+          ],
+          "name": "OsVersion"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "board",
+              "label": "LABEL_OPTIONAL",
+              "name": "board",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "osVer",
+              "label": "LABEL_OPTIONAL",
+              "name": "os_ver",
+              "number": 2,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.build.api.OsVersion"
+            },
+            {
+              "jsonName": "shipped",
+              "label": "LABEL_OPTIONAL",
+              "name": "shipped",
+              "number": 3,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "portageRepository",
+              "label": "LABEL_OPTIONAL",
+              "name": "portage_repository",
+              "number": 4,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "category",
+              "label": "LABEL_OPTIONAL",
+              "name": "category",
+              "number": 5,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "name",
+              "label": "LABEL_OPTIONAL",
+              "name": "name",
+              "number": 6,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "version",
+              "label": "LABEL_OPTIONAL",
+              "name": "version",
+              "number": 7,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "revision",
+              "label": "LABEL_OPTIONAL",
+              "name": "revision",
+              "number": 8,
+              "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "description",
+              "label": "LABEL_OPTIONAL",
+              "name": "description",
+              "number": 9,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "installedSize",
+              "label": "LABEL_OPTIONAL",
+              "name": "installed_size",
+              "number": 10,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "homepages",
+              "label": "LABEL_REPEATED",
+              "name": "homepages",
+              "number": 11,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "PackageMetadata"
+        }
+      ],
+      "name": "chromiumos/build/api/third_party_inventory.proto",
+      "options": {
+        "goPackage": "go.chromium.org/chromiumos/config/go/build/api"
+      },
+      "package": "chromiumos.build.api",
+      "syntax": "proto3"
+    },
+    {
+      "bufExtension": {
+        "isImport": false,
+        "isSyntaxUnspecified": false
+      },
       "dependency": [
         "chromiumos/config/api/design.proto",
         "chromiumos/config/api/partner.proto",
