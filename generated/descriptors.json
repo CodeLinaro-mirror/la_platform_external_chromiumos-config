@@ -21898,6 +21898,20 @@
               "name": "servod_port",
               "number": 1,
               "type": "TYPE_INT32"
+            },
+            {
+              "jsonName": "servoSerial",
+              "label": "LABEL_OPTIONAL",
+              "name": "servo_serial",
+              "number": 2,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "containerName",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_name",
+              "number": 3,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "StationIdentifier"
