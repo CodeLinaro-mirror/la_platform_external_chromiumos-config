@@ -20868,6 +20868,13 @@
               "number": 4,
               "type": "TYPE_ENUM",
               "typeName": ".chromiumos.test.lab.api.PeripheralState"
+            },
+            {
+              "jsonName": "containerName",
+              "label": "LABEL_OPTIONAL",
+              "name": "container_name",
+              "number": 5,
+              "type": "TYPE_STRING"
             }
           ],
           "name": "Servo"

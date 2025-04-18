@@ -381,6 +381,8 @@ message Servo {
   string serial = 3;
   // Current state of the servo, updated by latest auto-repair.
   PeripheralState state = 4;
+  // The name for the container that runs the servod.
+  string container_name = 5;
 }
 
 message Touch {
