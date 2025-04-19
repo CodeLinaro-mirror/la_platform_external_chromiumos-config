@@ -257,18 +257,19 @@ type InstallCrosRequest struct {
 	CrosImagePath *_go.StoragePath `protobuf:"bytes,1,opt,name=cros_image_path,json=crosImagePath,proto3" json:"cros_image_path,omitempty"`
 	// dlc_specs specifies which DLCs to install on the DUT after provisioning.
 	DlcSpecs []*InstallCrosRequest_DLCSpec `protobuf:"bytes,2,rep,name=dlc_specs,json=dlcSpecs,proto3" json:"dlc_specs,omitempty"`
-	// preserve_stateful specifies whether the stateful partition should be preserved during
-	// provisioning. If preserve_stateful is not set to true, the stateful partition is
-	// block-level wiped and reset during provisioning.
+	// preserve_stateful specifies whether the stateful partition should be
+	// preserved during provisioning. If preserve_stateful is not set to true, the
+	// stateful partition is block-level wiped and reset during provisioning.
 	PreserveStateful bool `protobuf:"varint,3,opt,name=preserve_stateful,json=preserveStateful,proto3" json:"preserve_stateful,omitempty"`
 	// Prevents device reboot during system image provisioning.
 	PreventReboot bool `protobuf:"varint,4,opt,name=prevent_reboot,json=preventReboot,proto3" json:"prevent_reboot,omitempty"`
 	// Provides a possible tar file to overwrite current install files
 	OverwritePayload *_go.StoragePath `protobuf:"bytes,5,opt,name=overwrite_payload,json=overwritePayload,proto3" json:"overwrite_payload,omitempty"`
-	// update_firmware will update OS bundled firmware(RW only) during the provision.
-	// Please note this firmware update only update RW firmware that built in the
-	// target_build OS image and it is different from firmware provision which
-	// download and update a separate firmware image based on request.
+	// update_firmware will update OS bundled firmware(RW only) during the
+	// provision. Please note this firmware update only update RW firmware that
+	// built in the target_build OS image and it is different from firmware
+	// provision which download and update a separate firmware image based on
+	// request.
 	UpdateFirmware bool `protobuf:"varint,6,opt,name=update_firmware,json=updateFirmware,proto3" json:"update_firmware,omitempty"`
 }
 

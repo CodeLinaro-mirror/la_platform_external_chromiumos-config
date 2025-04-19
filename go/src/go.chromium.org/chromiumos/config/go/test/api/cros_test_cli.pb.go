@@ -43,7 +43,8 @@ type CrosTestRequest struct {
 	InventoryServer *api.IpEndpoint `protobuf:"bytes,4,opt,name=inventory_server,json=inventoryServer,proto3" json:"inventory_server,omitempty"`
 	// Test harness specific metadata
 	Metadata *anypb.Any `protobuf:"bytes,5,opt,name=metadata,proto3" json:"metadata,omitempty"`
-	// Generic args which will be directly passed to the harness. The driver is responsible for handling them
+	// Generic args which will be directly passed to the harness. The driver is
+	// responsible for handling them
 	Args []*Arg `protobuf:"bytes,6,rep,name=args,proto3" json:"args,omitempty"`
 	// Publish server address.
 	PublishServers []*PublishServer `protobuf:"bytes,7,rep,name=publish_servers,json=publishServers,proto3" json:"publish_servers,omitempty"`

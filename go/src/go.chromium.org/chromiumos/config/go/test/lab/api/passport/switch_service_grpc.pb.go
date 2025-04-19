@@ -24,7 +24,8 @@ const _ = grpc.SupportPackageIsVersion7
 type SwitchServiceClient interface {
 	// GetSwitches probes all connected switches to the host device.
 	GetSwitches(ctx context.Context, in *GetSwitchesRequest, opts ...grpc.CallOption) (*GetSwitchesResponse, error)
-	// ResetAllSwitches re-initializes all found switches and sets them to the "disabled" state.
+	// ResetAllSwitches re-initializes all found switches and sets them to the
+	// "disabled" state.
 	ResetAllSwitches(ctx context.Context, in *ResetAllSwitchesRequest, opts ...grpc.CallOption) (*ResetAllSwitchesResponse, error)
 	// ConfigureSwitchPort configures a single port on a switch.
 	ConfigureSwitchPort(ctx context.Context, in *ConfigureSwitchPortRequest, opts ...grpc.CallOption) (*ConfigureSwitchPortResponse, error)
@@ -71,7 +72,8 @@ func (c *switchServiceClient) ConfigureSwitchPort(ctx context.Context, in *Confi
 type SwitchServiceServer interface {
 	// GetSwitches probes all connected switches to the host device.
 	GetSwitches(context.Context, *GetSwitchesRequest) (*GetSwitchesResponse, error)
-	// ResetAllSwitches re-initializes all found switches and sets them to the "disabled" state.
+	// ResetAllSwitches re-initializes all found switches and sets them to the
+	// "disabled" state.
 	ResetAllSwitches(context.Context, *ResetAllSwitchesRequest) (*ResetAllSwitchesResponse, error)
 	// ConfigureSwitchPort configures a single port on a switch.
 	ConfigureSwitchPort(context.Context, *ConfigureSwitchPortRequest) (*ConfigureSwitchPortResponse, error)

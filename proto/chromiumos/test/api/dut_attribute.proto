@@ -40,8 +40,8 @@ message DutAttribute {
   // Definition of the attribute source data
   oneof data_source {
     FlatConfigSource flat_config_source = 3;
-    HwidSource       hwid_source        = 4;
-    TleSource        tle_source         = 7;
+    HwidSource hwid_source = 4;
+    TleSource tle_source = 7;
   }
 
   // Optional values and excluded values.
@@ -65,11 +65,11 @@ message DutAttribute {
   repeated string allowed_values = 5;
   repeated string exclude_values = 6;
 
-  // A field spec is a chain of field names ending in a scalar or enum, excluding
-  // floating point values.
+  // A field spec is a chain of field names ending in a scalar or enum,
+  // excluding floating point values.
   //   eg: 'program.platform.soc_arch'
   message FieldSpec {
-      string path = 1;
+    string path = 1;
   }
 
   // FlatConfigSource specifies an attribute value that comes directly from the
@@ -108,8 +108,8 @@ message DutCriterion {
 // DutTarget is a list of DutCriterion that must be met by the DUT executing
 // tests. All criteria must be met (AND logic is applied) by the DUT.
 message DutTarget {
-    repeated DutCriterion criteria = 1;
+  repeated DutCriterion criteria = 1;
 
-    // Provisioning configuration for this device
-    ProvisionConfig provision_config = 2;
+  // Provisioning configuration for this device
+  ProvisionConfig provision_config = 2;
 }

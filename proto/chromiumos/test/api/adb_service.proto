@@ -10,7 +10,7 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 service ADBService {
   // ExecCommand runs a command on ABD.
-  rpc ExecCommand(ADBCommandRequest) returns (ADBCommandResponse){}
+  rpc ExecCommand(ADBCommandRequest) returns (ADBCommandResponse) {}
 }
 
 message ADBCommandRequest {

@@ -18,7 +18,6 @@ import "chromiumos/build/api/system_image.proto";
 // Build targets will change over time with alternate builds, but the release
 // target will remain stable over time.
 message ReleaseTarget {
-
   ReleaseTargetId id = 1;
 
   // Human friendly name

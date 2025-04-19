@@ -172,8 +172,8 @@ message ContainerRequest {
     repeated DynamicDep dynamic_deps = 3;
   }
 
-  // Identifier for DynamicDependencies to inject this container's IpEndpoint, eg
-  // cros-provision, cros-dut, etc.
+  // Identifier for DynamicDependencies to inject this container's IpEndpoint,
+  // eg cros-provision, cros-dut, etc.
   string dynamic_identifier = 1;
   Template container = 2;
   // Dynamic dependencies for the templated container.

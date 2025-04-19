@@ -1698,7 +1698,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -2015,7 +2020,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -2319,7 +2329,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -2636,7 +2651,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -2939,7 +2959,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -3250,7 +3275,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {

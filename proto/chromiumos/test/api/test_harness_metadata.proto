@@ -14,7 +14,9 @@ import "chromiumos/test/api/test_case_metadata.proto";
 // is NOT used for running tests but may be used to interpret results
 // or monitor tests.
 message TestHarnessMetadata {
-  oneof metadata_type { TastMetadata tast_metadata = 1; }
+  oneof metadata_type {
+    TastMetadata tast_metadata = 1;
+  }
   message TastMetadata {
     repeated TastFixtureMetadata tast_fixture_metadata = 1;
   }
@@ -22,13 +24,15 @@ message TestHarnessMetadata {
 
 // TastFixtureMetadata contains non-test Tast metadata.
 message TastFixtureMetadata {
-  string id = 1; // Of the form <bundle name>_<bundle type>_<fixture name>
-  repeated Contact owners = 2;    // Contacts for ownership
-  BugComponent bug_component = 3; // Bug component to be used to file bugs
-  string path_to_file = 4;        // The location of the source code
-  string parent = 5;              // The parent of the fixture
+  string id = 1;  // Of the form <bundle name>_<bundle type>_<fixture name>
+  repeated Contact owners = 2;     // Contacts for ownership
+  BugComponent bug_component = 3;  // Bug component to be used to file bugs
+  string path_to_file = 4;         // The location of the source code
+  string parent = 5;               // The parent of the fixture
 }
 
 // TestHarnessMetadataList is a list of TestHarnessMetadata for ease
 // of serialization into a file.
-message TestHarnessMetadataList { repeated TestHarnessMetadata values = 1; }
+message TestHarnessMetadataList {
+  repeated TestHarnessMetadata values = 1;
+}

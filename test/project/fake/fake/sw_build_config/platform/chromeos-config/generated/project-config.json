@@ -110,7 +110,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "fingerprint-diag": {
@@ -154,6 +159,10 @@
         "dgpu": {
           "dgpu-type": "nv3050",
           "has-dgpu": true
+        },
+        "dsp": {
+          "dsp-vendor": "intel",
+          "has-dsp": true
         },
         "fingerprint": {
           "board": "fake_fingerprint_board",
@@ -1397,6 +1406,7 @@
           "signature-id": "project_a"
         },
         "hardware-properties": {
+          "ec-max-calibration-accel": 100,
           "ec-max-sensor-odr": 50000,
           "form-factor": "CONVERTIBLE",
           "has-audio-jack": true,
@@ -3759,7 +3769,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -4131,7 +4146,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -4490,7 +4510,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -4862,7 +4887,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -5220,7 +5250,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -5586,7 +5621,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -5953,7 +5993,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -6326,7 +6371,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -6686,7 +6736,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -7059,7 +7114,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -7418,7 +7478,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {
@@ -7785,7 +7850,12 @@
             "has-sku-number": true
           },
           "routines": {
+            "battery-capacity": {
+              "high-mah": 10000,
+              "low-mah": 1000
+            },
             "battery-health": {
+              "maximum-cycle-count": 1000,
               "percent-battery-wear-allowed": 50
             },
             "nvme-wear-level": {

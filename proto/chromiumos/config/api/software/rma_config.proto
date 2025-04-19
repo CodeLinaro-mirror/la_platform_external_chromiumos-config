@@ -13,7 +13,7 @@ package chromiumos.config.api.software;
 // https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform2/chromeos-config/README.md
 message RmaConfig {
   message SsfcConfig {
-    message SsfcComponentTypeConfig{
+    message SsfcComponentTypeConfig {
       message SsfcProbeableComponent {
         string identifier = 1;
         uint32 value = 2;

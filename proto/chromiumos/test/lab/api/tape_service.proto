@@ -11,22 +11,21 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/lab/api";
 // Provides access to the TAPE GCP.
 service TapeService {
   // Sends a request to the TAPE GCP.
-  rpc CallTape(CallTapeRequest)
-      returns (CallTapeResponse);
+  rpc CallTape(CallTapeRequest) returns (CallTapeResponse);
 }
 
 message CallTapeRequest {
-	// The REST API endpoint which is called.
-	string request_endpoint = 1;
-	// The method (POST,GET...) with which the endpoint is called.
-	string request_method = 2;
-	// Timeout for the call.
-	int32 request_timeout = 3;
-	// The payload for the call.
-	bytes payload_bytes = 4;
+  // The REST API endpoint which is called.
+  string request_endpoint = 1;
+  // The method (POST,GET...) with which the endpoint is called.
+  string request_method = 2;
+  // Timeout for the call.
+  int32 request_timeout = 3;
+  // The payload for the call.
+  bytes payload_bytes = 4;
 }
 
 message CallTapeResponse {
-	// The response from the TAPE GCP.
-	bytes payload_bytes = 1;
+  // The response from the TAPE GCP.
+  bytes payload_bytes = 1;
 }

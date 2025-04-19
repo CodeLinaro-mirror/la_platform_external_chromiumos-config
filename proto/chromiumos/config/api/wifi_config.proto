@@ -71,117 +71,116 @@ message WifiConfig {
   }
 
   message IntelConfig {
-
     message SarTable {
-        // Wireless SAR table Settings.
-        uint32 sar_table_version = 1;
-        // WiFi power chain for use with Intel drivers. Limits in units
-        // of 0.125 dBm.
-        message TransmitPowerChain {
-          // 2G band power limit: All 2G band channels. (0.125 dBm)
-          uint32 limit_2g = 1;
-          // 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm)
-          uint32 limit_5g_1 = 2;
-          // 5G band 2 power limit: 5.35G-5.47G channels. (0.125 dBm)
-          uint32 limit_5g_2 = 3;
-          // 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm)
-          uint32 limit_5g_3 = 4;
-          // 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm)
-          uint32 limit_5g_4 = 5;
-          // 5G band 5 power limit: 5.95G-6.165G channels. (0.125 dBm)
-          uint32 limit_5g_5 = 6;
-          // 6G band 1 power limit: 6.165G-6.405G channels. (0.125 dBm)
-          uint32 limit_6g_1 = 7;
-          // 6G band 2 power limit: 6.405G-6.525G channels. (0.125 dBm)
-          uint32 limit_6g_2 = 8;
-          // 6G band 3 power limit: 6.525G-6.705G channels. (0.125 dBm)
-          uint32 limit_6g_3 = 9;
-          // 6G band 4 power limit: 6.705G-6.865G channels. (0.125 dBm)
-          uint32 limit_6g_4 = 10;
-          // 6G band 5 power limit: 6.865G-7.105G channels. (0.125 dBm)
-          uint32 limit_6g_5 = 11;
-        }
+      // Wireless SAR table Settings.
+      uint32 sar_table_version = 1;
+      // WiFi power chain for use with Intel drivers. Limits in units
+      // of 0.125 dBm.
+      message TransmitPowerChain {
+        // 2G band power limit: All 2G band channels. (0.125 dBm)
+        uint32 limit_2g = 1;
+        // 5G band 1 power limit: 5.15G-5.35G channels. (0.125 dBm)
+        uint32 limit_5g_1 = 2;
+        // 5G band 2 power limit: 5.35G-5.47G channels. (0.125 dBm)
+        uint32 limit_5g_2 = 3;
+        // 5G band 3 power limit: 5.47G-5.725G channels. (0.125 dBm)
+        uint32 limit_5g_3 = 4;
+        // 5G band 4 power limit: 5.725G-5.95G channels. (0.125 dBm)
+        uint32 limit_5g_4 = 5;
+        // 5G band 5 power limit: 5.95G-6.165G channels. (0.125 dBm)
+        uint32 limit_5g_5 = 6;
+        // 6G band 1 power limit: 6.165G-6.405G channels. (0.125 dBm)
+        uint32 limit_6g_1 = 7;
+        // 6G band 2 power limit: 6.405G-6.525G channels. (0.125 dBm)
+        uint32 limit_6g_2 = 8;
+        // 6G band 3 power limit: 6.525G-6.705G channels. (0.125 dBm)
+        uint32 limit_6g_3 = 9;
+        // 6G band 4 power limit: 6.705G-6.865G channels. (0.125 dBm)
+        uint32 limit_6g_4 = 10;
+        // 6G band 5 power limit: 6.865G-7.105G channels. (0.125 dBm)
+        uint32 limit_6g_5 = 11;
+      }
 
-        // TransmitPowerChain settings when operating in tablet and non-tablet
-        // modes. Each mode additionally provides chain a and chain b settings.
-        // Revision 2 provides concurrency dual band settings.
-        // These are power configs for a given antenna, a vs. b.
-        TransmitPowerChain tablet_mode_power_table_a = 3;
-        TransmitPowerChain tablet_mode_power_table_b = 4;
-        TransmitPowerChain non_tablet_mode_power_table_a = 5;
-        TransmitPowerChain non_tablet_mode_power_table_b = 6;
-        TransmitPowerChain cdb_tablet_mode_power_table_a = 7;
-        TransmitPowerChain cdb_tablet_mode_power_table_b = 8;
-        TransmitPowerChain cdb_non_tablet_mode_power_table_a = 9;
-        TransmitPowerChain cdb_non_tablet_mode_power_table_b = 10;
+      // TransmitPowerChain settings when operating in tablet and non-tablet
+      // modes. Each mode additionally provides chain a and chain b settings.
+      // Revision 2 provides concurrency dual band settings.
+      // These are power configs for a given antenna, a vs. b.
+      TransmitPowerChain tablet_mode_power_table_a = 3;
+      TransmitPowerChain tablet_mode_power_table_b = 4;
+      TransmitPowerChain non_tablet_mode_power_table_a = 5;
+      TransmitPowerChain non_tablet_mode_power_table_b = 6;
+      TransmitPowerChain cdb_tablet_mode_power_table_a = 7;
+      TransmitPowerChain cdb_tablet_mode_power_table_b = 8;
+      TransmitPowerChain cdb_non_tablet_mode_power_table_a = 9;
+      TransmitPowerChain cdb_non_tablet_mode_power_table_b = 10;
     }
 
     SarTable sar_table = 1;
 
     message Offsets {
-        // Wireless Geo Delta Settings version.
-        uint32 wgds_version = 1;
+      // Wireless Geo Delta Settings version.
+      uint32 wgds_version = 1;
 
-        // Offsets which are applied to WiFi power limits depending on the current
-        // regulatory domain. Offsets in units of 0.125 dBm. When the
-        // current regulatory domain is unknown or has yet to be determined, the
-        // base transmit power limits are used without any geo offsets applied.
-        // 'geo-offsets-fcc' is used for regulatory domains which follow FCC
-        // guidelines, 'geo-offsets-eu' is used for regulatory domains which follow
-        // ETSI guidelines, and 'geo-offsets-rest-of-world' is used for regulatory
-        // domains which don't follow FCC or ETSI guidelines.
-        message GeoOffsets {
-          // Defines the 2.4 GHz upper value for the allowed power to not be crossed
-          // by applying the Geo offset.
-          uint32 max_2g = 1;
-          // Value to be added to the 2.4GHz WiFi band for chain a. (0.125 dBm)
-          uint32 offset_2g_a = 2;
-          // Value to be added to the 2.4GHz WiFi band for chain b. (0.125 dBm)
-          uint32 offset_2g_b = 3;
-          // Defines the 5 GHz upper value for the allowed power to not be crossed
-          // by applying the Geo offset.
-          uint32 max_5g = 4;
-          // Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm)
-          uint32 offset_5g_a = 5;
-          // Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm)
-          uint32 offset_5g_b = 6;
-          // Defines the 6 GHz upper value for the allowed power to not be crossed
-          // by applying the Geo offset.
-          uint32 max_6g = 7;
-          // Value to be added to 6GHz WiFi bands for chain a. (0.125 dBm)
-          uint32 offset_6g_a = 8;
-          // Value to be added to 6GHz WiFi bands for chain b. (0.125 dBm)
-          uint32 offset_6g_b = 9;
-        }
+      // Offsets which are applied to WiFi power limits depending on the current
+      // regulatory domain. Offsets in units of 0.125 dBm. When the
+      // current regulatory domain is unknown or has yet to be determined, the
+      // base transmit power limits are used without any geo offsets applied.
+      // 'geo-offsets-fcc' is used for regulatory domains which follow FCC
+      // guidelines, 'geo-offsets-eu' is used for regulatory domains which
+      // follow ETSI guidelines, and 'geo-offsets-rest-of-world' is used for
+      // regulatory domains which don't follow FCC or ETSI guidelines.
+      message GeoOffsets {
+        // Defines the 2.4 GHz upper value for the allowed power to not be
+        // crossed by applying the Geo offset.
+        uint32 max_2g = 1;
+        // Value to be added to the 2.4GHz WiFi band for chain a. (0.125 dBm)
+        uint32 offset_2g_a = 2;
+        // Value to be added to the 2.4GHz WiFi band for chain b. (0.125 dBm)
+        uint32 offset_2g_b = 3;
+        // Defines the 5 GHz upper value for the allowed power to not be crossed
+        // by applying the Geo offset.
+        uint32 max_5g = 4;
+        // Value to be added to 5GHz WiFi bands for chain a. (0.125 dBm)
+        uint32 offset_5g_a = 5;
+        // Value to be added to 5GHz WiFi bands for chain b. (0.125 dBm)
+        uint32 offset_5g_b = 6;
+        // Defines the 6 GHz upper value for the allowed power to not be crossed
+        // by applying the Geo offset.
+        uint32 max_6g = 7;
+        // Value to be added to 6GHz WiFi bands for chain a. (0.125 dBm)
+        uint32 offset_6g_a = 8;
+        // Value to be added to 6GHz WiFi bands for chain b. (0.125 dBm)
+        uint32 offset_6g_b = 9;
+      }
 
-        // GeoOffsets in different regulatory domains.
-        GeoOffsets offset_fcc = 2;
-        GeoOffsets offset_eu = 3;
-        GeoOffsets offset_other = 4;
+      // GeoOffsets in different regulatory domains.
+      GeoOffsets offset_fcc = 2;
+      GeoOffsets offset_eu = 3;
+      GeoOffsets offset_other = 4;
     }
     Offsets wgds_table = 2;
 
     message Gains {
-        // Antenna Gains table version.
-        uint32 ant_table_version = 1;
-        uint32 ant_mode_ppag = 2;
+      // Antenna Gains table version.
+      uint32 ant_table_version = 1;
+      uint32 ant_mode_ppag = 2;
 
-        message AntennaGain {
-          uint32 ant_gain_2g = 1;
-          uint32 ant_gain_5g_1 = 2;
-          uint32 ant_gain_5g_2 = 3;
-          uint32 ant_gain_5g_3 = 4;
-          uint32 ant_gain_5g_4 = 5;
-          uint32 ant_gain_5g_5 = 6;
-          uint32 ant_gain_6g_1 = 7;
-          uint32 ant_gain_6g_2 = 8;
-          uint32 ant_gain_6g_3 = 9;
-          uint32 ant_gain_6g_4 = 10;
-          uint32 ant_gain_6g_5 = 11;
-        }
+      message AntennaGain {
+        uint32 ant_gain_2g = 1;
+        uint32 ant_gain_5g_1 = 2;
+        uint32 ant_gain_5g_2 = 3;
+        uint32 ant_gain_5g_3 = 4;
+        uint32 ant_gain_5g_4 = 5;
+        uint32 ant_gain_5g_5 = 6;
+        uint32 ant_gain_6g_1 = 7;
+        uint32 ant_gain_6g_2 = 8;
+        uint32 ant_gain_6g_3 = 9;
+        uint32 ant_gain_6g_4 = 10;
+        uint32 ant_gain_6g_5 = 11;
+      }
 
-        AntennaGain ant_gain_table_a = 3;
-        AntennaGain ant_gain_table_b = 4;
+      AntennaGain ant_gain_table_a = 3;
+      AntennaGain ant_gain_table_b = 4;
     }
     Gains ant_table = 3;
 
@@ -227,34 +226,34 @@ message WifiConfig {
 
       // For different regions.
       message Enablement11beCountries {
-          bool china = 1;
-          bool south_korea = 2;
+        bool china = 1;
+        bool south_korea = 2;
       }
       // Function 12.
       Enablement11beCountries enablement_11be_countries = 9;
 
       message EnergyDetectionThreshold {
-          uint32 revision = 1;
-          bool etsi_hb = 2;
-          bool fcc_uhb = 3;
-          bool hb_5g2_3 = 4;
-          bool hb_5g4 = 5;
-          bool hb_5g6 = 6;
-          bool hb_5g8_9 = 7;
-          bool uhb_6g1 = 8;
-          bool uhb_6g3 = 9;
-          bool uhb_6g5 = 10;
-          bool uhb_6g6 = 11;
-          bool uhb_6g8 = 12;
-          bool uhb_7g0 = 13;
+        uint32 revision = 1;
+        bool etsi_hb = 2;
+        bool fcc_uhb = 3;
+        bool hb_5g2_3 = 4;
+        bool hb_5g4 = 5;
+        bool hb_5g6 = 6;
+        bool hb_5g8_9 = 7;
+        bool uhb_6g1 = 8;
+        bool uhb_6g3 = 9;
+        bool uhb_6g5 = 10;
+        bool uhb_6g6 = 11;
+        bool uhb_6g8 = 12;
+        bool uhb_7g0 = 13;
       }
 
       // Function 10.
       EnergyDetectionThreshold energy_detection_threshold = 10;
 
       message RfiMitigation {
-          bool dlvr = 1;
-          bool ddr = 2;
+        bool dlvr = 1;
+        bool ddr = 2;
       }
 
       RfiMitigation rfi_mitigation = 11;
@@ -262,11 +261,11 @@ message WifiConfig {
     Dsm dsm = 5;
 
     message BluetoothSarPowerTable {
-        uint32 restriction_for_2g4 = 1;
-        uint32 restriction_for_5g2 = 2;
-        uint32 restriction_for_5g8_5g9 = 3;
-        uint32 restriction_for_6g1 = 4;
-        uint32 restriction_for_6g3 = 5;
+      uint32 restriction_for_2g4 = 1;
+      uint32 restriction_for_5g2 = 2;
+      uint32 restriction_for_5g8_5g9 = 3;
+      uint32 restriction_for_6g1 = 4;
+      uint32 restriction_for_6g3 = 5;
     }
 
     message BluetoothSar {
@@ -300,8 +299,8 @@ message WifiConfig {
 
       // For different regions.
       message EnablementWbemCountries {
-          bool japan = 1;
-          bool south_korea = 2;
+        bool japan = 1;
+        bool south_korea = 2;
       }
       // Enablement of Wi-Fi 320MHz per MCC.
       EnablementWbemCountries enablement_wbem_countries = 2;
@@ -314,11 +313,11 @@ message WifiConfig {
 
       // For different regions.
       message EnablementBpagCountries {
-          bool eu = 1;
-          bool china = 2;
-          bool eu_uhb = 3;
-          bool fcc_uhb = 4;
-          bool ised_uhb = 5;
+        bool eu = 1;
+        bool china = 2;
+        bool eu_uhb = 3;
+        bool fcc_uhb = 4;
+        bool ised_uhb = 5;
       }
 
       EnablementBpagCountries enablement_bpag_countries = 2;
@@ -339,7 +338,7 @@ message WifiConfig {
 
       // Dual Chain Mode.
       message BdcmDualChainMode {
-          bool chain_a_and_chain_b = 1;
+        bool chain_a_and_chain_b = 1;
       }
 
       BdcmDualChainMode bdcm_dual_chain_mode = 2;
@@ -352,10 +351,10 @@ message WifiConfig {
 
       // Bluetooth Bands Selection.
       message BbsmBandsSelection {
-          bool band_2_4_ghz_disable = 1;
-          bool band_5_2_ghz_disable = 2;
-          bool band_5_8_ghz_disable = 3;
-          bool band_6_2_ghz_disable = 4;
+        bool band_2_4_ghz_disable = 1;
+        bool band_5_2_ghz_disable = 2;
+        bool band_5_8_ghz_disable = 3;
+        bool band_6_2_ghz_disable = 4;
       }
 
       BbsmBandsSelection bands_selection = 2;
@@ -368,25 +367,25 @@ message WifiConfig {
 
       // Bluetooth Bands Selection.
       message BucsUhbCountrySelection {
-          bool force_disable_bt_in_all_other_countries = 1;
-          bool allow_6_ghz_in_usa = 2;
-          bool allow_6_ghz_in_rest_of_the_world = 3;
-          bool allow_6_ghz_in_eu = 4;
-          bool allow_6_ghz_in_south_korea = 5;
-          bool allow_6_ghz_in_brazil = 6;
-          bool allow_6_ghz_in_chile = 7;
-          bool allow_6_ghz_in_japan = 8;
-          bool allow_6_ghz_in_canada = 9;
-          bool allow_6_ghz_in_morocco = 10;
-          bool allow_6_ghz_in_mongolia = 11;
-          bool allow_6_ghz_in_malaysia = 12;
-          bool allow_6_ghz_in_saudi_arabia = 13;
-          bool allow_6_ghz_in_mexico = 14;
-          bool allow_6_ghz_in_nigeria = 15;
-          bool allow_6_ghz_in_thailand = 16;
-          bool allow_6_ghz_in_singapore = 17;
-          bool allow_6_ghz_in_taiwan = 18;
-          bool allow_6_ghz_in_south_africa = 19;
+        bool force_disable_bt_in_all_other_countries = 1;
+        bool allow_6_ghz_in_usa = 2;
+        bool allow_6_ghz_in_rest_of_the_world = 3;
+        bool allow_6_ghz_in_eu = 4;
+        bool allow_6_ghz_in_south_korea = 5;
+        bool allow_6_ghz_in_brazil = 6;
+        bool allow_6_ghz_in_chile = 7;
+        bool allow_6_ghz_in_japan = 8;
+        bool allow_6_ghz_in_canada = 9;
+        bool allow_6_ghz_in_morocco = 10;
+        bool allow_6_ghz_in_mongolia = 11;
+        bool allow_6_ghz_in_malaysia = 12;
+        bool allow_6_ghz_in_saudi_arabia = 13;
+        bool allow_6_ghz_in_mexico = 14;
+        bool allow_6_ghz_in_nigeria = 15;
+        bool allow_6_ghz_in_thailand = 16;
+        bool allow_6_ghz_in_singapore = 17;
+        bool allow_6_ghz_in_taiwan = 18;
+        bool allow_6_ghz_in_south_africa = 19;
       }
 
       BucsUhbCountrySelection uhb_country_selection = 2;
@@ -454,8 +453,7 @@ message WifiConfig {
 
   // An empty message indicating that Intel wifi is used, but the config values
   // are stored elsewhere.
-  message LegacyIntelConfig {
-  }
+  message LegacyIntelConfig {}
 
   message MtkConfig {
     // WiFi power chain for use with MediaTek mt7921 driver. Limits in units of

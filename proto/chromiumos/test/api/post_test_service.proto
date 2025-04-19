@@ -11,27 +11,24 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 import "chromiumos/test/lab/api/ip_endpoint.proto";
 import "google/protobuf/any.proto";
 
-
-// PostTestService acts as a post-test landing point for needed services/actions.
-// For example:
+// PostTestService acts as a post-test landing point for needed
+// services/actions. For example:
 //  - getting the fw versions for RDB uploading
 //  - getting crash logs in the event of a harness crash
 //  - getting specific file from the DUT
-// Could be expanded to include harness agnostic post-test cleanups, repairs, etc.
+// Could be expanded to include harness agnostic post-test cleanups, repairs,
+// etc.
 service PostTestService {
   // StartUp prepares the post test service by providing
   // necessary input values for initialization prior to
   // calling any other provision related service calls.
-  rpc StartUp(PostTestStartUpRequest)
-    returns (PostTestStartUpResponse);
+  rpc StartUp(PostTestStartUpRequest) returns (PostTestStartUpResponse);
 
-  rpc RunActivity(RunActivityRequest)
-      returns (RunActivityResponse) {
-        option deprecated = true;
-      };
+  rpc RunActivity(RunActivityRequest) returns (RunActivityResponse) {
+    option deprecated = true;
+  };
 
-  rpc RunActivities(RunActivitiesRequest)
-      returns (RunActivitiesResponse);
+  rpc RunActivities(RunActivitiesRequest) returns (RunActivitiesResponse);
 }
 
 // PostTestStartUpRequest provides a generic form for initializing
@@ -63,7 +60,7 @@ message RunActivityRequest {
   Request request = 1;
 }
 
-// NEXT TAG: 7
+// NEXT TAG: 8
 message Request {
   oneof request {
     GetFWInfoRequest get_fw_info_request = 1;
@@ -72,6 +69,7 @@ message Request {
     GetAvlInfoRequest get_avl_info_request = 4;
     GetGscInfoRequest get_gsc_info_request = 5;
     GetServoInfoRequest get_servo_info_request = 6;
+    GetUsbInfoRequest get_usb_info_request = 7;
   }
 }
 
@@ -96,7 +94,7 @@ message RunActivitiesResponse {
 message GetFWInfoRequest {}
 
 // GetFilesFromDUT will gather files from the DUT post test.
-message GetFilesFromDUTRequest{
+message GetFilesFromDUTRequest {
   repeated string files = 1;
 }
 
@@ -106,27 +104,32 @@ message GetGfxInfoRequest {}
 // GetAvlInfoRequest captures AVL qualification values for reporting.
 // NEXT TAG: 2
 message GetAvlInfoRequest {
-    // Mapping from test name to its own avl info JSON file location.
-    // Location format:
-    // "<local_output_dir>/cros-test/artifact/tast/tests/<test_name>/avl_info.json"
-    map<string, string> avl_files = 1 [deprecated = true];
+  // Mapping from test name to its own avl info JSON file location.
+  // Location format:
+  // "<local_output_dir>/cros-test/artifact/tast/tests/<test_name>/avl_info.json"
+  map<string, string> avl_files = 1 [deprecated = true];
 }
 
 // GetGscInfoRequest captures GSC devboard tags for reporting.
 // NEXT TAG: 2
 message GetGscInfoRequest {
-    // Mapping from test name to its own GSC devboard tags file location.
-    // Location format:
-    // "<local_output_dir>/cros-test/results/tast/tests/<test_name>/result_tags.json"
-    map<string, string> gsc_files = 1 [deprecated = true];
+  // Mapping from test name to its own GSC devboard tags file location.
+  // Location format:
+  // "<local_output_dir>/cros-test/results/tast/tests/<test_name>/result_tags.json"
+  map<string, string> gsc_files = 1 [deprecated = true];
 }
 
 // GetServoInfoRequest captures the servo information for reporting.
 // NEXT TAG: 1
 message GetServoInfoRequest {}
 
+// GetUsbInfoRequest captures the information about the USB-C ports on
+// device for reporting.
+// NEXT TAG: 1
+message GetUsbInfoRequest {}
+
 // Specific response to be matched with the request.
-// NEXT TAG: 7
+// NEXT TAG: 8
 message RunActivityResponse {
   oneof response {
     GetFWInfoResponse get_fw_info_response = 1;
@@ -135,21 +138,21 @@ message RunActivityResponse {
     GetAvlInfoResponse get_avl_info_response = 4;
     GetGscInfoResponse get_gsc_info_response = 5;
     GetServoInfoResponse get_servo_info_response = 6;
+    GetUsbInfoResponse get_usb_info_response = 7;
   }
 }
 
 // GetFWInfoResponse provides the value of each field from the DUT.
 message GetFWInfoResponse {
-  string ro_fwid  = 1;
-  string rw_fwid  = 2;
+  string ro_fwid = 1;
+  string rw_fwid = 2;
   string kernel_version = 3;
   string gsc_ro = 4;
   string gsc_rw = 5;
 }
 
-
 // GetFWInfoResponse is a list of filemaps in relation to the service.
-message GetFilesFromDUTResponse{
+message GetFilesFromDUTResponse {
   repeated FileMap file_map = 1;
 }
 
@@ -159,7 +162,8 @@ message FileMap {
   string file_location = 2;
 }
 
-// GetGfxInfoResponse contents of the reporting section of graphics/hardware_probe
+// GetGfxInfoResponse contents of the reporting section of
+// graphics/hardware_probe
 message GetGfxInfoResponse {
   map<string, string> gfx_labels = 1;
 }
@@ -168,32 +172,43 @@ message GetGfxInfoResponse {
 // info.
 // NEXT TAG: 2
 message GetAvlInfoResponse {
-    // Mapping from test name to its avl info.
-    map<string, AvlInfo> avl_infos = 1;
+  // Mapping from test name to its avl info.
+  map<string, AvlInfo> avl_infos = 1;
 }
 
 // AvlInfo AVL qualification info for a test run.
 // NEXT TAG: 4
 message AvlInfo {
-    string avl_part_model = 1;
-    string avl_part_firmware = 2;
-    string avl_component_type = 3;
+  string avl_part_model = 1;
+  string avl_part_firmware = 2;
+  string avl_component_type = 3;
 }
 
 // GetGscInfoResponse contents of the reporting section of GSC devboard info.
 // NEXT TAG: 2
 message GetGscInfoResponse {
-    // Mapping from test name to its GSC devboard info:
-    // "chromiumos.test.artifact.GscInfo". Note that the GscInfo proto cannot
-    // be imported directly due to cyclic import issue.
-    map<string, google.protobuf.Any> gsc_infos = 1;
+  // Mapping from test name to its GSC devboard info:
+  // "chromiumos.test.artifact.GscInfo". Note that the GscInfo proto cannot
+  // be imported directly due to cyclic import issue.
+  map<string, google.protobuf.Any> gsc_infos = 1;
 }
 
 // GetServoInfoResponse contents of the information from the servo file
 // NEXT TAG: 2
 message GetServoInfoResponse {
-    // Stores servo info:
-    // "chromiumos.test.artifact.BuildMetadata.ServoInfo". Note that the ServoInfo proto cannot
-    // be imported directly due to cyclic import issue.
-    google.protobuf.Any servo_info = 1;
+  // Stores servo info:
+  // "chromiumos.test.artifact.BuildMetadata.ServoInfo". Note that the ServoInfo
+  // proto cannot be imported directly due to cyclic import issue.
+  google.protobuf.Any servo_info = 1;
 }
+
+// GetUsbInfoResponse contents of the information about the USB-C ports on device.
+// info.
+// NEXT TAG: 2
+message GetUsbInfoResponse {
+  // Stores USB-C info:
+  // "chromiumos.test.artifact.UsbInfo". Note that the UsbInfo proto cannot
+  // be imported directly due to cyclic import issue.
+  google.protobuf.Any usb_info = 1;
+}
+

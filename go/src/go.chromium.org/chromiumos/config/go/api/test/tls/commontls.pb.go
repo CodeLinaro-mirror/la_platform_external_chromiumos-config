@@ -521,9 +521,9 @@ type ProvisionDutRequest struct {
 	Image *ProvisionDutRequest_ChromeOSImage `protobuf:"bytes,2,opt,name=image,proto3" json:"image,omitempty"`
 	// dlc_specs specifies which DLCs to install on the DUT after provisioning.
 	DlcSpecs []*ProvisionDutRequest_DLCSpec `protobuf:"bytes,3,rep,name=dlc_specs,json=dlcSpecs,proto3" json:"dlc_specs,omitempty"`
-	// preserve_stateful specifies whether the stateful partition should be preserved during
-	// provisioning. If preserve_stateful is not set to true, the stateful partition is
-	// block-level wiped and reset during provisioning.
+	// preserve_stateful specifies whether the stateful partition should be
+	// preserved during provisioning. If preserve_stateful is not set to true, the
+	// stateful partition is block-level wiped and reset during provisioning.
 	PreserveStateful bool `protobuf:"varint,4,opt,name=preserve_stateful,json=preserveStateful,proto3" json:"preserve_stateful,omitempty"`
 	// target_build is the ChromeOS build to provision to.
 	TargetBuild *ChromeOsImage `protobuf:"bytes,5,opt,name=target_build,json=targetBuild,proto3" json:"target_build,omitempty"`
@@ -1534,13 +1534,12 @@ type FakeOmaha struct {
 	// critical_update instructs the fake Omaha created that the update is
 	// critical if set.
 	CriticalUpdate bool `protobuf:"varint,6,opt,name=critical_update,json=criticalUpdate,proto3" json:"critical_update,omitempty"`
-	// return_noupdate_starting indicates from which update check to start returning noupdate.
-	// It MUST be 0 or greater.
-	// When set to 0 (the default value), disables returning noupdate.
-	// If set to positive N, returns noupdate for the Nth check and for every
-	// check thereafter.
-	// For example, if set to 1, returns noupdate starting from the first check,
-	// i.e., always returns noupdate.
+	// return_noupdate_starting indicates from which update check to start
+	// returning noupdate. It MUST be 0 or greater. When set to 0 (the default
+	// value), disables returning noupdate. If set to positive N, returns noupdate
+	// for the Nth check and for every check thereafter. For example, if set to 1,
+	// returns noupdate starting from the first check, i.e., always returns
+	// noupdate.
 	ReturnNoupdateStarting int32 `protobuf:"varint,7,opt,name=return_noupdate_starting,json=returnNoupdateStarting,proto3" json:"return_noupdate_starting,omitempty"`
 	// omaha_url is the current fake Omaha service URL which is reachable from
 	// the specified DUT.

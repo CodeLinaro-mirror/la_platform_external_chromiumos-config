@@ -22,9 +22,9 @@ message DeviceStability {
 
   // Stability status of a DUT.
   enum Stability {
-      STABILITY_UNKNOWN = 0;
-      STABLE = 1;
-      UNSTABLE = 2;
+    STABILITY_UNKNOWN = 0;
+    STABLE = 1;
+    UNSTABLE = 2;
   }
 
   Stability stability = 2;

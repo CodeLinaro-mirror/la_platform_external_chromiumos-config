@@ -400,8 +400,8 @@ func (x *DutAttribute_Id) GetValue() string {
 	return ""
 }
 
-// A field spec is a chain of field names ending in a scalar or enum, excluding
-// floating point values.
+// A field spec is a chain of field names ending in a scalar or enum,
+// excluding floating point values.
 //   eg: 'program.platform.soc_arch'
 type DutAttribute_FieldSpec struct {
 	state         protoimpl.MessageState

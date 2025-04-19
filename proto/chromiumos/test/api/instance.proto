@@ -78,7 +78,7 @@ message Config {
     // Network, must be consistent to zone. Optional, fallback to default.
     string network = 7;
     // Subnet of network. Optional, fallback to default.
-    string subnet= 8;
+    string subnet = 8;
     // A boolean flag whether to request a public IPv4 address.
     // If requested, ssh target will be the public IPv4 address, otherwise it
     // will be the GCE internal IP address.

@@ -6,8 +6,8 @@ from chromiumos.test.api import pre_test_service_pb2 as chromiumos_dot_test_dot_
 
 
 class PreTestServiceStub(object):
-    """PreTestService acts as a pre-test landing point32 for needed services/actions.
-    For example:
+    """PreTestService acts as a pre-test landing point32 for needed
+    services/actions. For example:
     - filtering flaky tests
     Could be expanded to include other services, like VM filtering, etc.
     """
@@ -26,8 +26,8 @@ class PreTestServiceStub(object):
 
 
 class PreTestServiceServicer(object):
-    """PreTestService acts as a pre-test landing point32 for needed services/actions.
-    For example:
+    """PreTestService acts as a pre-test landing point32 for needed
+    services/actions. For example:
     - filtering flaky tests
     Could be expanded to include other services, like VM filtering, etc.
     """
@@ -57,8 +57,8 @@ def add_PreTestServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class PreTestService(object):
-    """PreTestService acts as a pre-test landing point32 for needed services/actions.
-    For example:
+    """PreTestService acts as a pre-test landing point32 for needed
+    services/actions. For example:
     - filtering flaky tests
     Could be expanded to include other services, like VM filtering, etc.
     """
