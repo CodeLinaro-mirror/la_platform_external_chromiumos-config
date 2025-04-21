@@ -39,7 +39,6 @@ from lxml import etree  # pylint: disable=import-error
 try:
     from chromiumos.config.api import design_pb2
     from chromiumos.config.api import topology_pb2
-    from chromiumos.config.api.software import software_config_pb2
     from chromiumos.config.payload import config_bundle_pb2
 except ImportError:
     sys.exit(
@@ -68,33 +67,6 @@ def _load_config_bundle(
     json_format.Parse(json_content, bundle, ignore_unknown_fields=True)
     logging.info("Successfully parsed file: %s", file_path)
     return bundle
-
-
-def _build_lookup_map(
-    design_list: list[design_pb2.Design],
-) -> dict[str, design_pb2.Design.Config]:
-    """Builds a dict for lookup of Design.Configs.
-
-    Args:
-        design_list: A list of Design protos.
-
-    Returns:
-        A map from DesignConfigId.value to Design.Config.
-    """
-    design_config_map = {}
-
-    for design in design_list:
-        if not design.id.value:
-            logging.warning("Design missing id, skipping: %s", design)
-            continue
-        for config in design.configs:
-            if not config.id.value:
-                logging.warning(
-                    "Design.Config missing id, skipping: %s", config
-                )
-                continue
-            design_config_map[config.id.value] = config
-    return design_config_map
 
 
 def _add_cellular_entry(
@@ -141,35 +113,25 @@ def _add_cellular_entry(
 
 def _add_hal_config_entry(
     root_element: etree._Element,
-    sw_config: software_config_pb2.SoftwareConfig,
-    design_config_map: dict[str, design_pb2.Design.Config],
+    design_config: design_pb2.Design.Config,
 ) -> None:
-    """Adds a HalConfig to the XML tree for a SoftwareConfig.
+    """Adds a HalConfig to the XML tree for a Design.Config.
 
     Args:
         root_element: The root XML element (<HalConfigurations>).
-        sw_config: The SoftwareConfig proto to process.
-        design_config_map: The lookup map for Design.Configs.
+        design_config: The Design.Config proto to process.
     """
-    if not sw_config.design_config_id.value:
+    if not design_config.id.value:
         logging.warning(
-            "Skipping software config due to missing 'design_config_id': %s",
-            sw_config,
-        )
-        return
-
-    design_config = design_config_map.get(sw_config.design_config_id.value)
-    if not design_config:
-        logging.warning(
-            "Could not find Design.Config for ID: %s. Skipping.",
-            sw_config.design_config_id.value,
+            "Skipping Design.config due to missing 'design_config.id': %s",
+            design_config,
         )
         return
 
     hal_config_elem = etree.SubElement(root_element, "HalConfig")
 
     identity_elem = etree.SubElement(hal_config_elem, "Identity")
-    model, sku = sw_config.design_config_id.value.split(":")
+    model, sku = design_config.id.value.split(":")
     sku_elem = etree.SubElement(identity_elem, "SkuID")
     sku_elem.text = sku
     model_elem = etree.SubElement(identity_elem, "Model")
@@ -189,16 +151,11 @@ def _convert_to_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:
     """
     logging.info("Starting XML conversion from ConfigBundle...")
 
-    design_config_map = _build_lookup_map(config_bundle.design_list)
-    logging.info(
-        "Built lookup map: %d design configs.",
-        len(design_config_map),
-    )
-
     root = etree.Element("HalConfigurations")
 
-    for sw_config in config_bundle.software_configs:
-        _add_hal_config_entry(root, sw_config, design_config_map)
+    for design in config_bundle.design_list:
+        for design_config in design.configs:
+            _add_hal_config_entry(root, design_config)
 
     return etree.tostring(
         root,
