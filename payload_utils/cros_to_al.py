@@ -117,6 +117,13 @@ def _add_cellular_entry(
         modem_type_enum_val
     )
 
+    # TODO(b/402027869): We can add a fallback to guess the modem type from the
+    # firmware, see
+    # https://googleplex-android-review.git.corp.google.com/c/device/google/desktop/common/+/32855134/4..9/config/hal_config.xsd#b13.
+    if modem_type_enum_str == "MODEM_UNKNOWN":
+        logging.warning("ModemType is MODEM_UNKNOWN, skipping.")
+        return
+
     if modem_type_enum_str.startswith("MODEM_"):
         modem_type_xsd_str = modem_type_enum_str.removeprefix("MODEM_")
     else:
