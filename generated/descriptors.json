@@ -35615,7 +35615,7 @@
                   "label": "LABEL_OPTIONAL",
                   "name": "power_delivery_port_servo",
                   "number": 1,
-                  "type": "TYPE_UINT32"
+                  "type": "TYPE_STRING"
                 },
                 {
                   "jsonName": "powerDeliveryPortCount",

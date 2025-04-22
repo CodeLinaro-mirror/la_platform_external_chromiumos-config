@@ -518,7 +518,7 @@ message DutInfo {
   // NEXT TAG: 3
   message UsbInfo {
     // The USB-C power delivery port servo is connected to (C0-C3).
-    uint32 power_delivery_port_servo = 1;
+    string power_delivery_port_servo = 1;
 
     // Total number of USB-C power delivery ports on device.
     uint32 power_delivery_port_count = 2;
