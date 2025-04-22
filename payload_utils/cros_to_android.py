@@ -3,13 +3,10 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-"""Converts a ConfigBundle JSON file to XML and validates it via XSD.
+"""Converts a ConfigBundle JSON file to Android configs.
 
 Reads a single JSON file representing a chromiumos.config.payload.ConfigBundle
-message and generates an XML file conforming to an XSD schema.
-
-The standard XSD is checked in at
-https://googleplex-android.googlesource.com/device/google/desktop/common/+/main/config/hal_config.xsd
+message and generates corresponding Android configs, such as HAL XML files.
 """
 
 # [VPYTHON:BEGIN]
@@ -250,23 +247,43 @@ def _validate_xml(xml_string: bytes, xsd_file_path: pathlib.Path) -> None:
     logging.info("XML validation successful.")
 
 
+def run_generate_hal_xml(opts: argparse.Namespace) -> None:
+    """Handles the 'generate-hal-xml' sub-command logic."""
+    logging.info("Running generate-hal-xml command...")
+    config_bundle = _load_config_bundle(opts.jsonproto_file)
+    xml_string = _convert_to_xml(config_bundle)
+    _validate_xml(xml_string, opts.xsd_schema)
+
+    opts.output_xml.parent.mkdir(parents=True, exist_ok=True)
+    with open(opts.output_xml, "wb") as f:
+        f.write(xml_string)
+    logging.info("XML written to %s.", opts.output_xml)
+
+
 def _get_parser() -> argparse.ArgumentParser:
-    """Sets up the argument parser."""
+    """Sets up the main argument parser and sub-parsers."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
+
+    subparsers = parser.add_subparsers(required=True)
+
+    parser_hal_xml = subparsers.add_parser(
+        "generate-hal-xml",
+        help="Generate the HAL XML configuration file and validate it.",
+    )
+    parser_hal_xml.add_argument(
         "jsonproto_file",
         metavar="JSONPROTO_FILE",
         type=pathlib.Path,
         help="Path to the input JSON file representing a ConfigBundle message.",
     )
-    parser.add_argument(
+    parser_hal_xml.add_argument(
         "-o",
         "--output-xml",
         required=True,
         type=pathlib.Path,
         help="Path to write the output XML file.",
     )
-    parser.add_argument(
+    parser_hal_xml.add_argument(
         "-x",
         "--xsd-schema",
         required=True,
@@ -277,32 +294,26 @@ def _get_parser() -> argparse.ArgumentParser:
             "device/google/desktop/common/+/main/config/hal_config.xsd."
         ),
     )
-    parser.add_argument(
+    parser_hal_xml.add_argument(
         "-v",
         "--verbose",
         action="store_true",
         help="Enable verbose debug logging.",
     )
+    parser_hal_xml.set_defaults(func=run_generate_hal_xml)
+
     return parser
 
 
 def main(argv: Optional[list[str]] = None) -> int:
-    """Parses args, loads input, converts to XML, validates, and writes."""
+    """Parses args and dispatches to the appropriate sub-command function."""
     parser = _get_parser()
     opts = parser.parse_args(argv)
 
     log_level = logging.DEBUG if opts.verbose else logging.INFO
     logging.basicConfig(level=log_level)
 
-    config_bundle = _load_config_bundle(opts.jsonproto_file)
-    xml_string = _convert_to_xml(config_bundle)
-
-    _validate_xml(xml_string, opts.xsd_schema)
-
-    with open(opts.output_xml, "wb") as f:
-        f.write(xml_string)
-    logging.info("XML written to %s.", opts.output_xml)
-
+    opts.func(opts)
     return 0
 
 

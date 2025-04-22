@@ -3,14 +3,14 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-"""Unit tests for the cros_to_al script."""
+"""Unit tests for the cros_to_android script."""
 
 import logging
 import pathlib
 import tempfile
 import unittest
 
-import cros_to_al  # pylint: disable=import-error
+import cros_to_android  # pylint: disable=import-error
 
 
 TEST_DATA_DIR = pathlib.Path(__file__).parent / "test_data"
@@ -39,6 +39,7 @@ class CrosConfigConverterMainTest(unittest.TestCase):
     def test_main_success_flow(self):
         """Test main() with valid inputs."""
         argv = [
+            "generate-hal-xml",
             str(VALID_JSON_INPUT),
             "--output-xml",
             str(self.output_xml_path),
@@ -46,7 +47,7 @@ class CrosConfigConverterMainTest(unittest.TestCase):
             str(VALID_XSD_SCHEMA),
         ]
 
-        return_code = cros_to_al.main(argv)
+        return_code = cros_to_android.main(argv)
 
         self.assertEqual(return_code, 0)
         self.assertTrue(self.output_xml_path.is_file())
