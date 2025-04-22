@@ -1,10 +1,25 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="ModemTypeEn">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FM101"/>
+      <xs:enumeration value="FM350"/>
+      <xs:enumeration value="RW101"/>
+      <xs:enumeration value="RW135"/>
+      <xs:enumeration value="RW350"/>
+      <xs:enumeration value="EM060"/>
+      <xs:enumeration value="LCUK54"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:complexType name="IdentityType">
     <xs:sequence>
       <xs:element type="xs:string" name="SkuID"/>
       <xs:element type="xs:string" name="Model"/>
+      <xs:element type="xs:string" name="CustomLabelTag" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+
   <xs:complexType name="CellularConfigurationType">
     <xs:sequence>
       <xs:element type="xs:string" name="FirmwareVariant" minOccurs="1">
@@ -12,18 +27,31 @@
           <xs:documentation>The modem firmware file to flash onto the modem</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ModemType" minOccurs="1">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="FM101"/>
-            <xs:enumeration value="FM350"/>
-            <xs:enumeration value="RW101"/>
-            <xs:enumeration value="RW135"/>
-            <xs:enumeration value="RW350"/>
-            <xs:enumeration value="EM060"/>
-            <xs:enumeration value="LCUK54"/>
-          </xs:restriction>
-        </xs:simpleType>
+      <xs:element name="ModemType" type="ModemTypeEn" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FingerprintConfigurationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="board" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Specifies the fingerprint board in use.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="fingerprint-sensor-type" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Type of FP sensor. Currently describes whether FP is overlapped on the power button or not.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="ro-version" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>RO version for the fingerprint firmware for the FPMCU specified by the "board" property. If not specified, the default RO version for the FPMCU is used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="sensor-location" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Specifies the location of the fingerprint sensor.</xs:documentation>
+        </xs:annotation>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
@@ -31,8 +59,10 @@
     <xs:sequence>
       <xs:element name="Identity" type="IdentityType"/>
       <xs:element name="CellularConfiguration" type="CellularConfigurationType" minOccurs="0"/>
-    </xs:sequence>
+      <xs:element name="FingerprintConfiguration" type="FingerprintConfigurationType" minOccurs="0"/>
+      </xs:sequence>
   </xs:complexType>
+
   <xs:element name="HalConfigurations">
     <xs:complexType>
       <xs:sequence>
@@ -40,4 +70,5 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+
 </xs:schema>

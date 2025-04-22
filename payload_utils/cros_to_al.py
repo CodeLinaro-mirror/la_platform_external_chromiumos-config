@@ -78,6 +78,7 @@ def _add_cellular_entry(
     Skips if the Design.Config doesn't have cellular.
 
     Args:
+        hal_config: The parent <HalConfig> XML element.
         design_config: The Design.Config proto.
     """
     cellular_features = design_config.hardware_features.cellular
@@ -111,6 +112,71 @@ def _add_cellular_entry(
     modem_type_elem.text = modem_type_xsd_str
 
 
+def _add_fingerprint_entry(
+    hal_config: etree._Element,
+    design_config: design_pb2.Design.Config,
+) -> None:
+    """Adds FingerprintConfiguration to the XML tree for a Design.Config.
+
+    Infers fingerprint-sensor-type based on the location enum value, as there
+    is no direct field for it in the proto.
+
+    Skips if the Design.Config doesn't have fingerprint features marked present
+    or if mandatory fields are missing/invalid in the proto.
+
+    Args:
+        hal_config: The parent <HalConfig> XML element.
+        design_config: The design_pb2.Design.Config proto.
+    """
+    fp_features = design_config.hardware_features.fingerprint
+    if not fp_features.present:
+        return
+
+    if not fp_features.board:
+        logging.warning(
+            "Fingerprint config missing mandatory 'board' field for "
+            "Design.Config '%s'. Skipping FingerprintConfiguration.",
+            design_config.id.value,
+        )
+        return
+
+    location_enum_str = topology_pb2.HardwareFeatures.Fingerprint.Location.Name(
+        fp_features.location
+    )
+
+    if location_enum_str == "LOCATION_UNKNOWN":
+        logging.warning(
+            "Fingerprint config has invalid 'sensor_location' ('%s') for "
+            "Design.Config '%s'. Skipping FingerprintConfiguration.",
+            location_enum_str,
+            design_config.id.value,
+        )
+        return
+
+    # This field is required by XSD but not directly present in the proto.
+    # Infer based on whether 'POWER_BUTTON' is in the location name.
+    sensor_type_xsd_str = (
+        "POWER_BUTTON" if "POWER_BUTTON" in location_enum_str else "STAND_ALONE"
+    )
+
+    logging.debug(
+        "Inferred fingerprint-sensor-type '%s' from location '%s'",
+        sensor_type_xsd_str,
+        location_enum_str,
+    )
+
+    fp_config_elem = etree.SubElement(hal_config, "FingerprintConfiguration")
+    etree.SubElement(fp_config_elem, "board").text = fp_features.board
+    etree.SubElement(fp_config_elem, "fingerprint-sensor-type").text = (
+        sensor_type_xsd_str
+    )
+    if fp_features.ro_version:
+        etree.SubElement(fp_config_elem, "ro-version").text = (
+            fp_features.ro_version
+        )
+    etree.SubElement(fp_config_elem, "sensor-location").text = location_enum_str
+
+
 def _add_hal_config_entry(
     root_element: etree._Element,
     design_config: design_pb2.Design.Config,
@@ -138,6 +204,7 @@ def _add_hal_config_entry(
     model_elem.text = model
 
     _add_cellular_entry(hal_config_elem, design_config)
+    _add_fingerprint_entry(hal_config_elem, design_config)
 
 
 def _convert_to_xml(config_bundle: config_bundle_pb2.ConfigBundle) -> bytes:
