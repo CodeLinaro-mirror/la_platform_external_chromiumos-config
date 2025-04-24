@@ -945,6 +945,7 @@ def _create_fingerprint(
         present = False,
         location = _FP_LOC.UNKNOWN,
         board = None,
+        ro_version = None,
         fw_configs = [],
         fingerprint_diag = None):
     """Builds a Topology proto for a fingerprint reader."""
@@ -955,7 +956,9 @@ def _create_fingerprint(
 
     if board:
         hw_features.fingerprint.board = board
-        if board == "bloonchipper":
+        if ro_version:
+            hw_features.fingerprint.ro_version = ro_version
+        elif board == "bloonchipper":
             hw_features.fingerprint.ro_version = "bloonchipper_v2.0.5938-197506c1"
         elif board == "helipilot":
             # b/413061184: Use updated RO for new helipilot projects.
