@@ -34,6 +34,18 @@ type VideoTesterServiceClient interface {
 	SetRoleVideoTester(ctx context.Context, in *SetRoleRequest, opts ...grpc.CallOption) (*SetRoleResponse, error)
 	// Loads the provided EDID data onto a given video tester.
 	LoadEdidVideoTester(ctx context.Context, in *LoadEdidVideoTesterRequest, opts ...grpc.CallOption) (*LoadEdidVideoTesterResponse, error)
+	// Gets the current stream information for a given video tester.
+	GetStreamInfoVideoTester(ctx context.Context, in *GetStreamInfoVideoTesterRequest, opts ...grpc.CallOption) (*GetStreamInfoVideoTesterResponse, error)
+	// Captures a screenshot from a specific stream of a video tester.
+	ScreenshotVideoTester(ctx context.Context, in *ScreenshotVideoTesterRequest, opts ...grpc.CallOption) (*ScreenshotVideoTesterResponse, error)
+	// Sets advanced link parameters for a given video tester.
+	SetLinkVideoTester(ctx context.Context, in *SetLinkVideoTesterRequest, opts ...grpc.CallOption) (*SetLinkVideoTesterResponse, error)
+	// Gets the current advanced link parameters for a given video tester.
+	GetLinkVideoTester(ctx context.Context, in *GetLinkVideoTesterRequest, opts ...grpc.CallOption) (*GetLinkVideoTesterResponse, error)
+	// Simulates attaching or detaching a display or sink on a video tester.
+	AttachVideoTester(ctx context.Context, in *AttachVideoTesterRequest, opts ...grpc.CallOption) (*AttachVideoTesterResponse, error)
+	// Sends an HPD (Hot Plug Detect) pulse to a video tester.
+	HpdPulseVideoTester(ctx context.Context, in *HpdPulseVideoTesterRequest, opts ...grpc.CallOption) (*HpdPulseVideoTesterResponse, error)
 }
 
 type videoTesterServiceClient struct {
@@ -98,6 +110,60 @@ func (c *videoTesterServiceClient) LoadEdidVideoTester(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *videoTesterServiceClient) GetStreamInfoVideoTester(ctx context.Context, in *GetStreamInfoVideoTesterRequest, opts ...grpc.CallOption) (*GetStreamInfoVideoTesterResponse, error) {
+	out := new(GetStreamInfoVideoTesterResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/GetStreamInfoVideoTester", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *videoTesterServiceClient) ScreenshotVideoTester(ctx context.Context, in *ScreenshotVideoTesterRequest, opts ...grpc.CallOption) (*ScreenshotVideoTesterResponse, error) {
+	out := new(ScreenshotVideoTesterResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/ScreenshotVideoTester", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *videoTesterServiceClient) SetLinkVideoTester(ctx context.Context, in *SetLinkVideoTesterRequest, opts ...grpc.CallOption) (*SetLinkVideoTesterResponse, error) {
+	out := new(SetLinkVideoTesterResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/SetLinkVideoTester", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *videoTesterServiceClient) GetLinkVideoTester(ctx context.Context, in *GetLinkVideoTesterRequest, opts ...grpc.CallOption) (*GetLinkVideoTesterResponse, error) {
+	out := new(GetLinkVideoTesterResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/GetLinkVideoTester", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *videoTesterServiceClient) AttachVideoTester(ctx context.Context, in *AttachVideoTesterRequest, opts ...grpc.CallOption) (*AttachVideoTesterResponse, error) {
+	out := new(AttachVideoTesterResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/AttachVideoTester", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *videoTesterServiceClient) HpdPulseVideoTester(ctx context.Context, in *HpdPulseVideoTesterRequest, opts ...grpc.CallOption) (*HpdPulseVideoTesterResponse, error) {
+	out := new(HpdPulseVideoTesterResponse)
+	err := c.cc.Invoke(ctx, "/chromiumos.test.lab.api.passport.VideoTesterService/HpdPulseVideoTester", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VideoTesterServiceServer is the server API for VideoTesterService service.
 // All implementations should embed UnimplementedVideoTesterServiceServer
 // for forward compatibility
@@ -114,6 +180,18 @@ type VideoTesterServiceServer interface {
 	SetRoleVideoTester(context.Context, *SetRoleRequest) (*SetRoleResponse, error)
 	// Loads the provided EDID data onto a given video tester.
 	LoadEdidVideoTester(context.Context, *LoadEdidVideoTesterRequest) (*LoadEdidVideoTesterResponse, error)
+	// Gets the current stream information for a given video tester.
+	GetStreamInfoVideoTester(context.Context, *GetStreamInfoVideoTesterRequest) (*GetStreamInfoVideoTesterResponse, error)
+	// Captures a screenshot from a specific stream of a video tester.
+	ScreenshotVideoTester(context.Context, *ScreenshotVideoTesterRequest) (*ScreenshotVideoTesterResponse, error)
+	// Sets advanced link parameters for a given video tester.
+	SetLinkVideoTester(context.Context, *SetLinkVideoTesterRequest) (*SetLinkVideoTesterResponse, error)
+	// Gets the current advanced link parameters for a given video tester.
+	GetLinkVideoTester(context.Context, *GetLinkVideoTesterRequest) (*GetLinkVideoTesterResponse, error)
+	// Simulates attaching or detaching a display or sink on a video tester.
+	AttachVideoTester(context.Context, *AttachVideoTesterRequest) (*AttachVideoTesterResponse, error)
+	// Sends an HPD (Hot Plug Detect) pulse to a video tester.
+	HpdPulseVideoTester(context.Context, *HpdPulseVideoTesterRequest) (*HpdPulseVideoTesterResponse, error)
 }
 
 // UnimplementedVideoTesterServiceServer should be embedded to have forward compatible implementations.
@@ -137,6 +215,24 @@ func (UnimplementedVideoTesterServiceServer) SetRoleVideoTester(context.Context,
 }
 func (UnimplementedVideoTesterServiceServer) LoadEdidVideoTester(context.Context, *LoadEdidVideoTesterRequest) (*LoadEdidVideoTesterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoadEdidVideoTester not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) GetStreamInfoVideoTester(context.Context, *GetStreamInfoVideoTesterRequest) (*GetStreamInfoVideoTesterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStreamInfoVideoTester not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) ScreenshotVideoTester(context.Context, *ScreenshotVideoTesterRequest) (*ScreenshotVideoTesterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ScreenshotVideoTester not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) SetLinkVideoTester(context.Context, *SetLinkVideoTesterRequest) (*SetLinkVideoTesterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetLinkVideoTester not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) GetLinkVideoTester(context.Context, *GetLinkVideoTesterRequest) (*GetLinkVideoTesterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLinkVideoTester not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) AttachVideoTester(context.Context, *AttachVideoTesterRequest) (*AttachVideoTesterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AttachVideoTester not implemented")
+}
+func (UnimplementedVideoTesterServiceServer) HpdPulseVideoTester(context.Context, *HpdPulseVideoTesterRequest) (*HpdPulseVideoTesterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HpdPulseVideoTester not implemented")
 }
 
 // UnsafeVideoTesterServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -258,6 +354,114 @@ func _VideoTesterService_LoadEdidVideoTester_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VideoTesterService_GetStreamInfoVideoTester_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStreamInfoVideoTesterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).GetStreamInfoVideoTester(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/GetStreamInfoVideoTester",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).GetStreamInfoVideoTester(ctx, req.(*GetStreamInfoVideoTesterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VideoTesterService_ScreenshotVideoTester_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ScreenshotVideoTesterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).ScreenshotVideoTester(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/ScreenshotVideoTester",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).ScreenshotVideoTester(ctx, req.(*ScreenshotVideoTesterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VideoTesterService_SetLinkVideoTester_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetLinkVideoTesterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).SetLinkVideoTester(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/SetLinkVideoTester",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).SetLinkVideoTester(ctx, req.(*SetLinkVideoTesterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VideoTesterService_GetLinkVideoTester_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetLinkVideoTesterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).GetLinkVideoTester(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/GetLinkVideoTester",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).GetLinkVideoTester(ctx, req.(*GetLinkVideoTesterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VideoTesterService_AttachVideoTester_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AttachVideoTesterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).AttachVideoTester(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/AttachVideoTester",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).AttachVideoTester(ctx, req.(*AttachVideoTesterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VideoTesterService_HpdPulseVideoTester_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HpdPulseVideoTesterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoTesterServiceServer).HpdPulseVideoTester(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chromiumos.test.lab.api.passport.VideoTesterService/HpdPulseVideoTester",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoTesterServiceServer).HpdPulseVideoTester(ctx, req.(*HpdPulseVideoTesterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VideoTesterService_ServiceDesc is the grpc.ServiceDesc for VideoTesterService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -288,6 +492,30 @@ var VideoTesterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LoadEdidVideoTester",
 			Handler:    _VideoTesterService_LoadEdidVideoTester_Handler,
+		},
+		{
+			MethodName: "GetStreamInfoVideoTester",
+			Handler:    _VideoTesterService_GetStreamInfoVideoTester_Handler,
+		},
+		{
+			MethodName: "ScreenshotVideoTester",
+			Handler:    _VideoTesterService_ScreenshotVideoTester_Handler,
+		},
+		{
+			MethodName: "SetLinkVideoTester",
+			Handler:    _VideoTesterService_SetLinkVideoTester_Handler,
+		},
+		{
+			MethodName: "GetLinkVideoTester",
+			Handler:    _VideoTesterService_GetLinkVideoTester_Handler,
+		},
+		{
+			MethodName: "AttachVideoTester",
+			Handler:    _VideoTesterService_AttachVideoTester_Handler,
+		},
+		{
+			MethodName: "HpdPulseVideoTester",
+			Handler:    _VideoTesterService_HpdPulseVideoTester_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

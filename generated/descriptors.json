@@ -41669,6 +41669,13 @@
               "name": "edid",
               "number": 2,
               "type": "TYPE_BYTES"
+            },
+            {
+              "jsonName": "idStream",
+              "label": "LABEL_OPTIONAL",
+              "name": "id_stream",
+              "number": 3,
+              "type": "TYPE_INT64"
             }
           ],
           "name": "LoadEdidVideoTesterRequest"
@@ -41684,6 +41691,360 @@
             }
           ],
           "name": "LoadEdidVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetStreamInfoVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "frameRate",
+              "label": "LABEL_OPTIONAL",
+              "name": "frame_rate",
+              "number": 1,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_DOUBLE"
+            },
+            {
+              "jsonName": "hactive",
+              "label": "LABEL_OPTIONAL",
+              "name": "hactive",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "vactive",
+              "label": "LABEL_OPTIONAL",
+              "name": "vactive",
+              "number": 3,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "htotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "htotal",
+              "number": 4,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "vtotal",
+              "label": "LABEL_OPTIONAL",
+              "name": "vtotal",
+              "number": 5,
+              "oneofIndex": 4,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "hstart",
+              "label": "LABEL_OPTIONAL",
+              "name": "hstart",
+              "number": 6,
+              "oneofIndex": 5,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "vstart",
+              "label": "LABEL_OPTIONAL",
+              "name": "vstart",
+              "number": 7,
+              "oneofIndex": 6,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "hswidth",
+              "label": "LABEL_OPTIONAL",
+              "name": "hswidth",
+              "number": 8,
+              "oneofIndex": 7,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "vswidth",
+              "label": "LABEL_OPTIONAL",
+              "name": "vswidth",
+              "number": 9,
+              "oneofIndex": 8,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "StreamInfoVideoTester",
+          "oneofDecl": [
+            {
+              "name": "_frame_rate"
+            },
+            {
+              "name": "_hactive"
+            },
+            {
+              "name": "_vactive"
+            },
+            {
+              "name": "_htotal"
+            },
+            {
+              "name": "_vtotal"
+            },
+            {
+              "name": "_hstart"
+            },
+            {
+              "name": "_vstart"
+            },
+            {
+              "name": "_hswidth"
+            },
+            {
+              "name": "_vswidth"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "streams",
+              "label": "LABEL_REPEATED",
+              "name": "streams",
+              "number": 1,
+              "type": "TYPE_MESSAGE",
+              "typeName": ".chromiumos.test.lab.api.passport.StreamInfoVideoTester"
+            }
+          ],
+          "name": "GetStreamInfoVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "idStream",
+              "label": "LABEL_OPTIONAL",
+              "name": "id_stream",
+              "number": 2,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "ScreenshotVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "screenshot",
+              "label": "LABEL_OPTIONAL",
+              "name": "screenshot",
+              "number": 1,
+              "type": "TYPE_BYTES"
+            }
+          ],
+          "name": "ScreenshotVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "mst",
+              "label": "LABEL_OPTIONAL",
+              "name": "mst",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "mstSinkCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "mst_sink_count",
+              "number": 3,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "scamblerSeed",
+              "label": "LABEL_OPTIONAL",
+              "name": "scambler_seed",
+              "number": 4,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "maxLane",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_lane",
+              "number": 5,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "SetLinkVideoTesterRequest",
+          "oneofDecl": [
+            {
+              "name": "_mst"
+            },
+            {
+              "name": "_mst_sink_count"
+            },
+            {
+              "name": "_scambler_seed"
+            },
+            {
+              "name": "_max_lane"
+            }
+          ]
+        },
+        {
+          "name": "SetLinkVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            }
+          ],
+          "name": "GetLinkVideoTesterRequest"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "mst",
+              "label": "LABEL_OPTIONAL",
+              "name": "mst",
+              "number": 1,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_BOOL"
+            },
+            {
+              "jsonName": "mstSinkCount",
+              "label": "LABEL_OPTIONAL",
+              "name": "mst_sink_count",
+              "number": 2,
+              "oneofIndex": 1,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "scamblerSeed",
+              "label": "LABEL_OPTIONAL",
+              "name": "scambler_seed",
+              "number": 3,
+              "oneofIndex": 2,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            },
+            {
+              "jsonName": "maxLane",
+              "label": "LABEL_OPTIONAL",
+              "name": "max_lane",
+              "number": 4,
+              "oneofIndex": 3,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "GetLinkVideoTesterResponse",
+          "oneofDecl": [
+            {
+              "name": "_mst"
+            },
+            {
+              "name": "_mst_sink_count"
+            },
+            {
+              "name": "_scambler_seed"
+            },
+            {
+              "name": "_max_lane"
+            }
+          ]
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "attach",
+              "label": "LABEL_OPTIONAL",
+              "name": "attach",
+              "number": 2,
+              "type": "TYPE_BOOL"
+            }
+          ],
+          "name": "AttachVideoTesterRequest"
+        },
+        {
+          "name": "AttachVideoTesterResponse"
+        },
+        {
+          "field": [
+            {
+              "jsonName": "id",
+              "label": "LABEL_OPTIONAL",
+              "name": "id",
+              "number": 1,
+              "type": "TYPE_STRING"
+            },
+            {
+              "jsonName": "pulseDurationMs",
+              "label": "LABEL_OPTIONAL",
+              "name": "pulse_duration_ms",
+              "number": 2,
+              "oneofIndex": 0,
+              "proto3Optional": true,
+              "type": "TYPE_INT64"
+            }
+          ],
+          "name": "HpdPulseVideoTesterRequest",
+          "oneofDecl": [
+            {
+              "name": "_pulse_duration_ms"
+            }
+          ]
+        },
+        {
+          "name": "HpdPulseVideoTesterResponse"
         }
       ],
       "name": "chromiumos/test/lab/api/passport/video_tester_service.proto",
@@ -41723,6 +42084,36 @@
               "inputType": ".chromiumos.test.lab.api.passport.LoadEdidVideoTesterRequest",
               "name": "LoadEdidVideoTester",
               "outputType": ".chromiumos.test.lab.api.passport.LoadEdidVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterRequest",
+              "name": "GetStreamInfoVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.GetStreamInfoVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.ScreenshotVideoTesterRequest",
+              "name": "ScreenshotVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.ScreenshotVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.SetLinkVideoTesterRequest",
+              "name": "SetLinkVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.SetLinkVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.GetLinkVideoTesterRequest",
+              "name": "GetLinkVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.GetLinkVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.AttachVideoTesterRequest",
+              "name": "AttachVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.AttachVideoTesterResponse"
+            },
+            {
+              "inputType": ".chromiumos.test.lab.api.passport.HpdPulseVideoTesterRequest",
+              "name": "HpdPulseVideoTester",
+              "outputType": ".chromiumos.test.lab.api.passport.HpdPulseVideoTesterResponse"
             }
           ],
           "name": "VideoTesterService"

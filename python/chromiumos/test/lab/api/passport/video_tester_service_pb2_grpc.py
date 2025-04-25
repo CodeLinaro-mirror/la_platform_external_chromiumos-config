@@ -45,6 +45,36 @@ class VideoTesterServiceStub(object):
                 request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.LoadEdidVideoTesterRequest.SerializeToString,
                 response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.LoadEdidVideoTesterResponse.FromString,
                 )
+        self.GetStreamInfoVideoTester = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/GetStreamInfoVideoTester',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetStreamInfoVideoTesterRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetStreamInfoVideoTesterResponse.FromString,
+                )
+        self.ScreenshotVideoTester = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/ScreenshotVideoTester',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.ScreenshotVideoTesterRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.ScreenshotVideoTesterResponse.FromString,
+                )
+        self.SetLinkVideoTester = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/SetLinkVideoTester',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.SetLinkVideoTesterRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.SetLinkVideoTesterResponse.FromString,
+                )
+        self.GetLinkVideoTester = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/GetLinkVideoTester',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetLinkVideoTesterRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetLinkVideoTesterResponse.FromString,
+                )
+        self.AttachVideoTester = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/AttachVideoTester',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.AttachVideoTesterRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.AttachVideoTesterResponse.FromString,
+                )
+        self.HpdPulseVideoTester = channel.unary_unary(
+                '/chromiumos.test.lab.api.passport.VideoTesterService/HpdPulseVideoTester',
+                request_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterRequest.SerializeToString,
+                response_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterResponse.FromString,
+                )
 
 
 class VideoTesterServiceServicer(object):
@@ -93,6 +123,48 @@ class VideoTesterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetStreamInfoVideoTester(self, request, context):
+        """Gets the current stream information for a given video tester.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ScreenshotVideoTester(self, request, context):
+        """Captures a screenshot from a specific stream of a video tester.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetLinkVideoTester(self, request, context):
+        """Sets advanced link parameters for a given video tester.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetLinkVideoTester(self, request, context):
+        """Gets the current advanced link parameters for a given video tester.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def AttachVideoTester(self, request, context):
+        """Simulates attaching or detaching a display or sink on a video tester.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def HpdPulseVideoTester(self, request, context):
+        """Sends an HPD (Hot Plug Detect) pulse to a video tester.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_VideoTesterServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -125,6 +197,36 @@ def add_VideoTesterServiceServicer_to_server(servicer, server):
                     servicer.LoadEdidVideoTester,
                     request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.LoadEdidVideoTesterRequest.FromString,
                     response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.LoadEdidVideoTesterResponse.SerializeToString,
+            ),
+            'GetStreamInfoVideoTester': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetStreamInfoVideoTester,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetStreamInfoVideoTesterRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetStreamInfoVideoTesterResponse.SerializeToString,
+            ),
+            'ScreenshotVideoTester': grpc.unary_unary_rpc_method_handler(
+                    servicer.ScreenshotVideoTester,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.ScreenshotVideoTesterRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.ScreenshotVideoTesterResponse.SerializeToString,
+            ),
+            'SetLinkVideoTester': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetLinkVideoTester,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.SetLinkVideoTesterRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.SetLinkVideoTesterResponse.SerializeToString,
+            ),
+            'GetLinkVideoTester': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetLinkVideoTester,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetLinkVideoTesterRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetLinkVideoTesterResponse.SerializeToString,
+            ),
+            'AttachVideoTester': grpc.unary_unary_rpc_method_handler(
+                    servicer.AttachVideoTester,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.AttachVideoTesterRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.AttachVideoTesterResponse.SerializeToString,
+            ),
+            'HpdPulseVideoTester': grpc.unary_unary_rpc_method_handler(
+                    servicer.HpdPulseVideoTester,
+                    request_deserializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterRequest.FromString,
+                    response_serializer=chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -236,5 +338,107 @@ class VideoTesterService(object):
         return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/LoadEdidVideoTester',
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.LoadEdidVideoTesterRequest.SerializeToString,
             chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.LoadEdidVideoTesterResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetStreamInfoVideoTester(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/GetStreamInfoVideoTester',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetStreamInfoVideoTesterRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetStreamInfoVideoTesterResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ScreenshotVideoTester(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/ScreenshotVideoTester',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.ScreenshotVideoTesterRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.ScreenshotVideoTesterResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SetLinkVideoTester(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/SetLinkVideoTester',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.SetLinkVideoTesterRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.SetLinkVideoTesterResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetLinkVideoTester(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/GetLinkVideoTester',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetLinkVideoTesterRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.GetLinkVideoTesterResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AttachVideoTester(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/AttachVideoTester',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.AttachVideoTesterRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.AttachVideoTesterResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def HpdPulseVideoTester(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/chromiumos.test.lab.api.passport.VideoTesterService/HpdPulseVideoTester',
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterRequest.SerializeToString,
+            chromiumos_dot_test_dot_lab_dot_api_dot_passport_dot_video__tester__service__pb2.HpdPulseVideoTesterResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
