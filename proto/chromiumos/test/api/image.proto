@@ -10,9 +10,6 @@ option go_package = "go.chromium.org/chromiumos/config/go/test/api";
 
 import "google/protobuf/timestamp.proto";
 
-
-
-
 // GceImage represents an existing GCE image.
 message GceImage {
   // Name of GCP project. E.g. betty-cloud-prototype

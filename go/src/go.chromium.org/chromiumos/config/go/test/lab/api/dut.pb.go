@@ -675,7 +675,8 @@ const (
 	SIMProfileInfo_LOCKED SIMProfileInfo_State = 2
 	// No data connection available and not in a failed state.
 	SIMProfileInfo_NO_NETWORK SIMProfileInfo_State = 3
-	// The device is registered with a network provider, and data connections and messaging may be available for use.
+	// The device is registered with a network provider, and data connections
+	// and messaging may be available for use.
 	SIMProfileInfo_WORKING SIMProfileInfo_State = 4
 	// The device has an invalid configuration in UFS.
 	SIMProfileInfo_WRONG_CONFIG SIMProfileInfo_State = 5
@@ -1757,9 +1758,9 @@ type SIMProfileInfo struct {
 	// The SIM state as reported by the cellular modem.
 	State SIMProfileInfo_State `protobuf:"varint,6,opt,name=state,proto3,enum=chromiumos.test.lab.api.SIMProfileInfo_State" json:"state,omitempty"`
 	// Features supported by the profile.
-	// These features are used to determine what tests can be run against which SIMs
-	// in the lab, see go/cros-cellular-features for more information.
-	// File bugs against buganizer component: 979102.
+	// These features are used to determine what tests can be run against which
+	// SIMs in the lab, see go/cros-cellular-features for more information. File
+	// bugs against buganizer component: 979102.
 	Features []SIMProfileInfo_Feature `protobuf:"varint,7,rep,packed,name=features,proto3,enum=chromiumos.test.lab.api.SIMProfileInfo_Feature" json:"features,omitempty"`
 }
 
@@ -2307,7 +2308,8 @@ func (x *WifiAntenna) GetConnection() WifiAntenna_Connection {
 // Note: Define here rather than in wifi_router.proto so we can reference RPM in
 // the future even though it's not used at the moment.
 //
-// Source of truth: https://source.chromium.org/chromium/infra/infra_superproject/+/main:infra/go/src/infra/unifiedfleet/api/v1/models/chromeos/lab/peripherals.proto
+// Source of truth:
+// https://source.chromium.org/chromium/infra/infra_superproject/+/main:infra/go/src/infra/unifiedfleet/api/v1/models/chromeos/lab/peripherals.proto
 type WifiRouter struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

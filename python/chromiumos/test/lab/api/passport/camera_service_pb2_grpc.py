@@ -45,7 +45,8 @@ class CameraServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetAveragePixel(self, request, context):
-        """GetAveragePixel gets the average pixel color detected by the specified camera.
+        """GetAveragePixel gets the average pixel color detected by the specified
+        camera.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

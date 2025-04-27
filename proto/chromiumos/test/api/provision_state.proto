@@ -66,10 +66,11 @@ message ProvisionState {
   // Prevents device reboot during system image provisioning.
   bool prevent_reboot = 5;
 
-  // update_firmware will update OS bundled firmware(RW only) during the provision.
-  // Please note this firmware update only update RW firmware that built in the
-  // target_build OS image and it is different from firmware provision which
-  // download and update a separate firmware image based on request.
+  // update_firmware will update OS bundled firmware(RW only) during the
+  // provision. Please note this firmware update only update RW firmware that
+  // built in the target_build OS image and it is different from firmware
+  // provision which download and update a separate firmware image based on
+  // request.
   bool update_firmware = 6;
 
   // Use force to pass "--force" to futility, which skips the TPM checks.
@@ -88,40 +89,40 @@ message ProvisionState {
 // User configurable provisioning settings.  These inform the final
 // ProvisionState that's requested from the provisioning service.
 message ProvisionConfig {
-    chromiumos.build.api.FirmwareConfig  firmware = 1;
-    repeated chromiumos.build.api.Dlc.Id dlcs     = 2;
-    repeated ProvisionState.Package      packages = 3;
+  chromiumos.build.api.FirmwareConfig firmware = 1;
+  repeated chromiumos.build.api.Dlc.Id dlcs = 2;
+  repeated ProvisionState.Package packages = 3;
 
-    // Variant on the primary build target to test with.
-    //
-    // E.g.: If we were targeting a 'coral' board for testing, setting this to
-    // 'kernelnext' would use the coral-kernelnext image from the build for
-    // testing.
-    //
-    // Note that this looks for an overlay called <build target>-<variant>,
-    // (in the above example, there is an overlay called 'coral-kernelnext').
-    // If you are targeting a non-base profile of a build target, use the
-    // 'profile' field.
-    string board_variant = 4;
+  // Variant on the primary build target to test with.
+  //
+  // E.g.: If we were targeting a 'coral' board for testing, setting this to
+  // 'kernelnext' would use the coral-kernelnext image from the build for
+  // testing.
+  //
+  // Note that this looks for an overlay called <build target>-<variant>,
+  // (in the above example, there is an overlay called 'coral-kernelnext').
+  // If you are targeting a non-base profile of a build target, use the
+  // 'profile' field.
+  string board_variant = 4;
 
-    // Profile to test with. If not set, the 'base' profile is used.
-    //
-    // E.g. If you are targeting a 'amd64-generic' board for testing, setting
-    // this to 'asan' would use the amd64-generic ASAN image for testing.
-    //
-    // Note that if you are looking to use the 'base' profile of a variant
-    // overlay ('coral-kernelnext') use the 'board_variant' field above.
-    string profile = 6;
+  // Profile to test with. If not set, the 'base' profile is used.
+  //
+  // E.g. If you are targeting a 'amd64-generic' board for testing, setting
+  // this to 'asan' would use the amd64-generic ASAN image for testing.
+  //
+  // Note that if you are looking to use the 'base' profile of a variant
+  // overlay ('coral-kernelnext') use the 'board_variant' field above.
+  string profile = 6;
 
-    // Optional tarball to pass through to provisioning.
-    StoragePath overwrite_payload = 5;
+  // Optional tarball to pass through to provisioning.
+  StoragePath overwrite_payload = 5;
 
-    // Optional config for one companion DUT. Note that this field is NOT used
-    // to determine whether the DUT is a companion, meaning setting the field on
-    // the first (primary) DutTarget is invalid and will be ignored. The field
-    // only provides additional provision config that may affect how the
-    // underlying DUT companion should be provisioned.
-    CompanionConfig companion = 7;
+  // Optional config for one companion DUT. Note that this field is NOT used
+  // to determine whether the DUT is a companion, meaning setting the field on
+  // the first (primary) DutTarget is invalid and will be ignored. The field
+  // only provides additional provision config that may affect how the
+  // underlying DUT companion should be provisioned.
+  CompanionConfig companion = 7;
 }
 
 // Provision config for a companion DUT to override the default behavior, which
@@ -144,7 +145,8 @@ message CompanionConfig {
 
     // gms core cipd package for android provisioning. Recommend to use
     // "latest_stable".
-    // See https://chrome-infra-packages.appspot.com/p/chromiumos/infra/skylab/third_party/gmscore/gmscore_prodsc_arm64_xxhdpi_release_apk/+/
+    // See
+    // https://chrome-infra-packages.appspot.com/p/chromiumos/infra/skylab/third_party/gmscore/gmscore_prodsc_arm64_xxhdpi_release_apk/+/
     string gms_core_package = 2;
   }
 

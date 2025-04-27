@@ -30,16 +30,20 @@ service BtpeerManagementService {
   rpc Reboot(RebootRequest) returns (RebootResponse) {}
 
   // GetActiveBluetoothStack sets the active bluetooth stack.
-  rpc GetActiveBluetoothStack(GetActiveBluetoothStackRequest) returns (GetActiveBluetoothStackResponse) {}
+  rpc GetActiveBluetoothStack(GetActiveBluetoothStackRequest)
+      returns (GetActiveBluetoothStackResponse) {}
 
   // SetActiveBluetoothStack sets the active bluetooth stack.
-  rpc SetActiveBluetoothStack(SetActiveBluetoothStackRequest) returns (SetActiveBluetoothStackResponse) {}
+  rpc SetActiveBluetoothStack(SetActiveBluetoothStackRequest)
+      returns (SetActiveBluetoothStackResponse) {}
 
   // GetActiveBluetoothStack sets the active bluetooth stack API.
-  rpc GetActiveBluetoothStackAPI(GetActiveBluetoothStackAPIRequest) returns (GetActiveBluetoothStackAPIResponse) {}
+  rpc GetActiveBluetoothStackAPI(GetActiveBluetoothStackAPIRequest)
+      returns (GetActiveBluetoothStackAPIResponse) {}
 
   // SetActiveBluetoothStack sets the active bluetooth stack API.
-  rpc SetActiveBluetoothStackAPI(SetActiveBluetoothStackAPIRequest) returns (SetActiveBluetoothStackAPIResponse) {}
+  rpc SetActiveBluetoothStackAPI(SetActiveBluetoothStackAPIRequest)
+      returns (SetActiveBluetoothStackAPIResponse) {}
 }
 
 message DeviceInfoRequest {}
@@ -126,7 +130,8 @@ message SetActiveBluetoothStackAPIRequest {
   BluetoothStackAPI bluetooth_stack_api = 1;
 }
 message SetActiveBluetoothStackAPIResponse {
-  // True iff the previous active stack API was different than the requested stack API.
+  // True iff the previous active stack API was different than the requested
+  // stack API.
   bool stack_api_changed = 1;
   // The port the service for the stack API is listening on.
   int32 service_port = 2;

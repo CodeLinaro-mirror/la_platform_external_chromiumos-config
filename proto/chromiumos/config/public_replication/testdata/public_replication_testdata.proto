@@ -15,74 +15,74 @@ option go_package = "go.chromium.org/chromiumos/config/go/public_replication/tes
 import "chromiumos/config/public_replication/public_replication.proto";
 
 message PublicReplicationTestdata {
-    chromiumos.config.public_replication.PublicReplication public_replication = 1;
+  chromiumos.config.public_replication.PublicReplication public_replication = 1;
 
-    string str1 = 2;
-    string str2 = 3;
+  string str1 = 2;
+  string str2 = 3;
 
-    map<string, int32> map1 = 4;
+  map<string, int32> map1 = 4;
 
-    SimpleTestdata simple1 = 5;
+  SimpleTestdata simple1 = 5;
 
-    OneofTestdata oneof1 = 6;
+  OneofTestdata oneof1 = 6;
 }
 
 message SimpleTestdata {
-    string str1 = 1;
+  string str1 = 1;
 }
 
 message NestedTestdata {
-    SimpleTestdata simple1 = 1;
+  SimpleTestdata simple1 = 1;
 }
 
 message OneofTestdata {
-    oneof messages {
-        NestedTestdata nested1 = 1;
-        NestedTestdata nested2 = 2;
-        NestedTestdata nested3 = 3;
-    }
+  oneof messages {
+    NestedTestdata nested1 = 1;
+    NestedTestdata nested2 = 2;
+    NestedTestdata nested3 = 3;
+  }
 }
 
 message WrapperTestdata1 {
-    int32 n1 = 1;
+  int32 n1 = 1;
 
-    PublicReplicationTestdata pr_testdata = 2;
+  PublicReplicationTestdata pr_testdata = 2;
 
-    repeated PublicReplicationTestdata repeated_pr_testdata = 3;
+  repeated PublicReplicationTestdata repeated_pr_testdata = 3;
 }
 
 message WrapperTestdata2 {
-    WrapperTestdata1 wrapper_testdata1 = 1;
+  WrapperTestdata1 wrapper_testdata1 = 1;
 }
 
 message WrapperTestdata3 {
-    chromiumos.config.public_replication.PublicReplication public_replication = 1;
+  chromiumos.config.public_replication.PublicReplication public_replication = 1;
 
-    bool b1 = 2;
+  bool b1 = 2;
 
-    PublicReplicationTestdata pr_testdata = 3;
+  PublicReplicationTestdata pr_testdata = 3;
 }
 
 message RecursiveMessage {
-    bool b1 = 1;
+  bool b1 = 1;
 
-    RecursiveMessage recursive_message = 2;
+  RecursiveMessage recursive_message = 2;
 }
 
 message PrivateMessage {
-    message Config {
-        message Test {
-           bool bools = 1;
-        }
-        repeated Test payload = 1;
+  message Config {
+    message Test {
+      bool bools = 1;
     }
-    Config config = 1;
+    repeated Test payload = 1;
+  }
+  Config config = 1;
 }
 
 message NestedPrivateMessage {
-    PrivateMessage nested_messages = 1;
+  PrivateMessage nested_messages = 1;
 }
 
 message NestedRepeatedPrivateMessage {
-    repeated PrivateMessage nested_messages = 1;
+  repeated PrivateMessage nested_messages = 1;
 }

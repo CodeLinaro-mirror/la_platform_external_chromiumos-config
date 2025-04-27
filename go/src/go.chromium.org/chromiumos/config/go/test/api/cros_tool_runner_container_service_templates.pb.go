@@ -354,9 +354,10 @@ type CrosProvisionTemplate struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// CrosProvisionRequest payload can have template placeholders, to be populated
-	// and write to a json file inside the artifact directory and pass along to
-	// cros-provision server. Note that inventory_server is no longer needed
+	// CrosProvisionRequest payload can have template placeholders, to be
+	// populated and write to a json file inside the artifact directory and pass
+	// along to cros-provision server. Note that inventory_server is no longer
+	// needed
 	InputRequest *CrosProvisionRequest `protobuf:"bytes,3,opt,name=input_request,json=inputRequest,proto3" json:"input_request,omitempty"`
 }
 
@@ -408,9 +409,9 @@ type AndroidProvisionTemplate struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// AndroidProvisionRequest payload can have template placeholders, to be populated
-	// and write to a json file inside the artifact directory and pass along to
-	// android-provision server.
+	// AndroidProvisionRequest payload can have template placeholders, to be
+	// populated and write to a json file inside the artifact directory and pass
+	// along to android-provision server.
 	InputRequest *AndroidProvisionRequest `protobuf:"bytes,1,opt,name=input_request,json=inputRequest,proto3" json:"input_request,omitempty"`
 }
 
@@ -496,8 +497,8 @@ func (*CrosTestTemplate) Descriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_cros_tool_runner_container_service_templates_proto_rawDescGZIP(), []int{4}
 }
 
-// Plain template to demonstrate the usage of cros-test-finder container. All fields are
-// required.
+// Plain template to demonstrate the usage of cros-test-finder container. All
+// fields are required.
 type CrosTestFinderTemplate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -536,8 +537,8 @@ func (*CrosTestFinderTemplate) Descriptor() ([]byte, []int) {
 	return file_chromiumos_test_api_cros_tool_runner_container_service_templates_proto_rawDescGZIP(), []int{5}
 }
 
-// Plain template to demonstrate the usage of vm-provision container. All fields are
-// required.
+// Plain template to demonstrate the usage of vm-provision container. All fields
+// are required.
 type CrosVMProvisionTemplate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -740,8 +741,9 @@ type CacheServerTemplate_ServiceAccountKeyfile struct {
 func (*CacheServerTemplate_ServiceAccountKeyfile) isCacheServerTemplate_ApplicationDefaultCredentials() {
 }
 
-// Plain template to demonstrate the usage of cros-publish container. publish_type
-// is required. publish_src_dir is required for GCS, TKO, and CPCON publish types.
+// Plain template to demonstrate the usage of cros-publish container.
+// publish_type is required. publish_src_dir is required for GCS, TKO, and CPCON
+// publish types.
 type CrosPublishTemplate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -749,8 +751,10 @@ type CrosPublishTemplate struct {
 
 	PublishType CrosPublishTemplate_PublishType `protobuf:"varint,1,opt,name=publish_type,json=publishType,proto3,enum=chromiumos.test.api.CrosPublishTemplate_PublishType" json:"publish_type,omitempty"`
 	// Source directory of artifacts that needs to be published.
-	// If provided, will be mounted to "/tmp/<publish_type>-publish-test-artifacts/"
-	// (Ex: gcs-publish-test-artifacts). Required for GCS, TKO, and CPCON publish types.
+	// If provided, will be mounted to
+	// "/tmp/<publish_type>-publish-test-artifacts/" (Ex:
+	// gcs-publish-test-artifacts). Required for GCS, TKO, and CPCON publish
+	// types.
 	PublishSrcDir string `protobuf:"bytes,2,opt,name=publish_src_dir,json=publishSrcDir,proto3" json:"publish_src_dir,omitempty"`
 }
 

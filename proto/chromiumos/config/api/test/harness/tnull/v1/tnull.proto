@@ -62,7 +62,6 @@ message MockArtifact {
 
 // A Step is a action to take to execute a test.
 message Step {
-
   oneof step {
     UnknownStep other = 1;
     ArchiveStep archive = 2;

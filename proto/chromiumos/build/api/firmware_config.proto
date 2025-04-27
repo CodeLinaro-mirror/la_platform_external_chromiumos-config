@@ -44,7 +44,7 @@ message FirmwarePayload {
     //
     // TODO(shapiroc): Migrate to use fimware_image_path instead so
     // that local provisioning can be supported also via provision_service
-    string firmware_image_name = 2 [ deprecated = true ];
+    string firmware_image_name = 2 [deprecated = true];
   }
 
   FirmwareType.Type type = 3;
@@ -160,4 +160,6 @@ message Firmware {
 
 // TODO(shapiroc): Remove once SoftwareConfig is migrated to
 // Firmware.build_targets
-message FirmwareBuildConfig { Firmware.BuildTargets build_targets = 1; }
+message FirmwareBuildConfig {
+  Firmware.BuildTargets build_targets = 1;
+}

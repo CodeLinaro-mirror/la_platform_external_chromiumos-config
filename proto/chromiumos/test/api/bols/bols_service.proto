@@ -1,0 +1,632 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package chromiumos.test.api.bols;
+
+option go_package = "go.chromium.org/chromiumos/config/go/test/api/bols";
+
+// Provides the ability to interact with a labstation/container and
+// its peripherals such as servo and dolos.
+service BolsService {
+  ///////// LabstationBox API  /////////
+
+  // GetFileStat reads file information from the labstation.
+  rpc GetFileStat(GetFileStatRequest) returns (GetFileStatResponse) {}
+
+  // GetFile gets a file from labstation.
+  rpc GetFile(GetFileRequest) returns (stream GetFileResponse) {}
+
+  // PutFile puts a file on labstation.
+  // If the directory of destination path does not exist, this service
+  // will also create the directory.
+  rpc PutFile(stream PutFileRequest) returns (PutFileResponse) {}
+
+  // DownloadFile downloads a file on labstation based on the specified url
+  // by sending a http GET request to the url.
+  rpc DownloadFile(DownloadFileRequest) returns (DownloadFileResponse) {}
+
+  // RemoveFile removes a file on labstation/container.
+  rpc RemoveFile(RemoveFileRequest) returns (RemoveFileResponse) {}
+
+  // DirInfo reads a directory info from the labstation.
+  rpc GetDirInfo(GetDirInfoRequest) returns (GetDirInfoResponse) {}
+
+  // MakeDir makes a directory on the labstation.
+  rpc MakeDir(MakeDirRequest) returns (MakeDirResponse) {}
+
+  // MakeTempDir makes a directory on the labstation.
+  rpc MakeTempDir(MakeTempDirRequest) returns (MakeTempDirResponse) {}
+
+  // RemoveDir removes a directory from labstation/container.
+  rpc RemoveDir(RemoveDirRequest) returns (RemoveDirResponse) {}
+
+  // DMesg returns the output from the dmesg command.
+  rpc DMesg(DMesgRequest) returns (stream DMesgResponse) {}
+
+  // WriteFileByBlock write data to a file by blocks.
+  // For most implementation of this service, it will be simple
+  // call to "dd <filename> oflag=sync conv=notrunc,nocreat".
+  rpc WriteFileByBlock(stream WriteFileByBlockRequest)
+      returns (WriteFileByBlockResponse) {}
+
+  // ReadFileByBlock reads data by Block
+  // For most implementation of this service, it will be simple
+  // call to "dd".
+  rpc ReadFileByBlock(ReadFileByBlockRequest)
+      returns (stream ReadFileByBlockResponse) {}
+
+  // RunMount runs the "mount" command on the labstation.
+  rpc RunMount(RunMountRequest) returns (RunMountResponse) {}
+
+  // RunUMount runs the "umount" command on the labstation.
+  rpc RunUMount(RunUMountRequest) returns (RunUMountResponse) {}
+
+  /////////  Servod API /////////
+
+  // StartServod runs a servod daemon.
+  rpc StartServod(StartServodRequest) returns (StartServodResponse);
+
+  // StopServod stops the servod daemon.
+  rpc StopServod(StopServodRequest) returns (StopServodResponse);
+
+  // GetServodStatus gets the current status of servod.
+  rpc GetServodStatus(GetServodStatusRequest) returns (GetServodStatusResponse);
+
+  // HWInitServod calls hwinit of servod.
+  rpc HWInitServod(HWInitServodRequest) returns (HWInitServodResponse);
+
+  // ReadServod read a servod control documentation.
+  rpc ReadServod(ReadServodRequest) returns (ReadServodResponse);
+
+  // GetServod gets a servod control value.
+  rpc GetServod(GetServodRequest) returns (GetServodResponse);
+
+  // SetServod sets value to a servod control.
+  rpc SetServod(SetServodRequest) returns (SetServodResponse);
+
+  // GetServodVersion reads version of started servod.
+  rpc GetServodVersion(GetServodVersionRequest)
+      returns (GetServodVersionResponse);
+
+  // EchoServod calls echo method of servod.
+  rpc EchoServod(EchoServodRequest) returns (EchoServodResponse);
+
+  // GetServoTopology gets the servo topology.
+  rpc GetServoTopology(GetServoTopologyRequest)
+      returns (GetServoTopologyResponse);
+
+  // UpdateServoFirmware update the firmware of a servo device.
+  rpc UpdateServoFirmware(UpdateServoFirmwareRequest)
+      returns (UpdateServoFirmwareResponse) {}
+
+  ///////// Firmware tool API /////////
+
+  // RunFutility run futility tool on labstation.
+  rpc RunFutility(RunFutilityRequest) returns (RunFutilityResponse) {}
+
+  // RunFlashEC run EC firmware flashing from the servo.
+  // In most of implementation, it runs flash_ec tool on labstation.
+  rpc RunFlashEC(RunFlashECRequest) returns (RunFlashECResponse) {}
+
+  ///////// Dolos API /////////
+
+  rpc GetDolosVersion(GetDolosVersionRequest)
+      returns (GetDolosVersionResponse) {}
+
+  // UpdateDolosVersion will update the Dolos version if version does
+  // not match expected one.
+  rpc UpdateDolosVersion(UpdateDolosVersionRequest)
+      returns (UpdateDolosVersionResponse) {}
+
+  // GetDolosStatus read the status of the Dolos.
+  rpc GetDolosStatus(GetDolosStatusRequest) returns (GetDolosStatusResponse) {}
+
+  // FindDolosUART finds the UART of the Dolos.
+  rpc FindDolosUART(FindDolosUARTRequest) returns (FindDolosUARTResponse) {}
+}
+
+/////// Labstation Global Identifiers ////////
+
+// StationIdentifier provides information to identify the station in use.
+// Each implementation defines how identifiers are used to find the target
+// station.
+message StationIdentifier {
+  // The port used by servod.
+  int32 servod_port = 1;
+}
+
+/////// Labstation API Messages ////////
+
+message FileData {
+  // Name of the file.
+  string filename = 1;
+  // Full path to the file
+  string filepath = 2;
+  // File content.
+  bytes data = 3;
+}
+
+message FileStat {
+  // The base name of the file/directory.
+  string name = 1;
+  // The absolute path to the file/directory.
+  // If the original request is a symbolic link, this path will
+  // be the resolved path from the symbolic link.
+  string path = 2;
+  // The file length in bytes.
+  int64 size = 3;
+  // Whether the file is directory.
+  bool is_dir = 4;
+  // Whether the file is an symbolic link.
+  bool is_symlink = 5;
+}
+
+message DirectoryInfo {
+  // The path to the directory.
+  string path = 1;
+
+  // List of files or directories in the directory.
+  repeated FileStat file_stats = 2;
+}
+
+message GetFileStatRequest {
+  StationIdentifier station_id = 1;
+  string filepath = 2;
+}
+
+message GetFileStatResponse {
+  FileStat file_stats = 1;
+}
+
+message GetFileRequest {
+  StationIdentifier station_id = 1;
+  // The file path of the file to get.
+  string filename = 2;
+}
+
+message GetFileResponse {
+  bytes data = 1;
+}
+
+message PutFileRequest {
+  // Source for the file.
+  oneof source {
+    PutFileRequestInitInfo req_info = 1;
+    bytes data = 2;
+  }
+}
+
+message PutFileResponse {}
+
+message PutFileRequestInitInfo {
+  StationIdentifier station_id = 1;
+  string filename = 2;
+}
+
+message DownloadFileRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // The url for files to download.
+  string url = 2;
+  // The destination directory of the downloaded files.
+  string dest = 3;
+  // Additional information needed to send request.
+  repeated Param headers = 4;
+}
+
+message Param {
+  string key = 1;
+  string value = 2;
+}
+
+message DownloadFileResponse {
+  // The path of the downloaded file.
+  string file = 3;
+}
+
+message RemoveFileRequest {
+  StationIdentifier station_id = 1;
+  string filename = 2;
+}
+
+message RemoveFileResponse {}
+
+message GetDirInfoRequest {
+  StationIdentifier station_id = 1;
+  // Absolute path to the directory.
+  string path = 2;
+}
+
+message GetDirInfoResponse {
+  DirectoryInfo info = 1;
+}
+
+message MakeDirRequest {
+  StationIdentifier station_id = 1;
+  // Absolute path to the directory.
+  string path = 2;
+}
+
+message MakeDirResponse {
+  DirectoryInfo info = 1;
+}
+
+message MakeTempDirRequest {
+  StationIdentifier station_id = 1;
+  // The directory that the new temporary directory will be in..
+  // If dir is the empty string, it uses the default directory
+  // for temporary files. On Unix systems, $TMPDIR is the default
+  // directory.
+  string dir = 2;
+  // The prefix patten for the new directory name.
+  // The new directory's name is generated by adding a random string
+  // to the end of pattern.
+  string pattern = 3;
+}
+
+message MakeTempDirResponse {
+  DirectoryInfo info = 1;
+}
+
+message RemoveDirRequest {
+  StationIdentifier station_id = 1;
+  // Absolute path to the directory.
+  string path = 2;
+  // remove all files and directories under it.
+  bool remove_all = 3;
+}
+
+message RemoveDirResponse {}
+
+message DMesgRequest {
+  StationIdentifier station_id = 1;
+}
+
+message DMesgResponse {
+  OutputStream output = 1;
+}
+
+message WriteFileByBlockRequest {
+  oneof source {
+    WriteFileByBlockInitInfo req_info = 1;
+    bytes data = 2;
+  }
+}
+
+message WriteFileByBlockInitInfo {
+  StationIdentifier station_id = 1;
+  // The file to be overwritten.
+  string file_path = 2;
+  // byte size on each write.
+  // If it is zero, it will use default of 512 bytes
+  int32 byte_size = 3;
+}
+
+message WriteFileByBlockResponse {
+  StationIdentifier station_id = 1;
+  // The file to be overwritten.
+  string file_path = 2;
+  // The byte size of each write.
+  // If it is zero, it will use default of 512 bytes
+  int32 byte_size = 3;
+}
+
+message ReadFileByBlockRequest {
+  StationIdentifier station_id = 1;
+  // The file to be overwritten.
+  string file_path = 2;
+  // The byte size of each block.
+  // If it is zero, it will use default of 512 bytes
+  int32 byte_size = 3;
+  // The number of blocks to read.
+  // If it is zero, all blocks will be read.
+  int32 number_of_blocks = 4;
+}
+
+message ReadFileByBlockResponse {
+  OutputStream output = 1;
+}
+
+message RunMountRequest {
+  StationIdentifier station_id = 1;
+  string src = 2;
+  string dest = 3;
+  repeated string params = 4;
+}
+message RunMountResponse {}
+
+message RunUMountRequest {
+  StationIdentifier station_id = 1;
+  string path = 2;
+}
+
+message RunUMountResponse {}
+
+////// Servod API Messages ////////
+
+// ServodValue represent a single value which can be set or get from
+// servod control.
+message ServodValue {
+  oneof value {
+    string string_value = 1;
+    int32 int_value = 2;
+    float float_value = 3;
+  }
+}
+
+message StartServodRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+
+  // The board name of the device managed by servod.
+  // Used to load target controls and configs for servod.
+  string board = 2;
+
+  // The model name of the device managed by servod.
+  // Used to load target controls and configs for servod.
+  string model = 3;
+
+  // Specify if servod need to start in recovery_mode.
+  // This is a special startup for servod, please do not confuse with
+  // the boot mode of the connected device.
+  bool recovery_mode = 4;
+
+  // Special configuration param used at servod start.
+  // The parameter specified by --CONFIG.
+  string config = 5;
+}
+
+message StartServodResponse {}
+
+message StopServodRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+}
+
+message StopServodResponse {}
+
+message GetServodStatusRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+}
+
+enum ServodStatus {
+  SERVOD_UNKNOWN = 0;
+  SERVOD_RUNNING = 1;
+  SERVOD_STOPPED = 2;
+}
+
+message GetServodStatusResponse {
+  ServodStatus status = 1;
+}
+
+message HWInitServodRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+}
+
+message HWInitServodResponse {}
+
+message ReadServodRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // The control of servod.
+  // Example: "lid_open" or "servo_type".
+  string control = 2;
+}
+
+message ReadServodResponse {
+  string control = 1;
+  string description = 2;
+}
+
+message GetServodRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // The control of servod.
+  // Example: "lid_open" or "servo_type".
+  string control = 2;
+}
+
+message GetServodResponse {
+  // Control which was requested.
+  string control = 1;
+  // Value responded by servod.
+  ServodValue value = 2;
+}
+
+message SetServodRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // The control of servod.
+  // Example: "lid_open" or "power_state".
+  string control = 2;
+  // The value tryto set to control of servod.
+  // Example: "reset/on/off/rec" for control "power_state".
+  ServodValue value = 3;
+}
+
+message SetServodResponse {}
+
+message GetServodVersionRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+}
+
+message GetServodVersionResponse {
+  string version = 1;
+}
+
+message EchoServodRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // The value to run servod echo.
+  string echo = 2;
+}
+
+message EchoServodResponse {
+  string result = 1;
+}
+
+message GetServoTopologyRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+}
+
+message GetServoTopologyResponse {
+  ServoTopologyItem root = 1;
+  repeated ServoTopologyItem children = 2;
+}
+
+// ServoTopologyItem describes details of one servo device.
+message ServoTopologyItem {
+  // type provides the type of servo device. Keeping as String to avoid issue
+  // with introduce new type.
+  string type = 1;
+  // sysfs_product provides the product name of the device recorded in File
+  // System.
+  string sysfs_product = 2;
+  // serial provides the serial number of the device.
+  string serial = 3;
+  // usb_hub_port provides the port connection to the device.
+  // e.g. '1-6.2.2' where
+  //   '1-6'  - port on the labstation
+  //   '2'    - port on smart-hub connected to the labstation
+  //   '2'    - port on servo hub (part of servo_v4 or servo_v4.1) connected to
+  //   the smart-hub
+  // The same path will look '1-6.2' if connected servo_v4 directly to the
+  // labstation.
+  string usb_hub_port = 4;
+
+  // This is the complete path on the file system for the servo device.
+  string sysfs_path = 5;
+  // This is the version of servo device.
+  string fw_version = 6;
+}
+
+message UpdateServoFirmwareRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  message Target {
+    // Servo type targeted for update.
+    // Example: servo_micro, servo_v4p1.
+    string servo_type = 1;
+  }
+  repeated Target targets = 2;
+  bool force = 3;
+}
+
+message UpdateServoFirmwareResponse {
+  repeated ServoTopologyItem devices = 1;
+}
+
+///////// Firmware tool API messages /////////
+
+message OutputStream {
+  // The shell command's stdout output since the last response.
+  bytes stdout = 1;
+  // The shell command's stderr output since the last response.
+  bytes stderr = 2;
+}
+
+message RunFutilityRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+
+  // List of parameters used at execution.
+  // if --servo_port is specified and the port is not same as the one
+  // specified in the station identifier, an error will be returned.
+  // Example:  "futility gbb --servo_port=9999 --set --flash --flags=0x18".
+  // Params ["gbb", "--set",  "--servo_port=9999", "--flash", "--flags=0x18"]
+  repeated string params = 2;
+}
+
+message RunFutilityResponse {
+  OutputStream output = 1;
+}
+
+message RunFlashECRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+
+  // Params is a list of name value pair that can use for flashing EC firmware.
+  // List of params with values applied used at execution.
+  // if port for --port is not same as the one specified in
+  // the station identifier, an error will be returned.
+  // Example:
+  //  flash_ec --chip=chip1 --image=/tmp/ec.bin --port=9999 --verify --verbose
+  //  Params: ["--chip=chip1", "--image:/tmp/ec.bin", "--port=9999", "--verify",
+  //  "--verbose"]
+  repeated string params = 2;
+}
+
+message RunFlashECResponse {
+  OutputStream output = 1;
+}
+
+////// Dolos API messagaes //////
+
+// DolosIdentifier provides unique information on a dolos interface.
+message DolosIdentifier {
+  // The UART of Dolos USB serial.
+  string dolos_uart_name = 1;
+}
+
+enum DolosStatus {
+  DOLOS_UNKNOWN = 0;
+  DOLOS_NO_POWER_SUPPLIED = 1;
+  DOLOS_OUTPUT_POWER_FAILED = 2;
+  DOLOS_BMS_STATE_INVALID = 3;
+  DOLOS_SMBUS_COMM_NOT_DETECTED = 4;
+  DOLOS_EEPROM_FAILURE = 5;
+  DOLOS_OK = 6;
+  DOLOS_NO_COMMUNICATION = 7;
+  DOLOS_NOT_PRESENT = 8;
+}
+
+message GetDolosVersionRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  DolosIdentifier dolos_id = 2;
+}
+
+message GetDolosVersionResponse {
+  string version = 1;
+}
+
+message UpdateDolosVersionRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  DolosIdentifier dolos_id = 2;
+  // Target version for updater. Optional.
+  // If provided and does not match then labstation will try to update.
+  string expected_version = 3;
+}
+
+message UpdateDolosVersionResponse {
+  string version = 1;
+}
+
+message GetDolosStatusRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  DolosIdentifier dolos_id = 2;
+}
+
+message GetDolosStatusResponse {
+  DolosStatus status = 1;
+}
+
+message FindDolosUARTRequest {
+  // The station identifier.
+  StationIdentifier station_id = 1;
+  // The serial of the Dolos cable.
+  string dolos_cable_serial = 2;
+}
+
+message FindDolosUARTResponse {
+  string dolos_uart_name = 1;
+}

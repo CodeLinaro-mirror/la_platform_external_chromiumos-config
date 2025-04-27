@@ -34,8 +34,9 @@ const (
 	SwitchPortState_SWITCH_PORT_DISABLED SwitchPortState = 1
 	// The switch port is enabled.
 	SwitchPortState_SWITCH_PORT_ENABLED SwitchPortState = 2
-	// The switch port orientation should be "flipped" (only supported for symmetrical swiches e.g. USBC).
-	// Note: This isn't a detectable state as much as it is an "action"
+	// The switch port orientation should be "flipped" (only supported for
+	// symmetrical swiches e.g. USBC). Note: This isn't a detectable state as much
+	// as it is an "action"
 	SwitchPortState_SWITCH_PORT_FLIP SwitchPortState = 3
 )
 

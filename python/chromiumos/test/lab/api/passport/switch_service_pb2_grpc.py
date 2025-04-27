@@ -6,9 +6,9 @@ from chromiumos.test.lab.api.passport import switch_service_pb2 as chromiumos_do
 
 
 class SwitchServiceStub(object):
-    """SwitchService is a service which controls a set of physical switches connected to a
-    dedicated host. These switches are used to disable/enable individual peripheral components
-    at runtime.
+    """SwitchService is a service which controls a set of physical switches
+    connected to a dedicated host. These switches are used to disable/enable
+    individual peripheral components at runtime.
     """
 
     def __init__(self, channel):
@@ -35,9 +35,9 @@ class SwitchServiceStub(object):
 
 
 class SwitchServiceServicer(object):
-    """SwitchService is a service which controls a set of physical switches connected to a
-    dedicated host. These switches are used to disable/enable individual peripheral components
-    at runtime.
+    """SwitchService is a service which controls a set of physical switches
+    connected to a dedicated host. These switches are used to disable/enable
+    individual peripheral components at runtime.
     """
 
     def GetSwitches(self, request, context):
@@ -48,7 +48,8 @@ class SwitchServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ResetAllSwitches(self, request, context):
-        """ResetAllSwitches re-initializes all found switches and sets them to the "disabled" state.
+        """ResetAllSwitches re-initializes all found switches and sets them to the
+        "disabled" state.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -87,9 +88,9 @@ def add_SwitchServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class SwitchService(object):
-    """SwitchService is a service which controls a set of physical switches connected to a
-    dedicated host. These switches are used to disable/enable individual peripheral components
-    at runtime.
+    """SwitchService is a service which controls a set of physical switches
+    connected to a dedicated host. These switches are used to disable/enable
+    individual peripheral components at runtime.
     """
 
     @staticmethod

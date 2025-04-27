@@ -50,7 +50,8 @@ const (
 //   it can be discovered via proto reflection without accidentally using
 //   FieldMasks that are not meant to control public fields.
 // - In FieldMasks a repeated field is only allowed in the last position of a
-//   path (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask).
+//   path
+//   (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask).
 //   Using a single FieldMask for a ConfigBundle would not be very useful, since
 //   more granularity is needed (i.e. saying all or none of
 //   "software_configs" is public is not useful). Thus, FieldMasks to control

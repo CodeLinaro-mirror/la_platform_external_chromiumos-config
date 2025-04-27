@@ -12,7 +12,6 @@ import "chromiumos/test/api/test_case.proto";
 import "chromiumos/test/api/test_case_metadata.proto";
 import "chromiumos/test/api/test_execution_metadata.proto";
 
-
 // Defines a named collection of tests.
 //
 // For test scheduling/execution purposes, there is no guarantee on ordering.
@@ -44,7 +43,8 @@ message TestSuite {
   // test suite inclusion.
   //
   // Tests are included if they meet the following:
-  //  - MATCH ALL of the [include] tags and at least one from [include] test names
+  //  - MATCH ALL of the [include] tags and at least one from [include] test
+  //  names
   //  - DO NOT MATCH ANY of the exclude tags or test names
   //
   // Tags must match exactly (i.e. no regexp, wildcard, etc. allowed).
@@ -59,5 +59,4 @@ message TestSuite {
   // K:Vs to be passed to the harness. Mostly will be used for args; but
   // technically can go for others.
   ExecutionMetadata execution_metadata = 7;
-
 }

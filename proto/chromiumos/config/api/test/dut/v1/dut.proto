@@ -65,4 +65,3 @@ message Firmware {
   // "firmware-reef-9042.B-firmwarebranch/R72-11311.0.0"
   string ap_rw_version = 2;
 }
-

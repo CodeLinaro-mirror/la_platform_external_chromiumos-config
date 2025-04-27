@@ -50,6 +50,7 @@ _AUDIO_CODEC = struct(
     ALC722 = _HW_FEAT.Audio.AUDIO_CODEC_ALC722,
     ALC721 = _HW_FEAT.Audio.AUDIO_CODEC_ALC721,
     ALC3204 = _HW_FEAT.Audio.AUDIO_CODEC_ALC3204,
+    ALC712 = _HW_FEAT.Audio.ALC712,
 )
 
 _AMPLIFIER = struct(
@@ -73,6 +74,8 @@ _AMPLIFIER = struct(
     ALC722 = _HW_FEAT.Audio.AMPLIFIER_ALC722,
     ALC721 = _HW_FEAT.Audio.AMPLIFIER_ALC721,
     ALC3204 = _HW_FEAT.Audio.AMPLIFIER_ALC3204,
+    ALC1320 = _HW_FEAT.Audio.ALC1320,
+    RT9123 = _HW_FEAT.Audio.RT9123,
 )
 
 _CELLULAR = struct(
@@ -99,6 +102,11 @@ _DGPU = struct(
     DGPU_UNKNOWN = _HW_FEAT.Dgpu.DGPU_UNKNOWN,
     DGPU_NV3050 = _HW_FEAT.Dgpu.DGPU_NV3050,
     DGPU_NV4050 = _HW_FEAT.Dgpu.DGPU_NV4050,
+)
+
+_DSP_VENDOR = struct(
+    DSP_VENDOR_UNKNOWN = _HW_FEAT.DspCore.VENDOR_UNKNOWN,
+    DSP_VENDOR_INTEL = _HW_FEAT.DspCore.VENDOR_INTEL,
 )
 
 _FP_LOC = struct(
@@ -1511,7 +1519,7 @@ def _create_volume_button(region, edge, position, id = None, description = None)
         ),
     )
 
-def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None, max_sensor_odr_mhz = None):
+def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None, max_sensor_odr_mhz = None, max_accelerometer_calibration = None):
     """Builds a Topology proto for an embedded controller.
 
     Args:
@@ -1526,6 +1534,8 @@ def _create_ec(present = True, ec_type = _EC_TYPE.CHROME, id = None, max_sensor_
     hw_features.embedded_controller.present = _bool_to_present(present)
     if max_sensor_odr_mhz != None:
         hw_features.embedded_controller.max_sensor_odr_mhz.value = max_sensor_odr_mhz
+    if max_accelerometer_calibration != None:
+        hw_features.embedded_controller.max_accelerometer_calibration.value = max_accelerometer_calibration
 
     return topo_pb.Topology(
         id = id or "ec",
@@ -1584,6 +1594,21 @@ def _create_dgpu(id, description, fw_configs = [], dgpu_type = _DGPU.DGPU_UNKNOW
     return topo_pb.Topology(
         id = id,
         type = topo_pb.Topology.DGPU,
+        description = {"EN": description},
+        hardware_feature = hw_features,
+    )
+
+def _create_dsp(id, description, fw_configs = [], dsp_vendor = _DSP_VENDOR.DSP_VENDOR_UNKNOWN):
+    """Builds a Topology proto for dsp."""
+    hw_features = _HW_FEAT()
+
+    hw_features.dsp_core.present = _bool_to_present(True)
+    hw_features.dsp_core.vendor = dsp_vendor
+    _accumulate_fw_configs(hw_features, fw_configs)
+
+    return topo_pb.Topology(
+        id = id,
+        type = topo_pb.Topology.DSP,
         description = {"EN": description},
         hardware_feature = hw_features,
     )
@@ -1823,6 +1848,7 @@ def _create_hardware_topology(
         poe = None,
         battery = None,
         dgpu = None,
+        dsp = None,
         uwb = None,
         detachable_base = None,
         soc = None,
@@ -1923,6 +1949,9 @@ def _create_hardware_topology(
     if dgpu and dgpu.type != topo_pb.Topology.DGPU:
         fail("Invalid dGPU type")
 
+    if dsp and dsp.type != topo_pb.Topology.DSP:
+        fail("Invalid DSP type")
+
     if uwb and uwb.type != topo_pb.Topology.UWB:
         fail("Invalid UWB type")
 
@@ -1967,6 +1996,7 @@ def _create_hardware_topology(
         power_supply = power_supply,
         battery = battery,
         dgpu = dgpu,
+        dsp = dsp,
         uwb = uwb,
         detachable_base = detachable_base,
         soc = soc,
@@ -2205,6 +2235,10 @@ def _convert_to_hw_features(hardware_topology):
     if copy.dgpu.hardware_feature.dgpu_config != _HW_FEAT.Dgpu():
         result.dgpu_config = copy.dgpu.hardware_feature.dgpu_config
 
+    _accumulate_fw_config(result.fw_config, copy.dsp.hardware_feature.fw_config)
+    if copy.dsp.hardware_feature.dsp_core != _HW_FEAT.DspCore():
+        result.dsp_core = copy.dsp.hardware_feature.dsp_core
+
     # Handle all possible fan hardware features attributes
     _accumulate_fw_config(result.fw_config, copy.fan.hardware_feature.fw_config)
     if copy.fan.hardware_feature.fan != _HW_FEAT.Fan():
@@ -2311,6 +2345,7 @@ hw_topo = struct(
     create_poe = _create_poe,
     create_battery = _create_battery,
     create_dgpu = _create_dgpu,
+    create_dsp = _create_dsp,
     create_uwb = _create_uwb,
     create_detachable_base = _create_detachable_base,
     create_soc = _create_soc,
@@ -2325,6 +2360,7 @@ hw_topo = struct(
     cellular = _CELLULAR,
     modem = _MODEM,
     dgpu = _DGPU,
+    dsp = _DSP_VENDOR,
     fp_loc = _FP_LOC,
     proximity_sensor_radio_type = _PS_RADIO_TYPE,
     storage = _STORAGE,

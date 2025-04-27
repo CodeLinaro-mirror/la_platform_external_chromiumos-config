@@ -73,6 +73,7 @@ message Topology {
     UWB = 36;
     DETACHABLE_BASE = 37;
     FAN = 38;
+    DSP = 39;
   }
 
   // Map of human readable descriptions in various languages. Maps language
@@ -130,16 +131,16 @@ message HardwareFeatures {
     // position. For example, LEFT_BACK means the farthest-back port on the
     // left side, while BACK_LEFT means the leftmost port on the back of the
     // device.
-    LEFT        = 1;
-    RIGHT       = 2;
-    BACK        = 3;
-    FRONT       = 4;
-    LEFT_FRONT  = 5;
-    LEFT_BACK   = 6;
+    LEFT = 1;
+    RIGHT = 2;
+    BACK = 3;
+    FRONT = 4;
+    LEFT_FRONT = 5;
+    LEFT_BACK = 6;
     RIGHT_FRONT = 7;
-    RIGHT_BACK  = 8;
-    BACK_LEFT   = 9;
-    BACK_RIGHT  = 10;
+    RIGHT_BACK = 8;
+    BACK_LEFT = 9;
+    BACK_RIGHT = 10;
   }
 
   message Count {
@@ -171,6 +172,9 @@ message HardwareFeatures {
 
     // Optional field to manually override the external display timeout
     uint32 defer_external_display_timeout = 4;
+
+    // Whether port(s) are controlled by a PDC
+    Present pdc = 5;
   }
 
   // USB-A properties
@@ -307,8 +311,8 @@ message HardwareFeatures {
     // The AP firmware has the CONFIG_FW_SPLASH_SCREEN feature enabled.
     Present fw_splash_screen = 12;
 
-    // The CSE sync is late at payload with CONFIG_SOC_INTEL_CSE_LITE_SYNC_BY_PAYLOAD
-    // feature enabled.
+    // The CSE sync is late at payload with
+    // CONFIG_SOC_INTEL_CSE_LITE_SYNC_BY_PAYLOAD feature enabled.
     Present late_cse_sync = 13;
 
     // The AP firmware has the CONFIG_HAS_RECOVERY_MRC_CACHE feature enabled.
@@ -316,8 +320,6 @@ message HardwareFeatures {
 
     // The AP firmware has the CONFIG_CHROMEOS_ENABLE_ESOL feature enabled.
     Present mainboard_has_early_sign_of_life = 15;
-
-
   }
 
   // Audio properties of system
@@ -344,7 +346,7 @@ message HardwareFeatures {
     // The card configs for this topology.
     repeated CardConfig card_configs = 7;
 
-      // The source config file layout used for card-agnostic cras config.
+    // The source config file layout used for card-agnostic cras config.
     AudioConfigStructure cras_config = 8;
 
     // If audio DSP firmware is SOF-backed.
@@ -365,7 +367,7 @@ message HardwareFeatures {
       WCD9385 = 13;
       ES8326 = 14;
       ALC272 = 15;
-      // 16 is free to be used
+      ALC712 = 16;
       AUDIO_CODEC_ALC5650 = 17;
       AUDIO_CODEC_ALC256 = 18;
       AUDIO_CODEC_ALC3247 = 19;
@@ -401,6 +403,8 @@ message HardwareFeatures {
       AMPLIFIER_ALC722 = 22;
       AMPLIFIER_ALC721 = 23;
       AMPLIFIER_ALC3204 = 24;
+      ALC1320 = 25;
+      RT9123 = 26;
     }
 
     enum AudioConfigStructure {
@@ -674,9 +678,9 @@ message HardwareFeatures {
     // The number of columns of numeric pad.
     NumericPadLayout numeric_pad_layout = 11;
     enum NumericPadLayout {
-        NUMERIC_PAD_LAYOUT_UNKNOWN = 0;
-        NUMERIC_PAD_3_COLUMN = 1;
-        NUMERIC_PAD_4_COLUMN = 2;
+      NUMERIC_PAD_LAYOUT_UNKNOWN = 0;
+      NUMERIC_PAD_3_COLUMN = 1;
+      NUMERIC_PAD_4_COLUMN = 2;
     }
   }
 
@@ -883,6 +887,13 @@ message HardwareFeatures {
     // is greater than 0, iioservice will never set a maximal frequency above
     // it.
     google.protobuf.UInt32Value max_sensor_odr_mhz = 12;
+
+    // Some Chromebook have been miscalibrated, and the calibration information
+    // in the VPD are erroneous.
+    // If accelerometer calibration in the VPD (in mg) is greater than
+    // |max_accelerometer_calibration|, it is ignored.
+    // The default is 250mg, but it may be too high to detect a miscalibration.
+    google.protobuf.UInt32Value max_accelerometer_calibration = 13;
   }
   EmbeddedController embedded_controller = 24;
 
@@ -925,6 +936,9 @@ message HardwareFeatures {
     // Whether GSC ADID is valid. This is true if there's a valid
     // attested_device_id in the RO_VPD that matches the sn bits stored in GSC.
     Present valid_adid = 6;
+
+    // True if CCD testlab mode is enabled
+    Present ccd_testlab_mode = 7;
   }
   TrustedPlatformModule trusted_platform_module = 25;
 
@@ -1056,10 +1070,10 @@ message HardwareFeatures {
   // Touch screen properties
   Touch touch = 38;
   message Touch {
-     // Configures touch slop distance in Chrome.
-     // This is the number of pixels a touch event can wander before being
-     // recognized as a scroll rather than a tap.
-     google.protobuf.UInt32Value touch_slop_distance = 1;
+    // Configures touch slop distance in Chrome.
+    // This is the number of pixels a touch event can wander before being
+    // recognized as a scroll rather than a tap.
+    google.protobuf.UInt32Value touch_slop_distance = 1;
   }
 
   Thermal thermal = 39;
@@ -1223,4 +1237,17 @@ message HardwareFeatures {
   message Pendrive {
     Present present = 1;
   }
+
+  // Digital-Signal-Processor (DSP) core information
+  DspCore dsp_core = 55;
+  message DspCore {
+    Present present = 1;
+
+    enum Vendor {
+      VENDOR_UNKNOWN = 0;
+      // Intel's DSP core is the ISH.
+      VENDOR_INTEL = 1;
+    };
+    Vendor vendor = 2;
+  };
 }

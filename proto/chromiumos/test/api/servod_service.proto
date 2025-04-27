@@ -21,8 +21,7 @@ service ServodService {
   // StartServod runs a servod Docker container and starts the servod daemon
   // inside the container if servod is containerized. Otherwise, it simply
   // starts the servod daemon.
-  rpc StartServod(StartServodRequest)
-      returns (longrunning.Operation) {
+  rpc StartServod(StartServodRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "StartServodResponse",
       metadata_type: "StartServodMetadata"
@@ -32,8 +31,7 @@ service ServodService {
   // StopServod stops the servod daemon inside the container and stops the
   // servod Docker container if servod is containerized. Otherwise, it simply
   // stops the servod daemon.
-  rpc StopServod(StopServodRequest)
-      returns (longrunning.Operation) {
+  rpc StopServod(StopServodRequest) returns (longrunning.Operation) {
     option (longrunning.operation_info) = {
       response_type: "StopServodResponse",
       metadata_type: "StopServodMetadata"
@@ -48,8 +46,7 @@ service ServodService {
   // servod_docker_container_name parameter is provided in the request.
   // Otherwise, it executes the command directly inside the host that the servo
   // is physically connected to.
-  rpc ExecCmd(ExecCmdRequest)
-      returns (ExecCmdResponse);
+  rpc ExecCmd(ExecCmdRequest) returns (ExecCmdResponse);
 
   // CallServod runs a servod command through an XML-RPC call.
   // It runs the command inside the servod Docker container if the
@@ -57,8 +54,7 @@ service ServodService {
   // Otherwise, it runs the command directly inside the host that the servo
   // is physically connected to.
   // Allowed methods: doc, get, set, and hwinit.
-  rpc CallServod(CallServodRequest)
-      returns (CallServodResponse);
+  rpc CallServod(CallServodRequest) returns (CallServodResponse);
 
   // LogCheckPoint will create checkpoint certain files so that some files
   // can be saved partially when SaveLogs is called.
@@ -120,8 +116,7 @@ message StartServodRequest {
 
 message StartServodResponse {
   // Empty response for success.
-  message Success {
-  }
+  message Success {}
 
   // Error message for failure.
   message Failure {
@@ -134,8 +129,7 @@ message StartServodResponse {
   }
 }
 
-message StartServodMetadata {
-}
+message StartServodMetadata {}
 
 message StopServodRequest {
   // The path (URI) for the servod (containerized or running as a daemon) host.
@@ -152,8 +146,7 @@ message StopServodRequest {
 
 message StopServodResponse {
   // Empty response for success.
-  message Success {
-  }
+  message Success {}
 
   // Error message for failure.
   message Failure {
@@ -166,8 +159,7 @@ message StopServodResponse {
   }
 }
 
-message StopServodMetadata {
-}
+message StopServodMetadata {}
 
 message ExecCmdRequest {
   // The path (URI) for the servod (containerized or running as a daemon) host.
@@ -227,8 +219,7 @@ message ExecCmdResponse {
   bytes stderr = 3;
 }
 
-message ExecCmdMetadata {
-}
+message ExecCmdMetadata {}
 
 message CallServodRequest {
   // The path (URI) for the servod (containerized or running as a daemon) host.
@@ -282,9 +273,7 @@ message CallServodResponse {
   }
 }
 
-message CallServodMetadata {
-}
-
+message CallServodMetadata {}
 
 message LogCheckPointRequest {
   // The path (URI) for the servod (containerized or running as a daemon) host.
@@ -330,5 +319,4 @@ message SaveLogsRequest {
   string dest = 5;
 }
 
-message SaveLogsResponse {
-}
+message SaveLogsResponse {}

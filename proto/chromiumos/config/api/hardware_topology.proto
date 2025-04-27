@@ -163,4 +163,8 @@ message HardwareTopology {
   // Specify the Fan topology
   // See ./hardware_topology.md#fan for more information.
   Topology fan = 36;
+
+  // Specify the DSP topology
+  // See ./hardware_topology.md#dsp for more information.
+  Topology dsp = 37;
 }

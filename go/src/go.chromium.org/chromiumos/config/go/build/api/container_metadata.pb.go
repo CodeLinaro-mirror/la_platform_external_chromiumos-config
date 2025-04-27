@@ -15,9 +15,9 @@
 //        "amd64-generic" : {
 //          "images" : {
 //            "cros-provision" : {
-//              "repository" : { "hostname" : "gcr.io", "project" : "chromeos-bot" },
-//              "name"       : "cros-provision",
-//              "digest"     : "sha256:3e36d3622f5adad01080cc2120bb72c0714ecec6118eb9523586410b7435ae80",
+//              "repository" : { "hostname" : "gcr.io", "project" :
+//              "chromeos-bot" }, "name"       : "cros-provision", "digest" :
+//              "sha256:3e36d3622f5adad01080cc2120bb72c0714ecec6118eb9523586410b7435ae80",
 //              "tags" : [
 //                 "8835841547076258945",
 //                 "amd64-generic-release.R96-1.2.3"

@@ -12,11 +12,11 @@ import "chromiumos/build/api/portage.proto";
 
 // Defines config used to generate Chrome OS system image builds.
 message SystemImage {
-  ImageId       id       = 1; // universally unique ID representing the build
-  BuildMetadata metadata = 2; // metadata about the system image
+  ImageId id = 1;              // universally unique ID representing the build
+  BuildMetadata metadata = 2;  // metadata about the system image
 
   message ImageId {
-      string value = 1;
+    string value = 1;
   }
 
   // Defines build target config required to generate a Chrome OS system image.
@@ -28,16 +28,16 @@ message SystemImage {
 
   message BuildMetadata {
     // Information passed to portage as part of the build.
-    BuildTarget              build_target    = 1;
-    PackageSummary           package_summary = 2;
-    repeated Portage.Package packages        = 3;
+    BuildTarget build_target = 1;
+    PackageSummary package_summary = 2;
+    repeated Portage.Package packages = 3;
 
     // Provides a summary of common key packages used in the build.
     message PackageSummary {
-      Arc       arc       = 1;
-      AshChrome chrome    = 2;
-      Chipset   chipset   = 3;
-      Kernel    kernel    = 4;
+      Arc arc = 1;
+      AshChrome chrome = 2;
+      Chipset chipset = 3;
+      Kernel kernel = 4;
       Toolchain toolchain = 5;
     }
 
@@ -46,7 +46,7 @@ message SystemImage {
 
     message Arc {
       string version = 1;
-      string branch  = 2;
+      string branch = 2;
     }
 
     message AshChrome {
